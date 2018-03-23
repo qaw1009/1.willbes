@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<model>
+    <schema logicalName="월비스 온라인 컨텐츠 기반 시스템" physicalName="wbs"> 
+        <!--  -->
+        <table logicalName="관리자" physicalName="wbs_Sys_Admin">
+            <!--  -->
+            <column logicalName="관리자식별자(PK)" physicalName="AdminIdx" />
+            <!-- 관리자권한 -->
+            <column logicalName="역할식별자" physicalName="RoleIdx" />
+            <!--  -->
+            <column logicalName="관리자아이디" physicalName="AdminId" />
+            <!--  -->
+            <column logicalName="관리자비밀번호" physicalName="AdminPasswd" />
+            <!--  -->
+            <column logicalName="관리자명" physicalName="AdminName" />
+            <!--  -->
+            <column logicalName="관리자휴대폰1" physicalName="AdminPhone1" />
+            <!--  -->
+            <column logicalName="관리자휴대폰2" physicalName="AdminPhone2" />
+            <!--  -->
+            <column logicalName="관리자휴대폰3" physicalName="AdminPhone3" />
+            <!--  -->
+            <column logicalName="관리자메일" physicalName="AdminMail" />
+            <!--  -->
+            <column logicalName="관리자부서공통코드" physicalName="AdminDeptCcd" />
+            <!--  -->
+            <column logicalName="관리자직급공통코드" physicalName="AdminPositionCcd" />
+            <!--  -->
+            <column logicalName="관리자설명" physicalName="AdminDesc" />
+            <!--  -->
+            <column logicalName="비밀번호만료일자" physicalName="PasswdExpireDate" />
+            <!--  -->
+            <column logicalName="비밀번호만료기간" physicalName="PasswdExpirePeriod" />
+            <!-- 인증성공 : Y / 인증제외 : E / 인증오류초과 : F -->
+            <column logicalName="인증타입" physicalName="CertType" />
+            <!--  -->
+            <column logicalName="인증일시" physicalName="CertDatm" />
+            <!-- 여부승인 : Y/N -->
+            <column logicalName="여부승인" physicalName="IsApproval" />
+            <!--  -->
+            <column logicalName="승인일시" physicalName="ApprovalDatm" />
+            <!--  -->
+            <column logicalName="승인관리자식별자" physicalName="ApprovalAdminIdx" />
+            <!-- 여부사용 : Y/N -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!-- 여부상태 : Y/N -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+            <!--  -->
+            <column logicalName="최종로그인일시" physicalName="LastLoginDatm" />
+            <!--  -->
+            <column logicalName="최종로그인아이피" physicalName="LastLoginIp" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자역할" physicalName="wbs_Sys_Admin_Role">
+            <!--  -->
+            <column logicalName="역할식별자(PK)" physicalName="RoleIdx" />
+            <!--  -->
+            <column logicalName="역할명" physicalName="RoleName" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="메뉴" physicalName="wbs_Sys_Menu">
+            <!--  -->
+            <column logicalName="메뉴식별자(PK)" physicalName="MenuIdx" />
+            <!--  -->
+            <column logicalName="메뉴명" physicalName="MenuName" />
+            <!--  -->
+            <column logicalName="부모메뉴식별자" physicalName="ParentMenuIdx" />
+            <!--  -->
+            <column logicalName="그룹메뉴식별자" physicalName="GroupMenuIdx" />
+            <!--  -->
+            <column logicalName="메뉴깊이" physicalName="MenuDepth" />
+            <!--  -->
+            <column logicalName="메뉴URL" physicalName="MenuUrl" />
+            <!-- route : 일반경로 / link : 외부경로 또는 타 시스템 경로, 메뉴URL에 도메인이 결합된다. -->
+            <column logicalName="URL타입" physicalName="UrlType" />
+            <!-- Anchor target : self, blank, parent -->
+            <column logicalName="URL타겟" physicalName="UrlTarget" />
+            <!-- 여분 컬럼 (메뉴Idx를 > 로 연결 : 1>2>3) -->
+            <column logicalName="메뉴경로코드" physicalName="MenuRouteCode" />
+            <!-- 여분 컬럼 (메뉴명을 > 로 연결 : 시스템 공통관리>운영자 관리>운영자 정보관리) -->
+            <column logicalName="메뉴경로명" physicalName="MenuRouteName" />
+            <!-- LNB 메뉴명 앞 font-awesome 아이콘 CSS 클래스명 : ex) fa-code -->
+            <column logicalName="아이콘클래스명" physicalName="IconClassName" />
+            <!--  -->
+            <column logicalName="정렬순서" physicalName="OrderNum" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자접속로그" physicalName="wbs_Sys_Admin_Login_Log">
+            <!--  -->
+            <column logicalName="로그식별자(PK)" physicalName="LogIdx" />
+            <!--  -->
+            <column logicalName="관리자아이디" physicalName="AdminId" />
+            <!--  -->
+            <column logicalName="로그인일시" physicalName="LoginDatm" />
+            <!--  -->
+            <column logicalName="로그인아이피" physicalName="LoginIp" />
+            <!--  -->
+            <column logicalName="여부로그인" physicalName="IsLogin" />
+            <!--  -->
+            <column logicalName="로그인로그공통코드" physicalName="LoginLogCcd" />
+        </table>
+        <!--  -->
+        <table logicalName="메뉴권한" physicalName="wbs_Sys_Admin_Role_R_Menu">
+            <!-- 관계식별자 -->
+            <column logicalName="Rm식별자(PK)" physicalName="RmIdx" />
+            <!--  -->
+            <column logicalName="역할식별자(FK)" physicalName="RoleIdx" />
+            <!--  -->
+            <column logicalName="메뉴식별자(FK)" physicalName="MenuIdx" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="공통코드" physicalName="wbs_Sys_Code">
+            <!--  -->
+            <column logicalName="공통코드(PK)" physicalName="Ccd" />
+            <!-- 그룹공통코드 : 상위 그룹코드일 경우 '0' 입력 -->
+            <column logicalName="그룹공통코드" physicalName="GroupCcd" />
+            <!--  -->
+            <column logicalName="공통코드명" physicalName="CcdName" />
+            <!--  -->
+            <column logicalName="공통코드값" physicalName="CcdValue" />
+            <!--  -->
+            <column logicalName="정렬순서" physicalName="OrderNum" />
+            <!-- CcdValue 사용 여부 : Y/N -->
+            <column logicalName="여부값사용" physicalName="IsValueUse" />
+            <!-- 여부사용 : Y/N -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!-- 공통코드 상태 : Y/N -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="공통코드설명" physicalName="CcdDesc" />
+            <!-- 공통코드기타 : 여분 컬럼1 -->
+            <column logicalName="공통코드기타" physicalName="CcdEtc" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="CP정보" physicalName="wbs_Sys_Cp">
+            <!-- CP식별자 -->
+            <column logicalName="CP식별자(PK)" physicalName="CpIdx" />
+            <!-- CP업체명 -->
+            <column logicalName="CP명" physicalName="CpName" />
+            <!-- 업체담당자명 -->
+            <column logicalName="CP업체담당자명" physicalName="CpManagerName" />
+            <!-- 업체전화번호 -->
+            <column logicalName="CP전화번호" physicalName="CpTel" />
+            <!-- 여부사용 : Y/N -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!-- 여부상태 : Y/N -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!-- 등록일시 -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!-- 등록관리자식별자 -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!-- 수정일시 -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!-- 수정관리자식별자 -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="CP권한" physicalName="wbs_Sys_Admin_Role_R_Cp">
+            <!-- 관계식별자 -->
+            <column logicalName="Rc식별자(PK)" physicalName="RcIdx" />
+            <!-- 역할식별자 -->
+            <column logicalName="역할식별자(FK)" physicalName="RoleIdx" />
+            <!-- CP식별자 -->
+            <column logicalName="CP식별자(FK)" physicalName="CpIdx" />
+            <!-- 여부상태 : Y/N -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!-- 등록일시 -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!-- 등록관리자식별자 -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!-- 수정일시 -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!-- 수정관리자식별자 -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자환경설정" physicalName="wbs_Sys_Admin_Settings">
+            <!--  -->
+            <column logicalName="설정식별자(PK)" physicalName="SettingIdx" />
+            <!--  -->
+            <column logicalName="관리자식별자(FK)" physicalName="AdminIdx" />
+            <!--  -->
+            <column logicalName="설정타입" physicalName="SettingType" />
+            <!--  -->
+            <column logicalName="설정값" physicalName="SettingValue" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+        </table>
+        <!--  -->
+        <table logicalName="교수" physicalName="wbs_Pms_Professor">
+            <!--  -->
+            <column logicalName="교수식별자(PK)" physicalName="ProfIdx" />
+            <!--  -->
+            <column logicalName="교수아이디" physicalName="ProfId" />
+            <!--  -->
+            <column logicalName="교수비밀번호" physicalName="ProfPasswd" />
+            <!--  -->
+            <column logicalName="교수명" physicalName="ProfName" />
+            <!--  -->
+            <column logicalName="교수닉네임" physicalName="ProfNickName" />
+            <!--  -->
+            <column logicalName="컨텐츠공통코드" physicalName="ContentCcd" />
+            <!--  -->
+            <column logicalName="샘플URL" physicalName="SampleUrl" />
+            <!--  -->
+            <column logicalName="교수프로필" physicalName="ProfProfile" />
+            <!--  -->
+            <column logicalName="저서내용" physicalName="BookContent" />
+            <!--  -->
+            <column logicalName="첨부이미지경로" physicalName="AttachImgPath" />
+            <!--  -->
+            <column logicalName="첨부이미지명1" physicalName="AttachImgName1" />
+            <!--  -->
+            <column logicalName="첨부이미지명2" physicalName="AttachImgName2" />
+            <!--  -->
+            <column logicalName="첨부이미지명3" physicalName="AttachImgName3" />
+            <!--  -->
+            <column logicalName="첨부이미지명4" physicalName="AttachImgName4" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="교수CP" physicalName="wbs_Pms_Professor_R_Cp">
+            <!-- 관계식별자 -->
+            <column logicalName="Pc식별자(PK)" physicalName="PcIdx" />
+            <!--  -->
+            <column logicalName="교수식별자(FK)" physicalName="ProfIdx" />
+            <!--  -->
+            <column logicalName="CP식별자(FK)" physicalName="CpIdx" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="출판사" physicalName="wbs_Bms_Publisher">
+            <!--  -->
+            <column logicalName="출판사식별자(PK)" physicalName="PublIdx" />
+            <!--  -->
+            <column logicalName="출판사명" physicalName="PublName" />
+            <!--  -->
+            <column logicalName="출판사담당자" physicalName="PublManager" />
+            <!--  -->
+            <column logicalName="출판사전화번호" physicalName="PublTel1" />
+            <!--  -->
+            <column logicalName="출판사전화번호2" physicalName="PublTel2" />
+            <!--  -->
+            <column logicalName="출판사전화번호3" physicalName="PublTel3" />
+            <!--  -->
+            <column logicalName="출판사휴대폰1" physicalName="PublPhone1" />
+            <!--  -->
+            <column logicalName="출판사휴대폰2" physicalName="PublPhone2" />
+            <!--  -->
+            <column logicalName="출판사휴대폰3" physicalName="PublPhone3" />
+            <!--  -->
+            <column logicalName="출판사설명" physicalName="PublDesc" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="저자" physicalName="wbs_Bms_Author">
+            <!--  -->
+            <column logicalName="저자식별자(PK)" physicalName="AuthorIdx" />
+            <!--  -->
+            <column logicalName="저자명" physicalName="AuthorName" />
+            <!--  -->
+            <column logicalName="저자설명" physicalName="AuthorDesc" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="교재" physicalName="wbs_Bms_Book">
+            <!--  -->
+            <column logicalName="교재식별자(PK)" physicalName="BookIdx" />
+            <!--  -->
+            <column logicalName="교재명" physicalName="BookName" />
+            <!--  -->
+            <column logicalName="출판사식별자(FK)" physicalName="PublIdx" />
+            <!--  -->
+            <column logicalName="출판일자" physicalName="PublDate" />
+            <!--  -->
+            <column logicalName="ISBN" physicalName="Isbn" />
+            <!--  -->
+            <column logicalName="페이지수" physicalName="PageCnt" />
+            <!--  -->
+            <column logicalName="신판여부공통코드" physicalName="EditionCcd" />
+            <!--  -->
+            <column logicalName="판" physicalName="EditionCnt" />
+            <!--  -->
+            <column logicalName="인쇄수" physicalName="PrintCnt" />
+            <!--  -->
+            <column logicalName="판형" physicalName="EditionSize" />
+            <!--  -->
+            <column logicalName="원가" physicalName="OrgPrice" />
+            <!--  -->
+            <column logicalName="판매공통코드" physicalName="SaleCcd" />
+            <!--  -->
+            <column logicalName="키워드" physicalName="Keyword" />
+            <!--  -->
+            <column logicalName="교재설명" physicalName="BookDesc" />
+            <!--  -->
+            <column logicalName="저자설명" physicalName="AuthorDesc" />
+            <!--  -->
+            <column logicalName="목차설명" physicalName="TableDesc" />
+            <!--  -->
+            <column logicalName="첨부이미지경로" physicalName="AttachImgPath" />
+            <!--  -->
+            <column logicalName="첨부이미지명" physicalName="AttachImgName" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="교재저자" physicalName="wbs_Bms_Book_R_Author">
+            <!--  -->
+            <column logicalName="Ba식별자(PK)" physicalName="BaIdx" />
+            <!--  -->
+            <column logicalName="교재식별자(FK)" physicalName="BookIdx" />
+            <!--  -->
+            <column logicalName="저자식별자(FK)" physicalName="AuthorIdx" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+    </schema>
+</model>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<model>
+    <schema logicalName="내 스키마" physicalName="MY_SCHEMA"> 
+    </schema>
+    <schema logicalName="윌비스 학습 콘텐츠 통합관리 시스템" physicalName="lms"> 
+        <!--  -->
+        <table logicalName="관리자접속로그" physicalName="lms_Sys_Admin_Login_Log">
+            <!--  -->
+            <column logicalName="로그식별자(PK)" physicalName="LogIdx" />
+            <!--  -->
+            <column logicalName="관리자아이디" physicalName="wAdminId" />
+            <!--  -->
+            <column logicalName="로그인일시" physicalName="LoginDatm" />
+            <!--  -->
+            <column logicalName="로그인아이피" physicalName="LoginIp" />
+            <!--  -->
+            <column logicalName="여부로그인" physicalName="IsLogin" />
+            <!--  -->
+            <column logicalName="로그인로그공통코드" physicalName="LoginLogCcd" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자역할" physicalName="lms_Sys_Admin_Role">
+            <!--  -->
+            <column logicalName="역할식별자(PK)" physicalName="RoleIdx" />
+            <!--  -->
+            <column logicalName="역할명" physicalName="RoleName" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자별역할" physicalName="lms_Sys_Admin_R_Admin_Role">
+            <!-- 관계식별자 -->
+            <column logicalName="Ar식별자(PK)" physicalName="ArIdx" />
+            <!--  -->
+            <column logicalName="관리자식별자" physicalName="wAdminIdx" />
+            <!--  -->
+            <column logicalName="역할식별자(FK)" physicalName="RoleIdx" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="메뉴" physicalName="lms_Sys_Menu">
+            <!--  -->
+            <column logicalName="메뉴식별자(PK)" physicalName="MenuIdx" />
+            <!--  -->
+            <column logicalName="메뉴명" physicalName="MenuName" />
+            <!--  -->
+            <column logicalName="부모메뉴식별자" physicalName="ParentMenuIdx" />
+            <!--  -->
+            <column logicalName="그룹메뉴식별자" physicalName="GroupMenuIdx" />
+            <!--  -->
+            <column logicalName="메뉴깊이" physicalName="MenuDepth" />
+            <!--  -->
+            <column logicalName="메뉴URL" physicalName="MenuUrl" />
+            <!-- route : 일반경로 / link : 외부경로 또는 타 시스템 경로, 메뉴URL에 도메인이 결합된다. -->
+            <column logicalName="URL타입" physicalName="UrlType" />
+            <!-- Anchor target : self, blank, parent -->
+            <column logicalName="URL타겟" physicalName="UrlTarget" />
+            <!-- 여분 컬럼 (메뉴Idx를 > 로 연결 : 1>2>3) -->
+            <column logicalName="메뉴경로코드" physicalName="MenuRouteCode" />
+            <!-- 여분 컬럼 (메뉴명을 > 로 연결 : 시스템 공통관리>운영자 관리>운영자 정보관리) -->
+            <column logicalName="메뉴경로명" physicalName="MenuRouteName" />
+            <!-- LNB 메뉴명 앞 font-awesome 아이콘 CSS 클래스명 : ex) fa-code -->
+            <column logicalName="아이콘클래스명" physicalName="IconClassName" />
+            <!--  -->
+            <column logicalName="정렬순서" physicalName="OrderNum" />
+            <!--  -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="메뉴권한" physicalName="lms_Sys_Admin_Role_R_Menu">
+            <!--  -->
+            <column logicalName="Rm식별자(PK)" physicalName="RmIdx" />
+            <!--  -->
+            <column logicalName="역할식별자(FK)" physicalName="RoleIdx" />
+            <!--  -->
+            <column logicalName="메뉴식별자(FK)" physicalName="MenuIdx" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="공통코드" physicalName="lms_Sys_Code">
+            <!--  -->
+            <column logicalName="공통코드(PK)" physicalName="Ccd" />
+            <!-- 그룹공통코드 : 상위 그룹코드일 경우 '0' 입력 -->
+            <column logicalName="그룹공통코드" physicalName="GroupCcd" />
+            <!--  -->
+            <column logicalName="공통코드명" physicalName="CcdName" />
+            <!--  -->
+            <column logicalName="공통코드값" physicalName="CcdValue" />
+            <!--  -->
+            <column logicalName="정렬순서" physicalName="OrderNum" />
+            <!-- CcdValue 사용 여부 : Y/N -->
+            <column logicalName="여부값사용" physicalName="IsValueUse" />
+            <!-- 여부사용 : Y/N -->
+            <column logicalName="여부사용" physicalName="IsUse" />
+            <!-- 여부상태 : Y/N -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="공통코드설명" physicalName="CcdDesc" />
+            <!-- 공통코드기타 : 여분 컬럼1 -->
+            <column logicalName="공통코드기타" physicalName="CcdEtc" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="등록관리자식별자" physicalName="RegAdminIdx" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+            <!--  -->
+            <column logicalName="수정관리자식별자" physicalName="UpdAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자" physicalName="wbs_Sys_Admin">
+            <!--  -->
+            <column logicalName="관리자식별자(PK)" physicalName="wAdminIdx" />
+        </table>
+        <!--  -->
+        <table logicalName="관리자환경설정" physicalName="lms_Sys_Admin_Settings">
+            <!--  -->
+            <column logicalName="설정식별자(PK)" physicalName="SettingIdx" />
+            <!--  -->
+            <column logicalName="관리자식별자" physicalName="wAdminIdx" />
+            <!--  -->
+            <column logicalName="설정타입" physicalName="SettingType" />
+            <!--  -->
+            <column logicalName="설정값" physicalName="SettingValue" />
+            <!--  -->
+            <column logicalName="여부상태" physicalName="IsStatus" />
+            <!--  -->
+            <column logicalName="등록일시" physicalName="RegDatm" />
+            <!--  -->
+            <column logicalName="수정일시" physicalName="UpdDatm" />
+        </table>
+    </schema>
+</model>

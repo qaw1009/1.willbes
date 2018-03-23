@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+	RewriteBase /
+	RewriteCond $1 !^(index\.php|public)
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ /index.php/$1 [L]
+
+    # set php.ini variables
+	PHP_VALUE date.timezone 'Asia/Seoul'
+
+    # set local environment variables
+	SetEnv CI_ENV local
+</IfModule>

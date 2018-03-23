@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e:DomainDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:e="http://exerd.tomato.com/model" UUID="DDefinition_Q9eMAB32EeiEjdAbhzm29g" productId="com.tomato.db.mysql" version="2.4.8.20170711-1106">
+  <domain UUID="Domain_Q9faIB32EeiEjdAbhzm29g" name="문자" suggestedDataType="VARCHAR(255)">
+    <domain UUID="Domain_Q9faIR32EeiEjdAbhzm29g" name="아이디" suggestedDataType="VARCHAR(20)"/>
+    <domain UUID="Domain_Q9faIh32EeiEjdAbhzm29g" name="비밀번호" suggestedDataType="VARCHAR(200)"/>
+    <domain UUID="Domain_Q9faIx32EeiEjdAbhzm29g" name="주민등록번호" suggestedDataType="VARCHAR(13)"/>
+    <domain UUID="Domain_Q9faJB32EeiEjdAbhzm29g" name="주소" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9faJR32EeiEjdAbhzm29g" name="전화번호" suggestedDataType="VARCHAR(20)"/>
+    <domain UUID="Domain_Q9faJh32EeiEjdAbhzm29g" name="전화번호분리" suggestedDataType="VARCHAR(4)"/>
+    <domain UUID="Domain_Q9faJx32EeiEjdAbhzm29g" name="전화번호암호화" suggestedDataType="VARCHAR(60)"/>
+    <domain UUID="Domain_Q9gBMB32EeiEjdAbhzm29g" name="메일" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9gBMR32EeiEjdAbhzm29g" name="이름" suggestedDataType="VARCHAR(50)"/>
+    <domain UUID="Domain_Q9gBMh32EeiEjdAbhzm29g" name="짧은이름" suggestedDataType="VARCHAR(20)"/>
+    <domain UUID="Domain_Q9gBMx32EeiEjdAbhzm29g" name="긴이름" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9gBNB32EeiEjdAbhzm29g" name="아이피" suggestedDataType="VARCHAR(15)"/>
+    <domain UUID="Domain_Q9gBNR32EeiEjdAbhzm29g" name="타입" suggestedDataType="VARCHAR(10)"/>
+    <domain UUID="Domain_Q9gBNh32EeiEjdAbhzm29g" name="코드" suggestedDataType="VARCHAR(10)"/>
+    <domain UUID="Domain_Q9gBNx32EeiEjdAbhzm29g" name="공통코드" suggestedDataType="VARCHAR(6)"/>
+    <domain UUID="Domain_Q9gBOB32EeiEjdAbhzm29g" name="값" suggestedDataType="VARCHAR(50)"/>
+    <domain UUID="Domain_Q9gBOR32EeiEjdAbhzm29g" name="여부" suggestedDataType="CHAR(1)" suggestedDefaultValue="'Y'"/>
+    <domain UUID="Domain_Q9gBOh32EeiEjdAbhzm29g" name="여부2" suggestedDataType="VARCHAR(1)"/>
+    <domain UUID="Domain_Q9gBOx32EeiEjdAbhzm29g" name="상태" suggestedDataType="CHAR(1)" suggestedDefaultValue="'Y'"/>
+    <domain UUID="Domain_Q9gBPB32EeiEjdAbhzm29g" name="상태2" suggestedDataType="VARCHAR(2)"/>
+    <domain UUID="Domain_Q9gBPR32EeiEjdAbhzm29g" name="경로코드" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9gBPh32EeiEjdAbhzm29g" name="경로명" suggestedDataType="VARCHAR(200)"/>
+    <domain UUID="Domain_Q9gBPx32EeiEjdAbhzm29g" name="URL" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9gBQB32EeiEjdAbhzm29g" name="설명" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9gBQR32EeiEjdAbhzm29g" name="기타" suggestedDataType="VARCHAR(100)"/>
+    <domain UUID="Domain_Q9gBQh32EeiEjdAbhzm29g" name="메모"/>
+    <domain UUID="Domain_Q9gBQx32EeiEjdAbhzm29g" name="짧은내용" suggestedDataType="VARCHAR(500)"/>
+    <domain UUID="Domain_Q9gBRB32EeiEjdAbhzm29g" name="내용" suggestedDataType="TEXT"/>
+  </domain>
+  <domain UUID="Domain_Q9gBRR32EeiEjdAbhzm29g" name="숫자" suggestedDataType="INT">
+    <domain UUID="Domain_Q9gBRh32EeiEjdAbhzm29g" name="금액"/>
+    <domain UUID="Domain_Q9gBRx32EeiEjdAbhzm29g" name="중간수" suggestedDataType="SMALLINT UNSIGNED"/>
+    <domain UUID="Domain_Q9gBSB32EeiEjdAbhzm29g" name="작은수" suggestedDataType="TINYINT UNSIGNED"/>
+    <domain UUID="Domain_Q9gBSR32EeiEjdAbhzm29g" name="수" suggestedDataType="INT UNSIGNED"/>
+    <domain UUID="Domain_Q9gBSh32EeiEjdAbhzm29g" name="식별자" suggestedDataType="INT UNSIGNED"/>
+    <domain UUID="Domain_Q9gBSx32EeiEjdAbhzm29g" name="순서" suggestedDataType="INT(3)" suggestedDefaultValue="0"/>
+  </domain>
+  <domain UUID="Domain_Q9gBTB32EeiEjdAbhzm29g" name="일시" suggestedDataType="DATETIME">
+    <domain UUID="Domain_Q9gBTR32EeiEjdAbhzm29g" name="일자" suggestedDataType="DATE"/>
+    <domain UUID="Domain_Q9gBTh32EeiEjdAbhzm29g" name="시간" suggestedDataType="TIME"/>
+    <domain UUID="Domain_Q9gBTx32EeiEjdAbhzm29g" name="등록일시" suggestedDefaultValue="CURRENT_TIMESTAMP"/>
+    <domain UUID="Domain_Q9gBUB32EeiEjdAbhzm29g" name="수정일시" suggestedDefaultValue="NULL ON UPDATE CURRENT_TIMESTAMP"/>
+  </domain>
+  <domain UUID="Domain_Q9gBUR32EeiEjdAbhzm29g" name="객체" suggestedDataType="BLOB">
+    <domain UUID="Domain_Q9gBUh32EeiEjdAbhzm29g" name="이미지" suggestedDataType="VARBINARY"/>
+    <domain UUID="Domain_Q9gBUx32EeiEjdAbhzm29g" name="오디오" suggestedDataType="VARBINARY"/>
+  </domain>
+  <domain UUID="Domain_Q9gBVB32EeiEjdAbhzm29g" name="등"/>
+</e:DomainDefinition>

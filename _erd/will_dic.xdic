@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tm:TermDictionary xmlns:tm="http://exerd.com/term-model" version="1.1">
+  <term name="식별자" physicalName="Idx"/>
+  <term name="명" description="이름" physicalName="Name" physicalDescription="Name"/>
+  <term name="아이디" physicalName="Id"/>
+  <term name="비밀번호" description="Password" physicalName="Passwd"/>
+  <term name="등록" description="Regist" physicalName="Reg"/>
+  <term name="수정" description="Update" physicalName="Upd"/>
+  <term name="삭제" description="Delete" physicalName="Del"/>
+  <term name="여부" description="" physicalName="Is" physicalDescription="Y/N"/>
+  <term name="상태" physicalName="Status"/>
+  <term name="코드" physicalName="Code"/>
+  <term name="공통코드" description="Common Code" physicalName="Ccd"/>
+  <term name="일자" physicalName="Date"/>
+  <term name="시간" physicalName="Time"/>
+  <term name="일시" description="DateTime" physicalName="Datm"/>
+  <term name="아이피" physicalName="Ip"/>
+  <term name="경로" physicalName="Route" physicalDescription=""/>
+  <term name="타입" physicalName="Type"/>
+  <term name="인증" description="Certification" physicalName="Cert"/>
+  <term name="메일" physicalName="Mail"/>
+  <term name="휴대폰" physicalName="Phone"/>
+  <term name="전화번호" physicalName="Tel"/>
+  <term name="정렬순서" physicalName="OrderNum"/>
+  <term name="URL" physicalName="Url"/>
+  <term name="부모" physicalName="Parent"/>
+  <term name="그룹" physicalName="Group"/>
+  <term name="실행" physicalName="Execute"/>
+  <term name="메모" physicalName="Memo"/>
+  <term name="로그" physicalName="Log"/>
+  <term name="권한" description="Authority" physicalName="Auth"/>
+  <term name="장치" physicalName="Device"/>
+  <term name="메뉴" physicalName="Menu"/>
+  <term name="관리자" physicalName="Admin"/>
+  <term name="역할" physicalName="Role"/>
+  <term name="소유자" physicalName="Owner"/>
+  <term name="로그인" physicalName="Login"/>
+  <term name="부서" physicalName="Dept"/>
+  <term name="직급" physicalName="Position"/>
+  <term name="만료" physicalName="Expire"/>
+  <term name="기간" physicalName="Period"/>
+  <term name="사용" physicalName="Use"/>
+  <term name="최종" physicalName="Last"/>
+  <term name="유무" physicalName="Yn"/>
+  <term name="타겟" physicalName="Target"/>
+  <term name="깊이" physicalName="Depth"/>
+  <term name="값" physicalName="Value"/>
+  <term name="설명" physicalName="Desc"/>
+  <term name="기타" physicalName="Etc"/>
+  <term name="CP" physicalName="Cp"/>
+  <term name="승인" physicalName="Approval"/>
+  <term name="Home" physicalName="Home"/>
+  <term name="설정" physicalName="Setting"/>
+  <term name="교수" description="Professor" physicalName="Prof" physicalDescription=""/>
+  <term name="닉네임" physicalName="NickName"/>
+  <term name="샘플" physicalName="Sample"/>
+  <term name="첨부" physicalName="Attach"/>
+  <term name="이미지" physicalName="Img"/>
+  <term name="파일" physicalName="File"/>
+  <term name="교재" physicalName="Book" physicalDescription="Book"/>
+  <term name="저서" physicalName="Book" physicalDescription="Book"/>
+  <term name="내용" physicalName="Content" physicalDescription="Content"/>
+  <term name="프로필" physicalName="Profile"/>
+  <term name="컨텐츠" physicalName="Content" physicalDescription="Content"/>
+  <term name="출판사" description="Publisher" physicalName="Publ" physicalDescription="Publ"/>
+  <term name="담당자" physicalName="Manager"/>
+  <term name="저자" physicalName="Author"/>
+  <term name="수" description="Count" physicalName="Cnt"/>
+  <term name="사이즈" physicalName="Size"/>
+  <term name="페이지" physicalName="Page"/>
+  <term name="키워드" physicalName="Keyword"/>
+  <term name="판매" physicalName="Sale"/>
+  <term name="가격" description="" physicalName="Price" physicalDescription="Price"/>
+  <term name="큰" description="Large" physicalName="Lg"/>
+  <term name="중간" description="Middle" physicalName="Md"/>
+  <term name="작은" description="Small" physicalName="Sm"/>
+  <term name="원래" description="Origin" physicalName="Org" physicalDescription="Org"/>
+  <term name="기존" description="Origin" physicalName="Org" physicalDescription="Org"/>
+  <term name="출판" description="Publisher" physicalName="Publ" physicalDescription="Publ"/>
+  <term name="인쇄" physicalName="Print"/>
+  <term name="소개" physicalName="Intro"/>
+  <term name="경로" physicalName="Path" physicalDescription=""/>
+  <term name="사이트" physicalName="Site"/>
+  <term name="무료" physicalName="Free"/>
+  <term name="배송" physicalName="Delivery" physicalDescription="Delivery"/>
+  <term name="금액" description="" physicalName="Price" physicalDescription="Price"/>
+  <term name="PG" physicalName="Pg"/>
+  <term name="상점아이디" physicalName="Mid"/>
+  <term name="방법" physicalName="Method" physicalDescription=""/>
+  <term name="결제" physicalName="Pay"/>
+  <term name="추가" physicalName="Add"/>
+  <term name="[료]" description="요금" physicalName="Fee"/>
+  <term name="이름" description="" physicalName="Name" physicalDescription="Name"/>
+  <term name="회사" description="Company" physicalName="Comp" physicalDescription="Comp"/>
+  <term name="[사]" description="Company" physicalName="Comp" physicalDescription="Comp"/>
+  <term name="택배" physicalName="Delivery" physicalDescription="Delivery"/>
+  <term name="도메인" physicalName="Domain"/>
+  <term name="모바일" physicalName="Mobile"/>
+  <term name="아이콘" physicalName="Icon"/>
+  <term name="로고" physicalName="Logo"/>
+  <term name="타이틀" physicalName="Title"/>
+  <term name="HTML" physicalName="Html"/>
+  <term name="메타" physicalName="Meta"/>
+  <term name="캠퍼스" physicalName="Campus"/>
+  <term name="정보" physicalName="Info"/>
+  <term name="약관" physicalName="Terms"/>
+  <term name="히스토리" description="History" physicalName="Hist"/>
+  <term name="적용" physicalName="Apply"/>
+  <term name="시작" physicalName="Start"/>
+  <term name="종료" physicalName="End"/>
+  <term name="카테고리" description="Category" physicalName="Cate"/>
+  <term name="답변" physicalName="Reply"/>
+  <term name="게시판" physicalName="Board"/>
+  <term name="VOC" physicalName="Voc"/>
+  <term name="조회수" physicalName="ReadCnt"/>
+  <term name="댓글" physicalName="Comment"/>
+  <term name="HOT" physicalName="Hot"/>
+  <term name="댓글수" physicalName="CmtCnt"/>
+  <term name="질문" physicalName="Ask"/>
+  <term name="FAQ" physicalName="Faq"/>
+  <term name="BEST" physicalName="Best"/>
+  <term name="지역" physicalName="Area"/>
+  <term name="강좌" physicalName="Lec"/>
+  <term name="포인트" physicalName="Point"/>
+  <term name="도서" physicalName="Book"/>
+  <term name="상품" description="Product" physicalName="Prod" physicalDescription="Prod"/>
+  <term name="일시정지" physicalName="Pause"/>
+  <term name="연장" physicalName="Exten"/>
+  <term name="고객센터" description="Customer Service" physicalName="Cs"/>
+</tm:TermDictionary>

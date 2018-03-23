@@ -2,9 +2,6 @@
 
 @section('content')
     <h5>- 온라인 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
-
-    -------------------------------------------
-
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <ul class="nav nav-tabs mt-20 mb-10" role="tablist">

@@ -2,7 +2,7 @@
 
 @section('content')
     @include('lms.board.boardnav')
-    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다...</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">

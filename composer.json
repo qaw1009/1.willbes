@@ -11,7 +11,7 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.3.7",
+		"php": ">=7.1.12",
 		"eftec/bladeone": "^1.9",
 		"php-curl-class/php-curl-class": "^8.0"
 	},

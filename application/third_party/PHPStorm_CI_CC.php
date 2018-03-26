@@ -103,6 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SiteGroupModel $siteGroupModel                  Site Group Model Class
  * @property CategoryModel $categoryModel                   Category Model Class
  * @property BoardMasterModel $boardMasterModel          BoardMaster Model Class
+ * @property BoardModel $boardModel                      BoardModel Model Class
  */
 class PHPStorm_CI_CC
 {

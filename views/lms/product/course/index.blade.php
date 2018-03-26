@@ -3,12 +3,14 @@
 @section('content')
     <h5>- 강의 구성을 위한 기본 과정 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        <ul class="nav nav-tabs mt-20 mb-10" role="tablist">
-            <li role="presentation" class="active"><a href="#none" role="tab" data-toggle="tab"><strong>전체</strong></a></li>
-            <li role="presentation"><a href="#none" role="tab" data-toggle="tab"><strong>경찰</strong></a></li>
-            <li role="presentation"><a href="#none" role="tab" data-toggle="tab"><strong>공무원</strong></a></li>
-            <li role="presentation"><a href="#none" role="tab" data-toggle="tab"><strong>임용</strong></a></li>
+        <ul class="nav nav-tabs bar_tabs mt-30" role="tablist">
+            <li role="presentation" class="active"><a href="#none"><strong>전체</strong></a></li>
+            <li role="presentation"><a href="#none"><strong>경찰</strong></a></li>
+            <li role="presentation"><a href="#none"><strong>공무원</strong></a></li>
+            <li role="presentation"><a href="#none"><strong>임용</strong></a></li>
         </ul>
+        <div id="tabs_site_code1" class="tabs-site-codes" data-is-all-tab="1" data-tab-type="tab" data-tab-data="{'all':10,'2001':1,'2002':2,'2003':3,'2004':4}"></div>
+        <div id="tabs_site_code2" class="tabs-site-codes" data-is-all-tab="0" data-tab-type="self"></div>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

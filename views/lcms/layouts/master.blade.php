@@ -46,35 +46,7 @@
         <!-- /footer content -->
     </div>
 </div>
-<!-- Main Scripts -->
-<!-- multifield -->
-<script src="/public/vendor/validator/multifield.js"></script>
-<script src="/public/js/util.js"></script>
-<script src="/public/js/validation_util.js"></script>
-<script src="/public/js/lcms/app.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        // 즐겨찾기 버튼 클릭
-        $('#btn_favorite').on('click', function() {
-            var is_regist = $(this).children('i').prop('class').indexOf('red') < 0;
-            var msg = (is_regist === true) ? '즐겨찾기에 추가하시겠습니까?' : '즐겨찾기를 삭제하시겠습니까?';
-
-            if (!confirm(msg)) {
-                return;
-            }
-
-            var data = {
-                '{{ csrf_token_name() }}' : '{{ csrf_token() }}',
-                'menu_idx' : '{{ element('MenuIdx', $__menu['CURRENT']) }}'
-            };
-            sendAjax('{{ site_url('/sys/adminSettings/favorite') }}', data, function(ret) {
-                if (ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    location.reload();
-                }
-            }, showError, false, 'POST');
-        });
-    });
-</script>
+{{-- Main Scripts --}}
+@include('lcms.layouts.footer_script')
 </body>
 </html>

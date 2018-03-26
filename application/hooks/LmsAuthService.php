@@ -141,14 +141,16 @@ class LmsAuthService extends AdminAuthService
         $query = $this->_db->query('select ' . $colum . $from . $where . $order_by, ['605', $admin_idx, $admin_idx]);
         $list = $query->result_array();
 
-        foreach ($list as $row) {
-            $results[$row['SiteCode']]['SiteName'] = $row['SiteName'];
-            $results[$row['SiteCode']]['CampusCcds'] = [];
+        foreach ($list as $idx => $row) {
+            $results[$idx]['SiteCode'] = $row['SiteCode'];
+            $results[$idx]['SiteName'] = $row['SiteName'];
+            $results[$idx]['CampusCcds'] = [];
+
             if (empty($row['CampusCcds']) === false) {
                 $arr_campus_ccds = explode(',', $row['CampusCcds']);
                 foreach ($arr_campus_ccds as $campus_ccd) {
                     $arr_campus_ccd = explode('::', $campus_ccd);
-                    $results[$row['SiteCode']]['CampusCcds'][$arr_campus_ccd[0]] = $arr_campus_ccd[1];
+                    $results[$idx]['CampusCcds'][$arr_campus_ccd[0]] = $arr_campus_ccd[1];
                 }
             }
         }

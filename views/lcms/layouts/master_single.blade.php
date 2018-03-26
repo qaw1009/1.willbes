@@ -1,3 +1,4 @@
+{{-- 로그인 페이지와 같은 단독 레이아웃 --}}
 @include('lcms.layouts.header')
 
 <body class="single">
@@ -13,11 +14,7 @@
         <div class="clearfix"></div>
     </div>
 </div>
-<!-- Main Scripts -->
-<!-- multifield -->
-<script src="/public/vendor/validator/multifield.js"></script>
-<script src="/public/js/util.js"></script>
-<script src="/public/js/validation_util.js"></script>
-<script src="/public/js/lcms/app.js"></script>
+{{-- Main Scripts --}}
+@include('lcms.layouts.footer_script')
 </body>
 </html>

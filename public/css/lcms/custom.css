@@ -89,11 +89,6 @@ body.no_sidebar {
     padding-top: 15px;
 }
 
-/* tabs */
-#search_form .nav-tabs li a {
-    padding: 10px 17px;
-}
-
 /* bar_tabs */
 ul.bar_tabs > li a {
     background: #fff !important;
@@ -107,6 +102,11 @@ ul.bar_tabs > li a:focus {
 }
 ul.bar_tabs > li.active {
     border-top: 1px solid #e6e9ed;
+    margin-top: -17px;
+}
+ul.bar_tabs > li.active a {
+    padding-top : 11px !important;
+    padding-bottom : 11px !important;
 }
 ul.bar_tabs > li.active a, ul.bar_tabs > li.active a:focus, ul.bar_tabs > li.active a:hover {
     border: 1px solid transparent;

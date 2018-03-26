@@ -16,6 +16,5 @@
 
 @yield('layer_footer')
 
-<!-- multifield -->
-<script src="/public/vendor/validator/multifield.js"></script>
-<script src="/public/js/lcms/app.js"></script>
+{{-- Main Scripts --}}
+@include('lcms.layouts.footer_script')

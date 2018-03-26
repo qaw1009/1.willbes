@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class ProfessorNotice extends BaseBoard
+class ProfessorMaterial extends BaseBoard
 {
-    private $boardName = 'professorNotice';
-    private $bmIdx = 33;
+    private $boardName = 'professorMaterial';
+    private $bmIdx = 39;
     private $subMenu;
     private $campusOnOff = 'off';   //캠퍼스노출상태값
 
@@ -21,8 +21,8 @@ class ProfessorNotice extends BaseBoard
     }
 
     /**
-     * 강사게시판 - 메인 공지사항
-    */
+     * 강사게시판 - 메인 학습자료실
+     */
     public function mainList()
     {
         $this->setDefaultBoardParam();
@@ -44,7 +44,7 @@ class ProfessorNotice extends BaseBoard
     }
 
     /**
-     * 강사게시판 - 강사별 공지사항
+     * 강사게시판 - 강사별 학습자료실
      * @param array $params
      */
     public function detailList($params = [])
@@ -68,7 +68,7 @@ class ProfessorNotice extends BaseBoard
     }
 
     /**
-     * 강사게시판 - 강사별 공지사항 등록/수정 폼
+     * 강사게시판 - 강사별 학습자료실 등록/수정 폼
      * @param array $params
      */
     public function createDetail($params = [])
@@ -90,6 +90,7 @@ class ProfessorNotice extends BaseBoard
             'getSiteArray' => $getSiteArray,
             'campusOnOff' => $this->campusOnOff,
             'method' => $method,
+            'boardDefaultQueryString' => '&bm_idx='.$this->bmIdx,
             'data' => $data,
             'bn_idx' => $bnidx,
             //'attach_img_cnt' => $this->professorModel->_attach_img_cnt
@@ -98,24 +99,25 @@ class ProfessorNotice extends BaseBoard
     }
 
     /**
-     * 강사게시판 - 강사별 공지사항 뷰 페이지
+     * 단강좌정보
      */
-    public function readDetail($params = [])
+    public function lecListModal()
     {
-        $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-
-        //캠퍼스리스트
-        if ($this->subMenu == 'offline') {
-            $this->campusOnOff = 'on';
-        }
-
+        $method = 'POST';
         $data = null;
-        $this->load->view("board/{$this->boardName}/read_detail",[
+
+        $this->load->view("board/{$this->boardName}/lecList_modal",[
             'boardName' => $this->boardName,
-            'campusOnOff' => $this->campusOnOff,
+            'method' => $method,
             'data' => $data
         ]);
+    }
+
+    /**
+     * 단강좌정보
+     */
+    public function lecListAjax()
+    {
+
     }
 }

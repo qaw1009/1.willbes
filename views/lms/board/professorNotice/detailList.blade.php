@@ -116,7 +116,7 @@
                             location.href = '{{ site_url('/board/notice/create') }}' + dtParamsToQueryString($datatable);
                         }},
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/{$boardName}/create_detail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                            location.href = '{{ site_url("/board/{$boardName}/createDetail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
                 ],
                 ajax: {
@@ -147,7 +147,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/create_detail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url("/board/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
     </script>

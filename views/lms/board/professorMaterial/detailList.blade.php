@@ -2,34 +2,35 @@
 
 @section('content')
     @include('lms.board.boardnav')
-    <h5>- 고객센터 FAQ 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 교수 학습자료실 게시판을 관리하는 메뉴입니다.</h5>
+    <h6>- 경찰 > 신광은 교수 학습자료실</h6>
+    <div class="ln_solid"></div>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="">FAQ 조건</label>
-                    <div class="col-md-11 form-control-static">
-                        @foreach($faqGroupTypeCcd as $key => $val)
-                            <span class="mr-10">{{$val}} (5)</span>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-1" for="">조건</label>
+                    <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="" name="">
-                            <option value="">FAQ 분류</option>
-                        </select>
-
-                        <select class="form-control" id="" name="">
-                            <option value="">BEST 여부</option>
+                        <select class="form-control" id="search_is_use" name="search_is_use">
+                            <option value="">구분</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_is_use" name="search_is_use">
+                            <option value="">분류</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
+
+                        <select class="form-control" id="search_is_use" name="search_is_use">
+                            <option value="">과목</option>
+                            <option value="Y">국어</option>
+                            <option value="N">영어</option>
+                        </select>
+
+                        <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -39,7 +40,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">제목/내용</label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <label class="control-label col-md-1" for="search_start_date">등록일</label>
@@ -61,11 +62,12 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-xs-10 text-center form-inline">
+                <div class="col-xs-12 text-right form-inline">
+                    <div class="checkbox">
+                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                </div>
-                <div class="col-xs-2">
-                    <button class="btn btn-default" type="button">검색초기화</button>
+                    <button class="btn btn-default ml-30 mr-30" type="button">검색초기화</button>
                 </div>
             </div>
         </div>
@@ -76,16 +78,16 @@
                 <thead>
                 <tr>
                     <th>NO</th>
-                    <th>정렬</th>
                     <th>사이트</th>
                     <th>구분</th>
-                    <th>FAQ구분</th>
                     <th>분류</th>
-                    <th width="20%">제목</th>
+                    <th>과목</th>
+                    <th>유형</th>
+                    <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>BEST</th>
+                    <th>HOT</th>
                     <th>사용</th>
                     <th>조회수</th>
                     <th>수정</th>
@@ -106,14 +108,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-thumbs-o-up mr-10"></i> BEST적용', className: 'btn-sm btn-danger border-radius-reset mr-15', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/board/notice/create') }}' + dtParamsToQueryString($datatable);
-                        }},
-
-                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-regist-orderby' },
-
-                    { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                    { text: '<i class="fa fa-pencil mr-10"></i> 공지등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                            location.href = '{{ site_url("/board/{$boardName}/createDetail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
                 ],
                 ajax: {
@@ -144,17 +140,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
-            });
-
-
-            $('.btn-regist-orderby').click(function() {
-                var uri_param = '{!! $boardDefaultQueryString !!}';
-
-                $('.btn-regist-orderby').setLayer({
-                    "url" : "{{ site_url('board/faq/createOrderByModal?') }}"+ uri_param
-                    ,width : "650"
-                });
+                location.replace('{{ site_url("/board/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
     </script>

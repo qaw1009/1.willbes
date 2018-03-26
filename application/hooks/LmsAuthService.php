@@ -91,6 +91,9 @@ class LmsAuthService extends AdminAuthService
      */
     public function getAdminRole()
     {
+        $results = [];
+
+        // 권한유형 조회
         $colum = 'R.RoleIdx, R.RoleName';
         $from = '
             from lms_sys_admin_role as R inner join lms_sys_admin_r_admin_role as AR
@@ -102,8 +105,55 @@ class LmsAuthService extends AdminAuthService
 
         // 쿼리 실행
         $query = $this->_db->query('select ' . $colum . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
+        $results['Role'] = $query->row_array();
 
-        return $query->row_array();
+        // 사이트, 캠퍼스 권한 조회
+        $results['Site'] = $this->_getAdminSiteCampus();
+
+        return $results;
+    }
+
+    /**
+     * 관리자별 사이트, 캠퍼스 권한 조회
+     * @return array
+     */
+    private function _getAdminSiteCampus()
+    {
+        $results = [];
+        $admin_idx = $this->_CI->session->userdata('admin_idx');
+
+        $colum = 'S.SiteCode, S.SiteName, ifnull(GROUP_CONCAT(distinct ASC2.CampusCcd, "::", C.CcdName order by ASC2.CampusCcd asc separator ","), "") as CampusCcds';
+        $from = '
+            from lms_site as S
+                inner join lms_sys_admin_r_site_campus as ASC1
+                    on S.SiteCode = ASC1.SiteCode and ASC1.IsStatus = "Y"
+                left join lms_site_r_campus as SC
+                    on S.SiteCode = SC.SiteCode and SC.IsStatus = "Y"
+                inner join lms_sys_admin_r_site_campus as ASC2
+                    on S.SiteCode = ASC2.SiteCode and (ASC2.CampusCcd = "0" or SC.CampusCcd = ASC2.CampusCcd) and ASC2.IsStatus = "Y"
+                left join lms_sys_code as C 
+                    on ASC2.CampusCcd = C.Ccd and C.GroupCcd = ? and C.IsUse = "Y" and C.IsStatus = "Y"            
+        ';
+        $where = ' where S.IsUse = "Y" and S.IsStatus = "Y" and ASC1.wAdminIdx = ? and ASC2.wAdminIdx = ?';
+        $order_by = ' group by S.SiteCode order by S.SiteCode';
+
+        // 쿼리 실행
+        $query = $this->_db->query('select ' . $colum . $from . $where . $order_by, ['605', $admin_idx, $admin_idx]);
+        $list = $query->result_array();
+
+        foreach ($list as $row) {
+            $results[$row['SiteCode']]['SiteName'] = $row['SiteName'];
+            $results[$row['SiteCode']]['CampusCcds'] = [];
+            if (empty($row['CampusCcds']) === false) {
+                $arr_campus_ccds = explode(',', $row['CampusCcds']);
+                foreach ($arr_campus_ccds as $campus_ccd) {
+                    $arr_campus_ccd = explode('::', $campus_ccd);
+                    $results[$row['SiteCode']]['CampusCcds'][$arr_campus_ccd[0]] = $arr_campus_ccd[1];
+                }
+            }
+        }
+
+        return $results;
     }
 
     /**
@@ -124,9 +174,6 @@ class LmsAuthService extends AdminAuthService
             if ($this->_db->insert('lms_sys_admin_login_log') === false) {
                 throw new \Exception('관리자 LCMS 전환 로그인 로그 등록에 실패했습니다.');
             }
-
-            // 접속 사이트 세션 갱신
-            $this->setSessionAdminConnSites();
         } catch (\Exception $e) {
             log_message('error', $e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage());
         }

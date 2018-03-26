@@ -74,7 +74,7 @@ abstract class AdminAuthService
                         return [
                             'MenuIdx' => $row['MenuIdx'],
                             'GroupMenuIdx' => $row['GroupMenuIdx'],
-                            'UrlRouteName' => $this->toHtmlUrlRouteName($row['UrlRouteName']),
+                            'UrlRouteName' => $this->_toHtmlUrlRouteName($row['UrlRouteName']),
                         ];
                     }
                 }
@@ -127,11 +127,35 @@ abstract class AdminAuthService
     }
 
     /**
+     * 운영자 권한 세션 설정
+     * @param array $auth_data
+     */
+    public function setSessionAdminAuthData($auth_data = [])
+    {
+        $sess_admin_auth = $this->_CI->session->userdata('admin_auth_data');
+
+        if (empty($sess_admin_auth) === true || serialize($sess_admin_auth) != serialize($auth_data)) {
+            $this->_CI->session->set_userdata('admin_auth_data', $auth_data);
+        }
+    }
+
+    /**
+     * LCMS 접근 사이트 서브 도메인 세션 설정
+     */
+    public function setSessionAdminConnSites()
+    {
+        $sess_admin_conn_sites = $this->_CI->session->userdata('admin_conn_sites');
+
+        array_push($sess_admin_conn_sites, SUB_DOMAIN);
+        $this->_CI->session->set_userdata('admin_conn_sites', $sess_admin_conn_sites);
+    }
+
+    /**
      * URL 경로를 HTML 형태로 변환
      * @param $url_route_name
      * @return string
      */
-    protected function toHtmlUrlRouteName($url_route_name)
+    private function _toHtmlUrlRouteName($url_route_name)
     {
         $pos = strrpos($url_route_name, '>');
 
@@ -143,17 +167,5 @@ abstract class AdminAuthService
         }
 
         return $html;
-    }
-
-    /**
-     * LCMS 접속 사이트 세션 설정
-     * @return void
-     */
-    protected function setSessionAdminConnSites()
-    {
-        $sess_admin_conn_sites = $this->_CI->session->userdata('admin_conn_sites');
-
-        array_push($sess_admin_conn_sites, SUB_DOMAIN);
-        $this->_CI->session->set_userdata('admin_conn_sites', $sess_admin_conn_sites);
     }
 }

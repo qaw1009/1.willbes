@@ -127,6 +127,19 @@ if (!function_exists('get_var')) {
     }
 }
 
+if (!function_exists('get_app_var')) {
+    /**
+     * 어플리케이션에 설정된 변수 리턴
+     * @param $key
+     * @return mixed
+     */
+    function get_app_var($key)
+    {
+        $_CI =& get_instance();
+        return $_CI->load->get_var('__' . $key);
+    }
+}
+
 if (!function_exists('logger')) {
     /**
      * log message

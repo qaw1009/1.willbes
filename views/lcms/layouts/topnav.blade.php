@@ -16,7 +16,7 @@
                     <div class="pull-left mr-20 mt-5">
                         {{ date('Y.m.d') }}
                         <span class="block ml-5 mr-5">|</span>
-                        <a href="#" class="btn-admin-modify">{{ sess_data('admin_name') }} <span class="blue">[{{ $__roles['RoleName'] }}]</span></a>
+                        <a href="#" class="btn-admin-modify">{{ sess_data('admin_name') }} <span class="blue">[{{ $__auth['Role']['RoleName'] }}]</span></a>
                     </div>
                     <div class="pull-left mr-15 mt-5">
                         <ul class="nav nav-pills" role="tablist">

@@ -92,6 +92,8 @@ class WbsAuthService extends AdminAuthService
      */
     public function getAdminRole()
     {
+        $results = [];
+
         $colum = 'A.wRoleIdx as RoleIdx, R.wRoleName as RoleName';
         $from = '
             from wbs_sys_admin_role as R inner join wbs_sys_admin as A
@@ -101,8 +103,9 @@ class WbsAuthService extends AdminAuthService
 
         // 쿼리 실행
         $query = $this->_db->query('select ' . $colum . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
+        $results['Role'] = $query->row_array();
 
-        return $query->row_array();
+        return $results;
     }
 
     /**
@@ -123,9 +126,6 @@ class WbsAuthService extends AdminAuthService
             if ($this->_db->insert('wbs_sys_admin_login_log') === false) {
                 throw new \Exception('관리자 LCMS 전환 로그인 로그 등록에 실패했습니다.');
             }
-
-            // 접속 사이트 세션 갱신
-            $this->setSessionAdminConnSites();
         } catch (\Exception $e) {
             log_message('error', $e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage());
         }

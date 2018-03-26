@@ -46,17 +46,20 @@ class AdminAuthHook
             require_once $class_name . '.php';
             $adminAuthService = new $class_name();
 
-            // 관리자별 권한유형 정보 조회
+            // 1. 관리자별 권한유형 정보 조회
             $role = $adminAuthService->getAdminRole();
             if (is_null($role) === true) {
                 show_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED, '운영자 권한 없음');
             }
 
-            // 관리자 권한유형 정보 설정
-            $vars['__roles'] = $role;
+            // 관리자 권한 정보 설정
+            $vars['__auth'] = $role;
 
-            // 권한유형별 메뉴 트리 조회
-            $menus = $adminAuthService->getAuthMenu($role['RoleIdx']);
+            // 관리자 권한 세션 설정
+            $adminAuthService->setSessionAdminAuthData($vars['__auth']);
+
+            // 2. 권한유형별 메뉴 트리 조회
+            $menus = $adminAuthService->getAuthMenu($role['Role']['RoleIdx']);
 
             // 메뉴권한 체크 제외 URI 체크
             $currents = [];
@@ -69,7 +72,7 @@ class AdminAuthHook
                 show_error('메뉴 권한이 없습니다.', _HTTP_NO_PERMISSION, '메뉴 권한 없음');
             }
 
-            // 관리자별 환경설정 정보 조회
+            // 3. 관리자별 환경설정 정보 조회
             $vars['__settings'] = $adminAuthService->getAdminSettings($menus);
 
             // 뷰 페이지로 전달할 메뉴 데이터 생성
@@ -81,13 +84,16 @@ class AdminAuthHook
                 $vars['__menu']['CURRENT']['IsFavorite'] = is_null(element($vars['__menu']['CURRENT']['MenuIdx'], $vars['__settings']['favorite'])) !== true;
             }
 
-            // 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장
-            $this->_CI->load->vars($vars);
-
-            // LCMS 전환 로그인 로그 저장
+            // 4. LCMS 전환 로그인 로그 저장
             if (in_array(SUB_DOMAIN, $this->_CI->session->userdata('admin_conn_sites')) === false) {
                 $adminAuthService->setTransLogin();
+
+                // 현재 접속한 사이트 서브 도메인 세션 설정
+                $adminAuthService->setSessionAdminConnSites();
             }
+
+            // 5. 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장
+            $this->_CI->load->vars($vars);
         }
     }
 }

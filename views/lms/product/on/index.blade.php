@@ -166,11 +166,11 @@
 
                 buttons: [
 
-                    { text: '<i class="fa fa-thumbs-up mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder',action : function(e, dt, node, config) {
+                    { text: '<i class="fa fa-thumbs-o-up mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('/cms/lecture/create') }}';
                         }
                     }
-                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 강의복사', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-reorder',action : function(e, dt, node, config) {
+                    ,{ text: '<i class="fa fa-copy mr-5"></i> 강의복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('/') }}';
                         }
                     }

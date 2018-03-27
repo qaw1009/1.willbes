@@ -42,11 +42,13 @@ Class Lecture extends \app\controllers\BaseController
     {
         $method = 'POST';
         $lecidx = '';
+        $data = null;
 
 
         $this->load->view('product/on/create',[
             'method'=>$method
             ,'lecidx'=>$lecidx
+            ,'data'=>$data
         ]);
     }
 

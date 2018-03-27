@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseBoard extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site');
+    protected $models = array('sys/code', 'sys/site', 'sys/category');
     protected $helpers = array();
     protected $boardDefaultParams = [];      //게시판 필수 기본 정보
 
@@ -40,21 +40,32 @@ class BaseBoard extends \app\controllers\BaseController
 
     /**
      * 권한유형별 캠퍼스 목록 조회
+     * @param $site_code
+     * @return array
      */
-    protected function _getCampusArray()
+    protected function _getCampusArray($site_code)
     {
-        return $list = [
-            '1' => '노량진',
-            '2' => '신림',
-        ];
+        return $this->siteModel->getSiteCampusArray($site_code);
     }
 
     /**
      * 권한유형별 운영사이트 목록 조회
      * @return array
      */
-    protected function _getSiteArray()
+    protected function _getSiteArray($column)
     {
-        return $this->siteModel->getSiteArray();
+        //return $this->siteModel->getSiteArray();
+        return $this->siteModel->listSite($column);
+    }
+
+    /**
+     * 카테고리 조회
+     * @param $site_code
+     * @param int $parent_cate_code
+     * @return array
+     */
+    protected function _getCategoryArray($site_code, $parent_cate_code = 0)
+    {
+        return $this->categoryModel->getCategoryArray($site_code, $parent_cate_code);
     }
 }

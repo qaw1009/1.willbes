@@ -461,7 +461,7 @@ function getSiteTabsHtml(tab_type, is_all_tab, tab_data) {
     if (is_all_tab == '1') {
         tab_active = typeof $qs.site_code === 'undefined' || $qs.site_code === '' ? 'active' : '';
         tab_txt = typeof tab_data.all === 'undefined' ? '' : ' <span class="red">(' + tab_data.all + ')</span>';
-        tab_html += '<li role="presentation" class="' + tab_active + '"><a href="' + tab_base_url + '" ' + tab_attr + '><strong>전체</strong>' + tab_txt + '</a></li>\n';
+        tab_html += '<li role="presentation" class="' + tab_active + '"><a href="' + tab_base_url + '" ' + tab_attr + ' data-site-code=""><strong>전체</strong>' + tab_txt + '</a></li>\n';
     }
 
     $.each($json, function(site_code, site_name) {

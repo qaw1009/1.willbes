@@ -41,7 +41,12 @@ class SiteModel extends WB_Model
         
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
-            $arr_condition['IN'] = ['SiteCode' => array_pluck($this->session->userdata('admin_auth_data')['Site'], 'SiteCode')];
+            $sess_admin_auth_sites = $this->session->userdata('admin_auth_data')['Site'];
+            if (empty($sess_admin_auth_sites) === false) {
+                $arr_condition['IN'] = ['SiteCode' => array_pluck($sess_admin_auth_sites, 'SiteCode')];
+            } else {
+                $arr_condition['EQ']['1'] = 2;
+            }
         }
 
         $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', $arr_condition, null, null, [
@@ -63,7 +68,12 @@ class SiteModel extends WB_Model
 
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
-            $arr_condition['IN'] = ['SC.CampusCcd' => array_keys($this->session->userdata('admin_auth_data')['Site'][$site_code]['CampusCcds'])];
+            $sess_admin_auth_sites = $this->session->userdata('admin_auth_data')['Site'];
+            if (empty($sess_admin_auth_sites) === false) {
+                $arr_condition['IN'] = ['SC.CampusCcd' => array_keys($sess_admin_auth_sites[$site_code]['CampusCcds'])];
+            } else {
+                $arr_condition['EQ']['1'] = 2;
+            }
         }
 
         $data = $this->_conn->getJoinListResult('lms_site_r_campus as SC', 'inner', 'lms_sys_code as C', 'SC.CampusCcd = C.Ccd'

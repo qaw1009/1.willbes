@@ -29,7 +29,7 @@ class SiteCode
         $pg_ccds = $this->_CI->codeModel->getCcd($this->_ccd['Pg']);
         
         // 사이트 목록 조회
-        $list = $this->_CI->siteModel->listSite([], null, null, ['S.SiteCode' => 'asc']);
+        $list = $this->_CI->siteModel->listSiteAll([], null, null, ['S.SiteCode' => 'asc']);
 
         // PG사명 추가
         $list = array_map(function ($row) use ($pg_ccds) {

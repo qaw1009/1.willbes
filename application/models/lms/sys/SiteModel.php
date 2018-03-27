@@ -15,13 +15,29 @@ class SiteModel extends WB_Model
 
     /**
      * 사이트 목록 조회
+     * @param $colum
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return array|int
      */
-    public function listSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSite($colum, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+    }
+
+    /**
+     * 사이트 관리 목록 조회
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function listSiteAll($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
         $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
@@ -41,7 +57,7 @@ class SiteModel extends WB_Model
         
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
-            $sess_admin_auth_sites = $this->session->userdata('admin_auth_data')['Site'];
+            $sess_admin_auth_sites = element('Site', $this->session->userdata('admin_auth_data'));
             if (empty($sess_admin_auth_sites) === false) {
                 $arr_condition['IN'] = ['SiteCode' => array_pluck($sess_admin_auth_sites, 'SiteCode')];
             } else {
@@ -68,7 +84,7 @@ class SiteModel extends WB_Model
 
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
-            $sess_admin_auth_sites = $this->session->userdata('admin_auth_data')['Site'];
+            $sess_admin_auth_sites = element('Site', $this->session->userdata('admin_auth_data'));
             if (empty($sess_admin_auth_sites) === false) {
                 $arr_condition['IN'] = ['SC.CampusCcd' => array_keys($sess_admin_auth_sites[$site_code]['CampusCcds'])];
             } else {

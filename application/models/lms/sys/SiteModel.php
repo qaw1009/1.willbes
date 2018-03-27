@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SiteModel extends WB_Model
 {
     private $_table = 'lms_site';
+    private $_ccd = [
+        'Campus' => '605',
+    ];
 
     public function __construct()
     {
@@ -29,17 +32,45 @@ class SiteModel extends WB_Model
 
     /**
      * 사이트 코드 목록 조회
+     * @param bool $is_auth
      * @return array
      */
-    public function getSiteArray()
+    public function getSiteArray($is_auth = true)
     {
-        $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', [
-            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
+        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        
+        // 운영자 사이트 권한 체크
+        if ($is_auth === true) {
+            $arr_condition['IN'] = ['SiteCode' => array_pluck($this->session->userdata('admin_auth_data')['Site'], 'SiteCode')];
+        }
+
+        $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', $arr_condition, null, null, [
             'SiteCode' => 'asc'
         ]);
 
         return array_pluck($data, 'SiteName', 'SiteCode');
+    }
+
+    /**
+     * 사이트 코드별 캠퍼스 코드 목록 조회
+     * @param $site_code
+     * @param bool $is_auth
+     * @return array
+     */
+    public function getSiteCampusArray($site_code, $is_auth = true)
+    {
+        $arr_condition = ['EQ' => ['SC.SiteCode' => $site_code, 'SC.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['Campus'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']];
+
+        // 운영자 사이트 권한 체크
+        if ($is_auth === true) {
+            $arr_condition['IN'] = ['SC.CampusCcd' => array_keys($this->session->userdata('admin_auth_data')['Site'][$site_code]['CampusCcds'])];
+        }
+
+        $data = $this->_conn->getJoinListResult('lms_site_r_campus as SC', 'inner', 'lms_sys_code as C', 'SC.CampusCcd = C.Ccd'
+            , 'SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
+        );
+
+        return array_pluck($data, 'CampusName', 'CampusCcd');
     }
 
     /**

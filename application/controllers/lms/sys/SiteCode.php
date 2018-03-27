@@ -29,7 +29,7 @@ class SiteCode
 
         $this->_CI->load->view('sys/site/index', [
             'data' => $list,
-            'site_codes' => $this->_CI->siteModel->getSiteArray(),
+            'site_codes' => $this->_CI->siteModel->getSiteArray(false),
         ]);
     }
 

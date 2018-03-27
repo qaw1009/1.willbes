@@ -118,8 +118,8 @@ if (!function_exists('get_var')) {
     /**
      * 변수값이 빈값일 경우 default 값 리턴
      * @param $var
-     * @param string $default
-     * @return string
+     * @param $default
+     * @return mixed
      */
     function get_var($var, $default = '')
     {

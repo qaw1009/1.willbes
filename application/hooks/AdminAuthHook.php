@@ -32,6 +32,9 @@ class AdminAuthHook
      */
     public function authenticate()
     {
+        // CI 전역변수 초기화
+        $vars = ['__auth' => [], '__settings' => [], '__menu' => []];
+
         if (empty(uri_string()) === false && starts_with('/' . uri_string(), $this->excepts) === false) {
             if ($this->_CI->session->userdata('is_admin_login') !== true) {
                 show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
@@ -91,9 +94,9 @@ class AdminAuthHook
                 // 현재 접속한 사이트 서브 도메인 세션 설정
                 $adminAuthService->setSessionAdminConnSites();
             }
-
-            // 5. 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장
-            $this->_CI->load->vars($vars);
         }
+
+        // 5. 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장
+        $this->_CI->load->vars($vars);
     }
 }

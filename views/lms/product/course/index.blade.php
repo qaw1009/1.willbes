@@ -9,8 +9,8 @@
             <li role="presentation"><a href="#none"><strong>공무원</strong></a></li>
             <li role="presentation"><a href="#none"><strong>임용</strong></a></li>
         </ul>
-        <div id="tabs_site_code1" class="tabs-site-codes" data-is-all-tab="1" data-tab-type="tab" data-tab-data="{'all':10,'2001':1,'2002':2,'2003':3,'2004':4}"></div>
-        <div id="tabs_site_code2" class="tabs-site-codes" data-is-all-tab="0" data-tab-type="self"></div>
+        <div id="tabs_site_code1" class="tabs-site-codes" data-is-all-tab="1" data-tab-type="tab" data-tab-data=""></div>
+        <div id="tabs_site_code2" class="tabs-site-codes" data-is-all-tab="1" data-tab-type="self" data-tab-data=""></div>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

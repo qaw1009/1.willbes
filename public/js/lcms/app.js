@@ -388,6 +388,32 @@ function init_base() {
     $('.btn-cog').setLayer({
         "url" : "/sys/adminSettings/create"
     });
+
+    // 즐겨찾기 버튼 클릭
+    $('#btn_favorite').on('click', function() {
+        var is_regist = $(this).children('i').prop('class').indexOf('red') < 0;
+        var msg = (is_regist === true) ? '즐겨찾기에 추가하시겠습니까?' : '즐겨찾기를 삭제하시겠습니까?';
+
+        if (!confirm(msg)) return;
+
+        var data = {};
+        data[$__csrf_token_name] = $__csrf_token;
+        data['menu_idx'] = $__menu_current_idx;
+        sendAjax('/sys/adminSettings/favorite', data, function(ret) {
+            if (ret.ret_cd) {
+                notifyAlert('success', '알림', ret.ret_msg);
+                location.reload();
+            }
+        }, showError, false, 'POST');
+    });
+
+    // LMS 사이트 탭 HTML 설정
+    $tab_site_codes = $('.tabs-site-codes');
+    if ($tab_site_codes.length > 0) {
+        $tab_site_codes.each(function(idx, ele) {
+            $('#' + ele.id).html(getSiteTabsHtml($(this).data('tab-type'), $(this).data('is-all-tab'), $(this).data('tab-data')));
+        });
+    }
 }
 
 /**
@@ -405,3 +431,49 @@ $(document).ready(function() {
     init_datatable();
     init_base();
 });
+
+/**
+ * 사이트 탭 HTML 리턴
+ * param {string} tab_type [탭 구분, tab|self]
+ * param {string} is_all_tab [전체 탭 존재 여부, 1|0]
+ * param {JSON} tab_data [탭 이름 우측 노출 데이터, { all : value, site_code : value ... }]
+ * returns {string} HTML
+ */
+function getSiteTabsHtml(tab_type, is_all_tab, tab_data) {
+    var $json = $__site_codes;
+    var $qs = queryStringToJson();
+
+    var tab_attr, tab_txt, tab_active, tab_base_url = '#none';
+    tab_data = typeof tab_data === 'undefined' ? {} : JSON.parse(JSON.stringify(tab_data));
+
+    if (tab_type !== 'tab') {
+        tab_base_url = location.search.replace(/[\&|\?]site_code=(.)*/gi, '');
+        if (tab_base_url.indexOf('?') === -1) {
+            tab_base_url = './?site_code=';
+        } else {
+            tab_base_url = './' + tab_base_url + '&site_code=';
+        }
+    } else {
+        tab_attr = 'role="tab" data-toggle="tab"';
+    }
+
+    var tab_html = '<ul class="nav nav-tabs bar_tabs mt-30" role="tablist">\n';
+    if (is_all_tab == '1') {
+        tab_active = typeof $qs.site_code === 'undefined' || $qs.site_code === '' ? 'active' : '';
+        tab_txt = typeof tab_data.all === 'undefined' ? '' : ' <span class="red">(' + tab_data.all + ')</span>';
+        tab_html += '<li role="presentation" class="' + tab_active + '"><a href="' + tab_base_url + '" ' + tab_attr + '><strong>전체</strong>' + tab_txt + '</a></li>\n';
+    }
+
+    $.each($json, function(site_code, site_name) {
+        var tab_url = tab_base_url;
+        if (tab_type !== 'tab') {
+            tab_url = tab_base_url + site_code;
+        }
+        tab_active = ($qs.site_code === site_code) ? 'active' : '';
+        tab_txt = typeof tab_data[site_code] === 'undefined' ? '' : ' <span class="red">(' + tab_data[site_code] + ')</span>';
+
+        tab_html += '<li role="presentation" class="' + tab_active + '"><a href="' + tab_url + '" ' + tab_attr + ' data-site-code="' + site_code + '"><strong>' + site_name + '</strong>' + tab_txt + '</a></li>\n';
+    });
+
+    return tab_html + '</ul>\n';
+}

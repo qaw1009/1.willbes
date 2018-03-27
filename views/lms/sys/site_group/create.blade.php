@@ -39,6 +39,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="site_group_desc">설명</span>
+                    </label>
+                    <div class="col-md-7 item">
+                        <textarea id="site_group_desc" name="site_group_desc" class="form-control" rows="3" title="설명" placeholder="">{{ $data['SiteGroupDesc'] }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
                     <div class="col-md-3">

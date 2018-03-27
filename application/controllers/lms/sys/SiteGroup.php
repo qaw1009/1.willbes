@@ -20,6 +20,12 @@ class SiteGroup
     {
         $list = $this->_CI->siteGroupModel->listSiteGroup([], null, null, ['S.SiteGroupCode' => 'asc']);
 
+        // 사이트 그룹 설명 문자열 자르기 데이터 추가
+        $list = array_map(function ($row) {
+            $row['SiteGroupShortDesc'] = ellipsize(str_replace(PHP_EOL, '', $row['SiteGroupDesc']), 30);
+            return $row;
+        }, $list);
+
         $this->_CI->load->view('sys/site_group/index', [
             'data' => $list
         ]);

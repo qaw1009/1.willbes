@@ -25,11 +25,20 @@ class SiteCode
      */
     public function index()
     {
+        // PG 공통코드 조회
+        $pg_ccds = $this->_CI->codeModel->getCcd($this->_ccd['Pg']);
+        
+        // 사이트 목록 조회
         $list = $this->_CI->siteModel->listSite([], null, null, ['S.SiteCode' => 'asc']);
 
+        // PG사명 추가
+        $list = array_map(function ($row) use ($pg_ccds) {
+            $row['PgName'] = $pg_ccds[$row['PgCcd']];
+            return $row;
+        }, $list);
+
         $this->_CI->load->view('sys/site/index', [
-            'data' => $list,
-            'site_codes' => $this->_CI->siteModel->getSiteArray(false),
+            'data' => $list
         ]);
     }
 
@@ -88,14 +97,14 @@ class SiteCode
             ['field' => 'is_campus', 'label' => '캠퍼스 구분', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'campus_ccd[]', 'label' => '캠퍼스', 'rules' => 'callback_validateRequiredIf[is_campus,Y]'],
             ['field' => 'site_group_code', 'label' => '사이트 그룹정보', 'rules' => 'trim|required'],
+            ['field' => 'site_url', 'label' => '대표 도메인', 'rules' => 'trim|required'],
+            ['field' => 'use_domain', 'label' => '접속 도메인', 'rules' => 'trim|required'],
             ['field' => 'pg_ccd', 'label' => 'PG사', 'rules' => 'trim|required'],
             ['field' => 'pay_method_ccd[]', 'label' => '결제수단', 'rules' => 'trim|required'],
             ['field' => 'delivery_price', 'label' => '배송료', 'rules' => 'trim|required|numeric'],
             ['field' => 'delivery_add_price', 'label' => '추가 배송료', 'rules' => 'trim|required|numeric'],
             ['field' => 'delivery_free_price', 'label' => '무료 배송조건', 'rules' => 'trim|required|numeric'],
             ['field' => 'delivery_comp_ccd', 'label' => '택배사', 'rules' => 'trim|required'],
-            ['field' => 'site_url', 'label' => '대표 도메인', 'rules' => 'trim|required'],
-            ['field' => 'use_domain', 'label' => '접속 도메인', 'rules' => 'trim|required'],
         ];
 
         if (empty($this->_CI->_reqP('idx')) === false) {

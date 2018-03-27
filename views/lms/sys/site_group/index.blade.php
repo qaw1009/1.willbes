@@ -36,6 +36,7 @@
                     <th>No</th>
                     <th class="searching">사이트그룹코드</th>
                     <th class="searching">사이트그룹명</th>
+                    <th>설명</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -47,6 +48,7 @@
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['SiteGroupCode'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['SiteGroupCode'] }}"><u class="blue">{{ $row['SiteGroupName'] }}</u></a></td>
+                        <td>{{ $row['SiteGroupDesc'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>

@@ -49,9 +49,10 @@
                     <th>No</th>
                     <th class="searching">사이트 코드</th>
                     <th class="searching">사이트명</th>
-                    <th>사이트 그룹정보</th>
-                    <th>대표 도메인</th>
                     <th class="searching_is_campus">캠퍼스 구분</th>
+                    <th>대표 도메인</th>
+                    <th>사이트 그룹정보</th>
+                    <th>PG사</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -63,9 +64,10 @@
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['SiteCode'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['SiteCode'] }}"><u class="blue">{{ $row['SiteName'] }}</u></a></td>
-                        <td>{{ $row['SiteGroupName'] }}</td>
-                        <td>{{ $row['SiteUrl'] }}</td>
                         <td>@if($row['IsCampus'] == 'Y') 있음 @elseif($row['IsCampus'] == 'N') <span class="red">없음</span> @endif<span class="hide">{{ $row['IsCampus'] }}</span></td>
+                        <td>{{ $row['SiteUrl'] }}</td>
+                        <td>{{ $row['SiteGroupName'] }}</td>
+                        <td>{{ $row['PgName'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif<span class="hide">{{ $row['IsUse'] }}</span></td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>

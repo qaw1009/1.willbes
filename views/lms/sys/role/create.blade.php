@@ -29,13 +29,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="role_desc">설명</span>
-                    </label>
-                    <div class="col-md-7 item">
-                        <input type="text" id="role_desc" name="role_desc" class="form-control" title="설명" value="{{ $data['RoleDesc'] }}">
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item">
@@ -43,6 +36,13 @@
                             <input type="radio" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['IsUse'] == 'Y')checked="checked"@endif/> 사용
                             &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> 미사용
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="role_desc">설명</span>
+                    </label>
+                    <div class="col-md-7 item">
+                        <textarea id="role_desc" name="role_desc" class="form-control" rows="3" title="설명" placeholder="">{{ $data['RoleDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

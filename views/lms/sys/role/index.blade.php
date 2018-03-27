@@ -51,7 +51,7 @@
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['RoleIdx'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['RoleIdx'] }}"><u class="blue">{{ $row['RoleName'] }}</u></a></td>
-                        <td>{{ $row['RoleDesc'] }}</td>
+                        <td>{{ $row['RoleShortDesc'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['IsUse'] }}</span>
                         </td>

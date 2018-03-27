@@ -20,7 +20,7 @@ class SiteGroupModel extends WB_Model
      */
     public function listSiteGroup($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'S.SiteGroupCode, S.SiteGroupName, S.IsUse, S.RegDatm, S.RegAdminIdx';
+        $colum = 'S.SiteGroupCode, S.SiteGroupName, S.SiteGroupDesc, S.IsUse, S.RegDatm, S.RegAdminIdx';
         $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
 
@@ -62,7 +62,7 @@ class SiteGroupModel extends WB_Model
      */
     public function findSiteGroupForModify($site_group_code)
     {
-        $colum = 'S.SiteGroupCode, S.SiteGroupName, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
+        $colum = 'S.SiteGroupCode, S.SiteGroupName, S.SiteGroupDesc, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
         $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
         $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
 
@@ -88,6 +88,7 @@ class SiteGroupModel extends WB_Model
             $data = [
                 'SiteGroupCode' => $row['SiteGroupCode'],
                 'SiteGroupName' => element('site_group_name', $input),
+                'SiteGroupDesc' => element('site_group_desc', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -122,6 +123,7 @@ class SiteGroupModel extends WB_Model
             // 데이터 수정
             $data = [
                 'SiteGroupName' => element('site_group_name', $input),
+                'SiteGroupDesc' => element('site_group_desc', $input),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];

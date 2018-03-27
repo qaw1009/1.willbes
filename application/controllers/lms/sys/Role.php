@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Role extends \app\controllers\BaseController
 {
     protected $models = array('sys/role');
-    protected $helpers = array();
+    protected $helpers = array('text');
 
     public function __construct()
     {
@@ -17,6 +17,12 @@ class Role extends \app\controllers\BaseController
     public function index()
     {
         $list = $this->roleModel->listRole([], null, null, ['R.RoleIdx' => 'asc']);
+
+        // 권한유형 설명 문자열 자르기 데이터 추가
+        $list = array_map(function ($row) {
+            $row['RoleShortDesc'] = ellipsize(str_replace(PHP_EOL, '', $row['RoleDesc']), 30);
+            return $row;
+        }, $list);
 
         $this->load->view('sys/role/index', [
             'data' => $list

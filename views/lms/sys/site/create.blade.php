@@ -77,6 +77,26 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="site_url">대표 도메인 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 item">
+                        <input type="text" id="site_url" name="site_url" required="required" class="form-control" pattern="url" title="대표 도메인" value="{{ $data['SiteUrl'] }}">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-static"># 대표 도메인을 입력해 주세요. ex) www.willbes.net</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="use_domain">접속 도메인 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-5 item">
+                        <input type="text" id="use_domain" name="use_domain" required="required" class="form-control" title="접속 도메인" value="{{ $data['UseDomain'] }}">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-static"># 접속하는 도메인을 모두 입력해 주세요. (구분자 콤마(,))</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="pg_ccd">PG사 <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
@@ -134,26 +154,6 @@
                                 <option value="{{ $key }}" @if($key == $data['DeliveryCompCcd']) selected="selected" @endif>{{ $val }}</option>
                             @endforeach
                         </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="site_url">대표 도메인 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-3 item">
-                        <input type="text" id="site_url" name="site_url" required="required" class="form-control" pattern="url" title="대표 도메인" value="{{ $data['SiteUrl'] }}">
-                    </div>
-                    <div class="col-md-6">
-                        <p class="form-control-static"># 대표 도메인을 입력해 주세요. ex) www.willbes.net</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="use_domain">접속 도메인 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-5 item">
-                        <input type="text" id="use_domain" name="use_domain" required="required" class="form-control" title="접속 도메인" value="{{ $data['UseDomain'] }}">
-                    </div>
-                    <div class="col-md-4">
-                        <p class="form-control-static"># 접속하는 도메인을 모두 입력해 주세요. (구분자 콤마(,))</p>
                     </div>
                 </div>
                 <div class="form-group">

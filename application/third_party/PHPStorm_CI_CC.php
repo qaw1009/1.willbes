@@ -104,6 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CategoryModel $categoryModel                   Category Model Class
  * @property BoardMasterModel $boardMasterModel          BoardMaster Model Class
  * @property CourseModel $courseModel                         Product Course Model Class
+ * @property BoardModel $boardModel                         Board Model Class
  */
 class PHPStorm_CI_CC
 {

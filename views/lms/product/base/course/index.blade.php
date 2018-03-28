@@ -3,7 +3,7 @@
 @section('content')
     <h5>- 강의 구성을 위한 기본 과정 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        <div id="tabs_site_code" class="tabs-site-codes" data-is-all-tab="1" data-tab-type="tab" data-tab-data=""></div>
+        {!! html_site_tabs('tabs_site_code') !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -39,7 +39,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>운영 사이트</th>
+                    <th class="searching searching_site_code">운영 사이트</th>
                     <th class="searching">과정코드</th>
                     <th class="searching">과정명</th>
                     <th class="searching_is_use">사용여부</th>
@@ -52,14 +52,14 @@
                 @foreach($data as $row)
                     <tr>
                         <td>{{ $loop->index }}</td>
-                        <td>운영 사이트</td>
-                        <td>{{ $row['RoleIdx'] }}</td>
-                        <td><a href="#" class="btn-modify" data-idx="{{ $row['RoleIdx'] }}"><u>{{ $row['RoleName'] }}</u></a></td>
+                        <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
+                        <td>{{ $row['CourseIdx'] }}</td>
+                        <td><a href="#" class="btn-modify" data-idx="{{ $row['CourseIdx'] }}"><u>{{ $row['CourseName'] }}</u></a></td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['IsUse'] }}</span>
                         </td>
                         <td>
-                            <input type="text" name="order_num" class="form-control" value="" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['RoleIdx'] }}" style="width: 30px;" />
+                            <input type="text" name="order_num" class="form-control input-sm" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['CourseIdx'] }}" style="width: 50px;" />
                         </td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
@@ -75,6 +75,7 @@
         var $search_form = $('#search_form');
         var $list_form = $('#list_form');
         var $list_table = $('#list_table');
+        var $site_code = '';
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -91,8 +92,9 @@
             // datatable searching
             var datatableSearching = function() {
                 $datatable
-                    .column('.searching').search($search_form.find('input[name="search_value"]').val())
+                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                     .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                    .column('.searching_site_code').search($site_code)
                     .draw();
             };
 
@@ -103,6 +105,11 @@
             });
 
             $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
+                datatableSearching();
+            });
+
+            $('#tabs_site_code').on('click', 'li > a', function() {
+                $site_code = $(this).data('site-code');
                 datatableSearching();
             });
 
@@ -126,7 +133,7 @@
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-                sendAjax('{{ site_url('/product/course/reorder') }}', data, function(ret) {
+                sendAjax('{{ site_url('/product/base/course/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.reload();
@@ -140,7 +147,7 @@
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/product/course/create/') }}' + uri_param,
+                    'url' : '{{ site_url('/product/base/course/create/') }}' + uri_param,
                     'width' : 900
                 });
             });

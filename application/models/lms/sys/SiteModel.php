@@ -53,23 +53,18 @@ class SiteModel extends WB_Model
      */
     public function getSiteArray($is_auth = true)
     {
-        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
-        
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
-            $sess_admin_auth_sites = element('Site', $this->session->userdata('admin_auth_data'));
-            if (empty($sess_admin_auth_sites) === false) {
-                $arr_condition['IN'] = ['SiteCode' => array_pluck($sess_admin_auth_sites, 'SiteCode')];
-            } else {
-                $arr_condition['EQ']['1'] = 2;
-            }
+            $data = get_auth_site_codes(true);
+        } else {
+            $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+            $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', $arr_condition, null, null, [
+                'SiteCode' => 'asc'
+            ]);
+            $data = array_pluck($data, 'SiteName', 'SiteCode');
         }
 
-        $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', $arr_condition, null, null, [
-            'SiteCode' => 'asc'
-        ]);
-
-        return array_pluck($data, 'SiteName', 'SiteCode');
+        return $data;
     }
 
     /**
@@ -80,23 +75,18 @@ class SiteModel extends WB_Model
      */
     public function getSiteCampusArray($site_code, $is_auth = true)
     {
-        $arr_condition = ['EQ' => ['SC.SiteCode' => $site_code, 'SC.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['Campus'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']];
-
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
-            $sess_admin_auth_sites = element('Site', $this->session->userdata('admin_auth_data'));
-            if (empty($sess_admin_auth_sites) === false) {
-                $arr_condition['IN'] = ['SC.CampusCcd' => array_keys($sess_admin_auth_sites[$site_code]['CampusCcds'])];
-            } else {
-                $arr_condition['EQ']['1'] = 2;
-            }
+            $data = get_auth_campus_ccds($site_code, true);
+        } else {
+            $arr_condition = ['EQ' => ['SC.SiteCode' => $site_code, 'SC.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['Campus'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']];
+            $data = $this->_conn->getJoinListResult('lms_site_r_campus as SC', 'inner', 'lms_sys_code as C', 'SC.CampusCcd = C.Ccd'
+                , 'SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
+            );
+            $data = array_pluck($data, 'CampusName', 'CampusCcd');
         }
 
-        $data = $this->_conn->getJoinListResult('lms_site_r_campus as SC', 'inner', 'lms_sys_code as C', 'SC.CampusCcd = C.Ccd'
-            , 'SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
-        );
-
-        return array_pluck($data, 'CampusName', 'CampusCcd');
+        return $data;
     }
 
     /**

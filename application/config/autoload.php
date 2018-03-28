@@ -91,6 +91,9 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 $autoload['helper'] = array('base', 'url', 'array', 'form', 'cookie');
+if (in_array(SUB_DOMAIN, ['lms']) === true) {
+    $autoload['helper'][] = SUB_DOMAIN;
+}
 
 /*
 | -------------------------------------------------------------------

@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CourseModel extends WB_Model
+class SubjectModel extends WB_Model
 {
-    private $_table = 'lms_product_course';
+    private $_table = 'lms_product_subject';
 
     public function __construct()
     {
@@ -11,49 +11,49 @@ class CourseModel extends WB_Model
     }
 
     /**
-     * 과정 목록 조회
+     * 과목 목록 조회
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return array|int
      */
-    public function listCourse($arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSubject($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, S.SiteName';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
-        $arr_condition['EQ']['PC.IsStatus'] = 'Y';
+        $colum = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, S.SiteName';
+        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
+        $arr_condition['EQ']['PS.IsStatus'] = 'Y';
         $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
-        $arr_condition['IN']['PC.SiteCode'] = get_auth_site_codes();
+        $arr_condition['IN']['PS.SiteCode'] = get_auth_site_codes();
 
-        return $this->_conn->getJoinListResult($this->_table . ' as PC', 'inner', 'lms_site as S', 'PC.SiteCode = S.SiteCode'
+        return $this->_conn->getJoinListResult($this->_table . ' as PS', 'inner', 'lms_site as S', 'PS.SiteCode = S.SiteCode'
             , $colum, $arr_condition, $limit, $offset, $order_by
         );
     }
 
     /**
-     * 과정 수정 폼을 위한 데이터 조회
-     * @param $course_idx
+     * 과목 수정 폼을 위한 데이터 조회
+     * @param $subject_idx
      * @return array
      */
-    public function findCourseForModify($course_idx)
+    public function findSubjectForModify($subject_idx)
     {
-        $colum = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.Keyword, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, PC.UpdDatm, PC.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(PC.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = PC.UpdAdminIdx)) as UpdAdminName';
+        $colum = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.Keyword, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, PS.UpdDatm, PS.UpdAdminIdx';
+        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
+        $colum .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = PS.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as PC', $colum, [
-            'EQ' => ['PC.CourseIdx' => $course_idx]
+        return $this->_conn->getFindResult($this->_table . ' as PS', $colum, [
+            'EQ' => ['PS.SubjectIdx' => $subject_idx]
         ]);
     }
 
     /**
-     * 사이트 코드별 과정 정렬순서 값 조회
+     * 사이트 코드별 과목 정렬순서 값 조회
      * @param $site_code
      * @return int
      */
-    public function getCourseOrderNum($site_code)
+    public function getSubjectOrderNum($site_code)
     {
         return $this->_conn->getFindResult($this->_table, 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['SiteCode' => $site_code]
@@ -61,22 +61,22 @@ class CourseModel extends WB_Model
     }
 
     /**
-     * 과정 등록
+     * 과목 등록
      * @param array $input
      * @return array|bool
      */
-    public function addCourse($input = [])
+    public function addSubject($input = [])
     {
         $this->_conn->trans_begin();
 
         try {
             $site_code = element('site_code', $input);
-            $order_num = get_var(element('order_num', $input), $this->getCourseOrderNum($site_code));
+            $order_num = get_var(element('order_num', $input), $this->getSubjectOrderNum($site_code));
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
                 'SiteCode' => $site_code,
-                'CourseName' => element('course_name', $input),
+                'SubjectName' => element('subject_name', $input),
                 'OrderNum' => $order_num,
                 'Keyword' => element('keyword', $input),
                 'IsUse' => element('is_use', $input),
@@ -84,7 +84,7 @@ class CourseModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            // 과정 등록
+            // 과목 등록
             if ($this->_conn->set($data)->insert($this->_table) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
@@ -99,38 +99,38 @@ class CourseModel extends WB_Model
     }
 
     /**
-     * 과정 수정
+     * 과목 수정
      * @param array $input
      * @return array|bool
      */
-    public function modifyCourse($input = [])
+    public function modifySubject($input = [])
     {
         $this->_conn->trans_begin();
 
         try {
-            $course_idx = element('idx', $input);
+            $subject_idx = element('idx', $input);
 
-            // 기존 과정 정보 조회
-            $row = $this->findCourseForModify($course_idx);
+            // 기존 과목 정보 조회
+            $row = $this->findSubjectForModify($subject_idx);
             if (count($row) < 1) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             $site_code = $row['SiteCode'];
-            $order_num = get_var(element('order_num', $input), $this->getCourseOrderNum($site_code));
+            $order_num = get_var(element('order_num', $input), $this->getSubjectOrderNum($site_code));
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
-                'CourseName' => element('course_name', $input),
+                'SubjectName' => element('subject_name', $input),
                 'OrderNum' => $order_num,
                 'Keyword' => element('keyword', $input),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $admin_idx,
             ];
 
-            // 과정 수정
-            if ($this->_conn->set($data)->where('CourseIdx', $course_idx)->update($this->_table) === false) {
-                throw new \Exception('과정 수정에 실패했습니다.');
+            // 과목 수정
+            if ($this->_conn->set($data)->where('SubjectIdx', $subject_idx)->update($this->_table) === false) {
+                throw new \Exception('과목 수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -143,11 +143,11 @@ class CourseModel extends WB_Model
     }
 
     /**
-     * 과정 정렬변경 수정
+     * 과목 정렬변경 수정
      * @param array $params
      * @return array|bool
      */
-    public function modifyCourseReorder($params = [])
+    public function modifySubjectReorder($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -156,8 +156,8 @@ class CourseModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            foreach ($params as $course_idx => $order_num) {
-                $this->_conn->set('OrderNum', $order_num)->where('CourseIdx', $course_idx);
+            foreach ($params as $subject_idx => $order_num) {
+                $this->_conn->set('OrderNum', $order_num)->where('SubjectIdx', $subject_idx);
 
                 if ($this->_conn->update($this->_table) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');

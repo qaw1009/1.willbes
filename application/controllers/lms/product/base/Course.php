@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Course extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'product/base/course');
+    protected $models = array('product/base/course');
     protected $helpers = array();
 
     public function __construct()
@@ -16,7 +16,7 @@ class Course extends \app\controllers\BaseController
      */
     public function index()
     {
-        $list = $this->courseModel->listCourse([], null, null, ['PC.CourseIdx' => 'desc']);
+        $list = $this->courseModel->listCourse([], null, null, ['PC.CourseIdx' => 'asc']);
 
         $this->load->view('product/base/course/index',[
             'data' => $list
@@ -46,8 +46,7 @@ class Course extends \app\controllers\BaseController
         $this->load->view('product/base/course/create', [
             'method' => $method,
             'idx' => $idx,
-            'data' => $data,
-            'site_codes' => $this->siteModel->getSiteArray()
+            'data' => $data
         ]);
     }
 
@@ -88,6 +87,17 @@ class Course extends \app\controllers\BaseController
      */
     public function reorder()
     {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
 
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->courseModel->modifyCourseReorder(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 }

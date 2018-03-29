@@ -127,7 +127,8 @@ function init_sidebar() {
     $SIDEBAR_MENU.find('a').filter(function() {
         //return this.href == CURRENT_URL;
         // 서브 디렉토리 > 컨트롤러명 또는 컨트롤러명 > 메소드명까지의 메뉴 URL을 현재 URL과 비교하여 active 처리
-        var PRE_MENU_URL = this.href.substr(0, this.href.split('/', 5).join('/').length);
+        var PRE_MENU_URL = (this.href.charAt(this.href.length - 1) !== '/' && this.href.indexOf('?') === -1) ? this.href + '/' : this.href;
+        PRE_MENU_URL = (PRE_MENU_URL.indexOf('?') > -1) ? PRE_MENU_URL.substr(0, PRE_MENU_URL.indexOf('?')) : PRE_MENU_URL;
         //console.log(CURRENT_URL + ' ====> ' + PRE_MENU_URL + ' ====> ' + this.href + ' ====> ' + (new RegExp('^' + PRE_MENU_URL, 'gi').test(CURRENT_URL) && this.href != ''));
         return new RegExp('^' + PRE_MENU_URL, 'gi').test(CURRENT_URL) && this.href != '';
     }).parent('li').addClass('current-page').parents('ul').slideDown(function() {

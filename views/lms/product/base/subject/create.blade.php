@@ -11,6 +11,13 @@
         <input type="hidden" name="idx" value="{{ $idx }}"/>
 @endsection
 
+@php
+    $disabled = '';
+    if($method == 'PUT') {
+        $disabled = "disabled";
+    }
+@endphp
+
 @section('layer_content')
     <div class="form-group form-group-sm">
         <div class="x_title text-right">
@@ -22,12 +29,7 @@
         <label class="control-label col-md-2" for="site_code">운영사이트 <span class="required">*</span>
         </label>
         <div class="col-md-4 item">
-            <select class="form-control" id="site_code" name="site_code">
-                <option value="">사이트선택</option>
-                @foreach($site_codes as $key => $val)
-                    <option value="{{ $key }}">{{ $val }}</option>
-                @endforeach
-            </select>
+            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled) !!}
         </div>
         <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
         </label>
@@ -51,10 +53,10 @@
         </div>
     </div>
     <div class="form-group form-group-sm">
-        <label class="control-label col-md-2" for="keywords">키워드
+        <label class="control-label col-md-2" for="keyword">키워드
         </label>
         <div class="col-md-4 item">
-            <input type="text" id="keywords" name="keywords" class="form-control" title="키워드" value="{{ $data['Keywords'] }}">
+            <input type="text" id="keyword" name="keyword" class="form-control" title="키워드" value="{{ $data['Keyword'] }}">
         </div>
         <label class="control-label col-md-2" for="order_num">정렬
         </label>
@@ -95,13 +97,13 @@
         $(document).ready(function() {
             // 과목 등록
             $regi_form.submit(function() {
-                var _url = '{{ site_url('/product/subject/store') }}';
+                var _url = '{{ site_url('/product/base/subject/store') }}';
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $("#pop_modal").modal('toggle');
-                        $datatable.draw();
+                        location.reload();
                     }
                 }, showValidateError, null, false, 'alert');
             });

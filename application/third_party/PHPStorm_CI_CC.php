@@ -104,7 +104,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CategoryModel $categoryModel                   Category Model Class
  * @property CourseModel $courseModel                         Product Course Model Class
  * @property SubjectModel $subjectModel                       Product Subject Model Class
- * @property PatternModel $patternModel                       Product Pattern Model Class
  * @property BoardMasterModel $boardMasterModel          BoardMaster Model Class
  * @property BoardModel $boardModel                            Board Model Class
  */

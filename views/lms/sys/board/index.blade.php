@@ -40,6 +40,7 @@
                     <th class="">게시판타입</th>
                     <th class="searching">게시판코드</th>
                     <th class="searching">게시판명</th>
+                    <th class="searching">사이트그룹정보적용</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -52,6 +53,10 @@
                         <td>{{$bmType_list[$row['BmTypeCcd']]}} [<span class="blue">{{ $row['BmTypeCcd'] }}</span>]</td>
                         <td>{{$row['BmIDX']}}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['BmIDX'] }}"><u>{{ $row['BmName'] }}</u></a></td>
+                        <td>
+                            @if($row['IsSiteGroup'] == 'Y')적용@endif
+                            <span class="hide">{{ $row['IsSiteGroup'] }}</span>
+                        </td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['IsUse'] }}</span>
                         </td>

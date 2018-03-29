@@ -17,7 +17,7 @@ class BoardMasterModel extends WB_Model
      */
     public function listAllBoardMaster($arr_condition = [])
     {
-        $column = 'A.BmIDX, A.BmName, A.BmTypeCcd, A.BmDesc, A.OneWayOption, A.TwoWayOption ,A.IsUse, A.RegDatm, B.wAdminName';
+        $column = 'A.BmIDX, A.BmName, A.BmTypeCcd, A.BmDesc, A.OneWayOption, A.TwoWayOption ,A.IsUse, A.IsSiteGroup, A.RegDatm, B.wAdminName';
         $from = '
                     From ' . $this->_table . ' A
 	                    LEFT OUTER JOIN wbs_sys_admin B ON A.RegAdminIdx = B.wAdminIdx and B.wIsStatus="Y" ';
@@ -34,7 +34,7 @@ class BoardMasterModel extends WB_Model
 
     public function findBoardMasterForModify($bmidx)
     {
-        $column = 'A.BmIDX, A.BmName, A.BmTypeCcd, A.BmDesc, A.OneWayOption, A.TwoWayOption ,A.IsUse, A.RegDatm, A.UpdDatm';
+        $column = 'A.BmIDX, A.BmName, A.BmTypeCcd, A.BmDesc, A.OneWayOption, A.TwoWayOption ,A.IsUse, A.IsSiteGroup, A.RegDatm, A.UpdDatm';
         $column .= ', B.wAdminName, C.wAdminName As wUpdAdminName';
 
         $from = ' From '.$this->_table.' A 
@@ -130,6 +130,11 @@ class BoardMasterModel extends WB_Model
             $two_way_options = substr($two_way_options, 0, -1);
         }
 
+        $is_site_group = 'N';
+        if (element('is_site_group', $input) == 'Y') {
+            $is_site_group = element('is_site_group', $input);
+        }
+
         $input_data = [
             'BmTypeCcd' => element('bm_type_ccd', $input),
             'BmName' => element('bm_name', $input),
@@ -137,6 +142,7 @@ class BoardMasterModel extends WB_Model
             'OneWayOption' => $one_way_options,
             'TwoWayOption' => $two_way_options,
             'IsUse' => element('is_use', $input),
+            'IsSiteGroup' => $is_site_group
         ];
 
         return $input_data;

@@ -37,7 +37,9 @@
                 <tr>
                     <th>No</th>
                     <th class="searching rowspan">그룹유형 [<span class="blue">코드</span>]</th>
-                    <th class="searching">세부항목 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
+                    <th class="searching">세부항목명 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
+                    <th>세부항목값</th>
+                    <th>세부항목설명</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -55,6 +57,8 @@
                                 <a href="#none" class="btn-modify" data-ccd="{{ $row['wCcd'] }}" data-code-type="sub" data-group-ccd="{{ $row['ParentCcd'] }}"><u>{{ $row['wCcdName'] }}  [<span class="blue">{{$row['wCcd']}}</span>]</u></a>
                                 @endif
                         </td>
+                        <td>{{ $row['wCcdValue'] }}</td>
+                        <td>{{ $row['wCcdDesc'] }}</td>
                         <td>{!! str_replace('미사용','<span class="red">미사용</span>',$row['wIsUseView']) !!}<span class="hide">{{ $row['wIsUse'] }}</span></td>
                         <td>{{ $row['wAdminName'] }}</td>
                         <td>{{ $row['wRegDatm'] }}</td>

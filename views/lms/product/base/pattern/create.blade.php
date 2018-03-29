@@ -11,6 +11,13 @@
         <input type="hidden" name="idx" value="{{ $idx }}"/>
 @endsection
 
+@php
+    $disabled = '';
+    if($method == 'PUT') {
+        $disabled = "disabled";
+    }
+@endphp
+
 @section('layer_content')
     <div class="form-group form-group-sm">
         <div class="x_title text-right">
@@ -22,12 +29,7 @@
         <label class="control-label col-md-2" for="site_code">운영사이트 <span class="required">*</span>
         </label>
         <div class="col-md-4 item">
-            <select class="form-control" id="site_code" name="site_code">
-                <option value="">사이트선택</option>
-                @foreach($site_codes as $key => $val)
-                    <option value="{{ $key }}">{{ $val }}</option>
-                @endforeach
-            </select>
+            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled) !!}
         </div>
         <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
         </label>
@@ -39,22 +41,22 @@
         </div>
     </div>
     <div class="form-group form-group-sm">
-        <label class="control-label col-md-2" for="learning_type_name">학습형태명 <span class="required">*</span>
+        <label class="control-label col-md-2" for="pattern_name">학습형태명 <span class="required">*</span>
         </label>
         <div class="col-md-4 item">
-            <input type="text" id="learning_type_name" name="learning_type_name" required="required" class="form-control" title="학습형태명" value="{{ $data['LearningTypeName'] }}">
+            <input type="text" id="pattern_name" name="pattern_name" required="required" class="form-control" title="학습형태명" value="{{ $data['PatternName'] }}">
         </div>
         <label class="control-label col-md-2" for="">학습형태 코드
         </label>
         <div class="col-md-4">
-            <p class="form-control-static">@if($method == 'PUT'){{ $data['LearningTypeIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+            <p class="form-control-static">@if($method == 'PUT'){{ $data['PatternIdx'] }}@else # 등록 시 자동 생성 @endif</p>
         </div>
     </div>
     <div class="form-group form-group-sm">
-        <label class="control-label col-md-2" for="keywords">키워드
+        <label class="control-label col-md-2" for="keyword">키워드
         </label>
         <div class="col-md-4 item">
-            <input type="text" id="keywords" name="keywords" class="form-control" title="키워드" value="{{ $data['Keywords'] }}">
+            <input type="text" id="keyword" name="keyword" class="form-control" title="키워드" value="{{ $data['Keyword'] }}">
         </div>
         <label class="control-label col-md-2" for="order_num">정렬
         </label>
@@ -65,6 +67,13 @@
             <p class="form-control-static"># 미 입력시 마지막 DP</p>
         </div>
     </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2" for="desc">설명</span>
+        </label>
+        <div class="col-md-10 item">
+            <textarea id="desc" name="desc" class="form-control" rows="3" title="설명" placeholder="">{{ $data['Desc'] }}</textarea>
+        </div>
+    </div>        
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">등록자
         </label>
@@ -93,15 +102,15 @@
         var $regi_form = $('#_regi_form');
 
         $(document).ready(function() {
-            // 과목 등록
+            // 학습형태 등록
             $regi_form.submit(function() {
-                var _url = '{{ site_url('/product/learningType/store') }}';
+                var _url = '{{ site_url('/product/base/pattern/store') }}';
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $("#pop_modal").modal('toggle');
-                        $datatable.draw();
+                        location.reload();
                     }
                 }, showValidateError, null, false, 'alert');
             });

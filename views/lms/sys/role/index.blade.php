@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>- 운영자 업무 분장 기준 권한유형을 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -81,28 +81,18 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/sys/role/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

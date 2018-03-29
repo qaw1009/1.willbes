@@ -365,6 +365,22 @@ function init_datatable() {
             e.preventDefault();
             $datatable.draw();
         });
+        
+        // searching: true 옵션일 경우 검색
+        $('#search_form.searching').submit(function(e) {
+            e.preventDefault();
+            datatableSearching();
+        });
+        
+        $('#search_form.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
+            datatableSearching();
+        });
+
+        // 사이트 탭 클릭
+        $('#search_form.searching > .tabs-site-code').on('click', 'li > a', function() {
+            $site_code = $(this).data('site-code');
+            datatableSearching();
+        });
     }
 }
 

@@ -7,7 +7,7 @@
         <li role="presentation"><a href="{{ site_url('/sys/site/index/category') }}">사이트 카테고리 관리</a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 기본 정보를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -95,29 +95,19 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_campus').search($search_form.find('select[name="search_is_campus"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_campus"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/sys/site/create') }}/code/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_campus').search($search_form.find('select[name="search_is_campus"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

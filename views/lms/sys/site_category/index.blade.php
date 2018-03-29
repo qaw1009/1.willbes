@@ -7,7 +7,7 @@
         <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/category') }}"><strong>사이트 카테고리 관리</strong></a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 카테고리를 생성하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -53,12 +53,7 @@
                     <tbody>
                     @foreach($data as $row)
                         <tr>
-                            <td>
-                                <div class="form-group form-group-sm">
-                                    {{ $row['SiteName'] }}
-                                    [<span class="blue">{{ $row['SiteCode'] }}</span>]
-                                </div>
-                            </td>
+                            <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
                             <td>
                                 <div class="form-group form-group-sm">
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BCateCode'] }}" style="width: 30px;" />
@@ -106,24 +101,6 @@
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 대분류 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
-            });
-
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
             });
 
             // 순서 변경
@@ -187,5 +164,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

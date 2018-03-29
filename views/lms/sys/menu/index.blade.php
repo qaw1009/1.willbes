@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>- 관리자 LNB 메뉴를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -110,24 +110,6 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 순서 변경
             $('.btn-reorder').on('click', function() {
                 if (!confirm('변경된 순서를 적용하시겠습니까?')) {
@@ -186,5 +168,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

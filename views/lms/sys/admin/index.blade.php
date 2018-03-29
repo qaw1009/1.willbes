@@ -105,7 +105,7 @@
                     {'data' : 'RoleIdx', 'render' : function(data, type, row, meta) {
                         var html = '';
 
-                        html += '<select class="form-control" name="role_idx" data-idx="' + row.wAdminIdx + '">';
+                        html += '<select class="form-control input-sm" name="role_idx" data-idx="' + row.wAdminIdx + '">';
                         html += '<option value="">권한미설정</option>';
                         @foreach($roles as $key => $val)
                             html += '<option value="{{ $key }}"' + ((data === '{{ $key }}') ? ' selected="selected"' : '') + '>{{ $val }}</option>';

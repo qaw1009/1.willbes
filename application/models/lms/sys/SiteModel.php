@@ -37,7 +37,7 @@ class SiteModel extends WB_Model
      * @param array $order_by
      * @return array|int
      */
-    public function listSiteAll($arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
         $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';

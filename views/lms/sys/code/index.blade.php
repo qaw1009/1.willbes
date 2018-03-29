@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 @section('content')
     <h5>- 윌비스 사이트 운영을 위한 공통코드를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -74,7 +74,6 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
             $datatable = $list_table.DataTable({
                 serverSide: false,
                 ajax : false,
@@ -85,25 +84,6 @@
                     { text: '<i class="fa fa-pencil mr-5"></i> 그룹유형등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
             });
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            //event
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
-            // 검색 실행
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
 
             $('.btn-regist, .btn-modify-parent, .btn-modify').click(function() {
                 var strMakeType = '';
@@ -142,5 +122,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

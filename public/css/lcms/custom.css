@@ -294,6 +294,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     cursor: pointer !important;
 }
 
+/* line-height */
+.no-line-height {
+    line-height: 0;
+}
+
 /* border */
 .border-white {
     border-color: #fff !important;

@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SubjectModel extends WB_Model
 {
-    private $_table = 'lms_product_subject';
+    private $_table = [
+        'site' => 'lms_site',
+        'subject' => 'lms_product_subject',
+        'admin' => 'wbs_sys_admin'
+    ];    
 
     public function __construct()
     {
@@ -21,15 +25,31 @@ class SubjectModel extends WB_Model
     public function listSubject($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $colum = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, S.SiteName';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['PS.IsStatus'] = 'Y';
         $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['IN']['PS.SiteCode'] = get_auth_site_codes();
 
-        return $this->_conn->getJoinListResult($this->_table . ' as PS', 'inner', 'lms_site as S', 'PS.SiteCode = S.SiteCode'
+        return $this->_conn->getJoinListResult($this->_table['subject'] . ' as PS', 'inner', $this->_table['site'] . ' as S', 'PS.SiteCode = S.SiteCode'
             , $colum, $arr_condition, $limit, $offset, $order_by
         );
+    }
+
+    /**
+     * 과목 코드 목록 조회
+     * @param $site_code
+     * @return array
+     */
+    public function getSubjectArray($site_code)
+    {
+        $data = $this->_conn->getListResult($this->_table['subject'], 'SubjectIdx, SubjectName', [
+            'EQ' => ['SiteCode' => $site_code, 'IsUse' => 'Y', 'IsStatus' => 'Y']
+        ], null, null, [
+            'SubjectIdx' => 'asc'
+        ]);
+
+        return array_pluck($data, 'SubjectName', 'SubjectIdx');
     }
 
     /**
@@ -40,10 +60,10 @@ class SubjectModel extends WB_Model
     public function findSubjectForModify($subject_idx)
     {
         $colum = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.Keyword, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, PS.UpdDatm, PS.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = PS.UpdAdminIdx)) as UpdAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
+        $colum .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as PS', $colum, [
+        return $this->_conn->getFindResult($this->_table['subject'] . ' as PS', $colum, [
             'EQ' => ['PS.SubjectIdx' => $subject_idx]
         ]);
     }
@@ -55,7 +75,7 @@ class SubjectModel extends WB_Model
      */
     public function getSubjectOrderNum($site_code)
     {
-        return $this->_conn->getFindResult($this->_table, 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+        return $this->_conn->getFindResult($this->_table['subject'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['SiteCode' => $site_code]
         ])['NextOrderNum'];
     }
@@ -85,7 +105,7 @@ class SubjectModel extends WB_Model
             ];
 
             // 과목 등록
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['subject']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -129,7 +149,7 @@ class SubjectModel extends WB_Model
             ];
 
             // 과목 수정
-            if ($this->_conn->set($data)->where('SubjectIdx', $subject_idx)->update($this->_table) === false) {
+            if ($this->_conn->set($data)->where('SubjectIdx', $subject_idx)->update($this->_table['subject']) === false) {
                 throw new \Exception('과목 수정에 실패했습니다.');
             }
 
@@ -159,7 +179,7 @@ class SubjectModel extends WB_Model
             foreach ($params as $subject_idx => $order_num) {
                 $this->_conn->set('OrderNum', $order_num)->where('SubjectIdx', $subject_idx);
 
-                if ($this->_conn->update($this->_table) === false) {
+                if ($this->_conn->update($this->_table['subject']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');
                 }
             }

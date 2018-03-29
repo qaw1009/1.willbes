@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CourseModel extends WB_Model
 {
-    private $_table = 'lms_product_course';
+    private $_table = [
+        'site' => 'lms_site',
+        'course' => 'lms_product_course',
+        'admin' => 'wbs_sys_admin'
+    ];    
 
     public function __construct()
     {
@@ -21,13 +25,13 @@ class CourseModel extends WB_Model
     public function listCourse($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $colum = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, S.SiteName';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['PC.IsStatus'] = 'Y';
         $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['IN']['PC.SiteCode'] = get_auth_site_codes();
 
-        return $this->_conn->getJoinListResult($this->_table . ' as PC', 'inner', 'lms_site as S', 'PC.SiteCode = S.SiteCode'
+        return $this->_conn->getJoinListResult($this->_table['course'] . ' as PC', 'inner', $this->_table['site'] . ' as S', 'PC.SiteCode = S.SiteCode'
             , $colum, $arr_condition, $limit, $offset, $order_by
         );
     }
@@ -40,10 +44,10 @@ class CourseModel extends WB_Model
     public function findCourseForModify($course_idx)
     {
         $colum = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.Keyword, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, PC.UpdDatm, PC.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(PC.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = PC.UpdAdminIdx)) as UpdAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
+        $colum .= ' , if(PC.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as PC', $colum, [
+        return $this->_conn->getFindResult($this->_table['course'] . ' as PC', $colum, [
             'EQ' => ['PC.CourseIdx' => $course_idx]
         ]);
     }
@@ -55,7 +59,7 @@ class CourseModel extends WB_Model
      */
     public function getCourseOrderNum($site_code)
     {
-        return $this->_conn->getFindResult($this->_table, 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+        return $this->_conn->getFindResult($this->_table['course'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['SiteCode' => $site_code]
         ])['NextOrderNum'];
     }
@@ -85,7 +89,7 @@ class CourseModel extends WB_Model
             ];
 
             // 과정 등록
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['course']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -129,7 +133,7 @@ class CourseModel extends WB_Model
             ];
 
             // 과정 수정
-            if ($this->_conn->set($data)->where('CourseIdx', $course_idx)->update($this->_table) === false) {
+            if ($this->_conn->set($data)->where('CourseIdx', $course_idx)->update($this->_table['course']) === false) {
                 throw new \Exception('과정 수정에 실패했습니다.');
             }
 
@@ -159,7 +163,7 @@ class CourseModel extends WB_Model
             foreach ($params as $course_idx => $order_num) {
                 $this->_conn->set('OrderNum', $order_num)->where('CourseIdx', $course_idx);
 
-                if ($this->_conn->update($this->_table) === false) {
+                if ($this->_conn->update($this->_table['course']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');
                 }
             }

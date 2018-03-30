@@ -96,7 +96,7 @@ if (!function_exists('html_site_tabs')) {
             $tab_attr = 'role="tab" data-toggle="tab"';
         } else {
             $tab_base_qs = preg_replace('/&?site_code=(\d*)/', '', $qs);
-            $tab_base_url = './' . (empty($tab_base_qs) === true ? '?' : $tab_base_qs . '&') . 'site_code=';
+            $tab_base_url = './' . (empty($tab_base_qs) === true ? '?' : '?' . $tab_base_qs . '&') . 'site_code=';
         }
 
         //
@@ -104,7 +104,7 @@ if (!function_exists('html_site_tabs')) {
 
         // 전체 탭 추가
         if ($is_all_tab === true) {
-            empty($_site_code) === true && $tab_active = 'active';
+            empty($site_code) === true && $tab_active = 'active';
             $tab_txt = str_replace('##tab_data##', element('all', $tab_data, 0), $tab_base_txt);
             $return_html .= '<li role="presentation" class="' . $tab_active . '"><a href="' . $tab_base_url . '" ' . $tab_attr . ' data-site-code=""><strong>전체</strong>' . $tab_txt . '</a></li>' . PHP_EOL;
         }

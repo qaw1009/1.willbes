@@ -3,8 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SiteGroupModel extends WB_Model
 {
-    private $_table = 'lms_site_group';
-
+    private $_table = [
+        'site_group' => 'lms_site_group',
+        'admin' => 'wbs_sys_admin'
+    ];
     public function __construct()
     {
         parent::__construct('lms');
@@ -21,10 +23,10 @@ class SiteGroupModel extends WB_Model
     public function listSiteGroup($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $colum = 'S.SiteGroupCode, S.SiteGroupName, S.SiteGroupDesc, S.IsUse, S.RegDatm, S.RegAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table . ' as S', $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['site_group'] . ' as S', $colum, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -33,7 +35,7 @@ class SiteGroupModel extends WB_Model
      */
     public function getSiteGroupArray()
     {
-        $data = $this->_conn->getListResult($this->_table, 'SiteGroupCode, SiteGroupName', [
+        $data = $this->_conn->getListResult($this->_table['site_group'], 'SiteGroupCode, SiteGroupName', [
             'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
         ], null, null, [
             'SiteGroupCode' => 'asc'
@@ -52,7 +54,7 @@ class SiteGroupModel extends WB_Model
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['site_group'], $colum, $arr_condition);
     }
 
     /**
@@ -63,10 +65,10 @@ class SiteGroupModel extends WB_Model
     public function findSiteGroupForModify($site_group_code)
     {
         $colum = 'S.SiteGroupCode, S.SiteGroupName, S.SiteGroupDesc, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as S', $colum, [
+        return $this->_conn->getFindResult($this->_table['site_group'] . ' as S', $colum, [
             'EQ' => ['S.SiteGroupCode' => $site_group_code]
         ]);
     }
@@ -82,7 +84,7 @@ class SiteGroupModel extends WB_Model
 
         try {
             // 등록될 사이트그룹 코드 조회
-            $row = $this->_conn->getFindResult($this->_table, 'ifnull(max(SiteGroupCode) + 1, 1001) as SiteGroupCode');
+            $row = $this->_conn->getFindResult($this->_table['site_group'], 'ifnull(max(SiteGroupCode) + 1, 1001) as SiteGroupCode');
 
             // 데이터 저장
             $data = [
@@ -94,7 +96,7 @@ class SiteGroupModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['site_group']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -130,7 +132,7 @@ class SiteGroupModel extends WB_Model
 
             $this->_conn->set($data)->where('SiteGroupCode', $site_group_code);
 
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['site_group']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 

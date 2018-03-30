@@ -3,7 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SiteModel extends WB_Model
 {
-    private $_table = 'lms_site';
+    private $_table = [
+        'site' => 'lms_site',
+        'site_group' => 'lms_site_group',
+        'site_r_campus' => 'lms_site_r_campus',
+        'code' => 'lms_sys_code',
+        'admin' => 'wbs_sys_admin'
+    ];    
     private $_ccd = [
         'Campus' => '605',
     ];
@@ -26,7 +32,7 @@ class SiteModel extends WB_Model
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['site'], $colum, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -40,10 +46,10 @@ class SiteModel extends WB_Model
     public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
 
-        return $this->_conn->getJoinListResult($this->_table . ' as S', 'inner', 'lms_site_group as G', 'S.SiteGroupCode = G.SiteGroupCode', $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getJoinListResult($this->_table['site'] . ' as S', 'inner', $this->_table['site_group'] . ' as G', 'S.SiteGroupCode = G.SiteGroupCode', $colum, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -58,7 +64,7 @@ class SiteModel extends WB_Model
             $data = get_auth_site_codes(true);
         } else {
             $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
-            $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', $arr_condition, null, null, [
+            $data = $this->_conn->getListResult($this->_table['site'], 'SiteCode, SiteName', $arr_condition, null, null, [
                 'SiteCode' => 'asc'
             ]);
             $data = array_pluck($data, 'SiteName', 'SiteCode');
@@ -80,7 +86,7 @@ class SiteModel extends WB_Model
             $data = get_auth_campus_ccds($site_code, true);
         } else {
             $arr_condition = ['EQ' => ['SC.SiteCode' => $site_code, 'SC.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['Campus'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']];
-            $data = $this->_conn->getJoinListResult('lms_site_r_campus as SC', 'inner', 'lms_sys_code as C', 'SC.CampusCcd = C.Ccd'
+            $data = $this->_conn->getJoinListResult($this->_table['site_r_campus'] . ' as SC', 'inner', $this->_table['code'] . ' as C', 'SC.CampusCcd = C.Ccd'
                 , 'SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
             );
             $data = array_pluck($data, 'CampusName', 'CampusCcd');
@@ -99,7 +105,7 @@ class SiteModel extends WB_Model
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['site'], $colum, $arr_condition);
     }
 
     /**
@@ -112,12 +118,12 @@ class SiteModel extends WB_Model
         $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.PgCcd, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice';
         $colum .= ' , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
         $colum .= ' , if(IsCampus = "Y", (';
-        $colum .= '     select GROUP_CONCAT(CampusCcd separator ", ") from lms_site_r_campus where SiteCode = S.SiteCode and IsStatus = "Y"';
+        $colum .= '     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"';
         $colum .= '   ), "") as CampusCcds';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as S', $colum, [
+        return $this->_conn->getFindResult($this->_table['site'] . ' as S', $colum, [
             'EQ' => ['S.SiteCode' => $site_code]
         ]);
     }
@@ -135,7 +141,7 @@ class SiteModel extends WB_Model
             $site_group_code = element('site_group_code', $input);
 
             // 등록될 사이트 코드,  정렬순서 조회
-            $row = $this->_conn->getFindResult($this->_table, 'ifnull(max(SiteCode) + 1, 2001) as SiteCode, ifnull(max(OrderNum) + 1, 1) as OrderNum');
+            $row = $this->_conn->getFindResult($this->_table['site'], 'ifnull(max(SiteCode) + 1, 2001) as SiteCode, ifnull(max(OrderNum) + 1, 1) as OrderNum');
 
             // 로고, 파비콘 업로드
             $this->load->library('upload');
@@ -182,7 +188,7 @@ class SiteModel extends WB_Model
             isset($uploaded[0]['file_name']) === true && $data['Logo'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
             isset($uploaded[1]['file_name']) === true && $data['Favicon'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[1]['file_name'];
 
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['site']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -257,7 +263,7 @@ class SiteModel extends WB_Model
 
             $this->_conn->set($data)->where('SiteCode', $site_code);
 
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['site']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
@@ -285,7 +291,7 @@ class SiteModel extends WB_Model
     public function replaceSiteCampus($arr_campus_ccd = [], $is_campus, $site_code)
     {
         try {
-            $_table = 'lms_site_r_campus';
+            $_table = $this->_table['site_r_campus'];
             $arr_campus_ccd = (is_null($arr_campus_ccd) === true) ? [] : array_values(array_unique($arr_campus_ccd));
             $admin_idx = $this->session->userdata('admin_idx');
             
@@ -371,7 +377,7 @@ class SiteModel extends WB_Model
             }
 
             // 데이터 수정
-            $is_update = $this->_conn->set($img_type, 'NULL', false)->where('SiteCode', $site_code)->update($this->_table);
+            $is_update = $this->_conn->set($img_type, 'NULL', false)->where('SiteCode', $site_code)->update($this->_table['site']);
             if ($is_update === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }

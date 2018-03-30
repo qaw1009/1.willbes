@@ -246,6 +246,19 @@ if (!function_exists('str_first_pos_after')) {
     }
 }
 
+if (!function_exists('str_last_pos_before')) {
+    /**
+     * haystack(대상 문자열)에서 마지막 needle(찾을 문자열)의 위치 이전까지의 문자열 리턴
+     * @param $haystack
+     * @param $needle
+     * @return string
+     */
+    function str_last_pos_before($haystack, $needle)
+    {
+        return substr($haystack, 0, strrpos($haystack, $needle));
+    }
+}
+
 if (!function_exists('str_last_pos_after')) {
     /**
      * haystack(대상 문자열)에서 마지막 needle(찾을 문자열)의 위치 다음부터의 문자열 리턴

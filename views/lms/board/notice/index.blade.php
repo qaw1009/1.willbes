@@ -4,6 +4,7 @@
     @include('lms.board.boardnav')
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -103,10 +104,10 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-thumbs-o-up mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/board/notice/create') }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable);
                         }},
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/board/notice/create') }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable);
                         }},
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';

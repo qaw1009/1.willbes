@@ -52,10 +52,21 @@ class BaseBoard extends \app\controllers\BaseController
      * 권한유형별 운영사이트 목록 조회
      * @return array
      */
-    protected function _getSiteArray($column)
+    protected function _getSiteArray()
     {
-        //return $this->siteModel->getSiteArray();
-        return $this->siteModel->listSite($column);
+        return $this->siteModel->getSiteArray();
+    }
+
+    /**
+     * 사이트 목록 조회
+     * @param $column
+     * @param $param
+     * @return array|int
+     */
+    protected function _listSite($column, $param)
+    {
+        $arr_condition['EQ']['SiteCode'] = $param;
+        return $this->siteModel->listSite($column, $arr_condition);
     }
 
     /**
@@ -67,5 +78,16 @@ class BaseBoard extends \app\controllers\BaseController
     protected function _getCategoryArray($site_code, $parent_cate_code = 0)
     {
         return $this->categoryModel->getCategoryArray($site_code, $parent_cate_code);
+    }
+
+    /**
+     * 게시판 등록
+     * @param $method
+     * @param $inputData
+     * @return mixed
+     */
+    protected function _addBoard($method, $inputData)
+    {
+        return $this->boardModel->{$method . 'Board'}($inputData);
     }
 }

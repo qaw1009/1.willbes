@@ -5,17 +5,16 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class Notice extends BaseBoard
 {
-    protected $tempModels = array('sys/boardMaster', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'board/board');
     protected $helpers = array();
 
-    private $boardName = 'notice';
-    private $bmIdx;
-    private $subMenu;
-    private $campusOnOff = 'off';   //캠퍼스노출상태값
+    private $board_name = 'notice';
+    private $bm_idx;
+    private $campus_on_off = 'off';   //캠퍼스노출상태값
 
     public function __construct()
     {
-        $this->models = array_merge($this->models, $this->tempModels);
+        $this->models = array_merge($this->models, $this->temp_models);
         parent::__construct();
     }
 
@@ -25,20 +24,16 @@ class Notice extends BaseBoard
     public function index()
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-        $this->subMenu = $boardParams['subMenu'];
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bmIdx'];
         $data = [];
 
         //사이트리스트
-        $baseSiteInfos = $this->_getBaseSiteArray();
+        $base_site_infos = $this->_getBaseSiteArray();
 
-        $this->load->view("board/{$this->boardName}/index", [
-            'boardName' => $this->boardName,
-            'baseSiteInfos' => $baseSiteInfos,
-            'campusOnOff' => $this->campusOnOff,
-            'boardDefaultQueryString' => '&bm_idx='.$this->bmIdx.'&sub_menu='.$this->subMenu,
-            'data' => $data
+        $this->load->view("board/{$this->board_name}/index", [
+            'boardName' => $this->board_name,
+            'boardDefaultQueryString' => '&bm_idx='.$this->bm_idx,
         ]);
     }
 
@@ -51,7 +46,7 @@ class Notice extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'RegType' => '1',
-                'BmIdx' => $this->bmIdx,
+                'BmIdx' => $this->bm_idx,
                 //'SiteCode' => '',
                 'wSaleCcd' => $this->_reqP('search_sale_ccd')
             ],
@@ -96,62 +91,76 @@ class Notice extends BaseBoard
     public function create($params = [])
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-        $this->subMenu = $boardParams['subMenu'];
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bmIdx'];
 
         $method = 'POST';
         $data = null;
-        $bnidx = null;
+        $board_idx = null;
 
         //권한유형별 운영사이트 목록 조회
-        /*$getSiteArray = $this->_getSiteArray();*/
-        $resultSiteArray = $this->_getSiteArray('SiteCode,SiteName,IsCampus');
-
-        $getSiteArray = [];
-        foreach ($resultSiteArray as $keys => $vals) {
-            foreach ($vals as $key => $val) {
-                $getSiteArray[$vals['SiteCode']] = array(
-                    'SiteName' => $vals['SiteName'],
-                    'IsCampus' => $vals['IsCampus']
-                );
-            }
-        }
+        $get_site_array = $this->_getSiteArray();
 
         //사이트카테고리 (구분)
-        $firstSiteKey = key($getSiteArray);
-        $getCategoryArray = $this->_getCategoryArray($firstSiteKey);
+        $first_site_key = key($get_site_array);
+        $get_category_array = $this->_getCategoryArray($first_site_key);
 
-        $this->load->view("board/{$this->boardName}/create", [
-            'boardName' => $this->boardName,
-            'bmIdx' => $this->bmIdx,
-            'subMenu' => $this->subMenu,
-            'getSiteArray' => $getSiteArray,
-            'getCategoryArray' => $getCategoryArray,
-            'campusOnOff' => $this->campusOnOff,
+        $this->load->view("board/{$this->board_name}/create", [
+            'boardName' => $this->board_name,
+            'bmIdx' => $this->bm_idx,
+            'getSiteArray' => $get_site_array,
+            'getCategoryArray' => $get_category_array,
+            'campusOnOff' => $this->campus_on_off,
             'method' => $method,
             'data' => $data,
-            'bn_idx' => $bnidx,
+            'board_idx' => $board_idx,
             'attach_file_cnt' => 2
         ]);
+    }
+
+    /**
+     * 게시판 글 등록
+     */
+    public function store()
+    {
+        $method = 'add';
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bmIdx'];
+
+        $rules = [
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
+            ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[20]'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            /*['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required|'],*/
+        ];
+
+        if (empty($this->_reqP('idx')) === false) {
+            $method = 'modify';
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $inputData = $this->_setInputData($this->_reqP(null, false));
+
+        //_addBoard, _modifyBoard
+        $result = $this->{'_' . $method . 'Board'}($method, $inputData);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     public function read($params = [])
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-        $this->subMenu = $boardParams['subMenu'];
-
-        //캠퍼스리스트
-        if ($this->subMenu == 'offline') {
-            $this->campusOnOff = 'on';
-        }
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bmIdx'];
 
         $data = null;
-        $this->load->view("board/{$this->boardName}/read",[
-            'boardName' => $this->boardName,
-            'campusOnOff' => $this->campusOnOff,
+        $this->load->view("board/{$this->board_name}/read",[
+            'boardName' => $this->board_name,
+            'campusOnOff' => $this->campus_on_off,
             'data' => $data
         ]);
     }
@@ -162,10 +171,24 @@ class Notice extends BaseBoard
      */
     public function getAjaxSiteCategoryInfo($params = [])
     {
+        $resultSiteArray = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
+        $get_site_array = [];
+        foreach ($resultSiteArray as $keys => $vals) {
+            foreach ($vals as $key => $val) {
+                $get_site_array[$vals['SiteCode']] = array(
+                    'SiteName' => $vals['SiteName'],
+                    'IsCampus' => $vals['IsCampus']
+                );
+            }
+        }
+
         //사이트카테고리
-        $result['catagory'] = $this->_getCategoryArray($params[0]);
+        $result['category'] = $this->_getCategoryArray($params[0]);
         //캠퍼스
-        $result['compus'] = $this->_getCampusArray($params[0]);
+        $result['campus'] = $this->_getCampusArray($params[0]);
+
+        //캠퍼스 사용 유무
+        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
         $this->json_result(true, '', [], $result);
     }
 
@@ -173,9 +196,45 @@ class Notice extends BaseBoard
      * 캠퍼스 정보 리턴
      * @param array $params
      */
-    public function getAjaxCompusInfo($params = [])
+    public function getAjaxCampusInfo($params = [])
     {
-        $result['compus'] = $this->_getCampusArray($params[0]);
+        $result_site_array = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
+        $get_site_array = [];
+        foreach ($result_site_array as $keys => $vals) {
+            foreach ($vals as $key => $val) {
+                $get_site_array[$vals['SiteCode']] = array(
+                    'SiteName' => $vals['SiteName'],
+                    'IsCampus' => $vals['IsCampus']
+                );
+            }
+        }
+
+        $result['campus'] = $this->_getCampusArray($params[0]);
+        //캠퍼스 사용 유무
+        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
         $this->json_result(true, '', [], $result);
+    }
+
+    private function _setInputData($input){
+        $input_data = [
+            'board' => [
+                'SiteCode' => element('site_code', $input),
+                'BmIdx' => $this->bm_idx,
+                'CampusCcd' => element('campus_ccd', $input),
+                'RegType' => element('reg_type', $input),
+                'Title' => element('title', $input),
+                'isBest' => element('is_best', $input),
+                'Content' => element('board_content', $input),
+                'IsUse' => element('is_use', $input),
+                'ReadCnt' => '0',
+                'SettingReadCnt' => element('setting_readCnt', $input),
+                'RegAdminIdx'=> $this->session->userdata('admin_idx')
+            ],
+            'board_r_category' => [
+                'site_category' => element('site_category', $input)
+            ]
+        ];
+
+        return$input_data;
     }
 }

@@ -3,10 +3,12 @@
 @section('content')
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="bm_idx" value="{{ $bn_idx }}"/>
+        <input type="hidden" name="board_idx" value="{{ $board_idx }}"/>
+        <input type="hidden" name="reg_type" value="1"/>
         <div class="x_panel">
             <div class="x_title">
                 <h2>공지게시판 정보</h2>
@@ -19,42 +21,38 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="site_code" name="" title="운영사이트" {{--onchange="javascript:selSiteCode(this.value);"--}}>
-                            {{--<option value="">선택</option>--}}
+                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
                             @foreach($getSiteArray as $key => $val)
                                 <option value="{{$key}}">{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <label class="control-label col-md-2 col-md-offset-1" for="site_cate_ccd">구분<span class="required">*</span></label>
-                    <div class="col-md-3 item form-inline">
-                        <div class="checkbox" id="site_cate_ccd">
-                            <input type="checkbox" id="site_cate_ccd_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_cate_ccd_all">전체</label>
+                    <label class="control-label col-md-2 col-md-offset-1" for="campus_ccd">캠퍼스</label>
+                    <div class="col-md-2">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
+                        <div class="checkbox">
+                            <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
+                        </div>
+                        <div class="checkbox" id="site_category">
                             @foreach($getCategoryArray as $key => $val)
-                                <input type="checkbox" id="site_cate_ccd_{{$key}}" name="site_cate_ccd[]" value="{{$key}}" class="flat"/><label class="inline-block mr-5" for="site_cate_ccd_{{$key}}">{{$val}}</label>
+                                @php $cate_idx = $loop->index-1; @endphp
+                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat"/>
+                                <label class="inline-block mr-5" for="site_category_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="campus_ccd">캠퍼스</label>
-                    <div class="col-md-2">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd">
-                        </select>
-                    </div>
-                    <label class="control-label col-md-2 col-lg-offset-1" for="">분류</label>
-                    <div class="col-md-2">
-                        <select class="form-control" id="" name="">
-                            <option value="">구분</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label col-md-2" for="title">제목<span class="required">*</span></label>
                     <div class="col-md-9 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="20" title="제목" value="{{ $data['title'] }}" placeholder="제목 입니다.">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
 
@@ -62,7 +60,7 @@
                     <label class="control-label col-md-2" for="is_best">HOT</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="is_best" class="flat"/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat"/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
@@ -77,7 +75,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="board_content">내용<span class="required">*</span></label>
                     <div class="col-md-9">
-                        <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['contents'] !!}</textarea>
+                        <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
                     </div>
                 </div>
 
@@ -138,15 +136,20 @@
             $editor_profile.run();
 
             //캠퍼스목록조회 : 페이지 로딩시 실행
-            var compusInfo = getAjaxCompusInfo();
+            getAjaxcampusInfo();
 
             $('#setting_readCnt').keyup(function() {
                 $('#total_read_count').val(SumReadCount());
             });
 
             // ajax submit
+            /*$regi_form.submit(function() {
+                /!*var url = "{{ site_url("/board/{$boardName}/store") }}?bm_idx=45";*!/
+                getEditorBodyContent($editor_profile);
+            });*/
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
+                getEditorBodyContent($editor_profile);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -156,6 +159,7 @@
                 }, showValidateError, addValidate, false, 'alert');
             });
 
+            //목록
             $('#btn_list').click(function() {
                 location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
             });
@@ -167,17 +171,17 @@
                 var _url = '{{ site_url("/board/{$boardName}/getAjaxSiteCategoryInfo/") }}' + this.value + getQueryString();
                 sendAjax(_url, _data, function(ret) {
                     if (ret.ret_cd) {
-                        if (Object.keys(ret.ret_data.catagory).length > 0) {
-                            add_checkBox += '<input type="checkbox" id="site_cate_ccd_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_cate_ccd_all">전체</label>';
-                            $.each(ret.ret_data.catagory, function(key, val) {
-                                add_checkBox += '<input type="checkbox" id="site_cate_ccd_'+key+'" name="site_cate_ccd[]" value="'+key+'" class="flat"/> <label class="inline-block mr-5" for="site_cate_ccd_'+key+'">'+val+'</label>';
+                        $('#site_category_all').prop('checked', false).iCheck('update');
+                        if (Object.keys(ret.ret_data.category.length > 0)) {
+                            $.each(ret.ret_data.category, function(key, val) {
+                                add_checkBox += '<input type="checkbox" id="site_category_'+key+'" name="site_category[]" value="'+key+'" class="site_category flat"/> <label class="inline-block mr-5" for="site_category_'+key+'">'+val+'</label>';
                             });
-                            $('#site_cate_ccd').html(add_checkBox);
+                            $('#site_category').html(add_checkBox);
                         } else {
-                            $('#site_cate_ccd').html(add_checkBox);
+                            //$('#site_category').html(add_checkBox);
                         }
                     }
-                    getAjaxCompusInfo();
+                    getAjaxcampusInfo();
                 }, showError, false, 'GET');
             });
 
@@ -186,6 +190,21 @@
                     checkboxClass: 'icheckbox_flat-blue',
                     radioClass: 'iradio_flat-blue'
                 });
+            });
+
+            //사이트카테고리(구분) 선택/해제, 분류박스 활성/비활성화
+            $(document).on("ifChanged","#site_category_all",function(){
+                iCheckAll('input[name="site_category[]"]', '#site_category_all');
+                if ($(this).prop('checked') === true) {
+                    $('#sub_category').prop('disabled', true);
+                } else {
+                    $('#sub_category').prop('disabled', false);
+                }
+            });
+
+            //사이트카테고리(구분) 개별선택에 따른 [전체]체크박스 초기화
+            $(document).on("ifChanged",".site_category",function(){
+                $('#site_category_all').prop('checked', false).iCheck('update');
             });
         });
 
@@ -201,35 +220,40 @@
         }
 
         //캠퍼스 목록 죄회
-        function getAjaxCompusInfo() {
+        function getAjaxcampusInfo() {
             var _data = {};
             var add_selectBox_options = '';
             var set_site_code = $("#site_code option:selected").val();
 
-            var _url = '{{ site_url("/board/{$boardName}/getAjaxCompusInfo/") }}' + set_site_code + getQueryString();
+            var _url = '{{ site_url("/board/{$boardName}/getAjaxCampusInfo/") }}' + set_site_code + getQueryString();
             sendAjax(_url, _data, function(ret) {
                 if (ret.ret_cd) {
-                    if (Object.keys(ret.ret_data.compus).length > 0) {
-                        $.each(ret.ret_data.compus, function(key, val) {
+                    if (Object.keys(ret.ret_data.campus).length > 0) {
+                        $.each(ret.ret_data.campus, function(key, val) {
                             add_selectBox_options += '<option value="'+key+'">'+val+'</option>';
                         });
                         $('#campus_ccd').html(add_selectBox_options);
                         $('#campus_ccd').prop('disabled',false);
                     } else {
-                        $('#campus_ccd').html('<option value="">사용안함</option>');
-                        $('#campus_ccd').prop('disabled',true);
+                        if (ret.ret_data.isCampus == 'N') {
+                            $('#campus_ccd').html('<option value="">사용안함</option>');
+                            $('#campus_ccd').prop('disabled', true);
+                        } else {
+                            $('#campus_ccd').html('<option value="">없음</option>');
+                            $('#campus_ccd').prop('disabled', true);
+                        }
                     }
                 }
             }, showError, false, 'GET');
         }
 
         function addValidate() {
-            var site_cate_ccd_length = $("input[name='site_cate_ccd[]']").length;
-            var site_cate_ccd_checked_length = $("input[name='site_cate_ccd[]']:checked").length;
+            var site_category_length = $("input[name='site_category[]']").length;
+            var site_category_checked_length = $("input[name='site_category[]']:checked").length;
 
             //카테고리 값이 존재할 경우 온라인으로 간주
-            if (site_cate_ccd_length > 0) {
-                if (site_cate_ccd_checked_length > 0) {
+            if (site_category_length > 0) {
+                if (site_category_checked_length > 0) {
                     return true;
                 } else {
                     alert('운영사이트가 온라인일 경우 구분값은 필수 입니다.');

@@ -15,8 +15,8 @@ class BaseBoard extends \app\controllers\BaseController
     protected function setDefaultBoardParam()
     {
         $this->boardDefaultParams = [
-            'bmIdx' => $this->_req('bm_idx'),
-            'subMenu' => $this->_req('sub_menu')
+            'bm_idx' => $this->_req('bm_idx'),
+            'site_code' => $this->_req('site_code')
         ];
     }
 

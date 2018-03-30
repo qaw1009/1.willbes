@@ -50,11 +50,11 @@ class BoardModel extends WB_Model
         ';*/
         $from = "
             from {$this->_table}
-            where 1=1
+            
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);

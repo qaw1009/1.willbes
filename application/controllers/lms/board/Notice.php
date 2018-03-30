@@ -9,8 +9,8 @@ class Notice extends BaseBoard
     protected $helpers = array();
 
     private $board_name = 'notice';
+    private $site_code = '';
     private $bm_idx;
-    private $campus_on_off = 'off';   //캠퍼스노출상태값
 
     public function __construct()
     {
@@ -25,15 +25,12 @@ class Notice extends BaseBoard
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bmIdx'];
-        $data = [];
-
-        //사이트리스트
-        $base_site_infos = $this->_getBaseSiteArray();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
 
         $this->load->view("board/{$this->board_name}/index", [
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => '&bm_idx='.$this->bm_idx,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
         ]);
     }
 
@@ -50,7 +47,7 @@ class Notice extends BaseBoard
                 //'SiteCode' => '',
                 'wSaleCcd' => $this->_reqP('search_sale_ccd')
             ],
-            'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
+            //'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
             'ORG' => [
                 'LKB' => [
                     'Title' => $this->_reqP('search_value'),
@@ -65,6 +62,8 @@ class Notice extends BaseBoard
         if ($count > 0) {
             $column = 'BoardIdx, SiteCode, CampusCcd';
             $list = $this->boardModel->listAllBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BoardIdx' => 'desc'], $column);
+
+            print_r($list);
 
             /*// 사용하는 코드값 조회
             $codes = $this->codeModel->getCcdInArray(['109', '110', '117']);
@@ -92,7 +91,7 @@ class Notice extends BaseBoard
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bmIdx'];
+        $this->bm_idx = $board_params['bm_idx'];
 
         $method = 'POST';
         $data = null;
@@ -110,11 +109,10 @@ class Notice extends BaseBoard
             'bmIdx' => $this->bm_idx,
             'getSiteArray' => $get_site_array,
             'getCategoryArray' => $get_category_array,
-            'campusOnOff' => $this->campus_on_off,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
-            'attach_file_cnt' => 2
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
     }
 
@@ -126,7 +124,7 @@ class Notice extends BaseBoard
         $method = 'add';
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bmIdx'];
+        $this->bm_idx = $board_params['bm_idx'];
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
@@ -155,12 +153,11 @@ class Notice extends BaseBoard
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bmIdx'];
+        $this->bm_idx = $board_params['bm_idx'];
 
         $data = null;
         $this->load->view("board/{$this->board_name}/read",[
             'boardName' => $this->board_name,
-            'campusOnOff' => $this->campus_on_off,
             'data' => $data
         ]);
     }

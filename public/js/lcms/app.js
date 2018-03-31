@@ -367,17 +367,17 @@ function init_datatable() {
         });
         
         // searching: true 옵션일 경우 검색
-        $('#search_form.searching').submit(function(e) {
+        $('#search_form.searching, #_search_form.searching').submit(function(e) {
             e.preventDefault();
             datatableSearching();
         });
         
-        $('#search_form.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
+        $('#search_form.searching, #_search_form.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
             datatableSearching();
         });
 
         // 사이트 탭 클릭
-        $('#search_form.searching > .tabs-site-code').on('click', 'li > a', function() {
+        $('#search_form.searching > .tabs-site-code, #_search_form.searching > .tabs-site-code').on('click', 'li > a', function() {
             $site_code = $(this).data('site-code');
             datatableSearching();
         });

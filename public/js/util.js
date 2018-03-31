@@ -205,6 +205,16 @@ function queryStringToJson(qs) {
 }
 
 /**
+ * reset modal
+ * @param selector
+ */
+function resetModal(selector) {
+    $(selector).modal('toggle');
+    $(selector).remove();
+    $('.modal-backdrop').remove();
+}
+
+/**
  * ajax function
  * @param url
  * @param data is_file = false인 경우는 seialize된 데이터 (json), is_file = true인 경우는 FormData로 전송 필요

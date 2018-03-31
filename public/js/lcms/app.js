@@ -414,8 +414,8 @@ function init_base() {
         if (!confirm(msg)) return;
 
         var data = {};
-        data[$__csrf_token_name] = $__csrf_token;
-        data['menu_idx'] = $__menu_current_idx;
+        data[$__global.csrf_token_name] = $__global.csrf_token;
+        data['menu_idx'] = $__global.menu_current_idx;
         sendAjax('/sys/adminSettings/favorite', data, function(ret) {
             if (ret.ret_cd) {
                 notifyAlert('success', '알림', ret.ret_msg);

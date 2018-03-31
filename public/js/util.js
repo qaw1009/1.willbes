@@ -205,6 +205,17 @@ function queryStringToJson(qs) {
 }
 
 /**
+ * replace modal (modal 내용 변경)
+ * @param url
+ * @param data
+ */
+function replaceModal(url, data) {
+    sendAjax(url, data, function(ret) {
+        $("#pop_modal .modal-content").html(ret);
+    }, showError, false, 'GET', 'html');
+}
+
+/**
  * reset modal
  * @param selector
  */

@@ -3,7 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminModel extends WB_Model
 {
-    private $_table = 'wbs_sys_admin';
+    private $_table = [
+        'site' => 'lms_site',
+        'site_r_campus' => 'lms_site_r_campus',
+        'admin_r_site_campus' => 'lms_sys_admin_r_site_campus',
+        'admin_r_admin_role' => 'lms_sys_admin_r_admin_role',
+        'code' => 'lms_sys_code',
+        'admin' => 'wbs_sys_admin'
+    ];
     private $_ccd = [
         'Campus' => '605'
     ];
@@ -37,16 +44,16 @@ class AdminModel extends WB_Model
                 A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail
                     , A.wIsUse, A.wRegDatm, A.wRegAdminIdx                                        
                     , ifnull(AR.RoleIdx, "") as RoleIdx
-                    , if((select count(*) from lms_sys_admin_r_site_campus where wAdminIdx = A.wAdminIdx and IsStatus = "Y") > 0, "Y", "N") as IsSiteCampus
+                    , if((select count(*) from ' . $this->_table['admin_r_site_campus'] . ' where wAdminIdx = A.wAdminIdx and IsStatus = "Y") > 0, "Y", "N") as IsSiteCampus
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
                             then A.wAdminName
-                            else (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wRegAdminIdx)
+                            else (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx)
                       end) as wRegAdminName       
             ';
 
         $from = '
-            from ' . $this->_table . ' as A 
-                left join lms_sys_admin_r_admin_role as AR 
+            from ' . $this->_table['admin'] . ' as A 
+                left join ' . $this->_table['admin_r_admin_role'] . ' as AR 
                     on A.wAdminIdx = AR.wAdminIdx and AR.IsStatus = "Y"
             where A.wIsApproval = "Y" and A.wIsStatus = "Y"
         ';
@@ -70,10 +77,10 @@ class AdminModel extends WB_Model
         $colum = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail';
         $colum .= ' , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
         $colum .= ' , ifnull(AR.RoleIdx, "") as RoleIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
+        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
+        $colum .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getJoinFindResult($this->_table . ' as A', 'left', 'lms_sys_admin_r_admin_role as AR', 'A.wAdminIdx = AR.wAdminIdx and AR.IsStatus = "Y"',
+        return $this->_conn->getJoinFindResult($this->_table['admin'] . ' as A', 'left', $this->_table['admin_r_admin_role'] . ' as AR', 'A.wAdminIdx = AR.wAdminIdx and AR.IsStatus = "Y"',
             $colum, ['EQ' => ['A.wAdminIdx' => $admin_idx]]);
     }
 
@@ -84,25 +91,29 @@ class AdminModel extends WB_Model
      */
     public function listAdminSiteCampus($admin_idx)
     {
-        $query = '
-            select S.SiteCode, S.SiteName
-                , if(ASC1.SiteCode is not null, "Y", "N") as IsPermSite
-                , if(SC.SiteCode is not null, GROUP_CONCAT(DISTINCT SC.CampusCcd, "::", C.CcdName, "::", if(ASC2.CampusCcd is not null, "Y", "N") order by SC.CampusCcd separator ","), "0") as CampusCcds	
-            from lms_site as S 
-                left join lms_site_r_campus as SC
-                    on S.SiteCode = SC.SiteCode and SC.IsStatus = "Y"
-                left join lms_sys_admin_r_site_campus as ASC1
-                    on ASC1.wAdminIdx = ? and S.SiteCode = ASC1.SiteCode and ASC1.IsStatus = "Y"
-                left join lms_sys_admin_r_site_campus as ASC2
-                    on ASC2.wAdminIdx = ? and S.SiteCode = ASC2.SiteCode and SC.CampusCcd = ASC2.CampusCcd and ASC2.IsStatus = "Y"
-                left join lms_sys_code as C 
-                    on SC.CampusCcd = C.Ccd and C.GroupCcd = ? and C.IsUse = "Y" and C.IsStatus = "Y"		
-            where S.IsUse = "Y" and S.IsStatus = "Y"		
-            group by S.SiteCode
-            order by S.SiteCode            
+        $colum = 'S.SiteCode, S.SiteName
+            , if(ASC1.SiteCode is not null, "Y", "N") as IsPermSite
+            , if(SC.SiteCode is not null, GROUP_CONCAT(DISTINCT SC.CampusCcd, "::", C.CcdName, "::", if(ASC2.CampusCcd is not null, "Y", "N") order by SC.CampusCcd separator ","), "0") as CampusCcds
         ';
+        $from = '
+            from ' . $this->_table['site'] . ' as S 
+                left join ' . $this->_table['site_r_campus'] . ' as SC
+                    on S.SiteCode = SC.SiteCode and SC.IsStatus = "Y"
+                left join ' . $this->_table['admin_r_site_campus'] . ' as ASC1
+                    on ASC1.wAdminIdx = ? and S.SiteCode = ASC1.SiteCode and ASC1.IsStatus = "Y"
+                left join ' . $this->_table['admin_r_site_campus'] . ' as ASC2
+                    on ASC2.wAdminIdx = ? and S.SiteCode = ASC2.SiteCode and SC.CampusCcd = ASC2.CampusCcd and ASC2.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as C 
+                    on SC.CampusCcd = C.Ccd and C.GroupCcd = ? and C.IsUse = "Y" and C.IsStatus = "Y"        
+        ';
+        $where = ' where S.IsUse = "Y" and S.IsStatus = "Y"';
+        $group_by = ' group by S.SiteCode';
+        $order_by = ' order by S.SiteCode';
 
-        return $this->_conn->query($query, [$admin_idx, $admin_idx, $this->_ccd['Campus']])->result_array();
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $colum . $from . $where . $group_by . $order_by, [$admin_idx, $admin_idx, $this->_ccd['Campus']]);
+
+        return $query->result_array();
     }
 
     /**
@@ -148,7 +159,7 @@ class AdminModel extends WB_Model
     public function replaceSiteCampus($arr_site_code = [], $arr_campus_ccd = [], $admin_idx)
     {
         try {
-            $_table = 'lms_sys_admin_r_site_campus';
+            $_table = $this->_table['admin_r_site_campus'];
             $admin_idx = $this->session->userdata('admin_idx');
 
             // 기존 설정된 사이트, 캠퍼스 조회
@@ -247,7 +258,7 @@ class AdminModel extends WB_Model
     private function _replaceAdminRole($role_idx, $admin_idx)
     {
         try {
-            $_table = 'lms_sys_admin_r_admin_role';
+            $_table = $this->_table['admin_r_admin_role'];
             $sess_admin_idx = $this->session->userdata('admin_idx');
 
             // 기존 설정된 권한 삭제 처리

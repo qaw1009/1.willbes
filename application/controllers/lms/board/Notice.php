@@ -40,30 +40,46 @@ class Notice extends BaseBoard
      */
     public function listAjax()
     {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
+
+        $best_data = $this->_bestBoardData();
+        $best_count = $best_data['count'];
+        $best_list = $best_data['data'];
+
         $arr_condition = [
             'EQ' => [
-                'RegType' => '1',
-                'BmIdx' => $this->bm_idx,
-                //'SiteCode' => '',
-                'wSaleCcd' => $this->_reqP('search_sale_ccd')
+                'LB.BmIdx' => $this->bm_idx,
+                'LB.RegType' => '1',
+                'LB.IsBest' => 'N',
+                'LB.SiteCode' => $this->site_code,
+                //'wSaleCcd' => $this->_reqP('search_sale_ccd')
             ],
-            //'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
+            /*'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],*/
             'ORG' => [
                 'LKB' => [
-                    'Title' => $this->_reqP('search_value'),
-                    'Content' => $this->_reqP('search_value'),
+                    'LB.Title' => $this->_reqP('search_value'),
+                    'LB.Content' => $this->_reqP('search_value'),
                 ]
             ]
         ];
 
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
+
         $list = [];
+        $column = 'LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LC.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName';
         $count = $this->boardModel->listAllBoard(true, $arr_condition);
 
-        if ($count > 0) {
-            $column = 'BoardIdx, SiteCode, CampusCcd';
-            $list = $this->boardModel->listAllBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BoardIdx' => 'desc'], $column);
 
-            print_r($list);
+
+        if ($count > 0) {
+            $list = $this->boardModel->listAllBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
 
             /*// 사용하는 코드값 조회
             $codes = $this->codeModel->getCcdInArray(['109', '110', '117']);
@@ -76,11 +92,33 @@ class Notice extends BaseBoard
             ], true);*/
         }
 
+        if ($best_count > 0) {
+            $count = $count + $best_count;
+            $list = array_merge($best_list, $list);
+        }
+
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'best_count' => $best_count,
+            'data' => $list,
         ]);
+    }
+
+    public function copy($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardCopy($this->_req('board_idx'));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -212,6 +250,38 @@ class Notice extends BaseBoard
         $this->json_result(true, '', [], $result);
     }
 
+    /**
+     * 게시판 BEST 정보 조회
+     * @return array
+     */
+    private function _bestBoardData()
+    {
+        $arr_best_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $this->bm_idx,
+                'LB.RegType' => '1',
+                'LB.IsBest' => 'Y',
+                'LB.SiteCode' => $this->site_code,
+                //'wSaleCcd' => $this->_reqP('search_sale_ccd')
+            ]
+        ];
+
+        $best_list = [];
+        $best_count = $this->boardModel->listAllBoard(true, $arr_best_condition);
+        $column = 'LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LC.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName';
+
+        if ($best_count > 0) {
+            $best_list = $this->boardModel->listAllBoard(false, $arr_best_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        }
+
+        $datas = [
+            'count' => $best_count,
+            'data' => $best_list
+        ];
+
+        return $datas;
+    }
+
     private function _setInputData($input){
         $input_data = [
             'board' => [
@@ -220,7 +290,7 @@ class Notice extends BaseBoard
                 'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
-                'isBest' => element('is_best', $input),
+                'IsBest' => (element('is_best', $input) == 'Y') ? 'Y' : 'N',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),
                 'ReadCnt' => '0',

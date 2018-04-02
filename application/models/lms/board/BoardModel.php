@@ -6,6 +6,8 @@ class BoardModel extends WB_Model
     private $_table = 'lms_board';
     private $_table_r_category = 'lms_board_r_category';
     private $_table_r_attach = 'lms_board_r_attach';
+    private $_table_sys_site = 'lms_site';
+    private $_table_sys_admin = 'wbs_sys_admin';
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
 
@@ -30,27 +32,25 @@ class BoardModel extends WB_Model
             $colum = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            /*$colum = '
-                L.wLogIdx, L.wAdminId, L.wLoginIp, L.wLoginDatm, L.wLoginLogCcd
-                    , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wIsUse
-                    , R.wRoleName
-            ';*/
-
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            //$order_by_offset_limit .= $this->_conn->makeLimitOffset(20, 0)->getMakeLimitOffset();
         }
 
-        /*$from = '
-            from ' . $this->_table . ' as L 
-                left join wbs_sys_admin as A
-                    on L.wAdminId = A.wAdminId and A.wIsStatus = "Y"
-                left join wbs_sys_admin_role as R
-                    on A.wRoleIdx = R.wRoleIdx and R.wIsStatus = "Y"
-            where 1=1
-        ';*/
         $from = "
-            from {$this->_table}
-            
+            FROM {$this->_table} as LB
+            LEFT OUTER JOIN (
+                select BoardIdx, GROUP_CONCAT(CateCode) AS CateCode
+                from {$this->_table_r_category}
+                group by BoardIdx
+            ) as LBC ON LB.BoardIdx = LBC.BoardIdx
+            LEFT OUTER JOIN (
+                select BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                from {$this->_table_r_attach}
+                where IsStatus = 'Y'
+            ) as LBA ON LB.BoardIdx = LBA.BoardIdx
+            LEFT OUTER JOIN {$this->_table_sys_site} as LC ON LB.SiteCode = LC.SiteCode
+            LEFT OUTER JOIN {$this->_table_sys_admin} B ON LB.RegAdminIdx = B.wAdminIdx and B.wIsStatus='Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -119,6 +119,81 @@ class BoardModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 게시글 복제
+     * @param $board_idx
+     * @return array|bool
+     */
+    public function boardCopy($board_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_board_category = $this->_getBoardCategory($board_idx);
+
+            if (count($arr_board_category) <= 0) {
+                throw new \Exception('게시판 등록에 실패했습니다.');
+            }
+
+            $insert_column = '
+                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeGroupCcd, TypeCcd, IsBest, IsPublic, 
+                VocCcd, AreaCcd, ProfIdx, SubjectCcd, LecIdx, Title, Content, ReadCnt, SettingReadCnt, OrderNum, IsUse, IsStatus, RegDatm, RegMemIdx, 
+                RegAdminIdx, RegIp, UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
+            ';
+            $select_column = '
+                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeGroupCcd, TypeCcd, IsBest, IsPublic, 
+                VocCcd, AreaCcd, ProfIdx, SubjectCcd, LecIdx, CONCAT("복사본-",Title) AS Title, Content, ReadCnt, SettingReadCnt, OrderNum, IsUse, IsStatus, RegDatm, RegMemIdx, 
+                RegAdminIdx, RegIp, UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
+            ';
+            $query = "insert into {$this->_table} ({$insert_column})
+                select {$select_column} from {$this->_table}
+                where BoardIdx = {$board_idx}";
+            $result = $this->_conn->query($query);
+            $insert_board_idx = $this->_conn->insert_id();
+
+            if ($result === true) {
+                foreach ($arr_board_category as $key => $val) {
+                    $set_board_category_data['BoardIdx'] = $insert_board_idx;
+                    $set_board_category_data['CateCode'] = $val['CateCode'];
+                    if ($this->_addBoardCatagory($set_board_category_data) === false) {
+                        throw new \Exception('카테고리 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 게시판 카테고리 조회
+     * @param $board_idx
+     * @return mixed
+     */
+    private function _getBoardCategory($board_idx)
+    {
+        $colum = 'CateCode';
+        $from = "
+            FROM {$this->_table_r_category}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'BoardIdx' => $board_idx
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $colum . $from . $where);
+        $query = $query->result_array();
+
+        return $query;
     }
 
     /**

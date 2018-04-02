@@ -60,7 +60,7 @@
                     <label class="control-label col-md-2" for="is_best">HOT</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat"/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat"/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
@@ -154,14 +154,14 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                        location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
             });
 
             //운영사이트값에 따른 구분 값 셋팅

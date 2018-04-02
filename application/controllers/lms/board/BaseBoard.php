@@ -90,4 +90,14 @@ class BaseBoard extends \app\controllers\BaseController
     {
         return $this->boardModel->{$method . 'Board'}($inputData);
     }
+
+    /**
+     * 게시판 복제
+     * @param $board_idx
+     * @return array|bool
+     */
+    protected function _boardCopy($board_idx)
+    {
+        return $this->boardModel->boardCopy($board_idx);
+    }
 }

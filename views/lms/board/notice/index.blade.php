@@ -62,7 +62,7 @@
                         <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button class="btn btn-default ml-30 mr-30" type="button">검색초기화</button>
+                    <button class="btn btn-default ml-30 mr-30" type="button" id="btn_search_del">검색초기화</button>
                 </div>
             </div>
         </div>
@@ -74,9 +74,9 @@
                 <tr>
                     <th>복사</th>
                     <th>NO</th>
-                    <th>사이트</th>
-                    <th>구분1</th>
-                    <th>구분2</th>
+                    <th>운영사이트</th>
+                    <th>캠퍼스</th>
+                    <th>구분</th>
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
@@ -99,15 +99,18 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            // 기간 조회 디폴트 셋팅
+            //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-thumbs-o-up mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable);
                         }},
-                    { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable);
-                        }},
+
+                    { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
+
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
@@ -121,27 +124,80 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<input type="radio" class="flat" name="copy" value="' +row.BoardIdx+ '">';
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            if (row.IsBest == 'Y') {
+                                return 'BEST';
+                            } else {
+                                return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }
                         }},
-                    {'data' : 'wContentCcdName'},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'wProfId'},
-                    {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.wProfIdx + '"><u>' + data + '</u></a>';
+                    {'data' : 'SiteName'},
+                    {'data' : 'CampusCcd'},
+                    {'data' : 'CateCode'},
+                    {'data' : 'Title', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
+                    {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        }},
+
+                    {'data' : 'wAdminName'},
+                    {'data' : 'RegDatm'},
+
+                    {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
-                    {'data' : 'wRegAdminName'},
-                    {'data' : 'wRegDatm'}
-                ]
+
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        }},
+                    {'data' : 'ReadCnt'},
+                    {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                        }},
+                ],
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
+
+            // 검색초기화
+            $('#btn_search_del').on('click', function() {
+                $search_form[0].reset();
+            });
+
+            $('.btn-copy').on('click', function() {
+                if ($('input:radio[name="copy"]').is(':checked') === false) {
+                    alert('복사할 공지사항을 선택해 주세요.');
+                    return false;
+                }
+
+                if (!confirm('해당 공지사항을 복사하시겠습니까?')) {
+                    return;
+                }
+
+                var _url = '{{ site_url("/board/{$boardName}/copy/?") }}' + '{!! $boardDefaultQueryString !!}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'board_idx' : $('input:radio[name="copy"]:checked').val()
+                };
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+
+            });
+
+
         });
     </script>
 @stop

@@ -278,6 +278,10 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .form-horizontal .checkbox.checkbox-sm, .form-horizontal .radio.radio-sm {
     min-height: 27px;
 }
+.form-group-bordered {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
 
 /* display */
 .inline-block {
@@ -300,6 +304,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 }
 
 /* border */
+.border-default {
+    border-color: #ddd !important;
+}
 .border-white {
     border-color: #fff !important;
 }
@@ -321,6 +328,7 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .no-border-left {
     border-left: 0 !important;
 }
+
 
 /* no-margin */
 .no-margin {

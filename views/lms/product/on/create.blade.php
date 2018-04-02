@@ -1,6 +1,13 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+
+@php
+    $disabled = '';
+    if($method == 'PUT') {
+        $disabled = "disabled";
+    }
+@endphp
     <h5>- 온라인 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="x_title">
@@ -14,21 +21,16 @@
             <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
-                <input type="hidden" name="LecIdx" id="LecIdx" value="{{$lecidx}}"/>
+                <input type="hidden" name="LecIdx" id="LecIdx" value=""/>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="cp_idx">운영사이트 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <select name="sitecode" id="sitecode" required="required" class="form-control" title="운영사이트" style="width: 200px">
-                            <option value="">선택</option>
-                            @foreach($cp_list as $row)
-                                <option value="{{ $row['wCpIdx']}}" @if($row['wCpIdx'] == $data['wCpIdx']) selected="selected"@endif>{{ $row['wCpName']}}</option>
-                            @endforeach
-                        </select>
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled) !!}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
@@ -40,33 +42,39 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">마스터강의불러오기 <span class="required">*</span>
+                    <label class="control-label col-md-2">마스터강의불러오기 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <button class="btn-sm btn-success border-radius-reset mr-15 btn-reorder">마스터강의검색</button>
-                            <span id="mastercode">마스터강의명이 출력됩니다.[강의코드]</span>
+                            @if($method == 'POST')
+                                <button class="btn-sm btn-success border-radius-reset mr-15 btn-reorder">마스터강의검색</button>
+                                <span id="mastercode">마스터강의명이 출력됩니다. [강의코드]</span>
+                            @else
+                                마스트강의명...[강의코드]
+                            @endif
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">마스터강좌기본정보 <span class="required">*</span>
+                    <label class="control-label col-md-2">마스터강좌기본정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <span  id="masterInfo"><p class="form-control-static">
+                            <p class="form-control-static">
+                            <span  id="masterInfo">
                                 [촬영형태] &nbsp;&nbsp;&nbsp;&nbsp;
                                 [진행상태] &nbsp;&nbsp;&nbsp;&nbsp;
                                 [제작월] &nbsp;&nbsp;&nbsp;&nbsp;
 							    [첨부파일]
-                                </p></span>
+                            </span>
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">맛보기경로 <span class="required">*</span>
+                    <label class="control-label col-md-2" >맛보기경로 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
@@ -77,67 +85,69 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">단강좌명 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="ProdName">단강좌명 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="item inline-block">
-                            <input type="text" id="LecName" name="LecName" required="required" class="form-control" title="단강좌명" value="{{ $data['wLecName'] }}" style="width: 400px">
+                            <input type="text" id="ProdName" name="ProdName" required="required" class="form-control" title="단강좌명" value="{{ $data['ProdName'] }}" style="width: 400px">
                         </div>
                     </div>
                     <label class="control-label col-md-2">단강좌명코드
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">@if($method == 'PUT') <b>{{ $data['wLecIdx'] }}</b>@else # 등록 시 자동 생성 @endif</p>
+                        <p class="form-control-static">@if($method == 'PUT') <b>{{ $data['LecIdx'] }}</b>@else # 등록 시 자동 생성 @endif</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prepareGrade">단강좌기본정보 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="SchoolYear">단강좌기본정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="item inline-block">
-                            <select name="prepareGrade" id="prepareGrade" required="required" class="form-control" title="운영사이트">
+                            <select name="SchoolYear" id="SchoolYear" required="required" class="form-control" title="대비학년도">
                                 <option value="">대비학년도</option>
+                                @for($i=(date('Y')+1); $i>=2010; $i--)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
                             </select>
-                            <select name="course_optionIdx" id="course_optionIdx"  required="required" class="form-control" title="과정">
+                            <select name="CourseIdx" id="CourseIdx"  required="required" class="form-control" title="과정">
                                 <option value="">과정</option>
                             </select>
-                            <select name="subject_optionIdx" id="subject_optionIdx"  required="required" class="form-control" title="과목">
+                            <select name="SubjectIdx" id="SubjectIdx"  required="required" class="form-control" title="과목">
                                 <option value="">과목</option>
                             </select>
                         </div>
                     </div>
-                    <label class="control-label col-md-2">강좌유형 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="LecKindCcd">강좌유형 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                        <input type="radio" name="" id="" class="flat" required="required" > 일반강좌
-                        <input type="radio" name="" id="" class="flat" required="required" > 특강
-                         <input type="radio" name="" id="" class="flat" required="required" > 직장인/재학생반
+                            @foreach($leckind_ccd as $key => $val)
+                                <input type="radio" name="LecKindCcd" value="{{$key}}" class="flat" required="required" @if($data['LecKindCcd']==$val) checked="checked"@endif> {{$val}}&nbsp;
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">강의회차/강의수 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="unitNumberCount">강의회차/강의수 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            [회차] <input type="text" name="" id="" value="" required="required" class="form-control" title="회차" style="width:70px;"> 회
+                            [회차] <input type="text" name="unitNumberCount" id="unitNumberCount" value="" required="required" class="form-control" title="회차" style="width:70px;" readonly> 회
                             &nbsp;&nbsp;&nbsp;
-                            [강의수] <input type="text" name="" id="" value="" required="required" class="form-control" title="강의수" style="width:70px;"> 강
-
+                            [강의수] <input type="text" name="unitCount" id="unitCount" value="" required="required" class="form-control" title="강의수" style="width:70px;" readonly> 강
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">수강기간/개강일 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="LecPeriod">수강기간/개강일 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            [수강기간] <input type="text" name="" id="" value="" required="required" class="form-control" title="수강기간" style="width:70px;"> 회
+                            [수강기간] <input type="number" name="LecPeriod" id="LecPeriod" value="" required="required" class="form-control" title="수강기간" style="width:70px;"> 일
                             &nbsp;&nbsp;&nbsp;
-                            [개강일] <input type="text" name="" id="" value="" required="required" class="form-control" title="개강일" style="width:70px;"> 강
+                            [개강일] <input type="text" name="LecStartDatm" id="LecStartDatm" value="" required="required" class="form-control datepicker" readonly title="개강일" style="width:100px;">
                         </div>
                     </div>
                 </div>
@@ -147,33 +157,50 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            [정상수강시간] <input type="text" name="" id="" value="" required="required" class="form-control" title="수강기간" style="width:70px;"> 일
-                            &nbsp;
-                            <select name="prepareGrade" id="prepareGrade" required="required" class="form-control" title="운영사이트">
-                                <option>배수제한없음</option>
+                            [정상수강시간] <input type="number" name="" id="" value="" required="required" class="form-control" title="수강기간" style="width:70px;"> 일
+                            <select name="WorkerMultipleLimitCcd" id="WorkerMultipleLimitCcd" required="required" class="form-control" title="수강배수">
+                                @foreach($multiplelimit_ccd as $key => $val)
+                                    <option value="{{$key}}">{{$val}}</option>
+                                @endforeach
                             </select>
                             &nbsp;&nbsp;&nbsp;
                             [배수적용수간기간] <input type="text" name="" id="" value="" required="required" class="form-control" title="수강기간" style="width:70px;"> 일
                             &nbsp;&nbsp;&nbsp;
                             [개강일] <input type="text" name="" id="" value="" required="required" class="form-control" title="수강기간" style="width:70px;">
                         </div>
+                        <BR><BR>
                         <div class="item inline-block">
                             [수강적용시간]
+                            &nbsp;
                             평일
                             <select name="" id="" required="" class="form-control" title="">
-                                <option>00</option>
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                <option value="{{$ii}}">{{$ii}}</option>
+                                @endfor
                             </select> 시
                             ~
                             <select name="" id="" required="" class="form-control" title="">
-                                <option>00</option>
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}">{{$ii}}</option>
+                                @endfor
                             </select> 시
                             &nbsp;&nbsp;|&nbsp;&nbsp;
+                            주말/공휴일
+                            &nbsp;
                             <select name="" id="" required="" class="form-control" title="">
-                                <option>00</option>
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}">{{$ii}}</option>
+                                @endfor
                             </select> 시
                             ~
                             <select name="" id="" required="" class="form-control" title="">
-                                <option>00</option>
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}">{{$ii}}</option>
+                                @endfor
                             </select> 시
                         </div>
                     </div>
@@ -184,16 +211,22 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <input type="text" name="" id="" value="" required="required" class="form-control" title="접수기간" style="width:70px;">
+                            <input type="text" name="" id="" value="" required="required" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
                             &nbsp;
                             <select name="" id="" required="" class="form-control" title="">
-                                <option>00</option>
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}">{{$ii}}</option>
+                                @endfor
                             </select> 시
                             ~
-                            <input type="text" name="" id="" value="" required="required" class="form-control" title="접수기간" style="width:70px;">
+                            <input type="text" name="" id="" value="" required="required" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
                             &nbsp;
                             <select name="" id="" required="" class="form-control" title="">
-                                <option>00</option>
+                                @for($i=0;$i<=23;$i++)
+                                    @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                    <option value="{{$ii}}">{{$ii}}</option>
+                                @endfor
                             </select> 시
                             &nbsp;&nbsp;
                             • 접수기간 미 입력시 ‘판매여부’로 강좌 노출 설정
@@ -202,42 +235,37 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">강좌제공구분 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-4 form-inline item">
-                        <div class="checkbox">
-                            <input type="checkbox" name="" id="" value="" class="flat" required="required""> PC+모바일
-                            &nbsp;
-                            <input type="checkbox" name="" id="" value="" class="flat" required="required"> PC
-                            &nbsp;
-                            <input type="checkbox" name="" id="" value="" class="flat" required="required"> 모바일
-                            &nbsp;
-                        </div>
-                    </div>
-                    <label class="control-label col-md-2" for="prof_name">PC제공구분 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="LecProvisionCcd">강좌제공구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
-                            <input type="radio" name="" id="" value="" required="required" class="flat"> 스트리밍+다운로드
+                            @foreach($lecprovision_ccd as $key => $val)
+                            <input type="radio" name="LecProvisionCcd" id="LecProvisionCcd" value="{{$key}}" class="flat" required="required"> {{$val}}
                             &nbsp;
-                            <input type="radio" name="" id="" value="" required="required" class="flat"> 스트리밍
-                            &nbsp;
-                            <input type="radio" name="" id="" value="" required="required" class="flat"> 다운로드
+                            @endforeach
+                        </div>
+                    </div>
+                    <label class="control-label col-md-2" for="PcProvisionCcd">PC제공구분 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item">
+                        <div class="radio">
+                            @foreach($contentprovision_ccd as $key => $val)
+                                <input type="radio" name="PcProvisionCcd" id="PcProvisionCcd" value="{{$key}}" class="flat" required="required"> {{$val}}
+                                &nbsp;
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">모바일제공구분 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="MobileProvisionCcd">모바일제공구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
-                            <input type="radio" name="" id="" value="" required="required" class="flat"> 스트리밍+다운로드
-                            &nbsp;
-                            <input type="radio" name="" id="" value="" required="required" class="flat"> 스트리밍
-                            &nbsp;
-                            <input type="radio" name="" id="" value="" required="required" class="flat"> 다운로드
-                            &nbsp;
+                            @foreach($contentprovision_ccd as $key => $val)
+                                <input type="radio" name="MobileProvisionCcd" id="MobileProvisionCcd" value="{{$key}}" class="flat" required="required"> {{$val}}
+                                &nbsp;
+                            @endforeach
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="">플레이어선택 <span class="required">*</span>
@@ -252,19 +280,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_name">수강배수정보 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="MultipleLimitCcd">수강배수정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <select name="" id="" required="" class="form-control" title="">
-                                <option>배수제한없음</option>
+                            <select name="MultipleLimitCcd" id="MultipleLimitCcd" required="required" class="form-control" title="">
+                                @foreach($multiplelimit_ccd as $key => $val)
+                                    <option value="{{$key}}">{{$val}}</option>
+                                @endforeach
                             </select>
                             &nbsp;&nbsp;
                             <div class="radio">
-                                <input type="radio" name="" id="" value="" required="required" class="flat"> 회차 시간에 배수 적용
+                                @foreach($multipleapply_ccd as $key => $val)
+                                <input type="radio" name="MultipleApplyCcd" id="MultipleApplyCcd" value="{{$key}}" required="required" class="flat"> {{$val}}
                                 &nbsp;
-                                <input type="radio" name="" id="" value="" required="required" class="flat"> 전체 강의시간에 배수적용
-                                [전체강의시간] <input type="text" name="" id="" value="" required="required" class="form-control" title="전체강의시간" style="width:70px;">
+                                @endforeach
+                                &nbsp;
+                                &nbsp;
+                                [전체강의시간] &nbsp;<input type="number" name="LecTime" id="LecTime" value="" required="required" class="form-control" title="전체강의시간" style="width:70px;">
                             </div>
                             <Br>
                             • 접수기간 미 입력시 ‘판매여부’로 강좌 노출 설정
@@ -286,42 +319,24 @@
                                     <th>판매가</th>
                                 </tr>
                                 </thead>
-                                <tr>
-                                    <th>PC+모바일 </th>
-                                    <td><input type="text" name="lecPrice_PM" id="lecPrice_PM" value=""  numberOnly="true" maxlength="8" class="form-control"> 원</td>
-									<td>
-                                        <select name="lecDiscountType_PM" id="lecDiscountType_PM" class="form-control">
-											<option value="1">%</option>
-											<option value="2">-</option>
-										</select>&nbsp;
-										<input type="text" name="lecDiscount_PM" id="lecDiscount_PM"  value="" numberOnly="true" maxlength="8" class="form-control">
-									</td>
-									<td><input type="text" name="lecSalesPrice_PM" id="lecSalesPrice_PM"   value="" readonly class="form-control"> 원</td>
-								</tr>
-								<tr>
-									<th>PC </th>
-									<td><input type="text" name="lecPrice_P" id="lecPrice_P" value=""  numberOnly="true" maxlength="8" class="form-control"> 원</td>
-									<td>
-                                        <select name="lecDiscountType_P" id="lecDiscountType_P" class="form-control">
-											<option value="1">%</option>
-											<option value="2">-</option>
-										</select>&nbsp;
-										<input type="text" name="lecDiscount_P" id="lecDiscount_P"  value="" numberOnly="true" maxlength="8" class="form-control">
-									</td>
-									<td><input type="text" name="lecSalesPrice_P" id="lecSalesPrice_P"   value="" readonly class="form-control"> 원</td>
-								</tr>
-								<tr>
-									<th>모바일 </th>
-									<td><input type="text" name="lecPrice_M" id="lecPrice_M" value=""  numberOnly="true" maxlength="8" class="form-control"> 원</td>
-									<td>
-                                        <select name="lecDiscountType_M" id="lecDiscountType_M" class="form-control">
-											<option value="1">%</option>
-											<option value="2">-</option>
-										</select>&nbsp;
-										<input type="text" name="lecDiscount_M" id="lecDiscount_M"  value="" numberOnly="true" maxlength="8" class="form-control">
-									</td>
-									<td><input type="text" name="lecSalesPrice_M" id="lecSalesPrice_M"   value="" readonly class="form-control"> 원</td>
-								</tr>
+
+                                @set($seq=0)
+                                @foreach($salestype_ccd as $key=>$val)
+                                    <tr>
+                                        <th>{{$val}} <input type="hidden" name="SalseTypeCcd[]" value="{{$key}}"></th>
+                                        <td><input type="number" name="SalePrice[]" id="SalePrice_{{$seq}}" value=""   maxlength="8" class="form-control"> 원</td>
+                                        <td>
+                                            <select name="SaleDiscType[]" id="SaleDiscType_{{$seq}}" class="form-control">
+                                                <option value="1">%</option>
+                                                <option value="2">-</option>
+                                            </select>&nbsp;
+                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$seq}}"  value="" maxlength="8" class="form-control">
+                                        </td>
+                                        <td><input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$seq}}"   value="" readonly class="form-control"> 원</td>
+                                    </tr>
+                                    @set($index = $index+1)
+                                @endforeach
+
                             </table>
 
                         </div>
@@ -356,11 +371,11 @@
                                         <input type='radio' name='mainFlag' value='' class="flat">
                                     </td>
                                     <td>교수명</td>
-                                    <td><input type='text' name='' value='' numberOnly='true' class="form-control" size="10"> 원</td>
-                                    <td><input type='text' name='' value='' numberOnly='true' class="form-control" size="10"> 원</td>
+                                    <td><input type='text' name='' value='' class="form-control" size="10"> 원</td>
+                                    <td><input type='text' name='' value='' class="form-control" size="10"> 원</td>
                                     <td> 0.12345678 </td>
-                                    <td><input type='text' name='' value='' numberOnly='true' class="form-control" size="5"> %</td>
-                                    <td><input type='radio' name='' value='' numberOnly='true' class="flat"></td>
+                                    <td><input type='text' name='' value='' class="form-control" size="5"> %</td>
+                                    <td><input type='radio' name='' value='' class="flat"></td>
                                 </tr>
                             </table>
 
@@ -764,8 +779,6 @@
                 </div>
 
 
-
-
                 @if(empty($lecidx) === false)
                     <div class="form-group">
                         <label class="control-label col-md-2">등록자
@@ -800,61 +813,7 @@
                 </div>
             </form>
 
-            @if(empty($lecidx) === false)
-                <div class="x_panel mt-10">
-                    <div class="x_content">
-                        <table id="list_ajax_table" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>회차</th>
-                                <th>영상제목/보조자료</th>
-                                <th>강의시간/북페이지</th>
-                                <th>영상경로</th>
-                                <th>촬영일/교수</th>
-                                <th>등록자</th>
-                                <th>등록일</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($data_unit as $row)
-                                <tr>
-                                    <td>
-                                        {{ $row['wUnitNum'] }}
-                                    </td>
-                                    <td>
-                                        {{ $row['wUnitName'] }}
-                                        @if(empty($row['wUnitAttachFile']) === false)
-                                            <br>
-                                            <p class="form-control-static ml-10 mr-10">
-                                                <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']) }}" target="_blank">
-                                                    [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile'] ) }}" target="_blank">{{ $row['wUnitAttachFile'] }}</a> ]
-                                            </p>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        {{ $row['wRuntime']  }}
-                                        <BR>
-                                        {{ $row['wBookPage']  }}
-                                    </td>
-                                    <td>
-                                        [고화질] {{ $row['wHD'] }}
-                                        <br>
-                                        [저화질] {{ $row['wLD'] }}
-                                    </td>
-                                    <td>
-                                        {{ $row['wShootingDate'] }}
-                                        <Br>
-                                        {{ $row['wProfName'] }}
-                                    </td>
-                                    <td>{{ $row['wRegDatm'] }}</td>
-                                    <td>{{ $row['wAdminName'] }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            @endif
+
 
         </div>
     </div>
@@ -879,6 +838,42 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
             });
+
+            /******************************** 수강료 계산 ********************************/
+            //원가입력시,	할인율/금액 입력시
+            $('#SalePrice_,#lecDiscount_PM').keyup(function() { priceCheck("PM") });
+            //할인적용
+            $("#lecDiscountType_PM").change(function() { priceCheck("PM") });
+            /******************************** 수강료 계산 ********************************/
+
+
+            //판매가격 산출
+            function priceCheck(strGubun) {
+
+                var salesprice= 0;
+
+                if($('#SalePrice_'+strGubun).val() != "") {
+
+                    // % 계산
+                    if($('#SaleDiscType_'+strGubun).val() == "1") {
+
+                        if($("#SaleRate_"+strGubun).val() != "") {
+                            salesprice = parseInt($('#SalePrice_'+strGubun).val()) - (parseInt($('#SalePrice_'+strGubun).val()) * ( parseInt($('#SaleRate_'+strGubun).val()) / 100 ))
+                        }
+                        // - 계산
+                    } else {
+
+                        if($("#lecDiscount_"+strGubun).val() != "") {
+
+                            salesprice = parseInt($('#SalePrice_'+strGubun).val()) - $('#SaleRate_'+strGubun).val()
+                        }
+                    }
+
+                    $('#RealSalePrice_'+strGubun).val(salesprice);
+
+                }
+            }
+
 
 
         });

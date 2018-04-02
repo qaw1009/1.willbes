@@ -247,7 +247,7 @@
                         @foreach($data_unit as $row)
                             <tr>
                                 <td>
-                                    {{ $row['wUnitNum'] }}
+                                    {{ $row['wUnitNum'] }}회차<br>{{ $row['wUnitLectureNum'] }}강
                                 </td>
                                 <td>
                                     {{ $row['wUnitName'] }}

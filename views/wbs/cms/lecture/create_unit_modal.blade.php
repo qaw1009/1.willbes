@@ -64,7 +64,9 @@
                                     <input type="hidden" name="wUnitIdx[]" id="wUnitIdx{{$loop->index}}" value="{{$row['wUnitIdx'] }}" >
                                     <td>{{ $loop->index }}</td>
                                     <td>
-                                        <input type="text" name="wUnitNum[]" id="wUnitNum{{$loop->index}}" required="required"  class="form-control" title="회차/강" value="{{ $row['wUnitNum'] }}" style="width: 80px"><BR>
+                                        <input type="number" name="wUnitNum[]" id="wUnitNum{{$loop->index}}" required="required"  class="form-control" title="회차" value="{{ $row['wUnitNum'] }}" style="width: 35px">회차
+                                        <input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum{{$loop->index}}" required="required"  class="form-control" title="강" value="{{ $row['wUnitLectureNum'] }}" style="width: 42px">강
+                                        <BR>
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$loop->index}}')">삭제</button>
                                     </td>
                                     <td>
@@ -90,10 +92,8 @@
                                         <BR>
                                         [저화질] <input type="text" name="wLD[]" id="wLD{{$loop->index}}" class="form-control" required="required" title="저화질" value="{{ $row['wLD'] }}" style="width: 180px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('LD','{{$loop->index}}')">보기</button>
-
                                     </td>
                                     <td>
-
                                         <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$loop->index}}" required="required" title="촬영일" value="{{$row['wShootingDate']}}" style="width: 90px" readonly>
                                         <Br>
                                         <select name="wProfIdx[]" id="wProfIdx{{$loop->index}}" required="required" class="form-control" title="교수">
@@ -117,14 +117,15 @@
                                     <input type="hidden" name="wUnitIdx[]" id="wUnitIdx{{$i}}" value="" >
                                     <td>{{ $i }}</td>
                                     <td>
-                                        <input type="text" name="wUnitNum[]" id="wUnitNum{{$i}}" required="required"  class="form-control" title="회차/강" value="" style="width: 80px"><BR>
+                                        <input type="number" name="wUnitNum[]" id="wUnitNum{{$i}}" required="required"  class="form-control" title="회차" value="" style="width: 35px">회차
+                                        <input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum{{$i}}" required="required"  class="form-control" title="강" value="" style="width: 42px">강
+                                        <BR>
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$i}}')">삭제</button>
                                     </td>
                                     <td>
                                         <input type="text" name="wUnitName[]" id="wUnitName{{$i}}" required="required"  class="form-control" title="영상제목" value="" style="width: 230px">
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$i}}" class="form-control" title="첨부자료">
-
                                     </td>
                                     <td>
                                         <input type="number" name="wRuntime[]" id="wRuntime{{$i}}" class="form-control" maxlength="5" required="required" title="강의시간" value="" style="width: 50px"> 분
@@ -190,14 +191,14 @@
                                 +'<input type="hidden" name="wUnitIdx[]" id="wUnitIdx'+seq+'" value="" >'
                                 +'<td>'+seq+'</td>'
                                 +'<td>'
-                                +'<input type="text" name="wUnitNum[]" id="wUnitNum'+seq+'" required="required"  class="form-control" title="회차/강" value="" style="width: 80px"><BR>'
+                                +'<input type="number" name="wUnitNum[]" id="wUnitNum'+seq+'" required="required"  class="form-control" title="회차" value="" style="width: 35px">회차'
+                                +'<input type="number" name="wUnitLectureNum[]" id="wUnitLectureNum'+seq+'" required="required"  class="form-control" title="강" value="" style="width: 42px">강<BR>'
                                 +'<button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete(\''+seq+'\')">삭제</button>'
                                 +'</td>'
                                 +'<td>'
                                 +'<input type="text" name="wUnitName[]" id="wUnitName'+seq+'" required="required"  class="form-control" title="영상제목" value="" style="width: 230px">'
                                 +'<BR>'
                                 +'<input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile'+seq+'" class="form-control" title="첨부자료">'
-
                                 +'</td>'
                                 +'<td>'
                                 +'<input type="text" name="wRuntime[]" id="wRuntime'+seq+'" class="form-control" required="required" title="강의시간" value="" style="width: 50px"> 분'
@@ -293,7 +294,7 @@
         @stop
 
         @section('add_buttons')
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">저장</button>
         @endsection
 
         @section('layer_footer')

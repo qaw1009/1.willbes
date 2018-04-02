@@ -53,6 +53,7 @@ class UnitModel extends WB_Model
                 $seq = element('seq', $input);
                 $wUnitIdx = element('wUnitIdx', $input);
                 $wUnitNum = element('wUnitNum', $input);
+                $wUnitLectureNum= element('wUnitLectureNum', $input);
                 $wUnitName = element('wUnitName', $input);
                 $wRuntime = element('wRuntime', $input);
                 $wBookPage = element('wBookPage', $input);
@@ -90,6 +91,7 @@ class UnitModel extends WB_Model
                         // 기본항목
                         $input_data = [
                             'wUnitNum' => $wUnitNum[$i]
+                            ,'wUnitLectureNum' => $wUnitLectureNum[$i]
                             ,'wUnitName' => $wUnitName[$i]
                             ,'wRuntime' => $wRuntime[$i]
                             ,'wBookPage' => $wBookPage[$i]

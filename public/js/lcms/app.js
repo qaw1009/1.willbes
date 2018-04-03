@@ -331,7 +331,7 @@ function init_iCheck() {
     });
 
     // iCheck - Datatable
-    $('.dataTables_wrapper').on('draw.dt', function() {
+    $('.dataTables_wrapper').on('draw.dt column-reorder.dt', function() {
         $('input[type="checkbox"].flat, input[type="radio"].flat').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'

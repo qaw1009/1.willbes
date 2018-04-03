@@ -58,7 +58,8 @@ class UnitModel extends WB_Model
                 $wRuntime = element('wRuntime', $input);
                 $wBookPage = element('wBookPage', $input);
                 $wHD = element('wHD', $input);
-                $wLD = element('wLD', $input);
+                $wSD = element('wSD', $input);
+                $wWD = element('wWD', $input);
                 $wShootingDate = element('wShootingDate', $input);
                 $wProfIdx = element('wProfIdx', $input);
 
@@ -96,7 +97,8 @@ class UnitModel extends WB_Model
                             ,'wRuntime' => $wRuntime[$i]
                             ,'wBookPage' => $wBookPage[$i]
                             ,'wHD' => $wHD[$i]
-                            ,'wLD' => $wLD[$i]
+                            ,'wSD' => $wSD[$i]
+                            ,'wWD' => $wWD[$i]
                             ,'wShootingDate' => $wShootingDate[$i]
                             ,'wProfIdx' => $wProfIdx[$i]
                             ,'wContentTypeCcd'=>'106001'         //강의유형 : 임의로 고정

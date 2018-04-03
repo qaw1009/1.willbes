@@ -90,8 +90,11 @@
                                         [고화질] <input type="text" name="wHD[]" id="wHD{{$loop->index}}" class="form-control" required="required" title="고화질" value="{{ $row['wHD'] }}" style="width: 180px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$loop->index}}')">보기</button>
                                         <BR>
-                                        [저화질] <input type="text" name="wLD[]" id="wLD{{$loop->index}}" class="form-control" required="required" title="저화질" value="{{ $row['wLD'] }}" style="width: 180px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('LD','{{$loop->index}}')">보기</button>
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$loop->index}}" class="form-control" required="required" title="저화질" value="{{ $row['wSD'] }}" style="width: 180px">
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$loop->index}}')">보기</button>
+                                        <BR>
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control" title="와이드" value="{{ $row['wWD'] }}" style="width: 180px">
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$loop->index}}" required="required" title="촬영일" value="{{$row['wShootingDate']}}" style="width: 90px" readonly>
@@ -136,9 +139,11 @@
                                         [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control" required="required" title="고화질" value="" style="width: 180px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$i}}')">보기</button>
                                         <BR>
-                                        [저화질] <input type="text" name="wLD[]" id="wLD{{$i}}" class="form-control" required="required" title="저화질" value="" style="width: 180px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('LD','{{$i}}')">보기</button>
-
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" required="required" title="일반화질" value="" style="width: 180px">
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$i}}')">보기</button>
+                                        <BR>
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" title="와이드" value="" style="width: 180px">
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$i}}" required="required" title="촬영일" value="" style="width: 90px" readonly>
@@ -209,8 +214,11 @@
                                 +'[고화질] <input type="text" name="wHD[]" id="wHD'+seq+'" class="form-control" required="required" title="고화질" value="" style="width: 180px">'
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'HD\',\''+seq+'\')">보기</button>'
                                 +'<BR>'
-                                +'[저화질] <input type="text" name="wLD[]" id="wLD'+seq+'" class="form-control" required="required" title="저화질" value="" style="width: 180px">'
-                                +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'LD\',\''+seq+'\')">보기</button>'
+                                +'[일반화질] <input type="text" name="wSD[]" id="wSD'+seq+'" class="form-control" required="required" title="일반화질" value="" style="width: 180px">'
+                                +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'SD\',\''+seq+'\')">보기</button>'
+                                +'<BR>'
+                                +'[와이드] <input type="text" name="wWD[]" id="wWD'+seq+'" class="form-control" title="와이드" value="" style="width: 180px">'
+                                +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
                                 +'</td>'
                                 +'<td>'
                                 +'<input type="text" class="form-control datepicker" name="wShootingDate[]" id="wShootingDate'+seq+'" required="required" title="촬영일" value="" style="width: 90px" readonly>'

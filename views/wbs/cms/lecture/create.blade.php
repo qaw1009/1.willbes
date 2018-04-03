@@ -267,7 +267,9 @@
                                 <td>
                                     [고화질] {{ $row['wHD'] }}
                                     <br>
-                                    [저화질] {{ $row['wLD'] }}
+                                    [일반화질] {{ $row['wSD'] }}
+                                    <br>
+                                    [와이드] {{ $row['wWD'] }}
                                 </td>
                                 <td>
                                     {{ $row['wShootingDate'] }}

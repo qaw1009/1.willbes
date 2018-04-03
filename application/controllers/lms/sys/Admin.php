@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', 'sys/role', 'sys/admin');
+    protected $models = array('sys/wCode', 'sys/role', 'sys/admin');
     protected $helpers = array();
     private $_ccd = [
         'Dept' => '109',
@@ -21,7 +21,7 @@ class Admin extends \app\controllers\BaseController
     public function index()
     {
         // 사용하는 코드값 조회
-        $codes = $this->codeModel->getCcdInArray(array_values($this->_ccd));
+        $codes = $this->wCodeModel->getCcdInArray(array_values($this->_ccd));
 
         // 권한유형 조회
         $roles = $this->roleModel->getRoleArray();
@@ -62,7 +62,7 @@ class Admin extends \app\controllers\BaseController
             $list = $this->adminModel->listAdmin(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['wAdminIdx' => 'desc']);
 
             // 사용하는 코드값 조회
-            $codes = $this->codeModel->getCcdInArray(array_values($this->_ccd));
+            $codes = $this->wCodeModel->getCcdInArray(array_values($this->_ccd));
 
             // 코드값에 해당하는 코드명을 배열 원소로 추가
             $list = array_data_fill($list, [
@@ -93,7 +93,7 @@ class Admin extends \app\controllers\BaseController
         }
 
         // 사용하는 코드값 조회
-        $codes = $this->codeModel->getCcdInArray(array_values($this->_ccd));
+        $codes = $this->wCodeModel->getCcdInArray(array_values($this->_ccd));
 
         // 소속 / 직급명
         $data['wAdminDeptCcdName'] = element(element('wAdminDeptCcd', $data), element($this->_ccd['Dept'], $codes));

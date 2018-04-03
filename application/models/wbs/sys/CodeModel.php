@@ -48,7 +48,6 @@ class CodeModel extends WB_Model
         return $codes;
     }
 
-
     /**
      * @param array $arr_condition
      * @return mixed
@@ -73,7 +72,6 @@ class CodeModel extends WB_Model
         return $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
     }
 
-
     /**
      * 그룹유형코드 정보 및 세부코드 노출순서 추출 (하위코드 등록을 윈한 정보 조회)
      * @param $group_ccd
@@ -87,7 +85,6 @@ class CodeModel extends WB_Model
         ]);
     }
 
-    
     /**
      * 세부항목코드 노출순서 추출
      * @param $groupCcd
@@ -100,7 +97,6 @@ class CodeModel extends WB_Model
         ])['NextOrderNum'];
     }
 
-    
     /**
      * 코드수정을 위한 정보 추출
      * @param $ccd
@@ -120,7 +116,6 @@ class CodeModel extends WB_Model
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
-
 
     /**
      * 코드정보 저장
@@ -217,5 +212,4 @@ class CodeModel extends WB_Model
 
         return true;
     }
-
 }

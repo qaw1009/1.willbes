@@ -12,21 +12,6 @@ class ProfessorModel extends WB_Model
         parent::__construct('wbs');
     }
 
-
-    /**
-     * 교수 코드/이름 목록 조회
-     * @return array
-     */
-    public function getProfessorArray()
-    {
-        return $this->_conn->getListResult($this->_table, 'wProfIdx, wProfId, wProfName', [
-            'EQ' => ['wIsUse' => 'Y', 'wIsStatus' => 'Y']
-        ], null, null, [
-            'wProfName' => 'asc'
-        ]);
-        
-    }
-
     /**
      * 교수 기본정보 목록 조회
      * @param $is_count
@@ -84,6 +69,19 @@ class ProfessorModel extends WB_Model
         $query = $this->_conn->query('select ' . $colum . $from . $order_by_offset_limit, [$prof_idx]);
 
         return $query->result_array();
+    }
+
+    /**
+     * 교수 코드/이름 목록 조회
+     * @return array
+     */
+    public function getProfessorArray()
+    {
+        return $this->_conn->getListResult($this->_table, 'wProfIdx, wProfId, wProfName', [
+            'EQ' => ['wIsUse' => 'Y', 'wIsStatus' => 'Y']
+        ], null, null, [
+            'wProfName' => 'asc'
+        ]);
     }
 
     /**

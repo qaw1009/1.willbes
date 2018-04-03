@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', 'sys/loginLog');
+    protected $models = array('sys/wCode', 'sys/loginLog');
     protected $helpers = array();
 
     public function __construct()
@@ -33,7 +33,7 @@ class Home extends \app\controllers\BaseController
         $list = $this->loginLogModel->listTopLoginLog($arr_condition, 15);
         if (count($list) > 0) {
             // 사용하는 코드값 조회
-            $login_log_ccds = $this->codeModel->getCcd('117');
+            $login_log_ccds = $this->wCodeModel->getCcd('117');
 
             // 코드값에 해당하는 코드명을 배열 원소로 추가
             $list = array_data_fill($list, [

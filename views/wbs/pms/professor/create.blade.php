@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="admin_desc">맛보기영상경로
+                    <label class="control-label col-md-2" for="sample_url">맛보기영상경로
                     </label>
                     <div class="col-md-9 item">
                         <input type="text" id="sample_url" name="sample_url" class="form-control optional" pattern="url" title="맛보기영상경로" value="{{ $data['wSampleUrl'] }}">

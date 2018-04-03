@@ -10,7 +10,7 @@ class SiteGroup
         $this->_CI =& get_instance();
 
         // load model
-        $this->_CI->load->_loadModels(['sys/siteGroup']);
+        $this->_CI->load->loadModels(['sys/siteGroup']);
     }
 
     /**

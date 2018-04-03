@@ -164,7 +164,7 @@
                     </div>
                     <div class="col-md-6">
                         @if(empty($data['Logo']) === false)
-                        <p class="form-control-static"><a href="{{ $data['Logo'] }}" rel="popup-image">{{ str_last_pos_after($data['Logo'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="logo"><i class="fa fa-times"></i></a></p>
+                        <p class="form-control-static"><a href="{{ $data['Logo'] }}" rel="popup-image">{{ str_last_pos_after($data['Logo'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="logo"><i class="fa fa-times red"></i></a></p>
                         @endif
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                     </div>
                     <div class="col-md-6">
                         @if(empty($data['Favicon']) === false)
-                        <p class="form-control-static"><a href="#none">{{ str_last_pos_after($data['Favicon'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="favicon"><i class="fa fa-times"></i></a></p>
+                        <p class="form-control-static"><a href="#none">{{ str_last_pos_after($data['Favicon'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="favicon"><i class="fa fa-times red"></i></a></p>
                         @endif
                     </div>
                 </div>

@@ -21,7 +21,7 @@ trait InitController
         }
 
         // 모델 자동 로드
-        $this->load->_loadModels($this->models);
+        $this->load->loadModels($this->models);
 
         // 헬퍼 자동 로드
         $this->load->helper($this->helpers);

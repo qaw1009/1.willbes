@@ -11,13 +11,6 @@
         <input type="hidden" name="idx" value="{{ $idx }}"/>
 @endsection
 
-@php
-    $disabled = '';
-    if($method == 'PUT') {
-        $disabled = "disabled";
-    }
-@endphp
-
 @section('layer_content')
     <div class="form-group form-group-sm">
         <div class="x_title text-right">
@@ -29,7 +22,7 @@
         <label class="control-label col-md-2" for="site_code">운영사이트 <span class="required">*</span>
         </label>
         <div class="col-md-4 item">
-            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', $disabled) !!}
+            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
         </div>
         <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
         </label>

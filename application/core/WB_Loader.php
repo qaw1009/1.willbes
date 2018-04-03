@@ -18,7 +18,7 @@ class WB_Loader extends CI_Loader
      * 모델 로드
      * @param array $models
      */
-    public function _loadModels($models = [])
+    public function loadModels($models = [])
     {
         foreach ($models as $key => $value) {
             if (is_int($key)) {

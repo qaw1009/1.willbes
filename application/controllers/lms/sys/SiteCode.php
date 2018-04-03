@@ -17,7 +17,7 @@ class SiteCode
         $this->_CI =& get_instance();
 
         // load model
-        $this->_CI->load->_loadModels(['sys/site', 'sys/siteGroup']);
+        $this->_CI->load->loadModels(['sys/site', 'sys/siteGroup']);
     }
 
     /**

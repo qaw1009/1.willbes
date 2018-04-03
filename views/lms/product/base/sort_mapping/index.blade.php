@@ -44,13 +44,16 @@
             <table id="list_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="searching searching_site_code rowspan">사이트</th>
-                    <th class="searching searching_is_use rowspan">대분류</th>
-                    <th class="searching searching_is_use">중분류</th>
+                    <th rowspan="2" class="searching searching_site_code rowspan pb-30">사이트</th>
+                    <th rowspan="2" class="searching searching_is_use rowspan pb-30">대분류</th>
+                    <th rowspan="2" class="searching searching_is_use pb-30">중분류</th>
+                    <th colspan="2" style="border-width: 1px; border-left: 0; border-bottom: 0;">소트매핑조건</th>
+                    <th rowspan="2" class="pb-30">등록자</th>
+                    <th rowspan="2" class="pb-30">등록일</th>
+                </tr>
+                <tr>
                     <th class="searching_no_category">과목연결</th>
-                    <th class="searching_no_complex">복합연결</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
+                    <th class="searching_no_complex" style="border-right-width: 1px;">복합연결</th>
                 </tr>
                 </thead>
                 <tbody>

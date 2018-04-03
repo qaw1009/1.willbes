@@ -13,9 +13,10 @@ class AdminAuthHook
         '/lcms/auth/regist/store',
     ];
 
-    // 메뉴 권한 체크 제외 URI - /{directory?}/{controller}/{method?}
+    // 메뉴 권한 체크 제외 URI - /{directory?}/{controller?}/{method?}
     protected $perm_excepts = [
         '/home/',
+        '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
         '/sys/adminSettings',

@@ -283,8 +283,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     border-bottom: 1px solid #ddd;
 }
 .form-horizontal .input-label {
-    padding-left: 4px;
-    margin-right: 20px;
+    padding-left: 2px;
+    margin-right: 10px;
+}
+.form-horizontal .input-label:last-child {
+    margin-right: 0;
 }
 
 /* display */

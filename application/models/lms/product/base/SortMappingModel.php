@@ -67,50 +67,13 @@ class SortMappingModel extends WB_Model
     }
 
     /**
-     * 복합연결 목록 조회
-     * @param $site_code
-     * @param $cate_code
-     * @param $group_child_ccd
-     * @return mixed
-     */
-    public function listChildSubjectMapping($site_code, $cate_code, $group_child_ccd)
-    {
-        $colum = 'PSC.ChildCcd, max(CC.CcdName) as ChildName, GROUP_CONCAT(PS.SubjectName order by PS.SubjectIdx asc separator ", ") as SubjectNames';
-        $from = '
-            from ' . $this->_table['site'] . ' as S
-                inner join ' . $this->_table['category'] . ' as C
-                    on S.SiteCode = C.SiteCode
-                inner join ' . $this->_table['subject'] . ' as PS
-                    on S.SiteCode = PS.SiteCode
-                inner join ' . $this->_table['subject_r_category_r_code'] . ' as PSC
-                    on S.SiteCode = PSC.SiteCode and C.CateCode = PSC.CateCode and PS.SubjectIdx = PSC.SubjectIdx
-                inner join ' . $this->_table['code'] . ' as CC
-                    on CC.Ccd = PSC.ChildCcd            
-        ';
-        $where = '
-            where S.SiteCode = ? and S.IsStatus = "Y"
-                and C.CateCode = ? and C.IsStatus = "Y"
-                and CC.GroupCcd = ? and CC.IsUse = "Y" and CC.IsStatus = "Y"                
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"                           
-                and PSC.IsStatus = "Y"
-        ';
-        $group_by = ' group by PSC.ChildCcd';
-        $order_by = ' order by PSC.ChildCcd asc';
-
-        // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $group_by . $order_by, [$site_code, $cate_code, $group_child_ccd]);
-
-        return $query->result_array();
-    }
-
-    /**
-     * 과목 연결 데이터 조회
+     * 소트맵핑 과목 연결 데이터 조회
      * @param $conn_type
      * @param $site_code
      * @param $cate_code
      * @param string $child_ccd
      * @return mixed
-     */   
+     */
     public function listSubjectMapping($conn_type, $site_code, $cate_code, $child_ccd = '')
     {
         $_table_key = 'subject_r_category';
@@ -143,6 +106,43 @@ class SortMappingModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by, $_binds);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 소트맵핑 복합연결 목록 조회
+     * @param $site_code
+     * @param $cate_code
+     * @param $group_child_ccd
+     * @return mixed
+     */
+    public function listChildSubjectMapping($site_code, $cate_code, $group_child_ccd)
+    {
+        $colum = 'PSC.ChildCcd, max(CC.CcdName) as ChildName, GROUP_CONCAT(PS.SubjectName order by PS.SubjectIdx asc separator ", ") as SubjectNames';
+        $from = '
+            from ' . $this->_table['site'] . ' as S
+                inner join ' . $this->_table['category'] . ' as C
+                    on S.SiteCode = C.SiteCode
+                inner join ' . $this->_table['subject'] . ' as PS
+                    on S.SiteCode = PS.SiteCode
+                inner join ' . $this->_table['subject_r_category_r_code'] . ' as PSC
+                    on S.SiteCode = PSC.SiteCode and C.CateCode = PSC.CateCode and PS.SubjectIdx = PSC.SubjectIdx
+                inner join ' . $this->_table['code'] . ' as CC
+                    on CC.Ccd = PSC.ChildCcd            
+        ';
+        $where = '
+            where S.SiteCode = ? and S.IsStatus = "Y"
+                and C.CateCode = ? and C.IsStatus = "Y"
+                and CC.GroupCcd = ? and CC.IsUse = "Y" and CC.IsStatus = "Y"                
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"                           
+                and PSC.IsStatus = "Y"
+        ';
+        $group_by = ' group by PSC.ChildCcd';
+        $order_by = ' order by PSC.ChildCcd asc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $colum . $from . $where . $group_by . $order_by, [$site_code, $cate_code, $group_child_ccd]);
 
         return $query->result_array();
     }

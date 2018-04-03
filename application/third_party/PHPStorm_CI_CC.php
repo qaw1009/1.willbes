@@ -99,16 +99,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property AuthorModel $authorModel                         Author Model Class
  * @property BookModel $bookModel                              Book Model Class
  ***************** LMS ***********************
- * @property WCodeModel $wCodeModel                         WBS Code Model Class
- * @property WProfessorModel $wProfessorModel              WBS Professor Model Class
- * @property SiteModel $siteModel                                 Site Model Class
- * @property SiteGroupModel $siteGroupModel                  Site Group Model Class
- * @property CategoryModel $categoryModel                   Category Model Class
- * @property CourseModel $courseModel                         Product Course Model Class
- * @property SubjectModel $subjectModel                       Product Subject Model Class
- * @property SortMappingModel $sortMappingModel           Product Sort Mapping Model Class
- * @property BoardMasterModel $boardMasterModel          BoardMaster Model Class
- * @property BoardModel $boardModel                            Board Model Class
+ * @property WCodeModel $wCodeModel                                             WBS Code Model Class
+ * @property SearchWProfessorModel $searchWProfessorModel               Search WBS Professor Model Class
+ * @property SearchCategoryModel $searchCategoryModel                     Search Category Model Class
+ * @property SearchSubjectMappingModel $searchSubjectMappingModel   Search Category Subject Mapping Model Class
+ * @property SiteModel $siteModel                                                     Site Model Class
+ * @property SiteGroupModel $siteGroupModel                                      Site Group Model Class
+ * @property CategoryModel $categoryModel                                       Category Model Class
+ * @property CourseModel $courseModel                                             Product Course Model Class
+ * @property SubjectModel $subjectModel                                           Product Subject Model Class
+ * @property SortMappingModel $sortMappingModel                               Product Sort Mapping Model Class
+ * @property BoardMasterModel $boardMasterModel                               BoardMaster Model Class
+ * @property BoardModel $boardModel                                                 Board Model Class
  */
 class PHPStorm_CI_CC
 {

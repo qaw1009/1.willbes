@@ -5,14 +5,14 @@
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal searching" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" value="{{ $site_code }}"/>
 @endsection
 
 @section('layer_content')
     <div class="form-group form-group-sm mb-0">
-        <p class="form-control-static"><span class="required">*</span> 검색한 교수를 선택해 주세요. (다중 선택 불가능합니다.)</p>
+        <p class="form-control-static"><span class="required">*</span> 검색한 카테고리 정보를 선택해 주세요. (다중 선택 불가능합니다.)</p>
     </div>
     <div class="form-group form-group-bordered pt-10 pb-5">
         <label class="control-label col-md-2 pt-5">통합검색
@@ -82,10 +82,12 @@
                     return;
                 }
 
-                var data = $(this).data('cate-route-name');
-                $('#selected_category').html(data);
+                var $parent_regi_form = $('#regi_form');
+                var $parent_selected_category = $('#selected_category');
+                var that = $(this);
 
-                $regi_form.find('input[name="cate_code"]').val($(this).data('cate-code'));
+                $parent_regi_form.find('input[name="cate_code"]').val(that.data('cate-code'));
+                $parent_selected_category.html(that.data('cate-route-name'));
 
                 $("#pop_modal").modal('toggle');
             });

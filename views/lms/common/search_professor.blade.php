@@ -5,7 +5,7 @@
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal searching" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
 @endsection
 
@@ -85,10 +85,13 @@
                     return;
                 }
 
-                var data = $(this).data('prof-idx') + ' | ' + $(this).data('prof-name') + ' | ' + $(this).data('prof-id') + ' | ' + $(this).data('is-use');
-                $('#selected_professor').html(data);
+                var $parent_regi_form = $('#regi_form');
+                var $parent_selected_professor = $('#selected_professor');
+                var that = $(this);
+                var data = that.data('prof-idx') + ' | ' + that.data('prof-name') + ' | ' + that.data('prof-id') + ' | ' + (that.data('is-use') === 'Y' ? '사용' : '미사용');
 
-                $regi_form.find('input[name="wprof_idx"]').val($(this).data('prof-idx'));
+                $parent_regi_form.find('input[name="wprof_idx"]').val(that.data('prof-idx'));
+                $parent_selected_professor.html(data);
 
                 $("#pop_modal").modal('toggle');
             });

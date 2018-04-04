@@ -127,4 +127,13 @@
   <term name="일시정지" physicalName="Pause"/>
   <term name="연장" physicalName="Exten"/>
   <term name="고객센터" description="Customer Service" physicalName="Cs"/>
+  <term name="형태" physicalName="Pattern"/>
+  <term name="참조" description="Reference" physicalName="Refer"/>
+  <term name="데이터" physicalName="Data" physicalDescription="Data"/>
+  <term name="자료" physicalName="Data" physicalDescription="Data"/>
+  <term name="자식" physicalName="Child"/>
+  <term name="학습" physicalName="Learn"/>
+  <term name="정산" physicalName="Calc"/>
+  <term name="[율]" physicalName="Rate"/>
+  <term name="[률]" physicalName="Rate"/>
 </tm:TermDictionary>

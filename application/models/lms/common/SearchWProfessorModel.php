@@ -28,7 +28,7 @@ class SearchWProfessorModel extends WB_Model
             $colum = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = 'P.wProfIdx, P.wProfId, P.wProfName, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
+            $colum = 'P.wProfIdx, P.wProfId, P.wProfName, P.wProfNickName, P.wSampleUrl, P.wProfProfile, P.wBookContent, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -38,7 +38,7 @@ class SearchWProfessorModel extends WB_Model
             from ' . $this->_table['professor'] . ' as P
                 left join ' . $this->_table['admin'] . ' as A 
                 on P.wRegAdminIdx = A.wAdminIdx
-            where P.wIsStatus = "Y"  
+            where P.wIsUse = "Y" and P.wIsStatus = "Y"  
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -363,23 +363,25 @@ function init_datatable() {
     if(typeof $search_form !== 'undefined') {
         $search_form.submit(function(e) {
             e.preventDefault();
-            $datatable.draw();
+            if ($(this).hasClass('searching') === true) {
+                datatableSearching();
+            } else {
+                $datatable.draw();
+            }
         });
-        
+
         // searching: true 옵션일 경우 검색
-        $('#search_form.searching, #_search_form.searching').submit(function(e) {
-            e.preventDefault();
-            datatableSearching();
-        });
-        
-        $('#search_form.searching, #_search_form.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
+        $search_form.filter('.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
             datatableSearching();
         });
 
         // 사이트 탭 클릭
-        $('#search_form.searching > .tabs-site-code, #_search_form.searching > .tabs-site-code').on('click', 'li > a', function() {
-            $site_code = $(this).data('site-code');
-            datatableSearching();
+        $search_form.find('.tabs-site-code').on('click', 'li > a', function() {
+            if (typeof $site_code !== 'undefined') {
+                $site_code = $(this).data('site-code');
+            }
+            $search_form.find('input[name="search_site_code"]').val($(this).data('site-code'));
+            $search_form.submit();
         });
     }
 }

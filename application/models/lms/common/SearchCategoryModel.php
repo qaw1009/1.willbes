@@ -45,11 +45,11 @@ class SearchCategoryModel extends WB_Model
                 inner join ' . $this->_table['category'] . ' as C
                     on S.SiteCode = C.SiteCode
                 left join ' . $this->_table['category'] . ' as PC
-                    on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
+                    on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
                 inner join ' . $this->_table['admin'] . ' as A
                     on C.RegAdminIdx = A.wAdminIdx
-            where S.IsStatus = "Y"
-                and C.IsStatus = "Y"             
+            where S.IsUse = "Y" and S.IsStatus = "Y"
+                and C.IsUse = "Y" and C.IsStatus = "Y"             
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

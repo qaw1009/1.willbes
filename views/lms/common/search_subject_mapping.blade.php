@@ -74,7 +74,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" id="_subject_mapping_' + row.CateCode + '_' + row.SubjectIdx + '" name="_subject_mapping_code" class="flat" value="' + row.CateCode + '_' + row.SubjectIdx + '" data-subject-mapping-route-name="' + row.CateSubjectRouteName + '"/>';
+                        return '<input type="checkbox" id="_subject_mapping_' + row.CateCode + '_' + row.SubjectIdx + '" name="_subject_mapping_code" class="flat" value="' + row.CateCode + '_' + row.SubjectIdx + '" data-row-idx="' + meta.row + '"/>';
                     }},
                     {'data' : 'CateSubjectRouteName'},
                     {'data' : 'RegAdminName'},
@@ -95,12 +95,13 @@
             $datatable.on('ifChanged', 'input[name="_subject_mapping_code"]', function() {
                 var _selected_subject_mapping = $('#_selected_subject_mapping');
                 var that = $(this);
-                var data = that.val();
+                var row = $datatable.row(that.data('row-idx')).data();
+                var val = that.val();
 
                 if (that.prop('checked') === true) {
-                    _selected_subject_mapping.append('<li id="_selected_subject_mapping_' + data + '" data-subject-mapping-code="' + data + '" class="mb-5">' + that.data('subject-mapping-route-name') + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
+                    _selected_subject_mapping.append('<li id="_selected_subject_mapping_' + val + '" data-subject-mapping-code="' + val + '" class="mb-5">' + row.CateSubjectRouteName + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
                 } else {
-                    _selected_subject_mapping.find('#_selected_subject_mapping_' + data).remove();
+                    _selected_subject_mapping.find('#_selected_subject_mapping_' + val).remove();
                 }
             });
 

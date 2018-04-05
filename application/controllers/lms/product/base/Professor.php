@@ -28,13 +28,14 @@ class Professor extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'IsUse' => $this->_reqP('search_is_use'),
+                'U.SiteCode' => $this->_reqP('search_site_code'),
+                'U.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'P.ProfIdx' => $this->_reqP('search_value'),
-                    'WP.wProfId' => $this->_reqP('search_value'),
-                    'WP.wProfName' => $this->_reqP('search_value')
+                    'U.ProfIdx' => $this->_reqP('search_value'),
+                    'U.wProfId' => $this->_reqP('search_value'),
+                    'U.wProfName' => $this->_reqP('search_value')
                 ]
             ]
         ];
@@ -43,7 +44,7 @@ class Professor extends \app\controllers\BaseController
         $count = $this->professorModel->listProfessor(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->professorModel->listProfessor(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['P.ProfIdx' => 'desc']);
+            $list = $this->professorModel->listProfessor(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['U.ProfIdx' => 'desc']);
         }
 
         return $this->response([
@@ -76,7 +77,8 @@ class Professor extends \app\controllers\BaseController
         $this->load->view('product/base/professor/create', [
             'method' => $method,
             'idx' => $idx,
-            'data' => $data
+            'data' => $data,
+            'arr_bm_idx' => $this->professorModel->_bm_idx
         ]);
     }
 
@@ -86,8 +88,11 @@ class Professor extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'course_name', 'label' => '교수명', 'rules' => 'trim|required'],
+            ['field' => 'wprof_idx', 'label' => '교수선택', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_nickname', 'label' => '교수닉네임', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'subject_mapping_code[]', 'label' => '카테고리 정보', 'rules' => 'trim|required'],
+            ['field' => 'prof_curriculum', 'label' => '커리큘럼', 'rules' => 'trim|required'],
         ];
 
         if (empty($this->_reqP('idx')) === true) {
@@ -107,26 +112,7 @@ class Professor extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->courseModel->{$method . 'Course'}($this->_reqP(null, false));
-
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * 교수 관리 정렬변경
-     */
-    public function reorder()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->courseModel->modifyCourseReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->professorModel->{$method . 'Professor'}($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

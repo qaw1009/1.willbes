@@ -69,6 +69,24 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('ends_with')) {
+    /**
+     * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 끝나는지 여부 체크
+     * @param $haystack
+     * @param $needles
+     * @return bool
+     */
+    function ends_with($haystack, $needles)
+    {
+        foreach ((array) $needles as $needle) {
+            if ((string) $needle === substr($haystack, -strlen($needle))) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 if (!function_exists('error_result')) {
     /**
      * return exception error

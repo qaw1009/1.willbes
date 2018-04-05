@@ -55,6 +55,7 @@ class SortMappingModel extends WB_Model
                 on U.LastRegAdminIdx = A.wAdminIdx 
         ';
 
+        // 사이트 권한 추가
         $arr_condition['IN']['U.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

@@ -228,6 +228,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     background: #34495e !important;
     border: 1px solid #34495e !important;
 }
+.bg-info {
+    background-color: #d9edf7 !important;
+}
 .no-bgcolor {
     background: transparent;
 }

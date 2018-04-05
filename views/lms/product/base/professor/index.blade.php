@@ -87,15 +87,17 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'SiteName'},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'ProfId'},
-                    {'data' : 'ProfName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.wProfIdx + '"><u>' + data + '</u></a>';
+                    {'data' : 'ProfIdx'},
+                    {'data' : 'wProfId'},
+                    {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
+                        return '<a href="#" class="btn-modify" data-idx="' + row.ProfIdx + '"><u class="blue">' + data + '</u></a>';
                     }},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'wProfIdx'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return row.CateName + ' > ' + row.SubjectName;
+                    }},
+                    {'data' : 'IsNoticeBoard'},
+                    {'data' : 'IsQnaBoard'},
+                    {'data' : 'IsDataBoard'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

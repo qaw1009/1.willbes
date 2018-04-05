@@ -66,7 +66,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'CateRouteName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-select" data-cate-code="' + row.CateCode + '" data-cate-name="' + row.CateName + '" data-parent-cate-name="' + row.ParentCateName + '" data-cate-route-name="' + data + '"><u>' + data + '</u></a>';
+                        return '<a href="#" class="btn-select" data-row-idx="' + meta.row + '"><u>' + data + '</u></a>';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -85,9 +85,10 @@
                 var $parent_regi_form = $('#regi_form');
                 var $parent_selected_category = $('#selected_category');
                 var that = $(this);
+                var row = $datatable.row(that.data('row-idx')).data();
 
-                $parent_regi_form.find('input[name="cate_code"]').val(that.data('cate-code'));
-                $parent_selected_category.html(that.data('cate-route-name'));
+                $parent_regi_form.find('input[name="cate_code"]').val(row.CateCode);
+                $parent_selected_category.html(row.CateRouteName);
 
                 $("#pop_modal").modal('toggle');
             });

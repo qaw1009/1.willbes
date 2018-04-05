@@ -69,7 +69,7 @@
                     {'data' : 'wProfIdx'},
                     {'data' : 'wProfId'},
                     {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-select" data-prof-idx="' + row.wProfIdx + '" data-prof-name="' + data + '" data-prof-id="' + row.wProfId + '" data-is-use="' + row.wIsUse + '"><u>' + data + '</u></a>';
+                            return '<a href="#" class="btn-select" data-row-idx="' + meta.row + '"><u>' + data + '</u></a>';
                     }},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -87,10 +87,27 @@
 
                 var $parent_regi_form = $('#regi_form');
                 var $parent_selected_professor = $('#selected_professor');
+                var $parent_prof_nickname = $parent_regi_form.find('input[name="prof_nickname"]');
+                var $parent_wsample_url = $parent_regi_form.find('input[name="wsample_url"]');
+                var $parent_wprof_profile = $parent_regi_form.find('#wprof_profile');
+                var $parent_wbook_content = $parent_regi_form.find('#wbook_content');
                 var that = $(this);
-                var data = that.data('prof-idx') + ' | ' + that.data('prof-name') + ' | ' + that.data('prof-id') + ' | ' + (that.data('is-use') === 'Y' ? '사용' : '미사용');
+                var row = $datatable.row(that.data('row-idx')).data();
+                var data = row.wProfIdx + ' | ' + row.wProfName + ' | ' + row.wProfId + ' | ' + (row.wIsUse === 'Y' ? '사용' : '미사용');
 
-                $parent_regi_form.find('input[name="wprof_idx"]').val(that.data('prof-idx'));
+                $parent_regi_form.find('input[name="wprof_idx"]').val(row.wProfIdx);
+                if ($parent_prof_nickname.length > 0) {
+                    $parent_prof_nickname.val(row.wProfNickName);
+                }
+                if ($parent_wsample_url.length > 0) {
+                    $parent_wsample_url.val(row.wSampleUrl);
+                }
+                if ($parent_wprof_profile.length > 0) {
+                    $parent_wprof_profile.html(row.wProfProfile);
+                }
+                if ($parent_wbook_content.length > 0) {
+                    $parent_wbook_content.html(row.wBookContent);
+                }
                 $parent_selected_professor.html(data);
 
                 $("#pop_modal").modal('toggle');

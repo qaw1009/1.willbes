@@ -22,7 +22,6 @@ class Code extends \app\controllers\BaseController
         ]);
     }
 
-
     /**
      * 공통관리코드 등록/수정 폼
      * @param array $params
@@ -97,6 +96,5 @@ class Code extends \app\controllers\BaseController
         $result = $this->codeModel->{$method.'Ccd'}($this->_reqP(null,false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
-
     }
 }

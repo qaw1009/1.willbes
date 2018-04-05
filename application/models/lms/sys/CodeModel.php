@@ -65,10 +65,6 @@ class CodeModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['S.ParentOrder'=>'Desc','A.OrderNum'=>'Asc'])->getMakeOrderBy();
 
-        /*
-        $data = $this->_conn->query('select ' .$column .$from .$where .$order_by);
-        return $data->result_array();
-        */
         return $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
     }
 
@@ -126,8 +122,8 @@ class CodeModel extends WB_Model
     {
         $this->_conn->trans_begin();
 
-        $query = 'insert into lms_sys_code (Ccd,GroupCcd,CcdName,CcdValue,OrderNum,IsUse,CcdDesc,RegAdminIdx) ';
-        $query .= 'select ifNull(max(Ccd)+1,?) ,? ,? ,ifNull(?,"0") ,ifNull(?,Max(OrderNum)+1) ,ifNull(?,"Y") ,? ,? From lms_sys_code Where IsStatus="Y" ';
+        $query = 'insert into lms_sys_code (Ccd,GroupCcd,CcdName,CcdValue,OrderNum,IsUse,CcdDesc,CcdEtc,RegAdminIdx) ';
+        $query .= 'select ifNull(max(Ccd)+1,?) ,? ,? ,ifNull(?,"0") ,ifNull(?,Max(OrderNum)+1) ,ifNull(?,"Y") ,? ,? ,? From lms_sys_code Where IsStatus="Y" ';
 
         $ccd = "601";  //그룹코드생성 기본값
 
@@ -149,6 +145,7 @@ class CodeModel extends WB_Model
                     ,$ordernum
                     ,element('is_use', $input)
                     ,element('CcdDesc', $input)
+                    ,element('CcdEtc', $input)
                     ,$this->session->userdata('admin_idx')
                 ]);
 
@@ -179,6 +176,7 @@ class CodeModel extends WB_Model
             $ordernum = (empty(element("OrderNum", $input)) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
             $is_use = element('is_use', $input);
             $ccdesc = element('CcdDesc', $input);
+            $ccdetc = element('CcdEtc', $input);
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
@@ -192,6 +190,7 @@ class CodeModel extends WB_Model
                     ,'OrderNum' => $ordernum
                     ,'IsUse' => $is_use
                     ,'CcdDesc' => $ccdesc
+                    ,'CcdEtc' => $ccdetc
                 ]);
             }
 

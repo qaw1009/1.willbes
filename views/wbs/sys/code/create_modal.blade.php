@@ -62,6 +62,12 @@
         </div>
     </div>
     <div class="form-group form-group-sm item">
+        <label class="control-label col-md-2" for="CcdEtc">세부항목기타</label>
+        <div class="col-md-10">
+            <input type="text" id="CcdEtc" name="CcdEtc"  class="form-control" title="기타" value="{{ $data['wCcdEtc'] }}">
+        </div>
+    </div>
+    <div class="form-group form-group-sm item">
         <label class="control-label col-md-2" for="IsUse">사용여부 <span class="required">*</span></label>
         <div class="col-md-4">
             <input type="radio" name="is_use" class="flat" value="Y" required="required" @if($method=="POST" || $data['wIsUse']=='Y')checked="checked"@endif/> 사용

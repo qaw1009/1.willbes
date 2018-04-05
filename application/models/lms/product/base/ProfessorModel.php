@@ -71,7 +71,7 @@ class ProfessorModel extends WB_Model
                         inner join ' . $this->_table['admin'] . ' as A
                             on P.RegAdminIdx = A.wAdminIdx
                     where P.IsStatus = "Y" 
-                        and WP.wIsUse = "Y" and WP.wIsStatus = "Y" 
+                        and WP.wIsStatus = "Y" 
                         and S.IsUse = "Y" and S.IsStatus = "Y"
                 ) I 
             ) U inner join ' . $this->_table['category'] . ' as C
@@ -94,12 +94,48 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 등록된 교수 참조데이터 리턴
+     * 교수 카테고리 + 과목 매핑 데이터 조회
+     * @param $prof_idx
+     * @return array
+     */
+    public function listProfessorSubjectMapping($prof_idx)
+    {
+        $colum = '
+            PSC.CateCode, PSC.SubjectIdx
+                , C.CateName, PS.SubjectName
+                , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
+                , concat(if(PC.CateCode is null, "", PC.CateName), C.CateName, " > ", PS.SubjectName) as CateSubjectRouteName            
+        ';
+        $from = '
+            from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
+                inner join ' . $this->_table['category'] . ' as C
+                    on PSC.CateCode = C.CateCode
+                left join ' . $this->_table['category'] . ' as PC
+                    on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
+                inner join ' . $this->_table['subject'] . ' as PS
+                    on PSC.SubjectIdx = PS.SubjectIdx        
+        ';
+        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsUse = "Y"and C.IsStatus = "Y" and PS.IsUse = "Y" and PS.IsStatus = "Y"';
+        $order_by_offset_limit = ' order by PSC.PcIdx asc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit, [$prof_idx])->result_array();
+
+        $results = [];
+        foreach ($query as $row) {
+            $results[$row['CateCode'] . '_' . $row['SubjectIdx']] = $row['CateSubjectRouteName'];
+        }
+        
+        return $results;
+    }
+
+    /**
+     * 교수 참조 자료 조회
      * @param $prof_idx
      * @param string $key_type [idx : ReferIdx => ReferType, type : ReferType => ReferValue]
      * @return array
      */
-    public function listPrefessorRefer($prof_idx, $key_type = 'idx')
+    public function listProfessorRefer($prof_idx, $key_type = 'idx')
     {
         $results = [];
         if ($key_type == 'idx') {
@@ -126,6 +162,40 @@ class ProfessorModel extends WB_Model
     }
 
     /**
+     * 교수 정보 조회
+     * @param string $colum
+     * @param array $arr_condition
+     * @return array
+     */
+    public function findProfessor($colum = '*', $arr_condition = [])
+    {
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        return $this->_conn->getFindResult($this->_table['professor'], $colum, $arr_condition);
+    }
+    
+    /**
+     * 교수 정보 수정 폼에 필요한 데이터 조회
+     * @param $prof_idx
+     * @return array
+     */
+    public function findProfessorForModify($prof_idx)
+    {
+        $colum = '
+            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfCurriculum, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+                , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
+                , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
+                , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
+                , WP.wProfName, WP.wProfId, WP.wProfProfile, WP.wBookContent, WP.wIsUse 
+                , (select wAdminName from wbs_sys_admin where wAdminIdx = P.RegAdminIdx) as RegAdminName
+                , if(P.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.UpdAdminIdx)) as UpdAdminName        
+        ';
+
+        return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx',
+            $colum, ['EQ' => ['P.ProfIdx' => $prof_idx, 'P.IsStatus' => 'Y', 'WP.wIsStatus' => 'Y']]);
+    }
+
+    /**
      * 교수 등록
      * @param array $input
      * @return array|bool
@@ -148,7 +218,7 @@ class ProfessorModel extends WB_Model
 
             // 데이터 등록
             if ($this->_conn->set($data)->insert($this->_table['professor']) === false) {
-                throw new \Exception('교수 기본정보 등록에 실패했습니다.');
+                throw new \Exception('교수 정보 등록에 실패했습니다.');
             }
 
             // 등록된 교수 식별자
@@ -160,8 +230,67 @@ class ProfessorModel extends WB_Model
                 throw new \Exception($is_subject_mapping);
             }
 
+            // 교수 참조자료 등록
+            $refer_input = elements($this->_refer_type['string'], $input);
+            $is_refer = $this->_replaceProfessorRefer($refer_input, [], $prof_idx);
+            if ($is_refer !== true) {
+                throw new \Exception($is_refer);
+            }
+            
+            // 교수영역 이미지 업로드
+            $is_upload = $this->_attachProfessorImg([], $prof_idx);
+            if ($is_subject_mapping !== true) {
+                throw new \Exception($is_upload);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 교수 수정
+     * @param array $input
+     * @return array|bool
+     */
+    public function modifyProfessor($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $prof_idx = element('idx', $input);
+
+            // 기존 교수 기본정보 조회
+            $row = $this->findProfessor('ProfIdx', ['EQ' => ['ProfIdx' => $prof_idx]]);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            $data = [
+                'ProfNickName' => element('prof_nickname', $input),
+                'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
+                'ProfCurriculum' => element('prof_curriculum', $input),
+                'IsUse' => element('is_use', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            // 데이터 수정
+            if ($this->_conn->set($data)->where('ProfIdx', $prof_idx)->update($this->_table['professor']) === false) {
+                throw new \Exception('교수 정보 수정에 실패했습니다.');
+            }
+
+            // 카테고리 정보 등록
+            $is_subject_mapping = $this->_replaceProfessorSubjectMapping(element('subject_mapping_code', $input), $prof_idx);
+            if ($is_subject_mapping !== true) {
+                throw new \Exception($is_subject_mapping);
+            }
+
             // 교수 참조자료 조회
-            $refer_data = $this->listPrefessorRefer($prof_idx);
+            $refer_data = $this->listProfessorRefer($prof_idx);
 
             // 교수 참조자료 등록
             $refer_input = elements($this->_refer_type['string'], $input);
@@ -169,13 +298,13 @@ class ProfessorModel extends WB_Model
             if ($is_refer !== true) {
                 throw new \Exception($is_refer);
             }
-            
+
             // 교수영역 이미지 업로드
             $is_upload = $this->_attachProfessorImg(element('attach', $refer_data, []), $prof_idx);
             if ($is_subject_mapping !== true) {
                 throw new \Exception($is_upload);
             }
-
+            
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -213,24 +342,24 @@ class ProfessorModel extends WB_Model
             $reg_ip = $this->input->ip_address();
 
             foreach ($input as $key => $value) {
-                if (empty($value) === false) {
-                    if (in_array($key, $arr_string_refer) === true) {
-                        $data = [
-                            'ReferValue' => element($key, $input),
-                            'UpdAdminIdx' => $admin_idx
-                        ];
+                if (in_array($key, $arr_string_refer) === true) {
+                    $data = [
+                        'ReferValue' => $value,
+                        'UpdAdminIdx' => $admin_idx
+                    ];
 
-                        $_refer_idx = array_search($key, $arr_string_refer);
-                        if ($_refer_idx !== false) {
-                            if ($this->_conn->set($data)->where('ReferIdx', $_refer_idx)->where('ProfIdx', $prof_idx)->update($this->_table['professor_reference']) === false) {
-                                throw new \Exception('참조 데이터 수정에 실패했습니다.');
-                            }
+                    $_refer_idx = array_search($key, $arr_string_refer);
+                    if ($_refer_idx !== false) {
+                        if ($this->_conn->set($data)->where('ReferIdx', $_refer_idx)->where('ProfIdx', $prof_idx)->update($this->_table['professor_reference']) === false) {
+                            throw new \Exception('참조 데이터 수정에 실패했습니다.');
                         }
-                    } else {
+                    }
+                } else {
+                    if (empty($value) === false) {
                         $data = [
                             'ProfIdx' => $prof_idx,
                             'ReferType' => $key,
-                            'ReferValue' => element($key, $input),
+                            'ReferValue' => $value,
                             'RegAdminIdx' => $admin_idx,
                             'RegIp' => $reg_ip
                         ];
@@ -365,4 +494,47 @@ class ProfessorModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 교수영역 이미지 삭제
+     * @param $img_type
+     * @param $prof_idx
+     * @return array|bool
+     */
+    public function removeImg($img_type, $prof_idx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 데이터 조회
+            $row = $this->_conn->getFindResult($this->_table['professor_reference'], 'ReferIdx, ReferValue', [
+                'EQ' => ['ProfIdx' => $prof_idx, 'ReferType' => $img_type, 'IsStatus' => 'Y']    
+            ]);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 이미지 삭제
+            $this->load->helper('file');
+
+            $real_img_path = public_to_upload_path($row['ReferValue']);
+            if (@unlink($real_img_path) === false) {
+                throw new \Exception('이미지 삭제에 실패했습니다.');
+            }
+
+            // 데이터 수정
+            $is_update = $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
+                ->where('ReferIdx', $row['ReferIdx'])->update($this->_table['professor_reference']);
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }    
 }

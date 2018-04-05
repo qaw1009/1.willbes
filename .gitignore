@@ -55,4 +55,5 @@ readme.rst
 !/storage/sessions/index.html
 /storage/uploads/*
 !/storage/uploads/index.html
+/public/uploads
 #application/config/database.php

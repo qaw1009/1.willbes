@@ -72,6 +72,15 @@ class Professor extends \app\controllers\BaseController
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
+
+            // 참조자료 조회
+            $refer_data = $this->professorModel->listProfessorRefer($idx, 'type');
+            
+            // 기본정보 + 참조자료
+            $data = array_merge($data, element('string', $refer_data, []), element('attach', $refer_data, []));
+
+            // 카테고리 + 과목 매핑 데이터 조회
+            $data['SubjectMapping'] = $this->professorModel->listProfessorSubjectMapping($idx);
         }
 
         $this->load->view('product/base/professor/create', [
@@ -116,4 +125,24 @@ class Professor extends \app\controllers\BaseController
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
+
+    /**
+     * 교수영역 이미지 삭제
+     */
+    public function destroyImg()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'img_type', 'label' => '이미지 구분', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->professorModel->removeImg($this->_reqP('img_type'), $this->_reqP('idx'));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }    
 }

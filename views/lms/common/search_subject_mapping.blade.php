@@ -120,20 +120,20 @@
 
                 var $parent_regi_form = $('#regi_form');
                 var $parent_selected_subject_mapping = $('#selected_subject_mapping');
-                var input_hidden = '', txt_selected = '', subject_mapping_code, subject_mapping_txt;
+                var html = '', subject_mapping_code, subject_mapping_txt;
 
                 $('#_selected_subject_mapping li').each(function() {
                     subject_mapping_code = $(this).data('subject-mapping-code');
                     subject_mapping_txt = $(this).text().trim();
 
-                    input_hidden += '<input type="hidden" name="subject_mapping_code[]" value="' + subject_mapping_code + '"/>\n';
-                    txt_selected += '<span class="pr-10">' + subject_mapping_txt.substr((subject_mapping_txt.indexOf(' > ') + 3));
-                    txt_selected += ' <a href="#none" data-subject-mapping-code="' + subject_mapping_code + '" class="selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li></span>';
+                    html += '<span class="pr-10">' + subject_mapping_txt.substr((subject_mapping_txt.indexOf(' > ') + 3));
+                    html += '   <a href="#none" data-subject-mapping-code="' + subject_mapping_code + '" class="selected-subject-mapping-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <input type="hidden" name="subject_mapping_code[]" value="' + subject_mapping_code + '"/>';
+                    html += '</span>';
                 });
 
                 $parent_regi_form.find('input[name="subject_mapping_code[]"]').remove();
-                $parent_regi_form.append(input_hidden);
-                $parent_selected_subject_mapping.html(txt_selected);
+                $parent_selected_subject_mapping.html(html);
 
                 $("#pop_modal").modal('toggle');
             });

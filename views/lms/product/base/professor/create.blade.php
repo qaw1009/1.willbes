@@ -16,7 +16,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ $idx }}"/>
-                <input type="hidden" name="wprof_idx" value="" title="교수 선택" required="required"/>
+                <input type="hidden" name="wprof_idx" value="{{ $data['wProfIdx'] }}" title="교수 선택" required="required"/>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트 <span class="required">*</span>
                     </label>
@@ -24,18 +24,26 @@
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                     </div>
                     <div class="col-md-7">
+                        @if($method == 'POST')
                         <p class="form-control-static"># 사이트 변경시 설정한 정보들이 초기화 됩니다. (교수정보, 카테고리정보, 과목정보)</p>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">교수정보 불러오기 <span class="required">*</span>
                     </label>
-                    <div class="col-md-2">
-                        <button type="button" id="btn_professor_search" class="btn btn-sm btn-primary">교수검색</button>
-                    </div>
-                    <div class="col-md-7">
-                        <p id="selected_professor" class="form-control-static">교수명 | 교수코드 | 아이디 | 사용여부</p>
-                    </div>
+                    @if($method == 'PUT')
+                        <div class="col-md-9">
+                            <p class="form-control-static">{{ $data['wProfName'] }} | {{ $data['wProfIdx'] }} | {{ $data['wProfId'] }} | @if($data['wIsUse'] == 'Y') 사용 @else 미사용 @endif</p>
+                        </div>
+                    @else
+                        <div class="col-md-1">
+                            <button type="button" id="btn_professor_search" class="btn btn-sm btn-primary">교수검색</button>
+                        </div>
+                        <div class="col-md-8">
+                            <p id="selected_professor" class="form-control-static ml-10">교수명 | 교수코드 | 아이디 | 사용여부</p>
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="prof_nickname">교수닉네임 <span class="required">*</span>
@@ -55,11 +63,20 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
                     </label>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <button type="button" id="btn_subject_mapping_search" class="btn btn-sm btn-primary">카테고리검색</button>
                     </div>
-                    <div class="col-md-7">
-                        <p id="selected_subject_mapping" class="form-control-static"></p>
+                    <div class="col-md-8">
+                        <p id="selected_subject_mapping" class="form-control-static ml-10">
+                            @if(empty($data['SubjectMapping']) === false)
+                                @foreach($data['SubjectMapping'] as $key => $val)
+                                    <span class="pr-10">{{ $val }}
+                                        <a href="#none" data-subject-mapping-code="{{ $key }}" class="selected-subject-mapping-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="subject_mapping_code[]" value="{{ $key }}"/>
+                                    </span>
+                                @endforeach
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,7 +87,7 @@
                             <div class="control-label col-md-1">OT
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="ot_url" name="ot_url" class="form-control optional" pattern="url" title="OT영상" value="{{ $data['wSampleUrl'] }}">
+                                <input type="text" id="ot_url" name="ot_url" class="form-control optional" pattern="url" title="OT영상" value="{{ $data['ot_url'] }}">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-default btn-movie-view">보기</button>
@@ -86,7 +103,7 @@
                             <div class="control-label col-md-1">WBS맛보기
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="wsample_url" name="wsample_url" class="form-control optional bg-info" pattern="url" title="맛보기영상" value="{{ $data['wSampleUrl'] }}" placeholder="교수 검색 시 맛보기 정보 자동 출력 (수정가능)">
+                                <input type="text" id="wsample_url" name="wsample_url" class="form-control optional bg-info" pattern="url" title="맛보기영상" value="{{ $data['wsample_url'] or '' }}" placeholder="교수 검색 시 맛보기 정보 자동 출력 (수정가능)">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-default btn-movie-view">보기</button>
@@ -96,7 +113,7 @@
                             <div class="control-label col-md-1">맛보기1
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="sample_url1" name="sample_url1" class="form-control optional" pattern="url" title="맛보기1" value="{{ $data['SampleUrl'][0] }}">
+                                <input type="text" id="sample_url1" name="sample_url1" class="form-control optional" pattern="url" title="맛보기1" value="{{ $data['sample_url1'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-default btn-movie-view">보기</button>
@@ -106,7 +123,7 @@
                             <div class="control-label col-md-1">맛보기2
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="sample_url2" name="sample_url2" class="form-control optional" pattern="url" title="맛보기2" value="{{ $data['SampleUrl'][1] }}">
+                                <input type="text" id="sample_url2" name="sample_url2" class="form-control optional" pattern="url" title="맛보기2" value="{{ $data['sample_url2'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-default btn-movie-view">보기</button>
@@ -116,7 +133,7 @@
                             <div class="control-label col-md-1">맛보기3
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="sample_url3" name="sample_url3" class="form-control optional" pattern="url" title="맛보기3" value="{{ $data['SampleUrl'][2] }}">
+                                <input type="text" id="sample_url3" name="sample_url3" class="form-control optional" pattern="url" title="맛보기3" value="{{ $data['sample_url3'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-default btn-movie-view">보기</button>
@@ -129,9 +146,9 @@
                     </label>
                     <div class="col-md-3">
                         <div class="checkbox">
-                            <input type="checkbox" id="use_board1" name="use_board[]" class="flat" value="{{ $arr_bm_idx['notice'] }}"/> <label for="use_board1" class="input-label">공지사항</label>
-                            <input type="checkbox" id="use_board2" name="use_board[]" class="flat" value="{{ $arr_bm_idx['qna'] }}"/> <label for="use_board2" class="input-label">학습Q&A</label>
-                            <input type="checkbox" id="use_board3" name="use_board[]" class="flat" value="{{ $arr_bm_idx['data'] }}"/> <label for="use_board3" class="input-label">학습자료실</label>
+                            <input type="checkbox" id="use_board1" name="use_board[]" class="flat" value="{{ $arr_bm_idx['notice'] }}" @if($data['IsNoticeBoard'] == 'Y') checked="checked" @endif/> <label for="use_board1" class="input-label">공지사항</label>
+                            <input type="checkbox" id="use_board2" name="use_board[]" class="flat" value="{{ $arr_bm_idx['qna'] }}" @if($data['IsQnaBoard'] == 'Y') checked="checked" @endif/> <label for="use_board2" class="input-label">학습Q&A</label>
+                            <input type="checkbox" id="use_board3" name="use_board[]" class="flat" value="{{ $arr_bm_idx['data'] }}" @if($data['IsDataBoard'] == 'Y') checked="checked" @endif/> <label for="use_board3" class="input-label">학습자료실</label>
                         </div>
                     </div>
                     <div class="col-md-7">
@@ -147,13 +164,13 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="radio item">
-                                    <input type="radio" id="is_cafe_use_y" name="is_cafe_use" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCafeUse']=='Y')checked="checked"@endif/> <label for="is_cafe_use_y" class="input-label">사용</label>
-                                    <input type="radio" id="is_cafe_use_n" name="is_cafe_use" class="flat" value="N" @if($method == 'POST' || $data['IsCafeUse']=='N')checked="checked"@endif/> <label for="is_cafe_use_n" class="input-label">미사용</label>
+                                    <input type="radio" id="is_cafe_use_y" name="is_cafe_use" class="flat" value="Y" required="required" title="사용여부" @if(empty($data['cafe_url']) === false) checked="checked" @endif/> <label for="is_cafe_use_y" class="input-label">사용</label>
+                                    <input type="radio" id="is_cafe_use_n" name="is_cafe_use" class="flat" value="N" @if($method == 'POST' || empty($data['cafe_url']) === true) checked="checked" @endif/> <label for="is_cafe_use_n" class="input-label">미사용</label>
                                 </div>
                             </div>
                             <div class="control-label col-md-1">[카페 URL]</div>
                             <div class="col-md-6 item">
-                                <input type="text" id="cafe_url" name="cafe_url" class="form-control" required="requiredif:is_cafe_use,Y" pattern="url" title="카페 URL" value="{{ $data['CafeUrl'] }}" disabled="disabled">
+                                <input type="text" id="cafe_url" name="cafe_url" class="form-control" required="requiredif:is_cafe_use,Y" pattern="url" title="카페 URL" value="{{ $data['cafe_url'] or '' }}" disabled="disabled">
                             </div>
                         </div>
                     </div>
@@ -169,14 +186,14 @@
                     <label class="control-label col-md-2">교수프로필
                     </label>
                     <div class="col-md-9">
-                        <p id="wprof_profile" class="form-control-static">{!! $data['wProfProfile'] !!}</p>
+                        <div id="wprof_profile" class="form-control-static">{!! $data['wProfProfile'] !!}</div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">주요저서
                     </label>
                     <div class="col-md-9">
-                        <p id="wbook_content" class="form-control-static">{!! $data['wBookContent'] !!}</p>
+                        <div id="wbook_content" class="form-control-static">{!! $data['wBookContent'] !!}</div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -190,7 +207,9 @@
                                 <input type="file" id="prof_index_img" name="prof_index_img" class="form-control" title="교수 인덱스 이미지"/>
                             </div>
                             <div class="col-md-5 pl-0">
-                                <p class="form-control-static"><a href="#none">업로드한 이미지입니다.{{ str_last_pos_after($data['prof_index_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="prof_index_img"><i class="fa fa-times red"></i></a></p>
+                                @if(empty($data['prof_index_img']) === false)
+                                <p class="form-control-static"><a href="{{ $data['prof_index_img'] }}" rel="popup-image">{{ str_last_pos_after($data['prof_index_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="prof_index_img"><i class="fa fa-times red"></i></a></p>
+                                @endif
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -200,7 +219,9 @@
                                 <input type="file" id="prof_detail_img" name="prof_detail_img" class="form-control" title="교수 상세 이미지"/>
                             </div>
                             <div class="col-md-5 pl-0">
-                                <p class="form-control-static"><a href="#none">업로드한 이미지입니다.{{ str_last_pos_after($data['prof_detail_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="prof_detail_img"><i class="fa fa-times red"></i></a></p>
+                                @if(empty($data['prof_detail_img']) === false)
+                                    <p class="form-control-static"><a href="{{ $data['prof_detail_img'] }}" rel="popup-image">{{ str_last_pos_after($data['prof_detail_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="prof_detail_img"><i class="fa fa-times red"></i></a></p>
+                                @endif
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -210,7 +231,9 @@
                                 <input type="file" id="lec_list_img" name="lec_list_img" class="form-control" title="강좌 리스트 이미지"/>
                             </div>
                             <div class="col-md-5 pl-0">
-                                <p class="form-control-static"><a href="#none">업로드한 이미지입니다.{{ str_last_pos_after($data['lec_list_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="lec_list_img"><i class="fa fa-times red"></i></a></p>
+                                @if(empty($data['lec_list_img']) === false)
+                                    <p class="form-control-static"><a href="{{ $data['lec_list_img'] }}" rel="popup-image">{{ str_last_pos_after($data['lec_list_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="lec_list_img"><i class="fa fa-times red"></i></a></p>
+                                @endif
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -220,7 +243,9 @@
                                 <input type="file" id="lec_detail_img" name="lec_detail_img" class="form-control" title="강좌 상세 이미지"/>
                             </div>
                             <div class="col-md-5 pl-0">
-                                <p class="form-control-static"><a href="#none">업로드한 이미지입니다.{{ str_last_pos_after($data['lec_detail_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="lec_detail_img"><i class="fa fa-times red"></i></a></p>
+                                @if(empty($data['lec_detail_img']) === false)
+                                    <p class="form-control-static"><a href="{{ $data['lec_detail_img'] }}" rel="popup-image">{{ str_last_pos_after($data['lec_detail_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="lec_detail_img"><i class="fa fa-times red"></i></a></p>
+                                @endif
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -230,7 +255,9 @@
                                 <input type="file" id="lec_review_img" name="lec_review_img" class="form-control" title="수강후기 이미지"/>
                             </div>
                             <div class="col-md-5 pl-0">
-                                <p class="form-control-static"><a href="#none">업로드한 이미지입니다.{{ str_last_pos_after($data['lec_review_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="lec_review_img"><i class="fa fa-times red"></i></a></p>
+                                @if(empty($data['lec_review_img']) === false)
+                                    <p class="form-control-static"><a href="{{ $data['lec_review_img'] }}" rel="popup-image">{{ str_last_pos_after($data['lec_review_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="lec_review_img"><i class="fa fa-times red"></i></a></p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -357,6 +384,26 @@
                 } else {
                     $cafe_url.prop('disabled', true);
                 }
+            });
+
+            // 교수영역 이미지 삭제
+            $('.img-delete').click(function() {
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'idx' : $regi_form.find('input[name="idx"]').val(),
+                    'img_type' : $(this).data('img-type')
+                };
+                sendAjax('{{ site_url('/product/base/professor/destroyImg') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
 
             // 목록 이동

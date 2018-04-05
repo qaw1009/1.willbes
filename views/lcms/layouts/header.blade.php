@@ -69,6 +69,8 @@
     <script src="/public/vendor/jquery/inputmask/jquery.inputmask.bundle.min.js"></script>
     <!-- jquery.smartwizard -->
     <script src="/public/vendor/jquery/smartwizard/jquery.smartWizard.js"></script>
+    <!-- jquery.chained -->
+    <script src="/public/vendor/jquery/chained/jquery.chained.min.js"></script>
     <!-- Datatables -->
     <script src="/public/vendor/datatables/v.1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="/public/vendor/datatables/v.1.10.15/js/dataTables.bootstrap.min.js"></script>

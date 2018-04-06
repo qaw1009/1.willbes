@@ -413,6 +413,7 @@
                 $('#selected_professor').html('');
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="subject_mapping_code[]"]').remove();
+                $regi_form.find('input[name="del_prof_calc_idx[]"]').remove();
                 $('#selected_subject_mapping').html('');
             });
 
@@ -484,7 +485,7 @@
 
             // 정산 테이블 필드 삭제
             $regi_form.on('click', '.btn-calc-delete', function() {
-                var that = $(this)
+                var that = $(this);
 
                 if (that.parents('tbody').children('tr').length > 1) {
                     // 삭제된 정산 식별자 추가

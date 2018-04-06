@@ -3,11 +3,11 @@
 @section('content')
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="board_idx" value="{{ $board_idx }}"/>
+        <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="1"/>
         <div class="x_panel">
             <div class="x_title">
@@ -23,7 +23,7 @@
                     <div class="col-md-2 item">
                         <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
                             @foreach($getSiteArray as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                                <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="checkbox" id="site_category">
                             @foreach($getCategoryArray as $key => $val)
                                 @php $cate_idx = $loop->index-1; @endphp
-                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat"/>
+                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat" @if($method == 'PUT' && in_array($key,$data['arr_cate_code']) === true) checked="checked" @endif/>
                                 <label class="inline-block mr-5" for="site_category_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="title">제목<span class="required">*</span></label>
                     <div class="col-md-9 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['title'] }}" placeholder="제목 입니다.">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
                     <label class="control-label col-md-2" for="is_best">HOT</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat"/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat" @if($data['IsBest']=='Y')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
@@ -82,15 +82,22 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="attach_img_1">첨부</label>
                     <div class="col-md-9 form-inline">
-                        @for($i = 1; $i <= $attach_file_cnt; $i++)
+                        @for($i = 0; $i < $attach_file_cnt; $i++)
                             <div class="mb-5">
                                 <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control" title="첨부{{ $i }}"/>
-                                @if(empty($data{'AttachFileName' . $i}) === false)
+
+                                @if(empty($data['arr_attach_file_path'][$i]) === false)
+                                    <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]
+                                        <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
+                                    </p>
+                                @endif
+
+                                {{--@if(empty($data{'AttachFileName' . $i}) === false)
                                     <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['AttachFilePath'] . $data{'AttachFileName' . $i} }}" rel="popup-image">{{ $data{'AttachFileName' . $i} }}</a> ]</p>
                                     <div class="checkbox">
                                         <input type="checkbox" name="" value="{{ $i }}" class="flat"/> <span class="red">삭제</span>
                                     </div>
-                                @endif
+                                @endif--}}
                             </div>
                         @endfor
                     </div>
@@ -143,12 +150,9 @@
             });
 
             // ajax submit
-            /*$regi_form.submit(function() {
-                /!*var url = "{{ site_url("/board/{$boardName}/store") }}?bm_idx=45";*!/
-                getEditorBodyContent($editor_profile);
-            });*/
             $regi_form.submit(function() {
-                var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
+                getEditorBodyContent($editor_profile);
+                /*var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
                 getEditorBodyContent($editor_profile);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
@@ -156,7 +160,7 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');*/
             });
 
             //목록
@@ -206,6 +210,27 @@
             $(document).on("ifChanged",".site_category",function(){
                 $('#site_category_all').prop('checked', false).iCheck('update');
             });
+
+            // 파일삭제
+            $('.file-delete').click(function() {
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'attach_idx' : $(this).data('attach-idx')
+                };
+
+                var _url = '{{ site_url("/board/{$boardName}/destroyFile/") }}' + getQueryString();
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
         });
 
         //입력값에 따른 조회수 값 리턴
@@ -224,13 +249,20 @@
             var _data = {};
             var add_selectBox_options = '';
             var set_site_code = $("#site_code option:selected").val();
+            var campus_ccd = '{{$data['CampusCcd']}}';
 
             var _url = '{{ site_url("/board/{$boardName}/getAjaxCampusInfo/") }}' + set_site_code + getQueryString();
             sendAjax(_url, _data, function(ret) {
                 if (ret.ret_cd) {
                     if (Object.keys(ret.ret_data.campus).length > 0) {
                         $.each(ret.ret_data.campus, function(key, val) {
-                            add_selectBox_options += '<option value="'+key+'">'+val+'</option>';
+                            var chk = '';
+                            if(key == campus_ccd){
+                                chk = 'selected="selected"';
+                            } else {
+                                chk = '';
+                            }
+                            add_selectBox_options += '<option value="'+key+'" '+chk+'>'+val+'</option>';
                         });
                         $('#campus_ccd').html(add_selectBox_options);
                         $('#campus_ccd').prop('disabled',false);

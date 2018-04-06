@@ -12,6 +12,9 @@ class BaseBoard extends \app\controllers\BaseController
         parent::__construct();
     }
 
+    /**
+     * bm_id, site_code 기본 셋팅
+     */
     protected function setDefaultBoardParam()
     {
         $this->boardDefaultParams = [
@@ -20,22 +23,12 @@ class BaseBoard extends \app\controllers\BaseController
         ];
     }
 
+    /**
+     * @return array
+     */
     protected function getDefaultBoardParam()
     {
         return $this->boardDefaultParams;
-    }
-
-    /**
-     * 권한유형별 사이트
-     * 경찰, 공무원, 임용
-     */
-    protected function _getBaseSiteArray()
-    {
-        return $list = [
-            '1' => '경찰',
-            '2' => '공무원',
-            '3' => '임용'
-        ];
     }
 
     /**
@@ -86,9 +79,21 @@ class BaseBoard extends \app\controllers\BaseController
      * @param $inputData
      * @return mixed
      */
-    protected function _addBoard($method, $inputData)
+    protected function _addBoard($method, $inputData, $idx = '')
     {
         return $this->boardModel->{$method . 'Board'}($inputData);
+    }
+
+    /**
+     * 게시판 수정
+     * @param $method
+     * @param $inputData
+     * @param string $idx
+     * @return mixed
+     */
+    protected function _modifyBoard($method, $inputData, $idx = '')
+    {
+        return $this->boardModel->{$method . 'Board'}($inputData, $idx);
     }
 
     /**
@@ -99,5 +104,25 @@ class BaseBoard extends \app\controllers\BaseController
     protected function _boardCopy($board_idx)
     {
         return $this->boardModel->boardCopy($board_idx);
+    }
+
+    /**
+     * 게시판 Best 적용
+     * @param array $params
+     * @param array $dis_params
+     * @return array|bool
+     */
+    protected function _boardIsBest($params = [], $dis_params = [])
+    {
+        return $this->boardModel->boardIsBest($params, $dis_params);
+    }
+
+    /**
+     * 파일 삭제
+     * @param $attach_idx
+     */
+    protected function _removeFile($attach_idx)
+    {
+        return $this->boardModel->removeFile($attach_idx);
     }
 }

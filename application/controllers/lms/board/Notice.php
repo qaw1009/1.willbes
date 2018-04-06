@@ -28,7 +28,19 @@ class Notice extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $board_params['site_code'];
 
+        //캠퍼스목록조회
+        $arr_campus = [];
+        $arr_category = [];
+        if (!empty($this->site_code)) {
+            //캠퍼스
+            $arr_campus = $this->_getCampusArray($this->site_code);
+            //사이트카테고리
+            $arr_category = $this->_getCategoryArray($this->site_code);
+        }
+
         $this->load->view("board/{$this->board_name}/index", [
+            'arr_campus' => $arr_campus,
+            'arr_category' => $arr_category,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
         ]);
@@ -44,10 +56,7 @@ class Notice extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $board_params['site_code'];
-
-        $best_data = $this->_bestBoardData();
-        $best_count = $best_data['count'];
-        $best_list = $best_data['data'];
+        $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
@@ -55,9 +64,9 @@ class Notice extends BaseBoard
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
                 'LB.SiteCode' => $this->site_code,
-                //'wSaleCcd' => $this->_reqP('search_sale_ccd')
+                'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
-            /*'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],*/
             'ORG' => [
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
@@ -72,24 +81,31 @@ class Notice extends BaseBoard
             ]);
         }
 
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y',
+                'subLBrC.CateCode' => $this->_reqP('search_category')
+            ]
+        ];
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName
+        ';
+
+        $best_count = 0;
+        $best_list = [];
+        if ($is_best_type == 0) {
+            $best_data = $this->_bestBoardData($column);
+            $best_count = $best_data['count'];
+            $best_list = $best_data['data'];
+        }
+
         $list = [];
-        $column = 'LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LC.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName';
-        $count = $this->boardModel->listAllBoard(true, $arr_condition);
-
-
+        $count = $this->boardModel->listAllBoard(true, $arr_condition, $sub_query_condition);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
-
-            /*// 사용하는 코드값 조회
-            $codes = $this->codeModel->getCcdInArray(['109', '110', '117']);
-
-            // 코드값에 해당하는 코드명을 배열 원소로 추가
-            $list = array_data_fill($list, [
-                'wAdminDeptCcdName' => ['wAdminDeptCcd' => $codes['109']],
-                'wAdminPositionCcdName' => ['wAdminPositionCcd' => $codes['110']],
-                'wLoginLogCcdName' => ['wLoginLogCcd' => $codes['117']]
-            ], true);*/
+            $list = $this->boardModel->listAllBoard(false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
         }
 
         if ($best_count > 0) {
@@ -100,12 +116,15 @@ class Notice extends BaseBoard
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'best_count' => $best_count,
             'data' => $list,
         ]);
     }
 
-    public function copy($params = [])
+    /**
+     * 게시글 복사
+     * @param array $params
+     */
+    public function copy()
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
@@ -116,9 +135,28 @@ class Notice extends BaseBoard
             return;
         }
 
-        $result = $this->_boardCopy($this->_req('board_idx'));
+        $result = $this->_boardCopy($this->_reqP('board_idx'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * BEST 적용
+     */
+    public function storeIsBest()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('dis_params'), true));
+
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     /**
@@ -130,6 +168,7 @@ class Notice extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
 
         $method = 'POST';
         $data = null;
@@ -137,14 +176,40 @@ class Notice extends BaseBoard
 
         //권한유형별 운영사이트 목록 조회
         $get_site_array = $this->_getSiteArray();
+        $first_site_key = key($get_site_array);
+        $site_code = $first_site_key;
+
+        if (empty($params[0]) === false) {
+            $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName
+            ';
+            $method = 'PUT';
+            $board_idx = $params[0];
+            $data = $this->boardModel->findBoardForModify($board_idx, $column);
+
+            if (count($data) < 1) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+            $site_code = $data['SiteCode'];
+            $data['arr_cate_code'] = explode(',', $data['CateCode']);
+            $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+            $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+            $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        }
 
         //사이트카테고리 (구분)
-        $first_site_key = key($get_site_array);
-        $get_category_array = $this->_getCategoryArray($first_site_key);
+        if (empty($params[0]) === true) {
+            if (empty($this->site_code) === false) {
+                $site_code = $this->site_code;
+            }
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
 
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
+            'site_code' => $site_code,
             'getSiteArray' => $get_site_array,
             'getCategoryArray' => $get_category_array,
             'method' => $method,
@@ -163,29 +228,52 @@ class Notice extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $idx = '';
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
-            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[20]'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            /*['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required|'],*/
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
-
-        if (empty($this->_reqP('idx')) === false) {
-            $method = 'modify';
-        }
 
         if ($this->validate($rules) === false) {
             return;
         }
+
+        if (empty($this->_reqP('idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('idx');
+        }
+
         $inputData = $this->_setInputData($this->_reqP(null, false));
 
         //_addBoard, _modifyBoard
-        $result = $this->{'_' . $method . 'Board'}($method, $inputData);
+        $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
 
     public function read($params = [])
     {
@@ -252,9 +340,10 @@ class Notice extends BaseBoard
 
     /**
      * 게시판 BEST 정보 조회
+     * @param $column
      * @return array
      */
-    private function _bestBoardData()
+    private function _bestBoardData($column)
     {
         $arr_best_condition = [
             'EQ' => [
@@ -262,20 +351,12 @@ class Notice extends BaseBoard
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'Y',
                 'LB.SiteCode' => $this->site_code,
-                //'wSaleCcd' => $this->_reqP('search_sale_ccd')
             ]
         ];
 
-        $best_list = [];
-        $best_count = $this->boardModel->listAllBoard(true, $arr_best_condition);
-        $column = 'LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LC.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName';
-
-        if ($best_count > 0) {
-            $best_list = $this->boardModel->listAllBoard(false, $arr_best_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
-        }
-
+        $best_list = $this->boardModel->listAllBoard(false, $arr_best_condition, null, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
-            'count' => $best_count,
+            'count' => count($best_list),
             'data' => $best_list
         ];
 
@@ -295,7 +376,6 @@ class Notice extends BaseBoard
                 'IsUse' => element('is_use', $input),
                 'ReadCnt' => '0',
                 'SettingReadCnt' => element('setting_readCnt', $input),
-                'RegAdminIdx'=> $this->session->userdata('admin_idx')
             ],
             'board_r_category' => [
                 'site_category' => element('site_category', $input)

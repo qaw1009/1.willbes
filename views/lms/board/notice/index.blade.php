@@ -5,21 +5,24 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_is_use" name="search_is_use">
-                            <option value="">구분1</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
-                            <option value="">구분2</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                        <select class="form-control" id="search_category" name="search_category">
+                            <option value="">구분</option>
+                            @foreach($arr_category as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
                         <select class="form-control" id="search_is_use" name="search_is_use">
@@ -59,7 +62,7 @@
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
-                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
+                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                     <button class="btn btn-default ml-30 mr-30" type="button" id="btn_search_del">검색초기화</button>
@@ -102,12 +105,11 @@
             // 기간 조회 디폴트 셋팅
             //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
 
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-thumbs-o-up mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable);
-                        }},
+                    { text: '<i class="fa fa-copy mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
 
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
 
@@ -135,8 +137,19 @@
                             }
                         }},
                     {'data' : 'SiteName'},
-                    {'data' : 'CampusCcd'},
-                    {'data' : 'CateCode'},
+                    {'data' : 'CampusName'},
+
+                    /*{'data' : 'CateCode'},*/
+                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                            var obj = data.split(',');
+                            var str = '';
+                            for (key in obj) {
+                                str += obj[key]+"<br>";
+                            }
+
+                            return str;
+                        }},
+
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
@@ -148,11 +161,14 @@
                     {'data' : 'RegDatm'},
 
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                            var chk = '';
+                            if (data == 'Y') { chk = 'checked=checked'; } else { chk = ''; }
+                            return '<input type="checkbox" name="is_best" value="Y" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
                         }},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                         }},
                     {'data' : 'ReadCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
@@ -163,29 +179,27 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
-            // 검색초기화
-            $('#btn_search_del').on('click', function() {
-                $search_form[0].reset();
-            });
+            // Best 적용
+            $('.btn-is-best').on('click', function() {
+                var $params = {};
+                var _url = '{{ site_url("/board/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
 
-            $('.btn-copy').on('click', function() {
-                if ($('input:radio[name="copy"]').is(':checked') === false) {
-                    alert('복사할 공지사항을 선택해 주세요.');
+                $('input[name="is_best"]:checked').each(function() {
+                    $params[$(this).data('is-best-idx')] = $(this).val();
+                });
+
+                if (Object.keys($params).length <= '0') {
+                    alert('HOT 적용할 게시글을 선택해주세요.');
                     return false;
                 }
 
-                if (!confirm('해당 공지사항을 복사하시겠습니까?')) {
-                    return;
-                }
-
-                var _url = '{{ site_url("/board/{$boardName}/copy/?") }}' + '{!! $boardDefaultQueryString !!}';
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
-                    'board_idx' : $('input:radio[name="copy"]:checked').val()
+                    'params' : JSON.stringify($params)
                 };
 
                 sendAjax(_url, data, function(ret) {
@@ -194,10 +208,43 @@
                         $datatable.draw();
                     }
                 }, showError, false, 'POST');
-
             });
 
+            // 검색초기화
+            $('#btn_search_del').on('click', function() {
+                $search_form[0].reset();
+            });
 
+            // 복사
+            $('.btn-copy').on('click', function() {
+                var _url = '{{ site_url("/board/{$boardName}/copy/?") }}' + '{!! $boardDefaultQueryString !!}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'board_idx' : $('input:radio[name="copy"]:checked').val()
+                };
+
+                if ($('input:radio[name="copy"]').is(':checked') === false) {
+                    alert('복사할 공지사항을 선택해 주세요.');
+                    return false;
+                }
+                if (!confirm('해당 공지사항을 복사하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+            });
+
+            // hot 숨기기
+            $search_form.on('ifChanged', '.hot-display', function() {
+                $datatable.draw();
+            });
         });
+
+
     </script>
 @stop

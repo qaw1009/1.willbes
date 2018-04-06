@@ -79,17 +79,17 @@ class Board extends \app\controllers\BaseController
     public function store()
     {
         $method = 'add';
-        $rules = [
+        /*$rules = [
             ['field'=>'bm_type_ccd','label'=>'게시판타입','rules'=>'trim|required'],
             ['field'=>'bm_name','label'=>'게시판명','rules'=>'required'],
         ];
 
-        if(empty($this->_reqP('bm_idx',false)) === false) {
-            $method = 'modify';
-        }
-
         if($this->validate($rules) === false) {
             return;
+        }*/
+
+        if(empty($this->_reqP('bm_idx',false)) === false) {
+            $method = 'modify';
         }
 
         $result = $this->boardMasterModel->{$method.'BoardMaster'}($this->_reqP(null, false));

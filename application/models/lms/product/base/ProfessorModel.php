@@ -5,17 +5,22 @@ class ProfessorModel extends WB_Model
 {
     private $_table = [
         'site' => 'lms_site',
+        'code' => 'lms_sys_code',
         'category' => 'lms_sys_category',
         'subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
         'professor_reference' => 'lms_professor_reference',
         'professor_r_subject_r_category' => 'lms_professor_r_subject_r_category',
+        'professor_calculate_rate' => 'lms_professor_calculate_rate',
         'admin' => 'wbs_sys_admin'
     ];
     private $_refer_type = [
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img']
+    ];
+    private $_ccd = [
+        'LearnPattern' => '615'
     ];
     public $_bm_idx = [
         'notice' => 63, 'qna' => 66, 'data' => 69
@@ -162,6 +167,51 @@ class ProfessorModel extends WB_Model
     }
 
     /**
+     * 교수 강사료 정산률 등록 대상 조회
+     * @return array
+     */
+    public function listProfessorCalcRateTarget()
+    {
+        $results = [];
+        $list = $this->_conn->getListResult($this->_table['code'], 'Ccd, CcdName, json_value(CcdEtc, "$.type") as OnOffType', [
+            'EQ' => ['GroupCcd' => $this->_ccd['LearnPattern'], 'json_value(CcdEtc, "$.is_calc")' => 'Y', 'IsUse' => 'Y', 'IsStatus' => 'Y']
+        ]);
+
+        foreach ($list as $row) {
+            $results[$row['OnOffType']][$row['Ccd']] = $row['CcdName'];
+        }
+
+        return $results;
+    }
+
+    /**
+     * 교수 강사료 정산률 데이터 조회
+     * @param $prof_idx
+     * @return array
+     */
+    public function listProfessorCalcRate($prof_idx)
+    {
+        $results = [];
+        $colum = '
+            PCR.ProfCalcIdx, PCR.LearnPatternCcd, left(PCR.ApplyStartDatm, 10) as ApplyStartDate, left(PCR.ApplyEndDatm, 10) as ApplyEndDate
+                , PCR.CalcRate, PCR.ContribRate, PCR.CalcMemo
+                , json_value(C.CcdEtc, "$.type") as OnOffType            
+        ';
+        
+        $list = $this->_conn->getJoinListResult($this->_table['professor_calculate_rate'] . ' as PCR', 'inner', $this->_table['code'] . ' as C'
+            , 'PCR.LearnPatternCcd = C.Ccd'
+            , $colum, ['EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['LearnPattern'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']]
+            , null, null, ['PCR.ProfCalcIdx', 'asc']
+        );
+
+        foreach ($list as $row) {
+            $results[$row['OnOffType']][$row['LearnPatternCcd']][] = $row;
+        }
+
+        return $results;        
+    }
+
+    /**
      * 교수 정보 조회
      * @param string $colum
      * @param array $arr_condition
@@ -191,8 +241,8 @@ class ProfessorModel extends WB_Model
                 , if(P.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.UpdAdminIdx)) as UpdAdminName        
         ';
 
-        return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx',
-            $colum, ['EQ' => ['P.ProfIdx' => $prof_idx, 'P.IsStatus' => 'Y', 'WP.wIsStatus' => 'Y']]);
+        return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx'
+            , $colum, ['EQ' => ['P.ProfIdx' => $prof_idx, 'P.IsStatus' => 'Y', 'WP.wIsStatus' => 'Y']]);
     }
 
     /**
@@ -240,6 +290,13 @@ class ProfessorModel extends WB_Model
             // 교수영역 이미지 업로드
             $is_upload = $this->_attachProfessorImg([], $prof_idx);
             if ($is_subject_mapping !== true) {
+                throw new \Exception($is_upload);
+            }
+
+            // 강사료 정산 데이터 등록/수정
+            $calc_rate_input = elements(['calc_rate', 'contrib_rate', 'apply_start_date', 'apply_end_date', 'calc_memo', 'learn_pattern_ccd', 'prof_calc_idx'], $input);
+            $is_calc_rate = $this->_replaceProfessorCalcRate($calc_rate_input, [], $prof_idx);
+            if ($is_calc_rate !== true) {
                 throw new \Exception($is_upload);
             }
 
@@ -292,7 +349,7 @@ class ProfessorModel extends WB_Model
             // 교수 참조자료 조회
             $refer_data = $this->listProfessorRefer($prof_idx);
 
-            // 교수 참조자료 등록
+            // 교수 참조자료 등록/수정
             $refer_input = elements($this->_refer_type['string'], $input);
             $is_refer = $this->_replaceProfessorRefer($refer_input, element('string', $refer_data, []), $prof_idx);
             if ($is_refer !== true) {
@@ -304,7 +361,14 @@ class ProfessorModel extends WB_Model
             if ($is_subject_mapping !== true) {
                 throw new \Exception($is_upload);
             }
-            
+
+            // 강사료 정산 데이터 등록/수정
+            $calc_rate_input = elements(['calc_rate', 'contrib_rate', 'apply_start_date', 'apply_end_date', 'calc_memo', 'learn_pattern_ccd', 'prof_calc_idx'], $input);
+            $is_calc_rate = $this->_replaceProfessorCalcRate($calc_rate_input, element('del_prof_calc_idx', $input, []), $prof_idx);
+            if ($is_calc_rate !== true) {
+                throw new \Exception($is_upload);
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -330,6 +394,7 @@ class ProfessorModel extends WB_Model
     }
 
     /**
+     * 교수 참조자료 데이터 저장
      * @param array $input [폼 참조 데이터 배열]
      * @param array $arr_string_refer [등록된 이미지를 제외한 참조 데이터 배열, ReferIdx => ReferType]
      * @param $prof_idx
@@ -378,7 +443,83 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 영역 이미지 업로드 및 참조자료 저장
+     * 강사료 정산 데이터 저장
+     * @param array $input
+     * @param array $arr_del_prof_calc_idx [삭제할 강사료 정산 식별자 배열]
+     * @param $prof_idx
+     * @return bool|string
+     */
+    private function _replaceProfessorCalcRate($input = [], $arr_del_prof_calc_idx = [], $prof_idx)
+    {
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            // 강사료 정산 등록/수정
+            foreach ($input['learn_pattern_ccd'] as $idx => $learn_pattern_ccd) {
+                $prof_calc_idx = element($idx, $input['prof_calc_idx']);
+                $cal_rate = element($idx, $input['calc_rate']);
+                $contrib_rate = element($idx, $input['contrib_rate']);
+                $apply_start_date = element($idx, $input['apply_start_date']);
+                $apply_end_date = element($idx, $input['apply_end_date']);
+
+                // 필수 정보가 모두 있을 경우만 등록/수정
+                if (strlen($cal_rate) > 0 && strlen($contrib_rate) > 0 && empty($apply_start_date) === false && empty($apply_end_date) === false) {
+                    if (empty($prof_calc_idx) === true) {
+                        // 데이터 등록
+                        $data = [
+                            'ProfIdx' => $prof_idx,
+                            'LearnPatternCcd' => $learn_pattern_ccd,
+                            'ApplyStartDatm' => $apply_start_date . ' 00:00:00',
+                            'ApplyEndDatm' => $apply_end_date . ' 23:59:59',
+                            'CalcRate' => $cal_rate,
+                            'ContribRate' => $contrib_rate,
+                            'CalcMemo' => element($idx, $input['calc_memo'], ''),
+                            'RegAdminIdx' => $admin_idx,
+                            'RegIp' => $reg_ip
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['professor_calculate_rate']) === false) {
+                            throw new \Exception('강사료 정산 데이터 등록에 실패했습니다.');
+                        }
+                    } else {
+                        // 데이터 수정
+                        $data = [
+                            'ApplyStartDatm' => $apply_start_date . ' 00:00:00',
+                            'ApplyEndDatm' => $apply_end_date . ' 23:59:59',
+                            'CalcRate' => $cal_rate,
+                            'ContribRate' => $contrib_rate,
+                            'CalcMemo' => element($idx, $input['calc_memo'], ''),
+                            'UpdAdminIdx' => $admin_idx
+                        ];
+
+                        if ($this->_conn->set($data)->where('ProfCalcIdx', $prof_calc_idx)->where('ProfIdx', $prof_idx)->update($this->_table['professor_calculate_rate']) === false) {
+                            throw new \Exception('강사료 정산 데이터 수정에 실패했습니다.');
+                        }
+                    }
+                }
+            }
+
+            // 강사료 정산 데이터 삭제
+            if (count($arr_del_prof_calc_idx) > 0) {
+                $is_update = $this->_conn->set([
+                    'IsStatus' => 'N',
+                    'UpdAdminIdx' => $admin_idx
+                ])->where_in('ProfCalcIdx', $arr_del_prof_calc_idx)->where('ProfIdx', $prof_idx)->update($this->_table['professor_calculate_rate']);
+
+                if ($is_update === false) {
+                    throw new \Exception('강사료 정산 데이터 삭제에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 교수 영역 이미지 업로드 및 데이터 저장
      * @param array $arr_attach_refer [등록된 교수영역 이미지 데이터 배열, ReferIdx => ReferType]
      * @param $prof_idx
      * @return bool|string
@@ -456,36 +597,34 @@ class ProfessorModel extends WB_Model
                 $data = array_pluck($data, 'SubjectMappingCode', 'PcIdx');
 
                 // 기존 등록된 과목 연결 데이터 삭제 처리 (전달된 카테고리_과목 식별자 중에 기 등록된 카테고리_과목 식별자가 없다면 삭제 처리)
-                foreach ($data as $ori_pc_idx => $ori_subject_mapping_code) {
-                    if (in_array($ori_subject_mapping_code, $arr_subject_mapping_code) === false) {
-                        $is_update = $this->_conn->set([
-                            'IsStatus' => 'N',
-                            'UpdAdminIdx' => $admin_idx
-                        ])->where('PcIdx', $ori_pc_idx)->update($_table);;
+                $arr_delete_subject_mapping_code = array_diff($data, $arr_subject_mapping_code);
+                if (count($arr_delete_subject_mapping_code) > 0) {
+                    $is_update = $this->_conn->set([
+                        'IsStatus' => 'N',
+                        'UpdAdminIdx' => $admin_idx
+                    ])->where_in('PcIdx', array_keys($arr_delete_subject_mapping_code))->where('ProfIdx', $prof_idx)->update($_table);
 
-                        if ($is_update === false) {
-                            throw new \Exception('기 설정된 카테고리 정보 수정에 실패했습니다.');
-                        }
+                    if ($is_update === false) {
+                        throw new \Exception('기 설정된 카테고리 정보 수정에 실패했습니다.');
                     }
                 }
             }
 
             // 신규 등록 (기 등록된 카테고리_과목 식별자 중에 전달된 카테고리_과목 식별자가 없다면 등록 처리)
-            foreach ($arr_subject_mapping_code as $subject_mapping_code) {
-                if (in_array($subject_mapping_code, $data) === false) {
-                    $_arr_subject_mapping_code = explode('_', $subject_mapping_code);
+            $arr_insert_subject_mapping_code = array_diff($arr_subject_mapping_code, $data);
+            foreach ($arr_insert_subject_mapping_code as $subject_mapping_code) {
+                $_arr_subject_mapping_code = explode('_', $subject_mapping_code);
 
-                    $is_insert = $this->_conn->set([
-                        'ProfIdx' => $prof_idx,
-                        'CateCode' => element('0', $_arr_subject_mapping_code),
-                        'SubjectIdx' => element('1', $_arr_subject_mapping_code),
-                        'RegAdminIdx' => $admin_idx,
-                        'RegIp' => $this->input->ip_address()
-                    ])->insert($_table);
+                $is_insert = $this->_conn->set([
+                    'ProfIdx' => $prof_idx,
+                    'CateCode' => element('0', $_arr_subject_mapping_code),
+                    'SubjectIdx' => element('1', $_arr_subject_mapping_code),
+                    'RegAdminIdx' => $admin_idx,
+                    'RegIp' => $this->input->ip_address()
+                ])->insert($_table);
 
-                    if ($is_insert === false) {
-                        throw new \Exception('카테고리 정보 등록에 실패했습니다.');
-                    }
+                if ($is_insert === false) {
+                    throw new \Exception('카테고리 정보 등록에 실패했습니다.');
                 }
             }
         } catch (\Exception $e) {

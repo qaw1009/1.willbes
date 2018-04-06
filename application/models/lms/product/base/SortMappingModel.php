@@ -208,46 +208,44 @@ class SortMappingModel extends WB_Model
                 $data = array_pluck($data, 'SubjectIdx');
 
                 // 기존 등록된 과목 연결 데이터 삭제 처리 (전달된 과목 식별자 중에 기 등록된 과목 식별자가 없다면 삭제 처리)
-                foreach ($data as $ori_subject_idx) {
-                    if (in_array($ori_subject_idx, $arr_subject_idx) === false) {
-                        $upd_query = $this->_conn->set([
-                            'IsStatus' => 'N',
-                            'UpdAdminIdx' => $admin_idx
-                        ])->where('SiteCode', $site_code)->where('CateCode', $cate_code)->where('SubjectIdx', $ori_subject_idx);
+                $arr_delete_subject_idx = array_diff($data, $arr_subject_idx);
+                if (count($arr_delete_subject_idx) > 0) {
+                    $upd_query = $this->_conn->set([
+                        'IsStatus' => 'N',
+                        'UpdAdminIdx' => $admin_idx
+                    ])->where('SiteCode', $site_code)->where('CateCode', $cate_code)->where_in('SubjectIdx', $arr_delete_subject_idx);
 
-                        // 복합연결일 경우
-                        if ($conn_type != 'category') {
-                            $upd_query = $upd_query->where('ChildCcd', $child_ccd);
-                        }
+                    // 복합연결일 경우
+                    if ($conn_type != 'category') {
+                        $upd_query = $upd_query->where('ChildCcd', $child_ccd);
+                    }
 
-                        $is_update = $upd_query->update($_table);
-                        if ($is_update === false) {
-                            throw new \Exception('기 설정된 과목 연결 데이터 수정에 실패했습니다.');
-                        }
+                    $is_update = $upd_query->update($_table);
+                    if ($is_update === false) {
+                        throw new \Exception('기 설정된 과목 연결 데이터 수정에 실패했습니다.');
                     }
                 }
             }
 
             // 신규 등록 (기 등록된 과목 식별자 중에 전달된 과목 식별자가 없다면 등록 처리)
-            foreach ($arr_subject_idx as $subject_idx) {
-                if (in_array($subject_idx, $data) === false) {
-                    $ins_query = $this->_conn->set([
-                        'SiteCode' => $site_code,
-                        'CateCode' => $cate_code,
-                        'SubjectIdx' => $subject_idx,
-                        'RegAdminIdx' => $admin_idx,
-                        'RegIp' => $this->input->ip_address()
-                    ]);
+            $arr_insert_subject_idx = array_diff($arr_subject_idx, $data);
+            foreach ($arr_insert_subject_idx as $subject_idx) {
+                $ins_query = $this->_conn->set([
+                    'SiteCode' => $site_code,
+                    'CateCode' => $cate_code,
+                    'SubjectIdx' => $subject_idx,
+                    'RegAdminIdx' => $admin_idx,
+                    'RegIp' => $this->input->ip_address()
+                ]);
 
-                    // 복합연결일 경우
-                    if ($conn_type != 'category') {
-                        $ins_query = $ins_query->set('ChildCcd', $child_ccd);
-                    }
+                // 복합연결일 경우
+                if ($conn_type != 'category') {
+                    $ins_query = $ins_query->set('ChildCcd', $child_ccd);
+                }
 
-                    $is_insert = $ins_query->insert($_table);
-                    if ($is_insert === false) {
-                        throw new \Exception('과목 연결 데이터 등록에 실패했습니다.');
-                    }
+                $is_insert = $ins_query->insert($_table);
+                if ($is_insert === false) {
+                    throw new \Exception('과목 연결 데이터 등록에 실패했습니다.');
                 }
             }
         } catch (\Exception $e) {

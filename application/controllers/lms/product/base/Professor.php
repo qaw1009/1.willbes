@@ -81,13 +81,17 @@ class Professor extends \app\controllers\BaseController
 
             // 카테고리 + 과목 매핑 데이터 조회
             $data['SubjectMapping'] = $this->professorModel->listProfessorSubjectMapping($idx);
+
+            // 강사료 정산 데이터 조회
+            $data['CalcRate'] = $this->professorModel->listProfessorCalcRate($idx);
         }
 
         $this->load->view('product/base/professor/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
-            'arr_bm_idx' => $this->professorModel->_bm_idx
+            'arr_bm_idx' => $this->professorModel->_bm_idx,
+            'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget()
         ]);
     }
 

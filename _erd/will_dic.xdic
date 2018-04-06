@@ -136,4 +136,5 @@
   <term name="정산" physicalName="Calc"/>
   <term name="[율]" physicalName="Rate"/>
   <term name="[률]" physicalName="Rate"/>
+  <term name="기여" description="Contribute" physicalName="Contrib"/>
 </tm:TermDictionary>

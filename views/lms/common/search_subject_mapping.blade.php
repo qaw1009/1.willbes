@@ -60,6 +60,10 @@
         var $datatable;
         var $search_form = $('#_search_form');
         var $list_table = $('#_list_ajax_table');
+        var $parent_regi_form = $('#regi_form');
+        var $parent_selected_subject_mapping = $('#selected_subject_mapping');
+        var $selected_subject_mapping = $('#_selected_subject_mapping');
+        var $ori_selected_data = {};
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -74,7 +78,10 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" id="_subject_mapping_' + row.CateCode + '_' + row.SubjectIdx + '" name="_subject_mapping_code" class="flat" value="' + row.CateCode + '_' + row.SubjectIdx + '" data-row-idx="' + meta.row + '"/>';
+                        var code = row.CateCode + '_' + row.SubjectIdx;
+                        var checked = ($ori_selected_data.hasOwnProperty(code) === true) ? 'checked="checked"' : '';
+
+                        return '<input type="checkbox" id="_subject_mapping_' + code + '" name="_subject_mapping_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '/>';
                     }},
                     {'data' : 'CateSubjectRouteName'},
                     {'data' : 'RegAdminName'},
@@ -93,42 +100,47 @@
 
             // 카테고리 선택
             $datatable.on('ifChanged', 'input[name="_subject_mapping_code"]', function() {
-                var _selected_subject_mapping = $('#_selected_subject_mapping');
                 var that = $(this);
                 var row = $datatable.row(that.data('row-idx')).data();
-                var val = that.val();
+                var code = that.val();
+                var route_name = '';
 
                 if (that.prop('checked') === true) {
-                    _selected_subject_mapping.append('<li id="_selected_subject_mapping_' + val + '" data-subject-mapping-code="' + val + '" class="mb-5">' + row.CateSubjectRouteName + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
+                    route_name = row.CateSubjectRouteName;
+                    route_name = route_name.substr(route_name.indexOf(' > ') + 3);
+                    $selected_subject_mapping.append('<li id="_selected_subject_mapping_' + code + '" data-subject-mapping-code="' + code + '" class="mb-5">' + route_name + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
                 } else {
-                    _selected_subject_mapping.find('#_selected_subject_mapping_' + val).remove();
+                    $selected_subject_mapping.find('#_selected_subject_mapping_' + code).remove();
                 }
             });
 
             // 선택한 카테고리 삭제 버튼 클릭
-            $('#_selected_subject_mapping').on('click', '._selected-subject-mapping-delete', function() {
+            $selected_subject_mapping.on('click', '._selected-subject-mapping-delete', function() {
                 var data = $(this).parent().data('subject-mapping-code');
-                //that.parent().remove();
-                $('input[id="_subject_mapping_' + data + '"]').iCheck('uncheck');
+                $(this).parent().remove();
+                $('input[id="_subject_mapping_' + data + '"]').prop('checked', false).iCheck('update');
             });
 
             // 적용 버튼
             $('#_btn_apply').on('click', function() {
+                var code, route_name, html = '';
+
+                if ($selected_subject_mapping.html().trim() === '') {
+                    alert('선택된 카테고리 정보가 없습니다.')
+                    return;
+                }
+
                 if (!confirm('선택한 카테고리를 선택하시겠습니까?')) {
                     return;
                 }
 
-                var $parent_regi_form = $('#regi_form');
-                var $parent_selected_subject_mapping = $('#selected_subject_mapping');
-                var html = '', subject_mapping_code, subject_mapping_txt;
-
                 $('#_selected_subject_mapping li').each(function() {
-                    subject_mapping_code = $(this).data('subject-mapping-code');
-                    subject_mapping_txt = $(this).text().trim();
+                    code = $(this).data('subject-mapping-code');
+                    route_name = $(this).text().trim();
 
-                    html += '<span class="pr-10">' + subject_mapping_txt.substr((subject_mapping_txt.indexOf(' > ') + 3));
-                    html += '   <a href="#none" data-subject-mapping-code="' + subject_mapping_code + '" class="selected-subject-mapping-delete"><i class="fa fa-times red"></i></a>';
-                    html += '   <input type="hidden" name="subject_mapping_code[]" value="' + subject_mapping_code + '"/>';
+                    html += '<span class="pr-10">' + route_name;
+                    html += '   <a href="#none" data-subject-mapping-code="' + code + '" class="selected-subject-mapping-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <input type="hidden" name="subject_mapping_code[]" value="' + code + '"/>';
                     html += '</span>';
                 });
 
@@ -137,6 +149,23 @@
 
                 $("#pop_modal").modal('toggle');
             });
+
+            // 기존 선택된 정보 셋팅
+            var setOriSelectedData = function() {
+                var that, code, route_name;
+                $parent_selected_subject_mapping.find('span').each(function() {
+                    that = $(this);
+                    code = that.find('input[name="subject_mapping_code[]"]').val();
+                    route_name = that.text().trim();
+
+                    $selected_subject_mapping.append('<li id="_selected_subject_mapping_' + code + '" data-subject-mapping-code="' + code + '" class="mb-5">' + route_name + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
+
+                    // 기존 선택된 정보 json 변수에 저장
+                    $ori_selected_data[code] = route_name;
+                });
+            };
+
+            setOriSelectedData();
         });
     </script>
 @stop

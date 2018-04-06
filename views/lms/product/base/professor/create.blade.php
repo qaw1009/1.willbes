@@ -175,6 +175,73 @@
                         </div>
                     </div>
                 </div>
+                {{-- 강사료 정산 계약정보 --}}
+                @foreach($arr_calc_target as $on_off_type => $rows)
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="prof_curriculum">@if($on_off_type == 'on')온라인상품@else학원상품@endif 강사료<br/>표준 계약정보 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 item">
+                            <div class="x_panel mb-0">
+                                <div class="x_content pb-0">
+                                    <div class="row">
+                                        @if($on_off_type == 'on')
+                                            <div class="col-md-12"><p class="form-control-static"><strong># 계약기간 시작일 시작 시간은 00:00:00 | 종료일 마감 시간은 23:59:59</strong></p></div>
+                                        @endif
+
+                                        @foreach($rows as $key => $val)
+                                            <div class="col-md-6"><p class="form-control-static"><strong>[ {{ $val }} ]</strong></p></div>
+                                            <div class="col-md-6 text-right"><button type="button" class="btn btn-sm btn-success btn-calc-add" data-learn-pattern-ccd="{{ $key }}">필드 추가</button></div>
+                                            <div class="col-md-12">
+                                                <table id="list_calc_table_{{ $key }}" class="table table-striped table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <td>정산율</td>
+                                                        <td>기여도</td>
+                                                        <td>계약기간</td>
+                                                        <td>비고</td>
+                                                        <td>삭제</td>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="form-group form-group-sm form-inline">
+                                                    @php $_prefix_first_key = $on_off_type . '.' . $key . '.0'; @endphp
+                                                    <tr>
+                                                        <td><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcRate') }}" style="width: 80px"/> %</td>
+                                                        <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ContribRate') }}" style="width: 80px"/> %</td>
+                                                        <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyStartDate') }}" style="width: 100px">
+                                                            ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyEndDate') }}" style="width: 100px">
+                                                        </td>
+                                                        <td><input type="text" name="calc_memo[]" class="form-control" title="비고" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcMemo') }}"/></td>
+                                                        <td><a href="#none" class="btn-calc-delete"><i class="fa fa-times fa-lg red"></i></a>
+                                                            <input type="hidden" name="learn_pattern_ccd[]" value="{{ $key }}"/>
+                                                            <input type="hidden" name="prof_calc_idx[]" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ProfCalcIdx') }}"/>
+                                                        </td>
+                                                    </tr>
+                                                    @foreach(array_get($data['CalcRate'], $on_off_type . '.' . $key, []) as $idx => $row)
+                                                        @if($idx > 0)
+                                                            <tr>
+                                                                <td><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ $row['CalcRate'] }}" style="width: 80px"/> %</td>
+                                                                <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="{{ $row['ContribRate'] }}" style="width: 80px"/> %</td>
+                                                                <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ $row['ApplyStartDate'] }}" style="width: 100px">
+                                                                    ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ $row['ApplyEndDate'] }}" style="width: 100px">
+                                                                </td>
+                                                                <td><input type="text" name="calc_memo[]" class="form-control" title="비고" value="{{ $row['CalcMemo'] }}"/></td>
+                                                                <td><a href="#none" class="btn-calc-delete"><i class="fa fa-times fa-lg red"></i></a>
+                                                                    <input type="hidden" name="learn_pattern_ccd[]" value="{{ $key }}"/>
+                                                                    <input type="hidden" name="prof_calc_idx[]" value="{{ $row['ProfCalcIdx'] }}"/>
+                                                                </td>
+                                                            </tr>
+                                                        @endif
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
                 <div class="form-group">
                     <label class="control-label col-md-2" for="prof_curriculum">커리큘럼 <span class="required">*</span>
                     </label>
@@ -404,6 +471,36 @@
                         location.reload();
                     }
                 }, showError, false, 'POST');
+            });
+
+            // 정산 테이블 필드 추가
+            $regi_form.on('click', '.btn-calc-add', function() {
+                var key = $(this).data('learn-pattern-ccd');
+                var $table = $('#list_calc_table_' + key);
+
+                // 첫번째 tr 복사하여 추가
+                $table.find('tbody tr:eq(0)').clone().appendTo($table).find('input[type="text"], [type="number"], [name="prof_calc_idx[]"]').val("");
+            });
+
+            // 정산 테이블 필드 삭제
+            $regi_form.on('click', '.btn-calc-delete', function() {
+                var that = $(this)
+
+                if (that.parents('tbody').children('tr').length > 1) {
+                    // 삭제된 정산 식별자 추가
+                    var del_prof_cal_idx = $(this).parent().parent('tr').find('input[name="prof_calc_idx[]"]').val();
+                    $regi_form.append('<input type="hidden" name="del_prof_calc_idx[]" value="' + del_prof_cal_idx + '"/>');
+
+                    // 행 삭제
+                    $(this).parent().parent('tr').remove();
+                } else {
+                    alert('최소 1개의 행이 필요합니다. 삭제하실 수 없습니다.');
+                }
+            });
+
+            // 정산 테이블 필드 calendar 적용
+            $regi_form.on('focus', '.datepicker', function() {
+                init_datetimepicker();
             });
 
             // 목록 이동

@@ -311,6 +311,11 @@ class BoardModel extends WB_Model
         return true;
     }
 
+    /**
+     * 단일 파일 삭제
+     * @param $attach_idx
+     * @return array|bool
+     */
     public function removeFile($attach_idx)
     {
         $this->_conn->trans_begin();

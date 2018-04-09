@@ -105,7 +105,7 @@
                         return html;
                     }},
                     {'data' : 'wPublName'},
-                    {'data' : 'wAuthorNameList', 'render' : function(data, type, row, meta) {
+                    {'data' : 'wAuthorNames', 'render' : function(data, type, row, meta) {
                         return data.replace(/,/g, '<br/>');
                     }},
                     {'data' : 'wOrgPrice', 'render' : function(data, type, row, meta) {

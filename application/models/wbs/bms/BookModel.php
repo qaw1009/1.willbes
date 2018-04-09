@@ -55,7 +55,7 @@ class BookModel extends WB_Model
                         where A.wIsUse = "Y" and A.wIsStatus = "Y"
                             and BA.wIsStatus = "Y" and BA.wBookIdx = B.wBookIdx
                         group by BA.wBookIdx
-                    ) as wAuthorNameList            
+                    ) as wAuthorNames           
          ';
 
         $from = '

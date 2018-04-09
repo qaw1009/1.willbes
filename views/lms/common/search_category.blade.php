@@ -15,7 +15,7 @@
         <p class="form-control-static"><span class="required">*</span> 검색한 카테고리 정보를 선택해 주세요. (다중 선택 불가능합니다.)</p>
     </div>
     <div class="form-group form-group-bordered pt-10 pb-5">
-        <label class="control-label col-md-2 pt-5">통합검색
+        <label class="control-label col-md-2 pt-5" for="search_value">통합검색
         </label>
         <div class="col-md-4">
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">

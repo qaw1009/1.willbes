@@ -43,7 +43,7 @@ class Book extends \app\controllers\BaseController
             'ORG2' => [
                 'LKB' => [
                     'wPublName' => $this->_reqP('search_publ_author'),
-                    'wAuthorNameList' => $this->_reqP('search_publ_author'),
+                    'wAuthorNames' => $this->_reqP('search_publ_author'),
                 ]
             ],
         ];

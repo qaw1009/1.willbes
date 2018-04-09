@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="form-group form-group-bordered pt-10 pb-5">
-        <label class="control-label col-md-2 pt-5">과목검색
+        <label class="control-label col-md-2 pt-5" for="search_value">과목검색
         </label>
         <div class="col-md-4">
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">

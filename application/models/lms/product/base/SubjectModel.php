@@ -38,18 +38,23 @@ class SubjectModel extends WB_Model
 
     /**
      * 과목 코드 목록 조회
-     * @param $site_code
+     * @param string $site_code
      * @return array
      */
-    public function getSubjectArray($site_code)
+    public function getSubjectArray($site_code = '')
     {
-        $data = $this->_conn->getListResult($this->_table['subject'], 'SubjectIdx, SubjectName', [
-            'EQ' => ['SiteCode' => $site_code, 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'SubjectIdx' => 'asc'
+        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+        }
+
+        $data = $this->_conn->getListResult($this->_table['subject'], 'SiteCode, SubjectIdx, SubjectName', $arr_condition, null, null, [
+            'SiteCode' => 'asc', 'OrderNum' => 'asc'
         ]);
 
-        return array_pluck($data, 'SubjectName', 'SubjectIdx');
+        return (empty($site_code) === false) ? array_pluck($data, 'SubjectName', 'SubjectIdx') : $data;
     }
 
     /**

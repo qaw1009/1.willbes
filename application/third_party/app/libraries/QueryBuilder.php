@@ -274,9 +274,12 @@ trait QueryBuilder
      */
     public function getMakeLimitOffset()
     {
-        $query = $this->_limit('');
-        $this->qb_limit = false;
-        $this->qb_offset = false;
+        $query = '';
+        if ($this->qb_limit !== false) {
+            $query = $this->_limit('');
+            $this->qb_limit = false;
+            $this->qb_offset = false;
+        }
 
         return $query;
     }

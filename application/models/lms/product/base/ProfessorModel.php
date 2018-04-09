@@ -213,18 +213,25 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수 코드 목록 조회
-     * @param $site_code
+     * @param string $site_code
      * @return array
      */
-    public function getProfessorArray($site_code)
+    public function getProfessorArray($site_code = '')
     {
+        $arr_condition = ['EQ' => ['P.IsUse' => 'Y', 'P.IsStatus' => 'Y', 'WP.wIsUse' => 'Y', 'WP.wIsStatus' => 'Y']];
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['P.SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
+        }
+
         $data = $this->_conn->getJoinListResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP'
             , 'P.wProfIdx = WP.wProfIdx'
-            , 'P.ProfIdx, WP.wProfName', ['EQ' => ['P.SiteCode' => $site_code, 'P.IsUse' => 'Y', 'P.IsStatus' => 'Y', 'WP.wIsUse' => 'Y', 'WP.wIsStatus' => 'Y']]
-            , null, null, ['P.ProfIdx', 'asc']
+            , 'P.SiteCode, P.ProfIdx, WP.wProfName', $arr_condition
+            , null, null, ['P.SiteCode' => 'asc', 'P.ProfIdx' => 'asc']
         );
 
-        return array_pluck($data, 'wProfName', 'ProfIdx');
+        return (empty($site_code) === false) ? array_pluck($data, 'wProfName', 'ProfIdx') : $data;
     }
 
     /**

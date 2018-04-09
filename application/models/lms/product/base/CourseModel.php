@@ -37,6 +37,27 @@ class CourseModel extends WB_Model
     }
 
     /**
+     * 과정 코드 목록 조회
+     * @param string $site_code
+     * @return array
+     */
+    public function getCourseArray($site_code = '')
+    {
+        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+        }
+
+        $data = $this->_conn->getListResult($this->_table['course'], 'SiteCode, CourseIdx, CourseName', $arr_condition, null, null, [
+            'SiteCode' => 'asc', 'OrderNum' => 'asc'
+        ]);
+
+        return (empty($site_code) === false) ? array_pluck($data, 'CourseName', 'CourseIdx') : $data;
+    }
+
+    /**
      * 과정 수정 폼을 위한 데이터 조회
      * @param $course_idx
      * @return array

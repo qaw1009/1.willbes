@@ -144,6 +144,7 @@ class Book extends \app\controllers\BaseController
             ['field' => 'edition_cnt', 'label' => '판', 'rules' => 'trim|required|numeric'],
             ['field' => 'print_cnt', 'label' => '쇄', 'rules' => 'trim|required|numeric'],
             ['field' => 'org_price', 'label' => '정가', 'rules' => 'trim|required|numeric'],
+            ['field' => 'stock_cnt', 'label' => '재고', 'rules' => 'trim|required|numeric'],
             ['field' => 'sale_ccd', 'label' => '판매여부', 'rules' => 'trim|required'],
         ];
 

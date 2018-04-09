@@ -118,7 +118,7 @@ class BookModel extends WB_Model
      */
     public function findBookForModify($book_idx)
     {
-        $colum = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wSaleCcd, B.wKeyword';
+        $colum = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword';
         $colum .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
         $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = B.wRegAdminIdx) as wRegAdminName';
         $colum .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = B.wUpdAdminIdx)) as wUpdAdminName';
@@ -149,6 +149,7 @@ class BookModel extends WB_Model
                 'wPrintCnt' => element('print_cnt', $input),
                 'wEditionSize' => element('edition_size', $input),
                 'wOrgPrice' => element('org_price', $input),
+                'wStockCnt' => element('stock_cnt', $input),
                 'wSaleCcd' => element('sale_ccd', $input),
                 'wKeyword' => element('keyword', $input),
                 'wBookDesc' => element('book_desc', $input),
@@ -239,6 +240,7 @@ class BookModel extends WB_Model
                 'wPrintCnt' => element('print_cnt', $input),
                 'wEditionSize' => element('edition_size', $input),
                 'wOrgPrice' => element('org_price', $input),
+                'wStockCnt' => element('stock_cnt', $input),
                 'wSaleCcd' => element('sale_ccd', $input),
                 'wKeyword' => element('keyword', $input),
                 'wBookDesc' => element('book_desc', $input),

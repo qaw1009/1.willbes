@@ -137,4 +137,5 @@
   <term name="[율]" physicalName="Rate"/>
   <term name="[률]" physicalName="Rate"/>
   <term name="기여" description="Contribute" physicalName="Contrib"/>
+  <term name="재고" physicalName="Stock"/>
 </tm:TermDictionary>

@@ -97,6 +97,16 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
+     * 게시판 삭제
+     * @param $idx
+     * @return bool
+     */
+    protected function _delete($idx)
+    {
+        return $this->boardModel->boardDelete($idx);
+    }
+
+    /**
      * 게시판 복제
      * @param $board_idx
      * @return array|bool
@@ -120,6 +130,7 @@ class BaseBoard extends \app\controllers\BaseController
     /**
      * 파일 삭제
      * @param $attach_idx
+     * @return array|bool
      */
     protected function _removeFile($attach_idx)
     {

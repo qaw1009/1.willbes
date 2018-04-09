@@ -161,6 +161,10 @@ class BoardModel extends WB_Model
             }
 
             // board update
+            $board_data = array_merge($board_data,[
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ]);
             $this->_conn->set($board_data)->where('BoardIdx', $board_idx);
             if ($this->_conn->update($this->_table) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
@@ -270,14 +274,79 @@ class BoardModel extends WB_Model
             ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as B ON LB.RegAdminIdx = B.wAdminIdx and B.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table_sys_admin} as C ON LB.UpdAdminIdx = C.wAdminIdx and C.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
         $where = $this->_conn->makeWhere([
-            /*'EQ'=>['LB.BoardIdx'=>$board_idx,'A.IsStatus'=>'Y']*/
-            'EQ'=>['LB.BoardIdx'=>$board_idx]
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y'
+            ]
         ]);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 게시판 이전글
+     * @param $bm_idx
+     * @param $board_idx
+     * @return array
+     */
+    public function findBoardPrevious($bm_idx, $board_idx)
+    {
+        $column = 'BoardIdx, Title';
+        $from = "
+            FROM {$this->_table}
+        ";
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $bm_idx,
+                'IsStatus' => 'Y'
+            ],
+            'LT'=>[
+                'BoardIdx' => $board_idx
+            ]
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['BoardIdx'=>'DESC'])->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
+
+        $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
+        return $query->first_row();
+    }
+
+    /**
+     * 게시판 다음글
+     * @param $bm_idx
+     * @param $board_idx
+     * @return array
+     */
+    public function findBoardNext($bm_idx, $board_idx)
+    {
+        $column = 'BoardIdx, Title';
+        $from = "
+            FROM {$this->_table}
+        ";
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $bm_idx,
+                'IsStatus' => 'Y'
+            ],
+            'GT'=>[
+                'BoardIdx' => $board_idx
+            ]
+        ]);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['BoardIdx'=>'ASC'])->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
+
+        $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
+        return $query->first_row();
     }
 
     /**
@@ -337,6 +406,41 @@ class BoardModel extends WB_Model
 
             if($this->_conn->update($this->_table_attach)=== false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 게시판 삭제
+     * IsStatus 'N' 으로 Update
+     * @param $idx
+     * @return bool
+     */
+    public function boardDelete($idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $board_idx = $idx;
+            $admin_idx = $this->session->userdata('admin_idx');
+            $result = $this->_findBoardData($board_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('BoardIdx', $board_idx)->where('IsStatus', 'Y')->update($this->_table);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -610,7 +714,8 @@ class BoardModel extends WB_Model
         ";
         $where = $this->_conn->makeWhere([
             'EQ' => [
-                'BoardIdx' => $idx
+                'BoardIdx' => $idx,
+                'IsStatus' => 'Y'
             ]
         ]);
         $where = $where->getMakeWhere(false);

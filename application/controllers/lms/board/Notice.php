@@ -61,6 +61,7 @@ class Notice extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
+                'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
                 'LB.SiteCode' => $this->site_code,
@@ -128,7 +129,7 @@ class Notice extends BaseBoard
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
         ];
 
         if ($this->validate($rules) === false) {
@@ -136,7 +137,6 @@ class Notice extends BaseBoard
         }
 
         $result = $this->_boardCopy($this->_reqP('board_idx'));
-
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -155,7 +155,6 @@ class Notice extends BaseBoard
         }
 
         $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('dis_params'), true));
-
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -256,6 +255,25 @@ class Notice extends BaseBoard
     }
 
     /**
+     * 게시판 삭제
+     * @param array $params
+     */
+    public function delete($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
      * 파일 삭제
      */
     public function destroyFile()
@@ -270,21 +288,63 @@ class Notice extends BaseBoard
         }
 
         $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
-
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-
+    /**
+     * 공지게시판 Read 페이지
+     * @param array $params
+     */
     public function read($params = [])
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
 
-        $data = null;
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName, C.wAdminName AS UpdAdminName, LB.UpdDatm
+            ';
+        $board_idx = $params[0];
+        $data = $this->boardModel->findBoardForModify($board_idx, $column);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        //이전글
+        $board_previous = $this->boardModel->findBoardPrevious($this->bm_idx, $board_idx);
+        //다음글
+        $board_next = $this->boardModel->findBoardNext($this->bm_idx, $board_idx);
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
         $this->load->view("board/{$this->board_name}/read",[
             'boardName' => $this->board_name,
-            'data' => $data
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next,
         ]);
     }
 
@@ -348,6 +408,7 @@ class Notice extends BaseBoard
         $arr_best_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
+                'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'Y',
                 'LB.SiteCode' => $this->site_code,

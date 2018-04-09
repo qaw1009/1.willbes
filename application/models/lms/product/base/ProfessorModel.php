@@ -212,6 +212,22 @@ class ProfessorModel extends WB_Model
     }
 
     /**
+     * 교수 코드 목록 조회
+     * @param $site_code
+     * @return array
+     */
+    public function getProfessorArray($site_code)
+    {
+        $data = $this->_conn->getJoinListResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP'
+            , 'P.wProfIdx = WP.wProfIdx'
+            , 'P.ProfIdx, WP.wProfName', ['EQ' => ['P.SiteCode' => $site_code, 'P.IsUse' => 'Y', 'P.IsStatus' => 'Y', 'WP.wIsUse' => 'Y', 'WP.wIsStatus' => 'Y']]
+            , null, null, ['P.ProfIdx', 'asc']
+        );
+
+        return array_pluck($data, 'wProfName', 'ProfIdx');
+    }
+
+    /**
      * 교수 정보 조회
      * @param string $colum
      * @param array $arr_condition

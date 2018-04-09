@@ -91,13 +91,6 @@
                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
                                     </p>
                                 @endif
-
-                                {{--@if(empty($data{'AttachFileName' . $i}) === false)
-                                    <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['AttachFilePath'] . $data{'AttachFileName' . $i} }}" rel="popup-image">{{ $data{'AttachFileName' . $i} }}</a> ]</p>
-                                    <div class="checkbox">
-                                        <input type="checkbox" name="" value="{{ $i }}" class="flat"/> <span class="red">삭제</span>
-                                    </div>
-                                @endif--}}
                             </div>
                         @endfor
                     </div>

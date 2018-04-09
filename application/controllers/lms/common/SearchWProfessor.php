@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SearchProfessor extends \app\controllers\BaseController
+class SearchWProfessor extends \app\controllers\BaseController
 {
     protected $models = array('common/searchWProfessor');
     protected $helpers = array();
@@ -16,7 +16,7 @@ class SearchProfessor extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view('common/search_professor', [
+        $this->load->view('common/search_wprofessor', [
         ]);
     }
 

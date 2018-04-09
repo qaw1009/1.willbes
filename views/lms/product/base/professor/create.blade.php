@@ -419,7 +419,7 @@
 
             // 교수 검색
             $('#btn_professor_search').setLayer({
-                'url' : '{{ site_url('/common/searchProfessor') }}',
+                'url' : '{{ site_url('/common/searchWProfessor') }}',
                 'width' : 900
             });
 

@@ -55,7 +55,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 ajax: {
-                    'url' : '{{ site_url('/common/searchProfessor/listAjax') }}',
+                    'url' : '{{ site_url('/common/searchWProfessor/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});

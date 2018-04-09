@@ -46,7 +46,7 @@ class BookModel extends WB_Model
         }
 
         $in_colum = '
-                B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
+                B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
                     , P.wPublName, A.wAdminName as wRegAdminName
                     , (
                         select GROUP_CONCAT(A.wAuthorName separator ", ")

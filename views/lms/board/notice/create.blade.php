@@ -3,8 +3,8 @@
 @section('content')
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
@@ -152,7 +152,7 @@
             // ajax submit
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
-                /*var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
+                var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
                 getEditorBodyContent($editor_profile);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
@@ -160,7 +160,7 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');*/
+                }, showValidateError, addValidate, false, 'alert');
             });
 
             //목록

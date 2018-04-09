@@ -138,23 +138,21 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
-
-                    /*{'data' : 'CateCode'},*/
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
                             var obj = data.split(',');
                             var str = '';
                             for (key in obj) {
                                 str += obj[key]+"<br>";
                             }
-
                             return str;
                         }},
-
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            var tmp_return;
+                            (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                            return tmp_return;
                         }},
 
                     {'data' : 'wAdminName'},
@@ -172,7 +170,7 @@
                         }},
                     {'data' : 'ReadCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                         }},
                 ],
             });
@@ -180,6 +178,11 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 데이터 Read 페이지
+            $list_table.on('click', '.btn-read', function() {
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
             // Best 적용

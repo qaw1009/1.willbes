@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SearchMasterLecture extends \app\controllers\BaseController
+class SearchWMasterLecture extends \app\controllers\BaseController
 {
-    protected $models = array('common/searchMasterLecture','sys/WCp','sys/WCode');
+    protected $models = array('common/searchWMasterLecture','sys/WCp','sys/WCode');
     protected $helpers = array();
 
     public function __construct()
@@ -16,7 +16,7 @@ class SearchMasterLecture extends \app\controllers\BaseController
         $cp_list = $this->WCpModel->getRoleCpArray();       //관리자권한 CP 목록
         $codes = $this->WCodeModel->getCcdInArray(['105','111']);    //강의진행상태,콘텐츠유형
 
-        $this->load->view('common/search_masterlecture',[
+        $this->load->view('common/search_wmasterlecture',[
             'cp_list' => $cp_list
             ,'content_ccd' => $codes['111']
             ,'progress_ccd' => $codes['105']
@@ -60,10 +60,10 @@ class SearchMasterLecture extends \app\controllers\BaseController
         ];
 
         $list = [];
-        $count = $this->searchMasterLectureModel->listLecture(true,$arr_condition);
+        $count = $this->searchWMasterLectureModel->listLecture(true,$arr_condition);
 
         if($count > 0) {
-            $list = $this->searchMasterLectureModel->listLecture(false,$arr_condition,$this->_reqP('length'), $this->_reqP('start'), ['wLecIdx' => 'desc']);
+            $list = $this->searchWMasterLectureModel->listLecture(false,$arr_condition,$this->_reqP('length'), $this->_reqP('start'), ['wLecIdx' => 'desc']);
         }
         return $this->response([
             'recordsTotal' => $count,

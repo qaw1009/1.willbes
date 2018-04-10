@@ -41,7 +41,7 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </select>
-                    <select class="form-control" id="search_progress" name="search_progress" style="width:110px;">
+                    <select class="form-control" id="search_progress" name="search_progress" style="width:120px;">
                         <option value="">진행상태</option>
                         @foreach($progress_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
@@ -94,7 +94,7 @@
                     $datatable = $list_table.DataTable({
                         serverSide: true,
                         ajax: {
-                            'url' : '{{ site_url('/common/searchMasterLecture/listAjax') }}',
+                            'url' : '{{ site_url('/common/searchWMasterLecture/listAjax') }}',
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -158,7 +158,7 @@
                     });
 
                     $("#_btn_reset").click(function(){
-
+                        $search_form[0].reset();$datatable.draw();
                     });
 
                 });

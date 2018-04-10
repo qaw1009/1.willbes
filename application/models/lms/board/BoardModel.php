@@ -10,6 +10,7 @@ class BoardModel extends WB_Model
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
+    private $_table_member = 'lms_member';
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
 
@@ -29,7 +30,7 @@ class BoardModel extends WB_Model
      * @param string $colum
      * @return mixed
      */
-    public function listAllBoard($is_count, $arr_condition = [], $sub_query_condition = [], $limit = null, $offset = null, $order_by = [], $colum = '*')
+    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $limit = null, $offset = null, $order_by = [], $colum = '*')
     {
         if ($is_count === true) {
             $colum = 'count(*) AS numrows';
@@ -44,6 +45,7 @@ class BoardModel extends WB_Model
 
         $from = "
             FROM {$this->_table} as LB
+            LEFT OUTER JOIN {$this->_table_member} as MEM ON LB.RegMemIdx = MEM.MemIdx
             INNER JOIN (
                 select subLBrC.BoardIdx, GROUP_CONCAT(CONCAT(subLSC.CateName,'[',subLBrC.CateCode,']')) AS CateCode
                 from {$this->_table_r_category} as subLBrC
@@ -58,11 +60,30 @@ class BoardModel extends WB_Model
                 GROUP BY BoardIdx
             ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
-            LEFT OUTER JOIN {$this->_table_sys_admin} as B ON LB.RegAdminIdx = B.wAdminIdx and B.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
 
+        switch ($board_type) {
+            case "notice" :
+                break;
+            case "counsel" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
+                ";
+                break;
+        }
+
         $where = $this->_conn->makeWhere($arr_condition);
+        if (array_key_exists('Empty', $arr_condition)) {
+            $where = $this->_conn->where("LB.VocCcd = ''");
+        }
+
+        if (array_key_exists('NotEmpty', $arr_condition)) {
+            $where = $this->_conn->where("LB.VocCcd != ''");
+        }
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행

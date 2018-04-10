@@ -91,7 +91,7 @@ class Notice extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
         ';
 
         $best_count = 0;
@@ -103,10 +103,10 @@ class Notice extends BaseBoard
         }
 
         $list = [];
-        $count = $this->boardModel->listAllBoard(true, $arr_condition, $sub_query_condition);
+        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard(false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
         }
 
         if ($best_count > 0) {
@@ -181,7 +181,7 @@ class Notice extends BaseBoard
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -415,7 +415,7 @@ class Notice extends BaseBoard
             ]
         ];
 
-        $best_list = $this->boardModel->listAllBoard(false, $arr_best_condition, null, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, null, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
             'count' => count($best_list),
             'data' => $best_list

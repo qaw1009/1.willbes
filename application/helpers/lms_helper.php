@@ -100,8 +100,7 @@ if (!function_exists('html_site_tabs')) {
         }
 
         //
-        $return_html = '<input type="hidden" id="search_site_code" name="search_site_code" value=""/>' . PHP_EOL;
-        $return_html .= '<ul id="' . $ele_id . '" class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">' . PHP_EOL;
+        $return_html = '<ul id="' . $ele_id . '" class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">' . PHP_EOL;
 
         // 전체 탭 추가
         if ($is_all_tab === true) {

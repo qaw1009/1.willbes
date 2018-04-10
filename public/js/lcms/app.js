@@ -385,7 +385,7 @@ function init_datatable() {
         });
 
         // 초기화 버튼 클릭
-        $("#btn_reset, #_btn_reset").click(function(){
+        $search_form.on('click', '#btn_reset, #_btn_reset', function() {
             $search_form[0].reset();
             $datatable.draw();
         });

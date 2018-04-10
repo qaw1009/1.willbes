@@ -37,7 +37,7 @@ class SearchWProfessorModel extends WB_Model
         $from = '
             from ' . $this->_table['professor'] . ' as P
                 left join ' . $this->_table['admin'] . ' as A 
-                on P.wRegAdminIdx = A.wAdminIdx
+                    on P.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where P.wIsUse = "Y" and P.wIsStatus = "Y"  
         ';
 

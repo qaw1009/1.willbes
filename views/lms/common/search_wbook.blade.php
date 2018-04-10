@@ -108,6 +108,7 @@
                 var that = $(this);
                 var row = $datatable.row(that.data('row-idx')).data();
                 var $parent_regi_form = $('#regi_form');
+                var $parent_book_name = $parent_regi_form.find('input[name="book_name"]');
                 var $parent_selected_book = $('#selected_book');
                 var $parent_selected_publ_name = $('#selected_publ_name');
                 var $parent_selected_publ_date = $('#selected_publ_date');
@@ -123,8 +124,10 @@
                 var $parent_selected_wtable_desc = $('#selected_wtable_desc');
                 var $parent_selected_wstock_cnt = $('#selected_wstock_cnt');
                 var $parent_sale_ccd = $parent_regi_form.find('input[name="sale_ccd"]');
+                var $parent_ori_sale_ccd = $parent_regi_form.find('input[name="ori_sale_ccd"]');
 
                 $parent_regi_form.find('input[name="wbook_idx"]').val(row.wBookIdx);
+                if ($parent_book_name.length > 0) { $parent_book_name.val(row.wBookName); }
                 if ($parent_selected_book.length > 0) { $parent_selected_book.text(row.wBookName + ' [' + row.wBookIdx + ']'); }
                 if ($parent_selected_publ_name.length > 0) { $parent_selected_publ_name.text(row.wPublName); }
                 if ($parent_selected_publ_date.length > 0) { $parent_selected_publ_date.text(row.wPublDate); }
@@ -140,6 +143,7 @@
                 if ($parent_selected_wtable_desc.length > 0) { $parent_selected_wtable_desc.html(row.wTableDesc); }
                 if ($parent_selected_wstock_cnt.length > 0) { $parent_selected_wstock_cnt.text(addComma(row.wStockCnt)); }
                 if ($parent_sale_ccd.length > 0) { $parent_regi_form.find('input[name="sale_ccd"][value="' + row.wSaleCcd + '"]').prop('checked', true).iCheck('update'); }
+                if ($parent_ori_sale_ccd.length > 0) { $parent_ori_sale_ccd.val(row.wSaleCcd); }
 
                 $("#pop_modal").modal('toggle');
             });

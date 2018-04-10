@@ -109,7 +109,7 @@ class ProfessorModel extends WB_Model
             PSC.CateCode, PSC.SubjectIdx
                 , C.CateName, PS.SubjectName
                 , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
-                , concat(if(PC.CateCode is null, "", PC.CateName), C.CateName, " > ", PS.SubjectName) as CateSubjectRouteName            
+                , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName, " > ", PS.SubjectName) as CateSubjectRouteName            
         ';
         $from = '
             from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
@@ -120,7 +120,7 @@ class ProfessorModel extends WB_Model
                 inner join ' . $this->_table['subject'] . ' as PS
                     on PSC.SubjectIdx = PS.SubjectIdx        
         ';
-        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsUse = "Y"and C.IsStatus = "Y" and PS.IsUse = "Y" and PS.IsStatus = "Y"';
+        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y" and PS.IsUse = "Y" and PS.IsStatus = "Y"';
         $order_by_offset_limit = ' order by PSC.PcIdx asc';
 
         // 쿼리 실행

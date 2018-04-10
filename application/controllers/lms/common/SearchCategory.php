@@ -35,8 +35,8 @@ class SearchCategory extends \app\controllers\BaseController
                     'C.CateCode' => $this->_reqP('search_value'),
                     'C.CateName' => $this->_reqP('search_value')
                 ]
-            ]
-            ,'IN' => ['S.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
+            ],
+            'IN' => ['S.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
         ];
 
         $list = [];

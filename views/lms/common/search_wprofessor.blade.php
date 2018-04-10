@@ -85,30 +85,21 @@
                     return;
                 }
 
+                var that = $(this);
+                var row = $datatable.row(that.data('row-idx')).data();
                 var $parent_regi_form = $('#regi_form');
                 var $parent_selected_professor = $('#selected_professor');
                 var $parent_prof_nickname = $parent_regi_form.find('input[name="prof_nickname"]');
                 var $parent_wsample_url = $parent_regi_form.find('input[name="wsample_url"]');
                 var $parent_wprof_profile = $parent_regi_form.find('#wprof_profile');
                 var $parent_wbook_content = $parent_regi_form.find('#wbook_content');
-                var that = $(this);
-                var row = $datatable.row(that.data('row-idx')).data();
-                var data = row.wProfIdx + ' | ' + row.wProfName + ' | ' + row.wProfId + ' | ' + (row.wIsUse === 'Y' ? '사용' : '미사용');
 
                 $parent_regi_form.find('input[name="wprof_idx"]').val(row.wProfIdx);
-                if ($parent_prof_nickname.length > 0) {
-                    $parent_prof_nickname.val(row.wProfNickName);
-                }
-                if ($parent_wsample_url.length > 0) {
-                    $parent_wsample_url.val(row.wSampleUrl);
-                }
-                if ($parent_wprof_profile.length > 0) {
-                    $parent_wprof_profile.html(row.wProfProfile);
-                }
-                if ($parent_wbook_content.length > 0) {
-                    $parent_wbook_content.html(row.wBookContent);
-                }
-                $parent_selected_professor.html(data);
+                if ($parent_selected_professor.length > 0) { $parent_selected_professor.text(row.wProfIdx + ' | ' + row.wProfName + ' | ' + row.wProfId + ' | ' + (row.wIsUse === 'Y' ? '사용' : '미사용')); }
+                if ($parent_prof_nickname.length > 0) { $parent_prof_nickname.val(row.wProfNickName); }
+                if ($parent_wsample_url.length > 0) { $parent_wsample_url.val(row.wSampleUrl); }
+                if ($parent_wprof_profile.length > 0) { $parent_wprof_profile.html(row.wProfProfile); }
+                if ($parent_wbook_content.length > 0) { $parent_wbook_content.html(row.wBookContent); }
 
                 $("#pop_modal").modal('toggle');
             });

@@ -35,7 +35,8 @@ class SearchSubjectMapping extends \app\controllers\BaseController
                     'PS.SubjectIdx' => $this->_reqP('search_value'),
                     'PS.SubjectName' => $this->_reqP('search_value')
                 ]
-            ]
+            ],
+            'IN' => ['S.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
         ];
 
         $list = [];

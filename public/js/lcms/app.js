@@ -383,6 +383,12 @@ function init_datatable() {
             $search_form.find('input[name="search_site_code"]').val($(this).data('site-code'));
             $search_form.submit();
         });
+
+        // 초기화 버튼 클릭
+        $("#btn_reset, #_btn_reset").click(function(){
+            $search_form[0].reset();
+            $datatable.draw();
+        });
     }
 }
 

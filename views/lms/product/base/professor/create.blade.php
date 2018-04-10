@@ -32,18 +32,14 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">교수정보 불러오기 <span class="required">*</span>
                     </label>
-                    @if($method == 'PUT')
-                        <div class="col-md-9">
+                    <div class="col-md-9 form-inline">
+                        @if($method == 'PUT')
                             <p class="form-control-static">{{ $data['wProfName'] }} | {{ $data['wProfIdx'] }} | {{ $data['wProfId'] }} | @if($data['wIsUse'] == 'Y') 사용 @else 미사용 @endif</p>
-                        </div>
-                    @else
-                        <div class="col-md-1">
+                        @else
                             <button type="button" id="btn_professor_search" class="btn btn-sm btn-primary">교수검색</button>
-                        </div>
-                        <div class="col-md-8">
-                            <p id="selected_professor" class="form-control-static ml-10">교수명 | 교수코드 | 아이디 | 사용여부</p>
-                        </div>
-                    @endif
+                            <span id="selected_professor" class="pl-10">교수명 | 교수코드 | 아이디 | 사용여부</span>
+                        @endif
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="prof_nickname">교수닉네임 <span class="required">*</span>
@@ -63,11 +59,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
                     </label>
-                    <div class="col-md-1">
+                    <div class="col-md-9 form-inline">
                         <button type="button" id="btn_subject_mapping_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                    </div>
-                    <div class="col-md-8">
-                        <p id="selected_subject_mapping" class="form-control-static ml-10">
+                        <span id="selected_subject_mapping" class="pl-10">
                             @if(empty($data['SubjectMapping']) === false)
                                 @foreach($data['SubjectMapping'] as $key => $val)
                                     <span class="pr-10">{{ $val }}
@@ -76,7 +70,7 @@
                                     </span>
                                 @endforeach
                             @endif
-                        </p>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">

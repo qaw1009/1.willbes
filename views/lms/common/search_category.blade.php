@@ -82,13 +82,17 @@
                     return;
                 }
 
-                var $parent_regi_form = $('#regi_form');
-                var $parent_selected_category = $('#selected_category');
                 var that = $(this);
                 var row = $datatable.row(that.data('row-idx')).data();
+                var $parent_regi_form = $('#regi_form');
+                var $parent_selected_category = $('#selected_category');
 
                 $parent_regi_form.find('input[name="cate_code"]').val(row.CateCode);
-                $parent_selected_category.html(row.CateRouteName);
+                if ($parent_selected_category.length > 0) {
+                    var route_name = row.CateRouteName;
+                    route_name = route_name.substr(route_name.indexOf(' > ') + 3);
+                    $parent_selected_category.text(route_name);
+                }
 
                 $("#pop_modal").modal('toggle');
             });

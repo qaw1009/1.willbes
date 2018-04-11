@@ -266,7 +266,7 @@ class MenuModel extends WB_Model
      * @param array $params
      * @return array|bool
      */
-    public function modifyMenuReorder($params = [])
+    public function modifyMenusReorder($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -276,7 +276,7 @@ class MenuModel extends WB_Model
             }
 
             foreach ($params as $menu_idx => $order_num) {
-                $this->_conn->set('OrderNum', $order_num)->where('MenuIdx', $menu_idx);
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('MenuIdx', $menu_idx);
 
                 if ($this->_conn->update($this->_table) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');

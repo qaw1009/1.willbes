@@ -172,7 +172,7 @@ class SubjectModel extends WB_Model
      * @param array $params
      * @return array|bool
      */
-    public function modifySubjectReorder($params = [])
+    public function modifySubjectsReorder($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -182,7 +182,7 @@ class SubjectModel extends WB_Model
             }
 
             foreach ($params as $subject_idx => $order_num) {
-                $this->_conn->set('OrderNum', $order_num)->where('SubjectIdx', $subject_idx);
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('SubjectIdx', $subject_idx);
 
                 if ($this->_conn->update($this->_table['subject']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');

@@ -137,7 +137,7 @@ class Menu extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->menuModel->modifyMenuReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->menuModel->modifyMenusReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

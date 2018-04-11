@@ -172,7 +172,7 @@ class CourseModel extends WB_Model
      * @param array $params
      * @return array|bool
      */
-    public function modifyCourseReorder($params = [])
+    public function modifyCoursesReorder($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -182,7 +182,7 @@ class CourseModel extends WB_Model
             }
 
             foreach ($params as $course_idx => $order_num) {
-                $this->_conn->set('OrderNum', $order_num)->where('CourseIdx', $course_idx);
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('CourseIdx', $course_idx);
 
                 if ($this->_conn->update($this->_table['course']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');

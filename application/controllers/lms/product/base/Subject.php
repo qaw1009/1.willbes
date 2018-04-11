@@ -96,7 +96,7 @@ class Subject extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->subjectModel->modifySubjectReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->subjectModel->modifySubjectsReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

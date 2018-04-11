@@ -96,7 +96,7 @@ class Course extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->courseModel->modifyCourseReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->courseModel->modifyCoursesReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

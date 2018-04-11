@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginLogModel extends WB_Model
 {
-    private $_table = 'wbs_sys_admin_login_log';
+    private $_table = [
+        'admin_login_log' => 'wbs_sys_admin_login_log',
+        'admin_role' => 'wbs_sys_admin_role',
+        'admin' => 'wbs_sys_admin',
+    ];
 
     public function __construct()
     {
@@ -20,7 +24,7 @@ class LoginLogModel extends WB_Model
     {
         $column = 'wLogIdx, wAdminId, wLoginDatm, wLoginIp, wIsLogin, wLoginLogCcd';
 
-        return $this->_conn->getListResult($this->_table, $column, $arr_condition, $limit, 0, ['wLogIdx' => 'desc']);
+        return $this->_conn->getListResult($this->_table['admin_login_log'], $column, $arr_condition, $limit, 0, ['wLogIdx' => 'desc']);
     }
 
     /**
@@ -49,10 +53,10 @@ class LoginLogModel extends WB_Model
         }
 
         $from = '
-            from ' . $this->_table . ' as L 
-                left join wbs_sys_admin as A
+            from ' . $this->_table['admin_login_log'] . ' as L 
+                left join ' . $this->_table['admin'] . ' as A
                     on L.wAdminId = A.wAdminId and A.wIsStatus = "Y"
-                left join wbs_sys_admin_role as R
+                left join ' . $this->_table['admin_role'] . ' as R
                     on A.wRoleIdx = R.wRoleIdx and R.wIsStatus = "Y"
             where 1=1
         ';

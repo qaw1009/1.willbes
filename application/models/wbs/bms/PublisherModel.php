@@ -3,8 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PublisherModel extends WB_Model
 {
-    private $_table = 'wbs_bms_publisher';
-
+    private $_table = [
+        'publisher' => 'wbs_bms_publisher',
+        'admin' => 'wbs_sys_admin'
+    ];
+    
     public function __construct()
     {
         parent::__construct('wbs');
@@ -33,9 +36,9 @@ class PublisherModel extends WB_Model
         }
 
         $from = '
-            from ' . $this->_table . ' as P
-                left join wbs_sys_admin as A 
-                on P.wRegAdminIdx = A.wAdminIdx
+            from ' . $this->_table['publisher'] . ' as P
+                left join ' . $this->_table['admin'] . ' as A 
+                    on P.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where P.wIsStatus = "Y"  
         ';
 
@@ -54,7 +57,7 @@ class PublisherModel extends WB_Model
      */
     public function getPublisherArray()
     {
-        $data = $this->_conn->getListResult($this->_table, 'wPublIdx, wPublName', [
+        $data = $this->_conn->getListResult($this->_table['publisher'], 'wPublIdx, wPublName', [
             'EQ' => ['wIsUse' => 'Y', 'wIsStatus' => 'Y']
         ], null, null, [
             'wPublName' => 'asc'
@@ -73,7 +76,7 @@ class PublisherModel extends WB_Model
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $column, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['publisher'], $column, $arr_condition);
     }
 
     /**
@@ -85,10 +88,10 @@ class PublisherModel extends WB_Model
     {
         $column = 'P.wPublIdx, P.wPublName, P.wPublManager, P.wPublTel1, P.wPublTel2, P.wPublTel3, P.wPublPhone1, P.wPublPhone2, P.wPublPhone3';
         $column .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
-        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as P', $column, [
+        return $this->_conn->getFindResult($this->_table['publisher'] . ' as P', $column, [
             'EQ' => ['P.wPublIdx' => $publ_idx, 'P.wIsStatus' => 'Y']
         ]);
     }
@@ -118,7 +121,7 @@ class PublisherModel extends WB_Model
             ];
 
             // 데이터 등록
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['publisher']) === false) {
                 throw new \Exception('출판사 등록에 실패했습니다.');
             }
 
@@ -150,7 +153,7 @@ class PublisherModel extends WB_Model
             }
 
             // 백업 데이터 등록
-            $this->addBakData($this->_table, ['wPublIdx' => $publ_idx]);
+            $this->addBakData($this->_table['publisher'], ['wPublIdx' => $publ_idx]);
 
             $data = [
                 'wPublName' => element('publ_name', $input),
@@ -166,7 +169,7 @@ class PublisherModel extends WB_Model
                 'wUpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
-            if ($this->_conn->set($data)->where('wPublIdx', $publ_idx)->update($this->_table) === false) {
+            if ($this->_conn->set($data)->where('wPublIdx', $publ_idx)->update($this->_table['publisher']) === false) {
                 throw new \Exception('출판사 수정에 실패했습니다.');
             }
 

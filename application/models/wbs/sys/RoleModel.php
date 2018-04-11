@@ -20,11 +20,11 @@ class RoleModel extends WB_Model
      */
     public function listRole($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'R.wRoleIdx, R.wRoleName, R.wIsUse, R.wRegDatm, R.wRegAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.wRegAdminIdx) as wRegAdminName';
+        $column = 'R.wRoleIdx, R.wRoleName, R.wIsUse, R.wRegDatm, R.wRegAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.wRegAdminIdx) as wRegAdminName';
         $arr_condition['EQ']['R.wIsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table . ' as R', $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table . ' as R', $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -49,11 +49,11 @@ class RoleModel extends WB_Model
      */
     public function findRoleForModify($role_idx)
     {
-        $colum = 'R.wRoleIdx, R.wRoleName, R.wIsUse, R.wRegDatm, R.wRegAdminIdx, R.wUpdDatm, R.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(R.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = R.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'R.wRoleIdx, R.wRoleName, R.wIsUse, R.wRegDatm, R.wRegAdminIdx, R.wUpdDatm, R.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(R.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = R.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as R', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as R', $column, [
             'EQ' => ['R.wRoleIdx' => $role_idx]
         ]);
     }
@@ -150,7 +150,7 @@ class RoleModel extends WB_Model
     public function listRoleCp($role_idx = 0)
     {
         $role_idx = (is_null($role_idx) === true) ? 0 : $role_idx;
-        $colum = 'C.wCpIdx, C.wCpName, ifnull(RC.wCpIdx, 0) as wRCpIdx';
+        $column = 'C.wCpIdx, C.wCpName, ifnull(RC.wCpIdx, 0) as wRCpIdx';
         $from = '
             from wbs_sys_cp as C left join wbs_sys_admin_role_r_cp as RC
                 on C.wCpIdx = RC.wCpIdx and RC.wIsStatus = "Y" and RC.wRoleIdx = ?	
@@ -159,7 +159,7 @@ class RoleModel extends WB_Model
         $order_by_offset_limit = ' order by C.wCpIdx asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $order_by_offset_limit, [$role_idx]);
+        $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit, [$role_idx]);
 
         return $query->result_array();
     }
@@ -226,7 +226,7 @@ class RoleModel extends WB_Model
     public function listRoleMenu($role_idx = 0)
     {
         $role_idx = (is_null($role_idx) === true) ? 0 : $role_idx;
-        $colum = 'M.*, ifnull(RBM.wMenuIdx, 0) as wRBMenuIdx, ifnull(RMM.wMenuIdx, 0) as wRMMenuIdx, ifnull(RSM.wMenuIdx, 0) as wRSMenuIdx';
+        $column = 'M.*, ifnull(RBM.wMenuIdx, 0) as wRBMenuIdx, ifnull(RMM.wMenuIdx, 0) as wRMMenuIdx, ifnull(RSM.wMenuIdx, 0) as wRSMenuIdx';
         $from = '
             from (
                 select wBMenuIdx, wBMenuName, wBParentMenuIdx, wBOrderNum, wMMenuIdx, wMMenuName, wMParentMenuIdx, wMOrderNum, wSMenuIdx, wSMenuName, wSParentMenuIdx, wSOrderNum
@@ -255,7 +255,7 @@ class RoleModel extends WB_Model
         $order_by = ' order by wBOrderNum asc, wMOrderNum asc, wSOrderNum asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $order_by, [$role_idx, $role_idx, $role_idx]);
+        $query = $this->_conn->query('select ' . $column . $from . $order_by, [$role_idx, $role_idx, $role_idx]);
 
         return $query->result_array();
     }

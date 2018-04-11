@@ -24,15 +24,15 @@ class CourseModel extends WB_Model
      */
     public function listCourse($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, S.SiteName';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
+        $column = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, S.SiteName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['PC.IsStatus'] = 'Y';
         $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['IN']['PC.SiteCode'] = get_auth_site_codes();
 
         return $this->_conn->getJoinListResult($this->_table['course'] . ' as PC', 'inner', $this->_table['site'] . ' as S', 'PC.SiteCode = S.SiteCode'
-            , $colum, $arr_condition, $limit, $offset, $order_by
+            , $column, $arr_condition, $limit, $offset, $order_by
         );
     }
 
@@ -64,11 +64,11 @@ class CourseModel extends WB_Model
      */
     public function findCourseForModify($course_idx)
     {
-        $colum = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.Keyword, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, PC.UpdDatm, PC.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(PC.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.UpdAdminIdx)) as UpdAdminName';
+        $column = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.Keyword, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, PC.UpdDatm, PC.UpdAdminIdx';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
+        $column .= ' , if(PC.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table['course'] . ' as PC', $colum, [
+        return $this->_conn->getFindResult($this->_table['course'] . ' as PC', $column, [
             'EQ' => ['PC.CourseIdx' => $course_idx]
         ]);
     }

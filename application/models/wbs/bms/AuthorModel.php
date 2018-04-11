@@ -22,10 +22,10 @@ class AuthorModel extends WB_Model
     public function listAuthor($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = 'AU.wAuthorIdx, AU.wAuthorName, AU.wAuthorDesc, AU.wIsUse, AU.wRegDatm, AU.wRegAdminIdx, A.wAdminName as wRegAdminName';
+            $column = 'AU.wAuthorIdx, AU.wAuthorName, AU.wAuthorDesc, AU.wIsUse, AU.wRegDatm, AU.wRegAdminIdx, A.wAdminName as wRegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -42,7 +42,7 @@ class AuthorModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -64,15 +64,15 @@ class AuthorModel extends WB_Model
 
     /**
      * 저자 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findAuthor($colum = '*', $arr_condition = [])
+    public function findAuthor($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table, $column, $arr_condition);
     }
 
     /**
@@ -82,11 +82,11 @@ class AuthorModel extends WB_Model
      */
     public function findAuthorForModify($author_idx)
     {
-        $colum = 'AU.wAuthorIdx, AU.wAuthorName, AU.wAuthorDesc, AU.wIsUse, AU.wRegDatm, AU.wRegAdminIdx, AU.wUpdDatm, AU.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = AU.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(AU.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = AU.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'AU.wAuthorIdx, AU.wAuthorName, AU.wAuthorDesc, AU.wIsUse, AU.wRegDatm, AU.wRegAdminIdx, AU.wUpdDatm, AU.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = AU.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(AU.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = AU.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as AU', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as AU', $column, [
             'EQ' => ['AU.wAuthorIdx' => $author_idx, 'AU.wIsStatus' => 'Y']
         ]);
     }

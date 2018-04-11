@@ -24,15 +24,15 @@ class SubjectModel extends WB_Model
      */
     public function listSubject($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, S.SiteName';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
+        $column = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, S.SiteName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['PS.IsStatus'] = 'Y';
         $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['IN']['PS.SiteCode'] = get_auth_site_codes();
 
         return $this->_conn->getJoinListResult($this->_table['subject'] . ' as PS', 'inner', $this->_table['site'] . ' as S', 'PS.SiteCode = S.SiteCode'
-            , $colum, $arr_condition, $limit, $offset, $order_by
+            , $column, $arr_condition, $limit, $offset, $order_by
         );
     }
 
@@ -64,11 +64,11 @@ class SubjectModel extends WB_Model
      */
     public function findSubjectForModify($subject_idx)
     {
-        $colum = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.Keyword, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, PS.UpdDatm, PS.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.UpdAdminIdx)) as UpdAdminName';
+        $column = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.Keyword, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, PS.UpdDatm, PS.UpdAdminIdx';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
+        $column .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table['subject'] . ' as PS', $colum, [
+        return $this->_conn->getFindResult($this->_table['subject'] . ' as PS', $column, [
             'EQ' => ['PS.SubjectIdx' => $subject_idx]
         ]);
     }

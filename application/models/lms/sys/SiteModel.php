@@ -21,18 +21,18 @@ class SiteModel extends WB_Model
 
     /**
      * 사이트 목록 조회
-     * @param $colum
+     * @param $column
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return array|int
      */
-    public function listSite($colum, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSite($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table['site'], $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['site'], $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -45,11 +45,11 @@ class SiteModel extends WB_Model
      */
     public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
 
-        return $this->_conn->getJoinListResult($this->_table['site'] . ' as S', 'inner', $this->_table['site_group'] . ' as G', 'S.SiteGroupCode = G.SiteGroupCode', $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getJoinListResult($this->_table['site'] . ' as S', 'inner', $this->_table['site_group'] . ' as G', 'S.SiteGroupCode = G.SiteGroupCode', $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -97,15 +97,15 @@ class SiteModel extends WB_Model
 
     /**
      * 사이트 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findSite($colum = '*', $arr_condition = [])
+    public function findSite($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table['site'], $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['site'], $column, $arr_condition);
     }
 
     /**
@@ -115,15 +115,17 @@ class SiteModel extends WB_Model
      */
     public function findSiteForModify($site_code)
     {
-        $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.PgCcd, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice';
-        $colum .= ' , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
-        $colum .= ' , if(IsCampus = "Y", (';
-        $colum .= '     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"';
-        $colum .= '   ), "") as CampusCcds';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
+        $column = '
+            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.PgCcd, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
+                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
+                , if(IsCampus = "Y", (
+                    select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
+                  ), "") as CampusCcds
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName
+                , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName
+        ';
 
-        return $this->_conn->getFindResult($this->_table['site'] . ' as S', $colum, [
+        return $this->_conn->getFindResult($this->_table['site'] . ' as S', $column, [
             'EQ' => ['S.SiteCode' => $site_code]
         ]);
     }

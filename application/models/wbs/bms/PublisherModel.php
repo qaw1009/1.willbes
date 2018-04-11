@@ -22,11 +22,11 @@ class PublisherModel extends WB_Model
     public function listPublisher($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = 'P.wPublIdx, P.wPublName, P.wPublManager, concat(P.wPublTel1, "-", P.wPublTel2, "-", P.wPublTel3) as wPublTel, concat(P.wPublPhone1, "-", P.wPublPhone2, "-", P.wPublPhone3) as wPublPhone';
-            $colum .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
+            $column = 'P.wPublIdx, P.wPublName, P.wPublManager, concat(P.wPublTel1, "-", P.wPublTel2, "-", P.wPublTel3) as wPublTel, concat(P.wPublPhone1, "-", P.wPublPhone2, "-", P.wPublPhone3) as wPublPhone';
+            $column .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -43,7 +43,7 @@ class PublisherModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -65,15 +65,15 @@ class PublisherModel extends WB_Model
 
     /**
      * 출판사 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findPublisher($colum = '*', $arr_condition = [])
+    public function findPublisher($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table, $column, $arr_condition);
     }
 
     /**
@@ -83,12 +83,12 @@ class PublisherModel extends WB_Model
      */
     public function findPublisherForModify($publ_idx)
     {
-        $colum = 'P.wPublIdx, P.wPublName, P.wPublManager, P.wPublTel1, P.wPublTel2, P.wPublTel3, P.wPublPhone1, P.wPublPhone2, P.wPublPhone3';
-        $colum .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'P.wPublIdx, P.wPublName, P.wPublManager, P.wPublTel1, P.wPublTel2, P.wPublTel3, P.wPublPhone1, P.wPublPhone2, P.wPublPhone3';
+        $column .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as P', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as P', $column, [
             'EQ' => ['P.wPublIdx' => $publ_idx, 'P.wIsStatus' => 'Y']
         ]);
     }

@@ -20,10 +20,10 @@ class MenuModel extends WB_Model
      */
     public function listMenu($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'wMenuIdx, wMenuName, wParentMenuIdx, wGroupMenuIdx, wMenuDepth, wMenuUrl, wIconClassName, wOrderNum, wIsUse';
+        $column = 'wMenuIdx, wMenuName, wParentMenuIdx, wGroupMenuIdx, wMenuDepth, wMenuUrl, wIconClassName, wOrderNum, wIsUse';
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table, $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -33,7 +33,7 @@ class MenuModel extends WB_Model
      */
     public function listAllMenu($arr_condition = [])
     {
-        $colum = 'U.*, A.wAdminName as wLastRegAdminName';
+        $column = 'U.*, A.wAdminName as wLastRegAdminName';
         $from = '
             from (
                 select wBMenuIdx, wBMenuName, wBMenuDepth, wBOrderNum, if(wBMenuDepth < wLastMenuDepth, wBIsUse, "") as wBIsUse
@@ -67,7 +67,7 @@ class MenuModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['wBOrderNum' => 'asc', 'wMOrderNum' => 'asc', 'wSOrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
@@ -79,7 +79,7 @@ class MenuModel extends WB_Model
      */
     public function listSameDepthMenu($menu_idx)
     {
-        $colum = 'PM.wMenuIdx, PM.wMenuName, PM.wMenuDepth';
+        $column = 'PM.wMenuIdx, PM.wMenuName, PM.wMenuDepth';
         $from = '
             from ' . $this->_table . ' as M
                 inner join ' . $this->_table . ' as PM
@@ -94,7 +94,7 @@ class MenuModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['PM.wOrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
@@ -118,11 +118,11 @@ class MenuModel extends WB_Model
      */
     public function findMenuForModify($menu_idx)
     {
-        $colum = 'M.wMenuIdx, M.wMenuName, M.wParentMenuIdx, M.wGroupMenuIdx, M.wMenuDepth, M.wMenuUrl, M.wIconClassName, M.wOrderNum, M.wIsUse, M.wRegDatm, M.wUpdDatm';
-        $colum .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = M.wRegAdminIdx) as wRegAdminName';
-        $colum .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = M.wUpdAdminIdx) as wUpdAdminName';
+        $column = 'M.wMenuIdx, M.wMenuName, M.wParentMenuIdx, M.wGroupMenuIdx, M.wMenuDepth, M.wMenuUrl, M.wIconClassName, M.wOrderNum, M.wIsUse, M.wRegDatm, M.wUpdDatm';
+        $column .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = M.wRegAdminIdx) as wRegAdminName';
+        $column .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = M.wUpdAdminIdx) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as M', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as M', $column, [
             'EQ' => ['M.wMenuIdx' => $menu_idx, 'M.wIsStatus' => 'Y']
         ]);
     }

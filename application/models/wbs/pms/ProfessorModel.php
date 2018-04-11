@@ -24,10 +24,10 @@ class ProfessorModel extends WB_Model
     public function listProfessor($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = 'P.wProfIdx, P.wProfId, P.wProfName, P.wContentCcd, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
+            $column = 'P.wProfIdx, P.wProfId, P.wProfName, P.wContentCcd, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -44,7 +44,7 @@ class ProfessorModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -57,7 +57,7 @@ class ProfessorModel extends WB_Model
     public function listProfessorCp($prof_idx = 0)
     {
         $prof_idx = (is_null($prof_idx) === true) ? 0 : $prof_idx;
-        $colum = 'C.wCpIdx, C.wCpName, ifnull(PC.wCpIdx, 0) as wPCpIdx';
+        $column = 'C.wCpIdx, C.wCpName, ifnull(PC.wCpIdx, 0) as wPCpIdx';
         $from = '
             from wbs_sys_cp as C left join wbs_pms_professor_r_cp as PC
                 on C.wCpIdx = PC.wCpIdx and PC.wIsStatus = "Y" and PC.wProfIdx = ?	
@@ -66,7 +66,7 @@ class ProfessorModel extends WB_Model
         $order_by_offset_limit = ' order by C.wCpIdx asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $order_by_offset_limit, [$prof_idx]);
+        $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit, [$prof_idx]);
 
         return $query->result_array();
     }
@@ -86,15 +86,15 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수 기본정보 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findProfessor($colum = '*', $arr_condition = [])
+    public function findProfessor($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table, $column, $arr_condition);
     }
 
     /**
@@ -104,12 +104,12 @@ class ProfessorModel extends WB_Model
      */
     public function findProfessorForModify($prof_idx)
     {
-        $colum = 'P.wProfIdx, P.wProfId, P.wProfName, P.wProfNickName, P.wContentCcd, P.wSampleUrl, P.wProfProfile, P.wBookContent';
-        $colum .= ' , P.wAttachImgPath, P.wAttachImgName1, P.wAttachImgName2, P.wAttachImgName3, P.wAttachImgName4, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'P.wProfIdx, P.wProfId, P.wProfName, P.wProfNickName, P.wContentCcd, P.wSampleUrl, P.wProfProfile, P.wBookContent';
+        $column .= ' , P.wAttachImgPath, P.wAttachImgName1, P.wAttachImgName2, P.wAttachImgName3, P.wAttachImgName4, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as P', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as P', $column, [
             'EQ' => ['P.wProfIdx' => $prof_idx, 'P.wIsStatus' => 'Y']
         ]);
     }

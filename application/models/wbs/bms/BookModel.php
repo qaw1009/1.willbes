@@ -36,16 +36,16 @@ class BookModel extends WB_Model
     public function listBook($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '*';
+            $column = '*';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $in_colum = '
+        $in_column = '
                 B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
                     , P.wPublName, A.wAdminName as wRegAdminName
                     , (
@@ -71,7 +71,7 @@ class BookModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . ' from (select ' . $in_colum . $from . ') U ' . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . ') U ' . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -84,7 +84,7 @@ class BookModel extends WB_Model
     public function listBookAuthor($book_idx = 0)
     {
         $book_idx = (is_null($book_idx) === true) ? 0 : $book_idx;
-        $colum = 'A.wAuthorIdx, A.wAuthorName, ifnull(BA.wAuthorIdx, 0) as wBAuthroIdx';
+        $column = 'A.wAuthorIdx, A.wAuthorName, ifnull(BA.wAuthorIdx, 0) as wBAuthroIdx';
         $from = '
             from wbs_bms_author as A left join wbs_bms_book_r_author as BA
                 on A.wAuthorIdx = BA.wAuthorIdx and BA.wIsStatus = "Y" and BA.wBookIdx = ?	
@@ -93,22 +93,22 @@ class BookModel extends WB_Model
         $order_by_offset_limit = ' order by A.wAuthorName asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $order_by_offset_limit, [$book_idx]);
+        $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit, [$book_idx]);
 
         return $query->result_array();
     }
 
     /**
      * 교재 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findBook($colum = '*', $arr_condition = [])
+    public function findBook($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table, $column, $arr_condition);
     }
 
     /**
@@ -118,12 +118,12 @@ class BookModel extends WB_Model
      */
     public function findBookForModify($book_idx)
     {
-        $colum = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword';
-        $colum .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = B.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = B.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword';
+        $column .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = B.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = B.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as B', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as B', $column, [
             'EQ' => ['B.wBookIdx' => $book_idx, 'B.wIsStatus' => 'Y']
         ]);
     }

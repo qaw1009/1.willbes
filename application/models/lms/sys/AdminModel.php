@@ -32,10 +32,10 @@ class AdminModel extends WB_Model
     public function listAdmin($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '*';
+            $column = '*';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -62,7 +62,7 @@ class AdminModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . ' from ( select ' . $in_colum . $from . ' ) U '. $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from ( select ' . $in_colum . $from . ' ) U '. $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -74,14 +74,14 @@ class AdminModel extends WB_Model
      */
     public function findAdminForModify($admin_idx)
     {
-        $colum = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail';
-        $colum .= ' , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
-        $colum .= ' , ifnull(AR.RoleIdx, "") as RoleIdx';
-        $colum .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail';
+        $column .= ' , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
+        $column .= ' , ifnull(AR.RoleIdx, "") as RoleIdx';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
 
         return $this->_conn->getJoinFindResult($this->_table['admin'] . ' as A', 'left', $this->_table['admin_r_admin_role'] . ' as AR', 'A.wAdminIdx = AR.wAdminIdx and AR.IsStatus = "Y"',
-            $colum, ['EQ' => ['A.wAdminIdx' => $admin_idx]]);
+            $column, ['EQ' => ['A.wAdminIdx' => $admin_idx]]);
     }
 
     /**
@@ -91,7 +91,7 @@ class AdminModel extends WB_Model
      */
     public function listAdminSiteCampus($admin_idx)
     {
-        $colum = 'S.SiteCode, S.SiteName
+        $column = 'S.SiteCode, S.SiteName
             , if(ASC1.SiteCode is not null, "Y", "N") as IsPermSite
             , if(SC.SiteCode is not null, GROUP_CONCAT(DISTINCT SC.CampusCcd, "::", C.CcdName, "::", if(ASC2.CampusCcd is not null, "Y", "N") order by SC.CampusCcd separator ","), "0") as CampusCcds
         ';
@@ -111,7 +111,7 @@ class AdminModel extends WB_Model
         $order_by = ' order by S.SiteCode';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $group_by . $order_by, [$admin_idx, $admin_idx, $this->_ccd['Campus']]);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by, [$admin_idx, $admin_idx, $this->_ccd['Campus']]);
 
         return $query->result_array();
     }

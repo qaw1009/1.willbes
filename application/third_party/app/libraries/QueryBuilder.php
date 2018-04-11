@@ -45,19 +45,19 @@ trait QueryBuilder
     }
 
     /**
-     * @param $colum
+     * @param $column
      * @param $value
      * @param string $type
      * @param bool $is_and
      * @return $this
      */
-    public function makeWhereOperator($colum, $value, $type = 'EQ', $is_and = true)
+    public function makeWhereOperator($column, $value, $type = 'EQ', $is_and = true)
     {
         $operators = ['EQ' => '=', 'NOT' => '!=', 'GT' => '>', 'GTE' => '>=', 'LT' => '<', 'LTE' => '<='];
 
         if (is_null($value) === false && strlen($value) > 0 && isset($operators[$type]) === true) {
             $method = ($is_and === true) ? 'where' : 'or_where';
-            $this->{$method}($colum . $operators[$type], $value);
+            $this->{$method}($column . $operators[$type], $value);
         }
 
         return $this;
@@ -65,13 +65,13 @@ trait QueryBuilder
 
     /**
      * between 조건 생성
-     * @param $colum
+     * @param $column
      * @param array $values
      * @param string $type
      * @param bool $is_and
      * @return $this
      */
-    public function makeWhereBetween($colum, $values = [], $type = 'BET', $is_and = true)
+    public function makeWhereBetween($column, $values = [], $type = 'BET', $is_and = true)
     {
         if (is_array($values) === true && count($values) == 2) {
             if ($type == 'BDT') {
@@ -79,8 +79,8 @@ trait QueryBuilder
                 $values[1] = $values[1] . ' 23:59:59';
             }
 
-            $this->makeWhereOperator($colum, $values[0], 'GTE', $is_and);
-            $this->makeWhereOperator($colum, $values[1], 'LTE', $is_and);
+            $this->makeWhereOperator($column, $values[0], 'GTE', $is_and);
+            $this->makeWhereOperator($column, $values[1], 'LTE', $is_and);
         }
 
         return $this;
@@ -88,16 +88,16 @@ trait QueryBuilder
 
     /**
      * in 조건 생성
-     * @param $colum
+     * @param $column
      * @param array $values
      * @param bool $is_and
      * @return $this
      */
-    public function makeWhereIn($colum, $values = [], $is_and = true)
+    public function makeWhereIn($column, $values = [], $is_and = true)
     {
         if (is_array($values) && count($values) > 0) {
             $method = ($is_and === true) ? 'where_in' : 'or_where_in';
-            $this->{$method}($colum, $values);
+            $this->{$method}($column, $values);
         }
 
         return $this;
@@ -105,19 +105,19 @@ trait QueryBuilder
 
     /**
      * like 조건 생성
-     * @param $colum
+     * @param $column
      * @param $value
      * @param string $type
      * @param bool $is_and
      * @return $this
      */
-    public function makeWhereLike($colum, $value, $type = 'LKB', $is_and = true)
+    public function makeWhereLike($column, $value, $type = 'LKB', $is_and = true)
     {
         $sides = ['LKL' => 'before', 'LKR' => 'after', 'LKB' => 'both'];
 
         if (is_null($value) === false && strlen($value) > 0 && isset($sides[$type]) === true) {
             $method = ($is_and === true) ? 'like' : 'or_like';
-            $this->{$method}($colum, $value, $sides[$type]);
+            $this->{$method}($column, $value, $sides[$type]);
         }
 
         return $this;
@@ -161,20 +161,20 @@ trait QueryBuilder
     /**
      * select 쿼리 빌더
      * @param string $table
-     * @param string $colum
+     * @param string $column
      * @param array $conditions
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
      * @return \CI_DB_query_builder
      */
-    public function makeQuery($table, $colum = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
+    public function makeQuery($table, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
     {
         $query = $this->makeWhere($conditions);
         $query = $query->from($table);
 
-        if(is_bool($colum) === true) {
-            $colum = ($colum === true) ? 'count(*) AS numrows' : '*';
+        if(is_bool($column) === true) {
+            $column = ($column === true) ? 'count(*) AS numrows' : '*';
         }
 
         $query = $query->makeOrderBy($order_by);
@@ -187,7 +187,7 @@ trait QueryBuilder
             $query = $query->offset($offset);
         }
 
-        return $query->select($colum);
+        return $query->select($column);
     }
 
     /**
@@ -196,21 +196,21 @@ trait QueryBuilder
      * @param string $join_type
      * @param string $join_table
      * @param string $join_condition
-     * @param string $colum
+     * @param string $column
      * @param array $conditions
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
      * @return mixed
      */
-    public function makeJoinQuery($table, $join_type = 'inner', $join_table, $join_condition, $colum = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
+    public function makeJoinQuery($table, $join_type = 'inner', $join_table, $join_condition, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
     {
         $query = $this->makeWhere($conditions);
         $query = $query->from($table);
         $query = $query->join($join_table, $join_condition, $join_type);
 
-        if(is_bool($colum) === true) {
-            $colum = ($colum === true) ? 'count(*) AS numrows' : '*';
+        if(is_bool($column) === true) {
+            $column = ($column === true) ? 'count(*) AS numrows' : '*';
         }
 
         $query = $query->makeOrderBy($order_by);
@@ -223,7 +223,7 @@ trait QueryBuilder
             $query = $query->offset($offset);
         }
 
-        return $query->select($colum);
+        return $query->select($column);
     }
 
     /**
@@ -287,18 +287,18 @@ trait QueryBuilder
     /**
      * select 다수 행 조회 결과 리턴 (목록)
      * @param string $table 테이블명
-     * @param string|boolean [$colum 값이 true 인 경우 count 쿼리 실행]
+     * @param string|boolean [$column 값이 true 인 경우 count 쿼리 실행]
      * @param array $conditions [query builder의 makeWhere 메소드에서 사용하는 배열]
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
      * @return array|int
      */
-    public function getListResult($table, $colum = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
+    public function getListResult($table, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
     {
-        $query = $this->makeQuery($table, $colum, $conditions, $limit, $offset, $order_by);
+        $query = $this->makeQuery($table, $column, $conditions, $limit, $offset, $order_by);
 
-        return ($colum === true) ? $query->get()->row(0)->numrows : $query->get()->result_array();
+        return ($column === true) ? $query->get()->row(0)->numrows : $query->get()->result_array();
     }
 
     /**
@@ -307,30 +307,30 @@ trait QueryBuilder
      * @param string $join_type [조인방법 : inner, left, right ...]
      * @param string $join_table [조인 테이블명]
      * @param string $join_condition [조인 조건 : ON 구문]
-     * @param string|boolean $colum [$colum 값이 true 인 경우 count 쿼리 실행]
+     * @param string|boolean $column [$column 값이 true 인 경우 count 쿼리 실행]
      * @param array $conditions [query builder의 makeWhere 메소드에서 사용하는 배열]
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
      * @return array|int
      */
-    public function getJoinListResult($table, $join_type = 'inner', $join_table, $join_condition, $colum = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
+    public function getJoinListResult($table, $join_type = 'inner', $join_table, $join_condition, $column = '*', $conditions = [], $limit = null, $offset = null, $order_by = [])
     {
-        $query = $this->makeJoinQuery($table, $join_type, $join_table, $join_condition, $colum, $conditions, $limit, $offset, $order_by);
+        $query = $this->makeJoinQuery($table, $join_type, $join_table, $join_condition, $column, $conditions, $limit, $offset, $order_by);
 
-        return ($colum === true) ? $query->get()->row(0)->numrows : $query->get()->result_array();
+        return ($column === true) ? $query->get()->row(0)->numrows : $query->get()->result_array();
     }
 
     /**
      * select 단일 행 조회 결과 리턴
      * @param string $table 테이블명
-     * @param string|boolean [$colum 값이 true 인 경우 count 쿼리 실행]
+     * @param string|boolean [$column 값이 true 인 경우 count 쿼리 실행]
      * @param array $conditions [query builder의 makeWhere 메소드에서 사용하는 배열]
      * @return array
      */
-    public function getFindResult($table, $colum = '*', $conditions = [])
+    public function getFindResult($table, $column = '*', $conditions = [])
     {
-        $query = $this->makeQuery($table, $colum, $conditions, null, null, []);
+        $query = $this->makeQuery($table, $column, $conditions, null, null, []);
 
         return $query->get()->row_array();
     }
@@ -341,13 +341,13 @@ trait QueryBuilder
      * @param string $join_type [조인방법 : inner, left, right ...]
      * @param string $join_table [조인 테이블명]
      * @param string $join_condition [조인 조건 : ON 구문]
-     * @param string|boolean $colum [$colum 값이 true 인 경우 count 쿼리 실행]
+     * @param string|boolean $column [$column 값이 true 인 경우 count 쿼리 실행]
      * @param array $conditions [query builder의 makeWhere 메소드에서 사용하는 배열]
      * @return mixed
      */
-    public function getJoinFindResult($table, $join_type = 'inner', $join_table, $join_condition, $colum = '*', $conditions = [])
+    public function getJoinFindResult($table, $join_type = 'inner', $join_table, $join_condition, $column = '*', $conditions = [])
     {
-        $query = $this->makeJoinQuery($table, $join_type, $join_table, $join_condition, $colum, $conditions, null, null, []);
+        $query = $this->makeJoinQuery($table, $join_type, $join_table, $join_condition, $column, $conditions, null, null, []);
 
         return $query->get()->row_array();
     }

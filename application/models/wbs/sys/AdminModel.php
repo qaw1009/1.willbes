@@ -22,10 +22,10 @@ class AdminModel extends WB_Model
     public function listAdmin($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '
+            $column = '
                 A.wAdminIdx, A.wRoleIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wIsApproval, A.wIsUse, A.wRegDatm, A.wRegAdminIdx
                     , ifnull(R.wRoleName, "-") as wRoleName
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
@@ -61,22 +61,22 @@ class AdminModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
      * 운영자 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findAdmin($colum = '*', $arr_condition = [])
+    public function findAdmin($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table, $column, $arr_condition);
     }
 
     /**
@@ -86,15 +86,15 @@ class AdminModel extends WB_Model
      */
     public function findAdminForModify($admin_idx)
     {
-        $colum = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
-        $colum .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
-        $colum .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
-        $colum .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from wbs_sys_admin_role where wRoleIdx = A.wRoleIdx)) as wRoleName';
-        $colum .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wApprovalAdminIdx)) as wApprovalAdminName';
-        $colum .= ' , (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
+        $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
+        $column .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
+        $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from wbs_sys_admin_role where wRoleIdx = A.wRoleIdx)) as wRoleName';
+        $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wApprovalAdminIdx)) as wApprovalAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as A', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as A', $column, [
             'EQ' => ['A.wAdminIdx' => $admin_idx, 'A.wIsStatus' => 'Y']
         ]);
     }

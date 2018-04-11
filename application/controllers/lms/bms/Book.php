@@ -167,4 +167,23 @@ class Book extends \app\controllers\BaseController
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
+
+    /**
+     * 교재 신규/추천 수정
+     */
+    public function redata()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->bookModel->modifyBooksByColumn(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
 }

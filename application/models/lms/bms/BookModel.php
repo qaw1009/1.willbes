@@ -34,10 +34,10 @@ class BookModel extends WB_Model
     public function listBook($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '
+            $column = '
                 B.BookIdx, B.wBookIdx, B.SiteCode, B.BookName, B.SalePrice, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx
                     , VWB.wPublName, VWB.wAuthorNames, VWB.wStockCnt, VWB.wSaleCcdName	
                     , S.SiteName, C.CateName as BCateName, ifnull(MC.CateName, "") as MCateName, PS.SubjectName, WP.wProfName
@@ -78,7 +78,7 @@ class BookModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -90,7 +90,7 @@ class BookModel extends WB_Model
      */
     public function listBookCategory($book_idx)
     {
-        $colum = '
+        $column = '
             BC.CateCode, C.CateName
                 , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
                 , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName            
@@ -106,7 +106,7 @@ class BookModel extends WB_Model
         $order_by_offset_limit = ' order by BC.BcIdx asc';
 
         // 쿼리 실행
-        $data = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit, [$book_idx])->result_array();
+        $data = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$book_idx])->result_array();
 
         return array_pluck($data, 'CateRouteName', 'CateCode');
     }
@@ -134,15 +134,15 @@ class BookModel extends WB_Model
 
     /**
      * 교재 정보 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findBook($colum = '*', $arr_condition = [])
+    public function findBook($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table['book'], $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['book'], $column, $arr_condition);
     }
     
     /**
@@ -152,7 +152,7 @@ class BookModel extends WB_Model
      */
     public function findBookForModify($book_idx)
     {
-        $colum = '
+        $column = '
             B.BookIdx, B.wBookIdx, B.SiteCode, B.BookName, B.PrepareYear, B.CourseIdx, B.SubjectIdx, B.ProfIdx, B.DispTypeCcd, B.IsFree, B.SalePrice, B.DcAmt, B.DcType
                 , B.IsPointSaving, B.PointSavingAmt, B.PointSavingType, B.IsCoupon, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx, B.UpdDatm, B.UpdAdminIdx
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
@@ -163,7 +163,7 @@ class BookModel extends WB_Model
 
         return $this->_conn->getJoinFindResult($this->_table['book'] . ' as B', 'left', $this->_table['vw_bms_book'] . ' as VWB'
             , 'B.wBookIdx = VWB.wBookIdx and VWB.wIsStatus = "Y"'
-            , $colum, ['EQ' => ['B.BookIdx' => $book_idx, 'B.IsStatus' => 'Y']]);
+            , $column, ['EQ' => ['B.BookIdx' => $book_idx, 'B.IsStatus' => 'Y']]);
     }
 
     /**
@@ -265,6 +265,37 @@ class BookModel extends WB_Model
             // 데이터 수정
             if ($this->_conn->set($data)->where('BookIdx', $book_idx)->update($this->_table['book']) === false) {
                 throw new \Exception('교재 정보 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 컬럼별 교재 리스트 수정
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifyBooksByColumn($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $book_idx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BookIdx', $book_idx);
+
+                if ($this->_conn->update($this->_table['book']) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
             }
 
             $this->_conn->trans_commit();

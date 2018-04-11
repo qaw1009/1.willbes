@@ -102,20 +102,31 @@ class CategoryModel extends WB_Model
     }
 
     /**
-     * 부모 카테고리 코드가 동일한 카테고리 코드 목록 조회
-     * @param $site_code
-     * @param $parent_cate_code
+     * 카테고리 코드 목록 조회
+     * @param string $site_code
+     * @param string $parent_cate_code
+     * @param string $group_cate_code
+     * @param string $cate_depth
      * @return array
      */
-    public function getCategoryArray($site_code, $parent_cate_code)
+    public function getCategoryArray($site_code = '', $parent_cate_code = '', $group_cate_code = '', $cate_depth = '')
     {
-        $data = $this->_conn->getListResult($this->_table['category'], 'CateCode, CateName', [
-            'EQ' => ['SiteCode' => $site_code, 'ParentCateCode' => $parent_cate_code, 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'CateCode' => 'asc'
+        $arr_condition = ['EQ' => [
+            'ParentCateCode' => $parent_cate_code, 'GroupCateCode' => $group_cate_code, 'CateDepth' => $cate_depth, 'IsUse' => 'Y', 'IsStatus' => 'Y'
+        ]];
+
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+        }
+
+        $data = $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth',
+            $arr_condition, null, null, [
+            'SiteCode' => 'asc', 'OrderNum' => 'asc'
         ]);
 
-        return array_pluck($data, 'CateName', 'CateCode');
+        return (empty($site_code) === false) ? array_pluck($data, 'CateName', 'CateCode') : $data;
     }
 
     /**

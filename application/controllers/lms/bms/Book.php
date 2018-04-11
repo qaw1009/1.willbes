@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Book extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/wCode', 'product/base/course', 'product/base/subject', 'product/base/professor');
+    protected $models = array('sys/code', 'sys/wCode', 'sys/category', 'product/base/course', 'product/base/subject', 'product/base/professor', 'bms/book');
     protected $helpers = array();
     private $_ccd = [
         'wSale' => '112',
@@ -20,7 +20,19 @@ class Book extends \app\controllers\BaseController
      */
     public function index()
     {
+        $category_data = $this->categoryModel->getCategoryArray();
+        $arr_category = [];
+        foreach ($category_data as $row) {
+            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+            $arr_category[$arr_key][] = $row;
+        }
+
         $this->load->view('bms/book/index', [
+            'arr_lg_category' => element('LG', $arr_category, []),
+            'arr_md_category' => element('MD', $arr_category, []),
+            'arr_subject' => $this->subjectModel->getSubjectArray(),
+            'arr_professor' => $this->professorModel->getProfessorArray(),
+            'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
         ]);
     }
 
@@ -30,29 +42,37 @@ class Book extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-/*        $arr_condition = [
+        $arr_condition = [
             'EQ' => [
-                'U.SiteCode' => $this->_reqP('search_site_code'),
-                'U.IsUse' => $this->_reqP('search_is_use'),
+                'B.SiteCode' => $this->_reqP('search_site_code'),
+                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
+                'MC.CateCode' => $this->_reqP('search_md_cate_code'),
+                'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
+                'B.ProfIdx' => $this->_reqP('search_prof_idx'),
+                'B.IsUse' => $this->_reqP('search_is_use'),
+                'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
             ],
-            'ORG' => [
+            'ORG1' => [
                 'LKB' => [
-                    'U.ProfIdx' => $this->_reqP('search_value'),
-                    'U.wProfId' => $this->_reqP('search_value'),
-                    'U.wProfName' => $this->_reqP('search_value')
+                    'B.BookIdx' => $this->_reqP('search_value'),
+                    'B.BookName' => $this->_reqP('search_value')
                 ]
-            ]
+            ],
+            'ORG2' => [
+                'LKB' => [
+                    'VWB.wPublName' => $this->_reqP('search_publ_author'),
+                    'VWB.wAuthorNames' => $this->_reqP('search_publ_author'),
+                ]
+            ],
         ];
 
         $list = [];
-        $count = $this->professorModel->listProfessor(true, $arr_condition);
+        $count = $this->bookModel->listBook(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->professorModel->listProfessor(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['U.ProfIdx' => 'desc']);
-        }*/
+            $list = $this->bookModel->listBook(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['B.BookIdx' => 'desc']);
+        }
 
-        $count = 0;
-        $list = [];
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
@@ -73,26 +93,31 @@ class Book extends \app\controllers\BaseController
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
-            $data = $this->professorModel->findProfessorForModify($idx);
+            $data = $this->bookModel->findBookForModify($idx);
 
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
+
+            // 카테고리 연결 데이터 조회 (단일)
+            $arr_book_category = $this->bookModel->listBookCategory($idx);
+            $data['CateCode'] = key($arr_book_category);
+            $data['CateRouteName'] = current($arr_book_category);
         }
 
-        $course_list = $this->courseModel->getCourseArray();
-        $subject_list = $this->subjectModel->getSubjectArray();
-        $professor_list = $this->professorModel->getProfessorArray();
+        $arr_course = $this->courseModel->getCourseArray();
+        $arr_subject = $this->subjectModel->getSubjectArray();
+        $arr_professor = $this->professorModel->getProfessorArray();
 
         $this->load->view('bms/book/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
-            'disp_type_ccd' => $this->codeModel->getCcd($this->_ccd['DispType']),
-            'sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
-            'course_list' => $course_list,
-            'subject_list' => $subject_list,
-            'professor_list' => $professor_list,
+            'arr_disp_type_ccd' => $this->codeModel->getCcd($this->_ccd['DispType']),
+            'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
+            'arr_course' => $arr_course,
+            'arr_subject' => $arr_subject,
+            'arr_professor' => $arr_professor,
         ]);
     }
 
@@ -102,16 +127,28 @@ class Book extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'wprof_idx', 'label' => '교재선택', 'rules' => 'trim|required|integer'],
-            ['field' => 'prof_nickname', 'label' => '교재닉네임', 'rules' => 'trim|required'],
+            ['field' => 'prepare_year', 'label' => '대비학년도', 'rules' => 'trim|required'],
+            ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required|integer'],
+            ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_idx', 'label' => '교수', 'rules' => 'trim|required|integer'],
+            ['field' => 'book_name', 'label' => '교재명', 'rules' => 'trim|required'],
+            ['field' => 'disp_type_ccd', 'label' => '노출위치', 'rules' => 'trim|required'],
+            ['field' => 'is_free', 'label' => '무료여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'dc_amt', 'label' => '할인량', 'rules' => 'trim|required|integer'],
+            ['field' => 'dc_type', 'label' => '할인구분', 'rules' => 'callback_validateRequiredIf[is_free,N]|in_list[R,P]'],
+            ['field' => 'sale_price', 'label' => '판매가', 'rules' => 'trim|required|integer'],
+            ['field' => 'is_coupon', 'label' => '쿠폰적용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_point_saving', 'label' => '북포인트적용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'point_saving_amt', 'label' => '적립포인트', 'rules' => 'callback_validateRequiredIf[is_point_saving,Y]'],
+            ['field' => 'point_saving_type', 'label' => '적립구분', 'rules' => 'callback_validateRequiredIf[is_point_saving,Y]|in_list[R,P]'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'subject_mapping_code[]', 'label' => '카테고리 정보', 'rules' => 'trim|required'],
-            ['field' => 'prof_curriculum', 'label' => '커리큘럼', 'rules' => 'trim|required'],
         ];
 
         if (empty($this->_reqP('idx')) === true) {
             $method = 'add';
             $rules = array_merge($rules, [
+                ['field' => 'wbook_idx', 'label' => '교재 선택', 'rules' => 'trim|required|integer'],
+                ['field' => 'cate_code', 'label' => '카테고리 선택', 'rules' => 'trim|required|integer'],
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
             ]);
         } else {
@@ -126,7 +163,7 @@ class Book extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->professorModel->{$method . 'Professor'}($this->_reqP(null, false));
+        $result = $this->bookModel->{$method . 'Book'}($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

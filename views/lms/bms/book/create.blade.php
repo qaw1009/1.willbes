@@ -54,23 +54,23 @@
                     <div class="col-md-9">
                         <p class="form-control-static">
                             <span class="blue">[출판사]</span>
-                            <span id="selected_publ_name" class="pr-20"></span>
+                            <span id="selected_publ_name" class="pr-20">{{ $data['wPublName'] }}</span>
                             <span class="blue">[출판일]</span>
-                            <span id="selected_publ_date" class="pr-20"></span>
+                            <span id="selected_publ_date" class="pr-20">{{ $data['wPublDate'] }}</span>
                             <span class="blue">[저자]</span>
-                            <span id="selected_author_names"></span>
+                            <span id="selected_author_names">{{ $data['wAuthorNames'] }}</span>
                         </p>
                         <p class="form-control-static">
                             <span class="blue">[ISBN]</span>
-                            <span id="selected_isbn" class="pr-20"></span>
+                            <span id="selected_isbn" class="pr-20">{{ $data['wIsbn'] }}</span>
                             <span class="blue">[페이지]</span>
-                            <span id="selected_page_cnt" class="pr-20"></span>
+                            <span id="selected_page_cnt" class="pr-20">@if($method == 'PUT') {{ $data['wPageCnt'] }}p @endif</span>
                             <span class="blue">[신판여부]</span>
-                            <span id="selected_edition_ccd_name" class="pr-20"></span>
+                            <span id="selected_edition_ccd_name" class="pr-20">{{ $data['wEditionCcdName'] }}</span>
                             <span class="blue">[판/쇄]</span>
-                            <span id="selected_print_edtion_cnt" class="pr-20"></span>
+                            <span id="selected_print_edtion_cnt" class="pr-20">@if($method == 'PUT') {{ $data['wPrintCnt'] }}판 {{ $data['wEditionCnt'] }}쇄 @endif</span>
                             <span class="blue">[판형]</span>
-                            <span id="selected_edtion_size"></span>
+                            <span id="selected_edtion_size">{{ $data['wEditionSize'] }}</span>
                         </p>
                     </div>
                 </div>
@@ -82,31 +82,31 @@
                             <select class="form-control" id="prepare_year" name="prepare_year" required="required" title="대비학년도">
                                 <option value="">대비학년도</option>
                                 @for($i = (date('Y')+1); $i >= 2010; $i--)
-                                    <option value="{{ $i }}">{{ $i }}</option>
+                                    <option value="{{ $i }}" @if($i == $data['PrepareYear']) selected="selected" @endif>{{ $i }}</option>
                                 @endfor
                             </select>
                         </div>
                         <div class="inline-block mr-5 item">
                             <select class="form-control" id="course_idx" name="course_idx" required="required" title="과정">
                                 <option value="">과정</option>
-                                @foreach($course_list as $row)
-                                    <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
+                                @foreach($arr_course as $row)
+                                    <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['CourseIdx'] == $data['CourseIdx']) selected="selected" @endif>{{ $row['CourseName'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="inline-block mr-5 item">
                             <select class="form-control" id="subject_idx" name="subject_idx" required="required" title="과목">
                                 <option value="">과목</option>
-                                @foreach($subject_list as $row)
-                                    <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                                @foreach($arr_subject as $row)
+                                    <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['SubjectIdx'] == $data['SubjectIdx']) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="inline-block mr-5 item">
                             <select class="form-control" id="prof_idx" name="prof_idx" required="required" title="교수">
                                 <option value="">교수</option>
-                                @foreach($professor_list as $row)
-                                    <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
+                                @foreach($arr_professor as $row)
+                                    <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['ProfIdx'] == $data['ProfIdx']) selected="selected" @endif>{{ $row['wProfName'] }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -121,7 +121,7 @@
                     <label class="control-label col-md-2">교재코드
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static"># 등록시 자동 생성</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['BookIdx'] }}@else # 등록 시 자동 생성 @endif</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -129,7 +129,7 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            @foreach($disp_type_ccd as $key => $val)
+                            @foreach($arr_disp_type_ccd as $key => $val)
                                 <input type="radio" id="disp_type_ccd_{{ $loop->index }}" name="disp_type_ccd" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="노출위치" @endif @if($data['DispTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="disp_type_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
@@ -149,18 +149,18 @@
                     <div class="col-md-9 form-inline">
                         <p class="form-control-static">
                             <span class="blue pr-10">[정상가]</span>
-                            <input type="number" id="org_price" name="org_price" class="form-control" title="정상가" value="{{ $data['OrgPrice'] }}" readonly="readonly" style="width: 120px;"> 원
+                            <input type="number" id="org_price" name="org_price" class="form-control" title="정상가" value="{{ $data['wOrgPrice'] }}" readonly="readonly" style="width: 120px;"> 원
                             <span class="blue pl-30 pr-10">[할인적용]</span>
                             <div class="inline-block item">
                                 <input type="number" id="dc_amt" name="dc_amt" class="form-control" required="required" title="할인량" value="{{ $data['DcAmt'] }}" style="width: 140px;">
                                 <select class="form-control" id="dc_type" name="dc_type">
-                                    <option value="R">%</option>
-                                    <option value="P">원</option>
+                                    <option value="R" @if('R' == $data['DcType']) selected="selected" @endif>%</option>
+                                    <option value="P" @if('P' == $data['DcType']) selected="selected" @endif>원</option>
                                 </select>
                             </div>
                             <span class="blue pl-30 pr-10">[판매가]</span>
                             <div class="inline-block item">
-                                <input type="number" id="sale_price" name="sale_price" class="form-control" required="required" title="판매가" value="{{ $data['SalePrice'] }}" style="width: 140px;"> 원
+                                <input type="number" id="sale_price" name="sale_price" class="form-control" required="required" title="판매가" value="{{ $data['SalePrice'] }}" readonly="readonly" style="width: 140px;"> 원
                             </div>
                         </p>
                     </div>
@@ -181,8 +181,8 @@
                             <input type="radio" id="is_point_saving_y" name="is_point_saving" class="flat" value="Y" required="required" title="북포인트적용여부" @if($method == 'POST' || $data['IsPointSaving'] == 'Y')checked="checked"@endif/> <label for="is_point_saving_y" class="input-label">가능</label>
                             [ <input type="number" id="point_saving_amt" name="point_saving_amt" class="form-control" required="requiredif:is_point_saving,Y" title="적립포인트" value="{{ $data['PointSavingAmt'] }}" style="width: 120px;">
                             <select class="form-control" id="point_saving_type" name="point_saving_type">
-                                <option value="R">%</option>
-                                <option value="P">원</option>
+                                <option value="R"@if('R' == $data['PointSavingType']) selected="selected" @endif>%</option>
+                                <option value="P"@if('P' == $data['PointSavingType']) selected="selected" @endif>원</option>
                             </select> 적립 ]
                             &nbsp; &nbsp; <input type="radio" id="is_point_saving_n" name="is_point_saving" class="flat" value="N" @if($data['IsPointSaving'] == 'N')checked="checked"@endif/> <label for="is_point_saving_n" class="input-label">불가능</label>
                         </div>
@@ -235,18 +235,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="sale_ccd">판매여부 <span class="required">*</span>
+                    <label class="control-label col-md-2">판매여부
                     </label>
-                    <div class="col-md-3 item">
-                        <div class="radio">
-                            @foreach($sale_ccd as $key => $val)
-                                <input type="radio" id="sale_ccd_{{ $loop->index }}" name="sale_ccd" class="flat" value="{{ $key }}" @if($key == $data['wSaleCcd'])checked="checked"@endif  @if($loop->index == 1)required="required" title="판매여부"@endif/>
-                                <label for="sale_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="form-control-static"># 변경시 WBS > BMS > 교재 기본정보 관리 정보가 자동 수정됩니다.</p>
+                    <div class="col-md-9">
+                        <p id="selected_wsale_ccd_name" class="form-control-static">{{ $data['wSaleCcdName'] }}</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -298,12 +290,8 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url('/bms/book/index') }}' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');
+                }, showValidateError, null, false, 'alert');
             });
-
-            function addValidate() {
-                return true;
-            }
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -337,6 +325,21 @@
             $regi_form.find('select[name="subject_idx"]').chained("#site_code");
             $regi_form.find('select[name="prof_idx"]').chained("#site_code");
 
+            // 무료여부 값에 따른 교재비 설정
+            $regi_form.on('ifChanged ifCreated', 'input[name="is_free"]:checked', function() {
+                var $dc_amt = $regi_form.find('input[name="dc_amt"]');
+                var $dc_type = $regi_form.find('select[name="dc_type"]');
+
+                if($(this).val() === 'Y') {
+                    $dc_amt.val('100').prop('readonly', true);
+                    $dc_type.val('R').prop('disabled', true);
+                    $dc_amt.change();
+                } else {
+                    $dc_amt.val('{{ $data['DcAmt'] or '' }}').prop('readonly', false);
+                    $dc_type.val('{{ $data['DcType'] or 'R' }}').prop('disabled', false);
+                }
+            });
+
             // 북포인트적용 disabled 처리
             $regi_form.on('ifChanged ifCreated', 'input[name="is_point_saving"]:checked', function() {
                 var $point_saving_amt = $regi_form.find('input[name="point_saving_amt"]');
@@ -365,6 +368,12 @@
                     sale_price = org_price - ((org_price * dc_amt) / 100);
                 } else {
                     sale_price = org_price - dc_amt;
+                }
+
+                if (sale_price < 1) {
+                    // 판매금액이 0원일 경우 무료 체크
+                    $regi_form.find('input[id="is_free_n"]').prop('checked', false).iCheck('update');
+                    $regi_form.find('input[id="is_free_y"]').prop('checked', true).iCheck('update');
                 }
 
                 $regi_form.find('input[name="sale_price"]').val(sale_price);

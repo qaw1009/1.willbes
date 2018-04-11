@@ -8,20 +8,57 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
+                    <label class="control-label col-md-1">교재기본정보</label>
+                    <div class="col-md-11 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트') !!}
+                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                            <option value="">대분류</option>
+                            @foreach($arr_lg_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                            <option value="">중분류</option>
+                            @foreach($arr_md_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                            <option value="">교수</option>
+                            @foreach($arr_professor as $row)
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_is_use" name="search_is_use">
+                            <option value="">사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
+                        <select class="form-control" id="search_sale_ccd" name="search_sale_ccd">
+                            <option value="">판매여부</option>
+                            @foreach($arr_sale_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">통합검색</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">명칭, 코드, 아이디 검색 가능</p>
+                        <p class="form-control-static">명칭, 코드 검색 가능</p>
                     </div>
-                    <label class="control-label col-md-1" for="search_is_use">조건</label>
-                    <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_is_use" name="search_is_use">
-                            <option value="">사용여부</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
-                        </select>
+                    <label class="control-label col-md-1" for="search_publ_author">출판/저자명</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control input-sm" id="search_publ_author" name="search_publ_author">
                     </div>
                 </div>
             </div>
@@ -37,21 +74,24 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2" class="pb-30">No</th>
-                    <th rowspan="2" class="pb-30">운영사이트</th>
-                    <th rowspan="2" class="pb-30">교재코드</th>
-                    <th rowspan="2" class="pb-30">교재아이디</th>
-                    <th rowspan="2" class="pb-30">교재명</th>
-                    <th rowspan="2" class="pb-20">카테고리정보<br/>(대표카테고리만 표기)</th>
-                    <th colspan="3" style="border-width: 1px; border-left: 0; border-bottom: 0;">게시판운영여부</th>
-                    <th rowspan="2" class="pb-30">사용여부</th>
-                    <th rowspan="2" class="pb-30">등록자</th>
-                    <th rowspan="2" class="pb-30">등록일</th>
-                </tr>
-                <tr>
-                    <th style="">공지</th>
-                    <th>Q&A</th>
-                    <th style="border-right-width: 1px;">자료실</th>
+                    <th>No</th>
+                    <th>운영사이트</th>
+                    <th>대분류</th>
+                    <th>중분류</th>
+                    <th>과목</th>
+                    <th>교수</th>
+                    <th>교재코드</th>
+                    <th>교재명</th>
+                    <th>출판사</th>
+                    <th>저자</th>
+                    <th>판매가</th>
+                    <th>신규</th>
+                    <th>추천</th>
+                    <th>재고</th>
+                    <th>사용여부</th>
+                    <th>판매여부</th>
+                    <th>등록자</th>
+                    <th>등록일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,13 +109,13 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify' },
+                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 교재 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/bms/book/create') }}' + dtParamsToQueryString($datatable);
                     }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/product/base/professor/listAjax') }}',
+                    'url' : '{{ site_url('/bms/book/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -87,24 +127,42 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'SiteName'},
-                    {'data' : 'ProfIdx'},
-                    {'data' : 'wProfId'},
-                    {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.ProfIdx + '"><u class="blue">' + data + '</u></a>';
+                    {'data' : 'BCateName'},
+                    {'data' : 'MCateName'},
+                    {'data' : 'SubjectName'},
+                    {'data' : 'wProfName'},
+                    {'data' : 'BookIdx'},
+                    {'data' : 'BookName', 'render' : function(data, type, row, meta) {
+                        return '<a href="#" class="btn-modify" data-idx="' + row.BookIdx + '"><u class="blue">' + data + '</u></a>';
                     }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        return row.CateName + ' > ' + row.SubjectName;
+                    {'data' : 'wPublName'},
+                    {'data' : 'wAuthorNames'},
+                    {'data' : 'SalePrice', 'render' : function(data, type, row, meta) {
+                        return addComma(data) + '원';
                     }},
-                    {'data' : 'IsNoticeBoard'},
-                    {'data' : 'IsQnaBoard'},
-                    {'data' : 'IsDataBoard'},
+                    {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
+                        return '<input type="checkbox" name="is_new[]" class="flat" value="Y"' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                    }},
+                    {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
+                        return '<input type="checkbox" name="is_best[]" class="flat" value="Y"' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                    }},
+                    {'data' : 'wStockCnt', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
+                    {'data' : 'wSaleCcdName'},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}
                 ]
             });
+
+            // 과목, 교수 자동 변경
+            $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
+            $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
+            $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {

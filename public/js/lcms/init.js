@@ -78,6 +78,7 @@ $(document).ready(function() {
     // 관리자 목록 페이지 검색어 설정
     var json = queryStringToJson();
     var $search_form = $('#search_form');
+    var $tab_site_code = $('.tabs-site-code');
 
     if (typeof $search_form === 'undefined' || json.hasOwnProperty('q') === false) {
         return;
@@ -95,6 +96,12 @@ $(document).ready(function() {
                 $search_form.find('[name="' + key + '"][value="' + value + '"]').prop('checked', true).iCheck('update');
             } else {
                 $search_form.find('[name="' + key + '"]').val(value);
+            }
+
+            if (key === 'search_site_code' && value !== '' && $tab_site_code.length > 0) {
+                // 사이트 탭 자동 선택
+                $tab_site_code.children('li').removeClass('active');
+                $tab_site_code.find('a[data-site-code="' + value + '"]').parent('li').addClass('active');
             }
         }
     });

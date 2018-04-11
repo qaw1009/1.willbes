@@ -380,7 +380,13 @@ function init_datatable() {
             if (typeof $site_code !== 'undefined') {
                 $site_code = $(this).data('site-code');
             }
-            $search_form.find('input[name="search_site_code"]').val($(this).data('site-code'));
+
+            var $search_site_code = $search_form.find('[name="search_site_code"]');
+            $search_site_code.val($(this).data('site-code'));
+            if ($search_site_code.prop('tagName') === 'SELECT') {
+                $search_form.find('[name="search_site_code"]').change();
+            }
+
             $search_form.submit();
         });
 

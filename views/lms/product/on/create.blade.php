@@ -873,7 +873,7 @@
             })
 
             //강좌유형
-            $("input[name='LecKindCcd']").on('ifChecked', function() {
+            $regi_form.on('ifChecked', 'input[name="LecKindCcd"]', function() {
                 //alert($(this).val());
                 if($(this).val() == '607003') { //직장인/재학생반
                     alert("1");

@@ -23,7 +23,7 @@ class SortMappingModel extends WB_Model
      * @param array $arr_condition
      * @return array
      */
-    public function listAllSortMapping($arr_condition = [])
+    public function listSortMapping($arr_condition = [])
     {
         $column = 'U.*, A.wAdminName as LastRegAdminName
             , (select count(*) from ' . $this->_table['subject_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode) as CateSubjectCnt
@@ -51,8 +51,9 @@ class SortMappingModel extends WB_Model
                             on MC.GroupCateCode = BC.CateCode and MC.CateDepth = 2 and MC.IsStatus = "Y"
                     where S.IsStatus = "Y" and BC.CateDepth = 1 and BC.IsStatus = "Y"
                 ) as I
-            ) as U inner join ' . $this->_table['admin'] . ' as A
-                on U.LastRegAdminIdx = A.wAdminIdx 
+            ) as U 
+                left join ' . $this->_table['admin'] . ' as A
+                    on U.LastRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
         ';
 
         // 사이트 권한 추가
@@ -101,7 +102,7 @@ class SortMappingModel extends WB_Model
         $where = '
             where S.SiteCode = ? and S.IsStatus = "Y"
                 and C.CateCode = ? and C.IsStatus = "Y"
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"            
+                and PS.IsStatus = "Y"            
         ';
         $order_by = ' order by PS.SubjectIdx asc';
 
@@ -135,9 +136,9 @@ class SortMappingModel extends WB_Model
         $where = '
             where S.SiteCode = ? and S.IsStatus = "Y"
                 and C.CateCode = ? and C.IsStatus = "Y"
-                and CC.GroupCcd = ? and CC.IsUse = "Y" and CC.IsStatus = "Y"                
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"                           
-                and PSC.IsStatus = "Y"
+                and PS.IsStatus = "Y"                           
+                and PSC.IsStatus = "Y"             
+                and CC.GroupCcd = ? and CC.IsStatus = "Y"                
         ';
         $group_by = ' group by PSC.ChildCcd';
         $order_by = ' order by PSC.ChildCcd asc';

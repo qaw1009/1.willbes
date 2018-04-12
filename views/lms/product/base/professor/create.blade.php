@@ -199,7 +199,7 @@
                                                     <tbody class="form-group form-group-sm form-inline">
                                                     @php $_prefix_first_key = $on_off_type . '.' . $key . '.0'; @endphp
                                                     <tr>
-                                                        <td><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcRate') }}" style="width: 80px"/> %</td>
+                                                        <td class="no-border-bottom"><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcRate') }}" style="width: 80px"/> %</td>
                                                         <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ContribRate') }}" style="width: 80px"/> %</td>
                                                         <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyStartDate') }}" style="width: 100px">
                                                             ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyEndDate') }}" style="width: 100px">
@@ -213,7 +213,7 @@
                                                     @foreach(array_get($data['CalcRate'], $on_off_type . '.' . $key, []) as $idx => $row)
                                                         @if($idx > 0)
                                                             <tr>
-                                                                <td><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ $row['CalcRate'] }}" style="width: 80px"/> %</td>
+                                                                <td class="no-border-bottom"><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ $row['CalcRate'] }}" style="width: 80px"/> %</td>
                                                                 <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="{{ $row['ContribRate'] }}" style="width: 80px"/> %</td>
                                                                 <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ $row['ApplyStartDate'] }}" style="width: 100px">
                                                                     ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ $row['ApplyEndDate'] }}" style="width: 100px">

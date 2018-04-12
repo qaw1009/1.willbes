@@ -49,12 +49,12 @@ class BookModel extends WB_Model
 
         $from = '
             from ' . $this->_table['book'] . ' as B
-                left join ' . $this->_table['vw_bms_book'] . ' as VWB
-                    on B.wBookIdx = VWB.wBookIdx and VWB.wIsStatus = "Y"
-                inner join ' . $this->_table['book_r_category'] . ' as BC
-                    on B.BookIdx = BC.BookIdx
+                inner join ' . $this->_table['vw_bms_book'] . ' as VWB
+                    on B.wBookIdx = VWB.wBookIdx
                 inner join ' . $this->_table['site'] . ' as S
                     on B.SiteCode = S.SiteCode
+                left join ' . $this->_table['book_r_category'] . ' as BC
+                    on B.BookIdx = BC.BookIdx and BC.IsStatus = "Y"
                 left join ' . $this->_table['category'] . ' as C
                     on BC.CateCode = C.CateCode and C.CateDepth = 1 and C.IsStatus = "Y"
                 left join ' . $this->_table['category'] . ' as MC
@@ -67,8 +67,8 @@ class BookModel extends WB_Model
                     on P.wProfIdx = WP.wProfIdx	and WP.wIsStatus = "Y"
                 left join ' . $this->_table['admin'] . ' as A
                     on B.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
-            where B.IsStatus = "Y"		
-                and BC.IsStatus = "Y"
+            where B.IsStatus = "Y"	
+                and VWB.wIsStatus = "Y"	                
                 and S.IsStatus = "Y" 
         ';
 
@@ -157,13 +157,13 @@ class BookModel extends WB_Model
                 , B.IsPointSaving, B.PointSavingAmt, B.PointSavingType, B.IsCoupon, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx, B.UpdDatm, B.UpdAdminIdx
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
                 , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wOrgPrice, VWB.wStockCnt, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc  
-                , (select wAdminName from wbs_sys_admin where wAdminIdx = B.RegAdminIdx) as RegAdminName
-                , if(B.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = B.UpdAdminIdx)) as UpdAdminName        
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.RegAdminIdx) as RegAdminName
+                , if(B.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.UpdAdminIdx)) as UpdAdminName        
         ';
 
-        return $this->_conn->getJoinFindResult($this->_table['book'] . ' as B', 'left', $this->_table['vw_bms_book'] . ' as VWB'
-            , 'B.wBookIdx = VWB.wBookIdx and VWB.wIsStatus = "Y"'
-            , $column, ['EQ' => ['B.BookIdx' => $book_idx, 'B.IsStatus' => 'Y']]);
+        return $this->_conn->getJoinFindResult($this->_table['book'] . ' as B', 'inner', $this->_table['vw_bms_book'] . ' as VWB'
+            , 'B.wBookIdx = VWB.wBookIdx'
+            , $column, ['EQ' => ['B.BookIdx' => $book_idx, 'B.IsStatus' => 'Y', 'VWB.wIsStatus' => 'Y']]);
     }
 
     /**

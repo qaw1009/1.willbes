@@ -27,7 +27,6 @@ class CourseModel extends WB_Model
         $column = 'PC.CourseIdx, PC.SiteCode, PC.CourseName, PC.OrderNum, PC.IsUse, PC.RegDatm, PC.RegAdminIdx, S.SiteName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PC.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['PC.IsStatus'] = 'Y';
-        $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['IN']['PC.SiteCode'] = get_auth_site_codes();
 

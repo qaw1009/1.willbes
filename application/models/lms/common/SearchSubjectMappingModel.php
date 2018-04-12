@@ -52,8 +52,8 @@ class SearchSubjectMappingModel extends WB_Model
                     on S.SiteCode = PS.SiteCode
                 inner join ' . $this->_table['subject_r_category'] . ' as PSC
                     on S.SiteCode = PSC.SiteCode and C.CateCode = PSC.CateCode and PS.SubjectIdx = PSC.SubjectIdx
-                inner join ' . $this->_table['admin'] . ' as A
-                    on PSC.RegAdminIdx = A.wAdminIdx
+                left join ' . $this->_table['admin'] . ' as A
+                    on PSC.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where S.IsUse = "Y" and S.IsStatus = "Y"
                 and C.IsUse = "Y"and C.IsStatus = "Y"
                 and PS.IsUse = "Y" and PS.IsStatus = "Y"

@@ -47,7 +47,7 @@ class ProfessorModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                U.*, C.CateName, PS.SubjectName
+                U.*, ifnull(C.CateName, "삭제된 카테고리") as CateName, ifnull(PS.SubjectName, "삭제된 과목") as SubjectName
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard                
@@ -73,24 +73,22 @@ class ProfessorModel extends WB_Model
                             on P.wProfIdx = WP.wProfIdx
                         inner join ' . $this->_table['site'] . ' as S
                             on P.SiteCode = S.SiteCode
-                        inner join ' . $this->_table['admin'] . ' as A
-                            on P.RegAdminIdx = A.wAdminIdx
+                        left join ' . $this->_table['admin'] . ' as A
+                            on P.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
                     where P.IsStatus = "Y" 
                         and WP.wIsStatus = "Y" 
-                        and S.IsUse = "Y" and S.IsStatus = "Y"
+                        and S.IsStatus = "Y"
                 ) I 
-            ) U inner join ' . $this->_table['category'] . ' as C
-                    on U.SiteCode = C.SiteCode and U.CateCode = C.CateCode
-                inner join ' . $this->_table['subject'] . ' as PS
-                    on U.SiteCode = PS.SiteCode and U.SubjectIdx = PS.SubjectIdx			
-            where C.IsUse = "Y" and C.IsStatus = "Y" 
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"  
+            ) U left join ' . $this->_table['category'] . ' as C
+                    on U.SiteCode = C.SiteCode and U.CateCode = C.CateCode and C.IsUse = "Y" and C.IsStatus = "Y"
+                left join ' . $this->_table['subject'] . ' as PS
+                    on U.SiteCode = PS.SiteCode and U.SubjectIdx = PS.SubjectIdx and PS.IsUse = "Y" and PS.IsStatus = "Y"			
         ';
 
         // 사이트 권한 추가
         $arr_condition['IN']['U.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
@@ -120,7 +118,7 @@ class ProfessorModel extends WB_Model
                 inner join ' . $this->_table['subject'] . ' as PS
                     on PSC.SubjectIdx = PS.SubjectIdx        
         ';
-        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y" and PS.IsUse = "Y" and PS.IsStatus = "Y"';
+        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsStatus = "Y" and PS.IsStatus = "Y"';
         $order_by_offset_limit = ' order by PSC.PcIdx asc';
 
         // 쿼리 실행
@@ -260,8 +258,8 @@ class ProfessorModel extends WB_Model
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
                 , WP.wProfName, WP.wProfId, WP.wProfProfile, WP.wBookContent, WP.wIsUse 
-                , (select wAdminName from wbs_sys_admin where wAdminIdx = P.RegAdminIdx) as RegAdminName
-                , if(P.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.UpdAdminIdx)) as UpdAdminName        
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.RegAdminIdx) as RegAdminName
+                , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx)) as UpdAdminName        
         ';
 
         return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx'

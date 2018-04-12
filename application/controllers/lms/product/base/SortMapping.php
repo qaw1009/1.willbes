@@ -19,7 +19,7 @@ class SortMapping extends \app\controllers\BaseController
      */
     public function index()
     {
-        $list = $this->sortMappingModel->listAllSortMapping();
+        $list = $this->sortMappingModel->listSortMapping();
 
         $this->load->view('product/base/sort_mapping/index',[
             'data' => $list

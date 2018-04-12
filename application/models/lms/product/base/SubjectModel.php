@@ -27,7 +27,6 @@ class SubjectModel extends WB_Model
         $column = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, S.SiteName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['PS.IsStatus'] = 'Y';
-        $arr_condition['EQ']['S.IsUse'] = 'Y';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
         $arr_condition['IN']['PS.SiteCode'] = get_auth_site_codes();
 

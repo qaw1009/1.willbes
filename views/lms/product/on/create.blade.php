@@ -30,29 +30,30 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="searchCategory">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                             <button type="button" id="searchCategory" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="cateInfo">고등고시> 5급행정/입법고시> 5급행정1차[x]</span>
+                            <input type="hidden" name="cate_code" id="cate_code" value="" required="required" title="카테고리정보">
+                            <span id="selected_category"></span>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">마스터강의불러오기 <span class="required">*</span>
+                    <label class="control-label col-md-2">마스터강좌불러오기 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                             @if($method == 'POST')
-                                <button type="button" id="searchMasterLecture" class="btn btn-sm btn-primary">마스터강의검색</button>
-
+                                <button type="button" id="searchMasterLecture" class="btn btn-sm btn-primary">마스터강좌검색</button>
                                 <p id="masterTitle" class="form-control-static">&nbsp;</p>
                             @else
-                                마스트강의명...[강의코드]
+                                마스트강의명...[강좌코드]
                             @endif
+                            <input type="hidden" name="wLecIdx" id="wLecIdx" value="" required="required" title="마스터강좌">
                         </div>
                     </div>
                 </div>
@@ -73,7 +74,15 @@
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                             <button type="button" id="searchMasterLectureUnit" class="btn btn-sm btn-primary">회차검색</button>
-                            <span id="sampleList">[1회차1강] 회차명이출력됩니다.</span>
+                            <p id="sampleList" class="form-control-static">&nbsp;
+                                <!--
+                                <span class="mb-5" id="unit1">
+                                    <input type="hidden" name="wUnitCode" value="1010">
+                                [1회차 1강] <a href="javascript:;" onclick="rowDelete('unit1')"><i class="fa fa-times red"></i></a>
+                                </span>
+                                &nbsp;&nbsp;
+                                //-->
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -103,12 +112,16 @@
                                     <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                             </select>
+                        </div>
+                        <div class="item inline-block">
                             <select name="CourseIdx" id="CourseIdx"  required="required" class="form-control" title="과정">
                                 <option value="">과정</option>
                                 @foreach($courseList as $row)
                                     <option value="{{$row['CourseIdx']}}" class="{{$row['SiteCode']}}">{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="item inline-block">
                             <select name="SubjectIdx" id="SubjectIdx"  required="required" class="form-control" title="과목">
                                 <option value="">과목</option>
                                 @foreach($subjectList as $row)
@@ -141,7 +154,7 @@
                 </div>
 
                 <div class="form-group" id="div_LecKindCcd_1">
-                    <label class="control-label col-md-2" for="studyTermCcd1">수강기간설정 <span class="required">*</span>
+                    <label class="control-label col-md-2" >수강기간설정 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="radio">
@@ -217,18 +230,18 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <input type="text" name="" id="" value="" required="required" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
+                            <input type="text" name="" id="" value="" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
                             &nbsp;
-                            <select name="" id="" required="" class="form-control" title="">
+                            <select name="" id=""  class="form-control" title="">
                                 @for($i=0;$i<=23;$i++)
                                     @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
                                     <option value="{{$ii}}">{{$ii}}</option>
                                 @endfor
                             </select> 시
                             ~
-                            <input type="text" name="" id="" value="" required="required" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
+                            <input type="text" name="" id="" value=""  class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
                             &nbsp;
-                            <select name="" id="" required="" class="form-control" title="">
+                            <select name="" id="" class="form-control" title="">
                                 @for($i=0;$i<=23;$i++)
                                     @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
                                     <option value="{{$ii}}">{{$ii}}</option>
@@ -300,7 +313,7 @@
                                 <input type="radio" name="MultipleApplyCcd" id="MultipleApplyCcd" value="{{$key}}" required="required" class="flat" @if($loop->index == 1)checked="checked"@endif> {{$val}}&nbsp;
                                 @endforeach
                                 &nbsp;&nbsp;
-                                [전체강의시간] &nbsp;<input type="number" name="LecTime" id="LecTime" value="" required="required" class="form-control" title="전체강의시간" style="width:70px;">
+                                [전체강의시간] &nbsp;<input type="number" name="LecTime" id="LecTime" value="" required="required" class="form-control" title="전체강의시간" style="width:70px;"> 분
                             </div>
                             <Br>
                             • 접수기간 미 입력시 ‘판매여부’로 강좌 노출 설정
@@ -831,22 +844,45 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            //카테고리검색
+            $("#searchCategory").on('click',function(){
+                $("#searchCategory").setLayer({
+                    'url' : '{{ site_url('/common/searchCategory/index/') }}'
+                    ,'width' : 800
+                })
+            });
+
+
             //마스터강의검색
             $("#searchMasterLecture").on('click', function() {
                 $("#searchMasterLecture").setLayer({
-                    'url' : '{{ site_url('/common/searchMasterLecture/index/') }}'
+                    'url' : '{{ site_url('/common/searchWMasterLecture/index/') }}'
                     ,'width' : 1100
                 });
             });
 
+            //회차검색
+            $('#searchMasterLectureUnit').on('click', function() {
+                if($('#wLecIdx').val() == '') {
+                    alert('마스터강의를 선택 후 회차검색을 해주세요.');return;
+                }
+                $('#searchMasterLectureUnit').setLayer({
+                    'url' : '{{ site_url('common/searchWMasterLecture/unit/') }}'+$('#wLecIdx').val()
+                    ,'width' : 1200
+                })
+            })
 
             //강좌유형
             $("input[name='LecKindCcd']").on('ifChecked', function() {
                 //alert($(this).val());
                 if($(this).val() == '607003') { //직장인/재학생반
+                    alert("1");
                     $('#div_LecKindCcd_2').show();$('#div_LecKindCcd_1').hide();
+
                 } else {
+                    alert("2");
                     $('#div_LecKindCcd_1').show();$('#div_LecKindCcd_2').hide();
+
                 }
             });
 
@@ -865,27 +901,63 @@
             $("#CourseIdx").chained("#site_code");
             $("#SubjectIdx").chained("#site_code");
 
-
-
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url('/product/on/lecture/store') }}';
 
+                var _url = '{{ site_url('/product/on/lecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
+
+            function addValidate() {
+                if($("input[name='wUnitCode']").length < 1) {
+                    alert('맛보기 필드는 필수입니다.');
+                    return false;
+                }
+
+                var leckindccd = $("input[name='LecKindCcd']:checked").val();
+                alert(leckindccd);
+
+                if(leckindccd=="607001" || leckindccd=="607002") {
+
+                    if($("input[name='studyTermCcd']:checked").val() == '616001') { //수강기간
+                        if($("#LecPeriod").val() == '') {
+                            alert('수강일 필드는 필수입니다.');
+                            return false;
+                        }
+                    } else {
+                        if($("#LecEndDatm").val() == '') {
+                            alert('수강종료일 필드는 필수입니다.');
+                            return false;
+                        }
+                    }
+
+                } else if(leckindccd=="607003") {
+
+                }
+
+
+
+                return;
+
+                return true;
+            }
+
+
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
             });
-
-
-
         });
+
+
+        function rowDelete(strRow) {
+            $('#'+strRow).remove();
+        }
 
         //판매가격 산출
         function priceCheck(strGubun) {

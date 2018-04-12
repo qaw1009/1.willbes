@@ -122,7 +122,7 @@
                         ]
                     });
 
-                    // 카테고리 선택
+                    // 마스터강의선택
                     $datatable.on('click', '.btn-select', function() {
 
                         if (!confirm('해당 강의를 선택하시겠습니까?')) {
@@ -143,7 +143,9 @@
                             $masterInfo = $masterInfo +' &nbsp;&nbsp; [첨부자료] <a href=' + $attach_link + ' target="_blank">' + row.wAttachFile +'</a>';
                         }
 
-                        $parent_masterTitle.html(row.wLecName + ' [ ' + row.wLecIdx + ' ] ');   //강의명,코드 삽입
+                        $parent_masterTitle.html(row.wLecName + ' [ ' + row.wLecIdx + ' ] ');   //강의명, 코드명 삽입
+                        $('#wLecIdx').val(row.wLecIdx); //강의코드 삽입
+
                         $parent_masterInfo.html($masterInfo);   //강의기본정보 추출
                         $parent_cpInfo.html('<input type="hidden" name="wCpIdx" value="'+row.wCpIdx+'">'
                                                     +'<input type="number" name="CpDistribution" id="CpDistribution" style="width:50px" maxlength="3" class="form-control">% '

@@ -22,8 +22,8 @@ class UnitModel extends WB_Model
 
         $from = '
                     From '.$this->_table.' A 
-                    left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx 
-                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx ';
+                    left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx And B.wIsStatus="Y"
+                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx And C.wIsStatus="Y"';
 
         $where =  $this->_conn->makeWhere([
             'EQ'=>['A.wLecIdx'=>$lecidx,'A.wIsStatus'=>'Y']

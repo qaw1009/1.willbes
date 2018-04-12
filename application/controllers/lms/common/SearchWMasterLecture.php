@@ -23,7 +23,6 @@ class SearchWMasterLecture extends \app\controllers\BaseController
         ]);
     }
 
-
     /**
      * 마스터강의 목록
      * @return CI_Output
@@ -69,6 +68,23 @@ class SearchWMasterLecture extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list
+        ]);
+    }
+
+    //회차검색
+    public function unit($params=[])
+    {
+        $lecidx = $params[0];
+
+        //강의기본정보
+        $data = $this->searchWMasterLectureModel->findLecture($lecidx);
+        
+        //회차정보
+        $data_unit = $this->searchWMasterLectureModel->listAllUnit($lecidx);
+        
+        $this->load->view('common/search_wmasterlectureunit',[
+            'data_lecture' => $data
+            ,'data_unit' => $data_unit
         ]);
     }
 

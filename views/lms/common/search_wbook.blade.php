@@ -124,7 +124,7 @@
                 var $parent_selected_wtable_desc = $('#selected_wtable_desc');
                 var $parent_selected_wstock_cnt = $('#selected_wstock_cnt');
                 var $parent_sale_ccd = $parent_regi_form.find('input[name="sale_ccd"]');
-                var $parent_ori_sale_ccd = $parent_regi_form.find('input[name="ori_sale_ccd"]');
+                var $parent_selected_sale_ccd_name = $('#selected_wsale_ccd_name');
 
                 $parent_regi_form.find('input[name="wbook_idx"]').val(row.wBookIdx);
                 if ($parent_book_name.length > 0) { $parent_book_name.val(row.wBookName); }
@@ -143,7 +143,7 @@
                 if ($parent_selected_wtable_desc.length > 0) { $parent_selected_wtable_desc.html(row.wTableDesc); }
                 if ($parent_selected_wstock_cnt.length > 0) { $parent_selected_wstock_cnt.text(addComma(row.wStockCnt)); }
                 if ($parent_sale_ccd.length > 0) { $parent_regi_form.find('input[name="sale_ccd"][value="' + row.wSaleCcd + '"]').prop('checked', true).iCheck('update'); }
-                if ($parent_ori_sale_ccd.length > 0) { $parent_ori_sale_ccd.val(row.wSaleCcd); }
+                if ($parent_selected_sale_ccd_name.length > 0) { $parent_selected_sale_ccd_name.html(row.wSaleCcdName); }
 
                 $("#pop_modal").modal('toggle');
             });

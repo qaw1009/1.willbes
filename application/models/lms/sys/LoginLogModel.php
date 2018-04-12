@@ -18,9 +18,9 @@ class LoginLogModel extends WB_Model
      */
     public function listTopLoginLog($arr_condition = [], $limit = null)
     {
-        $colum = 'LogIdx, wAdminId, LoginDatm, LoginIp, IsLogin, LoginLogCcd';
+        $column = 'LogIdx, wAdminId, LoginDatm, LoginIp, IsLogin, LoginLogCcd';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, 0, ['LogIdx' => 'desc']);
+        return $this->_conn->getListResult($this->_table, $column, $arr_condition, $limit, 0, ['LogIdx' => 'desc']);
     }
 
     /**
@@ -35,10 +35,10 @@ class LoginLogModel extends WB_Model
     public function listLoginLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '
+            $column = '
                 L.LogIdx, L.wAdminId, L.LoginIp, L.LoginDatm, L.LoginLogCcd
                     , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wIsUse
                     , R.RoleName           
@@ -63,7 +63,7 @@ class LoginLogModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

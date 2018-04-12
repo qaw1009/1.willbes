@@ -21,10 +21,10 @@ class SampleModel extends WB_Model
      */
     public function listSample($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = ($is_count === true) ? $is_count :  'idx, name, title, regi_date';
+        $column = ($is_count === true) ? $is_count :  'idx, name, title, regi_date';
 
-        //return $this->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+        //return $this->getListResult($this->_table, $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table, $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -66,24 +66,24 @@ class SampleModel extends WB_Model
      */
     public function listSampleByMakeQuery($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = ($is_count === true) ? $is_count :  'idx, name, title, regi_date';
+        $column = ($is_count === true) ? $is_count :  'idx, name, title, regi_date';
 
-        $query = $this->_conn->makeQuery($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+        $query = $this->_conn->makeQuery($this->_table, $column, $arr_condition, $limit, $offset, $order_by);
 
-        return ($colum === true) ? $query->count_all_results() : $query->get()->result_array();
+        return ($column === true) ? $query->count_all_results() : $query->get()->result_array();
     }
 
     /**
      * 샘플 데이터 조회 by idx
      * @param $idx
-     * @param string $colum
+     * @param string $column
      * @return array
      */
-    public function findSampleByIdx($idx, $colum = '')
+    public function findSampleByIdx($idx, $column = '')
     {
-        $colum = (empty($colum) === true) ? 'idx, name, title, regi_date' : $colum;
+        $column = (empty($column) === true) ? 'idx, name, title, regi_date' : $column;
 
-        return $this->_conn->getFindResult($this->_table, $colum, [
+        return $this->_conn->getFindResult($this->_table, $column, [
             'EQ' => ['idx' => $idx]
         ]);
     }

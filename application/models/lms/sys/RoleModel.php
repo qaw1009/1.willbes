@@ -20,11 +20,11 @@ class RoleModel extends WB_Model
      */
     public function listRole($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.RegAdminIdx) as RegAdminName';
+        $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.RegAdminIdx) as RegAdminName';
         $arr_condition['EQ']['R.IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table . ' as R', $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table . ' as R', $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -49,11 +49,11 @@ class RoleModel extends WB_Model
      */
     public function findRoleForModify($role_idx)
     {
-        $colum = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx, R.UpdDatm, R.UpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(R.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = R.UpdAdminIdx)) as UpdAdminName';
+        $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx, R.UpdDatm, R.UpdAdminIdx';
+        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.RegAdminIdx) as RegAdminName';
+        $column .= ' , if(R.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = R.UpdAdminIdx)) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as R', $colum, [
+        return $this->_conn->getFindResult($this->_table . ' as R', $column, [
             'EQ' => ['R.RoleIdx' => $role_idx]
         ]);
     }
@@ -143,7 +143,7 @@ class RoleModel extends WB_Model
     public function listRoleMenu($role_idx = 0)
     {
         $role_idx = (is_null($role_idx) === true) ? 0 : $role_idx;
-        $colum = 'M.*, ifnull(RBM.MenuIdx, 0) as RBMenuIdx, ifnull(RMM.MenuIdx, 0) as RMMenuIdx, ifnull(RSM.MenuIdx, 0) as RSMenuIdx';
+        $column = 'M.*, ifnull(RBM.MenuIdx, 0) as RBMenuIdx, ifnull(RMM.MenuIdx, 0) as RMMenuIdx, ifnull(RSM.MenuIdx, 0) as RSMenuIdx';
         $from = '
             from (
                 select BMenuIdx, BMenuName, BParentMenuIdx, BOrderNum, MMenuIdx, MMenuName, MParentMenuIdx, MOrderNum, SMenuIdx, SMenuName, SParentMenuIdx, SOrderNum
@@ -172,7 +172,7 @@ class RoleModel extends WB_Model
         $order_by = ' order by BOrderNum asc, MOrderNum asc, SOrderNum asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $order_by, [$role_idx, $role_idx, $role_idx]);
+        $query = $this->_conn->query('select ' . $column . $from . $order_by, [$role_idx, $role_idx, $role_idx]);
 
         return $query->result_array();
     }

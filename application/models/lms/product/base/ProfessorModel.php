@@ -43,10 +43,10 @@ class ProfessorModel extends WB_Model
     public function listProfessor($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '
+            $column = '
                 U.*, C.CateName, PS.SubjectName
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
@@ -93,7 +93,7 @@ class ProfessorModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -105,7 +105,7 @@ class ProfessorModel extends WB_Model
      */
     public function listProfessorSubjectMapping($prof_idx)
     {
-        $colum = '
+        $column = '
             PSC.CateCode, PSC.SubjectIdx
                 , C.CateName, PS.SubjectName
                 , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
@@ -124,7 +124,7 @@ class ProfessorModel extends WB_Model
         $order_by_offset_limit = ' order by PSC.PcIdx asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit, [$prof_idx])->result_array();
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$prof_idx])->result_array();
 
         $results = [];
         foreach ($query as $row) {
@@ -192,7 +192,7 @@ class ProfessorModel extends WB_Model
     public function listProfessorCalcRate($prof_idx)
     {
         $results = [];
-        $colum = '
+        $column = '
             PCR.ProfCalcIdx, PCR.LearnPatternCcd, left(PCR.ApplyStartDatm, 10) as ApplyStartDate, left(PCR.ApplyEndDatm, 10) as ApplyEndDate
                 , PCR.CalcRate, PCR.ContribRate, PCR.CalcMemo
                 , json_value(C.CcdEtc, "$.type") as OnOffType            
@@ -200,7 +200,7 @@ class ProfessorModel extends WB_Model
         
         $list = $this->_conn->getJoinListResult($this->_table['professor_calculate_rate'] . ' as PCR', 'inner', $this->_table['code'] . ' as C'
             , 'PCR.LearnPatternCcd = C.Ccd'
-            , $colum, ['EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['LearnPattern'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']]
+            , $column, ['EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['LearnPattern'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']]
             , null, null, ['PCR.ProfCalcIdx', 'asc']
         );
 
@@ -236,15 +236,15 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수 정보 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findProfessor($colum = '*', $arr_condition = [])
+    public function findProfessor($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table['professor'], $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['professor'], $column, $arr_condition);
     }
     
     /**
@@ -254,7 +254,7 @@ class ProfessorModel extends WB_Model
      */
     public function findProfessorForModify($prof_idx)
     {
-        $colum = '
+        $column = '
             P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfCurriculum, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
@@ -265,7 +265,7 @@ class ProfessorModel extends WB_Model
         ';
 
         return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx'
-            , $colum, ['EQ' => ['P.ProfIdx' => $prof_idx, 'P.IsStatus' => 'Y', 'WP.wIsStatus' => 'Y']]);
+            , $column, ['EQ' => ['P.ProfIdx' => $prof_idx, 'P.IsStatus' => 'Y', 'WP.wIsStatus' => 'Y']]);
     }
 
     /**

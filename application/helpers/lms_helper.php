@@ -85,7 +85,7 @@ if (!function_exists('html_site_tabs')) {
         $site_code = $_CI->input->get('site_code');
 
         $tab_attr = $tab_active = '';
-        $tab_base_txt = count($tab_data) > 0 ? ' <span class="red">(##tab_data##)</span>' : '';
+        $tab_base_txt = count($tab_data) > 0 ? ' <span class="red">({{tab_data}})</span>' : '';
         $tab_base_url = '#none';
 
         // 운영자 권한이 있는 사이트 코드 목록
@@ -105,7 +105,7 @@ if (!function_exists('html_site_tabs')) {
         // 전체 탭 추가
         if ($is_all_tab === true) {
             empty($site_code) === true && $tab_active = 'active';
-            $tab_txt = str_replace('##tab_data##', element('all', $tab_data, 0), $tab_base_txt);
+            $tab_txt = str_replace('{{tab_data}}', element('all', $tab_data, 0), $tab_base_txt);
             $return_html .= '<li role="presentation" class="' . $tab_active . '"><a href="' . $tab_base_url . '" ' . $tab_attr . ' data-site-code=""><strong>전체</strong>' . $tab_txt . '</a></li>' . PHP_EOL;
         }
 
@@ -113,7 +113,7 @@ if (!function_exists('html_site_tabs')) {
         foreach ($site_codes as $key => $val) {
             $tab_active = ($key == $site_code) ? 'active' : '';
             $tab_url = ($tab_type == 'tab') ? $tab_base_url : $tab_base_url . $key;
-            $tab_txt = str_replace('##tab_data##', element($key, $tab_data, 0), $tab_base_txt);
+            $tab_txt = str_replace('{{tab_data}}', element($key, $tab_data, 0), $tab_base_txt);
             $return_html .= '<li role="presentation" class="' . $tab_active . '"><a href="' . $tab_url . '" ' . $tab_attr . ' data-site-code="' . $key . '"><strong>' . $val . '</strong>' . $tab_txt . '</a></li>' . PHP_EOL;
         }
 

@@ -138,4 +138,14 @@
   <term name="[률]" physicalName="Rate"/>
   <term name="기여" description="Contribute" physicalName="Contrib"/>
   <term name="재고" physicalName="Stock"/>
+  <term name="과정" physicalName="Course"/>
+  <term name="과목" physicalName="Subject"/>
+  <term name="할인" description="Discount" physicalName="Dc"/>
+  <term name="노출" physicalName="Disp"/>
+  <term name="쿠폰" physicalName="Coupon"/>
+  <term name="신규" physicalName="New"/>
+  <term name="[량]" description="Amount" physicalName="Amt"/>
+  <term name="적립" physicalName="Saving"/>
+  <term name="년도" physicalName="Year"/>
+  <term name="대비" physicalName="Prepare"/>
 </tm:TermDictionary>

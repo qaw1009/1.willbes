@@ -22,7 +22,7 @@ class LmsAuthService extends AdminAuthService
      */
     public function getAuthMenu($role_idx)
     {
-        $colum = '
+        $column = '
             M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.UrlType, M.UrlTarget, M.IconClassName
                 , (case M.MenuDepth
                     when 1 then (G.OrderNum * 10000) + 0
@@ -52,7 +52,7 @@ class LmsAuthService extends AdminAuthService
         $order_by_offset_limit = ' order by TreeNum asc';
 
         // 쿼리 실행
-        $query = $this->_db->query('select ' . $colum . $from . $where . $order_by_offset_limit, [$role_idx]);
+        $query = $this->_db->query('select ' . $column . $from . $where . $order_by_offset_limit, [$role_idx]);
 
         return $query->result_array();
     }
@@ -94,7 +94,7 @@ class LmsAuthService extends AdminAuthService
         $results = [];
 
         // 권한유형 조회
-        $colum = 'R.RoleIdx, R.RoleName';
+        $column = 'R.RoleIdx, R.RoleName';
         $from = '
             from lms_sys_admin_role as R inner join lms_sys_admin_r_admin_role as AR
     	            on R.RoleIdx = AR.RoleIdx  
@@ -104,7 +104,7 @@ class LmsAuthService extends AdminAuthService
         $where = ' where AR.wAdminIdx = ? and R.IsUse = "Y" and R.IsStatus = "Y" and AR.IsStatus = "Y" and A.wIsUse = "Y" and A.wIsStatus = "Y"';
 
         // 쿼리 실행
-        $query = $this->_db->query('select ' . $colum . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
+        $query = $this->_db->query('select ' . $column . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
         $results['Role'] = $query->row_array();
 
         // 사이트, 캠퍼스 권한 조회
@@ -122,7 +122,7 @@ class LmsAuthService extends AdminAuthService
         $results = [];
         $admin_idx = $this->_CI->session->userdata('admin_idx');
 
-        $colum = 'S.SiteCode, S.SiteName, ifnull(GROUP_CONCAT(distinct ASC2.CampusCcd, "::", C.CcdName order by ASC2.CampusCcd asc separator ","), "") as CampusCcds';
+        $column = 'S.SiteCode, S.SiteName, ifnull(GROUP_CONCAT(distinct ASC2.CampusCcd, "::", C.CcdName order by ASC2.CampusCcd asc separator ","), "") as CampusCcds';
         $from = '
             from lms_site as S
                 inner join lms_sys_admin_r_site_campus as ASC1
@@ -138,7 +138,7 @@ class LmsAuthService extends AdminAuthService
         $order_by = ' group by S.SiteCode order by S.SiteCode';
 
         // 쿼리 실행
-        $query = $this->_db->query('select ' . $colum . $from . $where . $order_by, ['605', $admin_idx, $admin_idx]);
+        $query = $this->_db->query('select ' . $column . $from . $where . $order_by, ['605', $admin_idx, $admin_idx]);
         $list = $query->result_array();
 
         foreach ($list as $idx => $row) {

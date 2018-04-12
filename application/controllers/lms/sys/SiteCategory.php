@@ -123,7 +123,7 @@ class SiteCategory
             return;
         }
 
-        $result = $this->_CI->categoryModel->modifyCategoryReorder(json_decode($this->_CI->_reqP('params'), true));
+        $result = $this->_CI->categoryModel->modifyCategoriesReorder(json_decode($this->_CI->_reqP('params'), true));
 
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }

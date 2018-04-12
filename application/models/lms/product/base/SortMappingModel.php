@@ -25,7 +25,7 @@ class SortMappingModel extends WB_Model
      */
     public function listAllSortMapping($arr_condition = [])
     {
-        $colum = 'U.*, A.wAdminName as LastRegAdminName
+        $column = 'U.*, A.wAdminName as LastRegAdminName
             , (select count(*) from ' . $this->_table['subject_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode) as CateSubjectCnt
             , (select count(*) from ' . $this->_table['subject_r_category_r_code'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode) as ComplexSubjectCnt
         ';
@@ -62,7 +62,7 @@ class SortMappingModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['SiteCode' => 'asc', 'BOrderNum' => 'asc', 'MOrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
@@ -88,7 +88,7 @@ class SortMappingModel extends WB_Model
             $_binds = [$child_ccd, $site_code, $cate_code];
         }
 
-        $colum = 'PS.SubjectIdx, PS.SubjectName, ifnull(PSC.SubjectIdx, "") as RSubjectIdx';
+        $column = 'PS.SubjectIdx, PS.SubjectName, ifnull(PSC.SubjectIdx, "") as RSubjectIdx';
         $from = '
             from ' . $this->_table['site'] . ' as S
                 inner join ' . $this->_table['category'] . ' as C
@@ -106,7 +106,7 @@ class SortMappingModel extends WB_Model
         $order_by = ' order by PS.SubjectIdx asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by, $_binds);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, $_binds);
 
         return $query->result_array();
     }
@@ -120,7 +120,7 @@ class SortMappingModel extends WB_Model
      */
     public function listChildSubjectMapping($site_code, $cate_code, $group_child_ccd)
     {
-        $colum = 'PSC.ChildCcd, max(CC.CcdName) as ChildName, GROUP_CONCAT(PS.SubjectName order by PS.SubjectIdx asc separator ", ") as SubjectNames';
+        $column = 'PSC.ChildCcd, max(CC.CcdName) as ChildName, GROUP_CONCAT(PS.SubjectName order by PS.SubjectIdx asc separator ", ") as SubjectNames';
         $from = '
             from ' . $this->_table['site'] . ' as S
                 inner join ' . $this->_table['category'] . ' as C
@@ -143,7 +143,7 @@ class SortMappingModel extends WB_Model
         $order_by = ' order by PSC.ChildCcd asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $group_by . $order_by, [$site_code, $cate_code, $group_child_ccd]);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by, [$site_code, $cate_code, $group_child_ccd]);
 
         return $query->result_array();
     }

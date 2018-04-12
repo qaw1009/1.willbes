@@ -17,10 +17,10 @@ class AdminSettingsModel extends WB_Model
      */
     public function listSettings($arr_condition = [])
     {
-        $colum = 'wSettingType, wSettingValue';
+        $column = 'wSettingType, wSettingValue';
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, null, null, ['wSettingIdx' => 'asc']);
+        return $this->_conn->getListResult($this->_table, $column, $arr_condition, null, null, ['wSettingIdx' => 'asc']);
     }
 
     /**

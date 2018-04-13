@@ -28,7 +28,7 @@ class RoleModel extends WB_Model
     public function listRole($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $column = 'R.wRoleIdx, R.wRoleName, R.wIsUse, R.wRegDatm, R.wRegAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.wRegAdminIdx) as wRegAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
         $arr_condition['EQ']['R.wIsStatus'] = 'Y';
 
         return $this->_conn->getListResult($this->_table['admin_role'] . ' as R', $column, $arr_condition, $limit, $offset, $order_by);
@@ -57,8 +57,8 @@ class RoleModel extends WB_Model
     public function findRoleForModify($role_idx)
     {
         $column = 'R.wRoleIdx, R.wRoleName, R.wIsUse, R.wRegDatm, R.wRegAdminIdx, R.wUpdDatm, R.wUpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(R.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(R.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['admin_role'] . ' as R', $column, [
             'EQ' => ['R.wRoleIdx' => $role_idx]
@@ -162,7 +162,7 @@ class RoleModel extends WB_Model
             from ' . $this->_table['cp'] . ' as C 
                 left join ' . $this->_table['admin_role_r_cp'] . ' as RC
                     on C.wCpIdx = RC.wCpIdx and RC.wIsStatus = "Y" and RC.wRoleIdx = ?	
-            where C.wIsStatus = "Y" and C.wIsUse = "Y"       
+            where C.wIsUse = "Y" and C.wIsStatus = "Y"       
         ';
         $order_by_offset_limit = ' order by C.wCpIdx asc';
 
@@ -248,10 +248,10 @@ class RoleModel extends WB_Model
                         , greatest(BM.wMenuDepth, ifnull(MM.wMenuDepth, 0), ifnull(SM.wMenuDepth, 0)) as wLastMenuDepth		
                     from ' . $this->_table['menu'] . ' as BM
                         left join ' . $this->_table['menu'] . ' as MM
-                            on MM.wGroupMenuIdx = BM.wMenuIdx and MM.wMenuDepth = 2 and MM.wIsStatus = "Y" and MM.wIsUse = "Y"
+                            on MM.wGroupMenuIdx = BM.wMenuIdx and MM.wMenuDepth = 2 and MM.wIsUse = "Y" and MM.wIsStatus = "Y"
                         left join ' . $this->_table['menu'] . ' as SM
-                            on SM.wParentMenuIdx = MM.wMenuIdx and SM.wMenuDepth = 3 and SM.wIsStatus = "Y" and SM.wIsUse = "Y"
-                    where BM.wMenuDepth = 1 and BM.wIsStatus = "Y" and BM.wIsUse = "Y"
+                            on SM.wParentMenuIdx = MM.wMenuIdx and SM.wMenuDepth = 3 and SM.wIsUse = "Y" and SM.wIsStatus = "Y"
+                    where BM.wMenuDepth = 1 and BM.wIsUse = "Y" and BM.wIsStatus = "Y"
                 ) as I
             ) as M 
                 left join ' . $this->_table['admin_role_r_menu'] . ' as RBM

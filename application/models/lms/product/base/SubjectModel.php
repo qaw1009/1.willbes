@@ -25,9 +25,9 @@ class SubjectModel extends WB_Model
     public function listSubject($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $column = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, S.SiteName';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
-        $arr_condition['EQ']['PS.IsStatus'] = 'Y';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
+        $arr_condition['EQ']['PS.IsStatus'] = 'Y';
         $arr_condition['IN']['PS.SiteCode'] = get_auth_site_codes();
 
         return $this->_conn->getJoinListResult($this->_table['subject'] . ' as PS', 'inner', $this->_table['site'] . ' as S', 'PS.SiteCode = S.SiteCode'
@@ -64,8 +64,8 @@ class SubjectModel extends WB_Model
     public function findSubjectForModify($subject_idx)
     {
         $column = 'PS.SubjectIdx, PS.SiteCode, PS.SubjectName, PS.OrderNum, PS.Keyword, PS.IsUse, PS.RegDatm, PS.RegAdminIdx, PS.UpdDatm, PS.UpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx) as RegAdminName';
-        $column .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.UpdAdminIdx)) as UpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= ' , if(PS.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = PS.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['subject'] . ' as PS', $column, [
             'EQ' => ['PS.SubjectIdx' => $subject_idx]

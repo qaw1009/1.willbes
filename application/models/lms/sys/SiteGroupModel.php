@@ -23,7 +23,7 @@ class SiteGroupModel extends WB_Model
     public function listSiteGroup($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $column = 'S.SiteGroupCode, S.SiteGroupName, S.SiteGroupDesc, S.IsUse, S.RegDatm, S.RegAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
 
         return $this->_conn->getListResult($this->_table['site_group'] . ' as S', $column, $arr_condition, $limit, $offset, $order_by);
@@ -65,8 +65,8 @@ class SiteGroupModel extends WB_Model
     public function findSiteGroupForModify($site_group_code)
     {
         $column = 'S.SiteGroupCode, S.SiteGroupName, S.SiteGroupDesc, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
-        $column .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['site_group'] . ' as S', $column, [
             'EQ' => ['S.SiteGroupCode' => $site_group_code]

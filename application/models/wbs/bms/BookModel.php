@@ -60,7 +60,7 @@ class BookModel extends WB_Model
                         from ' . $this->_table['author'] . ' as A 
                             inner join ' . $this->_table['book_r_author'] . ' as BA
                                 on A.wAuthorIdx = BA.wAuthorIdx
-                        where A.wIsUse = "Y" and A.wIsStatus = "Y"
+                        where A.wIsStatus = "Y"
                             and BA.wIsStatus = "Y" and BA.wBookIdx = B.wBookIdx
                         group by BA.wBookIdx
                     ) as wAuthorNames           
@@ -69,7 +69,7 @@ class BookModel extends WB_Model
         $from = '
             from ' . $this->_table['book'] . ' as B 
                 left join ' . $this->_table['publisher'] . ' as P
-                    on B.wPublIdx = P.wPublIdx and P.wIsUse = "Y" and P.wIsStatus = "Y"
+                    on B.wPublIdx = P.wPublIdx and P.wIsStatus = "Y"
                 left join ' . $this->_table['admin'] . ' as A 
                     on B.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where B.wIsStatus = "Y" 
@@ -97,9 +97,9 @@ class BookModel extends WB_Model
             from ' . $this->_table['author'] . ' as A 
                 left join ' . $this->_table['book_r_author'] . ' as BA
                     on A.wAuthorIdx = BA.wAuthorIdx and BA.wIsStatus = "Y" and BA.wBookIdx = ?	
-            where A.wIsStatus = "Y" and A.wIsUse = "Y"
+            where A.wIsUse = "Y" and A.wIsStatus = "Y"
         ';
-        $order_by_offset_limit = ' order by A.wAuthorName asc';
+        $order_by_offset_limit = ' order by A.wAuthorName asc, BA.wBaIdx asc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit, [$book_idx]);
@@ -129,8 +129,8 @@ class BookModel extends WB_Model
     {
         $column = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword';
         $column .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['book'] . ' as B', $column, [
             'EQ' => ['B.wBookIdx' => $book_idx, 'B.wIsStatus' => 'Y']
@@ -164,6 +164,7 @@ class BookModel extends WB_Model
                 'wBookDesc' => element('book_desc', $input),
                 'wAuthorDesc' => element('author_desc', $input),
                 'wTableDesc' => element('table_desc', $input),
+                'wIsUse' => element('is_use', $input),
                 'wRegAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
@@ -255,6 +256,7 @@ class BookModel extends WB_Model
                 'wBookDesc' => element('book_desc', $input),
                 'wAuthorDesc' => element('author_desc', $input),
                 'wTableDesc' => element('table_desc', $input),
+                'wIsUse' => element('is_use', $input),
                 'wUpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 

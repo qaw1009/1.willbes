@@ -80,9 +80,9 @@ class ProfessorModel extends WB_Model
                         and S.IsStatus = "Y"
                 ) I 
             ) U left join ' . $this->_table['category'] . ' as C
-                    on U.SiteCode = C.SiteCode and U.CateCode = C.CateCode and C.IsUse = "Y" and C.IsStatus = "Y"
+                    on U.SiteCode = C.SiteCode and U.CateCode = C.CateCode and C.IsStatus = "Y"
                 left join ' . $this->_table['subject'] . ' as PS
-                    on U.SiteCode = PS.SiteCode and U.SubjectIdx = PS.SubjectIdx and PS.IsUse = "Y" and PS.IsStatus = "Y"			
+                    on U.SiteCode = PS.SiteCode and U.SubjectIdx = PS.SubjectIdx and PS.IsStatus = "Y"			
         ';
 
         // 사이트 권한 추가
@@ -114,11 +114,11 @@ class ProfessorModel extends WB_Model
                 inner join ' . $this->_table['category'] . ' as C
                     on PSC.CateCode = C.CateCode
                 left join ' . $this->_table['category'] . ' as PC
-                    on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
+                    on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
                 inner join ' . $this->_table['subject'] . ' as PS
                     on PSC.SubjectIdx = PS.SubjectIdx        
         ';
-        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsStatus = "Y" and PS.IsStatus = "Y"';
+        $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y" and PS.IsUse = "Y" and PS.IsStatus = "Y"';
         $order_by_offset_limit = ' order by PSC.PcIdx asc';
 
         // 쿼리 실행
@@ -258,8 +258,8 @@ class ProfessorModel extends WB_Model
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
                 , WP.wProfName, WP.wProfId, WP.wProfProfile, WP.wBookContent, WP.wIsUse 
-                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.RegAdminIdx) as RegAdminName
-                , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx)) as UpdAdminName        
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.RegAdminIdx and wIsStatus = "Y") as RegAdminName
+                , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName        
         ';
 
         return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx'

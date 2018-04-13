@@ -102,7 +102,7 @@ class SortMappingModel extends WB_Model
         $where = '
             where S.SiteCode = ? and S.IsStatus = "Y"
                 and C.CateCode = ? and C.IsStatus = "Y"
-                and PS.IsStatus = "Y"            
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"            
         ';
         $order_by = ' order by PS.SubjectIdx asc';
 

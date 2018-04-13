@@ -61,8 +61,9 @@ class MenuModel extends WB_Model
                             on SM.wParentMenuIdx = MM.wMenuIdx and SM.wMenuDepth = 3 and SM.wIsStatus = "Y"
                     where BM.wMenuDepth = 1 and BM.wIsStatus = "Y"
                 ) as I
-            ) as U inner join ' . $this->_table['admin'] . ' as A
-                on U.wLastRegAdminIdx = A.wAdminIdx 
+            ) as U 
+                left join ' . $this->_table['admin'] . ' as A
+                    on U.wLastRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y" 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -122,8 +123,8 @@ class MenuModel extends WB_Model
     public function findMenuForModify($menu_idx)
     {
         $column = 'M.wMenuIdx, M.wMenuName, M.wParentMenuIdx, M.wGroupMenuIdx, M.wMenuDepth, M.wMenuUrl, M.wIconClassName, M.wOrderNum, M.wIsUse, M.wRegDatm, M.wUpdDatm';
-        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.wRegAdminIdx) as wRegAdminName';
-        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.wUpdAdminIdx) as wUpdAdminName';
+        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.wUpdAdminIdx and wIsStatus = "Y") as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['menu'] . ' as M', $column, [
             'EQ' => ['M.wMenuIdx' => $menu_idx, 'M.wIsStatus' => 'Y']

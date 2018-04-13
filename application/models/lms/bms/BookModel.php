@@ -97,12 +97,12 @@ class BookModel extends WB_Model
         ';
         $from = '
             from ' . $this->_table['book_r_category'] . ' as BC
-                left join ' . $this->_table['category'] . ' as C
-                    on BC.CateCode = C.CateCode and C.IsStatus = "Y"
+                inner join ' . $this->_table['category'] . ' as C
+                    on BC.CateCode = C.CateCode
                 left join ' . $this->_table['category'] . ' as PC
-                    on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
+                    on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
         ';
-        $where = ' where BC.BookIdx = ? and BC.IsStatus = "Y"';
+        $where = ' where BC.BookIdx = ? and BC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y"';
         $order_by_offset_limit = ' order by BC.BcIdx asc';
 
         // 쿼리 실행
@@ -157,8 +157,8 @@ class BookModel extends WB_Model
                 , B.IsPointSaving, B.PointSavingAmt, B.PointSavingType, B.IsCoupon, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx, B.UpdDatm, B.UpdAdminIdx
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
                 , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wOrgPrice, VWB.wStockCnt, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc  
-                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.RegAdminIdx) as RegAdminName
-                , if(B.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.UpdAdminIdx)) as UpdAdminName        
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.RegAdminIdx and wIsStatus = "Y") as RegAdminName
+                , if(B.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName        
         ';
 
         return $this->_conn->getJoinFindResult($this->_table['book'] . ' as B', 'inner', $this->_table['vw_bms_book'] . ' as VWB'

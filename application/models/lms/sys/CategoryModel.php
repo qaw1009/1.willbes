@@ -58,10 +58,11 @@ class CategoryModel extends WB_Model
                             on S.SiteCode = BC.SiteCode
                         left join ' . $this->_table['category'] . ' as MC
                             on MC.GroupCateCode = BC.CateCode and MC.CateDepth = 2 and MC.IsStatus = "Y"
-                    where BC.CateDepth = 1 and BC.IsStatus = "Y"
+                    where S.IsStatus = "Y" and BC.CateDepth = 1 and BC.IsStatus = "Y"
                 ) as I
-            ) as U inner join ' . $this->_table['admin'] . ' as A
-                on U.LastRegAdminIdx = A.wAdminIdx 
+            ) as U 
+                left join ' . $this->_table['admin'] . ' as A
+                    on U.LastRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y" 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -179,8 +180,8 @@ class CategoryModel extends WB_Model
     public function findCategoryForModify($cate_code)
     {
         $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsUse, C.RegDatm, C.UpdDatm';
-        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx) as RegAdminName';
-        $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx)) as UpdAdminName';
+        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['category'] . ' as C', $column, [
             'EQ' => ['C.CateCode' => $cate_code, 'C.IsStatus' => 'Y']

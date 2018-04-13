@@ -58,11 +58,10 @@ class LoginLogModel extends WB_Model
                     on L.wAdminId = A.wAdminId and A.wIsStatus = "Y"
                 left join ' . $this->_table['admin_role'] . ' as R
                     on A.wRoleIdx = R.wRoleIdx and R.wIsStatus = "Y"
-            where 1=1
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

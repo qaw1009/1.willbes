@@ -46,10 +46,12 @@ class SiteModel extends WB_Model
     public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['S.IsStatus'] = 'Y';
+        $arr_condition['EQ']['G.IsStatus'] = 'Y';
 
-        return $this->_conn->getJoinListResult($this->_table['site'] . ' as S', 'inner', $this->_table['site_group'] . ' as G', 'S.SiteGroupCode = G.SiteGroupCode', $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getJoinListResult($this->_table['site'] . ' as S', 'inner', $this->_table['site_group'] . ' as G',
+            'S.SiteGroupCode = G.SiteGroupCode', $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -121,8 +123,8 @@ class SiteModel extends WB_Model
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
                   ), "") as CampusCcds
-                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx) as RegAdminName
-                , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName
+                , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName
         ';
 
         return $this->_conn->getFindResult($this->_table['site'] . ' as S', $column, [

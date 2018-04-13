@@ -88,8 +88,8 @@ class PublisherModel extends WB_Model
     {
         $column = 'P.wPublIdx, P.wPublName, P.wPublManager, P.wPublTel1, P.wPublTel2, P.wPublTel3, P.wPublPhone1, P.wPublPhone2, P.wPublPhone3';
         $column .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['publisher'] . ' as P', $column, [
             'EQ' => ['P.wPublIdx' => $publ_idx, 'P.wIsStatus' => 'Y']

@@ -3,7 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginLogModel extends WB_Model
 {
-    private $_table = 'lms_sys_admin_login_log';
+    private $_table = [
+        'admin_login_log' => 'lms_sys_admin_login_log',
+        'admin_r_admin_role' => 'lms_sys_admin_r_admin_role',
+        'admin_role' => 'lms_sys_admin_role',
+        'admin' => 'wbs_sys_admin',
+    ];    
 
     public function __construct()
     {
@@ -20,7 +25,7 @@ class LoginLogModel extends WB_Model
     {
         $column = 'LogIdx, wAdminId, LoginDatm, LoginIp, IsLogin, LoginLogCcd';
 
-        return $this->_conn->getListResult($this->_table, $column, $arr_condition, $limit, 0, ['LogIdx' => 'desc']);
+        return $this->_conn->getListResult($this->_table['admin_login_log'], $column, $arr_condition, $limit, 0, ['LogIdx' => 'desc']);
     }
 
     /**
@@ -49,18 +54,17 @@ class LoginLogModel extends WB_Model
         }
 
         $from = '
-            from ' . $this->_table . ' as L 
-                left join wbs_sys_admin as A
+            from ' . $this->_table['admin_login_log'] . ' as L 
+                left join ' . $this->_table['admin'] . ' as A
                     on L.wAdminId = A.wAdminId and A.wIsStatus = "Y"
-                left join lms_sys_admin_r_admin_role as AR
+                left join ' . $this->_table['admin_r_admin_role'] . ' as AR
                     on A.wAdminIdx = AR.wAdminIdx and AR.IsStatus = "Y"                   
-                left join lms_sys_admin_role as R
+                left join ' . $this->_table['admin_role'] . ' as R
                     on AR.RoleIdx = R.RoleIdx and R.IsStatus = "Y"
-            where 1=1
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

@@ -86,8 +86,8 @@ class AuthorModel extends WB_Model
     public function findAuthorForModify($author_idx)
     {
         $column = 'AU.wAuthorIdx, AU.wAuthorName, AU.wAuthorDesc, AU.wIsUse, AU.wRegDatm, AU.wRegAdminIdx, AU.wUpdDatm, AU.wUpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = AU.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(AU.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = AU.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = AU.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(AU.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = AU.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['author'] . ' as AU', $column, [
             'EQ' => ['AU.wAuthorIdx' => $author_idx, 'AU.wIsStatus' => 'Y']

@@ -47,7 +47,7 @@ class AdminModel extends WB_Model
                     , if((select count(*) from ' . $this->_table['admin_r_site_campus'] . ' where wAdminIdx = A.wAdminIdx and IsStatus = "Y") > 0, "Y", "N") as IsSiteCampus
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
                             then A.wAdminName
-                            else (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx)
+                            else (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y")
                       end) as wRegAdminName       
             ';
 
@@ -77,8 +77,8 @@ class AdminModel extends WB_Model
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail';
         $column .= ' , A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
         $column .= ' , ifnull(AR.RoleIdx, "") as RoleIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getJoinFindResult($this->_table['admin'] . ' as A', 'left', $this->_table['admin_r_admin_role'] . ' as AR', 'A.wAdminIdx = AR.wAdminIdx and AR.IsStatus = "Y"',
             $column, ['EQ' => ['A.wAdminIdx' => $admin_idx]]);

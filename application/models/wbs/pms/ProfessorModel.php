@@ -67,7 +67,7 @@ class ProfessorModel extends WB_Model
             from ' . $this->_table['cp'] . ' as C 
                 left join ' . $this->_table['professor_r_cp'] . ' as PC
                     on C.wCpIdx = PC.wCpIdx and PC.wIsStatus = "Y" and PC.wProfIdx = ?	
-            where C.wIsStatus = "Y" and C.wIsUse = "Y"       
+            where C.wIsUse = "Y" and C.wIsStatus = "Y"        
         ';
         $order_by_offset_limit = ' order by C.wCpIdx asc';
 
@@ -112,8 +112,8 @@ class ProfessorModel extends WB_Model
     {
         $column = 'P.wProfIdx, P.wProfId, P.wProfName, P.wProfNickName, P.wContentCcd, P.wSampleUrl, P.wProfProfile, P.wBookContent';
         $column .= ' , P.wAttachImgPath, P.wAttachImgName1, P.wAttachImgName2, P.wAttachImgName3, P.wAttachImgName4, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['professor'] . ' as P', $column, [
             'EQ' => ['P.wProfIdx' => $prof_idx, 'P.wIsStatus' => 'Y']

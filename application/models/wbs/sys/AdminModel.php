@@ -35,7 +35,7 @@ class AdminModel extends WB_Model
                     , ifnull(R.wRoleName, "-") as wRoleName
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
                             then A.wAdminName
-                            else (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx)
+                            else (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y")
                       end) as wRegAdminName
                     , (case when A.wRoleIdx > 0
                             then (
@@ -43,7 +43,7 @@ class AdminModel extends WB_Model
                                 from ' . $this->_table['cp'] . ' as C 
                                     inner join ' . $this->_table['admin_role_r_cp'] . ' as RC
                                         on C.wCpIdx = RC.wCpIdx
-                                where C.wIsUse = "Y" and C.wIsStatus = "Y" 
+                                where C.wIsStatus = "Y" 
                                     and RC.wIsStatus = "Y" and RC.wRoleIdx = A.wRoleIdx
                                 group by RC.wRoleIdx
                             )
@@ -94,10 +94,10 @@ class AdminModel extends WB_Model
         $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
         $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
         $column .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
-        $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from ' . $this->_table['admin_role'] . ' where wRoleIdx = A.wRoleIdx)) as wRoleName';
-        $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wApprovalAdminIdx)) as wApprovalAdminName';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
-        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
+        $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from ' . $this->_table['admin_role'] . ' where wRoleIdx = A.wRoleIdx and wIsStatus = "Y")) as wRoleName';
+        $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wApprovalAdminIdx and wIsStatus = "Y")) as wApprovalAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
         return $this->_conn->getFindResult($this->_table['admin'] . ' as A', $column, [
             'EQ' => ['A.wAdminIdx' => $admin_idx, 'A.wIsStatus' => 'Y']

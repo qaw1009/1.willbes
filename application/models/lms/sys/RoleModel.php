@@ -3,7 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class RoleModel extends WB_Model
 {
-    private $_table = 'lms_sys_admin_role';
+    private $_table = [
+        'admin_role' => 'lms_sys_admin_role',
+        'admin_role_r_menu' => 'lms_sys_admin_role_r_menu',
+        'menu' => 'lms_sys_menu',
+        'admin' => 'wbs_sys_admin'
+    ];    
 
     public function __construct()
     {
@@ -21,10 +26,10 @@ class RoleModel extends WB_Model
     public function listRole($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx';
-        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.RegAdminIdx) as RegAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $arr_condition['EQ']['R.IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table . ' as R', $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['admin_role'] . ' as R', $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -33,7 +38,7 @@ class RoleModel extends WB_Model
      */
     public function getRoleArray()
     {
-        $data = $this->_conn->getListResult($this->_table, 'RoleIdx, RoleName', [
+        $data = $this->_conn->getListResult($this->_table['admin_role'], 'RoleIdx, RoleName', [
             'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
         ], null, null, [
             'RoleIdx' => 'asc'
@@ -50,10 +55,10 @@ class RoleModel extends WB_Model
     public function findRoleForModify($role_idx)
     {
         $column = 'R.RoleIdx, R.RoleName, R.RoleDesc, R.IsUse, R.RegDatm, R.RegAdminIdx, R.UpdDatm, R.UpdAdminIdx';
-        $column .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = R.RegAdminIdx) as RegAdminName';
-        $column .= ' , if(R.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = R.UpdAdminIdx)) as UpdAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= ' , if(R.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = R.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as R', $column, [
+        return $this->_conn->getFindResult($this->_table['admin_role'] . ' as R', $column, [
             'EQ' => ['R.RoleIdx' => $role_idx]
         ]);
     }
@@ -76,7 +81,7 @@ class RoleModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['admin_role']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -117,7 +122,7 @@ class RoleModel extends WB_Model
             ];
             $this->_conn->set($data)->where('RoleIdx', $role_idx);
 
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['admin_role']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
@@ -155,18 +160,18 @@ class RoleModel extends WB_Model
                         , SM.MenuIdx as SMenuIdx, SM.MenuName as SMenuName, SM.ParentMenuIdx as SParentMenuIdx, SM.MenuUrl as SMenuUrl, SM.OrderNum as SOrderNum
                         , BM.GroupMenuIdx
                         , greatest(BM.MenuDepth, ifnull(MM.MenuDepth, 0), ifnull(SM.MenuDepth, 0)) as LastMenuDepth		
-                    from lms_sys_menu as BM
-                        left join lms_sys_menu as MM
-                            on MM.GroupMenuIdx = BM.MenuIdx and MM.MenuDepth = 2 and MM.IsStatus = "Y" and MM.IsUse = "Y"
-                        left join lms_sys_menu as SM
-                            on SM.ParentMenuIdx = MM.MenuIdx and SM.MenuDepth = 3 and SM.IsStatus = "Y" and SM.IsUse = "Y"
-                    where BM.MenuDepth = 1 and BM.IsStatus = "Y" and BM.IsUse = "Y"
+                    from ' . $this->_table['menu'] . ' as BM
+                        left join ' . $this->_table['menu'] . ' as MM
+                            on MM.GroupMenuIdx = BM.MenuIdx and MM.MenuDepth = 2 and MM.IsUse = "Y" and MM.IsStatus = "Y"
+                        left join ' . $this->_table['menu'] . ' as SM
+                            on SM.ParentMenuIdx = MM.MenuIdx and SM.MenuDepth = 3 and SM.IsUse = "Y" and SM.IsStatus = "Y"
+                    where BM.MenuDepth = 1 and BM.IsUse = "Y" and BM.IsStatus = "Y"
                 ) as I
-            ) as M left join lms_sys_admin_role_r_menu as RBM
+            ) as M left join ' . $this->_table['admin_role_r_menu'] . ' as RBM
                     on M.BMenuIdx = RBM.MenuIdx and RBM.IsStatus = "Y" and RBM.RoleIdx = ? 
-                left join lms_sys_admin_role_r_menu as RMM
+                left join ' . $this->_table['admin_role_r_menu'] . ' as RMM
                     on M.MMenuIdx = RMM.MenuIdx and RMM.IsStatus = "Y" and RMM.RoleIdx = ?
-                left join lms_sys_admin_role_r_menu as RSM
+                left join ' . $this->_table['admin_role_r_menu'] . ' as RSM
                     on M.SMenuIdx = RSM.MenuIdx and RSM.IsStatus = "Y" and RSM.RoleIdx = ?            
         ';
         $order_by = ' order by BOrderNum asc, MOrderNum asc, SOrderNum asc';
@@ -186,7 +191,7 @@ class RoleModel extends WB_Model
     public function replaceRoleMenu($arr_menu_idx = [], $role_idx)
     {
         try {
-            $_table = 'lms_sys_admin_role_r_menu';
+            $_table = $this->_table['admin_role_r_menu'];
             $arr_menu_idx = (is_null($arr_menu_idx) === true) ? [] : array_values(array_unique($arr_menu_idx));
             $admin_idx = $this->session->userdata('admin_idx');
             

@@ -4,7 +4,6 @@
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
     {!! csrf_field() !!}
 
     <div class="x_panel">
@@ -121,7 +120,7 @@
                 @if(count($board_next) <= 0)
                     다음글이 없습니다.
                 @else
-                    <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_next->BoardIdx}}'><u>{{$board_next->Title}}</u></a>
+                    <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next->BoardIdx}}'><u>{{$board_next->Title}}</u></a>
                 @endif
             </div>
         </div>

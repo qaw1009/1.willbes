@@ -13,45 +13,38 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">제목</label>
                     <div class="form-control-static col-md-9">
-                        공지제목입니다.
+                        {{$data['Title']}}
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">운영사이트</label>
                     <div class="form-control-static col-md-2">
-                        경찰
+                        {{$data['SiteName']}}
                     </div>
                     <label class="control-label col-md-2" for="">구분</label>
                     <div class="form-control-static col-md-5">
-                        일반경찰 | 해양경찰 | 일반경찰 | 해양경찰
+                        @foreach($data['arr_cate_code'] as $key => $val)
+                            {{$val}} @if ($loop->last === false) | @endif
+                        @endforeach
                     </div>
                 </div>
-
-                @if($campusOnOff == 'on')
-                    <div class="form-group">
-                        <label class="control-label col-md-2" for="">캠퍼스</label>
-                        <div class="form-control-static col-md-5">
-                            노량진
-                        </div>
-                    </div>
-                @endif
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">분류</label>
                     <div class="form-control-static col-md-2">
 
                     </div>
-                    <label class="control-label col-md-2" for="">질문유형</label>
+                    <label class="control-label col-md-2" for="">상담유형</label>
                     <div class="form-control-static col-md-5">
-                        수강
+                        {{$data['TypeCcdName']}}
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">등록자</label>
                     <div class="form-control-static col-md-2">
-                        회원명(아이디)
+                        {{$data['MemName']}}({{$data['MemId']}})
                     </div>
                     <label class="control-label col-md-2" for="">휴대폰 번호</label>
                     <div class="form-control-static col-md-5">
@@ -62,28 +55,32 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">등록일</label>
                     <div class="form-control-static col-md-2">
-                        2018-01-01 00:00:00
+                        {{ $data['RegDatm'] }}
                     </div>
                     <label class="control-label col-md-2" for="">공개</label>
                     <div class="form-control-static col-md-5">
-                        <span class="red">비공개</span>
+                        {!! ($data['IsPublic'] == 'Y') ? '공개' : '<span class="red">비공개</span>'  !!}
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">첨부</label>
                     <div class="form-control-static col-md-2">
-                        첨부파일.jpg
+                        @for($i = 0; $i < $attach_file_cnt; $i++)
+                            @if(empty($data['arr_attach_file_path'][$i]) === false)
+                                <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
+                            @endif
+                        @endfor
                     </div>
-                    <label class="control-label col-md-2" for="">조회수</label>
+                    <label class="control-label col-md-2" for="">조회수(생성)</label>
                     <div class="form-control-static col-md-5">
-                        5
+                        {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">질문</label>
-                    <div class="form-control-static col-md-9"></div>
+                    <div class="form-control-static col-md-9">{!! $data['Content'] !!}</div>
                 </div>
             </div>
         </div>
@@ -92,8 +89,7 @@
     <div class="x_panel">
         <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
-            {!! method_field($method) !!}
-            <input type="hidden" name="board_idx" id="board_idx" value="{{$boardIdx}}"/>
+            <input type="hidden" name="board_idx" id="board_idx" value="{{$board_idx}}"/>
             <div class="row">
                 <label class="col-md-2 mt-15 text-right" for="">답변</label>
                 <div class="form-control-static col-md-1">
@@ -103,12 +99,12 @@
 
                 <div class="form-control-static col-md-5">
                     <div class="form-control-static short-div">
-                        <input type="radio" id="reply_status_ccd_1" name="reply_status_ccd[]" class="flat" value="1" title="처리중(CS)" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="reply_status_ccd_1" class="hover mr-5">처리중(CS)</label>
+                        <input type="radio" id="reply_status_ccd_1" name="reply_status_ccd[]" class="flat" value="1" title="처리중(CS)" @if($data['IsUse']=='Y')checked="checked"@endif/><label for="reply_status_ccd_1" class="hover mr-5">처리중(CS)</label>
                         <input type="radio" id="reply_status_ccd_2" name="reply_status_ccd[]" class="flat" value="2" title="처리중(운영)" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="reply_status_ccd_2" class="hover mr-5">처리중(운영)</label>
                         <input type="radio" id="reply_status_ccd_3" name="reply_status_ccd[]" class="flat" value="3" title="답변완료" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="reply_status_ccd_3" class="hover mr-5">답변완료</label>
                     </div>
                     <div class="form-control-static short-div">
-                        <input type="radio" id="voc_ccd_1" name="voc_ccd[]" class="flat" value="1" title="VOC강도" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="voc_ccd_1" class="hover mr-5">일반</label>
+                        <input type="radio" id="voc_ccd_1" name="voc_ccd[]" class="flat" value="1" title="VOC강도" @if($data['IsUse']=='Y')checked="checked"@endif/><label for="voc_ccd_1" class="hover mr-5">일반</label>
                         <input type="radio" id="voc_ccd_2" name="voc_ccd[]" class="flat" value="2" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="voc_ccd_2" class="hover mr-5">클레임</label>
                         <input type="radio" id="voc_ccd_3" name="voc_ccd[]" class="flat" value="3" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="voc_ccd_3" class="hover mr-5">강성클레임</label>
                     </div>

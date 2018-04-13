@@ -15,6 +15,10 @@ class Notice extends BaseBoard
         'user' => 0,    //유저 등록 정보
         'admin' => 1    //admin 등록 정보
     ];
+    private $_attach_reg_type = [
+        'default' => 0,     //본문글 첨부
+        'reply' => 1        //본문 답변글첨부
+    ];
 
     public function __construct()
     {
@@ -189,7 +193,18 @@ class Notice extends BaseBoard
             ';
             $method = 'PUT';
             $board_idx = $params[0];
-            $data = $this->boardModel->findBoardForModify($board_idx, $column);
+            $arr_condition = ([
+                'EQ'=>[
+                    'LB.BoardIdx' => $board_idx,
+                    'LB.IsStatus' => 'Y',
+                    'LB.RegType' => $this->_reg_type['admin']
+                ]
+            ]);
+            $arr_condition_file = [
+                'reg_type' => $this->_reg_type['admin'],
+                'attach_file_type' => $this->_attach_reg_type['default']
+            ];
+            $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
@@ -260,6 +275,83 @@ class Notice extends BaseBoard
     }
 
     /**
+     * 공지게시판 Read 페이지
+     * @param array $params
+     */
+    public function read($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            ';
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => $this->_reg_type['admin']
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['admin'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $this->bm_idx,
+                'IsStatus' => 'Y',
+                'IsBest' => $data['IsBest']
+            ]
+        ]);
+        //이전글
+        $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
+        $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
+        //다음글
+        $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
+        $board_next = $this->boardModel->findBoardNext($arr_condition_next);
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $this->load->view("board/{$this->board_name}/read",[
+            'boardName' => $this->board_name,
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next,
+        ]);
+    }
+
+    /**
      * 게시판 삭제
      * @param array $params
      */
@@ -297,86 +389,12 @@ class Notice extends BaseBoard
     }
 
     /**
-     * 공지게시판 Read 페이지
-     * @param array $params
-     */
-    public function read($params = [])
-    {
-        $this->setDefaultBoardParam();
-        $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
-
-        if (empty($params[0]) === true) {
-            show_error('잘못된 접근 입니다.');
-        }
-
-        $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
-            ';
-        $board_idx = $params[0];
-        $data = $this->boardModel->findBoardForModify($board_idx, $column);
-
-        if (count($data) < 1) {
-            show_error('데이터 조회에 실패했습니다.');
-        }
-
-        //이전글
-        $board_previous = $this->boardModel->findBoardPrevious($this->bm_idx, $board_idx);
-        //다음글
-        $board_next = $this->boardModel->findBoardNext($this->bm_idx, $board_idx);
-
-        $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
-        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
-        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
-        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-
-        if (empty($this->site_code) === false) {
-            $site_code = $this->site_code;
-        }
-        $get_category_array = $this->_getCategoryArray($site_code);
-
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
-        }
-
-        $this->load->view("board/{$this->board_name}/read",[
-            'boardName' => $this->board_name,
-            'data' => $data,
-            'getCategoryArray' => $get_category_array,
-            'board_idx' => $board_idx,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
-            'board_previous' => $board_previous,
-            'board_next' => $board_next,
-        ]);
-    }
-
-    /**
      * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
      * @param array $params
      */
     public function getAjaxSiteCategoryInfo($params = [])
     {
-        $resultSiteArray = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
-        $get_site_array = [];
-        foreach ($resultSiteArray as $keys => $vals) {
-            foreach ($vals as $key => $val) {
-                $get_site_array[$vals['SiteCode']] = array(
-                    'SiteName' => $vals['SiteName'],
-                    'IsCampus' => $vals['IsCampus']
-                );
-            }
-        }
-
-        //사이트카테고리
-        $result['category'] = $this->_getCategoryArray($params[0]);
-        //캠퍼스
-        $result['campus'] = $this->_getCampusArray($params[0]);
-
-        //캠퍼스 사용 유무
-        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
+        $result = $this->_getSiteCategoryInfo($params);
         $this->json_result(true, '', [], $result);
     }
 
@@ -386,20 +404,7 @@ class Notice extends BaseBoard
      */
     public function getAjaxCampusInfo($params = [])
     {
-        $result_site_array = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
-        $get_site_array = [];
-        foreach ($result_site_array as $keys => $vals) {
-            foreach ($vals as $key => $val) {
-                $get_site_array[$vals['SiteCode']] = array(
-                    'SiteName' => $vals['SiteName'],
-                    'IsCampus' => $vals['IsCampus']
-                );
-            }
-        }
-
-        $result['campus'] = $this->_getCampusArray($params[0]);
-        //캠퍼스 사용 유무
-        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
+        $result = $this->_getCampusInfo($params);
         $this->json_result(true, '', [], $result);
     }
 

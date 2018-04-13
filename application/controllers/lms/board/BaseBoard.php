@@ -92,6 +92,31 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
+     * 캠퍼스 정보 리턴
+     * @param array $params
+     * @return mixed
+     */
+    protected function _getCampusInfo($params = [])
+    {
+        $result_site_array = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
+        $get_site_array = [];
+        foreach ($result_site_array as $keys => $vals) {
+            foreach ($vals as $key => $val) {
+                $get_site_array[$vals['SiteCode']] = array(
+                    'SiteName' => $vals['SiteName'],
+                    'IsCampus' => $vals['IsCampus']
+                );
+            }
+        }
+
+        $result['campus'] = $this->_getCampusArray($params[0]);
+        //캠퍼스 사용 유무
+        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
+
+        return $result;
+    }
+
+    /**
      * 카테고리 조회
      * @param $site_code
      * @param int $parent_cate_code

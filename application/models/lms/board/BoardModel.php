@@ -266,10 +266,13 @@ class BoardModel extends WB_Model
 
     /**
      * 게시판 수정 폼을 위한 데이터 조회
-     * @param $board_idx
+     * @param $board_type   게시판종류
+     * @param $column       컬럼정보
+     * @param $arr_condition
+     * @param $arr_condition_file
      * @return mixed
      */
-    public function findBoardForModify($board_idx, $column)
+    public function findBoardForModify($board_type, $column, $arr_condition, $arr_condition_file)
     {
         $from = "
             FROM {$this->_table} as LB
@@ -283,7 +286,7 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN (
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
                 from {$this->_table_attach}
-                where IsStatus = 'Y'
+                where IsStatus = 'Y' and RegType = {$arr_condition_file['reg_type']} and AttachFileType = {$arr_condition_file['attach_file_type']}
                 GROUP BY BoardIdx
             ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
@@ -291,37 +294,40 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
-        $where = $this->_conn->makeWhere([
-            'EQ'=>[
-                'LB.BoardIdx' => $board_idx,
-                'LB.IsStatus' => 'Y'
-            ]
-        ]);
+        switch ($board_type) {
+            case "notice" :
+                break;
+            case "counsel" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
+                    LEFT OUTER JOIN (
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                        from {$this->_table_attach}
+                        where IsStatus = 'Y' and RegType = 1
+                        GROUP BY BoardIdx
+                    ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
+                ";
+                break;
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
     /**
      * 게시판 이전글
-     * @param $bm_idx
-     * @param $board_idx
-     * @return array
+     * @param $arr_condition
+     * @return mixed
      */
-    public function findBoardPrevious($bm_idx, $board_idx)
+    public function findBoardPrevious($arr_condition)
     {
         $column = 'BoardIdx, Title';
         $from = "
             FROM {$this->_table}
         ";
-        $arr_condition = ([
-            'EQ'=>[
-                'BmIdx' => $bm_idx,
-                'IsStatus' => 'Y'
-            ],
-            'LT'=>[
-                'BoardIdx' => $board_idx
-            ]
-        ]);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -334,25 +340,15 @@ class BoardModel extends WB_Model
 
     /**
      * 게시판 다음글
-     * @param $bm_idx
-     * @param $board_idx
-     * @return array
+     * @param $arr_condition
+     * @return mixed
      */
-    public function findBoardNext($bm_idx, $board_idx)
+    public function findBoardNext($arr_condition)
     {
         $column = 'BoardIdx, Title';
         $from = "
             FROM {$this->_table}
         ";
-        $arr_condition = ([
-            'EQ'=>[
-                'BmIdx' => $bm_idx,
-                'IsStatus' => 'Y'
-            ],
-            'GT'=>[
-                'BoardIdx' => $board_idx
-            ]
-        ]);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 

@@ -151,6 +151,10 @@
                     }
                 },
                 "createdRow" : function( row, data, index ) {
+                    if (data['RegType'] == '1') {
+                        $(row).addClass('blue-sky');
+                    }
+
                     if (data['IsStatus'] == 'N') {
                         $(row).addClass('bg-gray-custom');
                     }
@@ -204,15 +208,21 @@
                     {'data' : 'IsPublic', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
                         }},
-                    {'data' : 'ReadCnt'},
+
+                    /*{'data' : 'ReadCnt'},*/
+                    {'data' : 'ReadCnt', 'render' : function(data, type, row, meta) {
+                            var cnt = Number(data) + Number(row.SettingReadCnt);
+                            return cnt;
+                        }},
+
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             if (row.RegType == 1) {
                                 return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                             } else {
-                                if (row.ReplyStatusCcd == '621004') {
+                                if (row.ReplyStatusCcd == '{{$arr_ccd_reply['finish']}}') {
                                     return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                                 } else {
-                                    return '<a href="javascript:void(0);" class="btn-reply" data-idx="' + row.BoardIdx + '"><u>답변</u></a>';
+                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>답변</u></a>';
                                 }
                             }
                         }},
@@ -239,14 +249,19 @@
                 $datatable.draw();
             });
 
-            // 데이터 수정 폼
+            // 공지 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
-            // 데이터 Read 페이지
+            // 공지 데이터 Read 페이지
             $list_table.on('click', '.btn-admin-read', function() {
                 location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 답변 수정/등록 폼
+            $list_table.on('click', '.btn-reply-modify', function() {
+                location.replace('{{ site_url("/board/{$boardName}/createCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
         });

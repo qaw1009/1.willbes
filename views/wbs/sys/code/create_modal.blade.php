@@ -70,9 +70,10 @@
     <div class="form-group form-group-sm item">
         <label class="control-label col-md-2" for="IsUse">사용여부 <span class="required">*</span></label>
         <div class="col-md-4">
-            <input type="radio" name="is_use" class="flat" value="Y" required="required" @if($method=="POST" || $data['wIsUse']=='Y')checked="checked"@endif/> 사용
-            &nbsp;
-            <input type="radio" name="is_use" class="flat" value="N" required="required" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+            <div class="radio">
+                <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" @if($method=="POST" || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" required="required" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+            </div>
         </div>
         <label class="control-label col-md-2" for="OrderNum">노출순서</label>
         <div class="col-md-1">

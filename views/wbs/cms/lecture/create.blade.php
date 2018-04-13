@@ -98,8 +98,8 @@
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
                         @foreach($shooting_ccd as $key => $val)
-                            <input type="radio" name="ShootingCcd" class="flat" required="required" title="촬영형태" value="{{ $key }}" @if($data['wShootingCcd'] == $key)checked="checked"@endif>
-                            <span class="inline-block mr-10">{{ $val }}</span>
+                            <input type="radio" id="ShootingCcd{{ $loop->index }}" name="ShootingCcd" class="flat" required="required" title="촬영형태" value="{{ $key }}" @if($data['wShootingCcd'] == $key)checked="checked"@endif>
+                            <label for="ShootingCcd{{ $loop->index }}" class="input-label">{{ $val }}</label>
                         @endforeach
                         </div>
                     </div>
@@ -108,8 +108,8 @@
                     <div class="col-md-4 item">
                         <div class="radio">
                         @foreach($progress_ccd as $key => $val)
-                            <input type="radio" name="ProgressCcd" class="flat" required="required" title="진행상태" value="{{ $key }}" @if($data['wProgressCcd'] == $key)checked="checked"@endif>
-                            <span class="inline-block mr-10">{{ $val }}</span>
+                            <input type="radio" id="ProgressCcd{{ $loop->index }}" name="ProgressCcd" class="flat" required="required" title="진행상태" value="{{ $key }}" @if($data['wProgressCcd'] == $key)checked="checked"@endif>
+                            <label for="ProgressCcd{{ $loop->index }}" class="input-label">{{ $val }}</label>
                         @endforeach
                         </div>
                     </div>
@@ -149,8 +149,8 @@
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                          <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="attachfile">첨부자료

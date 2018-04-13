@@ -22,8 +22,8 @@
                     <div class="col-md-5 item">
                         <div class="checkbox">
                             @foreach($cps as $row)
-                                <input type="checkbox" name="cp_idx[]" class="flat" @if($loop->index == 1) required="required" title="적용CP" @endif value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wPCpIdx'])checked="checked"@endif/>
-                                <span class="inline-block mr-10">{{ $row['wCpName'] }}</span>
+                                <input type="checkbox" id="cp_idx_{{ $loop->index }}" name="cp_idx[]" class="flat" @if($loop->index == 1) required="required" title="적용CP" @endif value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wPCpIdx'])checked="checked"@endif/>
+                                <label for="cp_idx_{{ $loop->index }}" class="input-label">{{ $row['wCpName'] }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -70,8 +70,8 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                                 @if(empty($data{'wAttachImgName' . $i}) === false)
                                     <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['wAttachImgPath'] . $data{'wAttachImgName' . $i} }}" rel="popup-image">{{ $data{'wAttachImgName' . $i} }}</a> ]</p>
                                     <div class="checkbox">
-                                        <input type="checkbox" name="attach_img_delete[]" value="{{ $i }}" class="flat"/> <span class="red">삭제</span>
+                                        <input type="checkbox" id="attach_img_delete_{{ $i }}" name="attach_img_delete[]" value="{{ $i }}" class="flat"/> <label for="attach_img_delete_{{ $i }}" class="input-label red">삭제</label>
                                     </div>
                                 @endif
                             </div>

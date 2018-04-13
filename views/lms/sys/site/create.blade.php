@@ -31,8 +31,8 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -53,12 +53,12 @@
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">
-                            <input type="radio" id="none_campus" name="is_campus" class="flat" value="N" required="required" title="캠퍼스 구분" @if($method == 'POST' || $data['IsCampus']=='N')checked="checked"@endif/> 없음
-                            &nbsp; <input type="radio" id="exist_campus" name="is_campus" class="flat" value="Y" @if($method == 'POST' || $data['IsCampus']=='Y')checked="checked"@endif/> 있음
+                            <input type="radio" id="none_campus" name="is_campus" class="flat" value="N" required="required" title="캠퍼스 구분" @if($method == 'POST' || $data['IsCampus']=='N')checked="checked"@endif/> <label for="none_campus" class="input-label">없음</label>
+                            &nbsp; <input type="radio" id="exist_campus" name="is_campus" class="flat" value="Y" @if($method == 'POST' || $data['IsCampus']=='Y')checked="checked"@endif/> <label for="exist_campus" class="input-label">있음</label>
                             &nbsp; (&nbsp;
                             @foreach($campus_ccd as $key => $val)
-                                <input type="checkbox" name="campus_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required_if:is_campus,Y" title="캠퍼스" @endif @if(in_array($key, explode(',', $data['CampusCcds'])) === true)checked="checked"@endif/>
-                                <div class="inline-block mr-5">{{ $val }}</div>
+                                <input type="checkbox" id="campus_ccd_{{ $loop->index }}" name="campus_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required_if:is_campus,Y" title="캠퍼스" @endif @if(in_array($key, explode(',', $data['CampusCcds'])) === true)checked="checked"@endif/>
+                                <label for="campus_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                             )
                         </div>
@@ -102,8 +102,8 @@
                     <div class="col-md-9">
                         <div class="radio item">
                             @foreach($pg_ccd as $key => $val)
-                                <input type="radio" name="pg_ccd" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="PG사" @endif @if($data['PgCcd']==$key)checked="checked"@endif/>
-                                <div class="inline-block mr-5">{{ $val }}</div>
+                                <input type="radio" id="pg_ccd_{{ $loop->index }}" name="pg_ccd" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="PG사" @endif @if($data['PgCcd']==$key)checked="checked"@endif/>
+                                <label for="pg_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -114,8 +114,8 @@
                     <div class="col-md-9 item">
                         <div class="checkbox">
                             @foreach($pay_method_ccd as $key => $val)
-                                <input type="checkbox" name="pay_method_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="결제수단" @endif @if(in_array($key, explode(',', $data['PayMethodCcds'])) === true)checked="checked"@endif/>
-                                <div class="inline-block mr-10">{{ $val }}</div>
+                                <input type="checkbox" id="pay_method_ccd_{{ $loop->index }}" name="pay_method_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="결제수단" @endif @if(in_array($key, explode(',', $data['PayMethodCcds'])) === true)checked="checked"@endif/>
+                                <label for="pay_method_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
                     </div>

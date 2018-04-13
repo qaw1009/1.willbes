@@ -33,8 +33,8 @@
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['IsUse'] == 'Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['IsUse'] == 'Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>

@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <div class="col-md-5 col-md-offset-7">
                         <div class="checkbox">
-                            <input type="checkbox" name="search_chk_no_site_campus" class="flat" value="N"/> 사이트/캠퍼스 권한 미부여
+                            <input type="checkbox" id="search_chk_no_site_campus" name="search_chk_no_site_campus" class="flat" value="N"/> <label for="search_chk_no_site_campus" class="input-label">사이트/캠퍼스 권한 미부여</label>
                         </div>
                     </div>
                 </div>

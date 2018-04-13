@@ -30,13 +30,16 @@
         </div>
     </div>
     <div class="form-group form-group-sm mt-20 mb-0">
-        <div class="x_title">
+        <div class="x_title mb-5">
             <span class="required">*</span> 과목을 선택해 주세요. (다중 선택 가능합니다.)
         </div>
     </div>
     <div class="form-group form-group-sm">
         @foreach($arr_subject_idx as $row)
-            <div class="col-xs-2 mb-10"><input type="checkbox" name="subject_idx[]" class="flat" value="{{ $row['SubjectIdx'] }}" @if($row['SubjectIdx'] == $row['RSubjectIdx']) checked="checked" @endif @if($loop->index == 1) required="required" title="과목" @endif/> {{ $row['SubjectName'] }}</div>
+            <div class="col-xs-2 checkbox">
+                <input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row['SubjectIdx'] }}" @if($row['SubjectIdx'] == $row['RSubjectIdx']) checked="checked" @endif @if($loop->index == 1) required="required" title="과목" @endif/>
+                <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row['SubjectName'] }}</label>
+            </div>
         @endforeach
     </div>
     <script type="text/javascript">

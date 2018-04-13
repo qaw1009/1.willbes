@@ -33,8 +33,8 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['wIsUse'] == 'Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['wIsUse'] == 'Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="cp_idx">적용CP
@@ -42,8 +42,8 @@
                     <div class="col-md-4 item">
                         <div class="checkbox">
                             @foreach($cps as $row)
-                                <input type="checkbox" name="cp_idx[]" class="flat" value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wRCpIdx'])checked="checked"@endif/>
-                                <span class="inline-block mr-10">{{ $row['wCpName'] }}</span>
+                                <input type="checkbox" id="cp_idx_{{ $loop->index }}" name="cp_idx[]" class="flat" value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wRCpIdx'])checked="checked"@endif/>
+                                <label for="cp_idx_{{ $loop->index }}" class="input-label">{{ $row['wCpName'] }}</label>
                             @endforeach
                         </div>
                     </div>

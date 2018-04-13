@@ -237,6 +237,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .bg-odd {
     background: #f9f9f9 !important;
 }
+.bg-gray-custom {
+    background: #ababab !important;
+}
 
 /* text color */
 .gray {

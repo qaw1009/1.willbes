@@ -26,14 +26,14 @@ class BoardModel extends WB_Model
      * @param $sub_query_condition
      * @param null $limit
      * @param null $offset
-     * @param array $order_by
-     * @param string $colum
+     * @param array $order_byk
+     * @param string $column
      * @return mixed
      */
-    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $limit = null, $offset = null, $order_by = [], $colum = '*')
+    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $limit = null, $offset = null, $order_by = [], $column = '*')
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -44,23 +44,23 @@ class BoardModel extends WB_Model
         $sub_query_where = $sub_query_where->getMakeWhere(false);
 
         $from = "
-            FROM {$this->_table} as LB
-            LEFT OUTER JOIN {$this->_table_member} as MEM ON LB.RegMemIdx = MEM.MemIdx
+            FROM {$this->_table} AS LB
+            LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
             INNER JOIN (
-                select subLBrC.BoardIdx, GROUP_CONCAT(CONCAT(subLSC.CateName,'[',subLBrC.CateCode,']')) AS CateCode
-                from {$this->_table_r_category} as subLBrC
-                LEFT OUTER JOIN {$this->_table_sys_category} as subLSC ON subLBrC.CateCode = subLSC.CateCode
+                SELECT subLBrC.BoardIdx, GROUP_CONCAT(CONCAT(subLSC.CateName,'[',subLBrC.CateCode,']')) AS CateCode
+                FROM {$this->_table_r_category} AS subLBrC
+                LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
                 {$sub_query_where}
-                group by subLBrC.BoardIdx
-            ) as LBC ON LB.BoardIdx = LBC.BoardIdx
+                GROUP BY subLBrC.BoardIdx
+            ) AS LBC ON LB.BoardIdx = LBC.BoardIdx
             LEFT OUTER JOIN (
-                select BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
-                from {$this->_table_attach}
-                where IsStatus = 'Y'
+                SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                FROM {$this->_table_attach}
+                WHERE IsStatus = 'Y'
                 GROUP BY BoardIdx
-            ) as LBA ON LB.BoardIdx = LBA.BoardIdx
+            ) AS LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
-            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
 
@@ -77,17 +77,10 @@ class BoardModel extends WB_Model
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
-        if (array_key_exists('Empty', $arr_condition)) {
-            $where = $this->_conn->where("LB.VocCcd = ''");
-        }
-
-        if (array_key_exists('NotEmpty', $arr_condition)) {
-            $where = $this->_conn->where("LB.VocCcd != ''");
-        }
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -294,8 +287,8 @@ class BoardModel extends WB_Model
                 GROUP BY BoardIdx
             ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
-            LEFT OUTER JOIN {$this->_table_sys_admin} as B ON LB.RegAdminIdx = B.wAdminIdx and B.wIsStatus='Y'
-            LEFT OUTER JOIN {$this->_table_sys_admin} as C ON LB.UpdAdminIdx = C.wAdminIdx and C.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
         $where = $this->_conn->makeWhere([
@@ -471,6 +464,37 @@ class BoardModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 사이트별 미답변 횟수
+     * @param $arr_condition
+     * @return array|bool
+     */
+    public function getUnAnserArray($arr_condition)
+    {
+        if (empty($arr_condition)) {
+            return false;
+        }
+        $from = "
+            FROM {$this->_table}
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['SiteCode'=>'ASC'])->getMakeOrderBy();
+        $group_by = $this->_conn->group_by('SiteCode');
+
+        $sql = 'select (SELECT "all") AS SiteCode, COUNT(BoardIdx) AS count ';
+        $sql .= $from.' '.$where.' ';
+        $sql .= 'UNION ALL ';
+        $sql .= 'select SiteCode, COUNT(BoardIdx) AS count ';
+        $sql .= $from.' '.$where.' ';
+        $sql .= 'group by SiteCode ';
+        $sql .= $order_by_offset_limit;
+        $data = $this->_conn->query($sql)->result_array();
+        $data = array_pluck($data, 'count', 'SiteCode');
+        return $data;
+    }
+
 
     /**
      * 게시판 카테고리 조회
@@ -729,7 +753,7 @@ class BoardModel extends WB_Model
      */
     private function _findBoardData($idx)
     {
-        $colum = 'BoardIdx';
+        $column = 'BoardIdx';
         $from = "
             FROM {$this->_table}
         ";
@@ -742,7 +766,7 @@ class BoardModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where);
+        $query = $this->_conn->query('select ' . $column . $from . $where);
         $query = $query->result_array();
 
         return $query;

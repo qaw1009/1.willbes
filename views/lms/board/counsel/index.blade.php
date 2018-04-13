@@ -3,7 +3,7 @@
 @section('content')
     <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다. (괄호 안 붉은색 숫자는 미답변 카운트입니다.)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'self') !!}
+        {!! html_site_tabs('tabs_site_code', 'self', true, $arr_unAnswered) !!}
         {!! csrf_field() !!}
 
         <div class="x_panel">
@@ -25,16 +25,24 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_counsel_type" name="search_counsel_type">
                             <option value="">상담유형</option>
+                            @foreach($arr_counsel_type as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
+                            @foreach($arr_reply as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
                         <select class="form-control" id="search_is_public" name="search_is_public">
                             <option value="">공개여부</option>
+                            <option value="Y">공개</option>
+                            <option value="N">비공개</option>
                         </select>
                     </div>
                 </div>
@@ -142,12 +150,16 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                "createdRow" : function( row, data, index ) {
+                    if (data['IsStatus'] == 'N') {
+                        $(row).addClass('bg-gray-custom');
+                    }
+                },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            //return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             if (row.RegType == '1') {
-                                return '공지';
+                                return '<b>공지</b>';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             }
@@ -165,7 +177,11 @@
                     {'data' : 'TypeCcdName'},
                     {'data' : 'TypeCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            if (row.RegType == 1) {
+                                return '<a href="javascript:void(0);" class="btn-admin-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            } else {
+                                return '<a href="javascript:void(0);" class="btn-counsel-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            }
                         }},
                     {'data' : 'RegType', 'render' : function(data, type, row, meta) {
                             if (data == 1) {
@@ -181,24 +197,58 @@
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'ReplyStatusCcdName', 'render' : function(data, type, row, meta) {
-                            return (data == '미답변') ? '<span class="red">'+data+'</span>' : data;
+                            return (data == '미답변') ? '<p class="red">'+data+'</p>' : data;
                         }},
                     {'data' : 'ReplyRegAdminName'},
                     {'data' : 'ReplyRegDatm'},
                     {'data' : 'IsPublic', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '공개' : '<span class="red">비공개</span>';
+                            return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
                         }},
                     {'data' : 'ReadCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                            if (row.RegType == 1) {
+                                return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                            } else {
+                                if (row.ReplyStatusCcd == '621004') {
+                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                                } else {
+                                    return '<a href="javascript:void(0);" class="btn-reply" data-idx="' + row.BoardIdx + '"><u>답변</u></a>';
+                                }
+                            }
                         }},
                 ]
+            });
+
+            // 검색초기화
+            $('#btn_search_del').on('click', function() {
+                location.replace('{{ site_url("/board/{$boardName}") }}/?' + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 공지 숨기기
+            $search_form.on('ifChanged', '#notice_display', function() {
+                $datatable.draw();
+            });
+
+            // 삭제글 보기
+            $search_form.on('ifChanged', '#delete_value', function() {
+                $datatable.draw();
+            });
+
+            // 강성 클레임
+            $search_form.on('ifChanged', '#vod_value', function() {
+                $datatable.draw();
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
+
+            // 데이터 Read 페이지
+            $list_table.on('click', '.btn-admin-read', function() {
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
         });
     </script>
 @stop

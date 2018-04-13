@@ -11,6 +11,10 @@ class Notice extends BaseBoard
     private $board_name = 'notice';
     private $site_code = '';
     private $bm_idx;
+    private $_reg_type = [
+        'user' => 0,    //유저 등록 정보
+        'admin' => 1    //admin 등록 정보
+    ];
 
     public function __construct()
     {
@@ -214,6 +218,7 @@ class Notice extends BaseBoard
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
+            'arr_reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
     }
@@ -308,7 +313,7 @@ class Notice extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, B.wAdminName, C.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
         $board_idx = $params[0];
         $data = $this->boardModel->findBoardForModify($board_idx, $column);
@@ -415,7 +420,13 @@ class Notice extends BaseBoard
             ]
         ];
 
-        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, null, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y'
+            ]
+        ];
+
+        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
             'count' => count($best_list),
             'data' => $best_list
@@ -435,7 +446,7 @@ class Notice extends BaseBoard
                 'IsBest' => (element('is_best', $input) == 'Y') ? 'Y' : 'N',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),
-                'ReadCnt' => '0',
+                'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'SettingReadCnt' => element('setting_readCnt', $input),
             ],
             'board_r_category' => [

@@ -215,7 +215,7 @@
 
             // 검색초기화
             $('#btn_search_del').on('click', function() {
-                $search_form[0].reset();
+                location.replace('{{ site_url("/board/{$boardName}") }}/?' + '{!! $boardDefaultQueryString !!}');
             });
 
             // 복사

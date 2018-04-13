@@ -10,7 +10,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">교재기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트') !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
@@ -37,6 +37,11 @@
                         </select>
                         <select class="form-control mr-10" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
+                        <select class="form-control mr-10" id="search_w_is_use" name="search_w_is_use">
+                            <option value="">사용여부(W)</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
@@ -89,6 +94,7 @@
                     <th>추천</th>
                     <th>재고</th>
                     <th>사용여부</th>
+                    <th>사용여부(W)</th>
                     <th>판매여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -150,6 +156,9 @@
                         return addComma(data);
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
+                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'wSaleCcdName'},

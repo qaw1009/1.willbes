@@ -61,7 +61,7 @@ class ProfessorModel extends WB_Model
                 select I.*, substring_index(I.SubjectMapping, "_", 1) as CateCode, substring_index(I.SubjectMapping, "_", -1) as SubjectIdx
                 from (
                     select P.ProfIdx, P.SiteCode, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx
-                        , WP.wProfIdx, WP.wProfId, WP.wProfName, S.SiteName, A.wAdminName as RegAdminName
+                        , WP.wProfIdx, WP.wProfId, WP.wProfName, WP.wIsUse, S.SiteName, A.wAdminName as RegAdminName
                         , (select concat(CateCode, "_", SubjectIdx)
                             from ' . $this->_table['professor_r_subject_r_category'] . '
                             where ProfIdx = P.ProfIdx and IsStatus = "Y"

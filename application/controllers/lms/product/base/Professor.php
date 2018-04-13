@@ -30,6 +30,7 @@ class Professor extends \app\controllers\BaseController
             'EQ' => [
                 'U.SiteCode' => $this->_reqP('search_site_code'),
                 'U.IsUse' => $this->_reqP('search_is_use'),
+                'U.wIsUse' => $this->_reqP('search_w_is_use'),
             ],
             'ORG' => [
                 'LKB' => [

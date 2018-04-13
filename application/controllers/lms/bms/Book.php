@@ -50,6 +50,7 @@ class Book extends \app\controllers\BaseController
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.ProfIdx' => $this->_reqP('search_prof_idx'),
                 'B.IsUse' => $this->_reqP('search_is_use'),
+                'VWB.wIsUse' => $this->_reqP('search_w_is_use'),
                 'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
             ],
             'ORG1' => [

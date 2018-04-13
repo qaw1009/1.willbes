@@ -18,8 +18,13 @@
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control mr-10" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
+                        <select class="form-control" id="search_w_is_use" name="search_w_is_use">
+                            <option value="">사용여부(W)</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
@@ -46,6 +51,7 @@
                     <th rowspan="2" class="pb-20">카테고리정보<br/>(대표카테고리만 표기)</th>
                     <th colspan="3" style="border-width: 1px; border-left: 0; border-bottom: 0;">게시판운영여부</th>
                     <th rowspan="2" class="pb-30">사용여부</th>
+                    <th rowspan="2" class="pb-30">사용여부(W)</th>
                     <th rowspan="2" class="pb-30">등록자</th>
                     <th rowspan="2" class="pb-30">등록일</th>
                 </tr>
@@ -100,6 +106,9 @@
                     {'data' : 'IsQnaBoard'},
                     {'data' : 'IsDataBoard'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
+                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'RegAdminName'},

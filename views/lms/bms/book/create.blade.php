@@ -235,9 +235,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @if($method == 'PUT')
+                    <label class="control-label col-md-2">사용여부(W)
+                    </label>
+                    <div class="col-md-3">
+                        <p class="form-control-static">@if($data['wIsUse'] == 'Y') 사용 @else <span class="red">미사용</span> @endif</p>
+                    </div>
+                    @endif
                     <label class="control-label col-md-2">판매여부
                     </label>
-                    <div class="col-md-9">
+                    <div class="col-md-4">
                         <p id="selected_wsale_ccd_name" class="form-control-static">{{ $data['wSaleCcdName'] }}</p>
                     </div>
                 </div>

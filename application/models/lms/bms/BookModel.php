@@ -39,7 +39,7 @@ class BookModel extends WB_Model
         } else {
             $column = '
                 B.BookIdx, B.wBookIdx, B.SiteCode, B.BookName, B.SalePrice, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx
-                    , VWB.wPublName, VWB.wAuthorNames, VWB.wStockCnt, VWB.wSaleCcdName	
+                    , VWB.wPublName, VWB.wAuthorNames, VWB.wStockCnt, VWB.wSaleCcdName, VWB.wIsUse
                     , S.SiteName, C.CateName as BCateName, ifnull(MC.CateName, "") as MCateName, PS.SubjectName, WP.wProfName
                     , A.wAdminName as RegAdminName
             ';
@@ -156,7 +156,7 @@ class BookModel extends WB_Model
             B.BookIdx, B.wBookIdx, B.SiteCode, B.BookName, B.PrepareYear, B.CourseIdx, B.SubjectIdx, B.ProfIdx, B.DispTypeCcd, B.IsFree, B.SalePrice, B.DcAmt, B.DcType
                 , B.IsPointSaving, B.PointSavingAmt, B.PointSavingType, B.IsCoupon, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx, B.UpdDatm, B.UpdAdminIdx
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
-                , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wOrgPrice, VWB.wStockCnt, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc  
+                , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wOrgPrice, VWB.wStockCnt, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc, VWB.wIsUse  
                 , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.RegAdminIdx and wIsStatus = "Y") as RegAdminName
                 , if(B.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName        
         ';

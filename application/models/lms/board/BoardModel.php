@@ -6,6 +6,7 @@ class BoardModel extends WB_Model
     private $_table = 'lms_board';
     private $_table_r_category = 'lms_board_r_category';
     private $_table_attach = 'lms_board_attach';
+    private $_table_memo = 'lms_board_memo';
     private $_table_sys_site = 'lms_site';
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_code = 'lms_sys_code';
@@ -191,7 +192,9 @@ class BoardModel extends WB_Model
             }
 
             // 파일 수정
-            $is_attach = $this->_modifyBoardAttach($board_idx, $board_data);
+            $reg_type = 1;              //0:일반유저등록, 1:관리자등록
+            $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
+            $is_attach = $this->_modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type);
             if ($is_attach !== true) {
                 throw new \Exception($is_attach);
             }
@@ -307,6 +310,8 @@ class BoardModel extends WB_Model
                         where IsStatus = 'Y' and RegType = 1
                         GROUP BY BoardIdx
                     ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin ON LB.ReplyAdminIdx = counselAdmin.wAdminIdx and counselAdmin.wIsStatus='Y'
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin2 ON LB.ReplyUpdAdminIdx = counselAdmin2.wAdminIdx and counselAdmin2.wIsStatus='Y'
                 ";
                 break;
         }
@@ -380,6 +385,55 @@ class BoardModel extends WB_Model
 
             if($this->_conn->update($this->_table)=== false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 상담게시판 답글 등록
+     * @param $inputData
+     * @param $idx
+     * @param $bm_idx
+     * @return bool
+     */
+    public function replyAddBoard($inputData, $idx, $bm_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if (empty($bm_idx)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $board_idx = $idx;
+            $result = $this->_findBoardDataAll($board_idx);
+            if (empty($result)) {
+                throw new \Exception('수정할 정보를 조회하지 못했습니다.');
+            }
+
+            $inputData = array_merge($inputData,[
+                'ReplyAdminIdx' => $this->session->userdata('admin_idx'),
+                'ReplyRegDatm' => date('Y-m-d H:i:s'),
+                'ReplyRegIp' => $this->input->ip_address()
+            ]);
+
+            $this->_conn->set($inputData)->where('BoardIdx', $board_idx);
+            if ($this->_conn->update($this->_table) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            // 파일 수정
+            $tmp_bm_idx['BmIdx'] = $bm_idx;     //파일수정을 위한 bm_idx 배열 선언
+            $reg_type = 1;
+            $attach_file_type = 1;              //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
+            $is_attach = $this->_modifyBoardAttach($board_idx, $tmp_bm_idx, $reg_type, $attach_file_type);
+            if ($is_attach !== true) {
+                throw new \Exception($is_attach);
             }
 
             $this->_conn->trans_commit();
@@ -489,6 +543,63 @@ class BoardModel extends WB_Model
         $data = $this->_conn->query($sql)->result_array();
         $data = array_pluck($data, 'count', 'SiteCode');
         return $data;
+    }
+
+    /**
+     * 메모 리스트
+     * @param $board_idx
+     * @return mixed
+     */
+    public function getMemoListAll($board_idx)
+    {
+        $column = 'BMM.BoardMemoIdx, BMM.BoardIdx, BMM.Memo, BMM.RegDatm, BMM.RegAdminIdx, ADMIN.wAdminName';
+
+        $from = "
+            FROM {$this->_table_memo} AS BMM
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON BMM.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
+        ";
+
+        $arr_condition = [
+            'EQ' => ['BMM.BoardIdx' => $board_idx]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['BMM.BoardMemoIdx'=>'ASC'])->getMakeOrderBy();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 메모 저장
+     * @param array $input
+     * @param $board_idx
+     * @return array|bool
+     */
+    public function memoAddBoard($input = [], $board_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $inputData['BoardIdx'] = $board_idx;
+            $inputData['Memo'] = element('memo_contents', $input);
+            $inputData['RegDatm'] = date('Y-m-d H:i:s');
+            $inputData['RegAdminIdx'] = $this->session->userdata('admin_idx');
+            $inputData['RegIp'] = $this->input->ip_address();
+
+            // 데이터 등록
+            if ($this->_conn->set($inputData)->insert($this->_table_memo) === false) {
+                throw new \Exception('메모 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
 
@@ -609,13 +720,15 @@ class BoardModel extends WB_Model
      * update 발생 시 파일 삭제 처리
      * @param $board_idx
      * @param $board_data
+     * @param $reg_type
+     * @param $attach_file_type
      * @return array|bool
      */
-    private function _modifyBoardAttach($board_idx, $board_data)
+    private function _modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type)
     {
         try {
             $board_attach_data = $_FILES['attach_file']['name'];
-            $arr_board_attach = $this->_getBoardAttachArray($board_idx);
+            $arr_board_attach = $this->_getBoardAttachArray($board_idx, $reg_type, $attach_file_type);
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
@@ -631,8 +744,8 @@ class BoardModel extends WB_Model
                     if (empty($arr_board_attach_keys[$key]) === true) {
                         //ins
                         $set_board_attach_data['BoardIdx'] = $board_idx;
-                        $set_board_attach_data['RegType'] = 1;
-                        $set_board_attach_data['AttachFileType'] = 0;
+                        $set_board_attach_data['RegType'] = $reg_type;
+                        $set_board_attach_data['AttachFileType'] = $attach_file_type;
                         $set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
                         $set_board_attach_data['AttachFileName'] = $uploaded[$key]['orig_name'];
                         $set_board_attach_data['AttachRealFileName'] = $uploaded[$key]['client_name'];
@@ -713,11 +826,20 @@ class BoardModel extends WB_Model
     /**
      * 게시판 식별자 기준 파일 목록 조회
      * @param $board_idx
+     * @param $reg_type
+     * @param $attach_file_type
      * @return array|int
      */
-    private function _getBoardAttachArray($board_idx)
+    private function _getBoardAttachArray($board_idx, $reg_type, $attach_file_type)
     {
-        $arr_condition = ['EQ' => ['IsStatus' => 'Y', 'BoardIdx' => $board_idx]];
+        $arr_condition = [
+            'EQ' => [
+                'IsStatus' => 'Y',
+                'BoardIdx' => $board_idx,
+                'RegType' => $reg_type,
+                'AttachFileType' => $attach_file_type,
+            ]
+        ];
         $data = $this->_conn->getListResult($this->_table_attach, 'BoardFileIdx, CONCAT(AttachFilePath, AttachFileName) AS FileInfo', $arr_condition, null, null, [
             'BoardFileIdx' => 'asc'
         ]);
@@ -757,6 +879,31 @@ class BoardModel extends WB_Model
             'EQ' => [
                 'BoardIdx' => $idx,
                 'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->result_array();
+
+        return $query;
+    }
+
+    /**
+     * IsStatus 무시, 단순 식별자 조건으로 조회
+     * @param $idx
+     * @return mixed
+     */
+    private function _findBoardDataAll($idx)
+    {
+        $column = 'BoardIdx';
+        $from = "
+            FROM {$this->_table}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'BoardIdx' => $idx
             ]
         ]);
         $where = $where->getMakeWhere(false);

@@ -27,6 +27,7 @@ class Counsel extends BaseBoard
         'voc' => '620003'       //강성클레임 코드
     ];
     private $_groupCcd = [
+        'voc' => '620',
         'reply' => '621',       //답변상태
         'counsel_type' => '622' //상담유형
     ];
@@ -385,12 +386,12 @@ class Counsel extends BaseBoard
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
             LB.ReadCnt, LB.SettingReadCnt,
-            LBA_1.AttachFileIdx as mem_AttachFileIdx, LBA_1.AttachFilePath as mem_AttachFilePath, LBA_1.AttachFileName as mem_AttachFileName,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName,
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             MEM.MemName, MEM.MemId, MEM.Hp1,
-            LB.ReplyContent
+            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -405,12 +406,149 @@ class Counsel extends BaseBoard
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
 
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
 
+        if (empty($data['ReplyContent'])) {
+            $reply_content = '안녕하세요. 윌비스입니다.';
+            $reply_content .= '</br></br></br></br>';
+            $reply_content .= '더 궁금하신 점이 있다면 상담게시판에 남겨주시거나, ';
+            $reply_content .= '000-000-0000으로 전화주시면 친절하게 답변해드리겠습니다.';
+        } else {
+            $reply_content = $data['ReplyContent'];
+        }
+        $data['reply_content'] = $reply_content;
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $arr_reply_code = $this->_getCcdArray($this->_groupCcd['reply']);
+        unset($arr_reply_code[$this->_Ccd['reply']['unAnswered']]);     //미답변코드 제거
+        $data['arr_reply_code'] = $arr_reply_code;
+
+        $arr_voc_code = $this->_getCcdArray($this->_groupCcd['voc']);
+        $data['arr_voc_code'] = $arr_voc_code;
+
+        $this->load->view("board/{$this->board_name}/create_counsel_reply", [
+            'boardName' => $this->board_name,
+            'data' => $data,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    /**
+     * 상담게시판 답변 등록
+     */
+    public function storeReply()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+
+        $rules = [
+            ['field' => 'voc_ccd', 'label' => 'VOC 강도', 'rules' => 'trim|required'],
+            ['field' => 'reply_contents', 'label' => '답변 내용', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('idx')) === true) {
+            return $this->json_error('식별자가 없습니다.', _HTTP_NOT_FOUND);
+        } else {
+            $idx = $this->_reqP('idx');
+        }
+
+        $inputData = $this->_setReplyInputData($this->_reqP(null, false));
+
+        $result = $this->boardModel->replyAddBoard($inputData, $idx, $this->bm_idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 상담게시판 답변 view 페이지
+     * @param array $params
+     */
+    public function readCounselReply($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, MEM.Hp1,
+            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
+            counselAdmin.wAdminName AS counselAdminName, counselAdmin2.wAdminName AS counselUpdAdminName,
+            LB.ReplyRegDatm, LB.ReplyUpdDatm
+            ';
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.RegType' => $this->_reg_type['user']
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
         }
+
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $this->bm_idx,
+                'RegType' => $data['RegType']
+            ]
+        ]);
+
+        if ($data['RegType'] == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['IsStatus' => 'Y']);
+        }
+
+        //이전글
+        $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
+        $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
+        //다음글
+        $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
+        $board_next = $this->boardModel->findBoardNext($arr_condition_next);
+
+        //메모
+        $memo_data = $this->boardModel->getMemoListAll($board_idx);
 
         $site_code = $data['SiteCode'];
         $arr_cate_code = explode(',', $data['CateCode']);
@@ -422,46 +560,58 @@ class Counsel extends BaseBoard
             $site_code = $this->site_code;
         }
         $get_category_array = $this->_getCategoryArray($site_code);
-
         foreach ($arr_cate_code as $item => $code) {
             $data['arr_cate_code'][$code] = $get_category_array[$code];
         }
 
-        $this->load->view("board/{$this->board_name}/create_counsel_reply", [
+        $arr_reply_code = $this->_getCcdArray($this->_groupCcd['reply']);
+        $data['reply_status'] = (empty($arr_reply_code[$data['ReplyStatusCcd']])) ? '' : $arr_reply_code[$data['ReplyStatusCcd']];
+
+        $arr_voc_code = $this->_getCcdArray($this->_groupCcd['voc']);
+        $data['voc_value'] = (empty($arr_voc_code[$data['VocCcd']])) ? '' : $arr_voc_code[$data['VocCcd']];
+
+        $this->load->view("board/{$this->board_name}/read_counsel_reply", [
             'boardName' => $this->board_name,
             'data' => $data,
+            'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+            'arr_ccd_reply' => $this->_Ccd['reply'],
+            'voc_ccd_level3' => $this->_Ccd['voc'],
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next,
+            'memo_data' => $memo_data
         ]);
     }
 
     /**
-     * 상담게시판 답변 view 페이지
+     * 메모 저장
+     * @return CI_Output|void
      */
-    public function readCounselReply()
+    public function storeMemo()
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-        $this->subMenu = $boardParams['subMenu'];
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
 
-        $boardIdx = 1;
-        $method = 'POST';
-        $data = null;
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'idx', 'label' => '식별자', 'rules' => 'trim|required'],
+            ['field' => 'memo_contents', 'label' => '메모', 'rules' => 'trim|required']
+        ];
 
-        //캠퍼스리스트
-        if ($this->subMenu == 'offline') {
-            $this->campusOnOff = 'on';
+        if ($this->validate($rules) === false) {
+            return;
         }
 
-        $this->load->view("board/{$this->boardName}/read_counsel_reply", [
-            'boardName' => $this->boardName,
-            'boardIdx' => $boardIdx,
-            'method' => $method,
-            'campusOnOff' => $this->campusOnOff,
-            'data' => $data,
-            'attach_img_cnt' => 2
-        ]);
+        if (empty($this->_reqP('idx')) === true) {
+            return $this->json_error('식별자가 없습니다.', _HTTP_NOT_FOUND);
+        } else {
+            $idx = $this->_reqP('idx');
+        }
+
+        $result = $this->boardModel->memoAddBoard($this->_reqP(null, false), $idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
     }
 
     /**
@@ -570,6 +720,17 @@ class Counsel extends BaseBoard
             ]
         ];
 
-        return$input_data;
+        return $input_data;
+    }
+
+    private function _setReplyInputData($input)
+    {
+        $input_data = [
+            'ReplyStatusCcd' => element('reply_status_ccd', $input),
+            'VocCcd' => (empty(element('voc_ccd', $input))) ? $this->_Ccd['reply']['unAnswered'] : element('voc_ccd', $input),     //값을 없을 경우 미답변코드로 셋팅
+            'ReplyContent' => element('reply_contents', $input)
+        ];
+
+        return $input_data;
     }
 }

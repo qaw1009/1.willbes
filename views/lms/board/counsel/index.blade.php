@@ -264,6 +264,11 @@
                 location.replace('{{ site_url("/board/{$boardName}/createCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
+            // 공지 데이터 Read 페이지
+            $list_table.on('click', '.btn-counsel-read', function() {
+                location.replace('{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
         });
     </script>
 @stop

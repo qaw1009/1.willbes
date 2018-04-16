@@ -138,6 +138,16 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
+     * 그룹공통코드 배열에 해당하는 공통코드 조회
+     * @param array $group_ccd
+     * @return array
+     */
+    protected function _getCcdInArray($group_ccd)
+    {
+        return $this->codeModel->getCcdInArray($group_ccd);
+    }
+
+    /**
      * 게시판 등록
      * @param $method
      * @param $inputData

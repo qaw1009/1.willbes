@@ -81,7 +81,7 @@
                             <div class="control-label col-md-1">OT
                             </div>
                             <div class="col-md-6">
-                                <input type="text" id="ot_url" name="ot_url" class="form-control optional" pattern="url" title="OT영상" value="{{ $data['ot_url'] }}">
+                                <input type="text" id="ot_url" name="ot_url" class="form-control optional" pattern="url" title="OT영상" value="{{ $data['ot_url'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
                                 <button type="button" class="btn btn-default btn-movie-view">보기</button>

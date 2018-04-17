@@ -401,14 +401,14 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수 사용게시판 JSON 데이터 리턴
-     * @param $arr_use_board
+     * @param array $arr_use_board
      * @return string
      */
     private function _getUseBoardJson($arr_use_board)
     {
         $results = [];
         foreach ($this->_bm_idx as $bm_idx) {
-            $results[][$bm_idx] = in_array($bm_idx, $arr_use_board) === true ? 'Y' : 'N';
+            $results[][$bm_idx] = in_array($bm_idx, (array) $arr_use_board) === true ? 'Y' : 'N';
         }
 
         return json_encode($results);

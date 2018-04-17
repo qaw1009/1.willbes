@@ -1973,7 +1973,7 @@ abstract class REST_Controller extends \CI_Controller {
         if ( ! $this->config->item('auth_source') && $rest_auth === 'digest')
         {
             // For digest we do not have a password passed as argument
-            return md5($username.':'.$this->config->item('rest_realm').':'.(isset($valid_logins[$username]) ? $valid_logins[$username] : ''));
+            return md5($username.':'.$this->config->item('rest_realm').':'.(isset($valid_logins[$username]) ? sha1($valid_logins[$username]) : ''));
         }
 
         if ($password === FALSE)
@@ -2000,7 +2000,7 @@ abstract class REST_Controller extends \CI_Controller {
             return FALSE;
         }
 
-        if ($valid_logins[$username] !== $password)
+        if (sha1($valid_logins[$username]) !== $password)
         {
             return FALSE;
         }

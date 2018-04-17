@@ -41,7 +41,7 @@ class RestClient
     protected $send_cookies = null;
     protected $response_string;
 
-    function __construct($config = array())
+    function __construct($config = 'rest')
     {
         $this->_ci =& get_instance();
         log_message('debug', 'Rest Client Class Initialized');
@@ -63,23 +63,29 @@ class RestClient
      */
     public function initialize($config)
     {
-        $this->rest_server = @$config['server'];
+        if (is_array($config) === false) {
+            $this->_ci->load->config($config, TRUE, TRUE);
+            $config = $this->_ci->config->config[$config];
+        }
 
+        $this->rest_server = $config['rest_server'];
         if (substr($this->rest_server, -1, 1) != '/')
         {
             $this->rest_server .= '/';
         }
 
-        isset($config['format']) && $this->format = $config['format'];
-        isset($config['send_cookies']) && $this->send_cookies = $config['send_cookies'];
+        isset($config['rest_default_format']) && $this->format = $config['rest_default_format'];
+        isset($config['allow_send_cookies']) && $this->send_cookies = $config['allow_send_cookies'];
         
-        isset($config['api_name']) && $this->api_name = $config['api_name'];
-        isset($config['api_key']) && $this->api_key = $config['api_key'];
+        isset($config['rest_key_name']) && $this->api_name = $config['rest_key_name'];
+        isset($config['rest_enable_keys']) && $this->api_key = $config['rest_enable_keys'];
 
-        isset($config['http_realm']) && $this->http_realm = $config['http_realm'];
-        isset($config['http_auth']) && $this->http_auth = $config['http_auth'];
-        isset($config['http_user']) && $this->http_user = $config['http_user'];
-        isset($config['http_pass']) && $this->http_pass = $config['http_pass'];
+        isset($config['rest_realm']) && $this->http_realm = $config['rest_realm'];
+        isset($config['rest_auth']) && $this->http_auth = $config['rest_auth'];
+        if (isset($config['rest_valid_logins'])) {
+            $this->http_user = key($config['rest_valid_logins']);
+            $this->http_pass = current($config['rest_valid_logins']);
+        }
 
         isset($config['ssl_verify_peer']) && $this->ssl_verify_peer = $config['ssl_verify_peer'];
         isset($config['ssl_cainfo']) && $this->ssl_cainfo = $config['ssl_cainfo'];
@@ -153,17 +159,10 @@ class RestClient
     /**
      * api_key
      * @param $key
-     * @param bool $name
      */
-    public function api_key($key, $name = FALSE)
+    public function api_key($key)
     {
-        $this->api_key  = $key;
-        
-        if ($name !== FALSE)
-        {
-            $this->api_name = $name;
-        }
-        
+        $this->api_key = $key;
     }
 
     /**
@@ -219,19 +218,19 @@ class RestClient
         }
 
         // If authentication is enabled use it
-        if ($this->http_auth !== false && $this->http_user != '')
+        if ($this->http_auth !== FALSE && $this->http_user != '')
         {
-            $this->http_login($this->http_user, $this->http_pass, $this->http_auth);
+            $this->http_login($this->http_user, sha1($this->http_pass), $this->http_auth);
         }
         
         // If we have an API Key, then use it
-        if ($this->api_key != '')
+        if ($this->api_key !== FALSE)
         {
             $this->http_header($this->api_name, $this->api_key);
         }
 
         // Send cookies with curl
-        if ($this->send_cookies != '')
+        if ($this->send_cookies === TRUE)
         {
             $this->_ci->curl->setCookies($_COOKIE);
         }

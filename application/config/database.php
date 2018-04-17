@@ -88,7 +88,8 @@ $db['wbs'] = array(
     'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	//'db_debug' => (ENVIRONMENT !== 'production'),
+    'db_debug' => FALSE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -103,11 +104,6 @@ $db['wbs'] = array(
 );
 
 $db['lms'] = array(
-    /*	'dsn' => 'mysql:host=localhost; dbname=willbes',
-        'hostname' => 'localhost',
-        'username' => 'git',
-        'password' => 'localhost',
-        'database' => 'willbes',*/
     'dsn' => 'mysql:host=116.125.124.164; port=9925; dbname=lms',
     'hostname' => '116.125.124.164',
     'username' => 'willbes',
@@ -117,7 +113,8 @@ $db['lms'] = array(
     'dbdriver' => 'pdo',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'),
+    //'db_debug' => (ENVIRONMENT !== 'production'),
+    'db_debug' => FALSE,
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',

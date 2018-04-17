@@ -49,6 +49,23 @@ class CodeModel extends WB_Model
     }
 
     /**
+     * 그룹공통코드 조회
+     * @param array $group_ccds
+     * @return array
+     */
+    public function getGroupCcdInArray($group_ccds = [])
+    {
+        $data = $this->_conn->getListResult($this->_table, 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName', [
+            'IN' => ['Ccd' => $group_ccds],
+            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y', 'GroupCcd' => 0]
+        ], null, null, [
+            'OrderNum' => 'asc'
+        ]);
+
+        return array_pluck($data, 'CcdName', 'Ccd');
+    }
+
+    /**
      * @param array $arr_condition
      * @return mixed
      */

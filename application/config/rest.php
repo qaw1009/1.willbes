@@ -93,7 +93,8 @@ $config['enable_emulate_request'] = TRUE;
 | e.g: My Secret REST API
 |
 */
-$config['rest_realm'] = 'REST API';
+//$config['rest_realm'] = 'REST API';
+$config['rest_realm'] = 'WILL-API';
 
 /*
 |--------------------------------------------------------------------------
@@ -109,8 +110,8 @@ $config['rest_realm'] = 'REST API';
 |           authorization key
 |
 */
+//$config['rest_auth'] = FALSE;
 $config['rest_auth'] = FALSE;
-//$config['rest_auth'] = 'basic';
 
 /*
 |--------------------------------------------------------------------------
@@ -409,7 +410,7 @@ $config['rest_key_name'] = 'X-API-KEY';
 |
 */
 //$config['rest_enable_logging'] = FALSE;
-$config['rest_enable_logging'] = TRUE;
+$config['rest_enable_logging'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -444,7 +445,7 @@ $config['rest_logs_table'] = 'wb_api_logs';
 |
 */
 //$config['rest_enable_access'] = FALSE;
-$config['rest_enable_access'] = TRUE;
+$config['rest_enable_access'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -497,7 +498,7 @@ $config['rest_logs_json_params'] = TRUE;
 | See application/controllers/api/example.php for examples
 */
 //$config['rest_enable_limits'] = FALSE;
-$config['rest_enable_limits'] = TRUE;
+$config['rest_enable_limits'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -558,7 +559,8 @@ $config['rest_language'] = 'korean';
 | will access it through a browser
 |
 */
-$config['check_cors'] = FALSE;
+//$config['check_cors'] = FALSE;
+$config['check_cors'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

@@ -81,6 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property FirePHP $firephp                                FirePHP Class
  * @property Curl $curl                                         Curl Class
  * @property Format $format                                 Format Class
+ * @property RestClient $restclient                         REST Client Class
  ***************** MY MODELS *****************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ***********************

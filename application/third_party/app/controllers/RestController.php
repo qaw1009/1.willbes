@@ -20,4 +20,27 @@ class RestController extends \restserver\libraries\REST_Controller
             $this->output->enable_profiler(false);
         }
     }
+
+    /**
+     * api parameter validation check
+     * @param array $rules
+     * @param string $format
+     * @return bool
+     */
+    public function validate($rules = array(), $format = 'json')
+    {
+        $this->load->library('form_validation');
+        $rule_fields = array_fill_keys(array_pluck($rules, 'field'), '');
+        $method = $this->input->method();
+
+        $this->form_validation->set_data(array_replace($rule_fields, $this->{$method}()));
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() === false) {
+            $this->response($this->form_validation->error_array(), _HTTP_VALIDATION_ERROR);
+            return false;
+        }
+
+        return true;
+    }
 }

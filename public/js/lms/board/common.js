@@ -30,7 +30,9 @@ function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
             }
         }
 
-        getAjaxcampusInfo(_campus_url, campus_ccd);
+        if (_campus_url != '') {
+            getAjaxcampusInfo(_campus_url, campus_ccd);
+        }
     }, showError, false, 'GET');
 }
 

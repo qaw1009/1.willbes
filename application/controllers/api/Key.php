@@ -1,31 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * Keys Controller
- * This is a basic Key Management REST controller to make and delete keys
- *
- * @package         CodeIgniter
- * @subpackage      Rest Server
- * @category        Controller
- * @author          Phil Sturgeon, Chris Kacerguis
- * @license         MIT
- * @link            https://github.com/chriskacerguis/codeigniter-restserver
- */
 class Key extends \app\controllers\RestController
 {
     protected $methods = [
-            'index_put' => ['level' => 10, 'limit' => 10],
-            'index_delete' => ['level' => 10],
-            'level_post' => ['level' => 10],
-            'regenerate_post' => ['level' => 10],
+        'index_put' => ['level' => 10, 'limit' => 10],
+        'index_delete' => ['level' => 10],
+        'level_post' => ['level' => 10],
+        'regenerate_post' => ['level' => 10],
     ];
 
     /**
      * Insert a key into the database
-     *
-     * @access public
-     * @return void
      */
     public function index_put()
     {
@@ -55,9 +41,6 @@ class Key extends \app\controllers\RestController
 
     /**
      * Remove a key from the database to stop it working
-     *
-     * @access public
-     * @return void
      */
     public function index_delete()
     {
@@ -85,9 +68,6 @@ class Key extends \app\controllers\RestController
 
     /**
      * Change the level
-     *
-     * @access public
-     * @return void
      */
     public function level_post()
     {
@@ -123,9 +103,6 @@ class Key extends \app\controllers\RestController
 
     /**
      * Suspend a key
-     *
-     * @access public
-     * @return void
      */
     public function suspend_post()
     {
@@ -160,9 +137,6 @@ class Key extends \app\controllers\RestController
 
     /**
      * Regenerate a key
-     *
-     * @access public
-     * @return void
      */
     public function regenerate_post()
     {
@@ -202,8 +176,10 @@ class Key extends \app\controllers\RestController
         }
     }
 
-    /* Helper Methods */
-
+    /**
+     * generate key
+     * @return bool|string
+     */
     private function _generate_key()
     {
         do
@@ -224,8 +200,11 @@ class Key extends \app\controllers\RestController
         return $new_key;
     }
 
-    /* Private Data Methods */
-
+    /**
+     * get key
+     * @param $key
+     * @return mixed
+     */
     private function _get_key($key)
     {
         return $this->rest->db
@@ -234,6 +213,11 @@ class Key extends \app\controllers\RestController
             ->row();
     }
 
+    /**
+     * is key exists
+     * @param $key
+     * @return bool
+     */
     private function _key_exists($key)
     {
         return $this->rest->db
@@ -241,6 +225,12 @@ class Key extends \app\controllers\RestController
             ->count_all_results(config_item('rest_keys_table')) > 0;
     }
 
+    /**
+     * insert key
+     * @param $key
+     * @param $data
+     * @return mixed
+     */
     private function _insert_key($key, $data)
     {
         $data[config_item('rest_key_column')] = $key;
@@ -251,6 +241,12 @@ class Key extends \app\controllers\RestController
             ->insert(config_item('rest_keys_table'));
     }
 
+    /**
+     * update key
+     * @param $key
+     * @param $data
+     * @return mixed
+     */
     private function _update_key($key, $data)
     {
         return $this->rest->db
@@ -258,11 +254,15 @@ class Key extends \app\controllers\RestController
             ->update(config_item('rest_keys_table'), $data);
     }
 
+    /**
+     * delete key
+     * @param $key
+     * @return mixed
+     */
     private function _delete_key($key)
     {
         return $this->rest->db
             ->where(config_item('rest_key_column'), $key)
             ->delete(config_item('rest_keys_table'));
     }
-
 }

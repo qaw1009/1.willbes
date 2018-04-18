@@ -276,9 +276,18 @@ class ProfessorModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $wprof_idx = element('wprof_idx', $input);
+            $site_code = element('site_code', $input);
+
+            // 운영사이트+WBS교수정보 중복체크
+            $duplicate_cnt = $this->findProfessor(true, ['EQ' => ['wProfIdx' => $wprof_idx, 'SiteCode' => $site_code, 'IsStatus' => 'Y']]);
+            if ($duplicate_cnt > 0) {
+                throw new \Exception('이미 등록된 교수정보 입니다.');
+            }
+
             $data = [
-                'wProfIdx' => element('wprof_idx', $input),
-                'SiteCode' => element('site_code', $input),
+                'wProfIdx' => $wprof_idx,
+                'SiteCode' => $site_code,
                 'ProfNickName' => element('prof_nickname', $input),
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'ProfCurriculum' => element('prof_curriculum', $input),

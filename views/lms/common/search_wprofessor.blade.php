@@ -7,6 +7,8 @@
 @section('layer_header')
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
+        <input type="hidden" name="_search_type" value="{{ $_search_type }}"/>
+        <input type="hidden" name="_site_code" value="{{ $_site_code }}"/>
 @endsection
 
 @section('layer_content')
@@ -61,6 +63,11 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                createdRow: function(row, data, dataIndex) {
+                    if (data.IsRegist === 'Y') {
+                        $(row).addClass('bg-danger');
+                    }
+                },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -69,7 +76,11 @@
                     {'data' : 'wProfIdx'},
                     {'data' : 'wProfId'},
                     {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
+                        if (row.IsRegist === 'Y') {
+                            return data;
+                        } else {
                             return '<a href="#" class="btn-select" data-row-idx="' + meta.row + '"><u>' + data + '</u></a>';
+                        }
                     }},
                     {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

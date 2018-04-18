@@ -332,7 +332,7 @@ trait QueryBuilder
     {
         $query = $this->makeQuery($table, $column, $conditions, null, null, []);
 
-        return $query->get()->row_array();
+        return ($column === true) ? $query->get()->row(0)->numrows : $query->get()->row_array();
     }
 
     /**
@@ -349,6 +349,6 @@ trait QueryBuilder
     {
         $query = $this->makeJoinQuery($table, $join_type, $join_table, $join_condition, $column, $conditions, null, null, []);
 
-        return $query->get()->row_array();
+        return ($column === true) ? $query->get()->row(0)->numrows : $query->get()->row_array();
     }
 }

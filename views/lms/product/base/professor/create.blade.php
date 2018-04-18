@@ -412,9 +412,17 @@
             });
 
             // 교수 검색
-            $('#btn_professor_search').setLayer({
-                'url' : '{{ site_url('/common/searchWProfessor') }}',
-                'width' : 900
+            $('#btn_professor_search').on('click', function() {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                if (!site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    return;
+                }
+
+                $('#btn_professor_search').setLayer({
+                    'url' : '{{ site_url('/common/searchWProfessor/index/professor/') }}' + site_code,
+                    'width' : 900
+                });
             });
 
             // 카테고리 + 과목 맵핑 검색

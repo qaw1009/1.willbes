@@ -32,11 +32,11 @@ class RestClient
     protected $http_user = null;
     protected $http_pass = null;
     
-    protected $api_name  = 'X-API-KEY';
-    protected $api_key   = null;
+    protected $api_name = null;
+    protected $api_key = null;
 
-    protected $ssl_verify_peer  = null;
-    protected $ssl_cainfo       = null;
+    protected $ssl_verify_peer = null;
+    protected $ssl_cainfo = null;
 
     protected $send_cookies = null;
     protected $response_string;
@@ -68,27 +68,24 @@ class RestClient
             $config = $this->_ci->config->config[$config];
         }
 
-        $this->rest_server = $config['rest_server'];
-        if (substr($this->rest_server, -1, 1) != '/')
-        {
+        $this->rest_server = element('rest_server', $config);
+        if (substr($this->rest_server, -1, 1) != '/') {
             $this->rest_server .= '/';
         }
 
-        isset($config['rest_default_format']) && $this->format = $config['rest_default_format'];
-        isset($config['allow_send_cookies']) && $this->send_cookies = $config['allow_send_cookies'];
+        $this->format = element('rest_default_format', $config);
+        $this->send_cookies = element('allow_send_cookies', $config);
         
-        isset($config['rest_key_name']) && $this->api_name = $config['rest_key_name'];
-        isset($config['rest_enable_keys']) && $this->api_key = $config['rest_enable_keys'];
+        $this->api_name = element('rest_key_name', $config, 'X-API-KEY');
+        $this->api_key = element('rest_enable_keys', $config);
 
-        isset($config['rest_realm']) && $this->http_realm = $config['rest_realm'];
-        isset($config['rest_auth']) && $this->http_auth = $config['rest_auth'];
-        if (isset($config['rest_valid_logins'])) {
-            $this->http_user = key($config['rest_valid_logins']);
-            $this->http_pass = current($config['rest_valid_logins']);
-        }
+        $this->http_realm = element('rest_realm', $config);
+        $this->http_auth = element('rest_auth', $config);
+        $this->http_user = key(element('rest_valid_logins', $config));
+        $this->http_pass = current(element('rest_valid_logins', $config));
 
-        isset($config['ssl_verify_peer']) && $this->ssl_verify_peer = $config['ssl_verify_peer'];
-        isset($config['ssl_cainfo']) && $this->ssl_cainfo = $config['ssl_cainfo'];
+        $this->ssl_verify_peer = element('ssl_verify_peer', $config);
+        $this->ssl_cainfo = element('ssl_cainfo', $config);
     }
 
     /**

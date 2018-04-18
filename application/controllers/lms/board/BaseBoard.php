@@ -117,6 +117,16 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
+     * GroupCcd 조회
+     * @param $arr_groupCcd : 그룹 코드 배열
+     * @return array
+     */
+    protected function _getFaqGroupInfo($arr_groupCcd)
+    {
+        return $this->codeModel->getGroupCcdInArray($arr_groupCcd);
+    }
+
+    /**
      * 카테고리 조회
      * @param $site_code
      * @param int $parent_cate_code
@@ -135,16 +145,6 @@ class BaseBoard extends \app\controllers\BaseController
     protected function _getCcdArray($group_ccd)
     {
         return $this->codeModel->getCcd($group_ccd);
-    }
-
-    /**
-     * 그룹공통코드 배열에 해당하는 공통코드 조회
-     * @param array $group_ccd
-     * @return array
-     */
-    protected function _getCcdInArray($group_ccd)
-    {
-        return $this->codeModel->getCcdInArray($group_ccd);
     }
 
     /**

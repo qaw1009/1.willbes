@@ -94,3 +94,31 @@ function addValidate() {
         return true;
     }
 }
+
+/**
+ * FAQ 구분별 분류값 조회
+ * @param _url
+ * @param faq_ccd
+ */
+function getFaqGroup(_url, faq_ccd) {
+    var _data = {};
+    var add_selectBox_options = '';
+
+    sendAjax(_url, _data, function(ret) {
+        if (ret.ret_cd) {
+            if (Object.keys(ret.ret_data).length > 0) {
+                $.each(ret.ret_data, function(key, val) {
+                    var chk = '';
+                    if(key == faq_ccd){
+                        chk = 'selected="selected"';
+                    } else {
+                        chk = '';
+                    }
+                    add_selectBox_options += '<option value="'+key+'" '+chk+'>'+val+'</option>';
+                });
+                $('#faq_ccd').html(add_selectBox_options);
+                $('#faq_ccd').prop('disabled',false);
+            }
+        }
+    }, showError, false, 'GET');
+}

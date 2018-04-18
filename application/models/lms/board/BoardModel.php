@@ -75,6 +75,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
                 ";
                 break;
+            case "faq" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ1 ON LB.FaqGroupTypeCcd = LSC_FAQ1.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
+                ";
+                break;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -312,6 +318,12 @@ class BoardModel extends WB_Model
                     ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                     LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin ON LB.ReplyAdminIdx = counselAdmin.wAdminIdx and counselAdmin.wIsStatus='Y'
                     LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin2 ON LB.ReplyUpdAdminIdx = counselAdmin2.wAdminIdx and counselAdmin2.wIsStatus='Y'
+                ";
+                break;
+            case "faq" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ1 ON LB.FaqGroupTypeCcd = LSC_FAQ1.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
                 ";
                 break;
         }
@@ -602,6 +614,105 @@ class BoardModel extends WB_Model
         return true;
     }
 
+    /**
+     * FAQ구분별 게시글 횟수
+     * @param $bm_idx
+     * @param array $groupCcd
+     * @return array
+     */
+    public function getFaqBoardCcdCountList($bm_idx, $groupCcd = [])
+    {
+       $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
+        $this->_conn->from($this->_table_sys_code);
+        $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
+        $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
+        $this->_conn->join($this->_table, "{$this->_table_sys_code}.Ccd = {$this->_table}.FaqGroupTypeCcd");
+        $this->_conn->group_by($this->_table.'.FaqGroupTypeCcd');
+        $data = $this->_conn->get()->result_array();
+        $data = array_pluck($data, 'count', 'Ccd');
+        return $data;
+    }
+
+    /**
+     * 정렬변경 : Faq 에서만 사용
+     * @param $arr_condition
+     * @param $column
+     * @return mixed
+     */
+    public function listFaqBoardForOrderBy($arr_condition, $column)
+    {
+        $from = "
+            FROM {$this->_table} AS LB
+            LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ1 ON LB.FaqGroupTypeCcd = LSC_FAQ1.Ccd
+            LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['LB.FaqGroupTypeCcd'=>'ASC', 'LB.OrderNum'=>'ASC'])->getMakeOrderBy();
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return $query->result_array();
+    }
+
+    /**
+     * OrderValue Update
+     * @param array $data
+     * @return array|bool
+     */
+    public function modifyOrderByBoard($data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $result = $this->_findBoardData($data['target_idx']);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $arr_condition = [
+                'BmIdx' => $data['bm_idx'],
+                'FaqGrouptypeCcd' => $data['faq_group_ccd'],
+            ];
+
+            // 해당 카테고리 외에 다른 카테고리 OrderValue 업데이트
+            if($data['distance'] > 0) {
+                // 순위를 올렸을 경우
+                $is_update = $this->_conn->set('OrderNum', '`OrderNum` - 1', false);
+                $is_update = $is_update->where($arr_condition);
+                $is_update = $is_update->where(['OrderNum >' => $result['OrderNum']]);
+                $is_update = $is_update->where(['OrderNum <=' => $result['OrderNum'] + $data['distance']]);
+                $is_update = $is_update->update($this->_table);
+            } else {
+                // 순위를 내렸을 경우
+                $is_update = $this->_conn->set('OrderNum', '`OrderNum` + 1', false);
+                $is_update = $is_update->where($arr_condition);
+                $is_update = $is_update->where(['OrderNum >=' => $result['OrderNum'] + $data['distance']]);
+                $is_update = $is_update->where(['OrderNum <' => $result['OrderNum']]);
+                $is_update = $is_update->update($this->_table);
+            }
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $is_update = $this->_conn->set('OrderNum', '`OrderNum` + ' . $data['distance'], false);
+            $is_update = $is_update->where($arr_condition);
+            $is_update = $is_update->where(['BoardIdx' => $data['target_idx']]);
+            $is_update = $is_update->update($this->_table);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
 
     /**
      * 게시판 카테고리 조회
@@ -871,7 +982,7 @@ class BoardModel extends WB_Model
      */
     private function _findBoardData($idx)
     {
-        $column = 'BoardIdx';
+        $column = 'BoardIdx, OrderNum';
         $from = "
             FROM {$this->_table}
         ";
@@ -885,7 +996,7 @@ class BoardModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where);
-        $query = $query->result_array();
+        $query = $query->row_array();
 
         return $query;
     }
@@ -910,7 +1021,7 @@ class BoardModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where);
-        $query = $query->result_array();
+        $query = $query->row_array();
 
         return $query;
     }

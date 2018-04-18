@@ -11,9 +11,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="">FAQ 조건</label>
                     <div class="col-md-11 form-control-static">
-                        {{--@foreach($faqGroupTypeCcd as $key => $val)
-                            <span class="mr-10">{{$val}} (5)</span>
-                        @endforeach--}}
+                        @foreach($faq_group_ccd as $key => $val)
+                            <a href="javascript:void(0);" class="blue btn-group-ccd" data-group-ccd="{{$key}}"><u class="mr-10">{{$val}} ({{ empty($faq_group_ccd_countList[$key]) ? '0' : $faq_group_ccd_countList[$key] }})</u></a>
+                        @endforeach
                     </div>
                 </div>
 
@@ -29,6 +29,9 @@
 
                         <select class="form-control" id="search_faq_type" name="search_faq_type">
                             <option value="">FAQ 분류</option>
+                            @foreach($faq_ccd as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
                         <select class="form-control" id="search_is_best" name="search_is_best">
@@ -133,13 +136,22 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            if (row.IsBest == 'Y') {
+                            /*if (row.IsBest == 'Y') {
                                 return 'BEST';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }*/
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : 'OrderNum', 'render' : function(data, type, row, meta) {
+                            // 리스트 번호
+                            if (row.IsBest == 'Y') {
+                                return 'BEST';
+                            } else {
+                                return data;
                             }
                         }},
-                    {'data' : 'SiteName'},
+
                     {'data' : 'SiteName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
                             var obj = data.split(',');
@@ -150,8 +162,8 @@
                             return str;
                         }},
 
-                    {'data' : 'SiteName'},
-                    {'data' : 'SiteName'},
+                    {'data' : 'FaqGroupCcdName'},
+                    {'data' : 'FaqCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
@@ -180,11 +192,49 @@
                 ]
             });
 
-            // 데이터 수정 폼
-            $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            $('.btn-group-ccd').on('click', function() {
+                var gCcd = $(this).data('group-ccd');
+                var qs = getQueryString().replace(/&group_ccd=([0-9]*)/gi, '');
+                location.replace('{{ site_url("/board/{$boardName}") }}/' + qs + '&group_ccd=' + gCcd);
             });
 
+            // 데이터 수정 폼
+            $list_table.on('click', '.btn-modify', function() {
+                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 데이터 Read 페이지
+            $list_table.on('click', '.btn-read', function() {
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // Best 적용
+            $('.btn-is-best').on('click', function() {
+                var $params = {};
+                var _url = '{{ site_url("/board/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
+
+                $('input[name="is_best"]:checked').each(function() {
+                    $params[$(this).data('is-best-idx')] = $(this).val();
+                });
+
+                if (Object.keys($params).length <= '0') {
+                    alert('HOT 적용할 게시글을 선택해주세요.');
+                    return false;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+            });
 
             $('.btn-regist-orderby').click(function() {
                 var uri_param = '{!! $boardDefaultQueryString !!}';

@@ -105,7 +105,6 @@
             // 기간 조회 디폴트 셋팅
             //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
 
-
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [

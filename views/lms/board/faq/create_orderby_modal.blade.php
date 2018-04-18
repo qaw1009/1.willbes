@@ -3,98 +3,140 @@
     정렬변경
 @stop
 @section('layer_header')
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+
+@endsection
+
+@section('layer_content')
+    {!! form_errors() !!}
+    <h5>- 정렬할 FAQ 구분을 선택해 주세요.</h5>
+    <form class="form-horizontal form-label-left searching" id="search_form_model" name="search_form_model" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        @endsection
-
-        @section('layer_content')
-            {!! form_errors() !!}
-            <h5>- 정렬할 FAQ 구분을 선택해 주세요.</h5>
-            <div class="x_panel">
-                <div class="x_content">
-                    <div class="form-group">
-                        <label class="control-label col-md-2" for="">FAQ 구분</label>
-                        <div class="col-md-5">
-                            <select class="form-control" required="required" id="" name="" title="FAQ구분">
-                                @foreach($faqGroupTypeCcd as $key => $val)
-                                    <option value="{{$key}}">{{$val}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="">FAQ 구분</label>
+                    <div class="col-md-5">
+                        <select class="form-control" required="required" id="model_faq_group_ccd" name="model_faq_group_ccd" title="FAQ구분">
+                            <option value="">선택</option>
+                            @foreach($faq_group_ccd as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
-
-            <div class="x_panel mt-10">
-                <div class="x_content">
-                    <table id="list_ajax_table" class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>구분</th>
-                                <th>분류</th>
-                                <th>제목</th>
-                                <th>정렬</th>
-                                <th>사용</th>
-                            </tr>
-                        </thead>
-                        <tbody class="selector" style="cursor:n-resize">
-                            @for($i = 1; $i <= 10; $i++)
-                                <tr>
-                                    <td>{{$i}}</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                            @endfor
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <script src="/public/vendor/jquery/v.1.12.1/jquery-ui.js"></script>
-            <script type="text/javascript">
-                var $regi_form = $('#regi_form');
-
-                $(document).ready(function() {
-                    (function(){
-                        var start_index;
-                        $('.selector').sortable({
-                            item: $('.selector'),
-                            start: function(event, ui) {
-                                //console.log('start point : ' + ui.item.position().top);
-
-                                start_index = ui.item.index();
-
-                                console.log(start_index);
-                            },
-                            end: function(event, ui) {
-                                console.log('end point : ' + ui.item.position().top);
-                            }
-                        });
-                    })();
-
-                    /*$('.selector').sortable({
-                        item: $('.selector'),
-                        start: function(event, ui) {
-                            console.log('start point : ' + ui.item.position().top);
-                        },
-                        end: function(event, ui) {
-                            console.log('end point : ' + ui.item.position().top);
-                        }
-                    });*/
-
-                });
-            </script>
-        @stop
-
-        @section('add_buttons')
-            <button type="submit" class="btn btn-success">Submit</button>
-        @endsection
-
-        @section('layer_footer')
+        </div>
     </form>
+
+    <div class="x_panel mt-10">
+        <div class="x_content">
+            <table id="list_ajax_table_model" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th class="searching">구분</th>
+                    <th>분류</th>
+                    <th>제목</th>
+                    <th>정렬</th>
+                    <th>사용</th>
+                </tr>
+                </thead>
+                <tbody class="selector" style="cursor:move">
+                    @foreach($data as $row)
+                        <tr>
+                            <td class="faq-idx" data-idx="{{ $row['BoardIdx'] }}">{{ $row['FaqGroupCcdName'] }}<span class="hide">{{ $row['FaqGroupTypeCcd'] }}</span></td>
+                            <td>{{ $row['FaqCcdName'] }}</td>
+                            <td>{{ $row['Title'] }}</td>
+                            <td>{{ $row['OrderNum'] }}</td>
+                            <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
+                                <span class="hide">{{ $row['IsUse'] }}</span>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/public/vendor/jquery/v.1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        var $datatable_model;
+        var $search_form_model = $('#search_form_model');
+        var $list_table_model = $('#list_ajax_table_model');
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable_model
+                .column('.searching').search($search_form_model.find('select[name="model_faq_group_ccd"]').val())
+                .draw();
+        }
+
+        $(document).ready(function() {
+            $search_form_model.submit(function(e) {
+                e.preventDefault();
+                if ($(this).hasClass('searching') === true) {
+                    datatableSearching();
+                } else {
+                    $datatable_model.draw();
+                }
+            });
+
+            // searching: true 옵션일 경우 검색
+            $search_form_model.filter('.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
+                datatableSearching();
+            });
+
+            $datatable_model = $list_table_model.DataTable({
+                ajax: false,
+                paging: false,
+                searching: true
+            });
+
+            // category item drag & drop
+            (function(){
+                var start_index;
+
+                $(".selector").sortable({
+                    placeholder: "ui-state-highlight",
+                    start: function(e, ui) {
+                        start_index = ui.item.index();
+                    },
+                    stop: function(e, ui) {
+                        if ($('#model_faq_group_ccd').val() == '') {
+                            notifyAlert('error', '알림', 'FAQ구분을 선택해 주세요.');
+                            $(this).sortable("cancel");
+                            return false;
+                        }
+
+                        var _update_order_url = '{{ site_url("/board/{$boardName}/updateAjaxOrderBy/?") }}' + '{!! $boardDefaultQueryString !!}';
+
+                        var target_idx = $(this).find('.faq-idx').eq(ui.item.index()).data('idx');
+                        var distance = ui.item.index() - start_index;
+
+                        var data = {
+                            '{{ csrf_token_name() }}' : $search_form_model.find('input[name="{{ csrf_token_name() }}"]').val(),
+                            '_method' : 'PUT',
+                            'faq_group_ccd': $('#model_faq_group_ccd').val(),
+                            'target_idx' : target_idx,
+                            'distance' : distance
+                        };
+
+                        sendAjax(_update_order_url, data, function (ret) {
+                            if (ret.ret_cd) {
+                                notifyAlert('success', '알림', ret.ret_msg);
+                            }
+                        }, showError, false, 'POST', 'json');
+                    }
+                }).disableSelection();
+            })();
+        });
+    </script>
+@stop
+
+{{--@section('add_buttons')
+    <button type="submit" class="btn btn-success">Submit</button>
+@endsection--}}
+
+@section('layer_footer')
+
 @endsection

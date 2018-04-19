@@ -1,9 +1,9 @@
 <?php
-namespace restserver\libraries;
+namespace app\restserver\libraries;
 
 use Exception;
 use stdClass;
-//use restserver\libraries\Format;
+//use app\restserver\libraries\Format;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 

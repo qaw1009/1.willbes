@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'third_party/restserver/libraries/REST_Controller.php';
 
-class RestController extends \restserver\libraries\REST_Controller
+class RestController extends \app\restserver\libraries\REST_Controller
 {
     use InitController;
 

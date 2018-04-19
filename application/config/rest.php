@@ -624,7 +624,7 @@ $config['allowed_cors_origins'] = [];
 | Rest server url
 |--------------------------------------------------------------------------
 */
-$config['rest_server'] = 'http://' . ENV_CHAR . 'api.willbes.net';
+$config['rest_server'] = 'http://' . ENV_CHAR . 'api.' . config_item('base_domain');
 
 /*
 |--------------------------------------------------------------------------

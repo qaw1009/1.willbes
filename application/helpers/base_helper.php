@@ -9,11 +9,19 @@ if (!function_exists('config_get')) {
      */
     function config_get($key)
     {
-        if (strpos($key, '.') === false) return config_item($key);
+        return array_get(get_config(), $key);
+    }
+}
 
-        $configs = config_item(str_first_pos_before($key, '.'));
-
-        return array_get($configs, str_first_pos_after($key, '.'));
+if (!function_exists('config_site')) {
+    /**
+     * 사이트별 $key에 해당하는 config 값 리턴
+     * @param $key
+     * @return mixed
+     */
+    function config_site($key)
+    {
+        return array_get(config_item(SUB_DOMAIN), $key);
     }
 }
 

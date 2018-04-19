@@ -25,6 +25,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = '';
 $config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'];
+
+/*
+|--------------------------------------------------------------------------
+| Base System Domain
+|--------------------------------------------------------------------------
+*/
+$config['base_domain'] = 'willbes.net';
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -426,7 +434,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 */
 //$config['cookie_prefix']	= '';
 $config['cookie_prefix']	= '_wb_';
-$config['cookie_domain']	= substr($_SERVER['HTTP_HOST'], strpos($_SERVER['HTTP_HOST'], '.'));    //.willbes.net
+$config['cookie_domain']	= '.' . $config['base_domain'];
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;

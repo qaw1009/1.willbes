@@ -106,7 +106,7 @@ if (in_array(SUB_DOMAIN, ['lms']) === true) {
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('base_config');
+$autoload['config'] = array('base_config', SUB_DOMAIN . '_config');
 
 /*
 | -------------------------------------------------------------------

@@ -29,7 +29,7 @@ class Counsel extends BaseBoard
     private $_groupCcd = [
         'voc' => '620',
         'reply' => '621',       //답변상태
-        'counsel_type' => '622' //상담유형
+        'type_group_ccd' => '622' //유형 그룹 코드 = 상담유형
     ];
 
     public function __construct()
@@ -58,7 +58,7 @@ class Counsel extends BaseBoard
             $arr_category = $this->_getCategoryArray($this->site_code);
         }
         //상담유형
-        $arr_counsel_type = $this->_getCcdArray($this->_groupCcd['counsel_type']);
+        $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
         //답변상태
         $arr_reply = $this->_getCcdArray($this->_groupCcd['reply']);
 
@@ -77,7 +77,7 @@ class Counsel extends BaseBoard
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
             'arr_unAnswered' => $arr_unAnswered,
-            'arr_counsel_type' => $arr_counsel_type,
+            'arr_type_group_ccd' => $arr_type_group_ccd,
             'arr_reply' => $arr_reply,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}"
         ]);
@@ -103,7 +103,7 @@ class Counsel extends BaseBoard
                 'LB.RegType' => $this->_reg_type['user'],
                 'LB.SiteCode' => $this->site_code,
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'LB.TypeCcd' => $this->_reqP('search_counsel_type'),
+                'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
                 'LB.isPublic' => $this->_reqP('search_is_public'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),

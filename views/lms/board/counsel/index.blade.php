@@ -25,9 +25,9 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_counsel_type" name="search_counsel_type">
+                        <select class="form-control" id="search_type_group_ccd" name="search_type_group_ccd">
                             <option value="">상담유형</option>
-                            @foreach($arr_counsel_type as $key => $val)
+                            @foreach($arr_type_group_ccd as $key => $val)
                                 <option value="{{$key}}">{{$val}}</option>
                             @endforeach
                         </select>

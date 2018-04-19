@@ -12,6 +12,8 @@ class BoardModel extends WB_Model
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
     private $_table_member = 'lms_member';
+    private $_table_product_subject = 'lms_product_subject';
+
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
 
@@ -62,14 +64,17 @@ class BoardModel extends WB_Model
             ) AS LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
-            LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
 
         switch ($board_type) {
             case "notice" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                ";
                 break;
             case "counsel" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
@@ -77,8 +82,21 @@ class BoardModel extends WB_Model
                 break;
             case "faq" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ1 ON LB.FaqGroupTypeCcd = LSC_FAQ1.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
+                ";
+                break;
+            case "examAnnouncement" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.TypeCcd = LSC1.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.AreaCcd = LSC2.Ccd
+                ";
+                break;
+            case "examProblem" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.AreaCcd = LSC1.Ccd
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
                 break;
         }
@@ -232,13 +250,18 @@ class BoardModel extends WB_Model
             }
 
             $insert_column = '
-                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeGroupCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ProfIdx, SubjectCcd, LecIdx, Title, Content, ReadCnt, SettingReadCnt, OrderNum, IsUse, IsStatus, RegMemIdx, 
-                RegAdminIdx, RegIp, UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
+                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, LecIdx,
+                Title, Content, ReadCnt, SettingReadCnt, OrderNum,
+                IsUse,
+                IsStatus, RegMemIdx, 
+                RegAdminIdx,
+                RegIp,
+                UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
             ';
             $select_column = '
-                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeGroupCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ProfIdx, SubjectCcd, LecIdx,
+                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, LecIdx,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
                 CASE IsUse WHEN "Y" THEN "N" ELSE "N" END AS IsUse,
@@ -301,13 +324,16 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
-            LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
         ";
         switch ($board_type) {
             case "notice" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                ";
                 break;
             case "counsel" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN (
@@ -322,8 +348,21 @@ class BoardModel extends WB_Model
                 break;
             case "faq" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ1 ON LB.FaqGroupTypeCcd = LSC_FAQ1.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
+                ";
+                break;
+            case "examAnnouncement" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.TypeCcd = LSC1.Ccd
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.AreaCcd = LSC2.Ccd
+                ";
+                break;
+            case "examProblem" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.AreaCcd = LSC1.Ccd
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
                 break;
         }

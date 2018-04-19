@@ -124,3 +124,35 @@ function getFaqGroup(_url, faq_ccd) {
         }
     }, showError, false, 'GET');
 }
+
+/**
+ * 과목 조회
+ * @param _url
+ * @param subject_idx
+ */
+function getSubject(_url, subject_idx) {
+    var _data = {};
+    var add_selectBox_options = '';
+
+    sendAjax(_url, _data, function(ret) {
+        if (ret.ret_cd) {
+            if (Object.keys(ret.ret_data).length > 0) {
+                $.each(ret.ret_data, function(key, val) {
+                    var chk = '';
+                    if(key == subject_idx){
+                        chk = 'selected="selected"';
+                    } else {
+                        chk = '';
+                    }
+                    add_selectBox_options += '<option value="'+key+'" '+chk+'>'+val+'</option>';
+                });
+                $('#subject_idx').html(add_selectBox_options);
+                $('#subject_idx').prop('disabled',false);
+            } else {
+                add_selectBox_options = '<option value="">과목</option>';
+                $('#subject_idx').html(add_selectBox_options);
+                $('#subject_idx').prop('disabled',true);
+            }
+        }
+    }, showError, false, 'GET');
+}

@@ -37,6 +37,17 @@
                     <div class="form-control-static col-md-2">
                         {{$data['SubjectName']}}
                     </div>
+                    <label class="control-label col-md-2" for="">자료유형</label>
+                    <div class="form-control-static col-md-2">
+                        {{$data['TypeCcdName']}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="">강좌명</label>
+                    <div class="form-control-static col-md-2">
+
+                    </div>
                     <label class="control-label col-md-2" for="">사용</label>
                     <div class="form-control-static col-md-2">
                         {{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}
@@ -160,7 +171,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                        location.replace('{{ site_url("/board/{$boardName}") }}/detailList/' + getQueryString());
                     }
                 }, showError, false, 'POST');
             });

@@ -3,10 +3,12 @@
 @section('content')
     <h5>- 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx={{$bmIdx}}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="bm_idx" value="{{ $bn_idx }}"/>
+        <input type="hidden" name="idx" value="{{ $board_idx }}"/>
+        <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
         <div class="x_panel">
             <div class="x_title">
                 <h2>공지게시판 정보</h2>
@@ -17,53 +19,48 @@
             </div>
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">운영사이트<span class="required">*</span></label>
-                    <div class="col-md-3 item">
-                        <select class="form-control" required="required" id="" name="" title="운영사이트">
-                            <option value="">선택</option>
+                    <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
+                            @foreach($getSiteArray as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
+                            @endforeach
                         </select>
                     </div>
-                    <label class="control-label col-md-2 " for="">구분<span class="required">*</span></label>
-                    <div class="col-md-3 item form-inline">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" name="" value="" class="flat"/><label class="inline-block mr-5" for="">전체</label>
-                            <input type="checkbox" name="" value="" class="flat"/><label class="inline-block mr-5" for="">일반경찰</label>
-                            <input type="checkbox" name="" value="" class="flat"/><label class="inline-block mr-5" for="">경찰</label>
-                            <input type="checkbox" name="" value="" class="flat"/><label class="inline-block mr-5" for="">해양경찰</label>
+                            <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
+                        </div>
+                        <div class="checkbox" id="site_category">
+                            @foreach($getCategoryArray as $key => $val)
+                                @php $cate_idx = $loop->index-1; @endphp
+                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat" @if($method == 'PUT' && in_array($key,$data['arr_cate_code']) === true) checked="checked" @endif/>
+                                <label class="inline-block mr-5" for="site_category_{{$key}}">{{$val}}</label>
+                            @endforeach
                         </div>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="">분류</label>
-                    <div class="col-md-3">
-                        <select class="form-control" id="" name="">
-                            <option value="">구분</option>
-                        </select>
-                    </div>
-                    <label class="control-label col-md-2" for="">과목<span class="required">*</span></label>
-                    <div class="col-md-3 item form-inline">
-                        <select class="form-control" required="required" id="" name="">
-                            <option value="">수사</option>
+                    <label class="control-label col-md-2" for="subject_idx">과목<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" required="required" id="subject_idx" name="subject_idx" title="과목">
+                            @foreach($arr_subject as $key => $val)
+                                <option value="{{$key}}" @if($method == 'PUT' && $key == $data['SubjectIdx']) selected="selected" @endif>{{$val}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">제목<span class="required">*</span></label>
-                    <div class="col-md-9 item">
-                        <input type="text" id="" name="" required="required" class="form-control" maxlength="20" title="제목" value="{{ $data['title'] }}" placeholder="제목 입니다.">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="">HOT</label>
+                    <label class="control-label col-md-2" for="is_best">HOT</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" name="" value="" class="flat"/> <span class="red">HOT</span>
+                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat" @if($data['IsBest']=='Y')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="">사용여부<span class="required">*</span></label>
+                    <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
@@ -73,23 +70,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">내용<span class="required">*</span></label>
+                    <label class="control-label col-md-2" for="title">제목<span class="required">*</span></label>
+                    <div class="col-md-9 item">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="board_content">내용<span class="required">*</span></label>
                     <div class="col-md-9">
-                        <textarea id="notice_contents" name="notice_contents" class="form-control" rows="7" title="내용" placeholder="">{!! $data['contents'] !!}</textarea>
+                        <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="attach_img_1">첨부</label>
                     <div class="col-md-9 form-inline">
-                        @for($i = 1; $i <= $attach_img_cnt; $i++)
+                        @for($i = 0; $i < $attach_file_cnt; $i++)
                             <div class="mb-5">
-                                <input type="file" id="attach_img{{ $i }}" name="attach_img[]" class="form-control" title="첨부{{ $i }}"/>
-                                @if(empty($data{'AttachImgName' . $i}) === false)
-                                    <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['AttachImgPath'] . $data{'AttachImgName' . $i} }}" rel="popup-image">{{ $data{'AttachImgName' . $i} }}</a> ]</p>
-                                    <div class="checkbox">
-                                        <input type="checkbox" name="" value="{{ $i }}" class="flat"/> <span class="red">삭제</span>
-                                    </div>
+                                <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control" title="첨부{{ $i }}"/>
+
+                                @if(empty($data['arr_attach_file_path'][$i]) === false)
+                                    <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]
+                                        <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
+                                    </p>
                                 @endif
                             </div>
                         @endfor
@@ -99,9 +103,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="admin_mail_id">조회수</label>
                     <div class="col-md-4 form-inline">
-                        실제 <input type="text" id="real_read_count" name="real_read_count" class="form-control" title="실제" readonly="readonly" value="{{$data['real_read_count']}}" style="width: 60px; padding:5px">
+                        실제 <input type="text" id="read_count" name="read_count" class="form-control" title="실제" readonly="readonly" value="{{$data['ReadCnt']}}" style="width: 60px; padding:5px">
                         +
-                        생성 <input type="number" id="read_count" name="read_count" class="form-control" title="생성" value="" style="width: 70px; padding:5px">
+                        생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['SettingReadCnt']}}" style="width: 70px; padding:5px">
                         =
                         노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="" style="width: 70px; padding:5px">
                     </div>
@@ -124,47 +128,77 @@
     <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
     <script src="/public/vendor/cheditor/cheditor.js"></script>
     <script src="/public/js/editor_util.js"></script>
+    <script src="/public/js/lms/board/common.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            // editor load
+            var campus_ccd = '';
+
+            //editor load
             var $editor_profile = new cheditor();
             $editor_profile.config.editorHeight = '170px';
             $editor_profile.config.editorWidth = '100%';
-            $editor_profile.inputForm = 'notice_contents';
+            $editor_profile.inputForm = 'board_content';
             $editor_profile.run();
 
-            $('#read_count').keyup(function() {
+            /**페이지 로딩시 실행**/
+            $('#total_read_count').val(SumReadCount());
+
+            //목록
+            $('#btn_list').click(function() {
+                location.replace('{{ site_url("/board/{$boardName}") }}/detailList/' + getQueryString());
+            });
+
+            //운영사이트값에 따른 구분 값 셋팅
+            $('#site_code').change(function() {
+                var _siteCategory_url = '{{ site_url("/board/{$boardName}/getAjaxSiteCategoryInfo/") }}' + this.value + getQueryString();
+                var _campus_url = '';
+                getSiteCategory(_siteCategory_url, _campus_url, campus_ccd);
+            });
+            $('#site_code').on('change', function() {
+                $('input[type="checkbox"].flat').iCheck({
+                    checkboxClass: 'icheckbox_flat-blue',
+                    radioClass: 'iradio_flat-blue'
+                });
+            });
+
+            //조회수
+            $('#setting_readCnt').keyup(function() {
                 $('#total_read_count').val(SumReadCount());
+            });
+
+            // 파일삭제
+            $('.file-delete').click(function() {
+                var _url = '{{ site_url("/board/{$boardName}/destroyFile/") }}' + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'attach_idx' : $(this).data('attach-idx')
+                };
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
 
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url("/board/{$boardName}/store") }}';
+                getEditorBodyContent($editor_profile);
+                var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                        location.replace('{{ site_url("/board/{$boardName}/detailList") }}/' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
-            });
-
-            $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                }, showValidateError, addValidate, false, 'alert');
             });
         });
-
-        //입력값에 따른 조회수 값 리턴
-        function SumReadCount() {
-            var total_count;
-            var real_read_count = Number($('#real_read_count').val());
-            var read_count = Number($('#read_count').val());
-
-            if (real_read_count == '0'){ real_read_count = 0; }
-            total_count = real_read_count + read_count;
-            return total_count;
-        }
     </script>
 @stop

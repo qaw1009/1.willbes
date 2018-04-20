@@ -1,69 +1,77 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    @include('lms.board.boardnav')
-    <h5>- 교수 학습 Q&A 게시판을 관리하는 메뉴입니다.</h5>
-    <h6>- 경찰 > 신광은 교수 학습Q&A</h6>
-    <div class="ln_solid"></div>
+    <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다. (괄호 안 붉은색 숫자는 미답변 카운트입니다.)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
-                    <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                    <div class="col-md-11 form-inline">
+                        <select class="form-control" id="search_category" name="search_category">
                             <option value="">구분</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                            @foreach($arr_category as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="" name="">
                             <option value="">분류</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_subject" name="search_subject">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_type_group_ccd" name="search_type_group_ccd">
                             <option value="">질문유형</option>
-                            <option value="Y">국어</option>
-                            <option value="N">영어</option>
+                            @foreach($arr_type_group_ccd as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                            @foreach($arr_reply as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
                         </select>
 
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                            <option value="Y">공개</option>
+                            <option value="N">비공개</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">질문/강좌명</label>
+                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
                     <div class="col-md-4">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <label class="control-label col-md-1" for="search_start_date">답변</label>
-                    <div class="col-md-5 form-inline">
-                        <input type="text" class="form-control" id="search_value" name="search_value">
+                    <label class="control-label col-md-2" for="search_replay_value">답변</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" id="search_replay_value" name="search_replay_value">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
-                    <div class="col-md-2 form-inline">
+                    <div class="col-md-1">
                         <input type="text" class="form-control" id="search_member_value" name="search_member_value">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <p class="form-control-static">• 이름, 아이디, 휴대폰번호 검색 기능</p>
                     </div>
-                    <label class="control-label col-md-1" for="search_start_date">등록일</label>
+
+                    <label class="control-label col-lg-offset-1 col-md-1" for="search_start_date">등록일</label>
                     <div class="col-md-5 form-inline">
                         <div class="input-group">
                             <div class="input-group-addon">
@@ -78,6 +86,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="row">
@@ -87,10 +96,10 @@
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
-                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="hot_display"/> <label for="hot_display">공지 숨기기</label>
+                        <input type="checkbox" name="search_chk_notice_display" value="1" class="flat" id="notice_display"/> <label for="notice_display">공지 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button class="btn btn-default ml-30 mr-30" type="button">검색초기화</button>
+                    <button class="btn btn-default ml-30 mr-30" type="button" id="btn_search_del">검색초기화</button>
                 </div>
             </div>
         </div>
@@ -101,11 +110,11 @@
                 <thead>
                 <tr>
                     <th>NO</th>
-                    <th>사이트</th>
+                    <th>운영사이트</th>
                     <th>구분</th>
                     <th>분류</th>
                     <th>과목</th>
-                    <th>유형</th>
+                    <th>질문유형</th>
                     <th>제목</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -133,40 +142,130 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-10"></i> 공지등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/{$boardName}/createDetail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                    { text: '<i class="fa fa-pencil mr-10"></i> 공지 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url("/board/{$boardName}/listAjax") }}',
+                    'url' : '{{ site_url("/board/{$boardName}/detailListAjax?") }}' + '{!! $boardDefaultQueryString !!}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                "createdRow" : function( row, data, index ) {
+                    if (data['RegType'] == '1') {
+                        $(row).addClass('blue-sky');
+                    }
+
+                    if (data['IsStatus'] == 'N') {
+                        $(row).addClass('bg-gray-custom');
+                    }
+                },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            if (row.RegType == '1') {
+                                return '<b>공지</b>';
+                            } else {
+                                return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }
                         }},
-                    {'data' : 'wContentCcdName'},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'wProfId'},
-                    {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.wProfIdx + '"><u>' + data + '</u></a>';
+                    {'data' : 'SiteName'},
+                    {'data' : 'CampusName'},
+                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                            var obj = data.split(',');
+                            var str = '';
+                            for (key in obj) {
+                                str += obj[key]+"<br>";
+                            }
+                            return str;
                         }},
-                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    {'data' : 'TypeCcdName'},
+                    {'data' : 'TypeCcdName'},
+                    {'data' : 'Title', 'render' : function(data, type, row, meta) {
+                            if (row.RegType == 1) {
+                                return '<a href="javascript:void(0);" class="btn-admin-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            } else {
+                                return '<a href="javascript:void(0);" class="btn-counsel-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                            }
                         }},
-                    {'data' : 'wRegAdminName'},
-                    {'data' : 'wRegDatm'}
+                    {'data' : 'RegType', 'render' : function(data, type, row, meta) {
+                            if (data == 1) {
+                                return row.wAdminName;
+                            } else {
+                                if (row.RegMemName == null) {
+                                    return '';
+                                } else {
+                                    return row.RegMemName+'('+row.RegMemIdx+')';
+                                }
+
+                            }
+                        }},
+                    {'data' : 'RegDatm'},
+                    {'data' : 'ReplyStatusCcdName', 'render' : function(data, type, row, meta) {
+                            return (data == '미답변') ? '<p class="red">'+data+'</p>' : data;
+                        }},
+                    {'data' : 'ReplyRegAdminName'},
+                    {'data' : 'ReplyRegDatm'},
+                    {'data' : 'IsPublic', 'render' : function(data, type, row, meta) {
+                            return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
+                        }},
+
+                    /*{'data' : 'ReadCnt'},*/
+                    {'data' : 'ReadCnt', 'render' : function(data, type, row, meta) {
+                            var cnt = Number(data) + Number(row.SettingReadCnt);
+                            return cnt;
+                        }},
+
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                            return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                        }},
+
+                    {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
+                            if (row.RegType == 1) {
+                                return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                            } else {
+                                if (row.ReplyStatusCcd == '{{$arr_ccd_reply['finish']}}') {
+                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
+                                } else {
+                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>답변</u></a>';
+                                }
+                            }
+                        }},
                 ]
             });
 
-            // 데이터 수정 폼
-            $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            // 검색초기화
+            $('#btn_search_del').on('click', function() {
+                location.replace('{{ site_url("/board/{$boardName}") }}/?' + '{!! $boardDefaultQueryString !!}');
             });
+
+            // 공지 숨기기
+            $search_form.on('ifChanged', '#notice_display', function() {
+                $datatable.draw();
+            });
+
+            // 공지 데이터 수정 폼
+            $list_table.on('click', '.btn-modify', function() {
+                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 공지 데이터 Read 페이지
+            $list_table.on('click', '.btn-admin-read', function() {
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 답변 수정/등록 폼
+            $list_table.on('click', '.btn-reply-modify', function() {
+                location.replace('{{ site_url("/board/{$boardName}/createCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 공지 데이터 Read 페이지
+            $list_table.on('click', '.btn-counsel-read', function() {
+                location.replace('{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
         });
     </script>
 @stop

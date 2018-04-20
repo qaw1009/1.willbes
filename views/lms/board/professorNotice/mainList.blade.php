@@ -1,24 +1,20 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    @include('lms.board.boardnav')
     <h5>- 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! html_site_tabs('tabs_site_code') !!}
         {!! csrf_field() !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">조건</label>
-                    <div class="col-md-3 form-inline">
-                        <select class="form-control" id="search_is_use" name="search_is_use">
-                            <option value="">과목명</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
-                        </select>
-                    </div>
-                    <label class="control-label col-md-1" for="search_start_date">교수명 검색</label>
-                    <div class="col-md-5 form-inline">
+                    <label class="control-label col-md-1" for="search_value">통합검색</label>
+                    <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
+                    </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">명칭, 코드 검색 가능</p>
                     </div>
                 </div>
             </div>
@@ -38,11 +34,10 @@
                 <thead>
                 <tr>
                     <th>NO</th>
-                    <th>사이트</th>
-                    <th>구분</th>
-                    <th>과목</th>
+                    <th>운영사이트</th>
+                    <th>교수코드</th>
                     <th>교수명</th>
-                    <th>등록개수</th>
+                    <th>구분->과목</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,7 +55,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 ajax: {
-                    'url' : '{{ site_url("/board/{$boardName}/mainListAjax") }}',
+                    'url' : '{{ site_url("/board/{$boardName}/mainListAjax?") }}' + '{!! $boardDefaultQueryString !!}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -71,23 +66,25 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'wContentCcdName'},
-                    {'data' : 'wProfIdx'},
-                    {'data' : 'wProfId'},
-                    {'data' : 'wProfName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-detailList" data-idx="' + row.wProfIdx + '"><u>' + data + '</u></a>';
+                    {'data' : 'SiteName'},
+                    {'data' : 'ProfIdx'},
+                    {'data' : 'ProfNickName', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-detailList" data-idx="' + row.ProfIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                            var obj = data.split(',');
+                            var str = '';
+                            for (key in obj) {
+                                str += obj[key]+"<br>";
+                            }
+                            return str;
                         }},
-                    {'data' : 'wRegAdminName'},
-                    {'data' : 'wRegDatm'}
                 ]
             });
 
             // 교수별 리스트 페이지
             $list_table.on('click', '.btn-detailList', function() {
-                location.replace('{{ site_url("/board/{$boardName}/detailList") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url("/board/{$boardName}/detailList") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx'));
             });
         });
     </script>

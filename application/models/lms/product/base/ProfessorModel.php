@@ -13,7 +13,8 @@ class ProfessorModel extends WB_Model
         'professor_reference' => 'lms_professor_reference',
         'professor_r_subject_r_category' => 'lms_professor_r_subject_r_category',
         'professor_calculate_rate' => 'lms_professor_calculate_rate',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'board' => 'lms_board'
     ];
     private $_refer_type = [
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url'],
@@ -130,6 +131,68 @@ class ProfessorModel extends WB_Model
         }
         
         return $results;
+    }
+
+    /**
+     * 교수 카테고리 + 과목 + 교수별 게시판 답변현황 매핑 데이터 조회
+     * @param $is_count
+     * @param $arr_condition
+     * @param $bm_idx
+     * @param $reply_status_ccd
+     * @return mixed
+     */
+    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd)
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+        } else {
+            $column = '
+                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson,
+                PrSC.CateCode,
+                IFNULL(C.ProfCount,0) AS ProfCount
+            ';
+        }
+        $from = '
+            FROM (
+            SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsStatus, ls.SiteName
+            FROM '. $this->_table['professor'] .' AS lp
+            INNER JOIN lms_site AS ls ON lp.SiteCode = ls.SiteCode
+            WHERE
+                lp.IsStatus = "Y"
+                AND json_value(lp.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
+            ) AS P
+            LEFT OUTER JOIN (
+                SELECT ProfIdx, GROUP_CONCAT(CONCAT(B.CateName,"->",C.SubjectName)) AS CateCode
+                FROM '. $this->_table['professor_r_subject_r_category'] .' AS A
+                LEFT JOIN '. $this->_table['category'] .' AS B ON A.CateCode = B.CateCode
+                LEFT JOIN '. $this->_table['subject'] .' AS C ON A.SubjectIdx = C.SubjectIdx
+                WHERE A.IsStatus = "Y"
+                GROUP BY ProfIdx
+            ) AS PrSC ON P.ProfIdx = PrSC.ProfIdx
+            
+            LEFT OUTER JOIN (
+                SELECT tempC.ProfIdx, COUNT(tempC.ProfIdx) AS ProfCount
+                FROM (
+                    SELECT ProfIdx
+                    FROM '. $this->_table['board'] .'
+                    WHERE BmIdx = "'.$bm_idx.'" AND ReplyStatusCcd = "'.$reply_status_ccd.'"
+                ) AS tempC
+                GROUP BY tempC.ProfIdx
+            ) AS C ON P.ProfIdx = C.ProfIdx
+        ';
+
+        $set_where = $this->_conn->makeWhere($arr_condition);
+        $set_where = $set_where->getMakeWhere(false);
+        $where = '
+            AND P.IsStatus = "Y"
+            AND json_value(P.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
+        ';
+        $where = $set_where.$where;
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

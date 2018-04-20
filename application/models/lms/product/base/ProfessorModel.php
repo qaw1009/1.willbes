@@ -141,25 +141,29 @@ class ProfessorModel extends WB_Model
      * @param $reply_status_ccd
      * @return mixed
      */
-    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd)
+    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
         } else {
             $column = '
-                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, PrSC.CateCode,
-                IFNULL(C.ProfCount,0) AS ProfCount
+                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, PrSC.CateCode
             ';
+            if (empty($reply_status_ccd) === false) {
+                $column = $column . '
+                    ,IFNULL(C.BoardProfCount,0) AS BoardProfCount
+                ';
+            }
         }
         $from = '
             FROM (
-            SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsStatus, ls.SiteName, wp.wProfId, wp.wProfName
-            FROM '. $this->_table['professor'] .' AS lp
-            INNER JOIN '. $this->_table['site'] .' AS ls ON lp.SiteCode = ls.SiteCode
-            INNER JOIN '. $this->_table['pms_professor'] .' AS wp ON lp.wProfIdx = wp.wProfIdx
-            WHERE
-                lp.IsStatus = "Y"
-                AND json_value(lp.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
+                SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsStatus, ls.SiteName, wp.wProfId, wp.wProfName
+                FROM '. $this->_table['professor'] .' AS lp
+                INNER JOIN '. $this->_table['site'] .' AS ls ON lp.SiteCode = ls.SiteCode
+                INNER JOIN '. $this->_table['pms_professor'] .' AS wp ON lp.wProfIdx = wp.wProfIdx
+                WHERE
+                    lp.IsStatus = "Y"
+                    AND json_value(lp.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
             ) AS P
             LEFT OUTER JOIN (
                 SELECT ProfIdx, GROUP_CONCAT(CONCAT(B.CateName,"->",C.SubjectName)) AS CateCode
@@ -169,17 +173,20 @@ class ProfessorModel extends WB_Model
                 WHERE A.IsStatus = "Y"
                 GROUP BY ProfIdx
             ) AS PrSC ON P.ProfIdx = PrSC.ProfIdx
-            
-            LEFT OUTER JOIN (
-                SELECT tempC.ProfIdx, COUNT(tempC.ProfIdx) AS ProfCount
-                FROM (
-                    SELECT ProfIdx
-                    FROM '. $this->_table['board'] .'
-                    WHERE BmIdx = "'.$bm_idx.'" AND ReplyStatusCcd = "'.$reply_status_ccd.'"
-                ) AS tempC
-                GROUP BY tempC.ProfIdx
-            ) AS C ON P.ProfIdx = C.ProfIdx
         ';
+        if (empty($reply_status_ccd) === false) {
+            $from = $from . '
+                LEFT OUTER JOIN (
+                    SELECT tempC.ProfIdx, COUNT(tempC.ProfIdx) AS BoardProfCount
+                    FROM (
+                        SELECT ProfIdx
+                        FROM ' . $this->_table['board'] . '
+                        WHERE BmIdx = "' . $bm_idx . '" AND ReplyStatusCcd = "' . $reply_status_ccd . '"
+                    ) AS tempC
+                    GROUP BY tempC.ProfIdx
+                ) AS C ON P.ProfIdx = C.ProfIdx
+            ';
+        }
 
         $set_where = $this->_conn->makeWhere($arr_condition);
         $set_where = $set_where->getMakeWhere(false);
@@ -768,5 +775,34 @@ class ProfessorModel extends WB_Model
         }
 
         return true;
-    }    
+    }
+
+    /**
+     * 교수 과목 조회
+     * @param $prof_idx
+     * @return array
+     */
+    public function getProfessorSubjectArray($prof_idx)
+    {
+        $column = '
+            S.SubjectIdx, PS.SubjectName
+        ';
+
+        $from = '
+            FROM (
+                SELECT SubjectIdx
+                FROM lms_professor_r_subject_r_category
+                WHERE ProfIdx = "'.$prof_idx.'" AND IsStatus = "Y"
+                GROUP BY SubjectIdx
+            ) AS S
+            INNER JOIN lms_product_subject AS PS ON S.SubjectIdx = PS.SubjectIdx
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from);
+        $result = $query->result_array();
+
+        $data = array_pluck($result, 'SubjectName', 'SubjectIdx');
+        return $data;
+    }
 }

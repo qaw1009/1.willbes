@@ -147,16 +147,16 @@ class ProfessorModel extends WB_Model
             $column = 'count(*) AS numrows';
         } else {
             $column = '
-                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson,
-                PrSC.CateCode,
+                P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, PrSC.CateCode,
                 IFNULL(C.ProfCount,0) AS ProfCount
             ';
         }
         $from = '
             FROM (
-            SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsStatus, ls.SiteName
+            SELECT lp.ProfIdx, lp.wProfIdx, lp.SiteCode, lp.ProfNickName, lp.UseBoardJson, lp.IsStatus, ls.SiteName, wp.wProfId, wp.wProfName
             FROM '. $this->_table['professor'] .' AS lp
-            INNER JOIN lms_site AS ls ON lp.SiteCode = ls.SiteCode
+            INNER JOIN '. $this->_table['site'] .' AS ls ON lp.SiteCode = ls.SiteCode
+            INNER JOIN '. $this->_table['pms_professor'] .' AS wp ON lp.wProfIdx = wp.wProfIdx
             WHERE
                 lp.IsStatus = "Y"
                 AND json_value(lp.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"

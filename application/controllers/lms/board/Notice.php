@@ -36,6 +36,10 @@ class Notice extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $board_params['site_code'];
 
+        //검색상태조회
+        $arr_search = $this->getBoardSearchingArray($this->bm_idx);
+        print_r($arr_search);
+
         //캠퍼스목록조회
         $arr_campus = [];
         $arr_category = [];
@@ -47,9 +51,11 @@ class Notice extends BaseBoard
         }
 
         $this->load->view("board/{$this->board_name}/index", [
+            'arr_search' => $arr_search,
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
+            'bm_idx' => $this->bm_idx,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
         ]);
     }

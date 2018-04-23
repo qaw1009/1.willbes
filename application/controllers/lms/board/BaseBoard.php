@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseBoard extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'sys/category');
+    protected $models = array('sys/code', 'sys/site', 'sys/category', 'sys/adminSettings');
     protected $helpers = array();
     protected $boardDefaultParams = [];      //게시판 필수 기본 정보
 
@@ -29,6 +29,26 @@ class BaseBoard extends \app\controllers\BaseController
     protected function getDefaultBoardParam()
     {
         return $this->boardDefaultParams;
+    }
+
+    /**
+     * 기본화면 셋팅 값 조회
+     * @param $bm_idx
+     * @return mixed
+     */
+    protected function getBoardSearchingArray($bm_idx)
+    {
+        $setting_type = 'searchSetting_'.$bm_idx;
+        $arr_condition = [
+            'EQ' => [
+                'wAdminIdx' => $this->session->userdata('admin_idx'),
+                'SettingType' => $setting_type,
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $data = $this->adminSettingsModel->listSettings($arr_condition);
+
+        return $data[0]['SettingValue'];
     }
 
     /**

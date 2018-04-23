@@ -127,4 +127,60 @@ class AdminSettingsModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 검색 값 기본 셋팅
+     * @param array $input
+     * @return array|bool
+     */
+    public function storeSearchSetting($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        $bm_idx = element('setting_bm_idx', $input);
+        unset($input['setting_bm_idx']);
+
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $data = $this->_conn->getFindResult($this->_table, 'SettingIdx', [
+                'EQ' => [
+                    'wAdminIdx' => $admin_idx, 'SettingType' => 'searchSetting_'.$bm_idx, 'IsStatus' => 'Y'
+                ]
+            ]);
+
+            $set_data = [];
+            $enc_set_data = '';
+            foreach ($input as $key => $val){
+                if (empty($val) === false) {
+                    $set_data = array_merge($set_data, [$key => $val]);
+                }
+            }
+
+            if (count($set_data) > 0) {
+                $enc_set_data = json_encode($set_data);
+            }
+
+            if (count($data) > 0) {
+                // update
+                $is_excute = $this->_conn->set('SettingValue', $enc_set_data)->where('SettingIdx', $data['SettingIdx'])->update($this->_table);
+            } else {
+                // 데이터 추가
+                $is_excute = $this->_conn->set([
+                    'wAdminIdx' => $admin_idx, 'SettingType' => 'searchSetting_'.$bm_idx, 'SettingValue' => $enc_set_data
+                ])->insert($this->_table);
+            }
+
+            if ($is_excute === false) {
+                throw new \Exception('데이터 처리에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+                $this->_conn->trans_rollback();
+                return error_result($e);
+        }
+
+        return true;
+    }
 }

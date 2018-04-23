@@ -439,6 +439,24 @@ function init_base() {
     });
 }
 
+function init_board() {
+    // 기본 검색 값 셋팅
+    $('#btn_search_setting').on('click', function() {
+        var _url = '/sys/adminSettings/searchSetting';
+
+        if (!confirm('현재의 검색 상태로 저장하시겠습니까?')) {
+            return;
+        }
+
+        ajaxSubmit($search_form, _url, function(ret) {
+            if(ret.ret_cd) {
+                notifyAlert('success', '알림', ret.ret_msg);
+                location.reload();
+            }
+        }, showValidateError, null, false, 'alert');
+    });
+}
+
 /**
  * onload event
  */
@@ -453,4 +471,5 @@ $(document).ready(function() {
     init_magnificPopup();
     init_datatable();
     init_base();
+    init_board();
 });

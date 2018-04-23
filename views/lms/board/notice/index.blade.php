@@ -5,6 +5,7 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
+        <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
 
         <div class="x_panel">
             <div class="x_content">
@@ -58,7 +59,7 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-xs-4">
-                    <button class="btn btn-info ml-20" type="button">기본화면셋팅</button>
+                    <button class="btn btn-info ml-20" type="button" id="btn_search_setting">기본화면셋팅</button>
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
@@ -245,8 +246,8 @@
             $search_form.on('ifChanged', '.hot-display', function() {
                 $datatable.draw();
             });
+
+
         });
-
-
     </script>
 @stop

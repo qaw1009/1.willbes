@@ -106,6 +106,7 @@ class BoardModel extends WB_Model
                 break;
             case "professorQna" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
@@ -390,9 +391,19 @@ class BoardModel extends WB_Model
                 break;
             case "professorQna" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
-                    LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as profADMIN ON LB.ReplyAdminIdx = profADMIN.wAdminIdx
+                    LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
+                    LEFT OUTER JOIN (
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                        from {$this->_table_attach}
+                        where IsStatus = 'Y' and RegType = 1
+                        GROUP BY BoardIdx
+                    ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin ON LB.ReplyAdminIdx = qnaAdmin.wAdminIdx and qnaAdmin.wIsStatus='Y'
+                    LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin2 ON LB.ReplyUpdAdminIdx = qnaAdmin2.wAdminIdx and qnaAdmin2.wIsStatus='Y'
                 ";
                 break;
             case "professorMaterial" :

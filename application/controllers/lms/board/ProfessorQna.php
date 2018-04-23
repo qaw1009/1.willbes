@@ -191,11 +191,12 @@ class ProfessorQna extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode,
-            LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
+            LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
             LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Hp1, MEM.Hp2, MEM.Hp3,
-            LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
+            LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            LB.SubjectIdx, PS.SubjectName,
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
             ADMIN2.wAdminName as ReplyRegAdminName
         ';
@@ -235,27 +236,140 @@ class ProfessorQna extends BaseBoard
     public function createDetail($params = [])
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
+        $prof_idx = $this->_req('prof_idx');
 
         $method = 'POST';
         $data = null;
-        $bnidx = null;
+        $board_idx = null;
 
         //권한유형별 운영사이트 목록 조회
-        $getSiteArray = $this->_getSiteArray();
+        $get_site_array = $this->_getSiteArray();
+        $first_site_key = key($get_site_array);
+        $site_code = $first_site_key;
 
-        $this->load->view("board/{$this->boardName}/create_Detail", [
-            'boardName' => $this->boardName,
-            'bmIdx' => $this->bmIdx,
-            'getSiteArray' => $getSiteArray,
-            'campusOnOff' => $this->campusOnOff,
+        if (empty($params[0]) === false) {
+            $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsPublic, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.SubjectIdx, PS.SubjectName
+            ';
+            $method = 'PUT';
+            $board_idx = $params[0];
+            $arr_condition = ([
+                'EQ'=>[
+                    'LB.BoardIdx' => $board_idx,
+                    'LB.IsStatus' => 'Y',
+                    'LB.RegType' => $this->_reg_type['admin']
+                ]
+            ]);
+            $arr_condition_file = [
+                'reg_type' => $this->_reg_type['admin'],
+                'attach_file_type' => $this->_attach_reg_type['default']
+            ];
+            $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+            if (count($data) < 1) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+            $site_code = $data['SiteCode'];
+            $data['arr_cate_code'] = explode(',', $data['CateCode']);
+            $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+            $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+            $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        }
+
+        //사이트카테고리 (구분)
+        if (empty($params[0]) === true) {
+            if (empty($this->site_code) === false) {
+                $site_code = $this->site_code;
+            }
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        //과목
+        $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
+
+        $this->load->view("board/{$this->board_name}/create_Detail", [
+            'boardName' => $this->board_name,
+            'bmIdx' => $this->bm_idx,
+            'site_code' => $site_code,
+            'getSiteArray' => $get_site_array,
+            'getCategoryArray' => $get_category_array,
+            'arr_subject' => $arr_subject,
             'method' => $method,
             'data' => $data,
-            'bn_idx' => $bnidx,
-            //'attach_img_cnt' => $this->professorModel->_attach_img_cnt
-            'attach_img_cnt' => 2
+            'board_idx' => $board_idx,
+            'arr_reg_type' => $this->_reg_type,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
+    }
+
+    public function store()
+    {
+        $method = 'add';
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $idx = '';
+
+        $rules = [
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('idx');
+        }
+
+        $inputData = $this->_setInputData($this->_reqP(null, false), $prof_idx);
+
+        //_addBoard, _modifyBoard
+        $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 답변 등록
+     */
+    public function storeReply()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+
+        $rules = [
+            ['field' => 'reply_contents', 'label' => '답변 내용', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('idx')) === true) {
+            return $this->json_error('식별자가 없습니다.', _HTTP_NOT_FOUND);
+        } else {
+            $idx = $this->_reqP('idx');
+        }
+
+        $inputData = $this->_setReplyInputData($this->_reqP(null, false));
+
+        $result = $this->boardModel->replyAddBoard($inputData, $idx, $this->bm_idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -264,78 +378,296 @@ class ProfessorQna extends BaseBoard
     public function readDetail($params = [])
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
+        $prof_idx = $this->_req('prof_idx');
 
-        //캠퍼스리스트
-        if ($this->subMenu == 'offline') {
-            $this->campusOnOff = 'on';
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
         }
 
-        $data = null;
-        $this->load->view("board/{$this->boardName}/read_detail",[
-            'boardName' => $this->boardName,
-            'campusOnOff' => $this->campusOnOff,
-            'data' => $data
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
+            ';
+
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.ProfIdx' => $prof_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => $this->_reg_type['admin']
+            ]
         ]);
-    }
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['admin'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
-    /**
-     * 강사게시판 - 강사별 학습Q&A 답변 view 페이지
-     */
-    public function readQnaReply()
-    {
-        $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-        $this->subMenu = $boardParams['subMenu'];
-
-        $boardIdx = 1;
-        $method = 'POST';
-        $data = null;
-
-        //캠퍼스리스트
-        if ($this->subMenu == 'offline') {
-            $this->campusOnOff = 'on';
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
         }
 
-        $this->load->view("board/{$this->boardName}/read_qna_reply", [
-            'boardName' => $this->boardName,
-            'boardIdx' => $boardIdx,
-            'method' => $method,
-            'campusOnOff' => $this->campusOnOff,
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $this->bm_idx,
+                'ProfIdx' => $prof_idx,
+                'IsStatus' => 'Y',
+                'RegType' => $this->_reg_type['admin']
+            ]
+        ]);
+        //이전글
+        $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
+        $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
+        //다음글
+        $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
+        $board_next = $this->boardModel->findBoardNext($arr_condition_next);
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $this->load->view("board/{$this->board_name}/read_detail",[
+            'boardName' => $this->board_name,
             'data' => $data,
-            'attach_img_cnt' => 2
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next,
         ]);
     }
 
     /**
      * 강사게시판 - 강사별 학습Q&A 답변 등록 페이지
+     * @param array $params
      */
-    public function createQnaReply()
+    public function createQnaReply($params = [])
     {
         $this->setDefaultBoardParam();
-        $boardParams = $this->getDefaultBoardParam();
-        $this->bmIdx = $boardParams['bmIdx'];
-        $this->subMenu = $boardParams['subMenu'];
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
 
-        $boardIdx = 1;
-        $method = 'POST';
-        $data = null;
-
-        //캠퍼스리스트
-        if ($this->subMenu == 'offline') {
-            $this->campusOnOff = 'on';
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
         }
 
-        $this->load->view("board/{$this->boardName}/create_qna_reply", [
-            'boardName' => $this->boardName,
-            'boardIdx' => $boardIdx,
-            'method' => $method,
-            'campusOnOff' => $this->campusOnOff,
-            'data' => $data,
-            'attach_img_cnt' => 2
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, MEM.Hp1,
+            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent
+            ';
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.RegType' => $this->_reg_type['user']
+            ]
         ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $arr_reply_code = $this->_getCcdArray($this->_groupCcd['reply']);
+        unset($arr_reply_code[$this->_Ccd['reply']['unAnswered']]);     //미답변코드 제거
+        $data['arr_reply_code'] = $arr_reply_code;
+
+        $arr_voc_code = $this->_getCcdArray($this->_groupCcd['voc']);
+        $data['arr_voc_code'] = $arr_voc_code;
+
+        $this->load->view("board/{$this->board_name}/create_qna_reply", [
+            'boardName' => $this->board_name,
+            'data' => $data,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    /**
+     * 강사게시판 - 강사별 학습Q&A 답변 view 페이지
+     * @param array $params
+     */
+    public function readQnaReply($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $board_params['site_code'];
+        $prof_idx = $this->_req('prof_idx');
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, MEM.Hp1,
+            LB.ReplyStatusCcd, LB.ReplyContent,
+            qnaAdmin.wAdminName AS qnaAdminName, qnaAdmin2.wAdminName AS qnaUpdAdminName,
+            LB.ReplyRegDatm, LB.ReplyUpdDatm
+            ';
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.RegType' => $this->_reg_type['user'],
+                'LB.ProfIdx' => $prof_idx,
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $this->bm_idx,
+                'RegType' => $data['RegType'],
+                'ProfIdx' => $prof_idx,
+            ]
+        ]);
+
+        if ($data['RegType'] == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['IsStatus' => 'Y']);
+        }
+
+        //이전글
+        $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
+        $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
+        //다음글
+        $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
+        $board_next = $this->boardModel->findBoardNext($arr_condition_next);
+
+        //메모
+        $memo_data = $this->boardModel->getMemoListAll($board_idx);
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $arr_reply_code = $this->_getCcdArray($this->_groupCcd['reply']);
+        $data['reply_status'] = (empty($arr_reply_code[$data['ReplyStatusCcd']])) ? '' : $arr_reply_code[$data['ReplyStatusCcd']];
+
+        $this->load->view("board/{$this->board_name}/read_qna_reply", [
+            'boardName' => $this->board_name,
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $board_idx,
+            'arr_ccd_reply' => $this->_Ccd['reply'],
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next,
+            'memo_data' => $memo_data
+        ]);
+    }
+
+    /**
+     * 게시판 삭제
+     * @param array $params
+     */
+    public function deleteDetail($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -367,5 +699,38 @@ class ProfessorQna extends BaseBoard
         ];
 
         return $datas;
+    }
+
+    private function _setInputData($input, $prof_idx){
+        $input_data = [
+            'board' => [
+                'SiteCode' => element('site_code', $input),
+                'BmIdx' => $this->bm_idx,
+                'RegType' => element('reg_type', $input),
+                'ProfIdx' => $prof_idx,
+                'SubjectIdx' => element('subject_idx', $input),
+                'Title' => element('title', $input),
+                'Content' => element('board_content', $input),
+                'IsPublic' => (empty(element('is_public', $input)) === true) ? 'Y' : element('is_public', $input),
+                'IsUse' => element('is_use', $input),
+                'ReadCnt' => (empty(element('read_count', $input)) === true) ? '0' : element('read_count', $input),
+                'SettingReadCnt' => element('setting_readCnt', $input),
+            ],
+            'board_r_category' => [
+                'site_category' => element('site_category', $input)
+            ]
+        ];
+
+        return$input_data;
+    }
+
+    private function _setReplyInputData($input)
+    {
+        $input_data = [
+            'ReplyContent' => element('reply_contents', $input),
+            'ReplyStatusCcd' => $this->_Ccd['reply']['finish']
+        ];
+
+        return $input_data;
     }
 }

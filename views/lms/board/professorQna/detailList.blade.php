@@ -143,7 +143,7 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-10"></i> 공지 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                            location.href = '{{ site_url("/board/{$boardName}/createDetail") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
                 ],
                 ajax: {
@@ -172,7 +172,6 @@
                             }
                         }},
                     {'data' : 'SiteName'},
-                    {'data' : 'CampusName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
                             var obj = data.split(',');
                             var str = '';
@@ -181,7 +180,8 @@
                             }
                             return str;
                         }},
-                    {'data' : 'TypeCcdName'},
+                    {'data' : 'SubjectName'},
+                    {'data' : 'SubjectName'},
                     {'data' : 'TypeCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             if (row.RegType == 1) {
@@ -199,7 +199,6 @@
                                 } else {
                                     return row.RegMemName+'('+row.RegMemIdx+')';
                                 }
-
                             }
                         }},
                     {'data' : 'RegDatm'},
@@ -248,22 +247,22 @@
 
             // 공지 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.replace('{{ site_url("/board/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
             // 공지 데이터 Read 페이지
             $list_table.on('click', '.btn-admin-read', function() {
-                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.replace('{{ site_url("/board/{$boardName}/readDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
             // 답변 수정/등록 폼
             $list_table.on('click', '.btn-reply-modify', function() {
-                location.replace('{{ site_url("/board/{$boardName}/createCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.replace('{{ site_url("/board/{$boardName}/createQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
             // 공지 데이터 Read 페이지
             $list_table.on('click', '.btn-counsel-read', function() {
-                location.replace('{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.replace('{{ site_url("/board/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
         });

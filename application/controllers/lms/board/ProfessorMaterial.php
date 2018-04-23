@@ -340,7 +340,7 @@ class ProfessorMaterial extends BaseBoard
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
-            ['field' => 'type_ccd', 'label' => '과목', 'rules' => 'trim|required|integer'],
+            ['field' => 'type_ccd', 'label' => '자료유형', 'rules' => 'trim|required|integer'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']

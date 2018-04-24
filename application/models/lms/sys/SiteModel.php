@@ -78,23 +78,29 @@ class SiteModel extends WB_Model
     /**
      * 사이트 코드별 캠퍼스 코드 목록 조회
      * @param $site_code
-     * @param bool $is_auth
      * @return array
      */
-    public function getSiteCampusArray($site_code, $is_auth = true)
+    public function getSiteCampusArray($site_code)
     {
-        // 운영자 사이트 권한 체크
-        if ($is_auth === true) {
-            $data = get_auth_campus_ccds($site_code, true);
+        $arr_condition = [
+            'EQ' => [
+                'SC.IsStatus' => 'Y',
+                'C.GroupCcd' => $this->_ccd['Campus'],
+                'C.IsUse' => 'Y',
+                'C.IsStatus' => 'Y'
+            ]
+        ];
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['SC.SiteCode'] = $site_code;
         } else {
-            $arr_condition = ['EQ' => ['SC.SiteCode' => $site_code, 'SC.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['Campus'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']];
-            $data = $this->_conn->getJoinListResult($this->_table['site_r_campus'] . ' as SC', 'inner', $this->_table['code'] . ' as C', 'SC.CampusCcd = C.Ccd'
-                , 'SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
-            );
-            $data = array_pluck($data, 'CampusName', 'CampusCcd');
+            $arr_condition['IN']['SC.SiteCode'] = get_auth_site_codes();
         }
 
-        return $data;
+        $data = $this->_conn->getJoinListResult($this->_table['site_r_campus'] . ' as SC', 'inner', $this->_table['code'] . ' as C', 'SC.CampusCcd = C.Ccd'
+            , 'SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
+        );
+
+        return (empty($site_code) === false) ? array_pluck($data, 'CampusName', 'CampusCcd') : $data;
     }
 
     /**

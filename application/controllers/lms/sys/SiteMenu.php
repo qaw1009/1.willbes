@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SiteCategory
+class SiteMenu
 {
     private $_CI;
 
@@ -10,88 +10,92 @@ class SiteCategory
         $this->_CI =& get_instance();
 
         // load model
-        $this->_CI->load->loadModels(['sys/category', 'sys/site']);
+        $this->_CI->load->loadModels(['sys/siteMenu', 'sys/site']);
     }
 
     /**
-     * 사이트 카테고리 인덱스
+     * 사이트 메뉴 인덱스
      */
     public function index()
     {
-        $list = $this->_CI->categoryModel->listAllCategory();
+        $list = $this->_CI->siteMenuModel->listAllSiteMenu();
 
-        $this->_CI->load->view('sys/site_category/index', [
+        $this->_CI->load->view('sys/site_menu/index', [
             'data' => $list
         ]);
     }
 
     /**
-     * 카테고리 등록/수정 폼
+     * 사이트 메뉴 등록/수정 폼
      * @param array $params 등록 : SiteCode/CateDepth/ParentCateCode / 수정 : CateCode
      * @return CI_Output
      */
     public function create($params = [])
     {
         $data = null;
-        $parent_categories = null;
+        $site_code = '';
+        $menu_route_name = null;
 
         if (isset($params[2]) === true) {
             // 메뉴 등록
             $method = 'POST';
             $idx = null;
-            $site_code = (empty($params[1]) === false) ? intval($params[1]) : '';
-            $cate_depth = $params[2];
-            $parent_cate_code = $params[3];
-            $group_cate_code = $parent_cate_code;
+            $menu_depth = $params[1];
+            $parent_menu_idx = $params[2];
+
+            if ($menu_depth > 1) {
+                $row = $this->_CI->siteMenuModel->findSiteMenuWithRouteName($parent_menu_idx);
+                if (count($row) < 1) {
+                    return $this->_CI->json_error('부모 메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+                }
+
+                $site_code = $row['SiteCode'];
+                $menu_route_name = $row['MenuRouteName'];
+            }
         } else {
             // 메뉴 수정
             $method = 'PUT';
             $idx = $params[1];
 
-            $data = $this->_CI->categoryModel->findCategoryForModify($idx);
+            $data = $this->_CI->siteMenuModel->findSiteMenuForModify($idx);
             if (count($data) < 1) {
                 return $this->_CI->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
             $site_code = $data['SiteCode'];
-            $cate_depth = $data['CateDepth'];
-            $parent_cate_code = $data['ParentCateCode'];
-            $group_cate_code = $data['GroupCateCode'];
+            $menu_depth = $data['MenuDepth'];
+            $parent_menu_idx = $data['ParentMenuIdx'];
+            $menu_route_name = $data['MenuRouteName'];
         }
 
-        if ($cate_depth > 1) {
-            // 대분류 목록 조회
-            $parent_categories['LG'] = $this->_CI->categoryModel->listCategory(['EQ' => ['SiteCode' => $site_code, 'ParentCateCode' => 0]], null, null, ['OrderNum' => 'asc']);
-        }
-
-        $this->_CI->load->view('sys/site_category/create', [
+        $this->_CI->load->view('sys/site_menu/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
-            'site_codes' => $this->_CI->siteModel->getSiteArray(),
             'site_code' => $site_code,
-            'cate_depth' => $cate_depth,
-            'parent_cate_code' => $parent_cate_code,
-            'group_cate_code' => $group_cate_code,
-            'parent_categories' => $parent_categories
+            'menu_depth' => $menu_depth,
+            'parent_menu_idx' => $parent_menu_idx,
+            'menu_route_name' => $menu_route_name
         ]);
     }
 
     /**
-     * 카테고리 등록/수정
+     * 사이트 메뉴 등록/수정
      */
     public function store()
     {
         $rules = [
-            ['field' => 'cate_name', 'label' => '분류명', 'rules' => 'trim|required'],
+            ['field' => 'parent_menu_idx', 'label' => '부모메뉴코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'menu_name', 'label' => '메뉴명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 
         if (empty($this->_CI->_reqP('idx')) === true) {
             $method = 'add';
-            $rules = array_merge($rules, [
-                ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'group_cate_code', 'label' => '대분류', 'rules' => 'callback_validateRequiredIf[cate_depth,2]'],
-            ]);
+            if ($this->_CI->_reqP('parent_menu_idx') == 0) {
+                $rules = array_merge($rules, [
+                    ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
+                ]);
+            }
         } else {
             $method = 'modify';
             $rules = array_merge($rules, [
@@ -104,13 +108,13 @@ class SiteCategory
             return;
         }
 
-        $result = $this->_CI->categoryModel->{$method . 'Category'}($this->_CI->_reqP(null, false));
+        $result = $this->_CI->siteMenuModel->{$method . 'SiteMenu'}($this->_CI->_reqP(null, false));
 
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
-     * 카테고리 정렬변경
+     * 사이트 메뉴 정렬변경
      */
     public function reorder()
     {
@@ -123,7 +127,7 @@ class SiteCategory
             return;
         }
 
-        $result = $this->_CI->categoryModel->modifyCategoriesReorder(json_decode($this->_CI->_reqP('params'), true));
+        $result = $this->_CI->siteMenuModel->modifySiteMenusReorder(json_decode($this->_CI->_reqP('params'), true));
 
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }

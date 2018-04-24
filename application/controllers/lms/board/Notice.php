@@ -34,29 +34,26 @@ class Notice extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         //검색상태조회
-        $arr_search = $this->getBoardSearchingArray($this->bm_idx);
-        print_r($arr_search);
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
 
-        //캠퍼스목록조회
-        $arr_campus = [];
-        $arr_category = [];
-        if (!empty($this->site_code)) {
-            //캠퍼스
-            $arr_campus = $this->_getCampusArray($this->site_code);
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
-        }
+        //카테고리 조회(구분)
+        $arr_category = $this->_getCategoryArray('');
+
+        //캠퍼스 조회
+        $arr_campus = $this->_getCampusArray('');
 
         $this->load->view("board/{$this->board_name}/index", [
-            'arr_search' => $arr_search,
+            /*'arr_search_data' => $arr_search_data,
+            'ret_search_site_code' => $ret_search_site_code,*/
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
             'bm_idx' => $this->bm_idx,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
     }
 
@@ -69,7 +66,6 @@ class Notice extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
@@ -78,7 +74,8 @@ class Notice extends BaseBoard
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
-                'LB.SiteCode' => $this->site_code,
+                /*'LB.SiteCode' => $this->site_code,*/
+                'LB.SiteCode' => $this->_reqP('search_site_code'),
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],

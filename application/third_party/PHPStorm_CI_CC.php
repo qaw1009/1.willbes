@@ -107,6 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchWBookModel $searchWBookModel                           Search WBS Book Model Class
  * @property SiteModel $siteModel                                                     Site Model Class
  * @property SiteGroupModel $siteGroupModel                                      Site Group Model Class
+ * @property SiteMenuModel $siteMenuModel                                       Site Menu Model Class
  * @property CategoryModel $categoryModel                                       Category Model Class
  * @property CourseModel $courseModel                                             Product Course Model Class
  * @property SubjectModel $subjectModel                                           Product Subject Model Class

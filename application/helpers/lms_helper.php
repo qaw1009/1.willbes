@@ -69,7 +69,7 @@ if (!function_exists('html_site_select')) {
 
 if (!function_exists('html_site_tabs')) {
     /**
-     * 사이트 탭 HTML 리턴
+     * 사이트 탭 HTML 리턴 (사이트 코드 초기값 없음)
      * @param string $ele_id [element id]
      * @param string $tab_type [탭 구분 => tab : 탭, self : 링크]
      * @param bool $is_all_tab [전체 탭 노출 여부 => true : 노출, false : 노출안함]
@@ -79,10 +79,27 @@ if (!function_exists('html_site_tabs')) {
      */
     function html_site_tabs($ele_id, $tab_type = 'tab', $is_all_tab = true, $tab_data = [], $site_codes = [])
     {
+        return html_def_site_tabs('', $ele_id, $tab_type, $is_all_tab, $tab_data, $site_codes);
+    }
+}
+
+if (!function_exists('html_def_site_tabs')) {
+    /**
+     * 사이트 탭 HTML 리턴
+     * @param string $site_code [초기 사이트 코드값]
+     * @param string $ele_id [element id]
+     * @param string $tab_type [탭 구분 => tab : 탭, self : 링크]
+     * @param bool $is_all_tab [전체 탭 노출 여부 => true : 노출, false : 노출안함]
+     * @param array $tab_data [탭 우측에 표기되는 데이터, ex) 게시판 건수]
+     * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
+     * @return string [탭 HTML]
+     */
+    function html_def_site_tabs($site_code = '', $ele_id, $tab_type = 'tab', $is_all_tab = true, $tab_data = [], $site_codes = [])
+    {
         // 변수 설정
         $_CI =& get_instance();
         $qs = $_CI->input->server('QUERY_STRING');
-        $site_code = $_CI->input->get('site_code');
+        $site_code = (empty($site_code) === true) ? $_CI->input->get('site_code') : $site_code;
 
         $tab_attr = $tab_active = '';
         $tab_base_txt = count($tab_data) > 0 ? ' <span class="red">({{tab_data}})</span>' : '';

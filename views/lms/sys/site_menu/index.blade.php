@@ -4,10 +4,10 @@
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
         <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}">사이트 생성관리</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/site/index/group') }}">사이트 그룹 정보관리</a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/category') }}" class="cs-pointer"><strong>사이트 카테고리 관리</strong></a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/menu') }}">사이트 메뉴 관리</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/site/index/category') }}">사이트 카테고리 관리</a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/menu') }}" class="cs-pointer"><strong>사이트 메뉴 관리</strong></a></li>
     </ul>
-    <h5>- 윌비스 사용자 운영 사이트 카테고리를 생성하는 메뉴입니다.</h5>
+    <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
             <div class="x_content">
@@ -43,9 +43,12 @@
                 <table id="list_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="searching rowspan">사이트 [<span class="blue">코드</span>]</th>
-                        <th class="searching rowspan">대분류 [<span class="blue">코드</span>]</th>
-                        <th class="searching">중분류 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-cate-depth="2">추가</button></th>
+                        <th class="searching rowspan">운영사이트 [<span class="blue">코드</span>]</th>
+                        <th>정렬</th>
+                        <th>메뉴코드</th>
+                        <th class="searching">메뉴경로 (하위메뉴 등록)</th>
+                        <th class="searching">메뉴명 (메뉴 수정)</th>
+                        <th>URL</th>
                         <th class="searching_is_use">사용여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
@@ -57,27 +60,24 @@
                             <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
                             <td>
                                 <div class="form-group form-group-sm">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BCateCode'] }}" style="width: 30px;" />
-                                    <input type="radio" name="cate_code" value="{{ $row['BCateCode'] }}" data-cate-depth="{{ $row['BCateDepth'] }}" data-site-code="{{ $row['SiteCode'] }}" class="flat"/>
-                                    <a href="#none" class="btn-modify" data-idx="{{ $row['BCateCode'] }}"><u>{{ $row['BCateName'] }}</u></a>
-                                    [<span class="blue">{{ $row['BCateCode'] }}</span>]
-                                    @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
+                                    <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['MenuIdx'] }}" style="width: 80px;" />
                                 </div>
                             </td>
+                            <td>{{ $row['MenuIdx'] }}</td>
                             <td>
-                                @if(empty($row['MCateCode']) === false)
-                                    <div class="form-group form-group-sm">
-                                        <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MCateCode'] }}" style="width: 30px;" />
-                                        <a href="#none" class="btn-modify" data-idx="{{ $row['MCateCode'] }}"><u>{{ $row['MCateName'] }}</u></a>
-                                        [<span class="blue">{{ $row['MCateCode'] }}</span>]
-                                    </div>
+                                <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a></td>
+                            <td>
+                                @if($row['MenuDepth'] > 1)
+                                    <i class="fa fa-reply fa-rotate-180 red" style="margin-left: {{ ($row['MenuDepth'] - 1) * 15 }}px;"></i>
                                 @endif
+                                <a href="#none" class="btn-modify" data-idx="{{ $row['MenuIdx'] }}"><u>{{ $row['MenuName'] }}</u></a>
                             </td>
-                            <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
-                                <span class="hide">{{ $row['LastIsUse'] }}</span>
+                            <td>{{ $row['MenuUrl'] }}</td>
+                            <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
+                                <span class="hide">{{ $row['IsUse'] }}</span>
                             </td>
-                            <td>{{ $row['LastRegAdminName'] }}</td>
-                            <td>{{ $row['LastRegDatm'] }}</td>
+                            <td>{{ $row['RegAdminName'] }}</td>
+                            <td>{{ $row['RegDatm'] }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -100,7 +100,7 @@
                 rowsGroup: ['.rowspan'],
                 buttons: [
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 대분류 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
+                    { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
             });
 
@@ -113,12 +113,9 @@
                 var $order_num = $list_form.find('input[name="order_num"]');
                 var $params = {};
                 $order_num.each(function(idx) {
-                    // rowspan 데이터는 첫번째 display 되는 값으로 파라미터 설정
-                    if ($order_num.eq(idx).closest('td').css('display') != 'none') {
-                        // 정렬순서 값이 변하는 경우에만 파라미터 설정
-                        if ($(this).val() != $(this).data('origin-order-num')) {
-                            $params[$(this).data('idx')] = $(this).val();
-                        }
+                    // 정렬순서 값이 변하는 경우에만 파라미터 설정
+                    if ($(this).val() != $(this).data('origin-order-num')) {
+                        $params[$(this).data('idx')] = $(this).val();
                     }
                 });
 
@@ -127,7 +124,7 @@
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-                sendAjax('{{ site_url('/sys/site/reorder/category') }}', data, function(ret) {
+                sendAjax('{{ site_url('/sys/site/reorder/menu') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.reload();
@@ -141,26 +138,16 @@
                 var uri_param = '';
 
                 if (is_regist === true) {
-                    var site_code = 0;
-                    var parent_cate_code = 0;
-                    var cate_depth = (typeof $(this).data('cate-depth') != 'undefined') ? $(this).data('cate-depth') : 1;
+                    var menu_depth = (typeof $(this).data('menu-depth') != 'undefined') ? $(this).data('menu-depth') : 1;
+                    var parent_menu_idx = (menu_depth != 1) ? $(this).data('idx') : 0;
 
-                    if (cate_depth != 1) {
-                        site_code = $list_form.find('input[name="cate_code"]:checked').data('site-code');
-                        parent_cate_code = $list_form.find('input[name="cate_code"]:checked').val();
-
-                        if (typeof parent_cate_code == 'undefined' || $list_form.find('input[name="cate_code"]:checked').data('cate-depth') != (cate_depth - 1)) {
-                            alert('상위 분류를 선택해 주세요.');
-                            return false;
-                        }
-                    }
-                    uri_param = site_code + '/' + cate_depth + '/' + parent_cate_code;
+                    uri_param = menu_depth + '/' + parent_menu_idx;
                 } else {
                     uri_param = $(this).data('idx');
                 }
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/sys/site/create/category/') }}' + uri_param,
+                    'url' : '{{ site_url('/sys/site/create/menu/') }}' + uri_param,
                     'width' : 900
                 });
             });

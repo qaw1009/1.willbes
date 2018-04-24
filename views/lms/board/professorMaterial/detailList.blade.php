@@ -64,9 +64,6 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-xs-4">
-                    <button class="btn btn-info ml-20" type="button">기본화면셋팅</button>
-                </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
                         <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>

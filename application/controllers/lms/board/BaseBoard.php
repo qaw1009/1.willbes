@@ -38,17 +38,20 @@ class BaseBoard extends \app\controllers\BaseController
      */
     protected function getBoardSearchingArray($bm_idx)
     {
-        $setting_type = 'searchSetting_'.$bm_idx;
-        $arr_condition = [
-            'EQ' => [
-                'wAdminIdx' => $this->session->userdata('admin_idx'),
-                'SettingType' => $setting_type,
-                'IsStatus' => 'Y'
-            ]
-        ];
-        $data = $this->adminSettingsModel->listSettings($arr_condition);
+        $arr_search_data = 'null';
+        $ret_search_site_code = '';
+        $search_data = get_app_var('settings')['searchSetting_'.$bm_idx];
+        if (empty($search_data) === false) {
+            $arr_search_data = $search_data;
+            $set_search_data = json_decode($search_data, true);
+            $ret_search_site_code = (empty($set_search_data['search_site_code']) === true) ? '' : $set_search_data['search_site_code'];
+        }
 
-        return $data[0]['SettingValue'];
+        $return = [
+            'arr_search_data' => $arr_search_data,
+            'ret_search_site_code' => $ret_search_site_code
+        ];
+        return $return;
     }
 
     /**

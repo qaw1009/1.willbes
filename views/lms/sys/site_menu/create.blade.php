@@ -38,7 +38,7 @@
                 <label class="control-label col-md-2">메뉴 경로
                 </label>
                 <div class="col-md-10">
-                    <p class="form-control-static">{{ $menu_route_name }}</p>
+                    <p class="form-control-static pl-0">{{ str_replace('>', ' > ', $menu_route_name) }}</p>
                 </div>
             </div>
         @endif

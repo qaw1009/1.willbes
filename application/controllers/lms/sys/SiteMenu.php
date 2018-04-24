@@ -64,6 +64,7 @@ class SiteMenu
             $site_code = $data['SiteCode'];
             $menu_depth = $data['MenuDepth'];
             $parent_menu_idx = $data['ParentMenuIdx'];
+            $menu_route_name = $data['MenuRouteName'];
         }
 
         $this->_CI->load->view('sys/site_menu/create', [

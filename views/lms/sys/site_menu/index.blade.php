@@ -45,6 +45,7 @@
                     <tr>
                         <th class="searching rowspan">운영사이트 [<span class="blue">코드</span>]</th>
                         <th>정렬</th>
+                        <th>뎁스</th>
                         <th>메뉴코드</th>
                         <th class="searching">메뉴경로 (하위메뉴 등록)</th>
                         <th class="searching">메뉴명 (메뉴 수정)</th>
@@ -63,6 +64,7 @@
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['MenuIdx'] }}" style="width: 80px;" />
                                 </div>
                             </td>
+                            <td>{{ $row['MenuDepth'] }}</td>
                             <td>{{ $row['MenuIdx'] }}</td>
                             <td>
                                 <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a></td>

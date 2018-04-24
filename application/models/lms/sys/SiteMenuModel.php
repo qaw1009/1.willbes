@@ -92,6 +92,7 @@ class SiteMenuModel extends WB_Model
     public function findSiteMenuForModify($menu_idx)
     {
         $column = 'M.MenuIdx, M.SiteCode, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.UrlType, M.UrlTarget, M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm';
+        $column .= '    , fn_site_menu_connect_by_name(M.MenuIdx) as MenuRouteName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.UpdAdminIdx and wIsStatus = "Y") as UpdAdminName';
 

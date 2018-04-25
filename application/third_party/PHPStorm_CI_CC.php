@@ -115,8 +115,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BoardMasterModel $boardMasterModel                               BoardMaster Model Class
  * @property BoardModel $boardModel                                                 Board Model Class
  * @property WCpModel $wcpModel                                                     WCp Model Class
- * @property SearchWMasterLectureModel $searchWMasterLectureModel   SearchWMasterLecture Model Class
- *
+ * @property SearchWMasterLectureModel $searchWMasterLectureModel   Search MasterLecture Model Class
+ * @property SearchBookModel $searchBookModel                                  Search Book Model Class
  *
  */
 class PHPStorm_CI_CC

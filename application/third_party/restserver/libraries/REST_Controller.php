@@ -2338,9 +2338,23 @@ abstract class REST_Controller extends \CI_Controller {
             }
         }
 
+        // If there are headers that should be forced in the CORS check, add them now
+        if (is_array($this->config->item('forced_cors_headers')))
+        {
+            foreach ($this->config->item('forced_cors_headers') as $header => $value)
+            {
+                header($header . ': ' . $value);
+            }
+        }
+
         // If the request HTTP method is 'OPTIONS', kill the response and send it to the client
         if ($this->input->method() === 'options')
         {
+            // Load DB if needed for logging
+            if (!isset($this->rest->db) && $this->config->item('rest_enable_logging'))
+            {
+                $this->rest->db = $this->load->database($this->config->item('rest_database_group'), TRUE);
+            }
             exit;
         }
     }

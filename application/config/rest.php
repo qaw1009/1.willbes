@@ -111,7 +111,7 @@ $config['rest_realm'] = 'WILL-API';
 |
 */
 //$config['rest_auth'] = FALSE;
-$config['rest_auth'] = FALSE;
+$config['rest_auth'] = 'digest';
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +140,7 @@ $config['auth_source'] = '';
 |
 */
 $config['allow_auth_and_keys'] = TRUE;
+$config['strict_api_and_auth'] = TRUE; // force the use of both api and auth before a valid api request is made
 
 /*
 |--------------------------------------------------------------------------
@@ -212,7 +213,7 @@ $config['auth_library_function'] = '';
 | Array of usernames and passwords for login, if ldap is configured this is ignored
 |
 */
-$config['rest_valid_logins'] = ['admin' => '1234'];
+$config['rest_valid_logins'] = ['willbes' => 'apidev^2017'];
 
 /*
 |--------------------------------------------------------------------------
@@ -621,17 +622,31 @@ $config['allowed_cors_origins'] = [];
 
 /*
 |--------------------------------------------------------------------------
-| Rest server url
+| CORS Forced Headers
 |--------------------------------------------------------------------------
+|
+| If using CORS checks, always include the headers and values specified here 
+| in the OPTIONS client preflight.
+| Example:
+| $config['forced_cors_headers'] = [
+|   'Access-Control-Allow-Credentials' => 'true'
+| ];
+|
+| Added because of how Sencha Ext JS framework requires the header
+| Access-Control-Allow-Credentials to be set to true to allow the use of
+| credentials in the REST Proxy. 
+| See documentation here:
+| http://docs.sencha.com/extjs/6.5.2/classic/Ext.data.proxy.Rest.html#cfg-withCredentials
+|
 */
-$config['rest_server'] = 'http://' . ENV_CHAR . 'api.' . config_item('base_domain');
+$config['forced_cors_headers'] = [];
 
 /*
 |--------------------------------------------------------------------------
-| Rest client send cookies
+| Rest server url from rest client
 |--------------------------------------------------------------------------
 */
-$config['allow_send_cookies'] = FALSE;
+$config['rest_server'] = 'http://' . ENV_CHAR . 'api.' . config_item('base_domain');
 
 /*
 |--------------------------------------------------------------------------

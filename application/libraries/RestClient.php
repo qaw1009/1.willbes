@@ -23,6 +23,7 @@ class RestClient
         'application/vnd.php.serialized' => 'serialize'
     );
 
+    protected $config_file = 'rest';
     protected $rest_server;
     protected $format;
     protected $mime_type;
@@ -41,7 +42,7 @@ class RestClient
     protected $send_cookies = null;
     protected $response_string;
 
-    function __construct($config = 'rest')
+    function __construct($config = [])
     {
         $this->_ci =& get_instance();
         log_message('debug', 'Rest Client Class Initialized');
@@ -49,7 +50,7 @@ class RestClient
         $this->_ci->load->library('curl');
 
         // If a URL was passed to the library
-        empty($config) OR $this->initialize($config);
+        $this->initialize($config);
     }
 
     function __destruct()
@@ -63,29 +64,29 @@ class RestClient
      */
     public function initialize($config)
     {
-        if (is_array($config) === false) {
-            $this->_ci->load->config($config, TRUE, TRUE);
-            $config = $this->_ci->config->config[$config];
-        }
+        // get global config
+        $this->_ci->load->config($this->config_file, TRUE, TRUE);
+        $_config = element($this->config_file, $this->_ci->config->config);
 
-        $this->rest_server = element('rest_server', $config);
+        // set member variables
+        $this->rest_server = isset($config['server']) ? $config['server'] : element('rest_server', $_config);
         if (substr($this->rest_server, -1, 1) != '/') {
             $this->rest_server .= '/';
         }
 
-        $this->format = element('rest_default_format', $config);
-        $this->send_cookies = element('allow_send_cookies', $config);
-        
-        $this->api_name = element('rest_key_name', $config, 'X-API-KEY');
-        $this->api_key = element('rest_enable_keys', $config);
+        $this->format = isset($config['format']) ? $config['format'] : element('rest_default_format', $_config);
+        isset($config['send_cookies']) && $this->send_cookies = $config['send_cookies'];
 
-        $this->http_realm = element('rest_realm', $config);
-        $this->http_auth = element('rest_auth', $config);
-        $this->http_user = key(element('rest_valid_logins', $config));
-        $this->http_pass = current(element('rest_valid_logins', $config));
+        $this->api_name = isset($config['api_name']) ? $config['api_name'] : element('rest_key_name', $_config, 'X-API-KEY');
+        isset($config['api_key']) && $this->api_key = element('api_key', $config);
 
-        $this->ssl_verify_peer = element('ssl_verify_peer', $config);
-        $this->ssl_cainfo = element('ssl_cainfo', $config);
+        $this->http_realm = isset($config['http_realm']) ? $config['http_realm'] : element('rest_realm', $_config);
+        $this->http_auth = isset($config['http_auth']) ? $config['http_auth'] : element('rest_auth', $_config);
+        $this->http_user = isset($config['http_user']) ? $config['http_user'] : key(element('rest_valid_logins', $_config));
+        $this->http_pass = isset($config['http_pass']) ? $config['http_pass'] : current(element('rest_valid_logins', $_config));
+
+        $this->ssl_verify_peer = isset($config['ssl_verify_peer']) ? $config['ssl_verify_peer'] : element('ssl_verify_peer', $_config);
+        $this->ssl_cainfo = isset($config['ssl_cainfo']) ? $config['ssl_cainfo'] : element('ssl_cainfo', $_config);
     }
 
     /**
@@ -156,10 +157,15 @@ class RestClient
     /**
      * api_key
      * @param $key
+     * @param bool $name
      */
-    public function api_key($key)
+    public function api_key($key, $name = FALSE)
     {
-        $this->api_key = $key;
+        $this->api_key  = $key;
+
+        if ($name !== FALSE) {
+            $this->api_name = $name;
+        }
     }
 
     /**
@@ -221,7 +227,7 @@ class RestClient
         }
         
         // If we have an API Key, then use it
-        if ($this->api_key !== FALSE)
+        if (empty($this->api_key) === FALSE)
         {
             $this->http_header($this->api_name, $this->api_key);
         }
@@ -237,12 +243,6 @@ class RestClient
 
         // We still want the response even if there is an error code over 400
         $this->_ci->curl->setOpt(CURLOPT_FAILONERROR, FALSE);
-
-        // Error occured
-        $this->_ci->curl->error(function($instance) {
-            echo json_encode([$instance->errorCode => $instance->errorMessage]);
-            exit(1);
-        });
 
         // Call and Execute the correct method with parameters
         if ($method == 'delete') {

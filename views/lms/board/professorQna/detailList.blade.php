@@ -3,23 +3,27 @@
 @section('content')
     <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다. (괄호 안 붉은색 숫자는 미답변 카운트입니다.)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
-
+        {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}
+        <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_category" name="search_category">
                             <option value="">구분</option>
-                            @foreach($arr_category as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                            @foreach($arr_lg_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">분류</option>
+                            @foreach($arr_md_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
                         </select>
 
                         <select class="form-control" id="search_subject" name="search_subject">
@@ -92,14 +96,14 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-xs-4">
-                    <button class="btn btn-info ml-20" type="button">기본화면셋팅</button>
+                    <button class="btn btn-info ml-20" type="button" id="btn_search_setting">기본화면셋팅</button>
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
                         <input type="checkbox" name="search_chk_notice_display" value="1" class="flat" id="notice_display"/> <label for="notice_display">공지 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button class="btn btn-default ml-30 mr-30" type="button" id="btn_search_del">검색초기화</button>
+                    <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
                 </div>
             </div>
         </div>
@@ -137,8 +141,18 @@
         var $datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_ajax_table');
+        var arr_search_data = {!! $arr_search_data !!};
 
         $(document).ready(function() {
+            $.each(arr_search_data,function(key,value) {
+                $search_form.find('input[name="'+key+'"]').val(value);
+                $search_form.find('select[name="'+key+'"]').val(value);
+            });
+
+            // site-code에 매핑되는 select box 자동 변경
+            $search_form.find('select[name="search_category"]').chained("#search_site_code");
+            $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
@@ -180,7 +194,7 @@
                             }
                             return str;
                         }},
-                    {'data' : 'SubjectName'},
+                    {'data' : 'MdCateName'},
                     {'data' : 'SubjectName'},
                     {'data' : 'TypeCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
@@ -233,11 +247,6 @@
                             }
                         }},
                 ]
-            });
-
-            // 검색초기화
-            $('#btn_search_del').on('click', function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}/?' + '{!! $boardDefaultQueryString !!}');
             });
 
             // 공지 숨기기

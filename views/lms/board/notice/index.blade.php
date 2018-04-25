@@ -111,6 +111,10 @@
                 $search_form.find('select[name="'+key+'"]').val(value);
             });
 
+            // site-code에 매핑되는 select box 자동 변경
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
+            $search_form.find('select[name="search_category"]').chained("#search_site_code");
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
@@ -180,10 +184,6 @@
                 ],
             });
 
-            // site-code에 매핑되는 select box 자동 변경
-            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
-            $search_form.find('select[name="search_category"]').chained("#search_site_code");
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
@@ -250,8 +250,6 @@
             $search_form.on('ifChanged', '.hot-display', function() {
                 $datatable.draw();
             });
-
-
         });
     </script>
 @stop

@@ -42,7 +42,6 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         redirect(site_url("/board/{$this->board_name}/mainList?bm_idx={$this->bm_idx}"));
     }
@@ -55,11 +54,10 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $this->load->view("board/{$this->board_name}/mainList", [
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
         ]);
     }
 
@@ -68,7 +66,6 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $arr_condition = [
             'EQ' => [
@@ -105,13 +102,16 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
+        $category_data = $this->categoryModel->getCategoryArray();
         $arr_category = [];
-        if (!empty($this->site_code)) {
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
+        foreach ($category_data as $row) {
+            $arr_key = ($row['CateDepth'] == 1) ? 'LG' : 'MD';
+            $arr_category[$arr_key][] = $row;
         }
 
         // 기존 교수 기본정보 조회
@@ -130,14 +130,18 @@ class ProfessorQna extends BaseBoard
         $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
 
         $this->load->view("board/{$this->board_name}/detailList", [
+            'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_ccd_reply' => $this->_Ccd['reply'],
             'arr_type_group_ccd' => $arr_type_group_ccd,
             'arr_reply' => $arr_reply,
-            'arr_category' => $arr_category,
+            'arr_lg_category' => element('LG', $arr_category, []),
+            'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $arr_subject,
             'boardName' => $this->board_name,
             'arr_prof_info' => $arr_prof_info,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}&prof_idx={$prof_idx}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}",
         ]);
     }
 
@@ -151,7 +155,7 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
+        $this->site_code = $this->_reqP('search_site_code');
         $prof_idx = $this->_req('prof_idx');
         $is_notice_type = ($this->_reqP('search_chk_notice_display') == 1) ? '1' : '0';
 
@@ -161,6 +165,7 @@ class ProfessorQna extends BaseBoard
                 'LB.ProfIdx' => $prof_idx,
                 'LB.RegType' => $this->_reg_type['user'],
                 'LB.SiteCode' => $this->site_code,
+                'LB.MdCateCode' => $this->_reqP('search_md_cate_code'),
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
@@ -198,7 +203,8 @@ class ProfessorQna extends BaseBoard
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             LB.SubjectIdx, PS.SubjectName,
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
-            ADMIN2.wAdminName as ReplyRegAdminName
+            ADMIN2.wAdminName as ReplyRegAdminName,
+            LB.MdCateCode, MdSysCate.CateName as MdCateName
         ';
 
         //공지사항
@@ -238,7 +244,6 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
         $method = 'POST';
@@ -380,7 +385,6 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
         if (empty($params[0]) === true) {
@@ -462,7 +466,6 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
@@ -477,7 +480,9 @@ class ProfessorQna extends BaseBoard
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             MEM.MemName, MEM.MemId, MEM.Hp1,
-            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent
+            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
+            LB.SubjectIdx, PS.SubjectName,
+            LB.MdCateCode, MdSysCate.CateName as MdCateName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -506,9 +511,6 @@ class ProfessorQna extends BaseBoard
         $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
         $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
 
-        if (empty($this->site_code) === false) {
-            $site_code = $this->site_code;
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
 
         foreach ($arr_cate_code as $item => $code) {
@@ -539,7 +541,6 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
         if (empty($params[0]) === true) {
@@ -557,7 +558,9 @@ class ProfessorQna extends BaseBoard
             MEM.MemName, MEM.MemId, MEM.Hp1,
             LB.ReplyStatusCcd, LB.ReplyContent,
             qnaAdmin.wAdminName AS qnaAdminName, qnaAdmin2.wAdminName AS qnaUpdAdminName,
-            LB.ReplyRegDatm, LB.ReplyUpdDatm
+            LB.ReplyRegDatm, LB.ReplyUpdDatm,
+            LB.SubjectIdx, PS.SubjectName,
+            LB.MdCateCode, MdSysCate.CateName as MdCateName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -609,9 +612,6 @@ class ProfessorQna extends BaseBoard
         $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
         $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
 
-        if (empty($this->site_code) === false) {
-            $site_code = $this->site_code;
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
         foreach ($arr_cate_code as $item => $code) {
             $data['arr_cate_code'][$code] = $get_category_array[$code];
@@ -668,6 +668,16 @@ class ProfessorQna extends BaseBoard
 
         $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
+     * @param array $params
+     */
+    public function getAjaxSiteCategoryInfo($params = [])
+    {
+        $result = $this->_getSiteCategoryInfo($params);
+        $this->json_result(true, '', [], $result);
     }
 
     /**

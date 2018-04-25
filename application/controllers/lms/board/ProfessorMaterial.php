@@ -34,7 +34,6 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         redirect(site_url("/board/{$this->board_name}/mainList?bm_idx={$this->bm_idx}"));
     }
@@ -47,11 +46,10 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $this->load->view("board/{$this->board_name}/mainList", [
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
         ]);
     }
 
@@ -60,7 +58,6 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $arr_condition = [
             'EQ' => [
@@ -98,14 +95,13 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
-        $arr_category = [];
-        if (!empty($this->site_code)) {
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
-        }
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
+        //카테고리 조회(구분)
+        $arr_category = $this->_getCategoryArray('');
 
         // 기존 교수 기본정보 조회
         $arr_prof_info = $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
@@ -120,12 +116,15 @@ class ProfessorMaterial extends BaseBoard
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
 
         $this->load->view("board/{$this->board_name}/detailList", [
+            'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_category' => $arr_category,
             'arr_subject' => $arr_subject,
             'boardName' => $this->board_name,
             'arr_type_group_ccd' => $arr_type_group_ccd,
             'arr_prof_info' => $arr_prof_info,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}&prof_idx={$prof_idx}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}",
         ]);
     }
 
@@ -139,7 +138,7 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
+        $this->site_code = $this->_reqP('search_site_code');
         $prof_idx = $this->_req('prof_idx');
         $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
@@ -254,7 +253,6 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
         $method = 'POST';
@@ -298,11 +296,6 @@ class ProfessorMaterial extends BaseBoard
         }
 
         //사이트카테고리 (구분)
-        if (empty($params[0]) === true) {
-            if (empty($this->site_code) === false) {
-                $site_code = $this->site_code;
-            }
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
 
         //과목
@@ -371,7 +364,6 @@ class ProfessorMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $prof_idx = $this->_req('prof_idx');
 
         if (empty($params[0]) === true) {
@@ -423,9 +415,6 @@ class ProfessorMaterial extends BaseBoard
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
 
-        if (empty($this->site_code) === false) {
-            $site_code = $this->site_code;
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
 
         foreach ($arr_cate_code as $item => $code) {
@@ -501,6 +490,16 @@ class ProfessorMaterial extends BaseBoard
 
         $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
+     * @param array $params
+     */
+    public function getAjaxSiteCategoryInfo($params = [])
+    {
+        $result = $this->_getSiteCategoryInfo($params);
+        $this->json_result(true, '', [], $result);
     }
 
     /**

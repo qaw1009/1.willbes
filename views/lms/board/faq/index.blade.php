@@ -3,9 +3,10 @@
 @section('content')
     <h5>- 고객센터 FAQ 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
-
+        {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}
+        <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
+        <input type="hidden" name="group_ccd" value="">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -20,17 +21,18 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="">조건</label>
                     <div class="col-md-5 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
-                            @foreach($arr_campus as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
 
                         <select class="form-control" id="search_faq_type" name="search_faq_type">
                             <option value="">FAQ 분류</option>
-                            @foreach($faq_ccd as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                            @foreach($$faq_ccd_list as $row)
+                                <option value="{{ $row['Ccd'] }}" class="{{ $row['GroupCcd'] }}">{{ $row['CcdName'] }}</option>
                             @endforeach
                         </select>
 
@@ -77,7 +79,7 @@
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button class="btn btn-default ml-30 mr-30" type="button" id="btn_search_del">검색초기화</button>
+                    <button class="btn btn-default ml-30 mr-30" type="button" id="_btn_reset">검색초기화</button>
                 </div>
             </div>
         </div>
@@ -113,8 +115,18 @@
         var $datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_ajax_table');
+        var arr_search_data = {!! $arr_search_data !!};
 
         $(document).ready(function() {
+            $.each(arr_search_data,function(key,value) {
+                $search_form.find('input[name="'+key+'"]').val(value);
+                $search_form.find('select[name="'+key+'"]').val(value);
+            });
+
+            // site-code에 매핑되는 select box 자동 변경
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
+            $search_form.find('select[name="search_category"]').chained("#search_site_code");
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
@@ -136,12 +148,12 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            /*if (row.IsBest == 'Y') {
+                            if (row.IsBest == 'Y') {
                                 return 'BEST';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                            }*/
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }
+                            /*return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);*/
                         }},
                     {'data' : 'OrderNum', 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -192,11 +204,17 @@
                 ]
             });
 
-            $('.btn-group-ccd').on('click', function() {
+            $search_form.on('click', '.btn-group-ccd', function() {
+                $search_form.find('input[name="group_ccd"]').val($(this).data('group-ccd'));
+                $datatable.draw();
+            });
+            /*$('.btn-group-ccd').on('click', function() {
                 var gCcd = $(this).data('group-ccd');
                 var qs = getQueryString().replace(/&group_ccd=([0-9]*)/gi, '');
                 location.replace('{{ site_url("/board/{$boardName}") }}/' + qs + '&group_ccd=' + gCcd);
-            });
+                $search_form.find('input[name="group_ccd"]').val($(this).data('group-ccd'));
+                $datatable.draw();
+            });*/
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {

@@ -38,18 +38,20 @@ class ExamNews extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
-        $arr_category = [];
-        if (!empty($this->site_code)) {
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
-        }
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
+        //카테고리 조회(구분)
+        $arr_category = $this->_getCategoryArray('');
 
         $this->load->view("board/{$this->board_name}/index", [
+            'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
         ]);
     }
 
@@ -62,7 +64,7 @@ class ExamNews extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
+        $this->site_code = $this->_reqP('search_site_code');
         $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
@@ -174,7 +176,6 @@ class ExamNews extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $method = 'POST';
         $data = null;
@@ -216,11 +217,6 @@ class ExamNews extends BaseBoard
         }
 
         //사이트카테고리 (구분)
-        if (empty($params[0]) === true) {
-            if (empty($this->site_code) === false) {
-                $site_code = $this->site_code;
-            }
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
 
         $this->load->view("board/{$this->board_name}/create", [
@@ -282,7 +278,6 @@ class ExamNews extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');

@@ -33,11 +33,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">분류</label>
                     <div class="form-control-static col-md-1">
-                        일반경찰 aa
+                        {{$data['MdCateName']}}
                     </div>
                     <label class="control-label col-md-1" for="">과목</label>
                     <div class="form-control-static col-md-1">
-                        수사 aa
+                        {{$data['SubjectName']}}
                     </div>
                     <label class="control-label col-md-2" for="">질문유형</label>
                     <div class="form-control-static col-md-1">

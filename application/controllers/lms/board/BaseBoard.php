@@ -18,8 +18,7 @@ class BaseBoard extends \app\controllers\BaseController
     protected function setDefaultBoardParam()
     {
         $this->boardDefaultParams = [
-            'bm_idx' => $this->_req('bm_idx'),
-            'site_code' => $this->_req('site_code')
+            'bm_idx' => $this->_req('bm_idx')
         ];
     }
 
@@ -38,9 +37,14 @@ class BaseBoard extends \app\controllers\BaseController
      */
     protected function getBoardSearchingArray($bm_idx)
     {
+        $search_data = null;
         $arr_search_data = 'null';
         $ret_search_site_code = '';
-        $search_data = get_app_var('settings')['searchSetting_'.$bm_idx];
+
+        if (empty(get_app_var('settings')['searchSetting_'.$bm_idx]) === false) {
+            $search_data = get_app_var('settings')['searchSetting_'.$bm_idx];
+        }
+
         if (empty($search_data) === false) {
             $arr_search_data = $search_data;
             $set_search_data = json_decode($search_data, true);
@@ -170,6 +174,17 @@ class BaseBoard extends \app\controllers\BaseController
         return $this->codeModel->getCcd($group_ccd);
     }
 
+    protected function _listAllCode($group_ccds = [])
+    {
+        //return $this->codeModel->getCcdInArray($group_ccds);
+        $arr_condition = [
+            'IN' => [
+                'GroupCcd' => $group_ccds
+            ]
+        ];
+        return $this->codeModel->listAllCode($arr_condition);
+    }
+
     /**
      * 게시판 등록
      * @param $method
@@ -235,8 +250,8 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
-     *
      * @param $arr_condition
+     * @return array|bool
      */
     protected function _getUnAnserArray($arr_condition)
     {

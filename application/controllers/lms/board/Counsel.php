@@ -46,17 +46,16 @@ class Counsel extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
-        //캠퍼스목록조회
-        $arr_campus = [];
-        $arr_category = [];
-        if (!empty($this->site_code)) {
-            //캠퍼스
-            $arr_campus = $this->_getCampusArray($this->site_code);
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
-        }
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
+        //카테고리 조회(구분)
+        $arr_category = $this->_getCategoryArray('');
+
+        //캠퍼스 조회
+        $arr_campus = $this->_getCampusArray('');
+
         //상담유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
         //답변상태
@@ -72,6 +71,9 @@ class Counsel extends BaseBoard
         ];
         $arr_unAnswered = $this->_getUnAnserArray($arr_condition);
         $this->load->view("board/{$this->board_name}/index", [
+            'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_ccd_reply' => $this->_Ccd['reply'],
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
@@ -79,7 +81,7 @@ class Counsel extends BaseBoard
             'arr_unAnswered' => $arr_unAnswered,
             'arr_type_group_ccd' => $arr_type_group_ccd,
             'arr_reply' => $arr_reply,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}"
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
     }
 
@@ -92,7 +94,7 @@ class Counsel extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
+        $this->site_code = $this->_reqP('search_site_code');
         $is_notice_type = ($this->_reqP('search_chk_notice_display') == 1) ? '1' : '0';
 
         //상담글 조건
@@ -187,7 +189,6 @@ class Counsel extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $method = 'POST';
         $data = null;
@@ -295,7 +296,6 @@ class Counsel extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
@@ -376,7 +376,6 @@ class Counsel extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
@@ -493,7 +492,6 @@ class Counsel extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');

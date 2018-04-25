@@ -37,18 +37,16 @@ class Faq extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
         $group_ccd = $this->_req('group_ccd');
 
-        //캠퍼스목록조회
-        $arr_campus = [];
-        $arr_category = [];
-        if (!empty($this->site_code)) {
-            //캠퍼스
-            $arr_campus = $this->_getCampusArray($this->site_code);
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
-        }
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
+        //카테고리 조회(구분)
+        $arr_category = $this->_getCategoryArray('');
+
+        //캠퍼스 조회
+        $arr_campus = $this->_getCampusArray('');
 
         //FAQ구분
         $faq_group_ccd = $this->_getFaqGroupInfo($this->_groupCcd['faq_group_type_ccd']);
@@ -58,15 +56,21 @@ class Faq extends BaseBoard
             $faq_ccd = $result = $this->_getCcdArray($group_ccd);
         }
 
+        $faq_ccd_list = $result = $this->_listAllCode($this->_groupCcd['faq_group_type_ccd']);
+
         //FAQ구분별 게시글 횟수
         $faq_group_ccd_countList = $this->boardModel->getFaqBoardCcdCountList($this->bm_idx, $this->_groupCcd['faq_group_type_ccd']);
 
         $this->load->view("board/{$this->board_name}/index", [
+            'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
             'faq_group_ccd' => $faq_group_ccd,
             'faq_ccd' => $faq_ccd,
+            'faq_ccd_list' => $faq_ccd_list,
             'faq_group_ccd_countList' => $faq_group_ccd_countList,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}&group_ccd={$group_ccd}",
         ]);
@@ -77,7 +81,7 @@ class Faq extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
+        $this->site_code = $this->_reqP('search_site_code');
         $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
@@ -174,7 +178,6 @@ class Faq extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $method = 'POST';
         $data = null;
@@ -216,11 +219,6 @@ class Faq extends BaseBoard
         }
 
         //사이트카테고리 (구분)
-        if (empty($params[0]) === true) {
-            if (empty($this->site_code) === false) {
-                $site_code = $this->site_code;
-            }
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
 
         //FAQ구분
@@ -282,7 +280,6 @@ class Faq extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
@@ -427,7 +424,6 @@ class Faq extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         //FAQ구분
         $faq_group_ccd = $this->_getFaqGroupInfo($this->_groupCcd['faq_group_type_ccd']);

@@ -110,6 +110,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
+                    LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
                 ";
                 break;
             case "professorMaterial" :
@@ -269,7 +270,7 @@ class BoardModel extends WB_Model
             }
 
             $insert_column = '
-                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
                 VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, LecIdx,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
@@ -279,7 +280,7 @@ class BoardModel extends WB_Model
                 UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
             ';
             $select_column = '
-                BmIdx, SiteCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
+                BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
                 VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, LecIdx,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
@@ -404,6 +405,7 @@ class BoardModel extends WB_Model
                     ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                     LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin ON LB.ReplyAdminIdx = qnaAdmin.wAdminIdx and qnaAdmin.wIsStatus='Y'
                     LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin2 ON LB.ReplyUpdAdminIdx = qnaAdmin2.wAdminIdx and qnaAdmin2.wIsStatus='Y'
+                    LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
                 ";
                 break;
             case "professorMaterial" :
@@ -629,7 +631,6 @@ class BoardModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy(['SiteCode'=>'ASC'])->getMakeOrderBy();
-        $group_by = $this->_conn->group_by('SiteCode');
 
         $sql = 'select (SELECT "all") AS SiteCode, COUNT(BoardIdx) AS count ';
         $sql .= $from.' '.$where.' ';

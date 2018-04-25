@@ -37,13 +37,12 @@ class ExamProblem extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
-        $arr_category = [];
-        if (!empty($this->site_code)) {
-            //사이트카테고리
-            $arr_category = $this->_getCategoryArray($this->site_code);
-        }
+        //검색상태조회
+        $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
+
+        //카테고리 조회(구분)
+        $arr_category = $this->_getCategoryArray('');
 
         //지역
         $arr_area_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd_area']);
@@ -55,11 +54,14 @@ class ExamProblem extends BaseBoard
         }
 
         $this->load->view("board/{$this->board_name}/index", [
+            'bm_idx' => $this->bm_idx,
+            'arr_search_data' => $arr_search_data['arr_search_data'],
+            'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_category' => $arr_category,
             'arr_subject' => $arr_subject,
             'boardName' => $this->board_name,
             'arr_area_ccd' => $arr_area_ccd,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
         ]);
     }
 
@@ -72,7 +74,7 @@ class ExamProblem extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
+        $this->site_code = $this->_reqP('search_site_code');
         $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
@@ -185,7 +187,6 @@ class ExamProblem extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         $method = 'POST';
         $data = null;
@@ -228,11 +229,6 @@ class ExamProblem extends BaseBoard
         }
 
         //사이트카테고리 (구분)
-        if (empty($params[0]) === true) {
-            if (empty($this->site_code) === false) {
-                $site_code = $this->site_code;
-            }
-        }
         $get_category_array = $this->_getCategoryArray($site_code);
 
         //지역
@@ -300,7 +296,6 @@ class ExamProblem extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $board_params['site_code'];
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');

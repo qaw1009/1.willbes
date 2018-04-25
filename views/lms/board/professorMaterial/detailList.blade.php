@@ -3,18 +3,19 @@
 @section('content')
     <h5>- 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'self') !!}
         {!! csrf_field() !!}
-
+        {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}
+        <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_category" name="search_category">
                             <option value="">구분</option>
-                            @foreach($arr_category as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                            @foreach($arr_category as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
@@ -64,12 +65,12 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-xs-8 text-right form-inline">
+                <div class="col-xs-12 text-right form-inline">
                     <div class="checkbox">
                         <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button class="btn btn-default ml-30 mr-30" type="button" id="btn_search_del">검색초기화</button>
+                    <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
                 </div>
             </div>
         </div>
@@ -109,6 +110,9 @@
         $(document).ready(function() {
             // 기간 조회 디폴트 셋팅
             //setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
+
+            // site-code에 매핑되는 select box 자동 변경
+            $search_form.find('select[name="search_category"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -218,11 +222,6 @@
                         $datatable.draw();
                     }
                 }, showError, false, 'POST');
-            });
-
-            // 검색초기화
-            $('#btn_search_del').on('click', function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}/detailList/?' + '{!! $boardDefaultQueryString !!}');
             });
 
             // 복사

@@ -108,10 +108,10 @@ $config['rest_realm'] = 'WILL-API';
 | 'digest'  More secured login
 | 'session' Check for a PHP session variable. See 'auth_source' to set the
 |           authorization key
-|
+| 'token' Custom method
 */
 //$config['rest_auth'] = FALSE;
-$config['rest_auth'] = 'digest';
+$config['rest_auth'] = 'token';
 
 /*
 |--------------------------------------------------------------------------
@@ -213,7 +213,7 @@ $config['auth_library_function'] = '';
 | Array of usernames and passwords for login, if ldap is configured this is ignored
 |
 */
-$config['rest_valid_logins'] = ['willbes' => 'apidev^2017'];
+$config['rest_valid_logins'] = ['willbes' => 'api@token.will'];
 
 /*
 |--------------------------------------------------------------------------
@@ -378,12 +378,14 @@ $config['rest_key_length'] = 40;
 |--------------------------------------------------------------------------
 |
 | Custom header to specify the API key
-
 | Note: Custom headers with the X- prefix are deprecated as of
 | 2012/06/12. See RFC 6648 specification for more details
 |
 */
 $config['rest_key_name'] = 'X-API-KEY';
+$config['rest_user_name'] = 'X-API-USER';         // Custom user name
+$config['rest_token_name'] = 'X-API-TOKEN';     // Custom token name
+$config['rest_nonce_name'] = 'X-API-NONCE';    // Custom nonce name
 
 /*
 |--------------------------------------------------------------------------

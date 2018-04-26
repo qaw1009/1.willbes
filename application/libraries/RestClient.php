@@ -33,8 +33,12 @@ class RestClient
     protected $http_user = null;
     protected $http_pass = null;
     
-    protected $api_name = null;
+    protected $api_key_name = null;
     protected $api_key = null;
+
+    protected $api_user_name = null;
+    protected $api_token_name = null;
+    protected $api_nonce_name = null;
 
     protected $ssl_verify_peer = null;
     protected $ssl_cainfo = null;
@@ -77,8 +81,12 @@ class RestClient
         $this->format = isset($config['format']) ? $config['format'] : element('rest_default_format', $_config);
         isset($config['send_cookies']) && $this->send_cookies = $config['send_cookies'];
 
-        $this->api_name = isset($config['api_name']) ? $config['api_name'] : element('rest_key_name', $_config, 'X-API-KEY');
         isset($config['api_key']) && $this->api_key = element('api_key', $config);
+        $this->api_key_name = isset($config['api_key_name']) ? $config['api_key_name'] : element('rest_key_name', $_config, 'X-API-KEY');
+
+        $this->api_user_name = isset($config['api_user_name']) ? $config['api_user_name'] : element('rest_user_name', $_config, 'X-API-USER');
+        $this->api_token_name = isset($config['api_token_name']) ? $config['api_token_name'] : element('rest_token_name', $_config, 'X-API-TOKEN');
+        $this->api_nonce_name = isset($config['api_nonce_name']) ? $config['api_nonce_name'] : element('rest_nonce_name', $_config, 'X-API-NONCE');
 
         $this->http_realm = isset($config['http_realm']) ? $config['http_realm'] : element('rest_realm', $_config);
         $this->http_auth = isset($config['http_auth']) ? $config['http_auth'] : element('rest_auth', $_config);
@@ -164,7 +172,7 @@ class RestClient
         $this->api_key  = $key;
 
         if ($name !== FALSE) {
-            $this->api_name = $name;
+            $this->api_key_name = $name;
         }
     }
 
@@ -223,13 +231,17 @@ class RestClient
         // If authentication is enabled use it
         if ($this->http_auth !== FALSE && $this->http_user != '')
         {
-            $this->http_login($this->http_user, sha1($this->http_pass), $this->http_auth);
+            if ($this->http_auth == 'token') {
+                $this->http_token($this->http_user, $this->http_pass, $method, $uri, $params);
+            } else {
+                $this->http_login($this->http_user, $this->http_pass, $this->http_auth);
+            }
         }
-        
+
         // If we have an API Key, then use it
         if (empty($this->api_key) === FALSE)
         {
-            $this->http_header($this->api_name, $this->api_key);
+            $this->http_header($this->api_key_name, $this->api_key);
         }
 
         // Send cookies with curl
@@ -333,7 +345,28 @@ class RestClient
      */
     public function http_login($username = '', $password = '', $type = 'any')
     {
+        $password = hash_hmac('sha256', $password, $username);
         $this->_ci->curl->{'set' . ucfirst($type) . 'Authentication'}($username, $password);
+    }
+
+    /**
+     * http_token
+     * @param string $username
+     * @param string $password
+     * @param $method
+     * @param $uri
+     * @param array $params
+     */
+    public function http_token($username = '', $password = '', $method, $uri, $params = array())
+    {
+        $unique_id = uniqid();
+        $password = hash_hmac('sha256', $password, $username);
+        $token = $username . ':' . $unique_id . ':' . $password . ':' . strtoupper($method) . ':' . $uri;
+        $token = md5(hash_hmac('sha256', $token, $unique_id));
+
+        $this->http_header($this->api_user_name, $username);
+        $this->http_header($this->api_nonce_name, $unique_id);
+        $this->http_header($this->api_token_name, $token);
     }
 
     /**

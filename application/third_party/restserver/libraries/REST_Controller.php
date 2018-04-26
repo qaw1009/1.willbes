@@ -589,6 +589,9 @@ abstract class REST_Controller extends \CI_Controller {
                 case 'session':
                     $this->_check_php_session();
                     break;
+                case 'token':
+                    $this->_check_token();
+                    break;
             }
             if ($this->config->item('rest_ip_whitelist_enabled') === TRUE)
             {
@@ -1973,7 +1976,7 @@ abstract class REST_Controller extends \CI_Controller {
         if ( ! $this->config->item('auth_source') && $rest_auth === 'digest')
         {
             // For digest we do not have a password passed as argument
-            return md5($username.':'.$this->config->item('rest_realm').':'.(isset($valid_logins[$username]) ? sha1($valid_logins[$username]) : ''));
+            return md5($username.':'.$this->config->item('rest_realm').':'.(isset($valid_logins[$username]) ? hash_hmac('sha256', $valid_logins[$username], $username) : ''));
         }
 
         if ($password === FALSE)
@@ -2000,7 +2003,7 @@ abstract class REST_Controller extends \CI_Controller {
             return FALSE;
         }
 
-        if (sha1($valid_logins[$username]) !== $password)
+        if (hash_hmac('sha256', $valid_logins[$username], $username) !== $password)
         {
             return FALSE;
         }
@@ -2027,6 +2030,44 @@ abstract class REST_Controller extends \CI_Controller {
                 $this->config->item('rest_status_field_name') => FALSE,
                 $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized')
             ], self::HTTP_UNAUTHORIZED);
+        }
+    }
+
+    /**
+     * Check to see if the user is logged in with api token
+     *
+     * @access protected
+     * @return void
+     */
+    protected function _check_token()
+    {
+        $rest_user_name = ucwords(strtolower($this->config->item('rest_user_name')), '-');
+        $rest_token_name = ucwords(strtolower($this->config->item('rest_token_name')), '-');
+        $rest_nonce_name = ucwords(strtolower($this->config->item('rest_nonce_name')), '-');
+        $valid_logins = $this->config->item('rest_valid_logins');
+
+        $username = $this->head($rest_user_name);
+        $token = $this->head($rest_token_name);
+        $nonce = $this->head($rest_nonce_name);
+
+        if (array_key_exists($username, $valid_logins) === FALSE) {
+            // Display an error response
+            $this->response([
+                $this->config->item('rest_status_field_name') => FALSE,
+                $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized')
+            ], self::HTTP_UNAUTHORIZED);
+        } else {
+            $password = hash_hmac('sha256', $valid_logins[$username], $username);
+            $valid_response = $username . ':' . $nonce . ':' . $password . ':' . strtoupper($this->request->method) . ':' . $this->uri->uri_string();
+            $valid_response = md5(hash_hmac('sha256', $valid_response, $nonce));
+
+            if (strcasecmp($token, $valid_response) !== 0) {
+                // Display an error response
+                $this->response([
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_invalid_credentials')
+                ], self::HTTP_UNAUTHORIZED);
+            }
         }
     }
 

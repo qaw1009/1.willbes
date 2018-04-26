@@ -268,7 +268,8 @@ class ProfessorMaterial extends BaseBoard
             $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName,
+            LB.LecIdx
             ';
             $method = 'PUT';
             $board_idx = $params[0];

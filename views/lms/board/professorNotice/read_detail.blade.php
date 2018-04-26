@@ -8,7 +8,7 @@
 
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>{{$arr_prof_info['ProfNickName']}} 공지게시판 정보</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">

@@ -115,7 +115,7 @@ class ProfessorQna extends BaseBoard
         }
 
         // 기존 교수 기본정보 조회
-        $arr_prof_info = $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
@@ -250,6 +250,12 @@ class ProfessorQna extends BaseBoard
         $data = null;
         $board_idx = null;
 
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
         //권한유형별 운영사이트 목록 조회
         $get_site_array = $this->_getSiteArray();
         $first_site_key = key($get_site_array);
@@ -301,6 +307,7 @@ class ProfessorQna extends BaseBoard
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'site_code' => $site_code,
+            'arr_prof_info' => $arr_prof_info,
             'getSiteArray' => $get_site_array,
             'getCategoryArray' => $get_category_array,
             'arr_subject' => $arr_subject,
@@ -391,6 +398,12 @@ class ProfessorQna extends BaseBoard
             show_error('잘못된 접근 입니다.');
         }
 
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
         $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
@@ -448,6 +461,7 @@ class ProfessorQna extends BaseBoard
 
         $this->load->view("board/{$this->board_name}/read_detail",[
             'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
             'data' => $data,
             'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,
@@ -466,9 +480,16 @@ class ProfessorQna extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
+        }
+
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
 
         $column = '
@@ -526,6 +547,7 @@ class ProfessorQna extends BaseBoard
 
         $this->load->view("board/{$this->board_name}/create_qna_reply", [
             'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
             'data' => $data,
             'board_idx' => $board_idx,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
@@ -545,6 +567,12 @@ class ProfessorQna extends BaseBoard
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
+        }
+
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
 
         $column = '
@@ -622,6 +650,7 @@ class ProfessorQna extends BaseBoard
 
         $this->load->view("board/{$this->board_name}/read_qna_reply", [
             'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
             'data' => $data,
             'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,

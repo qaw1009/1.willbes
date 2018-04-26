@@ -1,12 +1,12 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인 고객센터 1:1 상담 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 교수 학습Q&A 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <div class="x_panel">
         <form class="form-horizontal form-label-left" novalidate>
             <div class="x_title">
-                <h2>경찰 > 신광은 교수 학습Q&A</h2>
+                <h2>{{$arr_prof_info['ProfNickName']}} 교수 학습Q&A</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">

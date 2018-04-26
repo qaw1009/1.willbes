@@ -257,4 +257,14 @@ class BaseBoard extends \app\controllers\BaseController
     {
         return $this->boardModel->getUnAnserArray($arr_condition);
     }
+
+    /**
+     * 기존 교수 기본정보 조회
+     * @param $prof_idx
+     * @return array
+     */
+    protected function _getProfessorArray($prof_idx)
+    {
+        return $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
+    }
 }

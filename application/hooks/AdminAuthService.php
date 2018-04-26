@@ -146,7 +146,7 @@ abstract class AdminAuthService
     {
         $sess_admin_conn_sites = $this->_CI->session->userdata('admin_conn_sites');
 
-        array_push($sess_admin_conn_sites, SUB_DOMAIN);
+        array_push($sess_admin_conn_sites, APP_NAME);
         $this->_CI->session->set_userdata('admin_conn_sites', $sess_admin_conn_sites);
     }
 

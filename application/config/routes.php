@@ -50,16 +50,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = SUB_DOMAIN . '/home';
+$route['default_controller'] = APP_NAME . '/home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // 서브 도메인 예외 처리
 $route['(lcms)/(.*)'] = '$1/$2';
 // 서브 도메인별 컨트롤러 디렉토리 분리
-$route['(.*)'] = SUB_DOMAIN . '/$1';
+$route['(.*)'] = APP_NAME . '/$1';
 /*$route['(:any)/?(:any)?((/:any)*)'] = function($controller_name, $method_name = null, $param = null) {
-    $mapping_uri = SUB_DOMAIN . '/' . $controller_name . '/';
+    $mapping_uri = APP_NAME . '/' . $controller_name . '/';
     $mapping_uri .= (is_null($method_name) === true || empty($method_name) === true) ? 'index' : $method_name;
     $mapping_uri .= (is_null($param) === true || empty($param) === true) ? '' : $param;
 

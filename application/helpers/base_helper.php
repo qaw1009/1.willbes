@@ -1,6 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+if (!function_exists('app_url')) {
+    /**
+     * app name에 맞는 URL 리턴
+     * @param $uri
+     * @param $app_name
+     * @return string
+     */
+    function app_url($uri, $app_name)
+    {
+        return '//' . ENV_CHAR . $app_name . '.' . config_item('base_domain') . $uri;
+    }
+}
+
 if (!function_exists('config_get')) {
     /**
      * dot(.) 표기법으로 $key에 해당하는 config 값 리턴
@@ -21,7 +34,7 @@ if (!function_exists('config_site')) {
      */
     function config_site($key)
     {
-        return array_get(config_item(SUB_DOMAIN), $key);
+        return array_get(config_item(APP_NAME), $key);
     }
 }
 

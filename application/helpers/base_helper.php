@@ -14,6 +14,18 @@ if (!function_exists('app_url')) {
     }
 }
 
+if (!function_exists('config_app')) {
+    /**
+     * 사이트별 $key에 해당하는 config 값 리턴
+     * @param $key
+     * @return mixed
+     */
+    function config_app($key)
+    {
+        return array_get(config_item(APP_NAME), $key);
+    }
+}
+
 if (!function_exists('config_get')) {
     /**
      * dot(.) 표기법으로 $key에 해당하는 config 값 리턴
@@ -23,18 +35,6 @@ if (!function_exists('config_get')) {
     function config_get($key)
     {
         return array_get(get_config(), $key);
-    }
-}
-
-if (!function_exists('config_site')) {
-    /**
-     * 사이트별 $key에 해당하는 config 값 리턴
-     * @param $key
-     * @return mixed
-     */
-    function config_site($key)
-    {
-        return array_get(config_item(APP_NAME), $key);
     }
 }
 

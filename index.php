@@ -133,7 +133,6 @@ switch (ENVIRONMENT)
  */
 	$view_folder = 'views';
 
-
 /*
  * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
@@ -162,7 +161,6 @@ switch (ENVIRONMENT)
 
 	// The controller function you wish to be called.
 	// $routing['function']	= '';
-
 
 /*
  * -------------------------------------------------------------------
@@ -313,10 +311,10 @@ switch (ENVIRONMENT)
 |--------------------------------------------------------------------------
 */
     // storage path
-    defined('STORAGEPATH')  OR define('STORAGEPATH', FCPATH . 'storage' . DIRECTORY_SEPARATOR);
+    define('STORAGEPATH', FCPATH . 'storage' . DIRECTORY_SEPARATOR);
 
     // public url
-    defined('PUBLICURL')  OR define('PUBLICURL', DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR);
+    define('PUBLICURL', DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR);
 
 /*
  * --------------------------------------------------------------------

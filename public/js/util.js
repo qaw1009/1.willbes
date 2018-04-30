@@ -341,6 +341,26 @@ function computeDate(i_period, s_period_type) {
 }
 
 /**
+ * 바이트 수 리턴 함수
+ * @param val
+ * @returns {number}
+ */
+function fn_chk_byte(val){
+    var str_len = val.length;
+    var rbyte = 0;
+    var one_char = "";
+    for(var i=0; i<str_len; i++){
+        one_char = val.charAt(i);
+        if(escape(one_char).length > 4){
+            rbyte += 2; //한글2Byte
+        }else{
+            rbyte++;    //영문 등 나머지 1Byte
+        }
+    }
+    return rbyte;
+}
+
+/**
  * Layer popup
  * Modal Close 버튼이 있는 경우 id를 btn_modal_close로 지정해야 Modal 창이 닫힘
  * 사용 예

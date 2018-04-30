@@ -9,6 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // 프로파일러 사용 여부
 $config['enable_profiler'] = false;
 
+// 중복로그인 방지 사용 여부
+$config['prevent_duplicate_login'] = true;
+
 // 쿼리 로그 사용 여부
 $config['sql_log_queries'] = true;
 $config['sql_log_slow_queries'] = true;

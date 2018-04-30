@@ -5,13 +5,17 @@ class WB_Session extends CI_Session
 {
     private $_db;
     private $_table;
+    private $_prevent_duplicate_login;
 
     public function __construct(array $params = array())
     {
         parent::__construct($params);
+        
+        // 중복 로그인 방지 기능 사용 여부
+        $this->_prevent_duplicate_login = config_item('prevent_duplicate_login');
 
-        // 세션 드라이버가 데이터베이스 일 경우만
-        if ($this->_driver == 'database') {
+        // 중복 로그인 방지 기능을 사용하고, 세션 드라이버가 데이터베이스 일 경우만
+        if ($this->_prevent_duplicate_login === true && $this->_driver == 'database' ) {
             // load database
             $_CI =& get_instance();
             isset($_CI->db) OR $_CI->load->database();
@@ -35,6 +39,10 @@ class WB_Session extends CI_Session
      */
     public function addSessionLogin($user_idx, $app_type)
     {
+        if ($this->_prevent_duplicate_login !== true) {
+            return;
+        }
+
         $data = [
             'id' => session_id(),
             'ip_address' => $_SERVER['REMOTE_ADDR'],
@@ -55,6 +63,10 @@ class WB_Session extends CI_Session
      */
     public function removePrevSession($user_idx, $app_type)
     {
+        if ($this->_prevent_duplicate_login !== true) {
+            return;
+        }
+
         // 이전 로그인 세션 아이디 조회
         $this->_db->select('id, ip_address')->from($this->_table['session_login']);
         $this->_db->where('user_idx', $user_idx)->where('app_type', $app_type);

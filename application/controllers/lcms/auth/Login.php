@@ -246,6 +246,9 @@ class Login extends \app\controllers\BaseController
      */
     private function _loginSucceed($data)
     {
+        // 중복 로그인 방지 (이전 세션 데이터 삭제)
+        $this->session->removePrevSession($data['wAdminIdx'], 'A');
+
         // 로그인 세션 저장
         $this->session->sess_regenerate(true);
         $this->session->set_userdata('admin_idx', $data['wAdminIdx']);
@@ -271,6 +274,9 @@ class Login extends \app\controllers\BaseController
 
         // 로그인 로그 저장
         $this->loginModel->addLoginLog($data['wAdminId'], ($data['wCertType'] == 'Y') ? 'SUCCESS' : 'EX_SUCCESS');
+
+        // 세션 로그인 테이블에 이력 저장
+        $this->session->addSessionLogin($data['wAdminIdx'], 'A');
     }
     
     /**

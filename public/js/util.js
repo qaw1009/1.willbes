@@ -352,8 +352,6 @@ function computeDate(i_period, s_period_type) {
  *  });
  */
 (function($){
-    var modal_html = '<div class="modal fade" id="pop_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">...</div></div></div>';
-
     $.fn.setLayer = function(options){
         var settings = $.extend({
             url : "",
@@ -366,9 +364,13 @@ function computeDate(i_period, s_period_type) {
             width : "620",
             max_height : "400",   // scroll/hidden 일 경우만 쓰임
             overflow : "auto",
-            backdrop : 'static'     // true : 배경 포함, 클릭시 닫힘 / false : 배경 없음, 클릭시 닫히지 않음 / 'static' : 배경 포함, 클릭시 닫히지 않음
+            backdrop : 'static',        // true : 배경 포함, 클릭시 닫힘 / false : 배경 없음, 클릭시 닫히지 않음 / 'static' : 배경 포함, 클릭시 닫히지 않음
+            modal_id : 'pop_modal'   // modal html element id
         }, options);
         this.css('cursor','pointer');
+
+        // modal html source
+        var modal_html = '<div class="modal fade" id="' + settings.modal_id + '" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">...</div></div></div>';
 
         if(settings.add_param.constructor !== Array) {
             settings.add_param = [settings.add_param];
@@ -396,7 +398,7 @@ function computeDate(i_period, s_period_type) {
             };
 
             $('body').append(modal_html);
-            var pop_modal = $("#pop_modal");
+            var pop_modal = $("#" + settings.modal_id);
 
             pop_modal.modal({
                 show: 'false',

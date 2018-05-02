@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {{$arr_prof_info['ProfNickName']}} 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}

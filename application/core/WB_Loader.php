@@ -39,7 +39,7 @@ class WB_Loader extends CI_Loader
         if(starts_with($model, '_') === true) {
             return substr(str_replace('%', $model, $this->model_postfix), 1);
         } else {
-            return SUB_DOMAIN . '/' . str_replace('%', $model, $this->model_postfix);
+            return APP_NAME . '/' . str_replace('%', $model, $this->model_postfix);
         }
     }
 
@@ -56,19 +56,19 @@ class WB_Loader extends CI_Loader
     {
         if($is_blade === true) {
             $view_dir = VIEWPATH;
-            $cache_dir = config_item('cache_path') . 'views/' . SUB_DOMAIN;
+            $cache_dir = config_item('cache_path') . 'views/' . APP_NAME;
             // (optional) 1=forced (test), 2=run fast (production), 0=automatic, default value.
             //define("BLADEONE_MODE", 1);
             $blade = new \eftec\bladeone\BladeOne($view_dir, $cache_dir);
 
             // 서브 도메인 적용
-            $sub_domain === true && $view = SUB_DOMAIN . '/' . $view;
+            $sub_domain === true && $view = APP_NAME . '/' . $view;
 
             // blade path 형식으로 변환
             $view = str_replace('/', '.', $view);
 
             // config 값 추가
-            $vars['__cfg'] = config_item(SUB_DOMAIN);
+            $vars['__cfg'] = config_item(APP_NAME);
 
             // CI 전역변수에 설정된 데이터 셋팅
             foreach ($this->get_vars() as $key => $val) {

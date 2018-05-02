@@ -92,7 +92,7 @@ class Faq extends BaseBoard
                 'LB.IsBest' => 'N',
                 'LB.SiteCode' => $this->site_code,
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'LB.FaqGroupTypeCcd' => $this->_req('group_ccd'),
+                'LB.FaqGroupTypeCcd' => $this->_reqP('search_group_faq_ccd'),
                 'LB.FaqTypeCcd' => $this->_reqP('search_faq_type'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],

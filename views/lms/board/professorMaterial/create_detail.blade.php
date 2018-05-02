@@ -1,17 +1,16 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 교수 학습자료실 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {{$arr_prof_info['ProfNickName']}} 교수 학습자료실 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx={{$bmIdx}}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>학습자료실 정보</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
                 </div>
@@ -62,6 +61,17 @@
                                 <option value="{{$key}}" @if($method == 'PUT' && $key == $data['TypeCcd']) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="lec_idx">강좌명<span class="required">*</span></label>
+                    <div class="col-md-5 item">
+                        <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
+                        <span id="selected_lec_idx" class="pl-10"></span>
+                    </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">명칭, 코드 검색 가능</p>
                     </div>
                 </div>
 
@@ -198,6 +208,12 @@
                     }
                 }, showError, false, 'POST');
             });
+
+            // 강좌 검색
+            /*$('#btn_lec_search').setLayer({
+                'url' : '{{ site_url('/common/searchWBook') }}',
+                'width' : 900
+            });*/
 
             // ajax submit
             $regi_form.submit(function() {

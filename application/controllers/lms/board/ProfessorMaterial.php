@@ -104,7 +104,7 @@ class ProfessorMaterial extends BaseBoard
         $arr_category = $this->_getCategoryArray('');
 
         // 기존 교수 기본정보 조회
-        $arr_prof_info = $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
@@ -259,6 +259,11 @@ class ProfessorMaterial extends BaseBoard
         $data = null;
         $board_idx = null;
 
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
         //권한유형별 운영사이트 목록 조회
         $get_site_array = $this->_getSiteArray();
         $first_site_key = key($get_site_array);
@@ -268,7 +273,8 @@ class ProfessorMaterial extends BaseBoard
             $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName,
+            LB.LecIdx
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -308,6 +314,7 @@ class ProfessorMaterial extends BaseBoard
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'site_code' => $site_code,
+            'arr_prof_info' => $arr_prof_info,
             'getSiteArray' => $get_site_array,
             'getCategoryArray' => $get_category_array,
             'arr_subject' => $arr_subject,
@@ -370,6 +377,11 @@ class ProfessorMaterial extends BaseBoard
             show_error('잘못된 접근 입니다.');
         }
 
+        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
         $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
@@ -423,6 +435,7 @@ class ProfessorMaterial extends BaseBoard
 
         $this->load->view("board/{$this->board_name}/read_detail",[
             'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
             'data' => $data,
             'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,

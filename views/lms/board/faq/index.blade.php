@@ -6,14 +6,23 @@
         {!! csrf_field() !!}
         {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
-        <input type="hidden" name="group_ccd" value="">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="">FAQ 조건</label>
                     <div class="col-md-11 form-control-static">
+                        <a href="javascript:void(0);" class="blue btn-group-ccd"><u class="mr-10">전체</u></a>
                         @foreach($faq_group_ccd as $key => $val)
-                            <a href="javascript:void(0);" class="blue btn-group-ccd" data-group-ccd="{{$key}}"><u class="mr-10">{{$val}} ({{ empty($faq_group_ccd_countList[$key]) ? '0' : $faq_group_ccd_countList[$key] }})</u></a>
+                            @php
+                                if (json_decode($arr_search_data, true)['search_group_faq_ccd'] == $key) {
+                                    $class_type = 'red';
+                                } else {
+                                    $class_type = '';
+                                }
+                            @endphp
+                                <a href="javascript:void(0);" class="blue btn-group-ccd" data-group-ccd="{{$key}}">
+                                    <u class="mr-10 {{$class_type}}">{{$val}} ({{ empty($faq_group_ccd_countList[$key]) ? '0' : $faq_group_ccd_countList[$key] }})</u>
+                                </a>
                         @endforeach
                     </div>
                 </div>
@@ -29,9 +38,15 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control hide" id="search_group_faq_ccd" name="search_group_faq_ccd">
+                            <option value="">FAQ그룹</option>
+                            @foreach($faq_group_ccd as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_faq_type" name="search_faq_type">
                             <option value="">FAQ 분류</option>
-                            @foreach($$faq_ccd_list as $row)
+                            @foreach($faq_ccd_list as $row)
                                 <option value="{{ $row['Ccd'] }}" class="{{ $row['GroupCcd'] }}">{{ $row['CcdName'] }}</option>
                             @endforeach
                         </select>
@@ -75,7 +90,7 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-xs-4">
-                    <button class="btn btn-info ml-20" type="button">기본화면셋팅</button>
+                    <button class="btn btn-info ml-20" type="button" id="btn_search_setting">기본화면셋팅</button>
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
@@ -122,10 +137,6 @@
                 $search_form.find('input[name="'+key+'"]').val(value);
                 $search_form.find('select[name="'+key+'"]').val(value);
             });
-
-            // site-code에 매핑되는 select box 자동 변경
-            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
-            $search_form.find('select[name="search_category"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -205,16 +216,16 @@
             });
 
             $search_form.on('click', '.btn-group-ccd', function() {
-                $search_form.find('input[name="group_ccd"]').val($(this).data('group-ccd'));
-                $datatable.draw();
+                var $temp_group_faq_ccd = $search_form.find('[name="search_group_faq_ccd"]');
+                $temp_group_faq_ccd.val($(this).data('group-ccd'));
+                $temp_group_faq_ccd.change();
+                $search_form.submit();
             });
-            /*$('.btn-group-ccd').on('click', function() {
-                var gCcd = $(this).data('group-ccd');
-                var qs = getQueryString().replace(/&group_ccd=([0-9]*)/gi, '');
-                location.replace('{{ site_url("/board/{$boardName}") }}/' + qs + '&group_ccd=' + gCcd);
-                $search_form.find('input[name="group_ccd"]').val($(this).data('group-ccd'));
-                $datatable.draw();
-            });*/
+
+            // site-code에 매핑되는 select box 자동 변경
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
+            $search_form.find('select[name="search_faq_type"]').chained("#search_group_faq_ccd");
+
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {

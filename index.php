@@ -133,7 +133,6 @@ switch (ENVIRONMENT)
  */
 	$view_folder = 'views';
 
-
 /*
  * --------------------------------------------------------------------
  * DEFAULT CONTROLLER
@@ -162,7 +161,6 @@ switch (ENVIRONMENT)
 
 	// The controller function you wish to be called.
 	// $routing['function']	= '';
-
 
 /*
  * -------------------------------------------------------------------
@@ -312,22 +310,11 @@ switch (ENVIRONMENT)
 | User Defined Constants
 |--------------------------------------------------------------------------
 */
-    // sub domain
-    $_host = $_SERVER['HTTP_HOST'];
-
-    $_sub_domain = substr($_host, 0, strpos($_host, '.'));
-    $_env_char = (ENVIRONMENT == 'production') ? 'p' : substr($_sub_domain, 0, 1);
-    $_sub_domain = (ENVIRONMENT == 'production') ? $_sub_domain : substr($_sub_domain, 1);
-    $_sub_domain = ($_sub_domain == 'www' || empty($_sub_domain)) ? 'front' : $_sub_domain;
-
-    defined('SUB_DOMAIN')  OR define('SUB_DOMAIN', $_sub_domain);
-    defined('ENV_CHAR')  OR define('ENV_CHAR', $_env_char);
-
     // storage path
-    defined('STORAGEPATH')  OR define('STORAGEPATH', FCPATH . 'storage' . DIRECTORY_SEPARATOR);
+    define('STORAGEPATH', FCPATH . 'storage' . DIRECTORY_SEPARATOR);
 
     // public url
-    defined('PUBLICURL')  OR define('PUBLICURL', DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR);
+    define('PUBLICURL', DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR);
 
 /*
  * --------------------------------------------------------------------

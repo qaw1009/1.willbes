@@ -42,10 +42,10 @@ class AdminAuthHook
             }
 
             // 현재 URI의 /{directory}/{controller}/{method}
-            $uri_str = '/' . str_replace(SUB_DOMAIN . '/', '', $this->_CI->router->directory) . $this->_CI->router->class . '/' . $this->_CI->router->method;
+            $uri_str = '/' . str_replace(APP_NAME . '/', '', $this->_CI->router->directory) . $this->_CI->router->class . '/' . $this->_CI->router->method;
 
             // 관리자 권한 서비스 로드
-            $class_name = ucfirst(SUB_DOMAIN) . 'AuthService';
+            $class_name = ucfirst(APP_NAME) . 'AuthService';
 
             require_once $class_name . '.php';
             $adminAuthService = new $class_name();
@@ -89,7 +89,7 @@ class AdminAuthHook
             }
 
             // 4. LCMS 전환 로그인 로그 저장
-            if (in_array(SUB_DOMAIN, $this->_CI->session->userdata('admin_conn_sites')) === false) {
+            if (in_array(APP_NAME, $this->_CI->session->userdata('admin_conn_sites')) === false) {
                 $adminAuthService->setTransLogin();
 
                 // 현재 접속한 사이트 서브 도메인 세션 설정

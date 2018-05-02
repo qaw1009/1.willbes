@@ -35,6 +35,34 @@ $config['base_domain'] = 'willbes.net';
 
 /*
 |--------------------------------------------------------------------------
+| Front Sub Domains
+|--------------------------------------------------------------------------
+*/
+$config['front_sub_domains'] = ['cop', 'gosi', 'ssam'];
+
+/*
+|--------------------------------------------------------------------------
+| App Name, Sub Domain, Env Char define
+|--------------------------------------------------------------------------
+*/
+switch (ENVIRONMENT) {
+    case 'local': $__env_char = 'l'; break;
+    case 'development': $__env_char = 't'; break;
+    case 'testing': $__env_char = 'q'; break;
+    default : $__env_char = ''; break;
+}
+
+$__sub_domain = substr(preg_replace('/^(m.)?/', '', str_replace($config['base_domain'], '', parse_url($config['base_url'], PHP_URL_HOST))), 0, -1);
+$__sub_domain === false && $__sub_domain = $__env_char . 'www';
+$__sub_domain = (empty($__env_char) === true) ? $__sub_domain : substr($__sub_domain, 1);
+$__app_name = in_array($__sub_domain, $config['front_sub_domains']) === true ? 'front' : $__sub_domain;
+
+defined('APP_NAME') OR define('APP_NAME', $__app_name);
+defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
+defined('ENV_CHAR') OR define('ENV_CHAR', $__env_char);
+
+/*
+|--------------------------------------------------------------------------
 | Index File
 |--------------------------------------------------------------------------
 |
@@ -249,7 +277,7 @@ $config['log_threshold'] = 2;
 |
 */
 //$config['log_path'] = '';
-$config['log_path'] = STORAGEPATH . 'logs/' . SUB_DOMAIN . '/';
+$config['log_path'] = STORAGEPATH . 'logs/' . APP_NAME . '/';
 
 /*
 |--------------------------------------------------------------------------
@@ -415,7 +443,8 @@ $config['sess_save_path'] = 'wb_sessions';
 //$config['sess_match_ip'] = FALSE;
 $config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+//$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_regenerate_destroy'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -485,7 +514,7 @@ $config['global_xss_filtering'] = TRUE;
 //$config['csrf_protection'] = FALSE;
 //$config['csrf_token_name'] = 'csrf_test_name';
 //$config['csrf_cookie_name'] = 'csrf_cookie_name';
-$config['csrf_protection'] = (SUB_DOMAIN == 'api') ? FALSE : TRUE;
+$config['csrf_protection'] = (APP_NAME == 'api') ? FALSE : TRUE;
 $config['csrf_token_name'] = '_csrf_token';
 $config['csrf_cookie_name'] = 'csrf_token';
 //$config['csrf_expire'] = 7200;

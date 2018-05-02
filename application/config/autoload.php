@@ -90,8 +90,8 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 $autoload['helper'] = array('base', 'url', 'array', 'form', 'cookie');
-if (in_array(SUB_DOMAIN, ['lms']) === true) {
-    $autoload['helper'][] = SUB_DOMAIN;
+if (in_array(APP_NAME, ['lms']) === true) {
+    $autoload['helper'][] = APP_NAME;
 }
 
 /*
@@ -106,7 +106,7 @@ if (in_array(SUB_DOMAIN, ['lms']) === true) {
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('base_config', SUB_DOMAIN . '_config');
+$autoload['config'] = array('base_config', APP_NAME . '_config');
 
 /*
 | -------------------------------------------------------------------

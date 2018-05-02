@@ -17,8 +17,8 @@
         </label>
         <div class="col-md-8 item form-inline">
             <div class="radio">
-                <input type="radio" name="sidebar_size" class="flat" value="md" required="required" title="LNB메뉴 설정" @if($method == 'POST' || $data['sidebar_size']=='md')checked="checked"@endif/> 펼침
-                &nbsp; <input type="radio" name="sidebar_size" class="flat" value="sm" @if($data['sidebar_size']=='sm')checked="checked"@endif/> 숨김
+                <input type="radio" name="sidebar_size" class="flat" value="md" required="required" title="LNB메뉴 설정" @if($method == 'POST' || (isset($data['sidebar_size']) && $data['sidebar_size']=='md'))checked="checked"@endif/> 펼침
+                &nbsp; <input type="radio" name="sidebar_size" class="flat" value="sm" @if(isset($data['sidebar_size']) && $data['sidebar_size']=='sm')checked="checked"@endif/> 숨김
             </div>
         </div>
     </div>

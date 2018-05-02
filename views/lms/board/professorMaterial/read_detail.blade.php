@@ -1,14 +1,14 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- {{$arr_prof_info['ProfNickName']}} 교수 학습자료실 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
 
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>학습자료실 정보</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">

@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SmsModel extends WB_Model
 {
-    private $_table = 'lms_crm_sms';
-    private $_table_r_send_info = 'lms_crm_send_r_info';
+    private $_table = 'lms_crm_send_sms';
+    private $_table_r_send_info = 'lms_crm_send_r_all_content';
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_site = 'lms_site';
 
@@ -42,5 +42,10 @@ class SmsModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function addSms($input)
+    {
+
     }
 }

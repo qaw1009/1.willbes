@@ -44,19 +44,21 @@ class Book extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'B.SiteCode' => $this->_reqP('search_site_code'),
-                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
-                'MC.CateCode' => $this->_reqP('search_md_cate_code'),
+                'P.SiteCode' => $this->_reqP('search_site_code'),
+                'BC.CateCode' => $this->_reqP('search_md_cate_code'),
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.ProfIdx' => $this->_reqP('search_prof_idx'),
-                'B.IsUse' => $this->_reqP('search_is_use'),
+                'P.IsUse' => $this->_reqP('search_is_use'),
                 'VWB.wIsUse' => $this->_reqP('search_w_is_use'),
                 'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
             ],
+            'LKR' => [
+                'BC.CateCode' => $this->_reqP('search_lg_cate_code'),
+            ],
             'ORG1' => [
                 'LKB' => [
-                    'B.BookIdx' => $this->_reqP('search_value'),
-                    'B.BookName' => $this->_reqP('search_value')
+                    'P.ProdCode' => $this->_reqP('search_value'),
+                    'P.ProdName' => $this->_reqP('search_value')
                 ]
             ],
             'ORG2' => [
@@ -71,7 +73,7 @@ class Book extends \app\controllers\BaseController
         $count = $this->bookModel->listBook(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->bookModel->listBook(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['B.BookIdx' => 'desc']);
+            $list = $this->bookModel->listBook(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['P.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -128,13 +130,14 @@ class Book extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'prepare_year', 'label' => '대비학년도', 'rules' => 'trim|required'],
+            ['field' => 'school_year', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required|integer'],
             ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
             ['field' => 'prof_idx', 'label' => '교수', 'rules' => 'trim|required|integer'],
             ['field' => 'book_name', 'label' => '교재명', 'rules' => 'trim|required'],
             ['field' => 'disp_type_ccd', 'label' => '노출위치', 'rules' => 'trim|required'],
             ['field' => 'is_free', 'label' => '무료여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'org_price', 'label' => '정상가', 'rules' => 'trim|required|integer'],
             ['field' => 'dc_amt', 'label' => '할인량', 'rules' => 'trim|required|integer'],
             ['field' => 'dc_type', 'label' => '할인구분', 'rules' => 'callback_validateRequiredIf[is_free,N]|in_list[R,P]'],
             ['field' => 'sale_price', 'label' => '판매가', 'rules' => 'trim|required|integer'],

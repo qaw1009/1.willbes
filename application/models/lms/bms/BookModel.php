@@ -4,18 +4,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BookModel extends WB_Model
 {
     private $_table = [
+        'product' => 'lms_product',
+        'product_book' => 'lms_product_book',
+        'product_sale' => 'lms_product_sale',
+        'product_r_category' => 'lms_product_r_category',
+        'bms_book' => 'wbs_bms_book',
+        'vw_bms_book' => 'vw_wbs_bms_book_list',
         'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'category' => 'lms_sys_category',
         'subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
-        'book' => 'lms_book',
-        'bms_book' => 'wbs_bms_book',
-        'vw_bms_book' => 'vw_wbs_bms_book_list',
-        'book_r_category' => 'lms_book_r_category',
         'admin' => 'wbs_sys_admin'
     ];
+    private $_prod_type_ccd = '636003'; // 상품타입 > 교재
+    private $_sale_status_ccd = '618001'; // 판매상태 > 판매가능 고정값  (WBS > BMS > 판매여부 컬럼으로 판매상태 제어)
+    private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
+    private $_point_apply_ccd = '635001'; // 포인트적용 > 전체
 
     public function __construct()
     {
@@ -38,9 +44,12 @@ class BookModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                B.BookIdx, B.wBookIdx, B.SiteCode, B.BookName, B.SalePrice, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx
+                P.ProdCode, B.wBookIdx, P.SiteCode, P.ProdName, PS.RealSalePrice, P.IsNew, P.IsBest, P.IsUse, P.RegDatm, P.RegAdminIdx
                     , VWB.wPublName, VWB.wAuthorNames, VWB.wStockCnt, VWB.wSaleCcdName, VWB.wIsUse
-                    , S.SiteName, C.CateName as BCateName, ifnull(MC.CateName, "") as MCateName, PS.SubjectName, WP.wProfName
+                    , S.SiteName
+                    , if(PC.CateName is not null, PC.CateName, C.CateName) as BCateName
+                    , if(PC.CateName is not null, C.CateName, "") as MCateName                                
+                    , PSU.SubjectName, WP.wProfName
                     , A.wAdminName as RegAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -48,32 +57,37 @@ class BookModel extends WB_Model
         }
 
         $from = '
-            from ' . $this->_table['book'] . ' as B
+            from ' . $this->_table['product'] . ' as P
+                inner join ' . $this->_table['product_book'] . ' as B
+                    on P.ProdCode = B.ProdCode
                 inner join ' . $this->_table['vw_bms_book'] . ' as VWB
                     on B.wBookIdx = VWB.wBookIdx
+                inner join ' . $this->_table['product_sale'] . ' as PS
+                    on P.ProdCode = PS.ProdCode                    
                 inner join ' . $this->_table['site'] . ' as S
-                    on B.SiteCode = S.SiteCode
-                left join ' . $this->_table['book_r_category'] . ' as BC
-                    on B.BookIdx = BC.BookIdx and BC.IsStatus = "Y"
+                    on P.SiteCode = S.SiteCode
+                left join ' . $this->_table['product_r_category'] . ' as BC
+                    on P.ProdCode = BC.ProdCode and BC.IsStatus = "Y"                                                                        
                 left join ' . $this->_table['category'] . ' as C
-                    on BC.CateCode = C.CateCode and C.CateDepth = 1 and C.IsStatus = "Y"
-                left join ' . $this->_table['category'] . ' as MC
-                    on C.CateCode = MC.GroupCateCode and MC.CateDepth = 2 and MC.IsStatus = "Y"
-                left join ' . $this->_table['subject'] . ' as PS
-                    on B.SiteCode = PS.SiteCode and B.SubjectIdx = PS.SubjectIdx and PS.IsStatus = "Y"
-                left join ' . $this->_table['professor'] . ' as P
-                    on B.SiteCode = P.SiteCode and B.ProfIdx = P.ProfIdx and P.IsStatus = "Y"
+                    on BC.CateCode = C.CateCode and C.IsStatus = "Y"                                        
+                left join ' . $this->_table['category'] . ' as PC
+                    on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"                                        
+                left join ' . $this->_table['subject'] . ' as PSU
+                    on P.SiteCode = PSU.SiteCode and B.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"
+                left join ' . $this->_table['professor'] . ' as PR
+                    on P.SiteCode = PR.SiteCode and B.ProfIdx = PR.ProfIdx and PR.IsStatus = "Y"
                 left join ' . $this->_table['pms_professor'] . ' as WP
-                    on P.wProfIdx = WP.wProfIdx	and WP.wIsStatus = "Y"
+                    on PR.wProfIdx = WP.wProfIdx and WP.wIsStatus = "Y"
                 left join ' . $this->_table['admin'] . ' as A
-                    on B.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
-            where B.IsStatus = "Y"	
-                and VWB.wIsStatus = "Y"	                
+                    on P.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
+            where P.IsStatus = "Y"                
+                and VWB.wIsStatus = "Y"
+                and PS.IsStatus = "Y"	                
                 and S.IsStatus = "Y" 
         ';
 
         // 사이트 권한 추가
-        $arr_condition['IN']['B.SiteCode'] = get_auth_site_codes();
+        $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 
@@ -85,10 +99,10 @@ class BookModel extends WB_Model
 
     /**
      * 교재 카테고리 연결 데이터 조회
-     * @param $book_idx
+     * @param $prod_code
      * @return array
      */
-    public function listBookCategory($book_idx)
+    public function listBookCategory($prod_code)
     {
         $column = '
             BC.CateCode, C.CateName
@@ -96,17 +110,17 @@ class BookModel extends WB_Model
                 , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName            
         ';
         $from = '
-            from ' . $this->_table['book_r_category'] . ' as BC
+            from ' . $this->_table['product_r_category'] . ' as BC
                 inner join ' . $this->_table['category'] . ' as C
                     on BC.CateCode = C.CateCode
                 left join ' . $this->_table['category'] . ' as PC
                     on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
         ';
-        $where = ' where BC.BookIdx = ? and BC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y"';
-        $order_by_offset_limit = ' order by BC.BcIdx asc';
+        $where = ' where BC.ProdCode = ? and BC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y"';
+        $order_by_offset_limit = ' order by BC.PcIdx asc';
 
         // 쿼리 실행
-        $data = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$book_idx])->result_array();
+        $data = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$prod_code])->result_array();
 
         return array_pluck($data, 'CateRouteName', 'CateCode');
     }
@@ -118,18 +132,18 @@ class BookModel extends WB_Model
      */
     public function getBookArray($site_code = '')
     {
-        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        $arr_condition = ['EQ' => ['ProdTypeCcd' => $this->_prod_type_ccd, 'IsUse' => 'Y', 'IsStatus' => 'Y']];
         if (empty($site_code) === false) {
             $arr_condition['EQ']['SiteCode'] = $site_code;
         } else {
             $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
         }
 
-        $data = $this->_conn->getListResult($this->_table['book'], 'SiteCode, BookIdx, BookName', $arr_condition, null, null, [
-            'SiteCode' => 'asc', 'BookIdx' => 'asc'
+        $data = $this->_conn->getListResult($this->_table['product'], 'SiteCode, ProdCode, ProdName', $arr_condition, null, null, [
+            'SiteCode' => 'asc', 'ProdCode' => 'asc'
         ]);
 
-        return (empty($site_code) === false) ? array_pluck($data, 'BookName', 'BookIdx') : $data;
+        return (empty($site_code) === false) ? array_pluck($data, 'ProdName', 'ProdCode') : $data;
     }
 
     /**
@@ -140,30 +154,43 @@ class BookModel extends WB_Model
      */
     public function findBook($column = '*', $arr_condition = [])
     {
+        $arr_condition['EQ']['ProdTypeCcd'] = $this->_prod_type_ccd;
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table['book'], $column, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['product'], $column, $arr_condition);
     }
     
     /**
      * 교재 정보 수정 폼에 필요한 데이터 조회
-     * @param $book_idx
+     * @param $prod_code
      * @return array
      */
-    public function findBookForModify($book_idx)
+    public function findBookForModify($prod_code)
     {
         $column = '
-            B.BookIdx, B.wBookIdx, B.SiteCode, B.BookName, B.PrepareYear, B.CourseIdx, B.SubjectIdx, B.ProfIdx, B.DispTypeCcd, B.IsFree, B.SalePrice, B.DcAmt, B.DcType
-                , B.IsPointSaving, B.PointSavingAmt, B.PointSavingType, B.IsCoupon, B.IsNew, B.IsBest, B.IsUse, B.RegDatm, B.RegAdminIdx, B.UpdDatm, B.UpdAdminIdx
+            P.ProdCode, P.SiteCode, P.ProdName, P.IsPoint, P.PointSavePrice, P.PointSaveType, P.IsCoupon, P.IsNew, P.IsBest, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+                , B.wBookIdx, B.SchoolYear, B.CourseIdx, B.SubjectIdx, B.ProfIdx, B.DispTypeCcd, B.IsFree
+                , S.SaleRate, S.SaleDiscType, S.RealSalePrice
                 , VWB.wBookName, VWB.wPublName, VWB.wPublDate, VWB.wAuthorNames, VWB.wIsbn, VWB.wPageCnt, VWB.wEditionCcdName, VWB.wPrintCnt, VWB.wEditionCnt, VWB.wEditionSize
-                , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wOrgPrice, VWB.wStockCnt, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc, VWB.wIsUse  
-                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.RegAdminIdx and wIsStatus = "Y") as RegAdminName
-                , if(B.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName        
+                , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wOrgPrice, VWB.wStockCnt, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc, VWB.wIsUse
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.RegAdminIdx and wIsStatus = "Y") as RegAdminName
+                , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName                            
         ';
 
-        return $this->_conn->getJoinFindResult($this->_table['book'] . ' as B', 'inner', $this->_table['vw_bms_book'] . ' as VWB'
-            , 'B.wBookIdx = VWB.wBookIdx'
-            , $column, ['EQ' => ['B.BookIdx' => $book_idx, 'B.IsStatus' => 'Y', 'VWB.wIsStatus' => 'Y']]);
+        $from = '
+            from ' . $this->_table['product'] . ' as P
+                inner join ' . $this->_table['product_book'] . ' as B
+                    on P.ProdCode = B.ProdCode
+                inner join ' . $this->_table['product_sale'] . ' as S
+                    on P.ProdCode = S.ProdCode
+                inner join ' . $this->_table['vw_bms_book'] . ' as VWB
+                    on B.wBookIdx = VWB.wBookIdx            
+        ';
+
+        $where = ' where P.ProdCode = ? and P.IsStatus = "Y" and S.IsStatus = "Y" and VWB.wIsStatus = "Y"';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where, [$prod_code])->row_array();
     }
 
     /**
@@ -176,40 +203,68 @@ class BookModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            // 신규 상품코드 조회
+            $row = $this->_conn->getFindResult($this->_table['product'], 'ifnull(max(ProdCode) + 1, 200001) as ProdCode');
+
+            // 상품 등록
             $data = [
-                'wBookIdx' => element('wbook_idx', $input),
+                'ProdCode' => $row['ProdCode'],
                 'SiteCode' => element('site_code', $input),
-                'BookName' => element('book_name', $input),
-                'PrepareYear' => element('prepare_year', $input),
-                'CourseIdx' => element('course_idx', $input),
-                'SubjectIdx' => element('subject_idx', $input),
-                'ProfIdx' => element('prof_idx', $input),
-                'DispTypeCcd' => element('disp_type_ccd', $input),
-                'IsFree' => element('is_free', $input),
-                'SalePrice' => element('sale_price', $input),
-                'DcAmt' => element('dc_amt', $input, 0),
-                'DcType' => element('dc_type', $input, 'R'),
-                'IsPointSaving' => element('is_point_saving', $input),
-                'PointSavingAmt' => element('point_saving_amt', $input, 0),
-                'PointSavingType' => element('point_saving_type', $input, 'R'),
+                'ProdName' => element('book_name', $input),
+                'ProdTypeCcd' => $this->_prod_type_ccd,
+                'SaleStartDatm' => date('Y-m-d H') . ':00:00',
+                'SaleStartTime' => date('H'),
+                'SaleStatusCcd' => $this->_sale_status_ccd,
                 'IsCoupon' => element('is_coupon', $input),
-                'IsNew' => element('is_new', $input, 'N'),
+                'IsPoint' => element('is_point_saving', $input),
+                'PointApplyCcd' => $this->_point_apply_ccd,
+                'PointSaveType' => element('point_saving_type', $input, 'R'),
+                'PointSavePrice' => element('point_saving_amt', $input, 0),
                 'IsBest' => element('is_best', $input, 'N'),
+                'IsNew' => element('is_new', $input, 'N'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
             ];
 
-            // 데이터 등록
-            if ($this->_conn->set($data)->insert($this->_table['book']) === false) {
-                throw new \Exception('교재 정보 등록에 실패했습니다.');
+            if ($this->_conn->set($data)->insert($this->_table['product']) === false) {
+                throw new \Exception('상품 정보 등록에 실패했습니다.');
             }
 
-            // 등록된 교재 식별자
-            $book_idx = $this->_conn->insert_id();
+            // 상품도서 등록
+            $data = [
+                'ProdCode' => $row['ProdCode'],
+                'wBookIdx' => element('wbook_idx', $input),
+                'SchoolYear' => element('school_year', $input),
+                'CourseIdx' => element('course_idx', $input),
+                'SubjectIdx' => element('subject_idx', $input),
+                'ProfIdx' => element('prof_idx', $input),
+                'DispTypeCcd' => element('disp_type_ccd', $input),
+                'IsFree' => element('is_free', $input)
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['product_book']) === false) {
+                throw new \Exception('상품도서 정보 등록에 실패했습니다.');
+            }
+
+            // 판매가격 등록
+            $data = [
+                'ProdCode' => $row['ProdCode'],
+                'SaleTypeCcd' => $this->_sale_type_ccd,
+                'SalePrice' => element('org_price', $input),
+                'SaleRate' => element('dc_amt', $input, 0),
+                'SaleDiscType' => element('dc_type', $input, 'R'),
+                'RealSalePrice' => element('sale_price', $input),
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['product_sale']) === false) {
+                throw new \Exception('판매가격 정보 등록에 실패했습니다.');
+            }
 
             // 카테고리 정보 등록
-            $is_book_category = $this->_replaceBookCategory([element('cate_code', $input)], $book_idx);
+            $is_book_category = $this->_replaceBookCategory([element('cate_code', $input)], $row['ProdCode']);
             if ($is_book_category !== true) {
                 throw new \Exception($is_book_category);
             }
@@ -233,39 +288,49 @@ class BookModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            $book_idx = element('idx', $input);
+            $prod_code = element('idx', $input);
 
             // 기존 교재 기본정보 조회
-            $row = $this->findBook('BookIdx', ['EQ' => ['BookIdx' => $book_idx]]);
+            $row = $this->findBook('ProdCode', ['EQ' => ['ProdCode' => $prod_code]]);
             if (count($row) < 1) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
+            // 상품 정보 수정
             $data = [
-                'BookName' => element('book_name', $input),
-                'PrepareYear' => element('prepare_year', $input),
+                'ProdName' => element('book_name', $input),
+                'IsCoupon' => element('is_coupon', $input),
+                'IsPoint' => element('is_point_saving', $input),
+                'PointSaveType' => element('point_saving_type', $input, 'R'),
+                'PointSavePrice' => element('point_saving_amt', $input, 0),
+                'IsBest' => element('is_best', $input, 'N'),
+                'IsNew' => element('is_new', $input, 'N'),
+                'IsUse' => element('is_use', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            
+            if ($this->_conn->set($data)->where('ProdCode', $prod_code)->update($this->_table['product']) === false) {
+                throw new \Exception('상품 정보 수정에 실패했습니다.');
+            }
+
+            // 상품도서 수정
+            $data = [
+                'SchoolYear' => element('school_year', $input),
                 'CourseIdx' => element('course_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
                 'DispTypeCcd' => element('disp_type_ccd', $input),
-                'IsFree' => element('is_free', $input),
-                'SalePrice' => element('sale_price', $input),
-                'DcAmt' => element('dc_amt', $input, 0),
-                'DcType' => element('dc_type', $input, 'R'),
-                'IsPointSaving' => element('is_point_saving', $input),
-                'PointSavingAmt' => element('point_saving_amt', $input, 0),
-                'PointSavingType' => element('point_saving_type', $input, 'R'),
-                'IsCoupon' => element('is_coupon', $input),
-                'IsNew' => element('is_new', $input, 'N'),
-                'IsBest' => element('is_best', $input, 'N'),
-                'IsUse' => element('is_use', $input),
-                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                'IsFree' => element('is_free', $input)
             ];
 
-            // 데이터 수정
-            if ($this->_conn->set($data)->where('BookIdx', $book_idx)->update($this->_table['book']) === false) {
-                throw new \Exception('교재 정보 수정에 실패했습니다.');
+            if ($this->_conn->set($data)->where('ProdCode', $prod_code)->update($this->_table['product_book']) === false) {
+                throw new \Exception('상품도서 정보 수정에 실패했습니다.');
             }
+
+            // 판매가격 수정
+            if ($this->_replaceBookSale($input, $prod_code) !== true) {
+                throw new \Exception('판매가격 정보 수정에 실패했습니다.');
+            }            
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -290,11 +355,11 @@ class BookModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            foreach ($params as $book_idx => $columns) {
-                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BookIdx', $book_idx);
+            foreach ($params as $prod_code => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('ProdCode', $prod_code);
 
-                if ($this->_conn->update($this->_table['book']) === false) {
-                    throw new \Exception('데이터 수정에 실패했습니다.');
+                if ($this->_conn->update($this->_table['product']) === false) {
+                    throw new \Exception('상품 정보 수정에 실패했습니다.');
                 }
             }
 
@@ -308,22 +373,62 @@ class BookModel extends WB_Model
     }
 
     /**
-     * 교재 카테고리 연결 데이터 저장
-     * @param $arr_cate_code
-     * @param $book_idx
+     * 이전 판매가격 정보 삭제 처리 후 신규 등록
+     * @param array $input
+     * @param $prod_code
      * @return bool|string
      */
-    private function _replaceBookCategory($arr_cate_code, $book_idx)
+    private function _replaceBookSale($input = [], $prod_code)
     {
-        $_table = $this->_table['book_r_category'];
+        $admin_idx = $this->session->userdata('admin_idx');
+
+        try {
+            // 이전 판매가격 정보 삭제 처리
+            $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx);
+            $this->_conn->where('ProdCode', $prod_code)->where('IsStatus', 'Y');
+            if ($this->_conn->update($this->_table['product_sale']) === false) {
+                throw new \Exception('이전 판매가격 정보 수정에 실패했습니다.');
+            }
+
+            // 판매가격 등록
+            $data = [
+                'ProdCode' => $prod_code,
+                'SaleTypeCcd' => $this->_sale_type_ccd,
+                'SalePrice' => element('org_price', $input),
+                'SaleRate' => element('dc_amt', $input, 0),
+                'SaleDiscType' => element('dc_type', $input, 'R'),
+                'RealSalePrice' => element('sale_price', $input),
+                'RegAdminIdx' => $admin_idx,
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['product_sale']) === false) {
+                throw new \Exception('판매가격 정보 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 교재 카테고리 연결 데이터 저장
+     * @param $arr_cate_code
+     * @param $prod_code
+     * @return bool|string
+     */
+    private function _replaceBookCategory($arr_cate_code, $prod_code)
+    {
+        $_table = $this->_table['product_r_category'];
         $arr_cate_code = (is_null($arr_cate_code) === true) ? [] : array_values(array_unique($arr_cate_code));
         $admin_idx = $this->session->userdata('admin_idx');
 
         try {
             // 기존 설정된 카테고리 연결 데이터 조회
-            $data = $this->_conn->getListResult($_table, 'BcIdx, CateCode', ['EQ' => ['BookIdx' => $book_idx, 'IsStatus' => 'Y']]);
+            $data = $this->_conn->getListResult($_table, 'PcIdx, CateCode', ['EQ' => ['ProdCode' => $prod_code, 'IsStatus' => 'Y']]);
             if (count($data) > 0) {
-                $data = array_pluck($data, 'CateCode', 'BcIdx');
+                $data = array_pluck($data, 'CateCode', 'PcIdx');
 
                 // 기존 등록된 카테고리 연결 데이터 삭제 처리 (전달된 카테고리 식별자 중에 기 등록된 카테고리 식별자가 없다면 삭제 처리)
                 $arr_delete_cate_code = array_diff($data, $arr_cate_code);
@@ -331,7 +436,7 @@ class BookModel extends WB_Model
                     $is_update = $this->_conn->set([
                         'IsStatus' => 'N',
                         'UpdAdminIdx' => $admin_idx
-                    ])->where_in('BcIdx', array_keys($arr_delete_cate_code))->where('BookIdx', $book_idx)->update($_table);
+                    ])->where_in('PcIdx', array_keys($arr_delete_cate_code))->where('ProdCode', $prod_code)->update($_table);
 
                     if ($is_update === false) {
                         throw new \Exception('기 설정된 카테고리 정보 수정에 실패했습니다.');
@@ -343,7 +448,7 @@ class BookModel extends WB_Model
             $arr_insert_cate_code = array_diff($arr_cate_code, $data);
             foreach ($arr_insert_cate_code as $cate_code) {
                 $is_insert = $this->_conn->set([
-                    'BookIdx' => $book_idx,
+                    'ProdCode' => $prod_code,
                     'CateCode' => $cate_code,
                     'RegAdminIdx' => $admin_idx,
                     'RegIp' => $this->input->ip_address()

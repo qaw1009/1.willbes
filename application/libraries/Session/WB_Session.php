@@ -80,8 +80,8 @@ class WB_Session extends CI_Session
                 $this->_db->where('ip_address', $row['ip_address']);
             }
 
-            if ($this->_db->delete($this->_config['save_path']) === false) {
-                log_message('error', 'Session: previous `' . $this->_config['save_path'] . '` table session data deletion failed!');
+            if ($this->_db->delete($this->_table['session']) === false) {
+                log_message('error', 'Session: previous `' . $this->_table['session'] . '` table session data deletion failed!');
             }
         }
     }

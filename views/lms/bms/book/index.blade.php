@@ -137,13 +137,13 @@
                     {'data' : 'MCateName'},
                     {'data' : 'SubjectName'},
                     {'data' : 'wProfName'},
-                    {'data' : 'BookIdx'},
-                    {'data' : 'BookName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.BookIdx + '"><u class="blue">' + data + '</u></a>';
+                    {'data' : 'ProdCode'},
+                    {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
+                        return '<a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u class="blue">' + data + '</u></a>';
                     }},
                     {'data' : 'wPublName'},
                     {'data' : 'wAuthorNames'},
-                    {'data' : 'SalePrice', 'render' : function(data, type, row, meta) {
+                    {'data' : 'RealSalePrice', 'render' : function(data, type, row, meta) {
                         return addComma(data) + '원';
                     }},
                     {'data' : 'IsNew', 'render' : function(data, type, row, meta) {

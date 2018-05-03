@@ -5,17 +5,18 @@
     @stop
 
     @section('layer_header')
-    {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" novalidate action="{{ site_url('/crm/sms/storeSend') }}">
+    {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
+    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/sms/storeSend') }}">
         {!! csrf_field() !!}
         {!! method_field($method) !!}
+        <input type="hidden" name="content_type" value="1">
     @endsection
 
     @section('layer_content')
         <div class="form-group form-group-sm">
             <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a data-toggle="tab" href="#content_1">개별 발송</a></li>
-                <li><a data-toggle="tab" href="#content_2">일괄 발송</a></li>
+                <li class="active"><a data-toggle="tab" href="#content_1" class="content_type" data-content-type="1">개별 발송</a></li>
+                <li><a data-toggle="tab" href="#content_2" class="content_type" data-content-type="2">일괄 발송</a></li>
             </ul>
         </div>
 
@@ -123,13 +124,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-4 col-lg-offset-8">
-                                    <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_sample_file_download">File Upload</button>
+                                <div class="col-md-8">
+                                    <input type="file" id="attach_file" name="attach_file[]" class="form-control" title="첨부파일"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_file_upload">File Upload</button>
                                 </div>
                             </div>
                             <div style="border-bottom: 1px solid #2A3F54; margin-bottom: 5px;"></div>
                             <div class="form-group">
-                                <div class="col-md-12 form-group-sm" style="max-height: 296px; overflow-y: auto;">
+                                <div class="col-md-12 form-group-sm" style="max-height: 290px; overflow-y: auto;">
                                     <table id="mem_phone_list" class="table" style="font-size: 12px;">
                                         <thead>
                                         <tr>
@@ -138,15 +142,7 @@
                                             <th>휴대폰번호</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        {{--@for($i = 1; $i <= $set_row_count; $i++)
-                                            <tr>
-                                                <td>{{$i}}</td>
-                                                <td>최{{$i}}</td>
-                                                <td>010{{$i}}</td>
-                                            </tr>
-                                        @endfor--}}
-                                        </tbody>
+                                        <tbody></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -216,8 +212,47 @@
             var $regi_form = $('#modal_regi_form');
 
             $(document).ready(function() {
-                var test = "<tr><td>aaa</td><td>bbb</td><td>ccc</td></tr>";
-                $('#mem_phone_list > tbody').append(test);
+                // 발송 타입 설정
+                $('.content_type').click(function (){
+                    $regi_form.find('input[name="content_type"]').val($(this).data('content-type'));
+                });
+
+                // 일괄발송 -> 파일 등록 및 Excel Data 셋팅
+                $('#btn_file_upload').click(function (){
+                    var data;
+                    var _url = '{{ site_url("/crm/sms/fileUploadAjax/") }}';
+                    var fd = new FormData();
+                    var files = $('#attach_file')[0].files[0];
+
+                    if (files === undefined) {
+                        alert('파일을 선택해 주세요.');
+                        return false;
+                    }
+
+                    // TR 초기화
+                    $('#mem_phone_list > tbody > tr').remove();
+
+                    // Ajax 데이터 셋팅
+                    fd.append('{{ csrf_token_name() }}',$regi_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                    fd.append('_method','PUT');
+                    fd.append('attach_file',files);
+                    data = fd;
+
+                    var send_list = '';
+                    sendAjax(_url, data, function(ret) {
+                        if (ret.ret_cd) {
+                            $.each(ret.ret_data.excel_data, function(i, item) {
+                                send_list = '<tr>';
+                                send_list += '<td>'+item.A+'</td>';
+                                send_list += '<td>'+item.B+'</td>';
+                                send_list += '<td>'+item.C+'</td>';
+                                send_list += '</tr>';
+                                $('#mem_phone_list > tbody').append(send_list);
+                            });
+
+                        }
+                    }, showError, false, 'POST', 'json', true);
+                });
 
                 // 바이트 수
                 $('#send_content').on('change keyup input', function() {

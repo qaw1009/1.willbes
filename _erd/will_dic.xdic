@@ -142,12 +142,16 @@
   <term name="Q&amp;A" physicalName="Qna"/>
   <term name="과정" physicalName="Course"/>
   <term name="과목" physicalName="Subject"/>
-  <term name="할인" description="Discount" physicalName="Dc"/>
+  <term name="할인" description="Discount" physicalName="Disc"/>
   <term name="노출" physicalName="Disp"/>
   <term name="쿠폰" physicalName="Coupon"/>
   <term name="신규" physicalName="New"/>
   <term name="[량]" description="Amount" physicalName="Amt"/>
-  <term name="적립" physicalName="Saving"/>
+  <term name="적립" physicalName="Save"/>
   <term name="년도" physicalName="Year"/>
-  <term name="대비" physicalName="Prepare"/>
+  <term name="준비" physicalName="Prepare"/>
+  <term name="환불" physicalName="Refund"/>
+  <term name="문자" physicalName="Sms"/>
+  <term name="장바구니" physicalName="Cart"/>
+  <term name="[실]" physicalName="Real"/>
 </tm:TermDictionary>

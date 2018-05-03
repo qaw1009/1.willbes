@@ -15,6 +15,11 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         array (
             'app\\' => 4,
         ),
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
+        ),
         'C' => 
         array (
             'Curl\\' => 5,
@@ -30,6 +35,14 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/application/third_party/app',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
         'Curl\\' => 
         array (

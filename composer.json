@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=7.1.12",
 		"eftec/bladeone": "^1.9",
-		"php-curl-class/php-curl-class": "^8.0"
+		"php-curl-class/php-curl-class": "^8.0",
+		"phpoffice/phpspreadsheet": "^1.2"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

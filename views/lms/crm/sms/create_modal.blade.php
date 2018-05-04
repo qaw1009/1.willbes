@@ -9,14 +9,15 @@
     <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/sms/storeSend') }}">
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="content_type" value="1">
+        <input type="hidden" name="send_type" value="1" title="발송타입">
+        <input type="hidden" name="member_type" value="0" title="비회원유무">
     @endsection
 
     @section('layer_content')
         <div class="form-group form-group-sm">
             <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a data-toggle="tab" href="#content_1" class="content_type" data-content-type="1">개별 발송</a></li>
-                <li><a data-toggle="tab" href="#content_2" class="content_type" data-content-type="2">일괄 발송</a></li>
+                <li class="active"><a data-toggle="tab" href="#content_1" class="send_type" data-content-type="1">개별 발송</a></li>
+                <li><a data-toggle="tab" href="#content_2" class="send_type" data-content-type="2">일괄 발송</a></li>
             </ul>
         </div>
 
@@ -29,6 +30,17 @@
                             <select class="form-control" id="site_code" name="site_code" required="required" title="운영 사이트">
                                 <option value="">사이트선택</option>
                                 @foreach($get_site_array as $key => $val)
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="send_pattern_ccd">발송성격 <span class="required">*</span></label>
+                        <div class="col-md-8 item">
+                            <select class="form-control" id="send_pattern_ccd" name="send_pattern_ccd" required="required" title="발송성격">
+                                <option value="">발송성격선택</option>
+                                @foreach($arr_send_pattern_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
                                 @endforeach
                             </select>
@@ -82,8 +94,6 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_idx_{{$i}}" name="mem_idx[]" value="" hidden>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" value="" hidden>
                                                     <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="">
                                                 </td>
                                             </tr>
@@ -104,8 +114,6 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_idx_{{$i}}" name="mem_idx[]" value="" hidden>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" value="" hidden>
                                                     <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="">
                                                 </td>
                                             </tr>
@@ -154,8 +162,11 @@
                         <div class="form-group">
                             <div class="col-md-12 item form-inline">
                                 <div class="radio">
-                                    <input type="radio" id="send_option_ccd_y" name="send_option_ccd" class="flat" value="N" required="required" title="사용여부" checked="checked"/> <label for="send_option_ccd_y" class="input-label">즉시발송</label>
-                                    <input type="radio" id="send_option_ccd_n" name="send_option_ccd" class="flat" value="Y"/> <label for="send_option_ccd_n" class="input-label">예약발송</label>
+                                    @foreach($arr_send_option_ccd as $key => $val)
+                                        <input type="radio" id="send_option_ccd_{{$key}}" name="send_option_ccd" class="flat send_option_ccd" title="{{$val}}" @if($loop->first)checked="checked"@endif data-option-type="{!! $loop->first ? 'Y' : 'N' !!}" value="{{$key}}"/> <label for="send_option_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                                    @endforeach
+                                    {{--<input type="radio" id="send_option_ccd_y" name="send_option_ccd" class="flat" value="N" required="required" title="사용여부" checked="checked"/> <label for="send_option_ccd_y" class="input-label">즉시발송</label>
+                                    <input type="radio" id="send_option_ccd_n" name="send_option_ccd" class="flat" value="Y"/> <label for="send_option_ccd_n" class="input-label">예약발송</label>--}}
                                 </div>
                             </div>
                         </div>
@@ -213,8 +224,21 @@
 
             $(document).ready(function() {
                 // 발송 타입 설정
-                $('.content_type').click(function (){
-                    $regi_form.find('input[name="content_type"]').val($(this).data('content-type'));
+                $('.send_type').click(function (){
+                    $regi_form.find('input[name="send_type"]').val($(this).data('content-type'));
+                });
+
+                // 운영사이트에 따른 고객센터전화번호 값 호출
+                $('#site_code').change(function() {
+                    var _url = '{{ site_url("/crm/sms/getSiteCsTelAjax/") }}' + this.value;
+                    var _data = {
+                        '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method' : 'POST'
+                    };
+                    sendAjax(_url, _data, function(ret) {
+                        var cs_tel = ret.cs_tel.replace('-','');
+                        $('#cs_tel').val(cs_tel);
+                    }, showError, false, 'POST');
                 });
 
                 // 일괄발송 -> 파일 등록 및 Excel Data 셋팅
@@ -243,8 +267,8 @@
                         if (ret.ret_cd) {
                             $.each(ret.ret_data.excel_data, function(i, item) {
                                 send_list = '<tr>';
+                                send_list += '<td>'+i+'</td>';
                                 send_list += '<td>'+item.A+'</td>';
-                                send_list += '<td>'+item.B+'</td>';
                                 send_list += '<td>'+item.C+'</td>';
                                 send_list += '</tr>';
                                 $('#mem_phone_list > tbody').append(send_list);
@@ -275,7 +299,7 @@
                     var $send_datm_h = $regi_form.find('select[name="send_datm_h"]');
                     var $send_datm_m = $regi_form.find('select[name="send_datm_m"]');
 
-                    if ($(this).val() === 'Y') {
+                    if ($(this).data('option-type') === 'N') {
                         $send_datm_day.prop('disabled', false);
                         $send_datm_h.prop('disabled', false);
                         $send_datm_m.prop('disabled', false);
@@ -288,13 +312,12 @@
 
                 // 등록
                 $regi_form.submit(function() {
-                    var _url = '{{ site_url('/crm/sms/storeSend') }}';
-
-                    /*ajaxSubmit($regi_form, _url, function(ret) {
+                    /*var _url = '{{ site_url('/crm/sms/storeSend') }}';
+                    ajaxSubmit($regi_form, _url, function(ret) {
                         if(ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $("#pop_modal").modal('toggle');
-                            location.reload();
+                            /!*location.reload();*!/
                         }
                     }, showValidateError, addValidate, false, 'alert');*/
                 });

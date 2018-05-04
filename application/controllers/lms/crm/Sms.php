@@ -6,13 +6,33 @@ class Sms extends \app\controllers\BaseController
     protected $models = array('sys/code', 'sys/site', 'crm/send/sms');
     protected $helpers = array();
 
+    private $_send_type = 'sms';
+    // 메세지 발송 종류 (SMS,쪽지,메일)
+    private $_send_type_ccd = [
+        'sms' => '641001',
+        'msg' => '641002',
+        'mail' => '641003'
+    ];
+
+    // 메시지 상태 (성공,예약,취소)
+    private $_send_status_ccd = [
+        '0' => '639001',
+        '1' => '639002',
+        '2' => '639003'
+    ];
+
+    // 메시지 발송 옵션 (즉시발송, 예약발송)
+    private $_send_option_ccd = [
+        '0' => '640001',
+        '1' => '640002'
+    ];
+
     private $_groupCcd = [
         'SendPatternCcd' => '637',  //메세지성격 (일반발송, 자동발송)
         'SendTypeCcd' => '638',     //메세지종류 (SMS, LMS)
         'SendStatusCcd' => '639',   //발송상태 (성공,예약,취소)
         'SendOptionCcd' => '640',   //발송옵션 (즉시발송, 예약발송)
     ];
-    private $send_type = 'sms';
 
     public function __construct()
     {
@@ -83,6 +103,7 @@ class Sms extends \app\controllers\BaseController
     public function createSendModal()
     {
         $get_site_array = $this->siteModel->getSiteArray();
+        $arr_send_pattern_ccd = $this->codeModel->getCcd($this->_groupCcd['SendPatternCcd']);
         $arr_send_option_ccd = $this->codeModel->getCcd($this->_groupCcd['SendOptionCcd']);
 
         $method = 'POST';
@@ -91,8 +112,19 @@ class Sms extends \app\controllers\BaseController
         $this->load->view("crm/sms/create_modal", [
             'method' => $method,
             'get_site_array' => $get_site_array,
+            'arr_send_pattern_ccd' => $arr_send_pattern_ccd,
             'arr_send_option_ccd' => $arr_send_option_ccd,
             'set_row_count' => $set_row_count
+        ]);
+    }
+
+    public function getSiteCsTelAjax($params = [])
+    {
+        $site_code = $params[0];
+        // 사이트 고객센터전화번호
+        $result = $this->siteModel->findSite('CsTel', ['EQ' => ['SiteCode' => $site_code]]);
+        return $this->response([
+            'cs_tel' => $result['CsTel']
         ]);
     }
 
@@ -101,7 +133,7 @@ class Sms extends \app\controllers\BaseController
         $get_site_array = $this->siteModel->getSiteArray();
 
         $this->load->view("crm/sms/list_member_modal", [
-            'send_type' => $this->send_type,
+            'send_type' => $this->_send_type,
             'get_site_array' => $get_site_array
 
         ]);
@@ -190,34 +222,87 @@ class Sms extends \app\controllers\BaseController
     //발송
     public function storeSend()
     {
-        print_r($this->_reqP(null,false));
+        $arr_mem_phone = [];
+        $field_mem_phone = false;
+        $send_type = $this->_reqP('send_type');
+        $member_type = $this->_reqP('member_type');
+        $data_mem_phone = $this->_reqP('mem_phone[]');
 
+        /*print_r($this->_reqP(null,false));*/
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
+            ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],
             ['field' => 'cs_tel', 'label' => '발신번호', 'rules' => 'trim|required|integer'],
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
-            ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,Y]']
         ];
 
-        $field_mem_idx = false;
-        foreach ($this->_reqP('mem_idx[]') as $key => $val) {
-            if (empty($this->_reqP('mem_phone[]')[$key]) === false) {
-                $field_mem_idx = true;
-            }
-        }
-        if ($field_mem_idx === false) {
-            $rules = array_merge($rules,[
-                ['field' => 'mem_idx[]', 'label' => '수신번호', 'rules' => 'trim|required']
-            ]);
+        /**
+         * send_type
+         * 1 : 전화번호기준 검색
+         * 2 : 첨부파일기준 검색
+         */
+        switch ($send_type) {
+            case "1" :
+                foreach ($data_mem_phone as $key => $val) {
+                    if (empty($data_mem_phone[$key]) === false) {
+                        $arr_mem_phone[$key] = $val;
+                        $field_mem_phone = true;
+                    }
+                }
+
+                if ($field_mem_phone === false) {
+                    $rules = array_merge($rules,[
+                        ['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'trim|required']
+                    ]);
+                }
+                break;
+            case "2" :
+                break;
+
+            default :
+                $this->json_result(false, '', ['ret_cd' => false,'ret_msg' => '필수 데이터 누락입니다. 관리자에게 문의해 주세요.','ret_status' => '500']);
+                return;
+                break;
         }
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        // 데이터 등록
+        /**
+         * $member_type
+         * 1 : 정회원
+         * 2 : 비회원
+         */
+        $arr_member_data = [];
+        if ($member_type == 1) {
+            $arr_condition = [
+                'EQ' => ['Mem.SiteCode' => $this->_reqP('site_code')],
+                'IN' => ['CONCAT(Mem.Hp1,Mem.Hp2,Mem.Hp3)' => $arr_mem_phone]
+            ];
+            $column = "Mem.MemIdx, Mem.MemId, Mem.MemName, CONCAT(Mem.Hp1,Mem.Hp2,Mem.Hp3) AS Phone, CONCAT(Mem.Email,'@',Mem.EmailDomain) as Email, MemInfo.SmsRcvStatus, MemInfo.EmailRcvStatus";
+            $arr_member_data = $this->_memberList($arr_condition, $column);
 
+            if (empty($arr_member_data) || count($arr_member_data) <= 0) {
+                $this->json_result(false, '', ['ret_cd' => false,'ret_msg' => '조회된 회원 정보가 없습니다.','ret_status' => '500']);
+                return;
+            }
+        } else {
+            foreach ($arr_mem_phone as $key => $val) {
+                $arr_member_data[$key] = ['Phone' => $val];
+            }
+        }
+
+        // 데이터 등록
+        $inputData = $this->_setInputData($this->_reqP(null, false));
+        $inputData = array_merge($inputData,[
+            'RegAdminIdx' => $this->session->userdata('admin_idx'),
+            'RegDatm' => date('Y-m-d H:i:s'),
+            'RegIp' => $this->input->ip_address()
+        ]);
+        $result = $this->smsModel->addSms($inputData, $arr_member_data);
 
 
         $result = true;
@@ -246,7 +331,7 @@ class Sms extends \app\controllers\BaseController
             $attach_data['AttachFileName'] = $uploaded[0]['orig_name'];
 
             // 엑셀 데이터 셋팅
-            $excel_data = $this->ExcelReader($uploaded[0]['full_path']);
+            $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
 
             // 업로드 파일 삭제
             @unlink($uploaded[0]['full_path']);
@@ -266,6 +351,17 @@ class Sms extends \app\controllers\BaseController
         $this->json_result($result, '성공', $err_data, $return);
     }
 
+    private function _memberList($arr_condition, $column)
+    {
+        $mem_list = $this->smsModel->getMemberList($arr_condition, $column);
+
+        if (empty($mem_list) === true) {
+            return false;
+        }
+
+        return $mem_list;
+    }
+
     /**
      * 엑셀 데이터 리턴
      * @param $file_path
@@ -273,7 +369,7 @@ class Sms extends \app\controllers\BaseController
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
      */
-    private function ExcelReader($file_path)
+    private function _ExcelReader($file_path)
     {
         $this->load->library('excel');
         $excel_data = $this->excel->readExcel($file_path);
@@ -290,5 +386,29 @@ class Sms extends \app\controllers\BaseController
     {
         $attach_file_names[] = 'send_list_' . date('YmdHis');
         return $attach_file_names;
+    }
+
+    /**
+     * input date 셋팅
+     * @param $input
+     * @return array
+     */
+    private function _setInputData($input)
+    {
+        $input_data = [
+            'SendGroupTypeCcd' => $this->_send_type_ccd[$this->_send_type],
+            'SiteCode' => element('site_code', $input),
+            'SendPatternCcd' => element('send_pattern_ccd', $input),
+            /*'SendTypeCcd' => 'SMS' //LMS*/
+            'SendOptionCcd' => element('send_option_ccd', $input),
+            'SendStatusCcd' => (element('send_option_ccd', $input) == $this->_send_option_ccd['0']) ? $this->_send_status_ccd['0'] : $this->_send_status_ccd['1'],
+            'CsTel' => element('cs_tel', $input),
+            'AttachFileRoute' => '',
+            'AttachFileName' => '',
+            'Title' => '',
+            'Content' => element('send_content', $input)
+        ];
+
+        return $input_data;
     }
 }

@@ -216,9 +216,79 @@ class Sms extends \app\controllers\BaseController
             return;
         }
 
+        // 데이터 등록
+
 
 
         $result = true;
         $this->json_result($result, '성공적으로 발송되었습니다.', $result);
+    }
+
+    /**
+     * Excel 파일 업로드
+     */
+    public function fileUploadAjax()
+    {
+        $result = true;
+        $err_data = [];
+        $return = [];
+
+        try{
+            $this->load->library('upload');
+            $upload_sub_dir = SUB_DOMAIN . '/sendList/sms/' . date('Ymd');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
+
+            if (empty($uploaded) === true || count($uploaded) <= 0) {
+                throw new \Exception('업로드할 파일이 없습니다.');
+            }
+
+            $attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
+            $attach_data['AttachFileName'] = $uploaded[0]['orig_name'];
+
+            // 엑셀 데이터 셋팅
+            $excel_data = $this->ExcelReader($uploaded[0]['full_path']);
+
+            // 업로드 파일 삭제
+            @unlink($uploaded[0]['full_path']);
+
+            $return = [
+                'file_info' => $attach_data,
+                'excel_data' => $excel_data
+            ];
+
+        } catch (\Exception $e) {
+            $result = false;
+            $err_data['ret_cd'] = false;
+            $err_data['ret_msg'] = $e->getMessage();
+            $err_data['ret_status'] = '422';
+        }
+
+        $this->json_result($result, '성공', $err_data, $return);
+    }
+
+    /**
+     * 엑셀 데이터 리턴
+     * @param $file_path
+     * @return array
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     */
+    private function ExcelReader($file_path)
+    {
+        $this->load->library('excel');
+        $excel_data = $this->excel->readExcel($file_path);
+
+        return $excel_data;
+    }
+
+    /**
+     * 파일명 배열 생성
+     * @param $board_idx
+     * @return array
+     */
+    private function _getAttachImgNames()
+    {
+        $attach_file_names[] = 'send_list_' . date('YmdHis');
+        return $attach_file_names;
     }
 }

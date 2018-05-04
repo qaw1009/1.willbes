@@ -213,7 +213,7 @@ class BookModel extends WB_Model
                 'ProdName' => element('book_name', $input),
                 'ProdTypeCcd' => $this->_prod_type_ccd,
                 'SaleStartDatm' => date('Y-m-d H') . ':00:00',
-                'SaleStartTime' => date('H'),
+                'SaleEndDatm' => '2100-12-31 00:00:00',
                 'SaleStatusCcd' => $this->_sale_status_ccd,
                 'IsCoupon' => element('is_coupon', $input),
                 'IsPoint' => element('is_point_saving', $input),

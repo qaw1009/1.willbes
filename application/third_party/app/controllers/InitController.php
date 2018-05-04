@@ -58,7 +58,7 @@ trait InitController
      * @param bool $xss_clean
      * @return mixed
      */
-    public function _req($index, $xss_clean = true)
+    public function _req($index, $xss_clean = false)
     {
         return $this->input->get_post($index, $xss_clean);
     }
@@ -69,7 +69,7 @@ trait InitController
      * @param bool $xss_clean
      * @return mixed
      */
-    public function _reqP($index, $xss_clean = true)
+    public function _reqP($index, $xss_clean = false)
     {
         return $this->input->post($index, $xss_clean);
     }

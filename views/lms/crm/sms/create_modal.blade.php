@@ -5,12 +5,11 @@
     @stop
 
     @section('layer_header')
-    {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/sms/storeSend') }}">
+    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/sms/storeSend') }}">--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="send_type" value="1" title="발송타입">
-        <input type="hidden" name="member_type" value="0" title="비회원유무">
     @endsection
 
     @section('layer_content')
@@ -31,6 +30,12 @@
                                 <option value="">사이트선택</option>
                                 @foreach($get_site_array as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </select>
+
+                            <select class="form-control hide" id="member_type" name="member_type" title="비회원유무">
+                                @foreach($arr_member_type_ccd as $key => $val)
+                                    <option value="{{ $key }}" @if($loop->first)selected="selected"@endif>{{ $val }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -75,7 +80,7 @@
                     <div class="tab-content">
                         <div id="content_1" class="form-group tab-pane fade in active">
                             <div class="form-group">
-                                <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 ('-' 없이 숫자만 입력)</label>
+                                <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 입력('-' 없이 숫자만 입력)</label>
                                 <div class="col-md-3 col-lg-offset-1">
                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_member_searching">회원검색</button>
                                 </div>
@@ -126,7 +131,7 @@
 
                         <div id="content_2" class="form-group tab-pane fade">
                             <div class="form-group">
-                                <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호</label>
+                                <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 등록</label>
                                 <div class="col-md-4">
                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_sample_file_download">양식다운로드</button>
                                 </div>
@@ -136,7 +141,7 @@
                                     <input type="file" id="attach_file" name="attach_file[]" class="form-control" title="첨부파일"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_file_upload">File Upload</button>
+                                    <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_file_upload">List Up</button>
                                 </div>
                             </div>
                             <div style="border-bottom: 1px solid #2A3F54; margin-bottom: 5px;"></div>
@@ -165,8 +170,6 @@
                                     @foreach($arr_send_option_ccd as $key => $val)
                                         <input type="radio" id="send_option_ccd_{{$key}}" name="send_option_ccd" class="flat send_option_ccd" title="{{$val}}" @if($loop->first)checked="checked"@endif data-option-type="{!! $loop->first ? 'Y' : 'N' !!}" value="{{$key}}"/> <label for="send_option_ccd_{{$key}}" class="input-label">{{$val}}</label>
                                     @endforeach
-                                    {{--<input type="radio" id="send_option_ccd_y" name="send_option_ccd" class="flat" value="N" required="required" title="사용여부" checked="checked"/> <label for="send_option_ccd_y" class="input-label">즉시발송</label>
-                                    <input type="radio" id="send_option_ccd_n" name="send_option_ccd" class="flat" value="Y"/> <label for="send_option_ccd_n" class="input-label">예약발송</label>--}}
                                 </div>
                             </div>
                         </div>
@@ -209,15 +212,6 @@
                 </div>
             </div>
         </div>
-
-
-        {{--<div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                 aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                <span class="sr-only">70% Complete</span>
-            </div>
-        </div>--}}
-
 
         <script type="text/javascript">
             var $regi_form = $('#modal_regi_form');
@@ -312,26 +306,30 @@
 
                 // 등록
                 $regi_form.submit(function() {
-                    /*var _url = '{{ site_url('/crm/sms/storeSend') }}';
+                    var _url = '{{ site_url('/crm/sms/storeSend') }}';
                     ajaxSubmit($regi_form, _url, function(ret) {
                         if(ret.ret_cd) {
-                            notifyAlert('success', '알림', ret.ret_msg);
-                            $("#pop_modal").modal('toggle');
-                            /!*location.reload();*!/
+                            var msg_cnt = ret.ret_data.upload_cnt;
+                            var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
+
+                            notifyAlert('success', '알림', msg);
+                            /*$("#pop_modal").modal('toggle');*/
+                            location.reload();
                         }
-                    }, showValidateError, addValidate, false, 'alert');*/
+                    }, showValidateError, addValidate, false, 'alert');
                 });
             });
 
             function addValidate() {
                 var flag = false;
+                var send_type = $("input[name='send_type']").val();
                 var mem_phone_length = $("input[name='mem_phone[]']").length;
 
                 for(var i=0; i<mem_phone_length; i++) {
                     if ($("input[name='mem_phone[]']")[i].value) {flag = true;}
                 }
 
-                if (flag === false) {
+                if (send_type == 1 && flag === false) {
                     alert('수신번호는 필수입니다.');
                     return false;
                 }

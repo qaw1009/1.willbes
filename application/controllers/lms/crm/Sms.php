@@ -7,6 +7,10 @@ class Sms extends \app\controllers\BaseController
     protected $helpers = array();
 
     private $_send_type = 'sms';
+
+    // 회원 종류 (정회원, 비회원)
+    private $_member_type_ccd = ['642001', '642002'];
+
     // 메세지 발송 종류 (SMS,쪽지,메일)
     private $_send_type_ccd = [
         'sms' => '641001',
@@ -28,6 +32,7 @@ class Sms extends \app\controllers\BaseController
     ];
 
     private $_groupCcd = [
+        'MemberTypeCcd' => '642',   //회원 종류 (정회원, 비회원)
         'SendPatternCcd' => '637',  //메세지성격 (일반발송, 자동발송)
         'SendTypeCcd' => '638',     //메세지종류 (SMS, LMS)
         'SendStatusCcd' => '639',   //발송상태 (성공,예약,취소)
@@ -46,7 +51,8 @@ class Sms extends \app\controllers\BaseController
         $this->load->view("crm/sms/index", [
             'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
             'arr_send_type_ccd' => $arr_codes[$this->_groupCcd['SendTypeCcd']],
-            'arr_send_status_ccd' => $arr_codes[$this->_groupCcd['SendStatusCcd']]
+            'arr_send_status_ccd' => $arr_codes[$this->_groupCcd['SendStatusCcd']],
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
         ]);
     }
 
@@ -103,8 +109,7 @@ class Sms extends \app\controllers\BaseController
     public function createSendModal()
     {
         $get_site_array = $this->siteModel->getSiteArray();
-        $arr_send_pattern_ccd = $this->codeModel->getCcd($this->_groupCcd['SendPatternCcd']);
-        $arr_send_option_ccd = $this->codeModel->getCcd($this->_groupCcd['SendOptionCcd']);
+        $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['MemberTypeCcd'], $this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd']]);
 
         $method = 'POST';
         $set_row_count = '12';
@@ -112,8 +117,9 @@ class Sms extends \app\controllers\BaseController
         $this->load->view("crm/sms/create_modal", [
             'method' => $method,
             'get_site_array' => $get_site_array,
-            'arr_send_pattern_ccd' => $arr_send_pattern_ccd,
-            'arr_send_option_ccd' => $arr_send_option_ccd,
+            'arr_member_type_ccd' => $arr_codes[$this->_groupCcd['MemberTypeCcd']],
+            'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
+            'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
             'set_row_count' => $set_row_count
         ]);
     }
@@ -128,6 +134,9 @@ class Sms extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 회원 리스트 페이지
+     */
     public function listMemberModal()
     {
         $get_site_array = $this->siteModel->getSiteArray();
@@ -139,78 +148,42 @@ class Sms extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 회원 리스트 Ajax
+     * @return CI_Output
+     */
     public function listMemberModalAjax()
     {
-        $column = 'MEM.MemIdx, MEM.SiteCode, MEM.MemId, MEM.MemName, MEM.Hp1, MEM.Hp2, MEM.Hp3, MEM.Email, MEM.EmailEnc, MEM.EmailDomain, MEM_R.SmsRcvStatus, MEM_R.EmailRcvStatus, MEM.JoinDate, MEM.IsStatus';
-        $count = 4;
+        $get_site_array = $this->siteModel->getSiteArray();
 
-        $list = [
-            '0' => [
-                'MemIdx' => '100001',
-                'SiteCode' => '2001',
-                'MemId' => 'dlumjjang01',
-                'MemName' => '최현탁',
-                'Hp1' => '010',
-                'Hp2' => '4619',
-                'Hp3' => '5149',
-                'Email' => '1',
-                'EmailEnc' => '1',
-                'EmailDomain' => '1',
-                'SmsRcvStatus' => 'Y',
-                'EmailRcvStatus' => 'Y',
-                'JoinDate' => '2018-04-30 11:21:45',
-                'IsStatus' => 'Y'
+        $column = 'Mem.MemIdx, Mem.SiteCode, Mem.MemId, Mem.MemName, Mem.Hp1, Mem.Hp2, Mem.Hp3, Mem.Email, Mem.EmailEnc, Mem.EmailDomain, MemInfo.SmsRcvStatus, MemInfo.EmailRcvStatus, Mem.JoinDate, Mem.IsStatus';
+        $arr_condition = [
+            'EQ' => [
+                'Mem.SiteCode' => $this->_reqP('site_code'),
+                'MemInfo.SmsRcvStatus' => $this->_reqP('search_sms_is_agree'),
+                'MemInfo.EmailRcvStatus' => $this->_reqP('search_email_is_agree')
             ],
-            '1' => [
-                'MemIdx' => '100002',
-                'SiteCode' => '2',
-                'MemId' => 'dlumjjang02',
-                'MemName' => '2',
-                'Hp1' => '010',
-                'Hp2' => '1234',
-                'Hp3' => '5149',
-                'Email' => '2',
-                'EmailEnc' => '2',
-                'EmailDomain' => '2',
-                'SmsRcvStatus' => '2',
-                'EmailRcvStatus' => '2',
-                'JoinDate' => '2',
-                'IsStatus' => '2'
-            ],
-            '2' => [
-                'MemIdx' => '100003',
-                'SiteCode' => '3',
-                'MemId' => 'dlumjjang03',
-                'MemName' => '3',
-                'Hp1' => '010',
-                'Hp2' => '4456',
-                'Hp3' => '3124',
-                'Email' => '3',
-                'EmailEnc' => '3',
-                'EmailDomain' => '3',
-                'SmsRcvStatus' => '3',
-                'EmailRcvStatus' => '3',
-                'JoinDate' => '3',
-                'IsStatus' => '3'
-            ],
-            '3' => [
-                'MemIdx' => '100004',
-                'SiteCode' => '4',
-                'MemId' => 'dlumjjang04',
-                'MemName' => '4',
-                'Hp1' => '010',
-                'Hp2' => '7890',
-                'Hp3' => '5632',
-                'Email' => '4',
-                'EmailEnc' => '4',
-                'EmailDomain' => '4',
-                'SmsRcvStatus' => '4',
-                'EmailRcvStatus' => '4',
-                'JoinDate' => '4',
-                'IsStatus' => '4'
-            ],
+            'ORG' => [
+                'LKB' => [
+                    'Mem.MemId' => $this->_reqP('search_value'),
+                    'Mem.MemName' => $this->_reqP('search_value'),
+                    'CONCAT(Mem.Hp1,Mem.Hp2,Mem.Hp3)' => $this->_reqP('search_value')
+                ]
+            ]
         ];
 
+        if (!empty($this->_reqP('search_member_start_regdate')) && !empty($this->_reqP('search_member_end_regdate'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['Mem.JoinDate' => [$this->_reqP('search_member_start_regdate'), $this->_reqP('search_member_end_regdate')]]
+            ]);
+        }
+
+        $list = [];
+        $count = $this->_memberList(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->_memberList(false, $arr_condition, $column, $this->_reqP('length'), $this->_reqP('start'), ['Mem.MemIdx' => 'desc']);
+        }
 
         return $this->response([
             'recordsTotal' => $count,
@@ -222,13 +195,12 @@ class Sms extends \app\controllers\BaseController
     //발송
     public function storeSend()
     {
-        $arr_mem_phone = [];
         $field_mem_phone = false;
         $send_type = $this->_reqP('send_type');
         $member_type = $this->_reqP('member_type');
         $data_mem_phone = $this->_reqP('mem_phone[]');
+        $send_option = $this->_reqP('send_option_ccd');
 
-        /*print_r($this->_reqP(null,false));*/
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],
@@ -243,6 +215,7 @@ class Sms extends \app\controllers\BaseController
          * 1 : 전화번호기준 검색
          * 2 : 첨부파일기준 검색
          */
+        $arr_mem_phone = [];
         switch ($send_type) {
             case "1" :
                 foreach ($data_mem_phone as $key => $val) {
@@ -259,6 +232,23 @@ class Sms extends \app\controllers\BaseController
                 }
                 break;
             case "2" :
+                $this->load->library('upload');
+                $upload_sub_dir = SUB_DOMAIN . '/sendList/sms/' . date('Ymd');
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
+
+                if (empty($uploaded) === true || count($uploaded) <= 0) {
+                    $this->json_result(false, '', ['ret_cd' => false,'ret_msg' => '업로드할 파일이 없습니다.','ret_status' => '500']);
+                    return;
+                }
+
+                $attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
+                $attach_data['AttachFileName'] = $uploaded[0]['orig_name'];
+
+                // 엑셀 데이터 셋팅
+                $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
+                foreach ($excel_data as $key => $val) {
+                    $arr_mem_phone[$key] = $val['C'];
+                }
                 break;
 
             default :
@@ -272,18 +262,16 @@ class Sms extends \app\controllers\BaseController
         }
 
         /**
-         * $member_type
-         * 1 : 정회원
-         * 2 : 비회원
+         * 정회원, 비회원의 따른 데이터 셋팅
          */
         $arr_member_data = [];
-        if ($member_type == 1) {
+        if ($member_type == $this->_member_type_ccd[0]) {
             $arr_condition = [
                 'EQ' => ['Mem.SiteCode' => $this->_reqP('site_code')],
                 'IN' => ['CONCAT(Mem.Hp1,Mem.Hp2,Mem.Hp3)' => $arr_mem_phone]
             ];
             $column = "Mem.MemIdx, Mem.MemId, Mem.MemName, CONCAT(Mem.Hp1,Mem.Hp2,Mem.Hp3) AS Phone, CONCAT(Mem.Email,'@',Mem.EmailDomain) as Email, MemInfo.SmsRcvStatus, MemInfo.EmailRcvStatus";
-            $arr_member_data = $this->_memberList($arr_condition, $column);
+            $arr_member_data = $this->_memberList(false, $arr_condition, $column);
 
             if (empty($arr_member_data) || count($arr_member_data) <= 0) {
                 $this->json_result(false, '', ['ret_cd' => false,'ret_msg' => '조회된 회원 정보가 없습니다.','ret_status' => '500']);
@@ -295,18 +283,45 @@ class Sms extends \app\controllers\BaseController
             }
         }
 
-        // 데이터 등록
+        /**
+         * 발송 옵션에 따른 SMS 솔루션 호출 (즉시발송일 경우)
+         */
+        if ($send_option == $this->_send_option_ccd[0]) {
+            // 솔루션 호출 구문 시작
+
+        }
+
+
+        /**
+         * 데이터 등록
+         */
         $inputData = $this->_setInputData($this->_reqP(null, false));
         $inputData = array_merge($inputData,[
             'RegAdminIdx' => $this->session->userdata('admin_idx'),
             'RegDatm' => date('Y-m-d H:i:s'),
             'RegIp' => $this->input->ip_address()
         ]);
-        $result = $this->smsModel->addSms($inputData, $arr_member_data);
+        list($result, $upload_cnt) = $this->smsModel->addSms($inputData, $arr_member_data);
 
+        $this->json_result($result, '성공적으로 발송되었습니다.',null, ['upload_cnt' => $upload_cnt]);
+    }
 
-        $result = true;
-        $this->json_result($result, '성공적으로 발송되었습니다.', $result);
+    /**
+     * 예약 취소
+     */
+    public function cancelSend()
+    {
+        /*$rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }*/
+        $params = json_decode($this->_req('params'), true);
+        $result = $this->smsModel->updateSendStatus($params);
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     /**
@@ -327,9 +342,6 @@ class Sms extends \app\controllers\BaseController
                 throw new \Exception('업로드할 파일이 없습니다.');
             }
 
-            $attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
-            $attach_data['AttachFileName'] = $uploaded[0]['orig_name'];
-
             // 엑셀 데이터 셋팅
             $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
 
@@ -337,7 +349,6 @@ class Sms extends \app\controllers\BaseController
             @unlink($uploaded[0]['full_path']);
 
             $return = [
-                'file_info' => $attach_data,
                 'excel_data' => $excel_data
             ];
 
@@ -351,9 +362,19 @@ class Sms extends \app\controllers\BaseController
         $this->json_result($result, '성공', $err_data, $return);
     }
 
-    private function _memberList($arr_condition, $column)
+    /**
+     * 회원 정보 조회
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @param string $column
+     * @return bool|mixed
+     */
+    private function _memberList($is_count, $arr_condition = [], $column = '*', $limit = null, $offset = null, $order_by = [])
     {
-        $mem_list = $this->smsModel->getMemberList($arr_condition, $column);
+        $mem_list = $this->smsModel->getMemberList($is_count, $arr_condition, $column, $limit, $offset, $order_by);
 
         if (empty($mem_list) === true) {
             return false;

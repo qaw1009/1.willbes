@@ -5,16 +5,16 @@
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal" id="_member_search_form" name="_member_search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal" id="search_form_modal" name="search_form_modal" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         @endsection
 
         @section('layer_content')
             <div class="form-group form-group-bordered pt-10 pb-10">
                 <div class="row">
-                    <label class="control-label col-md-2" for="site_code">운영 사이트 <span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control input-sm" id="site_code" name="site_code" required="required" title="운영 사이트">
+                    <label class="control-label col-md-2" for="site_code">운영 사이트</label>
+                    <div class="col-md-2">
+                        <select class="form-control input-sm" id="site_code" name="site_code" title="운영 사이트">
                             <option value="">사이트선택</option>
                             @foreach($get_site_array as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary btn-sm btn-search" id="_btn_search">검 색</button>
+                <button type="submit" class="btn btn-primary btn-sm btn-search" id="btn_search_modal">검 색</button>
             </div>
             <div class="row mt-20 mb-20">
                 <div class="col-md-12 clearfix">
@@ -96,26 +96,26 @@
                 </div>
             </div>
             <script type="text/javascript">
-                var $datatable;
-                var $member_search_form = $('#_member_search_form');
+                var $datatable_modal;
+                var $search_form_modal = $('#search_form_modal');
                 var $list_modal_table = $('#_list_modal_ajax_table');
-                var send_type = '{{$send_type}}';
+                var send_type_modal = '{{$send_type}}';
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
-                    $datatable = $list_modal_table.DataTable({
+                    $datatable_modal = $list_modal_table.DataTable({
                         serverSide: true,
                         ajax: {
                             "url" : "{{ site_url('crm/sms/listMemberModalAjax') }}",
                             'type' : 'POST',
                             'data' : function(data) {
-                                return $.extend(arrToJson($member_search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                                return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                             }
                         },
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     // 리스트 번호
-                                    return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                                    return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'SiteCode'},
                             {'data' : 'MemId'},
@@ -138,7 +138,7 @@
                             {'data' : 'IsStatus'},
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     var val = '0';
-                                    switch (send_type) {
+                                    switch (send_type_modal) {
                                         case 'sms' :
                                             val = row.Hp1+row.Hp2+row.Hp3;
                                             break;
@@ -171,7 +171,7 @@
                             return;
                         }
 
-                        switch (send_type) {
+                        switch (send_type_modal) {
                             case 'sms' :
                                 $('input[name="mem_idx[]"]').val('');
                                 $('input[name="mem_id[]"]').val('');

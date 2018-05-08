@@ -84,7 +84,7 @@
                     <th>NO</th>
                     <th>사이트</th>
                     <th>메세지성격</th>
-                    <th>메세지종류</th>
+                    {{--<th>메세지종류</th>--}}
                     <th>내용</th>
                     <th>발신번호</th>
                     <th>발신인</th>
@@ -124,7 +124,10 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" class="flat" name="send_cancel[]" value="' +row.SendIdx+ '">';
+                            var disabled_type = '';
+
+                            if (row.SendStatusCcd == '{{$arr_send_status_ccd_vals[1]}}') { disabled_type = ''; } else { disabled_type = 'disabled'; }
+                            return '<input type="checkbox" class="flat" name="send_cancel" value="{{$arr_send_status_ccd_vals[2]}}" data-is-best-idx="' + row.SendIdx + '" '+disabled_type+'>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -132,12 +135,12 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'SendPatternCcdName'},
-                    {'data' : 'SendTypeCcdName'},
+                    /*{'data' : 'SendTypeCcdName'},*/
                     {'data' : 'Content', 'render' : function(data, type, row, meta){
                             return data;
                         }},
                     {'data' : 'CsTel'},
-                    {'data' : 'wRegAdminName'},
+                    {'data' : 'wAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'SendStatusCcdName'}
                 ],
@@ -148,6 +151,34 @@
                     "url" : "{{ site_url('crm/sms/createSendModal') }}",
                     width : "800"
                 });
+            });
+
+            // 예약취소
+            $('.btn-send-cancel').click(function() {
+                var $params = {};
+                var _url = "{{ site_url('crm/sms/cancelSend') }}"
+
+                $('input[name="send_cancel"]:checked').each(function() {
+                    $params[$(this).data('is-best-idx')] = $(this).val();
+                });
+
+                if (Object.keys($params).length <= '0') {
+                    alert('취소할 리스트를 선택해주세요.');
+                    return false;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

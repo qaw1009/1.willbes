@@ -22,7 +22,6 @@ class Excel
         $spreadsheet->getActiveSheet()->removeRow(1, 1);
 
         $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
-
         return $sheetData;
     }
 

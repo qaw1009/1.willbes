@@ -121,6 +121,9 @@ class SiteCode
 
         $result = $this->_CI->siteModel->{$method . 'Site'}($this->_CI->_reqP(null, false));
 
+        // 사이트 정보 캐쉬 저장
+        $this->_saveSiteCache($result);
+
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -141,6 +144,21 @@ class SiteCode
 
         $result = $this->_CI->siteModel->removeImg($this->_CI->_reqP('img_type'), $this->_CI->_reqP('idx'));
 
+        // 사이트 정보 캐쉬 저장
+        $this->_saveSiteCache($result);
+
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 사이트 정보 캐쉬 저장
+     * @param $is_success
+     */
+    private function _saveSiteCache($is_success)
+    {
+        if ($is_success === true) {
+            $this->_CI->load->driver('caching');
+            $this->_CI->caching->site->save();
+        }
     }
 }

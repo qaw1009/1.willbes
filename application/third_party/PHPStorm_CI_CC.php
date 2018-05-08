@@ -83,6 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Curl $curl                                         Curl Class
  * @property Format $format                                 Format Class
  * @property RestClient $restclient                         REST Client Class
+ * @property Caching $caching                              Application Caching Driver Class
  ***************** MY MODELS *****************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ***********************
@@ -117,7 +118,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BoardModel $boardModel                                                 Board Model Class
  * @property WCpModel $wcpModel                                                     WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel   Search MasterLecture Model Class
- * @property SearchBookModel $searchBookModel                                  Search Book Model Class
  * @property SmsModel $smsModel                                     Search Sms Model Class
  *
  */

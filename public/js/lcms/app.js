@@ -396,6 +396,18 @@ function init_datatable() {
             $datatable.draw();
         });
     }
+
+    //modal search submit
+    if (typeof $search_form_modal !== 'undefined') {
+        $search_form_modal.submit(function(e) {
+            e.preventDefault();
+            if ($(this).hasClass('searching') === true) {
+                datatableSearching();
+            } else {
+                $datatable_modal.draw();
+            }
+        });
+    }
 }
 
 /**

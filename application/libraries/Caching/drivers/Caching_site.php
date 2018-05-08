@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 사이트 정보
+ */
 class Caching_site extends CI_Driver
 {
     /**
@@ -16,7 +19,7 @@ class Caching_site extends CI_Driver
     public $_key = 'lms@site';
 
     /**
-     * cache life time (second), 0일 경우
+     * cache life time (second), 0일 경우 자동 소멸없이 데이터 유지됨
      * @var int
      */
     public $_ttl = 0;

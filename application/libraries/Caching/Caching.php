@@ -16,7 +16,7 @@ class Caching extends CI_Driver_Library
     public $_db;
 
     /**
-     * valid drivers (caching data가 추가될 경우 추가 필요)
+     * valid drivers (caching driver(memcache에 저장할 데이터)가 추가될 경우 추가 필요)
      * @var array
      */
     protected $valid_drivers = array(
@@ -45,10 +45,13 @@ class Caching extends CI_Driver_Library
 
         // get ci instance
         $this->_CI =& get_instance();
+
         // cache driver load
         $this->_CI->load->driver('cache');
+
         // cache config load
         $this->_CI->config->load('cache', true);
+
         // set backup adapter
         $cache_backup_adapter = config_get('cache.backup');
         is_null($cache_backup_adapter) === false && $this->_cache_backup_adapter = $cache_backup_adapter;

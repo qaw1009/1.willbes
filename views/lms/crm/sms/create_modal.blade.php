@@ -146,7 +146,7 @@
                             </div>
                             <div style="border-bottom: 1px solid #2A3F54; margin-bottom: 5px;"></div>
                             <div class="form-group">
-                                <div class="col-md-12 form-group-sm" style="max-height: 290px; overflow-y: auto;">
+                                <div class="col-md-12 form-group-sm" style="height: 290px; max-height: 290px; overflow-y: auto;">
                                     <table id="mem_phone_list" class="table" style="font-size: 12px;">
                                         <thead>
                                         <tr>

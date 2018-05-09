@@ -112,7 +112,6 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-copy mr-10"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sand-create' },
-
                     { text: '<i class="fa fa-copy mr-10"></i> 예약취소', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-send-cancel' },
                 ],
                 ajax: {
@@ -125,7 +124,6 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             var disabled_type = '';
-
                             if (row.SendStatusCcd == '{{$arr_send_status_ccd_vals[1]}}') { disabled_type = ''; } else { disabled_type = 'disabled'; }
                             return '<input type="checkbox" class="flat" name="send_cancel" value="{{$arr_send_status_ccd_vals[2]}}" data-is-best-idx="' + row.SendIdx + '" '+disabled_type+'>';
                         }},
@@ -137,7 +135,7 @@
                     {'data' : 'SendPatternCcdName'},
                     /*{'data' : 'SendTypeCcdName'},*/
                     {'data' : 'Content', 'render' : function(data, type, row, meta){
-                            return data;
+                            return '<a href="javascript:void(0);" class="btn-send-detail-read" data-idx="' + row.SendIdx + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'CsTel'},
                     {'data' : 'wAdminName'},
@@ -146,10 +144,19 @@
                 ],
             });
 
+            // 발송 상세 정보
+            $list_table.on('click', '.btn-send-detail-read', function() {
+                $('.btn-send-detail-read').setLayer({
+                    "url" : "{{ site_url('crm/sms/listSendDetailModal/') }}" + $(this).data('idx'),
+                    width : "1200"
+                });
+            });
+
+            // SMS 발송
             $('.btn-sand-create').click(function() {
                 $('.btn-sand-create').setLayer({
                     "url" : "{{ site_url('crm/sms/createSendModal') }}",
-                    width : "800"
+                    "width" : "800",
                 });
             });
 

@@ -104,6 +104,70 @@ class Sms extends \app\controllers\BaseController
     }
 
     /**
+     * 발송 상세 리스트
+     * @param array $params
+     */
+    public function listSendDetailModal($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $send_idx = $params[0];
+        $this->load->view("crm/sms/list_send_detail_modal", [
+            'send_type' => $this->_send_type,
+            'send_idx' => $send_idx
+        ]);
+    }
+
+    /**
+     * 발송 상세 리스트 ajax
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listSendDetailModalAjax($params = [])
+    {
+        $list = [];
+        $count = 0;
+
+        if (empty($params[0]) === false) {
+            $arr_condition = [
+                'EQ' => [
+                    'SendIdx' => $params[0],
+                    'MemSendAgreeStatus' => $this->_reqP('search_sms_is_agree')
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'MemId' => $this->_reqP('search_value'),
+                        'MemName' => $this->_reqP('search_value'),
+                        'MemEmail' => $this->_reqP('search_value'),
+                        'MemPhone' => $this->_reqP('search_value')
+                    ]
+                ]
+            ];
+
+            $count = $this->smsModel->listSmsDetail(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->smsModel->listSmsDetail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+
+                // 사용하는 코드값 조회
+                $arr_send_type = $this->codeModel->getCcd('641');
+
+                // 코드값에 해당하는 코드명을 배열 원소로 추가
+                $list = array_data_fill($list, [
+                    'SendGroupTypeName' => ['SendGroupTypeCcd' => $arr_send_type]
+                ], true);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
      * SMS발송 등록(전송)
      */
     public function createSendModal()
@@ -140,7 +204,6 @@ class Sms extends \app\controllers\BaseController
     public function listMemberModal()
     {
         $get_site_array = $this->siteModel->getSiteArray();
-
         $this->load->view("crm/sms/list_member_modal", [
             'send_type' => $this->_send_type,
             'get_site_array' => $get_site_array
@@ -183,6 +246,11 @@ class Sms extends \app\controllers\BaseController
 
         if ($count > 0) {
             $list = $this->_memberList(false, $arr_condition, $column, $this->_reqP('length'), $this->_reqP('start'), ['Mem.MemIdx' => 'desc']);
+
+            // 사이트 코드 명 추가
+            $list = array_data_fill($list, [
+                'SiteName' => ['SiteCode' => $get_site_array]
+            ], true);
         }
 
         return $this->response([

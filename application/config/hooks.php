@@ -19,15 +19,6 @@ if (in_array(APP_NAME, ['wbs', 'lms']) === true) {
         'filename' => 'AdminAuthHook.php',
         'filepath' => 'hooks'
     );
-} else {
-    /*// custom autoload
-    $hook['pre_system'][] = array(
-        'class' => 'AutoloadHook',
-        'function' => 'autoload',
-        'filename' => 'AutoloadHook.php',
-        'filepath' => 'hooks',
-        'params' => ''
-    );*/
 }
 
 // 쿼리빌더를 사용하여 실행한 쿼리 로그 저장

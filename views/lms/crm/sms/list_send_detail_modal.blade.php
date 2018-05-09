@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    회원 검색
+    발송 상세리스트
 @stop
 
 @section('layer_header')
@@ -12,7 +12,7 @@
         @section('layer_content')
             <div class="form-group form-group-bordered pt-10 pb-10">
                 <div class="row mt-5">
-                    <label class="control-label col-md-2 pt-5" for="search_sms_is_agree">조건</label>
+                    <label class="control-label col-md-1 pt-5" for="search_sms_is_agree">조건</label>
                     <div class="col-md-2">
                         <select class="form-control input-sm" id="search_sms_is_agree" name="search_sms_is_agree">
                             <option value="">수신동의</option>
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="row mt-5">
-                    <label class="control-label col-md-2 pt-5" for="search_value">통합검색
+                    <label class="control-label col-md-1 pt-5" for="search_value">통합검색
                     </label>
                     <div class="col-md-3">
                         <input type="text" class="form-control input-sm" id="search_value" name="search_value">
@@ -36,28 +36,39 @@
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary btn-sm btn-search" id="btn_search_modal">검 색</button>
             </div>
-            <div class="row mt-20 mb-20">
-                <div class="col-md-12 clearfix">
-                    <table id="_list_modal_ajax_table" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>발송종류</th>
-                            <th>발송아이디</th>
-                            <th>발송이름</th>
-                            <th>발송휴대폰</th>
-                            <th>발송이메일</th>
-                            <th>수신동의</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="form-group clearfix">
+                            <table id="_list_modal_ajax_table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>발송종류</th>
+                                    <th>발송아이디</th>
+                                    <th>발송이름</th>
+                                    <th>발송휴대폰</th>
+                                    <th>발송이메일</th>
+                                    <th>수신동의</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-12 text-center">
-                    <button class="btn btn-info" type="button" id="btn_setting">등록</button>
+
+                <div class="col-md-2 pl-20">
+                    <div class="row">
+                        <div class="form-group"><label class="control-label">발송메시지</label></div>
+                        <div class="form-group">
+                            {!! nl2br($data['Content']) !!}
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <script type="text/javascript">
                 var $datatable_modal;
                 var $search_form_modal = $('#search_form_modal');

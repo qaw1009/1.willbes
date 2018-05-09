@@ -135,12 +135,20 @@
                     {'data' : 'SendPatternCcdName'},
                     /*{'data' : 'SendTypeCcdName'},*/
                     {'data' : 'Content', 'render' : function(data, type, row, meta){
-                            return '<a href="javascript:void(0);" class="btn-send-detail-read" data-idx="' + row.SendIdx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-send-detail-read mr-20" data-idx="' + row.SendIdx + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'CsTel'},
                     {'data' : 'wAdminName'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'SendStatusCcdName'}
+                    {'data' : 'SendDatm'},
+                    {'data' : 'SendStatusCcdName', 'render' : function(data, type, row, meta){
+                        var css_type = 'text-success';
+                        if (row.SendStatusCcd == '{{$arr_send_status_ccd_vals[1]}}') {
+                            css_type = 'text-primary';
+                        } else if (row.SendStatusCcd == '{{$arr_send_status_ccd_vals[2]}}') {
+                            css_type = 'text-danger';
+                        }
+                            return '<span class='+css_type+'>'+data+'</span>';
+                        }},
                 ],
             });
 

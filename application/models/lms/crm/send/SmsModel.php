@@ -22,8 +22,9 @@ class SmsModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SMS.SendIdx, SMS.SiteCode, SMS.SendGroupTypeCcd, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd,
-                SMS.CsTel, SMS.Content, SMS.SendDatm, SMS.RegDatm, SMS.RegAdminIdx,
+                SMS.SendIdx, SMS.SiteCode, SMS.SendGroupTypeCcd, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTel,
+                CONCAT(LEFT(SMS.Content, 20), IF (CHAR_LENGTH(SMS.Content) > 20, " ...", "") ) as Content,
+                SMS.SendDatm, SMS.RegDatm, SMS.RegAdminIdx,
                 LS.SiteName, ADMIN.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -43,6 +44,23 @@ class SmsModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 발송 데이터 조회
+     * @param $column
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function findSms($column, $arr_condition){
+        $from = "
+            FROM $this->_table
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
     /**

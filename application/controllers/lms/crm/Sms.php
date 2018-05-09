@@ -112,11 +112,24 @@ class Sms extends \app\controllers\BaseController
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
         }
-
         $send_idx = $params[0];
+
+        $column = 'Content';
+        $arr_condition = [
+            'EQ' => [
+                'SendIdx' => $send_idx
+            ]
+        ];
+        $data = $this->smsModel->findSms($column, $arr_condition);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
         $this->load->view("crm/sms/list_send_detail_modal", [
             'send_type' => $this->_send_type,
-            'send_idx' => $send_idx
+            'send_idx' => $send_idx,
+            'data' => $data
         ]);
     }
 
@@ -356,14 +369,18 @@ class Sms extends \app\controllers\BaseController
          */
         if ($send_option == $this->_send_option_ccd[0]) {
             // 솔루션 호출 구문 시작
-
         }
-
 
         /**
          * 데이터 등록
          */
         $inputData = $this->_setInputData($this->_reqP(null, false));
+        if ($send_option == $this->_send_option_ccd[0]) {
+            $inputData = array_merge($inputData, ['SendDatm' => date('Y-m-d H:i:s')]);
+        } else {
+            $send_datm = $this->_reqP('send_datm_day') . ' ' . $this->_reqP('send_datm_h') . ':' . $this->_reqP('send_datm_m') . ':' . '00';
+            $inputData = array_merge($inputData, ['SendDatm' => $send_datm]);
+        }
         $inputData = array_merge($inputData,[
             'RegAdminIdx' => $this->session->userdata('admin_idx'),
             'RegDatm' => date('Y-m-d H:i:s'),
@@ -379,14 +396,14 @@ class Sms extends \app\controllers\BaseController
      */
     public function cancelSend()
     {
-        /*$rules = [
+        $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
             return;
-        }*/
+        }
         $params = json_decode($this->_req('params'), true);
         $result = $this->smsModel->updateSendStatus($params);
         $this->json_result($result, '적용 되었습니다.', $result);

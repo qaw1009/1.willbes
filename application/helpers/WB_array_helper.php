@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (!function_exists('array_data_fill')) {
     /**
-     * $array 배열에 배열 원소를 채움
+     * $array 배열에 $data 배열의 키와 값을 추가
      * @param $array
      * @param $data
-     * @param $is_self_ref $array 배열의 값을 배열 첨자로 하여 $data 배열의 값을 참조할 경우 true, $data 값을 그대로 채울 경우 false
+     * @param $is_self_ref [$data 배열의 값이 다시 배열일 경우 해당 배열 키에 해당하는 $array 값으로 배열 값을 추출할 경우 true]
      * @return array
      */
     function array_data_fill($array, $data, $is_self_ref = false)
@@ -34,7 +34,7 @@ if (!function_exists('array_get')) {
      * dot(.) 표기법으로 중첩된 배열에서 $key에 해당하는 값 리턴
      * @param $array
      * @param $key
-     * @param null $default
+     * @param $default
      * @return mixed
      */
     function array_get($array, $key, $default = null)
@@ -43,10 +43,8 @@ if (!function_exists('array_get')) {
 
         if (isset($array[$key])) return $array[$key];
 
-        foreach (explode('.', $key) as $segment)
-        {
-            if ( ! is_array($array) || ! array_key_exists($segment, $array))
-            {
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
                 return value($default);
             }
 
@@ -70,10 +68,8 @@ if (!function_exists('array_has')) {
 
         if (array_key_exists($key, $array)) return true;
 
-        foreach (explode('.', $key) as $segment)
-        {
-            if ( ! is_array($array) || ! array_key_exists($segment, $array))
-            {
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
                 return false;
             }
 
@@ -86,25 +82,43 @@ if (!function_exists('array_has')) {
 
 if (!function_exists('array_pluck')) {
     /**
-     * 배열의 $value 인자값으로 구성된 배열 리턴, $key 인자값이 있다면 리턴되는 결과 배열의 키값을 배열의 $key에 해당하는 배열 값으로 사용
+     * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정
      * @param $array
      * @param $value
-     * @param null $key
+     * @param $key
      * @return array
      */
     function array_pluck($array, $value, $key = null)
     {
-        /* PHP 기본함수 사용
-        $results = [];
+        return array_column($array, $value, $key);
+    }
+}
+
+if (!function_exists('array_get_pluck')) {
+    /**
+     * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정 ($value, $key를 dot(.) 표기법으로 사용)
+     * @param $array
+     * @param $value
+     * @param $key
+     * @return array
+     */
+    function array_get_pluck($array, $value, $key = null)
+    {
+        $results = array();
+
         foreach ($array as $item) {
-            if (is_null($key) === true) {
-                $results[] = $item[$value];
+            $itemValue = array_get($item, $value);
+
+            if (is_null($key)) {
+                $results[] = $itemValue;
             } else {
-                $results[(string) $item[$key]] = $item[$value];
+                $itemKey = array_get($item, $key);
+
+                $results[$itemKey] = $itemValue;
             }
         }
-        return $results;*/
-        return array_column($array, $value, $key);
+
+        return $results;
     }
 }
 
@@ -122,12 +136,10 @@ if (!function_exists('array_set')) {
 
         $keys = explode('.', $key);
 
-        while (count($keys) > 1)
-        {
+        while (count($keys) > 1) {
             $key = array_shift($keys);
 
-            if ( ! isset($array[$key]) || ! is_array($array[$key]))
-            {
+            if (!isset($array[$key]) || !is_array($array[$key])) {
                 $array[$key] = array();
             }
 

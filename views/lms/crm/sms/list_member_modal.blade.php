@@ -117,7 +117,7 @@
                                     // 리스트 번호
                                     return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
-                            {'data' : 'SiteCode'},
+                            {'data' : 'SiteName'},
                             {'data' : 'MemId'},
                             {'data' : 'MemName'},
                             {'data' : null, 'render' : function(data, type, row, meta) {

@@ -110,6 +110,9 @@ class SiteMenu
 
         $result = $this->_CI->siteMenuModel->{$method . 'SiteMenu'}($this->_CI->_reqP(null, false));
 
+        // 사이트 메뉴 캐쉬 저장
+        $this->_saveSiteMenuCache($result);
+
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }
 
@@ -130,5 +133,17 @@ class SiteMenu
         $result = $this->_CI->siteMenuModel->modifySiteMenusReorder(json_decode($this->_CI->_reqP('params'), true));
 
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 사이트 메뉴 캐쉬 저장
+     * @param $is_success
+     */
+    private function _saveSiteMenuCache($is_success)
+    {
+        if ($is_success === true) {
+            $this->_CI->load->driver('caching');
+            $this->_CI->caching->site_menu->save();
+        }
     }
 }

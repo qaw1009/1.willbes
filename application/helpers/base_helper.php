@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (!function_exists('app_url')) {
     /**
-     * app name에 맞는 URL 리턴
+     * 시스템 (wbs, lms ...)에 맞는 전체 (도메인 포함) URL 리턴
      * @param $uri
      * @param $app_name
      * @return string
@@ -16,7 +16,7 @@ if (!function_exists('app_url')) {
 
 if (!function_exists('config_app')) {
     /**
-     * 사이트별 $key에 해당하는 config 값 리턴
+     * 시스템별 (wbs, lms ...) dot(.) 표기법으로 $key에 해당하는 config 값 리턴
      * @param $key
      * @return mixed
      */
@@ -28,7 +28,7 @@ if (!function_exists('config_app')) {
 
 if (!function_exists('config_get')) {
     /**
-     * dot(.) 표기법으로 $key에 해당하는 config 값 리턴
+     * dot(.) 표기법으로 config.php에 설정된 $key에 해당하는 config 값 리턴
      * @param $key
      * @return mixed
      */
@@ -168,7 +168,7 @@ if (!function_exists('get_var')) {
 
 if (!function_exists('get_app_var')) {
     /**
-     * 어플리케이션에 설정된 변수 리턴
+     * 어플리케이션 (CI_Controller)에 설정된 변수 리턴
      * @param $key
      * @return mixed
      */

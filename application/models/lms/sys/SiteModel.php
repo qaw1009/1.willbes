@@ -55,25 +55,26 @@ class SiteModel extends WB_Model
     }
 
     /**
-     * 사이트 코드 목록 조회
+     * 사이트 코드 목록 조회 : $is_column 추가 : 다른 항목 추출시 컬럼명 전달
      * @param bool $is_auth
      * @return array
      */
-    public function getSiteArray($is_auth = true)
+    public function getSiteArray($is_auth = true, $is_column = 'SiteName')
     {
         // 운영자 사이트 권한 체크
         if ($is_auth === true) {
             $data = get_auth_site_codes(true);
         } else {
             $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
-            $data = $this->_conn->getListResult($this->_table['site'], 'SiteCode, SiteName', $arr_condition, null, null, [
+            $data = $this->_conn->getListResult($this->_table['site'], 'SiteCode,'.$is_column ,$arr_condition, null, null, [
                 'SiteCode' => 'asc'
             ]);
-            $data = array_pluck($data, 'SiteName', 'SiteCode');
+            $data = array_pluck($data, $is_column, 'SiteCode');
         }
 
         return $data;
     }
+
 
     /**
      * 사이트 코드별 캠퍼스 코드 목록 조회

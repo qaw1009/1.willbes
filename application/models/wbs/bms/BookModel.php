@@ -283,13 +283,13 @@ class BookModel extends WB_Model
                     if (delete_files($attach_img_realpath, true) === false) {
                         throw new \Exception('교재 이미지 삭제에 실패했습니다.');
                     }
-
-                    $data['AttachImgName'] = '';
                 }
+
+                $data['wAttachImgName'] = '';
             }
 
             // 첨부 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix], $upload_sub_dir, 'allowed_types:jpg');
+            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_m'], $upload_sub_dir, 'allowed_types:jpg,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }

@@ -162,7 +162,7 @@ class ProfessorModel extends WB_Model
             ];
 
             // 비밀번호
-            $this->_conn->set('wProfPasswd', 'fn_hash_data("' . get_var(element('prof_passwd', $input), '1111') . '", 256)', false);
+            $this->_conn->set('wProfPasswd', 'fn_hash("' . get_var(element('prof_passwd', $input), '1111') . '")', false);
 
             // 데이터 등록
             if ($this->_conn->set($data)->insert($this->_table['professor']) === false) {
@@ -245,7 +245,7 @@ class ProfessorModel extends WB_Model
 
             // 비밀번호 입력시
             if (empty(element('prof_passwd', $input)) === false) {
-                $this->_conn->set('wProfPasswd', 'fn_hash_data("' . element('prof_passwd', $input) . '", 256)', false);
+                $this->_conn->set('wProfPasswd', 'fn_hash("' . element('prof_passwd', $input) . '")', false);
             }
 
             if ($this->_conn->set($data)->where('wProfIdx', $prof_idx)->update($this->_table['professor']) === false) {
@@ -268,7 +268,7 @@ class ProfessorModel extends WB_Model
                 if (empty($attach_img_url) === false) {
                     $attach_img_realpath =  $this->upload->upload_path . $upload_sub_dir . '/' . $row{'wAttachImgName' . $img_idx};
 
-                    if (unlink($attach_img_realpath) === false) {
+                    if (file_exists($attach_img_realpath) === true && unlink($attach_img_realpath) === false) {
                         throw new \Exception('교수 이미지 삭제에 실패했습니다.');
                     }
 
@@ -277,7 +277,7 @@ class ProfessorModel extends WB_Model
             }
 
             // 첨부 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', ['attach_img'], $this->_getAttachImgNames($prof_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('img', ['attach_img'], $this->_getAttachImgNames($prof_idx, false), $upload_sub_dir, 'overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -366,13 +366,16 @@ class ProfessorModel extends WB_Model
     /**
      * 업로드 교수 이미지 파일명 배열 생성
      * @param $prof_idx
+     * @param bool $is_add
      * @return array
      */
-    private function _getAttachImgNames($prof_idx)
+    private function _getAttachImgNames($prof_idx, $is_add = true)
     {
         $attach_img_names = [];
+        $attach_img_postfix = ($is_add !== true) ? '_m' : '';
+
         for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
-            $attach_img_names[] = 'prof_' . $prof_idx . '_0' . $i;
+            $attach_img_names[] = 'prof_' . $prof_idx . '_0' . $i . $attach_img_postfix;
         }
 
         return $attach_img_names;

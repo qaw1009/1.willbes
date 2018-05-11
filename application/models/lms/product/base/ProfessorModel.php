@@ -16,7 +16,7 @@ class ProfessorModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'board' => 'lms_board'
     ];
-    private $_refer_type = [
+    public $_refer_type = [
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img']
     ];
@@ -632,8 +632,15 @@ class ProfessorModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
 
+            // 업로드 파일명
+            $attach_img_names = [];
+            $attach_img_postfix = (empty($arr_attach_refer) === false) ? '_m' : '';
+            array_map(function ($val) use (&$attach_img_names, $attach_img_postfix, $prof_idx) {
+                $attach_img_names[] = str_replace('_img', '_' . $prof_idx, $val) . $attach_img_postfix;
+            }, $this->_refer_type['attach']);
+
             // 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', $this->_refer_type['attach'], [], $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('img', $this->_refer_type['attach'], $attach_img_names, $upload_sub_dir, 'overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -757,7 +764,7 @@ class ProfessorModel extends WB_Model
             $this->load->helper('file');
 
             $real_img_path = public_to_upload_path($row['ReferValue']);
-            if (@unlink($real_img_path) === false) {
+            if (file_exists($real_img_path) === true && @unlink($real_img_path) === false) {
                 throw new \Exception('이미지 삭제에 실패했습니다.');
             }
 

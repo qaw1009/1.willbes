@@ -184,7 +184,7 @@ class AdminModel extends WB_Model
             unset($data['wAdminPasswd']);
 
             $this->_conn->set($data);
-            $this->_conn->set('wAdminPasswd', 'fn_hash_data("' . $admin_passwd . '", 256)', false);
+            $this->_conn->set('wAdminPasswd', 'fn_hash("' . $admin_passwd . '")', false);
 
             // 운영자 승인
             if (isset($data['wIsApproval']) === true && $data['wIsApproval'] == 'Y') {
@@ -279,7 +279,7 @@ class AdminModel extends WB_Model
 
             // 비밀번호
             if (empty($data['wAdminPasswd']) === false) {
-                $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash_data("' . $data['wAdminPasswd'] . '", 256)', false);
+                $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash("' . $data['wAdminPasswd'] . '")', false);
             } else {
                 unset($data['wAdminPasswd']);
                 $this->_conn->set($data);

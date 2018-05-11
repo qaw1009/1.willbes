@@ -184,7 +184,7 @@ class BookModel extends WB_Model
             // 첨부 이미지 업로드
             $data = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/book/' . $book_idx;
+            $upload_sub_dir = SUB_DOMAIN . '/book/' . date('Y') . '/' . $book_idx;
 
             $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix], $upload_sub_dir, 'allowed_types:jpg');
             if (is_array($uploaded) === false) {
@@ -272,7 +272,7 @@ class BookModel extends WB_Model
             // 첨부 이미지 삭제
             $data = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/book/' . $book_idx;
+            $upload_sub_dir = SUB_DOMAIN . '/book/' . substr($row['wRegDatm'], 0, 4) . '/' . $book_idx;
 
             if (element('attach_img_delete', $input) == 'Y') {
                 $attach_img_realpath =  $this->upload->upload_path . $upload_sub_dir . '/';
@@ -283,13 +283,13 @@ class BookModel extends WB_Model
                     if (delete_files($attach_img_realpath, true) === false) {
                         throw new \Exception('교재 이미지 삭제에 실패했습니다.');
                     }
-
-                    $data['AttachImgName'] = '';
                 }
+
+                $data['wAttachImgName'] = '';
             }
 
             // 첨부 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix], $upload_sub_dir, 'allowed_types:jpg');
+            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_m'], $upload_sub_dir, 'allowed_types:jpg,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }

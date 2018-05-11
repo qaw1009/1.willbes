@@ -160,7 +160,7 @@ class AdminModel extends WB_Model
     {
         try {
             $_table = $this->_table['admin_r_site_campus'];
-            $admin_idx = $this->session->userdata('admin_idx');
+            $sess_admin_idx = $this->session->userdata('admin_idx');
 
             // 기존 설정된 사이트, 캠퍼스 조회
             $list = $this->_conn->getListResult($_table, 'SiteCode, CampusCcd', ['EQ' => ['wAdminIdx' => $admin_idx, 'IsStatus' => 'Y']]);
@@ -182,7 +182,7 @@ class AdminModel extends WB_Model
                         if (in_array($ori_campus_ccd, element($ori_site_code, $tmp_arr_campus_ccd, [])) === false) {
                             $is_update = $this->_conn->set([
                                 'IsStatus' => 'N',
-                                'UpdAdminIdx' => $admin_idx
+                                'UpdAdminIdx' => $sess_admin_idx
                             ])->where('wAdminIdx', $admin_idx)->where('SiteCode', $ori_site_code)->where('CampusCcd', $ori_campus_ccd)->update($_table);
 
                             if ($is_update === false) {
@@ -206,7 +206,7 @@ class AdminModel extends WB_Model
                                 'wAdminIdx' => $admin_idx,
                                 'SiteCode' => $site_code,
                                 'CampusCcd' => $campus_ccd,
-                                'RegAdminIdx' => $admin_idx,
+                                'RegAdminIdx' => $sess_admin_idx,
                                 'RegIp' => $this->input->ip_address()
                             ])->insert($_table);
 

@@ -234,7 +234,7 @@ class SiteModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/site/' . $site_code;
 
-            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code, 'favicon_' . $site_code], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
+            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code . '_m', 'favicon_' . $site_code . '_m'], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -383,7 +383,7 @@ class SiteModel extends WB_Model
             $this->load->helper('file');
 
             $real_img_path = public_to_upload_path($row[$img_type]);
-            if (@unlink($real_img_path) === false) {
+            if (file_exists($real_img_path) === true && @unlink($real_img_path) === false) {
                 throw new \Exception('이미지 삭제에 실패했습니다.');
             }
 

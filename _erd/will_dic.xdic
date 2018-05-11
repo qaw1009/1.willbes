@@ -154,4 +154,5 @@
   <term name="문자" physicalName="Sms"/>
   <term name="장바구니" physicalName="Cart"/>
   <term name="[실]" physicalName="Real"/>
+  <term name="암호화" physicalName="Enc"/>
 </tm:TermDictionary>

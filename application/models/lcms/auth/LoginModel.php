@@ -20,7 +20,7 @@ class LoginModel extends WB_Model
     {
         $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp';
         $query .= ' from ' . $this->_table;
-        $query .= ' where wAdminId = ? and wAdminPasswd = fn_hash_data(?, 256) and wIsStatus = "Y"';
+        $query .= ' where wAdminId = ? and wAdminPasswd = fn_hash(?) and wIsStatus = "Y"';
         $result = $this->_conn->query($query, [$admin_id, $admin_passwd]);
 
         return $result->row_array();

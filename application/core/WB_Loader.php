@@ -57,8 +57,7 @@ class WB_Loader extends CI_Loader
         if($is_blade === true) {
             $view_dir = VIEWPATH;
             $cache_dir = config_item('cache_path') . 'views/' . APP_NAME;
-            // (optional) 1=forced (test), 2=run fast (production), 0=automatic, default value.
-            //define("BLADEONE_MODE", 1);
+
             $blade = new \eftec\bladeone\BladeOne($view_dir, $cache_dir);
 
             // 서브 도메인 적용

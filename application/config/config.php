@@ -42,24 +42,20 @@ $config['front_sub_domains'] = ['cop', 'gosi', 'ssam'];
 
 /*
 |--------------------------------------------------------------------------
-| App Name, Sub Domain, Env Char define
+| Sub Domain, App Name, App Env define
 |--------------------------------------------------------------------------
 */
-switch (ENVIRONMENT) {
-    case 'local': $__env_char = 'l'; break;
-    case 'development': $__env_char = 't'; break;
-    case 'testing': $__env_char = 'q'; break;
-    default : $__env_char = ''; break;
-}
-
-$__sub_domain = substr(preg_replace('/^(m.)?/', '', str_replace($config['base_domain'], '', parse_url($config['base_url'], PHP_URL_HOST))), 0, -1);
-$__sub_domain === false && $__sub_domain = $__env_char . 'www';
-$__sub_domain = (empty($__env_char) === true) ? $__sub_domain : substr($__sub_domain, 1);
+// http를 제외한 host
+$__http_host = parse_url($config['base_url'], PHP_URL_HOST);
+// 모바일 여부
+$__is_mobile = strpos($__http_host, 'm.') === false ? false : true;
+// 서브 도메인 추출
+$__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^m\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
+$__sub_domain = (empty($__sub_domain) === true) ? 'www' : substr($__sub_domain, 0, -1);
 $__app_name = in_array($__sub_domain, $config['front_sub_domains']) === true ? 'front' : $__sub_domain;
 
-defined('APP_NAME') OR define('APP_NAME', $__app_name);
 defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
-defined('ENV_CHAR') OR define('ENV_CHAR', $__env_char);
+defined('APP_NAME') OR define('APP_NAME', $__app_name);
 
 /*
 |--------------------------------------------------------------------------

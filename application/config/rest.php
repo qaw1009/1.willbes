@@ -648,7 +648,7 @@ $config['forced_cors_headers'] = [];
 | Rest server url from rest client
 |--------------------------------------------------------------------------
 */
-$config['rest_server'] = 'http://' . ENV_CHAR . 'api.' . config_item('base_domain');
+$config['rest_server'] = 'http://api' . ENV_DOMAIN . '.' . config_item('base_domain');
 
 /*
 |--------------------------------------------------------------------------

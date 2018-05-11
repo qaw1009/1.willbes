@@ -10,7 +10,7 @@ if (!function_exists('app_url')) {
      */
     function app_url($uri, $app_name)
     {
-        return '//' . ENV_CHAR . $app_name . '.' . config_item('base_domain') . $uri;
+        return '//' . $app_name . ENV_DOMAIN . '.' . config_item('base_domain') . $uri;
     }
 }
 

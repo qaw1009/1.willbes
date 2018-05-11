@@ -7,8 +7,8 @@
             </div>
             <div class="col-md-5">
                 <ul class="nav nav-tabs bar_tabs">
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active @endif"><a href="//{{ ENV_CHAR }}wbs.{{ config_item('base_domain') }}" class="">WBS</a></li>
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active @endif"><a href="//{{ ENV_CHAR }}lms.{{ config_item('base_domain') }}" class="">LMS</a></li>
+                    <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
+                    <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
                 </ul>
             </div>
             <div class="col-md-3 nav_login">

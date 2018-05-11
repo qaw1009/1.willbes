@@ -69,6 +69,8 @@ switch (ENVIRONMENT)
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
+		// 서버환경에 따른 2차 도메인
+        defined('ENV_DOMAIN') OR define('ENV_DOMAIN', ENVIRONMENT == 'local' ? '.local' : '.dev');
 	break;
 
 	case 'testing':
@@ -82,6 +84,8 @@ switch (ENVIRONMENT)
 		{
 			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
 		}
+        // 서버환경에 따른 2차 도메인
+        defined('ENV_DOMAIN') OR define('ENV_DOMAIN', ENVIRONMENT == 'testing' ? '.stage' : '');
 	break;
 
 	default:

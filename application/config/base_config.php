@@ -6,6 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  Set Global User Config
 | -------------------------------------------------------------------
 */
+// blade mode 설정 ((optional) 1 = forced (test), 2 = run fast (production), 0 = automatic, default value)
+//defined('BLADEONE_MODE') OR define('BLADEONE_MODE', 2);
+
 // 프로파일러 사용 여부
 $config['enable_profiler'] = false;
 

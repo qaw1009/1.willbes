@@ -289,7 +289,7 @@ class BookModel extends WB_Model
             }
 
             // 첨부 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_m'], $upload_sub_dir, 'allowed_types:jpg,overwrite:false');
+            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_m'], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }

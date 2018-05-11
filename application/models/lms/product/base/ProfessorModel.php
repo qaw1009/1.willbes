@@ -16,7 +16,7 @@ class ProfessorModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'board' => 'lms_board'
     ];
-    public $_refer_type = [
+    private $_refer_type = [
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img']
     ];

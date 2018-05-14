@@ -155,4 +155,6 @@
   <term name="장바구니" physicalName="Cart"/>
   <term name="[실]" physicalName="Real"/>
   <term name="암호화" physicalName="Enc"/>
+  <term name="주소" physicalName="Addr1"/>
+  <term name="주소상세" physicalName="Addr2"/>
 </tm:TermDictionary>

@@ -95,6 +95,9 @@ body.no_sidebar {
 .nav.side-menu>li:first-child {
     margin-top: 75px;
 }
+.menu_section>ul {
+    margin-top: 0;
+}
 
 /* right_col */
 .page-title {

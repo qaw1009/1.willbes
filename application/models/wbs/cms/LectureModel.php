@@ -240,7 +240,7 @@ class LectureModel extends WB_Model
             'wIsStatus'=>'N'
             ,'wUpdAdminIdx'=>$admin_idx
         ];
-        $this->_conn->set($del_data)->set('wUpdDatm','NOW()',false)->where('wLecIdx',$lec_idx);
+        $this->_conn->set($del_data)->set('wUpdDatm','NOW()',false)->where('wLecIdx',$lec_idx)->where('wIsStatus','Y');
         if($this->_conn->update($_r_table) === false) {
             //throw new \Exception('교수 연결 삭제 처리에 실패했습니다.');
             return false;

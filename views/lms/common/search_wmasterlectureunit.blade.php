@@ -146,7 +146,7 @@
 
                                 $(document).find("#sampleList").append(
                                     "<span class='mb-5' id='unit" + seq + "'>"
-                                    + "     <input type='hidden' name='wUnitCode' value='" + temp_data_arr[0] + "'>"
+                                    + "     <input type='hidden' name='wUnitCode[]' value='" + temp_data_arr[0] + "'>"
                                     + "      " + temp_data_arr[1] + " <a href='javascript:;' onclick='rowDelete(\"unit" + seq + "\")'><i class='fa fa-times red'></i></a>"
                                     + "</span>&nbsp;&nbsp;"
                                 );

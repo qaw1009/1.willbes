@@ -147,14 +147,21 @@
                         $('#wLecIdx').val(row.wLecIdx); //강의코드 삽입
 
                         $parent_masterInfo.html($masterInfo);   //강의기본정보 추출
-                        $parent_cpInfo.html('<input type="hidden" name="wCpIdx" value="'+row.wCpIdx+'">'
+                        /*$parent_cpInfo.html('<input type="hidden" name="wCpIdx" value="'+row.wCpIdx+'">'
                                                     +'<input type="number" name="CpDistribution" id="CpDistribution" style="width:50px" maxlength="3" class="form-control">% '
-                                                    +'&nbsp;&nbsp;[CP사] '+row.wCpName);     //CP정보
+                                                    +'&nbsp;&nbsp;[CP사] '+row.wCpName);     */ //CP정보
+
+                        $('#wCpIdx').val(row.wCpIdx);
+                        var distribution = "0";
+                        if(row.wCpName=='윌비스'){ distribution = "100"}
+                        $('#CpDistribution').val(distribution);
+                        $('#cpName').html(row.wCpName);
+
 
                         $('#ProdName').val(row.wLecName);   //강좌명
                         $('#unitNumCount').val(row.wUnitCnt);   //회차수
                         $('#unitNumLectureCount').val(row.wUnitLectureCnt);   //강의수
-                        $('#LecTime').val(row.wRuntimeSum); //전체강의시간
+                        $('#AllLecTime').val(row.wRuntimeSum); //전체강의시간
 
                         $("#pop_modal").modal('toggle');
                     });

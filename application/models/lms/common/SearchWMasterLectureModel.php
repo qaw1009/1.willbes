@@ -80,4 +80,37 @@ class SearchWMasterLectureModel extends WB_Model
         return $this->_conn->query('select ' .$column .$from .$where .$order_by) ->result_array();
         //echo $this->_conn->last_query();
     }
+
+
+
+    /**
+     * 마스터강의에 매핑된 강사의 LMS 등록정보 추출 (LMS에 강사 등록이 되어 있지 않을 경우 추출 불가 함)
+     */
+    public function listWMasterLectureProfessor($sitecode,$learnpatternccd,$wlecidx)
+    {
+        $column = 'A.ProfIdx,A.wProfIdx
+                        ,B.ProfCalcIdx,B.ApplyStartDatm,B.ApplyEndDatm,B.CalcRate,B.ContribRate
+                        ,C.wUnitCnt
+                        ,D.wProfId,D.wProfName';
+        $from = ' from lms_professor A 
+                    join lms_professor_calculate_rate B on A.ProfIdx = B.ProfIdx and B.IsStatus=\'Y\'
+                    join wbs_cms_lecture_combine C on INSTR(C.profIdx_string,A.wProfIdx)
+                    join wbs_pms_professor D on A.wProfIdx = D.wProfIdx and D.wIsStatus=\'Y\'  ';
+
+        $where = $this->_conn->makeWhere([
+            'EQ' => ['A.Sitecode'=>$sitecode
+                ,'A.IsStatus'=>'Y'
+                ,'A.IsUse'=>'Y'
+                ,'B.LearnPatternCcd'=>$learnpatternccd
+                ,'C.wLecIdx'=>$wlecidx
+                ,'C.cp_wAdminIdx'=>$this->session->userdata('admin_idx')]
+        ]);
+
+        $where = $where->getMakeWhere(false).' and (now() between B.ApplyStartDatm and B.ApplyEndDatm)';
+
+        return $this->_conn->query('select ' .$column .$from .$where)->result_array();
+        //echo $this->_conn->last_query();
+    }
+
+
 }

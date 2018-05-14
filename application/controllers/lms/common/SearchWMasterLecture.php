@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchWMasterLecture extends \app\controllers\BaseController
 {
-    protected $models = array('common/searchWMasterLecture','sys/WCp','sys/WCode');
+    protected $models = array('common/searchWMasterLecture','sys/wcp','sys/wCode');
     protected $helpers = array();
 
     public function __construct()
@@ -13,8 +13,8 @@ class SearchWMasterLecture extends \app\controllers\BaseController
 
     public function index()
     {
-        $cp_list = $this->WCpModel->getRoleCpArray();       //관리자권한 CP 목록
-        $codes = $this->WCodeModel->getCcdInArray(['105','111']);    //강의진행상태,콘텐츠유형
+        $cp_list = $this->wcpModel->getRoleCpArray();       //관리자권한 CP 목록
+        $codes = $this->wCodeModel->getCcdInArray(['105','111']);    //강의진행상태,콘텐츠유형
 
         $this->load->view('common/search_wmasterlecture',[
             'cp_list' => $cp_list
@@ -86,6 +86,17 @@ class SearchWMasterLecture extends \app\controllers\BaseController
             'data_lecture' => $data
             ,'data_unit' => $data_unit
         ]);
+    }
+    
+    //마스터강의 연결 LMS 교수 정보 추출
+    public function wMasterLectureProfessor()
+    {
+        $sitecode = $this->_req("sitecode");
+        $wlecidx = $this->_req("wlecidx");
+        $learnpatternccd = $this->_req("learnpatternccd");
+
+        $result = $this->searchWMasterLectureModel->listWMasterLectureProfessor($sitecode,$learnpatternccd,$wlecidx);
+        return $this->json_result(true,'성공',[],$result);
     }
 
 

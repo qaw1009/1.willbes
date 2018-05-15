@@ -10,9 +10,9 @@ abstract class FrontController extends BaseController
     // 로그인 필수 메소드 배열
     protected $auth_methods = array();
     // 학원(오프라인) 사이트 여부
-    protected $is_pass_site = false;
+    protected $__is_pass_site = false;
     // 프런트 사이트 설정 정보
-    protected $site_settings = array();
+    protected $__site_settings = array();
 
     use InitController;
 
@@ -36,11 +36,11 @@ abstract class FrontController extends BaseController
     private function _frontInit()
     {
         // 학원 사이트 여부
-        $this->uri->segment(1) == 'pass' && $this->is_pass_site = true;
+        $this->uri->segment(1) == 'pass' && $this->__is_pass_site = true;
 
         // 사이트 정보 셋팅 (사이트 테이블 + config 파일)
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
-            $this->site_settings = array_merge($this->getSiteItems(), config_item(SUB_DOMAIN));
+            $this->__site_settings = array_merge($this->getSiteItems(), config_item(SUB_DOMAIN));
         }
 
         // 프로파일러 실행
@@ -83,7 +83,7 @@ abstract class FrontController extends BaseController
 
         if (empty($site_id) === true) {
             $site_id = SUB_DOMAIN;
-            $this->is_pass_site === true && $site_id .= 'pass';
+            $this->__is_pass_site === true && $site_id .= 'pass';
         }
 
         return empty($key) === true ? element($site_id, $items) : element($key, element($site_id, $items, []));

@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class WB_Upload extends CI_Upload
 {
+    // 업로드 파일 경로
+    public $_upload_path = '';
     // 업로드 파일 URL
     public $_upload_url = '';
 
@@ -14,7 +16,8 @@ class WB_Upload extends CI_Upload
 
     public function __construct(array $config = array())
     {
-        // 디폴트 file url 설정
+        // 디폴트 파일경로, URL 설정
+        $this->_upload_path = element('upload_path', $config, STORAGEPATH . 'uploads/');
         $this->_upload_url = element('upload_url', $config, PUBLICURL . 'uploads/');
 
         parent::__construct($config);
@@ -110,6 +113,42 @@ class WB_Upload extends CI_Upload
         }
 
         return $results;
+    }
+
+    /**
+     * 업로드 파일 백업
+     * @param array $uploaded_full_paths 파일명을 포함한 업로드 파일 경로 배열
+     * @param bool $is_public_url 파일 경로가 public url 일 경우 true (실 파일경로 자동 변환)
+     * @param string $bak_dir 백업 디렉토리 명
+     * @return bool|string
+     */
+    public function bakUploadedFile($uploaded_full_paths = [], $is_public_url = false, $bak_dir = 'bak')
+    {
+        try {
+            foreach ((array) $uploaded_full_paths as $uploaded_full_path) {
+                $is_public_url === true && $uploaded_full_path = $this->_upload_path . substr($uploaded_full_path, strpos($uploaded_full_path, $this->_upload_url) + strlen($this->_upload_url));
+
+                if (is_file($uploaded_full_path) === true && file_exists($uploaded_full_path) === true) {
+                    $bak_file_path = dirname($uploaded_full_path) . '/' . $bak_dir;
+                    $bak_full_path = $bak_file_path . '/' . basename($uploaded_full_path);
+
+                    // 백업 디렉토리 생성
+                    $is_created = $this->_createDir($bak_file_path);
+                    if ($is_created !== true) {
+                        throw new \Exception($is_created);
+                    }
+
+                    // 파일 이동
+                    if (rename($uploaded_full_path, $bak_full_path) === false) {
+                        throw new \Exception(sprintf('업로드 파일 이동에 실패했습니다. (%s)', $bak_full_path));
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 
     /**

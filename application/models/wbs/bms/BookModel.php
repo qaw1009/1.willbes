@@ -269,27 +269,23 @@ class BookModel extends WB_Model
                 throw new \Exception('저자 등록에 실패했습니다.');
             }
 
-            // 첨부 이미지 삭제
+            // 파일 업로드
             $data = [];
             $this->load->library('upload');
+            $this->load->library('image_lib');
             $upload_sub_dir = SUB_DOMAIN . '/book/' . substr($row['wRegDatm'], 0, 4) . '/' . $book_idx;
+            $bak_uploaded_files = [];
 
+            // 첨부 이미지 삭제
             if (element('attach_img_delete', $input) == 'Y') {
-                $attach_img_realpath =  $this->upload->upload_path . $upload_sub_dir . '/';
-
-                if (is_file($attach_img_realpath . $row['wAttachImgName']) === true) {
-                    $this->load->helper('file');
-
-                    if (delete_files($attach_img_realpath, true) === false) {
-                        throw new \Exception('교재 이미지 삭제에 실패했습니다.');
-                    }
-                }
+                $bak_uploaded_files = array_merge([$row['wAttachImgPath'] . $row['wAttachImgName']],
+                    $this->image_lib->getThumbImgNames($row['wAttachImgPath'] . $row['wAttachImgName'], $this->_thumb_postfixs));
 
                 $data['wAttachImgName'] = '';
             }
 
             // 첨부 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_m'], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png,overwrite:false');
+            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_' . time()], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -299,12 +295,21 @@ class BookModel extends WB_Model
                 $data['wAttachImgPath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
 
                 // 썸네일 생성
-                $this->load->library('image_lib');
                 $new_imgs = $this->image_lib->getThumbImgNames($uploaded[0]['file_name'], $this->_thumb_postfixs);
                 $is_thumb = $this->image_lib->createThumbImgs($uploaded[0]['full_path'], $new_imgs, array_values($this->_thumb_radio));
                 if ($is_thumb === false) {
                     throw new \Exception($is_thumb);
                 }
+
+                // 기존 업로드된 첨부 이미지 정보
+                $bak_uploaded_files = array_merge([$row['wAttachImgPath'] . $row['wAttachImgName']],
+                    $this->image_lib->getThumbImgNames($row['wAttachImgPath'] . $row['wAttachImgName'], $this->_thumb_postfixs));
+            }
+
+            // 수정, 삭제된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             if (count($data) > 0) {

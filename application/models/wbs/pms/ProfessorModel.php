@@ -257,21 +257,18 @@ class ProfessorModel extends WB_Model
                 throw new \Exception('CP사 정보 등록에 실패했습니다.');
             }
 
-            // 첨부 이미지 삭제
+            // 파일 업로드
             $data = [];
+            $bak_uploaded_files = [];
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
 
+            // 첨부 이미지 삭제
             foreach (element('attach_img_delete', $input, []) as $img_idx) {
                 $attach_img_url = $row['wAttachImgPath'] . $row{'wAttachImgName' . $img_idx};
 
                 if (empty($attach_img_url) === false) {
-                    $attach_img_realpath =  $this->upload->upload_path . $upload_sub_dir . '/' . $row{'wAttachImgName' . $img_idx};
-
-                    if (file_exists($attach_img_realpath) === true && unlink($attach_img_realpath) === false) {
-                        throw new \Exception('교수 이미지 삭제에 실패했습니다.');
-                    }
-
+                    $bak_uploaded_files[] = $attach_img_url;
                     $data{'wAttachImgName' . $img_idx} = '';
                 }
             }
@@ -284,8 +281,18 @@ class ProfessorModel extends WB_Model
 
             foreach ($uploaded as $idx => $attach_imgs) {
                 if (count($attach_imgs) > 0) {
-                    $data{'wAttachImgName' . ($idx + 1)} = $attach_imgs['file_name'];
+                    $img_idx = $idx + 1;
+                    $data{'wAttachImgName' . $img_idx} = $attach_imgs['file_name'];
+
+                    // 기존 업로드된 첨부 이미지 정보
+                    $bak_uploaded_files[] = $row['wAttachImgPath'] . $row{'wAttachImgName' . $img_idx};
                 }
+            }
+
+            // 수정, 삭제된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
             
             // 첨부 이미지 정보 업데이트
@@ -372,7 +379,7 @@ class ProfessorModel extends WB_Model
     private function _getAttachImgNames($prof_idx, $is_add = true)
     {
         $attach_img_names = [];
-        $attach_img_postfix = ($is_add !== true) ? '_m' : '';
+        $attach_img_postfix = ($is_add !== true) ? '_' . time() : '';
 
         for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
             $attach_img_names[] = 'prof_' . $prof_idx . '_0' . $i . $attach_img_postfix;

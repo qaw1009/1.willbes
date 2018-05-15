@@ -230,11 +230,19 @@ class SiteModel extends WB_Model
             // 사이트 코드
             $site_code = element('idx', $input);
 
+            // 기존 사이트 정보 조회
+            $row = $this->findSiteForModify($site_code);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
             // 로고, 파비콘 업로드
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/site/' . $site_code;
+            $attach_img_postfix = '_' . time();
+            $bak_uploaded_files = [];
 
-            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code . '_m', 'favicon_' . $site_code . '_m'], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico,overwrite:false');
+            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code . $attach_img_postfix, 'favicon_' . $site_code . $attach_img_postfix], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -269,13 +277,26 @@ class SiteModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
 
-            isset($uploaded[0]['file_name']) === true && $data['Logo'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
-            isset($uploaded[1]['file_name']) === true && $data['Favicon'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[1]['file_name'];
+            if (isset($uploaded[0]['file_name']) === true) {
+                $data['Logo'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
+                $bak_uploaded_files[] = $row['Logo'];
+            }
+
+            if (isset($uploaded[1]['file_name']) === true) {
+                $data['Favicon'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[1]['file_name'];
+                $bak_uploaded_files[] = $row['Favicon'];
+            }
 
             $this->_conn->set($data)->where('SiteCode', $site_code);
 
             if ($this->_conn->update($this->_table['site']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            // 수정된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($bak_uploaded_files, true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             // 사이트별 캠퍼스 등록/삭제
@@ -379,12 +400,12 @@ class SiteModel extends WB_Model
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 이미지 삭제
-            $this->load->helper('file');
-
-            $real_img_path = public_to_upload_path($row[$img_type]);
-            if (file_exists($real_img_path) === true && @unlink($real_img_path) === false) {
-                throw new \Exception('이미지 삭제에 실패했습니다.');
+            // 이미지 백업
+            $this->load->library('upload');
+            $bak_uploaded_file = $row[$img_type];
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($bak_uploaded_file, true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             // 데이터 수정

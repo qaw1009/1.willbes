@@ -224,11 +224,10 @@ class ProfessorModel extends WB_Model
         ]);
 
         foreach ($data as $idx => $row) {
-            if (ends_with($row['ReferType'], '_img') === true) {
-                $results['attach'][$row[$_key]] = $row[$_value];
-            } else {
-                $results['string'][$row[$_key]] = $row[$_value];
-            }
+            $result_key = (ends_with($row['ReferType'], '_img') === true) ? 'attach' : 'string';
+
+            $results[$result_key][$row[$_key]] = $row[$_value];
+            $key_type == 'idx' && $results{$result_key . '_value'}[$row[$_key]] = $row['ReferValue'];
         }
 
         return $results;
@@ -388,7 +387,7 @@ class ProfessorModel extends WB_Model
             }
             
             // 교수영역 이미지 업로드
-            $is_upload = $this->_attachProfessorImg([], $prof_idx);
+            $is_upload = $this->_attachProfessorImg([], [], $prof_idx);
             if ($is_subject_mapping !== true) {
                 throw new \Exception($is_upload);
             }
@@ -457,7 +456,7 @@ class ProfessorModel extends WB_Model
             }
 
             // 교수영역 이미지 업로드
-            $is_upload = $this->_attachProfessorImg(element('attach', $refer_data, []), $prof_idx);
+            $is_upload = $this->_attachProfessorImg(element('attach', $refer_data, []), element('attach_value', $refer_data, []), $prof_idx);
             if ($is_subject_mapping !== true) {
                 throw new \Exception($is_upload);
             }
@@ -620,22 +619,24 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수 영역 이미지 업로드 및 데이터 저장
-     * @param array $arr_attach_refer [등록된 교수영역 이미지 데이터 배열, ReferIdx => ReferType]
+     * @param array $arr_attach_refer [등록된 교수영역 이미지 타입 배열, ReferIdx => ReferType]
+     * @param array $arr_attach_value [등록된 교수영역 이미지 값 배열, ReferIdx => ReferValue]
      * @param $prof_idx
      * @return bool|string
      */
-    private function _attachProfessorImg($arr_attach_refer = [], $prof_idx)
+    private function _attachProfessorImg($arr_attach_refer = [], $arr_attach_value = [], $prof_idx)
     {
         try {
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
+            $bak_uploaded_files = [];
             $admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
 
             // 업로드 파일명
             $attach_img_names = [];
-            $attach_img_postfix = (empty($arr_attach_refer) === false) ? '_m' : '';
-            array_map(function ($val) use (&$attach_img_names, $attach_img_postfix, $prof_idx) {
+            array_map(function ($val) use (&$attach_img_names, $arr_attach_refer, $prof_idx) {
+                $attach_img_postfix = (in_array($val, $arr_attach_refer) === true) ? '_' . time() : '';
                 $attach_img_names[] = str_replace('_img', '_' . $prof_idx, $val) . $attach_img_postfix;
             }, $this->_refer_type['attach']);
 
@@ -660,6 +661,9 @@ class ProfessorModel extends WB_Model
                                 throw new \Exception('교수 영역 이미지 수정에 실패했습니다.');
                             }
                         }
+
+                        // 기존 업로드된 첨부 이미지 정보
+                        $bak_uploaded_files[] = $arr_attach_value[$_refer_idx];
                     } else {
                         $data = [
                             'ProfIdx' => $prof_idx,
@@ -674,6 +678,12 @@ class ProfessorModel extends WB_Model
                         }
                     }
                 }
+            }
+
+            // 수정된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -760,12 +770,12 @@ class ProfessorModel extends WB_Model
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 이미지 삭제
-            $this->load->helper('file');
-
-            $real_img_path = public_to_upload_path($row['ReferValue']);
-            if (file_exists($real_img_path) === true && @unlink($real_img_path) === false) {
-                throw new \Exception('이미지 삭제에 실패했습니다.');
+            // 이미지 백업
+            $this->load->library('upload');
+            $bak_uploaded_file = $row['ReferValue'];
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($bak_uploaded_file, true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             // 데이터 수정

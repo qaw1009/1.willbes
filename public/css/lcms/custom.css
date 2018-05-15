@@ -20,6 +20,9 @@ body.no_sidebar {
     float: inherit;
     line-height: 26px;
 }
+.x_title .pull-right {
+    margin-top: -15px;
+}
 
 /* top_col */
 .top_col, .top_col .nav-tabs {
@@ -110,10 +113,11 @@ body.no_sidebar {
 
 /* footer fixed */
 footer {
-    padding: 20px 20px 30px;
+    padding: 10px 20px 25px;
 }
 .footer_fixed footer {
     position: sticky;
+    z-index: 3;
 }
 .footer_fixed .sidebar-footer {
     padding-top: 15px;
@@ -636,4 +640,20 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
         margin-left: 230px;
         padding: 0 20px !important;
     }   
+}
+
+/* Only IE Hack */
+@media screen\0 {
+    .top_nav_fixed .top_col {
+        position: fixed;
+    }
+    .nav-md .container.body .col-md-3.left_col.menu_fixed {
+        position: fixed; margin-top: 0;
+    }
+    .top_nav_fixed .right_col {
+        top: 140px;
+    }
+    footer {
+        padding: 5px 20px 10px;
+    }
 }

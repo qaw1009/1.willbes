@@ -2,7 +2,7 @@
 @include('lcms.layouts.header')
 
 <body class="single">
-<div class="container body">
+<div class="container body no-bgcolor">
     <div class="main_container">
 
         <!-- page content -->

@@ -57,6 +57,9 @@ body.no_sidebar {
 .top_col .nav-tabs li.dropdown .dropdown-menu {
     margin-left: 0px;
 }
+.caret {
+    float: right; margin-top: 6px;
+}
 
 /* top_nav_fixed */
 .top_nav_fixed .top_col {

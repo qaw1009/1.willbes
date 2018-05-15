@@ -17,7 +17,7 @@ Class Freebie extends \app\controllers\BaseController
             'IN' => ['A.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
         ];
 
-        $list = $this->freebieModel->listFreebie($arr_condition);
+        $list = $this->freebieModel->listFreebie(false,$arr_condition,null,null,['A.FreebieIdx' => 'desc']);
 
         $this->load->view('product/etc/freebie/index', [
             'data' => $list

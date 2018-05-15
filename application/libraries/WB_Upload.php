@@ -117,9 +117,9 @@ class WB_Upload extends CI_Upload
 
     /**
      * 업로드 파일 백업
-     * @param array $uploaded_full_paths 파일명을 포함한 업로드 파일 경로 배열
-     * @param bool $is_public_url 파일 경로가 public url 일 경우 true (실 파일경로 자동 변환)
-     * @param string $bak_dir 백업 디렉토리 명
+     * @param array $uploaded_full_paths 백업할 첨부파일 경로 배열 (파일명 포함)
+     * @param bool $is_public_url 백업할 파일이 실제 스토리지 파일경로가 아니고 URL 경로일 경우 true (백업 메소드 실행시 스토리지 파일경로로 자동 변환)
+     * @param string $bak_dir 백업 디렉토리 명 (백업할 파일이 존재하는 디렉토리 하위에 지정한 디렉토리명으로 자동 생성)
      * @return bool|string
      */
     public function bakUploadedFile($uploaded_full_paths = [], $is_public_url = false, $bak_dir = 'bak')

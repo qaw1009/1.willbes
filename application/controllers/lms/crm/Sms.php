@@ -290,10 +290,12 @@ class Sms extends \app\controllers\BaseController
          * 2 : 첨부파일기준 검색
          */
         $set_mem_phone = '';
+        $return_count = [];
         switch ($send_type) {
             case "1" :
                 foreach ($data_mem_phone as $key => $val) {
                     if (empty($data_mem_phone[$key]) === false) {
+                        $return_count[$key] = $val;
                         $set_mem_phone .= $val.',';
                         $field_mem_phone = true;
                     }
@@ -321,6 +323,7 @@ class Sms extends \app\controllers\BaseController
                 // 엑셀 데이터 셋팅
                 $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
                 foreach ($excel_data as $key => $val) {
+                    $return_count[$key] = $val['C'];
                     $set_mem_phone .= $val['C'].',';
                 }
 
@@ -364,7 +367,7 @@ class Sms extends \app\controllers\BaseController
         ]);
         $result = $this->smsModel->addSms($inputData, $set_mem_phone, $this->_send_type);
 
-        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => $data_mem_phone]);
+        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);
     }
 
     /**

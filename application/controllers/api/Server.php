@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * REST API Server Sample
+ */
 class Server extends \app\controllers\RestController
 {
     public function __construct()
@@ -22,7 +25,7 @@ class Server extends \app\controllers\RestController
             'name' => '홍길동'
         ];
 
-        $this->response($data, _HTTP_OK);
+        $this->api_success(null, $data);
     }
 
     public function index_post()
@@ -39,6 +42,6 @@ class Server extends \app\controllers\RestController
             'name' => '홍길동POST'
         ];
 
-        $this->response($data, _HTTP_OK);
+        $this->api_success(null, $data);
     }
 }

@@ -71,7 +71,9 @@ $config['rest_status_field_name'] = 'status';
 | The field name for the message inside the response
 |
 */
-$config['rest_message_field_name'] = 'error';
+//$config['rest_message_field_name'] = 'error';
+$config['rest_message_field_name'] = 'message';
+$config['rest_data_field_name'] = 'data';   // return data field name
 
 /*
 |--------------------------------------------------------------------------
@@ -108,7 +110,7 @@ $config['rest_realm'] = 'WILL-API';
 | 'digest'  More secured login
 | 'session' Check for a PHP session variable. See 'auth_source' to set the
 |           authorization key
-| 'token' Custom method
+| 'token' Custom token authentication method
 */
 //$config['rest_auth'] = FALSE;
 $config['rest_auth'] = 'token';
@@ -642,6 +644,13 @@ $config['allowed_cors_origins'] = [];
 |
 */
 $config['forced_cors_headers'] = [];
+
+/*
+|--------------------------------------------------------------------------
+| Rest token available time (second)
+|--------------------------------------------------------------------------
+*/
+$config['rest_token_limit_time'] = 3600;
 
 /*
 |--------------------------------------------------------------------------

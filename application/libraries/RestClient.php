@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class RestClient
 {
-    protected $_ci;
+    protected $_CI;
 
     protected $supported_formats = array(
         'xml'               => 'application/xml',
@@ -48,10 +48,10 @@ class RestClient
 
     function __construct($config = [])
     {
-        $this->_ci =& get_instance();
+        $this->_CI =& get_instance();
         log_message('debug', 'Rest Client Class Initialized');
 
-        $this->_ci->load->library('curl');
+        $this->_CI->load->library('curl');
 
         // If a URL was passed to the library
         $this->initialize($config);
@@ -59,7 +59,7 @@ class RestClient
 
     function __destruct()
     {
-        $this->_ci->curl->close();
+        $this->_CI->curl->close();
     }
 
     /**
@@ -69,8 +69,8 @@ class RestClient
     public function initialize($config)
     {
         // get global config
-        $this->_ci->load->config($this->config_file, TRUE, TRUE);
-        $_config = element($this->config_file, $this->_ci->config->config);
+        $this->_CI->load->config($this->config_file, TRUE, TRUE);
+        $_config = element($this->config_file, $this->_CI->config->config);
 
         // set member variables
         $this->rest_server = isset($config['server']) ? $config['server'] : element('rest_server', $_config);
@@ -214,7 +214,7 @@ class RestClient
 
         $this->format($format);
         $this->http_header('Accept', $this->mime_type);
-        $this->_ci->curl->setUserAgent($this->http_realm);
+        $this->_CI->curl->setUserAgent($this->http_realm);
 
         // If using ssl set the ssl verification value and cainfo
         // contributed by: https://github.com/paulyasi
@@ -232,7 +232,7 @@ class RestClient
         if ($this->http_auth !== FALSE && $this->http_user != '')
         {
             if ($this->http_auth == 'token') {
-                $this->http_token($this->http_user, $this->http_pass, $method, $uri, $params);
+                $this->http_token($this->http_user, $this->http_pass, $method, $uri);
             } else {
                 $this->http_login($this->http_user, $this->http_pass, $this->http_auth);
             }
@@ -247,24 +247,24 @@ class RestClient
         // Send cookies with curl
         if ($this->send_cookies === TRUE)
         {
-            $this->_ci->curl->setCookies($_COOKIE);
+            $this->_CI->curl->setCookies($_COOKIE);
         }
         
         // Set the Content-Type (contributed by https://github.com/eriklharper)
         $this->http_header('Content-type', $this->mime_type);
 
         // We still want the response even if there is an error code over 400
-        $this->_ci->curl->setOpt(CURLOPT_FAILONERROR, FALSE);
+        $this->_CI->curl->setOpt(CURLOPT_FAILONERROR, FALSE);
 
         // Call and Execute the correct method with parameters
         if ($method == 'delete') {
-            $this->_ci->curl->{$method}($url, [], $params);
+            $this->_CI->curl->{$method}($url, [], $params);
         } else {
-            $this->_ci->curl->{$method}($url, $params);
+            $this->_CI->curl->{$method}($url, $params);
         }
 
         // return the response from the REST server
-        $response = $this->_ci->curl->rawResponse;
+        $response = $this->_CI->curl->rawResponse;
 
         // Format and return
         return $this->_format_response($response);
@@ -309,7 +309,7 @@ class RestClient
      */
     public function info($opt = null)
     {
-        return is_null($opt) === true ? $this->_ci->curl->getInfo() : $this->_ci->curl->getInfo($opt);
+        return is_null($opt) === true ? $this->_CI->curl->getInfo() : $this->_CI->curl->getInfo($opt);
     }
 
     /**
@@ -320,7 +320,7 @@ class RestClient
      */
     public function option($option, $value)
     {
-        $this->_ci->curl->setOpt($option, $value);
+        $this->_CI->curl->setOpt($option, $value);
     }
 
     /**
@@ -334,7 +334,7 @@ class RestClient
         $params = $value ? array($key, $value) : explode(':', $key);
 
         // Pass these attributes on to the curl library
-        call_user_func_array(array($this->_ci->curl, 'setHeader'), $params);
+        call_user_func_array(array($this->_CI->curl, 'setHeader'), $params);
     }
 
     /**
@@ -346,26 +346,28 @@ class RestClient
     public function http_login($username = '', $password = '', $type = 'any')
     {
         $password = hash_hmac('sha256', $password, $username);
-        $this->_ci->curl->{'set' . ucfirst($type) . 'Authentication'}($username, $password);
+        $this->_CI->curl->{'set' . ucfirst($type) . 'Authentication'}($username, $password);
     }
 
     /**
      * http_token
      * @param string $username
      * @param string $password
-     * @param $method
-     * @param $uri
-     * @param array $params
+     * @param string $method
+     * @param string $uri
      */
-    public function http_token($username = '', $password = '', $method, $uri, $params = array())
+    public function http_token($username = '', $password = '', $method = '', $uri = '')
     {
         $unique_id = uniqid();
+        $nonce = substr($unique_id, 0, 7) . time() . substr($unique_id, 7);
         $password = hash_hmac('sha256', $password, $username);
-        $token = $username . ':' . $unique_id . ':' . $password . ':' . strtoupper($method) . ':' . $uri;
-        $token = md5(hash_hmac('sha256', $token, $unique_id));
+
+        $token = $username . ':' . $nonce . ':' . $password . ':' . strtoupper($method) . ':' . $uri;
+        //$token = $username . ':' . $nonce . ':' . $password . ':' . strtoupper($this->http_realm) . ':' . strtoupper($this->http_auth);
+        $token = md5(hash_hmac('sha256', $token, $nonce));
 
         $this->http_header($this->api_user_name, $username);
-        $this->http_header($this->api_nonce_name, $unique_id);
+        $this->http_header($this->api_nonce_name, $nonce);
         $this->http_header($this->api_token_name, $token);
     }
 
@@ -508,7 +510,7 @@ class RestClient
         echo "<h2>REST Test</h2>\n";
         echo "=============================================<br/>\n";
         echo "<h3>Request</h3>\n";
-        echo $this->_ci->curl->url."<br/>\n";
+        echo $this->_CI->curl->url."<br/>\n";
         echo "=============================================<br/>\n";
         echo "<h3>Response</h3>\n";
 
@@ -520,11 +522,11 @@ class RestClient
 
         echo "=============================================<br/>\n";
 
-        if ($this->_ci->curl->error)
+        if ($this->_CI->curl->error)
         {
             echo "<h3>Errors</h3>";
-            echo "<strong>Code:</strong> ".$this->_ci->curl->errorCode."<br/>\n";
-            echo "<strong>Message:</strong> ".$this->_ci->curl->errorMessage."<br/>\n";
+            echo "<strong>Code:</strong> ".$this->_CI->curl->errorCode."<br/>\n";
+            echo "<strong>Message:</strong> ".$this->_CI->curl->errorMessage."<br/>\n";
             echo "=============================================<br/>\n";
         }
 

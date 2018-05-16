@@ -14,3 +14,8 @@ $lang['text_rest_api_key_time_limit'] = 'This API key has reached the time limit
 $lang['text_rest_ip_address_time_limit'] = 'This IP Address has reached the time limit for this method';
 $lang['text_rest_unknown_method'] = 'Unknown method';
 $lang['text_rest_unsupported'] = 'Unsupported protocol';
+// custom
+$lang['text_rest_token_time_limit'] = 'This token has reached the time limit';
+$lang['text_rest_success_msg'] = 'Success';
+$lang['text_rest_error_msg'] = 'An error has occurred';
+$lang['text_rest_validation_error'] = 'Required parameter error';

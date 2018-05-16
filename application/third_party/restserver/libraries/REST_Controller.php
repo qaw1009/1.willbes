@@ -422,7 +422,6 @@ abstract class REST_Controller extends \CI_Controller {
             $this->format = $this->libraryFormat;
         }
 
-
         // Determine supported output formats from configuration
         $supported_formats = $this->config->item('rest_supported_formats');
 
@@ -473,6 +472,9 @@ abstract class REST_Controller extends \CI_Controller {
 
         // How is this request being made? GET, POST, PATCH, DELETE, INSERT, PUT, HEAD or OPTIONS
         $this->request->method = $this->_detect_method();
+
+        // get controllber method
+        $this->request->controller_method = $this->_detect_controller_method();
 
         // Check for CORS access request
         $check_cors = $this->config->item('check_cors');
@@ -1072,6 +1074,15 @@ abstract class REST_Controller extends \CI_Controller {
         }
 
         return in_array($method, $this->allowed_http_methods) && method_exists($this, '_parse_' . $method) ? $method : 'get';
+    }
+
+    /**
+     * Get controller method
+     * @return string
+     */
+    protected function _detect_controller_method()
+    {
+        return $this->router->method . '_' . $this->request->method;
     }
 
     /**
@@ -2041,10 +2052,21 @@ abstract class REST_Controller extends \CI_Controller {
      */
     protected function _check_token()
     {
+        // If whitelist is enabled it has the first chance to kick them out
+        if ($this->config->item('rest_ip_whitelist_enabled'))
+        {
+            $this->_check_whitelist_auth();
+        }
+
+        // skip token check
+        if (isset($this->methods[$this->request->controller_method]['token']) && $this->methods[$this->request->controller_method]['token'] === false) {
+            return;
+        }
+
         $rest_user_name = ucwords(strtolower($this->config->item('rest_user_name')), '-');
         $rest_token_name = ucwords(strtolower($this->config->item('rest_token_name')), '-');
         $rest_nonce_name = ucwords(strtolower($this->config->item('rest_nonce_name')), '-');
-        $valid_logins = $this->config->item('rest_valid_logins');
+        $valid_logins = (array) $this->config->item('rest_valid_logins');
 
         $username = $this->head($rest_user_name);
         $token = $this->head($rest_token_name);
@@ -2057,8 +2079,18 @@ abstract class REST_Controller extends \CI_Controller {
                 $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_unauthorized')
             ], self::HTTP_UNAUTHORIZED);
         } else {
+            $token_timestamp = substr($nonce, 7, strlen($nonce) - 13);
+            if (time() - $token_timestamp > intval($this->config->item('rest_token_limit_time'))) {
+                // Display an error response
+                $this->response([
+                    $this->config->item('rest_status_field_name') => FALSE,
+                    $this->config->item('rest_message_field_name') => $this->lang->line('text_rest_token_time_limit')
+                ], self::HTTP_UNAUTHORIZED);
+            }
+
             $password = hash_hmac('sha256', $valid_logins[$username], $username);
-            $valid_response = $username . ':' . $nonce . ':' . $password . ':' . strtoupper($this->request->method) . ':' . $this->uri->uri_string();
+            $valid_response = $username . ':' . $nonce . ':' . $password . ':' . strtoupper($this->request->method) . ':' . substr($this->input->server('REQUEST_URI'), 1);
+            //$valid_response = $username . ':' . $nonce . ':' . $password . ':' . strtoupper($this->config->item('rest_realm')) . ':' . strtoupper($this->config->item('rest_auth'));
             $valid_response = md5(hash_hmac('sha256', $valid_response, $nonce));
 
             if (strcasecmp($token, $valid_response) !== 0) {

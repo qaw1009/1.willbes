@@ -40,7 +40,7 @@ abstract class FrontController extends BaseController
 
         // 사이트 정보 셋팅 (사이트 테이블 + config 파일)
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
-            $this->__site_settings = array_merge($this->getSiteItems(), config_item(SUB_DOMAIN));
+            $this->__site_settings = array_merge($this->getSiteCacheItems(), config_item(SUB_DOMAIN));
         }
 
         // 프로파일러 실행
@@ -76,7 +76,7 @@ abstract class FrontController extends BaseController
      * @param string $site_id [사이트 정보 배열 키]
      * @return mixed
      */
-    public function getSiteItems($key = '', $site_id = '')
+    public function getSiteCacheItems($key = '', $site_id = '')
     {
         $this->load->driver('caching');
         $items = $this->caching->site->get();

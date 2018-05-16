@@ -28,20 +28,42 @@ body.no_sidebar {
 .top_col, .top_col .nav-tabs {
     background: #fff !important;
 }
+.top_col .main_top_header.row {
+    border-bottom: 1px solid #e6e9ed;
+}
 .top_col .main_top_header div {
     padding-left: 0;
     padding-right: 0;
+    position: relative;
 }
 .top_col .main_top_header .logo {
-    border-bottom: 1px solid #e6e9ed;
     padding-bottom: 10px;
+}
+.top_col .main_top_header .logo span {
+    display: inline-block;
+    padding-top: 3px;
+}
+.top_col .main_top_header .col-md-5 {
+    width: auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -204px;
+}
+.top_col .main_top_header .col-md-5 ul {
+    padding-left: 0;
+}
+.top_col .main_top_header .col-md-5 ul li:first-child {
+    margin-left: 0;
 }
 .top_col .main_top_header .nav-tabs li {
     min-width: 200px;
 }
 .top_col .main_top_header .nav_login {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 32%;
     height: 46px;
-    border-bottom: 1px solid #e6e9ed;
     padding-right: 10px;
 }
 .top_col .main_top_middle {
@@ -71,12 +93,12 @@ body.no_sidebar {
 }
 .top_nav_fixed .left_col {
     position: relative;
-    top: 70px;
+    top: 63px;
     z-index: 998 !important;
 }
 .top_nav_fixed .right_col {
     position: relative;
-    top: 10px;
+    top: 13px;
 }
 .top_nav_fixed.nav-sm footer {
     z-index: 997;
@@ -96,7 +118,7 @@ body.no_sidebar {
 }
 .nav-md .container.body .col-md-3.left_col.menu_fixed {
     position: sticky;
-    margin-top: -140px;
+    margin-top: -63px;
 }
 .nav.side-menu>li:first-child {
     margin-top: 75px;
@@ -200,6 +222,14 @@ ul.bar_tabs > li.active a, ul.bar_tabs > li.active a:focus, ul.bar_tabs > li.act
 }
 .x_content ul.pagination {
     margin: 2px 0;
+}
+#search_form .form-group {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+#search_form .form-group:first-child {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* modal */
@@ -576,13 +606,13 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     width: 16.66666667%;
 }
 .col-md-3 {
-    width: 32%;
+    width: 25%;
 }
 .col-md-4 {
     width: 33.33333333%;
 }
 .col-md-5 {
-    width: 34.666667%;
+    width: 41.666667%;
 }
 .col-md-6 {
     width: 50%;
@@ -642,7 +672,10 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
         width: auto;
         margin-left: 230px;
         padding: 0 20px !important;
-    }   
+    }
+    .right_col {
+        padding: 0 !important;
+    }  
 }
 
 /* Only IE Hack */

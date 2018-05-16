@@ -12,7 +12,7 @@
         @section('layer_content')
             <div class="form-group form-group-bordered pt-10 pb-10">
                 <div class="row mt-5">
-                    <label class="control-label col-md-1 pt-5" for="search_sms_is_agree">조건</label>
+                    <label class="control-label col-md-2 pt-5" for="search_sms_is_agree">조건</label>
                     <div class="col-md-2">
                         <select class="form-control input-sm" id="search_sms_is_agree" name="search_sms_is_agree">
                             <option value="">수신동의</option>
@@ -23,48 +23,42 @@
                 </div>
 
                 <div class="row mt-5">
-                    <label class="control-label col-md-1 pt-5" for="search_value">통합검색
+                    <label class="control-label col-md-2 pt-5" for="search_value">발송데이터검색
                     </label>
                     <div class="col-md-3">
                         <input type="text" class="form-control input-sm" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-4">
-                        <p class="form-control-static">아이디, 이름, 휴대폰번호, 이메일 검색 가능</p>
+                        <p class="form-control-static">아이디, 이름, 휴대폰번호(끝4자리)</p>
                     </div>
                 </div>
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary btn-sm btn-search" id="btn_search_modal">검 색</button>
             </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div class="row">
-                        <div class="form-group clearfix">
-                            <table id="_list_modal_ajax_table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>발송종류</th>
-                                    <th>발송아이디</th>
-                                    <th>발송이름</th>
-                                    <th>발송휴대폰</th>
-                                    <th>발송이메일</th>
-                                    <th>수신동의</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-2 pl-20">
-                    <div class="row">
-                        <div class="form-group"><label class="control-label">발송메시지</label></div>
-                        <div class="form-group">
-                            {!! nl2br($data['Content']) !!}
-                        </div>
+            <div class="form-group pt-10 pb-10">
+                <div class="row mt-5">
+                    <label class="control-label col-md-1" for="search_sms_is_agree">발송메시지</label>
+                    <div class="form-control-static col-md-8">{!! nl2br($data['Content']) !!}</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="form-group">
+                        <table id="_list_modal_ajax_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>회원코드</th>
+                                <th>발송휴대폰</th>
+                                <th>수신동의</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -92,12 +86,15 @@
                                     // 리스트 번호
                                     return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
-                            {'data' : 'SendGroupTypeName'},
-                            {'data' : 'MemId'},
-                            {'data' : 'MemName'},
-                            {'data' : 'MemPhone'},
-                            {'data' : 'MemEmail'},
-                            {'data' : 'MemSendAgreeStatus'}
+                            {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
+                                    if (data == 0) {
+                                        return '비회원';
+                                    } else {
+                                        return data;
+                                    }
+                                }},
+                            {'data' : 'Receive_PhoneEnc'},
+                            {'data' : 'SmsRcvStatus'}
                         ]
                     });
                 });

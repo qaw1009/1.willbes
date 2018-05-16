@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SmsModel extends WB_Model
 {
-    private $_table = 'lms_crm_send_sms';
-    private $_table_r_send_info = 'lms_crm_send_r_all_content';
+    private $_table = 'lms_crm_send';
+    private $_table_r_send_receive = 'lms_crm_send_r_receive_sms';
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_site = 'lms_site';
     private $_table_member = 'lms_member';
@@ -22,7 +22,7 @@ class SmsModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SMS.SendIdx, SMS.SiteCode, SMS.SendGroupTypeCcd, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTel,
+                SMS.SendIdx, SMS.SiteCode, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTel,
                 CONCAT(LEFT(SMS.Content, 20), IF (CHAR_LENGTH(SMS.Content) > 20, " ...", "") ) as Content,
                 SMS.SendDatm, SMS.RegDatm, SMS.RegAdminIdx,
                 LS.SiteName, ADMIN.wAdminName
@@ -79,14 +79,15 @@ class SmsModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SendInfoIdx, SendIdx, SendGroupTypeCcd, MemIdx, MemId, MemName, MemEmail, MemPhone, MemSendAgreeStatus
+                SEND.SmsSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_PhoneEnc) as Receive_PhoneEnc, SEND.SmsRcvStatus
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = "
-            FROM {$this->_table_r_send_info}
+            FROM {$this->_table_r_send_receive} as SEND
+            LEFT JOIN {$this->_table_member} as MEM ON SEND.MemIdx = MEM.MemIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -101,10 +102,11 @@ class SmsModel extends WB_Model
     /**
      * 발송 데이터 등록
      * @param array $inputData
-     * @param $arr_member_data
+     * @param $set_mem_phone
+     * @param $send_type
      * @return array|bool
      */
-    public function addSms($inputData = [], $arr_member_data)
+    public function addSms($inputData = [], $set_mem_phone, $send_type)
     {
         $this->_conn->trans_begin();
         try {
@@ -115,20 +117,9 @@ class SmsModel extends WB_Model
 
             // 등록된 발송식별자
             $send_idx = $this->_conn->insert_id();
-
-            $set_content_data = [];
-            foreach ($arr_member_data as $key) {
-                $set_content_data['SendIdx'] = $send_idx;
-                $set_content_data['SendGroupTypeCcd'] = $inputData['SendGroupTypeCcd'];
-                $set_content_data['MemPhone'] = $key['Phone'];
-                $set_content_data['MemIdx'] = (empty($key['MemIdx']) === false) ? $key['MemIdx'] : '';
-                $set_content_data['MemId'] = (empty($key['MemId']) === false) ? $key['MemId'] : '';
-                $set_content_data['MemName'] = (empty($key['MemName']) === false) ? $key['MemName'] : '';
-                $set_content_data['MemSendAgreeStatus'] = (empty($key['SmsRcvStatus']) === false) ? $key['SmsRcvStatus'] : 'N';
-
-                if ($this->_addSmsContent($set_content_data) === false) {
-                    throw new \Exception('등록에 실패했습니다.');
-                }
+            $result = $this->_addSendReceiveData($send_idx, $set_mem_phone, $send_type);
+            if ($result['result'] != 1) {
+                throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -136,7 +127,7 @@ class SmsModel extends WB_Model
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-        return array(true, count($arr_member_data));
+        return true;
     }
 
     /**
@@ -182,7 +173,7 @@ class SmsModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function getMemberList($is_count, $arr_condition = [], $column = '*', $limit = null, $offset = null, $order_by = [])
+    public function getMemberList($is_count, $arr_condition, $column = '*', $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -196,24 +187,26 @@ class SmsModel extends WB_Model
             FROM {$this->_table_member} AS Mem
             INNER JOIN {$this->_table_member_otherinfo} AS MemInfo ON Mem.MemIdx = MemInfo.MemIdx
         ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
+        $where = $this->_conn->makeWhere($arr_condition, true, false)->getMakeWhere(false);
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
-    private function _addSmsContent($inputData)
+    /**
+     * 발송데이터 상세 데이터 등록
+     * @param $send_idx
+     * @param $detail_datas
+     * @param string $send_type
+     * @return mixed
+     */
+    private function _addSendReceiveData($send_idx, $detail_datas, $send_type = '')
     {
-        try {
-            if ($this->_conn->set($inputData)->insert($this->_table_r_send_info) === false) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
+        $this->_conn->query('CALL sp_send_detail_insert(?, ?, ?, ?, @_result)', [
+            $send_idx, $detail_datas, ',', $send_type
+        ]);
+
+        return $this->_conn->query('SELECT @_result as result')->row_array();
     }
+
 }

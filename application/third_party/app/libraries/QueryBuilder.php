@@ -9,9 +9,10 @@ trait QueryBuilder
      * where 조건 생성 쿼리 빌더
      * @param array $conditions
      * @param bool $is_and
+     * @param $is_escape
      * @return \CI_DB_query_builder|$this
      */
-    public function makeWhere($conditions = [], $is_and = true)
+    public function makeWhere($conditions = [], $is_and = true, $is_escape = true)
     {
         if (is_array($conditions) === true && empty($conditions) === false) {
             foreach ($conditions as $key => $arr) {
@@ -25,7 +26,7 @@ trait QueryBuilder
                     if (is_array($arr) && count($arr) > 0) {
                         foreach ($arr as $col => $val) {
                             if ($key == 'IN') {
-                                $this->makeWhereIn($col, $val, $is_and);
+                                $this->makeWhereIn($col, $val, $is_and, $is_escape);
                             } elseif ($key == 'BET' || $key == 'BDT') {
                                 $this->makeWhereBetween($col, $val, $key, $is_and);
                             } else {
@@ -91,13 +92,14 @@ trait QueryBuilder
      * @param $column
      * @param array $values
      * @param bool $is_and
+     * @param $is_escape
      * @return $this
      */
-    public function makeWhereIn($column, $values = [], $is_and = true)
+    public function makeWhereIn($column, $values = [], $is_and = true, $is_escape = true)
     {
         if (is_array($values) && count($values) > 0) {
             $method = ($is_and === true) ? 'where_in' : 'or_where_in';
-            $this->{$method}($column, $values);
+            $this->{$method}($column, $values, $is_escape);
         }
 
         return $this;

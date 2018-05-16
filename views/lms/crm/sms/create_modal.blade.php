@@ -26,20 +26,10 @@
                     <div class="form-group">
                         <label class="control-label col-md-4" for="site_code">운영 사이트 <span class="required">*</span></label>
                         <div class="col-md-8 item">
-                            <select class="form-control" id="site_code" name="site_code" required="required" title="운영 사이트">
-                                <option value="">사이트선택</option>
-                                @foreach($get_site_array as $key => $val)
-                                    <option value="{{ $key }}">{{ $val }}</option>
-                                @endforeach
-                            </select>
-
-                            <select class="form-control hide" id="member_type" name="member_type" title="비회원유무">
-                                @foreach($arr_member_type_ccd as $key => $val)
-                                    <option value="{{ $key }}" @if($loop->first)selected="selected"@endif>{{ $val }}</option>
-                                @endforeach
-                            </select>
+                            {!! html_site_select('', 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="control-label col-md-4" for="send_pattern_ccd">발송성격 <span class="required">*</span></label>
                         <div class="col-md-8 item">
@@ -80,7 +70,7 @@
                     <div class="tab-content">
                         <div id="content_1" class="form-group tab-pane fade in active">
                             <div class="form-group">
-                                <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 입력('-' 없이 숫자만 입력)</label>
+                                <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 입력</label>
                                 <div class="col-md-3 col-lg-offset-1">
                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_member_searching">회원검색</button>
                                 </div>
@@ -99,7 +89,7 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="">
+                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
                                                 </td>
                                             </tr>
                                         @endfor
@@ -119,7 +109,7 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="">
+                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
                                                 </td>
                                             </tr>
                                         @endfor
@@ -313,7 +303,7 @@
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /*$("#pop_modal").modal('toggle');*/
+                            /!*$("#pop_modal").modal('toggle');*!/
                             location.reload();
                         }
                     }, showValidateError, addValidate, false, 'alert');

@@ -80,8 +80,6 @@
                             <th>이름</th>
                             <th>휴대폰번호</th>
                             <th>SMS 수신동의</th>
-                            <th>이메일</th>
-                            <th>이메일 수신동의</th>
                             <th>가입일</th>
                             <th>상태</th>
                             <th>선택</th>
@@ -120,17 +118,8 @@
                             {'data' : 'SiteName'},
                             {'data' : 'MemId'},
                             {'data' : 'MemName'},
-                            {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return row.Hp1+'-'+row.Hp2+'-'+row.Hp3;
-                                }},
-
+                            {'data' : 'Phone'},
                             {'data' : 'SmsRcvStatus', 'render' : function(data, type, row, meta) {
-                                    if (data == 'Y') {return '동의'} else { return '미동의' }
-                                }},
-
-                            {'data' : 'Email'},
-
-                            {'data' : 'EmailRcvStatus', 'render' : function(data, type, row, meta) {
                                     if (data == 'Y') {return '동의'} else { return '미동의' }
                                 }},
 
@@ -140,7 +129,7 @@
                                     var val = '0';
                                     switch (send_type_modal) {
                                         case 'sms' :
-                                            val = row.Hp1+row.Hp2+row.Hp3;
+                                            val = row.Phone;
                                             break;
                                     }
                                     return '<input type="checkbox" name="is_checked" value='+ val +' class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '">';

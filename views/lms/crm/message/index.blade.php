@@ -84,7 +84,7 @@
                     <th>NO</th>
                     <th>사이트</th>
                     <th>메세지성격</th>
-                    <th>메세지종류</th>
+                    {{--<th>메세지종류</th>--}}
                     <th>내용</th>
                     <th>발신번호</th>
                     <th>발신인</th>
@@ -133,7 +133,7 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'SendPatternCcdName'},
-                    {'data' : 'SendTypeCcdName'},
+                    /*{'data' : 'SendTypeCcdName'},*/
                     {'data' : 'Content', 'render' : function(data, type, row, meta){
                             return '<a href="javascript:void(0);" class="btn-send-detail-read mr-20" data-idx="' + row.SendIdx + '"><u>' + data + '</u></a>';
                         }},

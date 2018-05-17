@@ -62,6 +62,7 @@ class Sms extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
+                'SMS.SendGroupTypeCcd' => $this->_send_type_ccd[$this->_send_type],
                 'SMS.SiteCode' => $this->_reqP('search_site_code'),
                 'SMS.SendPatternCcd' => $this->_reqP('search_send_pattern_ccd'),
                 'SMS.SendTypeCcd' => $this->_reqP('search_send_type_ccd'),
@@ -191,6 +192,11 @@ class Sms extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 사이트별 고객센터번호조회
+     * @param array $params
+     * @return CI_Output
+     */
     public function getSiteCsTelAjax($params = [])
     {
         $site_code = $params[0];

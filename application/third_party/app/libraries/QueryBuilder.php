@@ -19,7 +19,7 @@ trait QueryBuilder
                 if (substr($key, 0 ,3) == 'ORG') {
                     // or 조건이 있는 그룹
                     $this->group_start();
-                    $this->makeWhere($arr, false);
+                    $this->makeWhere($arr, false, $is_escape);
                     $this->where('1', 1);
                     $this->group_end();
                 } else {
@@ -28,12 +28,12 @@ trait QueryBuilder
                             if ($key == 'IN') {
                                 $this->makeWhereIn($col, $val, $is_and, $is_escape);
                             } elseif ($key == 'BET' || $key == 'BDT') {
-                                $this->makeWhereBetween($col, $val, $key, $is_and);
+                                $this->makeWhereBetween($col, $val, $key, $is_and, $is_escape);
                             } else {
                                 if (substr($key, 0 ,2) == 'LK') {
-                                    $this->makeWhereLike($col, $val, $key, $is_and);
+                                    $this->makeWhereLike($col, $val, $key, $is_and, $is_escape);
                                 } else {
-                                    $this->makeWhereOperator($col, $val, $key, $is_and);
+                                    $this->makeWhereOperator($col, $val, $key, $is_and, $is_escape);
                                 }
                             }
                         }
@@ -50,15 +50,16 @@ trait QueryBuilder
      * @param $value
      * @param string $type
      * @param bool $is_and
+     * @param bool $is_escape
      * @return $this
      */
-    public function makeWhereOperator($column, $value, $type = 'EQ', $is_and = true)
+    public function makeWhereOperator($column, $value, $type = 'EQ', $is_and = true, $is_escape = true)
     {
         $operators = ['EQ' => '=', 'NOT' => '!=', 'GT' => '>', 'GTE' => '>=', 'LT' => '<', 'LTE' => '<='];
 
         if (is_null($value) === false && strlen($value) > 0 && isset($operators[$type]) === true) {
             $method = ($is_and === true) ? 'where' : 'or_where';
-            $this->{$method}($column . $operators[$type], $value);
+            $this->{$method}($column . $operators[$type], $value, $is_escape);
         }
 
         return $this;
@@ -70,9 +71,10 @@ trait QueryBuilder
      * @param array $values
      * @param string $type
      * @param bool $is_and
+     * @param bool $is_escape
      * @return $this
      */
-    public function makeWhereBetween($column, $values = [], $type = 'BET', $is_and = true)
+    public function makeWhereBetween($column, $values = [], $type = 'BET', $is_and = true, $is_escape = true)
     {
         if (is_array($values) === true && count($values) == 2) {
             if ($type == 'BDT') {
@@ -80,8 +82,8 @@ trait QueryBuilder
                 $values[1] = $values[1] . ' 23:59:59';
             }
 
-            $this->makeWhereOperator($column, $values[0], 'GTE', $is_and);
-            $this->makeWhereOperator($column, $values[1], 'LTE', $is_and);
+            $this->makeWhereOperator($column, $values[0], 'GTE', $is_and, $is_escape);
+            $this->makeWhereOperator($column, $values[1], 'LTE', $is_and, $is_escape);
         }
 
         return $this;
@@ -111,15 +113,16 @@ trait QueryBuilder
      * @param $value
      * @param string $type
      * @param bool $is_and
+     * @param $is_escape
      * @return $this
      */
-    public function makeWhereLike($column, $value, $type = 'LKB', $is_and = true)
+    public function makeWhereLike($column, $value, $type = 'LKB', $is_and = true, $is_escape = true)
     {
         $sides = ['LKL' => 'before', 'LKR' => 'after', 'LKB' => 'both'];
 
         if (is_null($value) === false && strlen($value) > 0 && isset($sides[$type]) === true) {
             $method = ($is_and === true) ? 'like' : 'or_like';
-            $this->{$method}($column, $value, $sides[$type]);
+            $this->{$method}($column, $value, $sides[$type], $is_escape);
         }
 
         return $this;

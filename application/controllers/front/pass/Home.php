@@ -6,7 +6,7 @@ class Home extends \app\controllers\FrontController
     protected $models = array();
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('professor');
+    protected $auth_methods = array();
 
     public function __construct()
     {
@@ -15,11 +15,6 @@ class Home extends \app\controllers\FrontController
 
     public function index()
     {
-        $this->load->view('main');
-    }
-
-    public function professor()
-    {
-        echo '교수 소개 페이지';
+        $this->load->view('pass');
     }
 }

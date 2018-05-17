@@ -38,7 +38,7 @@ abstract class FrontController extends BaseController
         // 학원 사이트 여부
         $this->uri->segment(1) == 'pass' && $this->__is_pass_site = true;
 
-        // 사이트 정보 셋팅 (사이트 테이블 + config 파일)
+        // 사이트 정보 셋팅 (사이트 정보 데이터 + config 파일)
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
             $this->__site_settings = array_merge($this->getSiteCacheItems(), config_item(SUB_DOMAIN));
         }

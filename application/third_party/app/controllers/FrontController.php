@@ -10,9 +10,7 @@ abstract class FrontController extends BaseController
     // 로그인 필수 메소드 배열
     protected $auth_methods = array();
     // 학원(오프라인) 사이트 여부
-    protected $__is_pass_site = false;
-    // 프런트 사이트 설정 정보
-    protected $__site_settings = array();
+    private $_is_pass_site = false;
 
     public function __construct()
     {
@@ -31,11 +29,14 @@ abstract class FrontController extends BaseController
     private function _frontInit()
     {
         // 학원 사이트 여부
-        $this->uri->segment(1) == 'pass' && $this->__is_pass_site = true;
+        $this->uri->segment(1) == 'pass' && $this->_is_pass_site = true;
 
-        // 사이트 정보 셋팅 (사이트 정보 데이터 + config 파일)
+        // 프런트 사이트일 경우 사이트 정보 캐쉬 데이터 환경 설정 셋팅
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
-            $this->__site_settings = array_merge($this->getSiteCacheItems(), config_item(SUB_DOMAIN));
+            $cfg = array_merge(config_item(SUB_DOMAIN), $this->getSiteCacheItem(null));
+            $cfg['IsPassSite'] = $this->_is_pass_site;
+
+            $this->config->set_item(SUB_DOMAIN, $cfg);
         }
     }
 
@@ -62,20 +63,20 @@ abstract class FrontController extends BaseController
 
     /**
      * 사이트 정보 캐쉬 데이터 리턴
-     * @param string $key [해당 사이트 정보 2차 배열 키]
-     * @param string $site_id [사이트 정보 배열 키]
+     * @param null|string $key [사이트 캐쉬 데이터 하위 배열 키값, null 일 경우 해당 사이트의 전체 캐쉬 데이터 리턴, $site_id = all && $key = null 일 경우 캐쉬 전체 데이터 리턴]
+     * @param string $site_id [전체 사이트 캐쉬 데이터에서 조회할 경우 : all, 온라인 사이트일 경우 : 서브 도메인, 학원 사이트일 경우 : 서브 도메인 + pass]
      * @return mixed
      */
-    public function getSiteCacheItems($key = '', $site_id = '')
+    public function getSiteCacheItem($key = '', $site_id = '')
     {
         $this->load->driver('caching');
         $items = $this->caching->site->get();
 
         if (empty($site_id) === true) {
             $site_id = SUB_DOMAIN;
-            $this->__is_pass_site === true && $site_id .= 'pass';
+            $this->_is_pass_site === true && $site_id .= 'pass';
         }
 
-        return empty($key) === true ? element($site_id, $items) : element($key, element($site_id, $items, []));
+        return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items), $key);
     }
 }

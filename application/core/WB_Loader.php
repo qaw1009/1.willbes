@@ -67,7 +67,7 @@ class WB_Loader extends CI_Loader
             $view = str_replace('/', '.', $view);
 
             // config 값 추가
-            $vars['__cfg'] = config_item(APP_NAME);
+            $vars['__cfg'] = config_item(SUB_DOMAIN);
 
             // CI 전역변수에 설정된 데이터 셋팅
             foreach ($this->get_vars() as $key => $val) {

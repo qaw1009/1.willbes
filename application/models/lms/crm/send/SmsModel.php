@@ -67,19 +67,20 @@ class SmsModel extends WB_Model
      * 발송 상세 리스트
      * @param $is_count
      * @param array $arr_condition
+     * @param $send_idx
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listSmsDetail($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSmsDetail($is_count, $arr_condition = [], $send_idx, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SEND.SmsSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_PhoneEnc) as Receive_PhoneEnc, SEND.SmsRcvStatus
+                SEND.SmsSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_PhoneEnc) AS Receive_PhoneEnc, SEND.SmsRcvStatus, TM.Phone3 ,MEM.MemId, MEM.MemName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -88,6 +89,12 @@ class SmsModel extends WB_Model
         $from = "
             FROM {$this->_table_r_send_receive} as SEND
             LEFT JOIN {$this->_table_member} as MEM ON SEND.MemIdx = MEM.MemIdx
+            INNER JOIN
+            (
+                SELECT SmsSendIdx, RIGHT(fn_dec(Receive_PhoneEnc),4) AS Phone3
+                FROM lms_crm_send_r_receive_sms
+                WHERE SendIdx = {$send_idx}
+            ) AS TM ON SEND.SmsSendIdx = TM.SmsSendIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

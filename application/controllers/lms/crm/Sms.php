@@ -155,14 +155,14 @@ class Sms extends \app\controllers\BaseController
                     'LKB' => [
                         'Mem.MemId' => $this->_reqP('search_value'),
                         'Mem.MemName' => $this->_reqP('search_value'),
-                        'Mem.Phone3' => $this->_reqP('search_value'),
+                        'TM.Phone3' => $this->_reqP('search_value'),
                     ]
                 ]
             ];
 
-            $count = $this->smsModel->listSmsDetail(true, $arr_condition);
+            $count = $this->smsModel->listSmsDetail(true, $arr_condition, $params[0]);
             if ($count > 0) {
-                $list = $this->smsModel->listSmsDetail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+                $list = $this->smsModel->listSmsDetail(false, $arr_condition, $params[0], $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
             }
         }
 
@@ -441,7 +441,7 @@ class Sms extends \app\controllers\BaseController
         $mem_list = $this->smsModel->getMemberList($is_count, $arr_condition, $column, $limit, $offset, $order_by);
 
         if (empty($mem_list) === true) {
-            return false;
+            return 0;
         }
 
         return $mem_list;

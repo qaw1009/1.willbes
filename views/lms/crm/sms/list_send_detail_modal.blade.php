@@ -51,8 +51,9 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>회원코드</th>
-                                <th>발송휴대폰</th>
+                                <th>회원아이디</th>
+                                <th>회원명</th>
+                                <th>수신휴대폰</th>
                                 <th>수신동의</th>
                             </tr>
                             </thead>
@@ -90,7 +91,14 @@
                                     if (data == 0) {
                                         return '비회원';
                                     } else {
-                                        return data;
+                                        return row.MemId;
+                                    }
+                                }},
+                            {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
+                                    if (data == 0) {
+                                        return '비회원';
+                                    } else {
+                                        return row.MemName;
                                     }
                                 }},
                             {'data' : 'Receive_PhoneEnc'},

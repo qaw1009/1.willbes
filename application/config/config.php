@@ -56,6 +56,7 @@ $__app_name = in_array($__sub_domain, $config['front_sub_domains']) === true ? '
 
 defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
 defined('APP_NAME') OR define('APP_NAME', $__app_name);
+defined('IS_MOBILE') OR define('IS_MOBILE', $__is_mobile);
 
 /*
 |--------------------------------------------------------------------------

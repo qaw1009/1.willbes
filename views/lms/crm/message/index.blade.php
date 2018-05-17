@@ -33,34 +33,34 @@
                             @endforeach
                         </select>
 
-                        {{--<select class="form-control" id="search_is_agree" name="search_is_agree">
-                            <option value="">수신동의</option>
+                        <select class="form-control" id="search_is_receive" name="search_is_receive">
+                            <option value="">수신여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
-                        </select>--}}
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
+                    <label class="control-label col-md-1" for="search_value">통합검색</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">내용 가능</p>
+                        <p class="form-control-static">ID, 이름, 내용 검색 가능</p>
                     </div>
-                    <label class="control-label col-md-1" for="search_start_date">등록일</label>
+                    <label class="control-label col-md-1" for="search_start_date">발송일</label>
                     <div class="col-md-5 form-inline">
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_send_date" name="search_start_send_date" value="">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_send_date" name="search_end_send_date" value="">
                         </div>
                     </div>
                 </div>
@@ -111,11 +111,11 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sand-create' },
-                    { text: '<i class="fa fa-copy mr-10"></i> 예약취소', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-send-cancel' },
+                    { text: '<i class="fa fa-copy mr-10"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sand-create' },
+                    { text: '<i class="fa fa-copy mr-10"></i> 발송취소', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-send-cancel' },
                 ],
                 ajax: {
-                    'url' : '{{ site_url("/crm/sms/listAjax?") }}',
+                    'url' : '{{ site_url("/crm/message/listAjax?") }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -155,7 +155,7 @@
             // 발송 상세 정보
             $list_table.on('click', '.btn-send-detail-read', function() {
                 $('.btn-send-detail-read').setLayer({
-                    "url" : "{{ site_url('crm/sms/listSendDetailModal/') }}" + $(this).data('idx'),
+                    "url" : "{{ site_url('crm/message/listSendDetailModal/') }}" + $(this).data('idx'),
                     width : "1200"
                 });
             });
@@ -163,7 +163,7 @@
             // SMS 발송
             $('.btn-sand-create').click(function() {
                 $('.btn-sand-create').setLayer({
-                    "url" : "{{ site_url('crm/sms/createSendModal') }}",
+                    "url" : "{{ site_url('crm/message/createSendModal/') }}",
                     "width" : "800",
                 });
             });
@@ -171,7 +171,7 @@
             // 예약취소
             $('.btn-send-cancel').click(function() {
                 var $params = {};
-                var _url = "{{ site_url('crm/sms/cancelSend') }}"
+                var _url = "{{ site_url('crm/message/cancelSend/') }}"
 
                 $('input[name="send_cancel"]:checked').each(function() {
                     $params[$(this).data('is-best-idx')] = $(this).val();

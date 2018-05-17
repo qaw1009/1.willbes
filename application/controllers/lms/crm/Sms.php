@@ -323,9 +323,6 @@ class Sms extends \app\controllers\BaseController
                     return;
                 }
 
-                $attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
-                $attach_data['AttachFileName'] = $uploaded[0]['orig_name'];
-
                 // 엑셀 데이터 셋팅
                 $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
                 foreach ($excel_data as $key => $val) {

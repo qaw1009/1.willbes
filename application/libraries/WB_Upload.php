@@ -16,7 +16,7 @@ class WB_Upload extends CI_Upload
 
     public function __construct(array $config = array())
     {
-        // 디폴트 파일경로, URL 설정
+        // 디폴트 업로드 파일경로, URL 설정
         $this->_upload_path = element('upload_path', $config, STORAGEPATH . 'uploads/');
         $this->_upload_url = element('upload_url', $config, PUBLICURL . 'uploads/');
 
@@ -66,7 +66,7 @@ class WB_Upload extends CI_Upload
             }
 
             // 파일 업로드 경로 설정 및 디렉토리 생성
-            empty($sub_dir) === false && $config['upload_path'] = $this->upload_path . $sub_dir;
+            empty($sub_dir) === false && $config['upload_path'] = $this->_upload_path . $sub_dir;
             $is_created = $this->_createDir($config['upload_path']);
             if ($is_created !== true) {
                 throw new \Exception($is_created);
@@ -83,7 +83,7 @@ class WB_Upload extends CI_Upload
                         if (empty($tmp_size) === false) {
                             $config['file_name'] = (isset($file_names[$idx]) === true) ? $file_names[$idx] : '';
                             // 파일 업로드 설정 적용
-                            $this->initialize($config, true);
+                            $this->initialize($config, false);
 
                             $_FILES[$input_name]['name'] = ((array) $input_files[$input_name]['name'])[$sidx];
                             $_FILES[$input_name]['type'] = ((array) $input_files[$input_name]['type'])[$sidx];

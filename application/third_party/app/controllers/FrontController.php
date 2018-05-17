@@ -14,17 +14,12 @@ abstract class FrontController extends BaseController
     // 프런트 사이트 설정 정보
     protected $__site_settings = array();
 
-    use InitController;
-
     public function __construct()
     {
         parent::__construct();
 
         // 로그인 체크
         $this->_checkLogin();
-
-        // 전역 초기화
-        $this->_init();
 
         // 프런트 초기화
         $this->_frontInit();
@@ -41,11 +36,6 @@ abstract class FrontController extends BaseController
         // 사이트 정보 셋팅 (사이트 정보 데이터 + config 파일)
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
             $this->__site_settings = array_merge($this->getSiteCacheItems(), config_item(SUB_DOMAIN));
-        }
-
-        // 프로파일러 실행
-        if (config_item('enable_profiler') === true) {
-            $this->output->enable_profiler(true);
         }
     }
 

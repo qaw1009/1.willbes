@@ -83,7 +83,7 @@ class WB_Upload extends CI_Upload
                         if (empty($tmp_size) === false) {
                             $config['file_name'] = (isset($file_names[$idx]) === true) ? $file_names[$idx] : '';
                             // 파일 업로드 설정 적용
-                            $this->initialize($config, false);
+                            $this->initialize($config, true);
 
                             $_FILES[$input_name]['name'] = ((array) $input_files[$input_name]['name'])[$sidx];
                             $_FILES[$input_name]['type'] = ((array) $input_files[$input_name]['type'])[$sidx];

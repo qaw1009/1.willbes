@@ -50,7 +50,8 @@ class Home extends \app\controllers\FrontController
     public function html($param)
     {
         $view_file = implode('/', $param);
+        $view_file = 'html/' . $view_file;
 
-        $this->load->view($view_file);
+        $this->load->view($view_file, [], false);
     }
 }

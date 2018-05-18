@@ -77,6 +77,6 @@ abstract class FrontController extends BaseController
             $this->_is_pass_site === true && $site_id .= 'pass';
         }
 
-        return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items), $key);
+        return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items, []), $key);
     }
 }

@@ -64,17 +64,29 @@ class Caching_site_menu extends CI_Driver
             // sub domain + ?pass
             $key2 = $key1 . strtolower((starts_with(str_first_pos_after($row['SiteUrl'], '/'), 'pass') === true) ? 'pass' : '');
 
-            $arr_url_route = explode('::', $row['UrlRouteBoth']);
+            list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
                 'MenuName' => $row['MenuName'],
                 'MenuUrl' => $row['MenuUrl'],
                 'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],
-                'UrlRouteIdx' => $arr_url_route[0],
-                'UrlRouteName' => $arr_url_route[1]
+                'UrlRouteIdx' => $url_route_idx,
+                'UrlRouteName' => $url_route_name
             ];
 
-            $data[$key1][$key2][$row['MenuIdx']] = $arr_menu;
+            if ($row['MenuDepth'] > 1) {
+                // $data 배열에 삽입되는 배열 키 생성
+                $child_key = $key1 . '.' . $key2;
+                foreach (explode('>', $url_route_idx, -1) as $menu_idx) {
+                    $child_key .= '.' . $menu_idx . '.Children';
+                }
+                $child_key .= '.' . $row['MenuIdx'];
+                
+                // 생성된 배열 키로 값 설정
+                array_set($data, $child_key, $arr_menu);
+            } else {
+                $data[$key1][$key2][$row['MenuIdx']] = $arr_menu;
+            }
         }
 
         return $data;

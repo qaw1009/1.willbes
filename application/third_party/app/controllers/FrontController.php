@@ -70,7 +70,9 @@ abstract class FrontController extends BaseController
     public function getSiteCacheItem($key = '', $site_id = '')
     {
         $this->load->driver('caching');
-        $items = $this->caching->site->get();
+        if (($items = $this->caching->site->get()) === false) {
+            $items = [];
+        }
 
         if (empty($site_id) === true) {
             $site_id = SUB_DOMAIN;

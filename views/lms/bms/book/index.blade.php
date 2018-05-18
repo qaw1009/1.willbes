@@ -147,10 +147,10 @@
                         return addComma(data) + '원';
                     }},
                     {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_new" class="flat" value="Y" data-idx="' + row.BookIdx + '" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        return '<input type="checkbox" name="is_new" class="flat" value="Y" data-idx="' + row.ProdCode + '" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                     }},
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_best" class="flat" value="Y" data-idx="' + row.BookIdx + '" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        return '<input type="checkbox" name="is_best" class="flat" value="Y" data-idx="' + row.ProdCode + '" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                     }},
                     {'data' : 'wStockCnt', 'render' : function(data, type, row, meta) {
                         return addComma(data);

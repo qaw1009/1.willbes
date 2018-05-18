@@ -8,7 +8,7 @@ class MessageModel extends WB_Model
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_site = 'lms_site';
     private $_table_member = 'lms_member';
-    private $_table_member_otherinfo = 'lms_membr_otherinfo';
+    private $_table_member_otherinfo = 'lms_member_otherinfo';
 
     public function __construct()
     {
@@ -44,5 +44,11 @@ class MessageModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function addMessage($inputData = [])
+    {
+        print_r($inputData);
+        return true;
     }
 }

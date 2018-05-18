@@ -38,7 +38,7 @@
             </div>
 
             <div class="form-group pt-10 pb-10">
-                <div class="row mt-5">
+                <div class="row mt-5 bdb-line">
                     <label class="control-label col-md-1" for="search_sms_is_agree">발송메시지</label>
                     <div class="form-control-static col-md-8">{!! nl2br($data['Content']) !!}</div>
                 </div>

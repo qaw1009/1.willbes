@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    SMS 발송
+    쪽지 발송
     @stop
 
     @section('layer_header')
@@ -113,7 +113,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <input type="file" id="attach_file" name="attach_file[]" class="form-control" title="첨부파일"/>
+                                    <input type="file" id="attach_file" name="attach_file" class="form-control" title="첨부파일"/>
                                 </div>
                                 <div class="col-md-4">
                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_file_upload">List Up</button>

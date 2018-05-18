@@ -123,12 +123,7 @@ class Message extends \app\controllers\BaseController
      */
     public function storeSend()
     {
-        $this->load->library('upload');
-
-        $field_mem_id = false;
         $send_type = $this->_reqP('send_type');
-        $data_mem_id = $this->_reqP('mem_id[]');
-        $send_option = $this->_reqP('send_option_ccd');
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
@@ -137,12 +132,31 @@ class Message extends \app\controllers\BaseController
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,Y]']
         ];
 
+        if ($send_type == 1) {
+            $rules = array_merge($rules,[
+                ['field' => 'mem_id[]', 'label' => 'ID', 'rules' => 'trim|required']
+            ]);
+        } elseif ($send_type == 2) {
+            $rules = array_merge($rules,[
+                ['field' => 'attach_file', 'label' => '쪽지수신파일', 'rules' => 'callback_validateFileRequired[attach_file]'],
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->messageModel->addMessage($this->_reqP(null,false));
+
+        /*$this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);*/
+        $this->json_result($result, '저장 되었습니다.', $result);
+
         /**
          * send_type
          * 1 : 입력폼기준 검색
          * 2 : 첨부파일기준 검색
          */
-        $set_mem_id = '';
+        /*$set_mem_id = '';
         $return_count = [];
         switch ($send_type) {
             case "1" :
@@ -189,12 +203,12 @@ class Message extends \app\controllers\BaseController
         if ($this->validate($rules) === false) {
             return;
         }
-        $set_mem_id = substr($set_mem_id , 0, -1);
+        $set_mem_id = substr($set_mem_id , 0, -1);*/
 
         /**
          * 데이터 등록
          */
-        $inputData = $this->_setInputData($this->_reqP(null, false));
+        /*$inputData = $this->_setInputData($this->_reqP(null, false));
         if ($send_option == $this->_send_option_ccd[0]) {
             $inputData = array_merge($inputData, ['SendDatm' => date('Y-m-d H:i:s')]);
         } else {
@@ -208,12 +222,9 @@ class Message extends \app\controllers\BaseController
             'RegIp' => $this->input->ip_address()
         ]);
 
-        print_r($inputData);
-        exit;
-
         $result = $this->messageModel->addMessage($inputData, $set_mem_id, $this->_send_type);
 
-        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);
+        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);*/
     }
 
     /**

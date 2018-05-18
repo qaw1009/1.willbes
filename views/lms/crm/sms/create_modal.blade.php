@@ -24,13 +24,6 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="form-group">
-                        <input type="checkbox" name="datest[]" class="flat" value="1">
-                        <input type="checkbox" name="datest[]" class="flat" value="2">
-                        <input type="checkbox" name="datest[]" class="flat" value="3">
-                    </div>
-
-
-                    <div class="form-group">
                         <label class="control-label col-md-4" for="site_code">운영 사이트 <span class="required">*</span></label>
                         <div class="col-md-8 item">
                             {!! html_site_select('', 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
@@ -135,7 +128,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <input type="file" id="attach_file" name="attach_file[]" class="form-control" title="첨부파일"/>
+                                    <input type="file" id="attach_file" name="attach_file" class="form-control" title="첨부파일"/>
                                 </div>
                                 <div class="col-md-4">
                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_file_upload">List Up</button>
@@ -310,7 +303,7 @@
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /*$("#pop_modal").modal('toggle');*/
+                            /!*$("#pop_modal").modal('toggle');*!/
                             location.reload();
                         }
                     }, showValidateError, addValidate, false, 'alert');

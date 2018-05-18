@@ -118,7 +118,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BoardModel $boardModel                                                 Board Model Class
  * @property WCpModel $wcpModel                                                     WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel   Search MasterLecture Model Class
- * @property CrmServiceModel $crmServiceModel                       Search CrmService Model Class
  * @property SmsModel $smsModel                                     Search Sms Model Class
  * @property MessageModel $messageModel                             Search Message Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class

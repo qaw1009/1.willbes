@@ -8,7 +8,7 @@ class SmsModel extends WB_Model
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_site = 'lms_site';
     private $_table_member = 'lms_member';
-    private $_table_member_otherinfo = 'lms_membr_otherinfo';
+    private $_table_member_otherinfo = 'lms_member_otherinfo';
 
     public function __construct()
     {
@@ -108,15 +108,38 @@ class SmsModel extends WB_Model
 
     /**
      * 발송 데이터 등록
-     * @param array $inputData
-     * @param $set_mem_phone
-     * @param $send_type
-     * @return array|bool
+     * @param array $formData
+     * @param $_send_type
+     * @param $_send_type_ccd
+     * @param $_send_status_ccd
+     * @param $_send_option_ccd
+     * @param $_send_text_length_ccd
+     * @return array
      */
-    public function addSms($inputData = [], $set_mem_phone, $send_type)
+    public function addSms($formData = [], $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd)
     {
         $this->_conn->trans_begin();
         try {
+            $get_send_data_count = 0;
+            list($get_send_data, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_phone']);
+
+            $inputData = $this->_setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd);
+
+            if ($formData['send_option_ccd'] == $_send_option_ccd[0]) {
+                $inputData = array_merge($inputData, ['SendDatm' => date('Y-m-d H:i:s')]);
+
+                // 솔루션 호출 구문 시작
+            } else {
+                $send_datm = $formData['send_datm_day'] . ' ' . $formData['send_datm_h'] . ':' . $formData['send_datm_m'] . ':' . '00';
+                $inputData = array_merge($inputData, ['SendDatm' => $send_datm]);
+            }
+
+            $inputData = array_merge($inputData,[
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegDatm' => date('Y-m-d H:i:s'),
+                'RegIp' => $this->input->ip_address()
+            ]);
+
             // 데이터 등록
             if ($this->_conn->set($inputData)->insert($this->_table) === false) {
                 throw new \Exception('등록에 실패했습니다.');
@@ -124,7 +147,7 @@ class SmsModel extends WB_Model
 
             // 등록된 발송식별자
             $send_idx = $this->_conn->insert_id();
-            $result = $this->_addSendReceiveData($send_idx, $set_mem_phone, $send_type);
+            $result = $this->_addSendReceiveData($send_idx, $get_send_data, $_send_type);
             if ($result['result'] != 1) {
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
@@ -132,9 +155,10 @@ class SmsModel extends WB_Model
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
-            return error_result($e);
+            return array(error_result($e), $get_send_data_count);
         }
-        return true;
+
+        return array(true, $get_send_data_count);
     }
 
     /**
@@ -201,6 +225,87 @@ class SmsModel extends WB_Model
     }
 
     /**
+     * Excel 파일 로드
+     * @return array
+     */
+    public function fileUpload()
+    {
+        $result = true;
+        $err_data = [];
+        $return = [];
+
+        try{
+            $this->load->library('upload');
+            $upload_sub_dir = SUB_DOMAIN . '/send/sms/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
+
+            if (empty($uploaded) === true || count($uploaded) <= 0) {
+                throw new \Exception('업로드할 파일이 없습니다.');
+            }
+
+            // 엑셀 데이터 셋팅
+            $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
+
+            // 업로드 파일 삭제
+            @unlink($uploaded[0]['full_path']);
+
+            $return = [
+                'excel_data' => $excel_data
+            ];
+
+        } catch (\Exception $e) {
+            $result = false;
+            $err_data['ret_cd'] = false;
+            $err_data['ret_msg'] = $e->getMessage();
+            $err_data['ret_status'] = '422';
+        }
+
+        return array($result, $err_data, $return);
+    }
+
+    /**
+     * input date 셋팅
+     * @param $formData
+     * @param $_send_type
+     * @param $_send_type_ccd
+     * @param $_send_status_ccd
+     * @param $_send_option_ccd
+     * @param $_send_text_length_ccd
+     * @return array
+     */
+    private function _setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd)
+    {
+        $input_data = [
+            'SendGroupTypeCcd' => $_send_type_ccd[$_send_type],
+            'SiteCode' => element('site_code', $formData),
+            'SendPatternCcd' => element('send_pattern_ccd', $formData),
+            'SendTypeCcd' => (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1],     //LMS
+            'SendOptionCcd' => element('send_option_ccd', $formData),
+            'SendStatusCcd' => (element('send_option_ccd', $formData) == $_send_option_ccd['0']) ? $_send_status_ccd['0'] : $_send_status_ccd['1'],
+            'CsTel' => element('cs_tel', $formData),
+            'Title' => '',
+            'Content' => element('send_content', $formData)
+        ];
+
+        return $input_data;
+    }
+
+    /**
+     * 엑셀 데이터 리턴
+     * @param $file_path
+     * @return array
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     */
+    private function _ExcelReader($file_path)
+    {
+        $this->load->library('excel');
+        $excel_data = $this->excel->readExcel($file_path);
+
+        return $excel_data;
+    }
+
+    /**
      * 발송데이터 상세 데이터 등록
      * @param $send_idx
      * @param $detail_datas
@@ -216,4 +321,61 @@ class SmsModel extends WB_Model
         return $this->_conn->query('SELECT @_result as result')->row_array();
     }
 
+    /**
+     * 수신데이터 셋팅
+     * @param $send_type : [1 : 입력데이터, 2 : 첨부파일]
+     * @param $arr_send_data : 입력데이터
+     * @return array
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     */
+    private function _get_send_detail_data($send_type, $arr_send_data)
+    {
+        $set_send_data = '';
+        $set_send_data_count = [];
+        switch ($send_type) {
+            case "1" :
+                foreach ($arr_send_data as $key => $val) {
+                    if (empty($arr_send_data[$key]) === false) {
+                        $set_send_data_count[$key] = $val;
+                        $set_send_data .= $val.',';
+                    }
+                }
+                break;
+            case "2" :
+                $this->load->library('upload');
+                $upload_sub_dir = SUB_DOMAIN . '/send/sms/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+                $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
+
+                if (!empty($uploaded) === true || count($uploaded) > 0) {
+                    $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
+                    foreach ($excel_data as $key => $val) {
+                        $set_send_data_count[$key] = $val['C'];
+                        $set_send_data .= $val['C'].',';
+                    }
+
+                    // 업로드 파일 삭제
+                    @unlink($uploaded[0]['full_path']);
+                }
+                break;
+
+            default :
+                $set_send_data = '';
+                break;
+        }
+        $set_send_data = substr($set_send_data , 0, -1);
+
+        return array($set_send_data, count($set_send_data_count));
+    }
+
+    /**
+     * 파일명 배열 생성
+     * @param $board_idx
+     * @return array
+     */
+    private function _getAttachImgNames()
+    {
+        $attach_file_names[] = 'send_list_' . date('YmdHis');
+        return $attach_file_names;
+    }
 }

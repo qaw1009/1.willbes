@@ -37,7 +37,7 @@ class Caching_site_menu extends CI_Driver
         ];
 
         $column = '
-            S.SiteCode, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget
+            S.SiteCode, S.SiteName, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget
             , fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
         ';
 
@@ -76,7 +76,7 @@ class Caching_site_menu extends CI_Driver
 
             if ($row['MenuDepth'] > 1) {
                 // $data 배열에 삽입되는 배열 키 생성
-                $child_key = $key1 . '.' . $key2;
+                $child_key = $key1 . '.' . $key2 . '.SiteMenu';
                 foreach (explode('>', $url_route_idx, -1) as $menu_idx) {
                     $child_key .= '.' . $menu_idx . '.Children';
                 }
@@ -85,7 +85,12 @@ class Caching_site_menu extends CI_Driver
                 // 생성된 배열 키로 값 설정
                 array_set($data, $child_key, $arr_menu);
             } else {
-                $data[$key1][$key2][$row['MenuIdx']] = $arr_menu;
+                // 사이트 코드, 사이트 명 설정
+                if (isset($data[$key1][$key2]['SiteCode']) === false) {
+                    $data[$key1][$key2]['SiteCode'] = $row['SiteCode'];
+                    $data[$key1][$key2]['SiteName'] = $row['SiteName'];
+                }
+                $data[$key1][$key2]['SiteMenu'][$row['MenuIdx']] = $arr_menu;
             }
         }
 

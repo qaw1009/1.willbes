@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sms extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'crm/send/sms');
+    protected $models = array('sys/code', 'sys/site', 'crm/crmService', 'crm/send/sms');
     protected $helpers = array();
 
     private $_send_type = 'sms';
@@ -278,24 +278,38 @@ class Sms extends \app\controllers\BaseController
     {
         $field_mem_phone = false;
         $send_type = $this->_reqP('send_type');
-        $data_mem_phone = $this->_reqP('mem_phone[]');
+        $data_mem_phone = $this->_reqP('mem_phone');
         $send_option = $this->_reqP('send_option_ccd');
 
         $rules = [
+            ['field' => 'datest[]', 'label' => 'datest', 'rules' => 'trim|required'],
+            ['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'trim|required'],
+
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],
             ['field' => 'cs_tel', 'label' => '발신번호', 'rules' => 'trim|required|integer'],
+
+
+
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,Y]']
         ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = true;
+        $return_count = ['1'];
+        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);
 
         /**
          * send_type
          * 1 : 전화번호기준 검색
          * 2 : 첨부파일기준 검색
          */
-        $set_mem_phone = '';
+        /*$set_mem_phone = '';
         $return_count = [];
         switch ($send_type) {
             case "1" :
@@ -343,19 +357,19 @@ class Sms extends \app\controllers\BaseController
         if ($this->validate($rules) === false) {
             return;
         }
-        $set_mem_phone = substr($set_mem_phone , 0, -1);
+        $set_mem_phone = substr($set_mem_phone , 0, -1);*/
 
         /**
          * 발송 옵션에 따른 SMS 솔루션 호출 (즉시발송일 경우)
          */
-        if ($send_option == $this->_send_option_ccd[0]) {
+        /*if ($send_option == $this->_send_option_ccd[0]) {
             // 솔루션 호출 구문 시작
-        }
+        }*/
 
         /**
          * 데이터 등록
          */
-        $inputData = $this->_setInputData($this->_reqP(null, false));
+        /*$inputData = $this->_setInputData($this->_reqP(null, false));
         if ($send_option == $this->_send_option_ccd[0]) {
             $inputData = array_merge($inputData, ['SendDatm' => date('Y-m-d H:i:s')]);
         } else {
@@ -370,7 +384,7 @@ class Sms extends \app\controllers\BaseController
         ]);
         $result = $this->smsModel->addSms($inputData, $set_mem_phone, $this->_send_type);
 
-        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);
+        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => count($return_count)]);*/
     }
 
     /**

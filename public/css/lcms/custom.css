@@ -420,6 +420,18 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .no-border-right {
     border-right-width: 0 !important;
 }
+.bdt-line {
+    border-top: 1px solid #ddd;
+}
+.bdr-line {
+    border-right: 1px solid #ddd;
+}
+.bdl-line {
+    border-left: 1px solid #ddd;
+}
+.bdb-line {
+    border-bottom: 1px solid  #ddd;
+}
 
 /* no-margin */
 .no-margin {

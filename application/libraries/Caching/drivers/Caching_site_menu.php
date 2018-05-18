@@ -37,7 +37,7 @@ class Caching_site_menu extends CI_Driver
         ];
 
         $column = '
-            S.SiteCode, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget
+            S.SiteCode, S.SiteName, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget
             , fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
         ';
 
@@ -64,17 +64,34 @@ class Caching_site_menu extends CI_Driver
             // sub domain + ?pass
             $key2 = $key1 . strtolower((starts_with(str_first_pos_after($row['SiteUrl'], '/'), 'pass') === true) ? 'pass' : '');
 
-            $arr_url_route = explode('::', $row['UrlRouteBoth']);
+            list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
                 'MenuName' => $row['MenuName'],
                 'MenuUrl' => $row['MenuUrl'],
                 'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],
-                'UrlRouteIdx' => $arr_url_route[0],
-                'UrlRouteName' => $arr_url_route[1]
+                'UrlRouteIdx' => $url_route_idx,
+                'UrlRouteName' => $url_route_name
             ];
 
-            $data[$key1][$key2][$row['MenuIdx']] = $arr_menu;
+            if ($row['MenuDepth'] > 1) {
+                // $data 배열에 삽입되는 배열 키 생성
+                $child_key = $key1 . '.' . $key2 . '.SiteMenu';
+                foreach (explode('>', $url_route_idx, -1) as $menu_idx) {
+                    $child_key .= '.' . $menu_idx . '.Children';
+                }
+                $child_key .= '.' . $row['MenuIdx'];
+                
+                // 생성된 배열 키로 값 설정
+                array_set($data, $child_key, $arr_menu);
+            } else {
+                // 사이트 코드, 사이트 명 설정
+                if (isset($data[$key1][$key2]['SiteCode']) === false) {
+                    $data[$key1][$key2]['SiteCode'] = $row['SiteCode'];
+                    $data[$key1][$key2]['SiteName'] = $row['SiteName'];
+                }
+                $data[$key1][$key2]['SiteMenu'][$row['MenuIdx']] = $arr_menu;
+            }
         }
 
         return $data;

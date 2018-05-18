@@ -30,9 +30,30 @@ trait InitController
      */
     public function validateRequiredIf($val = '', $target_field = '')
     {
-        $fields = explode(',', $target_field);
+        list($target_name, $target_val) = explode(',', $target_field);
 
-        if ($this->_reqP($fields[0]) == $fields[1] && empty($val) === true) {
+        if ($this->_reqP($target_name) == $target_val && empty($val) === true) {
+            $this->form_validation->set_message(__FUNCTION__, '{field}은(는) 필수입니다.');
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * form input text validation callback method (checkbox, radio 제외)
+     * @param string $val
+     * @param string $field
+     * @return bool
+     */
+    public function validateArrayRequired($val = '', $field = '')
+    {
+        list($field, $chk_cnt) = explode(',', $field);
+
+        $arr_all_cnt = count($this->_reqP($field));
+        $arr_empty_cnt = element('', array_count_values($this->_reqP($field)), 0);
+
+        if (($chk_cnt == 'all' && $arr_empty_cnt != 0) || ($chk_cnt != 'all' && ($arr_all_cnt - $arr_empty_cnt < $chk_cnt))) {
             $this->form_validation->set_message(__FUNCTION__, '{field}은(는) 필수입니다.');
             return false;
         }

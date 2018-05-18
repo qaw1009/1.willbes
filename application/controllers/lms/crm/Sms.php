@@ -282,8 +282,10 @@ class Sms extends \app\controllers\BaseController
         $send_option = $this->_reqP('send_option_ccd');
 
         $rules = [
-            ['field' => 'datest[]', 'label' => 'datest', 'rules' => 'trim|required'],
-            ['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'trim|required'],
+            //['field' => 'datest[]', 'label' => 'datest', 'rules' => 'trim|required'],
+            //['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'trim|required'],
+
+            ['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'callback_validateArrayRequired[mem_phone,1]'],
 
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],

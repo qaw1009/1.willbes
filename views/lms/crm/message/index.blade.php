@@ -12,31 +12,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_send_pattern_ccd">조건</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control" id="search_send_pattern_ccd" name="search_send_pattern_ccd">
-                            <option value="">메세지성격</option>
-                            @foreach($arr_send_pattern_ccd as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-
-                        <select class="form-control" id="search_send_type_ccd" name="search_send_type_ccd">
-                            <option value="">메세지종류</option>
-                            @foreach($arr_send_type_ccd as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-
                         <select class="form-control" id="search_send_status_ccd" name="search_send_status_ccd">
                             <option value="">발송상태</option>
                             @foreach($arr_send_status_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
-                        </select>
-
-                        <select class="form-control" id="search_is_receive" name="search_is_receive">
-                            <option value="">수신여부</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
                         </select>
                     </div>
                 </div>
@@ -47,7 +27,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">ID, 이름, 내용 검색 가능</p>
+                        <p class="form-control-static">내용 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_start_date">발송일</label>
                     <div class="col-md-5 form-inline">
@@ -83,10 +63,7 @@
                     <th>취소</th>
                     <th>NO</th>
                     <th>사이트</th>
-                    <th>메세지성격</th>
-                    {{--<th>메세지종류</th>--}}
                     <th>내용</th>
-                    <th>발신번호</th>
                     <th>발신인</th>
                     <th>발송일</th>
                     <th>발송상태</th>
@@ -132,12 +109,9 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'SiteName'},
-                    {'data' : 'SendPatternCcdName'},
-                    /*{'data' : 'SendTypeCcdName'},*/
                     {'data' : 'Content', 'render' : function(data, type, row, meta){
                             return '<a href="javascript:void(0);" class="btn-send-detail-read mr-20" data-idx="' + row.SendIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'CsTel'},
                     {'data' : 'wAdminName'},
                     {'data' : 'SendDatm'},
                     {'data' : 'SendStatusCcdName', 'render' : function(data, type, row, meta){

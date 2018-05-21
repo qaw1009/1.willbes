@@ -5,8 +5,8 @@
     @stop
 
     @section('layer_header')
-    {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/message/storeSend') }}">
+    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/message/storeSend') }}">--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="send_type" value="1" title="발송타입">
@@ -249,6 +249,15 @@
                     });
                 });
 
+                // 회원검색
+                $('#btn_member_searching').click(function() {
+                    $('#btn_member_searching').setLayer({
+                        "url" : "{{ site_url('crm/sms/listMemberModal') }}",
+                        "width" : "1200",
+                        "modal_id" : "modal_html2"
+                    });
+                });
+
                 // 발송옵션에 따른 설정 변경
                 $regi_form.on('ifChanged ifCreated', 'input[name="send_option_ccd"]:checked', function() {
                     var $send_datm_day = $regi_form.find('input[name="send_datm_day"]');
@@ -269,16 +278,16 @@
                 // 등록
                 $regi_form.submit(function() {
                     var _url = '{{ site_url('/crm/message/storeSend') }}';
-                    /*ajaxSubmit($regi_form, _url, function(ret) {
+                    ajaxSubmit($regi_form, _url, function(ret) {
                         if(ret.ret_cd) {
                             var msg_cnt = ret.ret_data.upload_cnt;
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /!*$("#pop_modal").modal('toggle');*!/
+                            /*$("#pop_modal").modal('toggle');*/
                             location.reload();
                         }
-                    }, showValidateError, addValidate, false, 'alert');*/
+                    }, showValidateError, addValidate, false, 'alert');
                 });
             });
 
@@ -297,7 +306,6 @@
                 }
 
                 return true;
-
             }
         </script>
     @stop

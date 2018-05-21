@@ -28,7 +28,7 @@ class Sms extends \app\controllers\BaseController
         '1' => '640002'
     ];
 
-    // 메시지 발송 옵션 (즉시발송, 예약발송)
+    // 메시지 발송 옵션 (SMS, LMS)
     private $_send_text_length_ccd = [
         '0' => '638001',
         '1' => '638002'
@@ -282,7 +282,7 @@ class Sms extends \app\controllers\BaseController
             ['field' => 'cs_tel', 'label' => '발신번호', 'rules' => 'trim|required|integer'],
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
-            ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,Y]']
+            ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,N]']
         ];
 
         if ($send_type == 1) {

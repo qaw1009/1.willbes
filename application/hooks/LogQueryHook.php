@@ -56,7 +56,7 @@ class LogQueryHook
      */
     private function _makeLogData($idx, $query, $exec_time)
     {
-        $output = '/* Query ' . $idx . ' - ' . date('Y-m-d H:i:s') . ' [Execution Time: ' . round(doubleval($exec_time), 5) . '.s] */' . PHP_EOL;
+        $output = '/* Query ' . $idx . ' - ' . date('Y-m-d H:i:s') . ' [URI: ' . SUB_DOMAIN . '/' . uri_string() . '] [Execution Time: ' . round(doubleval($exec_time), 5) . '.s] */' . PHP_EOL;
         $output .= $query . PHP_EOL;
         $output .= '/*==================================================*/' . PHP_EOL;
 

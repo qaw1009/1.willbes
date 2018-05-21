@@ -120,6 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchWMasterLectureModel $searchWMasterLectureModel   Search MasterLecture Model Class
  * @property SmsModel $smsModel                                     Search Sms Model Class
  * @property MessageModel $messageModel                             Search Message Model Class
+ * @property MailModel $mailModel                                   Search Mail Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class
  *
  *

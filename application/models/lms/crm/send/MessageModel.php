@@ -191,6 +191,39 @@ class MessageModel extends WB_Model
     }
 
     /**
+     * 발송상태일괄 수정
+     * @param array $params
+     * @return array|bool
+     */
+    public function updateSendStatus($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+            $set_send_idx = implode(',', array_keys($params));
+            $set_send_optoin_val = implode(',', array_values($params));
+            $arr_send_idx = explode(',', $set_send_idx);
+            $arr_send_optoin_val = explode(',', $set_send_optoin_val);
+            $set_data = $arr_send_optoin_val[0];
+
+            $this->_conn->set(['SendStatusCcd' => $set_data])->where_in('SendIdx',$arr_send_idx);
+
+            if($this->_conn->update($this->_table)=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 발송데이터 상세 데이터 등록
      * @param $send_idx
      * @param $detail_datas

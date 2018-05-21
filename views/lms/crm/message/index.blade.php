@@ -102,7 +102,7 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             var disabled_type = '';
                             if (row.SendStatusCcd == '{{$arr_send_status_ccd_vals[1]}}') { disabled_type = ''; } else { disabled_type = 'disabled'; }
-                            return '<input type="checkbox" class="flat" name="send_cancel" value="{{$arr_send_status_ccd_vals[2]}}" data-is-best-idx="' + row.SendIdx + '" '+disabled_type+'>';
+                            return '<input type="checkbox" class="flat" name="send_cancel" value="{{$arr_send_status_ccd_vals[2]}}" data-is-idx="' + row.SendIdx + '" '+disabled_type+'>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -148,7 +148,7 @@
                 var _url = "{{ site_url('crm/message/cancelSend/') }}"
 
                 $('input[name="send_cancel"]:checked').each(function() {
-                    $params[$(this).data('is-best-idx')] = $(this).val();
+                    $params[$(this).data('is-idx')] = $(this).val();
                 });
 
                 if (Object.keys($params).length <= '0') {

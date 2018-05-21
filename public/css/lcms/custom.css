@@ -313,6 +313,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .bg-gray-custom {
     background: #ababab !important;
 }
+.bg-white-only {
+    background: #fff !important;
+}
 
 /* text color */
 .gray {

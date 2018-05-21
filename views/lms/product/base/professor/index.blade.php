@@ -56,7 +56,7 @@
                     <th rowspan="2" class="pb-30">등록일</th>
                 </tr>
                 <tr>
-                    <th style="">공지</th>
+                    <th>공지</th>
                     <th>Q&A</th>
                     <th style="border-right-width: 1px;">자료실</th>
                 </tr>

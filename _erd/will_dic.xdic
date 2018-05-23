@@ -15,7 +15,7 @@
   <term name="시간" physicalName="Time"/>
   <term name="일시" description="DateTime" physicalName="Datm"/>
   <term name="아이피" physicalName="Ip"/>
-  <term name="경로" physicalName="Route" physicalDescription=""/>
+  <term name="경로" physicalName="Route" physicalDescription="Route"/>
   <term name="타입" physicalName="Type"/>
   <term name="인증" description="Certification" physicalName="Cert"/>
   <term name="메일" physicalName="Mail"/>
@@ -157,4 +157,10 @@
   <term name="암호화" physicalName="Enc"/>
   <term name="주소" physicalName="Addr1"/>
   <term name="주소상세" physicalName="Addr2"/>
+  <term name="루트" physicalName="Route" physicalDescription="Route"/>
+  <term name="범위" physicalName="Range"/>
+  <term name="유효" physicalName="Valid"/>
+  <term name="발급" physicalName="Issue"/>
+  <term name="채널" physicalName="Channel"/>
+  <term name="기사용" physicalName="Used"/>
 </tm:TermDictionary>

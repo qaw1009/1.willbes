@@ -125,7 +125,7 @@ class SiteModel extends WB_Model
     public function findSiteForModify($site_code)
     {
         $column = '
-            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.PgCcd, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
+            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
@@ -177,6 +177,7 @@ class SiteModel extends WB_Model
                 'SiteName' => element('site_name', $input),
                 'SiteUrl' => element('site_url', $input),
                 'UseDomain' => element('use_domain', $input),
+                'UseMail' => element('site_mail_id', $input) . '@' . element('site_mail_domain', $input),
                 'PgCcd' => element('pg_ccd', $input),
                 'PayMethodCcds' => implode(',', element('pay_method_ccd', $input)),
                 'DeliveryCompCcd' => element('delivery_comp_ccd', $input),
@@ -260,6 +261,7 @@ class SiteModel extends WB_Model
                 'SiteName' => element('site_name', $input),
                 'SiteUrl' => element('site_url', $input),
                 'UseDomain' => element('use_domain', $input),
+                'UseMail' => element('site_mail_id', $input) . '@' . element('site_mail_domain', $input),
                 'PgCcd' => element('pg_ccd', $input),
                 'PayMethodCcds' => implode(',', element('pay_method_ccd', $input)),
                 'DeliveryCompCcd' => element('delivery_comp_ccd', $input),

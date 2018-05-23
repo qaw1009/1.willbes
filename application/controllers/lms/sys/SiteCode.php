@@ -63,6 +63,10 @@ class SiteCode
 
             // 고객센터 전화번호
             $data['CsTels'] = explode('-', $data['CsTel']);
+
+            $data['SiteMailId'] = substr($data['UseMail'], 0, strpos($data['UseMail'], '@'));
+            $data['SiteMailDomain'] = substr($data['UseMail'], strpos($data['UseMail'], '@') + 1);
+            $data['SiteMailDomainCcd'] = (empty($codes['103'][$data['SiteMailDomain']]) === true) ? '' : $data['SiteMailDomain'];
         }
 
         // 사이트 그룹코드 조회
@@ -71,10 +75,13 @@ class SiteCode
         // 사용하는 코드값 조회
         $codes = $this->_CI->codeModel->getCcdInArray(array_values($this->_ccd));
 
+        $mail_domain_ccd = $this->_CI->wCodeModel->getCcd('103');
+
         $this->_CI->load->view('sys/site/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
+            'mail_domain_ccd' => $mail_domain_ccd,
             'site_type_ccd' => element($this->_ccd['SiteType'], $codes),
             'campus_ccd' => element($this->_ccd['Campus'], $codes),
             'site_group_codes' => $site_group_codes,

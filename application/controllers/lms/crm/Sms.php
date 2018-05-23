@@ -12,7 +12,7 @@ class Sms extends \app\controllers\BaseController
     private $_send_type_ccd = [
         'sms' => '641001',
         'message' => '641002',
-        'email' => '641003'
+        'mail' => '641003'
     ];
 
     // 메시지 상태 (성공,예약,취소)

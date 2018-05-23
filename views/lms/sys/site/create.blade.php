@@ -192,6 +192,21 @@
                         <p class="form-control-static"># 0000-0000 형식일경우첫번째, 두번째자리에입력(세번째자리공란처리)</p>
                     </div>
                 </div>
+
+                <div class="form-group form-group-sm">
+                    <label class="control-label col-md-2" for="site_mail_id">대표 이메일
+                    </label>
+                    <div class="col-md-9 item form-inline">
+                        <input type="text" id="site_mail_id" name="site_mail_id" class="form-control" title="메일 아이디" value="" style="width: 160px">
+                        @ <input type="text" id="site_mail_domain" name="site_mail_domain" class="form-control" title="메일 도메인" value="" style="width: 140px">
+                        <select name="site_mail_domain_ccd" id="site_mail_domain_ccd" class="form-control" title="메일 도메인">
+                            @foreach($mail_domain_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-2" for="head_title">사이트 Title
                     </label>
@@ -319,6 +334,13 @@
                         location.replace('{{ site_url('/sys/site/index/code') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
+            });
+
+            $regi_form.find('input[name="site_mail_id"]').val('{{ $data['SiteMailId'] }}');
+            setMailDomain('site_mail_domain_ccd', 'site_mail_domain', '{{ $data['SiteMailDomain'] }}');
+            // 메일 도메인 선택
+            $('select[name=site_mail_domain_ccd]').change(function () {
+                setMailDomain('site_mail_domain_ccd', 'site_mail_domain');
             });
 
             // 로고, 파비콘 삭제

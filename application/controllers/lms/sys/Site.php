@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Site extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code');
+    protected $models = array('sys/wCode', 'sys/code');
     protected $helpers = array('text');
 
     protected $_site = '';

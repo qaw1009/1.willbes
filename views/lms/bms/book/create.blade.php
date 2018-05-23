@@ -284,10 +284,6 @@
             </form>
         </div>
     </div>
-    <!-- cheditor -->
-    <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
-    <script src="/public/vendor/cheditor/cheditor.js"></script>
-    <script src="/public/js/editor_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 

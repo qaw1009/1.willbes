@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="role_desc">설명</span>
+                    <label class="control-label col-md-2" for="role_desc">설명
                     </label>
                     <div class="col-md-7 item">
                         <textarea id="role_desc" name="role_desc" class="form-control" rows="3" title="설명" placeholder="">{{ $data['RoleDesc'] }}</textarea>

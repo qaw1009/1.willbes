@@ -657,7 +657,7 @@ $config['rest_token_limit_time'] = 3600;
 | Rest server url from rest client
 |--------------------------------------------------------------------------
 */
-$config['rest_server'] = 'http://api' . ENV_DOMAIN . '.' . config_item('base_domain');
+$config['rest_server'] = 'https://api' . ENV_DOMAIN . '.' . config_item('base_domain');
 
 /*
 |--------------------------------------------------------------------------

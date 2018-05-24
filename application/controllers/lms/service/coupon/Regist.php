@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coupon extends \app\controllers\BaseController
+class Regist extends \app\controllers\BaseController
 {
     protected $models = array();
     protected $helpers = array();
@@ -51,7 +51,7 @@ class Coupon extends \app\controllers\BaseController
     }
 
     /**
-     * 쿠폰등록/발급 수정폼
+     * 쿠폰 등록/수정폼
      * @param array $params
      */
     public function create($params = [])

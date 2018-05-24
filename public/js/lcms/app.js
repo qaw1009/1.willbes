@@ -449,6 +449,19 @@ function init_base() {
             }
         }, showError, false, 'POST');
     });
+
+    // 기간설정 버튼 클릭
+    $('.btn-set-search-date').click(function() {
+        var period = $(this).data('period');
+        var periods = period.split('-');
+
+        // 날짜 설정
+        setDefaultDatepicker(-periods[0], periods[1], 'search_start_date', 'search_end_date');
+
+        // set active class
+        $('.btn-set-search-date').removeClass('active');
+        $(this).addClass('active');
+    });
 }
 
 function init_board() {

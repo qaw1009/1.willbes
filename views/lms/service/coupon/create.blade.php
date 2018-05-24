@@ -26,7 +26,7 @@
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                     </div>
                     <div class="col-md-7">
-                        <p class="form-control-static"># 최초 등록 후 운영사이트, 카테고리, 마스터강의 정보는 수정이 불가능합니다.</p>
+                        <p class="form-control-static"># 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -68,32 +68,49 @@
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">
-                            <input type="radio" id="apply_type_ccd_1" name="apply_type_ccd" class="flat" value="1" title="쿠폰적용구분" required="required" @if($method == 'POST' || $data['ApplyTypeCcd'] == '1')checked="checked"@endif/> <label for="apply_type_ccd_1" class="input-label">온라인강좌</label>
-                            <input type="radio" id="apply_type_ccd_2" name="apply_type_ccd" class="flat" value="2" @if($data['ApplyTypeCcd'] == '2')checked="checked"@endif/> <label for="apply_type_ccd_2" class="input-label">수강연장</label>
+                            <input type="radio" id="apply_type_ccd_1" name="apply_type_ccd" data-input="on:range:on" class="flat" value="1" title="쿠폰적용구분" required="required" @if($method == 'POST' || $data['ApplyTypeCcd'] == '1')checked="checked"@endif/> <label for="apply_type_ccd_1" class="input-label">온라인강좌</label>
+                            <input type="radio" id="apply_type_ccd_2" name="apply_type_ccd" data-input="on:range:on" class="flat" value="2" @if($data['ApplyTypeCcd'] == '2')checked="checked"@endif/> <label for="apply_type_ccd_2" class="input-label">수강연장</label>
+                            <input type="radio" id="apply_type_ccd_3" name="apply_type_ccd" data-input="on:range:on" class="flat" value="3" @if($data['ApplyTypeCcd'] == '3')checked="checked"@endif/> <label for="apply_type_ccd_3" class="input-label">배수</label>
+                            <input type="radio" id="apply_type_ccd_4" name="apply_type_ccd" data-input="off:range:off" class="flat" value="4" @if($data['ApplyTypeCcd'] == '4')checked="checked"@endif/> <label for="apply_type_ccd_4" class="input-label">학원강좌</label>
+                            <input type="radio" id="apply_type_ccd_5" name="apply_type_ccd" data-input="no:range:book" class="flat" value="5" @if($data['ApplyTypeCcd'] == '5')checked="checked"@endif/> <label for="apply_type_ccd_5" class="input-label">교재</label>
+                            <input type="radio" id="apply_type_ccd_6" name="apply_type_ccd" data-input="no:no:no" class="flat" value="6" @if($data['ApplyTypeCcd'] == '6')checked="checked"@endif/> <label for="apply_type_ccd_6" class="input-label">배송료</label>
+                            <input type="radio" id="apply_type_ccd_7" name="apply_type_ccd" data-input="no:mock_exam:mock_exam" class="flat" value="7" @if($data['ApplyTypeCcd'] == '7')checked="checked"@endif/> <label for="apply_type_ccd_7" class="input-label">전국모의고사</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="apply_detail_ccd_1">쿠폰상세구분 <span class="required">*</span>
+                <div id="detail_on" class="form-group form-apply-input">
+                    <label class="control-label col-md-2" for="apply_detail_ccd_11">쿠폰상세구분 <span class="required">*</span>
                     </label>
-                    <div class="col-md-9 item">
-                        <div class="radio">
-                            <input type="checkbox" id="apply_detail_ccd_1" name="apply_detail_ccd[]" class="flat" value="1" title="쿠폰상세구분" required="required" @if($method == 'POST' || $data['ApplyDetailCcd'] == '1')checked="checked"@endif/> <label for="apply_detail_ccd_1" class="input-label">단강좌</label>
-                            <input type="checkbox" id="apply_detail_ccd_2" name="apply_detail_ccd[]" class="flat" value="2" @if($data['ApplyDetailCcd'] == '2')checked="checked"@endif/> <label for="apply_detail_ccd_2" class="input-label">운영자패키지</label>
+                    <div class="col-md-9">
+                        <div class="radio item">
+                            <input type="checkbox" id="apply_detail_ccd_11" name="apply_detail_ccd[]" class="flat" value="11" title="쿠폰상세구분" required="required" @if($data['ApplyDetailCcd'] == '11')checked="checked"@endif/> <label for="apply_detail_ccd_11" class="input-label">단강좌</label>
+                            <input type="checkbox" id="apply_detail_ccd_12" name="apply_detail_ccd[]" class="flat" value="12" @if($data['ApplyDetailCcd'] == '12')checked="checked"@endif/> <label for="apply_detail_ccd_12" class="input-label">운영자패키지</label>
+                            <input type="checkbox" id="apply_detail_ccd_13" name="apply_detail_ccd[]" class="flat" value="13" @if($data['ApplyDetailCcd'] == '13')checked="checked"@endif/> <label for="apply_detail_ccd_13" class="input-label">기간제패키지</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div id="detail_off" class="form-group form-apply-input hide">
+                    <label class="control-label col-md-2" for="apply_detail_ccd_11">쿠폰상세구분 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <div class="radio item">
+                            <input type="checkbox" id="apply_detail_ccd_21" name="apply_detail_ccd[]" class="flat" value="21" title="쿠폰상세구분" required="required" @if($data['ApplyDetailCcd'] == '21')checked="checked"@endif/> <label for="apply_detail_ccd_21" class="input-label">단과반</label>
+                            <input type="checkbox" id="apply_detail_ccd_22" name="apply_detail_ccd[]" class="flat" value="22" @if($data['ApplyDetailCcd'] == '22')checked="checked"@endif/> <label for="apply_detail_ccd_22" class="input-label">종합반</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="apply_range" class="form-group form-apply-input hide">
                     <label class="control-label col-md-2" for="apply_range_ccd_1">적용범위 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">
-                            <input type="radio" id="apply_range_ccd_1" name="apply_range_ccd" class="flat" value="1" title="적용범위" required="required" @if($method == 'POST' || $data['ApplyRangeCcd'] == '1')checked="checked"@endif/> <label for="apply_range_ccd_1" class="input-label">전체</label>
-                            <input type="radio" id="apply_range_ccd_2" name="apply_range_ccd" class="flat" value="2" @if($data['ApplyRangeCcd'] == '2')checked="checked"@endif/> <label for="apply_range_ccd_2" class="input-label">항목별</label>
+                            <input type="radio" id="apply_range_ccd_1" name="apply_range_ccd" data-input="no" class="flat" value="1" title="적용범위" required="required" @if($method == 'POST' || $data['ApplyRangeCcd'] == '1')checked="checked"@endif/> <label for="apply_range_ccd_1" class="input-label">전체</label>
+                            <input type="radio" id="apply_range_ccd_2" name="apply_range_ccd" data-input="item" class="flat" value="2" @if($data['ApplyRangeCcd'] == '2')checked="checked"@endif/> <label for="apply_range_ccd_2" class="input-label">항목별</label>
+                            <input type="radio" id="apply_range_ccd_3" name="apply_range_ccd" data-input="product" class="flat" value="3" @if($data['ApplyRangeCcd'] == '3')checked="checked"@endif/> <label for="apply_range_ccd_3" class="input-label">특정상품</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div id="apply_item" class="form-group form-range-input hide">
                     <label class="control-label col-md-2" for="school_year">항목별 적용
                     </label>
                     <div class="col-md-9">
@@ -131,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div id="apply_product" class="form-group form-range-input hide">
                     <label class="control-label col-md-2">특정상품적용
                     </label>
                     <div class="col-md-9 form-inline">
@@ -143,7 +160,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div id="apply_mock_exam" class="form-group form-apply-input hide">
                     <label class="control-label col-md-2">모의고사
                     </label>
                     <div class="col-md-9 form-inline">
@@ -201,8 +218,8 @@
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">
-                            <input type="radio" id="is_issue_y" name="is_issue" class="flat" value="Y" required="required" title="발급여부" @if($method == 'POST' || $data['IsIssue'] == 'Y')checked="checked"@endif/> <label for="is_issue_y" class="input-label">사용</label>
-                            <input type="radio" id="is_issue_n" name="is_issue" class="flat" value="N" @if($data['IsIssue'] == 'N')checked="checked"@endif/> <label for="is_issue_n" class="input-label">미사용</label>
+                            <input type="radio" id="is_issue_y" name="is_issue" class="flat" value="Y" required="required" title="발급여부" @if($method == 'POST' || $data['IsIssue'] == 'Y')checked="checked"@endif/> <label for="is_issue_y" class="input-label">발급</label>
+                            <input type="radio" id="is_issue_n" name="is_issue" class="flat" value="N" @if($data['IsIssue'] == 'N')checked="checked"@endif/> <label for="is_issue_n" class="input-label">미발급</label>
                         </div>
                     </div>
                 </div>
@@ -244,12 +261,12 @@
         $(document).ready(function() {
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url('/service/coupon/store') }}';
+                var _url = '{{ site_url('/service/coupon/regist/store') }}';
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/service/coupon/index') }}' + getQueryString());
+                        location.replace('{{ site_url('/service/coupon/regist/index') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
@@ -275,6 +292,32 @@
                 });
             });
 
+            // 쿠폰적용구분 선택
+            $regi_form.on('ifChanged ifCreated', 'input[name="apply_type_ccd"]:checked', function() {
+                var arr_set = $(this).data('input').split(':');
+
+                // input 초기화
+                $('.form-apply-input').removeClass('show').addClass('hide');
+
+                // 쿠폰상세구분
+                arr_set[0] !== 'no' && $('#detail_' + arr_set[0]).addClass('show');
+                // 적용범위
+                arr_set[1] === 'range' && $('#apply_range').addClass('show');
+                // 모의고사
+                arr_set[1] === 'mock_exam' && $('#apply_mock_exam').addClass('show');
+            });
+
+            // 적용범위 선택
+            $regi_form.on('ifChanged ifCreated', 'input[name="apply_range_ccd"]:checked', function() {
+                var set_val = $(this).data('input');
+
+                // input 초기화
+                $('.form-range-input').removeClass('show').addClass('hide');
+
+                // 쿠폰상세구분
+                set_val !== 'no' && $('#apply_' + set_val).addClass('show');
+            });
+
             // 과정, 과목, 교수 자동 변경
             $regi_form.find('select[name="course_idx"]').chained("#site_code");
             $regi_form.find('select[name="subject_idx"]').chained("#site_code");
@@ -282,7 +325,7 @@
 
             // 목록 이동
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/service/coupon/index') }}' + getQueryString());
+                location.replace('{{ site_url('/service/coupon/regist/index') }}' + getQueryString());
             });
         });
     </script>

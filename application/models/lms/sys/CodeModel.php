@@ -13,15 +13,17 @@ class CodeModel extends WB_Model
     /**
      * 그룹공통코드에 해당하는 공통코드 조회
      * @param $group_ccd
+     * @param array $add_condition
      * @return array
      */
-    public function getCcd($group_ccd)
+    public function getCcd($group_ccd, $add_condition = [])
     {
-        $data = $this->_conn->getListResult($this->_table, 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName', [
-            'EQ' => ['GroupCcd' => $group_ccd, 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'OrderNum' => 'asc'
-        ]);
+        $column = 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName';
+
+        $arr_condition = ['EQ' => ['GroupCcd' => $group_ccd, 'IsUse' => 'Y', 'IsStatus' => 'Y']];
+        empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
+
+        $data = $this->_conn->getListResult($this->_table, $column, $arr_condition, null, null, ['OrderNum' => 'asc']);
 
         return array_pluck($data, 'CcdName', 'Ccd');
     }
@@ -29,16 +31,17 @@ class CodeModel extends WB_Model
     /**
      * 그룹공통코드 배열에 해당하는 공통코드 조회
      * @param array $group_ccds
+     * @param array $add_condition
      * @return array
      */
-    public function getCcdInArray($group_ccds = [])
+    public function getCcdInArray($group_ccds = [], $add_condition = [])
     {
-        $data = $this->_conn->getListResult($this->_table, 'GroupCcd, if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName', [
-            'IN' => ['GroupCcd' => $group_ccds],
-            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'GroupCcd' => 'asc', 'OrderNum' => 'asc'
-        ]);
+        $column = 'GroupCcd, if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName';
+
+        $arr_condition = ['IN' => ['GroupCcd' => $group_ccds], 'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
+
+        $data = $this->_conn->getListResult($this->_table, $column, $arr_condition, null, null, ['GroupCcd' => 'asc', 'OrderNum' => 'asc']);
 
         $codes = [];
         foreach ($data as $rows) {

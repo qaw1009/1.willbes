@@ -166,4 +166,8 @@
   <term name="배포" physicalName="Deploy"/>
   <term name="허용" physicalName="Allow"/>
   <term name="[일]" physicalName="Day"/>
+  <term name="[핀]" physicalName="Pin"/>
+  <term name="번호" physicalName="No"/>
+  <term name="취소" physicalName="Cancel"/>
+  <term name="회수" physicalName="Retire"/>
 </tm:TermDictionary>

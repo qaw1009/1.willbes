@@ -170,4 +170,5 @@
   <term name="번호" physicalName="No"/>
   <term name="취소" physicalName="Cancel"/>
   <term name="회수" physicalName="Retire"/>
+  <term name="사용자" physicalName="User"/>
 </tm:TermDictionary>

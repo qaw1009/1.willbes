@@ -163,4 +163,7 @@
   <term name="발급" physicalName="Issue"/>
   <term name="채널" physicalName="Channel"/>
   <term name="기사용" physicalName="Used"/>
+  <term name="배포" physicalName="Deploy"/>
+  <term name="허용" physicalName="Allow"/>
+  <term name="[일]" physicalName="Day"/>
 </tm:TermDictionary>

@@ -13,8 +13,8 @@
 
         <div class="x_content">
             {!! form_errors() !!}
-            {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url('/crm/mail/storeSend') }}?bm_idx=45" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+            {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url('/crm/mail/storeSend/') }}" novalidate>--}}
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="send_type" value="1" title="발송타입">
@@ -64,16 +64,20 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="send_content">내용<span class="required">*</span></label>
-                    <div class="col-md-9 item">
-                        <textarea id="send_content" name="send_content" class="form-control" rows="10" title="내용" placeholder="" required="required"></textarea>
+                    <div class="col-md-9">
+                        <textarea id="send_content" name="send_content" class="form-control" rows="10" title="내용" placeholder=""></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="advertise_agree_content">광고동의문구</label>
                     <div class="col-md-9">
-                        <textarea id="advertise_agree_content" name="advertise_agree_content" class="form-control" rows="5" title="광고동의문구" placeholder="{{$advertise_placeholder}}"></textarea>
-                        {{--<textarea id="advertise_agree_content" name="advertise_agree_content" class="form-control" rows="5" title="광고동의문구" placeholder="">{{$advertise_placeholder}}</textarea>--}}
+                        <textarea id="advertise_agree_content" name="advertise_agree_content" class="form-control" rows="5" title="광고동의문구" placeholder="{!! $advertise_placeholder !!}"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-11 text-right">
+                        <span class="red">*</span>링크는 반드시 <span class="blue">[수신거부]</span>, <span class="blue">[HERE]</span> 으로 입력합니다.
                     </div>
                 </div>
 
@@ -100,7 +104,7 @@
                                     <div class="tab-content">
                                         <div id="content_1" class="form-group tab-pane fade in active">
                                             <div class="form-group">
-                                                <label class="control-label col-md-2" for="content" style="text-align: left !important;">수신번호 입력</label>
+                                                <label class="control-label col-md-2" for="content" style="text-align: left !important;">수신메일 입력</label>
                                                 <div class="col-md-3">
                                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_member_searching">회원검색</button>
                                                 </div>
@@ -120,10 +124,10 @@
                                                             <tr>
                                                                 <td>{{$i}}</td>
                                                                 <td>
-                                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control" title="수신번호" value="" maxlength="6" style="width: 100px;">
+                                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control" title="수신메일" value="" maxlength="6" style="width: 100px;">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="mem_mail_{{$i}}" name="mem_mail[]" class="form-control" title="수신번호" value="">
+                                                                    <input type="text" id="mem_mail_{{$i}}" name="mem_mail[]" class="form-control" title="수신메일" value="">
                                                                 </td>
                                                             </tr>
                                                         @endfor
@@ -144,10 +148,10 @@
                                                             <tr>
                                                                 <td>{{$i}}</td>
                                                                 <td>
-                                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control" title="수신번호" value="" maxlength="6" style="width: 100px;">
+                                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control" title="수신메일" value="" maxlength="6" style="width: 100px;">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="mem_mail_{{$i}}" name="mem_mail[]" class="form-control" title="수신번호" value="">
+                                                                    <input type="text" id="mem_mail_{{$i}}" name="mem_mail[]" class="form-control" title="수신메일" value="">
                                                                 </td>
                                                             </tr>
                                                         @endfor
@@ -159,7 +163,7 @@
 
                                         <div id="content_2" class="form-group tab-pane fade">
                                             <div class="form-group">
-                                                <label class="control-label col-md-2" for="content" style="text-align: left !important;">수신번호 등록</label>
+                                                <label class="control-label col-md-2" for="content" style="text-align: left !important;">수신메일 등록</label>
                                                 <div class="col-md-4">
                                                     <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_sample_file_download">양식다운로드</button>
                                                 </div>
@@ -265,18 +269,17 @@
 
         $(document).ready(function() {
             //editor load
-            var $editor_profile = new cheditor();
-            $editor_profile.config.editorHeight = '300px';
-            $editor_profile.config.editorWidth = '100%';
-            $editor_profile.inputForm = 'send_content';
-            $editor_profile.run();
+            var $editor_content = new cheditor();
+            $editor_content.config.editorHeight = '300px';
+            $editor_content.config.editorWidth = '100%';
+            $editor_content.inputForm = 'send_content';
+            $editor_content.run();
 
             // 광고성 값에 따른 광고동의문구활성,비활성
             var advertise_placeholder = '{{$advertise_placeholder}}';
             var rep_advertise_placeholder = advertise_placeholder.replace(/&#13;&#10;/g,'\r\n');
             $regi_form.on('ifChanged ifCreated', 'input[name="advertise_pattern_ccd"]:checked', function() {
                 if ($(this).data('advertise-type') === 1) {
-                    console.log('1');
                     $('#advertise_agree_content').attr('placeholder', '');
                     $('#advertise_agree_content').val(rep_advertise_placeholder);
                 } else {
@@ -306,18 +309,21 @@
                     $send_datm_m.prop('disabled', true);
                 }
             });
-        });
 
-        // ajax submit
-        $regi_form.submit(function() {
-            var _url = '{{ site_url('/crm/mail/storeSend/') }}';
+            $regi_form.submit(function() {
+                getEditorBodyContent($editor_content);
+                var _url = '{{ site_url('/crm/mail/storeSend') }}';
 
-            ajaxSubmit($regi_form, _url, function(ret) {
-                if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    location.replace('{{ site_url('/crm/mail/') }}' + getQueryString());
-                }
-            }, showValidateError, null, false, 'alert');
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        var msg_cnt = ret.ret_data.upload_cnt;
+                        var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
+
+                        notifyAlert('success', '알림', msg);
+                        location.replace('{{ site_url('/crm/mail/') }}' + getQueryString());
+                    }
+                }, showValidateError, addValidate, false, 'alert');
+            });
         });
 
         // 운영사이트 변경
@@ -331,11 +337,32 @@
                     '_method': 'POST'
                 };
                 sendAjax(_url, _data, function (ret) {
-                    var cs_tel = ret.cs_tel.replace('-', '');
-                    $('#send_mail').val(cs_tel);
+                    $('#send_mail').val(ret.site_mail);
                 }, showError, false, 'POST');
             }
         });
+
+        function test() {
+            return true;
+        }
+
+        function addValidate() {
+            var flag = false;
+            var send_type = $("input[name='send_type']").val();
+            var mem_mail_length = $("input[name='mem_mail[]']").length;
+
+            for(var i=0; i<mem_mail_length; i++) {
+                if ($("input[name='mem_mail[]']")[i].value) {flag = true;}
+            }
+
+            if (send_type == 1 && flag === false) {
+                alert('수신정보(메일)은 필수입니다.');
+                return false;
+            }
+
+            return true;
+
+        }
 
         // 회원검색
         $('#btn_member_searching').click(function() {

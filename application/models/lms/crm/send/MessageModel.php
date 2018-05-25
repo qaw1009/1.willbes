@@ -324,10 +324,6 @@ class MessageModel extends WB_Model
             $input_data = array_merge($input_data,[
                 'SendAttachFileName' => $uploaded[0]['orig_name']
             ]);
-
-            /*$set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
-            $set_board_attach_data['AttachFileName'] = $uploaded[$key]['orig_name'];
-            $set_board_attach_data['AttachRealFileName'] = $uploaded[$key]['client_name'];*/
         }
 
         return $input_data;

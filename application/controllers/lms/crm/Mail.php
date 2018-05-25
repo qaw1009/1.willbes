@@ -8,6 +8,9 @@ class Mail extends \app\controllers\BaseController
 
     private $_send_type = 'mail';
 
+    //수신거부링크주소
+    private $_advertise_link = 'http://willbes.net';
+
     // 메세지 발송 종류 (SMS,쪽지,메일)
     private $_send_type_ccd = [
         'sms' => '641001',
@@ -26,6 +29,11 @@ class Mail extends \app\controllers\BaseController
     private $_send_option_ccd = [
         '0' => '640001',
         '1' => '640002'
+    ];
+
+    private $_send_advertise_pattern_ccd = [
+        '0' => '643001',
+        '1' => '643002'
     ];
 
     private $_groupCcd = [
@@ -109,7 +117,7 @@ class Mail extends \app\controllers\BaseController
         $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd'], $this->_groupCcd['AdvertisePatternCcd']]);
         $advertise_placeholder = "본메일은 정보통신망법률 등 관련 규정에 의거하여 회원님께서 윌비스 이메일 수신동의를 하셨기에 발송되었습니다.";
         $advertise_placeholder .= "&#13;&#10;만약 메일 수신을 원치않으시면 [수신거부]를 눌러주십시오.";
-        $advertise_placeholder .= "&#13;&#10;If you do not want to receive emails from us, please click.[HERE].";
+        $advertise_placeholder .= "&#13;&#10;If you do not want to receive emails from us, please click. [HERE].";
 
         $method = 'POST';
         $set_row_count = '12';
@@ -137,14 +145,17 @@ class Mail extends \app\controllers\BaseController
             ['field' => 'send_mail', 'label' => '발송 메일', 'rules' => 'trim|required'],
             ['field' => 'advertise_pattern_ccd', 'label' => '광고성 유무', 'rules' => 'trim|required'],
             ['field' => 'send_title', 'label' => '제목', 'rules' => 'trim|required'],
+
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
+
             ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,N]']
         ];
 
         if ($send_type == 1) {
             $rules = array_merge($rules,[
-                ['field' => 'mem_mail[]', 'label' => '수신정보', 'rules' => 'callback_validateArrayRequired[mem_mail,1]'],
+                ['field' => 'mem_name[]', 'label' => '수신정보 이름', 'rules' => 'callback_validateArrayRequired[mem_name,1]'],
+                ['field' => 'mem_mail[]', 'label' => '수신정보 메일', 'rules' => 'callback_validateArrayRequired[mem_mail,1]|valid_email'],
             ]);
         } elseif ($send_type == 2) {
             $rules = array_merge($rules,[
@@ -155,6 +166,11 @@ class Mail extends \app\controllers\BaseController
         if ($this->validate($rules) === false) {
             return;
         }
+
+        list($result, $return_count) = $this->mailModel->addMail($this->_reqP(null,false),
+            $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_advertise_pattern_ccd, $this->_advertise_link);
+
+        $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => $return_count]);
     }
 
     /**
@@ -166,9 +182,9 @@ class Mail extends \app\controllers\BaseController
     {
         $site_code = $params[0];
         // 사이트 고객센터전화번호
-        $result = $this->siteModel->findSite('CsTel', ['EQ' => ['SiteCode' => $site_code]]);
+        $result = $this->siteModel->findSite('UseMail', ['EQ' => ['SiteCode' => $site_code]]);
         return $this->response([
-            'cs_tel' => $result['CsTel']
+            'site_mail' => $result['UseMail']
         ]);
     }
 

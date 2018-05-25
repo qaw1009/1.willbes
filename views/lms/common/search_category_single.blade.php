@@ -7,7 +7,9 @@
 @section('layer_header')
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <input type="hidden" name="site_code" value="{{ $site_code }}"/>
+        @foreach($arr_param as $key => $val)
+            <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+        @endforeach
 @endsection
 
 @section('layer_content')

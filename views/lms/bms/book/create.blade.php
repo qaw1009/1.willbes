@@ -316,7 +316,7 @@
                 }
 
                 $('#btn_category_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCategory/index/') }}' + site_code,
+                    'url' : '{{ site_url('/common/searchCategory/index/single/site_code/') }}' + site_code,
                     'width' : 900
                 });
             });

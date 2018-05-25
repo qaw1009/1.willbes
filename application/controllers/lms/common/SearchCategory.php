@@ -17,8 +17,14 @@ class SearchCategory extends \app\controllers\BaseController
      */
     public function index($params = [])
     {
-        $this->load->view('common/search_category', [
-            'site_code' => element('0', $params, '')
+        // 1번째 원소 리턴
+        $view_postfix = array_shift($params);
+
+        // 배열 원소를 2개씩 나누어 1번째는 키, 2번째는 값으로 구성된 파라미터 배열 생성
+        $arr_param = array_pluck(array_chunk($params, 2), '1', '0');
+
+        $this->load->view('common/search_category_' . $view_postfix, [
+            'arr_param' => $arr_param
         ]);
     }
 
@@ -29,7 +35,11 @@ class SearchCategory extends \app\controllers\BaseController
     public function listAjax()
     {
         $arr_condition = [
-            'EQ' => ['S.SiteCode' => $this->_reqP('site_code')],
+            'EQ' => [
+                'S.SiteCode' => $this->_reqP('site_code'),
+                'C.CateDepth' => $this->_reqP('cate_depth'),
+                'C.IsUse' => $this->_reqP('is_use'),
+            ],
             'ORG' => [
                 'LKB' => [
                     'C.CateCode' => $this->_reqP('search_value'),

@@ -187,50 +187,6 @@ class SmsModel extends WB_Model
 
         return array(true, $get_send_data_count);
     }
-    /*public function addSms($formData = [], $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd)
-    {
-        $this->_conn->trans_begin();
-        try {
-            $get_send_data_count = 0;
-            list($get_send_data, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_phone']);
-
-            $inputData = $this->_setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd, $_send_text_length_ccd);
-
-            if ($formData['send_option_ccd'] == $_send_option_ccd[0]) {
-                $inputData = array_merge($inputData, ['SendDatm' => date('Y-m-d H:i:s')]);
-
-                // 솔루션 호출 구문 시작
-            } else {
-                $send_datm = $formData['send_datm_day'] . ' ' . $formData['send_datm_h'] . ':' . $formData['send_datm_m'] . ':' . '00';
-                $inputData = array_merge($inputData, ['SendDatm' => $send_datm]);
-            }
-
-            $inputData = array_merge($inputData,[
-                'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                'RegDatm' => date('Y-m-d H:i:s'),
-                'RegIp' => $this->input->ip_address()
-            ]);
-
-            // 데이터 등록
-            if ($this->_conn->set($inputData)->insert($this->_table) === false) {
-                throw new \Exception('등록에 실패했습니다.');
-            }
-
-            // 등록된 발송식별자
-            $send_idx = $this->_conn->insert_id();
-            $result = $this->_addSendReceiveData($send_idx, $get_send_data, $_send_type);
-            if ($result['result'] != 1) {
-                throw new \Exception('상세 정보 등록에 실패했습니다.');
-            }
-
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return array(error_result($e), $get_send_data_count);
-        }
-
-        return array(true, $get_send_data_count);
-    }*/
 
     /**
      * 발송상태일괄 수정
@@ -377,22 +333,6 @@ class SmsModel extends WB_Model
     }
 
     /**
-     * 발송데이터 상세 데이터 등록
-     * @param $send_idx
-     * @param $detail_datas
-     * @param string $send_type
-     * @return mixed
-     */
-    private function _addSendReceiveData($send_idx, $detail_datas, $send_type = '')
-    {
-        $this->_conn->query('CALL sp_send_detail_insert(?, ?, ?, ?, @_result)', [
-            $send_idx, $detail_datas, ',', $send_type
-        ]);
-
-        return $this->_conn->query('SELECT @_result as result')->row_array();
-    }
-
-    /**
      * 수신데이터 셋팅
      * @param $send_type : [1 : 입력데이터, 2 : 첨부파일]
      * @param $arr_send_data : 입력데이터
@@ -403,7 +343,6 @@ class SmsModel extends WB_Model
      */
     private function _get_send_detail_data($send_type, $arr_send_data, $arr_send_data_name)
     {
-        /*$set_send_data = '';*/
         $set_send_data = [];
         $set_send_data_name = [];
         $set_send_data_count = [];
@@ -412,7 +351,6 @@ class SmsModel extends WB_Model
                 foreach ($arr_send_data as $key => $val) {
                     if (empty($arr_send_data[$key]) === false) {
                         $set_send_data_count[$key] = $val;
-                        /*$set_send_data .= $val.',';*/
                         $set_send_data[$key] = $val;
                         $set_send_data_name[$key] = $arr_send_data_name[$key];
                     }
@@ -428,7 +366,6 @@ class SmsModel extends WB_Model
                     $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
                     foreach ($excel_data as $key => $val) {
                         $set_send_data_count[$key] = $val['C'];
-                        /*$set_send_data .= $val['C'].',';*/
                         $set_send_data[$i] = $val['B'];
                         $set_send_data_name[$i] = $val['A'];
                         $i++;
@@ -440,12 +377,10 @@ class SmsModel extends WB_Model
                 break;
 
             default :
-                /*$set_send_data = '';*/
                 $set_send_data = [];
                 $set_send_data_name = [];
                 break;
         }
-        /*$set_send_data = substr($set_send_data , 0, -1);*/
 
         return array($set_send_data, $set_send_data_name, count($set_send_data_count));
     }

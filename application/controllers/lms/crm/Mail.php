@@ -65,23 +65,24 @@ class Mail extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'SMS.SendGroupTypeCcd' => $this->_send_type_ccd[$this->_send_type],
-                'SMS.SiteCode' => $this->_reqP('search_site_code'),
-                'SMS.SendPatternCcd' => $this->_reqP('search_send_pattern_ccd'),
-                'SMS.SendTypeCcd' => $this->_reqP('search_send_type_ccd'),
-                'SMS.SendStatusCcd' => $this->_reqP('search_send_status_ccd'),
-                'SMS.IsStatus' => 'Y',
+                'MAIL.SendGroupTypeCcd' => $this->_send_type_ccd[$this->_send_type],
+                'MAIL.SiteCode' => $this->_reqP('search_site_code'),
+                'MAIL.SendPatternCcd' => $this->_reqP('search_send_pattern_ccd'),
+                'MAIL.SendTypeCcd' => $this->_reqP('search_send_type_ccd'),
+                'MAIL.SendStatusCcd' => $this->_reqP('search_send_status_ccd'),
+                'MAIL.IsStatus' => 'Y',
             ],
             'ORG' => [
                 'LKB' => [
-                    'SMS.Content' => $this->_reqP('search_value')
+                    'MAIL.Title' => $this->_reqP('search_value'),
+                    'MAIL.Content' => $this->_reqP('search_value')
                 ]
             ]
         ];
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
-                'BDT' => ['SMS.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                'BDT' => ['MAIL.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
             ]);
         }
 
@@ -89,16 +90,16 @@ class Mail extends \app\controllers\BaseController
         $count = $this->mailModel->listMail(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->mailModel->listMail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SMS.SendIdx' => 'desc']);
+            $list = $this->mailModel->listMail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['MAIL.SendIdx' => 'desc']);
 
             // 사용하는 코드값 조회
-            $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendTypeCcd'], $this->_groupCcd['SendStatusCcd']]);
+            $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendTypeCcd'], $this->_groupCcd['SendStatusCcd'], $this->_groupCcd['AdvertisePatternCcd']]);
 
             // 코드값에 해당하는 코드명을 배열 원소로 추가
             $list = array_data_fill($list, [
                 'SendPatternCcdName' => ['SendPatternCcd' => $arr_codes[$this->_groupCcd['SendPatternCcd']]],
                 'SendStatusCcdName' => ['SendStatusCcd' => $arr_codes[$this->_groupCcd['SendStatusCcd']]],
-                'AdvertisePatternCcdName' => ['SendTypeCcd' => $arr_codes[$this->_groupCcd['AdvertisePatternCcd']]]
+                'AdvertisePatternCcdName' => ['AdvertisePatternCcd' => $arr_codes[$this->_groupCcd['AdvertisePatternCcd']]]
             ], true);
         }
 
@@ -195,5 +196,90 @@ class Mail extends \app\controllers\BaseController
     {
         list($result, $err_data, $return) = $this->mailModel->fileUpload();
         $this->json_result($result, '성공', $err_data, $return);
+    }
+
+    /**
+     * 예약 취소
+     */
+    public function cancelSend()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $params = json_decode($this->_req('params'), true);
+        $result = $this->mailModel->updateSendStatus($params);
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 발송 상세 리스트
+     * @param array $params
+     */
+    public function listSendDetailModal($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $send_idx = $params[0];
+
+        $column = 'Title, Content';
+        $arr_condition = [
+            'EQ' => [
+                'SendIdx' => $send_idx
+            ]
+        ];
+        $data = $this->mailModel->findMail($column, $arr_condition);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $this->load->view("crm/mail/list_send_detail_modal", [
+            'send_type' => $this->_send_type,
+            'send_idx' => $send_idx,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 발송 상세 리스트 ajax
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listSendDetailModalAjax($params = [])
+    {
+        $list = [];
+        $count = 0;
+
+        if (empty($params[0]) === false) {
+            $arr_condition = [
+                'EQ' => [
+                    'SEND.SendIdx' => $params[0],
+                    'SEND.MailRcvStatus' => $this->_reqP('search_sms_is_agree')
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'Mem.MemId' => $this->_reqP('search_value'),
+                        'Mem.MemName' => $this->_reqP('search_value'),
+                    ]
+                ]
+            ];
+
+            $count = $this->mailModel->listMailDetail(true, $arr_condition, $params[0]);
+            if ($count > 0) {
+                $list = $this->mailModel->listMailDetail(false, $arr_condition, $params[0], $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
     }
 }

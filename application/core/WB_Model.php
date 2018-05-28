@@ -56,4 +56,69 @@ class WB_Model extends CI_Model
             $table_name, $table_where, $this->input->ip_address(), $this->session->userdata('admin_idx')
         ]);
     }
+
+
+    /**
+     * 임시테이블 생성
+     * @param string $temp_table_name
+     * @return mixed
+     */
+    public function createTampTable($temp_table_name = '_lms_temp_table')
+    {
+        $sql = "DROP TEMPORARY TABLE {$temp_table_name}";
+        $this->_conn->query($sql);
+
+        $sql = "
+                CREATE TEMPORARY TABLE IF NOT EXISTS {$temp_table_name} (
+                  tempIdx INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                  tempData VARCHAR(520) NOT NULL,
+                  tempData2 VARCHAR(20) NULL,
+                  PRIMARY KEY (tempIdx)
+                )
+            ";
+
+        return $this->_conn->query($sql);
+    }
+
+    /**
+     * 임시테이블 삭제
+     * @param string $temp_table_name
+     */
+    public function dropTampTable($temp_table_name = '_lms_temp_table')
+    {
+        $sql = "DROP TEMPORARY TABLE {$temp_table_name}";
+        $this->_conn->query($sql);
+    }
+
+    /**
+     * 임시테이블 데이터 저장
+     * @param string $temp_table_name
+     * @param array $input_data     필수 값
+     * @param array $input_data2    참조 값
+     * @return bool
+     */
+    public function insertTampTable($temp_table_name = '_lms_temp_table', $input_data = [], $input_data2 = [])
+    {
+        $result = [];
+
+        if (empty($input_data) === false) {
+            foreach ($input_data as $key => $val) {
+                $tempData2 = (empty($input_data2[$key]) === false) ? $input_data2[$key] : '';
+                $sql = "
+                  INSERT INTO {$temp_table_name} (tempData, tempData2)
+                  SELECT fn_enc('{$val}'), '{$tempData2}'
+                ";
+
+                $result[$key] = $this->_conn->query($sql);
+            }
+        }
+
+        foreach ($result as $key => $val) {
+            if ($val === false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

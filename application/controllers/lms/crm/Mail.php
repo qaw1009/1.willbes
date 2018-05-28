@@ -270,9 +270,9 @@ class Mail extends \app\controllers\BaseController
                 ]
             ];
 
-            $count = $this->mailModel->listMailDetail(true, $arr_condition, $params[0]);
+            $count = $this->mailModel->listMailDetail(true, $arr_condition);
             if ($count > 0) {
-                $list = $this->mailModel->listMailDetail(false, $arr_condition, $params[0], $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+                $list = $this->mailModel->listMailDetail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
             }
         }
 

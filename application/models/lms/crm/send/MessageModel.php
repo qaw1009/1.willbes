@@ -67,20 +67,19 @@ class MessageModel extends WB_Model
      * 발송 상세 리스트
      * @param $is_count
      * @param array $arr_condition
-     * @param $send_idx
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listMessageDetail($is_count, $arr_condition = [], $send_idx, $limit = null, $offset = null, $order_by = [])
+    public function listMessageDetail($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SEND.MessageSendIdx, SEND.SendIdx, SEND.MemIdx, SEND.IsReceive, MEM.MemId, MEM.MemName
+                SEND.MessageSendIdx, SEND.SendIdx, SEND.MemIdx, SEND.Receive_MemId, SEND.IsReceive, MEM.MemId, MEM.MemName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -137,8 +136,14 @@ class MessageModel extends WB_Model
 
             // 등록된 발송식별자
             $send_idx = $this->_conn->insert_id();
-            $result = $this->_addSendReceiveData($send_idx, $get_send_data);
-            if ($result['result'] != 1) {
+
+            $datas = $this->_listTempTableData($send_idx, $get_send_data);
+            if ($datas === false) {
+                throw new \Exception('상세 정보 등록에 실패했습니다.');
+            }
+
+            $result = $this->_addTempDataForSendReceiveData($datas);
+            if ($result === false) {
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
 
@@ -223,19 +228,45 @@ class MessageModel extends WB_Model
         return true;
     }
 
-    /**
-     * 발송데이터 상세 데이터 등록
-     * @param $send_idx
-     * @param $detail_datas
-     * @return mixed
-     */
-    private function _addSendReceiveData($send_idx, $detail_datas)
+    // 회원테이블 임시테이블 조인
+    private function _listTempTableData($send_idx, $get_send_data)
     {
-        $this->_conn->query('CALL sp_send_detail_message_insert(?, ?, ?, @_result)', [
-            $send_idx, $detail_datas, ','
-        ]);
+        $column = "{$send_idx} as SendIdx, IFNULL(Mem.MemIdx,'0') AS MemIdx, TP.item as Receive_MemId";
+        $from = "
+            FROM {$this->_table_member} as Mem
+            RIGHT JOIN
+            (
+                SELECT TT.item AS item FROM
+                (
+                    SELECT
+                        SUBSTRING_INDEX(SUBSTRING_INDEX('{$get_send_data}', ',', TN.num), ',', -1) AS item
+                    FROM tmp_numbers AS TN
+                        WHERE CHAR_LENGTH('{$get_send_data}') - CHAR_LENGTH(REPLACE('{$get_send_data}', ',', '')) >= TN.num - 1
+                )
+                AS TT
+            ) AS TP
+            ON Mem.MemId = TP.item
+        ";
 
-        return $this->_conn->query('SELECT @_result as result')->row_array();
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from);
+        return $query->result_array();
+    }
+
+    // 등록
+    private function _addTempDataForSendReceiveData($inputData = [])
+    {
+        if (empty($inputData) === false) {
+            foreach ($inputData as $data) {
+                if ($this->_conn->set($data)->insert($this->_table_r_send_receive) === false) {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+
+        return true;
     }
 
     /**

@@ -276,20 +276,19 @@ class MailModel extends WB_Model
      * 발송 상세 리스트
      * @param $is_count
      * @param array $arr_condition
-     * @param $send_idx
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listMailDetail($is_count, $arr_condition = [], $send_idx, $limit = null, $offset = null, $order_by = [])
+    public function listMailDetail($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SEND.EmailSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_MailEnc) AS Receive_MailEnc, SEND.MailRcvStatus, MEM.MemId, MEM.MemName
+                SEND.EmailSendIdx, SEND.SendIdx, SEND.MemIdx, fn_dec(SEND.Receive_MailEnc) AS Receive_MailEnc, SEND.Receive_Name, SEND.MailRcvStatus, MEM.MemId, MEM.MemName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

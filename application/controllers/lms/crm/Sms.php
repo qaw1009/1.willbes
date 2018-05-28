@@ -287,7 +287,8 @@ class Sms extends \app\controllers\BaseController
 
         if ($send_type == 1) {
             $rules = array_merge($rules,[
-                ['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'callback_validateArrayRequired[mem_phone,1]'],
+                ['field' => 'mem_name[]', 'label' => '수신정보 이름', 'rules' => 'callback_validateArrayRequired[mem_name,1]'],
+                ['field' => 'mem_phone[]', 'label' => '수신정보 전화번호', 'rules' => 'callback_validateArrayRequired[mem_phone,1]'],
             ]);
         } elseif ($send_type == 2) {
             $rules = array_merge($rules,[

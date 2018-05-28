@@ -95,11 +95,7 @@
                                     }
                                 }},
                             {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                                    if (data == 0) {
-                                        return '비회원';
-                                    } else {
-                                        return row.MemName;
-                                    }
+                                    return row.Receive_Name;
                                 }},
                             {'data' : 'Receive_MailEnc'},
                             {'data' : 'MailRcvStatus'}

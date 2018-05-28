@@ -81,6 +81,7 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>이름</th>
                                             <th>휴대폰번호</th>
                                         </tr>
                                         </thead>
@@ -88,6 +89,9 @@
                                         @for($i = 1; $i <= $set_row_count-6; $i++)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>
+                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="" maxlength="6">
+                                                </td>
                                                 <td>
                                                     <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
                                                 </td>
@@ -101,6 +105,7 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>이름</th>
                                             <th>휴대폰번호</th>
                                         </tr>
                                         </thead>
@@ -108,6 +113,9 @@
                                         @for($i = 7; $i <= $set_row_count; $i++)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>
+                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="" maxlength="6">
+                                                </td>
                                                 <td>
                                                     <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
                                                 </td>
@@ -253,7 +261,7 @@
                                 send_list = '<tr>';
                                 send_list += '<td>'+i+'</td>';
                                 send_list += '<td>'+item.A+'</td>';
-                                send_list += '<td>'+item.C+'</td>';
+                                send_list += '<td>'+item.B+'</td>';
                                 send_list += '</tr>';
                                 $('#mem_phone_list > tbody').append(send_list);
                             });
@@ -303,7 +311,7 @@
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /!*$("#pop_modal").modal('toggle');*!/
+                            /*$("#pop_modal").modal('toggle');*/
                             location.reload();
                         }
                     }, showValidateError, addValidate, false, 'alert');

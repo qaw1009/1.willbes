@@ -116,14 +116,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SortMappingModel $sortMappingModel                               Product Sort Mapping Model Class
  * @property BoardMasterModel $boardMasterModel                               BoardMaster Model Class
  * @property BoardModel $boardModel                                                 Board Model Class
- * @property WCpModel $wcpModel                                                     WCp Model Class
- * @property SearchWMasterLectureModel $searchWMasterLectureModel   Search MasterLecture Model Class
- * @property SmsModel $smsModel                                     Search Sms Model Class
- * @property MessageModel $messageModel                             Search Message Model Class
- * @property MailModel $mailModel                                   Search Mail Model Class
+ * @property WCpModel $wcpModel                                                    WCp Model Class
+ * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
+ * @property SmsModel $smsModel                                                     Search Sms Model Class
+ * @property MessageModel $messageModel                                         Search Message Model Class
+ * @property MailModel $mailModel                                                      Search Mail Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class
- * @property MemberModel $memberModel                                             Member Model Class
- *
+ * @property MemberModel $memberModel                                           Member Model Class
+ * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
+ * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
  *
  */
 class PHPStorm_CI_CC

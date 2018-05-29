@@ -322,7 +322,7 @@
                         notifyAlert('success', '알림', msg);
                         location.replace('{{ site_url('/crm/mail/') }}' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');
+                }, showValidateError, addValidate, true, 'alert', addLoadingIndicator);
             });
         });
 
@@ -342,10 +342,6 @@
             }
         });
 
-        function test() {
-            return true;
-        }
-
         function addValidate() {
             var flag = false;
             var send_type = $("input[name='send_type']").val();
@@ -359,9 +355,19 @@
                 alert('수신정보(메일)은 필수입니다.');
                 return false;
             }
-
             return true;
+        }
 
+        // show loading indicator
+        function addLoadingIndicator() {
+            $regi_form.showLoading({
+                'addClass': 'loading-indicator-bars'
+            });
+        }
+
+        // hide loading indicator
+        function hideLoadingIndicator() {
+            $regi_form.hideLoading();
         }
 
         // 회원검색
@@ -395,7 +401,7 @@
             data = fd;
 
             var send_list = '';
-            sendAjax(_url, data, function(ret) {
+            only_this_sendAjax(_url, data, function(ret) {
                 if (ret.ret_cd) {
                     $.each(ret.ret_data.excel_data, function(i, item) {
                         send_list = '<tr>';
@@ -407,12 +413,55 @@
                     });
 
                 }
-            }, showError, false, 'POST', 'json', true);
+            }, showError, true, 'POST', 'json', true);
         });
 
         // 목록 이동
         $('#btn_list').click(function() {
             location.replace('{{ site_url('/crm/mail/') }}' + getQueryString());
         });
+
+        // sendAjax 함수 해당 페이지만 재가공하여 사용
+        function only_this_sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
+            $("button, .btn").prop("disabled",true);
+            if(typeof is_file == 'undefined') is_file = false;
+            var process_data = true;
+            var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
+            if(is_file){
+                process_data = false;
+                content_type = false;
+                method = method=='GET' ? 'POST' : method; // file upload는 get 방식 불가
+            }
+
+            $.ajax({
+                type: ((typeof method != 'undefined') ? method : 'POST'),
+                url: url,
+                data: data,
+                async: (typeof async != 'undefined') ? async : false,
+                processData: process_data,
+                contentType: content_type,
+                dataType: (typeof data_type != 'undefined') ? data_type : 'json',
+                beforeSend: function() {
+                    addLoadingIndicator();
+                }
+            }).success(function (data, status, req) {
+                if(typeof callback === "function") {
+                    callback(data);
+                }
+                $("button, .btn").prop("disabled", false);
+            }).error(function(req, status, err) {
+                if(typeof error_callback === "function") {
+                    var ret = req.responseText;
+                    if (isJson(ret) === true) {
+                        // json parser
+                        ret = JSON.parse(ret);
+                    }
+                    error_callback(ret, req.status);
+                }
+                $("button, .btn").prop("disabled", false);
+            }).complete(function() {
+                hideLoadingIndicator();
+            });
+        }
     </script>
 @stop

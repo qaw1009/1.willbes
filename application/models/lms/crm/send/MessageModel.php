@@ -351,7 +351,7 @@ class MessageModel extends WB_Model
             'SendAttachFilePath' => $this->upload->_upload_url . $upload_sub_dir . '/',
         ];
 
-        if (empty($uploaded) === false || count($uploaded) > 0) {
+        if (empty($uploaded) === false && count($uploaded[0]) > 0) {
             $input_data = array_merge($input_data,[
                 'SendAttachFileName' => $uploaded[0]['orig_name']
             ]);

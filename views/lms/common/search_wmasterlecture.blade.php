@@ -163,6 +163,10 @@
                         $('#unitNumLectureCount').val(row.wUnitLectureCnt);   //강의수
                         $('#AllLecTime').val(row.wRuntimeSum); //전체강의시간
 
+                        $("#sampleList span").remove();   //회차 정보 초기화
+                        $("#teacherDivision tbody").remove();   //강사 정산 초기화
+
+
                         $("#pop_modal").modal('toggle');
                     });
 

@@ -365,7 +365,7 @@ class SmsModel extends WB_Model
                 if (!empty($uploaded) === true || count($uploaded) > 0) {
                     $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
                     foreach ($excel_data as $key => $val) {
-                        $set_send_data_count[$key] = $val['C'];
+                        $set_send_data_count[$key] = $val['B'];
                         $set_send_data[$i] = $val['B'];
                         $set_send_data_name[$i] = $val['A'];
                         $i++;

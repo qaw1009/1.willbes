@@ -280,7 +280,7 @@ class Sms extends \app\controllers\BaseController
      */
     public function storeSend()
     {
-        /*$send_type = $this->_reqP('send_type');
+        $send_type = $this->_reqP('send_type');
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
@@ -306,10 +306,7 @@ class Sms extends \app\controllers\BaseController
             return;
         }
 
-        list($result, $return_count) = $this->smsModel->addSms($this->_reqP(null,false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);*/
-        sleep(3);
-        $result = true;
-        $return_count = 3;
+        list($result, $return_count) = $this->smsModel->addSms($this->_reqP(null,false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
 
         $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => $return_count]);
     }

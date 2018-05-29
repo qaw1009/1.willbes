@@ -5,27 +5,40 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1">쿠폰기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', '', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_cate_ccd" name="search_cate_ccd">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'mr-10', '운영 사이트', '') !!}
+                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
                             <option value="">카테고리</option>
+                            @foreach($arr_cate_code as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_issue_route_ccd" name="search_issue_route_ccd">
+                        <select class="form-control mr-10" id="search_deploy_type" name="search_deploy_type">
                             <option value="">배포루트</option>
+                            <option value="N">온라인</option>
+                            <option value="F">오프라인</option>
                         </select>
-                        <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd">
+                        <select class="form-control mr-10" id="search_apply_type_ccd" name="search_apply_type_ccd">
                             <option value="">적용구분</option>
+                            @foreach($arr_apply_type_ccd as $key => $arr)
+                                <option value="{{ $key }}">{{ $arr[0] }}</option>
+                            @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd">
+                        <select class="form-control mr-10" id="search_lec_type_ccd" name="search_lec_type_ccd">
                             <option value="">적용상세구분</option>
+                            @foreach($arr_lec_type_ccd as $key => $arr)
+                                <option value="{{ $key }}">{{ $arr[0] }}</option>
+                            @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_apply_range_ccd" name="search_apply_range_ccd">
+                        <select class="form-control mr-10" id="search_apply_range_type" name="search_apply_range_type">
                             <option value="">적용범위</option>
+                            <option value="A">전체</option>
+                            <option value="I">항목별</option>
+                            <option value="P">특정상품</option>
                         </select>
                     </div>
                 </div>
@@ -44,15 +57,11 @@
                             <option value="Y">발급</option>
                             <option value="N">미발급</option>
                         </select>
-                        <select class="form-control mr-10" id="search_is_use" name="search_is_use">
-                            <option value="">사용여부</option>
-                            <option value="Y">발급</option>
-                            <option value="N">미사용</option>
-                        </select>
-                        <select class="form-control mr-10" id="search_is_valid" name="search_is_valid">
+                        <select class="form-control mr-10" id="search_issue_valid" name="search_issue_valid">
                             <option value="">유효여부</option>
-                            <option value="Y">유효</option>
-                            <option value="N">만료</option>
+                            <option value="유효">유효</option>
+                            <option value="만료">만료</option>
+                            <option value="발급전">발급전</option>
                         </select>
                     </div>
                 </div>
@@ -60,8 +69,8 @@
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="">유효기간</option>
-                            <option value="">등록일</option>
+                            <option value="I">유효기간</option>
+                            <option value="R">등록일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -110,7 +119,6 @@
                     <th>할인율<br/>(할인금액)</th>
                     <th>쿠폰발급<br/>(<span class="red">사용</span>/발급)</th>
                     <th>발급여부</th>
-                    <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
                 </tr>
@@ -128,6 +136,9 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+
+            // 카테고리 자동변경
+            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
 
             // 쿠폰 목록
             $datatable = $list_table.DataTable({
@@ -151,27 +162,28 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
                     {'data' : 'CouponName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.CouponIdx + '">[' + row.CouponIdx + '] <u class="blue">' + data + '</u></a>';
+                        return '<a href="#" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
                     }},
-                    {'data' : 'IssueRouteName'},
+                    {'data' : 'DeployName'},
                     {'data' : 'ApplyTypeName'},
-                    {'data' : 'ApplyDetailName'},
+                    {'data' : 'LecTypeNames', 'render' : function(data, type, row, meta) {
+                        return data.replace(/,/gi, '<br/>');
+                    }},
                     {'data' : 'ApplyRangeName'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return row.UseDays + '일<br/>(' + row.ValidStartDate + '~' + row.ValidEndDate + ')';
+                        return row.ValidDay + '일<br/>(' + row.IssueStartDate + '~' + row.IssueEndDate + ')';
                     }},
-                    {'data' : 'IsValid', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '유효' : '<span class="red">만료</span>';
+                    {'data' : 'IssueValid', 'render' : function(data, type, row, meta) {
+                        return (data !== '유효') ? '<span class="red">' + data + '</span>' : data;
                     }},
-                    {'data' : 'DiscRate'},
+                    {'data' : 'DiscRate', 'render' : function(data, type, row, meta) {
+                        return data + ((row.DiscType === 'R') ? '%' : '원');
+                    }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-issue" data-idx="' + row.CouponIdx + '">[쿠폰발급]</a><br/>(<span class="red">' + row.UsedCnt + '</span>/' + row.IssueCnt + ')';
+                        return '<a href="#" class="btn-issue" data-idx="' + row.CouponIdx + '">[쿠폰발급]</a><br/>(<span class="red">' + row.UseCnt + '</span>/' + row.IssueCnt + ')';
                     }},
                     {'data' : 'IsIssue', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '발급' : '<span class="red">미발급</span>';
-                    }},
-                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}

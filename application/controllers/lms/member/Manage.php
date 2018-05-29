@@ -29,7 +29,7 @@ class Manage extends \app\controllers\BaseController
     public function ajaxList()
     {
         $search_value = $this->_reqP('search_value'); // 검색어
-        $search_value_enc = $this->memberModel->strEncode($search_value); // 검색어 암호화
+        $search_value_enc = $this->memberModel->getEncString($search_value); // 검색어 암호화
 
         $arr_condition = [
             'EQ' => [
@@ -41,8 +41,8 @@ class Manage extends \app\controllers\BaseController
                 ],
                 'EQ' => [
                     'MemName' => $search_value, // 이름
-                    'PhoneEnc' => $search_value_enc, // 전화번호 전체
-                    'Phone2Enc' => $search_value_enc, // 전화번호 2번째
+                    'PhoneEnc' => $search_value_enc, // 암호화 전화번호 전체
+                    'Phone2Enc' => $search_value_enc, // 암호화 전화번호 2번째
                     'Phone3' => $search_value, // 전화번호 3번째
                 ]
             ]

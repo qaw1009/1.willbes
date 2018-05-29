@@ -121,4 +121,16 @@ class WB_Model extends CI_Model
 
         return true;
     }
+
+    /**
+     * 문자열 암호화 함수
+     * DB를 통해서 문자열을 암호화함
+     * @param string $str
+     * @return string
+     */
+    public function getEncString($str)
+    {
+        if($str == ''){ return ''; }
+        else { return $this->_conn->query("SELECT fn_enc('".$str."') AS enc")->row(0)->enc; }
+    }
 }

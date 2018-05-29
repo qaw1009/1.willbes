@@ -46,19 +46,6 @@ class MemberModel extends WB_Model
         return ($is_count === true) ? $query->row(0)->rownums : $query->result_array();
     }
 
-    /**
-     * string Encode Function
-     * @param string $string
-     * @return string
-     */
-    public function strEncode($string)
-    {
-        if($string == '')
-            return '';
-        else {
-             return $this->_conn->query("SELECT fn_enc('".$string."') AS enc")->row(0)->enc;
-        }
 
-    }
 
 }

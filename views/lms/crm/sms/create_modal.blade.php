@@ -260,7 +260,7 @@
                     data = fd;
 
                     var send_list = '';
-                    only_this_sendAjax(_url, data, function(ret) {
+                    sendLoadingAjax(_url, data, function(ret) {
                         if (ret.ret_cd) {
                             $.each(ret.ret_data.excel_data, function(i, item) {
                                 send_list = '<tr>';
@@ -272,7 +272,7 @@
                             });
 
                         }
-                    }, showError, true, 'POST', 'json', true);
+                    }, showError, 'POST', $regi_form, 'json', true);
                 });
 
                 // 바이트 수
@@ -310,7 +310,7 @@
                 // 등록
                 $regi_form.submit(function () {
                     var _url = '{{ site_url('/crm/sms/storeSend') }}';
-                    ajaxSubmit($regi_form, _url, function (ret) {
+                    ajaxLoadingSubmit($regi_form, _url, function (ret) {
                         if (ret.ret_cd) {
                             var msg_cnt = ret.ret_data.upload_cnt;
                             var msg = '총 ' + msg_cnt + '건의 메시지가 처리되었습니다.';
@@ -319,7 +319,7 @@
                             /*$("#pop_modal").modal('toggle');*/
                             location.reload();
                         }
-                    }, showValidateError, addValidate, true, 'alert', addLoadingIndicator);
+                    }, showValidateError, addValidate, 'alert', $regi_form);
                 });
             });
 
@@ -338,61 +338,6 @@
                 }
 
                 return true;
-            }
-
-            // show loading indicator
-            function addLoadingIndicator() {
-                $regi_form.showLoading({
-                    'addClass': 'loading-indicator-bars'
-                });
-            }
-
-            // hide loading indicator
-            function hideLoadingIndicator() {
-                $regi_form.hideLoading();
-            }
-
-            // sendAjax 함수 해당 페이지만 재가공하여 사용
-            function only_this_sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
-                $("button, .btn").prop("disabled",true);
-                if(typeof is_file == 'undefined') is_file = false;
-                var process_data = true;
-                var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
-                if(is_file){
-                    process_data = false;
-                    content_type = false;
-                    method = method=='GET' ? 'POST' : method; // file upload는 get 방식 불가
-                }
-
-                $.ajax({
-                    type: ((typeof method != 'undefined') ? method : 'POST'),
-                    url: url,
-                    data: data,
-                    async: (typeof async != 'undefined') ? async : false,
-                    processData: process_data,
-                    contentType: content_type,
-                    dataType: (typeof data_type != 'undefined') ? data_type : 'json',
-                    beforeSend: function() {
-                        addLoadingIndicator();
-                    }
-                }).success(function (data, status, req) {
-                    if(typeof callback === "function") {
-                        callback(data);
-                    }
-                    $("button, .btn").prop("disabled", false);
-                }).error(function(req, status, err) {
-                    if(typeof error_callback === "function") {
-                        var ret = req.responseText;
-                        if (isJson(ret) === true) {
-                            // json parser
-                            ret = JSON.parse(ret);
-                        }
-                        error_callback(ret, req.status);
-                    }
-                    $("button, .btn").prop("disabled", false);
-                }).complete(function() {
-                    hideLoadingIndicator();
-                });
             }
         </script>
     @stop

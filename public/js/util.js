@@ -274,6 +274,62 @@ function sendAjax(url, data, callback, error_callback, async, method, data_type,
 }
 
 /**
+ * ajax function for loading indicator
+ * @param url
+ * @param data is_file = false인 경우는 seialize된 데이터 (json), is_file = true인 경우는 FormData로 전송 필요
+ * @param callback
+ * @param error_callback
+ * @param method
+ * @param loading_target
+ * @param data_type
+ * @param is_file
+ */
+function sendLoadingAjax(url, data, callback, error_callback, method, loading_target, data_type, is_file) {
+    $("button, .btn").prop("disabled",true);
+    if(typeof is_file == 'undefined') is_file = false;
+    var process_data = true;
+    var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
+    if(is_file){
+        process_data = false;
+        content_type = false;
+        method = method=='GET' ? 'POST' : method; // file upload는 get 방식 불가
+    }
+
+    $.ajax({
+        type: ((typeof method != 'undefined') ? method : 'POST'),
+        url: url,
+        data: data,
+        async: true,
+        processData: process_data,
+        contentType: content_type,
+        dataType: (typeof data_type != 'undefined') ? data_type : 'json',
+        beforeSend: function() {
+            loading_target.showLoading({
+                'addClass': 'loading-indicator-bars'
+            });
+        }
+    }).success(function (data, status, req) {
+        if(typeof callback === "function") {
+            callback(data);
+        }
+        $("button, .btn").prop("disabled", false);
+    }).error(function(req, status, err) {
+        if(typeof error_callback === "function") {
+            var ret = req.responseText;
+            if (isJson(ret) === true) {
+                // json parser
+                ret = JSON.parse(ret);
+            }
+            error_callback(ret, req.status);
+        }
+        $("button, .btn").prop("disabled", false);
+        loading_target.hideLoading();
+    }).complete(function() {
+        loading_target.hideLoading();
+    });
+}
+
+/**
  * sendAjax 에러 콜백
  * @param result
  * @param status

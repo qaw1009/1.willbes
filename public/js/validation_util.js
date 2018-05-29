@@ -106,6 +106,79 @@ function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, as
 }
 
 /**
+ * ajax form submit for loading indicator
+ * @param frmObj
+ * @param url
+ * @param callback
+ * @param error_callback
+ * @param validate_callback
+ * @param error_view :: layer, alert
+ * @param loading_target : loading action target
+ */
+function ajaxLoadingSubmit(frmObj, url, callback, error_callback, validate_callback, error_view, loading_target)
+{
+    if(typeof error_view == 'undefined') error_view = 'alert';
+
+    frmObj.ajaxSubmit({
+        url : url,
+        type: 'POST',
+        dataType : 'json',
+        //iframe : frmObj.find('input[type=file]').length > 0 || false,
+        async : true,
+        beforeSubmit: function (formData, form, options) {
+            // validation
+            var validator = new FormValidator();
+            var validatorResult = { valid : false };
+
+            if (error_view == 'alert') {
+                validatorResult = validator.checkAll(frmObj.get(0), error_view);
+            } else if (error_view == 'layer') {
+                validatorResult = validator.checkAll(frmObj.get(0));
+            }
+
+            if (!validatorResult.valid) {
+                return false;
+            }
+
+            // add validation
+            if (typeof validate_callback === "function") {
+                if (!validate_callback()) {
+                    return false;
+                }
+            }
+        },
+        beforeSend: function() {
+            loading_target.showLoading({
+                'addClass': 'loading-indicator-bars'
+            });
+        },
+        success: function(response, status){
+            if (typeof callback === "function") {
+                callback(response);
+            }
+        },
+        error: function(xhr, status, error){
+            if (typeof error_callback === "function") {
+                var ret = xhr.responseText;
+                if (isJson(ret) === true) {
+                    // json parser
+                    ret = JSON.parse(ret);
+                }
+                error_callback(ret, xhr.status, error_view);
+            } else {
+                alert('에러가 발생하였습니다.');
+            }
+            loading_target.hideLoading();
+        },
+        complete: function () {
+            loading_target.hideLoading();
+        }
+    });
+
+    return false;
+}
+
+/**
  * validation 에러 메시지 표시
  * @param result validation result
  * @param status http code

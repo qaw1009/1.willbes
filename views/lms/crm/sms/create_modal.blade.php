@@ -13,6 +13,8 @@
     @endsection
 
     @section('layer_content')
+        <div id='showLoding'>
+
         <div class="form-group form-group-sm">
             <ul class="nav nav-tabs nav-justified">
                 <li class="active"><a data-toggle="tab" href="#content_1" class="send_type" data-content-type="1">개별 발송</a></li>
@@ -81,6 +83,7 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>이름</th>
                                             <th>휴대폰번호</th>
                                         </tr>
                                         </thead>
@@ -88,6 +91,9 @@
                                         @for($i = 1; $i <= $set_row_count-6; $i++)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>
+                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="" maxlength="6">
+                                                </td>
                                                 <td>
                                                     <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
                                                 </td>
@@ -101,6 +107,7 @@
                                         <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>이름</th>
                                             <th>휴대폰번호</th>
                                         </tr>
                                         </thead>
@@ -108,6 +115,9 @@
                                         @for($i = 7; $i <= $set_row_count; $i++)
                                             <tr>
                                                 <td>{{$i}}</td>
+                                                <td>
+                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="" maxlength="6">
+                                                </td>
                                                 <td>
                                                     <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
                                                 </td>
@@ -123,7 +133,8 @@
                             <div class="form-group">
                                 <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 등록</label>
                                 <div class="col-md-4">
-                                    <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_sample_file_download">양식다운로드</button>
+                                    {{--<button type="button" class="btn btn-default btn-sm btn-primary" id="btn_sample_file_download">양식다운로드</button>--}}
+                                    [ <a href="{{site_url('/crm/sms/sampleDownload/')}}" target="_blank">양식다운로드</a> ]
                                 </div>
                             </div>
                             <div class="form-group">
@@ -203,6 +214,8 @@
             </div>
         </div>
 
+        </div>
+
         <script type="text/javascript">
             var $regi_form = $('#modal_regi_form');
 
@@ -247,19 +260,19 @@
                     data = fd;
 
                     var send_list = '';
-                    sendAjax(_url, data, function(ret) {
+                    only_this_sendAjax(_url, data, function(ret) {
                         if (ret.ret_cd) {
                             $.each(ret.ret_data.excel_data, function(i, item) {
                                 send_list = '<tr>';
                                 send_list += '<td>'+i+'</td>';
                                 send_list += '<td>'+item.A+'</td>';
-                                send_list += '<td>'+item.C+'</td>';
+                                send_list += '<td>'+item.B+'</td>';
                                 send_list += '</tr>';
                                 $('#mem_phone_list > tbody').append(send_list);
                             });
 
                         }
-                    }, showError, false, 'POST', 'json', true);
+                    }, showError, true, 'POST', 'json', true);
                 });
 
                 // 바이트 수
@@ -295,18 +308,18 @@
                 });
 
                 // 등록
-                $regi_form.submit(function() {
+                $regi_form.submit(function () {
                     var _url = '{{ site_url('/crm/sms/storeSend') }}';
-                    ajaxSubmit($regi_form, _url, function(ret) {
-                        if(ret.ret_cd) {
+                    ajaxSubmit($regi_form, _url, function (ret) {
+                        if (ret.ret_cd) {
                             var msg_cnt = ret.ret_data.upload_cnt;
-                            var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
+                            var msg = '총 ' + msg_cnt + '건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /!*$("#pop_modal").modal('toggle');*!/
+                            /*$("#pop_modal").modal('toggle');*/
                             location.reload();
                         }
-                    }, showValidateError, addValidate, false, 'alert');
+                    }, showValidateError, addValidate, true, 'alert', addLoadingIndicator);
                 });
             });
 
@@ -325,7 +338,61 @@
                 }
 
                 return true;
+            }
 
+            // show loading indicator
+            function addLoadingIndicator() {
+                $regi_form.showLoading({
+                    'addClass': 'loading-indicator-bars'
+                });
+            }
+
+            // hide loading indicator
+            function hideLoadingIndicator() {
+                $regi_form.hideLoading();
+            }
+
+            // sendAjax 함수 해당 페이지만 재가공하여 사용
+            function only_this_sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
+                $("button, .btn").prop("disabled",true);
+                if(typeof is_file == 'undefined') is_file = false;
+                var process_data = true;
+                var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
+                if(is_file){
+                    process_data = false;
+                    content_type = false;
+                    method = method=='GET' ? 'POST' : method; // file upload는 get 방식 불가
+                }
+
+                $.ajax({
+                    type: ((typeof method != 'undefined') ? method : 'POST'),
+                    url: url,
+                    data: data,
+                    async: (typeof async != 'undefined') ? async : false,
+                    processData: process_data,
+                    contentType: content_type,
+                    dataType: (typeof data_type != 'undefined') ? data_type : 'json',
+                    beforeSend: function() {
+                        addLoadingIndicator();
+                    }
+                }).success(function (data, status, req) {
+                    if(typeof callback === "function") {
+                        callback(data);
+                    }
+                    $("button, .btn").prop("disabled", false);
+                }).error(function(req, status, err) {
+                    if(typeof error_callback === "function") {
+                        var ret = req.responseText;
+                        if (isJson(ret) === true) {
+                            // json parser
+                            ret = JSON.parse(ret);
+                        }
+                        error_callback(ret, req.status);
+                    }
+                    $("button, .btn").prop("disabled", false);
+                }).complete(function() {
+                    hideLoadingIndicator();
+                });
             }
         </script>
     @stop

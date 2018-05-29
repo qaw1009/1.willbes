@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sms extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/sms');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     private $_send_type = 'sms';
 
@@ -192,6 +192,12 @@ class Sms extends \app\controllers\BaseController
         ]);
     }
 
+    public function sampleDownload()
+    {
+        $fileinfo = '/public/uploads/lms/_sample_download/sample_sms.xlsx';
+        public_download($fileinfo);
+    }
+
     /**
      * 사이트별 고객센터번호조회
      * @param array $params
@@ -287,7 +293,8 @@ class Sms extends \app\controllers\BaseController
 
         if ($send_type == 1) {
             $rules = array_merge($rules,[
-                ['field' => 'mem_phone[]', 'label' => '수신번호', 'rules' => 'callback_validateArrayRequired[mem_phone,1]'],
+                ['field' => 'mem_name[]', 'label' => '수신정보 이름', 'rules' => 'callback_validateArrayRequired[mem_name,1]'],
+                ['field' => 'mem_phone[]', 'label' => '수신정보 전화번호', 'rules' => 'callback_validateArrayRequired[mem_phone,1]'],
             ]);
         } elseif ($send_type == 2) {
             $rules = array_merge($rules,[

@@ -146,9 +146,9 @@ class Message extends \app\controllers\BaseController
                 ]
             ];
 
-            $count = $this->messageModel->listMessageDetail(true, $arr_condition, $params[0]);
+            $count = $this->messageModel->listMessageDetail(true, $arr_condition);
             if ($count > 0) {
-                $list = $this->messageModel->listMessageDetail(false, $arr_condition, $params[0], $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+                $list = $this->messageModel->listMessageDetail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
             }
         }
 

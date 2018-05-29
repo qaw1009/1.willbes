@@ -72,7 +72,7 @@
                         <input type="text" class="form-control" id="search_member_value" name="search_member_value">
                     </div>
                     <div class="col-md-3">
-                        <p class="form-control-static">• 이름, 아이디, 휴대폰번호 검색 기능</p>
+                        <p class="form-control-static">• 이름, 아이디, 휴대폰번호(끝 4자리) 검색 기능</p>
                     </div>
 
                     <label class="control-label col-lg-offset-1 col-md-1" for="search_start_date">등록일</label>

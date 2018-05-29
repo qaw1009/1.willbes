@@ -87,11 +87,7 @@
                                     return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                                    if (data == 0) {
-                                        return '비회원';
-                                    } else {
-                                        return row.MemId;
-                                    }
+                                    return row.Receive_MemId;
                                 }},
                             {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
                                     if (data == 0) {

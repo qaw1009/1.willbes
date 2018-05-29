@@ -25,18 +25,18 @@ trait InitController
     /**
      * required if validation callback method (= laravel)
      * @param string $val
-     * @param string $target_field [대상 필드명,대상 필드 값]
+     * @param string $target_field [대상 필드명,대상 필드 값 (여러개의 값 중 1개의 값과 매칭되어야 할 경우 쉼표로 연결(,))]
      * @return bool
      */
     public function validateRequiredIf($val = '', $target_field = '')
     {
-        list($target_name, $target_val) = explode(',', $target_field);
+        $target_name = str_first_pos_before($target_field, ',');
+        $target_values = explode(',', str_first_pos_after($target_field, ','));
 
-        if ($this->_reqP($target_name) == $target_val && empty($val) === true) {
+        if (in_array($this->_reqP($target_name), $target_values) === true && empty($val) === true) {
             $this->form_validation->set_message(__FUNCTION__, '{field}은(는) 필수입니다.');
             return false;
         }
-
         return true;
     }
 
@@ -57,7 +57,6 @@ trait InitController
             $this->form_validation->set_message(__FUNCTION__, '{field}은(는) 필수입니다.');
             return false;
         }
-
         return true;
     }
 

@@ -115,6 +115,10 @@ class Counsel extends BaseBoard
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
                     'LB.ReplyContent' => $this->_reqP('search_replay_value'),
+
+                    'MEM.MemId' => $this->_reqP('search_member_value'),
+                    'MEM.MemName' => $this->_reqP('search_member_value'),
+                    'MEM.Phone3' => $this->_reqP('search_member_value'),
                 ]
             ]
         ];
@@ -145,7 +149,7 @@ class Counsel extends BaseBoard
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Hp1, MEM.Hp2, MEM.Hp3,
+            LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Phone1, MEM.Phone2Enc, MEM.Phone3,
             LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
@@ -389,7 +393,7 @@ class Counsel extends BaseBoard
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            MEM.MemName, MEM.MemId, MEM.Hp1,
+            MEM.MemName, MEM.MemId, MEM.Phone1,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent
             ';
         $board_idx = $params[0];
@@ -505,7 +509,7 @@ class Counsel extends BaseBoard
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            MEM.MemName, MEM.MemId, MEM.Hp1,
+            MEM.MemName, MEM.MemId, MEM.Phone1,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             counselAdmin.wAdminName AS counselAdminName, counselAdmin2.wAdminName AS counselUpdAdminName,
             LB.ReplyRegDatm, LB.ReplyUpdDatm

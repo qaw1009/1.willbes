@@ -44,6 +44,8 @@
     <!-- Custom Theme Style -->
     <link href="/public/css/lcms/style.min.css" rel="stylesheet">
     <link href="/public/css/lcms/custom.css" rel="stylesheet">
+    <!-- show loading indicator -->
+    <link href="/public/vendor/loading-indicator/css/showLoading.css" rel="stylesheet" type="text/css">
     <!--/ CSS -->
 
     <!-- JAVASCRIPT -->
@@ -101,6 +103,8 @@
     <script src="/public/vendor/base64/webtoolkit.base64.js"></script>
     <!-- validator -->
     <script src="/public/vendor/validator/validator.js"></script>
+    <!-- show loading indicator -->
+    <script src="/public/vendor/loading-indicator/js/jquery.showLoading.js"></script>
     <!-- config -->
     <script src="/public/js/lcms/init.js"></script>
     <!--/ JAVASCRIPT -->

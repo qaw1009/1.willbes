@@ -82,8 +82,10 @@ trait QueryBuilder
                 $values[1] = $values[1] . ' 23:59:59';
             }
 
-            $this->makeWhereOperator($column, $values[0], 'GTE', $is_and, $is_escape);
-            $this->makeWhereOperator($column, $values[1], 'LTE', $is_and, $is_escape);
+            $is_and === false && $this->or_group_start();   // between 조건이 2개 이상 or 조건으로 연결될 경우
+            $this->makeWhereOperator($column, $values[0], 'GTE', true, $is_escape);
+            $this->makeWhereOperator($column, $values[1], 'LTE', true, $is_escape);
+            $is_and === false && $this->group_end();
         }
 
         return $this;

@@ -164,7 +164,7 @@
             $('.btn-sand-create').click(function() {
                 $('.btn-sand-create').setLayer({
                     "url" : "{{ site_url('crm/sms/createSendModal') }}",
-                    "width" : "800",
+                    "width" : "1200",
                 });
             });
 

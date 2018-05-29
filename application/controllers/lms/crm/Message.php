@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Message extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/message');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     private $_send_type = 'message';
 
@@ -174,6 +174,12 @@ class Message extends \app\controllers\BaseController
             'arr_send_option_ccd' => $arr_send_option_ccd,
             'set_row_count' => $set_row_count
         ]);
+    }
+
+    public function sampleDownload()
+    {
+        $fileinfo = '/public/uploads/lms/_sample_download/sample_message.xlsx';
+        public_download($fileinfo);
     }
 
     /**

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Mail extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/mail');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     private $_send_type = 'mail';
 
@@ -131,6 +131,12 @@ class Mail extends \app\controllers\BaseController
             'set_row_count' => $set_row_count,
             'advertise_placeholder' => $advertise_placeholder
         ]);
+    }
+
+    public function sampleDownload()
+    {
+        $fileinfo = '/public/uploads/lms/_sample_download/sample_mail.xlsx';
+        public_download($fileinfo);
     }
 
     /**

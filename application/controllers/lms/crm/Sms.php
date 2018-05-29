@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sms extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/sms');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     private $_send_type = 'sms';
 
@@ -192,6 +192,12 @@ class Sms extends \app\controllers\BaseController
         ]);
     }
 
+    public function sampleDownload()
+    {
+        $fileinfo = '/public/uploads/lms/_sample_download/sample_sms.xlsx';
+        public_download($fileinfo);
+    }
+
     /**
      * 사이트별 고객센터번호조회
      * @param array $params
@@ -274,7 +280,7 @@ class Sms extends \app\controllers\BaseController
      */
     public function storeSend()
     {
-        $send_type = $this->_reqP('send_type');
+        /*$send_type = $this->_reqP('send_type');
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
@@ -300,7 +306,10 @@ class Sms extends \app\controllers\BaseController
             return;
         }
 
-        list($result, $return_count) = $this->smsModel->addSms($this->_reqP(null,false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);
+        list($result, $return_count) = $this->smsModel->addSms($this->_reqP(null,false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd, $this->_send_text_length_ccd);*/
+        sleep(3);
+        $result = true;
+        $return_count = 3;
 
         $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => $return_count]);
     }

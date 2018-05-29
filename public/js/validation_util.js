@@ -41,8 +41,9 @@ function formSubmit(frmObj)
  * @param validate_callback
  * @param async
  * @param error_view :: layer, alert
+ * @param beforeSend_action : before actoin for ajax submit
  */
-function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, async, error_view)
+function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, async, error_view, beforeSend_action)
 {
     if(typeof error_view == 'undefined') error_view = 'alert';
 
@@ -71,6 +72,13 @@ function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, as
             // add validation
             if (typeof validate_callback === "function") {
                 if (!validate_callback()) {
+                    return false;
+                }
+            }
+        },
+        beforeSend: function() {
+            if (typeof beforeSend_action === "function") {
+                if (!beforeSend_action()) {
                     return false;
                 }
             }

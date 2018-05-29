@@ -13,12 +13,14 @@ class CodeModel extends WB_Model
     /**
      * 그룹공통코드에 해당하는 공통코드 조회
      * @param $group_ccd
+     * @param string $add_column
      * @param array $add_condition
      * @return array
      */
-    public function getCcd($group_ccd, $add_condition = [])
+    public function getCcd($group_ccd, $add_column = '', $add_condition = [])
     {
-        $column = 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName';
+        $column = 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, ';
+        $column .= (empty($add_column) === false) ? 'concat(CcdName, ":", ' . $add_column . ') as CcdName' : 'CcdName';
 
         $arr_condition = ['EQ' => ['GroupCcd' => $group_ccd, 'IsUse' => 'Y', 'IsStatus' => 'Y']];
         empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
@@ -31,12 +33,14 @@ class CodeModel extends WB_Model
     /**
      * 그룹공통코드 배열에 해당하는 공통코드 조회
      * @param array $group_ccds
+     * @param string $add_column
      * @param array $add_condition
      * @return array
      */
-    public function getCcdInArray($group_ccds = [], $add_condition = [])
+    public function getCcdInArray($group_ccds = [], $add_column = '', $add_condition = [])
     {
-        $column = 'GroupCcd, if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName';
+        $column = 'GroupCcd, if(IsValueUse = "N", Ccd, CcdValue) as Ccd, ';
+        $column .= (empty($add_column) === false) ? 'concat(CcdName, ":", ' . $add_column . ') as CcdName' : 'CcdName';
 
         $arr_condition = ['IN' => ['GroupCcd' => $group_ccds], 'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
         empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);

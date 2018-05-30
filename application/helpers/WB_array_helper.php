@@ -94,7 +94,7 @@ if (!function_exists('array_pluck')) {
     }
 }
 
-if (!function_exists('array_get_pluck')) {
+if (!function_exists('array_data_pluck')) {
     /**
      * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정 ($value, $key를 dot(.) 표기법으로 사용)
      * @param $array
@@ -102,7 +102,7 @@ if (!function_exists('array_get_pluck')) {
      * @param $key
      * @return array
      */
-    function array_get_pluck($array, $value, $key = null)
+    function array_data_pluck($array, $value, $key = null)
     {
         $results = array();
 

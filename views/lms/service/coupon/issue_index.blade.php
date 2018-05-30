@@ -37,10 +37,11 @@
                             <option value="Y">발급</option>
                             <option value="N">미사용</option>
                         </select>
-                        <select class="form-control mr-10" id="search_is_valid" name="search_is_valid">
+                        <select class="form-control mr-10" id="search_valid_status" name="search_valid_status">
                             <option value="">유효여부</option>
                             <option value="Y">유효</option>
                             <option value="N">만료</option>
+                            <option value="C">취소</option>
                         </select>
                     </div>
                 </div>
@@ -48,9 +49,9 @@
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="">발급일</option>
-                            <option value="">사용일</option>
-                            <option value="">회수일</option>
+                            <option value="I">발급일</option>
+                            <option value="U">사용일</option>
+                            <option value="R">회수일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -88,6 +89,7 @@
                 <tr>
                     <th>선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                     <th>No</th>
+                    <th>쿠폰핀번호</th>
                     <th>회원명 (아이디)</th>
                     <th>휴대폰번호</th>
                     <th>쿠폰정보</th>
@@ -137,32 +139,39 @@
                         // 리스트 번호
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
+                    {'data' : 'CouponPin'},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return data + '<u class="blue">(' + row.MemId + ')</u>';
+                        return data + ' (<u class="blue">' + row.MemId + '</u>)';
                     }},
                     {'data' : 'Phone', 'render' : function(data, type, row, meta) {
-                        return data + '(' + row.SmsRcvStatus + ')';
+                        return data + ' (' + row.SmsRcvStatus + ')';
                     }},
                     {'data' : 'CouponName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.CouponIdx + '">[' + row.CouponIdx + '] <u class="blue">' + data + '</u></a>';
+                        return '<a href="#" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
                     }},
                     {'data' : 'IssueTypeName'},
-                    {'data' : 'IssueDate', 'render' : function(data, type, row, meta) {
-                        return data + '(' + row.IssuerName + ')';
+                    {'data' : 'IssueDatm', 'render' : function(data, type, row, meta) {
+                        return data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')';
                     }},
-                    {'data' : 'IsValid', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '유효 (' + row.ExpireDate + ')' : '<span class="red">만료</span> (' + row.ExpireDate + ')';
+                    {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
+                        return ((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용 (' + row.UsedDate + ')' : '<span class="red">미사용</span>';
+                        return (data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return data + '<u class="blue">(' + row.OrderNo + ')</u>';
+                        return (row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '';
                     }},
-                    {'data' : 'BackDate', 'render' : function(data, type, row, meta) {
-                        return data + '(' + row.BackName + ')';
+                    {'data' : 'RetireDatm', 'render' : function(data, type, row, meta) {
+                        return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';
                     }}
                 ]
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                formCreateSubmit('{{ site_url('/service/coupon/issue/excel') }}', $search_form.serializeArray(), 'POST');
             });
 
             // 쿠폰 수정 폼

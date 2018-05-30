@@ -65,6 +65,34 @@ function dtParamsToQueryString($datatable) {
 }
 
 /**
+ * form dynamic 생성 후 submit, 생성된 form 자동 삭제
+ * @param url
+ * @param params
+ * @param method
+ */
+function formCreateSubmit(url, params, method)
+{
+    method = method || 'POST';
+
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    form.setAttribute('action', url);
+
+    for(var i = 0; i < params.length; i++) {
+        var hiddenField = document.createElement('input');
+        hiddenField.setAttribute('type', 'hidden');
+        hiddenField.setAttribute('name', params[i].name);
+        hiddenField.setAttribute('value', params[i].value);
+
+        form.appendChild(hiddenField);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+}
+
+/**
  * get query string
  * @returns {string}
  */

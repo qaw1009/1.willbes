@@ -131,6 +131,6 @@ class WB_Model extends CI_Model
     public function getEncString($str)
     {
         if($str == ''){ return ''; }
-        else { return $this->_conn->query("SELECT fn_enc('".$str."') AS enc")->row(0)->enc; }
+        else { return $this->_conn->query("SELECT fn_enc(?) AS enc", [$str])->row(0)->enc; }
     }
 }

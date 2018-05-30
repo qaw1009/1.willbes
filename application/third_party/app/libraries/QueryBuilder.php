@@ -29,6 +29,8 @@ trait QueryBuilder
                                 $this->makeWhereIn($col, $val, $is_and, $is_escape);
                             } elseif ($key == 'BET' || $key == 'BDT') {
                                 $this->makeWhereBetween($col, $val, $key, $is_and, $is_escape);
+                            } elseif ($key == 'RAW') {
+                                $this->makeWhereRaw($col, $val, $is_and);
                             } else {
                                 if (substr($key, 0 ,2) == 'LK') {
                                     $this->makeWhereLike($col, $val, $key, $is_and, $is_escape);
@@ -46,8 +48,9 @@ trait QueryBuilder
     }
 
     /**
-     * @param $column
-     * @param $value
+     * 연산자 조건 생성
+     * @param string $column
+     * @param string $value
      * @param string $type
      * @param bool $is_and
      * @param bool $is_escape
@@ -67,7 +70,7 @@ trait QueryBuilder
 
     /**
      * between 조건 생성
-     * @param $column
+     * @param string $column
      * @param array $values
      * @param string $type
      * @param bool $is_and
@@ -93,10 +96,10 @@ trait QueryBuilder
 
     /**
      * in 조건 생성
-     * @param $column
+     * @param string $column
      * @param array $values
      * @param bool $is_and
-     * @param $is_escape
+     * @param bool $is_escape
      * @return $this
      */
     public function makeWhereIn($column, $values = [], $is_and = true, $is_escape = true)
@@ -111,11 +114,11 @@ trait QueryBuilder
 
     /**
      * like 조건 생성
-     * @param $column
-     * @param $value
+     * @param string $column
+     * @param string $value
      * @param string $type
      * @param bool $is_and
-     * @param $is_escape
+     * @param bool $is_escape
      * @return $this
      */
     public function makeWhereLike($column, $value, $type = 'LKB', $is_and = true, $is_escape = true)
@@ -125,6 +128,23 @@ trait QueryBuilder
         if (is_null($value) === false && strlen($value) > 0 && isset($sides[$type]) === true) {
             $method = ($is_and === true) ? 'like' : 'or_like';
             $this->{$method}($column, $value, $sides[$type], $is_escape);
+        }
+
+        return $this;
+    }
+
+    /**
+     * 쿼리 형식으로 조회 조건 생성 (escape 처리 안함), ex) ['RAW' => ['col = ' => 'value']]
+     * @param string $column [컬럼명과 연산 기호를 같이 지정, ex) col =, col in, col like, col is ...]
+     * @param string $value [연산 기회 뒤의 값, ex) 1, ('1', '2', '3'), '1%', not null ...]
+     * @param bool $is_and
+     * @return $this
+     */
+    public function makeWhereRaw($column, $value, $is_and = true)
+    {
+        if (is_null($value) === false && strlen($value) > 0) {
+            $method = ($is_and === true) ? 'where' : 'or_where';
+            $this->{$method}($column, $value, false);
         }
 
         return $this;

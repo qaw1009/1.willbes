@@ -340,7 +340,8 @@ class MailModel extends WB_Model
 
         if (empty($uploaded) === false && count($uploaded[0]) > 0) {
             $input_data = array_merge($input_data,[
-                'SendAttachFileName' => $uploaded[0]['orig_name']
+                'SendAttachFileName' => $uploaded[0]['orig_name'],
+                'SendAttachRealFileName' => $uploaded[0]['client_name']
             ]);
             $mail_attach_path = $uploaded[0]['full_path'];
         }

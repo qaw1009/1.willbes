@@ -44,6 +44,19 @@
                 </div>
             </div>
 
+            <div class="form-group pt-10 pb-10">
+                <div class="row mt-5 bdb-line">
+                    <label class="control-label col-md-1" for="search_sms_is_agree">첨부파일</label>
+                    <div class="form-control-static col-md-8">
+                        @if (empty($data['SendAttachRealFileName']) === true)
+                            첨부파일 없음
+                        @else
+                            [ <a href="{{site_url('/crm/mail/sendFileDownload/').urlencode($data['SendAttachFilePath'].$data['SendAttachFileName'] ) }}" target="_blank">{{ $data['SendAttachRealFileName'] }}</a> ]
+                        @endif
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="row">
                     <div class="form-group">

@@ -108,7 +108,6 @@
                             <div class="form-group">
                                 <label class="control-label col-md-8" for="content" style="text-align: left !important;">수신번호 등록</label>
                                 <div class="col-md-4">
-                                    {{--<button type="button" class="btn btn-default btn-sm btn-primary" id="btn_sample_file_download">양식다운로드</button>--}}
                                     <a href="{{site_url('/crm/message/sampleDownload/')}}" class="btn btn-default btn-sm btn-primary" target="_blank">양식다운로드</a>
                                 </div>
                             </div>

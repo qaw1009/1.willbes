@@ -192,6 +192,9 @@ class Sms extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 샘플파일 다운로드
+     */
     public function sampleDownload()
     {
         $fileinfo = '/public/uploads/lms/_sample_download/sample_sms.xlsx';

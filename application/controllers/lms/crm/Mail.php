@@ -133,10 +133,22 @@ class Mail extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 샘플파일 다운로드
+     */
     public function sampleDownload()
     {
         $fileinfo = '/public/uploads/lms/_sample_download/sample_mail.xlsx';
         public_download($fileinfo);
+    }
+
+    /**
+     * 발송 첨부파일 다운로드
+     * @param array $fileinfo
+     */
+    public function sendFileDownload($fileinfo=[])
+    {
+        public_download($fileinfo[0]);
     }
 
     /**
@@ -233,7 +245,7 @@ class Mail extends \app\controllers\BaseController
         }
         $send_idx = $params[0];
 
-        $column = 'Title, Content';
+        $column = 'Title, Content, SendAttachFilePath, SendAttachFileName, SendAttachRealFileName';
         $arr_condition = [
             'EQ' => [
                 'SendIdx' => $send_idx

@@ -355,8 +355,10 @@ class BookModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
+            $admin_idx = $this->session->userdata('admin_idx');
+
             foreach ($params as $prod_code => $columns) {
-                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('ProdCode', $prod_code);
+                $this->_conn->set($columns)->set('UpdAdminIdx', $admin_idx)->where('ProdCode', $prod_code);
 
                 if ($this->_conn->update($this->_table['product']) === false) {
                     throw new \Exception('상품 정보 수정에 실패했습니다.');

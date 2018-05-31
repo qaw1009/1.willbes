@@ -21,16 +21,16 @@ jQuery.fn.showLoading = function(options) {
     var indicatorID;
     var settings = {
        	'addClass': '',
-	'beforeShow': '', 
+	    'beforeShow': '',
        	'afterShow': '',
        	'hPos': 'center', 
-	'vPos': 'center',
+	    'vPos': 'fixed',
        	'indicatorZIndex' : 9999,
        	'overlayZIndex': 9998,
-	'parent': '',
+	    'parent': '',
        	'marginTop': 0,
        	'marginLeft': 0,
-	'overlayWidth': null,
+	    'overlayWidth': null,
        	'overlayHeight': null
     };
 
@@ -138,7 +138,8 @@ jQuery.fn.showLoading = function(options) {
     jQuery(loadingDiv).css('display', 'none');
     jQuery(document.body).append(loadingDiv);
     
-    jQuery(loadingDiv).css('position', 'absolute');
+    /*jQuery(loadingDiv).css('position', 'absolute');*/
+    jQuery(loadingDiv).css('position', 'fixed');
     jQuery(loadingDiv).css('z-index', settings.indicatorZIndex);
 
     //
@@ -156,38 +157,41 @@ jQuery.fn.showLoading = function(options) {
     if ( settings.marginLeft ) {
 	indicatorLeft += parseInt(settings.marginTop);
     }
-    
-    
+
+
     //
     // set horizontal position
     //
     if ( settings.hPos.toString().toLowerCase() == 'center' ) {
-	jQuery(loadingDiv).css('left', (indicatorLeft + ((jQuery(overlayDiv).width() - parseInt(jQuery(loadingDiv).width())) / 2)).toString()  + 'px');
+	    jQuery(loadingDiv).css('left', (indicatorLeft + ((jQuery(overlayDiv).width() - parseInt(jQuery(loadingDiv).width())) / 2)).toString()  + 'px');
     }
     else if ( settings.hPos.toString().toLowerCase() == 'left' ) {
-	jQuery(loadingDiv).css('left', (indicatorLeft + parseInt(jQuery(overlayDiv).css('margin-left'))).toString() + 'px');
+	    jQuery(loadingDiv).css('left', (indicatorLeft + parseInt(jQuery(overlayDiv).css('margin-left'))).toString() + 'px');
     }
     else if ( settings.hPos.toString().toLowerCase() == 'right' ) {
-	jQuery(loadingDiv).css('left', (indicatorLeft + (jQuery(overlayDiv).width() - parseInt(jQuery(loadingDiv).width()))).toString()  + 'px');
+	    jQuery(loadingDiv).css('left', (indicatorLeft + (jQuery(overlayDiv).width() - parseInt(jQuery(loadingDiv).width()))).toString()  + 'px');
     }
     else {
-	jQuery(loadingDiv).css('left', (indicatorLeft + parseInt(settings.hPos)).toString() + 'px');
+	    jQuery(loadingDiv).css('left', (indicatorLeft + parseInt(settings.hPos)).toString() + 'px');
     }		
 
     //
     // set vertical position
     //
     if ( settings.vPos.toString().toLowerCase() == 'center' ) {
-	jQuery(loadingDiv).css('top', (indicatorTop + ((jQuery(overlayDiv).height() - parseInt(jQuery(loadingDiv).height())) / 2)).toString()  + 'px');
+	    jQuery(loadingDiv).css('top', (indicatorTop + ((jQuery(overlayDiv).height() - parseInt(jQuery(loadingDiv).height())) / 2)).toString()  + 'px');
     }
     else if ( settings.vPos.toString().toLowerCase() == 'top' ) {
-	jQuery(loadingDiv).css('top', indicatorTop.toString() + 'px');
+	    jQuery(loadingDiv).css('top', indicatorTop.toString() + 'px');
     }
     else if ( settings.vPos.toString().toLowerCase() == 'bottom' ) {
-	jQuery(loadingDiv).css('top', (indicatorTop + (jQuery(overlayDiv).height() - parseInt(jQuery(loadingDiv).height()))).toString()  + 'px');
+	    jQuery(loadingDiv).css('top', (indicatorTop + (jQuery(overlayDiv).height() - parseInt(jQuery(loadingDiv).height()))).toString()  + 'px');
+    }
+    else if ( settings.vPos.toString().toLowerCase() == 'fixed' ) {
+        jQuery(loadingDiv).css('top', '35'  + '%');
     }
     else {
-	jQuery(loadingDiv).css('top', (indicatorTop + parseInt(settings.vPos)).toString() + 'px' );
+	    jQuery(loadingDiv).css('top', (indicatorTop + parseInt(settings.vPos)).toString() + 'px' );
     }		
 
 

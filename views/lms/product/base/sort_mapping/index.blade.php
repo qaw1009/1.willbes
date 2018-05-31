@@ -4,6 +4,7 @@
     <h5>- 사용자단 교수소개, 수강신청 영역의 소트 조건을 매핑하기 위한 관리 기능입니다. (과목연결 후에만 직렬/과목연결이 가능합니다.)</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_site_tabs('tabs_site_code') !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -93,7 +94,6 @@
         var $datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_table');
-        var $site_code = '';
 
         $(document).ready(function() {
             // datatable setting
@@ -127,7 +127,7 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .column('.searching_no_category').search(no_category)
                 .column('.searching_no_complex').search(no_complex)
-                .column('.searching_site_code').search($site_code)
+                .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
                 .draw();
         };
     </script>

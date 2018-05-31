@@ -118,7 +118,7 @@
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#pop_modal").modal('toggle');
-                                location.reload();
+                                location.replace('{{ site_url('/product/etc/freebie/') }}' + dtParamsToQueryString($datatable));
                             }
                         }, showValidateError, null, false, 'alert');
                     });

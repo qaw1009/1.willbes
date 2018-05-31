@@ -53,7 +53,7 @@ function iCheckAll(target_selector, click_selector) {
  */
 function dtParamsToQueryString($datatable) {
     var $search_form = $('#search_form');
-    if (typeof $datatable === 'undefined' || typeof $search_form === 'undefined') {
+    if (typeof $datatable === 'undefined' || $search_form.length < 1) {
         return '';
     }
 
@@ -78,13 +78,15 @@ function formCreateSubmit(url, params, method)
     form.setAttribute('method', method);
     form.setAttribute('action', url);
 
-    for(var i = 0; i < params.length; i++) {
-        var hiddenField = document.createElement('input');
-        hiddenField.setAttribute('type', 'hidden');
-        hiddenField.setAttribute('name', params[i].name);
-        hiddenField.setAttribute('value', params[i].value);
+    if (params != null) {
+        for(var i = 0; i < params.length; i++) {
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', params[i].name);
+            hiddenField.setAttribute('value', params[i].value);
 
-        form.appendChild(hiddenField);
+            form.appendChild(hiddenField);
+        }
     }
 
     document.body.appendChild(form);
@@ -106,7 +108,7 @@ function getQueryString() {
  * @returns {boolean}
  */
 function isJson(data) {
-    if (typeof data != 'string') {
+    if (typeof data !== 'string') {
         data = JSON.stringify(data);
     }     
 
@@ -128,7 +130,7 @@ function setMailDomain(select, target, data) {
     var $select = $('#' + select);
     var $target = $('#' + target);
 
-    if ($select.val() != '') {
+    if ($select.val() !== '') {
         $target.val($select.val());
         $target.prop('readonly', true);
     } else {
@@ -136,7 +138,7 @@ function setMailDomain(select, target, data) {
         $target.prop('readonly', false);
     }
 
-    if (typeof data != 'undefined') {
+    if (typeof data !== 'undefined') {
         $select.val(data);
         if ($select.children('option:selected').length < 1) {
             $select.val('');
@@ -168,8 +170,8 @@ function forceMenuActive(menu_link) {
 function notifyAlert(type, title, text, delay, hide, center) {
     title = title || "알림";
     delay = delay || 3000;
-    hide = (typeof(hide) == "undefined" || hide == null) ? true : hide;
-    center = (center == true)? {"dir1": "down", "dir2": "right", "firstpos1": ($(window).height()/2 -150), "firstpos2": ($(window).width()/2 - 150)} : "";
+    hide = (typeof(hide) === "undefined" || hide == null) ? true : hide;
+    center = (center === true)? {"dir1": "down", "dir2": "right", "firstpos1": ($(window).height()/2 -150), "firstpos2": ($(window).width()/2 - 150)} : "";
 
     new PNotify({
         type: type,
@@ -199,7 +201,7 @@ function popupOpen(url, name, width, height, xpos, ypos) {
         xpos = xpos || (screen.availWidth-width)/2;
         ypos = ypos || (screen.availHeight-height)/2;
 
-        if ( typeof( popupWins[name] ) != "object" ){
+        if ( typeof( popupWins[name] ) !== "object" ){
             popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar`o, status=no, toolbar=no, scrollbars=no, resizable=yes');
         } else {
             if (!popupWins[name].closed){
@@ -266,23 +268,23 @@ function resetModal(selector) {
  */
 function sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
     $("button, .btn").prop("disabled",true);
-    if(typeof is_file == 'undefined') is_file = false;
+    if(typeof is_file === 'undefined') is_file = false;
     var process_data = true;
     var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
     if(is_file){
         process_data = false;
         content_type = false;
-        method = method=='GET' ? 'POST' : method; // file upload는 get 방식 불가
+        method = method === 'GET' ? 'POST' : method; // file upload는 get 방식 불가
     }
 
     $.ajax({
-        type: ((typeof method != 'undefined') ? method : 'POST'),
+        type: ((typeof method !== 'undefined') ? method : 'POST'),
         url: url,
         data: data,
-        async: (typeof async != 'undefined') ? async : false,
+        async: (typeof async !== 'undefined') ? async : false,
         processData: process_data,
         contentType: content_type,
-        dataType: (typeof data_type != 'undefined') ? data_type : 'json'
+        dataType: (typeof data_type !== 'undefined') ? data_type : 'json'
     }).success(function (data, status, req) {
         if(typeof callback === "function") {
             callback(data);
@@ -314,23 +316,23 @@ function sendAjax(url, data, callback, error_callback, async, method, data_type,
  */
 function sendLoadingAjax(url, data, callback, error_callback, method, loading_target, data_type, is_file) {
     $("button, .btn").prop("disabled",true);
-    if(typeof is_file == 'undefined') is_file = false;
+    if(typeof is_file === 'undefined') is_file = false;
     var process_data = true;
     var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
     if(is_file){
         process_data = false;
         content_type = false;
-        method = method=='GET' ? 'POST' : method; // file upload는 get 방식 불가
+        method = method === 'GET' ? 'POST' : method; // file upload는 get 방식 불가
     }
 
     $.ajax({
-        type: ((typeof method != 'undefined') ? method : 'POST'),
+        type: ((typeof method !== 'undefined') ? method : 'POST'),
         url: url,
         data: data,
         async: true,
         processData: process_data,
         contentType: content_type,
-        dataType: (typeof data_type != 'undefined') ? data_type : 'json',
+        dataType: (typeof data_type !== 'undefined') ? data_type : 'json',
         beforeSend: function() {
             loading_target.showLoading({
                 'addClass': 'loading-indicator-bars'
@@ -400,7 +402,7 @@ function computeDate(i_period, s_period_type) {
     var s_start_date = "";
     var s_end_date = "";
 
-    if(s_period_type == 'days' || s_period_type == 'weeks' || s_period_type == 'months') {
+    if(s_period_type === 'days' || s_period_type === 'weeks' || s_period_type === 'months') {
         var calc_date = moment().add(i_period, s_period_type).format('YYYY-MM-DD');
         if(i_period >= 0) {
             // s_period = moment().format('YYYY-MM-DD') + ' - ' + calc_date;
@@ -410,10 +412,10 @@ function computeDate(i_period, s_period_type) {
             s_start_date = calc_date;
             s_end_date = moment().format('YYYY-MM-DD');
         }
-    } else if(s_period_type == 'mon') {
+    } else if(s_period_type === 'mon') {
         s_start_date = moment().add(i_period, 'months').date(1).format('YYYY-MM-DD');
         s_end_date = moment().add(i_period, 'months').endOf('month').format('YYYY-MM-DD');
-    } else if(s_period_type == 'all') {
+    } else if(s_period_type === 'all') {
         s_start_date = '';
         s_end_date = '';
     }
@@ -488,13 +490,13 @@ function fn_chk_byte(val){
                 var _param = settings.add_param[i];
                 if(_param.required){
                     var _param_value = '';
-                    if(settings.add_param_type == 'input' && $("#"+_param.id).length >0) {
+                    if(settings.add_param_type === 'input' && $("#"+_param.id).length >0) {
                         _param_value = $("#"+_param.id).val();
-                    } else if(settings.add_param_type == 'attr_param' || settings.add_param_type == 'attr_url') {
+                    } else if(settings.add_param_type === 'attr_param' || settings.add_param_type === 'attr_url') {
                         _param_value = event_btn.attr('data-'+_param.id);
                     }
 
-                    if(_param_value == ''){
+                    if(_param_value === ''){
                         alert(_param.name + '을 먼저 선택 하셔야 야 합니다.');
                         return false;
                     }
@@ -512,16 +514,16 @@ function fn_chk_byte(val){
             });
 
             var callback = function(d){
-                if(d=='fail') {
+                if(d === 'fail') {
                     notifyAlert('error', '알림', '표시할 내역이 없습니다.');
                     pop_modal.modal("toggle");
-                } else if(d.substr(0, 3) == 'ERR') {
+                } else if(d.substr(0, 3) === 'ERR') {
                     notifyAlert('error', '에러', d.substr(4));
                     pop_modal.modal("toggle");
                 } else {
                     pop_modal.find(".modal-content").html(d).end()
                         .find(".modal-dialog").css("width",settings.width+"px").end();
-                    if(settings.overflow == 'scroll' || settings.overflow == 'hidden') {
+                    if(settings.overflow === 'scroll' || settings.overflow === 'hidden') {
                         pop_modal.find(".modal-content .box-body").css({
                             "overflow-y" : settings.overflow
                             , "max-height" : settings.max_height+"px"
@@ -540,13 +542,13 @@ function fn_chk_byte(val){
             for (var i = 0; i < settings.add_param.length; i++) {
                 var _param = settings.add_param[i];
                 var _param_value = null;
-                if(settings.add_param_type == 'input') {
+                if(settings.add_param_type === 'input') {
                     _param_value = $("#"+_param.id).val();
                     if(_param_value) _data[_param.id] = _param_value;
-                } else if(settings.add_param_type == 'attr_param') {
+                } else if(settings.add_param_type === 'attr_param') {
                     _param_value = event_btn.attr('data-'+_param.id);
                     if(_param_value) _data[_param.id] = _param_value;
-                } else if(settings.add_param_type == 'attr_url') {
+                } else if(settings.add_param_type === 'attr_url') {
                     _param_value = event_btn.attr('data-'+_param.id);
                     _url += '/' + _param_value
                 }

@@ -61,11 +61,11 @@ $.extend(true, $.fn.dataTable.defaults, {
             //$(".right_col").css("height", $(document).height());
         },
         error: function(xmlHttpRequest, textStatus, errorThrown){
-            if(xmlHttpRequest.readyState == 0 || xmlHttpRequest.status == 0){
-                return
+            if(xmlHttpRequest.readyState === 0 || xmlHttpRequest.status === 0){
+                return;
             }
             else{
-                if(xmlHttpRequest.status == 401)
+                if(xmlHttpRequest.status === 401)
                     notifyAlert("error", "권한 없음", "리스트 조회 권한이 없습니다. [" + xmlHttpRequest.status + "]");
                 else
                     notifyAlert("error", "알림", "리스트 조회를 실패하였습니다. [" + xmlHttpRequest.status + "]");
@@ -80,7 +80,7 @@ $(document).ready(function() {
     var $search_form = $('#search_form');
     var $tab_site_code = $('.tabs-site-code');
 
-    if (typeof $search_form === 'undefined' || json.hasOwnProperty('q') === false) {
+    if ($search_form.length < 1 || json.hasOwnProperty('q') === false) {
         return;
     }
 
@@ -107,11 +107,11 @@ $(document).ready(function() {
     });
 
     // set datatable length and page
-    if (qs.start !== '' && qs.length !== '') {
+    if (typeof qs.start !== 'undefined' && typeof qs.length !== 'undefined') {
         // datatable ajax
         $.extend(true, $.fn.dataTable.defaults, {
             iDisplayStart: qs.start,
-            iDisplayLength: qs.length,
+            iDisplayLength: qs.length
         });
     } else {
         setTimeout(function() {

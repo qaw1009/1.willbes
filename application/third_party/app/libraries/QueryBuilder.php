@@ -79,7 +79,7 @@ trait QueryBuilder
      */
     public function makeWhereBetween($column, $values = [], $type = 'BET', $is_and = true, $is_escape = true)
     {
-        if (is_array($values) === true && count($values) == 2) {
+        if (is_array($values) === true && count($values) == 2 && empty($values[0]) === false && empty($values[1]) === false) {
             if ($type == 'BDT') {
                 $values[0] = $values[0] . ' 00:00:00';
                 $values[1] = $values[1] . ' 23:59:59';

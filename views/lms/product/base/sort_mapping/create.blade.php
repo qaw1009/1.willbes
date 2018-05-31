@@ -61,7 +61,7 @@
                             replaceModal('{{ site_url('/product/base/sortMapping/list/') }}' + uri_param, {});
                         } else {
                             $("#pop_modal").modal('toggle');
-                            location.reload();
+                            location.replace('{{ site_url('/product/base/sortMapping/') }}' + dtParamsToQueryString($datatable));
                         }
                     }
                 }, showValidateError, null, false, 'alert');

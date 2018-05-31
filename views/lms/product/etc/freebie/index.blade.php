@@ -4,6 +4,7 @@
     <h5>- 사은품 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_site_tabs('tabs_site_code') !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -77,7 +78,6 @@
         var $search_form = $('#search_form');
         var $list_form = $('#list_form');
         var $list_table = $('#list_table');
-        var $site_code = '';
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -108,7 +108,7 @@
             $datatable
                 .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                .column('.searching_site_code').search($site_code)
+                .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
                 .draw();
         }
     </script>

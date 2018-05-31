@@ -33,7 +33,7 @@
                     <table id="_list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th width="12%">전체선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                            <th width="3%"><input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                             <th width="10%">분류</th>
                             <th width="10%">쿠폰코드</th>
                             <th>쿠폰명</th>

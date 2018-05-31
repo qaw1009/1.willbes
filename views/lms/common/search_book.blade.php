@@ -33,7 +33,7 @@
                     <table id="_list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>전체선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                            <th width="3%"><input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                             <th>교재코드</th>
                             <th>교재명</th>
                             <th>출판사</th>

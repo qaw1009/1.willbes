@@ -1,7 +1,11 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    단강좌 검색
+    @if(empty($wLecIdx) === true)
+        단강좌 검색
+    @else
+        동일한 마스터강좌로 등록된 단강좌
+    @endif
 @stop
 
 @section('layer_header')
@@ -9,13 +13,18 @@
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" value="{{ $site_code }}"/>
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
+        <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
+
         @endsection
 
         @section('layer_content')
+            @if(empty($wLecIdx) === true)
             <div class="form-group form-group-sm mb-0">
                 <p class="form-control-static"><span class="required">*</span> 검색한 단강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
             </div>
+            @endif
 
+    @if(empty($wLecIdx) === true)
             <div class="form-group form-group-bordered pt-10 pb-5">
                 <label class="control-label col-md-2 pt-5" for="search_value">단강좌검색
                 </label>
@@ -29,25 +38,28 @@
                     <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
                 </div>
             </div>
+    @endif
             <div class="row mt-20 mb-20">
                 <div class="col-md-12 clearfix">
                     <table id="_list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th width="8%">전체선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
-                            <th>강좌기본정보</th>
-                            <th>강좌유형</th>
-                            <th>과정</th>
-                            <th>과목</th>
-                            <th>교수</th>
+                            @if(empty($wLecIdx) === true)
+                            <th width="3%"> <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                            @endif
+                            <th width="10%">강좌기본정보</th>
+                            <th width="6%">강좌유형</th>
+                            <th width="6%">과정</th>
+                            <th width="6%">과목</th>
+                            <th width="6%">교수</th>
                             <th>단강좌명</th>
-                            <th>진행상태</th>
+                            <th width="8%">진행상태</th>
                             <th>판매가</th>
-                            <th>배수</th>
-                            <th>판매여부</th>
-                            <th>사용여부</th>
-                            <th>등록자</th>
-                            <th>등록일</th>
+                            <th width="4%">배수</th>
+                            <th width="6%">판매여부</th>
+                            <th width="6%">사용여부</th>
+                            <th width="5%">등록자</th>
+                            <th width="8%">등록일</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -66,10 +78,12 @@
                     $datatable = $list_table.DataTable({
                         serverSide: true,
                         buttons: [
+                            @if(empty($wLecIdx) === true)
                             { text: '적용', className: 'btn btn-success btn-sm mb-0',action : function(e, dt, node, config) {
                                     sendContent();
                                 }
                             }
+                            @endif
                         ],
                         ajax: {
                             'url' : '{{ site_url('/common/searchLecture/listAjax') }}',
@@ -80,6 +94,7 @@
                         },
 
                         columns: [
+                            @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     var seq = meta.row + meta.settings._iDisplayStart;
                                     var codeInfo= row.ProdCode+'@$'
@@ -94,6 +109,7 @@
                                     ;
                                     return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
+                            @endif
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SiteName+'<BR>'+(row.CateName_Parent == null ? '' : row.CateName_Parent+'<BR>')+(row.CateName)+'<BR>'+row.SchoolYear;
                                 }},

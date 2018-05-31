@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchSubjectMapping extends \app\controllers\BaseController
 {
-    protected $models = array('common/searchSubjectMapping');
+    protected $models = array('product/base/sortMapping');
     protected $helpers = array();
 
     public function __construct()
@@ -40,10 +40,10 @@ class SearchSubjectMapping extends \app\controllers\BaseController
         ];
 
         $list = [];
-        $count = $this->searchSubjectMappingModel->listSearchSubjectMapping(true, $arr_condition);
+        $count = $this->sortMappingModel->listSearchSubjectMapping(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->searchSubjectMappingModel->listSearchSubjectMapping(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PSC.CsIdx' => 'desc']);
+            $list = $this->sortMappingModel->listSearchSubjectMapping(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PSC.CsIdx' => 'desc']);
         }
 
         return $this->response([

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchCategory extends \app\controllers\BaseController
 {
-    protected $models = array('common/searchCategory');
+    protected $models = array('sys/category');
     protected $helpers = array();
 
     public function __construct()
@@ -50,10 +50,10 @@ class SearchCategory extends \app\controllers\BaseController
         ];
 
         $list = [];
-        $count = $this->searchCategoryModel->listSearchCategory(true, $arr_condition);
+        $count = $this->categoryModel->listSearchCategory(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->searchCategoryModel->listSearchCategory(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['C.RegDatm' => 'desc']);
+            $list = $this->categoryModel->listSearchCategory(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['C.RegDatm' => 'desc']);
         }
 
         return $this->response([

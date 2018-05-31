@@ -190,6 +190,12 @@
                 ]
             });
 
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                formCreateSubmit('{{ site_url('/service/coupon/regist/excel') }}', $search_form.serializeArray(), 'POST');
+            });
+
             // 데이터 등록 폼
             $('.btn-regist').on('click', function() {
                 location.href = '{{ site_url('/service/coupon/regist/create') }}';

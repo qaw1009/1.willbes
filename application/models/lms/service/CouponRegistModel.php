@@ -12,6 +12,7 @@ class CouponRegistModel extends WB_Model
         'category' => 'lms_sys_category',
         'admin' => 'wbs_sys_admin'
     ];
+    private $_group_ccd = ['ApplyType' => '645'];
     private $_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004']; // 온라인강좌, 수강연장, 배수, 학원강좌
     private $_apply_type_to_range_ccds = ['645001', '645002', '645003', '645004', '645005']; // 온라인강좌, 수강연장, 배수, 학원강좌, 교재
     private $_apply_type_to_mock_ccds = ['645007'];
@@ -23,7 +24,7 @@ class CouponRegistModel extends WB_Model
 
     /**
      * 쿠폰 목록 조회
-     * @param $is_count
+     * @param bool|string $is_count
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
@@ -39,6 +40,13 @@ class CouponRegistModel extends WB_Model
             $column = '*';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            if ($is_count == 'excel') {
+                $column = 'SiteName, CateName, concat(CouponName, " [", CouponIdx, "]") as CouponName, DeployName, ApplyTypeName, LecTypeCcds, ApplyRangeName
+                    , concat(ValidDay, "일", " (", IssueStartDate, "~", IssueEndDate, ")") as ValidDay, IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssueCnt
+                    , if(IsIssue = "Y", "발급", "미발급") as IsIssue, RegAdminName, RegDatm
+                ';
+            }
         }
 
         $from = '
@@ -46,6 +54,7 @@ class CouponRegistModel extends WB_Model
                 C.CouponIdx, C.SiteCode, C.CouponName, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType, C.IssueStartDate, C.IssueEndDate, C.ValidDay
                     , C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
                     , if(C.DeployType = "N", "온라인", "오프라인") as DeployName
+                    , SCA.CcdName as ApplyTypeName                    
                     , if(C.ApplyRangeType = "A", "전체", if(C.ApplyRangeType = "I", "항목별", "특정상품")) as ApplyRangeName
                     , (case when current_date() between C.IssueStartDate and C.IssueEndDate then "유효"
                            when current_date() > C.IssueEndDate then "만료"
@@ -60,6 +69,8 @@ class CouponRegistModel extends WB_Model
                     group by CouponIdx                    
                 ) as CC
                     on C.CouponIdx = CC.CouponIdx
+                inner join ' . $this->_table['code'] . ' as SCA
+                    on C.ApplyTypeCcd = SCA.Ccd and SCA.GroupCcd = "' . $this->_group_ccd['ApplyType'] . '"
                 left join ' . $this->_table['category'] . ' as SC
                     on C.SiteCode = SC.SiteCode and CC.CateCode = SC.CateCode and SC.IsStatus = "Y"
                 left join (

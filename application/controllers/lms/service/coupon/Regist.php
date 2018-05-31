@@ -41,6 +41,69 @@ class Regist extends \app\controllers\BaseController
      */
     public function listAjax()
     {
+        $arr_condition = $this->_getListConditions();
+
+        $list = [];
+        $count = $this->couponRegistModel->listAllCoupon(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->couponRegistModel->listAllCoupon(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CouponIdx' => 'desc']);
+
+            // 쿠폰상세적용구분 코드 조회
+            $codes = $this->_getCodes([$this->_ccd['LecType']]);
+
+            $list = array_map(function ($row) use ($codes) {
+                // 적용상세구분
+                $row['LecTypeNames'] = '';
+                foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
+                    $row['LecTypeNames'] .= ',' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
+                }
+                $row['LecTypeNames'] = substr($row['LecTypeNames'], 1);
+
+                return $row;
+            }, $list);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 쿠폰등록/발급 목록 엑셀다운로드
+     */
+    public function excel()
+    {
+        $headers = ['운영사이트', '카테고리', '쿠폰명', '배포루트', '적용구분', '적용상세구분', '적용범위', '사용기간 (유효기간)', '유효여부', '할인율 (할인금액)', '쿠폰사용수', '쿠폰발급수', '발급여부', '등록자', '등록일'];
+
+        $arr_condition = $this->_getListConditions();
+        $list = $this->couponRegistModel->listAllCoupon('excel', $arr_condition, null, null, ['CouponIdx' => 'desc']);
+
+        if (count($list) > 0) {
+            // 쿠폰상세적용구분 코드 조회
+            $codes = $this->_getCodes([$this->_ccd['LecType']]);
+
+            $list = array_map(function ($row) use ($codes) {
+                // 적용상세구분
+                $lec_type_names = '';
+                foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
+                    $lec_type_names .= ', ' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
+                }
+                $row['LecTypeCcds'] = substr($lec_type_names, 1);
+
+                return $row;
+            }, $list);
+        }
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel('쿠폰등록리스트', $list, $headers);
+    }
+
+    private function _getListConditions()
+    {
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_reqP('search_site_code'),
@@ -74,35 +137,7 @@ class Regist extends \app\controllers\BaseController
             $arr_condition['BDT'] = ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
         }
 
-        $list = [];
-        $count = $this->couponRegistModel->listAllCoupon(true, $arr_condition);
-
-        if ($count > 0) {
-            $list = $this->couponRegistModel->listAllCoupon(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CouponIdx' => 'desc']);
-
-            // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회
-            $codes = $this->_getCodes([$this->_ccd['ApplyType'], $this->_ccd['LecType']]);
-
-            $list = array_map(function ($row) use ($codes) {
-                // 적용구분
-                $row['ApplyTypeName'] = $codes[$this->_ccd['ApplyType']][$row['ApplyTypeCcd']][0];
-
-                // 적용상세구분
-                $row['LecTypeNames'] = '';
-                foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
-                    $row['LecTypeNames'] .= ',' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
-                }
-                $row['LecTypeNames'] = substr($row['LecTypeNames'], 1);
-
-                return $row;
-            }, $list);
-        }
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list
-        ]);
+        return $arr_condition;
     }
 
     /**

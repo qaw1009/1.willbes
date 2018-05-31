@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchLecture extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code');
+    protected $models = array('sys/code','product/on/lecture');
     protected $helpers = array();
 
     public function __construct()
@@ -28,20 +28,43 @@ class SearchLecture extends \app\controllers\BaseController
     {
 
         $arr_condition = [
-            'EQ' => ['B.SiteCode' => $this->_req('site_code')],
-            'ORG' =>[
-                'LKB' => [
-                    'B.BookIdx' => $this->_req('search_value'),
-                    'B.BookName' => $this->_req('search_value')
-                ]
+            'EQ' => [
+                'B.LearnPatternCcd' => $this->_reqP('LearnPatternCcd'),
+                'A.SiteCode' => $this->_reqP('site_code'),
             ]
         ];
 
-        $list = [];
-        $count = $this->bookModel->listBook(true,$arr_condition);
+        $arr_condition = [
+            'NOT' => [
+                'A.ProdCode' => $this->_req('ProdCode'),
+            ]
+        ];
 
-        if($count > 0) {
-            $list = $this->bookModel->listBook(false,$arr_condition,$this->_req('length'),$this->_req('start'),['bookIdx'=>'desc']);
+
+
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
+                ]
+            ],
+        ]);
+
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
+                ]
+            ],
+        ]);
+
+        $list = [];
+        $count = $this->lectureModel->listLecture(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->lectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([

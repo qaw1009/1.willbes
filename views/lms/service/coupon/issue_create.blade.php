@@ -31,28 +31,26 @@
                             <th>할인율<br/>(할인금액)</th>
                             <th>사용 / 발급</th>
                             <th>발급여부</th>
-                            <th>사용여부</th>
                             <th>등록자</th>
                             <th>등록일</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>온라인경찰</td>
-                            <td>일반경찰</td>
-                            <td>[CODE] <u class="blue">쿠폰명</u></td>
-                            <td>온라인</td>
-                            <td>온라인강좌</td>
-                            <td>단강좌</td>
-                            <td>전체</td>
-                            <td>10일<br/>(2018-00-00~2018-00-00)</td>
-                            <td>유효</td>
-                            <td>30%</td>
-                            <td><a class="red">20</a> / 200</td>
-                            <td>발급</td>
-                            <td>사용</td>
-                            <td>관리자</td>
-                            <td>2018-00-00 00:00:00</td>
+                            <td>{{ $data['SiteName'] }}</td>
+                            <td>{{ $data['CateName'] }}</td>
+                            <td><u class="blue">{{ $data['CouponName'] }}</u> [{{ $data['CouponIdx'] }}]</td>
+                            <td>{{ $data['DeployName'] }}</td>
+                            <td>{{ $data['ApplyTypeName'] }}</td>
+                            <td>{{ $data['LecTypeNames'] }}</td>
+                            <td>{{ $data['ApplyRangeName'] }}</td>
+                            <td>{{ $data['ValidDay'] }}일<br/>({{ $data['IssueStartDate'] }}~{{ $data['IssueEndDate'] }})</td>
+                            <td>{{ $data['IssueValid'] }}</td>
+                            <td>{{ $data['DiscRate'] }}@if($data['DiscType'] == 'R')%@else원@endif</td>
+                            <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssueCnt'] }}</td>
+                            <td>@if($data['IsIssue'] == 'Y')발급@else<span class="red">미발급</span>@endif</td>
+                            <td>{{ $data['RegAdminName'] }}</td>
+                            <td>{{ $data['RegDatm'] }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -65,6 +63,7 @@
                 <div class="col-md-12">
                     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
+                        <input type="hidden" name="coupon_idx" value="{{ $coupon_idx }}" title="쿠폰 식별자"/>
                         <div class="ln_solid mt-0"></div>
                         <div class="form-group">
                             <label class="control-label col-md-1" for="issue_type_1">등록구분 <span class="required">*</span>
@@ -122,34 +121,43 @@
                     <h4><strong>쿠폰발급내역/사용내역</strong></h4>
                 </div>
                 <div class="col-md-12">
-                    <form class="form-horizontal form-label-left searching" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
+                    <form class="form-horizontal form-label-left" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
+                        <input type="hidden" name="search_coupon_idx" value="{{ $coupon_idx }}"/>
                         <div class="ln_solid mt-0"></div>
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="search_value">회원검색
+                            <label class="control-label col-md-1" for="search_member_value">회원검색
                             </label>
                             <div class="col-md-3">
-                                <input type="text" id="search_value" name="search_value" class="form-control" value="">
+                                <input type="text" id="search_member_value" name="search_value" class="form-control" value="">
                             </div>
                             <div class="col-md-7">
                                 <p class="form-control-static"># 이름, 아이디, 휴대폰번호 검색 가능</p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="search_is_issue">쿠폰조건검색
+                            <label class="control-label col-md-1" for="search_issue_type">쿠폰조건검색
                             </label>
                             <div class="col-md-10 form-inline">
                                 <select class="form-control mr-10" id="search_issue_type" name="search_issue_type">
                                     <option value="">발급구분</option>
-                                </select>
-                                <select class="form-control mr-10" id="search_is_valid" name="search_is_valid">
-                                    <option value="">쿠폰유효여부</option>
+                                    @foreach($arr_issue_type_ccd as $key => $val)
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endforeach
                                 </select>
                                 <select class="form-control mr-10" id="search_is_use" name="search_is_use">
                                     <option value="">쿠폰사용여부</option>
+                                    <option value="Y">사용</option>
+                                    <option value="N">미사용</option>
+                                </select>
+                                <select class="form-control mr-10" id="search_valid_status" name="search_valid_status">
+                                    <option value="">쿠폰유효여부</option>
+                                    <option value="Y">유효</option>
+                                    <option value="N">만료</option>
+                                    <option value="C">취소</option>
                                 </select>
                                 <div class="checkbox">
-                                    <input type="checkbox" id="search_is_issue_back" name="search_is_issue_back" class="flat" value="1"/> <label for="search_is_issue_back" class="input-label">발급회수쿠폰</label>
+                                    <input type="checkbox" id="search_is_retire" name="search_is_retire" class="flat" value="Y"/> <label for="search_is_retire" class="input-label">발급회수쿠폰</label>
                                 </div>
                             </div>
                         </div>
@@ -164,34 +172,23 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <table id="list_coupon_issue_table" class="table table-striped table-bordered">
+                    <table id="list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th>선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                             <th>No</th>
-                            <th class="searching">회원명 (아이디)</th>
-                            <th class="searching">휴대폰번호</th>
-                            <th class="searching_issue_type">발급구분</th>
+                            <th>쿠폰핀번호</th>
+                            <th>회원명 (아이디)</th>
+                            <th>휴대폰번호</th>
+                            <th>발급구분</th>
                             <th>발급일 (발급자)</th>
-                            <th class="searching_is_valid">유효여부 (만료일)</th>
-                            <th class="searching_is_use">사용여부 (사용일)</th>
+                            <th>유효여부 (만료일)</th>
+                            <th>사용여부 (사용일)</th>
                             <th>사용상품 (주문번호)</th>
-                            <th class="searching_is_issue_back">발급회수일 (회수자)</th>
+                            <th>발급회수일 (회수자)</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><input type="checkbox" id="" name="" class="flat" value=""/></td>
-                            <td>4</td>
-                            <td>회원명 <a class="blue">(아이디)</a></td>
-                            <td>010-0000-0000 (Y)</td>
-                            <td>자동발급</td>
-                            <td>2018-00-00 (회원명)</td>
-                            <td>유효 (2018-00-00)</td>
-                            <td>사용 (2018-00-00)</td>
-                            <td>상품명 <a class="blue">(주문번호)</a></td>
-                            <td>2018-00-00 (관리자명)</td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -206,19 +203,91 @@
         var $datatable;
         var $regi_form = $('#regi_form');
         var $search_form = $('#search_form');
-        var $list_table = $('#list_coupon_issue_table');
+        var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-            // 쿠폰발급내역/사용내역
+            // 쿠폰발급 목록
             $datatable = $list_table.DataTable({
-                ajax: false,
-                paging: false,
-                searching: true,
+                serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-issue-back' },
+                    { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-retire' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
+                ajax: {
+                    'url' : '{{ site_url('/service/coupon/issue/listAjax') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                columns: [
+                    {'data' : 'CdIdx', 'render' : function(data, type, row, meta) {
+                        return (row.IsUse === 'Y' || row.RetireDatm != null) ? '회수불가' : '<input type="checkbox" name="cd_idx" class="flat" value="' + data + '" data-idx="' + row.CouponIdx + '">';
+                    }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
+                    {'data' : 'CouponPin'},
+                    {'data' : 'MemName', 'render' : function(data, type, row, meta) {
+                        return data + ' (<u class="blue">' + row.MemId + '</u>)';
+                    }},
+                    {'data' : 'Phone', 'render' : function(data, type, row, meta) {
+                        return data + ' (' + row.SmsRcvStatus + ')';
+                    }},
+                    {'data' : 'IssueTypeName'},
+                    {'data' : 'IssueDatm', 'render' : function(data, type, row, meta) {
+                        return data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')';
+                    }},
+                    {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
+                        return ((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
+                    }},
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                        return (data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>';
+                    }},
+                    {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
+                        return (row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '';
+                    }},
+                    {'data' : 'RetireDatm', 'render' : function(data, type, row, meta) {
+                        return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';
+                    }}
+                ]
+            });
+
+            // 전체선택/해제
+            $list_table.on('ifChanged', '#_is_all', function() {
+                iCheckAll($list_table.find('input[name="cd_idx"]'), $(this));
+            });
+
+            // 쿠폰발급회수 버튼 클릭
+            $('.btn-retire').on('click', function() {
+                var $checked_cd_idx = $list_table.find('input[name="cd_idx"]:checked');
+                var $params = {};
+                $checked_cd_idx.each(function(idx) {
+                    $params[$(this).data('idx')] = $(this).val();
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('선택된 쿠폰이 없습니다.');
+                    return;
+                }
+
+                if (!confirm('해당 쿠폰을 회수하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+                sendAjax('{{ site_url('/service/coupon/issue/retire') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
 
             // 목록 이동
@@ -226,16 +295,5 @@
                 location.replace('{{ site_url('/service/coupon/regist/index') }}' + getQueryString());
             });
         });
-
-        // datatable searching
-        function datatableSearching() {
-            $datatable
-                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                .column('.searching_issue_type').search($search_form.find('select[name="search_issue_type"]').val())
-                .column('.searching_is_valid').search($search_form.find('select[name="search_is_valid"]').val())
-                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                .column('.searching_is_issue_back').search($search_form.find('input[name="search_is_issue_back"]').val())
-                .draw();
-        }
     </script>
 @stop

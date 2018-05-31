@@ -80,6 +80,8 @@
                             <th>이름</th>
                             <th>휴대폰번호</th>
                             <th>SMS 수신동의</th>
+                            <th>이메일주소</th>
+                            <th>이메일 수신동의</th>
                             <th>가입일</th>
                             <th>상태</th>
                             <th>선택</th>
@@ -122,17 +124,24 @@
                             {'data' : 'SmsRcvStatus', 'render' : function(data, type, row, meta) {
                                     if (data == 'Y') {return '동의'} else { return '미동의' }
                                 }},
-
+                            {'data' : 'MemMail'},
+                            {'data' : 'MailRcvStatus', 'render' : function(data, type, row, meta) {
+                                    if (data == 'Y') {return '동의'} else { return '미동의' }
+                                }},
                             {'data' : 'JoinDate'},
                             {'data' : 'IsStatus'},
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     var val = '0';
                                     switch (send_type_modal) {
                                         case 'sms' :
-                                            val = row.Phone;
+                                            if (row.Phone == '') { val = ''; } else { val = row.Phone; }
                                             break;
+                                        case 'mail' :
+                                            if (row.MemMail == '') { val = ''; } else { val = row.MemMail; }
+                                            break;
+                                        case 'message' : val = row.MemIdx; break;
                                     }
-                                    return '<input type="checkbox" name="is_checked" value='+ val +' class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '">';
+                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '">';
                                 }}
                         ]
                     });
@@ -162,15 +171,27 @@
 
                         switch (send_type_modal) {
                             case 'sms' :
-                                $('input[name="mem_idx[]"]').val('');
-                                $('input[name="mem_id[]"]').val('');
                                 $('input[name="mem_phone[]"]').val('');
-
                                 var i=1;
                                 $.each($params, function(key, value) {
                                     $('#mem_idx_'+i).val(key);
-                                    $('#mem_id_'+i).val(value[0]);
                                     $('#mem_phone_'+i).val(value[1]);
+                                    i++;
+                                });
+                                break;
+                            case "message" :
+                                $('input[name="mem_id[]"]').val('');
+                                var i=1;
+                                $.each($params, function(key, value) {
+                                    $('#mem_id_'+i).val(value[0]);
+                                    i++;
+                                });
+                                break;
+                            case "mail" :
+                                $('input[name="mem_mail[]"]').val('');
+                                var i=1;
+                                $.each($params, function(key, value) {
+                                    $('#mem_mail_'+i).val(value[1]);
                                     i++;
                                 });
                                 break;

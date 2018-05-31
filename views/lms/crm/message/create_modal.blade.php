@@ -243,16 +243,7 @@
                 // 회원검색
                 $('#btn_member_searching').click(function() {
                     $('#btn_member_searching').setLayer({
-                        "url" : "{{ site_url('crm/message/listMemberModal') }}",
-                        "width" : "1200",
-                        "modal_id" : "modal_html2"
-                    });
-                });
-
-                // 회원검색
-                $('#btn_member_searching').click(function() {
-                    $('#btn_member_searching').setLayer({
-                        "url" : "{{ site_url('crm/sms/listMemberModal') }}",
+                        "url" : "{{ site_url('crm/sms/listMemberModal/message') }}",
                         "width" : "1200",
                         "modal_id" : "modal_html2"
                     });

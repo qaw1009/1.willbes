@@ -245,7 +245,9 @@ class SmsModel extends WB_Model
             FROM {$this->_table_member} AS Mem
             INNER JOIN {$this->_table_member_otherinfo} AS MemInfo ON Mem.MemIdx = MemInfo.MemIdx
         ";
-        $where = $this->_conn->makeWhere($arr_condition, true, false)->getMakeWhere(false);
+        /*$where = $this->_conn->makeWhere($arr_condition, true, false)->getMakeWhere(false);*/
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();

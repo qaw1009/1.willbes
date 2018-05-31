@@ -219,11 +219,11 @@ class Sms extends \app\controllers\BaseController
     /**
      * 회원 리스트 페이지
      */
-    public function listMemberModal()
+    public function listMemberModal($params = [])
     {
         $get_site_array = $this->siteModel->getSiteArray();
         $this->load->view("crm/sms/list_member_modal", [
-            'send_type' => $this->_send_type,
+            'send_type' => $params[0],
             'get_site_array' => $get_site_array
 
         ]);
@@ -237,7 +237,7 @@ class Sms extends \app\controllers\BaseController
     {
         $get_site_array = $this->siteModel->getSiteArray();
 
-        $column = 'Mem.MemIdx, Mem.SiteCode, Mem.MemId, Mem.MemName, fn_dec(Mem.PhoneEnc) as Phone, Mem.JoinDate, Mem.IsStatus, MemInfo.SmsRcvStatus';
+        $column = 'Mem.MemIdx, Mem.SiteCode, Mem.MemId, Mem.MemName, fn_dec(Mem.PhoneEnc) as Phone, fn_dec(MemInfo.MailEnc) as MemMail, Mem.JoinDate, Mem.IsStatus, MemInfo.SmsRcvStatus, MemInfo.MailRcvStatus';
         $arr_condition = [
             'EQ' => [
                 'Mem.SiteCode' => $this->_reqP('site_code'),

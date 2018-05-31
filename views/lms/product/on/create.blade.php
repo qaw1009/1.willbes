@@ -23,7 +23,7 @@
     <h5>- 온라인 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="x_title">
-            <h2>단강좌정보</h2>  &nbsp;<button class="btn btn-success mr-10" type="button" id="">동일한 마스터강의로 등록된 단강좌 보기</button>
+            <h2>단강좌정보</h2>  &nbsp;<button class="btn btn-success mr-10" type="button" id="sameLecture">동일한 마스터강의로 등록된 단강좌 보기</button>
             <div class="pull-right">
                 <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
             </div>
@@ -1088,7 +1088,7 @@
             //회차검색
             $('#searchMasterLectureUnit').on('click', function () {
                 if ($('#wLecIdx').val() == '') {
-                    alert('마스터강의를 선택 후 회차검색을 해주세요.');
+                    alert('마스터강좌를 선택 후 회차검색을 해주세요.');
                     return;
                 }
                 $('#searchMasterLectureUnit').setLayer({
@@ -1230,6 +1230,19 @@
                     ,'width' : 1200
                 })
             });
+
+            //동일한 마스터강의 등록 강좌 검색
+            $('#sameLecture').on('click', function() {
+
+                if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;};
+                if($('#wLecIdx').val() == '') {alert('마스터강좌를 선택해 주세요.'); return;};
+
+                $('#sameLecture').setLayer({
+                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&wLecIdx='+$('#wLecIdx').val()
+                    ,'width' : 1200
+                })
+            });
+
 
             //쿠폰검색
             $('#couponAdd').on('click', function() {

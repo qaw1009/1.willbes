@@ -12,6 +12,7 @@
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" value="{{ $site_code }}"/>
+        <input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd }}"/>
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
 
@@ -54,7 +55,7 @@
                             <th width="6%">교수</th>
                             <th>단강좌명</th>
                             <th width="8%">진행상태</th>
-                            <th>판매가</th>
+                            <th width="7%">판매가</th>
                             <th width="4%">배수</th>
                             <th width="6%">판매여부</th>
                             <th width="6%">사용여부</th>

@@ -17,6 +17,7 @@ class SearchLecture extends \app\controllers\BaseController
             'site_code' => $this->_req('site_code')
             ,'LearnPatternCcd' => $this->_req('LearnPatternCcd')
             ,'ProdCode' => $this->_req('ProdCode')
+            ,'wLecIdx' =>  $this->_req('wLecIdx')
         ]);
     }
 
@@ -34,22 +35,19 @@ class SearchLecture extends \app\controllers\BaseController
             ]
         ];
 
-        $arr_condition = [
+        $arr_condition = array_merge($arr_condition,[
             'NOT' => [
                 'A.ProdCode' => $this->_req('ProdCode'),
             ]
-        ];
-
-
-
-        $arr_condition = array_merge($arr_condition,[
-            'ORG1' => [
-                'LKB' => [
-                    'A.ProdCode' => $this->_reqP('search_value'),
-                    'A.ProdName' => $this->_reqP('search_value')
-                ]
-            ],
         ]);
+
+        if(empty($this->_req('wLecIdx')) !== true) {
+            $arr_condition = array_merge_recursive($arr_condition,[
+                'EQ' => [
+                    'B.wLecIdx' => $this->_req('wLecIdx'),
+                ]
+            ]);
+        }
 
         $arr_condition = array_merge($arr_condition,[
             'ORG1' => [

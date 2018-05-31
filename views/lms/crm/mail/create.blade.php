@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group fixed_height_390">
                     <label class="control-label col-md-2" for="send_content">내용<span class="required">*</span></label>
                     <div class="col-md-9">
                         <textarea id="send_content" name="send_content" class="form-control" rows="10" title="내용" placeholder=""></textarea>

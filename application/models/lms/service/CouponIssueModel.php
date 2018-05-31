@@ -88,4 +88,40 @@ class CouponIssueModel extends WB_Model
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
+
+    /**
+     * 사용자 쿠폰 회수
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifyRetireCouponDetail($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            foreach ($params as $coupon_idx => $cd_idx) {
+                $this->_conn->set('RetireDatm', 'now()', false);
+                $this->_conn->set(['RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
+                $this->_conn->where(['CdIdx' => $cd_idx, 'CouponIdx' => $coupon_idx, 'IsUse' => 'N']);
+
+                if ($this->_conn->update($this->_table['coupon_detail']) === false) {
+                    throw new \Exception('사용자 쿠폰 회수에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 }

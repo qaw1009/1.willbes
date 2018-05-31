@@ -279,8 +279,10 @@ class MenuModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
+            $admin_idx = $this->session->userdata('admin_idx');
+
             foreach ($params as $menu_idx => $order_num) {
-                $this->_conn->set('wOrderNum', $order_num)->set('wUpdAdminIdx', $this->session->userdata('admin_idx'))->where('wMenuIdx', $menu_idx);
+                $this->_conn->set('wOrderNum', $order_num)->set('wUpdAdminIdx', $admin_idx)->where('wMenuIdx', $menu_idx);
 
                 if ($this->_conn->update($this->_table['menu']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');

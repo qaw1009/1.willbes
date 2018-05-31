@@ -5,10 +5,14 @@ class Issue extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'service/couponRegist', 'service/couponIssue');
     protected $helpers = array();
+    private $_ccd = [];
 
     public function __construct()
     {
         parent::__construct();
+
+        // 공통코드 셋팅
+        $this->_ccd = $this->couponRegistModel->_ccd;
     }
 
     /**
@@ -16,7 +20,9 @@ class Issue extends \app\controllers\BaseController
      */
     public function index()
     {
-        $this->load->view('service/coupon/issue_index', []);
+        $this->load->view('service/coupon/issue_index', [
+            'arr_issue_type_ccd' => $this->codeModel->getCcd($this->_ccd['IssueType'])
+        ]);
     }
 
     /**
@@ -65,12 +71,10 @@ class Issue extends \app\controllers\BaseController
         $arr_date_colum = ['I' => 'IssueDatm', 'U' => 'UseDatm', 'R' => 'RetireDatm'];
         $arr_condition = [
             'EQ' => [
-                'IsIssue' => $this->_reqP('search_is_issue'),
+                'CouponIdx' => $this->_reqP('search_coupon_idx'),
+                'IssueTypeCcd' => $this->_reqP('search_issue_type'),
                 'IsUse' => $this->_reqP('search_is_use'),
                 'ValidStatus' => $this->_reqP('search_valid_status'),
-            ],
-            'BDT' => [
-                $arr_date_colum[$this->_reqP('search_date_type')] => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]
             ],
             'ORG1' => [
                 'LKB' => [
@@ -89,22 +93,71 @@ class Issue extends \app\controllers\BaseController
                     'CouponIdx' => $this->_reqP('search_value'),
                     'CouponName' => $this->_reqP('search_value')
                 ]
-            ]
+            ],
         ];
+
+        // 날짜 검색
+        if (array_key_exists($this->_reqP('search_date_type'), $arr_date_colum) === true) {
+            $arr_condition['BDT'] = [$arr_date_colum[$this->_reqP('search_date_type')] => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
+        }
+
+        // 발급회수쿠폰 여부
+        if ($this->_reqP('search_is_retire') == 'Y') {
+            $arr_condition['RAW'] = ['RetireDatm is ' => 'not null'];
+        }
 
         return $arr_condition;
     }
 
     /**
-     * 쿠폰 발급폼
+     * 사용자 쿠폰 발급 폼
      * @param array $params
      */
     public function create($params = [])
     {
+        $coupon_idx = element('0', $params, '');
+        if (empty($coupon_idx) === true) {
+            show_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST, '잘못된 접근');
+        }
+
+        // 쿠폰정보 조회
+        $data = element('0', $this->couponRegistModel->listAllCoupon(false, ['EQ' => ['CouponIdx' => $coupon_idx]], 1, 0));
+        if (empty($data) === true) {
+            show_error('쿠폰정보 조회에 실패했습니다.', _HTTP_NOT_FOUND, '정보 없음');
+        }
+
+        // 적용상세구분 코드 조회
+        $lec_type_ccds = $this->codeModel->getCcd($this->_ccd['LecType']);
+        $lec_type_names = '';
+        foreach (explode(',', $data['LecTypeCcds']) as $lec_type_ccd) {
+            $lec_type_names .= ',' . $lec_type_ccds[$lec_type_ccd];
+        }
+        $data['LecTypeNames'] = substr($lec_type_names, 1);
+
         $this->load->view('service/coupon/issue_create', [
-            'idx' => 1,
+            'coupon_idx' => $coupon_idx,
             'method' => 'POST',
-            'data' => null,
+            'data' => $data,
+            'arr_issue_type_ccd' => $this->codeModel->getCcd($this->_ccd['IssueType'])
         ]);
+    }
+
+    /**
+     * 사용자 쿠폰 회수
+     */
+    public function retire()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '사용자쿠폰식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->couponIssueModel->modifyRetireCouponDetail(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '회수 되었습니다.', $result);
     }
 }

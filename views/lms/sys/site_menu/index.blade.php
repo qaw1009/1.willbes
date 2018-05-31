@@ -129,7 +129,7 @@
                 sendAjax('{{ site_url('/sys/site/reorder/menu') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.reload();
+                        location.replace(location.href + dtParamsToQueryString($datatable));
                     }
                 }, showError, false, 'POST');
             });

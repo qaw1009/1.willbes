@@ -5,16 +5,14 @@ class Regist extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/category', 'product/base/course', 'product/base/subject', 'product/base/professor', 'service/couponRegist');
     protected $helpers = array();
-    private $_ccd = [
-        'CouponType' => '644',
-        'ApplyType' => '645',
-        'LecType' => '646',
-        'IssueType' => '647'
-    ];
+    private $_ccd = [];
 
     public function __construct()
     {
         parent::__construct();
+        
+        // 공통코드 셋팅
+        $this->_ccd = $this->couponRegistModel->_ccd;
     }
 
     /**
@@ -217,10 +215,10 @@ class Regist extends \app\controllers\BaseController
                 ['field' => 'pin_type', 'label' => '쿠폰핀번호유형', 'rules' => 'trim|required|in_list[S,R]'],
                 ['field' => 'issue_cnt', 'label' => '발급개수', 'rules' => 'trim|required|integer'],
                 ['field' => 'apply_type_ccd', 'label' => '쿠폰적용구분', 'rules' => 'trim|required'],
-                ['field' => 'lec_type_ccd[]', 'label' => '쿠폰상세구분', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,645001,645002,645003,645004]'],
+                ['field' => 'lec_type_ccd[]', 'label' => '쿠폰상세구분', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_lec_ccds) . ']'],
                 ['field' => 'apply_school_year', 'label' => '대비학년도', 'rules' => 'callback_validateRequiredIf[apply_range_type,I]|integer'],
                 ['field' => 'prod_code', 'label' => '상품선택', 'rules' => 'callback_validateRequiredIf[apply_range_type,P]|integer'],
-                ['field' => 'mock_exam_idx', 'label' => '모의고사선택', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,645007]|integer'],
+                ['field' => 'mock_exam_idx', 'label' => '모의고사선택', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_mock_ccds) . ']|integer'],
                 ['field' => 'disc_rate', 'label' => '할인율', 'rules' => 'trim|required|integer'],
                 ['field' => 'disc_type', 'label' => '할인구분', 'rules' => 'trim|required|in_list[R,P]'],
                 ['field' => 'disc_allow_price', 'label' => '할인허용가능금액', 'rules' => 'trim|required|integer'],

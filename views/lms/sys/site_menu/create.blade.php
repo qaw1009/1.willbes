@@ -137,7 +137,7 @@
                         if(ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $("#pop_modal").modal('toggle');
-                            location.reload();
+                            location.replace('{{ site_url('/sys/site/index/menu/') }}' + dtParamsToQueryString($datatable));
                         }
                     }, showValidateError, null, false, 'alert');
                 });

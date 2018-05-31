@@ -164,9 +164,7 @@ class Mail extends \app\controllers\BaseController
             ['field' => 'send_mail', 'label' => '발송 메일', 'rules' => 'trim|required'],
             ['field' => 'advertise_pattern_ccd', 'label' => '광고성 유무', 'rules' => 'trim|required'],
             ['field' => 'send_title', 'label' => '제목', 'rules' => 'trim|required'],
-
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
-
             ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,N]']
         ];

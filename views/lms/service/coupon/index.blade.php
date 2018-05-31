@@ -209,12 +209,17 @@
 
             // 데이터 등록 폼
             $('.btn-regist').on('click', function() {
-                location.href = '{{ site_url('/service/coupon/regist/create') }}';
+                location.href = '{{ site_url('/service/coupon/regist/create') }}' + dtParamsToQueryString($datatable);
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/service/coupon/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 쿠폰발급 폼
+            $list_table.on('click', '.btn-issue', function() {
+                location.replace('{{ site_url('/service/coupon/issue/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
     </script>

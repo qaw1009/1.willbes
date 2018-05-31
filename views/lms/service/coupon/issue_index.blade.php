@@ -27,14 +27,15 @@
                     </div>
                     <label class="control-label col-md-1">쿠폰사용조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_is_issue" name="search_is_issue">
-                            <option value="">발급여부</option>
-                            <option value="Y">발급</option>
-                            <option value="N">미발급</option>
+                        <select class="form-control mr-10" id="search_issue_type" name="search_issue_type">
+                            <option value="">발급구분</option>
+                            @foreach($arr_issue_type_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
-                            <option value="Y">발급</option>
+                            <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
                         <select class="form-control mr-10" id="search_valid_status" name="search_valid_status">
@@ -120,7 +121,7 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
-                    { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-issue-back' },
+                    { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-retire' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
@@ -132,8 +133,8 @@
                     }
                 },
                 columns: [
-                    {'data' : 'CouponIdx', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="" class="flat" value="' + data + '">';
+                    {'data' : 'CdIdx', 'render' : function(data, type, row, meta) {
+                        return (row.IsUse === 'Y' || row.RetireDatm != null) ? '회수불가' : '<input type="checkbox" name="cd_idx" class="flat" value="' + data + '" data-idx="' + row.CouponIdx + '">';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -168,10 +169,45 @@
                 ]
             });
 
+            // 전체선택/해제
+            $list_table.on('ifChanged', '#_is_all', function() {
+                iCheckAll($list_table.find('input[name="cd_idx"]'), $(this));
+            });
+
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 formCreateSubmit('{{ site_url('/service/coupon/issue/excel') }}', $search_form.serializeArray(), 'POST');
+            });
+
+            // 쿠폰발급회수 버튼 클릭
+            $('.btn-retire').on('click', function() {
+                var $checked_cd_idx = $list_table.find('input[name="cd_idx"]:checked');
+                var $params = {};
+                $checked_cd_idx.each(function(idx) {
+                    $params[$(this).data('idx')] = $(this).val();
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('선택된 쿠폰이 없습니다.');
+                    return;
+                }
+
+                if (!confirm('해당 쿠폰을 회수하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+                sendAjax('{{ site_url('/service/coupon/issue/retire') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
 
             // 쿠폰 수정 폼

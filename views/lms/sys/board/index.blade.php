@@ -82,7 +82,7 @@
                 buttons : [
                     {
                         text: '<i class="fa fa-pencil mr-5"></i> 게시판 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/sys/board/create') }}';
+                            location.href = '{{ site_url('/sys/board/create') }}' + dtParamsToQueryString($datatable);
                         }
                     }
                 ]
@@ -90,7 +90,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/sys/board/create') }}/' + $(this).data('idx'));
+                location.replace('{{ site_url('/sys/board/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
 

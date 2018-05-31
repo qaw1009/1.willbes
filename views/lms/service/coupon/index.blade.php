@@ -209,7 +209,7 @@
 
             // 데이터 등록 폼
             $('.btn-regist').on('click', function() {
-                location.href = '{{ site_url('/service/coupon/regist/create') }}';
+                location.href = '{{ site_url('/service/coupon/regist/create') }}' + dtParamsToQueryString($datatable);
             });
 
             // 데이터 수정 폼

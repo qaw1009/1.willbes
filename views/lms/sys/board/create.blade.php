@@ -132,13 +132,13 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/sys/board/index') }}');
+                        location.replace('{{ site_url('/sys/board/index') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/sys/board/index') }}');
+                location.replace('{{ site_url('/sys/board/index') }}' + getQueryString());
             });
 
             //게시판타입 선택 시 옵션 항목 처리

@@ -257,21 +257,21 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <input type="text" name="SaleStartDat" id="SaleStartDat" value="{{date("Y-m-d",strtotime($data['SaleStartDatm']))}}" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
+                            <input type="text" name="SaleStartDat" id="SaleStartDat" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['SaleStartDatm']))}}@endif" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
                             &nbsp;
                             <select name="SaleStartTime" id="SaleStartTime"  class="form-control" title="">
                                 @for($i=0;$i<=23;$i++)
                                     @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
-                                    <option value="{{$ii}}" @if(date("H",strtotime($data['SaleStartDatm'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                    <option value="{{$ii}}" @if($method==='PUT' && date("H",strtotime($data['SaleStartDatm'])) == $ii)selected="selected"@endif>{{$ii}}</option>
                                 @endfor
                             </select> 시
                             ~
-                            <input type="text" name="SaleEndDat" id="SaleEndDat" value="{{date("Y-m-d",strtotime($data['SaleEndDatm']))}}"  class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
+                            <input type="text" name="SaleEndDat" id="SaleEndDat" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['SaleEndDatm']))}}@endif"  class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
                             &nbsp;
                             <select name="SaleEndTime" id="SaleEndTime" class="form-control" title="">
                                 @for($i=0;$i<=23;$i++)
                                     @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
-                                    <option value="{{$ii}}" @if(date("H",strtotime($data['SaleEndDatm'])) == $ii)selected="selected"@endif>{{$ii}}</option>
+                                    <option value="{{$ii}}" @if($method==='PUT' && date("H",strtotime($data['SaleEndDatm'])) == $ii)selected="selected"@endif>{{$ii}}</option>
                                 @endfor
                             </select> 시
                             &nbsp;&nbsp;
@@ -767,17 +767,7 @@
                             &nbsp;&nbsp;&nbsp;[지급목적] <input type="text" name="Memo[]" id="Memo_634003" value="{{$MemoTypeCcd_634003}}" class="form-control" size="70">
                         </p>
                         <table class="table table-striped table-bordered" id="lecList" width="100%">
-                            <colgroup>
-                                <col width="8%">
-                                <col width="8%">
-                                <col width="8%">
-                                <col width="8%">
-                                <col>
-                                <col width="8%">
-                                <col width="6%">
-                                <col width="8%">
-                                <col width="5%">
-                            </colgroup>
+
                             <tr>
                                 <th>분류</th>
                                 <th>과정</th>
@@ -789,21 +779,23 @@
                                 <th>판매여부</th>
                                 <th>삭제</th>
                             </tr>
-                            <tbody>
+
                             @foreach($data_autolec as $row)
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td></td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
+                                <tr name='lecTrId' id='lecTrId{{$loop->index}}'>
+                                    <input type='hidden'  name='AutoProdCode[]' id='AutoProdCode{{$loop->index}}' value='{{$row['AutoProdCode']}}'>
+                                    <td>{{$row['CateName']}}</td>
+                                    <td>{{$row['CourseName']}}</td>
+                                    <td>{{$row['SubjectName']}}</td>
+                                    <td>{{$row['wProfName_String']}}</td>
+                                    <td style='text-align:left'>{{$row['ProdName']}}</td>
+                                    <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitCnt']}}/{{$row['wUnitLectureCnt']}})</td>
+                                    <td>{{number_format($row['RealSalePrice'])}}원</td>
+                                    <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
+                                    <td><a href='javascript:;' onclick="rowDelete('lecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
+                                </tr>
                             @endforeach
-                            <tbody>
+
+
                         </table>
                     </div>
                 </div>
@@ -823,7 +815,7 @@
                         </p>
                         <table class="table table-striped table-bordered" id="couponList" width="100%">
                             <colgroup>
-                                <col width="8%">
+                                <col width="12%">
                                 <col width="12%">
                                 <col>
                                 <col width="12%">
@@ -840,19 +832,20 @@
                                 <th>쿠폰상태</th>
                                 <th>삭제</th>
                             </tr>
-                            <tbody>
+
                             @foreach($data_autocoupon as $row)
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td></td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
+                                <tr id='couponTrId{{$loop->index}}'>
+                                    <input type='hidden'  name='CouponIdx[]' id='CouponIdx{{$loop->index}}' value='{{$row['AutoCouponIdx']}}'>
+                                    <td>{{$row['ApplyTypeCcdName']}}</td>
+                                    <td>{{$row['AutoCouponIdx']}}</td>
+                                    <td style='text-align:left'>{{$row['CouponName']}}</td>
+                                    <td>{{number_format($row['AutoCouponIdx']).(($row['DiscType'] === 'R') ? '%' : '원')}}</td>
+                                    <td>{{$row['ValidDay']}}</td>
+                                    <td>{{$row['IssueValid']}}</td>
+                                    <td><a href='javascript:;' onclick="rowDelete('couponTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
+                                </tr>
                             @endforeach
-                            <tbody>
+
                         </table>
                     </div>
                 </div>
@@ -889,7 +882,7 @@
                                 <th>삭제</th>
                             </tr>
                             </thead>
-                            <tbody>
+
                             @foreach($data_autofreebie as $row)
                                 <tr id="freebieTrId{{$loop->index}}">
                                     <input name="FreebieIdx[]" id="FreebieIdx{{$loop->index}}" type="hidden" value="{{$row['AutoFreebieIdx']}}">
@@ -900,7 +893,7 @@
                                     <td><a onclick="rowDelete('freebieTrId{{$loop->index}}')" href="javascript:;"><i class="fa fa-times red"></i></a></td>
                                 </tr>
                             @endforeach
-                            <tbody>
+
                         </table>
                     </div>
                 </div>
@@ -1055,11 +1048,19 @@
                     return;
                 }
                 $(this).blur();
-                if (confirm("사이트 변경으로 인해 입력된 값(카테고리, 강사료정보)이 초기화 됩니다. 변경하시겠습니까?")) {
+                if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
+
+                    /*
                     $("#selected_category").html("");
                     $("#teacherDivision tbody").remove();
+                    $("#lecList tbody").remove();
                     sitecode_chained($(this).val());    //과정.과목 재조정
                     smsTel_chained($(this).val());   //전화번호 재조정
+                    */
+                    location.reload();
+
+
+
                 } else {
                     $(this).val(prev_val);
                     return false;
@@ -1071,7 +1072,7 @@
             $("#searchCategory").on('click', function () {
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $("#searchCategory").setLayer({
-                    'url': '{{ site_url('/common/searchCategory/index/single/') }}' + $("#site_code").val()
+                    'url': '{{ site_url('/common/searchCategory/index/single/site_code/') }}' + $("#site_code").val()
                     , 'width': 800
                 })
             });
@@ -1235,7 +1236,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#couponAdd').setLayer({
                     'url' : '{{ site_url('common/searchCoupon/') }}'+'?site_code='+$("#site_code").val()+'&ProdCode='+$('#ProdCode').val()
-                    ,'width' : 1200
+                    ,'width' : 900
                 })
             });
 
@@ -1285,10 +1286,7 @@
                 return true;
             }
 
-            //강제로 클래스 먹임... 근데 안먹힘
-            function radioclass() {
-                $("input[name=mainFlag]").attr({"class":"flat"});
-            }
+
 
 
             $('#btn_list').click(function() {
@@ -1296,7 +1294,10 @@
             });
         });
 
-
+        //강제로 클래스 먹임... 근데 안먹힘
+        function radioclass() {
+            $("input[name=mainFlag]").attr({"class":"flat"});
+        }
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }

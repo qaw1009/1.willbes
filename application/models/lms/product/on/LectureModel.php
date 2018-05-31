@@ -15,6 +15,7 @@ class LectureModel extends WB_Model
         'sms' => 'lms_Product_Sms',
         'book' => 'lms_Product_R_SaleBook',
         'autofreebie' => 'lms_Product_R_AutoFreebie',
+        'autocoupon' => 'lms_Product_R_AutoCoupon',
         'autolecture' => 'lms_Product_R_AutoLecture',
         'sublecture' => 'lms_Product_R_SubLecture',
     ];
@@ -133,7 +134,7 @@ class LectureModel extends WB_Model
             $column = 'A.wUnitIdx,B.wUnitNum,b.wUnitLectureNum,B.wUnitName';
 
             $from = ' from
-                            lms_product_lecture_sample A
+                             '.$tableName.' A
                             join wbs_cms_lecture_unit_combine B on A.wUnitIdx = B.wUnitIdx
                         where A.IsStatus=\'Y\' and B.wIsStatus=\'Y\'
             ';
@@ -145,7 +146,7 @@ class LectureModel extends WB_Model
             $column = 'A.*,C.wProfName';
 
             $from = ' from
-                            lms_product_division A
+                            '.$tableName.' A
                             join lms_professor B on A.ProfIdx = B.ProfIdx
                             join wbs_pms_professor C on B.wProfIdx = C.wProfIdx
                         where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\'
@@ -159,7 +160,7 @@ class LectureModel extends WB_Model
             $column = 'A.*,B.wAdminName as RegAdminName';
 
             $from = ' from
-                            lms_product_memo A
+                            '.$tableName.' A
 	                        left outer join wbs_sys_admin B on A.RegAdminIdx = B.wAdminIdx and B.wIsStatus=\'Y\'
                         where A.IsStatus=\'Y\'   
             ';
@@ -173,7 +174,7 @@ class LectureModel extends WB_Model
             $column = 'A.*,B.ProdName as bookname,C.wBookIdx,D.wSaleCcdName,E.SalePrice,E.RealSalePrice';
 
             $from = ' from
-                            lms_Product_R_SaleBook A
+                            '.$tableName.' A
                             join lms_Product B on A.BookProdCode = B.ProdCode
                             join lms_Product_book C on B.ProdCode = C.ProdCode
                             join vw_wbs_bms_book_list D on C.wBookIdx = D.wBookIdx
@@ -190,7 +191,7 @@ class LectureModel extends WB_Model
             $column = 'A.*,B.FreebieName,B.RefundSetPrice,B.Stock';
 
             $from = ' from
-                            lms_product_r_autofreebie A
+                            '.$tableName.' A
 	                        join lms_freebie B on A.AutoFreebieIdx = B.FreebieIdx
                         where A.IsStatus=\'Y\' and B.IsStatus=\'Y\'    
             ';
@@ -199,7 +200,74 @@ class LectureModel extends WB_Model
             $where = $this->_conn->makeWhere(['EQ'=>['A.ProdCode'=>$prodcode]])->getMakeWhere(true);
             $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
 
+        }else if ($tableName === 'lms_product_r_autocoupon') {    //쿠폰
+
+            $column = '
+                            S.AutoCouponIdx
+                            ,A.*
+                            ,(case 
+                                when current_date() between A.IssueStartDate and A.IssueEndDate then "유효"
+                                when current_date() > A.IssueEndDate then "만료"
+                                else "발급전"
+                            end) as IssueValid
+                            ,B.CcdName as CouponTypeCcdName
+                            ,C.CcdName as ApplyTypeCcdName
+            ';
+
+            $from = ' from
+                            '.$tableName.' S	
+                            join lms_coupon A on S.AutoCouponIdx = A.CouponIdx
+                            join lms_sys_code B on A.CouponTypeCcd = B.Ccd
+                            join lms_sys_code C on A.ApplyTypeCcd = C.Ccd
+                        where S.IsStatus=\'Y\' and A.IsStatus=\'Y\'     
+            ';
+
+            $order_by = $this->_conn->makeOrderBy(['S.PcIdx'=>'asc'])->getMakeOrderBy();
+            $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
+            $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
+
+        }else if ($tableName === 'lms_product_r_autolecture') {    //지급강좌
+
+            $column = '
+                            S.AutoProdCode
+                            ,A.ProdCode,A.ProdName,A.IsUse
+                            ,Aa.CcdName as SaleStatusCcd_Name
+                            ,B.MultipleApply
+                            ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
+                            ,Bd.CcdName as LecTypeCcd_Name
+                            ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                            ,C.CateCode
+                            ,Ca.CateName, Cb.CateName as CateName_Parent
+                            ,D.SalePrice, D.RealSalePrice
+                            ,E.wProfName_String
+            ';
+
+            $from = ' from
+                            '.$tableName.' S	
+                            join lms_product A on S.AutoProdCode = A.ProdCode
+                                left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                                
+                            join lms_product_lecture B on A.ProdCode = B.ProdCode
+                                left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
+                                left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
+                                left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                                left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
+                                join wbs_cms_lecture_combine_light Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx=1026
+                            join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                                join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                                left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                            left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                            join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        where S.IsStatus=\'Y\'  and A.IsStatus=\'Y\' 
+            ';
+
+            $order_by = $this->_conn->makeOrderBy(['S.PaIdx'=>'asc'])->getMakeOrderBy();
+            $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
+            $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
+
+
         }else{
+
             $column = ' * ';
             $from = '
                     from '. $tableName .' Where IsStatus=\'Y\'
@@ -966,6 +1034,30 @@ class LectureModel extends WB_Model
     {
         try {
 
+            /*  기존 쿠폰 정보 상태값 변경 */
+            if($this->setDataDelete($prodcode,$this->_table['autocoupon'],'쿠폰') !== true) {
+                throw new \Exception('쿠폰 수정에 실패했습니다.');
+            }
+
+            $CouponIdx = element('CouponIdx',$input);
+            if(empty($CouponIdx) === false) {
+                for($i=0;$i<count($CouponIdx);$i++) {
+                    $data = [
+                        'ProdCode' => $prodcode
+                        ,'AutoCouponIdx' => $CouponIdx[$i]
+                        , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                        , 'RegIp' => $this->input->ip_address()
+                    ];
+
+                    if($this->_conn->set($data)->insert($this->_table['autocoupon']) === false) {
+                        echo $this->_conn->last_query();
+                        throw new \Exception('쿠폰 등록에 실패했습니다.');
+                    }
+
+                }
+            }
+            
+            
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -1254,6 +1346,18 @@ class LectureModel extends WB_Model
             $query = 'insert into '.$this->_table['autofreebie'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['autofreebie'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
             if($this->_conn->query($query) === false) {
                 throw new \Exception('자동지급사은품 복사에 실패했습니다.');
+            };
+
+
+            //  자동지급쿠폰복사
+            $insert_column = 'ProdCode, AutoCouponIdx, RegAdminIdx, RegIp';
+            $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
+            $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
+            $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
+
+            $query = 'insert into '.$this->_table['autocoupon'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['autocoupon'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('자동지급쿠폰 복사에 실패했습니다.');
             };
 
 

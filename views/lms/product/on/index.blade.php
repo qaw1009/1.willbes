@@ -220,7 +220,7 @@
                         }},//진행상태
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return addComma(row.SalePrice)+'원<BR><strike>'+addComma(row.RealSalePrice)+'원</strike>';
+                            return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
                     {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_new" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';

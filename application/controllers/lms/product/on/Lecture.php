@@ -160,7 +160,7 @@ Class Lecture extends \app\controllers\BaseController
             $data_sms = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_sms');
             $data_book = $this->lectureModel->findProductEtcModify($prodcode,'lms_Product_R_SaleBook');
             $data_autolec = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_r_autolecture');
-            //$data_autocoupon = $this->lectureModel->findProductEtcModify($prodcode,'');
+            $data_autocoupon = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_autofreebie = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_r_autofreebie');
             $data_sublecture = $this->lectureModel->findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }

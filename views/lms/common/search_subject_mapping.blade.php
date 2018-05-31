@@ -20,6 +20,7 @@
                 <div class="panel-body" style="max-height: 120px; overflow-y: auto;">
                     <ul id="_selected_subject_mapping" class="list-unstyled mb-0">
                     </ul>
+                    <div class="clear"></div>
                 </div>
                 <div class="panel-footer text-right pt-5 pb-5">
                     <button type="button" class="btn btn-success btn-sm mb-0" id="_btn_apply"> 적 용 </button>
@@ -108,7 +109,7 @@
                 if (that.prop('checked') === true) {
                     route_name = row.CateSubjectRouteName;
                     route_name = route_name.substr(route_name.indexOf(' > ') + 3);
-                    $selected_subject_mapping.append('<li id="_selected_subject_mapping_' + code + '" data-subject-mapping-code="' + code + '" class="mb-5">' + route_name + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
+                    $selected_subject_mapping.append('<li id="_selected_subject_mapping_' + code + '" data-subject-mapping-code="' + code + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
                 } else {
                     $selected_subject_mapping.find('#_selected_subject_mapping_' + code).remove();
                 }
@@ -158,7 +159,7 @@
                     code = that.find('input[name="subject_mapping_code[]"]').val();
                     route_name = that.text().trim();
 
-                    $selected_subject_mapping.append('<li id="_selected_subject_mapping_' + code + '" data-subject-mapping-code="' + code + '" class="mb-5">' + route_name + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
+                    $selected_subject_mapping.append('<li id="_selected_subject_mapping_' + code + '" data-subject-mapping-code="' + code + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-subject-mapping-delete"><i class="fa fa-times red"></i></a></li>');
 
                     // 기존 선택된 정보 json 변수에 저장
                     $ori_selected_data[code] = route_name;

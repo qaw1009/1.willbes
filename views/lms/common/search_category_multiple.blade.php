@@ -22,6 +22,7 @@
                 <div class="panel-body" style="max-height: 120px; overflow-y: auto;">
                     <ul id="_selected_category" class="list-unstyled mb-0">
                     </ul>
+                    <div class="clear"></div>
                 </div>
                 <div class="panel-footer text-right pt-5 pb-5">
                     <button type="button" class="btn btn-success btn-sm mb-0" id="_btn_apply"> 적 용 </button>
@@ -114,7 +115,7 @@
                 if (that.prop('checked') === true) {
                     route_name = row.CateRouteName;
                     route_name = route_name.substr(route_name.indexOf(' > ') + 3);
-                    $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="mb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
+                    $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
                 } else {
                     $selected_category.find('#_selected_category_' + code).remove();
                 }
@@ -164,7 +165,7 @@
                     code = that.find('input[name="cate_code[]"]').val();
                     route_name = that.text().trim();
 
-                    $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="mb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
+                    $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
 
                     // 기존 선택된 정보 json 변수에 저장
                     $ori_selected_data[code] = route_name;

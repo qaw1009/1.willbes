@@ -97,6 +97,56 @@ class CouponRegistModel extends WB_Model
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+
+    /**
+     * 쿠폰 목록 조회 - 강좌 적용 검색용
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listCoupon($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                        A.*
+                        ,(case 
+                            when current_date() between A.IssueStartDate and A.IssueEndDate then "유효"
+                            when current_date() > A.IssueEndDate then "만료"
+                            else "발급전"
+                        end) as IssueValid
+                        ,B.CcdName as CouponTypeCcdName
+                        ,C.CcdName as ApplyTypeCcdName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from lms_coupon A
+                        join lms_sys_code B on A.CouponTypeCcd = B.Ccd
+                        join lms_sys_code C on A.ApplyTypeCcd = C.Ccd
+                    where A.IsStatus=\'Y\'        
+            ';
+
+        // 사이트 권한 추가
+        $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+
     /**
      * 쿠폰 카테고리 연결 데이터 조회
      * @param $coupon_idx

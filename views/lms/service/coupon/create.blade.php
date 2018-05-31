@@ -36,7 +36,16 @@
                             <p class="form-control-static">{{ $data['CateNames'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10"></span>
+                            <span id="selected_category" class="pl-10">
+                                @if(isset($data['CateCodes']) === true)
+                                    @foreach($data['CateCodes'] as $cate_code => $cate_name)
+                                        <span class="pr-10">{{ $cate_name }}
+                                            <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-cate-code-delete"><i class="fa fa-times red"></i></a>
+                                            <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
+                                        </span>
+                                    @endforeach
+                                @endif
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -251,24 +260,24 @@
                     <label class="control-label col-md-2">등록자
                     </label>
                     <div class="col-md-3">
-                        <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">등록일
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
                     <div class="col-md-3">
-                        <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>
                 <div class="ln_solid"></div>

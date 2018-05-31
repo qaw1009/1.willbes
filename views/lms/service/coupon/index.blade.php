@@ -190,6 +190,17 @@
                 ]
             });
 
+            // 쿠폰복사 버튼 클릭
+            $('.btn-copy').on('click', function() {
+                var coupon_idx = $list_table.find('input[name="coupon_idx"]:checked').val();
+                if (typeof coupon_idx === 'undefined') {
+                    alert('복사할 쿠폰을 선택해 주세요.');
+                    return;
+                }
+
+                location.replace('{{ site_url('/service/coupon/regist/create') }}/' + coupon_idx + '/copy' + dtParamsToQueryString($datatable));
+            });
+
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();

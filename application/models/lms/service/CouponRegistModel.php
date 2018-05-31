@@ -151,7 +151,7 @@ class CouponRegistModel extends WB_Model
                 , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.CouponDesc, C.IsIssue, C.RegDatm, C.RegAdminIdx, C.UpdDatm, C.UpdAdminIdx
                 , (case 
                     when ApplyRangeType = "P" then (select ProdName from lms_product where ProdCode = C.ApplyProdCode)
-                    when ApplyTypeCcd = "645007" then "모의고사"
+                    when ApplyTypeCcd in ("' . implode(',', $this->_apply_type_to_mock_ccds) . '") then "모의고사"
                     else ""
                   end) as ApplyProdName                                         
                 , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName

@@ -163,7 +163,14 @@ class Regist extends \app\controllers\BaseController
             $data['LecTypeCcds'] = explode(',', $data['LecTypeCcds']);
 
             // 카테고리 연결 데이터 조회
-            $data['CateNames'] = implode(', ', $this->couponRegistModel->listCouponCategory($idx));
+            $arr_cate_code = $this->couponRegistModel->listCouponCategory($idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+
+            if (isset($params[1]) === true && $params[1] == 'copy') {
+                $method = 'POST';
+                $idx = null;
+            }
         }
 
         // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회

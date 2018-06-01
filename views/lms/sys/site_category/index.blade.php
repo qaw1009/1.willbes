@@ -130,7 +130,7 @@
                 sendAjax('{{ site_url('/sys/site/reorder/category') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace(location.href + dtParamsToQueryString($datatable));
+                        location.replace(location.pathname + dtParamsToQueryString($datatable));
                     }
                 }, showError, false, 'POST');
             });

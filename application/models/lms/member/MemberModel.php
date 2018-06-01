@@ -29,14 +29,14 @@ class MemberModel extends WB_Model
             $order_by_offset_limit = '';
 
         } else {
-            $column = ' M.MemIdx AS MemIdx, M.MemID, M.MemName, M.JoinDate ';
+            $column = ' Mem.MemIdx AS MemIdx, Mem.MemID, Mem.MemName, Mem.JoinDate ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $from = ' FROM ' . $this->_table['member'] . ' AS M
-            INNER JOIN ' . $this->_table['info'] . ' AS I ON I.MemIdx = M.MemIdx ';
+        $from = " FROM {$this->_table['member']} AS Mem
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

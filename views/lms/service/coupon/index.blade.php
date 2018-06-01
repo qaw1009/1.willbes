@@ -111,6 +111,8 @@
                     <th>카테고리</th>
                     <th>쿠폰명</th>
                     <th>배포루트</th>
+                    <th>쿠폰유형</th>
+                    <th>핀번호유형<br/>(발급개수)</th>
                     <th>적용구분</th>
                     <th>적용상세구분</th>
                     <th>적용범위</th>
@@ -162,9 +164,13 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
                     {'data' : 'CouponName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
+                        return '<a href="#none" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
                     }},
                     {'data' : 'DeployName'},
+                    {'data' : 'CouponTypeName'},
+                    {'data' : 'PinName', 'render' : function(data, type, row, meta) {
+                        return data + ((row.PinType === 'R') ? '<br/>(' + row.IssueCnt + '개)' : '');
+                    }},
                     {'data' : 'ApplyTypeName'},
                     {'data' : 'LecTypeNames', 'render' : function(data, type, row, meta) {
                         return data.replace(/,/gi, '<br/>');
@@ -180,7 +186,7 @@
                         return data + ((row.DiscType === 'R') ? '%' : '원');
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-issue" data-idx="' + row.CouponIdx + '">[쿠폰발급]</a><br/>(<span class="red">' + row.UseCnt + '</span>/' + row.IssueCnt + ')';
+                        return '<a href="#none" class="btn-issue" data-idx="' + row.CouponIdx + '"><u>[쿠폰발급]</u></a><br/>(<span class="red">' + row.UseCnt + '</span>/' + row.IssuedCnt + ')';
                     }},
                     {'data' : 'IsIssue', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '발급' : '<span class="red">미발급</span>';

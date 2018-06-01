@@ -12,7 +12,8 @@ class CouponIssueModel extends WB_Model
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
-    private $_group_ccd = ['IssueType' => '647'];
+    private $_ccd = ['IssueType' => '647'];
+    private $_lec_type_ccd = '647002';  // 쿠폰발급구분 > 수동발급
 
     public function __construct()
     {
@@ -54,8 +55,8 @@ class CouponIssueModel extends WB_Model
                 , M.MemId, M.MemName, M.PhoneEnc, fn_dec(M.PhoneEnc) as Phone, M.Phone3, MO.SmsRcvStatus
                 , "추후 주문정보 추가 필요" as ProdName, "000000" as OrderNo
                 , SC.CcdName as IssueTypeName
-                , (case when current_date() between CD.IssueDatm and CD.ExpireDatm then "유효"
-                        when current_date() > CD.ExpireDatm then "만료"
+                , (case when now() between CD.IssueDatm and CD.ExpireDatm then "유효"
+                        when now() > CD.ExpireDatm then "만료"
                         when CD.ValidStatus = "C" then "취소"
                         else CD.ValidStatus			
                   end) as ValidStatus
@@ -70,7 +71,7 @@ class CouponIssueModel extends WB_Model
                 inner join ' . $this->_table['member_otherinfo'] . ' as MO
                     on M.MemIdx = MO.MemIdx	
                 inner join ' . $this->_table['code'] . ' as SC
-                    on CD.IssueTypeCcd = SC.Ccd and SC.GroupCcd = "' . $this->_group_ccd['IssueType'] . '"
+                    on CD.IssueTypeCcd = SC.Ccd and SC.GroupCcd = "' . $this->_ccd['IssueType'] . '"
                 left join ' . $this->_table['admin'] . ' as AI
                     on CD.IssueUserIdx = AI.wAdminIdx and AI.wIsStatus = "Y"
                 left join ' . $this->_table['admin'] . ' as AR
@@ -87,6 +88,98 @@ class CouponIssueModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . ' from (' . $from . ') U' . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 사용자 쿠폰 발급
+     * @param array $input
+     * @return array|bool
+     */
+    public function addCouponDetail($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        // 쿠폰등록 모델 로드
+        $this->load->loadModels(['service/couponRegist']);
+        
+        try {
+            $coupon_idx = element('coupon_idx', $input);
+            $arr_mem_idx = element('mem_idx', $input, []);
+
+            // 회원 식별자 확인
+            if (empty($arr_mem_idx) === true) {
+                throw new \Exception('등록할 회원 정보가 없습니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 기존 쿠폰 기본정보 조회
+            $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, IssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
+                , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
+            if (count($row) < 1) {
+                throw new \Exception('쿠폰 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 쿠폰발급 가능여부 확인
+            // 발급여부 확인
+            if ($row['IsIssue'] == 'N') {
+                throw new \Exception('해당 쿠폰은 미발급 상태입니다.', _HTTP_NO_PERMISSION);
+            }
+
+            // 발급유효기간 확인
+            if (date('Y-m-d') < $row['IssueStartDate'] || date('Y-m-d') > $row['IssueEndDate']) {
+                throw new \Exception('발급 유효기간이 아닙니다.', _HTTP_NO_PERMISSION);
+            }
+
+            $is_issue = true;
+            // 배포루트, 쿠폰핀타입에 따라 발급 처리
+            if ($row['DeployType'] == 'N') {
+                $is_issue = $this->_addCouponDetailByOnline($coupon_idx, $row, $arr_mem_idx);
+            } elseif ($row['DeployType'] == 'Y' && $row['PinType'] == 'S') {
+
+            } elseif ($row['DeployType'] == 'Y' && $row['PinType'] == 'R') {
+
+            } else {
+                throw new \Exception('쿠폰 정보 오류입니다.', _HTTP_NO_PERMISSION);
+            }
+
+            // 발급 실패
+            if ($is_issue !== true) {
+                throw new \Exception($is_issue);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 온라인 사용자 쿠폰 발급
+     * @param $coupon_idx
+     * @param array $coupon_data
+     * @param array $arr_mem_idx
+     * @return bool|string
+     */
+    private function _addCouponDetailByOnline($coupon_idx, $coupon_data = [], $arr_mem_idx = [])
+    {
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+            $binds = ['N', $coupon_idx, $this->_lec_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
+            $query = 'insert into ' . $this->_table['coupon_detail']. ' (CouponPin, CouponIdx, MemIdx, IssueTypeCcd, IssueDatm, RegDatm, ExpireDatm, IssueUserType, IssueUserIdx, IssueIp)
+                select ?, ?, MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ? from ' . $this->_table['member']. ' where MemIdx in ?';
+
+            $is_insert = $this->_conn->query($query, $binds);
+            if ($is_insert !== true) {
+                throw new \Exception('사용자 쿠폰 발급에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 
     /**

@@ -47,25 +47,27 @@ class CouponRegistModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
             if ($is_count == 'excel') {
-                $column = 'SiteName, CateName, concat(CouponName, " [", CouponIdx, "]") as CouponName, DeployName, ApplyTypeName, LecTypeCcds, ApplyRangeName
-                    , concat(ValidDay, "일", " (", IssueStartDate, "~", IssueEndDate, ")") as ValidDay, IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssueCnt
-                    , if(IsIssue = "Y", "발급", "미발급") as IsIssue, RegAdminName, RegDatm
-                ';
+                $column = 'SiteName, CateName, concat(CouponName, " [", CouponIdx, "]") as CouponName, DeployName, CouponTypeName
+                    , concat(PinName, if(PinType = "R", concat(" (", IssueCnt, "개)"), "")) as PinName
+                    , ApplyTypeName, LecTypeCcds, ApplyRangeName
+                    , concat(ValidDay, "일", " (", IssueStartDate, "~", IssueEndDate, ")") as ValidDay, IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssuedCnt
+                    , if(IsIssue = "Y", "발급", "미발급") as IsIssue, RegAdminName, RegDatm';
             }
         }
 
         $from = '
             select
-                C.CouponIdx, C.SiteCode, C.CouponName, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType, C.IssueStartDate, C.IssueEndDate, C.ValidDay
-                    , C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
-                    , if(C.DeployType = "N", "온라인", "오프라인") as DeployName
-                    , SCA.CcdName as ApplyTypeName                    
+                C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.IssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
+                    , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
+                    , if(C.PinType = "S", "공통핀번호", "랜덤핀번호") as PinName
+                    , if(C.DeployType = "N", "온라인", "오프라인") as DeployName                   
                     , if(C.ApplyRangeType = "A", "전체", if(C.ApplyRangeType = "I", "항목별", "특정상품")) as ApplyRangeName
                     , (case when current_date() between C.IssueStartDate and C.IssueEndDate then "유효"
                            when current_date() > C.IssueEndDate then "만료"
                            else "발급전"
                       end) as IssueValid
-                    , S.SiteName, CC.CateCode, CC.CateCodes, SC.CateName, ifnull(CD.IssueCnt, 0) as IssueCnt, ifnull(CD.UseCnt, 0) as UseCnt, A.wAdminName as RegAdminName            
+                    , SCC.CcdName as CouponTypeName, SCA.CcdName as ApplyTypeName                      
+                    , S.SiteName, CC.CateCode, CC.CateCodes, SC.CateName, ifnull(CD.IssuedCnt, 0) as IssuedCnt, ifnull(CD.UseCnt, 0) as UseCnt, A.wAdminName as RegAdminName            
             from ' . $this->_table['coupon'] . ' as C
                 inner join (
                     select CouponIdx, min(CateCode) as CateCode, GROUP_CONCAT(CateCode separator ",") as CateCodes
@@ -74,12 +76,14 @@ class CouponRegistModel extends WB_Model
                     group by CouponIdx                    
                 ) as CC
                     on C.CouponIdx = CC.CouponIdx
+                inner join ' . $this->_table['code'] . ' as SCC
+                    on C.CouponTypeCcd = SCC.Ccd and SCC.GroupCcd = "' . $this->_ccd['CouponType'] . '"                    
                 inner join ' . $this->_table['code'] . ' as SCA
                     on C.ApplyTypeCcd = SCA.Ccd and SCA.GroupCcd = "' . $this->_ccd['ApplyType'] . '"
                 left join ' . $this->_table['category'] . ' as SC
                     on C.SiteCode = SC.SiteCode and CC.CateCode = SC.CateCode and SC.IsStatus = "Y"
                 left join (
-                    select CouponIdx, count(*) as IssueCnt, sum(if(IsUse = "Y", 1, 0)) as UseCnt
+                    select CouponIdx, count(*) as IssuedCnt, sum(if(IsUse = "Y", 1, 0)) as UseCnt
                     from ' . $this->_table['coupon_detail'] . '
                     group by CouponIdx                
                 ) as CD

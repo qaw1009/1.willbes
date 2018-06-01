@@ -23,6 +23,8 @@
                             <th>카테고리</th>
                             <th>쿠폰명</th>
                             <th>배포루트</th>
+                            <th>쿠폰유형</th>
+                            <th>핀번호유형<br/>(발급개수)</th>
                             <th>적용구분</th>
                             <th>적용상세구분</th>
                             <th>적용범위</th>
@@ -41,13 +43,15 @@
                             <td>{{ $data['CateName'] }}</td>
                             <td><u class="blue">{{ $data['CouponName'] }}</u> [{{ $data['CouponIdx'] }}]</td>
                             <td>{{ $data['DeployName'] }}</td>
+                            <td>{{ $data['CouponTypeName'] }}</td>
+                            <td>{{ $data['PinName'] }}@if($data['PinType'] == 'R')<br/>({{ $data['IssueCnt'] }}개)@endif</td>
                             <td>{{ $data['ApplyTypeName'] }}</td>
                             <td>{{ $data['LecTypeNames'] }}</td>
                             <td>{{ $data['ApplyRangeName'] }}</td>
                             <td>{{ $data['ValidDay'] }}일<br/>({{ $data['IssueStartDate'] }}~{{ $data['IssueEndDate'] }})</td>
                             <td>{{ $data['IssueValid'] }}</td>
                             <td>{{ $data['DiscRate'] }}@if($data['DiscType'] == 'R')%@else원@endif</td>
-                            <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssueCnt'] }}</td>
+                            <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssuedCnt'] }}</td>
                             <td>@if($data['IsIssue'] == 'Y')발급@else<span class="red">미발급</span>@endif</td>
                             <td>{{ $data['RegAdminName'] }}</td>
                             <td>{{ $data['RegDatm'] }}</td>
@@ -63,46 +67,39 @@
                 <div class="col-md-12">
                     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
-                        <input type="hidden" name="coupon_idx" value="{{ $coupon_idx }}" title="쿠폰 식별자"/>
+                        <input type="hidden" name="coupon_idx" value="{{ $coupon_idx }}" required="required" title="쿠폰 식별자"/>
                         <div class="ln_solid mt-0"></div>
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="issue_type_1">등록구분 <span class="required">*</span>
+                            <label class="control-label col-md-1" for="regi_type_1">등록구분 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 item">
                                 <div class="radio">
-                                    <input type="radio" id="issue_type_1" name="issue_type" class="flat" value="1" title="등록구분" required="required" checked="checked"/> <label for="issue_type_1" class="input-label">개별등록</label>
-                                    <input type="radio" id="issue_type_2" name="issue_type" class="flat" value="2"/> <label for="issue_type_2" class="input-label">일괄등록</label>
+                                    <input type="radio" id="regi_type_1" name="regi_type" class="flat" value="S" title="등록구분" required="required" checked="checked"/> <label for="regi_type_1" class="input-label">개별등록</label>
+                                    <input type="radio" id="regi_type_2" name="regi_type" class="flat" value="F"/> <label for="regi_type_2" class="input-label">일괄등록</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1" for="mem_id">개별등록
+                        <div id="regi_type_S" class="form-group form-regi-input">
+                            <label class="control-label col-md-1" for="search_mem_id">개별등록
                             </label>
-                            <div class="col-md-10 form-inline item">
-                                <input type="text" id="mem_id" name="mem_id" class="form-control" required="required_if:issue_type,1" title="회원검색어" value="" style="width: 180px;">
+                            <div class="col-md-10 form-inline">
+                                <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="" style="width: 180px;">
                                 <button type="button" id="btn_member_search" class="btn btn-primary mb-0">회원검색</button>
-                            </div>
-                            <div class="col-md-9 col-md-offset-1 mt-5">
-                                <input type="text" id="search_member_result" name="search_member_result" class="form-control" title="회원검색결과" required="required" value="">
+                                <span id="selected_member" class="pl-10"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1" for="mem_file">일괄등록
+                        <div id="regi_type_F" class="form-group form-regi-input hide">
+                            <label class="control-label col-md-1" for="search_mem_file">일괄등록
                             </label>
-                            <div class="col-md-10 form-inline item">
-                                <input type="file" id="mem_file" name="mem_file" class="form-control" required="required_if:issue_type,2" title="회원검색파일" value="">
+                            <div class="col-md-10 form-inline">
+                                <input type="file" id="search_mem_file" name="search_mem_file" class="form-control" title="회원검색파일" value="">
                                 <button type="button" id="btn_member_file_upload" class="btn btn-primary mb-0">업로드하기</button>
                             </div>
                             <div class="col-md-10 col-md-offset-1 mt-5">
                                 <p class="form-control-static"># 첨부파일은 한줄에 한 개의 아이디로 구성된 TXT 파일로 생성</p>
                             </div>
                             <div class="col-md-2 col-md-offset-1 mt-5">
-                                <select class="form-control" id="search_member_file_result" name="search_member_file_result" size="4">
-                                    <option value="">홍길동(아이디)</option>
-                                    <option value="">홍길동(아이디)</option>
-                                    <option value="">홍길동(아이디)</option>
-                                    <option value="">홍길동(아이디)</option>
-                                    <option value="">홍길동(아이디)</option>
+                                <select class="form-control" id="selected_member_file" name="selected_member_file" size="4">
                                 </select>
                             </div>
                             <div class="col-md-2">
@@ -129,7 +126,7 @@
                             <label class="control-label col-md-1" for="search_member_value">회원검색
                             </label>
                             <div class="col-md-3">
-                                <input type="text" id="search_member_value" name="search_value" class="form-control" value="">
+                                <input type="text" id="search_member_value" name="search_member_value" class="form-control" value="">
                             </div>
                             <div class="col-md-7">
                                 <p class="form-control-static"># 이름, 아이디, 휴대폰번호 검색 가능</p>
@@ -206,6 +203,26 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            // 쿠폰발급
+            $regi_form.submit(function() {
+                if($regi_form.find('input[name="mem_idx[]"]').length < 1) {
+                    alert('회원 선택은 필수입니다.');
+                    return false;
+                }
+
+                if (!confirm('해당 회원에게 쿠폰을 발급하시겠습니까?')) {
+                    return;
+                }
+
+                var _url = '{{ site_url('/service/coupon/issue/store') }}';
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+
             // 쿠폰발급 목록
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -253,6 +270,33 @@
                         return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';
                     }}
                 ]
+            });
+
+            // 등록구분 선택
+            $regi_form.on('ifChanged', 'input[name="regi_type"]:checked', function() {
+                var regi_type = $(this).val();
+
+                // input 초기화
+                $('.form-regi-input').removeClass('show').addClass('hide');
+
+                // 해당 영역 노출
+                $('#regi_type_' + regi_type).removeClass('hide').addClass('show');
+            });
+
+            // 회원검색 버튼 클릭
+            $('#btn_member_search').on('click', function() {
+                var $search_mem_id = $regi_form.find('input[name="search_mem_id"]');
+
+                if ($search_mem_id.val() === '') {
+                    alert('회원 검색어를 입력해 주십시오.');
+                    $search_mem_id.focus();
+                    return;
+                }
+
+                $('#btn_member_search').setLayer({
+                    'url': '{{ site_url('/common/searchMember/index/multiple/parent_value/') }}' + $search_mem_id.val(),
+                    'width': 900
+                });
             });
 
             // 전체선택/해제

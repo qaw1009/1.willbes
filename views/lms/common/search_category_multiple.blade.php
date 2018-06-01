@@ -98,10 +98,11 @@
 
             // 전체선택
             $datatable.on('ifChanged', '#_is_all', function() {
+                var $_cate_code = $('input[name="_cate_code"]');
                 if ($(this).prop('checked') === true) {
-                    $('input[name="_cate_code"]').iCheck('check');
+                    $_cate_code.iCheck('check');
                 } else {
-                    $('input[name="_cate_code"]').iCheck('uncheck');
+                    $_cate_code.iCheck('uncheck');
                 }
             });
 
@@ -146,7 +147,7 @@
                     route_name = $(this).text().trim();
 
                     html += '<span class="pr-10">' + route_name;
-                    html += '   <a href="#none" data-cate-code="' + code + '" class="selected-cate-code-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <a href="#none" data-cate-code="' + code + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
                     html += '   <input type="hidden" name="cate_code[]" value="' + code + '"/>';
                     html += '</span>';
                 });

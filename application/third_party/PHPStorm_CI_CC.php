@@ -104,9 +104,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  ***************** LMS ***********************
  * @property WCodeModel $wCodeModel                                             WBS Code Model Class
  * @property SearchWProfessorModel $searchWProfessorModel               Search WBS Professor Model Class
- * @property SearchCategoryModel $searchCategoryModel                     Search Category Model Class
- * @property SearchSubjectMappingModel $searchSubjectMappingModel   Search Category Subject Mapping Model Class
  * @property SearchWBookModel $searchWBookModel                           Search WBS Book Model Class
+ * @property SearchMemberModel $searchMemberModel                        Search Member Model Class
  * @property SiteModel $siteModel                                                     Site Model Class
  * @property SiteGroupModel $siteGroupModel                                      Site Group Model Class
  * @property SiteMenuModel $siteMenuModel                                       Site Menu Model Class
@@ -125,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MemberModel $memberModel                                           Member Model Class
  * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
  * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
- *
+ * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
  */
 class PHPStorm_CI_CC
 {

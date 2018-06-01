@@ -74,7 +74,7 @@ class Regist extends \app\controllers\BaseController
      */
     public function excel()
     {
-        $headers = ['운영사이트', '카테고리', '쿠폰명', '배포루트', '적용구분', '적용상세구분', '적용범위', '사용기간 (유효기간)', '유효여부', '할인율 (할인금액)', '쿠폰사용수', '쿠폰발급수', '발급여부', '등록자', '등록일'];
+        $headers = ['운영사이트', '카테고리', '쿠폰명', '배포루트', '쿠폰유형', '핀번호유형 (발급개수)', '적용구분', '적용상세구분', '적용범위', '사용기간 (유효기간)', '유효여부', '할인율 (할인금액)', '쿠폰사용수', '쿠폰발급수', '발급여부', '등록자', '등록일'];
 
         $arr_condition = $this->_getListConditions();
         $list = $this->couponRegistModel->listAllCoupon('excel', $arr_condition, null, null, ['CouponIdx' => 'desc']);

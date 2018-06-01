@@ -143,6 +143,25 @@ class Issue extends \app\controllers\BaseController
     }
 
     /**
+     * 사용자 쿠폰 발급
+     */
+    public function store()
+    {
+        $rules = [
+            ['field' => 'coupon_idx', 'label' => '쿠폰식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->couponIssueModel->addCouponDetail($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
      * 사용자 쿠폰 회수
      */
     public function retire()

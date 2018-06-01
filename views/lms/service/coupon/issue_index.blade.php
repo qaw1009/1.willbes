@@ -148,7 +148,7 @@
                         return data + ' (' + row.SmsRcvStatus + ')';
                     }},
                     {'data' : 'CouponName', 'render' : function(data, type, row, meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
+                        return '<a href="#none" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
                     }},
                     {'data' : 'IssueTypeName'},
                     {'data' : 'IssueDatm', 'render' : function(data, type, row, meta) {

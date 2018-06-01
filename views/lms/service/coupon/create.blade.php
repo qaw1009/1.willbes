@@ -40,7 +40,7 @@
                                 @if(isset($data['CateCodes']) === true)
                                     @foreach($data['CateCodes'] as $cate_code => $cate_name)
                                         <span class="pr-10">{{ $cate_name }}
-                                            <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-cate-code-delete"><i class="fa fa-times red"></i></a>
+                                            <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
                                             <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
                                         </span>
                                     @endforeach
@@ -324,6 +324,7 @@
                 $regi_form.find('input[name="deploy_type"]').iCheck('disable');
                 $regi_form.find('input[name="coupon_type_ccd"]').iCheck('disable');
                 $regi_form.find('input[name="pin_type"]').iCheck('disable');
+                $regi_form.find('input[name="issue_cnt"]').prop('disabled', true);
                 $regi_form.find('input[name="apply_type_ccd"]').iCheck('disable');
                 $regi_form.find('input[name="lec_type_ccd[]"]').iCheck('disable');
                 $regi_form.find('input[name="apply_range_type"]').iCheck('disable');
@@ -358,7 +359,7 @@
             });
 
             // 카테고리 삭제
-            $regi_form.on('click', '.selected-cate-code-delete', function() {
+            $regi_form.on('click', '.selected-category-delete', function() {
                 var that = $(this);
                 that.parent().remove();
                 $regi_form.find('input[name="cate_code[]"][value="' + that.data('cate-code') + '"]').remove();
@@ -373,7 +374,6 @@
                     $regi_form.find('input[name="issue_cnt"]').val('1');
                 } else {
                     $regi_form.find('input[name="issue_cnt"]').prop('readonly', '');
-                    $regi_form.find('input[name="issue_cnt"]').val('');
                 }
             });
 

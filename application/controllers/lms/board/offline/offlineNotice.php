@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class Notice extends BaseBoard
+class offlineNotice extends BaseBoard
 {
     protected $temp_models = array('sys/boardMaster', 'board/board');
     protected $helpers = array();
 
-    private $board_name = 'notice';
+    private $board_name = 'offlineNotice';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [

@@ -119,6 +119,11 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
                 ";
                 break;
+            case "OfflineBoard" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                ";
+                break;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -412,6 +417,11 @@ class BoardModel extends WB_Model
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
+                ";
+                break;
+            case "OfflineBoard" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
         }

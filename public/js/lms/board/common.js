@@ -19,14 +19,16 @@ function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
     var add_checkBox = '';
     sendAjax(_siteCategory_url, _data, function(ret) {
         if (ret.ret_cd) {
-            $('#site_category_all').prop('checked', false).iCheck('update');
-            if (Object.keys(ret.ret_data.category.length > 0)) {
-                $.each(ret.ret_data.category, function(key, val) {
-                    add_checkBox += '<input type="checkbox" id="site_category_'+key+'" name="site_category[]" value="'+key+'" class="site_category flat"/> <label class="inline-block mr-5" for="site_category_'+key+'">'+val+'</label>';
-                });
-                $('#site_category').html(add_checkBox);
-            } else {
-                //$('#site_category').html(add_checkBox);
+            if (typeof ret.ret_data.category != "undefined") {
+                $('#site_category_all').prop('checked', false).iCheck('update');
+                if (Object.keys(ret.ret_data.category.length > 0)) {
+                    $.each(ret.ret_data.category, function (key, val) {
+                        add_checkBox += '<input type="checkbox" id="site_category_' + key + '" name="site_category[]" value="' + key + '" class="site_category flat"/> <label class="inline-block mr-5" for="site_category_' + key + '">' + val + '</label>';
+                    });
+                    $('#site_category').html(add_checkBox);
+                } else {
+                    //$('#site_category').html(add_checkBox);
+                }
             }
         }
 
@@ -43,25 +45,30 @@ function getAjaxcampusInfo(_url, campus_ccd) {
 
     sendAjax(_url, _data, function(ret) {
         if (ret.ret_cd) {
-            if (Object.keys(ret.ret_data.campus).length > 0) {
-                $.each(ret.ret_data.campus, function(key, val) {
-                    var chk = '';
-                    if(key == campus_ccd){
-                        chk = 'selected="selected"';
-                    } else {
-                        chk = '';
-                    }
-                    add_selectBox_options += '<option value="'+key+'" '+chk+'>'+val+'</option>';
-                });
-                $('#campus_ccd').html(add_selectBox_options);
-                $('#campus_ccd').prop('disabled',false);
+            if (typeof ret.ret_data.campus == "undefined") {
+                $('#campus_ccd').html('<option value="">사용안함</option>');
+                $('#campus_ccd').prop('disabled', true);
             } else {
-                if (ret.ret_data.isCampus == 'N') {
-                    $('#campus_ccd').html('<option value="">사용안함</option>');
-                    $('#campus_ccd').prop('disabled', true);
+                if (Object.keys(ret.ret_data.campus).length > 0) {
+                    $.each(ret.ret_data.campus, function (key, val) {
+                        var chk = '';
+                        if (key == campus_ccd) {
+                            chk = 'selected="selected"';
+                        } else {
+                            chk = '';
+                        }
+                        add_selectBox_options += '<option value="' + key + '" ' + chk + '>' + val + '</option>';
+                    });
+                    $('#campus_ccd').html(add_selectBox_options);
+                    $('#campus_ccd').prop('disabled', false);
                 } else {
-                    $('#campus_ccd').html('<option value="">없음</option>');
-                    $('#campus_ccd').prop('disabled', true);
+                    if (ret.ret_data.isCampus == 'N') {
+                        $('#campus_ccd').html('<option value="">사용안함</option>');
+                        $('#campus_ccd').prop('disabled', true);
+                    } else {
+                        $('#campus_ccd').html('<option value="">없음</option>');
+                        $('#campus_ccd').prop('disabled', true);
+                    }
                 }
             }
         }

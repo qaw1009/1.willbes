@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class OfflineBoard extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board');
     protected $helpers = array();
 
     private $board_name = 'OfflineBoard';
@@ -35,6 +35,8 @@ class OfflineBoard extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
 
+        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
 
@@ -46,6 +48,7 @@ class OfflineBoard extends BaseBoard
 
         $this->load->view("board/offline/index", [
             'bm_idx' => $this->bm_idx,
+            'offLineSite_list' => $offLineSite_list,
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_campus' => $arr_campus,

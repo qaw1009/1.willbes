@@ -4,10 +4,7 @@
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}
-
-
-
+        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], $offLineSite_list) !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">
             <div class="x_content">

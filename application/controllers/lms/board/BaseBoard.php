@@ -96,24 +96,27 @@ class BaseBoard extends \app\controllers\BaseController
      */
     protected function _getSiteCategoryInfo($params = [])
     {
-        $resultSiteArray = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
-        $get_site_array = [];
-        foreach ($resultSiteArray as $keys => $vals) {
-            foreach ($vals as $key => $val) {
-                $get_site_array[$vals['SiteCode']] = array(
-                    'SiteName' => $vals['SiteName'],
-                    'IsCampus' => $vals['IsCampus']
-                );
+        $result = [];
+        if (empty($params) === false) {
+            $resultSiteArray = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
+            $get_site_array = [];
+            foreach ($resultSiteArray as $keys => $vals) {
+                foreach ($vals as $key => $val) {
+                    $get_site_array[$vals['SiteCode']] = array(
+                        'SiteName' => $vals['SiteName'],
+                        'IsCampus' => $vals['IsCampus']
+                    );
+                }
             }
+
+            //사이트카테고리
+            $result['category'] = $this->_getCategoryArray($params[0]);
+            //캠퍼스
+            $result['campus'] = $this->_getCampusArray($params[0]);
+
+            //캠퍼스 사용 유무
+            $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
         }
-
-        //사이트카테고리
-        $result['category'] = $this->_getCategoryArray($params[0]);
-        //캠퍼스
-        $result['campus'] = $this->_getCampusArray($params[0]);
-
-        //캠퍼스 사용 유무
-        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
 
         return $result;
     }
@@ -125,21 +128,23 @@ class BaseBoard extends \app\controllers\BaseController
      */
     protected function _getCampusInfo($params = [])
     {
-        $result_site_array = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
-        $get_site_array = [];
-        foreach ($result_site_array as $keys => $vals) {
-            foreach ($vals as $key => $val) {
-                $get_site_array[$vals['SiteCode']] = array(
-                    'SiteName' => $vals['SiteName'],
-                    'IsCampus' => $vals['IsCampus']
-                );
+        $result = [];
+        if (empty($params) === false) {
+            $result_site_array = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
+            $get_site_array = [];
+            foreach ($result_site_array as $keys => $vals) {
+                foreach ($vals as $key => $val) {
+                    $get_site_array[$vals['SiteCode']] = array(
+                        'SiteName' => $vals['SiteName'],
+                        'IsCampus' => $vals['IsCampus']
+                    );
+                }
             }
+
+            $result['campus'] = $this->_getCampusArray($params[0]);
+            //캠퍼스 사용 유무
+            $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
         }
-
-        $result['campus'] = $this->_getCampusArray($params[0]);
-        //캠퍼스 사용 유무
-        $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
-
         return $result;
     }
 

@@ -810,6 +810,18 @@ class BoardModel extends WB_Model
         return true;
     }
 
+    public function getOffLineSiteArray()
+    {
+        $column = 'SiteCode,SiteName';
+        $arr_condition = [
+            'EQ' => [
+                'IsCampus' => 'Y'
+            ]
+        ];
+        $data = $this->siteModel->listSite($column, $arr_condition);
+        return array_pluck($data, 'SiteName', 'SiteCode');
+    }
+
 
     /**
      * 게시판 카테고리 조회

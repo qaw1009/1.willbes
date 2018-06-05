@@ -44,15 +44,15 @@
                             <td><u class="blue">{{ $data['CouponName'] }}</u> [{{ $data['CouponIdx'] }}]</td>
                             <td>{{ $data['DeployName'] }}</td>
                             <td>{{ $data['CouponTypeName'] }}</td>
-                            <td>{{ $data['PinName'] }}@if($data['PinType'] == 'R')<br/>({{ $data['IssueCnt'] }}개)@endif</td>
+                            <td>{{ $data['PinName'] }}@if($data['PinType'] == 'R')<br/>({{ $data['PinIssueCnt'] }}개)@endif</td>
                             <td>{{ $data['ApplyTypeName'] }}</td>
                             <td>{{ $data['LecTypeNames'] }}</td>
                             <td>{{ $data['ApplyRangeName'] }}</td>
                             <td>{{ $data['ValidDay'] }}일<br/>({{ $data['IssueStartDate'] }}~{{ $data['IssueEndDate'] }})</td>
-                            <td>{{ $data['IssueValid'] }}</td>
+                            <td>@if($data['IssueValid'] != '유효')<a class="red">{{ $data['IssueValid'] }}</a>@else{{ $data['IssueValid'] }}@endif</td>
                             <td>{{ $data['DiscRate'] }}@if($data['DiscType'] == 'R')%@else원@endif</td>
                             <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssuedCnt'] }}</td>
-                            <td>@if($data['IsIssue'] == 'Y')발급@else<span class="red">미발급</span>@endif</td>
+                            <td>@if($data['IsIssue'] == 'Y')발급@else<a class="red">미발급</a>@endif</td>
                             <td>{{ $data['RegAdminName'] }}</td>
                             <td>{{ $data['RegDatm'] }}</td>
                         </tr>

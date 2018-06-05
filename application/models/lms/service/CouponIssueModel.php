@@ -99,9 +99,6 @@ class CouponIssueModel extends WB_Model
     {
         $this->_conn->trans_begin();
 
-        // 쿠폰등록 모델 로드
-        $this->load->loadModels(['service/couponRegist']);
-        
         try {
             $coupon_idx = element('coupon_idx', $input);
             $arr_mem_idx = element('mem_idx', $input, []);
@@ -112,7 +109,10 @@ class CouponIssueModel extends WB_Model
             }
 
             // 기존 쿠폰 기본정보 조회
-            $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, IssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
+            // 쿠폰등록 모델 로드
+            $this->load->loadModels(['service/couponRegist']);
+
+            $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
                 , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
             if (count($row) < 1) {
                 throw new \Exception('쿠폰 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);

@@ -89,10 +89,10 @@
                             <input type="radio" id="pin_type_2" name="pin_type" class="flat" value="R" @if($data['PinType'] == 'R')checked="checked"@endif/> <label for="pin_type_2" class="input-label">랜덤핀번호</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="issue_cnt">발급개수 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="pin_issue_cnt">발급개수 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" id="issue_cnt" name="issue_cnt" class="form-control" required="required" title="발급개수" value="{{ $data['IssueCnt'] or '1' }}" readonly="readonly" style="width: 100px;"> 개
+                        <input type="number" id="pin_issue_cnt" name="pin_issue_cnt" class="form-control" required="required" title="발급개수" value="{{ $data['PinIssueCnt'] or '1' }}" readonly="readonly" style="width: 100px;"> 개
                     </div>
                 </div>
                 <div class="form-group">
@@ -324,7 +324,7 @@
                 $regi_form.find('input[name="deploy_type"]').iCheck('disable');
                 $regi_form.find('input[name="coupon_type_ccd"]').iCheck('disable');
                 $regi_form.find('input[name="pin_type"]').iCheck('disable');
-                $regi_form.find('input[name="issue_cnt"]').prop('disabled', true);
+                $regi_form.find('input[name="pin_issue_cnt"]').prop('disabled', true);
                 $regi_form.find('input[name="apply_type_ccd"]').iCheck('disable');
                 $regi_form.find('input[name="lec_type_ccd[]"]').iCheck('disable');
                 $regi_form.find('input[name="apply_range_type"]').iCheck('disable');
@@ -370,10 +370,10 @@
                 var pin_type = $(this).val();
 
                 if (pin_type == 'S') {
-                    $regi_form.find('input[name="issue_cnt"]').prop('readonly', 'readonly');
-                    $regi_form.find('input[name="issue_cnt"]').val('1');
+                    $regi_form.find('input[name="pin_issue_cnt"]').prop('readonly', 'readonly');
+                    $regi_form.find('input[name="pin_issue_cnt"]').val('1');
                 } else {
-                    $regi_form.find('input[name="issue_cnt"]').prop('readonly', '');
+                    $regi_form.find('input[name="pin_issue_cnt"]').prop('readonly', '');
                 }
             });
 

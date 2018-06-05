@@ -48,16 +48,16 @@ class CouponRegistModel extends WB_Model
 
             if ($is_count == 'excel') {
                 $column = 'SiteName, CateName, concat(CouponName, " [", CouponIdx, "]") as CouponName, DeployName, CouponTypeName
-                    , concat(PinName, if(PinType = "R", concat(" (", IssueCnt, "개)"), "")) as PinName
+                    , concat(PinName, if(PinType = "R", concat(" (", PinIssueCnt, "개)"), "")) as PinName
                     , ApplyTypeName, LecTypeCcds, ApplyRangeName
-                    , concat(ValidDay, "일", " (", IssueStartDate, "~", IssueEndDate, ")") as ValidDay, IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssuedCnt
+                    , concat(ValidDay, "일", " (", IssueStartDate, "~", IssueEndDate, ")") as ValidDay, IssueValid, concat(DiscRate, if(DiscType = "R", "%", "원")) as DiscRate, UseCnt, IssueCnt
                     , if(IsIssue = "Y", "발급", "미발급") as IsIssue, RegAdminName, RegDatm';
             }
         }
 
         $from = '
             select
-                C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.IssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
+                C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
                     , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
                     , if(C.PinType = "S", "공통핀번호", "랜덤핀번호") as PinName
                     , if(C.DeployType = "N", "온라인", "오프라인") as DeployName                   
@@ -67,7 +67,7 @@ class CouponRegistModel extends WB_Model
                            else "발급전"
                       end) as IssueValid
                     , SCC.CcdName as CouponTypeName, SCA.CcdName as ApplyTypeName                      
-                    , S.SiteName, CC.CateCode, CC.CateCodes, SC.CateName, ifnull(CD.IssuedCnt, 0) as IssuedCnt, ifnull(CD.UseCnt, 0) as UseCnt, A.wAdminName as RegAdminName            
+                    , S.SiteName, CC.CateCode, CC.CateCodes, SC.CateName, ifnull(CD.IssueCnt, 0) as IssueCnt, ifnull(CD.UseCnt, 0) as UseCnt, A.wAdminName as RegAdminName            
             from ' . $this->_table['coupon'] . ' as C
                 inner join (
                     select CouponIdx, min(CateCode) as CateCode, GROUP_CONCAT(CateCode separator ",") as CateCodes
@@ -83,7 +83,7 @@ class CouponRegistModel extends WB_Model
                 left join ' . $this->_table['category'] . ' as SC
                     on C.SiteCode = SC.SiteCode and CC.CateCode = SC.CateCode and SC.IsStatus = "Y"
                 left join (
-                    select CouponIdx, count(*) as IssuedCnt, sum(if(IsUse = "Y", 1, 0)) as UseCnt
+                    select CouponIdx, count(*) as IssueCnt, sum(if(IsUse = "Y", 1, 0)) as UseCnt
                     from ' . $this->_table['coupon_detail'] . '
                     group by CouponIdx                
                 ) as CD
@@ -202,7 +202,7 @@ class CouponRegistModel extends WB_Model
     public function findCouponForModify($coupon_idx)
     {
         $column = '
-            C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.IssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
+            C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
                 , C.ApplySchoolYear, C.ApplySubjectIdx, C.ApplyCourseIdx, C.ApplyProfIdx, C.ApplyProdCode, C.DiscType, C.DiscRate, C.DiscAllowPrice
                 , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.CouponDesc, C.IsIssue, C.RegDatm, C.RegAdminIdx, C.UpdDatm, C.UpdAdminIdx
                 , (case 
@@ -243,7 +243,7 @@ class CouponRegistModel extends WB_Model
                 'CouponName' => element('coupon_name', $input),
                 'CouponTypeCcd' => element('coupon_type_ccd', $input),
                 'PinType' => element('pin_type', $input),
-                'IssueCnt' => element('issue_cnt', $input),
+                'PinIssueCnt' => element('pin_issue_cnt', $input),
                 'DeployType' => element('deploy_type', $input),
                 'ApplyTypeCcd' => $apply_type_ccd,
                 'LecTypeCcds' => $lec_type_ccd,
@@ -277,6 +277,10 @@ class CouponRegistModel extends WB_Model
             if ($is_coupon_category !== true) {
                 throw new \Exception($is_coupon_category);
             }
+
+
+            // 쿠폰핀 모델 로드
+            $this->load->loadModels(['service/couponPin']);
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

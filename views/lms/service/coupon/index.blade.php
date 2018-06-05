@@ -169,7 +169,7 @@
                     {'data' : 'DeployName'},
                     {'data' : 'CouponTypeName'},
                     {'data' : 'PinName', 'render' : function(data, type, row, meta) {
-                        return data + ((row.PinType === 'R') ? '<br/>(' + row.IssueCnt + '개)' : '');
+                        return data + ((row.PinType === 'R') ? '<br/>(' + row.PinIssueCnt + '개)' : '');
                     }},
                     {'data' : 'ApplyTypeName'},
                     {'data' : 'LecTypeNames', 'render' : function(data, type, row, meta) {
@@ -186,7 +186,7 @@
                         return data + ((row.DiscType === 'R') ? '%' : '원');
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<a href="#none" class="btn-issue" data-idx="' + row.CouponIdx + '"><u>[쿠폰발급]</u></a><br/>(<span class="red">' + row.UseCnt + '</span>/' + row.IssuedCnt + ')';
+                        return '<a href="#none" class="btn-issue" data-idx="' + row.CouponIdx + '"><u>[쿠폰발급]</u></a><br/>(<span class="red">' + row.UseCnt + '</span>/' + row.IssueCnt + ')';
                     }},
                     {'data' : 'IsIssue', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '발급' : '<span class="red">미발급</span>';

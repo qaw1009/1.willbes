@@ -23,7 +23,7 @@
                     <div class="col-md-2 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', $offLineSite_list) !!}
                     </div>
-                    <label class="control-label col-md-2 col-md-offset-1" for="campus_ccd">캠퍼스</label>
+                    <label class="control-label col-md-2 col-md-offset-2" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-2">
                         <select class="form-control" id="campus_ccd" name="campus_ccd"></select>
                     </div>
@@ -46,13 +46,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="title">제목<span class="required">*</span></label>
-                    <div class="col-md-9 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="control-label col-md-2" for="is_best">HOT</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
@@ -65,6 +58,13 @@
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="">미사용</label>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="title">제목<span class="required">*</span></label>
+                    <div class="col-md-9 item">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
 

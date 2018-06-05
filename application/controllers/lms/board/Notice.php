@@ -180,12 +180,6 @@ class Notice extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-
-        //권한유형별 운영사이트 목록 조회
-        /*$get_site_array = $this->_getSiteArray();
-        $first_site_key = key($get_site_array);
-        $site_code = $first_site_key;*/
-
         $site_code = '';
         $get_category_array = [];
 
@@ -225,7 +219,6 @@ class Notice extends BaseBoard
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'site_code' => $site_code,
-            /*'getSiteArray' => $get_site_array,*/
             'getCategoryArray' => $get_category_array,
             'method' => $method,
             'data' => $data,

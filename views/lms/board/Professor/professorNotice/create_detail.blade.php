@@ -21,9 +21,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
-                            @foreach($getSiteArray as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
+                    </div>
+                    <label class="control-label col-md-2 col-md-offset-2" for="subject_idx">과목<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" required="required" id="subject_idx" name="subject_idx" title="과목">
+                            @foreach($arr_subject as $key => $val)
+                                <option value="{{$key}}" @if($method == 'PUT' && $key == $data['SubjectIdx']) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -31,7 +35,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline">
+                    <div class="col-md-8 item form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
                         </div>
@@ -43,24 +47,16 @@
                             @endforeach
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="subject_idx">과목<span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="subject_idx" name="subject_idx" title="과목">
-                            @foreach($arr_subject as $key => $val)
-                                <option value="{{$key}}" @if($method == 'PUT' && $key == $data['SubjectIdx']) selected="selected" @endif>{{$val}}</option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_best">HOT</label>
-                    <div class="col-md-4 form-inline">
+                    <div class="col-md-2 form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat" @if($data['IsBest']=='Y')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <label class="control-label col-md-2 col-md-offset-2" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>

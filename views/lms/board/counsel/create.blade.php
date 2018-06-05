@@ -20,11 +20,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">운영사이트<span class="required">*</span></label>
                     <div class="col-md-3 item">
-                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
-                            @foreach($getSiteArray as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
                     </div>
                     <label class="control-label col-md-2 col-md-offset-1" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-2">
@@ -34,7 +30,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline">
+                    <div class="col-md-5 item form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
                         </div>
@@ -46,7 +42,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <label class="control-label col-md-2 col-md-offset-1" for="is_public_y">공개여부<span class="required">*</span></label>
+                    <label class="control-label col-md-1" for="is_public_y">공개여부<span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_public_y" name="is_public" class="flat" value="Y" required="required" title="공개여부" @if($method == 'POST' || $data['IsPublic']=='Y')checked="checked"@endif/><label for="is_public_y" class="hover mr-5">공개</label>

@@ -180,11 +180,8 @@ class News extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-
-        //권한유형별 운영사이트 목록 조회
-        $get_site_array = $this->_getSiteArray();
-        $first_site_key = key($get_site_array);
-        $site_code = $first_site_key;
+        $site_code = '';
+        $get_category_array = [];
 
         if (empty($params[0]) === false) {
             $column = '
@@ -214,16 +211,16 @@ class News extends BaseBoard
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-        }
 
-        //사이트카테고리 (구분)
-        $get_category_array = $this->_getCategoryArray($site_code);
+            //사이트카테고리 (구분)
+            $get_category_array = $this->_getCategoryArray($site_code);
+        }
 
         $this->load->view("board/exam/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'site_code' => $site_code,
-            'getSiteArray' => $get_site_array,
+            /*'getSiteArray' => $get_site_array,*/
             'getCategoryArray' => $get_category_array,
             'method' => $method,
             'data' => $data,

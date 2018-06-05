@@ -21,17 +21,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
-                            @foreach($getSiteArray as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline">
+                    <div class="col-md-8 item form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
                         </div>
@@ -146,7 +142,8 @@
             $('#site_code').change(function() {
                 var _siteCategory_url = '{{ site_url("/board/exam/{$boardName}/getAjaxSiteCategoryInfo/") }}' + this.value + getQueryString();
                 var _campus_url = '';
-                getSiteCategory(_siteCategory_url, _campus_url, campus_ccd);
+                var _campus_ccd = '';
+                getSiteCategory(_siteCategory_url, _campus_url, _campus_ccd);
             });
             $('#site_code').on('change', function() {
                 $('input[type="checkbox"].flat').iCheck({

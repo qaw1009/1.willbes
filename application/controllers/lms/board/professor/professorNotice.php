@@ -250,17 +250,14 @@ class professorNotice extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
+        $site_code = '';
+        $get_category_array = [];
 
         // 기존 교수 기본정보 조회
         $arr_prof_info = $this->_getProfessorArray($prof_idx);
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
-
-        //권한유형별 운영사이트 목록 조회
-        $get_site_array = $this->_getSiteArray();
-        $first_site_key = key($get_site_array);
-        $site_code = $first_site_key;
 
         if (empty($params[0]) === false) {
             $column = '
@@ -291,10 +288,10 @@ class professorNotice extends BaseBoard
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-        }
 
-        //사이트카테고리 (구분)
-        $get_category_array = $this->_getCategoryArray($site_code);
+            //사이트카테고리 (구분)
+            $get_category_array = $this->_getCategoryArray($site_code);
+        }
 
         //과목
         $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
@@ -304,7 +301,6 @@ class professorNotice extends BaseBoard
             'bmIdx' => $this->bm_idx,
             'site_code' => $site_code,
             'arr_prof_info' => $arr_prof_info,
-            'getSiteArray' => $get_site_array,
             'getCategoryArray' => $get_category_array,
             'arr_subject' => $arr_subject,
             'method' => $method,

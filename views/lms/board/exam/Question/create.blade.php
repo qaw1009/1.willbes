@@ -21,9 +21,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
-                            @foreach($getSiteArray as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
+                    </div>
+                    <label class="control-label col-md-2 col-lg-offset-2" for="area_ccd">지역<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" required="required" id="area_ccd" name="area_ccd" title="지역">
+                            @foreach($arr_area_ccd as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['AreaCcd'])selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -31,7 +35,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline">
+                    <div class="col-md-8 item form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
                         </div>
@@ -42,14 +46,6 @@
                                 <label class="inline-block mr-5" for="site_category_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
-                    </div>
-                    <label class="control-label col-md-2" for="area_ccd">지역<span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="area_ccd" name="area_ccd" title="지역">
-                            @foreach($arr_area_ccd as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['AreaCcd'])selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
 

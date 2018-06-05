@@ -184,17 +184,11 @@ class OfflineBoard extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
+        $site_code = '';
+        $get_category_array = [];
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->boardModel->getOffLineSiteArray();
-
-        //권한유형별 운영사이트 목록 조회
-        /*$get_site_array = $this->_getSiteArray();
-        $first_site_key = key($get_site_array);
-        $site_code = $first_site_key;*/
-
-        $site_code = '';
-        $get_category_array = [];
 
         if (empty($params[0]) === false) {
             $column = '
@@ -233,7 +227,6 @@ class OfflineBoard extends BaseBoard
             'bmIdx' => $this->bm_idx,
             'offLineSite_list' => $offLineSite_list,
             'site_code' => $site_code,
-            /*'getSiteArray' => $get_site_array,*/
             'getCategoryArray' => $get_category_array,
             'method' => $method,
             'data' => $data,

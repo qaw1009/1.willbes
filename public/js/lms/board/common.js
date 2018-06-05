@@ -36,7 +36,7 @@ function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
                     });
                     $('#site_category').html(add_checkBox);
                 } else {
-                    //$('#site_category').html(add_checkBox);
+                    $('#site_category').html(add_checkBox);
                 }
             }
         }
@@ -49,8 +49,9 @@ function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
 
 //캠퍼스 목록 죄회
 function getAjaxcampusInfo(_url, campus_ccd) {
+    var board_campus_code_all = '605999';
+    var add_selectBox_options = '<option value="'+board_campus_code_all+'">전체</option>';
     var _data = {};
-    var add_selectBox_options = '';
 
     sendAjax(_url, _data, function(ret) {
         if (ret.ret_cd) {

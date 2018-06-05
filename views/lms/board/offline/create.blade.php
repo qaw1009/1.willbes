@@ -26,7 +26,7 @@
                                 <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>--}}
-                        {!! html_site_select('', 'site_code', 'site_code', '', '운영 사이트', 'required', '', $offLineSite_list) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', $offLineSite_list) !!}
                     </div>
                     <label class="control-label col-md-2 col-md-offset-1" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-2">

@@ -951,7 +951,7 @@ class BoardModel extends WB_Model
     private function _modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type)
     {
         try {
-            $board_attach_data = $_FILES['attach_file']['name'];
+            $board_attach_data = $_FILES['attach_file']['size'];
             $arr_board_attach = $this->_getBoardAttachArray($board_idx, $reg_type, $attach_file_type);
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
@@ -959,12 +959,14 @@ class BoardModel extends WB_Model
             $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
 
             foreach ($board_attach_data as $key => $val) {
-                if (empty($val) === false) {
+                /*if (empty($val) === false && $val != 'blob') {*/
+                if ($val > 0) {
                     if (empty($arr_board_attach_keys[$key]) === true) {
                         //ins
                         $set_board_attach_data['BoardIdx'] = $board_idx;

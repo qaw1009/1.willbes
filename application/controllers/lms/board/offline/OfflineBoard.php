@@ -47,7 +47,7 @@ class OfflineBoard extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
-        $this->load->view("board/offline/index", [
+        $this->load->view("board/offline/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'offLineSite_list' => $offLineSite_list,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -222,7 +222,7 @@ class OfflineBoard extends BaseBoard
             $get_category_array = $this->_getCategoryArray($site_code);
         }
 
-        $this->load->view("board/offline/create", [
+        $this->load->view("board/offline/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'offLineSite_list' => $offLineSite_list,
@@ -337,7 +337,7 @@ class OfflineBoard extends BaseBoard
             $data['arr_cate_code'][$code] = $get_category_array[$code];
         }
 
-        $this->load->view("board/offline/read",[
+        $this->load->view("board/offline/{$this->board_name}/read",[
             'boardName' => $this->board_name,
             'data' => $data,
             'getCategoryArray' => $get_category_array,

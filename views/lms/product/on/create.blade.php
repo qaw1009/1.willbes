@@ -84,7 +84,7 @@
                                     &nbsp;[진행상태] {{$data['wProgressCcd_Name']}} &nbsp;&nbsp;
                                     &nbsp;[제작월] {{$data['wMakeYM']}} &nbsp;&nbsp;
                                     @if($data['wAttachFile'])
-                                        &nbsp;[첨부자료 ]<a href='{{  site_url('/product/on/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']) }}' target="_blank">{{$data['wAttachFile']}}</a>
+                                        &nbsp;[첨부자료] <a href='{{  site_url('/product/on/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
                                     @endif
                                 @endif
 

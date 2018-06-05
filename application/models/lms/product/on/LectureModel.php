@@ -94,7 +94,7 @@ class LectureModel extends WB_Model
     public function findProductForModify($prodcode)
     {
             $column = 'A.*,B.*
-                        ,Ba.wLecName,Ba.wCpName,Ba.wShootingCcd_Name,Ba.wProgressCcd_Name,Ba.wMakeYM,Ba.wAttachFile,Ba.wAttachPath
+                        ,Ba.wLecName,Ba.wCpName,Ba.wShootingCcd_Name,Ba.wProgressCcd_Name,Ba.wMakeYM,Ba.wAttachFileReal,Ba.wAttachFile,Ba.wAttachPath
                         ,Ba.wUnitCnt,Ba.wUnitLectureCnt
                         ,C.CateCode,Ca.CateName,Ca.CateRouteName
                         ,D.wAdminName as RegAdminName,E.wAdminName as UpdAdminName';

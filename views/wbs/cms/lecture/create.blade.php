@@ -162,7 +162,7 @@
                             <br>
                             <p class="form-control-static ml-10 mr-10">
                                 [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']) }}" target="_blank">
-                                    {{ $data['wAttachFile'] }}</a> ]
+                                    {{ $data['wAttachFileReal'] }}</a> ]
                             </p>
                             <div class="checkbox">
                                 <input type="checkbox" name="attach_delete" value="Y" class="flat"/> <span class="red">삭제</span>
@@ -195,6 +195,7 @@
                 </div>
 
     @if(empty($lecidx) === false)
+                <input type="hidden" name="regdateyear" value="{{date("Y",strtotime($data['wRegDatm']))}}">
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
@@ -254,7 +255,7 @@
                                     @if(empty($row['wUnitAttachFile']) === false)
                                         <br>
                                         <p class="form-control-static ml-10 mr-10">
-                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile'] ) }}" target="_blank">{{ $row['wUnitAttachFile'] }}</a> ]
+                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile'] ) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                         </p>
                                     @endif
                                 </td>

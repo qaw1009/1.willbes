@@ -76,7 +76,7 @@
                                         @if(empty($row['wUnitAttachFile']) !== true)
                                             <br>
                                             <p class="form-control-static ml-10 mr-10">
-                                               [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']) }}" target="_blank">{{ $row['wUnitAttachFile'] }}</a> ]
+                                               [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                                 &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="attachFileDelete('{{$row['wUnitIdx'] }}')"><span class="red">[X]</span></a>
                                             </p>
                                         @endif

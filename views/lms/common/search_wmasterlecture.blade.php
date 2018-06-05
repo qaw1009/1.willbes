@@ -140,7 +140,7 @@
                                                 + ' &nbsp;&nbsp; [제작월] '+row.wMakeYM;
                         if(!(row.wAttachFile == null) && (row.wAttachFile != '')) {
                             $attach_link = "{{site_url('/product/on/lecture/download/')}}"+encodeURIComponent(row.wAttachPath+row.wAttachFile);
-                            $masterInfo = $masterInfo +' &nbsp;&nbsp; [첨부자료] <a href=' + $attach_link + ' target="_blank">' + row.wAttachFile +'</a>';
+                            $masterInfo = $masterInfo +' &nbsp;&nbsp; [첨부자료] <a href=' + $attach_link + ' target="_blank">' + row.wAttachFileReal +'</a>';
                         }
 
                         $parent_masterTitle.html(row.wLecName + ' [ ' + row.wLecIdx + ' ] ');   //강의명, 코드명 삽입

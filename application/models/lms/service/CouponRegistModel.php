@@ -59,7 +59,7 @@ class CouponRegistModel extends WB_Model
             select
                 C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
                     , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
-                    , if(C.PinType = "S", "공통핀번호", "랜덤핀번호") as PinName
+                    , if(C.PinType = "S", "공통핀번호", if(C.PinType = "R", "랜덤핀번호", "")) as PinName
                     , if(C.DeployType = "N", "온라인", "오프라인") as DeployName                   
                     , if(C.ApplyRangeType = "A", "전체", if(C.ApplyRangeType = "I", "항목별", "특정상품")) as ApplyRangeName
                     , (case when current_date() between C.IssueStartDate and C.IssueEndDate then "유효"
@@ -229,6 +229,9 @@ class CouponRegistModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $deploy_type = element('deploy_type', $input);
+            $pin_type = ($deploy_type == 'F') ? element('pin_type', $input) : 'N';
+            $pin_issue_cnt = ($deploy_type == 'F') ? element('pin_issue_cnt', $input) : 0;
             $apply_type_ccd = element('apply_type_ccd', $input);
             $lec_type_ccd = (in_array($apply_type_ccd, $this->_apply_type_to_lec_ccds) === true) ? implode(',', element('lec_type_ccd', $input)) : '';
             $apply_range_type = (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) ? element('apply_range_type', $input) : '';
@@ -242,9 +245,9 @@ class CouponRegistModel extends WB_Model
                 'SiteCode' => element('site_code', $input),
                 'CouponName' => element('coupon_name', $input),
                 'CouponTypeCcd' => element('coupon_type_ccd', $input),
-                'PinType' => element('pin_type', $input),
-                'PinIssueCnt' => element('pin_issue_cnt', $input),
-                'DeployType' => element('deploy_type', $input),
+                'PinType' => $pin_type,
+                'PinIssueCnt' => $pin_issue_cnt,
+                'DeployType' => $deploy_type,
                 'ApplyTypeCcd' => $apply_type_ccd,
                 'LecTypeCcds' => $lec_type_ccd,
                 'ApplyRangeType' => $apply_range_type,
@@ -278,9 +281,15 @@ class CouponRegistModel extends WB_Model
                 throw new \Exception($is_coupon_category);
             }
 
-
-            // 쿠폰핀 모델 로드
-            $this->load->loadModels(['service/couponPin']);
+            // 배포루트가 오프라인일 경우 핀번호 배정
+            if ($deploy_type == 'F') {
+                // 쿠폰핀 모델 로드
+                $this->load->loadModels(['service/couponPin']);
+                $is_assign_pin = $this->couponPinModel->assignCouponPin($pin_issue_cnt, $coupon_idx);
+                if ($is_assign_pin !== true) {
+                    throw new \Exception($is_assign_pin);
+                }
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

@@ -51,7 +51,7 @@
                             <td>{{ $data['ValidDay'] }}일<br/>({{ $data['IssueStartDate'] }}~{{ $data['IssueEndDate'] }})</td>
                             <td>@if($data['IssueValid'] != '유효')<a class="red">{{ $data['IssueValid'] }}</a>@else{{ $data['IssueValid'] }}@endif</td>
                             <td>{{ $data['DiscRate'] }}@if($data['DiscType'] == 'R')%@else원@endif</td>
-                            <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssuedCnt'] }}</td>
+                            <td><a class="red">{{ $data['UseCnt'] }}</a> / {{ $data['IssueCnt'] }}</td>
                             <td>@if($data['IsIssue'] == 'Y')발급@else<a class="red">미발급</a>@endif</td>
                             <td>{{ $data['RegAdminName'] }}</td>
                             <td>{{ $data['RegDatm'] }}</td>
@@ -232,7 +232,7 @@
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/service/coupon/issue/listAjax') }}',
+                    'url' : '{{ site_url('/service/coupon/issue/listAjax/' . ($data['PinType'] == 'R' ? 'pins' : '')) }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -240,7 +240,7 @@
                 },
                 columns: [
                     {'data' : 'CdIdx', 'render' : function(data, type, row, meta) {
-                        return (row.IsUse === 'Y' || row.RetireDatm != null) ? '회수불가' : '<input type="checkbox" name="cd_idx" class="flat" value="' + data + '" data-idx="' + row.CouponIdx + '">';
+                        return (data !== null) ? ((row.IsUse === 'Y' || row.RetireDatm != null) ? '회수불가' : '<input type="checkbox" name="cd_idx" class="flat" value="' + data + '" data-idx="' + row.CouponIdx + '">') : '';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -248,23 +248,23 @@
                     }},
                     {'data' : 'CouponPin'},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
-                        return data + ' (<u class="blue">' + row.MemId + '</u>)';
+                        return (data !== null) ? data + ' (<u class="blue">' + row.MemId + '</u>)' : '';
                     }},
                     {'data' : 'Phone', 'render' : function(data, type, row, meta) {
-                        return data + ' (' + row.SmsRcvStatus + ')';
+                        return (data !== null) ? data + ' (' + row.SmsRcvStatus + ')' : '';
                     }},
                     {'data' : 'IssueTypeName'},
                     {'data' : 'IssueDatm', 'render' : function(data, type, row, meta) {
-                        return data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')';
+                        return (data !== null) ? data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')' : '';
                     }},
                     {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
-                        return ((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
+                        return (data !== null) ? (((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')') : '';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>';
+                        return (data !== null) ? ((data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>') : '';
                     }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return (row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '';
+                        return (data !== null) ? ((row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '') : '';
                     }},
                     {'data' : 'RetireDatm', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';

@@ -41,14 +41,13 @@ class CouponPinModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
             }
 
-            $binds = [$assign_cnt, $coupon_idx];
             $query = 'update ' . $this->_table['coupon_pin'] . ' as CP 
-                    inner join (select PinIdx from ' . $this->_table['coupon_pin'] . ' where CouponIdx is null order by PinIdx asc limit ?) as CPF     
+                    inner join (select PinIdx from ' . $this->_table['coupon_pin'] . ' where CouponIdx is null order by PinIdx asc limit ' . $assign_cnt . ') as CPF     
                         on CP.PinIdx = CPF.PinIdx
                     set CP.CouponIdx = ?
                 where CP.CouponIdx is null';
 
-            $is_update = $this->_conn->query($query, $binds);
+            $is_update = $this->_conn->query($query, [$coupon_idx]);
             if ($is_update !== true) {
                 throw new \Exception('쿠폰 핀 배정에 실패했습니다.');
             }

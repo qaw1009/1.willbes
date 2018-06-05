@@ -27,17 +27,19 @@ class Issue extends \app\controllers\BaseController
 
     /**
      * 전체쿠폰발급/사용현황 목록 조회
+     * @param array $params
      * @return CI_Output
      */
-    public function listAjax()
+    public function listAjax($params = [])
     {
         $arr_condition = $this->_getListConditions();
 
+        $list_type = element(0, $params);
         $list = [];
-        $count = $this->couponIssueModel->listAllCouponDetail(true, $arr_condition);
+        $count = $this->couponIssueModel->listAllCouponDetail(true, $arr_condition, null, null, [], $list_type);
 
         if ($count > 0) {
-            $list = $this->couponIssueModel->listAllCouponDetail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CdIdx' => 'desc']);
+            $list = $this->couponIssueModel->listAllCouponDetail(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CdIdx' => 'desc'], $list_type);
         }
 
         return $this->response([

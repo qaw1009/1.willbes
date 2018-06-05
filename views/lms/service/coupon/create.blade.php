@@ -80,19 +80,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div id="pin_off" class="form-group hide">
                     <label class="control-label col-md-2" for="pin_type_1">쿠폰핀번호유형 <span class="required">*</span>
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" id="pin_type_1" name="pin_type" class="flat" value="S" title="쿠폰핀번호유형" required="required" @if($method == 'POST' || $data['PinType'] == 'S')checked="checked"@endif/> <label for="pin_type_1" class="input-label">공통핀번호</label>
+                            <input type="radio" id="pin_type_1" name="pin_type" class="flat" value="S" required="required_if:deploy_type,F" title="쿠폰핀번호유형" @if($method == 'POST' || $data['PinType'] == 'S')checked="checked"@endif/> <label for="pin_type_1" class="input-label">공통핀번호</label>
                             <input type="radio" id="pin_type_2" name="pin_type" class="flat" value="R" @if($data['PinType'] == 'R')checked="checked"@endif/> <label for="pin_type_2" class="input-label">랜덤핀번호</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="pin_issue_cnt">발급개수 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" id="pin_issue_cnt" name="pin_issue_cnt" class="form-control" required="required" title="발급개수" value="{{ $data['PinIssueCnt'] or '1' }}" readonly="readonly" style="width: 100px;"> 개
+                        <input type="number" id="pin_issue_cnt" name="pin_issue_cnt" class="form-control" required="required_if:deploy_type,F" title="발급개수" value="{{ $data['PinIssueCnt'] or '1' }}" readonly="readonly" style="width: 100px;"> 개
                     </div>
                 </div>
                 <div class="form-group">
@@ -365,11 +365,22 @@
                 $regi_form.find('input[name="cate_code[]"][value="' + that.data('cate-code') + '"]').remove();
             });
 
+            // 쿠폰배포루트 선택
+            $regi_form.on('ifChanged ifCreated', 'input[name="deploy_type"]:checked', function() {
+                var deploy_type = $(this).val();
+
+                $('#pin_off').removeClass('show').addClass('hide');
+
+                if (deploy_type === 'F') {
+                    $('#pin_off').addClass('show');
+                }
+            });
+
             // 쿠폰핀번호 유형 선택
             $regi_form.on('ifChanged ifCreated', 'input[name="pin_type"]:checked', function() {
                 var pin_type = $(this).val();
 
-                if (pin_type == 'S') {
+                if (pin_type === 'S') {
                     $regi_form.find('input[name="pin_issue_cnt"]').prop('readonly', 'readonly');
                     $regi_form.find('input[name="pin_issue_cnt"]').val('1');
                 } else {

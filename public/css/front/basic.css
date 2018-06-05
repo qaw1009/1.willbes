@@ -1,5 +1,6 @@
 
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -29,6 +30,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	font-size: 12px;
 	line-height: 1;
+	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
+	min-width: 1120px;
 }
 ol, ul {
 	list-style: none;
@@ -45,7 +48,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a, a:hover, a:active, a:link {
+a, a:hover, a:active, a:link, a:visited {
 	text-decoration: none;
 	color: inherit;
 	vertical-align: baseline;
@@ -54,6 +57,12 @@ strong {
 	font-weight: 700;
 	vertical-align: baseline;
 }
+.GM {
+	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
+}
 .NSK {
 	font-family: "Noto Sans KR";
+}
+.NG {
+	font-family: "Nanum Gothic", "나눔고딕";
 }

@@ -485,7 +485,7 @@
                 <span>휴대폰 인증</span>
             </button>
         </div>
-        <div class="notice-Txt tx-gray tx-left mt40 pdl20">
+        <div class="notice-Txt tx-gray tx-left mt40 pl20">
             * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.<br/>
             * 아이디/비밀번호가 생각나지 않으신가요? 아이디/비밀번호 찾기를 이용해 주세요.
         </div>
@@ -550,7 +550,7 @@
                 <span>이메일 인증</span>
             </button>
         </div>
-        <div class="notice-Txt tx-gray tx-left mt40 pdl20">
+        <div class="notice-Txt tx-gray tx-left mt40 pl20">
             * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.<br/>
             * 아이디/비밀번호가 생각나지 않으신가요? 아이디/비밀번호 찾기를 이용해 주세요.
         </div>
@@ -605,7 +605,7 @@
                 <span>아이핀 인증</span>
             </button>
         </div>
-        <div class="notice-Txt tx-gray tx-left mt40 pdl20">
+        <div class="notice-Txt tx-gray tx-left mt40 pl20">
             * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.<br/>
             * 아이디/비밀번호가 생각나지 않으신가요? 아이디/비밀번호 찾기를 이용해 주세요.
         </div>

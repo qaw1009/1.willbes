@@ -13,3 +13,9 @@ HTML 퍼블리싱 페이지<br/><br/>
 <a href="{{ site_url('/home/html/memcombine') }}">통합회원가입 page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/memconvert') }}">통합회원 전환 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/list') }}">단강좌,무료강좌 수강신청 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/list2') }}">패키지(추천,선택) 수강신청 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/listpackage') }}">패키지 수강신청 page 이동</a><br/><br/>

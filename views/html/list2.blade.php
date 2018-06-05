@@ -1,7 +1,6 @@
 @extends('html.layouts.master')
 
 @section('content')
-
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu NSK c_both">

@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline">
+                    <div class="col-md-8 item form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
                         </div>

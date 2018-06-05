@@ -13,15 +13,24 @@ $(document).on("ifChanged",".site_category",function(){
     $('#site_category_all').prop('checked', false).iCheck('update');
 });
 
+
+function jsonLength(value1) {
+    var length = 0;
+    for(var i in value1) length ++;
+    return length;
+}
+
 //운영사이트값에 따른 캠퍼스, 구분 셋팅
 function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
     var _data = {};
     var add_checkBox = '';
     sendAjax(_siteCategory_url, _data, function(ret) {
         if (ret.ret_cd) {
-            if (typeof ret.ret_data.category != "undefined") {
+            if (typeof ret.ret_data.category == "undefined") {
+                $('#site_category').html(add_checkBox);
+            } else {
                 $('#site_category_all').prop('checked', false).iCheck('update');
-                if (Object.keys(ret.ret_data.category.length > 0)) {
+                if (Object.keys(ret.ret_data.category).length > 0) {
                     $.each(ret.ret_data.category, function (key, val) {
                         add_checkBox += '<input type="checkbox" id="site_category_' + key + '" name="site_category[]" value="' + key + '" class="site_category flat"/> <label class="inline-block mr-5" for="site_category_' + key + '">' + val + '</label>';
                     });

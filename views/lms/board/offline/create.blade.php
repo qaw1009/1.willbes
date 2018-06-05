@@ -21,11 +21,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        <select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
+                        {{--<select class="form-control" required="required" id="site_code" name="site_code" title="운영사이트">
                             @foreach($getSiteArray as $key => $val)
                                 <option value="{{$key}}" @if($key == $data['SiteCode'] || $key == $site_code)selected="selected"@endif>{{$val}}</option>
                             @endforeach
-                        </select>
+                        </select>--}}
+                        {!! html_site_select('', 'site_code', 'site_code', '', '운영 사이트', 'required', '', $offLineSite_list) !!}
                     </div>
                     <label class="control-label col-md-2 col-md-offset-1" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-2">

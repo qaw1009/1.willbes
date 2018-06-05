@@ -810,6 +810,10 @@ class BoardModel extends WB_Model
         return true;
     }
 
+    /**
+     * 캠퍼스'Y'상태 사이트 코드 조회
+     * @return array
+     */
     public function getOffLineSiteArray()
     {
         $column = 'SiteCode,SiteName';

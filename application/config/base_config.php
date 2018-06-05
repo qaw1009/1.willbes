@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['enable_profiler'] = false;
 
 // 중복로그인 방지 사용 여부
-$config['prevent_duplicate_login'] = true;
+$config['prevent_duplicate_login'] = false;
 
 // 쿼리 로그 사용 여부
 $config['sql_log_queries'] = true;

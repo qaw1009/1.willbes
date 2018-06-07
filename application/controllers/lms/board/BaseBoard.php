@@ -268,8 +268,35 @@ class BaseBoard extends \app\controllers\BaseController
      * @param $prof_idx
      * @return array
      */
-    protected function _getProfessorArray($prof_idx)
+    protected function _findProfessor($prof_idx)
     {
         return $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
+    }
+
+    /**
+     * 과목 기본 정보
+     * @return array
+     */
+    protected function _getSubjectArray()
+    {
+        return $this->subjectModel->getSubjectArray();
+    }
+
+    /**
+     * 과정 기본 정보
+     * @return array
+     */
+    protected function _getCourseArray()
+    {
+        return $this->courseModel->getCourseArray();
+    }
+
+    /**
+     * 교수 기본 정보
+     * @return array
+     */
+    protected function _getProfessorArray()
+    {
+        return $this->professorModel->getProfessorArray();
     }
 }

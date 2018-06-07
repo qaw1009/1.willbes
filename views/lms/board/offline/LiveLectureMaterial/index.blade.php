@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', $offLineSite_list) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
@@ -23,6 +23,27 @@
                             <option value="">구분</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_subject" name="search_subject">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_course" name="search_course">
+                            <option value="">과정</option>
+                            @foreach($arr_course as $row)
+                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_professor" name="search_professor">
+                            <option value="">교수</option>
+                            @foreach($arr_professor as $row)
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
                             @endforeach
                         </select>
 
@@ -81,8 +102,10 @@
                     <th>운영사이트</th>
                     <th>캠퍼스</th>
                     <th>구분</th>
+                    <th>과목</th>
+                    <th>과정</th>
+                    <th>교수명</th>
                     <th>제목</th>
-                    <th>첨부</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>HOT</th>
@@ -114,6 +137,9 @@
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
+            $search_form.find('select[name="search_subject"]').chained("#search_site_code");
+            $search_form.find('select[name="search_course"]').chained("#search_site_code");
+            $search_form.find('select[name="search_professor"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -155,15 +181,14 @@
                             }
                             return str;
                         }},
+
+                    {'data' : 'SubjectName'},
+                    {'data' : 'CourseName'},
+                    {'data' : 'ProfNickName'},
+
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
-                            var tmp_return;
-                            (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
-                            return tmp_return;
-                        }},
-
                     {'data' : 'wAdminName'},
                     {'data' : 'RegDatm'},
 

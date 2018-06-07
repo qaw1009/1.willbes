@@ -205,6 +205,21 @@ if (!function_exists('method_field')) {
     }
 }
 
+if (!function_exists('remove_utf8_bom')) {
+    /**
+     * 텍스트(txt) 파일 내용의 utf8-bom 값이 있을 경우 삭제 후 리턴
+     * @param string $str
+     * @return string
+     */
+    function remove_utf8_bom($str)
+    {
+        if (substr(bin2hex($str), 0, 6) == 'efbbbf') {
+            $str = substr($str, 3);
+        }    
+        return $str;
+    }
+}
+
 if (!function_exists('query_string_to_array')) {
     /**
      * return query string to array

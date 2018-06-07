@@ -94,16 +94,17 @@
                             <div class="col-md-10 form-inline">
                                 <input type="file" id="search_mem_file" name="search_mem_file" class="form-control" title="회원검색파일" value="">
                                 <button type="button" id="btn_member_file_upload" class="btn btn-primary mb-0">업로드하기</button>
+                                <span id="selected_member_file" class="hide"></span>
                             </div>
                             <div class="col-md-10 col-md-offset-1 mt-5">
                                 <p class="form-control-static"># 첨부파일은 한줄에 한 개의 아이디로 구성된 TXT 파일로 생성</p>
                             </div>
                             <div class="col-md-2 col-md-offset-1 mt-5">
-                                <select class="form-control" id="selected_member_file" name="selected_member_file" size="4">
+                                <select class="form-control" id="selected_member_file2" name="selected_member_file2" size="4">
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <p class="form-control-static">&lt;총 30명&gt;</p>
+                                <p class="form-control-static">&lt;총 <span id="selected_member_cnt">0</span>명&gt;</p>
                             </div>
                         </div>
                         <div class="ln_solid"></div>
@@ -297,6 +298,44 @@
                     'url': '{{ site_url('/common/searchMember/index/multiple/parent_value/') }}' + $search_mem_id.val(),
                     'width': 900
                 });
+            });
+
+            // 회원검색 업로드하기 버튼 클릭
+            $('#btn_member_file_upload').on('click', function() {
+                var files = $regi_form.find('input[name="search_mem_file"]')[0].files[0];
+                if (typeof files === 'undefined') {
+                    alert('파일을 선택해 주세요.');
+                    return false;
+                }
+
+                var fdata = new FormData();
+                fdata.append('{{ csrf_token_name() }}', $search_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                fdata.append('search_mem_file', files);
+
+                sendAjax('{{ site_url('/common/searchMember/inFile') }}', fdata, function(ret) {
+                    if (ret.ret_cd) {
+                        var ret_cnt = ret.ret_data.length,
+                            $selected_member_file = $('#selected_member_file'),
+                            $selected_member_file2 = $regi_form.find('select[name="selected_member_file2"]');
+
+                        if (ret_cnt < 1) {
+                            alert('검색된 회원이 없습니다.');
+                            return;
+                        }
+
+                        // 검색결과 초기화
+                        $regi_form.find('input[name="mem_idx[]"]').remove();
+                        $selected_member_file2.children('option').remove();
+
+                        // 검색결과 loop
+                        ret.ret_data.forEach(function(item) {
+                            $selected_member_file.append('<input type="hidden" name="mem_idx[]" value="' + item.MemIdx + '"/>');
+                            $selected_member_file2.append('<option value="' + item.MemIdx + '">' + item.MemName + ' (' + item.MemId + ')</option>');
+                        });
+
+                        $('#selected_member_cnt').text(ret_cnt);
+                    }
+                }, showError, false, 'POST', 'json', true);
             });
 
             // 전체선택/해제

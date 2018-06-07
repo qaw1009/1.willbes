@@ -65,4 +65,31 @@ class SearchMember extends \app\controllers\BaseController
             'data' => $list
         ]);
     }
+
+    /**
+     * 텍스트 파일의 아이디 목록으로 회원 조회
+     */
+    public function inFile()
+    {
+        $rules = [['field' => 'search_mem_file', 'label' => '일괄등록파일', 'rules' => 'callback_validateFileRequired[search_mem_file]']];
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        // 첨부파일 읽기
+        if (($file_content = file_get_contents($_FILES['search_mem_file']['tmp_name'], false)) === false) {
+            return $this->json_error('업로드 파일 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // UTF-8 BOM 삭제
+        $file_content = remove_utf8_bom($file_content);
+
+        // 회원 아이디 배열
+        $arr_mem_id = preg_split('/\n|\r\n?/', trim($file_content));
+
+        // 회원 검색
+        $list = $this->searchMemberModel->listSearchMember('M.MemIdx, M.MemId, M.MemName', ['IN' => ['M.MemId' => $arr_mem_id]]);
+
+        $this->json_result(true, '', null, $list);
+    }
 }

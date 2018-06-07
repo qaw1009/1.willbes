@@ -50,10 +50,10 @@
     <script>
         WebFont.load({
             custom: {
-            families: ['notosanskr']
-                urls: ['http://fonts.googleapis.com/earlyaccess/notosanskr.css']
+            families: ['notosanskr'],
+                urls: ['//fonts.googleapis.com/earlyaccess/notosanskr.css'],
             families: ['Nanum Gothic'],
-                urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
+                urls: ['//fonts.googleapis.com/earlyaccess/nanumgothic.css']
             }
         });
     </script>

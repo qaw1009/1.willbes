@@ -12,7 +12,10 @@ class BoardModel extends WB_Model
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
     private $_table_member = 'lms_member';
-    private $_table_product_subject = 'lms_product_subject';
+    private $_table_product_subject = 'lms_product_subject';    //상품과목관리테이블
+    private $_table_product_course = 'lms_product_course';      //상품과정관리테이블
+    private $_table_professor = 'lms_professor';    //교수관리테이블
+
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
@@ -122,6 +125,14 @@ class BoardModel extends WB_Model
             case "OfflineBoard" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                ";
+                break;
+            case "LiveLectureMaterial" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
+                    LEFT OUTER JOIN {$this->_table_product_course} as PRODUCT_COURSE ON LB.CourseIdx = PRODUCT_COURSE.CourseIdx
+                    LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
         }

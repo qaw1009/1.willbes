@@ -103,7 +103,7 @@ class professorNotice extends BaseBoard
         $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
 
         // 기존 교수 기본정보 조회
-        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        $arr_prof_info = $this->_findProfessor($prof_idx);
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
@@ -254,7 +254,7 @@ class professorNotice extends BaseBoard
         $get_category_array = [];
 
         // 기존 교수 기본정보 조회
-        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        $arr_prof_info = $this->_findProfessor($prof_idx);
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
@@ -361,7 +361,7 @@ class professorNotice extends BaseBoard
         }
 
         // 기존 교수 기본정보 조회
-        $arr_prof_info = $this->_getProfessorArray($prof_idx);
+        $arr_prof_info = $this->_findProfessor($prof_idx);
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }

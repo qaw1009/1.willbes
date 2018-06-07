@@ -268,7 +268,7 @@ class BaseBoard extends \app\controllers\BaseController
      * @param $prof_idx
      * @return array
      */
-    protected function _getProfessorArray($prof_idx)
+    protected function _findProfessor($prof_idx)
     {
         return $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
     }

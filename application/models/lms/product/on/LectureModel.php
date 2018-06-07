@@ -32,7 +32,7 @@ class LectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
 
-            $column = '
+            $column = ' STRAIGHT_JOIN
                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply

@@ -77,7 +77,7 @@
                                 @if(empty($row['wUnitAttachFile']) === false)
                                     <br>
                                     <p class="form-control-static ml-10 mr-10">
-                                       [ <a href="{{site_url('/product/on/lecture/download/').urlencode($data_lecture['wAttachPath'].$row['wUnitAttachFile'] ) }}" target="_blank">{{ $row['wUnitAttachFile'] }}</a> ]
+                                       [ <a href="{{site_url('/product/on/lecture/download/').urlencode($data_lecture['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFile'] }}</a> ]
                                     </p>
                                 @endif
                             </td>

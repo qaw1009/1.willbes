@@ -255,6 +255,11 @@ class UnitModel extends WB_Model
         return $this->_conn->query('select ' .$column .$from .$where)->row_array();
     }
 
+    /**
+     * 회차 첨부파일명 생성
+     * @param $attach_cnt
+     * @return array
+     */
     public function setAttachFileName($attach_cnt)
     {
         $file_name = [];

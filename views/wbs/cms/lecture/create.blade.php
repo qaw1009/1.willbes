@@ -161,7 +161,7 @@
                             @if(empty($data['wAttachFile']) === false)
                             <br>
                             <p class="form-control-static ml-10 mr-10">
-                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']) }}" target="_blank">
+                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}" target="_blank">
                                     {{ $data['wAttachFileReal'] }}</a> ]
                             </p>
                             <div class="checkbox">
@@ -255,7 +255,7 @@
                                     @if(empty($row['wUnitAttachFile']) === false)
                                         <br>
                                         <p class="form-control-static ml-10 mr-10">
-                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile'] ) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                         </p>
                                     @endif
                                 </td>

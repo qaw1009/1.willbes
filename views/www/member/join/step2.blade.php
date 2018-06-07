@@ -1,51 +1,224 @@
+@extends('html.layouts.master')
 
-<html>
-<head>
-    <title>NICE평가정보 가상주민번호 서비스</title>
+@section('content')
+    <!-- Container -->
+    <div id="Container" class="memContainer widthAuto c_both">
 
-    <script language='javascript'>
-        window.name ="Parent_window";
-
-        function fnPopup(){
-            window.open('', 'popupIPIN2', 'width=450, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
-            document.form_ipin.target = "popupIPIN2";
-            document.form_ipin.action = "https://cert.vno.co.kr/ipin.cb";
-            document.form_ipin.submit();
-        }
-    </script>
-</head>
-
-<body>
-<?= $data['rtnMsg'] ?><br><br>
-업체정보 암호화 데이타 : [<?= $data['encData'] ?>]<br><br>
-
-<!-- 가상주민번호 서비스 팝업을 호출하기 위해서는 다음과 같은 form이 필요합니다. -->
-<form name="form_ipin" method="post">
-    <input type="hidden" name="m" value="pubmain">						<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-    <input type="hidden" name="enc_data" value="<?= $data['encData'] ?>">		<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
-
-    <!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
-    	 해당 파라미터는 추가하실 수 없습니다. -->
-    <input type="hidden" name="param_r1" value="">
-    <input type="hidden" name="param_r2" value="">
-    <input type="hidden" name="param_r3" value="">
-
-    <a href="javascript:fnPopup();"><img src="http://image.creditbank.co.kr/static/img/vno/new_img/bt_17.gif" width=218 height=40 border=0></a>
-</form>
-
-
-
-<!-- 가상주민번호 서비스 팝업 페이지에서 사용자가 인증을 받으면 암호화된 사용자 정보는 해당 팝업창으로 받게됩니다.
-	 따라서 부모 페이지로 이동하기 위해서는 다음과 같은 form이 필요합니다. -->
-<form name="vnoform" method="post">
-    <input type="hidden" name="enc_data">								<!-- 인증받은 사용자 정보 암호화 데이타입니다. -->
-
-    <!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
-         해당 파라미터는 추가하실 수 없습니다. -->
-    <input type="hidden" name="param_r1" value="">
-    <input type="hidden" name="param_r2" value="">
-    <input type="hidden" name="param_r3" value="">
-</form>
-
-</body>
-</html>
+        <div class="mem-Tit">
+            <img src="/public/img/front/login/logo.gif">
+            <span class="tx-blue">통합회원가입</span>
+        </div>
+        <!-- 통합회원가입 : 약관동의/정보입력 -->
+        <div class="Member mem-Combine widthAuto690">
+            <ul class="tabs-Step mb60">
+                <li>본인인증</li>
+                <li class="on">약관동의/정보입력</li>
+                <li>회원가입완료</li>
+            </ul>
+            <table cellspacing="0" cellpadding="0" class="combineTable mb60">
+                <colgroup>
+                    <col style="width: 100px;"/>
+                    <col style="width: 590px;"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tx-blue" colspan="2">* 필수정보</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="combine-Tit">이름</td>
+                    <td>
+                        <div class="inputBox p_re">
+                            <label for="USER_NAME" class="labelName" style="display: block;">홍길동</label>
+                            <input type="text" id="USER_NAME" name="USER_NAME" class="iptName" maxlength="30">
+                            <ul class="chkBox-Sex">
+                                <li class="radio-Btn sexchk p_re checked">
+                                    <label for="USER_SEX" class="labelName" style="display: block;">남성</label>
+                                    <input type="radio" id="" name="sex" class="" value="male" title="" checked="checked">
+                                </li>
+                                <li class="radio-Btn sexchk p_re">
+                                    <label for="USER_SEX" class="labelName" style="display: block;">여성</label>
+                                    <input type="radio" id="" name="sex" class="" value="female" title="">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="combine-Tit">생년월일</td>
+                    <td>
+                        <div class="inputBox p_re">
+                            <label for="USER_BIRTH" class="labelBirth" style="display: block;">생년월일 ex.19800101</label>
+                            <input type="text" id="USER_BIRTH" name="USER_BIRTH" class="iptBirth" maxlength="30">
+                        </div>
+                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="combine-Tit">휴대폰번호</td>
+                    <td>
+                        <div class="inputBox p_re">
+                            <label for="USER_PHONE" class="labelPhone" style="display: block;">"-" 제외하고 숫자만 입력</label>
+                            <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone" maxlength="30">
+                        </div>
+                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="combine-Tit">아이디</td>
+                    <td>
+                        <div class="inputBox p_re">
+                            <label for="USER_ID" class="labelId" style="display: block;">4~20자리 영문 대소문자, 숫자만 입력 가능</label>
+                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                        </div>
+                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="combine-Tit">비밀번호</td>
+                    <td>
+                        <div class="inputBox p_re">
+                            <label for="USER_PWD" class="labelPwdNew" style="display: block;">8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합</label>
+                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" maxlength="30">
+                            <button type="submit" onclick="" class="mem-Btn combine-Btn ml5 bg-dark-blue bd-dark-blue">
+                                <span>비밀번호 확인</span>
+                            </button>
+                        </div>
+                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table cellspacing="0" cellpadding="0" class="combineTable">
+                <colgroup>
+                    <col style="width: 100px;"/>
+                    <col style="width: 590px;"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tx-blue" colspan="2">* 선택정보</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="combine-Tit">이메일</td>
+                    <td>
+                        <div class="inputBox">
+                            <dl>
+                                <dt class="mbox1 p_re">
+                                    <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
+                                    <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30">
+                                </dt>
+                                <dt class="mbox-dot">@</dt>
+                                <dt class="mbox2">
+                                    <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
+                                </dt>
+                                <dt class="mbox-sele">
+                                    <select id="email" name="email" title="직접입력" class="seleEmail">
+                                        <option selected="selected">직접입력</option>
+                                        <option value="naver.com">naver.com</option>
+                                        <option value="daum.net">daum.net</option>
+                                    </select>
+                                </dt>
+                            </dl>
+                        </div>
+                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="combine-Tit">우편번호</td>
+                    <td>
+                        <div class="inputBox p_re">
+                            <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-dark-blue bd-dark-blue">
+                                <span>우편번호 찾기</span>
+                            </button>
+                            <div class="addbox1 p_re">
+                                <label for="USER_ADD1" class="labelAdd1" style="display: block;">기본주소</label>
+                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1" maxlength="30">
+                            </div>
+                            <div class="addbox2 p_re">
+                                <label for="USER_ADD2" class="labelAdd2" style="display: block;">상세주소</label>
+                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" maxlength="30">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="agree-Chk mt40 toggle">
+                <div class="agree-All-Tit p_re">
+                    전체동의
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
+                </div>
+                <ul>
+                    <li>
+                        <div class="agree-Tit">
+                            <a href="#none">
+                                <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx11">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
+                                <div class="chkBox-Agree checked">
+                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="agree-Tit">
+                            <a href="#none">
+                                <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의
+                                <div class="chkBox-Agree checked">
+                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="agree-Txt"></div>
+                    </li>
+                    <li>
+                        <div class="agree-Tit">
+                            <a href="#none">
+                                <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의
+                                <div class="chkBox-Agree">
+                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="agree-Txt"></div>
+                    </li>
+                    <li>
+                        <div class="agree-Tit">
+                            <a href="#none">
+                                (선택) 개인정보 위탁 동의
+                                <div class="chkBox-Agree">
+                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="agree-Txt">
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                            약관이 노출 됩니다.<br/>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="combine-Btn mt40 pt30 bdt-light-gray btnAuto h66">
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>동의하고 회원가입</span>
+                </button>
+            </div>
+        </div>
+        <!-- End 통합회원가입 : 약관동의/정보입력 -->
+        <br/><br/><br/>
+    </div>
+    <!-- End Container -->
+@stop

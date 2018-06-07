@@ -17,14 +17,63 @@ class Member extends \app\controllers\FrontController
         parent::__construct();
     }
 
-    public function join()
+    /*
+     * 로그인페이지
+     */
+    public function Login()
     {
-        echo app_url('/', 'www');
-        $ipinData = $this->ipinEnc('http:'.app_url('/', 'www').'/Member/_ipinRtn');
-        $this->load->view('member/join/step1', [ 'ipinData' => $ipinData]);
+        $this->load->view('member/login/form', [ ]);
     }
 
-    public function _ipinRtn()
+    /*
+     * 회원가입 페이지
+     */
+    public function join()
+    {
+        $step = $this->_req('step');
+     //   echo app_url('/', 'www');
+        $ipinData = $this->ipinEnc('http:'.app_url('/', 'www').'/Member/_ipinRtn');
+
+        if($step == 1){
+            $this->load->view('member/join/step1', [ 'ipinData' => $ipinData]);
+        } else if($step == 2){
+            $this->load->view('member/join/step2', [ 'ipinData' => $ipinData]);
+        }
+    }
+
+    /*
+     * 회원가입처리페이지
+     */
+    public function joinProcess()
+    {
+
+
+        $this->load->view('member/join/step3', [ ]);
+    }
+
+    /*
+     * 아이디찾기
+     */
+    public function findID()
+    {
+
+    }
+
+    /*
+     * 비밀번호 찾기
+     */
+    public function findPWD()
+    {
+
+    }
+
+    
+
+    
+    /*
+     * 아이핀 인증 결과 리턴 페이지
+     */
+    public function ipinRtn()
     {
         $viewURL = '';
         $sReservedParam1 = $this->_req('param_r1'); // 아이핀을 사용 구분

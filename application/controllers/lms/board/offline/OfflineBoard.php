@@ -249,6 +249,7 @@ class OfflineBoard extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
+            ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required'],
             ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],

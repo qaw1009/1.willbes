@@ -4,7 +4,7 @@
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/offline/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
+        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/offline/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
@@ -23,9 +23,14 @@
                     <div class="col-md-2 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', $offLineSite_list) !!}
                     </div>
-                    <label class="control-label col-md-2 col-md-offset-2" for="campus_ccd">캠퍼스<span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required"></select>
+                    <label class="control-label col-md-2 col-md-offset-2" for="campus_ccd">캠퍼스</label>
+                    <div class="col-md-2">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -38,10 +43,43 @@
                         <div class="checkbox" id="site_category">
                             @foreach($getCategoryArray as $key => $val)
                                 @php $cate_idx = $loop->index-1; @endphp
-                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat" @if($method == 'PUT' && in_array($key,$data['arr_cate_code']) === true) checked="checked" @endif/>
+                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat"
+                                       @if($method == 'PUT' && in_array($key,$data['arr_cate_code']) === true) checked="checked" @endif/>
                                 <label class="inline-block mr-5" for="site_category_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="subject_idx">과목명<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" id="subject_idx" name="subject_idx" title="과목명" required="required">
+                            <option value="">과목명</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['SubjectIdx'] == $data['SubjectIdx'])) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <label class="control-label col-md-1" for="course_idx">과정<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" id="course_idx" name="course_idx" title="과정" required="required">
+                            <option value="">과정</option>
+                            @foreach($arr_course as $row)
+                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CourseIdx'] == $data['CourseIdx'])) selected="selected" @endif>{{ $row['CourseName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <label class="control-label col-md-1" for="prof_idx">교수명<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" id="prof_idx" name="prof_idx" title="교수명" required="required">
+                            <option value="">교수명</option>
+                            @foreach($arr_professor as $row)
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['ProfIdx'] == $data['ProfIdx'])) selected="selected" @endif>{{ $row['wProfName'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -135,6 +173,11 @@
             $editor_profile.config.editorWidth = '100%';
             $editor_profile.inputForm = 'board_content';
             $editor_profile.run();
+
+            // site-code에 매핑되는 select box 자동 변경
+            $regi_form.find('select[name="subject_idx"]').chained("#site_code");
+            $regi_form.find('select[name="course_idx"]').chained("#site_code");
+            $regi_form.find('select[name="prof_idx"]').chained("#site_code");
 
             /**페이지 로딩시 실행**/
             //캠퍼스목록조회

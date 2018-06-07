@@ -26,7 +26,7 @@ Class Lecture extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/index',[
+        $this->load->view('product/on/lecture/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
@@ -165,7 +165,7 @@ Class Lecture extends \app\controllers\BaseController
             $data_sublecture = $this->lectureModel->findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
-        $this->load->view('product/on/create',[
+        $this->load->view('product/on/lecture/create',[
             'method'=>$method
             ,'lectype_ccd'=>$codes['607']       //강좌유형
             ,'lecprovision_ccd'=>$codes['608']          //강좌제공구분

@@ -9,7 +9,7 @@
             <div class="x_content">
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">강의기본정보</label>
+                    <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">

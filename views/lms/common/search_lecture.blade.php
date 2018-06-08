@@ -14,6 +14,7 @@
         <input type="hidden" name="site_code" value="{{ $site_code }}"/>
         <input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd }}"/>
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
+        <input type="hidden" name="locationid" value="{{ $locationid }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
 
         @endsection
@@ -73,6 +74,9 @@
                 var $search_form = $('#_search_form');
                 var $list_table = $('#_list_ajax_table');
                 var $parent_regi_form = $('#regi_form');
+
+                var $parent_location = "{{str_replace("Add",'List',$locationid)}}";
+
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
@@ -159,7 +163,7 @@
                         if(addCnt == 0) {alert("적용할 단강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
                         if (!confirm('해당 단강좌를 적용하시겠습니까?')) {return;}
 
-                        var nowRowCnt = ($parent_regi_form.find("#lecList tr")).length - 1;
+                        var nowRowCnt = ($parent_regi_form.find("#"+$parent_location+" tr")).length - 1;
                         var seq = nowRowCnt+1;
 
                         for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
@@ -169,7 +173,7 @@
                                 temp_data = $("#checkIdx"+i).val();		//해당 id값 추출
                                 temp_data_arr = temp_data.split("@$")		//문자열 분리
 
-                                $(document).find("#lecList").append(
+                                $(document).find("#"+$parent_location).append(
                                     "<tr id='lecTrId"+seq+"'>"
                                     +"		<input type='hidden'  name='AutoProdCode[]' id='AutoProdCode"+seq+"' value='"+temp_data_arr[0]+"'>"
                                     +"		<td>"+temp_data_arr[1]+"</td>"

@@ -11,6 +11,7 @@ Class Lecture extends \app\controllers\BaseController
 
     public function __construct()
     {
+
         parent::__construct();
     }
 
@@ -39,7 +40,10 @@ Class Lecture extends \app\controllers\BaseController
         ]);
     }
 
-
+    /**
+     * 강좌목록 추출
+     * @return CI_Output
+     */
     public function listAjax()
     {
         $arr_condition = [
@@ -122,6 +126,10 @@ Class Lecture extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 강좌 등록 / 수정
+     * @param array $params
+     */
     public function create($params=[])
     {
         $method = 'POST';
@@ -151,18 +159,18 @@ Class Lecture extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->lectureModel->findProductForModify($prodcode);
-            $data_sample = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_lecture_sample');
-            $data_sale = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_sale');
-            $data_division = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_division');
-            $data_memo = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_memo');
-            $data_content = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_content');
-            $data_sms = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_sms');
-            $data_book = $this->lectureModel->findProductEtcModify($prodcode,'lms_Product_R_SaleBook');
-            $data_autolec = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_r_autolecture');
-            $data_autocoupon = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_autofreebie = $this->lectureModel->findProductEtcModify($prodcode,'lms_product_r_autofreebie');
-            $data_sublecture = $this->lectureModel->findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data = $this->lectureModel->_findProductForModify($prodcode);
+            $data_sample = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_lecture_sample');
+            $data_sale = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_sale');
+            $data_division = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_division');
+            $data_memo = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_content');
+            $data_sms = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data_book = $this->lectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SaleBook');
+            $data_autolec = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autolecture');
+            $data_autocoupon = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+            $data_autofreebie = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autofreebie');
+            $data_sublecture = $this->lectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
         $this->load->view('product/on/lecture/create',[
@@ -282,7 +290,7 @@ Class Lecture extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->lectureModel->prodCopy($prodcode);
+        $result = $this->lectureModel->_prodCopy($prodcode);
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
@@ -301,7 +309,7 @@ Class Lecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lectureModel->modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+        $result = $this->lectureModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

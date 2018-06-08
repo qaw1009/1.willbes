@@ -1,10 +1,10 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 라이브송출관리 강의 자료를 관리하는 메뉴입니다.</h5>
+    <h5>- 회원이 작성한 수강후기를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/offline/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
+        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
@@ -21,16 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', $offLineSite_list) !!}
-                    </div>
-                    <label class="control-label col-md-2 col-md-offset-2" for="campus_ccd">캠퍼스</label>
-                    <div class="col-md-2">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd">
-                            <option value="">캠퍼스</option>
-                            @foreach($arr_campus as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
-                            @endforeach
-                        </select>
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '') !!}
                     </div>
                 </div>
 
@@ -62,17 +53,7 @@
                         </select>
                     </div>
 
-                    <label class="control-label col-md-1" for="course_idx">과정<span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control" id="course_idx" name="course_idx" title="과정" required="required">
-                            <option value="">과정</option>
-                            @foreach($arr_course as $row)
-                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CourseIdx'] == $data['CourseIdx'])) selected="selected" @endif>{{ $row['CourseName'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <label class="control-label col-md-1" for="prof_idx">교수명<span class="required">*</span></label>
+                    <label class="control-label col-md-2 col-lg-offset-2" for="prof_idx">교수명<span class="required">*</span></label>
                     <div class="col-md-2 item">
                         <select class="form-control" id="prof_idx" name="prof_idx" title="교수명" required="required">
                             <option value="">교수명</option>
@@ -84,14 +65,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_best">HOT</label>
-                    <div class="col-md-4 form-inline">
+                    <label class="control-label col-md-2" for="subject_idx">강좌명<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
+                        <span id="selected_lec_idx" class="pl-10"></span>
+                    </div>
+                    <label class="control-label col-md-2 col-lg-offset-2" for="lec_score">평점<span class="required">*</span></label>
+                    <div class="col-md-2 item">
+                        <input type="text" id="lec_score" name="lec_score" required="required" class="form-control" maxlength="2" title="평점" value="{{$data['LecScore']}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="reg_mem_name">회원명<span class="required">*</span></label>
+                    <div class="col-md-2">
+                        <input type="text" id="reg_mem_name" name="reg_mem_name" required="required" class="form-control" maxlength="46" title="회원명" value="{{$data['RegMemName']}}">
+                    </div>
+                    <label class="control-label col-md-1" for="is_best">BEST</label>
+                    <div class="col-md-1 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat" @if($data['IsBest']=='Y')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat" @if($data['IsBest']=='Y')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">BEST</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-3 item form-inline">
+                    <div class="col-md-2 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="">미사용</label>
@@ -164,8 +161,6 @@
 
         $(document).ready(function() {
             var set_site_code = $("#site_code option:selected").val();
-            var _campus_url = '{{ site_url("/board/offline/{$boardName}/getAjaxCampusInfo/") }}' + set_site_code + getQueryString();
-            var campus_ccd = '{{$data['CampusCcd']}}';
 
             //editor load
             var $editor_profile = new cheditor();
@@ -180,20 +175,19 @@
             $regi_form.find('select[name="prof_idx"]').chained("#site_code");
 
             /**페이지 로딩시 실행**/
-            //캠퍼스목록조회
-            getAjaxcampusInfo(_campus_url, campus_ccd);
             $('#total_read_count').val(SumReadCount());
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}") }}/' + getQueryString());
+                location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
             });
 
             //운영사이트값에 따른 구분 값 셋팅
             $('#site_code').change(function() {
-                var _siteCategory_url = '{{ site_url("/board/offline/{$boardName}/getAjaxSiteCategoryInfo/") }}' + this.value + getQueryString();
-                var _campus_url = '{{ site_url("/board/offline/{$boardName}/getAjaxCampusInfo/") }}' + this.value + getQueryString();
-                getSiteCategory(_siteCategory_url, _campus_url, campus_ccd);
+                var _siteCategory_url = '{{ site_url("/board/{$boardName}/getAjaxSiteCategoryInfo/") }}' + this.value + getQueryString();
+                var _campus_url = '';
+                var _campus_ccd = '';
+                getSiteCategory(_siteCategory_url, _campus_url, _campus_ccd);
             });
             $('#site_code').on('change', function() {
                 $('input[type="checkbox"].flat').iCheck({
@@ -209,7 +203,7 @@
 
             // 파일삭제
             $('.file-delete').click(function() {
-                var _url = '{{ site_url("/board/offline/{$boardName}/destroyFile/") }}' + getQueryString();
+                var _url = '{{ site_url("/board/{$boardName}/destroyFile/") }}' + getQueryString();
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE',
@@ -229,12 +223,12 @@
             // ajax submit
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
-                var _url = '{{ site_url("/board/offline/{$boardName}/store") }}' + getQueryString();
+                var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/offline/{$boardName}") }}/' + getQueryString());
+                        location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

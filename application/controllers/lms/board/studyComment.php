@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class LiveLectureMaterial extends BaseBoard
+class studyComment extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
+    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board', 'product/base/subject', 'product/base/professor');
     protected $helpers = array();
 
-    private $board_name = 'LiveLectureMaterial';
+    private $board_name = 'studyComment';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [
@@ -27,7 +27,7 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 공지게시판 인덱스 (리스트페이지)
+     * 수강후기관리 인덱스 (리스트페이지)
      */
     public function index()
     {
@@ -35,14 +35,8 @@ class LiveLectureMaterial extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
 
-        //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
-
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
-
-        //캠퍼스 조회
-        $arr_campus = $this->_getCampusArray('');
 
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
@@ -50,21 +44,15 @@ class LiveLectureMaterial extends BaseBoard
         //과목조회
         $arr_subject = $this->_getSubjectArray();
 
-        //과정조회
-        $arr_course = $this->_getCourseArray();
-
         //교수조회
         $arr_professor = $this->_getProfessorArray();
 
-        $this->load->view("board/offline/{$this->board_name}/index", [
+        $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
-            'offLineSite_list' => $offLineSite_list,
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
-            'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'arr_subject' => $arr_subject,
-            'arr_course' => $arr_course,
             'arr_professor' => $arr_professor,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
@@ -72,7 +60,7 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 공지사항 목록 조회
+     * 수강후기 목록 조회
      * @return CI_Output
      */
     public function listAjax()
@@ -81,21 +69,15 @@ class LiveLectureMaterial extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
-        $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
                 'LB.SiteCode' => $this->site_code,
-                'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
-
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
-                'LB.CourseIdx' => $this->_reqP('search_course'),
                 'LB.ProfIdx' => $this->_reqP('search_professor'),
-
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG' => [
@@ -105,6 +87,12 @@ class LiveLectureMaterial extends BaseBoard
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_chk_create_by_admin') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'LB.RegType' => '1'
+            ]);
+        }
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -120,18 +108,14 @@ class LiveLectureMaterial extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode, lms_product.ProdName,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
 
-        $best_count = 0;
-        $best_list = [];
-        if ($is_best_type == 0) {
-            $best_data = $this->_bestBoardData($column);
-            $best_count = $best_data['count'];
-            $best_list = $best_data['data'];
-        }
+        $best_data = $this->_bestBoardData($column);
+        $best_count = $best_data['count'];
+        $best_list = $best_data['data'];
 
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
@@ -150,25 +134,6 @@ class LiveLectureMaterial extends BaseBoard
             'recordsFiltered' => $count,
             'data' => $list,
         ]);
-    }
-
-    /**
-     * 게시글 복사
-     * @param array $params
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->_boardCopy($this->_reqP('board_idx'));
-        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -205,31 +170,24 @@ class LiveLectureMaterial extends BaseBoard
         $site_code = '';
         $get_category_array = [];
 
-        //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
-
         //과목조회
         $arr_subject = $this->_getSubjectArray();
-
-        //과정조회
-        $arr_course = $this->_getCourseArray();
 
         //교수조회
         $arr_professor = $this->_getProfessorArray();
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
             $arr_condition = ([
                 'EQ'=>[
                     'LB.BoardIdx' => $board_idx,
-                    'LB.IsStatus' => 'Y',
-                    'LB.RegType' => $this->_reg_type['admin']
+                    'LB.IsStatus' => 'Y'
                 ]
             ]);
             $arr_condition_file = [
@@ -250,13 +208,11 @@ class LiveLectureMaterial extends BaseBoard
             $get_category_array = $this->_getCategoryArray($site_code);
         }
 
-        $this->load->view("board/offline/{$this->board_name}/create", [
+        $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
-            'offLineSite_list' => $offLineSite_list,
             'site_code' => $site_code,
             'arr_subject' => $arr_subject,
-            'arr_course' => $arr_course,
             'arr_professor' => $arr_professor,
             'getCategoryArray' => $get_category_array,
             'method' => $method,
@@ -280,13 +236,16 @@ class LiveLectureMaterial extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required'],
             ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
-            ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required'],
-            /*['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],*/
-            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],
+
+            /*['field' => 'prod_code', 'label' => '강좌명', 'rules' => 'trim|required'],*/
+            /*['field' => 'lec_score', 'label' => '평점', 'rules' => 'trim|required'],*/
+
+            ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
 
@@ -308,7 +267,7 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 공지게시판 Read 페이지
+     * 수강후기관리 Read 페이지
      * @param array $params
      */
     public function read($params = [])
@@ -322,9 +281,9 @@ class LiveLectureMaterial extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -351,9 +310,11 @@ class LiveLectureMaterial extends BaseBoard
                 'IsBest' => $data['IsBest']
             ]
         ]);
+
         //이전글
         $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
         $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
+
         //다음글
         $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
         $board_next = $this->boardModel->findBoardNext($arr_condition_next);
@@ -373,7 +334,7 @@ class LiveLectureMaterial extends BaseBoard
             $data['arr_cate_code'][$code] = $get_category_array[$code];
         }
 
-        $this->load->view("board/offline/{$this->board_name}/read",[
+        $this->load->view("board/{$this->board_name}/read",[
             'boardName' => $this->board_name,
             'data' => $data,
             'getCategoryArray' => $get_category_array,
@@ -381,6 +342,42 @@ class LiveLectureMaterial extends BaseBoard
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'board_previous' => $board_previous,
             'board_next' => $board_next,
+        ]);
+    }
+
+    /**
+     * 수강후기관리 강좌데이터 기준 Read 페이지
+     */
+    public function readLecture($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prod_code = $params[0];
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            lms_site.SiteName, lms_product.ProdName, lms_sys_category.CateName, lms_product_subject.SubjectName, vw_product_r_professor_concat.wProfName_String
+            ';
+        $arr_condition = ([
+            'EQ'=>[
+                'lms_product.ProdCode' => $prod_code,
+                'lms_product.IsStatus' => 'Y'
+            ]
+        ]);
+        $data = $this->boardModel->findProductByBoard($arr_condition, $column);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $this->load->view("board/{$this->board_name}/readLecture",[
+            'boardName' => $this->board_name,
+            'data' => $data,
+            'prod_code' => $prod_code
         ]);
     }
 
@@ -432,16 +429,6 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 캠퍼스 정보 리턴
-     * @param array $params
-     */
-    public function getAjaxCampusInfo($params = [])
-    {
-        $result = $this->_getCampusInfo($params);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
      * 게시판 BEST 정보 조회
      * @param $column
      * @return array
@@ -478,10 +465,11 @@ class LiveLectureMaterial extends BaseBoard
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
-                'CampusCcd' => element('campus_ccd', $input),
                 'SubjectIdx' => element('subject_idx', $input),
-                'CourseIdx' => element('course_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
+                'ProdCode' => element('prod_code', $input),
+                'LecScore' => element('lec_score', $input),
+                'RegMemName' => element('reg_mem_name', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == 'Y') ? 'Y' : 'N',

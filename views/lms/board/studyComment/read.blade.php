@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 라이브송출관리 강의 자료를 관리하는 메뉴입니다.</h5>
+    <h5>- 회원이 작성한 수강후기를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
@@ -33,24 +33,24 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">캠퍼스</label>
-                <div class="form-control-static col-md-5">
-                    {{$data['CampusName']}}
-                </div>
-            </div>
-
-            <div class="form-group">
                 <label class="control-label col-md-2" for="">과목명</label>
                 <div class="form-control-static col-md-2">
                     {{$data['SubjectName']}}
                 </div>
-                <label class="control-label col-md-2" for="">과정</label>
-                <div class="form-control-static col-md-2">
-                    {{$data['CourseName']}}
-                </div>
                 <label class="control-label col-md-2" for="">교수명</label>
                 <div class="form-control-static col-md-2">
                     {{$data['ProfNickName']}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="">강좌명</label>
+                <div class="form-control-static col-md-2">
+                    {{$data['ProdCode']}}
+                </div>
+                <label class="control-label col-md-2" for="">평점</label>
+                <div class="form-control-static col-md-2">
+                    {{$data['LecScore']}}
                 </div>
             </div>
 
@@ -85,7 +85,14 @@
                 <label class="control-label col-md-2">등록자
                 </label>
                 <div class="col-md-2">
-                    <p class="form-control-static">{{ $data['wAdminName'] }}</p>
+                    <p class="form-control-static">
+                        @if($data['RegType'] == 1)
+                            {{ $data['RegMemName'] }}
+                        @else
+                            {{ $data['RegMemName'] }} ({{$data['RegMemId']}})
+                        @endif
+
+                    </p>
                 </div>
                 <label class="control-label col-md-2">등록일
                 </label>
@@ -148,25 +155,25 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}") }}' + getQueryString());
+                location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString());
+                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString());
             });
 
             $('#btn_previous').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
             });
 
             $('#btn_next').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
             });
 
             //데이터 삭제
             $('#btn_delete').click(function() {
-                var _url = '{{ site_url("/board/offline/{$boardName}/delete") }}/' + {{$board_idx}} + getQueryString();
+                var _url = '{{ site_url("/board/{$boardName}/delete") }}/' + {{$board_idx}} + getQueryString();
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE'
@@ -178,7 +185,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/offline/{$boardName}") }}' + getQueryString());
+                        location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
                     }
                 }, showError, false, 'POST');
             });

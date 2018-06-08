@@ -40,7 +40,7 @@ class NiceAuth
         $reqseq = get_cprequest_no($this->cpSiteCode);
 
         // 세션에 번호 저장 해야하나?
-        $_SESSION["cpReqseq"] = $reqseq;
+        //$_SESSION["cpReqseq"] = $reqseq;
 
         // 입력될 plain 데이타를 만든다.
         $plaindata = "7:REQ_SEQ" . strlen($reqseq) . ":" . $reqseq .
@@ -209,7 +209,7 @@ class NiceAuth
 
         if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam2, $match)) {
             $sRtnCode = -1;
-            $sRtnMsg = \'문자열 점검 : '.$match[0];
+            $sRtnMsg = '문자열 점검 : '.$match[0];
             $sEncData = '';
         }
 

@@ -733,7 +733,7 @@
                             <tbody>
                             @foreach($data_book as $row)
                                 <tr id='bookTrId{{$loop->index}}'>
-                                		<input type='hidden'  name='BookProdCode[]' id='BookProdCode{{$loop->index}}' value='{{$data_book['BookProdCode']}}'>
+                                		<input type='hidden'  name='BookProdCode[]' id='BookProdCode{{$loop->index}}' value='{{$row['BookProdCode']}}'>
                                 		<td>
                                               <select name='BookProvisionCcd[]' id='BookProdCode{{$loop->index}}' class="form-control">
                                         @foreach($bookprovision_ccd as $key=>$val)
@@ -1223,10 +1223,11 @@
             });
 
             //단강좌검색
-            $('#lecAdd').on('click', function() {
+            $('#lecAdd').on('click', function(e) {
+                var id = e.target.getAttribute('id');
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
-                $('#lecAdd').setLayer({
-                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&ProdCode='+$('#ProdCode').val()
+                $('#'+id).setLayer({
+                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()
                     ,'width' : 1200
                 })
             });
@@ -1448,7 +1449,7 @@
                 @foreach($siteList as $key=>$val)
                 {{$key}}: '{{$val}}'@if($loop->last == false),@endif
                 @endforeach
-            };
+            }
             //alert(obj[site_code]);
             $('#SendTel').val(obj[site_code].replace('-',''));
         }

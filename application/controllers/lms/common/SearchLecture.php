@@ -13,10 +13,12 @@ class SearchLecture extends \app\controllers\BaseController
 
     public function index()
     {
+
         $this->load->view('common/search_lecture',[
             'site_code' => $this->_req('site_code')
             ,'LearnPatternCcd' => $this->_req('LearnPatternCcd')
             ,'ProdCode' => $this->_req('ProdCode')
+            ,'locationid' => $this->_req('locationid')
             ,'wLecIdx' =>  $this->_req('wLecIdx')
         ]);
     }

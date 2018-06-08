@@ -1,24 +1,17 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 라이브송출관리 강의 자료를 관리하는 메뉴입니다.</h5>
+    <h5>- 회원이 작성한 수강후기를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], $offLineSite_list) !!}
+        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true) !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', $offLineSite_list) !!}
-                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
-                            <option value="">캠퍼스</option>
-                            @foreach($arr_campus as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
-                            @endforeach
-                        </select>
-
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_category" name="search_category">
                             <option value="">구분</option>
                             @foreach($arr_category as $row)
@@ -30,13 +23,6 @@
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
-                            @endforeach
-                        </select>
-
-                        <select class="form-control" id="search_course" name="search_course">
-                            <option value="">과정</option>
-                            @foreach($arr_course as $row)
-                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
                             @endforeach
                         </select>
 
@@ -84,7 +70,7 @@
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
-                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
+                        <input type="checkbox" name="search_chk_create_by_admin" value="1" class="flat create-by-admin" id="create_by_admin"/> <label for="create_by_admin">관리자 등록글 보기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                     <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
@@ -97,15 +83,14 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>복사</th>
                     <th>NO</th>
                     <th>운영사이트</th>
-                    <th>캠퍼스</th>
                     <th>구분</th>
                     <th>과목</th>
-                    <th>과정</th>
                     <th>교수명</th>
                     <th>제목</th>
+                    <th>강좌명</th>
+                    <th>평점</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>HOT</th>
@@ -135,34 +120,26 @@
             });
 
             // site-code에 매핑되는 select box 자동 변경
-            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
             $search_form.find('select[name="search_subject"]').chained("#search_site_code");
-            $search_form.find('select[name="search_course"]').chained("#search_site_code");
             $search_form.find('select[name="search_professor"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-copy mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
-
-                    { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
-
                     { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/board/offline/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                            location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url("/board/offline/{$boardName}/listAjax?") }}' + '{!! $boardDefaultQueryString !!}',
+                    'url' : '{{ site_url("/board/{$boardName}/listAjax?") }}' + '{!! $boardDefaultQueryString !!}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat" name="copy" value="' +row.BoardIdx+ '">';
-                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             if (row.IsBest == 'Y') {
@@ -172,7 +149,6 @@
                             }
                         }},
                     {'data' : 'SiteName'},
-                    {'data' : 'CampusName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
                             var obj = data.split(',');
                             var str = '';
@@ -183,13 +159,27 @@
                         }},
 
                     {'data' : 'SubjectName'},
-                    {'data' : 'CourseName'},
                     {'data' : 'ProfNickName'},
 
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'wAdminName'},
+
+                    {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-read-lecture" data-idx="' + row.ProdCode + '"><u>' + data + '</u></a>';
+                        }},
+
+                    {'data' : 'LecScore'},
+
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            // 리스트 번호
+                            if (row.RegType == '1') {
+                                return row.RegMemName;
+                            } else {
+                                return row.RegMemName+'<br>'+'('+row.RegMemId+')';
+                            }
+                        }},
+
                     {'data' : 'RegDatm'},
 
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
@@ -211,18 +201,23 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
             // 데이터 Read 페이지
             $list_table.on('click', '.btn-read', function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+            });
+
+            // 데이터 Read 페이지
+            $list_table.on('click', '.btn-read-lecture', function() {
+                location.replace('{{ site_url("/board/{$boardName}/readLecture") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
             });
 
             // Best 적용
             $('.btn-is-best').on('click', function() {
                 var $params = {};
-                var _url = '{{ site_url("/board/offline/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
+                var _url = '{{ site_url("/board/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
 
                 $('input[name="is_best"]:checked').each(function() {
                     $params[$(this).data('is-best-idx')] = $(this).val();
@@ -247,32 +242,8 @@
                 }, showError, false, 'POST');
             });
 
-            // 복사
-            $('.btn-copy').on('click', function() {
-                var _url = '{{ site_url("/board/offline/{$boardName}/copy/?") }}' + '{!! $boardDefaultQueryString !!}';
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'board_idx' : $('input:radio[name="copy"]:checked').val()
-                };
-
-                if ($('input:radio[name="copy"]').is(':checked') === false) {
-                    alert('복사할 공지사항을 선택해 주세요.');
-                    return false;
-                }
-                if (!confirm('해당 공지사항을 복사하시겠습니까?')) {
-                    return;
-                }
-                sendAjax(_url, data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
-            });
-
-            // hot 숨기기
-            $search_form.on('ifChanged', '.hot-display', function() {
+            // 관리자등록글 보기
+            $search_form.on('ifChanged', '.create-by-admin', function() {
                 $datatable.draw();
             });
         });

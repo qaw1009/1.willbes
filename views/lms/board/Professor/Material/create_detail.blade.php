@@ -61,10 +61,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="lec_idx">강좌명<span class="required">*</span></label>
+                    <label class="control-label col-md-2" for="prod_code">강좌명<span class="required">*</span></label>
                     <div class="col-md-5 item">
                         <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
-                        <span id="selected_lec_idx" class="pl-10"></span>
+                        <span id="selected_prod_code" class="pl-10"></span>
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>

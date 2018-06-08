@@ -12,9 +12,13 @@ class BoardModel extends WB_Model
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
     private $_table_member = 'lms_member';
+    private $_table_product = 'lms_product';                    //상품관리테이블
     private $_table_product_subject = 'lms_product_subject';    //상품과목관리테이블
     private $_table_product_course = 'lms_product_course';      //상품과정관리테이블
-    private $_table_professor = 'lms_professor';    //교수관리테이블
+    private $_table_professor = 'lms_professor';                //교수관리테이블
+    private $_table_product_lecture = 'lms_product_lecture';    //상품상세정보테이블
+    private $_table_product_r_category = 'lms_product_r_category';
+    private $_table_vw_product_r_professor_concat = 'vw_product_r_professor_concat';   //VIEW 테이블
 
 
     // 첨부 이미지 수
@@ -132,6 +136,13 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_product_course} as PRODUCT_COURSE ON LB.CourseIdx = PRODUCT_COURSE.CourseIdx
+                    LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
+                ";
+                break;
+            case "studyComment" :
+                $from = $from."
+                    INNER JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
@@ -287,7 +298,7 @@ class BoardModel extends WB_Model
 
             $insert_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, LecIdx,
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
                 IsStatus, RegMemIdx, 
@@ -297,7 +308,7 @@ class BoardModel extends WB_Model
             ';
             $select_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, LecIdx,
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
                 CASE IsUse WHEN "Y" THEN "N" ELSE "N" END AS IsUse,
@@ -354,9 +365,15 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN (
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
                 from {$this->_table_attach}
-                where IsStatus = 'Y' and RegType = {$arr_condition_file['reg_type']} and AttachFileType = {$arr_condition_file['attach_file_type']}
-                GROUP BY BoardIdx
-            ) as LBA ON LB.BoardIdx = LBA.BoardIdx
+                where IsStatus = 'Y' ";
+                if (empty($arr_condition_file['reg_type']) === false) {
+                    $from .= "and RegType = {$arr_condition_file['reg_type']} ";
+                }
+                if (empty($arr_condition_file['attach_file_type']) === false) {
+                    $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
+                }
+                $from .= "GROUP BY BoardIdx
+                ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
@@ -440,6 +457,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_product_course} as PRODUCT_COURSE ON LB.CourseIdx = PRODUCT_COURSE.CourseIdx
+                    LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
+                ";
+                break;
+            case "studyComment" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
@@ -738,7 +761,7 @@ class BoardModel extends WB_Model
      */
     public function getFaqBoardCcdCountList($bm_idx, $groupCcd = [])
     {
-       $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
+        $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
         $this->_conn->from($this->_table_sys_code);
         $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
         $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
@@ -843,6 +866,30 @@ class BoardModel extends WB_Model
         ];
         $data = $this->siteModel->listSite($column, $arr_condition);
         return array_pluck($data, 'SiteName', 'SiteCode');
+    }
+
+    /**
+     * 상품 정보 조회
+     * @param $arr_condition
+     * @param $column
+     * @return mixed
+     */
+    public function findProductByBoard($arr_condition, $column)
+    {
+        $from = "
+            FROM {$this->_table_product} AS {$this->_table_product}
+            INNER JOIN {$this->_table_sys_site} AS {$this->_table_sys_site} ON {$this->_table_product}.SiteCode = {$this->_table_sys_site}.SiteCode AND {$this->_table_sys_site}.IsStatus = 'Y'
+            INNER JOIN {$this->_table_product_lecture} AS {$this->_table_product_lecture} ON {$this->_table_product}.ProdCode = {$this->_table_product_lecture}.ProdCode
+            INNER JOIN {$this->_table_product_r_category} AS {$this->_table_product_r_category} ON {$this->_table_product}.ProdCode = {$this->_table_product_r_category}.ProdCode AND {$this->_table_product_r_category}.IsStatus = 'Y'
+            INNER JOIN {$this->_table_sys_category} AS {$this->_table_sys_category} ON {$this->_table_product_r_category}.CateCode = {$this->_table_sys_category}.CateCode AND {$this->_table_sys_category}.IsStatus = 'Y'
+            INNER JOIN {$this->_table_product_subject} AS {$this->_table_product_subject} ON {$this->_table_product_lecture}.SubjectIdx = {$this->_table_product_subject}.SubjectIdx AND {$this->_table_product_subject}.IsStatus = 'Y'
+            INNER JOIN {$this->_table_vw_product_r_professor_concat} AS {$this->_table_vw_product_r_professor_concat} ON {$this->_table_product}.ProdCode = {$this->_table_vw_product_r_professor_concat}.ProdCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
     }
 
 

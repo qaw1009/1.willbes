@@ -16,11 +16,14 @@
 
             // 인증 완료시에 인증결과를 수신하게 되는 귀사 클라이언트 결과 페이지 URL
             parent.opener.parent.document.vnoform.action = "ipin_result.php";
-            parent.opener.parent.document.vnoform.submit();
+            //parent.opener.parent.document.vnoform.submit();
         }
     </script>
 </head>
 <body onLoad="fnLoad()">
-
+<?= $sResponseData ?><br><br>
+<?= $sReservedParam1 ?><br><br>
+<?= $sReservedParam2 ?><br><br>
+<?= $sReservedParam3 ?><br><br>
 </body>
 </html>

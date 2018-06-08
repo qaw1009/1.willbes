@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class NiceAuth
+class NiceAuth extends \app\controllers\BaseController
 {
     // 아이핀
     private $ipinSiteCode = "B931";     // IPIN 서비스 사이트 코드
@@ -40,7 +40,6 @@ class NiceAuth
         $reqseq = get_cprequest_no($this->cpSiteCode);
 
         // 세션에 번호 저장 해야하나?
-        //$_SESSION["cpReqseq"] = $reqseq;
 
         // 입력될 plain 데이타를 만든다.
         $plaindata = "7:REQ_SEQ" . strlen($reqseq) . ":" . $reqseq .
@@ -91,14 +90,28 @@ class NiceAuth
     {
         $sRtnCode = 0;
         $sRtnMsg = '';
+        $requestnumber = '';
+        $responsenumber = '';
+        $authtype = '';
+        $name = '';
+        $birthdate = '';
+        $gender = '';
+        $nationalinfo = '';
+        $dupinfo = '';
+        $conninfo = '';
+        $mobileno = '';
+        $mobileco = '';
 
         if(preg_match('~[^0-9a-zA-Z+/=]~', $enc_data, $match)) {
+            $sRtnCode = -1;
             $sRtnMsg = "입력 값 확인이 필요합니다 : ".$match[0];
-
+            $enc_data = '';
         }
 
         if(base64_encode(base64_decode($enc_data))!=$enc_data) {
-            echo "입력 값 확인이 필요합니다"; exit;
+            $sRtnCode = -1;
+            $sRtnMsg = "입력 값 확인이 필요합니다";
+            $enc_data = '';
         }
 
         if ($enc_data != "") {
@@ -145,7 +158,18 @@ class NiceAuth
 
         return [
             'rtnCode' => $sRtnCode,
-            'rtnMsg' => $sRtnMsg
+            'rtnMsg' => $sRtnMsg,
+            'reqnumber' => $requestnumber,
+            'resnumber' => $responsenumber,
+            'authtype' => $authtype,
+            'name' => $name,
+            'birthdate' => $birthdate,
+            'gender' => $gender,
+            'nationalinfo' => $nationalinfo,
+            'dupinfo' => $dupinfo,
+            'conninfo' => $conninfo,
+            'mobileno' => $mobileno,
+            'mobileco' => $mobileco
         ];
     }
 
@@ -188,6 +212,13 @@ class NiceAuth
     {
         $sRtnCode = 0;
         $sRtnMsg = '';
+        $strVno = '';
+        $strUserName = '';
+        $strDupInfo = '';
+        $strAgeInfo = '';
+        $strGender = '';
+        $strBirthDate = '';
+        $strNationalInfo = '';
 
         if(preg_match('~[^0-9a-zA-Z+/=]~', $sEncData, $match)) {
             $sRtnCode = -1;
@@ -198,24 +229,6 @@ class NiceAuth
         if(base64_encode(base64_decode($sEncData)) != $sEncData) {
             $sRtnCode = -1;
             $sRtnMsg = '입력 값 확인이 필요합니다.';
-            $sEncData = '';
-        }
-
-        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam1, $match)) {
-            $sRtnCode = -1;
-            $sRtnMsg = '문자열 점검 : '.$match[0];
-            $sEncData = '';
-        }
-
-        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam2, $match)) {
-            $sRtnCode = -1;
-            $sRtnMsg = '문자열 점검 : '.$match[0];
-            $sEncData = '';
-        }
-
-        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam3, $match)) {
-            $sRtnCode = -1;
-            $sRtnMsg = '문자열 점검 : '.$match[0];
             $sEncData = '';
         }
 
@@ -235,34 +248,32 @@ class NiceAuth
                 $iCount = count($arrData);
 
                 if ($iCount >= 5) {
-
                     $strResultCode	= $arrData[0];			// 결과코드
+
                     if ($strResultCode == 1) {
                         $strCPRequest	= $arrData[8];			// CP 요청번호
+                        $sRtnCode           = 1;
+                        $sRtnMsg            = "사용자 인증 성공";
+                        $strVno      		= $arrData[1];	// 가상주민번호 (13자리이며, 숫자 또는 문자 포함)
+                        $strUserName		= $arrData[2];	// 이름
+                        $strDupInfo			= $arrData[3];	// 중복가입 확인값 (64Byte 고유값)
+                        $strAgeInfo			= $arrData[4];	// 연령대 코드 (개발 가이드 참조)
+                        $strGender			= $arrData[5];	// 성별 코드 (개발 가이드 참조)
+                        $strBirthDate		= $arrData[6];	// 생년월일 (YYYYMMDD)
+                        $strNationalInfo	= $arrData[7];	// 내/외국인 정보 (개발 가이드 참조)
 
-                        if ($sCPRequest == $strCPRequest) {
-                            $sRtnCode           = 1;
-                            $sRtnMsg            = "사용자 인증 성공";
-                            $strVno      		= $arrData[1];	// 가상주민번호 (13자리이며, 숫자 또는 문자 포함)
-                            $strUserName		= $arrData[2];	// 이름
-                            $strDupInfo			= $arrData[3];	// 중복가입 확인값 (64Byte 고유값)
-                            $strAgeInfo			= $arrData[4];	// 연령대 코드 (개발 가이드 참조)
-                            $strGender			= $arrData[5];	// 성별 코드 (개발 가이드 참조)
-                            $strBirthDate		= $arrData[6];	// 생년월일 (YYYYMMDD)
-                            $strNationalInfo	= $arrData[7];	// 내/외국인 정보 (개발 가이드 참조)
-
-                        } else {
-                            $sRtnMsg = "CP 요청번호 불일치 : 세션에 넣은 $sCPRequest 데이타를 확인해 주시기 바랍니다.";
-                        }
                     } else {
+                        $sRtnCode = -1;
                         $sRtnMsg = "리턴값 확인 후, NICE평가정보 개발 담당자에게 문의해 주세요. [$strResultCode]";
                     }
 
                 } else {
+                    $sRtnCode = -1;
                     $sRtnMsg = "리턴값 확인 후, NICE평가정보 개발 담당자에게 문의해 주세요.";
                 }
 
             }
+
         } else {
             $sRtnCode = -1;
             $sRtnMsg = "처리할 암호화 데이타가 없습니다.";

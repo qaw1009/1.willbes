@@ -24,7 +24,7 @@ class Member extends \app\controllers\FrontController
     /*
      * 회원가입 페이지
      */
-    public function join()
+    public function Join()
     {
         $this->load->library('NiceAuth');
 
@@ -48,14 +48,13 @@ class Member extends \app\controllers\FrontController
                 'ipinData' => $ipinData,
                 'cpData' => $cpData
                 ]);
-
         }
     }
 
     /*
      * 회원가입처리페이지
      */
-    public function joinProcess()
+    public function JoinProcess()
     {
         $this->load->view('member/join/step3', [ ]);
     }
@@ -63,7 +62,7 @@ class Member extends \app\controllers\FrontController
     /*
      * 아이디찾기
      */
-    public function findID()
+    public function FindID()
     {
 
     }
@@ -71,7 +70,7 @@ class Member extends \app\controllers\FrontController
     /*
      * 비밀번호 찾기
      */
-    public function findPWD()
+    public function FindPW()
     {
 
     }

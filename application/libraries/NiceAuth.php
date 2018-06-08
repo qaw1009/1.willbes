@@ -244,6 +244,8 @@ class NiceAuth extends \app\controllers\BaseController
                 $sRtnMsg = "NICE평가정보에서 발급한 개발정보가 정확한지 확인해 보세요.";
 
             } else {
+                echo $sDecData;
+                exit;
                 $arrData = preg_split("\^", $sDecData);
                 $iCount = count($arrData);
 

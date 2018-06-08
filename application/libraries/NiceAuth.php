@@ -245,7 +245,7 @@ class NiceAuth extends \app\controllers\BaseController
                 $sRtnMsg = "NICE평가정보에서 발급한 개발정보가 정확한지 확인해 보세요.";
 
             } else {
-                $strResultCode	= $this->GetValue($sDecData, 'RESULT_CODE');			// 결과코드
+                $strResultCode = $this->GetValue($sDecData, 'RESULT_CODE');			// 결과코드
 
                 if ($strResultCode == 1) {
                     //$strCPRequest	    = $this->GetValue($sDecData, 'CPREQUESTNO');			// CP 요청번호

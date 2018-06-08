@@ -23,6 +23,7 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         'C' => 
         array (
             'Curl\\' => 5,
+            'Cron\\' => 5,
         ),
     );
 
@@ -47,6 +48,10 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         'Curl\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+        ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
     );
 

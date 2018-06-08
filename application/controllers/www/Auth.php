@@ -51,7 +51,12 @@ class Auth extends \app\controllers\FrontController
 
         }
 
-        $this->load->view($viewURL, [ 'encData' => $sResponseData ]);
+        $this->load->view($viewURL, [
+            'sResponseData' => $sResponseData,
+            '$sReservedParam1' => $sReservedParam1,
+            '$sReservedParam2' => $sReservedParam2,
+            '$sReservedParam3' => $sReservedParam3
+        ]);
     }
 
     /*

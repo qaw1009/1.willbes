@@ -604,14 +604,14 @@
             <div class="lecDetailWrap">
                 <ul class="tabWrap NG">
                     <li>
-                        <a class="on" onclick="send('1');" name="m1" id="m1" href="#none">강좌상세정보</a>
+                        <a class="on" href="#ch1">강좌상세정보</a>
                     </li>
                     <li>
-                        <a onclick="send('2');" name="m2" id="m2" href="#none">교재상세정보 (총 2권)</a>
+                        <a href="#ch2">교재상세정보 (총 2권)</a>
                     </li>
                 </ul>
                 <div class="tabBox">
-                    <div id="ch1" style="display: block;">
+                    <div id="ch1" class="tabContent" style="display: block;">
                         <div class="classInfo">
                             <dl class="w-info NG">
                                 <dt>강의수 : <span class="tx-blue">70강</span></dt>
@@ -660,8 +660,7 @@
                             </table>
                         </div>
                     </div>
-
-                    <div id="ch2" style="display: none;">
+                    <div id="ch2" class="tabContent">
                         <div class="bookInfo">
                             <div class="bookImg">
                                 <img src="/public/img/front/sample/book.jpg">
@@ -683,24 +682,30 @@
                                 <div class="bookBoxWrap">
                                     <ul class="tabWrap">
                                         <li>
-                                            <a class="on" onclick="sendbook('1');" name="n1" id="n1" href="#none">교재소개</a>
+                                            <a href="#book1">교재소개</a>
                                         </li>
                                         <li>
-                                            <a onclick="sendbook('2');" name="n2" id="n2" href="#none">교재목차</a>
+                                            <a href="#book2">교재목차</a>
                                         </li>
                                     </ul>
                                     <div class="tabBox">
-                                        <div id="book1" style="display: block;">
-                                            <div class="book-TxtBox">
+                                        <div id="book1" class="tabContent" style="display: block;">
+                                            <div class="book-TxtBox tx-gray">
                                                 2018년재신정판을내면서..<br/>
                                                 첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
                                                 둘째, 매지문마다해설을충실히달았습니다..<br/>
                                                 셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
                                                 기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
                                             </div>
+                                            <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
                                         </div>
-                                        <div id="book2" style="display: none;">
-                                            <div class="book-TxtBox">
+                                        <div id="book2" class="tabContent">
+                                            <div class="book-TxtBox tx-gray">
+                                                제1편 현대 문법<br/>
+                                                제2편 고전 문법<br/>
+                                                제3편 국어 생활<br/>
+                                                제4편 현대 문학<br/>
+                                                제5편 고전 문학<br/>
                                                 제1편 현대 문법<br/>
                                                 제2편 고전 문법<br/>
                                                 제3편 국어 생활<br/>
@@ -717,6 +722,9 @@
             </div>
         </div>
         <!-- willbes-Layer-Box -->
+
+        <script src="/public/js/front/sub.js"></script>
+        <script src="/public/js/front/tabs.js"></script>
 
     </div>
     <div class="Quick-Bnr ml20">

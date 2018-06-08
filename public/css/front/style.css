@@ -2232,21 +2232,14 @@ table.lecInfoTable .w-sub strong {
 /* subContainer : Content : willbes-Layer-Box */
 .willbes-Layer-Box {
     background: #fff;
-    /*
     position: fixed;
-    top: 50%;
-    left: 50%;
-    */
-    position: absolute;
     top: 50%;
     left: 50%;
     z-index: 11;
     width: 980px;
     height: 700px;
-    /*
     margin-top: -350px;
     margin-left: -490px;
-    */
     border: 1px solid #2f2f2f;
     padding: 20px;
 }
@@ -2359,7 +2352,6 @@ table.classTable tr td.w-data {
     height: 10px;
     margin: -3px 10px 0;
 }
-
 .bookBoxWrap .tabWrap {
     height: 34px;
     border-bottom: 1px solid #959595;
@@ -2393,9 +2385,19 @@ table.classTable tr td.w-data {
     border-left: 1px solid #959595;
     border-right: 1px solid #959595;
 }
-
-
-
+.bookBoxWrap .tabBox .book-TxtBox {
+    height: 150px;
+    line-height: 24px;
+    padding: 15px 0 15px 5px;
+    border-bottom: 1px solid #edeeef;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.bookBoxWrap .tabBox .caution-txt {
+    background: url("../../img/front/sub/icon_caution.gif") no-repeat 0 center;
+    padding: 15px 20px;
+    margin-left: 5px;
+}
 
 /* subContainer : Content : package Price */
 .willbes-Lec-Package-Price {

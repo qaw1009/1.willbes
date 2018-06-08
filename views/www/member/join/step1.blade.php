@@ -24,7 +24,7 @@
                 <img src="/public/img/front/login/icon_phone_on_sm.gif">
             </ul>
             <div class="search-Btn btnAuto120 h36">
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                <button type="submit" onclick="javascript:fnCp();" class="mem-Btn bg-blue bd-dark-blue">
                     <span>휴대폰 인증</span>
                 </button>
             </div>
@@ -105,7 +105,7 @@
                 <img src="/public/img/front/login/icon_ipin_on_sm.gif">
             </ul>
             <div class="search-Btn btnAuto120 h36">
-                <button type="submit" onclick="javascript:fnPopup();" class="mem-Btn bg-blue bd-dark-blue">
+                <button type="submit" onclick="javascript:fnIpin();" class="mem-Btn bg-blue bd-dark-blue">
                     <span>아이핀 인증</span>
                 </button>
             </div>
@@ -119,18 +119,19 @@
     </div>
     <!-- End Container -->
 
+    <form name="form_cp" method="post">
+        <input type="hidden" name="m" value="checkplusSerivce">
+        <input type="hidden" name="EncodeData" value="<?= $cpData['encData'] ?>">
+    </form>
 
-    <!--
-    <?= $ipinData['rtnMsg'] ?><br><br>
-    업체정보 암호화 데이타 : [<?= $ipinData['encData'] ?>]<br><br>
-    -->
-        <form name="form_ipin" method="post">
+    <form name="form_ipin" method="post">
         <input type="hidden" name="m" value="pubmain">
         <input type="hidden" name="enc_data" value="<?= $ipinData['encData'] ?>">
         <input type="hidden" name="param_r1" value="join">
         <input type="hidden" name="param_r2" value="">
         <input type="hidden" name="param_r3" value="">
     </form>
+
     <form name="vnoform" method="post">
         <input type="hidden" name="enc_data">
         <input type="hidden" name="param_r1" value="">
@@ -140,7 +141,15 @@
 
     <script src='/public/js/util.js'></script>
     <script>
-        function fnPopup()
+        function fnCp()
+        {
+            popupOpen('', 'popupCP', '500', '550', null, null);
+            document.form_cp.target = "popupCP";
+            document.form_cp.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+            document.form_cp.submit();
+        }
+
+        function fnIpin()
         {
             popupOpen('', 'popupIPIN', '450', '550', null, null);
             document.form_ipin.target = "popupIPIN";

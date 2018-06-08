@@ -18,12 +18,11 @@ class NiceAuth
     private $cpReturnURL = '';    // 성공시 이동 URL
     private $cpGender = "";                 // 기본 성별 설정
 
-
     function __construct()
     {
-        $this->ipinReturnURL = 'https:'.app_url('/', 'www').'/Auth/ipinRtn'; // 아이핀 결과 리턴
-        $this->cpErrorURL = 'https:'.app_url('/', 'www').'/Auth/cpErr';      // 실패시 이동 URL
-        $this->cpReturnURL = 'https:'.app_url('/', 'www').'/Auth/cpRtn_';    // 성공시 이동 URL
+        $this->ipinReturnURL = 'https:'.app_url('/', 'www').'Auth/ipinRtn'; // 아이핀 결과 리턴
+        $this->cpErrorURL = 'https:'.app_url('/', 'www').'Auth/cpErr';      // 실패시 이동 URL
+        $this->cpReturnURL = 'https:'.app_url('/', 'www').'Auth/cpRtn_';    // 성공시 이동 URL
     }
 
     /*
@@ -52,7 +51,6 @@ class NiceAuth
             "11:POPUP_GUBUN" . strlen($this->cpPopupGubun) . ":" . $this->cpPopupGubun .
             "9:CUSTOMIZE" . strlen($this->cpCustomize) . ":" . $this->cpCustomize .
             "6:GENDER" . strlen($this->cpGender) . ":" . $this->cpGender ;
-
 
         $sEncData = get_encode_data($this->cpSiteCode, $this->cpSitePw, $plaindata);
 
@@ -192,14 +190,32 @@ class NiceAuth
         $sRtnMsg = '';
 
         if(preg_match('~[^0-9a-zA-Z+/=]~', $sEncData, $match)) {
-            $sRtnCode = 0;
+            $sRtnCode = -1;
             $sRtnMsg = '입력 값 확인이 필요합니다.';
             $sEncData = '';
         }
 
         if(base64_encode(base64_decode($sEncData)) != $sEncData) {
-            $sRtnCode = 0;
+            $sRtnCode = -1;
             $sRtnMsg = '입력 값 확인이 필요합니다.';
+            $sEncData = '';
+        }
+
+        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam1, $match)) {
+            $sRtnCode = -1;
+            $sRtnMsg = '문자열 점검 : '.$match[0];
+            $sEncData = '';
+        }
+
+        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam2, $match)) {
+            $sRtnCode = -1;
+            $sRtnMsg = \'문자열 점검 : '.$match[0];
+            $sEncData = '';
+        }
+
+        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam3, $match)) {
+            $sRtnCode = -1;
+            $sRtnMsg = '문자열 점검 : '.$match[0];
             $sEncData = '';
         }
 
@@ -207,9 +223,11 @@ class NiceAuth
             $sDecData = get_response_data($this->ipinSiteCode, $this->ipinSitePw, $sEncData);
 
             if ($sDecData == -9) {
+                $sRtnCode = -9;
                 $sRtnMsg = "입력값 오류 : 복호화 처리시, 필요한 파라미터값의 정보를 정확하게 입력해 주시기 바랍니다.";
 
             } else if ($sDecData == -12) {
+                $sRtnCode = -12;
                 $sRtnMsg = "NICE평가정보에서 발급한 개발정보가 정확한지 확인해 보세요.";
 
             } else {
@@ -246,6 +264,7 @@ class NiceAuth
 
             }
         } else {
+            $sRtnCode = -1;
             $sRtnMsg = "처리할 암호화 데이타가 없습니다.";
         }
 

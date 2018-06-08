@@ -12,51 +12,54 @@ class Auth extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    /*
+     * 아이핀 결과 반환 페이지
+     */
     public function ipinRtn()
     {
-        $viewURL = '';
+        $this->load->library('NiceAuth');
+
         $sReservedParam1 = $this->_req('param_r1'); // 아이핀을 사용 구분
         $sReservedParam2 = $this->_req('param_r2');
         $sReservedParam3 = $this->_req('param_r3');
         $sResponseData = $this->_req('enc_data');
 
-        if( preg_match('~[^0-9a-zA-Z+/=]~', $sResponseData, $match) ) {
-            $this->load->view('auth/Error', ['msg' => '입력 값 확인이 필요합니다']);
-            exit;
-        }
-        if( base64_encode(base64_decode($sResponseData))!= $sResponseData) {
-            $this->load->view('auth/Error', ['msg' => '입력 값 확인이 필요합니다']);
-            exit;
-        }
-        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam1, $match)) {
-            $this->load->view('auth/Error', ['msg' => "문자열 점검 : ".$match[0] ]);
-            exit;
-        }
-        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam2, $match)) {
-            $this->load->view('auth/Error', ['msg' => "문자열 점검 : ".$match[0] ]);
-            exit;
-        }
-        if( preg_match("/[#\&\\+\-%@=\/\\\:;,\.\'\"\^`~\_|\!\/\?\*$#<>()\[\]\{\}]/i", $sReservedParam3, $match)) {
-            $this->load->view('auth/Error', ['msg' => "문자열 점검 : ".$match[0] ]);
-            exit;
-        }
+        $decData = $this->niceauth->ipinDec($sResponseData);
 
-        // 회원가입 아이핀 리텀 페이지
+        if($decData['rtnCode'] != 0){
+            $this->load->view('auth/Error', ['msg' => $decData['rtnMsg'] ]);
+        }
         if( $sReservedParam1 == ''){
-            $viewURL = 'auth/Error';
-            $sResponseData = '입력값이 잘못 되었습니다.';
+            $this->load->view('auth/Error','입력값이 잘못 되었습니다.');
 
         } else {
-            $viewURL = 'auth/ipin_' . $sReservedParam1;
+            $this->load->view('auth/ipin_' . $sReservedParam1, [
+                'sResponseData' => $sResponseData,
+                '$sReservedParam1' => $sReservedParam1,
+                '$sReservedParam2' => $sReservedParam2,
+                '$sReservedParam3' => $sReservedParam3
+            ]);
+        }
+    }
+    
+    /*
+     * 간편 본인인증 성공후 반환 경로
+     */
+    public function cpRtn_join()
+    {
+        $enc_data = $this->_req('EncodeData');
 
+        if(preg_match('~[^0-9a-zA-Z+/=]~', $enc_data, $match)) {
+            $this->load->view('auth/Error', ['msg' => '입력 값 확인이 필요합니다 : ' . $match[0]]);
+            exit;
         }
 
-        $this->load->view($viewURL, [
-            'sResponseData' => $sResponseData,
-            '$sReservedParam1' => $sReservedParam1,
-            '$sReservedParam2' => $sReservedParam2,
-            '$sReservedParam3' => $sReservedParam3
-        ]);
+        if(base64_encode(base64_decode($enc_data))!=$enc_data) {
+            $this->load->view('auth/Error', ['msg' => '입력 값 확인이 필요합니다 : ' . $match[0]]);
+            exit;
+        }
+
+        $this->load->view('auth/cp_join', [ 'encData' => $sResponseData ]);
     }
 
     /*
@@ -83,8 +86,7 @@ class Auth extends \app\controllers\FrontController
             $plaindata = $this->niceauth->cpDec($enc_data); // 복호화
 
             if ($plaindata['rtnCode'] != 0) {
-                $this->load->view('auth/Error', [
-                    'msg' => $plain]);
+                $this->load->view('auth/Error', ['msg' => $plain]);
                 $returnMsg  = "암/복호화 시스템 오류";
 
             } else if ($plaindata == -4) {
@@ -118,23 +120,5 @@ class Auth extends \app\controllers\FrontController
         ]);
     }
 
-    /*
-     * 간편 본인인증 성공후 반환 경로
-     */
-    public function cpRtn_join()
-    {
-        $enc_data = $this->_req('EncodeData');
 
-        if(preg_match('~[^0-9a-zA-Z+/=]~', $enc_data, $match)) {
-            $this->load->view('auth/Error', ['msg' => '입력 값 확인이 필요합니다 : ' . $match[0]]);
-            exit;
-        }
-
-        if(base64_encode(base64_decode($enc_data))!=$enc_data) {
-            $this->load->view('auth/Error', ['msg' => '입력 값 확인이 필요합니다 : ' . $match[0]]);
-            exit;
-        }
-
-        $this->load->view('auth/cp_join', [ 'encData' => $sResponseData ]);
-    }
 }

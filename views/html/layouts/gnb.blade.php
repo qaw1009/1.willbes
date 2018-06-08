@@ -1,4 +1,3 @@
-<!-- Gnb -->
 <div id="Gnb" class="NSK Gnb-md">
     <div class="toggle-Btn gnb-Close">
         <a href="#none">
@@ -225,4 +224,3 @@
         </li>
     </ul>
 </div> 
-<!-- End Gnb -->

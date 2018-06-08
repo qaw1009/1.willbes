@@ -1,4 +1,3 @@
-<!-- Footer -->
 <div id="Footer" class="c_both">
     <div class="ft-Link">
         <div class="widthAuto">
@@ -30,4 +29,3 @@
         </div>
     </div>
 </div>
-<!-- End Footer -->

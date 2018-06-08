@@ -48,7 +48,6 @@
         </div>
     </div>
 </div>
-<!-- End Header -->
 
 <!-- LoginForm -->
 <div id="LoginForm" class="Layer-Box" style="display: none">
@@ -87,4 +86,3 @@
         </ul>
     </div>
 </div>
-<!-- End LoginForm -->

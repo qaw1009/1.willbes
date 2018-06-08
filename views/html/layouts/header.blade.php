@@ -9,57 +9,21 @@
 
     <title>윌비스 통합 사이트</title>
 
+
     <!-- CSS -->
     <!-- Bootstrap -->
     <link href="/public/vendor/bootstrap/v.3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="/public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- bootstrap-datetimepicker -->
-    <link href="/public/vendor/bootstrap/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <!-- bootstrap-progressbar -->
-    <link href="/public/vendor/bootstrap/progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="/public/vendor/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="/public/vendor/iCheck/skins/flat/blue.css" rel="stylesheet">
-    <!-- Datatables -->
-    <link href="/public/vendor/datatables/v.1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/public/vendor/datatables/buttons/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/public/vendor/datatables/colreorder/css/colReorder.bootstrap.min.css" rel="stylesheet">
-    <link href="/public/vendor/datatables/rowreorder/css/rowReorder.bootstrap.min.css" rel="stylesheet">
-    <link href="/public/vendor/datatables/keytable/css/keyTable.bootstrap.min.css" rel="stylesheet">
-    <link href="/public/vendor/datatables/select/css/select.bootstrap.min.css" rel="stylesheet">
-    <link href="/public/vendor/datatables/responsive/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <!-- FullCalendar -->
-    <link href="/public/vendor/fullcalendar/fullcalendar.min.css" rel="stylesheet">
-    <link href="/public/vendor/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
-    <!-- PNotify -->
-    <link href="/public/vendor/pnotify/pnotify.css" rel="stylesheet">
-    <link href="/public/vendor/pnotify/pnotify.buttons.css" rel="stylesheet">
-    <link href="/public/vendor/pnotify/pnotify.nonblock.css" rel="stylesheet">
-    <!-- magnific-popup -->
-    <link href="/public/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="/public/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
+
+    
     <!-- Custom Theme Style -->
     <link href="/public/css/front/basic.css" rel="stylesheet">
     <link href="/public/css/front/style.css" rel="stylesheet">
     <!--/ CSS -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-        WebFont.load({
-            custom: {
-            families: ['notosanskr'],
-                urls: ['//fonts.googleapis.com/earlyaccess/notosanskr.css'],
-            families: ['Nanum Gothic'],
-                urls: ['//fonts.googleapis.com/earlyaccess/nanumgothic.css']
-            }
-        });
-    </script>
-    <!--/ Webfont -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Script -->
     <script type='text/javascript'>
         //GNB 버튼 Script
         $(function() {
@@ -157,6 +121,43 @@
                 }
             });
         });
+
+        // checkbox 결제 버튼 Script
+        $(function() {
+            $('.chk.buybtn input:checkbox').change(function(){
+                if($(this).is(":checked")) {
+                    $('.willbes-Lec-buyBtn-sm').addClass("active");
+                } else {
+                    $('.willbes-Lec-buyBtn-sm').removeClass("active");
+                }
+            });
+        });
+
+        // Tab Script : 단강좌 상세보기 텝
+        function send(a){
+            for (i=1; i<=2; i++){
+                if (i == a){
+                    document.getElementById("ch"+a).style.display='block';
+                    document.getElementById("m"+a).className = "on";
+                } else {
+                    document.getElementById("ch"+i).style.display='none';
+                    document.getElementById("m"+i).className = "";
+                }
+            }
+        }
+
+        // Tab Script : 교재상세정보 교재소개 텝
+        function sendbook(a){
+            for (i=1; i<=2; i++){
+                if (i == a){
+                    document.getElementById("book"+a).style.display='block';
+                    document.getElementById("n"+a).className = "on";
+                } else {
+                    document.getElementById("book"+i).style.display='none';
+                    document.getElementById("n"+i).className = "";
+                }
+            }
+        }
 
         // 닫기 Script
         function closeWin(divID) {

@@ -1,7 +1,27 @@
+/* NotoSansCJK */
+@font-face {
+	font-family: "NotoSansCJKkr-Regular";
+	src: url("../../fonts/NotoSansCJK/NotoSansCJKkr-Regular.eot");
+	src: url("../../fonts/NotoSansCJK/NotoSansCJKkr-Regular.eot?#iefix") format('embedded-opentype'),
+			 url("../../fonts/NotoSansCJK/NotoSansCJKkr-Regular.woff2") format('woff2'),
+			 url("../../fonts/NotoSansCJK/NotoSansCJKkr-Regular.woff") format('woff');
+}
 
+/* NanumGothic */
+@font-face {
+	font-family: "NanumGothic-Bold";
+	src: url("../../fonts/NanumGothic/NanumGothic-Bold.eot");
+	src: url("../../fonts/NanumGothic/NanumGothic-Bold.eot?#iefix") format('embedded-opentype'),
+			 url("../../fonts/NanumGothic/NanumGothic-Bold.woff2") format('woff2'),
+			 url("../../fonts/NanumGothic/NanumGothic-Bold.woff") format('woff');
+}
+
+/*
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+*/
 
+/* START */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -61,8 +81,8 @@ strong {
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
 }
 .NSK {
-	font-family: "Noto Sans KR";
+	font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
 }
 .NG {
-	font-family: "Nanum Gothic", "나눔고딕";
+	font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
 }

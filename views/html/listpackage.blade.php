@@ -32,7 +32,7 @@
                     <a href="#none">이벤트</a>
                 </li>
                 <li class="Acad">
-                    <a href="#none">경찰학원 <img src="/public/img/front/sub/icon_arrow.gif" style="margin: -3px 3px 0"></a>
+                    <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>
                 </li>
             </ul>
         </h3>
@@ -50,17 +50,29 @@
         <!-- willbes-Bnr -->
 
         <div class="willbes-Lec-Package-Price p_re">
-            <div class="total-PriceBox">
-                <span>총 주문금액</span>
+            <div class="total-PriceBox NG">
+                <span class="price-tit">총 주문금액</span>
                 <span class="row-line">|</span>
-                <span>패키지 140,000원</span>
-                <span>+ 이미지</span>
-                <span>교재 48,600원</span>
-                <span>- 이미지</span>
-                <span>강좌할인금액 15,000원</span>
-                <span>188,600원</span>
+                <span>
+                    <span class="price-txt">패키지</span>
+                    <span class="tx-light-blue">140,000원</span>
+                </span>
+                <span class="price-img">
+                    <img src="/public/img/front/sub/icon_plus.gif">
+                </span>
+                <span>
+                    <span class="price-txt">교재</span>
+                    <span class="tx-light-blue">48,600원</span>
+                </span>
+                <span class="price-img">
+                    <img src="/public/img/front/sub/icon_minus.gif">
+                </span>
+                <span>
+                    <span class="price-txt">강좌할인금액</span>
+                    <span class="tx-pink">15,000원</span>
+                </span>
+                <span class="price-total tx-light-blue">188,600원</span>
             </div>
-
             <div class="willbes-Lec-buyBtn">
                 <ul>
                     <li class="btnAuto180 h36">

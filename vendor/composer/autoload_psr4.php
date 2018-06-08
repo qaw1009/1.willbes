@@ -11,4 +11,5 @@ return array(
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'PhpOffice\\PhpSpreadsheet\\' => array($vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet'),
     'Curl\\' => array($vendorDir . '/php-curl-class/php-curl-class/src/Curl'),
+    'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
 );

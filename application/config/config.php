@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
+| Base System Domain
+|--------------------------------------------------------------------------
+*/
+$config['base_domain'] = 'willbes.net';
+
+/*
+|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -24,14 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = '';
-$config['base_url'] = 'https://' . $_SERVER['HTTP_HOST'];
-
-/*
-|--------------------------------------------------------------------------
-| Base System Domain
-|--------------------------------------------------------------------------
-*/
-$config['base_domain'] = 'willbes.net';
+$config['base_url'] = is_cli() === false ? 'https://' . $_SERVER['HTTP_HOST'] : 'https://cli' . ENV_DOMAIN . '.' . $config['base_domain'];
 
 /*
 |--------------------------------------------------------------------------
@@ -506,7 +506,7 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 | 'csrf_regenerate' = Regenerate token on every submission
-| 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
+| 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks (ex. controller/(.*))
 */
 //$config['csrf_protection'] = FALSE;
 //$config['csrf_token_name'] = 'csrf_test_name';

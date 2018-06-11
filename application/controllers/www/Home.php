@@ -36,9 +36,9 @@ class Home extends \app\controllers\FrontController
         //var_dump($this->caching->get('lms@site'));
 
         //$this->load->driver('caching');
-        //$this->caching->site->delete();
-        //$this->caching->site->save();
-        //var_dump($this->caching->site->get());
+        //$this->caching->site_menu->delete();
+        //$this->caching->site_menu->save();
+        //var_dump($this->caching->site_menu->get());
 
         $this->load->view('main');
     }

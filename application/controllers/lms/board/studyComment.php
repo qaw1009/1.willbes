@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class News extends BaseBoard
+class studyComment extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board', 'product/base/subject', 'product/base/professor', 'product/on/lecture');
     protected $helpers = array();
 
-    private $board_name = 'News';
+    private $board_name = 'studyComment';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [
@@ -19,10 +19,6 @@ class News extends BaseBoard
         'default' => 0,     //본문글 첨부
         'reply' => 1        //본문 답변글첨부
     ];
-    private $_groupCcd = [
-        'type_group_ccd_announcement' => '630',     //유형 그룹 코드 = 공고유형
-        'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
-    ];
 
     public function __construct()
     {
@@ -31,7 +27,7 @@ class News extends BaseBoard
     }
 
     /**
-     * 시험공고 게시판 인덱스 (리스트페이지)
+     * 수강후기관리 인덱스 (리스트페이지)
      */
     public function index()
     {
@@ -45,18 +41,26 @@ class News extends BaseBoard
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
 
-        $this->load->view("board/exam/{$this->board_name}/index", [
+        //과목조회
+        $arr_subject = $this->_getSubjectArray();
+
+        //교수조회
+        $arr_professor = $this->_getProfessorArray();
+
+        $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_category' => $arr_category,
+            'arr_subject' => $arr_subject,
+            'arr_professor' => $arr_professor,
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
     }
 
     /**
-     * 공지사항 목록 조회
+     * 수강후기 목록 조회
      * @return CI_Output
      */
     public function listAjax()
@@ -65,16 +69,15 @@ class News extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
-        $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
                 'LB.SiteCode' => $this->site_code,
-                'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'LB.SubjectIdx' => $this->_reqP('search_subject'),
+                'LB.ProfIdx' => $this->_reqP('search_professor'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG' => [
@@ -84,6 +87,12 @@ class News extends BaseBoard
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_chk_create_by_admin') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'LB.RegType' => '1'
+            ]);
+        }
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -99,17 +108,14 @@ class News extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode, lms_product.ProdName,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
-        ';
+            ';
 
-        $best_count = 0;
-        $best_list = [];
-        if ($is_best_type == 0) {
-            $best_data = $this->_bestBoardData($column);
-            $best_count = $best_data['count'];
-            $best_list = $best_data['data'];
-        }
+        $best_data = $this->_bestBoardData($column);
+        $best_count = $best_data['count'];
+        $best_list = $best_data['data'];
 
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
@@ -131,25 +137,6 @@ class News extends BaseBoard
     }
 
     /**
-     * 게시글 복사
-     * @param array $params
-     */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->_boardCopy($this->_reqP('board_idx'));
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
      * BEST 적용
      */
     public function storeIsBest()
@@ -168,7 +155,7 @@ class News extends BaseBoard
     }
 
     /**
-     * 시험공고 등록/수정 폼
+     * 라이브강의자료실 등록/수정 폼
      * @param array $params
      */
     public function create($params = [])
@@ -183,9 +170,16 @@ class News extends BaseBoard
         $site_code = '';
         $get_category_array = [];
 
+        //과목조회
+        $arr_subject = $this->_getSubjectArray();
+
+        //교수조회
+        $arr_professor = $this->_getProfessorArray();
+
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -193,8 +187,7 @@ class News extends BaseBoard
             $arr_condition = ([
                 'EQ'=>[
                     'LB.BoardIdx' => $board_idx,
-                    'LB.IsStatus' => 'Y',
-                    'LB.RegType' => $this->_reg_type['admin']
+                    'LB.IsStatus' => 'Y'
                 ]
             ]);
             $arr_condition_file = [
@@ -212,15 +205,15 @@ class News extends BaseBoard
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
 
-            //사이트카테고리 (구분)
             $get_category_array = $this->_getCategoryArray($site_code);
         }
 
-        $this->load->view("board/exam/{$this->board_name}/create", [
+        $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'site_code' => $site_code,
-            /*'getSiteArray' => $get_site_array,*/
+            'arr_subject' => $arr_subject,
+            'arr_professor' => $arr_professor,
             'getCategoryArray' => $get_category_array,
             'method' => $method,
             'data' => $data,
@@ -242,11 +235,18 @@ class News extends BaseBoard
         $idx = '';
 
         $rules = [
-            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
-            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
+            ['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],
+
+            /*['field' => 'prod_code', 'label' => '강좌명', 'rules' => 'trim|required'],*/
+            /*['field' => 'lec_score', 'label' => '평점', 'rules' => 'trim|required'],*/
+
+            ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -267,7 +267,7 @@ class News extends BaseBoard
     }
 
     /**
-     * 시험공고 뷰 페이지
+     * 수강후기관리 Read 페이지
      * @param array $params
      */
     public function read($params = [])
@@ -281,8 +281,9 @@ class News extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -309,9 +310,11 @@ class News extends BaseBoard
                 'IsBest' => $data['IsBest']
             ]
         ]);
+
         //이전글
         $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
         $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
+
         //다음글
         $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
         $board_next = $this->boardModel->findBoardNext($arr_condition_next);
@@ -331,7 +334,7 @@ class News extends BaseBoard
             $data['arr_cate_code'][$code] = $get_category_array[$code];
         }
 
-        $this->load->view("board/exam/{$this->board_name}/read",[
+        $this->load->view("board/{$this->board_name}/read",[
             'boardName' => $this->board_name,
             'data' => $data,
             'getCategoryArray' => $get_category_array,
@@ -340,6 +343,102 @@ class News extends BaseBoard
             'board_previous' => $board_previous,
             'board_next' => $board_next,
         ]);
+    }
+
+    /**
+     * 수강후기관리 강좌데이터 기준 Read 페이지
+     */
+    public function readLecture($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prod_code = $params[0];
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        // 강좌데이터 조회
+        $product_data = $this->findProductForStudyBoard(
+            [
+                'EQ' => [
+                    'lms_product.ProdCode' => $prod_code,
+                    'lms_product.IsStatus' => 'Y'
+                ]
+            ],
+            'lms_site.SiteName, lms_product.ProdName, lms_sys_category.CateName, lms_product_subject.SubjectName, vw_product_r_professor_concat.wProfName_String'
+        );
+
+        if (count($product_data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $this->load->view("board/{$this->board_name}/readLecture",[
+            'boardName' => $this->board_name,
+            'prod_code' => $prod_code,
+            'product_data' => $product_data,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
+        ]);
+    }
+
+    /**
+     * 강좌코드기준 수강후기데이터 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listAjaxLectureForBoard($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prod_code = $params[0];
+
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $this->bm_idx,
+                'ProdCode' => $prod_code,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $column = '
+            lms_board.BoardIdx, lms_board.RegType, lms_board.Title, lms_board.Content, lms_board.LecScore, lms_board.IsUse,
+            lms_board.RegDatm, lms_board.RegMemName, lms_board.RegMemId, lms_board.UpdDatm, lms_board.UpdMemName, lms_board.UpdMemId, lms_board.UpdAdminIdx, wbs_sys_admin.wAdminName AS UpdAdminName
+        ';
+
+        $list = [];
+        $count = $this->boardModel->listOnlyBoard($arr_condition,true, $column);
+
+        if ($count > 0) {
+            $list = $this->boardModel->listOnlyBoard($arr_condition, false, $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 게시글 사용/미사용
+     * @param array $params
+     */
+    public function boardIsUse($params = [])
+    {
+        $is_use_val = $params[0];
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'target', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardIsUse($is_use_val, json_decode($this->_req('target'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     /**
@@ -380,7 +479,7 @@ class News extends BaseBoard
     }
 
     /**
-     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
+     * 운영사이트에 따른 카테고리(구분)
      * @param array $params
      */
     public function getAjaxSiteCategoryInfo($params = [])
@@ -426,9 +525,12 @@ class News extends BaseBoard
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
+                'SubjectIdx' => element('subject_idx', $input),
+                'ProfIdx' => element('prof_idx', $input),
+                'ProdCode' => element('prod_code', $input),
+                'LecScore' => element('lec_score', $input),
+                'RegMemName' => element('reg_mem_name', $input),
                 'RegType' => element('reg_type', $input),
-                'TypeCcd' => element('type_ccd', $input),
-                'AreaCcd' => element('area_ccd', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == 'Y') ? 'Y' : 'N',
                 'Content' => element('board_content', $input),

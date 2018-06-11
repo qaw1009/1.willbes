@@ -12,10 +12,10 @@ class BoardModel extends WB_Model
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
     private $_table_member = 'lms_member';
+    private $_table_product = 'lms_product';                    //상품관리테이블
     private $_table_product_subject = 'lms_product_subject';    //상품과목관리테이블
     private $_table_product_course = 'lms_product_course';      //상품과정관리테이블
-    private $_table_professor = 'lms_professor';    //교수관리테이블
-
+    private $_table_professor = 'lms_professor';                //교수관리테이블
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
@@ -27,12 +27,13 @@ class BoardModel extends WB_Model
 
     /**
      * 게시판리스트
+     * @param $board_type
      * @param $is_count
      * @param array $arr_condition
-     * @param $sub_query_condition
+     * @param array $sub_query_condition
      * @param null $limit
      * @param null $offset
-     * @param array $order_byk
+     * @param array $order_by
      * @param string $column
      * @return mixed
      */
@@ -135,7 +136,48 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
+            case "studyComment" :
+                $from = $from."
+                    INNER JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
+                    LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
+                ";
+                break;
         }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 게시판 정보만 가져오기 : TABLE JOIN 필요 없을 경우
+     * @param array $arr_condition
+     * @param $is_count
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listOnlyBoard($arr_condition = [], $is_count, $column = '*', $limit = null, $offset = null, $order_by = ['boardIdx' => 'DESC'])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table} as $this->_table
+            LEFT OUTER JOIN {$this->_table_sys_admin} as {$this->_table_sys_admin} ON {$this->_table}.UpdAdminIdx = {$this->_table_sys_admin}.wAdminIdx and {$this->_table_sys_admin}.wIsStatus='Y'
+        ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -287,7 +329,7 @@ class BoardModel extends WB_Model
 
             $insert_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, LecIdx,
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
                 IsStatus, RegMemIdx, 
@@ -297,7 +339,7 @@ class BoardModel extends WB_Model
             ';
             $select_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, LecIdx,
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
                 CASE IsUse WHEN "Y" THEN "N" ELSE "N" END AS IsUse,
@@ -354,9 +396,15 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN (
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
                 from {$this->_table_attach}
-                where IsStatus = 'Y' and RegType = {$arr_condition_file['reg_type']} and AttachFileType = {$arr_condition_file['attach_file_type']}
-                GROUP BY BoardIdx
-            ) as LBA ON LB.BoardIdx = LBA.BoardIdx
+                where IsStatus = 'Y' ";
+                if (empty($arr_condition_file['reg_type']) === false) {
+                    $from .= "and RegType = {$arr_condition_file['reg_type']} ";
+                }
+                if (empty($arr_condition_file['attach_file_type']) === false) {
+                    $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
+                }
+                $from .= "GROUP BY BoardIdx
+                ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.UpdAdminIdx = ADMIN2.wAdminIdx and ADMIN2.wIsStatus='Y'
@@ -443,6 +491,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
+            case "studyComment" :
+                $from = $from."
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
+                    LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
+                ";
+                break;
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -511,6 +565,36 @@ class BoardModel extends WB_Model
             $str_board_idx_Y = implode(',', array_keys($params));
             $arr_board_idx_Y = explode(',', $str_board_idx_Y);
             $this->_conn-> set($set_data_Y)->where_in('boardIdx',$arr_board_idx_Y);
+
+            if($this->_conn->update($this->_table)=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    public function boardIsUse($is_use_val, $target = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if ($is_use_val != 'N' && $is_use_val != 'Y') {
+                throw new \Exception('잘못된 데이터 입니다.');
+            }
+
+            if (count($target) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $set_data = ['IsUse' => $is_use_val];
+            $str_board_idx = implode(',', array_keys($target));
+            $str_board_idx = explode(',', $str_board_idx);
+            $this->_conn-> set($set_data)->where_in('boardIdx',$str_board_idx);
 
             if($this->_conn->update($this->_table)=== false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
@@ -738,7 +822,7 @@ class BoardModel extends WB_Model
      */
     public function getFaqBoardCcdCountList($bm_idx, $groupCcd = [])
     {
-       $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
+        $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
         $this->_conn->from($this->_table_sys_code);
         $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
         $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
@@ -844,7 +928,6 @@ class BoardModel extends WB_Model
         $data = $this->siteModel->listSite($column, $arr_condition);
         return array_pluck($data, 'SiteName', 'SiteCode');
     }
-
 
     /**
      * 게시판 카테고리 조회

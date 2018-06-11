@@ -19,7 +19,7 @@ $('ul.tabWrap').each(function(){
     $(this).on('click', 'a', function(e){
         // Make the old tab inactive.
         $active.removeClass('on');
-        $content.hide();
+        $content.hide().css('display','none');
 
         // Update the variables with the new link and content
         $active = $(this);
@@ -27,9 +27,29 @@ $('ul.tabWrap').each(function(){
 
         // Make the tab active.
         $active.addClass('on');
-        $content.show();
+        $content.show().css('display','block');
 
         // Prevent the anchor's default click action
         e.preventDefault();
     });
 });
+
+function openLink(divID , Name) {
+    var i, tabcontent, tablinks, hover;
+    tabcontent = document.getElementById(divID);
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    
+    tablinks = document.getElementsByClassName("tabLink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.display = "none";
+    }
+    document.getElementById(divID).style.display = "block";
+
+    hover = document.getElementById(Name);
+    for (i = 0; i < hover.length; i++) {
+        hover.classList.remove("on");
+    }
+    document.getElementById(Name).classList.add("on");
+}

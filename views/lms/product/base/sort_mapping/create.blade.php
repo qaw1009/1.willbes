@@ -36,7 +36,7 @@
     </div>
     <div class="form-group form-group-sm">
         @foreach($arr_subject_idx as $row)
-            <div class="col-xs-2 checkbox">
+            <div class="col-xs-3 checkbox">
                 <input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row['SubjectIdx'] }}" @if($row['SubjectIdx'] == $row['RSubjectIdx']) checked="checked" @endif @if($loop->index == 1) required="required" title="과목" @endif/>
                 <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row['SubjectName'] }}</label>
             </div>

@@ -459,6 +459,9 @@
         </div>
         <!-- willbes-Lec -->
 
+        <script src="/public/js/front/sub.js"></script>
+        <script src="/public/js/front/tabs.js"></script>
+
     </div>
     <div class="Quick-Bnr ml20">
         <img src="/public/img/front/sample/banner_180605.jpg">     

@@ -58,6 +58,9 @@
 .mt10 {
     margin-top: 10px !important;
 }
+.mt20 {
+    margin-top: 20px !important;
+}
 .mt30 {
     margin-top: 30px !important;
 }
@@ -1612,6 +1615,19 @@ table.auTable tr td {
     width: 940px;
 }
 
+.subBtn {
+    height: 22px;
+}
+.subBtn a {
+    background: #7d7e85;
+    height: 100%;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    padding: 4px 10px
+}
+
+
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
     box-sizing: border-box;
@@ -1932,6 +1948,15 @@ table.auTable tr td {
     color: #fff;
 }
 
+.willbes-Lec-Tit {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 45px;
+    border-bottom: 1px solid #959595;
+    padding-left: 10px;
+    margin-top: 100px;
+}
+
 /* subContainer : Content : TopBtn */
 .TopBtn {
     float: right;
@@ -2070,21 +2095,22 @@ table.lecTable tr td .MoreBtn {
     margin-top: 10px;
     margin-right: 25px;
 }
-table.lecTable ul.w-sp {
+
+.w-sp {
     float: left;
     width: 128px;
     margin: 40px 26px 10px;
 }
-table.lecTable ul.w-sp li {
+.w-sp li {
     float: left;
     width: 64px;
     height: 22px;
     margin-left: -1px
 }
-table.lecTable ul.w-sp li:first-child {
+.w-sp li:first-child {
     margin-left: 0;
 }
-table.lecTable ul.w-sp li a {
+.w-sp a {
     display: block;
     width: 100%;
     height: 100%;
@@ -2094,8 +2120,8 @@ table.lecTable ul.w-sp li a {
     color: #898989;
     border: 1px solid #c9c9c9;
 }
-table.lecTable ul.w-sp li a:hover,
-table.lecTable ul.w-sp li a:active {
+.w-sp a:hover,
+.w-sp a:active {
     color: #464646;
     border-color: #898989; 
     position: relative;
@@ -2128,12 +2154,15 @@ table.lecTable ul.w-sp li a:active {
     color: #707070;
     margin-right: 10px;
 }
-.viewBox dl dt.tBox {
+
+.tBox {
+    display: inline-block;
     width: 50px;
     height: 20px;
+    line-height: 20px;
     margin-left: 1px;
 }
-.viewBox dl dt a {
+.tBox a {
     display: block;
     width: 100%;
     height: 100%;
@@ -2142,95 +2171,93 @@ table.lecTable ul.w-sp li a:active {
     color: #fff;
     text-align: center;
 }
-.viewBox dl dt.high a {
+.tBox.high a {
     background: #333;
 }
-.viewBox dl dt.low a {
+.tBox.low a {
     background: #898989;
 }
 
 /* subContainer : Content : lecInfoTable */
-table.lecInfoTable {
+.lecInfoTable {
     display: none;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0;
 }
-table.lecInfoTable tr td {
+.lecInfoTable tr td {
     background: #f5f5f5;
     padding: 15px 0;
     line-height: 25px;
 }
-table.lecInfoTable .w-sub {
+.lecInfoTable .w-sub {
     clear: both;
     height: 30px;
+    line-height: 26px;
 }
-table.lecInfoTable .w-sub span {
+.lecInfoTable .w-sub span {
     float: left;
 }
-table.lecInfoTable .w-sub .w-obj {
+.lecInfoTable .w-sub .w-obj {
     width: 75px;
     text-align: right;
     padding-right: 10px;
 }
-table.lecInfoTable .w-sub .w-subtit {
+.lecInfoTable .w-sub .w-subtit {
     width: 500px;
 }
-table.lecInfoTable .w-sub .w-subtit.none {
+.lecInfoTable .w-sub .w-subtit.none {
     padding-left: 75px;
 }
-table.lecInfoTable .w-sub .chk {
+.lecInfoTable .w-sub .chk {
     width: 110px;
     text-align: right;
 }
-table.lecInfoTable .w-sub .chk label {
+.lecInfoTable .w-sub .chk label {
     font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif"; 
     font-size: 11px;
     font-weight: 300;
     margin-right: 5px;
 }
-table.lecInfoTable .w-sub .chk label.soldout {
+.lecInfoTable .w-sub .chk label.soldout {
     color: #f14078;
 }
-table.lecInfoTable .w-sub .chk label.press {
+.lecInfoTable .w-sub .chk label.press {
     color: #707070;
 }
-table.lecInfoTable .w-sub .chk input[type=checkbox] {
+.lecInfoTable .w-sub .chk input[type=checkbox] {
     float: right;
     width: 14px;
     height: 14px;
     cursor: pointer;
     margin: 7px 0;
 }
-table.lecInfoTable .w-sub .priceWrap {
+.lecInfoTable .w-sub .priceWrap {
     position: relative;
     width: 155px;
     margin-right: 25px;
     text-align: right;
     line-height: 23px;
 }
-table.lecInfoTable .w-sub .priceWrap .price {
+.lecInfoTable .w-sub .priceWrap .price {
     position: absolute;
     right: 50px;
 }
-table.lecInfoTable .w-sub .priceWrap .discount {
+.lecInfoTable .w-sub .priceWrap .discount {
     float: right;
     width: 50px;
     color: #464646;
 }
-table.lecInfoTable .w-sub strong {
+.lecInfoTable .w-sub strong {
     background: url("../../img/front/sub/icon_detail.gif") no-repeat 0 8px;
     height: 30px;
     padding-left: 18px;
     display: inline-block;
 }
 
-
-
-
-
 /* subContainer : Content : willbes-Layer-Box */
 .willbes-Layer-Box {
+    display: none;
     background: #fff;
     position: fixed;
     top: 50%;
@@ -2289,6 +2316,174 @@ table.lecInfoTable .w-sub strong {
     border-right: 4px solid #4f4f4f;
 }
 
+/* subContainer : Content : 강좌상세정보 */
+.willbes-Prof-Detail {
+    background: #f4f5f6;
+    height: 294px;
+    letter-spacing: 1px;
+}
+
+.prof-profile {
+    float: left;
+    width: 490px;
+}
+.prof-profile .Obj {
+    position: absolute;
+    top: 35px;
+    left: 55px;
+    font-size: 14px;
+}
+.prof-profile .Name {
+    position: absolute;
+    top: 115px;
+    left: 55px;
+    font-size: 19px;
+    line-height: 30px;
+}
+.prof-profile .Name strong {
+    font-size: 44px;
+}
+.prof-profile .ProfImg {
+    position: absolute;
+    right: 0;
+}
+.lec-profile {
+    float: right;
+    width: 410px;
+}
+.lec-profile .w-list {
+    font-size: 14px;
+    margin-top: 40px;
+}
+.lec-profile .w-tit {
+    font-size: 20px;
+    line-height: 28px;
+    margin-top: 10px;
+}
+.lec-profile .w-info {
+    margin-top: 20px;
+}
+
+/* subContainer : Content : willbes-Buy-Table */
+.willbes-Buy-Table {
+    height: 256px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #3a3e47;
+}
+.willbes-Buy-List {
+    float: left;
+    width: 710px;
+}
+.willbes-Buy-Table table.lecTable {
+    display: block;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 20px 0;
+}
+.willbes-Buy-Table table.lecTable tr td {
+    height: 30px;
+}
+.willbes-Buy-Table table.lecTable .w-lectit {
+    padding-left: 10px;
+}
+.willbes-Buy-Table table.lecTable .w-obj {
+    float: left;
+    line-height: 13px;
+    text-align: center;
+    margin-right: 15px;
+}
+.willbes-Buy-Table table.lecTable .MoreBtn {
+    float: inherit;
+}
+
+.willbes-Buy-Table table.lecTable .w-data {
+    padding-left: 10px;
+}
+
+.willbes-Buy-Table table.lecTable tr td.chk input[type=checkbox] {
+    margin-top: 2px;
+}
+
+.willbes-Buy-Price {
+    float: right;
+    width: 230px;
+    height: 254px;
+    padding: 20px 15px 0;
+}
+.willbes-Buy-Price thead tr th {
+    font-size: 16px;
+    color: #505050;
+    line-height: 40px;
+    border-bottom: 1px solid #959595;
+}
+
+
+
+.willbes-Buy-Price tbody tr td {
+    font-size: 14px;
+    line-height: 40px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.willbes-Buy-Price tbody tr td.price {
+    padding-right: 15px;
+}
+.willbes-Buy-Price tbody tr td.total-price {
+    font-size: 23px;
+    line-height: 110px;
+    padding-right: 35px;
+    border-bottom: none;
+
+}
+
+
+
+
+.willbes-Buy-Table .lecInfoTable {
+    padding: 20px 0 20px 10px;
+}
+.willbes-Buy-Table .lecInfoTable .w-grid {
+    height: 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.willbes-Buy-Table .lecInfoTable .w-lectit {
+    margin-bottom: 15px;
+}
+.willbes-Buy-Table .lecInfoTable .w-lectit .w-obj {
+    float: left;
+    line-height: 13px;
+    text-align: center;
+    margin-right: 15px;
+}
+.willbes-Buy-Table .lecInfoTable .MoreBtn {
+    font-size: 11px;
+    color: #808080;
+    line-height: 18px;
+    margin-top: 10px;
+    margin-right: 25px;
+}
+.willbes-Buy-Table .lecInfoTable .w-subtit {
+    width: 320px;
+}
+.willbes-Buy-Table .lecInfoTable .priceWrap {
+    margin-right: 0;
+}
+
+.willbes-Buy-Table .willbes-Lec-buyBtn {
+    bottom: -60px;
+}
+.willbes-Buy-Table .willbes-Lec-buyBtn input[type=checkbox] {
+    float: left;
+    margin: 11px;
+    cursor: pointer;
+}
+.willbes-Buy-Table .willbes-Lec-buyBtn label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #464646;
+    line-height: 36px;
+    margin-right: 30px;
+}
+
 /* subContainer : Content : 강좌정보 */
 .classInfo {
     float: left;
@@ -2314,12 +2509,12 @@ table.classTable tr td.w-data {
 
 /* subContainer : Content : 교재정보 */
 .willbes-Layer-Box .bookInfo {
-    float: left;
-    width: 100%;
     margin-top: 60px;
     border-top: 1px solid #959595;
 }
 .bookInfo {
+    width: 100%;
+    height: 370px;
     padding-top: 30px;
 }
 .bookInfo .bookImg {
@@ -2398,6 +2593,101 @@ table.classTable tr td.w-data {
     padding: 15px 20px;
     margin-left: 5px;
 }
+
+/* subContainer : Content : 강의목차 */
+.LeclistTable .listTable tr th,
+.LeclistTable .listTable tr td {
+    text-align: center;
+    line-height: 40px;
+    letter-spacing: 0;
+    border-bottom: 1px solid #edeeef;
+}
+.LeclistTable .listTable thead tr th {
+    background: #f9f9fa;
+    font-weight: 600;
+}
+.LeclistTable .listTable thead tr th .row-line {
+    float: right;
+    background: #e4e4e4;
+    width: 1px;
+    height: 11px;
+    margin: 14px 0;
+}
+.LeclistTable .listTable tbody tr td.w-free .w-sp {
+    float: inherit;
+    display: inline-block;
+    width: 64px;
+    height: 22px;
+    margin: 0;
+}
+
+
+
+/* subContainer : Content : 수강후기 */
+.willbes-LecreplyList {
+    height: 50px;
+    line-height: 50px;
+    margin-top: 30px;
+    letter-spacing: 0;
+}
+.willbes-LecreplyList a.num {
+    text-decoration: underline;
+}
+.willbes-LecreplyList ul {
+    float: right;
+}
+.willbes-LecreplyList ul li {
+    display: inline-block;
+    line-height: 20px;
+}
+
+
+.ReplylistTable {}
+.w-reply-teaser {
+    width: 940px;
+    border-bottom: 1px solid #edeeef;
+    padding: 10px 0 10px 15px;
+}
+.w-reply-teaser ul {
+    height: 30px;
+    line-height: 30px;
+}
+.w-reply-teaser ul li {
+    float: left;
+}
+.w-reply-teaser .w-tit {
+    width: 745px;
+    font-weight: 600;
+}
+.w-reply-teaser .w-name {
+    width: 70px;
+}
+.w-reply-teaser .row-line {
+    background: #e4e4e4;
+    width: 1px;
+    height: 11px;
+    margin: 9px 0;
+}
+.w-reply-teaser .w-date {
+    width: 105px;
+}
+.w-reply-teaser .w-star {}
+.w-reply-teaser .w-subtit {
+    font-weight: 600;
+    line-height: 35px;
+    margin-left: 10px;
+}
+.w-reply {
+    width: 100%;
+    height: 80px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-bottom: 1px solid #edeeef;
+    padding: 30px 15px;
+
+}
+
+
 
 /* subContainer : Content : package Price */
 .willbes-Lec-Package-Price {

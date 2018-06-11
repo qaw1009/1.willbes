@@ -234,9 +234,15 @@
                             <td class="w-list">문제풀이</td>
                             <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
                             <td class="w-data tx-left pl25">
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</div>
+                                <div class="w-tit">
+                                    <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
+                                </div>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                    <dt class="mr20">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'),openWin('InfoForm')">
+                                            <strong>강좌상세정보</strong>
+                                        </a>
+                                    </dt>
                                     <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span></dt>
@@ -336,7 +342,7 @@
                                     </span>
                                 </div>
                                 <div class="w-sub ml10">
-                                    <a href="#none"><strong>교재상세정보</strong></a> 
+                                    <a href="#ch2" onclick="openLink('ch2','hover2'),openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                 </div>
                             </td>
                         </tr>
@@ -603,15 +609,11 @@
             </div>
             <div class="lecDetailWrap">
                 <ul class="tabWrap NG">
-                    <li>
-                        <a class="on" href="#ch1">강좌상세정보</a>
-                    </li>
-                    <li>
-                        <a href="#ch2">교재상세정보 (총 2권)</a>
-                    </li>
+                    <li><a id="hover1" href="#ch1">강좌상세정보</a></li>
+                    <li><a id="hover2" href="#ch2">교재상세정보 (총 2권)</a></li>
                 </ul>
                 <div class="tabBox">
-                    <div id="ch1" class="tabContent" style="display: block;">
+                    <div id="ch1" class="tabLink">
                         <div class="classInfo">
                             <dl class="w-info NG">
                                 <dt>강의수 : <span class="tx-blue">70강</span></dt>
@@ -660,7 +662,7 @@
                             </table>
                         </div>
                     </div>
-                    <div id="ch2" class="tabContent">
+                    <div id="ch2" class="tabLink">
                         <div class="bookInfo">
                             <div class="bookImg">
                                 <img src="/public/img/front/sample/book.jpg">
@@ -681,15 +683,11 @@
                                 </div>
                                 <div class="bookBoxWrap">
                                     <ul class="tabWrap">
-                                        <li>
-                                            <a href="#book1">교재소개</a>
-                                        </li>
-                                        <li>
-                                            <a href="#book2">교재목차</a>
-                                        </li>
+                                        <li><a href="#info1">교재소개</a></li>
+                                        <li><a href="#info2">교재목차</a></li>
                                     </ul>
                                     <div class="tabBox">
-                                        <div id="book1" class="tabContent" style="display: block;">
+                                        <div id="info1" class="tabContent">
                                             <div class="book-TxtBox tx-gray">
                                                 2018년재신정판을내면서..<br/>
                                                 첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
@@ -699,7 +697,7 @@
                                             </div>
                                             <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
                                         </div>
-                                        <div id="book2" class="tabContent">
+                                        <div id="info2" class="tabContent">
                                             <div class="book-TxtBox tx-gray">
                                                 제1편 현대 문법<br/>
                                                 제2편 고전 문법<br/>

@@ -29,15 +29,16 @@ class Auth extends \app\controllers\FrontController
         if($decData['rtnCode'] != 0){
             $this->load->view('auth/Error', [ 'msg' => $decData['rtnMsg'] ]);
         }
+
         if( $sReservedParam1 == ''){
             $this->load->view('auth/Error', [ 'msg' => '입력값이 잘못 되었습니다.' ]);
 
         } else {
             $this->load->view('auth/ipin_' . $sReservedParam1, [
                 'sResponseData' => $sResponseData,
-                '$sReservedParam1' => $sReservedParam1,
-                '$sReservedParam2' => $sReservedParam2,
-                '$sReservedParam3' => $sReservedParam3
+                'sReservedParam1' => $sReservedParam1,
+                'sReservedParam2' => $sReservedParam2,
+                'sReservedParam3' => $sReservedParam3
             ]);
         }
     }

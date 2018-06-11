@@ -185,7 +185,7 @@ class LiveLectureMaterial extends BaseBoard
             return;
         }
 
-        $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('dis_params'), true));
+        $result = $this->_boardIsBest(json_decode($this->_req('params'), true));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -198,7 +198,6 @@ class LiveLectureMaterial extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-
 
         $method = 'POST';
         $data = null;

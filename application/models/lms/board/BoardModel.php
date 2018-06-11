@@ -164,7 +164,7 @@ class BoardModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listOnlyBoard($arr_condition = [], $is_count, $column = '*', $limit = null, $offset = null, $order_by = [])
+    public function listOnlyBoard($arr_condition = [], $is_count, $column = '*', $limit = null, $offset = null, $order_by = ['boardIdx' => 'DESC'])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -175,7 +175,8 @@ class BoardModel extends WB_Model
         }
 
         $from = "
-            FROM {$this->_table}
+            FROM {$this->_table} as $this->_table
+            LEFT OUTER JOIN {$this->_table_sys_admin} as {$this->_table_sys_admin} ON {$this->_table}.UpdAdminIdx = {$this->_table_sys_admin}.wAdminIdx and {$this->_table_sys_admin}.wIsStatus='Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

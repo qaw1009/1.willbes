@@ -57,7 +57,7 @@
             <table id="list_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>선택</th>
+                    <th>전체선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                     <th>No</th>
                     <th>제목</th>
                     <th>평점</th>
@@ -118,7 +118,7 @@
                             }
                         }},
                     {'data' : 'RegDatm'},
-                    {'data' : 'UpdAdminIdx'},
+                    {'data' : 'UpdAdminName'},
                     {'data' : 'UpdDatm'}
                 ],
             });
@@ -133,6 +133,15 @@
                 } else {
                     row.child(row.data().Content).show();
                     tr.addClass('shown');
+                }
+            });
+
+            // 전체선택
+            $datatable.on('ifChanged', '#_is_all', function() {
+                if ($(this).prop('checked') === true) {
+                    $('input[name="is_use"]').iCheck('check');
+                } else {
+                    $('input[name="is_use"]').iCheck('uncheck');
                 }
             });
 

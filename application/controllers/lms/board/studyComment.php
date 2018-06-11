@@ -401,7 +401,10 @@ class studyComment extends BaseBoard
                 'IsStatus' => 'Y'
             ]
         ]);
-        $column = 'BoardIdx, RegType, Title, Content, LecScore, IsUse, RegDatm, RegMemName, RegMemId, UpdDatm, UpdMemName, UpdMemId, UpdAdminIdx';
+        $column = '
+            lms_board.BoardIdx, lms_board.RegType, lms_board.Title, lms_board.Content, lms_board.LecScore, lms_board.IsUse,
+            lms_board.RegDatm, lms_board.RegMemName, lms_board.RegMemId, lms_board.UpdDatm, lms_board.UpdMemName, lms_board.UpdMemId, lms_board.UpdAdminIdx, wbs_sys_admin.wAdminName AS UpdAdminName
+        ';
 
         $list = [];
         $count = $this->boardModel->listOnlyBoard($arr_condition,true, $column);

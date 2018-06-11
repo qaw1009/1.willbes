@@ -73,12 +73,12 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-conn-category" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['LastCateCode'] }}">
+                            <button type="button" class="btn btn-sm btn-default btn-conn-category" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
                                 연결 (@if($row['CateSubjectCnt'] > 0) Y @else <span class="red no-line-height">N</span> @endif)
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-list-complex" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['LastCateCode'] }}">
+                            <button type="button" class="btn btn-sm btn-default btn-list-complex" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
                                 연결 (@if($row['ComplexSubjectCnt'] > 0) Y @else <span class="red no-line-height">N</span> @endif)
                             </button>
                         </td>

@@ -59,10 +59,8 @@ class Caching_site_menu extends CI_Driver
 
         $data = [];
         foreach ($result as $idx => $row) {
-            // sub domain
-            $key1 = strtolower(str_first_pos_before($row['SiteUrl'], '.'));
-            // sub domain + ?pass
-            $key2 = $key1 . strtolower((starts_with(str_first_pos_after($row['SiteUrl'], '/'), 'pass') === true) ? 'pass' : '');
+            $key1 = $row['SiteGroupCode'];
+            $key2 = $row['SiteCode'];
 
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [

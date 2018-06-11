@@ -299,4 +299,15 @@ class BaseBoard extends \app\controllers\BaseController
     {
         return $this->professorModel->getProfessorArray();
     }
+
+    /**
+     * 상품 정보 조회
+     * @param $arr_condition
+     * @param $column
+     * @return mixed
+     */
+    protected function findProductForStudyBoard($arr_condition, $column)
+    {
+        return $this->lectureModel->findProductForStudyBoard($arr_condition, $column);
+    }
 }

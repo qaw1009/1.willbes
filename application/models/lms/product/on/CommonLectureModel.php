@@ -18,6 +18,10 @@ class CommonLectureModel extends WB_Model
         'autocoupon' => 'lms_Product_R_AutoCoupon',
         'autolecture' => 'lms_Product_R_AutoLecture',
         'sublecture' => 'lms_Product_R_SubLecture',
+        'site' => 'lms_site',
+        'sys_category' => 'lms_sys_category',
+        'product_subject' => 'lms_product_subject',
+        'vw_product_r_professor_concat' => 'vw_product_r_professor_concat'
     ];
 
     public function __construct()
@@ -986,4 +990,33 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
+    /**
+     * 게시판용 상품 정보 조회
+     * @param $arr_condition
+     * @param $column
+     * @return mixed
+     */
+    public function findProductForStudyBoard($arr_condition, $column)
+    {
+        $from = "
+            FROM {$this->_table['product']} AS {$this->_table['product']}
+            INNER JOIN {$this->_table['site']} AS {$this->_table['site']} 
+                ON {$this->_table['product']}.SiteCode = {$this->_table['site']}.SiteCode AND {$this->_table['site']}.IsStatus = 'Y'
+            INNER JOIN {$this->_table['lecture']} AS {$this->_table['lecture']} 
+                ON {$this->_table['product']}.ProdCode = {$this->_table['lecture']}.ProdCode
+            INNER JOIN {$this->_table['category']} AS {$this->_table['category']} 
+                ON {$this->_table['product']}.ProdCode = {$this->_table['category']}.ProdCode AND {$this->_table['category']}.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_category']} AS {$this->_table['sys_category']} 
+                ON {$this->_table['category']}.CateCode = {$this->_table['sys_category']}.CateCode AND {$this->_table['sys_category']}.IsStatus = 'Y'
+            INNER JOIN {$this->_table['product_subject']} AS {$this->_table['product_subject']} 
+                ON {$this->_table['lecture']}.SubjectIdx = {$this->_table['product_subject']}.SubjectIdx AND {$this->_table['product_subject']}.IsStatus = 'Y'
+            INNER JOIN {$this->_table['vw_product_r_professor_concat']} AS {$this->_table['vw_product_r_professor_concat']} 
+                ON {$this->_table['product']}.ProdCode = {$this->_table['vw_product_r_professor_concat']}.ProdCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
+    }
 }

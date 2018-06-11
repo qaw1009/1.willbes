@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class studyComment extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board', 'product/base/subject', 'product/base/professor');
+    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board', 'product/base/subject', 'product/base/professor', 'product/on/lecture');
     protected $helpers = array();
 
     private $board_name = 'studyComment';
@@ -368,7 +368,7 @@ class studyComment extends BaseBoard
                 'lms_product.IsStatus' => 'Y'
             ]
         ]);
-        $data = $this->boardModel->findProductByBoard($arr_condition, $column);
+        $data = $this->findProductForStudyBoard($arr_condition, $column);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
@@ -419,7 +419,7 @@ class studyComment extends BaseBoard
     }
 
     /**
-     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
+     * 운영사이트에 따른 카테고리(구분)
      * @param array $params
      */
     public function getAjaxSiteCategoryInfo($params = [])

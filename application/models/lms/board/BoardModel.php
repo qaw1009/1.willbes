@@ -16,10 +16,6 @@ class BoardModel extends WB_Model
     private $_table_product_subject = 'lms_product_subject';    //상품과목관리테이블
     private $_table_product_course = 'lms_product_course';      //상품과정관리테이블
     private $_table_professor = 'lms_professor';                //교수관리테이블
-    private $_table_product_lecture = 'lms_product_lecture';    //상품상세정보테이블
-    private $_table_product_r_category = 'lms_product_r_category';
-    private $_table_vw_product_r_professor_concat = 'vw_product_r_professor_concat';   //VIEW 테이블
-
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
@@ -867,31 +863,6 @@ class BoardModel extends WB_Model
         $data = $this->siteModel->listSite($column, $arr_condition);
         return array_pluck($data, 'SiteName', 'SiteCode');
     }
-
-    /**
-     * 상품 정보 조회
-     * @param $arr_condition
-     * @param $column
-     * @return mixed
-     */
-    public function findProductByBoard($arr_condition, $column)
-    {
-        $from = "
-            FROM {$this->_table_product} AS {$this->_table_product}
-            INNER JOIN {$this->_table_sys_site} AS {$this->_table_sys_site} ON {$this->_table_product}.SiteCode = {$this->_table_sys_site}.SiteCode AND {$this->_table_sys_site}.IsStatus = 'Y'
-            INNER JOIN {$this->_table_product_lecture} AS {$this->_table_product_lecture} ON {$this->_table_product}.ProdCode = {$this->_table_product_lecture}.ProdCode
-            INNER JOIN {$this->_table_product_r_category} AS {$this->_table_product_r_category} ON {$this->_table_product}.ProdCode = {$this->_table_product_r_category}.ProdCode AND {$this->_table_product_r_category}.IsStatus = 'Y'
-            INNER JOIN {$this->_table_sys_category} AS {$this->_table_sys_category} ON {$this->_table_product_r_category}.CateCode = {$this->_table_sys_category}.CateCode AND {$this->_table_sys_category}.IsStatus = 'Y'
-            INNER JOIN {$this->_table_product_subject} AS {$this->_table_product_subject} ON {$this->_table_product_lecture}.SubjectIdx = {$this->_table_product_subject}.SubjectIdx AND {$this->_table_product_subject}.IsStatus = 'Y'
-            INNER JOIN {$this->_table_vw_product_r_professor_concat} AS {$this->_table_vw_product_r_professor_concat} ON {$this->_table_product}.ProdCode = {$this->_table_vw_product_r_professor_concat}.ProdCode
-        ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
-        return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
-    }
-
 
     /**
      * 게시판 카테고리 조회

@@ -150,7 +150,7 @@ class studyComment extends BaseBoard
             return;
         }
 
-        $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('dis_params'), true));
+        $result = $this->_boardIsBest(json_decode($this->_req('params'), true));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -359,26 +359,83 @@ class studyComment extends BaseBoard
             show_error('잘못된 접근 입니다.');
         }
 
-        $column = '
-            lms_site.SiteName, lms_product.ProdName, lms_sys_category.CateName, lms_product_subject.SubjectName, vw_product_r_professor_concat.wProfName_String
-            ';
-        $arr_condition = ([
-            'EQ'=>[
-                'lms_product.ProdCode' => $prod_code,
-                'lms_product.IsStatus' => 'Y'
-            ]
-        ]);
-        $data = $this->findProductForStudyBoard($arr_condition, $column);
+        // 강좌데이터 조회
+        $product_data = $this->findProductForStudyBoard(
+            [
+                'EQ' => [
+                    'lms_product.ProdCode' => $prod_code,
+                    'lms_product.IsStatus' => 'Y'
+                ]
+            ],
+            'lms_site.SiteName, lms_product.ProdName, lms_sys_category.CateName, lms_product_subject.SubjectName, vw_product_r_professor_concat.wProfName_String'
+        );
 
-        if (count($data) < 1) {
+        if (count($product_data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
         }
 
         $this->load->view("board/{$this->board_name}/readLecture",[
             'boardName' => $this->board_name,
-            'data' => $data,
-            'prod_code' => $prod_code
+            'prod_code' => $prod_code,
+            'product_data' => $product_data,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
+    }
+
+    /**
+     * 강좌코드기준 수강후기데이터 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listAjaxLectureForBoard($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prod_code = $params[0];
+
+        $arr_condition = ([
+            'EQ'=>[
+                'BmIdx' => $this->bm_idx,
+                'ProdCode' => $prod_code,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $column = 'BoardIdx, RegType, Title, Content, LecScore, IsUse, RegDatm, RegMemName, RegMemId, UpdDatm, UpdMemName, UpdMemId, UpdAdminIdx';
+
+        $list = [];
+        $count = $this->boardModel->listOnlyBoard($arr_condition,true, $column);
+
+        if ($count > 0) {
+            $list = $this->boardModel->listOnlyBoard($arr_condition, false, $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 게시글 사용/미사용
+     * @param array $params
+     */
+    public function boardIsUse($params = [])
+    {
+        $is_use_val = $params[0];
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'target', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardIsUse($is_use_val, json_decode($this->_req('target'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     /**

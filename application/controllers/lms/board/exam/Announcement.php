@@ -168,7 +168,7 @@ class Announcement extends BaseBoard
             return;
         }
 
-        $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('dis_params'), true));
+        $result = $this->_boardIsBest(json_decode($this->_req('params'), true));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 

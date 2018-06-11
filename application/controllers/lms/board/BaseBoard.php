@@ -236,12 +236,22 @@ class BaseBoard extends \app\controllers\BaseController
     /**
      * 게시판 Best 적용
      * @param array $params
-     * @param array $dis_params
      * @return array|bool
      */
-    protected function _boardIsBest($params = [], $dis_params = [])
+    protected function _boardIsBest($params = [])
     {
-        return $this->boardModel->boardIsBest($params, $dis_params);
+        return $this->boardModel->boardIsBest($params);
+    }
+
+    /**
+     * 게시판 사용/미사용 적용
+     * @param $is_use_val
+     * @param array $target
+     * @return array|bool
+     */
+    protected function _boardIsUse($is_use_val, $target = [])
+    {
+        return $this->boardModel->boardIsUse($is_use_val, $target);
     }
 
     /**

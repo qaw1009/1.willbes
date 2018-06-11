@@ -172,7 +172,6 @@
                     {'data' : 'LecScore'},
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            // 리스트 번호
                             if (row.RegType == '1') {
                                 return row.RegMemName;
                             } else {

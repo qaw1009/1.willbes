@@ -27,12 +27,13 @@ class BoardModel extends WB_Model
 
     /**
      * 게시판리스트
+     * @param $board_type
      * @param $is_count
      * @param array $arr_condition
-     * @param $sub_query_condition
+     * @param array $sub_query_condition
      * @param null $limit
      * @param null $offset
-     * @param array $order_byk
+     * @param array $order_by
      * @param string $column
      * @return mixed
      */
@@ -143,6 +144,39 @@ class BoardModel extends WB_Model
                 ";
                 break;
         }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 게시판 정보만 가져오기 : TABLE JOIN 필요 없을 경우
+     * @param array $arr_condition
+     * @param $is_count
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listOnlyBoard($arr_condition = [], $is_count, $column = '*', $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table}
+        ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -530,6 +564,36 @@ class BoardModel extends WB_Model
             $str_board_idx_Y = implode(',', array_keys($params));
             $arr_board_idx_Y = explode(',', $str_board_idx_Y);
             $this->_conn-> set($set_data_Y)->where_in('boardIdx',$arr_board_idx_Y);
+
+            if($this->_conn->update($this->_table)=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    public function boardIsUse($is_use_val, $target = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if ($is_use_val != 'N' && $is_use_val != 'Y') {
+                throw new \Exception('잘못된 데이터 입니다.');
+            }
+
+            if (count($target) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $set_data = ['IsUse' => $is_use_val];
+            $str_board_idx = implode(',', array_keys($target));
+            $str_board_idx = explode(',', $str_board_idx);
+            $this->_conn-> set($set_data)->where_in('boardIdx',$str_board_idx);
 
             if($this->_conn->update($this->_table)=== false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');

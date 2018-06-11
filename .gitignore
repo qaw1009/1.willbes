@@ -55,5 +55,8 @@ readme.rst
 !/storage/sessions/index.html
 /storage/uploads/*
 !/storage/uploads/index.html
+/storage/cli/*
+!/storage/cli/index.html
+!/storage/cli/task/index.html
 /public/uploads
 #application/config/database.php

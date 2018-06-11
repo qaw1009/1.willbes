@@ -18,6 +18,7 @@ class CommonLectureModel extends WB_Model
         'autocoupon' => 'lms_Product_R_AutoCoupon',
         'autolecture' => 'lms_Product_R_AutoLecture',
         'sublecture' => 'lms_Product_R_SubLecture',
+        'packsale' => 'lms_Product_Pack_SaleInfo',
     ];
 
     public function __construct()
@@ -691,6 +692,49 @@ class CommonLectureModel extends WB_Model
                     //echo $this->_conn->last_query();
                 }
             }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    //패키지할인정보
+    public function _setPackSale($input=[],$prodcode)
+    {
+        try {
+            /*  기존 강좌 연결 정보 상태값 변경 */
+            if($this->_setDataDelete($prodcode,$this->_table['packsale'],'패키지할인정보') !== true) {
+                throw new \Exception('패키지할인정보 수정에 실패했습니다.');
+            }
+
+            $OrderNum = element('OrderNum',$input);
+            $IsApply = element('IsApply',$input);
+            $DiscNum = element('DiscNum',$input);
+            $DiscRate = element('DiscRate',$input);
+            $LecExten = element('LecExten',$input);
+
+            if(empty($OrderNum) === false) {
+                for($i=0;$i<count($OrderNum);$i++) {
+                    $data = [
+                        'ProdCode' => $prodcode
+                        , 'OrderNum' => $OrderNum[$i]
+                        , 'IsApply' => $IsApply[$i] == 'Y' ? 'Y' : 'N'
+                        , 'DiscNum' => empty($DiscNum[$i]) === false ?  $DiscNum[$i] : NULL
+                        , 'DiscRate' => empty($DiscRate[$i]) === false ?  $DiscRate[$i] : NULL
+                        , 'LecExten' => empty($LecExten[$i]) === false ?  $LecExten[$i] : NULL
+                        , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                        , 'RegIp' => $this->input->ip_address()
+                    ];
+
+                    if($this->_conn->set($data)->insert($this->_table['packsale']) === false) {
+                        echo $this->_conn->last_query();
+                        throw new \Exception('패키지할인정보 등록에 실패했습니다.');
+                    }
+                }
+            }
+            //echo $this->_conn->last_query();
 
         } catch (\Exception $e) {
             return $e->getMessage();

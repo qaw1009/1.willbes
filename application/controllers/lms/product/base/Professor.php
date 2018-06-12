@@ -128,6 +128,12 @@ class Professor extends \app\controllers\BaseController
 
         $result = $this->professorModel->{$method . 'Professor'}($this->_reqP(null, false));
 
+        // 교수 + 과목 연결 캐쉬 저장
+        if ($result === true) {
+            $this->load->driver('caching');
+            $this->caching->site_subject_professor->save();
+        }
+
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

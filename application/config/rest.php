@@ -112,8 +112,8 @@ $config['rest_realm'] = 'WILL-API';
 |           authorization key
 | 'token' Custom token authentication method
 */
-//$config['rest_auth'] = FALSE;
-$config['rest_auth'] = 'token';
+$config['rest_auth'] = FALSE;
+//$config['rest_auth'] = 'token';
 
 /*
 |--------------------------------------------------------------------------

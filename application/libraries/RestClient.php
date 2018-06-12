@@ -506,33 +506,35 @@ class RestClient
      */
     public function debug()
     {
-        echo "=============================================<br/>\n";
-        echo "<h2>REST Test</h2>\n";
-        echo "=============================================<br/>\n";
-        echo "<h3>Request</h3>\n";
-        echo $this->_CI->curl->url."<br/>\n";
-        echo "=============================================<br/>\n";
-        echo "<h3>Response</h3>\n";
+        $output = '=============================================' . PHP_EOL;
+        $output .= '<h2>REST Debug</h2>' . PHP_EOL;
+        $output .= '=============================================' . PHP_EOL;
+        $output .= '<h3>Request</h3>' . PHP_EOL;
+        $output .= $this->_CI->curl->url . '<br/>' . PHP_EOL;
+        $output .= '=============================================' . PHP_EOL;
+        $output .= '<h3>Response</h3>' . PHP_EOL;
 
         if ($this->response_string) {
-            echo "<code>".nl2br(htmlentities($this->response_string))."</code><br/>\n";
+            $output .= '<code>'.nl2br(htmlentities($this->response_string)).'</code><br/>' . PHP_EOL;
         } else {
-            echo "No response<br/>\n";
+            $output .= 'No response<br/>' . PHP_EOL;
         }
 
-        echo "=============================================<br/>\n";
+        $output .= '=============================================<br/>' . PHP_EOL;
 
         if ($this->_CI->curl->error)
         {
-            echo "<h3>Errors</h3>";
-            echo "<strong>Code:</strong> ".$this->_CI->curl->errorCode."<br/>\n";
-            echo "<strong>Message:</strong> ".$this->_CI->curl->errorMessage."<br/>\n";
-            echo "=============================================<br/>\n";
+            $output .= '<h3>Errors</h3>' . PHP_EOL;
+            $output .= '<strong>Code:</strong> '.$this->_CI->curl->errorCode.'<br/>' . PHP_EOL;
+            $output .= '<strong>Message:</strong> '.$this->_CI->curl->errorMessage.'<br/>' . PHP_EOL;
+            $output .= '=============================================<br/>' . PHP_EOL;
         }
 
-        echo "<h3>Call details</h3>";
-        echo "<pre>";
-        print_r($this->info());
-        echo "</pre>";
+        $output .= '<h3>Call details</h3>' . PHP_EOL;
+        $output .= '<pre>' . PHP_EOL;
+        $output .= print_r($this->info(), true);
+        $output .= '</pre>' . PHP_EOL;
+
+        echo $output;
     }
 }

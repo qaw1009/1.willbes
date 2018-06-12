@@ -37,10 +37,9 @@ class Caching_site_menu extends CI_Driver
         ];
 
         $column = '
-            S.SiteCode, S.SiteName, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget
+            S.SiteCode, S.SiteName, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget, SM.MenuEtc
             , fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
         ';
-
         $from = '
             from ' . $_table['site_group'] . ' as SG 
                 inner join ' . $_table['site'] . ' as S
@@ -51,7 +50,6 @@ class Caching_site_menu extends CI_Driver
                 and S.IsUse = "Y" and S.IsStatus = "Y"
                 and SM.IsUse= "Y" and SM.IsStatus = "Y"                              
         ';
-
         $order_by = ' order by S.OrderNum asc, SM.GroupOrderNum asc, SM.OrderNum asc';
 
         // 쿼리 실행

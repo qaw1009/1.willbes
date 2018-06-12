@@ -62,7 +62,6 @@ class Caching_site extends CI_Driver
                         and C.GroupCcd = "' . $_ccd['PayMethod'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
                   ) as PayMethodCcdArr            
         ';
-
         $from = '
             from ' . $_table['site'] . ' as S 
                 left join ' . $_table['code'] . ' as DCC

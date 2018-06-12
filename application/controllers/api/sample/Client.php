@@ -17,7 +17,7 @@ class Client extends \app\controllers\BaseController
     {
         $data = $this->restclient->get('sample/server/index_get', ['id' => 'foo'], 'json');
         $this->restclient->debug();
-        var_dump($data, $data->data->name);
+        var_dump($data, $data->data->name, get_object_vars($data->data));
     }
 
     public function post()

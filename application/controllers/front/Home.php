@@ -15,13 +15,6 @@ class Home extends \app\controllers\FrontController
 
     public function index()
     {
-//        // 캐쉬 테스트
-//        $this->load->driver('caching');
-//        $this->caching->site_menu->delete();
-//        $this->caching->site_menu->save();
-//        $items = $this->caching->site_menu->get();
-//        dd($items);
-
         $this->load->view('main');
     }
 

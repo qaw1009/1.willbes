@@ -81,6 +81,13 @@
             </div>
         </div>
         <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="menu_etc">기타
+            </label>
+            <div class="col-md-9 item">
+                <input type="text" id="menu_etc" name="menu_etc" class="form-control" title="기타" value="{{ $data['MenuEtc'] }}">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
             </label>
             <div class="col-md-10 item form-inline">

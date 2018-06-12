@@ -76,7 +76,8 @@
                 var $parent_regi_form = $('#regi_form');
 
                 var $parent_location = "{{str_replace("Add",'List',$locationid)}}";
-
+                var $parent_location_tr = @if($locationid === 'subLecAdd') 'subLecTrId'; @else 'lecTrId'; @endif
+                var $parent_element = @if($locationid === 'subLecAdd') 'ProdCodeSub'; @else 'AutoProdCode'; @endif
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
@@ -154,6 +155,7 @@
                         }
                     });
 
+
                     // 적용 버튼
                     //$('#_btn_apply').on('click', function() {
                     function sendContent() {
@@ -170,12 +172,12 @@
                             //##
                             if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
 
-                                temp_data = $("#checkIdx"+i).val();		//해당 id값 추출
-                                temp_data_arr = temp_data.split("@$")		//문자열 분리
+                                temp_data = $("#checkIdx"+i).val();
+                                temp_data_arr = temp_data.split("@$");
 
                                 $(document).find("#"+$parent_location).append(
-                                    "<tr id='lecTrId"+seq+"'>"
-                                    +"		<input type='hidden'  name='AutoProdCode[]' id='AutoProdCode"+seq+"' value='"+temp_data_arr[0]+"'>"
+                                    "<tr id='"+$parent_location_tr+seq+"'>"
+                                    +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
                                     +"		<td>"+temp_data_arr[1]+"</td>"
                                     +"		<td>"+temp_data_arr[2]+"</td>"
                                     +"		<td>"+temp_data_arr[3]+"</td>"
@@ -184,7 +186,7 @@
                                     +"		<td>"+temp_data_arr[6]+"</td>"
                                     +"		<td>"+temp_data_arr[7]+"</td>"
                                     +"		<td>"+temp_data_arr[8]+"</td>"
-                                    +"		<td><a href='javascript:;' onclick=\"rowDelete('lecTrId"+seq+"')\"><i class=\"fa fa-times red\"></i></a></td>"
+                                    +"		<td><a href='javascript:;' onclick=\"rowDelete('"+$parent_location_tr+seq+"')\"><i class=\"fa fa-times red\"></i></a></td>"
                                     +"	</tr>"
                                 );
                                 seq = seq + 1;

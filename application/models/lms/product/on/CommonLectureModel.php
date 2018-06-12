@@ -48,7 +48,7 @@ class CommonLectureModel extends WB_Model
                         from
                                 lms_product A
                                 join lms_product_lecture B on A.ProdCode = B.ProdCode
-                                    join wbs_cms_lecture_combine Ba on B.wLecIdx = Ba.wLecIdx and Ba.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                    Left Outer join wbs_cms_lecture_combine Ba on B.wLecIdx = Ba.wLecIdx and Ba.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
                                 join lms_product_r_category C on A.ProdCode = C.ProdCode
                                     join vw_category_concat Ca on C.CateCode = Ca.CateCode
                                 left outer join wbs_sys_admin D on A.RegAdminIdx = D.wAdminIdx
@@ -174,6 +174,7 @@ class CommonLectureModel extends WB_Model
         } else if ($tableName === 'lms_product_r_autolecture') {    //지급강좌
 
             $column = '
+                            STRAIGHT_JOIN 
                             S.AutoProdCode
                             ,A.ProdCode,A.ProdName,A.IsUse
                             ,Aa.CcdName as SaleStatusCcd_Name
@@ -210,6 +211,47 @@ class CommonLectureModel extends WB_Model
             $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
             $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
 
+
+        } else if ($tableName === 'lms_Product_R_SubLecture') {    //패키지 강좌 구성
+
+            $column = '
+                            STRAIGHT_JOIN
+                            S.ProdCodeSub
+                            ,A.ProdCode,A.ProdName,A.IsUse
+                            ,Aa.CcdName as SaleStatusCcd_Name
+                            ,B.MultipleApply
+                            ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
+                            ,Bd.CcdName as LecTypeCcd_Name
+                            ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                            ,C.CateCode
+                            ,Ca.CateName, Cb.CateName as CateName_Parent
+                            ,D.SalePrice, D.RealSalePrice
+                            ,E.wProfName_String
+            ';
+
+            $from = ' from
+                            '.$tableName.' S	
+                            join lms_product A on S.ProdCodeSub = A.ProdCode
+                                left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                                
+                            join lms_product_lecture B on A.ProdCode = B.ProdCode
+                                left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
+                                left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
+                                left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                                left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
+                                join wbs_cms_lecture_combine_light Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx=1026
+                            join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                                join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                                left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                            left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                            join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        where S.IsStatus=\'Y\'  and A.IsStatus=\'Y\' 
+            ';
+
+            $order_by = $this->_conn->makeOrderBy(['S.OrderNum'=>'asc', 'S.PsIdx'=>'asc'])->getMakeOrderBy();
+            $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
+            //echo 'select ' .$column .$from .$where .$order_by;
+            $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
 
         } else {
 
@@ -778,7 +820,7 @@ class CommonLectureModel extends WB_Model
                     $data = [
                         'ProdCode' => $prodcode
                         ,'ProdCodeSub' => $prodcodesub[$i]
-                        ,'OrderNum' => $i+1
+                        ,'OrderNum' => ($i+1)
                         ,'RegAdminIdx' => $this->session->userdata('admin_idx')
                         ,'RegIp' => $this->input->ip_address()
                     ];

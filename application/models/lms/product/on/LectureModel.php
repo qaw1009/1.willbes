@@ -34,9 +34,9 @@ class LectureModel extends CommonLectureModel
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String,E.wProfName_String
                     ,F.DivisionCount
-                    ,0 as CartCnt
-                    ,0 as PayIngCnt
-                    ,0 as PayEndCnt
+                    ,fn_product_cart_count(A.ProdCode) as CartCnt
+                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
+                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
                     #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat 사용
                     ,Z.wAdminName
             ';

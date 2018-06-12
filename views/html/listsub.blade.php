@@ -54,6 +54,7 @@
                 <div class="ProfImg">
                     <img src="/public/img/front/sample/prof2-1.png">
                 </div>
+                <div class="prof-home subBtn NSK"><a href="#none"><img src="/public/img/front/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
             </div>
             <div class="lec-profile p_re">
                 <div class="w-list">문제풀이 / 국어</div>
@@ -69,6 +70,7 @@
                         <span class="nBox n4">완강</span>
                     </dt>
                 </dl>
+                <div class="all-view subBtn NSK"><a href="#none">개설강좌 전체보기 ></a></div>
                 <div class="w-notice p_re">
                     <ul class="w-sp">
                         <li><a href="#none">OT</a></li>
@@ -88,8 +90,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        <!-- willbes-Prof-Detail -->
 
         <div class="willbes-Lec NG c_both">
             <div class="willbes-Buy-Table p_re mt20">
@@ -104,7 +106,7 @@
                             <tr>
                                 <td class="w-lectit tx-left" colspan="3">
                                     <span class="w-obj NSK"><div class="pBox p1">강좌</div></span>
-                                    <span class="MoreBtn"><a href="#none">강좌정보 보기 ▼</a></span>
+                                    <span class="MoreBtn"><a href="#Class">강좌정보 보기 ▼</a></span>
                                 </td>
                             </tr>
                             <tr>
@@ -128,9 +130,10 @@
                     <div class="lecInfoTable" style="display: block">
                         <div class="w-lectit tx-left" colspan="3">
                             <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
-                            <span class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></span>
+                            <span class="MoreBtn"><a href="#BookInfo">교재정보 보기 ▼</a></span>
                         </div>
                         <div class="w-grid">
+                            <div class="w-sub">※ 별도 구매 가능한 교재가 없습니다.</div>
                             <div class="w-sub">
                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을...</span>
@@ -243,9 +246,22 @@
         </div>
         <!-- willbes-Lec -->
 
+        <div id="sticky" class="sticky-menu NG">
+            <ul>
+                <li><a href="#Class">강좌정보 ▼</a></li>
+                <li class="row-line">|</li>
+                <li><a href="#BookInfo">교재정보 ▼</a></li>
+                <li class="row-line">|</li>
+                <li><a href="#Leclist">강의목차 ▼</a></li>
+                <li class="row-line">|</li>
+                <li><a href="#Reply">수강후기 ▼</a></li>
+            </ul>
+        </div>
+   
+        <a name="Class" style="display: block"></a>
         <div class="willbes-Class c_both">
             <div class="willbes-Lec-Tit NG tx-black">강좌정보</div>
-            <div class="classInfoTable">
+            <div class="classInfoTable GM">
                 <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
                     <colgroup>
                         <col style="width: 140px;">
@@ -287,6 +303,7 @@
         </div>
         <!-- TopBtn-->
 
+        <a name="BookInfo" style="display: block"></a>
         <div class="willbes-BookInfo c_both">
         <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
             <div class="bookInfo">
@@ -349,6 +366,7 @@
         </div>
         <!-- TopBtn-->
 
+        <a name="Leclist" style="display: block"></a>
         <div class="willbes-Leclist c_both">
             <div class="willbes-Lec-Tit NG tx-black">강의목차</div>
             <div class="LeclistTable">
@@ -424,6 +442,7 @@
         </div>
         <!-- TopBtn-->
 
+        <a name="Reply" style="display: block"></a>
         <div class="willbes-Reply c_both">
             <div class="willbes-Lec-Tit NG tx-black">수강후기</div>
             <div class="ReplylistTable tx-gray">

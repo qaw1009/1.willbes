@@ -383,7 +383,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>
@@ -475,7 +475,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>
@@ -547,7 +547,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>

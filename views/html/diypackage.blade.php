@@ -152,7 +152,9 @@
                             <td class="w-list">문제풀이</td>
                             <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
                             <td class="w-data tx-left pl25">
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</div>
+                                <div class="w-tit">
+                                    <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
+                                </div>
                                 <dl class="w-info">
                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                     <dt>강의수 : <span class="tx-blue">70강</span></dt>
@@ -169,7 +171,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>
@@ -268,7 +270,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>
@@ -346,7 +348,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>
@@ -418,7 +420,7 @@
                             <td class="chk">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
-                            <td class="w-notice">
+                            <td class="w-notice p_re">
                                 <ul class="w-sp">
                                     <li><a href="#none">OT</a></li>
                                     <li><a href="#none">맛보기</a></li>

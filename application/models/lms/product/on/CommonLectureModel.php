@@ -724,7 +724,7 @@ class CommonLectureModel extends WB_Model
                     $data = [
                         'ProdCode' => $prodcode
                         , 'OrderNum' => $OrderNum[$i]
-                        , 'IsApply' => $IsApply[$i] == 'Y' ? 'Y' : 'N'
+                        , 'IsApply' => empty($IsApply[$i]) === false ? 'Y' : 'N'
                         , 'DiscNum' => empty($DiscNum[$i]) === false ?  $DiscNum[$i] : NULL
                         , 'DiscRate' => empty($DiscRate[$i]) === false ?  $DiscRate[$i] : NULL
                         , 'LecExten' => empty($LecExten[$i]) === false ?  $LecExten[$i] : NULL
@@ -733,7 +733,6 @@ class CommonLectureModel extends WB_Model
                     ];
 
                     if($this->_conn->set($data)->insert($this->_table['packsale']) === false) {
-                        echo $this->_conn->last_query();
                         throw new \Exception('패키지할인정보 등록에 실패했습니다.');
                     }
                 }
@@ -779,6 +778,7 @@ class CommonLectureModel extends WB_Model
                     $data = [
                         'ProdCode' => $prodcode
                         ,'ProdCodeSub' => $prodcodesub[$i]
+                        ,'OrderNum' => $i+1
                         ,'RegAdminIdx' => $this->session->userdata('admin_idx')
                         ,'RegIp' => $this->input->ip_address()
                     ];

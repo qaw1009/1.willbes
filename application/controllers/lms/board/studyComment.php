@@ -239,10 +239,8 @@ class studyComment extends BaseBoard
             ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
             ['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],
-
             /*['field' => 'prod_code', 'label' => '강좌명', 'rules' => 'trim|required'],*/
-            /*['field' => 'lec_score', 'label' => '평점', 'rules' => 'trim|required'],*/
-
+            ['field' => 'lec_score', 'label' => '평점', 'rules' => 'trim|required'],
             ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],

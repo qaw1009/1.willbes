@@ -13,29 +13,29 @@
             </div>
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">운영사이트</label>
+                    <label class="control-label col-md-2">운영사이트</label>
                     <div class="form-control-static col-md-2">
                         {{$product_data['SiteName']}}
                     </div>
-                    <label class="control-label col-md-2" for="">구분</label>
+                    <label class="control-label col-md-2">구분</label>
                     <div class="form-control-static col-md-5">
                         {{$product_data['CateName']}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">과목명</label>
+                    <label class="control-label col-md-2">과목명</label>
                     <div class="form-control-static col-md-2">
                         {{$product_data['SubjectName']}}
                     </div>
-                    <label class="control-label col-md-2" for="">교수명</label>
+                    <label class="control-label col-md-2">교수명</label>
                     <div class="form-control-static col-md-2">
                         {{$product_data['wProfName_String']}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">강좌명</label>
+                    <label class="control-label col-md-2">강좌명</label>
                     <div class="form-control-static col-md-2">
                         {{$product_data['ProdName']}}
                     </div>
@@ -74,13 +74,15 @@
         </div>
     </div>
 
+    <!-- start rating -->
+    <link href="/public/vendor/start-rating/starrating.css" rel="stylesheet">
+    <script src="/public/vendor/start-rating/jquery.starrating.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $read_form = $('#read_form');
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
-
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 paging: false,
@@ -106,7 +108,9 @@
                     {'className' : 'details-control cs-pointer', 'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<b>'+data+'</b>';
                         }},
-                    {'data' : 'LecScore'},
+                    {'data' : 'LecScore', 'render' : function(data, type, row, meta) {
+                            return '<ul class="star-rating" id="starRating' + row.BoardIdx + '" data-stars="5" data-current="'+data+'" data-static="true"></ul>';
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                         }},
@@ -121,11 +125,16 @@
                     {'data' : 'UpdAdminName'},
                     {'data' : 'UpdDatm'}
                 ],
+                "initComplete": function(settings, json) {
+                    $.each(json.data, function(i, item) {
+                        $('#starRating' + item.BoardIdx).starRating();
+                    });
+                }
             });
 
             $('#list_table tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
-                var row = $datatable.row( tr );
+                var row = $datatable.row(tr);
 
                 if ( row.child.isShown() ) {
                     row.child.hide();

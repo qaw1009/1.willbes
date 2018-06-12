@@ -49,8 +49,8 @@
                     {{$data['ProdCode']}}
                 </div>
                 <label class="control-label col-md-2" for="">평점</label>
-                <div class="form-control-static col-md-2">
-                    {{$data['LecScore']}}
+                <div class="col-md-2">
+                    <ul class="star-rating" id="starRating" data-stars="5" data-current="{{$data['LecScore']}}" data-static="true"></ul>
                 </div>
             </div>
 
@@ -148,11 +148,16 @@
         </div>
     </div>
 
-
+    <!-- start rating -->
+    <link href="/public/vendor/start-rating/starrating.css" rel="stylesheet">
+    <script src="/public/vendor/start-rating/jquery.starrating.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            //start rating
+            $('#starRating').starRating();
+
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
                 location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());

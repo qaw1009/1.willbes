@@ -105,6 +105,9 @@
         </div>
     </div>
 
+    <!-- start rating -->
+    <link href="/public/vendor/start-rating/starrating.css" rel="stylesheet">
+    <script src="/public/vendor/start-rating/jquery.starrating.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -157,10 +160,8 @@
                             }
                             return str;
                         }},
-
                     {'data' : 'SubjectName'},
                     {'data' : 'ProfNickName'},
-
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }},
@@ -168,9 +169,9 @@
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read-lecture" data-idx="' + row.ProdCode + '"><u>' + data + '</u></a>';
                         }},
-
-                    {'data' : 'LecScore'},
-
+                    {'data' : 'LecScore', 'render' : function(data, type, row, meta) {
+                            return '<ul class="star-rating" id="starRating' + row.BoardIdx + '" data-stars="5" data-current="'+data+'" data-static="true"></ul>';
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             if (row.RegType == '1') {
                                 return row.RegMemName;
@@ -178,11 +179,8 @@
                                 return row.RegMemName+'<br>'+'('+row.RegMemId+')';
                             }
                         }},
-
                     {'data' : 'RegDatm'},
-
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
-                            //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                             var chk = '';
                             if (data == 'Y') { chk = 'checked=checked'; } else { chk = ''; }
                             return '<input type="checkbox" name="is_best" value="Y" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
@@ -194,8 +192,14 @@
                     {'data' : 'ReadCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
-                        }},
+                        }}
                 ],
+                "drawCallback": function(settings) {
+                    var api = new $.fn.dataTable.Api(settings);
+                    $.each(api.rows( {page:'current'} ).data(), function(i, item) {
+                        $('#starRating' + item.BoardIdx).starRating();
+                    });
+                }
             });
 
             // 데이터 수정 폼

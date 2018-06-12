@@ -9,6 +9,7 @@
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
+        <input type="hidden" name="lec_score" value=""/>
         <div class="x_panel">
             <div class="x_title">
                 <h2>공지게시판 정보</h2>
@@ -72,7 +73,7 @@
                     </div>
                     <label class="control-label col-md-2 col-lg-offset-2" for="lec_score">평점<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        <input type="text" id="lec_score" name="lec_score" required="required" class="form-control" maxlength="2" title="평점" value="{{$data['LecScore']}}">
+                        <ul class="star-rating cs-pointer" id="starRating" data-stars="5" data-current="{{$data['LecScore']}}" data-static="false"></ul>
                     </div>
                 </div>
 
@@ -150,6 +151,9 @@
             </div>
         </div>
     </form>
+    <!-- start rating -->
+    <link href="/public/vendor/start-rating/starrating.css" rel="stylesheet">
+    <script src="/public/vendor/start-rating/jquery.starrating.js"></script>
 
     <!-- cheditor -->
     <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
@@ -160,7 +164,12 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            var set_site_code = $("#site_code option:selected").val();
+            //start rating
+            $('#starRating').starRating({
+                callback: function (value) {
+                    $regi_form.find('input[name="lec_score"]').val(value);
+                }
+            });
 
             //editor load
             var $editor_profile = new cheditor();

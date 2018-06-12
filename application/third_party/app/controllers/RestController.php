@@ -71,6 +71,15 @@ abstract class RestController extends \restserver\libraries\REST_Controller
     }
 
     /**
+     * REST API URI Param Error Response
+     * @param null $err_data
+     */
+    public function api_param_error($err_data = null)
+    {
+        return $this->api_error('필수 파라미터 오류입니다.', $err_data, _HTTP_BAD_REQUEST);
+    }
+
+    /**
      * api parameter validation check
      * @param array $rules
      * @param string $format

@@ -122,7 +122,7 @@
                             <input type="text" id="ProdName" name="ProdName" required="required" class="form-control" title="단강좌명" value="{{ $data['ProdName'] }}" style="width: 400px">
                         </div>
                     </div>
-                    <label class="control-label col-md-2">단강좌명코드
+                    <label class="control-label col-md-2">단강좌코드
                     </label>
                     <div class="col-md-4 form-inline">
                         <p class="form-control-static">@if($method == 'PUT') <b>{{ $prodcode }}</b>@else # 등록 시 자동 생성 @endif</p>

@@ -911,7 +911,7 @@ class CommonLectureModel extends WB_Model
                     , PcProvisionCcd, MobileProvisionCcd, PlayerTypeCcds, IsPackMultipleType, MultipleTypeCcd, MultipleApply, AllLecTime, LecCalcType
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
-                    , PackCateCcd, PackCateEtcMemo, PackSelCount, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
+                    , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
                     , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen';
 
             $query = 'insert into '.$this->_table['lecture'].' Select '.$select_column.' FROM '.$this->_table['lecture'].' where ProdCode='.$prodcode;

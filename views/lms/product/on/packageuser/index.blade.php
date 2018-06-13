@@ -51,7 +51,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">패키지검색</label>
-                    <div class="col-md-6 form-inline">
+                    <div class="col-md-3 form-inline">
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
                     </div>
                     <div class="col-md-5">

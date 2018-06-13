@@ -22,7 +22,8 @@ class CommonLectureModel extends WB_Model
         'site' => 'lms_site',
         'sys_category' => 'lms_sys_category',
         'product_subject' => 'lms_product_subject',
-        'vw_product_r_professor_concat' => 'vw_product_r_professor_concat'
+        'vw_product_r_professor_concat' => 'vw_product_r_professor_concat',
+        'copylog' => 'lms_product_copy_log'
     ];
 
     public function __construct()
@@ -876,7 +877,7 @@ class CommonLectureModel extends WB_Model
      * @param $prodcode
      * @return array|bool
      */
-    public function _prodCopy($prodcode)
+    public function _prodCopy($prodcode,$prodtype=null)
     {
 
         $this->_conn->trans_begin();
@@ -908,7 +909,7 @@ class CommonLectureModel extends WB_Model
             $select_column= '\''.$prodcode_new.'\' as ProdCode, CourseIdx, LearnPatternCcd, SubjectIdx, wLecIdx, SchoolYear, LecTypeCcd, StudyPeriodCcd, StudyPeriod, StudyStartDate, StudyEndDate
                     , WorkBaseStudyPeriod, WorkMultipleApply, WorkWeekDayStartTime, WorkWeekDayEndTime, WorkHoliDayStartTime, WorkHoliDayEndTime, StudyProvisionCcd
                     , PcProvisionCcd, MobileProvisionCcd, PlayerTypeCcds, IsPackMultipleType, MultipleTypeCcd, MultipleApply, AllLecTime, LecCalcType
-                    , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetake,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
+                    , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
                     , PackCateCcd, PackCateEtcMemo, PackSelCount, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
                     , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen';
@@ -1052,17 +1053,58 @@ class CommonLectureModel extends WB_Model
             };
 
 
-            //  연결강좌복사  : 단강좌는 자신이 연결강좌로
-            $insert_column = 'ProdCode, ProdCodeSub, IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
-            $select_column= str_replace('ProdCodeSub','\''.$prodcode_new.'\' as ProdCodeSub',$insert_column);
+            //  연결강좌복사
+            if($prodtype==='packageuser') {
+                $insert_column = 'ProdCode, ProdCodeSub, IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
+                $select_column = str_replace('ProdCode', '\'' . $prodcode_new . '\' as ProdCode', $insert_column);
+                $select_column = str_replace('RegAdminIdx', '\'' . $admin_idx . '\' as RegAdminIdx', $select_column);
+                $select_column = str_replace('RegIp', '\'' . $reg_ip . '\' as RegIp', $select_column);
+
+                $query = 'insert into ' . $this->_table['sublecture'] . '(' . $insert_column . ') Select ' . $select_column . ' FROM ' . $this->_table['sublecture'] . ' where ProdCode=' . $prodcode . ' And IsStatus=\'Y\'';
+                echo $query;
+                if ($this->_conn->query($query) === false) {
+                    throw new \Exception('연결강좌 복사에 실패했습니다.');
+                };
+
+            } else if ($prodtype==='packageadmin') {
+
+            } else { //단강좌는 자신이 연결강좌로
+
+                $insert_column = 'ProdCode, ProdCodeSub, IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
+                $select_column = str_replace('ProdCodeSub', '\'' . $prodcode_new. '\'' , $insert_column);
+                $select_column = str_replace('ProdCode', '\'' . $prodcode_new . '\'', $select_column);
+                $select_column = str_replace('RegAdminIdx', '\'' . $admin_idx . '\' as RegAdminIdx', $select_column);
+                $select_column = str_replace('RegIp', '\'' . $reg_ip . '\' as RegIp', $select_column);
+
+                $query = 'insert into ' . $this->_table['sublecture'] . '(' . $insert_column . ') Select ' . $select_column . ' FROM ' . $this->_table['sublecture'] . ' where ProdCode=' . $prodcode . ' And IsStatus=\'Y\'';
+                if ($this->_conn->query($query) === false) {
+                    throw new \Exception('연결강좌 복사에 실패했습니다.');
+                };
+
+            };
+
+
+            //  사용자패키지할인정보
+            $insert_column = 'ProdCode, OrderNum, IsApply, DiscNum, DiscRate, LecExten, RegAdminIdx, RegIp';
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
 
-            $query = 'insert into '.$this->_table['sublecture'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['sublecture'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
+            $query = 'insert into '.$this->_table['packsale'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['packsale'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
             if($this->_conn->query($query) === false) {
-                throw new \Exception('연결강좌 복사에 실패했습니다.');
+                throw new \Exception('패키지할인정보 복사에 실패했습니다.');
             };
+
+
+            //복사 로그 저장
+            $copy_data = [
+                'ProdCode' => $prodcode_new
+                ,'ProdCode_Original' => $prodcode
+                ,'RegAdminIdx' =>$admin_idx
+            ];
+            if($this->_conn->set($copy_data)->insert($this->_table['copylog']) === false) {
+                throw new \Exception('복사 이력 저장에 실패했습니다.');
+            }
 
             //echo $this->_conn->last_query();
             //$this->_conn->trans_rollback();

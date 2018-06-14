@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if (!function_exists('array_data_fill')) {
     /**
      * $array 배열에 $data 배열의 키와 값을 추가
-     * @param $array
-     * @param $data
-     * @param $is_self_ref [$data 배열의 값이 다시 배열일 경우 해당 배열 키에 해당하는 $array 값으로 배열 값을 추출할 경우 true]
+     * @param array $array [대상 배열]
+     * @param array $data [추가할 배열 원소의 키와 값으로 구성된 배열, ex) k => v, k1 => [k2 => [k3 => v1, k3-2 => v2 ...]]]
+     * @param bool $is_self_ref [true => $data 배열의 k1 키의 값이 배열이고 $array 배열에서 k2 키의 값을 추출하여 그 값과 k3의 배열 키값이 같다면 그 값을 리턴, false => k1 키의 배열 값을 설정]
      * @return array
      */
     function array_data_fill($array, $data, $is_self_ref = false)
@@ -32,9 +32,9 @@ if (!function_exists('array_data_fill')) {
 if (!function_exists('array_get')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 $key에 해당하는 값 리턴
-     * @param $array
-     * @param $key
-     * @param $default
+     * @param array $array [대상 배열]
+     * @param string $key [dot(.) 표기법으로 설정된 대상 배열 키, ex) a1.a2.a3 = arr[a1][a2][a3]]
+     * @param null|mixed $default [해당하는 배열 키가 없을 경우 기본 값]
      * @return mixed
      */
     function array_get($array, $key, $default = null)
@@ -58,8 +58,8 @@ if (!function_exists('array_get')) {
 if (!function_exists('array_has')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 $key가 존재하는지 여부 리턴
-     * @param $array
-     * @param $key
+     * @param array $array [대상 배열]
+     * @param string $key [dot(.) 표기법으로 설정된 대상 배열 키, ex) a1.a2.a3 = arr[a1][a2][a3]]
      * @return bool
      */
     function array_has($array, $key)
@@ -83,9 +83,9 @@ if (!function_exists('array_has')) {
 if (!function_exists('array_pluck')) {
     /**
      * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정
-     * @param $array
-     * @param $value
-     * @param $key
+     * @param array $array [대상 배열]
+     * @param string $value [리턴되는 배열의 값이 되는 대상 배열의 키]
+     * @param null|string $key [리턴되는 배열의 키가 되는 대상 배열의 키]
      * @return array
      */
     function array_pluck($array, $value, $key = null)
@@ -98,8 +98,8 @@ if (!function_exists('array_data_pluck')) {
     /**
      * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정 ($value, $key를 dot(.) 표기법으로 사용)
      * @param array $array [대상 배열]
-     * @param string|array $value [리턴되는 배열의 값이 되는 배열의 키, 배열일 경우 구분자(::)로 연결하여 설정]
-     * @param null|string|array $key [리턴되는 배열의 키가 되는 배열의 키, 배열일 경우 구분자(::)로 연결하여 설정]
+     * @param string|array $value [리턴되는 배열의 값이 되는 대상 배열의 키, 인자가 배열일 경우 구분자(::)로 연결하여 설정]
+     * @param null|string|array $key [리턴되는 배열의 키가 되는 대상 배열의 키, 인자가 배열일 경우 구분자(::)로 연결하여 설정]
      * @return array
      */
     function array_data_pluck($array, $value, $key = null)
@@ -141,10 +141,10 @@ if (!function_exists('array_data_pluck')) {
 if (!function_exists('array_set')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 값을 설정
-     * @param $array
-     * @param $key
-     * @param $value
-     * @return mixed
+     * @param array $array [대상 배열]
+     * @param string $key [dot(.) 표기법으로 설정된 대상 배열 키, ex) a1.a2.a3 = arr[a1][a2][a3]]
+     * @param mixed $value [설정할 배열 값]
+     * @return array
      */
     function array_set(&$array, $key, $value)
     {

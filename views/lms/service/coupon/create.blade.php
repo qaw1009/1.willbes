@@ -16,8 +16,6 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ $idx }}"/>
-                <input type="hidden" name="prod_code" value="{{ $data['ApplyProdCode'] }}" title="상품 선택"/>
-                <input type="hidden" name="mock_exam_idx" value="{{ $data['ApplyProdCode'] }}" title="모의고사 선택"/>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트 <span class="required">*</span>
                     </label>
@@ -186,10 +184,19 @@
                     </label>
                     <div class="col-md-9 form-inline">
                         @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['ApplyProdName'] }}</p>
+                            <p class="form-control-static">{{ $data['ProdNames'] or '' }}</p>
                         @else
                             <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
-                            <span id="selected_product" class="pl-10"></span>
+                            <span id="selected_product" class="pl-10">
+                                @if(isset($data['ProdCodes']) === true)
+                                    @foreach($data['ProdCodes'] as $prod_code => $prod_name)
+                                        <span class="pr-10">{{ $prod_name }}
+                                            <a href="#none" data-prod-code="{{ $prod_code }}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                            <input type="hidden" name="prod_code[]" value="{{ $prod_code }}"/>
+                                        </span>
+                                    @endforeach
+                                @endif
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -303,6 +310,10 @@
                         alert('카테고리 선택 필드는 필수입니다.');
                         return false;
                     }
+                    if($regi_form.find('input[name="apply_range_type"]:checked').val() === 'P' && $regi_form.find('input[name="prod_code[]"]').length < 1) {
+                        alert('상품 선택 필드는 필수입니다.');
+                        return false;
+                    }
                 @endif
 
                 var _url = '{{ site_url('/service/coupon/regist/store') }}';
@@ -344,35 +355,46 @@
                 $('#selected_category').html('');
             });
 
-            // 카테고리 검색
-            $('#btn_category_search').on('click', function() {
+            // 카테고리 검색 or 상품 검색
+            $('#btn_category_search, #btn_product_search').on('click', function(event) {
+                var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.')
                     return;
                 }
 
-                $('#btn_category_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
-                    'width' : 900
-                });
+                if (btn_id === 'btn_category_search') {
+                    $('#btn_category_search').setLayer({
+                        'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                        'width' : 900
+                    });
+                } else if (btn_id === 'btn_product_search') {
+                    var prod_type = $('input[name="apply_type_ccd"]:checked').data('input').split(':')[2];
+                    if (prod_type === 'book') {
+                        // 교재 검색
+                        $('#btn_product_search').setLayer({
+                            'url' : '{{ site_url('/common/searchBook/') }}?site_code=' + site_code + '&return_type=inline&target_id=selected_product&target_field=prod_code',
+                            'width' : 1200
+                        });
+                    }
+                }
             });
 
-            // 카테고리 삭제
-            $regi_form.on('click', '.selected-category-delete', function() {
+            // 카테고리, 상품 삭제
+            $regi_form.on('click', '.selected-category-delete, .selected-product-delete', function() {
                 var that = $(this);
                 that.parent().remove();
-                $regi_form.find('input[name="cate_code[]"][value="' + that.data('cate-code') + '"]').remove();
             });
 
             // 쿠폰배포루트 선택
             $regi_form.on('ifChanged ifCreated', 'input[name="deploy_type"]:checked', function() {
+                var $pin_off = $('#pin_off');
                 var deploy_type = $(this).val();
 
-                $('#pin_off').removeClass('show').addClass('hide');
-
+                $pin_off.removeClass('show').addClass('hide');
                 if (deploy_type === 'F') {
-                    $('#pin_off').addClass('show');
+                    $pin_off.addClass('show');
                 }
             });
 

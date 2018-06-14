@@ -411,30 +411,19 @@
                 $('#selected_subject_mapping').html('');
             });
 
-            // 교수 검색
-            $('#btn_professor_search').on('click', function() {
+            // 교수 검색 or 카테고리 + 과목 맵핑 검색
+            $('#btn_professor_search, #btn_subject_mapping_search').on('click', function(event) {
+                var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
+                var search_url = (btn_id === 'btn_professor_search') ? '{{ site_url('/common/searchWProfessor/index/professor/') }}' : '{{ site_url('/common/searchSubjectMapping/index/') }}';
+
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
 
-                $('#btn_professor_search').setLayer({
-                    'url' : '{{ site_url('/common/searchWProfessor/index/professor/') }}' + site_code,
-                    'width' : 900
-                });
-            });
-
-            // 카테고리 + 과목 맵핑 검색
-            $('#btn_subject_mapping_search').on('click', function() {
-                var site_code = $regi_form.find('select[name="site_code"]').val();
-                if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
-                    return;
-                }
-
-                $('#btn_subject_mapping_search').setLayer({
-                    'url' : '{{ site_url('/common/searchSubjectMapping/index/') }}' + site_code,
+                $('#' + btn_id).setLayer({
+                    'url' : search_url + site_code,
                     'width' : 900
                 });
             });
@@ -443,7 +432,6 @@
             $regi_form.on('click', '.selected-subject-mapping-delete', function() {
                 var that = $(this);
                 that.parent().remove();
-                $regi_form.find('input[name="subject_mapping_code[]"][value="' + that.data('subject-mapping-code') + '"]').remove();
             });
 
             // 교수카페정보

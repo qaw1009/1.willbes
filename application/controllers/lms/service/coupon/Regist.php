@@ -53,10 +53,12 @@ class Regist extends \app\controllers\BaseController
             $list = array_map(function ($row) use ($codes) {
                 // 적용상세구분
                 $row['LecTypeNames'] = '';
-                foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
-                    $row['LecTypeNames'] .= ',' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
+                if (empty($row['LecTypeCcds']) === false) {
+                    foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
+                        $row['LecTypeNames'] .= ',' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
+                    }
+                    $row['LecTypeNames'] = substr($row['LecTypeNames'], 1);
                 }
-                $row['LecTypeNames'] = substr($row['LecTypeNames'], 1);
 
                 return $row;
             }, $list);
@@ -86,11 +88,12 @@ class Regist extends \app\controllers\BaseController
             $list = array_map(function ($row) use ($codes) {
                 // 적용상세구분
                 $lec_type_names = '';
-                foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
-                    $lec_type_names .= ', ' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
+                if (empty($row['LecTypeCcds']) === false) {
+                    foreach (explode(',', $row['LecTypeCcds']) as $lec_type_ccd) {
+                        $lec_type_names .= ', ' . $codes[$this->_ccd['LecType']][$lec_type_ccd][0];
+                    }
+                    $row['LecTypeCcds'] = substr($lec_type_names, 1);
                 }
-                $row['LecTypeCcds'] = substr($lec_type_names, 1);
-
                 return $row;
             }, $list);
         }
@@ -165,6 +168,13 @@ class Regist extends \app\controllers\BaseController
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
 
+            // 상품 연결 데이터 조회
+            if ($data['ApplyRangeType'] == 'P') {
+                $arr_prod_code = $this->couponRegistModel->listCouponProduct($idx);
+                $data['ProdCodes'] = $arr_prod_code;
+                $data['ProdNames'] = implode(', ', array_values($arr_prod_code));
+            }
+
             if (isset($params[1]) === true && $params[1] == 'copy') {
                 $method = 'POST';
                 $idx = null;
@@ -217,8 +227,7 @@ class Regist extends \app\controllers\BaseController
                 ['field' => 'apply_type_ccd', 'label' => '쿠폰적용구분', 'rules' => 'trim|required'],
                 ['field' => 'lec_type_ccd[]', 'label' => '쿠폰상세구분', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_lec_ccds) . ']'],
                 ['field' => 'apply_school_year', 'label' => '대비학년도', 'rules' => 'callback_validateRequiredIf[apply_range_type,I]|integer'],
-                ['field' => 'prod_code', 'label' => '상품선택', 'rules' => 'callback_validateRequiredIf[apply_range_type,P]|integer'],
-                ['field' => 'mock_exam_idx', 'label' => '모의고사선택', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_mock_ccds) . ']|integer'],
+                ['field' => 'prod_code[]', 'label' => '상품선택', 'rules' => 'callback_validateRequiredIf[apply_range_type,P]|integer'],
                 ['field' => 'disc_rate', 'label' => '할인율', 'rules' => 'trim|required|integer'],
                 ['field' => 'disc_type', 'label' => '할인구분', 'rules' => 'trim|required|in_list[R,P]'],
                 ['field' => 'disc_allow_price', 'label' => '할인허용가능금액', 'rules' => 'trim|required|integer'],

@@ -13,13 +13,21 @@ class SearchBook extends \app\controllers\BaseController
 
     public function index()
     {
-        $codes = $this->codeModel->getCcdInArray(['610']);    //교재제공구분
+        $return_type = get_var($this->_req('return_type'), 'table');
+        $data = [
+            'site_code' => $this->_req('site_code'),
+            'return_type' => $return_type,
+            'target_id' => get_var($this->_req('target_id'), 'bookList'),
+            'target_field' => get_var($this->_req('target_field'), 'BookProdCode'),
+            'bookprovision_ccd' => []
+        ];
 
-        $this->load->view('common/search_book',[
-            'site_code' => $this->_req('site_code')
-            ,'ProdCode' => $this->_req('ProdCode')
-            ,'bookprovision_ccd' => $codes['610']
-        ]);
+        if ($return_type == 'table') {
+            $data['ProdCode'] = $this->_req('ProdCode');
+            $data['bookprovision_ccd'] = $this->codeModel->getCcd('610');
+        }
+
+        $this->load->view('common/search_book', $data);
     }
 
     /**

@@ -7,9 +7,11 @@ class CouponRegistModel extends WB_Model
         'coupon' => 'lms_coupon',
         'coupon_detail' => 'lms_coupon_detail',
         'coupon_r_category' => 'lms_coupon_r_category',
+        'coupon_r_product' => 'lms_coupon_r_product',
         'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'category' => 'lms_sys_category',
+        'product' => 'lms_product',
         'admin' => 'wbs_sys_admin'
     ];
     public $_ccd = [
@@ -182,6 +184,24 @@ class CouponRegistModel extends WB_Model
     }
 
     /**
+     * 쿠폰 상품 연결 데이터 조회
+     * @param $coupon_idx
+     * @return array
+     */
+    public function listCouponProduct($coupon_idx)
+    {
+        $data = $this->_conn->getJoinListResult($this->_table['coupon_r_product'] . ' as CP', 'inner', $this->_table['product'] . ' as P', 'CP.ProdCode = P.ProdCode'
+                , 'CP.ProdCode, P.ProdName', [
+                    'EQ' => [
+                        'CP.CouponIdx' => $coupon_idx, 'CP.IsStatus' => 'Y', 'P.IsUse' => 'Y', 'P.IsStatus' => 'Y'
+                    ]
+                ], null, null, ['CP.CpIdx' => 'asc']
+            );
+
+        return array_pluck($data, 'ProdName', 'ProdCode');
+    }
+
+    /**
      * 쿠폰 정보 조회
      * @param string $column
      * @param array $arr_condition
@@ -203,13 +223,8 @@ class CouponRegistModel extends WB_Model
     {
         $column = '
             C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
-                , C.ApplySchoolYear, C.ApplySubjectIdx, C.ApplyCourseIdx, C.ApplyProfIdx, C.ApplyProdCode, C.DiscType, C.DiscRate, C.DiscAllowPrice
+                , C.ApplySchoolYear, C.ApplySubjectIdx, C.ApplyCourseIdx, C.ApplyProfIdx, C.DiscType, C.DiscRate, C.DiscAllowPrice
                 , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.CouponDesc, C.IsIssue, C.RegDatm, C.RegAdminIdx, C.UpdDatm, C.UpdAdminIdx
-                , (case 
-                    when ApplyRangeType = "P" then (select ProdName from lms_product where ProdCode = C.ApplyProdCode)
-                    when ApplyTypeCcd in ("' . implode(',', $this->_apply_type_to_mock_ccds) . '") then "모의고사"
-                    else ""
-                  end) as ApplyProdName                                         
                 , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName
                 , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName                            
         ';
@@ -239,7 +254,6 @@ class CouponRegistModel extends WB_Model
             $apply_subject_idx = ($apply_range_type == 'I') ? element('apply_subject_idx', $input) : '';
             $apply_course_idx = ($apply_range_type == 'I') ? element('apply_course_idx', $input) : '';
             $apply_prof_idx = ($apply_range_type == 'I') ? element('apply_prof_idx', $input) : '';
-            $apply_prod_code = ($apply_range_type == 'P' || in_array($apply_type_ccd, $this->_apply_type_to_mock_ccds) === true) ? get_var(element('prod_code', $input), element('mock_exam_idx', $input)) : '';
 
             $data = [
                 'SiteCode' => element('site_code', $input),
@@ -255,7 +269,6 @@ class CouponRegistModel extends WB_Model
                 'ApplySubjectIdx' => $apply_subject_idx,
                 'ApplyCourseIdx' => $apply_course_idx,
                 'ApplyProfIdx' => $apply_prof_idx,
-                'ApplyProdCode' => $apply_prod_code,
                 'DiscType' => element('disc_type', $input),
                 'DiscRate' => element('disc_rate', $input),
                 'DiscAllowPrice' => element('disc_allow_price', $input),
@@ -279,6 +292,14 @@ class CouponRegistModel extends WB_Model
             $is_coupon_category = $this->_replaceCouponCategory(element('cate_code', $input), $coupon_idx);
             if ($is_coupon_category !== true) {
                 throw new \Exception($is_coupon_category);
+            }
+
+            // 상품 정보 등록
+            if ($apply_range_type == 'P') {
+                $is_coupon_product = $this->_replaceCouponProduct(element('prod_code', $input), $coupon_idx);
+                if ($is_coupon_product !== true) {
+                    throw new \Exception($is_coupon_product);
+                }
             }
 
             // 배포루트가 오프라인일 경우 핀번호 배정
@@ -386,6 +407,59 @@ class CouponRegistModel extends WB_Model
 
                 if ($is_insert === false) {
                     throw new \Exception('카테고리 정보 등록에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 쿠폰 상품 연결 데이터 저장
+     * @param $arr_prod_code
+     * @param $coupon_idx
+     * @return bool|string
+     */
+    private function _replaceCouponProduct($arr_prod_code, $coupon_idx)
+    {
+        $_table = $this->_table['coupon_r_product'];
+        $arr_prod_code = (is_null($arr_prod_code) === true) ? [] : array_values(array_unique($arr_prod_code));
+        $admin_idx = $this->session->userdata('admin_idx');
+
+        try {
+            // 기존 설정된 상품 연결 데이터 조회
+            $data = $this->_conn->getListResult($_table, 'CpIdx, ProdCode', ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
+            if (count($data) > 0) {
+                $data = array_pluck($data, 'ProdCode', 'CpIdx');
+
+                // 기존 등록된 상품 연결 데이터 삭제 처리 (전달된 상품코드 중에 기 등록된 상품코드가 없다면 삭제 처리)
+                $arr_delete_prod_code = array_diff($data, $arr_prod_code);
+                if (count($arr_delete_prod_code) > 0) {
+                    $is_update = $this->_conn->set([
+                        'IsStatus' => 'N',
+                        'UpdAdminIdx' => $admin_idx
+                    ])->where_in('CpIdx', array_keys($arr_delete_prod_code))->where('CouponIdx', $coupon_idx)->update($_table);
+
+                    if ($is_update === false) {
+                        throw new \Exception('기 설정된 상품 정보 수정에 실패했습니다.');
+                    }
+                }
+            }
+
+            // 신규 등록 (기 등록된 상품코드 중에 전달된 상품코드가 없다면 등록 처리)
+            $arr_insert_prod_code = array_diff($arr_prod_code, $data);
+            foreach ($arr_insert_prod_code as $prod_code) {
+                $is_insert = $this->_conn->set([
+                    'CouponIdx' => $coupon_idx,
+                    'ProdCode' => $prod_code,
+                    'RegAdminIdx' => $admin_idx,
+                    'RegIp' => $this->input->ip_address()
+                ])->insert($_table);
+
+                if ($is_insert === false) {
+                    throw new \Exception('상품 정보 등록에 실패했습니다.');
                 }
             }
         } catch (\Exception $e) {

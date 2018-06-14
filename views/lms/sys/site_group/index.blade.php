@@ -5,7 +5,6 @@
         <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}">사이트 생성관리</a></li>
         <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/group') }}" class="cs-pointer"><strong>사이트 그룹 정보관리</strong></a></li>
         <li role="presentation"><a href="{{ site_url('/sys/site/index/category') }}">사이트 카테고리 관리</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/menu') }}">사이트 메뉴 관리</a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 그룹 정보를 관리하는 메뉴입니다. (생성한 그룹 정보는 사이트생성 시 연동 처리 됩니다.)</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">

@@ -1,12 +1,6 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}">사이트 생성관리</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/group') }}">사이트 그룹 정보관리</a></li>
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/category') }}">사이트 카테고리 관리</a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/menu') }}" class="cs-pointer"><strong>사이트 메뉴 관리</strong></a></li>
-    </ul>
     <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
@@ -126,7 +120,7 @@
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-                sendAjax('{{ site_url('/sys/site/reorder/menu') }}', data, function(ret) {
+                sendAjax('{{ site_url('/site/siteMenu/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace(location.pathname + dtParamsToQueryString($datatable));
@@ -149,7 +143,7 @@
                 }
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/sys/site/create/menu/') }}' + uri_param,
+                    'url' : '{{ site_url('/site/siteMenu/create/') }}' + uri_param,
                     'width' : 900
                 });
             });

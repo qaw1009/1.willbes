@@ -138,13 +138,13 @@
 
                 // 메뉴 등록
                 $regi_form.submit(function() {
-                    var _url = '{{ site_url('/sys/site/store/menu') }}';
+                    var _url = '{{ site_url('/site/siteMenu/store') }}';
 
                     ajaxSubmit($regi_form, _url, function(ret) {
                         if(ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $("#pop_modal").modal('toggle');
-                            location.replace('{{ site_url('/sys/site/index/menu/') }}' + dtParamsToQueryString($datatable));
+                            location.replace('{{ site_url('/site/siteMenu/index/') }}' + dtParamsToQueryString($datatable));
                         }
                     }, showValidateError, null, false, 'alert');
                 });

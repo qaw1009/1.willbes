@@ -1,16 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SiteMenu
+class SiteMenu extends \app\controllers\BaseController
 {
-    private $_CI;
+    protected $models = array('site/siteMenu', 'sys/site');
+    protected $helpers = array('text');
 
     public function __construct()
     {
-        $this->_CI =& get_instance();
-
-        // load model
-        $this->_CI->load->loadModels(['sys/siteMenu', 'sys/site']);
+        parent::__construct();
     }
 
     /**
@@ -18,9 +16,9 @@ class SiteMenu
      */
     public function index()
     {
-        $list = $this->_CI->siteMenuModel->listAllSiteMenu();
+        $list = $this->siteMenuModel->listAllSiteMenu();
 
-        $this->_CI->load->view('sys/site_menu/index', [
+        $this->load->view('site/site_menu/index', [
             'data' => $list
         ]);
     }
@@ -36,17 +34,17 @@ class SiteMenu
         $site_code = '';
         $menu_route_name = null;
 
-        if (isset($params[2]) === true) {
+        if (isset($params[1]) === true) {
             // 메뉴 등록
             $method = 'POST';
             $idx = null;
-            $menu_depth = $params[1];
-            $parent_menu_idx = $params[2];
+            $menu_depth = $params[0];
+            $parent_menu_idx = $params[1];
 
             if ($menu_depth > 1) {
-                $row = $this->_CI->siteMenuModel->findSiteMenuWithRouteName($parent_menu_idx);
+                $row = $this->siteMenuModel->findSiteMenuWithRouteName($parent_menu_idx);
                 if (count($row) < 1) {
-                    return $this->_CI->json_error('부모 메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+                    return $this->json_error('부모 메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
                 $site_code = $row['SiteCode'];
@@ -55,11 +53,11 @@ class SiteMenu
         } else {
             // 메뉴 수정
             $method = 'PUT';
-            $idx = $params[1];
+            $idx = $params[0];
 
-            $data = $this->_CI->siteMenuModel->findSiteMenuForModify($idx);
+            $data = $this->siteMenuModel->findSiteMenuForModify($idx);
             if (count($data) < 1) {
-                return $this->_CI->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+                return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
             $site_code = $data['SiteCode'];
             $menu_depth = $data['MenuDepth'];
@@ -67,7 +65,7 @@ class SiteMenu
             $menu_route_name = $data['MenuRouteName'];
         }
 
-        $this->_CI->load->view('sys/site_menu/create', [
+        $this->load->view('site/site_menu/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
@@ -89,9 +87,9 @@ class SiteMenu
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 
-        if (empty($this->_CI->_reqP('idx')) === true) {
+        if (empty($this->_reqP('idx')) === true) {
             $method = 'add';
-            if ($this->_CI->_reqP('parent_menu_idx') == 0) {
+            if ($this->_reqP('parent_menu_idx') == 0) {
                 $rules = array_merge($rules, [
                     ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
                 ]);
@@ -104,16 +102,16 @@ class SiteMenu
             ]);
         }
 
-        if ($this->_CI->validate($rules) === false) {
+        if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->_CI->siteMenuModel->{$method . 'SiteMenu'}($this->_CI->_reqP(null, false));
+        $result = $this->siteMenuModel->{$method . 'SiteMenu'}($this->_reqP(null, false));
 
         // 사이트 메뉴 캐쉬 저장
         $this->_saveSiteMenuCache($result);
 
-        $this->_CI->json_result($result, '저장 되었습니다.', $result);
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -126,13 +124,13 @@ class SiteMenu
             ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
         ];
 
-        if ($this->_CI->validate($rules) === false) {
+        if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->_CI->siteMenuModel->modifySiteMenusReorder(json_decode($this->_CI->_reqP('params'), true));
+        $result = $this->siteMenuModel->modifySiteMenusReorder(json_decode($this->_reqP('params'), true));
 
-        $this->_CI->json_result($result, '저장 되었습니다.', $result);
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -142,8 +140,8 @@ class SiteMenu
     private function _saveSiteMenuCache($is_success)
     {
         if ($is_success === true) {
-            $this->_CI->load->driver('caching');
-            $this->_CI->caching->site_menu->save();
+            $this->load->driver('caching');
+            $this->caching->site_menu->save();
         }
     }
 }

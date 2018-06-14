@@ -685,9 +685,9 @@ table.auTable tr td {
     padding-right: 10px;
 }
 #Gnb h4 {
+    position: relative;
     font-size: 15px;
     text-align: center;
-    margin:0 10px;
     padding-top: 15px;
 }
 #Gnb h4 ul li {
@@ -704,7 +704,7 @@ table.auTable tr td {
 #Gnb h4 ul li.Acad  {
     border-top: 1px solid #ececec;
     padding-top: 15px;
-    margin-top: 15px;
+    margin: 15px 10px 0;
 }
 #Gnb .sns-Btn {
     text-align: center;
@@ -730,6 +730,50 @@ table.auTable tr td {
     text-align: center;
 }
 
+/* Gnb : slider */
+.bx-wrapper {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    bottom: 8px;
+    text-align: right;
+}
+.bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.bx-wrapper .bx-pager.bx-default-pager a.active,
+.bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #fff;
+}
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+    width: 30px;
+}
+.sliderGNB {
+    width: 120px;
+    height: 188px;
+    margin: 0 auto 15px;
+    overflow: hidden;
+}
+.sliderView {
+    width: 242px;
+    height: 103px;
+    overflow: hidden;
+}
+
+.topView {
+    display: none;
+}
+
 /* Gnb : md */
 .Gnb-md {
     width: 150px;
@@ -740,9 +784,6 @@ table.auTable tr td {
     width: 9px;
     height: 6px;
     margin: 17px 10px 17px 0;
-}
-.Gnb-md .gnb-List .gnb-List-Tit.active a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -20px -12px;
 }
 .Gnb-md .gnb-List {
     border-top: 1px solid #ececec;
@@ -755,20 +796,8 @@ table.auTable tr td {
     line-height: 40px;
     border-bottom: 1px solid #ececec;
 }
-.Gnb-md .gnb-List .gnb-List-Depth {
+.Gnb-md .gnb-List .gnb-List-Tit.active {
     display: none;
-}
-.Gnb-md .gnb-List .gnb-List-Depth.active {
-    display: block !important;
-}
-.Gnb-md .gnb-List .gnb-List-Depth dl dt {
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #ececec;
-}
-.Gnb-md .gnb-List .gnb-List-Depth dl dt a {
-    display: block;
-    padding-left: 50px;
 }
 .Gnb-md .gnb-List-Sub li {
     background: #f6f6f6;
@@ -789,11 +818,9 @@ table.auTable tr td {
 }
 
 /* Gnb : sm */
-#Gnb.Gnb-sm h1,
-#Gnb.Gnb-sm h4,
+#Gnb.Gnb-sm .topView,
 .Gnb-sm .gnb-List-Tit .Txt,
-.Gnb-sm .gnb-List-Sub .Txt,
-.Gnb-sm .gnb-List .gnb-List-Depth {
+.Gnb-sm .gnb-List-Sub .Txt {
     display: none !important;
 }
 .Gnb-sm .gnb-List {
@@ -862,9 +889,6 @@ table.auTable tr td {
     height: 8px;
     margin-left: 7px;
 }
-#Header ul.myLog li.joimyPagenUs.active a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -10px -12px;
-}
 #Header ul.myLog li.csCenter {
     margin-left: 25px;
 }
@@ -874,6 +898,9 @@ table.auTable tr td {
 }
 
 /* Header : drop-Box */
+.dropdown:hover .drop-Box {
+    display: block;
+}
 .drop-Box {
     display: none;
     position: absolute;
@@ -897,8 +924,7 @@ table.auTable tr td {
     left: 50%;
     margin-left: -6px;
     border-color: transparent transparent #acacac;
-    border-width: 
-    6px;
+    border-width: 6px;
 }
 .drop-Box:after {
     top: -10px;
@@ -918,6 +944,65 @@ table.auTable tr td {
     top: 40px;
     right: 70px;
 }
+
+/* Header : left-drop-Box */
+.dropdown:hover .left-drop-Box {
+    display: block;
+}
+.left-drop-Box {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 149px;
+    background: #fff;
+    width: 380px;
+    border: 1px solid #acacac;
+    box-shadow: 5px 5px 25px #e1e1e1;
+}
+
+.left-drop-Box:after,
+.left-drop-Box:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+.left-drop-Box:before {
+    top: 10px;
+    left: 0;
+    margin-left: -6px;
+    border-color: transparent #acacac;
+    border-width: 6px;
+    border-left: none;
+}
+.left-drop-Box:after {
+    top: 11px;
+    left: 0;
+    margin-left: -5px;
+    border-color: transparent #fff;
+    border-width: 5px;
+    border-left: none;
+}
+.left-drop-Box ul {
+    float: left;
+    width: 105px;
+}
+.left-drop-Box ul li {
+    text-align: left;
+    border-top: 1px solid #e6e6e6;
+    line-height: 32px !important;
+}
+.left-drop-Box ul li:first-child {
+    border-top: none;
+}
+.left-drop-Box ul li a {
+    display: block;
+    font-size: 14px;
+    padding-left: 15px;
+}
+
 .num-New {
     display: inline-block;
     background: #ed1c24;

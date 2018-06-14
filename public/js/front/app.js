@@ -21,49 +21,25 @@ $(function() {
     });
 });
 
-// 로그인폼 Depth Script
+// Slider Script
 $(function() {
-    $('.loginDepth .myLog .joinUs').hover(function() {
-        if( $(".joinUs-Box").is(":hidden") ) {
-            $(".joinUs-Box").fadeIn(200);
-        }
-        else
-        {
-            $(".joinUs-Box").fadeOut(200);
-        }
-    });
-});
-$(function() {
-    $('.loginDepth .myLog .myPage').hover(function() {
-        if( $(".myPage-Box").is(":hidden") ) {
-            $(".myPage-Box").fadeIn(200);
-        }
-        else
-        {
-            $(".myPage-Box").fadeOut(200);
-        }
+    $('.slider').bxSlider({
+        auto: true,
+        controls: false,
+        pause: 3000,
     });
 });
 
-// GNB 아코디언 메뉴 Script
+// GNB Menu Script
 $(function() {
-    $('div.gnb-List-Tit').click(function() {
-        
-        $(this).siblings('.active')
-            .removeClass('active')
-
-        if($(this).next().is(':visible')) {
-            $('div.gnb-List-Depth').slideUp('normal');
-            $(this).removeClass("active");
-
-        } else {
-            $('div.gnb-List-Depth').slideUp('normal');    
-            $(this).next().slideDown('normal');
-            $(this).addClass("active"); 
-
-        }
-    });
-});
+    var sBtn = $(".gnb-List > .gnb-List-Tit");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
+        sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
+        sBtn.removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
+        $(this).parent().addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
+        $('.topView').css("display","block");
+        $('.sliderGNB').css("display","none");  
+    })
+})
 
 // 닫기 Script
 function closeWin(divID) {
@@ -78,3 +54,9 @@ function goTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+$('li > a').click(function() {
+    $('li').removeClass();
+    $(this).parent().addClass('active');
+});
+

@@ -6,7 +6,7 @@
                 <li class="Login">
                     <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>
                 </li>
-                <li class="joinUs">
+                <li class="joinUs dropdown">
                     <a class="Tit" href="#none">회원가입<span class="arrow-Btn">></span></a>
                     <div class="drop-Box joinUs-Box">
                         <ul>
@@ -22,7 +22,7 @@
                 <li class="myCart">
                     <a class="Tit" href="#none">장바구니</a>
                 </li>
-                <li class="myPage">
+                <li class="myPage dropdown">
                     <a class="Tit" href="#none">내강의실<span class="arrow-Btn">></span></a>
                     <div class="drop-Box myPage-Box">
                         <ul>

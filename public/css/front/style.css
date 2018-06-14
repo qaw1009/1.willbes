@@ -770,9 +770,8 @@ table.auTable tr td {
     overflow: hidden;
 }
 
-.topView {
-    display: none;
-}
+
+
 
 /* Gnb : md */
 .Gnb-md {
@@ -785,6 +784,9 @@ table.auTable tr td {
     height: 6px;
     margin: 17px 10px 17px 0;
 }
+.Gnb-md .gnb-List .gnb-List-Tit.active a .arrow-Btn {
+    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -20px -12px;
+}
 .Gnb-md .gnb-List {
     border-top: 1px solid #ececec;
 }
@@ -796,9 +798,22 @@ table.auTable tr td {
     line-height: 40px;
     border-bottom: 1px solid #ececec;
 }
-.Gnb-md .gnb-List .gnb-List-Tit.active {
+.Gnb-md .gnb-List .gnb-List-Depth {
     display: none;
 }
+.Gnb-md .gnb-List .gnb-List-Depth.on {
+    display: block !important;
+}
+.Gnb-md .gnb-List .gnb-List-Depth dl dt {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ececec;
+}
+.Gnb-md .gnb-List .gnb-List-Depth dl dt a {
+    display: block;
+    padding-left: 50px;
+}
+
 .Gnb-md .gnb-List-Sub li {
     background: #f6f6f6;
     float: left;
@@ -818,8 +833,10 @@ table.auTable tr td {
 }
 
 /* Gnb : sm */
+#Gnb.Gnb-sm .sliderGNB,
 #Gnb.Gnb-sm .topView,
 .Gnb-sm .gnb-List-Tit .Txt,
+.Gnb-sm .gnb-List-Depth,
 .Gnb-sm .gnb-List-Sub .Txt {
     display: none !important;
 }
@@ -2508,6 +2525,15 @@ table.classTable tr td.w-data {
     height: 22px;
     margin: 0;
 }
+.LeclistTable .listTable .w-chk input[type="checkbox"] {
+    cursor: pointer;
+}
+.LeclistTable .listTable .w-price {
+    font-weight: 600;
+    text-align: right;
+    padding-right: 30px;
+}
+
 
 /* subContainer : Content : 수강후기 */
 .willbes-LecreplyList {
@@ -2515,9 +2541,6 @@ table.classTable tr td.w-data {
     line-height: 50px;
     margin-top: 30px;
     letter-spacing: 0;
-}
-.willbes-LecreplyList a.num {
-    text-decoration: underline;
 }
 .willbes-LecreplyList ul {
     float: right;
@@ -2647,6 +2670,7 @@ table.classTable tr td.w-data {
     font-size: 10px;
     font-weight: 600;
     line-height: 12px;
+    text-align: center;
 }
 .pBox.p1 {
     color: #3e93be;
@@ -2733,15 +2757,129 @@ table.classTable tr td.w-data {
 
 
 
-/* subContainer : Content : Quick-Bnr */
-.Quick-Bnr {
+/*********************************************     CART PAGE     *********************************************/
+
+/* subContainer : Cart : 장바구니 */
+.willbes-Cartlist {
+    margin-top: 50px;
+}
+.willbes-Cartlist .stepCart {
+    margin-bottom: 44px;
+}
+.willbes-Cartlist .tabs-Step {
+    height: 61px;
+    line-height: 55px;
+}
+.willbes-Cartlist .tabs-Step li {
     float: left;
+    width: 33.333333333333%;
+    height: 105px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #d6d6d6;
+    text-align: center; 
+}
+.willbes-Cartlist .tabs-Step li div {
+    height: 61px;
+    border-bottom: 6px solid #ececec;
+}
+.willbes-Cartlist .tabs-Step li.on {
+    background: url("../../img/front/cart/icon_cart_on.png") no-repeat center 75px;
+    color: #323232;
+}
+.willbes-Cartlist .tabs-Step li.on div {
+    border-bottom: 6px solid #1a8ccc;
+} 
+.willbes-Cartlist .LeclistTable ul {
+    text-align: right;
+    padding: 30px 0;
+}
+.willbes-Cartlist .LeclistTable ul li {
+    display: inline-block;
+    line-height: 20px;
+}
+.LeclistTable .listTable.cartTable {
+    border-top: 1px solid #959595;
+    border-bottom: 1px solid #959595;
+}
+.LeclistTable .listTable.cartTable tr th {
+    border-bottom: none
+}
+.LeclistTable .listTable.cartTable tr td {
+   border-top: 1px solid #edeeef;
+   border-bottom: none 
+}
+.willbes-Cart-Price {
+    height: 190px;
+    margin: 85px 0 60px;
+}
+.cart-PriceBox {
+    font-size: 14px;
+    font-weight: 600;
+    height: 140px;
+    line-height: 44px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #3a3e47;
+    padding-left: 40px;
+    letter-spacing: 0;
+}
+.cart-PriceBox li {
+    float: left;
+    margin: 0 50px;
+    padding: 24px 0;
+}
+.cart-PriceBox li .price {
+    font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif";
+    font-size: 18px;
+}
+.cart-PriceBox .price-total {
+    float: right;
+    width: 230px;
+    background: #f9f9fa;
+    font-size: 16px;
+    color: #505050;
+    text-align: center;
+    margin: 0;
+}
+.cart-PriceBox .price-total .price {
+    font-size: 23px;
+}
+.cart-PriceBox .row-line {
+    background: #e7e7e7;
+    width: 1px;
+    height: 100px;
+}
+.cart-PriceBox .price-img {
+    position: relative;
+    margin: 0;
+    padding: 19px 0;
+}
+.cart-PriceBox .price-img img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -12px;
+    margin-left: -12px;
+}
+.willbes-Cart-Txt {}
+.willbes-Cart-Txt .txtTable {
+    display: block;
+    width: 940px;
+    padding: 28px;
+    border: 1px solid #e7e7e7;
+    letter-spacing: 0;
+}
+.willbes-Cart-Txt .txtTable tr td {
+    line-height: 24px;
 }
 
 
 
 
-
+/* subContainer : Content : Quick-Bnr */
+.Quick-Bnr {
+    float: left;
+}
 
 
 /* Only IE Hack */

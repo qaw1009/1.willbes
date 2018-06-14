@@ -305,7 +305,7 @@
 
         <a name="BookInfo" style="display: block"></a>
         <div class="willbes-BookInfo c_both">
-        <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
+            <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
             <div class="bookInfo">
                 <div class="bookImg">
                     <img src="/public/img/front/sample/book.jpg">
@@ -487,7 +487,7 @@
 
         <div class="willbes-Leclist c_both">
             <div class="willbes-LecreplyList tx-gray">
-                → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue" href="#none">2건</a> ]
+                → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">2건</a> ]
                 <ul>
                     <li class="subBtn NSK"><a href="#none">수강후기 작성하기 ></a></li>
                     <li class="subBtn NSK"><a href="#none">수강후기 전체보기 ></a></li>

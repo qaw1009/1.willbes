@@ -36,10 +36,27 @@ $(function() {
         sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
         sBtn.removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
         $(this).parent().addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
-        $('.topView').css("display","block");
-        $('.sliderGNB').css("display","none");  
     })
 })
+
+// GNB 아코디언 메뉴 Script
+$(function() {
+    $('div.gnb-List-Tit').hover(function() {
+
+        $(this).siblings('hover')
+            .removeClass('hover')
+
+        if ($(this).next().is(':visible')) {
+            $(this).removeClass('hover');
+
+        } else {
+            $('div.gnb-List-Depth').slideUp('normal');
+            $(this).next().slideDown('normal');
+            $(this).addClass('hover');
+
+        }    
+    });
+});
 
 // 닫기 Script
 function closeWin(divID) {

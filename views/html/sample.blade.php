@@ -28,3 +28,5 @@
 <a href="{{ site_url('/home/html/packagesub') }}">추천,선택패키지 수강신청 상세 page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/diypackage') }}">DIY패키지 수강신청 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/cart1') }}">장바구니 page 이동</a><br/><br/>

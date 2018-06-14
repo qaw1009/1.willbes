@@ -8,73 +8,32 @@
         <a href="{{ site_url('/home/html/sample') }}"><img src="/public/img/front/gnb/logo.gif"></a>
     </div>
 
-    <!-- menu -->
-    <div class="topView">
-        <h1>
-            <img src="/public/img/front/gnb/icon_willbes2.gif">경찰
-        </h1>
-        <h4>
-            <ul>
-                <li class="dropdown">
-                    <a href="#none">일반경찰</a>
-                    <div class="left-drop-Box">
-                        <ul>
-                            <li><a href="#none">교수진소개</a></li>
-                            <li><a href="#none">PASS</a></li>
-                            <li><a href="#none">단과강좌</a></li>
-                            <li><a href="#none">무료강좌</a></li>
-                        </ul>
-                        <div class="sliderView">
-                            <div class="slider">
-                                <div><img src="/public/img/front/sample/gnb5.jpg"></div>
-                                <div><img src="/public/img/front/sample/gnb6.jpg"></div>
-                                <div><img src="/public/img/front/sample/gnb7.jpg"></div>
-                                <div><img src="/public/img/front/sample/gnb8.jpg"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">경행경채</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">경찰승진</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#none">경찰간부</a>
-                </li>
-                <li class="Acad">
-                    <a class="willbes-Acad-Tit" href="#none">경찰학원</a>
-                    <dl class="sns-Btn">
-                        <dt>
-                            <a href="#none">
-                                <img src="/public/img/front/gnb/icon_facebook.gif">
-                            </a>
-                        </dt>
-                        <dt>
-                            <a href="#none">
-                                <img src="/public/img/front/gnb/icon_linkedin.gif">
-                            </a>
-                        </dt>
-                        <dt>
-                            <a href="#none">
-                                <img src="/public/img/front/gnb/icon_twitter.gif">
-                            </a>
-                        </dt>
-                    </dl>
-                </li>
-            </ul>
-        </h4>
+    <!-- slider -->
+    <div class="sliderGNB">
+        <div class="slider">
+            <div><img src="/public/img/front/sample/gnb1.jpg"></div>
+            <div><img src="/public/img/front/sample/gnb2.jpg"></div>
+            <div><img src="/public/img/front/sample/gnb3.jpg"></div>
+            <div><img src="/public/img/front/sample/gnb4.jpg"></div>
+        </div>
     </div>
     
     <div class="gnb-List">
         <div class="gnb-List-Tit">
-            <a href="#none">
+            <a href="{{ site_url('/home/html/list') }}">
                 <div class="willbes-icon_sm">
                     <img src="/public/img/front/gnb/icon_willbes1_sm.gif">
                 </div>
                 <span class="Txt">공무원<span class="arrow-Btn">></span></span>
             </a>
+        </div>
+        <div class="gnb-List-Depth">
+            <dl>
+                <dt><a href="#none">9급공무원</a></dt>
+                <dt><a href="#none">7급공무원</a></dt>
+                <dt><a href="#none">세무/관세</a></dt>
+                <dt><a href="#none">법원직</a></dt>
+            </dl>
         </div>
         <div class="gnb-List-Tit">
             <a href="#none">
@@ -84,6 +43,14 @@
                 <span class="Txt">경찰<span class="arrow-Btn">></span></span>
             </a> 
         </div>
+        <div class="gnb-List-Depth">
+            <dl>
+                <dt><a href="#none">일반경찰</a></dt>
+                <dt><a href="#none">경행경채</a></dt>
+                <dt><a href="#none">경찰승진</a></dt>
+                <dt><a href="#none">경찰간부</a></dt>
+            </dl>
+        </div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -92,6 +59,7 @@
                 <span class="Txt">교원임용<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -100,6 +68,7 @@
                 <span class="Txt">고등고시<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -108,6 +77,7 @@
                 <span class="Txt">저문자격증<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a class="willbes-Tit" href="#none">
                 <div class="willbes-icon_sm">
@@ -116,6 +86,7 @@
                 <span class="Txt">자격증<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -124,6 +95,7 @@
                 <span class="Txt">취업<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a class="willbes-Tit" href="#none">
                 <div class="willbes-icon_sm">
@@ -132,6 +104,7 @@
                 <span class="Txt">어학<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
     </div>
     
     <ul class="gnb-List-Sub p_re">

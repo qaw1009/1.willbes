@@ -7,13 +7,31 @@
 			 url("../../fonts/NotoSansCJK/NotoSansCJKkr-Regular.woff") format('woff');
 }
 
-/* NanumGothic */
+/* NanumGothic Bold */
 @font-face {
 	font-family: "NanumGothic-Bold";
 	src: url("../../fonts/NanumGothic/NanumGothic-Bold.eot");
 	src: url("../../fonts/NanumGothic/NanumGothic-Bold.eot?#iefix") format('embedded-opentype'),
 			 url("../../fonts/NanumGothic/NanumGothic-Bold.woff2") format('woff2'),
 			 url("../../fonts/NanumGothic/NanumGothic-Bold.woff") format('woff');
+}
+
+/* NanumGothic Extra Bold */
+@font-face {
+	font-family: "NanumGothic-ExtraBold";
+	src: url("../../fonts/NanumGothic/NanumGothic-ExtraBold.eot");
+	src: url("../../fonts/NanumGothic/NanumGothic-ExtraBold.eot?#iefix") format('embedded-opentype'),
+			 url("../../fonts/NanumGothic/NanumGothic-ExtraBold.woff2") format('woff2'),
+			 url("../../fonts/NanumGothic/NanumGothic-ExtraBold.woff") format('woff');
+}
+
+/* NanumGothic Regular */
+@font-face {
+	font-family: "NanumGothic-ExtraBold";
+	src: url("../../fonts/NanumGothic/NanumGothic-Regular.eot");
+	src: url("../../fonts/NanumGothic/NanumGothic-Regular.eot?#iefix") format('embedded-opentype'),
+			 url("../../fonts/NanumGothic/NanumGothic-Regular.woff2") format('woff2'),
+			 url("../../fonts/NanumGothic/NanumGothic-Regular.woff") format('woff');
 }
 
 /*
@@ -283,7 +301,12 @@ strong {
 .NG {
 	font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
 }
-
+.NGEB {
+	font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif";
+}
+.NGR {
+	font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
+}
 
 /* Basic Code */
 .widthAuto {
@@ -362,6 +385,9 @@ strong {
 }
 .mt70 {
   margin-top: 70px !important;
+}
+.mt85 {
+  margin-top: 85px !important;
 }
 
 .mb10 {
@@ -547,4 +573,7 @@ strong {
 .arrow-Btn {
   text-indent: -9999px;
   display: inline-block;
+}
+.underline {
+  text-decoration: underline !important;
 }

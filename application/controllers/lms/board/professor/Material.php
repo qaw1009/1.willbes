@@ -60,9 +60,6 @@ class Material extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
 
         $arr_condition = [
-            'EQ' => [
-                'P.SiteCode' => $this->_reqP('search_site_code'),
-            ],
             'ORG' => [
                 'LKB' => [
                     'P.ProfIdx' => $this->_reqP('search_value'),
@@ -71,6 +68,12 @@ class Material extends BaseBoard
                 ]
             ]
         ];
+
+        if (empty($this->_reqP('search_site_code')) === false) {
+            $arr_condition['EQ']['P.SiteCode'] = $this->_reqP('search_site_code');
+        } else {
+            $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
+        }
 
         $list = [];
         $count = $this->professorModel->listProfessorSubjectMappingForBoard(true, $arr_condition, $this->bm_idx);
@@ -149,7 +152,6 @@ class Material extends BaseBoard
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
-                'LB.SiteCode' => $this->site_code,
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
@@ -189,10 +191,10 @@ class Material extends BaseBoard
         }
 
         $list = [];
-        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
+        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
         }
 
         if ($best_count > 0) {
@@ -525,8 +527,7 @@ class Material extends BaseBoard
                 'LB.ProfIdx' => $prof_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
-                'LB.IsBest' => 'Y',
-                'LB.SiteCode' => $this->site_code,
+                'LB.IsBest' => 'Y'
             ]
         ];
 
@@ -536,7 +537,7 @@ class Material extends BaseBoard
             ]
         ];
 
-        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, $this->site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
             'count' => count($best_list),
             'data' => $best_list

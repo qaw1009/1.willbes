@@ -103,7 +103,6 @@ class Counsel extends BaseBoard
                 'LB.BmIdx' => $this->bm_idx,
                 /*'LB.IsStatus' => ($this->_reqP('search_chk_delete_value') == 1) ? 'N' : 'Y',*/
                 'LB.RegType' => $this->_reg_type['user'],
-                'LB.SiteCode' => $this->site_code,
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
@@ -166,10 +165,10 @@ class Counsel extends BaseBoard
         }
 
         $list = [];
-        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
+        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
         }
 
         if ($notice_count > 0) {
@@ -676,7 +675,6 @@ class Counsel extends BaseBoard
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => $this->_reg_type['admin'],
-                'LB.SiteCode' => $this->site_code,
             ]
         ];
 
@@ -686,7 +684,7 @@ class Counsel extends BaseBoard
             ]
         ];
 
-        $notice_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $notice_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, $this->site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
             'count' => count($notice_list),
             'data' => $notice_list

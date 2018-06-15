@@ -75,7 +75,6 @@ class studyComment extends BaseBoard
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.IsBest' => 'N',
-                'LB.SiteCode' => $this->site_code,
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.ProfIdx' => $this->_reqP('search_professor'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
@@ -118,10 +117,10 @@ class studyComment extends BaseBoard
         $best_list = $best_data['data'];
 
         $list = [];
-        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
+        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
         }
 
         if ($best_count > 0) {
@@ -498,8 +497,7 @@ class studyComment extends BaseBoard
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
-                'LB.IsBest' => 'Y',
-                'LB.SiteCode' => $this->site_code,
+                'LB.IsBest' => 'Y'
             ]
         ];
 
@@ -509,7 +507,7 @@ class studyComment extends BaseBoard
             ]
         ];
 
-        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, $this->site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
             'count' => count($best_list),
             'data' => $best_list

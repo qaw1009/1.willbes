@@ -90,7 +90,7 @@ class Faq extends BaseBoard
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'N',
-                'LB.SiteCode' => $this->site_code,
+                /*'LB.SiteCode' => $this->site_code,*/
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.FaqGroupTypeCcd' => $this->_reqP('search_group_faq_ccd'),
                 'LB.FaqTypeCcd' => $this->_reqP('search_faq_type'),
@@ -133,10 +133,10 @@ class Faq extends BaseBoard
         }
 
         $list = [];
-        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition);
+        $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'asc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'asc'], $column);
         }
 
         if ($best_count > 0) {
@@ -494,7 +494,7 @@ class Faq extends BaseBoard
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
                 'LB.IsBest' => 'Y',
-                'LB.SiteCode' => $this->site_code,
+                /*'LB.SiteCode' => $this->site_code,*/
             ]
         ];
 
@@ -504,7 +504,7 @@ class Faq extends BaseBoard
             ]
         ];
 
-        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, $this->site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
         $datas = [
             'count' => count($best_list),
             'data' => $best_list

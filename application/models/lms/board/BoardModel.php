@@ -31,13 +31,14 @@ class BoardModel extends WB_Model
      * @param $is_count
      * @param array $arr_condition
      * @param array $sub_query_condition
+     * @param string $site_code
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @param string $column
      * @return mixed
      */
-    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $limit = null, $offset = null, $order_by = [], $column = '*')
+    public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [], $column = '*')
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -143,6 +144,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
                 break;
+        }
+
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['LB.SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['LB.SiteCode'] = get_auth_site_codes();
         }
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -826,6 +833,7 @@ class BoardModel extends WB_Model
         $this->_conn->from($this->_table_sys_code);
         $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
         $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
+        $this->_conn->where_in($this->_table.'.SiteCode', get_auth_site_codes());
         $this->_conn->join($this->_table, "{$this->_table_sys_code}.Ccd = {$this->_table}.FaqGroupTypeCcd");
         $this->_conn->group_by($this->_table.'.FaqGroupTypeCcd');
         $data = $this->_conn->get()->result_array();

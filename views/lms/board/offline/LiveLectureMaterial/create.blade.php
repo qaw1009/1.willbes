@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        {!! html_site_select($data['SiteCode'], 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $offLineSite_list) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', '', '', false, $offLineSite_list) !!}
                     </div>
                     <label class="control-label col-md-2 col-md-offset-2" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-2">

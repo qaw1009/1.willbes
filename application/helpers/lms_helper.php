@@ -12,8 +12,11 @@ if (!function_exists('get_auth_site_codes')) {
     {
         $_CI =& get_instance();
         $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
-        // 통합사이트 코드를 사용하지 않을 경우 첫번째 배열 제외 후 리턴
-        $is_intg_site_use === false && $sess_auth_site_codes = array_slice($sess_auth_site_codes, 1, null, true);
+
+        if ($is_intg_site_use === false) {
+            // 통합사이트 코드 제외
+            unset($sess_auth_site_codes['2000']);
+        }
 
         return $is_with_name === false ? array_pluck($sess_auth_site_codes, 'SiteCode') : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
     }

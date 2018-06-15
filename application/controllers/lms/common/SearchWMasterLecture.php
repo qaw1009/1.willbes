@@ -100,5 +100,17 @@ class SearchWMasterLecture extends \app\controllers\BaseController
     }
 
 
+    //단강좌 연결 마스터강의 연결 LMS 교수 정보 추출
+    public function wMasterLectureProfessorFromLecture()
+    {
+        $sitecode = $this->_req("sitecode");
+        $prodcode = $this->_req("prodcode");
+        $learnpatternccd = $this->_req("learnpatternccd");
+
+        $result = $this->searchWMasterLectureModel->listWMasterLectureProfessorFromLecture($sitecode,$learnpatternccd,$prodcode);
+        return $this->json_result(true,'성공',[],$result);
+    }
+
+
 }
 

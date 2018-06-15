@@ -76,8 +76,8 @@
                 var $parent_regi_form = $('#regi_form');
 
                 var $parent_location = "{{str_replace("Add",'List',$locationid)}}";
-                var $parent_location_tr = @if($locationid === 'subLecAdd') 'subLecTrId'; @else 'lecTrId'; @endif
-                var $parent_element = @if($locationid === 'subLecAdd') 'ProdCodeSub'; @else 'AutoProdCode'; @endif
+                var $parent_location_tr = @if($locationid === 'subLecAdd') 'subLecTrId'; @elseif($locationid === 'essLecAdd') 'essLecTrId'; @elseif($locationid === 'selLecAdd') 'selLecTrId'; @else 'lecTrId'; @endif
+                var $parent_element = @if($locationid === 'subLecAdd' || $locationid === 'essLecAdd' || $locationid === 'selLecAdd' ) 'ProdCodeSub'; @else 'AutoProdCode'; @endif
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
@@ -178,6 +178,17 @@
                                 $(document).find("#"+$parent_location).append(
                                     "<tr id='"+$parent_location_tr+seq+"'>"
                                     +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
+                                        @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd')
+                                    +"		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}"+seq+"' value=Y'>"
+                                    +"		<input type='hidden'  name='IsEssential[]' id='IsEssential"+seq+"' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
+                                    +"		<td>"
+                                    +"     <select name='SubGroupName[]' id='SubGroupName"+seq+"' class=\"form-control mr-10\">"
+                                            @for($i=1;$i<6;$i++)
+                                    +"         <option value='{{$i}}'>{{$i}}</option>"
+                                            @endfor
+                                    +"     </select>"
+                                    +"		</td>"
+                                        @endif
                                     +"		<td>"+temp_data_arr[1]+"</td>"
                                     +"		<td>"+temp_data_arr[2]+"</td>"
                                     +"		<td>"+temp_data_arr[3]+"</td>"

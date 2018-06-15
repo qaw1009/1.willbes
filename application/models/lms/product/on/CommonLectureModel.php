@@ -416,7 +416,7 @@ class CommonLectureModel extends WB_Model
     }
 
     //강사료정산
-    public function _setDivision($input=[],$prodcode)
+    public function _setDivision($input=[],$prodcode,$prodtype=null)
     {
         try {
             /*강사료정산*/
@@ -425,7 +425,7 @@ class CommonLectureModel extends WB_Model
             $IsSingular = element('IsSingular',$input,'');                   //단수적용코드
             $IsReprProf = element('IsReprProf',$input);                               //대표강사
 
-            $prodcodesub = element('ProdCodeSub',$input,'');
+            $prodcodesub = element('ProdCodeDiv',$input,'');
             $ProfIdx = element('ProfIdx',$input);
             $TotalPrice = element('TotalPrice',$input);
             $ProdDivisionPrice = element('ProdDivisionPrice',$input);           //안분가격
@@ -447,13 +447,24 @@ class CommonLectureModel extends WB_Model
                     //교수코드와 대표강사의 값이같으면.
                     $IsReprProfMake = ($ProfIdx[$i] === $IsReprProf ? 'Y' : 'N');
 
-                    //교수코드와 단수적용 교수가 값이 같으면
-                    if($ProfIdx[$i] === $rateRemainProfIdx) {
-                        $IsSingularMake = 'Y';
-                        $SingularValueMake = $SingularValue;
-                    } else {
-                        $IsSingularMake = 'N';
-                        $SingularValueMake = 0;
+                    if(empty($prodtype)) {
+                        //교수코드와 단수적용 교수가 값이 같으면
+                        if ($ProfIdx[$i] === $rateRemainProfIdx) {
+                            $IsSingularMake = 'Y';
+                            $SingularValueMake = $SingularValue;
+                        } else {
+                            $IsSingularMake = 'N';
+                            $SingularValueMake = 0;
+                        }
+                    } else if($prodtype === 'packageadmin') {
+                        //교수코드-상품코드와 단수적용 교수코드-상품코드가 값이 같으면
+                        if (trim($ProfIdx[$i].'-'.$prodcodesubMake) == trim($rateRemainProfIdx)) {
+                            $IsSingularMake = 'Y';
+                            $SingularValueMake = $SingularValue;
+                        } else {
+                            $IsSingularMake = 'N';
+                            $SingularValueMake = 0;
+                        }
                     }
 
                     $data = [
@@ -475,13 +486,13 @@ class CommonLectureModel extends WB_Model
                     if($this->_conn->set($data)->insert($this->_table['division']) === false) {
                         throw new \Exception('강사료 정산 등록에 실패했습니다.');
                     }
+
                 }
             }
 
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
         return true;
     }
 
@@ -799,7 +810,9 @@ class CommonLectureModel extends WB_Model
             }
 
             $prodcodesub = element('ProdCodeSub',$input,'');
-
+            $IsEssential = element('IsEssential', $input,'');
+            $SubGroupName = element('SubGroupName', $input,'');
+            //var_dump($SubGroupName);
             //서브 상품코드가 없을경우 해당 상품코드가 서브로 들어감 (단강좌 와 패키지의 구조를 맞추기 위함)
             if(empty($prodcodesub) === true) {
 
@@ -821,6 +834,8 @@ class CommonLectureModel extends WB_Model
                     $data = [
                         'ProdCode' => $prodcode
                         ,'ProdCodeSub' => $prodcodesub[$i]
+                        ,'IsEssential' => $IsEssential[$i] == 'Y' ? 'Y' : 'N'
+                        ,'SubGroupName' => $SubGroupName[$i] == '' ? '0' : $SubGroupName[$i]
                         ,'OrderNum' => ($i+1)
                         ,'RegAdminIdx' => $this->session->userdata('admin_idx')
                         ,'RegIp' => $this->input->ip_address()
@@ -829,14 +844,14 @@ class CommonLectureModel extends WB_Model
                     if($this->_conn->set($data)->insert($this->_table['sublecture']) === false) {
                         throw new \Exception('연결강좌 등록에 실패했습니다.');
                     }
+                    //echo $this->_conn->last_query();
                 }
             }
-            //echo $this->_conn->last_query();
 
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
+        //return false;
         return true;
     }
 

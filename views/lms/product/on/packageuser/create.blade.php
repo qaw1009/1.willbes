@@ -179,7 +179,7 @@
                         <div class="item inline-block">
                             <input type="radio" name="IsSelLecCount" class="flat" value="Y" required="required" title="강좌선택개수제한" @if($method == 'POST' || $data['IsSelLecCount']=='Y')checked="checked"@endif/> 제한
                             &nbsp;
-                            <input type="number" name="SelCount" id="SelCount" value="" style="width: 80px;" maxlength="3" class="form-control" >개
+                            <input type="number" name="SelCount" id="SelCount" value="{{$data['SelCount']}}" style="width: 80px;" maxlength="3" class="form-control" >개
                             &nbsp;
                             &nbsp;
                             <input type="radio" name="IsSelLecCount" class="flat" value="N" @if($data['IsSelLecCount']=='N')checked="checked"@endif/> 제한없음

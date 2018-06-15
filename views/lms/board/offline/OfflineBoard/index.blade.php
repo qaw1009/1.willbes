@@ -4,14 +4,14 @@
     <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], $offLineSite_list) !!}
+        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $offLineSite_list) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)

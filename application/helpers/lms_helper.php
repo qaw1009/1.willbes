@@ -5,12 +5,15 @@ if (!function_exists('get_auth_site_codes')) {
     /**
      * 운영자 권한이 있는 사이트 코드 리턴
      * @param bool $is_with_name [코드명을 포함할지 여부, true : key = 사이트 코드, value = 코드명, false : value = 사이트 코드]
+     * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
      * @return array [사이트 코드 배열]
      */
-    function get_auth_site_codes($is_with_name = false)
+    function get_auth_site_codes($is_with_name = false, $is_intg_site_use = false)
     {
         $_CI =& get_instance();
         $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
+        // 통합사이트 코드를 사용하지 않을 경우 첫번째 배열 제외 후 리턴
+        $is_intg_site_use === false && $sess_auth_site_codes = array_slice($sess_auth_site_codes, 1, null, true);
 
         return $is_with_name === false ? array_pluck($sess_auth_site_codes, 'SiteCode') : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
     }
@@ -42,13 +45,14 @@ if (!function_exists('html_site_select')) {
      * @param string $title [select box title]
      * @param string $required [select box required value]
      * @param string $disabled [select box disabled value]
+     * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
      * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
      * @return string [select box HTML]
      */
-    function html_site_select($site_code = '', $ele_id = 'site_code', $ele_name = 'site_code', $class = '', $title = '운영 사이트', $required = 'required', $disabled = '', $site_codes = [])
+    function html_site_select($site_code = '', $ele_id = 'site_code', $ele_name = 'site_code', $class = '', $title = '운영 사이트', $required = 'required', $disabled = '', $is_intg_site_use = false, $site_codes = [])
     {
         // 운영자 권한이 있는 사이트 코드 목록
-        empty($site_codes) === true && $site_codes = get_auth_site_codes(true);
+        empty($site_codes) === true && $site_codes = get_auth_site_codes(true, $is_intg_site_use);
 
         //
         $return_html = '<select class="form-control ' . $class . '" id="' . $ele_id . '" name="' . $ele_name . '" title="' . $title . '"';
@@ -74,12 +78,13 @@ if (!function_exists('html_site_tabs')) {
      * @param string $tab_type [탭 구분 => tab : 탭, self : 링크]
      * @param bool $is_all_tab [전체 탭 노출 여부 => true : 노출, false : 노출안함]
      * @param array $tab_data [탭 우측에 표기되는 데이터, ex) 게시판 건수]
+     * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
      * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
      * @return string [탭 HTML]
      */
-    function html_site_tabs($ele_id, $tab_type = 'tab', $is_all_tab = true, $tab_data = [], $site_codes = [])
+    function html_site_tabs($ele_id, $tab_type = 'tab', $is_all_tab = true, $tab_data = [], $is_intg_site_use = false, $site_codes = [])
     {
-        return html_def_site_tabs('', $ele_id, $tab_type, $is_all_tab, $tab_data, $site_codes);
+        return html_def_site_tabs('', $ele_id, $tab_type, $is_all_tab, $tab_data, $is_intg_site_use, $site_codes);
     }
 }
 
@@ -91,10 +96,11 @@ if (!function_exists('html_def_site_tabs')) {
      * @param string $tab_type [탭 구분 => tab : 탭, self : 링크]
      * @param bool $is_all_tab [전체 탭 노출 여부 => true : 노출, false : 노출안함]
      * @param array $tab_data [탭 우측에 표기되는 데이터, ex) 게시판 건수]
+     * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
      * @param array $site_codes [사이트 코드 배열, 특정 사이트만 노출할 경우, ex) ['2001' => '온라인 경찰', '2002' => '경찰']
      * @return string [탭 HTML]
      */
-    function html_def_site_tabs($site_code = '', $ele_id, $tab_type = 'tab', $is_all_tab = true, $tab_data = [], $site_codes = [])
+    function html_def_site_tabs($site_code = '', $ele_id, $tab_type = 'tab', $is_all_tab = true, $tab_data = [], $is_intg_site_use = false, $site_codes = [])
     {
         // 변수 설정
         $_CI =& get_instance();
@@ -106,7 +112,7 @@ if (!function_exists('html_def_site_tabs')) {
         $tab_base_url = '#none';
 
         // 운영자 권한이 있는 사이트 코드 목록
-        empty($site_codes) === true && $site_codes = get_auth_site_codes(true);
+        empty($site_codes) === true && $site_codes = get_auth_site_codes(true, $is_intg_site_use);
 
         //
         if ($tab_type == 'tab') {

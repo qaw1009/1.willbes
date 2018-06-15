@@ -121,6 +121,19 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="pg_mid">상점 아이디
+                    </label>
+                    <div class="col-md-9 form-inline">
+                        <div class="item inline-block">
+                            <input type="text" id="pg_mid" name="pg_mid" class="form-control" title="상점 아이디" value="{{ $data['PgMid'] }}">
+                        </div>
+                        <p class="form-control-static ml-30 mr-10 blue">[교재 상점 아이디]</p>
+                        <div class="item inline-block">
+                            <input type="text" id="pg_book_mid" name="pg_book_mid" class="form-control" title="교재 상점 아이디" value="{{ $data['PgBookMid'] }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="delivery_price">배송료 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 form-inline">

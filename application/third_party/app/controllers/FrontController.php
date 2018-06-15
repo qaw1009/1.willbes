@@ -10,9 +10,9 @@ abstract class FrontController extends BaseController
     // 로그인 필수 메소드 배열
     protected $auth_methods = array();
     // 프런트 사이트 아이디
-    protected $site_id = null;
+    protected $__site_id = null;
     // 학원(오프라인) 사이트 여부
-    protected $is_pass_site = false;
+    protected $__is_pass_site = false;
 
     public function __construct()
     {
@@ -33,15 +33,12 @@ abstract class FrontController extends BaseController
         // 사이트 아이디, 학원 사이트 여부 설정
         $this->setSiteId();
 
-        // 프런트 사이트일 경우 사이트 정보, 사이트 메뉴 캐쉬 데이터 환경 설정 셋팅
-        if (is_null($this->site_id) === false) {
-            $site_cache = $this->getCacheItem('site', null, $this->site_id);
-            $site_menu_cache = $this->getSiteMenu(element('SiteGroupCode', $site_cache), element('SiteCode', $site_cache));
-            $site_cfg = array_merge(config_item(SUB_DOMAIN), $site_cache, ['IsPassSite' => $this->is_pass_site], $site_menu_cache);
+        // 사이트 설정, 통합 메뉴, 사이트 메뉴 조회 및 config 설정
+        $site_cache = $this->getCacheItem('site', null, $this->__site_id);
+        $site_menu_cache = $this->getSiteMenu($this->__site_id);
+        $configs = array_merge(config_item(SUB_DOMAIN), $site_cache, ['IsPassSite' => $this->__is_pass_site], $site_menu_cache);
 
-            // set site config
-            $this->config->set_item(SUB_DOMAIN, $site_cfg);
-        }
+        $this->config->set_item(SUB_DOMAIN, $configs);
     }
 
     /**
@@ -70,27 +67,30 @@ abstract class FrontController extends BaseController
      */
     public function setSiteId()
     {
+        $this->__site_id = SUB_DOMAIN;
+
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
-            $this->site_id = SUB_DOMAIN;
+            $pass_site_prefix = config_item('pass_site_prefix');    // 학원 사이트 구분값
+            
             // 학원 사이트일 경우
-            if (strtolower($this->uri->segment(1)) == 'pass') {
-                $this->site_id .= 'pass';
-                $this->is_pass_site = true;
+            if (strtolower($this->uri->segment(1)) == $pass_site_prefix) {
+                $this->__site_id .= $pass_site_prefix;
+                $this->__is_pass_site = true;
             }
         }
     }
 
     /**
      * 캐쉬 데이터 리턴
-     * @param string $adapter [캐쉬명]
+     * @param string $driver [캐쉬명]
      * @param null|string $key [캐쉬 데이터 배열 키값]
      * @param string $site_id [캐쉬 데이터 최상위 배열 키값, 사이트 코드]
      * @return mixed
      */
-    public function getCacheItem($adapter, $key = null, $site_id = 'all')
+    public function getCacheItem($driver, $key = null, $site_id = 'all')
     {
         $this->load->driver('caching');
-        if (($items = $this->caching->{$adapter}->get()) === false) {
+        if (($items = $this->caching->{$driver}->get()) === false) {
             $items = [];
         }
 
@@ -98,29 +98,18 @@ abstract class FrontController extends BaseController
     }
 
     /**
-     * 해당 사이트의 메뉴 데이터 리턴 (동일 사이트 그룹 사이트 코드, 사이트명 포함)
-     * @param $group_code
-     * @param $site_code
-     * @return array
+     * 사이트 메뉴 리턴 (통합사이트 메뉴 + 해당 사이트 메뉴)
+     * @param string $site_id [사이트 아이디]
+     * @return mixed
      */
-    public function getSiteMenu($group_code, $site_code)
+    public function getSiteMenu($site_id)
     {
-        if (is_null($group_code) === true || is_null($site_code) === true) {
-            return [];
-        }
-        
         // 사이트 메뉴 캐쉬 데이터 조회
-        $items = $this->getCacheItem('site_menu', null, $group_code);
+        $items = $this->getCacheItem('site_menu');
 
-        $site_menus = [];
-        foreach ($items as $s => $row) {
-            if ($s == $site_code) {
-                $site_menus['SiteMenu'] = element('SiteMenu', $row, []);
-            } else {
-                $site_menus['GroupMenu'][$row['SiteCode']] = $row['SiteName'];
-            }
-        }
+        $data['NavMenu'] = element('www', $items, []);
+        $data['SiteMenu'] = ($site_id == 'www') ? [] : element($site_id, $items, []);
 
-        return $site_menus;
+        return $data;
     }
 }

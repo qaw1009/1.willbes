@@ -3,6 +3,8 @@
 @section('content')
     <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true) !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -37,10 +39,11 @@
                 <table id="list_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="searching rowspan">운영사이트 [<span class="blue">코드</span>]</th>
+                        <th class="searching searching_site_code rowspan">운영사이트 [<span class="blue">코드</span>]</th>
                         <th>정렬</th>
                         <th>뎁스</th>
                         <th>메뉴코드</th>
+                        <th>메뉴구분</th>
                         <th class="searching">메뉴경로 (하위메뉴 등록)</th>
                         <th class="searching">메뉴명 (메뉴 수정)</th>
                         <th>URL</th>
@@ -60,6 +63,7 @@
                             </td>
                             <td>{{ $row['MenuDepth'] }}</td>
                             <td>{{ $row['MenuIdx'] }}</td>
+                            <td>{{ $row['MenuTypeName'] }}</td>
                             <td>
                                 <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a></td>
                             <td>
@@ -154,6 +158,7 @@
             $datatable
                 .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
                 .draw();
         }
     </script>

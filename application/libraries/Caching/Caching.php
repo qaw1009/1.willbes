@@ -7,7 +7,7 @@ class Caching extends CI_Driver_Library
      * ci instance
      * @var CI_Controller
      */
-    protected $_CI;
+    public $_CI;
 
     /**
      * database connection query builder

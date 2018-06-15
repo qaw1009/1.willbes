@@ -38,8 +38,9 @@ class SiteMenuModel extends WB_Model
     public function listAllSiteMenu($arr_condition = [])
     {
         $column = '
-            M.MenuIdx, M.SiteCode, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.MenuEtc, M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.RegAdminIdx
+            M.MenuIdx, M.SiteCode, M.MenuType, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.MenuEtc, M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.RegAdminIdx
                 , fn_site_menu_connect_by_type(M.MenuIdx, "name") as MenuRouteName, S.SiteName, A.wAdminName as RegAdminName
+                , if(M.MenuType = "GN", "일반메뉴", if(M.MenuType = "SE", "별도메뉴", "예외메뉴")) as MenuTypeName
         ';
         $from = '
             from ' . $this->_table['site_menu'] . ' as M 
@@ -91,8 +92,8 @@ class SiteMenuModel extends WB_Model
      */
     public function findSiteMenuForModify($menu_idx)
     {
-        $column = 'M.MenuIdx, M.SiteCode, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.UrlType, M.UrlTarget, M.MenuEtc, M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm';
-        $column .= '    , fn_site_menu_connect_by_type(M.MenuIdx, "name") as MenuRouteName';
+        $column = 'M.MenuIdx, M.SiteCode, M.MenuType, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.UrlType, M.UrlTarget, M.MenuIcon, M.MenuEtc';
+        $column .= '    , M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm, fn_site_menu_connect_by_type(M.MenuIdx, "name") as MenuRouteName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.UpdAdminIdx and wIsStatus = "Y") as UpdAdminName';
 
@@ -198,11 +199,13 @@ class SiteMenuModel extends WB_Model
             $parent_menu_idx = element('parent_menu_idx', $input, 0);
             $admin_idx = $this->session->userdata('admin_idx');
             $data = [
+                'MenuType' => element('menu_type', $input),
                 'MenuName' => element('menu_name', $input),
                 'ParentMenuIdx' => $parent_menu_idx,
                 'MenuUrl' => element('menu_url', $input),
                 'UrlType' => element('url_type', $input),
                 'UrlTarget' => element('url_target', $input),
+                'MenuIcon' => element('menu_icon', $input),
                 'MenuEtc' => element('menu_etc', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $admin_idx
@@ -276,10 +279,12 @@ class SiteMenuModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
+                'MenuType' => element('menu_type', $input),
                 'MenuName' => element('menu_name', $input),
                 'MenuUrl' => element('menu_url', $input),
                 'UrlType' => element('url_type', $input),
                 'UrlTarget' => element('url_target', $input),
+                'MenuIcon' => element('menu_icon', $input),
                 'MenuEtc' => element('menu_etc', $input),
                 'IsUse' => $is_use,
                 'UpdAdminIdx' => $admin_idx

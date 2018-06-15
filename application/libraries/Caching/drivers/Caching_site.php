@@ -30,8 +30,13 @@ class Caching_site extends CI_Driver
      */
     public function _getSaveData()
     {
+        // 학원 사이트 구분값
+        $this->_CI->config->load('front_config');
+        $pass_site_prefix = $this->_CI->config->item('pass_site_prefix');
+
         $_table = [
             'site' => 'lms_site',
+            'site_group' => 'lms_site_group',
             'site_r_campus' => 'lms_site_r_campus',
             'code' => 'lms_sys_code',
             'tmp_numbers' => 'tmp_numbers'
@@ -43,10 +48,11 @@ class Caching_site extends CI_Driver
         ];
 
         $column = '
-            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.PgCcd, S.PayMethodCcds
+            S.SiteCode, S.SiteName, S.SiteGroupCode, SG.SiteGroupName, S.SiteTypeCcd, S.SiteUrl, S.UseDomain, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo
                 , DCC.CcdName as DeliveryCompName
+                , lower(concat(substring_index(S.SiteUrl, ".", 1), if(instr(substring_index(S.SiteUrl, "/", 2), "/' . $pass_site_prefix . '") > 0, "' . $pass_site_prefix . '", ""))) as SiteId
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CONCAT(RC.CampusCcd, ":", C.CcdName) separator ",") 
                     from ' . $_table['site_r_campus'] . ' as RC inner join ' . $_table['code'] . ' as C
@@ -60,13 +66,15 @@ class Caching_site extends CI_Driver
                     where char_length(S.PayMethodCcds) - char_length(replace(S.PayMethodCcds, ",", "")) >= TN.num - 1
                         and substring_index(substring_index(S.PayMethodCcds, ",", TN.num), ",", -1) = C.Ccd
                         and C.GroupCcd = "' . $_ccd['PayMethod'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
-                  ) as PayMethodCcdArr            
+                  ) as PayMethodCcdArr                                            
         ';
         $from = '
             from ' . $_table['site'] . ' as S 
+                inner join ' . $_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode
                 left join ' . $_table['code'] . ' as DCC
                     on S.DeliveryCompCcd = DCC.Ccd and DCC.GroupCcd = "' . $_ccd['DeliveryComp'] . '" and DCC.IsUse = "Y" and DCC.IsStatus = "Y"
-            where S.IsUse = "Y" and S.IsStatus = "Y"                                
+            where S.IsUse = "Y" and S.IsStatus = "Y" and SG.IsUse = "Y" and SG.IsStatus = "Y"
         ';
 
         // 쿼리 실행
@@ -74,9 +82,9 @@ class Caching_site extends CI_Driver
 
         $data = [];
         array_map(function($row) use (&$data) {
-            $key = str_first_pos_before($row['SiteUrl'], '.');
-            starts_with(str_first_pos_after($row['SiteUrl'], '/'), 'pass') === true && $key .= 'pass';
-            $data[strtolower($key)] = $row;
+            $key = $row['SiteId'];
+            unset($row['SiteId']);
+            $data[$key] = $row;
         }, $result);
 
         return $data;

@@ -30,6 +30,10 @@ class Caching_site_menu extends CI_Driver
      */
     public function _getSaveData()
     {
+        // 학원 사이트 구분값
+        $this->_CI->config->load('front_config');
+        $pass_site_prefix = $this->_CI->config->item('pass_site_prefix');
+
         $_table = [
             'site' => 'lms_site',
             'site_group' => 'lms_site_group',
@@ -37,8 +41,9 @@ class Caching_site_menu extends CI_Driver
         ];
 
         $column = '
-            S.SiteCode, S.SiteName, S.SiteGroupCode, S.SiteUrl, SM.MenuIdx, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl, SM.UrlType, SM.UrlTarget, SM.MenuEtc
-            , fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
+            S.SiteCode, SM.MenuIdx, SM.MenuType, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl
+            , SM.UrlType, SM.UrlTarget, SM.MenuIcon, SM.MenuEtc, fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
+            , lower(concat(substring_index(S.SiteUrl, ".", 1), if(instr(substring_index(S.SiteUrl, "/", 2), "/' . $pass_site_prefix . '") > 0, "' . $pass_site_prefix . '", ""))) as SiteId
         ';
         $from = '
             from ' . $_table['site_group'] . ' as SG 
@@ -57,22 +62,28 @@ class Caching_site_menu extends CI_Driver
 
         $data = [];
         foreach ($result as $idx => $row) {
-            $key1 = $row['SiteGroupCode'];
-            $key2 = $row['SiteCode'];
+/*            $group_name_key = $row['SiteGroupCode'] . '.SiteGroupName';
+            $site_base_key = $row['SiteGroupCode'] . '.Sites.' . $row['SiteCode'];
+            $site_name_key = $site_base_key . '.SiteName';
+            $site_menu_key = $site_base_key . '.SiteMenu';*/
+
+            $base_key = $row['SiteId'];
 
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
+                'MenuType' => $row['MenuType'],
                 'MenuName' => $row['MenuName'],
                 'MenuUrl' => $row['MenuUrl'],
+                'MenuIcon' => $row['MenuIcon'],
                 'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],
                 'UrlRouteIdx' => $url_route_idx,
                 'UrlRouteName' => $url_route_name
             ];
-
+            
             if ($row['MenuDepth'] > 1) {
                 // $data 배열에 삽입되는 배열 키 생성
-                $child_key = $key1 . '.' . $key2 . '.SiteMenu';
+                $child_key = $base_key;
                 foreach (explode('>', $url_route_idx, -1) as $menu_idx) {
                     $child_key .= '.' . $menu_idx . '.Children';
                 }
@@ -81,12 +92,7 @@ class Caching_site_menu extends CI_Driver
                 // 생성된 배열 키로 값 설정
                 array_set($data, $child_key, $arr_menu);
             } else {
-                // 사이트 코드, 사이트 명 설정
-                if (isset($data[$key1][$key2]['SiteCode']) === false) {
-                    $data[$key1][$key2]['SiteCode'] = $row['SiteCode'];
-                    $data[$key1][$key2]['SiteName'] = $row['SiteName'];
-                }
-                $data[$key1][$key2]['SiteMenu'][$row['MenuIdx']] = $arr_menu;
+                array_set($data, $base_key . '.' . $row['MenuIdx'], $arr_menu);
             }
         }
 

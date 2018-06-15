@@ -24,7 +24,7 @@
             <label class="control-label col-md-2" for="site_code">운영 사이트 <span class="required">*</span>
             </label>
             <div class="col-md-4 item">
-                {!! html_site_select($site_code, 'site_code', 'site_code', '', '운영 사이트', 'required', ((empty($site_code) === false) ? 'disabled' : '')) !!}
+                {!! html_site_select($site_code, 'site_code', 'site_code', '', '운영 사이트', 'required', ((empty($site_code) === false) ? 'disabled' : ''), true) !!}
             </div>
             <label class="control-label col-md-2" for="">운영 사이트 코드
             </label>
@@ -59,6 +59,17 @@
             </label>
             <div class="col-md-8 item">
                 <input type="text" id="menu_url" name="menu_url" class="form-control" title="URL" value="{{ $data['MenuUrl'] }}">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="menu_type">메뉴 구분 <span class="required">*</span>
+            </label>
+            <div class="col-md-10 item form-inline">
+                <select class="form-control" id="menu_type" name="menu_type" title="메뉴 구분">
+                    <option value="GN">일반메뉴</option>
+                    <option value="SE">별도메뉴</option>
+                    <option value="EP">예외메뉴 (교수)</option>
+                </select>
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -127,6 +138,7 @@
             $(document).ready(function() {
                 // 입력값 셋팅
                 if($regi_form.find('input[name="_method"]').val() === 'PUT') {
+                    $regi_form.find('select[name="menu_type"]').val('{{ $data['MenuType'] }}');
                     $regi_form.find('select[name="url_type"]').val('{{ $data['UrlType'] }}');
                     $regi_form.find('select[name="url_target"]').val('{{ $data['UrlTarget'] }}');
                 }

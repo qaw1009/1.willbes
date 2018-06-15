@@ -30,15 +30,8 @@ abstract class FrontController extends BaseController
      */
     private function _frontInit()
     {
-        // 사이트 아이디, 학원 사이트 여부 설정
-        $this->setSiteId();
-
-        // 사이트 설정, 통합 메뉴, 사이트 메뉴 조회 및 config 설정
-        $site_cache = $this->getCacheItem('site', null, $this->__site_id);
-        $site_menu_cache = $this->getSiteMenu($this->__site_id);
-        $configs = array_merge(config_item(SUB_DOMAIN), $site_cache, ['IsPassSite' => $this->__is_pass_site], $site_menu_cache);
-
-        $this->config->set_item(SUB_DOMAIN, $configs);
+        // 사이트 설정
+        $this->setSiteConfig();
     }
 
     /**
@@ -63,11 +56,18 @@ abstract class FrontController extends BaseController
     }
 
     /**
-     * 프런트 사이트 아이디, 학원 사이트 여부 설정
+     * 사이트 정보 환경설정
      */
-    public function setSiteId()
+    public function setSiteConfig()
     {
         $this->__site_id = SUB_DOMAIN;
+
+        // 사이트 정보 캐쉬 조회
+        $site_cache = $this->getCacheItem('site');
+        // 사이트 메뉴 캐쉬 조회
+        $site_menu_cache = $this->getCacheItem('site_menu');
+        // 사이트 과목+교수 연결정보
+        $site_subject_professor_cache = [];
 
         if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
             $pass_site_prefix = config_item('pass_site_prefix');    // 학원 사이트 구분값
@@ -77,7 +77,23 @@ abstract class FrontController extends BaseController
                 $this->__site_id .= $pass_site_prefix;
                 $this->__is_pass_site = true;
             }
+
+            // 사이트 과목+교수 연결정보 캐쉬 조회
+            $site_subject_professor_cache = $this->getCacheItem('site_subject_professor');
         }
+
+        // 환경설정 추가
+        $site_cache = element($this->__site_id, $site_cache, []);
+        
+        $configs = array_merge(
+                        config_item(SUB_DOMAIN),
+                        $site_cache,
+                        ['IsPassSite' => $this->__is_pass_site],
+                        ['NavMenu' => element('www', $site_menu_cache, [])],
+                        ['SiteMenu' => ($this->__site_id == 'www') ? [] : element($this->__site_id, $site_menu_cache, [])],
+                        ['Subject2Professor' => element($site_cache['SiteCode'], $site_subject_professor_cache, [])]
+            );
+        $this->config->set_item(SUB_DOMAIN, $configs);
     }
 
     /**
@@ -95,21 +111,5 @@ abstract class FrontController extends BaseController
         }
 
         return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items, []), $key);
-    }
-
-    /**
-     * 사이트 메뉴 리턴 (통합사이트 메뉴 + 해당 사이트 메뉴)
-     * @param string $site_id [사이트 아이디]
-     * @return mixed
-     */
-    public function getSiteMenu($site_id)
-    {
-        // 사이트 메뉴 캐쉬 데이터 조회
-        $items = $this->getCacheItem('site_menu');
-
-        $data['NavMenu'] = element('www', $items, []);
-        $data['SiteMenu'] = ($site_id == 'www') ? [] : element($site_id, $items, []);
-
-        return $data;
     }
 }

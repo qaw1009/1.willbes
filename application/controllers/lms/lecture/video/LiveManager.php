@@ -102,4 +102,21 @@ class LiveManager extends \app\controllers\BaseController
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
+
+    public function viewVideo()
+    {
+        echo $this->_reqP('video_route');
+
+        $this->load->view('video/view_video', [
+            'video_route' => $this->_req('video_route')
+        ]);
+    }
+
+    /**
+     * 라이브강의자료실
+     */
+    public function listBoardForLiveLecture()
+    {
+
+    }
 }

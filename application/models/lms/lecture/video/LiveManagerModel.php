@@ -66,7 +66,7 @@ class LiveManagerModel extends WB_Model
 
         try {
             $site_code = element('site_code', $input);
-            $order_num = get_var(element('order_num', $input), $this->_getSubjectOrderNum($site_code));
+            $order_num = get_var(element('order_num', $input), $this->_getVideoOrderNum($site_code));
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
@@ -91,6 +91,46 @@ class LiveManagerModel extends WB_Model
             return error_result($e);
         }
 
+        return true;
+    }
+
+    public function modifyLiveVideo($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $idx = element('idx', $input);
+
+            // 기존 과목 정보 조회
+            $row = $this->findLiveVideoForModify($idx);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            $site_code = $row['SiteCode'];
+            $order_num = get_var(element('order_num', $input), $this->_getVideoOrderNum($site_code));
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            $data = [
+                'SiteCode' => $site_code,
+                'CampusCcd' => element('campus_ccd', $input),
+                'LecRoomName' => element('lec_room_name', $input),
+                'LiveVideoRoute' => element('live_video_route', $input),
+                'OrderNum' => $order_num,
+                'IsUse' => element('is_use', $input),
+                'UpdAdminIdx' => $admin_idx
+            ];
+
+            // 과목 수정
+            if ($this->_conn->set($data)->where('LecLiveVideoIdx', $idx)->update($this->_table['live_video']) === false) {
+                throw new \Exception('과목 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
         return true;
     }
 
@@ -132,7 +172,7 @@ class LiveManagerModel extends WB_Model
      * @param $site_code
      * @return int
      */
-    private function _getSubjectOrderNum($site_code)
+    private function _getVideoOrderNum($site_code)
     {
         return $this->_conn->getFindResult($this->_table['live_video'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['SiteCode' => $site_code]

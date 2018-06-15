@@ -40,8 +40,8 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-xs-1"><button class="btn btn-info ml-20" type="button" id="btn_search_setting">강의자료실</button></div>
-                <div class="col-xs-1"><button class="btn btn-info ml-20" type="button" id="btn_search_setting">강의실배정표</button></div>
+                <div class="col-xs-1"><button class="btn btn-info ml-20" type="button" id="btn_board_83">강의자료실</button></div>
+                <div class="col-xs-1"><button class="btn btn-info ml-20" type="button" id="btn_board_82">강의실배정표</button></div>
                 <div class="col-xs-10 text-right form-inline">
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                     <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
@@ -82,7 +82,8 @@
                             </td>
                             <td>{{ $row['RegAdminName'] }}</td>
                             <td>{{ $row['RegDatm'] }}</td>
-                            <td><a href="javascript:void(0);" onclick="javascript:liveOn('{{ $row['LiveVideoRoute'] }}');">수강하기</a></td>
+                            {{--<td><a href="javascript:void(0);" onclick="javascript:liveOn('{{ $row['LiveVideoRoute'] }}');">수강하기</a></td>--}}
+                            <td><a href="#" class="btn-video" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -90,6 +91,25 @@
             </form>
         </div>
     </div>
+
+    <!-- jwplayer -->
+    {{--<script src="/public/vendor/jwplayer/jwplayer.js"></script>
+    <div class="embedWrap">
+        <div class="embed" id="myElement" style="margin:auto;">
+            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+            <script type="text/javascript">
+                jwplayer("myElement").setup({
+                    width: '100%',
+                    //image: "",
+                    aspectratio: "16:9",
+                    autostart: true,
+                    file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop301"
+                });
+            </script>
+        </div>
+    </div>--}}
+
+
 
     <script type="text/javascript">
         var $datatable;
@@ -121,12 +141,16 @@
                     'url' : '{{ site_url('/lecture/video/LiveManager/create/') }}' + uri_param,
                     'width' : 900
                 });
-            })
+            });
 
-            // 데이터 수정 폼
-            /*$list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/lecture/video/LiveManager/create/") }}' + $(this).data('idx') + dtParamsToQueryString($datatable));
-            });*/
+            // 동영상 플레이 모달창 오픈
+            $('.btn-video').click(function() {
+                var uri_param = '?video_route=' + $(this).data('dideo-route');
+                $('.btn-video').setLayer({
+                    'url' : '{{ site_url('/lecture/video/LiveManager/viewVideo/') }}' + uri_param,
+                    'width' : 900
+                });
+            });
 
             // 순서 변경
             $('.btn-reorder').on('click', function() {
@@ -165,10 +189,6 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .column('.searching_site_code').search($search_form.find('select[name="search_site_code"]').val())
                 .draw();
-        }
-
-        function liveOn(obj) {
-            console.log(obj);
         }
     </script>
 @stop

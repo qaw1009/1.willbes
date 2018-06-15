@@ -6,6 +6,7 @@ class LiveManagerModel extends WB_Model
     private $_table = [
         'site' => 'lms_site',
         'live_video' => 'lms_lecture_live_video',
+        'sys_code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
 
@@ -23,18 +24,30 @@ class LiveManagerModel extends WB_Model
      */
     public function listLiveVideo($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
         $column = 'lms_lecture_live_video.LecLiveVideoIdx, lms_lecture_live_video.SiteCode,
                     lms_lecture_live_video.CampusCcd, lms_lecture_live_video.LecRoomName, lms_lecture_live_video.LiveVideoRoute,
-                    lms_lecture_live_video.OrderNum, lms_lecture_live_video.IsUse, lms_lecture_live_video.RegDatm, lms_lecture_live_video.RegAdminIdx, lms_site.SiteName';
+                    lms_lecture_live_video.OrderNum, lms_lecture_live_video.IsUse, lms_lecture_live_video.RegDatm, lms_lecture_live_video.RegAdminIdx, lms_site.SiteName, lms_sys_code.CcdName as CampusName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_lecture_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+
+        $from = "
+            FROM {$this->_table['live_video']} AS lms_lecture_live_video
+            INNER JOIN {$this->_table['site']} as lms_site ON lms_lecture_live_video.SiteCode = lms_site.SiteCode
+            LEFT JOIN {$this->_table['sys_code']} as lms_sys_code ON lms_lecture_live_video.CampusCcd = lms_sys_code.Ccd
+        ";
 
         $arr_condition['EQ']['lms_site.IsStatus'] = 'Y';
         $arr_condition['EQ']['lms_lecture_live_video.IsStatus'] = 'Y';
         $arr_condition['IN']['lms_lecture_live_video.SiteCode'] = get_auth_site_codes();
 
-        return $this->_conn->getJoinListResult($this->_table['live_video'] . ' as lms_lecture_live_video', 'inner', $this->_table['site'] . ' as lms_site'
-            , 'lms_lecture_live_video.SiteCode = lms_site.SiteCode' , $column, $arr_condition, $limit, $offset, $order_by
-        );
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return $query->result_array();
     }
 
     /**
@@ -101,13 +114,13 @@ class LiveManagerModel extends WB_Model
         try {
             $idx = element('idx', $input);
 
-            // 기존 과목 정보 조회
+            // 기존 정보 조회
             $row = $this->findLiveVideoForModify($idx);
             if (count($row) < 1) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            $site_code = $row['SiteCode'];
+            $site_code = element('site_code', $input);
             $order_num = get_var(element('order_num', $input), $this->_getVideoOrderNum($site_code));
             $admin_idx = $this->session->userdata('admin_idx');
 
@@ -121,9 +134,9 @@ class LiveManagerModel extends WB_Model
                 'UpdAdminIdx' => $admin_idx
             ];
 
-            // 과목 수정
+            // 수정
             if ($this->_conn->set($data)->where('LecLiveVideoIdx', $idx)->update($this->_table['live_video']) === false) {
-                throw new \Exception('과목 수정에 실패했습니다.');
+                throw new \Exception('수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -135,7 +148,7 @@ class LiveManagerModel extends WB_Model
     }
 
     /**
-     * 과목 정렬변경 수정
+     * 정렬변경 수정
      * @param array $params
      * @return array|bool
      */
@@ -168,7 +181,7 @@ class LiveManagerModel extends WB_Model
     }
 
     /**
-     * 사이트 코드별 과목 정렬순서 값 조회
+     * 사이트 코드별 정렬순서 값 조회
      * @param $site_code
      * @return int
      */

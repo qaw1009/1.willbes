@@ -5,6 +5,10 @@ class LiveManager extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'lecture/video/liveManager');
     protected $helpers = array();
+    protected $boardInfo = [
+        '82' => '강의배정표',
+        '83' => '강의자료실'
+    ];
 
     public function __construct()
     {
@@ -22,12 +26,13 @@ class LiveManager extends \app\controllers\BaseController
 
         $this->load->view("video/index", [
             'arr_campus' => $arr_campus,
+            'boardInfo' => $this->boardInfo,
             'data' => $list
         ]);
     }
 
     /**
-     * 과목 관리 등록/수정 폼
+     * 등록/수정 폼
      * @param array $params
      */
     public function create($params = [])
@@ -85,7 +90,7 @@ class LiveManager extends \app\controllers\BaseController
     }
 
     /**
-     * 과목 관리 정렬변경
+     * 정렬변경
      */
     public function reorder()
     {
@@ -103,20 +108,30 @@ class LiveManager extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    public function viewVideo()
+    /**
+     * 동영상 보기
+     */
+    public function viewVideoModel()
     {
-        echo $this->_reqP('video_route');
-
-        $this->load->view('video/view_video', [
+        $this->load->view('video/view_video_model', [
             'video_route' => $this->_req('video_route')
         ]);
     }
 
     /**
-     * 라이브강의자료실
+     * 게시판
+     * @param array $params
      */
-    public function listBoardForLiveLecture()
+    public function viewBoardListModel($params = [])
     {
+        $bm_idx = $params[0];
+        if (empty($this->boardInfo[$bm_idx]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
 
+        $this->load->view('video/view_board_list_model', [
+            'bm_idx' => $bm_idx,
+            'boardInfo' => $this->boardInfo,
+        ]);
     }
 }

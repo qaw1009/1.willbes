@@ -40,11 +40,11 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-xs-1"><button class="btn btn-info ml-20" type="button" id="btn_board_83">강의자료실</button></div>
-                <div class="col-xs-1"><button class="btn btn-info ml-20" type="button" id="btn_board_82">강의실배정표</button></div>
+                @foreach($boardInfo as $key => $val)
+                    <div class="col-xs-1"><button class="btn btn-info btn_board" type="button" data-bm-idx="{{$key}}">{{$val}}</button></div>
+                @endforeach
                 <div class="col-xs-10 text-right form-inline">
-                    <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
+                    <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                         <tr>
                             <td>{{ $loop->index }}</td>
                             <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
-                            <td>{{ $row['CampusCcd'] }}</td>
+                            <td>{{ $row['CampusName'] }}<span class="hide">{{ $row['CampusCcd'] }}</span></td>
                             <td><a href="#" class="btn-modify" data-idx="{{ $row['LecLiveVideoIdx'] }}"><u>{{ $row['LecRoomName'] }}</u></a></td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['IsUse'] }}</span>
@@ -92,25 +92,6 @@
         </div>
     </div>
 
-    <!-- jwplayer -->
-    {{--<script src="/public/vendor/jwplayer/jwplayer.js"></script>
-    <div class="embedWrap">
-        <div class="embed" id="myElement" style="margin:auto;">
-            <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
-            <script type="text/javascript">
-                jwplayer("myElement").setup({
-                    width: '100%',
-                    //image: "",
-                    aspectratio: "16:9",
-                    autostart: true,
-                    file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop301"
-                });
-            </script>
-        </div>
-    </div>--}}
-
-
-
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -119,7 +100,7 @@
 
         $(document).ready(function() {
             // site-code에 매핑되는 select box 자동 변경
-            /*$search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");*/
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
@@ -147,7 +128,7 @@
             $('.btn-video').click(function() {
                 var uri_param = '?video_route=' + $(this).data('dideo-route');
                 $('.btn-video').setLayer({
-                    'url' : '{{ site_url('/lecture/video/LiveManager/viewVideo/') }}' + uri_param,
+                    'url' : '{{ site_url('/lecture/video/LiveManager/viewVideoModel/') }}' + uri_param,
                     'width' : 900
                 });
             });
@@ -178,6 +159,14 @@
                         location.replace(location.pathname + dtParamsToQueryString($datatable));
                     }
                 }, showError, false, 'POST');
+            });
+        });
+
+        $('.btn_board').click(function() {
+            $('.btn_board').setLayer({
+                "url" : "{{ site_url('/lecture/video/LiveManager/viewBoardListModel/') }}" + $(this).data('bm-idx'),
+                "width" : "1200",
+                "modal_id" : "modal_html"
             });
         });
 

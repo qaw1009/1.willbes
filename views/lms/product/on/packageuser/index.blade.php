@@ -171,7 +171,7 @@
                     'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
                 };
 
-                sendAjax('{{ site_url('/product/on/lecture/copy') }}', data, function(ret) {
+                sendAjax('{{ site_url('/product/on/packageuser/copy') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();

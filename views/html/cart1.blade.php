@@ -52,7 +52,7 @@
                     <li class="subBtn NSK"><a href="#none">전체 상품 삭제 ></a></li>
                     <li class="subBtn NSK"><a href="#none">선택 상품 삭제 ></a></li>
                 </ul>
-                <table cellspacing="0" cellpadding="0" class="listTable cartTable tx-gray">
+                <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
                     <colgroup>
                         <col style="width: 80px;">
                         <col style="width: 550px;">
@@ -70,14 +70,50 @@
                     <tbody>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-list tx-left pl20">
-                                <span class="pBox p1">강좌</span>
-                                2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
+                            <td class="w-list tx-left p_re pl20">
+                                <a href="#none" onclick="openWin('List')">
+                                    <span class="pBox p1">강좌</span>
+                                    2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
+                                    <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="/public/img/front/sub/icon_detail.gif">
+                                </a>
+                                <div id="List" class="willbes-Layer-Box-sm">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('List')">
+                                        <img src="/public/img/front/gnb/close.png">
+                                    </a>
+                                    <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
+                                        <colgroup>
+                                            <col style="width: 65px;">
+                                            <col style="width: 455px;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td>정채영<span class="row-line">|</span></td>
+                                                <td class="tx-left pl20">2017(지방직/서울시) 정채영국어실전동형문제풀이(4-5월)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>한덕현<span class="row-line">|</span></td>
+                                                <td class="tx-left pl20">2017(지방직/서울시) 한덕현영어실전동형문제풀이(4-5월)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>최진우<span class="row-line">|</span></td>
+                                                <td class="tx-left pl20">2017(지방직/서울시) 최진우한국사실전동형문제풀이(4-5월)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>김용철<span class="row-line">|</span></td>
+                                                <td class="tx-left pl20">2017(지방직/서울시) 김용철행정법실전동형문제풀이(4-5월)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>문병일<span class="row-line">|</span></td>
+                                                <td class="tx-left pl20">2017(지방직/서울시) 문병일사회실전동형문제풀이(4-5월)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                             <td class="w-price tx-light-blue">80,000원</td>
                             <td class="w-buy">
-                                <span class="tBox NSK t1 high"><a href="">결제</a></span>
-                                <span class="tBox NSK t2 low"><a href="">삭제</a></span>
+                                <span class="tBox NSK t1 black"><a href="">결제</a></span>
+                                <span class="tBox NSK t2 gray"><a href="">삭제</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -88,8 +124,8 @@
                             </td>
                             <td class="w-price tx-light-blue">70,000원</td>
                             <td class="w-buy">
-                                <span class="tBox NSK t1 high"><a href="">결제</a></span>
-                                <span class="tBox NSK t2 low"><a href="">삭제</a></span>
+                                <span class="tBox NSK t1 black"><a href="">결제</a></span>
+                                <span class="tBox NSK t2 gray"><a href="">삭제</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -100,8 +136,8 @@
                             </td>
                             <td class="w-price tx-light-blue">180,000원</td>
                             <td class="w-buy">
-                                <span class="tBox NSK t1 high"><a href="">결제</a></span>
-                                <span class="tBox NSK t2 low"><a href="">삭제</a></span>
+                                <span class="tBox NSK t1 black"><a href="">결제</a></span>
+                                <span class="tBox NSK t2 gray"><a href="">삭제</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -112,8 +148,8 @@
                             </td>
                             <td class="w-price tx-light-blue">8,000원</td>
                             <td class="w-buy">
-                                <span class="tBox NSK t1 high"><a href="">결제</a></span>
-                                <span class="tBox NSK t2 low"><a href="">삭제</a></span>
+                                <span class="tBox NSK t1 black"><a href="">결제</a></span>
+                                <span class="tBox NSK t2 gray"><a href="">삭제</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -124,8 +160,8 @@
                             </td>
                             <td class="w-price tx-light-blue">5,000원</td>
                             <td class="w-buy">
-                                <span class="tBox NSK t1 high"><a href="">결제</a></span>
-                                <span class="tBox NSK t2 low"><a href="">삭제</a></span>
+                                <span class="tBox NSK t1 black"><a href="">결제</a></span>
+                                <span class="tBox NSK t2 gray"><a href="">삭제</a></span>
                             </td>
                         </tr>
                     </tbody>
@@ -135,35 +171,39 @@
         <!-- willbes-Cartlist -->
 
         <div class="willbes-Cart-Price p_re">
-            <ul class="cart-PriceBox NG">
-                <li>
-                    <div>
-                        <span class="pBox p1">강좌</span>
-                        ( <a class="num tx-light-blue underline" href="#none">2건</a> )
-                    </div>
-                    <span class="price tx-light-blue">140,000원</span>
-                </li>
-                <li class="price-img">
-                    <span class="row-line">|</span>
-                    <img src="/public/img/front/sub/icon_plus.gif">
-                </li>
-                <li>
-                    <div>
-                        <span class="pBox p2">패키지</span>
-                        ( <a class="num tx-light-blue underline" href="#none">1건</a> )
-                    </div>
-                    <span class="price tx-light-blue">180,000원</span>
-                </li>
-                <li class="price-img">
-                    <span class="row-line">|</span>
-                    <img src="/public/img/front/sub/icon_plus.gif">
-                </li>
-                <li>
-                    <div>
-                        <span class="pBox p3">교재</span>
-                        ( <a class="num tx-light-blue underline" href="#none">2건</a> )
-                    </div>
-                    <span class="price tx-light-blue">13,000원</span>
+            <ul class="cart-PriceBox pl40 NG">
+                <li class="price-list p_re">
+                    <dl class="priceBox">
+                        <dt>
+                            <div>
+                                <span class="pBox p1">강좌</span>
+                                ( <a class="num tx-light-blue underline" href="#none">2건</a> )
+                            </div>
+                            <span class="price tx-light-blue">140,000원</span>
+                        </dt>
+                        <dt class="price-img">
+                            <span class="row-line">|</span>
+                            <img src="/public/img/front/sub/icon_plus.gif">
+                        </dt>
+                        <dt>
+                            <div>
+                                <span class="pBox p2">패키지</span>
+                                ( <a class="num tx-light-blue underline" href="#none">1건</a> )
+                            </div>
+                            <span class="price tx-light-blue">180,000원</span>
+                        </dt>
+                        <dt class="price-img">
+                            <span class="row-line">|</span>
+                            <img src="/public/img/front/sub/icon_plus.gif">
+                        </dt>
+                        <dt>
+                            <div>
+                                <span class="pBox p3">교재</span>
+                                ( <a class="num tx-light-blue underline" href="#none">2건</a> )
+                            </div>
+                            <span class="price tx-light-blue">13,000원</span>
+                        </dt>
+                    </dl>
                 </li>
                 <li class="price-total">
                     <div>결제예상금액</div>
@@ -200,7 +240,6 @@
         <!-- willbes-Cart-Txt -->
 
         <script src="/public/js/front/sub.js"></script>
-        <script src="/public/js/front/tabs.js"></script>
 
     </div>
     <div class="Quick-Bnr ml20 mt85">

@@ -311,7 +311,7 @@
             <div class="willbes-Class c_both">
                 <div class="willbes-Lec-Tit NG tx-black">패키지정보</div>
                 <div class="classInfoTable GM">
-                    <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                         <colgroup>
                             <col style="width: 140px;">
                             <col width="*">

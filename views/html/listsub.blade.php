@@ -79,13 +79,13 @@
                     <div id="viewBox" class="viewBox">
                         <dl class="NSK">
                             <dt class="Tit NG">맛보기1</dt>
-                            <dt class="tBox t1 high"><a href="">HIGH</a></dt>
-                            <dt class="tBox t2 low"><a href="">LOW</a></dt>
+                            <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                            <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                         </dl>
                         <dl class="NSK">
                             <dt class="Tit NG">맛보기2</dt>
-                            <dt class="tBox t1 high"><a href="">HIGH</a></dt>
-                            <dt class="tBox t2 low"><a href="">LOW</a></dt>
+                            <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                            <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                         </dl>
                     </div>
                 </div>
@@ -262,7 +262,7 @@
         <div class="willbes-Class c_both">
             <div class="willbes-Lec-Tit NG tx-black">강좌정보</div>
             <div class="classInfoTable GM">
-                <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 140px;">
                         <col width="*">
@@ -370,7 +370,7 @@
         <div class="willbes-Leclist c_both">
             <div class="willbes-Lec-Tit NG tx-black">강의목차</div>
             <div class="LeclistTable">
-                <table cellspacing="0" cellpadding="0" class="listTable tx-gray">
+                <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 100px;">
                         <col style="width: 480px;">
@@ -403,8 +403,8 @@
                             <td class="w-no">2강</td>
                             <td class="w-list tx-left pl20">2강 03월 05일 : 모의고사 2회</td>
                             <td class="w-free">
-                                <span class="tBox NSK t1 high"><a href="">HIGH</a></span>
-                                <span class="tBox NSK t2 low"><a href="">LOW</a></span>
+                                <span class="tBox NSK t1 black"><a href="">HIGH</a></span>
+                                <span class="tBox NSK t2 gray"><a href="">LOW</a></span>
                             </td>
                             <td class="w-file"></td>
                             <td class="w-time">40분</td>
@@ -494,7 +494,7 @@
                 </ul>
             </div>
             <div class="LeclistTable">
-                <table cellspacing="0" cellpadding="0" class="listTable tx-gray">
+                <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                     <colgroup>
                         <col style="width: 100px;">
                         <col style="width: 590px;">

@@ -506,22 +506,10 @@ table.combineTable .addbox2 {
     position: absolute;
     top: 50%;
     right: 30px;
-    background: url("../../img/front/login/icon_check.png") no-repeat 0 0;
-    width: 22px;
-    height: 22px;
     margin-top: -11px;
-}
-.agree-Chk .chkBox-Agree.checked {
-    background: url("../../img/front/login/icon_check.png") no-repeat 0 -44px;
 }
 .agree-Chk input[type=checkbox] {
     position: absolute;
-    opacity: 0;
-    width: 22px;
-    height: 22px;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
 }
 
 /* Login Form : 통합회원가입 : 회원가입완료 */
@@ -769,9 +757,6 @@ table.auTable tr td {
     height: 103px;
     overflow: hidden;
 }
-
-
-
 
 /* Gnb : md */
 .Gnb-md {
@@ -1452,16 +1437,22 @@ table.auTable tr td {
     float: left;
     width: 940px;
 }
-.subBtn {
-    height: 18px;
-}
 .subBtn a {
+    display: block;
     background: #7d7e85;
-    height: 100%;
+    height: 25px;
     font-size: 11px;
     font-weight: 600;
     color: #fff;
-    padding: 4px 10px
+    text-align: center;
+    line-height: 16px;
+    padding: 4px 10px;
+    border: 1px solid #7d7e85;
+}
+.subBtn.white a {
+    background: #fff;
+    color: #636363;
+    border: 1px solid #c9c9c9;
 }
 
 /* subContainer : Content : curriWrap */
@@ -1735,10 +1726,22 @@ table.auTable tr td {
 
 /* subContainer : Content : Lec-buyBtn */
 .willbes-Lec-buyBtn {
+    width: 100%;
     position: absolute;
     right: 0;
     bottom: 0;
     z-index: 10;
+}
+.willbes-Lec-buyBtn .btnAgree {
+    float: left;
+    line-height: 34px;
+}
+.willbes-Lec-buyBtn .btnAgree input[type="checkbox"] {
+    float: left;
+    margin: 11px;
+}
+.willbes-Lec-buyBtn ul {
+    float: right;
 }
 .willbes-Lec-buyBtn ul li {
     float: left;
@@ -1978,7 +1981,7 @@ table.lecTable tr td .MoreBtn {
 .viewBox {
     display: none;
     position: absolute;
-    top: 67px;
+    top: 66px;
     right: 27px;
     z-index: 10;
     background: #fff;
@@ -2016,10 +2019,10 @@ table.lecTable tr td .MoreBtn {
     color: #fff;
     text-align: center;
 }
-.tBox.high a {
+.tBox.black a {
     background: #333;
 }
-.tBox.low a {
+.tBox.gray a {
     background: #898989;
 }
 
@@ -2101,6 +2104,19 @@ table.lecTable tr td .MoreBtn {
 }
 
 /* subContainer : Content : willbes-Layer-Box */
+.willbes-Layer-Black {
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    filter: alpha(opacity=60);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
 .willbes-Layer-Box {
     display: none;
     background: #fff;
@@ -2127,16 +2143,33 @@ table.lecTable tr td .MoreBtn {
     letter-spacing: 0;
     margin-bottom: 30px;
 }
-.lecDetailWrap .tabWrap {
+.willbes-Layer-Box-sm {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    z-index: 11;
+    width: 580px;
+    height: 230px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 30px;
+}
+.willbes-Layer-Box-sm .closeBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.tabWrap.tabDepth1 {
     height: 60px;
     border-bottom: 1px solid #4f4f4f;
 }
-.lecDetailWrap .tabWrap li {
+.tabWrap.tabDepth1 li {
     float: left;
     width: 50%;
     height: 60px;
 }
-.lecDetailWrap .tabWrap li a {
+.tabWrap.tabDepth1 li a {
     display: block;
     width: 100%;
     height: 59px;
@@ -2151,7 +2184,7 @@ table.lecTable tr td .MoreBtn {
     border-left: 1px solid #dbdbdb;
     border-right: 1px solid #dbdbdb;
 }
-.lecDetailWrap .tabWrap li a.on {
+.tabWrap.tabDepth1 li a.on {
     background: #fff;
     height: 60px;
     line-height: 52px;
@@ -2406,7 +2439,6 @@ table.classTable {
 table.classTable tr td {
     height: 100px;
     line-height: 16px;
-    border-bottom: 1px solid #edeeef;
 }
 table.classTable tr td.w-data {
     line-height: 20px;
@@ -2452,16 +2484,18 @@ table.classTable tr td.w-data {
     height: 10px;
     margin: -3px 10px 0;
 }
-.bookBoxWrap .tabWrap {
+
+/* subContainer : Content : 2nd Tabs 공통 */
+.tabWrap {
     height: 34px;
     border-bottom: 1px solid #959595;
 }
-.bookBoxWrap .tabWrap li {
+.tabWrap li {
     float: left;
     width: 140px;
     height: 34px;
 }
-.bookBoxWrap .tabWrap li a {
+.tabWrap li a {
     display: block;
     width: 100%;
     height: 33px;
@@ -2475,7 +2509,7 @@ table.classTable tr td.w-data {
     border-left: 1px solid #e1e1e1;
     border-right: 1px solid #e1e1e1;
 }
-.bookBoxWrap .tabWrap li a.on {
+.tabWrap li a.on {
     background: #fff;
     height: 34px;
     line-height: 32px;
@@ -2485,7 +2519,7 @@ table.classTable tr td.w-data {
     border-left: 1px solid #959595;
     border-right: 1px solid #959595;
 }
-.bookBoxWrap .tabBox .book-TxtBox {
+.tabBox .book-TxtBox {
     height: 150px;
     line-height: 24px;
     padding: 15px 0 15px 5px;
@@ -2493,8 +2527,7 @@ table.classTable tr td.w-data {
     overflow-x: hidden;
     overflow-y: auto;
 }
-.bookBoxWrap .tabBox .caution-txt {
-    background: url("../../img/front/sub/icon_caution.gif") no-repeat 0 center;
+.tabBox .caution-txt {
     padding: 15px 20px;
     margin-left: 5px;
 }
@@ -2505,7 +2538,6 @@ table.classTable tr td.w-data {
     text-align: center;
     line-height: 40px;
     letter-spacing: 0;
-    border-bottom: 1px solid #edeeef;
 }
 .LeclistTable .listTable thead tr th {
     background: #f9f9fa;
@@ -2663,6 +2695,7 @@ table.classTable tr td.w-data {
     text-align: center;
 }
 .pBox {
+    font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
     display: inline-block;
     width: 37px;
     height: 15px;
@@ -2671,6 +2704,7 @@ table.classTable tr td.w-data {
     font-weight: 600;
     line-height: 12px;
     text-align: center;
+    letter-spacing: -1px;
 }
 .pBox.p1 {
     color: #3e93be;
@@ -2683,6 +2717,10 @@ table.classTable tr td.w-data {
 .pBox.p3 {
     color: #af645a;
     border-color: #af645a;
+}
+.pBox.p4 {
+    color: #343434;
+    border-color: #7b7b7b;
 }
 .packageTable .w-tit {
     width: 670px;
@@ -2799,59 +2837,72 @@ table.classTable tr td.w-data {
     line-height: 20px;
 }
 .LeclistTable .listTable.cartTable {
-    border-top: 1px solid #959595;
     border-bottom: 1px solid #959595;
 }
-.LeclistTable .listTable.cartTable tr th {
-    border-bottom: none
+.LeclistTable .listTable.cartTable .w-list a {
+    display: block;
 }
-.LeclistTable .listTable.cartTable tr td {
-   border-top: 1px solid #edeeef;
-   border-bottom: none 
+.LeclistTable .listTable.cartTable .productTable {width: 100%}
+.LeclistTable .listTable.cartTable .productTable tr td {
+    border: none;
+    height: 30px;
+    line-height: 30px;
 }
+.LeclistTable .listTable.cartTable .productTable tr td .row-line {
+    float: right;
+    background: #e4e4e4;
+    width: 1px;
+    height: 10px;
+    margin: 9px 0;
+}
+
 .willbes-Cart-Price {
     height: 190px;
     margin: 85px 0 60px;
 }
 .cart-PriceBox {
+    float: left;
+    width: 100%;
     font-size: 14px;
     font-weight: 600;
-    height: 140px;
     line-height: 44px;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #3a3e47;
-    padding-left: 40px;
     letter-spacing: 0;
 }
 .cart-PriceBox li {
     float: left;
-    margin: 0 50px;
-    padding: 24px 0;
+    font-size: 12px;
+    text-align: center;
 }
 .cart-PriceBox li .price {
     font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 18px;
 }
-.cart-PriceBox .price-total {
-    float: right;
-    width: 230px;
-    background: #f9f9fa;
-    font-size: 16px;
-    color: #505050;
-    text-align: center;
-    margin: 0;
+.cart-PriceBox dl.priceBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 710px;
+    height: 138px;
 }
-.cart-PriceBox .price-total .price {
-    font-size: 23px;
+.cart-PriceBox dl.priceBox dt {
+    float: left;
+    margin: 0 50px;
+    padding: 24px 0;
 }
 .cart-PriceBox .row-line {
     background: #e7e7e7;
     width: 1px;
     height: 100px;
 }
-.cart-PriceBox .price-img {
+.cart-PriceBox dl.priceBox a {
+    font-size: 14px;
+}
+.cart-PriceBox dl.priceBox .price-img {
     position: relative;
-    margin: 0;
+    margin: 0 !important;
     padding: 19px 0;
 }
 .cart-PriceBox .price-img img {
@@ -2861,7 +2912,30 @@ table.classTable tr td.w-data {
     margin-top: -12px;
     margin-left: -12px;
 }
-.willbes-Cart-Txt {}
+.cart-PriceBox .price-total {
+    float: right;
+    width: 230px;
+    height: 138px;
+    background: #f9f9fa;
+    font-size: 16px;
+    color: #505050;
+    text-align: center;
+    margin: 0;
+    padding: 24px 0;
+}
+.cart-PriceBox .price-total .price {
+    font-size: 23px;
+}
+.willbes-Cart-Txt .MoreBtn {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    z-index: 10;
+}
+.willbes-Cart-Txt .MoreBtn a {
+    font-size: 11px;
+    color: #535353;
+}
 .willbes-Cart-Txt .txtTable {
     display: block;
     width: 940px;
@@ -2869,8 +2943,438 @@ table.classTable tr td.w-data {
     border: 1px solid #e7e7e7;
     letter-spacing: 0;
 }
+.willbes-Cart-Txt .txtTable.off {
+    padding: 20px;
+}
 .willbes-Cart-Txt .txtTable tr td {
     line-height: 24px;
+}
+
+/* subContainer : Cart : 결제하기 */
+.LeclistTable .buyTable tr td {
+    font-size: 11px;
+    line-height: 30px;
+    padding: 10px 0;
+}
+.LeclistTable .buyTable dl dt.tit {
+    font-size: 12px;
+}
+.LeclistTable .buyTable .w-day {
+    display: inline-block;
+    width: 120px;
+}
+.LeclistTable .buyTable .w-data {
+    color: #3a3a3a;
+}
+.LeclistTable .buyTable .w-data input {
+    width: 80px;
+    height: 22px;
+    text-align: center;
+    border: 1px solid #c9c9c9;
+}
+.LeclistTable .buyTable .w-data img {
+    margin: 0 5px;
+}
+.LeclistTable .buyTable .tBox {
+    float: right;
+    margin-top: 5px;
+}
+.LeclistTable .buyTable .w-coupon {
+    float: right;
+}
+.LeclistTable .buyTable .tx-blue {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.LeclistTable .buyTable .w-buy-price {
+    font-size: 12px;
+    line-height: 25px;
+}
+.LeclistTable .buyTable .w-buy-price .tx-light-blue {
+    font-weight: 600;
+}
+.LeclistTable .buyTable .w-buy-price .origin-price {
+    text-decoration: line-through;
+}
+
+/* subContainer : Cart : 결제하기 : 쿠폰적용 */
+.willbes-Layer-CartBox {
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 11;
+    width: 760px;
+    height: 560px;
+    margin-top: -280px;
+    margin-left: -380px;
+    border: 1px solid #2f2f2f;
+}
+.willbes-Layer-CartBox .closeBtn {
+    position: absolute;
+    top: 9px;
+    right: 16px;
+}
+.willbes-Layer-CartBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 40px;
+    letter-spacing: 0;
+    padding-left: 35px;
+}
+.willbes-Layer-CartBox .Layer-Cont {
+    margin: 35px;
+}
+.willbes-Layer-CartBox .Layer-Cont .tit {
+    font-size: 14px;
+    color: #454545;
+    letter-spacing: 1px;
+}
+.willbes-Pricelist {
+    background: #f9f9fa;
+    height: 135px;
+    margin: 20px 0 30px;
+}
+.willbes-Pricelist ul {
+    text-align: center;
+}
+.willbes-Pricelist li {
+    display: inline-block;
+    line-height: 35px;
+    margin: 0 55px;
+}
+.willbes-Pricelist li.price-img {
+    position: relative;
+    margin: 0 !important;
+    padding: 19px 0;
+}
+.willbes-Pricelist li.price-img img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -12px;
+    margin-left: -12px;
+}
+.willbes-Pricelist li .row-line {
+    background: #e7e7e7;
+    width: 1px;
+    height: 100px;
+}
+.willbes-Pricelist .PriceBox .price {
+    font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif";
+    font-size: 18px;
+    font-weight: 600;
+}
+.willbes-Pricelist .PriceBox .price-total {
+    font-size: 22px;
+}
+.couponWrap {
+    clear: both;
+}
+ul.btnWrap {
+    position: absolute;
+    top: 3px;
+    right: -1px;
+}
+ul.btnWrap li {
+    display: inline-block;
+    line-height: 20px;
+}
+.couponWrap .tabBox .coupon.caution-txt {
+    padding: 25px 20px;
+    margin-left: 5px;
+}
+table.couponTable {
+    font-size: 11px;
+    text-align: center;
+}
+table.couponTable thead tr th {
+    background: #f9f9fa;
+    height: 45px;
+    line-height: 14px;
+}
+table.couponTable tr th,
+table.couponTable tr td {
+    text-align: center;
+    line-height: 40px;
+    letter-spacing: 0;
+    padding: 10px 0;
+}
+table.couponTable tr th .row-line {
+    float: right;
+    background: #e7e7e7;
+    width: 1px;
+    height: 11px;
+}
+table.couponTable tr th div.line2 {
+    display: inline-block
+}
+table.couponTable tr th .row-line.line2 {
+    margin: 7px 0;
+}
+
+/* subContainer : Cart : 결제하기 : 나의 배송 주소록 */
+.address.caution-txt {
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+.address.subBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+table.couponTable tr td.address {
+    line-height: 16px;
+}
+table.couponTable .tBox {
+    margin: 1px 0;
+}
+.couponWrap .p-info {
+    font-size: 11px;
+    line-height: 20px;
+    padding: 10px 15px;
+}
+ul.btnWrapbt {
+    float: right;
+}
+ul.btnWrapbt li {
+    display: inline-block;
+    width: 52px;
+    line-height: 20px;
+}
+
+/* subContainer : Cart : 결제하기 : 결제금액리스트 */
+.willbes-Buylist-Price {
+    margin-top: 30px;
+}
+.willbes-Buylist-Price .cart-PriceBox {
+    border-top: 1px solid #3a3e47;
+}
+.willbes-Buylist-Price dl.priceBox dt {
+    margin: 0 45px;
+}
+.pointBox {
+    position: absolute;
+    top: 138px;
+    left: 0;
+    right: 0;
+    width: 710px;
+    height: 50px; 
+    border-top: 1px solid #e7e7e7;
+}
+.pointBox .row-line {
+    height: 35px;
+}
+.pointBox dt {
+    float: left;
+    line-height: 48px;
+    padding: 0;
+}
+.pointBox .p-tit {
+    margin: 0 59px;
+}
+.pointBox .u-point {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 20px 0 30px;
+}
+.btnAll {
+    display: inline-block;
+    height: 22px;
+}
+.btnAll a {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #898989;
+    border: 1px solid #898989;
+    line-height: 20px;
+    padding: 0 10px;
+    letter-spacing: 0;
+}
+.pointBox input[type=text] {
+    width: 100px;
+    height: 27px;
+    color: #707070;
+    text-align: right;
+    padding: 5px;
+    border: 1px solid #898989;
+}
+.willbes-Buylist-Price .price-total {
+    height: 188px;
+    padding: 49px 0;
+}
+.willbes-Buylist-Price.Fin .price-total {
+    height: 138px;
+    padding: 24px 0;
+}
+.willbes-Buylist-Price .p-info {
+    padding: 20px 30px 0;
+    letter-spacing: 0;
+}
+.willbes-Buylist-Price .p-info span {
+    font-weight: 600;
+}
+
+/* subContainer : Cart : 결제하기 : 배송정보 */
+table.deliveryTable {
+    border-bottom: 1px solid #959595;  
+}
+table.deliveryTable tr.u-from th,
+table.deliveryTable tr.u-from td {
+    border-top: none;
+}
+table.deliveryTable tr.u-to th,
+table.deliveryTable tr.u-to td {
+    border-top: 1px solid #959595;
+}
+table.deliveryTable tr th {
+    font-weight: 600;
+    line-height: 20px;
+    border-right: 1px solid #edeeef;
+}
+table.deliveryTable tr td {
+    height: 40px;
+    padding: 7px 0;
+}
+.u-delivery-chk {
+    background: #dff8ff;
+}
+.u-delivery-chk ul li {
+    float: left;
+}
+.u-delivery-chk ul li input[type="radio"] {
+    float: left;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+.u-delivery-chk ul li label {
+    padding-right: 35px;
+}
+table.deliveryTable input[type="text"] {
+    border: 1px solid #d4d4d4;
+    height: 27px;
+    padding: 0 10px;
+}
+table.deliveryTable .inputBox.Add {
+    padding: 7px 0
+}
+table.deliveryTable .inputBox label {
+    font-size: 12px;
+    color: #707070;
+    position: absolute;
+    top: 7px;
+    left: 6px;
+}
+table.deliveryTable .inputBox input {
+    width: 400px;
+    font-size: 12px;
+    padding: 5px;
+}
+table.deliveryTable .searchadd input {
+    width: 55px;
+}
+table.deliveryTable .searchadd button {
+    height: 27px;
+    line-height: 25px;
+}
+table.deliveryTable .searchadd button span {
+    font-size: 11px;
+    color: #fff;
+}
+table.deliveryTable .addbox1 {
+    height: 26px;
+}
+table.deliveryTable .addbox2 {
+    height: 26px;
+    top: -1px;
+}
+table.deliveryTable select {
+    border: 1px solid #d4d4d4;
+    widtH: 82px;
+    height: 27px;
+}
+table.deliveryTable input.phone {
+    width: 82px;
+    text-align: center;
+}
+
+/* subContainer : Cart : 결제하기 : 결제정보 */
+.willbes-BuyInfo .w-buyinfo dl dt {
+    height: 30px;
+    line-height: 28px;
+}
+.willbes-BuyInfo .w-buyinfo .t-price {
+    font-size: 23px;
+    font-weight: 600;
+}
+.willbes-BuyInfo .w-buyinfo .w-point {
+    float: right;
+}
+.willbes-BuyInfo .w-buyinfo .w-point span  {
+    font-weight: 600;
+}
+.willbes-BuyInfo .w-buyinfo .caution-txt {
+    padding-left: 20px;
+    letter-spacing: -1px;
+}
+.willbes-BuyInfo .w-buyinfo .caution-txt span {
+    vertical-align: baseline;
+}
+.willbes-BuyInfo .w-buyinfo ul li {
+    float: left;
+    margin-right: 30px;
+}
+.willbes-BuyInfo .w-buyinfo ul li input[type="radio"] {
+    float: left;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+/* subContainer : Cart : 결제하기 : 유의사항 및 환불정책안내 */
+.willbes-PolicyInfo {
+    padding-bottom: 66px;
+}
+.willbes-PolicyInfo .w-txt .txtBox {
+    height: 140px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 15px;
+    margin: 15px 15px 0;
+    border: 1px solid #e2e2e2;
+}
+.willbes-PolicyInfo .w-txt .chkBox {
+    margin: 15px;
+}
+.willbes-PolicyInfo .w-txt .chkBox .chkBox-Agree {
+    display: inline-block;
+    margin-left: 5px;
+}
+.willbes-PolicyInfo .AllchkBox {
+    text-align: right;
+    padding: 20px 0 40px;
+    border-bottom: 1px solid #3a3e47;
+}
+.willbes-PolicyInfo .AllchkBox .chkBox-Agree {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* subContainer : Cart : 결제완료 */
+.willbes-Payment-Fin {
+    float: left;
+    widtH: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    border: 1px solid #e7e7e7;
+    padding: 35px 0;
+    margin-top: 40px;
+}
+table.finTable tr td {
+    height: 40px;
 }
 
 
@@ -2882,12 +3386,13 @@ table.classTable tr td.w-data {
 }
 
 
+
 /* Only IE Hack */
 /* IE7, IE8, IE9 */
 #SettingForm .chkBox-Save strong {
     letter-spacing: -2px \0;
 }
 /* IE10 and IE11 */
-@media screen and (-ms-high-contrast:active), (-ms-high-contrast:none) {
+@media screen and (-ms-black-contrast:active), (-ms-black-contrast:none) {
     #SettingForm .chkBox-Save strong {letter-spacing: -2px;}
 }

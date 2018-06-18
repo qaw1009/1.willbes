@@ -34,7 +34,7 @@ class LiveManager extends \app\controllers\BaseController
     {
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
-        $list = $this->liveManagerModel->listLiveVideo([], null, null, ['lms_lecture_live_video.LecLiveVideoIdx' => 'asc', 'lms_lecture_live_video.OrderNum' => 'asc']);
+        $list = $this->liveManagerModel->listLiveVideo([], null, null, ['lms_live_video.LecLiveVideoIdx' => 'asc', 'lms_live_video.OrderNum' => 'asc']);
 
         $this->load->view("live/video/index", [
             'arr_campus' => $arr_campus,

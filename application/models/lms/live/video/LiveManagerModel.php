@@ -5,7 +5,7 @@ class LiveManagerModel extends WB_Model
 {
     private $_table = [
         'site' => 'lms_site',
-        'live_video' => 'lms_lecture_live_video',
+        'live_video' => 'lms_live_video',
         'sys_code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
@@ -27,20 +27,20 @@ class LiveManagerModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
-        $column = 'lms_lecture_live_video.LecLiveVideoIdx, lms_lecture_live_video.SiteCode,
-                    lms_lecture_live_video.CampusCcd, lms_lecture_live_video.LecRoomName, lms_lecture_live_video.LiveVideoRoute,
-                    lms_lecture_live_video.OrderNum, lms_lecture_live_video.IsUse, lms_lecture_live_video.RegDatm, lms_lecture_live_video.RegAdminIdx, lms_site.SiteName, lms_sys_code.CcdName as CampusName';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_lecture_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column = 'lms_live_video.LecLiveVideoIdx, lms_live_video.SiteCode,
+                    lms_live_video.CampusCcd, lms_live_video.LecRoomName, lms_live_video.LiveVideoRoute,
+                    lms_live_video.OrderNum, lms_live_video.IsUse, lms_live_video.RegDatm, lms_live_video.RegAdminIdx, lms_site.SiteName, lms_sys_code.CcdName as CampusName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
 
         $from = "
-            FROM {$this->_table['live_video']} AS lms_lecture_live_video
-            INNER JOIN {$this->_table['site']} as lms_site ON lms_lecture_live_video.SiteCode = lms_site.SiteCode
-            LEFT JOIN {$this->_table['sys_code']} as lms_sys_code ON lms_lecture_live_video.CampusCcd = lms_sys_code.Ccd
+            FROM {$this->_table['live_video']} AS lms_live_video
+            INNER JOIN {$this->_table['site']} as lms_site ON lms_live_video.SiteCode = lms_site.SiteCode
+            LEFT JOIN {$this->_table['sys_code']} as lms_sys_code ON lms_live_video.CampusCcd = lms_sys_code.Ccd
         ";
 
         $arr_condition['EQ']['lms_site.IsStatus'] = 'Y';
-        $arr_condition['EQ']['lms_lecture_live_video.IsStatus'] = 'Y';
-        $arr_condition['IN']['lms_lecture_live_video.SiteCode'] = get_auth_site_codes();
+        $arr_condition['EQ']['lms_live_video.IsStatus'] = 'Y';
+        $arr_condition['IN']['lms_live_video.SiteCode'] = get_auth_site_codes();
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -57,14 +57,14 @@ class LiveManagerModel extends WB_Model
      */
     public function findLiveVideoForModify($idx)
     {
-        $column = 'lms_lecture_live_video.LecLiveVideoIdx, lms_lecture_live_video.SiteCode,
-                    lms_lecture_live_video.CampusCcd, lms_lecture_live_video.LecRoomName, lms_lecture_live_video.LiveVideoRoute,
-                    lms_lecture_live_video.OrderNum, lms_lecture_live_video.IsUse, lms_lecture_live_video.RegDatm, lms_lecture_live_video.RegAdminIdx, lms_lecture_live_video.UpdDatm, lms_lecture_live_video.UpdAdminIdx';
-        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_lecture_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
-        $column .= ' , if(lms_lecture_live_video.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_lecture_live_video.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
+        $column = 'lms_live_video.LecLiveVideoIdx, lms_live_video.SiteCode,
+                    lms_live_video.CampusCcd, lms_live_video.LecRoomName, lms_live_video.LiveVideoRoute,
+                    lms_live_video.OrderNum, lms_live_video.IsUse, lms_live_video.RegDatm, lms_live_video.RegAdminIdx, lms_live_video.UpdDatm, lms_live_video.UpdAdminIdx';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= ' , if(lms_live_video.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_live_video.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table['live_video'] . ' as lms_lecture_live_video', $column, [
-            'EQ' => ['lms_lecture_live_video.LecLiveVideoIdx' => $idx]
+        return $this->_conn->getFindResult($this->_table['live_video'] . ' as lms_live_video', $column, [
+            'EQ' => ['lms_live_video.LecLiveVideoIdx' => $idx]
         ]);
     }
 

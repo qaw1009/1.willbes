@@ -331,7 +331,7 @@ class PackageUserModel extends CommonLectureModel
             ,'IsPackRetakeType'=>element('IsPackRetakeType',$input)
             ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
             ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
-
+            ,'IsEdit'=>element('IsEdit',$input,'N')
         ];
 
     }

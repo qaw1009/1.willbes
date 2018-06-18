@@ -192,7 +192,7 @@ Class PackageUser extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->packageuserModel->_prodCopy($prodcode);
+        $result = $this->packageuserModel->_prodCopy($prodcode,'packageuser');
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }

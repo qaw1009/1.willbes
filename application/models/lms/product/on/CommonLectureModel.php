@@ -72,7 +72,7 @@ class CommonLectureModel extends WB_Model
      * @param $tableName
      * @return mixed
      */
-    public function _findProductEtcModify($prodcode,$tableName)
+    public function _findProductEtcModify($prodcode,$tableName,$prodtype=null)
     {
 
         if ($tableName === 'lms_product_lecture_sample') {      //샘플
@@ -89,17 +89,30 @@ class CommonLectureModel extends WB_Model
 
         } elseif ($tableName === 'lms_product_division') {   //강사료
 
-            $column = 'A.*,C.wProfName';
+                if($prodtype === 'packageadmin') {
+                    $column = 'A.*,C.wProfName,D.ProdName as ProdNameSub';
 
-            $from = ' from
-                            '.$tableName.' A
-                            join lms_professor B on A.ProfIdx = B.ProfIdx
-                            join wbs_pms_professor C on B.wProfIdx = C.wProfIdx
-                        where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\'
-            ';
+                    $from = ' from
+                                    ' . $tableName . ' A
+                                    join lms_professor B on A.ProfIdx = B.ProfIdx
+                                    join wbs_pms_professor C on B.wProfIdx = C.wProfIdx
+                                    join lms_product D on A.ProdCodeSub = D.ProdCode
+                                where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\' and D.IsStatus=\'Y\'
+                    ';
+                } else {
+                    $column = 'A.*,C.wProfName';
 
+                    $from = ' from
+                                    ' . $tableName . ' A
+                                    join lms_professor B on A.ProfIdx = B.ProfIdx
+                                    join wbs_pms_professor C on B.wProfIdx = C.wProfIdx
+                                where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\'
+                    ';
+                }
+            $order_by = ' order by A.PdIdx ASC';
             $where = $this->_conn->makeWhere(['EQ'=>['A.ProdCode'=>$prodcode]])->getMakeWhere(true);
-            $result = $this->_conn->query('select ' .$column .$from .$where)->result_array();
+            //echo 'select ' .$column .$from .$where. $order_by;
+            $result = $this->_conn->query('select ' .$column .$from .$where. $order_by)->result_array();
 
         } elseif ($tableName === 'lms_product_memo') {   //메모
 
@@ -217,7 +230,7 @@ class CommonLectureModel extends WB_Model
 
             $column = '
                             STRAIGHT_JOIN
-                            S.ProdCodeSub
+                            S.ProdCodeSub,S.IsEssential,S.SubGroupName
                             ,A.ProdCode,A.ProdName,A.IsUse
                             ,Aa.CcdName as SaleStatusCcd_Name
                             ,B.MultipleApply
@@ -487,6 +500,7 @@ class CommonLectureModel extends WB_Model
                         throw new \Exception('강사료 정산 등록에 실패했습니다.');
                     }
 
+                    //echo $this->_conn->last_query();
                 }
             }
 
@@ -973,8 +987,9 @@ class CommonLectureModel extends WB_Model
 
 
             //강사료정산복사
-            $insert_column = 'ProdCode, ProdCodeSub, ProfIdx, LecCnt, IsReprProf, TotalPrice, ProdDivisionPrice, ProdDivisionRate, ProdCalcRate, SingularValue, IsSingular, RegAdminIdx, RegIp';
-            $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
+            $insert_column = 'ProdCodeSub,ProdCode, ProfIdx, LecCnt, IsReprProf, TotalPrice, ProdDivisionPrice, ProdDivisionRate, ProdCalcRate, SingularValue, IsSingular, RegAdminIdx, RegIp';
+
+            $select_column= str_replace(',ProdCode',',\''.$prodcode_new.'\' as ProdCode',$insert_column);       //prodcode 치환 문제로 이와같이 변경
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
 
@@ -1069,19 +1084,19 @@ class CommonLectureModel extends WB_Model
 
 
             //  연결강좌복사
-            if($prodtype==='packageuser') {
-                $insert_column = 'ProdCode, ProdCodeSub, IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
-                $select_column = str_replace('ProdCode', '\'' . $prodcode_new . '\' as ProdCode', $insert_column);
+
+            if($prodtype==='packageuser' || $prodtype==='packageadmin') {
+
+                $insert_column = 'ProdCodeSub,ProdCode,  IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
+                $select_column = str_replace(',ProdCode', ',\'' . $prodcode_new . '\' as ProdCode', $insert_column);
                 $select_column = str_replace('RegAdminIdx', '\'' . $admin_idx . '\' as RegAdminIdx', $select_column);
                 $select_column = str_replace('RegIp', '\'' . $reg_ip . '\' as RegIp', $select_column);
 
                 $query = 'insert into ' . $this->_table['sublecture'] . '(' . $insert_column . ') Select ' . $select_column . ' FROM ' . $this->_table['sublecture'] . ' where ProdCode=' . $prodcode . ' And IsStatus=\'Y\'';
-                echo $query;
+
                 if ($this->_conn->query($query) === false) {
                     throw new \Exception('연결강좌 복사에 실패했습니다.');
                 };
-
-            } else if ($prodtype==='packageadmin') {
 
             } else { //단강좌는 자신이 연결강좌로
 
@@ -1129,7 +1144,6 @@ class CommonLectureModel extends WB_Model
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-
         return true;
     }
 

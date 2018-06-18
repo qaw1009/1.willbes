@@ -160,13 +160,15 @@
                     }
                 }, showError, false, 'POST');
             });
-        });
 
-        $('.btn_board').click(function() {
-            $('.btn_board').setLayer({
-                "url" : "{{ site_url('/lecture/video/LiveManager/viewBoardListModel/') }}" + $(this).data('bm-idx'),
-                "width" : "1200",
-                "modal_id" : "modal_html"
+            $('.btn_board').click(function() {
+                var site_code = $('#search_site_code').val();
+
+                $('.btn_board').setLayer({
+                    "url" : "{{ site_url('/lecture/video/LiveManager/viewBoardListModel/') }}" + $(this).data('bm-idx') + '/?site_code=' + site_code,
+                    "width" : "1200",
+                    "modal_id" : "modal_html"
+                });
             });
         });
 

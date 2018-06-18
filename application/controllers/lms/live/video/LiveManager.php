@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LiveManager extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'lecture/video/liveManager');
+    protected $models = array('live/video/liveManager', 'sys/site', 'sys/category', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
     protected $helpers = array();
     protected $boardInfo = [
         '82' => '강의배정표',
@@ -24,7 +24,7 @@ class LiveManager extends \app\controllers\BaseController
         $arr_campus = $this->siteModel->getSiteCampusArray('');
         $list = $this->liveManagerModel->listLiveVideo([], null, null, ['lms_lecture_live_video.LecLiveVideoIdx' => 'asc', 'lms_lecture_live_video.OrderNum' => 'asc']);
 
-        $this->load->view("video/index", [
+        $this->load->view("live/video/index", [
             'arr_campus' => $arr_campus,
             'boardInfo' => $this->boardInfo,
             'data' => $list
@@ -54,7 +54,7 @@ class LiveManager extends \app\controllers\BaseController
             }
         }
 
-        $this->load->view('video/create', [
+        $this->load->view('live/video/create', [
             'method' => $method,
             'arr_campus' => $arr_campus,
             'idx' => $idx,
@@ -113,7 +113,7 @@ class LiveManager extends \app\controllers\BaseController
      */
     public function viewVideoModel()
     {
-        $this->load->view('video/view_video_model', [
+        $this->load->view('live/video/view_video_model', [
             'video_route' => $this->_req('video_route')
         ]);
     }
@@ -125,13 +125,41 @@ class LiveManager extends \app\controllers\BaseController
     public function viewBoardListModel($params = [])
     {
         $bm_idx = $params[0];
+        $site_code = $this->_req('site_code');
+
         if (empty($this->boardInfo[$bm_idx]) === true) {
             show_error('잘못된 접근 입니다.');
         }
 
-        $this->load->view('video/view_board_list_model', [
+        //캠퍼스'Y'상태 사이트 코드 조회
+        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        //카테고리 조회(구분)
+        $arr_category = $this->categoryModel->getCategoryArray('');
+
+        //과목조회
+        $arr_subject = $this->subjectModel->getSubjectArray('');
+
+        //과정조회
+        $arr_course = $this->courseModel->getCourseArray('');
+
+        //교수조회
+        $arr_professor = $this->professorModel->getProfessorArray('');
+
+        $this->load->view('live/video/view_board_list_model', [
             'bm_idx' => $bm_idx,
             'boardInfo' => $this->boardInfo,
+            'site_code' => $site_code,
+
+            'offLineSite_list' => $offLineSite_list,
+            'arr_campus' => $arr_campus,
+            'arr_category' => $arr_category,
+            'arr_subject' => $arr_subject,
+            'arr_course' => $arr_course,
+            'arr_professor' => $arr_professor,
         ]);
     }
 }

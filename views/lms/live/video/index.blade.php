@@ -119,7 +119,7 @@
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/lecture/video/LiveManager/create/') }}' + uri_param,
+                    'url' : '{{ site_url('/live/video/LiveManager/create/') }}' + uri_param,
                     'width' : 900
                 });
             });
@@ -128,7 +128,7 @@
             $('.btn-video').click(function() {
                 var uri_param = '?video_route=' + $(this).data('dideo-route');
                 $('.btn-video').setLayer({
-                    'url' : '{{ site_url('/lecture/video/LiveManager/viewVideoModel/') }}' + uri_param,
+                    'url' : '{{ site_url('/live/video/LiveManager/viewVideoModel/') }}' + uri_param,
                     'width' : 900
                 });
             });
@@ -153,7 +153,7 @@
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-                sendAjax('{{ site_url('/lecture/video/LiveManager/reorder') }}', data, function(ret) {
+                sendAjax('{{ site_url('/live/video/LiveManager/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace(location.pathname + dtParamsToQueryString($datatable));
@@ -163,11 +163,17 @@
 
             $('.btn_board').click(function() {
                 var site_code = $('#search_site_code').val();
+                var bm_idx = $(this).data('bm-idx');
+                var modal_path = '';
+                if (bm_idx == '82') {
+                    modal_path = 'ListOfflineBoardModal';
+                } else if (bm_idx == '83') {
+                    modal_path = 'ListLiveLectureMaterialModal';
+                }
 
                 $('.btn_board').setLayer({
-                    "url" : "{{ site_url('/lecture/video/LiveManager/viewBoardListModel/') }}" + $(this).data('bm-idx') + '/?site_code=' + site_code,
-                    "width" : "1200",
-                    "modal_id" : "modal_html"
+                    "url" : "{{ site_url('/live/video/LiveManager/') }}" + modal_path + '/' + bm_idx + '?site_code=' + site_code,
+                    "width" : "1200"
                 });
             });
         });

@@ -9,6 +9,18 @@ class LiveManager extends \app\controllers\BaseController
         '82' => '강의배정표',
         '83' => '강의자료실'
     ];
+    private $board_name = [
+        '82' => 'OfflineBoard',
+        '83' => 'LiveLectureMaterial'
+    ];
+    private $_reg_type = [
+        'user' => 0,    //유저 등록 정보
+        'admin' => 1    //admin 등록 정보
+    ];
+    private $_attach_reg_type = [
+        'default' => 0,     //본문글 첨부
+        'reply' => 1        //본문 답변글첨부
+    ];
 
     public function __construct()
     {
@@ -119,10 +131,10 @@ class LiveManager extends \app\controllers\BaseController
     }
 
     /**
-     * 게시판
+     * 게시판 - 강의자료실
      * @param array $params
      */
-    public function viewBoardListModel($params = [])
+    public function ListLiveLectureMaterialModal($params = [])
     {
         $bm_idx = $params[0];
         $site_code = $this->_req('site_code');
@@ -149,7 +161,7 @@ class LiveManager extends \app\controllers\BaseController
         //교수조회
         $arr_professor = $this->professorModel->getProfessorArray('');
 
-        $this->load->view('live/video/view_board_list_model', [
+        $this->load->view('live/video/board/list_liveLectureMaterial_modal', [
             'bm_idx' => $bm_idx,
             'boardInfo' => $this->boardInfo,
             'site_code' => $site_code,
@@ -161,5 +173,317 @@ class LiveManager extends \app\controllers\BaseController
             'arr_course' => $arr_course,
             'arr_professor' => $arr_professor,
         ]);
+    }
+
+    public function AjaxLiveLectureMaterialModal($params = [])
+    {
+        $bm_idx = $params[0];
+        $site_code = $this->_req('site_code');
+        $is_best_type = ($this->_reqP('search_modal_chk_hot_display') == 1) ? '1' : '0';
+
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $bm_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => '1',
+                'LB.IsBest' => 'N',
+                'LB.CampusCcd' => $this->_reqP('search_modal_campus_ccd'),
+                'LB.SubjectIdx' => $this->_reqP('search_modal_subject'),
+                'LB.CourseIdx' => $this->_reqP('search_modal_course'),
+                'LB.ProfIdx' => $this->_reqP('search_modal_professor'),
+                'LB.IsUse' => $this->_reqP('search_modal_is_use'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'LB.Title' => $this->_reqP('search_modal_value'),
+                    'LB.Content' => $this->_reqP('search_modal_value'),
+                ]
+            ]
+        ];
+
+        if (!empty($this->_reqP('search_modal_start_date')) && !empty($this->_reqP('search_modal_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['LB.RegDatm' => [$this->_reqP('search_modal_start_date'), $this->_reqP('search_modal_end_date')]]
+            ]);
+        }
+
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y',
+                'subLBrC.CateCode' => $this->_reqP('search_modal_category')
+            ]
+        ];
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+            ';
+
+        $best_count = 0;
+        $best_list = [];
+        if ($is_best_type == 0) {
+            $best_data = $this->_bestBoardData($column, $bm_idx, $site_code);
+            $best_count = $best_data['count'];
+            $best_list = $best_data['data'];
+        }
+
+        $list = [];
+        $count = $this->boardModel->listAllBoard($this->board_name[$bm_idx],true, $arr_condition, $sub_query_condition, $site_code);
+
+        if ($count > 0) {
+            $list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_condition, $sub_query_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+        }
+
+        if ($best_count > 0) {
+            $count = $count + $best_count;
+            $list = array_merge($best_list, $list);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 게시판 - 강의배정표
+     * @param array $params
+     */
+    public function ListOfflineBoardModal($params = [])
+    {
+        $bm_idx = $params[0];
+        $site_code = $this->_req('site_code');
+
+        if (empty($this->boardInfo[$bm_idx]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        //캠퍼스'Y'상태 사이트 코드 조회
+        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        //카테고리 조회(구분)
+        $arr_category = $this->categoryModel->getCategoryArray('');
+
+        $this->load->view('live/video/board/list_offLineBoard_modal', [
+            'bm_idx' => $bm_idx,
+            'boardInfo' => $this->boardInfo,
+            'site_code' => $site_code,
+            'offLineSite_list' => $offLineSite_list,
+            'arr_campus' => $arr_campus,
+            'arr_category' => $arr_category,
+        ]);
+    }
+
+    public function AjaxOfflineBoardModal($params = [])
+    {
+        $bm_idx = $params[0];
+        $site_code = $this->_req('site_code');
+        $is_best_type = ($this->_reqP('search_modal_chk_hot_display') == 1) ? '1' : '0';
+
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $bm_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => '1',
+                'LB.IsBest' => 'N',
+                'LB.CampusCcd' => $this->_reqP('search_modal_campus_ccd'),
+                'LB.IsUse' => $this->_reqP('search_modal_is_use'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'LB.Title' => $this->_reqP('search_modal_value'),
+                    'LB.Content' => $this->_reqP('search_modal_value'),
+                ]
+            ]
+        ];
+
+        if (!empty($this->_reqP('search_modal_start_date')) && !empty($this->_reqP('search_modal_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['LB.RegDatm' => [$this->_reqP('search_modal_start_date'), $this->_reqP('search_modal_end_date')]]
+            ]);
+        }
+
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y',
+                'subLBrC.CateCode' => $this->_reqP('search_modal_category')
+            ]
+        ];
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
+        ';
+
+        $best_count = 0;
+        $best_list = [];
+        if ($is_best_type == 0) {
+            $best_data = $this->_bestBoardData($column, $bm_idx, $site_code);
+            $best_count = $best_data['count'];
+            $best_list = $best_data['data'];
+        }
+
+        $list = [];
+        $count = $this->boardModel->listAllBoard($this->board_name[$bm_idx],true, $arr_condition, $sub_query_condition, $site_code);
+
+        if ($count > 0) {
+            $list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_condition, $sub_query_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+        }
+
+        if ($best_count > 0) {
+            $count = $count + $best_count;
+            $list = array_merge($best_list, $list);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    public function readLiveLectureMaterialModal($params = [])
+    {
+        $board_idx = $params[0];
+        $bm_idx = $this->_req('bm_idx');
+        $get_site_code = $this->_req('site_code');
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+        ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => $this->_reg_type['admin']
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['admin'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name[$bm_idx], $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $get_category_array = $this->categoryModel->getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $this->load->view('live/video/board/read_liveLectureMaterial_modal', [
+            'bm_idx' => $bm_idx,
+            'get_site_code' => $get_site_code,
+            'boardInfo' => $this->boardInfo,
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    public function readOfflineBoardModal($params = [])
+    {
+        $board_idx = $params[0];
+        $bm_idx = $this->_req('bm_idx');
+        $get_site_code = $this->_req('site_code');
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+        ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => $this->_reg_type['admin']
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['admin'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name[$bm_idx], $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $get_category_array = $this->categoryModel->getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $this->load->view('live/video/board/read_offLineBoard_modal', [
+            'bm_idx' => $bm_idx,
+            'get_site_code' => $get_site_code,
+            'boardInfo' => $this->boardInfo,
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    /**
+     * 게시판 BEST 정보 조회
+     * @param $column
+     * @param $bm_idx
+     * @param $site_code
+     * @return array
+     */
+    private function _bestBoardData($column, $bm_idx, $site_code)
+    {
+        $arr_best_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $bm_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => '1',
+                'LB.IsBest' => 'Y'
+            ]
+        ];
+
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y'
+            ]
+        ];
+
+        $best_list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_best_condition, $sub_query_condition, $site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
+        $datas = [
+            'count' => count($best_list),
+            'data' => $best_list
+        ];
+
+        return $datas;
     }
 }

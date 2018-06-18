@@ -148,7 +148,8 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}") }}' + getQueryString());
+                console.log(getQueryString());
+                /*location.replace('{{ site_url("/board/offline/{$boardName}") }}' + getQueryString());*/
             });
 
             //데이터 수정 폼

@@ -1845,7 +1845,7 @@ table.auTable tr td {
     font-weight: 300;
 }
 .w-info dt {
-    display: inline-block;
+    float: left;
 }
 .w-info dt .nBox {
     display: inline-block;
@@ -1882,7 +1882,7 @@ table.auTable tr td {
     background: #b5b5b5;
     width: 1px;
     height: 12px;
-    margin: 0 10px;
+    margin: 0 10px -3px;
 }
 .w-info .w-name {
     font-size: 14px;
@@ -2671,7 +2671,7 @@ table.classTable tr td.w-data {
     margin: 21px 30px 0 0;
 }
 .total-PriceBox .price-img {
-    padding: 19px 10px;
+    padding: 0 10px;
 }
 
 /* subContainer : Content : packageTable */

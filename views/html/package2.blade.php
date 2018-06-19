@@ -43,6 +43,7 @@
         <span class="2depth"><span class="depth-Arrow">></span><strong>선택패키지</strong></span>
     </div>
     <div class="Content p_re">
+
         <div class="curriWrap c_both">
             <ul class="curriTabs c_both">
                 <li><a href="#none">전체</a></li>
@@ -108,6 +109,7 @@
             </div>
             <div class="InfoBtn"><a href="#none">수강신청안내 <span>▶</span></a></div>
         </div>
+        <!-- willbes-Lec-Search -->
 
         <div class="willbes-Lec NG c_both">
             <div class="willbes-Lec-Subject tx-dark-black">선택패키지</div>
@@ -238,13 +240,12 @@
         </div>
         <!-- willbes-Layer-Box -->
 
-        <script src="/public/js/front/sub.js"></script>
-        <script src="/public/js/front/tabs.js"></script>
-
     </div>
     <div class="Quick-Bnr ml20">
         <img src="/public/img/front/sample/banner_180605.jpg">     
     </div>
 </div>
 <!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
+<script src="/public/js/front/tabs.js"></script>
 @stop

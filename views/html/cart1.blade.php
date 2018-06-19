@@ -37,7 +37,6 @@
             </ul>
         </h3>
     </div>
-
     <div class="Content p_re">
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
@@ -239,12 +238,11 @@
         </div>
         <!-- willbes-Cart-Txt -->
 
-        <script src="/public/js/front/sub.js"></script>
-
     </div>
     <div class="Quick-Bnr ml20 mt85">
         <img src="/public/img/front/sample/banner_180605.jpg">     
     </div>
 </div>
 <!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
 @stop

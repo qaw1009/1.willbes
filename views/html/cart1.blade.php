@@ -61,7 +61,7 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"><span class="row-line">|</span></li></th>
+                            <th><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" style="margin: 13px;"><span class="row-line">|</span></li></th>
                             <th>상품정보<span class="row-line">|</span></li></th>
                             <th>판매가<span class="row-line">|</span></li></th>
                             <th>결제/삭제</th>

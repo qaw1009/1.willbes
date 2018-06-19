@@ -35,7 +35,7 @@
                 {!! method_field($method) !!}
 
                 <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="636001"/>     <!--상품타입공통코드//-->
-                <input type="hidden" name="LearnPatternCcd" id="LearnPatternCcd" value="615003"/>   <!--학습형태공통코드//-->
+                <input type="hidden" name="LearnPatternCcd" id="LearnPatternCcd" value="{{$learnpatternccd}}"/>   <!--학습형태공통코드//-->
                 <input type="hidden" name="ProdCode" id="ProdCode" value="{{$prodcode}}"/>
 
                 <div class="form-group">
@@ -124,8 +124,8 @@
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="item inline-block">
-                            [수강기간] <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='@if($data['LecTypeCcd'] !== '607003'){{$data['StudyPeriod']}}@endif' style="width:70px;">일&nbsp;&nbsp;&nbsp;
-                            [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='@if($data['LecTypeCcd'] != '607003'){{$data['StudyStartDate']}}@endif' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
+                            [수강기간] <input type="number" name="StudyPeriod" id="StudyPeriod" class="form-control" required="required" title="수강일" value='{{$data['StudyPeriod']}}' style="width:70px;">일&nbsp;&nbsp;&nbsp;
+                            [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>

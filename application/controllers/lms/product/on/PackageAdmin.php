@@ -137,6 +137,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 
         $this->load->view('product/on/packageadmin/create',[
             'method'=>$method
+            ,'learnpatternccd' => $this->learnpatternccd
             ,'lecprovision_ccd'=>$codes['608']          //강좌제공구분
             ,'contentprovision_ccd'=>$codes['609']   //강좌제공방식
             ,'multiplelimit_ccd'=>$codes['611'] //수강배수

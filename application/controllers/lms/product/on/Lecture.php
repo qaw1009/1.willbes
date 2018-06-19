@@ -175,6 +175,7 @@ Class Lecture extends \app\controllers\BaseController
 
         $this->load->view('product/on/lecture/create',[
             'method'=>$method
+            ,'learnpatternccd' => $this->learnpatternccd
             ,'lectype_ccd'=>$codes['607']       //강좌유형
             ,'lecprovision_ccd'=>$codes['608']          //강좌제공구분
             ,'contentprovision_ccd'=>$codes['609']   //강좌제공방식

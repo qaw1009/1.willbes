@@ -35,7 +35,7 @@
                 {!! method_field($method) !!}
 
                 <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="636001"/>     <!--상품타입공통코드//-->
-                <input type="hidden" name="LearnPatternCcd" id="LearnPatternCcd" value="615001"/>   <!--학습형태공통코드//-->
+                <input type="hidden" name="LearnPatternCcd" id="LearnPatternCcd" value="{{$learnpatternccd}}"/>   <!--학습형태공통코드//-->
                 <input type="hidden" name="ProdCode" id="ProdCode" value="{{$prodcode}}"/>
 
                 <div class="form-group">

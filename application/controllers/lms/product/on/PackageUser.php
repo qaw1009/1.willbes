@@ -124,6 +124,7 @@ Class PackageUser extends \app\controllers\BaseController
 
         $this->load->view('product/on/packageuser/create',[
             'method'=>$method
+            ,'learnpatternccd' => $this->learnpatternccd
             ,'multiplelimit_ccd'=>$codes['611'] //수강배수
             ,'multipleapply_ccd'=>$codes['612'] //수강배수적용구분
             ,'sales_ccd'=>$codes['618'] //판매상태

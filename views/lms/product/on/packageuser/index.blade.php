@@ -85,13 +85,13 @@
                     <th width="10%">중분류</th>
                     <th width="8%">대비학년도</th>
                     <th>사용자패키지명</th>
-                    <th width="7%">판매여부</th>
-                    <th width="6%">사용여부</th>
-                    <th width="6%">장바구니</th>
-                    <th width="6%">입금대기</th>
-                    <th width="6%">결제완료</th>
-                    <th width="6%">등록자</th>
-                    <th  width="10%">등록일</th>
+                    <<th width="5%">판매여부</th>
+                    <th width="5%">사용여부</th>
+                    <th width="5%">장바구니</th>
+                    <th width="5%">입금대기</th>
+                    <th width="5%">결제완료</th>
+                    <th width="5%">등록자</th>
+                    <th  width="8%">등록일</th>
                 </tr>
                 </thead>
                 <tbody>

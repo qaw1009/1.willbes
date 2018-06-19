@@ -69,12 +69,20 @@
     
     <div class="gnb-List">
         <div class="gnb-List-Tit">
-            <a href="#none">
+            <a href="{{ site_url('/home/html/list') }}">
                 <div class="willbes-icon_sm">
                     <img src="/public/img/front/gnb/icon_willbes1_sm.gif">
                 </div>
                 <span class="Txt">공무원<span class="arrow-Btn">></span></span>
             </a>
+        </div>
+        <div class="gnb-List-Depth">
+            <dl>
+                <dt><a href="#none">9급공무원</a></dt>
+                <dt><a href="#none">7급공무원</a></dt>
+                <dt><a href="#none">세무/관세</a></dt>
+                <dt><a href="#none">법원직</a></dt>
+            </dl>
         </div>
         <div class="gnb-List-Tit">
             <a href="#none">
@@ -84,6 +92,14 @@
                 <span class="Txt">경찰<span class="arrow-Btn">></span></span>
             </a> 
         </div>
+        <div class="gnb-List-Depth">
+            <dl>
+                <dt><a href="#none">일반경찰</a></dt>
+                <dt><a href="#none">경행경채</a></dt>
+                <dt><a href="#none">경찰승진</a></dt>
+                <dt><a href="#none">경찰간부</a></dt>
+            </dl>
+        </div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -92,6 +108,7 @@
                 <span class="Txt">교원임용<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -100,6 +117,7 @@
                 <span class="Txt">고등고시<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -108,14 +126,16 @@
                 <span class="Txt">저문자격증<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
-            <a class="willbes-Tit" href="#none">
+            <a href="#none">
                 <div class="willbes-icon_sm">
                     <img src="/public/img/front/gnb/icon_willbes6_sm.gif">
                 </div>
                 <span class="Txt">자격증<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
             <a href="#none">
                 <div class="willbes-icon_sm">
@@ -124,14 +144,16 @@
                 <span class="Txt">취업<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
-            <a class="willbes-Tit" href="#none">
+            <a href="#none">
                 <div class="willbes-icon_sm">
                     <img src="/public/img/front/gnb/icon_willbes8_sm.gif">
                 </div>
                 <span class="Txt">어학<span class="arrow-Btn">></span></span>
             </a>
         </div>
+        <div class="gnb-List-Depth"></div>
     </div>
     
     <ul class="gnb-List-Sub p_re">

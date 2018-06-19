@@ -79,7 +79,7 @@
         </div>
         <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
-            <a class="willbes-Tit" href="#none">
+            <a href="#none">
                 <div class="willbes-icon_sm">
                     <img src="/public/img/front/gnb/icon_willbes6_sm.gif">
                 </div>
@@ -97,7 +97,7 @@
         </div>
         <div class="gnb-List-Depth"></div>
         <div class="gnb-List-Tit">
-            <a class="willbes-Tit" href="#none">
+            <a href="#none">
                 <div class="willbes-icon_sm">
                     <img src="/public/img/front/gnb/icon_willbes8_sm.gif">
                 </div>

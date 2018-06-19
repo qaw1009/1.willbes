@@ -136,7 +136,7 @@ class CommonLectureModel extends WB_Model
                             '.$tableName.' A
                             join lms_Product B on A.BookProdCode = B.ProdCode
                             join lms_Product_book C on B.ProdCode = C.ProdCode
-                            join vw_wbs_bms_book_list D on C.wBookIdx = D.wBookIdx
+                            join wbs_bms_book_combine D on C.wBookIdx = D.wBookIdx
                             join lms_product_sale E on B.ProdCode = E.ProdCode 
                         where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and D.wIsStatus=\'Y\' and E.IsStatus=\'Y\'   
             ';

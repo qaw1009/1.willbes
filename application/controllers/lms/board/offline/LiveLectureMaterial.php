@@ -36,7 +36,7 @@ class LiveLectureMaterial extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
 
         //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
@@ -203,7 +203,7 @@ class LiveLectureMaterial extends BaseBoard
         $get_category_array = [];
 
         //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         //과목조회
         $arr_subject = $this->_getSubjectArray();

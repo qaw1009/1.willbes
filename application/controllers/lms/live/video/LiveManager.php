@@ -32,11 +32,16 @@ class LiveManager extends \app\controllers\BaseController
      */
     public function index()
     {
+        //캠퍼스'Y'상태 사이트 코드 조회
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
+
         $list = $this->liveManagerModel->listLiveVideo([], null, null, ['lms_live_video.LecLiveVideoIdx' => 'asc', 'lms_live_video.OrderNum' => 'asc']);
 
         $this->load->view("live/video/index", [
+            'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'boardInfo' => $this->boardInfo,
             'data' => $list
@@ -53,6 +58,9 @@ class LiveManager extends \app\controllers\BaseController
         $idx = null;
         $data = null;
 
+        //캠퍼스'Y'상태 사이트 코드 조회
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
@@ -68,6 +76,7 @@ class LiveManager extends \app\controllers\BaseController
 
         $this->load->view('live/video/create', [
             'method' => $method,
+            'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'idx' => $idx,
             'data' => $data
@@ -144,7 +153,7 @@ class LiveManager extends \app\controllers\BaseController
         }
 
         //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
@@ -261,7 +270,8 @@ class LiveManager extends \app\controllers\BaseController
         }
 
         //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->boardModel->getOffLineSiteArray();
+        /*$offLineSite_list = $this->boardModel->getOffLineSiteArray();*/
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');

@@ -75,6 +75,23 @@ class SiteModel extends WB_Model
         return $data;
     }
 
+    /**
+     * 캠퍼스'Y'상태 사이트 코드 목록 조회
+     * @return array
+     */
+    public function getOffLineSiteArray()
+    {
+        $column = 'SiteCode,SiteName';
+        $arr_condition = ['EQ' => ['IsCampus' => 'Y', 'IsUse' => 'Y', 'IsStatus' => 'Y']];
+        $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+
+        $data = $this->_conn->getListResult($this->_table['site'], $column ,$arr_condition, null, null, [
+            'SiteCode' => 'asc'
+        ]);
+
+        return array_pluck($data, 'SiteName', 'SiteCode');
+    }
+
 
     /**
      * 사이트 코드별 캠퍼스 코드 목록 조회

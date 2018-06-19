@@ -128,6 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PackageUserModel $packageuserModel                               Lecture user package Model Class
  * @property PackageAdminModel $packageadminModel                           Lecture admin package Model Class
  * @property PackagePeriodModel $packageperiodModel                          Lecture period package Model Class
+ * @property LectureFreeModel $lecturefreeModel                                 Lecture free Model Class
  * @property LiveManagerModel $liveManagerModel                                Live Video Manager For Lecture Model Class
  * @property ConsultModel $consultModel                                            Consult Model Class
  ***************** API ***********************

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SearchWBookModel extends WB_Model
 {
     private $_table = [
-        'vw_bms_book' => 'vw_wbs_bms_book_list',
+        'vw_bms_book' => 'wbs_bms_book_combine',
         'code' => 'wbs_sys_code',
         'admin' => 'wbs_sys_admin'
     ];

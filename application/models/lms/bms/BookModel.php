@@ -9,7 +9,7 @@ class BookModel extends WB_Model
         'product_sale' => 'lms_product_sale',
         'product_r_category' => 'lms_product_r_category',
         'bms_book' => 'wbs_bms_book',
-        'vw_bms_book' => 'vw_wbs_bms_book_list',
+        'vw_bms_book' => 'wbs_bms_book_combine',
         'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'category' => 'lms_sys_category',

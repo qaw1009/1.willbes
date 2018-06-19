@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Base extends \app\controllers\RestController
+class Bases extends \app\controllers\RestController
 {
     protected $models = array('_lms/sys/code', '_front/product/baseProduct');
     protected $helpers = array();
@@ -19,7 +19,7 @@ class Base extends \app\controllers\RestController
      * @param null|string $cate_code
      * @param null|string $child_ccd
      */
-    public function items_get($item_type = '', $site_code = '', $cate_code = null, $child_ccd = null)
+    public function index_get($item_type = '', $site_code = '', $cate_code = null, $child_ccd = null)
     {
         if (empty($item_type) === true || empty($site_code) === true) {
             return $this->api_param_error();

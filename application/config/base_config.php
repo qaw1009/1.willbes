@@ -6,6 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  Set Global User Config
 | -------------------------------------------------------------------
 */
+// 통합사이트 사이트 코드
+$config['intg_site_code'] = '2000';
+
 // blade mode 설정 ((optional) 1 = forced (test), 2 = run fast (production), 0 = automatic, default value)
 //defined('BLADEONE_MODE') OR define('BLADEONE_MODE', 2);
 

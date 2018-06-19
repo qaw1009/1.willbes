@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="subContainer NSK widthAuto c_both">
-    <div class="Menu c_both">
+<div id="Container" class="subContainer widthAuto c_both">
+    <div class="Menu NSK c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">경찰<span class="row-line">|</span></li>
@@ -32,73 +32,79 @@
                     <a href="#none">이벤트</a>
                 </li>
                 <li class="Acad">
-                    <a href="#none">경찰학원</a>
+                    <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>
                 </li>
             </ul>
         </h3>
     </div>
     <div class="Depth">
-        <span>홈 이미지</span> > 
-        <span>교수진소개</span>
+        <img src="/public/img/front/sub/icon_home.gif"> 
+        <span class="1depth"><span class="depth-Arrow">></span><strong>교수진소개</strong></span>
     </div>
-    <div class="Lnb">
+    <div class="Lnb NG">
         <h2>교수진 소개</h2>
-        <ul class="lnb-List">
-            <li class="active">
-                <a href="#none">국어</a>            
+        <div class="lnb-List">
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">국어<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth">
                 <dl>
-                    <dt>
-                        <a href="#none">정채영</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">기미진</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">김세령</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">오대혁</a>
-                    </dt>
+                    <dt><a href="#none">정채영</a></dt>
+                    <dt><a href="#none">기미진</a></dt>
+                    <dt><a href="#none">김세령</a></dt>
+                    <dt><a href="#none">오대혁</a></dt>
                 </dl>
-            </li>
-            <li>
-                <a href="#none">영어</a>            
+            </div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">영어<span class="arrow-Btn">></span></span></a> 
+            </div>
+            <div class="lnb-List-Depth">
                 <dl>
-                    <dt>
-                        <a href="#none">한덕현</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">김쌤</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">성기건</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">헤더진</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">제니</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">이리라</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">곽지영</a>
-                    </dt>
-                    <dt>
-                        <a href="#none">김영</a>
-                    </dt>
+                    <dt><a href="#none">한덕주</a></dt>
+                    <dt><a href="#none">김신주</a></dt>
+                    <dt><a href="#none">성기건</a></dt>
+                    <dt><a href="#none">김영</a></dt>
                 </dl>
-            </li>
-        </ul>
+            </div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">한국사<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth"></div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">행정학<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth"></div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">교정학<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth"></div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">국제법<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth"></div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">사회<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth"></div>
+            <div class="lnb-List-Tit">
+                <a href="#none"><span class="Txt">사회복지학<span class="arrow-Btn">></span></span></a>
+            </div>
+            <div class="lnb-List-Depth"></div>
+        </div>
     </div>
-    <div class="Content ml20">
+    <div class="Content p_re ml20">
+
         <div class="NoticeWrap mb60 c_both">
             <div class="pmBnr widthAuto460 mr20" style="float: left; background: #7e7e86; height: 220px">
-                프로모션배너 롤링폼 460 220
+                <div class="sliderPromotion">
+                    <div class="sliderNum">
+                        <div><img src="/public/img/front/sample/roll1.jpg"></div>
+                        <div><img src="/public/img/front/sample/roll2.jpg"></div>
+                    </div>
+                </div>
             </div>
             <div class="will-newLec widthAuto460">
-                <div class="will-Tit">신규강좌</div>
+                <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="/public/img/front/prof/icon_new.gif"></div>
                 <ul class="List-Table GM tx-gray">
                     <li>
                         <a href="#none">2017 기미진 국어 아침특강(5-6월)</a><span class="date">2018.03.06</span>
@@ -118,6 +124,7 @@
                 </ul>
             </div>
         </div>
+        <!-- NoticeWrap -->
 
         <div class="curriWrap GM c_both">
             <div class="CurriBox">
@@ -205,15 +212,256 @@
         </div>
         <!-- curriWrap -->
 
-        <div class="prof-List">
-            <h5>· 국어</h5>
+        <div class="willbes-Prof-List NG c_both">
+            <div class="willbes-Prof-Subject tx-dark-black">· 국어</div>
+            <!-- willbes-Prof-Subject -->
             <ul>
-                <li>
-                    <a href="#none">교수 이미지 227 227</a>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>정채영</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>기미진</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>김세령</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <img class="Evt" src="/public/img/front/prof/icon_event.gif">
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>오대혁</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>정채영</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>기미진</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>김세령</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>오대혁</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
                 </li>
             </ul>
         </div>
+        <!-- willbes-Prof-List -->
+
+        <div class="willbes-Prof-List NG c_both">
+            <div class="willbes-Prof-Subject tx-dark-black">· 영어</div>
+            <!-- willbes-Prof-Subject -->
+            <ul>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>정채영</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>오대혁</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- willbes-Prof-List -->
+
+        <div class="willbes-Prof-List NG c_both">
+            <div class="willbes-Prof-Subject tx-dark-black">· 한국사</div>
+            <!-- willbes-Prof-Subject -->
+            <ul>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>정채영</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>오대혁</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+                <li class="profList">
+                    <a href="#none000">
+                        <div class="line">-</div>
+                    </a>
+                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                    <div class="Name">
+                        <strong>오대혁</strong><br/>
+                        교수님 <img class="N" src="/public/img/front/prof/icon_N.gif">
+                    </div>
+                    <img class="profImg" src="/public/img/front/sample/prof4.png">
+                    <div class="w-notice">
+                        <dl>
+                            <dt><a href="#none111">대표강의</a></dt>
+                            <dt><a href="#none222">맛보기</a></dt>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- willbes-Prof-List -->
+
     </div>
 </div>
 <!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
 @stop

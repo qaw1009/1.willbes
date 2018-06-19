@@ -1,6 +1,7 @@
 @extends('html.layouts.master')
 
 @section('content')
+<!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu NSK c_both">
         <h3>
@@ -41,6 +42,7 @@
         <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌</strong></span>
     </div>
     <div class="Content p_re">
+        
         <div class="curriWrap c_both">
             <ul class="curriTabs c_both">
                 <li class="on"><a href="#none">전체</a></li>
@@ -721,12 +723,12 @@
         </div>
         <!-- willbes-Layer-Box -->
 
-        <script src="/public/js/front/sub.js"></script>
-        <script src="/public/js/front/tabs.js"></script>
-
     </div>
     <div class="Quick-Bnr ml20">
         <img src="/public/img/front/sample/banner_180605.jpg">     
     </div>
 </div>
+<!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
+<script src="/public/js/front/tabs.js"></script>
 @stop

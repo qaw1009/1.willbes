@@ -37,7 +37,6 @@
             </ul>
         </h3>
     </div>
-
     <div class="Content p_re">
     
         <div class="willbes-Cartlist c_both">
@@ -808,13 +807,12 @@
         </div>
         <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
 
-        <script src="/public/js/front/sub.js"></script>
-        <script src="/public/js/front/tabs.js"></script>
-
     </div>
     <div class="Quick-Bnr ml20 mt85">
         <img src="/public/img/front/sample/banner_180605.jpg">     
     </div>
 </div>
 <!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
+<script src="/public/js/front/tabs.js"></script>
 @stop

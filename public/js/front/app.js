@@ -30,21 +30,30 @@ $(function() {
     });
 });
 
-// GNB Menu Script
+// Slider Number Script
 $(function() {
-    var sBtn = $(".gnb-List > .gnb-List-Tit");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
-        sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
-        sBtn.removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
-        $(this).parent().addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
-    })
-})
+    $('.sliderNum').bxSlider({
+        auto: true,
+        controls: true,
+        pause: 30000,
+        pager: true,
+    });
+});
+
+// GNB Menu Script
+//$(function() {
+    //var sBtn = $(".gnb-List > .gnb-List-Tit");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
+        //sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
+        //sBtn.removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
+        //$(this).parent().addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
+    //})
+//})
 
 // GNB 아코디언 메뉴 Script
 $(function() {
     $('div.gnb-List-Tit').hover(function() {
 
-        $(this).siblings('hover')
-            .removeClass('hover')
+        $(this).siblings('hover').removeClass('hover')
 
         if ($(this).next().is(':visible')) {
             $(this).removeClass('hover');
@@ -55,6 +64,25 @@ $(function() {
             $(this).addClass('hover');
 
         }    
+    });
+});
+
+// LNB 아코디언 메뉴 Script
+$(function() {
+    $('div.lnb-List-Tit').click(function() {
+
+        $('div.lnb-List-Tit').removeClass('hover')
+
+        if ($(this).next().is(':visible')) {
+            $(this).next().slideUp('normal');
+            $(this).removeClass('hover');
+
+        } else {
+            $('div.lnb-List-Depth').slideUp('normal');
+            $(this).next().slideDown('normal');
+            $(this).addClass('hover');
+
+        }   
     });
 });
 

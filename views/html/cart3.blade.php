@@ -37,7 +37,6 @@
             </ul>
         </h3>
     </div>
-
     <div class="Content p_re">
 
         <div class="willbes-Cartlist c_both">
@@ -85,6 +84,7 @@
                 </tbody>
             </table>
         </div>
+        <!-- willbes-Delivery-Info -->
 
         <div class="willbes-Buylist-Price Fin p_re">
             <ul class="cart-PriceBox NG">
@@ -126,7 +126,7 @@
                 </li>
             </ul>
         </div>
-        <!-- willbes-Cart-Price -->
+        <!-- willbes-Buylist-Price -->
 
         <div class="willbes-Cartlist-Fin c_both">
             <div class="willbes-Lec-Tit NG tx-black">상품정보</div>

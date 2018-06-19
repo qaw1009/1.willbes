@@ -1,3 +1,8 @@
+// 교수 페이지 nth-child(4n)
+$(function() {
+    $("ul li.profList:nth-child(4n)").addClass("nth");
+});
+
 // 교재정보 전체보기 버튼 Script
 $(function() {
     $('.willbes-Lec-Subject .MoreBtn a').click(function() {
@@ -56,7 +61,7 @@ $(function() {
     });
 });
 
-
+// 장바구니 상품정보 Script
 $(function() {
     $('td.w-list a').click(function(){
         if($('.willbes-Layer-Box-sm').is(":hidden")) {

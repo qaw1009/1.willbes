@@ -346,12 +346,8 @@
                 </div>
             </div>
             <!-- willbes-Class -->
-
         </div>
         <!-- willbes-Lec -->
-
-        <script src="/public/js/front/sub.js"></script>
-        <script src="/public/js/front/tabs.js"></script>
 
     </div>
     <div class="Quick-Bnr ml20">
@@ -359,4 +355,6 @@
     </div>
 </div>
 <!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
+<script src="/public/js/front/tabs.js"></script>
 @stop

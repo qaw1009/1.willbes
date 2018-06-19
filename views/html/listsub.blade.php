@@ -1,6 +1,7 @@
 @extends('html.layouts.master')
 
 @section('content')
+<!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu NSK c_both">
         <h3>
@@ -257,6 +258,7 @@
                 <li><a href="#Reply">수강후기 ▼</a></li>
             </ul>
         </div>
+        <!-- sticky-menu -->
    
         <a name="Class" style="display: block"></a>
         <div class="willbes-Class c_both">
@@ -533,12 +535,12 @@
         </div>
         <!-- TopBtn-->
 
-        <script src="/public/js/front/sub.js"></script>
-        <script src="/public/js/front/tabs.js"></script>
-
     </div>
     <div class="Quick-Bnr ml20">
         <img src="/public/img/front/sample/banner_180605.jpg">     
     </div>
 </div>
+<!-- End Container -->
+<script src="/public/js/front/sub.js"></script>
+<script src="/public/js/front/tabs.js"></script>
 @stop

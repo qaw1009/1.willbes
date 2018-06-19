@@ -84,14 +84,14 @@ abstract class FrontController extends BaseController
 
         // 환경설정 추가
         $site_cache = element($this->__site_id, $site_cache, []);
-        
+
         $configs = array_merge(
                         config_item(SUB_DOMAIN),
                         $site_cache,
                         ['IsPassSite' => $this->__is_pass_site],
                         ['NavMenu' => element('www', $site_menu_cache, [])],
                         ['SiteMenu' => ($this->__site_id == 'www') ? [] : element($this->__site_id, $site_menu_cache, [])],
-                        ['Subject2Professor' => element($site_cache['SiteCode'], $site_subject_professor_cache, [])]
+                        ['Subject2Professor' => element(element('SiteCode', $site_cache), $site_subject_professor_cache, [])]
             );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

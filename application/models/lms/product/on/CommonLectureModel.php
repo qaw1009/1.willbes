@@ -940,7 +940,7 @@ class CommonLectureModel extends WB_Model
                     , PcProvisionCcd, MobileProvisionCcd, PlayerTypeCcds, IsPackMultipleType, MultipleTypeCcd, MultipleApply, AllLecTime, LecCalcType
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
-                    , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
+                    , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount,PackAutoStudyExtenCcd,PackAutoStudyPeriod, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
                     , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen';
 
             $query = 'insert into '.$this->_table['lecture'].' Select '.$select_column.' FROM '.$this->_table['lecture'].' where ProdCode='.$prodcode;
@@ -1085,7 +1085,7 @@ class CommonLectureModel extends WB_Model
 
             //  연결강좌복사
 
-            if($prodtype==='packageuser' || $prodtype==='packageadmin') {
+            if($prodtype==='packageuser' || $prodtype==='packageadmin' || $prodtype==='packageperiod') {
 
                 $insert_column = 'ProdCodeSub,ProdCode,  IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
                 $select_column = str_replace(',ProdCode', ',\'' . $prodcode_new . '\' as ProdCode', $insert_column);

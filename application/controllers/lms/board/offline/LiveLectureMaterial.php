@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class LiveLectureMaterial extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
+    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
     protected $helpers = array();
 
     private $board_name = 'LiveLectureMaterial';

@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class OfflineBoard extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/Site', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board');
     protected $helpers = array();
 
     private $board_name = 'OfflineBoard';

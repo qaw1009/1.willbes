@@ -97,7 +97,7 @@ Class PackagePeriod extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['608','609','611','612','613','616','617','618','648','649','650','651']);
+        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','650','651']);
         $siteList = $this->siteModel->getSiteArray(false,'CsTel');
 
         $prodcode = null;
@@ -131,7 +131,7 @@ Class PackagePeriod extends \app\controllers\BaseController
         $this->load->view('product/on/packageperiod/create',[
             'method'=>$method
             ,'learnpatternccd' => $this->learnpatternccd
-            ,'lecprovision_ccd'=>$codes['608']          //강좌제공구분
+            ,'lecprovision_ccd'=>$codes['613']          //강좌제공구분
             ,'contentprovision_ccd'=>$codes['609']   //강좌제공방식
             ,'multiplelimit_ccd'=>$codes['611'] //수강배수
             ,'multipleapply_ccd'=>$codes['612'] //수강배수적용구분

@@ -28,6 +28,23 @@ $(function() {
     });
 });
 
+// 유의사항안내보기 버튼 Script
+$(function() {
+    $('.willbes-Cart-Txt .MoreBtn a').click(function() {
+        if( $("table.txtTable tr").is(":hidden") ) {
+            $("table.txtTable tr").css("display","block");
+            $("table.txtTable").removeClass("off");
+            $(".willbes-Cart-Txt .MoreBtn a").text("유의사항안내 닫기 ▲");
+        }
+        else
+        {
+            $("table.txtTable tr").css("display","none");
+            $("table.txtTable").addClass("off");
+            $(".willbes-Cart-Txt .MoreBtn a").text("유의사항안내 보기 ▼");
+        }
+    });
+});
+
 // checkbox 결제 버튼 Script
 $(function() {
     $('.chk.buybtn input:checkbox').change(function(){
@@ -35,6 +52,17 @@ $(function() {
             $('.willbes-Lec-buyBtn-sm').addClass("active");
         } else {
             $('.willbes-Lec-buyBtn-sm').removeClass("active");
+        }
+    });
+});
+
+
+$(function() {
+    $('td.w-list a').click(function(){
+        if($('.willbes-Layer-Box-sm').is(":hidden")) {
+            $('td.w-list a img.dot').css("display","none");
+        } else {
+            $('td.w-list a img.dot').css("display","inline");
         }
     });
 });
@@ -52,3 +80,5 @@ function myFunction() {
         header.classList.remove("fixed");
     }
 }
+
+

@@ -58,6 +58,17 @@ $(function() {
     });
 });
 
+// checkbox 필수체크버튼 Script
+$(function() {
+    $('.chkBox-Agree input:checkbox').change(function(){
+        if($(this).is(":checked")) {
+            $('.chkBox-Agree').addClass("checked");
+        } else {
+            $('.chkBox-Agree').removeClass("checked");
+        }
+    });
+});
+
 // 닫기 Script
 function closeWin(divID) {
     document.getElementById(divID).style.display = "none";
@@ -71,9 +82,3 @@ function goTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
-
-$('li > a').click(function() {
-    $('li').removeClass();
-    $(this).parent().addClass('active');
-});
-

@@ -277,13 +277,13 @@
                                 <div id="viewBox" class="viewBox">
                                     <dl class="NSK">
                                         <dt class="Tit NG">맛보기1</dt>
-                                        <dt class="tBox t1 high"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 low"><a href="">LOW</a></dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                     </dl>
                                     <dl class="NSK">
                                         <dt class="Tit NG">맛보기2</dt>
-                                        <dt class="tBox t1 high"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 low"><a href="">LOW</a></dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                     </dl>
                                 </div>
                                 <div class="priceWrap">
@@ -608,7 +608,7 @@
                 2018 기미진 국어 아침 실전 동형모의고사 특강[국가직 ~서울시] (3-6월)
             </div>
             <div class="lecDetailWrap">
-                <ul class="tabWrap NG">
+                <ul class="tabWrap tabDepth1 NG">
                     <li><a id="hover1" href="#ch1">강좌상세정보</a></li>
                     <li><a id="hover2" href="#ch2">교재상세정보 (총 2권)</a></li>
                 </ul>
@@ -628,7 +628,7 @@
                             </dl>
                         </div>
                         <div class="classInfoTable">
-                            <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                            <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 140px;">
                                     <col width="*">

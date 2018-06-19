@@ -30,3 +30,7 @@
 <a href="{{ site_url('/home/html/diypackage') }}">DIY패키지 수강신청 page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/cart1') }}">장바구니 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/cart2') }}">결제하기 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/cart3') }}">결제완료 page 이동</a><br/><br/>

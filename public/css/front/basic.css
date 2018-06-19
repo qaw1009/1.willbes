@@ -184,7 +184,8 @@ html {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 			box-sizing: border-box;
-	padding: 0;
+  padding: 0;
+  cursor: pointer;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
@@ -450,6 +451,12 @@ strong {
 .pl30 {
   padding-left: 30px !important;
 }
+.pl40 {
+  padding-left: 40px !important;
+}
+.pb110 {
+  padding-bottom: 110px !important;
+}
 
 .tx11 {
   font-size: 11px;
@@ -473,7 +480,6 @@ strong {
 .tx-right {
   text-align: right !important;
 }
-
 .valign-base {
   vertical-align: baseline;
 }
@@ -483,15 +489,18 @@ strong {
 .p_ab {
   position: absolute;
 }
-
+.f_left {
+  float: left;
+}
+.f_right {
+  float: right;
+}
 .d_block {
   display: block !important;
 }
-
 .d_none {
   display: none !important;
 }
-
 .c_both {
   clear: both
 }
@@ -501,6 +510,9 @@ strong {
 }
 .tx-pink {
   color: #f14078 !important;
+}
+.tx-light-pink {
+  color: #f24d80 !important;
 }
 .tx-light-blue {
   color: #1a8ccc !important;
@@ -520,6 +532,9 @@ strong {
 .tx-dark-black {
   color: #363636 !important
 }
+.tx-purple-gray {
+  color: #7e7e86 !important;
+}
 
 .bg-light-gray {
   background: #f5f5f5;
@@ -529,6 +544,9 @@ strong {
 }
 .bg-dark-gray {
   background: #b7b7b7;
+}
+.bg-purple-gray {
+  background: #7e7e86;
 }
 .bg-deep-gray {
   background: #707070;
@@ -555,6 +573,9 @@ strong {
 .bd-gray {
   border: 1px solid #939393;
 }
+.bd-dark-gray {
+  border: 1px solid #555;
+}
 .bdt-light-gray {
   border-top: 1px solid #e2e2e2;
 }
@@ -563,6 +584,23 @@ strong {
 }
 .bd-none {
   border: none !important;
+}
+
+.upper-black thead tr th,
+.upper-black thead tr td {
+  border-top: 1px solid #959595;
+}
+.upper-gray tbody tr th,
+.upper-gray tbody tr td {
+  border-top: 1px solid #edeeef;
+}
+.under-black tr th,
+.under-black tr td {
+  border-bottom: 1px solid #959595;
+}
+.under-gray tr th,
+.under-gray tr td {
+  border-bottom: 1px solid #edeeef;
 }
 
 .row-line {
@@ -576,4 +614,23 @@ strong {
 }
 .underline {
   text-decoration: underline !important;
+}
+.caution-txt {
+  background: url("../../img/front/sub/icon_caution.gif") no-repeat 0 center;
+}
+.chkBox-Agree {
+  background: url("../../img/front/login/icon_check.png") no-repeat 0 0;
+  width: 22px;
+  height: 22px;
+}
+.chkBox-Agree.checked {
+  background: url("../../img/front/login/icon_check.png") no-repeat 0 -44px;
+}
+.chkBox-Agree input[type=checkbox] {
+  opacity: 0;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }

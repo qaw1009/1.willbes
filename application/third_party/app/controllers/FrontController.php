@@ -68,10 +68,12 @@ abstract class FrontController extends BaseController
         $site_menu_cache = $this->getCacheItem('site_menu');
         // 사이트 과목+교수 연결정보
         $site_subject_professor_cache = [];
+        // 사이트별 예외 설정
+        $app_except_config = element(SUB_DOMAIN, config_item('app_except_config'), []);
+        // 일반 사이트일 경우
+        if (empty(element('route_add_path', $app_except_config)) === false) {
+            $pass_site_prefix = config_item('app_pass_site_prefix');    // 학원 사이트 구분값
 
-        if (in_array(SUB_DOMAIN, config_item('front_sub_domains')) === true) {
-            $pass_site_prefix = config_item('pass_site_prefix');    // 학원 사이트 구분값
-            
             // 학원 사이트일 경우
             if (strtolower($this->uri->segment(1)) == $pass_site_prefix) {
                 $this->__site_id .= $pass_site_prefix;

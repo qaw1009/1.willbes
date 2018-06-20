@@ -45,9 +45,9 @@
             <table id="list_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2" class="searching searching_site_code rowspan pb-30">사이트</th>
-                    <th rowspan="2" class="searching searching_is_use rowspan pb-30">대분류</th>
-                    <th rowspan="2" class="searching searching_is_use pb-30">중분류</th>
+                    <th rowspan="2" class="searching searching_site_code rowspan pb-30">사이트 [<span class="blue">코드</span>]</th>
+                    <th rowspan="2" class="searching searching_is_use rowspan pb-30">대분류 [<span class="blue">코드</span>]</th>
+                    <th rowspan="2" class="searching searching_is_use pb-30">중분류 [<span class="blue">코드</span>]</th>
                     <th colspan="2" style="border-width: 1px; border-left: 0; border-bottom: 0;">소트매핑조건</th>
                     <th rowspan="2" class="pb-30">등록자</th>
                     <th rowspan="2" class="pb-30">등록일</th>
@@ -60,14 +60,16 @@
                 <tbody>
                 @foreach($data as $row)
                     <tr>
-                        <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
+                        <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
                         <td>{{ $row['BCateName'] }}
+                            [<span class="blue">{{ $row['BCateCode'] }}</span>]
                             @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
                             <span class="hide">{{ $row['BIsUse'] }}</span>
                         </td>
                         <td>
                             @if(empty($row['MCateCode']) === false)
                                 {{ $row['MCateName'] }}
+                                [<span class="blue">{{ $row['MCateCode'] }}</span>]
                                 @if($row['MIsUse'] == 'Y') (사용) @elseif($row['MIsUse'] == 'N') (<span class="red">미사용</span>) @endif
                                 <span class="hide">{{ $row['MIsUse'] }}</span>
                             @endif

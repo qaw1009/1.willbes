@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class NiceAuth extends \app\controllers\BaseController
+class NiceAuth
 {
     // 아이핀
     private $ipinSiteCode = "B931";     // IPIN 서비스 사이트 코드
@@ -14,8 +14,8 @@ class NiceAuth extends \app\controllers\BaseController
     private $cpAuthType = "M";      		// 없으면 기본 선택화면, X: 공인인증서, M: 핸드폰, C: 카드
     private $cpPopupGubun 	= "N";			// Y : 취소버튼 있음 / N : 취소버튼 없음
     private $cpCustomize 	= "";			// 없으면 기본 웹페이지 / Mobile : 모바일페이지
-    private $cpErrorURL = '';      // 실패시 이동 URL
-    private $cpReturnURL = '';    // 성공시 이동 URL
+    private $cpErrorURL = '';               // 실패시 이동 URL
+    private $cpReturnURL = '';              // 성공시 이동 URL
     private $cpGender = "";                 // 기본 성별 설정
 
     function __construct()
@@ -72,6 +72,9 @@ class NiceAuth extends \app\controllers\BaseController
             $sRtnMsg = "입력값 오류 입니다.";
             $sEncData = "";
             $sRtnCode = $sEncData;
+        } else {
+            $sRtnCode = 1;
+            $sRtnMsg = '';
         }
 
         return [
@@ -193,8 +196,8 @@ class NiceAuth extends \app\controllers\BaseController
             $sRtnCode = -1;
             $sRtnMsg = "입력값 오류 : 암호화 처리시, 필요한 파라미터값의 정보를 정확하게 입력해 주시기 바랍니다.";
         } else {
-            $sRtnCode = -1;
-            $sRtnMsg = "변수에 암호화 데이타가 확인되면 정상, 정상이 아닌 경우 리턴코드 확인 후 NICE평가정보 개발 담당자에게 문의해 주세요.";
+            $sRtnCode = 1;
+            $sRtnMsg = '';
         }
 
         return [

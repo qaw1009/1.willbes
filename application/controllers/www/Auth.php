@@ -26,11 +26,10 @@ class Auth extends \app\controllers\FrontController
 
         $decData = $this->niceauth->ipinDec($sResponseData);
 
-        if($decData['rtnCode'] != 0){
+        if($decData['rtnCode'] != 1){
             $this->load->view('auth/Error', [ 'msg' => $decData['rtnMsg'] ]);
-        }
 
-        if( $sReservedParam1 == ''){
+        } else if( $sReservedParam1 == ''){
             $this->load->view('auth/Error', [ 'msg' => '입력값이 잘못 되었습니다.' ]);
 
         } else {
@@ -60,7 +59,7 @@ class Auth extends \app\controllers\FrontController
             exit;
         }
 
-        $this->load->view('auth/cp_join', [ 'encData' => $sResponseData ]);
+        $this->load->view('auth/cp_join', [ 'sResponseData' => $sResponseData ]);
     }
 
     /*

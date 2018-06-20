@@ -41,7 +41,7 @@ if (!function_exists('get_auth_campus_ccds')) {
 if (!function_exists('get_auth_all_campus_ccds')) {
     /**
      * 운영자 권한이 있는 전체 캠퍼스 공통코드 리턴
-     * @return array [캠퍼스 공통코드 배열]
+     * @return array [사이트코드에 포함된 캠퍼스 공통코드 2차 배열]
      */
     function get_auth_all_campus_ccds()
     {
@@ -51,12 +51,11 @@ if (!function_exists('get_auth_all_campus_ccds')) {
         $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
         $sess_auth_campus_ccds = array_pluck($sess_auth_site_codes, 'CampusCcds', 'SiteCode');
 
-        foreach ($sess_auth_campus_ccds as $site_codes) {
-            foreach ($site_codes as $key => $val) {
-                $campus_auth_ccds[] = $key;
+        foreach ($sess_auth_campus_ccds as $site_key => $campus_codes) {
+            foreach ($campus_codes as $key => $val) {
+                $campus_auth_ccds[$site_key][] = $key;
             }
         }
-
         return $campus_auth_ccds;
     }
 }

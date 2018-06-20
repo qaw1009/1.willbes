@@ -30,11 +30,12 @@ if (!function_exists('config_get')) {
     /**
      * dot(.) 표기법으로 config.php에 설정된 $key에 해당하는 config 값 리턴
      * @param $key
+     * @param $default
      * @return mixed
      */
-    function config_get($key)
+    function config_get($key, $default = null)
     {
-        return array_get(get_config(), $key);
+        return array_get(get_config(), $key, $default);
     }
 }
 

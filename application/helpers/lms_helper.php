@@ -15,7 +15,7 @@ if (!function_exists('get_auth_site_codes')) {
 
         if ($is_intg_site_use === false) {
             // 통합사이트 코드 제외
-            unset($sess_auth_site_codes[config_item('site_intg_code')]);
+            unset($sess_auth_site_codes[config_item('app_intg_site_code')]);
         }
 
         return $is_with_name === false ? array_pluck($sess_auth_site_codes, 'SiteCode') : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');

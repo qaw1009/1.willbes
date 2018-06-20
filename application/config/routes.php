@@ -49,15 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-
 $route['default_controller'] = APP_NAME . '/home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // 서브 도메인 예외 처리
 $route['(lcms)/(.*)'] = '$1/$2';
+
 // 서브 도메인별 컨트롤러 디렉토리 분리
-$route['(.*)'] = APP_NAME . '/$1';
+$__app_except_config = config_item('app_except_config');
+
+if (array_key_exists(SUB_DOMAIN, $__app_except_config) === true && empty($__app_except_config[SUB_DOMAIN]['route_add_path']) === false) {
+    // 학원사이트 라우터 예외 처리
+    $route['(' . config_item('app_pass_site_prefix') . ')/(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$2';
+    // 사이트 라우터 예외 처리
+    $route['(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$1';
+} else {
+    // 디폴트 라우터
+    $route['(.*)'] = APP_NAME . '/$1';
+}
 /*$route['(:any)/?(:any)?((/:any)*)'] = function($controller_name, $method_name = null, $param = null) {
     $mapping_uri = APP_NAME . '/' . $controller_name . '/';
     $mapping_uri .= (is_null($method_name) === true || empty($method_name) === true) ? 'index' : $method_name;

@@ -6,15 +6,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  Set Global User Config
 | -------------------------------------------------------------------
 */
-// 통합 사이트 코드
-$config['site_intg_code'] = '2000';
-
-// 사이트별 예외 뷰 경로 설정
-$config['view_except_path'] = [
-    'www' => 'willbes/www/' . APP_DEVICE,
-    'front' => 'willbes/front/' . APP_DEVICE,
-];
-
 // blade mode 설정 ((optional) 1 = forced (test), 2 = run fast (production), 0 = automatic, default value)
 //defined('BLADEONE_MODE') OR define('BLADEONE_MODE', 2);
 

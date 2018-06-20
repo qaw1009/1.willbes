@@ -35,28 +35,48 @@ $config['base_url'] = is_cli() === false ? 'https://' . $_SERVER['HTTP_HOST'] : 
 
 /*
 |--------------------------------------------------------------------------
-| Front Sub Domains
-|--------------------------------------------------------------------------
-*/
-$config['front_sub_domains'] = ['cop', 'gosi', 'ssam'];
-
-/*
-|--------------------------------------------------------------------------
-| Sub Domain, App Name, App Env define
+| Const SUB_DOMAIN, APP_DEVICE
 |--------------------------------------------------------------------------
 */
 // http를 제외한 host
 $__http_host = parse_url($config['base_url'], PHP_URL_HOST);
-// 모바일 여부
-$__app_device = strpos($__http_host, 'm.') === false ? 'pc' : 'm';
 // 서브 도메인 추출
 $__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^m\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
 $__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__sub_domain, 0, -1));
-$__app_name = in_array($__sub_domain, $config['front_sub_domains']) === true ? 'front' : $__sub_domain;
+// 모바일 여부
+$__app_device = strpos($__http_host, 'm.') === false ? 'pc' : 'm';
+
+defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
+defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
+
+/*
+|--------------------------------------------------------------------------
+| APP site config
+|--------------------------------------------------------------------------
+*/
+$config['app_intg_site_code'] = '2000';     // 통합사이트 코드
+$config['app_pass_site_prefix'] = 'pass';   // 학원사이트 구분값
+
+/*
+|--------------------------------------------------------------------------
+| APP except config (서브 도메인 기준)
+|--------------------------------------------------------------------------
+*/
+$config['app_except_config'] = [
+    'www' => ['app_name' => 'willbes', 'route_add_path' => '', 'view_add_path' => '/' . APP_DEVICE],
+    'cop' => ['app_name' => 'willbes', 'route_add_path' => '/site', 'view_add_path' => '/' . APP_DEVICE],
+    'gosi' => ['app_name' => 'willbes', 'route_add_path' => '/site', 'view_add_path' => '/' . APP_DEVICE],
+    'ssam' => ['app_name' => 'willbes', 'route_add_path' => '/site', 'view_add_path' => '/' . APP_DEVICE],
+];
+
+/*
+|--------------------------------------------------------------------------
+| Const APP_NAME
+|--------------------------------------------------------------------------
+*/
+$__app_name = array_key_exists($__sub_domain, $config['app_except_config']) === true ? $config['app_except_config'][$__sub_domain]['app_name'] : $__sub_domain;
 
 defined('APP_NAME') OR define('APP_NAME', $__app_name);
-defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
-defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
 
 /*
 |--------------------------------------------------------------------------

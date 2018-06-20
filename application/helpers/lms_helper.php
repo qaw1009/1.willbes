@@ -38,6 +38,29 @@ if (!function_exists('get_auth_campus_ccds')) {
     }
 }
 
+if (!function_exists('get_auth_all_campus_ccds')) {
+    /**
+     * 운영자 권한이 있는 전체 캠퍼스 공통코드 리턴
+     * @return array [캠퍼스 공통코드 배열]
+     */
+    function get_auth_all_campus_ccds()
+    {
+        $campus_auth_ccds = [];
+
+        $_CI =& get_instance();
+        $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
+        $sess_auth_campus_ccds = array_pluck($sess_auth_site_codes, 'CampusCcds', 'SiteCode');
+
+        foreach ($sess_auth_campus_ccds as $site_codes) {
+            foreach ($site_codes as $key => $val) {
+                $campus_auth_ccds[] = $key;
+            }
+        }
+
+        return $campus_auth_ccds;
+    }
+}
+
 if (!function_exists('html_site_select')) {
     /**
      * 사이트 select box HTML 리턴

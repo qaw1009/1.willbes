@@ -41,6 +41,7 @@ class LiveManagerModel extends WB_Model
         $arr_condition['EQ']['lms_site.IsStatus'] = 'Y';
         $arr_condition['EQ']['lms_live_video.IsStatus'] = 'Y';
         $arr_condition['IN']['lms_live_video.SiteCode'] = get_auth_site_codes();
+        $arr_condition['IN']['lms_live_video.CampusCcd'] = get_auth_all_campus_ccds();
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

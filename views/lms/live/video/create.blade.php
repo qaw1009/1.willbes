@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    과목 정보
+    라이브송출관리
 @stop
 
 @section('layer_header')
@@ -104,13 +104,13 @@
                 $(document).ready(function() {
                     // 등록
                     $regi_form.submit(function() {
-                        var _url = '{{ site_url('/lecture/video/LiveManager/store/') }}';
+                        var _url = '{{ site_url('/live/video/LiveManager/store/') }}';
 
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/lecture/video/LiveManager/') }}' + dtParamsToQueryString($datatable));
+                                location.replace('{{ site_url('/live/video/LiveManager/') }}' + dtParamsToQueryString($datatable));
                             }
                         }, showValidateError, null, false, 'alert');
                     });

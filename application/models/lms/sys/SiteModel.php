@@ -92,9 +92,8 @@ class SiteModel extends WB_Model
         return array_pluck($data, 'SiteName', 'SiteCode');
     }
 
-
     /**
-     * 사이트 코드별 캠퍼스 코드 목록 조회
+     * 사이트 코드별 운영자 권한이 있는 캠퍼스 코드 목록 조회
      * @param $site_code
      * @return array
      */
@@ -113,6 +112,7 @@ class SiteModel extends WB_Model
         } else {
             $arr_condition['IN']['SC.SiteCode'] = get_auth_site_codes();
         }
+        $arr_condition['IN']['SC.CampusCcd'] = get_auth_all_campus_ccds();
 
         $data = $this->_conn->getJoinListResult($this->_table['site_r_campus'] . ' as SC', 'inner', $this->_table['code'] . ' as C', 'SC.CampusCcd = C.Ccd'
             , 'SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']

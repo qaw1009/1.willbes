@@ -151,6 +151,7 @@ class BoardModel extends WB_Model
         } else {
             $arr_condition['IN']['LB.SiteCode'] = get_auth_site_codes();
         }
+        $arr_condition['IN']['LB.CampusCcd'] = get_auth_all_campus_ccds();
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

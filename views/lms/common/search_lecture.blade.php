@@ -4,7 +4,7 @@
     @if(empty($wLecIdx) === true)
         단강좌 검색
     @else
-        동일한 마스터강좌로 등록된 단강좌
+        동일한 마스터강좌로 등록된 @if($LearnPatternCcd==="615001")단강좌@else무료강좌@endif
     @endif
 @stop
 
@@ -54,10 +54,12 @@
                             <th width="6%">과정</th>
                             <th width="6%">과목</th>
                             <th width="6%">교수</th>
-                            <th>단강좌명</th>
+                            <th>@if($LearnPatternCcd !== "615005")단강좌명@else무료강좌명@endif</th>
                             <th width="8%">진행상태</th>
+                        @if($LearnPatternCcd !== "615005")
                             <th width="7%">판매가</th>
                             <th width="4%">배수</th>
+                        @endif
                             <th width="6%">판매여부</th>
                             <th width="6%">사용여부</th>
                             <th width="5%">등록자</th>
@@ -119,7 +121,11 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SiteName+'<BR>'+(row.CateName_Parent == null ? '' : row.CateName_Parent+'<BR>')+(row.CateName)+'<BR>'+row.SchoolYear;
                                 }},
+                            @if($LearnPatternCcd==="615005")
+                            {'data' : 'FreeLecTypeCcd_Name'},//강좌유형
+                            @else
                             {'data' : 'LecTypeCcd_Name'},//강좌유형
+                            @endif
                             {'data' : 'CourseName'},//과정명
                             {'data' : 'SubjectName'},//과목명
                             {'data' : 'wProfName_String'},
@@ -131,10 +137,12 @@
                                     return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
                                 }},//진행상태
 
+                            @if($LearnPatternCcd !== "615005")
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                                 }},
                             {'data' : 'MultipleApply'},//배수
+                            @endif
                             {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                                 }},//판매여부

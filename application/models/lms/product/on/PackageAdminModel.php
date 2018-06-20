@@ -329,16 +329,16 @@ class PackageAdminModel extends CommonLectureModel
             ,'SaleEndDatm'=>$SaleEndDatm
             ,'SaleStatusCcd'=>element('SaleStatusCcd',$input)
             ,'IsSaleEnd'=>element('IsSaleEnd',$input,'N')
-            ,'IsCoupon'=>element('IsCoupon',$input)
-            ,'IsPoint'=>element('IsPoint',$input)
+            ,'IsCoupon'=>element('IsCoupon',$input,'N')
+            ,'IsPoint'=>element('IsPoint',$input,'N')
             ,'PointApplyCcd'=>element('PointApplyCcd',$input)
             ,'PointSavePrice'=>get_var(element('PointSavePrice',$input),0)
             ,'PointSaveType'=>element('PointSaveType',$input)
             ,'IsBest'=>element('IsBest',$input, 'N')
             ,'IsNew'=>element('IsNew',$input, 'N')
-            ,'IsRefund'=>element('IsRefund',$input)
+            ,'IsRefund'=>element('IsRefund',$input,'N')
             ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
-            ,'IsSms'=>element('IsSms',$input)
+            ,'IsSms'=>element('IsSms',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
             ,'Keyword'=>element('Keyword',$input)
         ];
@@ -359,12 +359,12 @@ class PackageAdminModel extends CommonLectureModel
             ,'MultipleTypeCcd'=>element('MultipleTypeCcd',$input)               //수강배수정보 - 적용
             ,'AllLecTime'=>element('AllLecTime',$input)                               //전체강의시간
             ,'LecCalcType'=>element('LecCalcType',$input)                         //강사료정산 타입
-            ,'IsLecStart'=>element('IsLecStart',$input)
-            ,'IsPause'=>element('IsPause',$input)
+            ,'IsLecStart'=>element('IsLecStart',$input,'N')
+            ,'IsPause'=>element('IsPause',$input,'N')
             ,'PauseNum'=>element('PauseNum',$input)
-            ,'IsExten'=>element('IsExten',$input)
+            ,'IsExten'=>element('IsExten',$input,'N')
             ,'ExtenNum'=>element('ExtenNum',$input)
-            ,'IsRetake'=>element('IsRetake',$input)
+            ,'IsRetake'=>element('IsRetake',$input,'N')
             ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
             ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
             ,'IsEdit'=>element('IsEdit',$input,'N')

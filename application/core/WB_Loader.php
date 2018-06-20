@@ -61,7 +61,7 @@ class WB_Loader extends CI_Loader
             $blade = new \eftec\bladeone\BladeOne($view_dir, $cache_dir);
 
             // 서브 도메인 적용
-            $sub_domain === true && $view = APP_NAME . '/' . $view;
+            $sub_domain === true && $view = element(APP_NAME, config_item('view_except_path'), APP_NAME) . '/' . $view;
 
             // blade path 형식으로 변환
             $view = str_replace('/', '.', $view);

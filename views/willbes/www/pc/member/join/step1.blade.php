@@ -1,4 +1,4 @@
-@extends('html.layouts.master')
+@extends('willbes.layouts.master')
 
 @section('content')
     <!-- Container -->

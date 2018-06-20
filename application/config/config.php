@@ -48,15 +48,15 @@ $config['front_sub_domains'] = ['cop', 'gosi', 'ssam'];
 // http를 제외한 host
 $__http_host = parse_url($config['base_url'], PHP_URL_HOST);
 // 모바일 여부
-$__is_mobile = strpos($__http_host, 'm.') === false ? false : true;
+$__app_device = strpos($__http_host, 'm.') === false ? 'pc' : 'm';
 // 서브 도메인 추출
 $__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^m\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
 $__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__sub_domain, 0, -1));
 $__app_name = in_array($__sub_domain, $config['front_sub_domains']) === true ? 'front' : $__sub_domain;
 
-defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
 defined('APP_NAME') OR define('APP_NAME', $__app_name);
-defined('IS_MOBILE') OR define('IS_MOBILE', $__is_mobile);
+defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
+defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
 
 /*
 |--------------------------------------------------------------------------

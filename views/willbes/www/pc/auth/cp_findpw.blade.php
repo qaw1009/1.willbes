@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <title>NICE평가정보 - CheckPlus 본인인증 테스트</title>

@@ -56,7 +56,7 @@ class BaseProductModel extends WB_Model
         $add_join = '';
 
         // 복합연결일 경우
-        if ($conn_type == 'complex') {
+        if (ends_with($conn_type, 'complex') === true) {
             $_table_key .= '_r_code';
             $column .= ', PSC.ChildCcd, CD.CcdName as ChildName';
             $add_join = ' inner join ' . $this->_table['code'] . ' as CD on PSC.ChildCcd = CD.Ccd';

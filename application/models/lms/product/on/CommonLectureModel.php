@@ -43,7 +43,9 @@ class CommonLectureModel extends WB_Model
                         ,Ba.wLecName,Ba.wCpName,Ba.wShootingCcd_Name,Ba.wProgressCcd_Name,Ba.wMakeYM,Ba.wAttachFileReal,Ba.wAttachFile,Ba.wAttachPath
                         ,Ba.wUnitCnt,Ba.wUnitLectureCnt
                         ,C.CateCode,Ca.CateName,Ca.CateRouteName
-                        ,D.wAdminName as RegAdminName,E.wAdminName as UpdAdminName';
+                        ,D.wAdminName as RegAdminName,E.wAdminName as UpdAdminName
+                        ,fn_dec(FreeLecPasswd) as FreeLecPasswd '
+        ;
 
         $from = '
                         from
@@ -401,9 +403,8 @@ class CommonLectureModel extends WB_Model
             }
 
             for($i=0;$i<count($SalseTypeCcd);$i++) {
-
-                if(empty($SalePrice[$i]) !== true) {
-
+                //if(empty($SalePrice[$i]) !== true) {  // 값이 0 일 경우 저장 안됨
+                if(get_var($SalePrice[$i]) !== '') {
                     $data = [
                         'ProdCode' => $prodcode
                         ,'SaleTypeCcd' => $SalseTypeCcd[$i]
@@ -424,7 +425,6 @@ class CommonLectureModel extends WB_Model
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
         return true;
     }
 
@@ -1098,7 +1098,7 @@ class CommonLectureModel extends WB_Model
                     throw new \Exception('연결강좌 복사에 실패했습니다.');
                 };
 
-            } else { //단강좌는 자신이 연결강좌로
+            } else { //단강좌, 무료강좌는 자신이 연결강좌로
 
                 $insert_column = 'ProdCode, ProdCodeSub, IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
                 $select_column = str_replace('ProdCodeSub', '\'' . $prodcode_new. '\'' , $insert_column);

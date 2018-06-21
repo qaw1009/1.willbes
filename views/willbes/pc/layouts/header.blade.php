@@ -13,8 +13,8 @@
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
     <!-- Custom Theme Style -->
-    <link href="/public/css/front/basic.css" rel="stylesheet">
-    <link href="/public/css/front/style.css" rel="stylesheet">
+    <link href="/public/css/willbes/basic.css" rel="stylesheet">
+    <link href="/public/css/willbes/style.css" rel="stylesheet">
     <!--// CSS -->
     <!-- JAVASCRIPT -->
     <!-- jQuery -->

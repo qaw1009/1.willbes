@@ -31,7 +31,7 @@ $config['base_domain'] = 'willbes.net';
 |
 */
 //$config['base_url'] = '';
-$config['base_url'] = is_cli() === false ? 'https://' . $_SERVER['HTTP_HOST'] : 'https://cli' . ENV_DOMAIN . '.' . $config['base_domain'];
+$config['base_url'] = '//' . (is_cli() === false ? $_SERVER['HTTP_HOST'] : 'cli' . ENV_DOMAIN . '.' . $config['base_domain']);
 
 /*
 |--------------------------------------------------------------------------

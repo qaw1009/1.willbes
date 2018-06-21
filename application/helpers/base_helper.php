@@ -180,6 +180,18 @@ if (!function_exists('get_app_var')) {
     }
 }
 
+if (!function_exists('img_url')) {
+    /**
+     * 이미지 경로 리턴
+     * @param string $img_path [img_base_path 이후의 이미지 경로, 맨앞 / 제외]
+     * @return string
+     */
+    function img_url($img_path)
+    {
+        return config_item('img_base_path') . $img_path;
+    }
+}
+
 if (!function_exists('logger')) {
     /**
      * log message

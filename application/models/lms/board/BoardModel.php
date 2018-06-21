@@ -162,8 +162,8 @@ class BoardModel extends WB_Model
             $where_campus->or_group_start();
                 $where_campus->or_where('LB.SiteCode',$set_site_ccd);
                     $where_campus->group_start();
-                    $where_campus->where('LB.CampusCcd', $this->codeModel->campusAllCcd);
-                    $where_campus->or_where_in('LB.CampusCcd', $set_campus_ccd);
+                        $where_campus->where('LB.CampusCcd', $this->codeModel->campusAllCcd);
+                        $where_campus->or_where_in('LB.CampusCcd', $set_campus_ccd);
                     $where_campus->group_end();
             $where_campus->group_end();
         }

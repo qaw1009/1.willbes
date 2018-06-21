@@ -5,20 +5,38 @@
         </a>
     </div>
     <div class="logo">
-        <a href="{{ site_url('/home/html/sample') }}"><img src="/public/img/front/gnb/logo.gif"></a>
+        <a href="{{ site_url('/home/html/sample') }}"><img src="{{ img_url('gnb/logo.gif') }}"></a>
     </div>
 
     <!-- slider -->
     <div class="sliderGNB">
         <div class="slider">
-            <div><img src="/public/img/front/sample/gnb1.jpg"></div>
-            <div><img src="/public/img/front/sample/gnb2.jpg"></div>
-            <div><img src="/public/img/front/sample/gnb3.jpg"></div>
-            <div><img src="/public/img/front/sample/gnb4.jpg"></div>
+            <div><img src="{{ img_url('sample/gnb1.jpg') }}"></div>
+            <div><img src="{{ img_url('sample/gnb2.jpg') }}"></div>
+            <div><img src="{{ img_url('sample/gnb3.jpg') }}"></div>
+            <div><img src="{{ img_url('sample/gnb4.jpg') }}"></div>
         </div>
     </div>
 
     <div class="gnb-List">
+        @foreach(element('NavMenu', $__cfg) as $menu_idx => $menu_row)
+            <div class="gnb-List-Tit">
+                <a href="{{ $menu_row['MenuUrl'] }}">
+                    <div class="willbes-icon_sm">
+                        <img src="{{ img_url('gnb/icon_willbes1_sm.gif') }}">
+                    </div>
+                    <span class="Txt">{{ $menu_row['MenuName'] }}<span class="arrow-Btn">></span></span>
+                </a>
+            </div>
+            <div class="gnb-List-Depth">
+                <dl>
+                    @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
+                        <dt><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
+                    @endforeach
+                </dl>
+            </div>
+        @endforeach
+
         <div class="gnb-List-Tit">
             <a href="{{ site_url('/home/html/list') }}">
                 <div class="willbes-icon_sm">

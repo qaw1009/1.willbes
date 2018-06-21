@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['view_add_path'] = '/' . APP_DEVICE;
 
 // 이미지 경로
-$config['img_path'] = '';
+$config['img_base_path'] = PUBLICURL . 'img/' . APP_NAME . '/';
 
 // 통합사이트 설정
 $config['www'] = array(

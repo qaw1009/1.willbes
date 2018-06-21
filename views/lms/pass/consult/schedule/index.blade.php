@@ -103,11 +103,11 @@
                 buttons: [
                     { text: '<i class="fa fa-copy mr-10"></i> 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-del' },
                     { text: '<i class="fa fa-pencil mr-10"></i> 일정등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url("/offline/consult/schedule/create") }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url("/pass/consult/schedule/create") }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url("/offline/consult/schedule/listAjax?") }}',
+                    'url' : '{{ site_url("/pass/consult/schedule/listAjax?") }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -166,12 +166,12 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/offline/consult/schedule/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url("/pass/consult/schedule/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
 
             // 데이터 Read 페이지
             $list_table.on('click', '.btn-read', function() {
-                location.replace('{{ site_url("/offline/consult/schedule/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url("/pass/consult/schedule/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
 
         });

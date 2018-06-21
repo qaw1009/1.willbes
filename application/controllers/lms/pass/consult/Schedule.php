@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Schedule extends \app\controllers\BaseController
 {
-    protected $models = array('offline/consult', 'sys/site', 'sys/category');
+    protected $models = array('pass/consult', 'sys/site', 'sys/category');
     protected $helpers = array();
 
     public function __construct()
@@ -25,7 +25,7 @@ class Schedule extends \app\controllers\BaseController
         //카테고리 조회(구분)
         $arr_category = $this->categoryModel->getCategoryArray('');
 
-        $this->load->view("offline/consult/schedule/index", [
+        $this->load->view("pass/consult/schedule/index", [
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category
@@ -69,7 +69,7 @@ class Schedule extends \app\controllers\BaseController
             }
         }
 
-        $this->load->view('offline/consult/schedule/create', [
+        $this->load->view('pass/consult/schedule/create', [
             'method' => $method,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,

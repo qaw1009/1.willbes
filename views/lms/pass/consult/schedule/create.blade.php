@@ -98,7 +98,7 @@
                     }
                 @endif
 
-                var _url = '{{ site_url('/offline/consult/schedule/store') }}';
+                var _url = '{{ site_url('/pass/consult/schedule/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
@@ -137,7 +137,7 @@
 
             // 목록 이동
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/offline/consult/schedule/index') }}' + getQueryString());
+                location.replace('{{ site_url('/pass/consult/schedule/index') }}' + getQueryString());
             });
         });
     </script>

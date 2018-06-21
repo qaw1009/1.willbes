@@ -5,6 +5,9 @@ class CodeModel extends WB_Model
 {
     private $_table = 'lms_sys_code';
 
+    // 캠퍼스코드 '전체코드' 셋팅 (캠퍼스코드 전체 값으로 저장될 경우 사용)
+    public $campusAllCcd = '605999';
+
     public function __construct()
     {
         parent::__construct('lms');

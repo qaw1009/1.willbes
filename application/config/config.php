@@ -63,10 +63,10 @@ $config['app_pass_site_prefix'] = 'pass';   // 학원사이트 구분값
 |--------------------------------------------------------------------------
 */
 $config['app_except_config'] = [
-    'www' => ['app_name' => 'willbes', 'route_add_path' => '', 'view_add_path' => '/' . APP_DEVICE],
-    'cop' => ['app_name' => 'willbes', 'route_add_path' => '/site', 'view_add_path' => '/' . APP_DEVICE],
-    'gosi' => ['app_name' => 'willbes', 'route_add_path' => '/site', 'view_add_path' => '/' . APP_DEVICE],
-    'ssam' => ['app_name' => 'willbes', 'route_add_path' => '/site', 'view_add_path' => '/' . APP_DEVICE],
+    'www' => ['app_name' => 'willbes', 'route_add_path' => ''],
+    'cop' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
+    'gosi' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
+    'ssam' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
 ];
 
 /*

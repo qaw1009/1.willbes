@@ -16,4 +16,8 @@
     <link href="/public/css/front/basic.css" rel="stylesheet">
     <link href="/public/css/front/style.css" rel="stylesheet">
     <!--// CSS -->
+    <!-- JAVASCRIPT -->
+    <!-- jQuery -->
+    <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
+    <!--// JAVASCRIPT -->
 </head>

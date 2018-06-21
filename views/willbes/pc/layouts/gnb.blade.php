@@ -36,105 +36,18 @@
                 </dl>
             </div>
         @endforeach
-
-        <div class="gnb-List-Tit">
-            <a href="{{ site_url('/home/html/list') }}">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes1_sm.gif">
-                </div>
-                <span class="Txt">공무원<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth">
-            <dl>
-                <dt><a href="#none">9급공무원</a></dt>
-                <dt><a href="#none">7급공무원</a></dt>
-                <dt><a href="#none">세무/관세</a></dt>
-                <dt><a href="#none">법원직</a></dt>
-            </dl>
-        </div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes2_sm.gif">
-                </div>
-                <span class="Txt">경찰<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth">
-            <dl>
-                <dt><a href="#none">일반경찰</a></dt>
-                <dt><a href="#none">경행경채</a></dt>
-                <dt><a href="#none">경찰승진</a></dt>
-                <dt><a href="#none">경찰간부</a></dt>
-            </dl>
-        </div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes3_sm.gif">
-                </div>
-                <span class="Txt">교원임용<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth"></div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes4_sm.gif">
-                </div>
-                <span class="Txt">고등고시<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth"></div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes5_sm.gif">
-                </div>
-                <span class="Txt">저문자격증<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth"></div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes6_sm.gif">
-                </div>
-                <span class="Txt">자격증<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth"></div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes7_sm.gif">
-                </div>
-                <span class="Txt">취업<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth"></div>
-        <div class="gnb-List-Tit">
-            <a href="#none">
-                <div class="willbes-icon_sm">
-                    <img src="/public/img/front/gnb/icon_willbes8_sm.gif">
-                </div>
-                <span class="Txt">어학<span class="arrow-Btn">></span></span>
-            </a>
-        </div>
-        <div class="gnb-List-Depth"></div>
     </div>
 
     <ul class="gnb-List-Sub p_re">
         <li>
             <a class="setting" href="#none" onclick="openWin('SettingForm')">
-                <img src="/public/img/front/gnb/icon_setting.gif">
+                <img src="{{ img_url('gnb/icon_setting.gif') }}">
                 <div class="Txt">통합사이트<br/>환경설정</div>
             </a>
             <!-- willbes Setting -->
             <div id="SettingForm" class="Layer-Box" style="display: none">
                 <a class="closeBtn" href="#none" onclick="closeWin('SettingForm')">
-                    <img src="/public/img/front/gnb/close.png">
+                    <img src="{{ img_url('gnb/close.png') }}">
                 </a>
                 <div class="Layer-Tit tx-dark-black bdb-black2 NSK">
                     윌비스 통합 <span class="tx-dark-blue">사이트 환경설정</span>
@@ -185,7 +98,7 @@
         </li>
         <li>
             <a class="intro" href="#none">
-                <img src="/public/img/front/gnb/icon_intro.gif">
+                <img src="{{ img_url('gnb/icon_intro.gif') }}">
                 <div class="Txt">윌비스<br/>회사소개</div>
             </a>
         </li>

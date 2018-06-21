@@ -25,7 +25,7 @@
             Copyright © (주)윌비스. All Right Reserved.
         </address>
         <div class="ft-KGinicis">
-            <img src="/public/img/front/gnb/icon_KGinicis.gif">
+            <img src="{{ img_url('gnb/icon_KGinicis.gif') }}">
         </div>
     </div>
 </div>

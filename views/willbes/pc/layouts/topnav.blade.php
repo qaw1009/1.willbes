@@ -52,7 +52,7 @@
 <!-- LoginForm -->
 <div id="LoginForm" class="Layer-Box" style="display: none">
     <a class="closeBtn" href="#none" onclick="closeWin('LoginForm')">
-        <img src="/public/img/front/gnb/close.png">
+        <img src="{{ img_url('gnb/close.png') }}">
     </a>
     <div class="Layer-Tit tx-dark-black NSK">
         윌비스 통합 <span class="tx-dark-blue">로그인</span>

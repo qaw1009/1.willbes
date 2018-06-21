@@ -36,11 +36,11 @@
                     <div class="col-md-11 form-inline">
                         <div class="input-group">
                             <select name="search_condition" class="form-control">
-                                <option value="">회원가입일</option>
-                                <option value="">마지막로그인</option>
-                                <option value="">최종정보변경일</option>
-                                <option value="">비밀번호변경일</option>
-                                <option value="">회원탈퇴일</option>
+                                <option value="joindate">회원가입일</option>
+                                <option value="lastlogin">마지막로그인</option>
+                                <option value="lastmodify">최종정보변경일</option>
+                                <option value="lastchgpwd">비밀번호변경일</option>
+                                <option value="outdate">회원탈퇴일</option>
                             </select>
                         </div>
                         <div class="input-group">
@@ -101,7 +101,7 @@
                             탈퇴회원
                         </label>
                         <label class="input-label">
-                            <input type="checkbox" class="flat" id="IsBlack" name="IsBlack" value="Y">
+                            <input type="checkbox" class="flat" id="IsBlackList" name="IsBlackList" value="Y">
                             블랙컨슈머
                         </label>
                     </div>
@@ -167,6 +167,7 @@
         $(document).ready(function() {
             $datatable = $list_table.DataTable({
                 serverSide: true,
+                pagingType : 'simple_numbers',
                 ajax: {
                     'url' : '{{ site_url("/member/manage/ajaxList/") }}',
                     'type' : 'POST',
@@ -211,15 +212,15 @@
             });
 
             $list_table.on('click', '.btn-view1', function() {
-                location.replace('{{ site_url('/member/manage/detail/takeinfo') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
 
             $list_table.on('click', '.btn-view2', function() {
-                location.replace('{{ site_url('/member/manage/detail/orderinfo') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
 
             $list_table.on('click', '.btn-view3', function() {
-                location.replace('{{ site_url('/member/manage/detail/consult') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
         });
     </script>

@@ -1,13 +1,10 @@
 @extends('lcms.layouts.master')
-
 @section('content')
-    <div class="x_panel">
-        <div class="x_title">
-            - 회원의 기본정보 및 수강, 결제, 상담/메모 정보 등을 확인 및 관리하는 메뉴입니다.
-        </div>
-        <div class="x_content">
-            {!! form_errors() !!}
-            <form class="form-horizontal form-label-left" id="search_form" name="search_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    <h5>- 윌비스 사이트 운영을 위한 공통코드를 관리하는 메뉴입니다.</h5>
+    <form class="form-horizontal form-label-left" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
+        <div class="x_panel">
+            <div class="x_content">
+                {!! form_errors() !!}
                 {!! csrf_field() !!}
                 <input type="hidden" name="idx" value=""/>
                 <div class="form-group">
@@ -15,13 +12,16 @@
                     <div class="col-md-1">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn bg-blue" id="btn_search_x">검색</button>
+                    </div>
                     <div class="col-md-3">
                         <p class="form-control-static">• 회원번호, 이름, 아이디, 휴대폰번호 검색 기능</p>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
     <div class="x_panel mt-10">
         <div class="x_title">
             - 회원정보
@@ -50,7 +50,7 @@
                 <tr>
                     <td>{{ $data['MemIdx'] }}</td>
                     <td>{{ $data['JoinDate'] }}</td>
-                    <td>{{ $data['BirthDay'] }} (@if($data['Sex'] == 'M'){{'남'}}@else{{'여'}}@endif)</td>
+                    <td>{{ $data['BirthDay'] }} ({{ $data['Sex'] == 'M' ? '남' : '여' }})</td>
                     <td>{{ $data['MemName'] }}</td>
                     <td>{{ $data['MemId'] }}</td>
                     <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})</td>
@@ -96,15 +96,44 @@
             </table>
         </div>
     </div>
-    <div>
-        아래부분
-    </div>
 
+    <form name="search_form" class="form-horizontal searching" id="search_form" onsubmit="return false;" method="POST">
+        {!! csrf_field() !!}
+        <input type="hidden" name="memIdx" value="{{$data['MemIdx']}}" />
+        <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" id=" " role="tablist">
+            <li {{ $viewtype == 'takeinfo' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="takeinfo"><strong>수강정보관리</strong></a></li>
+            <li {{ $viewtype == 'orderinfo' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="orderinfo"><strong>결제정보관리</strong></a></li>
+            <li {{ $viewtype == 'consult' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="consult"><strong>상담/메모관리</strong></a></li>
+            <li {{ $viewtype == 'coupon' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="coupon"><strong>쿠폰관리</strong></a></li>
+            <li {{ $viewtype == 'point' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="point"><strong>포인트관리</strong></a></li>
+            <li {{ $viewtype == 'crm' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="crm"><strong>CRM관리</strong></a></li>
+        </ul>
+        <input name="search_viewtype" id="search_viewtype" type="hidden" value="{{$viewtype}}">
+        <div class="x_panel">
+            <div class="x_content">
+
+
+
+            </div>
+        </div>
+    </form>
     <script>
         $(document).ready(function() {
-            $('.btn-regist, .btn-modify').setLayer({
-                "url": "{{ site_url('member/manage/search') }}" + uri_param
-                , width: "650"
+            $('#search_value').keypress(function() {
+                if(event.keyCode == 13){
+                    if($.trim($('#search_value').val()) != ''){
+                        $('#btn_search_x').click();
+                    }
+                }
+            });
+
+            $('#btn_search_x').click(function() {
+                var url = '{{ site_url('member/manage/search/') }}' + $('#search_value').val();
+
+                $('#btn_search_x').setLayer({
+                    url : url,
+                    width : 1000
+                });
             });
         });
     </script>

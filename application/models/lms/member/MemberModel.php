@@ -26,7 +26,7 @@ class MemberModel extends WB_Model
      * @param array $order_by
      * @return int|array
      */
-    public function list($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function list($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $inQuery = '')
     {
         if($is_count === true) {
             $column = 'COUNT(*) AS rownums ';
@@ -42,9 +42,9 @@ class MemberModel extends WB_Model
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
             fn_dec(Info.MailEnc) AS Mail, Info.MailRcvStatus,
             Mem.JoinDate, Mem.IsChange, 
-            (SELECT LoginDatm FROM {$this->_table['loginLog']} WHERE MemIdx = Mem.MemIdx AND IsLogin='Y' ORDER BY loginDatm DESC LIMIT 1) AS LoginDate,
-            (SELECT UpdDatm FROM {$this->_table['changeLog']} WHERE MemIdx = Mem.MemIdx AND UpdTypeCcd='1' ORDER BY updDatm DESC LIMIT 1) AS InfoUpdDate,
-            (SELECT UpdDatm FROM {$this->_table['changeLog']} WHERE MemIdx = Mem.MemIdx AND UpdTypeCcd='2' ORDER BY updDatm DESC LIMIT 1) AS PwdUpdDate,
+            '' AS LoginDate,
+            '' AS InfoUpdDate,
+            '' AS PwdUpdDate,
             (SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1) AS OutDate,
             Mem.IsBlackList, 
             0 AS PcCount,
@@ -61,7 +61,7 @@ class MemberModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('SELECT ' . $column . $from . $inQuery . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->rownums : $query->result_array();
     }
@@ -78,9 +78,9 @@ class MemberModel extends WB_Model
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
             fn_dec(Info.MailEnc) AS Mail, Info.MailRcvStatus,
             Mem.JoinDate, Mem.IsChange, 
-            (SELECT LoginDatm FROM {$this->_table['loginLog']} WHERE MemIdx = Mem.MemIdx AND IsLogin='Y' ORDER BY loginDatm DESC LIMIT 1) AS LoginDate,
-            (SELECT UpdDatm FROM {$this->_table['changeLog']} WHERE MemIdx = Mem.MemIdx AND UpdTypeCcd='1' ORDER BY updDatm DESC LIMIT 1) AS InfoUpdDate,
-            (SELECT UpdDatm FROM {$this->_table['changeLog']} WHERE MemIdx = Mem.MemIdx AND UpdTypeCcd='2' ORDER BY updDatm DESC LIMIT 1) AS PwdUpdDate,
+            '' AS LoginDate,
+            '' AS InfoUpdDate,
+            '' AS PwdUpdDate,
             (SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1) AS OutDate,
             Mem.IsBlackList, 
             0 AS PcCount,
@@ -92,6 +92,6 @@ class MemberModel extends WB_Model
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";
 
-        return $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where )->row_array();
+        return $this->_conn->query('SELECT ' . $column . $from . $where )->row_array();
     }
 }

@@ -1,134 +1,93 @@
 @extends('lcms.layouts.master_modal')
 @section('layer_title')
-    {{ $makeType === "group" ? "그룹유형등록" : "세부항목등록"}}
+    회원검색
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <form class="form-horizontal" id="search_form_modal" name="search_form_modal" method="POST" onsubmit="return false;">
         {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" novalidate>--}}
         {!! csrf_field() !!}
-        {!! method_field($method) !!}
+@endsection
 
-        <input type="hidden" name="makeType" value="{{$makeType}}" />
-        <input type="hidden" name="groupCcd" value="{{$groupCcd}}" />
-        <input type="hidden" name="Ccd" value="{{$Ccd}}" />
-        @endsection
+@section('layer_content')
+        {!! form_errors() !!}
+        <div class="form-group form-group-sm item">
+            <label class="control-label col-md-2" for="GroupName">회원검색</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="search_value" id="search_value" title="그룹유형명" value="{{ $search_value }}">
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn bg-blue btn-primary btn-search" id="btn_search">검색</button>
+            </div>
+        </div>
+        <div class="x_panel mt-10">
+            <div class="x_content">
+                <table id="list_ajax_table" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>회원번호</th>
+                        <th>이름</th>
+                        <th>아이디</th>
+                        <th>휴대폰</th>
+                        <th>E-mail정보</th>
+                        <th>가입일</th>
+                        <th>선택</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        @section('layer_content')
-            {!! form_errors() !!}
+        <script type="text/javascript">
+            var $datatable;
+            var $search_form = $('#search_form_modal');
+            var $list_table = $('#list_ajax_table');
 
-            @if($makeType==="group")
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="GroupName">그룹유형명 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" name="CcdName" id="CcdName" title="그룹유형명" value="{{ $data['CcdName'] }}">
-                    </div>
-                    <label class="control-label col-md-2" for="">그룹유형코드 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['wCcd'] or '등록시 자동 생성'}} </p>
-                    </div>
-                </div>
-            @elseif($makeType==="sub")
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="GroupName">그룹유형명 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{$parent_data['CcdName']}}</p>
-                    </div>
-                    <label class="control-label col-md-2" for="">그룹유형코드 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{$groupCcd}}</p>
-                    </div>
-                </div>
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="CcdName">세부항목명 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <input type="text" id="CcdName" name="CcdName" required="required" class="form-control" title="세부항목명" value="{{ $data['CcdName'] }}">
-                    </div>
-                    <label class="control-label col-md-2" for="">세부항목코드 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['Ccd'] or '등록시 자동 생성'}}</p>
-                    </div>
-                </div>
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="CcdValue">세부항목값 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <input type="text" id="CcdValue" name="CcdValue" required="required" class="form-control" title="세부항목값" value="{{ $data['CcdValue'] }}">
-                    </div>
-                    <label class="control-label col-md-2" for="CcdDesc">세부항목설명</label>
-                    <div class="col-md-4">
-                        <input type="text" id="CcdDesc" name="CcdDesc"  class="form-control" title="세부항목설명" value="{{ $data['CcdDesc'] }}">
-                    </div>
-                </div>
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="CcdEtc">세부항목기타</label>
-                    <div class="col-md-10">
-                        <input type="text" id="CcdEtc" name="CcdEtc"  class="form-control" title="기타" value="{{ $data['CcdEtc'] }}">
-                    </div>
-                </div>
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span></label>
-                    <div class="col-md-4">
-                        <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" @if($method=="POST" || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" required="required" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
-                        </div>
-                    </div>
-                    <label class="control-label col-md-2" for="OrderNum">노출순서</label>
-                    <div class="col-md-1">
-                        <input type="text" id="OrderNum" name="OrderNum"  class="form-control" title="노출순서" value="{{ $data['OrderNum'] or $parent_data['NextOrderNum'] }}" style="width: 40px">
-                    </div>
-                    <div class="col-md-3">
-                        <p class="form-control-static">미입력 시 마지막 DP</p>
-                    </div>
-                </div>
-            @endif
+            $(document).ready(function() {
+                $datatable = $list_table.DataTable({
+                    serverSide: true,
+                    lengthMenu: [10],
+                    pageLength : 10,
+                    pagingType : 'simple_numbers',
+                    ajax: {
+                        'url' : '{{ site_url("/member/manage/ajaxList/") }}',
+                        'type' : 'POST',
+                        'data' : function(data) {
+                            return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        }
+                    },
+                    columns: [
+                        {'data' : null, 'render' : function(data, type, row, meta){
+                                // 리스트 번호
+                                return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }},
+                        {'data' : 'MemIdx'},
+                        {'data' : 'MemName'},
+                        {'data' : 'MemId'},
+                        {'data' : 'Phone'},
+                        {'data' : 'Mail'},
+                        {'data' : 'JoinDate'},
 
-            @if($method==="PUT")
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2" for="">등록자 </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['wAdminName'] }}</p>
-                    </div>
-                    <label class="control-label col-md-2" for="">등록일</label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['RegDatm'] }}</p>
-                    </div>
-                </div>
-                <div class="form-group form-group-sm item">
-                    <label class="control-label col-md-2">최종수정자</label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['wUpdAdminName'] }}</p>
-                    </div>
-                    <label class="control-label col-md-2">최종수정일</label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['UpdDatm'] }}</p>
-                    </div>
-                </div>
-            @endif
-            <script type="text/javascript">
-                var $regi_form = $('#regi_form');
-
-                $(document).ready(function() {
-                    // ajax submit
-                    $regi_form.submit(function() {
-                        var _url = '{{ site_url('/sys/code/store') }}';
-
-                        ajaxSubmit($regi_form, _url, function(ret) {
-                            if(ret.ret_cd) {
-                                notifyAlert('success', '알림', ret.ret_msg);
-                                $("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/sys/code/') }}' + dtParamsToQueryString($datatable));
-                            }
-                        }, showValidateError, null, false, 'alert');
-                    });
+                        {'data' : null, 'render' : function(data, type, row, meta){
+                                return '<button id="btn_select" class="btn-view1 btn bg-blue btn-primary btn-search" data-idx="' + row.MemIdx + '"">선택</button>';
+                            }}
+                    ]
                 });
-            </script>
-        @stop
 
-        @section('add_buttons')
-            <button type="submit" class="btn btn-success">Submit</button>
-        @endsection
+                $list_table.on('click', '#btn_select', function() {
+                    location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') );
+                });
+            });
+        </script>
+@stop
 
-        @section('layer_footer')
+@section('add_buttons')
+
+@endsection
+
+@section('layer_footer')
     </form>
 @endsection

@@ -920,7 +920,7 @@ class CommonLectureModel extends WB_Model
 
             //상품복사
             $insert_column = 'ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
-                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, Keyword, RegAdminIdx, RegIp';
+                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, \'N\' As IsUse, Keyword, RegAdminIdx, RegIp';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
@@ -998,7 +998,7 @@ class CommonLectureModel extends WB_Model
                 throw new \Exception('강사료정산 복사에 실패했습니다.');
             };
 
-
+            /* 메모 복사 제거 - 2018.06.21 최진영차장 협의
             //메모복사
             $insert_column = 'ProdCode, MemoTypeCcd, Memo, IsOutput, RegAdminIdx, RegIp';
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
@@ -1009,7 +1009,7 @@ class CommonLectureModel extends WB_Model
             if($this->_conn->query($query) === false) {
                 throw new \Exception('메모 복사에 실패했습니다.');
             };
-
+            */
 
             // 컨텐트복사
             $insert_column = 'ProdCode, ContentTypeCcd, Content, RegAdminIdx, RegIp';
@@ -1084,7 +1084,6 @@ class CommonLectureModel extends WB_Model
 
 
             //  연결강좌복사
-
             if($prodtype==='packageuser' || $prodtype==='packageadmin' || $prodtype==='packageperiod') {
 
                 $insert_column = 'ProdCodeSub,ProdCode,  IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';

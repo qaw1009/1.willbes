@@ -1,4 +1,4 @@
-@extends('html.layouts.master')
+@extends('willbes.pc.layouts.master')
 
 @section('content')
 <!-- Container -->
@@ -327,7 +327,7 @@
                         </ul>
                     </div>
                     <div class="bookBoxWrap">
-                        <ul class="tabWrap">
+                        <ul class="tabWrap tabDepth2">
                             <li><a href="#info1">교재소개</a></li>
                             <li><a href="#info2">교재목차</a></li>
                         </ul>
@@ -541,6 +541,4 @@
     </div>
 </div>
 <!-- End Container -->
-<script src="/public/js/front/sub.js"></script>
-<script src="/public/js/front/tabs.js"></script>
 @stop

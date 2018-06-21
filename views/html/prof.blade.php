@@ -1,4 +1,4 @@
-@extends('html.layouts.master')
+@extends('willbes.pc.layouts.master')
 
 @section('content')
 <!-- Container -->
@@ -94,16 +94,14 @@
     </div>
     <div class="Content p_re ml20">
 
-        <div class="NoticeWrap mb60 c_both">
-            <div class="pmBnr widthAuto460 mr20" style="float: left; background: #7e7e86; height: 220px">
-                <div class="sliderPromotion">
-                    <div class="sliderNum">
-                        <div><img src="/public/img/front/sample/roll1.jpg"></div>
-                        <div><img src="/public/img/front/sample/roll2.jpg"></div>
-                    </div>
+        <div class="willbes-NoticeWrap mb60 c_both">
+            <div class="sliderPromotion widthAuto460 f_left mr20">
+                <div class="sliderNum">
+                    <div><img src="/public/img/front/sample/roll1.jpg"></div>
+                    <div><img src="/public/img/front/sample/roll2.jpg"></div>
                 </div>
             </div>
-            <div class="will-newLec widthAuto460">
+            <div class="willbes-listTable willbes-newLec widthAuto460">
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="/public/img/front/prof/icon_new.gif"></div>
                 <ul class="List-Table GM tx-gray">
                     <li>
@@ -124,7 +122,7 @@
                 </ul>
             </div>
         </div>
-        <!-- NoticeWrap -->
+        <!-- willbes-NoticeWrap -->
 
         <div class="curriWrap GM c_both">
             <div class="CurriBox">
@@ -215,9 +213,9 @@
         <div class="willbes-Prof-List NG c_both">
             <div class="willbes-Prof-Subject tx-dark-black">· 국어</div>
             <!-- willbes-Prof-Subject -->
-            <ul>
+            <ul class="profGrid">
                 <li class="profList">
-                    <a href="#none000">
+                    <a href="{{ site_url('/home/html/profsub') }}">
                         <div class="line">-</div>
                     </a>
                     <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
@@ -286,7 +284,7 @@
                     </div>
                 </li>
             </ul>
-            <ul>
+            <ul class="profGrid">
                 <li class="profList">
                     <a href="#none000">
                         <div class="line">-</div>
@@ -362,7 +360,7 @@
         <div class="willbes-Prof-List NG c_both">
             <div class="willbes-Prof-Subject tx-dark-black">· 영어</div>
             <!-- willbes-Prof-Subject -->
-            <ul>
+            <ul class="profGrid">
                 <li class="profList">
                     <a href="#none000">
                         <div class="line">-</div>
@@ -404,7 +402,7 @@
         <div class="willbes-Prof-List NG c_both">
             <div class="willbes-Prof-Subject tx-dark-black">· 한국사</div>
             <!-- willbes-Prof-Subject -->
-            <ul>
+            <ul class="profGrid">
                 <li class="profList">
                     <a href="#none000">
                         <div class="line">-</div>
@@ -463,5 +461,4 @@
     </div>
 </div>
 <!-- End Container -->
-<script src="/public/js/front/sub.js"></script>
 @stop

@@ -1,4 +1,4 @@
-@extends('html.layouts.master')
+@extends('willbes.pc.layouts.master')
 
 @section('content')
 <!-- Container -->
@@ -99,7 +99,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search">
+        <div class="willbes-Lec-Search mb60">
             <div class="inputBox p_re">
                 <label for="SEARCH" class="labelSearch" style="display: block;">강의명</label>
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
@@ -302,6 +302,4 @@
     </div>
 </div>
 <!-- End Container -->
-<script src="/public/js/front/sub.js"></script>
-<script src="/public/js/front/tabs.js"></script>
 @stop

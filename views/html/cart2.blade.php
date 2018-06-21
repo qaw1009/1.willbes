@@ -1,4 +1,4 @@
-@extends('html.layouts.master')
+@extends('willbes.pc.layouts.master')
 
 @section('content')
 <!-- Container -->
@@ -813,6 +813,4 @@
     </div>
 </div>
 <!-- End Container -->
-<script src="/public/js/front/sub.js"></script>
-<script src="/public/js/front/tabs.js"></script>
 @stop

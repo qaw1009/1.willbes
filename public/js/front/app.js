@@ -35,8 +35,20 @@ $(function() {
     $('.sliderNum').bxSlider({
         auto: true,
         controls: true,
-        pause: 30000,
+        pause: 3000,
         pager: true,
+        pagerType: 'short',
+        moveSlides:1,
+    });
+});
+
+// Slider Controls Script
+$(function() {
+    $('.sliderControls').bxSlider({
+        auto: true,
+        controls: true,
+        pause: 3000,
+        pager: false,
     });
 });
 

@@ -1,4 +1,4 @@
-@extends('html.layouts.master')
+@extends('willbes.pc.layouts.master')
 
 @section('content')
 <!-- Container -->
@@ -531,9 +531,6 @@
         </div>
     </div>
     <!-- End 통합회원 전환 : 약관동의/정보입력 -->
-
-
-
 
 
     <br/><br/><br/>

@@ -9,6 +9,8 @@
 
 <a href="{{ site_url('/home/html/prof') }}">교수진 page 이동</a><br/><br/>
 
+<a href="{{ site_url('/home/html/profsub') }}">교수진 상세 page 이동</a><br/><br/>
+
 <a href="{{ site_url('/home/html/memjoin') }}">로그인 page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/memsearch') }}">아이디찾기 page 이동</a><br/><br/>

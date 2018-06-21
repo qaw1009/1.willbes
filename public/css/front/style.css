@@ -12,16 +12,6 @@
     padding-top: 11px;
     padding-left: 11px;
 }
-.Member button.mem-Btn {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-}
-.Member button.mem-Btn span {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-}
 .Member .inputBox {
     height: 38px;
     margin-bottom: 14px;
@@ -53,7 +43,6 @@
     float: right; 
     width: 110px;
     height: 38px;
-    border: 1px solid #d4d4d4;
 }
 .Member .inputBox button.sm {
     width: 72px;
@@ -516,7 +505,6 @@ table.combineTable .addbox2 {
 .mem-CombineFin select.seleSite { 
     width: 110px;
     height: 26px;
-    border: 1px solid #d4d4d4;
     margin-left: 30px;
 }
 
@@ -1094,13 +1082,10 @@ table.auTable tr td {
     padding-left: 10px;
 }
 .Layer-Box button.log-Btn {
-    width: 100%;
     height: 50px;
 }
 .Layer-Box button.log-Btn span {
     font-size: 27px;
-    font-weight: 600;
-    color: #fff;
 }
 .Layer-Box .btn-Txt {
     text-align: center;
@@ -1167,8 +1152,6 @@ table.auTable tr td {
 }
 #SettingForm .Layer-Btn button.cf-Btn span {
     font-size: 15px;
-    font-weight: 600;
-    color: #fff;
 }
 
 /* Footer */
@@ -1606,48 +1589,23 @@ table.auTable tr td {
     line-height: 26px;
 }
 
-/* subContainer : Content : NoticeWrap */
-.NoticeWrap {
-    height: 220px;
-}
-
-/* subContainer : Content : newLec */
-.will-newLec {
-    float: left;
-}
-.will-newLec .will-Tit {
-    font-size: 16px;
-    color: #363636;
-    border-bottom: 1px solid #959595;
-    padding-bottom: 8px;
-}
-.will-newLec .List-Table {
-    padding: 0;
-}
-.will-newLec .List-Table li {
-    font-size: 12px;
-    line-height: 38px;
-    border-bottom: 1px solid #e2e2e2;  
-}
-.will-newLec .List-Table li a {
-    width: 390px;
-}
-
 /* subContainer : Content : Bnr */
 .willbes-Bnr {
+    clear: both;
     padding-top: 25px;
     padding-bottom: 35px;
 }
 
 /* subContainer : Content : Lec-Search */
 .willbes-Lec-Search {
+    font-weight: 300;
     height: 30px;
-    margin-bottom: 65px;
 }
 .willbes-Lec-Search .inputBox {
     float: left;
     width: 340px;
     height: 30px;
+    line-height: 12px;
 }
 .willbes-Lec-Search .inputBox label {
     font-size: 12px;
@@ -1671,8 +1629,6 @@ table.auTable tr td {
 }
 .willbes-Lec-Search button span {
     font-size: 12px;
-    font-weight: 600;
-    color: #fff;
 }
 .willbes-Lec-Search .InfoBtn {
     float: right;
@@ -1801,16 +1757,6 @@ table.auTable tr td {
 .willbes-Lec-buyBtn ul li:first-child {
     margin-left: 0;
 }
-.willbes-Lec-buyBtn ul li button {
-    width: 100%;
-    height: 100%;
-    margin:0 auto;
-}
-.willbes-Lec-buyBtn ul li button span {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-}
 .willbes-Lec-buyBtn-sm {
     display: none;
     position: absolute;
@@ -1833,10 +1779,9 @@ table.auTable tr td {
 }
 .willbes-Lec-buyBtn-sm button span {
     font-size: 9px;
-    font-weight: 600;
-    color: #fff;
 }
 
+/* subContainer : Content : willbes-Lec-Tit */
 .willbes-Lec-Tit {
     font-size: 19px;
     font-weight: 600;
@@ -1934,7 +1879,6 @@ table.auTable tr td {
     font-size: 14px;
     color: #2c2c2c;
 }
-
 .w-info .w-tit {
     letter-spacing: 0 !important;
 }
@@ -2302,6 +2246,8 @@ table.lecTable tr td .MoreBtn {
     margin-top: 10px;
 }
 .lec-profile .w-info {
+    float: left;
+    width: 100%;
     margin-top: 20px;
 }
 .lec-profile .all-view {
@@ -2582,7 +2528,7 @@ table.classTable tr td.w-data {
     margin-left: 5px;
 }
 
-/* subContainer : Content : 강의목차 */
+/* subContainer : Content : 강의목차 : LeclistTable */
 .LeclistTable .listTable tr th,
 .LeclistTable .listTable tr td {
     text-align: center;
@@ -2615,6 +2561,42 @@ table.classTable tr td.w-data {
     text-align: right;
     padding-right: 30px;
 }
+
+/* subContainer : Content : 강의목차 : LecViewTable */
+.LecViewTable .listTable {
+    clear: both;
+}
+.LecViewTable .listTable tr th,
+.LecViewTable .listTable tr td {
+    text-align: center;
+    line-height: 40px;
+    letter-spacing: 0;
+}
+.LecViewTable .listTable thead tr th,
+.LecViewTable .listTable thead tr td {
+    background: #f9f9fa;
+}
+.LecViewTable .listTable thead tr td {
+    border-top: 1px solid #edeeef;
+}
+.LecViewTable .listTable tr th .row-line,
+.LecViewTable .listTable tr td .row-line {
+    float: right;
+    background: #e4e4e4;
+    width: 1px;
+    height: 11px;
+    margin: 14px 0;
+}
+.LecViewTable .w-file a {
+    margin-right: 70px;
+}
+.LecViewTable .w-txt {
+    padding: 15px 25px;
+    height: 350px;
+    line-height: 20px !important;
+    vertical-align: baseline;
+}
+
 
 
 /* subContainer : Content : 수강후기 */
@@ -2745,6 +2727,7 @@ table.classTable tr td.w-data {
     text-align: center;
 }
 .pBox {
+    background: #fff;
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
     display: inline-block;
     width: 37px;
@@ -2905,7 +2888,6 @@ table.classTable tr td.w-data {
     height: 10px;
     margin: 9px 0;
 }
-
 .willbes-Cart-Price {
     height: 190px;
     margin: 85px 0 60px;
@@ -3326,12 +3308,12 @@ table.deliveryTable .searchadd input {
     width: 55px;
 }
 table.deliveryTable .searchadd button {
+    width: 95px;
     height: 27px;
     line-height: 25px;
 }
 table.deliveryTable .searchadd button span {
     font-size: 11px;
-    color: #fff;
 }
 table.deliveryTable .addbox1 {
     height: 26px;
@@ -3341,8 +3323,7 @@ table.deliveryTable .addbox2 {
     top: -1px;
 }
 table.deliveryTable select {
-    border: 1px solid #d4d4d4;
-    widtH: 82px;
+    width: 82px;
     height: 27px;
 }
 table.deliveryTable input.phone {
@@ -3414,7 +3395,7 @@ table.deliveryTable input.phone {
 /* subContainer : Cart : 결제완료 */
 .willbes-Payment-Fin {
     float: left;
-    widtH: 100%;
+    width: 100%;
     font-size: 24px;
     font-weight: 600;
     color: #333;
@@ -3430,17 +3411,19 @@ table.finTable tr td {
 
 
 /*********************************************     PROF PAGE     *********************************************/
+
+/* subContainer : Prof : sliderPromotion */
+.sliderPromotion {
+    width: 460px;
+    height: 220px;
+    overflow: hidden;
+}
 .sliderPromotion .bx-wrapper .bx-prev {
     background: url("../../img/front/prof/btn_prev.png") no-repeat 0 0;
 }
 .sliderPromotion .bx-wrapper .bx-next {
     background: url("../../img/front/prof/btn_next.png") no-repeat 0 0;
     left: 20px;
-}
-.sliderPromotion .bx-wrapper .bx-controls-direction a {
-    width: 20px;
-    height: 20px;
-
 }
 .sliderPromotion .bx-wrapper .bx-controls-direction {
     position: absolute;
@@ -3449,12 +3432,64 @@ table.finTable tr td {
     width: 40px;
     height: 20px;
 }
-.sliderPromotion {
-    width: 460px;
-    height: 220px;
-    overflow: hidden;
+.sliderPromotion .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.sliderPromotion .bx-wrapper .bx-pager {
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
 }
 
+/* subContainer : Prof : willbes-NoticeWrap */
+.willbes-NoticeWrap {
+    float: left;
+    width: 100%;
+}
+
+/* subContainer : Prof : listTable 공통 */
+.willbes-listTable {
+    float: left;
+}
+.willbes-listTable .will-Tit {
+    font-size: 16px;
+    color: #363636;
+    border-bottom: 1px solid #959595;
+    padding-bottom: 8px;
+}
+.willbes-listTable .List-Table {
+    padding: 0;
+}
+.willbes-listTable .List-Table li {
+    font-size: 12px;
+    line-height: 39px;
+    border-bottom: 1px solid #e2e2e2;
+    height: 39px;
+}
+
+/* subContainer : Prof : newLec */
+.willbes-newLec .List-Table li a {
+    width: 390px;
+}
+
+/* subContainer : Prof : newLec */
+.willbes-reply .List-Table li img {
+    float: left;
+    margin: 13px 0;
+}
+.willbes-reply .List-Table li a {
+    float: right;
+    width: 360px;
+}
+
+/* subContainer : Prof : willbes-Prof-Subject */
 .willbes-Prof-Subject {
     font-size: 20px;
     font-weight: 600;
@@ -3462,6 +3497,10 @@ table.finTable tr td {
     padding: 80px 0 20px 15px;
 }
 
+/* subContainer : Prof : profList */
+ul.profGrid {
+    height: 238px;
+}
 ul li.profList {
     position: relative;
     background: #f4f3f3;
@@ -3469,7 +3508,7 @@ ul li.profList {
     height: 226px;
     float: left;
     margin-right: 12px;
-    margin-bottom: 12px;   
+    margin-bottom: 12px;
 }
 ul li.profList.nth {
     margin-right: 0;
@@ -3560,6 +3599,324 @@ ul li.profList .w-notice a {
     text-align: center;
     line-height: 20px;
 }
+
+/* subContainer : Prof : willbes-Prof-Profile */
+.willbes-Prof-Profile {
+    background: #e5e5e5 url("../../img/front/prof/bg_prof.jpg") no-repeat 0 0;
+    width: 940px;
+    height: 316px;
+}
+.willbes-Prof-Profile .prof-brief-btn {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    float: right;
+}
+.willbes-Prof-Profile .prof-brief-btn li {
+    float: left;
+    background: #7d7e85;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    margin-left: 2px;
+    line-height: 15px;
+}
+.willbes-Prof-Profile .prof-brief-btn li a {
+    display: block;
+}
+.willbes-Prof-Profile .prof-brief-btn li img {
+    padding-top: 10px;
+}
+.willbes-Prof-Profile .prof-brief-btn li div {
+    font-size: 11px;
+    color: #fff;
+}
+.willbes-Prof-Profile .ProfImg {
+    float: left;
+    width: 400px;
+    height: 316px;
+}
+.willbes-Prof-Profile .ProfImg img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+}
+.willbes-Prof-Profile .prof-profile {
+    float: left;
+    width: 540px;
+    height: 316px;
+    letter-spacing: 0;
+}
+.willbes-Prof-Profile .prof-profile .Obj {
+    font-size: 16px;
+    line-height: 24px;
+    top: 60px;
+    left: 0;
+}
+.willbes-Prof-Profile .prof-profile .Name {
+    font-size: 22px;
+    line-height: 60px;
+    top: 115px;
+    left: 0;
+}
+.willbes-Prof-Profile .prof-profile .Name .Sbj {
+    font-size: 28px;
+    margin-right: 15px;
+}
+.willbes-Prof-Profile .prof-profile .Name strong {
+    font-size: 52px;
+}
+.willbes-Prof-Profile .sliderBest {
+    position: absolute;
+    top: 196px;
+    left: 0;
+    width: 520px;
+    height: 120px;
+}
+
+/* subContainer : Prof : sliderBest */
+.sliderBest .best-tit {
+    background: #e5e5e5 url("../../img/front/prof/icon_best.gif") no-repeat 0 0;
+    font-size: 14px;
+    line-height: 28px;
+    padding: 0 0 2px 28px;
+    border-bottom: 1px solid #979797;
+}
+.sliderBest .bx-wrapper {
+    background: none;
+    height: 65px;
+}
+.sliderBest .sliderControls {
+    width: 520px;
+    height: 65px;
+}
+.sliderBest .bx-wrapper .bx-prev {
+    background: url("../../img/front/prof/btn_prev_white.png") no-repeat 0 0;
+}
+.sliderBest .bx-wrapper .bx-next {
+    background: url("../../img/front/prof/btn_next_white.png") no-repeat 0 0;
+    left: 20px;
+}
+.sliderBest .bx-wrapper .bx-controls {
+    position: absolute;
+    top: -26px;
+    right: 0;
+    width: 40px;
+    height: 20px;
+}
+.sliderBest .bx-wrapper .bx-controls-direction {
+    width: 40px;
+    height: 20px; 
+}
+.sliderBest .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.sliderBest .lec-profile {
+    width: 520px;
+    height: 65px;
+}
+.sliderBest .lec-profile .w-tit {
+    font-size: 13px;
+    line-height: 35px;
+    margin: 0;
+}
+.sliderBest .lec-profile .w-tit img {
+    display: inline;
+    width: auto;
+}
+.sliderBest .lec-profile .w-info {
+    margin: 0;
+    line-height: 20px;
+}
+.sliderBest .lec-profile .w-notice {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    margin-left: 15px;
+}
+
+/* subContainer : Prof : tabDepthProf */
+.tabWrap.tabDepthProf {
+    height: 50px;
+    border-bottom: none;
+}
+.tabWrap.tabDepthProf li {
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 50px;
+}
+.tabWrap.tabDepthProf li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    background: #f5f5f5;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4d4e57;
+    text-align: center;
+    letter-spacing: 0;
+    border: 1px solid #959595;
+    border-left: none;
+}
+.tabWrap.tabDepthProf li:first-child a {
+    border-left: 1px solid #959595;
+}
+.tabWrap.tabDepthProf li a.on {
+    background: #686971;
+    color: #fff;
+}
+.tabWrap.tabDepthProf li a.on:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 38px;
+    left: 50%;
+    margin-left: -6px;
+    border-color: transparent transparent #fff;
+    border-width: 6px;
+}
+
+/* subContainer : Prof : tabDepthAcad */
+.tabWrap.tabDepthAcad {
+    height: 45px;
+    border-bottom: 1px solid #4f4f4f;
+}
+.tabWrap.tabDepthAcad li {
+    float: left;
+    width: 50%;
+    height: 45px;
+}
+.tabWrap.tabDepthAcad li a {
+    display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 43px;
+    background: #f5f5f5;
+    font-size: 12px;
+    font-weight: 600;
+    color: #878787;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+.tabWrap.tabDepthAcad li a.on {
+    background: #fff;
+    height: 45px;
+    color: #3a3a3a;
+    border-top: 1px solid #4f4f4f;
+    border-left: 1px solid #4f4f4f;
+    border-right: 1px solid #4f4f4f;
+}
+.AcadtabBox .tabContent .tabGrid {
+    float: left;
+    width: 100%;
+    padding: 15px 35px;
+    border: 1px solid #4f4f4f;
+    border-top: none;
+}
+.AcadtabBox .online dt {
+    float: left;
+    width: 33.333333333333%;
+    height: 34px;
+}
+.AcadtabBox .online dt a {
+    display: block;  
+    width: 100%;
+    height: 100%;  
+    border: 1px solid #e4e4e4;
+    border-left: none;
+    font-size: 12px;
+    color: #686868;
+    text-align: center;
+    line-height: 32px;
+}
+.AcadtabBox .online dt:first-child a {
+    border-left: 1px solid #e4e4e4;
+}
+
+/* subContainer : Prof : 공지사항 */
+.oBox {
+    display: inline-block;
+    width: 37px;
+    height: 15px;
+    font-size: 10px;
+    color: #fff;
+    line-height: 15px;
+    text-align: center;  
+}
+.offlineBox {
+    background: #6f6f6f;
+}
+.onlineBox {
+    background: #0d74ae;
+}
+.willbes-Lec-Selected {
+    margin: 20px 0;
+}
+.willbes-Lec-Selected select {
+    width: 92px;
+    height: 27px;
+    margin-right: 8px;
+}
+
+/* subContainer : Prof : 학습 Q&A */
+.qnaTable tr.top {
+    background: #ecf8fc;
+}
+.qnaTable .w-list img {
+    margin-right: 10px;
+}
+.qnaTable .w-list .subTit {
+    font-size: 11px;
+    color: #959595;
+    line-height: 15px;
+    padding-bottom: 10px;
+}
+.aBox {
+    display: inline-block;
+    width: 47px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: center;  
+}
+.waitBox {
+    border: 1px solid #adadad;
+    color: #636363;
+}
+.answerBox {
+    border: 1px solid #5ab6eb;
+    color: #1a8bcc;
+}
+.willbes-Lec-Selected .chkBox {
+    display: inline-block;
+    vertical-align: bottom;
+}
+.willbes-Lec-Selected .chkBox li {
+    float: left;
+    margin-right: 20px;
+}
+.willbes-Lec-Selected .chkBox li input {
+    float: left;
+    margin-right: 5px;
+}
+.willbes-Lec-Selected .search-Btn {
+    margin-top: -10px;
+}
+
+
+
 
 
 

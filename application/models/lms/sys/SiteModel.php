@@ -99,6 +99,12 @@ class SiteModel extends WB_Model
      */
     public function getSiteCampusArray($site_code)
     {
+        $column = "SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName";
+        $from = "
+            FROM {$this->_table['site_r_campus']} AS SC
+            INNER JOIN {$this->_table['code']} AS C ON SC.CampusCcd = C.Ccd
+        ";
+
         $arr_condition = [
             'EQ' => [
                 'SC.IsStatus' => 'Y',
@@ -112,12 +118,27 @@ class SiteModel extends WB_Model
         } else {
             $arr_condition['IN']['SC.SiteCode'] = get_auth_site_codes();
         }
-        $arr_condition['IN']['SC.CampusCcd'] = get_auth_all_campus_ccds();
 
-        $data = $this->_conn->getJoinListResult($this->_table['site_r_campus'] . ' as SC', 'inner', $this->_table['code'] . ' as C', 'SC.CampusCcd = C.Ccd'
-            , 'SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName', $arr_condition, null, null, ['SC.CampusCcd' => 'asc']
-        );
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
 
+        // 캠퍼스 권한
+        $where_campus = "";
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+                $where_campus->or_where('SC.SiteCode',$set_site_ccd);
+                $where_campus->where_in('SC.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+        }
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
+        // 쿼리 실행
+        $where = $where_temp . $where_campus;
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $data = $query->result_array();
         return (empty($site_code) === false) ? array_pluck($data, 'CampusName', 'CampusCcd') : $data;
     }
 

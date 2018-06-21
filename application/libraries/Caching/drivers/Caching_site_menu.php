@@ -31,8 +31,7 @@ class Caching_site_menu extends CI_Driver
     public function _getSaveData()
     {
         // 학원 사이트 구분값
-        $this->_CI->config->load('front_config');
-        $pass_site_prefix = $this->_CI->config->item('pass_site_prefix');
+        $pass_site_prefix = config_item('app_pass_site_prefix');
 
         $_table = [
             'site' => 'lms_site',
@@ -62,18 +61,15 @@ class Caching_site_menu extends CI_Driver
 
         $data = [];
         foreach ($result as $idx => $row) {
-/*            $group_name_key = $row['SiteGroupCode'] . '.SiteGroupName';
-            $site_base_key = $row['SiteGroupCode'] . '.Sites.' . $row['SiteCode'];
-            $site_name_key = $site_base_key . '.SiteName';
-            $site_menu_key = $site_base_key . '.SiteMenu';*/
-
             $base_key = $row['SiteId'];
 
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
+                'MenuIdx' => $row['MenuIdx'],
                 'MenuType' => $row['MenuType'],
                 'MenuName' => $row['MenuName'],
-                'MenuUrl' => $row['MenuUrl'],
+                // 내부경로일 경우 개발환경에 맞게 URL 변환
+                'MenuUrl' => ($row['UrlType'] == 'route' && empty($row['MenuUrl']) === false) ? app_to_env_url($row['MenuUrl']) : $row['MenuUrl'],
                 'MenuIcon' => $row['MenuIcon'],
                 'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],

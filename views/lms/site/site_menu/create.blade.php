@@ -67,8 +67,8 @@
             <div class="col-md-10 item form-inline">
                 <select class="form-control" id="menu_type" name="menu_type" title="메뉴 구분">
                     <option value="GN">일반메뉴</option>
-                    <option value="SE">별도메뉴</option>
-                    <option value="EP">예외메뉴 (교수)</option>
+                    <option value="PA">예외메뉴 (학원)</option>
+                    <option value="PF">예외메뉴 (교수)</option>
                 </select>
             </div>
         </div>

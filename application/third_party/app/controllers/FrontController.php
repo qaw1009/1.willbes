@@ -66,10 +66,23 @@ abstract class FrontController extends BaseController
         $site_cache = $this->getCacheItem('site');
         // 사이트 메뉴 캐쉬 조회
         $site_menu_cache = $this->getCacheItem('site_menu');
+        // 사이트 GNB 메뉴
+        $site_gnb_menu = element('www', $site_menu_cache, []);
         // 사이트 과목+교수 연결정보
         $site_subject_professor_cache = [];
+
+        // 접근 URL의 GNB 메뉴그룹식별자 조회
+        $current_gnb_group_menu_idx = '';
+        foreach (array_pluck($site_gnb_menu, 'MenuUrl', 'MenuIdx') as $group_menu_idx => $menu_url) {
+            if (starts_with(current_url(), $menu_url) === true) {
+                $current_gnb_group_menu_idx = $group_menu_idx;
+                break;
+            }
+        }
+
         // 사이트별 예외 설정
         $app_except_config = element(SUB_DOMAIN, config_item('app_except_config'), []);
+
         // 일반 사이트일 경우
         if (empty(element('route_add_path', $app_except_config)) === false) {
             $pass_site_prefix = config_item('app_pass_site_prefix');    // 학원 사이트 구분값
@@ -88,10 +101,12 @@ abstract class FrontController extends BaseController
         $site_cache = element($this->__site_id, $site_cache, []);
 
         $configs = array_merge(
+                        ['SiteId' => $this->__site_id],
                         config_item(SUB_DOMAIN),
                         $site_cache,
                         ['IsPassSite' => $this->__is_pass_site],
-                        ['NavMenu' => element('www', $site_menu_cache, [])],
+                        ['GnbGroupMenuIdx' => $current_gnb_group_menu_idx],
+                        ['GnbMenu' => $site_gnb_menu],
                         ['SiteMenu' => ($this->__site_id == 'www') ? [] : element($this->__site_id, $site_menu_cache, [])],
                         ['Subject2Professor' => element(element('SiteCode', $site_cache), $site_subject_professor_cache, [])]
             );

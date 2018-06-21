@@ -3,14 +3,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (!function_exists('app_url')) {
     /**
-     * 시스템 (wbs, lms ...)에 맞는 전체 (도메인 포함) URL 리턴
+     * 서브 도메인 (wbs, lms ...)에 맞는 전체 (도메인 포함) URL 리턴
      * @param $uri
-     * @param $app_name
+     * @param $sub_domain
      * @return string
      */
-    function app_url($uri, $app_name)
+    function app_url($uri, $sub_domain)
     {
-        return '//' . $app_name . ENV_DOMAIN . '.' . config_item('base_domain') . $uri;
+        return '//' . $sub_domain . ENV_DOMAIN . '.' . config_item('base_domain') . $uri;
+    }
+}
+
+if (!function_exists('app_to_env_url')) {
+    /**
+     * 실제 URL을 시스템 환경에 맞는 URL로 변환 후 리턴
+     * @param $url
+     * @return string
+     */
+    function app_to_env_url($url)
+    {
+        return substr($url, 0, strpos($url, '.')) . ENV_DOMAIN . '.' . substr($url, strpos($url, '.') + 1);
     }
 }
 

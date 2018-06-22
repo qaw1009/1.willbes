@@ -181,7 +181,7 @@ Class PackageAdmin extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
-            ['field'=>'ProdName', 'label' => '단강좌명', 'rules' => 'trim|required'],
+            ['field'=>'ProdName', 'label' => '운영자패키지명', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'StudyPeriod','label'=>'수강기간', 'rules'=>'trim|required'],
             ['field'=>'PcProvisionCcd', 'label' => 'PC제공구분', 'rules' => 'trim|required'],

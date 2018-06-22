@@ -197,7 +197,7 @@ Class LectureFree extends \app\controllers\BaseController
 
         $rules = [
 
-            ['field'=>'ProdName', 'label' => '단강좌명', 'rules' => 'trim|required'],
+            ['field'=>'ProdName', 'label' => '무료단강좌명', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field'=>'CourseIdx', 'label' => '과정', 'rules' => 'trim|required'],
             ['field'=>'SubjectIdx', 'label' => '과목', 'rules' => 'trim|required'],

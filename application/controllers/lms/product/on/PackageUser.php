@@ -148,7 +148,7 @@ Class PackageUser extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
-            ['field'=>'ProdName', 'label' => '단강좌명', 'rules' => 'trim|required'],
+            ['field'=>'ProdName', 'label' => '사용자패키지명', 'rules' => 'trim|required'],
             ['field'=>'SchoolYear', 'label' => '대비학년도', 'rules' => 'trim|required'],
         ];
 

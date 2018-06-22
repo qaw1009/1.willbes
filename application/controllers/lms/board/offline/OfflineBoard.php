@@ -102,7 +102,7 @@ class OfflineBoard extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
         ';
 
@@ -183,15 +183,16 @@ class OfflineBoard extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-        $site_code = '';
-        $get_category_array = [];
+
+        //캠퍼스 조회
+        $arr_campus = $this->_getCampusArray('');
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -212,21 +213,22 @@ class OfflineBoard extends BaseBoard
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
-            $site_code = $data['SiteCode'];
-            $data['arr_cate_code'] = explode(',', $data['CateCode']);
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-
-            $get_category_array = $this->_getCategoryArray($site_code);
         }
 
         $this->load->view("board/offline/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
+            'arr_campus' => $arr_campus,
+            'campus_all_ccd' => $this->codeModel->campusAllCcd,
             'offLineSite_list' => $offLineSite_list,
-            'site_code' => $site_code,
-            'getCategoryArray' => $get_category_array,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -249,7 +251,7 @@ class OfflineBoard extends BaseBoard
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required'],
-            ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
@@ -287,7 +289,7 @@ class OfflineBoard extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
         $board_idx = $params[0];
@@ -386,26 +388,6 @@ class OfflineBoard extends BaseBoard
     }
 
     /**
-     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
-     * @param array $params
-     */
-    public function getAjaxSiteCategoryInfo($params = [])
-    {
-        $result = $this->_getSiteCategoryInfo($params);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
-     * 캠퍼스 정보 리턴
-     * @param array $params
-     */
-    public function getAjaxCampusInfo($params = [])
-    {
-        $result = $this->_getCampusInfo($params);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
      * 게시판 BEST 정보 조회
      * @param $column
      * @return array
@@ -451,7 +433,7 @@ class OfflineBoard extends BaseBoard
                 'SettingReadCnt' => element('setting_readCnt', $input),
             ],
             'board_r_category' => [
-                'site_category' => element('site_category', $input)
+                'site_category' => element('cate_code', $input)
             ]
         ];
 

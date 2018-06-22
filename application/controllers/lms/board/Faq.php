@@ -118,7 +118,7 @@ class Faq extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
             LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName,
             LB.OrderNum
@@ -182,12 +182,13 @@ class Faq extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-        $site_code = '';
-        $get_category_array = [];
+
+        //캠퍼스 조회
+        $arr_campus = $this->_getCampusArray('');
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -208,14 +209,14 @@ class Faq extends BaseBoard
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
-            $site_code = $data['SiteCode'];
-            $data['arr_cate_code'] = explode(',', $data['CateCode']);
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-
-            //사이트카테고리 (구분)
-            $get_category_array = $this->_getCategoryArray($site_code);
         }
 
         //FAQ구분
@@ -224,9 +225,8 @@ class Faq extends BaseBoard
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
-            'site_code' => $site_code,
-            /*'getSiteArray' => $get_site_array,*/
-            'getCategoryArray' => $get_category_array,
+            'arr_campus' => $arr_campus,
+            'campus_all_ccd' => $this->codeModel->campusAllCcd,
             'faq_group_ccd' => $faq_group_ccd,
             'method' => $method,
             'data' => $data,
@@ -249,7 +249,7 @@ class Faq extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'cate_code[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
@@ -283,7 +283,7 @@ class Faq extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName
         ';
@@ -381,26 +381,6 @@ class Faq extends BaseBoard
 
         $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
         $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
-     * @param array $params
-     */
-    public function getAjaxSiteCategoryInfo($params = [])
-    {
-        $result = $this->_getSiteCategoryInfo($params);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
-     * 캠퍼스 정보 리턴
-     * @param array $params
-     */
-    public function getAjaxCampusInfo($params = [])
-    {
-        $result = $this->_getCampusInfo($params);
-        $this->json_result(true, '', [], $result);
     }
 
     /**
@@ -530,7 +510,7 @@ class Faq extends BaseBoard
                 'SettingReadCnt' => element('setting_readCnt', $input),
             ],
             'board_r_category' => [
-                'site_category' => element('site_category', $input)
+                'site_category' => element('cate_code', $input)
             ]
         ];
 

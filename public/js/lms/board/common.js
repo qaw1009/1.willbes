@@ -22,6 +22,7 @@ function jsonLength(value1) {
 
 //운영사이트값에 따른 캠퍼스, 구분 셋팅
 function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
+    console.log('a');
     var _data = {};
     var add_checkBox = '';
     sendAjax(_siteCategory_url, _data, function(ret) {
@@ -49,6 +50,7 @@ function getSiteCategory(_siteCategory_url, _campus_url, campus_ccd) {
 
 //캠퍼스 목록 죄회
 function getAjaxcampusInfo(_url, campus_ccd) {
+    console.log('b');
     var board_campus_code_all = '605999';
     var add_selectBox_options = '<option value="'+board_campus_code_all+'">전체</option>';
     var _data = {};

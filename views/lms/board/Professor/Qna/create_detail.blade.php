@@ -25,18 +25,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="site_category">구분<span class="required">*</span></label>
-                    <div class="col-md-8 item form-inline">
-                        <div class="checkbox">
-                            <input type="checkbox" id="site_category_all" value="all" class="flat"/> <label class="inline-block mr-5" for="site_category_all">전체</label>
-                        </div>
-                        <div class="checkbox" id="site_category">
-                            @foreach($getCategoryArray as $key => $val)
-                                @php $cate_idx = $loop->index-1; @endphp
-                                <input type="checkbox" id="site_category_{{$key}}" name="site_category[]" value="{{$key}}" class="site_category flat" @if($method == 'PUT' && in_array($key,$data['arr_cate_code']) === true) checked="checked" @endif/>
-                                <label class="inline-block mr-5" for="site_category_{{$key}}">{{$val}}</label>
-                            @endforeach
-                        </div>
+                    <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9 form-inline">
+                        <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
+                        <span id="selected_category" class="pl-10">
+                            @if(isset($data['CateCodes']) === true)
+                                @foreach($data['CateCodes'] as $cate_code => $cate_name)
+                                    <span class="pr-10">{{ $cate_name }}
+                                        <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
+                                    </span>
+                                @endforeach
+                            @endif
+                        </span>
                     </div>
                 </div>
 
@@ -132,20 +134,33 @@
             $editor_profile.run();
 
             /**페이지 로딩시 실행**/
-            //캠퍼스목록조회
             $('#total_read_count').val(SumReadCount());
 
-            //운영사이트값에 따른 캠퍼스, 구분 셋팅
-            $('#site_code').change(function() {
-                var _siteCategory_url = '{{ site_url("/board/professor/{$boardName}/getAjaxSiteCategoryInfo/") }}' + this.value + getQueryString();
-                var _campus_url = '';
-                getSiteCategory(_siteCategory_url, _campus_url, campus_ccd);
+            // 운영사이트 변경
+            $regi_form.on('change', 'select[name="site_code"]', function() {
+                // 카테고리 검색 초기화
+                $regi_form.find('input[name="cate_code"]').val('');
+                $('#selected_category').html('');
             });
-            $('#site_code').on('change', function() {
-                $('input[type="checkbox"].flat').iCheck({
-                    checkboxClass: 'icheckbox_flat-blue',
-                    radioClass: 'iradio_flat-blue'
+
+            // 카테고리 검색
+            $('#btn_category_search').on('click', function(event) {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                if (!site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    return;
+                }
+
+                $('#btn_category_search').setLayer({
+                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                    'width' : 900
                 });
+            });
+
+            // 카테고리 삭제
+            $regi_form.on('click', '.selected-category-delete', function() {
+                var that = $(this);
+                that.parent().remove();
             });
 
             //목록
@@ -181,6 +196,13 @@
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
                 var _url = '{{ site_url("/board/professor/{$boardName}/store") }}' + getQueryString();
+
+                @if($method == 'POST')
+                if($regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    alert('카테고리 선택 필드는 필수입니다.');
+                    return false;
+                }
+                @endif
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

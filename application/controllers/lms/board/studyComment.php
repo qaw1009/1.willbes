@@ -166,8 +166,6 @@ class studyComment extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-        $site_code = '';
-        $get_category_array = [];
 
         //과목조회
         $arr_subject = $this->_getSubjectArray();
@@ -198,22 +196,21 @@ class studyComment extends BaseBoard
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
-            $site_code = $data['SiteCode'];
-            $data['arr_cate_code'] = explode(',', $data['CateCode']);
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-
-            $get_category_array = $this->_getCategoryArray($site_code);
         }
 
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
-            'site_code' => $site_code,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
-            'getCategoryArray' => $get_category_array,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -235,7 +232,7 @@ class studyComment extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
             ['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],
             /*['field' => 'prod_code', 'label' => '강좌명', 'rules' => 'trim|required'],*/
@@ -476,16 +473,6 @@ class studyComment extends BaseBoard
     }
 
     /**
-     * 운영사이트에 따른 카테고리(구분)
-     * @param array $params
-     */
-    public function getAjaxSiteCategoryInfo($params = [])
-    {
-        $result = $this->_getSiteCategoryInfo($params);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
      * 게시판 BEST 정보 조회
      * @param $column
      * @return array
@@ -535,7 +522,7 @@ class studyComment extends BaseBoard
                 'SettingReadCnt' => element('setting_readCnt', $input),
             ],
             'board_r_category' => [
-                'site_category' => element('site_category', $input)
+                'site_category' => element('cate_code', $input)
             ]
         ];
 

@@ -572,6 +572,29 @@ class BoardModel extends WB_Model
         return $query->first_row();
     }
 
+    public function listBoardCategory($board_idx)
+    {
+        $column = '
+            CC.CateCode, C.CateName
+                , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
+                , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName            
+        ';
+        $from = '
+            from ' . $this->_table_r_category . ' as CC
+                inner join ' . $this->_table_sys_category . ' as C
+                    on CC.CateCode = C.CateCode
+                left join ' . $this->_table_sys_category . ' as PC
+                    on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
+        ';
+        $where = ' where CC.BoardIdx = ? and CC.IsStatus = "Y" and C.IsStatus = "Y"';
+        $order_by_offset_limit = ' order by CC.BoardIdx asc';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$board_idx])->result_array();
+
+        return array_pluck($data, 'CateRouteName', 'CateCode');
+    }
+
     /**
      * Best 상태 update
      * @param array $params

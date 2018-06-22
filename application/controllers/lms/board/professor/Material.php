@@ -260,8 +260,6 @@ class Material extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-        $site_code = '';
-        $get_category_array = [];
 
         $arr_prof_info = $this->_findProfessor($prof_idx);
         if (count($arr_prof_info) < 1) {
@@ -293,14 +291,14 @@ class Material extends BaseBoard
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
-            $site_code = $data['SiteCode'];
-            $data['arr_cate_code'] = explode(',', $data['CateCode']);
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-
-            //사이트카테고리 (구분)
-            $get_category_array = $this->_getCategoryArray($site_code);
         }
 
         //과목
@@ -312,9 +310,7 @@ class Material extends BaseBoard
         $this->load->view("board/professor/{$this->board_name}/create_Detail", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
-            'site_code' => $site_code,
             'arr_prof_info' => $arr_prof_info,
-            'getCategoryArray' => $get_category_array,
             'arr_subject' => $arr_subject,
             'arr_type_group_ccd' => $arr_type_group_ccd,
             'method' => $method,
@@ -336,7 +332,7 @@ class Material extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
-            ['field' => 'site_category[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
             ['field' => 'type_ccd', 'label' => '자료유형', 'rules' => 'trim|required|integer'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
@@ -504,16 +500,6 @@ class Material extends BaseBoard
     }
 
     /**
-     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
-     * @param array $params
-     */
-    public function getAjaxSiteCategoryInfo($params = [])
-    {
-        $result = $this->_getSiteCategoryInfo($params);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
      * 게시판 BEST 정보 조회
      * @param $column
      * @param $prof_idx
@@ -563,7 +549,7 @@ class Material extends BaseBoard
                 'SettingReadCnt' => element('setting_readCnt', $input),
             ],
             'board_r_category' => [
-                'site_category' => element('site_category', $input)
+                'site_category' => element('cate_code', $input)
             ]
         ];
 

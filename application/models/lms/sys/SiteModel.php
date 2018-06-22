@@ -137,7 +137,7 @@ class SiteModel extends WB_Model
 
         // 쿼리 실행
         $where = $where_temp . $where_campus;
-        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $this->_conn->query('select ' . $column . $from . $where . ' ORDER BY SC.SiteCode ASC, SC.CampusCcd ASC');
         $data = $query->result_array();
         return (empty($site_code) === false) ? array_pluck($data, 'CampusName', 'CampusCcd') : $data;
     }

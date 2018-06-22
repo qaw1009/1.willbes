@@ -19,6 +19,7 @@ class CommonLectureModel extends WB_Model
         'autolecture' => 'lms_Product_R_AutoLecture',
         'sublecture' => 'lms_Product_R_SubLecture',
         'packsale' => 'lms_Product_Pack_SaleInfo',
+        'lecturedate' => 'lms_Product_Lecture_Date',
         'site' => 'lms_site',
         'sys_category' => 'lms_sys_category',
         'product_subject' => 'lms_product_subject',
@@ -866,6 +867,46 @@ class CommonLectureModel extends WB_Model
             return $e->getMessage();
         }
         //return false;
+        return true;
+    }
+
+
+    //수강기간등록 (학원 단과반)
+    public function _setLectureDate($input=[],$prodcode)
+    {
+        try {
+            /*  기존 강좌 연결 정보 상태값 변경 */
+            if($this->_setDataDelete($prodcode,$this->_table['lecturedate'],'수강 기간') !== true) {
+                throw new \Exception('수강기간 수정에 실패했습니다.');
+            }
+
+            $savDay = element('savDay',$input,'');
+
+            if(empty($savDay) === false) {
+                $num = 1;
+                for($i=0;$i<count($savDay);$i++){
+                    if(empty($savDay[$i]) === false) {
+                        $data = [
+                            'ProdCode' => $prodcode
+                            , 'LecNum' => $num
+                            , 'LecTime' => '0'
+                            , 'LecDate' => date('Y-m-d',strtotime($savDay[$i]) )
+                            , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                            , 'RegIp' => $this->input->ip_address()
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['lecturedate']) === false) {
+                            throw new \Exception('수강 기간 등록에 실패했습니다.');
+                        }
+                        $num += 1;
+                        //echo $this->_conn->last_query();
+                    }
+                }
+            }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
         return true;
     }
 

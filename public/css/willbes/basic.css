@@ -180,7 +180,8 @@ html {
 	line-height: normal;
   }
   input[type="checkbox"],
-  input[type="radio"] {
+  input[type="radio"],
+  input[type="file"] {
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 			box-sizing: border-box;
@@ -534,6 +535,9 @@ strong {
 .c_both {
   clear: both
 }
+.strong {
+  font-weight: 600;
+}
 
 .tx-red {
   color: #ed1c24 !important;
@@ -580,6 +584,9 @@ strong {
 }
 .bg-deep-gray {
   background: #707070;
+}
+.bg-heavy-gray {
+  background: #636363;
 }
 .bg-white {
   background: #fff;

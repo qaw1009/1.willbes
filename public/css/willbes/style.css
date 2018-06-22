@@ -2596,8 +2596,128 @@ table.classTable tr td.w-data {
     line-height: 20px !important;
     vertical-align: baseline;
 }
+.LecViewTable .w-txt.answer {
+    height: 200px;
+}
+
+/* subContainer : Content : 강의목차 : LecWriteTable */
+.LecWriteTable .listTable {
+    clear: both;
+}
+.LecWriteTable .listTable tr th,
+.LecWriteTable .listTable tr td {
+    text-align: center;
+    line-height: 40px;
+    letter-spacing: 0;
+}
+.LecWriteTable .listTable thead tr th,
+.LecWriteTable .listTable thead tr td {
+    background: #f9f9fa;
+}
+.LecWriteTable .listTable thead tr td {
+    border-top: 1px solid #edeeef;
+}
+.LecWriteTable .listTable tr th .row-line,
+.LecWriteTable .listTable tr td .row-line {
+    float: right;
+    background: #e4e4e4;
+    width: 1px;
+    height: 11px;
+    margin: 14px 0;
+}
+.LecWriteTable tr td.w-selected select {
+    width: 220px;
+    height: 25px;
+}
+.LecWriteTable tr td.w-selected.full select {
+    width: 760px;
+    height: 25px;
+}
+.LecWriteTable tr td.w-radio ul li {
+    float: left;
+}
+
+.LecWriteTable tr td.w-radio ul li input[type="radio"] {
+    float: left;
+    margin-top: 14px;
+    margin-right: 5px;
+}
+.LecWriteTable tr td.w-radio ul li label {
+    padding-right: 35px;
+}
+.LecWriteTable tr td.w-text input {
+    width: 760px;
+    height: 25px;
+    border: 1px solid #d4d4d4;
+}
+.LecWriteTable tr td.w-textarea {
+    padding: 15px 0;
+}
+.LecWriteTable tr td.w-textarea textarea {
+    width: 760px;
+    height: 230px;
+    border: 1px solid #d4d4d4;
+    resize: none;
+    vertical-align: middle;
+    padding: 20px;
+    line-height: 16px;
+}
+.LecWriteTable tr td.w-file {
+    padding: 15px 30px;
+    line-height: 22px;
+}
+.LecWriteTable ul.attach li .filetype {
+    margin-bottom: 10px;
+}
 
 
+.filetype {
+    clear: both;
+    position: relative;
+    display: inline-block;
+}
+.filetype .file-text {
+    float: left;
+    position: relative;
+    width: 570px;
+    height: 25px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid #d4d4d4;
+    line-height: 25px;
+    z-index: 10;
+}
+.filetype .file-select {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 25px;
+    overflow: hidden;
+}
+.filetype .file-select .input-file {
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+.filetype .file-btn {
+    display: inline-block;
+    width: 90px;
+    height: 100%;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+
+attach
 
 /* subContainer : Content : 수강후기 */
 .willbes-LecreplyList {
@@ -3914,6 +4034,19 @@ ul li.profList .w-notice a {
 .willbes-Lec-Selected .search-Btn {
     margin-top: -10px;
 }
+.willbes-Leclist .search-Btn ul li {
+    float: left;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3929,6 +4062,15 @@ ul li.profList .w-notice a {
 
 
 
+
+
+
+
+
+
+
+
+
 /* Only IE Hack */
 /* IE7, IE8, IE9 */
 #SettingForm .chkBox-Save strong {
@@ -3938,6 +4080,8 @@ ul li.profList .w-notice a {
 @media screen and (-ms-black-contrast:active), (-ms-black-contrast:none) {
     #SettingForm .chkBox-Save strong {letter-spacing: -2px;}
 }
+
+
 
 
 

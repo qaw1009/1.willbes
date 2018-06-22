@@ -648,15 +648,15 @@ strong {
   text-decoration: underline !important;
 }
 .caution-txt {
-  background: url("../../img/front/sub/icon_caution.gif") no-repeat 0 center;
+  background: url("../../img/willbes/sub/icon_caution.gif") no-repeat 0 center;
 }
 .chkBox-Agree {
-  background: url("../../img/front/login/icon_check.png") no-repeat 0 0;
+  background: url("../../img/willbes/login/icon_check.png") no-repeat 0 0;
   width: 22px;
   height: 22px;
 }
 .chkBox-Agree.checked {
-  background: url("../../img/front/login/icon_check.png") no-repeat 0 -44px;
+  background: url("../../img/willbes/login/icon_check.png") no-repeat 0 -44px;
 }
 .chkBox-Agree input[type=checkbox] {
   opacity: 0;

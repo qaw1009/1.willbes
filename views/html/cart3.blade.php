@@ -42,13 +42,13 @@
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
-                    <li><div><img src="/public/img/front/cart/icon_cart1.png"> 장바구니</div></li>
-                    <li><div><img src="/public/img/front/cart/icon_cart2.png"> 결제하기</div></li>
-                    <li class="on"><div><img src="/public/img/front/cart/icon_cart3_on.png"> 결제완료</div></li>
+                    <li><div><img src="{{ img_url('cart/icon_cart1.png') }}"> 장바구니</div></li>
+                    <li><div><img src="{{ img_url('cart/icon_cart2.png') }}"> 결제하기</div></li>
+                    <li class="on"><div><img src="{{ img_url('cart/icon_cart3_on.png') }}"> 결제완료</div></li>
                 </ul>
             </div>
             <div class="willbes-Payment-Fin NG">
-                <img src="/public/img/front/cart/icon_check.gif"> 결제가 성공적으로 완료되었습니다.
+                <img src="{{ img_url('cart/icon_check.gif') }}"> 결제가 성공적으로 완료되었습니다.
             </div>
         </div>
         <!-- willbes-Cartlist -->
@@ -96,7 +96,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_minus_black.gif">
+                            <img src="{{ img_url('sub/icon_minus_black.gif') }}">
                         </dt>
                         <dt>
                             <div>쿠폰할인금액</div>
@@ -104,7 +104,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_minus_black.gif">
+                            <img src="{{ img_url('sub/icon_minus_black.gif') }}">
                         </dt>
                         <dt>
                             <div>포인트 차감금액</div>
@@ -112,7 +112,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_plus.gif">
+                            <img src="{{ img_url('sub/icon_plus.gif') }}">
                         </dt>
                         <dt>
                             <div>배송료</div>
@@ -257,7 +257,7 @@
 
     </div>
     <div class="Quick-Bnr ml20 mt85">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

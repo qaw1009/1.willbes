@@ -38,7 +38,7 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="/public/img/front/sub/icon_home.gif"> 
+        <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌</strong></span>
     </div>
     <div class="Content p_re">
@@ -53,9 +53,9 @@
                     교수님
                 </div>
                 <div class="ProfImg">
-                    <img src="/public/img/front/sample/prof2-1.png">
+                    <img src="{{ img_url('sample/prof2-1.png') }}">
                 </div>
-                <div class="prof-home subBtn NSK"><a href="#none"><img src="/public/img/front/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
+                <div class="prof-home subBtn NSK"><a href="#none"><img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
             </div>
             <div class="lec-profile p_re">
                 <div class="w-list">문제풀이 / 국어</div>
@@ -310,7 +310,7 @@
             <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
             <div class="bookInfo">
                 <div class="bookImg">
-                    <img src="/public/img/front/sample/book.jpg">
+                    <img src="{{ img_url('sample/book.jpg') }}">
                 </div>
                 <div class="bookDetail">
                     <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
@@ -397,7 +397,7 @@
                                 <span class="w-sp NG"><a href="#none">OT</a></span>
                             </td>
                             <td class="w-file">
-                                <a href="#none"><img src="/public/img/front/sub/icon_file.gif"></a>
+                                <a href="#none"><img src="{{ img_url('sub/icon_file.gif') }}"></a>
                             </td>
                             <td class="w-time">50분</td>
                         </tr>
@@ -457,7 +457,7 @@
                             <li class="w-date tx-center">2018-03-24</li>
                         </ul>
                         <ul>
-                            <li class="w-star"><img src="/public/img/front/sub/star4.gif"></li>
+                            <li class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></li>
                             <li class="w-subtit">강의 잘 들었습니다.</li>
                         </ul>
                     </div>
@@ -475,7 +475,7 @@
                             <li class="w-date tx-center">2018-03-24</li>
                         </ul>
                         <ul>
-                            <li class="w-star"><img src="/public/img/front/sub/star5.gif"></li>
+                            <li class="w-star"><img src="{{ img_url('sub/star5.gif') }}"></li>
                             <li class="w-subtit">역시 신광은교수님 강의 재미있게 잘 들었습니다.</li>
                         </ul>
                     </div>
@@ -537,7 +537,7 @@
 
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

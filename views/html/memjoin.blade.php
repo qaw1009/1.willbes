@@ -5,7 +5,7 @@
 <div id="Container" class="memContainer widthAuto c_both">
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">로그인</span>
     </div>
 
@@ -64,7 +64,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">휴면회원 안내</span>
     </div>
     <!-- 휴면회원 안내 -->
@@ -257,7 +257,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">비밀번호 재설정</span>
     </div>
     <!-- 비밀번호 재설정 -->

@@ -38,7 +38,7 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="/public/img/front/sub/icon_home.gif"> 
+        <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth"><span class="depth-Arrow">></span><strong>패키지</strong></span>
         <span class="2depth"><span class="depth-Arrow">></span><strong>선택패키지</strong></span>
     </div>
@@ -95,7 +95,7 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            <img src="/public/img/front/sample/bnr4.jpg">
+            <img src="{{ img_url('sample/bnr4.jpg') }}">
         </div>
         <!-- willbes-Bnr -->
 
@@ -183,7 +183,7 @@
 
         <div id="InfoForm" class="willbes-Layer-Box d2">
             <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
-                <img src="/public/img/front/sub/close.png">
+                <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">
                 2018 최진우 독한국사 이론강의 (7-8월)[이론/끝장전/주간스포트라이트] 독구다 패키지
@@ -242,7 +242,7 @@
 
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

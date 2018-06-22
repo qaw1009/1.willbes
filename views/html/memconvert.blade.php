@@ -5,7 +5,7 @@
 <div id="Container" class="memContainer widthAuto c_both">
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합 서비스 안내</span>
     </div>
     <!-- 통합 서비스 안내 -->
@@ -22,7 +22,7 @@
             하나의 ID로 윌비스의 전체 서비시를 이용하실 수 있습니다.
         </div>
         <div class="convert-chkBox mt30">
-            <img src="/public/img/front/login/willbes_convert_user.jpg">
+            <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
             <div class="chkBox-Save mt30 mb30">
                 <input type="checkbox" id="USER_ID_SAVE" name="USER_ID_SAVE" class="iptSave">
                 <label for="USER_ID_SAVE" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
@@ -46,7 +46,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환</span>
     </div>
     <!-- 통합회원 전환 : 휴대폰 인증 -->
@@ -100,7 +100,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환</span>
     </div>
     <!-- 통합회원 전환 : E-mail 인증 -->
@@ -164,7 +164,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환</span>
     </div>
     <!-- 통합회원 전환 : 아이핀 인증 -->
@@ -218,7 +218,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환</span>
     </div>
     <!-- 통합회원 전환 : 약관동의/정보입력 : 미전환/미중복 -->
@@ -342,7 +342,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환이 완료되었습니다!</span>
     </div>
     <!-- 통합회원 전환 : 약관동의/정보입력 : 전환완료 -->
@@ -391,7 +391,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환</span>
     </div>
     <!-- 통합회원 전환 : 통합 미전환 중복 -->
@@ -537,7 +537,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : 기가입자 -->

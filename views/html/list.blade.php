@@ -38,7 +38,7 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="/public/img/front/sub/icon_home.gif"> 
+        <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌</strong></span>
     </div>
     <div class="Content p_re">
@@ -168,7 +168,7 @@
                                 </span>
                             </td>
                             <td class="All-Clear">
-                                <a href="#none"><img src="/public/img/front/sub/icon_clear.gif" style="margin: -2px 6px 0 0">전체해제</a>
+                                <a href="#none"><img src="{{ img_url('sub/icon_clear.gif') }}" style="margin: -2px 6px 0 0">전체해제</a>
                             </td>
                         </tr>
                     </tbody>
@@ -178,7 +178,7 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            <img src="/public/img/front/sample/bnr1.jpg">
+            <img src="{{ img_url('sample/bnr1.jpg') }}">
         </div>
         <!-- willbes-Bnr -->
 
@@ -200,7 +200,7 @@
 
             <div class="willbes-Lec-Profdata tx-dark-black">
                 <ul>
-                    <li class="ProfImg"><img src="/public/img/front/sample/prof1.png"> </li>
+                    <li class="ProfImg"><img src="{{ img_url('sample/prof1.png') }}"></li>
                     <li class="ProfDetail">
                         <div class="Obj">
                             공무원 국어종결자<br/>정채영 국어
@@ -426,7 +426,7 @@
         <div class="willbes-Lec NG c_both">
             <div class="willbes-Lec-Profdata tx-dark-black">
                 <ul>
-                    <li class="ProfImg"><img src="/public/img/front/sample/prof2.png"> </li>
+                    <li class="ProfImg"><img src="{{ img_url('sample/prof2.png') }}"></li>
                     <li class="ProfDetail">
                         <div class="Obj">
                             국어강의의 뉴 패러다임!<br/>듣기만 해도 암기되는 강의
@@ -604,7 +604,7 @@
 
         <div id="InfoForm" class="willbes-Layer-Box">
             <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
-                <img src="/public/img/front/sub/close.png">
+                <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">
                 2018 기미진 국어 아침 실전 동형모의고사 특강[국가직 ~서울시] (3-6월)
@@ -667,7 +667,7 @@
                     <div id="ch2" class="tabLink">
                         <div class="bookInfo">
                             <div class="bookImg">
-                                <img src="/public/img/front/sample/book.jpg">
+                                <img src="{{ img_url('sample/book.jpg') }}">
                             </div>
                             <div class="bookDetail">
                                 <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
@@ -725,7 +725,7 @@
 
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

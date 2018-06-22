@@ -38,7 +38,7 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="/public/img/front/sub/icon_home.gif"> 
+        <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth"><span class="depth-Arrow">></span><strong>패키지</strong></span>
         <span class="2depth"><span class="depth-Arrow">></span><strong>추천패키지</strong></span>
     </div>
@@ -84,7 +84,7 @@
                     <span class="tx-light-blue">140,000원</span>
                 </span>
                 <span class="price-img">
-                    <img src="/public/img/front/sub/icon_plus.gif">
+                    <img src="{{ img_url('sub/icon_plus.gif') }}">
                 </span>
                 <span>
                     <span class="price-txt">교재</span>
@@ -157,7 +157,7 @@
                     <tbody>
                         <tr>
                             <td class="w-list">국어</td>
-                            <td class="w-img"><img src="/public/img/front/sample/prof3.jpg"></td>
+                            <td class="w-img"><img src="{{ img_url('sample/prof3.jpg') }}"></td>
                             <td class="w-data tx-left pl25">
                                 <dl class="w-info">
                                     <dt class="w-name">이현나</dt>
@@ -252,7 +252,7 @@
                     <tbody>
                         <tr>
                             <td class="w-list">국어</td>
-                            <td class="w-img"><img src="/public/img/front/sample/prof3.jpg"></td>
+                            <td class="w-img"><img src="{{ img_url('sample/prof3.jpg') }}"></td>
                             <td class="w-data tx-left pl25">
                                 <dl class="w-info">
                                     <dt class="w-name">이현나</dt>
@@ -351,7 +351,7 @@
 
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

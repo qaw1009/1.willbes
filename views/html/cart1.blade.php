@@ -41,9 +41,9 @@
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
-                    <li class="on"><div><img src="/public/img/front/cart/icon_cart1_on.png"> 장바구니</div></li>
-                    <li><div><img src="/public/img/front/cart/icon_cart2.png"> 결제하기</div></li>
-                    <li><div><img src="/public/img/front/cart/icon_cart3.png"> 결제완료</div></li>
+                    <li class="on"><div><img src="{{ img_url('cart/icon_cart1_on.png') }}"> 장바구니</div></li>
+                    <li><div><img src="{{ img_url('cart/icon_cart2.png') }}"> 결제하기</div></li>
+                    <li><div><img src="{{ img_url('cart/icon_cart3.png') }}"> 결제완료</div></li>
                 </ul>
             </div>
             <div class="LeclistTable">
@@ -73,11 +73,11 @@
                                 <a href="#none" onclick="openWin('List')">
                                     <span class="pBox p1">강좌</span>
                                     2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                                    <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="/public/img/front/sub/icon_detail.gif">
+                                    <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="/public/img/front/sub/icon_detail.gif') }}">
                                 </a>
                                 <div id="List" class="willbes-Layer-Box-sm">
                                     <a class="closeBtn" href="#none" onclick="closeWin('List')">
-                                        <img src="/public/img/front/gnb/close.png">
+                                        <img src="{{ img_url('gnb/close.png') }}">
                                     </a>
                                     <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
                                         <colgroup>
@@ -182,7 +182,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_plus.gif">
+                            <img src="{{ img_url('sub/icon_plus.gif') }}">
                         </dt>
                         <dt>
                             <div>
@@ -193,7 +193,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_plus.gif">
+                            <img src="{{ img_url('sub/icon_plus.gif') }}">
                         </dt>
                         <dt>
                             <div>
@@ -240,7 +240,7 @@
 
     </div>
     <div class="Quick-Bnr ml20 mt85">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

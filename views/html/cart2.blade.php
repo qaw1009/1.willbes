@@ -42,9 +42,9 @@
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
-                    <li><div><img src="/public/img/front/cart/icon_cart1.png"> 장바구니</div></li>
-                    <li class="on"><div><img src="/public/img/front/cart/icon_cart2_on.png"> 결제하기</div></li>
-                    <li><div><img src="/public/img/front/cart/icon_cart3.png"> 결제완료</div></li>
+                    <li><div><img src="{{ img_url('cart/icon_cart1.png') }}"> 장바구니</div></li>
+                    <li class="on"><div><img src="{{ img_url('cart/icon_cart2_on.png') }}"> 결제하기</div></li>
+                    <li><div><img src="{{ img_url('cart/icon_cart3.png') }}"> 결제완료</div></li>
                 </ul>
             </div>
             <div class="willbes-Cart-Txt p_re pt30">
@@ -83,10 +83,10 @@
                                         <span class="w-data">
                                             [강좌시작일 설정] 
                                             <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
-                                            <img src="/public/img/front/cart/icon_calendar.gif"> ~
+                                            <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
                                             <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                                         </span>
-                                        <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="/public/img/front/cart/close.png"></a></span>
+                                        <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
                                     </dt>
                                 </dl>
                             </td>
@@ -109,7 +109,7 @@
                                         <span class="w-data">
                                             [강좌시작일 설정] 
                                             <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
-                                            <img src="/public/img/front/cart/icon_calendar.gif"> ~
+                                            <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
                                             <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                                         </span>
                                     </dt>
@@ -148,7 +148,7 @@
                                         <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
                                     </dt>
                                     <dt>
-                                        <span class="w-coupon">10% 할인쿠폰 (<span class="tx-blue">10% 할인</span>) <a href="#none"><img src="/public/img/front/cart/close.png"></a></span>
+                                        <span class="w-coupon">10% 할인쿠폰 (<span class="tx-blue">10% 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
                                     </dt>
                                 </dl>
                             </td>
@@ -205,7 +205,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_minus_black.gif">
+                            <img src="{{ img_url('sub/icon_minus_black.gif') }}">
                         </dt>
                         <dt>
                             <div>쿠폰할인금액</div>
@@ -213,7 +213,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_minus_black.gif">
+                            <img src="{{ img_url('sub/icon_minus_black.gif') }}">
                         </dt>
                         <dt>
                             <div>포인트 차감금액</div>
@@ -221,7 +221,7 @@
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
-                            <img src="/public/img/front/sub/icon_plus.gif">
+                            <img src="{{ img_url('sub/icon_plus.gif') }}">
                         </dt>
                         <dt>
                             <div>배송료</div>
@@ -522,7 +522,7 @@
         <div id="Coupon"class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('Coupon')">
-                    <img src="/public/img/front/cart/close_cart.png">
+                    <img src="{{ img_url('cart/close_cart.png') }}">
                 </a>
                 <div class="Layer-Tit NG bg-blue">쿠폰적용</div>
                 <div class="Layer-Cont">
@@ -537,7 +537,7 @@
                             </li>
                             <li class="price-img">
                                 <span class="row-line">|</span>
-                                <img src="/public/img/front/sub/icon_minus_black.gif">
+                                <img src="{{ img_url('sub/icon_minus_black.gif') }}">
                             </li>
                             <li>
                                 <div>쿠폰할인금액</div>
@@ -545,7 +545,7 @@
                             </li>
                             <li class="price-img">
                                 <span class="row-line">|</span>
-                                <img src="/public/img/front/sub/icon_equal.gif">
+                                <img src="{{ img_url('sub/icon_equal.gif') }}">
                             </li>
                             <li>
                                 <div>할인적용금액</div>
@@ -658,7 +658,7 @@
         <div id="MyAddress"class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('MyAddress')">
-                    <img src="/public/img/front/cart/close_cart.png">
+                    <img src="{{ img_url('cart/close_cart.png') }}">
                 </a>
                 <div class="Layer-Tit NG bg-blue">나의 배송 주소록</div>
                 <div id="AddList" class="Layer-Cont p_re">
@@ -809,7 +809,7 @@
 
     </div>
     <div class="Quick-Bnr ml20 mt85">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

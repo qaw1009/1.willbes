@@ -38,7 +38,7 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="/public/img/front/sub/icon_home.gif"> 
+        <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth">
             <span class="depth-Arrow">></span><strong>교수진소개</strong>
             <span class="depth-Arrow">></span><strong>국어</strong>
@@ -100,25 +100,25 @@
 
         <div class="willbes-Prof-Profile mb40 NG tx-black">
             <div class="ProfImg p_re">
-                <img src="/public/img/front/sample/prof5.png">
+                <img src="{{ img_url('sample/prof5.png') }}">
             </div>
             <div class="prof-profile p_re">
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none">
-                            <img src="/public/img/front/prof/icon_profile.png">
+                            <img src="{{ img_url('prof/icon_profile.png') }}">
                             <div class="NSK">프로필</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none">
-                            <img src="/public/img/front/prof/icon_sample.png">
+                            <img src="{{ img_url('prof/icon_sample.png') }}">
                             <div class="NSK">맛보기</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none">
-                            <img src="/public/img/front/prof/icon_curri.png">
+                            <img src="{{ img_url('prof/icon_curri.png') }}">
                             <div class="NSK">커리큘럼</div>
                         </a>
                     </li>
@@ -132,7 +132,7 @@
                     <div class="best-tit">이 시기 BEST 강좌</div>
                     <div class="sliderControls">
                         <div class="lec-profile p_re">
-                            <div class="w-tit">2018 기미진 국어 아침 실전 동형모의고사 특강 [국가직] <img src="/public/img/front/prof/icon_ing.gif"></div>
+                            <div class="w-tit">2018 기미진 국어 아침 실전 동형모의고사 특강 [국가직] <img src="{{ img_url('prof/icon_ing.gif') }}"></div>
                             <dl class="w-info">
                                 <dt><span class="tx-blue">30</span>일</dt>
                                 <dt><span class="row-line">|</span></dt>
@@ -171,7 +171,7 @@
 
         <div class="willbes-NoticeWrap mb15 c_both">
             <div class="willbes-listTable willbes-newLec widthAuto460 mr20">
-                <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="/public/img/front/prof/icon_new.gif"></div>
+                <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="/public/img/front/prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
                     <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a></li>
                     <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을...</a></li>
@@ -180,29 +180,29 @@
             <div class="willbes-listTable willbes-reply widthAuto460">
                 <div class="will-Tit NG">수강후기</div>
                 <ul class="List-Table GM tx-gray">
-                    <li><img src="/public/img/front/sub/star4.gif"><a href="#none">설명도 잘 해주시고 좋은 강의에요</a></li>
-                    <li><img src="/public/img/front/sub/star5.gif"><a href="#none">짱 좋아요!</a></li>
+                    <li><img src="{{ img_url('sub/star4.gif') }}"><a href="#none">설명도 잘 해주시고 좋은 강의에요</a></li>
+                    <li><img src="{{ img_url('sub/star5.gif') }}"><a href="#none">짱 좋아요!</a></li>
                 </ul>
             </div>
         </div>
         <!-- willbes-NoticeWrap -->
 
         <div class="willbes-Bnr mb15">
-            <img src="/public/img/front/sample/bnr5.jpg">
+            <img src="{{ img_url('sample/bnr5.jpg') }}">
         </div>
         <!-- willbes-Bnr -->
 
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
                 <ul class="tabWrap tabDepthProf">
-                    <li><a href="#Proftab1" class="on">개설강좌</a></li>
+                    <li><a href="#Proftab3" class="on">개설강좌</a></li>
                     <li><a href="#Proftab2">공지사항</a></li>
-                    <li><a href="#Proftab3">학습Q&A</a></li>
+                    <li><a href="#Proftab1">학습Q&A</a></li>
                     <li><a href="#Proftab4">학습자료실</a></li>
                     <li><a href="#Proftab5">무료강좌</a></li>
                 </ul>
                 <div class="tabBox">
-                    <div id="Proftab2" class="tabLink">
+                    <div id="Proftab1" class="tabLink">
                         <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">· 개설강좌</div>
                         <div class="acadBoxWrap">
                             <ul class="tabWrap tabDepthAcad">
@@ -235,7 +235,7 @@
 
                                             <div class="willbes-Lec-Profdata tx-dark-black">
                                                 <ul>
-                                                    <li class="ProfImg"><img src="/public/img/front/sample/prof1.png"> </li>
+                                                    <li class="ProfImg"><img src="{{ img_url('sample/prof1.png') }}"> </li>
                                                     <li class="ProfDetail">
                                                         <div class="Obj">
                                                             공무원 국어종결자<br/>정채영 국어
@@ -525,7 +525,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="Proftab1" class="tabLink">
+                    <div id="Proftab2" class="tabLink">
                         <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">
                             · 공지사항
                             <div class="willbes-Lec-Search GM f_right">
@@ -578,23 +578,23 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="w-no"><img src="/public/img/front/prof/icon_HOT.gif"></td>
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">헌법</td>
                                             <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
                                             <td class="w-file">
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"></a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
                                         </tr>
                                         <tr>
-                                            <td class="w-no"><img src="/public/img/front/prof/icon_HOT.gif"></td>
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
                                             <td class="w-file">
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"></a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">244</td>
@@ -684,10 +684,7 @@
                                         <col style="width: 150px;">
                                     </colgroup>
                                     <thead>
-                                        <tr>
-                                            <th class="tx-left pl20"><img src="/public/img/front/prof/icon_HOT.gif"></th>
-                                            <th colspan="3" class="w-list tx-left"><strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th>
-                                        </tr>
+                                        <tr><th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th></tr>
                                         <tr>
                                             <td class="w-acad pl20"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec tx-left pl20">헌법<span class="row-line">|</span></td>
@@ -698,8 +695,8 @@
                                     <tbody>
                                         <tr>
                                             <td class="w-file tx-left pl20" colspan="4">
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"> 파일1이 노출됩니다.docx</a>
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"> 파일2가 노출됩니다.docx</a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -752,6 +749,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- List -->
                         <div class="willbes-Leclist c_both">
                             <div class="willbes-Lec-Selected tx-gray">
                                 <select id="lec" name="lec" title="lec" class="seleLec">
@@ -806,7 +804,7 @@
                                     </thead>
                                     <tbody>
                                         <tr class="top">
-                                            <td class="w-no"><img src="/public/img/front/prof/icon_notice.gif"></td>
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-question">기타</td>
                                             <td class="w-list tx-left pl20">[주의] 이럴 경우 답변되지 않을수 있습니다.</td>
@@ -815,7 +813,7 @@
                                             <td class="w-answer">&nbsp;</td>
                                         </tr>
                                         <tr class="top">
-                                            <td class="w-no"><img src="/public/img/front/prof/icon_notice.gif"></td>
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-question">강좌내용</td>
                                             <td class="w-list tx-left pl20">[필독] 가장자주묻는질문7가지</td>
@@ -828,7 +826,7 @@
                                             <td class="w-lec">공직선거법</td>
                                             <td class="w-question">학습상담</td>
                                             <td class="w-list tx-left pl20">
-                                                <img src="/public/img/front/prof/icon_locked.gif"> 안녕하세요?
+                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
                                             </td>
                                             <td class="w-write">장동*</td>
                                             <td class="w-date">2018-00-00</td>
@@ -839,9 +837,9 @@
                                             <td class="w-lec">행정법</td>
                                             <td class="w-question">기타</td>
                                             <td class="w-list tx-left pl20">
-                                                <img src="/public/img/front/prof/icon_locked.gif"> 만띄어쓰기질문이요 
-                                                <img src="/public/img/front/prof/icon_N.gif"> 
-                                                <img src="/public/img/front/prof/icon_file.gif">
+                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 만띄어쓰기질문이요 
+                                                <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                                <img src="{{ img_url('prof/icon_file.gif') }}">
                                                 <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
                                             </td>
                                             <td class="w-write">박형*</td>
@@ -853,7 +851,7 @@
                                             <td class="w-lec">공통</td>
                                             <td class="w-question">강좌내용</td>
                                             <td class="w-list tx-left pl20">
-                                                <img src="/public/img/front/prof/icon_locked.gif"> 안녕하세요?
+                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
                                             </td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
@@ -898,6 +896,72 @@
                                         <tr>
                                             <td class="w-list tx-center" colspan="7">검색 결과가 없습니다.</td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- willbes-Leclist -->
+
+                        <br/><br/><br/>
+
+                        <!-- View -->
+                        <div class="willbes-Leclist c_both">
+                            <div class="LecViewTable">
+                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 65px;">
+                                        <col style="width: 575px;">
+                                        <col style="width: 150px;">
+                                        <col style="width: 150px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr><th colspan="4" class="w-list tx-left  pl20"><strong>안녕하세요. 커리질문입니다~</strong></th></tr>
+                                        <tr>
+                                            <td class="w-acad pl20"><span class="oBox onlineBox NSK">온라인</span></td>
+                                            <td class="w-lec tx-left pl20">헌법<span class="row-line">|</span></td>
+                                            <td class="w-date">2018-00-00<span class="row-line">|</span></td>
+                                            <td class="w-click"><strong>조회수</strong> 123</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-file tx-left pl20" colspan="4">
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-txt tx-left" colspan="7">
+                                                기승전결문제에서가부분이인믈과배경제시나,<br/>
+                                                다부분이주인공이동라,마부분이문제발샹및해결바부분이<br/>
+                                                후일담여기까지는이해가되는데선택지4번이왜정답인지모르겠어요.....<br/>
+                                                4번답이가ㅡ나, 다ㅡ라,마ㅡ바입니다ㅠㅠ
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
+                                    <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                        <span>전체목록</span>
+                                    </button>
+                                </div>
+                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 150px;">
+                                        <col style="width: 640px;">
+                                        <col style="width: 150px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
+                                            <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a><span class="row-line">|</span></td>
+                                            <td class="w-date">2018-00-00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-next bg-light-gray"><strong>다음글</strong></td>
+                                            <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a><span class="row-line">|</span></td>
+                                            <td class="w-date">2018-00-00</td>
+                                        </tr> 
                                     </tbody>
                                 </table>
                             </div>
@@ -967,7 +1031,7 @@
                                     </thead>
                                     <tbody>
                                         <tr class="top">
-                                            <td class="w-no"><img src="/public/img/front/prof/icon_notice.gif"></td>
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-type"><div class="pBox p1 NSK">강좌</div></td>
@@ -977,7 +1041,7 @@
                                             <td class="w-click">123</td>
                                         </tr>
                                         <tr class="top">
-                                            <td class="w-no"><img src="/public/img/front/prof/icon_notice.gif"></td>
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-type"><div class="pBox p2 NSK">패키지</div></td>
@@ -996,7 +1060,7 @@
                                                 <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
                                             </td>
                                             <td class="w-file">
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"></a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1008,7 +1072,7 @@
                                             <td class="w-type"><div class="pBox p3 NSK">교재</div></td>
                                             <td class="w-list tx-left pl20">[주의] 이럴 경우 답변되지 않을수 있습니다.</td>
                                             <td class="w-file">
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"></a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1040,7 +1104,7 @@
                                             <td class="w-type"><div class="pBox p3 NSK">교재</div></td>
                                             <td class="w-list tx-left pl20">2018 필살기실전모의고사파본관련공지</td>
                                             <td class="w-file">
-                                                <a href="#none"><img src="/public/img/front/prof/icon_file.gif"></a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>

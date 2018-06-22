@@ -5,7 +5,7 @@
 <div id="Container" class="memContainer widthAuto c_both">
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : 휴대폰 인증 -->
@@ -21,7 +21,7 @@
             <li><a href="#none">아이핀 인증</a></li>
         </ul>
         <ul class="tabs-Certi tx-center mb20">
-            <img src="/public/img/front/login/icon_phone_on_sm.gif">
+            <img src="{{ img_url('login/icon_phone_on_sm.gif') }}">
         </ul>
         <div class="search-Btn btnAuto120 h36">
             <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
@@ -39,7 +39,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : E-mail 인증 -->
@@ -56,7 +56,7 @@
         </ul>
         <div class="widthAuto560">
             <div class="inputBox combineBox">
-                <img src="/public/img/front/login/icon_email_on_sm.gif">
+                <img src="{{ img_url('login/icon_email_on_sm.gif') }}">
                 <div class="inputBox-Wrap p_re">
                     <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
                     <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
@@ -85,7 +85,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : 아이핀 인증 -->
@@ -101,7 +101,7 @@
             <li class="on"><a href="#none">아이핀 인증</a></li>
         </ul>
         <ul class="tabs-Certi tx-center mb20">
-            <img src="/public/img/front/login/icon_ipin_on_sm.gif">
+            <img src="{{ img_url('login/icon_ipin_on_sm.gif') }}">
         </ul>
         <div class="search-Btn btnAuto120 h36">
             <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
@@ -119,7 +119,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : 약관동의/정보입력 -->
@@ -338,7 +338,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : 회원가입완료 -->
@@ -352,7 +352,7 @@
             <span class="tx-blue">홍길동</span>님, <strong>윌비스 통합 회원 가입을 환영합니다.</strong></br>
             <span class="tx-blue">아이디 willbes</span>로 모든 윌비스 서비스를 이용하실 수 있습니다.
         </div>
-        <img class="mt70" src="/public/img/front/login/willbes_welcome.jpg">
+        <img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}">
         <div class="info-Txt info-Txt-Wrap tx-black bg-none mt60">
             <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
             <select id="site" name="site" title="선택안함" class="seleSite">
@@ -373,7 +373,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원가입</span>
     </div>
     <!-- 통합회원가입 : 기가입자 -->

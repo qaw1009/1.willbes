@@ -134,22 +134,22 @@
     height:140px;
 }
 .Member .tabs-Certi li#tab1 a {
-    background: url("../../img/front/login/icon_phone.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_phone.gif") no-repeat 0 0;
 }
 .Member .tabs-Certi li#tab1.on a {
-    background: url("../../img/front/login/icon_phone_on.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_phone_on.gif") no-repeat 0 0;
 }
 .Member .tabs-Certi li#tab2 a {
-    background: url("../../img/front/login/icon_email.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_email.gif") no-repeat 0 0;
 }
 .Member .tabs-Certi li#tab2.on a {
-    background: url("../../img/front/login/icon_email_on.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_email_on.gif") no-repeat 0 0;
 }
 .Member .tabs-Certi li#tab3 a {
-    background: url("../../img/front/login/icon_ipin.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_ipin.gif") no-repeat 0 0;
 }
 .Member .tabs-Certi li#tab3.on a {
-    background: url("../../img/front/login/icon_ipin_on.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_ipin_on.gif") no-repeat 0 0;
 }
 .Member .tabs-Certi img {
     margin-top: 20px;
@@ -236,7 +236,7 @@ table.joinTable tr td a {
 .mem-Password .user-Txt {
     position: relative; 
     left: 50%;
-    background: url("../../img/front/login/icon_lock.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_lock.gif") no-repeat 0 0;
     width: 486px;
     line-height: 35px;
     padding-left: 70px;
@@ -260,7 +260,7 @@ table.joinTable tr td a {
 .mem-Wrong .user-Txt {
     position: relative; 
     left: 50%;
-    background: url("../../img/front/login/icon_wrong.gif") no-repeat 0 10px;
+    background: url("../../img/willbes/login/icon_wrong.gif") no-repeat 0 10px;
     width: 380px;
     line-height: 35px;
     padding-left: 70px;
@@ -275,7 +275,7 @@ table.joinTable tr td a {
 .mem-Password .user-Txt {
     position: relative; 
     left: 50%;
-    background: url("../../img/front/login/icon_lock.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_lock.gif") no-repeat 0 0;
     width: 486px;
     height: 63px;
     line-height: 35px;
@@ -318,7 +318,7 @@ table.joinTable tr td a {
 .mem-Expired .user-Txt {
     position: relative; 
     left: 50%;
-    background: url("../../img/front/login/icon_wrong.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_wrong.gif") no-repeat 0 0;
     width: 300px;
     line-height: 49px;
     padding-left: 70px;
@@ -335,7 +335,7 @@ table.joinTable tr td a {
 .mem-Expired .info-Txt .info-Txt-box {
     position: relative;
     left: 50%;
-    background: url("../../img/front/login/icon_expired.gif") no-repeat 0 0;
+    background: url("../../img/willbes/login/icon_expired.gif") no-repeat 0 0;
     width: 500px;
     font-size: 15px;
     padding-left: 190px;
@@ -582,10 +582,10 @@ table.combineTable .addbox2 {
     border-top: 1px solid #e2e2e2;
 }
 .agree-user-Chk .agree-Confirm.ok {
-    background: url("../../img/front/login/icon_check_confirm.png") no-repeat 653px 15px;
+    background: url("../../img/willbes/login/icon_check_confirm.png") no-repeat 653px 15px;
 }
 .agree-user-Chk .agree-Confirm.no {
-    background: url("../../img/front/login/icon_check_confirm.png") no-repeat 653px -29px;
+    background: url("../../img/willbes/login/icon_check_confirm.png") no-repeat 653px -29px;
 }
 .agree-user-Chk ul li.agree-User {
     line-height: inherit;
@@ -640,13 +640,13 @@ table.auTable tr td {
     padding-top: 5px;
 }
 #Gnb .toggle-Btn .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -39px 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -39px 0;
     width: 6px;
     height: 11px;
     margin-top: 5px;
 }
 #Gnb .toggle-Btn.gnb-Close .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -30px 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -30px 0;
 }
 #Gnb h1 {
     font-size: 20px;
@@ -674,7 +674,7 @@ table.auTable tr td {
     color: #000;
 }
 #Gnb h4 ul li.Acad a.willbes-Acad-Tit {
-    background: url("../../img/front/gnb/icon_acad.gif") no-repeat 0 2px;
+    background: url("../../img/willbes/gnb/icon_acad.gif") no-repeat 0 2px;
     padding-left: 22px;
 }
 #Gnb h4 ul li.Acad  {
@@ -760,14 +760,14 @@ table.auTable tr td {
     width: 150px;
 }
 .Gnb-md .gnb-List .gnb-List-Tit a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -20px 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
     float: right;
     width: 9px;
     height: 6px;
     margin: 17px 10px 17px 0;
 }
 .Gnb-md .gnb-List .gnb-List-Tit.active a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -20px -12px;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
 }
 .Gnb-md .gnb-List {
     border-top: 1px solid #ececec;
@@ -862,13 +862,13 @@ table.auTable tr td {
     margin: 0 15px 0 20px;
 }
 #Header ul.myLog li.joinUs a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat 0 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat 0 0;
     width: 9px;
     height: 8px;
     margin-left: 7px;
 }
 #Header ul.myLog li.joinUs.active a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat 0 -12px;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat 0 -12px;
 }
 #Header ul.myLog li.myCart a {
     border: 1px solid #999;
@@ -883,7 +883,7 @@ table.auTable tr td {
     display: inline-block;
 }
 #Header ul.myLog li.myPage a.Tit .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -10px 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -10px 0;
     width: 9px;
     height: 8px;
     margin-left: 7px;
@@ -892,7 +892,7 @@ table.auTable tr td {
     margin-left: 25px;
 }
 #Header ul.myLog li.csCenter a {
-    background: url("../../img/front/gnb/icon_cs.gif") no-repeat 0 0;
+    background: url("../../img/willbes/gnb/icon_cs.gif") no-repeat 0 0;
     padding-left: 25px;
 }
 
@@ -1177,7 +1177,7 @@ table.auTable tr td {
     margin-left: 14px;
 }
 #Footer address {
-    background: url("../../img/front/gnb/logo_footer.gif") no-repeat 0 55px;
+    background: url("../../img/willbes/gnb/logo_footer.gif") no-repeat 0 55px;
     line-height: 18px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -1384,13 +1384,13 @@ table.auTable tr td {
     color: #363636;
 }
 .Menu .menu-List li.Acad a {
-    background: url("../../img/front/sub/icon_acad.gif") no-repeat 0 0;
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
     font-size: 14px;
     color: #2784d2;
     padding-left: 30px; 
 }
 .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/front/sub/icon_arrow.gif") no-repeat 0 0;
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
     float: right;
     width: 4px;
     height: 8px;
@@ -1425,14 +1425,14 @@ table.auTable tr td {
     text-align: center;
 }
 .Lnb .lnb-List .lnb-List-Tit a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -20px -12px;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
     float: right;
     width: 9px;
     height: 6px;
     margin: 21px 10px 21px 0;
 }
 .Lnb .lnb-List .lnb-List-Tit.hover a .arrow-Btn {
-    background: url("../../img/front/gnb/icon_arrow.gif") no-repeat -20px 0;
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
 }
 .Lnb .lnb-List .lnb-List-Tit a {
     display: block;
@@ -1703,7 +1703,7 @@ table.auTable tr td {
     margin-top: 10px;
 }
 .willbes-Lec-Profdata .Reply {
-    background: url("../../img/front/sub/icon_reply.gif") no-repeat 0 7px;
+    background: url("../../img/willbes/sub/icon_reply.gif") no-repeat 0 7px;
     margin-top: 70px;
     width: 480px;
     height: 25px;
@@ -1810,7 +1810,7 @@ table.auTable tr td {
     line-height: 18px;
 }
 .TopBtn a .arrow-Btn {
-    background: url("../../img/front/sub/icon_arrow.gif") no-repeat -5px -1px;
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat -5px -1px;
     width: 8px;
     height: 6px;
 }
@@ -1861,7 +1861,7 @@ table.auTable tr td {
     background: #333
 }
 .w-info dt strong {
-    background: url("../../img/front/sub/icon_detail.gif") no-repeat 0 10px;
+    background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 10px;
     height: 30px;
     padding-left: 18px;
     display: inline-block;
@@ -2091,7 +2091,7 @@ table.lecTable tr td .MoreBtn {
     color: #464646;
 }
 .lecInfoTable .w-sub strong {
-    background: url("../../img/front/sub/icon_detail.gif") no-repeat 0 8px;
+    background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 8px;
     height: 30px;
     padding-left: 18px;
     display: inline-block;
@@ -2855,7 +2855,7 @@ table.classTable tr td.w-data {
     border-bottom: 6px solid #ececec;
 }
 .willbes-Cartlist .tabs-Step li.on {
-    background: url("../../img/front/cart/icon_cart_on.png") no-repeat center 75px;
+    background: url("../../img/willbes/cart/icon_cart_on.png") no-repeat center 75px;
     color: #323232;
 }
 .willbes-Cartlist .tabs-Step li.on div {
@@ -3419,10 +3419,10 @@ table.finTable tr td {
     overflow: hidden;
 }
 .sliderPromotion .bx-wrapper .bx-prev {
-    background: url("../../img/front/prof/btn_prev.png") no-repeat 0 0;
+    background: url("../../img/willbes/prof/btn_prev.png") no-repeat 0 0;
 }
 .sliderPromotion .bx-wrapper .bx-next {
-    background: url("../../img/front/prof/btn_next.png") no-repeat 0 0;
+    background: url("../../img/willbes/prof/btn_next.png") no-repeat 0 0;
     left: 20px;
 }
 .sliderPromotion .bx-wrapper .bx-controls-direction {
@@ -3602,7 +3602,7 @@ ul li.profList .w-notice a {
 
 /* subContainer : Prof : willbes-Prof-Profile */
 .willbes-Prof-Profile {
-    background: #e5e5e5 url("../../img/front/prof/bg_prof.jpg") no-repeat 0 0;
+    background: #e5e5e5 url("../../img/willbes/prof/bg_prof.jpg") no-repeat 0 0;
     width: 940px;
     height: 316px;
 }
@@ -3678,7 +3678,7 @@ ul li.profList .w-notice a {
 
 /* subContainer : Prof : sliderBest */
 .sliderBest .best-tit {
-    background: #e5e5e5 url("../../img/front/prof/icon_best.gif") no-repeat 0 0;
+    background: #e5e5e5 url("../../img/willbes/prof/icon_best.gif") no-repeat 0 0;
     font-size: 14px;
     line-height: 28px;
     padding: 0 0 2px 28px;
@@ -3693,10 +3693,10 @@ ul li.profList .w-notice a {
     height: 65px;
 }
 .sliderBest .bx-wrapper .bx-prev {
-    background: url("../../img/front/prof/btn_prev_white.png") no-repeat 0 0;
+    background: url("../../img/willbes/prof/btn_prev_white.png") no-repeat 0 0;
 }
 .sliderBest .bx-wrapper .bx-next {
-    background: url("../../img/front/prof/btn_next_white.png") no-repeat 0 0;
+    background: url("../../img/willbes/prof/btn_next_white.png") no-repeat 0 0;
     left: 20px;
 }
 .sliderBest .bx-wrapper .bx-controls {
@@ -3937,4 +3937,642 @@ ul li.profList .w-notice a {
 /* IE10 and IE11 */
 @media screen and (-ms-black-contrast:active), (-ms-black-contrast:none) {
     #SettingForm .chkBox-Save strong {letter-spacing: -2px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+    body {
+        font-size: 16px;
+        font-family: "Malgun Gothic", "맑은 고딕", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
+        min-width: 360px;
+    }
+    /* Basic Code */
+    .widthAuto,
+    .widthAuto320,
+    .widthAuto460,
+    .widthAuto550,
+    .widthAuto690,
+    .widthAuto770 {
+        width: 100%;
+        margin: 0 auto;
+    }
+    #Gnb,
+    #Header,
+    #Footer {
+        display: none;
+    }
+
+
+    /* Login Form : 공통 */
+    .mem-Tit {
+        padding: 9% 0 18%;
+    }
+    .Member {
+        padding: 0 5%;
+    }
+    .Member .inputBox {
+        text-align: center;
+    }
+    .Member .inputBox input.sm {
+        float: left;
+        width: 388px;
+    }
+    .Member .inputBox input.iptEmail01 {
+        width: 31%;
+    }
+    .Member .inputBox input.iptEmail02 {
+        width: 31%;
+    }
+    .Member .inputBox select.seleEmail {
+        float: inherit; 
+        width: 28%;
+        display: inline-block;
+    }
+
+
+
+
+    
+    .Member .inputBox button.sm {
+        width: 72px;
+    }
+    .Member .user-Txt {
+        font-size: 15px;
+        text-align: center;
+        line-height: 20px;
+    }
+    .Member .user-sub-Txt {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .Member .user-Txt span {
+        font-weight: 600;
+        vertical-align: baseline;
+    }
+    .Member .info-Txt {
+        font-size: 12px;
+        text-align: center;
+        line-height: 22px;
+    }
+    .Member .info-Txt-Wrap {
+        background: #f5f5f5;
+        height: 90px;
+        line-height: 86px;
+        border-top: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    .Member .notice-Txt {
+        font-size: 12px;
+        text-align: center;
+        line-height: 22px;
+        border-top: 1px solid #e2e2e2;
+        padding-top: 30px;
+    }
+    .Member .tabs {
+        box-sizing: border-box;
+        height: 35px;
+        margin-bottom: 45px;
+        border-bottom: 1px solid #0d74ae;
+    }
+    .Member .tabs li {
+        float: left;
+        width: 33.333333333333%;
+        height: 34px;
+    }
+    .Member .tabs li a {
+        color: #959595;
+        text-align: center;
+        line-height: 34px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid #e1e1e1;
+        border-right: 1px solid #e1e1e1;
+    }
+    .Member .tabs li:first-child a {
+        border-left: 1px solid #e1e1e1;    
+    }
+    .Member .tabs li.on a {
+        background: #fff;
+        height: 35px;
+        font-weight: 600;
+        color: #0d74ae; 
+        border-top: 1px solid #0d74ae;
+        border-left: 1px solid #0d74ae;
+        border-right: 1px solid #0d74ae;
+    }
+    .Member .tabs-Certi {
+        height: 140px;
+    }
+    .Member .tabs-Certi li {
+        float: left;
+        width: 33.333333333333%;
+        text-align: center;
+    }
+    .Member .tabs-Certi li a {
+        display: block; 
+        width: 86px;
+        height:93px;
+        margin: 0 auto;
+    }
+    .Member .tabs-Certi li a div {
+        color: #4d4d4d;
+        padding-top: 100px;
+    }
+    .Member .tabs-Certi li.on a {
+        height:140px;
+    }
+    .Member .tabs-Certi li#tab1 a {
+        background: url("../../img/willbes/login/icon_phone.gif") no-repeat 0 0;
+    }
+    .Member .tabs-Certi li#tab1.on a {
+        background: url("../../img/willbes/login/icon_phone_on.gif") no-repeat 0 0;
+    }
+    .Member .tabs-Certi li#tab2 a {
+        background: url("../../img/willbes/login/icon_email.gif") no-repeat 0 0;
+    }
+    .Member .tabs-Certi li#tab2.on a {
+        background: url("../../img/willbes/login/icon_email_on.gif") no-repeat 0 0;
+    }
+    .Member .tabs-Certi li#tab3 a {
+        background: url("../../img/willbes/login/icon_ipin.gif") no-repeat 0 0;
+    }
+    .Member .tabs-Certi li#tab3.on a {
+        background: url("../../img/willbes/login/icon_ipin_on.gif") no-repeat 0 0;
+    }
+    .Member .tabs-Certi img {
+        margin-top: 20px;
+    }
+    .Member .tabs-Step {
+        height: 30px;
+        line-height: 25px;
+    }
+    .Member .tabs-Step li {
+        float: left;
+        width: 33.333333333333%;
+        font-size: 15px;
+        font-weight: 600;
+        color: #959595;
+        text-align: center;
+        border-bottom: 5px solid #e2e2e2;
+    }
+    .Member .tabs-Step li.on {
+        color: #323232;
+        border-bottom: 5px solid #0d74ae;
+    }
+
+    /* Login Form : 로그인 */
+    .mem-Login button.mem-Btn {
+        height: 40px;
+    }
+    .mem-Login .chkBox {
+        margin-bottom: 20px;
+    }
+    .mem-Login .chkBox ul {
+        height: 20px;
+    }
+    .mem-Login .chkBox ul li {
+        float: left;
+        width: 50%;
+        line-height: 18px;
+    }
+    .mem-Login .chkBox ul li input[type=checkbox] {
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin: 0;
+        cursor: pointer;
+    }
+    .mem-Login .chkBox ul li .labelSave {
+        padding-left: 10px;
+    }
+    .mem-Login .chkBox ul li.chkBox-Search {
+        text-align: right;
+    }
+    .mem-Login .chkBox ul li.chkBox-Search span {
+        border-bottom: 1px solid #707070;
+    }
+    table.joinTable {
+        width: 100%;
+        border-top: 1px solid #e2e2e2;
+    }
+    table.joinTable tr {
+        border-bottom: 1px solid #e2e2e2;
+    }
+    table.joinTable tr td {
+        padding: 20px 0;
+        line-height: 24px;
+    }
+    table.joinTable tr td a {
+        color: #fff;
+        text-align: center;
+        height: 27px;
+        display: block; 
+        line-height: 27px;
+    }
+
+    /* Login Form : 휴면회원 안내 */
+    .mem-Dormant .user-Txt {
+        border-bottom: 1px solid #e2e2e2;
+        padding-bottom: 35px;
+    }
+    .mem-Dormant .info-Txt {
+        padding-top: 35px;
+        padding-bottom: 55px;
+    }
+
+    /* Login Form : 비밀번호 변경 */
+    .mem-Password .user-Txt {
+        position: relative; 
+        left: 50%;
+        background: url("../../img/willbes/login/icon_lock.gif") no-repeat 0 0;
+        width: 486px;
+        line-height: 35px;
+        padding-left: 70px;
+        margin-left: -243px;
+        margin-bottom: 50px;
+    }
+    .mem-Password .user-Txt img {
+        float: left;
+    }
+    .mem-Password .password-Btn {
+        text-align: center;
+    }
+    .mem-Password .password-Btn ul li {
+        width: 164px;
+        height: 36px;
+        display: inline-block;
+        margin: 0 3px;
+    }
+
+    /* Login Form : 비밀번호 5회입력 오류 */
+    .mem-Wrong .user-Txt {
+        position: relative; 
+        left: 50%;
+        background: url("../../img/willbes/login/icon_wrong.gif") no-repeat 0 10px;
+        width: 380px;
+        line-height: 35px;
+        padding-left: 70px;
+        margin-left: -190px;
+        margin-bottom: 50px;
+    }
+    .mem-Wrong .user-Txt img {
+        float: left;
+    }
+
+    /* Login Form : 비밀번호 재설정 */
+    .mem-Password .user-Txt {
+        position: relative; 
+        left: 50%;
+        background: url("../../img/willbes/login/icon_lock.gif") no-repeat 0 0;
+        width: 486px;
+        height: 63px;
+        line-height: 35px;
+        padding-left: 70px;
+        margin-left: -243px;
+        margin-bottom: 50px;
+    }
+    .mem-renew-Password .user-Txt {
+        padding-bottom: 55px;
+    }
+    .mem-renew-Password .renew-password-Btn {
+        margin-top: 45px;
+    }
+
+    /* Login Form : 아이디/비밀번호 찾기 */
+    .mem-Search .user-Txt {
+        line-height: 26px;
+        margin-bottom: 40px;
+    }
+    .mem-Search .info-Txt {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    /* Login Form : 아이디 찾기 완료 */
+    .mem-SearchFin .searchfin-Btn {
+        text-align: center;
+    }
+    .mem-SearchFin .searchfin-Btn ul li {
+        display: inline-block;
+        margin: 0 13px;
+    }
+
+    /* Login Form : 휴면회원 해제 */
+    .mem-SearchClear .info-Txt a {
+        text-decoration:underline;
+    }
+
+    /* Login Form : 유효기간경과 */
+    .mem-Expired .user-Txt {
+        position: relative; 
+        left: 50%;
+        background: url("../../img/willbes/login/icon_wrong.gif") no-repeat 0 0;
+        width: 300px;
+        line-height: 49px;
+        padding-left: 70px;
+        margin-left: -150px;
+    }
+    .mem-Expired .info-Txt {
+        background: #f5f5f5;
+        border-top: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2; 
+        padding-top: 45px;
+        padding-bottom: 45px;
+        margin-top: 80px;
+    }
+    .mem-Expired .info-Txt .info-Txt-box {
+        position: relative;
+        left: 50%;
+        background: url("../../img/willbes/login/icon_expired.gif") no-repeat 0 0;
+        width: 500px;
+        font-size: 15px;
+        padding-left: 190px;
+        margin-left: -250px;
+    }
+    .mem-Expired .expired-Btn {
+        margin: 30px 0 0 0;
+    }
+
+    /* Login Form : 통합회원가입 : 본인인증 */
+    .mem-Combine .combineBox {
+        height: 43px;
+    }
+    .mem-Combine .inputBox-Wrap {
+        float: right;
+        margin: 2px 0;
+    }
+    .mem-Combine .inputBox-Wrap select.seleEmail {
+        margin-left: 10px;
+    }
+
+    /* Login Form : 통합회원가입 : 약관동의/정보입력 */
+    table.combineTable tr {
+        border-bottom: 1px solid #e2e2e2;
+    }
+    table.combineTable tr th,
+    table.combineTable tr td {
+        font-size: 12px;
+        padding: 15px 0;
+    }
+    table.combineTable thead th {
+        font-weight: 600;
+        padding: 10px 0;
+    }
+    table.combineTable tbody tr td.combine-Tit {
+        color: #707070;
+        padding-top: 22px;
+        padding-left: 25px;
+        vertical-align: top;
+    }
+    table.combineTable .inputBox {
+        height: 26px;
+        margin-bottom: 0;
+    }
+    table.combineTable .inputBox label {
+        font-size: 12px;
+        top: 7px;
+        left: 6px;
+    }
+    table.combineTable .inputBox input {
+        float: left;
+        width: 320px;
+        font-size: 12px;
+        padding: 5px;
+    }
+    table.combineTable .inputBox button.combine-Btn {
+        width: 100px;
+        height: 26px;
+    }
+    table.combineTable .inputBox button.combine-Btn span {
+        font-size: 12px;
+        font-weight: 300;
+    }
+    table.combineTable ul.chkBox-Sex {
+        float: left;
+        margin-left: 30px;
+    }
+    table.combineTable ul.chkBox-Sex li {
+        float: left; 
+        width: 64px;
+        height: 26px;
+        background: #fff;
+        border: 1px solid #c9c9c9;
+    }
+    table.combineTable ul.chkBox-Sex li label {
+        left: 0; 
+        right: 0; 
+        width: 100%;
+        text-align: center;
+        color: #707070; 
+    }
+    table.combineTable ul.chkBox-Sex li.checked {
+        background: #0d74ae;
+        border: 1px solid #0d74ae;
+
+    }
+    table.combineTable ul.chkBox-Sex li.checked label {
+        color: #fff;
+    }
+    table.combineTable ul.chkBox-Sex li input[type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 64px;
+        height: 26px;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+    table.combineTable dl dt {
+        float: left;
+    }
+    table.combineTable dl dt.mbox1 input {
+        width: 110px;
+    }
+    table.combineTable dl dt.mbox2 input {
+        width: 160px;
+    }
+    table.combineTable dl dt.mbox-dot {
+        line-height: 26px;
+        margin: 0 5px;
+    }
+    table.combineTable dl dt.mbox-sele select.seleEmail {
+        width: 90px;
+        height: 26px;
+        border-left: none;
+    }
+    table.combineTable .addbox1 {
+        height: 26px;
+        margin-bottom: 3px;
+    }
+    table.combineTable .addbox2 {
+        height: 26px;
+    }
+    .agree-All-Tit {
+        font-size: 16px;
+        font-weight: 600;
+        color: #707070;
+        height: 55px;
+        line-height: 55px;
+    }
+    .agree-Chk ul li:first-child {
+        border-top: 1px solid #e2e2e2;
+    }
+    .agree-Chk ul li {
+        min-height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    .agree-Chk ul li .agree-Tit {
+        position: relative;
+        color: #707070;
+        padding-left: 25px;
+    }
+    .agree-Chk ul li .agree-Tit a {
+        display: block;
+    }
+    .agree-Chk ul li .agree-Txt {
+        display: none;
+        color: #0d74ae;
+        height: 130px;
+        line-height: 20px;
+        padding: 20px;
+        border-top: 1px solid #e2e2e2;
+        overflow-x: auto;
+    }
+    .agree-Chk .chkBox-Agree {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        margin-top: -11px;
+    }
+    .agree-Chk input[type=checkbox] {
+        position: absolute;
+    }
+
+    /* Login Form : 통합회원가입 : 회원가입완료 */
+    .mem-CombineFin select.seleSite { 
+        width: 110px;
+        height: 26px;
+        margin-left: 30px;
+    }
+
+    /* Login Form : 통합회원가입 : 기가입자 */
+    .mem-CombineFin .combinefin-Btn {
+        text-align: center;
+    }
+    .mem-CombineFin .combinefin-Btn ul li {
+        display: inline-block;
+        margin: 0 13px;
+    }
+
+    /* Login Form : 통합 서비스 안내 */
+    .mem-Convert .user-Txt {
+        padding-bottom: 50px;
+    }
+    .mem-Convert .info-Txt {
+        border-top: 1px solid #e2e2e2;
+        padding-top: 35px;
+    }
+    .mem-Convert .convert-chkBox {
+        text-align: center;
+    }
+    .mem-Convert .convert-chkBox .chkBox-Save {
+        position: relative;
+        left: 50%;
+        width: 270px;
+        margin-left: -135px;
+    }
+    .mem-Convert .convert-chkBox input[type=checkbox] {
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin: 0;
+        cursor: pointer;
+    }
+    .mem-Convert .convert-chkBox label {
+        line-height: 18px;
+    }
+
+    /* Login Form : 통합회원 전환 */
+    .mem-Convert .agreeBox {
+        height: 26px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .mem-Convert .agreeBox label {
+        font-size: 12px;
+        top: 7px;
+        left: 6px;
+    }
+    .mem-Convert .agreeBox input {
+        float: left;
+        width: 320px;
+        font-size: 12px;
+        padding: 5px;
+    }
+    .mem-Convert .agreeBox a {
+        float: right;
+        width: 65px;
+        color: #fff;
+        text-align: center;
+        height: 26px;
+        display: block; 
+        line-height: 26px;
+    }
+    .agree-user-Chk ul li {
+        color: #707070;
+        min-height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #e2e2e2;
+        padding-left: 10px;
+    }
+    .agree-user-Chk ul li:first-child {
+        border-top: 1px solid #e2e2e2;
+    }
+    .agree-user-Chk .agree-Confirm.ok {
+        background: url("../../img/willbes/login/icon_check_confirm.png") no-repeat 653px 15px;
+    }
+    .agree-user-Chk .agree-Confirm.no {
+        background: url("../../img/willbes/login/icon_check_confirm.png") no-repeat 653px -29px;
+    }
+    .agree-user-Chk ul li.agree-User {
+        line-height: inherit;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* Login Form : 전환완료 */
+    table.auTable tr th,
+    table.auTable tr td {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    table.auTable tr:first-child th,
+    table.auTable tr:first-child td {
+        border-top: 1px solid #e2e2e2;
+    }
+    table.auTable tr th {
+        background: #f5f5f5;
+        text-align: center;
+    }
+    table.auTable tr td {
+        padding-left: 20px;
+    }
+
 }

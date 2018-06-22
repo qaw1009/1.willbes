@@ -38,14 +38,14 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="/public/img/front/sub/icon_home.gif"> 
+        <img src="{{ img_url('sub/icon_home.gif') }}">
         <span class="1depth"><span class="depth-Arrow">></span><strong>패키지</strong></span>
         <span class="2depth"><span class="depth-Arrow">></span><strong>DIY패키지</strong></span>
     </div>
     <div class="Content p_re">
 
         <div class="willbes-Pm">
-            <img src="/public/img/front/sample/bnr2.jpg">
+            <img src="{{ img_url('sample/bnr2.jpg') }}">
         </div>
         <!-- willbes-Bnr -->
 
@@ -58,14 +58,14 @@
                     <span class="tx-light-blue">140,000원</span>
                 </span>
                 <span class="price-img">
-                    <img src="/public/img/front/sub/icon_plus.gif">
+                    <img src="{{ img_url('sub/icon_plus.gif') }}">
                 </span>
                 <span>
                     <span class="price-txt">교재</span>
                     <span class="tx-light-blue">48,600원</span>
                 </span>
                 <span class="price-img">
-                    <img src="/public/img/front/sub/icon_minus.gif">
+                    <img src="{{ img_url('sub/icon_minus.gif') }}">
                 </span>
                 <span>
                     <span class="price-txt">강좌할인금액</span>
@@ -92,7 +92,7 @@
                     <span class="w-tit">2018 9급공무원 단원별문제풀이 선택형 종합 Plus 패키지</span>
                     <span class="priceWrap">
                         <span class="price tx-blue">200,000원</span>
-                        <span class="delete"><a href="#none"><img src="/public/img/front/sub/icon_delete.gif"></a></span>
+                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
                     </span>
                 </div>
                 <div class="w-package">
@@ -100,7 +100,7 @@
                     <span class="w-tit">2018 9급공무원 기출문제 선택형 종합 Master패키지</span>
                     <span class="priceWrap">
                         <span class="price tx-blue">200,000원</span>
-                        <span class="delete"><a href="#none"><img src="/public/img/front/sub/icon_delete.gif"></a></span>
+                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
                     </span>
                 </div>
                 <div class="w-package">
@@ -108,7 +108,7 @@
                     <span class="w-tit">2017 [하반기 국가직 추가 시험대비] 실전 동형문풀 패키지</span>
                     <span class="priceWrap">
                         <span class="price tx-blue">60,000원</span>
-                        <span class="delete"><a href="#none"><img src="/public/img/front/sub/icon_delete.gif"></a></span>
+                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
                     </span>
                 </div>
                 <div class="w-package">
@@ -116,7 +116,7 @@
                     <span class="w-tit">2017 [하반기 지방직 추가시험 대비] 실전 동형모의고사 선택형 종합패키지</span>
                     <span class="priceWrap">
                         <span class="price tx-blue">99,000원</span>
-                        <span class="delete"><a href="#none"><img src="/public/img/front/sub/icon_delete.gif"></a></span>
+                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
                     </span>
                 </div>
                 <div class="w-package">
@@ -124,7 +124,7 @@
                     <span class="w-tit">2018 9급공무원 단원별문제풀이 선택형 종합 Plus 패키지</span>
                     <span class="priceWrap">
                         <span class="price tx-blue">200,000원</span>
-                        <span class="delete"><a href="#none"><img src="/public/img/front/sub/icon_delete.gif"></a></span>
+                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
                     </span>
                 </div>
             </div>
@@ -463,7 +463,7 @@
 
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="/public/img/front/sample/banner_180605.jpg">     
+        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
 <!-- End Container -->

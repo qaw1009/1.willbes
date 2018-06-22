@@ -5,7 +5,7 @@
 <div id="Container" class="memContainer widthAuto c_both">
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 아이디/비밀번호 찾기 : 아이디 찾기 : 휴대폰 인증 -->
@@ -55,7 +55,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 아이디/비밀번호 찾기 : 아이디 찾기 : E-mail 인증 -->
@@ -115,7 +115,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 아이디/비밀번호 찾기 : 아이디 찾기 : 아이핀 인증 -->
@@ -165,7 +165,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디 찾기 완료</span>
     </div>
     <!-- 아이디 찾기 완료 -->
@@ -199,7 +199,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 아이디/비밀번호 찾기 : 비밀번호 찾기 : 휴대폰 인증 -->
@@ -253,7 +253,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 아이디/비밀번호 찾기 : 비밀번호 찾기 : E-mail 인증 -->
@@ -317,7 +317,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 아이디/비밀번호 찾기 : 비밀번호 찾기 : 아이핀 인증 -->
@@ -371,7 +371,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">휴면회원 해제</span>
     </div>
     <!-- 휴면회원 해제 : 휴대폰 인증 -->
@@ -426,7 +426,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 휴면회원 해제 : E-mail 인증 -->
@@ -491,7 +491,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">아이디/비밀번호 찾기</span>
     </div>
     <!-- 휴면회원 해제 : 아이핀 인증 -->
@@ -546,7 +546,7 @@
 
 
     <div class="mem-Tit">
-        <img src="/public/img/front/login/logo.gif">
+        <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">휴면회원 해제</span>
     </div>
     <!-- 휴면회원 해제 : 완료 -->

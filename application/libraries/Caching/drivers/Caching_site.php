@@ -31,8 +31,7 @@ class Caching_site extends CI_Driver
     public function _getSaveData()
     {
         // 학원 사이트 구분값
-        $this->_CI->config->load('front_config');
-        $pass_site_prefix = $this->_CI->config->item('pass_site_prefix');
+        $pass_site_prefix = config_item('app_pass_site_prefix');
 
         $_table = [
             'site' => 'lms_site',
@@ -52,7 +51,6 @@ class Caching_site extends CI_Driver
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo
                 , DCC.CcdName as DeliveryCompName
-                , lower(concat(substring_index(S.SiteUrl, ".", 1), if(instr(substring_index(S.SiteUrl, "/", 2), "/' . $pass_site_prefix . '") > 0, "' . $pass_site_prefix . '", ""))) as SiteId
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CONCAT(RC.CampusCcd, ":", C.CcdName) separator ",") 
                     from ' . $_table['site_r_campus'] . ' as RC inner join ' . $_table['code'] . ' as C
@@ -66,7 +64,9 @@ class Caching_site extends CI_Driver
                     where char_length(S.PayMethodCcds) - char_length(replace(S.PayMethodCcds, ",", "")) >= TN.num - 1
                         and substring_index(substring_index(S.PayMethodCcds, ",", TN.num), ",", -1) = C.Ccd
                         and C.GroupCcd = "' . $_ccd['PayMethod'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
-                  ) as PayMethodCcdArr                                            
+                  ) as PayMethodCcdArr 
+                , substring_index(SiteUrl, ".", 1) as SiteGroupId
+                , substring(replace(substring_index(SiteUrl, "/", 2), substring_index(SiteUrl, "/", 1), ""), 2) as SiteId                                                           
         ';
         $from = '
             from ' . $_table['site'] . ' as S 
@@ -81,11 +81,16 @@ class Caching_site extends CI_Driver
         $result = $this->_db->query('select ' . $column . $from)->result_array();
 
         $data = [];
-        array_map(function($row) use (&$data) {
-            $key = $row['SiteId'];
-            unset($row['SiteId']);
+        array_map(function($row) use (&$data, $pass_site_prefix) {
+            $row['SiteId'] = $row['SiteGroupId'] . (($row['SiteId'] == $pass_site_prefix) ? $pass_site_prefix : "");
+            $key = $row['SiteGroupId'] . '>' . $row['SiteId'];
+            $row['SiteKey'] = $key;
+
             $data[$key] = $row;
         }, $result);
+
+        // add site key array
+        $data['SiteKeys'] = array_pluck($data, 'SiteKey', 'SiteCode');
 
         return $data;
     }

@@ -42,7 +42,8 @@ class Caching_site_menu extends CI_Driver
         $column = '
             S.SiteCode, SM.MenuIdx, SM.MenuType, SM.MenuName, SM.ParentMenuIdx, SM.GroupMenuIdx, SM.MenuDepth, SM.MenuUrl
             , SM.UrlType, SM.UrlTarget, SM.MenuIcon, SM.MenuEtc, fn_site_menu_connect_by_type(SM.MenuIdx, "both") as UrlRouteBoth
-            , lower(concat(substring_index(S.SiteUrl, ".", 1), if(instr(substring_index(S.SiteUrl, "/", 2), "/' . $pass_site_prefix . '") > 0, "' . $pass_site_prefix . '", ""))) as SiteId
+            , substring_index(replace(SM.MenuUrl, "//", ""), ".", 1) as SubDomainByMenuUrl
+            , substring(replace(substring_index(replace(SM.MenuUrl, "//", ""), "/", 2), substring_index(replace(SM.MenuUrl, "//", ""), "/", 1), ""), 2) as Segment1ByMenuUrl
         ';
         $from = '
             from ' . $_table['site_group'] . ' as SG 
@@ -61,15 +62,28 @@ class Caching_site_menu extends CI_Driver
 
         $data = [];
         foreach ($result as $idx => $row) {
-            $base_key = $row['SiteId'];
+            // make tree menu
+            if ($row['SiteCode'] == config_item('app_intg_site_code')) {
+                $key_prefix = 'Gnb';
+                if ($row['MenuDepth'] == '1') {
+                    $key_group = $row['SubDomainByMenuUrl'] . ($row['SubDomainByMenuUrl'] == $pass_site_prefix ? $pass_site_prefix : '');
+                }
+            } else {
+                $key_prefix = 'Site';
+                $key_group = $row['SiteCode'];
+            }
 
+            // tree menu base key
+            $base_key = $key_prefix . 'TreeMenus.' . $key_group;
+
+            $menu_url  = ($row['UrlType'] == 'route' && empty($row['MenuUrl']) === false) ? app_to_env_url($row['MenuUrl']) : $row['MenuUrl'];
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
                 'MenuIdx' => $row['MenuIdx'],
                 'MenuType' => $row['MenuType'],
                 'MenuName' => $row['MenuName'],
                 // 내부경로일 경우 개발환경에 맞게 URL 변환
-                'MenuUrl' => ($row['UrlType'] == 'route' && empty($row['MenuUrl']) === false) ? app_to_env_url($row['MenuUrl']) : $row['MenuUrl'],
+                'MenuUrl' => $menu_url,
                 'MenuIcon' => $row['MenuIcon'],
                 'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],
@@ -90,6 +104,9 @@ class Caching_site_menu extends CI_Driver
             } else {
                 array_set($data, $base_key . '.' . $row['MenuIdx'], $arr_menu);
             }
+
+            // make menu url array
+            $data[$key_prefix . 'MenuUrls'][$key_group][$url_route_idx] = $menu_url;
         }
 
         return $data;

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends \app\controllers\FrontController
+class Lecture extends \app\controllers\FrontController
 {
     protected $models = array();
     protected $helpers = array();
@@ -15,10 +15,11 @@ class Home extends \app\controllers\FrontController
 
     public function index()
     {
-        if ($this->_is_pass_site === true) {
-            $this->load->view('site/pass');
-        } else {
-            $this->load->view('site/main');
-        }
+        echo '단강좌 메인';
     }
+
+    public function show()
+    {
+        echo '단강좌 상세';
+    }    
 }

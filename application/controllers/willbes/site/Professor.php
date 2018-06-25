@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends \app\controllers\FrontController
+class Professor extends \app\controllers\FrontController
 {
     protected $models = array();
     protected $helpers = array();
@@ -21,4 +21,9 @@ class Home extends \app\controllers\FrontController
             $this->load->view('site/main');
         }
     }
+
+    public function show()
+    {
+        echo '교수 상세';
+    }    
 }

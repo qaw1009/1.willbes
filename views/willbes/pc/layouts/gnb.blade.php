@@ -8,7 +8,7 @@
         <a href="{{ site_url('/') }}"><img src="{{ img_url('gnb/logo.gif') }}"></a>
     </div>
 
-    @if(empty($__cfg['GnbGroupMenuIdx']) === true)
+    @if(empty($__cfg['GnbTreeMenu'][$__cfg['GnbActiveGroupId']]) === true)
         <!-- main slider -->
         <div class="sliderGNB">
             <div class="slider">
@@ -21,81 +21,85 @@
     @else
         <!-- gnb site menu -->
         <div class="topView">
-            <h1>
-                <img src="{{ img_url('gnb/icon_willbes2.gif') }}">{{ $__cfg['GnbMenu'][$__cfg['GnbGroupMenuIdx']]['MenuName'] }}
-            </h1>
-            <h4>
-                <ul>
-                    @foreach($__cfg['GnbMenu'][$__cfg['GnbGroupMenuIdx']]['Children'] as $menu_idx => $menu_row)
-                        @if($menu_row['MenuType'] == 'GN')
-                            <li class="dropdown">
-                                <a href="{{ $menu_row['MenuUrl'] }}">{{ $menu_row['MenuName'] }}</a>
-                                @if(isset($menu_row['Children']) === true)
-                                    <div class="left-drop-Box">
-                                        <ul>
-                                            @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
-                                                <li><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                        <div class="sliderView">
-                                            <div class="slider">
-                                                <div><img src="{{ img_url('sample/gnb5.jpg') }}"></div>
-                                                <div><img src="{{ img_url('sample/gnb6.jpg') }}"></div>
-                                                <div><img src="{{ img_url('sample/gnb7.jpg') }}"></div>
-                                                <div><img src="{{ img_url('sample/gnb8.jpg') }}"></div>
+            @foreach($__cfg['GnbTreeMenu'][$__cfg['GnbActiveGroupId']] as $menu_group_id => $menu_group_row)
+                <h1>
+                    <img src="{{ img_url('gnb/icon_willbes2.gif') }}">{{ $menu_group_row['MenuName'] }}
+                </h1>
+                <h4>
+                    <ul>
+                        @foreach($menu_group_row['Children'] as $menu_idx => $menu_row)
+                            @if($menu_row['MenuType'] == 'GN')
+                                <li class="dropdown">
+                                    <a href="{{ $menu_row['MenuUrl'] }}">{{ $menu_row['MenuName'] }}</a>
+                                    @if(isset($menu_row['Children']) === true)
+                                        <div class="left-drop-Box">
+                                            <ul>
+                                                @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
+                                                    <li><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                            <div class="sliderView">
+                                                <div class="slider">
+                                                    <div><img src="{{ img_url('sample/gnb5.jpg') }}"></div>
+                                                    <div><img src="{{ img_url('sample/gnb6.jpg') }}"></div>
+                                                    <div><img src="{{ img_url('sample/gnb7.jpg') }}"></div>
+                                                    <div><img src="{{ img_url('sample/gnb8.jpg') }}"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endif
-                            </li>
-                        @elseif($menu_row['MenuType'] == 'PA')
-                            <li class="Acad">
-                                <a class="willbes-Acad-Tit" href="{{ $menu_row['MenuUrl'] }}">{{ $menu_row['MenuName'] }}</a>
-                                <dl class="sns-Btn">
-                                    <dt>
-                                        <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_facebook.gif') }}">
-                                        </a>
-                                    </dt>
-                                    <dt>
-                                        <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_linkedin.gif') }}">
-                                        </a>
-                                    </dt>
-                                    <dt>
-                                        <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_twitter.gif') }}">
-                                        </a>
-                                    </dt>
-                                </dl>
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
-            </h4>
+                                    @endif
+                                </li>
+                            @elseif($menu_row['MenuType'] == 'PA')
+                                <li class="Acad">
+                                    <a class="willbes-Acad-Tit" href="{{ $menu_row['MenuUrl'] }}">{{ $menu_row['MenuName'] }}</a>
+                                    <dl class="sns-Btn">
+                                        <dt>
+                                            <a href="#none">
+                                                <img src="{{ img_url('gnb/icon_facebook.gif') }}">
+                                            </a>
+                                        </dt>
+                                        <dt>
+                                            <a href="#none">
+                                                <img src="{{ img_url('gnb/icon_linkedin.gif') }}">
+                                            </a>
+                                        </dt>
+                                        <dt>
+                                            <a href="#none">
+                                                <img src="{{ img_url('gnb/icon_twitter.gif') }}">
+                                            </a>
+                                        </dt>
+                                    </dl>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </h4>
+            @endforeach
         </div>
     @endif
     <!-- gnb menu -->
     <div class="gnb-List">
-        @foreach(element('GnbMenu', $__cfg) as $menu_idx => $menu_row)
-            <div class="gnb-List-Tit">
-                <a href="{{ $menu_row['MenuUrl'] }}">
-                    <div class="willbes-icon_sm">
-                        <img src="{{ img_url('gnb/icon_willbes1_sm.gif') }}">
-                    </div>
-                    <span class="Txt">{{ $menu_row['MenuName'] }}<span class="arrow-Btn">></span></span>
-                </a>
-            </div>
-            <div class="gnb-List-Depth">
-                <dl>
-                    @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
-                        <dt><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
-                    @endforeach
-                </dl>
-            </div>
+        @foreach($__cfg['GnbTreeMenu'] as $menu_group_id => $menu_group_row)
+            @foreach($menu_group_row as $menu_idx => $menu_row)
+                <div class="gnb-List-Tit">
+                    <a href="{{ $menu_row['MenuUrl'] }}">
+                        <div class="willbes-icon_sm">
+                            <img src="{{ img_url('gnb/icon_willbes1_sm.gif') }}">
+                        </div>
+                        <span class="Txt">{{ $menu_row['MenuName'] }}<span class="arrow-Btn">></span></span>
+                    </a>
+                </div>
+                <div class="gnb-List-Depth">
+                    <dl>
+                        @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
+                            <dt><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
+                        @endforeach
+                    </dl>
+                </div>
+            @endforeach
         @endforeach
     </div>
-
+    <!-- gnb site setting -->
     <ul class="gnb-List-Sub p_re">
         <li>
             <a class="setting" href="#none" onclick="openWin('SettingForm')">
@@ -124,7 +128,6 @@
                             <label for="BOOKMARK_SAVE" class="labelSave tx-gray">즐겨찾기로</label>
                         </span>
                     </div>
-
                     <div class="chkBox-Save">
                         <div class="tx-gray">
                             <strong>추후 접속 시 윌비스 통합 네비게이션 영역을</strong>

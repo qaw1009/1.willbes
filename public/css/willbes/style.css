@@ -1588,6 +1588,25 @@ table.auTable tr td {
     color: #555;
     line-height: 26px;
 }
+.curriWrap tr td select {
+    width: 700px;
+    height: 30px; 
+}
+.curriWrap ul.curriSelect li {
+    float: left;
+    width: 11.5%;    
+    margin: 0.5%;
+}
+.curriTableLayer tr {
+    line-height: inherit;
+}
+.curriTableLayer tr th {
+    vertical-align: top;
+    padding-top: 20px;
+}
+.curriTableLayer tr td {
+    padding: 15px 5px;
+}
 
 /* subContainer : Content : Bnr */
 .willbes-Bnr {
@@ -2640,7 +2659,6 @@ table.classTable tr td.w-data {
 .LecWriteTable tr td.w-radio ul li {
     float: left;
 }
-
 .LecWriteTable tr td.w-radio ul li input[type="radio"] {
     float: left;
     margin-top: 14px;
@@ -2673,8 +2691,6 @@ table.classTable tr td.w-data {
 .LecWriteTable ul.attach li .filetype {
     margin-bottom: 10px;
 }
-
-
 .filetype {
     clear: both;
     position: relative;
@@ -2731,6 +2747,12 @@ table.classTable tr td.w-data {
 .willbes-LecreplyList ul li {
     display: inline-block;
     line-height: 20px;
+}
+.willbes-LecreplyList dl {
+    display: inline-block;
+}
+.willbes-LecreplyList dl dt {
+    display: inline-block;
 }
 .w-reply-teaser {
     width: 940px;
@@ -3794,6 +3816,189 @@ ul li.profList .w-notice a {
     width: 520px;
     height: 120px;
 }
+
+
+/* subContainer : Prof : willbes-Layer-ProfileBox */
+.willbes-Layer-ProfileBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 144px;
+    z-index: 101;
+    width: 510px;
+    height: 620px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-ProfileBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-ProfileBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-ProfileBox .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-ProfileBox .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-ProfileBox .Layer-Txt {
+    height: 183px;
+    padding: 20px;
+    line-height: 24px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+
+/* subContainer : Prof : willbes-Layer-CurriBox */
+.willbes-Layer-CurriBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    z-index: 101;
+    width: 740px;
+    height: 620px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-CurriBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-CurriBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-CurriBox .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-CurriBox .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-CurriBox .Layer-Txt {
+    height: 183px;
+    padding: 20px;
+    line-height: 24px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+
+/* subContainer : Prof : willbes-Layer-ReplyBox */
+.willbes-Layer-ReplyBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 24px;
+    right: 0;
+    z-index: 101;
+    width: 890px;
+    height: 1310px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-ReplyBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-ReplyBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-ReplyBox .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-ReplyBox .Layer-Cont {
+    padding: 20px 5px;
+}
+.willbes-Layer-ReplyBox .Layer-Cont .CurriBox {
+    padding: 0 20px;
+}
+.willbes-Layer-ReplyBox .Layer-Txt {
+    height: 183px;
+    padding: 20px;
+    line-height: 24px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+.willbes-Layer-ReplyBox .reply-Btn {
+    width: 116px;
+}
+.willbes-Layer-ReplyBox .reply-Btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: 36px;
+}
+.willbes-Layer-ReplyBox .replyInfo {
+    padding-bottom: 40px;
+}
+.willbes-Layer-ReplyBox .replyInfo li {
+    font-weight: 600;
+    line-height: 20px;
+}
+
+/* subContainer : Prof : writeTable */
+.LecWriteTable .writeTable {}
+.LecWriteTable .writeTable tr td.w-text input {
+    width: 670px;
+}
+.LecWriteTable .writeTable tr td.w-textarea textarea {
+    width: 670px;
+}
+
+
+/* subContainer : Prof : replyTable */
+.LeclistTable .replyTable tbody tr th,
+.LeclistTable .replyTable tbody tr td {
+    line-height: 19px;
+    padding: 15px 0;
+}
+.LeclistTable .replyTable tr td .subTit {
+    font-size: 11px;
+    color: #959595;
+    line-height: 15px;
+    padding-bottom: 10px;
+}
+.LeclistTable .replyList {
+    cursor: pointer;
+}
+.LeclistTable .replyTxt {
+    display: none;
+}
+.LeclistTable .replyTxt td {
+    font-size: 11px;
+    text-align: left !important;
+    padding: 15px 30px !important;
+}
+.LeclistTable .replyTxt td div {
+    padding-bottom: 5px;
+}
+
+
 
 /* subContainer : Prof : sliderBest */
 .sliderBest .best-tit {

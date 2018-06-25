@@ -73,7 +73,7 @@
                                 <a href="#none" onclick="openWin('List')">
                                     <span class="pBox p1">강좌</span>
                                     2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                                    <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="/public/img/front/sub/icon_detail.gif') }}">
+                                    <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="{{ img_url('sub/icon_detail.gif') }}">
                                 </a>
                                 <div id="List" class="willbes-Layer-Box-sm">
                                     <a class="closeBtn" href="#none" onclick="closeWin('List')">

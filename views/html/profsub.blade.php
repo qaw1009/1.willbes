@@ -98,14 +98,14 @@
     </div>
     <div class="Content p_re ml20">
 
-        <div class="willbes-Prof-Profile mb40 NG tx-black">
+        <div class="willbes-Prof-Profile p_re mb40 NG tx-black">
             <div class="ProfImg p_re">
                 <img src="{{ img_url('sample/prof5.png') }}">
             </div>
             <div class="prof-profile p_re">
                 <ul class="prof-brief-btn">
                     <li>
-                        <a href="#none">
+                        <a href="#none" onclick="openWin('LayerProfile'),openWin('Profile')">
                             <img src="{{ img_url('prof/icon_profile.png') }}">
                             <div class="NSK">프로필</div>
                         </a>
@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="#none" onclick="openWin('LayerCurriculum'),openWin('Curriculum')">
                             <img src="{{ img_url('prof/icon_curri.png') }}">
                             <div class="NSK">커리큘럼</div>
                         </a>
@@ -166,10 +166,54 @@
                     </div>
                 </div>
             </div>
+
+            <!-- willbes-Layer-ProfileBox -->
+            <div id="Profile" class="willbes-Layer-ProfileBox">
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'),closeWin('Profile')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">정채영</span> 교수님 프로필</div>
+                <div class="Layer-Cont">
+                    <div class="Layer-SubTit NG">· 약력</div>
+                    <div class="Layer-Txt tx-gray">
+                        · 現) 윌비스공무원국어전임<br/>
+                        · 2008~2015 8년연속EBS 9,7급공무원국어전임<br/>
+                        · 前)2005~2006 방송대학TV 공무원교수전임<br/>
+                        · 前)박문각남부고시학원국어대표<br/>
+                        · 2015 국가직지방직문제풀이강의마감<br/>
+                        · 2015 국가직지방직심화이론강의마감
+                    </div>
+                    <div class="Layer-SubTit NG">· 저서</div>
+                    <div class="Layer-Txt tx-gray">
+                        · 2018 정채 영국어 마무리 시리즈[문학편]_137작품을 알려주마 (제2판)<br/> 
+                        (윌비스)<br/>
+                        · 2018 정채 영국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!<br/> 
+                        (전정2판) (윌비스)<br/>
+                        · 정채 영국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마! (제2판)<br/> 
+                        (윌비스)<br/>
+                        · 2018 정채 영국어 문제 종결자 (더나은)
+                    </div>
+                </div>
+            </div>
+            <div id="LayerProfile" class="willbes-Layer-Black"></div>
+            <!-- // willbes-Layer-ProfileBox -->
+
+            <!-- willbes-Layer-CurriBox -->
+            <div id="Curriculum" class="willbes-Layer-CurriBox">
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum'),closeWin('Curriculum')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">정채영</span> 교수님 커리큘럼</div>
+                <div class="Layer-Cont">
+                    커리큘럼 이미지 노출
+                </div>
+            </div>
+            <div id="LayerCurriculum" class="willbes-Layer-Black"></div>
+            <!-- // willbes-Layer-CurriBox -->
         </div>
         <!-- willbes-Prof-Profile -->
 
-        <div class="willbes-NoticeWrap mb15 c_both">
+        <div class="willbes-NoticeWrap p_re mb15 c_both">
             <div class="willbes-listTable willbes-newLec widthAuto460 mr20">
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
@@ -178,12 +222,402 @@
                 </ul>
             </div>
             <div class="willbes-listTable willbes-reply widthAuto460">
-                <div class="will-Tit NG">수강후기</div>
+                <div class="will-Tit NG">수강후기 <a class="f_right" href="#none" onclick="openWin('LayerReply'),openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                 <ul class="List-Table GM tx-gray">
                     <li><img src="{{ img_url('sub/star4.gif') }}"><a href="#none">설명도 잘 해주시고 좋은 강의에요</a></li>
                     <li><img src="{{ img_url('sub/star5.gif') }}"><a href="#none">짱 좋아요!</a></li>
                 </ul>
             </div>
+
+            <!-- willbes-Layer-ReplyBox -->
+            <div id="Reply" class="willbes-Layer-ReplyBox">
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerReply'),closeWin('Reply')"><img src="{{ img_url('prof/close.png') }}"></a>
+                <div class="Layer-Tit NG tx-dark-black">수강후기</div>
+
+                <!-- List -->
+                <div id="replyListLayer" class="Layer-Cont">
+                    <div class="curriWrap c_both">
+                        <div class="CurriBox">
+                            <table cellspacing="0" cellpadding="0" class="curriTable curriTableLayer">
+                                <colgroup>
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="tx-gray">과목선택</th>
+                                        <td colspan="8">
+                                            <ul class="curriSelect">
+                                                <li><a href="#none">사회복지학</a></li>
+                                                <li><a href="#none">국어</a></li>
+                                                <li><a href="#none">영어</a></li>
+                                                <li><a href="#none">한국사</a></li>
+                                                <li><a href="#none">행정법</a></li>
+                                                <li><a href="#none">행정학</a></li>
+                                                <li><a href="#none">교육학</a></li>
+                                                <li><a href="#none">수학</a></li>
+                                                <li><a href="#none">독일어</a></li>
+                                                <li><a href="#none">경영학</a></li>
+                                                <li><a href="#none">일본어</a></li>
+                                                <li><a href="#none">관세법</a></li>
+                                                <li><a href="#none">공직선거법</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="tx-gray">교수선택</th>
+                                        <td colspan="8" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
+                                        <!-- 과목선택 시 해당 과목 교수 출력
+                                        <td>
+                                            <a href="#none">정채영</a>
+                                        </td>
+                                        <td>
+                                            <a href="#none">기미진</a>
+                                        </td>
+                                        <td>
+                                            <a href="#none">김세령</a>
+                                        </td>
+                                        <td>
+                                            <a href="#none">오대혁</a>
+                                        </td>
+                                        <td>
+                                            <a href="#none">이현나</a>
+                                        </td>
+                                        -->
+                                    </tr>
+                                    <tr>
+                                        <th class="tx-gray">강좌선택</th>
+                                        <td colspan="8" class="tx-left">
+                                            <select id="email" name="email" title="강좌를 선택해 주세요." class="seleEmail">
+                                                <option selected="selected">강좌를 선택해 주세요.</option>
+                                                <option value="강좌1">강좌1</option>
+                                                <option value="강좌2">강좌2</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- curriWrap -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="willbes-LecreplyList tx-gray">
+                            <dl>
+                                <dt><a href="#none">BEST순</a></dt>
+                                <dt><a href="#none">최신순</a></dt>
+                                <dt><a href="#none">평점순</a></dt>
+                            </dl>
+                            <div class="reply-Btn h36 f_right"><a class="bg-blue bd-dark-blue NSK" href="#none" onclick="closeWin('replyListLayer'),openWin('replyWrite')">수강후기 작성</a></div>
+                        </div>
+                        <div class="LeclistTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable replyTable upper-black upper-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 75px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 120px;">
+                                    <col style="width: 260px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 100px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>No<span class="row-line">|</span></li></th>
+                                        <th>과목<span class="row-line">|</span></li></th>
+                                        <th>교수명<span class="row-line">|</span></li></th>
+                                        <th>평점<span class="row-line">|</span></li></th>
+                                        <th>제목<span class="row-line">|</span></li></th>
+                                        <th>작성자<span class="row-line">|</span></li></th>
+                                        <th>등록일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="replyList">
+                                        <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
+                                        <td class="w-lec">헌법</td>
+                                        <td class="w-name">정채영</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star5.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋은강의입니다.
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">장동*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            Woo ah(우와) Dae Bark(박) 입니다!!! 정채영 교수님 수업을 온/오프라인으로 몇번 들었던 장수생입니다.
+                                            계속해서 무료 강좌 시리즈를 개설해 주셔서 감사합니다! 강의의 질이나 수준도 결코 유료특강에 떨어지지 않는 수준입니다.
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
+                                        <td class="w-lec">공직선거법</td>
+                                        <td class="w-name">한덕현</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            쉽게 설명해주시네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-00-00</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            베스트 댓글2
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">8</td>
+                                        <td class="w-lec">스파르타반</td>
+                                        <td class="w-name">김쌤</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">최귀*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">7</td>
+                                        <td class="w-lec">행정법</td>
+                                        <td class="w-name">최진우</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star2.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            저랑 잘 맞는 강의입니다.
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">박형*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다.
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">6</td>
+                                        <td class="w-lec">공통</td>
+                                        <td class="w-name">윤세훈</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star2.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">장동*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div> 
+                                            좋네요 좋네요 좋네요
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">5</td>
+                                        <td class="w-lec">헌법</td>
+                                        <td class="w-name">정채영</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star2.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋은강의입니다.
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">최귀*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다.
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">4</td>
+                                        <td class="w-lec">공직선거법</td>
+                                        <td class="w-name">한덕현</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star3.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            쉽게 설명해주시네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">최귀*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            쉽게 설명해주시네요. 쉽게 설명해주시네요. 쉽게 설명해주시네요.
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">3</td>
+                                        <td class="w-lec">스파르타반</td>
+                                        <td class="w-name">김쌤</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">최귀*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList">
+                                        <td class="w-no">2</td>
+                                        <td class="w-lec">행정법</td>
+                                        <td class="w-name">최진우</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star3.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">최귀*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt tx-gray">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            좋네요 좋네요
+                                        </td>
+                                    </tr>
+
+                                    <tr class="replyList tx-gray">
+                                        <td class="w-no">1</td>
+                                        <td class="w-lec">공통</td>
+                                        <td class="w-name">윤세훈</td>
+                                        <td class="w-star"><img src="{{ img_url('sub/star1.gif') }}"></td>
+                                        <td class="w-list tx-left pl20">
+                                            좋네요
+                                            <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                        </td>
+                                        <td class="w-write">최귀*</td>
+                                        <td class="w-date">2018-04-22</td>
+                                    </tr>
+                                    <tr class="replyTxt">
+                                        <td colspan="7">
+                                            <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                            좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- willbes-Leclist -->
+                </div>
+
+                <!-- Write -->
+                <div id="replyWrite" class="Layer-Cont" style="display: none">
+                    <ul class="replyInfo tx-gray NG">
+                        <li>· 수강생에 한해 강좌당 1회 작성이 가능합니다.</li>
+                        <li>· 수강 종료 강좌는 수강이 종료된 날로부터 30일 이내에만 후기 등록이 가능합니다.</li>
+                        <li>· 수강후기 작성 시 포인트 500P가 지급됩니다. (월 최대 2,000p 지급가능)</li>
+                        <li>· 강좌와 무관한 내용, 의미없는 문자 나열, 비방이나 욕설이 있을 시 삭제될 수 있습니다.</li>
+                    </ul>
+
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecWriteTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable writeTable upper-gray upper-black bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 120px;">
+                                    <col style="width: 720px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-left strong pl30">수강정보<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-selected tx-left pl30">
+                                            <select id="Sbj" name="Sbj" title="Sbj" class="seleSbj">
+                                                <option selected="selected">과목선택</option>
+                                                <option value="헌법">헌법</option>
+                                                <option value="스파르타반">스파르타반</option>
+                                                <option value="공직선거법">공직선거법</option>
+                                            </select>
+                                            <select id="Prof" name="Prof" title="Prof" class="seleProf">
+                                                <option selected="selected">교수선택</option>
+                                                <option value="정채영">정채영</option>
+                                                <option value="한덕현">한덕현</option>
+                                                <option value="김쌤">김쌤</option>
+                                            </select>
+                                            <select id="Lec" name="Lec" title="Lec" class="seleLec">
+                                                <option selected="selected">강좌선택</option>
+                                                <option value="기타">기타</option>
+                                                <option value="강좌내용">강좌내용</option>
+                                                <option value="학습상담">학습상담</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-left strong pl30">평점<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-selected tx-left pl30"><img src="{{ img_url('sub/star3.gif') }}"> 3/5</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-left strong pl30">제목<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-text tx-left pl30">
+                                            <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white tx-left strong pl30">내용<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-textarea write tx-left pl30">
+                                            <textarea></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="search-Btn mt20 mb50 f_right">
+                                <ul>
+                                    <li class="btnAuto90 h36">
+                                        <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                            <span>저장</span>
+                                        </button>
+                                    </li>
+                                    <li class="btnAuto90 h36">
+                                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                            <span class="tx-purple-gray">취소</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- willbes-Leclist -->
+                </div>
+
+            </div>
+            <div id="LayerReply" class="willbes-Layer-Black"></div>
+            <!-- // willbes-Layer-ReplyBox -->
+
         </div>
         <!-- willbes-NoticeWrap -->
 

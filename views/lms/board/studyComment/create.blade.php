@@ -248,13 +248,6 @@
                 getEditorBodyContent($editor_profile);
                 var _url = '{{ site_url("/board/{$boardName}/store") }}' + getQueryString();
 
-                @if($method == 'POST')
-                if($regi_form.find('input[name="cate_code[]"]').length < 1) {
-                    alert('카테고리 선택 필드는 필수입니다.');
-                    return false;
-                }
-                @endif
-
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

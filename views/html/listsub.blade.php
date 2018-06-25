@@ -247,20 +247,23 @@
         </div>
         <!-- willbes-Lec -->
 
-        <div id="sticky" class="sticky-menu NG">
-            <ul>
-                <li><a href="#Class">강좌정보 ▼</a></li>
-                <li class="row-line">|</li>
-                <li><a href="#BookInfo">교재정보 ▼</a></li>
-                <li class="row-line">|</li>
-                <li><a href="#Leclist">강의목차 ▼</a></li>
-                <li class="row-line">|</li>
-                <li><a href="#Reply">수강후기 ▼</a></li>
-            </ul>
+
+        <div class="sticky-Wrap">
+            <div class="sticky-menu NG">
+                <ul>
+                    <li><a href="#Class">강좌정보 ▼</a></li>
+                    <li class="row-line">|</li>
+                    <li><a href="#BookInfo">교재정보 ▼</a></li>
+                    <li class="row-line">|</li>
+                    <li><a href="#Leclist">강의목차 ▼</a></li>
+                    <li class="row-line">|</li>
+                    <li><a href="#Reply">수강후기 ▼</a></li>
+                </ul>
+            </div>
         </div>
         <!-- sticky-menu -->
    
-        <a name="Class" style="display: block"></a>
+        <a name="Class" class="sticky-top"></a>
         <div class="willbes-Class c_both">
             <div class="willbes-Lec-Tit NG tx-black">강좌정보</div>
             <div class="classInfoTable GM">
@@ -305,7 +308,7 @@
         </div>
         <!-- TopBtn-->
 
-        <a name="BookInfo" style="display: block"></a>
+        <a name="BookInfo" class="sticky-top"></a>
         <div class="willbes-BookInfo c_both">
             <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
             <div class="bookInfo">
@@ -368,7 +371,7 @@
         </div>
         <!-- TopBtn-->
 
-        <a name="Leclist" style="display: block"></a>
+        <a name="Leclist" class="sticky-top"></a>
         <div class="willbes-Leclist c_both">
             <div class="willbes-Lec-Tit NG tx-black">강의목차</div>
             <div class="LeclistTable">
@@ -444,7 +447,7 @@
         </div>
         <!-- TopBtn-->
 
-        <a name="Reply" style="display: block"></a>
+        <a name="Reply" class="sticky-top"></a>
         <div class="willbes-Reply c_both">
             <div class="willbes-Lec-Tit NG tx-black">수강후기</div>
             <div class="ReplylistTable tx-gray">

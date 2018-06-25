@@ -73,17 +73,17 @@ $(function() {
 });
 
 // scroll top fixed Script
-window.onscroll = function() {myFunction()};
+$(function() {
+    var stickyOffset = $('.sticky-menu').offset().top;
 
-var header = document.getElementById("sticky");
-var sticky = header.offsetTop;
+    $(window).scroll(function(){
+    var sticky = $('.sticky-menu'),
+        scroll = $(window).scrollTop();
 
-function myFunction() {
-    if (window.pageYOffset >= sticky) {
-        header.classList.add("fixed");
-    } else {
-        header.classList.remove("fixed");
-    }
-}
+    if (scroll >= stickyOffset) sticky.addClass('fixed');
+    else sticky.removeClass('fixed');
+    });
+});
+
 
 

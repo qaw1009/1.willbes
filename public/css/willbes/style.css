@@ -2415,6 +2415,10 @@ table.lecTable tr td .MoreBtn {
     width: 940px;
     margin: 0 auto;
 }
+.sticky-top {
+    display: block;
+    clear: both;
+}
 
 /* subContainer : Content : 강좌정보 */
 .classInfo {
@@ -2713,11 +2717,6 @@ table.classTable tr td.w-data {
     text-align: center;
     cursor: pointer;
 }
-
-
-
-
-attach
 
 /* subContainer : Content : 수강후기 */
 .willbes-LecreplyList {
@@ -4038,6 +4037,53 @@ ul li.profList .w-notice a {
     float: left;
     margin-right: 10px;
 }
+
+
+
+/*********************************************     CSCENTER PAGE     *********************************************/
+
+/* subContainer : Cs : 인덱스 */
+.tabWrap.tabCsDepth1 {
+    height:50px;
+    border-bottom: none;
+}
+.tabWrap.tabCsDepth1 li {
+    float: left;
+    width: 14.38571428571429%;
+    height: 50px;
+    margin-right: -1px;
+}
+.tabWrap.tabCsDepth1 li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 48px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    color: #383838;
+    text-align: center;
+    letter-spacing: 0;
+    border: 1px solid #ccc;
+}
+.tabWrap.tabCsDepth1 li:first-child a {
+    border-left: 1px solid #ccc;
+}
+.tabWrap.tabCsDepth1 li a.on {
+    z-index: 2;
+    background: #fff;
+    color: #0d74ae;
+    border: 1px solid #0d74ae;
+}
+
+
+
+
+
+
+
+
 
 
 

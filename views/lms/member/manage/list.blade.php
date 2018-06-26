@@ -168,6 +168,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 pagingType : 'simple_numbers',
+                lengthMenu: [10,20,30,50,100],
+                pageLength : 30,
                 ajax: {
                     'url' : '{{ site_url("/member/manage/ajaxList/") }}',
                     'type' : 'POST',
@@ -190,12 +192,22 @@
                     {'data' : 'SmsRcvStatus'},
                     {'data' : 'Mail'},
                     {'data' : 'MailRcvStatus'},
-                    {'data' : 'JoinDate'},
+                    {'data' : 'JoinDate', 'render' : function(data, type, row, meta){
+                            return data.substring(0,10);
+                        }},
                     {'data' : 'IsChange'},
-                    {'data' : 'LoginDate'},
-                    {'data' : 'InfoUpdDate'},
-                    {'data' : 'PwdUpdDate'},
-                    {'data' : 'OutDate'},
+                    {'data' : 'LoginDate', 'render' : function(data, type, row, meta){
+                            return data.substring(0,10);
+                        }},
+                    {'data' : 'InfoUpdDate', 'render' : function(data, type, row, meta){
+                            return data.substring(0,10);
+                        }},
+                    {'data' : 'PwdUpdDate', 'render' : function(data, type, row, meta){
+                            return data.substring(0,10);
+                        }},
+                    {'data' : 'OutDate', 'render' : function(data, type, row, meta){
+                            return data.substring(0,10);
+                        }},
                     {'data' : 'IsBlackList'},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             return 'PC : 1<br>모바일 2';
@@ -212,15 +224,15 @@
             });
 
             $list_table.on('click', '.btn-view1', function() {
-                location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
+                location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
 
             $list_table.on('click', '.btn-view2', function() {
-                location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
+                location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
 
             $list_table.on('click', '.btn-view3', function() {
-                location.replace('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
+                location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
             });
         });
     </script>

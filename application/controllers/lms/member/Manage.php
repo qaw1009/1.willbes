@@ -14,13 +14,13 @@ class Manage extends \app\controllers\BaseController
     /**
      * 사용자 리스트
      * @return CI_Output
-     */    
+     */
     public function index()
     {
 
         $this->load->view('member/manage/list');
     }
-    
+
     /**
      * 사용자 리스트
      * @return CI_Output
@@ -55,9 +55,9 @@ class Manage extends \app\controllers\BaseController
 
         // 최신 가입순으로
         $orderby = [
-          'Mem.JoinDate' => 'DESC'
+            'Mem.MemIdx' => 'DESC'
         ];
-        
+
         // 날짜검색 쿼리생성
         $search_condition = $this->_reqP('search_condition');
         $search_sdate = $this->_reqP('search_start_date');
@@ -102,7 +102,7 @@ class Manage extends \app\controllers\BaseController
                         SELECT memIdx FROM lms_Member_Out_Log 
                         WHERE OutDatm >= '{$search_sdate} 00:00:00' AND OutDatm <= '{$search_edate} 23:59:59'
                     ) AS tempA ON tempA.memIdx = Mem.MemIdx ";
-                break;
+                    break;
             }
         }
 
@@ -151,7 +151,7 @@ class Manage extends \app\controllers\BaseController
     {
         $memIdx = null;
         $viewType = null;
-        $data = null;
+        $data = [];
 
         if (empty($params[1]) === false) {
             $viewType = $params[1];
@@ -160,9 +160,17 @@ class Manage extends \app\controllers\BaseController
         if (empty($params[0]) === false) {
             $memIdx = $params[0]; //회원번호
 
-            $data = $this->memberModel->detail($memIdx);
+            if(is_numeric($memIdx) == true){
+                $data = $this->memberModel->detail($memIdx);
+            } else {
+                show_error('파라미터가 정확하기 않습니다.');
+            }
         } else {
             show_error('파라미터가 정확하기 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
         }
 
         $this->load->view('member/manage/view', [
@@ -172,7 +180,8 @@ class Manage extends \app\controllers\BaseController
     }
 
     /**
-     * 회원검색
+     * 회원 상세페이지에서 회원검색 레이어팝업
+     * @param array $params
      */
     public function search($params = [])
     {
@@ -184,6 +193,301 @@ class Manage extends \app\controllers\BaseController
 
         $this->load->view('member/manage/search_modal', [
             'search_value' => $search_value
+        ]);
+    }
+
+    /**
+     * 로그인 로그 팝업 페이지
+     * @param array $params
+     */
+    public function loginLog($params = [])
+    {
+        $memIdx = null;
+        $data = [];
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if (is_numeric($memIdx) == true) {
+                $data = $this->memberModel->detail($memIdx);
+            } else {
+                show_error('파라미터가 정확하기 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하기 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        $this->load->view('member/log/login_pop', [
+            'logtype' => 'login',
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 회원 로그인 정보 리스트
+     * @return CI_Output
+     */
+    public function ajaxloginlogList()
+    {
+        $memIdx = $this->_reqP('memIdx');
+        $search_value = $this->_reqP('search_value'); // 검색어
+        $search_sdate = $this->_reqP('search_start_date');
+        $search_edate = $this->_reqP('search_end_date');
+        $list = [];
+
+        // 기본 검색조건
+        $arr_condition = [
+            'EQ' => [
+                'Log.MemIdx' => $memIdx,
+                'Log.LoginIp' => $search_value
+            ],
+            'BDT' => [
+                'Log.LoginDatm' => [$search_sdate, $search_edate]
+            ]
+        ];
+
+        // 최신순으로
+        $orderby = [
+            'Log.LIdx' => 'DESC'
+        ];
+
+        // 갯수 구해오기
+        $count = $this->memberModel->loginlogList(true, $arr_condition,
+            $this->_reqP('length'), $this->_reqP('start'), $orderby);
+
+        // 갯수가 1개 이상일 경우 데이타 구해오기
+        if($count > 0){
+            $list = $this->memberModel->loginlogList(false, $arr_condition,
+                $this->_reqP('length'), $this->_reqP('start'), $orderby);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+
+    }
+
+    /**
+     * 회원정보수정 로그 팝업 페이지
+     * @param array $params
+     */
+    public function infoLog($params = [])
+    {
+        $memIdx = null;
+        $data = [];
+        $logtype = null;
+        $UpdTypeCcd = null;
+
+        if (empty($params[1]) === false) {
+            $logtype = $params[1];
+        } else {
+            $logtype = 'chg';
+        }
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if (is_numeric($memIdx) == true) {
+                $data = $this->memberModel->detail($memIdx);
+            } else {
+                show_error('파라미터가 정확하기 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하기 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        if($logtype == 'chg'){
+            $UpdTypeCcd = "656004"; //회원정보수정
+        } else if($logtype == 'pwd') {
+            $UpdTypeCcd = "656001,656002,656003"; // 비밀번호변경 혹은 초기화
+        }
+
+        $this->load->view('member/log/info_pop', [
+            'logtype' => $logtype,
+            'UpdTypeCcd' => $UpdTypeCcd,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 회원정볼 변경 리스트
+     * @return CI_Output
+     */
+    public function ajaxinfologList()
+    {
+        $memIdx = $this->_reqP('memIdx');
+        $search_value = $this->_reqP('search_value'); // 검색어
+        $search_sdate = $this->_reqP('search_start_date');
+        $search_edate = $this->_reqP('search_end_date');
+        $UpdTypeCcd = $this->_reqP('UpdTypeCcd');
+        $list = [];
+
+        // 기본 검색조건
+        $arr_condition = [
+            'EQ' => [
+                'Log.MemIdx' => $memIdx,
+                'Log.UpdIp' => $search_value
+            ],
+            'IN' => [
+                'Log.UpdTypeCcd' => explode(',',$UpdTypeCcd)
+            ],
+            'BDT' => [
+                'Log.UpdDatm' => [$search_sdate, $search_edate]
+            ]
+        ];
+
+        // 최신순으로
+        $orderby = [
+            'Log.ChIdx' => 'DESC'
+        ];
+
+        // 갯수 구해오기
+        $count = $this->memberModel->infologList(true, $arr_condition,
+            $this->_reqP('length'), $this->_reqP('start'), $orderby);
+
+        // 갯수가 1개 이상일 경우 데이타 구해오기
+        if($count > 0){
+            $list = $this->memberModel->infologList(false, $arr_condition,
+                $this->_reqP('length'), $this->_reqP('start'), $orderby);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 회원 등록 기기정보 페이지
+     * @param array $params
+     */
+    public function deviceLog($params = [])
+    {
+        $memIdx = null;
+        $data = [];
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if (is_numeric($memIdx) == true) {
+                $data = $this->memberModel->detail($memIdx);
+            } else {
+                show_error('파라미터가 정확하기 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하기 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        $this->load->view('member/log/device_pop', [
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 회원등록 기기정보 리스트
+     * @return CI_Output
+     */
+    public function ajaxdeviceList()
+    {
+        $memIdx = $this->_reqP('memIdx');
+        $list = [];
+
+        // 기본 검색조건
+        $arr_condition = [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+            ]
+        ];
+
+        // 최신순으로
+        $orderby = [
+            //'ChIdx' => 'DESC'
+        ];
+
+        // 갯수 구해오기
+        $count = $this->memberModel->deviceList(true, $arr_condition,
+            $this->_reqP('length'), $this->_reqP('start'), $orderby);
+
+        // 갯수가 1개 이상일 경우 데이타 구해오기
+        if($count > 0){
+            $list = $this->memberModel->deviceList(false, $arr_condition,
+                $this->_reqP('length'), $this->_reqP('start'), $orderby);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 회원 이름 변경 페이지
+     * @param array $params
+     */
+    public function chgName($params = [])
+    {
+        $memIdx = null;
+        $data = [];
+        $cdata = [];
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if (is_numeric($memIdx) == true) {
+                $data = $this->memberModel->detail($memIdx);
+            } else {
+                show_error('파라미터가 정확하기 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하기 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        // 기본 검색조건
+        $arr_condition = [
+            'EQ' => [
+                'Log.MemIdx' => $memIdx,
+                'Log.UpdTypeCcd' => '656005' // 이름변경
+            ]
+        ];
+
+        // 최신순으로
+        $orderby = [
+            'Log.ChIdx' => 'DESC'
+        ];
+
+        // 갯수 구해오기
+        $count = $this->memberModel->infologList(true, $arr_condition,
+            $this->_reqP('length'), $this->_reqP('start'), $orderby);
+
+        // 갯수가 1개 이상일 경우 데이타 구해오기
+        if($count > 0){
+            $cdata = $this->memberModel->infologList(false, $arr_condition,
+                $this->_reqP('length'), $this->_reqP('start'), $orderby);
+        }
+
+        $this->load->view('member/log/chgName_pop', [
+            'data' => $data,
+            'cdata' => $cdata
         ]);
     }
 }

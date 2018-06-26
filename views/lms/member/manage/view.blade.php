@@ -13,7 +13,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn bg-blue" id="btn_search_x">검색</button>
+                        <button type="button" class="btn bg-blue" id="btn_search_view">검색</button>
                     </div>
                     <div class="col-md-3">
                         <p class="form-control-static">• 회원번호, 이름, 아이디, 휴대폰번호 검색 기능</p>
@@ -27,6 +27,7 @@
             - 회원정보
         </div>
         <div class="text-right form-inline">
+            <button class="btn btn-primary" type="button" id="btn_list">목록</button>
             <button type="button" class="btn btn-default" id="">비번초기화</button>
             <button type="button" class="btn btn-default" id="">EM발송</button>
             <button type="button" class="btn btn-default" id="">쪽지발송</button>
@@ -51,7 +52,7 @@
                     <td>{{ $data['MemIdx'] }}</td>
                     <td>{{ $data['JoinDate'] }}</td>
                     <td>{{ $data['BirthDay'] }} ({{ $data['Sex'] == 'M' ? '남' : '여' }})</td>
-                    <td>{{ $data['MemName'] }}</td>
+                    <td>{{ $data['MemName'] }} <button type="button" class="btn btn-default" id="chgname">이름변경</button></td>
                     <td>{{ $data['MemId'] }}</td>
                     <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})</td>
                     <td>{{ $data['Mail'] }} ({{ $data['MailRcvStatus'] }})</td>
@@ -84,13 +85,19 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{ $data['IsChange'] }}</td>
-                    <td>{{ $data['LoginDate'] }}</td>
-                    <td>{{ $data['InfoUpdDate'] }}</td>
-                    <td>{{ $data['PwdUpdDate'] }}</td>
+                    <td>{{ $data['IsChange'] }} []</td>
+                    <td>{{ $data['LoginDate'] }}<br>
+                        <button type="button" class="btn btn-default" id="login_log">로그인이력</button>
+                    </td>
+                    <td>{{ $data['InfoUpdDate'] }}<br>
+                        <button type="button" class="btn btn-default" id="chg_info_log">정보변경이력</button></td>
+                    <td>{{ $data['PwdUpdDate'] }}<br>
+                        <button type="button" class="btn btn-default" id="chg_pwd_log">비밀번호변경이력</button></td>
                     <td>{{ $data['OutDate'] }}</td>
-                    <td>{{ $data['IsBlackList'] }}</td>
-                    <td>PC : {{ $data['PcCount'] }} / 모바일 : {{ $data['MobileCount'] }}</td>
+                    <td>{{ $data['IsBlackList'] }}<br>
+                        <button type="button" class="btn btn-default" id="blacklist_log">블랙컨슈머이력</button></td>
+                    <td>PC : {{ $data['PcCount'] }} / 모바일 : {{ $data['MobileCount'] }}<br>
+                        <button type="button" class="btn btn-default" id="device_log">기기등록정보</button></td>
                 </tr>
                 </tbody>
             </table>
@@ -119,21 +126,49 @@
     </form>
     <script>
         $(document).ready(function() {
+            $("#login_log").click(function() {
+                popupOpen('/member/manage/loginLog/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'no');
+            });
+
+            $("#chg_info_log").click(function() {
+                popupOpen('/member/manage/infoLog/{{$data['MemIdx']}}/chg', 'loginLog', '800', '800', null, null, 'no');
+            });
+
+            $("#chg_pwd_log").click(function() {
+                popupOpen('/member/manage/infoLog/{{$data['MemIdx']}}/pwd', 'loginLog', '800', '800', null, null, 'no');
+            });
+
+            $("#blacklist_log").click(function() {
+                popupOpen('/member/manage/blacklistLog/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'no');
+            });
+
+            $("#device_log").click(function() {
+                popupOpen('/member/manage/deviceLog/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'no');
+            });
+
+            $("#chgname").click(function() {
+                popupOpen('/member/manage/chgname/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'yes');
+            });
+
             $('#search_value').keypress(function() {
                 if(event.keyCode == 13){
                     if($.trim($('#search_value').val()) != ''){
-                        $('#btn_search_x').click();
+                        $('#btn_search_view').click();
                     }
                 }
             });
 
-            $('#btn_search_x').click(function() {
+            $('#btn_search_view').click(function() {
                 var url = '{{ site_url('member/manage/search/') }}' + $('#search_value').val();
 
-                $('#btn_search_x').setLayer({
+                $('#btn_search_view').setLayer({
                     url : url,
                     width : 1000
                 });
+            });
+
+            $('#btn_list').click(function() {
+                location.replace('{{ site_url('/member/manage/') }}' + getQueryString());
             });
         });
     </script>

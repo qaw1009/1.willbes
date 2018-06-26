@@ -192,6 +192,7 @@ function notifyAlert(type, title, text, delay, hide, center) {
  * @param height
  * @param xpos
  * @param ypos
+ * @param scrollbar
  */
 var popupWins = new Array();
 
@@ -211,6 +212,8 @@ function popupOpen(url, name, width, height, xpos, ypos, scrollbar) {
                 popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable=yes');
             }
         }
+
+        popupWins[name].focus();
 
     }catch(e){
 

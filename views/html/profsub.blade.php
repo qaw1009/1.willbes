@@ -309,8 +309,8 @@
                     <!-- curriWrap -->
                     <div class="willbes-Leclist c_both">
                         <div class="willbes-LecreplyList tx-gray">
-                            <dl>
-                                <dt><a href="#none">BEST순</a></dt>
+                            <dl class="Select-Btn NG">
+                                <dt><a class="on" href="#none">BEST순</a></dt>
                                 <dt><a href="#none">최신순</a></dt>
                                 <dt><a href="#none">평점순</a></dt>
                             </dl>
@@ -547,7 +547,7 @@
 
                     <div class="willbes-Leclist c_both">
                         <div class="LecWriteTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable writeTable upper-gray upper-black bdb-gray tx-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable writeTable upper-gray upper-black bdt-gray bdb-gray fc-bd-none tx-gray">
                                 <colgroup>
                                     <col style="width: 120px;">
                                     <col style="width: 720px;">

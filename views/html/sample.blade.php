@@ -36,3 +36,5 @@
 <a href="{{ site_url('/home/html/cart2') }}">결제하기 page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/cart3') }}">결제완료 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 page 이동</a><br/><br/>

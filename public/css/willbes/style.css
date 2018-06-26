@@ -2741,6 +2741,13 @@ table.classTable tr td.w-data {
     margin-top: 30px;
     letter-spacing: 0;
 }
+.willbes-LecreplyList .Select-Btn dt {
+    margin-right: 10px;
+}
+.willbes-LecreplyList .Select-Btn dt a.on {
+    color: #0d74ae;
+    text-decoration: underline;
+}
 .willbes-LecreplyList ul {
     float: right;
 }
@@ -3605,6 +3612,9 @@ table.finTable tr td {
     border-bottom: 1px solid #959595;
     padding-bottom: 8px;
 }
+.willbes-listTable .will-Tit span {
+    vertical-align: baseline;
+}
 .willbes-listTable .List-Table {
     padding: 0;
 }
@@ -3962,14 +3972,12 @@ ul li.profList .w-notice a {
 }
 
 /* subContainer : Prof : writeTable */
-.LecWriteTable .writeTable {}
 .LecWriteTable .writeTable tr td.w-text input {
     width: 670px;
 }
 .LecWriteTable .writeTable tr td.w-textarea textarea {
     width: 670px;
 }
-
 
 /* subContainer : Prof : replyTable */
 .LeclistTable .replyTable tbody tr th,
@@ -3997,8 +4005,6 @@ ul li.profList .w-notice a {
 .LeclistTable .replyTxt td div {
     padding-bottom: 5px;
 }
-
-
 
 /* subContainer : Prof : sliderBest */
 .sliderBest .best-tit {
@@ -4282,21 +4288,294 @@ ul li.profList .w-notice a {
     border: 1px solid #0d74ae;
 }
 
+/* subContainer : Cs : CScenter1 : Act1-1 */
+.CScenter1 .Act1-1 {
+    height: 250px;
+}
+.CSpartner .centerList {
+    background: #f1f1f1;
+    height: 225px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+}
+.CSpartner .centerList ul {
+    border-bottom: 1px solid #dddbdb;
+    margin: 0 40px;
+    padding: 32px 0;
+}
+.CSpartner .centerList ul li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.CSpartner .centerList ul li .nTxt {
+    font-size: 14px;
+    color: #555;
+}
+.CSpartner .centerList .Txt {
+    font-size: 14px;
+    color: #1f1f1f;
+    padding: 20px 0;
+}
+.callTable {
+    text-align: center;
+}
+.callTable tr td {
+    font-size: 14px;
+    color: #3a3a3a;
+    height: 60px;
+}
+.callTable tr td.tx-light-blue {
+    font-size: 22px;
+}
+.callBox {
+    height: 225px;
+}
+.callBox .center-Btn {
+    margin-top: 9px;
+}
+.callBox .center-Btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    line-height: 34px;
+}
+
+/* subContainer : Cs : CScenter1 : Act1-2 */
+.LeclistTable .csCenterTable tbody tr.replyTxt th,
+.LeclistTable .csCenterTable tbody tr.replyTxt td {
+    line-height: 19px;
+    padding: 15px 0;
+}
+.csCenterTable {
+    border-top: 2px solid #000;
+}
+.csCenterTable tr th ul {
+    height: 50px;
+    border-bottom: 2px solid #b5b5b5;
+}
+.csCenterTable tr th ul li {
+    display: inline-block;
+    margin: 0 30px;
+    line-height: 50px;
+}
+.csCenterTable .replyList .arrow-Btn {
+    background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 -18px;
+    float: right;
+    width: 11px;
+    height: 9px;
+    margin: 15px;
+}
+.csCenterTable .replyList.hover .arrow-Btn {
+    background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 0;
+}
+.csCenterTable .SearchBox td {
+    padding: 30px 0;
+}
+.csCenterTable .SearchBox span {
+    display: inline-block;
+} 
+.csCenterTable .SearchBox .sTit {
+    font-size: 17px;
+    margin: 0 30px;
+}
+.csCenterTable .willbes-Lec-Search .inputBox {
+    width: 570px;
+}
+.csCenterTable .willbes-Lec-Search .inputBox input {
+    width: 490px;
+}
+
+/* subContainer : Cs : CScenter1 : Act1-3 */
+.willbes-firstinfo {
+    font-weight: 600;
+    height: 150px;
+    border-top: 1px solid #dedede;
+    border-bottom: 3px solid #ccc;
+}
+.willbes-firstinfo ul li.Tit {
+    position: relative;
+    width: 196px;
+    height: 146px;
+    font-size: 28px;
+    color: #3f3f3e;
+    line-height: 32px;
+    padding: 26px;
+    border-right: 1px solid #dedede;
+}
+.willbes-firstinfo ul li.Tit:after,
+.willbes-firstinfo ul li.Tit:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+.willbes-firstinfo ul li.Tit:before {
+    top: 50%;
+    right: -18px;
+    margin-top: -9px;
+    border-color: transparent transparent transparent #dedede;
+    border-width: 9px;
+}
+.willbes-firstinfo ul li.Tit:after {
+    top: 50%;
+    right: -16px;
+    margin-top: -9px;
+    border-color: transparent transparent transparent #fff;
+    border-width: 9px;
+}
+.willbes-firstinfo ul li.Tit span {
+    vertical-align: baseline;
+}
+.willbes-firstinfo ul li.Tit span.NGR {
+    font-weight: 300;
+    color: #323232;
+}
+.willbes-firstinfo ul li {
+    float: left;
+    width: 145px;
+    height: 146px;
+}
+.willbes-firstinfo ul li .row-line {
+    float: right;
+    background: #e4e4e4;
+    width: 1px;
+    height: 65px;
+    margin: 40px 0;
+}
+.willbes-firstinfo ul li a {
+    float: left;
+    display: block;
+    width: 142px;
+    height: 100%;
+    font-size: 13px;
+    text-align: center;
+    margin: 0 1px;
+}
+.willbes-firstinfo ul li a:hover {
+    color: #0d74ae;
+}
+.willbes-firstinfo ul li a span {
+    display: block;
+    padding-top: 100px;
+}
+.willbes-firstinfo ul li.f-info1 a {
+    background: url("../../img/willbes/cs/icon_firstinfo1.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info2 a {
+    background: url("../../img/willbes/cs/icon_firstinfo2.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info3 a {
+    background: url("../../img/willbes/cs/icon_firstinfo3.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info4 a {
+    background: url("../../img/willbes/cs/icon_firstinfo4.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info5 a {
+    background: url("../../img/willbes/cs/icon_firstinfo5.gif") no-repeat center 15px;
+}
+
+.willbes-firstinfo ul li.f-info1 a:hover {
+    background: url("../../img/willbes/cs/icon_firstinfo1_on.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info2 a:hover {
+    background: url("../../img/willbes/cs/icon_firstinfo2_on.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info3 a:hover {
+    background: url("../../img/willbes/cs/icon_firstinfo3_on.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info4 a:hover {
+    background: url("../../img/willbes/cs/icon_firstinfo4_on.gif") no-repeat center 15px;
+}
+.willbes-firstinfo ul li.f-info5 a:hover {
+    background: url("../../img/willbes/cs/icon_firstinfo5_on.gif") no-repeat center 15px;
+}
+
+/* subContainer : Cs : CScenter1 : Act1-3 : willbes-Layer-CScenterBox */
+.willbes-Layer-CScenterBox {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 85px;
+    right: 0;
+    z-index: 101;
+    width: 700px;
+    height: 610px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-CScenterBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-CScenterBox .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-CScenterBox .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-CScenterBox .Layer-SubTit {
+    font-size: 12px;
+    padding: 20px 0;
+} 
+.willbes-Layer-CScenterBox table tr th,
+.willbes-Layer-CScenterBox table tr td {
+    font-size: 11px;
+    font-weight: 300;
+}
+.willbes-Layer-CScenterBox table tr td {
+    line-height: 17px !important;
+    padding: 13px 0;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* subContainer : Cs : CScenter1 : Act1-4 */
+.CScenter1 .Act1-4 {
+    height: 202px;
+}
+.willbes-program {
+    float: left;
+    height: 202px;
+    border-bottom: 1px solid #e2e2e2;
+}
+.willbes-program dl dt {
+    float: left;
+    width: 25%;
+    text-align: center;
+    margin: 39px 0;
+}
+.willbes-program dl dt div {
+    height:30px;
+    line-height: 15px;
+    margin-bottom: 10px;
+}
+.willbes-info {
+    height: 202px;
+}
+.willbes-info .List-Table {
+    margin-top: 9px;
+}
+.willbes-info .List-Table li {
+    line-height: 40px;
+    height: 42px;
+}
+.willbes-info .List-Table li a {
+    float: left;
+    width: 295px;
+}
+.willbes-info .List-Table li .date {
+    float: right;
+    color: #959595;
+}
 
 
 
@@ -4310,7 +4589,6 @@ ul li.profList .w-notice a {
 .Quick-Bnr {
     float: left;
 }
-
 
 
 

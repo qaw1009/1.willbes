@@ -211,6 +211,9 @@ class Notice extends BaseBoard
             $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+            $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+            $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+            $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
         }
 
         $this->load->view("board/{$this->board_name}/create", [
@@ -314,6 +317,9 @@ class Notice extends BaseBoard
 
         $site_code = $data['SiteCode'];
         $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
 
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;

@@ -963,24 +963,6 @@ class BoardModel extends WB_Model
     }
 
     /**
-     * 캠퍼스'Y'상태 사이트 코드 조회
-     * @return array
-     */
-    /*public function getOffLineSiteArray()
-    {
-        $column = 'SiteCode,SiteName';
-        $arr_condition = [
-            'EQ' => [
-                'IsCampus' => 'Y'
-            ]
-        ];
-        $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
-
-        $data = $this->siteModel->listSite($column, $arr_condition);
-        return array_pluck($data, 'SiteName', 'SiteCode');
-    }*/
-
-    /**
      * 게시판 카테고리 조회
      * @param $board_idx
      * @return array|int

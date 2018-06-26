@@ -270,7 +270,6 @@ class LiveManager extends \app\controllers\BaseController
         }
 
         //캠퍼스'Y'상태 사이트 코드 조회
-        /*$offLineSite_list = $this->boardModel->getOffLineSiteArray();*/
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         //캠퍼스 조회

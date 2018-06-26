@@ -195,19 +195,20 @@ function notifyAlert(type, title, text, delay, hide, center) {
  */
 var popupWins = new Array();
 
-function popupOpen(url, name, width, height, xpos, ypos) {
+function popupOpen(url, name, width, height, xpos, ypos, scrollbar) {
     try{
         name =  name || '_blank';
         xpos = xpos || (screen.availWidth-width)/2;
         ypos = ypos || (screen.availHeight-height)/2;
+        scrollbar = scrollbar || 'no';
 
         if ( typeof( popupWins[name] ) !== "object" ){
-            popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar`o, status=no, toolbar=no, scrollbars=no, resizable=yes');
+            popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable=yes');
         } else {
             if (!popupWins[name].closed){
                 popupWins[name].location.href = url;
             } else {
-                popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars=no, resizable=yes');
+                popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable=yes');
             }
         }
 

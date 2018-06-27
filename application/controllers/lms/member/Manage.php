@@ -113,17 +113,23 @@ class Manage extends \app\controllers\BaseController
         }
 
         // 비번 6개월이상 미변경 회원
-        if($this->_reqP('NOChangePwd') == 'Y'){
+        if($this->_reqP('NoChangePwd') == 'Y'){
             $arr_condition += [
-                'LTE' => ['Mem.JoinDate' => '' ]
+                'LTE' => ['Mem.LastPassModyDatm' => date("Y-m-d H:m:s", strtotime("-6 month"))]
             ];
         }
 
         // 휴면회원 1년이상 미로그인 회원
         if($this->_reqP('IsSleep') == 'Y'){
             $arr_condition += [
-                'LTE' => ['Mem.JoinDate' => '' ]
+                'LTE' => ['Mem.LastLoginDatm' => '']
             ];
+        }
+
+        // 기기등록회원
+        if($this->_reqP('IsRegDevice') == 'Y' ){
+            //$inQuery .= "
+            //INNER JOIN lms_Member_Out_Log AS outMem2 ON outMem2.memIdx = Mem.memIdx ";
         }
 
         // 갯수 구해오기
@@ -161,7 +167,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if(is_numeric($memIdx) == true){
-                $data = $this->memberModel->detail($memIdx);
+                $data = $this->memberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -209,7 +215,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->memberModel->detail($memIdx);
+                $data = $this->memberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -221,7 +227,7 @@ class Manage extends \app\controllers\BaseController
             show_error('회원검색에 실패했습니다.');
         }
 
-        $this->load->view('member/log/login_pop', [
+        $this->load->view('member/log/login_modal', [
             'logtype' => 'login',
             'data' => $data
         ]);
@@ -294,7 +300,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->memberModel->detail($memIdx);
+                $data = $this->memberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -312,7 +318,7 @@ class Manage extends \app\controllers\BaseController
             $UpdTypeCcd = "656001,656002,656003"; // 비밀번호변경 혹은 초기화
         }
 
-        $this->load->view('member/log/info_pop', [
+        $this->load->view('member/log/info_modal', [
             'logtype' => $logtype,
             'UpdTypeCcd' => $UpdTypeCcd,
             'data' => $data
@@ -381,7 +387,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->memberModel->detail($memIdx);
+                $data = $this->memberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -393,7 +399,7 @@ class Manage extends \app\controllers\BaseController
             show_error('회원검색에 실패했습니다.');
         }
 
-        $this->load->view('member/log/device_pop', [
+        $this->load->view('member/log/device_modal', [
             'data' => $data
         ]);
     }
@@ -450,7 +456,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->memberModel->detail($memIdx);
+                $data = $this->memberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -485,9 +491,78 @@ class Manage extends \app\controllers\BaseController
                 $this->_reqP('length'), $this->_reqP('start'), $orderby);
         }
 
-        $this->load->view('member/log/chgName_pop', [
+        $this->load->view('member/log/chgName_modal', [
             'data' => $data,
             'cdata' => $cdata
         ]);
     }
+
+    /**
+     *  사용자 이름 변경 처리
+     */
+    public function chgName_Proc()
+    {
+        $input = $this->_reqP(null, false);
+        $rules = [
+            ['field' => 'memIdx', 'label' => '사용자번호', 'rules' => 'trim|required'],
+            ['field' => 'chg_name', 'label' => '변겅이름', 'rules' => 'trim|required'],
+            ['field' => 'chg_reason', 'label' => '변경사유', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $data = $this->memberModel->getMember(element('memIdx', $input));
+
+        if(empty($data) == true){
+            $this->json_result(false, '', [
+                'ret_cd' => false,
+                'ret_msg' => '어쩌구저쩌구
+            ']);
+            return;
+        }
+
+        $input = [
+            'MemIdx' => element('memIdx', $input),
+            'MemName' => element('chg_name', $input),
+            'UpdMemo' => element('chg_reason', $input),
+            'UpdData' => $data['MemName'].' ▶ '.element('chg_name', $input)
+        ];
+
+        $result = $this->memberModel->chgName($input);
+
+        $this->json_result($result, '처리되었습니다.', $result);
+    }
+
+    /**
+     * 블랙리스트 목록
+     * @param array $params
+     */
+    public function blacklistLog($params = [])
+    {
+        $memIdx = null;
+        $data = [];
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if (is_numeric($memIdx) == true) {
+                $data = $this->memberModel->getMember($memIdx);
+            } else {
+                show_error('파라미터가 정확하기 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하기 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        $this->load->view('member/log/blacklist_modal', [
+            'data' => $data
+        ]);
+    }
+
 }

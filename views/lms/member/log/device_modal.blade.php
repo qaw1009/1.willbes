@@ -1,28 +1,46 @@
-@extends('lcms.layouts.master_popup')
-@section('popup_title')
-    회원정보이력보기 ({{$logtype == 'chg' ? "정보변경" : "암호변경"}})
+@extends('lcms.layouts.master_modal')
+@section('layer_title')
+    기기등록정보
 @stop
 
-@section('popup_header')
+@section('layer_header')
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <input type="hidden" name="memIdx" value="{{$data['MemIdx']}}" />
-        <input type="hidden" name="UpdTypeCcd" value="{{$UpdTypeCcd}}" />
         {!! csrf_field() !!}
         @endsection
 
-        @section('popup_content')
+        @section('layer_content')
             {!! form_errors() !!}
             @include('lms.member.log.infonav')
-            @include('lms.member.log.lognav')
+            <div class="x_panel mt-0">
+                <div class="x_content">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="chg_name">기기등록현황</label>
+                        <div class="col-md-9 item">
+                            총 X대(PC X대 + 모바일 X대)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="chg_name">기기등록정책</label>
+                        <div class="col-md-9 item">
+                            * 맥 어드레스는 PC/모바일 제한없이 최대 2대까지 등록 가능<br/>
+                            * 맥 어드레스 초기화(삭제)는 1회로 제한 (회원이 직접 1회 초기화 가능)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="x_panel mt-10">
                 <div class="x_content">
                     <table id="list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>No</th>
-                            <th>변경항목</th>
-                            <th>변경일</th>
-                            <th>변경자</th>
+                            <th>삭제</th>
+                            <th>기기구분</th>
+                            <th>고유번호</th>
+                            <th>등록일</th>
+                            <th>삭제일</th>
+                            <th>삭제자</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -39,11 +57,9 @@
                 $(document).ready(function() {
                     $datatable = $list_table.DataTable({
                         serverSide: true,
-                        lengthMenu: [10],
-                        pageLength : 10,
-                        pagingType : 'simple_numbers',
+                        paging : false,
                         ajax: {
-                            'url' : '{{ site_url("/member/manage/ajaxinfologList/") }}',
+                            'url' : '{{ site_url("/member/manage/ajaxdeviceList/") }}',
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -54,9 +70,11 @@
                                     // 리스트 번호
                                     return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
-                            {'data' : ''},
-                            {'data' : ''},
-                            {'data' : ''}
+                            {'data' : 'LoginDatm'},
+                            {'data' : null},
+                            {'data' : 'LoginIp'},
+                            {'data' : 'LoginIp'},
+                            {'data' : 'LoginIp'}
                         ]
                     });
                 });

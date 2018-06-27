@@ -28,10 +28,10 @@
         </div>
         <div class="text-right form-inline">
             <button class="btn btn-primary" type="button" id="btn_list">목록</button>
-            <button type="button" class="btn btn-default" id="">비번초기화</button>
-            <button type="button" class="btn btn-default" id="">EM발송</button>
-            <button type="button" class="btn btn-default" id="">쪽지발송</button>
-            <button type="button" class="btn btn-default" id="">SMS발송</button>
+            <button type="button" class="btn btn-default" id="btn_pwd_reset">비번초기화</button>
+            <button type="button" class="btn btn-default" id="btn_mail">EM발송</button>
+            <button type="button" class="btn btn-default" id="btn_message">쪽지발송</button>
+            <button type="button" class="btn btn-default" id="btn_sms">SMS발송</button>
             <button type="button" class="btn bg-blue" id="">자동로그인</button>
         </div>
         <div class="x_content">
@@ -85,7 +85,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{ $data['IsChange'] }} []</td>
+                    <td>{{ $data['IsChange'] }}<br>[{{ $data['ChangeDate'] }}]</td>
                     <td>{{ $data['LoginDate'] }}<br>
                         <button type="button" class="btn btn-default" id="login_log">로그인이력</button>
                     </td>
@@ -126,29 +126,42 @@
     </form>
     <script>
         $(document).ready(function() {
-            $("#login_log").click(function() {
-                popupOpen('/member/manage/loginLog/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'no');
+            $('#login_log').setLayer({
+                url : "{{ site_url("member/manage/loginLog/{$data['MemIdx']}") }}",
+                width : 1000
             });
 
-            $("#chg_info_log").click(function() {
-                popupOpen('/member/manage/infoLog/{{$data['MemIdx']}}/chg', 'loginLog', '800', '800', null, null, 'no');
+            $('#chg_info_log').setLayer({
+                url : "{{ site_url("member/manage/infoLog/{$data['MemIdx']}/chg") }}",
+                width : 1000
             });
 
-            $("#chg_pwd_log").click(function() {
-                popupOpen('/member/manage/infoLog/{{$data['MemIdx']}}/pwd', 'loginLog', '800', '800', null, null, 'no');
+            $('#chg_pwd_log').setLayer({
+                url : "{{ site_url("member/manage/infoLog/{$data['MemIdx']}/pwd") }}",
+                width : 1000
             });
 
-            $("#blacklist_log").click(function() {
-                popupOpen('/member/manage/blacklistLog/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'no');
+            $('#blacklist_log').setLayer({
+                url : "{{ site_url("member/manage/blacklistLog/{$data['MemIdx']}") }}",
+                width : 1000
             });
 
-            $("#device_log").click(function() {
-                popupOpen('/member/manage/deviceLog/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'no');
+            $('#device_log').setLayer({
+                url : "{{ site_url("member/manage/deviceLog/{$data['MemIdx']}") }}",
+                width : 1000
             });
 
-            $("#chgname").click(function() {
-                popupOpen('/member/manage/chgname/{{$data['MemIdx']}}', 'loginLog', '800', '800', null, null, 'yes');
+            $('#chgname').setLayer({
+                url : "{{ site_url("member/manage/chgname/{$data['MemIdx']}") }}",
+                width : 1000
             });
+
+            $('#btn_message').setLayer({
+                url : "{{ site_url('crm/message/createSendModal/') }}",
+                width : 1000,
+                modal_id : "message_modal"
+            });
+
 
             $('#search_value').keypress(function() {
                 if(event.keyCode == 13){

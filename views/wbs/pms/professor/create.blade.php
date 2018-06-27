@@ -96,14 +96,14 @@
                     <label class="control-label col-md-2" for="prof_profile">교수프로필
                     </label>
                     <div class="col-md-9">
-                        <textarea id="prof_profile" name="prof_profile" class="form-control" rows="7" title="교수프로필" placeholder="">{!! $data['wProfProfile'] !!}</textarea>
+                        <textarea id="prof_profile" name="prof_profile" class="form-control" rows="7" title="교수프로필" placeholder="">{{ $data['wProfProfile'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="book_content">주요저서
                     </label>
                     <div class="col-md-9">
-                        <textarea id="book_content" name="book_content" class="form-control" rows="7" title="주요저서" placeholder="">{!! $data['wBookContent'] !!}</textarea>
+                        <textarea id="book_content" name="book_content" class="form-control" rows="7" title="주요저서" placeholder="">{{ $data['wBookContent'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

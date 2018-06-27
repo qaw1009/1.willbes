@@ -146,21 +146,21 @@
                     <label class="control-label col-md-2" for="book_desc">교재소개
                     </label>
                     <div class="col-md-9">
-                        <textarea id="book_desc" name="book_desc" class="form-control" rows="7" title="교재소개" placeholder="">{!! $data['wBookDesc'] !!}</textarea>
+                        <textarea id="book_desc" name="book_desc" class="form-control" rows="7" title="교재소개" placeholder="">{{ $data['wBookDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="author_desc">저자소개
                     </label>
                     <div class="col-md-9">
-                        <textarea id="author_desc" name="author_desc" class="form-control" rows="7" title="저자소개" placeholder="">{!! $data['wAuthorDesc'] !!}</textarea>
+                        <textarea id="author_desc" name="author_desc" class="form-control" rows="7" title="저자소개" placeholder="">{{ $data['wAuthorDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="table_desc">목차소개
                     </label>
                     <div class="col-md-9">
-                        <textarea id="table_desc" name="table_desc" class="form-control" rows="7" title="목차소개" placeholder="">{!! $data['wTableDesc'] !!}</textarea>
+                        <textarea id="table_desc" name="table_desc" class="form-control" rows="7" title="목차소개" placeholder="">{{ $data['wTableDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

@@ -172,7 +172,7 @@
                 {{-- 강사료 정산 계약정보 --}}
                 @foreach($arr_calc_target as $on_off_type => $rows)
                     <div class="form-group">
-                        <label class="control-label col-md-2" for="prof_curriculum">@if($on_off_type == 'on')온라인상품@else학원상품@endif 강사료<br/>표준 계약정보 <span class="required">*</span>
+                        <label class="control-label col-md-2">@if($on_off_type == 'on')온라인상품@else학원상품@endif 강사료<br/>표준 계약정보 <span class="required">*</span>
                         </label>
                         <div class="col-md-9 item">
                             <div class="x_panel mb-0">
@@ -240,7 +240,7 @@
                     <label class="control-label col-md-2" for="prof_curriculum">커리큘럼 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item">
-                        <textarea id="prof_curriculum" name="prof_curriculum" class="form-control" rows="7" title="커리큘럼" placeholder="">{!! $data['ProfCurriculum'] !!}</textarea>
+                        <textarea id="prof_curriculum" name="prof_curriculum" class="form-control" rows="7" title="커리큘럼" placeholder="">{{ $data['ProfCurriculum'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

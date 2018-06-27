@@ -92,9 +92,9 @@ $(function() {
 });
 
 // scroll top fixed Script
-$(function() {
-    var stickyOffset = $('.sticky-menu').offset().top;
+$('*[id*=Sticky]:visible').each(function() {
 
+    var stickyOffset = $('.sticky-menu').offset().top;
     $(window).scroll(function(){
     var sticky = $('.sticky-menu'),
         scroll = $(window).scrollTop();
@@ -103,6 +103,3 @@ $(function() {
     else sticky.removeClass('fixed');
     });
 });
-
-
-

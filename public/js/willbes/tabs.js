@@ -12,7 +12,7 @@ $('ul.tabWrap').each(function(){
 
     // Hide the remaining content
     $links.not($active).each(function () {
-        $(this.hash).hide();
+        $(this.hash).hide().css('display','none');
     });
 
     // Bind the click event handler
@@ -35,7 +35,7 @@ $('ul.tabWrap').each(function(){
 });
 
 function openLink(divID , Name) {
-    var i, tabcontent, tablinks, hover;
+    var i, tabcontent, tablinks, hover = $('ul.tabWrap.tabDepth1').find('a');
     tabcontent = document.getElementById(divID);
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
@@ -45,8 +45,8 @@ function openLink(divID , Name) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.display = "none";
     }
-    document.getElementById(divID).style.display = "block";
 
+    hover.removeClass('on');
     hover = document.getElementById(Name);
     for (i = 0; i < hover.length; i++) {
         hover.classList.remove("on");

@@ -13,13 +13,13 @@ class Lecture extends \app\controllers\FrontController
         parent::__construct();
     }
 
-    public function index()
+    public function index($params = [])
     {
-        echo '단강좌 메인';
+        $this->load->view('site/lecture/index' . $this->_pass_site_val);
     }
 
-    public function show()
+    public function show($params = [])
     {
-        echo '단강좌 상세';
+        $this->load->view('site/lecture/show' . $this->_pass_site_val);
     }    
 }

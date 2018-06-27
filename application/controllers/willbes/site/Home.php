@@ -15,10 +15,6 @@ class Home extends \app\controllers\FrontController
 
     public function index()
     {
-        if ($this->_is_pass_site === true) {
-            $this->load->view('site/pass');
-        } else {
-            $this->load->view('site/main');
-        }
+        $this->load->view('site/main' . $this->_pass_site_val);
     }
 }

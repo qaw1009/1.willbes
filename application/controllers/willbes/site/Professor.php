@@ -15,11 +15,7 @@ class Professor extends \app\controllers\FrontController
 
     public function index()
     {
-        if ($this->_is_pass_site === true) {
-            $this->load->view('site/pass');
-        } else {
-            $this->load->view('site/main');
-        }
+        echo '교수 인덱스';
     }
 
     public function show()

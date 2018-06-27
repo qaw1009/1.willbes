@@ -30,12 +30,12 @@
                         @foreach($menu_group_row['Children'] as $menu_idx => $menu_row)
                             @if($menu_row['MenuType'] == 'GN')
                                 <li class="dropdown">
-                                    <a href="{{ $menu_row['MenuUrl'] }}">{{ $menu_row['MenuName'] }}</a>
+                                    <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
                                     @if(isset($menu_row['Children']) === true)
                                         <div class="left-drop-Box">
                                             <ul>
                                                 @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
-                                                    <li><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
+                                                    <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
                                                 @endforeach
                                             </ul>
                                             <div class="sliderView">
@@ -51,7 +51,7 @@
                                 </li>
                             @elseif($menu_row['MenuType'] == 'PA')
                                 <li class="Acad">
-                                    <a class="willbes-Acad-Tit" href="{{ $menu_row['MenuUrl'] }}">{{ $menu_row['MenuName'] }}</a>
+                                    <a class="willbes-Acad-Tit" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
                                     <dl class="sns-Btn">
                                         <dt>
                                             <a href="#none">
@@ -82,7 +82,7 @@
         @foreach($__cfg['GnbTreeMenu'] as $menu_group_id => $menu_group_row)
             @foreach($menu_group_row as $menu_idx => $menu_row)
                 <div class="gnb-List-Tit">
-                    <a href="{{ $menu_row['MenuUrl'] }}">
+                    <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
                         <div class="willbes-icon_sm">
                             <img src="{{ img_url('gnb/icon_willbes1_sm.gif') }}">
                         </div>
@@ -92,7 +92,7 @@
                 <div class="gnb-List-Depth">
                     <dl>
                         @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
-                            <dt><a href="{{ $menu_child_row['MenuUrl'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
+                            <dt><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
                         @endforeach
                     </dl>
                 </div>

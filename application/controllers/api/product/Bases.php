@@ -13,7 +13,7 @@ class Bases extends \app\controllers\RestController
 
     /**
      * 상품 기본정보 조회 (카테고리+과목 연결, 카테고리+직렬+과목 연결, 교수+과목 연결, 과정)
-     * @example /product/base/items/{[subject2category|subject2complex|subject2professor|course]}/{2001}
+     * @example /product/bases/index/{[subject2category|subject2complex|subject2professor|course]}/{2001}
      * @param string $item_type
      * @param string $site_code
      * @param null|string $cate_code

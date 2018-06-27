@@ -15,6 +15,8 @@ abstract class FrontController extends BaseController
     protected $_site_id = null;
     // 학원(오프라인) 사이트 여부
     protected $_is_pass_site = false;
+    // 학원(오프라인) 사이트 구분값
+    protected $_pass_site_val = '';
 
     public function __construct()
     {
@@ -40,6 +42,29 @@ abstract class FrontController extends BaseController
     }
 
     /**
+     * 컨트롤러 메소드에 배열 파라미터 전달 (프런트 전용)
+     * @param $method
+     * @param array $params
+     * @return mixed
+     */
+    public function _remap($method, $params = array())
+    {
+        // uri string parameter urldecode
+        $params = array_map('urldecode', $params);
+
+        if (count($params) % 2 == 0) {
+            // uri string parameter를 키와 값의 배열 형태로 변경 (ex. cate => 3001)
+            $params = array_pluck(array_chunk($params, 2), '1', '0');
+        }
+
+        if (method_exists($this, $method) === true) {
+            return $this->{$method}($params);
+        } else {
+            show_404(strtolower(get_class($this)) . '/' . $method);
+        }
+    }
+
+    /**
      * 멤버 변수 설정
      */
     private function _setSiteVars()
@@ -58,6 +83,7 @@ abstract class FrontController extends BaseController
             if (strtolower($this->uri->segment(1)) == $pass_site_prefix) {
                 $this->_site_id .= $pass_site_prefix;
                 $this->_is_pass_site = true;
+                $this->_pass_site_val = '_' . $pass_site_prefix;
             }
         }
     }
@@ -106,7 +132,7 @@ abstract class FrontController extends BaseController
 
             // Active 사이트 메뉴 정보 (/{directory}/{controller}/, /cate/{cate_code})
             $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
-            $check_menu_postfix = '/' . config_get('uri_segment_keys.cate') . '/' . element('cate', $uri_segments, '');
+            $check_menu_postfix = '/' . config_get('uri_segment_keys.cate') . '/' . element(config_get('uri_segment_keys.cate'), $uri_segments, '');
 
             foreach (array_get($site_menu_cache, 'SiteMenuUrls.' . $site_code, []) as $menu_route_idx => $menu_url) {
                 // 1depth 메뉴 제외
@@ -147,23 +173,6 @@ abstract class FrontController extends BaseController
     }
 
     /**
-     * 캐쉬 데이터 리턴
-     * @param string $driver [캐쉬명]
-     * @param null|string $key [캐쉬 데이터 배열 키값]
-     * @param string $site_id [캐쉬 데이터 최상위 배열 키값, 사이트 코드]
-     * @return mixed
-     */
-    public function getCacheItem($driver, $key = null, $site_id = 'all')
-    {
-        $this->load->driver('caching');
-        if (($items = $this->caching->{$driver}->get()) === false) {
-            $items = [];
-        }
-
-        return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items, []), $key);
-    }
-
-    /**
      * 컨트롤러 클래스, 메소드별 로그인 체크
      */
     private function _checkLogin()
@@ -182,5 +191,22 @@ abstract class FrontController extends BaseController
     public function isLogin()
     {
         return $this->session->userdata('is_login');
+    }
+
+    /**
+     * 캐쉬 데이터 리턴
+     * @param string $driver [캐쉬명]
+     * @param null|string $key [캐쉬 데이터 배열 키값]
+     * @param string $site_id [캐쉬 데이터 최상위 배열 키값, 사이트 코드]
+     * @return mixed
+     */
+    public function getCacheItem($driver, $key = null, $site_id = 'all')
+    {
+        $this->load->driver('caching');
+        if (($items = $this->caching->{$driver}->get()) === false) {
+            $items = [];
+        }
+
+        return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items, []), $key);
     }
 }

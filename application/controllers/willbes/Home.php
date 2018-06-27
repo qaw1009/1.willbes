@@ -43,13 +43,26 @@ class Home extends \app\controllers\FrontController
         $this->load->view('main');
     }
 
+    public function cache()
+    {
+        unset($this->caching);
+        dd($this->getCacheItem('site_subject_professor'), $this->getCacheItem('site'), $this->getCacheItem('site_menu'));
+    }
+
+    public function save_cache($param)
+    {
+        unset($this->caching);
+        $this->load->driver('caching');
+        $this->caching->{$param[0]}->delete();
+        $this->caching->{$param[0]}->save();
+    }
+
     /**
      * 뷰 페이지 확인
-     * @param $param
      */
-    public function html($param)
+    public function html()
     {
-        $view_file = implode('/', $param);
+        $view_file = explode('/', uri_string(), 3)[2];
         $view_file = 'html/' . $view_file;
 
         $this->load->view($view_file, [], false);

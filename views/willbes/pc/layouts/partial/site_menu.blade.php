@@ -9,14 +9,16 @@
                 @foreach($__cfg['SiteTreeMenu'] as $menu_idx => $menu_row)
                     @if($menu_row['MenuType'] == 'GN')
                         <li>
-                            <a href="#none">{{ $menu_row['MenuName'] }}</a>
+                            <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
                         </li>
                     @elseif($menu_row['MenuType'] == 'PA')
                         <li class="Acad">
-                            <a href="#none">{{ $menu_row['MenuName'] }} <span class="arrow-Btn">></span></a>
+                            <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }} <span class="arrow-Btn">></span></a>
                         </li>
                     @elseif($menu_row['MenuType'] == 'PF')
-
+                        <li>
+                            <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
+                        </li>
                     @endif
                 @endforeach
             </ul>

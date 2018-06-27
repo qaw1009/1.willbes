@@ -34,7 +34,8 @@ class BannerModel extends WB_Model
         } else {
             $column = '
             A.BIdx, A.SiteCode, G.SiteName, A.BannerName, A.DispCcd, H.CcdName AS DispName, A.BannerLocationCcd, I.CcdName AS BannerLocationName, A.DispStartDatm, A.DispStartTime, A.DispEndDatm, A.DispEndTime,
-            A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
+            A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.OrderNum,
+            A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ';
 
@@ -332,6 +333,39 @@ class BannerModel extends WB_Model
         $data = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$board_idx])->result_array();
 
         return array_pluck($data, 'CateRouteName', 'CateCode');
+    }
+
+    /**
+     * 배너 정렬변경 수정
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifyBannerReorder($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            foreach ($params as $menu_idx => $order_num) {
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $admin_idx)->where('BIdx', $menu_idx);
+
+                if ($this->_conn->update($this->_table['banner']) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
     /**

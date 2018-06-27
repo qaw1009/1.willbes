@@ -83,11 +83,11 @@
                 <tr>
                     <th>삭제</th>
                     <th>No</th>
-                    <th>운영사이트</th>
+                    <th>카테고리</th>
                     <th>노출섹션</th>
                     <th>배너위치</th>
                     <th>배너명</th>
-                    <th>배너이미지</th>
+                    <th width="20%">배너이미지</th>
                     <th>노출기간</th>
                     <th>사용여부</th>
                     <th>등록자</th>
@@ -107,12 +107,15 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            // 날짜검색 디폴트 셋팅
+            /*setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');*/
+
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-copy mr-10"></i> 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-use' },
-                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
+                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder-open' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 배너 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             location.href = '{{ site_url('/site/banner/create') }}' + dtParamsToQueryString($datatable);
                         }}
@@ -132,7 +135,14 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'SiteName'},
+                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                            var obj = data.split(',');
+                            var str = '';
+                            for (key in obj) {
+                                str += obj[key]+"<br>";
+                            }
+                            return str;
+                        }},
                     {'data' : 'DispName'},
                     {'data' : 'BannerLocationName'},
                     {'data' : 'BannerName', 'render' : function(data, type, row, meta) {
@@ -145,7 +155,7 @@
                             var img_url = row.BannerFullPath + row.BannerImgName;
                             return "<img class='img_"+row.BIdx+"' src='"+img_url+"' width='100%' height='30%'>";
                         }},
-                    {'data' : 'BannerRealFullPath', 'render' : function(data, type, row, meta) {
+                    {'data' : null, 'render' : function(data, type, row, meta) {
                             var disp_datm = row.DispStartDatm + ' ' + ((row.DispStartTime.length <= '1') ? '0' + row.DispStartTime : row.DispStartTime);
                             disp_datm += ' ~ ';
                             disp_datm += row.DispEndDatm + ' ' + ((row.DispEndTime.length <= '1') ? '0' + row.DispEndTime : row.DispEndTime);
@@ -159,6 +169,13 @@
                     {'data' : 'UpdAdminName'},
                     {'data' : 'UpdDatm'}
                 ]
+            });
+
+            $('.btn-reorder-open').click(function() {
+                $('.btn-reorder-open').setLayer({
+                    "url" : "{{ site_url('/site/banner/listReOrderModal') }}",
+                    "width" : "1200",
+                });
             });
 
             // 삭제

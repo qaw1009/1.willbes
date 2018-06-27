@@ -104,7 +104,7 @@ class Banner extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'banner_disp', 'label' => '노출섹션', 'rules' => 'trim|required'],
-            ['field' => 'banner_disp', 'label' => '배너위치', 'rules' => 'trim|required'],
+            ['field' => 'banner_location', 'label' => '배너위치', 'rules' => 'trim|required'],
             ['field' => 'banner_name', 'label' => '배너명', 'rules' => 'trim|required'],
             ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'link_url', 'label' => '링크주소', 'rules' => 'trim|required']
@@ -150,6 +150,44 @@ class Banner extends \app\controllers\BaseController
         $params = json_decode($this->_req('params'), true);
         $result = $this->bannerModel->delBanner($params);
         $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 정렬 변경 리스트페이지
+     */
+    public function listReOrderModal()
+    {
+        $arr_condition = [];
+
+        //배너노출섹션, 배너위치
+        $banner_info = $this->codeModel->getCcdInArray([$this->_groupCcd['banner_disp'], $this->_groupCcd['banner_location']]);
+
+        $list = $this->bannerModel->listAllBanner(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'BIdx' => 'desc']);
+
+        $this->load->view("site/banner/list_reorder_modal", [
+            'banner_disp' => $banner_info[$this->_groupCcd['banner_disp']],
+            'banner_location' => $banner_info[$this->_groupCcd['banner_location']],
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 정렬 변경
+     */
+    public function reorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->bannerModel->modifyBannerReorder(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

@@ -110,7 +110,7 @@ class Caching extends CI_Driver_Library
             $this->_CI->cache->{$this->_cache_backup_adapter}->save($key, $data, $ttl);
 
             // save cache
-            $this->_CI->cache->save($key, $data, $ttl);
+            @$this->_CI->cache->save($key, $data, $ttl);
         } catch (\Exception $e) {
             log_message('error', 'Failed to save caching driver : ' . $driver);
             return false;
@@ -133,6 +133,6 @@ class Caching extends CI_Driver_Library
         // delete backup cache
         $this->_CI->cache->{$this->_cache_backup_adapter}->delete($key);
 
-        return $this->_CI->cache->delete($key);
+        return @$this->_CI->cache->delete($key);
     }
 }

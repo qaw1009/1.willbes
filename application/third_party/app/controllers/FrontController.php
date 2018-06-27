@@ -118,7 +118,7 @@ abstract class FrontController extends BaseController
         $gnb_tree_menu = element('GnbTreeMenus', $site_menu_cache, []);
         
         // Active GNB 메뉴
-        $gnb_active_group_id = str_first_pos_before($site_keys[$site_code], '>');
+        $gnb_active_group_id = str_first_pos_before(element($site_code, $site_keys), '>');
 
         // 사이트 메뉴
         $site_tree_menu = array_get($site_menu_cache, 'SiteTreeMenus.' . $site_code, []);
@@ -202,7 +202,8 @@ abstract class FrontController extends BaseController
      */
     public function getCacheItem($driver, $key = null, $site_id = 'all')
     {
-        $this->load->driver('caching');
+        is_object(@$this->caching) === false && $this->load->driver('caching');
+
         if (($items = $this->caching->{$driver}->get()) === false) {
             $items = [];
         }

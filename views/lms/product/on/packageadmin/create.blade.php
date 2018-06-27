@@ -66,7 +66,7 @@
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                                 @foreach($packtype_ccd as $key => $val)
-                                    <input type="radio" name="PackTypeCcd" id="PackTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['PackTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                    <input type="radio" name="PackTypeCcd" id="PackTypeCcd{{$loop->index}}" value="{{$key}}" title='패키지유형' class="flat" required="required" @if($loop->index == 1 || $data['PackTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                                 @endforeach
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                             @foreach($packcate_ccd as $key => $val)
-                                <input type="radio" name="PackCateCcd" id="PackCateCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($data['PackCateCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="PackCateCcd" id="PackCateCcd{{$loop->index}}" value="{{$key}}" title='패키지분류' class="flat" required="required" @if($data['PackCateCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
                             <input type="text" name="PackCateEtcMemo" id="PackCateEtcMemo"  class="form-control"  style="width: 200px" value="{{$data['PackCateEtcMemo']}}">
                         </div>

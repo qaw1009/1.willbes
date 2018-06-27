@@ -134,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property LiveManagerModel $liveManagerModel                                Live Video Manager For Lecture Model Class
  * @property ConsultModel $consultModel                                            Consult Model Class
  * @property BannerModel $bannerModel                                              banner Model Class
- * @property Popup $popupModel                                                     popup Model Class
+ * @property PopupModel $popupModel                                                popup Model Class
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

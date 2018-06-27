@@ -79,9 +79,6 @@ body.no_sidebar {
 .top_col .nav-tabs li.dropdown .dropdown-menu {
     margin-left: 0px;
 }
-.caret {
-    float: right; margin-top: 6px;
-}
 
 /* top_nav_fixed */
 .top_nav_fixed .top_col {
@@ -152,6 +149,9 @@ footer {
 ul.bar_tabs > li a {
     background: #fff !important;
     border-top-right-radius: 4px;
+}
+ul.bar_tabs > li.dropdown > a {
+    padding: 10px 10px 10px 15px;
 }
 ul.bar_tabs > li a:hover {
     background: #f5f7fa !important;

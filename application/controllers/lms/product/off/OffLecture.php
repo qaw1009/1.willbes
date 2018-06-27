@@ -143,6 +143,7 @@ Class OffLecture extends \app\controllers\BaseController
         $data_autocoupon = [];
         $data_autofreebie = [];
         $data_sublecture = [];
+        $data_lecturedate = [];
 
         if(empty($params[0]) === false) {
             $method='PUT';
@@ -259,6 +260,7 @@ Class OffLecture extends \app\controllers\BaseController
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
+
 
     /**
      * 강좌 개설/접수 변경

@@ -129,8 +129,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PackageAdminModel $packageadminModel                           Lecture admin package Model Class
  * @property PackagePeriodModel $packageperiodModel                          Lecture period package Model Class
  * @property LectureFreeModel $lecturefreeModel                                 Lecture free Model Class
- * @property OffLecture $offlectureModel                                            Off Lecture Model Class
- * @property OffPackage $offpackageModel                                          Off package Model Class
+ * @property OffLectureModel $offlectureModel                                           Off Lecture Model Class
+ * @property OffPackageAdminModel $offpackageadminModel                                    Off admin package Model Class
  * @property LiveManagerModel $liveManagerModel                                Live Video Manager For Lecture Model Class
  * @property ConsultModel $consultModel                                            Consult Model Class
  * @property BannerModel $bannerModel                                              banner Model Class

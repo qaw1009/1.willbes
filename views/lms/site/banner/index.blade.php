@@ -144,12 +144,14 @@
                             return str;
                         }},
                     {'data' : 'DispName'},
-                    {'data' : 'BannerLocationName'},
-                    {'data' : 'BannerName', 'render' : function(data, type, row, meta) {
+                    {'data' : 'BannerLocationName', 'render' : function(data, type, row, meta) {
                             var img_info = row.BannerFullPath + row.BannerImgName;
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>' +
+                            return data +
                                 '<br>' +
                                 '('+row.BannerImgInfo[0]+'*'+row.BannerImgInfo[1]+')';
+                        }},
+                    {'data' : 'BannerName', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : 'BannerRealFullPath', 'render' : function(data, type, row, meta) {
                             var img_url = row.BannerFullPath + row.BannerImgName;
@@ -174,7 +176,7 @@
             $('.btn-reorder-open').click(function() {
                 $('.btn-reorder-open').setLayer({
                     "url" : "{{ site_url('/site/banner/listReOrderModal') }}",
-                    "width" : "1200",
+                    "width" : "1400",
                 });
             });
 

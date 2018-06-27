@@ -48,13 +48,13 @@
                         <table id="list_modal_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th class="searching_category rowspan">운영사이트 [<span class="blue">코드</span>]</th>
+                                <th class="searching_category rowspan">운영사이트</th>
                                 <th>정렬</th>
                                 <th class="searching">카테고리</th>
                                 <th class="searching_banner_disp">노출섹션</th>
                                 <th class="searching_banner_location">배너위치</th>
                                 <th>배너명</th>
-                                <th width="20%">배너이미지</th>
+                                <th width="25%">배너이미지</th>
                                 <th>노출기간</th>
                                 <th>사용여부</th>
                             </tr>
@@ -62,7 +62,12 @@
                             <tbody>
                             @foreach($data as $row)
                                 <tr>
-                                    <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
+                                    {{--<td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>--}}
+                                    <td>
+                                        <span class="btn-site-modal" style="cursor:pointer" data-site-code="{{$row['SiteCode']}}"><b>{{ $row['SiteName'] }}</b></span>
+                                        <span class="hide">{{ $row['SiteCode'] }}</span>
+                                    </td>
+
                                     <td>
                                         <div class="form-group form-group-sm">
                                             <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['BIdx'] }}" style="width: 80px;" />
@@ -70,24 +75,27 @@
                                     </td>
                                     <td>
                                         @php
-                                            $aa = '';
+                                            $category_data = '';
                                             $categorys = explode(',', $row['CateCode']);
                                             foreach ($categorys as $key => $val) {
-                                                $aa .= $categorys[$key].'<Br>';
+                                                $category_data .= $categorys[$key].'<Br>';
                                             }
-                                            echo $aa;
+                                            echo $category_data;
                                         @endphp
                                     </td><td>{{ $row['DispName'] }}<span class="hide">{{ $row['DispCcd'] }}</span></td>
-                                    <td>{{ $row['BannerLocationName'] }}<span class="hide">{{ $row['BannerLocationCcd'] }}</span></td>
+                                    <td>
+                                        {{ $row['BannerLocationName'] }}<br>
+                                        ({{$row['BannerImgInfo'][0]}}*{{$row['BannerImgInfo'][1]}})
+                                        <span class="hide">{{ $row['BannerLocationCcd'] }}</span>
+                                    </td>
                                     <td>{{ $row['BannerName'] }}</td>
                                     <td>
-                                        <img src="{{$row['BannerFullPath']}}{{$row['BannerImgName']}}" width='100%' height='10%'>
+                                        <img src="{{$row['BannerFullPath']}}{{$row['BannerImgName']}}" width='100%' height='30%'>
                                     </td>
                                     <td>
                                         @php
                                             $start_datms = $row['DispStartDatm'] . ' ' . ((strlen($row['DispStartTime']) <= 1) ? '0'.$row['DispStartTime'] : $row['DispStartTime']);
                                             $end_datms = $row['DispEndDatm'] . ' ' . ((strlen($row['DispEndTime']) <= 1) ? '0'.$row['DispEndTime'] : $row['DispEndTime']);
-
                                             echo $start_datms . ' ~ ' . $end_datms;
                                         @endphp
                                     </td>
@@ -115,6 +123,12 @@
                         buttons: [
                             { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' }
                         ]
+                    });
+
+                    // 운영사이트 클릭
+                    $('.btn-site-modal').on('click', function() {
+                        $('#search_modal_site_code').val($(this).data('site-code'));
+                        datatableSearching();
                     });
 
                     // 순서 변경

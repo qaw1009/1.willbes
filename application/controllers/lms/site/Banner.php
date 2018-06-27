@@ -157,12 +157,18 @@ class Banner extends \app\controllers\BaseController
      */
     public function listReOrderModal()
     {
+        $this->load->helper('file');
         $arr_condition = [];
 
         //배너노출섹션, 배너위치
         $banner_info = $this->codeModel->getCcdInArray([$this->_groupCcd['banner_disp'], $this->_groupCcd['banner_location']]);
 
         $list = $this->bannerModel->listAllBanner(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'BIdx' => 'desc']);
+
+        foreach ($list as $key => $val) {
+            $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);
+            $list[$key]['BannerImgInfo'] = @getimagesize($img_real_path);
+        }
 
         $this->load->view("site/banner/list_reorder_modal", [
             'banner_disp' => $banner_info[$this->_groupCcd['banner_disp']],

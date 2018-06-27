@@ -45,7 +45,9 @@ class MemberModel extends WB_Model
             $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, 
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
             fn_dec(Info.MailEnc) AS Mail, Info.MailRcvStatus,
-            IFNULL(Mem.JoinDate, '') AS JoinDate, IFNULL(Mem.IsChange, '') AS IsChange, 
+            IFNULL(Mem.JoinDate, '') AS JoinDate, 
+            IFNULL(Mem.IsChange, '') AS IsChange,
+            IFNULL(Mem.ChangeDatm, '') AS ChangeDate,
             IFNULL(Mem.LastLoginDatm, '') AS LoginDate, 
             IFNULL(Mem.LastInfoModyDatm, '') AS InfoUpdDate, 
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
@@ -75,7 +77,7 @@ class MemberModel extends WB_Model
      * @param int $memIdx
      * @return array
      */
-    public function detail($memIdx)
+    public function getMember($memIdx)
     {
         $rows = [];
 
@@ -83,7 +85,9 @@ class MemberModel extends WB_Model
             Info.ZipCode, Info.Addr1, fn_dec(Info.Addr2Enc) AS Addr2,
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
             fn_dec(Info.MailEnc) AS Mail, Info.MailRcvStatus,
-            IFNULL(Mem.JoinDate, '') AS JoinDate, IFNULL(Mem.IsChange, '') AS IsChange, 
+            IFNULL(Mem.JoinDate, '') AS JoinDate, 
+            IFNULL(Mem.IsChange, '') AS IsChange,
+            IFNULL(Mem.ChangeDatm, '') AS ChangeDate, 
             IFNULL(Mem.LastLoginDatm, '') AS LoginDate, 
             IFNULL(Mem.LastInfoModyDatm, '') AS InfoUpdDate, 
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
@@ -121,8 +125,8 @@ class MemberModel extends WB_Model
             $order_by_offset_limit = '';
 
         } else {
-            $column = "MemIdx, IFNULL(code.CcdName, '') AS UpdType, UpdMemo, ReferFileRoute, 
-                ReferFile, UpdIp, UpdDatm, UpdAdminIdx, IFNULL(admin.wAdminName, ''), adminName ";
+            $column = "log.MemIdx, IFNULL(code.CcdName, '') AS UpdType, log.UpdMemo, log.ReferFileRoute, 
+                log.ReferFile, log.UpdIp, log.UpdData, log.UpdDatm, log.UpdAdminIdx, IFNULL(admin.wAdminName, '') AS adminName ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -208,4 +212,71 @@ class MemberModel extends WB_Model
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
+
+    /**
+     * 사용자 이름 변경 처리
+     * @param array $input
+     * @return array|bool
+     */
+    public function chgName($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+
+            $admin_idx = $this->session->userdata('admin_idx');
+            $memIdx = element('MemIdx', $input);
+
+            // 회원데이터테이블 이름변경
+            $data = [
+                'MemName' => element('MemName', $input)
+                ];
+
+            if ($this->_conn->set($data)->where('MemIdx', $memIdx)->update($this->_table['member']) === false) {
+                throw new \Exception('이름변경에 실패했습니다.');
+            }
+
+            // 이름변경한 로그 저장
+            $data = [
+                'MemIdx' => element('MemIdx', $input),
+                'UpdTypeCcd' => '656005',
+                'UpdMemo' => element('UpdMemo', $input),
+                'UpdData' => element('UpdData', $input),
+                'UpdAdminIdx' => $admin_idx,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['changeLog']) === false) {
+                throw new \Exception('데이터수정에 실패했습니다.');
+            }
+            
+            $ch_idx = $this->_conn->insert_id(); // 로그 번호 구해오기
+
+            //이미지 등록
+            $this->load->library('upload');
+            $upload_dir = SUB_DOMAIN . '/changeName/' . date('Ymd');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $memIdx . '_' . date('YmdHis'), $upload_dir);
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+
+            if (count($uploaded) > 0) {
+                $img_data['ReferFileRoute'] = $this->upload->_upload_url . $upload_dir . '/'. $uploaded[0]['orig_name'];
+                $img_data['ReferFile'] = $uploaded[0]['client_name'];
+
+                if ($this->_conn->set($img_data)->where('ChIdx', $ch_idx)->update($this->_table['changeLog']) === false) {
+                    throw new \Exception('첨부파일 등록에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
 }

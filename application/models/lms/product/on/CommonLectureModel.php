@@ -961,18 +961,18 @@ class CommonLectureModel extends WB_Model
 
             //상품복사
             $insert_column = 'ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
-                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, \'N\' As IsUse, Keyword, RegAdminIdx, RegIp';
+                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, Keyword, RegAdminIdx, RegIp';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
             $select_column= str_replace('ProdName','concat(\'[복사]\',ProdName)',$select_column);
+            $select_column= str_replace('IsUse','\'N\' As IsUse',$select_column);
 
             $query = 'insert into '.$this->_table['product'].' ('. $insert_column .')SELECT '.$select_column.' FROM '.$this->_table['product'].' where ProdCode='.$prodcode;
             if($this->_conn->query($query) === false) {
                 throw new \Exception('상품 복사에 실패했습니다.');
             };
-
 
             //강좌복사
             $insert_column = '';
@@ -1153,7 +1153,6 @@ class CommonLectureModel extends WB_Model
 
             };
 
-
             //  사용자패키지할인정보
             $insert_column = 'ProdCode, OrderNum, IsApply, DiscNum, DiscRate, LecExten, RegAdminIdx, RegIp';
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
@@ -1163,6 +1162,17 @@ class CommonLectureModel extends WB_Model
             $query = 'insert into '.$this->_table['packsale'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['packsale'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
             if($this->_conn->query($query) === false) {
                 throw new \Exception('패키지할인정보 복사에 실패했습니다.');
+            };
+
+            //  학원수강기간 날짜 정보
+            $insert_column = 'ProdCode, LecNum, LecTime, LecDate, RegAdminIdx, RegIp';
+            $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
+            $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
+            $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
+
+            $query = 'insert into '.$this->_table['lecturedate'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['lecturedate'].' where ProdCode='.$prodcode.' And IsStatus=\'Y\'';
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('수강긴간 날짜 정보 복사에 실패했습니다.');
             };
 
 

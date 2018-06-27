@@ -154,7 +154,7 @@
                         sendAjax('{{ site_url('/site/banner/reorder') }}', data, function(ret) {
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                location.replace(location.pathname);
+                                replaceModal('/site/banner/listReOrderModal', {});
                             }
                         }, showError, false, 'POST');
                     });

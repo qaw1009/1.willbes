@@ -17,8 +17,13 @@
         //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
     }
 
+    if($method == 'POST') {
+        $week_arr = explode(",",",,,,,,");
+    }
+    elseif($method == 'PUT') {
+      $week_arr = explode(",",$data['WeekArray']);
+    }
 
-    $week_arr = explode(",",",,,,,,");
 @endphp
 
     <h5>- 학원 단과반 상품 정보를 관리하는 메뉴입니다.</h5>
@@ -130,8 +135,6 @@
                                 $nextDate =  explode("-", date('Y-m', strtotime('+1 month')) );
                             @endphp
 
-                            {{date('Y-m-d',strtotime('20120101'))}}
-
                             <select name="SchoolStartYear" id="SchoolStartYear" required="required" class="form-control" title="개강년">
                                 @for($i=(date('Y')+1); $i>=2014; $i--)
                                     <option value="{{$i}}" @if($data['SchoolStartYear'] == $i) selected="selected" @elseif($method == 'POST' && $nextDate[0] == $i) selected="selected" @endif>{{$i}}</option>
@@ -207,11 +210,12 @@
 
 
                 <div class="form-group" >
-                    <label class="control-label col-md-2" >개강일/회차/요일 <span class="required">*</span>
+                    <label class="control-label col-md-2" >개강일/종강일/회차/요일 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">
-                        &nbsp;&nbsp;[회차] <input type="text" name="Amount" id="Amount" value="" required="required" class="form-control" title="회차"  style="width:60px;" />회
+                        [종강일] <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="종강일" value='{{$data['StudyEndDate']}}' style="width:100px;"  required="required">
+                        &nbsp;&nbsp;[회차] <input type="text" name="Amount" id="Amount" value="{{$data['Amount']}}" required="required" class="form-control" title="회차"  style="width:60px;" />회
                         &nbsp;&nbsp;[요일]
                                     <input type="checkbox" name="week[]" class="flat" @if($week_arr[0] == "Y") checked="checked" @endif>일
                                     <input type="checkbox" name="week[]" class="flat" @if($week_arr[1] == "Y") checked="checked" @endif>월
@@ -228,9 +232,7 @@
                 <div class="form-group" >
                     <label class="control-label col-md-2" >수강기간설정 <span class="required">*</span>
                     </label>
-                    <div  class="col-md-10 form-inline item" style="width:960px;height:340px;margin-left:8px;margin-right:8px;margin-bottom:3px; overflow: scroll;display:none" id="cal_vw">
-
-                    </div>
+                    <div  class="col-md-10 form-inline item" style="width:960px;height:340px;margin-left:8px;margin-right:8px;margin-bottom:3px; overflow: scroll;display:none" id="cal_vw"></div>
                 </div>
 
                 <div class="form-group">
@@ -256,7 +258,11 @@
                                 @endfor
                             </select> 시
                             &nbsp;&nbsp;
-                            <input type="checkbox" name="IsSaleEnd" id="IsSaleEnd" value="Y" class="flat" @if($data['PlayerTypeCcds'] === 'Y') checked="checked"@endif> 접수마감
+                            <!--input type="checkbox" name="IsSaleEnd" id="IsSaleEnd" value="Y" class="flat" @if($data['IsSaleEnd'] === 'Y') checked="checked"@endif//-->
+                            <select name="IsSaleEnd" id="IsSaleEnd" class="form-control" title="접수상태" required="required" >
+                                <option value="N" @if($data['IsSaleEnd'] === 'N') selected="selected"@endif>접수중</option>
+                                <option value="Y" @if($data['IsSaleEnd'] === 'Y') selected="selected"@endif>접수마감</option>
+                            </select>
                             &nbsp;&nbsp;
                             • 접수기간 미 입력시 ‘개설여부’로 강좌 노출 설정
                         </div>
@@ -814,7 +820,7 @@
                                 }
                                 html = "<tr id='"+i+"'>"
                                     +"<td>"
-                                    +"<input type='hidden' name='ProfIdx[]' id='ProfIdx_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"'>"
+                                    +"<input type='hidden' name='ProfIdx[]' id='ProfIdx_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"' >"
                                     +"<input type='radio' name='IsReprProf' id='IsReprProf_"+data_array[i].ProfIdx+"' value='"+data_array[i].ProfIdx+"' "+IsReprProf_checked+">"
                                     +"</td>"
                                     +"<td>"+data_array[i].wProfName+"</td>"
@@ -1190,11 +1196,9 @@
                         var bg_color = "";
                         var frm_value = "";
 
-                        if (
-                            $('input:checkbox[name="week[]"]:eq('+j+')').prop("checked") &&
-                            parseInt( $("#Amount").val(),10) > total &&
-                            parseInt((Year +""+ kMonth +""+ kDay),10)  >= parseInt(replace($("#StudyStartDate").val(), "-", ""),10)
-                        ) {
+                        if ( $('input:checkbox[name="week[]"]:eq('+j+')').prop("checked") && parseInt( $("#Amount").val(),10) > total &&
+                            parseInt((Year +""+ kMonth +""+ kDay),10)  >= parseInt(replace($("#StudyStartDate").val(), "-", ""),10))
+                        {
                             bg_color ="yellow";
                             frm_value = Year +""+ kMonth +""+ kDay;
                             total++;
@@ -1215,7 +1219,6 @@
 
                         output_string += "<td bgcolor='#ffffff' width='24' height='20'>"+ "&nbsp;" +"</td>";
                     }
-
 
                 }
             }
@@ -1245,6 +1248,142 @@
             });
             $("#Amount").val(t);
         }
+
+
+
+
+        function setLecDate_modify() {
+            if($("#StudyStartDate").val() == "") {alert("개강일을 선택해 주세요.");$("#StudyStartDate").focus();return;}
+            if($('#Amount').val() == '') {alert('회차를 입력해 주세요.'); $('#Amount').focus();return;}
+
+            var result = "";
+            total = 0;
+            karr = 0;
+
+            if( $("#Amount").val() != "" ) {
+
+                t = $('input:checkbox[name="week[]"]:checked').length;
+
+                if (t < 1) {
+                    alert('요일을 선택하세요.');
+                } else {
+
+                    var Months = new Array(12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+
+                    var syy = $("#StudyStartDate").val().substr(0, 4); //연도추출
+                    var smm = $("#StudyStartDate").val().substr(5, 2); // 월추출
+
+                    var yy = parseInt(syy, 10); // 연도2자리
+                    var mm = parseInt(smm, 10); // 월2자리
+
+                    result += "<table border='0' cellpadding='0' cellspacing='0'><tr>";
+
+                    var ty = 0;
+                    var tm = 0;
+                    var i = 0;
+
+                    while (parseInt($("#Amount").val(), 10) > total ) {
+
+                        ty = yy + parseInt((mm + i - 1) / 12);
+                        tm = Months[((mm + i) % 12)];
+                        result += "<td style='padding:5px;' valign='top'>";
+                        result += Calendar_modify(ty, tm);
+                        result += "</td>";
+                        i++;
+                    }
+                    result += "</tr></table>";
+                    $("#cal_vw").show();
+                    $("#cal_vw").html(result);
+                }
+
+            }
+        }
+        function Calendar_modify( Year, Month ) {
+            var data_lecturedate = new Array(
+            @foreach($data_lecturedate as $row)
+                        "{{$row["LecDate"]}}"@if($loop->last == false),@endif
+            @endforeach
+            );
+
+            var days = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+            var weekDay = new Array("일", "월", "화", "수", "목", "금", "토");
+
+            firstDay = new Date(Year,Month-1,1).getDay();
+
+            days[1] = (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0)) ? 29 : 28;
+
+            var output_string = "";
+            output_string += "<table border='0' cellpadding='0' cellspacing='1' bgcolor='#999999' class='table table-striped table-bordered' >";
+            output_string += "<tr><td align='center' colspan='7'><b>";
+            output_string += Year + " / " + Month;
+            output_string += "</b></td></tr>";
+            output_string += "<tr align='center' bgcolor='#dadada' height='25'> ";
+            for (var dayNum= 0; dayNum <= 6; dayNum++) {
+                output_string += "<td width='24'>" + weekDay[dayNum] + "</td>";
+            }
+            output_string += "</tr>";
+
+            var kMonth = (Month < 10) ? "0"+Month : Month;
+
+            var nDay = 1;
+
+            for(var i=0; i<6; i++) {
+                output_string += "<tr align='center'>";
+
+                for(var j=0; j<7; j++) {
+
+                    checked = "";
+
+                    tarr = i*7+j;
+
+                    if(firstDay <= tarr && days[Month-1] >= nDay ) {
+
+                        var kDay = (nDay < 10) ? "0"+nDay : nDay;
+                        var bg_color = "";
+                        var frm_value = "";
+
+                        for(k=0;k<data_lecturedate.length;k++){
+                            if(Year +"-"+ kMonth +"-"+ kDay == data_lecturedate[k]) {
+                                checked = "Y"
+                            }
+                        }
+
+                        if ( checked == "Y")
+                        {
+                            bg_color ="yellow";
+                            frm_value = Year +""+ kMonth +""+ kDay;
+                            total++;
+                        } else {
+                            bg_color ="#ffffff";
+                            frm_value = "";
+                        }
+
+                        output_string += "<td id='"+ (Year +""+ kMonth +""+ kDay) +"' style='background-color:"+ bg_color +";cursor:hand;cursor:pointer;' width='24' height='20' ";
+                        output_string += " onClick=\"javascript:chkDay('"+ parseInt((Year +""+ kMonth +""+ kDay),10)  +"', "+ karr +");\">";
+                        output_string += nDay
+                        output_string += "<input type='hidden' name='savDay[]' value='"+ frm_value +"'>";
+                        output_string += "</td>";
+
+                        nDay++;
+                        karr++;
+                    } else {
+
+                        output_string += "<td bgcolor='#ffffff' width='24' height='20'>"+ "&nbsp;" +"</td>";
+                    }
+
+                }
+            }
+
+            output_string += "</tr>";
+            output_string += "</table>";
+
+            return output_string;
+        }
+
+        @if($method === "PUT")
+            setLecDate_modify()
+        @endif
+
     </script>
 
 @stop

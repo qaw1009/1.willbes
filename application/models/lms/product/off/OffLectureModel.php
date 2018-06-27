@@ -23,23 +23,21 @@ class OffLectureModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                   A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
-                    ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
-                    ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
-                    ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
-                    ,Bd.CcdName as LecTypeCcd_Name
-                    ,Bf.CcdName as FreeLecTypeCcd_Name
-                    ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
-                    ,C.CateCode
-                    ,Ca.CateName, Cb.CateName as CateName_Parent
-                    ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                    ,E.ProfIdx_String,E.wProfName_String
-                    ,F.DivisionCount
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
-                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat 사용
-                    ,Z.wAdminName
+                            A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsSaleEnd,A.RegDatm
+                            ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
+                            ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
+                            ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                            ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
+                            ,B.SchoolStartYear,B.SchoolStartMonth
+                            ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
+                            ,Bd.CcdName as StudyPatternCcd_Name
+                            ,Be.CcdName as StudyApplyCcd_Name
+                            ,Bg.CcdName as CampusCcd_Name
+                            ,C.CateCode
+                            ,Ca.CateName, Cb.CateName as CateName_Parent
+                            ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                            ,E.ProfIdx_String,E.wProfName_String
+                            ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -54,17 +52,16 @@ class OffLectureModel extends CommonLectureModel
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
                             left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bf on B.FreeLecTypeCcd = Bf.Ccd and Bf.IsStatus=\'Y\'
-                            join wbs_cms_lecture_combine_light Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                            left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                            left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
+                            left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
                         join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
-                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
-                     where A.IsStatus=\'Y\'
+                    where A.IsStatus=\'Y\'
         ';
 
         // 사이트 권한 추가
@@ -162,12 +159,6 @@ class OffLectureModel extends CommonLectureModel
             }
             /*----------------          SMS등록        ---------------*/
 
-            /*----------------          교재등록        ---------------*/
-            if($this->_setBook($input,$prodcode) !== true) {
-                throw new \Exception('교재 등록에 실패했습니다.');
-            }
-            /*----------------          교재등록        ---------------*/
-
             /*----------------          자동지급단강좌 등록        ---------------*/
             if($this->_setAutoLec($input,$prodcode) !== true) {
                 throw new \Exception('자동지급단강좌 등록에 실패했습니다.');
@@ -197,7 +188,6 @@ class OffLectureModel extends CommonLectureModel
                 throw new \Exception('수강기간 등록에 실패했습니다.');
             }
             /*----------------          수강기간 등록        ---------------*/
-
 
 
             $this->_conn->trans_commit();
@@ -283,12 +273,6 @@ class OffLectureModel extends CommonLectureModel
             }
             /*----------------          SMS등록        ---------------*/
 
-            /*----------------          교재등록        ---------------*/
-            if($this->_setBook($input,$prodcode) !== true) {
-                throw new \Exception('교재 등록에 실패했습니다.');
-            }
-            /*----------------          교재등록        ---------------*/
-
             /*----------------          자동지급단강좌 등록        ---------------*/
             if($this->_setAutoLec($input,$prodcode) !== true) {
                 throw new \Exception('자동지급단강좌 등록에 실패했습니다.');
@@ -306,6 +290,13 @@ class OffLectureModel extends CommonLectureModel
                 throw new \Exception('자동지급사은품 등록에 실패했습니다.');
             }
             /*----------------          자동지급사은품 등록        ---------------*/
+
+            /*----------------          수강기간 등록        ---------------*/
+            if($this->_setLectureDate($input,$prodcode) !== true) {
+                throw new \Exception('수강기간 등록에 실패했습니다.');
+            }
+            /*----------------          수강기간 등록        ---------------*/
+
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();
@@ -381,6 +372,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'StudyApplyCcd'=>element('StudyApplyCcd',$input)
                 ,'FixNumber'=>element('FixNumber',$input)
                 ,'StudyStartDate'=>element('StudyStartDate',$input)
+                ,'StudyEndDate'=>element('StudyEndDate',$input)
                 ,'Amount'=>element('Amount',$input)
 
                 ,'IsLecStart'=>element('IsLecStart',$input,'N')
@@ -399,6 +391,106 @@ class OffLectureModel extends CommonLectureModel
                 ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
                 ,'IsLecOpen'=>element('IsLecOpen',$input,'N')
             ];
-
    }
+
+    /**
+     * 학원단과반 선택한 수강일자 추출을 위한 최초일 ~ 최종일 추출 ---- 자바스크립트로 처리 후 사용안함
+     * @param $prodcode
+     * @return mixed
+     */
+   public function findLectureDateForModify($prodcode)
+   {
+       $column = ' ifnull(min(LecDate),0) as mindate, ifnull(max(LecDate),0) as maxdate 
+                       ,ifnull(TIMESTAMPDIFF(MONTH,min(LecDate), max(LecDate)),-1) as diff ';
+
+       $from = ' from lms_product_lecture_date Where IsStatus=\'Y\' ';
+
+       $arr_condition['EQ']['ProdCode'] = $prodcode;
+       $where = $this->_conn->makeWhere($arr_condition);
+       $where = $where->getMakeWhere(true);
+
+
+       $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+       echo 'select ' . $column . $from . $where . $order_by;
+       return  $query->row_array();
+   }
+
+    /**
+     * 학원단과반 선택한 수강일자 목록
+     * @param $prodcode
+     * @return mixed
+     */
+    public function findLectureDateListForModify($prodcode)
+    {
+        $column = ' LecDate, LecNum ';
+
+        $from = ' from lms_product_lecture_date Where IsStatus=\'Y\' ';
+
+        $arr_condition['EQ']['ProdCode'] = $prodcode;
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        $order_by = ' Order by LecNum ';
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
+        //echo 'select ' . $column . $from . $where . $order_by;
+        return  $query->result_array();
+    }
+
+
+    /**
+     * 개설여부 , 접수상태 변경
+     * @param $prodcode
+     * @return mixed
+     */
+    public function modifyOptionByColumn($prodcode, $islecopen=null, $issaleend=null)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+
+            $data = [
+                'UpdAdminIdx'=>$this->session->userdata('admin_idx')
+            ];
+
+            $opt_data = null;
+
+            //개설여부
+            if(empty($islecopen) === false) {
+                $table = $this->_table['lecture'];
+                $opt_data = [
+                    'IsLecOpen' => $islecopen
+                ];
+                /* lms_product_lecture 테이블에는 관리자정보, 수정일자의 수정 정보가 존재하지 않으므로 일단 lms_product 테이블에 수정한 관리자 정보를 업데이트 함*/
+                /* 업데이트 정보가 기존하고 같을경우 업데이트 일자가 수정이 안됨. 해서 강제로 업데이트 일자를 수정해야 함*/
+                    $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode);
+                    if($this->_conn->update($this->_table['product']) === false) {
+                        throw new \Exception('옵션 수정(관리자 업데이트) 에 실패했습니다.');
+                    }
+            }
+
+            //접수상태
+            if(empty($issaleend) === false) {
+                $table = $this->_table['product'];
+                $opt_data = array_merge($data,[
+                    'IsSaleEnd' => $issaleend
+                ]);
+            }
+
+            if (empty($opt_data) === false) {
+                $this->_conn->set($opt_data)->where('ProdCode', $prodcode);
+                if ($this->_conn->update($table) === false) {
+                    throw new \Exception('옵션 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
 }

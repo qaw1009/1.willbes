@@ -18,7 +18,7 @@ Class OffLecture extends \app\controllers\BaseController
     public function index()
     {
         //공통코드
-        $codes = $this->codeModel->getCcdInArray(['607','611','618']);
+        $codes = $this->codeModel->getCcdInArray(['653','654']);
 
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
@@ -36,10 +36,8 @@ Class OffLecture extends \app\controllers\BaseController
             'arr_subject' => $this->subjectModel->getSubjectArray(),
             'arr_course' => $this->courseModel->getCourseArray(),
             'arr_professor' => $this->professorModel->getProfessorArray(),
-            'wProgress_ccd' => $this->wCodeModel->getCcd('105'),
-            'LecType_ccd' => $codes['607'],
-            'Multiple_ccd' => $codes['611'],
-            'Sales_ccd' => $codes['618'],
+            'studypattern_ccd' => $codes['653'],
+            'studyapply_ccd' => $codes['654'],
             'campusList' => $campusList,
         ]);
     }
@@ -59,13 +57,13 @@ Class OffLecture extends \app\controllers\BaseController
                 'B.SchoolYear' => $this->_reqP('search_schoolyear'),
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.CourseIdx' => $this->_reqP('search_course_idx'),
-                'B.LecTypeCcd' =>$this->_reqP('search_lectype_ccd'),
-                'B.MultipleApply' =>$this->_reqP('search_multiple'),
-                'Be.wProgressCcd' =>$this->_reqP('search_wprogress_ccd'),
+                'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
+                'B.StudyApplyCcd' =>$this->_reqP('search_studyapply_ccd'),
+                'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
+                'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
+                'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
+                'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
-                'A.IsNew' =>$this->_reqP('search_new'),
-                'A.IsBest' =>$this->_reqP('search_best'),
-                'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
@@ -75,38 +73,25 @@ Class OffLecture extends \app\controllers\BaseController
             ]
         ];
 
-        if($this->_reqP('search_type') === 'lec') {
-            $arr_condition = array_merge($arr_condition,[
-                'ORG1' => [
-                    'LKB' => [
-                        'A.ProdCode' => $this->_reqP('search_value'),
-                        'A.ProdName' => $this->_reqP('search_value')
-                    ]
-                ],
-            ]);
-        } elseif ($this->_reqP('search_type') === 'wlec') {
-            $arr_condition = array_merge($arr_condition,[
-                'ORG2' => [
-                    'LKB' => [
-                        'Be.wLecIdx' => $this->_reqP('search_value'),
-                        'Be.wLecName' => $this->_reqP('search_value')
-                    ]
-                ],
-            ]);
-        }
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
+                ]
+            ],
+        ]);
 
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
             $arr_condition = array_merge($arr_condition, [
                 'BDT' => [
-                    'A.RegDatm' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
+                    $this->_reqP('search_date_type') => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
                 ],
             ]);
         }
 
-
         if( strlen($this->_req('search_calc')) > 0) {
             $whereOper = $this->_req('search_calc') === '0' ? 'EQ' : 'GTE';
-            //$arr_condition[$whereOper]['F.DivisionCount'] = $this->_req('search_calc');
             $arr_condition = array_merge_recursive($arr_condition,[
                 $whereOper => [
                     'F.DivisionCount' => $this->_req('search_calc')
@@ -117,10 +102,10 @@ Class OffLecture extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->lectureModel->listLecture(true, $arr_condition);
+        $count = $this->offlectureModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->lectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->offlectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -173,6 +158,7 @@ Class OffLecture extends \app\controllers\BaseController
             $data_autocoupon = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
             $data_autofreebie = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_autofreebie');
             $data_sublecture = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_lecturedate = $this->offlectureModel->findLectureDateListForModify($prodcode);
         }
 
         $this->load->view('product/off/offlecture/create',[
@@ -197,6 +183,7 @@ Class OffLecture extends \app\controllers\BaseController
             ,'data_autocoupon'=>$data_autocoupon
             ,'data_autofreebie'=>$data_autofreebie
             ,'data_sublecture'=>$data_sublecture
+            ,'data_lecturedate' =>$data_lecturedate
         ]);
     }
 
@@ -268,26 +255,25 @@ Class OffLecture extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->lectureModel->_prodCopy($prodcode);
+        $result = $this->offlectureModel->_prodCopy($prodcode);
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
 
     /**
-     * 강좌 신규/추천 수정
+     * 강좌 개설/접수 변경
      */
-    public function redata()
+    public function reoption()
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->lectureModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+        $result = $this->offlectureModel->modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('IsSaleEnd'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

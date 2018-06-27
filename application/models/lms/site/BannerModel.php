@@ -114,7 +114,7 @@ class BannerModel extends WB_Model
             $site_code = element('site_code', $input);
             $banner_disp = element('banner_disp', $input);
             $banner_location = element('banner_location', $input);
-            $order_num = get_var(element('order_num', $input), $this->getBannerOrderNum($site_code, $banner_disp, $banner_location));
+            $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $banner_disp, $banner_location));
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
@@ -197,7 +197,7 @@ class BannerModel extends WB_Model
             $site_code = $row['SiteCode'];
             $banner_disp = element('banner_disp', $input);
             $banner_location = element('banner_location', $input);
-            $order_num = get_var(element('order_num', $input), $this->getBannerOrderNum($site_code, $banner_disp, $banner_location));
+            $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $banner_disp, $banner_location));
 
             $data = [
                 'DispCcd' => element('banner_disp', $input),
@@ -290,24 +290,6 @@ class BannerModel extends WB_Model
     }
 
     /**
-     * 사이트 코드, 노출섹션, 배너위치 별 정렬순서 값 조회
-     * @param $site_code
-     * @param $banner_disp
-     * @param $banner_location
-     * @return mixed
-     */
-    public function getBannerOrderNum($site_code, $banner_disp, $banner_location)
-    {
-        return $this->_conn->getFindResult($this->_table['banner'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
-            'EQ' => [
-                'SiteCode' => $site_code,
-                'DispCcd' => $banner_disp,
-                'BannerLocationCcd' => $banner_location
-            ]
-        ])['NextOrderNum'];
-    }
-
-    /**
      * 카테고리 연결 데이터 조회
      * @param $board_idx
      * @return array
@@ -366,6 +348,24 @@ class BannerModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 사이트 코드, 노출섹션, 배너위치 별 정렬순서 값 조회
+     * @param $site_code
+     * @param $banner_disp
+     * @param $banner_location
+     * @return mixed
+     */
+    private function _getBannerOrderNum($site_code, $banner_disp, $banner_location)
+    {
+        return $this->_conn->getFindResult($this->_table['banner'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+            'EQ' => [
+                'SiteCode' => $site_code,
+                'DispCcd' => $banner_disp,
+                'BannerLocationCcd' => $banner_location
+            ]
+        ])['NextOrderNum'];
     }
 
     /**

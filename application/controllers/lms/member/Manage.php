@@ -491,7 +491,7 @@ class Manage extends \app\controllers\BaseController
                 $this->_reqP('length'), $this->_reqP('start'), $orderby);
         }
 
-        $this->load->view('member/log/chgName_modal', [
+        $this->load->view('member/log/chgname_modal', [
             'data' => $data,
             'cdata' => $cdata
         ]);

@@ -247,8 +247,7 @@
         </div>
         <!-- willbes-Lec -->
 
-
-        <div class="sticky-Wrap">
+        <div id="Sticky" class="sticky-Wrap">
             <div class="sticky-menu NG">
                 <ul>
                     <li><a href="#Class">강좌정보 ▼</a></li>

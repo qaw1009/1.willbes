@@ -4,6 +4,7 @@ namespace app\controllers;
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'third_party/restserver/libraries/REST_Controller.php';
+require APPPATH . 'hooks/LogQueryHook.php';
 
 abstract class RestController extends \restserver\libraries\REST_Controller
 {
@@ -18,6 +19,15 @@ abstract class RestController extends \restserver\libraries\REST_Controller
         
         // REST API 초기화
         $this->_restInit();
+    }
+
+    public function __destruct()
+    {
+        parent::__destruct();
+
+        // REST API는 별도로 동작하기 때문에 후킹이 되지 않음 => 수동 쿼리로그 저장 메소드 실행
+        $query_log = new \LogQueryHook();
+        $query_log->logQueries();
     }
 
     /**

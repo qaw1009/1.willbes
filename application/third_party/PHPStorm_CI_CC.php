@@ -129,14 +129,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PackageAdminModel $packageadminModel                           Lecture admin package Model Class
  * @property PackagePeriodModel $packageperiodModel                          Lecture period package Model Class
  * @property LectureFreeModel $lecturefreeModel                                 Lecture free Model Class
- * @property OffLecture $offlectureModel                                           Off Lecture Model Class
- * @property OffPackage $offpackageModel                                           Off package Model Class
+ * @property OffLecture $offlectureModel                                            Off Lecture Model Class
+ * @property OffPackage $offpackageModel                                          Off package Model Class
  * @property LiveManagerModel $liveManagerModel                                Live Video Manager For Lecture Model Class
  * @property ConsultModel $consultModel                                            Consult Model Class
- * @property BannerModel $bannerModel                                           banner Model Class
- ***************** API ***********************
- * @property BaseProductModel $baseProductModel                               Product Base Model Class
- * @property LectureProductModel $lectureProductModel                        Product Lecture Model Class
+ * @property BannerModel $bannerModel                                              banner Model Class
+ ***************** FRONT ***********************
+ * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
+ * @property ProfessorFModel $professorFModel                                    Professor Model Class
+ * @property ProductFModel $productFModel                                        Product Model Class
  */
 class PHPStorm_CI_CC
 {

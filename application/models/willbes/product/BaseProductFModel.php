@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BaseProductModel extends WB_Model
+class BaseProductFModel extends WB_Model
 {
     private $_table = [
         'site' => 'lms_site',

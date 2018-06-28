@@ -90,9 +90,10 @@ class BaseProductFModel extends WB_Model
      * 교수 과목 연결 데이터 조회
      * @param $site_code
      * @param $cate_code
+     * @param $subject_idx
      * @return mixed
      */
-    public function listProfessorSubjectMapping($site_code, $cate_code)
+    public function listProfessorSubjectMapping($site_code, $cate_code, $subject_idx)
     {
         $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName as ProfName, P.ProfNickName, PSC.SubjectIdx, PS.SubjectName';
         $from = '
@@ -115,7 +116,7 @@ class BaseProductFModel extends WB_Model
                 and PS.IsUse = "Y" and PS.IsStatus = "Y"	        
         ';
 
-        $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code]]);
+        $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code, 'PSC.SubjectIdx' => $subject_idx]]);
         $where = $where->getMakeWhere(true);
         $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.PcIdx asc';
 

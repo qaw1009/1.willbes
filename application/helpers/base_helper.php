@@ -28,13 +28,14 @@ if (!function_exists('app_to_env_url')) {
 
 if (!function_exists('config_app')) {
     /**
-     * 시스템별 (wbs, lms ...) dot(.) 표기법으로 $key에 해당하는 config 값 리턴
+     * 서브 도메인별 (wbs, lms ...) dot(.) 표기법으로 $key에 해당하는 config 값 리턴
      * @param $key
+     * @param $default
      * @return mixed
      */
-    function config_app($key)
+    function config_app($key, $default = null)
     {
-        return array_get(config_item(APP_NAME), $key);
+        return array_get(config_item(SUB_DOMAIN), $key, $default);
     }
 }
 

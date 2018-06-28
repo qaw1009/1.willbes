@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products extends \app\controllers\RestController
 {
-    protected $models = array('_lms/sys/code', '_willbes/product/productF');
+    protected $models = array('_willbes/product/productF');
     protected $helpers = array();
 
     // 상품 판매상태 > 판매가능, 판매예정

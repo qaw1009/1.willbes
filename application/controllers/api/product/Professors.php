@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professors extends \app\controllers\RestController
 {
-    protected $models = array('_lms/sys/code', '_willbes/product/professorF');
+    protected $models = array('_willbes/product/professorF');
     protected $helpers = array();
 
     public function __construct()

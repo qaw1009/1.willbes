@@ -9,10 +9,12 @@ abstract class FrontController extends BaseController
     protected $auth_controller = false;
     // 로그인 필수 메소드 배열
     protected $auth_methods = array();
-    // 프런트 사이트 그룹 아이디
-    protected $_site_group_id = null;
+    // 프런트 사이트 코드
+    protected $_site_code = null;
     // 프런트 사이트 아이디
     protected $_site_id = null;
+    // 프런트 사이트 카테고리 코드
+    protected $_cate_code = null;
     // 학원(오프라인) 사이트 여부
     protected $_is_pass_site = false;
     // 학원(오프라인) 사이트 구분값
@@ -69,8 +71,8 @@ abstract class FrontController extends BaseController
      */
     private function _setSiteVars()
     {
-        $this->_site_group_id = SUB_DOMAIN;
-        $this->_site_id = $this->_site_group_id;
+        // 기본 사이트 아이디
+        $this->_site_id = SUB_DOMAIN;
 
         // 사이트별 예외 설정 조회
         $app_except_config = element(SUB_DOMAIN, config_item('app_except_config'), []);
@@ -94,7 +96,7 @@ abstract class FrontController extends BaseController
     private function _setSiteConfig()
     {
         // 사이트 정보 캐쉬 key
-        $site_key = $this->_site_group_id . '>' . $this->_site_id;
+        $site_key = SUB_DOMAIN . '>' . $this->_site_id;
 
         // URL 세그먼트 배열 (key => value 형태)
         $uri_segments = $this->uri->ruri_to_assoc();
@@ -108,8 +110,11 @@ abstract class FrontController extends BaseController
         // 현재 사이트 정보 캐쉬
         $site_cache = element($site_key, $total_site_cache, []);
 
+        // 현재 사이트 코드
+        $this->_site_code = element('SiteCode', $site_cache);
+
         // 사이트 코드 (URL 세그먼트 배열에 site 값이 있다면 site 값 우선)
-        $site_code = isset($uri_segments[config_get('uri_segment_keys.site')]) === true ? $uri_segments[config_get('uri_segment_keys.site')] : element('SiteCode', $site_cache);
+        $site_code = isset($uri_segments[config_get('uri_segment_keys.site')]) === true ? $uri_segments[config_get('uri_segment_keys.site')] : $this->_site_code;
 
         // 전체 사이트 메뉴 캐쉬 조회
         $site_menu_cache = $this->getCacheItem('site_menu');
@@ -130,9 +135,12 @@ abstract class FrontController extends BaseController
             // 사이트 과목+교수 연결정보 캐쉬 조회
             $site_subject_professor_cache = element($site_code, $this->getCacheItem('site_subject_professor'), []);
 
+            // 현재 사이트의 카테고리 코드
+            $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
+
             // Active 사이트 메뉴 정보 (/{directory}/{controller}/, /cate/{cate_code})
             $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
-            $check_menu_postfix = '/' . config_get('uri_segment_keys.cate') . '/' . element(config_get('uri_segment_keys.cate'), $uri_segments, '');
+            $check_menu_postfix = '/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
 
             foreach (array_get($site_menu_cache, 'SiteMenuUrls.' . $site_code, []) as $menu_route_idx => $menu_url) {
                 // 1depth 메뉴 제외

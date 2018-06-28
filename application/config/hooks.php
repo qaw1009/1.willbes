@@ -21,10 +21,12 @@ if (in_array(APP_NAME, ['wbs', 'lms']) === true) {
     );
 }
 
-// 쿼리빌더를 사용하여 실행한 쿼리 로그 저장
-$hook['post_system'][] = array(
-    'class' => 'LogQueryHook',
-    'function' => 'logQueries',
-    'filename' => 'LogQueryHook.php',
-    'filepath' => 'hooks'
-);
+if (in_array(APP_NAME, ['api']) === false) {
+    // 쿼리빌더를 사용하여 실행한 쿼리 로그 저장 (API는 수동으로 쿼리 로그 저장)
+    $hook['post_system'][] = array(
+        'class' => 'LogQueryHook',
+        'function' => 'logQueries',
+        'filename' => 'LogQueryHook.php',
+        'filepath' => 'hooks'
+    );
+}

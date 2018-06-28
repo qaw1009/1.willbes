@@ -59,7 +59,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 $autoload['libraries'] = array();
-if (is_cli() === false) {
+if (is_cli() === false && in_array(APP_NAME, ['api']) === false) {
     $autoload['libraries'][] = 'session';
 }
 
@@ -92,7 +92,10 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('base', 'url', 'array', 'form', 'cookie');
+$autoload['helper'] = array('base', 'url', 'array');
+if (in_array(APP_NAME, ['api']) === false) {
+    $autoload['helper'] = array_merge($autoload['helper'], ['form', 'cookie']);
+}
 if (in_array(APP_NAME, ['lms']) === true) {
     $autoload['helper'][] = APP_NAME;
 }

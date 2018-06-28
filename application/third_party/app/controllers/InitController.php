@@ -93,4 +93,15 @@ trait InitController
     {
         return $this->input->post($index, $xss_clean);
     }
+
+    /**
+     * request 간소화 함수 (get 사용)
+     * @param $index
+     * @param bool $xss_clean
+     * @return mixed
+     */
+    public function _reqG($index, $xss_clean = false)
+    {
+        return $this->input->get($index, $xss_clean);
+    }
 }

@@ -91,6 +91,22 @@ $(function() {
     });
 });
 
+// 자주하는 질문 메뉴 Script
+$(function() {
+    $('.tabcsDepth2 li a.qBox').click(function() {
+
+        $('.tabcsDepth2 li .subBox').removeClass('on')
+
+        if ($(this).hasClass('on')) {
+            $(this).next().removeClass('on');
+
+        } else {
+            $(this).next().addClass('on');
+
+        }   
+    });
+});
+
 // 첨부파일 찾아보기 버튼 Script
 $(function() {
     var $fileBox = $('.filetype');

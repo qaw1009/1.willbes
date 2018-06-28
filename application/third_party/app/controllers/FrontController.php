@@ -200,22 +200,4 @@ abstract class FrontController extends BaseController
     {
         return $this->session->userdata('is_login');
     }
-
-    /**
-     * 캐쉬 데이터 리턴
-     * @param string $driver [캐쉬명]
-     * @param null|string $key [캐쉬 데이터 배열 키값]
-     * @param string $site_id [캐쉬 데이터 최상위 배열 키값, 사이트 코드]
-     * @return mixed
-     */
-    public function getCacheItem($driver, $key = null, $site_id = 'all')
-    {
-        is_object(@$this->caching) === false && $this->load->driver('caching');
-
-        if (($items = $this->caching->{$driver}->get()) === false) {
-            $items = [];
-        }
-
-        return $site_id == 'all' ? array_get($items, $key) : array_get(element($site_id, $items, []), $key);
-    }
 }

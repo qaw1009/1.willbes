@@ -121,7 +121,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" class="flat" name="is_use" value="N" data-is-use-idx="'+ row.BIdx +'">';
+                            return '<input type="checkbox" class="flat" name="is_use" value="N" data-is-use-idx="'+ row.PIdx +'">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -137,11 +137,11 @@
                         }},
                     {'data' : 'DispName'},
                     {'data' : 'PopUpName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="#" class="btn-modify" data-idx="' + row.PIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : 'PopUpRealFullPath', 'render' : function(data, type, row, meta) {
                             var img_url = row.PopUpFullPath + row.PopUpImgName;
-                            return "<img class='img_"+row.BIdx+"' src='"+img_url+"' width='100%' height='30%'>";
+                            return "<img class='img_"+row.PIdx+"' src='"+img_url+"' width='100%' height='30%'>";
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             var disp_datm = row.DispStartDatm + ' ' + ((row.DispStartTime.length <= '1') ? '0' + row.DispStartTime : row.DispStartTime);

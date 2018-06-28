@@ -2,8 +2,8 @@
 @section('content')
     <h5>- 사이트 섹션별 팝업를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/popup/store") }}?bm_idx=45" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/popup/store") }}?bm_idx=45" novalidate>--}}
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="p_idx" value="{{ $p_idx }}"/>
@@ -105,24 +105,28 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="top_pixel">팝업위치<span class="required">*</span></label>
-                    <div class="col-md-1 item">
-                        <input type="text" id="top_pixel" name="top_pixel" required="required" class="form-control" title="상단" value="{{ $data['TopPixel'] }}">
+                    <div class="col-md-3">
+                        <div class="control-label col-md-2">[상단]</div>
+                        <div class="col-md-3 item">
+                            <input type="text" id="top_pixel" name="top_pixel" required="required" class="form-control" title="상단" value="{{ $data['TopPixel'] }}">
+                        </div>
+                        <div class="control-label col-md-2">[좌측]</div>
+                        <div class="col-md-3 item">
+                            <input type="text" id="left_pixel" name="left_pixel" required="required" class="form-control" title="좌측" value="{{ $data['LeftPixel'] }}">
+                        </div>
                     </div>
-                    <div class="col-md-1"><p class="form-control-static">[상단]</p></div>
-                    <div class="col-md-1 item">
-                        <input type="text" id="left_pixel" name="left_pixel" required="required" class="form-control" title="좌측" value="{{ $data['LeftPixel'] }}">
-                    </div>
-                    <div class="col-md-1"><p class="form-control-static">[좌측]</p></div>
 
-                    <label class="control-label col-md-1" for="width_size">팝업사이즈<span class="required">*</span></label>
-                    <div class="col-md-1 item">
-                        <input type="text" id="width_size" name="width_size" required="required" class="form-control" title="상단" value="{{ $data['Width'] }}">
+                    <label class="control-label col-md-1">팝업사이즈<span class="required">*</span></label>
+                    <div class="col-md-3">
+                        <div class="control-label col-md-2">[가로]</div>
+                        <div class="col-md-3 item">
+                            <input type="text" id="width_size" name="width_size" required="required" class="form-control" title="가로" value="{{ $data['Width'] }}">
+                        </div>
+                        <div class="control-label col-md-2">[세로]</div>
+                        <div class="col-md-3 item">
+                            <input type="text" id="height_size" name="height_size" required="required" class="form-control" title="좌측" value="{{ $data['Height'] }}">
+                        </div>
                     </div>
-                    <div class="col-md-1"><p class="form-control-static">[가로]</p></div>
-                    <div class="col-md-1 item">
-                        <input type="text" id="height_size" name="height_size" required="required" class="form-control" title="좌측" value="{{ $data['Height'] }}">
-                    </div>
-                    <div class="col-md-1"><p class="form-control-static">[세로]</p></div>
                 </div>
 
                 <div class="form-group">
@@ -137,8 +141,8 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="link_url">링크주소<span class="required">*</span></label>
-                    <div class="col-md-9 item">
-                        <input type="text" id="link_url" name="link_url" required="required" class="form-control" maxlength="46" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
+                    <div class="col-md-6 item">
+                        <input type="text" id="link_url" name="link_url" required="required" class="form-control" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
                     </div>
                 </div>
 
@@ -153,9 +157,72 @@
                     </div>
                     <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
                         <b>{{$data['PopUpImgRealName']}}</b>
-                        {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['BIdx']}}"><i class="fa fa-times red"></i></a>--}}
+                        {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['PIdx']}}"><i class="fa fa-times red"></i></a>--}}
                     </div>
                     @endif
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="image_map">이미지맵</label>
+                    <div class="col-md-7 item">
+                        <div class="x_panel mb-0">
+                            <div class="x_content pb-0">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <table id="image_map_table" class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <td>이미지맵타입</td>
+                                                <td>이미지맵</td>
+                                                <td>링크URL</td>
+                                                <td>필드삭제</td>
+                                                <td class="text-right"><button type="button" class="btn btn-sm btn-success btn-image-map-add">필드 추가</button></td>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="form-group-sm">
+                                            @if($method == 'POST')
+                                                <tr>
+                                                    <td>
+                                                        <select class="form-control" name="image_map_type[]" title="이미지맵 타입">
+                                                            <option value="default">전체영역</option>
+                                                            <option value="rect">사각형영역</option>
+                                                            <option value="circle">원형영역</option>
+                                                            <option value="poly">다각형영역</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" name="image_map_area[]" class="form-control" title="이미지맵" value=""></td>
+                                                    <td><input type="text" name="image_map_link_url[]" class="form-control" title="링크주소" value=""></td>
+                                                    <td colspan="2">
+                                                        <a href="#none" class="btn-image-map-delete"><i class="fa fa-times fa-lg red"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                @foreach($data['imageMaps'] as $row)
+                                                    <tr>
+                                                        <td>
+                                                            <select class="form-control" name="image_map_type[]" title="이미지맵 타입">
+                                                                <option value="default" @if($row['ImgType'] == 'default')selected="selected"@endif>전체영역</option>
+                                                                <option value="rect" @if($row['ImgType'] == 'rect')selected="selected"@endif>사각형영역</option>
+                                                                <option value="circle" @if($row['ImgType'] == 'circle')selected="selected"@endif>원형영역</option>
+                                                                <option value="poly" @if($row['ImgType'] == 'poly')selected="selected"@endif>다각형영역</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="text" name="image_map_area[]" class="form-control" title="이미지맵" value="{{$row['ImgArea']}}"></td>
+                                                        <td><input type="text" name="image_map_link_url[]" class="form-control" title="링크주소" value="{{$row['LinkUrl']}}"></td>
+                                                        <td>
+                                                            <a href="#none" class="btn-image-map-delete"><i class="fa fa-times fa-lg red"></i></a>
+                                                        </td>
+                                                        <td><button type="button" class="btn btn-sm btn-danger btn-image-map-is-status" data-image-map-idx="{{$row['PuiIdx']}}">개별삭제</button></td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -241,6 +308,43 @@
             $regi_form.on('click', '.selected-category-delete', function() {
                 var that = $(this);
                 that.parent().remove();
+            });
+
+            // 이미지맵 필드 추가
+            $regi_form.on('click', '.btn-image-map-add', function() {
+                var $table = $('#image_map_table');
+                // 첫번째 tr 복사하여 추가
+                $table.find('tbody tr:eq(0)').clone().appendTo($table);
+            });
+
+            // 이미지맵 필드 삭제
+            $regi_form.on('click', '.btn-image-map-delete', function() {
+                var that = $(this);
+
+                if (that.parents('tbody').children('tr').length > 1) {
+                    // 행 삭제
+                    $(this).parent().parent('tr').remove();
+                } else {
+                    alert('최소 1개의 행이 필요합니다. 삭제하실 수 없습니다.');
+                }
+            });
+
+            $regi_form.on('click', '.btn-image-map-is-status', function() {
+                var _url = '{{ site_url("/site/popup/delImageMap") }}' + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'pui_idx' : $(this).data('image-map-idx')
+                };
+                if (!confirm('삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
 
             //목록

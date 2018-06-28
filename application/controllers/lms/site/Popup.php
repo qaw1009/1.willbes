@@ -74,9 +74,13 @@ class Popup extends \app\controllers\BaseController
             $arr_cate_code = $this->popupModel->listPopupCategory($p_idx);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+
+            // 이미지맵 연결 데이터 조회
+            $arr_image_map_data = $this->popupModel->listPopupImageMap($p_idx);
+            $data['imageMaps'] = $arr_image_map_data;
         }
 
-        //배너노출섹션, 배너위치
+        //배너노출섹션
         $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
 
         $this->load->view("site/popup/create", [
@@ -114,7 +118,7 @@ class Popup extends \app\controllers\BaseController
             $method = 'modify';
             $rules = array_merge($rules, [
                 ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-                ['field' => '$p_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+                ['field' => 'p_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
             ]);
         }
 
@@ -125,6 +129,85 @@ class Popup extends \app\controllers\BaseController
         $result = $this->popupModel->{$method . 'Popup'}($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 팝업 삭제
+     */
+    public function delPopup()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $params = json_decode($this->_req('params'), true);
+        $result = $this->popupModel->delPopup($params);
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 정렬 변경 리스트페이지
+     */
+    public function listReOrderModal()
+    {
+        $this->load->helper('file');
+        $arr_condition = [];
+
+        //배너노출섹션
+        $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
+
+        $list = $this->popupModel->listAllPopup(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'PIdx' => 'desc']);
+
+        foreach ($list as $key => $val) {
+            $img_real_path = public_to_upload_path($list[$key]['PopUpFullPath'].$list[$key]['PopUpImgName']);
+            $list[$key]['PopUpImgInfo'] = @getimagesize($img_real_path);
+        }
+
+        $this->load->view("site/popup/list_reorder_modal", [
+            'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']],
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 정렬 변경
+     */
+    public function reorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->popupModel->modifyPopupReorder(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 이미지맵 개별 삭제
+     */
+    public function delImageMap()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'pui_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->popupModel->removePopupImageMap($this->_reqP('pui_idx'));
+        $this->json_result($result, '삭제 처리 되었습니다.', $result);
     }
 
     /**

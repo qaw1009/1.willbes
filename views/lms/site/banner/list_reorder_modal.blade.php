@@ -19,7 +19,7 @@
                             <input type="text" class="form-control" id="search_value" name="search_value">
                         </div>
                         <div class="col-md-2">
-                            <p class="form-control-static">• 카테고리명(코드) 검색 가능</p>
+                            <p class="form-control-static">• 통합 검색 가능</p>
                         </div>
                         <div class="col-md-2">
                             <select class="form-control mr-10" id="search_modal_banner_disp" name="search_modal_banner_disp" title="노출섹션">

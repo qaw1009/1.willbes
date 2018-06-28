@@ -17,13 +17,13 @@ class Client extends \app\controllers\BaseController
     {
         $data = $this->restclient->get('sample/server/index', ['id' => 'foo'], 'json');
         $this->restclient->debug();
-        var_dump($data, $data->data->name, get_object_vars($data->data));
+        var_dump($data);
     }
 
     public function post()
     {
         $data = $this->restclient->post('sample/server/index', ['id' => 'foo'], 'json');
         $this->restclient->debug();
-        var_dump($data, $data->data->name);
+        var_dump($data);
     }
 }

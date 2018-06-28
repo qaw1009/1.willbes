@@ -53,7 +53,8 @@ abstract class RestController extends \restserver\libraries\REST_Controller
         return $this->response([
             $this->config->item('rest_status_field_name') => $is_success,
             $this->config->item('rest_message_field_name') => $ret_msg,
-            $this->config->item('rest_data_field_name') => $ret_data,
+            $this->config->item('rest_http_code_field_name') => $http_code,
+            $this->config->item('rest_data_field_name') => $ret_data
         ], $http_code);
     }
 

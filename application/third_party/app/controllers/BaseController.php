@@ -115,6 +115,75 @@ abstract class BaseController extends \CI_Controller
     }
 
     /**
+     * return API result
+     * @param array $results
+     * @param string $return_method
+     * @param null $return_url
+     * @return \CI_Output
+     */
+    public function api_to_result($results = [], $return_method = 'redirect', $return_url = null)
+    {
+        // rest config item
+        $field_status = config_get('rest.rest_status_field_name');
+        $field_msg = config_get('rest.rest_message_field_name');
+        $field_data = config_get('rest.rest_data_field_name');
+
+        if ($results[$field_status] === true) {
+            if ($return_method == 'redirect') {
+                redirect($return_url);
+            } else {
+                return $this->json_result(true, $results[$field_msg], null, $results[$field_data]);
+            }
+        } else {
+            return $this->api_to_error($results, $return_method);
+        }
+    }
+
+    /**
+     * return API error
+     * @param array $results
+     * @param string $error_method
+     * @return \CI_Output
+     */
+    public function api_to_error($results = [], $error_method = 'redirect')
+    {
+        // rest config item
+        $field_uri = config_get('rest.rest_uri_field_name');
+        $field_msg = config_get('rest.rest_message_field_name');
+        $field_http_code = config_get('rest.rest_http_code_field_name');
+
+        if ($error_method == 'redirect') {
+            show_error($results[$field_msg], $results[$field_http_code], 'API Error - ' . element($field_uri, $results, $results[$field_http_code]));
+        } else {
+            return $this->json_error($results[$field_msg], $results[$field_http_code]);
+        }
+    }
+
+    /**
+     * return API get method data
+     * @param array $results
+     * @param string $error_method
+     * @return array|\CI_Output
+     */
+    public function api_get_data($results = [], $error_method = 'redirect')
+    {
+        // rest config item
+        $field_status = config_get('rest.rest_status_field_name');
+        $field_data = config_get('rest.rest_data_field_name');
+
+        if (isset($results[$field_status]) === true) {
+            if ($results[$field_status] === true) {
+                // use get method
+                return $results[$field_data];
+            } else {
+                return $this->api_to_error($results, $error_method);
+            }
+        }
+        // use getDataJson, getsDataJson
+        return $results;
+    }
+
+    /**
      * form validation check
      * @param array $rules
      * @param string $format

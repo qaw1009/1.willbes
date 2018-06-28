@@ -61,7 +61,8 @@ $config['rest_supported_formats'] = [
 | The field name for the status inside the response
 |
 */
-$config['rest_status_field_name'] = 'status';
+//$config['rest_status_field_name'] = 'status';
+$config['rest_status_field_name'] = 'ret_cd';
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +73,10 @@ $config['rest_status_field_name'] = 'status';
 |
 */
 //$config['rest_message_field_name'] = 'error';
-$config['rest_message_field_name'] = 'message';
-$config['rest_data_field_name'] = 'data';   // return data field name
+$config['rest_message_field_name'] = 'ret_msg';
+$config['rest_data_field_name'] = 'ret_data';   // return data field name
+$config['rest_http_code_field_name'] = 'ret_status';    // return http code field name
+$config['rest_uri_field_name'] = 'uri';     // return uri field name
 
 /*
 |--------------------------------------------------------------------------

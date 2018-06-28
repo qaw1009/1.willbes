@@ -24,6 +24,7 @@ class RestClient
     );
 
     protected $config_file = 'rest';
+    protected $rest_configs = [];
     protected $rest_server;
     protected $format;
     protected $mime_type;
@@ -70,31 +71,31 @@ class RestClient
     {
         // get global config
         $this->_CI->load->config($this->config_file, TRUE, TRUE);
-        $_config = element($this->config_file, $this->_CI->config->config);
+        $this->rest_configs = element($this->config_file, $this->_CI->config->config);
 
         // set member variables
-        $this->rest_server = isset($config['server']) ? $config['server'] : element('rest_server', $_config);
+        $this->rest_server = isset($config['server']) ? $config['server'] : element('rest_server', $this->rest_configs);
         if (substr($this->rest_server, -1, 1) != '/') {
             $this->rest_server .= '/';
         }
 
-        $this->format = isset($config['format']) ? $config['format'] : element('rest_default_format', $_config);
+        $this->format = isset($config['format']) ? $config['format'] : element('rest_default_format', $this->rest_configs);
         isset($config['send_cookies']) && $this->send_cookies = $config['send_cookies'];
 
         isset($config['api_key']) && $this->api_key = element('api_key', $config);
-        $this->api_key_name = isset($config['api_key_name']) ? $config['api_key_name'] : element('rest_key_name', $_config, 'X-API-KEY');
+        $this->api_key_name = isset($config['api_key_name']) ? $config['api_key_name'] : element('rest_key_name', $this->rest_configs, 'X-API-KEY');
 
-        $this->api_user_name = isset($config['api_user_name']) ? $config['api_user_name'] : element('rest_user_name', $_config, 'X-API-USER');
-        $this->api_token_name = isset($config['api_token_name']) ? $config['api_token_name'] : element('rest_token_name', $_config, 'X-API-TOKEN');
-        $this->api_nonce_name = isset($config['api_nonce_name']) ? $config['api_nonce_name'] : element('rest_nonce_name', $_config, 'X-API-NONCE');
+        $this->api_user_name = isset($config['api_user_name']) ? $config['api_user_name'] : element('rest_user_name', $this->rest_configs, 'X-API-USER');
+        $this->api_token_name = isset($config['api_token_name']) ? $config['api_token_name'] : element('rest_token_name', $this->rest_configs, 'X-API-TOKEN');
+        $this->api_nonce_name = isset($config['api_nonce_name']) ? $config['api_nonce_name'] : element('rest_nonce_name', $this->rest_configs, 'X-API-NONCE');
 
-        $this->http_realm = isset($config['http_realm']) ? $config['http_realm'] : element('rest_realm', $_config);
-        $this->http_auth = isset($config['http_auth']) ? $config['http_auth'] : element('rest_auth', $_config);
-        $this->http_user = isset($config['http_user']) ? $config['http_user'] : key(element('rest_valid_logins', $_config));
-        $this->http_pass = isset($config['http_pass']) ? $config['http_pass'] : current(element('rest_valid_logins', $_config));
+        $this->http_realm = isset($config['http_realm']) ? $config['http_realm'] : element('rest_realm', $this->rest_configs);
+        $this->http_auth = isset($config['http_auth']) ? $config['http_auth'] : element('rest_auth', $this->rest_configs);
+        $this->http_user = isset($config['http_user']) ? $config['http_user'] : key(element('rest_valid_logins', $this->rest_configs));
+        $this->http_pass = isset($config['http_pass']) ? $config['http_pass'] : current(element('rest_valid_logins', $this->rest_configs));
 
-        $this->ssl_verify_peer = isset($config['ssl_verify_peer']) ? $config['ssl_verify_peer'] : element('ssl_verify_peer', $_config);
-        $this->ssl_cainfo = isset($config['ssl_cainfo']) ? $config['ssl_cainfo'] : element('ssl_cainfo', $_config);
+        $this->ssl_verify_peer = isset($config['ssl_verify_peer']) ? $config['ssl_verify_peer'] : element('ssl_verify_peer', $this->rest_configs);
+        $this->ssl_cainfo = isset($config['ssl_cainfo']) ? $config['ssl_cainfo'] : element('ssl_cainfo', $this->rest_configs);
     }
 
     /**
@@ -112,6 +113,43 @@ class RestClient
         }
 
         return $this->_call('get', $uri, NULL, $format);
+    }
+
+    /**
+     * get data from get api
+     * @param string $uri
+     * @param array $params
+     * @return mixed
+     */
+    public function getDataJson($uri, $params = array())
+    {
+        $result = $this->get($uri, $params, 'json');
+        if ($this->status() != _HTTP_OK) {
+            $result[element('rest_uri_field_name', $this->rest_configs, 'uri')] = $uri;
+            return $result;
+        }
+
+        return $result[element('rest_data_field_name', $this->rest_configs, 'data')];
+    }
+
+    /**
+     * get data from gets api
+     * @param array $uri_params
+     * @return array
+     */
+    public function getsDataJson($uri_params = array())
+    {
+        $results = [];
+        foreach ($uri_params as $idx => $uri_param) {
+            $result = $this->getDataJson($uri_param['uri'], $uri_param['params']);
+            if (isset($result[element('rest_status_field_name', $this->rest_configs, 'status')]) === true) {
+                return $result;
+            }
+
+            $results[$uri_param['name']] = $result;
+        }
+
+        return $results;
     }
 
     /**
@@ -266,6 +304,9 @@ class RestClient
         // return the response from the REST server
         $response = $this->_CI->curl->rawResponse;
 
+        // write log
+        $this->_log_response($response, $this->status(), $method, $uri, $params, $format);
+
         // Format and return
         return $this->_format_response($response);
     }
@@ -392,6 +433,27 @@ class RestClient
     }
 
     /**
+     * write rest client log
+     * @param $response
+     * @param $http_code
+     * @param $method
+     * @param $uri
+     * @param array $params
+     * @param null $format
+     */
+    protected function _log_response($response, $http_code, $method, $uri, $params = array(), $format = NULL)
+    {
+        if ($http_code != _HTTP_OK) {
+            $log_msg = '[RestClient: ' . $uri . '] => ' . $response;
+            $log_vars = [
+                'method' => $method, 'params' => $params, 'format' => $format, 'http_code' => $http_code
+            ];
+
+            logger($log_msg, $log_vars, 'error');
+        }
+    }
+
+    /**
      * _format_response
      * @param $response
      * @return mixed
@@ -473,7 +535,7 @@ class RestClient
      */
     protected function _json($string)
     {
-        return json_decode(trim($string));
+        return json_decode(trim($string), true);
     }
 
     /**

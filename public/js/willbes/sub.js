@@ -91,6 +91,20 @@ $(function() {
     });
 });
 
+// 첨부파일 찾아보기 버튼 Script
+$(function() {
+    var $fileBox = $('.filetype');
+
+        $fileBox.each(function() {
+        var $fileUpload = $(this).find('.input-file'),
+            $fileText = $(this).find('.file-text').attr('disabled', 'disabled')
+        $fileUpload.on('change', function() {
+            var fileName = $(this).val();
+            $fileText.attr('disabled', 'disabled').val(fileName);
+        });
+    });
+});
+
 // scroll top fixed Script
 $('*[id*=Sticky]:visible').each(function() {
 

@@ -37,4 +37,6 @@
 
 <a href="{{ site_url('/home/html/cart3') }}">결제완료 page 이동</a><br/><br/>
 
-<a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 page 이동</a><br/><br/>
+<a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/cscenter#cs1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>

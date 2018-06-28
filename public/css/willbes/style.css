@@ -2697,6 +2697,7 @@ table.classTable tr td.w-data {
     display: inline-block;
 }
 .filetype .file-text {
+    background: #fff;
     float: left;
     position: relative;
     width: 570px;
@@ -2712,8 +2713,8 @@ table.classTable tr td.w-data {
 .filetype .file-select {
     position: absolute;
     top: 0;
-    right: 0;
-    width: 90px;
+    left: 0;
+    width: 100%;
     height: 25px;
     overflow: hidden;
 }
@@ -2902,6 +2903,18 @@ table.classTable tr td.w-data {
 .pBox.p4 {
     color: #343434;
     border-color: #7b7b7b;
+}
+.pBox.p5 {
+    color: #2799b5;
+    border-color: #2799b5;
+}
+.pBox.p6 {
+    color: #509122;
+    border-color: #509122;
+}
+.pBox.p7 {
+    color: #17396b;
+    border-color: #17396b;
 }
 .packageTable .w-tit {
     width: 670px;
@@ -4035,6 +4048,7 @@ ul li.profList .w-notice a {
     right: 0;
     width: 40px;
     height: 20px;
+    z-index: 1;
 }
 .sliderBest .bx-wrapper .bx-controls-direction {
     width: 40px;
@@ -4190,6 +4204,12 @@ ul li.profList .w-notice a {
 .onlineBox {
     background: #0d74ae;
 }
+.nyBox {
+    background: #703eb4;
+}
+.smBox {
+    background: #4b9e2b;
+}
 .willbes-Lec-Selected {
     margin: 20px 0;
 }
@@ -4225,9 +4245,19 @@ ul li.profList .w-notice a {
     border: 1px solid #adadad;
     color: #636363;
 }
+.waitBox_block {
+    border: 1px solid #4b4b51;
+    color: #4b4b51;
+    background: #fff;
+}
 .answerBox {
     border: 1px solid #5ab6eb;
     color: #1a8bcc;
+}
+.answerBox_block {
+    border: 1px solid #4b4b51;
+    color: #fff;
+    background: #4b4b51;
 }
 .willbes-Lec-Selected .chkBox {
     display: inline-block;
@@ -4254,17 +4284,20 @@ ul li.profList .w-notice a {
 /*********************************************     CSCENTER PAGE     *********************************************/
 
 /* subContainer : Cs : 인덱스 */
-.tabWrap.tabCsDepth1 {
+.tabWrap.tabCsDepth1,
+.tabWrapIndex {
     height:50px;
     border-bottom: none;
 }
-.tabWrap.tabCsDepth1 li {
+.tabWrap.tabCsDepth1 li,
+.tabWrapIndex li {
     float: left;
     width: 14.38571428571429%;
     height: 50px;
     margin-right: -1px;
 }
-.tabWrap.tabCsDepth1 li a {
+.tabWrap.tabCsDepth1 li a,
+.tabWrapIndex li a {
     position: relative;
     display: block;
     width: 100%;
@@ -4278,18 +4311,23 @@ ul li.profList .w-notice a {
     letter-spacing: 0;
     border: 1px solid #ccc;
 }
-.tabWrap.tabCsDepth1 li:first-child a {
+.tabWrap.tabCsDepth1 li:first-child a,
+.tabWrapIndex li:first-child a {
     border-left: 1px solid #ccc;
 }
-.tabWrap.tabCsDepth1 li a.on {
+.tabWrap.tabCsDepth1 li a.on,
+.tabWrapIndex li a:hover {
     z-index: 2;
     background: #fff;
     color: #0d74ae;
     border: 1px solid #0d74ae;
 }
+.willbes-CScenter .willbes-Lec-Search {
+    margin: 7px 0;
+}
 
-/* subContainer : Cs : CScenter1 : Act1-1 */
-.CScenter1 .Act1-1 {
+/* subContainer : Cs : CScenterIndex : ActIndex1 */
+.CScenterIndex .ActIndex1 {
     height: 250px;
 }
 .CSpartner .centerList {
@@ -4343,13 +4381,13 @@ ul li.profList .w-notice a {
     line-height: 34px;
 }
 
-/* subContainer : Cs : CScenter1 : Act1-2 */
+/* subContainer : Cs : CScenterIndex : ActIndex2 */
 .LeclistTable .csCenterTable tbody tr.replyTxt th,
 .LeclistTable .csCenterTable tbody tr.replyTxt td {
-    line-height: 19px;
+    line-height: 24px;
     padding: 15px 0;
 }
-.csCenterTable {
+.csCenterTable tr.SearchBox {
     border-top: 2px solid #000;
 }
 .csCenterTable tr th ul {
@@ -4388,7 +4426,7 @@ ul li.profList .w-notice a {
     width: 490px;
 }
 
-/* subContainer : Cs : CScenter1 : Act1-3 */
+/* subContainer : Cs : CScenterIndex : ActIndex3 */
 .willbes-firstinfo {
     font-weight: 600;
     height: 150px;
@@ -4495,7 +4533,7 @@ ul li.profList .w-notice a {
     background: url("../../img/willbes/cs/icon_firstinfo5_on.gif") no-repeat center 15px;
 }
 
-/* subContainer : Cs : CScenter1 : Act1-3 : willbes-Layer-CScenterBox */
+/* subContainer : Cs : CScenterIndex : ActIndex3 : willbes-Layer-CScenterBox */
 .willbes-Layer-CScenterBox {
     display: none;
     background: #fff;
@@ -4538,8 +4576,8 @@ ul li.profList .w-notice a {
 }
 
 
-/* subContainer : Cs : CScenter1 : Act1-4 */
-.CScenter1 .Act1-4 {
+/* subContainer : Cs : CScenterIndex : ActIndex4 */
+.CScenterIndex .ActIndex4 {
     height: 202px;
 }
 .willbes-program {
@@ -4577,9 +4615,52 @@ ul li.profList .w-notice a {
     color: #959595;
 }
 
+/* subContainer : Cs : CScenter1 : Act1 */
+.tabWrap.tabcsDepth2 {
+    height: 95px;
+    text-align: center;
+    border-top: 1px solid #dedede;
+    border-bottom: 3px solid #ccc;
+}
+.tabWrap.tabcsDepth2 li {
+    float: inherit;
+    display: inline-block;
+    height: 94px;
+    padding-top: 10px;
+}
+.tabWrap.tabcsDepth2 li a {
+    display: block;
+    width: 100%;
+    height: 84px;
+    line-height: 5px;
+    background: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3a3a3a;
+    text-align: center;
+    letter-spacing: 0;
+    border: none;
+}
+.tabWrap.tabcsDepth2 li a.on {
+    background: none;
+    height: 84px;
+    line-height: 5px;
+    font-weight: 600;
+    color: #3a3a3a;
+    border: none;
+    border-bottom: 3px solid #0d74ae;
+}
 
-
-
+.tabWrap.tabcsDepth2 .subBox {
+    width: 940px;
+}
+.tabWrap.tabcsDepth2 .subBox dl dt {
+    display: inline-block;
+}
+.tabWrap.tabcsDepth2 .subBox dl dt a {
+    height: 40px;
+    line-height: 40px;
+}
 
 
 

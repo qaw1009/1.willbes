@@ -972,7 +972,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- List -->
                         <div class="willbes-Leclist c_both">
                             <div class="willbes-Lec-Selected tx-gray">
@@ -1783,20 +1782,4 @@
     </div>
 </div>
 <!-- End Container -->
-
-<script>
-    $(function() {
-        var $fileBox = $('.filetype');
-
-            $fileBox.each(function() {
-            var $fileUpload = $(this).find('.input-file'),
-                $fileText = $(this).find('.file-text')
-            $fileUpload.on('change', function() {
-                var fileName = $(this).val();
-                $fileText.attr('disabled', 'disabled').val(fileName);
-            });
-        });
-    });
-</script>
-
 @stop

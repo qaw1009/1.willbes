@@ -92,7 +92,7 @@ class CommonLectureModel extends WB_Model
 
         } elseif ($tableName === 'lms_product_division') {   //강사료
 
-                if($prodtype === 'packageadmin') {
+                if($prodtype === 'packageadmin' || $prodtype === 'offpackageadmin') {
                     $column = 'A.*,C.wProfName,D.ProdName as ProdNameSub';
 
                     $from = ' from
@@ -234,12 +234,14 @@ class CommonLectureModel extends WB_Model
             $column = '
                             STRAIGHT_JOIN
                             S.ProdCodeSub,S.IsEssential,S.SubGroupName
-                            ,A.ProdCode,A.ProdName,A.IsUse
+                            ,A.ProdCode,A.ProdName,A.IsUse,A.IsSaleEnd
                             ,Aa.CcdName as SaleStatusCcd_Name
                             ,B.MultipleApply
+                            ,B.SchoolStartYear,B.SchoolStartMonth,B.IsLecOpen
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as LecTypeCcd_Name
                             ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                            ,Bg.CcdName as CampusCcd_Name
                             ,C.CateCode
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.RealSalePrice
@@ -256,6 +258,7 @@ class CommonLectureModel extends WB_Model
                                 left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
                                 left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
                                 left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
+                                left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
                                 join wbs_cms_lecture_combine_light Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx=1026
                             join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                 join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
@@ -470,7 +473,7 @@ class CommonLectureModel extends WB_Model
                             $IsSingularMake = 'N';
                             $SingularValueMake = 0;
                         }
-                    } else if($prodtype === 'packageadmin') {
+                    } else if($prodtype === 'packageadmin' || $prodtype === 'offpackageadmin') {
                         //교수코드-상품코드와 단수적용 교수코드-상품코드가 값이 같으면
                         if (trim($ProfIdx[$i].'-'.$prodcodesubMake) == trim($rateRemainProfIdx)) {
                             $IsSingularMake = 'Y';
@@ -500,8 +503,7 @@ class CommonLectureModel extends WB_Model
                     if($this->_conn->set($data)->insert($this->_table['division']) === false) {
                         throw new \Exception('강사료 정산 등록에 실패했습니다.');
                     }
-
-                    //echo $this->_conn->last_query();
+                   //echo $this->_conn->last_query();
                 }
             }
 
@@ -1125,7 +1127,7 @@ class CommonLectureModel extends WB_Model
 
 
             //  연결강좌복사
-            if($prodtype==='packageuser' || $prodtype==='packageadmin' || $prodtype==='packageperiod') {
+            if($prodtype==='packageuser' || $prodtype==='packageadmin' || $prodtype==='packageperiod' || $prodtype==='offpackageadmin' ) {
 
                 $insert_column = 'ProdCodeSub,ProdCode,  IsEssential, SubGroupName, OrderNum, RegAdminIdx, RegIp';
                 $select_column = str_replace(',ProdCode', ',\'' . $prodcode_new . '\' as ProdCode', $insert_column);
@@ -1197,6 +1199,63 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
+
+    /**
+     * 개설여부 , 접수상태 변경 (학원상품 관리 공통 사용)
+     * @param $prodcode
+     * @return mixed
+     */
+    public function _modifyOptionByColumn($prodcode, $islecopen=null, $issaleend=null)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+
+            $data = [
+                'UpdAdminIdx'=>$this->session->userdata('admin_idx')
+            ];
+
+            $opt_data = null;
+
+            //개설여부
+            if(empty($islecopen) === false) {
+                $table = $this->_table['lecture'];
+                $opt_data = [
+                    'IsLecOpen' => $islecopen
+                ];
+                /* lms_product_lecture 테이블에는 관리자정보, 수정일자의 수정 정보가 존재하지 않으므로 일단 lms_product 테이블에 수정한 관리자 정보를 업데이트 함*/
+                /* 업데이트 정보가 기존하고 같을경우 업데이트 일자가 수정이 안됨. 해서 강제로 업데이트 일자를 수정해야 함*/
+                $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode);
+                if($this->_conn->update($this->_table['product']) === false) {
+                    throw new \Exception('옵션 수정(관리자 업데이트) 에 실패했습니다.');
+                }
+            }
+
+            //접수상태
+            if(empty($issaleend) === false) {
+                $table = $this->_table['product'];
+                $opt_data = array_merge($data,[
+                    'IsSaleEnd' => $issaleend
+                ]);
+            }
+
+            if (empty($opt_data) === false) {
+                $this->_conn->set($opt_data)->where('ProdCode', $prodcode);
+                if ($this->_conn->update($table) === false) {
+                    throw new \Exception('옵션 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+    
+    
     /**
      * 게시판용 상품 정보 조회
      * @param $arr_condition

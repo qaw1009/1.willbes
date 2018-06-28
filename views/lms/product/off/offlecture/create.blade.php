@@ -185,7 +185,9 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             @foreach($studypattern_ccd as $key => $val)
+                                @if($key != '653003')
                                 <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -866,14 +868,15 @@
                 })
             });
 
-            //동일한 마스터강의 등록 강좌 검색
+
+            //동일한 마스터강의 등록 강좌 검색 (학원 단과)
             $('#sameLecture').on('click', function() {
 
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;};
                 if($('#wLecIdx').val() == '') {alert('마스터강좌를 선택해 주세요.'); return;};
 
                 $('#sameLecture').setLayer({
-                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&wLecIdx='+$('#wLecIdx').val()
+                    'url' : '{{ site_url('common/searchOffLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615006&wLecIdx='+$('#wLecIdx').val()
                     ,'width' : 1200
                 })
             });

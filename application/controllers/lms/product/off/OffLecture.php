@@ -64,6 +64,7 @@ Class OffLecture extends \app\controllers\BaseController
                 'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
                 'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
+                'B.CampusCcd' => $this->_reqP('search_campus_code'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
@@ -275,7 +276,7 @@ Class OffLecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offlectureModel->modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('IsSaleEnd'));
+        $result = $this->offlectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('IsSaleEnd'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

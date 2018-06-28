@@ -12,7 +12,7 @@
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_campus_code">
+                        <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
                             <option value="">캠퍼스</option>
                             @foreach($campusList as $row)
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
@@ -65,7 +65,9 @@
                         <select class="form-control" id="search_studypattern_ccd" name="search_studypattern_ccd">
                             <option value="">수강형태</option>
                             @foreach($studypattern_ccd as $key => $val)
+                                @if($key != '653003')
                                 <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
                             @endforeach
                         </select>
                         &nbsp;
@@ -124,7 +126,7 @@
                     <div class="col-md-5 form-inline">
                         <select class="form-control" id="search_date_type" name="search_date_type" style="width:120px;">
                             <option value="B.StudyStartDate">개강일</option>
-                            <option value="B.StudyEndDate">접수시작일</option>
+                            <option value="B.StudyEndDate">종강일</option>
                             <option value="B.SaleStartDat">접수시작일</option>
                             <option value="B.SaleEndDat">접수종료일</option>
                             <option value="A.RegDatm">등록일</option>

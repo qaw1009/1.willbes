@@ -137,7 +137,7 @@
                             {'data' : 'SubjectName'},//과목명
                             {'data' : 'wProfName_String'},
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
+                                    return '['+row.ProdCode+ '] ' + row.ProdName + '';
                                 }},//단강좌명
 
                             {'data' : null, 'render' : function(data, type, row, meta) {
@@ -149,14 +149,14 @@
                                 }},
 
                             {'data' : 'IsLecOpen', 'render' : function(data, type, row, meta) {
-                                    return  ((data === 'Y') ? ' 개설 ' : ' 폐강 ');
+                                    return  ((data === 'Y') ? ' 개설 ' : ' <span class="red">폐강</span> ');
                                 }},
 
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SaleStartDatm +' ~ '+row.SaleEndDatm
                                 }},
                             {'data' : 'IsSaleEnd', 'render' : function(data, type, row, meta) {
-                                    return  ((data === 'N') ? ' 접수중 ' : '접수마감');
+                                    return  ((data === 'N') ? ' 접수중 ' : '<span class="red">접수마감</span>');
                                 }},
 
                             {'data' : 'IsUse', 'render' : function(data, type, row, meta) {

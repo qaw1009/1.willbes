@@ -394,28 +394,6 @@ class OffLectureModel extends CommonLectureModel
    }
 
     /**
-     * 학원단과반 선택한 수강일자 추출을 위한 최초일 ~ 최종일 추출 ---- 자바스크립트로 처리 후 사용안함
-     * @param $prodcode
-     * @return mixed
-     */
-   public function findLectureDateForModify($prodcode)
-   {
-       $column = ' ifnull(min(LecDate),0) as mindate, ifnull(max(LecDate),0) as maxdate 
-                       ,ifnull(TIMESTAMPDIFF(MONTH,min(LecDate), max(LecDate)),-1) as diff ';
-
-       $from = ' from lms_product_lecture_date Where IsStatus=\'Y\' ';
-
-       $arr_condition['EQ']['ProdCode'] = $prodcode;
-       $where = $this->_conn->makeWhere($arr_condition);
-       $where = $where->getMakeWhere(true);
-
-
-       $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
-       echo 'select ' . $column . $from . $where . $order_by;
-       return  $query->row_array();
-   }
-
-    /**
      * 학원단과반 선택한 수강일자 목록
      * @param $prodcode
      * @return mixed
@@ -435,62 +413,6 @@ class OffLectureModel extends CommonLectureModel
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by);
         //echo 'select ' . $column . $from . $where . $order_by;
         return  $query->result_array();
-    }
-
-
-    /**
-     * 개설여부 , 접수상태 변경
-     * @param $prodcode
-     * @return mixed
-     */
-    public function modifyOptionByColumn($prodcode, $islecopen=null, $issaleend=null)
-    {
-        $this->_conn->trans_begin();
-
-        try {
-
-            $data = [
-                'UpdAdminIdx'=>$this->session->userdata('admin_idx')
-            ];
-
-            $opt_data = null;
-
-            //개설여부
-            if(empty($islecopen) === false) {
-                $table = $this->_table['lecture'];
-                $opt_data = [
-                    'IsLecOpen' => $islecopen
-                ];
-                /* lms_product_lecture 테이블에는 관리자정보, 수정일자의 수정 정보가 존재하지 않으므로 일단 lms_product 테이블에 수정한 관리자 정보를 업데이트 함*/
-                /* 업데이트 정보가 기존하고 같을경우 업데이트 일자가 수정이 안됨. 해서 강제로 업데이트 일자를 수정해야 함*/
-                    $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode);
-                    if($this->_conn->update($this->_table['product']) === false) {
-                        throw new \Exception('옵션 수정(관리자 업데이트) 에 실패했습니다.');
-                    }
-            }
-
-            //접수상태
-            if(empty($issaleend) === false) {
-                $table = $this->_table['product'];
-                $opt_data = array_merge($data,[
-                    'IsSaleEnd' => $issaleend
-                ]);
-            }
-
-            if (empty($opt_data) === false) {
-                $this->_conn->set($opt_data)->where('ProdCode', $prodcode);
-                if ($this->_conn->update($table) === false) {
-                    throw new \Exception('옵션 수정에 실패했습니다.');
-                }
-            }
-
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
-        }
-
-        return true;
     }
 
 }

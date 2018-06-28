@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MessageModel $messageModel                                         Search Message Model Class
  * @property MailModel $mailModel                                                      Search Mail Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class
- * @property MemberModel $memberModel                                           Member Model Class
+ * @property ManageMemberModel $managememberModel                                           Manage Member Model Class
  * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
  * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
  * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
@@ -139,6 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class
  * @property ProductFModel $productFModel                                        Product Model Class
+ * @property MemberModel $memberModel                                            Member Model Class
  */
 class PHPStorm_CI_CC
 {

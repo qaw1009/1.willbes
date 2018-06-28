@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MemberModel extends WB_Model
+class ManageMemberModel extends WB_Model
 {
     private $_table = [
         'member' => 'lms_Member',
@@ -105,6 +105,44 @@ class MemberModel extends WB_Model
         $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where );
 
         return $rows->row_array();
+    }
+
+    /**
+     * 사용자 정보 업데이트
+     * @param $memIdx
+     * @param array $arr_data
+     */
+    public function setMember($MemIdx, $data = [])
+    {
+        $oriData = getMember($MemIdx);
+        $UpdData = '';
+
+        if(empty($oriData) === true){
+            return false;
+        } else {
+            foreach($data as $key => $value){
+                if($data[$key] != $oriData[$key]){
+                    $UpdData .= "";
+                }
+            }
+        }
+
+        $this->_conn->trans_begin();
+
+        try {
+
+            if ($this->_conn->set($data)->where('MemIdx', $MemIdx)->update($this->_table['member']) === false) {
+                throw new \Exception('회원정보 업데이트에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
     /**

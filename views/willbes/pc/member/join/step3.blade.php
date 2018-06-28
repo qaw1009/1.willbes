@@ -3,9 +3,8 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="memContainer widthAuto c_both">
-
         <div class="mem-Tit">
-            <img src="/public/img/front/login/logo.gif">
+            <img src="{{ img_url('login/logo.gif') }}">
             <span class="tx-blue">통합회원가입</span>
         </div>
         <!-- 통합회원가입 : 회원가입완료 -->
@@ -19,7 +18,7 @@
                 <span class="tx-blue">홍길동</span>님, <strong>윌비스 통합 회원 가입을 환영합니다.</strong></br>
                 <span class="tx-blue">아이디 willbes</span>로 모든 윌비스 서비스를 이용하실 수 있습니다.
             </div>
-            <img class="mt70" src="/public/img/front/login/willbes_welcome.jpg">
+            <img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}">
             <div class="info-Txt info-Txt-Wrap tx-black bg-none mt60">
                 <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
                 <select id="site" name="site" title="선택안함" class="seleSite">
@@ -40,7 +39,7 @@
 
 
         <div class="mem-Tit">
-            <img src="/public/img/front/login/logo.gif">
+            <img src="{{ img_url('login/logo.gif') }}">
             <span class="tx-blue">통합회원가입</span>
         </div>
         <!-- 통합회원가입 : 기가입자 -->
@@ -73,7 +72,7 @@
             </div>
         </div>
         <!-- End 통합회원가입 : 기가입자 -->
-        <br/><br/><br/>
+        <br><br><br>
 
     </div>
     <!-- End Container -->

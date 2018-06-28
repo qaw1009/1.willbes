@@ -5,7 +5,7 @@
     <div id="Container" class="memContainer widthAuto c_both">
 
         <div class="mem-Tit">
-            <img src="/public/img/front/login/logo.gif">
+            <img src="{{ img_url('login/logo.gif') }}">
             <span class="tx-blue">로그인</span>
         </div>
 
@@ -27,7 +27,7 @@
                         <label for="USER_ID_SAVE" class="labelSave tx-gray">아이디 저장</label>
                     </li>
                     <li class="chkBox-Search tx-gray">
-                        <span><a class="tx-gray" href="#none">아이디</a>/<a class="tx-gray" href="#none">비밀번호찾기</a></span>
+                        <span><a class="tx-gray" href="/Member/FindID">아이디</a>/<a class="tx-gray" href="/Member/FindPWD">비밀번호찾기</a></span>
                     </li>
                 </ul>
             </div>
@@ -46,7 +46,7 @@
                         가입 즉시 패밀리 포인트 3,000P를 받으실 수 있습니다.
                     </td>
                     <td>
-                        <a class="bg-dark-blue" href="#none">통합회원가입</a>
+                        <a class="bg-dark-blue" href="/Member/Join">통합회원가입</a>
                     </td>
                 </tr>
                 <tr>
@@ -59,8 +59,6 @@
         </div>
         <!-- End 로그인 -->
         <br/><br/><br/>
-
-
     </div>
     <!-- End Container -->
 @stop

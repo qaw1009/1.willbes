@@ -79,18 +79,19 @@
     border-top: 1px solid #e2e2e2;
     padding-top: 30px;
 }
-.Member .tabs {
+.Member .tabWrap.tabs {
     box-sizing: border-box;
     height: 35px;
     margin-bottom: 45px;
     border-bottom: 1px solid #0d74ae;
 }
-.Member .tabs li {
+.Member .tabWrap.tabs li {
     float: left;
     width: 33.333333333333%;
     height: 34px;
 }
-.Member .tabs li a {
+.Member .tabWrap.tabs li a {
+    background: none;
     color: #959595;
     text-align: center;
     line-height: 34px;
@@ -99,11 +100,12 @@
     height: 100%;
     border-top: 1px solid #e1e1e1;
     border-right: 1px solid #e1e1e1;
+    border-left: none;
 }
-.Member .tabs li:first-child a {
+.Member .tabWrap.tabs li:first-child a {
     border-left: 1px solid #e1e1e1;    
 }
-.Member .tabs li.on a {
+.Member .tabWrap.tabs li a.on {
     background: #fff;
     height: 35px;
     font-weight: 600;
@@ -112,46 +114,51 @@
     border-left: 1px solid #0d74ae;
     border-right: 1px solid #0d74ae;
 }
-.Member .tabs-Certi {
+.Member .tabWrap.tabs-Certi {
     height: 140px;
+    border-bottom: none;
 }
-.Member .tabs-Certi li {
+.Member .tabWrap.tabs-Certi li {
     float: left;
     width: 33.333333333333%;
+    height: auto;
     text-align: center;
 }
-.Member .tabs-Certi li a {
+.Member .tabWrap.tabs-Certi li a {
     display: block; 
     width: 86px;
     height:93px;
     margin: 0 auto;
+    border: none;
+    font-weight: 300;
+    line-height: inherit;
 }
-.Member .tabs-Certi li a div {
+.Member .tabWrap.tabs-Certi li a div {
     color: #4d4d4d;
     padding-top: 100px;
 }
-.Member .tabs-Certi li.on a {
+.Member .tabWrap.tabs-Certi li a.on {
     height:140px;
 }
-.Member .tabs-Certi li#tab1 a {
+.Member .tabWrap.tabWrap.tabs-Certi li#tab1 a {
     background: url("../../img/willbes/login/icon_phone.gif") no-repeat 0 0;
 }
-.Member .tabs-Certi li#tab1.on a {
+.Member .tabWrap.tabs-Certi li#tab1 a.on {
     background: url("../../img/willbes/login/icon_phone_on.gif") no-repeat 0 0;
 }
-.Member .tabs-Certi li#tab2 a {
+.Member .tabWrap.tabs-Certi li#tab2 a {
     background: url("../../img/willbes/login/icon_email.gif") no-repeat 0 0;
 }
-.Member .tabs-Certi li#tab2.on a {
+.Member .tabWrap.tabs-Certi li#tab2 a.on {
     background: url("../../img/willbes/login/icon_email_on.gif") no-repeat 0 0;
 }
-.Member .tabs-Certi li#tab3 a {
+.Member .tabWrap.tabs-Certi li#tab3 a {
     background: url("../../img/willbes/login/icon_ipin.gif") no-repeat 0 0;
 }
-.Member .tabs-Certi li#tab3.on a {
+.Member .tabWrap.tabs-Certi li#tab3 a.on {
     background: url("../../img/willbes/login/icon_ipin_on.gif") no-repeat 0 0;
 }
-.Member .tabs-Certi img {
+.Member .tabWrap.tabs-Certi img {
     margin-top: 20px;
 }
 .Member .tabs-Step {
@@ -1491,12 +1498,12 @@ table.auTable tr td {
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
     box-sizing: border-box;
-    height: 34px;
 }
 .curriWrap .curriTabs li {
-    float: left;
-    width: 140px;
+    display: inline-block;
+    width: 16.77%;
     height: 34px;
+    margin: 0 -4px -1px 0;
 }
 .curriWrap .curriTabs li a {
     color: #959595;
@@ -1505,22 +1512,20 @@ table.auTable tr td {
     display: block;
     width: 100%;
     height: 100%;
-    border-top: 1px solid #e1e1e1;
-    border-right: 1px solid #e1e1e1;
+    border: 1px solid #e1e1e1;
 }
-.curriWrap .curriTabs li:first-child a {
-    border-left: 1px solid #e1e1e1;    
-}
-.curriWrap .curriTabs li.on a {
+.curriWrap .curriTabs li a.on {
+    position: relative;
+    z-index: 2;
     background: #fff;
     height: 35px;
     font-weight: 600;
     color: #0d74ae; 
-    border-top: 1px solid #0d74ae;
-    border-left: 1px solid #0d74ae;
-    border-right: 1px solid #0d74ae;
+    border: 1px solid #0d74ae;
 }
 .curriWrap .CurriBox {
+    position: relative;
+    z-index: 3;
     border: 1px solid #0d74ae;
     padding: 10px 20px;
 }
@@ -1535,6 +1540,7 @@ table.auTable tr td {
     border-top: none;
 }
 .curriWrap tr th {
+    vertical-align: top;
     width: 90px;
     font-weight: 600;
     text-align: center;
@@ -1544,10 +1550,7 @@ table.auTable tr td {
     height: 20px;
     line-height: 20px;
     text-align: center;
-    padding: 0 5px;
-}
-.curriWrap tr td.All {
-    width: 70px;
+    padding: 10px 5px;
 }
 .curriWrap tr td.All-Clear a {
     color: #555;
@@ -4978,11 +4981,6 @@ ul li.profList .w-notice a {
         width: 28%;
         display: inline-block;
     }
-
-
-
-
-    
     .Member .inputBox button.sm {
         width: 72px;
     }
@@ -5051,53 +5049,54 @@ ul li.profList .w-notice a {
         border-left: 1px solid #0d74ae;
         border-right: 1px solid #0d74ae;
     }
-    .Member .tabs-Certi {
+    .Member .tabWrap.tabs-Certi {
         height: 140px;
+        border-bottom: none;
     }
-    .Member .tabs-Certi li {
+    .Member .tabWrap.tabs-Certi li {
         float: left;
         width: 33.333333333333%;
         text-align: center;
     }
-    .Member .tabs-Certi li a {
+    .Member .tabWrap.tabs-Certi li a {
         display: block; 
         width: 86px;
         height:93px;
         margin: 0 auto;
     }
-    .Member .tabs-Certi li a div {
+    .Member .tabWrap.tabs-Certi li a div {
         color: #4d4d4d;
         padding-top: 100px;
     }
-    .Member .tabs-Certi li.on a {
+    .Member .tabWrap.tabs-Certi li.on a {
         height:140px;
     }
-    .Member .tabs-Certi li#tab1 a {
+    .Member .tabWrap.tabs-Certi li#tab1 a {
         background: url("../../img/willbes/login/icon_phone.gif") no-repeat 0 0;
     }
-    .Member .tabs-Certi li#tab1.on a {
+    .Member .tabWrap.tabs-Certi li#tab1.on a {
         background: url("../../img/willbes/login/icon_phone_on.gif") no-repeat 0 0;
     }
-    .Member .tabs-Certi li#tab2 a {
+    .Member .tabWrap.tabs-Certi li#tab2 a {
         background: url("../../img/willbes/login/icon_email.gif") no-repeat 0 0;
     }
-    .Member .tabs-Certi li#tab2.on a {
+    .Member .tabWrap.tabs-Certi li#tab2.on a {
         background: url("../../img/willbes/login/icon_email_on.gif") no-repeat 0 0;
     }
-    .Member .tabs-Certi li#tab3 a {
+    .Member .tabWrap.tabs-Certi li#tab3 a {
         background: url("../../img/willbes/login/icon_ipin.gif") no-repeat 0 0;
     }
-    .Member .tabs-Certi li#tab3.on a {
+    .Member .tabWrap.tabs-Certi li#tab3.on a {
         background: url("../../img/willbes/login/icon_ipin_on.gif") no-repeat 0 0;
     }
-    .Member .tabs-Certi img {
+    .Member .tabWrap.tabs-Certi img {
         margin-top: 20px;
     }
-    .Member .tabs-Step {
+    .Member .tabWrap.tabs-Step {
         height: 30px;
         line-height: 25px;
     }
-    .Member .tabs-Step li {
+    .Member .tabWrap.tabs-Step li {
         float: left;
         width: 33.333333333333%;
         font-size: 15px;
@@ -5106,42 +5105,12 @@ ul li.profList .w-notice a {
         text-align: center;
         border-bottom: 5px solid #e2e2e2;
     }
-    .Member .tabs-Step li.on {
+    .Member .tabWrap.tabs-Step li.on {
         color: #323232;
         border-bottom: 5px solid #0d74ae;
     }
 
     /* Login Form : 로그인 */
-    .mem-Login button.mem-Btn {
-        height: 40px;
-    }
-    .mem-Login .chkBox {
-        margin-bottom: 20px;
-    }
-    .mem-Login .chkBox ul {
-        height: 20px;
-    }
-    .mem-Login .chkBox ul li {
-        float: left;
-        width: 50%;
-        line-height: 18px;
-    }
-    .mem-Login .chkBox ul li input[type=checkbox] {
-        width: 20px;
-        height: 20px;
-        float: left;
-        margin: 0;
-        cursor: pointer;
-    }
-    .mem-Login .chkBox ul li .labelSave {
-        padding-left: 10px;
-    }
-    .mem-Login .chkBox ul li.chkBox-Search {
-        text-align: right;
-    }
-    .mem-Login .chkBox ul li.chkBox-Search span {
-        border-bottom: 1px solid #707070;
-    }
     table.joinTable {
         width: 100%;
         border-top: 1px solid #e2e2e2;

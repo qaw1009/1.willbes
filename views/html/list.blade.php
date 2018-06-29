@@ -45,8 +45,12 @@
         
         <div class="curriWrap c_both">
             <ul class="curriTabs c_both">
-                <li class="on"><a href="#none">전체</a></li>
+                <li><a class="on" href="#none">전체</a></li>
                 <li><a href="#none">이론과정</a></li>
+                <li><a href="#none">심화과정</a></li>
+                <li><a href="#none">문풀 1단계 핵심요약/진도별</a></li>
+                <li><a href="#none">문풀 2단계 동형 모의고사</a></li>
+                <li><a href="#none">문풀 3단계 파이널 모의고사</a></li>
                 <li><a href="#none">심화과정</a></li>
                 <li><a href="#none">문제풀이</a></li>
                 <li><a href="#none">특강</a></li>
@@ -68,82 +72,68 @@
                     <tbody>
                         <tr>
                             <th class="tx-gray">직렬선택</th>
-                            <td class="All">
-                                <a href="#none">전체</a>
-                            </td>
-                            <td>
-                                <a href="#none">일반행정직</a>
-                            </td>
-                            <td>
-                                <a href="#none">교육행정직</a>
-                            </td>
-                            <td>
-                                <a href="#none">출입국관리직</a>
-                            </td>
-                            <td>
-                                <a href="#none">선거행정직</a>
-                            </td>
-                            <td>
-                                <a href="#none">사회복지직</a>
-                            </td>
-                            <td>
-                                <a href="#none">9급견습직</a>
-                            </td>
-                            <td>
-                                <a href="#none">관세직</a>
-                            </td>
-                            <td>
-                                <a href="#none">고용노동직</a>
+                            <td colspan="9">
+                                <ul class="curriSelect">
+                                    <li><a href="#none">전체</a></li>
+                                    <li><a href="#none">사회복지학</a></li>
+                                    <li><a href="#none">국어</a></li>
+                                    <li><a href="#none">영어</a></li>
+                                    <li><a href="#none">한국사</a></li>
+                                    <li><a href="#none">행정법</a></li>
+                                    <li><a href="#none">행정학</a></li>
+                                    <li><a href="#none">교육학</a></li>
+                                    <li><a href="#none">수학</a></li>
+                                    <li><a href="#none">독일어</a></li>
+                                    <li><a href="#none">경영학</a></li>
+                                    <li><a href="#none">일본어</a></li>
+                                    <li><a href="#none">관세법</a></li>
+                                    <li><a href="#none">공직선거법</a></li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <th class="tx-gray">과목선택</th>
-                            <td class="All">
-                                <a href="#none">전체</a>
-                            </td>
-                            <td>
-                                <a href="#none">국어</a>
-                            </td>
-                            <td>
-                                <a href="#none">영어</a>
-                            </td>
-                            <td>
-                                <a href="#none">한국사</a>
-                            </td>
-                            <td>
-                                <a href="#none">행정법</a>
-                            </td>
-                            <td>
-                                <a href="#none">행정학</a>
-                            </td>
-                            <td>
-                                <a href="#none">교육학</a>
-                            </td>
-                            <td>
-                                <a href="#none">수학</a>
-                            </td>
-                            <td>
-                                <a href="#none">과학</a>
+                            <td colspan="9">
+                                <ul class="curriSelect">
+                                    <li><a href="#none">전체</a></li>
+                                    <li><a href="#none">사회복지학</a></li>
+                                    <li><a href="#none">국어</a></li>
+                                    <li><a href="#none">영어</a></li>
+                                    <li><a href="#none">한국사</a></li>
+                                    <li><a href="#none">행정법</a></li>
+                                    <li><a href="#none">행정학</a></li>
+                                    <li><a href="#none">교육학</a></li>
+                                    <li><a href="#none">수학</a></li>
+                                    <li><a href="#none">독일어</a></li>
+                                    <li><a href="#none">경영학</a></li>
+                                    <li><a href="#none">일본어</a></li>
+                                    <li><a href="#none">관세법</a></li>
+                                    <li><a href="#none">공직선거법</a></li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
                             <th class="tx-gray">교수선택</th>
                             <td colspan="9" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
                             <!-- 과목선택 시 해당 과목 교수 출력
-                            <td>
-                                <a href="#none">정채영</a>
-                            </td>
-                            <td>
-                                <a href="#none">기미진</a>
-                            </td>
-                            <td>
-                                <a href="#none">김세령</a>
-                            </td>
-                            <td>
-                                <a href="#none">오대혁</a>
-                            </td>
-                            <td>
-                                <a href="#none">이현나</a>
+                            <td colspan="9">
+                                <ul class="curriSelect">
+                                    <li><a href="#none">정채영</a></li>
+                                    <li><a href="#none">기미진</a></li>
+                                    <li><a href="#none">김세령</a></li>
+                                    <li><a href="#none">오대혁</a></li>
+                                    <li><a href="#none">이현나</a></li>
+                                    <li><a href="#none">정채영</a></li>
+                                    <li><a href="#none">기미진</a></li>
+                                    <li><a href="#none">김세령</a></li>
+                                    <li><a href="#none">오대혁</a></li>
+                                    <li><a href="#none">이현나</a></li>
+                                    <li><a href="#none">정채영</a></li>
+                                    <li><a href="#none">기미진</a></li>
+                                    <li><a href="#none">김세령</a></li>
+                                    <li><a href="#none">오대혁</a></li>
+                                    <li><a href="#none">이현나</a></li>
+                                </ul>
                             </td>
                             -->
                         </tr>

@@ -218,8 +218,7 @@
                                         <span class="sTit tx-black">자주하는 질문</span>
                                         <span class="willbes-Lec-Search">
                                             <div class="inputBox p_re">
-                                                <label for="SEARCH" class="labelSearch" style="display: block;">찾고 싶은 내용 / 단어를 입력해 주세요.</label>
-                                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
                                                 <button type="submit" onclick="" class="search-Btn">
                                                     <span>검색</span>
                                                 </button>

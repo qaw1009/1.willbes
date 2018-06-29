@@ -101,8 +101,7 @@
 
         <div class="willbes-Lec-Search mb60">
             <div class="inputBox p_re">
-                <label for="SEARCH" class="labelSearch" style="display: block;">강의명</label>
-                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                <input type="text" id="SEARCH" name="SEARCH" placeholder="강의명" class="labelSearch" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span>검색</span>
                 </button>

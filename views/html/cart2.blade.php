@@ -305,12 +305,10 @@
                                         <span class="btnAdd underline"><a href="#none" onclick="openWin('MyAddress')">[나의 배송 주소록에 등록하기]</a></span>
                                     </div>
                                     <div class="addbox1 p_re">
-                                        <label for="USER_ADD1" class="labelAdd1" style="display: block;">기본주소</label>
-                                        <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" maxlength="30">
+                                        <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
                                     </div>
                                     <div class="addbox2 p_re">
-                                        <label for="USER_ADD2" class="labelAdd2" style="display: block;">상세주소</label>
-                                        <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" maxlength="30">
+                                        <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
                                     </div>
                                 </div>
                             </td>
@@ -347,8 +345,7 @@
                             <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
                             <td class="w-info tx-left pl20">
                                 <div class="inputBox p_re">
-                                    <label for="USER_TXT" class="labelTxt" style="display: block;">배송메시지를입력해주세요. (예: 부재시경비실에맡겨주세요.)</label>
-                                    <input type="text" id="USER_MEMO" name="USER_MEMO" class="iptMemo" maxlength="30"> (0 / 120byte)
+                                    <input type="text" id="USER_MEMO" name="USER_MEMO" class="iptMemo" placeholder="배송메시지를입력해주세요. (예: 부재시경비실에맡겨주세요.)" maxlength="30"> (0 / 120byte)
                                 </div>
                             </td>
                         </tr>
@@ -750,12 +747,10 @@
                                                 </button>
                                             </div>
                                             <div class="addbox1 p_re">
-                                                <label for="USER_ADD1" class="labelAdd1" style="display: block;">기본주소</label>
-                                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" maxlength="30">
+                                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
                                             </div>
                                             <div class="addbox2 p_re">
-                                                <label for="USER_ADD2" class="labelAdd2" style="display: block;">상세주소</label>
-                                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" maxlength="30">
+                                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
                                             </div>
                                         </div>
                                     </td>

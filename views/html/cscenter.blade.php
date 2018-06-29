@@ -59,8 +59,7 @@
                         · 자주하는 질문
                         <div class="willbes-Lec-Search GM f_right">
                             <div class="inputBox p_re">
-                                <label for="SEARCH" class="labelSearch" style="display: block;">제목 또는 내용을 입력해 주세요</label>
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                 <button type="submit" onclick="" class="search-Btn">
                                     <span>검색</span>
                                 </button>
@@ -233,8 +232,7 @@
                         · 공지사항
                         <div class="willbes-Lec-Search GM f_right">
                             <div class="inputBox p_re">
-                                <label for="SEARCH" class="labelSearch" style="display: block;">제목 또는 내용을 입력해 주세요</label>
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                 <button type="submit" onclick="" class="search-Btn">
                                     <span>검색</span>
                                 </button>
@@ -443,8 +441,7 @@
                         · 1:1 상담
                         <div class="willbes-Lec-Search GM f_right">
                             <div class="inputBox p_re">
-                                <label for="SEARCH" class="labelSearch" style="display: block;">제목 또는 내용을 입력해 주세요</label>
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                 <button type="submit" onclick="" class="search-Btn">
                                     <span>검색</span>
                                 </button>

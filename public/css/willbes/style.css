@@ -4789,6 +4789,66 @@ ul li.profList .w-notice a {
     height: 50px;
 }
 
+/* subContainer : Cs : CScenter1 : Act6 : PC 원격지원 */
+.support_infoBox {
+    font-size: 15px;
+    text-align: center;
+    line-height: 26px;
+}
+.support_infoBox span {
+    vertical-align: baseline;
+}
+.support-Btn {
+    position: absolute;
+    right: 80px;
+    bottom: 35px;
+    width: 130px;
+}
+.support-Btn span {
+    font-size: 12px;
+}
+.SupportTable tr td {
+    font-size: 12px;
+    text-align: center;
+    line-height: 26px;
+    padding: 15px 0;
+}
+.SupportTable tr td span {
+    vertical-align: baseline;
+}
+.SupportTable tr td.w-tit {
+    font-size: 14px;
+}
+.SupportTable tr td ul li  {
+    display: inline-block;
+    width: 160px;
+    height: 130px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 18px;
+    border: 1px solid #d5d5d5;
+    margin-right: 20px;
+}
+.SupportTable tr td ul li .w-tit {
+    background: #ececec;
+    height: 40px;
+    line-height: 40px;
+}
+.SupportTable tr td ul li .w-txt {
+    margin: 17px 0;
+}
+
+/* subContainer : Cs : CScenter1 : Act6 : 학습 프로그램 설치 */
+.DownloadTable tr td {
+    font-size: 12px;
+    text-align: center;
+    line-height: 26px;
+    padding: 15px 0;
+}
+.DownloadTable tr td.w-txt div {
+    font-size: 14px;
+}
+
 /* subContainer : Cs : CScenter1 : Act7 : 부정사용자 규제 */
 .announce_infoBox {
     background: #ededed;
@@ -4807,7 +4867,6 @@ ul li.profList .w-notice a {
 .announce-Btn ul li span {
     font-size: 12px;
 }
-
 .AnnounceTable tr td {
     font-size: 14px;
     text-align: center;
@@ -4823,6 +4882,7 @@ ul li.profList .w-notice a {
 .AnnounceTable tr td.w-txt {
     font-size: 12px;
 }
+
 
 
 

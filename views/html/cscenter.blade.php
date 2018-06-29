@@ -861,7 +861,139 @@
                     </div>
                 </div>
                 <div id="cs6" class="CScenter6">
-                    <div class="willbes-Lec-Tit NG bd-none tx-black">· 수강지원</div>
+                    <div class="willbes-Lec-Tit NG bd-none tx-black">· PC 원격지원</div>
+                    <div class="Act6 mt50">
+                        <div class="support_infoBox tx-black p_re NGR">
+                            <img src="{{ img_url('cs/willbes_pc_support.jpg') }}"> 
+                            <div class="support-Btn NSK">
+                                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue"><span>PC 원격지원 시작</span></button>
+                            </div>
+                        </div>
+                        <div class="willbes-Leclist mt50 c_both">
+                            <div class="SupportTable NG">
+                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdt-gray bdb-gray tx-gray fc-bd-none">
+                                    <colgroup>
+                                        <col style="width: 150px;">
+                                        <col style="width: 790px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-tit tx-black tx-left pl40">운영시간</td>
+                                            <td class="w-txt tx-left pl30">평일 <span class="strong tx-light-blue">09:00 ~ 18:00</span> (주말/공휴일휴무)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-tit tx-black tx-left pl40">이럴때<br/>요청하세요.</td>
+                                            <td class="w-txt tx-left pl30">
+                                                · FAQ 또는 1:1 상담으로 문제가 해결되지 않을때<br/>
+                                                · PC 사용이 익숙하지 않아 문제해결이 어려울때<br/>
+                                                · 1:1 상담게시판, 전화로 설명하기 어려울때
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        <td class="w-tit tx-black tx-left pl40">PC 원격지원<br/>이용순서</td>
+                                            <td class="w-txt tx-left pl30">
+                                                <ul>
+                                                    <li>
+                                                        <div class="w-tit tx-black">PC 사양확인</div>
+                                                        <div class="w-txt">
+                                                            원격진단을 받으실<br/>
+                                                            PC 사양을<br/>
+                                                            확인해주세요
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="w-tit tx-black">원격지원 전화상담</div>
+                                                        <div class="w-txt">
+                                                            고객센터<br/>
+                                                            (1544-6219)로<br/>
+                                                            전화주세요.
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="w-tit tx-black">프로그램 실행</div>
+                                                        <div class="w-txt">
+                                                            원격지원 프로그램을<br/>
+                                                            설치 및<br/>
+                                                            실행해 주세요.
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="w-tit tx-black">문제진단 및 해결</div>
+                                                        <div class="w-txt">
+                                                            원격 진단을 받으실<br/>
+                                                            PC 사양을<br/> 
+                                                            확인해주세요.
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/><br/><br/>
+
+                    <div class="willbes-Lec-Tit NG bd-none tx-black">· 학습 프로그램 설치</div>
+                    <div class="Act6 mt50">
+                        <div class="willbes-Leclist mt50 c_both">
+                            <div class="DownloadTable NG">
+                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdt-gray bdb-gray tx-gray fc-bd-none">
+                                    <colgroup>
+                                        <col style="width: 130px;">
+                                        <col style="width: 700px;">
+                                        <col style="width: 110px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-img"><img src="{{ img_url('cs/icon_program_ZIP.gif') }}"></td>
+                                            <td class="w-txt tx-left pl20">
+                                                <div class="tx-black">알집</div>
+                                                데이터 압축/압축해제에 이용되는 프로그램입니다.<br/>
+                                                윌비스에서 제공되는 압축 자료를 보기 위해서는 압축용 프로그램이 필요합니다.
+                                            </td>
+                                            <td class="w-download">
+                                                <a href="#none"><img src="{{ img_url('cs/icon_download.gif') }}"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-img"><img src="{{ img_url('cs/icon_program_Word.gif') }}"></td>
+                                            <td class="w-txt tx-left pl20">
+                                                <div class="tx-black">한글과 컴퓨터 뷰어 v2007</div>
+                                                한글97 등의 한글 프로그램이 설치되어 있지 않는 경우에 HWP 한글문서를 열어볼 수 있도록 해주는 프로그램입니다.
+                                            </td>
+                                            <td class="w-download">
+                                                <a href="#none"><img src="{{ img_url('cs/icon_download.gif') }}"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-img"><img src="{{ img_url('cs/icon_program_MS.gif') }}"></td>
+                                            <td class="w-txt tx-left pl20">
+                                                <div class="tx-black">MS Word 뷰어</div>
+                                                MicroSoft의 Word 프로그램이 설치되어있지 않는 경우에 doc문서를 열어볼 수 있도록 해주는 프로그램입니다.
+                                            </td>
+                                            <td class="w-download">
+                                                <a href="#none"><img src="{{ img_url('cs/icon_download.gif') }}"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-img"><img src="{{ img_url('cs/icon_program_PDF.gif') }}"></td>
+                                            <td class="w-txt tx-left pl20">
+                                                <div class="tx-black">한글 Adobe Reader</div>
+                                                Adobe Acrobat eBook Reader로 제작된 온라인 문서(PDF)를 열어볼 수 있도록 해주는 프로그램입니다
+                                            </td>
+                                            <td class="w-download">
+                                                <a href="#none"><img src="{{ img_url('cs/icon_download.gif') }}"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="cs7" class="CScenter7">
                     <div class="willbes-Lec-Tit NG bd-none tx-black">· 부정사용자 규제</div>
@@ -895,7 +1027,7 @@
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <td class="w-img" rowspan="2"><img src="/public/img/willbes/prof/icon_file.gif"><div>ID 공유</div></td>
+                                            <td class="w-img" rowspan="2"><img src="{{ img_url('cs/icon_announce1.gif') }}"><div>ID 공유</div></td>
                                             <td class="w-tit">적발기준</td>
                                             <td class="w-txt tx-left pl20">
                                                 · 하나의 ID를 여러명이 공유하여 수강하는 경우<br/>
@@ -911,7 +1043,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-img" rowspan="2"><img src="/public/img/willbes/prof/icon_file.gif"><div>무단복제</div></td>
+                                            <td class="w-img" rowspan="2"><img src="{{ img_url('cs/icon_announce2.gif') }}"><div>무단복제</div></td>
                                             <td class="w-tit">적발기준</td>
                                             <td class="w-txt tx-left pl20">
                                                 · 윌비스 강좌를 불법으로 녹화하는 경우<br/>
@@ -926,7 +1058,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-img" rowspan="2"><img src="/public/img/willbes/prof/icon_file.gif"><div>불법판매/유통</div></td>
+                                            <td class="w-img" rowspan="2"><img src="{{ img_url('cs/icon_announce3.gif') }}"><div>불법판매/유통</div></td>
                                             <td class="w-tit">적발기준</td>
                                             <td class="w-txt tx-left pl20">
                                                 · 윌비스 강좌 및 교재를 상업적인 목적으로 복제해 무단 유통/판매한 경우<br/>

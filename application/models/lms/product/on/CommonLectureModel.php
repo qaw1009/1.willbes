@@ -31,8 +31,7 @@ class CommonLectureModel extends WB_Model
     {
         parent::__construct('lms');
     }
-
-
+    
     /**
      * 상품등록정보 추출
      * @param $prodcode

@@ -200,7 +200,6 @@ class OffLectureModel extends CommonLectureModel
         return true;
     }
 
-
     /**
      * 상품 및 강좌 수정
      * @param array $input

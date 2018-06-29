@@ -74,7 +74,7 @@
                             <th class="tx-gray">직렬선택</th>
                             <td colspan="9">
                                 <ul class="curriSelect">
-                                    <li><a href="#none">전체</a></li>
+                                    <li><a class="on" href="#none">전체</a></li>
                                     <li><a href="#none">사회복지학</a></li>
                                     <li><a href="#none">국어</a></li>
                                     <li><a href="#none">영어</a></li>
@@ -95,7 +95,7 @@
                             <th class="tx-gray">과목선택</th>
                             <td colspan="9">
                                 <ul class="curriSelect">
-                                    <li><a href="#none">전체</a></li>
+                                    <li><a class="on" href="#none">전체</a></li>
                                     <li><a href="#none">사회복지학</a></li>
                                     <li><a href="#none">국어</a></li>
                                     <li><a href="#none">영어</a></li>
@@ -118,7 +118,7 @@
                             <!-- 과목선택 시 해당 과목 교수 출력
                             <td colspan="9">
                                 <ul class="curriSelect">
-                                    <li><a href="#none">정채영</a></li>
+                                    <li><a class="on" href="#none">정채영</a></li>
                                     <li><a href="#none">기미진</a></li>
                                     <li><a href="#none">김세령</a></li>
                                     <li><a href="#none">오대혁</a></li>

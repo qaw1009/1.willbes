@@ -1571,7 +1571,7 @@ table.auTable tr td {
     line-height: 20px; 
 }
 .curriWrap tr td a:hover,
-.curriWrap tr td.active a {
+.curriWrap tr td a.on {
     font-weight: 600;
     color: #0d74ae;
     border: 1px solid #0d74ae;

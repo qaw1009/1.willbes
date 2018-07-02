@@ -15,61 +15,55 @@
             <li>약관동의/정보입력</li>
             <li>회원가입완료</li>
         </ul>
-        <ul class="tabWrap tabLoginDepth1 tabs c_both">
+        <ul class="tabWrap tabLoginDepth1 tabs half c_both">
             <li><a href="#join1">휴대폰 인증</a></li>
             <li><a href="#join2">E-mail 인증</a></li>
-            <li><a href="#join3">아이핀 인증</a></li>
         </ul>
         <div class="tabBox">
             <div id="join1">
-                <ul class="tabs-Certi tx-center mb20">
-                    <img src="{{ img_url('login/icon_phone_on_sm.gif') }}">
-                </ul>
+                <div class="widthAuto460">
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
+                    </div>
+                    <div class="tx-red mb30" style="display: block;">이름을 정확하게 입력해 주세요.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="30">
+                        <button type="submit" onclick="" class="mem-Btn certi bg-dark-blue bd-dark-blue">
+                            <span>인증번호 발송</span>
+                        </button>
+                    </div>
+                    <div class="tx-red mb30" style="display: block;"> ‘-’ 없이 숫자만 입력해 주세요.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_NUMBER" name="USER_NUMBER" class="iptNumber" placeholder="인증번호입력" maxlength="30">
+                    </div>
+                    <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
+                </div>
                 <div class="search-Btn btnAuto120 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>휴대폰 인증</span>
+                        <span>확인</span>
                     </button>
-                </div>
-                <div class="notice-Txt tx-gray mt40">
-                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
                 </div>
             </div>
             <div id="join2">
-                <div class="widthAuto560">
-                    <div class="inputBox combineBox">
-                        <img src="{{ img_url('login/icon_email_on_sm.gif') }}">
-                        <div class="inputBox-Wrap p_re">
-                            <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
-                            <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
-                            <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
-                            <select id="email" name="email" title="직접입력" class="seleEmail">
-                                <option selected="selected">직접입력</option>
-                                <option value="naver.com">naver.com</option>
-                                <option value="daum.net">daum.net</option>
-                            </select>
-                        </div>
+                <div class="widthAuto460">
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
+                    </div>
+                    <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" placeholder="이메일" maxlength="30"> @ 
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
+                        <select id="email" name="email" title="직접입력" class="seleEmail">
+                            <option selected="selected">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.net">daum.net</option>
+                        </select>
                     </div>
                 </div>
                 <div class="search-Btn btnAuto120 mt70 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>이메일 인증</span>
+                        <span>확인</span>
                     </button>
-                </div>
-                <div class="notice-Txt tx-gray mt40">
-                    * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.
-                </div>
-            </div>
-            <div id="join3">
-                <ul class="tabs-Certi tx-center mb20">
-                    <img src="{{ img_url('login/icon_ipin_on_sm.gif') }}">
-                </ul>
-                <div class="search-Btn btnAuto120 h36">
-                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>아이핀 인증</span>
-                    </button>
-                </div>
-                <div class="notice-Txt tx-gray mt40">
-                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
                 </div>
             </div>
         </div>
@@ -98,7 +92,7 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th class="tx-blue" colspan="2">* 필수정보</th>
+                    <th class="tx-blue tx-left" colspan="2">* 필수정보</th>
                 </tr>
             </thead>
             <tbody>
@@ -106,8 +100,7 @@
                     <td class="combine-Tit">이름</td>
                     <td>
                         <div class="inputBox p_re">
-                            <label for="USER_NAME" class="labelName" style="display: block;">홍길동</label>
-                            <input type="text" id="USER_NAME" name="USER_NAME" class="iptName" maxlength="30">
+                            <input type="text" id="USER_NAME" name="USER_NAME" class="iptName" placeholder="홍길동" maxlength="30">
                             <ul class="chkBox-Sex">
                                 <li class="radio-Btn sexchk p_re checked">
                                     <label for="USER_SEX" class="labelName" style="display: block;">남성</label>
@@ -126,8 +119,7 @@
                     <td class="combine-Tit">생년월일</td>
                     <td>
                         <div class="inputBox p_re">
-                            <label for="USER_BIRTH" class="labelBirth" style="display: block;">생년월일 ex.19800101</label>
-                            <input type="text" id="USER_BIRTH" name="USER_BIRTH" class="iptBirth" maxlength="30">
+                            <input type="text" id="USER_BIRTH" name="USER_BIRTH" class="iptBirth" placeholder="생년월일 ex.19800101" maxlength="30">
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
@@ -136,8 +128,7 @@
                     <td class="combine-Tit">휴대폰번호</td>
                     <td>
                         <div class="inputBox p_re">
-                            <label for="USER_PHONE" class="labelPhone" style="display: block;">"-" 제외하고 숫자만 입력</label>
-                            <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone" maxlength="30">
+                            <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="30">
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
@@ -146,8 +137,7 @@
                     <td class="combine-Tit">아이디</td>
                     <td>
                         <div class="inputBox p_re">
-                            <label for="USER_ID" class="labelId" style="display: block;">4~20자리 영문 대소문자, 숫자만 입력 가능</label>
-                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="4~20자리 영문 대소문자, 숫자만 입력 가능" maxlength="30">
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
@@ -156,8 +146,7 @@
                     <td class="combine-Tit">비밀번호</td>
                     <td>
                         <div class="inputBox p_re">
-                            <label for="USER_PWD" class="labelPwdNew" style="display: block;">8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합</label>
-                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" maxlength="30">
+                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합" maxlength="30">
                             <button type="submit" onclick="" class="mem-Btn combine-Btn ml5 bg-dark-blue bd-dark-blue">
                                 <span>비밀번호 확인</span>
                             </button>
@@ -174,7 +163,7 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th class="tx-blue" colspan="2">* 선택정보</th>
+                    <th class="tx-blue tx-left" colspan="2">* 선택정보</th>
                 </tr>
             </thead>
             <tbody>
@@ -184,8 +173,7 @@
                         <div class="inputBox">
                             <dl>
                                 <dt class="mbox1 p_re">
-                                    <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
-                                    <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> 
+                                    <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" placeholder="이메일" maxlength="30"> 
                                 </dt>
                                 <dt class="mbox-dot">@</dt>
                                 <dt class="mbox2">
@@ -211,12 +199,10 @@
                                 <span>우편번호 찾기</span>
                             </button>
                             <div class="addbox1 p_re">
-                                <label for="USER_ADD1" class="labelAdd1" style="display: block;">기본주소</label>
-                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1" maxlength="30">
+                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1" placeholder="기본주소" maxlength="30" readonly>
                             </div>
                             <div class="addbox2 p_re">
-                                <label for="USER_ADD2" class="labelAdd2" style="display: block;">상세주소</label>
-                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" maxlength="30">
+                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
                             </div>
                         </div>
                     </td>

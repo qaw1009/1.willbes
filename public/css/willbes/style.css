@@ -16,13 +16,6 @@
     height: 38px;
     margin-bottom: 14px;
 }
-.Member .inputBox label {
-    font-size: 14px;
-    color: #707070;
-    position: absolute;
-    top: 12px;
-    left: 11px;
-}
 .Member .inputBox input {
     width: 100%;
     font-size: 14px;
@@ -32,6 +25,10 @@
 .Member .inputBox input.sm {
     float: left;
     width: 388px;
+}
+.Member .inputBox input.certi {
+    float: left;
+    width: 350px;
 }
 .Member .inputBox input.iptEmail01 {
     width: 150px;
@@ -46,6 +43,9 @@
 }
 .Member .inputBox button.sm {
     width: 72px;
+}
+.Member .inputBox button.certi {
+    width: 110px;
 }
 .Member .user-Txt {
     font-size: 15px;
@@ -71,6 +71,7 @@
     line-height: 86px;
     border-top: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;
+    letter-spacing: 1px;
 }
 .Member .notice-Txt {
     font-size: 12px;
@@ -89,6 +90,9 @@
     float: left;
     width: 33.333333333333%;
     height: 34px;
+}
+.Member .tabWrap.tabs.half li {
+    width: 50%;
 }
 .Member .tabWrap.tabs li a {
     background: none;
@@ -389,6 +393,7 @@ table.combineTable .inputBox {
 }
 table.combineTable .inputBox label {
     font-size: 12px;
+    position: absolute;
     top: 7px;
     left: 6px;
 }
@@ -1056,13 +1061,6 @@ table.auTable tr td {
     height: 38px;
     margin-bottom: 10px;
 }
-.Layer-Box .inputBox label {
-    font-size: 14px;
-    color: #707070;
-    position: absolute;
-    top: 12px;
-    left: 11px;
-}
 .Layer-Box .inputBox input {
     width: 100%;
     font-size: 14px;
@@ -1628,13 +1626,6 @@ table.auTable tr td {
     width: 340px;
     height: 30px;
     line-height: 12px;
-}
-.willbes-Lec-Search .inputBox label {
-    font-size: 12px;
-    color: #555;
-    position: absolute;
-    top: 9px;
-    left: 8px;
 }
 .willbes-Lec-Search .inputBox input {
     float: left;
@@ -3456,13 +3447,6 @@ table.deliveryTable input[type="text"] {
 table.deliveryTable .inputBox.Add {
     padding: 7px 0
 }
-table.deliveryTable .inputBox label {
-    font-size: 12px;
-    color: #707070;
-    position: absolute;
-    top: 7px;
-    left: 6px;
-}
 table.deliveryTable .inputBox input {
     width: 400px;
     font-size: 12px;
@@ -4970,6 +4954,10 @@ ul li.profList .w-notice a {
         float: left;
         width: 388px;
     }
+    .Member .inputBox input.certi {
+        float: left;
+        width: 350px;
+    }
     .Member .inputBox input.iptEmail01 {
         width: 31%;
     }
@@ -4983,6 +4971,9 @@ ul li.profList .w-notice a {
     }
     .Member .inputBox button.sm {
         width: 72px;
+    }
+    .Member .inputBox button.certi {
+        width: 110px;
     }
     .Member .user-Txt {
         font-size: 15px;
@@ -5008,6 +4999,7 @@ ul li.profList .w-notice a {
         line-height: 86px;
         border-top: 1px solid #e2e2e2;
         border-bottom: 1px solid #e2e2e2;
+        letter-spacing: 1px;
     }
     .Member .notice-Txt {
         font-size: 12px;
@@ -5287,11 +5279,6 @@ ul li.profList .w-notice a {
     table.combineTable .inputBox {
         height: 26px;
         margin-bottom: 0;
-    }
-    table.combineTable .inputBox label {
-        font-size: 12px;
-        top: 7px;
-        left: 6px;
     }
     table.combineTable .inputBox input {
         float: left;

@@ -339,6 +339,7 @@ class LectureFreeModel extends CommonLectureModel
             ,'IsRefund'=>element('IsRefund',$input,'N')
             ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
             ,'IsSms'=>element('IsSms',$input,'N')
+            ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
             ,'Keyword'=>element('Keyword',$input)
         ];
@@ -348,6 +349,7 @@ class LectureFreeModel extends CommonLectureModel
             ,'SchoolYear'=>element('SchoolYear',$input)
             ,'CourseIdx'=>element('CourseIdx',$input)
             ,'SubjectIdx'=>element('SubjectIdx',$input)
+            ,'LecSaleType'=>element('LecSaleType',$input,'N')
             ,'LecTypeCcd'=>$LecTypeCcd
             ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input)
             ,'StudyPeriod'=>$commonStudyPeriod

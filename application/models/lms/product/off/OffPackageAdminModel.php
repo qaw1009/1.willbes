@@ -340,6 +340,7 @@ class OffPackageAdminModel extends CommonLectureModel
             ,'IsRefund'=>element('IsRefund',$input,'N')
             ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
             ,'IsSms'=>element('IsSms',$input,'N')
+            ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
             ,'Keyword'=>element('Keyword',$input)
         ];
@@ -351,6 +352,7 @@ class OffPackageAdminModel extends CommonLectureModel
             ,'PackSelCount'=>element('PackSelCount',$input)
 
             ,'SchoolYear'=>element('SchoolYear',$input)
+            ,'LecSaleType'=>element('LecSaleType',$input,'N')
             ,'CourseIdx'=>element('CourseIdx',$input)
             ,'CampusCcd'=>element('CampusCcd',$input)
             ,'SchoolStartYear'=>element('SchoolStartYear',$input)

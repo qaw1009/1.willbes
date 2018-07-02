@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'models/lms/product/on/CommonLectureModel.php';
+require_once  APPPATH . 'models/lms/product/on/CommonLectureModel.php';
 
 class LectureModel extends CommonLectureModel
 {
@@ -377,6 +377,7 @@ class LectureModel extends CommonLectureModel
                 ,'IsRefund'=>element('IsRefund',$input,'N')
                 ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
                 ,'IsSms'=>element('IsSms',$input,'N')
+                ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
                 ,'IsUse'=>element('IsUse',$input)
                 ,'Keyword'=>element('Keyword',$input)
             ];
@@ -386,6 +387,7 @@ class LectureModel extends CommonLectureModel
                 ,'SchoolYear'=>element('SchoolYear',$input)
                 ,'CourseIdx'=>element('CourseIdx',$input)
                 ,'SubjectIdx'=>element('SubjectIdx',$input)
+                ,'LecSaleType'=>element('LecSaleType',$input,'N')
                 ,'LecTypeCcd'=>$LecTypeCcd
                 ,'StudyPeriodCcd'=>element('StudyPeriodCcd',$input)
                 ,'StudyPeriod'=>$commonStudyPeriod

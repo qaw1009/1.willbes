@@ -109,6 +109,7 @@
                             @foreach($data_sublecture as $row)
                                 <tr name='subLecTrId' id='subLecTrId{{$loop->index}}'>
                                     <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
+                                    <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='{{$row['IsEssential']}}'>
                                     <td>{{$row['CateName']}}</td>
                                     <td>{{$row['CourseName']}}</td>
                                     <td>{{$row['SubjectName']}}</td>
@@ -533,6 +534,18 @@
                             (사은품 배송료가 ‘부과’ 일 경우 함께 구매하는 교재 주문 합계의 조건이 무료 배송일 경우라도 사은품 배송료가 부과되며,
                             사은품 배송료가 ‘미부과’ 일 경우 함께 구매하는 교재 주문의 배송료는 별도 부과 처리됨)
                         </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송지 입력여부
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="Y" title="배송지 입력여부" @if( $data['IsDeliveryInfo']=='Y')checked="checked"@endif/> 입력
+                            &nbsp;
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="N" title="배송지 입력여부" @if($method == 'POST' || $data['IsDeliveryInfo']=='N')checked="checked"@endif/> 미입력
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group">

@@ -304,6 +304,7 @@ class PackageUserModel extends CommonLectureModel
             ,'IsRefund'=>element('IsRefund',$input,'N')
             ,'IsFreebiesTrans'=>element('IsFreebiesTrans',$input)
             ,'IsSms'=>element('IsSms',$input,'N')
+            ,'IsDeliveryInfo'=>element('IsDeliveryInfo',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
             ,'Keyword'=>element('Keyword',$input)
         ];

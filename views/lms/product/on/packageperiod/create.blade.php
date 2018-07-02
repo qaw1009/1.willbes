@@ -716,6 +716,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송지 입력여부
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="Y" title="배송지 입력여부" @if( $data['IsDeliveryInfo']=='Y')checked="checked"@endif/> 입력
+                            &nbsp;
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="N" title="배송지 입력여부" @if($method == 'POST' || $data['IsDeliveryInfo']=='N')checked="checked"@endif/> 미입력
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="Keyword">키워드
                     </label>
                     <div class="col-md-10 form-inline">

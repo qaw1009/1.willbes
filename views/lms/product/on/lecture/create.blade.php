@@ -645,12 +645,24 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="IsRefund">환불신청 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline item" >
+                    <div class="col-md-6 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsRefund']=='Y')checked="checked"@endif/> 가능
                             &nbsp;&nbsp;
                             <input type="radio" name="IsRefund" class="flat" value="N" @if($data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsRefund">선수강좌구분 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
+                            &nbsp;&nbsp;
+                            <input type="radio" name="LecSaleType" class="flat" value="F" @if($data['LecSaleType']=='F')checked="checked"@endif/> 선수강좌
                         </div>
                     </div>
                 </div>
@@ -899,7 +911,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송료부과여부
+                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송료 부과여부
                     </label>
                     <div class="col-md-10 form-inline">
 
@@ -912,6 +924,18 @@
                             (사은품 배송료가 ‘부과’ 일 경우 함께 구매하는 교재 주문 합계의 조건이 무료 배송일 경우라도 사은품 배송료가 부과되며,
                             사은품 배송료가 ‘미부과’ 일 경우 함께 구매하는 교재 주문의 배송료는 별도 부과 처리됨)
                         </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송지 입력여부
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="Y" title="배송지 입력여부" @if( $data['IsDeliveryInfo']=='Y')checked="checked"@endif/> 입력
+                            &nbsp;
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="N" title="배송지 입력여부" @if($method == 'POST' || $data['IsDeliveryInfo']=='N')checked="checked"@endif/> 미입력
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -1364,7 +1388,12 @@
                     return;
                 }
 
-               rate = parseInt($('#ProdDivisionPrice_' + strGubun).val()) / totalprice;
+                if(totalprice > 0) {
+                    rate = parseInt($('#ProdDivisionPrice_' + strGubun).val()) / totalprice;
+                } else {
+                    rate = 0;
+                }
+
                rate = (Math.floor(rate*cipher)/cipher);  //소수점 8자리 표현 (반올림 제거)
                $('#ProdDivisionRate_' + strGubun).val(rate);
 

@@ -122,7 +122,7 @@
                             @foreach($freelectype_ccd as $key => $val)
                                 <input type="radio" name="FreeLecTypeCcd" id="FreeLecTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['FreeLecTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
-                            <input type="password" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="8" >
+                            &nbsp;&nbsp;[비밀번호] <input type="password" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="8" >
                         </div>
                     </div>
                 </div>
@@ -402,6 +402,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="IsRefund">선수강좌여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌여부" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
+                            &nbsp;&nbsp;
+                            <input type="radio" name="LecSaleType" class="flat" value="F" @if($data['LecSaleType']=='F')checked="checked"@endif/> 선수강좌
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2" for="is_use">무료강좌<Br>유의사항(필독)
                     </label>
                     <div class="col-md-10 form-inline item" >
@@ -513,6 +525,18 @@
                             (사은품 배송료가 ‘부과’ 일 경우 함께 구매하는 교재 주문 합계의 조건이 무료 배송일 경우라도 사은품 배송료가 부과되며,
                             사은품 배송료가 ‘미부과’ 일 경우 함께 구매하는 교재 주문의 배송료는 별도 부과 처리됨)
                         </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송지 입력여부
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="Y" title="배송지 입력여부" @if( $data['IsDeliveryInfo']=='Y')checked="checked"@endif/> 입력
+                            &nbsp;
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="N" title="배송지 입력여부" @if($method == 'POST' || $data['IsDeliveryInfo']=='N')checked="checked"@endif/> 미입력
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -761,7 +785,7 @@
                             $("#teacherDivision").append(
                                 "<tr>"
                                 +"<td colspan='4'></td>"
-                                +"<td><span id='rateSum'>&nbsp;</span></td>"
+                                +"<td><span id='rateSum'>1</span></td>"
                                 +"<td colspan='2'></td></tr>"
                             )
 
@@ -883,8 +907,12 @@
                     alert("안분가격을 정확히 입력하세요.");
                     return;
                 }
+                if(totalprice > 0) {
+                    rate = parseInt($('#ProdDivisionPrice_' + strGubun).val()) / totalprice;
+                } else {
+                    rate = 0;
+                }
 
-                rate = parseInt($('#ProdDivisionPrice_' + strGubun).val()) / totalprice;
                 rate = (Math.floor(rate*cipher)/cipher);  //소수점 8자리 표현 (반올림 제거)
                 $('#ProdDivisionRate_' + strGubun).val(rate);
 

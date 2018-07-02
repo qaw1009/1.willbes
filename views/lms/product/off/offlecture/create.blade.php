@@ -209,6 +209,17 @@
                         <input type="number" name="FixNumber" id="FixNumber" value="{{$data['FixNumber']}}" required="required" class="form-control" title="정원" style="width:70px;" > 명
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsRefund">선수강좌구분 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
+                            &nbsp;&nbsp;
+                            <input type="radio" name="LecSaleType" class="flat" value="F" @if($data['LecSaleType']=='F')checked="checked"@endif/> 선수강좌
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="form-group" >
@@ -620,6 +631,18 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송지 입력여부
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="Y" title="배송지 입력여부" @if( $data['IsDeliveryInfo']=='Y')checked="checked"@endif/> 입력
+                            &nbsp;
+                            <input type="radio" name="IsDeliveryInfo" class="flat" value="N" title="배송지 입력여부" @if($method == 'POST' || $data['IsDeliveryInfo']=='N')checked="checked"@endif/> 미입력
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="Keyword">키워드
                     </label>
                     <div class="col-md-10 form-inline">
@@ -1002,8 +1025,12 @@
                     alert("안분가격을 정확히 입력하세요.");
                     return;
                 }
+                if(totalprice > 0) {
+                    rate = parseInt($('#ProdDivisionPrice_' + strGubun).val()) / totalprice;
+                } else {
+                    rate = 0;
+                }
 
-               rate = parseInt($('#ProdDivisionPrice_' + strGubun).val()) / totalprice;
                rate = (Math.floor(rate*cipher)/cipher);  //소수점 8자리 표현 (반올림 제거)
                $('#ProdDivisionRate_' + strGubun).val(rate);
 

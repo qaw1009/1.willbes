@@ -851,7 +851,7 @@ class CommonLectureModel extends WB_Model
                         'ProdCode' => $prodcode
                         ,'ProdCodeSub' => $prodcodesub[$i]
                         ,'IsEssential' => $IsEssential[$i] == 'Y' ? 'Y' : 'N'
-                        ,'SubGroupName' => $SubGroupName[$i] == '' ? '0' : $SubGroupName[$i]
+                        ,'SubGroupName' =>  empty($SubGroupName[$i]) === true ? '0' : $SubGroupName[$i]
                         ,'OrderNum' => ($i+1)
                         ,'RegAdminIdx' => $this->session->userdata('admin_idx')
                         ,'RegIp' => $this->input->ip_address()
@@ -962,7 +962,7 @@ class CommonLectureModel extends WB_Model
 
             //상품복사
             $insert_column = 'ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, IsSaleEnd, IsCoupon, IsPoint, 
-                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, Keyword, RegAdminIdx, RegIp';
+                    PointApplyCcd, PointSaveType, PointSavePrice, IsBest, IsNew, IsCart, IsRefund, IsFreebiesTrans, IsSms, IsUse, IsDeliveryInfo, Keyword, RegAdminIdx, RegIp';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
@@ -977,7 +977,7 @@ class CommonLectureModel extends WB_Model
 
             //강좌복사
             $insert_column = '';
-            $select_column= '\''.$prodcode_new.'\' as ProdCode, CourseIdx, LearnPatternCcd, SubjectIdx, wLecIdx, SchoolYear, LecTypeCcd, StudyPeriodCcd, StudyPeriod, StudyStartDate, StudyEndDate
+            $select_column= '\''.$prodcode_new.'\' as ProdCode, CourseIdx, LearnPatternCcd, SubjectIdx, wLecIdx, SchoolYear, LecSaleType, LecTypeCcd, StudyPeriodCcd, StudyPeriod, StudyStartDate, StudyEndDate
                     , WorkBaseStudyPeriod, WorkMultipleApply, WorkWeekDayStartTime, WorkWeekDayEndTime, WorkHoliDayStartTime, WorkHoliDayEndTime, StudyProvisionCcd
                     , PcProvisionCcd, MobileProvisionCcd, PlayerTypeCcds, IsPackMultipleType, MultipleTypeCcd, MultipleApply, AllLecTime, LecCalcType
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx

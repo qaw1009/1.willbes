@@ -186,7 +186,7 @@
                                 $(document).find("#"+$parent_location).append(
                                     "<tr id='"+$parent_location_tr+seq+"'>"
                                     +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
-                                        @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd')
+                                        @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
                                     +"		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}"+seq+"' value=Y'>"
                                     +"		<input type='hidden'  name='IsEssential[]' id='IsEssential"+seq+"' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
                                     +"		<td>"
@@ -196,6 +196,8 @@
                                             @endfor
                                     +"     </select>"
                                     +"		</td>"
+                                        @elseif($locationid === 'subLecAdd')
+                                    +"		<input type='hidden'  name='IsEssential[]' id='IsEssential"+seq+"' value='N'>"
                                         @endif
                                     +"		<td>"+temp_data_arr[1]+"</td>"
                                     +"		<td>"+temp_data_arr[2]+"</td>"

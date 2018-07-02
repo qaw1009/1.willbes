@@ -5,13 +5,12 @@ Class OffLecture extends \app\controllers\BaseController
 {
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/off/offlecture');
     protected $helpers = array('download');
-    protected $prodyypeccd = '636002';  //온라인강좌
+    protected $prodtypeccd = '636002';  //학원강좌
     protected $learnpatternccd = '615006'; //단과반 [학원]
 
 
     public function __construct()
     {
-
         parent::__construct();
     }
 
@@ -50,7 +49,7 @@ Class OffLecture extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'A.ProdTypeCcd' => $this->prodyypeccd,
+                'A.ProdTypeCcd' => $this->prodtypeccd,
                 'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
@@ -165,7 +164,7 @@ Class OffLecture extends \app\controllers\BaseController
 
         $this->load->view('product/off/offlecture/create',[
             'method'=>$method
-            ,'prodyypeccd' => $this->prodyypeccd
+            ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
             ,'studypattern_ccd'=>$codes['653']       //수강형태(학원) [653]
             ,'studyapply_ccd'=>$codes['654']          //수강신청구분(학원) [654]

@@ -389,6 +389,8 @@ class BoardModel extends WB_Model
                         throw new \Exception('카테고리 등록에 실패했습니다.');
                     }
                 }
+            } else {
+                throw new \Exception('게시물 복사에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

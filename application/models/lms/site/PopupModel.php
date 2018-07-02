@@ -193,7 +193,6 @@ class PopupModel extends WB_Model
                 throw new \Exception('배너 등록에 실패했습니다.');
             }
             $p_idx = $this->_conn->insert_id();
-            $this->_conn->last_query();
 
             //카테고리 저장
             $category_code = element('cate_code', $input);

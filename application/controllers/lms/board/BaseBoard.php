@@ -161,12 +161,11 @@ class BaseBoard extends \app\controllers\BaseController
     /**
      * 카테고리 조회
      * @param $site_code
-     * @param int $parent_cate_code
      * @return array
      */
-    protected function _getCategoryArray($site_code, $parent_cate_code = 0)
+    protected function _getCategoryArray($site_code)
     {
-        return $this->categoryModel->getCategoryArray($site_code, $parent_cate_code);
+        return $this->categoryModel->getCategoryArray($site_code, '', '', 1);
     }
 
     /**

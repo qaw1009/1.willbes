@@ -159,12 +159,13 @@ abstract class FrontController extends BaseController
                 $site_active_menu = current(current($site_tree_menu)['Children']);
                 $site_active_menu['IsDefault'] = true;
             }
+
             // router name 배열
             $site_active_menu['UrlRouteNames'] = explode('>', $site_active_menu['UrlRouteName']);
             unset($site_active_menu['Children']);
 
-            // site tree menu 2 depth까지 제외
-            $site_tree_menu = current(current($site_tree_menu)['Children'])['Children'];
+            // site active 메뉴가 소속된 site tree menu 조회 (2 depth 메뉴까지는 제외 처리)
+            $site_tree_menu = array_get($site_tree_menu, implode('.Children.', array_slice(explode('>', $site_active_menu['UrlRouteIdx']), 0, 2)) . '.Children');
         }
 
         $configs = array_merge(

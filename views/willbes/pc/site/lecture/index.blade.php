@@ -175,7 +175,7 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
-                                            <a href="{{ site_url('/home/html/listsub') }}">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prodCode/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">
@@ -245,12 +245,12 @@
                                             @foreach($row['ProdBookData'] as $book_idx => $book_row)
                                                 <div class="w-sub">
                                                     <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
-                                                    <span class="w-subtit">{{ $book_row['wBookName'] }}</span>
+                                                    <span class="w-subtit">{{ $book_row['BookProdName'] }}</span>
                                                     <span class="chk">
                                                         <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                             [{{ $book_row['wSaleCcdName'] }}]
                                                         </label>
-                                                        <input type="checkbox" id="goods_chk_{{ $book_row['BookProdCode'] }}" name="goods_chk" class="goods_chk" value="{{ $book_row['BookProdCode'] }}"/>
+                                                        <input type="checkbox" id="goods_chk_{{ $book_row['BookProdCode'] }}" name="goods_chk" class="goods_chk" value="{{ $book_row['BookProdCode'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                     </span>
                                                     <span class="priceWrap">
                                                         <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
@@ -258,14 +258,14 @@
                                                     </span>
                                                 </div>
                                             @endforeach
+                                                <div class="w-sub ml10">
+                                                    <a href="#ch2" onclick="openLink('ch2','hover2'),openWin('InfoForm')"><strong>교재상세정보</strong></a>
+                                                </div>
                                         @else
                                             <div class="w-sub">
                                                 <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
                                             </div>
                                         @endif
-                                        <div class="w-sub ml10">
-                                            <a href="#ch2" onclick="openLink('ch2','hover2'),openWin('InfoForm')"><strong>교재상세정보</strong></a>
-                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>

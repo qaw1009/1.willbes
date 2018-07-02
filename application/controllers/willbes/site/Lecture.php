@@ -88,6 +88,7 @@ class Lecture extends \app\controllers\FrontController
         //dd($selected_subjects, $selected_professor_names, $selected_professor_refers, $selected_list);
 
         $this->load->view('site/lecture/index' . $this->_pass_site_val, [
+            'arr_param' => $params,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'data' => [

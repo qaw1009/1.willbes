@@ -56,8 +56,8 @@
                         <tr>
                             <td>{{ ($loop->count) - ($loop->index) + 1}}</td>
                             <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
-                            <td>{{ $row['FreebieIdx'] }}</td>
-                            <td><a href="#" class="btn-modify" data-idx="{{ $row['FreebieIdx'] }}"><u>{{ $row['FreebieName'] }}</u></a></td>
+                            <td>{{ $row['ProdCode'] }}</td>
+                            <td><a href="#" class="btn-modify" data-idx="{{ $row['ProdCode'] }}"><u>{{ $row['ProdName'] }}</u></a></td>
                             <td>{{ number_format($row['RefundSetPrice']) }}원</td>
                             <td>{{ number_format($row['Stock']) }}</td>
                             <td>{{ $row['Content'] }}</td>

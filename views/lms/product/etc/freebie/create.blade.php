@@ -8,7 +8,10 @@
     <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
-        <input type="hidden" name="idx" value="{{ $idx }}"/>
+
+        <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="{{$prodtypeccd}}"/>     <!--상품타입공통코드//-->
+        <input type="hidden" name="ProdCode" id="ProdCode" value="{{$prodcode}}"/>
+
         @endsection
 
         @section('layer_content')
@@ -28,28 +31,28 @@
                 </label>
                 <div class="col-md-4 item">
                     <div class="radio">
-                        <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
-                        <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                        <input type="radio" id="IsUse_y" name="IsUse" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                        <input type="radio" id="IsUse_n" name="IsUse" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                     </div>
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="FreebieName">사은품명 <span class="required">*</span>
+                <label class="control-label col-md-2" for="ProdName">사은품명 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">
-                    <input type="text" id="FreebieName" name="FreebieName" required="required" class="form-control" title="과목명" value="{{ $data['FreebieName'] }}">
+                    <input type="text" id="ProdName" name="ProdName" required="required" class="form-control" title="사은품명" value="{{ $data['ProdName'] }}">
                 </div>
                 <label class="control-label col-md-2" for="">사은품 코드
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">@if($method == 'PUT'){{ $data['FreebieIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+                    <p class="form-control-static">@if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif</p>
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="RefundSetPrice">환불책정가 <span class="required">*</span>
                 </label>
                 <div class="col-md-2">
-                    <input type="text" id="RefundSetPrice" name="RefundSetPrice" required="required" class="form-control" style='width:120px;' title="환불책정가" value="{{ $data['RefundSetPrice'] }}">
+                    <input type="number" id="RefundSetPrice" name="RefundSetPrice" required="required" class="form-control" style='width:120px;' title="환불책정가" value="{{ $data['RefundSetPrice'] }}">
                 </div>
                 <div class="col-md-2">
                     <p class="form-control-static">원</p>
@@ -57,7 +60,7 @@
                 <label class="control-label col-md-2" for="Stock">재고 <span class="required">*</span>
                 </label>
                 <div class="col-md-2">
-                    <input type="numnber" id="Stock" name="Stock" required="required" class="form-control" style='width:60px;' title="재고" value="{{ $data['Stock'] }}">
+                    <input type="number" id="Stock" name="Stock" required="required" class="form-control" style='width:60px;' title="재고" value="{{ $data['Stock'] }}">
                 </div>
                 <div class="col-md-2">
                     <p class="form-control-static">개</p>

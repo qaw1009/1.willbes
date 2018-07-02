@@ -5,6 +5,7 @@ Class Freebie extends \app\controllers\BaseController
 {
     protected $models = array('/product/etc/freebie');
     protected $helpers = array();
+    protected $prodtypeccd = '636004';  //사은품
 
     public function __construct()
     {
@@ -17,7 +18,7 @@ Class Freebie extends \app\controllers\BaseController
             'IN' => ['A.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
         ];
 
-        $list = $this->freebieModel->listFreebie(false,$arr_condition,null,null,['A.FreebieIdx' => 'desc']);
+        $list = $this->freebieModel->listFreebie(false,$arr_condition,null,null,['A.ProdCode' => 'desc']);
 
         $this->load->view('product/etc/freebie/index', [
             'data' => $list
@@ -29,18 +30,19 @@ Class Freebie extends \app\controllers\BaseController
     public function create($params=[])
     {
         $method='POST';
-        $idx = null;
+        $prodcode = null;
         $data = null;
 
         if(empty($params[0]) === false) {
             $method='PUT';
-            $idx=$params[0];
-            $data = $this->freebieModel->findFreebieForModify($idx);
+            $prodcode = $params[0];
+            $data = $this->freebieModel->findFreebieForModify($prodcode);
         }
 
         $this->load->view('/product/etc/freebie/create',[
             'method' => $method
-            ,'idx' => $idx
+            ,'prodtypeccd' => $this->prodtypeccd
+            ,'prodcode' => $prodcode
             ,'data' => $data
         ]);
 
@@ -50,12 +52,12 @@ Class Freebie extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'FreebieName', 'label' => '사은품명', 'rules' => 'trim|required'],
+            ['field' => 'ProdName', 'label' => '사은품명', 'rules' => 'trim|required'],
             ['field' => 'RefundSetPrice', 'label' => '환불책정가', 'rules' => 'trim|required'],
             ['field' => 'Stock', 'label' => '재고', 'rules' => 'trim|required'],
         ];
 
-        if(empty($this->_reqP('idx')) === true){
+        if(empty($this->_reqP('ProdCode')) === true){
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
@@ -63,7 +65,7 @@ Class Freebie extends \app\controllers\BaseController
         } else {
             $method = 'modify';
             $rules = array_merge($rules,[
-                ['field' => 'idx', 'label' => '식별자', 'rules' => 'trim|required'],
+                ['field' => 'ProdCode', 'label' => '식별자', 'rules' => 'trim|required'],
             ]);
         }
 

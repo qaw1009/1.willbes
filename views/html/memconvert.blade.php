@@ -42,14 +42,14 @@
     <!-- End 통합 서비스 안내 -->
 
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
         <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">통합회원 전환</span>
     </div>
-    <!-- 통합회원 전환 : 휴대폰 인증 -->
+    <!-- 통합회원 전환 : 본인인증 -->
     <div class="Member mem-Convert widthAuto690">
         <ul class="tabs-Step mb40">
             <li class="on">본인인증</li>
@@ -60,161 +60,79 @@
             기존 이용중인 윌비스 서비스를 확인을 위해 본인 인증을 해 주세요.</br>
             최초 인증된 ID는 '통합 ID'로 사용됩니다.
         </div>
-        <ul class="tabs-Certi">
-            <li id="tab1" class="on">
-                <a href="#none">
-                    <div>휴대폰 인증</div>
-                </a>
-            </li>
-            <li id="tab2">
-                <a href="#none">
-                    <div>E-mail 인증</div>
-                </a>
-            </li>
-            <li id="tab3">
-                <a href="#none">
-                    <div>아이핀 인증</div>
-                </a>
-            </li>
+        <ul class="tabWrap tabs-Certi">
+            <li id="tab1"><a href="#convert1"><div>휴대폰 인증</div></a></li>
+            <li id="tab2"><a href="#convert2"><div>E-mail 인증</div></a></li>
+            <li id="tab3"><a href="#convert3"><div>아이핀 인증</div></a></li>
         </ul>
-        <div class="widthAuto460">
-            <div class="inputBox mt50 p_re">
-                <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
-                <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+        <div class="tabBox">
+            <div id="convert1">
+                <div class="widthAuto460">
+                    <div class="inputBox mt50 p_re">
+                        <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+                    </div>
+                    <div class="tx-red" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
+                </div>
+                <div class="convert-Btn mt50 btnAuto120 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <span>휴대폰 인증</span>
+                    </button>
+                </div>
+                <div class="notice-Txt tx-gray mt40">
+                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
+                </div>
             </div>
-            <div class="tx-red" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
-        </div>
-        <div class="convert-Btn mt50 btnAuto120 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                <span>휴대폰 인증</span>
-            </button>
-        </div>
-        <div class="notice-Txt tx-gray mt40">
-            * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
-        </div>
-    </div>
-    <!-- End 통합회원 전환 : 휴대폰 인증 -->
-
-
-    <br/><br/><br/>
-
-
-    <div class="mem-Tit">
-        <img src="{{ img_url('login/logo.gif') }}">
-        <span class="tx-blue">통합회원 전환</span>
-    </div>
-    <!-- 통합회원 전환 : E-mail 인증 -->
-    <div class="Member mem-Convert widthAuto690">
-        <ul class="tabs-Step mb40">
-            <li class="on">본인인증</li>
-            <li>통합회원정보/약관동의</li>
-            <li>전환완료</li>
-        </ul>
-        <div class="user-Txt tx-black">
-            기존 이용중인 윌비스 서비스를 확인을 위해 본인 인증을 해 주세요.</br>
-            최초 인증된 ID는 '통합 ID'로 사용됩니다.
-        </div>
-        <ul class="tabs-Certi">
-            <li id="tab1">
-                <a href="#none">
-                    <div>휴대폰 인증</div>
-                </a>
-            </li>
-            <li id="tab2" class="on">
-                <a href="#none">
-                    <div>E-mail 인증</div>
-                </a>
-            </li>
-            <li id="tab3">
-                <a href="#none">
-                    <div>아이핀 인증</div>
-                </a>
-            </li>
-        </ul>
-        <div class="widthAuto460">
-            <div class="inputBox mt50 p_re">
-                <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
-                <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+            <div id="convert2">
+                <div class="widthAuto460">
+                    <div class="inputBox mt50 p_re">
+                        <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+                    </div>
+                    <div class="inputBox p_re">
+                        <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
+                        <select id="email" name="email" title="직접입력" class="seleEmail">
+                            <option selected="selected">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.net">daum.net</option>
+                        </select>
+                    </div>
+                    <div class="tx-red" style="display: block;">가입 시 등록한 메일주소를 입력해 주세요.</div>
+                </div>
+                <div class="convert-Btn mt50 btnAuto120 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <span>이메일 인증</span>
+                    </button>
+                </div>
+                <div class="notice-Txt tx-gray mt40">
+                    * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.
+                </div>
             </div>
-            <div class="inputBox p_re">
-                <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
-                <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
-                <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
-                <select id="email" name="email" title="직접입력" class="seleEmail">
-                    <option selected="selected">직접입력</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="daum.net">daum.net</option>
-                </select>
+            <div id="convert3">
+                <div class="widthAuto460">
+                    <div class="inputBox mt50 p_re">
+                        <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+                    </div>
+                    <div class="tx-red" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
+                </div>
+                <div class="convert-Btn mt50 btnAuto120 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <span>아이핀 인증</span>
+                    </button>
+                </div>
+                <div class="notice-Txt tx-gray mt40">
+                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
+                </div>
             </div>
-            <div class="tx-red" style="display: block;">가입 시 등록한 메일주소를 입력해 주세요.</div>
-        </div>
-        <div class="convert-Btn mt50 btnAuto120 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                <span>이메일 인증</span>
-            </button>
-        </div>
-        <div class="notice-Txt tx-gray mt40">
-            * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.
         </div>
     </div>
-    <!-- End 통합회원 전환 : E-mail 인증 -->
+    <!-- End 통합회원 전환 : 본인인증 -->
 
 
-    <br/><br/><br/>
-
-
-    <div class="mem-Tit">
-        <img src="{{ img_url('login/logo.gif') }}">
-        <span class="tx-blue">통합회원 전환</span>
-    </div>
-    <!-- 통합회원 전환 : 아이핀 인증 -->
-    <div class="Member mem-Convert widthAuto690">
-        <ul class="tabs-Step mb40">
-            <li class="on">본인인증</li>
-            <li>통합회원정보/약관동의</li>
-            <li>전환완료</li>
-        </ul>
-        <div class="user-Txt tx-black">
-            기존 이용중인 윌비스 서비스를 확인을 위해 본인 인증을 해 주세요.</br>
-            최초 인증된 ID는 '통합 ID'로 사용됩니다.
-        </div>
-        <ul class="tabs-Certi">
-            <li id="tab1">
-                <a href="#none">
-                    <div>휴대폰 인증</div>
-                </a>
-            </li>
-            <li id="tab2">
-                <a href="#none">
-                    <div>E-mail 인증</div>
-                </a>
-            </li>
-            <li id="tab3" class="on">
-                <a href="#none">
-                    <div>아이핀 인증</div>
-                </a>
-            </li>
-        </ul>
-        <div class="widthAuto460">
-            <div class="inputBox mt50 p_re">
-                <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
-                <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
-            </div>
-            <div class="tx-red" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
-        </div>
-        <div class="convert-Btn mt50 btnAuto120 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                <span>아이핀 인증</span>
-            </button>
-        </div>
-        <div class="notice-Txt tx-gray mt40">
-            * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
-        </div>
-    </div>
-    <!-- End 통합회원 전환 : 아이핀 인증 -->
-
-
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
@@ -338,7 +256,7 @@
     <!-- End 통합회원 전환 : 약관동의/정보입력 : 미전환/미중복 -->
 
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
@@ -387,7 +305,7 @@
     <!-- End 통합회원 전환 : 약관동의/정보입력 : 전환완료 -->
 
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
@@ -533,7 +451,7 @@
     <!-- End 통합회원 전환 : 약관동의/정보입력 -->
 
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">

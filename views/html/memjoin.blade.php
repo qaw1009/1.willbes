@@ -8,7 +8,6 @@
         <img src="{{ img_url('login/logo.gif') }}">
         <span class="tx-blue">로그인</span>
     </div>
-
     <!-- 로그인 -->
     <div class="Member mem-Login widthAuto460">
         <div class="inputBox p_re">
@@ -59,8 +58,7 @@
     </div>
     <!-- End 로그인 -->
 
-
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
@@ -86,7 +84,7 @@
     <!-- End 휴면회원 안내 -->
 
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <!-- 비밀번호 변경 -->
@@ -135,10 +133,10 @@
     <!-- End 비밀번호 변경 -->
 
 
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
-     <!-- 비밀번호 5회입력 오류 : 휴대폰 인증 -->
+     <!-- 비밀번호 5회입력 오류 -->
     <div class="Member mem-Wrong widthAuto690">
         <div class="user-Txt tx-black tx-left">
             비밀번호를 5회 이상 잘못 입력하셨습니다.
@@ -147,113 +145,73 @@
                 아이디 입력 후 원하시는 본인인증 방법을 선택해 주세요.
             </div>
         </div>
-        <ul class="tabs c_both">
-            <li class="on"><a href="#none">휴대폰 인증</a></li>
-            <li><a href="#none">E-mail 인증</a></li>
-            <li><a href="#none">아이핀 인증</a></li>
+        <ul class="tabWrap tabLoginDepth1 tabs c_both">
+            <li><a href="#type1">휴대폰 인증</a></li>
+            <li><a href="#type2">E-mail 인증</a></li>
+            <li><a href="#type3">아이핀 인증</a></li>
         </ul>
-        <div class="widthAuto460">
-            <div class="inputBox p_re">
-                <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-                <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+        <div class="tabBox">
+            <div id="type1">
+                <div class="widthAuto460">
+                    <div class="inputBox p_re">
+                        <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                    </div>
+                    <div class="tx-red" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
+                </div>
+                <div class="wrong-Btn btnAuto120 mt70 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <span>휴대폰 인증</span>
+                    </button>
+                </div>
             </div>
-            <div class="tx-red" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
-        </div>
-        <div class="wrong-Btn btnAuto120 mt70 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                <span>휴대폰 인증</span>
-            </button>
+            <div id="type2">
+                <div class="widthAuto460">
+                    <div class="inputBox p_re">
+                        <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                    </div>
+                    <div class="inputBox p_re">
+                        <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
+                        <select id="email" name="email" title="직접입력" class="seleEmail">
+                            <option selected="selected">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.net">daum.net</option>
+                        </select>
+                    </div>
+                    <div class="tx-red" style="display: block;">가입 시 입력한 메일주소를 입력해 주세요.</div>
+                </div>
+                <div class="wrong-Btn btnAuto120 mt70 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <span>이메일 인증</span>
+                    </button>
+                </div>
+            </div>
+            <div id="type3">
+                <div class="widthAuto460">
+                    <div class="inputBox p_re">
+                        <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                    </div>
+                    <div class="tx-red" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
+                </div>
+                <div class="wrong-Btn btnAuto120 mt70 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <span>아이핀 인증</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="notice-Txt tx-gray mt70">
             * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
         </div>
     </div>
-    <!-- End 비밀번호 5회입력 오류 : 휴대폰 인증 -->
+    <!-- End 비밀번호 5회입력 오류 -->
 
 
-    <br/><br/><br/>
-
-
-    <!-- 비밀번호 5회입력 오류 : E-mail 인증 -->
-    <div class="Member mem-Wrong widthAuto690">
-        <div class="user-Txt tx-black tx-left">
-            비밀번호를 5회 이상 잘못 입력하셨습니다.
-            <div class="user-sub-Txt tx-gray">
-                개인정보 보호를 위해 비밀번호 재설정이 필요합니다.</br>
-                아이디 입력 후 원하시는 본인인증 방법을 선택해 주세요.
-            </div>
-        </div>
-        <ul class="tabs c_both">
-            <li><a href="#none">휴대폰 인증</a></li>
-            <li class="on"><a href="#none">E-mail 인증</a></li>
-            <li><a href="#none">아이핀 인증</a></li>
-        </ul>
-        <div class="widthAuto460">
-            <div class="inputBox p_re">
-                <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-                <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
-            </div>
-            <div class="inputBox p_re">
-                <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
-                <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
-                <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
-                <select id="email" name="email" title="직접입력" class="seleEmail">
-                    <option selected="selected">직접입력</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="daum.net">daum.net</option>
-                </select>
-            </div>
-            <div class="tx-red" style="display: block;">가입 시 입력한 메일주소를 입력해 주세요.</div>
-        </div>
-        <div class="wrong-Btn btnAuto120 mt70 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                <span>이메일 인증</span>
-            </button>
-        </div>
-        <div class="notice-Txt tx-gray mt70">
-            * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
-        </div>
-    </div>
-    <!-- End 비밀번호 5회입력 오류 : E-mail 인증 -->
-
-
-    <br/><br/><br/>
-
-
-    <!-- 비밀번호 5회입력 오류 : 아이핀 인증 -->
-    <div class="Member mem-Wrong widthAuto690">
-        <div class="user-Txt tx-black tx-left">
-            비밀번호를 5회 이상 잘못 입력하셨습니다.
-            <div class="user-sub-Txt tx-gray">
-                개인정보 보호를 위해 비밀번호 재설정이 필요합니다.</br>
-                아이디 입력 후 원하시는 본인인증 방법을 선택해 주세요.
-            </div>
-        </div>
-        <ul class="tabs c_both">
-            <li><a href="#none">휴대폰 인증</a></li>
-            <li><a href="#none">E-mail 인증</a></li>
-            <li class="on"><a href="#none">아이핀 인증</a></li>
-        </ul>
-        <div class="widthAuto460">
-            <div class="inputBox p_re">
-                <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-                <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
-            </div>
-            <div class="tx-red" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
-        </div>
-        <div class="wrong-Btn btnAuto120 mt70 h36">
-            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                <span>아이핀 인증</span>
-            </button>
-        </div>
-        <div class="notice-Txt tx-gray mt70">
-            * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
-        </div>
-    </div>
-    <!-- End 비밀번호 5회입력 오류 : 아이핀 인증 -->
-
-
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 
 
     <div class="mem-Tit">
@@ -285,10 +243,6 @@
         </div>
     </div>
     <!-- End 비밀번호 재설정 -->
-
-
-    <br/><br/><br/>
-
 
 </div>
 <!-- End Container -->

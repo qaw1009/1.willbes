@@ -172,6 +172,9 @@ ul.bar_tabs > li.active a, ul.bar_tabs > li.active a:focus, ul.bar_tabs > li.act
     border-bottom: 0;
     border-top-right-radius: 0;
 }
+#tabs_site_code {
+    margin-bottom: -1px;
+}
 
 /* dropdown */
 .dropdown-menu li a {
@@ -702,7 +705,7 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
         position: fixed; margin-top: 0;
     }
     .top_nav_fixed .right_col {
-        top: 140px;
+        top: 125px;
     }
     footer {
         padding: 5px 20px 10px;

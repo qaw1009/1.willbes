@@ -59,12 +59,10 @@
     </div>
     <div class="Layer-Login GM widthAuto320">
         <div class="inputBox p_re">
-            <label for="USER_ID" class="labelId" style="display: block;">ID</label>
-            <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="ID" maxlength="30">
         </div>
         <div class="inputBox p_re">
-            <label for="USER_PWD" class="labelPwd" style="display: block;">비밀번호</label>
-            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" maxlength="30">
+            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="비밀번호" maxlength="30">
         </div>
         <div class="tx-red" style="display: block;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
         <div class="chkBox-Save">

@@ -11,12 +11,10 @@
     <!-- 로그인 -->
     <div class="Member mem-Login widthAuto460">
         <div class="inputBox p_re">
-            <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-            <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
         </div>
         <div class="inputBox p_re">
-            <label for="USER_PWD" class="labelPwd" style="display: block;">비밀번호</label>
-            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" maxlength="30">
+            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="비밀번호" maxlength="30">
         </div>
         <div class="tx-red" style="display: block;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
         <div class="chkBox mt30">
@@ -97,13 +95,11 @@
         </div>
         <div class="widthAuto460">
             <div class="inputBox p_re">
-                <label for="USER_PWD" class="labelPwd" style="display: block;">현재비밀번호</label>
-                <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" maxlength="30">
+                <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="현재비밀번호" maxlength="30">
             </div>
             <div class="tx-red mb30" style="display: block;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
             <div class="inputBox p_re">
-                <label for="USER_PWD_NEW" class="labelPwdNew" style="display: block;">새비밀번호</label>
-                <input type="password" id="USER_PWD_NEW" name="USER_PWD_NEW" class="iptPwdNew sm" maxlength="30">
+                <input type="password" id="USER_PWD_NEW" name="USER_PWD_NEW" class="iptPwdNew sm" placeholder="새비밀번호" maxlength="30">
                 <button type="submit" onclick="" class="mem-Btn sm bg-dark-blue bd-dark-blue">
                     <span>확인</span>
                 </button>
@@ -154,26 +150,36 @@
             <div id="type1">
                 <div class="widthAuto460">
                     <div class="inputBox p_re">
-                        <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
                     </div>
-                    <div class="tx-red" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
+                    <div class="tx-red mb30" style="display: block;">이름을 정확하게 입력해 주세요.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="30">
+                        <button type="submit" onclick="" class="mem-Btn certi bg-dark-blue bd-dark-blue">
+                            <span>인증번호 발송</span>
+                        </button>
+                    </div>
+                    <div class="tx-red mb30" style="display: block;"> ‘-’ 없이 숫자만 입력해 주세요.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_NUMBER" name="USER_NUMBER" class="iptNumber" placeholder="인증번호입력" maxlength="30">
+                    </div>
+                    <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
                 </div>
-                <div class="wrong-Btn btnAuto120 mt70 h36">
+                <div class="Submit-Btn btnAuto120 mt70 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>휴대폰 인증</span>
+                        <span>확인</span>
                     </button>
                 </div>
+                <div class="notice-Txt tx-gray mt70">* 가입한 본인인증한 방법으로 비밀번호를 재설정 하세요.</div>
             </div>
             <div id="type2">
                 <div class="widthAuto460">
                     <div class="inputBox p_re">
-                        <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
                     </div>
+                    <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
                     <div class="inputBox p_re">
-                        <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
-                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" placeholder="이메일" maxlength="30"> @ 
                         <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
                         <select id="email" name="email" title="직접입력" class="seleEmail">
                             <option selected="selected">직접입력</option>
@@ -185,15 +191,18 @@
                 </div>
                 <div class="wrong-Btn btnAuto120 mt70 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>이메일 인증</span>
+                        <span>확인</span>
                     </button>
+                </div>
+                <div class="notice-Txt tx-gray tx-left pl115 mt70">
+                    * 가입한 본인인증한 방법으로 비밀번호를 재설정 하세요.<br/>
+                    * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.
                 </div>
             </div>
             <div id="type3">
                 <div class="widthAuto460">
                     <div class="inputBox p_re">
-                        <label for="USER_ID" class="labelId" style="display: block;">아이디</label>
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
                     </div>
                     <div class="tx-red" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
                 </div>
@@ -202,10 +211,11 @@
                         <span>아이핀 인증</span>
                     </button>
                 </div>
+                <div class="notice-Txt tx-gray tx-left pl60 mt70">
+                    * 가입한 본인인증한 방법으로 비밀번호를 재설정 하세요.<br/>
+                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
+                </div>
             </div>
-        </div>
-        <div class="notice-Txt tx-gray mt70">
-            * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
         </div>
     </div>
     <!-- End 비밀번호 5회입력 오류 -->
@@ -228,8 +238,7 @@
         </div>
         <div class="widthAuto460">
             <div class="inputBox p_re">
-                <label for="USER_PWD_NEW" class="labelPwdNew" style="display: block;">새비밀번호</label>
-                <input type="password" id="USER_PWD_NEW" name="USER_PWD_NEW" class="iptPwdNew sm" maxlength="30">
+                <input type="password" id="USER_PWD_NEW" name="USER_PWD_NEW" class="iptPwdNew sm" placeholder="새비밀번호" maxlength="30">
                 <button type="submit" onclick="" class="mem-Btn sm bg-dark-blue bd-dark-blue">
                     <span>확인</span>
                 </button>

@@ -514,6 +514,15 @@ strong {
 .pl40 {
   padding-left: 40px !important;
 }
+.pl60 {
+  padding-left: 60px !important;
+}
+.pl115 {
+  padding-left: 115px !important;
+}
+.pl135 {
+  padding-left: 135px !important;
+}
 
 .pb110 {
   padding-bottom: 110px !important;

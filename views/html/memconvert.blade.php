@@ -67,31 +67,36 @@
         </ul>
         <div class="tabBox">
             <div id="convert1">
-                <div class="widthAuto460">
-                    <div class="inputBox mt50 p_re">
-                        <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+                <div class="widthAuto460 mt50">
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" placeholder="로그인한 아이디 출력 (수정불가)" readonly>
                     </div>
-                    <div class="tx-red" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
+                    <div class="tx-red mb30" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="30">
+                        <button type="submit" onclick="" class="mem-Btn certi bg-dark-blue bd-dark-blue">
+                            <span>인증번호 발송</span>
+                        </button>
+                    </div>
+                    <div class="tx-red mb30" style="display: block;"> ‘-’ 없이 숫자만 입력해 주세요.</div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_NUMBER" name="USER_NUMBER" class="iptNumber" placeholder="인증번호입력" maxlength="30">
+                    </div>
+                    <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
                 </div>
                 <div class="convert-Btn mt50 btnAuto120 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>휴대폰 인증</span>
+                        <span>확인</span>
                     </button>
-                </div>
-                <div class="notice-Txt tx-gray mt40">
-                    * 본인인증 시 제공되는 <strong class="tx-blue">정보는 해당 인증기관에서 직접 수집</strong>하며, 인증 이외의 용도로 이용 또는 저장하지 않습니다.
                 </div>
             </div>
             <div id="convert2">
-                <div class="widthAuto460">
-                    <div class="inputBox mt50 p_re">
-                        <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+                <div class="widthAuto460 mt50">
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" placeholder="로그인한 아이디 출력 (수정불가)" readonly>
                     </div>
                     <div class="inputBox p_re">
-                        <label for="USER_EMAIL" class="labelEmail" style="display: block;">이메일</label>
-                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" maxlength="30"> @ 
+                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" placeholder="이메일" maxlength="30"> @ 
                         <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail02" maxlength="30">
                         <select id="email" name="email" title="직접입력" class="seleEmail">
                             <option selected="selected">직접입력</option>
@@ -103,18 +108,15 @@
                 </div>
                 <div class="convert-Btn mt50 btnAuto120 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>이메일 인증</span>
+                        <span>확인</span>
                     </button>
                 </div>
-                <div class="notice-Txt tx-gray mt40">
-                    * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.
-                </div>
+                <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
             </div>
             <div id="convert3">
-                <div class="widthAuto460">
-                    <div class="inputBox mt50 p_re">
-                        <label for="USER_ID" class="labelId" style="display: block;">로그인한 아이디 출력 (수정불가)</label>
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" readonly>
+                <div class="widthAuto460 mt50">
+                    <div class="inputBox p_re">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId bg-gray" maxlength="30" placeholder="로그인한 아이디 출력 (수정불가)" readonly>
                     </div>
                     <div class="tx-red" style="display: block;">가입 시 등록 정보로 인증해 주세요.</div>
                 </div>
@@ -343,8 +345,7 @@
                     <div class="agree-Tit tx-gray">
                         <strong>신규 통합 아이디</strong>
                         <div class="inputBox agreeBox p_re">
-                            <label for="USER_ID" class="labelId" style="display: block;">4~20자리 영문 대소문자, 숫자만 입력 가능</label>
-                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" maxlength="30">
+                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="4~20자리 영문 대소문자, 숫자만 입력 가능" maxlength="30">
                         </div>
                         <div class="tx-red" style="display: block;">* 유효성메시지노출</div>
                     </div>
@@ -353,8 +354,7 @@
                     <div class="agree-Tit tx-gray">
                         <strong>신규 비밀번호</strong>
                         <div class="inputBox agreeBox p_re">
-                            <label for="USER_PWD" class="labelPwdNew" style="display: block;">8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합</label>
-                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" maxlength="30">
+                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합" maxlength="30">
                             <a class="bg-dark-blue" href="#none">확인</a>
                         </div>
                         <div class="tx-red" style="display: block;">* 유효성메시지노출</div>

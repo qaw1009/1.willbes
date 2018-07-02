@@ -5,7 +5,7 @@ Class PackageUser extends \app\controllers\BaseController
 {
     protected $models = array('sys/wCode', 'sys/site', 'sys/code', 'sys/category', 'product/on/packageuser');
     protected $helpers = array('download');
-    protected $prodyypeccd = '636001';  //온라인강좌
+    protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615002'; //사용자 패키지
 
 
@@ -42,7 +42,7 @@ Class PackageUser extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'A.ProdTypeCcd' => $this->prodyypeccd,
+                'A.ProdTypeCcd' => $this->prodtypeccd,
                 'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
@@ -124,6 +124,7 @@ Class PackageUser extends \app\controllers\BaseController
 
         $this->load->view('product/on/packageuser/create',[
             'method'=>$method
+            ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
             ,'multiplelimit_ccd'=>$codes['611'] //수강배수
             ,'multipleapply_ccd'=>$codes['612'] //수강배수적용구분

@@ -5,7 +5,7 @@ Class Lecture extends \app\controllers\BaseController
 {
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/on/lecture');
     protected $helpers = array('download');
-    protected $prodyypeccd = '636001';  //온라인강좌
+    protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615001'; //단강좌
 
 
@@ -48,7 +48,7 @@ Class Lecture extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'A.ProdTypeCcd' => $this->prodyypeccd,
+                'A.ProdTypeCcd' => $this->prodtypeccd,
                 'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
@@ -175,6 +175,7 @@ Class Lecture extends \app\controllers\BaseController
 
         $this->load->view('product/on/lecture/create',[
             'method'=>$method
+            ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
             ,'lectype_ccd'=>$codes['607']       //강좌유형
             ,'lecprovision_ccd'=>$codes['613']          //강좌제공구분

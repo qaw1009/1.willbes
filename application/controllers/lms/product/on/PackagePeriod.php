@@ -5,7 +5,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 {
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packageperiod');
     protected $helpers = array('download');
-    protected $prodyypeccd = '636001';  //온라인강좌
+    protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615004'; //기간제 패키지
 
 
@@ -42,7 +42,7 @@ Class PackagePeriod extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'A.ProdTypeCcd' => $this->prodyypeccd,
+                'A.ProdTypeCcd' => $this->prodtypeccd,
                 'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
@@ -130,6 +130,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 
         $this->load->view('product/on/packageperiod/create',[
             'method'=>$method
+            ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
             ,'lecprovision_ccd'=>$codes['613']          //강좌제공구분
             ,'contentprovision_ccd'=>$codes['609']   //강좌제공방식

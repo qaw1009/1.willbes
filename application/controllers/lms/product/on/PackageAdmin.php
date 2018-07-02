@@ -5,7 +5,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 {
     protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/on/packageadmin');
     protected $helpers = array('download');
-    protected $prodyypeccd = '636001';  //온라인강좌
+    protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615003'; //운영자 패키지
 
 
@@ -42,7 +42,7 @@ Class PackageAdmin extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'A.ProdTypeCcd' => $this->prodyypeccd,
+                'A.ProdTypeCcd' => $this->prodtypeccd,
                 'B.LearnPatternCcd' => $this->learnpatternccd,
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'C.CateCode' => $this->_reqP('search_md_cate_code'),
@@ -137,6 +137,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 
         $this->load->view('product/on/packageadmin/create',[
             'method'=>$method
+            ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
             ,'lecprovision_ccd'=>$codes['613']          //상품판매구분
             ,'contentprovision_ccd'=>$codes['609']   //강좌제공방식

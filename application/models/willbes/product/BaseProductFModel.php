@@ -42,28 +42,58 @@ class BaseProductFModel extends WB_Model
     }
 
     /**
-     * 카테고리 과목 연결 데이터 조회
-     * @param string $conn_type
+     * 카테고리별 과목 데이터 조회
      * @param string $site_code
-     * @param string $cate_code
-     * @param string $child_ccd
+     * @param null|string $cate_code
      * @return mixed
      */
-    public function listCategorySubjectMapping($conn_type, $site_code, $cate_code, $child_ccd)
+    public function listSubjectCategoryMapping($site_code, $cate_code = null)
     {
-        $_table_key = 'subject_r_category';
         $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName';
-        $add_join = '';
+        $from = '
+            from ' . $this->_table['subject_r_category'] . ' as PSC 
+                inner join ' . $this->_table['site'] . ' as S
+                    on PSC.SiteCode = S.SiteCode
+                inner join ' . $this->_table['category'] . ' as SC
+                    on PSC.CateCode = SC.CateCode
+                inner join ' . $this->_table['subject'] . ' as PS
+                    on PSC.SubjectIdx = PS.SubjectIdx
+            where PSC.SiteCode = ? and PSC.IsStatus = "Y"
+                and S.IsUse = "Y" and S.IsStatus = "Y"
+                and SC.IsUse = "Y" and SC.IsStatus = "Y"
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"            
+        ';
 
-        // 복합연결일 경우
-        if (ends_with($conn_type, 'complex') === true) {
-            $_table_key .= '_r_code';
-            $column .= ', PSC.ChildCcd, CD.CcdName as ChildName';
+        $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code]]);
+        $where = $where->getMakeWhere(true);
+        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 직렬별 과목 데이터 조회
+     * @param $site_code
+     * @param null|string $cate_code
+     * @param null|string $child_ccd
+     * @return mixed
+     */
+    public function listSubjectSeriesMapping($site_code, $cate_code = null, $child_ccd = null)
+    {
+        $add_join = $group_by = '';
+        if (empty($child_ccd) === true) {
+            $column = 'PSC.CateCode, PSC.SubjectIdx, max(PS.SubjectName) as SubjectName';
+            $group_by = ' group by PSC.CateCode, PSC.SubjectIdx';
+        } else {
+            $column = 'PSC.CateCode, PSC.SubjectIdx, PS.SubjectName, PSC.ChildCcd, CD.CcdName as ChildName';
             $add_join = ' inner join ' . $this->_table['code'] . ' as CD on PSC.ChildCcd = CD.Ccd';
         }
 
         $from = '
-            from ' . $this->_table[$_table_key] . ' as PSC 
+            from ' . $this->_table['subject_r_category_r_code'] . ' as PSC 
                 inner join ' . $this->_table['site'] . ' as S
                     on PSC.SiteCode = S.SiteCode
                 inner join ' . $this->_table['category'] . ' as SC
@@ -81,21 +111,51 @@ class BaseProductFModel extends WB_Model
         $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.CsIdx asc';
 
         // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $group_by . $order_by, [$site_code]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 카테고리별 직렬 데이터 조회
+     * @param $site_code
+     * @param null|string $cate_code
+     * @return mixed
+     */
+    public function listSeriesCategoryMapping($site_code, $cate_code = null)
+    {
+        $column = 'PSC.CateCode, PSC.ChildCcd, fn_ccd_name(PSC.ChildCcd) as ChildName';
+        $from = '
+            from ' . $this->_table['subject_r_category_r_code'] . ' as PSC 
+                inner join ' . $this->_table['site'] . ' as S
+                    on PSC.SiteCode = S.SiteCode
+                inner join ' . $this->_table['category'] . ' as SC
+                    on PSC.CateCode = SC.CateCode
+            where PSC.SiteCode = ? and PSC.IsStatus = "Y"
+                and S.IsUse = "Y" and S.IsStatus = "Y"
+                and SC.IsUse = "Y" and SC.IsStatus = "Y"            
+        ';
+
+        $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code]]);
+        $where = $where->getMakeWhere(true);
+        $order_by = ' group by PSC.CateCode, PSC.ChildCcd order by SC.OrderNum asc, PSC.CsIdx asc';
+
+        // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);
 
         return $query->result_array();
     }
 
     /**
-     * 교수 과목 연결 데이터 조회
+     * 과목별 교수 데이터 조회
      * @param $site_code
-     * @param $cate_code
-     * @param $subject_idx
+     * @param null|$cate_code
+     * @param null|$subject_idx
      * @return mixed
      */
-    public function listProfessorSubjectMapping($site_code, $cate_code, $subject_idx)
+    public function listProfessorSubjectMapping($site_code, $cate_code = null, $subject_idx = null)
     {
-        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName as ProfName, P.ProfNickName, PSC.SubjectIdx, PS.SubjectName';
+        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, PSC.SubjectIdx, PS.SubjectName';
         $from = '
             from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
                 inner join ' . $this->_table['professor'] . ' as P

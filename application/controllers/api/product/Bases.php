@@ -13,7 +13,7 @@ class Bases extends \app\controllers\RestController
 
     /**
      * 상품 기본정보 조회 (카테고리+과목 연결, 카테고리+직렬+과목 연결, 교수+과목 연결, 과정)
-     * @example /product/bases/index/{[subject2category|subject2complex|subject2professor|course]}/{2001}/?cate_code={value}&series_ccd={value}&subject_idx={value}
+     * @example /product/bases/index/{[subject2category|subject2series|series2category|professor2subject|course]}/{2001}/?cate_code={value}&series_ccd={value}&subject_idx={value}
      * @param string $item_type
      * @param string $site_code
      */
@@ -23,14 +23,22 @@ class Bases extends \app\controllers\RestController
             return $this->api_param_error();
         }
 
-        if (starts_with($item_type, 'subject2') === true) {
-            if ($item_type == 'subject2professor') {
+        switch ($item_type) {
+            case 'subject2category' :   // 카테고리별 과목
+                $data = $this->baseProductFModel->listSubjectCategoryMapping($site_code, $this->_req('cate_code'));
+                break;
+            case 'subject2series' :       // 직렬별 과목
+                $data = $this->baseProductFModel->listSubjectSeriesMapping($site_code, $this->_req('cate_code'), $this->_req('series_ccd'));
+                break;
+            case 'series2category' :    // 카테고리별 직렬
+                $data = $this->baseProductFModel->listSeriesCategoryMapping($site_code, $this->_req('cate_code'));
+                break;
+            case 'professor2subject' :  // 과목별 교수
                 $data = $this->baseProductFModel->listProfessorSubjectMapping($site_code, $this->_req('cate_code'), $this->_req('subject_idx'));
-            } else {
-                $data = $this->baseProductFModel->listCategorySubjectMapping($item_type, $site_code, $this->_req('cate_code'), $this->_req('series_ccd'));
-            }
-        } else {
-            $data = $this->baseProductFModel->{'list' . ucfirst($item_type)}($site_code);
+                break;
+            default :
+                $data = $this->baseProductFModel->{'list' . ucfirst($item_type)}($site_code);
+                break;
         }
 
         return $this->api_success(null, $data);

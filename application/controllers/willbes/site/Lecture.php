@@ -21,20 +21,37 @@ class Lecture extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
-        // 과정, 카테고리+과목 맵핑 정보 조회
-        $arr_base = $this->api_get_data(
-            $this->restclient->getsDataJson([
-                ['name' => 'course', 'uri' => 'product/bases/course/' . $this->_site_code, 'params' => []],
-                ['name' => 'subject2category', 'uri' => 'product/bases/subject2category/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code]],
-            ])
+        // input parameter
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        if ($this->_site_id == 'gosi') {
+            // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
+            $arr_base = $this->api_get_data(
+                $this->restclient->getsDataJson([
+                    ['name' => 'series', 'uri' => 'product/bases/series2category/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code]],
+                    ['name' => 'subject', 'uri' => 'product/bases/subject2series/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code, 'series_ccd' => element('series_ccd', $arr_input)]],
+                ])
+            );
+        } else {
+            // 카테고리별 과목 조회
+            $arr_base['subject'] = $this->api_get_data(
+                $this->restclient->getDataJson('product/bases/subject2category/' . $this->_site_code, [
+                    'cate_code' => $this->_cate_code
+                ])
+            );            
+        }
+
+        // 과정 조회
+        $arr_base['course'] = $this->api_get_data(
+            $this->restclient->getDataJson('product/bases/course/' . $this->_site_code)
         );
 
         // 과목이 선택된 경우 해당 교수 조회
-        if (empty($this->_req('subject_idx')) === false) {
-            $arr_base['subject2professor'] = $this->api_get_data(
-                $this->restclient->getDataJson('product/bases/subject2professor/' . $this->_site_code, [
+        if (empty(element('subject_idx', $arr_input)) === false) {
+            $arr_base['professor'] = $this->api_get_data(
+                $this->restclient->getDataJson('product/bases/professor2subject/' . $this->_site_code, [
                     'cate_code' => $this->_cate_code,
-                    'subject_idx' => $this->_req('subject_idx'),
+                    'subject_idx' => element('subject_idx', $arr_input),
                 ])
             );
         }
@@ -43,15 +60,42 @@ class Lecture extends \app\controllers\FrontController
         $list = $this->api_get_data(
             $this->restclient->getDataJson('product/products/apply/on_lecture/' . $this->_site_code, [
                 'cate_code' => $this->_cate_code,
-                'course_idx' => $this->_req('course_idx'),
-                'subject_idx' => $this->_req('subject_idx'),
-                'prof_idx' => $this->_req('prof_idx'),
-                'school_year' => $this->_req('school_year'),
+                'course_idx' => element('course_idx', $arr_input),
+                'subject_idx' => element('subject_idx', $arr_input),
+                'prof_idx' => element('prof_idx', $arr_input),
+                'school_year' => element('school_year', $arr_input),
             ])
         );
 
+        // 상품조회 결과에 존재하는 과목 정보
+        $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
+        // 상품조회 결과에 존재하는 교수 정보
+        $selected_professor_names = array_data_pluck($list, 'wProfName', ['SubjectIdx', 'ProfIdx']);
+        $selected_professor_refers = array_map(function ($val) {
+            return json_decode($val, true);
+        }, array_pluck($list, 'ProfReferData', 'ProfIdx'));
+
+        // 상품 조회결과 재정의
+        $selected_list = [];
+        foreach ($list as $idx => $row) {
+            $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
+            $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+            unset($row['ProfReferData']);
+
+            $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
+        }
+
+        //dd($selected_subjects, $selected_professor_names, $selected_professor_refers, $selected_list);
+
         $this->load->view('site/lecture/index' . $this->_pass_site_val, [
-            'data' => $list
+            'arr_input' => $arr_input,
+            'arr_base' => $arr_base,
+            'data' => [
+                'subjects' => $selected_subjects,
+                'professor_names' => $selected_professor_names,
+                'professor_refers' => $selected_professor_refers,
+                'list' => $selected_list
+            ]
         ]);
     }
 

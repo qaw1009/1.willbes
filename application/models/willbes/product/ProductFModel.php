@@ -26,13 +26,14 @@ class ProductFModel extends WB_Model
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, CourseIdx, SchoolYear, StudyPeriod, MultipleApply	
-                , SalePrice, SaleRate, SaleDiscType, RealSalePrice, CourseName, SubjectName, wLectureProgressCcd, wLectureProgressName';
+                , SalePrice, SaleRate, SaleDiscType, RealSalePrice, CourseName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌
                 case 'on_lecture' :
                         $column .= ', SubjectIdx, ProfIdx, wProfIdx, wProfName, wUnitLectureCnt, ifnull(fn_product_salebook_data(ProdCode), "N") as ProdBookData
-                            , ifnull(fn_product_lecture_sample_data(ProdCode), "N") as LectureSampleData';
+                            , ifnull(fn_product_lecture_sample_data(ProdCode), "N") as LectureSampleData
+                            , ifnull(fn_professor_refer_data(ProfIdx), "N") as ProfReferData';
                     break;
                 default :
                         return 0;

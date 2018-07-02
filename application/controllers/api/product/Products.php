@@ -39,6 +39,9 @@ class Products extends \app\controllers\RestController
             'LKR' => [
                 'CateCode' => $this->_req('cate_code'),
             ],
+            'LKB' => [
+                'ProdName' => $this->_req('prod_name'),
+            ],
             'IN' => [
                 'SaleStatusCcd' => $this->_sale_status_ccds
             ],

@@ -123,14 +123,14 @@ if (!function_exists('array_data_pluck')) {
                 if (is_array($key)) {
                     $itemKey = '';
                     foreach ($key as $k) {
-                        $itemKey .= '::' . array_get($item, $k);
+                        $itemKey .= '.' . array_get($item, $k);
                     }
-                    $itemKey = substr($itemKey, 2);
+                    $itemKey = substr($itemKey, 1);
+                    array_set($results, $itemKey, $itemValue);
                 } else {
                     $itemKey = array_get($item, $key);
+                    $results[$itemKey] = $itemValue;
                 }
-
-                $results[$itemKey] = $itemValue;
             }
         }
 

@@ -248,7 +248,7 @@ if (!function_exists('remove_utf8_bom')) {
 
 if (!function_exists('query_string_to_array')) {
     /**
-     * return query string to array
+     * return array from query string
      * @param $haystack
      * @return array
      */

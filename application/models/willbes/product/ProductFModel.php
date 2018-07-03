@@ -77,7 +77,7 @@ class ProductFModel extends WB_Model
     public function findProductSaleBooks($prod_code)
     {
         $column = 'PSB.BookProdCode, P.ProdName as BookProdName, PSB.BookProvisionCcd, fn_ccd_name(PSB.BookProvisionCcd) as BookProvisionCcdName
-            , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice, PM.Memo as BookMemo
+            , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice, ifnull(PM.Memo, "") as BookMemo
 	        , VWB.wAuthorNames, VWB.wPublName, VWB.wPublDate, VWB.wEditionCcd, VWB.wEditionCcdName, VWB.wEditionSize, VWB.wEditionCnt, VWB.wPageCnt, VWB.wPrintCnt
 	        , VWB.wSaleCcd, VWB.wSaleCcdName, VWB.wBookDesc, VWB.wAuthorDesc, VWB.wTableDesc
 	        , VWB.wAttachImgPath, VWB.wAttachImgName as wAttachImgOrgName
@@ -88,8 +88,8 @@ class ProductFModel extends WB_Model
             from ' . $this->_table['product_salebook'] . ' as PSB
                 inner join ' . $this->_table['product'] . ' as P
                     on PSB.BookProdCode = P.ProdCode
-                inner join ' . $this->_table['product_memo'] . ' as PM
-                    on PSB.ProdCode = PM.ProdCode and PM.MemoTypeCcd = "634002"
+                left join ' . $this->_table['product_memo'] . ' as PM
+                    on PSB.ProdCode = PM.ProdCode and PM.MemoTypeCcd = "634002" and PM.IsStatus = "Y"
                 inner join ' . $this->_table['product_book'] . ' as PB
                     on PSB.BookProdCode = PB.ProdCode
                 inner join ' . $this->_table['product_sale'] . ' as PS
@@ -101,7 +101,6 @@ class ProductFModel extends WB_Model
             where PSB.ProdCode = ?
                 and PSB.IsStatus = "Y"
                 and P.IsUse = "Y" and P.IsStatus = "Y"
-                and PM.IsStatus = "Y"
                 and PS.IsStatus = "Y"
                 and VWB.wIsUse = "Y" and VWB.wIsStatus = "Y"         
         ';

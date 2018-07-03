@@ -16,20 +16,21 @@ class Products extends \app\controllers\RestController
 
     /**
      * 학습형태별 조회
-     * @example /product/products/apply/{[on_lecture|pass_lecture]}/?cate_code={value}&course_idx={value}&subject_idx={value}&prof_idx={value}&school_year={value}&is_count={Y/N}&limit={value}&offset={value}&order_by={value}&order_dir={asc/desc}
+     * @example /product/products/index/{[on_lecture|pass_lecture]}/?site_code={value}&cate_code={value}&course_idx={value}&subject_idx={value}&prof_idx={value}&school_year={value}&is_count={Y/N}&limit={value}&offset={value}&order_by={value}&order_dir={asc/desc}
      * @param string $learn_pattern
-     * @param string $site_code
+     * @param null|string $prod_code
      */
-    public function apply_get($learn_pattern = '', $site_code = '')
+    public function index_get($learn_pattern = '', $prod_code = null)
     {
-        if (empty($learn_pattern) === true || empty($site_code) === true) {
+        if (empty($learn_pattern) === true) {
             return $this->api_param_error();
         }
 
         // 조회조건
         $arr_condition = [
             'EQ' => [
-                'SiteCode' => $site_code,
+                'ProdCode' => $prod_code,
+                'SiteCode' => $this->_req('site_code'),
                 'CourseIdx' => $this->_req('course_idx'),
                 'SubjectIdx' => $this->_req('subject_idx'),
                 'ProfIdx' => $this->_req('prof_idx'),
@@ -64,6 +65,44 @@ class Products extends \app\controllers\RestController
 
         // 데이터 조회
         $data = $this->productFModel->listProduct($learn_pattern, $is_count, $arr_condition, $this->_req('limit'), $this->_req('offset'), $arr_order_by);
+
+        if (empty($prod_code) === false) {
+            $data = element('0', $data, []);
+        }
+
+        return $this->api_success(null, $data);
+    }
+
+    /**
+     * 상품 컨텐츠 조회
+     * @param string $learn_pattern
+     * @param string $prod_code
+     */
+    public function contents_get($learn_pattern = '', $prod_code = '')
+    {
+        if (empty($learn_pattern) === true || empty($prod_code) === true) {
+            return $this->api_param_error();
+        }
+
+        // 데이터 조회
+        $data = $this->productFModel->findProductContents($prod_code);
+
+        return $this->api_success(null, $data);
+    }
+
+    /**
+     * 상품 구매교재 조회
+     * @param string $learn_pattern
+     * @param string $prod_code
+     */
+    public function salebooks_get($learn_pattern = '', $prod_code = '')
+    {
+        if (empty($learn_pattern) === true || empty($prod_code) === true) {
+            return $this->api_param_error();
+        }
+
+        // 데이터 조회
+        $data = $this->productFModel->findProductSaleBooks($prod_code);
 
         return $this->api_success(null, $data);
     }

@@ -58,7 +58,8 @@ class Lecture extends \app\controllers\FrontController
 
         // 상품 조회
         $list = $this->api_get_data(
-            $this->restclient->getDataJson('product/products/apply/on_lecture/' . $this->_site_code, [
+            $this->restclient->getDataJson('product/products/index/on_lecture', [
+                'site_code' => $this->_site_code,
                 'cate_code' => $this->_cate_code,
                 'course_idx' => element('course_idx', $arr_input),
                 'subject_idx' => element('subject_idx', $arr_input),
@@ -98,6 +99,28 @@ class Lecture extends \app\controllers\FrontController
                 'list' => $selected_list
             ]
         ]);
+    }
+
+    /**
+     * 강좌상세정보 조회 (ajax)
+     * @param array $params
+     * @return CI_Output
+     */
+    public function info($params = [])
+    {
+        $prod_code = element('prodcode', $params);
+        if (empty($prod_code)) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $data = $this->api_get_data(
+            $this->restclient->getsDataJson([
+                ['name' => 'contents', 'uri' => 'product/products/contents/on_lecture/' . $prod_code, 'params' => []],
+                ['name' => 'salebooks', 'uri' => 'product/products/salebooks/on_lecture/' . $prod_code, 'params' => []],
+            ])
+        );
+
+        return $this->json_result(true, '', [], $data);
     }
 
     public function show($params = [])

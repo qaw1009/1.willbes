@@ -103,6 +103,24 @@ function getQueryString() {
 }
 
 /**
+ * go url (form get method 이용)
+ * @param key
+ * @param val
+ * @param selector
+ */
+function goUrl(key, val, selector) {
+    var $url_form = $(selector || '#url_form');
+    var $url_input = $url_form.find('input[name="' + key + '"]');
+
+    if ($url_input.length > 0) {
+        $url_input.val(val);
+    } else {
+        $url_form.append('<input type="hidden" name="' + key + '" value="' + val + '"/>');
+    }
+    $url_form.submit();
+}
+
+/**
  * data가 json 형식인지 체크
  * @param data
  * @returns {boolean}

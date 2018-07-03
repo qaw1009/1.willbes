@@ -145,11 +145,13 @@
                             </li>
                             <li class="Reply tx-blue">
                                 <strong>수강후기</strong>
-                                <dl class="roll-Reply tx-dark-black">
-                                    <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                                    <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                                    <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                                </dl>
+                                <div class="sliderUp">
+                                    <div class="sliderVertical roll-Reply tx-dark-black">
+                                        <div>1국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                        <div>2국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                        <div>3국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -160,7 +162,7 @@
 
                     {{-- 교수별 상품 리스트 loop --}}
                     @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
-                        <div class="willbes-Lec-Table">
+                        <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                             <table cellspacing="0" cellpadding="0" class="lecTable">
                                 <colgroup>
                                     <col style="width: 75px;">
@@ -175,18 +177,18 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
-                                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prodCode/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prodcode/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">
-                                                <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm');">
+                                                <a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover1">
                                                     <strong>강좌상세정보</strong>
                                                 </a>
                                             </dt>
-                                            <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강</span></dt>
+                                            <dt>강의수 : <span class="tx-blue unit-lecture-cnt">{{ $row['wUnitLectureCnt'] }}강</span></dt>
                                             <dt><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></dt>
-                                            <dt class="NSK ml15">
+                                            <dt>수강기간 : <span class="tx-blue study-period">{{ $row['StudyPeriod'] }}일</span></dt>
+                                            <dt class="NSK ml15 multiple-progress">
                                                 <span class="nBox n1">{{ $row['MultipleApply'] }}배수</span>
                                                 <span class="nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                             </dt>
@@ -194,28 +196,13 @@
                                     </td>
                                     <td class="chk buybtn p_re">
                                         <input type="checkbox" id="goods_chk_{{ $row['ProdCode'] }}" name="goods_chk" value="{{ $row['ProdCode'] }}" class="goods_chk">
-                                        <div class="willbes-Lec-buyBtn-sm">
-                                            <div>
-                                                <button type="submit" onclick="" class="bg-deep-gray">
-                                                    <span>장바구니</span>
-                                                </button>
-                                            </div>
-                                            <div>
-                                                <button type="submit" onclick="" class="bg-dark-blue">
-                                                    <span>바로결제</span>
-                                                </button>
-                                            </div>
-                                        </div>
                                     </td>
                                     <td class="w-notice p_re">
-                                        <ul class="w-sp">
-                                            <li class=""><a href="#none">OT</a></li>
-                                            <li><a href="#none" onclick="openWin('viewBox')">맛보기</a></li>
-                                        </ul>
-                                        <div id="viewBox" class="viewBox">
+                                        <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
+                                        <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                             @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                 <dl class="NSK">
-                                                    <dt class="Tit NG">맛보기{{ $sample_idx }}</dt>
+                                                    <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
                                                     @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="{{ $sample_row['wWD'] or $sample_row['wHD'] }}">HIGH</a></dt> @endif
                                                     @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="{{ $sample_row['wSD'] }}">LOW</a></dt> @endif
                                                 </dl>
@@ -246,7 +233,7 @@
                                                 <div class="w-sub">
                                                     <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
                                                     <span class="w-subtit">{{ $book_row['BookProdName'] }}</span>
-                                                    <span class="chk">
+                                                    <span class="chk buybtn p_re">
                                                         <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                             [{{ $book_row['wSaleCcdName'] }}]
                                                         </label>
@@ -259,7 +246,7 @@
                                                 </div>
                                             @endforeach
                                                 <div class="w-sub ml10">
-                                                    <a href="#ch2" onclick="openLink('ch2','hover2'),openWin('InfoForm')"><strong>교재상세정보</strong></a>
+                                                    <a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover2"><strong>교재상세정보</strong></a>
                                                 </div>
                                         @else
                                             <div class="w-sub">
@@ -299,7 +286,7 @@
             <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
-            <div class="Layer-Tit tx-dark-black NG">
+            <div class="Layer-Tit tx-dark-black NG prod-name">
                 2018 기미진 국어 아침 실전 동형모의고사 특강[국가직 ~서울시] (3-6월)
             </div>
             <div class="lecDetailWrap">
@@ -311,15 +298,10 @@
                     <div id="ch1" class="tabLink">
                         <div class="classInfo">
                             <dl class="w-info NG">
-                                <dt>강의수 : <span class="tx-blue">70강</span></dt>
+                                <dt>강의수 : <span class="tx-blue unit-lecture-cnt">70강</span></dt>
                                 <dt><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">50일</span></dt>
-                                <dt class="NSK ml15">
-                                    <span class="nBox n1">2배수</span>
-                                    <span class="nBox n2">진행중</span>
-                                    <span class="nBox n3">예정</span>
-                                    <span class="nBox n4">완강</span>
-                                </dt>
+                                <dt>수강기간 : <span class="tx-blue study-period">50일</span></dt>
+                                <dt class="NSK ml15 multiple-progress"></dt>
                             </dl>
                         </div>
                         <div class="classInfoTable">
@@ -329,30 +311,6 @@
                                     <col width="*">
                                 </colgroup>
                                 <tbody>
-                                <tr>
-                                    <td class="w-list bg-light-white">
-                                        강좌유의사항<br/>
-                                        <span class="tx-red">(필독)</span>
-                                    </td>
-                                    <td class="w-data tx-left pl25">
-                                        LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
-                                        자동출력됩니다. (온라인상품기준)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-list bg-light-white">강좌소개</td>
-                                    <td class="w-data tx-left pl25">
-                                        LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
-                                        자동출력됩니다. (온라인상품기준)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-list bg-light-white">강좌특징</td>
-                                    <td class="w-data tx-left pl25">
-                                        LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
-                                        자동출력됩니다. (온라인상품기준)
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -420,18 +378,60 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">
     </div>
 </div>
+<div class="willbes-Lec-buyBtn-sm">
+    <div>
+        <button type="submit" onclick="" class="bg-deep-gray">
+            <span>장바구니</span>
+        </button>
+    </div>
+    <div>
+        <button type="submit" onclick="" class="bg-dark-blue">
+            <span>바로결제</span>
+        </button>
+    </div>
+</div>
+<!-- willbes-Lec-buyBtn-sm -->
 <!-- End Container -->
 <script type="text/javascript">
-    function goUrl(key, val, selector) {
-        var $url_form = $(selector || '#url_form');
-        var $url_input = $url_form.find('input[name="' + key + '"]');
+    $(document).ready(function() {
+        // 강좌상세정보, 교재상세정보 버튼 클릭
+        $('.btn-lecture-info').click(function() {
+            var $prod_code = $(this).data('prod-code'),
+                $lec_table = $('#lec_table_' + $prod_code),
+                $info_form_id = 'InfoForm',
+                $info_form = $('#' + $info_form_id),
+                $html_contents = '',
+                $html_books = '';
 
-        if ($url_input.length > 0) {
-            $url_input.val(val);
-        } else {
-            $url_form.append('<input type="hidden" name="' + key + '" value="' + val + '"/>');
-        }
-        $url_form.submit();
-    }
+            sendAjax('{{ site_url('/lecture/info/prodcode/') }}' + $prod_code, {}, function(ret) {
+                if (ret.ret_cd) {
+                    console.log(ret.ret_data);
+                    // 강좌상세정보
+                    var contents = ret.ret_data.contents;
+                    for(var i = 0; i < contents.length; i++) {
+                        $html_contents += '<tr>';
+                        $html_contents += '<td class="w-list bg-light-white">강좌' + contents[i].ContentTypeCcdName;
+                        if (contents[i].ContentTypeCcd === '633001') {
+                            $html_contents += '<span class="tx-red">(필독)</span>';
+                        }
+                        $html_contents += '</td>';
+                        $html_contents += '<td class="w-data tx-left pl25">' + contents[i].Content + '</td>';
+                        $html_contents += '</tr>';
+                    }
+
+                    // 교재상세정보
+                }
+            }, showError, false, 'GET');
+
+            $info_form.find('.prod-name').html($lec_table.find('.prod-name').html());
+            $info_form.find('.unit-lecture-cnt').html($lec_table.find('.unit-lecture-cnt').html());
+            $info_form.find('.study-period').html($lec_table.find('.study-period').html());
+            $info_form.find('.multiple-progress').html($lec_table.find('.multiple-progress').html());
+            $info_form.find('.classInfoTable tbody').html($html_contents);
+
+            openWin($info_form_id);
+            openLink($(this).data('tab-id'));
+        });
+    });
 </script>
 @stop

@@ -34,7 +34,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
 
-                <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="{{$prodtypeccd}}"/>     <!--상품타입공통코드//-->
+                <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="636001"/>     <!--상품타입공통코드//-->
                 <input type="hidden" name="LearnPatternCcd" id="LearnPatternCcd" value="{{$learnpatternccd}}"/>   <!--학습형태공통코드//-->
                 <input type="hidden" name="ProdCode" id="ProdCode" value="{{$prodcode}}"/>
 
@@ -662,7 +662,7 @@
                         <div class="radio">
                             <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
                             &nbsp;&nbsp;
-                            <input type="radio" name="LecSaleType" class="flat" value="F" @if($data['LecSaleType']=='F')checked="checked"@endif/> 선수강좌
+                            <input type="radio" name="LecSaleType" class="flat" value="B" @if($data['LecSaleType']=='B')checked="checked"@endif/> 선수강좌
                         </div>
                     </div>
                 </div>
@@ -879,7 +879,7 @@
 
                         <table class="table table-striped table-bordered" id="freebieList" width="100%">
                             <colgroup>
-                                <col width="8%">
+                                <col width="10%">
                                 <col>
                                 <col width="12%">
                                 <col width="8%">
@@ -897,7 +897,7 @@
 
                             @foreach($data_autofreebie as $row)
                                 <tr id="freebieTrId{{$loop->index}}">
-                                    <input name="FreebieIdx[]" id="FreebieIdx{{$loop->index}}" type="hidden" value="{{$row['AutoFreebieIdx']}}">
+                                    <input name="ProdCode_freebie[]" id="ProdCode_freebie{{$loop->index}}" type="hidden" value="{{$row['AutoFreebieIdx']}}">
                                     <td>{{$row['AutoFreebieIdx']}}</td>
                                     <td style="text-align: left;">{{$row['FreebieName']}}</td>
                                     <td>{{number_format($row['RefundSetPrice'])}}원</td>

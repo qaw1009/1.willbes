@@ -216,7 +216,7 @@
                         <div class="radio">
                             <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
                             &nbsp;&nbsp;
-                            <input type="radio" name="LecSaleType" class="flat" value="F" @if($data['LecSaleType']=='F')checked="checked"@endif/> 선수강좌
+                            <input type="radio" name="LecSaleType" class="flat" value="B" @if($data['LecSaleType']=='B')checked="checked"@endif/> 선수강좌
                         </div>
                     </div>
                 </div>

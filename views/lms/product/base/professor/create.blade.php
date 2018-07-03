@@ -237,6 +237,13 @@
                     </div>
                 @endforeach
                 <div class="form-group">
+                    <label class="control-label col-md-2">슬로건 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9 item">
+                        <textarea id="prof_slogan" name="prof_slogan" class="form-control" rows="3" required="required" title="슬로건" placeholder="">{{ $data['ProfSlogan'] }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="prof_curriculum">커리큘럼 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 item">

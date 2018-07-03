@@ -139,9 +139,9 @@
                             <li class="ProfImg"><img src="{{ $data['professor_refers'][$prof_idx]['lec_list_img'] or '' }}"></li>
                             <li class="ProfDetail">
                                 <div class="Obj">
-                                    공무원 국어종결자<br/>정채영 국어 [슬로건]
+                                    {!! str_first_pos_after($prof_name, '::') !!}
                                 </div>
-                                <div class="Name">{{ $prof_name }} 교수님</div>
+                                <div class="Name">{{ str_first_pos_before($prof_name, '::') }} 교수님</div>
                             </li>
                             <li class="Reply tx-blue">
                                 <strong>수강후기</strong>

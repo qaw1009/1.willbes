@@ -322,7 +322,7 @@ class ProfessorModel extends WB_Model
     public function findProfessorForModify($prof_idx)
     {
         $column = '
-            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfCurriculum, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
+            P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.UseBoardJson, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
@@ -358,6 +358,7 @@ class ProfessorModel extends WB_Model
                 'wProfIdx' => $wprof_idx,
                 'SiteCode' => $site_code,
                 'ProfNickName' => element('prof_nickname', $input),
+                'ProfSlogan' => element('prof_slogan', $input),
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'ProfCurriculum' => element('prof_curriculum', $input),
                 'IsUse' => element('is_use', $input),
@@ -428,6 +429,7 @@ class ProfessorModel extends WB_Model
 
             $data = [
                 'ProfNickName' => element('prof_nickname', $input),
+                'ProfSlogan' => element('prof_slogan', $input),
                 'UseBoardJson' => $this->_getUseBoardJson(element('use_board', $input)),
                 'ProfCurriculum' => element('prof_curriculum', $input),
                 'IsUse' => element('is_use', $input),

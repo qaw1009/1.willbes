@@ -71,7 +71,7 @@ class Lecture extends \app\controllers\FrontController
         // 상품조회 결과에 존재하는 과목 정보
         $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
         // 상품조회 결과에 존재하는 교수 정보
-        $selected_professor_names = array_data_pluck($list, 'wProfName', ['SubjectIdx', 'ProfIdx']);
+        $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
         $selected_professor_refers = array_map(function ($val) {
             return json_decode($val, true);
         }, array_pluck($list, 'ProfReferData', 'ProfIdx'));

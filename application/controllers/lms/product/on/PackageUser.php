@@ -115,9 +115,11 @@ Class PackageUser extends \app\controllers\BaseController
             $data = $this->packageuserModel->_findProductForModify($prodcode);
             $data_memo = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_sms = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_sms');
-            $data_autolec = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_autolecture');
+
+            $data_autolec = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+
             $data_autocoupon = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_autofreebie = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_autofreebie');
             $data_sublecture = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
             $data_packsaleinfo = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_pack_saleinfo');
         }

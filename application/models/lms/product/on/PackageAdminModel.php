@@ -153,22 +153,22 @@ class PackageAdminModel extends CommonLectureModel
             /*----------------          SMS등록        ---------------*/
 
             /*----------------          자동지급단강좌 등록        ---------------*/
-            if($this->_setAutoLec($input,$prodcode) !== true) {
+            if($this->_setSubProduct($input,$prodcode,'ProdCode_lecture','636001','자동지급단강좌') !== true) {
                 throw new \Exception('자동지급단강좌 등록에 실패했습니다.');
             }
             /*----------------          자동지급단강좌등록        ---------------*/
+
+            /*----------------          자동지급사은품 등록        ---------------*/
+            if($this->_setSubProduct($input,$prodcode,'ProdCode_freebie','636004','자동지급사은품') !== true) {
+                throw new \Exception('자동지급사은품 등록에 실패했습니다.');
+            }
+            /*----------------          자동지급사은품 등록        ---------------*/
 
             /*----------------          자동지급쿠폰 등록        ---------------*/
             if($this->_setAutoCoupon($input,$prodcode) !== true) {
                 throw new \Exception('자동지급쿠폰 등록에 실패했습니다.');
             }
             /*----------------          자동지급쿠폰 등록        ---------------*/
-
-            /*----------------          자동지급사은품 등록        ---------------*/
-            if($this->_setAutoFreebie($input,$prodcode) !== true) {
-                throw new \Exception('자동지급사은품 등록에 실패했습니다.');
-            }
-            /*----------------          자동지급사은품 등록        ---------------*/
 
             /*----------------          연결강좌(단과,패키지) 등록        ---------------*/
             if($this->_setSubLecture($input,$prodcode) !== true) {
@@ -253,29 +253,23 @@ class PackageAdminModel extends CommonLectureModel
             }
             /*----------------          SMS등록        ---------------*/
 
-            /*----------------          교재등록        ---------------*/
-            if($this->_setBook($input,$prodcode) !== true) {
-                throw new \Exception('교재 등록에 실패했습니다.');
-            }
-            /*----------------          교재등록        ---------------*/
-
             /*----------------          자동지급단강좌 등록        ---------------*/
-            if($this->_setAutoLec($input,$prodcode) !== true) {
+            if($this->_setSubProduct($input,$prodcode,'ProdCode_lecture','636001','자동지급단강좌') !== true) {
                 throw new \Exception('자동지급단강좌 등록에 실패했습니다.');
             }
             /*----------------          자동지급단강좌등록        ---------------*/
+
+            /*----------------          자동지급사은품 등록        ---------------*/
+            if($this->_setSubProduct($input,$prodcode,'ProdCode_freebie','636004','자동지급사은품') !== true) {
+                throw new \Exception('자동지급사은품 등록에 실패했습니다.');
+            }
+            /*----------------          자동지급사은품 등록        ---------------*/
 
             /*----------------          자동지급쿠폰 등록        ---------------*/
             if($this->_setAutoCoupon($input,$prodcode) !== true) {
                 throw new \Exception('자동지급쿠폰 등록에 실패했습니다.');
             }
             /*----------------          자동지급쿠폰 등록        ---------------*/
-
-            /*----------------          자동지급사은품 등록        ---------------*/
-            if($this->_setAutoFreebie($input,$prodcode) !== true) {
-                throw new \Exception('자동지급사은품 등록에 실패했습니다.');
-            }
-            /*----------------          자동지급사은품 등록        ---------------*/
 
             /*----------------          연결강좌(단과,패키지) 등록        ---------------*/
             if($this->_setSubLecture($input,$prodcode) !== true) {

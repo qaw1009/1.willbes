@@ -151,9 +151,13 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             $data_memo = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_sms');
-            $data_autolec = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_autolecture');
+
+            $data_autolec = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+
+            //var_dump($data_autolec);
+
             $data_autocoupon = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_autofreebie = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_autofreebie');
             $data_sublecture = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
 
         }

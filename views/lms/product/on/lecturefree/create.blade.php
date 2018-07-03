@@ -491,15 +491,15 @@
                             <tbody>
                             @foreach($data_book as $row)
                                 <tr id='bookTrId{{$loop->index}}'>
-                                    <input type='hidden'  name='BookProdCode[]' id='BookProdCode{{$loop->index}}' value='{{$row['BookProdCode']}}'>
+                                    <input type='hidden'  name='ProdCode_book[]' id='ProdCode_book{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
                                     <td>
-                                        <select name='BookProvisionCcd[]' id='BookProdCode{{$loop->index}}' class="form-control">
+                                        <select name='OptionCcd[]' id='OptionCcd{{$loop->index}}' class="form-control">
                                             @foreach($bookprovision_ccd as $key=>$val)
-                                                <option value='{{$key}}' @if($row['BookProvisionCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                                                <option value='{{$key}}' @if($row['OptionCcd'] == $key) selected="selected" @endif>{{$val}}</option>
                                             @endforeach
                                         </select>
                                     </td>
-                                    <td style='text-align:left'>[{{$row['BookProdCode']}}] &nbsp;{{$row['bookname']}}</td>
+                                    <td style='text-align:left'>[{{$row['ProdCodeSub']}}] &nbsp;{{$row['bookname']}}</td>
                                     <td>{{number_format($row['SalePrice'])}}원</td>
                                     <td>{{number_format($row['RealSalePrice'])}}원</td>
                                     <td>{{$row['wSaleCcdName']}}</td>

@@ -166,7 +166,7 @@ class LectureFreeModel extends CommonLectureModel
             /*----------------          SMS등록        ---------------*/
 
             /*----------------          교재등록        ---------------*/
-            if($this->_setBook($input,$prodcode) !== true) {
+            if($this->_setSubProduct($input,$prodcode,'ProdCode_book','636003','교재') !== true) {
                 throw new \Exception('교재 등록에 실패했습니다.');
             }
             /*----------------          교재등록        ---------------*/
@@ -261,7 +261,7 @@ class LectureFreeModel extends CommonLectureModel
             /*----------------          SMS등록        ---------------*/
 
             /*----------------          교재등록        ---------------*/
-            if($this->_setBook($input,$prodcode) !== true) {
+            if($this->_setSubProduct($input,$prodcode,'ProdCode_book','636003','교재') !== true) {
                 throw new \Exception('교재 등록에 실패했습니다.');
             }
             /*----------------          교재등록        ---------------*/

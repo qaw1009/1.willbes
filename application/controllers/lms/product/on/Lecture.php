@@ -149,10 +149,12 @@ Class Lecture extends \app\controllers\BaseController
         $data_memo = [];
         $data_content = [];
         $data_sms = null;
+
         $data_book = [];
         $data_autolec = [];
-        $data_autocoupon = [];
         $data_autofreebie = [];
+
+        $data_autocoupon = [];
         $data_sublecture = [];
 
         if(empty($params[0]) === false) {
@@ -166,10 +168,12 @@ Class Lecture extends \app\controllers\BaseController
             $data_memo = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_sms');
-            $data_book = $this->lectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SaleBook');
-            $data_autolec = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autolecture');
+
+            $data_book = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
+            $data_autolec = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+
             $data_autocoupon = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_autofreebie = $this->lectureModel->_findProductEtcModify($prodcode,'lms_product_r_autofreebie');
             $data_sublecture = $this->lectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 

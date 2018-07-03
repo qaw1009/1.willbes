@@ -18,7 +18,7 @@ class SearchBook extends \app\controllers\BaseController
             'site_code' => $this->_req('site_code'),
             'return_type' => $return_type,
             'target_id' => get_var($this->_req('target_id'), 'bookList'),
-            'target_field' => get_var($this->_req('target_field'), 'BookProdCode'),
+            'target_field' => get_var($this->_req('target_field'), 'ProdCode_book'),
             'bookprovision_ccd' => []
         ];
 

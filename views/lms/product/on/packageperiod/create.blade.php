@@ -34,7 +34,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
 
-                <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="{{$prodtypeccd}}"/>     <!--상품타입공통코드//-->
+                <input type="hidden" name="ProdTypeCcd" id="ProdTypeCcd" value="636001"/>     <!--상품타입공통코드//-->
                 <input type="hidden" name="LearnPatternCcd" id="LearnPatternCcd" value="{{$learnpatternccd}}"/>   <!--학습형태공통코드//-->
                 <input type="hidden" name="ProdCode" id="ProdCode" value="{{$prodcode}}"/>
 
@@ -584,7 +584,7 @@
 
                             @foreach($data_autolec as $row)
                                 <tr name='lecTrId' id='lecTrId{{$loop->index}}'>
-                                    <input type='hidden'  name='AutoProdCode[]' id='AutoProdCode{{$loop->index}}' value='{{$row['AutoProdCode']}}'>
+                                    <input type='hidden'  name='ProdCode_lecture[]' id='ProdCode_lecture{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
                                     <td>{{$row['CateName']}}</td>
                                     <td>{{$row['CourseName']}}</td>
                                     <td>{{$row['SubjectName']}}</td>
@@ -686,9 +686,9 @@
 
                             @foreach($data_autofreebie as $row)
                                 <tr id="freebieTrId{{$loop->index}}">
-                                    <input name="FreebieIdx[]" id="FreebieIdx{{$loop->index}}" type="hidden" value="{{$row['AutoFreebieIdx']}}">
-                                    <td>{{$row['AutoFreebieIdx']}}</td>
-                                    <td style="text-align: left;">{{$row['FreebieName']}}</td>
+                                    <input name="ProdCode_freebie[]" id="ProdCode_freebie{{$loop->index}}" type="hidden" value="{{$row['ProdCodeSub']}}">
+                                    <td>{{$row['ProdCodeSub']}}</td>
+                                    <td style="text-align: left;">{{$row['ProdName']}}</td>
                                     <td>{{number_format($row['RefundSetPrice'])}}원</td>
                                     <td>{{number_format($row['Stock'])}}</td>
                                     <td><a onclick="rowDelete('freebieTrId{{$loop->index}}')" href="javascript:;"><i class="fa fa-times red"></i></a></td>

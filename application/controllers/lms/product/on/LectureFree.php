@@ -149,7 +149,9 @@ Class LectureFree extends \app\controllers\BaseController
             $data_memo = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_sms');
-            $data_book = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_Product_R_SaleBook');
+
+            $data_book = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
+
             $data_sublecture = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 

@@ -155,9 +155,11 @@ Class OffLecture extends \app\controllers\BaseController
             $data_memo = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_sms');
-            $data_autolec = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_autolecture');
+
+            $data_autolec = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+
             $data_autocoupon = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_autofreebie = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_autofreebie');
             $data_sublecture = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
             $data_lecturedate = $this->offlectureModel->findLectureDateListForModify($prodcode);
         }

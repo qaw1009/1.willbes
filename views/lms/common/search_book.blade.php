@@ -135,7 +135,7 @@
                                             "<tr id='bookTrId"+seq+"'>"
                                             +"		<input type='hidden' name='" + $target_field + "[]' id='" + $target_field + seq+ "' value='"+temp_data_arr[0]+"'>"
                                             +"		<td>"
-                                            +"          <select name='BookProvisionCcd[]' id='" + $target_field + seq + "' class=\"form-control\">"
+                                            +"          <select name='OptionCcd[]' id='OptionCcd"+ seq +"' class=\"form-control\">"
                                                 @foreach($bookprovision_ccd as $key=>$val)
                                             +"              <option value='{{$key}}'>{{$val}}</option>"
                                                 @endforeach

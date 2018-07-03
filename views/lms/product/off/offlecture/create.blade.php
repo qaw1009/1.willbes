@@ -498,7 +498,7 @@
 
                             @foreach($data_autolec as $row)
                                 <tr name='lecTrId' id='lecTrId{{$loop->index}}'>
-                                    <input type='hidden'  name='AutoProdCode[]' id='AutoProdCode{{$loop->index}}' value='{{$row['AutoProdCode']}}'>
+                                    <input type='hidden'  name='ProdCode_lecture[]' id='ProdCode_lecture{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
                                     <td>{{$row['CateName']}}</td>
                                     <td>{{$row['CourseName']}}</td>
                                     <td>{{$row['SubjectName']}}</td>
@@ -510,7 +510,6 @@
                                     <td><a href='javascript:;' onclick="rowDelete('lecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                 </tr>
                             @endforeach
-
 
                         </table>
                     </div>
@@ -601,9 +600,9 @@
 
                             @foreach($data_autofreebie as $row)
                                 <tr id="freebieTrId{{$loop->index}}">
-                                    <input name="FreebieIdx[]" id="FreebieIdx{{$loop->index}}" type="hidden" value="{{$row['AutoFreebieIdx']}}">
-                                    <td>{{$row['AutoFreebieIdx']}}</td>
-                                    <td style="text-align: left;">{{$row['FreebieName']}}</td>
+                                    <input name="ProdCode_freebie[]" id="ProdCode_freebie{{$loop->index}}" type="hidden" value="{{$row['ProdCodeSub']}}">
+                                    <td>{{$row['ProdCodeSub']}}</td>
+                                    <td style="text-align: left;">{{$row['ProdName']}}</td>
                                     <td>{{number_format($row['RefundSetPrice'])}}원</td>
                                     <td>{{number_format($row['Stock'])}}</td>
                                     <td><a onclick="rowDelete('freebieTrId{{$loop->index}}')" href="javascript:;"><i class="fa fa-times red"></i></a></td>

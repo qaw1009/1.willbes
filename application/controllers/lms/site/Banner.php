@@ -220,7 +220,7 @@ class Banner extends \app\controllers\BaseController
         // 날짜 검색
         if ($this->_reqP('search_date_type') == 'I') {
             // 유효기간 검색
-            $arr_condition['ORG2']['BET'] = [
+            $arr_condition['BET'] = [
                 'A.DispStartDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
                 'A.DispEndDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
             ];

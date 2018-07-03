@@ -45,6 +45,7 @@ function openLink(divID , Name) {
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.display = "none";
     }
+    document.getElementById(divID).style.display = 'block';
 
     hover.removeClass('on');
     hover = document.getElementById(Name);

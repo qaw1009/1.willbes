@@ -41,13 +41,11 @@ $(function() {
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {
-        if( $('table.txtTable tr').is(':hidden') ) {
+        if( $('table.txtTable tr').is(':hidden')) {
             $('table.txtTable tr').css('display','block');
             $('table.txtTable').removeClass('off');
             $('.willbes-Cart-Txt .MoreBtn a').text('유의사항안내 닫기 ▲');
-        }
-        else
-        {
+        } else {
             $('table.txtTable tr').css('display','none');
             $('table.txtTable').addClass('off');
             $('.willbes-Cart-Txt .MoreBtn a').text('유의사항안내 보기 ▼');
@@ -89,18 +87,15 @@ $(function() {
 // 수강후기 리스트 Script
 $(function() {
     $('tr.replyList').click(function() {
-
-        $('tr.replyList').removeClass('hover')
+        $('tr.replyList').removeClass('hover');
 
         if ($(this).next().is(':visible')) {
             $(this).next().hide();
             $(this).removeClass('hover');
-
         } else {
             $('tr.replyTxt').hide();
             $(this).next().show();
             $(this).addClass('hover');
-
         }   
     });
 });
@@ -108,15 +103,12 @@ $(function() {
 // 자주하는 질문 메뉴 Script
 $(function() {
     $('.tabcsDepth2 li a.qBox').click(function() {
-
-        $('.tabcsDepth2 li .subBox').removeClass('on')
+        $('.tabcsDepth2 li .subBox').removeClass('on');
 
         if ($(this).hasClass('on')) {
             $(this).next().removeClass('on');
-
         } else {
             $(this).next().addClass('on');
-
         }   
     });
 });
@@ -125,9 +117,10 @@ $(function() {
 $(function() {
     var $fileBox = $('.filetype');
 
-        $fileBox.each(function() {
+    $fileBox.each(function() {
         var $fileUpload = $(this).find('.input-file'),
-            $fileText = $(this).find('.file-text').attr('disabled', 'disabled')
+            $fileText = $(this).find('.file-text').attr('disabled', 'disabled');
+
         $fileUpload.on('change', function() {
             var fileName = $(this).val();
             $fileText.attr('disabled', 'disabled').val(fileName);
@@ -137,13 +130,15 @@ $(function() {
 
 // scroll top fixed Script
 $('*[id*=Sticky]:visible').each(function() {
-
     var stickyOffset = $('.sticky-menu').offset().top;
     $(window).scroll(function(){
-    var sticky = $('.sticky-menu'),
-        scroll = $(window).scrollTop();
+        var sticky = $('.sticky-menu'),
+            scroll = $(window).scrollTop();
 
-    if (scroll >= stickyOffset) sticky.addClass('fixed');
-    else sticky.removeClass('fixed');
+        if (scroll >= stickyOffset) {
+            sticky.addClass('fixed');
+        } else {
+            sticky.removeClass('fixed');
+        }
     });
 });

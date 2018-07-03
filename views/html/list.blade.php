@@ -249,18 +249,6 @@
                             </td>
                             <td class="chk buybtn p_re">
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                <div class="willbes-Lec-buyBtn-sm">
-                                    <div>
-                                        <button type="submit" onclick="" class="bg-deep-gray">
-                                            <span>장바구니</span>
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button type="submit" onclick="" class="bg-dark-blue">
-                                            <span>바로결제</span>
-                                        </button>
-                                    </div>
-                                </div>
                             </td>
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
@@ -302,18 +290,6 @@
                                     <span class="chk buybtn p_re">
                                         <label>[판매중]</label>
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                        <div class="willbes-Lec-buyBtn-sm">
-                                            <div>
-                                                <button type="submit" onclick="" class="bg-deep-gray">
-                                                    <span>장바구니</span>
-                                                </button>
-                                            </div>
-                                            <div>
-                                                <button type="submit" onclick="" class="bg-dark-blue">
-                                                    <span>바로결제</span>
-                                                </button>
-                                            </div>
-                                        </div>
                                     </span>
                                     <span class="priceWrap">
                                         <span class="price tx-blue">30,000원</span>
@@ -657,7 +633,7 @@
                             </table>
                         </div>
                     </div>
-                    <div id="ch2" class="tabLink">
+                    <div id="ch2" class="tabLink book2">
                         <div class="bookInfo">
                             <div class="bookImg">
                                 <img src="{{ img_url('sample/book.jpg') }}">
@@ -721,5 +697,19 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
+
+<div class="willbes-Lec-buyBtn-sm NG">
+    <div>
+        <button type="submit" onclick="" class="bg-deep-gray">
+            <span>장바구니</span>
+        </button>
+    </div>
+    <div>
+        <button type="submit" onclick="" class="bg-dark-blue">
+            <span>바로결제</span>
+        </button>
+    </div>
+</div>
+
 <!-- End Container -->
 @stop

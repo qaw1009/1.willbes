@@ -1776,15 +1776,6 @@ table.auTable tr td {
 .willbes-Lec-buyBtn-sm {
     display: none;
     position: absolute;
-    width: 45px;
-}
-table.lecTable .willbes-Lec-buyBtn-sm {
-    top: 80px;
-    right: 17px;
-}
-table.lecInfoTable .willbes-Lec-buyBtn-sm {
-    top: 8px;
-    right: 17px;
 }
 .willbes-Lec-buyBtn-sm.active {
     display: block !important;
@@ -1793,7 +1784,7 @@ table.lecInfoTable .willbes-Lec-buyBtn-sm {
     margin-bottom: 1px;
 }
 .willbes-Lec-buyBtn-sm button {
-    width: 45px;
+    width: 50px;
     height: 30px;
     border: none;
     padding: 0;
@@ -1801,7 +1792,6 @@ table.lecInfoTable .willbes-Lec-buyBtn-sm {
 }
 .willbes-Lec-buyBtn-sm button span {
     font-size: 9px;
-    float: inherit !important;
 }
 
 /* subContainer : Content : willbes-Lec-Tit */
@@ -2509,6 +2499,10 @@ table.classTable tr td.w-data {
     width: 1px;
     height: 10px;
     margin: -3px 10px 0;
+}
+.tabLink.book2 {
+    height: 510px;
+    overflow-x: auto;
 }
 
 /* subContainer : Content : 2nd Tabs 공통 */

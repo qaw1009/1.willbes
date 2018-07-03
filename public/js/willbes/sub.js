@@ -6,14 +6,19 @@ $(function() {
 // 교재정보 전체보기 버튼 Script
 $(function() {
     $('.willbes-Lec-Subject .MoreBtn a').click(function() {
-        if( $(".willbes-Lec-Table").is(":hidden") ) {
-            $(".willbes-Lec-Table").css("display","block");
-            $(".willbes-Lec-Subject .MoreBtn a").text("교재정보 전체닫기 ▲");
-        }
-        else
-        {
-            $(".willbes-Lec-Table").css("display","none");
-            $(".willbes-Lec-Subject .MoreBtn a").text("교재정보 전체보기 ▼");
+        var $lec_info_table = $(".willbes-Lec-Table .lecInfoTable");
+        var $lec_into_btn = $(".willbes-Lec-Table .w-notice .MoreBtn a");
+        
+        if ($(this).hasClass('on')) {
+            $lec_info_table.hide().css("display","none");
+            $(this).text("교재정보 전체보기 ▼");
+            $(this).removeClass("on");
+            $lec_into_btn.text("교재정보 보기 ▼");
+        } else {
+            $lec_info_table.show().css("display","block");
+            $(this).text("교재정보 전체닫기 ▲");
+            $(this).addClass("on");
+            $lec_into_btn.text("교재정보 닫기 ▲");
         }
     });
 });
@@ -21,14 +26,14 @@ $(function() {
 // 교재정보 보기 버튼 Script
 $(function() {
     $('.willbes-Lec-Table .w-notice .MoreBtn a').click(function() {
-        if( $("table.lecInfoTable").is(":hidden") ) {
-            $("table.lecInfoTable").css("display","block");
-            $(".willbes-Lec-Table .w-notice .MoreBtn a").text("교재정보 닫기 ▲");
-        }
-        else
-        {
-            $("table.lecInfoTable").css("display","none");
-            $(".willbes-Lec-Table .w-notice .MoreBtn a").text("교재정보 보기 ▼");
+        var $lec_info_table = $(this).parents('.willbes-Lec-Table').find('.lecInfoTable');
+
+        if ($lec_info_table.is(":hidden")) {
+            $lec_info_table.show().css("display","block");
+            $(this).text("교재정보 닫기 ▲");
+        } else {
+            $lec_info_table.hide().css("display","none");
+            $(this).text("교재정보 보기 ▼");
         }
     });
 });

@@ -174,8 +174,7 @@
 
         <div class="willbes-Lec-Search mb60">
             <div class="inputBox p_re">
-                <label for="SEARCH" class="labelSearch" style="display: block;">강의명</label>
-                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강의명" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span>검색</span>
                 </button>
@@ -199,11 +198,13 @@
                     </li>
                     <li class="Reply tx-blue">
                         <strong>수강후기</strong>
-                        <dl class="roll-Reply tx-dark-black">
-                            <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                            <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                            <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                        </dl>
+                        <div class="sliderUp">
+                            <div class="sliderVertical roll-Reply tx-dark-black">
+                                <div>1국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                <div>2국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                <div>3국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -231,7 +232,7 @@
                                 </div>
                                 <dl class="w-info">
                                     <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'),openWin('InfoForm')">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
                                             <strong>강좌상세정보</strong>
                                         </a>
                                     </dt>
@@ -262,10 +263,7 @@
                                 </div>
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none" onclick="openWin('viewBox')">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
                                 <div id="viewBox" class="viewBox">
                                     <dl class="NSK">
                                         <dt class="Tit NG">맛보기1</dt>
@@ -301,9 +299,21 @@
                                 <div class="w-sub">
                                     <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                     <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                    <span class="chk">
+                                    <span class="chk buybtn p_re">
                                         <label>[판매중]</label>
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                        <div class="willbes-Lec-buyBtn-sm">
+                                            <div>
+                                                <button type="submit" onclick="" class="bg-deep-gray">
+                                                    <span>장바구니</span>
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button type="submit" onclick="" class="bg-dark-blue">
+                                                    <span>바로결제</span>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </span>
                                     <span class="priceWrap">
                                         <span class="price tx-blue">30,000원</span>
@@ -334,7 +344,7 @@
                                     </span>
                                 </div>
                                 <div class="w-sub ml10">
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'),openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                 </div>
                             </td>
                         </tr>
@@ -376,10 +386,7 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one"><a href="#none">맛보기</a></div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">80,000원</span>
                                     <span class="discount">(↓20%)</span>
@@ -425,11 +432,13 @@
                     </li>
                     <li class="Reply tx-blue">
                         <strong>수강후기</strong>
-                        <dl class="roll-Reply tx-dark-black">
-                            <dt>과락점수 정도 유지였는데... 70점대로 문풀만으로 그냥 올라갔어요 짱짱</dt>
-                            <dt>과락점수 정도 유지였는데... 70점대로 문풀만으로 그냥 올라갔어요 짱짱</dt>
-                            <dt>과락점수 정도 유지였는데... 70점대로 문풀만으로 그냥 올라갔어요 짱짱</dt>
-                        </dl>
+                        <div class="sliderUp">
+                            <div class="sliderVertical roll-Reply tx-dark-black">
+                                <div>444국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                <div>555국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                <div>666국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -468,10 +477,7 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one"><a href="#none">맛보기</a></div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">0원</span>
                                 </div>
@@ -540,10 +546,7 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one"><a href="#none">맛보기</a></div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">0원</span>
                                 </div>

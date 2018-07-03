@@ -29,8 +29,8 @@ class SearchFreebie extends \app\controllers\BaseController
             'EQ' => ['A.SiteCode' => $this->_reqP('site_code')],
             'ORG' =>[
                 'LKB' => [
-                    'A.FreebieIdx' => $this->_reqP('search_value'),
-                    'A.FreebieName' => $this->_reqP('search_value')
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
                 ]
             ]
         ];
@@ -39,7 +39,7 @@ class SearchFreebie extends \app\controllers\BaseController
         $count = $this->freebieModel->listFreebie(true,$arr_condition);
 
         if($count > 0) {
-            $list = $this->freebieModel->listFreebie(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.FreebieIdx' => 'desc']);
+            $list = $this->freebieModel->listFreebie(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([

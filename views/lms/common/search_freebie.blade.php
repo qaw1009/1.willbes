@@ -72,11 +72,11 @@
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     var seq = meta.row + meta.settings._iDisplayStart;
-                                    var codeInfo= row.FreebieIdx+'@$'+row.FreebieName+'@$'+addComma(row.RefundSetPrice)+'원@$'+row.Stock+'@$';
+                                    var codeInfo= row.ProdCode+'@$'+row.ProdName+'@$'+addComma(row.RefundSetPrice)+'원@$'+row.Stock+'@$';
                                     return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
-                            {'data' : 'FreebieIdx'},
-                            {'data' : 'FreebieName'},
+                            {'data' : 'ProdCode'},
+                            {'data' : 'ProdName'},
                             {'data' : 'RefundSetPrice', 'render' : function(data, type, row, meta) {
                                     return addComma(data) + '원';
                                 }},
@@ -114,7 +114,7 @@
 
                                 $(document).find("#freebieList").append(
                                     "<tr id='freebieTrId"+seq+"'>"
-                                    +"		<input type='hidden'  name='FreebieIdx[]' id='FreebieIdx"+seq+"' value='"+temp_data_arr[0]+"'>"
+                                    +"		<input type='hidden'  name='ProdCode_freebie[]' id='ProdCode_freebie"+seq+"' value='"+temp_data_arr[0]+"'>"
                                     +"		<td>"+temp_data_arr[0]+"</td>"
                                     +"		<td style='text-align:left'>"+temp_data_arr[1]+"</td>"
                                     +"		<td>"+temp_data_arr[2]+"</td>"

@@ -1723,17 +1723,20 @@ table.auTable tr td {
     line-height: 25px;
     padding-left: 25px;
 }
-.willbes-Lec-Profdata .Reply strong{
+.willbes-Lec-Profdata .Reply strong {
     float: left;
     font-size: 14px;
     margin-right: 20px;
 }
-.willbes-Lec-Profdata .Reply .roll-Reply {
+.sliderUp {
     float: left;
     width: 370px;
     height: 25px;
     font-size: 12px;
     overflow: hidden;
+}
+.sliderUp .bx-wrapper {
+    background: none;
 }
 
 /* subContainer : Content : Lec-Line */
@@ -1773,9 +1776,15 @@ table.auTable tr td {
 .willbes-Lec-buyBtn-sm {
     display: none;
     position: absolute;
+    width: 45px;
+}
+table.lecTable .willbes-Lec-buyBtn-sm {
     top: 80px;
     right: 17px;
-    width: 45px;
+}
+table.lecInfoTable .willbes-Lec-buyBtn-sm {
+    top: 8px;
+    right: 17px;
 }
 .willbes-Lec-buyBtn-sm.active {
     display: block !important;
@@ -1792,6 +1801,7 @@ table.auTable tr td {
 }
 .willbes-Lec-buyBtn-sm button span {
     font-size: 9px;
+    float: inherit !important;
 }
 
 /* subContainer : Content : willbes-Lec-Tit */
@@ -1830,7 +1840,6 @@ table.auTable tr td {
 
 /* subContainer : Content : Lec-Table */
 .willbes-Lec-Table {
-    display: none;
     border-bottom: 1px solid #c9c9c9;
 }
 
@@ -1956,6 +1965,10 @@ table.lecTable tr td .MoreBtn {
     float: left;
     width: 128px;
     margin: 10px 26px;
+}
+.w-sp.one {
+    float: right;
+    width: 64px;
 }
 .w-sp li {
     float: left;

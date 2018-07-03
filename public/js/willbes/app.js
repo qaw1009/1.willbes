@@ -52,6 +52,20 @@ $(function() {
     });
 });
 
+// Slider Vertical Script
+$(function() {
+    $('.sliderVertical').bxSlider({
+        mode: 'vertical', 
+        auto: true,
+        controls: false,
+        infiniteLoop: true,
+        slideWidth: 370,
+        minSlides: 1,
+        pause: 3000,
+        pager: false,
+    });
+});
+
 // GNB Menu Script
 //$(function() {
     //var sBtn = $(".gnb-List > .gnb-List-Tit");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)

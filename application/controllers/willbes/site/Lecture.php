@@ -120,7 +120,10 @@ class Lecture extends \app\controllers\FrontController
             ])
         );
 
-        return $this->json_result(true, '', [], $data);
+        $this->load->view('site/lecture/info_modal', [
+            'arr_input' => $this->_reqG(null),
+            'data' => $data
+        ]);
     }
 
     public function show($params = [])

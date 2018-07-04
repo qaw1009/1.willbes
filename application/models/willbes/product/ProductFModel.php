@@ -39,9 +39,9 @@ class ProductFModel extends WB_Model
                 case 'on_lecture' :
                         $column .= ', SubjectIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
                             , ifnull(fn_product_salebook_data(ProdCode), "N") as ProdBookData
+                            , ifnull(fn_product_memo(ProdCode, "' . $this->_memo_type_ccds['book'] . '"), "") as ProdBookMemo
                             , ifnull(fn_product_lecture_sample_data(ProdCode), "N") as LectureSampleData
-                            , ifnull(fn_professor_refer_data(ProfIdx), "N") as ProfReferData
-                            , ifnull(fn_product_memo(ProdCode, "' . $this->_memo_type_ccds['book'] . '"), "") as ProdBookMemo';
+                            , ifnull(fn_professor_refer_data(ProfIdx), "N") as ProfReferData';
                     break;
                 default :
                         return 0;
@@ -76,9 +76,9 @@ class ProductFModel extends WB_Model
      */
     public function findProductSaleBooks($prod_code)
     {
-        $column = 'BookProdCode, BookProdName, BookProvisionCcd, BookProvisionCcdName, SalePrice, SaleRate, SaleDiscType, RealSalePrice        
+        $column = 'BookProdCode, BookProdName, BookCateCode, BookCateName, BookProvisionCcd, BookProvisionCcdName, SalePrice, SaleRate, SaleDiscType, RealSalePrice        
 	        , wAuthorNames, wPublName, wPublDate, wEditionCcd, wEditionCcdName, wEditionSize, wEditionCnt, wPageCnt, wPrintCnt
-	        , wSaleCcd, wSaleCcdName, wBookDesc, wAuthorDesc, wTableDesc, wAttachImgPath, wAttachImgOrgName, wAttachImgLgName, wAttachImgMdName, wAttachImgSmName         
+	        , wSaleCcd, wSaleCcdName, wBookDesc, wAuthorDesc, wTableDesc, wAttachImgPath, wAttachImgOgName, wAttachImgLgName, wAttachImgMdName, wAttachImgSmName         
         ';
 
         $arr_condition = ['EQ' => ['ProdCode' => $prod_code]];

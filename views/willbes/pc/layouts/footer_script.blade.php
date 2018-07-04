@@ -1,6 +1,10 @@
 <!-- JAVASCRIPT -->
 <!-- Slider -->
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
+<!-- PNotify -->
+<script src="/public/vendor/pnotify/pnotify.js"></script>
+<script src="/public/vendor/pnotify/pnotify.buttons.js"></script>
+<script src="/public/vendor/pnotify/pnotify.nonblock.js"></script>
 <!-- Custom Script -->
 <script src="/public/js/util.js"></script>
 <script src="/public/js/validation_util.js"></script>

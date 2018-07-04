@@ -68,6 +68,7 @@ $(function() {
                 'position': 'absolute'
             }).addClass('active');
         } else {
+            $lec_buy_btn.find('.pocketBox').css('display','none').hide();
             $lec_buy_btn.removeClass('active');
         }
     });
@@ -128,13 +129,11 @@ $(function() {
     });
 });
 
-
 // scroll position Script
 function fnMove(seq){
     var offset = $("#pos" + seq).offset();
     $('html, body').animate({scrollTop : offset.top}, 0);
 }
-
 
 // scroll top fixed Script
 $('*[id*=Sticky]:visible').each(function() {

@@ -148,14 +148,16 @@ class BaseProductFModel extends WB_Model
 
     /**
      * 과목별 교수 데이터 조회
-     * @param $site_code
+     * @param string $site_code
+     * @param bool $is_refer
      * @param null|$cate_code
      * @param null|$subject_idx
      * @return mixed
      */
-    public function listProfessorSubjectMapping($site_code, $cate_code = null, $subject_idx = null)
+    public function listProfessorSubjectMapping($site_code, $is_refer = false, $cate_code = null, $subject_idx = null)
     {
-        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, PSC.SubjectIdx, PS.SubjectName';
+        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName';
+        $is_refer === true && $column .= ', ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData';
         $from = '
             from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
                 inner join ' . $this->_table['professor'] . ' as P

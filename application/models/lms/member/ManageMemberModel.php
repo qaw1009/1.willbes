@@ -53,8 +53,8 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
-            0 AS PcCount,
-            0 AS MobileCount             
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' ) AS PcCount,
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' ) AS MobileCount             
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -93,8 +93,8 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
-            0 AS PcCount,
-            0 AS MobileCount             
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' ) AS PcCount,
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' ) AS MobileCount             
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 
@@ -235,13 +235,16 @@ class ManageMemberModel extends WB_Model
             $order_by_offset_limit = '';
 
         } else {
-            $column = "MemIdx, IsLogin, LoginIp, LoginDatm ";
+            $column = " MdIdx, MemIdx, DeviceId, DeviceType, IsUse, Os, App, RegDatm, 
+            DelDatm, DelAdminIdx, IFNULL(admin.wAdminName, '') AS adminName ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            //$order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $from = " FROM {$this->_table['loginLog']} AS log ";
+        $from = " FROM {$this->_table['device']} AS log
+            LEFT JOIN {$this->_table['admin']} AS admin ON admin.wAdminIdx = log.DelAdminIdx  
+        ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -249,6 +252,40 @@ class ManageMemberModel extends WB_Model
         $rows = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
+    }
+
+    /**
+     * 사용자 등록 기기 삭제
+     * @param array $input
+     * @return array|bool
+     */
+    public function deleteDevice($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $memIdx = element('MemIdx', $input);
+            $MdIdx = element('MdIdx', $input);
+
+            // 회원데이터테이블 이름변경
+            $data = [
+                'IsUse' => 'N',
+                'DelAdminIdx' => $admin_idx
+            ];
+
+            if ($this->_conn->set($data)->set('DelDatm','NOW()',false)->where(['MemIdx' => $memIdx, 'MdIdx' => $MdIdx])->update($this->_table['device']) === false) {
+                throw new \Exception('기기삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 
     /**

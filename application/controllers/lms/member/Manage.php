@@ -442,6 +442,28 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    public function deleteDevice()
+    {
+        $input = $this->_reqP(null, false);
+        $rules = [
+            ['field' => 'memIdx', 'label' => '사용자번호', 'rules' => 'trim|required'],
+            ['field' => 'MdIdx', 'label' => '삭제번호', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $input = [
+            'MemIdx' => element('memIdx', $input),
+            'MdIdx' => element('MdIdx', $input)
+        ];
+
+        $result = $this->managememberModel->deleteDevice($input);
+
+        $this->json_result($result, '처리되었습니다.', $result);
+    }
+
     /**
      * 회원 이름 변경 페이지
      * @param array $params

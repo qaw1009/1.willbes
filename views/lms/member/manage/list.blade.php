@@ -210,7 +210,7 @@
                         }},
                     {'data' : 'IsBlackList'},
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return 'PC : 1<br>모바일 2';
+                            return 'PC : '+row.PcCount+'<br>모바일 : '+row.MobileCount;
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             return '[자동로그인]';

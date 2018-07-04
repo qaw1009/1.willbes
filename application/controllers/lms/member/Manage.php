@@ -42,7 +42,7 @@ class Manage extends \app\controllers\BaseController
                     'Mem.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
                     'Mem.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
                     'Mem.Phone3' => $search_value, // 전화번호 뒷자리
-                    'Info.MailEnc' => $search_value_enc // 암호화된 이메일
+                    'Mem.MailEnc' => $search_value_enc // 암호화된 이메일
                 ]
             ],
             'EQ' => [

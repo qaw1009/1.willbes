@@ -44,7 +44,7 @@ class ManageMemberModel extends WB_Model
              */
             $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, 
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
-            fn_dec(Info.MailEnc) AS Mail, Info.MailRcvStatus,
+            fn_dec(Mem.MailEnc) AS Mail, Info.MailRcvStatus,
             IFNULL(Mem.JoinDate, '') AS JoinDate, 
             IFNULL(Mem.IsChange, '') AS IsChange,
             IFNULL(Mem.ChangeDatm, '') AS ChangeDate,
@@ -84,7 +84,7 @@ class ManageMemberModel extends WB_Model
         $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.BirthDay, Mem.Sex, 
             Info.ZipCode, Info.Addr1, fn_dec(Info.Addr2Enc) AS Addr2,
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
-            fn_dec(Info.MailEnc) AS Mail, Info.MailRcvStatus,
+            fn_dec(Mem.MailEnc) AS Mail, Info.MailRcvStatus,
             IFNULL(Mem.JoinDate, '') AS JoinDate, 
             IFNULL(Mem.IsChange, '') AS IsChange,
             IFNULL(Mem.ChangeDatm, '') AS ChangeDate, 

@@ -1013,7 +1013,7 @@ class CommonLectureModel extends WB_Model
 
 
             //  교재 / 자동지급단강좌 / 사은품
-            $insert_column = 'ProdCodeSub,ProdCode,OptionCcd,IsSale, RegAdminIdx, RegIp';
+            $insert_column = 'ProdCodeSub,ProdCode,ProdTypeCcd,OptionCcd,IsSale, RegAdminIdx, RegIp';
             $select_column= str_replace(',ProdCode',',\''.$prodcode_new.'\' as ProdCode',$insert_column);           //prodcode 치환 문제로 이와같이 변경
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);

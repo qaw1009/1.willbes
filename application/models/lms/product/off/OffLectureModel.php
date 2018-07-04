@@ -117,7 +117,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);
             if($this->_conn->set($lecture_data)->insert($this->_table['lecture']) === false) {
-                echo $this->_conn->last_query();
+                //echo $this->_conn->last_query();
                 throw new \Exception('강좌 등록에 실패했습니다.');
             }
             //echo $this->_conn->last_query().'<BR><BR>';

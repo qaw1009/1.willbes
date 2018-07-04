@@ -178,10 +178,9 @@
                                 </dl>
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one">
+                                    <a href="#none">맛보기</a>
+                                </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>
@@ -273,10 +272,9 @@
                                 </dl>
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one">
+                                    <a href="#none">맛보기</a>
+                                </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>

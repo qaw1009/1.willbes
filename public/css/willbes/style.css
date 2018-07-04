@@ -1816,7 +1816,6 @@ table.auTable tr td {
    height: 23px; 
 }
 
-
 /* subContainer : Content : willbes-Lec-Tit */
 .willbes-Lec-Tit {
     font-size: 19px;
@@ -1825,6 +1824,20 @@ table.auTable tr td {
     border-bottom: 1px solid #959595;
     padding-left: 10px;
     padding-top: 80px;
+}
+
+/* subContainer : Content : willbes-Lec-Tit-select */
+.willbes-Lec-Tit-select {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 45px;
+    border-bottom: 1px solid #959595;
+    padding-left: 10px;
+    padding-top: 80px;
+}
+.willbes-Lec-subTit {
+    font-size: 12px;
+    padding-left: 10px;
 }
 
 /* subContainer : Content : TopBtn */
@@ -1853,6 +1866,7 @@ table.auTable tr td {
 
 /* subContainer : Content : Lec-Table */
 .willbes-Lec-Table {
+    clear: both;
     border-bottom: 1px solid #c9c9c9;
 }
 
@@ -1949,7 +1963,10 @@ table.lecTable tr td.chk input[type=checkbox] {
 }
 table.lecTable tr td .priceWrap {
     clear: both;
-    position: relative;
+    position: absolute;
+    right: 0;
+    width: 155px;
+    margin-top: 10px;
     margin-right: 25px;
     height: 18px;
     text-align: right;
@@ -1972,16 +1989,39 @@ table.lecTable tr td .MoreBtn {
     color: #808080;
     line-height: 18px;
 }
+/* subContainer : Content : lecWrapTable */
+table.lecWrapTable {
+    width: 100%;
+}
+table.lecWrapTable .willbes-Lec-Table {
+    border-bottom: none;
+}
+table.lecWrapTable .w-list {
+    font-size: 13px;
+    color: #3a3a3a;
+    border-bottom: 1px solid #c9c9c9;
+    border-right: 1px solid #c9c9c9;
+}
+table.lecWrapTable .lecInfoTable .w-sub {
+    margin-left: 50px;
+}
+table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
+    width: 455px;
+}
+
+
 
 /* subContainer : Content : w-sp */
 .w-sp {
-    float: left;
     width: 128px;
-    margin: 10px 26px;
+    margin: 0 26px 10px;
 }
 .w-sp.one {
-    float: right;
+    position: absolute;
+    top: 40px;
+    right: 26px;
     width: 64px;
+    margin: 0;
 }
 .w-sp li {
     float: left;
@@ -2300,6 +2340,9 @@ table.lecTable tr td .MoreBtn {
 .lec-profile .w-notice .w-sp {
     margin: 0;
     height: 25px;
+    position: relative;
+    top: 0;
+    right: 0;
 }
 .lec-profile .w-notice .w-sp a {
     background: #fff;
@@ -2425,6 +2468,9 @@ table.lecTable tr td .MoreBtn {
 }
 
 /* subContainer : Content : 강좌 sticky menu */
+#Sticky {
+    clear: both;
+}
 .sticky-menu {
     background: #fff;
     height: 45px;
@@ -2456,6 +2502,13 @@ table.lecTable tr td .MoreBtn {
 .sticky-top {
     display: block;
     clear: both;
+}
+
+/* subContainer : Content : 강좌 select menu */
+.select-menu {
+    border: none;
+    padding: 0;
+    height: 34px;
 }
 
 /* subContainer : Content : 강좌정보 */
@@ -3004,11 +3057,8 @@ table.classTable tr td.w-data {
 .willbes-Buy-PackageList table.lecTable .w-data {
     padding-left: 20px;
 }
-.willbes-Buy-PackageList table.lecTable .w-notice {
-    padding-right: 20px;
-}
 .willbes-Buy-PackageList table.lecTable .priceWrap {
-    margin-right: 0;
+    top: 0;
 }
 
 

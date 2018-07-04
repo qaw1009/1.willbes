@@ -129,7 +129,7 @@
                             <td class="w-list bg-light-white">이론</td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/packagesub') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                    <a href="{{ site_url('/home/html/packagesub1') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                 </div>
                                 <dl class="w-info">
                                     <dt class="mr20">

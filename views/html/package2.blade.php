@@ -129,7 +129,7 @@
                             <td class="w-list bg-light-white">이론</td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/packagesub') }}">2017 9급 공무원 이론 선택형 종합 패키지 - 30일완성</a>
+                                    <a href="{{ site_url('/home/html/packagesub2') }}">2017 9급 공무원 이론 선택형 종합 패키지 - 30일완성</a>
                                 </div>
                                 <dl class="w-info">
                                     <dt class="mr20">

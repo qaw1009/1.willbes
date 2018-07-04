@@ -172,10 +172,9 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one">
+                                    <a href="#none">맛보기</a>
+                                </div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">80,000원</span>
                                     <span class="discount">(↓20%)</span>
@@ -271,10 +270,9 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one">
+                                    <a href="#none">맛보기</a>
+                                </div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">80,000원</span>
                                     <span class="discount">(↓20%)</span>
@@ -349,10 +347,9 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one">
+                                    <a href="#none">맛보기</a>
+                                </div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">0원</span>
                                 </div>
@@ -421,10 +418,9 @@
                                 <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                             </td>
                             <td class="w-notice p_re">
-                                <ul class="w-sp">
-                                    <li><a href="#none">OT</a></li>
-                                    <li><a href="#none">맛보기</a></li>
-                                </ul>
+                                <div class="w-sp one">
+                                    <a href="#none">맛보기</a>
+                                </div>
                                 <div class="priceWrap">
                                     <span class="price tx-blue">0원</span>
                                 </div>

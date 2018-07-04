@@ -1793,6 +1793,24 @@ table.auTable tr td {
 .willbes-Lec-buyBtn-sm button span {
     font-size: 9px;
 }
+.pocketBox {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: -275px;
+    width: 275px;
+    font-size: 13px;
+    color: #3a3a3a;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #2f2f2f;
+    padding: 30px 25px;
+}
+.pocketBox .aBox {
+   width: 57px;
+   height: 23px; 
+}
+
 
 /* subContainer : Content : willbes-Lec-Tit */
 .willbes-Lec-Tit {
@@ -2052,12 +2070,13 @@ table.lecTable tr td .MoreBtn {
     clear: both;
     height: 30px;
     line-height: 26px;
+    margin-left: 10px;
 }
 .lecInfoTable .w-sub span {
     float: left;
 }
 .lecInfoTable .w-sub .w-obj {
-    width: 75px;
+    width: 65px;
     text-align: right;
     padding-right: 10px;
 }
@@ -2462,8 +2481,13 @@ table.classTable tr td.w-data {
 
 /* subContainer : Content : 교재정보 */
 .willbes-Layer-Box .bookInfo {
-    margin-top: 60px;
     border-top: 1px solid #959595;
+}
+.bookWrap {
+    margin: 60px -20px 20px;
+    padding: 0 20px;
+    height: 448px;
+    overflow-x: auto;
 }
 .bookInfo {
     width: 100%;
@@ -2499,10 +2523,6 @@ table.classTable tr td.w-data {
     width: 1px;
     height: 10px;
     margin: -3px 10px 0;
-}
-.tabLink.book2 {
-    height: 510px;
-    overflow-x: auto;
 }
 
 /* subContainer : Content : 2nd Tabs 공통 */

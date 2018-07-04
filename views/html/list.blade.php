@@ -319,7 +319,8 @@
                                         <span class="price tx-blue">0원</span>
                                     </span>
                                 </div>
-                                <div class="w-sub ml10">
+                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                <div class="w-sub">
                                     <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                 </div>
                             </td>
@@ -634,57 +635,111 @@
                         </div>
                     </div>
                     <div id="ch2" class="tabLink book2">
-                        <div class="bookInfo">
-                            <div class="bookImg">
-                                <img src="{{ img_url('sample/book.jpg') }}">
-                            </div>
-                            <div class="bookDetail">
-                                <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
-                                <div class="book-Author tx-gray">
-                                    <ul>
-                                        <li>분야 : 9급공무원 <span class="row-line">|</span></li>
-                                        <li>저자 : 저자명 <span class="row-line">|</span></li>
-                                        <li>출판사 : 출판사명 <span class="row-line">|</span></li>
-                                        <li>판형/쪽수 : 190*260 / 769</li>
-                                    </ul>
-                                    <ul>
-                                        <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
-                                        <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong></li>
-                                    </ul>
+                        <div class="bookWrap">
+                            <div class="bookInfo">
+                                <div class="bookImg">
+                                    <img src="{{ img_url('sample/book.jpg') }}">
                                 </div>
-                                <div class="bookBoxWrap">
-                                    <ul class="tabWrap tabDepth2">
-                                        <li><a href="#info1">교재소개</a></li>
-                                        <li><a href="#info2">교재목차</a></li>
-                                    </ul>
-                                    <div class="tabBox">
-                                        <div id="info1" class="tabContent">
-                                            <div class="book-TxtBox tx-gray">
-                                                2018년재신정판을내면서..<br/>
-                                                첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
-                                                둘째, 매지문마다해설을충실히달았습니다..<br/>
-                                                셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
-                                                기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
+                                <div class="bookDetail">
+                                    <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
+                                    <div class="book-Author tx-gray">
+                                        <ul>
+                                            <li>분야 : 9급공무원 <span class="row-line">|</span></li>
+                                            <li>저자 : 저자명 <span class="row-line">|</span></li>
+                                            <li>출판사 : 출판사명 <span class="row-line">|</span></li>
+                                            <li>판형/쪽수 : 190*260 / 769</li>
+                                        </ul>
+                                        <ul>
+                                            <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
+                                            <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="bookBoxWrap">
+                                        <ul class="tabWrap tabDepth2">
+                                            <li><a href="#info1">교재소개</a></li>
+                                            <li><a href="#info2">교재목차</a></li>
+                                        </ul>
+                                        <div class="tabBox">
+                                            <div id="info1" class="tabContent">
+                                                <div class="book-TxtBox tx-gray">
+                                                    2018년재신정판을내면서..<br/>
+                                                    첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
+                                                    둘째, 매지문마다해설을충실히달았습니다..<br/>
+                                                    셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
+                                                    기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
+                                                </div>
+                                                <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
                                             </div>
-                                            <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
-                                        </div>
-                                        <div id="info2" class="tabContent">
-                                            <div class="book-TxtBox tx-gray">
-                                                제1편 현대 문법<br/>
-                                                제2편 고전 문법<br/>
-                                                제3편 국어 생활<br/>
-                                                제4편 현대 문학<br/>
-                                                제5편 고전 문학<br/>
-                                                제1편 현대 문법<br/>
-                                                제2편 고전 문법<br/>
-                                                제3편 국어 생활<br/>
-                                                제4편 현대 문학<br/>
-                                                제5편 고전 문학
+                                            <div id="info2" class="tabContent">
+                                                <div class="book-TxtBox tx-gray">
+                                                    제1편 현대 문법<br/>
+                                                    제2편 고전 문법<br/>
+                                                    제3편 국어 생활<br/>
+                                                    제4편 현대 문학<br/>
+                                                    제5편 고전 문학<br/>
+                                                    제1편 현대 문법<br/>
+                                                    제2편 고전 문법<br/>
+                                                    제3편 국어 생활<br/>
+                                                    제4편 현대 문학<br/>
+                                                    제5편 고전 문학
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>  
+                            </div>
+                            <div class="bookInfo">
+                                <div class="bookImg">
+                                    <img src="{{ img_url('sample/book.jpg') }}">
                                 </div>
-                            </div>  
+                                <div class="bookDetail">
+                                    <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
+                                    <div class="book-Author tx-gray">
+                                        <ul>
+                                            <li>분야 : 9급공무원 <span class="row-line">|</span></li>
+                                            <li>저자 : 저자명 <span class="row-line">|</span></li>
+                                            <li>출판사 : 출판사명 <span class="row-line">|</span></li>
+                                            <li>판형/쪽수 : 190*260 / 769</li>
+                                        </ul>
+                                        <ul>
+                                            <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
+                                            <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="bookBoxWrap">
+                                        <ul class="tabWrap tabDepth2">
+                                            <li><a href="#info1">교재소개</a></li>
+                                            <li><a href="#info2">교재목차</a></li>
+                                        </ul>
+                                        <div class="tabBox">
+                                            <div id="info1" class="tabContent">
+                                                <div class="book-TxtBox tx-gray">
+                                                    2018년재신정판을내면서..<br/>
+                                                    첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
+                                                    둘째, 매지문마다해설을충실히달았습니다..<br/>
+                                                    셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
+                                                    기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
+                                                </div>
+                                                <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
+                                            </div>
+                                            <div id="info2" class="tabContent">
+                                                <div class="book-TxtBox tx-gray">
+                                                    제1편 현대 문법<br/>
+                                                    제2편 고전 문법<br/>
+                                                    제3편 국어 생활<br/>
+                                                    제4편 현대 문학<br/>
+                                                    제5편 고전 문학<br/>
+                                                    제1편 현대 문법<br/>
+                                                    제2편 고전 문법<br/>
+                                                    제3편 국어 생활<br/>
+                                                    제4편 현대 문학<br/>
+                                                    제5편 고전 문학
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -700,7 +755,7 @@
 
 <div class="willbes-Lec-buyBtn-sm NG">
     <div>
-        <button type="submit" onclick="" class="bg-deep-gray">
+        <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
             <span>장바구니</span>
         </button>
     </div>
@@ -709,6 +764,32 @@
             <span>바로결제</span>
         </button>
     </div>
+    <div id="pocketBox" class="pocketBox" style="display: none;">
+        해당 상품이 장바구니에 담겼습니다.<br/>
+        장바구니로 이동하시겠습니까?
+        <ul class="NSK mt20">
+            <li class="aBox answerBox_block"><a href="#none">예</a></li>
+            <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+        </ul>
+    </div>
+    <!-- 팝업노출 다른 내용
+    <div id="pocketBox" class="pocketBox" style="display: none;">
+        해당 상품이 신청되었습니다.<br/>
+        강좌는 내강의실에서 수강가능합니다.
+        <ul class="NSK mt20">
+            <li class="aBox answerBox_block"><a href="#none">내강의실</a></li>
+            <li class="aBox waitBox_block"><a href="#none">교재구매</a></li>
+        </ul>
+    </div>
+    <div id="pocketBox" class="pocketBox" style="display: none;">
+        해당 상품이 신청되었습니다.<br/>
+        내 강의실로 이동 하시겠습니까.
+        <ul class="NSK mt20">
+            <li class="aBox answerBox_block"><a href="#none">예</a></li>
+            <li class="aBox waitBox_block"><a href="#none">아니오</a></li>
+        </ul>
+    </div>
+    -->
 </div>
 
 <!-- End Container -->

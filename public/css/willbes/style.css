@@ -1492,6 +1492,11 @@ table.auTable tr td {
     color: #636363;
     border: 1px solid #c9c9c9;
 }
+.subBtn.blue a {
+    background: #1a8ccb;
+    color: #fff;
+    border: 1px solid #0d74ae;
+}
 
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
@@ -2241,15 +2246,9 @@ table.lecTable tr td .MoreBtn {
     width: 490px;
     height: 294px;
 }
-.prof-profile .Obj {
-    position: absolute;
-    top: 35px;
-    left: 55px;
-    font-size: 14px;
-}
 .prof-profile .Name {
     position: absolute;
-    top: 115px;
+    top: 95px;
     left: 55px;
     font-size: 19px;
     line-height: 30px;
@@ -2285,27 +2284,31 @@ table.lecTable tr td .MoreBtn {
     width: 100%;
     margin-top: 20px;
 }
-.lec-profile .all-view {
+.lec-profile .view-wrap {
     position: absolute;
     bottom: 30px;
     left: 0;
 }
+.lec-profile .all-view {
+    float: right;
+    width: 125px;
+}
 .lec-profile .w-notice {
-    position: absolute;
-    bottom: 30px;
-    right: 60px;
+    float: left;
     letter-spacing: -1px;
 }
 .lec-profile .w-notice .w-sp {
     margin: 0;
+    height: 25px;
 }
-.lec-profile .w-notice .w-sp li {
+.lec-profile .w-notice .w-sp a {
     background: #fff;
     text-align: center;
+    line-height: 23px;
 }
 .lec-profile .w-notice .viewBox {
-    top: 21px;
-    right:1px;
+    top: 24px;
+    left: 0;
 }
 
 /* subContainer : Content : willbes-Buy-Table */

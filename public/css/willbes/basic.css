@@ -453,6 +453,9 @@ strong {
 .mb70 {
   margin-bottom: 70px !important;
 }
+.mb170 {
+  margin-bottom: 170px !important;
+}
 
 .ml5 {
   margin-left: 5px !important;
@@ -598,6 +601,9 @@ strong {
 }
 .tx-gray {
   color: #707070 !important;
+}
+.tx-dark-gray {
+  color: #4a4a4a !important;
 }
 .tx-black {
   color: #323232 !important;

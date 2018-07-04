@@ -45,9 +45,6 @@
         
         <div class="willbes-Prof-Detail NG tx-black">
             <div class="prof-profile p_re">
-                <div class="Obj">
-                    공무원 국어종결자<br/>정채영 국어
-                </div>
                 <div class="Name">
                     <strong>정채영</strong><br/>
                     교수님
@@ -59,11 +56,11 @@
             </div>
             <div class="lec-profile p_re">
                 <div class="w-list">문제풀이 / 국어</div>
-                <div class="w-tit">2018 [지방직/서울시] 정채영 국어<br/>[문학집중강의]137<br/>작품을 알려주마!(4-6월)</div>
-                <dl class="w-info">
-                    <dt>강의수 : <span class="tx-blue">70강</span></dt>
+                <div class="w-tit tx-blue">2018 [지방직/서울시] 정채영 국어<br/>[문학집중강의]137<br/>작품을 알려주마!(4-6월)</div>
+                <dl class="w-info tx-dark-gray">
+                    <dt>강의수 : <span class="tx-black">70강</span></dt>
                     <dt><span class="row-line">|</span></dt>
-                    <dt>수강기간 : <span class="tx-blue">50일</span></dt>
+                    <dt>수강기간 : <span class="tx-black">50일</span></dt>
                     <dt class="NSK ml15">
                         <span class="nBox n1">2배수</span>
                         <span class="nBox n2">진행중</span>
@@ -71,30 +68,31 @@
                         <span class="nBox n4">완강</span>
                     </dt>
                 </dl>
-                <div class="all-view subBtn NSK"><a href="#none">개설강좌 전체보기 ></a></div>
-                <div class="w-notice p_re">
-                    <ul class="w-sp">
-                        <li><a href="#none">OT</a></li>
-                        <li><a href="#none" onclick="openWin('viewBox')">맛보기</a></li>
-                    </ul>
-                    <div id="viewBox" class="viewBox">
-                        <dl class="NSK">
-                            <dt class="Tit NG">맛보기1</dt>
-                            <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                            <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                        </dl>
-                        <dl class="NSK">
-                            <dt class="Tit NG">맛보기2</dt>
-                            <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                            <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                        </dl>
+                <div class="view-wrap"> 
+                    <div class="w-notice p_re">
+                        <div class="w-sp one">
+                            <a href="#none" onclick="openWin('viewBox')">맛보기</a>
+                        </div>
+                        <div id="viewBox" class="viewBox">
+                            <dl class="NSK">
+                                <dt class="Tit NG">맛보기1</dt>
+                                <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                            </dl>
+                            <dl class="NSK">
+                                <dt class="Tit NG">맛보기2</dt>
+                                <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                            </dl>
+                        </div>
                     </div>
+                    <div class="all-view subBtn NSK"><a href="#none">개설강좌 전체보기 ></a></div>
                 </div>
             </div>
         </div>
         <!-- willbes-Prof-Detail -->
 
-        <div class="willbes-Lec NG c_both">
+        <div class="willbes-Lec mb170 NG c_both">
             <div class="willbes-Buy-Table p_re mt20">
                 <div class="willbes-Buy-List">
                     <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -224,10 +222,6 @@
                 </div>
                 <div class="willbes-Lec-buyBtn GM">
                     <ul>
-                        <li class="NG">
-                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                            <label>전체선택</label>
-                        </li>
                         <li class="btnAuto180 h36">
                             <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                                 <span>장바구니</span>
@@ -493,7 +487,7 @@
             <div class="willbes-LecreplyList tx-gray">
                 → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">2건</a> ]
                 <ul>
-                    <li class="subBtn NSK"><a href="#none">수강후기 작성하기 ></a></li>
+                    <li class="subBtn blue NSK"><a href="#none">수강후기 작성하기 ></a></li>
                     <li class="subBtn NSK"><a href="#none">수강후기 전체보기 ></a></li>
                 </ul>
             </div>

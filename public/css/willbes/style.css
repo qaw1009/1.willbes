@@ -3102,7 +3102,11 @@ table.classTable tr td.w-data {
 } 
 .willbes-Cartlist .LeclistTable ul {
     float: right;
+    height: 25px;
+    line-height: 23px;
     text-align: right;
+    margin: 10px 0;
+
 }
 .willbes-Cartlist .LeclistTable ul li {
     display: inline-block;
@@ -3534,14 +3538,16 @@ table.deliveryTable tr td {
 }
 .u-delivery-chk ul li {
     float: left;
+    line-height: 22px;
 }
 .u-delivery-chk ul li input[type="radio"] {
     float: left;
-    margin-top: 2px;
+    margin-top: 5px;
     margin-right: 5px;
 }
 .u-delivery-chk ul li label {
     padding-right: 35px;
+    line-height: 24px;
 }
 table.deliveryTable input[type="text"] {
     border: 1px solid #d4d4d4;
@@ -3656,10 +3662,19 @@ table.deliveryTable input.phone {
     padding: 35px 0;
     margin-top: 40px;
 }
+.willbes-Payment-Fin .subTit {
+    font-size: 15px;
+    font-weight: 300;
+}
 table.finTable tr td {
     height: 40px;
 }
-
+table.finTable .row-line {
+    background: #b7b7b7;
+    width: 1px;
+    height: 10px;
+    margin: 0 20px;
+}
 
 
 /*********************************************     PROF PAGE     *********************************************/
@@ -3907,6 +3922,7 @@ ul li.profList .w-notice a {
 .willbes-Prof-Profile .prof-profile .Obj {
     font-size: 16px;
     line-height: 24px;
+    position: absolute;
     top: 60px;
     left: 0;
 }

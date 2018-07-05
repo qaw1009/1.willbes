@@ -291,6 +291,7 @@
                                     <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>구매자 정보와 동일</label></li>
                                     <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>최근 배송지</label></li>
                                     <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>직접입력</label></li>
+                                    <li><span class="btnAll NSK"><a href="#none" onclick="openWin('MyAddress')">나의 배송 주소록</a></span></li>
                                 </ul>
                             </td>
                         </tr>
@@ -308,7 +309,7 @@
                                         <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
                                             <span>우편번호 찾기</span>
                                         </button>
-                                        <span class="btnAdd underline"><a href="#none" onclick="openWin('MyAddress')">[나의 배송 주소록에 등록하기]</a></span>
+                                        <span class="btnAdd underline"><a href="#none" onclick="alert('입력한 주소를 나의 배송 주소록에 등록하시겠습니까?')">[나의 배송 주소록에 등록하기]</a></span>
                                     </div>
                                     <div class="addbox1 p_re">
                                         <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
@@ -698,7 +699,7 @@
                                         서울특별시 동작구 노량진로 202길<br/>
                                         4층 WCA(노량진동, 남강빌딩)
                                     </td>
-                                    <td class="w-buy">
+                                    <td class="address w-buy">
                                         <div class="tBox NSK t1 black"><a href="">수정</a></div>
                                         <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
                                     </td>
@@ -713,7 +714,7 @@
                                         서울시 관악구 호암로 26길 13 세정빌딩 2층<br/>
                                         (관악구대학동 1514-6)
                                     </td>
-                                    <td class="w-buy">
+                                    <td class="address w-buy">
                                         <div class="tBox NSK t1 black"><a href="">수정</a></div>
                                         <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
                                     </td>

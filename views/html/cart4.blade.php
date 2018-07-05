@@ -48,7 +48,8 @@
                 </ul>
             </div>
             <div class="willbes-Payment-Fin NG">
-                <img src="{{ img_url('cart/icon_check.gif') }}"> 결제가 성공적으로 완료되었습니다.
+                <img src="{{ img_url('cart/icon_check.gif') }}"> 무통장입금(가상계좌) 신청이 완료되었습니다.
+                <div class="subTit tx-gray mt20 NGR">가상계좌는 신청일로부터 <strong class="tx-light-blue">7일간</strong>만 유효하며, 기간 내에 입금해 주셔야 정상적으로 결제완료됩니다.</div>
             </div>
         </div>
         <!-- willbes-Cartlist -->
@@ -64,35 +65,23 @@
                 </colgroup>
                 <tbody>
                     <tr>
-                        <td class="bg-light-white">결제번호</td>
-                        <td><strong>1246258742</strong></td>
-                        <td class="bg-light-white">결제일</td>
-                        <td><strong>2018-04-20 12:22:11</strong></td>
+                        <td class="bg-light-white">가상계좌신청일</td>
+                        <td>2018-04-20 01:12:14</td>
+                        <td class="bg-light-white">가상계좌정보</td>
+                        <td>우리은행 234-234532-092 (주)윌비스</td>
                     </tr>
                     <tr>
+                        <td class="bg-light-white">입금기한</td>
+                        <td>2018-04-27 01:12:14</td>
                         <td class="bg-light-white">결제금액</td>
-                        <td><strong class="tx-light-blue">188,600원</strong></td>
-                        <td class="bg-light-white">결제수단</td>
-                        <td><strong class="tx-light-blue">신용카드(현대)</strong></td>
+                        <td><strong class="tx-light-blue">343,000원</strong></td>
                     </tr>
                     <tr>
                         <td class="bg-light-white">결제상태</td>
-                        <td>결제완료</td>
-                        <td class="bg-light-white">영수증출력</td>
-                        <td><span class="btnAll NSK"><a href="#none">영수증출력하기</a></span></td>
+                        <td><strong class="tx-light-blue">입금대기</strong></td>
+                        <td class="bg-light-white">가상계좌취소</td>
+                        <td><span class="btnAll NSK"><a href="#none">취소</a></span></td>
                     </tr>
-                    <!-- 결제수단 무통장일때만 보임
-                    <tr>
-                        <td class="bg-light-white">무통장 입금정보</td>
-                        <td class="" colspan="3">
-                            가상계좌신청일 : 2018-07-21 09:33
-                            <span class="row-line">|</span>
-                            가상계좌정보 : [우리은행] 12345678912345
-                            <span class="row-line">|</span>
-                            입금자명 : 홍길동
-                        </td>
-                    </tr>
-                    -->
                 </tbody>
             </table>
         </div>

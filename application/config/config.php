@@ -458,7 +458,7 @@ $config['sess_save_path'] = 'wb_sessions';
 //$config['sess_save_path'] = 'seed[]=127.0.0.1:7001&seed[]=127.0.0.1:7002&seed[]=127.0.0.1:7003&timeout=3&read_timeout=3&failover=error&persistent=0';    // distribute
 //$config['sess_save_path'] = 'rediscluster';
 //$config['sess_match_ip'] = FALSE;
-$config['sess_match_ip'] = TRUE;
+$config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 //$config['sess_regenerate_destroy'] = FALSE;
 $config['sess_regenerate_destroy'] = TRUE;

@@ -129,12 +129,9 @@ abstract class FrontController extends BaseController
         $site_tree_menu = array_get($site_menu_cache, 'SiteTreeMenus.' . $site_code, []);
 
         // 사이트 과목+교수 연결정보 캐쉬 조회, Active 사이트 메뉴 정보
-        $site_subject_professor_cache = [];
+        $site_subject_professors = [];
         $site_active_menu = [];
         if (empty($site_tree_menu) === false) {
-            // 사이트 과목+교수 연결정보 캐쉬 조회
-            $site_subject_professor_cache = element($site_code, $this->getCacheItem('site_subject_professor'), []);
-
             // 현재 사이트의 카테고리 코드
             $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
 
@@ -166,6 +163,9 @@ abstract class FrontController extends BaseController
 
             // site active 메뉴가 소속된 site tree menu 조회 (2 depth 메뉴까지는 제외 처리)
             $site_tree_menu = array_get($site_tree_menu, implode('.Children.', array_slice(explode('>', $site_active_menu['UrlRouteIdx']), 0, 2)) . '.Children');
+
+            // 사이트 과목+교수 연결정보 캐쉬 조회
+            $site_subject_professors = array_get($this->getCacheItem('site_subject_professor'), $site_code . '.' . $this->_cate_code);
         }
 
         $configs = array_merge(
@@ -176,7 +176,7 @@ abstract class FrontController extends BaseController
                         ['GnbTreeMenu' => $gnb_tree_menu],
                         ['SiteTreeMenu' => $site_tree_menu],
                         ['SiteActiveMenu' => $site_active_menu],
-                        ['Subject2Professor' => $site_subject_professor_cache]
+                        ['Subject2Professor' => $site_subject_professors]
             );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

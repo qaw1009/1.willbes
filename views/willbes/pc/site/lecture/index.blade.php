@@ -177,7 +177,7 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
-                                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prodcode/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">
@@ -325,7 +325,7 @@
                 'lecture_progress' : $lec_table.find('.lecture-progress').data('info'),
                 'prod_book_memo' : $lec_table.find('.prod-book-memo').text()
             };
-            sendAjax('{{ site_url('/lecture/info/prodcode/') }}' + $prod_code, data, function(ret) {
+            sendAjax('{{ site_url('/lecture/info/prod-code/') }}' + $prod_code, data, function(ret) {
                 $('#lec_info_layer').html(ret).show().css('display', 'block').trigger('create');
             }, showError, false, 'GET', 'html');
 

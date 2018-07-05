@@ -25,7 +25,7 @@ class ProfessorFModel extends WB_Model
      * @param null|string $site_code
      * @return array
      */
-    public function getProfessorByProfIdx($prof_idx, $is_refer = true, $site_code = null)
+    public function findProfessors($prof_idx, $is_refer = false, $site_code = null)
     {
         $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.UseBoardJson, PF.ProfCurriculum, WPF.wProfProfile, WPF.wBookContent
             , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard

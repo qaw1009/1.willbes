@@ -37,6 +37,17 @@ class Professor extends \app\controllers\FrontController
             );
         }
 
+        // 신규강좌 조회
+        $arr_base['product'] = $this->api_get_data(
+            $this->restclient->getDataJson('product/products/index/on_lecture', [
+                'site_code' => $this->_site_code,
+                'cate_code' => $this->_cate_code,
+                'is_new' => 'Y',
+                'offset' => 0,
+                'limit' => 5
+            ])
+        );
+
         // 교수 조회
         $arr_base['professor'] = $this->api_get_data(
             $this->restclient->getDataJson('product/bases/professor-in-refer2subject/' . $this->_site_code, [

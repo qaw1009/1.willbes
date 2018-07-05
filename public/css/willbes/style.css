@@ -2424,11 +2424,17 @@ table.profTable tr td .priceWrap {
 .willbes-Buy-Price tbody tr td.price {
     padding-right: 15px;
 }
+.willbes-Buy-Price tbody tr td.price span {
+    vertical-align: baseline;
+}
 .willbes-Buy-Price tbody tr td.total-price {
     font-size: 23px;
     line-height: 110px;
     padding-right: 35px;
     border-bottom: none;
+}
+.willbes-Buy-Price tbody tr td.total-price span {
+    vertical-align: baseline;
 }
 .willbes-Buy-Table .lecInfoTable {
     padding: 20px 0 20px 10px;

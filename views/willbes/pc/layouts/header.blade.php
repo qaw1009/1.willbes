@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>윌비스 통합 사이트</title>
-
     <!-- CSS -->
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
@@ -24,5 +22,6 @@
     <!-- JAVASCRIPT -->
     <!-- jQuery -->
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
+    <script src="/public/vendor/jquery/form/jquery.form.js"></script>
     <!--// JAVASCRIPT -->
 </head>

@@ -1963,22 +1963,23 @@ table.lecTable tr td.chk input[type=checkbox] {
 }
 table.lecTable tr td .priceWrap {
     clear: both;
+    float: right;
     position: relative;
     top: 20px;
     right: 0;
     width: 155px;
-    margin-right: 25px;
+    margin-right: 0;
     height: 18px;
-    text-align: right;
+    text-align: left;
 } 
 table.lecTable tr td .priceWrap .price {
     position: absolute;
     top: 0;
-    right: 50px;
+    right: 72px;
 }
 table.lecTable tr td .priceWrap .discount {
     float: right;
-    width: 50px;
+    width: 70px;
     color: #464646;
 }
 table.lecTable tr td .MoreBtn {

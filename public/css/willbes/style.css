@@ -2098,6 +2098,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .tBox.gray a {
     background: #898989;
 }
+.tBox.white a {
+    border:1px solid #898989;
+    color: #333;
+}
 
 /* subContainer : Content : lecInfoTable */
 .lecInfoTable {
@@ -3097,8 +3101,8 @@ table.classTable tr td.w-data {
     border-bottom: 6px solid #1a8ccc;
 } 
 .willbes-Cartlist .LeclistTable ul {
+    float: right;
     text-align: right;
-    padding: 30px 0;
 }
 .willbes-Cartlist .LeclistTable ul li {
     display: inline-block;
@@ -3416,11 +3420,22 @@ ul.btnWrapbt li {
     margin-top: 30px;
 }
 .willbes-Buylist-Price .cart-PriceBox {
+    clear: both;
     border-top: 1px solid #3a3e47;
 }
 .willbes-Buylist-Price dl.priceBox dt {
     margin: 0 45px;
 }
+.cart-PointBox {
+    clear: both;
+    background: #f9f9fa;
+    height: 60px;
+}
+.pointBox {
+    height: 60px; 
+    letter-spacing: 0;
+}
+/*
 .pointBox {
     position: absolute;
     top: 138px;
@@ -3430,27 +3445,32 @@ ul.btnWrapbt li {
     height: 50px; 
     border-top: 1px solid #e7e7e7;
 }
+*/
 .pointBox .row-line {
     height: 35px;
 }
 .pointBox dt {
     float: left;
-    line-height: 48px;
+    line-height: 58px;
     padding: 0;
 }
 .pointBox .p-tit {
-    margin: 0 59px;
+    margin: 0 30px 0 60px;
+}
+.pointBox .p-tit span {
+    vertical-align: baseline;
 }
 .pointBox .u-point {
     display: inline-block;
     font-size: 14px;
-    margin: 0 20px 0 30px;
+    margin: 0 20px 0 0;
 }
 .btnAll {
     display: inline-block;
     height: 22px;
 }
 .btnAll a {
+    background: #fff;
     display: block;
     font-size: 11px;
     font-weight: 600;
@@ -3461,24 +3481,28 @@ ul.btnWrapbt li {
     letter-spacing: 0;
 }
 .pointBox input[type=text] {
+    background: none;
     width: 100px;
     height: 27px;
     color: #707070;
     text-align: right;
     padding: 5px;
-    border: 1px solid #898989;
+    border: 0px solid #898989;
 }
+/*
 .willbes-Buylist-Price .price-total {
     height: 188px;
     padding: 49px 0;
 }
+*/
 .willbes-Buylist-Price.Fin .price-total {
     height: 138px;
     padding: 24px 0;
 }
 .willbes-Buylist-Price .p-info {
-    padding: 20px 30px 0;
+    padding: 20px 30px;
     letter-spacing: 0;
+    border-bottom: 1px solid #e7e7e7;
 }
 .willbes-Buylist-Price .p-info span {
     font-weight: 600;

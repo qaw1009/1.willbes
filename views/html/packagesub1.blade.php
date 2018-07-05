@@ -126,7 +126,7 @@
                         <tr>
                             <td class="w-lectit tx-left" colspan="2">
                                 <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
-                                <span class="MoreBtn"><a href="#Class">패키지정보 보기 ▼</a></span>
+                                <span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span>
                             </td>
                         </tr>
                         <tr>
@@ -306,6 +306,7 @@
                 <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
             </div>
 
+            <a name="Info"></a>
             <div class="willbes-Class c_both">
                 <div class="willbes-Lec-Tit NG tx-black">패키지정보</div>
                 <div class="classInfoTable GM">

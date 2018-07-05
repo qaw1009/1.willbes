@@ -219,7 +219,8 @@ html {
   }
   table {
 	border-spacing: 0;
-	border-collapse: collapse;
+  border-collapse: collapse;
+  width: 100%;
   }
   td,
   th {

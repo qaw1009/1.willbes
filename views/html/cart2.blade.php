@@ -58,8 +58,15 @@
                     </tbody>
                 </table> 
             </div>
-            <div class="LeclistTable mt85">
-                <table cellspacing="0" cellpadding="0" class="listTable buyTable upper-black under-gray tx-gray">
+            <div class="LeclistTable">
+                <div class="willbes-Lec-Tit NG tx-black">
+                    주문상품정보
+                    <ul>
+                        <li class="subBtn NSK"><a href="#none">포인트 현황 ></a></li>
+                        <li class="subBtn NSK"><a href="#none">쿠폰 현황 ></a></li>
+                    </ul>
+                </div>
+                <table cellspacing="0" cellpadding="0" class="listTable buyTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 770px;">
                         <col style="width: 170px;">
@@ -228,25 +235,24 @@
                             <span class="price tx-light-blue">2,500원</span>
                         </dt>
                     </dl>
-                    <dl class="pointBox">
-                        <dt class="p-tit">포인트 사용</dt>
-                        <dt class="price-img">
-                            <span class="row-line">|</span>
-                        </dt>
-                        <dt>
-                            <span class="u-point tx-blue">30,000P 보유</span>
-                            <span class="btnAll NSK"><a href="#none">전액사용</a></span>
-                            <input type="text" id="POINT" name="POINT" class="iptPoint" maxlength="30"> P 차감
-                        </dt>
-                    </dl>
                 </li>
                 <li class="price-total">
                     <div>결제예상금액</div>
                     <span class="price tx-light-blue">188,600원</span>
                 </li>
             </ul>
+            <div class="cart-PointBox NG">
+                <dl class="pointBox">
+                    <dt class="p-tit"><span class="tx-blue">강좌</span> 포인트 사용</dt>
+                    <dt>
+                        <span class="u-point tx-pink">30,000P 보유</span>
+                        <span class="btnAll NSK"><a href="#none">전액사용</a></span>
+                        <input type="text" id="POINT" name="POINT" class="iptPoint" maxlength="30"> P 차감
+                    </dt>
+                </dl>
+            </div>
             <div class="p-info tx-gray c_both">
-                • 포인트는<span class="tx-light-blue">2,500p</span>부터<span class="tx-light-blue">1p</span> 단위로사용가능하며, 총결제금액의<span class="tx-light-blue">80%</span>까지만사용가능합니다.
+                • 강좌 포인트는 <span class="tx-light-blue">6,000p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능하며, 주문금액의 <span class="tx-light-blue">80%</span>까지만 사용 가능합니다.
             </div>
         </div>
         <!-- willbes-Cart-Price -->

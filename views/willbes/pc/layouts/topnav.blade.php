@@ -7,14 +7,14 @@
                     <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>
                 </li>
                 <li class="joinUs dropdown">
-                    <a class="Tit" href="/member/join">회원가입<span class="arrow-Btn">></span></a>
+                    <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
                     <div class="drop-Box joinUs-Box">
                         <ul>
                             <li>
-                                <a href="/member/findid">아이디찾기</a>
+                                <a href="{{ app_url('/member/findId', 'www') }}">아이디찾기</a>
                             </li>
                             <li>
-                                <a href="/member/findpwd">비밀번호 찾기</a>
+                                <a href="{{ app_url('/member/findPwd', 'www') }}">비밀번호 찾기</a>
                             </li>
                         </ul>
                     </div>
@@ -76,10 +76,10 @@
         </div>
         <ul class="btn-Txt tx-dark-black">
             <li>
-                <span><a class="tx-dark-black" href="/Member/FindID">아이디</a>/<a class="tx-dark-black" href="/Member/FindPWD">비밀번호찾기</a><span class="row-line">|</span></span>
+                <span><a class="tx-dark-black" href="{{ app_url('/member/findId', 'www') }}">아이디</a>/<a class="tx-dark-black" href="{{ app_url('/member/findPwd', 'www') }}">비밀번호찾기</a><span class="row-line">|</span></span>
             </li>
             <li>
-                <span><a class="tx-dark-blue" href="/Member/Join">회원가입</a></span>
+                <span><a class="tx-dark-blue" href="{{ app_url('/member/join', 'www') }}">회원가입</a></span>
             </li>
         </ul>
     </div>

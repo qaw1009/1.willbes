@@ -5,18 +5,18 @@ $(function() {
             $(".NSK.Gnb-md").attr('class','NSK Gnb-sm');
             $(".toggle-Btn").attr('class','toggle-Btn gnb-Open');
             $(".toggle-Btn .Txt").text('열기');
-            $("#Gnb .logo img").attr('src','/public/img/front/gnb/logo_sm.gif')
-            $("#Gnb .setting img").attr('src','/public/img/front/gnb/icon_setting_sm.gif');
-            $("#Gnb .intro img").attr('src','/public/img/front/gnb/icon_intro_sm.gif');
+            $("#Gnb .logo img").attr('src','/public/img/willbes/gnb/logo_sm.gif')
+            $("#Gnb .setting img").attr('src','/public/img/willbes/gnb/icon_setting_sm.gif');
+            $("#Gnb .intro img").attr('src','/public/img/willbes/gnb/icon_intro_sm.gif');
         }
         else
         {
             $(".NSK.Gnb-sm").attr('class','NSK Gnb-md');
             $(".toggle-Btn").attr('class','toggle-Btn gnb-Close');
             $(".toggle-Btn .Txt").text('숨김');
-            $("#Gnb .logo img").attr('src','/public/img/front/gnb/logo.gif');
-            $("#Gnb .setting img").attr('src','/public/img/front/gnb/icon_setting.gif');
-            $("#Gnb .intro img").attr('src','/public/img/front/gnb/icon_intro.gif');
+            $("#Gnb .logo img").attr('src','/public/img/willbes/gnb/logo.gif');
+            $("#Gnb .setting img").attr('src','/public/img/willbes/gnb/icon_setting.gif');
+            $("#Gnb .intro img").attr('src','/public/img/willbes/gnb/icon_intro.gif');
         }
     });
 });

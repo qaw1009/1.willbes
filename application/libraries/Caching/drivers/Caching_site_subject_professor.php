@@ -39,7 +39,7 @@ class Caching_site_subject_professor extends CI_Driver
             'professor_r_subject_r_category' => 'lms_professor_r_subject_r_category'
         ];
 
-        $column = 'P.SiteCode, PSC.CateCode, PSC.SubjectIdx, PS.SubjectName, P.ProfIdx, P.wProfIdx, WP.wProfName as ProfName, P.ProfNickName';
+        $column = 'P.SiteCode, PSC.CateCode, PSC.SubjectIdx, PS.SubjectName, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName';
         $from = '
             from ' . $_table['professor_r_subject_r_category'] . ' as PSC
                 inner join ' . $_table['professor'] . ' as P
@@ -68,7 +68,7 @@ class Caching_site_subject_professor extends CI_Driver
         foreach ($result as $idx => $row) {
             $arr_prof = [
                 'wProfIdx' => $row['wProfIdx'],
-                'ProfName' => $row['ProfName'],
+                'wProfName' => $row['wProfName'],
                 'ProfNickName' => $row['ProfNickName']
             ];
 

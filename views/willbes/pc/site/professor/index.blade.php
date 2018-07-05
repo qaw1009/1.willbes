@@ -11,54 +11,7 @@
     <!-- left nav -->
     <div class="Lnb NG">
         <h2>교수진 소개</h2>
-        <div class="lnb-List">
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">국어<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth">
-                <dl>
-                    <dt><a href="#none">정채영</a></dt>
-                    <dt><a href="#none">기미진</a></dt>
-                    <dt><a href="#none">김세령</a></dt>
-                    <dt><a href="#none">오대혁</a></dt>
-                </dl>
-            </div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">영어<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth">
-                <dl>
-                    <dt><a href="#none">한덕주</a></dt>
-                    <dt><a href="#none">김신주</a></dt>
-                    <dt><a href="#none">성기건</a></dt>
-                    <dt><a href="#none">김영</a></dt>
-                </dl>
-            </div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">한국사<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">행정학<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">교정학<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">국제법<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">사회<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-            <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">사회복지학<span class="arrow-Btn">></span></span></a>
-            </div>
-            <div class="lnb-List-Depth"></div>
-        </div>
+        @include('willbes.pc.layouts.partial.site_professor_lnb_menu')
     </div>
     <div class="Content p_re ml20">
         <form id="url_form" name="url_form" method="GET">
@@ -76,21 +29,11 @@
             <div class="willbes-listTable willbes-newLec widthAuto460">
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
-                    <li>
-                        <a href="#none">2017 기미진 국어 아침특강(5-6월)</a><span class="date">2018.03.06</span>
-                    </li>
-                    <li>
-                        <a href="#none">강좌명이 노출됩니다.</a><span class="date">2018.03.06</span>
-                    </li>
-                    <li>
-                        <a href="#none">2017 기미진 국어 아침특강(5-6월)</a><span class="date">2018.03.06</span>
-                    </li>
-                    <li>
-                        <a href="#none">강좌명이 노출됩니다.</a><span class="date">2018.03.06</span>
-                    </li>
-                    <li>
-                        <a href="#none">2017 기미진 국어 아침특강(5-6월)</a><span class="date">2018.03.06</span>
-                    </li>
+                    @foreach($arr_base['product'] as $idx => $row)
+                        <li>
+                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a><span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -177,19 +120,20 @@
                 {{-- 교수별 상품 리스트 loop --}}
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
-                    <a href="{{ site_url('/home/html/profsub') }}">
+                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $row['ProfIdx']) }}">
                         <div class="line">-</div>
                     </a>
+                    <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">
                     <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
                     <div class="Name">
                         <strong>{{ $row['wProfName'] }}</strong><br/>
                         교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
                     </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
+                    <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="{{ $row['ProfReferData']['ot_url'] or '' }}">대표강의</a></dt>
+                            <dt><a href="{{ $row['ProfReferData']['sample_url1'] or '' }}">맛보기</a></dt>
                         </dl>
                     </div>
                 </li>

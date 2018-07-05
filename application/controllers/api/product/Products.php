@@ -16,7 +16,7 @@ class Products extends \app\controllers\RestController
 
     /**
      * 학습형태별 조회
-     * @example /product/products/index/{[on_lecture|pass_lecture]}/?site_code={value}&cate_code={value}&course_idx={value}&subject_idx={value}&prof_idx={value}&school_year={value}&is_count={Y/N}&limit={value}&offset={value}&order_by={value}&order_dir={asc/desc}
+     * @example /product/products/index/{[on_lecture|pass_lecture]}/?site_code={value}&cate_code={value}&course_idx={value}&subject_idx={value}&prof_idx={value}&school_year={value}&is_best={Y/N}&is_new={Y/N}&is_count={Y/N}&limit={value}&offset={value}&order_by={value}&order_dir={asc/desc}
      * @param string $learn_pattern
      * @param null|string $prod_code
      */
@@ -35,6 +35,8 @@ class Products extends \app\controllers\RestController
                 'SubjectIdx' => $this->_req('subject_idx'),
                 'ProfIdx' => $this->_req('prof_idx'),
                 'SchoolYear' => $this->_req('school_year'),
+                'IsBest' => $this->_req('is_best'),
+                'IsNew' => $this->_req('is_new'),
                 'IsSaleEnd' => 'N'
             ],
             'LKR' => [
@@ -55,7 +57,7 @@ class Products extends \app\controllers\RestController
         $is_count = $this->_req('is_count') == 'Y' ? true : false;
 
         // 정렬순서
-        $arr_order_by = [];
+        $arr_order_by = ['ProdCode' => 'desc'];
         $order_by = $this->_req('order_by');
         $order_dir = $this->_req('order_dir');
 

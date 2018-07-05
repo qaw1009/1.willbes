@@ -106,7 +106,7 @@ class Lecture extends \app\controllers\FrontController
      */
     public function info($params = [])
     {
-        $prod_code = element('prodcode', $params);
+        $prod_code = element('prod-code', $params);
         if (empty($prod_code)) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }

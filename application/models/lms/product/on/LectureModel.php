@@ -25,6 +25,7 @@ class LectureModel extends CommonLectureModel
             $column = ' STRAIGHT_JOIN
                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                    ,Ac.CcdName as ProdTypeCcd_Name
                     ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
                     ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as LecTypeCcd_Name
@@ -50,6 +51,7 @@ class LectureModel extends CommonLectureModel
                         lms_product A
                             left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
                             left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
+                            join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'

@@ -27,6 +27,7 @@ class OffLectureModel extends CommonLectureModel
                             ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                             ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                            ,Ac.CcdName as ProdTypeCcd_Name
                             ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
                             ,B.SchoolStartYear,B.SchoolStartMonth
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
@@ -48,6 +49,7 @@ class OffLectureModel extends CommonLectureModel
                         lms_product A
                             left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
                             left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
+                            join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'

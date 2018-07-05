@@ -65,7 +65,7 @@
                     <td class="combine-Tit">휴대폰번호</td>
                     <td>
                         <div class="inputBox p_re">
-                            <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="11"@if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif >
+                            <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="11" @if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif >
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
@@ -74,7 +74,7 @@
                     <td class="combine-Tit">아이디</td>
                     <td>
                         <div class="inputBox p_re">
-                            <input type="text" id="MemId" name="MemId" class="iptId" placeholder="4~20자리 영문 대소문자, 숫자만 입력 가능" maxlength="20">
+                            <input type="text" id="MemId" name="MemId" class="iptId" placeholder="4~20자리 영문 소문자, 숫자만 입력 가능" maxlength="20">
                             <button type="submit" onclick="" class="mem-Btn combine-Btn ml5 bg-dark-blue bd-dark-blue">
                                 <span>중복확인</span>
                             </button>
@@ -87,17 +87,17 @@
                     <td class="combine-Tit">비밀번호</td>
                     <td>
                         <div class="inputBox p_re">
-                            <input type="password" id="MemPassword" name="MemPassword" class="iptPwd" placeholder="8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합" maxlength="20">
+                            <input type="password" id="MemPassword" name="MemPassword" class="iptPwd" placeholder="8~20자리이하 영문대소문자, 숫자, 특수문자중2종류조합" maxlength="20">
 
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="combine-Tit">비밀번호 확인</td>
+                    <td class="combine-Tit">비밀번호</td>
                     <td>
                         <div class="inputBox p_re">
-                            <input type="password" id="MemPassword_chk" name="MemPassword_chk" class="iptPwd" placeholder="비밀번화 확인" maxlength="20">
+                            <input type="password" id="MemPassword_chk" name="MemPassword_chk" class="iptPwd" placeholder="비밀번호 확인" maxlength="20">
 
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
@@ -122,14 +122,14 @@
                         <div class="inputBox">
                             <dl>
                                 <dt class="mbox1 p_re">
-                                    <input type="text" id="MailId" name="MailId" class="iptEmail01" placeholder="이메일" maxlength="30">
+                                    <input type="text" id="MailId" name="MailId" class="iptEmail01" placeholder="이메일" maxlength="30" @if ( $jointype == '655003' ) value="{{$MailId}}" readonly @endif>
                                 </dt>
                                 <dt class="mbox-dot">@</dt>
                                 <dt class="mbox2">
-                                    <input type="text" id="MailDomain" name="MailDomain" class="iptEmail02" maxlength="30">
+                                    <input type="text" id="MailDomain" name="MailDomain" class="iptEmail02" maxlength="30" @if ( $jointype == '655003' ) value="{{$MailDomain}}" readonly @endif>
                                 </dt>
                                 <dt class="mbox-sele">
-                                    <select id="domain" name="domain" title="직접입력" class="seleEmail">
+                                    <select id="domain" name="domain" title="직접입력" class="seleEmail" @if ( $jointype == '655003' ) disabled @endif>
                                         @foreach($mail_domain_ccd as $key => $val)
                                             <option value="{{ $key }}">{{ $val }}</option>
                                         @endforeach

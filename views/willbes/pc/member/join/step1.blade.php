@@ -133,7 +133,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "//www.local.willbes.net/member/sms/";
+                var _url = "/member/sms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     var err_cd = ret.ret_data.err_cd;
@@ -150,13 +150,17 @@
                         remainTime();
                         alert(ret.ret_msg);
 
-                    } else if(err_cd == 1) {phone_number
+                    } else if(err_cd == 1) {
                         // 전화번호오류
                         alert(ret.ret_msg);
                         $("#var_phone").focus();
 
                     } else if(err_cd == 9) {
                         alert(ret.ret_msg);
+
+                    } else if(err_cd == 8) {
+                        alert(ret.ret_msg);
+                        location.href="/Member/FindID/";
                     }
 
                 }, showValidateError, false, 'alert');
@@ -168,7 +172,7 @@
                     return;
                 }
 
-                var _url = "//www.local.willbes.net/member/sms/";
+                var _url = "/member/sms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     var err_cd = ret.ret_data.err_cd;
@@ -178,6 +182,7 @@
                         $("#enc_data").val(ret.ret_data.enc_data);
                         $("#phone_number").val(ret.ret_data.phone_number);
                         alert(ret.ret_msg);
+                        alert(ret.ret_data.enc_data);
                         $("#join_form").prop("action", "/member/joinForm/").submit();
 
                     } else if(err_cd == 1){

@@ -22,12 +22,45 @@ class MemberModel extends WB_Model
 
     /**
      * 사용자 정보 읽어오기
-     * @param array $data
-     * @return array
+     * @param boolean $is_count
+     * @param array $arr_cond
+     * @return int|array
      */
-    public function getMember($data = [])
+    public function getMember($is_count = false, $arr_cond = [])
     {
-        return [];
+        if(empty($arr_cond) == true) {
+            return ($is_count === true) ? 0 : [];
+        }
+        
+        if($is_count === true){
+            $column = ' COUNT(*) AS rownums ';
+
+        } else {
+            $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, 
+            fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
+            fn_dec(Mem.MailEnc) AS Mail, Info.MailRcvStatus,
+            IFNULL(Mem.JoinDate, '') AS JoinDate, 
+            IFNULL(Mem.IsChange, '') AS IsChange,
+            IFNULL(Mem.ChangeDatm, '') AS ChangeDate,
+            IFNULL(Mem.LastLoginDatm, '') AS LoginDate, 
+            IFNULL(Mem.LastInfoModyDatm, '') AS InfoUpdDate, 
+            IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
+            IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
+            IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' ) AS PcCount,
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' ) AS MobileCount             
+            ";
+        }
+
+        $from = "FROM {$this->_table['member']} AS Mem 
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx ";
+
+        $where = $this->_conn->makeWhere($arr_cond);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
+
+        return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
 
     /**

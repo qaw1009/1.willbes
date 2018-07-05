@@ -124,8 +124,36 @@ class Lecture extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 강좌 보기
+     * @param array $params
+     * @return CI_Output
+     */
     public function show($params = [])
     {
-        $this->load->view('site/lecture/show' . $this->_pass_site_val);
+        $prod_code = element('prod-code', $params);
+        if (empty($prod_code)) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 상품 기본정보, 컨텐츠, 교재정보 조회
+        $data = $this->api_get_data(
+            $this->restclient->getsDataJson([
+                ['name' => 'base', 'uri' => 'product/products/index/on_lecture/' . $prod_code, 'params' => []],
+                ['name' => 'contents', 'uri' => 'product/products/contents/on_lecture/' . $prod_code, 'params' => []],
+                ['name' => 'salebooks', 'uri' => 'product/products/salebooks/on_lecture/' . $prod_code, 'params' => []],
+            ])
+        );
+
+        $data['base']['ProdBookData'] = json_decode($data['base']['ProdBookData'], true);
+        $data['base']['LectureSampleData'] = json_decode($data['base']['LectureSampleData'], true);
+        $data['base']['ProfReferData'] = json_decode($data['base']['ProfReferData'], true);
+
+        $this->load->view('site/lecture/show' . $this->_pass_site_val, [
+            'arr_param' => $params,
+            'data' => $data['base'],
+            'contents' => $data['contents'],
+            'salebooks' => $data['salebooks']
+        ]);
     }    
 }

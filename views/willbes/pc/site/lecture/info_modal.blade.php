@@ -50,48 +50,48 @@
             <div id="ch2" class="tabLink">
                 <div class="bookWrap">
                     @foreach($data['salebooks'] as $idx => $row)
-                    <div class="bookInfo">
-                        <div class="bookImg">
-                            <img src="{{ $row['wAttachImgPath'] }}{{ $row['wAttachImgOgName'] }}" width="200" height="250">
-                        </div>
-                        <div class="bookDetail">
-                            <div class="book-Tit tx-dark-black NG">{{ $row['BookProdName'] }}</div>
-                            <div class="book-Author tx-gray">
-                                <ul>
-                                    <li>분야 : {{ $row['BookCateName'] }} <span class="row-line">|</span></li>
-                                    <li>저자 : {{ $row['wAuthorNames'] }} <span class="row-line">|</span></li>
-                                    <li>출판사 : {{ $row['wPublName'] }} <span class="row-line">|</span></li>
-                                    <li>판형/쪽수 : {{ $row['wEditionSize'] }} / {{ $row['wPageCnt'] }}</li>
-                                </ul>
-                                <ul>
-                                    <li>출판일 : {{ $row['wPublDate'] }} <span class="row-line">|</span></li>
-                                    <li>교재비 : <strong class="tx-light-blue">{{ number_format($row['RealSalePrice']) }}원</strong>
-                                        (↓{{ $row['SaleRate'] }}{{ $row['SaleDiscType'] == 'R' ? '%' : '원' }})
-                                        <strong class="tx-{{ $row['wSaleCcd'] == '112001' ? 'light-blue' : 'red' }}">[{{ $row['wSaleCcdName'] }}]</strong>
-                                    </li>
-                                </ul>
+                        <div class="bookInfo">
+                            <div class="bookImg">
+                                <img src="{{ $row['wAttachImgPath'] }}{{ $row['wAttachImgOgName'] }}" width="200" height="250">
                             </div>
-                            <div class="bookBoxWrap">
-                                <ul class="tabWrap tabDepth2">
-                                    <li><a href="#info1{{ $idx }}">교재소개</a></li>
-                                    <li><a href="#info2{{ $idx }}">교재목차</a></li>
-                                </ul>
-                                <div class="tabBox">
-                                    <div id="info1{{ $idx }}" class="tabContent">
-                                        <div class="book-TxtBox tx-gray">
-                                            {!! $row['wBookDesc'] !!}
+                            <div class="bookDetail">
+                                <div class="book-Tit tx-dark-black NG">{{ $row['BookProdName'] }}</div>
+                                <div class="book-Author tx-gray">
+                                    <ul>
+                                        <li>분야 : {{ $row['BookCateName'] }} <span class="row-line">|</span></li>
+                                        <li>저자 : {{ $row['wAuthorNames'] }} <span class="row-line">|</span></li>
+                                        <li>출판사 : {{ $row['wPublName'] }} <span class="row-line">|</span></li>
+                                        <li>판형/쪽수 : {{ $row['wEditionSize'] }} / {{ $row['wPageCnt'] }}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>출판일 : {{ $row['wPublDate'] }} <span class="row-line">|</span></li>
+                                        <li>교재비 : <strong class="tx-light-blue">{{ number_format($row['RealSalePrice']) }}원</strong>
+                                            (↓{{ $row['SaleRate'] }}{{ $row['SaleDiscType'] == 'R' ? '%' : '원' }})
+                                            <strong class="tx-{{ $row['wSaleCcd'] == '112001' ? 'light-blue' : 'red' }}">[{{ $row['wSaleCcdName'] }}]</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bookBoxWrap">
+                                    <ul class="tabWrap tabDepth2">
+                                        <li><a href="#info1{{ $idx }}">교재소개</a></li>
+                                        <li><a href="#info2{{ $idx }}">교재목차</a></li>
+                                    </ul>
+                                    <div class="tabBox">
+                                        <div id="info1{{ $idx }}" class="tabContent">
+                                            <div class="book-TxtBox tx-gray">
+                                                {!! $row['wBookDesc'] !!}
+                                            </div>
+                                            <div class="caution-txt tx-red">{{ $arr_input['prod_book_memo'] }}</div>
                                         </div>
-                                    </div>
-                                    <div id="info2{{ $idx }}" class="tabContent">
-                                        <div class="book-TxtBox tx-gray">
-                                            {!! $row['wTableDesc'] !!}
+                                        <div id="info2{{ $idx }}" class="tabContent">
+                                            <div class="book-TxtBox tx-gray">
+                                                {!! $row['wTableDesc'] !!}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="caution-txt tx-red">{{ $arr_input['prod_book_memo'] }}</div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>

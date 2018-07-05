@@ -195,7 +195,7 @@
                                         </dl>
                                     </td>
                                     <td class="chk buybtn p_re">
-                                        <input type="checkbox" id="goods_chk_{{ $row['ProdCode'] }}" name="goods_chk" value="{{ $row['ProdCode'] }}" class="goods_chk">
+                                        <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] }}" class="chk_products">
                                     </td>
                                     <td class="w-notice p_re">
                                         <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
@@ -237,11 +237,11 @@
                                                         <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                             [{{ $book_row['wSaleCcdName'] }}]
                                                         </label>
-                                                        <input type="checkbox" id="goods_chk_{{ $book_row['BookProdCode'] }}" name="goods_chk" class="goods_chk" value="{{ $book_row['BookProdCode'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                                        <input type="checkbox" name="prod_sub_code['{{ $row['ProdCode'] }}'][]" class="chk_books" value="{{ $book_row['BookProdCode'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                     </span>
                                                     <span class="priceWrap">
                                                         <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                                        <span class="discount">(↓{{ $row['SaleRate'] . (($row['SaleDiscType'] == 'R') ? '%' : '원') }})</span>
+                                                        <span class="discount">(↓{{ $book_row['SaleRate'] . (($book_row['SaleDiscType'] == 'R') ? '%' : '원') }})</span>
                                                     </span>
                                                 </div>
                                             @endforeach

@@ -54,6 +54,9 @@ class WB_Session extends CI_Session
         if ($this->_db->set($data)->insert($this->_table['session_login']) === false) {
             log_message('error', 'Session: `' . $this->_table['session_login'] . '` table insert failed!');
         }
+
+        // session login used
+        $this->set_userdata('is_session_login_used', true);
     }
 
     /**
@@ -93,7 +96,8 @@ class WB_Session extends CI_Session
     {
         $session_id = session_id();
 
-        if (isset($_SESSION['__ci_last_regenerate']) && empty($this->_old_session_id) === false && $this->_old_session_id != $session_id) {
+        if ($this->has_userdata('__ci_last_regenerate') === true && $this->userdata('is_session_login_used') === true
+            && empty($this->_old_session_id) === false && $this->_old_session_id != $session_id) {
             // session login 테이블 id 컬럼 업데이트
             $this->_db->set('id', $session_id)->where('id', $this->_old_session_id);
             if ($this->_config['match_ip']) {

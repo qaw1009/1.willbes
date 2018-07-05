@@ -95,7 +95,7 @@
         <div class="willbes-Lec mb170 NG c_both">
             <div class="willbes-Buy-Table p_re mt20">
                 <div class="willbes-Buy-List">
-                    <table cellspacing="0" cellpadding="0" class="lecTable">
+                    <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
                             <col style="width: 445px;">
                             <col style="width: 85px;">
@@ -112,10 +112,10 @@
                                 <td class="w-data tx-left">
                                     <div class="w-tit">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
                                 </td>
-                                <td class="chk buybtn p_re">
+                                <td class="chk buybtn">
                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                 </td>
-                                <td class="w-notice p_re">
+                                <td class="w-notice">
                                     <div class="priceWrap">
                                         <span class="price tx-blue">80,000원</span>
                                         <span class="discount">(↓20%)</span>

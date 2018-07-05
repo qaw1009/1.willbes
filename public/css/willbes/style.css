@@ -1963,10 +1963,10 @@ table.lecTable tr td.chk input[type=checkbox] {
 }
 table.lecTable tr td .priceWrap {
     clear: both;
-    position: absolute;
+    position: relative;
+    top: 20px;
     right: 0;
     width: 155px;
-    margin-top: 10px;
     margin-right: 25px;
     height: 18px;
     text-align: right;
@@ -2167,11 +2167,11 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .lecInfoTable .w-sub .priceWrap .price {
     position: absolute;
-    right: 50px;
+    right: 74px;
 }
 .lecInfoTable .w-sub .priceWrap .discount {
     float: right;
-    width: 50px;
+    width: 72px;
     color: #464646;
 }
 .lecInfoTable .w-sub strong {
@@ -2357,6 +2357,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     top: 24px;
     left: 0;
 }
+table.profTable tr td .priceWrap {
+    top: 0;
+}
+
 
 /* subContainer : Content : willbes-Buy-Table */
 .willbes-Buy-Table {
@@ -2453,6 +2457,8 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     width: 320px;
 }
 .willbes-Buy-Table .lecInfoTable .priceWrap {
+    float: right;
+    text-align: left;
     margin-right: 0;
 }
 .willbes-Buy-Table .willbes-Lec-buyBtn {

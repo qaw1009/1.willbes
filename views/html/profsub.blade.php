@@ -678,11 +678,13 @@
                                                     </li>
                                                     <li class="Reply tx-blue">
                                                         <strong>수강후기</strong>
-                                                        <dl class="roll-Reply tx-dark-black">
-                                                            <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                                                            <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                                                            <dt>국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</dt>
-                                                        </dl>
+                                                        <div class="sliderUp">
+                                                            <div class="sliderVertical roll-Reply tx-dark-black">
+                                                                <div>1국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                                                <div>2국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                                                <div>3국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                                            </div>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -741,10 +743,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="w-notice p_re">
-                                                                <ul class="w-sp">
-                                                                    <li><a href="#none">OT</a></li>
-                                                                    <li><a href="#none" onclick="openWin('viewBox')">맛보기</a></li>
-                                                                </ul>
+                                                                <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
                                                                 <div id="viewBox" class="viewBox">
                                                                     <dl class="NSK">
                                                                         <dt class="Tit NG">맛보기1</dt>
@@ -964,8 +963,7 @@
                             · 공지사항
                             <div class="willbes-Lec-Search GM f_right">
                                 <div class="inputBox p_re">
-                                    <label for="SEARCH" class="labelSearch" style="display: block;">제목 또는 내용을 입력해 주세요</label>
-                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                     <button type="submit" onclick="" class="search-Btn">
                                         <span>검색</span>
                                     </button>
@@ -1174,8 +1172,7 @@
                             · 학습Q&A
                             <div class="willbes-Lec-Search GM f_right">
                                 <div class="inputBox p_re">
-                                    <label for="SEARCH" class="labelSearch" style="display: block;">제목 또는 내용을 입력해 주세요</label>
-                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                     <button type="submit" onclick="" class="search-Btn">
                                         <span>검색</span>
                                     </button>
@@ -1538,8 +1535,7 @@
                             · 학습자료실
                             <div class="willbes-Lec-Search GM f_right">
                                 <div class="inputBox p_re">
-                                    <label for="SEARCH" class="labelSearch" style="display: block;">제목 또는 내용을 입력해 주세요</label>
-                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" maxlength="30">
+                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                     <button type="submit" onclick="" class="search-Btn">
                                         <span>검색</span>
                                     </button>

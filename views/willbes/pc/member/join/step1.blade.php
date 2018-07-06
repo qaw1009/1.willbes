@@ -57,12 +57,12 @@
                     <div id="join2">
                         <div class="widthAuto460">
                             <div class="inputBox p_re">
-                                <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="이름" maxlength="30">
+                                <input type="text" id="var_name" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required">
                             </div>
                             <!-- <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div> -->
                             <div class="inputBox p_re">
-                                <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30"> @
-                                <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30">
+                                <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30" required="required"> @
+                                <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30" required="required">
                                 <select id="domain" name="domain" title="직접입력" class="seleEmail">
                                     @foreach($mail_domain_ccd as $key => $val)
                                         <option value="{{ $key }}">{{ $val }}</option>
@@ -90,10 +90,6 @@
         <input type="hidden" name="enc_data" id="enc_data" value="" />
     </form>
     <!-- End Container -->
-    <script src="/public/vendor/validator/validator.js"></script>
-    <script src="/public/vendor/jquery/form/jquery.form.min.js"></script>
-    <script src="/public/js/util.js"></script>
-    <script src="/public/js/validation_util.js"></script>
     <script>
         var $p_form = $('#phone_form');
         var $m_form = $('#mail_form');
@@ -160,7 +156,7 @@
 
                     } else if(err_cd == 8) {
                         alert(ret.ret_msg);
-                        location.href="/Member/FindID/";
+                        location.href="/member/FindID/";
                     }
 
                 }, showValidateError, false, 'alert');
@@ -208,12 +204,20 @@
 
 
             $("#btn_send_mail").click(function () {
-                ajaxSubmit($p_form, _url, function(ret) {
-                    var err_cd = ret.ret_cd.err_cd;
-                    if(ret.ret_cd) {
+                var _url = "/member/mail/";
 
-                    } else {
+                ajaxSubmit($m_form, _url, function(ret) {
+                    var err_cd = ret.ret_data.err_cd;
 
+                    if(err_cd == 0) {
+                        alert(ret.ret_msg);
+
+                    } else if(err_cd == 1) {
+                        alert(ret.ret_msg);
+
+                    } else if(err_cd == 8) {
+                        alert(ret.ret_msg);
+                        location.href="/member/FindID/";
                     }
 
                 }, showValidateError, false, 'alert');

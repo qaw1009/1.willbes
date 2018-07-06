@@ -12,7 +12,9 @@ class Member extends \app\controllers\FrontController
     {
         parent::__construct();
 
-        $this->load->library('restClient');
+        //$this->load->library('restClient');
+        $this->load->library('restClient', ['send_cookies' => TRUE ]);
+        $this->load->library('encrypt');
     }
 
     /**
@@ -21,7 +23,7 @@ class Member extends \app\controllers\FrontController
     public function Login()
     {
         $this->load->view('member/login/form', [
-            ]);
+        ]);
     }
 
     /**
@@ -48,7 +50,7 @@ class Member extends \app\controllers\FrontController
         $codes = $this->codeModel->getCcdInArray(['661']);
         $this->load->view('member/join/step1', [
             'mail_domain_ccd' => $codes['661']
-            ]);
+        ]);
     }
 
     /**
@@ -66,7 +68,7 @@ class Member extends \app\controllers\FrontController
             $phonenumber = $this->_req('phone_number');
 
             try {
-                $plainText = $this->encrypt->decode($enc_data, $this->encKey);
+                $plainText = $this->encrypt->decode($enc_data);
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
@@ -75,7 +77,7 @@ class Member extends \app\controllers\FrontController
                 }
 
                 $data_arr = explode("^", $plainText);
-                // temp^전화번호^이름^temp
+                // temp^전화번호^이름^아이디^temp
                 $phone = $data_arr[1];
                 $name = $data_arr[2];
 
@@ -98,8 +100,8 @@ class Member extends \app\controllers\FrontController
 
 
         } else if($jointype === "655003") {
-            // email 인증
-            
+            // mail 인증
+
         } else {
             // 오류발생
             show_error("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.");
@@ -193,10 +195,10 @@ class Member extends \app\controllers\FrontController
 
     /**
      * 회원통합 페이지
-     */    
+     */
     public function MergeMember()
     {
-        
+
     }
 
     /**
@@ -229,11 +231,9 @@ class Member extends \app\controllers\FrontController
         }
     }
 
-
     /**
-     * 핸드폰 번호로 인증번호를 보내거나 해당 핸드폰으로 보낸 인증번호가 맞는지 체크
-     * @param string $phonenumber
-     * @param string $authcode
+     * 회원가입 sms 인증
+     * @return CI_Output
      */
     public function sms()
     {
@@ -252,24 +252,225 @@ class Member extends \app\controllers\FrontController
 
         if($count > 0){
             // 이미 가입된 정보임
-            return $this->json_result(true, '이미 가입된 회원입니다. 아이디 비밀번호 찾기를 이용해주십시요.', null, [
-                'err_cd' => 8
-            ]);
+            return $this->json_result(true, "이미 가입된 회원입니다. 아이디 비밀번호 찾기를 이용해주십시요.",
+                null, [
+                    'err_cd' => 8
+                ]);
         }
+
         // SMS 인증 처리
-        $data = $this->api_get_data(
-            $this->restclient->getDataJson('member/certify/sms/' , [
+        return $this->sendSms([
             'phone' => $phonenumber,
             'code' => $authcode,
             'name' => $sms_name
-        ])
-        );
-
-        echo var_dump($data);
-        return;
-
-        return $this->json_result(true, $data['ret_msg'], null, [
-            'ret_data' => $ret_data
         ]);
+    }
+
+    /**
+     * 회원가입 메일인증 
+     * @return CI_Output
+     */
+    public function mail()
+    {
+        $mailid = $this->_req('mail_id');
+        $maildomain = $this->_req('mail_domain');
+        $name = $this->_req('var_name');
+
+        $mail = $mailid.'@'.$maildomain;
+
+        // 이미 가입된 정보 검색
+        $mailEnc = $this->memberModel->getEncString($mail);
+        $count = $this->memberModel->getMember(true, [
+            'EQ' => [
+                'Mem.MemName' => $name,
+                'Mem.MailEnc' => $mail
+            ]
+        ]);
+
+        if($count > 0){
+            // 이미 가입된 정보임
+            return $this->json_result(true, "이미 가입된 회원입니다. 아이디 비밀번호 찾기를 이용해주십시요.",
+                null, [
+                    'err_cd' => 8
+                ]);
+        }
+        
+        // 인증메일 전송
+        return $this->sendMail([
+            'mail' => $mail,
+            'name' => $name,
+            'typeccd' => '662001' // 회원가입인증메일
+        ]);
+    }
+
+
+    /**
+     * 핸드폰 번호로 인증번호를 보내거나 해당 핸드폰으로 보낸 인증번호가 맞는지 체크
+     */
+    public function sendSms($param = [])
+    {
+        $phone = element('phone', $param);
+        $code = element('code', $param);
+        $name = element('name', $param);
+        $id = element('id', $param);
+
+        if (empty($phone) === true) {
+            return $this->json_result(true,"전화번호를 정확하게 입력해주십시요.",
+                null, [
+                    'err_cd' => 1
+                ]);
+
+        } else {
+            $pattern = "^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$^";
+            if(!preg_match($pattern, $phone)){
+                // 전화번호 패턴 오류
+                return $this->json_result(true,"전화번호를 정확하게 입력해주십시요.",
+                    null, [
+                        'err_cd' => 1
+                    ]);
+            }
+        }
+
+        if(empty($code) === true) {
+            if(empty($this->session->tempdata('sms_code')) === false){
+                return $this->json_result(true,"이미 인증번호를 발송했습니다.",
+                    null, [
+                        'err_cd' => 9
+                    ]);
+            }
+
+            // 인증코드가 없으면 해당 전화번호로 인증코드를 보냅니다.
+            // 인증번호 생성
+            $this->load->helper('string');
+            $code = random_string('numeric', 6);
+            $limit_date = Date("Y/m/d H:i:s", strtotime('+1 minutes '));
+
+            //세션에 인증코드와 인증 시간을 기록한다.
+            $this->session->set_tempdata('sms_phone', $phone, 180);
+            $this->session->set_tempdata('sms_code', $code, 180);
+            $this->session->set_tempdata('sms_name', $name, 180);
+            $this->session->set_tempdata('sms_id', $id, 180);
+
+            return $this->json_result(true,'인증번호를 발송하였습니다.'.$code,
+                null, [
+                    'err_cd' => 0,
+                    'limit_date' => $limit_date
+                ]);
+
+        } else {
+            // 인증코드가 있으면 해당 전화번호로 보낸 인증코드가 정확한지 체크합니다.
+            $sms_phone = $this->session->tempdata('sms_phone');
+            $sms_code = $this->session->tempdata('sms_code');
+            $sms_name = $this->session->tempdata('sms_name');
+            $sms_id = $this->session->tempdata('sms_id');
+
+            // 입력 시간이 초과했는지 체크
+            if (empty($this->session->tempdata('sms_phone')) === true ||
+                empty($this->session->tempdata('sms_code')) === true  ||
+                empty($this->session->tempdata('sms_name')) === true  ) {
+                return $this->json_result(true,"입력시간이 초과되었습니다. 인증번호 받기를 다시 진행해 주세요.",
+                    null, [
+                        'err_cd' => 1
+                    ]);
+            }
+
+            // 전화번호가 일치하는지 체크
+            if($phone != $sms_phone){
+                return $this->json_result("인증번호를 발송한 전화번호와 일치하지 않습니다. 인증번호 받기를 다시 진행해 주세요.",
+                    null, [
+                        'err_cd' => 1,
+                    ]);
+            }
+
+            // 입력코드가 정확한지 체크
+            if($code == $sms_code){
+                // 인증코드가 일치하면 전화번호와 이름을 암호화 해서 넘긴다.
+                // 비밀번호 찾기를 위해 아이디 필드 추가
+                // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $var_data = Date('YmdHis')."^{$sms_phone}^{$sms_name}^{$sms_id}^".Date('YmdHis');
+                $enc_data = $this->encrypt->encode($var_data);
+                return $this->json_result(true,"인증번호가 확인되었습니다.",
+                    null, [
+                        'err_cd' => 0,
+                        'enc_data' => $enc_data,
+                        'phone_number' => $sms_phone
+                    ]);
+
+            } else {
+                // 인증번호 불일치
+                return $this->json_result(true,"인증번호가 일치하지 않습니다. 확인후 다시 입력해주세요.",
+                    null, [
+                        'err_cd' => 9
+                    ]);
+            }
+
+        }
+    }
+
+    /**
+     * 인증 이메일 보내기
+     * @param array $param
+     * @return CI_Output
+     */
+    public function sendMail($param = [])
+    {
+        $typeccd = element('typeccd', $param);
+        $mail = element('mail', $param);
+        $name = element('name', $param);
+        $MemIdx = element('MemIdx', $param);
+
+        if(empty($mail) === true){
+            return $this->json_result(true,"이메일 주소를 정확하게 입력해주십시요.",
+                null, [
+                    'err_cd' => 1
+                ]);
+
+        } else {
+            $pattern = "/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i";
+            if(!preg_match($pattern, $mail)){
+                // 전화번호 패턴 오류
+                return $this->json_result(true,"이메일 주소를 정확하게 입력해주십시요.",
+                    null, [
+                        'err_cd' => 1
+                    ]);
+            }
+        }
+
+        // 인증키 암호화 
+        // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+        $var_data = Date('YmdHis')."^{$mail}^{$name}^{$MemIdx}^".Date('YmdHis');
+        $enc_data = $this->encrypt->encode($var_data);
+
+        // 인증메일전송
+        
+        // 전송한인증메일 정보 DB저장
+        $result = $this->memberModel->setMailAuth([
+            'CertKey' => $enc_data,
+            'CertMail' => $mail,
+            'MailCertTypeCcde' => $typeccd
+        ]);
+
+        // 메일 발송 실패
+        if($result === false){
+            return $this->json_result(true, "메일발송에 실패했습니다. 다시 시도해주십시요.",
+                null, [
+                    'err_cd' => 1
+                ]);
+        }
+
+        // 성공리턴
+        return $this->json_result(true, "인증메일을 발송했습니다.",
+            null, [
+                'err_cd' => 0
+            ]);
+    }
+
+    /**
+     * 메일인증
+     * @param array $param
+     */
+    public function mailAuth($param = [])
+    {
+        
     }
 }

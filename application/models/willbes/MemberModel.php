@@ -28,7 +28,7 @@ class MemberModel extends WB_Model
      */
     public function getMember($is_count = false, $arr_cond = [])
     {
-        if(empty($arr_cond) == true) {
+        if(empty($arr_cond) === true) {
             return ($is_count === true) ? 0 : [];
         }
         
@@ -47,8 +47,8 @@ class MemberModel extends WB_Model
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
-            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' ) AS PcCount,
-            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' ) AS MobileCount             
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount             
             ";
         }
 
@@ -127,4 +127,29 @@ class MemberModel extends WB_Model
     {
         return true;
     }
+
+    /**
+     * 인증메일 정보를 읽어온다.
+     * @param $certKey
+     * @param $mail
+     */
+    public function getMailAuth($certKey, $mail)
+    {
+
+    }
+
+    /**
+     * 인증메일정보 입력
+     */
+    public function setMailAuth($input = [])
+    {
+
+    }
+
+    // 메일 인증 처리후 업데이트
+    public function updMailAuth($input = [])
+    {
+        
+    }
+
 }

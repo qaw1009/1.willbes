@@ -141,18 +141,21 @@ class Lecture extends \app\controllers\FrontController
                 ['name' => 'base', 'uri' => 'product/products/index/on_lecture/all/' . $prod_code, 'params' => []],
                 ['name' => 'contents', 'uri' => 'product/products/contents/on_lecture/' . $prod_code, 'params' => []],
                 ['name' => 'salebooks', 'uri' => 'product/products/salebooks/on_lecture/' . $prod_code, 'params' => []],
+                ['name' => 'lecture_units', 'uri' => 'product/products/lectureUnits/on_lecture/' . $prod_code, 'params' => []],
             ])
         );
 
         $data['base']['ProdBookData'] = json_decode($data['base']['ProdBookData'], true);
         $data['base']['LectureSampleData'] = json_decode($data['base']['LectureSampleData'], true);
+        $data['base']['LectureSampleUnitIdxs'] = array_pluck($data['base']['LectureSampleData'], 'wUnitIdx');
         $data['base']['ProfReferData'] = json_decode($data['base']['ProfReferData'], true);
 
         $this->load->view('site/lecture/show' . $this->_pass_site_val, [
             'arr_param' => $params,
             'data' => $data['base'],
             'contents' => $data['contents'],
-            'salebooks' => $data['salebooks']
+            'salebooks' => $data['salebooks'],
+            'lecture_units' => $data['lecture_units']
         ]);
     }    
 }

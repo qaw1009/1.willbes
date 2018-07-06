@@ -5,9 +5,13 @@ class ProductFModel extends WB_Model
 {
     private $_table = [
         'on_lecture' => 'vw_product_on_lecture',
+        'product' => 'lms_product',
+        'product_lecture' => 'lms_product_lecture',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
+        'cms_lecture' => 'wbs_cms_lecture',
+        'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'code' => 'lms_sys_code'
     ];
     // 상품 메모타입 공통코드
@@ -88,12 +92,43 @@ class ProductFModel extends WB_Model
     {
         $column = 'BookProdCode, BookProdName, BookCateCode, BookCateName, BookProvisionCcd, BookProvisionCcdName, SalePrice, SaleRate, SaleDiscType, RealSalePrice        
 	        , wAuthorNames, wPublName, wPublDate, wEditionCcd, wEditionCcdName, wEditionSize, wEditionCnt, wPageCnt, wPrintCnt
-	        , wSaleCcd, wSaleCcdName, wBookDesc, wAuthorDesc, wTableDesc, wAttachImgPath, wAttachImgOgName, wAttachImgLgName, wAttachImgMdName, wAttachImgSmName         
-        ';
+	        , wSaleCcd, wSaleCcdName, wBookDesc, wAuthorDesc, wTableDesc, wAttachImgPath, wAttachImgOgName, wAttachImgLgName, wAttachImgMdName, wAttachImgSmName';
 
         $arr_condition = ['EQ' => ['ProdCode' => $prod_code]];
         $order_by = ['BookProvisionCcd' => 'asc', 'PrpIdx' => 'asc'];
 
         return $this->_conn->getListResult($this->_table['product_salebook'], $column, $arr_condition, null, null, $order_by);
+    }
+
+    /**
+     * 상품 강의 목록 조회
+     * @param $prod_code
+     * @return mixed
+     */
+    public function findProductLectureUnits($prod_code)
+    {
+        $column = 'P.ProdCode, PL.wLecIdx, WL.wLecName, WLU.wUnitIdx, WLU.wUnitName, WLU.wUnitNum, WLU.wUnitLectureNum, WLU.wHD, WLU.wSD, WLU.wWD
+            , WLU.wUnitAttachFileReal, WLU.wUnitAttachFile, WLU.wRuntime, WLU.wBookPage, WLU.wShootingDate, WLU.wProfIdx';
+
+        $from = '
+            from ' . $this->_table['product'] . ' as P		
+                inner join ' . $this->_table['product_lecture'] . ' as PL
+                    on P.ProdCode = PL.ProdCode
+                inner join ' . $this->_table['cms_lecture'] . ' as WL
+                    on PL.wLecIdx = WL.wLecIdx
+                inner join ' . $this->_table['cms_lecture_unit'] . ' as WLU
+                    on PL.wLecIdx = WLU.wLecIdx
+            where P.ProdCode = ?
+                and P.IsUse = "Y" and P.IsStatus = "Y"
+                and WL.wIsUse = "Y" and WL.wIsStatus = "Y"
+                and WLU.wIsUse = "Y" and WLU.wIsStatus = "Y"            
+        ';
+
+        $order_by = 'order by P.ProdCode desc, WLU.wOrderNum asc, WLU.wUnitIdx desc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $order_by, [$prod_code]);
+
+        return $query->result_array();
     }
 }

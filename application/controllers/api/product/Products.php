@@ -78,6 +78,7 @@ class Products extends \app\controllers\RestController
 
     /**
      * 상품 컨텐츠 조회
+     * @example /product/products/contents/{[on_lecture|pass_lecture]}/{prod_code}
      * @param string $learn_pattern
      * @param string $prod_code
      */
@@ -95,6 +96,7 @@ class Products extends \app\controllers\RestController
 
     /**
      * 상품 구매교재 조회
+     * @example /product/products/salebooks/{[on_lecture|pass_lecture]}/{prod_code}
      * @param string $learn_pattern
      * @param string $prod_code
      */
@@ -106,6 +108,24 @@ class Products extends \app\controllers\RestController
 
         // 데이터 조회
         $data = $this->productFModel->findProductSaleBooks($prod_code);
+
+        return $this->api_success(null, $data);
+    }
+
+    /**
+     * 상품 강의 목록 조회
+     * @example /product/products/lectureUnits/{[on_lecture|pass_lecture]}/{prod_code}
+     * @param string $learn_pattern
+     * @param string $prod_code
+     */
+    public function lectureUnits_get($learn_pattern = '', $prod_code = '')
+    {
+        if (empty($learn_pattern) === true || empty($prod_code) === true) {
+            return $this->api_param_error();
+        }
+
+        // 데이터 조회
+        $data = $this->productFModel->findProductLectureUnits($prod_code);
 
         return $this->api_success(null, $data);
     }

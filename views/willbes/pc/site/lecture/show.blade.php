@@ -299,48 +299,24 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($lecture_units as $idx => $row)
                     <tr>
-                        <td class="w-no">1강</td>
-                        <td class="w-list tx-left pl20">1강 03월 05일 : 모의고사 1회</td>
+                        <td class="w-no">{{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강</td>
+                        <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>
                         <td class="w-free">
-                            <span class="w-sp NG"><a href="#none">OT</a></span>
+                            @if (in_array($row['wUnitIdx'], $data['LectureSampleUnitIdxs']) === true)
+                                @if(empty($row['wHD']) === false || empty($row['wWD']) === false) <span class="tBox NSK t1 black"><a href="{{ $row['wWD'] or $row['wHD'] }}">HIGH</a></span> @endif
+                                @if(empty($row['wSD']) === false) <span class="tBox NSK t2 gray"><a href="{{ $row['wSD'] }}">LOW</a></span> @endif
+                            @endif
                         </td>
                         <td class="w-file">
-                            <a href="#none"><img src="{{ img_url('sub/icon_file.gif') }}"></a>
+                            @if(empty($row['wUnitAttachFile']) === false)
+                                <a href="{{ $row['wUnitAttachFileReal'] }}"><img src="{{ img_url('sub/icon_file.gif') }}"></a>
+                            @endif
                         </td>
-                        <td class="w-time">50분</td>
+                        <td class="w-time">{{ $row['wRuntime'] }}분</td>
                     </tr>
-                    <tr>
-                        <td class="w-no">2강</td>
-                        <td class="w-list tx-left pl20">2강 03월 05일 : 모의고사 2회</td>
-                        <td class="w-free">
-                            <span class="tBox NSK t1 black"><a href="">HIGH</a></span>
-                            <span class="tBox NSK t2 gray"><a href="">LOW</a></span>
-                        </td>
-                        <td class="w-file"></td>
-                        <td class="w-time">40분</td>
-                    </tr>
-                    <tr>
-                        <td class="w-no">3강</td>
-                        <td class="w-list tx-left pl20">3강 03월 05일 : 모의고사 3회</td>
-                        <td class="w-free"></td>
-                        <td class="w-file"></td>
-                        <td class="w-time">30분</td>
-                    </tr>
-                    <tr>
-                        <td class="w-no">4강</td>
-                        <td class="w-list tx-left pl20">4강 03월 12일 : 모의고사 4회</td>
-                        <td class="w-free"></td>
-                        <td class="w-file"></td>
-                        <td class="w-time">20분</td>
-                    </tr>
-                    <tr>
-                        <td class="w-no">5강</td>
-                        <td class="w-list tx-left pl20">5강 03월 12일 : 모의고사 5회</td>
-                        <td class="w-free"></td>
-                        <td class="w-file"></td>
-                        <td class="w-time">10분</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

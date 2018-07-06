@@ -317,7 +317,7 @@ class CommonLectureModel extends WB_Model
             }
 
             if ($this->_conn->update($tablename) === false) {
-                echo $this->_conn->last_query();
+                //echo $this->_conn->last_query();
                 throw new \Exception('이전 ' . $msg . ' 정보 수정에 실패했습니다.');
             }
 

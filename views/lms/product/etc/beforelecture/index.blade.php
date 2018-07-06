@@ -18,7 +18,7 @@
                             @endforeach
                         </select>
                         &nbsp;
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_dup" name="search_is_dup">
                             <option value="">중복여부</option>
                             <option value="Y">중복불가</option>
                             <option value="N">중복허용</option>
@@ -37,8 +37,8 @@
                     <div class="col-md-6 form-inline">
 
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
-                            <option value="">대상강좌명</option>
-                            <option value="">조건강좌명</option>
+                            <option value="tar">대상강좌명</option>
+                            <option value="ess">조건강좌명</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
                     </div>
@@ -91,7 +91,7 @@
                 buttons: [
 
                     { text: '<i class="fa fa-pencil mr-5"></i> 선수강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
-                            location.href = '{{ site_url('product/etc/BeforeLecture/create') }}';
+                            location.href = '{{ site_url('product/etc/beforelecture/create') }}';
                         }
                     }
                 ],
@@ -106,43 +106,45 @@
                 ,
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat"  name="copyProdCode" value="'+row.ProdCode+'">';
+                            // 리스트 번호
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.SiteName+'<BR>'+(row.CateName_Parent == null ? '' : row.CateName_Parent+'<BR>')+(row.CateName)+'<BR>'+row.SchoolYear;
-                        }},
-                    {'data' : 'LecTypeCcd_Name'},//강좌유형
-                    {'data' : 'CourseName'},//과정명
-                    {'data' : 'SubjectName'},//과목명
-                    {'data' : 'wProfName_String'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
+                    {'data' :'LecType', 'render' : function(data, type, row, meta) {
+                            return (data === 'N') ? '일반' : '수강생<BR>전용';
+                        }},//
+                    {'data' : 'prodname_tar', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" class="btn-select" data-idx="' + row.BlIdx + '"><u>' + data + '</u></a>';
+                        }},//대상강좌명
+                    {'data' : 'prodname_ess'},//필수강좌명
+                    {'data' : 'prodname_cho'},//선택강좌명
+                    {'data' : 'ConditionType'},
+                    {'data' :'IsDup', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? '허용' : '<span class="red">불가</span>';
                         }},//단강좌명
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
-                        }},//진행상태
+                            return row.ValidPeriodStartDate+'<BR>~'+row.ValidPeriodEndDate+ (row.dateStatus === '' ? '' : '<BR><span class="red">(만료)</span>');
+                        }},//
 
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
-                        }},
-
-                    {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
-                            return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
-                        }},//중복여부
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
 
-                    {'data' : 'PayIngCnt'},//신청현황
-                    {'data' : 'PayEndCnt'},//결제완료
+                    {'data' : 'applyCnt', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" onclick="javascript:alert(\'주문결제 이후 개발\')">'+data+'</a>';
+                        }},//사용여부
+
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'}//등록일
                 ]
 
             });
 
-
+            // 데이터 수정 폼
+            $list_table.on('click', '.btn-modify', function() {
+                alert("aa");
+                location.replace('{{ site_url('/product/etc/beforelecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
         });
     </script>
 @stop

@@ -120,7 +120,7 @@
                 {{-- 교수별 상품 리스트 loop --}}
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
-                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $row['ProfIdx']) }}">
+                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $row['ProfIdx'] . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
                         <div class="line">-</div>
                     </a>
                     <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">

@@ -21,6 +21,7 @@ class ProductFModel extends WB_Model
     /**
      * 상품 목록 조회
      * @param string $learn_pattern [학습형태 구분]
+     * @param string $select_type [조회 구분, all : 전체 / simple : 최소 정보조회]
      * @param bool|string $column
      * @param array $arr_condition
      * @param null|int $limit
@@ -28,7 +29,7 @@ class ProductFModel extends WB_Model
      * @param null|array $order_by
      * @return array|int
      */
-    public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listProduct($learn_pattern, $select_type = 'all', $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsBest, IsNew, CourseIdx, SchoolYear, StudyPeriod, MultipleApply	
@@ -37,11 +38,20 @@ class ProductFModel extends WB_Model
             switch ($learn_pattern) {
                 // 온라인 단강좌
                 case 'on_lecture' :
-                        $column .= ', SubjectIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
-                            , ifnull(fn_product_salebook_data(ProdCode), "N") as ProdBookData
-                            , ifnull(fn_product_memo(ProdCode, "' . $this->_memo_type_ccds['book'] . '"), "") as ProdBookMemo
-                            , ifnull(fn_product_lecture_sample_data(ProdCode), "N") as LectureSampleData
-                            , ifnull(fn_professor_refer_data(ProfIdx), "N") as ProfReferData';
+                        $column .= ', SubjectIdx, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt';
+                        if ($select_type != 'simple') {
+                            switch ($select_type) {
+                                case 'lecture-sample' :
+                                    $column .= ', ifnull(fn_product_lecture_sample_data(ProdCode), "N") as LectureSampleData';
+                                    break;
+                                default :
+                                    $column .= ', ifnull(fn_product_salebook_data(ProdCode), "N") as ProdBookData
+                                        , ifnull(fn_product_memo(ProdCode, "' . $this->_memo_type_ccds['book'] . '"), "") as ProdBookMemo
+                                        , ifnull(fn_product_lecture_sample_data(ProdCode), "N") as LectureSampleData
+                                        , ifnull(fn_professor_refer_data(ProfIdx), "N") as ProfReferData';
+                                    break;
+                            }
+                        }
                     break;
                 default :
                         return 0;

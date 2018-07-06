@@ -36,7 +36,7 @@ class Bases extends \app\controllers\RestController
             case 'professor2subject' :  // 과목별 교수
                 $data = $this->baseProductFModel->listProfessorSubjectMapping($site_code, false, $this->_req('cate_code'), $this->_req('subject_idx'));
                 break;
-            case 'professor-in-refer2subject' :  // 과목별 교수
+            case 'professor-refer2subject' :  // 과목별 교수 (참조 데이터 포함)
                 $data = $this->baseProductFModel->listProfessorSubjectMapping($site_code, true, $this->_req('cate_code'), $this->_req('subject_idx'));
                 break;
             default :

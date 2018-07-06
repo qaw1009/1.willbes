@@ -58,7 +58,7 @@ class Lecture extends \app\controllers\FrontController
 
         // 상품 조회
         $list = $this->api_get_data(
-            $this->restclient->getDataJson('product/products/index/on_lecture', [
+            $this->restclient->getDataJson('product/products/index/on_lecture/all', [
                 'site_code' => $this->_site_code,
                 'cate_code' => $this->_cate_code,
                 'course_idx' => element('course_idx', $arr_input),
@@ -127,19 +127,18 @@ class Lecture extends \app\controllers\FrontController
     /**
      * 강좌 보기
      * @param array $params
-     * @return CI_Output
      */
     public function show($params = [])
     {
         $prod_code = element('prod-code', $params);
         if (empty($prod_code)) {
-            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            show_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST, '잘못된 접근');
         }
 
         // 상품 기본정보, 컨텐츠, 교재정보 조회
         $data = $this->api_get_data(
             $this->restclient->getsDataJson([
-                ['name' => 'base', 'uri' => 'product/products/index/on_lecture/' . $prod_code, 'params' => []],
+                ['name' => 'base', 'uri' => 'product/products/index/on_lecture/all/' . $prod_code, 'params' => []],
                 ['name' => 'contents', 'uri' => 'product/products/contents/on_lecture/' . $prod_code, 'params' => []],
                 ['name' => 'salebooks', 'uri' => 'product/products/salebooks/on_lecture/' . $prod_code, 'params' => []],
             ])

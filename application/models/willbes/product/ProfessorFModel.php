@@ -19,28 +19,31 @@ class ProfessorFModel extends WB_Model
     }
 
     /**
-     * 교수 식별자 기준 교수 정보 조회
-     * @param string|array $prof_idx
-     * @param bool $is_refer
-     * @param null|string $site_code
-     * @return array
+     * 교수 목록 조회
+     * @param bool|string $column
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return array|int
      */
-    public function findProfessors($prof_idx, $is_refer = false, $site_code = null)
+    public function listProfessor($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.UseBoardJson, PF.ProfCurriculum, WPF.wProfProfile, WPF.wBookContent
-            , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
-            , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
-            , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard              
-        ';
-        $is_refer === true && $column .= ', ifnull(fn_professor_refer_data(ProfIdx), "N") as ProfReferData';
+        if ($column !== true || $column == 'refer') {
+            $refer_column = $column == 'refer' ? ', ifnull(fn_professor_refer_data(PF.ProfIdx), "N") as ProfReferData' : '';
 
-        $arr_condition = [
-            'EQ' => ['PF.SiteCode' => $site_code, 'PF.IsUse' => 'Y', 'PF.IsStatus' => 'Y', 'WPF.wIsUse' => 'Y', 'WPF.wIsStatus' => 'Y'],
-            'IN' => ['PF.ProfIdx' => (array) $prof_idx]
-        ];
+            $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.ProfCurriculum, WPF.wProfProfile, WPF.wBookContent
+                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
+                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
+                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard' . $refer_column;
+        }
+
+        $arr_condition = array_merge_recursive($arr_condition, [
+            'EQ' => ['PF.IsUse' => 'Y', 'PF.IsStatus' => 'Y', 'WPF.wIsUse' => 'Y', 'WPF.wIsStatus' => 'Y']
+        ]);
 
         return $this->_conn->getJoinListResult($this->_table['professor'] . ' as PF', 'inner', $this->_table['pms_professor'] . ' as WPF', 'PF.wProfIdx = WPF.wProfIdx'
-            , $column, $arr_condition, null, null, []
+            , $column, $arr_condition, $limit, $offset, $order_by
         );
     }
 }

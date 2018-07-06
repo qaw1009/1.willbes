@@ -15,6 +15,10 @@ class Professor extends \app\controllers\FrontController
         $this->load->library('restClient');
     }
 
+    /**
+     * 교수진 소개 메인
+     * @param array $params
+     */
     public function index($params = [])
     {
         // input parameter
@@ -39,18 +43,17 @@ class Professor extends \app\controllers\FrontController
 
         // 신규강좌 조회
         $arr_base['product'] = $this->api_get_data(
-            $this->restclient->getDataJson('product/products/index/on_lecture', [
+            $this->restclient->getDataJson('product/products/index/on_lecture/simple', [
                 'site_code' => $this->_site_code,
                 'cate_code' => $this->_cate_code,
                 'is_new' => 'Y',
-                'offset' => 0,
                 'limit' => 5
             ])
         );
 
         // 교수 조회
         $arr_base['professor'] = $this->api_get_data(
-            $this->restclient->getDataJson('product/bases/professor-in-refer2subject/' . $this->_site_code, [
+            $this->restclient->getDataJson('product/bases/professor-refer2subject/' . $this->_site_code, [
                 'cate_code' => $this->_cate_code,
                 'subject_idx' => element('subject_idx', $arr_input),
             ])
@@ -78,8 +81,47 @@ class Professor extends \app\controllers\FrontController
         ]);
     }
 
-    public function show()
+    /**
+     * 교수 상세
+     * @param array $params
+     */
+    public function show($params = [])
     {
-        echo '교수 상세';
+        $prof_idx = element('prof-idx', $params);
+        if (empty($prof_idx)) {
+            show_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST, '잘못된 접근');
+        }
+
+        // input parameter
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        
+        // 교수 정보 조회
+        $data = $this->api_get_data(
+            $this->restclient->getDataJson('product/professors/index/' . $prof_idx, [
+                'is_refer' => 'Y'
+            ])
+        );
+
+        // 교수 참조 정보
+        $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
+
+        // 베스트, 신규 강좌 조회
+        $products = $this->api_get_data(
+            $this->restclient->getsDataJson([
+                ['name' => 'best', 'uri' => 'product/products/index/on_lecture/lecture-sample',
+                    'params' => ['site_code' => $this->_site_code, 'cate_code' => $this->_cate_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'],  'is_best' => 'Y', 'limit' => 3]
+                ],
+                ['name' => 'new', 'uri' => 'product/products/index/on_lecture/simple',
+                    'params' => ['site_code' => $this->_site_code, 'cate_code' => $this->_cate_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'is_new' => 'Y', 'limit' => 2]
+                ],
+            ])
+        );
+
+        $this->load->view('site/professor/show' . $this->_pass_site_val, [
+            'arr_param' => $params,
+            'arr_input' => $arr_input,
+            'data' => $data,
+            'products' => $products
+        ]);
     }    
 }

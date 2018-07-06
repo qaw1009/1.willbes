@@ -18,9 +18,10 @@ class Products extends \app\controllers\RestController
      * 학습형태별 조회
      * @example /product/products/index/{[on_lecture|pass_lecture]}/?site_code={value}&cate_code={value}&course_idx={value}&subject_idx={value}&prof_idx={value}&school_year={value}&is_best={Y/N}&is_new={Y/N}&is_count={Y/N}&limit={value}&offset={value}&order_by={value}&order_dir={asc/desc}
      * @param string $learn_pattern
+     * @param null|string $select_type [조회 구분, all : 전체 / simple : 최소 정보조회]
      * @param null|string $prod_code
      */
-    public function index_get($learn_pattern = '', $prod_code = null)
+    public function index_get($learn_pattern = '', $select_type = 'all', $prod_code = null)
     {
         if (empty($learn_pattern) === true) {
             return $this->api_param_error();
@@ -66,7 +67,7 @@ class Products extends \app\controllers\RestController
         }
 
         // 데이터 조회
-        $data = $this->productFModel->listProduct($learn_pattern, $is_count, $arr_condition, $this->_req('limit'), $this->_req('offset'), $arr_order_by);
+        $data = $this->productFModel->listProduct($learn_pattern, $select_type, $is_count, $arr_condition, $this->_req('limit'), $this->_req('offset'), $arr_order_by);
 
         if (empty($prod_code) === false) {
             $data = element('0', $data, []);

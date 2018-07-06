@@ -6,7 +6,11 @@
         <div class="lnb-List-Depth">
             <dl>
                 @foreach($subject_row['Professors'] as $prof_idx => $prof_row)
-                    <dt><a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $prof_idx) }}">{{ $prof_row['wProfName'] }}</a></dt>
+                    <dt>
+                        <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $prof_idx . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_row['SubjectName'])) }}">
+                            {{ $prof_row['wProfName'] }}
+                        </a>
+                    </dt>
                 @endforeach
             </dl>
         </div>

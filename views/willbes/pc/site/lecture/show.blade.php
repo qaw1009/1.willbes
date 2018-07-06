@@ -18,7 +18,7 @@
                     <img src="{{ $data['ProfReferData']['lec_detail_img'] }}">
                 </div>
                 <div class="prof-home subBtn NSK">
-                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $data['ProfIdx']) }}">
+                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $data['ProfIdx']) . '/?subject_idx=' . $data['SubjectIdx'] . '&subject_name=' . rawurlencode($data['SubjectName']) }}">
                         <img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">교수홈
                     </a>
                 </div>
@@ -64,7 +64,7 @@
             <div class="willbes-Buy-Table p_re mt20">
                 <form id="buy_form" name="buy_form" method="POST" onsubmit="return false;">
                 <div class="willbes-Buy-List">
-                    <table cellspacing="0" cellpadding="0" class="lecTable">
+                    <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
                             <col style="width: 445px;">
                             <col style="width: 85px;">

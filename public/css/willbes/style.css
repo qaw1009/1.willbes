@@ -1815,6 +1815,11 @@ table.auTable tr td {
    width: 57px;
    height: 23px; 
 }
+.pocketBox .aBox a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
 /* subContainer : Content : willbes-Lec-Tit */
 .willbes-Lec-Tit {
@@ -3952,6 +3957,9 @@ ul li.profList .w-notice a {
 .willbes-Prof-Profile .prof-profile .Name strong {
     font-size: 52px;
 }
+.willbes-Prof-Profile .prof-profile .Name span {
+    vertical-align: baseline;
+}
 .willbes-Prof-Profile .sliderBest {
     position: absolute;
     top: 196px;
@@ -3959,7 +3967,6 @@ ul li.profList .w-notice a {
     width: 520px;
     height: 120px;
 }
-
 
 /* subContainer : Prof : willbes-Layer-ProfileBox */
 .willbes-Layer-ProfileBox {

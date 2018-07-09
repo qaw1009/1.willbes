@@ -71,7 +71,6 @@ class Professor extends \app\controllers\FrontController
         }
 
         $this->load->view('site/professor/index' . $this->_pass_site_val, [
-            'arr_param' => $params,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'data' => [
@@ -118,7 +117,6 @@ class Professor extends \app\controllers\FrontController
         );
 
         $this->load->view('site/professor/show' . $this->_pass_site_val, [
-            'arr_param' => $params,
             'arr_input' => $arr_input,
             'data' => $data,
             'products' => $products

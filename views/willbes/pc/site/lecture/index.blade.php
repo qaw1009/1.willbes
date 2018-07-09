@@ -112,7 +112,8 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            <img src="{{ img_url('sample/bnr1.jpg') }}">
+            {{--<img src="{{ img_url('sample/bnr1.jpg') }}">--}}
+            <script src="{{ app_url('/banner/index/site/' . $__cfg['SiteCode'] . '/cate/' . $__cfg['CateCode'] . '/section/00000/location/000000', 'www') }}"></script>
         </div>
         <!-- willbes-Bnr -->
 
@@ -177,7 +178,7 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
-                                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">

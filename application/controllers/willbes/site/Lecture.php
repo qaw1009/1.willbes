@@ -87,7 +87,6 @@ class Lecture extends \app\controllers\FrontController
         }
 
         $this->load->view('site/lecture/index' . $this->_pass_site_val, [
-            'arr_param' => $params,
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'data' => [
@@ -151,7 +150,6 @@ class Lecture extends \app\controllers\FrontController
         $data['base']['ProfReferData'] = json_decode($data['base']['ProfReferData'], true);
 
         $this->load->view('site/lecture/show' . $this->_pass_site_val, [
-            'arr_param' => $params,
             'data' => $data['base'],
             'contents' => $data['contents'],
             'salebooks' => $data['salebooks'],

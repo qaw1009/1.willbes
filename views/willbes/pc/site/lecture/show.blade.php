@@ -18,7 +18,7 @@
                     <img src="{{ $data['ProfReferData']['lec_detail_img'] }}">
                 </div>
                 <div class="prof-home subBtn NSK">
-                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $data['ProfIdx']) . '/?subject_idx=' . $data['SubjectIdx'] . '&subject_name=' . rawurlencode($data['SubjectName']) }}">
+                    <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $data['ProfIdx']) . '/?subject_idx=' . $data['SubjectIdx'] . '&subject_name=' . rawurlencode($data['SubjectName']) }}">
                         <img src="{{ img_url('sub/icon_profhome.gif') }}" style="margin-top: -4px; margin-right: 4px">교수홈
                     </a>
                 </div>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="all-view subBtn NSK">
-                        <a href="{{ site_url('/lecture/index/cate/' . $arr_param['cate'] . '/?prof_idx=' . $data['ProfIdx']) }}">
+                        <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/?prof_idx=' . $data['ProfIdx']) }}">
                             개설강좌 전체보기 >
                         </a>
                     </div>

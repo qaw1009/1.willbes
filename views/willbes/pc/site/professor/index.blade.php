@@ -31,7 +31,7 @@
                 <ul class="List-Table GM tx-gray">
                     @foreach($arr_base['product'] as $idx => $row)
                         <li>
-                            <a href="{{ site_url('/lecture/show/cate/' . $arr_param['cate'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a><span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
+                            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a><span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
                         </li>
                     @endforeach
                 </ul>
@@ -120,7 +120,7 @@
                 {{-- 교수별 상품 리스트 loop --}}
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
-                    <a href="{{ site_url('/professor/show/cate/' . $arr_param['cate'] . '/prof-idx/' . $row['ProfIdx'] . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
+                    <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $row['ProfIdx'] . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
                         <div class="line">-</div>
                     </a>
                     <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">

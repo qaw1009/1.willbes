@@ -1,0 +1,1 @@
+document.write('<img src="{{ img_url('sample/bnr1.jpg') }}">');

@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-2 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true) !!}
                     </div>
                     <div class="col-md-5">
                         <p class="form-control-static">• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</p>
@@ -239,12 +239,12 @@
                 var _url = '{{ site_url("/site/banner/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
-                    @if($method == 'POST')
+                    {{--@if($method == 'POST')
                     if($regi_form.find('input[name="cate_code[]"]').length < 1) {
                         alert('카테고리 선택 필드는 필수입니다.');
                         return false;
                     }
-                    @endif
+                    @endif--}}
 
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);

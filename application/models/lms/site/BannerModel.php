@@ -45,7 +45,7 @@ class BannerModel extends WB_Model
 
         $from = "
             FROM {$this->_table['banner']} AS A
-            INNER JOIN (
+            LEFT JOIN (
                 SELECT B.BIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
                 FROM {$this->_table['banner_r_category']} AS B
                 INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
@@ -58,7 +58,7 @@ class BannerModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
         ";
 
-        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -143,13 +143,15 @@ class BannerModel extends WB_Model
 
             //카테고리 저장
             $category_code = element('cate_code', $input);
-            foreach ($category_code as $key => $val) {
-                $category_data['BIdx'] = $b_idx;
-                $category_data['CateCode'] = $val;
-                $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                $category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addBannerCategory($category_data) === false) {
-                    throw new \Exception('카테고리 등록에 실패했습니다.');
+            if (count($category_code) > 0) {
+                foreach ($category_code as $key => $val) {
+                    $category_data['BIdx'] = $b_idx;
+                    $category_data['CateCode'] = $val;
+                    $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addBannerCategory($category_data) === false) {
+                        throw new \Exception('카테고리 등록에 실패했습니다.');
+                    }
                 }
             }
 

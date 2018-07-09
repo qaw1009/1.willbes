@@ -114,7 +114,7 @@ class Banner extends \app\controllers\BaseController
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
+                /*['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],*/
                 ['field' => 'attach_img', 'label' => '배너이미지', 'rules' => 'callback_validateFileRequired[attach_img]']
             ]);
         } else {

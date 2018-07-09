@@ -136,7 +136,6 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            //if (data == null) {
                             if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
                                 return '통합';
                             } else {

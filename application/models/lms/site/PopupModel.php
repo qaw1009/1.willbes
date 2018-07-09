@@ -46,7 +46,7 @@ class PopupModel extends WB_Model
 
         $from = "
             FROM {$this->_table['popup']} AS A
-            INNER JOIN (
+            LEFT JOIN (
                 SELECT B.PIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
                 FROM {$this->_table['popup_r_category']} AS B
                 INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
@@ -58,7 +58,7 @@ class PopupModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
         ";
 
-        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -195,14 +195,16 @@ class PopupModel extends WB_Model
             $p_idx = $this->_conn->insert_id();
 
             //카테고리 저장
-            $category_code = element('cate_code', $input);
-            foreach ($category_code as $key => $val) {
-                $category_data['PIdx'] = $p_idx;
-                $category_data['CateCode'] = $val;
-                $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                $category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addPopupCategory($category_data) === false) {
-                    throw new \Exception('카테고리 등록에 실패했습니다.');
+            if ($site_code != config_item('app_intg_site_code')) {
+                $category_code = element('cate_code', $input);
+                foreach ($category_code as $key => $val) {
+                    $category_data['PIdx'] = $p_idx;
+                    $category_data['CateCode'] = $val;
+                    $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addPopupCategory($category_data) === false) {
+                        throw new \Exception('카테고리 등록에 실패했습니다.');
+                    }
                 }
             }
 

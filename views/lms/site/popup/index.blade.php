@@ -4,7 +4,7 @@
     <h5>- 사이트 섹션별 팝업를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true, []) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
@@ -128,12 +128,16 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
+                            if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
+                                return '통합';
+                            } else {
+                                var obj = data.split(',');
+                                var str = '';
+                                for (key in obj) {
+                                    str += obj[key]+"<br>";
+                                }
+                                return str;
                             }
-                            return str;
                         }},
                     {'data' : 'DispName'},
                     {'data' : 'PopUpName', 'render' : function(data, type, row, meta) {

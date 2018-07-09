@@ -142,8 +142,8 @@ class BannerModel extends WB_Model
             $b_idx = $this->_conn->insert_id();
 
             //카테고리 저장
-            $category_code = element('cate_code', $input);
-            if (count($category_code) > 0) {
+            if ($site_code != config_item('app_intg_site_code')) {
+                $category_code = element('cate_code', $input);
                 foreach ($category_code as $key => $val) {
                     $category_data['BIdx'] = $b_idx;
                     $category_data['CateCode'] = $val;

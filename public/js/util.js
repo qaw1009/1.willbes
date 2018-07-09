@@ -382,6 +382,27 @@ function sendLoadingAjax(url, data, callback, error_callback, method, loading_ta
 }
 
 /**
+ * sendAjax 에러 콜백 (alert 사용)
+ * @param result
+ * @param status
+ */
+function showAlertError(result, status) {
+     var err_msg = result.ret_msg || '';
+
+     if (err_msg === '') {
+         if (status === 401) {  //권한 없음 || 미로그인
+             err_msg = '권한이 없습니다.';
+         } else if (status === 403) {
+             err_msg = '토큰 정보가 올바르지 않습니다.';
+         } else if (status === 422) {
+             err_msg = '필수 파라미터 오류입니다.';
+         }
+     }
+
+     alert(err_msg);
+}
+
+/**
  * sendAjax 에러 콜백
  * @param result
  * @param status

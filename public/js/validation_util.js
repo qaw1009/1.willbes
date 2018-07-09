@@ -40,11 +40,11 @@ function formSubmit(frmObj)
  * @param error_callback
  * @param validate_callback
  * @param async
- * @param error_view :: layer, alert
+ * @param error_view :: notify, alert
  */
 function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, async, error_view)
 {
-    if(typeof error_view == 'undefined') error_view = 'alert';
+    if(typeof error_view === 'undefined') error_view = 'alert';
 
     frmObj.ajaxSubmit({
         url : url,
@@ -58,9 +58,9 @@ function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, as
             //validator.settings.classes.item = 'item';
             var validatorResult = { valid : false };
 
-            if (error_view == 'alert') {
+            if (error_view === 'alert') {
                 validatorResult = validator.checkAll(frmObj.get(0), error_view);
-            } else if (error_view == 'layer') {
+            } else if (error_view === 'notify') {
                 validatorResult = validator.checkAll(frmObj.get(0));
             }
 
@@ -104,12 +104,12 @@ function ajaxSubmit(frmObj, url, callback, error_callback, validate_callback, as
  * @param callback
  * @param error_callback
  * @param validate_callback
- * @param error_view :: layer, alert
+ * @param error_view :: notify, alert
  * @param loading_target : loading action target
  */
 function ajaxLoadingSubmit(frmObj, url, callback, error_callback, validate_callback, error_view, loading_target)
 {
-    if(typeof error_view == 'undefined') error_view = 'alert';
+    if(typeof error_view === 'undefined') error_view = 'alert';
 
     frmObj.ajaxSubmit({
         url : url,
@@ -122,9 +122,9 @@ function ajaxLoadingSubmit(frmObj, url, callback, error_callback, validate_callb
             var validator = new FormValidator();
             var validatorResult = { valid : false };
 
-            if (error_view == 'alert') {
+            if (error_view === 'alert') {
                 validatorResult = validator.checkAll(frmObj.get(0), error_view);
-            } else if (error_view == 'layer') {
+            } else if (error_view === 'notify') {
                 validatorResult = validator.checkAll(frmObj.get(0));
             }
 
@@ -174,16 +174,13 @@ function ajaxLoadingSubmit(frmObj, url, callback, error_callback, validate_callb
  * validation 에러 메시지 표시
  * @param result validation result
  * @param status http code
+ * @param error_view error display method (notifyAlert | javascript alert)
  */
 function showValidateError(result, status, error_view)
 {
-    if(typeof error_view == 'undefined') error_view = 'alert';
+    if(typeof error_view === 'undefined') error_view = 'alert';
 
-    if (status === 401) {  //권한 없음 || 미로그인
-        notifyAlert('error', '알림', '권한이 없습니다.');
-    } else if (status === 403) {
-        notifyAlert('error', '알림', (result.ret_msg) ? result.ret_msg : '토큰 정보가 올바르지 않습니다.');
-    } else if (status === 422) { // validation error (Unprocessable Entity)
+    if (status === 422) { // validation error (Unprocessable Entity)
         var _result_filter = {}; // 배열의 경우 메시지는 1회만 표시하기 위함 (validation에서 wildcard(*) 사용 시)
         $.each(result, function(key, value) {
             if (key.indexOf('.') < 0) { // 일반 input
@@ -197,14 +194,15 @@ function showValidateError(result, status, error_view)
         // reset validate error field
         $('.form-group').removeClass('has-error');
 
-        if (error_view == 'alert') {
+        if (error_view === 'alert') {
             // 첫번째 오류 메시지
             alert(_result_filter[Object.keys(_result_filter)[0]]);
             setValidateHasError(Object.keys(_result_filter)[0]);
         } else {
+            var $form_errors = $('#form-errors');
             // reset validate error message
-            if ($('#form-errors').length > 0) {
-                $('#form-errors').html('');
+            if ($form_errors.length > 0) {
+                $form_errors.html('');
             } else {
                 $('<div id="form-errors" class="alert alert-danger"><div>').insertBefore('form:eq(0)'); // form-errors가 없는 예외 처리
             }
@@ -215,7 +213,7 @@ function showValidateError(result, status, error_view)
                 errorsHtml += '<li>' + value + '</li>';
             });
             errorsHtml += '</ul>';
-            $('#form-errors').html(errorsHtml); //appending to a <div id="form-error"></div> inside form
+            $form_errors.html(errorsHtml); //appending to a <div id="form-error"></div> inside form
 
             // input 에 error 표시 (테두리)
             $.each(result, function(key, value) {
@@ -225,7 +223,20 @@ function showValidateError(result, status, error_view)
 
         $('html,body').scrollTop(0);
     } else {
-        notifyAlert('error', '알림', result.ret_msg);
+        var err_msg = result.ret_msg || '';
+        if (err_msg === '') {
+            if (status === 401) {  //권한 없음 || 미로그인
+                err_msg = '권한이 없습니다.';
+            } else if (status === 403) {
+                err_msg = '토큰 정보가 올바르지 않습니다.';
+            }
+        }
+
+        if (error_view === 'alert') {
+            alert(err_msg);
+        } else {
+            notifyAlert('error', '알림', err_msg);
+        }
     }
 }
 

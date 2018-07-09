@@ -151,7 +151,7 @@
                             @else
 
                                 @foreach($data_sale_ess as $row)
-                                <tr id="essTrId1">
+                                <tr id="essTrId{{$loop->index}}">
                                     <input type="hidden" name="SaleBeforeLectureGroup[]" value="E">
                                     <td>필수 조건 강좌 중 <input type="number" name="DiscNum[]" id="DiscNum{{$loop->index}}" class="form-control" value="{{$row['DiscNum']}}" style="width: 50px;">개 수강시</td>
                                     <td><input type="number" name="DiscRate[]" id="DiscRate{{$loop->index}}" class="form-control" value="{{$row['DiscRate']}}" style="width: 50px;">
@@ -180,8 +180,10 @@
                                 <th>할인금액</th>
                                 <th>삭제</th>
                             </tr>
-                            <tr id="choTrId1">
+
                             @if(empty($data_sale_cho) === true)
+
+                            <tr id="choTrId1">
                                 <input type="hidden" name="SaleBeforeLectureGroup[]" value="C">
                                 <td>선택 조건 강좌 중 <input type="number" name="DiscNum[]" id="DiscNum1" class="form-control" value="" style="width: 50px;">개 수강시</td>
                                 <td><input type="number" name="DiscRate[]" id="DiscRate1" class="form-control" value="" style="width: 50px;">
@@ -191,8 +193,12 @@
                                     </select>&nbsp;
                                 </td>
                                 <td></td>
+                            </tr>
+
                             @else
+
                                 @foreach($data_sale_cho as $row)
+                                <tr id="choTrId{{$loop->index}}">
                                     <input type="hidden" name="SaleBeforeLectureGroup[]" value="C">
                                     <td>선택 조건 강좌 중 <input type="number" name="DiscNum[]" id="DiscNum{{$loop->index}}" class="form-control" value="{{$row['DiscNum']}}" style="width: 50px;">개 수강시</td>
                                     <td><input type="number" name="DiscRate[]" id="DiscRate{{$loop->index}}" class="form-control" value="{{$row['DiscRate']}}" style="width: 50px;">
@@ -202,10 +208,11 @@
                                         </select>&nbsp;
                                     </td>
                                     <td>@if($loop->index !== 1)<a onclick="rowDelete('choTrId{{$loop->index}}')" href="javascript:;"><i class="fa fa-times red"></i></a>@endif</td>
+                                </tr>
                                 @endforeach
 
                             @endif
-                            </tr>
+
                         </table>
                     </div>
                 </div>

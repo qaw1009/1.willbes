@@ -112,7 +112,7 @@
                             return (data === 'N') ? '일반' : '수강생<BR>전용';
                         }},//
                     {'data' : 'prodname_tar', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-select" data-idx="' + row.BlIdx + '"><u>' + data + '</u></a>';
+                            return '<a href="#" class="btn-modify" data-idx="' + row.BlIdx + '"><u>' + data + '</u></a>';
                         }},//대상강좌명
                     {'data' : 'prodname_ess'},//필수강좌명
                     {'data' : 'prodname_cho'},//선택강좌명
@@ -141,7 +141,6 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                alert("aa");
                 location.replace('{{ site_url('/product/etc/beforelecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });

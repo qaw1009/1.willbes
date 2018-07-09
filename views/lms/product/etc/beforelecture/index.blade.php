@@ -13,9 +13,8 @@
                     <div class="col-md-11 form-inline">
                         <select class="form-control" id="search_lectype_ccd" name="search_lectype_ccd">
                             <option value="">선수강좌유형</option>
-                            @foreach($BeforeType_ccd as $key=>$val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
+                                <option value="N">일반</option>
+                                <option value="S">수강생전용</option>
                         </select>
                         &nbsp;
                         <select class="form-control" id="search_is_dup" name="search_is_dup">

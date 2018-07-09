@@ -13,12 +13,7 @@ Class BeforeLecture extends \app\controllers\BaseController
 
     public function index()
     {
-        //공통코드
-        $codes = $this->codeModel->getCcdInArray(['659']);
-
-        $this->load->view('product/etc/beforelecture/index',[
-            'BeforeType_ccd' => $codes['659'],
-        ]);
+        $this->load->view('product/etc/beforelecture/index');
     }
 
     /**
@@ -36,25 +31,28 @@ Class BeforeLecture extends \app\controllers\BaseController
             ],
         ];
 
+        if( !empty($this->_reqP('search_type')) && !empty($this->_reqP('search_value')) ) {
 
-            $arr_condition = array_merge($arr_condition,[
-                'ORG1' => [
-                    'LKB' => [
-                        'A.ProdCode' => $this->_reqP('search_value'),
-                        'A.ProdName' => $this->_reqP('search_value')
-                    ]
-                ],
-            ]);
+                $arr_condition = array_merge($arr_condition, [
+                    'ORG1' => [
+                        'LKB' => [
+                            'prodname_' . $this->_reqP('search_type') => $this->_reqP('search_value'),
+                            'prodcode_' . $this->_reqP('search_type') => $this->_reqP('search_value')
+                        ]
+                    ],
+                ]);
 
-
-        if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
-            $arr_condition = array_merge($arr_condition, [
-                'BDT' => [
-                    'A.ValidPeriodStartDate' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
-                ],
-            ]);
+            if( $this->_reqP('search_type') === 'ess' ) {   //선택까지 검색
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'ORG1' => [
+                        'LKB' => [
+                            'prodname_cho' => $this->_reqP('search_value'),
+                            'prodcode_cho' => $this->_reqP('search_value')
+                        ]
+                    ],
+                ]);
+            }
         }
-
 
         //var_dump($arr_condition);
 

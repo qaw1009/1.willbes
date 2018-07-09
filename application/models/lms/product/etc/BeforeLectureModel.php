@@ -53,6 +53,7 @@ class BeforeLectureModel extends WB_Model
                         join 
                         (
                             select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_tar
+                            ,group_concat(concat(aa.prodcode)) as prodcode_tar
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
@@ -65,6 +66,7 @@ class BeforeLectureModel extends WB_Model
                         left outer join 
                         (
                             select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_ess
+                            ,group_concat(concat(aa.prodcode)) as prodcode_ess
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
@@ -77,6 +79,7 @@ class BeforeLectureModel extends WB_Model
                         left outer join 
                         (
                             select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_cho
+                            ,group_concat(concat(aa.prodcode)) as prodcode_cho
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode

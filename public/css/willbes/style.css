@@ -855,12 +855,13 @@ table.auTable tr td {
 }
 #Header .loginDepth {
     float: right;
+    z-index: 10;
 }
 #Header ul.myLog {
     line-height: 40px;
 }
 #Header ul.myLog li:first-child {
-    margin-left: none;
+    margin-left: 0;
 }
 #Header ul.myLog li {
     float: left;
@@ -945,7 +946,14 @@ table.auTable tr td {
     border-width: 5px;
 }
 .drop-Box ul li {
+    width: 100%;
     line-height: 18px;
+    margin-left: 0 !important;
+}
+.drop-Box ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 .drop-Box.joinUs-Box {
     top: 40px;
@@ -1377,6 +1385,8 @@ table.auTable tr td {
     margin: 0 10px;
 }
 .Menu .menu-List {
+    position: relative;
+    z-index: 9;
     float: right;
 }
 .Menu .menu-List li {
@@ -1400,6 +1410,63 @@ table.auTable tr td {
     width: 4px;
     height: 8px;
     margin: 17px 5px 0;
+}
+
+/* subContainer : Menu : list-drop-Box  */
+.list-drop-Box {
+    width: 110px;
+    padding: 20px;
+}
+.list-drop-Box ul li {
+    line-height: 22px;
+}
+.list-drop-Box ul li a {
+    font-size: 13px;
+    font-weight: 300;
+}
+.list-drop-Box .Tit {
+    font-size: 15px;
+    color: #2784d2;
+    margin-bottom: 10px;
+}
+.list-drop-Box .Tit.line {
+    margin-top: 20px;
+}
+.drop-Box.Prof-Box {
+    top: 38px;
+    left: -105px;
+    width: 645px;
+}
+.drop-Box.Prof-Box:before {
+    margin-left: -138px;
+}
+.drop-Box.Prof-Box:after {
+    margin-left: -137px;
+}
+.list-drop-Box dl:first-child {
+    width: 100px;
+    padding-left: 15px;
+}
+.list-drop-Box dl {
+    float: left;
+    width: 125px;
+    padding-left: 35px;
+}
+.list-drop-Box dl dt {
+    line-height: 22px;
+}
+.list-drop-Box dl dt a {
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.drop-Box.PASS-Box {
+    top: 38px;
+    left: 132px;
+}
+.drop-Box.Package-Box {
+    top: 38px;
+    left: 220px;
 }
 
 /* subContainer : Depth */

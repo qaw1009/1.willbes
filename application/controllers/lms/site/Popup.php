@@ -99,7 +99,7 @@ class Popup extends \app\controllers\BaseController
         $rules = [
             ['field' => 'popup_disp', 'label' => '노출섹션', 'rules' => 'trim|required'],
             ['field' => 'popup_name', 'label' => '배너명', 'rules' => 'trim|required'],
-            ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[self,blank]'],
             ['field' => 'top_pixel', 'label' => '팝업위치 상단', 'rules' => 'trim|required|integer'],
             ['field' => 'left_pixel', 'label' => '팝업위치 좌측', 'rules' => 'trim|required|integer'],
             ['field' => 'width_size', 'label' => '팝업사이즈 가로', 'rules' => 'trim|required|integer'],

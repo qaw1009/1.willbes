@@ -34,7 +34,7 @@ class PopupModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispStartTime, A.DispEndDatm, A.DispEndTime,
+            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.DispCcd, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
             A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.OrderNum,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
@@ -87,11 +87,12 @@ class PopupModel extends WB_Model
      */
     public function findPopupForModify($arr_condition)
     {
-        $column = '
-            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.DispCcd, A.TopPixel, A.LeftPixel, A.Width, A.Height, H.CcdName AS DispName, A.DispStartDatm, A.DispStartTime, A.DispEndDatm, A.DispEndTime,
+        $column = "
+            A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.DispCcd, A.TopPixel, A.LeftPixel, A.Width, A.Height, H.CcdName AS DispName, A.DispStartDatm, A.DispEndDatm,
+            DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
-            ';
+            ";
 
         $from = "
             FROM {$this->_table['popup']} AS A
@@ -167,14 +168,24 @@ class PopupModel extends WB_Model
             $order_num = get_var(element('order_num', $input), $this->_getPopupOrderNum($site_code, $popup_disp));
             $admin_idx = $this->session->userdata('admin_idx');
 
+            if (empty(element('disp_start_datm', $input)) === true) {
+                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            } else {
+                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
+            }
+
+            if (empty(element('disp_end_datm', $input)) === true) {
+                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            } else {
+                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
+            }
+
             $data = [
                 'SiteCode' => $site_code,
                 'DispCcd' => element('popup_disp', $input),
                 'PopUpName' => element('popup_name', $input),
-                'DispStartDatm' => element('disp_start_datm', $input),
-                'DispStartTime' => element('disp_start_time', $input),
-                'DispEndDatm' => element('disp_end_datm', $input),
-                'DispEndTime' => element('disp_end_time', $input),
+                'DispStartDatm' => $disp_start_datm,
+                'DispEndDatm' => $disp_end_datm,
                 'TopPixel' => element('top_pixel', $input),
                 'LeftPixel' => element('left_pixel', $input),
                 'Width' => element('width_size', $input),
@@ -273,13 +284,23 @@ class PopupModel extends WB_Model
             $popup_disp = element('popup_disp', $input);
             $order_num = get_var(element('order_num', $input), $this->_getPopupOrderNum($site_code, $popup_disp));
 
+            if (empty(element('disp_start_datm', $input)) === true) {
+                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            } else {
+                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
+            }
+
+            if (empty(element('disp_end_datm', $input)) === true) {
+                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            } else {
+                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
+            }
+
             $data = [
                 'DispCcd' => element('popup_disp', $input),
                 'PopUpName' => element('popup_name', $input),
-                'DispStartDatm' => element('disp_start_datm', $input),
-                'DispStartTime' => element('disp_start_time', $input),
-                'DispEndDatm' => element('disp_end_datm', $input),
-                'DispEndTime' => element('disp_end_time', $input),
+                'DispStartDatm' => $disp_start_datm,
+                'DispEndDatm' => $disp_end_datm,
                 'TopPixel' => element('top_pixel', $input),
                 'LeftPixel' => element('left_pixel', $input),
                 'Width' => element('width_size', $input),

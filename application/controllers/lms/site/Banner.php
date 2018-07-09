@@ -106,7 +106,7 @@ class Banner extends \app\controllers\BaseController
             ['field' => 'banner_disp', 'label' => '노출섹션', 'rules' => 'trim|required'],
             ['field' => 'banner_location', 'label' => '배너위치', 'rules' => 'trim|required'],
             ['field' => 'banner_name', 'label' => '배너명', 'rules' => 'trim|required'],
-            ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[self,blank]'],
             ['field' => 'link_url', 'label' => '링크주소', 'rules' => 'trim|required']
         ];
 

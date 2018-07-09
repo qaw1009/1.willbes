@@ -3,7 +3,7 @@
     <h5>- 사이트 섹션별 배너를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/banner/store") }}?bm_idx=45" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/banner/store") }}" novalidate>--}}
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="b_idx" value="{{ $b_idx }}"/>
@@ -80,27 +80,27 @@
                     <label class="control-label col-md-2" for="disp_start_datm">노출시간</label>
                     <div class="col-md-4 form-inline">
                         <div class="input-group">
-                            <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{$data['DispStartDatm']}}">
+                            <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{$data['DispStartDay']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="disp_start_time" name="disp_start_time">
                                     @php
                                     for($i=0; $i<=23; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == data['DispStartTime']) ? "selected='selected'" : "";
-                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                        $selected = ($i == $data['DispStartHour']) ? "selected='selected'" : "";
+                                        echo "<option value='{$str}{$i}' {$selected}>{$str}{$i}</option>";
                                     }
                                     @endphp
                                 </select>
                             </div>
                             <div class="input-group-addon no-border no-bgcolor">~</div>
-                            <input type="text" class="form-control datepicker" id="disp_end_datm" name="disp_end_datm" value="{{$data['DispEndDatm']}}">
+                            <input type="text" class="form-control datepicker" id="disp_end_datm" name="disp_end_datm" value="{{$data['DispEndDay']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="disp_end_time" name="disp_end_time">
                                     @php
                                         for($i=0; $i<=23; $i++) {
                                             $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == data['DispEndTime']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                            $selected = ($i == $data['DispEndHour']) ? "selected='selected'" : "";
+                                            echo "<option value='{$str}{$i}' {$selected}>{$str}{$i}</option>";
                                         }
                                     @endphp
                                 </select>
@@ -113,11 +113,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="link_type_y">링크방식<span class="required">*</span></label>
+                    <label class="control-label col-md-2" for="link_type_self">링크방식<span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="link_type_y" name="link_type" class="flat" value="Y" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='Y')checked="checked"@endif/><label for="link_type_y" class="hover mr-5">본창</label>
-                            <input type="radio" id="link_type_n" name="link_type" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="link_type_n" class="">새창</label>
+                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/><label for="link_type_self" class="hover mr-5">본창</label>
+                            <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="">새창</label>
                         </div>
                     </div>
                 </div>

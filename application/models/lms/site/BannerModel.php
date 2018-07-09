@@ -33,7 +33,7 @@ class BannerModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.BIdx, A.SiteCode, G.SiteName, A.BannerName, A.DispCcd, H.CcdName AS DispName, A.BannerLocationCcd, I.CcdName AS BannerLocationName, A.DispStartDatm, A.DispStartTime, A.DispEndDatm, A.DispEndTime,
+            A.BIdx, A.SiteCode, G.SiteName, A.BannerName, A.DispCcd, H.CcdName AS DispName, A.BannerLocationCcd, I.CcdName AS BannerLocationName, A.DispStartDatm, A.DispEndDatm,
             A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.OrderNum,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
@@ -82,11 +82,14 @@ class BannerModel extends WB_Model
 
     public function findBannerForModify($arr_condition)
     {
-        $column = '
-            A.BIdx, A.SiteCode, G.SiteName, A.BannerName, A.DispCcd, H.CcdName AS DispName, A.BannerLocationCcd, I.CcdName AS BannerLocationName, A.DispStartDatm, A.DispStartTime, A.DispEndDatm, A.DispEndTime,
+        $column = "
+            A.BIdx, A.SiteCode, G.SiteName, A.BannerName, A.DispCcd, H.CcdName AS DispName, A.BannerLocationCcd, I.CcdName AS BannerLocationName,
+            A.DispStartDatm, A.DispEndDatm,
+            DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
+            DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
             A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
-            ';
+            ";
 
         $from = "
             FROM {$this->_table['banner']} AS A
@@ -117,15 +120,25 @@ class BannerModel extends WB_Model
             $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $banner_disp, $banner_location));
             $admin_idx = $this->session->userdata('admin_idx');
 
+            if (empty(element('disp_start_datm', $input)) === true) {
+                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            } else {
+                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
+            }
+
+            if (empty(element('disp_end_datm', $input)) === true) {
+                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            } else {
+                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
+            }
+
             $data = [
                 'SiteCode' => $site_code,
                 'DispCcd' => element('banner_disp', $input),
                 'BannerLocationCcd' => element('banner_location', $input),
                 'BannerName' => element('banner_name', $input),
-                'DispStartDatm' => element('disp_start_datm', $input),
-                'DispStartTime' => element('disp_start_time', $input),
-                'DispEndDatm' => element('disp_end_datm', $input),
-                'DispEndTime' => element('disp_end_time', $input),
+                'DispStartDatm' => $disp_start_datm,
+                'DispEndDatm' => $disp_end_datm,
                 'LinkType' => element('link_type', $input),
                 'LinkUrl' => element('link_url', $input),
                 'IsUse' => element('is_use', $input),
@@ -201,14 +214,24 @@ class BannerModel extends WB_Model
             $banner_location = element('banner_location', $input);
             $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $banner_disp, $banner_location));
 
+            if (empty(element('disp_start_datm', $input)) === true) {
+                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            } else {
+                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
+            }
+
+            if (empty(element('disp_end_datm', $input)) === true) {
+                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            } else {
+                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
+            }
+
             $data = [
                 'DispCcd' => element('banner_disp', $input),
                 'BannerLocationCcd' => element('banner_location', $input),
                 'BannerName' => element('banner_name', $input),
-                'DispStartDatm' => element('disp_start_datm', $input),
-                'DispStartTime' => element('disp_start_time', $input),
-                'DispEndDatm' => element('disp_end_datm', $input),
-                'DispEndTime' => element('disp_end_time', $input),
+                'DispStartDatm' => $disp_start_datm,
+                'DispEndDatm' => $disp_end_datm,
                 'LinkType' => element('link_type', $input),
                 'LinkUrl' => element('link_url', $input),
                 'IsUse' => element('is_use', $input),

@@ -148,10 +148,7 @@
                             return "<img class='img_"+row.PIdx+"' src='"+img_url+"' width='100%' height='30%'>";
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            var disp_datm = row.DispStartDatm + ' ' + ((row.DispStartTime.length <= '1') ? '0' + row.DispStartTime : row.DispStartTime);
-                            disp_datm += ' ~ ';
-                            disp_datm += row.DispEndDatm + ' ' + ((row.DispEndTime.length <= '1') ? '0' + row.DispEndTime : row.DispEndTime);
-                            return disp_datm;
+                            return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

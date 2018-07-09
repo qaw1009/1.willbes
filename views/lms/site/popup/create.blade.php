@@ -130,11 +130,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="link_type_y">링크방식<span class="required">*</span></label>
+                    <label class="control-label col-md-2" for="link_type_self">링크방식<span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="link_type_y" name="link_type" class="flat" value="Y" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='Y')checked="checked"@endif/><label for="link_type_y" class="hover mr-5">본창</label>
-                            <input type="radio" id="link_type_n" name="link_type" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="link_type_n" class="">새창</label>
+                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/><label for="link_type_self" class="hover mr-5">본창</label>
+                            <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="">새창</label>
                         </div>
                     </div>
                 </div>

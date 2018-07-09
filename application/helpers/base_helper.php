@@ -282,6 +282,33 @@ if (!function_exists('sess_data')) {
     }
 }
 
+if (!function_exists('show_alert')) {
+    /**
+     * javascript alert
+     * @param $msg
+     * @param string $url 리턴 URL, back : 이전 페이지, url : url 이동, empty : only alert
+     */
+    function show_alert($msg, $url = '')
+    {
+        $_CI =& get_instance();
+
+        $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $_CI->config->item('charset') . '">' . PHP_EOL;
+        $output .= '<script type="text/javascript">' . PHP_EOL;
+        $output .= 'alert("' . $msg . '");' . PHP_EOL;
+        if (empty($url) === false) {
+            if ($url == 'back') {
+                $output .= 'history.back();' . PHP_EOL;
+            } else {
+                $output .= 'location.replace("' . $url . '");' . PHP_EOL;
+            }
+        }
+        $output .= '</script>' . PHP_EOL;
+
+        echo($output);
+        exit(1);
+    }
+}
+
 if (!function_exists('starts_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 시작하는지 여부 체크

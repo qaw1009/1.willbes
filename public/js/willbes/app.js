@@ -112,13 +112,26 @@ $(function() {
     });
 });
 
-// checkbox 필수체크버튼 Script
+// checkbox 필수체크버튼(전체동의) Script
 $(function() {
-    $('.chkBox-Agree input:checkbox').change(function(){
+    $('.AllchkBox .chkBox-Agree input:checkbox').change(function(){
         if($(this).is(":checked")) {
             $('.chkBox-Agree').addClass("checked");
         } else {
             $('.chkBox-Agree').removeClass("checked");
+        }
+    });
+});
+
+// checkbox 필수체크버튼(개별동의) Script
+$(function() {
+    $('.chkBox-Agree input').click(function() {
+        var $chk_box = $(this).parents('tr').find('input:checked');
+
+        if ($chk_box.is(':checked')) {
+            $(this).parents('.chkBox-Agree').addClass("checked");
+        } else {
+            $(this).parents('.chkBox-Agree').removeClass("checked");
         }
     });
 });

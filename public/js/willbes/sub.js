@@ -101,6 +101,19 @@ $(function() {
     });
 });
 
+// 약관동의 리스트 Script
+$(function() {
+    $('.Member .agree-Chk .agree-Tit').click(function() {
+
+        if ($(this).next().is(':visible')) {
+            $(this).next().hide();
+        } else {
+            $('.Member .agree-Chk .agree-Txt').hide();
+            $(this).next().show();
+        }   
+    });
+});
+
 // 자주하는 질문 메뉴 Script
 $(function() {
     $('.tabcsDepth2 li a.qBox').click(function() {

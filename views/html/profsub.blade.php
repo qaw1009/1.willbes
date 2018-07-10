@@ -1141,7 +1141,7 @@
                                 </table>
                                 <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                        <span>전체목록</span>
+                                        <span>목록</span>
                                     </button>
                                 </div>
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
@@ -1522,7 +1522,7 @@
                                 </div>
                                 <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                        <span>전체목록</span>
+                                        <span>목록</span>
                                     </button>
                                 </div>
 
@@ -1742,7 +1742,7 @@
                                 </table>
                                 <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                        <span>전체목록</span>
+                                        <span>목록</span>
                                     </button>
                                 </div>
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">

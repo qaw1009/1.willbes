@@ -15,7 +15,7 @@
                     <strong>{{ $data['wProfName'] }}</strong><br/>교수님
                 </div>
                 <div class="ProfImg">
-                    <img src="{{ $data['ProfReferData']['lec_detail_img'] }}">
+                    <img src="{{ $data['ProfReferData']['lec_detail_img'] or '' }}">
                 </div>
                 <div class="prof-home subBtn NSK">
                     <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $data['ProfIdx']) . '/?subject_idx=' . $data['SubjectIdx'] . '&subject_name=' . rawurlencode($data['SubjectName']) }}">

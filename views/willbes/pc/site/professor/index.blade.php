@@ -129,7 +129,7 @@
                         <strong>{{ $row['wProfName'] }}</strong><br/>
                         교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
                     </div>
-                    <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] }}">
+                    <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] or '' }}">
                     <div class="w-notice">
                         <dl>
                             <dt><a href="{{ $row['ProfReferData']['ot_url'] or '' }}">대표강의</a></dt>

@@ -1,5 +1,3 @@
-@php //var_dump($__cfg['SiteTreeMenu']) @endphp
-
 @if(empty($__cfg['SiteTreeMenu']) === false)
     <div class="Menu NSK c_both">
         <h3>

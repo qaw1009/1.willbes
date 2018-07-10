@@ -23,7 +23,7 @@
         <div class="topView">
             @foreach($__cfg['GnbTreeMenu'][$__cfg['GnbActiveGroupId']] as $menu_group_id => $menu_group_row)
                 <h1>
-                    <img src="{{ img_url('gnb/icon_willbes2.gif') }}">{{ $menu_group_row['MenuName'] }}
+                    <img src="{{ img_url('gnb/icon_' . $__cfg['GnbActiveGroupId'] . '.gif') }}">{{ $menu_group_row['MenuName'] }}
                 </h1>
                 <h4>
                     <ul>
@@ -84,7 +84,7 @@
                 <div class="gnb-List-Tit">
                     <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
                         <div class="willbes-icon_sm">
-                            <img src="{{ img_url('gnb/icon_willbes1_sm.gif') }}">
+                            <img src="{{ img_url('gnb/icon_' . $menu_group_id . '_sm.gif') }}">
                         </div>
                         <span class="Txt">{{ $menu_row['MenuName'] }}<span class="arrow-Btn">></span></span>
                     </a>

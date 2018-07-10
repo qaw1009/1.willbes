@@ -112,8 +112,7 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            {{--<img src="{{ img_url('sample/bnr1.jpg') }}">--}}
-            <script src="{{ app_url('/banner/index/site/' . $__cfg['SiteCode'] . '/cate/' . $__cfg['CateCode'] . '/section/00000/location/000000', 'www') }}"></script>
+            <script src="{{ app_url('/banner/show/site/' . $__cfg['SiteCode'] . '/cate/' . $__cfg['CateCode'] . '/section/00000/location/000000', 'www') }}"></script>
         </div>
         <!-- willbes-Bnr -->
 

@@ -87,13 +87,13 @@
                     @if(empty(element('subject_idx', $arr_input)) === false)
                         <tr>
                             <th class="tx-gray">교수선택</th>
-                            @if(count($arr_base['professor']) < 1)
+                            @if(empty($arr_base['professor']) === true)
                                 <td colspan="9" class="tx-blue tx-left">* 선택하신 과목의 교수진이 없습니다.</td>
                             @else
                                 <td colspan="9">
                                     <ul class="curriSelect">
-                                        @foreach($arr_base['professor'] as $idx => $row)
-                                            <li><a href="#none" onclick="goUrl('prof_idx', '{{ $row['ProfIdx'] }}');" class="@if(element('prof_idx', $arr_input) == $row['ProfIdx']) on @endif">{{ $row['wProfName'] }}</a></li>
+                                        @foreach($arr_base['professor'] as $prof_idx => $prof_name)
+                                            <li><a href="#none" onclick="goUrl('prof_idx', '{{ $prof_idx }}');" class="@if(element('prof_idx', $arr_input) == $prof_idx) on @endif">{{ $prof_name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </td>

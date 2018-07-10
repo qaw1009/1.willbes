@@ -23,6 +23,7 @@ class Professor extends \app\controllers\FrontController
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $subject_idx = element('subject_idx', $arr_input);
 
         if ($this->_site_id == 'gosi') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
@@ -51,28 +52,34 @@ class Professor extends \app\controllers\FrontController
             ])
         );
 
-        // 교수 조회
-        $arr_base['professor'] = $this->api_get_data(
+        // 전체 교수 조회
+        $arr_professor = $this->api_get_data(
             $this->restclient->getDataJson('product/bases/professor-refer2subject/' . $this->_site_code, [
-                'cate_code' => $this->_cate_code,
-                'subject_idx' => element('subject_idx', $arr_input),
+                'cate_code' => $this->_cate_code
             ])
         );
 
-        // 교수조회 결과에 존재하는 과목 정보
-        $selected_subjects = array_pluck($arr_base['professor'], 'SubjectName', 'SubjectIdx');
+        // LNB 메뉴용 전체 교수 정보
+        $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
+
+        // 선택된 과목에 맞는 교수 정보
+        $arr_base['professor'] = current(element($subject_idx, $arr_subject2professor, []));
 
         // 교수 조회결과 재정의
-        $selected_list = [];
-        foreach ($arr_base['professor'] as $idx => $row) {
-            $row['ProfReferData'] = $row['ProfReferData'] == 'N' ? [] : json_decode($row['ProfReferData'], true);
+        $selected_list = $selected_subjects = [];
+        foreach ($arr_professor as $idx => $row) {
+            if (empty($subject_idx) === true || $subject_idx == $row['SubjectIdx']) {
+                $row['ProfReferData'] = $row['ProfReferData'] == 'N' ? [] : json_decode($row['ProfReferData'], true);
 
-            $selected_list[$row['SubjectIdx']][] = $row;
+                $selected_subjects[$row['SubjectIdx']] = $row['SubjectName'];
+                $selected_list[$row['SubjectIdx']][] = $row;
+            }
         }
 
         $this->load->view('site/professor/index' . $this->_pass_site_val, [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
+            'arr_subject2professors' => $arr_subject2professor,
             'data' => [
                 'subjects' => $selected_subjects,
                 'list' => $selected_list
@@ -93,7 +100,17 @@ class Professor extends \app\controllers\FrontController
 
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        
+
+        // 전체 교수 조회
+        $arr_professor = $this->api_get_data(
+            $this->restclient->getDataJson('product/bases/professor2subject/' . $this->_site_code, [
+                'cate_code' => $this->_cate_code
+            ])
+        );
+
+        // LNB 메뉴용 전체 교수 정보
+        $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
+
         // 교수 정보 조회
         $data = $this->api_get_data(
             $this->restclient->getDataJson('product/professors/index/' . $prof_idx, [
@@ -118,6 +135,7 @@ class Professor extends \app\controllers\FrontController
 
         $this->load->view('site/professor/show' . $this->_pass_site_val, [
             'arr_input' => $arr_input,
+            'arr_subject2professors' => $arr_subject2professor,
             'data' => $data,
             'products' => $products
         ]);

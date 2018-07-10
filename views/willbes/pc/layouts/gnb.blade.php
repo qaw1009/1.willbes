@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="logo">
-        <a href="{{ app_url('/', 'www') }}"><img src="{{ img_url('gnb/logo.gif') }}"></a>
+        <a href="{{ app_url('/', 'www') }}"><img src="{{ $__cfg['Logo'] or img_url('gnb/logo.gif') }}"></a>
     </div>
 
     @if(empty($__cfg['GnbTreeMenu'][$__cfg['GnbActiveGroupId']]) === true)

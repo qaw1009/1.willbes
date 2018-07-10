@@ -1390,6 +1390,7 @@ table.auTable tr td {
     float: right;
 }
 .Menu .menu-List li {
+    position: relative;
     float: left;
     font-size: 16px;
     font-weight: 600;
@@ -1414,6 +1415,9 @@ table.auTable tr td {
 
 /* subContainer : Menu : list-drop-Box  */
 .list-drop-Box {
+    top: 38px;
+    left: 50%;
+    margin-left: -55px;
     width: 110px;
     padding: 20px;
 }

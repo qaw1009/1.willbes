@@ -10,72 +10,12 @@
                 <li class="subTit">일반경찰</li>
             </ul>
             <ul class="menu-List">
-                <li class="dropdown">
+                <li>
                     <a href="#none">교수진소개</a>
-                    <div class="drop-Box list-drop-Box Prof-Box">
-                        <dl>
-                            <dt class="Tit">국어</dt>
-                            <dt><a href="#none">정채영</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                            <dt><a href="#none">이현나</a></dt>
-                            <dt><a href="#none">배미진</a></dt>
-                        </dl>
-                        <dl>
-                            <dt class="Tit">영어</dt>
-                            <dt><a href="#none">최진우</a></dt>
-                            <dt><a href="#none">김윤수</a></dt>
-                            <dt><a href="#none">김진재</a></dt>
-                            <dt><a href="#none">박기헌</a></dt>
-                            <dt class="Tit line">행정법</dt>
-                            <dt><a href="#none">정채영</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                        </dl>
-                        <dl>
-                            <dt class="Tit">한국사</dt>
-                            <dt><a href="#none">최진우</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                            <dt><a href="#none">이현나</a></dt>
-                            <dt><a href="#none">배미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                            <dt><a href="#none">이현나</a></dt>
-                            <dt><a href="#none">배미진</a></dt>
-                        </dl>
-                        <dl>
-                            <dt class="Tit">행정학</dt>
-                            <dt><a href="#none">최진우</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                            <dt><a href="#none">이현나</a></dt>
-                            <dt><a href="#none">배미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                            <dt><a href="#none">이현나</a></dt>
-                            <dt><a href="#none">배미진</a></dt>
-                        </dl>
-                        <dl>
-                            <dt class="Tit">교정학</dt>
-                            <dt><a href="#none">최진우</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt class="Tit line">사회</dt>
-                            <dt><a href="#none">최진우</a></dt>
-                            <dt><a href="#none">기미진</a></dt>
-                            <dt><a href="#none">김세령</a></dt>
-                            <dt><a href="#none">오대혁</a></dt>
-                        </dl>
-                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="#none">PASS</a>
-                    <div class="drop-Box list-drop-Box PASS-Box">
+                    <div class="drop-Box list-drop-Box">
                         <ul>
                             <li class="Tit">PASS</li>
                             <li><a href="#none">0원 PASS</a></li>
@@ -86,7 +26,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#none">패키지</a>
-                    <div class="drop-Box list-drop-Box Package-Box">
+                    <div class="drop-Box list-drop-Box">
                         <ul>
                         <li class="Tit">패키지</li>
                             <li><a href="#none">추천 패키지</a></li>

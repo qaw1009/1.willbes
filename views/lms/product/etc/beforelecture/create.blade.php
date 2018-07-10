@@ -127,7 +127,7 @@
                 <div class="form-group" >
                     <label class="control-label col-md-2" >선수강좌할인(필수)
                     </label>
-                    <div class="col-md-4 form-inline item">
+                    <div class="col-md-6 form-inline item">
                         <p><button type="button" class="btn btn-sm btn-primary ml-5"  onclick="trAdd('ess')">필드추가</button></p>
                         <table class="table table-striped table-bordered" id="essTable" width="100%">
                             <tr>
@@ -172,9 +172,9 @@
                 <div class="form-group" >
                     <label class="control-label col-md-2" >선수강좌할인(선택)
                     </label>
-                    <div class="col-md-4 form-inline item">
+                    <div class="col-md-6 form-inline item">
                         <p><button type="button" class="btn btn-sm btn-primary ml-5" onclick="trAdd('cho')">필드추가</button></p>
-                        <table class="table table-striped table-bordered" id="choTable" width="100%">
+                        <table class="table table-striped table-bordered" id="choTable">
                             <tr>
                                 <th>조건</th>
                                 <th>할인금액</th>

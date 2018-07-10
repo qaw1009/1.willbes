@@ -80,9 +80,9 @@ Class BeforeLecture extends \app\controllers\BaseController
 
         $blidx = null;
         $data = null;
-        $data_sale_ess = null;
-        $data_sale_cho = null;
-        $data_product = null;
+        $data_sale_ess = [];
+        $data_sale_cho = [];
+        $data_product = [];
 
         if(empty($params[0]) === false) {
             $method='PUT';

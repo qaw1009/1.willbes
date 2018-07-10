@@ -205,7 +205,7 @@
                 ,
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat"  name="copyProdCode" value="'+row.ProdCode+'">';
+                            열린문서                            return '<input type="radio" class="flat"  name="copyProdCode" value="'+row.ProdCode+'">';
                         }},
                     {'data' : 'CampusCcd_Name'},//캠퍼스
                     {'data' : null, 'render' : function(data, type, row, meta) {

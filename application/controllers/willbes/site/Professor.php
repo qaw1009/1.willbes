@@ -69,6 +69,25 @@ class Professor extends \app\controllers\FrontController
     }
 
     /**
+     * 교수 프로필 보기 (ajax)
+     * @param array $params
+     * @return CI_Output
+     */
+    public function profile($params = [])
+    {
+        $prof_idx = element('prof-idx', $params);
+        if (empty($prof_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
+
+        $this->load->view('site/professor/profile_modal', [
+            'data' => $data
+        ]);
+    }
+
+    /**
      * 교수 상세
      * @param array $params
      */

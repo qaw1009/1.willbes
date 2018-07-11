@@ -132,10 +132,11 @@
                     <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] or '' }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="{{ $row['ProfReferData']['ot_url'] or '' }}">대표강의</a></dt>
-                            <dt><a href="{{ $row['ProfReferData']['sample_url1'] or '' }}">맛보기</a></dt>
+                            <dt><a href="{{ $row['ProfReferData']['ot_url'] or 'javascript:alert(\'등록된 대표강의가 없습니다.\');' }}">대표강의</a></dt>
+                            <dt><a href="#none" class="btn-prof-profile" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
                         </dl>
                     </div>
+                    <div id="prof_profile_layer_{{ $row['ProfIdx'] }}"></div>
                 </li>
                 @endforeach
             </ul>
@@ -145,4 +146,20 @@
     </div>
 </div>
 <!-- End Container -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 프로필 버튼 클릭
+        $('.profList').on('click', '.btn-prof-profile', function() {
+            var $prof_idx = $(this).data('prof-idx');
+            var data = {
+            };
+            sendAjax('{{ site_url('/professor/profile/prof-idx/') }}' + $prof_idx, data, function(ret) {
+                $('#prof_profile_layer_' + $prof_idx).html(ret).show().css('display', 'block').trigger('create');
+            }, showError, false, 'GET', 'html');
+
+            openWin('LayerProfile');
+            openWin('Profile');
+        });
+    });
+</script>
 @stop

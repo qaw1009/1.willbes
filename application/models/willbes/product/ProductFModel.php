@@ -60,7 +60,6 @@ class ProductFModel extends WB_Model
     /**
      * 판매가능, 판매예정 상품 목록 조회
      * @param $learn_pattern
-     * @param string $select_type
      * @param $column
      * @param array $arr_condition
      * @param null $limit
@@ -71,7 +70,7 @@ class ProductFModel extends WB_Model
     public function listSalesProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $arr_condition = array_merge_recursive($arr_condition, [
-            'EQ' => ['IsSaleEnd' => 'N', 'IsUse' => 'Y'],
+            'EQ' => ['LecSaleType' => 'N', 'IsSaleEnd' => 'N', 'IsUse' => 'Y'],
             'IN' => ['SaleStatusCcd' => $this->_sale_status_ccds],
             'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
         ]);
@@ -82,7 +81,6 @@ class ProductFModel extends WB_Model
     /**
      * 단일상품 조회
      * @param $learn_pattern
-     * @param $select_type
      * @param $prod_code
      * @return array
      */

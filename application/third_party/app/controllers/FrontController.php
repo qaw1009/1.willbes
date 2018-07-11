@@ -170,7 +170,7 @@ abstract class FrontController extends BaseController
 
         $configs = array_merge(
                         $site_cache,
-                        ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site],
+                        ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
                         config_item(SUB_DOMAIN),
                         ['GnbActiveGroupId' => $gnb_active_group_id],
                         ['GnbTreeMenu' => $gnb_tree_menu],

@@ -16,7 +16,7 @@
         @include('willbes.pc.layouts.partial.site_professor_lnb_menu')
     </div>
     <div class="Content p_re ml20">
-        <!-- willbes-Layer-ProfileBox -->
+        <!-- willbes-Prof-Profile -->
         <div class="willbes-Prof-Profile p_re mb40 NG tx-black">
             <div class="ProfImg p_re">
                 <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}">
@@ -76,7 +76,7 @@
             </div>
             <!-- // willbes-Layer-ProfileBox -->
             <div id="Profile" class="willbes-Layer-ProfileBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'),closeWin('Profile')">
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'); closeWin('Profile')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['wProfName'] }}</span> 교수님 프로필</div>
@@ -95,7 +95,7 @@
             <!-- // willbes-Layer-ProfileBox -->
             <!-- willbes-Layer-CurriBox -->
             <div id="Curriculum" class="willbes-Layer-CurriBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum'),closeWin('Curriculum')">
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum'); closeWin('Curriculum')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['wProfName'] }}</span> 교수님 커리큘럼</div>
@@ -106,7 +106,7 @@
             <div id="LayerCurriculum" class="willbes-Layer-Black"></div>
             <!-- // willbes-Layer-CurriBox -->
         </div>
-        <!-- willbes-Prof-Profile -->
+        <!-- // willbes-Prof-Profile -->
         <!-- willbes-NoticeWrap -->
         <div class="willbes-NoticeWrap p_re mb15 c_both">
             <div class="willbes-listTable willbes-newLec widthAuto460 mr20">

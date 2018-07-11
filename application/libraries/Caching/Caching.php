@@ -80,10 +80,17 @@ class Caching extends CI_Driver_Library
     {
         $this->_driver != 'dummy' && $key =  $this->{$this->_driver}->_key;
 
-        $data = @$this->_CI->cache->get($key);
+        if (($data = @$this->_CI->cache->get($key)) === false) {
+            // get backup cache
+            $data = $this->_CI->cache->{$this->_cache_backup_adapter}->get($key);
+        }
 
-        // get backup cache
-        $data === false && $data = $this->_CI->cache->{$this->_cache_backup_adapter}->get($key);
+        if ($data === false) {
+            // save cache
+            $this->save();
+
+            return $this->get($key);
+        }
 
         return $data;
     }

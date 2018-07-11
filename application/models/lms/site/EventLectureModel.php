@@ -29,7 +29,7 @@ class EventLectureModel extends WB_Model
     ];
 
     // 신청유형
-    public $_requst_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트',];
+    public $_requst_type_names = ['1' => '설명회','22' => '특강','3' => '이벤트',];
 
     // 참여구분
     public $_take_type_names = ['1' => '회원','2' => '회원+비회원'];
@@ -357,12 +357,13 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, 
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             A.EventStartDate, A.EventStartHour, A.EventStartMin, A.EventEndDate, A.EventEndHour, A.EventEndMin, A.EventNum,
             A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
             A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
-            A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx
+            A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
+            B.SiteName, E.CcdName AS CampusName
             ";
 
         $from = "
@@ -370,6 +371,7 @@ class EventLectureModel extends WB_Model
             INNER JOIN {$this->_table['site']} AS B ON A.SiteCode = B.SiteCode
             INNER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
+            INNER JOIN {$this->_table['sys_code']} AS E ON A.CampusCcd = E.Ccd AND E.IsStatus='Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -240,7 +240,7 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
-     * 접수관리 데이터 삭제
+     * 이벤트 접수 관리 : 정원제한 다중리스트 데이터 삭제
      */
     public function delRegister()
     {
@@ -255,6 +255,53 @@ class EventLecture extends \app\controllers\BaseController
 
         $result = $this->eventLectureModel->delRegister($this->_reqP('er_idx'));
         $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    public function read($params = [])
+    {
+        $el_idx = $params[0];
+        $file_data = null;
+
+        $arr_condition = ([
+            'EQ'=>[
+                'A.ElIdx' => $el_idx,
+                'A.IsStatus' => 'Y'
+            ]
+        ]);
+        $data = $this->eventLectureModel->findEventForModify($arr_condition);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        // 신청유형
+        $data['RequstTypeName'] = (empty($this->eventLectureModel->_requst_type_names[$data['RequstType']]) === true) ? '' : $this->eventLectureModel->_requst_type_names[$data['RequstType']];
+
+        // 참여구분
+        $data['TakeTypeName'] = (empty($this->eventLectureModel->_take_type_names[$data['TakeType']]) === true) ? '' : $this->eventLectureModel->_take_type_names[$data['TakeType']];
+
+        // 접수상태
+        $data['IsRegisterName'] = (empty($this->eventLectureModel->_is_register_names[$data['IsRegister']]) === true) ? '' : $this->eventLectureModel->_is_register_names[$data['IsRegister']];
+
+        // 카테고리 연결 데이터 조회
+        $arr_cate_code = $this->eventLectureModel->listEventCategory($el_idx);
+        $data['CateCodes'] = $arr_cate_code;
+        $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+        $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
+
+        // 등록파일 데이터 조회
+        $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
+        foreach ($list_event_file as $row) {
+            $file_data[$row['FileType']]['file_idx'] = $row['EfIdx'];
+            $file_data[$row['FileType']]['file_real_name'] = $row['FileRealName'];
+            $file_data[$row['FileType']]['file_path'] = $row['FileFullPath'].$row['FileName'];
+        }
+
+        $this->load->view("site/event_lecture/read", [
+            'data' => $data,
+            'el_idx' => $el_idx,
+            'file_data' => $file_data
+        ]);
     }
 
     /**

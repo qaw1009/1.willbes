@@ -1,5 +1,4 @@
 @extends('lcms.layouts.master')
-
 @section('content')
     <h5>- 이벤트, 설명회, 특강 등을 등록하고 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">

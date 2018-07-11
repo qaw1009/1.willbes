@@ -2,8 +2,8 @@
 @section('content')
     <h5>- 이벤트, 설명회, 특강 등을 등록하고 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-        <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventLecture/store") }}?bm_idx=45" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventLecture/store") }}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="el_idx" value="{{ $el_idx }}"/>
@@ -56,24 +56,24 @@
                     <label class="control-label col-md-2">신청유형 <span class="required">*</span></label>
                     <div class="col-md-2 item form-inline">
                         <div class="radio">
-                            <input type="radio" class="flat" id="requst_type_1" name="requst_type" value="1" title="설명회" required="required" @if($method == 'POST' || $data['RequstType']=='1')checked="checked"@endif> <label for="requst_type_1" class="mr-10">설명회</label>
-                            <input type="radio" class="flat" id="requst_type_2" name="requst_type" value="2" title="특강" @if($data['RequstType']=='2')checked="checked"@endif> <label for="requst_type_2" class="mr-10">특강</label>
-                            <input type="radio" class="flat" id="requst_type_3" name="requst_type" value="3" title="이벤트" @if($data['RequstType']=='3')checked="checked"@endif> <label for="requst_type_3" class="mr-10">이벤트</label>
+                            @foreach($arr_requst_types as $key => $val)
+                                <input type="radio" class="flat" id="requst_type_{{$key}}" name="requst_type" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['RequstType']==$key)checked="checked"@endif> <label for="requst_type_{{$key}}" class="mr-10">{{$val}}</label>
+                            @endforeach
                         </div>
                     </div>
                     <label class="control-label col-md-2 col-lg-offset-1">특강구분</label>
                     <div class="col-md-4 form-inline">
-                        <select class="form-control mr-10" id="subject_code" name="subject_code">
+                        <select class="form-control mr-10" id="subject_idx" name="subject_idx" title="과목">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
-                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['SubjectIdx'] == $data['SubjectIdx'])selected="selected"@endif>{{ $row['SubjectName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-10" id="prof_code" name="prof_code">
+                        <select class="form-control mr-10" id="prof_idx" name="prof_idx" title="교수">
                             <option value="">교수</option>
                             @foreach($arr_professor as $row)
-                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['ProfIdx'] == $data['ProfIdx'])selected="selected"@endif>{{ $row['wProfName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -83,8 +83,9 @@
                     <label class="control-label col-md-2">참여구분</label>
                     <div class="col-md-2 form-inline">
                         <div class="radio">
-                            <input type="radio" id="take_type_1" name="take_type" class="flat" value="1" title="회원" @if($method == 'POST' || $data['TakeType']=='1')checked="checked"@endif/><label for="take_type_1" class="hover mr-5">회원</label>
-                            <input type="radio" id="take_type_2" name="take_type" class="flat" value="2" title="회원+비회원" @if($data['TakeType']=='2')checked="checked"@endif/> <label for="take_type_2" class="">회원+비회원</label>
+                            @foreach($arr_take_types as $key => $val)
+                                <input type="radio" class="flat" id="take_type_{{$key}}" name="take_type" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['TakeType']==$key)checked="checked"@endif> <label for="take_type_{{$key}}" class="mr-10">{{$val}}</label>
+                            @endforeach
                         </div>
                     </div>
                     <label class="control-label col-md-2 col-lg-offset-1">접수기간 <span class="required">*</span></label>
@@ -103,8 +104,9 @@
                     <label class="control-label col-md-2">접수상태 <span class="required">*</span></label>
                     <div class="col-md-2 item form-inline">
                         <div class="radio">
-                            <input type="radio" class="flat" id="is_register_y" name="is_register" value="Y" title="접수중" required="required" @if($method == 'POST' || $data['IsRegister']=='Y')checked="checked"@endif> <label for="is_register_y" class="mr-10">접수중</label>
-                            <input type="radio" class="flat" id="is_register_n" name="is_register" value="N" title="마감" @if($data['IsRegister']=='N')checked="checked"@endif> <label for="is_register_n" class="mr-10">마감</label>
+                            @foreach($arr_is_registers as $key => $val)
+                                <input type="radio" class="flat" id="is_register_{{$key}}" name="is_register" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['IsRegister']==$key)checked="checked"@endif> <label for="is_register_{{$key}}" class="mr-10">{{$val}}</label>
+                            @endforeach
                         </div>
                     </div>
                     <label class="control-label col-md-2 col-lg-offset-1" for="is_use_y">사용여부<span class="required">*</span></label>
@@ -155,7 +157,7 @@
 
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="event_end_datm" name="event_end_datm" value="{{$data['EventEndDatm']}}">
+                            <input type="text" class="form-control datepicker" id="event_end_datm" name="event_end_datm" value="{{$data['EventEndDate']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="event_end_hour" name="event_end_hour">
                                     @php
@@ -201,9 +203,9 @@
                     <label class="control-label col-md-2">내용 <span class="required">*</span></label>
                     <div class="col-md-7 item form-inline form-content-input hide" id="content_file">
                         <input type="file" id="attach_file_C" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control" title="내용 이미지">
-                        @if(empty($data['FileName']) === false)
-                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['FileFullPath'] . $data['FileName'] }}" rel="popup-image">{{ $data['FileRealName'] }}</a> ]
-                                <a href="#none" class="file-delete" data-attach-idx="{{ $data['EfIdx']  }}"><i class="fa fa-times red"></i></a>
+                        @if(empty($file_data['C']) === false)
+                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['C']['file_path'] }}" rel="popup-image">{{ $file_data['C']['file_real_name'] }}</a> ]
+                                <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['C']['file_idx'] }}"><i class="fa fa-times red"></i></a>
                             </p>
                         @endif
                     </div>
@@ -217,9 +219,9 @@
                     <label class="control-label col-md-2" for="attach_file_F">첨부파일</label>
                     <div class="col-md-7 item form-inline">
                         <input type="file" id="attach_file_F" name="attach_file[]" class="form-control" title="첨부파일">
-                        @if(empty($data['FileName']) === false)
-                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['FileFullPath'] . $data['FileName'] }}" rel="popup-image">{{ $data['FileRealName'] }}</a> ]
-                                <a href="#none" class="file-delete" data-attach-idx="{{ $data['EfIdx']  }}"><i class="fa fa-times red"></i></a>
+                        @if(empty($file_data['F']) === false)
+                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['F']['file_path'] }}" rel="popup-image">{{ $file_data['F']['file_real_name'] }}</a> ]
+                                <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['F']['file_idx'] }}"><i class="fa fa-times red"></i></a>
                             </p>
                         @endif
                     </div>
@@ -229,9 +231,9 @@
                     <label class="control-label col-md-2" for="attach_file_S">리스트썸네일<span class="required">*</span></label>
                     <div class="col-md-7 item form-inline">
                         <input type="file" id="attach_file_S" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control" title="리스트썸네일">
-                        @if(empty($data['FileName']) === false)
-                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['FileFullPath'] . $data['FileName'] }}" rel="popup-image">{{ $data['FileRealName'] }}</a> ]
-                                <a href="#none" class="file-delete" data-attach-idx="{{ $data['EfIdx']  }}"><i class="fa fa-times red"></i></a>
+                        @if(empty($file_data['S']) === false)
+                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['S']['file_path'] }}" rel="popup-image">{{ $file_data['S']['file_real_name'] }}</a> ]
+                                <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['S']['file_idx'] }}"><i class="fa fa-times red"></i></a>
                             </p>
                         @endif
                     </div>
@@ -241,9 +243,9 @@
                     <label class="control-label col-md-2" for="attach_file_I">이슈썸네일</label>
                     <div class="col-md-7 form-inline">
                         <input type="file" id="attach_file_I" name="attach_file[]" class="form-control" title="첨부파일">
-                        @if(empty($data['FileName']) === false)
-                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['FileFullPath'] . $data['FileName'] }}" rel="popup-image">{{ $data['FileRealName'] }}</a> ]
-                                <a href="#none" class="file-delete" data-attach-idx="{{ $data['EfIdx']  }}"><i class="fa fa-times red"></i></a>
+                        @if(empty($file_data['I']) === false)
+                            <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['I']['file_path'] }}" rel="popup-image">{{ $file_data['I']['file_real_name'] }}</a> ]
+                                <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['I']['file_idx'] }}"><i class="fa fa-times red"></i></a>
                             </p>
                         @endif
                     </div>
@@ -254,7 +256,8 @@
                     <div class="col-md-4 form-inline item">
                         <div class="checkbox">
                             @foreach($arr_options as $key => $val)
-                                <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}" required="required" @if($data['OptionCcds']==$key)checked="checked"@endif/>
+                                <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}" required="required"
+                                       @if( empty($data['data_option_ccd']) === false && array_key_exists($key, $data['data_option_ccd']) === true )checked="checked"@endif/>
                                 <label class="inline-block mr-5" for="option_ccds_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
@@ -283,10 +286,10 @@
                             <div class="row">
                                 <div class="col-md-11 col-lg-offset-1 form-inline form-limit-type hide" id="table_limit_type_S">
                                     <select class="form-control ml-5" id="person_limit_type" name="person_limit_type">
-                                        <option value="L" @if($data['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
-                                        <option value="N" @if($data['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
+                                        <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
+                                        <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
                                     </select>
-                                    <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{$data['PersonLimit']}}" style="width: 80px;"> 명
+                                    <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
                                 </div>
 
                                 <div class="col-md-11 col-lg-offset-1 form-limit-type hide" id="table_limit_type_M">
@@ -316,7 +319,19 @@
                                                 <th>삭제</th>
                                             </tr>
                                             </thead>
-                                            <tbody></tbody>
+                                            <tbody>
+                                            @if (empty($list_event_register['M']) === false)
+                                                @foreach($list_event_register['M'] as $row)
+                                                    <tr>
+                                                        <td>{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}</td>
+                                                        <td>{{$row['PersonLimit']}}</td>
+                                                        <td></td>
+                                                        <td>{{$row['Name']}}</td>
+                                                        <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                            </tbody>
                                         </table>
                                         </div>
                                     </div>
@@ -328,10 +343,10 @@
                             <label class="control-label col-md-1">댓글사용영역</label>
                             <div class="col-md-7 form-inline">
                                 <div class="checkbox">
-                                <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if($data['CommentUseArea']=='B')checked="checked"@endif/>
+                                <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
                                 <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
 
-                                <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if($data['CommentUseArea']=='P')checked="checked"@endif/>
+                                <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if( (empty($data['ArrCommentUseArea']['P']) === false) && $data['ArrCommentUseArea']['P']=='P' )checked="checked"@endif/>
                                 <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
                                 </div>
                             </div>
@@ -531,6 +546,25 @@
                 $('#temp-lecture-'+row_idx).remove();
             });
 
+            // 특강 데이터 삭제
+            $regi_form.on('click', '.btn-lecture-delete-submit', function() {
+                var _url = '{{ site_url("/site/eventLecture/delRegister") }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'er_idx' : $(this).data('lecture-idx')
+                };
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
+
             //목록
             $('#btn_list').click(function() {
                 location.replace('{{ site_url("/site/eventLecture") }}/' + getQueryString());
@@ -539,14 +573,14 @@
             // ajax submit
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
-                /*var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
+                var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/eventLecture/") }}/' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');*/
+                }, showValidateError, addValidate, false, 'alert');
             });
         });
 

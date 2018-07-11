@@ -147,25 +147,41 @@
                             return str;
                         }},
 
-                    {'data' : 'AttachImgSmName'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'Title'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'},
+                    {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {
+                            var img_url = row.FileFullPath + row.FileName + '';
+                            return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
+                        }},
+
+                    {'data' : 'RequstTypeName'},
+                    {'data' : 'EventName', 'render' : function(data, type, row, meta) {
+                            return '<a href="#" class="btn-read" data-idx="' + row.ElIdx + '"><u class="blue">' + data + '</u></a>';
+                        }},
+
+                    {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {
+                            return row.RegisterStartDate + ' ~ ' + row.RegisterEndDate;
+                        }},
+
+                    {'data' : 'SendTel'},
+
+                    {'data' : 'IsRegisterName'},
+                    {'data' : 'CommentCount'},
                     {'data' : 'ReadCnt'},
-                    {'data' : 'RegDatm'},
+                    {'data' : 'IsRegisterName'},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
-                    {'data' : 'ELIdx', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.ELIdx + '"><u>수정</u></a>';
+                    {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.ElIdx + '"><u>수정</u></a>';
                         }},
                 ]
+            });
+
+            // 데이터 Read 페이지
+            $list_table.on('click', '.btn-read', function() {
+                location.replace('{{ site_url('/site/eventLecture/read') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
 
             // 데이터 수정 폼

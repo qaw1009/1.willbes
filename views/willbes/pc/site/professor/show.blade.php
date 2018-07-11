@@ -50,9 +50,6 @@
                     <div class="best-tit">이 시기 BEST 강좌</div>
                     <div class="sliderControls">
                         @foreach($products['best'] as $idx => $row)
-                            @php
-                                $arr_sample_data = json_decode($row['LectureSampleData'], true);
-                            @endphp
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
                                     <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
@@ -65,10 +62,10 @@
                                     <dt><span class="row-line">|</span></dt>
                                     <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}</span>강</dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt><span class="tx-blue">{{ number_format($row['RealSalePrice'], 0) }}</span>원</dt>
+                                    <dt><span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원</dt>
                                     <dt class="w-notice p_re">
                                         <div class="w-sp one">
-                                            <a href="{{ $arr_sample_data[0]['wWD'] or $arr_sample_data[0]['wHD'] or $arr_sample_data[0]['wSD'] }}">맛보기</a>
+                                            <a href="{{ $row['LectureSampleData'][0]['wWD'] or $row['LectureSampleData'][0]['wHD'] or $row['LectureSampleData'][0]['wSD'] }}">맛보기</a>
                                         </div>
                                     </dt>
                                 </dl>

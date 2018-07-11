@@ -82,12 +82,12 @@
                                 <div class="w-tit">{{ $data['ProdName'] }}</div>
                             </td>
                             <td class="chk buybtn p_re">
-                                <input type="checkbox" name="prod_code[]" class="chk_products" value="{{ $data['ProdCode'] }}" data-sale-price="{{ $data['RealSalePrice'] }}"/>
+                                <input type="checkbox" name="prod_code[]" class="chk_products" value="{{ $data['ProdCode'] }}" data-sale-price="{{ $data['ProdPriceData'][0]['RealSalePrice'] }}"/>
                             </td>
                             <td class="w-notice p_re">
                                 <div class="priceWrap">
-                                    <span class="price tx-blue">{{ number_format($data['RealSalePrice'], 0) }}원</span>
-                                    <span class="discount">(↓{{ $data['SaleRate'] . (($data['SaleDiscType'] == 'R') ? '%' : '원') }})</span>
+                                    <span class="price tx-blue">{{ number_format($data['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
+                                    <span class="discount">(↓{{ $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'] }})</span>
                                 </div>
                             </td>
                         </tr>
@@ -114,7 +114,7 @@
                                         </span>
                                         <span class="priceWrap">
                                             <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $book_row['SaleRate'] . (($book_row['SaleDiscType'] == 'R') ? '%' : '원') }})</span>
+                                            <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
                                         </span>
                                     </div>
                                 @endforeach
@@ -198,7 +198,7 @@
                         <col width="*">
                     </colgroup>
                     <tbody>
-                    @foreach($contents as $idx => $row)
+                    @foreach($data['ProdContents'] as $idx => $row)
                         <tr>
                             <td class="w-list bg-light-white">
                                 강좌{{ $row['ContentTypeCcdName'] }}
@@ -225,7 +225,7 @@
         <a name="BookInfo" class="sticky-top"></a>
         <div class="willbes-BookInfo c_both">
             <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
-            @foreach($salebooks as $idx => $row)
+            @foreach($data['ProdSaleBooks'] as $idx => $row)
                 <div class="bookInfo">
                     <div class="bookImg">
                         <img src="{{ $row['wAttachImgPath'] }}{{ $row['wAttachImgOgName'] }}" width="200" height="250">
@@ -242,7 +242,7 @@
                             <ul>
                                 <li>출판일 : {{ $row['wPublDate'] }} <span class="row-line">|</span></li>
                                 <li>교재비 : <strong class="tx-light-blue">{{ number_format($row['RealSalePrice']) }}원</strong>
-                                    (↓{{ $row['SaleRate'] }}{{ $row['SaleDiscType'] == 'R' ? '%' : '원' }})
+                                    (↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})
                                     <strong class="tx-{{ $row['wSaleCcd'] == '112001' ? 'light-blue' : 'red' }}">[{{ $row['wSaleCcdName'] }}]</strong>
                                 </li>
                             </ul>
@@ -299,7 +299,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($lecture_units as $idx => $row)
+                    @foreach($data['LectureUnits'] as $idx => $row)
                     <tr>
                         <td class="w-no">{{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강</td>
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>

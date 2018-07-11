@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lecture extends \app\controllers\FrontController
 {
-    protected $models = array();
+    protected $models = array('product/baseProductF', 'product/productF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -11,8 +11,6 @@ class Lecture extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
-
-        $this->load->library('restClient');
     }
 
     /**
@@ -26,47 +24,39 @@ class Lecture extends \app\controllers\FrontController
 
         if ($this->_site_id == 'gosi') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-            $arr_base = $this->api_get_data(
-                $this->restclient->getsDataJson([
-                    ['name' => 'series', 'uri' => 'product/bases/series2category/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code]],
-                    ['name' => 'subject', 'uri' => 'product/bases/subject2series/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code, 'series_ccd' => element('series_ccd', $arr_input)]],
-                ])
-            );
+            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_cate_code, element('series_ccd', $arr_input));
         } else {
             // 카테고리별 과목 조회
-            $arr_base['subject'] = $this->api_get_data(
-                $this->restclient->getDataJson('product/bases/subject2category/' . $this->_site_code, [
-                    'cate_code' => $this->_cate_code
-                ])
-            );            
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_cate_code);
         }
 
         // 과정 조회
-        $arr_base['course'] = $this->api_get_data(
-            $this->restclient->getDataJson('product/bases/course/' . $this->_site_code)
-        );
+        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
 
         // 과목이 선택된 경우 해당 교수 조회
         if (empty(element('subject_idx', $arr_input)) === false) {
-            $arr_base['professor'] = $this->api_get_data(
-                $this->restclient->getDataJson('product/bases/professor2subject/' . $this->_site_code, [
-                    'cate_code' => $this->_cate_code,
-                    'subject_idx' => element('subject_idx', $arr_input),
-                ])
-            );
+            $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, false, $this->_cate_code, element('subject_idx', $arr_input));
         }
 
         // 상품 조회
-        $list = $this->api_get_data(
-            $this->restclient->getDataJson('product/products/index/on_lecture/all', [
-                'site_code' => $this->_site_code,
-                'cate_code' => $this->_cate_code,
-                'course_idx' => element('course_idx', $arr_input),
-                'subject_idx' => element('subject_idx', $arr_input),
-                'prof_idx' => element('prof_idx', $arr_input),
-                'school_year' => element('school_year', $arr_input),
-            ])
-        );
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+                'CourseIdx' => element('course_idx', $arr_input),
+                'SubjectIdx' => element('subject_idx', $arr_input),
+                'ProfIdx' => element('prof_idx', $arr_input),
+                'SchoolYear' => element('school_year', $arr_input)
+            ],
+            'LKR' => [
+                'CateCode' => $this->_cate_code,
+            ],
+            'LKB' => [
+                'ProdName' => $this->_req('prod_name'),
+            ]
+        ];
+
+        $list = $this->productFModel->listSalesProduct('on_lecture', false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
         // 상품조회 결과에 존재하는 과목 정보
         $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
@@ -79,6 +69,7 @@ class Lecture extends \app\controllers\FrontController
         // 상품 조회결과 재정의
         $selected_list = [];
         foreach ($list as $idx => $row) {
+            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
             $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
             $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
             unset($row['ProfReferData']);
@@ -106,16 +97,12 @@ class Lecture extends \app\controllers\FrontController
     public function info($params = [])
     {
         $prod_code = element('prod-code', $params);
-        if (empty($prod_code)) {
+        if (empty($prod_code) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
-        $data = $this->api_get_data(
-            $this->restclient->getsDataJson([
-                ['name' => 'contents', 'uri' => 'product/products/contents/on_lecture/' . $prod_code, 'params' => []],
-                ['name' => 'salebooks', 'uri' => 'product/products/salebooks/on_lecture/' . $prod_code, 'params' => []],
-            ])
-        );
+        $data['contents'] = $this->productFModel->findProductContents($prod_code);
+        $data['salebooks'] = $this->productFModel->findProductSaleBooks($prod_code);
 
         $this->load->view('site/lecture/info_modal', [
             'arr_input' => $this->_reqG(null),
@@ -131,29 +118,33 @@ class Lecture extends \app\controllers\FrontController
     {
         $prod_code = element('prod-code', $params);
         if (empty($prod_code)) {
-            show_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST, '잘못된 접근');
+            show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        // 상품 기본정보, 컨텐츠, 교재정보 조회
-        $data = $this->api_get_data(
-            $this->restclient->getsDataJson([
-                ['name' => 'base', 'uri' => 'product/products/index/on_lecture/all/' . $prod_code, 'params' => []],
-                ['name' => 'contents', 'uri' => 'product/products/contents/on_lecture/' . $prod_code, 'params' => []],
-                ['name' => 'salebooks', 'uri' => 'product/products/salebooks/on_lecture/' . $prod_code, 'params' => []],
-                ['name' => 'lecture_units', 'uri' => 'product/products/lectureUnits/on_lecture/' . $prod_code, 'params' => []],
-            ])
-        );
+        // 상품 조회
+        $data = $this->productFModel->findProductByProdCode('on_lecture', $prod_code);
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.', 'back');
+        }
+        
+        // 상품 데이터 가공
+        $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true);
+        $data['ProdBookData'] = json_decode($data['ProdBookData'], true);
+        $data['LectureSampleData'] = json_decode($data['LectureSampleData'], true);
+        $data['LectureSampleUnitIdxs'] = array_pluck($data['LectureSampleData'], 'wUnitIdx');
+        $data['ProfReferData'] = json_decode($data['ProfReferData'], true);
 
-        $data['base']['ProdBookData'] = json_decode($data['base']['ProdBookData'], true);
-        $data['base']['LectureSampleData'] = json_decode($data['base']['LectureSampleData'], true);
-        $data['base']['LectureSampleUnitIdxs'] = array_pluck($data['base']['LectureSampleData'], 'wUnitIdx');
-        $data['base']['ProfReferData'] = json_decode($data['base']['ProfReferData'], true);
+        // 상품 컨텐츠
+        $data['ProdContents'] = $this->productFModel->findProductContents($prod_code);
+
+        // 상품 판매교재
+        $data['ProdSaleBooks'] = $this->productFModel->findProductSaleBooks($prod_code);
+
+        // 상품 강의 목차
+        $data['LectureUnits'] = $this->productFModel->findProductLectureUnits($prod_code);
 
         $this->load->view('site/lecture/show' . $this->_pass_site_val, [
-            'data' => $data['base'],
-            'contents' => $data['contents'],
-            'salebooks' => $data['salebooks'],
-            'lecture_units' => $data['lecture_units']
+            'data' => $data
         ]);
     }    
 }

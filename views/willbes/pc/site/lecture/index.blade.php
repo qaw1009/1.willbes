@@ -209,8 +209,8 @@
                                             @endforeach
                                         </div>
                                         <div class="priceWrap">
-                                            <span class="price tx-blue">{{ number_format($row['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $row['SaleRate'] . (($row['SaleDiscType'] == 'R') ? '%' : '원') }})</span>
+                                            <span class="price tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
+                                            <span class="discount">(↓{{ $row['ProdPriceData'][0]['SaleRate'] . $row['ProdPriceData'][0]['SaleRateUnit'] }})</span>
                                         </div>
                                         <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                     </td>
@@ -241,7 +241,7 @@
                                                     </span>
                                                     <span class="priceWrap">
                                                         <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                                        <span class="discount">(↓{{ $book_row['SaleRate'] . (($book_row['SaleDiscType'] == 'R') ? '%' : '원') }})</span>
+                                                        <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
                                                     </span>
                                                 </div>
                                             @endforeach

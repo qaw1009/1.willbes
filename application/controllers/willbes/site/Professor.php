@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\FrontController
 {
-    protected $models = array();
+    protected $models = array('product/baseProductF', 'product/productF', 'product/professorF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -11,8 +11,6 @@ class Professor extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
-
-        $this->load->library('restClient');
     }
 
     /**
@@ -27,37 +25,20 @@ class Professor extends \app\controllers\FrontController
 
         if ($this->_site_id == 'gosi') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-            $arr_base = $this->api_get_data(
-                $this->restclient->getsDataJson([
-                    ['name' => 'series', 'uri' => 'product/bases/series2category/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code]],
-                    ['name' => 'subject', 'uri' => 'product/bases/subject2series/' . $this->_site_code, 'params' => ['cate_code' => $this->_cate_code, 'series_ccd' => element('series_ccd', $arr_input)]],
-                ])
-            );
+            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_cate_code, element('series_ccd', $arr_input));
         } else {
             // 카테고리별 과목 조회
-            $arr_base['subject'] = $this->api_get_data(
-                $this->restclient->getDataJson('product/bases/subject2category/' . $this->_site_code, [
-                    'cate_code' => $this->_cate_code
-                ])
-            );
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_cate_code);
         }
 
         // 신규강좌 조회
-        $arr_base['product'] = $this->api_get_data(
-            $this->restclient->getDataJson('product/products/index/on_lecture/simple', [
-                'site_code' => $this->_site_code,
-                'cate_code' => $this->_cate_code,
-                'is_new' => 'Y',
-                'limit' => 5
-            ])
-        );
+        $arr_base['product'] = $this->productFModel->listSalesProduct('on_lecture', false
+            , ['EQ' => ['SiteCode' => $this->_site_code, 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
+            , 5, 0, ['ProdCode' => 'desc']);
 
         // 전체 교수 조회
-        $arr_professor = $this->api_get_data(
-            $this->restclient->getDataJson('product/bases/professor-refer2subject/' . $this->_site_code, [
-                'cate_code' => $this->_cate_code
-            ])
-        );
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, true, $this->_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
@@ -95,43 +76,39 @@ class Professor extends \app\controllers\FrontController
     {
         $prof_idx = element('prof-idx', $params);
         if (empty($prof_idx)) {
-            show_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST, '잘못된 접근');
+            show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         // 전체 교수 조회
-        $arr_professor = $this->api_get_data(
-            $this->restclient->getDataJson('product/bases/professor2subject/' . $this->_site_code, [
-                'cate_code' => $this->_cate_code
-            ])
-        );
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, false, $this->_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
 
         // 교수 정보 조회
-        $data = $this->api_get_data(
-            $this->restclient->getDataJson('product/professors/index/' . $prof_idx, [
-                'is_refer' => 'Y'
-            ])
-        );
+        $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
 
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
-        // 베스트, 신규 강좌 조회
-        $products = $this->api_get_data(
-            $this->restclient->getsDataJson([
-                ['name' => 'best', 'uri' => 'product/products/index/on_lecture/lecture-sample',
-                    'params' => ['site_code' => $this->_site_code, 'cate_code' => $this->_cate_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'],  'is_best' => 'Y', 'limit' => 3]
-                ],
-                ['name' => 'new', 'uri' => 'product/products/index/on_lecture/simple',
-                    'params' => ['site_code' => $this->_site_code, 'cate_code' => $this->_cate_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'is_new' => 'Y', 'limit' => 2]
-                ],
-            ])
-        );
+        // 베스트강좌 조회
+        $products['best'] = $this->productFModel->listSalesProduct('on_lecture', false
+            , ['EQ' => ['SiteCode' => $this->_site_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'IsBest' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
+            , 3, 0, ['ProdCode' => 'desc']);
+
+        $products['best'] = array_map(function ($arr) {
+            $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
+            $arr['LectureSampleData'] = json_decode($arr['LectureSampleData'], true);
+            return $arr;
+        }, $products['best']);
+
+        // 신규강좌 조회
+        $products['new'] = $this->productFModel->listSalesProduct('on_lecture', false
+            , ['EQ' => ['SiteCode' => $this->_site_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
+            , 2, 0, ['ProdCode' => 'desc']);
 
         $this->load->view('site/professor/show' . $this->_pass_site_val, [
             'arr_input' => $arr_input,

@@ -46,4 +46,20 @@ class ProfessorFModel extends WB_Model
             , $column, $arr_condition, $limit, $offset, $order_by
         );
     }
+
+    /**
+     * 단일교수 조회
+     * @param $prof_idx
+     * @param bool $is_refer
+     * @return array
+     */
+    public function findProfessorByProfIdx($prof_idx, $is_refer = true)
+    {
+        $column = ($is_refer === true) ? 'refer' : false;
+        $arr_condition = ['EQ' => ['PF.Profidx' => $prof_idx]];
+
+        $data = $this->listProfessor($column, $arr_condition, null, null, []);
+
+        return element('0', $data, []);
+    }
 }

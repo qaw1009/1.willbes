@@ -66,7 +66,7 @@
                                     <ul>
                                         <li>출판일 : {{ $row['wPublDate'] }} <span class="row-line">|</span></li>
                                         <li>교재비 : <strong class="tx-light-blue">{{ number_format($row['RealSalePrice']) }}원</strong>
-                                            (↓{{ $row['SaleRate'] }}{{ $row['SaleDiscType'] == 'R' ? '%' : '원' }})
+                                            (↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})
                                             <strong class="tx-{{ $row['wSaleCcd'] == '112001' ? 'light-blue' : 'red' }}">[{{ $row['wSaleCcdName'] }}]</strong>
                                         </li>
                                     </ul>

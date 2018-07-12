@@ -57,13 +57,13 @@ $route['translate_uri_dashes'] = FALSE;
 $route['(lcms)/(.*)'] = '$1/$2';
 
 // 서브 도메인별 컨트롤러 디렉토리 분리
+$__app_mobile_site_prefix = config_item('app_mobile_site_prefix');
+$__app_pass_site_prefix = config_item('app_pass_site_prefix');
 $__app_except_config = config_item('app_except_config');
 
 if (array_key_exists(SUB_DOMAIN, $__app_except_config) === true && empty($__app_except_config[SUB_DOMAIN]['route_add_path']) === false) {
-    // 학원사이트 라우터 예외 처리
-    $route['(' . config_item('app_pass_site_prefix') . ')/(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$2';
     // 사이트 라우터 예외 처리
-    $route['(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$1';
+    $route['(' . $__app_mobile_site_prefix . '\/)?(\/?' . $__app_pass_site_prefix . '\/)?(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$3';
 } else {
     // 디폴트 라우터
     $route['(.*)'] = APP_NAME . '/$1';

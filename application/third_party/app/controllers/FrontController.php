@@ -79,10 +79,12 @@ abstract class FrontController extends BaseController
 
         // 프런트 사이트일 경우
         if (empty(element('route_add_path', $app_except_config)) === false) {
+            $mobile_site_prefix = config_item('app_mobile_site_prefix');    // 모바일 사이트 구분값
             $pass_site_prefix = config_item('app_pass_site_prefix');    // 학원 사이트 구분값
 
             // 학원 사이트일 경우
-            if (strtolower($this->uri->segment(1)) == $pass_site_prefix) {
+            if ((strtolower($this->uri->segment(1)) == $pass_site_prefix)
+                || (strtolower($this->uri->segment(1)) == $mobile_site_prefix && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {
                 $this->_site_id .= $pass_site_prefix;
                 $this->_is_pass_site = true;
                 $this->_pass_site_val = '_' . $pass_site_prefix;

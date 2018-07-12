@@ -35,27 +35,12 @@ $config['base_url'] = '//' . (is_cli() === false ? $_SERVER['HTTP_HOST'] : 'cli'
 
 /*
 |--------------------------------------------------------------------------
-| Const SUB_DOMAIN, APP_DEVICE
-|--------------------------------------------------------------------------
-*/
-// http를 제외한 host
-$__http_host = parse_url($config['base_url'], PHP_URL_HOST);
-// 서브 도메인 추출
-$__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^m\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
-$__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__sub_domain, 0, -1));
-// 모바일 여부
-$__app_device = strpos($__http_host, 'm.') === false ? 'pc' : 'm';
-
-defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
-defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
-
-/*
-|--------------------------------------------------------------------------
 | APP site config
 |--------------------------------------------------------------------------
 */
-$config['app_intg_site_code'] = '2000';     // 통합사이트 코드
-$config['app_pass_site_prefix'] = 'pass';   // 학원사이트 구분값
+$config['app_intg_site_code'] = '2000';     // 통합 사이트 코드
+$config['app_pass_site_prefix'] = 'pass';   // 학원 사이트 구분값
+$config['app_mobile_site_prefix'] = 'm';   // 모바일 사이트 구분값
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +53,23 @@ $config['app_except_config'] = [
     'gosi' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
     'ssam' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
 ];
+
+/*
+|--------------------------------------------------------------------------
+| Const SUB_DOMAIN, APP_DEVICE
+|--------------------------------------------------------------------------
+*/
+// http를 제외한 host
+$__http_host = parse_url($config['base_url'], PHP_URL_HOST);
+// 서브 도메인 추출
+$__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^' . $config['app_mobile_site_prefix'] . '\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
+$__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__sub_domain, 0, -1));
+// 모바일 여부
+//$__app_device = stripos($__http_host, 'm.') === false ? 'pc' : 'm';    // 모바일(m) 도메인일 경우
+$__app_device = stripos($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix'] . '/') === 0 ? 'm' : 'pc';     // 모바일을 디렉토리로 구분할 경우
+
+defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
+defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
 
 /*
 |--------------------------------------------------------------------------

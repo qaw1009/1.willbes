@@ -77,7 +77,7 @@ class Lecture extends \app\controllers\FrontController
             $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
         }
 
-        $this->load->view('site/lecture/index' . $this->_pass_site_val, [
+        $this->load->view('site/lecture/index', [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'data' => [
@@ -143,7 +143,7 @@ class Lecture extends \app\controllers\FrontController
         // 상품 강의 목차
         $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
 
-        $this->load->view('site/lecture/show' . $this->_pass_site_val, [
+        $this->load->view('site/lecture/show', [
             'data' => $data
         ]);
     }    

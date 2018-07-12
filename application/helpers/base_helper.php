@@ -285,10 +285,11 @@ if (!function_exists('sess_data')) {
 if (!function_exists('show_alert')) {
     /**
      * javascript alert
-     * @param $msg
-     * @param string $url 리턴 URL, back : 이전 페이지, url : url 이동, empty : only alert
+     * @param string $msg
+     * @param string $url [리턴 URL, back : 이전 페이지, url : url 이동, empty : only alert]
+     * @param bool $is_href [URL 이동 방식 (true : href, false : replace)]
      */
-    function show_alert($msg, $url = '')
+    function show_alert($msg, $url = '', $is_href = true)
     {
         $_CI =& get_instance();
 
@@ -299,7 +300,11 @@ if (!function_exists('show_alert')) {
             if ($url == 'back') {
                 $output .= 'history.back();' . PHP_EOL;
             } else {
-                $output .= 'location.replace("' . $url . '");' . PHP_EOL;
+                if ($is_href === true) {
+                    $output .= 'location.href = "' . $url . '";' . PHP_EOL;
+                } else {
+                    $output .= 'location.replace("' . $url . '");' . PHP_EOL;
+                }
             }
         }
         $output .= '</script>' . PHP_EOL;

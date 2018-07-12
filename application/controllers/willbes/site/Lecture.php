@@ -22,7 +22,7 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        if ($this->_site_id == 'gosi') {
+        if ($this->_site_code == '2004') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
             $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
             $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_cate_code, element('series_ccd', $arr_input));

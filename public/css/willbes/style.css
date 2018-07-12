@@ -3947,7 +3947,6 @@ ul li.profList .w-notice dl dt:hover {
 ul li.profList .w-notice dl dt:first-child {
     margin-bottom: -1px;
 }
-
 ul li.profList .w-notice a {
     background: #fff;
     display: block;
@@ -3957,6 +3956,11 @@ ul li.profList .w-notice a {
     color: #7d7e85;
     text-align: center;
     line-height: 20px;
+}
+ul li.profList .willbes-Layer-ProfileBox {
+    top: 205px;
+    right: 0;
+    left: 20px;
 }
 
 /* subContainer : Prof : willbes-Prof-Profile */
@@ -4056,6 +4060,8 @@ ul li.profList .w-notice a {
     position: absolute;
     top: -1px;
     right: -1px;
+    width: auto;
+    height: auto;
 }
 .willbes-Layer-ProfileBox .Layer-Tit {
     font-size: 18px;

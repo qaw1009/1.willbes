@@ -129,7 +129,7 @@ abstract class FrontController extends BaseController
         $site_tree_menu = array_get($site_menu_cache, 'SiteTreeMenus.' . $site_code, []);
 
         // 사이트 과목+교수 연결정보 캐쉬 조회, Active 사이트 메뉴 정보
-        $site_subject_professors = [];
+        //$site_subject_professors = [];
         $site_active_menu = [];
         if (empty($site_tree_menu) === false) {
             // 현재 사이트의 카테고리 코드

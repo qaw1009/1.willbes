@@ -76,13 +76,13 @@ class Caching_site_menu extends CI_Driver
             // tree menu base key
             $base_key = $key_prefix . 'TreeMenus.' . $key_group;
 
+            // 내부경로일 경우 개발환경에 맞게 URL 변환
             $menu_url  = ($row['UrlType'] == 'route' && empty($row['MenuUrl']) === false) ? app_to_env_url($row['MenuUrl']) : $row['MenuUrl'];
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
                 'MenuIdx' => $row['MenuIdx'],
                 'MenuType' => $row['MenuType'],
                 'MenuName' => $row['MenuName'],
-                // 내부경로일 경우 개발환경에 맞게 URL 변환
                 'MenuUrl' => $menu_url,
                 'MenuIcon' => $row['MenuIcon'],
                 'UrlType' => $row['UrlType'],

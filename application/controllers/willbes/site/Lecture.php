@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lecture extends \app\controllers\FrontController
 {
-    protected $models = array('product/baseProductF', 'product/productF');
+    protected $models = array('product/baseProductF', 'product/lectureF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -56,7 +56,7 @@ class Lecture extends \app\controllers\FrontController
             ]
         ];
 
-        $list = $this->productFModel->listSalesProduct('on_lecture', false, $arr_condition, null, null, ['ProdCode' => 'desc']);
+        $list = $this->lectureFModel->listSalesProduct('on_lecture', false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
         // 상품조회 결과에 존재하는 과목 정보
         $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
@@ -101,8 +101,8 @@ class Lecture extends \app\controllers\FrontController
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
-        $data['contents'] = $this->productFModel->findProductContents($prod_code);
-        $data['salebooks'] = $this->productFModel->findProductSaleBooks($prod_code);
+        $data['contents'] = $this->lectureFModel->findProductContents($prod_code);
+        $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
         $this->load->view('site/lecture/info_modal', [
             'arr_input' => $this->_reqG(null),
@@ -122,7 +122,7 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
-        $data = $this->productFModel->findProductByProdCode('on_lecture', $prod_code);
+        $data = $this->lectureFModel->findProductByProdCode('on_lecture', $prod_code);
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
@@ -135,13 +135,13 @@ class Lecture extends \app\controllers\FrontController
         $data['ProfReferData'] = json_decode($data['ProfReferData'], true);
 
         // 상품 컨텐츠
-        $data['ProdContents'] = $this->productFModel->findProductContents($prod_code);
+        $data['ProdContents'] = $this->lectureFModel->findProductContents($prod_code);
 
         // 상품 판매교재
-        $data['ProdSaleBooks'] = $this->productFModel->findProductSaleBooks($prod_code);
+        $data['ProdSaleBooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
         // 상품 강의 목차
-        $data['LectureUnits'] = $this->productFModel->findProductLectureUnits($prod_code);
+        $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
 
         $this->load->view('site/lecture/show' . $this->_pass_site_val, [
             'data' => $data

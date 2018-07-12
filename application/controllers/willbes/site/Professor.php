@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\FrontController
 {
-    protected $models = array('product/baseProductF', 'product/productF', 'product/professorF');
+    protected $models = array('product/baseProductF', 'product/lectureF', 'product/professorF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -33,7 +33,7 @@ class Professor extends \app\controllers\FrontController
         }
 
         // 신규강좌 조회
-        $arr_base['product'] = $this->productFModel->listSalesProduct('on_lecture', false
+        $arr_base['product'] = $this->lectureFModel->listSalesProduct('on_lecture', false
             , ['EQ' => ['SiteCode' => $this->_site_code, 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
             , 5, 0, ['ProdCode' => 'desc']);
 
@@ -114,7 +114,7 @@ class Professor extends \app\controllers\FrontController
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
         // 베스트강좌 조회
-        $products['best'] = $this->productFModel->listSalesProduct('on_lecture', false
+        $products['best'] = $this->lectureFModel->listSalesProduct('on_lecture', false
             , ['EQ' => ['SiteCode' => $this->_site_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'IsBest' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
             , 3, 0, ['ProdCode' => 'desc']);
 
@@ -125,7 +125,7 @@ class Professor extends \app\controllers\FrontController
         }, $products['best']);
 
         // 신규강좌 조회
-        $products['new'] = $this->productFModel->listSalesProduct('on_lecture', false
+        $products['new'] = $this->lectureFModel->listSalesProduct('on_lecture', false
             , ['EQ' => ['SiteCode' => $this->_site_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
             , 2, 0, ['ProdCode' => 'desc']);
 

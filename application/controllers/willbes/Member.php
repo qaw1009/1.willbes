@@ -3,10 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Member extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', 'member');
+    protected $models = array('_lms/sys/code', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
+
+    protected $_urlFromMailAuthCcd = [
+        '662001' => '/member/join',
+        '662002' => '/member/findid',
+        '662003' => '/member/findpwd',
+        '662004' => '/member/sleep',
+        '662005' => '/'
+    ];
 
     public function __construct()
     {
@@ -72,12 +80,12 @@ class Member extends \app\controllers\FrontController
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_error("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.".$enc_data);
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                     return;
                 }
 
                 $data_arr = explode("^", $plainText);
-                // temp^전화번호^이름^아이디^temp
+                // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
                 $phone = $data_arr[1];
                 $name = $data_arr[2];
 
@@ -94,17 +102,46 @@ class Member extends \app\controllers\FrontController
                     'memName' => $name
                 ]);
             } catch(Exception $e) {
-                show_error("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.");
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                 return;
             }
 
-
         } else if($jointype === "655003") {
             // mail 인증
+            try {
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                    return;
+                }
+
+                $data_arr = explode("^", $plainText);
+                // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+                $mail = $data_arr[1];
+                $name = $data_arr[2];
+
+                $mailArr = explode('@', $mail);
+                $mailId = $mailArr[0];
+                $mailDomain = $mailArr[1];
+
+                return $this->load->view('member/join/step2', [
+                    'mail_domain_ccd' => $codes['661'],
+                    'jointype' => $jointype,
+                    'enc_data' => $enc_data,
+                    'memName' => $name,
+                    'MailId' => $mailId,
+                    'MailDomain' => $mailDomain
+                ]);
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                return;
+            }
 
         } else {
             // 오류발생
-            show_error("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.");
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
             return;
         }
     }
@@ -117,7 +154,7 @@ class Member extends \app\controllers\FrontController
     {
         $MemId = $this->_req('MemId');
 
-        $count = $this->memberModel->getMember(true, [
+        $count = $this->memberFModel->getMember(true, [
             'EQ' => [
                 'Mem.MemId' => $MemId
             ]
@@ -156,7 +193,8 @@ class Member extends \app\controllers\FrontController
      */
     public function FindIDProc()
     {
-
+        $this->load->view('member/find/idProc', [
+        ]);
     }
 
     /**
@@ -173,7 +211,8 @@ class Member extends \app\controllers\FrontController
      */
     public function FindPWDProc()
     {
-
+        $this->load->view('member/find/pwdProc', [
+        ]);
     }
 
     /**
@@ -190,7 +229,8 @@ class Member extends \app\controllers\FrontController
      */
     public function ActivateSleep()
     {
-
+        $this->load->view('member/find/sleepProc', [
+        ]);
     }
 
     /**
@@ -242,8 +282,8 @@ class Member extends \app\controllers\FrontController
         $sms_name = $this->_req('var_name');
 
         // 이미 가입된 정보 검색
-        $phoneEnc = $this->memberModel->getEncString($phonenumber);
-        $count = $this->memberModel->getMember(true, [
+        $phoneEnc = $this->memberFModel->getEncString($phonenumber);
+        $count = $this->memberFModel->getMember(true, [
             'EQ' => [
                 'Mem.MemName' => $sms_name,
                 'Mem.PhoneEnc' => $phoneEnc
@@ -279,8 +319,8 @@ class Member extends \app\controllers\FrontController
         $mail = $mailid.'@'.$maildomain;
 
         // 이미 가입된 정보 검색
-        $mailEnc = $this->memberModel->getEncString($mail);
-        $count = $this->memberModel->getMember(true, [
+        $mailEnc = $this->memberFModel->getEncString($mail);
+        $count = $this->memberFModel->getMember(true, [
             'EQ' => [
                 'Mem.MemName' => $name,
                 'Mem.MailEnc' => $mail
@@ -299,7 +339,7 @@ class Member extends \app\controllers\FrontController
         return $this->sendMail([
             'mail' => $mail,
             'name' => $name,
-            'typeccd' => '662001' // 회원가입인증메일
+            'typeccd' => 'JOIN' // 회원가입인증메일
         ]);
     }
 
@@ -444,10 +484,10 @@ class Member extends \app\controllers\FrontController
         // 인증메일전송
         
         // 전송한인증메일 정보 DB저장
-        $result = $this->memberModel->setMailAuth([
+        $result = $this->memberFModel->storeMailAuth([
             'CertKey' => $enc_data,
             'CertMail' => $mail,
-            'MailCertTypeCcde' => $typeccd
+            'MailCertTypeCcd' => $typeccd
         ]);
 
         // 메일 발송 실패
@@ -469,8 +509,43 @@ class Member extends \app\controllers\FrontController
      * 메일인증
      * @param array $param
      */
-    public function mailAuth($param = [])
+    public function mailAuth($params = [])
     {
-        
+        if(empty($params[0]) === true || empty($params[1]) === true){
+            return $this->load->view('auth/certMail_Error', [
+                'msg' => '인증정보가 올바르지 않습니다.'
+            ]);
+        }
+
+        $certKey = $params[0];
+        $certMail = $params[1];
+
+        $result = $this->memberFModel->getMailAuth([
+            'EQ' => [
+                'certKey' => $certKey,
+                'certMail' => $certMail
+            ]]);
+
+        if(empty($result) === true){
+            return $this->load->view("auth/certMail_Error", [
+                'msg' => '인증정보가 올바르지 않습니다.'
+            ]);
+        }
+
+        $now = strtotime(date('Y-m-d H:i:s')); // 지금 시간
+        $sendDate = strtotime($result['MailSendDatm'].'+30 minutes'); // 보낸시간 더하기 30분
+
+        if(false){ //if($now > $sendDate){
+            return $this->load->view("auth/certMail_Error", [
+                'msg' => '인증시간이 초과했습니다.',
+                'returnurl' => $this->_urlFromMailAuthCcd[$result['MailCertTypeCcd']]
+            ]);
+        }
+
+        return $this->load->view("auth/certMail_success", [
+            'enc_data' => $result['CertKey'],
+            'CertTypeCcd' => $result['MailCertTypeCcd']
+        ]);
+
     }
 }

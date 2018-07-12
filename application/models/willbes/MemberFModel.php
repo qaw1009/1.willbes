@@ -1,9 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MemberModel extends WB_Model
+class MemberFModel extends WB_Model
 {
-    private $_colname = [ ];
     private $_table = [
         'member' => 'lms_Member',
         'info' => 'lms_Member_OtherInfo',
@@ -12,8 +11,27 @@ class MemberModel extends WB_Model
         'outlog' => 'lms_Member_Out_Log',
         'device' => 'lms_member_device',
         'code' => 'lms_sys_code',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'authmail' => 'lms_member_certifiedmail'
     ];
+
+    protected $_mailSendTypeCcd = [
+        'JOIN' => '662001',
+        'FINDID' => '662002',
+        'FINDPWD' => '662003',
+        'UNSLEEP' => '662004',
+        'UPDMAIL' => '662005'
+    ];
+
+    protected $_certMailTitle = [
+        '662001' => '회원가입 인증메일입니다.',
+        '662002' => '아이디찾기 인증메일입니다..',
+        '662003' => '비밀번호확인 인증메일입니다.',
+        '662004' => '휴면회원해제 인증메일입니다.',
+        '662005' => '이메일주소변경 인증메일입니다.'
+    ];
+
+    protected $_mailSenderAddress = 'help@willbes.com';
 
     public function __construct()
     {
@@ -79,7 +97,7 @@ class MemberModel extends WB_Model
      * @param array $data
      * @return int
      */
-    public function newMember($data = [])
+    public function storeMember($data = [])
     {
         return 1234;
     }
@@ -133,22 +151,95 @@ class MemberModel extends WB_Model
      * @param $certKey
      * @param $mail
      */
-    public function getMailAuth($certKey, $mail)
+    public function getMailAuth($input = [])
     {
+        if(empty($input) == true){
+            return [];
+        }
 
+        $column = " MemIdx, CertKey, CertMail, MailCertTypeCcd, IsCert, MailSendDatm ";
+        $from = " FROM {$this->_table['authmail']} ";
+        $where = $this->_conn->makeWhere($input);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
+
+        return $rows->row_array();
     }
 
     /**
      * 인증메일정보 입력
      */
-    public function setMailAuth($input = [])
+    public function storeMailAuth($input = [])
     {
+        $data = [
+            'MemIdx' => element('MemIdx', $input),
+            'CertKey' => element('CertKey', $input),
+            'CertMail' => element('CertMail', $input),
+            'MailSendIp' => $this->input->ip_address(),
+            'MailCertTypeCcd' => $this->_mailSendTypeCcd[element('MailCertTypeCcd', $input)]
+        ];
 
+        $this->_conn->trans_begin();
+
+        try {
+            if($this->_conn->set($data)->set('MailSendDatm', 'NOW()', false)->insert($this->_table['authmail']) === false){
+                throw new \Exception('메일전송에 실패했습니다.');
+            }
+
+            if($this->_sendMailAuth($data) === false){
+                throw new \Exception('메일 전송에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 실제 메일데이타 전송
+     * @param array $input
+     * @return bool
+     */
+    private function _sendMailAuth($input = [])
+    {
+        log_message('debug', $this->_certMailTitle[element('MailCertTypeCcd', $input)]);
+        try {
+            // 메일타이틀
+            $mailtitle = $this->_certMailTitle[element('MailCertTypeCcd', $input)];
+
+
+            $this->load->library('email', [
+                'mail_from_address' => $this->_mailSenderAddress,
+                'mailtype' => 'html'
+            ]);
+
+            $this->email->to(element('CertMail', $input));
+            $this->email->subject($mailtitle);
+
+            $body = $this->load->view('auth/_certMail_template', [
+                'CertKey' => urlencode(element('CertKey', $input)),
+                'CertMail' => urlencode(element('CertMail', $input))
+            ], true, true);
+
+            $this->email->message($body);
+            $this->email->send();
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 
     // 메일 인증 처리후 업데이트
-    public function updMailAuth($input = [])
+    public function setMailAuth($input = [])
     {
+
+
         
     }
 

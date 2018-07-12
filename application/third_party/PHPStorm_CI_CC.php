@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class
  * @property ProductFModel $productFModel                                        Product Model Class
- * @property MemberModel $memberModel                                            Member Model Class
+ * @property MemberFModel $memberFModel                                            Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
  */
 class PHPStorm_CI_CC

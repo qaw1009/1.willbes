@@ -29,7 +29,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr><td colspan="2">    {{$jointype}}<br/><br/>
+                <tr><td colspan="2">
+                        {{$jointype}}<br/><br/>
                         {{$enc_data}}<br/><br/>
                         {{$phone}}<br/><br/>
                         {{$memName}}<br/><br/></td></tr>
@@ -234,6 +235,7 @@
     </div>
     <!-- End Container -->
     </form>
+
     <script src="/public/vendor/validator/validator.js"></script>
     <script src="/public/vendor/jquery/form/jquery.form.min.js"></script>
     <script src="/public/js/util.js"></script>

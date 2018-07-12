@@ -79,8 +79,8 @@ $db['wbs'] = array(
     'username' => 'git',
     'password' => 'localhost',
     'database' => 'willbes',*/
-    'dsn' => 'mysql:host=192.168.13.20; port=9925; dbname=wbs',
-	'hostname' => '192.168.13.20',
+    'dsn' => 'mysql:host=192.168.13.21; port=9925; dbname=wbs',
+	'hostname' => '192.168.13.21',
     'username' => 'willbes',
     'password' => 'willbesdev^2017',
     'database' => 'wbs',
@@ -104,8 +104,8 @@ $db['wbs'] = array(
 );
 
 $db['lms'] = array(
-    'dsn' => 'mysql:host=192.168.13.20; port=9925; dbname=lms',
-    'hostname' => '192.168.13.20',
+    'dsn' => 'mysql:host=192.168.13.21; port=9925; dbname=lms',
+    'hostname' => '192.168.13.21',
     'username' => 'willbes',
     'password' => 'willbesdev^2017',
     'database' => 'lms',

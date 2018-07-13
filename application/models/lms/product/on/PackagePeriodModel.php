@@ -353,6 +353,7 @@ class PackagePeriodModel extends CommonLectureModel
             ,'IsEdit'=>element('IsEdit',$input,'N')
             ,'PackAutoStudyExtenCcd'=>element('PackAutoStudyExtenCcd', $input)
             ,'PackAutoStudyPeriod'=>element('PackAutoStudyPeriod', $input)
+            ,'DeviceLimitCount'=>element('DeviceLimitCount', $input)
         ];
 
     }

@@ -2031,23 +2031,35 @@ table.lecTable tr td .w-tit {
 table.lecTable tr td.chk {
     text-align: right;
 }
+
+table.lecTable tr td.chk .chkBox {
+    margin-top: 35px;
+}
+table.lecTable tr td.chk .chkBox dt {
+    margin-bottom: 1px;
+}
 table.lecTable tr td.chk input[type=checkbox] {
     width: 14px;
     height: 14px;
     cursor: pointer;
-    margin-top: 46px;
 }
 table.lecTable tr td .priceWrap {
     clear: both;
     float: right;
     position: relative;
-    top: 20px;
+    top: 15px;
     right: 0;
-    width: 155px;
+    width: 220px;
     margin-right: 0;
     height: 18px;
     text-align: left;
 } 
+table.lecTable tr td .priceWrap .select {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    color: #464646;
+}
 table.lecTable tr td .priceWrap .price {
     position: absolute;
     top: 0;
@@ -2095,7 +2107,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .w-sp.one {
     position: absolute;
-    top: 40px;
+    top: 25px;
     right: 26px;
     width: 64px;
     margin: 0;

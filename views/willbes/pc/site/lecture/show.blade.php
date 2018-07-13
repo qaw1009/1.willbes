@@ -72,7 +72,7 @@
                         </colgroup>
                         <tbody>
                         <tr>
-                            <td class="w-lectit tx-left" colspan="3">
+                            <td class="w-lectit tx-left" colspan="2">
                                 <span class="w-obj NSK"><div class="pBox p1">강좌</div></span>
                                 <span class="MoreBtn"><a href="#Class">강좌정보 보기 ▼</a></span>
                             </td>
@@ -81,14 +81,15 @@
                             <td class="w-data tx-left">
                                 <div class="w-tit">{{ $data['ProdName'] }}</div>
                             </td>
-                            <td class="chk buybtn p_re">
-                                <input type="checkbox" name="prod_code[]" class="chk_products" value="{{ $data['ProdCode'] }}" data-sale-price="{{ $data['ProdPriceData'][0]['RealSalePrice'] }}"/>
-                            </td>
-                            <td class="w-notice p_re">
-                                <div class="priceWrap">
-                                    <span class="price tx-blue">{{ number_format($data['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
-                                    <span class="discount">(↓{{ $data['ProdPriceData'][0]['SaleRate'] . $data['ProdPriceData'][0]['SaleRateUnit'] }})</span>
-                                </div>
+                            <td class="w-notice p_re tx-right">
+                                @foreach($data['ProdPriceData'] as $price_idx => $price_row)
+                                    <div class="priceWrap p_re">
+                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);"></span>
+                                        <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
+                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                    </div>
+                                @endforeach
                             </td>
                         </tr>
                         </tbody>
@@ -451,7 +452,8 @@
         });
 
         // 상품 자동선택
-        $buy_form.find('.chk_products, .chk_books').trigger('click');
+        $buy_form.find('.chk_products').eq(0).trigger('click');
+        $buy_form.find('.chk_books').eq(0).trigger('click');
     });
 </script>
 @stop

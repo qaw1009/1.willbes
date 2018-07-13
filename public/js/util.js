@@ -35,6 +35,21 @@ function checkAll(target_selector, click_selector) {
 }
 
 /**
+ * checkbox 단일 선택
+ * @param group_selector
+ * @param checked_value
+ */
+function checkOnly(group_selector, checked_value) {
+    var $selector = $(group_selector);
+    var $checked_selector = $selector.filter('[value="' + checked_value + '"]');
+
+    if ($checked_selector.is(':checked') === true) {
+        $selector.prop('checked', false);
+        $checked_selector.prop('checked', true);
+    }
+}
+
+/**
  * iCheck checkbox 전체선택/해제
  * @param target_selector
  * @param click_selector

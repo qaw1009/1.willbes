@@ -194,9 +194,6 @@
                                             </dt>
                                         </dl>
                                     </td>
-                                    <td class="chk buybtn p_re">
-                                        <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] }}" class="chk_products">
-                                    </td>
                                     <td class="w-notice p_re">
                                         <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
                                         <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
@@ -208,10 +205,14 @@
                                                 </dl>
                                             @endforeach
                                         </div>
-                                        <div class="priceWrap">
-                                            <span class="price tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $row['ProdPriceData'][0]['SaleRate'] . $row['ProdPriceData'][0]['SaleRateUnit'] }})</span>
-                                        </div>
+                                        @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                            <div class="priceWrap chk buybtn p_re">
+                                                <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] }}" class="chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.' + this.className, this.value);"></span>
+                                                <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
+                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                            </div>
+                                        @endforeach
                                         <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                     </td>
                                 </tr>

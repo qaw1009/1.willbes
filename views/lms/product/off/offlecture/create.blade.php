@@ -301,16 +301,18 @@
                         <div class="item inline-block">
                                 @foreach($salestype_ccd as $key=>$val)
                                     @if($key == '613001')
-                                            @php
-                                            $SalePrice = '';
-                                            $SaleDiscType = '';
-                                            $SaleRate = '';
-                                            $RealSalePrice = '';
+                                        @php
+                                                $SalePriceIsUse = '';
+                                                $SalePrice = '';
+                                                $SaleDiscType = '';
+                                                $SaleRate = '';
+                                                $RealSalePrice = '';
                                         @endphp
                                         @if($method === 'PUT')
                                             @foreach($data_sale as $row)
                                                 @php
                                                     if(trim($key) == trim($row['SaleTypeCcd'])) {
+                                                        $SalePriceIsUse = $row['SalePriceIsUse'];
                                                         $SalePrice = $row['SalePrice'];
                                                         $SaleDiscType = $row['SaleDiscType'];
                                                         $SaleRate = $row['SaleRate'];
@@ -319,7 +321,8 @@
                                                 @endphp
                                             @endforeach
                                         @endif
-                                            <input type="hidden" name="SalseTypeCcd[]" id="SalseTypeCcd_{{$key}}" value="{{$key}}">
+                                            <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}">
+                                            <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y">
                                             [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가" style="width:100px;"> 원
                                             &nbsp;
                                             [할인율]

@@ -233,7 +233,6 @@ Class Lecture extends \app\controllers\BaseController
             ['field'=>'CourseIdx', 'label' => '과정', 'rules' => 'trim|required'],
             ['field'=>'SubjectIdx', 'label' => '과목', 'rules' => 'trim|required'],
             ['field'=>'LecTypeCcd', 'label' => '강좌유형', 'rules' => 'trim|required'],
-            ['field'=>'StudyProvisionCcd', 'label' => '강좌제공구분', 'rules' => 'trim|required'],
             ['field'=>'PcProvisionCcd', 'label' => 'PC제공구분', 'rules' => 'trim|required'],
             ['field'=>'MobileProvisionCcd', 'label' => '모바일제공구분', 'rules' => 'trim|required'],
             //['field'=>'PlayerTypeCcds[0]', 'label' => '플레이어선택', 'rules' => 'trim|required'],

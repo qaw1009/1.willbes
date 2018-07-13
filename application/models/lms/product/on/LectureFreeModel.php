@@ -357,7 +357,6 @@ class LectureFreeModel extends CommonLectureModel
             ,'StudyPeriod'=>$commonStudyPeriod
             ,'StudyStartDate'=>get_var($commonStudyStartDate,null)
             ,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)
-            ,'StudyProvisionCcd'=>element('StudyProvisionCcd',$input)          //강좌제공구분
             ,'PcProvisionCcd'=>element('PcProvisionCcd',$input)                   //PC제공구분
             ,'MobileProvisionCcd'=>element('MobileProvisionCcd',$input)         //모바일제공구분
             ,'PlayerTypeCcds'=>implode(',', element('PlayerTypeCcds', $input))                //플레이어선택

@@ -281,16 +281,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">강좌제공구분 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-4 form-inline item">
-                        <div class="radio">
-                            @foreach($lecprovision_ccd as $key => $val)
-                            <input type="radio" name="StudyProvisionCcd" id="StudyProvisionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['StudyProvisionCcd'] == $key)checked="checked"@endif> {{$val}}
-                            &nbsp;
-                            @endforeach
-                        </div>
-                    </div>
                     <label class="control-label col-md-2">PC제공구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
@@ -366,15 +356,18 @@
 
                                 @foreach($salestype_ccd as $key=>$val)
                                     @php
+                                        $SalePriceIsUse = '';
                                         $SalePrice = '';
                                         $SaleDiscType = '';
                                         $SaleRate = '';
                                         $RealSalePrice = '';
+
                                     @endphp
                                     @if($method === 'PUT')
                                         @foreach($data_sale as $row)
                                             @php
                                                 if(trim($key) == trim($row['SaleTypeCcd'])) {
+                                                    $SalePriceIsUse = $row['SalePriceIsUse'];
                                                     $SalePrice = $row['SalePrice'];
                                                     $SaleDiscType = $row['SaleDiscType'];
                                                     $SaleRate = $row['SaleRate'];
@@ -384,7 +377,9 @@
                                         @endforeach
                                     @endif
                                     <tr>
-                                        <th>{{$val}} <input type="hidden" name="SalseTypeCcd[]" id="SalseTypeCcd_{{$key}}" value="{{$key}}"></th>
+                                        <td>
+                                            <input type="checkbox" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y" class="flat" @if($SalePriceIsUse==='Y') checked="checked"@endif>
+                                            {{$val}} <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}"></td>
                                         <td><input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원</td>
                                         <td>
                                             <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">

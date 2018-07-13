@@ -401,7 +401,6 @@ class LectureModel extends CommonLectureModel
                 ,'WorkWeekDayEndTime'=>element('WorkWeekDayEndTime',$input)         //수강적용시간 : 평일 종료시간
                 ,'WorkHoliDayStartTime'=>element('WorkHoliDayStartTime',$input)          //수강적용시간 : 주말 시작시간
                 ,'WorkHoliDayEndTime'=>element('WorkHoliDayEndTime',$input)              //수강적용시간 : 주말 종료시간
-                ,'StudyProvisionCcd'=>element('StudyProvisionCcd',$input)          //강좌제공구분
                 ,'PcProvisionCcd'=>element('PcProvisionCcd',$input)                   //PC제공구분
                 ,'MobileProvisionCcd'=>element('MobileProvisionCcd',$input)         //모바일제공구분
                 ,'PlayerTypeCcds'=>implode(',', element('PlayerTypeCcds', $input))                //플레이어선택

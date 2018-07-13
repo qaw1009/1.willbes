@@ -228,16 +228,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">강좌제공구분 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-4 form-inline item">
-                        <div class="radio">
-                            @foreach($lecprovision_ccd as $key => $val)
-                                <input type="radio" name="StudyProvisionCcd" id="StudyProvisionCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['StudyProvisionCcd'] == $key)checked="checked"@endif> {{$val}}
-                                &nbsp;
-                            @endforeach
-                        </div>
-                    </div>
                     <label class="control-label col-md-2">PC제공구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">
@@ -278,8 +268,9 @@
 
 
 
-                <!--// 가격 임의 지정 : 하단 강사료 지급 (강사 세팅) 을 위한 값-->
-                <input type="hidden" name="SalseTypeCcd[]" id="SalseTypeCcd_613001" value="613001">
+                <!--// 가격 임의 지정 : 하단 강사료 지급 (강사 세팅) 을 위한 값  : 대표강사를 지정하기 위한 임의로 지정-->
+                <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_613001" value="613001">
+                <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_613001" value="Y">
                 <input type="hidden" name="SalePrice[]" id="SalePrice_613001" value="0">
                 <input type="hidden" name="SaleDiscType[]" id="SaleDiscType_613001" value="R">
                 <input type="hidden" name="SaleRate[]" id="SaleRate_613001"  value="0">

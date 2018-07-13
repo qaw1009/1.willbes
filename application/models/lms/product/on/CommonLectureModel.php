@@ -394,7 +394,8 @@ class CommonLectureModel extends WB_Model
         try {
 
             /*판매가격*/
-            $SalseTypeCcd = element('SalseTypeCcd',$input);                     //판매가격 코드
+            $SaleTypeCcd = element('SaleTypeCcd',$input);                     //판매가격 코드
+            $SalePriceIsUse = element('SalePriceIsUse',$input);                 //판매가격사용여부
             $SalePrice = element('SalePrice',$input);                                  //정상가
             $SaleDiscType = element('SaleDiscType',$input);                        //할인적용코드
             $SaleRate = element('SaleRate',$input);                                    //할인율/금액
@@ -406,12 +407,13 @@ class CommonLectureModel extends WB_Model
                 throw new \Exception('가격 수정에 실패했습니다.');
             }
 
-            for($i=0;$i<count($SalseTypeCcd);$i++) {
+            for($i=0;$i<count($SaleTypeCcd);$i++) {
                 //if(empty($SalePrice[$i]) !== true) {  // 값이 0 일 경우 저장 안됨
                 if(get_var($SalePrice[$i]) !== '') {
                     $data = [
                         'ProdCode' => $prodcode
-                        ,'SaleTypeCcd' => $SalseTypeCcd[$i]
+                        ,'SaleTypeCcd' => $SaleTypeCcd[$i]
+                        ,'SalePriceIsUse' => ($SalePriceIsUse[$i] === 'Y' ? 'Y' : 'N')
                         ,'SalePrice' => $SalePrice[$i]
                         ,'SaleRate' => $SaleRate[$i]
                         ,'SaleDiscType' => $SaleDiscType[$i]
@@ -912,7 +914,7 @@ class CommonLectureModel extends WB_Model
 
             //강좌복사
             $insert_column = 'ProdCode, CourseIdx, LearnPatternCcd, SubjectIdx, wLecIdx, SchoolYear, LecSaleType, LecTypeCcd, StudyPeriodCcd, StudyPeriod, StudyStartDate, StudyEndDate
-                    , WorkBaseStudyPeriod, WorkMultipleApply, WorkWeekDayStartTime, WorkWeekDayEndTime, WorkHoliDayStartTime, WorkHoliDayEndTime, StudyProvisionCcd
+                    , WorkBaseStudyPeriod, WorkMultipleApply, WorkWeekDayStartTime, WorkWeekDayEndTime, WorkHoliDayStartTime, WorkHoliDayEndTime
                     , PcProvisionCcd, MobileProvisionCcd, PlayerTypeCcds, IsPackMultipleType, MultipleTypeCcd, MultipleApply, AllLecTime, LecCalcType
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
@@ -953,7 +955,7 @@ class CommonLectureModel extends WB_Model
 
 
             //가격복사
-            $insert_column = 'ProdCode, SaleTypeCcd, SalePrice, SaleRate, SaleDiscType, RealSalePrice, RegAdminIdx, RegIp';
+            $insert_column = 'ProdCode, SaleTypeCcd, SalePrice, SaleRate, SaleDiscType, RealSalePrice, SalePriceIsUse, RegAdminIdx, RegIp';
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);

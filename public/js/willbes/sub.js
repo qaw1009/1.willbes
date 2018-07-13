@@ -56,20 +56,20 @@ $(function() {
 // checkbox 결제 버튼 Script
 $(function() {
     $('.chk.buybtn input:checkbox').change(function(){
-        var $lec_buy_btn = $('.willbes-Lec-buyBtn-sm');
+        var $buy_layer = $('.willbes-Lec-buyBtn-sm');
 
         if($(this).is(':checked')) {
             var top = $(this).offset().top + 15;
             var left = $(this).offset().left;
 
-            $lec_buy_btn.css({
+            $buy_layer.css({
                 'top': top,
                 'left': left,
                 'position': 'absolute'
             }).addClass('active');
         } else {
-            $lec_buy_btn.find('.pocketBox').css('display','none').hide();
-            $lec_buy_btn.removeClass('active');
+            $buy_layer.find('.pocketBox').css('display','none').hide();
+            $buy_layer.removeClass('active');
         }
     });
 });

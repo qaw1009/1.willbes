@@ -55,7 +55,7 @@
                                 <img src="{{ $row['wAttachImgPath'] }}{{ $row['wAttachImgOgName'] }}" width="200" height="250">
                             </div>
                             <div class="bookDetail">
-                                <div class="book-Tit tx-dark-black NG">{{ $row['BookProdName'] }}</div>
+                                <div class="book-Tit tx-dark-black NG">{{ $row['ProdBookName'] }}</div>
                                 <div class="book-Author tx-gray">
                                     <ul>
                                         <li>분야 : {{ $row['BookCateName'] }} <span class="row-line">|</span></li>

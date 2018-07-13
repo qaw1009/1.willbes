@@ -67,8 +67,7 @@
                     <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
                             <col style="width: 445px;">
-                            <col style="width: 85px;">
-                            <col style="width: 180px;">
+                            <col style="width: 265px;">
                         </colgroup>
                         <tbody>
                         <tr>
@@ -106,12 +105,12 @@
                                 @foreach($data['ProdBookData'] as $book_idx => $book_row)
                                     <div class="w-sub">
                                         <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
-                                        <span class="w-subtit">{{ $book_row['BookProdName'] }}</span>
+                                        <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
                                         <span class="chk">
                                             <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                 [{{ $book_row['wSaleCcdName'] }}]
                                             </label>
-                                            <input type="checkbox" name="prod_sub_code['{{ $data['ProdCode'] }}'][]" class="chk_books" value="{{ $book_row['BookProdCode'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                            <input type="checkbox" name="prod_sub_code['{{ $data['ProdCode'] }}'][]" class="chk_books" value="{{ $book_row['ProdBookCode'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                         </span>
                                         <span class="priceWrap">
                                             <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
@@ -232,7 +231,7 @@
                         <img src="{{ $row['wAttachImgPath'] }}{{ $row['wAttachImgOgName'] }}" width="200" height="250">
                     </div>
                     <div class="bookDetail">
-                        <div class="book-Tit tx-dark-black NG">{{ $row['BookProdName'] }}</div>
+                        <div class="book-Tit tx-dark-black NG">{{ $row['ProdBookName'] }}</div>
                         <div class="book-Author tx-gray">
                             <ul>
                                 <li>분야 : {{ $row['BookCateName'] }} <span class="row-line">|</span></li>

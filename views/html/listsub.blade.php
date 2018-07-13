@@ -98,8 +98,7 @@
                     <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
                             <col style="width: 445px;">
-                            <col style="width: 85px;">
-                            <col style="width: 180px;">
+                            <col style="width: 265px;">
                         </colgroup>
                         <tbody>
                             <tr>
@@ -112,13 +111,12 @@
                                 <td class="w-data tx-left">
                                     <div class="w-tit">2017 (지방직/서울시) 정채영 국어 필살기 모의고사 시즌Ⅲ-Ⅳ(4-6월)</div>
                                 </td>
-                                <td class="chk buybtn">
-                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                </td>
-                                <td class="w-notice">
-                                    <div class="priceWrap">
+                                <td class="w-notice p_re tx-right">
+                                    <div class="priceWrap p_re">
+                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                        <span class="select">[PC+모바일]</span>
                                         <span class="price tx-blue">80,000원</span>
-                                        <span class="discount">(↓20%)</span>
+                                        <span class="discount">(↓10%)</span>
                                     </div>
                                 </td>
                             </tr>
@@ -132,59 +130,59 @@
                             <span class="MoreBtn"><a href="#BookInfo">교재정보 보기 ▼</a></span>
                         </div>
                         <div class="w-grid">
-                            <div class="w-sub">※ 별도 구매 가능한 교재가 없습니다.</div>
-                            <div class="w-sub">
+                            <div class="w-sub overflow">※ 별도 구매 가능한 교재가 없습니다.</div>
+                            <div class="w-sub overflow">
                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을...</span>
-                                <span class="chk">
-                                    <label>[판매중]</label>
+                                <span class="chk"> 
                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <label>[판매중]</label>
                                 </span>
                                 <span class="priceWrap">
                                     <span class="price tx-blue">30,000원</span>
                                     <span class="discount">(↓10%)</span>
                                 </span>
                             </div>
-                            <div class="w-sub">
+                            <div class="w-sub overflow">
                                 <span class="w-obj tx-blue tx11">주교재</span> 
                                 <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로...</span>
                                 <span class="chk">
-                                    <label class="soldout">[품절]</label>
                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                    <label class="soldout">[품절]</label>
                                 </span>
                                 <span class="priceWrap">
                                     <span class="price tx-blue">20,000원</span>
                                     <span class="discount">(↓10%)</span>
                                 </span>
                             </div>
-                            <div class="w-sub">
+                            <div class="w-sub overflow">
                                 <span class="w-obj tx-blue tx11">부교재</span> 
                                 <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편)...</span>
                                 <span class="chk">
-                                    <label class="press">[출간예정]</label>
                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                    <label class="press">[출간예정]</label>
                                 </span>
                                 <span class="priceWrap">
                                     <span class="price tx-blue">0원</span>
                                 </span>
                             </div>
-                            <div class="w-sub">
+                            <div class="w-sub overflow">
                                 <span class="w-obj tx-blue tx11">부교재</span> 
                                 <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편)...</span>
                                 <span class="chk">
-                                    <label class="press">[출간예정]</label>
                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                    <label class="press">[출간예정]</label>
                                 </span>
                                 <span class="priceWrap">
                                     <span class="price tx-blue">0원</span>
                                 </span>
                             </div>
-                            <div class="w-sub">
+                            <div class="w-sub overflow">
                                 <span class="w-obj tx-blue tx11">부교재</span> 
                                 <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편)...</span>
                                 <span class="chk">
-                                    <label class="press">[출간예정]</label>
                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                    <label class="press">[출간예정]</label>
                                 </span>
                                 <span class="priceWrap">
                                     <span class="price tx-blue">0원</span>

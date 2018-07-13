@@ -2204,6 +2204,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     line-height: 26px;
     margin-left: 10px;
 }
+.lecInfoTable .w-sub.overflow {
+    width: 673px;
+}
 .lecInfoTable .w-sub span {
     float: left;
 }
@@ -2219,14 +2222,14 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     padding-left: 75px;
 }
 .lecInfoTable .w-sub .chk {
-    width: 110px;
+    width: 98px;
     text-align: right;
 }
 .lecInfoTable .w-sub .chk label {
     font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif"; 
     font-size: 11px;
     font-weight: 300;
-    margin-right: 5px;
+    margin-left: 5px;
 }
 .lecInfoTable .w-sub .chk label.soldout {
     color: #f14078;
@@ -2235,7 +2238,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     color: #707070;
 }
 .lecInfoTable .w-sub .chk input[type=checkbox] {
-    float: right;
+    float: left;
     width: 14px;
     height: 14px;
     cursor: pointer;
@@ -2243,18 +2246,18 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .lecInfoTable .w-sub .priceWrap {
     position: relative;
-    width: 155px;
+    width: 136px;
     margin-right: 25px;
     text-align: right;
     line-height: 23px;
 }
 .lecInfoTable .w-sub .priceWrap .price {
     position: absolute;
-    right: 74px;
+    right: 70px;
 }
 .lecInfoTable .w-sub .priceWrap .discount {
     float: right;
-    width: 72px;
+    width: 68px;
     color: #464646;
 }
 .lecInfoTable .w-sub strong {
@@ -2543,7 +2546,7 @@ table.profTable tr td .priceWrap {
     margin-right: 25px;
 }
 .willbes-Buy-Table .lecInfoTable .w-subtit {
-    width: 320px;
+    width: 370px;
 }
 .willbes-Buy-Table .lecInfoTable .priceWrap {
     float: right;

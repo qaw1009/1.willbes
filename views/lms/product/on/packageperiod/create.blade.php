@@ -306,6 +306,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2">수강제한기기개수 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10 form-inline item">
+                        <input type="number" name="DeviceLimitCount" id="DeviceLimitCount"  class="form-control" required="required" title="수강제한기기개수" style="width:50px;" maxlength="2" @if($method==='POST') value="0" @else value="{{$data['DeviceLimitCount']}}" @endif"> 개
+                        &nbsp;&nbsp;
+                        •아이디 기준 수강 가능한 기기 개수 입력 (모바일,PC 구분없이 수강 가능하게 처리)
+                    </div>
+
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2">PC제공구분 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline item">

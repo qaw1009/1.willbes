@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tm:TermDictionary xmlns:tm="http://exerd.com/term-model" version="1.1">
   <term name="식별자" physicalName="Idx"/>
-  <term name="명" description="이름" physicalName="Name" physicalDescription="Name"/>
+  <term name="명" description="" physicalName="Name" physicalDescription="Name"/>
   <term name="아이디" physicalName="Id"/>
   <term name="비밀번호" description="Password" physicalName="Passwd"/>
   <term name="등록" description="Regist" physicalName="Reg"/>
@@ -48,7 +48,7 @@
   <term name="설명" physicalName="Desc"/>
   <term name="기타" physicalName="Etc"/>
   <term name="CP" physicalName="Cp"/>
-  <term name="승인" physicalName="Approval"/>
+  <term name="승인" physicalName="Approval" physicalDescription="Approval"/>
   <term name="Home" physicalName="Home"/>
   <term name="설정" physicalName="Setting"/>
   <term name="교수" description="Professor" physicalName="Prof" physicalDescription=""/>
@@ -122,7 +122,7 @@
   <term name="지역" physicalName="Area"/>
   <term name="강좌" physicalName="Lec"/>
   <term name="포인트" physicalName="Point"/>
-  <term name="도서" physicalName="Book"/>
+  <term name="도서" physicalName="Book" physicalDescription="Book"/>
   <term name="상품" description="Product" physicalName="Prod" physicalDescription="Prod"/>
   <term name="일시정지" physicalName="Pause"/>
   <term name="연장" physicalName="Exten"/>
@@ -171,4 +171,36 @@
   <term name="취소" physicalName="Cancel"/>
   <term name="회수" physicalName="Retire"/>
   <term name="사용자" physicalName="User"/>
+  <term name="회원" description="Member" physicalName="Mem"/>
+  <term name="서브" physicalName="Sub"/>
+  <term name="수량" physicalName="Qty"/>
+  <term name="직접" physicalName="Direct"/>
+  <term name="주문" physicalName="Order"/>
+  <term name="대표" description="Representation" physicalName="Repr"/>
+  <term name="전체" physicalName="Total"/>
+  <term name="현금" physicalName="Cash"/>
+  <term name="카드" physicalName="Card"/>
+  <term name="완료" physicalName="Complete"/>
+  <term name="에스크로" physicalName="Escrow"/>
+  <term name="영수증" physicalName="Receipt"/>
+  <term name="미수금" physicalName="UnPaid"/>
+  <term name="분할" physicalName="Division"/>
+  <term name="현재" physicalName="Now"/>
+  <term name="[수]" physicalName="Num"/>
+  <term name="사유" physicalName="Reason"/>
+  <term name="처리" description="Process" physicalName="Proc"/>
+  <term name="우편번호" physicalName="ZipCode"/>
+  <term name="수령인" physicalName="Receiver"/>
+  <term name="송장" physicalName="Invoice"/>
+  <term name="전송" physicalName="Send" physicalDescription="Send"/>
+  <term name="요청" description="Request" physicalName="Req"/>
+  <term name="은행" physicalName="Bank"/>
+  <term name="계좌" physicalName="Account"/>
+  <term name="공제" physicalName="Deduct"/>
+  <term name="지결" physicalName="Approval" physicalDescription="Approval"/>
+  <term name="입금" physicalName="Deposit"/>
+  <term name="연결" physicalName="Conn"/>
+  <term name="방문" physicalName="Visit"/>
+  <term name="게이트웨이" description="Gateway" physicalName="Gw"/>
+  <term name="발송" physicalName="Send" physicalDescription="Send"/>
 </tm:TermDictionary>

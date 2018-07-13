@@ -55,7 +55,7 @@
     </div>
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌</strong></span>
+        <span class="1depth"><span class="depth-Arrow">></span><strong>단강좌000</strong></span>
     </div>
     <div class="Content p_re">
         

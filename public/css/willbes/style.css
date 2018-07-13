@@ -2028,32 +2028,26 @@ table.lecTable tr td .w-tit {
     color: #2c2c2c;
     letter-spacing: -1px;
 }
-table.lecTable tr td.chk {
-    text-align: right;
-}
-
-table.lecTable tr td.chk .chkBox {
-    margin-top: 35px;
-}
-table.lecTable tr td.chk .chkBox dt {
-    margin-bottom: 1px;
-}
-table.lecTable tr td.chk input[type=checkbox] {
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
 table.lecTable tr td .priceWrap {
     clear: both;
     float: right;
     position: relative;
     top: 15px;
     right: 0;
-    width: 220px;
+    width: 240px;
     margin-right: 0;
     height: 18px;
     text-align: left;
 } 
+table.lecTable tr td .priceWrap .chkBox {
+    display: inline-block;
+    line-height: 8px;
+}
+table.lecTable tr td .priceWrap .chkBox input[type=checkbox] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
 table.lecTable tr td .priceWrap .select {
     display: inline-block;
     width: 80px;

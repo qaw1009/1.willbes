@@ -235,8 +235,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -263,13 +262,6 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk buybtn p_re">
-                                <dl class="chkBox">
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                </dl>
-                            </td>
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
                                 <div id="viewBox" class="viewBox">
@@ -284,17 +276,20 @@
                                         <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                     </dl>
                                 </div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[PC]</span>
                                     <span class="price tx-blue">7,000원</span>
                                     <span class="discount">(↓20%)</span>
                                 </div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[모바일]</span>
                                     <span class="price tx-blue">80,000원</span>
                                     <span class="discount">(↓10%)</span>
                                 </div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[PC+모바일]</span>
                                     <span class="price tx-blue">123,000원</span>
                                     <span class="discount">(↓15%)</span>
@@ -368,8 +363,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -390,26 +384,22 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk">
-                                <dl class="chkBox">
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                </dl>
-                            </td>
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[PC]</span>
                                     <span class="price tx-blue">6,000원</span>
                                     <span class="discount">(↓12%)</span>
                                 </div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[모바일]</span>
                                     <span class="price tx-blue">90,000원</span>
                                     <span class="discount">(↓50%)</span>
                                 </div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">[PC+모바일]</span>
                                     <span class="price tx-blue">154,000원</span>
                                     <span class="discount">(↓5%)</span>
@@ -476,8 +466,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -496,14 +485,10 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk">
-                                <dl class="chkBox">
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                </dl>
-                            </td>
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="price tx-blue">0원</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
@@ -547,8 +532,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -567,14 +551,10 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk">
-                                <dl class="chkBox">
-                                    <dt><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></dt>
-                                </dl>
-                            </td>
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                <div class="priceWrap">
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="price tx-blue">0원</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>

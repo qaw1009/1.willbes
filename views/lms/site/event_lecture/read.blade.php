@@ -9,10 +9,10 @@
             <h2>이벤트, 설명회, 특강 정보</h2>
             <div class="clearfix"></div>
             <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                <li><a class="collapse-link">접기<i class="fa fa-chevron-up"></i></a></li>
             </ul>
         </div>
-        <div class="x_content">
+        <div class="x_content" style="display: none;">
             <div class="form-group">
                 <label class="control-label col-md-2">제목</label>
                 <div class="form-control-static col-md-9">{{$data['EventName']}}</div>
@@ -106,7 +106,20 @@
     </div>
 
     <div class="x_panel">
-
+        <div class="form-group">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a data-toggle="tab" href="#list_register" class="send_type" data-content-type="1">신청현황</a></li>
+                <li><a data-toggle="tab" href="#list_comment" class="send_type" data-content-type="2">댓글현황</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="list_register" class="form-group tab-pane fade in active">
+                @include('lms.site.event_lecture.read_register')
+            </div>
+            <div id="list_comment" class="form-group tab-pane fade">
+                @include('lms.site.event_lecture.read_comment')
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">

@@ -304,6 +304,22 @@ class EventLecture extends \app\controllers\BaseController
         ]);
     }
 
+    public function listRegisterAjax($params = [])
+    {
+        $el_idx = $params[0];
+
+
+
+        $count = 0;
+        $list = [];
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
     /**
      * 검색 조건 셋팅
      * @return array
@@ -337,5 +353,22 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         return $arr_condition;
+    }
+
+    private function _getRegisterListConditions()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'A.IsStatus' => 'Y',
+                'A.SiteCode' => $this->_reqP('search_site_code'),
+                'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'A.IsUse' => $this->_reqP('search_is_use')
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'A.EventName' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
     }
 }

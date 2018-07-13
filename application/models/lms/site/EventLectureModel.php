@@ -319,9 +319,6 @@ class EventLectureModel extends WB_Model
 
             // 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
             if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
-                if ($this->_delEventRegister($el_idx) === false) {
-                    throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
-                }
                 if ($this->_addEventRegister($el_idx, $input) === false) {
                     throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
                 }
@@ -457,31 +454,6 @@ class EventLectureModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
 
             $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
-            if ($this->_conn->update($this->_table['event_register']) === false) {
-                throw new \Exception('데이터 삭제에 실패했습니다.');
-            }
-
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
-        }
-
-        return true;
-    }
-
-    /**
-     * 이벤트 접수 관리(정원제한) 다중 데이터 삭제
-     * @param $el_idx
-     * @return array|bool
-     */
-    private function _delEventRegister($el_idx)
-    {
-        $this->_conn->trans_begin();
-        try {
-            $admin_idx = $this->session->userdata('admin_idx');
-
-            $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('ElIdx', $el_idx);
             if ($this->_conn->update($this->_table['event_register']) === false) {
                 throw new \Exception('데이터 삭제에 실패했습니다.');
             }

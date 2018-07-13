@@ -13,7 +13,8 @@ class EventLectureModel extends WB_Model
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
-        'admin' => 'wbs_sys_admin',
+        'member' => 'lms_member',
+        'admin' => 'wbs_sys_admin'
     ];
 
     public $_groupCcd = [
@@ -440,6 +441,44 @@ class EventLectureModel extends WB_Model
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+    }
+
+    /**
+     * 접수관리 회원 신청 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllEventRegister($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.RegDatm,
+            C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_member']} AS A
+            INNER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx
+            INNER JOIN {$this->_table['member']} AS C ON A.MemIdx = C.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

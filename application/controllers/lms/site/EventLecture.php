@@ -289,6 +289,15 @@ class EventLecture extends \app\controllers\BaseController
         $data['CateNames'] = implode(', ', array_values($arr_cate_code));
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
 
+        // 정원제한 다중리스트 데이터 조회
+        $data_register_LM = [];
+        if ($data['LimitType'] == 'M') {
+            $listRegister = $this->eventLectureModel->listEventForRegister($el_idx);
+            if (empty($listRegister) === false) {
+                $data_register_LM = array_pluck($listRegister, 'Name', 'ErIdx');
+            }
+        }
+
         // 등록파일 데이터 조회
         $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
         foreach ($list_event_file as $row) {
@@ -300,18 +309,30 @@ class EventLecture extends \app\controllers\BaseController
         $this->load->view("site/event_lecture/read", [
             'data' => $data,
             'el_idx' => $el_idx,
-            'file_data' => $file_data
+            'file_data' => $file_data,
+            'data_register_LM' => $data_register_LM
         ]);
     }
 
+    /**
+     * 접수관리데이터 회원 신청리스트
+     * @param array $params
+     * @return CI_Output
+     */
     public function listRegisterAjax($params = [])
     {
-        $el_idx = $params[0];
-
-
-
         $count = 0;
         $list = [];
+        $el_idx = $params[0];
+
+        if (empty($el_idx) === false) {
+            $arr_condition = $this->_getRegisterListConditions($el_idx);
+
+            $count = $this->eventLectureModel->listAllEventRegister(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listAllEventRegister(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EmIdx' => 'asc']);
+            }
+        }
 
         return $this->response([
             'recordsTotal' => $count,
@@ -355,20 +376,26 @@ class EventLecture extends \app\controllers\BaseController
         return $arr_condition;
     }
 
-    private function _getRegisterListConditions()
+    private function _getRegisterListConditions($el_idx)
     {
         $arr_condition = [
             'EQ' => [
-                'A.IsStatus' => 'Y',
-                'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'A.IsUse' => $this->_reqP('search_is_use')
+                'B.ElIdx' => $el_idx,
+                'B.IsStatus' => 'Y',
+                'B.ErIdx' => $this->_reqP('search_register_idx')
             ],
             'ORG1' => [
                 'LKB' => [
-                    'A.EventName' => $this->_reqP('search_value')
+                    'C.MemName' => $this->_reqP('search_member_value'),
+                    'C.MemId' => $this->_reqP('search_member_value'),
+                    'C.Phone3' => $this->_reqP('search_member_value'),
                 ]
             ]
         ];
+
+        // 날짜 검색
+        $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
+
+        return $arr_condition;
     }
 }

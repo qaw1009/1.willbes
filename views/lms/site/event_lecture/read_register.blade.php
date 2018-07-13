@@ -4,8 +4,11 @@
         <div class="form-group">
             <label class="control-label col-md-2">다중특강정보</label>
             <div class="col-md-2 form-inline">
-                <select class="form-control" id="">
-                    <option value="1">asdfasdf</option>
+                <select class="form-control" id="search_register_idx" name="search_register_idx">
+                    <option value="">다중특강정보</option>
+                    @foreach($data_register_LM as $key => $val)
+                        <option value="{{$key}}">{{$val}}</option>
+                    @endforeach
                 </select>
             </div>
             <label class="control-label col-md-3">신청자 / 정원</label>
@@ -14,9 +17,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2" for="search_value">통합검색</label>
+            <label class="control-label col-md-2" for="search_member_value">통합검색</label>
             <div class="col-md-2">
-                <input type="text" class="form-control" id="search_value" name="search_value">
+                <input type="text" class="form-control" id="search_member_value" name="search_member_value">
             </div>
             <div class="col-md-2">
                 <p class="form-control-static">• 이름, 아이디, 연락처 검색 기능</p>
@@ -42,8 +45,8 @@
 </div>
 <div class="row mt-10 mb-20">
     <div class="col-xs-12 text-right">
-        <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-        <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
+        <button type="button" class="btn btn-primary btn-search-register"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+        <button type="button" class="btn btn-default mr-20 btn-reset-register">검색초기화</button>
     </div>
 </div>
 
@@ -78,10 +81,8 @@
         $datatable_register = $list_regitster_table.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-copy mr-10"></i> 쪽지발송', className: 'btn-sm btn-success border-radius-reset btn-copy' },
-                { text: '<i class="fa fa-pencil mr-10"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset ml-15 ', action: function(e, dt, node, config) {
-                        location.href = '{{ site_url('/site/eventLecture/create') }}' + dtParamsToQueryString($datatable_register);
-                    }},
+                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-message' },
+                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-sms' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
             ],
             ajax: {
@@ -93,35 +94,73 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" class="flat" name="copy" value="' +row.ELIdx+ '">';
+                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '">';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
                         return $datatable_register.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
 
-                {'data' : 'SiteName'},
-                {'data' : 'CampusName'},
-                {'data' : 'CampusName'},
-                {'data' : 'CampusName'},
-                {'data' : 'CampusName'},
-                {'data' : 'CampusName'},
-                {'data' : 'CampusName'}
+                {'data' : 'MemName'},
+                {'data' : 'MemId'},
+                {'data' : 'Phone'},
+                {'data' : 'Mail'},
+                {'data' : 'RegDatm'},
+                {'data' : 'RegisterName'},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        return '';
+                    }},
             ]
         });
 
-        // 데이터 Read 페이지
-        $list_regitster_table.on('click', '.btn-read', function() {
-            location.replace('{{ site_url('/site/eventLecture/read') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable_register));
+        // 검색
+        $('.btn-search-register').click(function (){
+            $datatable_register.draw();
         });
 
-        // 데이터 수정 폼
-        $list_regitster_table.on('click', '.btn-modify', function() {
-            location.replace('{{ site_url('/site/eventLecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable_register));
+        // 검색초기화
+        $('.btn-reset-register').click(function (){
+            $search_register_form[0].reset();
+            $datatable_register.draw();
         });
 
+        // 목록
         $('.btn-list').click(function() {
             location.replace('{{ site_url("/site/eventLecture/") }}');
+        });
+
+        // 쪽지발송
+        $('.btn-send-message').click(function() {
+            location.replace('{{ site_url("/site/eventLecture/") }}');
+        });
+
+        // SMS발송
+        $('.btn-send-sms').click(function() {
+            /*var $params = {};
+            $('input[name="is_checked"]:checked').each(function() {
+                $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-name'), $(this).val()];
+            });
+
+            var $params_length = Object.keys($params).length;
+
+            if ($params_length <= '0') {
+                alert('수신인 명단을 선택해주세요.');
+                return false;
+            }
+
+            $('input[name="mem_phone[]"]').val('');
+            var i=1;
+            $.each($params, function(key, value) {
+                $('#mem_name_'+i).val(value[0]);
+                $('#mem_phone_'+i).val(value[1]);
+                i++;
+            });*/
+
+            $('.btn-send-sms').setLayer({
+                "url" : "{{ site_url('crm/sms/createSendModal') }}",
+                "width" : "1200"
+            });
         });
     });
 </script>

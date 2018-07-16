@@ -4,7 +4,6 @@ function checkStudentBook($regi_form, $chk_obj) {
     var is_check = true;
     var code = '610003';
     var msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.\n해당 강좌를 선택해 주세요';
-    return true;
 
     if (typeof $chk_obj !== 'undefined') {
         input_data = $chk_obj.data();

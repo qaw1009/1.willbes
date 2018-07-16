@@ -8,7 +8,7 @@ class EventLectureModel extends WB_Model
         'event_lecture_r_category' => 'lms_event_r_category',
         'event_register' => 'lms_event_register',
         'event_file' => 'lms_event_file',
-        'event_commnet' => 'lms_event_commnet',
+        'event_comment' => 'lms_event_comment',
         'event_member' => 'lms_event_member',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
@@ -55,8 +55,8 @@ class EventLectureModel extends WB_Model
         'L' => '_lg'*/
     ];
 
-    // 댓글 이미지 등록 수
-    public $_set_attach_comment_img_cnt = 2;
+    // 공지사항 이미지 등록 수
+    public $_attach_img_cnt = 2;
 
     // 썸네일 이미지 생성 비율
     private $_thumb_radio = [
@@ -105,7 +105,7 @@ class EventLectureModel extends WB_Model
             ) AS D ON A.ElIdx = D.ElIdx
             LEFT JOIN (
                 SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
-                FROM {$this->_table['event_commnet']}
+                FROM {$this->_table['event_comment']}
             ) AS H ON H.ElIdx = A.ElIdx
             INNER JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
@@ -460,7 +460,7 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.RegDatm,
-            C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail
+            C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail, D.MemCnt
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -471,6 +471,9 @@ class EventLectureModel extends WB_Model
             FROM {$this->_table['event_member']} AS A
             INNER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx
             INNER JOIN {$this->_table['member']} AS C ON A.MemIdx = C.MemIdx
+            LEFT JOIN (
+		        SELECT MemIdx, COUNT(MemIdx) AS memCnt FROM {$this->_table['event_member']} GROUP BY MemIdx
+            ) AS D ON A.MemIdx = D.MemIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -479,6 +482,24 @@ class EventLectureModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 접수관리 회원 신청 수
+     * @param $er_idx
+     * @return mixed
+     */
+    public function getRegisterMemberCount($er_idx)
+    {
+        $column = 'count(B.EmIdx) as memberCnt, A.PersonLimitType';
+        $from = "
+            FROM {$this->_table['event_register']} AS A
+            INNER JOIN {$this->_table['event_member']} AS B ON A.ErIdx = B.ErIdx
+        ";
+        $where = ' where A.ErIdx = ? ';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where, [$er_idx])->result_array();
     }
 
     /**
@@ -503,6 +524,77 @@ class EventLectureModel extends WB_Model
             return error_result($e);
         }
 
+        return true;
+    }
+
+    /**
+     * 댓글리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllEventComment($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+            A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.Comment AS eventComment, A.IsUse, A.RegDatm,
+            B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_comment']} AS A
+            LEFT JOIN {$this->_table['member']} AS B ON A.MemIdx = B.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 댓글등록
+     * @param array $input
+     * @return array|bool
+     */
+    public function addEventComment($input = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            $data = [
+                'ElIdx' => element('comment_el_idx', $input),
+                'MemName' => element('admin_name', $input),
+                'AdminIdx' => $admin_idx,
+                'CommentType' => 'A',
+                'Comment' => element('event_comment', $input),
+                'RegAdminIdx' => $admin_idx,
+                'RegIp' => $reg_ip
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['event_comment']) === false) {
+                throw new \Exception('이벤트 댓글 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
         return true;
     }
 

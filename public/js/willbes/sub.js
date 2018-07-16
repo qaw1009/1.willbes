@@ -59,8 +59,8 @@ $(function() {
         var $buy_layer = $('.willbes-Lec-buyBtn-sm');
 
         if($(this).is(':checked')) {
-            var top = $(this).offset().top + 15;
-            var left = $(this).offset().left;
+            var top = $(this).offset().top;
+            var left = $(this).offset().left - 52;
 
             $buy_layer.css({
                 'top': top,

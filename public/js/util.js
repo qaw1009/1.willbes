@@ -423,15 +423,19 @@ function showAlertError(result, status) {
  * @param status
  */
 function showError(result, status) {
-    if (status === 401) {  //권한 없음 || 미로그인
-        notifyAlert('error', '알림', '권한이 없습니다.');
-    } else if (status === 403) {
-        notifyAlert('error', '알림', (result.ret_msg) ? result.ret_msg : '토큰 정보가 올바르지 않습니다.');
-    } else if (status === 422) {
-        notifyAlert('error', '알림', '필수 파라미터 오류입니다.');
-    } else {
-        notifyAlert('error', '알림', result.ret_msg);
+    var err_msg = result.ret_msg || '';
+
+    if (err_msg === '') {
+        if (status === 401) {  //권한 없음 || 미로그인
+            err_msg = '권한이 없습니다.';
+        } else if (status === 403) {
+            err_msg = '토큰 정보가 올바르지 않습니다.';
+        } else if (status === 422) {
+            err_msg = '필수 파라미터 오류입니다.';
+        }
     }
+
+    notifyAlert('error', '알림', err_msg);
 }
 
 /**

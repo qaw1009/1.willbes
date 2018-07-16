@@ -62,7 +62,12 @@
 
         <div class="willbes-Lec mb170 NG c_both">
             <div class="willbes-Buy-Table p_re mt20">
-                <form id="buy_form" name="buy_form" method="POST" onsubmit="return false;">
+                <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
+                    <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
+                    <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
                 <div class="willbes-Buy-List">
                     <table cellspacing="0" cellpadding="0" class="lecTable profTable">
                         <colgroup>
@@ -83,7 +88,7 @@
                             <td class="w-notice p_re tx-right">
                                 @foreach($data['ProdPriceData'] as $price_idx => $price_row)
                                     <div class="priceWrap p_re">
-                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);"></span>
+                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);"></span>
                                         <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                         <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
@@ -110,7 +115,7 @@
                                             <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                 [{{ $book_row['wSaleCcdName'] }}]
                                             </label>
-                                            <input type="checkbox" name="prod_sub_code['{{ $data['ProdCode'] }}'][]" class="chk_books" value="{{ $book_row['ProdBookCode'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                            <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                         </span>
                                         <span class="priceWrap">
                                             <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
@@ -154,12 +159,12 @@
                 <div class="willbes-Lec-buyBtn GM">
                     <ul>
                         <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                            <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
                                 <span>장바구니</span>
                             </button>
                         </li>
                         <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                            <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
                                 <span class="tx-light-blue">바로결제</span>
                             </button>
                         </li>
@@ -424,35 +429,66 @@
     </div>
 </div>
 <!-- End Container -->
+<script src="/public/js/willbes/product_util.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        var $buy_form = $('#buy_form');
+    var $regi_form = $('#regi_form');
 
+    $(document).ready(function() {
         // 상품 선택시 가격 설정
-        $buy_form.on('click', '.chk_products, .chk_books', function() {
-            var prod_sale_price = 0, book_sale_price = 0, tot_sale_price = 0;
+        $regi_form.on('change', '.chk_products, .chk_books', function() {
+            var prod_sale_price = 0, book_sale_price = 0;
             // 강좌 금액 계산
-            $buy_form.find('.chk_products').each(function() {
+            $regi_form.find('.chk_products').each(function() {
                 if ($(this).is(':checked')) {
                     prod_sale_price += $(this).data('sale-price');
                 }
             });
 
             // 도서 금액 계산
-            $buy_form.find('.chk_books').each(function() {
+            $regi_form.find('.chk_books').each(function() {
                 if ($(this).is(':checked')) {
                     book_sale_price += $(this).data('sale-price');
                 }
             });
 
-            $buy_form.find('#prod_sale_price').text(addComma(prod_sale_price));
-            $buy_form.find('#book_sale_price').text(addComma(book_sale_price));
-            $buy_form.find('#tot_sale_price').text(addComma(prod_sale_price + book_sale_price));
+            $regi_form.find('#prod_sale_price').text(addComma(prod_sale_price));
+            $regi_form.find('#book_sale_price').text(addComma(book_sale_price));
+            $regi_form.find('#tot_sale_price').text(addComma(prod_sale_price + book_sale_price));
         });
 
         // 상품 자동선택
-        $buy_form.find('.chk_products').eq(0).trigger('click');
-        $buy_form.find('.chk_books').eq(0).trigger('click');
+        $regi_form.find('.chk_products').eq(0).trigger('click');
+        $regi_form.find('.chk_books').eq(0).trigger('click');
+
+        // 장바구니, 바로결제 버튼 클릭
+        $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
+            var $is_direct_pay = $(this).data('direct-pay') || 'N';
+
+            if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            if (checkStudentBook($regi_form) === false) {
+                return;
+            }
+
+            if ($is_direct_pay === 'Y') {
+                if (checkDirectPay($regi_form) === false) {
+                    return;
+                }
+            }
+
+            // set hidden value
+            $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
+            $regi_form.find('input[name="only_prod_code"]').val('');
+
+            var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
+            ajaxSubmit($regi_form, url, function(ret) {
+                if(ret.ret_cd) {
+                }
+            }, showValidateError, null, false, 'alert');
+        });
     });
 </script>
 @stop

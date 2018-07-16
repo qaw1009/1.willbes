@@ -131,6 +131,7 @@
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
+            <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
             <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
@@ -299,12 +300,12 @@
 </div>
 <div class="willbes-Lec-buyBtn-sm NG">
     <div>
-        <button type="button" name="btn_only_cart" data-direct-pay="N" onclick="openWin('pocketBox')" class="bg-deep-gray">
+        <button type="button" name="btn_only_cart" data-direct-pay="N" class="bg-deep-gray">
             <span>장바구니</span>
         </button>
     </div>
     <div>
-        <button type="button" name="btn_only_direct_pay" data-direct-pay="Y" onclick="" class="bg-dark-blue">
+        <button type="button" name="btn_only_direct_pay" data-direct-pay="Y" class="bg-dark-blue">
             <span>바로결제</span>
         </button>
     </div>
@@ -319,6 +320,7 @@
 </div>
 <!-- willbes-Lec-buyBtn-sm -->
 <!-- End Container -->
+<script src="/public/js/willbes/product_util.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
     var $buy_layer = $('.willbes-Lec-buyBtn-sm');
@@ -344,16 +346,8 @@
         });
 
         // 수강생 교재 체크
-        $regi_form.on('click', '.chk_books', function() {
-            var input_data = $(this).data();
-
-            if (input_data.bookProvisionCcd.toString() === '610003') {
-                if ($regi_form.find('input[data-prod-code="' + input_data.parentProdCode + '"]:checked').length < 1) {
-                    alert('선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.\n해당 강좌를 선택해 주세요');
-                    $(this).prop('checked', false);
-                    return false;
-                }
-            }
+        $regi_form.on('click', '.chk_books:checked', function() {
+            checkStudentBook($regi_form, $(this));
         });
 
         // 클릭된 상품 코드 셋팅
@@ -375,9 +369,15 @@
         // 레이어 장바구니, 바로결제 버튼 클릭
         $buy_layer.on('click', 'button[name="btn_only_cart"], button[name="btn_only_direct_pay"]', function () {
             var $is_direct_pay = $(this).data('direct-pay') || 'N';
+            var $only_prod_code = $regi_form.find('input[name="only_prod_code"]').val();
+            var $target_obj = $regi_form.find('input[name="prod_code[]"][value="' + $only_prod_code + '"]');
 
-            if ($regi_form.find('input[name="only_prod_code"]').val().length < 1) {
+            if ($only_prod_code.length < 1) {
                 alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            if (checkStudentBook($regi_form, $target_obj) === false) {
                 return;
             }
 
@@ -388,8 +388,9 @@
             var data = arrToJson($regi_form.find('input[type="hidden"]').serializeArray());
             sendAjax(url, data, function(ret) {
                 if (ret.ret_cd) {
+                    openWin('pocketBox');
                 }
-            }, showError, false, 'POST');
+            }, showAlertError, false, 'POST');
         });
 
         // 장바구니, 바로결제 버튼 클릭
@@ -401,8 +402,12 @@
                 return;
             }
 
+            if (checkStudentBook($regi_form) === false) {
+                return;
+            }
+
             if ($is_direct_pay === 'Y') {
-                if (checkDirectPay() === false) {
+                if (checkDirectPay($regi_form) === false) {
                     return;
                 }
             }
@@ -414,18 +419,10 @@
             var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
             ajaxSubmit($regi_form, url, function(ret) {
                 if(ret.ret_cd) {
+                    location.href = ret.ret_data.ret_url;
                 }
             }, showValidateError, null, false, 'alert');
         });
-
-        // 바로결제 버튼 클릭시 체크사항 확인
-        var checkDirectPay = function() {
-            if ($regi_form.find('.chk_products:checked').length > 0 && $regi_form.find('.chk_books:checked').length > 0) {
-                alert('바로결제 시 강좌와 교재는 동시 결제가 불가능합니다.');
-                return false;
-            }
-            return true;
-        };
     });
 </script>
 @stop

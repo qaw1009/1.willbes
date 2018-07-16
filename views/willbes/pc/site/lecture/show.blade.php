@@ -486,6 +486,7 @@
             var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
             ajaxSubmit($regi_form, url, function(ret) {
                 if(ret.ret_cd) {
+                    location.href = ret.ret_data.ret_url;
                 }
             }, showValidateError, null, false, 'alert');
         });

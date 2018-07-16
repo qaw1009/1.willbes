@@ -992,7 +992,8 @@
                 }
             });
 
-            @if($data['CourseIdx'] === '649001')
+
+            @if($data['PackCateCcd'] == '649001')
                 $("#CourseIdx").attr("disabled", false);
             @else
                 $("#CourseIdx").attr("disabled", true);

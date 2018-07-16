@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class EventLecture extends \app\controllers\BaseController
 {
-    protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor');
+    protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor', '_wbs/sys/admin');
     protected $helpers = array();
 
     protected $_groupCcd = [];
@@ -298,6 +298,9 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
+        // 관리자명 리턴
+        $wAdmin_info = $this->adminModel->findAdmin('wAdminName', ['EQ' => ['wAdminIdx' => $this->session->userdata('admin_idx')]]);
+
         // 등록파일 데이터 조회
         $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
         foreach ($list_event_file as $row) {
@@ -310,7 +313,8 @@ class EventLecture extends \app\controllers\BaseController
             'data' => $data,
             'el_idx' => $el_idx,
             'file_data' => $file_data,
-            'data_register_LM' => $data_register_LM
+            'data_register_LM' => $data_register_LM,
+            'wAdmin_info' => $wAdmin_info
         ]);
     }
 
@@ -338,6 +342,103 @@ class EventLecture extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
+        ]);
+    }
+
+    /**
+     * 접수관리 회원 신청 수
+     * @param $params
+     */
+    public function getAjaxRegisterMemberCount($params)
+    {
+        $result = $this->eventLectureModel->getRegisterMemberCount($params[0]);
+        $this->json_result(true, '', [], $result);
+    }
+
+    /**
+     * 이벤트 공지사항, 댓글현황
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listCommentAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $el_idx = $params[0];
+
+        if (empty($el_idx) === false) {
+            $arr_condition = $this->_getCommentListConditions($el_idx);
+
+            $count = $this->eventLectureModel->listAllEventComment(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'asc']);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 댓글등록
+     */
+    public function storeComment()
+    {
+        $rules = [
+            ['field' => 'comment_el_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'admin_name', 'label' => '관리자명', 'rules' => 'trim|required'],
+            ['field' => 'event_comment', 'label' => '댓글', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->addEventComment($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function createNoticeModal($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $el_idx = $params[0];
+
+        // 이벤트/설명회/특강관리 정보 조회
+        $arr_condition = ([
+            'EQ'=>[
+                'A.ElIdx' => $el_idx,
+                'A.IsStatus' => 'Y'
+            ]
+        ]);
+        $event_data = $this->eventLectureModel->findEventForModify($arr_condition);
+        if (count($event_data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        // 카테고리 연결 데이터 조회
+        $arr_cate_code = $this->eventLectureModel->listEventCategory($el_idx);
+        $event_data['CateCodes'] = $arr_cate_code;
+        $event_data['CateNames'] = implode(', ', array_values($arr_cate_code));
+
+        // 캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        $method = 'POST';
+        $data = null;
+        $board_idx = null;
+
+        $this->load->view("site/event_lecture/create_notice_modal", [
+            'method' => $method,
+            'arr_campus' => $arr_campus,
+            'event_data' => $event_data,
+            'data' => $data,
+            'attach_file_cnt' => $this->eventLectureModel->_attach_img_cnt
         ]);
     }
 
@@ -394,6 +495,27 @@ class EventLecture extends \app\controllers\BaseController
         ];
 
         // 날짜 검색
+        $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
+
+        return $arr_condition;
+    }
+
+    private function _getCommentListConditions($el_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'A.ElIdx' => $el_idx,
+                'A.IsStatus' => 'Y'
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'B.MemName' => $this->_reqP('search_member_value'),
+                    'B.MemId' => $this->_reqP('search_member_value'),
+                    'B.Phone3' => $this->_reqP('search_member_value'),
+                ]
+            ]
+        ];
+
         $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
 
         return $arr_condition;

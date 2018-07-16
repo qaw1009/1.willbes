@@ -13,7 +13,7 @@
             </div>
             <label class="control-label col-md-3">신청자 / 정원</label>
             <div class="col-md-2">
-                <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+                <p class="form-control-static" id="member_total_info"></p>
             </div>
         </div>
         <div class="form-group">
@@ -107,10 +107,7 @@
                 {'data' : 'Mail'},
                 {'data' : 'RegDatm'},
                 {'data' : 'RegisterName'},
-                {'data' : null, 'render' : function(data, type, row, meta) {
-                        // 리스트 번호
-                        return '';
-                    }},
+                {'data' : 'MemCnt'}
             ]
         });
 
@@ -125,42 +122,34 @@
             $datatable_register.draw();
         });
 
-        // 목록
-        $('.btn-list').click(function() {
-            location.replace('{{ site_url("/site/eventLecture/") }}');
-        });
+        // 신청자/정원 데이터 호출
+        $('#search_register_idx').change(function() {
+            var member_total_info = '';
+            var person_limit_type_name = '';
+            var _data = {};
+            var _url = '{{ site_url("/site/eventLecture/getAjaxRegisterMemberCount/") }}' + this.value;
 
-        // 쪽지발송
-        $('.btn-send-message').click(function() {
-            location.replace('{{ site_url("/site/eventLecture/") }}');
-        });
-
-        // SMS발송
-        $('.btn-send-sms').click(function() {
-            /*var $params = {};
-            $('input[name="is_checked"]:checked').each(function() {
-                $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-name'), $(this).val()];
-            });
-
-            var $params_length = Object.keys($params).length;
-
-            if ($params_length <= '0') {
-                alert('수신인 명단을 선택해주세요.');
+            if (this.value == '') {
+                $('#member_total_info').html('');
                 return false;
             }
 
-            $('input[name="mem_phone[]"]').val('');
-            var i=1;
-            $.each($params, function(key, value) {
-                $('#mem_name_'+i).val(value[0]);
-                $('#mem_phone_'+i).val(value[1]);
-                i++;
-            });*/
-
-            $('.btn-send-sms').setLayer({
-                "url" : "{{ site_url('crm/sms/createSendModal') }}",
-                "width" : "1200"
-            });
+            sendAjax(_url, _data, function(ret) {
+                if (ret.ret_cd) {
+                    if (Object.keys(ret.ret_data).length > 0) {
+                        $.each(ret.ret_data, function(key, val) {
+                            if (val.PersonLimitType == 'N') {
+                                person_limit_type_name = '인원 무제한';
+                            } else if (val.PersonLimitType == 'L') {
+                                person_limit_type_name = '인원 제한';
+                            }
+                            member_total_info = val.memberCnt + ' / ' + person_limit_type_name;
+                            $('#member_total_info').html(member_total_info);
+                        });
+                    }
+                }
+            }, showError, false, 'GET');
         });
+
     });
 </script>

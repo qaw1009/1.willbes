@@ -36,6 +36,7 @@ class Cart extends \app\controllers\FrontController
         $_is_direct_pay = $this->_reqP('is_direct_pay');
         $_only_prod_code = $this->_reqP('only_prod_code');
         $_prod_code = empty($this->_reqP('prod_code')) === false ? $this->_reqP('prod_code') : (array) $_only_prod_code;
+        $returns = [];
 
         if (empty($_prod_code) === true || empty($_learn_pattern) === true || empty($_is_direct_pay) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
@@ -50,17 +51,9 @@ class Cart extends \app\controllers\FrontController
             'is_visit_pay' => get_var($this->_reqP('is_visit_pay'), 'N')
         ]);
 
-        if (empty($_only_prod_code) === false && $_is_direct_pay == 'N') {
-            // 단일상품 장바구니
-            $returns = ['ret_url' => ''];
-        } else {
-            if ($_is_direct_pay == 'Y') {
-                // 결제 페이지 이동
-                $returns = ['ret_url' => site_url('/pay/index/cate/' . $this->_cate_code)];
-            } else {
-                // 장바구니 페이지 이동
-                $returns = ['ret_url' => site_url('/cart/index/cate/' . $this->_cate_code)];
-            }
+        if (empty($_only_prod_code) === true || (empty($_only_prod_code) === false && $_is_direct_pay == 'Y')) {
+            // 개별상품 장바구니 담기 이외에 리턴 URL 지정
+            $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/pay/index/cate/' . $this->_cate_code) : site_url('/cart/index/cate/' . $this->_cate_code);
         }
 
         $this->json_result($result, '', $result, $returns);

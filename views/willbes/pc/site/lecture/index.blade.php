@@ -388,7 +388,11 @@
             var data = arrToJson($regi_form.find('input[type="hidden"]').serializeArray());
             sendAjax(url, data, function(ret) {
                 if (ret.ret_cd) {
-                    openWin('pocketBox');
+                    if (ret.ret_data.hasOwnProperty('ret_url') === true) {
+                        location.href = ret.ret_data.ret_url;
+                    } else {
+                        openWin('pocketBox');
+                    }
                 }
             }, showAlertError, false, 'POST');
         });

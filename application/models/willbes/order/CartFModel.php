@@ -118,19 +118,20 @@ class CartFModel extends WB_Model
      */
     private function _check_on_lecture($params = [])
     {
-        foreach ($params['book'] as $idx => $book_row)
-        {
-            // 부모상품코드와 상품코드가 일치하지 않을 경우 교재구분 조회
-            $data = $this->_conn->getFindResult($this->_table['product_r_product'], 'OptionCcd', ['EQ' => [
-                'ProdCode' => $book_row['ParentProdCode'],
-                'ProdCodeSub' => $book_row['ProdCode'],
-                'IsStatus' => 'Y'
-            ]]);
+        if (isset($params['book']) === true) {
+            foreach ($params['book'] as $idx => $book_row) {
+                // 부모상품코드와 상품코드가 일치하지 않을 경우 교재구분 조회
+                $data = $this->_conn->getFindResult($this->_table['product_r_product'], 'OptionCcd', ['EQ' => [
+                    'ProdCode' => $book_row['ParentProdCode'],
+                    'ProdCodeSub' => $book_row['ProdCode'],
+                    'IsStatus' => 'Y'
+                ]]);
 
-            if (empty($data) === false && $data['OptionCcd'] === $this->_student_book_ccd) {
-                // 수강생 교재일 경우 강좌상품코드가 존재하는지 여부 확인
-                if (isset($params['lecture']) === false || array_search($book_row['ParentProdCode'], $params['lecture']) === false) {
-                    return '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요';
+                if (empty($data) === false && $data['OptionCcd'] === $this->_student_book_ccd) {
+                    // 수강생 교재일 경우 강좌상품코드가 존재하는지 여부 확인
+                    if (isset($params['lecture']) === false || array_search($book_row['ParentProdCode'], $params['lecture']) === false) {
+                        return '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요';
+                    }
                 }
             }
         }

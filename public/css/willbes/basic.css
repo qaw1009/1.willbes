@@ -340,6 +340,10 @@ strong {
   width: 365px;
   margin: 0 auto;
 }
+.widthAuto445 {
+  width: 445px;
+  margin: 0 auto;
+}
 .widthAuto460 {
   width: 460px;
   margin: 0 auto;
@@ -362,6 +366,10 @@ strong {
 }
 .widthAuto770 {
   width: 770px;
+  margin: 0 auto;
+}
+.widthAuto940 {
+  width: 940px;
   margin: 0 auto;
 }
 
@@ -473,6 +481,9 @@ strong {
 .ml45 {
   margin-left: 45px !important;
 }
+.ml50 {
+  margin-left: 50px !important;
+}
 
 .mr5 {
   margin-right: 5px !important;
@@ -569,6 +580,9 @@ strong {
 .f_right {
   float: right;
 }
+.f_inherit {
+  float: inherit !important;
+}
 .d_block {
   display: block !important;
 }
@@ -661,6 +675,9 @@ strong {
 }
 .bdt-light-gray {
   border-top: 1px solid #e2e2e2;
+}
+.bdt-dark-gray {
+  border-top: 1px solid #c9c9c9;
 }
 .bdt-gray {
   border-top: 1px solid #959595;

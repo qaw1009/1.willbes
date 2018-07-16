@@ -44,3 +44,7 @@
 <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/cscenter#cs1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 > 무한PASS존 Index page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/mypage_pass1') }}">내강의실 > 무한PASS존 page 이동</a><br/><br/>

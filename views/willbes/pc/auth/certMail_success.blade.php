@@ -3,7 +3,7 @@
 @section('content')
     <form name="mail_form" id="mail_form" method="post" action=
     @if($CertTypeCcd == '662001')
-        "/member/joinForm/"
+            "/member/joinForm/"
     @elseif($CertTypeCcd == '662002')
         "/member/FindIDProc/"
     @elseif($CertTypeCcd == '662003')
@@ -34,8 +34,7 @@
                 </button>
             </div>
         </div>
-
         <br/><br/><br/><br/><br/><br/>
-
-        </form>
+    </div>
+    </form>
 @stop

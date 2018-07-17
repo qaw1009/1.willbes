@@ -21,28 +21,28 @@
             </ul>
             <div class="tabBox">
                 <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
-                    <input type="hidden" name="sms_stat" id="sms_stat" value="" />
+                    <input type="hidden" name="sms_stat" id="sms_stat" value="NEW" />
                     {!! csrf_field() !!}
                     <div id="join1">
                         <div class="widthAuto460">
-                            <div class="inputBox p_re">
-                                <input type="text" id="var_name" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required">
+                            <div class="inputBox p_re item">
+                                <input type="text" id="var_name" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required" title="이름" >
                             </div>
-                            <!-- <div class="tx-red mb30" style="display: block;">이름을 정확하게 입력해 주세요.</div> -->
-                            <div class="inputBox p_re">
-                                <input type="text" id="var_phone" name="var_phone" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="30" required="required">
+                            <div class="tx-red mb30" style="display: block;" for="var_name"></div>
+                            <div class="inputBox p_re item">
+                                <input type="text" id="var_phone" name="var_phone" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="11" required="required" pattern="numeric" data-validate-length="10,11" title="휴대전화번호" />
                                 <button type="button" id="btn_send_sms" class="mem-Btn certi bg-dark-blue bd-dark-blue">
                                     <span>인증번호 발송</span>
                                 </button>
                             </div>
-                            <!-- <div class="tx-red mb30" style="display: block;"> ‘-’ 없이 숫자만 입력해 주세요.</div> -->
-                            <div class="inputBox p_re">
-                                <input type="text" id="var_auth" name="var_auth" class="iptNumber certi" placeholder="인증번호입력" maxlength="6" disabled  required="required">
+                            <div class="tx-red mb30" style="display: block;" for="var_phone"></div>
+                            <div class="inputBox p_re item">
+                                <input type="text" id="var_auth" name="var_auth" class="iptNumber certi" placeholder="인증번호입력" maxlength="6" disabled  required="required" pattern="numeric" data-validate-length="6" title="인증번호" />
                                 <button type="button" class="mem-Btn certi bg-dark-blue bd-dark-blue" disabled>
                                     <span id="remain_time">00:00</span>
                                 </button>
                             </div>
-                            <!-- <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div> -->
+                            <div class="tx-red mb30" style="display: block;" for="var_auth"></div>
                         </div>
                         <div class="search-Btn btnAuto120 h36">
                             <button type="button" id="btn_sms_auth" class="mem-Btn bg-blue bd-dark-blue" disabled>
@@ -51,18 +51,17 @@
                         </div>
                     </div>
                 </form>
-
                 <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
                     {!! csrf_field() !!}
                     <div id="join2">
                         <div class="widthAuto460">
-                            <div class="inputBox p_re">
-                                <input type="text" id="var_name" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required">
+                            <div class="inputBox p_re item">
+                                <input type="text" id="var_name" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required" title="이름">
                             </div>
                             <!-- <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div> -->
-                            <div class="inputBox p_re">
-                                <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30" required="required"> @
-                                <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30" required="required">
+                            <div class="inputBox p_re item">
+                                <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30" required="required" title="이메일아이디"> @
+                                <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30" required="required" placeholder="메일주소" title="이메일주소">
                                 <select id="domain" name="domain" title="직접입력" class="seleEmail">
                                     @foreach($mail_domain_ccd as $key => $val)
                                         <option value="{{ $key }}">{{ $val }}</option>
@@ -112,14 +111,14 @@
                 $("#remain_time").text(minutesRound + "분 " + secondsRound + "초");
 
                 if((rTime -now) < 1){
-                    $("#btn_send_sms").prop("disabled", false); // 전송버튼 차단
-                    $("#var_phone").prop("readonly", false); // 이름 변경차단
-                    $("#var_name").prop("readonly", false); // 전화번호변경 차단
-                    $("#var_auth").prop("disabled", true); // 인증번호입력 활성화
-                    $("#btn_sms_auth").prop("disabled", true); // 인증버튼 활성화
-                    $("#var_auth").val(''); // 인증번호 초기화
+                    $("#btn_send_sms").prop("disabled", false);
+                    $("#var_phone").prop("readonly", false);
+                    $("#var_name").prop("readonly", false);
+                    $("#var_auth").prop("disabled", true);
+                    $("#btn_sms_auth").prop("disabled", true);
+                    $("#var_auth").val('');
                     $("#var_phone").focus();
-                    $("#sms_stat").val('');
+                    $("#sms_stat").val('NEW');
                     $("#remain_time").text("00:00");
                     alert("인증시간이 초과했습니다.");
                     return;
@@ -129,98 +128,55 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/member/sms/";
+                var _url = "/member/joinSms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
-                    var err_cd = ret.ret_data.err_cd;
-                    if(err_cd == 0) {
-                        // 전송 성공
-                        $("#btn_send_sms").prop("disabled", true); // 전송버튼 차단
-                        $("#var_phone").prop("readonly", true); // 이름 변경차단
-                        $("#var_name").prop("readonly", true); // 전화번호변경 차단
-                        $("#var_auth").prop("disabled", false); // 인즌번호입력 활성화
-                        $("#btn_sms_auth").prop("disabled", false); // 인증버튼 활성화
-                        $("#var_auth").focus();
-                        $("#sms_stat").val('OK');
-                        rTime = new Date(ret.ret_data.limit_date);
-                        remainTime();
-                        alert(ret.ret_msg);
+                    $("#btn_send_sms").prop("disabled", true);
+                    $("#var_phone").prop("readonly", true);
+                    $("#var_name").prop("readonly", true);
+                    $("#var_auth").prop("disabled", false);
+                    $("#btn_sms_auth").prop("disabled", false);
+                    $("#var_auth").focus();
+                    $("#sms_stat").val('OK');
+                    rTime = new Date(ret.ret_data.limit_date);
+                    remainTime();
+                    alert(ret.ret_msg);
 
-                    } else if(err_cd == 1) {
-                        // 전화번호오류
-                        alert(ret.ret_msg);
-                        $("#var_phone").focus();
-
-                    } else if(err_cd == 9) {
-                        alert(ret.ret_msg);
-
-                    } else if(err_cd == 8) {
-                        alert(ret.ret_msg);
-                        location.href="/member/FindID/";
-                    }
-
-                }, showValidateError, false, 'alert');
+                }, function(ret){
+                    alert(ret.ret_msg);
+                }, null, true, 'alert');
             });
 
             $("#btn_sms_auth").click(function () {
-                if($("#sms_stat").val() == ""){
+                if($("#sms_stat").val() == "NEW"){
                     alert('먼저 이름과 전화번호를 입력후 인증번호를 받아 주십시요.');
                     return;
                 }
 
-                var _url = "/member/sms/";
+                var _url = "/member/joinSms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
-                    var err_cd = ret.ret_data.err_cd;
-                    if(err_cd == 0) {
-                        // 인증 성공
-                        clearTimeout(objTimer);
-                        $("#enc_data").val(ret.ret_data.enc_data);
-                        $("#phone_number").val(ret.ret_data.phone_number);
-                        alert(ret.ret_msg);
-                        alert(ret.ret_data.enc_data);
-                        $("#join_form").prop("action", "/member/joinForm/").submit();
+                    clearTimeout(objTimer);
+                    $("#enc_data").val(ret.ret_data.enc_data);
+                    $("#phone_number").val(ret.ret_data.phone_number);
+                    alert(ret.ret_data.enc_data);
+                    alert(ret.ret_msg);
+                    $("#join_form").prop("action", "/member/joinForm/").submit();
 
-                    } else if(err_cd == 1){
-                        clearTimeout(objTimer);
-                        // 실패 초기화
-                        $("#btn_send_sms").prop("disabled", false); // 전송버튼 차단
-                        $("#var_phone").prop("readonly", false); // 이름 변경차단
-                        $("#var_name").prop("readonly", false); // 전화번호변경 차단
-                        $("#var_auth").prop("disabled", true); // 인증번호입력 활성화
-                        $("#btn_sms_auth").prop("disabled", true); // 인증버튼 활성화
-                        $("#var_auth").val(''); // 인증번호 초기화
-                        $("#var_phone").focus();
-                        $("#sms_stat").val('');
-                        $("#remain_time").text("00:00");
-                        alert(ret.ret_msg);
-
-                    } else if(err_cd == 9) {
-                        alert(ret.ret_msg);
-                    }
-
-                }, showValidateError, false, 'alert');
+                }, function(ret){
+                    alert(ret.ret_msg);
+                }, null, true, 'alert');
             });
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/member/mail/";
+                var _url = "/member/joinMail/";
 
-                ajaxSubmit($m_form, _url, function(ret) {
-                    var err_cd = ret.ret_data.err_cd;
-
-                    if(err_cd == 0) {
-                        alert(ret.ret_msg);
-
-                    } else if(err_cd == 1) {
-                        alert(ret.ret_msg);
-
-                    } else if(err_cd == 8) {
-                        alert(ret.ret_msg);
-                        location.href="/member/FindID/";
-                    }
-
-                }, showValidateError, false, 'alert');
+                ajaxSubmit($m_form, _url, function(ret){
+                    alert(ret.ret_msg);
+                }, function(ret){
+                    alert(ret.ret_msg);
+                }, null, false, 'alert');
             });
 
             $("#domain").change(function (){

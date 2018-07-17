@@ -3,25 +3,36 @@
     <div class="widthAuto">
         <div class="loginDepth p_re">
             <ul class="myLog">
-                <li class="Login">
-                    <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>
-                </li>
-                <li class="joinUs dropdown">
-                    <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
-                    <div class="drop-Box joinUs-Box">
-                        <ul>
-                            <li>
-                                <a href="{{ app_url('/member/findId', 'www') }}">아이디찾기</a>
-                            </li>
-                            <li>
-                                <a href="{{ app_url('/member/findPwd', 'www') }}">비밀번호 찾기</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="myCart">
-                    <a class="Tit" href="#none">장바구니</a>
-                </li>
+                @if(sess_data('is_login') != true)
+                    @if(strpos(strtoupper($_SERVER['REQUEST_URI']), '/MEMBER/LOGINFORM') === false)<li class="Login">
+                        <a class="Tit" href="{{ app_url('/member/loginForm', 'www') }}/?rtnUrl=//{{rawurlencode($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])}}" >로그인</a>
+                    </li>@endif
+                    <li class="joinUs dropdown">
+                        <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
+                        <div class="drop-Box joinUs-Box">
+                            <ul>
+                                <li>
+                                    <a href="{{ app_url('/member/findId', 'www') }}">아이디찾기</a>
+                                </li>
+                                <li>
+                                    <a href="{{ app_url('/member/findPwd', 'www') }}">비밀번호 찾기</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @else
+                    <li class="Login">
+                        {{sess_data('mem_name')}}님 ( {{sess_data('mem_idx')}} | {{sess_data('mem_id')}} | {{sess_data('mem_mail')}} | {{sess_data('mem_phone')}})
+                    </li>
+                    <li class="joinUs">
+                        <a class="Tit" href="{{ app_url('/member/logout', 'www') }}">로그아웃</a>
+                    </li>
+                @endif
+                @if($__cfg['SiteCode'] !== '2000')
+                    <li class="myCart">
+                        <a class="Tit" href="">장바구니</a>
+                    </li>
+                @endif
                 <li class="myPage dropdown">
                     <a class="Tit" href="#none">내강의실<span class="arrow-Btn">></span></a>
                     <div class="drop-Box myPage-Box">
@@ -48,39 +59,45 @@
         </div>
     </div>
 </div>
+@if(sess_data('is_login') != true)
+    <!-- LoginForm -->
+    <div id="LoginForm" class="Layer-Box" style="display: none">
+        <form method="post" id="login_layer" name="login_layer" onsubmit=" return false; " >
+            {!! csrf_field() !!}
+            <input type="hidden" name="rtnUrl" value=" " >
+            <a class="closeBtn" href="#none" onclick="closeWin('LoginForm')">
+                <img src="{{ img_url('gnb/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NSK">
+                윌비스 통합 <span class="tx-dark-blue">로그인</span>
+            </div>
+            <div class="Layer-Login GM widthAuto320">
+                <div class="inputBox p_re">
+                    <input type="text" id="layer_id" name="id" class="iptId" placeholder="아이디" maxlength="30" title="아이디">
+                </div>
+                <div class="inputBox p_re">
+                    <input type="password" id="layer_pwd" name="pwd" class="iptPwd" placeholder="비밀번호" maxlength="30" title="비밀번호">
+                </div>
+                <div class="tx-red" style="display: block;" id="login_msg_layer"></div>
+                <div class="chkBox-Save">
+                    <input type="checkbox" id="id_save" name="id_save" class="iptSave">
+                    <label for="id_save" class="labelSave tx-gray">아이디 저장</label>
+                </div>
+                <div class="Layer-Btn NSK widthAuto320">
+                    <button type="submit" class="log-Btn bg-blue bd-dark-blue">
+                        <span>로그인</span>
+                    </button>
+                </div>
+                <ul class="btn-Txt tx-dark-black">
+                    <li>
+                        <span><a class="tx-dark-black" href="{{ app_url('/member/findId', 'www') }}">아이디</a>/<a class="tx-dark-black" href="{{ app_url('/member/findPwd', 'www') }}">비밀번호찾기</a><span class="row-line">|</span></span>
+                    </li>
+                    <li>
+                        <span><a class="tx-dark-blue" href="{{ app_url('/member/join', 'www') }}">회원가입</a></span>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
 
-<!-- LoginForm -->
-<div id="LoginForm" class="Layer-Box" style="display: none">
-    <a class="closeBtn" href="#none" onclick="closeWin('LoginForm')">
-        <img src="{{ img_url('gnb/close.png') }}">
-    </a>
-    <div class="Layer-Tit tx-dark-black NSK">
-        윌비스 통합 <span class="tx-dark-blue">로그인</span>
-    </div>
-    <div class="Layer-Login GM widthAuto320">
-        <div class="inputBox p_re">
-            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="ID" maxlength="30">
-        </div>
-        <div class="inputBox p_re">
-            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="비밀번호" maxlength="30">
-        </div>
-        <div class="tx-red" style="display: block;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-        <div class="chkBox-Save">
-            <input type="checkbox" id="USER_ID_SAVE" name="USER_ID_SAVE" class="iptSave">
-            <label for="USER_ID_SAVE" class="labelSave tx-gray">아이디 저장</label>
-        </div>
-        <div class="Layer-Btn NSK widthAuto320">
-            <button type="submit" onclick="" class="log-Btn bg-blue bd-dark-blue">
-                <span>로그인</span>
-            </button>
-        </div>
-        <ul class="btn-Txt tx-dark-black">
-            <li>
-                <span><a class="tx-dark-black" href="{{ app_url('/member/findId', 'www') }}">아이디</a>/<a class="tx-dark-black" href="{{ app_url('/member/findPwd', 'www') }}">비밀번호찾기</a><span class="row-line">|</span></span>
-            </li>
-            <li>
-                <span><a class="tx-dark-blue" href="{{ app_url('/member/join', 'www') }}">회원가입</a></span>
-            </li>
-        </ul>
-    </div>
-</div>
+@endif

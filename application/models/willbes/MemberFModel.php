@@ -49,7 +49,7 @@ class MemberFModel extends WB_Model
         if(empty($arr_cond) === true) {
             return ($is_count === true) ? 0 : [];
         }
-        
+
         if($is_count === true){
             $column = ' COUNT(*) AS rownums ';
 
@@ -79,6 +79,81 @@ class MemberFModel extends WB_Model
         $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
+    }
+
+
+    /**
+     * 로그인을 위해 존재하는 정보인지 읽어오기
+     * @param $id
+     * @param $pwd
+     * @return mixed
+     */
+    public function getMemberForLogin($id, $pwd, $is_count = true)
+    {
+        if($is_count === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.IsStatus, Mem.IsDup, fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone ";
+        }
+
+        $query .= " FROM {$this->_table['member']} AS Mem 
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
+            WHERE Mem.MemId = ? 
+            AND Mem.MemPassword = fn_hash(?) 
+            AND Mem.IsStatus != 'N'
+            AND Mem.MemPassword != ''
+            ";
+
+        $rows = $this->_conn->query($query, [$id, $pwd]);
+
+        return ($is_count === true) ? $rows->row(0)->rownums : $rows->row_array();
+    }
+
+
+    /**
+     * 로그인처리를 하고 로그 기록
+     * @param array $data
+     * @return bool
+     */
+    public function storeMemberLogin($data = [])
+    {
+        if(empty($data) === true) return false;
+        if(empty($data['MemIdx']) === true) return false;
+
+        $this->_conn->trans_begin();
+
+        try {
+            // 로그인 로그 기록
+            if($this->_conn->set([
+                    'MemIdx' => $data['MemIdx'],
+                    'IsLogin' => 'Y',
+                    'LoginIp' => $this->input->ip_address()
+                ])->insert($this->_table['loginlog']) === false) {
+
+                throw new \Exception('로그인기록 입력 실패');
+            }
+
+            // 마지막 로그인일자 업데이트
+            if ($this->_conn->set('LastLoginDatm','NOW()',false)->where('MemIdx', $data['MemIdx'])->update($this->_table['member']) === false) {
+                throw new \Exception('마지막 로그인 날짜 업데이트 실패');
+            }
+
+            // 세션에 로그인 데이타 입력
+            $this->session->set_userdata('mem_idx', $data['MemIdx']);
+            $this->session->set_userdata('mem_id', $data['MemId']);
+            $this->session->set_userdata('mem_name', $data['MemName']);
+            $this->session->set_userdata('mem_mail', $data['Mail']);
+            $this->session->set_userdata('mem_phone', $data['Phone']);
+            $this->session->set_userdata('is_login', true);
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -158,7 +233,9 @@ class MemberFModel extends WB_Model
         }
 
         $column = " MemIdx, CertKey, CertMail, MailCertTypeCcd, IsCert, MailSendDatm ";
+
         $from = " FROM {$this->_table['authmail']} ";
+
         $where = $this->_conn->makeWhere($input);
         $where = $where->getMakeWhere(false);
 
@@ -183,7 +260,7 @@ class MemberFModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            if($this->_conn->set($data)->set('MailSendDatm', 'NOW()', false)->insert($this->_table['authmail']) === false){
+            if($this->_conn->set($data)->insert($this->_table['authmail']) === false){
                 throw new \Exception('메일전송에 실패했습니다.');
             }
 
@@ -223,8 +300,8 @@ class MemberFModel extends WB_Model
             $this->email->subject($mailtitle);
 
             $body = $this->load->view('auth/_certMail_template', [
-                'CertKey' => urlencode(element('CertKey', $input)),
-                'CertMail' => urlencode(element('CertMail', $input))
+                'CertKey' => rawurlencode(element('CertKey', $input)),
+                'CertMail' => rawurlencode(element('CertMail', $input))
             ], true, true);
 
             $this->email->message($body);
@@ -240,7 +317,7 @@ class MemberFModel extends WB_Model
     {
 
 
-        
+
     }
 
 }

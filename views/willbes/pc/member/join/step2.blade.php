@@ -33,16 +33,19 @@
                         {{$jointype}}<br/><br/>
                         {{$enc_data}}<br/><br/>
                         {{$phone}}<br/><br/>
-                        {{$memName}}<br/><br/></td></tr>
+                        {{$memName}}<br/><br/>
+                        {{$MailId}}<br/><br/>
+                        {{$MailDomain}}<br/><br/>
+                    </td></tr>
                 <tr>
                     <td class="combine-Tit">이름</td>
                     <td>
                         <div class="inputBox p_re">
-                            <input type="text" id="MemName" name="MemName" class="iptName" placeholder="홍길동" readonly value="{{$memName}}">
+                            <input type="text" id="MemName" name="MemName" class="iptName" readonly value="{{$memName}}">
                             <ul class="chkBox-Sex">
                                 <li class="radio-Btn sexchk p_re checked">
                                     <label for="Sex" class="labelName" style="display: block;">남성</label>
-                                    <input type="radio" id="Sex" name="Sex" class="" value="M" title="" checked="checked">
+                                    <input type="radio" id="Sex" name="Sex" class="" value="M" title="">
                                 </li>
                                 <li class="radio-Btn sexchk p_re">
                                     <label for="Sex" class="labelName" style="display: block;">여성</label>
@@ -173,7 +176,7 @@
                             <a href="#none">
                                 <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx11">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
                                 <div class="chkBox-Agree checked">
-                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <input type="checkbox" id="agree1" name="agree1" class="" maxlength="30">
                                 </div>
                             </a>
                         </div>
@@ -183,29 +186,49 @@
                             <a href="#none">
                                 <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의
                                 <div class="chkBox-Agree checked">
-                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <input type="checkbox" id="agree2" name="agree2" class="" maxlength="30">
                                 </div>
                             </a>
                         </div>
-                        <div class="agree-Txt"></div>
+                        <div class="agree-Txt">
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                            Willbes 통합회원 이용약관 동의<br>
+                        </div>
                     </li>
                     <li>
                         <div class="agree-Tit">
                             <a href="#none">
                                 <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의
                                 <div class="chkBox-Agree">
-                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <input type="checkbox" id="agree3" name="agree3" class="" maxlength="30">
                                 </div>
                             </a>
                         </div>
-                        <div class="agree-Txt"></div>
+                        <div class="agree-Txt">
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                            개인정보 수입 및 이용 동의<br/>
+                        </div>
                     </li>
                     <li>
                         <div class="agree-Tit">
                             <a href="#none">
                                 (선택) 개인정보 위탁 동의
                                 <div class="chkBox-Agree">
-                                    <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <input type="checkbox" id="agree4" name="agree4" class="" maxlength="30">
                                 </div>
                             </a>
                         </div>
@@ -225,7 +248,7 @@
                 </ul>
             </div>
             <div class="combine-Btn mt40 pt30 bdt-light-gray btnAuto h66">
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                <button type="button" id="btn_submit" class="mem-Btn bg-blue bd-dark-blue">
                     <span>동의하고 회원가입</span>
                 </button>
             </div>
@@ -249,6 +272,10 @@
                 } else {
                     $("#MailId").focus();
                 }
+            });
+
+            $("#btn_submit").click(function (){
+                alert($("#Sex").val());
             });
         });
     </script>

@@ -19,9 +19,11 @@
                         </ul>
                     </div>
                 </li>
+                @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
                 <li class="myCart">
-                    <a class="Tit" href="#none">장바구니</a>
+                    <a class="Tit" href="{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}">장바구니</a>
                 </li>
+                @endif
                 <li class="myPage dropdown">
                     <a class="Tit" href="#none">내강의실<span class="arrow-Btn">></span></a>
                     <div class="drop-Box myPage-Box">

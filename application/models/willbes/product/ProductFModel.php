@@ -39,7 +39,7 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsBest, IsNew, IsUse
+            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, IsUse
                 , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, LecSaleType, wLectureProgressCcd, wLectureProgressCcdName, ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {

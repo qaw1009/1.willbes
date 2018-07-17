@@ -159,9 +159,11 @@
                 <div class="willbes-Lec-buyBtn GM">
                     <ul>
                         <li class="btnAuto180 h36">
+                            @if($data['IsCart'] == 'Y')
                             <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
                                 <span>장바구니</span>
                             </button>
+                            @endif
                         </li>
                         <li class="btnAuto180 h36">
                             <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">

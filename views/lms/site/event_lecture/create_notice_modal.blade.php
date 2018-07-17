@@ -1,14 +1,19 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    공지사항
+    공지사항 등록
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-        {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/sms/storeSend') }}">--}}
+    <form class="form-horizontal form-label-left" id="modal_regi_notice_form" name="modal_regi_notice_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+        {{--<form class="form-horizontal form-label-left" id="modal_regi_notice_form" name="modal_regi_notice_form" method="POST" enctype="multipart/form-data" novalidate action="{{ site_url('/crm/sms/storeSend') }}">--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
+        <input type="hidden" name="el_idx" value="{{$el_idx}}">
+        <input type="hidden" name="board_idx" value="{{ $board_idx }}"/>
+        <input type="hidden" name="reg_type" value="1"/>
+        <input type="hidden" name="site_code" value="{{$event_data['SiteCode']}}">
+        <input type="hidden" name="campus_ccd" value="{{$event_data['CampusCcd']}}">
         @endsection
 
         @section('layer_content')
@@ -24,11 +29,11 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
                         <div class="col-md-2 item">
-                            {!! html_site_select($event_data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', 'disabled') !!}
+                            {!! html_site_select($event_data['SiteCode'], 'temp_site_code', 'temp_site_code', '', '운영 사이트', 'required', 'disabled') !!}
                         </div>
                         <label class="control-label col-md-2 col-md-offset-1" for="campus_ccd">캠퍼스<span class="required">*</span></label>
                         <div class="col-md-2 item">
-                            <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" disabled="disabled">
+                            <select class="form-control" id="temp_campus_ccd" name="temp_campus_ccd" required="required" disabled="disabled">
                                 <option value="">캠퍼스</option>
                                 @php $temp='0'; @endphp
                                 @foreach($arr_campus as $row)
@@ -66,7 +71,7 @@
                         <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
                         <div class="col-md-3 item form-inline">
                             <div class="radio">
-                                <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
+                                <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data_notice['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
                                 <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="">미사용</label>
                             </div>
                         </div>
@@ -75,14 +80,14 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="title">제목<span class="required">*</span></label>
                         <div class="col-md-9 item">
-                            <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" disabled="disabled">
+                            <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data_notice['Title'] }}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="board_content">내용<span class="required">*</span></label>
                         <div class="col-md-9">
-                            <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
+                            <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data_notice['Content'] !!}</textarea>
                         </div>
                     </div>
 
@@ -93,27 +98,13 @@
                                 <div class="mb-5">
                                     <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control" title="첨부{{ $i }}"/>
 
-                                    @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                        <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]
-                                            <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
+                                    @if(empty($data_notice['arr_attach_file_path'][$i]) === false)
+                                        <p class="form-control-static ml-30 mr-10 attach-idx-{{$data_notice['arr_attach_file_idx'][$i]}}">[ <a href="{{ $data_notice['arr_attach_file_path'][$i] . $data_notice['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data_notice['arr_attach_file_name'][$i] }}</a> ]
+                                            <a href="#none" class="notice-file-delete" data-attach-idx="{{$data_notice['arr_attach_file_idx'][$i]}}"><i class="fa fa-times red"></i></a>
                                         </p>
                                     @endif
                                 </div>
                             @endfor
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2" for="admin_mail_id">조회수</label>
-                        <div class="col-md-5 form-inline">
-                            실제 <input type="text" id="read_count" name="read_count" class="form-control" title="실제" readonly="readonly" value="{{$data['ReadCnt']}}" style="width: 60px; padding:5px">
-                            +
-                            생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['SettingReadCnt']}}" style="width: 70px; padding:5px">
-                            =
-                            노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="" style="width: 70px; padding:5px">
-                        </div>
-                        <div class="col-md-5">
-                            <p class="form-control-static">• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.</p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +115,7 @@
             <script src="/public/vendor/cheditor/cheditor.js"></script>
             <script src="/public/js/editor_util.js"></script>
             <script type="text/javascript">
-                var $modal_regi_form = $('#modal_regi_form');
+                var $modal_regi_notice_form = $('#modal_regi_notice_form');
 
                 $(document).ready(function() {
                     //editor load
@@ -133,13 +124,47 @@
                     $editor_profile.config.editorWidth = '100%';
                     $editor_profile.inputForm = 'board_content';
                     $editor_profile.run();
+
+                    // 파일삭제
+                    $('.notice-file-delete').click(function() {
+                        var attach_idx = $(this).data('attach-idx');
+                        var _url = '{{ site_url("/site/eventLecture/destroyNoticeFile/") }}' + getQueryString();
+                        var data = {
+                            '{{ csrf_token_name() }}' : $modal_regi_notice_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                            '_method' : 'DELETE',
+                            'attach_idx' : attach_idx
+                        };
+                        if (!confirm('정말로 삭제하시겠습니까?')) {
+                            return;
+                        }
+                        sendAjax(_url, data, function(ret) {
+                            if (ret.ret_cd) {
+                                notifyAlert('success', '알림', ret.ret_msg);
+                                $('.attach-idx-'+attach_idx).remove();
+                            }
+                        }, showError, false, 'POST');
+                    });
+
+                    // ajax submit
+                    $modal_regi_notice_form.submit(function() {
+                        getEditorBodyContent($editor_profile);
+                        var _url = '{{ site_url("/site/eventLecture/storeNotice") }}' + getQueryString();
+
+                        ajaxSubmit($modal_regi_notice_form, _url, function(ret) {
+                            if(ret.ret_cd) {
+                                notifyAlert('success', '알림', ret.ret_msg);
+                                $('#pop_modal').modal("toggle");    //modal close
+                                $datatable_comment.draw();          //comment table draw
+                            }
+                        }, showValidateError, null, false, 'alert');
+                    });
                 });
             </script>
         @stop
 
 
 @section('add_buttons')
-    <button type="submit" class="btn btn-success">등록</button>
+    <button type="submit" class="btn btn-success">저장</button>
     @endsection
 
     @section('layer_footer')

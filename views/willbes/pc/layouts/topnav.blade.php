@@ -4,9 +4,11 @@
         <div class="loginDepth p_re">
             <ul class="myLog">
                 @if(sess_data('is_login') != true)
-                    @if(strpos(strtoupper($_SERVER['REQUEST_URI']), '/MEMBER/LOGINFORM') === false)<li class="Login">
-                        <a class="Tit" href="{{ app_url('/member/loginForm', 'www') }}/?rtnUrl=//{{rawurlencode($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])}}" >로그인</a>
-                    </li>@endif
+                    @if(strpos(strtoupper($_SERVER['REQUEST_URI']), '/MEMBER/LOGINFORM') === false)
+                        <li class="Login">
+                            <a class="Tit" href="{{ app_url('/member/loginForm', 'www') }}/?rtnUrl=//{{rawurlencode($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])}}" >로그인</a>
+                        </li>
+                    @endif
                     <li class="joinUs dropdown">
                         <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
                         <div class="drop-Box joinUs-Box">

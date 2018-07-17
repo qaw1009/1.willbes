@@ -63,7 +63,7 @@ class MemberFModel extends WB_Model
             IFNULL(Mem.LastLoginDatm, '') AS LoginDate, 
             IFNULL(Mem.LastInfoModyDatm, '') AS InfoUpdDate, 
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
-            IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
+            IFNULL((SELECT outDatm FROM {$this->_table['outlog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount             
@@ -78,7 +78,7 @@ class MemberFModel extends WB_Model
 
         $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
 
-        return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
+        return ($is_count === true) ? $rows->row(0)->rownums : $rows->row_array();
     }
 
 

@@ -159,8 +159,6 @@
                     clearTimeout(objTimer);
                     $("#enc_data").val(ret.ret_data.enc_data);
                     $("#phone_number").val(ret.ret_data.phone_number);
-                    alert(ret.ret_data.enc_data);
-                    alert(ret.ret_msg);
                     $("#join_form").prop("action", "/member/joinForm/").submit();
 
                 }, function(ret){

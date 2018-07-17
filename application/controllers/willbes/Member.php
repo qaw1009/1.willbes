@@ -26,6 +26,7 @@ class Member extends \app\controllers\FrontController
      */
     public function LoginForm()
     {
+        // 쿠키에 저장된 아이디
         $saved_member_id = get_cookie('saved_member_id');
         if (empty($saved_member_id) === false) {
             // 아이디 복호화
@@ -33,16 +34,19 @@ class Member extends \app\controllers\FrontController
             $saved_member_id = $this->encrypt->decode($saved_member_id);
         }
 
+        // 로그인 페이지를 호출함 페이지
         $rtnUrl = rawurldecode($this->_req('rtnUrl'));
         if(empty($rtnUrl)){
             $rtnUrl = '/';
         }
 
+        // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
         if($this->session->userdata('is_login') === true){
             show_alert('이미 로그인 상태입니다.', $rtnUrl, false);
             return;
         }
 
+        // 로그인페이지 호출
         $this->load->view('member/login/form', [
             'islogin' => true,
             'saved_member_id' => $saved_member_id,
@@ -67,6 +71,7 @@ class Member extends \app\controllers\FrontController
 
         $chklogin = ($chklogin == 1) ? true : false;
 
+        // 아이디나 비밀번호가 비어있으면 오류
         if(empty($id) || empty($pwd)){
             if($chklogin === true) {
                 return $this->json_error('아이디와 비밀번호를 정확하게 입력해주십시요.');
@@ -75,8 +80,10 @@ class Member extends \app\controllers\FrontController
             }
         }
 
+        // 아이디와 비밀번호로 로그인가능한 회원 갯수 구하기
         $count = $this->memberFModel->getMemberForLogin($id, $pwd, true);
 
+        // 로그인 가능한 회원갯수가 1 개가 아니면 오류 
         if($count != 1){
             if($chklogin === true){
                 return $this->json_error("아이디 혹은 비밀번호가 일치하지 않습니다.");
@@ -85,22 +92,24 @@ class Member extends \app\controllers\FrontController
             }
         }
 
+
         if($chklogin === true){
-            // 로그인가능정보
+            // 로그인 페이지에서 ajax를 이용해 로그인 가능한지 찔러보기
             return $this->json_result(true, '');
 
         } else {
-            // 실제 데이타를 가져와서 로그인 처리
+            // 실제로 post 로 form submit
             $data = $this->memberFModel->getMemberForLogin($id, $pwd, false);
 
             if($data['IsStatus'] != 'Y'){
-                // 활동상태가 정상이 아니면
+                // 활동상태가 정상이 아니면 인데.. 머머 체크해야할지..
             }
 
             if($data['IsDup'] === 'Y'){
-                // 아이디가 중복상태이면
+                // 아이디가 중복상태이면 회원 통합/아이디변경 페이지로 이동한다.
             }
 
+            // 실제 로그인처리하기 로그인 처리및 로그저장
             $result = $this->memberFModel->storeMemberLogin($data);
 
             if($result === true){
@@ -119,7 +128,7 @@ class Member extends \app\controllers\FrontController
                 show_alert('로그인 되었습니다.', $rtnUrl, false);
 
             } else {
-                show_alert('로그인에 실패했습니다.', app_url("/member/loginform/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', app_url("/member/loginform/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
     }
@@ -163,6 +172,7 @@ class Member extends \app\controllers\FrontController
             $phonenumber = $this->_req('phone_number');
 
             try {
+                $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
                 if(empty($plainText)){
@@ -175,10 +185,25 @@ class Member extends \app\controllers\FrontController
                 $phone = $data_arr[1];
                 $name = $data_arr[2];
 
-                if($phone != $phonenumber){
+                $where = [
+                    'EQ' => [
+                        'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
+                        'Mem.MemName' => $name,
+                        'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ]
+                ];
 
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 이미 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    return $this->load->view('member/join/already', [
+                        'MemId' => $result['MemId'],
+                        'MemName' => $result['MemName'],
+                        'JoinDate' => $result['JoinDate']
+                    ]);
                 }
-
 
                 return $this->load->view('member/join/step2', [
                     'mail_domain_ccd' => $codes['661'],
@@ -196,6 +221,7 @@ class Member extends \app\controllers\FrontController
         } else if($jointype === "655003") {
             // mail 인증
             try {
+                $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
                 if(empty($plainText)){
@@ -211,6 +237,26 @@ class Member extends \app\controllers\FrontController
                 $mailArr = explode('@', $mail);
                 $mailId = $mailArr[0];
                 $mailDomain = $mailArr[1];
+
+                $where = [
+                    'EQ' => [
+                        'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
+                        'Mem.MemName' => $name,
+                        'Mem.CertifiedInfoTypeCcd' => $jointype
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 이미 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    return $this->load->view('member/join/already', [
+                        'MemId' => $result['MemId'],
+                        'MemName' => $result['MemName'],
+                        'JoinDate' => $result['JoinDate']
+                    ]);
+                }
 
                 return $this->load->view('member/join/step2', [
                     'mail_domain_ccd' => $codes['661'],
@@ -246,13 +292,11 @@ class Member extends \app\controllers\FrontController
         ]);
 
         if($count > 0){
-            return $this->json_result(true, '이미 사용중인 아이디 입니다. 다른 아이디를 선택해 주십시요.', null, [
-                'err_cd' => 1
-            ]);
+            echo "0001";
+            exit(0);
         } else {
-            return $this->json_result(true, '사용가능한 아이디입니다.', null, [
-                'err_cd' => 0
-            ]);
+            echo "0000";
+            exit(0);
         }
     }
 
@@ -500,6 +544,7 @@ class Member extends \app\controllers\FrontController
                 // 비밀번호 찾기를 위해 아이디 필드 추가
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
                 $var_data = Date('YmdHis')."^{$sms_phone}^{$sms_name}^{$sms_id}^".Date('YmdHis');
+                $this->load->library('encrypt');
                 $enc_data = $this->encrypt->encode($var_data);
                 return $this->json_result(true,"인증번호가 확인되었습니다.",
                     null, [
@@ -542,6 +587,7 @@ class Member extends \app\controllers\FrontController
         // 인증키 암호화 
         // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
         $var_data = Date('YmdHis')."^{$mail}^{$name}^{$MemIdx}^".Date('YmdHis');
+        $this->load->library('encrypt');
         $enc_data = $this->encrypt->encode($var_data);
 
         // 인증메일전송

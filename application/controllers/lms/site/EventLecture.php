@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class EventLecture extends \app\controllers\BaseController
 {
-    protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor', '_wbs/sys/admin');
+    protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor', 'board/board', '_wbs/sys/admin');
     protected $helpers = array();
 
     protected $_groupCcd = [];
@@ -364,20 +364,55 @@ class EventLecture extends \app\controllers\BaseController
     {
         $count = 0;
         $list = [];
+        $list_comment = [];
+        $list_notice = [];
         $el_idx = $params[0];
 
         if (empty($el_idx) === false) {
-            $arr_condition = $this->_getCommentListConditions($el_idx);
+            // 공지사항 조회 (댓글 현황 탭에 노출)
+            $arr_notice_condition = $this->_getNoticeListConditions($el_idx);
+            $data_notice = $this->eventLectureModel->listEventNotice($arr_notice_condition);
 
-            $count = $this->eventLectureModel->listAllEventComment(true, $arr_condition);
-            if ($count > 0) {
-                $list = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'asc']);
+            if (empty($data_notice) === false) {
+                foreach ($data_notice as $key => $row) {
+                    $list_notice[$key]['temp_type'] = 'notice';
+                    $list_notice[$key]['temp_idx'] = $row['BoardIdx'];
+                    $list_notice[$key]['temp_Name'] = $row['wAdminName'];
+                    $list_notice[$key]['temp_Title'] = $row['Title'];
+                    $list_notice[$key]['temp_RegDatm'] = $row['RegDatm'];
+                    $list_notice[$key]['temp_isUse'] = $row['IsUse'];
+                    $list_notice[$key]['temp_MemIdx'] = null;
+                    $list_notice[$key]['temp_MemId'] = null;
+                    $list_notice[$key]['temp_Phone'] = null;
+                    $list_notice[$key]['temp_Mail'] = null;
+                }
+            }
+
+            // 댓글현황 조회
+            $arr_condition = $this->_getCommentListConditions($el_idx);
+            $count_comment = $this->eventLectureModel->listAllEventComment(true, $arr_condition);
+            if ($count_comment > 0) {
+                $data_comment = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'asc']);
+
+                foreach ($data_comment as $key => $row) {
+                    $list_comment[$key]['temp_type'] = 'comment';
+                    $list_comment[$key]['temp_idx'] = $row['CIdx'];
+                    $list_comment[$key]['temp_Name'] = $row['MemName'];
+                    $list_comment[$key]['temp_Title'] = $row['eventComment'];
+                    $list_comment[$key]['temp_RegDatm'] = $row['RegDatm'];
+                    $list_comment[$key]['temp_isUse'] = $row['IsUse'];
+                    $list_comment[$key]['temp_MemIdx'] = $row['MemIdx'];
+                    $list_comment[$key]['temp_MemId'] = $row['MemId'];
+                    $list_comment[$key]['temp_Phone'] = $row['Phone'];
+                    $list_comment[$key]['temp_Mail'] = $row['Mail'];
+                }
             }
         }
 
+        $list = array_merge($list_notice, $list_comment);
         return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
+            'recordsTotal' => count($list),
+            'recordsFiltered' => count($list),
             'data' => $list,
         ]);
     }
@@ -402,6 +437,10 @@ class EventLecture extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 이벤트 공지등록 폼
+     * @param array $params
+     */
     public function createNoticeModal($params = [])
     {
         if (empty($params[0]) === true) {
@@ -431,15 +470,139 @@ class EventLecture extends \app\controllers\BaseController
 
         $method = 'POST';
         $data = null;
-        $board_idx = null;
+        $board_idx = $this->_req('board_idx');
+        $data_notice = null;
+
+        // 게시판 조회
+        if (empty($board_idx) === false) {
+            $method = 'PUT';
+            $data_notice = $this->eventLectureModel->findEventNoticeForModify($board_idx);
+            $data_notice['arr_attach_file_idx'] = explode(',', $data_notice['AttachFileIdx']);
+            $data_notice['arr_attach_file_path'] = explode(',', $data_notice['AttachFilePath']);
+            $data_notice['arr_attach_file_name'] = explode(',', $data_notice['AttachFileName']);
+        }
 
         $this->load->view("site/event_lecture/create_notice_modal", [
             'method' => $method,
+            'el_idx' => $el_idx,
             'arr_campus' => $arr_campus,
             'event_data' => $event_data,
             'data' => $data,
+            'board_idx' => $board_idx,
+            'data_notice' => $data_notice,
             'attach_file_cnt' => $this->eventLectureModel->_attach_img_cnt
         ]);
+    }
+
+    /**
+     * 이벤트 공지사항 등록
+     */
+    public function storeNotice()
+    {
+        $method = 'add';
+        $board_idx = '';
+
+        $rules = [
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
+            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
+            ['field' => 'el_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('board_idx')) === false) {
+            $method = 'modify';
+            $board_idx = $this->_reqP('board_idx');
+        }
+
+        $inputData = $this->_setInputBoardData($this->_reqP(null, false));
+
+        //addEventNotice, modifyEventNotice
+        $result = $this->eventLectureModel->{$method . 'EventNotice'}($method, $inputData, $board_idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 이벤트 공지사항 첨부파일 삭제
+     */
+    public function destroyNoticeFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 이벤트 공지사항 Read 페이지
+     * @param array $params
+     */
+    public function readNoticeModal($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $el_idx = $params[0];
+        $board_idx = $this->_req('board_idx');
+        $data = $this->eventLectureModel->findEventNoticeForModify($board_idx);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+
+        $get_category_array = $this->categoryModel->getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $this->load->view("site/event_lecture/read_notice_modal", [
+            'data' => $data,
+            'el_idx' => $el_idx,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    /**
+     * 이벤트 공지사항 삭제
+     */
+    public function deleteNotice($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $board_idx = $params[0];
+        if (empty($board_idx) === true) {
+            $result = false;
+        } else {
+            $result = $this->boardModel->boardDelete($board_idx);
+        }
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
     }
 
     /**
@@ -477,6 +640,11 @@ class EventLecture extends \app\controllers\BaseController
         return $arr_condition;
     }
 
+    /**
+     * 이벤트 접수관리 검색 조건
+     * @param $el_idx
+     * @return array
+     */
     private function _getRegisterListConditions($el_idx)
     {
         $arr_condition = [
@@ -500,6 +668,11 @@ class EventLecture extends \app\controllers\BaseController
         return $arr_condition;
     }
 
+    /**
+     * 이벤트 댓글 관리 검색 조건
+     * @param $el_idx
+     * @return array
+     */
     private function _getCommentListConditions($el_idx)
     {
         $arr_condition = [
@@ -519,5 +692,51 @@ class EventLecture extends \app\controllers\BaseController
         $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
 
         return $arr_condition;
+    }
+
+    /**
+     * 이벤트 공지사항 검색 조건
+     * @param $el_idx
+     * @return array
+     */
+    private function _getNoticeListConditions($el_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => $this->eventLectureModel->bm_idx,
+                'LB.ElIdx' => $el_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => '1'
+            ]
+        ];
+
+        return $arr_condition;
+    }
+
+    /**
+     * 공지사항 데이터 셋팅
+     * @param $input
+     * @return array
+     */
+    private function _setInputBoardData($input){
+        $input_data = [
+            'board' => [
+                'SiteCode' => element('site_code', $input),
+                'BmIdx' => $this->eventLectureModel->bm_idx,
+                'CampusCcd' => element('campus_ccd', $input),
+                'RegType' => element('reg_type', $input),
+                'Title' => element('title', $input),
+                'Content' => element('board_content', $input),
+                'IsUse' => element('is_use', $input),
+                'ElIdx' => element('el_idx', $input),
+                'ReadCnt' => 0,
+                'SettingReadCnt' => 0
+            ],
+            'board_r_category' => [
+                'site_category' => element('cate_code', $input)
+            ]
+        ];
+
+        return$input_data;
     }
 }

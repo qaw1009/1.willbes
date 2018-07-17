@@ -12,7 +12,7 @@
                 <li><a class="collapse-link">접기<i class="fa fa-chevron-up"></i></a></li>
             </ul>
         </div>
-        <div class="x_content" style="display: none;">
+        <div class="x_content">
             <div class="form-group">
                 <label class="control-label col-md-2">제목</label>
                 <div class="form-control-static col-md-9">{{$data['EventName']}}</div>

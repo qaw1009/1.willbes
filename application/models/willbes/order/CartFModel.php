@@ -5,15 +5,107 @@ class CartFModel extends WB_Model
 {
     private $_table = [
         'cart' => 'lms_cart',
-        'product_r_product' => 'lms_product_r_product'
+        'product' => 'lms_product',
+        'product_lecture' => 'lms_product_lecture',
+        'product_book' => 'lms_product_book',
+        'product_sale' => 'lms_product_sale',
+        'product_r_product' => 'lms_product_r_product',
+        'bms_book' => 'wbs_bms_book',
     ];
 
     // 수강생 교재 공통코드
-    private $_student_book_ccd = '610003';
+    public $_student_book_ccd = '610003';
+    // 상품타입 공통코드
+    public $_prod_type_ccd = ['on_lecture' => '636001', 'book' => '636003'];
+    // 학습형태 공통코드
+    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004'];
+    // 패키지 학습형태 공통코드
+    public $_package_pattern_ccd = ['615002', '615003', '615004'];
+    // 판매가능 공통코드
+    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 장바구니 목록 조회
+     * @param $column
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listCart($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($column === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode, CA.ProdCodeSub, CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty
+                , CA.IsDirectPay, CA.IsVisitPay, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
+                , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo
+                , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, if(PL.LearnPatternCcd is not null, fn_ccd_name(PL.LearnPatternCcd), "") as LearnPatternCcdName
+                , if(PL.LearnPatternCcd in ("' . implode('","', $this->_package_pattern_ccd) . '"), "Y", "N") as IsPackage';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['cart'] . ' as CA
+                inner join ' . $this->_table['product_sale'] . ' as PS
+                    on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
+                inner join ' . $this->_table['product'] . ' as P
+                    on CA.ProdCode = P.ProdCode
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on CA.ProdCode = PL.ProdCode and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture']. '"   # 온라인강좌
+                left join ' . $this->_table['product_book'] . ' as PB
+                    on CA.ProdCode = PB.ProdCode and P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '"   # 교재
+                left join ' . $this->_table['bms_book'] . ' as WB
+                    on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
+            where CA.IsStatus = "Y"   
+                and PS.IsStatus = "Y"
+                and PS.SalePriceIsUse = "Y"
+                and P.IsStatus = "Y"                                   
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 유효한 장바구니 목록
+     * @param $mem_idx
+     * @param $site_code
+     * @param null $cate_code
+     * @param array $prod_code
+     * @param string $is_direct_pay
+     * @param string $is_visit_pay
+     * @return mixed
+     */
+    public function listValidCart($mem_idx, $site_code, $cate_code = null, $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N')
+    {
+        $arr_condition = [
+            'EQ' => [
+                'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
+                'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y', 'P.IsUse' => 'Y'
+            ],
+            'IN' => ['CA.ProdCode' => $prod_code],
+            'RAW' => [
+                'CA.ExpireDatm > ' => 'NOW()',
+                'NOW() between ' => 'P.SaleStartDatm and P.SaleEndDatm',
+                '(P.ProdTypeCcd = ' => '"' . $this->_prod_type_ccd['on_lecture']. '" OR (P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '" and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book']. '"))'
+            ]
+        ];
+
+        return $this->listCart(false, $arr_condition, null, null, ['CA.CartIdx' => 'desc']);
     }
 
     /**

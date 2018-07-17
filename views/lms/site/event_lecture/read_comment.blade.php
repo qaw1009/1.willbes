@@ -105,40 +105,49 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '">';
+                        return '<input type="checkbox" name="is_checked" value="'+ row.temp_Phone +'" class="flat" data-is-checked-idx="' + row.temp_idx + '" data-is-checked-id="' + row.temp_MemIdx + '" data-is-checked-name="' + row.temp_Name + '">';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
-                        return $datatable_comment.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        /*return $datatable_comment.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);*/
+                        if (row.temp_type == 'notice') {
+                            return '<a href="javascript:void(0);" class="btn-notice-modify" data-board-idx="' + row.temp_idx + '"><u>공지</u></a>';
+                        } else if (row.temp_type == 'comment'){
+                            return $datatable_comment.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }
                     }},
 
-                {'data' : 'MemName'},
-                {'data' : 'MemId'},
-                {'data' : 'Phone'},
-                {'data' : 'Mail'},
+                {'data' : 'temp_Name'},
+                {'data' : 'temp_MemId'},
+                {'data' : 'temp_Phone'},
+                {'data' : 'temp_Mail'},
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+data.eventComment+"</textarea>";
+                        if (row.temp_type == 'notice') {
+                            return '<a href="javascript:void(0);" class="btn-notice-read" data-read-board-idx="' + row.temp_idx + '"><u>'+row.temp_Title+'</u></a>';
+                        } else if (row.temp_type == 'comment'){
+                            return "<textarea style='width:100%; height:100px; boarder:0px; margin:0px;' readonly='readonly'>"+row.temp_Title+"</textarea>";
+                        }
                     }},
-                {'data' : 'RegDatm'},
-                {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                {'data' : 'temp_RegDatm'},
+                {'data' : 'temp_isUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }}
             ]
         });
 
         // 검색
-        $('.btn-search-comment').click(function (){
+        $('.btn-search-comment').click(function () {
             $datatable_comment.draw();
         });
 
         // 검색초기화
-        $('.btn-reset-comment').click(function (){
+        $('.btn-reset-comment').click(function () {
             $search_comment_form[0].reset();
             $datatable_comment.draw();
         });
 
         // 댓글등록
-        $('.btn-comment-submit').click(function (){
+        $('.btn-comment-submit').click(function () {
             if (!confirm('댓글을 등록하시겠습니까?')) {
                 return;
             }
@@ -153,9 +162,29 @@
         });
 
         // 공지등록
-        $('.btn-evnet-notice').click(function (){
+        $('.btn-evnet-notice').click(function () {
             $('.btn-evnet-notice').setLayer({
                 "url" : "{{ site_url('/site/eventLecture/createNoticeModal/'.$el_idx) }}",
+                "width" : "1000"
+            });
+        });
+
+        // 공지수정
+        $list_comment_table.on('click', '.btn-notice-modify', function() {
+            var board_idx = $(this).data('board-idx');
+            $('.btn-notice-modify').setLayer({
+                "url" : '{{ site_url('/site/eventLecture/createNoticeModal/'.$el_idx) }}'+'?board_idx='+board_idx,
+                "width" : "1000"
+            });
+        });
+
+        // 공지Read
+        $list_comment_table.on('click', '.btn-notice-read', function() {
+            var board_idx = $(this).data('read-board-idx');
+            var uri_param = '?board_idx='+board_idx;
+
+            $('.btn-notice-read').setLayer({
+                "url" : '{{ site_url('/site/eventLecture/readNoticeModal/'.$el_idx) }}'+uri_param,
                 "width" : "1000"
             });
         });
@@ -167,7 +196,6 @@
             alert('댓글을 입력해 주세요.');
             return false;
         }
-
         return true;
     }
 </script>

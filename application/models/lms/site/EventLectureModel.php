@@ -57,6 +57,9 @@ class EventLectureModel extends WB_Model
 
     // 공지사항 이미지 등록 수
     public $_attach_img_cnt = 2;
+    
+    // 이벤트 공지사항 식별자
+    public $bm_idx = '86';
 
     // 썸네일 이미지 생성 비율
     private $_thumb_radio = [
@@ -596,6 +599,73 @@ class EventLectureModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 이벤트 공지사항 조회 페이징 처리 없음
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function listEventNotice($arr_condition)
+    {
+        $limit = 100;   // 페이지처리 없음으로 인한 limit 셋팅
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
+        ';
+
+        return $this->boardModel->listAllBoard('notice', false, $arr_condition, '', '', $limit, '', ['LB.BoardIdx' => 'DESC'], $column);
+    }
+
+    /**
+     * 이벤트 공지사항 등록
+     * @param $method
+     * @param $inputData
+     * @param $board_idx
+     * @return mixed
+     */
+    public function addEventNotice($method, $inputData, $board_idx)
+    {
+        return $this->boardModel->{$method . 'Board'}($inputData);
+    }
+
+    /**
+     * 이벤트 공지사항 수정
+     * @param $method
+     * @param $inputData
+     * @param $board_idx
+     * @return mixed
+     */
+    public function modifyEventNotice($method, $inputData, $board_idx)
+    {
+        return $this->boardModel->{$method . 'Board'}($inputData, $board_idx);
+    }
+
+    /**
+     * 이벤트 공지사항 수정
+     * @param $board_idx
+     * @return mixed
+     */
+    public function findEventNoticeForModify($board_idx)
+    {
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y',
+                'LB.RegType' => 1
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => 1,
+            'attach_file_type' => 0
+        ];
+        return $this->boardModel->findBoardForModify('notice', $column, $arr_condition, $arr_condition_file);
     }
 
     /**

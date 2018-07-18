@@ -15,6 +15,17 @@ class MemberFModel extends WB_Model
         'authmail' => 'lms_member_certifiedmail'
     ];
 
+    protected $_columnName = [
+        'MemPassword' => '비밀번호',
+        'BirthDay' => '생년월일',
+        'Sex' => '성별',
+        'PhoneEnc' => '전화번호',
+        'MailEnc' => '메일주소',
+        'ZipCode' => '주소',
+        'Addr1' => '주소',
+        'Addr2Enc' => '주소',
+    ];
+
     protected $_mailSendTypeCcd = [
         'JOIN' => '662001',
         'FINDID' => '662002',
@@ -92,15 +103,19 @@ class MemberFModel extends WB_Model
     {
         if($is_count === true){
             $query = "SELECT COUNT(*) AS rownums ";
+
         } else {
-            $query = "SELECT Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.IsStatus, Mem.IsDup, fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone ";
+            $query = "SELECT 
+            Mem.MemIdx, Mem.MemName, Mem.MemId, 
+            Mem.IsStatus, Mem.IsDup, 
+            fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone ";
         }
 
         $query .= " FROM {$this->_table['member']} AS Mem 
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             WHERE Mem.MemId = ? 
             AND Mem.MemPassword = fn_hash(?) 
-            AND Mem.IsStatus != 'N'
+            AND Mem.IsStatus != 'D'
             AND Mem.MemPassword != ''
             ";
 
@@ -134,7 +149,8 @@ class MemberFModel extends WB_Model
             }
 
             // 마지막 로그인일자 업데이트
-            if ($this->_conn->set('LastLoginDatm','NOW()',false)->where('MemIdx', $data['MemIdx'])->update($this->_table['member']) === false) {
+            if ($this->_conn->set('LastLoginDatm','NOW()',false)->
+                where('MemIdx', $data['MemIdx'])->update($this->_table['member']) === false) {
                 throw new \Exception('마지막 로그인 날짜 업데이트 실패');
             }
 
@@ -164,6 +180,85 @@ class MemberFModel extends WB_Model
      */
     public function setMember($MemIdx, $data = [])
     {
+        if(empty($MemIdx) == true){
+            return false;
+        }
+
+        $updateColumnText = '';
+
+        //$this->_conn->trans_begin();
+        try {
+
+            $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
+            if(empty($oriData) == true){
+                throw new \Exception('사용자 데이타 조회에 실패했습니다.');
+            }
+
+            foreach($data as $key => $value){
+                if($key == 'MemPassword') { $updateColumnText .= ",비밀번호"; }
+                else {
+                    echo "{$key} => {$value} : {$oriData[$key]}";
+                }
+
+            }
+
+            echo $updateColumnText;
+
+            exit(0);
+
+           // $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            //$this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
+    }
+
+    public function setMemberPassword($data)
+    {
+        if(empty($data)){
+            return false;
+        }
+
+        if(empty($data['MemIdx']) === true || empty($data['MemPassword']) === true ){
+            return false;
+        }
+
+        $updateColumnText = '비밀번호';
+
+        $this->_conn->trans_begin();
+        try {
+
+            $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $data['MemIdx']]]);
+            if(empty($oriData) == true){
+                throw new \Exception('사용자 데이타 조회에 실패했습니다.');
+            }
+
+            if($this->_conn->set('MemPassword', "fn_hash('".$data['MemPassword']."')", false)
+                    ->set('LastPassModyDatm', 'NOW()', false)
+                    ->where('MemIdx', $data['MemIdx'])->update($this->_table['member']) === false){
+                throw new \Exception('비밀번호 변경에 실패했습니다.');
+            }
+
+            $data = [
+                'MemIdx' => $data['MemIdx'],
+                'UpdTypeCcd' =>$data['UpdTypeCcd'],
+                'UpdData' => $updateColumnText,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if($this->_conn->set($data)->insert($this->_table['infolog']) === false){
+                throw new \Exception('변경로그 기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
         return true;
     }
 
@@ -306,7 +401,7 @@ class MemberFModel extends WB_Model
     /**
      * 인증메일정보 입력
      */
-    public function storeMailAuth($input = [])
+    public function storeMailAuth($input)
     {
         $data = [
             'MemIdx' => element('MemIdx', $input),
@@ -338,13 +433,38 @@ class MemberFModel extends WB_Model
     }
 
     /**
+     * 메일인증 완료후 업데이트
+     */
+    public function updateMailAuth($certkey)
+    {
+        $data = [
+            'IsCert' => 'Y',
+            'CertIp' => $this->input->ip_address()
+        ];
+
+        try {
+            if($this->_conn->set($data)->set('CertDatm', 'NOW()', false)->
+                    where('CertKey', $certkey)->update($this->_table['authmail']) === false){
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 실제 메일데이타 전송
      * @param array $input
      * @return bool
      */
     private function _sendMailAuth($input = [])
     {
-        log_message('debug', $this->_certMailTitle[element('MailCertTypeCcd', $input)]);
         try {
             // 메일타이틀
             $mailtitle = $this->_certMailTitle[element('MailCertTypeCcd', $input)];

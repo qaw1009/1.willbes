@@ -55,11 +55,11 @@
                                     return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'UpdData', 'render' : function(data, type, row, meta){
-                                    return 'b';
+                                    return data;
                                 }},
                             {'data' : 'UpdDatm'},
                             {'data' : null, 'render' : function(data, type, row, meta){
-                                return 'a';
+                                return (row.adminName == '') ? '사용자' : row.AdminName;
                                 }}
                         ]
                     });

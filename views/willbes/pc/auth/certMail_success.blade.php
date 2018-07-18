@@ -7,7 +7,7 @@
     @elseif($CertTypeCcd == '662002')
         "/member/FindIDProc/"
     @elseif($CertTypeCcd == '662003')
-        "/member/FindPWDProc/"
+        "/member/FindPWDForm/"
     @elseif($CertTypeCcd == '662004')
         "/member/ActivateSleep/"
     @endif >

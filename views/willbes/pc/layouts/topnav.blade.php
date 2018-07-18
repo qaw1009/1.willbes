@@ -31,9 +31,9 @@
                             <a class="Tit" href="{{ app_url('/member/logout', 'www') }}">로그아웃</a>
                         </li>
                     @endif
-                    @if($__cfg['SiteCode'] !== '2000')
+                    @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
                         <li class="myCart">
-                            <a class="Tit" href="">장바구니</a>
+                            <a class="Tit" href="{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}">장바구니</a>
                         </li>
                     @endif
                     <li class="myPage dropdown">

@@ -85,19 +85,19 @@ class CartFModel extends WB_Model
      * @param $mem_idx
      * @param $site_code
      * @param null $cate_code
-     * @param array $prod_code
+     * @param array $cart_idx
      * @param string $is_direct_pay
      * @param string $is_visit_pay
      * @return mixed
      */
-    public function listValidCart($mem_idx, $site_code, $cate_code = null, $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N')
+    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $is_direct_pay = 'N', $is_visit_pay = 'N')
     {
         $arr_condition = [
             'EQ' => [
                 'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
                 'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y', 'P.IsUse' => 'Y'
             ],
-            'IN' => ['CA.ProdCode' => $prod_code],
+            'IN' => ['CA.CartIdx' => $cart_idx],
             'RAW' => [
                 'CA.ExpireDatm > ' => 'NOW()',
                 'NOW() between ' => 'P.SaleStartDatm and P.SaleEndDatm',

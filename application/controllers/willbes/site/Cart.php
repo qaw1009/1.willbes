@@ -20,7 +20,7 @@ class Cart extends \app\controllers\FrontController
     public function index($params = [])
     {
         // 장바구니 식별자 세션 삭제
-        $this->_destroySessCartIdx();
+        $this->cartFModel->destroySessCartIdx();
 
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -76,7 +76,7 @@ class Cart extends \app\controllers\FrontController
         }
 
         // 장바구니 식별자 세션 생성
-        $this->_makeSessCartIdx($this->_reqP('cart_idx'));
+        $this->cartFModel->makeSessCartIdx($this->_reqP('cart_idx'));
 
         $this->json_result(true, '', [], ['ret_url' => site_url('/order/index/cate/' . $this->_cate_code)]);
     }
@@ -114,7 +114,7 @@ class Cart extends \app\controllers\FrontController
 
         // 바로결제일 경우 장바구니 식별자 세션 생성
         if ($result['ret_cd'] === true && $_is_direct_pay == 'Y') {
-            $this->_makeSessCartIdx($result['ret_data']);
+            $this->cartFModel->makeSessCartIdx($result['ret_data']);
         }
 
         $this->json_result($result['ret_cd'], '', $result, $returns);
@@ -138,22 +138,5 @@ class Cart extends \app\controllers\FrontController
         $result = $this->cartFModel->removeCart(json_decode($this->_reqP('cart_idx'), true));
 
         $this->json_result($result, '삭제 되었습니다.', $result);        
-    }
-
-    /**
-     * 장바구니 식별자 세션 생성
-     * @param array $arr_cart_idx
-     */
-    private function _makeSessCartIdx($arr_cart_idx = [])
-    {
-        $this->session->set_userdata('usable_cart_idx', $arr_cart_idx);
-    }
-
-    /**
-     * 장바구니 식별자 세션 삭제
-     */
-    private function _destroySessCartIdx()
-    {
-        $this->session->unset_userdata('usable_cart_idx');
     }
 }

@@ -311,7 +311,7 @@
             } else {
                 // 개별삭제
                 data = { 0 : $(this).data('cart-idx').toString() };
-                confirm_msg = '해당 상품을 삭제하시겠습니까?';
+                confirm_msg = '해당 강좌 삭제 시 관련 교재도 함께 삭제됩니다.\n해당 상품을 삭제하시겠습니까?';
             }
 
             if (confirm(confirm_msg)) {

@@ -23,6 +23,8 @@ class CartFModel extends WB_Model
     public $_package_pattern_ccd = ['615002', '615003', '615004'];
     // 판매가능 공통코드
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
+    // 장바구니 식별자 세션명
+    private $_sess_cart_idx_name = 'usable_cart_idx';
 
     public function __construct()
     {
@@ -133,7 +135,7 @@ class CartFModel extends WB_Model
         $results = [];
 
         try {
-            $mem_idx = $this->session->userdata('mem_idx');
+            $sess_mem_idx = $this->session->userdata('mem_idx');
             $gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
             $arr_prod_code = element('prod_code', $input, []);
@@ -149,20 +151,20 @@ class CartFModel extends WB_Model
             foreach ($arr_prod_code['all'] as $prod_code => $prod_row) {
                 // 이미 장바구니에 담긴 상품이 있는지 여부 확인
                 $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
-                    'EQ' => ['MemIdx' => $mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
+                    'EQ' => ['MemIdx' => $sess_mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
                     'RAW' => ['ExpireDatm > ' => 'NOW()']
                 ]);
 
                 if (empty($cart_row) === false) {
                     // 이미 장바구니에 담겨 있다면 삭제
-                    $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $mem_idx)->delete($this->_table['cart']);
+                    $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $sess_mem_idx)->delete($this->_table['cart']);
                     if ($is_delete === false) {
                         throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
                     }
                 }
 
                 $data = [
-                    'MemIdx' => $mem_idx,
+                    'MemIdx' => $sess_mem_idx,
                     'SiteCode' => element('site_code', $input, ''),
                     'CateCode' => element('cate_code', $input, ''),
                     'ProdCode' => $prod_code,
@@ -207,7 +209,7 @@ class CartFModel extends WB_Model
             }
 
             // 세션 회원 식별자
-            $mem_idx = $this->session->userdata('mem_idx');
+            $sess_mem_idx = $this->session->userdata('mem_idx');
 
             foreach ($arr_cart_idx as $idx => $cart_idx) {
                 // 장바구니 조회
@@ -218,9 +220,9 @@ class CartFModel extends WB_Model
 
                 // 부모상품일 경우 연계상품 동시 삭제
                 if ($data['ProdCode'] == $data['ParentProdCode']) {
-                    $is_delete = $this->_conn->where('MemIdx', $mem_idx)->where('ParentProdCode', $data['ParentProdCode'])->delete($this->_table['cart']);
+                    $is_delete = $this->_conn->where('MemIdx', $sess_mem_idx)->where('ParentProdCode', $data['ParentProdCode'])->delete($this->_table['cart']);
                 } else {
-                    $is_delete = $this->_conn->where('MemIdx', $mem_idx)->where('CartIdx', $cart_idx)->delete($this->_table['cart']);
+                    $is_delete = $this->_conn->where('MemIdx', $sess_mem_idx)->where('CartIdx', $cart_idx)->delete($this->_table['cart']);
                 }
 
                 if ($is_delete === false) {
@@ -235,7 +237,36 @@ class CartFModel extends WB_Model
         }
 
         return true;
-    }    
+    }
+
+    /**
+     * 장바구니 식별자 세션 체크 및 리턴
+     * @return mixed
+     */
+    public function checkSessCartIdx()
+    {
+        $sess_cart_idx = $this->session->userdata($this->_sess_cart_idx_name);
+        empty($sess_cart_idx) === true && show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+
+        return $sess_cart_idx;
+    }
+
+    /**
+     * 장바구니 식별자 세션 생성
+     * @param array $arr_cart_idx
+     */
+    public function makeSessCartIdx($arr_cart_idx = [])
+    {
+        $this->session->set_userdata($this->_sess_cart_idx_name, $arr_cart_idx);
+    }
+
+    /**
+     * 장바구니 식별자 세션 삭제
+     */
+    public function destroySessCartIdx()
+    {
+        $this->session->unset_userdata($this->_sess_cart_idx_name);
+    }
 
     /**
      * 상품코드 재정의

@@ -19,7 +19,18 @@ class Order extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+        $sess_cart_idx = $this->cartFModel->checkSessCartIdx();
+
+        // 장바구니 조회
+        $cart_list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, $this->_cate_code, $sess_cart_idx);
+
         $this->load->view('site/order/index', [
         ]);
+    }
+
+    private function _checkUsableCartIdx()
+    {
+
     }
 }

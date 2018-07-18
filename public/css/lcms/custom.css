@@ -77,7 +77,12 @@ body.no_sidebar {
     min-width: 90px;
 }
 .top_col .nav-tabs li.dropdown .dropdown-menu {
-    margin-left: 0px;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+.top_col .nav-tabs li.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu {
+    margin-top: -3px;
+    margin-left: 0;
 }
 
 /* top_nav_fixed */
@@ -147,6 +152,8 @@ footer {
 
 /* bar_tabs */
 ul.bar_tabs > li a {
+    position: relative;
+    z-index: 9999;
     background: #fff !important;
     border-top-right-radius: 4px;
 }
@@ -162,6 +169,7 @@ ul.bar_tabs > li a:focus {
 ul.bar_tabs > li.active {
     border-top: 1px solid #e6e9ed;
     margin-top: -17px;
+    border-right: 6px solid #0d74ae;
 }
 ul.bar_tabs > li.active a {
     padding-top : 11px !important;
@@ -355,7 +363,8 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     -webkit-animation: 0.7s 1 shake linear
 }
 .form-horizontal .control-label {
-    padding-top: 8px;
+    padding-top: 9px;
+    text-align: left;
 }
 .form-horizontal .checkbox, .form-horizontal .radio {
     min-height: 34px;
@@ -368,8 +377,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     border-bottom: 1px solid #ddd;
 }
 .form-horizontal .input-label {
+    position: relative;
+    top: 2px;
     padding-left: 2px;
     margin-right: 10px;
+    line-height: 34px;
 }
 .form-horizontal .input-label:last-child {
     margin-right: 0;
@@ -617,8 +629,19 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 }
 
 /* col-md */
+.col-md-1-1 {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 .col-md-1 {
     width: 8.33333333%;
+}
+.col-md-1-1 {
+    width: 12.33333333%;
 }
 .col-md-2 {
     width: 16.66666667%;
@@ -681,7 +704,31 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     float: left;
 }
 
+/* form-horizontal RESET */
+.form-horizontal .checkbox, 
+.form-horizontal .checkbox-inline,
+.form-horizontal .radio, 
+.form-horizontal .radio-inline {
+    padding-top: 0;
+}
+.form-horizontal .form-group {
+    border-bottom: 1px solid #e6e9ed;
+    padding-bottom: 10px;
+}
+.form-horizontal .form-group.btn-wrap {
+    border-bottom: none;
+}
+
+
+
 /* media Query */
+@media (max-width: 1200px) {
+    .x_title h2 {
+        width: auto;
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 991px) {
     .nav-md .container.body .col-md-3.left_col {
         display: block;
@@ -694,6 +741,13 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     .right_col {
         padding: 0 !important;
     }  
+}
+@media (max-width: 768px) {
+    .form-inline .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
 }
 
 /* Only IE Hack */

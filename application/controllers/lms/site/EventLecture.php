@@ -62,6 +62,24 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 이벤트 복사
+     */
+    public function copy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'el_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->eventLectureCopy($this->_reqP('el_idx'));
+        $this->json_result($result, '복사 되었습니다.', $result);
+    }
+
+    /**
      * 이벤트/설명회/특강관리 등록/수정
      * @param array $params
      */
@@ -391,7 +409,7 @@ class EventLecture extends \app\controllers\BaseController
             // 댓글현황 조회
             $arr_condition = $this->_getCommentListConditions($el_idx);
             $count_comment = $this->eventLectureModel->listAllEventComment(true, $arr_condition);
-            if ($count_comment > 0) {
+            if (count($count_comment) > 0) {
                 $data_comment = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'asc']);
 
                 foreach ($data_comment as $key => $row) {
@@ -603,6 +621,40 @@ class EventLecture extends \app\controllers\BaseController
             $result = $this->boardModel->boardDelete($board_idx);
         }
         $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 신청 현황 엑셀다운로드
+     * @param array $params
+     */
+    public function registerExcel($params = [])
+    {
+        $headers = ['이름', '아이디', '연락처', '이메일', '신청일', '신청특강/설명회', '총신청수'];
+
+        $el_idx = $params[0];
+        $arr_condition = $this->_getRegisterListConditions($el_idx);
+        $list = $this->eventLectureModel->listAllEventRegister('excel', $arr_condition, null, null, ['A.EmIdx' => 'asc']);
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel('신청현황', $list, $headers);
+    }
+
+    /**
+     * 댓글 현황 엑셀다운로드
+     * @param array $params
+     */
+    public function commentExcel($params = [])
+    {
+        $headers = ['이름', '아이디', '연락처', '이메일', '댓글', '작성일', '사용여부'];
+
+        $el_idx = $params[0];
+        $arr_condition = $this->_getCommentListConditions($el_idx);
+        $list = $this->eventLectureModel->listAllEventComment('excel', $arr_condition, null, null, ['A.CIdx' => 'asc']);
+        
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel('댓글현황', $list, $headers);
     }
 
     /**

@@ -110,7 +110,7 @@ class EventLectureModel extends WB_Model
                 SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
                 FROM {$this->_table['event_comment']}
             ) AS H ON H.ElIdx = A.ElIdx
-            INNER JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
+            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
@@ -221,6 +221,80 @@ class EventLectureModel extends WB_Model
             if ($this->_addContentAttach($el_idx, count($this->_set_attache_type)) === false) {
                 throw new \Exception('이벤트 파일 등록에 실패했습니다.');
             }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 게시글 복사
+     * @param $el_idx
+     * @return array|bool
+     */
+    public function eventLectureCopy($el_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            // 기존 카테고리 조회
+            $arr_event_category = $this->_getEventCategoryArray($el_idx);
+
+            // 기존 접수관리 데이터 조회
+            $arr_event_register = $this->listEventForRegister($el_idx);
+
+            // 데이터 복사 실행
+            $insert_column = '
+                SiteCode, CampusCcd, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
+                EventName,
+                EventStartDate, EventStartHour, EventStartMin, EventEndDate, EventEndHour, EventEndMin, EventNum,
+                ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
+                RegAdminIdx, RegIp
+            ';
+            $select_column = '
+                SiteCode, CampusCcd, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
+                CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
+                EventStartDate, EventStartHour, EventStartMin, EventEndDate, EventEndHour, EventEndMin, EventNum,
+                ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
+                REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
+                REPLACE(RegIp, RegIp, "'.$reg_ip.'") AS RegIp
+            ';
+            $query = "insert into {$this->_table['event_lecture']} ({$insert_column})
+                select {$select_column} from {$this->_table['event_lecture']}
+                where ElIdx = {$el_idx}";
+            $result = $this->_conn->query($query);
+            $insert_event_idx = $this->_conn->insert_id();
+
+            if ($result === true) {
+                foreach ($arr_event_category as $key => $val) {
+                    $set_event_category_data['ElIdx'] = $insert_event_idx;
+                    $set_event_category_data['CateCode'] = $val;
+                    $set_event_category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $set_event_category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addEventCategory($set_event_category_data) === false) {
+                        throw new \Exception('복사 중 카테고리 등록에 실패했습니다.');
+                    }
+                }
+
+                foreach ($arr_event_register as $key => $row) {
+                    $set_event_register_data['ElIdx'] = $insert_event_idx;
+                    $set_event_register_data['PersonLimitType'] = $row['PersonLimitType'];
+                    $set_event_register_data['PersonLimit'] = $row['PersonLimit'];
+                    $set_event_register_data['Name'] = $row['Name'];
+                    $set_event_register_data['RegAdminIdx'] = $admin_idx;
+                    $set_event_register_data['RegIp'] = $reg_ip;
+
+                    $this->_addEventRegisterCopy($set_event_register_data);
+                }
+            } else {
+                throw new \Exception('게시물 복사에 실패했습니다.');
+            }
+
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -428,7 +502,7 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 이벤트 접수 관리(정원제한) 데이터 조회
+     * 이벤트 접수관리(정원제한) 데이터 조회
      * @param $el_idx
      * @param $LimitType
      * @return bool
@@ -465,6 +539,10 @@ class EventLectureModel extends WB_Model
             A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.RegDatm,
             C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail, D.MemCnt
             ';
+
+            if ($is_count == 'excel') {
+                $column = 'C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail, A.RegDatm, B.Name AS RegisterName, D.MemCnt';
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -545,10 +623,14 @@ class EventLectureModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-            A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.Comment AS eventComment, A.IsUse, A.RegDatm,
-            B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail
+            $column = 'A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.Comment AS eventComment, A.IsUse, A.RegDatm,
+                        B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail
             ';
+
+            if ($is_count == 'excel') {
+                $column = 'A.MemName, B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail, A.Comment AS eventComment, A.RegDatm, A.IsUse';
+                /*$column = 'A.MemName, B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail, REPLACE(A.Comment,\'\r\n\', \'\n\') AS eventComment, A.RegDatm, A.IsUse';*/
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -746,7 +828,7 @@ class EventLectureModel extends WB_Model
     {
         try {
             if ($this->_conn->set($input)->insert($this->_table['event_lecture_r_category']) === false) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
+                throw new \Exception('카테고리 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return false;
@@ -798,6 +880,23 @@ class EventLectureModel extends WB_Model
                         }
                     }
                 }
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 이벤트 접수 관리(정원제한) 복사 (저장)
+     * @param $input
+     * @return bool
+     */
+    private function _addEventRegisterCopy($input)
+    {
+        try {
+            if ($this->_conn->set($input)->insert($this->_table['event_register']) === false) {
+                throw new \Exception('접수 관리 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return false;

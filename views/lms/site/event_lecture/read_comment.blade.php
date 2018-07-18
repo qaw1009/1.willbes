@@ -61,7 +61,7 @@
 
 <div class="x_panel mt-20">
     <div class="x_content">
-        <table id="list_ajax_comment_table" class="table table-striped table-bordered">
+        <table id="list_ajax_comment_table" class="table table-striped table-bordered" data-excel-name="Another table">
             <thead>
             <tr>
                 <th>선택</th>
@@ -91,6 +91,7 @@
         $datatable_comment = $list_comment_table.DataTable({
             serverSide: true,
             buttons: [
+                { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-comment' },
                 { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-message' },
                 { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-sms' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
@@ -187,6 +188,12 @@
                 "url" : '{{ site_url('/site/eventLecture/readNoticeModal/'.$el_idx) }}'+uri_param,
                 "width" : "1000"
             });
+        });
+
+        // 엑셀다운로드 버튼 클릭
+        $('.btn-excel-comment').on('click', function(event) {
+            event.preventDefault();
+            formCreateSubmit('{{ site_url('/site/eventLecture/commentExcel/'.$el_idx) }}', $search_comment_form.serializeArray(), 'POST');
         });
     });
 

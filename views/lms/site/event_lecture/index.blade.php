@@ -128,7 +128,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat" name="copy" value="' +row.ELIdx+ '">';
+                            return '<input type="radio" class="flat" name="copy" value="' +row.ElIdx+ '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -186,6 +186,30 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/site/eventLecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+            });
+
+            // 복사
+            $('.btn-copy').on('click', function() {
+                var _url = '{{ site_url("/site/eventLecture/copy/") }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'el_idx' : $('input:radio[name="copy"]:checked').val()
+                };
+
+                if ($('input:radio[name="copy"]').is(':checked') === false) {
+                    alert('복사할 특강을 선택해 주세요.');
+                    return false;
+                }
+                if (!confirm('해당 특강/설명회를 복사하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
         });
     </script>

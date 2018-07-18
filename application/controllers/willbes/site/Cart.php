@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cart extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF');
+    protected $models = array('order/cartF', 'order/orderF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -29,7 +29,6 @@ class Cart extends \app\controllers\FrontController
         $list = $this->cartFModel->listValidCart($this->session->userdata('mem_idx'), $this->_site_code, $this->_cate_code);
 
         $results = [];
-        $is_delivery_price = false;
         foreach ($list as $idx => $row) {
             // 상품 목록, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
             $base_key = array_search($row['ProdTypeCcd'], $this->cartFModel->_prod_type_ccd);
@@ -38,11 +37,6 @@ class Cart extends \app\controllers\FrontController
             $sub_key = $row['IsPackage'] == 'Y' ? 'on_package' : $base_key;
             $count_key = 'count.' . $sub_key;
             $price_key = 'price.' . $sub_key;
-
-            // 온라인강좌 배송료부과 여부 (다수의 강좌상품 중 배송료부과 상품이 하나라도 있을 경우 배송료 부과)
-            if ($is_delivery_price === false && $base_key == 'on_lecture' && $row['IsFreebiesTrans'] == 'Y') {
-                $is_delivery_price = true;
-            }
 
             // 상품 갯수
             array_set($results, $count_key, array_get($results, $count_key, 0) + 1);
@@ -54,11 +48,11 @@ class Cart extends \app\controllers\FrontController
             $results['list'][$base_key][] = $row;
         }
 
-        // 강좌 배송료
-        $results['delivery_price']['on_lecture'] = $is_delivery_price === true ? config_app('DeliveryPrice', 0) : 0;
+        // 온라인 강좌 배송료
+        $results['delivery_price']['on_lecture'] = $this->orderFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.on_lecture', []), 'IsFreebiesTrans'));
 
         // 교재 배송료
-        $results['delivery_price']['book'] = isset($results['price']['book']) === true && intval($results['price']['book']) < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
+        $results['delivery_price']['book'] = $this->orderFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0));
 
         $this->load->view('site/cart/index', [
             'arr_input' => $arr_input,
@@ -67,10 +61,10 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
-     * 결제 페이지 이동
+     * 주문 페이지 이동
      * @param array $params
      */
-    public function toPay($params = [])
+    public function toOrder($params = [])
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],

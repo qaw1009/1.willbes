@@ -354,7 +354,7 @@
             // 상품 자동 선택 처리
             $form.find('input[name="cart_idx[]"]').prop('checked', true);
 
-            var url = '{{ site_url('/cart/toPay/cate/' . $__cfg['CateCode']) }}';
+            var url = '{{ site_url('/cart/toOrder/cate/' . $__cfg['CateCode']) }}';
             ajaxSubmit($form, url, function(ret) {
                 if(ret.ret_cd) {
                     location.href = ret.ret_data.ret_url;

@@ -133,6 +133,7 @@
             {!! method_field('POST') !!}
             <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
             <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
+            <input type="hidden" name="only_cart_tab_id" value=""/>   {{-- 단일 상품 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both">
@@ -362,11 +363,12 @@
         // 클릭된 상품 코드 셋팅
         $regi_form.on('click', '.chk_products, .chk_books', function() {
             $regi_form.find('input[name="only_prod_code"]').val($(this).is(':checked') === true ? $(this).val() : '');
+            $regi_form.find('input[name="only_cart_tab_id"]').val($(this).is(':checked') === true ? ($(this).hasClass('chk_books') === true ? 'book' : 'lecture') : '');
         });
 
         // 장바구니 이동 버튼 클릭
         $buy_layer.on('click', '.answerBox_block', function() {
-            location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}';
+            location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}?tab=' + $regi_form.find('input[name="only_cart_tab_id"]').val();
         });
 
         // 계속구매 버튼 클릭

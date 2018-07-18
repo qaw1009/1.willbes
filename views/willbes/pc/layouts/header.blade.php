@@ -26,5 +26,6 @@
     <!-- jQuery -->
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
+    <script src="/public/js/willbes/tabs.js"></script>
     <!--// JAVASCRIPT -->
 </head>

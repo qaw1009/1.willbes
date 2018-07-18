@@ -14,6 +14,7 @@
                 {{$msg}}
             </div>
             @if(empty($returnurl) == false)
+                @if($code == 'over')
                 <div class="info-Txt tx-black">
                     <div class="info-Txt-box tx-left">
                         인증 메일 발송 후 <strong class="tx-red valign-base">30분간 인증이 유효</strong>합니다.<br/>
@@ -25,6 +26,19 @@
                         </div>
                     </div>
                 </div>
+                    @elseif($code == 'used')
+                    <div class="info-Txt tx-black">
+                        <div class="info-Txt-box tx-left">
+                            인증 메일은 <strong class="tx-red valign-base">1회만 </strong>인증이 가능합니다.<br/>
+                            다시 인증해 주시기 바랍니다.<br/>
+                            <div class="expired-Btn btnAuto130 h36">
+                                <button type="submit" id="btn_ok" class="mem-Btn bg-blue bd-dark-blue">
+                                    <span>확인</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
             @else
                 <div class="searchclear-Btn btnAuto180 mt50 h36">
                     <button type="submit" id="btn_ok" class="mem-Btn bg-blue bd-dark-blue">

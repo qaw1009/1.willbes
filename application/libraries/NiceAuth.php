@@ -20,7 +20,7 @@ class NiceAuth
 
     function __construct()
     {
-        $this->ipinReturnURL = 'https:'.app_url('/', 'www').'Auth/ipinRtn'; // 아이핀 결과 리턴
+        $this->ipinReturnURL = 'https:'.app_url('/', 'www').'Member/ipinRtn'; // 아이핀 결과 리턴
         $this->cpErrorURL = 'https:'.app_url('/', 'www').'Auth/cpErr';      // 실패시 이동 URL
         $this->cpReturnURL = 'https:'.app_url('/', 'www').'Auth/cpRtn_';    // 성공시 이동 URL
     }

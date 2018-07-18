@@ -4,9 +4,9 @@
     <script language='javascript'>
         function fnLoad()
         {
-            parent.opener.parent.document.vnoform.enc_data.value = "<?= $sResponseData ?>";
-            parent.opener.parent.document.vnoform.target = "Parent_window";
-            parent.opener.parent.document.vnoform.action = "";
+            parent.opener.parent.document.vnoform.enc_data.value = "{{$sResponseData}}";
+            //parent.opener.parent.document.vnoform.target = "Parent_window";
+            //parent.opener.parent.document.vnoform.action = "";
             parent.opener.parent.document.vnoform.submit();
 
             self.close();

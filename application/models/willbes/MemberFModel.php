@@ -172,9 +172,68 @@ class MemberFModel extends WB_Model
      * @param array $data
      * @return int
      */
-    public function storeMember($data = [])
+    public function storeMember($input = [])
     {
-        return 1234;
+        if(empty($input) === true) return false;
+
+        $this->_conn->trans_begin();
+
+        try {
+            // 아이디 중복 검색
+            $count = $this->memberFModel->getMember(true, [ 'EQ' => [ 'Mem.MemId' => $input['MemId'] ] ]);
+            if($count > 0) {
+                throw new \Exception('사용할수없는 아이디입니다.');
+            }
+
+            // 회원 정보 입력
+            $data = [
+                'SiteCode' => config_item('app_intg_site_code'),
+                'MemId' => element('MemId', $input),
+                'MemName' => element('MemName', $input),
+                'BirthDay' => element('BirthDay', $input),
+                'Sex' => element('Sex', $input),
+                'Phone1' => element('Phone1', $input),
+                'Phone3' => element('Phone3', $input),
+                'MailId' => element('MailId', $input),
+                'MailDomain' => element('MailDomain', $input),
+                'JoinIp' => $this->input->ip_address(),
+                'CertifiedInfoTypeCcd' => element('CertifiedInfoTypeCcd', $input)
+            ];
+            if($this->_conn->set($data)->
+                set('PhoneEnc',"fn_enc('".element('Phone', $input)."')",false)->
+                set('Phone2Enc',"fn_enc('".element('Phone2', $input)."')",false)->
+                set('MailEnc',"fn_enc('".element('Mail', $input)."')",false)->
+                set('MemPassword',"fn_hash('".element('MemPassword', $input)."')",false)->
+                insert($this->_table['member']) === false){
+                throw new \Exception('회원가입에 실패했습니다.');
+            }
+
+            // 입력된 회원 번호 읽어오기
+            $MemIdx = $this->_conn->insert_id();
+            if(empty($MemIdx)){
+                throw new \Exception('회원가입된 정보 검색에 실패했습니다.');
+            }
+
+            // 추가정보 입력                     
+            $data = [
+                'MemIdx' => $MemIdx,
+                'ZipCode' => element('ZipCode', $input),
+                'Addr1' => element('Addr1', $input)
+            ];
+
+            if($this->_conn->set($data)->
+                set('Addr2Enc',"fn_enc('".element('Addr2', $input)."')",false)->
+                insert($this->_table['info']) === false){
+                throw new \Exception('부가정보 입력에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
     }
 
     /**

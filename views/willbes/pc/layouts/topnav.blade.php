@@ -3,57 +3,59 @@
     <div class="widthAuto">
         <div class="loginDepth p_re">
             <ul class="myLog">
-                @if(sess_data('is_login') != true)
-                    @if(strpos(strtoupper($_SERVER['REQUEST_URI']), '/MEMBER/LOGINFORM') === false)
+                @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
+                    @if(sess_data('is_login') != true)
+                        @if(strpos(strtoupper(current_url()), '/MEMBER/LOGINFORM') === false)
+                            <li class="Login">
+                                <a class="Tit" href="{{ app_url('/member/loginForm/?rtnUrl='.rawurlencode(current_url()), 'www')}}" >로그인</a>
+                            </li>
+                        @endif
+                        <li class="joinUs dropdown">
+                            <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
+                            <div class="drop-Box joinUs-Box">
+                                <ul>
+                                    <li>
+                                        <a href="{{ app_url('/member/findId', 'www') }}">아이디찾기</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ app_url('/member/findPwd', 'www') }}">비밀번호 찾기</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @else
                         <li class="Login">
-                            <a class="Tit" href="{{ app_url('/member/loginForm', 'www') }}/?rtnUrl=//{{rawurlencode($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])}}" >로그인</a>
+                            {{sess_data('mem_name')}}님 ( IDX:{{sess_data('mem_idx')}} | ID:{{sess_data('mem_id')}} | MAIL:{{sess_data('mem_mail')}} | PHONE:{{sess_data('mem_phone')}})
+                        </li>
+                        <li class="joinUs">
+                            <a class="Tit" href="{{ app_url('/member/logout', 'www') }}">로그아웃</a>
                         </li>
                     @endif
-                    <li class="joinUs dropdown">
-                        <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
-                        <div class="drop-Box joinUs-Box">
+                    @if($__cfg['SiteCode'] !== '2000')
+                        <li class="myCart">
+                            <a class="Tit" href="">장바구니</a>
+                        </li>
+                    @endif
+                    <li class="myPage dropdown">
+                        <a class="Tit" href="#none">내강의실<span class="arrow-Btn">></span></a>
+                        <div class="drop-Box myPage-Box">
                             <ul>
                                 <li>
-                                    <a href="{{ app_url('/member/findId', 'www') }}">아이디찾기</a>
+                                    <a href="#none">수강중인 강의</a>
                                 </li>
                                 <li>
-                                    <a href="{{ app_url('/member/findPwd', 'www') }}">비밀번호 찾기</a>
+                                    <a href="#none">PASS 강의</a>
+                                </li>
+                                <li>
+                                    <a href="#none">배송조회</a>
+                                </li>
+                                <li>
+                                    <a href="#none">새쪽지 <span class="num-New">99+</span></a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                @else
-                    <li class="Login">
-                        {{sess_data('mem_name')}}님 ( {{sess_data('mem_idx')}} | {{sess_data('mem_id')}} | {{sess_data('mem_mail')}} | {{sess_data('mem_phone')}})
-                    </li>
-                    <li class="joinUs">
-                        <a class="Tit" href="{{ app_url('/member/logout', 'www') }}">로그아웃</a>
-                    </li>
                 @endif
-                @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
-                    <li class="myCart">
-                        <a class="Tit" href="{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}">장바구니</a>
-                    </li>
-                @endif
-                <li class="myPage dropdown">
-                    <a class="Tit" href="#none">내강의실<span class="arrow-Btn">></span></a>
-                    <div class="drop-Box myPage-Box">
-                        <ul>
-                            <li>
-                                <a href="#none">수강중인 강의</a>
-                            </li>
-                            <li>
-                                <a href="#none">PASS 강의</a>
-                            </li>
-                            <li>
-                                <a href="#none">배송조회</a>
-                            </li>
-                            <li>
-                                <a href="#none">새쪽지 <span class="num-New">99+</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 <li class="csCenter">
                     <a class="Tit" href="#none">고객센터</a>
                 </li>

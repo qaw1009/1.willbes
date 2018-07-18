@@ -3,7 +3,7 @@
 @section('content')
     <form name="join_form" id="join_form" method="post" novalidate="novalidate">
         {!! csrf_field() !!}
-        <input type="hidden" name="jointype" id="jointype" value="{{$jointype}}" />
+        <input type="hidden" name="CertifiedInfoTypeCcd" id="CertifiedInfoTypeCcd" value="{{$jointype}}" />
         <input type="hidden" name="enc_data" id="enc_data" value="{{$enc_data}}" />
         <!-- Container -->
         <div id="Container" class="memContainer widthAuto c_both">
@@ -147,14 +147,14 @@
                         <td>
                             <div class="inputBox p_re">
                                 <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" placeholder="우편번호" maxlength="5" readonly>
-                                <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-dark-blue bd-dark-blue">
+                                <button type="button" id="btn_zipcode" class="mem-Btn combine-Btn mb10 bg-dark-blue bd-dark-blue">
                                     <span>우편번호 찾기</span>
                                 </button>
                                 <div class="addbox1 p_re">
-                                    <input type="text" id="Addr1" name="Addr1" class="iptAdd1" placeholder="기본주소" maxlength="30" readonly>
+                                    <input type="text" id="Addr1" name="Addr1" class="iptAdd1" placeholder="기본주소" maxlength="50" readonly>
                                 </div>
                                 <div class="addbox2 p_re">
-                                    <input type="text" id="Addr2" name="Addr2" class="iptAdd2" placeholder="상세주소" maxlength="30">
+                                    <input type="text" id="Addr2" name="Addr2" class="iptAdd2" placeholder="상세주소" maxlength="50">
                                 </div>
                             </div>
                         </td>
@@ -257,6 +257,7 @@
         <!-- End Container -->
     </form>
     <script src="/public/vendor/jquery/validator/jquery.validate.js"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <script>
         var $join_form = $('#join_form');
         var confirm_id = false;
@@ -462,6 +463,29 @@
             $('input[name=Sex]').click(function(){
                 $('.sexchk').removeClass('checked');
                 $(this).parent().addClass('checked');
+            });
+
+            $("#btn_zipcode,#ZipCode").click(function (){
+                var width = 500;
+                var height = 600;
+
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        var extraAddr = '';
+
+                        // if(data.bname !== ''){ extraAddr += data.bname; }
+                        if(data.buildingName !== ''){ extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName); }
+
+                        $("#ZipCode").val(data.zonecode);
+                        $("#Addr1").val(data.roadAddress);
+                        $("#Addr2").val(extraAddr);
+
+                        $("#Addr2").focus();
+                    }
+                }).open({
+                    left: (window.screen.width / 2) - (width / 2),
+                    top: (window.screen.height / 2) - (height / 2)
+                });
             });
         });
     </script>

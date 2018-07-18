@@ -55,10 +55,10 @@ class CartFModel extends WB_Model
 
         $from = '
             from ' . $this->_table['cart'] . ' as CA
-                inner join ' . $this->_table['product_sale'] . ' as PS
-                    on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
                 inner join ' . $this->_table['product'] . ' as P
                     on CA.ProdCode = P.ProdCode
+                inner join ' . $this->_table['product_sale'] . ' as PS
+                    on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on CA.ProdCode = PL.ProdCode and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture']. '"   # 온라인강좌
                 left join ' . $this->_table['product_book'] . ' as PB
@@ -109,14 +109,28 @@ class CartFModel extends WB_Model
     }
 
     /**
+     * 단일 장바구니 조회
+     * @param $cart_idx
+     * @return mixed
+     */
+    public function findCartByCartIdx($cart_idx)
+    {
+        $arr_condition = ['EQ' => ['CA.CartIdx' => $cart_idx]];
+        $data = $this->listCart(false, $arr_condition, null, null, []);
+
+        return element('0', $data, []);
+    }
+
+    /**
      * 장바구니 등록
      * @param $learn_pattern
      * @param array $input
-     * @return array|bool
+     * @return array
      */
     public function addCart($learn_pattern, $input = [])
     {
         $this->_conn->trans_begin();
+        $results = [];
 
         try {
             $mem_idx = $this->session->userdata('mem_idx');
@@ -165,6 +179,53 @@ class CartFModel extends WB_Model
                 if ($this->_conn->insert($this->_table['cart']) === false) {
                     throw new \Exception('장바구니 등록에 실패했습니다.');
                 }
+
+                $results[] = $this->_conn->insert_id();
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'ret_data' => $results];
+    }
+
+    /**
+     * 장바구니 삭제
+     * @param array $arr_cart_idx
+     * @return array|bool
+     */
+    public function removeCart($arr_cart_idx = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($arr_cart_idx) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 세션 회원 식별자
+            $mem_idx = $this->session->userdata('mem_idx');
+
+            foreach ($arr_cart_idx as $idx => $cart_idx) {
+                // 장바구니 조회
+                $data = $this->findCartByCartIdx($cart_idx);
+                if (empty($data) === true) {
+                    throw new \Exception('장바구니 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+                }
+
+                // 부모상품일 경우 연계상품 동시 삭제
+                if ($data['ProdCode'] == $data['ParentProdCode']) {
+                    $is_delete = $this->_conn->where('MemIdx', $mem_idx)->where('ParentProdCode', $data['ParentProdCode'])->delete($this->_table['cart']);
+                } else {
+                    $is_delete = $this->_conn->where('MemIdx', $mem_idx)->where('CartIdx', $cart_idx)->delete($this->_table['cart']);
+                }
+
+                if ($is_delete === false) {
+                    throw new \Exception('장바구니 삭제에 실패했습니다.');
+                }
             }
 
             $this->_conn->trans_commit();
@@ -174,7 +235,7 @@ class CartFModel extends WB_Model
         }
 
         return true;
-    }
+    }    
 
     /**
      * 상품코드 재정의

@@ -17,11 +17,11 @@
         </div>
         <div class="pocketDetailWrap pt40">
             <ul class="tabWrap tabDepth1 NG">
-                <li><a id="hover1" href="#pocket1" class="on">강좌</a></li>
-                <li><a id="hover2" href="#pocket2">교재</a></li>
+                <li><a id="hover_lecture" href="#lecture" class="">강좌</a></li>
+                <li><a id="hover_book" href="#book" class="">교재</a></li>
             </ul>
             <div class="tabBox">
-                <div id="pocket1" class="tabLink">
+                <div id="lecture" class="tabLink">
                     <form id="lecture_form" name="lecture_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
@@ -46,43 +46,45 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($results['list']['on_lecture'] as $idx => $row)
-                                        <tr>
-                                            <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
-                                            @if($row['IsPackage'] == 'N')
-                                                <td class="w-list tx-left pl20"><span class="pBox p1">강좌</span> {{ $row['ProdName'] }}</td>
-                                            @else
-                                                <td class="w-list tx-left p_re pl20">
-                                                    <a href="#none" onclick="openWin('package_lec_list_{{ $row['CartIdx'] }}');">
-                                                        <span class="pBox p2">패키지</span> {{ $row['ProdName'] }}
-                                                        <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="{{ img_url('sub/icon_detail.gif') }}">
-                                                    </a>
-                                                    <div id="package_lec_list_{{ $row['CartIdx'] }}" class="willbes-Layer-Box-sm">
-                                                        <a class="closeBtn" href="#none" onclick="closeWin('package_lec_list_{{ $row['CartIdx'] }}');">
-                                                            <img src="{{ img_url('gnb/close.png') }}">
+                                    @if(isset($results['list']['on_lecture']) === true)
+                                        @foreach($results['list']['on_lecture'] as $idx => $row)
+                                            <tr>
+                                                <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
+                                                @if($row['IsPackage'] == 'N')
+                                                    <td class="w-list tx-left pl20"><span class="pBox p1">강좌</span> {{ $row['ProdName'] }}</td>
+                                                @else
+                                                    <td class="w-list tx-left p_re pl20">
+                                                        <a href="#none" onclick="openWin('package_lec_list_{{ $row['CartIdx'] }}');">
+                                                            <span class="pBox p2">패키지</span> {{ $row['ProdName'] }}
+                                                            <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="{{ img_url('sub/icon_detail.gif') }}">
                                                         </a>
-                                                        <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
-                                                            <colgroup>
-                                                                <col style="width: 65px;">
-                                                                <col style="width: 455px;">
-                                                            </colgroup>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>정채영<span class="row-line">|</span></td>
-                                                                <td class="tx-left pl20">2017(지방직/서울시) 정채영국어실전동형문제풀이(4-5월)</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                        <div id="package_lec_list_{{ $row['CartIdx'] }}" class="willbes-Layer-Box-sm">
+                                                            <a class="closeBtn" href="#none" onclick="closeWin('package_lec_list_{{ $row['CartIdx'] }}');">
+                                                                <img src="{{ img_url('gnb/close.png') }}">
+                                                            </a>
+                                                            <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
+                                                                <colgroup>
+                                                                    <col style="width: 65px;">
+                                                                    <col style="width: 455px;">
+                                                                </colgroup>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>정채영<span class="row-line">|</span></td>
+                                                                    <td class="tx-left pl20">2017(지방직/서울시) 정채영국어실전동형문제풀이(4-5월)</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                @endif
+                                                <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
+                                                <td class="w-buy">
+                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
+                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
                                                 </td>
-                                            @endif
-                                            <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
-                                            <td class="w-buy">
-                                                <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
-                                                <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -96,9 +98,9 @@
                                         <dt>
                                             <div>
                                                 <span class="pBox p1">강좌</span>
-                                                ( <a class="num tx-light-blue underline" href="#none">{{ element('on_lecture', $results['count'], 0) }}건</a> )
+                                                ( <a class="num tx-light-blue underline" href="#none">{{ array_get($results, 'count.on_lecture', 0) }}건</a> )
                                             </div>
-                                            <span class="price tx-light-blue">{{ number_format(element('on_lecture', $results['price'], 0), 0) }}원</span>
+                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_lecture', 0)) }}원</span>
                                         </dt>
                                         <dt class="price-img">
                                             <span class="row-line">|</span>
@@ -107,9 +109,9 @@
                                         <dt>
                                             <div>
                                                 <span class="pBox p2">패키지</span>
-                                                ( <a class="num tx-light-blue underline" href="#none">{{ element('on_package', $results['count'], 0) }}건</a> )
+                                                ( <a class="num tx-light-blue underline" href="#none">{{ array_get($results, 'count.on_package', 0) }}건</a> )
                                             </div>
-                                            <span class="price tx-light-blue">{{ number_format(element('on_package', $results['price'], 0), 0) }}원</span>
+                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_package', 0)) }}원</span>
                                         </dt>
                                         <dt class="price-img">
                                             <span class="row-line">|</span>
@@ -119,19 +121,19 @@
                                             <div>
                                                 <span class="pBox p4">배송</span>
                                             </div>
-                                            <span class="price tx-light-blue">{{ number_format(element('on_lecture', $results['delivery_price'], 0), 0) }}원</span>
+                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'delivery_price.on_lecture', 0)) }}원</span>
                                         </dt>
                                     </dl>
                                 </li>
                                 <li class="price-total">
                                     <div>결제예상금액</div>
-                                    <span class="price tx-light-blue">{{ number_format(element('on_lecture', $results['price'], 0) + element('on_package', $results['price'], 0) + element('on_lecture', $results['delivery_price'], 0), 0) }}원</span>
+                                    <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_lecture', 0) + array_get($results, 'price.on_package', 0) + array_get($results, 'delivery_price.on_lecture', 0)) }}원</span>
                                 </li>
                             </ul>
                             <div class="willbes-Lec-buyBtn">
                                 <ul>
                                     <li class="btnAuto180 h36">
-                                        <button type="submit" name="btn_continue" data-tab-id="lecture" class="mem-Btn bg-white bd-dark-blue">
+                                        <button type="button" name="btn_continue" data-tab-id="lecture" class="mem-Btn bg-white bd-dark-blue">
                                             <span class="tx-light-blue">다른상품 더 보기</span>
                                         </button>
                                     </li>
@@ -159,7 +161,7 @@
                         <!-- willbes-Cart-Txt -->
                     </form>
                 </div>
-                <div id="pocket2" class="tabLink">
+                <div id="book" class="tabLink">
                     <form id="book_form" name="book_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
@@ -184,17 +186,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($results['list']['book'] as $idx => $row)
-                                        <tr>
-                                            <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
-                                            <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdName'] }}</td>
-                                            <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
-                                            <td class="w-buy">
-                                                <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
-                                                <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @if(isset($results['list']['book']) === true)
+                                        @foreach($results['list']['book'] as $idx => $row)
+                                            <tr>
+                                                <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
+                                                <td class="w-list tx-left pl20"><span class="pBox p3">교재</span> {{ $row['ProdName'] }}</td>
+                                                <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
+                                                <td class="w-buy">
+                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
+                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="book" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -208,9 +212,9 @@
                                         <dt>
                                             <div>
                                                 <span class="pBox p3">교재</span>
-                                                ( <a class="num tx-light-blue underline" href="#none">{{ element('book', $results['count'], 0) }}건</a> )
+                                                ( <a class="num tx-light-blue underline" href="#none">{{ array_get($results, 'count.book', 0) }}건</a> )
                                             </div>
-                                            <span class="price tx-light-blue">{{ number_format(element('book', $results['price'], 0), 0) }}원</span>
+                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.book', 0)) }}원</span>
                                         </dt>
                                         <dt class="price-img">
                                             <span class="row-line">|</span>
@@ -220,19 +224,19 @@
                                             <div>
                                                 <span class="pBox p4">배송</span>
                                             </div>
-                                            <span class="price tx-light-blue">{{ number_format(element('book', $results['delivery_price'], 0), 0) }}원</span>
+                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'delivery_price.book', 0)) }}원</span>
                                         </dt>
                                     </dl>
                                 </li>
                                 <li class="price-total">
                                     <div>결제예상금액</div>
-                                    <span class="price tx-light-blue">{{ number_format(element('book', $results['price'], 0) + element('book', $results['delivery_price'], 0), 0) }}원</span>
+                                    <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.book', 0) + array_get($results, 'delivery_price.book', 0)) }}원</span>
                                 </li>
                             </ul>
                             <div class="willbes-Lec-buyBtn">
                                 <ul>
                                     <li class="btnAuto180 h36">
-                                        <button type="submit" name="btn_continue" data-tab-id="book" class="mem-Btn bg-white bd-dark-blue">
+                                        <button type="button" name="btn_continue" data-tab-id="book" class="mem-Btn bg-white bd-dark-blue">
                                             <span class="tx-light-blue">다른상품 더 보기</span>
                                         </button>
                                     </li>
@@ -269,4 +273,94 @@
     </div>
 </div>
 <!-- End Container -->
+<script type="text/javascript">
+    var $lecture_form = $('#lecture_form');
+    var $book_form = $('#book_form');
+
+    $(document).ready(function() {
+        // 장바구니 디폴트 탭 설정
+        var default_tab_id = '{{ element('tab', $arr_input) }}';
+        if (default_tab_id.length > 0) {
+            openLink('hover_' + default_tab_id);
+        }
+
+        // 전체선택/해제
+        $('.all-check').on('change', function() {
+            var $form = $('#' + $(this).data('tab-id') + '_form');
+            checkAll($form.find('input[name="cart_idx[]"]'), $(this));
+        });
+
+        // 선택삭제/개별삭제 버튼 클릭
+        $('.btn-checked-delete, .btn-only-delete').on('click', function(event) {
+            var $tab_id = $(this).data('tab-id');
+            var $form = $('#' + $tab_id + '_form');
+            var btn_name = event.target.getAttribute('class');
+            var confirm_msg = '선택한 상품을 삭제하시겠습니까?';
+            var data = {};
+
+            if (btn_name === 'btn-checked-delete') {
+                // 선택삭제
+                $form.find('input[name="cart_idx[]"]:checked').each(function(idx) {
+                    data[idx] = $(this).val();
+                });
+
+                if(Object.keys(data).length < 1) {
+                    alert('삭제할 상품을 선택해 주세요.');
+                    return;
+                }
+            } else {
+                // 개별삭제
+                data = { 0 : $(this).data('cart-idx').toString() };
+                confirm_msg = '해당 상품을 삭제하시겠습니까?';
+            }
+
+            if (confirm(confirm_msg)) {
+                data = {
+                    '{{ csrf_token_name() }}' : $form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'cart_idx' : JSON.stringify(data)
+                };
+                sendAjax('{{ site_url('/cart/destroy') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        var reload_url = location.href.replace('#none', '') + '?tab=' + $tab_id;
+                        location.replace(reload_url);
+                    }
+                }, showAlertError, false, 'POST');
+            }
+        });
+
+        // 다른상품 더보기 버튼 클릭
+        $('button[name="btn_continue"]').on('click', function () {
+            location.href = '{{ site_url('/lecture/index/cate/' . $__cfg['CateCode']) }}';
+        });
+
+        // 결제하기 버튼 클릭
+        $('button[name="btn_pay"]').on('click', function () {
+            var $tab_id = $(this).data('tab-id');
+            var $form = $('#' + $tab_id + '_form');
+
+            if ($form.find('input[name="cart_idx[]"]').length < 1) {
+                alert('결제할 상품이 없습니다.');
+                return;
+            }
+
+            if ($tab_id === 'book') {
+                if ($lecture_form.find('input[name="cart_idx[]"]').length > 0) {
+                    alert('장바구니에 담긴 강좌 상품 선 구매 후 교재 상품 구매가 가능합니다.');
+                    return;
+                }
+            }
+
+            // 상품 자동 선택 처리
+            $form.find('input[name="cart_idx[]"]').prop('checked', true);
+
+            var url = '{{ site_url('/cart/toPay/cate/' . $__cfg['CateCode']) }}';
+            ajaxSubmit($form, url, function(ret) {
+                if(ret.ret_cd) {
+                    location.href = ret.ret_data.ret_url;
+                }
+            }, showValidateError, null, false, 'alert');
+        });
+    });
+</script>
 @stop

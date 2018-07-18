@@ -19,6 +19,9 @@ class Cart extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
+        // 장바구니 식별자 세션 삭제
+        $this->_destroySessCartIdx();
+
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
@@ -37,7 +40,7 @@ class Cart extends \app\controllers\FrontController
             $price_key = 'price.' . $sub_key;
 
             // 온라인강좌 배송료부과 여부 (다수의 강좌상품 중 배송료부과 상품이 하나라도 있을 경우 배송료 부과)
-            if ($is_delivery_price === false && $row['IsFreebiesTrans'] == 'Y') {
+            if ($is_delivery_price === false && $base_key == 'on_lecture' && $row['IsFreebiesTrans'] == 'Y') {
                 $is_delivery_price = true;
             }
 
@@ -55,12 +58,33 @@ class Cart extends \app\controllers\FrontController
         $results['delivery_price']['on_lecture'] = $is_delivery_price === true ? config_app('DeliveryPrice', 0) : 0;
 
         // 교재 배송료
-        $results['delivery_price']['book'] = intval($results['price']['book']) < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
+        $results['delivery_price']['book'] = isset($results['price']['book']) === true && intval($results['price']['book']) < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
 
         $this->load->view('site/cart/index', [
             'arr_input' => $arr_input,
             'results' => $results
         ]);
+    }
+
+    /**
+     * 결제 페이지 이동
+     * @param array $params
+     */
+    public function toPay($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'cart_idx[]', 'label' => '장바구니 식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        // 장바구니 식별자 세션 생성
+        $this->_makeSessCartIdx($this->_reqP('cart_idx'));
+
+        $this->json_result(true, '', [], ['ret_url' => site_url('/pay/index/cate/' . $this->_cate_code)]);
     }
 
     /**
@@ -94,6 +118,48 @@ class Cart extends \app\controllers\FrontController
             $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/pay/index/cate/' . $this->_cate_code) : site_url('/cart/index/cate/' . $this->_cate_code);
         }
 
-        $this->json_result($result, '', $result, $returns);
+        // 바로결제일 경우 장바구니 식별자 세션 생성
+        if ($result['ret_cd'] === true && $_is_direct_pay == 'Y') {
+            $this->_makeSessCartIdx($result['ret_data']);
+        }
+
+        $this->json_result($result['ret_cd'], '', $result, $returns);
+    }
+
+    /**
+     * 장바구니 선택삭제/개별삭제
+     * @param array $params
+     */
+    public function destroy($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'cart_idx', 'label' => '장바구니 식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->cartFModel->removeCart(json_decode($this->_reqP('cart_idx'), true));
+
+        $this->json_result($result, '삭제 되었습니다.', $result);        
+    }
+
+    /**
+     * 장바구니 식별자 세션 생성
+     * @param array $arr_cart_idx
+     */
+    private function _makeSessCartIdx($arr_cart_idx = [])
+    {
+        $this->session->set_userdata('usable_cart_idx', $arr_cart_idx);
+    }
+
+    /**
+     * 장바구니 식별자 세션 삭제
+     */
+    private function _destroySessCartIdx()
+    {
+        $this->session->unset_userdata('usable_cart_idx');
     }
 }

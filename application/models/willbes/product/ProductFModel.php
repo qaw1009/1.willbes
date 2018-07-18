@@ -39,15 +39,25 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, IsUse
-                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, LecSaleType, wLectureProgressCcd, wLectureProgressCcdName, ProdPriceData, RegDatm';
+            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm,  IsUse
+                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, LecSaleType, ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌
                 case 'on_lecture' :
-                        $column .= ', SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
+                        $column .= ',IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
+                            , wLectureProgressCcd, wLectureProgressCcdName, 
                             , LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
+                        $arr_condition = array_merge_recursive($arr_condition, [
+                            'EQ' => ['wIsUse' => 'Y']   //마스터강의 사용여부 추가
+                        ]);
                     break;
+
+                //추천패키지
+                case 'adminpack_lecture' :
+                    $column .= ', PackCateCcd, PackCateEtcMemo';
+                    break;
+
                 default :
                         return 0;
                     break;
@@ -55,6 +65,7 @@ class ProductFModel extends WB_Model
         }
 
         return $this->_conn->getListResult($this->_table[$learn_pattern], $column, $arr_condition, $limit, $offset, $order_by);
+
     }
 
     /**

@@ -504,6 +504,9 @@ strong {
   margin-right: 70px !important;
 }
 
+.pt20 {
+  padding-top: 20px !important;
+}
 .pt30 {
   padding-top: 30px !important;
 }
@@ -672,6 +675,9 @@ strong {
 }
 .bd-dark-gray {
   border: 1px solid #555;
+}
+.bdt-bright-gray {
+  border-top: 1px solid #edeeef;
 }
 .bdt-light-gray {
   border-top: 1px solid #e2e2e2;

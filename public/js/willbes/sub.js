@@ -53,6 +53,21 @@ $(function() {
     });
 });
 
+// 즐찾과목/교수전체보기 버튼 Script
+$(function() {
+    $('.PassTabBox .CurriBox .MoreBtn a').click(function() {
+        var $lec_info_table = $(this).parents('.tabLink').find('table.curriTable');
+
+        if ($lec_info_table.is(':hidden')) {
+            $lec_info_table.show().css('display','block');
+            $(this).text('즐찾과목/교수전체보기 ▲');
+        } else {
+            $lec_info_table.hide().css('display','none');
+            $(this).text('즐찾과목/교수전체보기 ▼');
+        }
+    });
+});
+
 // checkbox 결제 버튼 Script
 $(function() {
     $('.chk.buybtn input:checkbox').change(function(){
@@ -97,6 +112,24 @@ $(function() {
             $('tr.replyTxt').hide();
             $(this).next().show();
             $(this).addClass('hover');
+        }   
+    });
+});
+
+// 강좌추가 리스트 Script
+$(function() {
+    $('tr.passzone-Leclist .w-tit').click(function() {
+        var $lec_info_table = $('tr.passzone-Leclist');
+        
+        $('tr.passzone-Leclist').removeClass('hover');
+
+        if ($lec_info_table.next().is(':visible')) {
+            $lec_info_table.next().hide();
+            $lec_info_table.removeClass('hover');
+        } else {
+            $('tr.passzone-Lecinfo').hide();
+            $lec_info_table.next().show();
+            $lec_info_table.addClass('hover');
         }   
     });
 });

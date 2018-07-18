@@ -48,3 +48,5 @@
 <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 > 무한PASS존 Index page 이동</a><br/><br/>
 
 <a href="{{ site_url('/home/html/mypage_pass1') }}">내강의실 > 무한PASS존 page 이동</a><br/><br/>
+
+<a href="{{ site_url('/home/html/mypage_pass2') }}">내강의실 > 무한PASS존 > 수강중인 강좌 page 이동</a><br/><br/>

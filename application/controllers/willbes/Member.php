@@ -613,6 +613,8 @@ class Member extends \app\controllers\FrontController
                     show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
                 }
 
+
+
                 $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
                 $mail = $data_arr[1];
@@ -778,6 +780,16 @@ class Member extends \app\controllers\FrontController
         } else if($jointype === "655003") {
             // mail 인증
             try {
+                $result = $this->memberFModel->getMailAuth([
+                    'EQ' => [
+                        'certKey' => $enc_data,
+                        'IsCert' => 'N'
+                    ]]);
+
+                if(empty($result) === true){
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                }
+
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
@@ -924,7 +936,7 @@ class Member extends \app\controllers\FrontController
                     if($result == false){
                         show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/findpwd');
                     }
-
+                    
                     redirect('/member/setPwdSuccess');
                 }
                 // 가입정보 없음
@@ -936,6 +948,16 @@ class Member extends \app\controllers\FrontController
         } else if($jointype === "655003") {
             // mail 인증
             try {
+                $result = $this->memberFModel->getMailAuth([
+                    'EQ' => [
+                        'certKey' => $enc_data,
+                        'IsCert' => 'N'
+                    ]]);
+
+                if(empty($result) === true){
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                }
+
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
@@ -972,6 +994,9 @@ class Member extends \app\controllers\FrontController
                     if($result == false){
                         show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/findpwd');
                     }
+
+                    // 비밀번호 변경후 인증메일 완료처리
+                    $result = $this->memberFModel->updateMailAuth($enc_data);
 
                     redirect('/member/setPwdSuccess');
                 }

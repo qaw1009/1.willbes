@@ -80,21 +80,21 @@
     border-top: 1px solid #e2e2e2;
     padding-top: 30px;
 }
-.Member .tabWrap.tabs {
+.Member .tabs {
     box-sizing: border-box;
     height: 35px;
     margin-bottom: 45px;
     border-bottom: 1px solid #0d74ae;
 }
-.Member .tabWrap.tabs li {
+.Member .tabs li {
     float: left;
     width: 33.333333333333%;
     height: 34px;
 }
-.Member .tabWrap.tabs.half li {
+.Member .tabs.half li {
     width: 50%;
 }
-.Member .tabWrap.tabs li a {
+.Member .tabs li a {
     background: none;
     color: #959595;
     text-align: center;
@@ -106,10 +106,10 @@
     border-right: 1px solid #e1e1e1;
     border-left: none;
 }
-.Member .tabWrap.tabs li:first-child a {
+.Member .tabs li:first-child a {
     border-left: 1px solid #e1e1e1;    
 }
-.Member .tabWrap.tabs li a.on {
+.Member .tabs li a.on {
     background: #fff;
     height: 35px;
     font-weight: 600;
@@ -118,17 +118,17 @@
     border-left: 1px solid #0d74ae;
     border-right: 1px solid #0d74ae;
 }
-.Member .tabWrap.tabs-Certi {
+.Member .tabs-Certi {
     height: 140px;
     border-bottom: none;
 }
-.Member .tabWrap.tabs-Certi li {
+.Member .tabs-Certi li {
     float: left;
     width: 33.333333333333%;
     height: auto;
     text-align: center;
 }
-.Member .tabWrap.tabs-Certi li a {
+.Member .tabs-Certi li a {
     display: block; 
     width: 86px;
     height:93px;
@@ -137,32 +137,33 @@
     font-weight: 300;
     line-height: inherit;
 }
-.Member .tabWrap.tabs-Certi li a div {
+.Member .tabs-Certi li a div {
     color: #4d4d4d;
     padding-top: 100px;
 }
-.Member .tabWrap.tabs-Certi li a.on {
+.Member .tabs-Certi li a.on {
     height:140px;
+    border: none;
 }
-.Member .tabWrap.tabWrap.tabs-Certi li#tab1 a {
+.Member .tabWrap.tabs-Certi li#tab1 a {
     background: url("../../img/willbes/login/icon_phone.gif") no-repeat 0 0;
 }
-.Member .tabWrap.tabs-Certi li#tab1 a.on {
+.Member .tabs-Certi li#tab1 a.on {
     background: url("../../img/willbes/login/icon_phone_on.gif") no-repeat 0 0;
 }
-.Member .tabWrap.tabs-Certi li#tab2 a {
+.Member .tabs-Certi li#tab2 a {
     background: url("../../img/willbes/login/icon_email.gif") no-repeat 0 0;
 }
-.Member .tabWrap.tabs-Certi li#tab2 a.on {
+.Member .tabs-Certi li#tab2 a.on {
     background: url("../../img/willbes/login/icon_email_on.gif") no-repeat 0 0;
 }
-.Member .tabWrap.tabs-Certi li#tab3 a {
+.Member .tabs-Certi li#tab3 a {
     background: url("../../img/willbes/login/icon_ipin.gif") no-repeat 0 0;
 }
-.Member .tabWrap.tabs-Certi li#tab3 a.on {
+.Member .tabs-Certi li#tab3 a.on {
     background: url("../../img/willbes/login/icon_ipin_on.gif") no-repeat 0 0;
 }
-.Member .tabWrap.tabs-Certi img {
+.Member .tabs-Certi img {
     margin-top: 20px;
 }
 .Member .tabs-Step {
@@ -2715,7 +2716,6 @@ table.classTable tr td.w-data {
     float: left;
     width: 140px;
     height: 34px;
-    margin-right: -1px;
 }
 .tabWrap li a {
     display: block;
@@ -2729,7 +2729,6 @@ table.classTable tr td.w-data {
     letter-spacing: 0;
     border-top: 1px solid #e1e1e1;
     border-right: 1px solid #e1e1e1;
-    border-left: 1px solid #e1e1e1;
 }
 .tabWrap li:first-child a {
     border-left: 1px solid #e1e1e1;
@@ -2745,9 +2744,6 @@ table.classTable tr td.w-data {
     border-top: 1px solid #959595;
     border-left: 1px solid #959595;
     border-right: 1px solid #959595;
-}
-.tabWrap li:first-child a.on {
-    border-left: 1px solid #959595;
 }
 .tabBox .book-TxtBox {
     height: 150px;
@@ -5235,7 +5231,6 @@ table.PassZoneTable .w-lec .w-btn a {
 .tabDepthPass li a {
     background: #fff;
     border-top: 1px solid #e1e1e1;
-    border-left: 1px solid #e1e1e1;
     border-right: 1px solid #e1e1e1;
     color: #959595;
 }

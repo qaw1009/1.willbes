@@ -3,11 +3,11 @@
 @section('content')
     <h5>- 회원의 기본정보 및 수강, 결제, 상담/메모, 쿠폰, 포인트, CRM 정보 등을 확인 및 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! csrf_field() !!}
-        <!--{!! html_site_tabs('tabs_site_code') !!}-->
+    {!! csrf_field() !!}
+    <!--{!! html_site_tabs('tabs_site_code') !!}-->
         <div class="x_panel">
             <div class="x_content">
-                <!-- <div class="form-group">
+            <!-- <div class="form-group">
                     {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-11 form-inline">
@@ -114,6 +114,9 @@
             <div class="form-group">
                 <div class="col-xs-4">
                     <button class="btn btn-default ml-20" type="button" id="btn_search_setting">엑셀다운로드</button>
+                    <button type="button" class="btn btn-default" id="btn_mail">EM발송</button>
+                    <button type="button" class="btn btn-default" id="btn_message">쪽지발송</button>
+                    <button type="button" class="btn btn-default" id="btn_sms">SMS발송</button>
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
@@ -179,7 +182,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return '<input type="checkbox" name="selectMember" value="">'
+                            return '<input type="checkbox" name="selectMember" value="'+row.MemId+'">'
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             // 리스트 번호
@@ -233,6 +236,32 @@
 
             $list_table.on('click', '.btn-view3', function() {
                 location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
+            });
+
+            $('#btn_mail').click(function (){
+               var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
+               if(target_id == ''){ alert('메일보낼 회원을 선택해주십시요.');return;}
+                window.open("{{ site_url('crm/mail/createSend/') }}?target_id="+target_id, "_blank");
+            });
+
+            $('#btn_message').click(function (){
+                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
+                if(target_id == ''){ alert('쪽지보낼 회원을 선택해주십시요.');return;}
+                $('#btn_message').setLayer({
+                    url : "{{ site_url('crm/message/createSendModal') }}?target_id="+target_id,
+                    width : 800,
+                    modal_id : "message_modal"
+                });
+            });
+
+            $('#btn_sms').click(function (){
+                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
+                if(target_id == ''){ alert('SMS보낼 회원을 선택해주십시요.');return;}
+                $('#btn_sms').setLayer({
+                    url : "{{ site_url('crm/sms/createSendModal') }}?target_id="+target_id,
+                    width : 1100,
+                    modal_id : "message_modal"
+                });
             });
         });
     </script>

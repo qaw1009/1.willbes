@@ -354,4 +354,24 @@ class ManageMemberModel extends WB_Model
         return true;
     }
 
+    /**
+     * 회원정보조회 (발송기본정보리턴)
+     * @param array $arr_condition
+     * @param string $limit
+     * @return mixed
+     */
+    public function listSendMemberInfo($arr_condition = [], $limit = '12')
+    {
+        $column = 'MemIdx, MemName, MemId, fn_dec(PhoneEnc) AS Phone, fn_dec(MailEnc) AS Mail';
+        $from = "
+            FROM {$this->_table['member']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by_offset_limit = $this->_conn->makeLimitOffset($limit, null)->getMakeLimitOffset();
+
+        // 쿼리 실행/리턴
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit)->result_array();
+    }
 }

@@ -355,15 +355,30 @@
             openLink($(this).data('tab-id'));
         });
 
-        // 수강생 교재 체크
-        $regi_form.on('click', '.chk_books:checked', function() {
-            checkStudentBook($regi_form, $(this));
-        });
-
-        // 클릭된 상품 코드 셋팅
+        // 상품 선택/해제
         $regi_form.on('click', '.chk_products, .chk_books', function() {
-            $regi_form.find('input[name="only_prod_code"]').val($(this).is(':checked') === true ? $(this).val() : '');
-            $regi_form.find('input[name="only_cart_tab_id"]').val($(this).is(':checked') === true ? ($(this).hasClass('chk_books') === true ? 'book' : 'lecture') : '');
+            if ($(this).is(':checked') === true) {
+                if ($(this).hasClass('chk_books') === true) {
+                    // 수강생 교재 체크
+                    if (checkStudentBook($regi_form, $(this)) === false) {
+                        return;
+                    }
+                    // 장바구니 탭 구분 셋팅
+                    $regi_form.find('input[name="only_cart_tab_id"]').val('book');
+                } else {
+                    $regi_form.find('input[name="only_cart_tab_id"]').val('lecture');
+                }
+                // 클릭된 상품 코드 셋팅
+                $regi_form.find('input[name="only_prod_code"]').val($(this).val());
+            } else {
+                $regi_form.find('input[name="only_prod_code"]').val('');
+                $regi_form.find('input[name="only_cart_tab_id"]').val('');
+
+                if ($(this).hasClass('chk_products') === true) {
+                    // 강좌상품일 경우 연계도서상품 체크 해제
+                    $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).data('prod-code') + '"]').prop('checked', false);
+                }
+            }
         });
 
         // 장바구니 이동 버튼 클릭
@@ -381,14 +396,9 @@
         $buy_layer.on('click', 'button[name="btn_only_cart"], button[name="btn_only_direct_pay"]', function () {
             var $is_direct_pay = $(this).data('direct-pay') || 'N';
             var $only_prod_code = $regi_form.find('input[name="only_prod_code"]').val();
-            var $target_obj = $regi_form.find('input[name="prod_code[]"][value="' + $only_prod_code + '"]');
 
             if ($only_prod_code.length < 1) {
                 alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            if (checkStudentBook($regi_form, $target_obj) === false) {
                 return;
             }
 
@@ -414,10 +424,6 @@
 
             if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
                 alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            if (checkStudentBook($regi_form) === false) {
                 return;
             }
 

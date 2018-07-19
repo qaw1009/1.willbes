@@ -49,15 +49,40 @@ class Cart extends \app\controllers\FrontController
         }
 
         // 온라인 강좌 배송료
-        $results['delivery_price']['on_lecture'] = $this->orderFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.on_lecture', []), 'IsFreebiesTrans'));
+        $results['delivery_price']['on_lecture'] = $this->cartFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.on_lecture', []), 'IsFreebiesTrans'));
 
         // 교재 배송료
-        $results['delivery_price']['book'] = $this->orderFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0));
+        $results['delivery_price']['book'] = $this->cartFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0));
 
         $this->load->view('site/cart/index', [
             'arr_input' => $arr_input,
             'results' => $results
         ]);
+    }
+
+    /**
+     * 수강생교재의 부모상품 유효한 장바구니 존재 여부 및 주문 여부 확인
+     * @param array $params
+     */
+    public function checkStudentBook($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'prod_code', 'label' => '상품 식별자', 'rules' => 'trim|required'],
+            ['field' => 'parent_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $prod_code = $this->_reqP('prod_code');
+        $parent_prod_code = $this->_reqP('parent_prod_code');
+        
+        // 부모상품 주문여부 및 장바구니 확인
+        $returns['is_ordered'] = $this->cartFModel->checkStudentBook($prod_code, $parent_prod_code);
+
+        $this->json_result(true, '', [], $returns);
     }
 
     /**

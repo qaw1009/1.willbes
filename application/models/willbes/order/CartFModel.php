@@ -1,34 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CartFModel extends WB_Model
+require_once APPPATH . 'models/willbes/order/BaseOrderFModel.php';
+
+class CartFModel extends BaseOrderFModel
 {
-    private $_table = [
-        'cart' => 'lms_cart',
-        'product' => 'lms_product',
-        'product_lecture' => 'lms_product_lecture',
-        'product_book' => 'lms_product_book',
-        'product_sale' => 'lms_product_sale',
-        'product_r_product' => 'lms_product_r_product',
-        'bms_book' => 'wbs_bms_book',
-    ];
-
-    // 수강생 교재 공통코드
-    public $_student_book_ccd = '610003';
-    // 상품타입 공통코드
-    public $_prod_type_ccd = ['on_lecture' => '636001', 'book' => '636003'];
-    // 학습형태 공통코드
-    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004'];
-    // 패키지 학습형태 공통코드
-    public $_package_pattern_ccd = ['615002', '615003', '615004'];
-    // 판매가능 공통코드
-    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
-    // 장바구니 식별자 세션명
-    private $_sess_cart_idx_name = 'usable_cart_idx';
-
     public function __construct()
     {
-        parent::__construct('lms');
+        parent::__construct();
     }
 
     /**
@@ -88,18 +67,22 @@ class CartFModel extends WB_Model
      * @param $site_code
      * @param null $cate_code
      * @param array $cart_idx
+     * @param array $prod_code
      * @param string $is_direct_pay
      * @param string $is_visit_pay
      * @return mixed
      */
-    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $is_direct_pay = 'N', $is_visit_pay = 'N')
+    public function listValidCart($mem_idx, $site_code, $cate_code = null, $cart_idx = [], $prod_code = [], $is_direct_pay = 'N', $is_visit_pay = 'N')
     {
         $arr_condition = [
             'EQ' => [
                 'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
                 'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y', 'P.IsUse' => 'Y'
             ],
-            'IN' => ['CA.CartIdx' => $cart_idx],
+            'IN' => [
+                'CA.CartIdx' => $cart_idx,
+                'CA.ProdCode' => $prod_code
+            ],
             'RAW' => [
                 'CA.ExpireDatm > ' => 'NOW()',
                 'NOW() between ' => 'P.SaleStartDatm and P.SaleEndDatm',
@@ -121,6 +104,37 @@ class CartFModel extends WB_Model
         $data = $this->listCart(false, $arr_condition, null, null, []);
 
         return element('0', $data, []);
+    }
+
+    /**
+     * 수강생교재 구매시 부모상품 주문여부 및 장바구니 확인
+     * @param $prod_code
+     * @param $parent_prod_code
+     * @return bool
+     */
+    public function checkStudentBook($prod_code, $parent_prod_code)
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        // 수강생교재일 경우 부모상품 주문정보 확인
+        $column = '(case PP.OptionCcd when "' . $this->_student_book_ccd . '" then if(OP.OrderProdIdx is not null, "Y", "N") else "X" end) as IsOrdered';
+        $arr_condition = ['EQ' => ['PP.ProdCode' => $parent_prod_code, 'PP.ProdCodeSub' => $prod_code, 'PP.IsStatus' => 'Y']];
+
+        $data = $this->_conn->getJoinFindResult($this->_table['product_r_product'] . ' as PP', 'left', $this->_table['order_product'] . ' as OP'
+            , 'PP.ProdCode = OP.ProdCode and OP.MemIdx = ' . $sess_mem_idx   // TODO: 결제완료 주문상태 조건 추가 필요
+            , $column, $arr_condition
+        );
+
+        if ($data['IsOrdered'] == 'N') {
+            // 부모상품 장바구니 확인
+            $cart_data = $this->cartFModel->listValidCart($sess_mem_idx, null, null, null, [$parent_prod_code]);
+
+            if (empty($cart_data) === true) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -148,7 +162,7 @@ class CartFModel extends WB_Model
             }
 
             // 데이터 저장
-            foreach ($arr_prod_code['all'] as $prod_code => $prod_row) {
+            foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 이미 장바구니에 담긴 상품이 있는지 여부 확인
                 $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
                     'EQ' => ['MemIdx' => $sess_mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
@@ -240,35 +254,6 @@ class CartFModel extends WB_Model
     }
 
     /**
-     * 장바구니 식별자 세션 체크 및 리턴
-     * @return mixed
-     */
-    public function checkSessCartIdx()
-    {
-        $sess_cart_idx = $this->session->userdata($this->_sess_cart_idx_name);
-        empty($sess_cart_idx) === true && show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
-
-        return $sess_cart_idx;
-    }
-
-    /**
-     * 장바구니 식별자 세션 생성
-     * @param array $arr_cart_idx
-     */
-    public function makeSessCartIdx($arr_cart_idx = [])
-    {
-        $this->session->set_userdata($this->_sess_cart_idx_name, $arr_cart_idx);
-    }
-
-    /**
-     * 장바구니 식별자 세션 삭제
-     */
-    public function destroySessCartIdx()
-    {
-        $this->session->unset_userdata($this->_sess_cart_idx_name);
-    }
-
-    /**
      * 상품코드 재정의
      * @param $learn_pattern
      * @param $arr_prod_code
@@ -277,22 +262,9 @@ class CartFModel extends WB_Model
     private function _makeProdCodeArray($learn_pattern, $arr_prod_code)
     {
         $results = [];
-
         foreach ($arr_prod_code as $idx => $val) {
             $tmp_arr = explode(':', $val);
-
-            if ($tmp_arr[0] == $tmp_arr[2]) {
-                // 단강좌 상품
-                $results['lecture'][] = $tmp_arr[0];
-            } else {
-                // 구매교재 상품
-                $results['book'][] = ['ProdCode' => $tmp_arr[0], 'ParentProdCode' => $tmp_arr[2]];
-            }
-            
-            // 전체상품
-            if (array_key_exists($tmp_arr[0], element('all', $results, [])) === false) {
-                $results['all'][$tmp_arr[0]] = ['ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
-            }
+            $results[$tmp_arr[0]] = ['ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
         }
 
         return $results;
@@ -300,26 +272,20 @@ class CartFModel extends WB_Model
 
     /**
      * 온라인 단강좌 사전 체크
-     * @param $params
+     * @param $arr_prod_code
      * @return bool|string
      */
-    private function _check_on_lecture($params = [])
+    private function _check_on_lecture($arr_prod_code = [])
     {
-        // 수강생 교재 체크
-        if (isset($params['book']) === true) {
-            foreach ($params['book'] as $idx => $book_row) {
-                // 부모상품코드와 상품코드가 일치하지 않을 경우 교재구분 조회
-                $data = $this->_conn->getFindResult($this->_table['product_r_product'], 'OptionCcd', ['EQ' => [
-                    'ProdCode' => $book_row['ParentProdCode'],
-                    'ProdCodeSub' => $book_row['ProdCode'],
-                    'IsStatus' => 'Y'
-                ]]);
+        // 강좌상품코드 배열
+        $arr_parent_prod_code = array_unique(array_pluck($arr_prod_code, 'ParentProdCode'));
 
-                if (empty($data) === false && $data['OptionCcd'] === $this->_student_book_ccd) {
-                    // 수강생 교재일 경우 강좌상품코드가 존재하는지 여부 확인
-                    if (isset($params['lecture']) === false || array_search($book_row['ParentProdCode'], $params['lecture']) === false) {
-                        return '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요';
-                    }
+        // 수강생 교재 체크
+        foreach ($arr_prod_code as $prod_code => $prod_row) {
+            // 구매교재 상품
+            if ($prod_code != $prod_row['ParentProdCode']) {
+                if (array_search($prod_row['ParentProdCode'], $arr_parent_prod_code) === false && $this->checkStudentBook($prod_code, $prod_row['ParentProdCode']) === false) {
+                    return '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
                 }
             }
         }

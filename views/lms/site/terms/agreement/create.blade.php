@@ -70,8 +70,7 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <input type="hidden" name="" value="">
-                        <textarea id="" name="" class="form-control" rows="7" title="내용" placeholder="" style="width: 100%; resize: none;">
-                        </textarea>
+                        <textarea id="" name="" class="form-control" rows="7" title="내용" placeholder="이용약관 소스를 등록해 주세요." style="width: 100%; resize: none;"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -90,7 +89,7 @@
                     <div class="col-md-4">
                         <p class="form-control-static">관리자명</p>
                     </div>
-                    <label class="control-label col-md-1-1">등록일
+                    <label class="control-label col-md-1-1 d-line">등록일
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">2018-00-00 00:00</p>
@@ -102,7 +101,7 @@
                     <div class="col-md-4">
                         <p class="form-control-static">관리자명</p>
                     </div>
-                    <label class="control-label col-md-1-1">최종 수정일
+                    <label class="control-label col-md-1-1 d-line">최종 수정일
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">2018-00-00 00:00</p>

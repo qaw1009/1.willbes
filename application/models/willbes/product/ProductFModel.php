@@ -50,7 +50,7 @@ class ProductFModel extends WB_Model
                             , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType
                             , LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
                         $arr_condition = array_merge_recursive($arr_condition, [
-                            'EQ' => ['LecSaleType' => 'N','wIsUse' => 'Y']   //마스터강의 사용여부 추가
+                            'EQ' => ['LecSaleType' => 'N','wIsUse' => 'Y']   //일반강의, 마스터강의 사용여부 추가
                         ]);
                     break;
 
@@ -110,15 +110,17 @@ class ProductFModel extends WB_Model
      * @param $prod_code
      * @return array
      */
-    public function findProductContents($prod_code)
+    public function findProductContents($prod_code=[])
     {
+        $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
         $column = 'PC.ProdCode, PC.ContentTypeCcd, CD.CcdName as ContentTypeCcdName, PC.Content';
         $arr_condition = [
-            'EQ' => ['PC.ProdCode' => $prod_code, 'PC.IsStatus' => 'Y']
+            //'EQ' => ['PC.ProdCode' => $prod_code, 'PC.IsStatus' => 'Y']
+            'EQ' => ['PC.IsStatus' => 'Y'], 'IN' => ['PC.ProdCode' => $prod_code]
         ];
 
         return $this->_conn->getJoinListResult($this->_table['product_content'] . ' as PC', 'inner', $this->_table['code'] . ' as CD', 'PC.ContentTypeCcd = CD.Ccd'
-            , $column, $arr_condition, null, null, ['PC.ContentTypeCcd' => 'asc']
+            , $column, $arr_condition, null, null, ['PC.ProdCode' => 'asc', 'PC.ContentTypeCcd' => 'asc']
         );
     }
 

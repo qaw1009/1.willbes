@@ -249,7 +249,7 @@ class Sms extends \app\controllers\BaseController
     {
         $get_site_array = $this->siteModel->getSiteArray();
 
-        $column = 'Mem.MemIdx, Mem.SiteCode, Mem.MemId, Mem.MemName, fn_dec(Mem.PhoneEnc) as Phone, fn_dec(MemInfo.MailEnc) as MemMail, Mem.JoinDate, Mem.IsStatus, MemInfo.SmsRcvStatus, MemInfo.MailRcvStatus';
+        $column = 'Mem.MemIdx, Mem.SiteCode, Mem.MemId, Mem.MemName, fn_dec(Mem.PhoneEnc) as Phone, fn_dec(Mem.MailEnc) as MemMail, Mem.JoinDate, Mem.IsStatus, MemInfo.SmsRcvStatus, MemInfo.MailRcvStatus';
         $arr_condition = [
             'EQ' => [
                 'Mem.SiteCode' => $this->_reqP('site_code'),

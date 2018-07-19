@@ -260,7 +260,8 @@
                                         <span class="nBox n3">예정</span>
                                         <span class="nBox n4">완강</span>
                                     </dt>
-                                </dl>
+                                </dl><br/>
+                                <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
                             </td>
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
@@ -723,26 +724,26 @@
                                     <img src="{{ img_url('sample/book.jpg') }}">
                                 </div>
                                 <div class="bookDetail">
-                                    <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
+                                    <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집2 (전5권)</div>
                                     <div class="book-Author tx-gray">
                                         <ul>
-                                            <li>분야 : 9급공무원 <span class="row-line">|</span></li>
+                                            <li>분야 : 7급공무원 <span class="row-line">|</span></li>
                                             <li>저자 : 저자명 <span class="row-line">|</span></li>
                                             <li>출판사 : 출판사명 <span class="row-line">|</span></li>
-                                            <li>판형/쪽수 : 190*260 / 769</li>
+                                            <li>판형/쪽수 : 190*260 / 348</li>
                                         </ul>
                                         <ul>
-                                            <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
-                                            <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong></li>
+                                            <li>출판일 : 2018-12-25 <span class="row-line">|</span></li>
+                                            <li>교재비 : <strong class="tx-light-blue">40,000원</strong> (↓15%) <strong class="tx-black">[판매중]</strong></li>
                                         </ul>
                                     </div>
                                     <div class="bookBoxWrap">
                                         <ul class="tabWrap tabDepth2">
-                                            <li><a href="#info1">교재소개</a></li>
-                                            <li><a href="#info2">교재목차</a></li>
+                                            <li><a href="#info3">교재소개</a></li>
+                                            <li><a href="#info4">교재목차</a></li>
                                         </ul>
                                         <div class="tabBox">
-                                            <div id="info1" class="tabContent">
+                                            <div id="info3" class="tabContent">
                                                 <div class="book-TxtBox tx-gray">
                                                     2018년재신정판을내면서..<br/>
                                                     첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
@@ -752,7 +753,7 @@
                                                 </div>
                                                 <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
                                             </div>
-                                            <div id="info2" class="tabContent">
+                                            <div id="info4" class="tabContent">
                                                 <div class="book-TxtBox tx-gray">
                                                     제1편 현대 문법<br/>
                                                     제2편 고전 문법<br/>

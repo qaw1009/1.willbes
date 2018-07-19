@@ -190,10 +190,50 @@ class EventLecture extends \app\controllers\BaseController
             ['field' => 'option_ccds[]', 'label' => '관리옵션', 'rules' => 'trim|required'],
         ];
 
-        //상태 값에 따른 rules 적용 (일반적 rules 적용 불가)
+        //상태 값에 따른 rules 적용
         $content_type = $this->_reqP('content_type');       //내용타입
         $option_ccds = $this->_reqP('option_ccds[]');       //관리옵션
         $limit_type = $this->_reqP('limit_type');           //정원제한타입
+
+        if (count($option_ccds) > 0) {
+            foreach ($option_ccds as $key => $val) {
+                switch ($val) {
+                    case $this->eventLectureModel->_event_lecture_option_ccds[0] :
+                        $rules = array_merge($rules, [
+                            ['field' => 'limit_type', 'label' => '정원제한', 'rules' => 'trim|required|in_list[S,M]']
+                        ]);
+
+                        if ($limit_type == 'S') {
+                            $rules = array_merge($rules, [
+                                ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'callback_validateRequiredIf[limit_type,S]|in_list[L,N]'],
+                                ['field' => 'person_limit', 'label' => '정원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
+                            ]);
+                        } else if ($limit_type == 'M') {
+                            $rules = array_merge($rules, [
+                                ['field' => 'event_register_parson_limit_type[]', 'label' => '단일,다중선택', 'rules' => 'trim|required'],
+                                ['field' => 'event_register_name[]', 'label' => '특강명', 'rules' => 'trim|required']
+                            ]);
+                        }
+                        break;
+                    case $this->eventLectureModel->_event_lecture_option_ccds[1] :
+                        $rules = array_merge($rules, [
+                            ['field' => 'comment_use_area[]', 'label' => '댓글기능옵션', 'rules' => 'trim|required']
+                        ]);
+                        break;
+                    case $this->eventLectureModel->_event_lecture_option_ccds[2] :
+                        $rules = array_merge($rules, [
+                            ['field' => 'send_tel', 'label' => '발신번호', 'rules' => 'trim|required'],
+                            ['field' => 'sms_content', 'label' => '발신내용', 'rules' => 'trim|required']
+                        ]);
+                        break;
+                    case $this->eventLectureModel->_event_lecture_option_ccds[3] :
+                        $rules = array_merge($rules, [
+                            ['field' => 'popup_title', 'label' => '팝업타이틀명', 'rules' => 'trim|required']
+                        ]);
+                        break;
+                }
+            }
+        }
 
         // 등록,수정 조건 분기 처리
         if (empty($this->_reqP('el_idx')) === true) {
@@ -211,30 +251,6 @@ class EventLecture extends \app\controllers\BaseController
                 $rules = array_merge($rules, [
                     ['field' => "attach_file_S", 'label' => '리스트썸네일', 'rules' => "callback_validateFileRequired[attach_file_S]"]
                 ]);
-            }
-
-            if (count($option_ccds) > 0) {
-                foreach ($option_ccds as $key => $val) {
-                    switch ($val) {
-                        case $this->eventLectureModel->_event_lecture_option_ccds[0] :
-                            $rules = array_merge($rules, [
-                                ['field' => 'limit_type', 'label' => '정원제한', 'rules' => 'trim|required|in_list[S,M]']
-                            ]);
-
-                            if ($limit_type == 'S') {
-                                $rules = array_merge($rules, [
-                                    ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'callback_validateRequiredIf[limit_type,S]|in_list[L,N]'],
-                                    ['field' => 'person_limit', 'label' => '정원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
-                                ]);
-                            } else if ($limit_type == 'M') {
-                                $rules = array_merge($rules, [
-                                    ['field' => 'event_register_parson_limit_type[]', 'label' => '단일,다중선택', 'rules' => 'trim|required'],
-                                    ['field' => 'event_register_name[]', 'label' => '특강명', 'rules' => 'trim|required']
-                                ]);
-                            }
-                            break;
-                    }
-                }
             }
 
         } else {

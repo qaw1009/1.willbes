@@ -7,8 +7,8 @@
             </div>
             <div class="col-md-5">
                 <ul class="nav nav-tabs bar_tabs">
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
+                    <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
+                    <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active active-lms @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
                 </ul>
             </div>
             <div class="col-md-3 nav_login">
@@ -72,7 +72,7 @@
                 <li role="presentation"><a href="#">TMS</a></li>
             </ul>--}}
             <ul class="nav nav-tabs bar_tabs">
-                <li role="presentation" class="active">
+                <li role="presentation" class="active @if(SUB_DOMAIN == 'wbs') active-wbs @else(SUB_DOMAIN == 'lms') active-lms @endif">
                     <a href="{{ site_url(get_var(element('home_url', $__settings), $__cfg['home_url'])) }}" class="cs-pointer">메인</a>
                 </li>
             @if(isset($__menu['GNB']) === true)

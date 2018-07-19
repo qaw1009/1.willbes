@@ -190,8 +190,12 @@ abstract class FrontController extends BaseController
     {
         if ($this->auth_controller === true || in_array($this->router->method, $this->auth_methods) === true) {
             if ($this->isLogin() !== true) {
-                //show_error('접근 권한이 없습니다.', _HTTP_UNAUTHORIZED, '접근 권한 없음');
-                redirect(app_url('/member/loginForm/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
+                if ($this->input->is_ajax_request() === true) {
+                    return $this->json_error('로그인 후 이용해 주십시오.', _HTTP_UNAUTHORIZED);
+                } else {
+                    //show_error('접근 권한이 없습니다.', _HTTP_UNAUTHORIZED, '접근 권한 없음');
+                    redirect(app_url('/member/loginForm/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
+                }
             }
         }
     }

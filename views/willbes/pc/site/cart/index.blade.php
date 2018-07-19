@@ -50,7 +50,7 @@
                                         @foreach($results['list']['on_lecture'] as $idx => $row)
                                             <tr>
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
-                                                @if($row['IsPackage'] == 'N')
+                                                @if($row['CartProdType'] != 'on_package')
                                                     <td class="w-list tx-left pl20"><span class="pBox p1">강좌</span> {{ $row['ProdName'] }}</td>
                                                 @else
                                                     <td class="w-list tx-left p_re pl20">

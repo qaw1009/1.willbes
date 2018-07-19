@@ -6,6 +6,7 @@
     <!-- site nav -->
     @include('willbes.pc.layouts.partial.site_menu')
     <div class="Content p_re">
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
@@ -45,124 +46,67 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="w-list tx-left pl20">
-                                <dl>
-                                    <dt class="tit">
-                                        <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                                        <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
-                                    </dt>
-                                    <dt>
-                                        <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
-                                        <span class="w-data">
-                                            [강좌시작일 설정] 
-                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
-                                            <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
-                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                                        </span>
-                                        <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-buy-price">
-                                <dl>
-                                    <dt class="tx-light-blue">75,000원</dt>
-                                    <dt class="origin-price tx-gray">(80,000원)</dt>
-                                </dl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left pl20">
-                                <dl>
-                                    <dt class="tit">
-                                        <span class="pBox p1">강좌</span> 2018 김용철행정법총론실전동형모의고사(3월)
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                    </dt>
-                                    <dt>
-                                        <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
-                                        <span class="w-data">
-                                            [강좌시작일 설정] 
-                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
-                                            <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
-                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                                        </span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-buy-price">
-                                <dl>
-                                    <dt class="tx-light-blue">80,000원</dt>
-                                </dl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left pl20">
-                                <dl>
-                                    <dt class="tit">
-                                        <span class="pBox p2">패키지</span> 2017 9급공무원이론선택형종합패키지-30일완성
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                    </dt>
-                                    <dt>
-                                        <span class="w-day">수강기간 : <span class="tx-blue">100일</span></span>
-                                        <span class="w-data">[강좌시작일 설정] <span class="tx-light-blue">결제완료 후 바로 수강 시작</span></span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-buy-price">
-                                <dl>
-                                    <dt class="tx-light-blue">180,000원</dt>
-                                </dl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left pl20">
-                                <dl>
-                                    <dt class="tit">
-                                        <span class="pBox p3">교재</span> 2017 정채영국어서울문제를알려주마!1
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                    </dt>
-                                    <dt>
-                                        <span class="w-coupon">10% 할인쿠폰 (<span class="tx-blue">10% 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-buy-price">
-                                <dl>
-                                    <dt class="tx-light-blue">7,000원</dt>
-                                    <dt class="origin-price tx-gray">(8,000원)</dt>
-                                </dl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left pl20">
-                                <dl>
-                                    <dt class="tit">
-                                        <span class="pBox p3">교재</span> 2017 정채영국어서울시문제를알려주마!2
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-buy-price">
-                                <dl>
-                                    <dt class="tx-light-blue">5,000원</dt>
-                                </dl>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left pl20">
-                                <dl>
-                                    <dt class="tit">
-                                        <span class="pBox p4">배송</span> 배송비 <span class="tx-light-blue">(교재 총 결제금액이 30,000원 이상 인 경우 배송비 무료)</span>
-                                        <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-buy-price">
-                                <dl>
-                                    <dt class="tx-light-blue">2,500원</dt>
-                                </dl>
-                            </td>
-                        </tr>
+                        @foreach($results['list'] as $idx => $row)
+                            <tr>
+                                <td class="w-list tx-left pl20">
+                                    <dl>
+                                        <dt class="tit">
+                                            <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
+                                            {{ $row['ProdName'] }}
+                                            @if($row['IsCoupon'] == 'Y')
+                                                <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon');">쿠폰적용</a></span>
+                                            @endif
+                                        </dt>
+                                        <dt>
+                                            @if($row['CartProdType'] != 'book')
+                                                <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
+                                                <span class="w-data">
+                                                    [강좌시작일 설정]
+                                                    @if($row['IsLecStart'] == 'Y')
+                                                        <input type="text" name="study_start_date[]" class="iptDate" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')) }}"/>
+                                                        <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
+                                                        <input type="text" name="study_end_date[]" class="iptDate" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +8 day')) }}"/>
+                                                        <img src="{{ img_url('cart/icon_calendar.gif') }}">
+                                                    @else
+                                                        <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                    @endif
+                                                </span>
+                                            @endif
+                                            @if($row['IsCoupon'] == 'Y')
+                                                <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
+                                            @endif
+                                        </dt>
+                                    </dl>
+                                </td>
+                                <td class="w-buy-price">
+                                    <dl>
+                                        <dt class="tx-light-blue">{{ number_format($row['RealSalePrice']) }}원</dt>
+                                        <dt class="origin-price tx-gray">(80,000원)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                        @endforeach
+                        {{-- 배송료 --}}
+                        @if(current($results['delivery_price']) > 0)
+                            <tr>
+                                <td class="w-list tx-left pl20">
+                                    <dl>
+                                        <dt class="tit">
+                                            <span class="pBox p4">배송</span> 배송비
+                                            @if(key($results['delivery_price']) == 'book')
+                                                <span class="tx-light-blue">(교재 총 결제금액이 {{ number_format($__cfg['DeliveryFreePrice']) }}원 이상 인 경우 배송비 무료)</span>
+                                            @endif
+                                            <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
+                                        </dt>
+                                    </dl>
+                                </td>
+                                <td class="w-buy-price">
+                                    <dl>
+                                        <dt class="tx-light-blue">{{ number_format(current($results['delivery_price'])) }}원</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -174,7 +118,7 @@
                     <dl class="priceBox">
                         <dt>
                             <div>상품주문금액</div>
-                            <div class="price tx-light-blue">140,000원</div>
+                            <div class="price tx-light-blue">{{ number_format($results['price']) }}원</div>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -182,7 +126,7 @@
                         </dt>
                         <dt>
                             <div>쿠폰할인금액</div>
-                            <div class="price tx-light-pink">180,000원</div>
+                            <div class="price tx-light-pink">0원</div>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -190,7 +134,7 @@
                         </dt>
                         <dt>
                             <div>포인트 차감금액</div>
-                            <span class="price tx-light-pink">13,000원</span>
+                            <span class="price tx-light-pink">0원</span>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -198,27 +142,27 @@
                         </dt>
                         <dt>
                             <div>배송료</div>
-                            <span class="price tx-light-blue">2,500원</span>
+                            <span class="price tx-light-blue">{{ number_format(current($results['delivery_price'])) }}원</span>
                         </dt>
                     </dl>
                 </li>
                 <li class="price-total">
                     <div>결제예상금액</div>
-                    <span class="price tx-light-blue">188,600원</span>
+                    <span class="price tx-light-blue">{{ number_format($results['price'] + current($results['delivery_price'])) }}원</span>
                 </li>
             </ul>
             <div class="cart-PointBox NG">
                 <dl class="pointBox">
-                    <dt class="p-tit"><span class="tx-blue">강좌</span> 포인트 사용</dt>
+                    <dt class="p-tit"><span class="tx-blue">{{ $results['cart_type_name'] }}</span> 포인트 사용</dt>
                     <dt>
-                        <span class="u-point tx-pink">30,000P 보유</span>
+                        <span class="u-point tx-pink">0P 보유</span>
                         <span class="btnAll NSK"><a href="#none">전액사용</a></span>
-                        <input type="text" id="POINT" name="POINT" class="iptPoint" maxlength="30"> P 차감
+                        <input type="text" name="use_point" class="iptPoint" value="0" maxlength="30"> P 차감
                     </dt>
                 </dl>
             </div>
             <div class="p-info tx-gray c_both">
-                • 강좌 포인트는 <span class="tx-light-blue">6,000p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능하며, 주문금액의 <span class="tx-light-blue">80%</span>까지만 사용 가능합니다.
+                • {{ $results['cart_type_name'] }} 포인트는 <span class="tx-light-blue">6,000P</span> 부터 <span class="tx-light-blue">1P</span> 단위로 사용 가능하며, 주문금액의 <span class="tx-light-blue">80%</span>까지만 사용 가능합니다.
             </div>
         </div>
         <!-- willbes-Cart-Price -->
@@ -765,6 +709,7 @@
             </div>
         </div>
         <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
+    </form>
     </div>
     <div class="Quick-Bnr ml20 mt85">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

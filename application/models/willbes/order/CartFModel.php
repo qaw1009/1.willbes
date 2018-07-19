@@ -28,8 +28,13 @@ class CartFModel extends BaseOrderFModel
             $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode, CA.ProdCodeSub, CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty
                 , CA.IsDirectPay, CA.IsVisitPay, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
                 , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo
-                , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, if(PL.LearnPatternCcd is not null, fn_ccd_name(PL.LearnPatternCcd), "") as LearnPatternCcdName
-                , if(PL.LearnPatternCcd in ("' . implode('","', $this->_package_pattern_ccd) . '"), "Y", "N") as IsPackage';
+                , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart
+                , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
+                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", 
+                    case when PL.LearnPatternCcd in ("' . implode('","', $this->_package_pattern_ccd) . '") then "on_package" 
+                         when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture"
+                         else PL.LearnPatternCcd 
+                    end) as CartProdType';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }

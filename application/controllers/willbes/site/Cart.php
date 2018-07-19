@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cart extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF');
+    protected $models = array('order/cartF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -34,9 +34,8 @@ class Cart extends \app\controllers\FrontController
             $base_key = array_search($row['ProdTypeCcd'], $this->cartFModel->_prod_type_ccd);
 
             // 상품 갯수, 상품 금액 배열 키 (on_lecture : 단강좌, on_package : 패키지, book : 교재)
-            $sub_key = $row['IsPackage'] == 'Y' ? 'on_package' : $base_key;
-            $count_key = 'count.' . $sub_key;
-            $price_key = 'price.' . $sub_key;
+            $count_key = 'count.' . $row['CartProdType'];
+            $price_key = 'price.' . $row['CartProdType'];
 
             // 상품 갯수
             array_set($results, $count_key, array_get($results, $count_key, 0) + 1);

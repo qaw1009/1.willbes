@@ -15,6 +15,9 @@ class BaseOrderFModel extends WB_Model
         'bms_book' => 'wbs_bms_book',
     ];
 
+    // 장바구니 상품타입명
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'on_package' => '패키지', 'book' => '교재'];
+
     // 상품타입 공통코드
     public $_prod_type_ccd = ['on_lecture' => '636001', 'book' => '636003'];
 

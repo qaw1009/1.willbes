@@ -157,7 +157,7 @@
             });
 
             $('#btn_message').setLayer({
-                url : "{{ site_url('crm/message/createSendModal/') }}?memId={{$data['MemId']}}",
+                url : "{{ site_url('crm/message/createSendModal') }}?target_id={{$data['MemId']}}",
                 width : 800,
                 modal_id : "message_modal"
             });
@@ -169,7 +169,7 @@
             });
 
             $('#btn_sms').setLayer({
-                url : "{{ site_url('crm/sms/createSendModal/') }}?memId={{$data['MemId']}}",
+                url : "{{ site_url('crm/sms/createSendModal') }}?target_id={{$data['MemId']}}",
                 width : 800,
                 modal_id : "message_modal"
             });

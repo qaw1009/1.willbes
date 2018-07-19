@@ -20,15 +20,15 @@
                 <li><a href="{{app_url('/Member/Sleep', 'www')}}">휴면회원 해제</a></li>
             </ul>
             <ul class="tabWrap tabLoginDepth2 tabs-Certi">
-                <li id="tab1"><a href="#id_certi1"><div>휴대폰 인증</div></a></li>
-                <li id="tab2"><a href="#id_certi2"><div>E-mail 인증</div></a></li>
-                <li id="tab3"><a href="#id_certi3"><div>아이핀 인증</div></a></li>
+                <li id="tab1"><a href="#pwd_certi1"><div>휴대폰 인증</div></a></li>
+                <li id="tab2"><a href="#pwd_certi2"><div>E-mail 인증</div></a></li>
+                <li id="tab3"><a href="#pwd_certi3"><div>아이핀 인증</div></a></li>
             </ul>
             <div clsas="tabBox">
                 <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
                     <input type="hidden" name="sms_stat" id="sms_stat" value="NEW" />
                     {!! csrf_field() !!}
-                    <div id="id_certi1">
+                    <div id="pwd_certi1">
                         <div class="widthAuto460 mt30">
                             <div class="inputBox p_re item">
                                 <input type="text" id="var_id" name="var_id" class="iptId" placeholder="아이디" maxlength="30" required="required" title="이름" >
@@ -58,7 +58,7 @@
                 </form>
                 <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
                     {!! csrf_field() !!}
-                    <div id="id_certi2">
+                    <div id="pwd_certi2">
                         <div class="widthAuto460 mt30">
                             <div class="inputBox p_re item">
                                 <input type="text" id="var_id" name="var_id" class="iptId" placeholder="아이디" maxlength="30" required="required" title="이름">
@@ -82,12 +82,13 @@
                         <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
                     </div>
                 </form>
-                <div id="id_certi3">
-                    <form name="form_ipin" id="form_ipin" method="post">
+                <div id="pwd_certi3">
+                    <form name="form_ipin" id="form_ipin" method="post" onsubmit="return false;">
                         <input type="hidden" name="m" value="pubmain">
                         <input type="hidden" name="enc_data" value="{{$encData}}">
                         <input type="hidden" name="param_r1" value="findpwd">
                         <input type="hidden" name="param_r3" value="">
+                        <input type="text" style="display:none;" />
                         <div class="widthAuto460">
                             <div class="inputBox mt30 p_re">
                                 <input type="text" id="ipin_id" name="param_r2" class="iptId" placeholder="아이디" maxlength="30">

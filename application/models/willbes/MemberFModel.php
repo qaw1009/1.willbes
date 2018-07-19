@@ -188,7 +188,6 @@ class MemberFModel extends WB_Model
 
         //$this->_conn->trans_begin();
         try {
-
             $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
             if(empty($oriData) == true){
                 throw new \Exception('사용자 데이타 조회에 실패했습니다.');
@@ -215,6 +214,48 @@ class MemberFModel extends WB_Model
         return true;
     }
 
+    public function ActivateSleepMember($MemIdx)
+    {
+        if(empty($MemIdx)){
+            return false;
+        }
+
+        $updateColumnText = '휴면해제';
+
+        $this->_conn->trans_begin();
+        try {
+            if($this->_conn->set('IsStatus', "Y", true)
+                    ->set('LastInfoModyDatm', 'NOW()', false)
+                    ->where('MemIdx', $MemIdx)->update($this->_table['member']) === false){
+                throw new \Exception('휴면회원 해제에 실패했습니다.');
+            }
+
+            $data = [
+                'MemIdx' => $MemIdx,
+                'UpdTypeCcd' => '656004',
+                'UpdData' => $updateColumnText,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if($this->_conn->set($data)->insert($this->_table['infolog']) === false){
+                throw new \Exception('변경로그 기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * 사용자 암호변경
+     * @param $data
+     * @return bool
+     */
     public function setMemberPassword($data)
     {
         if(empty($data)){

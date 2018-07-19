@@ -82,7 +82,7 @@ body.no_sidebar {
     margin-left: -1px;
 }
 .top_col .nav-tabs li.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu {
-    margin-top: -3px;
+    margin-top: -4px;
     margin-left: 0;
 }
 
@@ -153,14 +153,25 @@ footer {
 
 /* bar_tabs */
 ul.bar_tabs > li a {
-    position: relative;
-    z-index: 9999;
     background: #fff !important;
     border-top-right-radius: 4px;
 }
+
+
 ul.bar_tabs > li.dropdown > a {
     padding: 10px 10px 10px 15px;
+    z-index: 9997;
+    transition: all 1.3s ease-in-out;
+    height: 40px;
 }
+ul.bar_tabs > li.dropdown:hover > a {
+    position: relative;
+    height: 41px;
+    z-index: 9999;
+    transition: all 0.5s ease-in;
+}
+
+
 ul.bar_tabs > li a:hover {
     background: #f5f7fa !important;
 }
@@ -170,13 +181,20 @@ ul.bar_tabs > li a:focus {
 ul.bar_tabs > li.active {
     border-top: 1px solid #e6e9ed;
     margin-top: -17px;
+    border-right: 1px solid #E6E9ED;
+}
+ul.bar_tabs > li.active-wbs {
+    border-right: 6px solid #83b441;
+}
+ul.bar_tabs > li.active-lms {
     border-right: 6px solid #0d74ae;
 }
 ul.bar_tabs > li.active a {
     padding-top : 11px !important;
     padding-bottom : 11px !important;
 }
-ul.bar_tabs > li.active a, ul.bar_tabs > li.active a:focus, ul.bar_tabs > li.active a:hover {
+ul.bar_tabs > li.active a, ul.bar_tabs > li.active a:focus,
+ul.bar_tabs > li.active a:hover {
     border: 1px solid transparent;
     border-bottom: 0;
     border-top-right-radius: 0;
@@ -733,6 +751,33 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .table-bordered>thead>tr>th {
     border-bottom-width: 0px;
 }
+
+/* item margin */
+.form-horizontal .form-group .item .title:first-child {
+    margin-top: 0;
+}
+.form-horizontal .form-group .item .title {
+    margin-top: 5px;
+}
+
+/* checkbox*/
+.form-horizontal .checkbox {
+    line-height: 30px;
+}
+.form-horizontal .checkbox .red {
+    height: 34px;
+    line-height: 34px;
+    float: right;
+    margin-left: 5px;
+}
+
+/* day */
+.form-horizontal .form-group .day {
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+
 
 /* media Query */
 @media (max-width: 1200px) {

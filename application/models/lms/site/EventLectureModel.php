@@ -81,8 +81,7 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate,
-            A.EventStartDate, A.EventStartHour, A.EventStartMin, A.EventEndDate, A.EventEndHour, A.EventEndMin,
-            A.SendTel,
+            A.EventStartDate, A.EventStartHour, A.EventStartMin, A.EventEndDate, A.EventEndHour, A.EventEndMin, A.OptionCcds,
             A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,

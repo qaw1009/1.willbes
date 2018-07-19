@@ -160,7 +160,10 @@
                             return row.RegisterStartDate + ' ~ ' + row.RegisterEndDate;
                         }},
 
-                    {'data' : 'SendTel'},
+                    /*{'data' : 'SendTel'},*/
+                    {'data' : 'OptionCcds', 'render' : function(data, type, row, meta) {
+                            return (data.indexOf('{{$send_option_ccd}}') !== -1) ? 'Y' : 'N';
+                        }},
 
                     {'data' : 'IsRegisterName'},
                     {'data' : 'CommentCount'},

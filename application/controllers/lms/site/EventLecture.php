@@ -33,7 +33,8 @@ class EventLecture extends \app\controllers\BaseController
         $this->load->view("site/event_lecture/index", [
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
-            'arr_category' => $arr_category
+            'arr_category' => $arr_category,
+            'send_option_ccd' => $this->eventLectureModel->_event_lecture_option_ccds[2]
         ]);
     }
 

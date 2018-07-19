@@ -5,6 +5,7 @@ class ProductFModel extends WB_Model
 {
     private $_table = [
         'on_lecture' => 'vw_product_on_lecture',
+        'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_salebook' => 'vw_product_salebook',
@@ -40,16 +41,16 @@ class ProductFModel extends WB_Model
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm,  IsUse
-                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, LecSaleType, ProdPriceData, RegDatm';
+                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply,  ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌
                 case 'on_lecture' :
                         $column .= ',IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
-                            , wLectureProgressCcd, wLectureProgressCcdName, 
+                            , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType
                             , LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
                         $arr_condition = array_merge_recursive($arr_condition, [
-                            'EQ' => ['wIsUse' => 'Y']   //마스터강의 사용여부 추가
+                            'EQ' => ['LecSaleType' => 'N','wIsUse' => 'Y']   //마스터강의 사용여부 추가
                         ]);
                     break;
 
@@ -66,6 +67,7 @@ class ProductFModel extends WB_Model
 
         return $this->_conn->getListResult($this->_table[$learn_pattern], $column, $arr_condition, $limit, $offset, $order_by);
 
+
     }
 
     /**
@@ -81,7 +83,7 @@ class ProductFModel extends WB_Model
     public function listSalesProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $arr_condition = array_merge_recursive($arr_condition, [
-            'EQ' => ['LecSaleType' => 'N', 'IsSaleEnd' => 'N', 'IsUse' => 'Y'],
+            'EQ' => [ 'IsSaleEnd' => 'N', 'IsUse' => 'Y'],
             'IN' => ['SaleStatusCcd' => $this->_sale_status_ccds],
             'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
         ]);

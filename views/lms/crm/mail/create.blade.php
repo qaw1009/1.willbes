@@ -124,10 +124,10 @@
                                                             <tr>
                                                                 <td>{{$i}}</td>
                                                                 <td>
-                                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control" title="수신메일" value="" maxlength="6" style="width: 100px;">
+                                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control" title="수신메일" value="{{(empty($list_send_member[$i-1]['MemName']) === false  ) ? $list_send_member[$i-1]['MemName'] : ''}}" maxlength="6" style="width: 100px;">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="mem_mail_{{$i}}" name="mem_mail[]" class="form-control" title="수신메일" value="">
+                                                                    <input type="text" id="mem_mail_{{$i}}" name="mem_mail[]" class="form-control" title="수신메일" value="{{(empty($list_send_member[$i-1]['Mail']) === false  ) ? $list_send_member[$i-1]['Mail'] : ''}}">
                                                                 </td>
                                                             </tr>
                                                         @endfor

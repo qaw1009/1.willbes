@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mail extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'crm/send/mail');
+    protected $models = array('sys/code', 'sys/site', 'crm/send/mail', 'member/managemember');
     protected $helpers = array('download');
 
     private $_send_type = 'mail';
@@ -115,6 +115,18 @@ class Mail extends \app\controllers\BaseController
      */
     public function createSend()
     {
+        $list_send_member = [];
+        $target_id = $this->_req('target_id');
+        if (empty($target_id) === false) {
+            $set_send_member_ids = explode(',', $target_id);
+            $arr_condition = [
+                'IN' => [
+                    'MemId' => $set_send_member_ids
+                ]
+            ];
+            $list_send_member = $this->managememberModel->listSendMemberInfo($arr_condition);
+        }
+
         $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd'], $this->_groupCcd['AdvertisePatternCcd']]);
         $advertise_placeholder = "본메일은 정보통신망법률 등 관련 규정에 의거하여 회원님께서 윌비스 이메일 수신동의를 하셨기에 발송되었습니다.";
         $advertise_placeholder .= "&#13;&#10;만약 메일 수신을 원치않으시면 [수신거부]를 눌러주십시오.";
@@ -129,7 +141,8 @@ class Mail extends \app\controllers\BaseController
             'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
             'arr_advertise_pattern_ccd' => $arr_codes[$this->_groupCcd['AdvertisePatternCcd']],
             'set_row_count' => $set_row_count,
-            'advertise_placeholder' => $advertise_placeholder
+            'advertise_placeholder' => $advertise_placeholder,
+            'list_send_member' => $list_send_member
         ]);
     }
 

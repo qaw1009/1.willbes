@@ -162,15 +162,19 @@
                 modal_id : "message_modal"
             });
 
-            $('#btn_mail').setLayer({
-                url : "{{ site_url('crm/mail/createSend/') }}?memId={{$data['MemId']}}",
-                width : 800,
-                modal_id : "message_modal"
+            $('#btn_mail').click( function () {
+                window.open("{{ site_url('crm/mail/createSend/') }}?target_id={{$data['MemId']}}", "_blank");
             });
+
+            /* $('#btn_mail').setLayer({
+                url : "{{ site_url('crm/mail/createSend/') }}?memId={{$data['MemId']}}",
+                width : 1100,
+                modal_id : "message_modal"
+            }); */
 
             $('#btn_sms').setLayer({
                 url : "{{ site_url('crm/sms/createSendModal') }}?target_id={{$data['MemId']}}",
-                width : 800,
+                width : 1100,
                 modal_id : "message_modal"
             });
 

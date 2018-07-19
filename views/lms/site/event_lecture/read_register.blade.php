@@ -82,8 +82,8 @@
             serverSide: true,
             buttons: [
                 { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
-                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-message' },
-                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-sms' },
+                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-register-message' },
+                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-register-sms' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
             ],
             ajax: {
@@ -95,7 +95,7 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '">';
+                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-register-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '">';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -150,6 +150,50 @@
                     }
                 }
             }, showError, false, 'GET');
+        });
+
+        // 쪽지발송
+        $('.btn-send-register-message').click(function() {
+            var $params = new Array();
+            var uri_param = '';
+            var $params_length = 0;
+            $('input[name="is_checked"]:checked').each(function(key) {
+                $params[key] = $(this).data('is-checked-register-id');
+            });
+
+            $params_length = Object.keys($params).length;
+            if ($params_length <= '0') {
+                alert('수신인 명단을 선택해주세요.');
+                return false;
+            }
+            uri_param = '?target_id=' + $params;
+
+            $('.btn-send-register-message').setLayer({
+                "url" : "{{ site_url('crm/message/createSendModal') }}" + uri_param,
+                "width" : "1200"
+            });
+        });
+
+        // SMS발송
+        $('.btn-send-register-sms').click(function() {
+            var $params = new Array();
+            var uri_param = '';
+            var $params_length = 0;
+            $('input[name="is_checked"]:checked').each(function(key) {
+                $params[key] = $(this).data('is-checked-register-id');
+            });
+
+            $params_length = Object.keys($params).length;
+            if ($params_length <= '0') {
+                alert('수신인 명단을 선택해주세요.');
+                return false;
+            }
+            uri_param = '?target_id=' + $params;
+
+            $('.btn-send-register-sms').setLayer({
+                "url" : "{{ site_url('crm/sms/createSendModal') }}" + uri_param,
+                "width" : "1200"
+            });
         });
 
         // 엑셀다운로드 버튼 클릭

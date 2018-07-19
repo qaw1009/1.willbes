@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sms extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'crm/send/sms');
+    protected $models = array('sys/code', 'sys/site', 'crm/send/sms', 'member/managemember');
     protected $helpers = array('download');
 
     private $_send_type = 'sms';
@@ -180,15 +180,27 @@ class Sms extends \app\controllers\BaseController
     public function createSendModal()
     {
         $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd']]);
-
         $method = 'POST';
         $set_row_count = '12';
+        $list_send_member = null;
+
+        $target_id = $this->_req('target_id');
+        if (empty($target_id) === false) {
+            $set_send_member_ids = explode(',', $target_id);
+            $arr_condition = [
+                'IN' => [
+                    'MemId' => $set_send_member_ids
+                ]
+            ];
+            $list_send_member = $this->managememberModel->listSendMemberInfo($arr_condition);
+        }
 
         $this->load->view("crm/sms/create_modal", [
             'method' => $method,
             'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
             'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
-            'set_row_count' => $set_row_count
+            'set_row_count' => $set_row_count,
+            'list_send_member' => $list_send_member
         ]);
     }
 

@@ -74,7 +74,7 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control" title="수신번호" value="" maxlength="11">
+                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11">
                                                 </td>
                                             </tr>
                                         @endfor
@@ -94,7 +94,7 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control" title="수신번호" value="" maxlength="11">
+                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11">
                                                 </td>
                                             </tr>
                                         @endfor

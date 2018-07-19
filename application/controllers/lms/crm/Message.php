@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Message extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'crm/send/message');
+    protected $models = array('sys/code', 'sys/site', 'crm/send/message', 'member/managemember');
     protected $helpers = array('download');
 
     private $_send_type = 'message';
@@ -165,14 +165,26 @@ class Message extends \app\controllers\BaseController
     public function createSendModal()
     {
         $arr_send_option_ccd = $this->codeModel->getCcd($this->_groupCcd['SendOptionCcd']);
-
         $method = 'POST';
         $set_row_count = '12';
+        $list_send_member = [];
+
+        $target_id = $this->_req('target_id');
+        if (empty($target_id) === false) {
+            $set_send_member_ids = explode(',', $target_id);
+            $arr_condition = [
+                'IN' => [
+                    'MemId' => $set_send_member_ids
+                ]
+            ];
+            $list_send_member = $this->managememberModel->listSendMemberInfo($arr_condition);
+        }
 
         $this->load->view("crm/message/create_modal", [
             'method' => $method,
             'arr_send_option_ccd' => $arr_send_option_ccd,
-            'set_row_count' => $set_row_count
+            'set_row_count' => $set_row_count,
+            'list_send_member' => $list_send_member
         ]);
     }
 

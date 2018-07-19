@@ -92,10 +92,10 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="" maxlength="6">
+                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="{{(empty($list_send_member[$i-1]['MemName']) === false  ) ? $list_send_member[$i-1]['MemName'] : ''}}" maxlength="6">
                                                 </td>
                                                 <td>
-                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
+                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="{{(empty($list_send_member[$i-1]['Phone']) === false  ) ? $list_send_member[$i-1]['Phone'] : ''}}" maxlength="11">
                                                 </td>
                                             </tr>
                                         @endfor
@@ -116,10 +116,10 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="" maxlength="6">
+                                                    <input type="text" id="mem_name_{{$i}}" name="mem_name[]" class="form-control mb-5" title="수신이름" value="{{(empty($list_send_member[$i-1]['MemName']) === false  ) ? $list_send_member[$i-1]['MemName'] : ''}}" maxlength="6">
                                                 </td>
                                                 <td>
-                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="" maxlength="11">
+                                                    <input type="text" id="mem_phone_{{$i}}" name="mem_phone[]" class="form-control" title="수신번호" value="{{(empty($list_send_member[$i-1]['Phone']) === false  ) ? $list_send_member[$i-1]['Phone'] : ''}}" maxlength="11">
                                                 </td>
                                             </tr>
                                         @endfor

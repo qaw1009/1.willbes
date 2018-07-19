@@ -134,46 +134,9 @@
                 location.replace('{{ site_url("/site/eventLecture/create") }}/' + {{$el_idx}} + getQueryString());
             });
 
-
             // 목록
             $('.btn-list').click(function() {
                 location.replace('{{ site_url("/site/eventLecture/") }}');
-            });
-
-            // 쪽지발송
-            $('.btn-send-message').click(function() {
-                $('.btn-send-message').setLayer({
-                    "url" : "{{ site_url('crm/message/createSendModal') }}",
-                    "width" : "1200"
-                });
-            });
-
-            // SMS발송
-            $('.btn-send-sms').click(function() {
-                /*var $params = {};
-                $('input[name="is_checked"]:checked').each(function() {
-                    $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-name'), $(this).val()];
-                });
-
-                var $params_length = Object.keys($params).length;
-
-                if ($params_length <= '0') {
-                    alert('수신인 명단을 선택해주세요.');
-                    return false;
-                }
-
-                $('input[name="mem_phone[]"]').val('');
-                var i=1;
-                $.each($params, function(key, value) {
-                    $('#mem_name_'+i).val(value[0]);
-                    $('#mem_phone_'+i).val(value[1]);
-                    i++;
-                });*/
-
-                $('.btn-send-sms').setLayer({
-                    "url" : "{{ site_url('crm/sms/createSendModal') }}",
-                    "width" : "1200"
-                });
             });
         });
     </script>

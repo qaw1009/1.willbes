@@ -136,8 +136,8 @@
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdAdminName'},
                     {'data' : 'UpdDatm'},
-                    {'data' : null, 'render' : function(data, type, row, meta){
-                            return '<a href="#" class="btn-landing-view" data-idx="' + row.LIdx + '"><u class="blue">보기</u></a>';
+                    {'data' : 'DispRoute', 'render' : function(data, type, row, meta){
+                            return '<a href="'+data+'" target="_blank"><u class="blue">보기</u></a>';
                         }},
                 ]
             });

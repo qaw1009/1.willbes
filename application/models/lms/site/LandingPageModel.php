@@ -33,7 +33,7 @@ class LandingPageModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.LIdx, A.SiteCode, G.SiteName, A.Title, A.DispStartDatm, A.DispEndDatm,
+            A.LIdx, A.SiteCode, G.SiteName, A.Title, A.DispStartDatm, A.DispEndDatm, A.DispRoute,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ';

@@ -95,7 +95,7 @@ class LandingPage extends \app\controllers\BaseController
             $method = 'modify';
             $rules = array_merge($rules, [
                 ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-                ['field' => 'b_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+                ['field' => 'l_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
             ]);
         }
 

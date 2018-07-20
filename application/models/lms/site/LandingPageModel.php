@@ -128,6 +128,64 @@ class LandingPageModel extends WB_Model
         }
         return true;
     }
+    
+    public function modifyLandingPage($input = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $l_idx = element('l_idx', $input);
+
+            // 기존 배너 기본정보 조회
+            $row = $this->findLandingPage('LIdx', ['EQ' => ['LIdx' => $l_idx]]);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            if (empty(element('disp_start_datm', $input)) === true) {
+                $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            } else {
+                $disp_start_datm = element('disp_start_datm', $input) . ' ' . element('disp_start_time', $input) . ':00:00';
+            }
+
+            if (empty(element('disp_end_datm', $input)) === true) {
+                $disp_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            } else {
+                $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
+            }
+
+            $data = [
+                'Title' => element('title', $input),
+                'DispStartDatm' => $disp_start_datm,
+                'DispEndDatm' => $disp_end_datm,
+                'DispRoute' => element('disp_route', $input),
+                'GuidanceNote' => element('guidance_note', $input),
+                'Css' => element('css', $input),
+                'Content' => element('content', $input),
+                'Desc' => element('desc', $input),
+                'IsUse' => element('is_use', $input),
+                'UpdAdminIdx' => $admin_idx
+            ];
+
+            if ($this->_conn->set($data)->where('Lidx', $l_idx)->update($this->_table['landing']) === false) {
+                throw new \Exception('랜딩페이지 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function findLandingPage($column = '*', $arr_condition = [])
+    {
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        return $this->_conn->getFindResult($this->_table['landing'], $column, $arr_condition);
+    }
 
     /**
      * @param $arr_condition
@@ -153,8 +211,6 @@ class LandingPageModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
-        echo 'select '.$column .$from .$where;
 
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }

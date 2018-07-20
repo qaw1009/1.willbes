@@ -195,6 +195,8 @@ class BannerModel extends WB_Model
 
     /**
      * 배너 수정
+     * @param array $input
+     * @return array|bool
      */
     public function modifyBanner($input = [])
     {

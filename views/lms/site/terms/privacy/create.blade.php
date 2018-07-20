@@ -14,9 +14,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 item">
+                    <div class="col-md-10">
                         <div class="inline-block item">
-                            <select class="form-control" id="" name="">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">온라인공무원</option>
                                 <option value="">학원공무원</option>
                                 <option value="">경찰공무원</option>
@@ -35,18 +35,18 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">노출기간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 item">
-                        <div class="form-inline">
-                            <input type="text" id="" name="" class="form-control" required="" title="" value="" style="width: 120px;">
-                            <select class="form-control" id="" name="">
+                    <div class="col-md-10">
+                        <div class="form-inline item">
+                            <input type="text" id="" name="" class="form-control" required="required" title="" value="" style="width: 120px;">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>
                                 <option value="">02</option>
                                 <option value="">10</option>
                                 <option value="">12</option>
                             </select> 시 &nbsp; ~ &nbsp;&nbsp;
-                            <input type="text" id="" name="" class="form-control" required="" title="" value="" style="width: 120px;">
-                            <select class="form-control" id="" name="">
+                            <input type="text" id="" name="" class="form-control" required="required" title="" value="" style="width: 120px;">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">07</option>
                                 <option value="">12</option>
@@ -69,8 +69,8 @@
                         <button type="button" id="" class="btn btn-sm btn-default">미리보기</button>
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <input type="hidden" name="" value="">
-                        <textarea id="" name="" class="form-control" rows="7" title="내용" placeholder="이용약관 소스를 등록해 주세요." style="width: 100%; resize: none;"></textarea>
+                        <input type="hidden" name="" value="" required="required">
+                        <textarea id="" name="" class="form-control" rows="7" title="내용" required="required" placeholder="이용약관 소스를 등록해 주세요." style="width: 100%; resize: none;"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">설명  
                     </label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-10 form-inline">
                         <input type="hidden" name="" value="">
                         <textarea id="" name="" class="form-control" rows="7" title="설명" placeholder="" style="width: 100%; resize: none;"></textarea>
                     </div>

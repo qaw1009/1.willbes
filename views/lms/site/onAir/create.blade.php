@@ -14,9 +14,9 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 item">
+                    <div class="col-md-10">
                         <div class="form-inline inline-block item">
-                            <select class="form-control" id="" name="">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">학원경찰</option>
                                 <option value="">온라인공무원</option>
                                 <option value="">학원공무원</option>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">카테고리정보 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-10 form-inline">
                         <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
                         <span id="selected_category" class="pl-10">
                             <span class="pr-10">9급공무원
@@ -64,7 +64,7 @@
                 <div class="form-group" >
                     <label class="control-label col-md-1-1" >송출기간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-10 form-inline">
                         <div class="cal-wrap" style="height:250px; overflow: auto;">
                             <div id="cal_vw" style="width: 1870px;"></div>
                         </div>
@@ -79,14 +79,14 @@
                                 <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" checked="checked"/> <label for="is_use_y" class="input-label">바로시작</label>
                                 <input type="radio" id="is_use_n" name="is_use" class="flat" value="N"/> <label for="is_use_n" class="input-label">직접입력</label>
                             </div>
-                            <select class="form-control" id="" name="">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>
                                 <option value="">12</option>
                                 <option value="">22</option>
                                 <option value="">23</option>
                             </select>
-                            <select class="form-control" id="" name="">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>
                                 <option value="">02</option>
@@ -96,14 +96,14 @@
 
                             &nbsp; ~ &nbsp;&nbsp;
 
-                            <select class="form-control" id="" name="">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>
                                 <option value="">12</option>
                                 <option value="">22</option>
                                 <option value="">23</option>
                             </select>
-                            <select class="form-control" id="" name="">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>
                                 <option value="">02</option>
@@ -121,10 +121,10 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">강의실 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 item">
-                        <div class="form-inline">
-                            <input type="text" id="" name="" class="form-control" required="" title="" value="" style="width: 250px;">
-                            <select class="form-control" id="" name="">
+                    <div class="col-md-4">
+                        <div class="form-inline item">
+                            <input type="text" id="" name="" class="form-control" required="required" title="" value="" style="width: 250px;">
+                            <select class="form-control" id="" name="" required="required">
                                 <option value="">강의실선택</option>
                                 <option value="">강의실선택1</option>
                                 <option value="">강의실선택2</option>
@@ -150,12 +150,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">타이틀 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline item">
-                        <div class="title">
+                    <div class="col-md-10 form-inline">
+                        <div class="title item">
                             <input type="text" id="" name="" class="form-control" title="타이틀" required="required" placeholder="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다." value="" style="width: 80%;">
                             <button type="button" id="btn_member_search" class="btn btn-primary mb-0">추가</button>
                         </div>
-                        <div class="title">
+                        <div class="title item">
                             <input type="text" id="" name="" class="form-control" title="타이틀" required="required" placeholder="" value="" style="width: 80%;">
                             <button type="button" id="btn_member_search" class="btn btn-primary mb-0">삭제</button>
                         </div>
@@ -175,7 +175,6 @@
                         <input type="text" id="" name="" class="form-control" title="교수한마디" required="required" placeholder="" value="" style="width: 80%">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">노출내용(좌) <span class="required">*</span>
                     </label>
@@ -190,10 +189,9 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" name="attachfile" class="form-control input-file" title="첨부자료"> 
+                                    <input type="file" name="attachfile" class="form-control input-file" required="required" title="첨부자료"> 
                                 </span>
                             </div>
-                            
                             <p class="form-control-static ml-10 mr-10">
                                 [ <a href="#none" target="_blank">업로드한 이미지 입니다.</a> ]
                             </p>
@@ -203,7 +201,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">노출내용(우) <span class="required">*</span>
                     </label>
@@ -219,24 +216,24 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">등록자
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-4">
                         <p class="form-control-static">관리자명</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-4">
                         <p class="form-control-static">2018-00-00 00:00</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">수정자
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-4">
                         <p class="form-control-static">관리자명</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line">수정일
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-4">
                         <p class="form-control-static">2018-00-00 00:00</p>
                     </div>
                 </div>

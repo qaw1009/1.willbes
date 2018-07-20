@@ -186,7 +186,14 @@
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N"/> <label for="is_use_n" class="input-label">이미지</label>
                         </div>
                         <div class="form-inline">
-                            <input type="file" name="attachfile" class="form-control" title="첨부자료">
+                            <div class="filetype">
+                                <input type="text" class="form-control file-text" disabled="">
+                                <button class="btn btn-primary mb-0" type="button">파일 선택</button>
+                                <span class="file-select file-btn">
+                                    <input type="file" name="attachfile" class="form-control input-file" title="첨부자료"> 
+                                </span>
+                            </div>
+                            
                             <p class="form-control-static ml-10 mr-10">
                                 [ <a href="#none" target="_blank">업로드한 이미지 입니다.</a> ]
                             </p>

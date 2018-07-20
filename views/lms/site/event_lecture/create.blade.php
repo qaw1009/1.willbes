@@ -130,7 +130,7 @@
                     <div class="col-md-6 form-inline">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="event_start_datm" name="event_start_datm" value="{{$data['EventStartDate']}}">
+                            <input type="text" class="form-control datepicker" id="event_start_datm" name="event_start_datm" value="{{$data['EventStartDay']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="event_start_hour" name="event_start_hour">
                                     @php
@@ -157,7 +157,7 @@
 
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="event_end_datm" name="event_end_datm" value="{{$data['EventEndDate']}}">
+                            <input type="text" class="form-control datepicker" id="event_end_datm" name="event_end_datm" value="{{$data['EventEndDay']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="event_end_hour" name="event_end_hour">
                                     @php
@@ -323,10 +323,19 @@
                                             @if (empty($list_event_register['M']) === false)
                                                 @foreach($list_event_register['M'] as $row)
                                                     <tr>
-                                                        <td>{{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}</td>
-                                                        <td>{{$row['PersonLimit']}}</td>
+                                                        <td>
+                                                            {{($row['PersonLimitType'] == 'L') ? '인원제한' : '무제한'}}
+                                                            <input type="hidden" name="event_register_parson_limit_type[]" value="{{$row['PersonLimitType']}}">
+                                                        </td>
+                                                        <td>
+                                                            {{$row['PersonLimit']}}
+                                                            <input type="hidden" name="event_register_parson_limit[]" value="{{$row['PersonLimit']}}">
+                                                        </td>
                                                         <td></td>
-                                                        <td>{{$row['Name']}}</td>
+                                                        <td>
+                                                            {{$row['Name']}}
+                                                            <input type="hidden" name="event_register_name[]" value="{{$row['Name']}}">
+                                                        </td>
                                                         <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
                                                     </tr>
                                                 @endforeach

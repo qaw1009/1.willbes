@@ -81,7 +81,7 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate,
-            A.EventStartDate, A.EventStartHour, A.EventStartMin, A.EventEndDate, A.EventEndHour, A.EventEndMin, A.OptionCcds,
+            A.EventStartDatm, A.EventEndDatm, A.OptionCcds,
             A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
@@ -168,12 +168,8 @@ class EventLectureModel extends WB_Model
                 'IsRegister' => element('is_register', $input),
                 'IsUse' => element('is_use', $input),
                 'EventName' => element('event_name', $input),
-
-                /*'EventStartDate' => $event_start_datm,
-                'EventEndDate' => $event_end_datm,*/
-                'EventStartDate' => (empty(element('event_start_datm', $input))) ? '0000-00-00' : element('event_start_datm', $input),
-                'EventEndDate' => (empty(element('event_end_datm', $input))) ? '0000-00-00' : element('event_end_datm', $input),
-
+                'EventStartDatm' => $event_start_datm,
+                'EventEndDatm' => $event_end_datm,
                 'EventNum' => (empty(element('event_num', $input))) ? '0' : element('event_num', $input),
                 'ContentType' => element('content_type', $input),
                 'Content' => element('content', $input),
@@ -251,14 +247,14 @@ class EventLectureModel extends WB_Model
             $insert_column = '
                 SiteCode, CampusCcd, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
                 EventName,
-                EventStartDate, EventStartHour, EventStartMin, EventEndDate, EventEndHour, EventEndMin, EventNum,
+                EventStartDatm, EventEndDatm, EventNum,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
                 SiteCode, CampusCcd, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
-                EventStartDate, EventStartHour, EventStartMin, EventEndDate, EventEndHour, EventEndMin, EventNum,
+                EventStartDatm, EventEndDatm, EventNum,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
                 REPLACE(RegIp, RegIp, "'.$reg_ip.'") AS RegIp
@@ -356,12 +352,8 @@ class EventLectureModel extends WB_Model
                 'IsRegister' => element('is_register', $input),
                 'IsUse' => element('is_use', $input),
                 'EventName' => element('event_name', $input),
-
-                /*'EventStartDate' => $event_start_datm,
-                'EventEndDate' => $event_end_datm,*/
-                'EventStartDate' => (empty(element('event_start_datm', $input))) ? '0000-00-00' : element('event_start_datm', $input),
-                'EventEndDate' => (empty(element('event_end_datm', $input))) ? '0000-00-00' : element('event_end_datm', $input),
-
+                'EventStartDatm' => $event_start_datm,
+                'EventEndDatm' => $event_end_datm,
                 'EventNum' => (empty(element('event_num', $input))) ? '0' : element('event_num', $input),
                 'ContentType' => element('content_type', $input),
                 'Content' => element('content', $input),
@@ -396,7 +388,7 @@ class EventLectureModel extends WB_Model
 
             // 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
             if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
-                if ($this->_addEventRegister($el_idx, $input) === false) {
+                if ($this->_addEventRegister($el_idx, $input, 'modify') === false) {
                     throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
                 }
             }
@@ -433,8 +425,10 @@ class EventLectureModel extends WB_Model
         $column = "
             A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
-            A.EventStartDate, A.EventStartHour, A.EventStartMin, A.EventEndDate, A.EventEndHour, A.EventEndMin, A.EventNum,
-            A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
+            A.EventStartDatm, A.EventEndDatm,
+            DATE_FORMAT(A.EventStartDatm, '%Y-%m-%d') AS EventStartDay, DATE_FORMAT(A.EventStartDatm, '%H') AS EventStartHour, DATE_FORMAT(A.EventStartDatm, '%i') AS EventStartMin,
+            DATE_FORMAT(A.EventEndDatm, '%Y-%m-%d') AS EventEndDay, DATE_FORMAT(A.EventEndDatm, '%H') AS EventEndHour, DATE_FORMAT(A.EventEndDatm, '%i') AS EventEndMin,
+            A.EventNum, A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
             A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName
@@ -839,13 +833,26 @@ class EventLectureModel extends WB_Model
      * 이벤트 접수 관리(정원제한) 저장
      * @param $el_idx
      * @param $input
+     * @param $regi_type (modify 일경우 기존 데이터 삭제)
      * @return bool
      */
-    private function _addEventRegister($el_idx, $input)
+    private function _addEventRegister($el_idx, $input, $regi_type = 'add')
     {
         $limit_type = element('limit_type', $input);
 
         try {
+            if ($regi_type == 'modify') {
+                $up_register_input['IsStatus'] = 'N';
+                $up_register_input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+                $up_register_input['UpdDatm'] = date('Y-m-d H:i:s');
+
+                $this->_conn->set($up_register_input)->where(['ElIdx' => $el_idx, 'IsStatus' => 'Y']);
+
+                if ($this->_conn->update($this->_table['event_register']) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+            }
+
             if ($limit_type == 'S') {
                 $reg_set_data = [
                     'ElIdx' => $el_idx,

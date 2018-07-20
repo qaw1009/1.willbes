@@ -85,7 +85,7 @@
                                 <option value="">12</option>
                                 <option value="">22</option>
                                 <option value="">23</option>
-                            </select>
+                            </select> :
                             <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>
@@ -102,7 +102,7 @@
                                 <option value="">12</option>
                                 <option value="">22</option>
                                 <option value="">23</option>
-                            </select>
+                            </select> :
                             <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
                                 <option value="">01</option>

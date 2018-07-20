@@ -41,7 +41,7 @@ class ProductFModel extends WB_Model
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm,  IsUse
-                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply,  ProdPriceData, RegDatm';
+                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌
@@ -56,7 +56,7 @@ class ProductFModel extends WB_Model
 
                 //추천패키지
                 case 'adminpack_lecture' :
-                    $column .= ', PackCateCcd, PackCateEtcMemo';
+                    $column .= ', StudyStartDate, PackCateCcd, PackCateEtcMemo';
                     break;
 
                 default :

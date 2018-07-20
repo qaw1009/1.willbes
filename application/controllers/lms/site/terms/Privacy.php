@@ -13,7 +13,20 @@ class Privacy extends \app\controllers\BaseController
      */
     public function index()
     {
+        $this->load->view('site/terms/privacy/index',[
+        ]);
+    }
 
+    public function listAjax()
+    {
+        $count = 0;
+        $list = [];
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
     }
 
     /**
@@ -21,7 +34,14 @@ class Privacy extends \app\controllers\BaseController
      */
     public function create()
     {
+        $method = 'POST';
+        $data = null;
+        $l_idx = null;
+
         $this->load->view("site/terms/privacy/create", [
+            'method' => $method,
+            'data' => $data,
+            'l_idx' => $l_idx
         ]);
     }
 }

@@ -10,18 +10,13 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <form class="form-horizontal form-label-left" id="" name="" method="" onsubmit="return false;" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
                         <div class="inline-block item">
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">온라인공무원</option>
-                                <option value="">학원공무원</option>
-                                <option value="">경찰공무원</option>
-                                <option value="">공인중개사</option>
-                            </select>
+                            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                         </div>
                     </div>
                 </div>
@@ -87,24 +82,24 @@
                     <label class="control-label col-md-1-1">등록자
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">관리자명</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">2018-00-00 00:00</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">최종 수정자
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">관리자명</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line">최종 수정일
                     </label>
                     <div class="col-md-4">
-                        <p class="form-control-static">2018-00-00 00:00</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>
                 <div class="form-group text-center btn-wrap mt-50">
@@ -114,4 +109,26 @@
             </form>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var $regi_form = $('#regi_form');
+        $(document).ready(function() {
+            //목록
+            $('#btn_list').click(function() {
+                location.replace('{{ site_url("/site/terms/agreement/") }}' + getQueryString());
+            });
+
+            // ajax submit
+            $regi_form.submit(function() {
+                var _url = '{{ site_url("/site/terms/agreement/store") }}' + getQueryString();
+
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.replace('{{ site_url("/site/terms/agreement/") }}' + getQueryString());
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+        });
+    </script>
 @stop

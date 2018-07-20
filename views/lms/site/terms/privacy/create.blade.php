@@ -10,7 +10,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <form class="form-horizontal form-label-left" id="" name="" method="" onsubmit="return false;" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트 <span class="required">*</span>
                     </label>
@@ -122,4 +122,26 @@
             </form>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var $regi_form = $('#regi_form');
+        $(document).ready(function() {
+            //목록
+            $('#btn_list').click(function() {
+                location.replace('{{ site_url("/site/terms/privacy/") }}' + getQueryString());
+            });
+
+            // ajax submit
+            $regi_form.submit(function() {
+                var _url = '{{ site_url("/site/terms/privacy/store") }}' + getQueryString();
+
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.replace('{{ site_url("/site/terms/privacy/") }}' + getQueryString());
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+        });
+    </script>
 @stop

@@ -418,7 +418,7 @@ function init_base() {
     $TOP_COL.find('.nav-tabs li.dropdown').hover(function() {
         $(this).find('.dropdown-menu').not('.dropdown-submenu > .dropdown-menu').stop(true, true).delay(100).fadeIn(500);
     }, function() {
-        $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(500);
+        $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeOut(0);
     });
 
     // 관리자 정보수정 모달창 오픈
@@ -479,6 +479,23 @@ function init_board() {
                 location.reload();
             }
         }, showValidateError, null, false, 'alert');
+    });
+}
+
+// 첨부파일 찾아보기 버튼 Script
+function init_board() {
+    $(function() {
+        var $fileBox = $('.filetype');
+
+        $fileBox.each(function() {
+            var $fileUpload = $(this).find('.input-file'),
+                $fileText = $(this).find('.file-text').attr('disabled', 'disabled');
+
+            $fileUpload.on('change', function() {
+                var fileName = $(this).val();
+                $fileText.attr('disabled', 'disabled').val(fileName);
+            });
+        });
     });
 }
 

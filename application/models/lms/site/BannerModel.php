@@ -402,7 +402,7 @@ class BannerModel extends WB_Model
     {
         try {
             if ($this->_conn->set($input)->insert($this->_table['banner_r_category']) === false) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
+                throw new \Exception('카테고리 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return false;

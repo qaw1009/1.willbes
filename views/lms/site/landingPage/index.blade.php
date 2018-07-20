@@ -115,16 +115,12 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
-                                return '통합';
-                            } else {
-                                var obj = data.split(',');
-                                var str = '';
-                                for (key in obj) {
-                                    str += obj[key]+"<br>";
-                                }
-                                return str;
+                            var obj = data.split(',');
+                            var str = '';
+                            for (key in obj) {
+                                str += obj[key]+"<br>";
                             }
+                            return str;
                         }},
                     {'data' : 'LIdx'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
@@ -139,6 +135,7 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdAdminName'},
+                    {'data' : 'UpdDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             return '<a href="#" class="btn-landing-view" data-idx="' + row.LIdx + '"><u class="blue">보기</u></a>';
                         }},

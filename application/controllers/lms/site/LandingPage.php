@@ -75,6 +75,39 @@ class LandingPage extends \app\controllers\BaseController
         ]);
     }
 
+    public function store()
+    {
+        $rules = [
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required'],
+            ['field' => 'disp_route', 'label' => '노출경로', 'rules' => 'trim|required'],
+            ['field' => 'guidance_note', 'label' => '마감안내문구', 'rules' => 'trim|required'],
+            ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
+        ];
+
+        if (empty($this->_reqP('l_idx')) === true) {
+            $method = 'add';
+            $rules = array_merge($rules, [
+                ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
+                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
+            ]);
+        } else {
+            $method = 'modify';
+            $rules = array_merge($rules, [
+                ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+                ['field' => 'b_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->landingPageModel->{$method . 'LandingPage'}($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
     /**
      * 검색 조건 셋팅
      * @return array

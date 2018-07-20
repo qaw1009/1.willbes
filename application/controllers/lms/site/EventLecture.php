@@ -180,7 +180,7 @@ class EventLecture extends \app\controllers\BaseController
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
-            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required|integer'],
+            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required|integer'],
             ['field' => 'requst_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
             ['field' => 'register_start_date', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],

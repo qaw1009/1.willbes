@@ -137,18 +137,29 @@ abstract class FrontController extends BaseController
             // 현재 사이트의 카테고리 코드
             $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
 
-            // Active 사이트 메뉴 정보 (/{directory}/{controller}/, /cate/{cate_code})
+            // Active 사이트 메뉴 정보 (/{directory}/{controller}/)
             $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
-            $check_menu_postfix = '/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
 
             foreach (array_get($site_menu_cache, 'SiteMenuUrls.' . $site_code, []) as $menu_route_idx => $menu_url) {
                 // 1depth 메뉴 제외
                 if (strpos($menu_route_idx, '>') > -1) {
                     $menu_path = parse_url($menu_url, PHP_URL_PATH);
-                    if (empty($menu_path) === false && starts_with($menu_path, $check_menu_prefix) === true && ends_with($menu_path, $check_menu_postfix) === true) {
-                        $site_active_menu = array_get($site_tree_menu, str_replace('>', '.Children.', $menu_route_idx));
-                        $site_active_menu['IsDefault'] = false;
-                        break;
+
+                    // controller check
+                    if (empty($menu_path) === false && starts_with($menu_path, $check_menu_prefix) === true) {
+                        // uri params check (cate/{cate value}/pack/{pack value})
+                        $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
+
+                        if (strpos(uri_string(), $check_menu_postfix) !== false) {
+                            $site_tree_key = str_replace('>', '.Children.', $menu_route_idx);
+                            if (array_has($site_tree_menu, $site_tree_key . '.Children') === true) {
+                                continue;
+                            }
+
+                            $site_active_menu = array_get($site_tree_menu, $site_tree_key);
+                            $site_active_menu['IsDefault'] = false;
+                            break;
+                        }
                     }
                 }
             }

@@ -29,6 +29,7 @@ if (!function_exists('app_to_env_url')) {
 if (!function_exists('config_app')) {
     /**
      * 서브 도메인별 (wbs, lms ...) dot(.) 표기법으로 $key에 해당하는 config 값 리턴
+     * @example config_app('SiteCode'), 사이트 (서브 도메인) 하위의 설정 값 리턴
      * @param $key
      * @param $default
      * @return mixed
@@ -42,6 +43,7 @@ if (!function_exists('config_app')) {
 if (!function_exists('config_get')) {
     /**
      * dot(.) 표기법으로 config.php에 설정된 $key에 해당하는 config 값 리턴
+     * @example config_get('cop.SiteCode'), 전체 설정값에서 해당 키에 해당하는 설정값 리턴
      * @param $key
      * @param $default
      * @return mixed

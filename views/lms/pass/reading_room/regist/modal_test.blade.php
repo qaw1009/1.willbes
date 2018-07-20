@@ -150,8 +150,8 @@
                             <tr>
                                 <th colspan="10">
                                     <ul class="clearfix-r">
-                                        <li><span class="color-box btn-info">-</span> 미사용</li>
-                                        <li><span class="color-box btn-default">-</span> 사용중</li>
+                                        <li><span class="color-box btn-default">-</span> 미사용</li>
+                                        <li><span class="color-box btn-info">-</span> 사용중</li>
                                         <li><span class="color-box btn-warning">-</span> 대기</li>
                                         <li><span class="color-box btn-success">-</span> 홀드</li>
                                         <li><span class="color-box btn-danger">-</span> 고장</li>
@@ -161,38 +161,38 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><button type="submit" class="btn btn-default">1<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">2<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">3<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">4<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">1<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">2<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">3<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">4<br/>회원명</button></td>
                                 <td><button type="submit" class="btn btn-primary">5<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">6<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">7<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">6<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">7<br/>회원명</button></td>
                                 <td><button type="submit" class="btn btn-warning">8<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">9<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">9<br/>회원명</button></td>
                                 <td><button type="submit" class="btn btn-success">10<br/>회원명</button></td>
                             </tr>
                             <tr>
                                 <td><button type="submit" class="btn btn-warning">11<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">12<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">13<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">14<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">15<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">16<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">17<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">18<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">12<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">13<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">14<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">15<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">16<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">17<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-info">18<br/>회원명</button></td>
                                 <td><button type="submit" class="btn btn-danger">19<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">20<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">20<br/>회원명</button></td>
                             </tr>
                             <tr>
-                                <td><button type="submit" class="btn btn-info">141<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">142<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">143<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">144<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">145<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">146<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">147<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">148<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">141<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">142<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">143<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">144<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">145<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">146<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">147<br/>회원명</button></td>
+                                <td><button type="submit" class="btn btn-default">148<br/>회원명</button></td>
                                 <td><button type="submit" class="btn btn-success">149<br/>회원명</button></td>
                                 <td><button type="submit" class="btn btn-danger">150<br/>회원명</button></td>
                             </tr>

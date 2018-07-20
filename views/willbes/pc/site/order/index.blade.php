@@ -59,7 +59,7 @@
                                         </dt>
                                         <dt>
                                             @if($row['CartProdType'] != 'book')
-                                                <span class="w-day">수강기간 : <span class="tx-blue">50일</span></span>
+                                                <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
                                                 <span class="w-data">
                                                     [강좌시작일 설정]
                                                     @if($row['IsLecStart'] == 'Y')
@@ -87,13 +87,13 @@
                             </tr>
                         @endforeach
                         {{-- 배송료 --}}
-                        @if(current($results['delivery_price']) > 0)
+                        @if($results['delivery_price'] > 0)
                             <tr>
                                 <td class="w-list tx-left pl20">
                                     <dl>
                                         <dt class="tit">
                                             <span class="pBox p4">배송</span> 배송비
-                                            @if(key($results['delivery_price']) == 'book')
+                                            @if($results['cart_type'] == 'book')
                                                 <span class="tx-light-blue">(교재 총 결제금액이 {{ number_format($__cfg['DeliveryFreePrice']) }}원 이상 인 경우 배송비 무료)</span>
                                             @endif
                                             <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
@@ -102,7 +102,7 @@
                                 </td>
                                 <td class="w-buy-price">
                                     <dl>
-                                        <dt class="tx-light-blue">{{ number_format(current($results['delivery_price'])) }}원</dt>
+                                        <dt class="tx-light-blue">{{ number_format($results['delivery_price']) }}원</dt>
                                     </dl>
                                 </td>
                             </tr>
@@ -118,7 +118,7 @@
                     <dl class="priceBox">
                         <dt>
                             <div>상품주문금액</div>
-                            <div class="price tx-light-blue">{{ number_format($results['price']) }}원</div>
+                            <div class="price tx-light-blue">{{ number_format($results['total_price']) }}원</div>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -142,13 +142,13 @@
                         </dt>
                         <dt>
                             <div>배송료</div>
-                            <span class="price tx-light-blue">{{ number_format(current($results['delivery_price'])) }}원</span>
+                            <span class="price tx-light-blue">{{ number_format($results['delivery_price']) }}원</span>
                         </dt>
                     </dl>
                 </li>
                 <li class="price-total">
                     <div>결제예상금액</div>
-                    <span class="price tx-light-blue">{{ number_format($results['price'] + current($results['delivery_price'])) }}원</span>
+                    <span class="price tx-light-blue">{{ number_format($results['total_price'] + $results['delivery_price']) }}원</span>
                 </li>
             </ul>
             <div class="cart-PointBox NG">

@@ -17,18 +17,19 @@
         </div>
         <div class="pocketDetailWrap pt40">
             <ul class="tabWrap tabDepth1 NG">
-                <li><a id="hover_lecture" href="#lecture" class="">강좌</a></li>
+                <li><a id="hover_on_lecture" href="#on_lecture" class="">강좌</a></li>
                 <li><a id="hover_book" href="#book" class="">교재</a></li>
             </ul>
             <div class="tabBox">
-                <div id="lecture" class="tabLink">
-                    <form id="lecture_form" name="lecture_form" method="POST" onsubmit="return false;" novalidate>
+                <div id="on_lecture" class="tabLink">
+                    <form id="on_lecture_form" name="on_lecture_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
+                        <input type="hidden" name="cart_type" value="on_lecture"/>
                         <div class="willbes-Cartlist c_both">
                             <div class="LeclistTable">
                                 <ul>
-                                    <li class="subBtn NSK"><a href="#none" class="btn-checked-delete" data-tab-id="lecture">선택 상품 삭제 ></a></li>
+                                    <li class="subBtn NSK"><a href="#none" class="btn-checked-delete" data-tab-id="on_lecture">선택 상품 삭제 ></a></li>
                                 </ul>
                                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
                                     <colgroup>
@@ -39,7 +40,7 @@
                                     </colgroup>
                                     <thead>
                                     <tr>
-                                        <th><input type="checkbox" name="_is_all" class="all-check" data-tab-id="lecture"/><span class="row-line">|</span></th>
+                                        <th><input type="checkbox" name="_is_all" class="all-check" data-tab-id="on_lecture"/><span class="row-line">|</span></th>
                                         <th>상품정보<span class="row-line">|</span></th>
                                         <th>판매가<span class="row-line">|</span></th>
                                         <th>결제/삭제</th>
@@ -79,8 +80,8 @@
                                                 @endif
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
                                                 <td class="w-buy">
-                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
-                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="lecture" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
+                                                    <span class="tBox NSK t1 black"><a href="#none" class="btn-only-pay" data-tab-id="on_lecture" data-cart-idx="{{ $row['CartIdx'] }}">결제</a></span>
+                                                    <span class="tBox NSK t2 white"><a href="#none" class="btn-only-delete" data-tab-id="on_lecture" data-cart-idx="{{ $row['CartIdx'] }}">삭제</a></span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -133,12 +134,12 @@
                             <div class="willbes-Lec-buyBtn">
                                 <ul>
                                     <li class="btnAuto180 h36">
-                                        <button type="button" name="btn_continue" data-tab-id="lecture" class="mem-Btn bg-white bd-dark-blue">
+                                        <button type="button" name="btn_continue" data-tab-id="on_lecture" class="mem-Btn bg-white bd-dark-blue">
                                             <span class="tx-light-blue">다른상품 더 보기</span>
                                         </button>
                                     </li>
                                     <li class="btnAuto180 h36">
-                                        <button type="submit" name="btn_pay" data-tab-id="lecture" class="mem-Btn bg-blue bd-dark-blue">
+                                        <button type="submit" name="btn_pay" data-tab-id="on_lecture" class="mem-Btn bg-blue bd-dark-blue">
                                             <span>결제하기</span>
                                         </button>
                                     </li>
@@ -165,6 +166,7 @@
                     <form id="book_form" name="book_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
+                        <input type="hidden" name="cart_type" value="book"/>
                         <div class="willbes-Cartlist c_both">
                             <div class="LeclistTable">
                                 <ul>
@@ -274,7 +276,7 @@
 </div>
 <!-- End Container -->
 <script type="text/javascript">
-    var $lecture_form = $('#lecture_form');
+    var $lecture_form = $('#on_lecture_form');
     var $book_form = $('#book_form');
 
     $(document).ready(function() {
@@ -324,6 +326,33 @@
                     if (ret.ret_cd) {
                         var reload_url = location.href.replace('#none', '') + '?tab=' + $tab_id;
                         location.replace(reload_url);
+                    }
+                }, showAlertError, false, 'POST');
+            }
+        });
+
+        // 개별결제 버튼 클릭
+        $('.btn-only-pay').on('click', function() {
+            var $tab_id = $(this).data('tab-id');
+            var $form = $('#' + $tab_id + '_form');
+
+            if ($tab_id === 'book') {
+                if ($lecture_form.find('input[name="cart_idx[]"]').length > 0) {
+                    alert('장바구니에 담긴 강좌 상품 선 구매 후 교재 상품 구매가 가능합니다.');
+                    return;
+                }
+            }
+
+            if (confirm('해당 상품을 결제하시겠습니까?')) {
+                var data = {
+                    '{{ csrf_token_name() }}' : $form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'POST',
+                    'cart_idx[]' : $(this).data('cart-idx').toString(),
+                    'cart_type' : $form.find('input[name="cart_type"]').val()
+                };
+                sendAjax('{{ site_url('/cart/toOrder/cate/' . $__cfg['CateCode']) }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        location.href = ret.ret_data.ret_url;
                     }
                 }, showAlertError, false, 'POST');
             }

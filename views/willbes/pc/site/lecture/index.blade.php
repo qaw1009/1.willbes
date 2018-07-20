@@ -366,7 +366,7 @@
                     // 장바구니 탭 구분 셋팅
                     $regi_form.find('input[name="only_cart_tab_id"]').val('book');
                 } else {
-                    $regi_form.find('input[name="only_cart_tab_id"]').val('lecture');
+                    $regi_form.find('input[name="only_cart_tab_id"]').val('on_lecture');
                 }
                 // 클릭된 상품 코드 셋팅
                 $regi_form.find('input[name="only_prod_code"]').val($(this).val());

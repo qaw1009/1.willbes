@@ -30,6 +30,7 @@ class CartFModel extends BaseOrderFModel
                 , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo
                 , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart
                 , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
+                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", "on_lecture") as CartType
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", 
                     case when PL.LearnPatternCcd in ("' . implode('","', $this->_package_pattern_ccd) . '") then "on_package" 
                          when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture"

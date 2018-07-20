@@ -30,9 +30,6 @@ class Cart extends \app\controllers\FrontController
 
         $results = [];
         foreach ($list as $idx => $row) {
-            // 상품 목록, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
-            $base_key = array_search($row['ProdTypeCcd'], $this->cartFModel->_prod_type_ccd);
-
             // 상품 갯수, 상품 금액 배열 키 (on_lecture : 단강좌, on_package : 패키지, book : 교재)
             $count_key = 'count.' . $row['CartProdType'];
             $price_key = 'price.' . $row['CartProdType'];
@@ -43,8 +40,8 @@ class Cart extends \app\controllers\FrontController
             // 상품 금액
             array_set($results, $price_key, array_get($results, $price_key, 0) + $row['RealSalePrice']);
 
-            // 강좌, 교재 목록 구분
-            $results['list'][$base_key][] = $row;
+            // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
+            $results['list'][$row['CartType']][] = $row;
         }
 
         // 온라인 강좌 배송료
@@ -92,7 +89,8 @@ class Cart extends \app\controllers\FrontController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'cart_idx[]', 'label' => '장바구니 식별자', 'rules' => 'trim|required']
+            ['field' => 'cart_idx[]', 'label' => '장바구니 식별자', 'rules' => 'trim|required'],
+            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -102,7 +100,7 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 식별자 세션 생성
         $this->cartFModel->makeSessCartIdx($this->_reqP('cart_idx'));
 
-        $this->json_result(true, '', [], ['ret_url' => site_url('/order/index/cate/' . $this->_cate_code)]);
+        $this->json_result(true, '', [], ['ret_url' => site_url('/order/index/cate/' . $this->_cate_code . '?tab=' . $this->_reqP('cart_type'))]);
     }
 
     /**

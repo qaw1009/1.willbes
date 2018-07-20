@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF');
+    protected $models = array('order/cartF', 'order/orderF', 'memberF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -21,37 +21,43 @@ class Order extends \app\controllers\FrontController
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $sess_cart_idx = $this->orderFModel->checkSessCartIdx();
+        $cart_type = $this->_req('tab');    // 장바구니 구분
 
         // 장바구니 조회
         $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, $this->_cate_code, $sess_cart_idx);
 
         $results = [];
-        $results['price'] = 0;
+        $total_price = 0;
         $arr_is_freebies_trans = [];
         foreach ($list as $idx => $row) {
-            $row['CartProdTypeName'] = $this->orderFModel->_cart_prod_type_name[$row['CartProdType']];
-            $row['CartProdTypeNum'] = array_flip(array_keys($this->orderFModel->_cart_prod_type_name))[$row['CartProdType']] + 1;
+            // 장바구니 구분과 실제 상품구분 값 비교
+            if ($cart_type != $row['CartProdType']) {
+                show_alert('필수 파라미터 오류입니다.', site_url('/cart/index/cate/' . $this->_cate_code), false);
+            }
+
+            $row['CartProdTypeName'] = $this->orderFModel->_cart_prod_type_name[$row['CartProdType']];  // 상품구분명
+            $row['CartProdTypeNum'] = array_flip(array_keys($this->orderFModel->_cart_prod_type_name))[$row['CartProdType']] + 1;   // 상품구분명 class number
             $results['list'][] = $row;
 
             // 강좌상품일 경우 사은품/무료교재 배송료 부과여부
-            if ($row['CartProdType'] != 'book') {
+            if ($row['CartProdType'] == 'on_lecture') {
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
             }
 
             // 전체 주문금액
-            $results['price'] += $row['RealSalePrice'];
+            $total_price += $row['RealSalePrice'];
         }
 
         // 배송료 계산
-        if (empty($arr_is_freebies_trans) === false) {
-            $results['cart_type'] = 'on_lecture';   // 강좌상품
-            $results['cart_type_name'] = '강좌';
-            $results['delivery_price'][$results['cart_type']] = $this->orderFModel->getLectureDeliveryPrice($arr_is_freebies_trans);
+        if ($cart_type === 'on_lecture') {
+            $results['delivery_price'] = $this->orderFModel->getLectureDeliveryPrice($arr_is_freebies_trans);
         } else {
-            $results['cart_type'] = 'book'; // 교재상품
-            $results['cart_type_name'] = '교재';
-            $results['delivery_price'][$results['cart_type']] = $this->orderFModel->getBookDeliveryPrice($results['price']);
+            $results['delivery_price'] = $this->orderFModel->getBookDeliveryPrice($results['price']);
         }
+
+        $results['cart_type'] = $cart_type;     // 장바구니 구분
+        $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명
+        $results['total_price'] = $total_price;     // 전체 주문금액
 
         $this->load->view('site/order/index', [
             'results' => $results

@@ -21,7 +21,7 @@ class BookModel extends WB_Model
     private $_prod_type_ccd = '636003'; // 상품타입 > 교재
     private $_sale_status_ccd = '618001'; // 판매상태 > 판매가능 고정값  (WBS > BMS > 판매여부 컬럼으로 판매상태 제어)
     private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
-    private $_point_apply_ccd = '635001'; // 포인트적용 > 전체
+    private $_point_apply_ccd = '635003'; // 포인트적용 > 교재
 
     public function __construct()
     {
@@ -222,6 +222,10 @@ class BookModel extends WB_Model
                 'PointSavePrice' => element('point_saving_amt', $input, 0),
                 'IsBest' => element('is_best', $input, 'N'),
                 'IsNew' => element('is_new', $input, 'N'),
+                'IsCart' => 'Y',
+                'IsRefund' => 'Y',
+                'IsFreebiesTrans' => 'Y',
+                'IsDeliveryInfo' => 'Y',
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()

@@ -11,19 +11,19 @@
             </div>
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">제목</label>
-                    <div class="form-control-static col-md-9">
+                    <label class="control-label col-md-1-1" for="">제목</label>
+                    <div class="form-control-static col-md-10">
                         {{$data['Title']}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">운영사이트</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1" for="">운영사이트</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['SiteName']}}
                     </div>
-                    <label class="control-label col-md-2" for="">구분</label>
-                    <div class="form-control-static col-md-5">
+                    <label class="control-label col-md-1-1 d-line" for="">구분</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         @foreach($data['arr_cate_code'] as $key => $val)
                             {{$val}} @if ($loop->last === false) | @endif
                         @endforeach
@@ -31,56 +31,56 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">분류</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1" for="">분류</label>
+                    <div class="form-control-static col-md-4">
 
                     </div>
-                    <label class="control-label col-md-2" for="">상담유형</label>
-                    <div class="form-control-static col-md-5">
+                    <label class="control-label col-md-1-1 d-line" for="">상담유형</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         {{$data['TypeCcdName']}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">등록자</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1" for="">등록자</label>
+                    <div class="form-control-static col-md-4">
                         {{$data['MemName']}}({{$data['MemId']}})
                     </div>
-                    <label class="control-label col-md-2" for="">휴대폰 번호</label>
-                    <div class="form-control-static col-md-5">
+                    <label class="control-label col-md-1-1 d-line" for="">휴대폰 번호</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         010-1234-1234 (Y)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">등록일</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1" for="">등록일</label>
+                    <div class="form-control-static col-md-4">
                         {{ $data['RegDatm'] }}
                     </div>
-                    <label class="control-label col-md-2" for="">공개</label>
-                    <div class="form-control-static col-md-5">
+                    <label class="control-label col-md-1-1 d-line" for="">공개</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         {!! ($data['IsPublic'] == 'Y') ? '공개' : '<span class="red">비공개</span>'  !!}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">첨부</label>
-                    <div class="col-md-3">
+                    <label class="control-label col-md-1-1" for="">첨부</label>
+                    <div class="col-md-4">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
                                 <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
                             @endif
                         @endfor
                     </div>
-                    <label class="control-label col-md-1" for="">조회수(생성)</label>
-                    <div class="form-control-static col-md-5">
+                    <label class="control-label col-md-1-1 d-line" for="">조회수(생성)</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="">질문</label>
-                    <div class="form-control-static col-md-9">{!! $data['Content'] !!}</div>
+                    <label class="control-label col-md-1-1" for="">질문</label>
+                    <div class="form-control-static col-md-10">{!! $data['Content'] !!}</div>
                 </div>
             </div>
         </div>
@@ -93,116 +93,112 @@
             <input type="hidden" name="idx" value="{{ $board_idx }}"/>
 
             <div class="row">
-                <label class="col-md-2 mt-15 text-right" for="">답변</label>
-                <div class="form-control-static col-md-1">
-                    <div class="form-control-static col-md-12 short-div"><b>답변상태</b></div>
-                    <div class="form-control-static col-md-12 short-div"><b>VOC 강도</b></div>
-                    <div class="form-control-static col-md-12 short-div"><b>답변자</b></div>
-                    <div class="form-control-static col-md-12 short-div"><b>최종 수정자</b></div>
-                </div>
+                <label class="col-md-1-1 mt-15 text-right" for="">답변</label>
+                <div class="col-md-9">
+                    <div class="form-control-static col-md-1-1">
+                        <div class="form-control-static col-md-12 short-div"><b>답변상태</b></div>
+                        <div class="form-control-static col-md-12 short-div"><b>VOC 강도</b></div>
+                        <div class="form-control-static col-md-12 short-div"><b>답변자</b></div>
+                        <div class="form-control-static col-md-12 short-div"><b>최종 수정자</b></div>
+                    </div>
 
-                <div class="form-control-static col-md-2">
-                    <div class="form-control-static short-div">
-                        {{$data['reply_status']}}
+                    <div class="form-control-static col-md-4">
+                        <div class="form-control-static short-div">
+                            {{$data['reply_status']}}
+                        </div>
+                        <div class="form-control-static short-div">
+                            @if($data['VocCcd'] == $voc_ccd_level3)
+                                <span class="red">{{$data['voc_value']}}</span>
+                            @else
+                                {{$data['voc_value']}}
+                            @endif
+                        </div>
+                        <div class="form-control-static short-div">
+                            {{$data['counselAdminName']}}
+                        </div>
+                        <div class="form-control-static short-div">
+                            {{$data['counselUpdAdminName']}}
+                        </div>
                     </div>
-                    <div class="form-control-static short-div">
-                        @if($data['VocCcd'] == $voc_ccd_level3)
-                            <span class="red">{{$data['voc_value']}}</span>
-                        @else
-                            {{$data['voc_value']}}
-                        @endif
-                    </div>
-                    <div class="form-control-static short-div">
-                        {{$data['counselAdminName']}}
-                    </div>
-                    <div class="form-control-static short-div">
-                        {{$data['counselUpdAdminName']}}
-                    </div>
-                </div>
 
-                <div class="form-control-static col-md-1">
-                    <div class="form-control-static short-div"><b>답변첨부파일</b></div>
-                    <div class="form-control-static short-div"></div>
-                    <div class="form-control-static short-div"><b>답변일</b></div>
-                    <div class="form-control-static short-div"><b>최종수정일</b></div>
-                </div>
-
-                <div class="form-control-static col-md-3">
-                    <div class="short-div">
-                    @for($i = 1; $i <= $attach_file_cnt; $i++)
-                        @if(empty($data['arr_attach_file_path'][$i]) === false)
-                            <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
-                        @endif
-                    @endfor
+                    <div class="form-control-static col-md-1-1">
+                        <div class="form-control-static short-div"><b>답변첨부파일</b></div>
+                        <div class="form-control-static short-div"></div>
+                        <div class="form-control-static short-div"><b>답변일</b></div>
+                        <div class="form-control-static short-div"><b>최종수정일</b></div>
                     </div>
-                    <div class="form-control-static short-div"></div>
-                    <div class="form-control-static short-div">{{$data['ReplyRegDatm']}}</div>
-                    <div class="form-control-static short-div">{{$data['ReplyUpdDatm']}}</div>
+
+                    <div class="form-control-static col-md-4">
+                        <div class="short-div">
+                        @for($i = 1; $i <= $attach_file_cnt; $i++)
+                            @if(empty($data['arr_attach_file_path'][$i]) === false)
+                                <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
+                            @endif
+                        @endfor
+                        </div>
+                        <div class="form-control-static short-div"></div>
+                        <div class="form-control-static short-div">{{$data['ReplyRegDatm']}}</div>
+                        <div class="form-control-static short-div">{{$data['ReplyUpdDatm']}}</div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group">
-                    <label class="col-md-2 text-right" for="">답변내용</label>
-                    <div class="col-md-7 ml-10">
+                    <label class="col-md-1-1 text-right" for="">답변내용</label>
+                    <div class="col-md-9 ml-20">
                         {!! $data['ReplyContent'] !!}
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="ln_solid"></div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="memo_contents">매모</label>
-                    <div class="form-control-static col-md-7">
-                        <div class="form-group">
-                            <div class="form-control-static col-md-10 item">
+                    <label class="col-md-1-1 mt-25 text-right" for="memo_contents">매모</label>
+                    <div class="col-md-9 mt-20 ml-20">
+                        <div class="form-control-static clear">
+                            <div class="col-md-10 no-padding item">
                                 <textarea id='memo_contents' name='memo_contents' class='form-control' rows='4' title='메모' required='required' placeholder=''></textarea>
                             </div>
                             <div class="form-control-static col-md-1">
                                 <button type="submit" class="btn btn-success btn-memo">저장</button>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-control-static form-group">
-                                <table id="list_ajax_table" class="table table-striped table-bordered ml-10">
-                                    <thead>
+                        <div class="form-control-static clear">
+                            <table id="list_ajax_table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th width="10%">NO</th>
+                                    <th>내용</th>
+                                    <th width="15%">담당자</th>
+                                    <th width="20%">등록일</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($memo_data as $row)
                                     <tr>
-                                        <th width="10%">NO</th>
-                                        <th>내용</th>
-                                        <th width="15%">담당자</th>
-                                        <th width="20%">등록일</th>
+                                        <td>{{ $loop->index }}</td>
+                                        <td>{!! nl2br($row['Memo']) !!}</td>
+                                        <td>{{$row['wAdminName']}}</td>
+                                        <td>{{$row['RegDatm']}}</td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($memo_data as $row)
-                                        <tr>
-                                            <td>{{ $loop->index }}</td>
-                                            <td>{!! nl2br($row['Memo']) !!}</td>
-                                            <td>{{$row['wAdminName']}}</td>
-                                            <td>{{$row['RegDatm']}}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="ln_solid"></div>
-                <div class="form-group text-center mb-30">
-                    <div class="col-md-10">
-                        @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
-                            <button class="btn btn-primary mr-10" type="button" id="btn_reply_modify">수정</button>
-                        @else
-                            <button class="btn btn-primary mr-10" type="button" id="btn_reply_modify">답변</button>
-                        @endif
-                        <button class="btn btn-primary" type="button" id="btn_list">목록</button>
-                    </div>
-                </div>
+
+            <div class="form-group text-center btn-wrap mt-50">
+                @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
+                    <button class="btn btn-primary mr-10" type="button" id="btn_reply_modify">수정</button>
+                @else
+                    <button class="btn btn-primary mr-10" type="button" id="btn_reply_modify">답변</button>
+                @endif
+                <button class="btn btn-primary" type="button" id="btn_list">목록</button>
             </div>
+ 
         </form>
     </div>
 
@@ -211,8 +207,8 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2" for="btn_previous" style="margin-top: 7px;">이전글</label>
-            <div class="form-control-static col-md-9">
+            <label class="control-label col-md-1-1" for="btn_previous" style="margin-top: 7px;">이전글</label>
+            <div class="form-control-static col-md-10">
                 @if(count($board_previous) <= 0)
                     이전글이 없습니다.
                 @else
@@ -221,8 +217,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2" for="btn_next" style="margin-top: 7px;">다음글</label>
-            <div class="form-control-static col-md-9">
+            <label class="control-label col-md-1-1" for="btn_next" style="margin-top: 7px;">다음글</label>
+            <div class="form-control-static col-md-10">
                 @if(count($board_next) <= 0)
                     다음글이 없습니다.
                 @else

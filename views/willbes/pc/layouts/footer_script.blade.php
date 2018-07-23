@@ -8,6 +8,8 @@
 <!-- Moment -->
 <script src="/public/vendor/moment/moment.min.js"></script>
 <script src="/public/vendor/moment/moment-with-locales.js"></script>
+<!-- bootstrap-datepicker -->
+<script src="/public/vendor/bootstrap/datepicker/js/bootstrap-datepicker.min.js"></script>
 <!-- jquery.chained -->
 <script src="/public/vendor/jquery/chained/jquery.chained.min.js"></script>
 <!-- base64 -->

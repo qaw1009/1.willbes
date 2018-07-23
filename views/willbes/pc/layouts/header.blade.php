@@ -13,6 +13,8 @@
     <!-- CSS -->
     <!-- Slider jQuery -->
     <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+    <!-- bootstrap-datepicker -->
+    <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- PNotify -->
     <link href="/public/vendor/pnotify/pnotify.css" rel="stylesheet">
     <link href="/public/vendor/pnotify/pnotify.buttons.css" rel="stylesheet">
@@ -26,6 +28,7 @@
     <!-- jQuery -->
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
+    <!-- Custom tabs -->
     <script src="/public/js/willbes/tabs.js"></script>
     <!--// JAVASCRIPT -->
 </head>

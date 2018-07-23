@@ -182,85 +182,93 @@
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                            <td class="w-info tx-left pl20">홍길동</td>
+                            <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                            <td class="w-info tx-left pl20">010-1234-5678</td>
+                            <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이메일</td>
-                            <td class="w-info tx-left pl20">willbes@willbes.com</td>
+                            <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
                         </tr>
                         <tr class="u-to">
                             <th class="w-list" rowspan="6">받는사람<br/>정보<br/><span class="tx-light-blue">(* 필수입력항목)</span></th>
                             <td class="tx-left pl20 u-delivery-chk" colspan="2">
                                 <ul>
-                                    <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>구매자 정보와 동일</label></li>
-                                    <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>최근 배송지</label></li>
-                                    <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>직접입력</label></li>
-                                    <li><span class="btnAll NSK"><a href="#none" onclick="openWin('MyAddress')">나의 배송 주소록</a></span></li>
+                                    <li><input type="radio" id="addr_e_type" name="addr_type" value="E" checked="checked" class=""/><label>구매자 정보와 동일</label></li>
+                                    <li><input type="radio" id="addr_r_type" name="addr_type" value="R" class=""/><label>최근 배송지</label></li>
+                                    <li><input type="radio" id="addr_d_type" name="addr_type" value="D" class=""/><label>직접입력</label></li>
+                                    <li><span class="btnAll NSK"><a href="#none" onclick="openWin('MyAddress');">나의 배송 주소록</a></span></li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이름<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20"><input type="text" id="NAME" name="NAME" class="iptName" maxlength="30"></td>
+                            <td class="w-info tx-left pl20 item"><input type="text" id="receiver" name="receiver" value="{{ $results['member']['MemName'] }}" title="이름" required="required" class="iptName" maxlength="30"></td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
                             <td class="w-info tx-left pl20">
                                 <div class="inputBox Add p_re">
-                                    <div class="searchadd">
-                                        <input type="text" id="ADD1" name="ADD1" class="iptAdd" maxlength="30"> -
-                                        <input type="text" id="ADD2" name="ADD2" class="iptAdd" maxlength="30">   
-                                        <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
+                                    <div class="searchadd item">
+                                        <input type="text" id="zipcode" name="zipcode" title="우편번호" required="required" readonly="readonly" class="iptAdd bg-gray" maxlength="6">
+                                        <button type="button" onclick="searchPost('SearchPost', 'zipcode', 'addr1');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
                                             <span>우편번호 찾기</span>
                                         </button>
                                         <span class="btnAdd underline"><a href="#none" onclick="alert('입력한 주소를 나의 배송 주소록에 등록하시겠습니까?')">[나의 배송 주소록에 등록하기]</a></span>
+                                        <div id="SearchPost" class="willbes-Layer-Black">
+                                            <div class="willbes-Layer-CartBox">
+                                                <a class="closeBtn" href="#none" onclick="closeSearchPost('SearchPost');">
+                                                    <img src="{{ img_url('cart/close_cart.png') }}">
+                                                </a>
+                                                <div class="Layer-Tit NG bg-blue">우편번호 찾기</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="addbox1 p_re">
-                                        <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
+                                    <div class="addbox1 p_re item">
+                                        <input type="text" id="addr1" name="addr1" title="주소1" required="required" readonly="readonly" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
                                     </div>
-                                    <div class="addbox2 p_re">
-                                        <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
+                                    <div class="addbox2 p_re item">
+                                        <input type="text" id="addr2" name="addr2" title="주소2" required="required" class="iptAdd2" placeholder="상세주소" maxlength="30">
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20">
-                                <select id="phone" name="phone" title="010" class="selePhone">
-                                    <option selected="selected">010</option>
-                                    <option value="011">011</option>
-                                    <option value="016">016</option>
-                                    <option value="017">017</option>
-                                    <option value="018">018</option>
+                            <td class="w-info tx-left pl20 item">
+                                <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" class="selePhone">
+                                    <option value="">선택</option>
+                                    @foreach($arr_phone1_ccd as $key => $val)
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endforeach
                                 </select> -
-                                <input type="text" id="USER_CELLPHONE1" name="USER_CELLPHONE1" class="iptCellhone1 phone" maxlength="30"> -
-                                <input type="text" id="USER_CELLPHONE2" name="USER_CELLPHONE2" class="iptCellhone2 phone" maxlength="30">
+                                <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" class="iptCellhone1 phone" maxlength="30"> -
+                                <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" class="iptCellhone2 phone" maxlength="30">
+                                <input type="hidden" id="receiver_phone" name="receiver_phone" title="휴대폰번호" required="required" pattern="phone"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                            <td class="w-info tx-left pl20">
-                                <select id="phone" name="phone" title="02" class="selePhone">
-                                    <option selected="selected">02</option>
-                                    <option value="031">031</option>
-                                    <option value="032">032</option>
-                                    <option value="033">033</option>
-                                    <option value="041">041</option>
+                            <td class="w-info tx-left pl20 item">
+                                <select id="receiver_tel1" name="receiver_tel1" title="전화번호1" class="selePhone">
+                                    <option value="">선택</option>
+                                    @foreach($arr_tel1_ccd as $key => $val)
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endforeach
                                 </select> -
-                                <input type="text" id="USER_PHONE1" name="USER_PHONE1" class="iptPhone1 phone" maxlength="30"> -
-                                <input type="text" id="USER_PHONE2" name="USER_PHONE2" class="iptPhone2 phone" maxlength="30">
+                                <input type="text" id="receiver_tel2" name="receiver_tel2" title="전화번호2" class="iptPhone1 phone" maxlength="30"> -
+                                <input type="text" id="receiver_tel3" name="receiver_tel3" title="전화번호3" class="iptPhone2 phone" maxlength="30">
+                                <input type="hidden" id="receiver_tel" name="receiver_tel" title="전화번호" pattern="tel" class="optional"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
                             <td class="w-info tx-left pl20">
                                 <div class="inputBox p_re">
-                                    <input type="text" id="USER_MEMO" name="USER_MEMO" class="iptMemo" placeholder="배송메시지를입력해주세요. (예: 부재시경비실에맡겨주세요.)" maxlength="30"> (0 / 120byte)
+                                    <input type="text" id="delivery_memo" name="delivery_memo" class="iptMemo" placeholder="배송 메시지를 입력해 주세요. (예: 부재시 경비실에 맡겨주세요.)" maxlength="60">
+                                    (<span id="delivery_memo_byte">0</span> / 120byte)
                                 </div>
                             </td>
                         </tr>
@@ -338,20 +346,11 @@
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
                                     유의사항1<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.<br/>
-                                    유의사항내용이출력됩니다.<br/>
-                                    유의사항2<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.<br/>
-                                    유의사항1<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.<br/>
-                                    유의사항내용이출력됩니다.<br/>
-                                    유의사항2<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.
                                 </div>
                                 <div class="chkBox">
                                     위 유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                     <span class="chkBox-Agree checked">
-                                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                                        <input type="checkbox" id="agree1" name="agree1" class="" checked="checked"/>
                                     </span>
                                 </div>
                             </td>
@@ -361,20 +360,11 @@
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
                                     개인정보활용1<br/>
-                                    개인정보활용내용이출력됩니다.개인정보활용내용이출력됩니다. 개인정보활용내용이출력됩니다.<br/>
-                                    개인정보활용내용이출력됩니다.개인정보활용내용이출력됩니다.<br/>
-                                    개인정보활용2<br/>
-                                    개인정보활용내용이출력됩니다.개인정보활용내용이출력됩니다. 개인정보활용내용이출력됩니다.<br/>
-                                    개인정보활용1<br/>
-                                    개인정보활용내용이출력됩니다.개인정보활용내용이출력됩니다. 개인정보활용내용이출력됩니다.<br/>
-                                    개인정보활용내용이출력됩니다.개인정보활용내용이출력됩니다.<br/>
-                                    개인정보활용2<br/>
-                                    개인정보활용내용이출력됩니다.개인정보활용내용이출력됩니다. 개인정보활용내용이출력됩니다.
                                 </div>
                                 <div class="chkBox">
                                     위 개인정보 활용 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                     <span class="chkBox-Agree checked">
-                                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                                        <input type="checkbox" id="agree2" name="agree2" class="" checked="checked"/>
                                     </span>
                                 </div>
                             </td>
@@ -384,20 +374,11 @@
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
                                     환불정책1<br/>
-                                    환불정책내용이출력됩니다.환불정책내용이출력됩니다.<br/>
-                                    환불정책내용이출력됩니다.환불정책내용이출력됩니다.환불정책내용이출력됩니다.<br/>
-                                    환불정책2<br/>
-                                    환불정책내용이출력됩니다.환불정책내용이출력됩니다. 환불정책내용이출력됩니다.<br/>
-                                    환불정책1<br/>
-                                    환불정책내용이출력됩니다.환불정책내용이출력됩니다.<br/>
-                                    환불정책내용이출력됩니다.환불정책내용이출력됩니다.환불정책내용이출력됩니다.<br/>
-                                    환불정책2<br/>
-                                    환불정책내용이출력됩니다.환불정책내용이출력됩니다. 환불정책내용이출력됩니다.
                                 </div>
                                 <div class="chkBox">
                                     위 환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
-                                    <span class="chkBox-Agree">
-                                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                                    <span class="chkBox-Agree checked">
+                                        <input type="checkbox" id="agree3" name="agree3" class="" checked="checked"/>
                                     </span>
                                 </div>
                             </td>
@@ -407,7 +388,7 @@
                 <div class="AllchkBox tx-gray">
                     위 유의사항, 개인정보활용, 환불정책안내사항을 모두 읽었으면 동의합니다. <span class="tx-blue">(전체동의)</span>
                     <span class="chkBox-Agree checked">
-                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                        <input type="checkbox" id="agree_all" name="agree_all" class="" checked="checked"/>
                     </span>
                 </div>
             </div>
@@ -428,7 +409,7 @@
             </div>
         </div>
         <!-- willbes-PolicyInfo -->
-        <div id="Coupon"class="willbes-Layer-Black">
+        <div id="Coupon" class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('Coupon')">
                     <img src="{{ img_url('cart/close_cart.png') }}">
@@ -563,7 +544,7 @@
             </div>
         </div>
         <!-- willbes-Layer-CartBox : Coupon -->
-        <div id="MyAddress"class="willbes-Layer-Black">
+        <div id="MyAddress" class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('MyAddress')">
                     <img src="{{ img_url('cart/close_cart.png') }}">
@@ -716,11 +697,22 @@
     </div>
 </div>
 <!-- End Container -->
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<script src="/public/js/post_util.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
 
     $(document).ready(function() {
-
+        // 배송메모 바이트수 계산
+        $regi_form.find('input[name="delivery_memo"]').on('change keyup input', function() {
+            var byte_cnt = fn_chk_byte($(this).val());
+            if (byte_cnt > 10) {
+                alert('배송 메시지 길이가 초과되었습니다.');
+                $(this).val('');
+                return;
+            }
+            $regi_form.find('#delivery_memo_byte').html(byte_cnt);
+        });
     });
 </script>
 @stop

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF', 'memberF');
+    protected $models = array('order/cartF', 'order/orderF', 'memberF', '_lms/sys/wCode');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -59,7 +59,15 @@ class Order extends \app\controllers\FrontController
         $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명
         $results['total_price'] = $total_price;     // 전체 주문금액
 
+        // 회원정보 조회
+        $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
+
+        // 지역번호, 휴대폰번호 공통코드 조회
+        $codes = $this->wCodeModel->getCcdInArray(['101', '102']);
+
         $this->load->view('site/order/index', [
+            'arr_tel1_ccd' => $codes['101'],
+            'arr_phone1_ccd' => $codes['102'],
             'results' => $results
         ]);
     }

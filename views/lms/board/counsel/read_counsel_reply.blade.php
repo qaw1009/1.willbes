@@ -192,9 +192,9 @@
 
             <div class="form-group text-center btn-wrap mt-50">
                 @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
-                    <button class="btn btn-primary mr-10" type="button" id="btn_reply_modify">수정</button>
+                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">수정</button>
                 @else
-                    <button class="btn btn-primary mr-10" type="button" id="btn_reply_modify">답변</button>
+                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">답변</button>
                 @endif
                 <button class="btn btn-primary" type="button" id="btn_list">목록</button>
             </div>

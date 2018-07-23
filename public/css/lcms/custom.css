@@ -532,6 +532,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .ml-5 {
     margin-left: 5px !important;
 }
+.ml-8-dot {
+    margin-left: 8.33333333%;
+}
 .ml-10 {
     margin-left: 10px !important;
 }
@@ -752,6 +755,22 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 }
 .form-horizontal .form-group.btn-wrap {
     border-bottom: none;
+}
+.form-horizontal .form-group .b-line {
+    position: absolute;
+    top: 0;
+    left: 33.33333333%;
+    padding-top: 17px;
+    height: 100%;
+    border-left: 2px solid #e6e9ed;
+}
+.form-horizontal .form-group .c-line {
+    position: absolute;
+    top: 0;
+    left: 66.66666666%;
+    padding-top: 17px;
+    height: 100%;
+    border-left: 2px solid #e6e9ed;
 }
 .form-horizontal .form-group .d-line {
     position: absolute;

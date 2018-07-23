@@ -150,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PassPackageFModel $passPackageFModel                          Pass Package Product Model Class
  * @property CartFModel $cartFModel                                                 Cart Model Class
  * @property OrderFModel $orderFModel                                              Order Model Class
- * @property DeliveryAddressFModel $deliveryAddressFModel                   Delivery Address Model Class
+ * @property MyDeliveryAddressFModel $myDeliveryAddressFModel           My Delivery Address Model Class
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
  */

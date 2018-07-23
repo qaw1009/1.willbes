@@ -409,6 +409,8 @@ function showAlertError(result, status) {
              err_msg = '권한이 없습니다.';
          } else if (status === 403) {
              err_msg = '토큰 정보가 올바르지 않습니다.';
+         } else if (status === 404) {
+             err_msg = '데이터 조회에 실패했습니다.';
          } else if (status === 422) {
              err_msg = '필수 파라미터 오류입니다.';
          }
@@ -423,6 +425,8 @@ function showAlertError(result, status) {
  * @param status
  */
 function showError(result, status) {
+    console.log(result);
+
     var err_msg = result.ret_msg || '';
 
     if (err_msg === '') {
@@ -430,6 +434,8 @@ function showError(result, status) {
             err_msg = '권한이 없습니다.';
         } else if (status === 403) {
             err_msg = '토큰 정보가 올바르지 않습니다.';
+        } else if (status === 404) {
+            err_msg = '데이터 조회에 실패했습니다.';
         } else if (status === 422) {
             err_msg = '필수 파라미터 오류입니다.';
         }

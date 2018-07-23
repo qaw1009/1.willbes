@@ -301,7 +301,7 @@
         <!-- willbes-Lec-buyBtn -->
         </form>
 
-        <div id="lec_info_layer"></div>
+        <div id="InfoForm" class="willbes-Layer-Box"></div>
         <!-- willbes-Layer-Box -->
     </div>
     <div class="Quick-Bnr ml20">
@@ -348,10 +348,10 @@
                 'prod_book_memo' : $lec_table.find('.prod-book-memo').text()
             };
             sendAjax('{{ site_url('/lecture/info/prod-code/') }}' + $prod_code, data, function(ret) {
-                $('#lec_info_layer').html(ret).show().css('display', 'block').trigger('create');
-            }, showError, false, 'GET', 'html');
+                $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
 
-            openWin('info_form');
+            // 디폴트 탭 선택
             openLink($(this).data('tab-id'));
         });
 

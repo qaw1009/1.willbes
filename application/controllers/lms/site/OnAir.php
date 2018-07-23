@@ -21,7 +21,12 @@ class OnAir extends \app\controllers\BaseController
      */
     public function create()
     {
+        $method = 'POST';
+        $data = null;
+
         $this->load->view("site/onAir/create", [
+            'method' => $method,
+            'data' => $data
         ]);
     }
 }

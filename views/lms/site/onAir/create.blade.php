@@ -10,19 +10,13 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <form class="form-horizontal form-label-left" id="" name="" method="" onsubmit="return false;" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
                         <div class="form-inline inline-block item">
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">학원경찰</option>
-                                <option value="">온라인공무원</option>
-                                <option value="">학원공무원</option>
-                                <option value="">경찰공무원</option>
-                                <option value="">공인중개사</option>
-                            </select>
+                            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                         </div>
                     </div>
                 </div>
@@ -247,10 +241,7 @@
             <script src="/public/vendor/cheditor/cheditor.js"></script>
             <script src="/public/js/editor_util.js"></script>
             <script type="text/javascript">
-
                 var $regi_form = $('#regi_form');
-
-
                 var total;
                 var karr;
 
@@ -263,10 +254,7 @@
                     return str;
                 }
 
-
-
                 function setLecDate() {
-
                     if($("#StudyStartDate").val() == "") {alert("개강일을 선택해 주세요.");$("#StudyStartDate").focus();return;}
                     if($('#Amount').val() == '') {alert('회차를 입력해 주세요.'); $('#Amount').focus();return;}
 
@@ -274,31 +262,22 @@
                     total = 0;
                     karr = 0;
 
-
                     if( $("#Amount").val() != "" ) {
-
                         t = $('input:checkbox[name="week[]"]:checked').length;
-
                         if (t < 1) {
                             alert('요일을 선택하세요.');
                         } else {
-
                             var Months = new Array(12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
-
                             var syy = $("#StudyStartDate").val().substr(0, 4); //연도추출
                             var smm = $("#StudyStartDate").val().substr(5, 2); // 월추출
-
                             var yy = parseInt(syy, 10); // 연도2자리
                             var mm = parseInt(smm, 10); // 월2자리
-
-                            result += "<table border='0' cellpadding='0' cellspacing='0' style='float: left;'><tr>";
-
                             var ty = 0;
                             var tm = 0;
                             var i = 0;
 
+                            result += "<table border='0' cellpadding='0' cellspacing='0' style='float: left;'><tr>";
                             while (parseInt($("#Amount").val(), 10) > total ) {
-
                                 ty = yy + parseInt((mm + i - 1) / 12);
                                 tm = Months[((mm + i) % 12)];
                                 result += "<td style='padding:5px;' valign='top'>";
@@ -306,23 +285,19 @@
                                 result += "</td>";
                                 i++;
                             }
-
                             result += "</tr></table>";
 
-                            //$("#cal_vw").display = "block";
-                            $("#cal_vw").append(result);
+                            $("#cal_vw").show();
+                            $("#cal_vw").html(result);
                         }
-
                     }
                 }
 
                 function Calendar( Year, Month ) {
-
                     var days = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
                     var weekDay = new Array("일", "월", "화", "수", "목", "금", "토");
 
                     firstDay = new Date(Year,Month-1,1).getDay();
-
                     days[1] = (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0)) ? 29 : 28;
 
                     var output_string = "";
@@ -331,7 +306,6 @@
                     output_string += Year + " / " + Month;
                     output_string += "</b></td></tr>";
                     output_string += "</table>";
-
                     output_string += "<table border='0' cellpadding='0' cellspacing='1' bgcolor='#999999'>";
                     output_string += "<tr align='center' bgcolor='#dadada' height='25'> ";
                     for (var dayNum= 0; dayNum <= 6; dayNum++) {
@@ -340,18 +314,13 @@
                     output_string += "</tr>";
 
                     var kMonth = (Month < 10) ? "0"+Month : Month;
-
                     var nDay = 1;
 
                     for(var i=0; i<6; i++) {
                         output_string += "<tr align='center'>";
-
                         for(var j=0; j<7; j++) {
-
                             tarr = i*7+j;
-
                             if(firstDay <= tarr && days[Month-1] >= nDay ) {
-
                                 var kDay = (nDay < 10) ? "0"+nDay : nDay;
                                 var bg_color = "";
                                 var frm_value = "";
@@ -374,15 +343,11 @@
                                 output_string += nDay
                                 output_string += "<input type='hidden' name='savDay' value='"+ frm_value +"'>";
                                 output_string += "</td>";
-
                                 nDay++;
                                 karr++;
                             } else {
-
                                 output_string += "<td bgcolor='#ffffff' width='24' height='20'>"+ "&nbsp;" +"</td>";
                             }
-
-
                         }
                     }
 
@@ -412,7 +377,6 @@
                     }
                     $("#Amount").val(t);
                 }
-
             </script>
 
         </div>

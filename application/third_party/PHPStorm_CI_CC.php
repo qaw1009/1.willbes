@@ -138,6 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BannerModel $bannerModel                                              banner Model Class
  * @property PopupModel $popupModel                                                popup Model Class
  * @property EventLectureModel $eventLectureModel                                  EventLecture Model Class
+ * @property TermsModel $termsModel                                                Terms Model Class
  * @property DDayModel $dDayModel                                                  d-day Model Class
  * @property SearchaAnalysisModel $searchaAnalysisModel                            SearchaAnalysis Model Class
  ***************** FRONT ***********************

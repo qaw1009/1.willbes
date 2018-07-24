@@ -566,10 +566,10 @@
                             <li class="subBtn white NSK"><a href="#none">쿠폰 적용 안함 ></a></li>
                             <li class="subBtn NSK"><a href="#none">쿠폰 적용 ></a></li>
                         </ul>
-                        <div class="tabBox">
+                        <div class="tabBox couponBox">
                             <div class="coupon caution-txt">내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</div>
                             <div id="coupon1" class="tabContent">
-                                <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 50px;">
                                         <col style="width: 50px;">
@@ -609,11 +609,29 @@
                                             <td>40일</td>
                                             <td>3일</td>
                                         </tr>
+                                        <tr>
+                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                            <td>교재</td>
+                                            <td>123456789</td>
+                                            <td>회원가입 축하 쿠폰2</td>
+                                            <td>1,000원</td>
+                                            <td>365일</td>
+                                            <td>300일</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                            <td>강좌</td>
+                                            <td>987654321</td>
+                                            <td>회원가입 축하 쿠폰3</td>
+                                            <td>100,000원</td>
+                                            <td>10일</td>
+                                            <td>1일</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div id="coupon2" class="tabContent" style="display: none;">
-                                <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 60px;">
                                         <col style="width: 130px;">
@@ -648,6 +666,22 @@
                                             <td>5,000원</td>
                                             <td>40일</td>
                                             <td>3일</td>
+                                        </tr>
+                                        <tr>
+                                            <td>교재2</td>
+                                            <td>1234564789</td>
+                                            <td>회원가입 축하 쿠폰2</td>
+                                            <td>245,000원</td>
+                                            <td>720일</td>
+                                            <td>365일</td>
+                                        </tr>
+                                        <tr>
+                                            <td>교재3</td>
+                                            <td>987654321</td>
+                                            <td>회원가입 축하 쿠폰3</td>
+                                            <td>2,500원</td>
+                                            <td>777일</td>
+                                            <td>123일</td>
                                         </tr>
                                     </tbody>
                                 </table>

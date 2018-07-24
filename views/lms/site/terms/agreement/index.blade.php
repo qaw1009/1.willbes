@@ -111,20 +111,11 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
-                            }
-                            return str;
-                        }},
-                    {'data' : 'LIdx'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.LIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="#" class="btn-modify" data-idx="' + row.SupIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
+                            return row.ApplayStartDatm + ' ~ ' + row.ApplayEndDatm;
                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -132,10 +123,7 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdAdminName'},
-                    {'data' : 'UpdDatm'},
-                    {'data' : 'DispRoute', 'render' : function(data, type, row, meta){
-                            return '<a href="'+data+'" target="_blank"><u class="blue">보기</u></a>';
-                        }},
+                    {'data' : 'UpdDatm'}
                 ]
             });
 

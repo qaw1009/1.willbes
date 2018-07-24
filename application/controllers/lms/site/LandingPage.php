@@ -38,7 +38,8 @@ class LandingPage extends \app\controllers\BaseController
     }
 
     /**
-     * 약관동의 등록
+     * 랜딩페이지 등록/수정 폼
+     * @param array $params
      */
     public function create($params = [])
     {
@@ -75,6 +76,9 @@ class LandingPage extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 등록/수정
+     */
     public function store()
     {
         $rules = [

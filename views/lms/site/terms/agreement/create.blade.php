@@ -21,7 +21,7 @@
                     </label>
                     <div class="col-md-10">
                         <div class="inline-block item">
-                            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
+                            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="content">설명
+                    <label class="control-label col-md-1-1" for="desc">설명
                     </label>
                     <div class="col-md-10 form-inline item">
                         <textarea id="desc" name="desc" class="form-control" rows="7" title="설명" style="width: 100%; resize: none;">{!! $data['Desc'] !!}</textarea>

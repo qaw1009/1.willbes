@@ -81,9 +81,9 @@
                     </label>
                     <div class="col-md-10 item">
                         <div class="radio">
-                            <input type="radio" id="is_use_r" name="is_use" class="flat" value="R" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='R')checked="checked"@endif/> <label for="is_use_r" class="">대기</label>
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" @if($data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="">미사용</label>
+                            <input type="radio" id="is_use_r" name="is_use" class="flat" value="R" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='R')checked="checked"@endif/> <label for="is_use_r" class="input-label">대기</label>
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" @if($data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">최종 수정일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>
@@ -126,9 +126,26 @@
         </div>
     </div>
 
+    <!-- cheditor -->
+    <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
+    <script src="/public/vendor/cheditor/cheditor.js"></script>
+    <script src="/public/js/editor_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
+            // editor load
+            var $editor_content = new cheditor();
+            $editor_content.config.editorHeight = '170px';
+            $editor_content.config.editorWidth = '100%';
+            $editor_content.inputForm = 'content';
+            $editor_content.run();
+
+            var $editor_desc = new cheditor();
+            $editor_desc.config.editorHeight = '170px';
+            $editor_desc.config.editorWidth = '100%';
+            $editor_desc.inputForm = 'desc';
+            $editor_desc.run();
+
             //목록
             $('#btn_list').click(function() {
                 location.replace('{{ site_url("/site/terms/agreement/") }}' + getQueryString());
@@ -137,6 +154,10 @@
             // ajax submit
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/site/terms/agreement/store") }}' + getQueryString();
+
+                // editor
+                getEditorBodyContent($editor_content);
+                getEditorBodyContent($editor_desc);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

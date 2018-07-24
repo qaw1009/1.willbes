@@ -17,19 +17,17 @@
             </div>
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="site_code">운영사이트<span class="required">*</span></label>
-                    <div class="col-md-2 item">
+                    <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
+                    <div class="form-inline col-md-10 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true) !!}
-                    </div>
-                    <div class="col-md-5">
-                        <p class="form-control-static">• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다. 
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
-                    <div class="col-md-9 form-inline">
+                    <div class="col-md-10 form-inline">
                         @if($method == 'PUT')
                             <p class="form-control-static">{{ $data['CateNames'] }}</p>
                         @else
@@ -49,17 +47,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="banner_disp">노출섹션<span class="required">*</span></label>
-                    <div class="col-md-2 item">
-                        <select class="form-control" id="banner_disp" name="banner_disp" required="required" title="노출섹션">
+                    <label class="control-label col-md-1-1" for="banner_disp">노출섹션<span class="required">*</span></label>
+                    <div class="form-inline col-md-10 item">
+                        <select class="form-control mr-10" id="banner_disp" name="banner_disp" required="required" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($banner_disp as $key => $val)
                                 <option value="{{$key}}" @if($key == $data['DispCcd'])selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
-                    </div>
-
-                    <div class="col-md-2 item">
                         <select class="form-control" id="banner_location" name="banner_location" required="required" title="배너위치">
                             <option value="">배너위치</option>
                             @foreach($banner_location as $key => $val)
@@ -70,16 +65,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="banner_name">배너명<span class="required">*</span></label>
-                    <div class="col-md-7 item">
+                    <label class="control-label col-md-1-1" for="banner_name">배너명<span class="required">*</span></label>
+                    <div class="col-md-10 item">
                         <input type="text" id="banner_name" name="banner_name" required="required" class="form-control" maxlength="100" title="배너명" value="{{ $data['BannerName'] }}" >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="disp_start_datm">노출시간</label>
-                    <div class="col-md-4 form-inline">
-                        <div class="input-group">
+                    <label class="control-label col-md-1-1" for="disp_start_datm">노출시간</label>
+                    <div class="col-md-10 form-inline">
+                        <div class="input-group mb-0">
                             <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{$data['DispStartDay']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="disp_start_time" name="disp_start_time">
@@ -106,33 +101,39 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="form-control-static">• 노출기간 미 입력 시 '진행상태'로 오픈 여부 설정</p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• 노출기간 미 입력 시 '진행상태'로 오픈 여부 설정
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="link_type_self">링크방식<span class="required">*</span></label>
-                    <div class="col-md-3 item form-inline">
+                    <label class="control-label col-md-1-1" for="link_type_self">링크방식<span class="required">*</span></label>
+                    <div class="col-md-10 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/><label for="link_type_self" class="hover mr-5">본창</label>
-                            <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="">새창</label>
+                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/> <label for="link_type_self" class="input-label">본창</label>
+                            <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="input-label">새창</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="link_url">링크주소<span class="required">*</span></label>
-                    <div class="col-md-9 item">
+                    <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
+                    <div class="col-md-10 item">
                         <input type="text" id="link_url" name="link_url" required="required" class="form-control" maxlength="46" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="attach_img">배너이미지<span class="required">*</span></label>
-                    <div class="col-md-9 item form-inline">
-                        <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control" title="배너 이미지">
+                    <label class="control-label col-md-1-1" for="attach_img">배너이미지<span class="required">*</span></label>
+                    <div class="col-md-10 item form-inline">
+                        <div class="title">
+                            <div class="filetype">
+                                <input type="text" class="form-control file-text" disabled="">
+                                <button class="btn btn-primary mb-0" type="button">파일 선택</button>
+                                <span class="file-select file-btn">
+                                <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="배너 이미지">
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     @if($method == 'PUT')
                     <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
@@ -146,53 +147,53 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-2 item form-inline">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="hover mr-5">사용</label>
-                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="">미사용</label>
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="order_num">정렬</label>
-                    <div class="col-md-1">
+                    <label class="control-label col-md-1-1 d-line" for="order_num">정렬</label>
+                    <div class="col-md-4 ml-12-dot">
                         <input type="text" id="order_num" name="order_num" class="form-control" maxlength="3" title="정렬" value="{{ $data['OrderNum'] }}" >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="desc">설명</label>
-                    <div class="col-md-9">
+                    <label class="control-label col-md-1-1" for="desc">설명</label>
+                    <div class="col-md-10">
                         <textarea id="desc" name="desc" class="form-control" rows="3" title="설명" placeholder="">{!! $data['Desc'] !!}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">등록자
-                    </label>
-                    <div class="col-md-3">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
-                    </div>
-                    <label class="control-label col-md-2">등록일
+                    <label class="control-label col-md-1-1">등록자
                     </label>
                     <div class="col-md-4">
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line">등록일
+                    </label>
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <label class="control-label col-md-2">최종 수정자
-                    </label>
-                    <div class="col-md-3">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
-                    </div>
-                    <label class="control-label col-md-2">최종 수정일
+                    <label class="control-label col-md-1-1">최종 수정자
                     </label>
                     <div class="col-md-4">
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line">최종 수정일
+                    </label>
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>
 
-                <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="form-group text-center btn-wrap mt-50">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>

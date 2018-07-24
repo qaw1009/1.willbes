@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <div class="inline-block item">
                             <select class="form-control" id="campus_ccd" name="campus_ccd" required="required">
                                 <option value="">캠퍼스</option>
@@ -76,7 +76,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">적용요일 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline mt-5 item">
+                    <div class="col-md-4 form-inline mt-5 ml-12-dot item">
                         <input type="checkbox" name="week[]" class="flat" > <span class="day">일</span>
                         <input type="checkbox" name="week[]" class="flat" > <span class="day">월</span>
                         <input type="checkbox" name="week[]" class="flat" > <span class="day">화</span>
@@ -127,7 +127,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">점심시간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <div class="form-inline item">
                             <select class="form-control" id="" name="" required="required">
                                 <option value="">00</option>
@@ -176,7 +176,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">상담인원/1회 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline item">
+                    <div class="col-md-4 form-inline ml-12-dot item">
                         <input type="text" id="" name="" class="form-control" title="강좌명" required="required" placeholder="" value="" style="width: 60px;"> 명
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">사용여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-4 ml-12-dot item">
                         <div class="form-inline">
                             <div class="radio mr-30">
                                 <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" checked="checked"/> <label for="is_use_y" class="input-label">사용</label>
@@ -292,7 +292,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">2018-00-00 00:00</p>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">최종수정일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">2018-00-00 00:00</p>
                     </div>
                 </div>

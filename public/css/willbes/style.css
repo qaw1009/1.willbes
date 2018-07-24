@@ -3511,6 +3511,11 @@ ul.btnWrap li {
     padding: 25px 20px;
     margin-left: 5px;
 }
+.couponBox .tabContent {
+    height: 175px;
+    overflow-x: auto;
+    border-top: 1px solid #959595;
+}
 table.couponTable {
     font-size: 11px;
     text-align: center;

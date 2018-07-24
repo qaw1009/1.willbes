@@ -115,7 +115,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">강의실 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <div class="form-inline item">
                             <input type="text" id="" name="" class="form-control" required="required" title="" value="" style="width: 250px;">
                             <select class="form-control" id="" name="" required="required">
@@ -134,7 +134,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">사용여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-4 ml-12-dot item">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" checked="checked"/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N"/> <label for="is_use_n" class="input-label">미사용</label>
@@ -215,7 +215,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">2018-00-00 00:00</p>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">수정일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">2018-00-00 00:00</p>
                     </div>
                 </div>

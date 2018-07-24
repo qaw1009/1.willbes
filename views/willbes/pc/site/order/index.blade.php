@@ -165,10 +165,14 @@
                 </dl>
             </div>
             <div class="p-info tx-gray c_both">
-                • {{ $results['cart_type_name'] }} 포인트는 <span class="tx-light-blue">6,000P</span> 부터 <span class="tx-light-blue">1P</span> 단위로 사용 가능하며, 주문금액의 <span class="tx-light-blue">80%</span>까지만 사용 가능합니다.
+                • {{ $results['cart_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
+                    <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 사용 가능하며,
+                    주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만 사용 가능합니다.
             </div>
         </div>
         <!-- willbes-Cart-Price -->
+        @if($results['is_delivery_info'] === true)
+        {{-- 여부배송정보 : Y --}}
         <div class="willbes-Delivery-Info c_both">
             <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
             <div class="deliveryInfoTable GM">
@@ -199,9 +203,9 @@
                             <th class="w-list" rowspan="6">받는사람<br/>정보<br/><span class="tx-light-blue">(* 필수입력항목)</span></th>
                             <td class="tx-left pl20 u-delivery-chk" colspan="2">
                                 <ul>
-                                    <li><input type="radio" id="addr_e_type" name="addr_type" value="E" checked="checked" class=""/><label>구매자 정보와 동일</label></li>
-                                    <li><input type="radio" id="addr_r_type" name="addr_type" value="R" class=""/><label>최근 배송지</label></li>
-                                    <li><input type="radio" id="addr_d_type" name="addr_type" value="D" class=""/><label>직접입력</label></li>
+                                    <li><input type="radio" name="addr_type" value="E" checked="checked" class=""/><label>구매자 정보와 동일</label></li>
+                                    <li><input type="radio" name="addr_type" value="R" class=""/><label>최근 배송지</label></li>
+                                    <li><input type="radio" name="addr_type" value="D" class=""/><label>직접입력</label></li>
                                     <li><span class="btnAll NSK"><a href="#none" id="btn_my_addr_list">나의 배송 주소록</a></span></li>
                                 </ul>
                             </td>
@@ -283,6 +287,7 @@
                 </table>
             </div>
         </div>
+        @endif
         <!-- willbes-Delivery-Info -->
         <div class="willbes-BuyInfo c_both">
             <div class="willbes-Lec-Tit NG tx-black">결제정보</div>
@@ -298,10 +303,13 @@
                             <td class="w-buyinfo tx-left pl25">
                                 <dl>
                                     <dt>
-                                        <span class="t-price tx-light-blue NGEB">188,600원</span> [신용카드]
-                                        <span class="w-point">적립예정포인트:<span class="tx-light-blue">343원</span></span>
+                                        <span class="t-price tx-light-blue NGEB">{{ number_format($results['total_price'] + $results['delivery_price']) }}원</span>
+                                        <span id="pay_method_name">[신용카드]</span>
+                                        <span class="w-point">적립예정포인트: <span class="tx-light-blue">343원</span></span>
                                     </dt>
-                                    <dt><div class="caution-txt">회원님께서는<span class="tx-red">도서산간,제주도배송지대상자로배송료2,500원이추가</span>로적용되었습니다.</div></dt>
+                                    <dt>
+                                        <div class="caution-txt">회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 {{ number_format(config_app('DeliveryAddPrice')) }}원이 추가</span>로 적용 되었습니다.</div>
+                                    </dt>
                                 </dl>
                             </td>
                         </tr>
@@ -311,29 +319,32 @@
                                 <dl>
                                     <dt>
                                         <ul>
-                                            <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>신용카드</label></li>
-                                            <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>실시간 계좌이체</label></li>
-                                            <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>무통장입금(가상계좌)</label></li>
+                                        @foreach(explode(',', $__cfg['PayMethodCcdArr']) as $idx => $val)
+                                            <li><input type="radio" name="pay_method_ccd" value="{{ str_first_pos_before($val, ':') }}" data-pay-method-name="{{ str_first_pos_after($val, ':') }}" @if($idx == 0) checked="checked" @endif/><label>{{ str_first_pos_after($val, ':') }}</label></li>
+                                        @endforeach
                                         </ul>
                                     </dt>
-                                    <dt><div class="caution-txt">인터넷 공인인증서가 필요합니다.</div></dt>
+                                    <dt id="pay_method_caution_txt"><div class="caution-txt">카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.</div></dt>
                                 </dl>
                             </td>
                         </tr>
-                        <tr>
+                        @if($results['is_delivery_info'] === true)
+                        {{-- 여부배송정보 : Y, 결제수단이 실시간 계좌이체, 무통장입금(가상계좌) 일 경우 --}}
+                        <tr id="is_escrow" style="display: none;">
                             <td class="w-list bg-light-white">에스크로<br/>사용여부</td>
                             <td class="w-buyinfo tx-left pl25">
                                 <dl>
                                     <dt>
                                         <ul>
-                                            <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>사용</label></li>
-                                            <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>미사용</label></li>
+                                            <li><input type="radio" name="is_escrow" value="Y" class=""/><label>사용</label></li>
+                                            <li><input type="radio" name="is_escrow" value="N" class="" checked="checked"/><label>미사용</label></li>
                                         </ul>
                                     </dt>
                                     <dt><div class="caution-txt">[에스크로란?] 회원님께서 결제하신 금액을 에스크로업체에서 예치하고 있다가 상품이 회원님께 소중히 전달된 후 판매자에게 지불되는 방식</div></dt>
                                 </dl>
                             </td>
                         </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -417,7 +428,7 @@
         </div>
         <!-- willbes-PolicyInfo -->
     </form>
-        <div id="Coupon" class="willbes-Layer-Black">
+        <div id="Coupon"class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('Coupon')">
                     <img src="{{ img_url('cart/close_cart.png') }}">
@@ -460,10 +471,10 @@
                             <li class="subBtn white NSK"><a href="#none">쿠폰 적용 안함 ></a></li>
                             <li class="subBtn NSK"><a href="#none">쿠폰 적용 ></a></li>
                         </ul>
-                        <div class="tabBox">
+                        <div class="tabBox couponBox">
                             <div class="coupon caution-txt">내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</div>
                             <div id="coupon1" class="tabContent">
-                                <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 50px;">
                                         <col style="width: 50px;">
@@ -503,11 +514,29 @@
                                         <td>40일</td>
                                         <td>3일</td>
                                     </tr>
+                                    <tr>
+                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td>교재</td>
+                                        <td>123456789</td>
+                                        <td>회원가입 축하 쿠폰2</td>
+                                        <td>1,000원</td>
+                                        <td>365일</td>
+                                        <td>300일</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td>강좌</td>
+                                        <td>987654321</td>
+                                        <td>회원가입 축하 쿠폰3</td>
+                                        <td>100,000원</td>
+                                        <td>10일</td>
+                                        <td>1일</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div id="coupon2" class="tabContent" style="display: none;">
-                                <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 60px;">
                                         <col style="width: 130px;">
@@ -542,6 +571,22 @@
                                         <td>5,000원</td>
                                         <td>40일</td>
                                         <td>3일</td>
+                                    </tr>
+                                    <tr>
+                                        <td>교재2</td>
+                                        <td>1234564789</td>
+                                        <td>회원가입 축하 쿠폰2</td>
+                                        <td>245,000원</td>
+                                        <td>720일</td>
+                                        <td>365일</td>
+                                    </tr>
+                                    <tr>
+                                        <td>교재3</td>
+                                        <td>987654321</td>
+                                        <td>회원가입 축하 쿠폰3</td>
+                                        <td>2,500원</td>
+                                        <td>777일</td>
+                                        <td>123일</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -698,6 +743,30 @@
                 return;
             }
             $regi_form.find('#delivery_memo_byte').html(byte_cnt);
+        });
+
+        // 결제수단 선택
+        $regi_form.find('input[name="pay_method_ccd"]').on('click', function() {
+            var code = $(this).val();
+            var caution_txt = '';
+
+            // 에스크로 필드 노출 여부
+            if ($regi_form.find('.willbes-Delivery-Info').length > 0) {
+                if (code === '604001') {
+                    $regi_form.find('#is_escrow').css('display', '');   // 신용카드 일 경우
+                } else {
+                    $regi_form.find('#is_escrow').css('display', 'none');
+                }
+            }
+
+            // 결제수단별 주의사항
+            if (code === '604001') {
+                caution_txt = '<div class="caution-txt">카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.</div>';
+            }
+            $regi_form.find('#pay_method_caution_txt').html(caution_txt);
+
+            // 선택한 결제수단명 노출
+            $regi_form.find('#pay_method_name').html('[' + $(this).data('pay-method-name') + ']');
         });
     });
 </script>

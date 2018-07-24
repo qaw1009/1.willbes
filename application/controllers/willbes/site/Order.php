@@ -3,10 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF', 'memberF', '_lms/sys/wCode');
+    protected $models = array('order/cartF', 'order/orderF', 'memberF', '_lms/sys/code', '_lms/sys/wCode');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
+
+    // 사용하는 그룹공통코드
+    private $_ccd = [
+        'Tel1' => '101', 'Phone1' => '102', 'PayMethod' => '604'
+    ];
 
     public function __construct()
     {
@@ -87,11 +92,11 @@ class Order extends \app\controllers\FrontController
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
         // 지역번호, 휴대폰번호 공통코드 조회
-        $codes = $this->wCodeModel->getCcdInArray(['101', '102']);
+        $wcodes = $this->wCodeModel->getCcdInArray([$this->_ccd['Tel1'], $this->_ccd['Phone1']]);
 
         $this->load->view('site/order/index', [
-            'arr_tel1_ccd' => $codes['101'],
-            'arr_phone1_ccd' => $codes['102'],
+            'arr_tel1_ccd' => $wcodes[$this->_ccd['Tel1']],
+            'arr_phone1_ccd' => $wcodes[$this->_ccd['Phone1']],
             'results' => $results
         ]);
     }

@@ -10,6 +10,11 @@ $config['img_base_path'] = PUBLICURL . 'img/' . APP_NAME . '/';
 // URI 세그먼트 지정
 $config['uri_segment_keys'] = ['site' => 'site', 'cate' => 'cate'];
 
+// 사용 포인트 설정
+$config['use_min_point'] = '2500';  // 최소 사용 포인트
+$config['use_point_unit'] = '1';    // 포인트 사용 단위
+$config['use_max_point_rate'] = '80';   // 주문금액 대비 포인트 사용 가능 최대 비율
+
 // 통합사이트 설정
 $config['www'] = array(
 

@@ -219,9 +219,9 @@ function showValidateError(result, status, error_view)
             $.each(result, function(key, value) {
                 setValidateHasError(key);
             });
-        }
 
-        $('html,body').scrollTop(0);
+            $('html,body').scrollTop(0);
+        }
     } else {
         var err_msg = result.ret_msg || '';
         if (err_msg === '') {

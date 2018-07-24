@@ -31,14 +31,29 @@ class Order extends \app\controllers\FrontController
         $total_price = 0;
         $arr_is_freebies_trans = [];
         foreach ($list as $idx => $row) {
-            // 장바구니 구분과 실제 상품구분 값 비교
-            if ($cart_type != $row['CartProdType']) {
+            // 장바구니 구분과 실제 상품구분 값 비교 (강좌 : on_lecture, 교재 : book)
+            if ($cart_type != $row['CartType']) {
                 show_alert('필수 파라미터 오류입니다.', site_url('/cart/index/cate/' . $this->_cate_code), false);
             }
 
-            $row['CartProdTypeName'] = $this->orderFModel->_cart_prod_type_name[$row['CartProdType']];  // 상품구분명
-            $row['CartProdTypeNum'] = array_flip(array_keys($this->orderFModel->_cart_prod_type_name))[$row['CartProdType']] + 1;   // 상품구분명 class number
-            $results['list'][] = $row;
+            // 상품구분명 / 상품구분명 색상 class 번호 (단강좌 : on_lecture / 1, 패키지: on_package / 2, 교재 : book / 3)
+            $row['CartProdTypeName'] = $this->orderFModel->_cart_prod_type_name[$row['CartProdType']];
+            $row['CartProdTypeNum'] = array_flip(array_keys($this->orderFModel->_cart_prod_type_name))[$row['CartProdType']] + 1;
+
+            // 강좌시작일 설정
+            $row['DefaultStudyStartDate'] = $row['DefaultStudyEndDate'] = $row['IsStudyStartDate'] = '';
+            if ($row['IsLecStart'] == 'Y') {
+                if (empty($row['StudyStartDate']) === false && date('Y-m-d') < $row['StudyStartDate']) {
+                    // 개강일이 오늘 날짜보다 이후 인 경우 (개강하지 않은 상품)
+                    $row['DefaultStudyStartDate'] = $row['StudyStartDate'];
+                    $row['IsStudyStartDate'] = 'N';
+                } else {
+                    // 이미 개강한 상품
+                    $row['DefaultStudyStartDate'] = date('Y-m-d', strtotime(date('Y-m-d') . ' +8 day'));
+                    $row['IsStudyStartDate'] = 'Y';
+                }
+                $row['DefaultStudyEndDate'] = date('Y-m-d', strtotime($row['DefaultStudyStartDate'] . ' +' . ($row['StudyPeriod'] - 1) . ' day'));
+            }
 
             // 강좌상품일 경우 사은품/무료교재 배송료 부과여부
             if ($row['CartProdType'] == 'on_lecture') {
@@ -52,6 +67,8 @@ class Order extends \app\controllers\FrontController
 
             // 전체 주문금액
             $total_price += $row['RealSalePrice'];
+
+            $results['list'][] = $row;
         }
 
         // 배송료 계산

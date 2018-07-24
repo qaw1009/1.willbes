@@ -37,9 +37,6 @@ class MyDeliveryAddress extends \app\controllers\FrontController
      */
     public function store()
     {
-        logger('process1');
-        return $this->json_error('로그인 후 이용해 주십시오.', _HTTP_UNAUTHORIZED);
-        logger('process2');
         $rules = [
             ['field' => 'addr_name', 'label' => '배송지', 'rules' => 'trim|required'],
             ['field' => 'receiver', 'label' => '이름', 'rules' => 'trim|required'],
@@ -64,11 +61,10 @@ class MyDeliveryAddress extends \app\controllers\FrontController
         if ($this->validate($rules) === false) {
             return;
         }
-        logger('process3');
+
         $result = $this->myDeliveryAddressFModel->{$method . 'MyDeliveryAddress'}($this->_reqP(null, false));
-        logger('process4');
+
         $this->json_result($result, '등록 되었습니다.', $result);
-        logger('process5');
     }
 
     /**

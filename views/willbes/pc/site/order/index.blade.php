@@ -23,7 +23,7 @@
                     <tbody>
                         <tr><td>• 해당 상품의 강좌시작일 설정은 결제일로부터 30일 범위 내로 설정 가능합니다.</td></tr>
                         <tr><td>• 해당 상품의 강좌시작일을 설정하지 않은 경우 결제일로부터 7일 후 강좌가 자동 시작됩니다.</td></tr>
-                        <tr><td>• 해당 상품의 강좌의 개강일이 결제일보다 이후인 경우 개강일에 자동 시작됩니다.</td></tr>
+                        <tr><td>• 해당 상품의 개강일이 설정한 강좌시작일 이후 인 경우 해당 강좌시작일은 개강일로 자동 셋팅됩니다.</td></tr>
                         <tr><td>• 배송 상품은 당일 오후 1시까지 결제한 상품에 한해 당일 발송 처리됩니다. (토,일,공휴일제외)</td></tr>
                     </tbody>
                 </table> 
@@ -64,11 +64,12 @@
                                                 <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
                                                 <span class="w-data">
                                                     [강좌시작일 설정]
+                                                    {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능 --}}
+                                                    {{-- 디폴트 설정 => 시작일자 : 결제일 + 8일, 종료일자 : 시작일자 + 수강기간 --}}
                                                     @if($row['IsLecStart'] == 'Y')
-                                                        <input type="text" name="study_start_date[]" class="iptDate datepicker" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')) }}"/>
+                                                        <input type="text" name="study_start_date[]" class="iptDate datepicker btn-set-study-date" data-study-period="{{ $row['StudyPeriod'] }}" data-is-study-start-date="{{ $row['IsStudyStartDate'] }}" value="{{ $row['DefaultStudyStartDate'] }}" readonly="readonly"/>
                                                         <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
-                                                        <input type="text" name="study_end_date[]" class="iptDate datepicker" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +8 day')) }}"/>
-                                                        <img src="{{ img_url('cart/icon_calendar.gif') }}">
+                                                        <input type="text" name="study_end_date[]" class="iptDate bg-gray" value="{{ $row['DefaultStudyEndDate'] }}" readonly="readonly"/>
                                                     @else
                                                         <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
                                                     @endif
@@ -201,7 +202,7 @@
                                     <li><input type="radio" id="addr_e_type" name="addr_type" value="E" checked="checked" class=""/><label>구매자 정보와 동일</label></li>
                                     <li><input type="radio" id="addr_r_type" name="addr_type" value="R" class=""/><label>최근 배송지</label></li>
                                     <li><input type="radio" id="addr_d_type" name="addr_type" value="D" class=""/><label>직접입력</label></li>
-                                    <li><span class="btnAll NSK"><a href="#none" id="btn_my_delivery_address">나의 배송 주소록</a></span></li>
+                                    <li><span class="btnAll NSK"><a href="#none" id="btn_my_addr_list">나의 배송 주소록</a></span></li>
                                 </ul>
                             </td>
                         </tr>
@@ -218,7 +219,7 @@
                                         <button type="button" onclick="searchPost('SearchPost', 'zipcode', 'addr1');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
                                             <span>우편번호 찾기</span>
                                         </button>
-                                        <span class="btnAdd underline"><a href="#none" onclick="alert('입력한 주소를 나의 배송 주소록에 등록하시겠습니까?')">[나의 배송 주소록에 등록하기]</a></span>
+                                        <span class="btnAdd underline"><a href="#none" id="btn_my_addr_regist">[나의 배송 주소록에 등록하기]</a></span>
                                         <div id="SearchPost" class="willbes-Layer-Black">
                                             <div class="willbes-Layer-CartBox">
                                                 <a class="closeBtn" href="#none" onclick="closeSearchPost('SearchPost');">
@@ -566,13 +567,70 @@
     var $regi_form = $('#regi_form');
 
     $(document).ready(function() {
+        // 강좌종료일 설정
+        $regi_form.on('change keyup input', '.btn-set-study-date', function() {
+            var default_date = $(this).prop('defaultValue')
+                , selected_date = $(this).val()
+                , event_idx = $(this).index('.btn-set-study-date')
+                , study_days = $(this).data('study-period')
+                , is_study_start_date = $(this).data('is-study-start-date')
+                , base_date = moment().format('YYYY-MM-DD')
+                , after30_date = moment().add(29, 'days').format('YYYY-MM-DD')
+                , text_date = '결제일';
+
+            if (is_study_start_date === 'N') {
+                // 개강일이 결제일 이후 일 경우
+                base_date = default_date;
+                after30_date = moment(base_date).add(29, 'days').format('YYYY-MM-DD');
+                text_date = '개강일';
+            }
+
+            if (base_date > selected_date || after30_date < selected_date) {
+                alert('강좌시작일은 ' + text_date + ' 이후부터 30일 이내의 날짜여야만 합니다.');
+                $(this).datepicker('update', default_date);
+                return;
+            }
+
+            // 강좌종료일 설정
+            $regi_form.find('input[name="study_end_date[]"]').eq(event_idx).val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
+        });
+
         // 나의 배송 주소록 버튼 클릭
-        $regi_form.on('click', '#btn_my_delivery_address', function() {
+        $regi_form.on('click', '#btn_my_addr_list', function() {
             var ele_id = 'MyAddress';
             var data = { 'ele_id' : ele_id };
             sendAjax('{{ site_url('/myDeliveryAddress/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
+        });
+
+        // 나의 배송 주소록 등록하기 버튼 클릭
+        $regi_form.on('click', '#btn_my_addr_regist', function() {
+            if (confirm('입력한 주소를 나의 배송 주소록에 등록하시겠습니까?')) {
+                var url = '{{ site_url('/myDeliveryAddress/store') }}';
+                var data = {
+                    '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'POST',
+                    'addr_name' : '입력주소',
+                    'receiver' : $regi_form.find('input[name="receiver"]').val(),
+                    'receiver_phone' : $regi_form.find('input[name="receiver_phone"]').val(),
+                    'receiver_phone1' : $regi_form.find('select[name="receiver_phone1"]').val(),
+                    'receiver_phone2' : $regi_form.find('input[name="receiver_phone2"]').val(),
+                    'receiver_phone3' : $regi_form.find('input[name="receiver_phone3"]').val(),
+                    'receiver_tel' : $regi_form.find('input[name="receiver_tel"]').val(),
+                    'receiver_tel1' : $regi_form.find('select[name="receiver_tel1"]').val(),
+                    'receiver_tel2' : $regi_form.find('input[name="receiver_tel2"]').val(),
+                    'receiver_tel3' : $regi_form.find('input[name="receiver_tel3"]').val(),
+                    'zipcode' : $regi_form.find('input[name="zipcode"]').val(),
+                    'addr1' : $regi_form.find('input[name="addr1"]').val(),
+                    'addr2' : $regi_form.find('input[name="addr2"]').val()
+                };
+                sendAjax(url, data, function (ret) {
+                    if (ret.ret_cd) {
+                        alert(ret.ret_msg);
+                    }
+                }, showValidateError, false, 'POST');
+            }
         });
 
         // 배송 주소지 선택

@@ -5640,10 +5640,9 @@ table.PassZoneTable .w-lec .w-btn a {
 @media only screen and (max-width: 768px) {
 
     body {
-        font-size: 16px;
-        font-family: "Malgun Gothic", "맑은 고딕", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
         min-width: 360px;
     }
+
     /* Basic Code */
     .widthAuto,
     .widthAuto320,
@@ -5663,38 +5662,45 @@ table.PassZoneTable .w-lec .w-btn a {
 
     /* Login Form : 공통 */
     .mem-Tit {
-        padding: 9% 0 18%;
+        text-align: center;
+        padding: 35px 0 70px;
     }
     .Member {
         padding: 0 5%;
     }
     .Member .inputBox {
-        text-align: center;
+        height: auto;
     }
     .Member .inputBox input.sm {
-        float: left;
-        width: 388px;
+        width: 100%;
     }
     .Member .inputBox input.certi {
-        float: left;
-        width: 350px;
+        width: 100%;
     }
     .Member .inputBox input.iptEmail01 {
-        width: 31%;
+        width: 50%;
     }
     .Member .inputBox input.iptEmail02 {
-        width: 31%;
+        width: 44%;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
     .Member .inputBox select.seleEmail {
-        float: inherit; 
-        width: 28%;
-        display: inline-block;
+        float: right; 
+        width: 44%;
+        height: 38px;
+        position: absolute;
+        top: 40px;
+        right: 0;
     }
     .Member .inputBox button.sm {
-        width: 72px;
+        width: 100%;
+        height: 38px;
     }
     .Member .inputBox button.certi {
-        width: 110px;
+        width: 100%;
+        height: 38px;
     }
     .Member .user-Txt {
         font-size: 15px;
@@ -5708,11 +5714,6 @@ table.PassZoneTable .w-lec .w-btn a {
     .Member .user-Txt span {
         font-weight: 600;
         vertical-align: baseline;
-    }
-    .Member .info-Txt {
-        font-size: 12px;
-        text-align: center;
-        line-height: 22px;
     }
     .Member .info-Txt-Wrap {
         background: #f5f5f5;
@@ -5740,7 +5741,11 @@ table.PassZoneTable .w-lec .w-btn a {
         width: 33.333333333333%;
         height: 34px;
     }
+    .Member .tabs.half li {
+        width: 50%;
+    }
     .Member .tabs li a {
+        background: none;
         color: #959595;
         text-align: center;
         line-height: 34px;
@@ -5749,11 +5754,12 @@ table.PassZoneTable .w-lec .w-btn a {
         height: 100%;
         border-top: 1px solid #e1e1e1;
         border-right: 1px solid #e1e1e1;
+        border-left: none;
     }
     .Member .tabs li:first-child a {
         border-left: 1px solid #e1e1e1;    
     }
-    .Member .tabs li.on a {
+    .Member .tabs li a.on {
         background: #fff;
         height: 35px;
         font-weight: 600;
@@ -5762,68 +5768,93 @@ table.PassZoneTable .w-lec .w-btn a {
         border-left: 1px solid #0d74ae;
         border-right: 1px solid #0d74ae;
     }
-    .Member .tabWrap.tabs-Certi {
+    .Member .tabs-Certi {
         height: 140px;
         border-bottom: none;
     }
-    .Member .tabWrap.tabs-Certi li {
+    .Member .tabs-Certi li {
         float: left;
         width: 33.333333333333%;
+        height: auto;
         text-align: center;
     }
-    .Member .tabWrap.tabs-Certi li a {
+    .Member .tabs-Certi li a {
         display: block; 
         width: 86px;
         height:93px;
         margin: 0 auto;
+        border: none;
+        font-weight: 300;
+        line-height: inherit;
     }
-    .Member .tabWrap.tabs-Certi li a div {
+    .Member .tabs-Certi li a div {
         color: #4d4d4d;
         padding-top: 100px;
     }
-    .Member .tabWrap.tabs-Certi li.on a {
+    .Member .tabs-Certi li a.on {
         height:140px;
+        border: none;
     }
     .Member .tabWrap.tabs-Certi li#tab1 a {
         background: url("../../img/willbes/login/icon_phone.gif") no-repeat 0 0;
     }
-    .Member .tabWrap.tabs-Certi li#tab1.on a {
+    .Member .tabs-Certi li#tab1 a.on {
         background: url("../../img/willbes/login/icon_phone_on.gif") no-repeat 0 0;
     }
-    .Member .tabWrap.tabs-Certi li#tab2 a {
+    .Member .tabs-Certi li#tab2 a {
         background: url("../../img/willbes/login/icon_email.gif") no-repeat 0 0;
     }
-    .Member .tabWrap.tabs-Certi li#tab2.on a {
+    .Member .tabs-Certi li#tab2 a.on {
         background: url("../../img/willbes/login/icon_email_on.gif") no-repeat 0 0;
     }
-    .Member .tabWrap.tabs-Certi li#tab3 a {
+    .Member .tabs-Certi li#tab3 a {
         background: url("../../img/willbes/login/icon_ipin.gif") no-repeat 0 0;
     }
-    .Member .tabWrap.tabs-Certi li#tab3.on a {
+    .Member .tabs-Certi li#tab3 a.on {
         background: url("../../img/willbes/login/icon_ipin_on.gif") no-repeat 0 0;
     }
-    .Member .tabWrap.tabs-Certi img {
+    .Member .tabs-Certi img {
         margin-top: 20px;
     }
-    .Member .tabWrap.tabs-Step {
-        height: 30px;
-        line-height: 25px;
+    .Member .tabs-Step {
+        margin-bottom: 15px !important;
     }
-    .Member .tabWrap.tabs-Step li {
-        float: left;
-        width: 33.333333333333%;
-        font-size: 15px;
-        font-weight: 600;
-        color: #959595;
-        text-align: center;
-        border-bottom: 5px solid #e2e2e2;
-    }
-    .Member .tabWrap.tabs-Step li.on {
-        color: #323232;
-        border-bottom: 5px solid #0d74ae;
+    .Member .tabs-Step li {
+        font-size: 12px;
     }
 
+
     /* Login Form : 로그인 */
+    .mem-Login button.mem-Btn {
+        height: 40px;
+    }
+    .mem-Login .chkBox {
+        margin-bottom: 20px;
+    }
+    .mem-Login .chkBox ul {
+        height: 20px;
+    }
+    .mem-Login .chkBox ul li {
+        float: left;
+        width: 50%;
+        line-height: 18px;
+    }
+    .mem-Login .chkBox ul li input[type=checkbox] {
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin: 0;
+        cursor: pointer;
+    }
+    .mem-Login .chkBox ul li .labelSave {
+        padding-left: 10px;
+    }
+    .mem-Login .chkBox ul li.chkBox-Search {
+        text-align: right;
+    }
+    .mem-Login .chkBox ul li.chkBox-Search span {
+        border-bottom: 1px solid #707070;
+    }
     table.joinTable {
         width: 100%;
         border-top: 1px solid #e2e2e2;
@@ -5871,10 +5902,8 @@ table.PassZoneTable .w-lec .w-btn a {
         text-align: center;
     }
     .mem-Password .password-Btn ul li {
-        width: 164px;
-        height: 36px;
-        display: inline-block;
-        margin: 0 3px;
+        width: 30.33333333%;
+        margin: 0 1%;
     }
 
     /* Login Form : 비밀번호 5회입력 오류 */
@@ -5926,41 +5955,25 @@ table.PassZoneTable .w-lec .w-btn a {
         text-align: center;
     }
     .mem-SearchFin .searchfin-Btn ul li {
-        display: inline-block;
-        margin: 0 13px;
-    }
-
-    /* Login Form : 휴면회원 해제 */
-    .mem-SearchClear .info-Txt a {
-        text-decoration:underline;
+        width: 45% !important;
+        margin: 0 1%;
     }
 
     /* Login Form : 유효기간경과 */
     .mem-Expired .user-Txt {
         position: relative; 
         left: 50%;
-        background: url("../../img/willbes/login/icon_wrong.gif") no-repeat 0 0;
-        width: 300px;
+        background-size: 45px;
+        width: 90%;
         line-height: 49px;
-        padding-left: 70px;
+        padding-left: 60px;
         margin-left: -150px;
     }
-    .mem-Expired .info-Txt {
-        background: #f5f5f5;
-        border-top: 1px solid #e2e2e2;
-        border-bottom: 1px solid #e2e2e2; 
-        padding-top: 45px;
-        padding-bottom: 45px;
-        margin-top: 80px;
-    }
     .mem-Expired .info-Txt .info-Txt-box {
-        position: relative;
-        left: 50%;
-        background: url("../../img/willbes/login/icon_expired.gif") no-repeat 0 0;
-        width: 500px;
-        font-size: 15px;
-        padding-left: 190px;
-        margin-left: -250px;
+        background-size: 75px;
+        width: 90%;
+        padding-left: 90px;
+        margin-left: -150px;
     }
     .mem-Expired .expired-Btn {
         margin: 30px 0 0 0;
@@ -6000,6 +6013,12 @@ table.PassZoneTable .w-lec .w-btn a {
     table.combineTable .inputBox {
         height: 26px;
         margin-bottom: 0;
+    }
+    table.combineTable .inputBox label {
+        font-size: 12px;
+        position: absolute;
+        top: 7px;
+        left: 6px;
     }
     table.combineTable .inputBox input {
         float: left;
@@ -6227,5 +6246,8 @@ table.PassZoneTable .w-lec .w-btn a {
     table.auTable tr td {
         padding-left: 20px;
     }
+
+
+
 
 }

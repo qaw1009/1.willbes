@@ -14,55 +14,55 @@
         </div>
         <div class="x_content">
             <div class="form-group">
-                <label class="control-label col-md-2">제목</label>
-                <div class="form-control-static col-md-9">{{$data['EventName']}}</div>
+                <label class="control-label col-md-1-1">제목</label>
+                <div class="form-control-static col-md-10">{{$data['EventName']}}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">운영사이트</label>
-                <div class="form-control-static col-md-2">{{$data['SiteName']}}</div>
-                <label class="control-label col-md-2">캠퍼스</label>
-                <div class="form-control-static col-md-2">{{$data['CampusName']}}</div>
+                <label class="control-label col-md-1-1">운영사이트</label>
+                <div class="form-control-static col-md-4">{{$data['SiteName']}}</div>
+                <label class="control-label col-md-1-1 d-line">캠퍼스</label>
+                <div class="form-control-static col-md-4 ml-12-dot">{{$data['CampusName']}}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">카테고리 정보</label>
-                <div class="form-control-static col-md-2">{{$data['CateNames']}}</div>
+                <label class="control-label col-md-1-1">카테고리 정보</label>
+                <div class="form-control-static col-md-10">{{$data['CateNames']}}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">신청유형</label>
-                <div class="form-control-static col-md-2">{{$data['RequstTypeName']}}</div>
-                <label class="control-label col-md-2">진행일시</label>
-                <div class="form-control-static col-md-2">진행일시</div>
+                <label class="control-label col-md-1-1">신청유형</label>
+                <div class="form-control-static col-md-4">{{$data['RequstTypeName']}}</div>
+                <label class="control-label col-md-1-1 d-line">진행일시</label>
+                <div class="form-control-static col-md-4 ml-12-dot">진행일시</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">참여구분</label>
-                <div class="form-control-static col-md-2">{{$data['TakeTypeName']}}</div>
-                <label class="control-label col-md-2">접수기간</label>
-                <div class="form-control-static col-md-2">{{$data['RegisterStartDate']}} ~ {{$data['RegisterEndDate']}}</div>
+                <label class="control-label col-md-1-1">참여구분</label>
+                <div class="form-control-static col-md-4">{{$data['TakeTypeName']}}</div>
+                <label class="control-label col-md-1-1 d-line">접수기간</label>
+                <div class="form-control-static col-md-4 ml-12-dot">{{$data['RegisterStartDate']}} ~ {{$data['RegisterEndDate']}}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">접수상태</label>
-                <div class="form-control-static col-md-2">{{$data['IsRegisterName']}}</div>
-                <label class="control-label col-md-2">사용여부</label>
-                <div class="form-control-static col-md-2">{{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}</div>
+                <label class="control-label col-md-1-1">접수상태</label>
+                <div class="form-control-static col-md-4">{{$data['IsRegisterName']}}</div>
+                <label class="control-label col-md-1-1 d-line">사용여부</label>
+                <div class="form-control-static col-md-4 ml-12-dot">{{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">프로모션 링크</label>
-                <div class="form-control-static col-md-9">{{$data['Link']}}</div>
+                <label class="control-label col-md-1-1">프로모션 링크</label>
+                <div class="form-control-static col-md-10">{{$data['Link']}}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">첨부</label>
-                <div class="form-control-static col-md-2">
+                <label class="control-label col-md-1-1">첨부</label>
+                <div class="form-control-static col-md-4">
                     @if (empty($file_data['F']) === false)
                         {{$file_data['F']['file_real_name']}}
                     @endif
                 </div>
-                <label class="control-label col-md-2">조회수(생성)</label>
-                <div class="form-control-static col-md-2">{{$data['ReadCnt']}} ({{$data['AdjuReadCnt']}})</div>
+                <label class="control-label col-md-1-1 d-line">조회수(생성)</label>
+                <div class="form-control-static col-md-4 ml-12-dot">{{$data['ReadCnt']}} ({{$data['AdjuReadCnt']}})</div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2">내용</label>
-                <div class="form-control-static col-md-9">
+                <label class="control-label col-md-1-1">내용</label>
+                <div class="form-control-static col-md-10">
                     @if ($data['ContentType'] == 'E')
                         {!! $data['Content'] !!}
                     @else
@@ -73,31 +73,31 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2">등록자
+                <label class="control-label col-md-1-1">등록자
                 </label>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
                 </div>
-                <label class="control-label col-md-2">등록일
+                <label class="control-label col-md-1-1 d-line">등록일
                 </label>
-                <div class="col-md-5">
+                <div class="col-md-4 ml-12-dot">
                     <p class="form-control-static">{{ $data['RegDatm'] }}</p>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2">최종 수정자
+                <label class="control-label col-md-1-1">최종 수정자
                 </label>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                 </div>
-                <label class="control-label col-md-2">최종 수정일
+                <label class="control-label col-md-1-1 d-line">최종 수정일
                 </label>
-                <div class="col-md-5">
+                <div class="col-md-4 ml-12-dot">
                     <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
                 </div>
             </div>
-            <div class="ln_solid"></div>
-            <div class="form-group text-center">
+
+            <div class="form-group text-center btn-wrap mt-50">
                 <button type="button" class="btn btn-success mr-10" id="btn_modify">수정</button>
                 <button type="button" class="btn btn-primary" id="btn_list">목록</button>
             </div>

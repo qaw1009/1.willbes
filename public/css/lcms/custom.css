@@ -732,6 +732,17 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     z-index: 999999;
 }
 
+/* text align */
+.tx-right {
+    text-align: right !important;
+} 
+.tx-left {
+    text-align: left !important;
+}
+.tx-center {
+    text-align: center !important;
+}
+
 /* clearfix */
 .clearfix {
     float: left;

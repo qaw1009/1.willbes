@@ -19,13 +19,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트 <span class="required">*</span>
                     </label>
-                    <div class="col-md-2">
+                    <div class="col-md-10">
                         <div class="form-inline inline-block item">
                             {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <p class="form-control-static">• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,10 +56,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">랜딩코드 <span class="required">*</span>
                     </label>
-                    <div class="col-md-1 form-control-static">{{$data['LIdx']}}</div>
-                    <div class="col-md-4 form-control-static">
-                        등록 시 자동 생성
-                    </div>
+                    <div class="col-md-4 ml-12-dot form-control-static">@if($method == 'PUT'){{$data['LIdx']}}@else # 등록 시 자동 생성 @endif</div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">노출기간
@@ -145,7 +141,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">등록일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegDatm'] }}@endif</p>
                     </div>
                 </div>
@@ -157,7 +153,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line">최종 수정일
                     </label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ml-12-dot">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>

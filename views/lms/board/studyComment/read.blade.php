@@ -13,19 +13,19 @@
         </div>
         <div class="x_content">
             <div class="form-group">
-                <label class="control-label col-md-2" for="">제목</label>
-                <div class="form-control-static col-md-9">
+                <label class="control-label col-md-1-1" for="">제목</label>
+                <div class="form-control-static col-md-10">
                     {!! ($data['IsBest'] == 'Y') ? '<span class="red">[HOT]</span>' : '' !!} {{$data['Title']}}
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">운영사이트</label>
-                <div class="form-control-static col-md-2">
+                <label class="control-label col-md-1-1" for="">운영사이트</label>
+                <div class="form-control-static col-md-4">
                     {{$data['SiteName']}}
                 </div>
-                <label class="control-label col-md-2" for="">구분</label>
-                <div class="form-control-static col-md-5">
+                <label class="control-label col-md-1-1 d-line" for="">구분</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
                     @foreach($data['arr_cate_code'] as $key => $val)
                         {{$val}} @if ($loop->last === false) | @endif
                     @endforeach
@@ -33,58 +33,58 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">과목명</label>
-                <div class="form-control-static col-md-2">
+                <label class="control-label col-md-1-1" for="">과목명</label>
+                <div class="form-control-static col-md-4">
                     {{$data['SubjectName']}}
                 </div>
-                <label class="control-label col-md-2" for="">교수명</label>
-                <div class="form-control-static col-md-2">
+                <label class="control-label col-md-1-1 d-line" for="">교수명</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
                     {{$data['ProfNickName']}}
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">강좌명</label>
-                <div class="form-control-static col-md-2">
+                <label class="control-label col-md-1-1" for="">강좌명</label>
+                <div class="form-control-static col-md-4">
                     {{$data['ProdCode']}}
                 </div>
-                <label class="control-label col-md-2" for="">평점</label>
-                <div class="col-md-2">
+                <label class="control-label col-md-1-1 d-line" for="">평점</label>
+                <div class="col-md-4 ml-12-dot">
                     <ul class="star-rating" id="starRating" data-stars="5" data-current="{{$data['LecScore']}}" data-static="true"></ul>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">사용</label>
-                <div class="form-control-static col-md-5">
+                <label class="control-label col-md-1-1" for="">사용</label>
+                <div class="form-control-static col-md-10">
                     {{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">첨부</label>
-                <div class="col-md-3">
+                <label class="control-label col-md-1-1" for="">첨부</label>
+                <div class="col-md-4">
                     @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
                                 <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
                             @endif
                     @endfor
                 </div>
-                <label class="control-label col-md-1" for="">조회수(생성)</label>
-                <div class="form-control-static col-md-5">
+                <label class="control-label col-md-1-1 d-line" for="">조회수(생성)</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
                     {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2" for="">내용</label>
-                <div class="form-control-static col-md-9">{!! $data['Content'] !!}</div>
+                <label class="control-label col-md-1-1" for="">내용</label>
+                <div class="form-control-static col-md-10">{!! $data['Content'] !!}</div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-2">등록자
+                <label class="control-label col-md-1-1">등록자
                 </label>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <p class="form-control-static">
                         @if($data['RegType'] == 1)
                             {{ $data['RegMemName'] }}
@@ -94,26 +94,27 @@
 
                     </p>
                 </div>
-                <label class="control-label col-md-2">등록일
+                <label class="control-label col-md-1-1 d-line">등록일
                 </label>
-                <div class="col-md-5">
+                <div class="col-md-4 ml-12-dot">
                     <p class="form-control-static">{{ $data['RegDatm'] }}</p>
                 </div>
             </div>
+
             <div class="form-group">
-                <label class="control-label col-md-2">최종 수정자
+                <label class="control-label col-md-1-1">최종 수정자
                 </label>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                 </div>
-                <label class="control-label col-md-2">최종 수정일
+                <label class="control-label col-md-1-1 d-line">최종 수정일
                 </label>
-                <div class="col-md-5">
+                <div class="col-md-4 ml-12-dot">
                     <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
                 </div>
             </div>
-            <div class="ln_solid"></div>
-            <div class="form-group text-center">
+
+            <div class="form-group text-center btn-wrap mt-50">
                 <button type="button" class="pull-left btn btn-danger" id="btn_delete">삭제</button>
                 <button type="button" class="pull-right btn btn-primary" id="btn_list">목록</button>
                 <button type="button" class="pull-right btn btn-success mr-10" id="btn_modify">수정</button>
@@ -127,8 +128,8 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2" for="btn_previous" style="margin-top: 7px;">이전글</label>
-            <div class="form-control-static col-md-9">
+            <label class="control-label col-md-1-1" for="btn_previous" style="margin-top: 7px;">이전글</label>
+            <div class="form-control-static col-md-10">
                 @if(count($board_previous) <= 0)
                     이전글이 없습니다.
                 @else
@@ -137,8 +138,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2" for="btn_next" style="margin-top: 7px;">다음글</label>
-            <div class="form-control-static col-md-9">
+            <label class="control-label col-md-1-1" for="btn_next" style="margin-top: 7px;">다음글</label>
+            <div class="form-control-static col-md-10">
                 @if(count($board_next) <= 0)
                     다음글이 없습니다.
                 @else

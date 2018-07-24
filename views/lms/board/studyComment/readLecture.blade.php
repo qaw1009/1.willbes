@@ -13,35 +13,35 @@
             </div>
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-2">운영사이트</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1">운영사이트</label>
+                    <div class="form-control-static col-md-4">
                         {{$product_data['SiteName']}}
                     </div>
-                    <label class="control-label col-md-2">구분</label>
-                    <div class="form-control-static col-md-5">
+                    <label class="control-label col-md-1-1 d-line">구분</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         {{$product_data['CateName']}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">과목명</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1">과목명</label>
+                    <div class="form-control-static col-md-4">
                         {{$product_data['SubjectName']}}
                     </div>
-                    <label class="control-label col-md-2">교수명</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1 d-line">교수명</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         {{$product_data['wProfName_String']}}
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">강좌명</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1">강좌명</label>
+                    <div class="form-control-static col-md-10">
                         {{$product_data['ProdName']}}
                     </div>
                 </div>
 
-                <div class="form-group text-center">
+                <div class="form-group text-center btn-wrap mt-50">
                     <button type="button" class="pull-right btn btn-primary" id="btn_list">목록</button>
                 </div>
             </div>

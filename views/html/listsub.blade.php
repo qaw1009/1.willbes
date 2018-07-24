@@ -74,6 +74,7 @@
                             <a href="#none" onclick="openWin('viewBox')">맛보기</a>
                         </div>
                         <div id="viewBox" class="viewBox">
+                            <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
                             <dl class="NSK">
                                 <dt class="Tit NG">맛보기1</dt>
                                 <dt class="tBox t1 black"><a href="">HIGH</a></dt>
@@ -334,7 +335,7 @@
                                     셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
                                     기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
                                 </div>
-                                <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
+                                <div class="caution-txt tx-red">수강생교재는 해당온라인강좌 수강생에 한해 구매 가능합니다. (교재만별도구매불가능)</div>
                             </div>
                             <div id="info2" class="tabContent">
                                 <div class="book-TxtBox tx-gray">
@@ -391,7 +392,7 @@
                                 <span class="w-sp NG"><a href="#none">OT</a></span>
                             </td>
                             <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('sub/icon_file.gif') }}"></a>
+                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                             </td>
                             <td class="w-time">50분</td>
                         </tr>
@@ -508,13 +509,13 @@
                     <tbody>
                         <tr>
                             <td class="w-no">2</td>
-                            <td class="w-list tx-left pl20">시험에 나올 쟁점들을 꼭꼭 짚어주셔서 좋습니다. 수험생의 눈높이에 맞춰 주셔서 강의를...</td>
+                            <td class="w-list tx-left pl20"><a href="#none">시험에 나올 쟁점들을 꼭꼭 짚어주셔서 좋습니다. 수험생의 눈높이에 맞춰 주셔서 강의를...</a></td>
                             <td class="w-name">홍길동</td>
                             <td class="w-date">2018-04-22</td>
                         </tr>
                         <tr>
                             <td class="w-no">1</td>
-                            <td class="w-list tx-left pl20">서울시 7급, 국가직 7급 합격생입니다.</td>
+                            <td class="w-list tx-left pl20"><a href="#none">서울시 7급, 국가직 7급 합격생입니다.</a></td>
                             <td class="w-name">홍길순</td>
                             <td class="w-date">2018-04-22</td>
                         </tr>

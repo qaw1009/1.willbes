@@ -101,6 +101,15 @@
 
         <div class="willbes-Lec-Search mb60">
             <div class="inputBox p_re">
+                <div class="selectBox">
+                    <select id="select" name="select" title="직접입력" class="">
+                        <option selected="selected">직접입력</option>
+                        <option value="강좌명">강좌명</option>
+                        <option value="과목명">과목명</option>
+                        <option value="교수명">교수명</option>
+                        <option value="과정명">과정명</option>
+                    </select>
+                </div>
                 <input type="text" id="SEARCH" name="SEARCH" placeholder="강의명" class="labelSearch" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span>검색</span>
@@ -258,7 +267,7 @@
                     </dl>
                 </div>
                 <div class="classInfoTable">
-                    <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                         <colgroup>
                             <col style="width: 140px;">
                             <col width="*">

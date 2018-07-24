@@ -190,7 +190,11 @@
                                                     <dt class="w-tit">2017 이현나 국어 기출문제(11-12월)</dt>
                                                 </dl>
                                                 <dl class="w-info">
-                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt class="mr20">                                       
+                                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                                            <strong>강좌상세정보</strong>
+                                                        </a>
+                                                    </dt>
                                                     <dt>강의수 : <span class="tx-blue">47강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>정상가 : <span class="tx-blue">90,000원</span></dt>
@@ -941,8 +945,72 @@
                 </div>
             </div>
             <!-- willbes-Class -->
+
+            <div class="TopBtn">
+                <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+            </div>
+            
         </div>
         <!-- willbes-Lec -->
+
+        <div id="InfoForm" class="willbes-Layer-Box d2">
+            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">
+                2018 최진우 독한국사 이론강의 (7-8월)[이론/끝장전/주간스포트라이트] 독구다 패키지
+            </div>
+            <div class="lecDetailWrap">
+                <div class="classInfo">
+                    <dl class="w-info NG">
+                        <dt>개강일 : <span class="tx-blue">2017년 07월 11일</span></dt>
+                        <dt><span class="row-line">|</span></dt>
+                        <dt>수강기간 : <span class="tx-blue">100일</span></dt>
+                        <dt class="NSK ml15">
+                            <span class="nBox n1">2배수</span>
+                            <span class="nBox n2">진행중</span>
+                            <span class="nBox n3">예정</span>
+                            <span class="nBox n4">완강</span>
+                        </dt>
+                    </dl>
+                </div>
+                <div class="classInfoTable">
+                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 140px;">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-list bg-light-white">
+                                    강좌유의사항<br/>
+                                    <span class="tx-red">(필독)</span>
+                                </td>
+                                <td class="w-data tx-left pl25">
+                                    LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
+                                    자동출력됩니다. (온라인상품기준)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list bg-light-white">강좌소개</td>
+                                <td class="w-data tx-left pl25">
+                                    LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
+                                    자동출력됩니다. (온라인상품기준)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list bg-light-white">강좌특징</td>
+                                <td class="w-data tx-left pl25">
+                                    LMS > 상품관리> [온라인]상품관리> 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br/>
+                                    자동출력됩니다. (온라인상품기준)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- willbes-Layer-Box -->
 
     </div>
     <div class="Quick-Bnr ml20">

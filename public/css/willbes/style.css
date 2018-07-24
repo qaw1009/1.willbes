@@ -1562,7 +1562,7 @@ table.auTable tr td {
     background: #7d7e85;
     height: 25px;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 300;
     color: #fff;
     text-align: center;
     line-height: 16px;
@@ -1666,18 +1666,18 @@ table.auTable tr td {
 }
 .curriWrap tr td span {
     float: left;
-    margin-right: 30px;
+    margin-right: 40px;
 }
 .curriWrap tr td span input[type=radio] {
     float: left;
     width: 14px;
     height: 14px;
-    margin: 7px 7px 7px 0;
+    margin: 8px 8px 8px 0;
     cursor: pointer;
 }
 .curriWrap tr td span label {
     color: #555;
-    line-height: 26px;
+    line-height: 30px;
 }
 .curriWrap tr td select {
     width: 700px;
@@ -1711,9 +1711,18 @@ table.auTable tr td {
     font-weight: 300;
     height: 30px;
 }
+.willbes-Lec-Search .selectBox {
+    float: left;
+    margin-right: 5px;
+}
+.willbes-Lec-Search .selectBox select {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #d4d4d4;
+}
 .willbes-Lec-Search .inputBox {
     float: left;
-    width: 340px;
+    width: 450px;
     height: 30px;
     line-height: 12px;
 }
@@ -1761,7 +1770,7 @@ table.auTable tr td {
 
 /* subContainer : Content : Lec-Subject */
 .willbes-Lec-Subject {
-    font-size: 27px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 32px;
     padding: 19px 0;
@@ -1918,7 +1927,7 @@ table.auTable tr td {
 
 /* subContainer : Content : willbes-Lec-Tit-select */
 .willbes-Lec-Tit-select {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 45px;
     border-bottom: 1px solid #959595;
@@ -1946,7 +1955,7 @@ table.auTable tr td {
     color: #3a3a3a;
     border: 1px solid #e6e6e6;
     text-align: center;
-    line-height: 18px;
+    line-height: 20px;
 }
 .TopBtn a .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat -5px -1px;
@@ -2050,7 +2059,7 @@ table.lecTable tr td .priceWrap {
     clear: both;
     float: right;
     position: relative;
-    top: 15px;
+    top: 5px;
     right: 0;
     width: 240px;
     margin-right: 0;
@@ -2069,8 +2078,9 @@ table.lecTable tr td .priceWrap .chkBox input[type=checkbox] {
 table.lecTable tr td .priceWrap .select {
     display: inline-block;
     width: 80px;
-    text-align: right;
+    font-size: 11px;
     color: #464646;
+    text-align: right;
 }
 table.lecTable tr td .priceWrap .price {
     position: absolute;
@@ -2118,11 +2128,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     margin: 0 26px 10px;
 }
 .w-sp.one {
-    position: absolute;
-    top: 25px;
+    float: right;
     right: 26px;
     width: 64px;
-    margin: 0;
+    margin: 0 26px 0 0;
 }
 .w-sp li {
     float: left;
@@ -2155,13 +2164,21 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .viewBox {
     display: none;
     position: absolute;
-    top: 66px;
-    right: 27px;
+    top: 48px;
+    right: 26px;
     z-index: 10;
     background: #fff;
     width: 192px;
     border: 1px solid #2f2f2f;
-    padding: 5px 20px;
+    padding: 10px 20px 5px;
+}
+.viewBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 11px;
+    heighT: 11px;
+    line-height: 9px;
 }
 .viewBox dl {
     float: left;
@@ -2514,6 +2531,7 @@ table.profTable tr td .priceWrap {
     margin-top: 2px;
 }
 .willbes-Buy-Price {
+    background: #f9f9fa;
     float: right;
     width: 230px;
     height: 254px;
@@ -4512,6 +4530,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: 1px solid #4b4b51;
     color: #fff;
     background: #4b4b51;
+}
+.closeBox_block {
+    border: 1px solid #333;
+    color: #fff;
+    background: #333;
 }
 .willbes-Lec-Selected .chkBox {
     display: inline-block;

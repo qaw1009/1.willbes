@@ -190,6 +190,15 @@
 
         <div class="willbes-Lec-Search mb60">
             <div class="inputBox p_re">
+                <div class="selectBox">
+                    <select id="select" name="select" title="직접입력" class="">
+                        <option selected="selected">직접입력</option>
+                        <option value="강좌명">강좌명</option>
+                        <option value="과목명">과목명</option>
+                        <option value="교수명">교수명</option>
+                        <option value="과정명">과정명</option>
+                    </select>
+                </div>
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강의명" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span>검색</span>
@@ -266,6 +275,7 @@
                             <td class="w-notice p_re">
                                 <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
                                 <div id="viewBox" class="viewBox">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
                                     <dl class="NSK">
                                         <dt class="Tit NG">맛보기1</dt>
                                         <dt class="tBox t1 black"><a href="">HIGH</a></dt>
@@ -801,6 +811,7 @@
         <ul class="NSK mt20">
             <li class="aBox answerBox_block"><a href="#none">예</a></li>
             <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+            <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('pocketBox')">닫기</a></li>
         </ul>
     </div>
     <!-- 팝업노출 다른 내용

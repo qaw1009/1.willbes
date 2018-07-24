@@ -345,6 +345,10 @@
                 </div>
             </div>
             <!-- willbes-Class -->
+
+            <div class="TopBtn">
+                <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+            </div>
         </div>
         <!-- willbes-Lec -->
 

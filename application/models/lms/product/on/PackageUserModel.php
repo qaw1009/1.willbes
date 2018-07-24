@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'models/lms/product/on/CommonLectureModel.php';
+require_once APPPATH . 'models/lms/product/on/CommonLectureModel.php';
 
 class PackageUserModel extends CommonLectureModel
 {

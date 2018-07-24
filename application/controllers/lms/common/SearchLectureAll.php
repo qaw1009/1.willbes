@@ -1,0 +1,96 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class SearchLectureAll extends \app\controllers\BaseController
+{
+    protected $models = array('sys/code','product/on/lecture','product/on/packageadmin','product/on/packageperiod','product/off/offlecture','product/off/offpackageadmin');
+    protected $helpers = array();
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function index()
+    {
+
+        $prod_type = $this->_req('prod_type');
+        $LearnPatternCcd = $this->_req('LearnPatternCcd');
+
+        if($prod_type === 'on' && empty($LearnPatternCcd) ) {
+            $LearnPatternCcd = '615001';        //단강좌
+        } elseif($prod_type === 'off' && empty($LearnPatternCcd) ) {
+            $LearnPatternCcd = '615006';        //단과반
+        }
+
+        $this->load->view('common/search_lecture_all',[
+            'site_code' => $this->_req('site_code')
+            ,'prod_type' => $prod_type
+            ,'return_type' => $this->_req('return_type')
+            ,'target_id' => $this->_req('target_id')
+            ,'target_field' => $this->_req('target_field')
+            ,'LearnPatternCcd' => $LearnPatternCcd
+        ]);
+    }
+
+    /**
+     * 강좌 목록
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+
+        $LearnPatternCcd = $this->_reqP('LearnPatternCcd');
+
+        $arr_condition = [
+            'EQ' => [
+                'B.LearnPatternCcd' => $LearnPatternCcd,
+                'A.SiteCode' => $this->_reqP('site_code'),
+            ]
+        ];
+
+        if($this->_reqP('locationid') === 'tar') {      //대상강좌일경우 ... 선수강으로 설정 된 놈만
+            $arr_condition = array_merge_recursive($arr_condition,[
+                'EQ' => [
+                    'B.LecSaleType' => 'F',
+                ],
+            ]);
+        }
+
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
+                ]
+            ],
+        ]);
+
+
+        if($LearnPatternCcd === '615001') {
+            $modelname = "lectureModel";
+        } elseif($LearnPatternCcd === '615003') {
+            $modelname = "packageadminModel";
+        } elseif($LearnPatternCcd === '615004') {
+            $modelname = "packageperiodModel";
+        } elseif($LearnPatternCcd === '615006') {
+            $modelname = "offlectureModel";
+        } elseif($LearnPatternCcd === '615007') {
+            $modelname = "offpackageadminModel";
+        }
+
+        $list = [];
+        $count = $this->{$modelname}->listLecture(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->{$modelname}->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+
+    }
+}

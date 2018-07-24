@@ -377,6 +377,12 @@
                             'url' : '{{ site_url('/common/searchBook/') }}?site_code=' + site_code + '&return_type=inline&target_id=selected_product&target_field=prod_code',
                             'width' : 1200
                         });
+                    } else if(prod_type === 'on' || prod_type === 'off') {
+                        // 강좌 검색
+                        $('#btn_product_search').setLayer({
+                            'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                            'width' : 1200
+                        });
                     }
                 }
             });

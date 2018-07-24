@@ -722,6 +722,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="subBtn f_right mt50 NSK"><a href="#none">적용</a></div>
                 </div>
                 <!-- 배송 주소 리스트 -->
 

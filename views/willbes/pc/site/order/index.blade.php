@@ -7,6 +7,8 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <div class="Content p_re">
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
@@ -63,9 +65,9 @@
                                                 <span class="w-data">
                                                     [강좌시작일 설정]
                                                     @if($row['IsLecStart'] == 'Y')
-                                                        <input type="text" name="study_start_date[]" class="iptDate" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')) }}"/>
+                                                        <input type="text" name="study_start_date[]" class="iptDate datepicker" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +1 day')) }}"/>
                                                         <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
-                                                        <input type="text" name="study_end_date[]" class="iptDate" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +8 day')) }}"/>
+                                                        <input type="text" name="study_end_date[]" class="iptDate datepicker" maxlength="30" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . ' +8 day')) }}"/>
                                                         <img src="{{ img_url('cart/icon_calendar.gif') }}">
                                                     @else
                                                         <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
@@ -199,7 +201,7 @@
                                     <li><input type="radio" id="addr_e_type" name="addr_type" value="E" checked="checked" class=""/><label>구매자 정보와 동일</label></li>
                                     <li><input type="radio" id="addr_r_type" name="addr_type" value="R" class=""/><label>최근 배송지</label></li>
                                     <li><input type="radio" id="addr_d_type" name="addr_type" value="D" class=""/><label>직접입력</label></li>
-                                    <li><span class="btnAll NSK"><a href="#none" onclick="openWin('MyAddress');">나의 배송 주소록</a></span></li>
+                                    <li><span class="btnAll NSK"><a href="#none" id="btn_my_delivery_address">나의 배송 주소록</a></span></li>
                                 </ul>
                             </td>
                         </tr>
@@ -227,40 +229,44 @@
                                         </div>
                                     </div>
                                     <div class="addbox1 p_re item">
-                                        <input type="text" id="addr1" name="addr1" title="주소1" required="required" readonly="readonly" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
+                                        <input type="text" id="addr1" name="addr1" title="기본주소" required="required" readonly="readonly" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
                                     </div>
                                     <div class="addbox2 p_re item">
-                                        <input type="text" id="addr2" name="addr2" title="주소2" required="required" class="iptAdd2" placeholder="상세주소" maxlength="30">
+                                        <input type="text" id="addr2" name="addr2" title="상세주소" required="required" class="iptAdd2" placeholder="상세주소" maxlength="30">
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20 item">
-                                <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" class="selePhone">
-                                    <option value="">선택</option>
-                                    @foreach($arr_phone1_ccd as $key => $val)
-                                        <option value="{{ $key }}">{{ $val }}</option>
-                                    @endforeach
-                                </select> -
-                                <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" class="iptCellhone1 phone" maxlength="30"> -
-                                <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" class="iptCellhone2 phone" maxlength="30">
-                                <input type="hidden" id="receiver_phone" name="receiver_phone" title="휴대폰번호" required="required" pattern="phone"/>
+                            <td class="w-info tx-left pl20">
+                                <div class="item multi">
+                                    <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" class="selePhone">
+                                        <option value="">선택</option>
+                                        @foreach($arr_phone1_ccd as $key => $val)
+                                            <option value="{{ $key }}">{{ $val }}</option>
+                                        @endforeach
+                                    </select> -
+                                    <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" class="iptCellhone1 phone" maxlength="4"> -
+                                    <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" class="iptCellhone2 phone" maxlength="4">
+                                    <input type="hidden" id="receiver_phone" name="receiver_phone" title="휴대폰번호" required="required" pattern="phone"/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                            <td class="w-info tx-left pl20 item">
-                                <select id="receiver_tel1" name="receiver_tel1" title="전화번호1" class="selePhone">
-                                    <option value="">선택</option>
-                                    @foreach($arr_tel1_ccd as $key => $val)
-                                        <option value="{{ $key }}">{{ $val }}</option>
-                                    @endforeach
-                                </select> -
-                                <input type="text" id="receiver_tel2" name="receiver_tel2" title="전화번호2" class="iptPhone1 phone" maxlength="30"> -
-                                <input type="text" id="receiver_tel3" name="receiver_tel3" title="전화번호3" class="iptPhone2 phone" maxlength="30">
-                                <input type="hidden" id="receiver_tel" name="receiver_tel" title="전화번호" pattern="tel" class="optional"/>
+                            <td class="w-info tx-left pl20">
+                                <div class="item multi">
+                                    <select id="receiver_tel1" name="receiver_tel1" title="전화번호1" class="selePhone">
+                                        <option value="">선택</option>
+                                        @foreach($arr_tel1_ccd as $key => $val)
+                                            <option value="{{ $key }}">{{ $val }}</option>
+                                        @endforeach
+                                    </select> -
+                                    <input type="text" id="receiver_tel2" name="receiver_tel2" title="전화번호2" class="iptPhone1 phone" maxlength="4"> -
+                                    <input type="text" id="receiver_tel3" name="receiver_tel3" title="전화번호3" class="iptPhone2 phone" maxlength="4">
+                                    <input type="hidden" id="receiver_tel" name="receiver_tel" title="전화번호" pattern="tel" class="optional"/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -409,6 +415,7 @@
             </div>
         </div>
         <!-- willbes-PolicyInfo -->
+    </form>
         <div id="Coupon" class="willbes-Layer-Black">
             <div class="willbes-Layer-CartBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('Coupon')">
@@ -466,35 +473,35 @@
                                         <col style="width: 70px;">
                                     </colgroup>
                                     <thead>
-                                        <tr>
-                                            <th>선택<span class="row-line">|</span></th>
-                                            <th>분류<span class="row-line">|</span></th>
-                                            <th>쿠폰번호<span class="row-line">|</span></th>
-                                            <th>쿠폰명<span class="row-line">|</span></th>
-                                            <th><div class="line2">할인율<br/>(금액)</div><span class="row-line line2">|</span></th>
-                                            <th>사용가능기간<span class="row-line">|</span></th>
-                                            <th>남은일자</th>
-                                        </tr>
+                                    <tr>
+                                        <th>선택<span class="row-line">|</span></th>
+                                        <th>분류<span class="row-line">|</span></th>
+                                        <th>쿠폰번호<span class="row-line">|</span></th>
+                                        <th>쿠폰명<span class="row-line">|</span></th>
+                                        <th><div class="line2">할인율<br/>(금액)</div><span class="row-line line2">|</span></th>
+                                        <th>사용가능기간<span class="row-line">|</span></th>
+                                        <th>남은일자</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                            <td>강좌</td>
-                                            <td>12012514511245</td>
-                                            <td>2017년 서울시/지방직 풀케어서비스 참여</td>
-                                            <td>10%</td>
-                                            <td>30일</td>
-                                            <td>365일</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                            <td>교재</td>
-                                            <td>2012514511245</td>
-                                            <td>회원가입 축하 쿠폰</td>
-                                            <td>5,000원</td>
-                                            <td>40일</td>
-                                            <td>3일</td>
-                                        </tr>
+                                    <tr>
+                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td>강좌</td>
+                                        <td>12012514511245</td>
+                                        <td>2017년 서울시/지방직 풀케어서비스 참여</td>
+                                        <td>10%</td>
+                                        <td>30일</td>
+                                        <td>365일</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td>교재</td>
+                                        <td>2012514511245</td>
+                                        <td>회원가입 축하 쿠폰</td>
+                                        <td>5,000원</td>
+                                        <td>40일</td>
+                                        <td>3일</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -509,32 +516,32 @@
                                         <col style="width: 70px;">
                                     </colgroup>
                                     <thead>
-                                        <tr>
-                                            <th>분류<span class="row-line">|</span></th>
-                                            <th>쿠폰번호<span class="row-line">|</span></th>
-                                            <th>쿠폰명<span class="row-line">|</span></th>
-                                            <th><div class="line2">할인율<br/>(금액)</div><span class="row-line line2">|</span></th>
-                                            <th>사용가능기간<span class="row-line">|</span></th>
-                                            <th>남은일자</th>
-                                        </tr>
+                                    <tr>
+                                        <th>분류<span class="row-line">|</span></th>
+                                        <th>쿠폰번호<span class="row-line">|</span></th>
+                                        <th>쿠폰명<span class="row-line">|</span></th>
+                                        <th><div class="line2">할인율<br/>(금액)</div><span class="row-line line2">|</span></th>
+                                        <th>사용가능기간<span class="row-line">|</span></th>
+                                        <th>남은일자</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>강좌</td>
-                                            <td>12012514511245</td>
-                                            <td>2017년 서울시/지방직 풀케어서비스 참여</td>
-                                            <td>10%</td>
-                                            <td>30일</td>
-                                            <td>365일</td>
-                                        </tr>
-                                        <tr>
-                                            <td>교재</td>
-                                            <td>12012514511245</td>
-                                            <td>회원가입 축하 쿠폰</td>
-                                            <td>5,000원</td>
-                                            <td>40일</td>
-                                            <td>3일</td>
-                                        </tr>
+                                    <tr>
+                                        <td>강좌</td>
+                                        <td>12012514511245</td>
+                                        <td>2017년 서울시/지방직 풀케어서비스 참여</td>
+                                        <td>10%</td>
+                                        <td>30일</td>
+                                        <td>365일</td>
+                                    </tr>
+                                    <tr>
+                                        <td>교재</td>
+                                        <td>12012514511245</td>
+                                        <td>회원가입 축하 쿠폰</td>
+                                        <td>5,000원</td>
+                                        <td>40일</td>
+                                        <td>3일</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -544,153 +551,8 @@
             </div>
         </div>
         <!-- willbes-Layer-CartBox : Coupon -->
-        <div id="MyAddress" class="willbes-Layer-Black">
-            <div class="willbes-Layer-CartBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('MyAddress')">
-                    <img src="{{ img_url('cart/close_cart.png') }}">
-                </a>
-                <div class="Layer-Tit NG bg-blue">나의 배송 주소록</div>
-                <div id="AddList" class="Layer-Cont p_re">
-                    <div class="address caution-txt">주소록은 최대 5개까지 등록 가능합니다.</div>
-                    <div class="subBtn address NSK"><a href="#none" onclick="closeWin('AddList'),openWin('AddModify')">신규주소등록 ></a></div>
-                    <div class="couponWrap">
-                        <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
-                            <colgroup>
-                                <col style="width: 50px;">
-                                <col style="width: 75px;">
-                                <col style="width: 70px;">
-                                <col style="width: 120px;">
-                                <col style="width: 275px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>선택<span class="row-line">|</span></th>
-                                    <th>배송지<span class="row-line">|</span></th>
-                                    <th>이름<span class="row-line">|</span></th>
-                                    <th>연락처<span class="row-line">|</span></th>
-                                    <th>주소<span class="row-line">|</span></th>
-                                    <th>수정/삭제</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                    <td>삼성화재</td>
-                                    <td>홍길동</td>
-                                    <td>010-1234-5678</td>
-                                    <td class="address tx-left pl20">
-                                        06924<br/>
-                                        서울특별시 동작구 노량진로 202길<br/>
-                                        4층 WCA(노량진동, 남강빌딩)
-                                    </td>
-                                    <td class="address w-buy">
-                                        <div class="tBox NSK t1 black"><a href="">수정</a></div>
-                                        <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                    <td>친구네집</td>
-                                    <td>홍길동</td>
-                                    <td>010-9876-5432</td>
-                                    <td class="address tx-left pl20">
-                                        08812<br/>
-                                        서울시 관악구 호암로 26길 13 세정빌딩 2층<br/>
-                                        (관악구대학동 1514-6)
-                                    </td>
-                                    <td class="address w-buy">
-                                        <div class="tBox NSK t1 black"><a href="">수정</a></div>
-                                        <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- 배송 주소 리스트 -->
-                <div id="AddModify" class="Layer-Cont Modify p_re" style="display: none">
-                    <div class="address caution-txt">주소록은 최대 5개까지 등록 가능합니다. <span class="tx-light-blue f_right">(* 필수입력항목)</span></div>
-                    <div class="couponWrap">
-                        <table cellspacing="0" cellpadding="0" class="classTable deliveryTable under-gray tx-gray">
-                            <colgroup>
-                                <col style="width: 140px;">
-                                <col width="*">
-                            </colgroup>
-                            <tbody>
-                                <tr class="u-to">
-                                    <td class="w-tit bg-light-white tx-left pl20">배송지<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-info tx-left pl20"><input type="text" id="LOCATION" name="LOCATION" class="iptLocation" maxlength="30"></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-left pl20">이름<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-info tx-left pl20"><input type="text" id="NAME" name="NAME" class="iptName" maxlength="30"></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-info tx-left pl20">
-                                        <div class="inputBox Add p_re">
-                                            <div class="searchadd">
-                                                <input type="text" id="ADD1" name="ADD1" class="iptAdd" maxlength="30"> -
-                                                <input type="text" id="ADD2" name="ADD2" class="iptAdd" maxlength="30">   
-                                                <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
-                                                    <span>우편번호 찾기</span>
-                                                </button>
-                                            </div>
-                                            <div class="addbox1 p_re">
-                                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
-                                            </div>
-                                            <div class="addbox2 p_re">
-                                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
-                                    <td class="w-info tx-left pl20">
-                                        <select id="phone" name="phone" title="010" class="selePhone">
-                                            <option selected="selected">010</option>
-                                            <option value="011">011</option>
-                                            <option value="016">016</option>
-                                            <option value="017">017</option>
-                                            <option value="018">018</option>
-                                        </select> -
-                                        <input type="text" id="USER_CELLPHONE1" name="USER_CELLPHONE1" class="iptCellhone1 phone" maxlength="30"> -
-                                        <input type="text" id="USER_CELLPHONE2" name="USER_CELLPHONE2" class="iptCellhone2 phone" maxlength="30">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                                    <td class="w-info tx-left pl20">
-                                        <select id="phone" name="phone" title="02" class="selePhone">
-                                            <option selected="selected">02</option>
-                                            <option value="031">031</option>
-                                            <option value="032">032</option>
-                                            <option value="033">033</option>
-                                            <option value="041">041</option>
-                                        </select> -
-                                        <input type="text" id="USER_PHONE1" name="USER_PHONE1" class="iptPhone1 phone" maxlength="30"> -
-                                        <input type="text" id="USER_PHONE2" name="USER_PHONE2" class="iptPhone2 phone" maxlength="30">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="p-info tx-gray c_both">
-                            • 정확하지 않은 정보 기재 시, 불이익을 받을 수 있으니 유의하시기 바랍니다.<br/>
-                            • 집 외의 공공장소 등 직접 수령이 어려운 장소로의 배송은 분실 위험이 있으니 주의하시기 바랍니다.
-                        </div>  
-                        <ul class="btnWrapbt">
-                            <li class="subBtn NSK"><a href="#none">저장</a></li>
-                            <li class="subBtn white NSK"><a href="#none" onclick="closeWin('AddModify'),openWin('AddList')">목록</a></li>
-                        </ul> 
-                    </div>
-                </div>
-                <!-- 배송 주소 수정 -->
-            </div>
-        </div>
+        <div id="MyAddress" class="willbes-Layer-Black"></div>
         <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
-    </form>
     </div>
     <div class="Quick-Bnr ml20 mt85">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
@@ -699,10 +561,76 @@
 <!-- End Container -->
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script src="/public/js/post_util.js"></script>
+<script src="/public/vendor/validator/multifield.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
 
     $(document).ready(function() {
+        // 나의 배송 주소록 버튼 클릭
+        $regi_form.on('click', '#btn_my_delivery_address', function() {
+            var ele_id = 'MyAddress';
+            var data = { 'ele_id' : ele_id };
+            sendAjax('{{ site_url('/myDeliveryAddress/') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
+        });
+
+        // 배송 주소지 선택
+        $regi_form.find('input[name="addr_type"]').on('click', function() {
+            var addr_type = $(this).val();
+
+            if (addr_type === 'E') {
+                $regi_form.find('input[name="receiver"]').val('{{ $results['member']['MemName'] }}');
+                $regi_form.find('input[name="zipcode"]').val('{{ $results['member']['ZipCode'] }}');
+                $regi_form.find('input[name="addr1"]').val('{{ $results['member']['Addr1'] }}');
+                $regi_form.find('input[name="addr2"]').val('{{ $results['member']['Addr2'] }}');
+                $regi_form.find('input[name="receiver_phone"]').val('{{ $results['member']['Phone'] }}');
+                $regi_form.find('select[name="receiver_phone1"]').val('{{ $results['member']['Phone1'] }}');
+                $regi_form.find('input[name="receiver_phone2"]').val('{{ $results['member']['Phone2'] }}');
+                $regi_form.find('input[name="receiver_phone3"]').val('{{ $results['member']['Phone3'] }}');
+            } else if (addr_type === 'R') {
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'POST'
+                };
+                sendAjax('{{ site_url('/order/recentDeliveryAddress') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        if (ret.ret_data.length < 1) {
+                            alert('최근 배송지 정보가 없습니다.');
+                            return;
+                        }
+                        $regi_form.find('input[name="receiver"]').val(ret.ret_data.Receiver);
+                        $regi_form.find('input[name="zipcode"]').val(ret.ret_data.ZipCode);
+                        $regi_form.find('input[name="addr1"]').val(ret.ret_data.Addr1);
+                        $regi_form.find('input[name="addr2"]').val(ret.ret_data.Addr2);
+                        $regi_form.find('input[name="receiver_phone"]').val(ret.ret_data.ReceiverPhone);
+                        $regi_form.find('select[name="receiver_phone1"]').val(ret.ret_data.ReceiverPhone1);
+                        $regi_form.find('input[name="receiver_phone2"]').val(ret.ret_data.ReceiverPhone2);
+                        $regi_form.find('input[name="receiver_phone3"]').val(ret.ret_data.ReceiverPhone3);
+                        $regi_form.find('input[name="receiver_tel"]').val(ret.ret_data.ReceiverTel);
+                        $regi_form.find('select[name="receiver_tel1"]').val(ret.ret_data.ReceiverTel1);
+                        $regi_form.find('input[name="receiver_tel2"]').val(ret.ret_data.ReceiverTel2);
+                        $regi_form.find('input[name="receiver_tel3"]').val(ret.ret_data.ReceiverTel3);
+                        $regi_form.find('input[name="delivery_memo"]').val(ret.ret_data.DeliveryMemo);
+                    }
+                }, showAlertError, false, 'POST');
+            } else {
+                $regi_form.find('input[name="receiver"]').val('');
+                $regi_form.find('input[name="zipcode"]').val('');
+                $regi_form.find('input[name="addr1"]').val('');
+                $regi_form.find('input[name="addr2"]').val('');
+                $regi_form.find('input[name="receiver_phone"]').val('');
+                $regi_form.find('select[name="receiver_phone1"]').val('');
+                $regi_form.find('input[name="receiver_phone2"]').val('');
+                $regi_form.find('input[name="receiver_phone3"]').val('');
+                $regi_form.find('input[name="receiver_tel"]').val('');
+                $regi_form.find('select[name="receiver_tel1"]').val('');
+                $regi_form.find('input[name="receiver_tel2"]').val('');
+                $regi_form.find('input[name="receiver_tel3"]').val('');
+            }
+        });
+        $regi_form.find('input[name="addr_type"]:checked').trigger('click');
+
         // 배송메모 바이트수 계산
         $regi_form.find('input[name="delivery_memo"]').on('change keyup input', function() {
             var byte_cnt = fn_chk_byte($(this).val());

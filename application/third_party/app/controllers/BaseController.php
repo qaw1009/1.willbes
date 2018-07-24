@@ -42,6 +42,7 @@ abstract class BaseController extends \CI_Controller
      * @param $data
      * @param int $http_code
      * @param string $format
+     * @return \CI_Output
      */
     public function response($data, $http_code = _HTTP_OK, $format = 'json')
     {
@@ -58,13 +59,11 @@ abstract class BaseController extends \CI_Controller
         ];
 
         $this->load->library('format');
-        $this->output
+        return $this->output
             ->set_content_type($formats[$format])
             ->set_status_header($http_code)
             ->set_output($this->format->{'to_' . $format}($data)
         );
-        $this->output->_display();
-        exit;
     }
 
     /**

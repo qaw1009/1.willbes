@@ -22,6 +22,7 @@ class Order extends \app\controllers\FrontController
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $sess_cart_idx = $this->orderFModel->checkSessCartIdx();
         $cart_type = $this->_req('tab');    // 장바구니 구분
+        $is_delivery_info = false;
 
         // 장바구니 조회
         $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, $this->_cate_code, $sess_cart_idx);
@@ -43,6 +44,11 @@ class Order extends \app\controllers\FrontController
             if ($row['CartProdType'] == 'on_lecture') {
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
             }
+            
+            // 배송정보 입력 여부
+            if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
+                $is_delivery_info = true;
+            }
 
             // 전체 주문금액
             $total_price += $row['RealSalePrice'];
@@ -58,6 +64,7 @@ class Order extends \app\controllers\FrontController
         $results['cart_type'] = $cart_type;     // 장바구니 구분
         $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명
         $results['total_price'] = $total_price;     // 전체 주문금액
+        $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
 
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
@@ -72,8 +79,22 @@ class Order extends \app\controllers\FrontController
         ]);
     }
 
-    private function _checkUsableCartIdx()
+    /**
+     * 회원 식별자 기준 최근 배송정보 조회
+     */
+    public function recentDeliveryAddress()
     {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+        ];
 
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        // 최근 배송정보 조회
+        $data = $this->orderFModel->getRecentDeliveryAddress($this->session->userdata('mem_idx'));
+
+        $this->json_result(true, '', [], $data);
     }
 }

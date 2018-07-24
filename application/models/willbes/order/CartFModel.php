@@ -27,7 +27,7 @@ class CartFModel extends BaseOrderFModel
         } else {
             $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode, CA.ProdCodeSub, CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty
                 , CA.IsDirectPay, CA.IsVisitPay, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
-                , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo
+                , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart
                 , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", "on_lecture") as CartType

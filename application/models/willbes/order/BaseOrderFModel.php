@@ -7,6 +7,7 @@ class BaseOrderFModel extends WB_Model
         'cart' => 'lms_cart',
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
+        'order_delivery_address' => 'lms_order_delivery_address',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_book' => 'lms_product_book',

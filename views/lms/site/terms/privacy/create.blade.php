@@ -126,9 +126,26 @@
         </div>
     </div>
 
+    <!-- cheditor -->
+    <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
+    <script src="/public/vendor/cheditor/cheditor.js"></script>
+    <script src="/public/js/editor_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
+            // editor load
+            var $editor_content = new cheditor();
+            $editor_content.config.editorHeight = '170px';
+            $editor_content.config.editorWidth = '100%';
+            $editor_content.inputForm = 'content';
+            $editor_content.run();
+
+            var $editor_desc = new cheditor();
+            $editor_desc.config.editorHeight = '170px';
+            $editor_desc.config.editorWidth = '100%';
+            $editor_desc.inputForm = 'desc';
+            $editor_desc.run();
+
             //목록
             $('#btn_list').click(function() {
                 location.replace('{{ site_url("/site/terms/privacy/") }}' + getQueryString());
@@ -137,6 +154,10 @@
             // ajax submit
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/site/terms/privacy/store") }}' + getQueryString();
+
+                // editor
+                getEditorBodyContent($editor_content);
+                getEditorBodyContent($editor_desc);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

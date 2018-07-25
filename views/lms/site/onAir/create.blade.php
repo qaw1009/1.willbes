@@ -11,8 +11,8 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-            {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/banner/store") }}" novalidate>--}}
+            {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/onAir/store") }}" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="oa_idx" value="{{ $oa_idx }}"/>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="on_air_start_type_1">강의시간 <span class="required">*</span>
+                    <label class="control-label col-md-1-1" for="on_air_start_type_a">강의시간 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 item">
                         <div class="form-inline">
@@ -82,7 +82,7 @@
                                 <input type="radio" id="on_air_start_type_d" name="on_air_start_type" class="flat" value="D" title="직접입력" @if($data['OnAirStartType']=='D')checked="checked"@endif/>
                                 <label for="on_air_start_type_d" class="input-label">직접입력</label>
                             </div>
-                            <select class="form-control" id="on_air_start_time" name="on_air_start_time" required="required">
+                            <select class="form-control on-air-time" id="on_air_start_time" name="on_air_start_time" required="required" disabled>
                                 @php
                                     for($i=0; $i<=23; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
@@ -91,7 +91,7 @@
                                     }
                                 @endphp
                             </select> :
-                            <select class="form-control" id="on_air_start_min" name="" required="on_air_start_min">
+                            <select class="form-control on-air-time" id="on_air_start_min" name="" required="on_air_start_min" disabled>
                                 @php
                                     for($i=0; $i<=59; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
@@ -100,10 +100,8 @@
                                     }
                                 @endphp
                             </select>
-
                             &nbsp; ~ &nbsp;&nbsp;
-
-                            <select class="form-control" id="on_air_end_time" name="on_air_end_time" required="required">
+                            <select class="form-control on-air-time" id="on_air_end_time" name="on_air_end_time" required="required" disabled>
                                 @php
                                     for($i=0; $i<=23; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
@@ -112,7 +110,7 @@
                                     }
                                 @endphp
                             </select> :
-                            <select class="form-control" id="on_air_end_min" name="on_air_end_min" required="required">
+                            <select class="form-control on-air-time" id="on_air_end_min" name="on_air_end_min" required="required" disabled>
                                 @php
                                     for($i=0; $i<=59; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
@@ -165,25 +163,11 @@
                     <label class="control-label col-md-1-1">타이틀 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        @if($method == 'POST')
-                            <div class="title item">
-                                <input type="text" id="" name="" class="form-control" title="타이틀" required="required" placeholder="" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다." style="width: 80%;">
-                                <button type="button" id="" class="btn btn-primary mb-0">추가</button>
-                            </div>
-                            <div class="title">
-                                <input type="text" id="" name="" class="form-control" title="타이틀" placeholder="" value="" style="width: 80%;">
-                                <button type="button" id="" class="btn btn-primary mb-0">삭제</button>
-                            </div>
-                        @else
-                            <div class="title item">
-                                <input type="text" id="" name="" class="form-control" title="타이틀" required="required" placeholder="" value="" style="width: 80%;">
-                                <button type="button" id="" class="btn btn-primary mb-0">추가</button>
-                            </div>
-                            <div class="title">
-                                <input type="text" id="" name="" class="form-control" title="타이틀" placeholder="" value="" style="width: 80%;">
-                                <button type="button" id="" class="btn btn-primary mb-0">삭제</button>
-                            </div>
-                        @endif
+                        <div class="title mb-5">
+                            <input type="text" id="" name="title[]" class="form-control" title="타이틀" placeholder="" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다." style="width: 80%;">
+                            <button type="button" class="btn btn-primary btn-title-add mb-0">추가</button>
+                        </div>
+                        <div id="_add_title_input"></div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -191,13 +175,12 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <select class="form-control" id="prof_idx" name="prof_idx" required="required" title="교수명">
-                            <option alue="">교수명</option>
-                            <option value="500145">신광은 경찰팀 [ 500145 ]</option>
-                            <option value="500127">강인엽 [ 500127 ]</option>
-                            <option value="500085">경찰 [ 500085 ]</option>
-                            <option value="500139">공득인 [ 500139 ]</option>
+                            <option value="">교수명</option>
+                            @foreach($arr_professor as $row)
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['ProfIdx'] == $data['ProfIdx'])) selected="selected" @endif>{{ $row['wProfName'] }}</option>
+                            @endforeach
                         </select>
-                        <input type="text" id="" name="" class="form-control" title="교수한마디" required="required" placeholder="" value="" style="width: 80%">
+                        <input type="text" id="prof_title" name="prof_title" class="form-control" title="교수한마디" required="required" value="{{$data['ProfTitle']}}" style="width: 80%">
                     </div>
                 </div>
 
@@ -205,17 +188,15 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="left_exposure_type_m">노출내용(좌) <span class="required">*</span>
+                    <label class="control-label col-md-1-1" for="left_exposure_type_M">노출내용(좌) <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 item">
+                    <div class="col-md-10">
                         <div class="radio">
                             <span class="blue pr-10">[타입]</span>
-                            <input type="radio" id="left_exposure_type_m" name="left_exposure_type" class="flat" value="M" required="required" title="영상" @if($data['LeftExposureType']=='M')checked="checked"@endif/>
-                            <label for="left_exposure_type_m" class="input-label">영상</label>
-                            <input type="radio" id="left_exposure_type_i" name="left_exposure_type" class="flat" value="I" title="이미지" @if($data['LeftExposureType']=='I')checked="checked"@endif/>
-                            <label for="left_exposure_type_i" class="input-label">이미지</label>
+                            <input type="radio" id="left_exposure_type_M" name="left_exposure_type" data-input="file" class="flat" value="M" title="영상" @if($method == 'POST' || $data['LeftExposureType']=='M')checked="checked"@endif/> <label for="left_exposure_type_M" class="input-label">영상</label>
+                            <input type="radio" id="left_exposure_type_I" name="left_exposure_type" data-input="link" class="flat" value="I" title="이미지" @if($data['LeftExposureType']=='I')checked="checked"@endif/> <label for="left_exposure_type_I" class="input-label">이미지</label>
                         </div>
-                        <div class="form-inline">
+                        <div class="form-inline form-left-exposure-input hide" id="left_type_file">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
@@ -232,20 +213,40 @@
                             </div>
                             @endif
                         </div>
+                        <div class="form-left-exposure-input hide" id="left_type_link">
+                            <input type="text" id="left_link" name="left_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['LeftLink']}}">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="right_exposure_type_m">노출내용(우) <span class="required">*</span>
+                    <label class="control-label col-md-1-1" for="right_exposure_type_M">노출내용(우) <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 item">
+                    <div class="col-md-10">
                         <div class="radio">
-                        <span class="blue pr-10">[타입]</span>
-                            <input type="radio" id="right_exposure_type_m" name="right_exposure_type" class="flat" value="M" required="required" title="영상" @if($data['RightExposureType']=='M')checked="checked"@endif/>
-                            <label for="right_exposure_type" class="input-label">영상</label>
-                            <input type="radio" id="right_exposure_type_i" name="right_exposure_type" class="flat" value="I" title="이미지" @if($data['RightExposureType']=='I')checked="checked"@endif/>
-                            <label for="right_exposure_type_i" class="input-label">이미지</label>
+                            <span class="blue pr-10">[타입]</span>
+                            <input type="radio" id="right_exposure_type_M" name="right_exposure_type" data-input="file" class="flat" value="M" title="영상" @if($method == 'POST' || $data['RightExposureType']=='M')checked="checked"@endif/> <label for="right_exposure_type_M" class="input-label">영상</label>
+                            <input type="radio" id="right_exposure_type_I" name="right_exposure_type" data-input="link" class="flat" value="I" title="이미지" @if($data['RightExposureType']=='I')checked="checked"@endif/> <label for="right_exposure_type_I" class="input-label">이미지</label>
                         </div>
-                        <input type="text" id="right_link" name="right_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['RightLink']}}">
+                        <div class="form-inline form-right-exposure-input hide" id="right_type_file">
+                            <div class="filetype">
+                                <input type="text" class="form-control file-text" disabled="">
+                                <button class="btn btn-primary mb-0" type="button">파일 선택</button>
+                                <span class="file-select file-btn">
+                                    <input type="file" name="right_file_name" class="form-control input-file" required="required" title="첨부자료">
+                                </span>
+                            </div>
+                            @if(empty($data['RightFileName']) === false)
+                                <p class="form-control-static ml-10 mr-10">
+                                    [ <a href="#none" target="_blank">{{$data['RightFileName']}}</a> ]
+                                </p>
+                                <div class="checkbox">
+                                    <a href="#none" class="file-delete" data-attach-idx="{{$data['OaIdx']}}"><i class="fa fa-times red"></i></a>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-right-exposure-input hide" id="right_type_link">
+                            <input type="text" id="right_link" name="right_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['RightLink']}}">
+                        </div>
                     </div>
                 </div>
 
@@ -284,9 +285,104 @@
             <script src="/public/js/editor_util.js"></script>
             <script type="text/javascript">
                 var $regi_form = $('#regi_form');
+
+                // site-code에 매핑되는 select box 자동 변경
+                $regi_form.find('select[name="prof_idx"]').chained("#site_code");
+
+                //목록
+                $('#btn_list').click(function() {
+                    location.replace('{{ site_url("/site/onAir/") }}' + getQueryString());
+                });
+
+                // ajax submit
+                /*$regi_form.submit(function() {
+                    var _url = '{{ site_url("/site/onAir/store") }}' + getQueryString();
+
+                    ajaxSubmit($regi_form, _url, function(ret) {
+                        if($regi_form.find('input[name="cate_code[]"]').length < 1) {
+                            alert('카테고리 선택 필드는 필수입니다.');
+                            return false;
+                        }
+
+                        if(ret.ret_cd) {
+                            notifyAlert('success', '알림', ret.ret_msg);
+                            location.replace('{{ site_url("/site/onAir/") }}' + getQueryString());
+                        }
+                    }, showValidateError, null, false, 'alert');
+                });*/
+
+
+                // 운영사이트 변경
+                $regi_form.on('change', 'select[name="site_code"]', function() {
+                    // 카테고리 검색 초기화
+                    $regi_form.find('input[name="cate_code"]').val('');
+                    $('#selected_category').html('');
+                });
+
+                // 카테고리 검색
+                $('#btn_category_search').on('click', function(event) {
+                    var site_code = $regi_form.find('select[name="site_code"]').val();
+                    if (!site_code) {
+                        alert('운영사이트를 먼저 선택해 주십시오.')
+                        return;
+                    }
+
+                    $('#btn_category_search').setLayer({
+                        'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                        'width' : 900
+                    });
+                });
+
+                // 카테고리 삭제
+                $regi_form.on('click', '.selected-category-delete', function() {
+                    var that = $(this);
+                    that.parent().remove();
+                });
+
+                // 강의시간 직접입력 선택 값에 따른 시간 선택 박스 활성화,비활성와
+                $regi_form.on('ifChanged ifCreated', 'input[name="on_air_start_type"]:checked', function() {
+                    var set_val = $(this).val();
+                    if (set_val == 'A') {
+                        $('.on-air-time').attr('disabled','disabled');
+                    } else {
+                        $('.on-air-time').removeAttr('disabled');
+                    }
+                });
+
+                // 동적 타이틀 input box 추가
+                var temp_idx = 1;
+                $regi_form.on('click', '.btn-title-add', function() {
+                    var add_title;
+                    add_title = '<div class="title" id="temp-title-'+temp_idx+'">';
+                    add_title += '<input type="text" name="title[]" class="form-control" title="타이틀" placeholder="" value="" style="width: 80%;">';
+                    add_title += '<button type="button" class="btn btn-primary mb-0 ml-5 btn-title-delete" data-temp-title-idx="'+temp_idx+'">삭제</button>';
+                    add_title += '</div>';
+                    $('#_add_title_input').append(add_title);
+                    temp_idx = temp_idx + 1;
+                });
+                // 동적 타이틀 input box 삭제
+                $regi_form.on('click', '.btn-title-delete', function() {
+                    var this_idx = $(this).data('temp-title-idx');
+                    $('#temp-title-'+this_idx).remove();
+                });
+
+                // 노출내용(좌)
+                $regi_form.on('ifChanged ifCreated', 'input[name="left_exposure_type"]:checked', function() {
+                    var set_val = $(this).data('input');
+                    $('.form-left-exposure-input').removeClass('show').addClass('hide');
+                    set_val !== 'no' && $('#left_type_' + set_val).removeClass('hide').addClass('show');
+                });
+
+                // 노출내용(우)
+                $regi_form.on('ifChanged ifCreated', 'input[name="right_exposure_type"]:checked', function() {
+                    var set_val = $(this).data('input');
+                    $('.form-right-exposure-input').removeClass('show').addClass('hide');
+                    set_val !== 'no' && $('#right_type_' + set_val).removeClass('hide').addClass('show');
+                });
+
+                // 송출기간 달력 생성 start --------------------------
                 var total;
                 var karr;
-
                 function replace(str,s,d){
                     var i=0;
                     while(i > -1){
@@ -297,21 +393,21 @@
                 }
 
                 function setLecDate() {
-                    if($("#StudyStartDate").val() == "") {alert("개강일을 선택해 주세요.");$("#StudyStartDate").focus();return;}
-                    if($('#Amount').val() == '') {alert('회차를 입력해 주세요.'); $('#Amount').focus();return;}
+                    if($("#study_start_date").val() == "") {alert("개강일을 선택해 주세요.");$("#study_start_date").focus();return;}
+                    if($('#on_air_num').val() == '') {alert('회차를 입력해 주세요.'); $('#on_air_num').focus();return;}
 
                     var result = "";
                     total = 0;
                     karr = 0;
 
-                    if( $("#Amount").val() != "" ) {
+                    if( $("#on_air_num").val() != "" ) {
                         t = $('input:checkbox[name="week[]"]:checked').length;
                         if (t < 1) {
                             alert('요일을 선택하세요.');
                         } else {
                             var Months = new Array(12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
-                            var syy = $("#StudyStartDate").val().substr(0, 4); //연도추출
-                            var smm = $("#StudyStartDate").val().substr(5, 2); // 월추출
+                            var syy = $("#study_start_date").val().substr(0, 4); //연도추출
+                            var smm = $("#study_start_date").val().substr(5, 2); // 월추출
                             var yy = parseInt(syy, 10); // 연도2자리
                             var mm = parseInt(smm, 10); // 월2자리
                             var ty = 0;
@@ -319,7 +415,7 @@
                             var i = 0;
 
                             result += "<table border='0' cellpadding='0' cellspacing='0' style='float: left;'><tr>";
-                            while (parseInt($("#Amount").val(), 10) > total ) {
+                            while (parseInt($("#on_air_num").val(), 10) > total ) {
                                 ty = yy + parseInt((mm + i - 1) / 12);
                                 tm = Months[((mm + i) % 12)];
                                 result += "<td style='padding:5px;' valign='top'>";
@@ -369,8 +465,8 @@
 
                                 if (
                                     $('input:checkbox[name="week[]"]:eq('+j+')').prop("checked") &&
-                                    parseInt( $("#Amount").val(),10) > total &&
-                                    parseInt((Year +""+ kMonth +""+ kDay),10)  >= parseInt(replace($("#StudyStartDate").val(), "-", ""),10)
+                                    parseInt( $("#on_air_num").val(),10) > total &&
+                                    parseInt((Year +""+ kMonth +""+ kDay),10)  >= parseInt(replace($("#study_start_date").val(), "-", ""),10)
                                 ) {
                                     bg_color ="yellow";
                                     frm_value = Year +""+ kMonth +""+ kDay;
@@ -383,7 +479,7 @@
                                 output_string += "<td id='"+ (Year +""+ kMonth +""+ kDay) +"' style='background-color:"+ bg_color +";cursor:hand;cursor:pointer;' width='24' height='20' ";
                                 output_string += " onClick=\"javascript:chkDay('"+ parseInt((Year +""+ kMonth +""+ kDay),10)  +"', "+ karr +");\">";
                                 output_string += nDay
-                                output_string += "<input type='hidden' name='savDay' value='"+ frm_value +"'>";
+                                output_string += "<input type='hidden' name='savDay[]' value='"+ frm_value +"'>";
                                 output_string += "</td>";
                                 nDay++;
                                 karr++;
@@ -400,25 +496,25 @@
                 }
 
                 function chkDay(clkDay, arr) {
-                    var f = document.regi_form;
-                    var ele = document.getElementById(clkDay);
-                    if( f.savDay[arr].value.length == 0 ) {
-                        ele.style.backgroundColor = "yellow";
-                        f.savDay[arr].value = clkDay;
+                    var id = $("#"+clkDay);
+                    var id_val = $('input[name="savDay[]"]:eq('+arr+')').val().length;
 
+                    if( id_val == 0 ) {
+                        id.css({"background-color":"yellow"});
+                        $('input[name="savDay[]"]:eq('+arr+')').val(clkDay);
                     } else {
-                        ele.style.backgroundColor = "#ffffff";
-                        f.savDay[arr].value = "";
+                        id.css({"background-color":"white"});
+                        $('input[name="savDay[]"]:eq('+arr+')').val('');
                     }
-
-                    var t = 0;
-                    for(var i=0; i<f.savDay.length; i++) {
-                        if( f.savDay[i].value.length > 0 ) {
+                    var t=0;
+                    $('input[name="savDay[]"]').each(function(idx){
+                        if($(this).val().length > 0) {
                             t++;
                         }
-                    }
-                    $("#Amount").val(t);
+                    });
+                    $("#on_air_num").val(t);
                 }
+                // 송출기간 달력 생성 end --------------------------
             </script>
 
         </div>

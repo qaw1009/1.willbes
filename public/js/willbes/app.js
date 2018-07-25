@@ -117,8 +117,10 @@ $(function() {
     $('.AllchkBox .chkBox-Agree input:checkbox').change(function(){
         if($(this).is(":checked")) {
             $('.chkBox-Agree').addClass("checked");
+            $('.chkBox-Agree input').prop('checked', true);
         } else {
             $('.chkBox-Agree').removeClass("checked");
+            $('.chkBox-Agree input').prop('checked', false);
         }
     });
 });

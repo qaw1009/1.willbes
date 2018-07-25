@@ -4,7 +4,7 @@
     <h5>- 사이트 개인정보처리방침을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true, []) !!}
+        {!! html_site_tabs('tabs_site_code') !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">

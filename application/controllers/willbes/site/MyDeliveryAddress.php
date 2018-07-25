@@ -9,9 +9,8 @@ class MyDeliveryAddress extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     // 사용하는 그룹공통코드
-    private $_ccd = [
-        'Tel1' => '101', 'Phone1' => '102'
-    ];
+    private $_tel1_ccd = '101';
+    private $_phone1_ccd = '102';
 
     public function __construct()
     {
@@ -27,11 +26,11 @@ class MyDeliveryAddress extends \app\controllers\FrontController
         $list = $this->myDeliveryAddressFModel->listMyDeliveryAddress(false, $arr_condition, 5, 0, ['AddrIdx' => 'asc']);
 
         // 지역번호, 휴대폰번호 공통코드 조회
-        $codes = $this->wCodeModel->getCcdInArray([$this->_ccd['Tel1'], $this->_ccd['Phone1']]);
+        $codes = $this->wCodeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
 
         $this->load->view('site/order/my_delivery_address_list', [
-            'arr_tel1_ccd' => $codes[$this->_ccd['Tel1']],
-            'arr_phone1_ccd' => $codes[$this->_ccd['Phone1']],
+            'arr_tel1_ccd' => $codes[$this->_tel1_ccd],
+            'arr_phone1_ccd' => $codes[$this->_phone1_ccd],
             'ele_id' => $this->_req('ele_id'),
             'results' => $list
         ]);

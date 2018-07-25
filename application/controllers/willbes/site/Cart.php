@@ -113,6 +113,7 @@ class Cart extends \app\controllers\FrontController
         $_learn_pattern = $this->_reqP('learn_pattern');
         $_is_direct_pay = $this->_reqP('is_direct_pay');
         $_only_prod_code = $this->_reqP('only_prod_code');
+        $_only_cart_type = $this->_reqP('only_cart_type');
         $_prod_code = empty($this->_reqP('prod_code')) === false ? $this->_reqP('prod_code') : (array) $_only_prod_code;
         $returns = [];
 
@@ -131,7 +132,7 @@ class Cart extends \app\controllers\FrontController
 
         if (empty($_only_prod_code) === true || (empty($_only_prod_code) === false && $_is_direct_pay == 'Y')) {
             // 개별상품 장바구니 담기 이외에 리턴 URL 지정
-            $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/order/index/cate/' . $this->_cate_code) : site_url('/cart/index/cate/' . $this->_cate_code);
+            $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/order/index/cate/' . $this->_cate_code . '/?tab=' . $_only_cart_type) : site_url('/cart/index/cate/' . $this->_cate_code);
         }
 
         // 바로결제일 경우 장바구니 식별자 세션 생성

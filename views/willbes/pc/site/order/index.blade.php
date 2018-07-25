@@ -49,12 +49,15 @@
                     </thead>
                     <tbody>
                         @foreach($results['list'] as $idx => $row)
-                            <tr>
+                            <tr id="cart_row_{{ $row['CartIdx'] }}">
                                 <td class="w-list tx-left pl20">
                                     <dl>
                                         <dt class="tit">
                                             <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                             {{ $row['ProdName'] }}
+                                            <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}"/>
+                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value="" class="coupon-idx"/>
+                                            <input type="hidden" name="coupon_price[{{ $row['CartIdx'] }}]" value="" class="coupon-price"/>
                                             @if($row['IsCoupon'] == 'Y')
                                                 <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon');">쿠폰적용</a></span>
                                             @endif
@@ -64,12 +67,12 @@
                                                 <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
                                                 <span class="w-data">
                                                     [강좌시작일 설정]
-                                                    {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능 --}}
+                                                    {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능, 개강일 전이라면 개강일부터 30일 이내 설정 가능 --}}
                                                     {{-- 디폴트 설정 => 시작일자 : 결제일 + 8일, 종료일자 : 시작일자 + 수강기간 --}}
                                                     @if($row['IsLecStart'] == 'Y')
-                                                        <input type="text" name="study_start_date[]" class="iptDate datepicker btn-set-study-date" data-study-period="{{ $row['StudyPeriod'] }}" data-is-study-start-date="{{ $row['IsStudyStartDate'] }}" value="{{ $row['DefaultStudyStartDate'] }}" readonly="readonly"/>
+                                                        <input type="text" name="study_start_date[{{ $row['CartIdx'] }}]" class="iptDate datepicker btn-set-study-date" data-study-period="{{ $row['StudyPeriod'] }}" data-is-study-start-date="{{ $row['IsStudyStartDate'] }}" value="{{ $row['DefaultStudyStartDate'] }}" readonly="readonly"/>
                                                         <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
-                                                        <input type="text" name="study_end_date[]" class="iptDate bg-gray" value="{{ $row['DefaultStudyEndDate'] }}" readonly="readonly"/>
+                                                        <input type="text" name="study_end_date[{{ $row['CartIdx'] }}]" class="iptDate bg-gray" value="{{ $row['DefaultStudyEndDate'] }}" readonly="readonly"/>
                                                     @else
                                                         <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
                                                     @endif
@@ -304,7 +307,7 @@
                                 <dl>
                                     <dt>
                                         <span class="t-price tx-light-blue NGEB">{{ number_format($results['total_price'] + $results['delivery_price']) }}원</span>
-                                        <span id="pay_method_name">[신용카드]</span>
+                                        <span id="pay_method_name"></span>
                                         <span class="w-point">적립예정포인트: <span class="tx-light-blue">343원</span></span>
                                     </dt>
                                     <dt>
@@ -318,13 +321,13 @@
                             <td class="w-buyinfo tx-left pl25">
                                 <dl>
                                     <dt>
-                                        <ul>
+                                        <ul class="item">
                                         @foreach(explode(',', $__cfg['PayMethodCcdArr']) as $idx => $val)
-                                            <li><input type="radio" name="pay_method_ccd" value="{{ str_first_pos_before($val, ':') }}" data-pay-method-name="{{ str_first_pos_after($val, ':') }}" @if($idx == 0) checked="checked" @endif/><label>{{ str_first_pos_after($val, ':') }}</label></li>
+                                            <li><input type="radio" name="pay_method_ccd" value="{{ str_first_pos_before($val, ':') }}" data-pay-method-name="{{ str_first_pos_after($val, ':') }}" @if($idx == 0) title="결제수단" required="required" checked="checked" @endif/><label>{{ str_first_pos_after($val, ':') }}</label></li>
                                         @endforeach
                                         </ul>
                                     </dt>
-                                    <dt id="pay_method_caution_txt"><div class="caution-txt">카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.</div></dt>
+                                    <dt id="pay_method_caution_txt"></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -367,36 +370,36 @@
                                 </div>
                                 <div class="chkBox">
                                     위 유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
-                                    <span class="chkBox-Agree checked">
-                                        <input type="checkbox" id="agree1" name="agree1" class="" checked="checked"/>
+                                    <span class="chkBox-Agree item">
+                                        <input type="checkbox" id="agree1" name="agree1" value="Y" title="유의사항 안내" required="required"/>
                                     </span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="w-list bg-light-white">개인정보활용안내</td>
+                            <td class="w-list bg-light-white">개인정보 활용안내</td>
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
                                     개인정보활용1<br/>
                                 </div>
                                 <div class="chkBox">
                                     위 개인정보 활용 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
-                                    <span class="chkBox-Agree checked">
-                                        <input type="checkbox" id="agree2" name="agree2" class="" checked="checked"/>
+                                    <span class="chkBox-Agree item">
+                                        <input type="checkbox" id="agree2" name="agree2" value="Y" title="개인정보 활용안내" required="required"/>
                                     </span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="w-list bg-light-white">환불정책안내</td>
+                            <td class="w-list bg-light-white">환불정책 안내</td>
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
                                     환불정책1<br/>
                                 </div>
                                 <div class="chkBox">
                                     위 환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
-                                    <span class="chkBox-Agree checked">
-                                        <input type="checkbox" id="agree3" name="agree3" class="" checked="checked"/>
+                                    <span class="chkBox-Agree item">
+                                        <input type="checkbox" id="agree3" name="agree3" value="Y" title="환불정책 안내" required="required"/>
                                     </span>
                                 </div>
                             </td>
@@ -405,21 +408,21 @@
                 </table>
                 <div class="AllchkBox tx-gray">
                     위 유의사항, 개인정보활용, 환불정책안내사항을 모두 읽었으면 동의합니다. <span class="tx-blue">(전체동의)</span>
-                    <span class="chkBox-Agree checked">
-                        <input type="checkbox" id="agree_all" name="agree_all" class="" checked="checked"/>
+                    <span class="chkBox-Agree">
+                        <input type="checkbox" id="agree_all" name="agree_all" value="Y"/>
                     </span>
                 </div>
             </div>
             <div class="willbes-Lec-buyBtn">
-                <div class="btnAgree NG"><input type="checkbox" id="" name="" class="" maxlength="30"><label>앞으로 결제 시 항상 동의하기</label></div>
+                <div class="btnAgree NG"><input type="checkbox" name="agree_always" value="Y"/><label>앞으로 결제 시 항상 동의하기</label></div>
                 <ul>
                     <li class="btnAuto180 h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                        <button type="button" name="btn_cart" class="mem-Btn bg-white bd-dark-blue">
                             <span class="tx-light-blue">장바구니가기</span>
                         </button>
                     </li>
                     <li class="btnAuto180 h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                        <button type="submit" name="btn_pay" class="mem-Btn bg-blue bd-dark-blue">
                             <span>결제하기</span>
                         </button>
                     </li>
@@ -767,6 +770,21 @@
 
             // 선택한 결제수단명 노출
             $regi_form.find('#pay_method_name').html('[' + $(this).data('pay-method-name') + ']');
+        });
+        $regi_form.find('input[name="pay_method_ccd"]:checked').trigger('click');
+
+        // 장바구니 가기 버튼 클릭
+        $('button[name="btn_cart"]').on('click', function () {
+            location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}';
+        });
+
+        // 결제하기 버튼 클릭
+        $('button[name="btn_pay"]').on('click', function () {
+            var url = '{{ site_url('/order/store/cate/' . $__cfg['CateCode']) }}';
+            ajaxSubmit($regi_form, url, function(ret) {
+                if(ret.ret_cd) {
+                }
+            }, showValidateError, null, false, 'alert');
         });
     });
 </script>

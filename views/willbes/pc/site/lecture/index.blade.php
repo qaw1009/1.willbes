@@ -133,7 +133,7 @@
             {!! method_field('POST') !!}
             <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
             <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
-            <input type="hidden" name="only_cart_tab_id" value=""/>   {{-- 단일 상품 장바구니 탭 아이디 --}}
+            <input type="hidden" name="only_cart_type" value=""/>   {{-- 단일 상품 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both">
@@ -199,10 +199,10 @@
                                                 <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] }}배수</span>
                                                 <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                             </dt>
-                                            @if($row['IsCart'] == 'N')
-                                                <dt class="tx-red ml15">(바로결제 상품)</dt>
-                                            @endif
                                         </dl>
+                                        @if($row['IsCart'] == 'N')
+                                            <br/><div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+                                        @endif
                                     </td>
                                     <td class="w-notice p_re">
                                         <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
@@ -262,7 +262,8 @@
                                                     </span>
                                                 </div>
                                             @endforeach
-                                                <div class="w-sub ml10">
+                                                <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                                <div class="w-sub">
                                                     <a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover2"><strong>교재상세정보</strong></a>
                                                 </div>
                                                 <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
@@ -364,15 +365,15 @@
                         return;
                     }
                     // 장바구니 탭 구분 셋팅
-                    $regi_form.find('input[name="only_cart_tab_id"]').val('book');
+                    $regi_form.find('input[name="only_cart_type"]').val('book');
                 } else {
-                    $regi_form.find('input[name="only_cart_tab_id"]').val('on_lecture');
+                    $regi_form.find('input[name="only_cart_type"]').val('on_lecture');
                 }
                 // 클릭된 상품 코드 셋팅
                 $regi_form.find('input[name="only_prod_code"]').val($(this).val());
             } else {
                 $regi_form.find('input[name="only_prod_code"]').val('');
-                $regi_form.find('input[name="only_cart_tab_id"]').val('');
+                $regi_form.find('input[name="only_cart_type"]').val('');
 
                 if ($(this).hasClass('chk_products') === true) {
                     // 강좌상품일 경우 연계도서상품 체크 해제
@@ -383,7 +384,7 @@
 
         // 장바구니 이동 버튼 클릭
         $buy_layer.on('click', '.answerBox_block', function() {
-            location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}?tab=' + $regi_form.find('input[name="only_cart_tab_id"]').val();
+            location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}?tab=' + $regi_form.find('input[name="only_cart_type"]').val();
         });
 
         // 계속구매 버튼 클릭

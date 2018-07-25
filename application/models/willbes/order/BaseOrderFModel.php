@@ -22,16 +22,19 @@ class BaseOrderFModel extends WB_Model
     // 장바구니 상품타입명
     public $_cart_prod_type_name = ['on_lecture' => '강좌', 'on_package' => '패키지', 'book' => '교재'];
 
-    // 상품타입 공통코드
-    public $_prod_type_ccd = ['on_lecture' => '636001', 'book' => '636003'];
+    // 장바구니 상품타입 순번
+    public $_cart_prod_type_idx = ['on_lecture' => '1', 'on_package' => '2', 'book' => '3'];
 
-    // 학습형태 공통코드
+    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재)
+    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003'];
+
+    // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지)
     public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004'];
 
-    // 패키지 학습형태 공통코드
+    // 패키지 학습형태 공통코드 (사용자패키지, 운영자패키지, 기간제패키지)
     public $_package_pattern_ccd = ['615002', '615003', '615004'];
 
-    // 판매가능 공통코드
+    // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
     // 수강생 교재 공통코드

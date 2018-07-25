@@ -9,9 +9,8 @@ class Order extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     // 사용하는 그룹공통코드
-    private $_ccd = [
-        'Tel1' => '101', 'Phone1' => '102', 'PayMethod' => '604'
-    ];
+    private $_tel1_ccd = '101';
+    private $_phone1_ccd = '102';
 
     public function __construct()
     {
@@ -30,7 +29,7 @@ class Order extends \app\controllers\FrontController
         $is_delivery_info = false;
 
         // 장바구니 조회
-        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, $this->_cate_code, $sess_cart_idx);
+        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, $this->_cate_code, $sess_cart_idx, null, null);
 
         $results = [];
         $total_price = 0;
@@ -43,7 +42,7 @@ class Order extends \app\controllers\FrontController
 
             // 상품구분명 / 상품구분명 색상 class 번호 (단강좌 : on_lecture / 1, 패키지: on_package / 2, 교재 : book / 3)
             $row['CartProdTypeName'] = $this->orderFModel->_cart_prod_type_name[$row['CartProdType']];
-            $row['CartProdTypeNum'] = array_flip(array_keys($this->orderFModel->_cart_prod_type_name))[$row['CartProdType']] + 1;
+            $row['CartProdTypeNum'] = $this->orderFModel->_cart_prod_type_idx[$row['CartProdType']];
 
             // 강좌시작일 설정
             $row['DefaultStudyStartDate'] = $row['DefaultStudyEndDate'] = $row['IsStudyStartDate'] = '';
@@ -83,7 +82,7 @@ class Order extends \app\controllers\FrontController
             $results['delivery_price'] = $this->orderFModel->getBookDeliveryPrice($results['price']);
         }
 
-        $results['cart_type'] = $cart_type;     // 장바구니 구분
+        $results['cart_type'] = $cart_type;     // 장바구니 구분 (강좌 : on_lecture, 교재 : book)
         $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명
         $results['total_price'] = $total_price;     // 전체 주문금액
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
@@ -92,13 +91,18 @@ class Order extends \app\controllers\FrontController
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
         // 지역번호, 휴대폰번호 공통코드 조회
-        $wcodes = $this->wCodeModel->getCcdInArray([$this->_ccd['Tel1'], $this->_ccd['Phone1']]);
+        $wcodes = $this->wCodeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
 
         $this->load->view('site/order/index', [
-            'arr_tel1_ccd' => $wcodes[$this->_ccd['Tel1']],
-            'arr_phone1_ccd' => $wcodes[$this->_ccd['Phone1']],
+            'arr_tel1_ccd' => $wcodes[$this->_tel1_ccd],
+            'arr_phone1_ccd' => $wcodes[$this->_phone1_ccd],
             'results' => $results
         ]);
+    }
+
+    public function store($params = [])
+    {
+        var_dump($this->_reqP(null));
     }
 
     /**

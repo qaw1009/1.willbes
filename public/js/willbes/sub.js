@@ -138,11 +138,17 @@ $(function() {
 $(function() {
     $('.Member .agree-Chk .agree-Tit').click(function() {
 
+        $('.arrow').text('▼');
+
+        $btn_arrow = $(this).parents('.chk').find('.arrow');
+
         if ($(this).next().is(':visible')) {
             $(this).next().hide();
+            $btn_arrow.text('▼');
         } else {
             $('.Member .agree-Chk .agree-Txt').hide();
             $(this).next().show();
+            $btn_arrow.text('▲');
         }   
     });
 });

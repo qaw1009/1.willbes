@@ -427,7 +427,7 @@
                         <col width="*">
                     </colgroup>
                     <tbody>
-                        <tr>
+                        <tr class="chk">
                             <td class="w-list bg-light-white">유의사항 안내</td>
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
@@ -450,7 +450,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="chk">
                             <td class="w-list bg-light-white">개인정보활용안내</td>
                             <td class="w-txt tx-left">
                                 <div class="txtBox">
@@ -473,7 +473,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="chk">
                             <td class="w-list bg-light-white">환불정책안내</td>
                             <td class="w-txt tx-left">
                                 <div class="txtBox">

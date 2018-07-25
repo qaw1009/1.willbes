@@ -34,6 +34,9 @@ class BaseOrderFModel extends WB_Model
     // 패키지 학습형태 공통코드 (사용자패키지, 운영자패키지, 기간제패키지)
     public $_package_pattern_ccd = ['615002', '615003', '615004'];
 
+    // 운영자패키지 타입 공통코드 (일반형, 선택형)
+    public $_admin_package_type_ccd = ['normal' => '648001', 'select' => '648002'];
+
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 

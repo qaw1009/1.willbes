@@ -65,18 +65,18 @@ class Cart extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'prod_code', 'label' => '상품 식별자', 'rules' => 'trim|required'],
-            ['field' => 'parent_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required']
+            ['field' => 'input_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $prod_code = $this->_reqP('prod_code');
-        $parent_prod_code = $this->_reqP('parent_prod_code');
+        $prod_book_code = $this->_reqP('prod_code');
+        $input_prod_code = json_decode($this->_reqP('input_prod_code'), true);
         
-        // 부모상품 주문여부 및 장바구니 확인
-        $returns['is_ordered'] = $this->cartFModel->checkStudentBook($prod_code, $parent_prod_code);
+        // 수강생교재 주문가능여부 확인
+        $returns['is_check'] = $this->cartFModel->checkStudentBook($prod_book_code, $input_prod_code);
 
         $this->json_result(true, '', [], $returns);
     }

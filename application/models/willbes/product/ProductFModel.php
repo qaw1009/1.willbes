@@ -7,6 +7,7 @@ class ProductFModel extends WB_Model
         'on_lecture' => 'vw_product_on_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'product' => 'lms_product',
+        'product_r_product' => 'lms_product_r_product',
         'product_lecture' => 'lms_product_lecture',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
@@ -15,6 +16,12 @@ class ProductFModel extends WB_Model
         'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'code' => 'lms_sys_code'
     ];
+
+    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재)
+    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003'];
+
+    // 수강생 교재 공통코드
+    public $_student_book_ccd = '610003';
 
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['618001', '618002'];
@@ -107,10 +114,10 @@ class ProductFModel extends WB_Model
 
     /**
      * 상품 컨텐츠 조회
-     * @param $prod_code
+     * @param array $prod_code
      * @return array
      */
-    public function findProductContents($prod_code=[])
+    public function findProductContents($prod_code = [])
     {
         $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
         $column = 'PC.ProdCode, PC.ContentTypeCcd, CD.CcdName as ContentTypeCcdName, PC.Content';
@@ -169,6 +176,33 @@ class ProductFModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $order_by, [$prod_code]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 수강생교재의 부모상품코드 조회
+     * @param $prod_book_code
+     * @return array
+     */
+    public function findParentProductToStudentBook($prod_book_code)
+    {
+        $column = 'PP.ProdCode';
+        $from = '
+            from ' . $this->_table['product'] . ' as BP
+                inner join ' . $this->_table['product_r_product'] . ' as PP
+                    on BP.ProdCode = PP.ProdCodeSub
+                inner join ' . $this->_table['product'] . ' as LP
+                    on PP.ProdCode = LP.ProdCode    
+            where BP.ProdCode = ?
+                and BP.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '"
+                and PP.OptionCcd = "' . $this->_student_book_ccd . '"
+                and PP.IsStatus = "Y"	
+                and LP.ProdTypeCcd in ("' . $this->_prod_type_ccd['on_lecture'] . '", "' . $this->_prod_type_ccd['off_lecture'] . '")                            
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$prod_book_code]);
 
         return $query->result_array();
     }

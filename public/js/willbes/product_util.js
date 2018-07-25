@@ -1,31 +1,30 @@
 // 수강생 교재 체크
 function checkStudentBook($regi_form, $chk_obj) {
     var input_data = $chk_obj.data();
-    var is_check = true, is_succ_ajax = false;
+    var is_check = false;
     var code = '610003';
-    var msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.\n해당 강좌를 선택해 주세요';
 
     if (input_data.hasOwnProperty('bookProvisionCcd') === true && input_data.bookProvisionCcd.toString() === code) {
-        // 강좌상품이 선택되지 않은 경우
-        if ($regi_form.find('input[name="prod_code[]"][data-prod-code="' + input_data.parentProdCode + '"]:checked').length < 1) {
-            is_check = false;
+        // 선택된 강좌상품코드
+        var $input_prod_code = {};
+        $regi_form.find('.chk_products:checked').each(function(idx) {
+            $input_prod_code[idx] = $(this).data('prod-code');
+        });
 
-            // 강좌상품 주문여부 확인
-            var url = location.protocol + '//' + location.host + '/cart/checkStudentBook';
-            var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), { 'prod_code' : input_data.prodCode, 'parent_prod_code' : input_data.parentProdCode});
-            sendAjax(url, data, function(ret) {
-                is_succ_ajax = true;
-                if (ret.ret_cd) {
-                    is_check = ret.ret_data.is_ordered;
+        var url = location.protocol + '//' + location.host + '/cart/checkStudentBook';
+        var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), { 'prod_code' : input_data.prodCode, 'input_prod_code' : JSON.stringify($input_prod_code)});
+        sendAjax(url, data, function(ret) {
+            if (ret.ret_cd) {
+                if (ret.ret_data.is_check !== true) {
+                    alert(ret.ret_data.is_check);
+                } else {
+                    is_check = true;
                 }
-            }, showAlertError, false, 'POST');
-
-            if (is_check === false) {
-                if (is_succ_ajax === true) {
-                    alert(msg);
-                }
-                $chk_obj.prop('checked', false).trigger('change');
             }
+        }, showAlertError, false, 'POST');
+
+        if (is_check === false) {
+            $chk_obj.prop('checked', false).trigger('change');
         }
     }
 

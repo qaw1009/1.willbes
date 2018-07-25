@@ -25,8 +25,9 @@ class CartFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode, CA.ProdCodeSub, CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty
-                , CA.IsDirectPay, CA.IsVisitPay, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
+            $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode
+                , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['admin_package'] . '" and PL.PackTypeCcd = "' . $this->_admin_package_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
                 , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart
                 , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
@@ -114,33 +115,54 @@ class CartFModel extends BaseOrderFModel
 
     /**
      * 수강생교재 구매시 부모상품 주문여부 및 장바구니 확인
-     * @param $prod_code
-     * @param $parent_prod_code
-     * @return bool
+     * @param string $prod_book_code [교재상품코드]
+     * @param array $arr_input_prod_code [교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
+     * @return bool|string [true : 구매가능, string : 구매불가]
      */
-    public function checkStudentBook($prod_code, $parent_prod_code)
+    public function checkStudentBook($prod_book_code, $arr_input_prod_code = [])
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
-        // 수강생교재일 경우 부모상품 주문정보 확인
-        $column = '(case PP.OptionCcd when "' . $this->_student_book_ccd . '" then if(OP.OrderProdIdx is not null, "Y", "N") else "X" end) as IsOrdered';
-        $arr_condition = ['EQ' => ['PP.ProdCode' => $parent_prod_code, 'PP.ProdCodeSub' => $prod_code, 'PP.IsStatus' => 'Y']];
+        // 에러 메시지
+        $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
 
-        $data = $this->_conn->getJoinFindResult($this->_table['product_r_product'] . ' as PP', 'left', $this->_table['order_product'] . ' as OP'
-            , 'PP.ProdCode = OP.ProdCode and OP.MemIdx = ' . $sess_mem_idx   // TODO: 결제완료 주문상태 조건 추가 필요
-            , $column, $arr_condition
-        );
-
-        if ($data['IsOrdered'] == 'N') {
-            // 부모상품 장바구니 확인
-            $cart_data = $this->cartFModel->listValidCart($sess_mem_idx, null, null, null, [$parent_prod_code]);
-
-            if (empty($cart_data) === true) {
-                return false;
-            }
+        // 1. 해당 도서 수강생교재 여부 확인, 수강생교재일 경우 연관된 부모상품코드 조회
+        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
+        $arr_target_prod_code = array_pluck($this->productFModel->findParentProductToStudentBook($prod_book_code), 'ProdCode');
+        if (empty($arr_target_prod_code) === true) {
+            // 수강생교재가 아닐 경우
+            return true;
         }
 
-        return true;
+        // TODO : 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
+
+        // 3. 교재상품과 동시에 장바구니에 저장되는 상품코드와 수강생교재 부모상품코드와 비교 (동일한 상품코드가 있다면 return true, 없다면 continue)
+        $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_input_prod_code);
+        if (empty($arr_same_prod_code) === false) {
+            return true;
+        }
+
+        // 4. 수강생교재 부모상품코드 장바구니 등록여부 확인 (등록되어 있다면 return true, 없다면 continue)
+        $cart_data = $this->cartFModel->listValidCart($sess_mem_idx, null, null, null);
+
+        // 단강좌는 상품코드, 패키지 상품일 경우 연결된 단강좌 상품코드를 병합
+        $arr_cart_prod_code = [];
+        $arr_tmp_prod_code = array_pluck($cart_data, 'ProdCodeSub', 'ProdCode');
+        foreach ($arr_tmp_prod_code as $prod_code => $prod_sub_code) {
+            $arr_cart_prod_code = array_merge($arr_cart_prod_code, [(string) $prod_code]);
+            empty($prod_sub_code) === false && $arr_cart_prod_code = array_merge($arr_cart_prod_code, explode(',', $prod_sub_code));
+        }
+        $arr_cart_prod_code = array_unique($arr_cart_prod_code);
+
+        // 수강생교재 부모상품코드와 병합된 상품코드와 비교
+        $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_cart_prod_code);
+        if (empty($arr_same_prod_code) === false) {
+            return true;
+        }
+
+        // TODO : 수강생교재 부모 단강좌 상품 구매여부 확인 (구매정보가 있다면 return true, 없다면 continue)
+
+        return $err_msg;
     }
 
     /**
@@ -283,15 +305,16 @@ class CartFModel extends BaseOrderFModel
      */
     private function _check_on_lecture($arr_prod_code = [])
     {
-        // 강좌상품코드 배열
-        $arr_parent_prod_code = array_unique(array_pluck($arr_prod_code, 'ParentProdCode'));
+        // 상품코드 배열
+        $arr_input_prod_code = array_unique(array_pluck($arr_prod_code, 'ProdCode'));
 
         // 수강생 교재 체크
         foreach ($arr_prod_code as $prod_code => $prod_row) {
             // 구매교재 상품
             if ($prod_code != $prod_row['ParentProdCode']) {
-                if (array_search($prod_row['ParentProdCode'], $arr_parent_prod_code) === false && $this->checkStudentBook($prod_code, $prod_row['ParentProdCode']) === false) {
-                    return '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
+                $is_check = $this->checkStudentBook($prod_code, $arr_input_prod_code);
+                if ($is_check !== true) {
+                    return $is_check;
                 }
             }
         }

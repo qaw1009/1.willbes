@@ -19,7 +19,7 @@
         </div>
         <div class="info-Txt tx-black">
             통합회원 전환 시 전원 특별 혜택 증정은 물론,<br/>
-            하나의 ID로 윌비스의 전체 서비시를 이용하실 수 있습니다.
+            <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
         </div>
         <div class="convert-chkBox mt30">
             <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
@@ -57,7 +57,7 @@
             <li>전환완료</li>
         </ul>
         <div class="user-Txt tx-black">
-            기존 이용중인 윌비스 서비스를 확인을 위해 본인 인증을 해 주세요.</br>
+            기존 이용중인 윌비스 서비스를 확인하기 위해 본인 인증을 해 주세요.</br>
             최초 인증된 ID는 '통합 ID'로 사용됩니다.
         </div>
         <ul class="tabWrap tabs-Certi">
@@ -89,6 +89,7 @@
                         <span>확인</span>
                     </button>
                 </div>
+                <div class="notice-Txt tx-gray mt40"></div>
             </div>
             <div id="convert2">
                 <div class="widthAuto460 mt50">
@@ -184,54 +185,61 @@
                 통합회원 약관동의
             </div>
             <ul>
-                <li>
-                    <div class="agree-Tit tx-black bg-light-gray">
+                <li class="top bg-light-gray">
+                    <div class="AllchkBox agree-Tit tx-black">
                         <strong>변경된 이용약관에 대한 내용은 모두 확인하고 전체 동의합니다.</strong>
                         <div class="chkBox-Agree">
                             <input type="checkbox" id="" name="" class="" maxlength="30">
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree checked">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx11">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
-                            <div class="chkBox-Agree checked">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx12">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree checked">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의
-                            <div class="chkBox-Agree checked">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="arrow">▼</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
+                    <div class="agree-Txt">
+                        987 약관이 노출 됩니다.<br/>
+                        654 약관이 노출 됩니다.<br/>
+                        321 약관이 노출 됩니다.<br/>
+                    </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
+                    <div class="agree-Txt">
+                        aaaaa 약관이 노출 됩니다.<br/>
+                        sssss 약관이 노출 됩니다.<br/>
+                        ddddd 약관이 노출 됩니다.<br/>
+                    </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            (선택) 개인정보 위탁 동의
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -249,7 +257,7 @@
                 </li>
             </ul>
         </div>
-        <div class="convert-Btn mt40 pt30 bdt-light-gray tx-center btnAuto h66">
+        <div class="convert-Btn mt40 pt30 tx-center btnAuto h66">
             <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>통합회원 전환하기</span>
             </button>
@@ -343,20 +351,20 @@
             <ul>
                 <li class="agree-User">
                     <div class="agree-Tit tx-gray">
-                        <strong>신규 통합 아이디</strong>
                         <div class="inputBox agreeBox p_re">
-                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="4~20자리 영문 대소문자, 숫자만 입력 가능" maxlength="30">
+                            <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="신규 통합 아이디" maxlength="30">
                         </div>
+                        <div class="tx-gray mb10">4~20자리 영문 대소문자, 숫자만 입력 가능</div>
                         <div class="tx-red" style="display: block;">* 유효성메시지노출</div>
                     </div>
                 </li>
                 <li class="agree-User">
                     <div class="agree-Tit tx-gray">
-                        <strong>신규 비밀번호</strong>
                         <div class="inputBox agreeBox p_re">
-                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합" maxlength="30">
+                            <input type="password" id="USER_PWD" name="USER_PWD" class="iptPwd" placeholder="신규 비밀번호" maxlength="30">
                             <a class="bg-dark-blue" href="#none">확인</a>
                         </div>
+                        <div class="tx-gray mb10">8~20자리이하영문대소문자, 숫자, 특수문자중2종류조합</div>
                         <div class="tx-red" style="display: block;">* 유효성메시지노출</div>
                     </div>
                 </li>
@@ -377,54 +385,58 @@
                 통합회원 약관동의
             </div>
             <ul>
-                <li>
-                    <div class="agree-Tit tx-black bg-light-gray">
+                <li class="top bg-light-gray">
+                    <div class="AllchkBox agree-Tit tx-black">
                         <strong>변경된 이용약관에 대한 내용은 모두 확인하고 전체 동의합니다.</strong>
                         <div class="chkBox-Agree">
                             <input type="checkbox" id="" name="" class="" maxlength="30">
                         </div>
                     </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree checked">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
                             <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx11">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
-                            <div class="chkBox-Agree checked">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree checked">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의
-                            <div class="chkBox-Agree checked">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="arrow">▼</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
+                    <div class="agree-Txt">
+                        약관이 노출 됩니다.<br/>
+                    </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
+                    <div class="agree-Txt">
+                        약관이 노출 됩니다.<br/>
+                        약관이 노출 됩니다.<br/>
+                    </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            (선택) 개인정보 위탁 동의
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -442,7 +454,7 @@
                 </li>
             </ul>
         </div>
-        <div class="convert-Btn mt40 pt30 bdt-light-gray tx-center btnAuto h66">
+        <div class="convert-Btn mt40 pt30 tx-center btnAuto h66">
             <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>통합회원 전환하기</span>
             </button>

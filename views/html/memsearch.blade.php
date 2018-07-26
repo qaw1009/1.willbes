@@ -12,7 +12,7 @@
         <div class="Member mem-Search widthAuto690">
             <div class="user-Txt tx-black">
                 아이디/비밀번호를 분실하셨나요?</br>
-                원하시는 인증방법을 선택해 주세요.
+                가입 시 인증한 방법을 선택해 주세요.
             </div>
             <ul class="tabs c_both">
                 <li><a href="#none" class="on">아이디 찾기</a></li>
@@ -44,6 +44,7 @@
                             <span>확인</span>
                         </button>
                     </div>
+                    <div class="notice-Txt tx-gray mt40"></div>
                 </div>
                 <div id="id_certi2">
                     <div class="widthAuto460 mt30">
@@ -130,6 +131,7 @@
                             <span>확인</span>
                         </button>
                     </div>
+                    <div class="notice-Txt tx-gray mt40"></div>
                 </div>
                 <div id="pw_certi2">
                     <div class="widthAuto460">
@@ -245,7 +247,10 @@
                             <span>확인</span>
                         </button>
                     </div>
-                    <div class="notice-Txt tx-gray mt40">* 아이디/비밀번호가 생각나지 않으신가요? <span class="underline valign-base">아이디/비밀번호 찾기</span>를 이용해 주세요.</div>
+                    <div class="notice-Txt tx-gray mt40">
+                        * 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.<br/>
+                        * 아이디/비밀번호가 생각나지 않으신가요? <span class="underline valign-base">아이디/비밀번호 찾기</span>를 이용해 주세요.
+                    </div>
                 </div>
                 <div id="lock_certi3">
                     <div class="widthAuto460 mt30">

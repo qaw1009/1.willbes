@@ -23,7 +23,7 @@
             <div id="join1">
                 <div class="widthAuto460">
                     <div class="inputBox p_re">
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="이름" maxlength="30">
                     </div>
                     <div class="tx-red mb30" style="display: block;">이름을 정확하게 입력해 주세요.</div>
                     <div class="inputBox p_re">
@@ -34,7 +34,10 @@
                     </div>
                     <div class="tx-red mb30" style="display: block;"> ‘-’ 없이 숫자만 입력해 주세요.</div>
                     <div class="inputBox p_re">
-                        <input type="text" id="USER_NUMBER" name="USER_NUMBER" class="iptNumber" placeholder="인증번호입력" maxlength="30">
+                        <input type="text" id="USER_NUMBER" name="USER_NUMBER" class="iptNumber certi" placeholder="인증번호입력" maxlength="30">
+                        <button type="submit" onclick="" class="mem-Btn certi bg-dark-blue bd-dark-blue">
+                            <span>00:00</span>
+                        </button>
                     </div>
                     <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
                 </div>
@@ -43,11 +46,12 @@
                         <span>확인</span>
                     </button>
                 </div>
+                <div class="notice-Txt tx-gray mt40"></div>
             </div>
             <div id="join2">
                 <div class="widthAuto460">
                     <div class="inputBox p_re">
-                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="아이디" maxlength="30">
+                        <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="이름" maxlength="30">
                     </div>
                     <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>
                     <div class="inputBox p_re">
@@ -65,6 +69,7 @@
                         <span>확인</span>
                     </button>
                 </div>
+                <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
             </div>
         </div>
     </div>
@@ -119,7 +124,7 @@
                     <td class="combine-Tit">생년월일</td>
                     <td>
                         <div class="inputBox p_re">
-                            <input type="text" id="USER_BIRTH" name="USER_BIRTH" class="iptBirth" placeholder="생년월일 ex.19800101" maxlength="30">
+                            <input type="text" id="USER_BIRTH" name="USER_BIRTH" class="iptBirth" placeholder="ex.19800101" maxlength="30">
                         </div>
                         <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
@@ -170,7 +175,7 @@
                 <tr>
                     <td class="combine-Tit">이메일</td>
                     <td>
-                        <div class="inputBox">
+                        <div class="inputBox p_re">
                             <dl>
                                 <dt class="mbox1 p_re">
                                     <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail01" placeholder="이메일" maxlength="30"> 
@@ -188,7 +193,7 @@
                                 </dt>
                             </dl>
                         </div>
-                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                        <div class="tx-red mbox-txt mt10" style="display: block;">* 유효성메시지노출</div>
                     </td>
                 </tr>
                 <tr>
@@ -210,52 +215,60 @@
             </tbody>
         </table>
         <div class="agree-Chk mt40 toggle">
-            <div class="agree-All-Tit p_re">
+            <div class="AllchkBox agree-All-Tit p_re">
                 전체동의
                 <div class="chkBox-Agree">
                     <input type="checkbox" id="" name="" class="" maxlength="30">
                 </div>
             </div>
             <ul>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree checked">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx11">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
-                            <div class="chkBox-Agree checked">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx12">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
                         </a>
                     </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree checked">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의
-                            <div class="chkBox-Agree checked">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="arrow">▼</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
+                    <div class="agree-Txt">
+                        111 약관이 노출 됩니다.<br/>
+                        222 약관이 노출 됩니다.<br/>
+                        333 약관이 노출 됩니다.<br/>
+                    </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
                         </a>
                     </div>
-                    <div class="agree-Txt"></div>
+                    <div class="agree-Txt">
+                        1약관이 노출 됩니다.<br/>
+                        2약관이 노출 됩니다.<br/>
+                        3약관이 노출 됩니다.<br/>
+                    </div>
                 </li>
-                <li>
+                <li class="chk">
+                    <div class="chkBox-Agree">
+                        <input type="checkbox" id="" name="" class="" maxlength="30">
+                    </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            (선택) 개인정보 위탁 동의
-                            <div class="chkBox-Agree">
-                                <input type="checkbox" id="" name="" class="" maxlength="30">
-                            </div>
+                            (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -273,7 +286,7 @@
                 </li>
             </ul>
         </div>
-        <div class="combine-Btn mt40 pt30 bdt-light-gray btnAuto h66">
+        <div class="combine-Btn mt40 pt30 btnAuto h66">
             <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                 <span>동의하고 회원가입</span>
             </button>
@@ -310,7 +323,7 @@
                 <option value="임용">임용</option>
             </select>
         </div>
-        <button type="submit" onclick="" class="mem-Btn h36 mt70 bg-blue bd-dark-blue">
+        <button type="submit" onclick="" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
             <span>시작하기</span>
         </button>
     </div>

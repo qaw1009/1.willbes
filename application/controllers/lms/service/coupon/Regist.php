@@ -133,6 +133,7 @@ class Regist extends \app\controllers\BaseController
                 'IssueStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
                 'IssueEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
             ];
+            $arr_condition['ORG2']['RAW'] = ['(IssueStartDate < "' => $this->_reqP('search_start_date') . '" AND IssueEndDate > "' . $this->_reqP('search_end_date') . '")'];
         } elseif ($this->_reqP('search_date_type') == 'R') {
             // 등록일 기간 검색
             $arr_condition['BDT'] = ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];

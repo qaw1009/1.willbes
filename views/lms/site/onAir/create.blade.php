@@ -22,7 +22,8 @@
                     </label>
                     <div class="col-md-10">
                         <div class="form-inline inline-block item">
-                            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
+                            {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}--}}
+                            {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false, $offLineSite_list) !!}
                         </div>
                     </div>
                 </div>
@@ -185,23 +186,24 @@
                 </div>
 
 
-
-
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="left_exposure_type_M">노출내용(좌) <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
                         <div class="radio">
                             <span class="blue pr-10">[타입]</span>
-                            <input type="radio" id="left_exposure_type_M" name="left_exposure_type" data-input="file" class="flat" value="M" title="영상" @if($method == 'POST' || $data['LeftExposureType']=='M')checked="checked"@endif/> <label for="left_exposure_type_M" class="input-label">영상</label>
-                            <input type="radio" id="left_exposure_type_I" name="left_exposure_type" data-input="link" class="flat" value="I" title="이미지" @if($data['LeftExposureType']=='I')checked="checked"@endif/> <label for="left_exposure_type_I" class="input-label">이미지</label>
+                            <input type="radio" id="left_exposure_type_M" name="left_exposure_type" data-input="link" class="flat" value="M" title="영상" @if($method == 'POST' || $data['LeftExposureType']=='M')checked="checked"@endif/> <label for="left_exposure_type_M" class="input-label">영상</label>
+                            <input type="radio" id="left_exposure_type_I" name="left_exposure_type" data-input="file" class="flat" value="I" title="이미지" @if($data['LeftExposureType']=='I')checked="checked"@endif/> <label for="left_exposure_type_I" class="input-label">이미지</label>
+                        </div>
+                        <div class="form-left-exposure-input hide" id="left_type_link">
+                            <input type="text" id="left_link" name="left_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['LeftLink']}}">
                         </div>
                         <div class="form-inline form-left-exposure-input hide" id="left_type_file">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" name="left_file_name" class="form-control input-file" required="required" title="첨부자료">
+                                    <input type="file" name="attach_file[]" class="form-control input-file" required="required" title="첨부자료">
                                 </span>
                             </div>
                             @if(empty($data['LeftFileName']) === false)
@@ -213,9 +215,6 @@
                             </div>
                             @endif
                         </div>
-                        <div class="form-left-exposure-input hide" id="left_type_link">
-                            <input type="text" id="left_link" name="left_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['LeftLink']}}">
-                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -224,15 +223,18 @@
                     <div class="col-md-10">
                         <div class="radio">
                             <span class="blue pr-10">[타입]</span>
-                            <input type="radio" id="right_exposure_type_M" name="right_exposure_type" data-input="file" class="flat" value="M" title="영상" @if($method == 'POST' || $data['RightExposureType']=='M')checked="checked"@endif/> <label for="right_exposure_type_M" class="input-label">영상</label>
-                            <input type="radio" id="right_exposure_type_I" name="right_exposure_type" data-input="link" class="flat" value="I" title="이미지" @if($data['RightExposureType']=='I')checked="checked"@endif/> <label for="right_exposure_type_I" class="input-label">이미지</label>
+                            <input type="radio" id="right_exposure_type_M" name="right_exposure_type" data-input="link" class="flat" value="M" title="영상" @if($method == 'POST' || $data['RightExposureType']=='M')checked="checked"@endif/> <label for="right_exposure_type_M" class="input-label">영상</label>
+                            <input type="radio" id="right_exposure_type_I" name="right_exposure_type" data-input="file" class="flat" value="I" title="이미지" @if($data['RightExposureType']=='I')checked="checked"@endif/> <label for="right_exposure_type_I" class="input-label">이미지</label>
+                        </div>
+                        <div class="form-right-exposure-input hide" id="right_type_link">
+                            <input type="text" id="right_link" name="right_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['RightLink']}}">
                         </div>
                         <div class="form-inline form-right-exposure-input hide" id="right_type_file">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" name="right_file_name" class="form-control input-file" required="required" title="첨부자료">
+                                    <input type="file" name="attach_file[]" class="form-control input-file" required="required" title="첨부자료">
                                 </span>
                             </div>
                             @if(empty($data['RightFileName']) === false)
@@ -243,9 +245,6 @@
                                     <a href="#none" class="file-delete" data-attach-idx="{{$data['OaIdx']}}"><i class="fa fa-times red"></i></a>
                                 </div>
                             @endif
-                        </div>
-                        <div class="form-right-exposure-input hide" id="right_type_link">
-                            <input type="text" id="right_link" name="right_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['RightLink']}}">
                         </div>
                     </div>
                 </div>
@@ -295,10 +294,19 @@
                 });
 
                 // ajax submit
-                /*$regi_form.submit(function() {
-                    var _url = '{{ site_url("/site/onAir/store") }}' + getQueryString();
+                $regi_form.submit(function() {
+                    var week_str = "";
+                    for(var i=0; i<7; i++) {
+                        if($('input:checkbox[name="week[]"]:eq('+i+')').prop("checked")) {
+                            week_str += "Y,";
+                        } else {
+                            week_str += "N,";
+                        }
+                    }
+                    $("#week_str").val(week_str);
 
-                    ajaxSubmit($regi_form, _url, function(ret) {
+                    var _url = '{{ site_url("/site/onAir/store") }}' + getQueryString();
+                    /*ajaxSubmit($regi_form, _url, function(ret) {
                         if($regi_form.find('input[name="cate_code[]"]').length < 1) {
                             alert('카테고리 선택 필드는 필수입니다.');
                             return false;
@@ -308,8 +316,8 @@
                             notifyAlert('success', '알림', ret.ret_msg);
                             location.replace('{{ site_url("/site/onAir/") }}' + getQueryString());
                         }
-                    }, showValidateError, null, false, 'alert');
-                });*/
+                    }, showValidateError, null, false, 'alert');*/
+                });
 
 
                 // 운영사이트 변경

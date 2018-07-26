@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class SearchaAnalysisModel extends WB_Model
 {
     private $_table = [
-        'searcha_analysis' => 'lsm_searcha_analysis',
+        'searcha_analysis' => 'lms_search_analysis',
         'site' => 'lms_site',
         'sys_category' => 'lms_sys_category'
     ];

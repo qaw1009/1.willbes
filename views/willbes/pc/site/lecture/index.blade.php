@@ -150,16 +150,18 @@
                                 </div>
                                 <div class="Name">{{ str_first_pos_before($prof_name, '::') }} 교수님</div>
                             </li>
-                            <li class="Reply tx-blue">
-                                <strong>수강후기</strong>
-                                <div class="sliderUp">
-                                    <div class="sliderVertical roll-Reply tx-dark-black">
-                                        <div>1국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                                        <div>2국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                                        <div>3국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                            @if($data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
+                                <li class="Reply tx-blue">
+                                    <strong>수강후기</strong>
+                                    <div class="sliderUp">
+                                        <div class="sliderVertical roll-Reply tx-dark-black">
+                                            @foreach(json_decode($data['professor_study_comments'][$subject_idx][$prof_idx], true) as $idx => $board_row)
+                                                <div>{{ $board_row['Title'] }}</div>
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <!-- willbes-Lec-Profdata -->

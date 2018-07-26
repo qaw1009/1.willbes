@@ -42,9 +42,10 @@ class ProductFModel extends WB_Model
      * @param null|int $limit
      * @param null|int $offset
      * @param null|array $order_by
+     * @param string $add_column
      * @return array|int
      */
-    public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm,  IsUse
@@ -68,7 +69,7 @@ class ProductFModel extends WB_Model
             }
         }
 
-        return $this->_conn->getListResult($this->_table[$learn_pattern], $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table[$learn_pattern], $column . $add_column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -79,9 +80,10 @@ class ProductFModel extends WB_Model
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param string $add_column
      * @return array|int
      */
-    public function listSalesProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSalesProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         $arr_condition = array_merge_recursive($arr_condition, [
             'EQ' => ['IsSaleEnd' => 'N', 'IsUse' => 'Y'],
@@ -98,19 +100,20 @@ class ProductFModel extends WB_Model
                 break;
         }
 
-        return $this->listProduct($learn_pattern, $column, $arr_condition, $limit, $offset, $order_by);
+        return $this->listProduct($learn_pattern, $column, $arr_condition, $limit, $offset, $order_by, $add_column);
     }
 
     /**
      * 단일상품 조회
      * @param $learn_pattern
      * @param $prod_code
+     * @param string $add_column
      * @return array
      */
-    public function findProductByProdCode($learn_pattern, $prod_code)
+    public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
         $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']];
-        $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, []);
+        $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);
     }

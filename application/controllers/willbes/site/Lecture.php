@@ -56,12 +56,16 @@ class Lecture extends \app\controllers\FrontController
             ]
         ];
 
-        $list = $this->lectureFModel->listSalesProduct('on_lecture', false, $arr_condition, null, null, ['ProdCode' => 'desc']);
+        // 수강후기 게시판 자료 추가
+        $add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';
+
+        $list = $this->lectureFModel->listSalesProduct('on_lecture', false, $arr_condition, null, null, ['ProdCode' => 'desc'], $add_column);
 
         // 상품조회 결과에 존재하는 과목 정보
         $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
         // 상품조회 결과에 존재하는 교수 정보
-        $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);
+        $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
+        $selected_professor_study_comments = array_data_pluck($list, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기
         $selected_professor_refers = array_map(function ($val) {
             return json_decode($val, true);
         }, array_pluck($list, 'ProfReferData', 'ProfIdx'));
@@ -84,6 +88,7 @@ class Lecture extends \app\controllers\FrontController
                 'subjects' => $selected_subjects,
                 'professor_names' => $selected_professor_names,
                 'professor_refers' => $selected_professor_refers,
+                'professor_study_comments' => $selected_professor_study_comments,
                 'list' => $selected_list
             ]
         ]);
@@ -131,7 +136,7 @@ class Lecture extends \app\controllers\FrontController
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true);
         $data['ProdBookData'] = json_decode($data['ProdBookData'], true);
         $data['LectureSampleData'] = json_decode($data['LectureSampleData'], true);
-        $data['LectureSampleUnitIdxs'] = array_pluck($data['LectureSampleData'], 'wUnitIdx');
+        $data['LectureSampleUnitIdxs'] = is_null($data['LectureSampleData']) === true ? [] : array_pluck($data['LectureSampleData'], 'wUnitIdx');
         $data['ProfReferData'] = json_decode($data['ProfReferData'], true);
 
         // 상품 컨텐츠

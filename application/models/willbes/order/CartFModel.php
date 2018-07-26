@@ -126,6 +126,8 @@ class CartFModel extends BaseOrderFModel
         // 에러 메시지
         $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
 
+        logger('check start');
+
         // 1. 해당 도서 수강생교재 여부 확인, 수강생교재일 경우 연관된 부모상품코드 조회
         $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
         $arr_target_prod_code = array_pluck($this->productFModel->findParentProductToStudentBook($prod_book_code), 'ProdCode');
@@ -134,13 +136,17 @@ class CartFModel extends BaseOrderFModel
             return true;
         }
 
-        // TODO : 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
+        logger('check 2', [$arr_target_prod_code]);
+
+        // TODO : 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
 
         // 3. 교재상품과 동시에 장바구니에 저장되는 상품코드와 수강생교재 부모상품코드와 비교 (동일한 상품코드가 있다면 return true, 없다면 continue)
         $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_input_prod_code);
         if (empty($arr_same_prod_code) === false) {
             return true;
         }
+
+        logger('check 3', $arr_same_prod_code);
 
         // 4. 수강생교재 부모상품코드 장바구니 등록여부 확인 (등록되어 있다면 return true, 없다면 continue)
         $cart_data = $this->cartFModel->listValidCart($sess_mem_idx, null, null, null);
@@ -154,13 +160,17 @@ class CartFModel extends BaseOrderFModel
         }
         $arr_cart_prod_code = array_unique($arr_cart_prod_code);
 
-        // 수강생교재 부모상품코드와 병합된 상품코드와 비교
+        logger('check 4', [$arr_cart_prod_code]);
+
+        // 수강생교재 부모상품코드와 병합된 상품코드 비교
         $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_cart_prod_code);
         if (empty($arr_same_prod_code) === false) {
             return true;
         }
 
-        // TODO : 수강생교재 부모 단강좌 상품 구매여부 확인 (구매정보가 있다면 return true, 없다면 continue)
+        logger('check 5', $arr_same_prod_code);
+
+        // TODO : 5. 수강생교재 부모 단강좌 상품 구매여부 확인 (구매정보가 있다면 return true, 없다면 continue)
 
         return $err_msg;
     }
@@ -183,14 +193,14 @@ class CartFModel extends BaseOrderFModel
             $arr_prod_code = element('prod_code', $input, []);
             $arr_prod_code = $this->_makeProdCodeArray($learn_pattern, $arr_prod_code);
 
-            // 학습형태별 사전 체크
-            $check_result = $this->{'_check_' . $learn_pattern}($arr_prod_code);
-            if ($check_result !== true) {
-                throw new \Exception($check_result);
-            }
-
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
+                // 학습형태별 사전 체크
+                $check_result = $this->{'_check_' . $learn_pattern}($prod_code, $prod_row['ParentProdCode']);
+                if ($check_result !== true) {
+                    throw new \Exception($check_result);
+                }
+
                 // 이미 장바구니에 담긴 상품이 있는지 여부 확인
                 $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
                     'EQ' => ['MemIdx' => $sess_mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
@@ -300,22 +310,17 @@ class CartFModel extends BaseOrderFModel
 
     /**
      * 온라인 단강좌 사전 체크
-     * @param $arr_prod_code
+     * @param $prod_code
+     * @param $parent_prod_code
      * @return bool|string
      */
-    private function _check_on_lecture($arr_prod_code = [])
+    private function _check_on_lecture($prod_code, $parent_prod_code)
     {
-        // 상품코드 배열
-        $arr_input_prod_code = array_unique(array_pluck($arr_prod_code, 'ProdCode'));
-
-        // 수강생 교재 체크
-        foreach ($arr_prod_code as $prod_code => $prod_row) {
-            // 구매교재 상품
-            if ($prod_code != $prod_row['ParentProdCode']) {
-                $is_check = $this->checkStudentBook($prod_code, $arr_input_prod_code);
-                if ($is_check !== true) {
-                    return $is_check;
-                }
+        if ($prod_code != $parent_prod_code) {
+            // 수강생 교재 체크
+            $check_result = $this->checkStudentBook($prod_code);
+            if ($check_result !== true) {
+                return $check_result;
             }
         }
 

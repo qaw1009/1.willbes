@@ -62,6 +62,7 @@ class Cart extends \app\controllers\FrontController
      */
     public function checkStudentBook($params = [])
     {
+        // TODO : 패키지 상품의 ProdCodeSub를 $input_prod_code로 병합하는 개발 필요, 운영자 일반형 패키지는 연결된 단강좌 조회 로직 필요
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'prod_code', 'label' => '상품 식별자', 'rules' => 'trim|required'],

@@ -89,9 +89,6 @@ class Caching_site extends CI_Driver
             $data[$key] = $row;
         }, $result);
 
-        // add site key array
-        $data['SiteKeys'] = array_pluck($data, 'SiteKey', 'SiteCode');
-
         return $data;
     }
 }

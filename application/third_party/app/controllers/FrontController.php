@@ -103,14 +103,8 @@ abstract class FrontController extends BaseController
         // URL 세그먼트 배열 (key => value 형태)
         $uri_segments = $this->uri->ruri_to_assoc();
 
-        // 전체 사이트 정보 캐쉬 조회
-        $total_site_cache = $this->getCacheItem('site');
-
-        // 전체 사이트 코드 배열 (사이트 코드 => 사이트 그룹 아이디 + '>' + 사이트 아이디)
-        $site_keys = element('SiteKeys', $total_site_cache, []);
-
         // 현재 사이트 정보 캐쉬
-        $site_cache = element($site_key, $total_site_cache, []);
+        $site_cache = element($site_key, $this->getCacheItem('site'), []);
 
         // 현재 사이트 코드
         $this->_site_code = element('SiteCode', $site_cache);
@@ -121,42 +115,42 @@ abstract class FrontController extends BaseController
         // 전체 사이트 메뉴 캐쉬 조회
         $site_menu_cache = $this->getCacheItem('site_menu');
 
-        // GNB 메뉴
-        $gnb_tree_menu = element('GnbTreeMenus', $site_menu_cache, []);
-        
-        // Active GNB 메뉴
-        $gnb_active_group_id = str_first_pos_before(element($site_code, $site_keys), '>');
-
         // 사이트 메뉴
         $site_tree_menu = array_get($site_menu_cache, 'SiteTreeMenus.' . $site_code, []);
 
         // 사이트 과목+교수 연결정보 캐쉬 조회, Active 사이트 메뉴 정보
         //$site_subject_professors = [];
         $site_active_menu = [];
+
         if (empty($site_tree_menu) === false) {
+            // 사이트 전체 메뉴 URL
+            $site_menu_urls = array_get($site_menu_cache, 'SiteMenuUrls.' . $site_code, []);
+            $site_menu_tmp_urls = $site_menu_urls;
+
             // 현재 사이트의 카테고리 코드
             $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
 
-            // Active 사이트 메뉴 정보 (/{directory}/{controller}/)
+            // 현재 URL의 디렉토리/컨트롤러까지의 URI (/{directory}/{controller}/)
             $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
 
-            foreach (array_get($site_menu_cache, 'SiteMenuUrls.' . $site_code, []) as $menu_route_idx => $menu_url) {
+            foreach ($site_menu_urls as $menu_route_idx => $menu_url) {
+                // 동일한 메뉴 URL이 다음 루프에서 존재하는지 여부를 체크하기 위해 맨처음 배열 원소부터 차례로 시프트
+                array_shift($site_menu_tmp_urls);
+                if (array_search($menu_url, $site_menu_tmp_urls) != false) {
+                    continue;   // 동일한 URL이 존재한다면 continue
+                }
+
                 // 1depth 메뉴 제외
                 if (strpos($menu_route_idx, '>') > -1) {
                     $menu_path = parse_url($menu_url, PHP_URL_PATH);
 
                     // controller check
                     if (empty($menu_path) === false && starts_with($menu_path, $check_menu_prefix) === true) {
-                        // uri params check (cate/{cate value}/pack/{pack value})
+                        // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
                         $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
 
                         if (strpos(uri_string(), $check_menu_postfix) !== false) {
-                            $site_tree_key = str_replace('>', '.Children.', $menu_route_idx);
-                            if (array_has($site_tree_menu, $site_tree_key . '.Children') === true) {
-                                continue;
-                            }
-
-                            $site_active_menu = array_get($site_tree_menu, $site_tree_key);
+                            $site_active_menu = array_get($site_tree_menu, str_replace('>', '.Children.', $menu_route_idx));
                             $site_active_menu['IsDefault'] = false;
                             break;
                         }
@@ -164,8 +158,8 @@ abstract class FrontController extends BaseController
                 }
             }
 
+            // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
             if (empty($site_active_menu) === true) {
-                // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
                 $site_active_menu = current(current($site_tree_menu)['Children']);
                 $site_active_menu['IsDefault'] = true;
             }
@@ -185,8 +179,8 @@ abstract class FrontController extends BaseController
                         $site_cache,
                         ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
                         config_item(SUB_DOMAIN),
-                        ['GnbActiveGroupId' => $gnb_active_group_id],
-                        ['GnbTreeMenu' => $gnb_tree_menu],
+                        ['GnbActiveGroupId' => SUB_DOMAIN],
+                        ['GnbTreeMenu' => element('GnbTreeMenus', $site_menu_cache, [])],
                         ['SiteTreeMenu' => $site_tree_menu],
                         ['SiteActiveMenu' => $site_active_menu]
                         //['Subject2Professor' => $site_subject_professors]

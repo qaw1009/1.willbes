@@ -53,17 +53,13 @@ class ProductFModel extends WB_Model
             switch ($learn_pattern) {
                 // 온라인 단강좌
                 case 'on_lecture' :
-                        $column .= ',IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
-                            , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType
-                            , LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
-                        $arr_condition = array_merge_recursive($arr_condition, [
-                            'EQ' => ['LecSaleType' => 'N','wIsUse' => 'Y']   //일반강의, 마스터강의 사용여부 추가
-                        ]);
+                        $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
+                            , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
                     break;
 
                 //추천패키지
                 case 'adminpack_lecture' :
-                    $column .= ', StudyStartDate, PackCateCcd, PackCateEtcMemo';
+                        $column .= ', StudyStartDate, PackCateCcd, PackCateEtcMemo';
                     break;
 
                 default :
@@ -73,8 +69,6 @@ class ProductFModel extends WB_Model
         }
 
         return $this->_conn->getListResult($this->_table[$learn_pattern], $column, $arr_condition, $limit, $offset, $order_by);
-
-
     }
 
     /**
@@ -90,10 +84,19 @@ class ProductFModel extends WB_Model
     public function listSalesProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         $arr_condition = array_merge_recursive($arr_condition, [
-            'EQ' => [ 'IsSaleEnd' => 'N', 'IsUse' => 'Y'],
+            'EQ' => ['IsSaleEnd' => 'N', 'IsUse' => 'Y'],
             'IN' => ['SaleStatusCcd' => $this->_sale_status_ccds],
             'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
         ]);
+
+        switch ($learn_pattern) {
+            // 온라인 단강좌
+            case 'on_lecture' :
+                    $arr_condition = array_merge_recursive($arr_condition, [
+                        'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부 추가
+                    ]);
+                break;
+        }
 
         return $this->listProduct($learn_pattern, $column, $arr_condition, $limit, $offset, $order_by);
     }

@@ -28,7 +28,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="button" id="btn_start" class="mem-Btn h36 mt70 bg-blue bd-dark-blue">
+            <button type="button" id="btn_start" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
                 <span>시작하기</span>
             </button>
         </div>

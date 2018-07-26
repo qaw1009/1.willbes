@@ -10,6 +10,10 @@
         "/member/FindPWDForm/"
     @elseif($CertTypeCcd == '662004')
         "/member/ActivateSleep/"
+    @elseif($CertTypeCcd == '662005')
+        ""
+    @elseif($CertTypeCcd == '662006')
+        "/member/CombineForm/"
     @endif >
     {!! csrf_field() !!}
     <input type="hidden" id="enc_data" name="enc_data" value="{{$enc_data}}">

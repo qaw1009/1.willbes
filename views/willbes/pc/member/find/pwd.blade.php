@@ -37,7 +37,7 @@
                             <div class="inputBox p_re">
                                 <input type="text" id="var_phone" name="var_phone" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="11" required="required" pattern="numeric" data-validate-length="10,11" title="휴대전화번호" />
                                 <button type="button" id="btn_send_sms" class="mem-Btn certi bg-dark-blue bd-dark-blue">
-                                    <span>인증번호 발송</span>
+                                    <span>인증번호발송</span>
                                 </button>
                             </div>
                             <div class="tx-red mb30" style="display: block;" id="sms_msg"></div>
@@ -112,7 +112,7 @@
         <br/><br/><br/><br/><br/><br/>
     </div>
     <!-- End Container -->
-    <form name="vnoform" id="vnoform" method="post" action="/member/FindPWDForm/">
+    <form name="vnoform" id="vnoform" method="post" action="/Member/FindPWDForm/">
         {!! csrf_field() !!}
         <input type="hidden" name="jointype" value="655001" />
         <input type="hidden" name="enc_data" value="" />
@@ -176,7 +176,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/member/findpwdSms/";
+                var _url = "/Member/FindPWDSms/";
                 $('#sms_msg').html('');
 
                 ajaxSubmit($p_form, _url, function(ret) {
@@ -205,13 +205,13 @@
                     return;
                 }
 
-                var _url = "/member/findpwdSms/";
+                var _url = "/Member/FindPWDSms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     clearTimeout(objTimer);
                     $("#enc_data").val(ret.ret_data.enc_data);
                     $("#phone_number").val(ret.ret_data.phone_number);
-                    $("#find_form").prop("action", "/member/FindPWDForm/").submit();
+                    $("#find_form").prop("action", "/Member/FindPWDForm/").submit();
 
                 }, function(ret){
                     //alert(ret.ret_msg);
@@ -221,7 +221,7 @@
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/member/findpwdMail/";
+                var _url = "/Member/FindPWDMail/";
                 $('#mail_msg').html('');
 
                 ajaxSubmit($m_form, _url, function(ret){

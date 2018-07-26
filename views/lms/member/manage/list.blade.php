@@ -139,13 +139,13 @@
                     <th colspan="2">휴대폰정보</th>
                     <th colspan="2">E-mail정보</th>
                     <th rowspan="2">가입일</th>
-                    <th rowspan="2">통합회원전환여부</th>
-                    <th rowspan="2">마지막로그인일</th>
-                    <th rowspan="2">최종정보변경일</th>
-                    <th rowspan="2">비밀번호변경일</th>
+                    <th rowspan="2">통합회원<br>전환여부</th>
+                    <th rowspan="2">마지막<br>로그인일</th>
+                    <th rowspan="2">최종정보<br>변경일</th>
+                    <th rowspan="2">비밀번호<br>변경일</th>
                     <th rowspan="2">탈퇴일</th>
-                    <th rowspan="2">블랙컨슈머여부</th>
-                    <th rowspan="2">기기등록정보</th>
+                    <th rowspan="2">블랙컨슈머<br>여부</th>
+                    <th rowspan="2">기기<br>등록정보</th>
                     <th rowspan="2">자동로그인</th>
                     <th rowspan="2">정보관리</th>
                 </tr>

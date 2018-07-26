@@ -32,7 +32,7 @@
                             <div class="inputBox p_re item">
                                 <input type="text" id="var_phone" name="var_phone" class="iptPhone certi" placeholder="휴대폰번호(-제외)" maxlength="11" required="required" pattern="numeric" data-validate-length="10,11" title="휴대전화번호" />
                                 <button type="button" id="btn_send_sms" class="mem-Btn certi bg-dark-blue bd-dark-blue">
-                                    <span>인증번호 발송</span>
+                                    <span>인증번호발송</span>
                                 </button>
                             </div>
                             <div class="tx-red mb30" style="display: block;" for="var_phone"></div>
@@ -74,6 +74,7 @@
                                 <span>확인</span>
                             </button>
                         </div>
+                        <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
                     </div>
                 </form>
             </div>
@@ -128,7 +129,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/member/joinSms/";
+                var _url = "/Member/JoinSms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     $("#btn_send_sms").prop("disabled", true);
@@ -153,7 +154,7 @@
                     return;
                 }
 
-                var _url = "/member/joinSms/";
+                var _url = "/Member/JoinSms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     clearTimeout(objTimer);
@@ -168,7 +169,7 @@
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/member/joinMail/";
+                var _url = "/Member/JoinMail/";
 
                 ajaxSubmit($m_form, _url, function(ret){
                     alert(ret.ret_msg);

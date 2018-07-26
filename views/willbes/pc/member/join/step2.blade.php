@@ -61,7 +61,7 @@
                         <td class="combine-Tit">생년월일</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="BirthDay" name="BirthDay" class="iptBirth" placeholder="생년월일 ex.19800101" maxlength="8" />
+                                <input type="text" id="BirthDay" name="BirthDay" class="iptBirth" placeholder="ex.19800101" maxlength="8" />
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
@@ -70,7 +70,7 @@
                         <td class="combine-Tit">휴대폰번호</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-"를 포함해서 입력' maxlength="13" @if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif title="핸드폰번호" />
+                                <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="13" @if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif title="핸드폰번호" />
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
@@ -92,7 +92,6 @@
                         <td>
                             <div class="inputBox p_re">
                                 <input type="password" id="MemPassword" name="MemPassword" class="iptPwd" placeholder="8~20자리이하 영문대소문자, 숫자, 특수문자중2종류조합" maxlength="20" title="비밀번호" />
-
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
@@ -162,72 +161,60 @@
                     </tbody>
                 </table>
                 <div class="agree-Chk mt40 toggle">
-                    <div class="agree-All-Tit p_re">
+                    <div class="AllchkBox agree-All-Tit p_re">
                         전체동의
                         <div class="chkBox-Agree">
-                            <input type="checkbox" id="" name="" class="" maxlength="30">
+                            <input type="checkbox" id="agree_all" name="agree_all" class="" >
                         </div>
                     </div>
                     <ul>
-                        <li>
+                        <li class="chk">
+                            <div class="chkBox-Agree checked">
+                                <input type="checkbox" id="agree1" name="agree1" class="" >
+                            </div>
                             <div class="agree-Tit">
                                 <a href="#none">
-                                    <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx11">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
-                                    <div class="chkBox-Agree">
-                                        <input type="checkbox" id="agree1" name="agree1" class="" maxlength="30" />
-                                    </div>
+                                    <span class="tx-blue">(필수)</span> 만 14세 이상입니다. <span class="tx12">( 만 14세 미만은 회원가입이 제한됩니다.)</span>
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li class="chk">
+                            <div class="chkBox-Agree checked">
+                                <input type="checkbox" id="agree2" name="agree2" class="" >
+                            </div>
                             <div class="agree-Tit">
                                 <a href="#none">
-                                    <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의
-                                    <div class="chkBox-Agree">
-                                        <input type="checkbox" id="agree2" name="agree2" class="" maxlength="30" />
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="agree-Txt">
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                                Willbes 통합회원 이용약관 동의<br>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="agree-Tit">
-                                <a href="#none">
-                                    <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의
-                                    <div class="chkBox-Agree">
-                                        <input type="checkbox" id="agree3" name="agree3" class="" maxlength="30" />
-                                    </div>
+                                    <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="arrow">▼</span>
                                 </a>
                             </div>
                             <div class="agree-Txt">
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
-                                개인정보 수입 및 이용 동의<br/>
+                                111 약관이 노출 됩니다.<br/>
+                                222 약관이 노출 됩니다.<br/>
+                                333 약관이 노출 됩니다.<br/>
                             </div>
                         </li>
-                        <li>
+                        <li class="chk">
+                            <div class="chkBox-Agree">
+                                <input type="checkbox" id="agree3" name="agree3" class="" >
+                            </div>
                             <div class="agree-Tit">
                                 <a href="#none">
-                                    (선택) 개인정보 위탁 동의
-                                    <div class="chkBox-Agree">
-                                        <input type="checkbox" id="agree4" name="agree4" class="" maxlength="30">
-                                    </div>
+                                    <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
+                                </a>
+                            </div>
+                            <div class="agree-Txt">
+                                1약관이 노출 됩니다.<br/>
+                                2약관이 노출 됩니다.<br/>
+                                3약관이 노출 됩니다.<br/>
+                            </div>
+                        </li>
+                        <li class="chk">
+                            <div class="chkBox-Agree">
+                                <input type="checkbox" id="agree4" name="agree4" class="" >
+                            </div>
+                            <div class="agree-Tit">
+                                <a href="#none">
+                                    (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
                                 </a>
                             </div>
                             <div class="agree-Txt">
@@ -256,121 +243,103 @@
         </div>
         <!-- End Container -->
     </form>
-    <script src="/public/vendor/jquery/validator/jquery.validate.js"></script>
-    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <script>
         var $join_form = $('#join_form');
         var confirm_id = false;
 
         $(document).ready(function() {
             $join_form.validate({
-                onkeyup:false,
-                rules:{
-                    Sex:{
-                        required:true
+                onkeyup : false,
+                rules : {
+                    Sex : {
+                        required : true
                     },
-                    BirthDay:{
-                        required:true,
-                        minlength:8,
-                        maxlength:8,
-                        number:true,
-                        birthday_chk:true
+                    BirthDay : {
+                        required : true,
+                        minlength : 8,
+                        maxlength : 8,
+                        number : true,
+                        birthday_chk : true
                     },
-                    Phone:{
-                        required:true,
-                        minlength:10,
-                        maxlength:11,
-                        number:true,
-                        phone_chk:true
+                    Phone : {
+                        required : true,
+                        minlength : 10,
+                        maxlength : 11,
+                        number : true,
+                        phone_chk : true
                     },
-                    MemId:{
-                        required:true,
-                        minlength:4,
-                        maxlength:20,
-                        id_char:true,
-                        id_chk:true
+                    MemId : {
+                        required : true,
+                        minlength : 4,
+                        maxlength : 20,
+                        id_char : true,
+                        id_chk : true
                     },
-                    MemPassword:{
-                        required:true,
-                        minlength:8,
-                        maxlength:20,
-                        pwd_mix:true
+                    MemPassword : {
+                        required : true,
+                        minlength : 8,
+                        maxlength : 20,
+                        pwd_mix : true
                     },
-                    MemPassword_chk:{
-                        required:true,
-                        pwd_chk:true
+                    MemPassword_chk : {
+                        required : true,
+                        pwd_chk : true
                     }
                 },
-                messages: {
-                    Sex:{
-                        required:"성별을 선택해주십시요."
+                messages : {
+                    Sex : {
+                        required : "성별을 선택해주십시요."
                     },
-                    BirthDay:{
-                        required:"생년월일을 입력해주십시요.",
-                        minlength:"생년월일은 8자리 숫자만 가능합니다.1",
-                        maxlength:"생년월일은 8자리 숫자만 가능합니다.2",
-                        birthday_chk:"정상적인 날짜형식이 아닙니다."
+                    BirthDay : {
+                        required : "생년월일을 입력해주십시요.",
+                        minlength : "생년월일은 8자리 숫자만 가능합니다.1",
+                        maxlength : "생년월일은 8자리 숫자만 가능합니다.2",
+                        birthday_chk : "정상적인 날짜형식이 아닙니다."
                     },
-                    Phone:{
-                        required:"핸드폰번호를 입력해주십시요.",
-                        minlength:"핸드폰번호는 10~11자리 숫자만 가능합니다.1",
-                        maxlength:"핸드폰번호는 10~11자리 숫자만 가능합니다.2",
-                        phone_chk:"정상적인 핸드폰번호가 아닙니다."
+                    Phone : {
+                        required : "핸드폰번호를 입력해주십시요.",
+                        minlength : "핸드폰번호는 10~11자리 숫자만 가능합니다.1",
+                        maxlength : "핸드폰번호는 10~11자리 숫자만 가능합니다.2",
+                        phone_chk : "정상적인 핸드폰번호가 아닙니다."
                     },
-                    MemId: {
-                        required:"아이디를 입력해주십시요.",
-                        minlength:"아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.1",
-                        maxlength:"아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.2",
-                        id_char:"아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.3",
-                        id_chk:"사용 불가능한 아이디입니다."
+                    MemId : {
+                        required : "아이디를 입력해주십시요.",
+                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.1",
+                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.2",
+                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.3",
+                        id_chk : "사용 불가능한 아이디입니다."
                     },
-                    MemPassword:{
-                        required:"비밀번호를 입력해주십시요.",
-                        minlength:"비밀번호는 8~20자리로 입력해주십시요.1",
-                        maxlength:"비밀번호는 8~20자리로 입력해주십시요.2",
-                        pwd_mix:"영문대소문자, 숫자, 특수문자중 2종류이상 조합해야 합니다."
+                    MemPassword : {
+                        required : "비밀번호를 입력해주십시요.",
+                        minlength : "비밀번호는 8~20자리로 입력해주십시요.1",
+                        maxlength : "비밀번호는 8~20자리로 입력해주십시요.2",
+                        pwd_mix : "영문대소문자, 숫자, 특수문자중 2종류이상 조합해야 합니다."
                     },
-                    MemPassword_chk:{
-                        required:"비밀번호를 다시한번 입력해주십시요.",
-                        pwd_chk:"비밀번호가 일치하지 않습니다."
-                    },
-
-                },
-                success: function(label, el) {
-                    if($(el).attr("name") == "id"){
-                        $("div[name=move_login]").css("display","none");
+                    MemPassword_chk : {
+                        required : "비밀번호를 다시한번 입력해주십시요.",
+                        pwd_chk : "비밀번호가 일치하지 않습니다."
                     }
                 },
                 invalidHandler: function(form, validator) {
                     var errors = validator.numberOfInvalids();
-                    for(var i =0; i< validator.errorList.length;i++){
-                        var attr = validator.errorList[i].element;
-
-                    }
                     if (errors) {
                         validator.errorList[0].element.focus();
                     }
                 },
                 onfocusout:function(element, event){
                     var res = $(element).valid();
-                    if(!res){
-
-                    }else{
-                        $(element).parent().removeClass("invalid-value");
-                        $(element).parent().addClass("pass-value");
-                    }
                 },
                 errorPlacement: function(error, $element) {
                     var name = $element.attr("name");
-                    if(name == "Sex"){
-                        var obj = $('input[name="MemName"]');
+                    if(name == 'Sex'){
+                        var obj = $('input[name=MemName]');
                     }else {
-                        var obj = $('input[name="'+name+'"]');
+                        var obj = $("input[name=" + name + "]");
                     }
 
                     var msg = obj.parent().parent().children('.err_msg');
                     msg.html(error);
-                },
+                }
             });
 
             $.validator.addMethod("id_chk", function(value, element) {
@@ -420,6 +389,13 @@
 
             $('#btn_submit').click(function(){
                 if($join_form.valid() == true){
+                    if($('#agee1').is(":checked") != true ||
+                        $('#agee2').is(":checked") != true ||
+                        $('#agee3').is(":checked") != true ){
+                        alert('필수항목에 동의해야 회원가입이 가능합니다.');
+                        return;
+                    }
+
                     $join_form.attr("action", "/member/joinProc");
                     $join_form.submit();
                 }
@@ -489,4 +465,6 @@
             });
         });
     </script>
+    <script src="/public/vendor/jquery/validator/jquery.validate.js"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 @stop

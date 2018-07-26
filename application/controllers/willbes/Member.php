@@ -28,13 +28,14 @@ class Member extends \app\controllers\FrontController
     {
         // 쿠키에 저장된 아이디
         $saved_member_id = get_cookie('saved_member_id');
+
         if (empty($saved_member_id) === false) {
             // 아이디 복호화
             $this->load->library('encrypt');
             $saved_member_id = $this->encrypt->decode($saved_member_id);
         }
 
-        // 로그인 페이지를 호출함 페이지
+        // 로그인 페이지를 호출한 페이지
         $rtnUrl = rawurldecode($this->_req('rtnUrl'));
         if(empty($rtnUrl)){
             $rtnUrl = '/';
@@ -48,11 +49,12 @@ class Member extends \app\controllers\FrontController
 
         // 로그인페이지 호출
         $this->load->view('member/login/form', [
-            'islogin' => true,
             'saved_member_id' => $saved_member_id,
             'rtnUrl' => rawurlencode($rtnUrl)
         ]);
     }
+
+
 
     /**
      * 로그인처리
@@ -76,7 +78,7 @@ class Member extends \app\controllers\FrontController
             if($chklogin === true) {
                 return $this->json_error('아이디와 비밀번호를 정확하게 입력해주십시요.');
             } else {
-                show_alert('아이디와 비밀번호를 정확하게 입력해주십시요.', app_url("/member/loginform/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('아이디와 비밀번호를 정확하게 입력해주십시요.', app_url("/Member/LoginForm/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
 
@@ -88,7 +90,7 @@ class Member extends \app\controllers\FrontController
             if($chklogin === true){
                 return $this->json_error("아이디 혹은 비밀번호가 일치하지 않습니다.");
             } else {
-                show_alert("아이디 혹은 비밀번호가 일치하지 않습니다.", "/Member/loginForm/", false);
+                show_alert("아이디 혹은 비밀번호가 일치하지 않습니다.", "/Member/LoginForm/", false);
             }
         }
 
@@ -118,10 +120,11 @@ class Member extends \app\controllers\FrontController
                 
             }
 
-            if($data['IsDup'] === 'Y') {
-                // 아이디가 중복상태이면..
+            if($data['IsChange'] !== 'Y') {
+                // 아이디가 통합상태가 아니면
+                $this->session->set_userdata('combine_id', $data['MemId']);
+                redirect('/Member/Combine/');
             }
-
 
             // 실제 로그인처리하기 로그인 처리및 로그저장
             $result = $this->memberFModel->storeMemberLogin($data);
@@ -141,10 +144,12 @@ class Member extends \app\controllers\FrontController
                 show_alert('로그인 되었습니다.', $rtnUrl, false);
 
             } else {
-                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', app_url("/member/loginform/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', app_url("/Member/LoginForm/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
     }
+
+
 
     /**
      * 로그아웃처리
@@ -155,9 +160,12 @@ class Member extends \app\controllers\FrontController
         $this->session->set_userdata('mem_id', '');
         $this->session->set_userdata('mem_name', '');
         $this->session->set_userdata('is_login', false);
-
+        $this->session->sess_destroy();
         show_alert("로그아웃 되었습니다.", "/", false);
+        // TODO : 로그아웃시에 로그를 남길 것인지.
     }
+
+
 
     /**
      * 회원가입 본인인증 페이지
@@ -168,13 +176,16 @@ class Member extends \app\controllers\FrontController
         if($this->session->userdata('is_login') === true){
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
-
+        
+        // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
 
         $this->load->view('member/join/step1', [
             'mail_domain_ccd' => $codes['661']
         ]);
     }
+
+
 
     /**
      * 회원가입 폼
@@ -186,13 +197,15 @@ class Member extends \app\controllers\FrontController
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
-        $jointype = $this->_req("jointype");
-        $enc_data = $this->_req("enc_data");
+        $jointype = $this->_req("jointype"); // 가입인증 방법
+        $enc_data = $this->_req("enc_data"); // 가입인증 암호화 데이타
 
+        // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
 
         if($jointype === "655002") {
             // 핸드폰 sms 인증
+            // 앞에서 넘어온 전화번호
             $phonenumber = $this->_req('phone_number');
 
             try {
@@ -201,14 +214,20 @@ class Member extends \app\controllers\FrontController
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $phone = $data_arr[1];
                 $name = $data_arr[2];
 
+                // 암호화애서 넘어온 전화번호와 post 로 넘어온 전화번호가 다르면 오류
+                if($phone !== $phonenumber){
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                }
+
+                // 가입한 정보가 있는지 검색
                 $where = [
                     'EQ' => [
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
@@ -219,8 +238,9 @@ class Member extends \app\controllers\FrontController
 
                 $count = $this->memberFModel->getMember(true, $where);
 
+                // 이미 가입정보가 있을경우
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 실제데이타를 뽑아서 기가입되어있음 로드
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/join/already', [
                         'MemId' => $result['MemId'],
@@ -229,6 +249,7 @@ class Member extends \app\controllers\FrontController
                     ]);
                 }
 
+                //그렇지 않으면 가입 페이지 로드
                 return $this->load->view('member/join/step2', [
                     'mail_domain_ccd' => $codes['661'],
                     'jointype' => $jointype,
@@ -238,8 +259,9 @@ class Member extends \app\controllers\FrontController
                     'MailId' => '',
                     'MailDomain' => ''
                 ]);
+
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
             }
 
         } else if($jointype === "655003") {
@@ -248,13 +270,13 @@ class Member extends \app\controllers\FrontController
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
+                // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $mail = $data_arr[1];
                 $name = $data_arr[2];
 
@@ -262,6 +284,7 @@ class Member extends \app\controllers\FrontController
                 $mailId = $mailArr[0];
                 $mailDomain = $mailArr[1];
 
+                // 가입한 정보있는지 검색
                 $where = [
                     'EQ' => [
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
@@ -272,8 +295,8 @@ class Member extends \app\controllers\FrontController
 
                 $count = $this->memberFModel->getMember(true, $where);
 
+                // 이미 가입정보가 있을경우
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/join/already', [
                         'MemId' => $result['MemId'],
@@ -291,38 +314,59 @@ class Member extends \app\controllers\FrontController
                     'MailDomain' => $mailDomain,
                     'phone' => ''
                 ]);
+
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
         }
     }
 
+
+    
     /**
-     * 회원가입시 사용가능한 아이디인지 체크
+     * 사용가능한 아이디 인지 검색
      * @return CI_Output
      */
     public function checkID()
     {
+        // 가입페이지에서 호출
         $MemId = $this->_req('MemId');
+        // 통합회원 전환페이지에서 호출
+        $ChangeId = $this->_req('ChangeId');
 
+        if(empty($MemId) === true){
+            $MemId = $ChangeId;
+        }
+
+        // 호출 아이디 없으면 사용불가 반환
+        if(empty($MemId) === true){
+            echo "0001";
+            exit(0);
+        }
+
+        // 검색 쿼리
         $count = $this->memberFModel->getMember(true, [
             'EQ' => [
                 'Mem.MemId' => $MemId
             ]
         ]);
 
+        // 해당 아이디가 존재하면 사용 불가 반환
         if($count > 0){
             echo "0001";
             exit(0);
+
         } else {
             echo "0000";
             exit(0);
         }
     }
+
+
 
     /**
      * 회원가입 처리페이지
@@ -338,33 +382,34 @@ class Member extends \app\controllers\FrontController
 
         // 인증정보 검사
         if(empty($input['CertifiedInfoTypeCcd']) === true || empty($input['enc_data']) === true ){
-            show_alert('인증정보가 없습니다..','/member/join');
+            show_alert('인증정보가 없습니다..','/Member/Join');
         }
 
         $enc_data = $input['enc_data'];
         $CertifiedInfoTypeCcd = $input['CertifiedInfoTypeCcd'];
 
         if($CertifiedInfoTypeCcd == '655002') {
-        // 핸드폰 인증 정상인지 체크
+            // 핸드폰 인증 정상인지 체크
             try {
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $phone = $data_arr[1];
                 $name = $data_arr[2];
 
                 // 인증정보 불일치
                 if($input['MemName'] != $name || $input['Phone'] != $phone) {
-                    show_alert("인증정보가 일치하지 않습니다.", '/member/join');
+                    show_alert("인증정보가 일치하지 않습니다.", '/Member/Join');
                 }
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
@@ -373,10 +418,11 @@ class Member extends \app\controllers\FrontController
                     ]
                 ];
 
+                // 이미 가입한 정보인지 체크
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 이미 가입정보가 있을경우 오류페이지 출력
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/join/already', [
                         'MemId' => $result['MemId'],
@@ -385,7 +431,7 @@ class Member extends \app\controllers\FrontController
                     ]);
                 }
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
             }
 
         } else if($CertifiedInfoTypeCcd == '655003') {
@@ -399,8 +445,8 @@ class Member extends \app\controllers\FrontController
                     show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $mail = $data_arr[1];
                 $name = $data_arr[2];
 
@@ -410,12 +456,13 @@ class Member extends \app\controllers\FrontController
 
                 // 인증정보 불일치
                 if($input['MemName'] != $name || $input['MailId'] != $mailId || $input['MailDomain'] != $mailDomain) {
-                    show_alert("인증정보가 일치하지 않습니다.", '/member/join');
+                    show_alert("인증정보가 일치하지 않습니다.", '/Member/Join');
                 }
 
                 // 회원가입처리후 메일 인증 사용 처리
                 $result = $this->memberFModel->updateMailAuth($enc_data);
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
@@ -423,7 +470,8 @@ class Member extends \app\controllers\FrontController
                         'Mem.CertifiedInfoTypeCcd' => $CertifiedInfoTypeCcd
                     ]
                 ];
-
+                
+                // 이미 있는 정보인지 체크
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
@@ -436,20 +484,33 @@ class Member extends \app\controllers\FrontController
                     ]);
                 }
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
             }
 
         } else {
-            show_alert('인증정보가 없습니다.','/member/join');
+            show_alert('인증정보가 없습니다.','/Member/Join');
         }
-        // 파라미터검사
-        
-        // Phone 나누기
+
+        // 중요 파라미터검사
+        $rules = [
+            ['field' => 'Sex', 'label' => '성별', 'rules' => 'trim|required'],
+            ['field' => 'BirthDay', 'label' => '생년월일', 'rules' => 'trim|required'],
+            ['field' => 'Phone', 'label' => '전화번호', 'rules' => 'trim|required'],
+            ['field' => 'MemId', 'label' => '아이디', 'rules' => 'trim|required'],
+            ['field' => 'MemPassword', 'label' => '비밀번호', 'rules' => 'trim|required'],
+            ['field' => 'MemName', 'label' => '이름', 'rules' => 'trim|required']
+        ];
+
+        // 파라미터오류발생시 오류페이지로 넘겨버림
+        $this->validate($rules, '/Member/JoinError');
+
+        // 전화번호 나누기
         $Phone = $input['Phone'];
         $Phone1 = substr($Phone,0,3);
         $Phone2 = substr($Phone,3,-4);
         $Phone3 = substr($Phone,-4);
 
+        // 데이타에 추가
         $input = array_merge($input, [
             'Phone1' => $Phone1,
             'Phone2' => $Phone2,
@@ -469,23 +530,25 @@ class Member extends \app\controllers\FrontController
         $result = $this->memberFModel->storeMember($input);
 
         if($result === true){
-            // 입력성공후 로그인처리 설마 입력 성공했는데 로그인이 실패하진 않겠지..
+            // 회원정보 추가에 성공후 로그인 처리
             $data = $this->memberFModel->getMemberForLogin($input['MemId'], $input['MemPassword'], false);
             $result = $this->memberFModel->storeMemberLogin($data);
             
             redirect('/member/JoinSuccess');
         } else {
             // 실패시 오류 메세지 출력
-            return $this->load->view('member/join/error', [ ]);
+            return $this->load->view('member/join/error');
         }
     }
 
+    
+
     /**
-     * 회원가입 완료
+     * 회원가입 완료 페이지
      */
     public function JoinSuccess()
     {
-        // 완료 뷰페이지
+        // 사용하고 있는 사이트들 검색
         $site = $this->siteModel->listSite(['SiteName', 'SiteUrl'], ['EQ'=>['IsUse'=>'Y'], 'NOT'=>['SiteCode'=>'2000']]);
 
         $this->load->view('member/join/step3', [
@@ -494,6 +557,19 @@ class Member extends \app\controllers\FrontController
             'Site' => $site
         ]);
     }
+
+
+
+    /**
+     * 가입오류 페이지
+     * @return object|string
+     */
+    public function JoinError()
+    {
+        return $this->load->view('member/join/error');
+    }
+
+
 
     /*
      * 아이디찾기 폼
@@ -509,7 +585,6 @@ class Member extends \app\controllers\FrontController
         
         // 아이디찾기용 아이핀 정보 생성
         $this->load->library('NiceAuth');
-
         $data = $this->niceauth->ipinEnc();
 
         $this->load->view('member/find/id', [
@@ -517,6 +592,8 @@ class Member extends \app\controllers\FrontController
             'encData' => $data['encData']
         ]);
     }
+
+
 
     /**
      * 아이디찾기 처리
@@ -528,21 +605,24 @@ class Member extends \app\controllers\FrontController
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
-        $jointype = $this->_req("jointype");
-        $enc_data = $this->_req("enc_data");
+        $jointype = $this->_req("jointype"); // 검색방법
+        $enc_data = $this->_req("enc_data"); // 검색 암호화 데이타
 
         if($jointype === "655001") {
             // 아이핀인증
             try {
-                $this->load->library('NiceAuth');
                 // 복호화
+                $this->load->library('NiceAuth');
                 $data = $this->niceauth->ipinDec($enc_data);
+
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
                 }
-                // 고유번호                
+
+                // 아이핀 고유번호
                 $dupInfo = $data['dupInfo'];
+
                 // 검색쿼리
                 $where = [
                     'EQ' => [
@@ -550,11 +630,12 @@ class Member extends \app\controllers\FrontController
                         'Mem.CertifiedInfo' => $dupInfo
                     ]
                 ];
+
                 // 검색
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/idproc', [
                         'MemId' => $result['MemId'],
@@ -567,7 +648,7 @@ class Member extends \app\controllers\FrontController
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
             }
 
         } else if($jointype === "655002") {
@@ -576,16 +657,17 @@ class Member extends \app\controllers\FrontController
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
+                // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $phone = $data_arr[1];
                 $name = $data_arr[2];
 
+                // 검색 쿼리
                 $where = [
                     'EQ' => [
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
@@ -597,7 +679,7 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/idproc', [
                         'MemId' => $result['MemId'],
@@ -607,8 +689,9 @@ class Member extends \app\controllers\FrontController
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
+
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
             }
 
         } else if($jointype === "655003") {
@@ -617,18 +700,17 @@ class Member extends \app\controllers\FrontController
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
+                // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
                 }
 
-
-
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $mail = $data_arr[1];
                 $name = $data_arr[2];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
@@ -639,11 +721,11 @@ class Member extends \app\controllers\FrontController
 
                 $count = $this->memberFModel->getMember(true, $where);
 
-                // 아이디찾기후 메일 인증 사용 처리
+                // 해당 인증 메일 사용 처리
                 $result = $this->memberFModel->updateMailAuth($enc_data);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/idproc', [
                         'MemId' => $result['MemId'],
@@ -654,30 +736,32 @@ class Member extends \app\controllers\FrontController
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findid');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
         }
     }
+
+
 
     /**
      * 비밀번호 찾기 폼
      */
     public function FindPWD()
     {
-        // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
+        // 이미 로그인한 상태이면 초기페이지로 이동
         if($this->session->userdata('is_login') === true){
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
+        // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
 
         // 아이디찾기용 아이핀 정보 생성
         $this->load->library('NiceAuth');
-
         $data = $this->niceauth->ipinEnc();
 
         $this->load->view('member/find/pwd', [
@@ -686,32 +770,36 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+    
     /**
      * 비밀번호찾기 처리
      */
     public function FindPWDForm()
     {
-        // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
+        // 이미 로그인한 상태이면 초기페이지로 이동
         if($this->session->userdata('is_login') === true){
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
-        $jointype = $this->_req("jointype");
-        $enc_data = $this->_req("enc_data");
-        $MemId = $this->_req('var_id');
+        $jointype = $this->_req("jointype"); // 검색방법
+        $enc_data = $this->_req("enc_data"); // 검색 암호화 데이타
+        $MemId = $this->_req('var_id'); // 검색한 아이디
 
         if($jointype === "655001") {
             // 아이핀인증
             try {
-                $this->load->library('NiceAuth');
                 // 복호화
+                $this->load->library('NiceAuth');
                 $data = $this->niceauth->ipinDec($enc_data);
+
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
                 // 고유번호
                 $dupInfo = $data['dupInfo'];
+
                 // 검색쿼리
                 $where = [
                     'EQ' => [
@@ -725,7 +813,7 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/pwdform', [
                         'MemId' => $MemId,
@@ -739,7 +827,7 @@ class Member extends \app\controllers\FrontController
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
             }
 
         } else if($jointype === "655002") {
@@ -750,15 +838,15 @@ class Member extends \app\controllers\FrontController
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $phone = $data_arr[1];
-                $name = $data_arr[2];
                 $MemId = $data_arr[3];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'MemId' => $MemId,
@@ -770,7 +858,7 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/pwdform', [
                         'MemId' => $MemId,
@@ -779,15 +867,17 @@ class Member extends \app\controllers\FrontController
                         'jointype' => $jointype
                     ]);
                 }
+                
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
             }
 
         } else if($jointype === "655003") {
             // mail 인증
             try {
+                // 발송한 이메일 검색
                 $result = $this->memberFModel->getMailAuth([
                     'EQ' => [
                         'certKey' => $enc_data,
@@ -795,28 +885,28 @@ class Member extends \app\controllers\FrontController
                     ]]);
 
                 if(empty($result) === true){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
 
+                // 복호화
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
+                // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^메일주소^이름^회원아이디^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $mail = $data_arr[1];
-                $name = $data_arr[2];
                 $MemId = $data_arr[3];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'MemId' => $MemId,
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
-                        'Mem.MemName' => $name,
                         'Mem.CertifiedInfoTypeCcd' => $jointype
                     ]
                 ];
@@ -824,7 +914,7 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    //가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
                     return $this->load->view('member/find/pwdform', [
                         'MemId' => $MemId,
@@ -836,15 +926,21 @@ class Member extends \app\controllers\FrontController
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
         }
     }
 
+
+
+    /**
+     * 비밀번호 변경 처리
+     * @return object|string
+     */
     public function FindPWDProc()
     {
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
@@ -852,24 +948,25 @@ class Member extends \app\controllers\FrontController
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
-        $jointype = $this->_req("jointype");
-        $enc_data = $this->_req("enc_data");
-        $MemId = $this->_req('MemId');
+        $jointype = $this->_req("jointype"); // 인증방법
+        $enc_data = $this->_req("enc_data"); // 인증데이타
+        $MemId = $this->_req('MemId'); // 회원 아이디
 
-        $MemPassword = $this->_req('MemPassword');
+        $MemPassword = $this->_req('MemPassword'); // 변경할 암호
 
         if($jointype === "655001") {
             // 아이핀인증
             try {
-                $this->load->library('NiceAuth');
                 // 복호화
+                $this->load->library('NiceAuth');
                 $data = $this->niceauth->ipinDec($enc_data);
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
                 // 고유번호
                 $dupInfo = $data['dupInfo'];
+
                 // 검색쿼리
                 $where = [
                     'EQ' => [
@@ -883,27 +980,29 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
 
+                    // 비밀번호 변경
                     $result = $this->memberFModel->setMemberPassword([
                         'MemIdx' => $result['MemIdx'],
                         'MemPassword' => $MemPassword,
                         'UpdTypeCcd' => '656001'
                     ]);
 
+                    // 변경실패
                     if($result == false){
-                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                     }
 
-                    redirect('/member/setPwdSuccess');
+                    redirect('/Member/setPwdSuccess');
                 }
 
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
             }
 
         } else if($jointype === "655002") {
@@ -914,15 +1013,15 @@ class Member extends \app\controllers\FrontController
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
 
                 $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
                 $phone = $data_arr[1];
-                $name = $data_arr[2];
                 $MemId = $data_arr[3];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.MemId' => $MemId,
@@ -934,9 +1033,10 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
 
+                    // 비밀번호 변경
                     $result = $this->memberFModel->setMemberPassword([
                         'MemIdx' => $result['MemIdx'],
                         'MemPassword' => $MemPassword,
@@ -944,44 +1044,50 @@ class Member extends \app\controllers\FrontController
                     ]);
 
                     if($result == false){
-                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                        // 변경 실패
+                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                     }
 
-                    redirect('/member/setPwdSuccess');
+                    redirect('/Member/setPwdSuccess');
                 }
+
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
+
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
             }
 
         } else if($jointype === "655003") {
             // mail 인증
             try {
+                // 인증 이메일 정보 구해오기
                 $result = $this->memberFModel->getMailAuth([
                     'EQ' => [
                         'certKey' => $enc_data,
                         'IsCert' => 'N'
                     ]]);
-
+                
                 if(empty($result) === true){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    // 인증 이메일 없음
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
 
+                // 복호화
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);                
                 $mail = $data_arr[1];
-                $name = $data_arr[2];
                 $MemId = $data_arr[3];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.MemId' => $MemId,
@@ -993,9 +1099,10 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
 
+                    // 암호 변경
                     $result = $this->memberFModel->setMemberPassword([
                         'MemIdx' => $result['MemIdx'],
                         'MemPassword' => $MemPassword,
@@ -1003,27 +1110,34 @@ class Member extends \app\controllers\FrontController
                     ]);
 
                     if($result == false){
-                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                        // 변경실패
+                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
                     }
 
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/member/setPwdSuccess');
+                    redirect('/Member/setPwdSuccess');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
+
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/findpwd');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
         }
 
     }
 
+
+
+    /**
+     * 암호변경 완료페이지
+     */
     public function setPwdSuccess()
     {
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
@@ -1033,6 +1147,8 @@ class Member extends \app\controllers\FrontController
 
         $this->load->view('/member/find/pwdsuccess');
     }
+
+
 
     /**
      * 휴면회원처리 폼
@@ -1044,11 +1160,11 @@ class Member extends \app\controllers\FrontController
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
+        // 메일코드 로ㄱ드
         $codes = $this->codeModel->getCcdInArray(['661']);
 
         // 아이디찾기용 아이핀 정보 생성
         $this->load->library('NiceAuth');
-
         $data = $this->niceauth->ipinEnc();
 
         $this->load->view('member/find/sleep', [
@@ -1057,6 +1173,8 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+    
     /**
      * 휴면회원 정상화 처리
      */
@@ -1067,22 +1185,25 @@ class Member extends \app\controllers\FrontController
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
-        $jointype = $this->_req("jointype");
-        $enc_data = $this->_req("enc_data");
-        $MemId = $this->_req('var_id');
+        $jointype = $this->_req("jointype"); // 인증방법
+        $enc_data = $this->_req("enc_data"); // 인증데이타
+        $MemId = $this->_req('var_id'); // 아이디
 
         if($jointype === "655001") {
             // 아이핀인증
             try {
-                $this->load->library('NiceAuth');
                 // 복호화
+                $this->load->library('NiceAuth');
                 $data = $this->niceauth->ipinDec($enc_data);
+
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
                     show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
                 }
+
                 // 고유번호
                 $dupInfo = $data['dupInfo'];
+
                 // 검색쿼리
                 $where = [
                     'EQ' => [
@@ -1097,16 +1218,17 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
 
+                    // 휴면회원 복구처리
                     $result = $this->memberFModel->ActivateSleepMember($result['MemIdx']);
 
                     if($result == false){
+                        // 복구 실패
                         show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep');
                     }
-
-                    redirect('/member/ActivateSleepSuccess');
+                    redirect('/Member/ActivateSleepSuccess');
                 }
 
                 // 가입정보 없음
@@ -1122,17 +1244,17 @@ class Member extends \app\controllers\FrontController
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
+                // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    // 암호화 해제 오류 발생
                     show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
                 }
 
-                $data_arr = explode("^", $plainText);
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $phone = $data_arr[1];
-                $name = $data_arr[2];
                 $MemId = $data_arr[3];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.MemId' => $MemId,
@@ -1145,19 +1267,21 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
 
+                    // 휴면회원 활성화처리
                     $result = $this->memberFModel->ActivateSleepMember($result['MemIdx']);
 
                     if($result == false){
                         show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep');
                     }
 
-                    redirect('/member/ActivateSleepSuccess');
+                    redirect('/Member/ActivateSleepSuccess');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
+                
             } catch(Exception $e) {
                 show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
             }
@@ -1165,30 +1289,33 @@ class Member extends \app\controllers\FrontController
         } else if($jointype === "655003") {
             // mail 인증
             try {
+                // 인증 메일 검색
                 $result = $this->memberFModel->getMailAuth([
                     'EQ' => [
                         'certKey' => $enc_data,
                         'IsCert' => 'N'
                     ]]);
 
+                // 이증메일 없음
                 if(empty($result) === true){
                     show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
                 }
 
+                // 복호화
                 $this->load->library('encrypt');
                 $plainText = $this->encrypt->decode($enc_data);
 
+                // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    // 암호화 해제 오류 발생
                     show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
                 }
-
-                $data_arr = explode("^", $plainText);
+                
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
                 $mail = $data_arr[1];
-                $name = $data_arr[2];
                 $MemId = $data_arr[3];
 
+                // 검색쿼리
                 $where = [
                     'EQ' => [
                         'Mem.MemId' => $MemId,
@@ -1201,9 +1328,10 @@ class Member extends \app\controllers\FrontController
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
-                    // 이미 가입정보가 있을경우
+                    // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
 
+                    // 활성화
                     $result = $this->memberFModel->ActivateSleepMember($result['MemIdx']);
 
                     if($result == false){
@@ -1213,10 +1341,11 @@ class Member extends \app\controllers\FrontController
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/member/ActivateSleepSuccess');
+                    redirect('/Member/ActivateSleepSuccess');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
+
             } catch(Exception $e) {
                 show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
             }
@@ -1227,6 +1356,8 @@ class Member extends \app\controllers\FrontController
         }
     }
 
+
+
     /**
      * 휴면회원 해제 완료페이지
      */
@@ -1235,21 +1366,519 @@ class Member extends \app\controllers\FrontController
         $this->load->view('member/find/sleepProc');
     }
 
+
+    
     /**
      * 회원통합 페이지
      */
-    public function Merge()
+    public function Combine($params = [])
     {
+        if(empty($params[0]) != true){
+            $agree = $params[0];
+        } else {
+            $agree = 'N';
+        }
 
+        if(strtolower($agree) === 'agree'){
+            $agree = 'Y';
+        } else {
+            $agree = 'N';
+        }
+
+        // 이메일코드
+        $codes = $this->codeModel->getCcdInArray(['661']);
+        
+        // 아이핀 인증 데이타
+        $this->load->library('NiceAuth');
+        $data = $this->niceauth->ipinEnc();
+
+        $this->load->view('member/find/combine', [
+            'agree' => $agree,
+            'mail_domain_ccd' => $codes['661'],
+            'encData' => $data['encData']
+        ]);
     }
+
+
 
     /**
-     * 회원통합처리
+     * 회원통합 데이타 입력페이지
+     * @return object|string
      */
-    public function MergeProc()
+    public function CombineForm()
     {
-        
+        // 이미 로그인한 상태이면 초기 페이지로 돌려보낸다.
+        if($this->session->userdata('is_login') === true){
+            show_alert('이미 로그인 상태입니다.', '/', false);
+        }
+
+        $jointype = $this->_req("jointype"); // 인증방법
+        $enc_data = $this->_req("enc_data"); // 인증코드
+        $MemId = $this->_req('var_id'); // 아이디
+
+        if($jointype === "655001") {
+            // 아이핀인증
+            try {
+                // 복호화
+                $this->load->library('NiceAuth');
+                $data = $this->niceauth->ipinDec($enc_data);
+
+                // 정상 복호화
+                if($data['rtnCode'] != 1){
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                }
+
+                // 고유번호
+                $dupInfo = $data['dupInfo'];
+
+                // 검색쿼리
+                $where = [
+                    'EQ' => [
+                        'Mem.MemId' => $MemId,
+                        'Mem.CertifiedInfoTypeCcd' => $jointype,
+                        'Mem.CertifiedInfo' => $dupInfo,
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                // 검색
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    //가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    return $this->load->view('member/find/CombineForm', [
+                        'MemId' => $MemId,
+                        'Member' => $result,
+                        'enc_data' => $enc_data,
+                        'jointype' => $jointype,
+                        'IsDup' => $result['IsDup']
+                    ]);
+                }
+
+                // 가입정보 없음
+                return $this->load->view('member/find/notfind');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            }
+
+        } else if($jointype === "655002") {
+            // 핸드폰 sms 인증
+            try {
+                // 복호화
+                $this->load->library('encrypt');
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                }
+
+                // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
+                $phone = $data_arr[1];
+                $MemId = $data_arr[3];
+
+                // 검색쿼리
+                $where = [
+                    'EQ' => [
+                        'MemId' => $MemId,
+                        'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
+                        'Mem.CertifiedInfoTypeCcd' => $jointype,
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    return $this->load->view('member/find/CombineForm', [
+                        'MemId' => $MemId,
+                        'Member' => $result,
+                        'enc_data' => $enc_data,
+                        'jointype' => $jointype,
+                        'IsDup' => $result['IsDup']
+                    ]);
+                }
+                // 가입정보 없음
+                return $this->load->view('member/find/notfind');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            }
+
+        } else if($jointype === "655003") {
+            // mail 인증
+            try {
+                // 인증메일 검색
+                $result = $this->memberFModel->getMailAuth([
+                    'EQ' => [
+                        'certKey' => $enc_data,
+                        'IsCert' => 'N'
+                    ]]);
+
+                if(empty($result) === true){
+                    // 인증메일 없음
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                }
+
+                // 복호화
+                $this->load->library('encrypt');
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                }
+
+                // 0000-00-00 00:00:00^메일주소^이름^회원아이디^0000-00-00 00:00:00
+                $data_arr = explode("^", $plainText);
+                $mail = $data_arr[1];
+                $MemId = $data_arr[3];
+
+                // 검색쿼리
+                $where = [
+                    'EQ' => [
+                        'MemId' => $MemId,
+                        'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
+                        'Mem.CertifiedInfoTypeCcd' => $jointype,
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    return $this->load->view('member/find/CombineForm', [
+                        'MemId' => $MemId,
+                        'Member' => $result,
+                        'enc_data' => $enc_data,
+                        'jointype' => $jointype,
+                        'IsDup' => $result['IsDup']
+                    ]);
+                }
+                // 가입정보 없음
+                return $this->load->view('member/find/notfind');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            }
+
+        } else {
+            // 오류발생
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+        }
     }
+
+
+    /**
+     * 회원통합 처리
+     * @return object|string
+     */
+    public function CombineProc()
+    {
+        // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
+        if($this->session->userdata('is_login') === true){
+            show_alert('이미 로그인 상태입니다.', '/', false);
+        }
+
+        $jointype = $this->_req("jointype"); // 인증방법
+        $enc_data = $this->_req("enc_data"); // 인증데이타
+        $MemId = $this->_req('MemId'); // 회원 아이디
+        $ChangeID = $this->_req('ChangeId'); // 변경할 아이디
+        $ChangePassword = $this->_req('ChangePassword'); // 변경할 암호
+        $TrustStatus = $this->_req('agree4'); // 선택동의여부
+
+        // 선택동의여부 체크
+        if($TrustStatus != 'Y'){
+            $TrustStatus = 'N';
+        }
+
+        if($jointype === "655001") {
+            // 아이핀인증
+            try {
+                // 복호화
+                $this->load->library('NiceAuth');
+                $data = $this->niceauth->ipinDec($enc_data);
+
+                // 정상 복호화
+                if($data['rtnCode'] != 1){
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                }
+
+                // 고유번호
+                $dupInfo = $data['dupInfo'];
+
+                // 검색쿼리
+                $where = [
+                    'EQ' => [
+                        'Mem.MemId' => $MemId,
+                        'Mem.CertifiedInfoTypeCcd' => $jointype,
+                        'Mem.CertifiedInfo' => $dupInfo,
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                // 검색
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    $MemIdx = $result['MemIdx'];
+
+                    if($result['IsDup'] === 'N'){
+                        //아이디 중복상태가 아니므로 통합회원으로 플래그만 변경
+                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [ 'TrustStatus' => $TrustStatus ], false);
+
+                        if($result === true){
+                            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+                            return $this->load->view('member/find/CombineSuccess', [
+                                'MemName' => $data['MemName'],
+                                'MemId' => $data['MemId'],
+                                'ChangeDate' => $data['ChangeDate']
+                            ]);
+                        } else {
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                    } else {
+                        // 아이디가 중복상태이므로 아이디 암호 변경
+                        //
+                        if(empty($ChangeID) == true || empty($ChangePassword) == true){
+                            // 변경할 아이디나 암호없음
+                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                        // 아이디 검색
+                        $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
+                        if($result > 0){
+                            // 이미 사용하고 있는 아이디
+                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                        // 아이디가 중복 상태이므로 아이디 비밀번호 변경
+                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [
+                            'MemId' => $ChangeID,
+                            'MemPassword' => $ChangePassword,
+                            'TrustStatus' => $TrustStatus
+                        ], true );
+
+                        if($result === true){
+                            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+                            return $this->load->view('member/find/CombineSuccess', [
+                                'MemName' => $data['MemName'],
+                                'MemId' => $data['MemId'],
+                                'ChangeDate' => $data['ChangeDate']
+                            ]);
+                        } else {
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+                    }
+                }
+
+                // 가입정보 없음
+                return $this->load->view('member/find/notfind');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            }
+
+        } else if($jointype === "655002") {
+            // 핸드폰 sms 인증
+            try {
+                $this->load->library('encrypt');
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                }
+
+                $data_arr = explode("^", $plainText);
+                // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+                $phone = $data_arr[1];
+                $name = $data_arr[2];
+                $MemId = $data_arr[3];
+
+                $where = [
+                    'EQ' => [
+                        'MemId' => $MemId,
+                        'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
+                        'Mem.CertifiedInfoTypeCcd' => $jointype,
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 이미 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    $MemIdx = $result['MemIdx'];
+
+                    if($result['IsDup'] === 'N'){
+                        //아이디 중복상태가 아니므로 통합회원으로 플래그만 변경
+                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [ 'TrustStatus' => $TrustStatus ], false);
+
+                        if($result === true){
+                            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+                            return $this->load->view('member/find/CombineSuccess', [
+                                'MemName' => $data['MemName'],
+                                'MemId' => $data['MemId'],
+                                'ChangeDate' => $data['ChangeDate']
+                            ]);
+                        } else {
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                    } else {
+                        if(empty($ChangeID) == true || empty($ChangePassword) == true){
+                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                        $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
+                        if($result > 0){
+                            // 존재하는 아이디
+                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                        // 아이디가 중복 상태이므로 아이디 비밀번호 변경
+                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [
+                            'MemId' => $ChangeID,
+                            'MemPassword' => $ChangePassword,
+                            'TrustStatus' => $TrustStatus
+                        ], true );
+
+                        if($result === true){
+                            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+                            return $this->load->view('member/find/CombineSuccess', [
+                                'MemName' => $data['MemName'],
+                                'MemId' => $data['MemId'],
+                                'ChangeDate' => $data['ChangeDate']
+                            ]);
+                        } else {
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+                    }
+                }
+                // 가입정보 없음
+                return $this->load->view('member/find/notfind');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            }
+
+        } else if($jointype === "655003") {
+            // mail 인증
+            try {
+                $result = $this->memberFModel->getMailAuth([
+                    'EQ' => [
+                        'certKey' => $enc_data,
+                        'IsCert' => 'N'
+                    ]]);
+
+                if(empty($result) === true){
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.1", '/Member/Combine');
+                }
+
+                $this->load->library('encrypt');
+                $plainText = $this->encrypt->decode($enc_data);
+
+                if(empty($plainText)){
+                    // 암호화 해제 오류 발생
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.2", '/Member/Combine');
+                }
+
+                $data_arr = explode("^", $plainText);
+                // 0000-00-00 00:00:00^메일주소^이름^회원아이디^0000-00-00 00:00:00
+                $mail = $data_arr[1];
+                $name = $data_arr[2];
+                $MemId = $data_arr[3];
+
+                $where = [
+                    'EQ' => [
+                        'MemId' => $MemId,
+                        'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
+                        'Mem.MemName' => $name,
+                        'Mem.CertifiedInfoTypeCcd' => $jointype,
+                        'Mem.IsChange' => 'N'
+                    ]
+                ];
+
+                $count = $this->memberFModel->getMember(true, $where);
+
+                if($count > 0){
+                    // 이미 가입정보가 있을경우
+                    $result = $this->memberFModel->getMember(false, $where);
+                    $MemIdx = $result['MemIdx'];
+                    if($result['IsDup'] === 'N'){
+                        //아이디 중복상태가 아니므로 통합회원으로 플래그만 변경
+                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [ 'TrustStatus' => $TrustStatus ], false);
+
+                        if($result === true){
+                            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+                            return $this->load->view('member/find/CombineSuccess', [
+                                'MemName' => $data['MemName'],
+                                'MemId' => $data['MemId'],
+                                'ChangeDate' => $data['ChangeDate']
+                            ]);
+                        } else {
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                    } else {
+                        if(empty($ChangeID) == true || empty($ChangePassword) == true){
+                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                        $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
+                        if($result > 0){
+                            // 존재하는 아이디
+                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+
+                        // 아이디가 중복 상태이므로 아이디 비밀번호 변경
+                        $result = $this->memberFModel->setCombineMember($result['MemIdx'], [
+                            'MemId' => $ChangeID,
+                            'MemPassword' => $ChangePassword,
+                            'TrustStatus' => $TrustStatus
+                        ], true );
+
+                        if($result === true){
+                            // 비밀번호 변경후 인증메일 완료처리
+                            $result = $this->memberFModel->updateMailAuth($enc_data);
+
+                            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+                            return $this->load->view('member/find/CombineSuccess', [
+                                'MemName' => $data['MemName'],
+                                'MemId' => $data['MemId'],
+                                'ChangeDate' => $data['ChangeDate']
+                            ]);
+                        } else {
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                        }
+                    }
+                }
+                // 가입정보 없음
+                return $this->load->view('member/find/notfind');
+
+            } catch(Exception $e) {
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            }
+
+        } else {
+            // 오류발생
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+        }
+
+    }
+
 
 
 
@@ -1257,7 +1886,7 @@ class Member extends \app\controllers\FrontController
      * 회원가입 sms 인증
      * @return CI_Output
      */
-    public function joinSms()
+    public function JoinSms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -1273,11 +1902,14 @@ class Member extends \app\controllers\FrontController
                 'Mem.MemName' => $sms_name,
                 'Mem.PhoneEnc' => $phoneEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655002'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
         ]);
 
         if($count > 0){
-            // 이미 가입된 정보임
+            // 가입된 정보임
             return $this->json_error("이미 가입된 회원입니다. 아이디/비밀번호 찾기를 이용해주십시요.");
         }
 
@@ -1290,11 +1922,14 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 아이디찾기 SmS 인증
      * @return CI_Output
      */
-    public function findidSms()
+    public function FindIDSms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -1310,11 +1945,14 @@ class Member extends \app\controllers\FrontController
                 'Mem.MemName' => $sms_name,
                 'Mem.PhoneEnc' => $phoneEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655002'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
         ]);
 
         if($count == 0){
-            // 이미 가입된 정보임
+            // 가입된정보 없음
             return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
         }
 
@@ -1327,11 +1965,14 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+    
+
     /**
      * 회원비밀번호 찾기 SMS
      * @return CI_Output
      */
-    public function findpwdSms()
+    public function FindPWDSms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -1342,13 +1983,18 @@ class Member extends \app\controllers\FrontController
 
         // 이미 가입된 정보 검색
         $phoneEnc = $this->memberFModel->getEncString($phonenumber);
-        $count = $this->memberFModel->getMember(true, [
+        $data =  [
             'EQ' => [
                 'Mem.MemId' => $sms_id,
                 'Mem.PhoneEnc' => $phoneEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655002'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
-        ]);
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
 
         if($count == 0){
             // 가입된 정보 없음
@@ -1364,11 +2010,66 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 휴면회원 해제 SMS
      * @return CI_Output
      */
-    public function sleepSms()
+    public function SleepSms()
+    {
+        $phonenumber = $this->_req('var_phone');
+        $authcode = $this->_req('var_auth');
+        $sms_id = $this->_req('var_id');
+        $sms_stat = $this->_req('sms_stat');
+
+        $isNew = ($sms_stat == "NEW" ? true : false);
+
+        // 이미 가입된 정보 검색
+        $phoneEnc = $this->memberFModel->getEncString($phonenumber);
+        // 검색쿼리
+        $data =  [
+            'EQ' => [
+                'Mem.MemId' => $sms_id,
+                'Mem.PhoneEnc' => $phoneEnc,
+                'Mem.CertifiedInfoTypeCcd' => '655002'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
+            ]
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
+
+        if($count == 0){
+            // 가입된정보없음
+            return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
+        }
+
+        $result = $this->memberFModel->getMember(false, $data);
+
+        if($result['IsStatus'] != 'S'){
+            return $this->json_error("휴면회원이 아닙니다.");
+        }
+
+        // SMS 인증 처리
+        return $this->sendSms([
+            'phone' => $phonenumber,
+            'code' => $authcode,
+            'id' => $sms_id,
+            'isnew' => $isNew
+        ]);
+    }
+
+
+
+
+    /**
+     * 통합회원 전환 SMS
+     * @return CI_Output
+     */
+    public function CombineSms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -1384,6 +2085,9 @@ class Member extends \app\controllers\FrontController
                 'Mem.MemId' => $sms_id,
                 'Mem.PhoneEnc' => $phoneEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655002'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
         ]);
 
@@ -1401,11 +2105,13 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+
     /**
      * 회원가입 메일인증 
      * @return CI_Output
      */
-    public function joinMail()
+    public function JoinMail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
@@ -1415,13 +2121,19 @@ class Member extends \app\controllers\FrontController
 
         // 이미 가입된 정보 검색
         $mailEnc = $this->memberFModel->getEncString($mail);
-        $count = $this->memberFModel->getMember(true, [
+        // 검색쿼리
+        $data = [
             'EQ' => [
                 'Mem.MemName' => $name,
                 'Mem.MailEnc' => $mailEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655003'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
-        ]);
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
 
         if($count > 0){
             // 이미 가입된 정보임
@@ -1436,11 +2148,14 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 아이디찾기 메일 인증
      * @return CI_Output
      */
-    public function findidMail()
+    public function FindIDMail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
@@ -1450,16 +2165,22 @@ class Member extends \app\controllers\FrontController
 
         // 이미 가입된 정보 검색
         $mailEnc = $this->memberFModel->getEncString($mail);
-        $count = $this->memberFModel->getMember(true, [
+        // 검색쿼리
+        $data = [
             'EQ' => [
                 'Mem.MemName' => $name,
                 'Mem.MailEnc' => $mailEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655003'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
-        ]);
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
 
         if($count == 0){
-            // 이미 정보 없음
+            // 가입정보없음
             return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
         }
 
@@ -1475,7 +2196,7 @@ class Member extends \app\controllers\FrontController
      * 비밀번호찾기 이메일
      * @return CI_Output
      */
-    public function findpwdMail()
+    public function FindPWDMail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
@@ -1485,26 +2206,26 @@ class Member extends \app\controllers\FrontController
 
         // 이미 가입된 정보 검색
         $mailEnc = $this->memberFModel->getEncString($mail);
-        $count = $this->memberFModel->getMember(true, [
+        // 검색쿼리
+        $data = [
             'EQ' => [
                 'Mem.MemId' => $id,
                 'Mem.MailEnc' => $mailEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655003'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
-        ]);
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
 
         if($count == 0){
-            // 이미 정보 없음
+            // 가입 정보 없음
             return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
         }
 
-        $data = $this->memberFModel->getMember(false, [
-            'EQ' => [
-                'Mem.MemId' => $id,
-                'Mem.MailEnc' => $mailEnc,
-                'Mem.CertifiedInfoTypeCcd' => '655003'
-            ]
-        ]);
+        $data = $this->memberFModel->getMember(false, $data);
 
         // 인증메일 전송
         return $this->sendMail([
@@ -1514,11 +2235,14 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+    
+
     /**
      * 휴면회원 해지메일
      * @return CI_Output
      */
-    public function sleepMail()
+    public function SleepMail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
@@ -1528,26 +2252,31 @@ class Member extends \app\controllers\FrontController
 
         // 이미 가입된 정보 검색
         $mailEnc = $this->memberFModel->getEncString($mail);
-        $count = $this->memberFModel->getMember(true, [
+
+        // 검색쿼리
+        $data = [
             'EQ' => [
                 'Mem.MemId' => $id,
                 'Mem.MailEnc' => $mailEnc,
                 'Mem.CertifiedInfoTypeCcd' => '655003'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
             ]
-        ]);
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
 
         if($count == 0){
-            // 이미 정보없음
+            // 가입 정보없음
             return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
         }
 
-        $data = $this->memberFModel->getMember(false, [
-            'EQ' => [
-                'Mem.MemId' => $id,
-                'Mem.MailEnc' => $mailEnc,
-                'Mem.CertifiedInfoTypeCcd' => '655003'
-            ]
-        ]);
+        $data = $this->memberFModel->getMember(false, $data);
+
+        if($data['IsStatus'] != 'S'){
+            return $this->json_error("휴면회원이 아닙니다.");
+        }
 
         // 인증메일 전송
         return $this->sendMail([
@@ -1556,6 +2285,54 @@ class Member extends \app\controllers\FrontController
             'typeccd' => 'UNSLEEP' // 회원가입인증메일
         ]);
     }
+
+
+
+
+    /**
+     * 통합회원 전환 메일 전송
+     * @return CI_Output
+     */
+    public function CombineMail()
+    {
+        $mailid = $this->_req('mail_id');
+        $maildomain = $this->_req('mail_domain');
+        $id = $this->_req('var_id');
+
+        $mail = $mailid.'@'.$maildomain;
+
+        // 이미 가입된 정보 검색
+        $mailEnc = $this->memberFModel->getEncString($mail);
+        // 검색쿼리
+        $data = [
+            'EQ' => [
+                'Mem.MemId' => $id,
+                'Mem.MailEnc' => $mailEnc,
+                'Mem.CertifiedInfoTypeCcd' => '655003'
+            ],
+            'NOT' => [
+                'Mem.IsStatus' => 'D'
+            ]
+        ];
+
+        $count = $this->memberFModel->getMember(true, $data);
+
+        if($count == 0){
+            // 가입정보없음
+            return $this->json_error("가입된 정보가 없습니다.\n정보를 다시 확인하시거나 회원가입을 진행해주십시요.");
+        }
+
+        $data = $this->memberFModel->getMember(false, $data);
+
+        // 인증메일 전송
+        return $this->sendMail([
+            'mail' => $data['Mail'],
+            'MemIdx' => $data['MemIdx'],
+            'typeccd' => 'COMBINE' // 회원가입인증메일
+        ]);
+    }
+
+    
 
 
     /**
@@ -1569,10 +2346,12 @@ class Member extends \app\controllers\FrontController
         $id = element('id', $param);
         $new = element('isnew', $param);
 
+        // 전화번호체크
         if (empty($phone) === true) {
             return $this->json_error("전화번호를 정확하게 입력해주십시요.");
 
         } else {
+            // 전화번호 패턴 체크
             $pattern = "^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$^";
             if(!preg_match($pattern, $phone)){
                 // 전화번호 패턴 오류
@@ -1642,6 +2421,9 @@ class Member extends \app\controllers\FrontController
         }
     }
 
+
+    
+
     /**
      * 인증 이메일 보내기
      * @param array $param
@@ -1655,10 +2437,12 @@ class Member extends \app\controllers\FrontController
         $id = element('id', $param);
         $MemIdx = element('MemIdx', $param);
 
+        // 이메일체크
         if(empty($mail) === true){
             return $this->json_error("이메일 주소를 입력해주십시요.");
 
         } else {
+            // 이메일 패턴체크
             $pattern = "/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i";
             if(!preg_match($pattern, $mail)){
                 // 전화번호 패턴 오류
@@ -1689,6 +2473,9 @@ class Member extends \app\controllers\FrontController
         return $this->json_result(true, "인증메일을 발송했습니다.");
     }
 
+
+
+
     /**
      * 메일인증
      * @param array $params
@@ -1696,15 +2483,18 @@ class Member extends \app\controllers\FrontController
      */
     public function mailAuth($params = [])
     {
+        // 파라미터체크
         if(empty($params[0]) === true || empty($params[1]) === true){
             return $this->load->view('auth/certMail_Error', [
                 'msg' => '인증정보가 올바르지 않습니다.'
             ]);
         }
 
+        // 주소/인증키/인증메일
         $certKey = $params[0];
         $certMail = $params[1];
 
+        // 검색쿼리
         $result = $this->memberFModel->getMailAuth([
             'EQ' => [
                 'certKey' => $certKey,
@@ -1712,14 +2502,17 @@ class Member extends \app\controllers\FrontController
             ]]);
 
         if(empty($result) === true){
+            // 검색정보 없음
             return $this->load->view("auth/certMail_Error", [
                 'msg' => '인증정보가 올바르지 않습니다.'
             ]);
         }
 
+        // 시간체크
         $now = strtotime(date('Y-m-d H:i:s')); // 지금 시간
         $sendDate = strtotime($result['MailSendDatm'].'+30 minutes'); // 보낸시간 더하기 30분
 
+        // 인증시간 초과 보내고나서 30분
         if($now > $sendDate){
             return $this->load->view("auth/certMail_Error", [
                 'code' => 'over',
@@ -1728,6 +2521,7 @@ class Member extends \app\controllers\FrontController
             ]);
         }
 
+        // 이미 사용한 인증키
         if($result['IsCert'] == 'Y'){
             return $this->load->view("auth/certMail_Error", [
                 'code' => 'used',
@@ -1742,6 +2536,9 @@ class Member extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 아이핀 결과 반환 페이지
      */
@@ -1750,7 +2547,7 @@ class Member extends \app\controllers\FrontController
         $this->load->library('NiceAuth');
 
         $sReservedParam1 = $this->_req('param_r1'); // 아이핀을 사용 구분
-        $sReservedParam2 = $this->_req('param_r2');
+        $sReservedParam2 = $this->_req('param_r2'); // 필요할때 아이디
         $sReservedParam3 = $this->_req('param_r3');
         $sResponseData = $this->_req('enc_data');
 

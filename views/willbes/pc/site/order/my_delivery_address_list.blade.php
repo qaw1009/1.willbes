@@ -1,5 +1,5 @@
 <div class="willbes-Layer-CartBox">
-    <a class="closeBtn" href="#none" onclick="closeWin('MyAddress');">
+    <a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}');">
         <img src="{{ img_url('cart/close_cart.png') }}">
     </a>
     <div class="Layer-Tit NG bg-blue">나의 배송 주소록</div>
@@ -174,7 +174,7 @@
                 $parent_regi_form.find('input[name="addr1"]').val(data.Addr1);
                 $parent_regi_form.find('input[name="addr2"]').val(data.Addr2);
 
-                closeWin('MyAddress');
+                closeWin('{{ $ele_id }}');
             }
 
             $(this).prop('checked', false);

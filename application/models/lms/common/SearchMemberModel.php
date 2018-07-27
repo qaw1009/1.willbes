@@ -27,7 +27,7 @@ class SearchMemberModel extends WB_Model
     {
         if ($column === false) {
             $column = 'M.MemIdx, M.SiteCode, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as Phone, M.Phone3, M.PhoneEnc, M.JoinDate
-                , fn_dec(MO.MailEnc) as Mail, MO.ZipCode, MO.Addr1, fn_dec(MO.Addr2Enc) as Addr2
+                , fn_dec(M.MailEnc) as Mail, MO.ZipCode, MO.Addr1, fn_dec(MO.Addr2Enc) as Addr2
             ';
         }
 

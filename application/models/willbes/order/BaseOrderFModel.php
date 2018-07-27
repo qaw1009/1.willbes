@@ -12,6 +12,7 @@ class BaseOrderFModel extends WB_Model
         'product_lecture' => 'lms_product_lecture',
         'product_book' => 'lms_product_book',
         'product_sale' => 'lms_product_sale',
+        'product_division' => 'lms_product_division',
         'product_r_product' => 'lms_product_r_product',
         'bms_book' => 'wbs_bms_book',
     ];
@@ -42,6 +43,12 @@ class BaseOrderFModel extends WB_Model
 
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
+
+    // 상품타입과 쿠폰적용구분 공통코드 맵핑 (온라인강좌, 학원강좌, 교재, 사은품, 배송료)
+    public $_coupon_apply_type_ccd = ['636001' => '645001', '636002' => '645004', '636003' => '645005', '636004' => 'x', 'delivery_price' => '645006'];
+
+    // 학습형태와 쿠폰상세구분 공통코드 맵핑 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
+    public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => 'x', '615003' => '646002', '615004' => '646003', '615005' => 'x', '615006' => '646004', '615007' => '646005'];
 
     // 장바구니 식별자 세션명
     public $_sess_cart_idx_name = 'usable_cart_idx';

@@ -55,11 +55,10 @@
                                         <dt class="tit">
                                             <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                             {{ $row['ProdName'] }}
-                                            <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}"/>
-                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value="" class="coupon-idx"/>
-                                            <input type="hidden" name="coupon_price[{{ $row['CartIdx'] }}]" value="" class="coupon-price"/>
+                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value=""/>
+                                            <input type="hidden" name="coupon_price[{{ $row['CartIdx'] }}]" value=""/>
                                             @if($row['IsCoupon'] == 'Y')
-                                                <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon');">쿠폰적용</a></span>
+                                                <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
                                             @endif
                                         </dt>
                                         <dt>
@@ -79,15 +78,18 @@
                                                 </span>
                                             @endif
                                             @if($row['IsCoupon'] == 'Y')
-                                                <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
+                                                <span class="w-coupon d_none wrap-coupon-info"><span class="coupon-name">최대 5% 할인쿠폰</span>
+                                                    (<span class="tx-blue"><span class="coupon-disc-price">5,000</span>원 할인</span>)
+                                                    <a href="#none" class="btn-coupon-apply-delete" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('cart/close.png') }}"></a>
+                                                </span>
                                             @endif
                                         </dt>
                                     </dl>
                                 </td>
                                 <td class="w-buy-price">
                                     <dl>
-                                        <dt class="tx-light-blue">{{ number_format($row['RealSalePrice']) }}원</dt>
-                                        <dt class="origin-price tx-gray">(80,000원)</dt>
+                                        <dt class="tx-light-blue"><span class="real-pay-price">{{ number_format($row['RealSalePrice']) }}</span>원</dt>
+                                        <dt class="origin-price tx-gray d_none wrap-real-sale-price">(<span class="real-sale-price">{{ number_format($row['RealSalePrice']) }}</span>원)</dt>
                                     </dl>
                                 </td>
                             </tr>
@@ -431,174 +433,7 @@
         </div>
         <!-- willbes-PolicyInfo -->
     </form>
-        <div id="Coupon"class="willbes-Layer-Black">
-            <div class="willbes-Layer-CartBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('Coupon')">
-                    <img src="{{ img_url('cart/close_cart.png') }}">
-                </a>
-                <div class="Layer-Tit NG bg-blue">쿠폰적용</div>
-                <div class="Layer-Cont">
-                    <div class="tit NG">
-                        <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                    </div>
-                    <div class="willbes-Pricelist">
-                        <ul class="PriceBox p_re NG">
-                            <li>
-                                <div>상품금액</div>
-                                <div class="price tx-light-blue">85,000원</div>
-                            </li>
-                            <li class="price-img">
-                                <span class="row-line">|</span>
-                                <img src="{{ img_url('sub/icon_minus_black.gif') }}">
-                            </li>
-                            <li>
-                                <div>쿠폰할인금액</div>
-                                <div class="price tx-light-pink">5,000원</div>
-                            </li>
-                            <li class="price-img">
-                                <span class="row-line">|</span>
-                                <img src="{{ img_url('sub/icon_equal.gif') }}">
-                            </li>
-                            <li>
-                                <div>할인적용금액</div>
-                                <span class="price price-total tx-light-blue">75,000원</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="couponWrap p_re">
-                        <ul class="tabWrap">
-                            <li><a href="#coupon1" class="on">적용 가능 쿠폰</a></li>
-                            <li><a href="#coupon2">전체 보유 쿠폰</a></li>
-                        </ul>
-                        <ul class="btnWrap">
-                            <li class="subBtn white NSK"><a href="#none">쿠폰 적용 안함 ></a></li>
-                            <li class="subBtn NSK"><a href="#none">쿠폰 적용 ></a></li>
-                        </ul>
-                        <div class="tabBox couponBox">
-                            <div class="coupon caution-txt">내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</div>
-                            <div id="coupon1" class="tabContent">
-                                <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 50px;">
-                                        <col style="width: 50px;">
-                                        <col style="width: 115px;">
-                                        <col style="width: 240px;">
-                                        <col style="width: 75px;">
-                                        <col style="width: 90px;">
-                                        <col style="width: 70px;">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>선택<span class="row-line">|</span></th>
-                                        <th>분류<span class="row-line">|</span></th>
-                                        <th>쿠폰번호<span class="row-line">|</span></th>
-                                        <th>쿠폰명<span class="row-line">|</span></th>
-                                        <th><div class="line2">할인율<br/>(금액)</div><span class="row-line line2">|</span></th>
-                                        <th>사용가능기간<span class="row-line">|</span></th>
-                                        <th>남은일자</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td>강좌</td>
-                                        <td>12012514511245</td>
-                                        <td>2017년 서울시/지방직 풀케어서비스 참여</td>
-                                        <td>10%</td>
-                                        <td>30일</td>
-                                        <td>365일</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td>교재</td>
-                                        <td>2012514511245</td>
-                                        <td>회원가입 축하 쿠폰</td>
-                                        <td>5,000원</td>
-                                        <td>40일</td>
-                                        <td>3일</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td>교재</td>
-                                        <td>123456789</td>
-                                        <td>회원가입 축하 쿠폰2</td>
-                                        <td>1,000원</td>
-                                        <td>365일</td>
-                                        <td>300일</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td>강좌</td>
-                                        <td>987654321</td>
-                                        <td>회원가입 축하 쿠폰3</td>
-                                        <td>100,000원</td>
-                                        <td>10일</td>
-                                        <td>1일</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="coupon2" class="tabContent" style="display: none;">
-                                <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 60px;">
-                                        <col style="width: 130px;">
-                                        <col style="width: 260px;">
-                                        <col style="width: 80px;">
-                                        <col style="width: 90px;">
-                                        <col style="width: 70px;">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>분류<span class="row-line">|</span></th>
-                                        <th>쿠폰번호<span class="row-line">|</span></th>
-                                        <th>쿠폰명<span class="row-line">|</span></th>
-                                        <th><div class="line2">할인율<br/>(금액)</div><span class="row-line line2">|</span></th>
-                                        <th>사용가능기간<span class="row-line">|</span></th>
-                                        <th>남은일자</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>강좌</td>
-                                        <td>12012514511245</td>
-                                        <td>2017년 서울시/지방직 풀케어서비스 참여</td>
-                                        <td>10%</td>
-                                        <td>30일</td>
-                                        <td>365일</td>
-                                    </tr>
-                                    <tr>
-                                        <td>교재</td>
-                                        <td>12012514511245</td>
-                                        <td>회원가입 축하 쿠폰</td>
-                                        <td>5,000원</td>
-                                        <td>40일</td>
-                                        <td>3일</td>
-                                    </tr>
-                                    <tr>
-                                        <td>교재2</td>
-                                        <td>1234564789</td>
-                                        <td>회원가입 축하 쿠폰2</td>
-                                        <td>245,000원</td>
-                                        <td>720일</td>
-                                        <td>365일</td>
-                                    </tr>
-                                    <tr>
-                                        <td>교재3</td>
-                                        <td>987654321</td>
-                                        <td>회원가입 축하 쿠폰3</td>
-                                        <td>2,500원</td>
-                                        <td>777일</td>
-                                        <td>123일</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="Coupon" class="willbes-Layer-Black"></div>
         <!-- willbes-Layer-CartBox : Coupon -->
         <div id="MyAddress" class="willbes-Layer-Black"></div>
         <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
@@ -641,6 +476,15 @@
 
             // 강좌종료일 설정
             $regi_form.find('input[name="study_end_date[]"]').eq(event_idx).val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
+        });
+
+        // 쿠폰적용 버튼 클릭
+        $regi_form.on('click', '.btn-coupon-apply', function() {
+            var ele_id = 'Coupon';
+            var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx') };
+            sendAjax('{{ site_url('/myCoupon/') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
         });
 
         // 나의 배송 주소록 버튼 클릭

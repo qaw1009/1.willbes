@@ -27,10 +27,13 @@ class CartFModel extends BaseOrderFModel
         } else {
             $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['admin_package'] . '" and PL.PackTypeCcd = "' . $this->_admin_package_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
-                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
-                , P.ProdName, P.ProdTypeCcd, P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay
+                , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
+                , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
+                , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
+                , ifnull(PB.SubjectIdx, PL.SubjectIdx) as SubjectIdx, ifnull(PB.ProfIdx, PD.ProfIdx) as ProfIdx                
+                , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart
-                , ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", "on_lecture") as CartType
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", 
                     case when PL.LearnPatternCcd in ("' . implode('","', $this->_package_pattern_ccd) . '") then "on_package" 
@@ -48,15 +51,18 @@ class CartFModel extends BaseOrderFModel
                 inner join ' . $this->_table['product_sale'] . ' as PS
                     on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
                 left join ' . $this->_table['product_lecture'] . ' as PL
-                    on CA.ProdCode = PL.ProdCode and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture']. '"   # 온라인강좌
+                    on CA.ProdCode = PL.ProdCode
+                left join ' . $this->_table['product_division'] . ' as PD
+                    on P.ProdCode = PD.ProdCode and PD.IsReprProf = "Y" and PD.IsStatus = "Y"                    
                 left join ' . $this->_table['product_book'] . ' as PB
-                    on CA.ProdCode = PB.ProdCode and P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '"   # 교재
+                    on CA.ProdCode = PB.ProdCode
                 left join ' . $this->_table['bms_book'] . ' as WB
                     on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
             where CA.IsStatus = "Y"   
+                and P.IsUse = "Y"
+                and P.IsStatus = "Y"                
                 and PS.IsStatus = "Y"
-                and PS.SalePriceIsUse = "Y"
-                and P.IsStatus = "Y"                                   
+                and PS.SalePriceIsUse = "Y"                                   
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -84,7 +90,7 @@ class CartFModel extends BaseOrderFModel
         $arr_condition = [
             'EQ' => [
                 'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
-                'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y', 'P.IsUse' => 'Y'
+                'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y'
             ],
             'IN' => [
                 'CA.CartIdx' => $cart_idx,
@@ -103,11 +109,12 @@ class CartFModel extends BaseOrderFModel
     /**
      * 단일 장바구니 조회
      * @param $cart_idx
+     * @param $mem_idx
      * @return mixed
      */
-    public function findCartByCartIdx($cart_idx)
+    public function findCartByCartIdx($cart_idx, $mem_idx = null)
     {
-        $arr_condition = ['EQ' => ['CA.CartIdx' => $cart_idx]];
+        $arr_condition = ['EQ' => ['CA.CartIdx' => $cart_idx, 'CA.MemIdx' => $mem_idx]];
         $data = $this->listCart(false, $arr_condition, null, null, []);
 
         return element('0', $data, []);
@@ -265,7 +272,7 @@ class CartFModel extends BaseOrderFModel
 
             foreach ($arr_cart_idx as $idx => $cart_idx) {
                 // 장바구니 조회
-                $data = $this->findCartByCartIdx($cart_idx);
+                $data = $this->findCartByCartIdx($cart_idx, $sess_mem_idx);
                 if (empty($data) === true) {
                     throw new \Exception('장바구니 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }

@@ -241,12 +241,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="replyList">
+                                <tr class="replyList w-replyList">
                                     <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
                                     <td class="w-select tx-blue">[회원정보]</td>
                                     <td class="w-list tx-left pl20">로그인이 되지 않아요. <span class="arrow-Btn">></span></td>
                                 </tr>
-                                <tr class="replyTxt bg-light-gray tx-gray">
+                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
                                     <td colspan="3">
                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -259,7 +259,7 @@
                                     <td class="w-select tx-blue">[회원정보]</td>
                                     <td class="w-list tx-left pl20">회원탈퇴는 어떻게 하나요? <span class="arrow-Btn">></span></td>
                                 </tr>
-                                <tr class="replyTxt bg-light-gray tx-gray">
+                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
                                     <td colspan="3">
                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -272,7 +272,7 @@
                                     <td class="w-select tx-blue">[회원정보]</td>
                                     <td class="w-list tx-left pl20">회원정보는 어떻게 수정하나요? <span class="arrow-Btn">></span></td>
                                 </tr>
-                                <tr class="replyTxt bg-light-gray tx-gray">
+                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
                                     <td colspan="3">
                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -285,7 +285,7 @@
                                     <td class="w-select tx-blue">[회원정보]</td>
                                     <td class="w-list tx-left pl20">가입시 받게 되는 혜택은 무엇이 있나요? <span class="arrow-Btn">></span></td>
                                 </tr>
-                                <tr class="replyTxt bg-light-gray tx-gray">
+                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
                                     <td colspan="3">
                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -298,7 +298,7 @@
                                     <td class="w-select tx-blue">[회원정보]</td>
                                     <td class="w-list tx-left pl20">탈퇴 후 재가입이 가능한가요? <span class="arrow-Btn">></span></td>
                                 </tr>
-                                <tr class="replyTxt bg-light-gray tx-gray">
+                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
                                     <td colspan="3">
                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 

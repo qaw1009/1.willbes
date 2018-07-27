@@ -41,14 +41,17 @@ $(function() {
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {
-        if( $('table.txtTable tr').is(':hidden')) {
-            $('table.txtTable tr').css('display','block');
-            $('table.txtTable').removeClass('off');
-            $('.willbes-Cart-Txt .MoreBtn a').text('유의사항안내 닫기 ▲');
+        var $lec_info_table = $('table.txtTable')
+        var $lec_info_table_tr = $('table.txtTable tr')
+
+        if( $lec_info_table_tr.is(':hidden')) {
+            $lec_info_table_tr.css('display','block');
+            $lec_info_table.removeClass('off');
+            $(this).text('유의사항안내 닫기 ▲');
         } else {
-            $('table.txtTable tr').css('display','none');
-            $('table.txtTable').addClass('off');
-            $('.willbes-Cart-Txt .MoreBtn a').text('유의사항안내 보기 ▼');
+            $lec_info_table_tr.css('display','none');
+            $lec_info_table.addClass('off');
+            $(this).text('유의사항안내 보기 ▼');
         }
     });
 });
@@ -64,6 +67,21 @@ $(function() {
         } else {
             $lec_info_table.hide().css('display','none');
             $(this).text('즐찾과목/교수전체보기 ▼');
+        }
+    });
+});
+
+// 내강의실 온라인강좌 버튼 Script
+$(function() {
+    $('.willbes-Package-Table .MoreBtn a').click(function() {
+        var $lec_info_table = $(this).parents('.willbes-Package-Table').find('.packInfoTable');
+
+        if ($lec_info_table.is(':hidden')) {
+            $lec_info_table.show().css('display','block');
+            $(this).text('강좌 닫기 ▲');
+        } else {
+            $lec_info_table.hide().css('display','none');
+            $(this).text('강좌 열기 ▼');
         }
     });
 });
@@ -112,24 +130,6 @@ $(function() {
             $('tr.replyTxt').hide();
             $(this).next().show();
             $(this).addClass('hover');
-        }   
-    });
-});
-
-// 강좌추가 리스트 Script
-$(function() {
-    $('tr.passzone-Leclist .w-tit').click(function() {
-        var $lec_info_table = $('tr.passzone-Leclist');
-        
-        $('tr.passzone-Leclist').removeClass('hover');
-
-        if ($lec_info_table.next().is(':visible')) {
-            $lec_info_table.next().hide();
-            $lec_info_table.removeClass('hover');
-        } else {
-            $('tr.passzone-Lecinfo').hide();
-            $lec_info_table.next().show();
-            $lec_info_table.addClass('hover');
         }   
     });
 });

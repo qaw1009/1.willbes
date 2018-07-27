@@ -275,44 +275,8 @@
                                     <tr>
                                         <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-list tx-left p_re pl20">
-                                            <a href="#none" onclick="openWin('List')">
-                                                <span class="pBox p3">교재</span>
-                                                2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                                                <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="{{ img_url('sub/icon_detail.gif') }}">
-                                            </a>
-                                            <div id="List" class="willbes-Layer-Box-sm">
-                                                <a class="closeBtn" href="#none" onclick="closeWin('List')">
-                                                    <img src="{{ img_url('gnb/close.png') }}">
-                                                </a>
-                                                <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
-                                                    <colgroup>
-                                                        <col style="width: 65px;">
-                                                        <col style="width: 455px;">
-                                                    </colgroup>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>정채영<span class="row-line">|</span></td>
-                                                            <td class="tx-left pl20">2017(지방직/서울시) 정채영국어실전동형문제풀이(4-5월)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>한덕현<span class="row-line">|</span></td>
-                                                            <td class="tx-left pl20">2017(지방직/서울시) 한덕현영어실전동형문제풀이(4-5월)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>최진우<span class="row-line">|</span></td>
-                                                            <td class="tx-left pl20">2017(지방직/서울시) 최진우한국사실전동형문제풀이(4-5월)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>김용철<span class="row-line">|</span></td>
-                                                            <td class="tx-left pl20">2017(지방직/서울시) 김용철행정법실전동형문제풀이(4-5월)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>문병일<span class="row-line">|</span></td>
-                                                            <td class="tx-left pl20">2017(지방직/서울시) 문병일사회실전동형문제풀이(4-5월)</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            <span class="pBox p3">교재</span>
+                                            2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
                                         </td>
                                         <td class="w-price tx-light-blue">80,000원</td>
                                         <td class="w-buy">

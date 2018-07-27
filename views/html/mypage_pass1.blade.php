@@ -146,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="PassDetailWrap">
+            <div class="PassDetailWrap c_both">
                 <div class="aBox passBox answerBox_block NSK f_right"><a href="#none">교재구매</a></div>
                 <ul class="tabWrap tabDepthPass">
                     <li><a href="#Passtab1" class="on">즐겨찾기강좌 (2)</a></li>
@@ -704,7 +704,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -720,7 +720,7 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Lecinfo">
+                                    <tr class="replyTxt passzone-Lecinfo">
                                         <td colspan="5">
                                             <div class="lecDetailWrap mt30 mb60">
                                                 <ul class="tabWrap tabDepth2">
@@ -806,7 +806,7 @@
                                             </div> 
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -822,7 +822,7 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Lecinfo">
+                                    <tr class="replyTxt passzone-Lecinfo">
                                         <td colspan="5">
                                             <div class="lecDetailWrap mt30 mb60">
                                                 <ul class="tabWrap tabDepth2">
@@ -908,7 +908,7 @@
                                             </div> 
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -924,7 +924,8 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyTxt passzone-Lecinfo"><td>aa</td></tr>
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -940,7 +941,8 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyTxt passzone-Lecinfo"><td>bb</td></tr>
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -956,7 +958,8 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyTxt passzone-Lecinfo"><td>cc</td></tr>
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -972,7 +975,8 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyTxt passzone-Lecinfo"><td>dd</td></tr>
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -988,7 +992,8 @@
                                             </dl>
                                         </td>
                                     </tr>
-                                    <tr class="passzone-Leclist">
+                                    <tr class="replyTxt passzone-Lecinfo"><td>ee</td></tr>
+                                    <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                         <td class="w-sbj">국어</td>
                                         <td class="w-prof">정채영</td>
@@ -1004,6 +1009,7 @@
                                             </dl>
                                         </td>
                                     </tr>
+                                    <tr class="replyTxt passzone-Lecinfo"><td>ff</td></tr>
                                 </tbody>
                             </table>
                         </div>

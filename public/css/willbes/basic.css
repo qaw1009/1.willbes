@@ -520,6 +520,9 @@ strong {
 .pl-zero {
   padding-left: 0px !important;
 }
+.pl10 {
+  padding-left: 10px !important;
+}
 .pl20 {
   padding-left: 20px !important;
 }

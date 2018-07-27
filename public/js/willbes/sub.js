@@ -41,17 +41,17 @@ $(function() {
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {
-        var $lec_info_table = $('table.txtTable')
-        var $lec_info_table_tr = $('table.txtTable tr')
+        var $lec_info_table = $(this).parents('.willbes-Cart-Txt').find('table.txtTable');
+        var $lec_info_table_tr = $(this).parents('.willbes-Cart-Txt').find('table.txtTable tr');
 
-        if( $lec_info_table_tr.is(':hidden')) {
-            $lec_info_table_tr.css('display','block');
-            $lec_info_table.removeClass('off');
-            $(this).text('유의사항안내 닫기 ▲');
-        } else {
-            $lec_info_table_tr.css('display','none');
+        if( $lec_info_table_tr.is(':visible')) {
+            $lec_info_table_tr.attr('style', 'display: none; !important');
             $lec_info_table.addClass('off');
             $(this).text('유의사항안내 보기 ▼');
+        } else {
+            $lec_info_table_tr.attr('style', 'display: block; !important');
+            $lec_info_table.removeClass('off');
+            $(this).text('유의사항안내 닫기 ▲');
         }
     });
 });

@@ -51,9 +51,13 @@
                 <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
                     <tbody>
-                        <tr><th>수강종료강좌</th></tr>
-                        <tr><td>- 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)</td></tr>
-                        <tr><td>- 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.</td></tr>
+                        <tr>
+                            <td>
+                                <div class="Tit">수강종료강좌</div>
+                                - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br/>
+                                - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br/>
+                            </td>
+                        </tr>
                     </tbody>
                 </table> 
             </div>
@@ -95,9 +99,9 @@
                     <li><a href="#Passtab1" class="on">단강좌 (3)</a></li>
                     <li><a href="#Passtab2">패키지강좌 (2)</a></li>
                 </ul>
-                <div class="tabBox mt40">
+                <div class="tabBox">
                     <div id="Passtab1" class="tabLink">
-                        <div class="willbes-Lec-Table NG d_block">
+                        <div class="willbes-Lec-Table pt40 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
                                     <col style="width: 120px;">
@@ -162,7 +166,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                                        <td colspan="3" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -170,15 +174,40 @@
                         <!--willbes-Lec-Table -->
                     </div>
                     <div id="Passtab2" class="tabLink">
-                        <div class="willbes-Lec-Table NG d_block">
-                            <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
+                        <div class="willbes-Lec-Table willbes-Package-Table pt40 NG d_block">
+                            <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                <colgroup>
+                                    <col style="width: 820px;">
+                                    <col style="width: 120px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-data tx-left pl10">
+                                            <div class="w-tit">
+                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
+                                            </dl>
+                                        </td>
+                                        <td class="w-answer">
+                                            <a href="#none"><span class="bBox blueBox NSK">재수강신청</a>
+                                            <a href="#none"><span class="bBox whiteBox NSK">재수강불가</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
                                 <colgroup>
                                     <col style="width: 120px;">
                                     <col style="width: 700px;">
                                     <col style="width: 120px;">
                                 </colgroup>
                                 <tbody>
-                                    <tr class="replyList">
+                                    <tr class="replyTxt bg-light-gray">
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">77%</span>
                                         </td>
@@ -202,12 +231,11 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">재수강신청</span></a>
-                                            <a href="#none"><span class="bBox whiteBox NSK">후기등록</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">재수강신청</a>
+                                            <a href="#none"><span class="bBox whiteBox NSK">후기등록</a>
                                         </td>
                                     </tr>
-                                    <tr class="replyTxt"><td>aaa</td></tr>
-                                    <tr class="replyList">
+                                    <tr class="replyTxt bg-light-gray">
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">25%</span>
                                         </td>
@@ -220,26 +248,21 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지333</a>
+                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 (교육행정대비) 한덕현 제니스 영어 실전 동형모의고사 (4-5월)</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt>강의수 : <span class="tx-black">24강</span></dt>
+                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">재수강신청</span></a>
-                                            <a href="#none"><span class="bBox whiteBox NSK">후기등록</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">재수강신청</a>
+                                            <a href="#none"><span class="bBox whiteBox NSK">후기등록</a>
                                         </td>
                                     </tr>
-                                    <tr class="replyTxt"><td>bbb</td></tr>
-                                    <tr class="replyList">
-                                        <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                    </tr>
-                                    <tr class="replyTxt"><td>ccc</td></tr>
                                 </tbody>
                             </table>
                         </div>

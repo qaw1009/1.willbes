@@ -38,7 +38,7 @@
         <span class="1depth">
             <span class="depth-Arrow">></span><strong>내강의실</strong>
             <span class="depth-Arrow">></span><strong>온라인강좌</strong>
-            <span class="depth-Arrow">></span><strong>수강대가강좌</strong>
+            <span class="depth-Arrow">></span><strong>수강대기강좌</strong>
         </span>
     </div>
     <div class="Content p_re">
@@ -51,11 +51,15 @@
                 <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
                     <tbody>
-                        <tr><th>수강시작일 설정</th></tr>
-                        <tr><td>- 수강시작일은 개강일전까지만 변경 가능합니다.(수강연장강좌는 시작일 변경이 불가능합니다.)</td></tr>
-                        <tr><td>- '시작일 변경(잔여횟수)'버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</td></tr>
-                        <tr><td>- 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.</td></tr>
-                        <tr><td>- '수강시작'이 이루어진 강좌는 시작일 변경이 불가능합니다.</td></tr>
+                        <tr>
+                            <td>
+                                <div class="Tit">수강시작일 설정</div>
+                                - 수강시작일은 개강일전까지만 변경 가능합니다.(수강연장강좌는 시작일 변경이 불가능합니다.)<br/>
+                                - '시작일 변경(잔여횟수)'버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</span><br/>
+                                - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
+                                - '수강시작'이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
+                            </td>
+                        </tr>
                     </tbody>
                 </table> 
             </div>
@@ -96,9 +100,9 @@
                     <li><a href="#Passtab1" class="on">단강좌 (3)</a></li>
                     <li><a href="#Passtab2">패키지강좌 (2)</a></li>
                 </ul>
-                <div class="tabBox mt40">
+                <div class="tabBox">
                     <div id="Passtab1" class="tabLink">
-                        <div class="willbes-Lec-Table NG d_block">
+                        <div class="willbes-Lec-Table pt40 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
                                     <col style="width: 820px;">
@@ -163,7 +167,7 @@
                         <!--willbes-Lec-Table -->
                     </div>
                     <div id="Passtab2" class="tabLink">
-                        <div class="willbes-Lec-Table NG d_block">
+                        <div class="willbes-Lec-Table pt40 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
                                     <col style="width: 820px;">

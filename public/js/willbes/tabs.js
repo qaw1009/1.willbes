@@ -39,3 +39,9 @@ $(function() {
 function openLink(tabId) {
     $('ul.tabWrap').find('#' + tabId).click();
 }
+
+function openTxt(tabId) {
+    $('.willbes-Mypage-PASSZONE .willbes-Mypage-Txt').css("display","none")
+    $('.willbes-Mypage-PASSZONE').find('#' + tabId).css("display","block")
+}
+

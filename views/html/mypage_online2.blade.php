@@ -47,19 +47,62 @@
             <div class="willbes-Prof-Subject willbes-Pass-Tit NG">
                 · 수강중강좌
             </div>
-            <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
+            <div id="info1" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                 <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
                     <tbody>
-                        <tr><th>일시정지신청</th></tr>
-                        <tr><td>- '일시정지(잔여횟수)' 버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.</td></tr>
-                        <tr><td>- 1회 일시정지 기간은 수강잔여일을 초과할 수 없으며, <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span></td></tr>
-                        <tr><td>- 일시정지된 강좌는 '일시정지강좌'에서 확인할 수 있습니다.</td></tr>
-                        <tr><th class="pt30">수강연장</th></tr>
-                        <tr><td>- 수강연장된 강의는 일시정지를 신청할 수 없습니다.</td></tr>
-                        <tr><td>- '수강연장(잔여횟수)'버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 연장이 가능합니다.</span></td></tr>
-                        <tr><td>- <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span></td></tr>
-                        <tr><td>- 수강연장은 수강 종료일 전까지만 신청이 가능하며 5일 단위(5일, 10일 15일등)로 신청할 수 있습니다.</td></tr>
+                        <tr>
+                            <td>
+                                <div class="Tit">일시정지신청</div>
+                                - '일시정지(잔여횟수)' 버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
+                                - 1회 일시정지 기간은 수강잔여일을 초과할 수 없으며, <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
+                                - 일시정지된 강좌는 '일시정지강좌'에서 확인할 수 있습니다.<br/>
+
+                                <div class="Tit pt30">수강연장</div>
+                                - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
+                                - <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
+                                - 수강연장은 수강 종료일 전까지만 신청이 가능하며 5일 단위(5일, 10일 15일등)로 신청할 수 있습니다.<br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            <div id="info2" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re" style="display: none;">
+                <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="Tit">패키지강좌</div>
+                                - 패키지 강좌는 강의시작일 설정, 일시중지, 강의연장 기능이 제공되지 않습니다.<br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            <div id="info3" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re" style="display: none;">
+                <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="Tit">무료강좌</div>
+                                - 무료강좌는 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            <div id="info4" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re" style="display: none;">
+                <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="Tit">관리자부여강좌</div>
+                                - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                            </td>
+                        </tr>
                     </tbody>
                 </table> 
             </div>
@@ -93,7 +136,7 @@
                 </select>
                 <div class="willbes-Lec-Search GM f_right">
                     <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30" style="width: 220px;">
+                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
                         <button type="submit" onclick="" class="search-Btn">
                             <span>검색</span>
                         </button>
@@ -102,10 +145,10 @@
             </div>
             <div class="PassDetailWrap c_both">
                 <ul class="tabWrap tabDepthPass">
-                    <li><a href="#Passtab1" class="on">단강좌 (3)</a></li>
-                    <li><a href="#Passtab2">패키지강좌 (2)</a></li>
-                    <li><a href="#Passtab3">무료강좌 (3)</a></li>
-                    <li><a href="#Passtab4">관리자부여강좌 (4)</a></li>
+                    <li><a href="#Passtab1" onclick="openTxt('info1')" class="on">단강좌 (3)</a></li>
+                    <li><a href="#Passtab2" onclick="openTxt('info2')">패키지강좌 (2)</a></li>
+                    <li><a href="#Passtab3" onclick="openTxt('info3')">무료강좌 (3)</a></li>
+                    <li><a href="#Passtab4" onclick="openTxt('info4')">관리자부여강좌 (4)</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Passtab1" class="tabLink">
@@ -370,7 +413,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                                <a href="{{ site_url('/home/html/mypage_pass2') }}"><span class="tx-red">[0원결제]</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
@@ -394,7 +437,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                                <a href="#none"><span class="tx-red">[제휴사결제]</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>

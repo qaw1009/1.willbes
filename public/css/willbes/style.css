@@ -5665,20 +5665,16 @@ table.PassZoneTable .w-lec .w-btn a {
     border: none;
     padding: 30px 40px;
 }
-.willbes-Mypage-Txt table.txtTable tr th,
-.willbes-Mypage-Txt table.txtTable tr td {
-    width: 860px;
-    text-align: left;
-}
-.willbes-Mypage-Txt table.txtTable tr th {
+.willbes-Mypage-Txt table.txtTable tr .Tit {
     display: block;
     font-size: 14px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .willbes-Mypage-Txt table.txtTable tr td {
-    padding-top: 5px;
+    width: 860px;
+    text-align: left;
 }
 .willbes-Lec-Table tr td a span.bBox {
     margin: 5px 0

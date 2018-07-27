@@ -59,7 +59,7 @@
                         <input type="checkbox" name="week[]" class="flat" @if($week_arr[5] == "Y") checked="checked" @endif> <span class="day">금</span>
                         <input type="checkbox" name="week[]" class="flat" @if($week_arr[6] == "Y") checked="checked" @endif> <span class="day">토</span>
                         &nbsp;
-                        <button type="button" id="lecDate" onclick="setLecDate();" class="btn btn-sm btn-primary">적용</button>
+                        <button type="button" onclick="setOnAirDate();" class="btn btn-sm btn-primary">적용</button>
                         <input type="hidden" id="week_str" name="week_str" value="">
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                     }
                                 @endphp
                             </select> :
-                            <select class="form-control on-air-time" id="on_air_start_min" name="" required="on_air_start_min" disabled>
+                            <select class="form-control on-air-time" id="on_air_start_min" name="on_air_start_min" required="on_air_start_min" disabled>
                                 @php
                                     for($i=0; $i<=59; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
@@ -164,10 +164,22 @@
                     <label class="control-label col-md-1-1">타이틀 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <div class="title mb-5">
-                            <input type="text" id="" name="title[]" class="form-control" title="타이틀" placeholder="" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다." style="width: 80%;">
-                            <button type="button" class="btn btn-primary btn-title-add mb-0">추가</button>
-                        </div>
+                        @if($method == 'POST')
+                            <div class="title">
+                                <input type="text" id="" name="title[]" class="form-control" title="타이틀" placeholder="" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다." style="width: 80%;">
+                                <button type="button" class="btn btn-primary btn-title-add mb-0">추가</button>
+                            </div>
+                        @elseif ($method == 'PUT')
+                            @foreach($arr_title as $key => $val)
+                                <div class="title @if($loop->last === true) mb-5 @endif">
+                                <input type="text" name="title[]" class="form-control" title="타이틀" placeholder="" value="{{$val}}" style="width: 80%;">
+                                    @if($loop->first === true)
+                                        <button type="button" class="btn btn-primary btn-title-add mb-0">추가</button>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @endif
+
                         <div id="_add_title_input"></div>
                     </div>
                 </div>
@@ -207,12 +219,9 @@
                                 </span>
                             </div>
                             @if(empty($data['LeftFileName']) === false)
-                            <p class="form-control-static ml-10 mr-10">
-                                [ <a href="#none" target="_blank">{{$data['LeftFileName']}}</a> ]
-                            </p>
-                            <div class="checkbox">
-                                <a href="#none" class="file-delete" data-attach-idx="{{$data['OaIdx']}}"><i class="fa fa-times red"></i></a>
-                            </div>
+                                <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['LeftFileFullPath'] . $data['LeftFileName'] }}" rel="popup-image">{{ $data['LeftFileRealName'] }}</a> ]
+                                    <a href="#none" class="file-left-delete" data-attach-idx="{{ $data['OaIdx']  }}"><i class="fa fa-times red"></i></a>
+                                </p>
                             @endif
                         </div>
                     </div>
@@ -238,12 +247,9 @@
                                 </span>
                             </div>
                             @if(empty($data['RightFileName']) === false)
-                                <p class="form-control-static ml-10 mr-10">
-                                    [ <a href="#none" target="_blank">{{$data['RightFileName']}}</a> ]
+                                <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['RightFileFullPath'] . $data['RightFileName'] }}" rel="popup-image">{{ $data['RightFileRealName'] }}</a> ]
+                                    <a href="#none" class="file-right-delete" data-attach-idx="{{ $data['OaIdx']  }}"><i class="fa fa-times red"></i></a>
                                 </p>
-                                <div class="checkbox">
-                                    <a href="#none" class="file-delete" data-attach-idx="{{$data['OaIdx']}}"><i class="fa fa-times red"></i></a>
-                                </div>
                             @endif
                         </div>
                     </div>
@@ -363,13 +369,13 @@
                     var add_title;
                     add_title = '<div class="title" id="temp-title-'+temp_idx+'">';
                     add_title += '<input type="text" name="title[]" class="form-control" title="타이틀" placeholder="" value="" style="width: 80%;">';
-                    add_title += '<button type="button" class="btn btn-primary mb-0 ml-5 btn-title-delete" data-temp-title-idx="'+temp_idx+'">삭제</button>';
+                    add_title += '<button type="button" class="btn btn-primary mb-0 ml-5 btn-title-hide" data-temp-title-idx="'+temp_idx+'">삭제</button>';
                     add_title += '</div>';
                     $('#_add_title_input').append(add_title);
                     temp_idx = temp_idx + 1;
                 });
                 // 동적 타이틀 input box 삭제
-                $regi_form.on('click', '.btn-title-delete', function() {
+                $regi_form.on('click', '.btn-title-hide', function() {
                     var this_idx = $(this).data('temp-title-idx');
                     $('#temp-title-'+this_idx).remove();
                 });
@@ -400,7 +406,7 @@
                     return str;
                 }
 
-                function setLecDate() {
+                function setOnAirDate() {
                     if($("#study_start_date").val() == "") {alert("개강일을 선택해 주세요.");$("#study_start_date").focus();return;}
                     if($('#on_air_num').val() == '') {alert('회차를 입력해 주세요.'); $('#on_air_num').focus();return;}
 
@@ -522,6 +528,8 @@
                     });
                     $("#on_air_num").val(t);
                 }
+
+                @if($method === "PUT")setOnAirDate();@endif
                 // 송출기간 달력 생성 end --------------------------
             </script>
 

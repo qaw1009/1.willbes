@@ -16,6 +16,9 @@ class OnAir extends \app\controllers\BaseController
      */
     public function index()
     {
+        //현재날짜
+        $now_date = date('Ymd');
+
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
@@ -23,6 +26,7 @@ class OnAir extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('');
 
         $this->load->view('site/onAir/index',[
+            'now_date' => $now_date,
             'offLineSite_list' => $offLineSite_list,
             'arr_category' => $arr_category
         ]);
@@ -53,26 +57,46 @@ class OnAir extends \app\controllers\BaseController
     /**
      * 온에어 등록/수정 폼
      */
-    public function create()
+    public function create($params=[])
     {
         $method = 'POST';
         $data = null;
-        $week_arr = null;
         $oa_idx = '';
+        $arr_title = [];
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         // 송출기간 -> 요일값 초기화
-        if($method == 'POST') {
-            $week_arr = explode(",",",,,,,,");
-        }
-        elseif($method == 'PUT') {
-            $week_arr = explode(",",$data['WeekArray']);
-        }
+        $week_arr = explode(",",",,,,,,");
 
         //교수정보
         $arr_professor = $this->professorModel->getProfessorArray();
+
+        if (empty($params[0]) === false) {
+            $method = 'PUT';
+            $oa_idx = $params[0];
+            $arr_condition = ([
+                'EQ'=>[
+                    'A.OaIdx' => $oa_idx,
+                    'A.IsStatus' => 'Y'
+                ]
+            ]);
+
+            $data = $this->onAirModel->findOnAirForModify($arr_condition);
+            if (count($data) < 1) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->onAirModel->listOnAirCategory($oa_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+            $week_arr = explode(",",$data['WeekArray']);
+
+            // 타이틀 조회
+            $arr_title = $this->onAirModel->findOnAirTitleListForModify($oa_idx);
+        }
 
         $this->load->view("site/onAir/create", [
             'method' => $method,
@@ -80,7 +104,8 @@ class OnAir extends \app\controllers\BaseController
             'data' => $data,
             'oa_idx' => $oa_idx,
             'week_arr' => $week_arr,
-            'arr_professor' => $arr_professor
+            'arr_professor' => $arr_professor,
+            'arr_title' => $arr_title
         ]);
     }
 
@@ -107,16 +132,23 @@ class OnAir extends \app\controllers\BaseController
             ['field' => 'right_link', 'label' => '노출링크(우)', 'rules' => 'callback_validateRequiredIf[right_exposure_type,M]'],
         ];
 
-        if ($this->_reqP('left_exposure_type') == 'I' && empty($_FILES['attach_file']['size'][0]) === true) {
-            $rules = array_merge($rules, [
-                ['field' => "left_file_name", 'label' => '영상파일(좌)', 'rules' => "callback_validateFileRequired[left_file_name]"]
-            ]);
-        }
+        if(empty($this->_reqP('oa_idx',false))===true) {
+            $method = 'add';
 
-        if ($this->_reqP('right_exposure_type') == 'I' && empty($_FILES['attach_file']['size'][1]) === true) {
-            $rules = array_merge($rules, [
-                ['field' => "right_file_name", 'label' => '영상파일(우)', 'rules' => "callback_validateFileRequired[right_file_name]"]
-            ]);
+            if ($this->_reqP('left_exposure_type') == 'I' && empty($_FILES['attach_file']['size'][0]) === true) {
+                $rules = array_merge($rules, [
+                    ['field' => "left_file_name", 'label' => '이미지파일(좌)', 'rules' => "callback_validateFileRequired[left_file_name]"]
+                ]);
+            }
+
+            if ($this->_reqP('right_exposure_type') == 'I' && empty($_FILES['attach_file']['size'][1]) === true) {
+                $rules = array_merge($rules, [
+                    ['field' => "right_file_name", 'label' => '이미지파일(우)', 'rules' => "callback_validateFileRequired[right_file_name]"]
+                ]);
+            }
+
+        } else {
+            $method = 'modify';
         }
 
         $savDays = count($this->_reqP('savDay[]'));
@@ -148,6 +180,13 @@ class OnAir extends \app\controllers\BaseController
                 'A.IsUse' => $this->_reqP('search_is_use')
             ]
         ];
+
+        //진행여부 검색
+        if ($this->_reqP('search_onair_is_type') == 'Y') {
+            $arr_condition['LTE'] = ['K.OnAirLastDate' => date('Ymd')];
+        } elseif ($this->_reqP('search_onair_is_type') == 'N') {
+            $arr_condition['GT'] = ['K.OnAirLastDate' => date('Ymd')];
+        }
 
         // 날짜 검색
         if ($this->_reqP('search_date_type') == 'R') {

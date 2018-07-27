@@ -19,7 +19,7 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_onair_is_type">
+                        <select class="form-control" id="search_onair_is_type" name="search_onair_is_type">
                             <option value="">진행여부</option>
                             <option value="Y">진행</option>
                             <option value="N">종료</option>
@@ -41,12 +41,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <th>No</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
-                    <th>월</th>
+                    <th>개강일</th>
                     <th>요일</th>
                     <th>회차</th>
                     <th>노출시간</th>
@@ -130,7 +130,7 @@
                             }
                             return str;
                         }},
-                    {'data' : 'StudyStartMonth'},
+                    {'data' : 'StudyStartDate'},
 
                     {'data' : 'WeekArray', 'render' : function(data, type, row, meta) {
                             var return_week = '';
@@ -154,8 +154,15 @@
                             return '<a href="#" class="btn-modify" data-idx="' + row.OaIdx + '"><u>' + row.OnAirName + '</u></a>';
                         }},
 
-                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    {'data' : 'OnAirLastDate', 'render' : function(data, type, row, meta) {
+                        var now_date = '{{$now_date}}';
+                            if (data <= now_date) {
+                                return '진행';
+                            } else {
+                                return '종료';
+                            }
+                            return data;
+                            //return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -169,6 +176,10 @@
             $list_table.on('click', '.btn-modify', function() {
                 location.replace('{{ site_url('/site/onAir/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
+
+            var today = new Date();
+            var dd = today.getDate();
+            console.log(dd);
         });
     </script>
 @stop

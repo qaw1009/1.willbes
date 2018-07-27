@@ -30,14 +30,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr><td colspan="2">
-                            가입방법 : {{$jointype}}<br/><br/>
-                            암호문 : {{$enc_data}}<br/><br/>
-                            전화번호 : {{$phone}}<br/><br/>
-                            이름 : {{$memName}}<br/><br/>
-                            메일아이디 : {{$MailId}}<br/><br/>
-                            메일도메인 : {{$MailDomain}}<br/><br/>
-                        </td></tr>
                     <tr>
                         <td class="combine-Tit">이름</td>
                         <td>
@@ -389,9 +381,9 @@
 
             $('#btn_submit').click(function(){
                 if($join_form.valid() == true){
-                    if($('#agee1').is(":checked") != true ||
-                        $('#agee2').is(":checked") != true ||
-                        $('#agee3').is(":checked") != true ){
+                    if($('#agree1').is(":checked") != true ||
+                        $('#agree2').is(":checked") != true ||
+                        $('#agree3').is(":checked") != true ){
                         alert('필수항목에 동의해야 회원가입이 가능합니다.');
                         return;
                     }

@@ -1406,18 +1406,17 @@ table.auTable tr td {
     text-align: center;
 }
 .Menu .menu-List-Center li {
-    float: inherit;
-    display: inline-block;
-    margin: 0 30px;
+    margin: 0 31px;
 }
 
 /* subContainer : Menu : list-drop-Box  */
 .list-drop-Box {
     top: 38px;
     left: 50%;
-    margin-left: -55px;
-    width: 110px;
+    margin-left: -60px;
+    width: 120px;
     padding: 20px;
+    text-align: left;
 }
 .list-drop-Box ul li {
     line-height: 22px;

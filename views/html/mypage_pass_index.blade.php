@@ -9,8 +9,17 @@
                 <li>
                     <a href="#none">무한PASS존</a>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="#none">학원강좌</a>

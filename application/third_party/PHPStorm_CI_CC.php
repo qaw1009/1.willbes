@@ -132,8 +132,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property OffLectureModel $offlectureModel                                           Off Lecture Model Class
  * @property OffPackageAdminModel $offpackageadminModel                                    Off admin package Model Class
  * @property BeforeLectureModel $beforelectureModel                            BeforeLecture Model Model Class
- * @property LiveManagerModel $liveManagerModel                                Live Video Manager For Lecture Model Class
- * @property VideoManagerModel $videoManagerModel                              Live Video Manager For Lecture Model Class
+ * @property VideoManagerModel $videoManagerModel                              Live Video Manager Model Class
+ * @property LectureRoomModel $lectureRoomModel                                Lecture Room Model Class
  * @property ConsultModel $consultModel                                            Consult Model Class
  * @property LandingPageModel $landingPageModel                                    landingPage Model Class
  * @property BannerModel $bannerModel                                              banner Model Class

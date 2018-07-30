@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class VideoManager extends \app\controllers\BaseController
 {
-    protected $models = array('live/videoManager', 'sys/code', 'sys/site', 'sys/category', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
+    protected $models = array('live/videoManager', 'live/classRoom', 'sys/code', 'sys/site', 'sys/category', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
     protected $helpers = array();
     protected $boardInfo = [
         '82' => '강의배정표',
@@ -64,6 +64,9 @@ class VideoManager extends \app\controllers\BaseController
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
+        //강의실 조회
+        $list_class_room = $this->classRoomModel->listClassRoom(['EQ' => ['A.IsUse' => 'Y']], null, null, ['CIdx' => 'asc']);
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
@@ -78,6 +81,7 @@ class VideoManager extends \app\controllers\BaseController
             'method' => $method,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
+            'list_class_room' => $list_class_room,
             'idx' => $idx,
             'data' => $data
         ]);
@@ -87,7 +91,8 @@ class VideoManager extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-            ['field' => 'lec_room_name', 'label' => '강의실명', 'rules' => 'trim|required'],
+            ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required|integer'],
+            ['field' => 'class_room_idx', 'label' => '강의실명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 

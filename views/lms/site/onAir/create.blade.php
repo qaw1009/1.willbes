@@ -20,10 +20,22 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         <div class="form-inline inline-block item">
                             {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}--}}
                             {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false, $offLineSite_list) !!}
+                        </div>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 ml-12-dot">
+                        <div class="form-inline item">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
                         </div>
                     </div>
                 </div>
@@ -133,10 +145,11 @@
                     </label>
                     <div class="col-md-4 ml-12-dot">
                         <div class="form-inline item">
-                            <select class="form-control" id="lecture_room_idx" name="lecture_room_idx" title="강의실" required="required">
-                                <option value="">강의실선택</option>
-                                <option value="1">강의실선택1</option>
-                                <option value="2">강의실선택2</option>
+                            <select class="form-control" id="class_room_idx" name="class_room_idx" required="required" title="강의실명">
+                                <option value="">강의실명</option>
+                                @foreach($list_class_room as $row)
+                                    <option value="{{ $row['CIdx'] }}" class="{{ $row['CampusCcd'] }}" @if($method == 'PUT' && ($row['CIdx'] == $data['CIdx'])) selected="selected" @endif>{{ $row['ClassRoomName'] }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -293,6 +306,8 @@
 
                 // site-code에 매핑되는 select box 자동 변경
                 $regi_form.find('select[name="prof_idx"]').chained("#site_code");
+                $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
+                $regi_form.find('select[name="class_room_idx"]').chained("#campus_ccd");
 
                 //목록
                 $('#btn_list').click(function() {

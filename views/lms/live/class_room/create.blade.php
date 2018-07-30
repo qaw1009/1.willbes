@@ -37,10 +37,10 @@
             </div>
 
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="lec_room_name">강의실명 <span class="required">*</span>
+                <label class="control-label col-md-2" for="class_room_name">강의실명 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">
-                    <input type="text" id="lec_room_name" name="lec_room_name" required="required" class="form-control" title="강의실명" value="{{ $data['LecRoomName'] }}">
+                    <input type="text" id="class_room_name" name="class_room_name" required="required" class="form-control" title="강의실명" value="{{ $data['ClassRoomName'] }}">
                 </div>
             </div>
             <div class="form-group form-group-sm">

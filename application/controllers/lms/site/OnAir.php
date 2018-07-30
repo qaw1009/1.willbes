@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class OnAir extends \app\controllers\BaseController
 {
-    protected $models = array('site/onAir', 'sys/site', 'sys/category', 'product/base/professor');
+    protected $models = array('site/onAir', 'live/classRoom', 'sys/code', 'sys/site', 'sys/category', 'product/base/professor');
     protected $helpers = array();
 
     public function __construct()
@@ -56,6 +56,7 @@ class OnAir extends \app\controllers\BaseController
 
     /**
      * 온에어 등록/수정 폼
+     * @param array $params
      */
     public function create($params=[])
     {
@@ -72,6 +73,12 @@ class OnAir extends \app\controllers\BaseController
 
         //교수정보
         $arr_professor = $this->professorModel->getProfessorArray();
+
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        //강의실 조회
+        $list_class_room = $this->classRoomModel->listClassRoom(['EQ' => ['A.IsUse' => 'Y']], null, null, ['CIdx' => 'asc']);
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -101,6 +108,8 @@ class OnAir extends \app\controllers\BaseController
         $this->load->view("site/onAir/create", [
             'method' => $method,
             'offLineSite_list' => $offLineSite_list,
+            'arr_campus' => $arr_campus,
+            'list_class_room' => $list_class_room,
             'data' => $data,
             'oa_idx' => $oa_idx,
             'week_arr' => $week_arr,

@@ -24,10 +24,10 @@
                 <div class="col-md-4 item">
                     {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', '', '', false, $offLineSite_list) !!}
                 </div>
-                <label class="control-label col-md-2" for="campus_ccd">캠퍼스</span>
+                <label class="control-label col-md-2" for="campus_ccd">캠퍼스 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">
-                    <select class="form-control" id="campus_ccd" name="campus_ccd">
+                    <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
                         <option value="">캠퍼스</option>
                         @foreach($arr_campus as $row)
                             <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
@@ -40,7 +40,12 @@
                 <label class="control-label col-md-2" for="lec_room_name">강의실명 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">
-                    <input type="text" id="lec_room_name" name="lec_room_name" required="required" class="form-control" title="강의실명" value="{{ $data['LecRoomName'] }}">
+                    <select class="form-control" id="class_room_idx" name="class_room_idx" required="required" title="강의실명">
+                        <option value="">강의실명</option>
+                        @foreach($list_class_room as $row)
+                            <option value="{{ $row['CIdx'] }}" class="{{ $row['CampusCcd'] }}" @if($method == 'PUT' && ($row['CIdx'] == $data['CIdx'])) selected="selected" @endif>{{ $row['ClassRoomName'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <label class="control-label col-md-2" for="order_num">정렬
                 </label>
@@ -52,10 +57,10 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="live_video_route">영상경로 <span class="required">*</span>
+                <label class="control-label col-md-2" for="live_video_route">영상경로
                 </label>
-                <div class="col-md-7 item">
-                    <input type="text" id="live_video_route" name="live_video_route" required="required" class="form-control" title="영상경로" value="{{ $data['LiveVideoRoute'] }}">
+                <div class="col-md-7">
+                    <input type="text" id="live_video_route" name="live_video_route" class="form-control" title="영상경로" placeholder="강의실코드 생성 후 입력이 가능합니다." value="{{ $data['LiveVideoRoute'] }}">
                 </div>
                 <div class="col-md-3">
                     <p class="form-control-static"># 강의실과 매칭될 영상정보</p>
@@ -100,6 +105,7 @@
 
                 // site-code에 매핑되는 select box 자동 변경
                 $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
+                $regi_form.find('select[name="class_room_idx"]').chained("#campus_ccd");
 
                 $(document).ready(function() {
                     // 등록

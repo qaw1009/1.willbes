@@ -190,7 +190,8 @@
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">
-                                                <a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover1">
+                                                <!--a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover1" //-->
+                                                <a href="#none" onclick="fn_productViewInfo('{{ $row['ProdCode'] }}', 'hover1')">
                                                     <strong>강좌상세정보</strong>
                                                 </a>
                                             </dt>
@@ -207,8 +208,10 @@
                                         @endif
                                     </td>
                                     <td class="w-notice p_re">
-                                        <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
+                                        @if( empty($row['LectureSampleData']) === false)
+                                        <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData'])   }}</a></div>
                                         <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
+                                            <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                             @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                 <dl class="NSK">
                                                     <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
@@ -217,6 +220,7 @@
                                                 </dl>
                                             @endforeach
                                         </div>
+                                        @endif
                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                             <div class="priceWrap chk buybtn p_re">
                                                 @if($row['IsCart'] == 'Y')
@@ -266,7 +270,8 @@
                                             @endforeach
                                                 <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                                 <div class="w-sub">
-                                                    <a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover2"><strong>교재상세정보</strong></a>
+                                                    <!--a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover2"//-->
+                                                    <a href="#none" onclick="fn_productViewInfo('{{ $row['ProdCode'] }}', 'hover2')"><strong>교재상세정보</strong></a>
                                                 </div>
                                                 <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
                                         @else
@@ -339,24 +344,17 @@
     var $buy_layer = $('.willbes-Lec-buyBtn-sm');
 
     $(document).ready(function() {
-        // 강좌상세정보, 교재상세정보 버튼 클릭
-        $('.willbes-Lec-Table').on('click', '.btn-lecture-info', function() {
-            var $prod_code = $(this).data('prod-code'), $lec_table = $('#lec_table_' + $prod_code);
+
+        // 강좌상세정보, 교재상세정보
+        fn_productViewInfo = function(prod_code, tab_id) {
             var data = {
-                'prod_name' : $lec_table.find('.prod-name').text(),
-                'unit_lecture_cnt' : $lec_table.find('.unit-lecture-cnt').data('info'),
-                'study_period' : $lec_table.find('.study-period').data('info'),
-                'multiple_apply' : $lec_table.find('.multiple-apply').data('info'),
-                'lecture_progress' : $lec_table.find('.lecture-progress').data('info'),
-                'prod_book_memo' : $lec_table.find('.prod-book-memo').text()
+                //추후 필요 파람 삽입
             };
-            sendAjax('{{ site_url('/lecture/info/prod-code/') }}' + $prod_code, data, function(ret) {
+            sendAjax('{{ site_url('/lecture/info/prod-code/') }}' + prod_code, data, function(ret) {
                 $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
-
-            // 디폴트 탭 선택
-            openLink($(this).data('tab-id'));
-        });
+            openLink(tab_id);
+        };
 
         // 상품 선택/해제
         $regi_form.on('click', '.chk_products, .chk_books', function() {

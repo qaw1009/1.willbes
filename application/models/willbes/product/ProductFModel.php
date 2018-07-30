@@ -56,6 +56,10 @@ class ProductFModel extends WB_Model
                 case 'on_lecture' :
                         $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
                             , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
+                        $arr_condition = array_merge_recursive($arr_condition, [
+                            'EQ' => ['wIsUse' => 'Y']   // 마스터강의 사용여부 추가
+                        ]);
+
                     break;
 
                 //추천패키지
@@ -95,7 +99,7 @@ class ProductFModel extends WB_Model
             // 온라인 단강좌
             case 'on_lecture' :
                     $arr_condition = array_merge_recursive($arr_condition, [
-                        'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부 추가
+                        'EQ' => ['LecSaleType' => 'N']   // 일반강의, 마스터강의 사용여부 추가
                     ]);
                 break;
         }

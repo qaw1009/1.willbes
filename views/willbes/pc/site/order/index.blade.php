@@ -55,9 +55,8 @@
                                         <dt class="tit">
                                             <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                             {{ $row['ProdName'] }}
-                                            <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
-                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value="" class="chk_coupon_idx"/>
-                                            <input type="hidden" name="coupon_disc_price[{{ $row['CartIdx'] }}]" value="0" class="chk_price chk_coupon_disc_price" data-cart-idx="{{ $row['CartIdx'] }}"/>
+                                            <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealSalePrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
+                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value="" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
                                             @if($row['IsCoupon'] == 'Y')
                                                 <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
                                             @endif
@@ -490,7 +489,7 @@
 
             var ele_id = 'Coupon';
             var coupon_idx = {};
-            $regi_form.find('.chk_coupon_idx').each(function(idx) {
+            $regi_form.find('.chk_coupon').each(function(idx) {
                 if ($(this).val().length > 0) {
                     coupon_idx[idx] = $(this).val();
                 }
@@ -508,13 +507,13 @@
                 var cart_idx = $(this).data('cart-idx');
                 var $cart_row = $regi_form.find('#cart_row_' + cart_idx);
 
-                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').val('');
-                $cart_row.find('input[name="coupon_disc_price[' + cart_idx + ']"]').val('0').trigger('change');
+                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').data('coupon-disc-price', 0);
+                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').val('').trigger('change');
                 $cart_row.find('.wrap-coupon').removeClass('d_block').addClass('d_none');
                 $cart_row.find('.wrap-real-sale-price').removeClass('d_block').addClass('d_none');
                 $cart_row.find('.coupon-name').html('');
                 $cart_row.find('.coupon-disc-price').html('0');
-                $cart_row.find('.real-pay-price').html(addComma($cart_row.find('.real-sale-price').html()));
+                $cart_row.find('.real-pay-price').html(addComma($cart_row.find('input[name="cart_idx[]"]').data('real-sale-price')));
 
                 alert('삭제 되었습니다.');
             }
@@ -561,31 +560,14 @@
             }
         });
 
-        // 쿠폰이 적용될 경우 적립예정포인트 재계산 후 표기
-        $regi_form.on('change', '.chk_coupon_disc_price', function() {
-            var cart_data = {}, cart_idx, $cart_row, real_pay_price, total_save_point = 0;
-
-            $regi_form.find('input[name="cart_idx[]"]').each(function() {
-                cart_idx = $(this).val();
-                cart_data = $(this).data();
-                $cart_row = $regi_form.find('#cart_row_' + cart_idx);
-                real_pay_price = parseInt($cart_row.find('.real-sale-price').html().replace(/,/g, '')) - parseInt($cart_row.find('input[name="coupon_disc_price[' + cart_idx + ']"]').val());
-                if (cart_data.isPoint === 'Y') {
-                    total_save_point += cart_data.savePointType === 'R' ? parseInt(real_pay_price * (cart_data.savePointPrice / 100), 10) : cart_data.savePointPrice;
-                }
-            });
-
-            $regi_form.find('#total_save_point').html(addComma(total_save_point));
-        });
-
         // 결제금액 계산 및 표기
         $regi_form.on('change', '.chk_price', function() {
             var total_price = parseInt('{{ $results['total_price'] }}');      // 전체상품주문금액
             var delivery_price = parseInt($regi_form.find('input[name="delivery_price"]').val()) || 0;     // 배송료
             var point_disc_price = parseInt($regi_form.find('input[name="use_point"]').val()) || 0;        // 포인트 사용금액
             var coupon_disc_price = 0;      // 쿠폰할인금액
-            $regi_form.find('.chk_coupon_disc_price').each(function() {
-                coupon_disc_price += parseInt($(this).val());
+            $regi_form.find('.chk_coupon').each(function() {
+                coupon_disc_price += parseInt($(this).data('coupon-disc-price'));
             });
             var total_pay_price = total_price - coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
 
@@ -594,6 +576,26 @@
             $regi_form.find('#point_disc_price').html(addComma(point_disc_price));
             $regi_form.find('#delivery_price').html(addComma(delivery_price));
             $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
+
+            // 적립포인트 계산
+            if (point_disc_price > 0) {
+                // 포인트를 사용한 경우 적립포인트 없음
+                $regi_form.find('#total_save_point').html('0');
+            } else {
+                var cart_data = {}, cart_idx, real_pay_price, total_save_point = 0;
+
+                $regi_form.find('input[name="cart_idx[]"]').each(function() {
+                    cart_idx = $(this).val();
+                    cart_data = $(this).data();
+                    real_pay_price = cart_data.realSalePrice - parseInt($regi_form.find('input[name="coupon_idx[' + cart_idx + ']"]').data('coupon-disc-price'));
+
+                    if (cart_data.isPoint === 'Y') {
+                        total_save_point += cart_data.savePointType === 'R' ? parseInt(real_pay_price * (cart_data.savePointPrice / 100), 10) : cart_data.savePointPrice;
+                    }
+                });
+
+                $regi_form.find('#total_save_point').html(addComma(total_save_point));
+            }
         });
 
         // 나의 배송 주소록 버튼 클릭

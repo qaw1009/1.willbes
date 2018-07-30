@@ -356,8 +356,6 @@
             openLink(tab_id);
         };
 
-
-
         // 상품 선택/해제
         $regi_form.on('click', '.chk_products, .chk_books', function() {
             if ($(this).is(':checked') === true) {

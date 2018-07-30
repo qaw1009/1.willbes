@@ -122,7 +122,8 @@ class CouponFModel extends WB_Model
                 and now() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
                 and CD.ValidStatus = "Y"                                
                 and C.ApplyTypeCcd = ?   # 상품분류 구분                
-                and C.LecTypeCcds like ?   # 학습형태 구분                
+                and C.LecTypeCcds like ?   # 학습형태 구분      
+                and C.DiscAllowPrice < ?    # 할인허용가능금액            
                 and (                
                     case C.ApplyRangeType   # 적용범위
                         when "A" then "Y"
@@ -144,6 +145,7 @@ class CouponFModel extends WB_Model
             $this->session->userdata('mem_idx'),
             element('ApplyTypeCcd', $arr_param),
             '%' . element('LecTypeCcd', $arr_param) . '%',
+            element('RealSalePrice', $arr_param),   // 상품 실제판매가격
             element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-1)
             element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-2)
             element('CourseIdx', $arr_param),

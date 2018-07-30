@@ -55,8 +55,9 @@
                                         <dt class="tit">
                                             <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                             {{ $row['ProdName'] }}
-                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value=""/>
-                                            <input type="hidden" name="coupon_price[{{ $row['CartIdx'] }}]" value=""/>
+                                            <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
+                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value="" class="chk_coupon_idx"/>
+                                            <input type="hidden" name="coupon_disc_price[{{ $row['CartIdx'] }}]" value="0" class="chk_price chk_coupon_disc_price" data-cart-idx="{{ $row['CartIdx'] }}"/>
                                             @if($row['IsCoupon'] == 'Y')
                                                 <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
                                             @endif
@@ -78,8 +79,8 @@
                                                 </span>
                                             @endif
                                             @if($row['IsCoupon'] == 'Y')
-                                                <span class="w-coupon d_none wrap-coupon-info"><span class="coupon-name">최대 5% 할인쿠폰</span>
-                                                    (<span class="tx-blue"><span class="coupon-disc-price">5,000</span>원 할인</span>)
+                                                <span class="w-coupon d_none wrap-coupon"><span class="coupon-name"></span>
+                                                    (<span class="tx-blue"><span class="coupon-disc-price">0</span>원 할인</span>)
                                                     <a href="#none" class="btn-coupon-apply-delete" data-cart-idx="{{ $row['CartIdx'] }}"><img src="{{ img_url('cart/close.png') }}"></a>
                                                 </span>
                                             @endif
@@ -101,6 +102,7 @@
                                     <dl>
                                         <dt class="tit">
                                             <span class="pBox p4">배송</span> 배송비
+                                            <input type="hidden" name="delivery_price" value="{{ $results['delivery_price'] }}" class="chk_price"/>
                                             @if($results['cart_type'] == 'book')
                                                 <span class="tx-light-blue">(교재 총 결제금액이 {{ number_format($__cfg['DeliveryFreePrice']) }}원 이상 인 경우 배송비 무료)</span>
                                             @endif
@@ -134,7 +136,7 @@
                         </dt>
                         <dt>
                             <div>쿠폰할인금액</div>
-                            <div class="price tx-light-pink">0원</div>
+                            <div class="price tx-light-pink"><span id="coupon_disc_price">0</span>원</div>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -142,7 +144,7 @@
                         </dt>
                         <dt>
                             <div>포인트 차감금액</div>
-                            <span class="price tx-light-pink">0원</span>
+                            <span class="price tx-light-pink"><span id="point_disc_price">0</span>원</span>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -150,22 +152,22 @@
                         </dt>
                         <dt>
                             <div>배송료</div>
-                            <span class="price tx-light-blue">{{ number_format($results['delivery_price']) }}원</span>
+                            <span class="price tx-light-blue"><span id="delivery_price">{{ number_format($results['delivery_price']) }}</span>원</span>
                         </dt>
                     </dl>
                 </li>
                 <li class="price-total">
                     <div>결제예상금액</div>
-                    <span class="price tx-light-blue">{{ number_format($results['total_price'] + $results['delivery_price']) }}원</span>
+                    <span class="price tx-light-blue"><span class="total-pay-price">{{ number_format($results['total_price'] + $results['delivery_price']) }}</span>원</span>
                 </li>
             </ul>
             <div class="cart-PointBox NG">
                 <dl class="pointBox">
                     <dt class="p-tit"><span class="tx-blue">{{ $results['cart_type_name'] }}</span> 포인트 사용</dt>
                     <dt>
-                        <span class="u-point tx-pink">0P 보유</span>
-                        <span class="btnAll NSK"><a href="#none">전액사용</a></span>
-                        <input type="text" name="use_point" class="iptPoint" value="0" maxlength="30"> P 차감
+                        <span class="u-point tx-pink">{{ number_format($results['point'][$results['cart_type']]) }}P 보유</span>
+                        <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
+                        <input type="text" name="use_point" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="0" value="" placeholder="0" maxlength="10"> P 차감
                     </dt>
                 </dl>
             </div>
@@ -308,9 +310,9 @@
                             <td class="w-buyinfo tx-left pl25">
                                 <dl>
                                     <dt>
-                                        <span class="t-price tx-light-blue NGEB">{{ number_format($results['total_price'] + $results['delivery_price']) }}원</span>
+                                        <span class="t-price tx-light-blue NGEB"><span class="total-pay-price">{{ number_format($results['total_price'] + $results['delivery_price']) }}</span>원</span>
                                         <span id="pay_method_name"></span>
-                                        <span class="w-point">적립예정포인트: <span class="tx-light-blue">343원</span></span>
+                                        <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
                                     </dt>
                                     <dt>
                                         <div class="caution-txt">회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 {{ number_format(config_app('DeliveryAddPrice')) }}원이 추가</span>로 적용 되었습니다.</div>
@@ -480,11 +482,118 @@
 
         // 쿠폰적용 버튼 클릭
         $regi_form.on('click', '.btn-coupon-apply', function() {
+            var $use_point = $regi_form.find('input[name="use_point"]');
+            if (parseInt($use_point.val()) > 0) {
+                alert('이미 적용하신 포인트는 쿠폰 적용 후 재 적용해 주십시오.');
+                $use_point.val('').trigger('change');
+            }
+
             var ele_id = 'Coupon';
-            var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx') };
+            var coupon_idx = {};
+            $regi_form.find('.chk_coupon_idx').each(function(idx) {
+                if ($(this).val().length > 0) {
+                    coupon_idx[idx] = $(this).val();
+                }
+            });
+            var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_idx' : JSON.stringify(coupon_idx) };
+
             sendAjax('{{ site_url('/myCoupon/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
+        });
+
+        // 쿠폰적용 삭제버튼 클릭
+        $regi_form.on('click', '.btn-coupon-apply-delete', function() {
+            if (confirm('해당 쿠폰을 삭제하시겠습니까?')) {
+                var cart_idx = $(this).data('cart-idx');
+                var $cart_row = $regi_form.find('#cart_row_' + cart_idx);
+
+                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').val('');
+                $cart_row.find('input[name="coupon_disc_price[' + cart_idx + ']"]').val('0').trigger('change');
+                $cart_row.find('.wrap-coupon').removeClass('d_block').addClass('d_none');
+                $cart_row.find('.wrap-real-sale-price').removeClass('d_block').addClass('d_none');
+                $cart_row.find('.coupon-name').html('');
+                $cart_row.find('.coupon-disc-price').html('0');
+                $cart_row.find('.real-pay-price').html(addComma($cart_row.find('.real-sale-price').html()));
+
+                alert('삭제 되었습니다.');
+            }
+        });
+
+        // 포인트 전액사용 버튼 클릭
+        $regi_form.on('click', '#btn-all-use-point', function() {
+            var point_amt = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
+            var $use_point = $regi_form.find('input[name="use_point"]');
+            $use_point.val(point_amt).trigger('change').trigger('blur');
+        });
+
+        // 포인트 사용
+        $regi_form.on('blur', 'input[name="use_point"]', function() {
+            var use_point = parseInt($(this).val()) || 0;
+            var is_on_package = '{{ $results['is_on_package'] === true ? 'Y' : 'N' }}';
+            var point_type_name = '{{ $results['cart_type_name'] }}';
+            var point_amt = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
+            var use_min_point = parseInt('{{ config_item('use_min_point') }}');     // 사용 가능 최소 포인트
+            var use_point_unit = parseInt('{{ config_item('use_point_unit') }}');   // 사용 포인트 단위
+            var use_max_point_rate = parseInt('{{ config_item('use_max_point_rate') }}');   // 주문금액 대비 포인트 사용 비율
+            var real_pay_price = parseInt('{{ $results['total_price'] }}') - parseInt($regi_form.find('#coupon_disc_price').html().replace(/,/g, ''));
+            var use_max_point = real_pay_price * (use_max_point_rate / 100);
+
+            if (use_point < 1) {
+                return;
+            }
+
+            if (is_on_package === 'Y') {
+                alert('패키지 상품은 포인트 사용이 불가능합니다.');
+                $(this).val('').trigger('change');
+                return;
+            }
+
+            if (point_amt < use_min_point || use_point % use_point_unit !== 0) {
+                alert(point_type_name + ' 포인트는 ' + addComma(use_min_point) + 'P부터 ' + use_point_unit + 'P 단위로 사용 가능합니다.');
+                $(this).val('').trigger('change');
+                return;
+            }
+
+            if (use_point > use_max_point) {
+                alert(point_type_name + ' 포인트는 주문금액의 ' + use_max_point_rate + '%까지만 사용 가능합니다.');
+                $(this).val(use_max_point).trigger('change');
+            }
+        });
+
+        // 쿠폰이 적용될 경우 적립예정포인트 재계산 후 표기
+        $regi_form.on('change', '.chk_coupon_disc_price', function() {
+            var cart_data = {}, cart_idx, $cart_row, real_pay_price, total_save_point = 0;
+
+            $regi_form.find('input[name="cart_idx[]"]').each(function() {
+                cart_idx = $(this).val();
+                cart_data = $(this).data();
+                $cart_row = $regi_form.find('#cart_row_' + cart_idx);
+                real_pay_price = parseInt($cart_row.find('.real-sale-price').html().replace(/,/g, '')) - parseInt($cart_row.find('input[name="coupon_disc_price[' + cart_idx + ']"]').val());
+                if (cart_data.isPoint === 'Y') {
+                    total_save_point += cart_data.savePointType === 'R' ? parseInt(real_pay_price * (cart_data.savePointPrice / 100), 10) : cart_data.savePointPrice;
+                }
+            });
+
+            $regi_form.find('#total_save_point').html(addComma(total_save_point));
+        });
+
+        // 결제금액 계산 및 표기
+        $regi_form.on('change', '.chk_price', function() {
+            var total_price = parseInt('{{ $results['total_price'] }}');      // 전체상품주문금액
+            var delivery_price = parseInt($regi_form.find('input[name="delivery_price"]').val()) || 0;     // 배송료
+            var point_disc_price = parseInt($regi_form.find('input[name="use_point"]').val()) || 0;        // 포인트 사용금액
+            var coupon_disc_price = 0;      // 쿠폰할인금액
+            $regi_form.find('.chk_coupon_disc_price').each(function() {
+                coupon_disc_price += parseInt($(this).val());
+            });
+            var total_pay_price = total_price - coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
+
+            // 금액표기
+            $regi_form.find('#coupon_disc_price').html(addComma(coupon_disc_price));
+            $regi_form.find('#point_disc_price').html(addComma(point_disc_price));
+            $regi_form.find('#delivery_price').html(addComma(delivery_price));
+            $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
         });
 
         // 나의 배송 주소록 버튼 클릭

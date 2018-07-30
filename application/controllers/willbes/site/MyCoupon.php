@@ -14,7 +14,7 @@ class MyCoupon extends \app\controllers\FrontController
     }
 
     /**
-     * 쿠폰적용
+     * 쿠폰적용 목록 페이지
      * @return CI_Output
      */
     public function index()
@@ -24,6 +24,8 @@ class MyCoupon extends \app\controllers\FrontController
         if (empty($cart_idx) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
+        // 이미 선택한 쿠폰 식별자
+        $arr_coupon_idx = json_decode($this->_req('coupon_idx'), true);
 
         // 장바구니 조회
         $cart_data = $this->cartFModel->findCartByCartIdx($cart_idx, $sess_mem_idx);
@@ -41,6 +43,7 @@ class MyCoupon extends \app\controllers\FrontController
         $arr_param = array_merge($arr_param, [
             'ApplyTypeCcd' => $this->cartFModel->_coupon_apply_type_ccd[$cart_data['ProdTypeCcd']],
             'LecTypeCcd' => $this->cartFModel->_coupon_lec_type_ccd[$cart_data['LearnPatternCcd']],
+            'RealSalePrice' => $cart_data['RealSalePrice'],
             'SchoolYear' => $cart_data['SchoolYear'],
             'CourseIdx' => $cart_data['CourseIdx'],
             'SubjectIdx' => $cart_data['SubjectIdx'],
@@ -54,6 +57,7 @@ class MyCoupon extends \app\controllers\FrontController
             'ele_id' => $this->_req('ele_id'),
             'arr_cart_prod_type_name' => $this->cartFModel->_cart_prod_type_name,
             'arr_cart_prod_type_idx' => $this->cartFModel->_cart_prod_type_idx,
+            'arr_coupon_idx' => $arr_coupon_idx,
             'cart_data' => $cart_data,
             'results' => $results
         ]);

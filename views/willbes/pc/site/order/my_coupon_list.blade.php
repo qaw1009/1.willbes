@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <div>쿠폰할인금액</div>
-                    <div id="_coupon_disc_price" class="price tx-light-pink">0원</div>
+                    <div class="price tx-light-pink"><span id="_coupon_disc_price">0</span>원</div>
                 </li>
                 <li class="price-img">
                     <span class="row-line">|</span>
@@ -30,7 +30,7 @@
                 </li>
                 <li>
                     <div>할인적용금액</div>
-                    <span id="_real_pay_price" class="price price-total tx-light-blue">{{ number_format($cart_data['RealSalePrice']) }}원</span>
+                    <span class="price price-total tx-light-blue"><span id="_real_pay_price">{{ number_format($cart_data['RealSalePrice']) }}</span>원</span>
                 </li>
             </ul>
         </div>
@@ -72,11 +72,11 @@
                             <tbody>
                             @foreach($results['usable'] as $idx => $row)
                                 <tr>
-                                    <td><input type="radio" name="_coupon_idx" value="{{ $row['CouponIdx'] }}"/></td>
+                                    <td><input type="radio" name="_coupon_idx" value="{{ $row['CouponIdx'] }}" data-coupon-name="{{ $row['CouponName'] }}" data-disc-rate="{{ $row['DiscRate'] }}" data-disc-type="{{ $row['DiscType'] }}" @if(in_array($row['CouponIdx'], $arr_coupon_idx) === true) disabled="disabled" @endif/></td>
                                     <td>{{ $row['ApplyTypeCcdName'] }}</td>
                                     <td>{{ $row['CouponPin'] }}</td>
                                     <td>{{ $row['CouponName'] }}</td>
-                                    <td>{{ $row['DiscRate'] }}{{ $row['DiscRateUnit'] }}</td>
+                                    <td>{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
                                     <td>{{ $row['ValidDay'] }}일</td>
                                     <td>{{ $row['RemainDay'] }}일</td>
                                 </tr>
@@ -114,7 +114,7 @@
                                 <td>{{ $row['ApplyTypeCcdName'] }}</td>
                                 <td>{{ $row['CouponPin'] }}</td>
                                 <td>{{ $row['CouponName'] }}</td>
-                                <td>{{ $row['DiscRate'] }}{{ $row['DiscRateUnit'] }}</td>
+                                <td>{{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}</td>
                                 <td>@if($row['ValidStatus'] == '만료') ~ {{ substr($row['ExpireDatm'], 0, 10) }} @else {{ $row['ValidDay'] }}일 @endif</td>
                                 <td>{{ $row['ValidStatus'] }}</td>
                                 <td>{{ $row['RemainDay'] }}일</td>
@@ -131,8 +131,40 @@
 <script type="text/javascript">
     var $_coupon_form = $('#_coupon_form');
     var $parent_regi_form = $('#regi_form');
+    var cart_idx = '{{ $cart_data['CartIdx'] }}';
+    var real_sale_price = '{{ $cart_data['RealSalePrice'] }}';
+    var coupon_disc_price = 0;
+    var $ori_selected_data = {};    // 이미 선택된 쿠폰 식별자
 
     $(document).ready(function() {
+        // 적용가능쿠폰 체크박스 선택
+        $_coupon_form.on('click', 'input[name="_coupon_idx"]', function() {
+            var input_data = $(this).data();
 
+            // 할인금액 계산
+            coupon_disc_price = (input_data.discType === 'R') ? real_sale_price * (input_data.discRate / 100) : input_data.discRate;
+            $('#_coupon_disc_price').html(addComma(coupon_disc_price));
+            // 할인적용금액
+            $('#_real_pay_price').html(addComma(real_sale_price - coupon_disc_price));
+        });
+
+        $('#_btn_coupon_apply').on('click', function() {
+            if (confirm('해당 쿠폰을 적용하시겠습니까?')) {
+                var $cart_row = $parent_regi_form.find('#cart_row_' + cart_idx);
+                var $selected_coupon = $_coupon_form.find('input[name="_coupon_idx"]:checked');
+
+                // 주문 폼에 선택된 쿠폰정보 셋팅
+                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').val($selected_coupon.val());
+                $cart_row.find('input[name="coupon_disc_price[' + cart_idx + ']"]').val(coupon_disc_price).trigger('change');
+                $cart_row.find('.wrap-coupon').removeClass('d_none').addClass('d_block');
+                $cart_row.find('.wrap-real-sale-price').removeClass('d_none').addClass('d_block');
+                $cart_row.find('.coupon-name').html($selected_coupon.data('coupon-name'));
+                $cart_row.find('.coupon-disc-price').html(addComma(coupon_disc_price));
+                $cart_row.find('.real-pay-price').html(addComma(real_sale_price - coupon_disc_price));
+
+                alert('적용 되었습니다.');
+                closeWin('{{ $ele_id }}');
+            }
+        });
     });
 </script>

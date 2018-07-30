@@ -43,8 +43,8 @@
     </div>
     <div class="Content p_re">
 
-        <div class="willbes-Mypage-PASSZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Pass-Tit NG">
+        <div class="willbes-Mypage-ONLINEZONE c_both">
+            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                 · 일시정지강좌
             </div>
             <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
@@ -61,10 +61,10 @@
                 </table> 
             </div>
         </div>
-        <!-- willbes-Mypage-PASSZONE -->
+        <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="willbes-PASSZONE-Tabs mt60">
-            <div class="willbes-Lec-Selected willbes-Pass-Selected tx-gray">
+        <div class="willbes-Mypage-Tabs mt60">
+            <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
                 <select id="process" name="process" title="process" class="seleProcess">
                     <option selected="selected">과정</option>
                     <option value="헌법">헌법</option>
@@ -97,13 +97,13 @@
                     </div>
                 </div>
             </div>
-            <div class="PassDetailWrap c_both">
+            <div class="DetailWrap c_both">
                 <ul class="tabWrap tabDepthPass">
-                    <li><a href="#Passtab1" class="on">단강좌 (3)</a></li>
-                    <li><a href="#Passtab2">패키지강좌 (2)</a></li>
+                    <li><a href="#Mypagetab1" class="on">단강좌 (3)</a></li>
+                    <li><a href="#Mypagetab2">패키지강좌 (2)</a></li>
                 </ul>
                 <div class="tabBox">
-                    <div id="Passtab1" class="tabLink">
+                    <div id="Mypagetab1" class="tabLink">
                         <div class="willbes-Lec-Table pt40 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
@@ -165,9 +165,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--willbes-Lec-Table -->
                     </div>
-                    <div id="Passtab2" class="tabLink">
+                    <div id="Mypagetab2" class="tabLink">
                         <div class="willbes-Lec-Table pt40 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
@@ -229,12 +228,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--willbes-Lec-Table -->
                     </div>
                 </div>
             </div>
         </div>
-        <!-- willbes-PASSZONE-Tabs -->
+        <!-- willbes-Mypage-Tabs -->
 
     </div>
     <div class="Quick-Bnr ml20">

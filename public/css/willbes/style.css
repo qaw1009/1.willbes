@@ -1724,6 +1724,7 @@ table.auTable tr td {
     width: 80px;
     height: 100%;
     border: 1px solid #636363;
+    margin: 0;
 }
 .willbes-Lec-Search button span {
     font-size: 12px;
@@ -1747,6 +1748,11 @@ table.auTable tr td {
     font-size: 10px;
     display: inline-block;
     margin-top: -3px;
+}
+/* subContainer : Content : SelectBox */
+.willbes-SelectBox select {
+   width: 110px;
+   height: 27px; 
 }
 
 /* subContainer : Content : Lec */
@@ -2205,6 +2211,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .tBox.white a {
     border:1px solid #898989;
     color: #333;
+}
+.tBox.light-gray a {
+    border:1px solid #c9c9c9;
+    color: #898989;
 }
 
 /* subContainer : Content : lecInfoTable */
@@ -5199,17 +5209,181 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 870px;
 }
 
-/* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE */
-.willbes-Pass-Tit {
+
+
+/* subContainer : Mypage : 공통 */
+.willbes-Mypage-Tit {
     padding: 5px 0 25px;
 }
-.willbes-Pass-Tit ul {
+.willbes-Mypage-Tit ul {
     float: right;
 }
-.willbes-Pass-Tit ul .InfoBtn {
+.willbes-Mypage-Tit ul .InfoBtn {
     float: left;
     margin-left: 10px;
 }
+
+/* subContainer : Mypage : willbes-Mypage-Selected : Tabs 공통 */
+.willbes-Mypage-Selected {
+    float: left;
+    width: 100%;
+    margin: 0 0 30px;
+}
+.willbes-Mypage-Selected.center,
+.willbes-Mypage-Selected.center span {
+    display: inline-block;
+    float: none;
+    text-align: center;
+}
+.willbes-Mypage-Selected .w-data {
+    float: left; 
+}
+.willbes-Mypage-Selected .w-data .iptDate {
+    width: 80px;
+    height: 22px;
+    border: 1px solid #d4d4d4;
+}
+.willbes-Mypage-Selected .w-month {
+    float: left;
+    margin-left: 10px;
+}
+.willbes-Mypage-Selected .w-month ul li {
+    float: left;
+    width: 64px;
+    height: 22px;
+    border: 1px solid #d4d4d4;
+    border-left: none;
+}
+.willbes-Mypage-Selected .w-month ul li:first-child {
+    border-left: 1px solid #d4d4d4;
+}
+.willbes-Mypage-Selected .w-month ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+}
+.willbes-Mypage-Selected .w-month ul li a:hover,
+.willbes-Mypage-Selected .w-month ul li a.on {
+    background: #1a8ccb;
+    color: #fff;
+}
+.willbes-Mypage-Selected button {
+    background: #636363;
+    width: 60px;
+    height: 22px;
+    border: 1px solid #636363;
+    margin-top: 0;
+    margin-left: 10px;
+}
+.willbes-Mypage-Selected button span {
+    font-size: 12px;
+}
+.willbes-Mypage-Selected select {
+    width: 110px;
+}
+.willbes-Mypage-Selected .search-Btn {
+    margin-top: 0;
+}
+
+.tabDepthPass {
+    border-bottom: 1px solid #0d74ae;
+}
+.tabDepthPass li a {
+    background: #fff;
+    border-top: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    color: #959595;
+}
+.tabDepthPass li a.on {
+    border-top: 1px solid #0d74ae;
+    border-left: 1px solid #0d74ae;
+    border-right: 1px solid #0d74ae;
+    color: #0d74ae;
+}
+.tabDepthPass li:first-child a.on {
+    border-left: 1px solid #0d74ae;
+}
+
+/* subContainer : Mypage : Tabs : CurriBox 공통 */
+.PassCurriBox.CurriBox {
+    position: relative;
+    z-index: 3;
+    border-left: 1px solid #0d74ae;
+    border-right: 1px solid #0d74ae;
+    border-bottom: 1px solid #0d74ae;
+    padding: 20px 40px;
+    float: left;
+    width: 100%;
+}
+.PassCurriBox table.curriTable {
+    width: 100%;
+}
+.PassCurriBox tr  {
+    border-top: 1px solid #e2e2e2;
+    line-height: 50px;
+}
+.PassCurriBox tr:first-child {
+    border-top: none;
+}
+.PassCurriBox tr th {
+    vertical-align: top;
+    width: 70px;
+    font-weight: 600;
+    text-align: left;
+}
+.PassCurriBox tr td {
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    padding: 10px 5px;
+}
+.PassCurriBox tr td a {
+    display: inline-block;
+    width: 100%;
+    font-size: 11px;
+    color: #999;
+    line-height: 20px; 
+}
+.PassCurriBox tr td a:hover,
+.PassCurriBox tr td a.on {
+    font-weight: 600;
+    color: #0d74ae;
+}
+.PassCurriBox tr td span {
+    float: left;
+    margin-right: 30px;
+}
+.PassCurriBox ul.curriSelect li {
+    float: left;
+    width: 11.5%;    
+    margin: 0.5%;
+}
+.PASSZONE-Btn {
+    float: right;
+    width: 85px;
+    height: 24px;
+    margin: 60px 0 10px;
+    text-align: center;
+}
+.aBox.passBox {
+    width: 56px;
+    height: 24px;
+    line-height:22px;
+}
+.willbes-Lec-Table.d_block .w-answer .w-chk-st {
+    float: left;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #adadad;
+}
+.willbes-Lec-Table.d_block .w-answer .w-chk-st a {
+    display: block;
+    line-height: 22px;
+}
+
+/* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE */
 .willbes-PASS-Line {
     height: 50px;
     line-height: 50px;
@@ -5249,150 +5423,6 @@ table.PassZoneTable .w-lec .w-btn a {
     font-size: 11px;
     color: #fff;
     text-align: center;
-}
-
-/* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : Tabs */
-.willbes-Pass-Selected {
-    float: left;
-    width: 100%;
-    margin: 0 0 30px;
-}
-.willbes-Pass-Selected .w-data {
-    float: left; 
-}
-.willbes-Pass-Selected .w-data .iptDate {
-    width: 80px;
-    height: 22px;
-    border: 1px solid #d4d4d4;
-}
-
-.willbes-Pass-Selected .w-month {
-    float: left;
-    margin-left: 10px;
-}
-.willbes-Pass-Selected .w-month ul li {
-    float: left;
-    width: 64px;
-    height: 22px;
-    border: 1px solid #d4d4d4;
-    border-left: none;
-}
-.willbes-Pass-Selected .w-month ul li:first-child {
-    border-left: 1px solid #d4d4d4;
-}
-.willbes-Pass-Selected .w-month ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    line-height: 20px;
-}
-.willbes-Pass-Selected .w-month ul li a:hover,
-.willbes-Pass-Selected .w-month ul li a.on {
-    background: #1a8ccb;
-    color: #fff;
-}
-.willbes-Pass-Selected select {
-    width: 110px;
-}
-.willbes-Pass-Selected .search-Btn {
-    margin-top: 0;
-}
-.tabDepthPass {
-    border-bottom: 1px solid #0d74ae;
-}
-.tabDepthPass li a {
-    background: #fff;
-    border-top: 1px solid #e1e1e1;
-    border-right: 1px solid #e1e1e1;
-    color: #959595;
-}
-.tabDepthPass li a.on {
-    border-top: 1px solid #0d74ae;
-    border-left: 1px solid #0d74ae;
-    border-right: 1px solid #0d74ae;
-    color: #0d74ae;
-}
-.tabDepthPass li:first-child a.on {
-    border-left: 1px solid #0d74ae;
-}
-
-/* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : Tabs : CurriBox */
-.PassTabBox .CurriBox {
-    position: relative;
-    z-index: 3;
-    border-left: 1px solid #0d74ae;
-    border-right: 1px solid #0d74ae;
-    border-bottom: 1px solid #0d74ae;
-    padding: 20px 40px;
-    float: left;
-    width: 100%;
-}
-.PassTabBox table.curriTable {
-    width: 100%;
-}
-.PassTabBox tr  {
-    border-top: 1px solid #e2e2e2;
-    line-height: 50px;
-}
-.PassTabBox tr:first-child {
-    border-top: none;
-}
-.PassTabBox tr th {
-    vertical-align: top;
-    width: 70px;
-    font-weight: 600;
-    text-align: left;
-}
-.PassTabBox tr td {
-    height: 20px;
-    line-height: 20px;
-    text-align: left;
-    padding: 10px 5px;
-}
-.PassTabBox tr td a {
-    display: inline-block;
-    width: 100%;
-    font-size: 11px;
-    color: #999;
-    line-height: 20px; 
-}
-.PassTabBox tr td a:hover,
-.PassTabBox tr td a.on {
-    font-weight: 600;
-    color: #0d74ae;
-}
-.PassTabBox tr td span {
-    float: left;
-    margin-right: 30px;
-}
-.PassTabBox ul.curriSelect li {
-    float: left;
-    width: 11.5%;    
-    margin: 0.5%;
-}
-.PASSZONE-Btn {
-    float: right;
-    width: 85px;
-    height: 24px;
-    margin: 60px 0 10px;
-    text-align: center;
-}
-.aBox.passBox {
-    width: 56px;
-    height: 24px;
-    line-height:22px;
-}
-.willbes-Lec-Table.d_block .w-answer .w-chk-st {
-    float: left;
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #adadad;
-}
-.willbes-Lec-Table.d_block .w-answer .w-chk-st a {
-    display: block;
-    line-height: 22px;
 }
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox */
@@ -5499,6 +5529,7 @@ table.PassZoneTable .w-lec .w-btn a {
 
 
 
+
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-Add */
 .PASSZONE-Add {
     float: right;
@@ -5513,8 +5544,6 @@ table.PassZoneTable .w-lec .w-btn a {
     height: 380px;
     overflow-x: auto;
 }
-
-
 .PASSZONE-Add .PASSZONE-Lec-Grid .w-info {
     font-size: 11px;
 }
@@ -5536,16 +5565,7 @@ table.PassZoneTable .w-lec .w-btn a {
 
 
 
-
-
-
-
-
-
-
-
-
-/* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE */
+/* subContainer : Mypage : 무한PASS존 : 수강중인 강좌 */
 .willbes-Prof-Mypage {
     background: #f4f5f6;
     height: 205px;
@@ -5638,7 +5658,10 @@ table.PassZoneTable .w-lec .w-btn a {
 
 
 
-/* subContainer : Mypage : 온라인강좌 : willbes-Mypage-Tx */
+
+
+
+/* subContainer : Mypage : 온라인강좌 : willbes-Mypage-Txt */
 .willbes-Mypage-Txt {
     background: #f8f8f8;
     border-top: 1px solid #898989;
@@ -5692,6 +5715,70 @@ table.PassZoneTable .w-lec .w-btn a {
     display: none;
 }
 
+/* subContainer : Mypage : 학원강좌 : acadTable */
+table.acadTable tr td {
+    line-height: 24px;
+}
+
+/* subContainer : Mypage : 결제관리 : orderTable */
+.orderTable.LeclistTable .listTable tr td {
+    line-height: 20px;
+    padding: 19px 0;
+}
+.orderTable.LeclistTable .listTable .w-price {
+    text-align: center;
+}
+
+/* subContainer : Mypage : 결제관리 : 포인트관리 */
+.willbes-Mypage-PointBox {
+    height: 70px;
+    border-top: 1px solid #edeeef;
+    border-bottom: 1px solid #edeeef;
+}
+.willbes-Mypage-PointBox ul li {
+    float: left;
+    width: 33.33333333%;
+    border-right: 1px solid #edeeef;
+    font-size: 14px;
+    text-align: center;
+    line-height: 68px;
+    letter-spacing: 0;
+}
+.willbes-Mypage-PointBox ul li span {
+    vertical-align: baseline;
+}
+.willbes-Mypage-PointBox ul li.Tit {
+    background: #f9f9f9;
+    border-left: 1px solid #edeeef;
+}
+.userPointTable {
+    border: 1px solid #edeeef;
+    height: 120px;
+}
+.userPointTable tr td {
+    font-size: 14px;
+    text-align: center;
+    border-left: 1px solid #edeeef;
+    line-height: 18px;
+    letter-spacing: 0;
+}
+.userPointTable tr td:first-child {
+    border-left: none;
+}
+.userPointTable tr td span {
+    vertical-align: baseline;
+}
+.userCouponTable input {
+    width: 480px;
+    height: 26px;
+    border: 1px solid #d4d4d4;
+}
+.userCouponTable .tx-gray {
+    width: 455px;
+    margin: 10px auto 0;
+    font-size: 12px;
+    text-align: left;
+}
 
 
 
@@ -5703,6 +5790,10 @@ table.PassZoneTable .w-lec .w-btn a {
 .Quick-Bnr {
     float: left;
 }
+
+
+
+
 
 
 

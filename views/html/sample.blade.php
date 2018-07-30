@@ -65,4 +65,18 @@
 
     <a href="{{ site_url('/home/html/mypage_online4') }}">내강의실 > 온라인강좌 > 수강종료강좌 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/mypage_acad1') }}">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_acad2') }}">내강의실 > 학원강좌 > 수강종료강좌 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_event') }}">내강의실 > 특강&이벤트 신청현황 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment1') }}">내강의실 > 결제관리 > 주문/배송조회 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment2') }}">내강의실 > 결제관리 > 주문/배송조회(무통장입금) page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 결제관리 > 포인트관리 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment4') }}">내강의실 > 결제관리 > 쿠폰/수강권관리 page 이동</a><br/><br/>
+
 </div>

@@ -43,7 +43,7 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-PASSZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Pass-Tit NG">
+            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                 · 수강중인 강좌
             </div>
             <div class="willbes-Prof-Mypage NG tx-black">

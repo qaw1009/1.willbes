@@ -7,7 +7,7 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
                 </li>
                 <li class="dropdown">
                     <a href="#none">온라인강좌</a>
@@ -22,16 +22,16 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
                 </li>
                 <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
                 <li>
-                    <a href="#none">결제관리</a>
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>

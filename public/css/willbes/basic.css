@@ -403,7 +403,9 @@ strong {
 .h66 {
   height: 66px !important;
 }
-
+.mt0 {
+  margin-top: 0px !important;
+}
 .mt10 {
   margin-top: 10px !important;
 }
@@ -545,6 +547,9 @@ strong {
   padding-left: 135px !important;
 }
 
+.pb60 {
+  padding-bottom: 60px !important;
+}
 .pb110 {
   padding-bottom: 110px !important;
 }

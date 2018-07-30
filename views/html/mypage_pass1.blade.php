@@ -43,7 +43,7 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-PASSZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Pass-Tit NG">
+            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                 · 무한PASS존
                 <ul>
                     <li class="InfoBtn"><a href="#none">등록기기정보 <span>▶</span></a></li>
@@ -111,8 +111,8 @@
         </div>
         <!-- willbes-Mypage-PASSZONE -->
 
-        <div class="willbes-PASSZONE-Tabs mt70">
-            <div class="willbes-Lec-Selected willbes-Pass-Selected tx-gray">
+        <div class="willbes-Mypage-Tabs mt70">
+            <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
                 <select id="lec" name="lec" title="lec" class="seleLec">
                     <option selected="selected">과목</option>
                     <option value="헌법">헌법</option>
@@ -146,58 +146,56 @@
                     </div>
                 </div>
             </div>
-            <div class="PassDetailWrap c_both">
+            <div class="DetailWrap c_both">
                 <div class="aBox passBox answerBox_block NSK f_right"><a href="#none">교재구매</a></div>
                 <ul class="tabWrap tabDepthPass">
-                    <li><a href="#Passtab1" class="on">즐겨찾기강좌 (2)</a></li>
-                    <li><a href="#Passtab2">수강중강좌 (10)</a></li>
-                    <li><a href="#Passtab3">수강종료강좌 (3)</a></li>
-                    <li><a href="#Passtab4">숨긴강좌 (5)</a></li>
+                    <li><a href="#Mypagetab1" class="on">즐겨찾기강좌 (2)</a></li>
+                    <li><a href="#Mypagetab2">수강중강좌 (10)</a></li>
+                    <li><a href="#Mypagetab3">수강종료강좌 (3)</a></li>
+                    <li><a href="#Mypagetab4">숨긴강좌 (5)</a></li>
                 </ul>
                 <div class="tabBox">
-                    <div id="Passtab1" class="tabLink">
-                        <div class="PassTabBox">
-                            <div class="CurriBox">
-                                <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▲</a></span>
-                                <table cellspacing="0" cellpadding="0" class="curriTable">
-                                    <colgroup>
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <th class="tx-gray">전체보기</th>
-                                            <td colspan="9">
-                                                <ul class="curriSelect">
-                                                    <li><a href="#none">[국어] 정채영</a></li>
-                                                    <li><a href="#none">[영어] 기미진</a></li>
-                                                    <li><a href="#none">[사회] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[사회] 정채영</a></li>
-                                                    <li><a href="#none">[형사법] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[형사법] 정채영</a></li>
-                                                    <li><a href="#none">[사회] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[사회] 오대혁</a></li>
-                                                    <li><a href="#none">[형사법] 이현나</a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div id="Mypagetab1" class="tabLink">
+                        <div class="PassCurriBox CurriBox">
+                            <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▲</a></span>
+                            <table cellspacing="0" cellpadding="0" class="curriTable">
+                                <colgroup>
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="tx-gray">전체보기</th>
+                                        <td colspan="9">
+                                            <ul class="curriSelect">
+                                                <li><a href="#none">[국어] 정채영</a></li>
+                                                <li><a href="#none">[영어] 기미진</a></li>
+                                                <li><a href="#none">[사회] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[사회] 정채영</a></li>
+                                                <li><a href="#none">[형사법] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[형사법] 정채영</a></li>
+                                                <li><a href="#none">[사회] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[사회] 오대혁</a></li>
+                                                <li><a href="#none">[형사법] 이현나</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="willbes-Lec-Table NG d_block">
                             <div class="PASSZONE-Btn">
@@ -269,51 +267,48 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--willbes-Lec-Table -->
                     </div>
-                    <div id="Passtab2" class="tabLink">
-                        <div class="PassTabBox">
-                            <div class="CurriBox">
-                                <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▼</a></span>
-                                <table cellspacing="0" cellpadding="0" class="curriTable" style="display: none;">
-                                    <colgroup>
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <th class="tx-gray">전체보기</th>
-                                            <td colspan="9">
-                                                <ul class="curriSelect">
-                                                    <li><a href="#none">[국어] 정채영</a></li>
-                                                    <li><a href="#none">[영어] 기미진</a></li>
-                                                    <li><a href="#none">[사회] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[사회] 정채영</a></li>
-                                                    <li><a href="#none">[형사법] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[형사법] 정채영</a></li>
-                                                    <li><a href="#none">[사회] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[사회] 오대혁</a></li>
-                                                    <li><a href="#none">[형사법] 이현나</a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div id="Mypagetab2" class="tabLink">
+                        <div class="PassCurriBox CurriBox">
+                            <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▼</a></span>
+                            <table cellspacing="0" cellpadding="0" class="curriTable" style="display: none;">
+                                <colgroup>
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="tx-gray">전체보기</th>
+                                        <td colspan="9">
+                                            <ul class="curriSelect">
+                                                <li><a href="#none">[국어] 정채영</a></li>
+                                                <li><a href="#none">[영어] 기미진</a></li>
+                                                <li><a href="#none">[사회] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[사회] 정채영</a></li>
+                                                <li><a href="#none">[형사법] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[형사법] 정채영</a></li>
+                                                <li><a href="#none">[사회] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[사회] 오대혁</a></li>
+                                                <li><a href="#none">[형사법] 이현나</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="willbes-Lec-Table NG d_block">
                             <div class="PASSZONE-Btn">
@@ -391,52 +386,49 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <!--willbes-Lec-Table -->
+                        </div>  
                     </div>
-                    <div id="Passtab3" class="tabLink">
-                        <div class="PassTabBox">
-                            <div class="CurriBox">
-                                <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▼</a></span>
-                                <table cellspacing="0" cellpadding="0" class="curriTable" style="display: none;">
-                                    <colgroup>
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <th class="tx-gray">전체보기</th>
-                                            <td colspan="9">
-                                                <ul class="curriSelect">
-                                                    <li><a href="#none">[국어] 정채영</a></li>
-                                                    <li><a href="#none">[영어] 기미진</a></li>
-                                                    <li><a href="#none">[사회] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[사회] 정채영</a></li>
-                                                    <li><a href="#none">[형사법] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[형사법] 정채영</a></li>
-                                                    <li><a href="#none">[사회] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[사회] 오대혁</a></li>
-                                                    <li><a href="#none">[형사법] 이현나</a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div id="Mypagetab3" class="tabLink">
+                        <div class="PassCurriBox CurriBox">
+                            <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▼</a></span>
+                            <table cellspacing="0" cellpadding="0" class="curriTable" style="display: none;">
+                                <colgroup>
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="tx-gray">전체보기</th>
+                                        <td colspan="9">
+                                            <ul class="curriSelect">
+                                                <li><a href="#none">[국어] 정채영</a></li>
+                                                <li><a href="#none">[영어] 기미진</a></li>
+                                                <li><a href="#none">[사회] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[사회] 정채영</a></li>
+                                                <li><a href="#none">[형사법] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[형사법] 정채영</a></li>
+                                                <li><a href="#none">[사회] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[사회] 오대혁</a></li>
+                                                <li><a href="#none">[형사법] 이현나</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="willbes-Lec-Table NG d_block">
                             <div class="PASSZONE-Btn">
@@ -507,51 +499,48 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--willbes-Lec-Table -->
                     </div>
-                    <div id="Passtab4" class="tabLink">
-                        <div class="PassTabBox">
-                            <div class="CurriBox">
-                                <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▼</a></span>
-                                <table cellspacing="0" cellpadding="0" class="curriTable" style="display: none;">
-                                    <colgroup>
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                        <col width="*">
-                                    </colgroup>
-                                    <tbody>
-                                        <tr>
-                                            <th class="tx-gray">전체보기</th>
-                                            <td colspan="9">
-                                                <ul class="curriSelect">
-                                                    <li><a href="#none">[국어] 정채영</a></li>
-                                                    <li><a href="#none">[영어] 기미진</a></li>
-                                                    <li><a href="#none">[사회] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[사회] 정채영</a></li>
-                                                    <li><a href="#none">[형사법] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[형사법] 오대혁</a></li>
-                                                    <li><a href="#none">[영어] 이현나</a></li>
-                                                    <li><a href="#none">[형사법] 정채영</a></li>
-                                                    <li><a href="#none">[사회] 기미진</a></li>
-                                                    <li><a href="#none">[영어] 김세령</a></li>
-                                                    <li><a href="#none">[사회] 오대혁</a></li>
-                                                    <li><a href="#none">[형사법] 이현나</a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div id="Mypagetab4" class="tabLink">   
+                        <div class="PassCurriBox CurriBox">
+                            <span class="MoreBtn NG"><a href="#none">즐찾과목/교수전체보기 ▼</a></span>
+                            <table cellspacing="0" cellpadding="0" class="curriTable" style="display: none;">
+                                <colgroup>
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="tx-gray">전체보기</th>
+                                        <td colspan="9">
+                                            <ul class="curriSelect">
+                                                <li><a href="#none">[국어] 정채영</a></li>
+                                                <li><a href="#none">[영어] 기미진</a></li>
+                                                <li><a href="#none">[사회] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[사회] 정채영</a></li>
+                                                <li><a href="#none">[형사법] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[형사법] 오대혁</a></li>
+                                                <li><a href="#none">[영어] 이현나</a></li>
+                                                <li><a href="#none">[형사법] 정채영</a></li>
+                                                <li><a href="#none">[사회] 기미진</a></li>
+                                                <li><a href="#none">[영어] 김세령</a></li>
+                                                <li><a href="#none">[사회] 오대혁</a></li>
+                                                <li><a href="#none">[형사법] 이현나</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="willbes-Lec-Table NG d_block">
                             <div class="PASSZONE-Btn">
@@ -627,12 +616,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--willbes-Lec-Table -->
                     </div>
                 </div>
             </div>
         </div>
-        <!-- willbes-PASSZONE-Tabs -->
+        <!-- willbes-Mypage-Tabs -->
 
         <div id="MoreLec" class="willbes-Layer-PassBox">
             <a class="closeBtn" href="#none" onclick="closeWin('MoreLec')">
@@ -1105,7 +1093,7 @@
             </div>
 
         </div>
-        <!-- willbes-Layer-Box -->
+        <!-- willbes-Layer-PassBox -->
 
     </div>
     <div class="Quick-Bnr ml20">

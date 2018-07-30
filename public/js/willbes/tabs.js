@@ -41,7 +41,7 @@ function openLink(tabId) {
 }
 
 function openTxt(tabId) {
-    $('.willbes-Mypage-PASSZONE .willbes-Mypage-Txt').css("display","none")
-    $('.willbes-Mypage-PASSZONE').find('#' + tabId).css("display","block")
+    $('.willbes-Mypage-MYPAGEZONE .willbes-Mypage-Txt').css("display","none")
+    $('.willbes-Mypage-MYPAGEZONE').find('#' + tabId).css("display","block")
 }
 

@@ -39,3 +39,19 @@ function checkDirectPay($regi_form) {
     }
     return true;
 }
+
+/**
+ * 강좌, 교재 상세정보 모달 팝업
+ * @param prod_code
+ * @param tab_id
+ * @param url
+ */
+function productInfoModal(prod_code, tab_id, url) {
+    var data = '';
+    sendAjax(url+'/info/prod-code/' + prod_code, data, function(ret) {
+        $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
+    }, showAlertError, false, 'GET', 'html');
+    if(tab_id != '') {
+        openLink(tab_id);
+    }
+}

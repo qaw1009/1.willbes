@@ -191,7 +191,7 @@
                                         <dl class="w-info">
                                             <dt class="mr20">
                                                 <!--a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover1" //-->
-                                                <a href="#none" onclick="fn_productViewInfo('{{ $row['ProdCode'] }}', 'hover1','lecture')">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
                                                     <strong>강좌상세정보</strong>
                                                 </a>
                                             </dt>
@@ -271,7 +271,7 @@
                                                 <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                                 <div class="w-sub">
                                                     <!--a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover2"//-->
-                                                    <a href="#none" onclick="fn_productViewInfo('{{ $row['ProdCode'] }}', 'hover2','lecture')"><strong>교재상세정보</strong></a>
+                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture')"><strong>교재상세정보</strong></a>
                                                 </div>
                                                 <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
                                         @else
@@ -344,19 +344,6 @@
     var $buy_layer = $('.willbes-Lec-buyBtn-sm');
 
     $(document).ready(function() {
-
-        // 강좌상세정보, 교재상세정보
-        fn_productViewInfo = function(prod_code, tab_id, pattern) {
-            var data = {
-            };
-            var url = '/'+pattern+'/info/prod-code/';
-            sendAjax('{{ site_url() }}'+ url + prod_code, data, function(ret) {
-                $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
-            }, showAlertError, false, 'GET', 'html');
-            if(tab_id != '') {
-                openLink(tab_id);
-            }
-        };
 
         // 상품 선택/해제
         $regi_form.on('click', '.chk_products, .chk_books', function() {

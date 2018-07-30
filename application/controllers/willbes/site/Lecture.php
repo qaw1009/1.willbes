@@ -106,6 +106,7 @@ class Lecture extends \app\controllers\FrontController
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
+        $data['lecture'] = $this->lectureFModel->findProductByProdCode('on_lecture', $prod_code);
         $data['contents'] = $this->lectureFModel->findProductContents($prod_code);
         $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 

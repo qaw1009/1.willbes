@@ -1,8 +1,9 @@
 <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
     <img src="{{ img_url('sub/close.png') }}">
 </a>
+
 <div class="Layer-Tit tx-dark-black NG">
-    {{ $arr_input['prod_name'] }}
+    {{ $data['lecture']['ProdName'] }}
 </div>
 <div class="lecDetailWrap">
     <ul class="tabWrap tabDepth1 NG">
@@ -13,12 +14,12 @@
         <div id="ch1" class="tabLink">
             <div class="classInfo">
                 <dl class="w-info NG">
-                    <dt>강의수 : <span class="tx-blue">{{ $arr_input['unit_lecture_cnt'] }}강</span></dt>
+                    <dt>강의수 : <span class="tx-blue">{{ $data['lecture']['wUnitLectureCnt'] }}강</span></dt>
                     <dt><span class="row-line">|</span></dt>
-                    <dt>수강기간 : <span class="tx-blue">{{ $arr_input['study_period'] }}일</span></dt>
+                    <dt>수강기간 : <span class="tx-blue">{{ $data['lecture']['StudyPeriod'] }}일</span></dt>
                     <dt class="NSK ml15">
-                        <span class="nBox n1">{{ $arr_input['multiple_apply'] }}배수</span>
-                        <span class="nBox n{{ substr($arr_input['lecture_progress'], 0, 1) }}">{{ substr($arr_input['lecture_progress'], 1) }}</span>
+                        <span class="nBox n1">{{ $data['lecture']['MultipleApply'] }}배수</span>
+                        <span class="nBox n{{ substr($data['lecture']['wLectureProgressCcd'], -1)+1 }}">{{ $data['lecture']['wLectureProgressCcdName'] }}</span>
                     </dt>
                 </dl>
             </div>
@@ -80,7 +81,7 @@
                                         <div class="book-TxtBox tx-gray">
                                             {!! $row['wBookDesc'] !!}
                                         </div>
-                                        <div class="caution-txt tx-red">{{ $arr_input['prod_book_memo'] }}</div>
+                                        <div class="caution-txt tx-red">{{ $data['lecture']['ProdBookMemo'] }}</div>
                                     </div>
                                     <div id="info2{{ $idx }}" class="tabContent">
                                         <div class="book-TxtBox tx-gray">

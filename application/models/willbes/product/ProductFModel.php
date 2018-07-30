@@ -112,7 +112,7 @@ class ProductFModel extends WB_Model
      */
     public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
-        $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y', 'wIsUse' => 'Y']];
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);

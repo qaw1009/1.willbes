@@ -37,8 +37,9 @@
                 </dl>
                 <div class="view-wrap">
                     <div class="w-notice p_re">
+                        @if( empty($data['LectureSampleData']) === false)
                         <div class="w-sp one">
-                            <a href="#none" onclick="openWin('viewBox')">맛보기</a>
+                            <a href="#none" onclick="openWin('viewBox')">맛보기{{ empty($data['LectureSampleData']) ? '' : count($data['LectureSampleData']) }}</a>
                         </div>
                         <div id="viewBox" class="viewBox">
                             @foreach($data['LectureSampleData'] as $sample_idx => $sample_row)
@@ -49,6 +50,7 @@
                                 </dl>
                             @endforeach
                         </div>
+                        @endif
                     </div>
                     <div class="all-view subBtn NSK">
                         <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/?prof_idx=' . $data['ProfIdx']) }}">

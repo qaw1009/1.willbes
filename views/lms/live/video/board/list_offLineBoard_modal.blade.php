@@ -117,7 +117,7 @@
                     $datatable_modal = $list_table_modal.DataTable({
                         serverSide: true,
                         ajax: {
-                            'url' : '{{ site_url('/live/video/LiveManager/AjaxOfflineBoardModal/') }}' + '{{$bm_idx}}' + '?site_code=' + '{{$site_code}}',
+                            'url' : '{{ site_url('/live/videoManager/AjaxOfflineBoardModal/') }}' + '{{$bm_idx}}' + '?site_code=' + '{{$site_code}}',
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_modal_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -204,7 +204,7 @@
                         }
 
                         var uri_route = path + '/' + bm_idx + '?site_code=' + site_code;
-                        replaceModal('{{ site_url('/live/video/LiveManager/') }}' + uri_route, {});
+                        replaceModal('{{ site_url('/live/videoManager/') }}' + uri_route, {});
                     });
 
                     // 데이터 Read 페이지
@@ -220,7 +220,7 @@
                         }
 
                         var uri_route = path + '/' + $(this).data('idx') + dtParamsToQueryString($datatable_modal) + '&bm_idx=' + bm_idx + '&site_code=' + site_code;
-                        replaceModal('{{ site_url('/live/video/LiveManager/') }}' + uri_route, {});
+                        replaceModal('{{ site_url('/live/videoManager/') }}' + uri_route, {});
                     });
                 });
             </script>

@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LiveManager extends \app\controllers\BaseController
+class VideoManager extends \app\controllers\BaseController
 {
-    protected $models = array('live/video/liveManager', 'sys/code', 'sys/site', 'sys/category', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
+    protected $models = array('live/videoManager', 'sys/code', 'sys/site', 'sys/category', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
     protected $helpers = array();
     protected $boardInfo = [
         '82' => '강의배정표',
@@ -38,7 +38,7 @@ class LiveManager extends \app\controllers\BaseController
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
-        $list = $this->liveManagerModel->listLiveVideo([], null, null, ['lms_live_video.LecLiveVideoIdx' => 'asc', 'lms_live_video.OrderNum' => 'asc']);
+        $list = $this->videoManagerModel->listLiveVideo([], null, null, ['lms_live_video.LecLiveVideoIdx' => 'asc', 'lms_live_video.OrderNum' => 'asc']);
 
         $this->load->view("live/video/index", [
             'offLineSite_list' => $offLineSite_list,
@@ -67,7 +67,7 @@ class LiveManager extends \app\controllers\BaseController
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
-            $data = $this->liveManagerModel->findLiveVideoForModify($idx);
+            $data = $this->videoManagerModel->findLiveVideoForModify($idx);
 
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
@@ -105,7 +105,7 @@ class LiveManager extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->liveManagerModel->{$method . 'LiveVideo'}($this->_reqP(null, false));
+        $result = $this->videoManagerModel->{$method . 'LiveVideo'}($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -124,7 +124,7 @@ class LiveManager extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->liveManagerModel->modifyLiveVideoReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->videoManagerModel->modifyLiveVideoReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

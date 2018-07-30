@@ -51,12 +51,16 @@ class OnAirModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
+        $where_category = $this->_conn->makeWhere($arr_condition_category);
+        $where_category = $where_category->getMakeWhere(false);
+
         $from = "
             FROM {$this->_table['onair']} AS A
             LEFT JOIN (
                 SELECT B.OaIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
                 FROM {$this->_table['onair_r_category']} AS B
                 INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
+                {$where_category}
                 GROUP BY B.OaIdx
             ) AS D ON A.OaIdx = D.OaIdx
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode

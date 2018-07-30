@@ -121,6 +121,7 @@ class OnAir extends \app\controllers\BaseController
             ['field'=>'week[]', 'label'=>'요일', 'rules'=>'trim|required'],
             ['field'=>'on_air_start_type', 'label'=>'강의시간타입', 'rules'=>'trim|required|in_list[A,D]'],
             ['field'=>'on_air_name', 'label'=>'강좌명', 'rules'=>'trim|required'],
+            ['field'=>'lecture_room_idx', 'label'=>'강의실', 'rules'=>'trim|required'],
             ['field'=>'on_air_tab_name', 'label'=>'탭명칭', 'rules'=>'trim|required'],
             ['field'=>'is_use', 'label'=>'사용여부', 'rules'=>'trim|required|in_list[Y,N]'],
             ['field'=>'title[]', 'label'=>'타이틀', 'rules'=>'trim|required'],

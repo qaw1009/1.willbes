@@ -11,8 +11,8 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/onAir/store") }}" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+            {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/onAir/store") }}" novalidate>--}}
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="oa_idx" value="{{ $oa_idx }}"/>
@@ -129,14 +129,14 @@
                     <div class="col-md-4 item">
                         <input type="text" id="on_air_name" name="on_air_name" class="form-control" title="강좌명" required="required" placeholder="" value="{{$data['OnAirName']}}">
                     </div>
-                    <label class="control-label col-md-1-1 d-line">강의실 <span class="required">*</span>
+                    <label class="control-label col-md-1-1 d-line" for="lecture_room_idx">강의실 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 ml-12-dot">
                         <div class="form-inline item">
-                            <select class="form-control" id="" name="" required="required">
+                            <select class="form-control" id="lecture_room_idx" name="lecture_room_idx" title="강의실" required="required">
                                 <option value="">강의실선택</option>
-                                <option value="">강의실선택1</option>
-                                <option value="">강의실선택2</option>
+                                <option value="1">강의실선택1</option>
+                                <option value="2">강의실선택2</option>
                             </select>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                     $("#week_str").val(week_str);
 
                     var _url = '{{ site_url("/site/onAir/store") }}' + getQueryString();
-                    /*ajaxSubmit($regi_form, _url, function(ret) {
+                    ajaxSubmit($regi_form, _url, function(ret) {
                         if($regi_form.find('input[name="cate_code[]"]').length < 1) {
                             alert('카테고리 선택 필드는 필수입니다.');
                             return false;
@@ -322,7 +322,7 @@
                             notifyAlert('success', '알림', ret.ret_msg);
                             location.replace('{{ site_url("/site/onAir/") }}' + getQueryString());
                         }
-                    }, showValidateError, null, false, 'alert');*/
+                    }, showValidateError, null, false, 'alert');
                 });
 
 

@@ -120,7 +120,7 @@
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/live/video/LiveManager/create/') }}' + uri_param,
+                    'url' : '{{ site_url('/live/videoManager/create/') }}' + uri_param,
                     'width' : 900
                 });
             });
@@ -129,7 +129,7 @@
             $('.btn-video').click(function() {
                 var uri_param = '?video_route=' + $(this).data('dideo-route');
                 $('.btn-video').setLayer({
-                    'url' : '{{ site_url('/live/video/LiveManager/viewVideoModel/') }}' + uri_param,
+                    'url' : '{{ site_url('/live/videoManager/viewVideoModel/') }}' + uri_param,
                     'width' : 900
                 });
             });
@@ -154,7 +154,7 @@
                     '_method' : 'PUT',
                     'params' : JSON.stringify($params)
                 };
-                sendAjax('{{ site_url('/live/video/LiveManager/reorder') }}', data, function(ret) {
+                sendAjax('{{ site_url('/live/videoManager/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace(location.pathname + dtParamsToQueryString($datatable));
@@ -173,7 +173,7 @@
                 }
 
                 $('.btn_board').setLayer({
-                    "url" : "{{ site_url('/live/video/LiveManager/') }}" + modal_path + '/' + bm_idx + '?site_code=' + site_code,
+                    "url" : "{{ site_url('/live/videoManager/') }}" + modal_path + '/' + bm_idx + '?site_code=' + site_code,
                     "width" : "1200"
                 });
             });

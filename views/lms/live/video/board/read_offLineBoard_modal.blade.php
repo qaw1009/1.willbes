@@ -109,7 +109,7 @@
                     }
 
                     var uri_route = path + '/' + bm_idx + '?site_code=' + get_site_code;
-                    replaceModal('{{ site_url('/live/video/LiveManager/') }}' + uri_route, {});
+                    replaceModal('{{ site_url('/live/videoManager/') }}' + uri_route, {});
                 });
             </script>
 

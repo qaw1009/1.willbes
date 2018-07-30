@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LiveManagerModel extends WB_Model
+class VideoManagerModel extends WB_Model
 {
     private $_table = [
         'site' => 'lms_site',
@@ -50,11 +50,11 @@ class LiveManagerModel extends WB_Model
         $where_campus = $this->_conn->group_start();
         foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
             $where_campus->or_group_start();
-                $where_campus->or_where('lms_live_video.SiteCode',$set_site_ccd);
-                $where_campus->group_start();
-                    $where_campus->where('lms_live_video.CampusCcd', $this->codeModel->campusAllCcd);
-                    $where_campus->or_where_in('lms_live_video.CampusCcd', $set_campus_ccd);
-                $where_campus->group_end();
+            $where_campus->or_where('lms_live_video.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('lms_live_video.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('lms_live_video.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
             $where_campus->group_end();
         }
         $where_campus->or_where('lms_live_video.CampusCcd', "''", false);

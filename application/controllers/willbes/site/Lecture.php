@@ -111,7 +111,6 @@ class Lecture extends \app\controllers\FrontController
         $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
         $this->load->view('site/lecture/info_modal', [
-            'arr_input' => $this->_reqG(null),
             'data' => $data
         ]);
     }

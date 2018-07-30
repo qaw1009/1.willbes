@@ -364,22 +364,26 @@ class CommonLectureModel extends WB_Model
                 throw new \Exception('샘플 수정에 실패했습니다.');
             }
 
-            $wUnitCode = element('wUnitCode',$input,'');
+            $wUnitCode = array_values(array_unique(element('wUnitCode',$input,'')));
 
             if(empty($wUnitCode) === false) {
                 for($i=0;$i<count($wUnitCode);$i++) {
+
                     $data = [
                         'ProdCode' => $prodcode
-                        ,'wUnitIdx' => $wUnitCode[$i]
-                        ,'OrderNum' => $i+1
-                        ,'RegAdminIdx' => $this->session->userdata('admin_idx')
+                        , 'wUnitIdx' => $wUnitCode[$i]
+                        , 'OrderNum' => $i + 1
+                        , 'RegAdminIdx' => $this->session->userdata('admin_idx')
                     ];
-
-                    if($this->_conn->set($data)->insert($this->_table['sample']) === false) {
+                    if ($this->_conn->set($data)->insert($this->_table['sample']) === false) {
                         throw new \Exception('샘플 정보 등록에 실패했습니다.');
                     }
+
                 }
             }
+
+
+
 
         } catch (\Exception $e) {
             return $e->getMessage();

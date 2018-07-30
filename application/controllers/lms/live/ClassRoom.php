@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LectureRoom extends \app\controllers\BaseController
+class ClassRoom extends \app\controllers\BaseController
 {
     protected $models = array('sys/site');
     protected $helpers = array();
@@ -24,7 +24,7 @@ class LectureRoom extends \app\controllers\BaseController
 
         $list = [];
 
-        $this->load->view("live/lecture_room/index", [
+        $this->load->view("live/class_room/index", [
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'data' => $list
@@ -53,7 +53,7 @@ class LectureRoom extends \app\controllers\BaseController
             }*/
         }
 
-        $this->load->view('live/lecture_room/create', [
+        $this->load->view('live/class_room/create', [
             'method' => $method,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,

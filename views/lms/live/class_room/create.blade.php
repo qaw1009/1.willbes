@@ -86,13 +86,13 @@
                 $(document).ready(function() {
                     // 등록
                     $regi_form.submit(function() {
-                        var _url = '{{ site_url('/live/lectureRoom/store/') }}';
+                        var _url = '{{ site_url('/live/classRoom/store/') }}';
 
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/live/lectureRoom/') }}' + dtParamsToQueryString($datatable));
+                                location.replace('{{ site_url('/live/classRoom/') }}' + dtParamsToQueryString($datatable));
                             }
                         }, showValidateError, null, false, 'alert');
                     });

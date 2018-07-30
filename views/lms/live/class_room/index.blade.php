@@ -53,8 +53,8 @@
                         <th>NO</th>
                         <th class="searching_site_code">운영 사이트</th>
                         <th class="searching_campus">캠퍼스</th>
-                        <th class="searching_lecture_code">강의실코드</th>
-                        <th class="searching searching_lecture_name">강의실명</th>
+                        <th class="searching_class_code">강의실코드</th>
+                        <th class="searching searching_class_name">강의실명</th>
                         <th class="searching_is_use">사용여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
@@ -107,7 +107,7 @@
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/live/lectureRoom/create/') }}' + uri_param,
+                    'url' : '{{ site_url('/live/classRoom/create/') }}' + uri_param,
                     'width' : 900
                 });
             });

@@ -99,7 +99,7 @@ class ProductFModel extends WB_Model
             // 온라인 단강좌
             case 'on_lecture' :
                     $arr_condition = array_merge_recursive($arr_condition, [
-                        'EQ' => ['LecSaleType' => 'N']   // 일반강의, 마스터강의 사용여부 추가
+                        'EQ' => ['LecSaleType' => 'N']   // 일반강의 종류
                     ]);
                 break;
         }

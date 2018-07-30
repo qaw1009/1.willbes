@@ -42,6 +42,7 @@
                             <a href="#none" onclick="openWin('viewBox')">맛보기{{ empty($data['LectureSampleData']) ? '' : count($data['LectureSampleData']) }}</a>
                         </div>
                         <div id="viewBox" class="viewBox">
+                            <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
                             @foreach($data['LectureSampleData'] as $sample_idx => $sample_row)
                                 <dl class="NSK">
                                     <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>

@@ -367,7 +367,6 @@ class CommonLectureModel extends WB_Model
             if(empty(element('wUnitCode',$input,'')) === false) {
 
                 $wUnitCode = array_values(array_unique(element('wUnitCode', $input, '')));
-
                 if (empty($wUnitCode) === false) {
                     for ($i = 0; $i < count($wUnitCode); $i++) {
 
@@ -384,9 +383,6 @@ class CommonLectureModel extends WB_Model
                     }
                 }
             }
-
-
-
         } catch (\Exception $e) {
             return $e->getMessage();
         }

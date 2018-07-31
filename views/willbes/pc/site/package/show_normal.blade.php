@@ -73,6 +73,7 @@
                     <span class="price-total tx-light-blue" id="totalPrice"></span>
                 </div>
                 <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$price_row['RealSalePrice']}}"/>
+                <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                 <div class="willbes-Lec-buyBtn">
                     <ul>
                         <li class="btnAuto180 h36">

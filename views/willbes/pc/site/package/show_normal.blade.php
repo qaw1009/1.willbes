@@ -42,9 +42,9 @@
                 @foreach($arr_input as $key => $val)
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                 @endforeach
-                <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
+                <input type="hidden" name="learn_pattern" value="adminpack_lecture"/>  {{-- 학습형태 --}}
+                <input type="hidden" name="cart_type" value="on_lecture"/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
-
 
             <div class="willbes-Lec-Package-Price p_re">
                 <div class="total-PriceBox NG">
@@ -72,7 +72,7 @@
                     </span>
                     <span class="price-total tx-light-blue" id="totalPrice"></span>
                 </div>
-                <input name="prod_code[]"  type="hidden" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$price_row['RealSalePrice']}}">
+                <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$price_row['RealSalePrice']}}"/>
                 <div class="willbes-Lec-buyBtn">
                     <ul>
                         <li class="btnAuto180 h36">
@@ -305,7 +305,6 @@
                     $lecPrice_total += parseInt($(this).data('info'));
                 });
 
-
                 $regi_form.find('.chk_books').each(function (index, item){
                     if ($(this).is(':checked')) {
                         $bookPrice_total += $(this).data('sale-price');
@@ -313,11 +312,10 @@
                 });
 
                 $price_total = $lecPrice_total + $bookPrice_total;
-                //alert($price_total);
 
                 $("#bookPrice").text(addComma($bookPrice_total)+'원');
                 $("#totalPrice").text(addComma($price_total)+'원');
-            }
+            };
 
             // 상품 선택/해제
             $regi_form.on('click', '.chk_books', function() {
@@ -335,72 +333,13 @@
 
             price_cal();        //가격 계산
 
-            // 장바구니 이동 버튼 클릭
-            $buy_layer.on('click', '.answerBox_block', function() {
-                location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}?tab=' + $regi_form.find('input[name="only_cart_type"]').val();
-            });
-
-            // 계속구매 버튼 클릭
-            $buy_layer.on('click', '.waitBox_block', function() {
-                $buy_layer.find('.pocketBox').css('display','none').hide();
-                $buy_layer.removeClass('active');
-            });
-
-            // 레이어 장바구니, 바로결제 버튼 클릭
-            $buy_layer.on('click', 'button[name="btn_only_cart"], button[name="btn_only_direct_pay"]', function () {
-                var $is_direct_pay = $(this).data('direct-pay') || 'N';
-                var $only_prod_code = $regi_form.find('input[name="only_prod_code"]').val();
-
-                if ($only_prod_code.length < 1) {
-                    alert('강좌를 선택해 주세요.');
-                    return;
-                }
-
-                // set hidden value
-                $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
-
-                var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
-                var data = arrToJson($regi_form.find('input[type="hidden"]').serializeArray());
-                sendAjax(url, data, function(ret) {
-                    if (ret.ret_cd) {
-                        if (ret.ret_data.hasOwnProperty('ret_url') === true) {
-                            location.href = ret.ret_data.ret_url;
-                        } else {
-                            openWin('pocketBox');
-                        }
-                    }
-                }, showAlertError, false, 'POST');
-            });
-
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
                 var $is_direct_pay = $(this).data('direct-pay') || 'N';
+                var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-                /*
-                if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
-                    alert('강좌를 선택해 주세요.');
-                    return;
-                }
-                */
-
-                if ($is_direct_pay === 'Y') {
-                    if (checkDirectPay($regi_form) === false) {
-                        return;
-                    }
-                }
-
-                // set hidden value
-                $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
-                $regi_form.find('input[name="only_prod_code"]').val('');
-
-                var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
-                ajaxSubmit($regi_form, url, function(ret) {
-                    if(ret.ret_cd) {
-                        location.href = ret.ret_data.ret_url;
-                    }
-                }, showValidateError, null, false, 'alert');
+                cartNDirectPay($regi_form, $is_direct_pay, $cate_code);
             });
-
         });
     </script>
 @stop

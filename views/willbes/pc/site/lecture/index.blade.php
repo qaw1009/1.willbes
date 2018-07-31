@@ -132,9 +132,9 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
-            <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
-            <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
             <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
+            <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+            <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both">
                 <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>
@@ -224,7 +224,7 @@
                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                             <div class="priceWrap chk buybtn p_re">
                                                 @if($row['IsCart'] == 'Y')
-                                                    <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);"/></span>
+                                                    <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['SaleStatusCcd'] == '618002') disabled="disabled" @endif/></span>
                                                 @else
                                                     <span class="chkBox" style="width: 14px;"></span>
                                                 @endif

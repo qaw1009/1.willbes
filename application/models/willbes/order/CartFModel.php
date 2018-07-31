@@ -333,4 +333,15 @@ class CartFModel extends BaseOrderFModel
 
         return true;
     }
+
+    /**
+     * 온라인 운영자 패키지 사전 체크
+     * @param $prod_code
+     * @param $parent_prod_code
+     * @return bool
+     */
+    private function _check_adminpack_lecture($prod_code, $parent_prod_code)
+    {
+        return true;
+    }
 }

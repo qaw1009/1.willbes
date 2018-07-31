@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-10 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), false) !!}
                         &nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다. 
                     </div>
                 </div>
@@ -233,17 +233,15 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/banner/regist") }}' + getQueryString());
+                location.replace('{{ site_url("/site/banner/regist/") }}' + getQueryString());
             });
             // ajax submit
             $regi_form.submit(function() {
-                var site_code = $regi_form.find('select[name="site_code"]').val();
-                var site_all_code = "{{config_item('app_intg_site_code')}}";
                 var _url = '{{ site_url("/site/banner/regist/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     @if($method == 'POST')
-                    if(site_code != site_all_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    if($regi_form.find('input[name="cate_code[]"]').length < 1) {
                         alert('카테고리 선택 필드는 필수입니다.');
                         return false;
                     }

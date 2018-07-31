@@ -155,16 +155,14 @@ class BannerRegistModel extends WB_Model
             $b_idx = $this->_conn->insert_id();
 
             //카테고리 저장
-            if ($site_code != config_item('app_intg_site_code')) {
-                $category_code = element('cate_code', $input);
-                foreach ($category_code as $key => $val) {
-                    $category_data['BIdx'] = $b_idx;
-                    $category_data['CateCode'] = $val;
-                    $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                    $category_data['RegIp'] = $this->input->ip_address();
-                    if ($this->_addBannerCategory($category_data) === false) {
-                        throw new \Exception('카테고리 등록에 실패했습니다.');
-                    }
+            $category_code = element('cate_code', $input);
+            foreach ($category_code as $key => $val) {
+                $category_data['BIdx'] = $b_idx;
+                $category_data['CateCode'] = $val;
+                $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                $category_data['RegIp'] = $this->input->ip_address();
+                if ($this->_addBannerCategory($category_data) === false) {
+                    throw new \Exception('카테고리 등록에 실패했습니다.');
                 }
             }
 

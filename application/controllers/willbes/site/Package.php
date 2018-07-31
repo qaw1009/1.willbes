@@ -118,12 +118,15 @@ class Package extends \app\controllers\FrontController
             show_alert('상품코드가 존재하지 않습니다.', 'back');
         }
 
+        $order_by=[];
+
         switch ($pack) {
             case '648001':
                 $view_page = 'show_normal';
                 break;
             case '648002':
                 $view_page = 'show_choice';
+                $order_by = ['B.IsEssential'=>'DESC', 'B.SubGroupName'=>'ASC'];
                 break;
         }
 
@@ -131,7 +134,7 @@ class Package extends \app\controllers\FrontController
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
 
-        $data_sublist = $this->packageFModel->subListProduct($prod_code);   //패키지 하위 강좌 목록
+        $data_sublist = $this->packageFModel->subListProduct($prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
 
         foreach ($data_sublist as $idx => $row) {
             $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
@@ -146,9 +149,5 @@ class Package extends \app\controllers\FrontController
             'data_sublist' => $data_sublist
         ]);
     }
-
-
-
-
 
 }

@@ -6,6 +6,11 @@
  * @returns {boolean}
  */
 function cartNDirectPay($regi_form, $is_direct_pay, $cate_code) {
+    if ($regi_form.find('input[name="sale_status_ccd"]').length > 0 && $regi_form.find('input[name="sale_status_ccd"]').val() !== '618001') {
+        alert('판매 중인 상품만 주문 가능합니다.');
+        return;
+    }
+
     if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
         alert('강좌를 선택해 주세요.');
         return;

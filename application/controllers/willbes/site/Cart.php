@@ -57,6 +57,33 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
+     * 상품정보 상세 (레이어 팝업)
+     * @param array $params
+     * @return CI_Output
+     */
+    public function info($params = [])
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+        $cart_idx = $this->_req('cart_idx');
+        if (empty($cart_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 장바구니 조회
+        $cart_data = $this->cartFModel->findCartByCartIdx($cart_idx, $sess_mem_idx);
+
+        // 패키지 서브강좌 조회
+        $list = $this->packageFModel->findProductSubLectures($cart_data['ProdCode'], $cart_data['ProdCodeSub']);
+
+        $this->load->view('site/cart/info_modal', [
+            'ele_id' => $this->_req('ele_id'),
+            'arr_learn_pattern_ccd' => $this->cartFModel->_learn_pattern_ccd,
+            'arr_admin_package_type_ccd' => $this->cartFModel->_admin_package_type_ccd,
+            'results' => ['data' => $cart_data, 'list' => $list]
+        ]);        
+    }
+
+    /**
      * 수강생교재 구매시 연결부모상품 주문여부 및 장바구니 확인
      * @param array $params
      */

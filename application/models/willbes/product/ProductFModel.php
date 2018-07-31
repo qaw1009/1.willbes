@@ -8,10 +8,12 @@ class ProductFModel extends WB_Model
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
+        'product_r_sublecture' => 'lms_product_r_sublecture',
         'product_lecture' => 'lms_product_lecture',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
+        'product_professor_concat' => 'vw_product_r_professor_concat',
         'cms_lecture' => 'wbs_cms_lecture',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'code' => 'lms_sys_code'
@@ -167,7 +169,6 @@ class ProductFModel extends WB_Model
     {
         $column = 'P.ProdCode, PL.wLecIdx, WL.wLecName, WLU.wUnitIdx, WLU.wUnitName, WLU.wUnitNum, WLU.wUnitLectureNum, WLU.wHD, WLU.wSD, WLU.wWD
             , WLU.wUnitAttachFileReal, WLU.wUnitAttachFile, WLU.wRuntime, WLU.wBookPage, WLU.wShootingDate, WLU.wProfIdx';
-
         $from = '
             from ' . $this->_table['product'] . ' as P		
                 inner join ' . $this->_table['product_lecture'] . ' as PL
@@ -181,7 +182,6 @@ class ProductFModel extends WB_Model
                 and WL.wIsUse = "Y" and WL.wIsStatus = "Y"
                 and WLU.wIsUse = "Y" and WLU.wIsStatus = "Y"            
         ';
-
         $order_by = 'order by P.ProdCode desc, WLU.wOrderNum asc, WLU.wUnitIdx desc';
 
         // 쿼리 실행
@@ -213,6 +213,33 @@ class ProductFModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from, [$prod_book_code]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 상품별 단강좌 목록 조회 (패키지)
+     * @param $prod_code
+     * @param array $prod_sub_codes
+     * @return mixed
+     */
+    public function findProductSubLectures($prod_code, $prod_sub_codes = [])
+    {
+        $column = 'PS.ProdCode, PS.ProdCodeSub, P.ProdName as ProdNameSub, PS.IsEssential, VPP.ReprProfIdx, VPP.ReprWProfName';
+        $from = '
+            from ' . $this->_table['product_r_sublecture'] . ' as PS
+                inner join ' . $this->_table['product'] . ' as P
+                    on PS.ProdCodeSub = P.ProdCode
+                inner join ' . $this->_table['product_professor_concat'] . ' as VPP
+                    on PS.ProdCodeSub = VPP.ProdCode
+            where PS.ProdCode = ?
+                and PS.IsStatus = "Y"
+                and P.IsStatus = "Y"     
+        ';
+        $where = $this->_conn->makeWhere(['IN' => ['PS.ProdCodeSub' => $prod_sub_codes]])->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where, [$prod_code]);
 
         return $query->result_array();
     }

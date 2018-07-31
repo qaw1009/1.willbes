@@ -29,7 +29,7 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['admin_package'] . '" and PL.PackTypeCcd = "' . $this->_admin_package_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
-                , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd
+                , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , ifnull(PB.SubjectIdx, PL.SubjectIdx) as SubjectIdx, ifnull(PB.ProfIdx, PD.ProfIdx) as ProfIdx                
                 , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
@@ -342,6 +342,16 @@ class CartFModel extends BaseOrderFModel
      */
     private function _check_adminpack_lecture($prod_code, $parent_prod_code)
     {
+        $data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);
+
+        if (empty($data) === true) {
+            return '데이터 조회에 실패했습니다.';
+        }
+        if ($data['SaleStatusCcd'] !== $this->_available_sale_status_ccd['product']) {
+            // 판매가능 상품만 저장 가능
+            return '판매 중인 상품만 주문 가능합니다.';
+        }
+
         return true;
     }
 }

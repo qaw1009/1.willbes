@@ -55,27 +55,11 @@
                                                     <td class="w-list tx-left pl20"><span class="pBox p1">강좌</span> {{ $row['ProdName'] }}</td>
                                                 @else
                                                     <td class="w-list tx-left p_re pl20">
-                                                        <a href="#none" onclick="openWin('package_lec_list_{{ $row['CartIdx'] }}');">
+                                                        <a href="#none" class="btn-package-info" data-cart-idx="{{ $row['CartIdx'] }}">
                                                             <span class="pBox p2">패키지</span> {{ $row['ProdName'] }}
                                                             <img class="dot" style="display: none; margin: -2px 0 0 5px;" src="{{ img_url('sub/icon_detail.gif') }}">
                                                         </a>
-                                                        <div id="package_lec_list_{{ $row['CartIdx'] }}" class="willbes-Layer-Box-sm">
-                                                            <a class="closeBtn" href="#none" onclick="closeWin('package_lec_list_{{ $row['CartIdx'] }}');">
-                                                                <img src="{{ img_url('gnb/close.png') }}">
-                                                            </a>
-                                                            <table cellspacing="0" cellpadding="0" class="productTable tx-gray">
-                                                                <colgroup>
-                                                                    <col style="width: 65px;">
-                                                                    <col style="width: 455px;">
-                                                                </colgroup>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>정채영<span class="row-line">|</span></td>
-                                                                    <td class="tx-left pl20">2017(지방직/서울시) 정채영국어실전동형문제풀이(4-5월)</td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
+                                                        <div id="package_lec_list_{{ $row['CartIdx'] }}" class="willbes-Layer-Box-sm"></div>
                                                     </td>
                                                 @endif
                                                 <td class="w-price tx-light-blue">{{ number_format($row['RealSalePrice'], 0) }}원</td>
@@ -285,6 +269,16 @@
         if (default_tab_id.length > 0) {
             openLink('hover_' + default_tab_id);
         }
+
+        // 패키지 레이어 팝업
+        $lecture_form.on('click', '.btn-package-info', function() {
+            var cart_idx = $(this).data('cart-idx');
+            var ele_id = 'package_lec_list_' + cart_idx;
+            var data = { 'ele_id' : ele_id, 'cart_idx' : cart_idx };
+            sendAjax('{{ site_url('/cart/info') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
+        });
 
         // 전체선택/해제
         $('.all-check').on('change', function() {

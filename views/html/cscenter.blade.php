@@ -142,14 +142,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="replyList">
+                                                <tr class="replyList cscenterList">
                                                     <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                                     <td class="w-acad"><span class="oBox offlineBox NSK">공통</span></td>
                                                     <td class="w-select">회원정보</td>
                                                     <td class="w-list tx-left pl20">로그인이되지않는데어떻게하나요?</td>
                                                     <td class="w-click">123</td>
                                                 </tr>
-                                                <tr class="replyTxt bg-light-gray tx-gray">
+                                                <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
                                                     <td colspan="5">
                                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -157,14 +157,14 @@
                                                     </td>
                                                 </tr>
 
-                                                <tr class="replyList">
+                                                <tr class="replyList cscenterList">
                                                     <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                                     <td class="w-acad"><span class="oBox offlineBox NSK">공통</span></td>
                                                     <td class="w-select">회원탈퇴</td>
                                                     <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                                     <td class="w-click">244</td>
                                                 </tr>
-                                                <tr class="replyTxt bg-light-gray tx-gray">
+                                                <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
                                                     <td colspan="5">
                                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -172,14 +172,14 @@
                                                     </td>
                                                 </tr>
 
-                                                <tr class="replyList">
+                                                <tr class="replyList cscenterList">
                                                     <td class="w-no">2</td>
                                                     <td class="w-acad"><span class="oBox nyBox NSK">노량진</span></td>
                                                     <td class="w-select">회원정보</td>
                                                     <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                                     <td class="w-click">355</td>
                                                 </tr>
-                                                <tr class="replyTxt bg-light-gray tx-gray">
+                                                <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
                                                     <td colspan="5">
                                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -187,14 +187,14 @@
                                                     </td>
                                                 </tr>
 
-                                                <tr class="replyList">
+                                                <tr class="replyList cscenterList">
                                                     <td class="w-no">1</td>
                                                     <td class="w-acad"><span class="oBox smBox NSK">신림</span></td>
                                                     <td class="w-select">회원탈퇴</td>
                                                     <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                                     <td class="w-click">466</td>
                                                 </tr>
-                                                <tr class="replyTxt bg-light-gray tx-gray">
+                                                <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
                                                     <td colspan="5">
                                                         로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                         소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
@@ -410,7 +410,7 @@
                                 </table>
                                 <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                        <span>전체목록</span>
+                                        <span>목록</span>
                                     </button>
                                 </div>
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
@@ -781,7 +781,7 @@
                                 </div>
                                 <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                        <span>전체목록</span>
+                                        <span>목록</span>
                                     </button>
                                 </div>
 

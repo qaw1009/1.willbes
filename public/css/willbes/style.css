@@ -4957,6 +4957,12 @@ ul li.profList .willbes-Layer-ProfileBox {
 .tabWrap.tab_Question .subBox {
     top: 94px;
 }
+.cscenterList {
+    cursor: pointer;
+}
+.cscenterTxt {
+    display: none;
+}
 
 /* subContainer : Cs : tabcsDepth2 공통 */
 .tabWrap.tabcsDepth2 .subBox {

@@ -106,7 +106,7 @@
                                     </tr>
                                     <tr>
                                         <td>신광은 경찰</td>
-                                        <td class="tx-light-blue">1544-6219</td>
+                                        <td class="tx-light-blue">1544-5006</td>
                                         <td><a href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a></td>
                                     </tr>
                                     <tr>
@@ -172,7 +172,7 @@
                                             <tr>
                                                 <td class="w-site" rowspan="2">신광은 경찰</td>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-call">1544-5006</td>
+                                                <td class="w-call">1544-0336</td>
                                                 <td class="w-time tx-left pl25">
                                                     평일 9:00~18:00 | 토요일 9:00~13:00<br/>
                                                     일요일/공휴일 휴무
@@ -180,7 +180,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-call">1544-0330</td>
+                                                <td class="w-call">1544-5006</td>
                                                 <td class="w-time tx-left pl25">
                                                     평일/주말 9:00~22:00
                                                 </td>
@@ -230,7 +230,7 @@
                                     <th class="bg-light-gray" colspan="3">
                                         <ul>
                                             <li><a href="#none">회원정보</a></li>
-                                            <li><a href="#none">주문/결제</a></li>
+                                            <li><a href="#none">결제/환불</a></li>
                                             <li><a href="#none">배송</a></li>
                                             <li><a href="#none">취소/환불/반품</a></li>
                                             <li><a href="#none">온라인수강</a></li>

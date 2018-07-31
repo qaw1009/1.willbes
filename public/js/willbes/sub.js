@@ -43,11 +43,14 @@ $(function() {
 $(function() {
     $('.willbes-Lec-Table .w-acad-tit a').click(function() {
         var $lec_info_table = $(this).parents('.willbes-Lec-Table').find('.lecInfoTable');
+        var $lec_info = $(this).parents('.willbes-Lec-Table');
 
         if ($lec_info_table.is(':hidden')) {
             $lec_info_table.show().css('display','block');
+            $lec_info.addClass('active');
         } else {
             $lec_info_table.hide().css('display','none');
+            $lec_info.removeClass('active');
         }
     });
 });

@@ -141,7 +141,7 @@
                     <div class="col-md-4 item">
                         <input type="text" id="on_air_name" name="on_air_name" class="form-control" title="강좌명" required="required" placeholder="" value="{{$data['OnAirName']}}">
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="lecture_room_idx">강의실 <span class="required">*</span>
+                    <label class="control-label col-md-1-1 d-line" for="class_room_idx">강의실 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 ml-12-dot">
                         <div class="form-inline item">

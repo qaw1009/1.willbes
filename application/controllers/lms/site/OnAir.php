@@ -41,10 +41,16 @@ class OnAir extends \app\controllers\BaseController
             ],
         ];
 
+        $set_search_date = [
+            'type' => $this->_reqP('search_date_type'),
+            'start_date' => $this->_reqP('search_start_date'),
+            'end_date' => $this->_reqP('search_end_date')
+        ];
+
         $list = [];
-        $count = $this->onAirModel->listAllOnAir(true, $arr_condition, $arr_condition_category);
+        $count = $this->onAirModel->listAllOnAir(true, $arr_condition, $arr_condition_category, $set_search_date);
         if ($count > 0) {
-            $list = $this->onAirModel->listAllOnAir(false, $arr_condition, $arr_condition_category, $this->_reqP('length'), $this->_reqP('start'), ['OaIdx' => 'desc']);
+            $list = $this->onAirModel->listAllOnAir(false, $arr_condition, $arr_condition_category, $set_search_date, $this->_reqP('length'), $this->_reqP('start'), ['OaIdx' => 'desc']);
         }
 
         return $this->response([
@@ -125,12 +131,13 @@ class OnAir extends \app\controllers\BaseController
         $rules = [
             ['field'=>'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field'=>'cate_code[]', 'label'=>'카테고리', 'rules'=>'trim|required'],
+            ['field'=>'campus_ccd', 'label'=>'캠퍼스', 'rules'=>'trim|required'],
             ['field'=>'study_start_date', 'label'=>'개강일', 'rules'=>'trim|required'],
             ['field'=>'on_air_num', 'label'=>'회차', 'rules'=>'trim|required'],
             ['field'=>'week[]', 'label'=>'요일', 'rules'=>'trim|required'],
             ['field'=>'on_air_start_type', 'label'=>'강의시간타입', 'rules'=>'trim|required|in_list[A,D]'],
             ['field'=>'on_air_name', 'label'=>'강좌명', 'rules'=>'trim|required'],
-            ['field'=>'lecture_room_idx', 'label'=>'강의실', 'rules'=>'trim|required'],
+            ['field'=>'class_room_idx', 'label'=>'강의실', 'rules'=>'trim|required'],
             ['field'=>'on_air_tab_name', 'label'=>'탭명칭', 'rules'=>'trim|required'],
             ['field'=>'is_use', 'label'=>'사용여부', 'rules'=>'trim|required|in_list[Y,N]'],
             ['field'=>'title[]', 'label'=>'타이틀', 'rules'=>'trim|required'],
@@ -193,18 +200,15 @@ class OnAir extends \app\controllers\BaseController
 
         //진행여부 검색
         if ($this->_reqP('search_onair_is_type') == 'Y') {
-            $arr_condition['LTE'] = ['K.OnAirLastDate' => date('Ymd')];
-        } elseif ($this->_reqP('search_onair_is_type') == 'N') {
             $arr_condition['GT'] = ['K.OnAirLastDate' => date('Ymd')];
+        } elseif ($this->_reqP('search_onair_is_type') == 'N') {
+            $arr_condition['LTE'] = ['K.OnAirLastDate' => date('Ymd')];
         }
 
         // 날짜 검색
         if ($this->_reqP('search_date_type') == 'R') {
             // 등록일
             $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
-        } elseif ($this->_reqP('search_date_type') == 'I') {
-            // 수업일
-            $arr_condition['BDT'] = ['A.StudyStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];
         }
 
         return $arr_condition;

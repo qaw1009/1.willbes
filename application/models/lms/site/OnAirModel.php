@@ -29,12 +29,13 @@ class OnAirModel extends WB_Model
      * @param $is_count
      * @param array $arr_condition
      * @param array $arr_condition_category
+     * @param array $set_search_date 기간검색 값이 송출일(I) 일경우 서브쿼리 셋팅
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listAllOnAir($is_count, $arr_condition = [], $arr_condition_category = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllOnAir($is_count, $arr_condition = [], $arr_condition_category = [], $set_search_date, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -75,7 +76,20 @@ class OnAirModel extends WB_Model
                     ORDER BY OaIdx ASC
                 ) AS temp_a
             ) AS K ON A.OaIdx = K.OaIdx
-            
+            ";
+
+        if ((empty($set_search_date) === false) && $set_search_date['type'] == 'I') {
+            $from .= "
+            INNER JOIN (
+                SELECT OaIdx
+                FROM {$this->_table['onair_date']}
+                WHERE OnAirDate >= '{$set_search_date['start_date']}' AND OnAirDate <= '{$set_search_date['end_date']}'
+                GROUP BY OaIdx
+            ) AS search_A ON A.OaIdx = search_A.OaIdx
+            ";
+        }
+
+        $from .= "
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             INNER JOIN {$this->_table['onair_title']} AS H ON A.OaIdx = H.OaIdx AND H.TitleType = '{$this->_title_type['1']}' AND H.IsStatus = 'Y'
             INNER JOIN {$this->_table['professor']} AS I ON H.ProfIdx = I.ProfIdx
@@ -112,7 +126,7 @@ class OnAirModel extends WB_Model
     public function findOnAirForModify($arr_condition)
     {
         $column = '
-            A.OaIdx, A.SiteCode, A.StudyStartDate, A.WeekArray, A.OnAirNum, A.OnAirStartType, IFNULL(A.OnAirStartTime,0) AS OnAirStartTime, IFNULL(A.OnAirEndTime,0) AS OnAirEndTime,
+            A.OaIdx, A.SiteCode, A.CampusCcd, A.CIdx, A.StudyStartDate, A.WeekArray, A.OnAirNum, A.OnAirStartType, IFNULL(A.OnAirStartTime,0) AS OnAirStartTime, IFNULL(A.OnAirEndTime,0) AS OnAirEndTime,
             TIME_FORMAT(A.OnAirStartTIme, \'%H\') AS OnAirStartHour, TIME_FORMAT(A.OnAirStartTIme, \'%i\') AS OnAirStartMin,
             TIME_FORMAT(A.OnAirEndTime, \'%H\') AS OnAirEndHour, TIME_FORMAT(A.OnAirEndTime, \'%i\') AS OnAirEndMin,
             A.OnAirName, A.OnAirTabName, A.LeftExposureType,A.LeftFileName,A.LeftFileRealName,A.LeftFileFullPath,A.LeftLink,A.RightExposureType,A.RightFileName,A.RightFileRealName,A.RightFileFullPath,A.RightLink,
@@ -232,6 +246,8 @@ class OnAirModel extends WB_Model
 
             $data = [
                 'SiteCode' => element('site_code', $input),
+                'CampusCcd' => element('campus_ccd', $input),
+                'CIdx' => element('class_room_idx', $input),
                 'StudyStartDate' => element('study_start_date', $input),
                 'OnAirNum' => element('on_air_num', $input),
                 'WeekArray' => element('week_str', $input),

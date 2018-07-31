@@ -35,7 +35,7 @@
                     <div class="col-md-6 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                             <option value="R">등록일</option>
-                            <option value="I">수업일</option>
+                            <option value="I">송출일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -157,9 +157,9 @@
                     {'data' : 'OnAirLastDate', 'render' : function(data, type, row, meta) {
                         var now_date = '{{$now_date}}';
                             if (data <= now_date) {
-                                return '진행';
-                            } else {
                                 return '종료';
+                            } else {
+                                return '진행';
                             }
                             return data;
                             //return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

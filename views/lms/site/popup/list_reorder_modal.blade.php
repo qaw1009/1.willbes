@@ -79,11 +79,7 @@
                                         <img src="{{$row['PopUpFullPath']}}{{$row['PopUpImgName']}}" width='100%' height='30%'>
                                     </td>
                                     <td>
-                                        @php
-                                            $start_datms = $row['DispStartDatm'] . ' ' . ((strlen($row['DispStartTime']) <= 1) ? '0'.$row['DispStartTime'] : $row['DispStartTime']);
-                                            $end_datms = $row['DispEndDatm'] . ' ' . ((strlen($row['DispEndTime']) <= 1) ? '0'.$row['DispEndTime'] : $row['DispEndTime']);
-                                            echo $start_datms . ' ~ ' . $end_datms;
-                                        @endphp
+                                        {{$row['DispStartDatm']}} ~ {{$row['DispEndDatm']}}
                                     </td>
                                     <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
                                 </tr>

@@ -13,6 +13,10 @@ class Package extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    /**
+     * 패키지 목록
+     * @param array $params
+     */
     public function index($params = [])
     {
 
@@ -31,7 +35,7 @@ class Package extends \app\controllers\FrontController
                 $title = '선택패키지';
                 break;
             default:
-                $title = "aaa";
+                $title = "";
                 break;
         }
 
@@ -62,7 +66,6 @@ class Package extends \app\controllers\FrontController
             $selected_list[] = $row;
         }
 
-
         $this->load->view('site/package/index',[
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
@@ -73,6 +76,79 @@ class Package extends \app\controllers\FrontController
                 ,'contents' => $contents
             ]
         ]);
-
     }
+
+    /**
+     * 패키지 콘텐츠 보기
+     * @param array $params
+     * @return CI_Output
+     */
+    public function info($params = [])
+    {
+        $prod_code = element('prod-code', $params);
+        if (empty($prod_code) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $data['lecture'] = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);
+        $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
+
+        $this->load->view('site/package/info_modal', [
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 패키지 상세 보기
+     * @param array $params
+     */
+    public function show($params = [])
+    {
+
+        $pack = element('pack', $params);
+        $prod_code = element('prod-code',$params);
+
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_input = array_merge($arr_input,[
+            'pack' => $pack
+            ,'prod-code'=>$prod_code
+        ]);
+
+        if (empty($prod_code)) {
+            show_alert('상품코드가 존재하지 않습니다.', 'back');
+        }
+
+        switch ($pack) {
+            case '648001':
+                $view_page = 'show_normal';
+                break;
+            case '648002':
+                $view_page = 'show_choice';
+                break;
+        }
+
+        $data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);  //상품 정보 추출
+        $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
+        $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
+
+        $data_sublist = $this->packageFModel->subListProduct($prod_code);   //패키지 하위 강좌 목록
+
+        foreach ($data_sublist as $idx => $row) {
+            $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+            $data_sublist[$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+            $data_sublist[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+            $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+        }
+
+        $this->load->view('site/package/'.$view_page,[
+            'arr_input' => $arr_input,
+            'data' => $data,
+            'data_sublist' => $data_sublist
+        ]);
+    }
+
+
+
+
+
 }

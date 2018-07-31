@@ -98,35 +98,33 @@
                             <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
                             <td class="w-data tx-left pl25">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack }}" class="prod-name-{{ $row['ProdCode']}}">{{$row['ProdName']}}</a>
+                                    <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                 </div>
                                 <dl class="w-info">
                                     <dt class="mr20">
-                                        <a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover1">
+                                        <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package')">
                                             <strong>패키지상세정보</strong>
                                         </a>
                                     </dt>
-                                    <dt>개강일 : <span class="studydate-{{ $row['ProdCode']}} tx-blue">{{$row['StudyStartDate']}}</span></dt>
+                                    <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="studyperiod-{{ $row['ProdCode']}} tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                    <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
                                     <dt class="NSK ml15">
-                                        <span class="multipleapply-{{ $row['ProdCode']}} nBox n1">{{$row['MultipleApply']}}배수</span>
+                                        <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
                                     </dt>
                                 </dl>
-                                @foreach($data['contents'] as $content_row)
-                                    @if( $row['ProdCode'] == $content_row['ProdCode'])
-                                    <span class="content-{{$content_row['ContentTypeCcd']}}-{{$row['ProdCode']}} d_none">{!! $content_row['Content'] !!}</span>
-                                    @endif
-                                @endforeach
-
                             </td>
                             <td class="w-notice">
+                            @if(empty($row['ProdPriceData'] ) === false)
                                 @foreach($row['ProdPriceData'] as $price_row)
+                                    @if($loop -> index === 1)
                                     <div class="priceWrap">
                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
                                         <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
                                     </div>
+                                    @endif
                                 @endforeach
+                            @endif
                             </td>
                         </tr>
                         @endforeach
@@ -143,49 +141,7 @@
             </div>
             <!-- willbes-Lec -->
 
-            <div id="InfoForm" class="willbes-Layer-Box d2">
-                <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
-                    <img src="{{ img_url('sub/close.png') }}">
-                </a>
-                <div class="target-name Layer-Tit tx-dark-black NG"></div>
-                <div class="lecDetailWrap">
-                    <div class="classInfo">
-                        <dl class="w-info NG">
-                            <dt>개강일 : <span class="target-studydate tx-blue"></span></dt>
-                            <dt><span class="row-line">|</span></dt>
-                            <dt>수강기간 : <span class="target-studyperiod tx-blue"></span></dt>
-                            <dt class="NSK ml15">
-                                <span class="target-multipleapply nBox n1"></span>
-                            </dt>
-                        </dl>
-                    </div>
-                    <div class="classInfoTable">
-                        <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
-                            <colgroup>
-                                <col style="width: 140px;">
-                                <col width="*">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <td class="w-list bg-light-white">
-                                    강좌유의사항<br/>
-                                    <span class="tx-red">(필독)</span>
-                                </td>
-                                <td class="target-content-633001 w-data tx-left pl25"></td>
-                            </tr>
-                            <tr>
-                                <td class="w-list bg-light-white">강좌소개</td>
-                                <td class="target-content-633002 w-data tx-left pl25"></td>
-                            </tr>
-                            <tr>
-                                <td class="w-list bg-light-white">강좌특징</td>
-                                <td class="target-content-633003 w-data tx-left pl25"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <div id="InfoForm" class="willbes-Layer-Box d2"></div>
 
             <!-- willbes-Layer-Box -->
         </div>
@@ -198,37 +154,7 @@
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
-        var $regi_form = $('#regi_form');
-        var $buy_layer = $('.willbes-Lec-buyBtn-sm');
-
         $(document).ready(function() {
-
-            $('.willbes-Lec-Table').on('click', '.btn-lecture-info', function() {
-                var $prod_code = $(this).data('prod-code');
-                var $location = $('.willbes-Lec-Table');
-                var $target = $('#InfoForm');
-
-                /*
-                var $prod_title =  $location.find('.prod-name-'+$prod_code).text();
-                var $studydate =  $location.find('.studydate-'+$prod_code).text();
-                var $studyperiod = $location.find('.studyperiod-'+$prod_code).text();
-                var $multipleapply = $location.find('.multipleapply-'+$prod_code).text();
-                var $content_633001 = $location.find('.content-633001-'+$prod_code).text();
-                var $content_633002 = $location.find('.content-633002-'+$prod_code).text();
-                var $content_633003 = $location.find('.content-633003-'+$prod_code).text();
-                */
-
-                $target.find('.target-name').text($location.find('.prod-name-'+$prod_code).text());
-                $target.find('.target-studydate').text($location.find('.studydate-'+$prod_code).text());
-                $target.find('.target-studyperiod').text($location.find('.studyperiod-'+$prod_code).text());
-                $target.find('.target-multipleapply').text($location.find('.multipleapply-'+$prod_code).text());
-                $target.find('.target-content-633001').text($location.find('.content-633001-'+$prod_code).text());
-                $target.find('.target-content-633002').text($location.find('.content-633002-'+$prod_code).text());
-                $target.find('.target-content-633003').text($location.find('.content-633003-'+$prod_code).text());
-
-
-                openWin('InfoForm');
-            });
 
         });
     </script>

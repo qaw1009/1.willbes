@@ -117,11 +117,11 @@
                     { text: '<i class="fa fa-copy mr-10"></i> 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-use' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder-open' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 배너 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/site/banner/create') }}' + dtParamsToQueryString($datatable);
+                            location.href = '{{ site_url('/site/banner/regist/create') }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/site/banner/listAjax') }}',
+                    'url' : '{{ site_url('/site/banner/regist/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -176,7 +176,7 @@
 
             $('.btn-reorder-open').click(function() {
                 $('.btn-reorder-open').setLayer({
-                    "url" : "{{ site_url('/site/banner/listReOrderModal') }}",
+                    "url" : "{{ site_url('/site/banner/regist/listReOrderModal') }}",
                     "width" : "1400",
                 });
             });
@@ -184,7 +184,7 @@
             // 삭제
             $('.btn-is-use').click(function() {
                 var $params = {};
-                var _url = "{{ site_url('/site/banner/delBanner') }}"
+                var _url = "{{ site_url('/site/banner/regist/delBanner') }}"
 
                 $('input[name="is_use"]:checked').each(function() {
                     $params[$(this).data('is-use-idx')] = $(this).val();
@@ -211,7 +211,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/site/banner/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url('/site/banner/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
     </script>

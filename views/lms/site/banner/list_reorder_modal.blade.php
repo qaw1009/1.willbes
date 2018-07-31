@@ -147,10 +147,10 @@
                             '_method' : 'PUT',
                             'params' : JSON.stringify($params)
                         };
-                        sendAjax('{{ site_url('/site/banner/reorder') }}', data, function(ret) {
+                        sendAjax('{{ site_url('/site/banner/regist/reorder') }}', data, function(ret) {
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                replaceModal('/site/banner/listReOrderModal', {});
+                                replaceModal('/site/banner/regist/listReOrderModal', {});
                             }
                         }, showError, false, 'POST');
                     });

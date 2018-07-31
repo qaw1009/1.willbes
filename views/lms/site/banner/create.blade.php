@@ -3,7 +3,7 @@
     <h5>- 사이트 섹션별 배너를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/banner/store") }}" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/banner/regist/store") }}" novalidate>--}}
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="b_idx" value="{{ $b_idx }}"/>
@@ -233,13 +233,13 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/banner") }}/' + getQueryString());
+                location.replace('{{ site_url("/site/banner/regist") }}' + getQueryString());
             });
             // ajax submit
             $regi_form.submit(function() {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 var site_all_code = "{{config_item('app_intg_site_code')}}";
-                var _url = '{{ site_url("/site/banner/store") }}' + getQueryString();
+                var _url = '{{ site_url("/site/banner/regist/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     @if($method == 'POST')
@@ -251,7 +251,7 @@
 
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/site/banner") }}/' + getQueryString());
+                        location.replace('{{ site_url("/site/banner/regist/") }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });

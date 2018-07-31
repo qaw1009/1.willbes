@@ -37,9 +37,9 @@ class Regist extends \app\controllers\BaseController
         $arr_condition = $this->_getListConditions();
 
         $list = [];
-        $count = $this->bannerModel->listAllBanner(true, $arr_condition);
+        $count = $this->bannerRegistModel->listAllBanner(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->bannerModel->listAllBanner(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BIdx' => 'desc']);
+            $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BIdx' => 'desc']);
 
             foreach ($list as $key => $val) {
                 $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);
@@ -74,13 +74,13 @@ class Regist extends \app\controllers\BaseController
                 ]
             ]);
 
-            $data = $this->bannerModel->findBannerForModify($arr_condition);
+            $data = $this->bannerRegistModel->findBannerForModify($arr_condition);
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 
             // 카테고리 연결 데이터 조회
-            $arr_cate_code = $this->bannerModel->listBannerCategory($b_idx);
+            $arr_cate_code = $this->bannerRegistModel->listBannerCategory($b_idx);
             $data['CateCodes'] = $arr_cate_code;
             $data['CateNames'] = implode(', ', array_values($arr_cate_code));
         }
@@ -135,7 +135,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->bannerModel->{$method . 'Banner'}($this->_reqP(null, false));
+        $result = $this->bannerRegistModel->{$method . 'Banner'}($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -154,7 +154,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
         $params = json_decode($this->_req('params'), true);
-        $result = $this->bannerModel->delBanner($params);
+        $result = $this->bannerRegistModel->delBanner($params);
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -169,7 +169,7 @@ class Regist extends \app\controllers\BaseController
         //배너노출섹션, 배너위치
         $banner_info = $this->codeModel->getCcdInArray([$this->_groupCcd['banner_disp'], $this->_groupCcd['banner_location']]);
 
-        $list = $this->bannerModel->listAllBanner(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'BIdx' => 'desc']);
+        $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'BIdx' => 'desc']);
 
         foreach ($list as $key => $val) {
             $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);
@@ -197,7 +197,7 @@ class Regist extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->bannerModel->modifyBannerReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->bannerRegistModel->modifyBannerReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

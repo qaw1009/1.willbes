@@ -50,6 +50,35 @@ class BannerDispModel extends WB_Model
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    public function findBannerDisp($column = '*', $arr_condition = [])
+    {
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        return $this->_conn->getFindResult($this->_table['banner_disp'], $column, $arr_condition);
+    }
+
+    public function findBannerDispForModify($arr_condition)
+    {
+        $column = "
+            A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.Desc, A.IsUse, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm,
+            B.SiteName, C.CateName, D.CcdName,
+            E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
+            ";
+
+        $from = "
+            FROM {$this->_table['banner_disp']} AS A
+            INNER JOIN {$this->_table['site']} AS B ON A.SiteCode = B.SiteCode
+            LEFT JOIN {$this->_table['sys_category']} AS C ON A.CateCode = C.CateCode AND C.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_code']} AS D ON A.DispTypeCcd = D.Ccd            
+            INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
     /**
      * 배너노출섹션 등록
      * @param array $input
@@ -83,6 +112,45 @@ class BannerDispModel extends WB_Model
             $this->_conn->trans_rollback();
             return error_result($e);
         }
+        return true;
+    }
+
+    /**
+     * 배너 수정
+     * @param array $input
+     * @return array|bool
+     */
+    public function modifyBannerDisp($input = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $bd_idx = element('bd_idx', $input);
+
+            // 기존 배너 기본정보 조회
+            $row = $this->findBannerDisp('BdIdx', ['EQ' => ['BdIdx' => $bd_idx]]);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            $data = [
+                'DispName' => element('disp_name', $input),
+                'DispTypeCcd' => element('disp_type', $input),
+                'Desc' => element('desc', $input),
+                'IsUse' => element('is_use', $input),
+                'UpdAdminIdx' => $admin_idx
+            ];
+
+            if ($this->_conn->set($data)->where('BdIdx', $bd_idx)->update($this->_table['banner_disp']) === false) {
+                throw new \Exception('배너 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
         return true;
     }
 }

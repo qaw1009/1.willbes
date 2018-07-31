@@ -60,6 +60,22 @@ class Disp extends \app\controllers\BaseController
         $data = null;
         $bd_idx = null;
 
+        if (empty($params[0]) === false) {
+            $method = 'PUT';
+            $bd_idx = $params[0];
+            $arr_condition = ([
+                'EQ'=>[
+                    'A.BdIdx' => $bd_idx,
+                    'A.IsStatus' => 'Y'
+                ]
+            ]);
+
+            $data = $this->bannerDispModel->findBannerDispForModify($arr_condition);
+            if (count($data) < 1) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+        }
+
         //배너노출방식
         $disp_info = $this->codeModel->getCcd($this->_groupCcd['banner_disp']);
 
@@ -91,7 +107,7 @@ class Disp extends \app\controllers\BaseController
             $method = 'modify';
             $rules = array_merge($rules, [
                 ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-                ['field' => 'b_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+                ['field' => 'bd_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
             ]);
         }
 

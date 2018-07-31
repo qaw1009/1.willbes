@@ -30,7 +30,7 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['CateNames'] }}</p>
+                            <p class="form-control-static">{{ $data['CateName'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
                             <span id="selected_category" class="pl-10"></span>
@@ -50,7 +50,7 @@
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
                             @foreach($disp_info as $key => $val)
-                                <input type="radio" id="disp_type_{{$key}}" name="disp_type" class="flat" value="{{$key}}" required="required" title="링크방식" @if(($method == 'POST' && $loop->index == 1) || $key == $data['DispType'])checked="checked"@endif/> <label for="disp_type_{{$key}}" class="input-label">{{$val}}</label>
+                                <input type="radio" id="disp_type_{{$key}}" name="disp_type" class="flat" value="{{$key}}" required="required" title="링크방식" @if(($method == 'POST' && $loop->index == 1) || $key == $data['DispTypeCcd'])checked="checked"@endif/> <label for="disp_type_{{$key}}" class="input-label">{{$val}}</label>
                             @endforeach
                         </div>
                     </div>

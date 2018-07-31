@@ -301,6 +301,8 @@ if (!function_exists('show_alert')) {
         if (empty($url) === false) {
             if ($url == 'back') {
                 $output .= 'history.back();' . PHP_EOL;
+            } else if($url == 'close') {
+                $output .= 'window.close();' . PHP_EOL;
             } else {
                 if ($is_href === true) {
                     $output .= 'location.href = "' . $url . '";' . PHP_EOL;

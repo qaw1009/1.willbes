@@ -37,14 +37,14 @@
                         </li>
                     @endif
                     <li class="myPage dropdown">
-                        <a class="Tit" href="#none">내강의실<span class="arrow-Btn">></span></a>
+                        <a class="Tit" href="{{ app_url('/Classroom/', 'www') }}">내강의실<span class="arrow-Btn">></span></a>
                         <div class="drop-Box myPage-Box">
                             <ul>
                                 <li>
-                                    <a href="#none">수강중인 강의</a>
+                                    <a href="{{ app_url('/Classroom/ing/', 'www') }}">수강중인 강의</a>
                                 </li>
                                 <li>
-                                    <a href="#none">PASS 강의</a>
+                                    <a href="{{ app_url('/Classroom/Pass/', 'www') }}">PASS 강의</a>
                                 </li>
                                 <li>
                                     <a href="#none">배송조회</a>

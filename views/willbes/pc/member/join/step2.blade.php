@@ -161,7 +161,7 @@
                     </div>
                     <ul>
                         <li class="chk">
-                            <div class="chkBox-Agree checked">
+                            <div class="chkBox-Agree">
                                 <input type="checkbox" id="agree1" name="agree1" class="" >
                             </div>
                             <div class="agree-Tit">
@@ -171,7 +171,7 @@
                             </div>
                         </li>
                         <li class="chk">
-                            <div class="chkBox-Agree checked">
+                            <div class="chkBox-Agree">
                                 <input type="checkbox" id="agree2" name="agree2" class="" >
                             </div>
                             <div class="agree-Tit">
@@ -202,7 +202,7 @@
                         </li>
                         <li class="chk">
                             <div class="chkBox-Agree">
-                                <input type="checkbox" id="agree4" name="agree4" class="" >
+                                <input type="checkbox" id="agree4" name="agree4" class="" value="Y">
                             </div>
                             <div class="agree-Tit">
                                 <a href="#none">

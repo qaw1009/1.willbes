@@ -1,4 +1,31 @@
 /**
+ * 환경에 따라서 URL 생성 
+ * CI 의 app_url 과 동일하게 사용
+ * @param $uri
+ * @param $sub_domain
+ * @returns {string}
+ */
+function app_url($uri, $sub_domain) {
+    var $host = location.host;
+    var $base_domain = 'willbes.net';
+    var $env_domain = '';
+
+    if($uri.substring(0,1) != '/') {
+        $uri = '/'+$uri;
+    }
+
+    if( $host.indexOf('.local.') > 0 ){
+        $env_domain = 'local.';
+    } else if( $host.indexOf('.dev.') > 0 ){
+        $env_domain = 'dev.';
+    } else if( $host.indexOf('.stage.') > 0 ){
+        $env_domain = 'stage.';
+    }
+
+    return (location.protocol+'//'+$sub_domain+'.'+$env_domain+$base_domain+$uri);
+}
+
+/**
  * 콤마(,)를 추가하여 리턴 (가격)
  * @param value
  * @returns {string}

@@ -209,7 +209,7 @@
         <!-- willbes-Lec-Search -->
 
         <div class="willbes-Lec NG c_both">
-            <div class="willbes-Lec-Subject tx-dark-black">· 국어<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>
+            <div class="willbes-Lec-Subject tx-dark-black">· 국어<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
             <!-- willbes-Lec-Subject -->
 
             <div class="willbes-Lec-Profdata tx-dark-black">

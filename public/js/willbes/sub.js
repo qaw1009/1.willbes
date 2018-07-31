@@ -8,15 +8,16 @@ $(function() {
     $('.willbes-Lec-Subject .MoreBtn a').click(function() {
         var $lec_info_table = $('.willbes-Lec-Table .lecInfoTable');
         var $lec_into_btn = $('.willbes-Lec-Table .w-notice .MoreBtn a');
+        var $lec_into_btn_txt = $('.willbes-Lec-Subject .MoreBtn a span');
         
         if ($(this).hasClass('on')) {
             $lec_info_table.hide().css('display','none');
-            $(this).text('교재정보 전체보기 ▼');
+            $lec_into_btn_txt.text('전체보기 ▼');
             $(this).removeClass('on');
             $lec_into_btn.text('교재정보 보기 ▼');
         } else {
             $lec_info_table.show().css('display','block');
-            $(this).text('교재정보 전체닫기 ▲');
+            $lec_into_btn_txt.text('전체닫기 ▲');
             $(this).addClass('on');
             $lec_into_btn.text('교재정보 닫기 ▲');
         }
@@ -34,6 +35,19 @@ $(function() {
         } else {
             $lec_info_table.hide().css('display','none');
             $(this).text('교재정보 보기 ▼');
+        }
+    });
+});
+
+// 교재정보 보기(학원) 버튼 Script
+$(function() {
+    $('.willbes-Lec-Table .w-acad-tit a').click(function() {
+        var $lec_info_table = $(this).parents('.willbes-Lec-Table').find('.lecInfoTable');
+
+        if ($lec_info_table.is(':hidden')) {
+            $lec_info_table.show().css('display','block');
+        } else {
+            $lec_info_table.hide().css('display','none');
         }
     });
 });

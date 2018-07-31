@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cart extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF');
+    protected $models = array('order/cartF', 'product/packageF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -57,25 +57,35 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
-     * 수강생교재의 부모상품 유효한 장바구니 존재 여부 및 주문 여부 확인
+     * 수강생교재 구매시 연결부모상품 주문여부 및 장바구니 확인
      * @param array $params
      */
     public function checkStudentBook($params = [])
     {
-        // TODO : 패키지 상품의 ProdCodeSub를 $input_prod_code로 병합하는 개발 필요, 운영자 일반형 패키지는 연결된 단강좌 조회 로직 필요
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'learn_pattern', 'label' => '학습형태', 'rules' => 'trim|required'],
             ['field' => 'prod_code', 'label' => '상품 식별자', 'rules' => 'trim|required'],
-            ['field' => 'input_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required']
+            ['field' => 'parent_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
+        $learn_pattern = $this->_reqP('learn_pattern');
         $prod_book_code = $this->_reqP('prod_code');
+        $parent_prod_code = $this->_reqP('parent_prod_code');
         $input_prod_code = json_decode($this->_reqP('input_prod_code'), true);
-        
+
+        if ($learn_pattern == 'adminpack_lecture') {
+            // 운영자 일반형 패키지 연결 단강좌 조회
+            $pack_data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $parent_prod_code);
+            if (empty($pack_data) === false && $pack_data['PackTypeCcd'] === $this->cartFModel->_admin_package_type_ccd['normal']) {
+                $input_prod_code = explode(',', $pack_data['ProdCodeSub']);
+            }
+        }
+
         // 수강생교재 주문가능여부 확인
         $returns['is_check'] = $this->cartFModel->checkStudentBook($prod_book_code, $input_prod_code);
 

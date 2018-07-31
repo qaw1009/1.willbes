@@ -12,7 +12,11 @@ function checkStudentBook($regi_form, $chk_obj) {
         });
 
         var url = location.protocol + '//' + location.host + '/cart/checkStudentBook';
-        var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), { 'prod_code' : input_data.prodCode, 'input_prod_code' : JSON.stringify($input_prod_code)});
+        var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
+            'prod_code' : input_data.prodCode,
+            'parent_prod_code' : input_data.parentProdCode,
+            'input_prod_code' : JSON.stringify($input_prod_code)
+        });
         sendAjax(url, data, function(ret) {
             if (ret.ret_cd) {
                 if (ret.ret_data.is_check !== true) {
@@ -26,6 +30,8 @@ function checkStudentBook($regi_form, $chk_obj) {
         if (is_check === false) {
             $chk_obj.prop('checked', false).trigger('change');
         }
+    } else {
+        is_check = true;
     }
 
     return is_check;

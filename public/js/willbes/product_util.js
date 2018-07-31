@@ -1,4 +1,96 @@
-// 수강생 교재 체크
+/**
+ * 장바구니 저장 및 바로결제
+ * @param $regi_form
+ * @param $is_direct_pay
+ * @param $cate_code
+ * @returns {boolean}
+ */
+function cartNDirectPay($regi_form, $is_direct_pay, $cate_code) {
+    if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
+        alert('강좌를 선택해 주세요.');
+        return;
+    }
+
+    if ($is_direct_pay === 'Y') {
+        if (checkDirectPay($regi_form) === false) {
+            return;
+        }
+    }
+
+    // set hidden value
+    $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
+    $regi_form.find('input[name="only_prod_code"]').val('');
+
+    var url = location.protocol + '//' + location.host + '/cart/store/cate/' + $cate_code;
+    ajaxSubmit($regi_form, url, function(ret) {
+        if(ret.ret_cd) {
+            location.href = ret.ret_data.ret_url;
+        }
+    }, showValidateError, null, false, 'alert');
+}
+
+/**
+ * 상품 선택/해제
+ * @param $regi_form
+ * @param $chk_obj
+ * @param $chk_type
+ * @param $target_prod_id
+ * @param $target_book_id
+ * @param $target_total_id
+ */
+function setCheckProduct($regi_form, $chk_obj, $chk_type, $target_prod_id, $target_book_id, $target_total_id) {
+    if ($chk_obj.is(':checked') === true) {
+        if ($chk_obj.hasClass('chk_books') === true) {
+            // 수강생 교재 체크
+            if (checkStudentBook($regi_form, $chk_obj) === false) {
+                return;
+            }
+            // 장바구니 탭 구분 셋팅
+            $regi_form.find('input[name="cart_type"]').val('book');
+        } else {
+            $regi_form.find('input[name="cart_type"]').val('on_lecture');
+        }
+        // 클릭된 상품 코드 셋팅
+        $regi_form.find('input[name="only_prod_code"]').val($chk_obj.val());
+    } else {
+        $regi_form.find('input[name="cart_type"]').val('');
+        $regi_form.find('input[name="only_prod_code"]').val('');
+
+        if ($chk_obj.hasClass('chk_products') === true) {
+            // 강좌상품일 경우 연계도서상품 체크 해제
+            $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $chk_obj.data('prod-code') + '"]').prop('checked', false);
+        }
+    }
+
+    if ($chk_type === 'price') {
+        var prod_sale_price = 0, book_sale_price = 0;
+
+        // 강좌 금액 계산
+        $regi_form.find('.chk_products').each(function() {
+            if ($(this).is(':checked')) {
+                prod_sale_price += $(this).data('sale-price');
+            }
+        });
+
+        // 도서 금액 계산
+        $regi_form.find('.chk_books').each(function() {
+            if ($(this).is(':checked')) {
+                book_sale_price += $(this).data('sale-price');
+            }
+        });
+
+        $regi_form.find('#' + $target_prod_id).text(addComma(prod_sale_price));
+        $regi_form.find('#' + $target_book_id).text(addComma(book_sale_price));
+        $regi_form.find('#' + $target_total_id).text(addComma(prod_sale_price + book_sale_price));
+    }
+}
+
+/**
+ * 수강생 교재 체크
+ * @param $regi_form
+ * @param $chk_obj
+ * @returns {boolean}
+ */
 function checkStudentBook($regi_form, $chk_obj) {
     var input_data = $chk_obj.data();
     var is_check = false;
@@ -37,13 +129,26 @@ function checkStudentBook($regi_form, $chk_obj) {
     return is_check;
 }
 
-// 바로결제 버튼 클릭시 체크사항 확인
+/**
+ * 바로결제 버튼 클릭시 체크사항 확인
+ * @param $regi_form
+ * @returns {boolean}
+ */
 function checkDirectPay($regi_form) {
     if ($regi_form.find('.chk_products:checked').length > 0 && $regi_form.find('.chk_books:checked').length > 0) {
         alert('바로결제 시 강좌와 교재는 동시 결제가 불가능합니다.');
         return false;
     }
     return true;
+}
+
+/**
+ * 장바구니 페이지 이동
+ * @param $cate_code
+ * @param $tab_id
+ */
+function goCartPage($cate_code, $tab_id) {
+    location.href = location.protocol + '//' + location.host + '/cart/index/cate/' + $cate_code + '?tab=' + $tab_id;
 }
 
 /**
@@ -57,7 +162,8 @@ function productInfoModal(prod_code, tab_id, url) {
     sendAjax(url+'/info/prod-code/' + prod_code, data, function(ret) {
         $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
     }, showAlertError, false, 'GET', 'html');
-    if(tab_id != '') {
+
+    if(tab_id !== '') {
         openLink(tab_id);
     }
 }

@@ -133,8 +133,8 @@
             {!! method_field('POST') !!}
             <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
             <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
-            <input type="hidden" name="only_cart_type" value=""/>   {{-- 단일 상품 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+            <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both">
                 <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>
@@ -344,36 +344,14 @@
     var $buy_layer = $('.willbes-Lec-buyBtn-sm');
 
     $(document).ready(function() {
-
         // 상품 선택/해제
         $regi_form.on('click', '.chk_products, .chk_books', function() {
-            if ($(this).is(':checked') === true) {
-                if ($(this).hasClass('chk_books') === true) {
-                    // 수강생 교재 체크
-                    if (checkStudentBook($regi_form, $(this)) === false) {
-                        return;
-                    }
-                    // 장바구니 탭 구분 셋팅
-                    $regi_form.find('input[name="only_cart_type"]').val('book');
-                } else {
-                    $regi_form.find('input[name="only_cart_type"]').val('on_lecture');
-                }
-                // 클릭된 상품 코드 셋팅
-                $regi_form.find('input[name="only_prod_code"]').val($(this).val());
-            } else {
-                $regi_form.find('input[name="only_prod_code"]').val('');
-                $regi_form.find('input[name="only_cart_type"]').val('');
-
-                if ($(this).hasClass('chk_products') === true) {
-                    // 강좌상품일 경우 연계도서상품 체크 해제
-                    $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).data('prod-code') + '"]').prop('checked', false);
-                }
-            }
+            setCheckProduct($regi_form, $(this), '', '', '', '');
         });
 
         // 장바구니 이동 버튼 클릭
         $buy_layer.on('click', '.answerBox_block', function() {
-            location.href = '{{ site_url('/cart/index/cate/' . $__cfg['CateCode']) }}?tab=' + $regi_form.find('input[name="only_cart_type"]').val();
+            goCartPage('{{ $__cfg['CateCode'] }}', $regi_form.find('input[name="cart_type"]').val());
         });
 
         // 계속구매 버튼 클릭
@@ -411,28 +389,9 @@
         // 장바구니, 바로결제 버튼 클릭
         $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
             var $is_direct_pay = $(this).data('direct-pay') || 'N';
+            var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-            if($regi_form.find('input[name="prod_code[]"]:checked').length < 1) {
-                alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            if ($is_direct_pay === 'Y') {
-                if (checkDirectPay($regi_form) === false) {
-                    return;
-                }
-            }
-
-            // set hidden value
-            $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
-            $regi_form.find('input[name="only_prod_code"]').val('');
-
-            var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
-            ajaxSubmit($regi_form, url, function(ret) {
-                if(ret.ret_cd) {
-                    location.href = ret.ret_data.ret_url;
-                }
-            }, showValidateError, null, false, 'alert');
+            cartNDirectPay($regi_form, $is_direct_pay, $cate_code);
         });
     });
 </script>

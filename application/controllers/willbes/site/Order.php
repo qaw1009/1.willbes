@@ -91,7 +91,7 @@ class Order extends \app\controllers\FrontController
         if ($cart_type === 'on_lecture') {
             $results['delivery_price'] = $this->orderFModel->getLectureDeliveryPrice($arr_is_freebies_trans);
         } else {
-            $results['delivery_price'] = $this->orderFModel->getBookDeliveryPrice($results['price']);
+            $results['delivery_price'] = $this->orderFModel->getBookDeliveryPrice($total_price);
         }
 
         $results['cart_type'] = $cart_type;     // 장바구니 구분 (강좌 : on_lecture, 교재 : book)

@@ -522,6 +522,103 @@ class OnAirModel extends WB_Model
     }
 
     /**
+     * 게시글 복사
+     * @param $oa_idx
+     * @return array|bool
+     */
+    public function onAirCopy($oa_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            // 기존 카테고리 조회
+            $arr_onair_category = $this->_getOnAirCategoryArray($oa_idx);
+
+            // 기존 온에어 일정 조회
+            $arr_onair_date = $this->_listOnAirDate($oa_idx);
+
+            // 기존 온에어 타이틀 정보 조회
+            $arr_onair_title = $this->_listOnAirTitle($oa_idx);
+
+            // 데이터 복사 실행
+            $insert_column = '
+                SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTIme, OnAirEndTime,
+                OnAirName,
+                OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink,
+                RightExposureType, RightFileName, RightFileRealName, RightFileFullPath, RightLink, IsUse, IsStatus,
+                RegAdminIdx, RegIp
+            ';
+            $select_column = '
+                SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTIme, OnAirEndTime,
+                CONCAT("복사본-", IF(LEFT(OnAirName,4)="복사본-", REPLACE(OnAirName, LEFT(OnAirName,4), ""), OnAirName)) AS OnAirName,
+                OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink,
+                RightExposureType, RightFileName, RightFileRealName, RightFileFullPath, RightLink, IsUse, IsStatus,
+                REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
+                REPLACE(RegIp, RegIp, "'.$reg_ip.'") AS RegIp
+            ';
+            $query = "insert into {$this->_table['onair']} ({$insert_column})
+                select {$select_column} from {$this->_table['onair']}
+                where OaIdx = {$oa_idx}";
+            $result = $this->_conn->query($query);
+            $insert_idx = $this->_conn->insert_id();
+
+            if ($result === true) {
+                // 카테고리 저장
+                foreach ($arr_onair_category as $key => $val) {
+                    $set_category_data['OaIdx'] = $insert_idx;
+                    $set_category_data['CateCode'] = $val;
+                    $set_category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $set_category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addOnAirCategory($set_category_data) === false) {
+                        throw new \Exception('복사 중 카테고리 등록에 실패했습니다.');
+                    }
+                }
+
+                // 송출기간 저장
+                $num = 1;
+                $savDay_data = [];
+                foreach ($arr_onair_date as $key => $rowDate) {
+                    $savDay_data['OaIdx'] = $insert_idx;
+                    $savDay_data['OnAirDate'] = $rowDate['OnAirDate'];
+                    $savDay_data['OnAirNum'] = $num;
+                    $savDay_data['RegAdminIdx'] = $admin_idx;
+                    $savDay_data['RegIp'] = $reg_ip;
+
+                    if ($this->_addOnAirDate($savDay_data) === false) {
+                        throw new \Exception('송출기간 등록에 실패했습니다.');
+                    }
+                    $num += 1;
+                }
+
+                // 타이틀 저장
+                $title_data = [];
+                foreach ($arr_onair_title as $key => $rowTitle) {
+                    $title_data['OaIdx'] = $insert_idx;
+                    $title_data['ProfIdx'] = $rowTitle['ProfIdx'];
+                    $title_data['TitleType'] = $rowTitle['TitleType'];
+                    $title_data['Title'] = $rowTitle['Title'];
+                    $title_data['RegAdminIdx'] = $admin_idx;
+                    $title_data['RegIp'] = $reg_ip;
+                    if ($this->_addOnAirTitle($title_data) === false) {
+                        throw new \Exception('타이틀 등록에 실패했습니다.');
+                    }
+                }
+
+            } else {
+                throw new \Exception('게시물 복사에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 카테고리 등록
      * @param $input
      * @return bool
@@ -592,6 +689,52 @@ class OnAirModel extends WB_Model
             return $e->getMessage();
         }
         return true;
+    }
+
+    /**
+     * 카테고리 조회
+     * @param $oa_idx
+     * @return array|int
+     */
+    private function _getOnAirCategoryArray($oa_idx)
+    {
+        $arr_condition = ['EQ' => ['IsStatus' => 'Y', 'OaIdx' => $oa_idx]];
+        $data = $this->_conn->getListResult($this->_table['onair_r_category'], 'CcIdx, CateCode', $arr_condition, null, null, [
+            'CcIdx' => 'asc'
+        ]);
+        $data = array_pluck($data, 'CateCode', 'CcIdx');
+        return $data;
+    }
+
+    /**
+     * 송출기간 조회
+     * @param $oa_idx
+     * @return mixed
+     */
+    private function _listOnAirDate($oa_idx)
+    {
+        $column = 'OadIdx, OnAirDate, OnAirNum';
+        $from = "
+            FROM {$this->_table['onair_date']}
+        ";
+        $where = ' where OaIdx = ? and IsStatus = "Y"';
+        $order_by_offset_limit = ' order by OadIdx asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$oa_idx])->result_array();
+    }
+
+    private function _listOnAirTitle($oa_idx)
+    {
+        $column = 'OatIdx, ProfIdx, TitleType, Title';
+        $from = "
+            FROM {$this->_table['onair_title']}
+        ";
+        $where = ' where OaIdx = ? and IsStatus = "Y"';
+        $order_by_offset_limit = ' order by OatIdx asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$oa_idx])->result_array();
     }
 
     /**

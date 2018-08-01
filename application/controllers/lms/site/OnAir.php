@@ -124,10 +124,11 @@ class OnAir extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 온에어 등록
+     */
     public function store()
     {
-        $method = 'add';
-
         $rules = [
             ['field'=>'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field'=>'cate_code[]', 'label'=>'카테고리', 'rules'=>'trim|required'],
@@ -182,6 +183,24 @@ class OnAir extends \app\controllers\BaseController
         $result = $this->onAirModel->{$method.'OnAir'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 온에어 복사
+     */
+    public function copy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'oa_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->onAirModel->onAirCopy($this->_reqP('oa_idx'));
+        $this->json_result($result, '복사 되었습니다.', $result);
     }
 
     /**

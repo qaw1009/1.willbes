@@ -5,7 +5,8 @@ class PlayerFModel extends WB_Model
 {
     private $_table = [
         'sample' => 'lms_product_lecture_sample',
-        'unit' => 'wbs_cms_lecture_unit'
+        'unit' => 'wbs_cms_lecture_unit',
+        'wbs_code' => 'wbs_sys_code'
     ];
 
     public function __construct()
@@ -30,22 +31,32 @@ class PlayerFModel extends WB_Model
             return [];
         }
 
+        $column = 'wSD, wHD, wWD,
+            IFNULL(C.wCcdValue, 16) AS wRatio
+            ';
+
         $cond = [
             'EQ' => [
-                'PLS.IsStatus' => 'Y',
-                'WCLU.wIsUse' => 'Y',
-                'WCLU.wIsStatus' => 'Y',
-                'PLS.ProdCode' => $ProdCode,
-                'PLS.wUnitIdx' => $UnitIdx
+                'S.IsStatus' => 'Y',
+                'U.wIsUse' => 'Y',
+                'U.wIsStatus' => 'Y',
+                'S.ProdCode' => $ProdCode,
+                'S.wUnitIdx' => $UnitIdx
             ]
         ];
 
-        return $this->_conn->getJoinListResult(
-            $this->_table['sample'] . ' AS PLS ',
-            'inner',
-            $this->_table['unit'] . ' AS WCLU ',
-            'PLS.wUnitIdx = WCLU.wUnitIdx',
-            'wSD, wHD, wWD ', $cond, null, null, null);
+        $from = " FROM 
+            {$this->_table['sample']} AS S
+            INNER JOIN {$this->_table['unit']} AS U ON S.wUnitIdx = U.wUnitIdx
+            LEFT JOIN {$this->_table['wbs_code']} AS C ON U.wContentSizeCcd = C.wCcd 
+        ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
+
+        return empty($rows) === true ? [] : $rows->row_array();
     }
 
 

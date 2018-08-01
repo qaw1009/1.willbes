@@ -61,23 +61,25 @@ class Player extends \app\controllers\FrontController
             show_alert('샘플강좌가 없습니다.', 'close');
         }
 
-        $data = $data[0];
-
         switch($quility){
             case 'WD':
                 $url = $data['wWD'];
+                $ratio = 21; // 초 와이드는 고정
                 break;
 
             case 'HD':
                 $url = $data['wHD'];
+                $ratio = $data['wRatio']; // 고화질은 설정한 비율
                 break;
 
             case 'SD':
                 $url = $data['wSD'];
+                $ratio = $data['wRatio']; // 저화질도 설정한 비율
                 break;
 
             default:
                 $url = $data['wWD'];
+                $ratio = 21; // 초 와이드는 고정
                 break;
         }
 
@@ -98,6 +100,8 @@ class Player extends \app\controllers\FrontController
         $this->load->view('/player/sample', [
             'data' => [
                 'isIntro' => false,
+                'ratio' => $ratio, 
+                'startPosition' => 0,
                 'url' => $url
             ]
         ]);
@@ -148,6 +152,8 @@ class Player extends \app\controllers\FrontController
         $this->load->view('/player/sample', [
             'data' => [
                 'isIntro' => false,
+                'ratio' => 12,
+                'startPosition' => 0,
                 'url' => $url
             ]
         ]);

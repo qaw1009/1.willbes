@@ -17,8 +17,8 @@
 <!-- validator -->
 <script src="/public/vendor/validator/validator.js"></script>
 <!-- Custom Script -->
-<script src="/public/js/util.js"></script>
-<script src="/public/js/validation_util.js"></script>
-<script src="/public/js/willbes/sub.js"></script>
-<script src="/public/js/willbes/app.js"></script>
+<script src="/public/js/util.js?ver={{time()}}"></script>
+<script src="/public/js/validation_util.js?ver={{time()}}"></script>
+<script src="/public/js/willbes/sub.js?ver={{time()}}"></script>
+<script src="/public/js/willbes/app.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->

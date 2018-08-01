@@ -129,10 +129,11 @@ class Privacy extends \app\controllers\BaseController
         if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {
             if ($this->_reqP('search_date_type') == 'I') {
                 // 유효기간 검색
-                $arr_condition['BET'] = [
-                    'A.ApplayStartDatm' => [$this->_reqP('search_start_date') . ' 00:00:00', $this->_reqP('search_end_date') . ' 00:00:00'],
-                    'A.ApplayEndDatm' => [$this->_reqP('search_start_date') . ' 23:59:59', $this->_reqP('search_end_date') . ' 23:59:59'],
+                $arr_condition['ORG2']['BET'] = [
+                    'A.ApplayStartDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
+                    'A.ApplayEndDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
                 ];
+                $arr_condition['ORG2']['RAW'] = ['(A.ApplayStartDatm < "' => $this->_reqP('search_start_date') . '" AND A.ApplayEndDatm > "' . $this->_reqP('search_end_date') . '")'];
             } elseif ($this->_reqP('search_date_type') == 'R') {
                 // 등록일 기간 검색
                 $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];

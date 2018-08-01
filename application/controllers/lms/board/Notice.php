@@ -242,11 +242,17 @@ class Notice extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
+
+        //사이트코드 통합코드가 아닐경우 카테고리 체크
+        if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
+            $rules = array_merge($rules, [
+                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
+            ]);
+        }
 
         if ($this->validate($rules) === false) {
             return;
@@ -325,9 +331,12 @@ class Notice extends BaseBoard
             $site_code = $this->site_code;
         }
         $get_category_array = $this->_getCategoryArray($site_code);
-
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        if (empty($get_category_array) === true) {
+            $data['arr_cate_code'] = [];
+        } else {
+            foreach ($arr_cate_code as $item => $code) {
+                $data['arr_cate_code'][$code] = $get_category_array[$code];
+            }
         }
 
         $this->load->view("board/{$this->board_name}/read",[

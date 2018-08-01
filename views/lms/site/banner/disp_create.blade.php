@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-10 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), false) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), true) !!}
                         &nbsp;&nbsp;&nbsp;&nbsp;• 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.
                     </div>
                 </div>

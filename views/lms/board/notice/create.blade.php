@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item ml-12-dot">
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-7 item">
                         <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                     <div class="col-md-10 form-inline">
                         실제 <input type="text" id="read_count" name="read_count" class="form-control" title="실제" readonly="readonly" value="{{$data['ReadCnt']}}" style="width: 60px; padding:5px">
                         +
-                        생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['SettingReadCnt']}}" style="width: 70px; padding:5px">
+                        생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{!! empty($data['SettingReadCnt']) ? '0' : $data['SettingReadCnt'] !!}" style="width: 70px; padding:5px">
                         =
                         노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="" style="width: 70px; padding:5px">
                         &nbsp;&nbsp;&nbsp;&nbsp;• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.

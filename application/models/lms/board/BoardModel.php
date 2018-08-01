@@ -54,7 +54,7 @@ class BoardModel extends WB_Model
         $from = "
             FROM {$this->_table} AS LB
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
-            INNER JOIN (
+            LEFT JOIN (
                 SELECT subLBrC.BoardIdx, GROUP_CONCAT(CONCAT(subLSC.CateName,'[',subLBrC.CateCode,']')) AS CateCode
                 FROM {$this->_table_r_category} AS subLBrC
                 LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
@@ -149,7 +149,7 @@ class BoardModel extends WB_Model
         if (empty($site_code) === false) {
             $arr_condition['EQ']['LB.SiteCode'] = $site_code;
         } else {
-            $arr_condition['IN']['LB.SiteCode'] = get_auth_site_codes();
+            $arr_condition['IN']['LB.SiteCode'] = get_auth_site_codes(false, true);
         }
 
         $where_temp = $this->_conn->makeWhere($arr_condition);
@@ -239,13 +239,15 @@ class BoardModel extends WB_Model
             // 등록된 게시판 식별자
             $board_idx = $this->_conn->insert_id();
 
-            foreach ($board_category_data as $key => $val) {
-                $set_board_category_data['BoardIdx'] = $board_idx;
-                $set_board_category_data['CateCode'] = $val;
-                $set_board_category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                $set_board_category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addBoardCategory($set_board_category_data) === false) {
-                    throw new \Exception('게시판 등록에 실패했습니다.');
+            if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+                foreach ($board_category_data as $key => $val) {
+                    $set_board_category_data['BoardIdx'] = $board_idx;
+                    $set_board_category_data['CateCode'] = $val;
+                    $set_board_category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $set_board_category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addBoardCategory($set_board_category_data) === false) {
+                        throw new \Exception('게시판 등록에 실패했습니다.');
+                    }
                 }
             }
 
@@ -313,9 +315,11 @@ class BoardModel extends WB_Model
             }
 
             // 카테고리
-            $is_category = $this->_modifyBoardCategory($board_idx, $board_category_data);
-            if ($is_category !== true) {
-                throw new \Exception($is_category);
+            if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+                $is_category = $this->_modifyBoardCategory($board_idx, $board_category_data);
+                if ($is_category !== true) {
+                    throw new \Exception($is_category);
+                }
             }
 
             // 파일 수정
@@ -413,7 +417,7 @@ class BoardModel extends WB_Model
     {
         $from = "
             FROM {$this->_table} as LB
-            INNER JOIN (
+            LEFT JOIN (
                 select subLBrC.BoardIdx, GROUP_CONCAT(subLBrC.CateCode) AS CateCode
                 from {$this->_table_r_category} as subLBrC
                 LEFT OUTER JOIN {$this->_table_sys_category} as subLSC ON subLBrC.CateCode = subLSC.CateCode

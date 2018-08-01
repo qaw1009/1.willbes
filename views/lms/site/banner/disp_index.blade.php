@@ -4,7 +4,7 @@
     <h5>- 사이트 메인 및 서브 페이지에 적용할 배너의 노출 섹션 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, []) !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true, []) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -17,7 +17,7 @@
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
                         <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)

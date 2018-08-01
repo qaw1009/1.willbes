@@ -9,7 +9,18 @@
         </div>
 
         <script src="/public/js/willbes/player.js"></script>
-        <a href="#none" onclick='fnPlayerProf("50004");'> 눌러보자</a>
+        <a href="#none" onclick='fnPlayerProf("50004", "OT");'>OT</a><br>
+        <a href="#none" onclick='fnPlayerProf("50004", "WS");'>샘플</a><br>
+        <a href="#none" onclick='fnPlayerProf("50004", "S1");'>샘플1</a><br>
+        <a href="#none" onclick='fnPlayerProf("50004", "S2");'>샘플2</a><br>
+        <a href="#none" onclick='fnPlayerProf("50004", "S3");'>샘플3</a><br>
+        <br>
+        <a href="#none" onclick='fnPlayerSample("200006", "1111344", "SD");'>SD강의 샘플</a><br>
+        <a href="#none" onclick='fnPlayerSample("200006", "1111344", "HD");'>HD강의 샘플</a><br>
+        <a href="#none" onclick='fnPlayerSample("200006", "1111344", "WD");'>WD강의 샘플</a>
+
+
+
 
         <br/><br/><br/><br/><br/><br/>
     </div>

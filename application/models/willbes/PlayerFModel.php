@@ -26,13 +26,13 @@ class PlayerFModel extends WB_Model
      */
     public function getLectureSample($ProdCode, $UnitIdx)
     {
-        if(empty($ProdCode) === true || empty($UnitIdx) === true){
+        if (empty($ProdCode) === true || empty($UnitIdx) === true) {
             return [];
         }
 
         $cond = [
             'EQ' => [
-                'PLS.IsStaus' => 'Y',
+                'PLS.IsStatus' => 'Y',
                 'WCLU.wIsUse' => 'Y',
                 'WCLU.wIsStatus' => 'Y',
                 'PLS.ProdCode' => $ProdCode,
@@ -47,4 +47,29 @@ class PlayerFModel extends WB_Model
             'PLS.wUnitIdx = WCLU.wUnitIdx',
             'wSD, wHD, wWD ', $cond, null, null, null);
     }
+
+
+    public function getCurriculum()
+    {
+
+    }
+
+    /**
+     * 북마크관리
+     */
+    public function getBookmark()
+    {
+
+    }
+
+    public function storeBookmark()
+    {
+
+    }
+
+    public function deleteBookmark()
+    {
+
+    }
+
 }

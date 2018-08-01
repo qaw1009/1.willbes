@@ -8,10 +8,21 @@ class Player extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
 
+    protected $_profReferDataName = [
+        'OT' => 'ot_url',
+        'WS' => 'wsample_url',
+        'S1' => 'sample_url1',
+        'S2' => 'sample_url2',
+        'S3' => 'sample_url3'
+    ];
+
     public function __construct()
     {
         parent::__construct();
     }
+
+
+
 
     /**
      * 기본페이지?
@@ -23,14 +34,17 @@ class Player extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 샘플강의 보기
      * @param array $params
      */
     public function Sample($params = [])
     {
-        if(empty($params[0]) === true || empty($params[1] === true)){
-            show_alert('파라미터가 잘못 되었습니다.');
+        if(empty($params[0]) === true || empty($params[1]) === true || empty($params[2]) === true ){
+            show_alert('파라미터가 잘못 되었습니다.1', 'close');
         }
 
         $prodCode = $params[0];
@@ -47,13 +61,15 @@ class Player extends \app\controllers\FrontController
             show_alert('샘플강좌가 없습니다.', 'close');
         }
 
+        $data = $data[0];
+
         switch($quility){
             case 'WD':
                 $url = $data['wWD'];
                 break;
 
             case 'HD':
-                $url = $data['wSD'];
+                $url = $data['wHD'];
                 break;
 
             case 'SD':
@@ -75,8 +91,6 @@ class Player extends \app\controllers\FrontController
             $url = $data['wSD'];
         }
 
-        $url = 'http://hd.willbes.gscdn.com/Noryangjin/2018_06/bubwon/leehyunna_korean_dk/lhn44_11_0726_korean_dk_1.mp4';
-
         if(empty($url) === true){
             show_alert('샘플파일이 없습니다.', 'close');
         }
@@ -89,6 +103,9 @@ class Player extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 강사 샘플보기
      * @param array $params
@@ -100,14 +117,29 @@ class Player extends \app\controllers\FrontController
         }
 
         $profIdx = $params[0];
-        $sampleType = $params[1];
+        $viewType = $params[1];
+
+        if(empty($this->_profReferDataName[$viewType]) === true){
+            show_alert('파라미터가 잘못되었습니다.','close');
+        }
+
+        $viewType = $this->_profReferDataName[$viewType];
 
         $data = $this->professorFModel->findProfessorByProfIdx($profIdx, true);
         if(empty($data) === true){
-            show_alert('해당 교수를 찾을수 없습니다.', 'close');
+            show_alert('해당 강사를 찾을수 없습니다.', 'close');
         }
 
-        $url = $data['wSampleUrl'];
+        $profRefer = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
+        if(empty($profRefer) === true){
+            show_alert('맛보기 강좌가 없습니다.', 'close');
+        }
+
+        if(empty($profRefer[$viewType]) === true){
+            show_alert('맛보기 강좌가 없습니다.', 'close');
+        }
+
+        $url = $profRefer[$viewType];
 
         if(empty($url) === true){
             show_alert('샘플강의가 없습니다.', 'close');
@@ -121,6 +153,9 @@ class Player extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 무료강의 보기
      * @param array $params
@@ -132,13 +167,19 @@ class Player extends \app\controllers\FrontController
         ]);
     }
 
+
+
+
     /**
      * 강좌 상세목록
      */
-    public function listCurriculum($params = [])
+    public function Curriculum($params = [])
     {
         
     }
+
+
+
 
     /**
      * 북마크

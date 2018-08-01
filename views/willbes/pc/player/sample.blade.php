@@ -12,9 +12,11 @@
     <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui.js?token={{time()}}"></script>
     <script type="text/javascript" src="/public/vendor/starplayer/js/speedplaytime.js?token={{time()}}"></script>
 </head>
-<body>
+<body onkeydown="onKeyDown(event.keyCode);" style="background-color: black;">
+
+{{$data['url']}}
 <div style="text-align:left">
-    <div id="video-container" style="width:690px;height:390px;"></div>
+    <div id="video-container" style="width:690px;height:400px;"></div>
     <div id="controller-container" style="width:690px;height:81px;"></div>
     <!-- Start HTML5 UI -->
     <div id="controller-container2" class="starplayer_script_ui" style="margin: 0 0 0 0;width:690px;height:81px;background-color:black;top:0px;">
@@ -73,63 +75,19 @@
     var realPlayerTime = null;
 
     function getStep() { return step_; }
+
     function setStep(step) { step_ = step; }
+
     function onMouseDbclick(x, y) { player.setFullscreen(!player.getFullscreen()); }
 
-    $(document).ready(function (){
-        var startPosition = 0;
-
-        var config = {
-            userId: "test",
-            id: "starplayer",
-            videoContainer: "video-container",
-            controllerContainer: "controller-container",
-            controllerContainerHtml5: "controller-container2",
-            controllerUrl: "axissoft3.bin",
-            controller64Url: "axissoft3_x64.bin",
-            visible: true,
-            auto_progressive_download: true,
-            dualMonitor: true,
-            watermarkText: "test",
-            watermarkTextColor: "#308ECE92",
-            watermarkTextSize: "2%",
-            watermarkHorzAlign: WatermarkAlign.RANDOM,
-            watermarkVertAlign: WatermarkAlign.BOTTOM,
-            watermarkInterval: "60",
-            watermarkShowInterval: "1",
-            blockMessenger: false,
-            blockVirtualMachine: false
-        };
-
-        var media = {
-            url: "{{$data['url']}}",
-            @if($data['isIntro'] === true)intro: "http://hd.willbes.gscdn.com/warning/warning_new_5.mp4",@endif
-            autoPlay: true,
-            startTime: startPosition
-        };
-
-        player = new StarPlayer(config, media);
-        player.onKeyDown = onKeyDown;
-        player.onMouseDbclick = onMouseDbclick;
-        player.onPlayStateChange = onPlayStateChange;
-        player.onError = onError;
-        initScriptUI(player);
-
-        realPlayerTime = new SpeedPlayTime(player);
-    });
-
     function onKeyDown(keycode) {
-        var temp;
-
         switch (keycode) {
             case 13: // ENTER
                 player.setFullscreen(true);
                 break;
             case 32: // SPACE
-                if (player.getPlayState() == PlayState.PLAYING)
-                    player.pause();
-                else
-                    player.play();
+                if (player.getPlayState() == PlayState.PLAYING){ player.pause(); }
+                else { player.play(); }
                 break;
             case 38: // UP
                 player.setVolume(player.getVolume() + 0.1);
@@ -195,16 +153,45 @@
         };
     }
 
-    function click() {
-        if ( (event.button==2) || (event.button==3) || (event.keyCode == 93) ) {
-            return false;
-        }
-        else {
-            if( event.ctrlKey ) {
-                return false;
-            }
-        }
-    }
+    $(document).ready(function (){
+        var startPosition = 0;
+        var config = {
+            userId: "test",
+            id: "starplayer",
+            videoContainer: "video-container",
+            controllerContainer: "controller-container",
+            controllerContainerHtml5: "controller-container2",
+            controllerUrl: "/public/vendor/starplayer/bin/axissoft3.bin",
+            controller64Url: "/public/vendor/starplayer/bin/axissoft3_x64.bin",
+            visible: true,
+            auto_progressive_download: true,
+            dualMonitor: true,
+            watermarkText: "test",
+            watermarkTextColor: "#308ECE92",
+            watermarkTextSize: "2%",
+            watermarkHorzAlign: WatermarkAlign.RANDOM,
+            watermarkVertAlign: WatermarkAlign.BOTTOM,
+            watermarkInterval: "60",
+            watermarkShowInterval: "1",
+            blockMessenger: false,
+            blockVirtualMachine: false
+        };
+        var media = {
+            url: "{{$data['url']}}",@if($data['isIntro'] === true)
+            intro: "http://hd.willbes.gscdn.com/warning/warning_new_5.mp4",@endif
+            autoPlay: true,
+            startTime: startPosition
+        };
+
+        player = new StarPlayer(config, media);
+        player.onKeyDown = onKeyDown;
+        player.onMouseDbclick = onMouseDbclick;
+        player.onPlayStateChange = onPlayStateChange;
+        player.onError = onError;
+        initScriptUI(player);
+
+        realPlayerTime = new SpeedPlayTime(player);
+    });
 </script>
 </body>
 </html>

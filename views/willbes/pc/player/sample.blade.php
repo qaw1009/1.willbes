@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9, requiresActiveX=true"/>
-    <title>샘플강의</title>
+    <title>Willbes Player</title>
     <link href="/public/vendor/starplayer/css/starplayer.css?token={{time()}}" rel="stylesheet" type="text/css">
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config.js?token={{time()}}"></script>
@@ -79,41 +79,41 @@
     $(document).ready(function (){
         var startPosition = 0;
 
-		var config = {
-			userId: "test",
-			id: "starplayer",
-			videoContainer: "video-container",
-			controllerContainer: "controller-container",
-			controllerContainerHtml5: "controller-container2",
-			controllerUrl: "axissoft3.bin",
-			controller64Url: "axissoft3_x64.bin",
-			visible: true,
-			auto_progressive_download: true,
-			dualMonitor: true,
-			watermarkText: "test",
-			watermarkTextColor: "#308ECE92",
-			watermarkTextSize: "2%",
-			watermarkHorzAlign: WatermarkAlign.RANDOM,
-			watermarkVertAlign: WatermarkAlign.BOTTOM,
-			watermarkInterval: "60",
-			watermarkShowInterval: "1",
-			blockMessenger: false,
-			blockVirtualMachine: false
-		};
+        var config = {
+            userId: "test",
+            id: "starplayer",
+            videoContainer: "video-container",
+            controllerContainer: "controller-container",
+            controllerContainerHtml5: "controller-container2",
+            controllerUrl: "axissoft3.bin",
+            controller64Url: "axissoft3_x64.bin",
+            visible: true,
+            auto_progressive_download: true,
+            dualMonitor: true,
+            watermarkText: "test",
+            watermarkTextColor: "#308ECE92",
+            watermarkTextSize: "2%",
+            watermarkHorzAlign: WatermarkAlign.RANDOM,
+            watermarkVertAlign: WatermarkAlign.BOTTOM,
+            watermarkInterval: "60",
+            watermarkShowInterval: "1",
+            blockMessenger: false,
+            blockVirtualMachine: false
+        };
 
-		var media = {
-			url: "{{$data['url']}}",
-			@if($data['isIntro'] === true)intro: "http://hd.willbes.gscdn.com/warning/warning_new_5.mp4",@endif
+        var media = {
+            url: "{{$data['url']}}",
+            @if($data['isIntro'] === true)intro: "http://hd.willbes.gscdn.com/warning/warning_new_5.mp4",@endif
             autoPlay: true,
-			startTime: startPosition
-		};
+            startTime: startPosition
+        };
 
         player = new StarPlayer(config, media);
         player.onKeyDown = onKeyDown;
         player.onMouseDbclick = onMouseDbclick;
         player.onPlayStateChange = onPlayStateChange;
         player.onError = onError;
-		initScriptUI(player);
+        initScriptUI(player);
 
         realPlayerTime = new SpeedPlayTime(player);
     });

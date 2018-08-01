@@ -158,6 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CouponFModel $couponFModel                                         Coupon Model Class
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
+ * @property PlayerFModel $playerFModel                                          Player Model Class
  */
 class PHPStorm_CI_CC
 {

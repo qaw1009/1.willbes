@@ -9,7 +9,7 @@
         </div>
 
         <script src="/public/js/willbes/player.js"></script>
-        <a href="#none" onclick='samplePlayer("1234");'> 눌러보자</a>
+        <a href="#none" onclick='fnPlayerProf("50004");'> 눌러보자</a>
 
         <br/><br/><br/><br/><br/><br/>
     </div>

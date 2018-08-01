@@ -60,7 +60,7 @@ class BannerDispModel extends WB_Model
     public function findBannerDispForModify($arr_condition)
     {
         $column = "
-            A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.Desc, A.IsUse, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm,
+            A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTime, A.Desc, A.IsUse, A.IsStatus, A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm,
             B.SiteName, C.CateName, D.CcdName,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ";
@@ -76,7 +76,28 @@ class BannerDispModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 배너노출섹션데이터 조회
+     * @param $column
+     * @return mixed
+     */
+    public function getBannerDispList($column)
+    {
+        $from = " FROM {$this->_table['banner_disp']} ";
+        $arr_condition['EQ']['IsUse'] = 'Y';
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['BdIdx' => 'DESC'])->getMakeOrderBy();
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return $query->result_array();
     }
 
     /**
@@ -96,6 +117,7 @@ class BannerDispModel extends WB_Model
                 'CateCode' => element('cate_code', $input),
                 'DispName' => element('disp_name', $input),
                 'DispTypeCcd' => element('disp_type', $input),
+                'DispRollingTime' => element('disp_rolling_time', $input),
                 'Desc' => element('desc', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $admin_idx,
@@ -136,6 +158,7 @@ class BannerDispModel extends WB_Model
             $data = [
                 'DispName' => element('disp_name', $input),
                 'DispTypeCcd' => element('disp_type', $input),
+                'DispRollingTime' => element('disp_rolling_time', $input),
                 'Desc' => element('desc', $input),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $admin_idx

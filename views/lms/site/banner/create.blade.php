@@ -7,6 +7,7 @@
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="b_idx" value="{{ $b_idx }}"/>
+
         <div class="x_panel">
             <div class="x_title">
                 <h2>배너관리 정보</h2>
@@ -25,40 +26,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">카테고리정보
                     </label>
-                    <div class="col-md-10 form-inline">
+                    <div class="col-md-4 form-inline">
                         @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['CateNames'] }}</p>
+                            <p class="form-control-static">{{ $data['CateName'] }}</p>
                         @else
-                            <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10">
-                                @if(isset($data['CateCodes']) === true)
-                                    @foreach($data['CateCodes'] as $cate_code => $cate_name)
-                                        <span class="pr-10">{{ $cate_name }}
-                                            <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
-                                            <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
-                                        </span>
-                                    @endforeach
-                                @endif
-                            </span>
+                            <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리" @if($method == 'PUT')disabled="disabled"@endif>
+                                <option value="">카테고리</option>
+                                @foreach($arr_cate_code as $row)
+                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                @endforeach
+                            </select>
                         @endif
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="banner_disp">노출섹션<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
-                        <select class="form-control mr-10" id="banner_disp" name="banner_disp" required="required" title="노출섹션">
+                    <label class="control-label col-md-1-1 d-line" for="banner_disp_idx">노출섹션<span class="required">*</span></label>
+                    <div class="form-inline col-md-4 ml-12-dot item">
+                        <select class="form-control mr-10" id="banner_disp_idx" name="banner_disp_idx" required="required" title="노출섹션">
                             <option value="">노출섹션</option>
-                            @foreach($banner_disp as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['DispCcd'])selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control" id="banner_location" name="banner_location" required="required" title="배너위치">
-                            <option value="">배너위치</option>
-                            @foreach($banner_location as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['BannerLocationCcd'])selected="selected"@endif>{{$val}}</option>
+                            @foreach($arr_disp_data as $row)
+                                <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}" @if($row['BdIdx'] == $data['BdIdx'])selected="selected"@endif>{{$row['DispName']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -204,32 +192,9 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
-            // 운영사이트 변경
-            $regi_form.on('change', 'select[name="site_code"]', function() {
-                // 카테고리 검색 초기화
-                $regi_form.find('input[name="cate_code"]').val('');
-                $('#selected_category').html('');
-            });
-
-            // 카테고리 검색
-            $('#btn_category_search').on('click', function(event) {
-                var site_code = $regi_form.find('select[name="site_code"]').val();
-                if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
-                    return;
-                }
-
-                $('#btn_category_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
-                    'width' : 900
-                });
-            });
-
-            // 카테고리 삭제
-            $regi_form.on('click', '.selected-category-delete', function() {
-                var that = $(this);
-                that.parent().remove();
-            });
+            // site-code에 매핑되는 select box 자동 변경
+            $regi_form.find('select[name="cate_code"]').chained("#site_code");
+            $regi_form.find('select[name="banner_disp_idx"]').chained("#site_code");
 
             //목록
             $('#btn_list').click(function() {
@@ -240,13 +205,6 @@
                 var _url = '{{ site_url("/site/banner/regist/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
-                    @if($method == 'POST')
-                    if($regi_form.find('input[name="cate_code[]"]').length < 1) {
-                        alert('카테고리 선택 필드는 필수입니다.');
-                        return false;
-                    }
-                    @endif
-
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/banner/regist/") }}' + getQueryString());

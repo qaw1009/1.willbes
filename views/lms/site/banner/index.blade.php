@@ -5,7 +5,6 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, []) !!}
-        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -16,19 +15,20 @@
                     <div class="col-md-2">
                         <p class="form-control-static">배너명 검색 가능</p>
                     </div>
-                    <label class="control-label col-md-1" for="search_is_use">조건</label>
+                    <label class="control-label col-md-1" for="search_cate_code">조건</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_banner_disp" name="search_banner_disp" title="노출섹션">
-                            <option value="">노출섹션</option>
-                            @foreach($banner_disp as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
+                            <option value="">카테고리</option>
+                            @foreach($arr_cate_code as $row)
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-10" id="search_banner_location" name="search_banner_location" title="배너위치">
-                            <option value="">배너위치</option>
-                            @foreach($banner_location as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                        <select class="form-control mr-10" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션">
+                            <option value="">노출섹션</option>
+                            @foreach($arr_disp_data as $row)
+                                <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}">{{$row['DispName']}}</option>
                             @endforeach
                         </select>
 
@@ -85,7 +85,6 @@
                     <th>No</th>
                     <th>카테고리</th>
                     <th>노출섹션</th>
-                    <th>배너위치</th>
                     <th>배너명</th>
                     <th width="20%">배너이미지</th>
                     <th>노출기간</th>
@@ -109,6 +108,10 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             /*setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');*/
+
+            // site-code에 매핑되는 select box 자동 변경
+            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_site_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({
@@ -135,21 +138,8 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
-                            }
-                            return str;
-                        }},
+                    {'data' : 'CateName'},
                     {'data' : 'DispName'},
-                    {'data' : 'BannerLocationName', 'render' : function(data, type, row, meta) {
-                            var img_info = row.BannerFullPath + row.BannerImgName;
-                            return data +
-                                '<br>' +
-                                '('+row.BannerImgInfo[0]+'*'+row.BannerImgInfo[1]+')';
-                        }},
                     {'data' : 'BannerName', 'render' : function(data, type, row, meta) {
                             return '<a href="#" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
                         }},

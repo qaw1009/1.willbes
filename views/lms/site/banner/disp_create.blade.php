@@ -51,6 +51,15 @@
                         <div class="radio">
                             @foreach($disp_info as $key => $val)
                                 <input type="radio" id="disp_type_{{$key}}" name="disp_type" class="flat" value="{{$key}}" required="required" title="링크방식" @if(($method == 'POST' && $loop->index == 1) || $key == $data['DispTypeCcd'])checked="checked"@endif/> <label for="disp_type_{{$key}}" class="input-label">{{$val}}</label>
+
+                                @if($loop->index == '2')
+                                    <select id="disp_rolling_time" class="form-control" name="disp_rolling_time" title="롤링타임">
+                                        <option value="1" @if($data['DispRollingTime'] == 1)selected="selected"@endif>1</option>
+                                        <option value="2" @if($data['DispRollingTime'] == 2)selected="selected"@endif>2</option>
+                                        <option value="3" @if($data['DispRollingTime'] == 3)selected="selected"@endif>3</option>
+                                    </select> sec
+                                @endif
+
                             @endforeach
                         </div>
                     </div>
@@ -134,6 +143,15 @@
             $regi_form.on('click', '.selected-category-delete', function() {
                 var that = $(this);
                 that.parent().remove();
+            });
+
+            $regi_form.on('ifChanged ifCreated', 'input[name="disp_type"]:checked', function() {
+                var disp_type_val = $(this).val();
+                if (disp_type_val == '664002') {
+                    $('#disp_rolling_time').attr('disabled', false);
+                } else {
+                    $('#disp_rolling_time').attr('disabled', true);
+                }
             });
 
             //목록

@@ -95,6 +95,7 @@ class Disp extends \app\controllers\BaseController
         $rules = [
             ['field' => 'disp_name', 'label' => '노출섹션명', 'rules' => 'trim|required|max_length[20]'],
             ['field' => 'disp_type', 'label' => '노출방식', 'rules' => 'trim|required'],
+            ['field' => 'disp_rolling_time', 'label' => '롤링타임', 'rules' => 'callback_validateRequiredIf[disp_type,664002]|in_list[1,2,3]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 

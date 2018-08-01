@@ -3,14 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('site/bannerRegist', 'sys/code');
+    protected $models = array('site/bannerRegist', 'site/bannerDisp', 'sys/code', 'sys/category');
     protected $helpers = array();
-
-    //배너 : 노출섹션, 배너위치 그룹공통코드
-    private $_groupCcd = [
-        'banner_disp' => '657',   //노출섹션
-        'banner_location' => '658'   //배너위치
-    ];
 
     public function __construct()
     {
@@ -22,12 +16,15 @@ class Regist extends \app\controllers\BaseController
      */
     public function index()
     {
-        //배너노출섹션, 배너위치
-        $banner_info = $this->codeModel->getCcdInArray([$this->_groupCcd['banner_disp'], $this->_groupCcd['banner_location']]);
+        // 카테고리 조회
+        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+
+        // 노출섹션 데이터 조회
+        $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
 
         $this->load->view('site/banner/index',[
-            'banner_disp' => $banner_info[$this->_groupCcd['banner_disp']],
-            'banner_location' => $banner_info[$this->_groupCcd['banner_location']]
+            'arr_cate_code' => $category_data,
+            'arr_disp_data' => $arr_disp_data
         ]);
     }
 
@@ -64,6 +61,12 @@ class Regist extends \app\controllers\BaseController
         $data = null;
         $b_idx = null;
 
+        // 카테고리 조회
+        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+
+        // 노출섹션 데이터 조회
+        $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $b_idx = $params[0];
@@ -78,22 +81,14 @@ class Regist extends \app\controllers\BaseController
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
             }
-
-            // 카테고리 연결 데이터 조회
-            $arr_cate_code = $this->bannerRegistModel->listBannerCategory($b_idx);
-            $data['CateCodes'] = $arr_cate_code;
-            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
         }
-
-        //배너노출섹션, 배너위치
-        $banner_info = $this->codeModel->getCcdInArray([$this->_groupCcd['banner_disp'], $this->_groupCcd['banner_location']]);
 
         $this->load->view("site/banner/create", [
             'method' => $method,
             'data' => $data,
             'b_idx' => $b_idx,
-            'banner_disp' => $banner_info[$this->_groupCcd['banner_disp']],
-            'banner_location' => $banner_info[$this->_groupCcd['banner_location']]
+            'arr_cate_code' => $category_data,
+            'arr_disp_data' => $arr_disp_data
         ]);
     }
 
@@ -103,8 +98,7 @@ class Regist extends \app\controllers\BaseController
     public function store()
     {
         $rules = [
-            ['field' => 'banner_disp', 'label' => '노출섹션', 'rules' => 'trim|required'],
-            ['field' => 'banner_location', 'label' => '배너위치', 'rules' => 'trim|required'],
+            ['field' => 'banner_disp_idx', 'label' => '노출섹션', 'rules' => 'trim|required'],
             ['field' => 'banner_name', 'label' => '배너명', 'rules' => 'trim|required'],
             ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[self,blank]'],
             ['field' => 'link_url', 'label' => '링크주소', 'rules' => 'trim|required']
@@ -114,7 +108,6 @@ class Regist extends \app\controllers\BaseController
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
                 ['field' => 'attach_img', 'label' => '배너이미지', 'rules' => 'callback_validateFileRequired[attach_img]']
             ]);
         } else {
@@ -160,8 +153,11 @@ class Regist extends \app\controllers\BaseController
         $this->load->helper('file');
         $arr_condition = [];
 
-        //배너노출섹션, 배너위치
-        $banner_info = $this->codeModel->getCcdInArray([$this->_groupCcd['banner_disp'], $this->_groupCcd['banner_location']]);
+        // 카테고리 조회
+        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+
+        // 노출섹션 데이터 조회
+        $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
 
         $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'BIdx' => 'desc']);
 
@@ -171,9 +167,9 @@ class Regist extends \app\controllers\BaseController
         }
 
         $this->load->view("site/banner/list_reorder_modal", [
-            'banner_disp' => $banner_info[$this->_groupCcd['banner_disp']],
-            'banner_location' => $banner_info[$this->_groupCcd['banner_location']],
-            'data' => $list
+            'data' => $list,
+            'arr_cate_code' => $category_data,
+            'arr_disp_data' => $arr_disp_data
         ]);
     }
 
@@ -206,8 +202,8 @@ class Regist extends \app\controllers\BaseController
             'EQ' => [
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.DispCcd' => $this->_reqP('search_banner_disp'),
-                'A.BannerLocationCcd' => $this->_reqP('search_banner_location'),
+                'A.CateCode' => $this->_reqP('search_cate_code'),
+                'A.BdIdx' => $this->_reqP('search_banner_disp_idx'),
                 'A.IsUse' => $this->_reqP('search_is_use')
             ],
             'ORG1' => [

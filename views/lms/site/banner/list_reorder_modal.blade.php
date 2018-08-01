@@ -22,18 +22,18 @@
                             <p class="form-control-static">• 통합 검색 가능</p>
                         </div>
                         <div class="col-md-2">
-                            <select class="form-control mr-10" id="search_modal_banner_disp" name="search_modal_banner_disp" title="노출섹션">
-                                <option value="">노출섹션</option>
-                                @foreach($banner_disp as $key => $val)
-                                    <option value="{{$key}}">{{$val}}</option>
+                            <select class="form-control mr-10" id="search_modal_cate_code" name="search_modal_cate_code" title="카테고리">
+                                <option value="">카테고리</option>
+                                @foreach($arr_cate_code as $row)
+                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <select class="form-control mr-10" id="search_modal_banner_location" name="search_modal_banner_location" title="배너위치">
-                                <option value="">배너위치</option>
-                                @foreach($banner_location as $key => $val)
-                                    <option value="{{$key}}">{{$val}}</option>
+                            <select class="form-control mr-10" id="search_modal_banner_disp_idx" name="search_modal_banner_disp_idx" title="노출섹션">
+                                <option value="">노출섹션</option>
+                                @foreach($arr_disp_data as $row)
+                                    <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}">{{$row['DispName']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -48,12 +48,11 @@
                         <table id="list_modal_table" class="table table-striped table-bordered">
                             <thead>
                             <tr>
-                                <th class="searching_category rowspan">운영사이트</th>
+                                <th class="searching_site_code rowspan">운영사이트</th>
                                 <th>정렬</th>
-                                <th class="searching">카테고리</th>
-                                <th class="searching_banner_disp">노출섹션</th>
-                                <th class="searching_banner_location">배너위치</th>
-                                <th>배너명</th>
+                                <th class="searching_category">카테고리</th>
+                                <th class="searching_banner_disp_idx">노출섹션</th>
+                                <th class="searching">배너명</th>
                                 <th width="25%">배너이미지</th>
                                 <th>노출기간</th>
                                 <th>사용여부</th>
@@ -74,20 +73,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @php
-                                            $category_data = '';
-                                            $categorys = explode(',', $row['CateCode']);
-                                            foreach ($categorys as $key => $val) {
-                                                $category_data .= $categorys[$key].'<Br>';
-                                            }
-                                            echo $category_data;
-                                        @endphp
-                                    </td><td>{{ $row['DispName'] }}<span class="hide">{{ $row['DispCcd'] }}</span></td>
-                                    <td>
-                                        {{ $row['BannerLocationName'] }}<br>
-                                        ({{$row['BannerImgInfo'][0]}}*{{$row['BannerImgInfo'][1]}})
-                                        <span class="hide">{{ $row['BannerLocationCcd'] }}</span>
+                                        {{ $row['CateName'] }}
+                                        <span class="hide">{{ $row['CateCode'] }}</span>
                                     </td>
+                                    <td>{{ $row['DispName'] }}<span class="hide">{{ $row['BdIdx'] }}</span></td>
                                     <td>{{ $row['BannerName'] }}</td>
                                     <td>
                                         <img src="{{$row['BannerFullPath']}}{{$row['BannerImgName']}}" width='100%' height='30%'>
@@ -111,6 +100,10 @@
                 var $list_modal_table = $('#list_modal_table');
 
                 $(document).ready(function() {
+                    // site-code에 매핑되는 select box 자동 변경
+                    $search_form_modal.find('select[name="search_modal_cate_code"]').chained("#search_modal_site_code");
+                    $search_form_modal.find('select[name="search_modal_banner_disp_idx"]').chained("#search_modal_site_code");
+
                     $datatable_modal = $list_modal_table.DataTable({
                         ajax: false,
                         paging: false,
@@ -160,9 +153,9 @@
                 function datatableSearching() {
                     $datatable_modal
                         .columns('.searching').flatten().search($search_form_modal.find('input[name="search_value"]').val())
-                        .column('.searching_category').search($search_form_modal.find('select[name="search_modal_site_code"]').val())
-                        .column('.searching_banner_disp').search($search_form_modal.find('select[name="search_modal_banner_disp"]').val())
-                        .column('.searching_banner_location').search($search_form_modal.find('select[name="search_modal_banner_location"]').val())
+                        .column('.searching_site_code').search($search_form_modal.find('select[name="search_modal_site_code"]').val())
+                        .column('.searching_category').search($search_form_modal.find('select[name="search_modal_cate_code"]').val())
+                        .column('.searching_banner_disp_idx').search($search_form_modal.find('select[name="search_modal_banner_disp_idx"]').val())
                         .draw();
                 }
 

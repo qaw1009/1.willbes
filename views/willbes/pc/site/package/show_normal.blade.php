@@ -281,7 +281,7 @@
                 <!-- willbes-Class -->
             </div>
             <!-- willbes-Lec -->
-
+            </form>
         </div>
         <div class="Quick-Bnr ml20">
             <img src="{{ img_url('sample/banner_180605.jpg') }}">

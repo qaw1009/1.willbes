@@ -267,7 +267,7 @@ class CommonLectureModel extends WB_Model
                         where S.IsStatus=\'Y\'  and A.IsStatus=\'Y\' 
             ';
 
-            $order_by = $this->_conn->makeOrderBy(['S.OrderNum'=>'asc', 'S.PsIdx'=>'asc'])->getMakeOrderBy();
+            $order_by = $this->_conn->makeOrderBy(['S.SubGroupName'=>'asc','S.OrderNum'=>'asc', 'S.PsIdx'=>'asc'])->getMakeOrderBy();
             $where = $this->_conn->makeWhere(['EQ'=>['S.ProdCode'=>$prodcode]])->getMakeWhere(true);
             //echo 'select ' .$column .$from .$where .$order_by;
             $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();

@@ -325,7 +325,11 @@ strong {
 
 /* Basic Code */
 .widthAuto {
-  width: 1120px; 
+  width: 1120px !important; 
+  margin: 0 auto;
+}
+.widthAuto290 {
+  width: 290px;
   margin: 0 auto;
 }
 .widthAuto320 {
@@ -368,6 +372,10 @@ strong {
   width: 770px;
   margin: 0 auto;
 }
+.widthAuto820 {
+  width: 820px !important;
+  margin: 0 auto;
+}
 .widthAuto940 {
   width: 940px;
   margin: 0 auto;
@@ -395,6 +403,10 @@ strong {
 }
 .btnAuto180 {
   width: 180px !important;
+  margin: 0 auto;
+}
+.btnAuto250 {
+  width: 250px !important;
   margin: 0 auto;
 }
 .h36 {
@@ -549,12 +561,17 @@ strong {
 .pl135 {
   padding-left: 135px !important;
 }
-
+.pb-none {
+  padding-bottom: 0 !important;
+}
 .pb60 {
   padding-bottom: 60px !important;
 }
 .pb110 {
   padding-bottom: 110px !important;
+}
+.pb130 {
+  padding-bottom: 130px !important;
 }
 
 .tx11 {
@@ -604,7 +621,7 @@ strong {
   display: none !important;
 }
 .c_both {
-  clear: both
+  clear: both;
 }
 .strong {
   font-weight: 600;
@@ -638,7 +655,10 @@ strong {
   color: #323232 !important;
 }
 .tx-dark-black {
-  color: #363636 !important
+  color: #363636 !important;
+}
+.tx-light-black {
+  color: #3a3a3a !important;
 }
 .tx-purple-gray {
   color: #7e7e86 !important;

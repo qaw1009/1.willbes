@@ -33,7 +33,7 @@
     </div>
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth"><span class="depth-Arrow">></span><strong>단과</strong></span>
+        <span class="1depth"><span class="depth-Arrow">></span><strong>종합반</strong></span>
     </div>
     <div class="Content p_re">
         
@@ -128,7 +128,7 @@
             <div class="willbes-Lec-Line mt20">-</div>
             <!-- willbes-Lec-Line -->
 
-            <div class="willbes-Lec-Table p_re">
+            <div class="willbes-Lec-Table p_re pb_active">
                 <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                     <colgroup>
                         <col style="width: 75px;">
@@ -225,7 +225,7 @@
                                 월 ~ 금 14:00 ~ 18:00
                             </td>
                             <td class="w-info">
-                                <a href="#none">
+                                <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
                                     <img src="{{ img_url('sub/icon_detail.gif') }}">
                                 </a>
                             </td>
@@ -357,7 +357,7 @@
             </div>
             <!-- willbes-Lec-Table -->
 
-            <div class="willbes-Lec-Table">
+            <div class="willbes-Lec-Table p_re pb_active">
                 <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                     <colgroup>
                         <col style="width: 75px;">
@@ -419,6 +419,21 @@
                     </tbody>
                 </table>
                 <!-- lecInfoTable -->
+
+                <div class="lecInfoTable willbes-Lec-buyBtn GM">
+                    <ul>
+                        <li class="btnAuto180 h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                                <span>방문접수</span>
+                            </button>
+                        </li>
+                        <li class="btnAuto180 h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                                <span class="tx-light-blue">바로결제</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <!-- willbes-Lec-Table -->
         </div>

@@ -12,6 +12,9 @@
     padding-top: 11px;
     padding-left: 11px;
 }
+.mem-Acad-Tit {
+    padding: 40px 0 50px;
+}
 .Member {
     letter-spacing: 0;
 }
@@ -1600,6 +1603,32 @@ table.auTable tr td {
     border: 1px solid #0d74ae;
     padding: 10px 20px;
 }
+.curriWrap .CurriBox ul.btn {
+    height: 30px;
+    margin: 30px 0 20px;
+}
+.curriWrap .CurriBox ul.btn li {
+    float: left;
+    width: 50%;
+    height: 30px;
+    border-top: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+}
+.curriWrap .CurriBox ul.btn li:first-child {
+    border-left: 1px solid #d7d7d7;
+}
+.curriWrap .CurriBox ul.btn li a {
+    display: block;
+    line-height: 30px;
+    text-align: center;
+}
+.curriWrap .CurriBox ul.btn li a.on {
+    background: #1a8ccb;
+    font-weight: 600;
+    color: #fff;
+}
+
 .curriWrap table.curriTable {
     width: 100%;
 }
@@ -1614,7 +1643,8 @@ table.auTable tr td {
     vertical-align: top;
     width: 90px;
     font-weight: 600;
-    text-align: center;
+    text-align: left;
+    padding-left: 20px;
 }
 .curriWrap tr td {
 
@@ -4480,6 +4510,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 37px;
     height: 15px;
     font-size: 10px;
+    font-weight: 300;
     color: #fff;
     line-height: 15px;
     text-align: center;  
@@ -4531,14 +4562,14 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: 1px solid #adadad;
     color: #636363;
 }
+.answerBox {
+    border: 1px solid #5ab6eb;
+    color: #1a8bcc;
+}
 .waitBox_block {
     border: 1px solid #4b4b51;
     color: #4b4b51;
     background: #fff;
-}
-.answerBox {
-    border: 1px solid #5ab6eb;
-    color: #1a8bcc;
 }
 .answerBox_block {
     border: 1px solid #4b4b51;
@@ -4549,6 +4580,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: 1px solid #333;
     color: #fff;
     background: #333;
+}
+.cancelBox_block {
+    border: 1px solid #c9c9c9;
+    color: #898989;
+    background: #fff;
 }
 
 .bBox {
@@ -5822,19 +5858,26 @@ table.acadlecTable tr td .priceWrap .chkBox {
     margin: 1px;
 }
 table.acadlecInfoTable {
+    background: #f5f5f5;
     height: 240px;
     overflow-x: auto;
 }
 table.acadlecInfoTable tr td {
     width: 940px;
-    height: 240px;
     padding: 25px 40px;
 }
-.willbes-Lec-Table.active {
+.willbes-Lec-Table.active.pb_active {
     padding-bottom: 130px;
 }
 .willbes-Lec-Table.active .willbes-Lec-buyBtn {
     bottom: 60px;
+}
+.willbes-Lec-Table.active .Lec-buyBtn-Wrap table {
+    padding-bottom: 110px;
+}
+.willbes-Lec-Table.active .Lec-buyBtn-Wrap .willbes-Lec-buyBtn {
+    right: 39px;
+    bottom: 40px;
 }
 table.lecInfoTable .w-Infotit {
     border-bottom: 1px solid #e1e1e1;
@@ -5847,6 +5890,7 @@ table.lecInfoTable .w-InfoSubtit {
 table.acadlecInfoTable .w-txt {
     font-size: 12px;
     color: #3a3a3a;
+    padding-bottom: 15px;
 }
 table.acadlecInfoTable .w-txt strong {
     display: inline-block;
@@ -5873,6 +5917,20 @@ table.acadlecInfoPackageTable tr td.w-list input {
     float: left;
     margin: 8px;
 }
+table.acadlecInfoPackageTable tr td.w-list ul li {
+    float: left;
+}
+table.acadlecInfoPackageTable tr td.w-list ul li.w-chk {
+    width: 50px;
+}
+table.acadlecInfoPackageTable tr td.w-list ul li.w-name {
+    width: 70px;
+    line-height: 50px;
+    text-align: center;
+}
+table.acadlecInfoPackageTable tr td.w-list ul li input {
+    margin: 18px;
+}
 table.acadlecInfoPackageTable tr td span {
     vertical-align: baseline;
 }
@@ -5882,9 +5940,6 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 0;
     border-top: 1px solid #c9c9c9;
 }
-
-
-
 .w-notice .acadInfo {
     float: right;
     font-size: 10px;
@@ -5927,6 +5982,158 @@ table.acadlecInfoPackageTable tr.Top td {
     border-color: #0a8cc2;
 }
 
+/* subContainer : Content : Aside */
+.Aside {
+    float: left;
+    height: 1015px;
+    border: 1px solid #c9c9c9;
+}
+.Aside .Tit {
+    background: #ececec;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.Lec-Pocket-Grid {
+    height: 470px;
+    overflow-x: auto;
+    margin-bottom: 50px;
+}
+.LecPocketlist {
+    font-size: 14px;
+    margin: 0 20px;
+    padding: 30px 0 20px;
+    border-bottom: 1px solid #dedede;
+}
+.LecPocketlist ul {
+    margin-top: 25px;
+}
+.LecPocketlist ul li {
+    margin-right: 5px; 
+}
+.LecPocketlist ul li a {
+    display: block;
+}
+.LecPocketlist ul li.price {
+    letter-spacing: 0;
+    line-height: 20px;
+}
+.LecPocketlist .oBox {
+    float: left;
+}
+.LecPocketlist .w-tit {
+    display: inline-block;
+    width: 170px;
+    line-height: 16px;
+}
+.LecPocketlist .w-tit .closeBtn {
+    position: absolute;
+    right: -25px;
+}
+.lecPocketTable {
+    border-top: 1px solid #c9c9c9;
+    border-bottom: 1px solid #c9c9c9;
+}
+.lecPocketTable .AllchkBox td {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+}
+.lecPocketTable .w-tit {
+    height: 40px;
+    padding: 0 20px 0 44px;
+}
+.lecPocketTable .w-txt {
+    padding: 20px 0 0 20px; 
+}
+.lecPocketTable .w-txt .w-txt-Grid {
+    clear: both;
+}
+.lecPocketTable .w-replyList {
+    cursor: pointer;
+}
+.lecPocketTable .w-replyTxt {
+    display: none;
+}
+.lecPocketTable .w-replyTxt .info-txt {
+    float: left;
+    line-height: 16px;
+    padding-bottom: 20px;
+    letter-spacing: 0;
+}
+.lecPocketTable input {
+    float:left;
+    margin-right: 10px;
+}
+.lecPocketTable .replyList .arrow-Btn {
+    background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 -18px;
+    float: right;
+    width: 11px;
+    height: 9px;
+    margin: 2px 0;
+}
+.lecPocketTable .replyList.hover .arrow-Btn {
+    background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 0;
+}
+.priceBox {
+    padding: 20px;
+    letter-spacing: 0;
+}
+.priceBox ul {
+    height: 20px;
+    margin-bottom: 20px;
+}
+.priceBox ul li.p-tit {
+    float: left;
+    line-height: 20px;
+}
+.priceBox ul li.p-tit .dropdown {
+    display: inline-block;
+    margin-top: -4px;
+}
+.priceBox ul li.p-tit .a-txt {
+    float: left;
+} 
+.priceBox ul li.p-tit .tx-light-blue {
+    float: left;
+    font-size: 18px;
+    margin-top: -2px;
+}
+.priceBox ul li.w-price {
+    float: right;
+}
+.priceBox ul li.o-price {
+    font-size: 15px;
+}
+.priceBox ul li.d-price {
+    font-size: 15px;
+}
+.priceBox ul li.t-price {
+    font-size: 18px;
+}
+
+/* Academy : drop-Box */
+.drop-Box.academy-Box {
+    top: 25px;
+    left: -21px;
+    width: 290px;
+    padding: 15px;
+    border: 1px solid #2f2f2f;
+    box-shadow: none;
+}
+.drop-Box:before {
+    margin-left: -87px;
+    border-color: transparent transparent #2f2f2f;
+}
+.drop-Box:after {
+    margin-left: -86px;
+}
+
+
+
+
+
 
 
 
@@ -5941,6 +6148,8 @@ table.acadlecInfoPackageTable tr.Top td {
 .Quick-Bnr {
     float: left;
 }
+
+
 
 
 

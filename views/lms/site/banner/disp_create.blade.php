@@ -75,6 +75,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="disp_type">롤링방식</label>
+                    <div class="col-md-4 form-inline">
+                        <select class="form-control" name="disp_rolling_type" id="disp_rolling_type">
+                            <option value="">롤링방식</option>
+                            @foreach($disp_rolling_type as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['DispRollingTypeCcd'])selected="selected"@endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="desc">설명</label>
                     <div class="col-md-10">
                         <textarea id="desc" name="desc" class="form-control" rows="3" title="설명" placeholder="">{!! $data['Desc'] !!}</textarea>
@@ -149,8 +161,10 @@
                 var disp_type_val = $(this).val();
                 if (disp_type_val == '664002') {
                     $('#disp_rolling_time').attr('disabled', false);
+                    $('#disp_rolling_type').attr('disabled', false);
                 } else {
                     $('#disp_rolling_time').attr('disabled', true);
+                    $('#disp_rolling_type').attr('disabled', true);
                 }
             });
 
@@ -167,8 +181,26 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/banner/disp/") }}' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
         });
+
+        function addValidate()
+        {
+            var string = $('#disp_name').val();
+            return checkStringFormat(string);
+        }
+
+        function checkStringFormat(string) {
+            var isValid = true;
+            var pattern = /[^a-zA-Z0-9가-힣_]/;
+
+            if (pattern.test(string) == true) {
+                alert('숫자,한글,영문,_ 만 가능합니다.');
+                isValid = false;
+            }
+
+            return isValid;
+        }
     </script>
 @stop

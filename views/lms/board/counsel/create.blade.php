@@ -10,7 +10,7 @@
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>상담게시판 정보</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
                 </div>

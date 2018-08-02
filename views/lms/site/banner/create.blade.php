@@ -106,7 +106,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
                     <div class="col-md-10 item">
-                        <input type="text" id="link_url" name="link_url" required="required" class="form-control" maxlength="46" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
+                        <input type="text" id="link_url" name="link_url" required="required" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
                     </div>
                 </div>
 

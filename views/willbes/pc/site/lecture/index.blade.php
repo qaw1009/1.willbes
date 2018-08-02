@@ -153,7 +153,7 @@
                             @if($data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
                                 <li class="Reply tx-blue">
                                     <strong>수강후기</strong>
-                                    <div class="sliderUp">
+                                    <div class="sliderUp vSlider">
                                         <div class="sliderVertical roll-Reply tx-dark-black">
                                             @foreach(json_decode($data['professor_study_comments'][$subject_idx][$prof_idx], true) as $idx => $board_row)
                                                 <div>{{ $board_row['Title'] }}</div>

@@ -77,13 +77,13 @@ function slider(ele_id, type, pause_sec) {
     // slider option
     var option = { auto: true, controls: false, pause: pasue_msec };
     switch (type) {
-        case 'h_control' :
+        case 'cSlider' :
                 option = { auto: true, controls: true, pause: pasue_msec, pager: false };
             break;
-        case 'h_paging' :
+        case 'nSlider' :
                 option = { auto: true, controls: true, pause: pasue_msec, pager: true, pagerType: 'short', moveSlides: 1 };
             break;
-        case 'v_basic' :
+        case 'vSlider' :
                 option = { mode: 'vertical', auto: true, controls: false, pause: pasue_msec, pager: false, minSlides: 1 };
             break;
     }

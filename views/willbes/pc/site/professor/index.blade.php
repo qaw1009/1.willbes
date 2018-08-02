@@ -20,7 +20,7 @@
             @endforeach
         </form>
         <div class="willbes-NoticeWrap mb60 c_both">
-            <div class="sliderPromotion widthAuto460 f_left mr20">
+            <div class="sliderPromotion nSlider widthAuto460 f_left mr20">
                 <div class="sliderNum">
                     <div><img src="{{ img_url('sample/roll1.jpg') }}"></div>
                     <div><img src="{{ img_url('sample/roll2.jpg') }}"></div>

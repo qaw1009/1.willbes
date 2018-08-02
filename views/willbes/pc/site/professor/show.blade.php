@@ -46,7 +46,7 @@
                     {!! $data['ProfSlogan'] !!}
                 </div>
                 <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['wProfName'] }}</strong><span class="NGR">교수님</span></div>
-                <div class="sliderBest">
+                <div class="sliderBest cSlider">
                     <div class="best-tit">이 시기 BEST 강좌</div>
                     <div class="sliderControls">
                         @foreach($products['best'] as $idx => $row)

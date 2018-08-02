@@ -6,7 +6,7 @@ class Banner extends \app\controllers\BaseController
     protected $models = array('bannerF');
     protected $helpers = array();
 
-    private $_rolling_type = ['665001' => 'h_basic',  '665002' => 'h_control', '665003' => 'h_paging', '665004' => 'v_basic'];
+    private $_rolling_type = ['665001' => 'bSlider',  '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider'];
 
     public function __construct()
     {

@@ -9,7 +9,7 @@
     </div>
 
     <!-- slider -->
-    <div class="sliderGNB">
+    <div class="sliderGNB bSlider">
         <div class="slider">
             <div><img src="/public/img/front/sample/gnb1.jpg"></div>
             <div><img src="/public/img/front/sample/gnb2.jpg"></div>

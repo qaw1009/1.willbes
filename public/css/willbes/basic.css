@@ -380,6 +380,10 @@ strong {
   width: 940px;
   margin: 0 auto;
 }
+.widthAutoFull {
+  width: 100%;
+  margin: 0 auto;
+}
 
 .btnAuto {
   width: 100%;
@@ -645,6 +649,12 @@ strong {
 .tx-dark-blue {
   color: #003e7d !important;
 }
+.tx-bright-gray {
+  color: #9a9a9a !important;
+} 
+.tx-light-gray {
+  color: #c0c0c0 !important;
+}
 .tx-gray {
   color: #707070 !important;
 }
@@ -721,6 +731,9 @@ strong {
 }
 .bdb-black2 {
   border-bottom: 2px solid #000;
+}
+.bdb-light-gray {
+  border-bottom: 1px solid #cacaca;
 }
 .bdb-gray {
   border-bottom: 1px solid #959595;

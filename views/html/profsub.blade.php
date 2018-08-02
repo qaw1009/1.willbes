@@ -128,7 +128,7 @@
                     출제자 시각의 분석, 수험생 시선까지 콕 집어내는 강의
                 </div>
                 <div class="Name"><span class="Sbj tx-blue">국어</span><strong>정채영</strong><span class="NGR">교수님</span></div>
-                <div class="sliderBest">
+                <div class="sliderBest cSlider">
                     <div class="best-tit">이 시기 BEST 강좌</div>
                     <div class="sliderControls">
                         <div class="lec-profile p_re">
@@ -678,7 +678,7 @@
                                                     </li>
                                                     <li class="Reply tx-blue">
                                                         <strong>수강후기</strong>
-                                                        <div class="sliderUp">
+                                                        <div class="sliderUp vSlider">
                                                             <div class="sliderVertical roll-Reply tx-dark-black">
                                                                 <div>1국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
                                                                 <div>2국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>

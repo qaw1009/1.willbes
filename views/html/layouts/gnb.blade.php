@@ -24,7 +24,7 @@
                             <li><a href="#none">단과강좌</a></li>
                             <li><a href="#none">무료강좌</a></li>
                         </ul>
-                        <div class="sliderView">
+                        <div class="sliderView bSlider">
                             <div class="slider">
                                 <div><img src="/public/img/front/sample/gnb5.jpg"></div>
                                 <div><img src="/public/img/front/sample/gnb6.jpg"></div>

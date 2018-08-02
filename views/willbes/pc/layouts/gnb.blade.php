@@ -10,7 +10,7 @@
 
     @if(empty($__cfg['GnbTreeMenu'][$__cfg['GnbActiveGroupId']]) === true)
         <!-- main slider -->
-        <div class="sliderGNB">
+        <div class="sliderGNB bSlider">
             <div class="slider">
                 <div><img src="{{ img_url('sample/gnb1.jpg') }}"></div>
                 <div><img src="{{ img_url('sample/gnb2.jpg') }}"></div>
@@ -38,7 +38,7 @@
                                                     <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
                                                 @endforeach
                                             </ul>
-                                            <div class="sliderView">
+                                            <div class="sliderView bSlider">
                                                 <div class="slider">
                                                     <div><img src="{{ img_url('sample/gnb5.jpg') }}"></div>
                                                     <div><img src="{{ img_url('sample/gnb6.jpg') }}"></div>

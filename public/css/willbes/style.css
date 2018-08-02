@@ -716,27 +716,6 @@ table.auTable tr td {
     margin: 0;
     padding: 0;
 }
-.bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    right: 8px;
-    bottom: 8px;
-    text-align: right;
-}
-.bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
-    width: 8px;
-    height: 8px;
-    margin: 0 2px;
-}
-.bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.bx-wrapper .bx-pager.bx-default-pager a.active,
-.bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #fff;
-}
-.bx-wrapper .bx-pager.bx-default-pager a.active {
-    width: 30px;
-}
 .bx-wrapper .bx-controls-direction a {
     top: 0;
     left: 0;
@@ -744,6 +723,30 @@ table.auTable tr td {
     bottom: 0;
     margin: 0;
 }
+
+/* slider : 페이징 버튼(공통 GNB) => bSlider */
+.bSlider .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    bottom: 8px;
+    text-align: right;
+}
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #fff;
+}
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
+    width: 30px;
+}
+
 .sliderGNB {
     width: 120px;
     height: 188px;
@@ -1382,7 +1385,7 @@ table.auTable tr td {
 }
 .Menu .menu-List li {
     position: relative;
-    float: left;
+    float: left !important;
     font-size: 16px;
     font-weight: 600;
     margin-left: 50px;
@@ -1409,7 +1412,9 @@ table.auTable tr td {
     text-align: center;
 }
 .Menu .menu-List-Center li {
-    margin: 0 31px;
+    float: none;
+    display: inline-block;
+    margin: 0 30px;
 }
 
 /* subContainer : Menu : list-drop-Box  */
@@ -1859,7 +1864,9 @@ table.auTable tr td {
     font-size: 12px;
     overflow: hidden;
 }
-.sliderUp .bx-wrapper {
+
+/* sliderVertical : 위로 슬라이드(교수 리스트 수강후기) vSlider */
+.vSlider .bx-wrapper {
     background: none;
 }
 
@@ -3880,28 +3887,32 @@ table.finTable .row-line {
     height: 220px;
     overflow: hidden;
 }
-.sliderPromotion .bx-wrapper .bx-prev {
+
+/* sliderNum : 넘버링 좌우 버튼(교수진소개 페이지) => nSlider */
+.nSlider .bx-wrapper .bx-prev {
     background: url("../../img/willbes/prof/btn_prev.png") no-repeat 0 0;
 }
-.sliderPromotion .bx-wrapper .bx-next {
+.nSlider .bx-wrapper .bx-next {
     background: url("../../img/willbes/prof/btn_next.png") no-repeat 0 0;
     left: 20px;
 }
-.sliderPromotion .bx-wrapper .bx-controls-direction {
+.nSlider .bx-wrapper .bx-controls-direction {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 40px;
     height: 20px;
 }
-.sliderPromotion .bx-wrapper .bx-controls-direction a {
+.nSlider .bx-wrapper .bx-controls-direction a {
     width: 20px;
     height: 20px;
 }
-.sliderPromotion .bx-wrapper .bx-pager {
+.nSlider .bx-wrapper .bx-pager {
+    width: auto;
     position: absolute;
     top: 15px;
     right: 60px;
+    bottom: 0;
     font-size: 11px;
     font-weight: 300;
     color: #fff;
@@ -4344,33 +4355,39 @@ ul li.profList .willbes-Layer-ProfileBox {
     border-bottom: 1px solid #979797;
 }
 .sliderBest .bx-wrapper {
-    background: none;
     height: 65px;
 }
 .sliderBest .sliderControls {
     width: 520px;
     height: 65px;
 }
-.sliderBest .bx-wrapper .bx-prev {
+.sliderBest .bx-wrapper .bx-controls {
+    top: -26px;
+    right: 0;
+}
+
+/* sliderControls : 좌우 버튼(교수 상세 페이지) => cSlider  */
+.cSlider .bx-wrapper {
+    background: none;
+}
+.cSlider .bx-wrapper .bx-prev {
     background: url("../../img/willbes/prof/btn_prev_white.png") no-repeat 0 0;
 }
-.sliderBest .bx-wrapper .bx-next {
+.cSlider .bx-wrapper .bx-next {
     background: url("../../img/willbes/prof/btn_next_white.png") no-repeat 0 0;
     left: 20px;
 }
-.sliderBest .bx-wrapper .bx-controls {
+.cSlider .bx-wrapper .bx-controls {
     position: absolute;
-    top: -26px;
-    right: 0;
     width: 40px;
     height: 20px;
     z-index: 1;
 }
-.sliderBest .bx-wrapper .bx-controls-direction {
+.cSlider .bx-wrapper .bx-controls-direction {
     width: 40px;
     height: 20px; 
 }
-.sliderBest .bx-wrapper .bx-controls-direction a {
+.cSlider .bx-wrapper .bx-controls-direction a {
     width: 20px;
     height: 20px;
 }
@@ -5244,6 +5261,96 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 
 /*********************************************     MYPAGE     *********************************************/
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex1 */
+.Mypage_PASS_Index .ActIndex1 {
+    height: 270px;
+    border-bottom: 1px solid #959595;
+}
+.MyInfoBox {
+    float: left;
+    width: 575px;
+    padding: 10px 0 5px 0;
+}
+.MyInfoBox ul li {
+    float: left;
+    width: 275px;
+    height: 110px;
+    border: 1px solid #d7d7d7;
+    box-shadow: 0 2px 0 #e5e5e5;
+    margin: 0 10px 5px 0;
+}
+.MyInfoBox ul li .Tit {
+    float: left;
+    width: 100px;
+    height: 108px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 18px;
+    padding: 25px 0 0 15px;
+    background-image: url("../../img/willbes/mypage/icon_arrow.png");
+    background-position: 65px 85px;
+    background-repeat: no-repeat; 
+
+}
+.MyInfoBox dl {
+    float: left;
+    width: 173px;   
+    height: 108px;
+    text-align: center; 
+}
+.MyInfoBox dl dt {
+    display: inline-block;
+    line-height: 15px;
+    font-size: 13px;
+    margin: 40px 8px;
+    letter-spacing: 0;
+}
+.MyInfoBox dl dt span {
+    vertical-align: baseline;
+}
+.willbes-myinfo {
+    float: left;
+    width: 365px;
+    height: 245px;
+    border-left: 1px solid #959595;
+
+}
+.willbes-myinfoList .will-Tit {
+    font-size: 14px;
+    border-bottom: 1px solid #eaeaea;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 0 0 15px;
+}
+.willbes-myinfoList .List-Table {
+    padding-left: 20px;
+    margin: 13px 0;
+    letter-spacing: 0;
+}
+.willbes-myinfoList .List-Table li {
+    border-bottom: none;
+    height: 30px;
+    line-height: 30px;
+}
+.willbes-myinfoList .List-Table li a {
+    width: auto;
+}
+.willbes-myinfoList .List-Table li a img {
+    margin: -4px 0 0 5px;
+}
+.willbes-myinfoList .List-Table.myTablet {
+    background: url("../../img/willbes/mypage/icon_pc.png") no-repeat 0 4px;
+    padding: 23px 0 23px 110px;
+    margin: 0;
+}
+
+.willbes-myinfoList .List-Table.myTablet li {
+    height: 20px;
+    line-height: 20px;
+}
+
+
 
 /* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
 .Mypage_PASS_Index .ActIndex3 {
@@ -6122,11 +6229,11 @@ table.acadlecInfoPackageTable tr.Top td {
     border: 1px solid #2f2f2f;
     box-shadow: none;
 }
-.drop-Box:before {
+.drop-Box.academy-Box:before {
     margin-left: -87px;
     border-color: transparent transparent #2f2f2f;
 }
-.drop-Box:after {
+.drop-Box.academy-Box:after {
     margin-left: -86px;
 }
 

@@ -72,6 +72,11 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 조회
         $cart_data = $this->cartFModel->findCartByCartIdx($cart_idx, $sess_mem_idx);
 
+        if (empty($cart_data['ProdCodeSub']) === false) {
+            // 서브강좌코드 배열 생성
+            $cart_data['ProdCodeSub'] = explode(',', $cart_data['ProdCodeSub']);
+        }
+
         // 패키지 서브강좌 조회
         $list = $this->packageFModel->findProductSubLectures($cart_data['ProdCode'], $cart_data['ProdCodeSub']);
 
@@ -155,6 +160,7 @@ class Cart extends \app\controllers\FrontController
         $_only_prod_code = $this->_reqP('only_prod_code');
         $_cart_type = $this->_reqP('cart_type');
         $_prod_code = empty($this->_reqP('prod_code')) === false ? $this->_reqP('prod_code') : (array) $_only_prod_code;
+        $_prod_code_sub = $this->_reqP('prod_code_sub');
         $returns = [];
 
         if (empty($_prod_code) === true || empty($_learn_pattern) === true || empty($_is_direct_pay) === true) {
@@ -164,6 +170,7 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 저장
         $result = $this->cartFModel->addCart($_learn_pattern, [
             'prod_code' => $_prod_code,
+            'prod_code_sub' => $_prod_code_sub,
             'site_code' => $this->_site_code,
             'cate_code' => $this->_cate_code,
             'is_direct_pay' => $_is_direct_pay,

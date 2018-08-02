@@ -222,11 +222,18 @@ class CartFModel extends BaseOrderFModel
                     }
                 }
 
+                $prod_sub_code = '';
+                if ($prod_code == $prod_row['ParentProdCode'] && isset($input['prod_code_sub']) === true) {
+                    // 서브 강좌가 있는 경우 (운영자 선택형 패키지)
+                    $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
+                }
+
                 $data = [
                     'MemIdx' => $sess_mem_idx,
                     'SiteCode' => element('site_code', $input, ''),
                     'CateCode' => element('cate_code', $input, ''),
                     'ProdCode' => $prod_code,
+                    'ProdCodeSub' => $prod_sub_code,
                     'ParentProdCode' => $prod_row['ParentProdCode'],
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
                     'IsDirectPay' => element('is_direct_pay', $input, 'N'),

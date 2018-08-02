@@ -319,4 +319,14 @@ class BaseBoard extends \app\controllers\BaseController
     {
         return $this->lectureModel->findProductForStudyBoard($arr_condition, $column);
     }
+
+    /**
+     * MAX 정렬 값 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    protected function getMaxOrderNum($arr_condition)
+    {
+        return $this->boardModel->getMaxOrderNumData($arr_condition);
+    }
 }

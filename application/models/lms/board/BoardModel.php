@@ -969,6 +969,25 @@ class BoardModel extends WB_Model
     }
 
     /**
+     * MAX 정렬 값 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function getMaxOrderNumData($arr_condition = [])
+    {
+        $column = 'MAX(OrderNum) AS OrderNum';
+        $from = "
+            FROM {$this->_table}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
      * 게시판 카테고리 조회
      * @param $board_idx
      * @return array|int

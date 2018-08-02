@@ -20,7 +20,7 @@
                         <select class="form-control" required="required" id="model_faq_group_ccd" name="model_faq_group_ccd" title="FAQ구분">
                             <option value="">선택</option>
                             @foreach($faq_group_ccd as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                                <option value="{{$key}}" @if($select_group_ccd == $key)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -124,6 +124,7 @@
                         sendAjax(_update_order_url, data, function (ret) {
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
+                                replaceModal("{{ site_url('board/faq/createOrderByModal?') }}" + '{!! $boardDefaultQueryString !!}' + '&select_group_ccd=' + $('#model_faq_group_ccd').val());
                             }
                         }, showError, false, 'POST', 'json');
                     }

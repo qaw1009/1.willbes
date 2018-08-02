@@ -249,11 +249,17 @@ class Faq extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'cate_code[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
+
+        //사이트코드 통합코드가 아닐경우 카테고리 체크
+        if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
+            $rules = array_merge($rules, [
+                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
+            ]);
+        }
 
         if ($this->validate($rules) === false) {
             return;
@@ -329,10 +335,14 @@ class Faq extends BaseBoard
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;
         }
-        $get_category_array = $this->_getCategoryArray($site_code);
 
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        $get_category_array = $this->_getCategoryArray($site_code);
+        if (empty($get_category_array) === true) {
+            $data['arr_cate_code'] = [];
+        } else {
+            foreach ($arr_cate_code as $item => $code) {
+                $data['arr_cate_code'][$code] = $get_category_array[$code];
+            }
         }
 
         $this->load->view("board/{$this->board_name}/read",[
@@ -401,6 +411,7 @@ class Faq extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $select_faq_group = $this->_req('select_group_ccd');
 
         //FAQ구분
         $faq_group_ccd = $this->_getFaqGroupInfo($this->_groupCcd['faq_group_type_ccd']);
@@ -430,6 +441,7 @@ class Faq extends BaseBoard
             'data' => $list,
             'faq_group_ccd' => $faq_group_ccd,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
+            'select_group_ccd' => $select_faq_group
         ]);
     }
 
@@ -494,6 +506,15 @@ class Faq extends BaseBoard
     }
 
     private function _setInputData($input){
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->bm_idx,
+                'FaqGroupTypeCcd' => element('faq_group_ccd', $input)
+            ]
+        ];
+        $get_order_num = $this->getMaxOrderNum($arr_condition);
+        $order_num = $get_order_num['OrderNum'];
+
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
@@ -503,6 +524,7 @@ class Faq extends BaseBoard
                 'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
+                'OrderNum' => (empty($order_num) === true) ? '1' : $order_num + 1,
                 'IsBest' => (element('is_best', $input) == 'Y') ? 'Y' : 'N',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),

@@ -4,7 +4,7 @@
     <h5>- 고객센터 FAQ 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}
+        {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], true) !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">
             <div class="x_content">
@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="">조건</label>
                     <div class="col-md-5 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
@@ -177,12 +177,19 @@
 
                     {'data' : 'SiteName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
+                            if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
+                                return '통합';
+                            } else {
+                                var str = '없음';
+                                if (data != null) {
+                                    str = '';
+                                    var obj = data.split(',');
+                                    for (key in obj) {
+                                        str += obj[key] + "<br>";
+                                    }
+                                }
+                                return str;
                             }
-                            return str;
                         }},
 
                     {'data' : 'FaqGroupCcdName'},

@@ -171,7 +171,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
-                                            <td class="w-chk"><input type="checkbox" id="prod-code-sub-{{$sub_row['ProdCode']}}" name="prod-code-sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);"></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);"></td>
                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
@@ -202,6 +202,9 @@
                                                     </dt>
                                                 </dl>
                                             </td>
+
+
+                                            
                                             <td class="w-notice p_re">
                                                 @if(empty($sub_row['LectureSampleData']) === false)
                                                     <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
@@ -237,12 +240,10 @@
                                                             <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
                                                             <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
                                                             <span class="chk">
-                                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
-                                                                [{{ $book_row['wSaleCcdName'] }}]
-                                                            </label>
-                                                                    @if($sub_row['IsCart'] == 'Y')
-                                                                        <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
-                                                                    @endif
+                                                                <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                                    [{{ $book_row['wSaleCcdName'] }}]
+                                                                </label>
+                                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                             </span>
                                                             <span class="priceWrap">
                                                                 <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
@@ -307,7 +308,7 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
-                                            <td class="w-chk"><input type="checkbox" id="prod-code-sub-{{$sub_row['ProdCode']}}" name="prod-code-sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup"></td>
+                                            <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup"></td>
                                             <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
@@ -372,12 +373,10 @@
                                                             <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
                                                             <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
                                                             <span class="chk">
-                                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
-                                                                [{{ $book_row['wSaleCcdName'] }}]
-                                                            </label>
-                                                                @if($sub_row['IsCart'] == 'Y')
-                                                                    <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
-                                                                @endif
+                                                                <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                                    [{{ $book_row['wSaleCcdName'] }}]
+                                                                </label>
+                                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                             </span>
                                                             <span class="priceWrap">
                                                                 <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
@@ -402,7 +401,6 @@
                         </tr>
                         @endif
                     @endforeach
-
                         </tbody>
                     </table>
                     <!-- pos2 -->

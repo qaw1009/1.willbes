@@ -2,11 +2,11 @@ var html = '';
 
 @if($disp['DispTypeCcd'] == '664002')
     // 롤링 배너
-    html = '<div id="bn_slider_{{ $disp['BdIdx'] }}">';
+    html = '<div class="sliderPromotion"><div id="bn_slider_{{ $disp['BdIdx'] }}">';
     @foreach($data as $idx => $row)
         html += '<div><a href="//{{ app_to_env_url($row['LinkUrl']) }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/></a></div>';
     @endforeach
-    html += '</div>';
+    html += '</div></div>';
     document.write(html);
 
     $(function() {

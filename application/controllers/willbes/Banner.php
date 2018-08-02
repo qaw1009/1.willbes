@@ -6,27 +6,44 @@ class Banner extends \app\controllers\BaseController
     protected $models = array('bannerF');
     protected $helpers = array();
 
+    private $_rolling_type = ['665001' => 'h_basic',  '665002' => 'h_control', '665003' => 'h_paging', '665004' => 'v_basic'];
+
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function show($params = [])
+    /**
+     * 배너 노출
+     * @return mixed
+     */
+    public function show()
     {
-        $params = array_pluck(array_chunk($params, 2), '1', '0');
+        $arr_input = $this->_reqG(null);
 
-        if (empty($params['site']) === true || empty($params['section']) === true || empty($params['location']) === true) {
-            show_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST, '잘못된 접근');
+        if (empty($arr_input['site_code']) === true || empty($arr_input['section']) === true) {
+            return '';
         }
 
         // 데이터 조회
-        $data = $this->bannerFModel->findBanners($params['section'], $params['location'], $params['site'], element('cate', $params));
-
+        $data = $this->bannerFModel->findBanners($arr_input['section'], $arr_input['site_code'], element('cate_code', $arr_input, 0));
         if (empty($data) === true) {
-            //show_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND, '정보 없음');
+            return '';
+        }
+
+        // 노출섹션 정보 추출
+        $disp_data = [
+            'BdIdx' => $data[0]['BdIdx'], 'DispTypeCcd' => $data[0]['DispTypeCcd'], 'DispRollingTime' => $data[0]['DispRollingTime'],
+            'DispRollingTypeCcd' => $data[0]['DispRollingTypeCcd'], 'DispRollingTypeName' => element($data[0]['DispRollingTypeCcd'], $this->_rolling_type, ''),
+        ];
+
+        // 랜덤 노출일 경우
+        if ($disp_data['DispTypeCcd'] == '664003') {
+            shuffle($data);
         }
 
         $this->load->view('common/banner', [
+            'disp' => $disp_data,
             'data' => $data
         ]);
     }

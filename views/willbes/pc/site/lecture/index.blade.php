@@ -112,7 +112,7 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            <script src="{{ app_url('/banner/show/site/' . $__cfg['SiteCode'] . '/cate/' . $__cfg['CateCode'] . '/section/00000/location/000000', 'www') }}"></script>
+            {!! banner('단강좌_중단') !!}
         </div>
         <!-- willbes-Bnr -->
 

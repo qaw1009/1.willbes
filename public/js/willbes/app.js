@@ -66,6 +66,31 @@ $(function() {
     });
 });
 
+/**
+ * slider util
+ * @param ele_id
+ * @param type
+ * @param pause_sec
+ */
+function slider(ele_id, type, pause_sec) {
+    var pasue_msec = pause_sec * 1000;
+    // slider option
+    var option = { auto: true, controls: false, pause: pasue_msec };
+    switch (type) {
+        case 'h_control' :
+                option = { auto: true, controls: true, pause: pasue_msec, pager: false };
+            break;
+        case 'h_paging' :
+                option = { auto: true, controls: true, pause: pasue_msec, pager: true, pagerType: 'short', moveSlides: 1 };
+            break;
+        case 'v_basic' :
+                option = { mode: 'vertical', auto: true, controls: false, pause: pasue_msec, pager: false, minSlides: 1 };
+            break;
+    }
+
+    $('#' + ele_id).bxSlider(option);
+}
+
 // GNB 아코디언 메뉴 Script
 $(function() {
     $('div.gnb-List-Tit').hover(function() {

@@ -96,7 +96,7 @@ $autoload['helper'] = array('base', 'url', 'array');
 if (in_array(APP_NAME, ['api']) === false) {
     $autoload['helper'] = array_merge($autoload['helper'], ['form', 'cookie']);
 }
-if (in_array(APP_NAME, ['lms']) === true) {
+if (in_array(APP_NAME, ['lms', 'willbes']) === true) {
     $autoload['helper'][] = APP_NAME;
 }
 

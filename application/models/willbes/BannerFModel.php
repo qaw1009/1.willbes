@@ -5,7 +5,7 @@ class BannerFModel extends WB_Model
 {
     private $_table = [
         'banner' => 'lms_banner',
-        'banner_r_category' => 'lms_banner_r_category',
+        'banner_disp' => 'lms_banner_disp',
     ];
 
     public function __construct()
@@ -14,21 +14,22 @@ class BannerFModel extends WB_Model
     }
 
     /**
-     * 사이트 코드, 카테고리 코드, 노출섹션, 배너위치에 맞는 배너 조회
-     * @param $disp_ccd
-     * @param $location_ccd
+     * 사이트 코드, 카테고리 코드, 노출섹션에 맞는 배너 조회
+     * @param $disp_name
      * @param $site_code
      * @param null $cate_code
      * @return array
      */
-    public function findBanners($disp_ccd, $location_ccd, $site_code, $cate_code = null)
+    public function findBanners($disp_name, $site_code, $cate_code = null)
     {
-        $column = 'B.BIdx, B.BannerName, B.LinkUrl, B.LinkType, B.BannerFullPath, B.BannerImgName';
+        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.BannerFullPath, B.BannerImgName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
         $arr_condition = [
             'EQ' => [
-                'B.DispCcd' => $disp_ccd,
-                'B.BannerLocationCcd' => $location_ccd,
-                'B.SiteCode' => $site_code,
+                'BD.SiteCode' => $site_code,
+                'BD.CateCode' => $cate_code,
+                'BD.DispName' => $disp_name,
+                'BD.IsUse' => 'Y',
+                'BD.IsStatus' => 'Y',
                 'B.IsUse' => 'Y',
                 'B.IsStatus' => 'Y'
             ],
@@ -36,21 +37,9 @@ class BannerFModel extends WB_Model
                 'NOW() between ' => 'B.DispStartDatm and B.DispEndDatm'
             ]
         ];
-        $order_by = ['B.BIdx' => 'desc'];
+        $order_by = ['B.OrderNum' => 'asc'];
 
-        if (empty($cate_code) === true) {
-            return $this->_conn->getListResult($this->_table['banner'] . ' as B', $column, $arr_condition, null, null, $order_by);
-        } else {
-            $from = '
-                from ' . $this->_table['banner'] . ' as B
-                    inner join ' . $this->_table['banner_r_category'] . ' as BC
-                        on B.BIdx = BC.BIdx and BC.IsStatus = "Y" and BC.CateCode = ?
-            ';
-            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-            $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-
-            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$cate_code]);
-            return $query->result_array();
-        }
+        return $this->_conn->getJoinListResult($this->_table['banner'] . ' as B', 'inner', $this->_table['banner_disp'] . ' as BD', 'B.BdIdx = BD.BdIdx',
+            $column, $arr_condition, null, null, $order_by);
     }
 }

@@ -93,7 +93,8 @@ class Cart extends \app\controllers\FrontController
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'learn_pattern', 'label' => '학습형태', 'rules' => 'trim|required'],
             ['field' => 'prod_code', 'label' => '상품 식별자', 'rules' => 'trim|required'],
-            ['field' => 'parent_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required']
+            ['field' => 'parent_prod_code', 'label' => '부모상품 식별자', 'rules' => 'trim|required'],
+            ['field' => 'group_prod_code', 'label' => '그룹상품 식별자', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
@@ -103,11 +104,12 @@ class Cart extends \app\controllers\FrontController
         $learn_pattern = $this->_reqP('learn_pattern');
         $prod_book_code = $this->_reqP('prod_code');
         $parent_prod_code = $this->_reqP('parent_prod_code');
+        $group_prod_code = $this->_reqP('group_prod_code');
         $input_prod_code = json_decode($this->_reqP('input_prod_code'), true);
 
         if ($learn_pattern == 'adminpack_lecture') {
             // 운영자 일반형 패키지 연결 단강좌 조회
-            $pack_data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $parent_prod_code);
+            $pack_data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $group_prod_code);
             if (empty($pack_data) === false && $pack_data['PackTypeCcd'] === $this->cartFModel->_admin_package_type_ccd['normal']) {
                 $input_prod_code = explode(',', $pack_data['ProdCodeSub']);
             }

@@ -342,14 +342,22 @@ class CartFModel extends BaseOrderFModel
      */
     private function _check_adminpack_lecture($prod_code, $parent_prod_code)
     {
-        $data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);
+        if ($prod_code == $parent_prod_code) {
+            $data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);
 
-        if (empty($data) === true) {
-            return '데이터 조회에 실패했습니다.';
-        }
-        if ($data['SaleStatusCcd'] !== $this->_available_sale_status_ccd['product']) {
-            // 판매가능 상품만 저장 가능
-            return '판매 중인 상품만 주문 가능합니다.';
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+            if ($data['SaleStatusCcd'] !== $this->_available_sale_status_ccd['product']) {
+                // 판매가능 상품만 저장 가능
+                return '판매 중인 상품만 주문 가능합니다.';
+            }
+        } else {
+            // 수강생 교재 체크
+            $check_result = $this->checkStudentBook($prod_code);
+            if ($check_result !== true) {
+                return $check_result;
+            }
         }
 
         return true;

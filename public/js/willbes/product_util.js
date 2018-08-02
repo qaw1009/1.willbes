@@ -108,10 +108,20 @@ function checkStudentBook($regi_form, $chk_obj) {
             $input_prod_code[idx] = $(this).data('prod-code');
         });
 
+        // 운영자 선택형 패키지
+        if($regi_form.find('input[name="prod_code_sub[]"]:checked').length > 0) {
+            var input_cnt = Object.keys($input_prod_code).length;
+
+            $regi_form.find('input[name="prod_code_sub[]"]:checked').each(function(idx) {
+                $input_prod_code[input_cnt + idx] = $(this).val();
+            });
+        }
+
         var url = location.protocol + '//' + location.host + '/cart/checkStudentBook';
         var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
             'prod_code' : input_data.prodCode,
             'parent_prod_code' : input_data.parentProdCode,
+            'group_prod_code' : input_data.groupProdCode,
             'input_prod_code' : JSON.stringify($input_prod_code)
         });
         sendAjax(url, data, function(ret) {

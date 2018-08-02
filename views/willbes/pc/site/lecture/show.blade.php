@@ -91,7 +91,7 @@
                             <td class="w-notice p_re tx-right">
                                 @foreach($data['ProdPriceData'] as $price_idx => $price_row)
                                     <div class="priceWrap p_re">
-                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['SaleStatusCcd'] == '618002') disabled="disabled" @endif></span>
+                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['SaleStatusCcd'] == '618002') disabled="disabled" @endif></span>
                                         <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                         <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
@@ -118,7 +118,7 @@
                                             <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                 [{{ $book_row['wSaleCcdName'] }}]
                                             </label>
-                                            <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                            <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                         </span>
                                         <span class="priceWrap">
                                             <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>

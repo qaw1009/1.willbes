@@ -18,14 +18,14 @@
                 <input type="hidden" name="idx" value="{{ $idx }}"/>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="site_code">운영사이트 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">운영사이트 <span class="required">*</span>
                     </label>
                     <div class="col-md-4">
                         <div class="inline-block item">
                             {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 d-line">캠퍼스<span class="required">*</span></label>
                     <div class="col-md-4 ml-12-dot">
                         <div class="inline-block item">
                             <select class="form-control" id="campus_ccd" name="campus_ccd" required="required">
@@ -66,12 +66,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="schedule_start_date" name="schedule_start_date" value="">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="schedule_end_date" name="schedule_end_date" value="">
                         </div>
                     </div>
                     <label class="control-label col-md-1-1 d-line">적용요일 <span class="required">*</span>
@@ -88,121 +88,141 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">상담가능시간 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">상담가능시간 <span class="required">*</span>
                     </label>
                     <div class="col-md-4">
                         <div class="form-inline item">
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">12</option>
-                                <option value="">22</option>
-                                <option value="">23</option>
+                            <select class="form-control" id="schedule_start_hour" name="schedule_start_hour" required="required">
+                                @php
+                                    for($i=0; $i<=23; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['StartHour']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select> :
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">02</option>
-                                <option value="">58</option>
-                                <option value="">59</option>
+                            <select class="form-control" id="schedule_start_min" name="schedule_start_min" required="required">
+                                @php
+                                    for($i=0; $i<=59; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['StartMin']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select>
 
                             &nbsp; ~ &nbsp;&nbsp;
 
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">12</option>
-                                <option value="">22</option>
-                                <option value="">23</option>
+                            <select class="form-control" id="schedule_end_hour" name="schedule_end_hour" required="required">
+                                @php
+                                    for($i=0; $i<=23; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['EndHour']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select> :
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">02</option>
-                                <option value="">58</option>
-                                <option value="">59</option>
+                            <select class="form-control" id="schedule_end_min" name="schedule_end_min" required="required">
+                                @php
+                                    for($i=0; $i<=59; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['EndMin']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select>
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">점심시간 <span class="required">*</span>
+                    <label class="control-label col-md-1-1 d-line">점심시간 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 ml-12-dot">
                         <div class="form-inline item">
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">12</option>
-                                <option value="">22</option>
-                                <option value="">23</option>
+                            <select class="form-control" id="lunch_start_hour" name="lunch_start_hour" required="required">
+                                @php
+                                    for($i=0; $i<=23; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['LunchStartHour']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select> :
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">02</option>
-                                <option value="">58</option>
-                                <option value="">59</option>
+                            <select class="form-control" id="lunch_start_min" name="lunch_start_min" required="required">
+                                @php
+                                    for($i=0; $i<=59; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['LunchStartMin']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select>
 
                             &nbsp; ~ &nbsp;&nbsp;
 
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">12</option>
-                                <option value="">22</option>
-                                <option value="">23</option>
+                            <select class="form-control" id="lunch_end_hour" name="lunch_end_hour" required="required">
+                                @php
+                                    for($i=0; $i<=23; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['LunchEndHour']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select> :
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">02</option>
-                                <option value="">58</option>
-                                <option value="">59</option>
+                            <select class="form-control" id="lunch_end_min" name="lunch_end_min" required="required">
+                                @php
+                                    for($i=0; $i<=59; $i++) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['LunchEndMin']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">상담대상 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">상담대상 <span class="required">*</span>
                     </label>
                     <div class="col-md-4">
                         <div class="inline-block item">
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">회원</option>
-                                <option value="">비회원</option>
+                            <select class="form-control" id="consult_terget_type" name="consult_terget_type" required="required">
+                                <option value="1">회원</option>
+                                <option value="2">비회원</option>
                             </select>
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">상담인원/1회 <span class="required">*</span>
+                    <label class="control-label col-md-1-1 d-line">상담인원/1회 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline ml-12-dot item">
-                        <input type="text" id="" name="" class="form-control" title="강좌명" required="required" placeholder="" value="" style="width: 60px;"> 명
+                        <input type="text" id="consult_person_count" name="consult_person_count" class="form-control" title="상담인원" required="required" value="" style="width: 60px;"> 명
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">1회상담시간 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">1회상담시간 <span class="required">*</span>
                     </label>
                     <div class="col-md-4">
                         <div class="form-inline item">
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">30</option>
-                                <option value="">59</option>
-                                <option value="">60</option>
+                            <select class="form-control" id="runing_time" name="runing_time" required="required">
+                                @php
+                                    for($i=10; $i<=60; $i+=10) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['runing_time']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select> 분
                             <span class="blue pr-10 pl-30">[쉬는시간]</span>
-                            <select class="form-control" id="" name="" required="required">
-                                <option value="">00</option>
-                                <option value="">01</option>
-                                <option value="">30</option>
-                                <option value="">59</option>
-                                <option value="">60</option>
+                            <select class="form-control" id="break_time" name="break_time" required="required">
+                                @php
+                                    for($i=10; $i<=60; $i+=10) {
+                                        $str = (strlen($i) <= 1) ? '0' : '';
+                                        $selected = ($i == $data['break_time']) ? "selected='selected'" : "";
+                                        echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                    }
+                                @endphp
                             </select> 분
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">사용여부 <span class="required">*</span>
+                    <label class="control-label col-md-1-1 d-line">사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 ml-12-dot item">
                         <div class="form-inline">
@@ -213,16 +233,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group text-center btn-wrap mt-50">
-                    <button type="submit" class="btn btn-success mr-10">적용</button>
+                <div class="form-group text-center btn-wrap">
+                    <button type="button" class="btn btn-primary btn-schedule-setting">적용</button>
                 </div>
 
-
-                <br/><br/><br/>******************************** 적용시 보여지는 페이지  ********************************<br/><br/><br/>
-
-
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="site_code">상담일자
+                    <label class="control-label col-md-1-1">상담일자
                     </label>
                     <div class="col-md-10">
                         <p class="form-control-static">2018-00-00 (월)</p>
@@ -233,7 +249,7 @@
                     </label>
                     <div class="col-md-10 form-inline">
 
-                        <table id="list_table" class="table table-striped table-bordered dataTable no-footer dtr-inline" role="grid" aria-describedby="list_table_info">
+                        <table id="schedule_list_table" class="table table-striped table-bordered dataTable no-footer dtr-inline" role="grid">
                             <thead>
                                 <tr role="row">
                                     <th class="no-sort sorting_disabled" rowspan="1" colspan="1" data-column-index="0">시간</th>
@@ -243,7 +259,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr role="row" class="odd">
+                                {{--<tr role="row" class="odd">
                                     <td tabindex="0">
                                         <p class="form-control-static">10:00~10:30</p>
                                     </td>
@@ -278,12 +294,15 @@
                                             <option value="">미사용</option>
                                         </select>
                                     </td>
-                                </tr>
+                                </tr>--}}
                             </tbody>
                         </table>
 
                     </div>
                 </div>
+
+
+
                 <div class="form-group">
                     <label class="control-label col-md-1-1">등록자
                     </label>
@@ -309,7 +328,8 @@
                     </div>
                 </div>
                 <div class="form-group text-center btn-wrap mt-50">
-                    <button class="btn btn-primary" type="button" id="btn_list">등록</button>
+                    <button type="submit" class="btn btn-success mr-10">저장</button>
+                    <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
             </form>
         </div>
@@ -318,26 +338,52 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
+            // 상담 시간표 셋팅 ****************
+            $regi_form.on('click', '.btn-schedule-setting', function() {
+                //상담시작, 상담종료
+                var consult_start_min = (parseInt($('#schedule_start_hour').val()) * 60) + parseInt($('#schedule_start_min').val());
+                var consult_end_min = (parseInt($('#schedule_end_hour').val()) * 60) + parseInt($('#schedule_end_min').val());
+                //1회상담시간
+                var runing_time = parseInt($('#runing_time').val());
+                //쉬는시간
+                var break_time = parseInt($('#break_time').val());
+                //점심시작시간, 점심종료시간
+                var lunch_start_min = (parseInt($('#lunch_start_hour').val()) * 60) + parseInt($('#lunch_start_min').val());
+                var lunch_end_min = (parseInt($('#lunch_end_hour').val()) * 60) + parseInt($('#lunch_end_min').val());
+
+                var st = 0;
+                var et = 0;
+                var z = runing_time + break_time;
+                var list_schedule = '';         //상담스케줄 row data
+                var list_schedule_lunch = '';   //점심시간 row data
+                var lunch_count = 0;            //점심시간 1row만 노출하기 위한 변수
+                for (var i=consult_start_min; i<consult_end_min; i+=z){
+                    st = i;
+                    et = (i + z) - break_time;
+
+                    if (et<=consult_end_min) {
+                        if ((st>=lunch_start_min || et >=lunch_start_min) && (st<=lunch_end_min || et<=lunch_end_min)) {
+                            if (lunch_count == 0) {
+                                list_schedule_lunch = add_schedule_row_lunch(lunch_start_min, lunch_end_min);
+                            } else {
+                                list_schedule_lunch = '';
+                            }
+                            lunch_count++;
+                        } else {
+                            list_schedule += add_schedule_row(st, et);
+                        }
+                        list_schedule += list_schedule_lunch;
+                    }
+                }
+
+                $('#schedule_list_table > tbody').html(list_schedule);
+            });
+            //****************
+
+
+
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
-
-            $regi_form.submit(function() {
-                @if($method == 'POST')
-                    if($regi_form.find('input[name="cate_code[]"]').length < 1) {
-                        alert('카테고리 선택 필드는 필수입니다.');
-                        return false;
-                    }
-                @endif
-
-                var _url = '{{ site_url('/pass/consult/schedule/store') }}';
-                ajaxSubmit($regi_form, _url, function(ret) {
-                    if(ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/service/coupon/regist/index') }}' + getQueryString());
-                    }
-                }, showValidateError, null, false, 'alert');
-            });
-
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -366,10 +412,81 @@
                 that.parent().remove();
             });
 
+            $regi_form.submit(function() {
+                @if($method == 'POST')
+                if($regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    alert('카테고리 선택 필드는 필수입니다.');
+                    return false;
+                }
+                        @endif
+
+                var _url = '{{ site_url('/pass/consult/schedule/store') }}';
+                ajaxSubmit($regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.replace('{{ site_url('/service/coupon/regist/index') }}' + getQueryString());
+                    }
+                }, showValidateError, null, false, 'alert');
+            });
+
             // 목록 이동
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/pass/consult/schedule/index') }}' + getQueryString());
+                location.replace('{{ site_url('/pass/consult/schedule/') }}' + getQueryString());
             });
         });
+
+        //분 -> 시간:분 으로 리턴
+        function toHHMM(item) {
+            var myNum = parseInt(item, 10);
+            var hours   = Math.floor(myNum / 60);
+            var minutes = Math.floor(myNum - (hours * 60));
+
+            if (hours   < 10) {hours   = "0"+hours;}
+            if (minutes < 10) {minutes = "0"+minutes;}
+            return hours+':'+minutes;
+        }
+
+
+        function add_schedule_row(st, et)
+        {
+            var start_time = toHHMM(st);
+            var end_time = toHHMM(et);
+
+            var add_lists;
+            var add_lunch_lists = '';
+            add_lists = '<tr role="row">';
+            add_lists += '<td><p class="form-control-static">'+start_time+'~'+end_time+'</p></td>';
+            add_lists += '<td><input type="text" id="" name="" class="form-control" title="상담인원" placeholder="" value="" style="width: 60px;"> 명</td>';
+            add_lists += '<td>';
+            add_lists += '<select class="form-control">';
+            add_lists += '<option>회원</option>';
+            add_lists += '<option>비회원</option>';
+            add_lists += '</select>';
+            add_lists += '</td>';
+            add_lists += '<td>';
+            add_lists += '<select class="form-control">';
+            add_lists += '<option>사용</option>';
+            add_lists += '<option>미사용</option>';
+            add_lists += '</select>';
+            add_lists += '</td>';
+            add_lists += add_lunch_lists;
+            add_lists += '</tr>';
+
+            return add_lists;
+        }
+
+        function add_schedule_row_lunch(lunch_start_min, lunch_end_min)
+        {
+            var lunch_start_time = toHHMM(lunch_start_min);
+            var lunch_end_time = toHHMM(lunch_end_min);
+
+            var add_lists;
+            add_lists = '<tr role="row">';
+            add_lists += '<td><p class="form-control-static">'+lunch_start_time+'~'+lunch_end_time+'</p></td>';
+            add_lists += '<td class="bg-gray" colspan="4">점심시간</td>';
+            add_lists += '</tr>';
+
+            return add_lists;
+        }
     </script>
 @stop

@@ -144,8 +144,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -156,7 +155,11 @@
                                     <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
                                 </div>
                                 <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                    <dt class="mr20">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                            <strong>강좌상세정보</strong>
+                                        </a>
+                                    </dt>
                                     <dt>강의수 : <span class="tx-blue">70강</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span></dt>
@@ -166,18 +169,41 @@
                                         <span class="nBox n3">예정</span>
                                         <span class="nBox n4">완강</span>
                                     </dt>
-                                </dl>
-                            </td>
-                            <td class="chk">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                </dl><br/>
+                                <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
                             </td>
                             <td class="w-notice p_re">
-                                <div class="w-sp one">
-                                    <a href="#none">맛보기</a>
+                                <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
+                                <div id="viewBox" class="viewBox">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                    <dl class="NSK">
+                                        <dt class="Tit NG">맛보기1</dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                    </dl>
+                                    <dl class="NSK">
+                                        <dt class="Tit NG">맛보기2</dt>
+                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                    </dl>
                                 </div>
-                                <div class="priceWrap">
-                                    <span class="price tx-blue">80,000원</span>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                    <span class="select">[PC]</span>
+                                    <span class="price tx-blue">7,000원</span>
                                     <span class="discount">(↓20%)</span>
+                                </div>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                    <span class="select">[모바일]</span>
+                                    <span class="price tx-blue">80,000원</span>
+                                    <span class="discount">(↓10%)</span>
+                                </div>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                    <span class="select">[PC+모바일]</span>
+                                    <span class="price tx-blue">123,000원</span>
+                                    <span class="discount">(↓15%)</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
@@ -198,7 +224,7 @@
                                 <div class="w-sub">
                                     <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                     <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                    <span class="chk">
+                                    <span class="chk buybtn p_re">
                                         <label>[판매중]</label>
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                     </span>
@@ -230,6 +256,10 @@
                                         <span class="price tx-blue">0원</span>
                                     </span>
                                 </div>
+                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                <div class="w-sub">
+                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -244,8 +274,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -266,16 +295,25 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                            </td>
                             <td class="w-notice p_re">
-                                <div class="w-sp one">
-                                    <a href="#none">맛보기</a>
+                                <div class="w-sp one"><a href="#none">맛보기</a></div>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                    <span class="select">[PC]</span>
+                                    <span class="price tx-blue">6,000원</span>
+                                    <span class="discount">(↓12%)</span>
                                 </div>
-                                <div class="priceWrap">
-                                    <span class="price tx-blue">80,000원</span>
-                                    <span class="discount">(↓20%)</span>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                    <span class="select">[모바일]</span>
+                                    <span class="price tx-blue">90,000원</span>
+                                    <span class="discount">(↓50%)</span>
+                                </div>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                    <span class="select">[PC+모바일]</span>
+                                    <span class="price tx-blue">154,000원</span>
+                                    <span class="discount">(↓5%)</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
@@ -323,8 +361,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -343,14 +380,10 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                            </td>
                             <td class="w-notice p_re">
-                                <div class="w-sp one">
-                                    <a href="#none">맛보기</a>
-                                </div>
-                                <div class="priceWrap">
+                                <div class="w-sp one"><a href="#none">맛보기</a></div>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="price tx-blue">0원</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
@@ -394,8 +427,7 @@
                         <col style="width: 75px;">
                         <col style="width: 85px;">
                         <col style="width: 490px;">
-                        <col style="width: 110px;">
-                        <col style="width: 180px;">
+                        <col style="width: 290px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -414,14 +446,10 @@
                                     </dt>
                                 </dl>
                             </td>
-                            <td class="chk">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                            </td>
                             <td class="w-notice p_re">
-                                <div class="w-sp one">
-                                    <a href="#none">맛보기</a>
-                                </div>
-                                <div class="priceWrap">
+                                <div class="w-sp one"><a href="#none">맛보기</a></div>
+                                <div class="priceWrap chk buybtn p_re">
+                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="price tx-blue">0원</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>

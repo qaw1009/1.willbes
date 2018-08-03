@@ -7,6 +7,9 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
+                </li>
+                <li>
                     <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
                 </li>
                 <li class="dropdown">
@@ -58,15 +61,15 @@
                             <li>
                                 <div class="Tit bg-blue NGEB">온라인강좌<br/><span class="tx-light-gray NG">현황</span></div>
                                 <dl>
+                                    <dt>무한PASS<br/><span class="tx-blue">10</span>개</dt>
                                     <dt>수강중<br/><span class="tx-blue">5</span>개</dt>
                                     <dt>수강대기<br/><span class="tx-blue">10</span>개</dt>
                                 </dl>
                             </li>
-                            <li>
+                            <li class="sm">
                                 <div class="Tit bg-blue NGEB">학원강좌<br/><span class="tx-light-gray NG">현황</span></div>
                                 <dl>
-                                    <dt>수강등록<br/><span class="tx-blue">5</span>개</dt>
-                                    <dt>수강종료<br/><span class="tx-blue">10</span>개</dt>
+                                    <dt>수강신청<br/><span class="tx-blue">5</span>개</dt>
                                 </dl>
                             </li>
                             <li>
@@ -76,7 +79,7 @@
                                     <dt>교재<br/><span class="tx-blue">130,000</span>P</dt>
                                 </dl>
                             </li>
-                            <li>
+                            <li class="sm">
                                 <div class="Tit bg-heavy-gray NGEB">쿠폰<br/><span class="tx-light-gray NG">현황</span></div>
                                 <dl>
                                     <dt>쿠폰<br/><span class="tx-blue">5</span>장</dt>
@@ -93,7 +96,7 @@
                             </ul>
                         </div>
                         <div class="willbes-listTable willbes-myinfoList widthAutoFull">
-                            <div class="will-Tit NG">나의 학습 기기 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
                                 <!-- 리스트 -->
                                 <li>PC 1대 <span class="tx-bright-gray">(2018.00.00 등록)</span></li>
@@ -213,7 +216,7 @@
                         <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
                         <li><a href="#none">수강시작일 00/00으로 변경해주...</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-04-01</span></li>
                         <li><a href="#none">교재문의입니다.</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">교재문의입니다.</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-03-06</span></li>
+                        <li>등록된 상담 내용이 없습니다.</li>
                     </ul>
                 </div>
                 <div class="willbes-listTable willbes-info willbes-info300 widthAuto445 f_left ml50">
@@ -222,7 +225,7 @@
                         <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
                         <li><a href="#none">수강시작일 00/00으로 변경해주...</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-04-01</span></li>
                         <li><a href="#none">교재문의입니다.</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">교재문의입니다.</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-03-06</span></li>
+                        <li>등록된 학습 Q&A 내용이 없습니다.</li>
                     </ul>
                 </div>
             </div>
@@ -234,7 +237,7 @@
                         <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
                         <li><a href="#none">3월 31일(금) 새벽시스템점검안내</a><span class="date">2018-04-01</span></li>
                         <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
+                        <li>등록된 공지 내용이 없습니다.</li>
                     </ul>
                 </div>
             </div>

@@ -75,7 +75,7 @@ $(function() {
 
 // 즐찾과목/교수전체보기 버튼 Script
 $(function() {
-    $('.PassTabBox .CurriBox .MoreBtn a').click(function() {
+    $('.CurriBox .MoreBtn a').click(function() {
         var $lec_info_table = $(this).parents('.tabLink').find('table.curriTable');
 
         if ($lec_info_table.is(':hidden')) {

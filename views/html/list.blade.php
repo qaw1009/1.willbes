@@ -806,6 +806,9 @@
         </button>
     </div>
     <div id="pocketBox" class="pocketBox" style="display: none;">
+        <a class="closeBtn" href="#none" onclick="closeWin('pocketBox')">
+            <img src="{{ img_url('cart/close.png') }}">
+        </a>
         해당 상품이 장바구니에 담겼습니다.<br/>
         장바구니로 이동하시겠습니까?
         <ul class="NSK mt20">

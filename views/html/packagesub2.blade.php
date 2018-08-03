@@ -534,7 +534,7 @@
             </div>
 
             <!-- pos2 -->
-            <div id="pos2">
+            <div id="pos2" class="mt40">
                 <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black">
                     · 선택과목<span class="willbes-Lec-subTit">(선택과목 중 2개 선택)</span><span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span>
                 </div>

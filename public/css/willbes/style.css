@@ -943,6 +943,7 @@ table.auTable tr td {
     width: 100%;
     line-height: 18px;
     margin-left: 0 !important;
+    float: left !important;
 }
 .drop-Box ul li a {
     display: block;
@@ -1385,7 +1386,7 @@ table.auTable tr td {
 }
 .Menu .menu-List li {
     position: relative;
-    float: left !important;
+    float: left;
     font-size: 16px;
     font-weight: 600;
     margin-left: 50px;
@@ -1414,10 +1415,13 @@ table.auTable tr td {
 .Menu .menu-List-Center li {
     float: none;
     display: inline-block;
-    margin: 0 30px;
+    margin: 0 20px;
 }
 
 /* subContainer : Menu : list-drop-Box  */
+.menu-List-Center .list-drop-Box {
+    top: 37px;
+}
 .list-drop-Box {
     top: 38px;
     left: 50%;
@@ -1864,6 +1868,9 @@ table.auTable tr td {
     font-size: 12px;
     overflow: hidden;
 }
+.sliderUp .bx-wrapper {
+    background: none;
+}
 
 /* sliderVertical : 위로 슬라이드(교수 리스트 수강후기) vSlider */
 .vSlider .bx-wrapper {
@@ -1937,6 +1944,14 @@ table.auTable tr td {
     border: 1px solid #2f2f2f;
     padding: 30px 25px;
 }
+.pocketBox .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 11px;
+    heighT: 11px;
+    line-height: 9px;
+}
 .pocketBox .aBox {
    width: 57px;
    height: 23px; 
@@ -1964,7 +1979,7 @@ table.auTable tr td {
     line-height: 45px;
     border-bottom: 1px solid #959595;
     padding-left: 10px;
-    padding-top: 80px;
+    padding-top: 40px;
 }
 .willbes-Lec-subTit {
     font-size: 12px;
@@ -2437,8 +2452,8 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .willbes-Layer-Box.d2 .classInfo {
     padding-top: 20px;
+    padding-left: 15px;
 }
-
 .willbes-Layer-Box.d3 {
     height: 260px;
     margin-top: -130px;
@@ -4570,9 +4585,8 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: inline-block;
     width: 47px;
     height: 20px;
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 18px;
+    font-size: 11px;
+    line-height: 20px;
     text-align: center;  
 }
 .waitBox {
@@ -5030,6 +5044,11 @@ ul li.profList .willbes-Layer-ProfileBox {
 .cscenterTxt {
     display: none;
 }
+.LeclistTable .cscenterTxt td {
+    font-size: 11px;
+    text-align: left !important;
+    padding: 15px 30px !important;
+}
 
 /* subContainer : Cs : tabcsDepth2 공통 */
 .tabWrap.tabcsDepth2 .subBox {
@@ -5274,11 +5293,15 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .MyInfoBox ul li {
     float: left;
-    width: 275px;
+    width: 340px;
     height: 110px;
     border: 1px solid #d7d7d7;
     box-shadow: 0 2px 0 #e5e5e5;
     margin: 0 10px 5px 0;
+    text-align: center;
+}
+.MyInfoBox ul li.sm {
+    width: 215px;
 }
 .MyInfoBox ul li .Tit {
     float: left;
@@ -5286,16 +5309,14 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 108px;
     font-size: 16px;
     color: #fff;
+    text-align: left;
     line-height: 18px;
     padding: 25px 0 0 15px;
     background-image: url("../../img/willbes/mypage/icon_arrow.png");
     background-position: 65px 85px;
     background-repeat: no-repeat; 
-
 }
 .MyInfoBox dl {
-    float: left;
-    width: 173px;   
     height: 108px;
     text-align: center; 
 }
@@ -5303,7 +5324,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: inline-block;
     line-height: 15px;
     font-size: 13px;
-    margin: 40px 8px;
+    margin: 40px 12px;
     letter-spacing: 0;
 }
 .MyInfoBox dl dt span {
@@ -5314,7 +5335,6 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 365px;
     height: 245px;
     border-left: 1px solid #959595;
-
 }
 .willbes-myinfoList .will-Tit {
     font-size: 14px;
@@ -5344,13 +5364,10 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding: 23px 0 23px 110px;
     margin: 0;
 }
-
 .willbes-myinfoList .List-Table.myTablet li {
     height: 20px;
     line-height: 20px;
 }
-
-
 
 /* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
 .Mypage_PASS_Index .ActIndex3 {
@@ -5371,6 +5388,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-info870 .List-Table li a {
     width: 870px;
 }
+
+
 
 
 
@@ -5559,7 +5578,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: 0;
 }
 .will-Tit-Zone {
-    padding: 20px 0 40px;
+    padding: 25px 0 25px 20px;
     line-height: 25px;
     border-bottom: 1px solid #c9c9c9;
 }
@@ -5567,7 +5586,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin-left: 30px;
 }
 .will-Tit-Zone .willbes-Lec-Selected .seleName {
-    width: 682px;
+    width: 662px;
     margin-right: 0;
 }
 table.PassZoneTable tr td .w-tit {
@@ -5586,6 +5605,9 @@ table.PassZoneTable .w-lec .w-btn a {
     font-size: 11px;
     color: #fff;
     text-align: center;
+}
+table.PassZoneTable .w-data {
+    padding-left: 20px;
 }
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox */
@@ -6309,7 +6331,7 @@ table.acadlecInfoPackageTable tr.Top td {
     .widthAuto550,
     .widthAuto690,
     .widthAuto770 {
-        width: 100%;
+        width: 100% !important;
         margin: 0 auto;
     }
     #Gnb,

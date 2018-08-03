@@ -7,6 +7,9 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
+                    <a href="#none">내강의실 HOME</a>
+                </li>
+                <li>
                     <a href="#none">무한PASS존</a>
                 </li>
                 <li>

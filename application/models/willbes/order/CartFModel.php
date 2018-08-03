@@ -342,6 +342,17 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
+     * 온라인 무료강좌 사전 체크 (단강좌와 동일)
+     * @param $prod_code
+     * @param $parent_prod_code
+     * @return bool|string
+     */
+    private function _check_on_free_lecture($prod_code, $parent_prod_code)
+    {
+        return $this->_check_on_lecture($prod_code, $parent_prod_code);
+    }
+
+    /**
      * 온라인 운영자 패키지 사전 체크
      * @param $prod_code
      * @param $parent_prod_code

@@ -43,7 +43,7 @@
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                 @endforeach
                 <input type="hidden" name="learn_pattern" value="adminpack_lecture"/>  {{-- 학습형태 --}}
-                <input type="hidden" name="cart_type" value="on_lecture"/>   {{-- 장바구니 탭 아이디 --}}
+                <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
                 <div class="willbes-Lec-Package-Price p_re">
@@ -513,7 +513,7 @@
 
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
-                var $is_direct_pay = $(this).data('direct-pay') || 'N';
+                var $is_direct_pay = $(this).data('direct-pay');
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
 
                 //필수강좌 체크 여부

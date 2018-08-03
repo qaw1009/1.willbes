@@ -6,6 +6,10 @@
  * @param $is_redirect
  */
 function cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect) {
+    // 초기값 설정
+    $is_direct_pay = $is_direct_pay || 'N';
+    $is_redirect = $is_redirect || 'Y';
+    
     if ($regi_form.find('input[name="sale_status_ccd"]').length > 0 && $regi_form.find('input[name="sale_status_ccd"]').val() !== '618001') {
         alert('판매 중인 상품만 주문 가능합니다.');
         return;
@@ -23,7 +27,9 @@ function cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect) {
     }
 
     // set hidden value
-    $regi_form.find('input[name="cart_type"]').val(getCartType($regi_form));
+    if ($regi_form.find('input[name="cart_type"]').val().length < 1) {
+        $regi_form.find('input[name="cart_type"]').val(getCartType($regi_form));
+    }
     $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
 
     var url = location.protocol + '//' + location.host + '/cart/store/cate/' + $cate_code;
@@ -31,8 +37,6 @@ function cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect) {
         if(ret.ret_cd) {
             if ($is_redirect === 'Y') {
                 location.href = ret.ret_data.ret_url;
-            } else {
-                openWin('pocketBox');
             }
         }
     }, showValidateError, null, false, 'alert');

@@ -318,8 +318,6 @@
     </div>
 </div>
 <!-- End Container -->
-<script src="/public/js/willbes/product_util.js"></script>
 {{-- footer script --}}
-@include('willbes.pc.site.lecture.index_' . $pattern . '_footer_partial')
-
+@include('willbes.pc.site.lecture.' . $pattern . '_footer_partial')
 @stop

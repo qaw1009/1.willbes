@@ -1926,6 +1926,7 @@ table.auTable tr td {
 .willbes-Lec-buyBtn-sm {
     display: none;
     position: absolute;
+    z-index: 999;
 }
 .willbes-Lec-buyBtn-sm.active {
     display: block !important;

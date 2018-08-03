@@ -434,23 +434,7 @@
     </div>
 </div>
 <!-- End Container -->
-<script src="/public/js/willbes/product_util.js"></script>
-<script type="text/javascript">
-    var $regi_form = $('#regi_form');
+{{-- footer script --}}
+@include('willbes.pc.site.lecture.' . $pattern . '_footer_partial')
 
-    $(document).ready(function() {
-        // 상품 선택/해제
-        $regi_form.on('change', '.chk_products, .chk_books', function() {
-            setCheckLectureProduct($regi_form, $(this), 'price', 'prod_sale_price', 'book_sale_price', 'tot_sale_price');
-        });
-
-        // 장바구니, 바로결제 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
-            var $is_direct_pay = $(this).data('direct-pay') || 'N';
-            var $cate_code = '{{ $__cfg['CateCode'] }}';
-
-            cartNDirectPay($regi_form, $cate_code, $is_direct_pay, 'Y');
-        });
-    });
-</script>
 @stop

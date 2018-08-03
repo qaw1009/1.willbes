@@ -5,6 +5,7 @@ class ProductFModel extends WB_Model
 {
     private $_table = [
         'on_lecture' => 'vw_product_on_lecture',
+        'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
@@ -54,8 +55,9 @@ class ProductFModel extends WB_Model
                 , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {
-                // 온라인 단강좌
+                // 온라인 단강좌, 온라인 무료강좌
                 case 'on_lecture' :
+                case 'on_free_lecture' :
                         $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
                             , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
                         $arr_condition = array_merge_recursive($arr_condition, [
@@ -98,8 +100,9 @@ class ProductFModel extends WB_Model
         ]);
 
         switch ($learn_pattern) {
-            // 온라인 단강좌
+            // 온라인 단강좌, 온라인 무료강좌
             case 'on_lecture' :
+            case 'on_free_lecture' :
                     $arr_condition = array_merge_recursive($arr_condition, [
                         'EQ' => ['LecSaleType' => 'N']   // 일반강의 종류
                     ]);

@@ -440,8 +440,8 @@
 
     $(document).ready(function() {
         // 상품 선택/해제
-        $regi_form.on('click', '.chk_products, .chk_books', function() {
-            setCheckProduct($regi_form, $(this), 'price', 'prod_sale_price', 'book_sale_price', 'tot_sale_price');
+        $regi_form.on('change', '.chk_products, .chk_books', function() {
+            setCheckLectureProduct($regi_form, $(this), 'price', 'prod_sale_price', 'book_sale_price', 'tot_sale_price');
         });
 
         // 장바구니, 바로결제 버튼 클릭
@@ -449,7 +449,7 @@
             var $is_direct_pay = $(this).data('direct-pay') || 'N';
             var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-            cartNDirectPay($regi_form, $is_direct_pay, $cate_code);
+            cartNDirectPay($regi_form, $cate_code, $is_direct_pay, 'Y');
         });
     });
 </script>

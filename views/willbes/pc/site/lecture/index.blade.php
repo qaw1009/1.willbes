@@ -18,9 +18,9 @@
             {{-- 과정 --}}
             <ul class="curriTabs c_both">
                 <li><a href="#none" onclick="goUrl('course_idx', '');" class="@if(empty(element('course_idx', $arr_input)) === true) on @endif">전체</a></li>
-            @foreach($arr_base['course'] as $idx => $row)
-                <li><a href="#none" onclick="goUrl('course_idx', '{{ $row['CourseIdx'] }}');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a></li>
-            @endforeach
+                @foreach($arr_base['course'] as $idx => $row)
+                    <li><a href="#none" onclick="goUrl('course_idx', '{{ $row['CourseIdx'] }}');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a></li>
+                @endforeach
             </ul>
             <div class="CurriBox">
                 <table cellspacing="0" cellpadding="0" class="curriTable">
@@ -44,9 +44,9 @@
                             <td colspan="9">
                                 <ul class="curriSelect">
                                     <li><a href="#none" onclick="goUrl('series_ccd', '');" class="@if(empty(element('series_ccd', $arr_input)) === true) on @endif">전체</a></li>
-                                @foreach($arr_base['series'] as $idx => $row)
-                                    <li><a href="#none" onclick="goUrl('series_ccd', '{{ $row['ChildCcd'] }}');" class="@if(element('series_ccd', $arr_input) == $row['ChildCcd']) on @endif">{{ $row['ChildName'] }}</a></li>
-                                @endforeach
+                                    @foreach($arr_base['series'] as $idx => $row)
+                                        <li><a href="#none" onclick="goUrl('series_ccd', '{{ $row['ChildCcd'] }}');" class="@if(element('series_ccd', $arr_input) == $row['ChildCcd']) on @endif">{{ $row['ChildName'] }}</a></li>
+                                    @endforeach
                                 </ul>
                             </td>
                         </tr>
@@ -58,9 +58,9 @@
                             <td colspan="9">
                                 <ul class="curriSelect">
                                     <li><a href="#none" onclick="goUrl('subject_idx', '');" class="@if(empty(element('subject_idx', $arr_input)) === true) on @endif">전체</a></li>
-                                @foreach($arr_base['subject'] as $idx => $row)
-                                    <li><a href="#none" onclick="goUrl('subject_idx', '{{ $row['SubjectIdx'] }}');" class="@if(element('subject_idx', $arr_input) == $row['SubjectIdx']) on @endif">{{ $row['SubjectName'] }}</a></li>
-                                @endforeach
+                                    @foreach($arr_base['subject'] as $idx => $row)
+                                        <li><a href="#none" onclick="goUrl('subject_idx', '{{ $row['SubjectIdx'] }}');" class="@if(element('subject_idx', $arr_input) == $row['SubjectIdx']) on @endif">{{ $row['SubjectName'] }}</a></li>
+                                    @endforeach
                                 </ul>
                             </td>
                         </tr>
@@ -74,9 +74,9 @@
                             @else
                                 <td colspan="9">
                                     <ul class="curriSelect">
-                                    @foreach($arr_base['professor'] as $idx => $row)
-                                        <li><a href="#none" onclick="goUrl('prof_idx', '{{ $row['ProfIdx'] }}');" class="@if(element('prof_idx', $arr_input) == $row['ProfIdx']) on @endif">{{ $row['wProfName'] }}</a></li>
-                                    @endforeach
+                                        @foreach($arr_base['professor'] as $idx => $row)
+                                            <li><a href="#none" onclick="goUrl('prof_idx', '{{ $row['ProfIdx'] }}');" class="@if(element('prof_idx', $arr_input) == $row['ProfIdx']) on @endif">{{ $row['wProfName'] }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </td>
                             @endif
@@ -109,10 +109,10 @@
                 </table>
             </div>
         </div>
-        <!-- curriWrap -->
+        <!-- search -->
 
         <div class="willbes-Bnr">
-            {!! banner('단강좌_중단') !!}
+            {!! banner($pattern_name . '_중단') !!}
         </div>
         <!-- willbes-Bnr -->
 
@@ -131,10 +131,9 @@
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
-            <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
+            <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
             <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
-            <input type="hidden" name="only_prod_code" value=""/>   {{-- 단일 상품 장바구니/바로결제용 상품 코드 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both">
                 <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
@@ -186,11 +185,11 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
-                                            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/' . $pattern . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">
-                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')">
                                                     <strong>강좌상세정보</strong>
                                                 </a>
                                             </dt>
@@ -202,7 +201,7 @@
                                                 <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                             </dt>
                                         </dl>
-                                        @if($row['IsCart'] == 'N')
+                                        @if($row['IsCart'] == 'N' && $pattern == 'only')
                                             <br/><div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
                                         @endif
                                     </td>
@@ -222,7 +221,7 @@
                                         @endif
                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                             <div class="priceWrap chk buybtn p_re">
-                                                @if($row['IsCart'] == 'Y')
+                                                @if($row['IsCart'] == 'Y' || $pattern == 'free')
                                                     <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['SaleStatusCcd'] == '618002') disabled="disabled" @endif/></span>
                                                 @else
                                                     <span class="chkBox" style="width: 14px;"></span>
@@ -257,7 +256,7 @@
                                                         <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
                                                             [{{ $book_row['wSaleCcdName'] }}]
                                                         </label>
-                                                        @if($row['IsCart'] == 'Y')
+                                                        @if($row['IsCart'] == 'Y' || $pattern == 'free')
                                                             <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                         @endif
                                                     </span>
@@ -267,10 +266,11 @@
                                                     </span>
                                                 </div>
                                             @endforeach
+                                            @if($pattern == 'only')
                                                 <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            @endif
                                                 <div class="w-sub">
-                                                    <!--a href="#none" class="btn-lecture-info" data-prod-code="{{ $row['ProdCode'] }}" data-tab-id="hover2"//-->
-                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture')"><strong>교재상세정보</strong></a>
+                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')"><strong>교재상세정보</strong></a>
                                                 </div>
                                                 <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
                                         @else
@@ -293,13 +293,15 @@
 
         <div class="willbes-Lec-buyBtn">
             <ul>
+                @if($pattern == 'only')
                 <li class="btnAuto180 h36">
-                    <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
+                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
                         <span>장바구니</span>
                     </button>
                 </li>
+                @endif
                 <li class="btnAuto180 h36">
-                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
+                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
                         <span class="tx-light-blue">바로결제</span>
                     </button>
                 </li>
@@ -315,83 +317,9 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">
     </div>
 </div>
-<div class="willbes-Lec-buyBtn-sm NG">
-    <div>
-        <button type="button" name="btn_only_cart" data-direct-pay="N" class="bg-deep-gray">
-            <span>장바구니</span>
-        </button>
-    </div>
-    <div>
-        <button type="button" name="btn_only_direct_pay" data-direct-pay="Y" class="bg-dark-blue">
-            <span>바로결제</span>
-        </button>
-    </div>
-    <div id="pocketBox" class="pocketBox" style="display: none;">
-        해당 상품이 장바구니에 담겼습니다.<br/>
-        장바구니로 이동하시겠습니까?
-        <ul class="NSK mt20">
-            <li class="aBox answerBox_block"><a href="#none">예</a></li>
-            <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-        </ul>
-    </div>
-</div>
-<!-- willbes-Lec-buyBtn-sm -->
 <!-- End Container -->
 <script src="/public/js/willbes/product_util.js"></script>
-<script type="text/javascript">
-    var $regi_form = $('#regi_form');
-    var $buy_layer = $('.willbes-Lec-buyBtn-sm');
+{{-- footer script --}}
+@include('willbes.pc.site.lecture.index_' . $pattern . '_footer_partial')
 
-    $(document).ready(function() {
-        // 상품 선택/해제
-        $regi_form.on('click', '.chk_products, .chk_books', function() {
-            setCheckProduct($regi_form, $(this), '', '', '', '');
-        });
-
-        // 장바구니 이동 버튼 클릭
-        $buy_layer.on('click', '.answerBox_block', function() {
-            goCartPage('{{ $__cfg['CateCode'] }}', $regi_form.find('input[name="cart_type"]').val());
-        });
-
-        // 계속구매 버튼 클릭
-        $buy_layer.on('click', '.waitBox_block', function() {
-            $buy_layer.find('.pocketBox').css('display','none').hide();
-            $buy_layer.removeClass('active');
-        });
-
-        // 레이어 장바구니, 바로결제 버튼 클릭
-        $buy_layer.on('click', 'button[name="btn_only_cart"], button[name="btn_only_direct_pay"]', function () {
-            var $is_direct_pay = $(this).data('direct-pay') || 'N';
-            var $only_prod_code = $regi_form.find('input[name="only_prod_code"]').val();
-
-            if ($only_prod_code.length < 1) {
-                alert('강좌를 선택해 주세요.');
-                return;
-            }
-
-            // set hidden value
-            $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
-
-            var url = '{{ site_url('/cart/store/cate/' . $__cfg['CateCode']) }}';
-            var data = arrToJson($regi_form.find('input[type="hidden"]').serializeArray());
-            sendAjax(url, data, function(ret) {
-                if (ret.ret_cd) {
-                    if (ret.ret_data.hasOwnProperty('ret_url') === true) {
-                        location.href = ret.ret_data.ret_url;
-                    } else {
-                        openWin('pocketBox');
-                    }
-                }
-            }, showAlertError, false, 'POST');
-        });
-
-        // 장바구니, 바로결제 버튼 클릭
-        $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
-            var $is_direct_pay = $(this).data('direct-pay') || 'N';
-            var $cate_code = '{{ $__cfg['CateCode'] }}';
-
-            cartNDirectPay($regi_form, $is_direct_pay, $cate_code);
-        });
-    });
-</script>
 @stop

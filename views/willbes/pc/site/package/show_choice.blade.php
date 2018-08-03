@@ -544,7 +544,7 @@
                     return;
                 }
 
-                cartNDirectPay($regi_form, $is_direct_pay, $cate_code);
+                cartNDirectPay($regi_form, $cate_code, $is_direct_pay, 'Y');
             });
 
             rowspan('row_td');  //td rowspan

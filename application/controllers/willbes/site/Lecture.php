@@ -8,9 +8,16 @@ class Lecture extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
 
+    private $_learn_pattern = 'on_lecture';     // 학습형태 (단강좌, 무료강좌 구분값)
+    private $_pattern_name = ['only' => '단강좌', 'free' => '무료강좌'];
+
     public function __construct()
     {
         parent::__construct();
+
+        if (element('pattern', $this->uri->ruri_to_assoc()) == 'free') {
+            $this->_learn_pattern = 'on_free_lecture';
+        }
     }
 
     /**
@@ -59,7 +66,7 @@ class Lecture extends \app\controllers\FrontController
         // 수강후기 게시판 자료 추가
         $add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';
 
-        $list = $this->lectureFModel->listSalesProduct('on_lecture', false, $arr_condition, null, null, ['ProdCode' => 'desc'], $add_column);
+        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc'], $add_column);
 
         // 상품조회 결과에 존재하는 과목 정보
         $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
@@ -84,6 +91,9 @@ class Lecture extends \app\controllers\FrontController
         $this->load->view('site/lecture/index', [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
+            'learn_pattern' => $this->_learn_pattern,
+            'pattern' => element('pattern', $params, 'only'),
+            'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
             'data' => [
                 'subjects' => $selected_subjects,
                 'professor_names' => $selected_professor_names,
@@ -106,7 +116,7 @@ class Lecture extends \app\controllers\FrontController
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
-        $data['lecture'] = $this->lectureFModel->findProductByProdCode('on_lecture', $prod_code);
+        $data['lecture'] = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code);
         $data['contents'] = $this->lectureFModel->findProductContents($prod_code);
         $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
@@ -127,7 +137,7 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
-        $data = $this->lectureFModel->findProductByProdCode('on_lecture', $prod_code);
+        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code);
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
@@ -149,6 +159,9 @@ class Lecture extends \app\controllers\FrontController
         $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
 
         $this->load->view('site/lecture/show', [
+            'learn_pattern' => $this->_learn_pattern,
+            'pattern' => element('pattern', $params, 'only'),
+            'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
             'data' => $data
         ]);
     }    

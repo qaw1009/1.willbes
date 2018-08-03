@@ -265,10 +265,12 @@
 
     $(document).ready(function() {
         // 장바구니 디폴트 탭 설정
-        var default_tab_id = '{{ element('tab', $arr_input) }}';
-        if (default_tab_id.length > 0) {
-            openLink('hover_' + default_tab_id);
-        }
+        $(function() {
+            var default_tab_id = '{{ element('tab', $arr_input) }}';
+            if (default_tab_id.length > 0) {
+                openLink('hover_' + default_tab_id);
+            }
+        });
 
         // 패키지 레이어 팝업
         $lecture_form.on('click', '.btn-package-info', function() {

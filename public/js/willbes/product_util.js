@@ -1,11 +1,11 @@
 /**
  * 장바구니 저장 및 바로결제
  * @param $regi_form
- * @param $is_direct_pay
  * @param $cate_code
- * @returns {boolean}
+ * @param $is_direct_pay
+ * @param $is_redirect
  */
-function cartNDirectPay($regi_form, $is_direct_pay, $cate_code) {
+function cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect) {
     if ($regi_form.find('input[name="sale_status_ccd"]').length > 0 && $regi_form.find('input[name="sale_status_ccd"]').val() !== '618001') {
         alert('판매 중인 상품만 주문 가능합니다.');
         return;
@@ -23,19 +23,62 @@ function cartNDirectPay($regi_form, $is_direct_pay, $cate_code) {
     }
 
     // set hidden value
+    $regi_form.find('input[name="cart_type"]').val(getCartType($regi_form));
     $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
-    $regi_form.find('input[name="only_prod_code"]').val('');
 
     var url = location.protocol + '//' + location.host + '/cart/store/cate/' + $cate_code;
     ajaxSubmit($regi_form, url, function(ret) {
         if(ret.ret_cd) {
-            location.href = ret.ret_data.ret_url;
+            if ($is_redirect === 'Y') {
+                location.href = ret.ret_data.ret_url;
+            } else {
+                openWin('pocketBox');
+            }
         }
     }, showValidateError, null, false, 'alert');
 }
 
 /**
- * 상품 선택/해제
+ * 장바구니 타입 리턴
+ * @param $regi_form
+ * @returns {string}
+ */
+function getCartType($regi_form) {
+    var cart_type = 'on_lecture';
+    
+    if ($regi_form.find('.chk_products:checked').length < 1 && $regi_form.find('.chk_books:checked').length > 0) {
+        cart_type = 'book';
+    }
+    
+    return cart_type;
+}
+
+/**
+ * 장바구니, 바로결제 레이어 노출
+ * @param $regi_form
+ * @param $chk_obj
+ * @param $target_id
+ */
+function showBuyLayer($regi_form, $chk_obj, $target_id) {
+    var $target_layer = $('#' + $target_id);
+
+    if($chk_obj.is(':checked')) {
+        var top = $chk_obj.offset().top;
+        var left = $chk_obj.offset().left - 52;
+
+        $target_layer.css({
+            'top': top,
+            'left': left,
+            'position': 'absolute'
+        }).addClass('active');
+    } else {
+        $target_layer.find('.pocketBox').css('display','none').hide();
+        $target_layer.removeClass('active');
+    }
+}
+
+/**
+ * 단강좌, 무료강좌 상품 선택/해제
  * @param $regi_form
  * @param $chk_obj
  * @param $chk_type
@@ -43,24 +86,15 @@ function cartNDirectPay($regi_form, $is_direct_pay, $cate_code) {
  * @param $target_book_id
  * @param $target_total_id
  */
-function setCheckProduct($regi_form, $chk_obj, $chk_type, $target_prod_id, $target_book_id, $target_total_id) {
+function setCheckLectureProduct($regi_form, $chk_obj, $chk_type, $target_prod_id, $target_book_id, $target_total_id) {
     if ($chk_obj.is(':checked') === true) {
         if ($chk_obj.hasClass('chk_books') === true) {
             // 수강생 교재 체크
             if (checkStudentBook($regi_form, $chk_obj) === false) {
                 return;
             }
-            // 장바구니 탭 구분 셋팅
-            $regi_form.find('input[name="cart_type"]').val('book');
-        } else {
-            $regi_form.find('input[name="cart_type"]').val('on_lecture');
         }
-        // 클릭된 상품 코드 셋팅
-        $regi_form.find('input[name="only_prod_code"]').val($chk_obj.val());
     } else {
-        $regi_form.find('input[name="cart_type"]').val('');
-        $regi_form.find('input[name="only_prod_code"]').val('');
-
         if ($chk_obj.hasClass('chk_products') === true) {
             // 강좌상품일 경우 연계도서상품 체크 해제
             $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $chk_obj.data('prod-code') + '"]').prop('checked', false);
@@ -171,10 +205,13 @@ function goCartPage($cate_code, $tab_id) {
  * @param prod_code
  * @param tab_id
  * @param url
+ * @param add_url
  */
-function productInfoModal(prod_code, tab_id, url) {
-    var data = '';
-    sendAjax(url+'/info/prod-code/' + prod_code, data, function(ret) {
+function productInfoModal(prod_code, tab_id, url, add_url) {
+    add_url = add_url || '';
+    url = url + '/info/' + add_url + 'prod-code/' + prod_code;
+
+    sendAjax(url, {}, function(ret) {
         $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
     }, showAlertError, false, 'GET', 'html');
 

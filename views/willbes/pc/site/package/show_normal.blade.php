@@ -337,7 +337,7 @@
                 var $is_direct_pay = $(this).data('direct-pay') || 'N';
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-                cartNDirectPay($regi_form, $is_direct_pay, $cate_code);
+                cartNDirectPay($regi_form, $cate_code, $is_direct_pay, 'Y');
             });
         });
     </script>

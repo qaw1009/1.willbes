@@ -483,7 +483,7 @@ function init_board() {
 }
 
 // 첨부파일 찾아보기 버튼 Script
-function init_board() {
+function init_file() {
     $(function() {
         var $fileBox = $('.filetype');
 
@@ -514,4 +514,5 @@ $(document).ready(function() {
     init_datatable();
     init_base();
     init_board();
+    init_file();
 });

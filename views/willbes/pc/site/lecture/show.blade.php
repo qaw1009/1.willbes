@@ -54,7 +54,7 @@
                         @endif
                     </div>
                     <div class="all-view subBtn NSK">
-                        <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/?prof_idx=' . $data['ProfIdx']) }}">
+                        <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only/?prof_idx=' . $data['ProfIdx']) }}">
                             개설강좌 전체보기 >
                         </a>
                     </div>

@@ -52,7 +52,7 @@
                         @foreach($products['best'] as $idx => $row)
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                    <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
                                     @if($row['wLectureProgressCcd'] == '105001')
                                         <img src="{{ img_url('prof/icon_ing.gif') }}">
                                     @endif
@@ -113,7 +113,7 @@
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
                     @foreach($products['new'] as $idx => $row)
-                        <li><a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
+                        <li><a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
                     @endforeach
                 </ul>
             </div>

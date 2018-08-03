@@ -34,7 +34,7 @@
 }
 .Member .inputBox input.certi {
     float: left;
-    width: 350px;
+    width: 345px;
 }
 .Member .inputBox input.iptEmail01 {
     width: 150px;
@@ -51,7 +51,7 @@
     width: 72px;
 }
 .Member .inputBox button.certi {
-    width: 110px;
+    width: 115px;
 }
 .Member .user-Txt {
     font-size: 15px;
@@ -510,6 +510,17 @@ table.combineTable .addbox2 {
 .agree-Chk input[type=checkbox] {
     position: absolute;
 }
+.agree-Chk ul li .agree-Tit a .v_arrow {
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
+    display: inline-block;
+    width: 9px;
+    height: 6px;
+    margin: 10px 15px;
+    text-indent: -9999px;
+}
+.agree-Chk ul li .agree-Tit.hover a .v_arrow {
+    background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
+}
 
 /* Login Form : 통합회원가입 : 회원가입완료 */
 .mem-CombineFin select.seleSite { 
@@ -566,13 +577,14 @@ table.combineTable .addbox2 {
     padding: 5px;
 }
 .mem-Convert .agreeBox a {
-    float: right;
+    float: left;
     width: 65px;
     color: #fff;
     text-align: center;
     height: 26px;
     display: block; 
     line-height: 26px;
+    margin-left: 5px;
 }
 .agree-user-Chk ul li {
     color: #707070;
@@ -3374,6 +3386,7 @@ table.classTable tr td.w-data {
     right: 0;
     width: 710px;
     height: 138px;
+    padding: 0;
 }
 .cart-PriceBox dl.priceBox dt {
     float: left;
@@ -4586,6 +4599,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 47px;
     height: 20px;
     font-size: 11px;
+    font-weight: 300;
     line-height: 20px;
     text-align: center;  
 }
@@ -5498,6 +5512,10 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding: 20px 40px;
     float: left;
     width: 100%;
+    letter-spacing: 0;
+}
+.PassCurriBox.CurriBox .MoreBtn a {
+    color: #707070;
 }
 .PassCurriBox table.curriTable {
     width: 100%;
@@ -5524,7 +5542,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .PassCurriBox tr td a {
     display: inline-block;
     width: 100%;
-    font-size: 11px;
+    font-size: 12px;
     color: #999;
     line-height: 20px; 
 }
@@ -5539,7 +5557,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .PassCurriBox ul.curriSelect li {
     float: left;
-    width: 11.5%;    
+    width: 15.5%;    
     margin: 0.5%;
 }
 .PASSZONE-Btn {
@@ -5642,6 +5660,7 @@ table.PassZoneTable .w-data {
 }
 .willbes-Layer-PassBox .passzoneInfo {
     padding-bottom: 35px;
+    letter-spacing: 0;
 }
 .willbes-Layer-PassBox .passzoneInfo li {
     line-height: 23px;
@@ -5659,6 +5678,7 @@ table.PassZoneTable .w-data {
 .PASSZONE-List .willbes-Lec-Selected .Search-Result {
     margin-top: 30px;  
     height: 25px;
+    letter-spacing: 0;
 }
 .PASSZONE-List .willbes-Lec-Selected .Search-Result .Total {
     float: left;
@@ -5720,6 +5740,15 @@ table.PassZoneTable .w-data {
     float: right;
     width: 260px;
     border: 1px solid #959595;
+}
+.PASSZONE-Add .Tit {
+    background: #ececec;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.PASSZONE-Add .PASSZONE-Add-Grid {
     padding: 20px;
 }
 .PASSZONE-Add .passzoneInfo li {
@@ -5728,6 +5757,10 @@ table.PassZoneTable .w-data {
 .PASSZONE-Add .PASSZONE-Lec-Grid {
     height: 380px;
     overflow-x: auto;
+}
+.PASSZONE-Add .PASSZONE-Lec-Grid .btnClose {
+    vertical-align: top;
+    padding-top: 9px;
 }
 .PASSZONE-Add .PASSZONE-Lec-Grid .w-info {
     font-size: 11px;

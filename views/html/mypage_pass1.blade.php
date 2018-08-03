@@ -103,8 +103,8 @@
                                 </dl>
                             </td>
                             <td class="w-lec">
-                                <div class="tx-gray">수강중인 강좌수</div>
-                                <div class="w-sj"><span class="tx-blue">10강좌</span> / 100강좌</div>
+                                <div class="tx-gray">수강중인 강좍 없습니다.</div>
+                                <div class="w-sj">강좌를 추가해 주세요.</div>
                                 <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="#none">강좌추가</a></div>
                             </td>
                         </tr>
@@ -154,7 +154,7 @@
                 <ul class="tabWrap tabDepthPass">
                     <li><a href="#Mypagetab1" class="on">즐겨찾기강좌 (2)</a></li>
                     <li><a href="#Mypagetab2">수강중강좌 (10)</a></li>
-                    <li><a href="#Mypagetab3">수강종료강좌 (3)</a></li>
+                    <li><a href="#Mypagetab3">수강완료강좌 (3)</a></li>
                     <li><a href="#Mypagetab4">숨긴강좌 (5)</a></li>
                 </ul>
                 <div class="tabBox">
@@ -186,12 +186,6 @@
                                                 <li><a href="#none">[영어] 이현나</a></li>
                                                 <li><a href="#none">[사회] 정채영</a></li>
                                                 <li><a href="#none">[형사법] 기미진</a></li>
-                                                <li><a href="#none">[영어] 김세령</a></li>
-                                                <li><a href="#none">[형사법] 오대혁</a></li>
-                                                <li><a href="#none">[영어] 이현나</a></li>
-                                                <li><a href="#none">[형사법] 정채영</a></li>
-                                                <li><a href="#none">[사회] 기미진</a></li>
-                                                <li><a href="#none">[영어] 김세령</a></li>
                                                 <li><a href="#none">[사회] 오대혁</a></li>
                                                 <li><a href="#none">[형사법] 이현나</a></li>
                                             </ul>
@@ -412,10 +406,6 @@
                                         <th class="tx-gray">전체보기</th>
                                         <td colspan="9">
                                             <ul class="curriSelect">
-                                                <li><a href="#none">[국어] 정채영</a></li>
-                                                <li><a href="#none">[영어] 기미진</a></li>
-                                                <li><a href="#none">[사회] 김세령</a></li>
-                                                <li><a href="#none">[형사법] 오대혁</a></li>
                                                 <li><a href="#none">[영어] 이현나</a></li>
                                                 <li><a href="#none">[사회] 정채영</a></li>
                                                 <li><a href="#none">[형사법] 기미진</a></li>
@@ -528,12 +518,6 @@
                                                 <li><a href="#none">[영어] 기미진</a></li>
                                                 <li><a href="#none">[사회] 김세령</a></li>
                                                 <li><a href="#none">[형사법] 오대혁</a></li>
-                                                <li><a href="#none">[영어] 이현나</a></li>
-                                                <li><a href="#none">[사회] 정채영</a></li>
-                                                <li><a href="#none">[형사법] 기미진</a></li>
-                                                <li><a href="#none">[영어] 김세령</a></li>
-                                                <li><a href="#none">[형사법] 오대혁</a></li>
-                                                <li><a href="#none">[영어] 이현나</a></li>
                                                 <li><a href="#none">[형사법] 정채영</a></li>
                                                 <li><a href="#none">[사회] 기미진</a></li>
                                                 <li><a href="#none">[영어] 김세령</a></li>
@@ -1010,84 +994,87 @@
                 <!-- PASSZONE-List -->
 
                 <div class="PASSZONE-Add">
-                    <ul class="passzoneInfo tx-gray NGR">
-                        <li>· 선택된 강좌 확인 후 '강좌추가' 버튼을 클릭하면 '무한PASS존 > 수강중강좌탭'에 강좌가 추가됩니다.</li>
-                        <li>· 강좌추가후 '교재구매' 버튼 클릭시 추가한 강좌(수강중강좌)에 대한 교재를 구매할 수 있습니다.</li>
-                    </ul>
-                    <div class="PASSZONE-Lec-Grid">
-                        <div class="LeclistTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable under-gray bdt-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 25px;">
-                                    <col style="width: 175px;">
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td class="w-info passzone">
-                                            <dl class="w-info">
-                                                <dt>국어</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>정채영</dt>
-                                            </dl><br/>
-                                            <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
-                                            <dl class="w-info">
-                                                <dt>강의수 : 40강</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>진행여부 : <span class="tx-light-blue">완강</span></dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td class="w-info passzone">
-                                            <dl class="w-info">
-                                                <dt>국어</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>정채영</dt>
-                                            </dl><br/>
-                                            <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
-                                            <dl class="w-info">
-                                                <dt>강의수 : 40강</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>진행여부 : <span class="tx-red">진행중</span></dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td class="w-info passzone">
-                                            <dl class="w-info">
-                                                <dt>국어</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>정채영</dt>
-                                            </dl><br/>
-                                            <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
-                                            <dl class="w-info">
-                                                <dt>강의수 : 40강</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>진행여부 : <span class="tx-light-blue">완강</span></dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td class="w-info passzone">
-                                            <dl class="w-info">
-                                                <dt>국어</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>정채영</dt>
-                                            </dl><br/>
-                                            <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
-                                            <dl class="w-info">
-                                                <dt>강의수 : 40강</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>진행여부 : <span class="tx-red">진행중</span></dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="Tit tx-light-black NG">강좌선택내역</div>
+                    <div class="PASSZONE-Add-Grid">
+                        <ul class="passzoneInfo tx-gray NGR">
+                            <li>· 선택된 강좌 확인 후 '강좌추가' 버튼을 클릭하면 '무한PASS존 > 수강중강좌탭'에 강좌가 추가됩니다.</li>
+                            <li>· 강좌추가후 '교재구매' 버튼 클릭시 추가한 강좌(수강중강좌)에 대한 교재를 구매할 수 있습니다.</li>
+                        </ul>
+                        <div class="PASSZONE-Lec-Grid">
+                            <div class="LeclistTable">
+                                <table cellspacing="0" cellpadding="0" class="listTable under-gray bdt-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 25px;">
+                                        <col style="width: 175px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-light-blue">완강</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-red">진행중</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-light-blue">완강</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-red">진행중</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

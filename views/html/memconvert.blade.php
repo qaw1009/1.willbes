@@ -209,7 +209,7 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="arrow">▼</span>
+                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -224,7 +224,7 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
+                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -239,7 +239,7 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
+                            (선택) 개인정보 위탁 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -409,7 +409,7 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="arrow">▼</span>
+                            <span class="tx-blue">(필수)</span> Willbes 통합회원 이용약관 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -422,7 +422,7 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
+                            <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">
@@ -436,7 +436,7 @@
                     </div>
                     <div class="agree-Tit">
                         <a href="#none">
-                            (선택) 개인정보 위탁 동의<span class="arrow">▼</span>
+                            (선택) 개인정보 위탁 동의<span class="v_arrow">▼</span>
                         </a>
                     </div>
                     <div class="agree-Txt">

@@ -103,27 +103,6 @@ $(function() {
     });
 });
 
-// checkbox 결제 버튼 Script
-$(function() {
-    $('.chk.buybtn input:checkbox').change(function(){
-        var $buy_layer = $('.willbes-Lec-buyBtn-sm');
-
-        if($(this).is(':checked')) {
-            var top = $(this).offset().top;
-            var left = $(this).offset().left - 52;
-
-            $buy_layer.css({
-                'top': top,
-                'left': left,
-                'position': 'absolute'
-            }).addClass('active');
-        } else {
-            $buy_layer.find('.pocketBox').css('display','none').hide();
-            $buy_layer.removeClass('active');
-        }
-    });
-});
-
 // 장바구니 상품정보 Script
 $(function() {
     $('td.w-list a').click(function(){

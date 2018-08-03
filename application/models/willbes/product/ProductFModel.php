@@ -128,6 +128,24 @@ class ProductFModel extends WB_Model
     }
 
     /**
+     * 판매가능한 단일상품 조회 (판매예정 제외)
+     * @param $learn_pattern
+     * @param $prod_code
+     * @param string $add_column
+     * @return array
+     */
+    public function findSalesProductByProdCode($learn_pattern, $prod_code, $add_column = '')
+    {
+        $arr_condition = [
+            'EQ' => ['ProdCode' => $prod_code, 'IsSaleEnd' => 'N', 'SaleStatusCcd' => $this->_sale_status_ccds[0], 'IsUse' => 'Y'],
+            'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
+        ];
+        $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
+
+        return element('0', $data, []);
+    }
+
+    /**
      * 상품 컨텐츠 조회
      * @param array $prod_code
      * @return array

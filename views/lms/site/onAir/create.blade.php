@@ -228,7 +228,7 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" name="attach_file[]" class="form-control input-file" required="required" title="첨부자료">
+                                    <input type="file" name="attach_file[]" class="form-control input-file" title="첨부자료">
                                 </span>
                             </div>
                             @if(empty($data['LeftFileName']) === false)
@@ -256,7 +256,7 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" name="attach_file[]" class="form-control input-file" required="required" title="첨부자료">
+                                    <input type="file" name="attach_file[]" class="form-control input-file" title="첨부자료">
                                 </span>
                             </div>
                             @if(empty($data['RightFileName']) === false)

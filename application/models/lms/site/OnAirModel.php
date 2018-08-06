@@ -127,7 +127,7 @@ class OnAirModel extends WB_Model
     {
         $column = '
             A.OaIdx, A.SiteCode, A.CampusCcd, A.CIdx, A.StudyStartDate, A.WeekArray, A.OnAirNum, A.OnAirStartType, IFNULL(A.OnAirStartTime,0) AS OnAirStartTime, IFNULL(A.OnAirEndTime,0) AS OnAirEndTime,
-            TIME_FORMAT(A.OnAirStartTIme, \'%H\') AS OnAirStartHour, TIME_FORMAT(A.OnAirStartTIme, \'%i\') AS OnAirStartMin,
+            TIME_FORMAT(A.OnAirStartTime, \'%H\') AS OnAirStartHour, TIME_FORMAT(A.OnAirStartTime, \'%i\') AS OnAirStartMin,
             TIME_FORMAT(A.OnAirEndTime, \'%H\') AS OnAirEndHour, TIME_FORMAT(A.OnAirEndTime, \'%i\') AS OnAirEndMin,
             A.OnAirName, A.OnAirTabName, A.LeftExposureType,A.LeftFileName,A.LeftFileRealName,A.LeftFileFullPath,A.LeftLink,A.RightExposureType,A.RightFileName,A.RightFileRealName,A.RightFileFullPath,A.RightLink,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
@@ -252,7 +252,7 @@ class OnAirModel extends WB_Model
                 'OnAirNum' => element('on_air_num', $input),
                 'WeekArray' => element('week_str', $input),
                 'OnAirStartType' => $on_air_start_type,
-                'OnAirStartTIme' => $on_air_start_time,
+                'OnAirStartTime' => $on_air_start_time,
                 'OnAirEndTime' => $on_air_end_time,
                 'OnAirName' => element('on_air_name', $input),
                 'OnAirTabName' => element('on_air_tab_name', $input),
@@ -409,7 +409,7 @@ class OnAirModel extends WB_Model
                 'OnAirNum' => element('on_air_num', $input),
                 'WeekArray' => element('week_str', $input),
                 'OnAirStartType' => $on_air_start_type,
-                'OnAirStartTIme' => $on_air_start_time,
+                'OnAirStartTime' => $on_air_start_time,
                 'OnAirEndTime' => $on_air_end_time,
                 'OnAirName' => element('on_air_name', $input),
                 'OnAirTabName' => element('on_air_tab_name', $input),
@@ -544,14 +544,14 @@ class OnAirModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTIme, OnAirEndTime,
+                SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTime, OnAirEndTime,
                 OnAirName,
                 OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink,
                 RightExposureType, RightFileName, RightFileRealName, RightFileFullPath, RightLink, IsUse, IsStatus,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTIme, OnAirEndTime,
+                SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTime, OnAirEndTime,
                 CONCAT("복사본-", IF(LEFT(OnAirName,4)="복사본-", REPLACE(OnAirName, LEFT(OnAirName,4), ""), OnAirName)) AS OnAirName,
                 OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink,
                 RightExposureType, RightFileName, RightFileRealName, RightFileFullPath, RightLink, IsUse, IsStatus,

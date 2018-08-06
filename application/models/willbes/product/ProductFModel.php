@@ -56,14 +56,14 @@ class ProductFModel extends WB_Model
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse
-                , CourseIdx, CourseName, SchoolYear, ProdPriceData, RegDatm';
+                , CourseIdx, CourseName, SchoolYear, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
                 case 'on_lecture' :
                 case 'on_free_lecture' :
                         $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan
-                            , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
+                            , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
                         $arr_condition = array_merge_recursive($arr_condition, [
                             'EQ' => ['wIsUse' => 'Y']   // 마스터강의 사용여부 추가
                         ]);
@@ -71,12 +71,19 @@ class ProductFModel extends WB_Model
 
                 //추천패키지
                 case 'adminpack_lecture' :
-                        $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, fn_product_sublecture_codes(ProdCode) as ProdCodeSub';
+                        $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+                        , fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
+                    break;
+
+                //사용자패키지
+                case 'userpack_lecture' :
+                    $column .= ', StudyStartDate, IsSelLecCount,SelCount, PackSaleData';
                     break;
 
                 // 교재상품
                 case 'book' :
-                        $column .= ', wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan, ProfReferData';
+                        $column .= ', wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName
+                        , ProfSlogan, ProfReferData, ProdPriceData';
                     break;
 
                 default :

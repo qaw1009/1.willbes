@@ -55,7 +55,7 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsUse
+            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse
                 , CourseIdx, CourseName, SchoolYear, ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {
@@ -63,8 +63,7 @@ class ProductFModel extends WB_Model
                 case 'on_lecture' :
                 case 'on_free_lecture' :
                         $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan
-                            , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData
-                            , if(IsSaleEnd = "N" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '" and NOW() between SaleStartDatm and SaleEndDatm and IsUse = "Y", "Y", "N") as IsCanSale';
+                            , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
                         $arr_condition = array_merge_recursive($arr_condition, [
                             'EQ' => ['wIsUse' => 'Y']   // 마스터강의 사용여부 추가
                         ]);
@@ -72,14 +71,12 @@ class ProductFModel extends WB_Model
 
                 //추천패키지
                 case 'adminpack_lecture' :
-                        $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, fn_product_sublecture_codes(ProdCode) as ProdCodeSub
-                            , if(IsSaleEnd = "N" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '" and NOW() between SaleStartDatm and SaleEndDatm and IsUse = "Y", "Y", "N") as IsCanSale';
+                        $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, fn_product_sublecture_codes(ProdCode) as ProdCodeSub';
                     break;
 
                 // 교재상품
                 case 'book' :
-                        $column .= ', wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan, ProfReferData
-                            , if(IsSaleEnd = "N" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '" and wSaleCcd = "' . $this->_available_sale_status_ccd['book'] . '" and NOW() between SaleStartDatm and SaleEndDatm and IsUse = "Y" and wIsUse = "Y", "Y", "N") as IsCanSale';
+                        $column .= ', wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan, ProfReferData';
                     break;
 
                 default :

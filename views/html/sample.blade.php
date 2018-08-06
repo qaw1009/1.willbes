@@ -73,7 +73,9 @@
 
     <a href="{{ site_url('/home/html/mypage_payment1') }}">내강의실 > 결제관리 > 주문/배송조회 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/mypage_payment2') }}">내강의실 > 결제관리 > 주문/배송조회(무통장입금) page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mypage_payment2_1') }}">내강의실 > 결제관리 > 주문/배송조회(신용카드) page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment2_2') }}">내강의실 > 결제관리 > 주문/배송조회(입금대기) page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 결제관리 > 포인트관리 page 이동</a><br/><br/>
 

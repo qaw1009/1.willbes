@@ -7,22 +7,49 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
-                    <a href="#none">온라인강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_online1') }}">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학원강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad1') }}">수강신청강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad2') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
-                </li>
-                <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
-                <li>
-                    <a href="#none">결제관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">결제관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment1') }}">주문/배송조회</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment3') }}">포인트관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment4') }}">쿠폰/수강권관리</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -97,9 +124,7 @@
                                         <span class="NSK ml15 nBox n2">진행중</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
+                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
@@ -120,9 +145,7 @@
                                         <span class="NSK ml15 nBox n2">진행중</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
+                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
@@ -140,12 +163,10 @@
                                     <dt>
                                         영어<span class="row-line">|</span>
                                         한덕현교수님
-                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                        <span class="NSK ml15 nBox n4">완강</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
+                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
@@ -157,7 +178,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                            <td colspan="4" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
                         </tr>
                     </tbody>
                 </table>

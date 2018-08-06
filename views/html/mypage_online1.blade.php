@@ -13,7 +13,7 @@
                     <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#none">온라인강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_online1') }}">온라인강좌</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
                             <li class="Tit">온라인강좌</li>
@@ -24,8 +24,15 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학원강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad1') }}">수강신청강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad2') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
@@ -33,8 +40,16 @@
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">결제관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment1') }}">주문/배송조회</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment3') }}">포인트관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment4') }}">쿠폰/수강권관리</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -144,7 +159,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>
+                                            <a href="#none" onclick="openWin('STARTPASS')"><span class="bBox blueBox NSK">수강시작 ></span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
@@ -246,6 +261,104 @@
             </div>
         </div>
         <!-- willbes-Mypage-Tabs -->
+
+        <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740">
+            <a class="closeBtn" href="#none" onclick="closeWin('STARTPASS')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">수강시작일 변경</div> 
+
+            <div class="lecMoreWrap">
+
+                <div class="PASSZONE-List widthAutoFull">
+                    <ul class="passzoneInfo tx-gray NGR">
+                        <li class="strong">· 수강시작일 설정</li>
+                        <li>- 수강시작일은 개강일 전까지만 변경 가능합니다.</li>
+                        <li>- '시작일변경' 버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</li>
+                        <li>- 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.</li>
+                        <li>- 수강시작이 이루어진 강좌는 시작일 변경이 불가능 합니다.</li>
+                    </ul>
+                    <div class="PASSZONE-Lec-Section">
+                        <div class="Search-Result strong mt40 mb15 tx-gray">· 수강시작일 변경</div>
+                        <div class="LeclistTable bdt-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 135px;">
+                                    <col style="width: 565px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th class="w-tit bg-light-white strong">강의정보</th>
+                                        <td class="w-data tx-left pl15">
+                                            <dl class="w-info strong">
+                                                <dt>
+                                                    영어<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
+                                                    한덕현교수님
+                                                </dt>
+                                            </dl><br>
+                                            <div class="w-tit strong">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                            </dl>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="w-tit bg-light-white strong">수강 시작일 변경</th>
+                                        <td class="w-data tx-left pl15">
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">&nbsp; ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">&nbsp;
+                                            시작일 입력시, 종료일이 자동 변경됩니다
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="w-btn"><a class="answerBox_block NSK" href="#none" onclick="">변경</a></div>
+                        </div>
+                    </div>
+                    <div class="PASSZONE-Lec-Section">
+                        <div class="Search-Result strong mb15 tx-gray">· 수강시작일 변경이력 <span class="w-info normal">( 잔여횟수 : <span class="strong tx-light-blue">1</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span> 잔여기간 : <span class="strong tx-light-blue">15</span>일 )</span></div>
+                        <div class="LeclistTable bdt-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 100px;">
+                                    <col style="width: 270px;">
+                                    <col style="width: 170px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>회차<span class="row-line">|</span></th>
+                                        <th>수강시작일<span class="row-line">|</span></th>
+                                        <th>변경일자<span class="row-line">|</span></th>
+                                        <th>변경자</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-num">1차</td>
+                                        <td class="w-day">2018.00.00 ~ 2018.00.00</td>
+                                        <td class="w-modify-day">2018.00.00</td>
+                                        <td class="w-user">회원명</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-num">2차</td>
+                                        <td class="w-day">2018.00.00 ~ 2018.00.00</td>
+                                        <td class="w-modify-day">2018.00.00</td>
+                                        <td class="w-user">회원명</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">수강시작일 변경 이력이 없습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- PASSZONE-List -->
+            </div>
+
+        </div>
+        <!-- willbes-Layer-PassBox : 수강시작일 변경 -->
 
     </div>
     <div class="Quick-Bnr ml20">

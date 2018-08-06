@@ -7,22 +7,49 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
-                    <a href="#none">온라인강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_online1') }}">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학원강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad1') }}">수강신청강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad2') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
-                </li>
-                <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
-                <li>
-                    <a href="#none">결제관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">결제관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment1') }}">주문/배송조회</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment3') }}">포인트관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment4') }}">쿠폰/수강권관리</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -64,7 +91,7 @@
         <!-- willbes-Mypage-EVTZONE -->
 
         <div class="willbes-Mypage-Tabs mt60">
-            <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+            <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                 <span class="w-data">
                     기간검색 &nbsp;
                     <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
@@ -79,14 +106,8 @@
                     </ul>
                 </span>
                 <div class="willbes-Lec-Search GM f_right">
-                    <select id="process" name="process" title="process" class="seleProcess f_left">
-                        <option selected="selected">과정</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
                     <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30" style="width: 220px;">
+                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30" style="width: 270px;">
                         <button type="submit" onclick="" class="search-Btn">
                             <span>검색</span>
                         </button>

@@ -539,6 +539,10 @@ strong {
 .mr70 {
   margin-right: 70px !important;
 }
+
+.pt-zero {
+  padding-top: 0px !important;
+}
 .pt15 {
   padding-top: 15px !important;
 }
@@ -648,7 +652,10 @@ strong {
   clear: both;
 }
 .strong {
-  font-weight: 600;
+  font-weight: 600 !important;
+}
+.normal {
+  font-weight: 300 !important;
 }
 
 .tx-red {

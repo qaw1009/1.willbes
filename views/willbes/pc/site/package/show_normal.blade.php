@@ -127,9 +127,8 @@
                     <!-- lecTable -->
                 </div>
                 <!-- willbes-Buy-PackageList -->
-
+            @if(empty($data_sublist) === false)
                 @foreach($data_sublist as $idx => $sub_row)
-
                 <div id="lec_table_{{ $sub_row['ProdCode'] }}" class="willbes-Lec-Table">
                     <table cellspacing="0" cellpadding="0" class="lecTable">
                         <colgroup>
@@ -240,7 +239,7 @@
                 </div>
                 <!-- willbes-Lec-Table -->
                 @endforeach
-
+            @endif
                 <div id="InfoForm" class="willbes-Layer-Box d2"></div>
 
                 <div class="TopBtn">
@@ -257,6 +256,7 @@
                                 <col width="*">
                             </colgroup>
                             <tbody>
+                        @if(empty($data['contents']) === false)
                             @foreach($data['contents'] as $idx => $row)
                                 @if($row['ContentTypeCcd'] != '633004')
                                     <tr>
@@ -272,6 +272,7 @@
                                     </tr>
                                 @endif
                             @endforeach
+                        @endif
                             </tbody>
                         </table>
                     </div>

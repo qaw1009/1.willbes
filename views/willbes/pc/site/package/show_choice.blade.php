@@ -153,11 +153,13 @@
                     @php
                         $subGroup_array = [];
                     @endphp
-                    @foreach($data_sublist as $idx => $sub_row /*필수 과목*/)
-                        @if($sub_row['IsEssential'] === 'Y')
-                            @php
-                                $subGroup_array[] = $sub_row['SubGroupName'];
-                            @endphp
+
+                    @if(empty($data_sublist) === false)
+                        @foreach($data_sublist as $idx => $sub_row /*필수 과목*/)
+                            @if($sub_row['IsEssential'] === 'Y')
+                                @php
+                                    $subGroup_array[] = $sub_row['SubGroupName'];
+                                @endphp
                         <tr>
                             <td class="w-list tx-center bg-light-gray row_td" >{{$sub_row['SubjectName']}}<div class="{{$sub_row['SubGroupName']}} d_none">{{$sub_row['SubGroupName']}}</div></td>
                             <td class="bdb-dark-gray">
@@ -265,8 +267,9 @@
                                 <!-- willbes-Lec-Table -->
                             </td>
                         </tr>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                    @endif
                     @php
                         if(empty($subGroup_array) === false) {
                             $subGroup_array = array_values(array_unique($subGroup_array));

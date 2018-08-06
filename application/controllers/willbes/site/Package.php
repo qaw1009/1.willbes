@@ -130,7 +130,12 @@ class Package extends \app\controllers\FrontController
                 break;
         }
 
+
         $data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);  //상품 정보 추출
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.', 'back');
+        }
+
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
 

@@ -62,4 +62,23 @@ class ProfessorFModel extends WB_Model
 
         return element('0', $data, []);
     }
+
+    /**
+     * 교수별 수강후기 게시판 데이터 조회
+     * @param $prof_idx
+     * @param $site_code
+     * @param $cate_code
+     * @param $subject_idx
+     * @param $limit_cnt
+     * @return array
+     */
+    public function findProfessorStudyCommentData($prof_idx, $site_code, $cate_code, $subject_idx, $limit_cnt)
+    {
+        $query = 'select ifnull(fn_professor_study_comment_data(?, ?, ?, ?, ?), "N") as StudyCommentData';
+        
+        // 쿼리 실행
+        $query = $this->_conn->query($query, [$prof_idx, $site_code, $cate_code, $subject_idx, $limit_cnt]);
+
+        return array_get($query->result_array(), '0.StudyCommentData', []);
+    }
 }

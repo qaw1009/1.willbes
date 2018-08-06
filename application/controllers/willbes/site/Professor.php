@@ -113,10 +113,19 @@ class Professor extends \app\controllers\FrontController
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
+        // 수강후기 조회
+        $data['StudyCommentData'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_cate_code, $arr_input['subject_idx'], 3);
+
+        // 상품정보 조회
+        // 상품조회 기본조건
+        $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => $arr_input['subject_idx']],
+            'LKR' => ['CateCode' => $this->_cate_code]
+        ];
+        $order_by = ['ProdCode' => 'desc'];
+
         // 베스트강좌 조회
         $products['best'] = $this->lectureFModel->listSalesProduct('on_lecture', false
-            , ['EQ' => ['SiteCode' => $this->_site_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'IsBest' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
-            , 3, 0, ['ProdCode' => 'desc']);
+            , array_merge_recursive($arr_condition, ['EQ' => ['IsBest' => 'Y']]), 3, 0, $order_by);
 
         $products['best'] = array_map(function ($arr) {
             $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
@@ -126,14 +135,59 @@ class Professor extends \app\controllers\FrontController
 
         // 신규강좌 조회
         $products['new'] = $this->lectureFModel->listSalesProduct('on_lecture', false
-            , ['EQ' => ['SiteCode' => $this->_site_code, 'ProfIdx' => $prof_idx, 'SubjectIdx' => $arr_input['subject_idx'], 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
-            , 2, 0, ['ProdCode' => 'desc']);
+            , array_merge_recursive($arr_condition, ['EQ' => ['IsNew' => 'Y']]), 2, 0, $order_by);
+
+        // 선택된 탭에 맞는 정보 조회
+        $is_tab_select = isset($arr_input['tab']);
+        $arr_input['tab'] = element('tab', $arr_input, 'open_lecture');
+        $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $arr_input);
 
         $this->load->view('site/professor/show' . $this->_pass_site_val, [
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,
             'data' => $data,
-            'products' => $products
+            'products' => $products,
+            'tab_data' => $tab_data,
+            'is_tab_select' => $is_tab_select
         ]);
-    }    
+    }
+
+    /**
+     * 개설강좌 탭
+     * @param $prof_idx
+     * @param $arr_input
+     * @return mixed
+     */
+    private function _tab_open_lecture($prof_idx, $arr_input)
+    {
+        // 과정 조회
+        $data['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+
+        // 상품조회 기본조건
+        $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => $arr_input['subject_idx']],
+            'LKR' => ['CateCode' => $this->_cate_code]
+        ];
+        $order_by = ['ProdCode' => 'desc'];
+
+        // 단강좌 조회
+        $data['product']['only'] = $this->lectureFModel->listSalesProduct('on_lecture', false
+            , array_merge_recursive($arr_condition, ['EQ' => ['CourseIdx' => element('course_idx', $arr_input)]]), null, null, $order_by);
+
+        // 단강좌 json 데이터 decode
+        $data['product']['only'] = array_map(function ($row) {
+            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+            $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
+            $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+            unset($row['ProfReferData']);
+
+            return $row;
+        }, $data['product']['only']);
+
+        return $data;
+    }
+
+    private function _tab_free_lecture($prof_idx, $arr_input)
+    {
+        return $this->_tab_open_lecture($prof_idx, $arr_input);
+    }
 }

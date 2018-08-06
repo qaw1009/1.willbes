@@ -312,12 +312,13 @@
 
         <div id="InfoForm" class="willbes-Layer-Box"></div>
         <!-- willbes-Layer-Box -->
+
+        {{-- footer script --}}
+        @include('willbes.pc.site.lecture.' . $pattern . '_footer_partial')
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">
     </div>
 </div>
 <!-- End Container -->
-{{-- footer script --}}
-@include('willbes.pc.site.lecture.' . $pattern . '_footer_partial')
 @stop

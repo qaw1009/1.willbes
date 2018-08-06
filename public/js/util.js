@@ -159,6 +159,8 @@ function goUrl(key, val, selector) {
     } else {
         $url_form.append('<input type="hidden" name="' + key + '" value="' + val + '"/>');
     }
+
+    $url_form.prop('action', location.protocol + '//' + location.host + location.pathname);
     $url_form.submit();
 }
 

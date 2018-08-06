@@ -16,6 +16,11 @@
         @include('willbes.pc.layouts.partial.site_professor_lnb_menu')
     </div>
     <div class="Content p_re ml20">
+        <form id="url_form" name="url_form" method="GET">
+            @foreach($arr_input as $key => $val)
+                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+            @endforeach
+        </form>
         <!-- willbes-Prof-Profile -->
         <div class="willbes-Prof-Profile p_re mb40 NG tx-black">
             <div class="ProfImg p_re">
@@ -118,10 +123,13 @@
                 </ul>
             </div>
             <div class="willbes-listTable willbes-reply widthAuto460">
-                <div class="will-Tit NG">수강후기 <a class="f_right" href="#none" onclick="openWin('LayerReply'),openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                <div class="will-Tit NG">수강후기 <a class="f_right" href="#none" onclick="openWin('LayerReply'); openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                 <ul class="List-Table GM tx-gray">
-                    <li><img src="{{ img_url('sub/star4.gif') }}"><a href="#none">설명도 잘 해주시고 좋은 강의에요</a></li>
-                    <li><img src="{{ img_url('sub/star5.gif') }}"><a href="#none">짱 좋아요!</a></li>
+                    @if($data['StudyCommentData'] != 'N')
+                        @foreach(json_decode($data['StudyCommentData'], true) as $idx => $row)
+                            <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none">{{ $row['Title'] }}</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
             <!-- willbes-Layer-ReplyBox -->
@@ -134,8 +142,40 @@
         </div>
         <!-- // willbes-Bnr -->
         <!-- willbes-Prof-Tabs -->
+        <div class="willbes-Prof-Tabs">
+            <div class="ProfDetailWrap">
+                <a name="tabLink"></a>
+                <ul class="tabWrap tabDepthProf">
+                    <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
+                    <li><a href="#none">공지사항</a></li>
+                    <li><a href="#none">학습Q&A</a></li>
+                    <li><a href="#none">학습자료실</a></li>
+                    <li><a href="#none" id="hover_free_lecture" onclick="goUrl('tab', 'free_lecture');">무료강좌</a></li>
+                </ul>
+                <div class="tabBox">
+                    <div id="{{ $arr_input['tab'] }}" class="tabLink">
+                        {{-- 개설강좌 탭 --}}
+                        @include('willbes.pc.site.professor.tab_' . $arr_input['tab'] . '_partial')
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- // willbes-Prof-Tabs -->
     </div>
 </div>
 <!-- End Container -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        @if($is_tab_select === true)
+            // 선택된 탭이 있을 경우 자동 스크롤
+            $("html, body").animate({ scrollTop: $('a[name="tabLink"]').offset().top }, 0);
+        @endif
+
+        $(function() {
+            $('.willbes-Prof-Tabs .tabWrap li a').removeClass('on');
+            $('.willbes-Prof-Tabs .tabWrap #hover_{{ $arr_input['tab'] }}').addClass('on');
+            $('.willbes-Prof-Tabs .tabBox .tabLink').css('display', 'block');
+        });
+    });
+</script>
 @stop

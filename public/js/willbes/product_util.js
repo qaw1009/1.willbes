@@ -67,12 +67,17 @@ function showBuyLayer($regi_form, $chk_obj, $target_id) {
     var $target_layer = $('#' + $target_id);
 
     if($chk_obj.is(':checked')) {
-        var top = $chk_obj.offset().top;
-        var left = $chk_obj.offset().left - 52;
+        //var top = $chk_obj.offset().top;
+        //var left = $chk_obj.offset().left - 52;
+        var top = $chk_obj.offset().top - 196;
+        var right = 242;
+        if ($chk_obj.hasClass('chk_books') === true) {
+            right += 50;
+        }
 
         $target_layer.css({
             'top': top,
-            'left': left,
+            'right': right,
             'position': 'absolute'
         }).addClass('active');
     } else {

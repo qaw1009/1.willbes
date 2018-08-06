@@ -23,8 +23,9 @@ class PackageFModel extends ProductFModel
         $column =  'B.IsEssential, B.SubGroupName, C.*';
 
         $arr_condition = array_merge_recursive($arr_condition,[
-            'EQ' => ['A.ProdCode'=>$prod_code, 'A.IsSaleEnd' => 'N', 'A.IsUse' => 'Y', 'B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],
-            'RAW' => ['NOW() between ' => 'A.SaleStartDatm and A.SaleEndDatm']
+            //'EQ' => ['A.ProdCode'=>$prod_code, 'A.IsSaleEnd' => 'N', 'A.IsUse' => 'Y', 'B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],
+            //'RAW' => ['NOW() between ' => 'A.SaleStartDatm and A.SaleEndDatm']
+            'EQ' => ['A.ProdCode'=>$prod_code, 'B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],         //패키지 하위 과정이므로 특정 조건을 제외하고 상품에 관계 없이 노출
         ]);
 
         $from = ' 
@@ -40,7 +41,7 @@ class PackageFModel extends ProductFModel
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
 
-        return $this->_conn->query('Select '. $column. $from. $where .$order_by)->result_array();
+        return $this->_conn->query('Select straight_join '. $column. $from. $where .$order_by)->result_array();
 
     }
 }

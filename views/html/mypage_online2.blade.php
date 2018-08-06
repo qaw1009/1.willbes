@@ -7,22 +7,34 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
+                </li>
+                <li class="dropdown">
                     <a href="#none">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
                 </li>
                 <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
                 <li>
-                    <a href="#none">결제관리</a>
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -54,14 +66,19 @@
                         <tr>
                             <td>
                                 <div class="Tit">일시정지신청</div>
-                                - '일시정지(잔여횟수)' 버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
-                                - 1회 일시정지 기간은 수강잔여일을 초과할 수 없으며, <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
-                                - 일시정지된 강좌는 '일시정지강좌'에서 확인할 수 있습니다.<br/>
+                                <div class="Txt">
+                                    - '일시정지(잔여횟수)' 버튼을 클릭하면 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
+                                    - 1회 일시정지 기간은 수강잔여일을 초과할 수 없으며, <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span><br/>
+                                    - 일시정지된 강좌는 '일시정지강좌'에서 확인할 수 있습니다.<br/>
+                                </div>
 
                                 <div class="Tit pt30">수강연장</div>
-                                - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
-                                - <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
-                                - 수강연장은 수강 종료일 전까지만 신청이 가능하며 5일 단위(5일, 10일 15일등)로 신청할 수 있습니다.<br/>
+                                <div class="Txt">
+                                    - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
+                                    - '수강연장(잔여횟수)' 버튼을 클릭하면 강좌별로 최대 3회까지 연장이 가능합니다.<br/>
+                                    - <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
+                                    - 수강연장은 수강 종료일 전까지만 신청이 가능하며 5일 단위(5일, 10일 15일 등)로 신청할 수 있습니다.<br/>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -74,7 +91,9 @@
                         <tr>
                             <td>
                                 <div class="Tit">패키지강좌</div>
-                                - 패키지 강좌는 강의시작일 설정, 일시중지, 강의연장 기능이 제공되지 않습니다.<br/>
+                                <div class="Txt">
+                                    - 패키지 강좌는 강의시작일 설정, 일시중지, 강의연장 기능이 제공되지 않습니다.<br/>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -87,7 +106,9 @@
                         <tr>
                             <td>
                                 <div class="Tit">무료강좌</div>
-                                - 무료강좌는 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                                <div class="Txt">
+                                    - 무료강좌는 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -100,7 +121,9 @@
                         <tr>
                             <td>
                                 <div class="Tit">관리자부여강좌</div>
-                                - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                                <div class="Txt">
+                                    - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장 기능이 제공되지 않습니다.<br/>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -184,7 +207,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox grayBox NSK">수강연장(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
@@ -212,7 +235,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox grayBox NSK">수강연장(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
@@ -231,7 +254,7 @@
                                     <col style="width: 120px;">
                                 </colgroup>
                                 <tbody>
-                                    <tr>
+                                    <tr class="bg-light-blue">
                                         <td class="w-data tx-left pl10">
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
@@ -244,7 +267,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox grayBox NSK">수강연장(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
@@ -257,7 +280,7 @@
                                     <col style="width: 120px;">
                                 </colgroup>
                                 <tbody>
-                                    <tr class="replyTxt bg-light-gray">
+                                    <tr class="replyTxt">
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">77%</span>
                                         </td>
@@ -281,11 +304,11 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox grayBox NSK">수강연장(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
-                                    <tr class="replyTxt bg-light-gray">
+                                    <tr class="replyTxt">
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">25%</span>
                                         </td>
@@ -309,7 +332,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox grayBox NSK">수강연장(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>

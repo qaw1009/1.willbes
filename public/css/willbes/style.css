@@ -5651,7 +5651,7 @@ table.PassZoneTable .w-data {
     width: 900px;
     height: 1100px;
     border: 1px solid #2f2f2f;
-    padding: 20px 25px 30px;
+    padding: 20px 25px;
 }
 .willbes-Layer-PassBox .closeBtn {
     position: absolute;
@@ -5668,7 +5668,7 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox .lecMoreWrap {
     float: left;
     width: 100%;
-    padding: 30px 0 20px;
+    padding: 30px 0 0;
 }
 .willbes-Layer-PassBox .passzoneInfo {
     padding-bottom: 35px;
@@ -5718,12 +5718,59 @@ table.PassZoneTable .w-data {
 }
 .PASSZONE-List .PASSZONE-Lec-Wrap {
     border-top: 1px solid #959595;
-    height: 722px;
+    height: 730px;
     overflow-x: auto;
 }
-.PASSZONE-List .PASSZONE-Lec-Wrap .LeclistPASSTable {
+.PASSZONE-List .LeclistPASSTable {
     height: 255px;
     overflow-x: auto;
+    border-top: 1px solid #959595;
+}
+.PASSZONE-List .PASSZONE-Lec-Section .passzone-Leclist {
+    cursor: default;
+}
+.PASSZONE-List .PASSZONE-Lec-Section .w-price {
+    font-weight: 300;
+}
+.PASSZONE-List .PASSZONE-Lec-Section .cart-PriceBox {
+    border-top: 1px solid #3a3e47; 
+    margin-top: 30px;    
+}
+.PASSZONE-List .PASSZONE-Lec-Section .willbes-Lec-buyBtn {
+    bottom: 40px;
+    right: 25px;
+} 
+.PASSZONE-List .PASSZONE-Lec-Section button span {
+    font-size: 12px;
+}
+.PASSZONE-List .PASSZONE-User-Tablets {
+    text-align: center;
+    height: 70px;
+}
+.PASSZONE-List .PASSZONE-User-Tablets ul li {
+    float: left;
+    widtH: 369px;
+    height: 70px;
+    background: #f9f9fa;
+    border: 1px solid #959595;
+    margin-left: 10px;
+}
+.PASSZONE-List .PASSZONE-User-Tablets ul li:first-child {
+    margin-left: 0;
+}
+.PASSZONE-List .PASSZONE-User-Tablets dl {
+    height: 68px;
+    line-height: 66px;
+}
+.PASSZONE-List .PASSZONE-User-Tablets dl dt {
+    display: inline-block;
+    font-size: 15px;
+    color: #323232;
+    margin: 0 10px;
+    letter-spacing: 0;
+}
+.PASSZONE-List .PASSZONE-User-Tablets dl dt.w-tit {
+    font-size: 13px;
 }
 .PASSZONE-List tr th {
     font-weight: 300 !important;
@@ -5775,7 +5822,13 @@ table.PassZoneTable .w-data {
     line-height: 22px;
     padding: 15px 0 15px 25px;
 }
-
+.PASSZONE-List .passTable-Select thead tr th {
+    line-height: 20px;
+    padding: 15px 0;
+}
+.LeclistTable .passTable-Select thead tr th .row-line {
+    margin: 4px 0;
+}
 .LeclistTable .passTable thead tr th .row-line {
     background: #707070;
     float: inherit;
@@ -5829,7 +5882,7 @@ table.PassZoneTable .w-data {
     text-align: center;
 }
 .PASSZONE-Add .PASSZONE-Lec-Grid {
-    height: 620px;
+    height: 634px;
     overflow-x: auto;
     border-top: 1px solid #959595;
 }

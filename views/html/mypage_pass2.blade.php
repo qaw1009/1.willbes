@@ -7,22 +7,34 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
+                </li>
+                <li class="dropdown">
                     <a href="#none">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
                 </li>
                 <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
                 <li>
-                    <a href="#none">결제관리</a>
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -67,7 +79,7 @@
                             <span class="nBox n4">완강</span>
                         </dt>
                     </dl>
-                    <div class="Prof-MypageBox NGEB pt20 c_both">
+                    <div class="Prof-MypageBox pt15 c_both">
                         <table cellspacing="0" cellpadding="0" class="ProfmypageTable">
                             <colgroup>
                                 <col style="width: 145px;"/>
@@ -80,27 +92,31 @@
                                 <tr>
                                     <td>
                                         <div class="w-lectit">최근수강강의</div>
-                                        <div class="w-lec">2강</div>
+                                        <div class="w-lec NGEB">2강</div>
                                         <div class="w-date tx-gray">(수강일 : 2018.3.20)</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">진도율</div>
-                                        <div class="w-lec">20%</div>
-                                        <div class="w-date tx-gray">(2강/ 10강)</div>
+                                        <div class="w-lec NGEB">20%</div>
+                                        <div class="w-date tx-gray">(수강시간기준)</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">일시정지</div>
-                                        <div class="w-lec"><span class="tx-light-blue">2</span>회</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">2</span>회</div>
                                         <div class="w-date tx-gray">(3.20~4.20)</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">수강연장</div>
-                                        <div class="w-lec"><span class="tx-light-blue">3</span>회</div>
-                                        <div class="w-date tx-gray">&nbsp;</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">3</span>회</div>
+                                        <div class="w-date tx-gray">
+                                            <div class="w-btn">
+                                                <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
-                                        <div class="w-lec"><span class="tx-light-blue">10</span>일/ 100일</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">10</span>일/ 100일</div>
                                         <div class="w-date tx-gray">(2018.3.20~2018.6.20)</div>
                                     </td>
                                 </tr> 
@@ -112,14 +128,14 @@
             <div class="Mypage-PASSZONE-Btn">
                 <ul>
                     <li class="subBtn blue NSK"><a href="#none">수강후기 작성하기 ></a></li>
-                    <li class="subBtn NSK"><a href="#none">질문하기 ></a></li>
+                    <li class="subBtn NSK"><a href="#none">학습 Q&A</a></li>
                 </ul>
                 <div class="aBox passBox answerBox_block NSK f_right"><a href="#none">교재구매</a></div>
             </div>
         </div>
         <!-- willbes-Mypage-PASSZONE -->
 
-        <div class="willbes-Leclist c_both mt80">
+        <div class="willbes-Leclist c_both mt40">
             <div class="LeclistTable">
                 <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                     <colgroup>
@@ -209,8 +225,6 @@
                             <td class="w-study-time">70분/ 100분</td>
                             <td class="w-r-time">20분</td>
                         </tr>
-
-
                     </tbody>
                 </table>
             </div>

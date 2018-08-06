@@ -7,25 +7,34 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">내강의실 HOME</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
                 </li>
                 <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
                 <li>
-                    <a href="#none">결제관리</a>
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -49,8 +58,8 @@
             <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                 · 무한PASS존
                 <ul>
-                    <li class="InfoBtn"><a href="#none">등록기기정보 <span>▶</span></a></li>
-                    <li class="InfoBtn"><a href="#none">프리패스이용안내 <span>▶</span></a></li>
+                    <li class="InfoBtn"><a href="#none" onclick="openWin('MyTablets')">등록기기정보 <span>▶</span></a></li>
+                    <li class="InfoBtn"><a href="#none" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
                 </ul>
             </div>
             <div class="willbes-Lec-Table NG d_block">
@@ -617,14 +626,14 @@
 
             <div class="lecMoreWrap">
 
-                <div class="PASSZONE-List">
+                <div class="PASSZONE-List widthAuto570">
                     <ul class="passzoneInfo tx-gray NGR">
                         <li>· '무한PASS존'에서 수강하기 위한 강좌를 추가하는 메뉴입니다.</li>
                         <li>· '수강할 강좌 검색' 후 체크박스를 클릭하시면, 우측 '강좌 선택내역'에 선택한 강좌가 추가됩니다.</li>
                         <li>· '강좌선택내역'에서 강좌 확인 후 '강좌추가' 버튼을 클릭하면 수강이 가능합니다.</li>
                         <li>·  강좌명 클릭시 '강좌상세정보' 영역에서 정보를 확인할 수 있습니다.</li>
                     </ul>
-                    <div class="willbes-Lec-Selected willbes-Pass-Selected tx-gray">
+                    <div class="willbes-Lec-Selected tx-gray">
                         <select id="lec" name="lec" title="lec" class="seleLec">
                             <option selected="selected">과목</option>
                             <option value="헌법">헌법</option>
@@ -697,11 +706,14 @@
                                     </tr>
                                     <tr class="replyTxt passzone-Lecinfo">
                                         <td colspan="5">
-                                            <div class="lecDetailWrap mt30 mb60">
+                                            <div class="lecDetailWrap p_re mt30 mb60">
                                                 <ul class="tabWrap tabDepth2">
                                                     <li><a href="#ch1">강좌상세정보</a></li>
                                                     <li><a href="#ch2">강좌목차</a></li>
                                                 </ul>
+                                                <div class="w-btn">
+                                                    <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">현재 강좌추가</a>
+                                                </div>
                                                 <div class="tabBox mt30">
                                                     <div id="ch1" class="tabLink">
                                                         <table cellspacing="0" cellpadding="0" class="classTable under-gray bdt-gray tx-gray">
@@ -799,11 +811,14 @@
                                     </tr>
                                     <tr class="replyTxt passzone-Lecinfo">
                                         <td colspan="5">
-                                            <div class="lecDetailWrap mt30 mb60">
+                                            <div class="lecDetailWrap p_re mt30 mb60">
                                                 <ul class="tabWrap tabDepth2">
                                                     <li><a href="#ch1">강좌상세정보</a></li>
                                                     <li><a href="#ch2">강좌목차</a></li>
                                                 </ul>
+                                                <div class="w-btn">
+                                                    <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">현재 강좌추가</a>
+                                                </div>
                                                 <div class="tabBox mt30">
                                                     <div id="ch1" class="tabLink">
                                                         <table cellspacing="0" cellpadding="0" class="classTable under-gray bdt-gray tx-gray">
@@ -993,23 +1008,30 @@
                 </div>
                 <!-- PASSZONE-List -->
 
-                <div class="PASSZONE-Add">
+                <div class="PASSZONE-Add widthAuto260">
                     <div class="Tit tx-light-black NG">강좌선택내역</div>
                     <div class="PASSZONE-Add-Grid">
                         <ul class="passzoneInfo tx-gray NGR">
                             <li>· 선택된 강좌 확인 후 '강좌추가' 버튼을 클릭하면 '무한PASS존 > 수강중강좌탭'에 강좌가 추가됩니다.</li>
                             <li>· 강좌추가후 '교재구매' 버튼 클릭시 추가한 강좌(수강중강좌)에 대한 교재를 구매할 수 있습니다.</li>
                         </ul>
+                        <div class="Search-Result">
+                            <div class="Total">총 4건</div>
+                            <ul class="chkBox">
+                                <li class="w-btn"><a class="answerBox_block NSK" href="#none" onclick="">교재구매</a></li>
+                                <li class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">강좌추가</a></li>
+                            </ul>
+                        </div>
                         <div class="PASSZONE-Lec-Grid">
                             <div class="LeclistTable">
-                                <table cellspacing="0" cellpadding="0" class="listTable under-gray bdt-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 25px;">
                                         <col style="width: 175px;">
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
                                             <td class="w-info passzone">
                                                 <dl class="w-info">
                                                     <dt>국어</dt>
@@ -1025,7 +1047,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
                                             <td class="w-info passzone">
                                                 <dl class="w-info">
                                                     <dt>국어</dt>
@@ -1041,7 +1063,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
                                             <td class="w-info passzone">
                                                 <dl class="w-info">
                                                     <dt>국어</dt>
@@ -1057,7 +1079,71 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="btnClose"><img src="{{ img_url('sub/icon_delete.gif') }}"></td>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-red">진행중</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-light-blue">완강</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-red">진행중</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
+                                            <td class="w-info passzone">
+                                                <dl class="w-info">
+                                                    <dt>국어</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>정채영</dt>
+                                                </dl><br/>
+                                                <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt>강의수 : 40강</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>진행여부 : <span class="tx-light-blue">완강</span></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="btnClose"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>
                                             <td class="w-info passzone">
                                                 <dl class="w-info">
                                                     <dt>국어</dt>
@@ -1083,7 +1169,335 @@
             </div>
 
         </div>
-        <!-- willbes-Layer-PassBox -->
+        <!-- willbes-Layer-PassBox : 강좌추가 -->
+
+        <div id="MorePASS" class="willbes-Layer-PassBox willbes-Layer-PassBox800">
+            <a class="closeBtn" href="#none" onclick="closeWin('MorePASS')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">무한PASS 교재구매</div> 
+
+            <div class="lecMoreWrap">
+
+                <div class="PASSZONE-List widthAutoFull">
+                    <ul class="passzoneInfo tx-gray NGR">
+                        <li>· 무한PASS로 수강중인 강좌에 제공되는 교재를 구매하실 수 있습니다. (<span class="tx-red">‘수강중강좌’ 교재만 구매가능</span>)</li>
+                    </ul>
+                    <div class="willbes-Lec-Selected willbes-Pass-Selected tx-gray">
+                        <select id="lec" name="lec" title="lec" class="seleLec">
+                            <option selected="selected">과목</option>
+                            <option value="헌법">헌법</option>
+                            <option value="스파르타반">스파르타반</option>
+                            <option value="공직선거법">공직선거법</option>
+                        </select>
+                        <select id="Prof" name="Prof" title="Prof" class="seleProf">
+                            <option selected="selected">교수님</option>
+                            <option value="정채영">정채영</option>
+                            <option value="기미진">기미진</option>
+                            <option value="김세령">김세령</option>
+                        </select>
+                        <div class="willbes-Lec-Search GM f_right">
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="교재명 또는 강좌명을 입력해 주세요." maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="PASSZONE-Lec-Section">
+                        <div class="LeclistTable LeclistPASSTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 60px;">
+                                    <col style="width: 70px;">
+                                    <col style="width: 410px;">
+                                    <col style="width: 70px;">
+                                    <col style="width: 140px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="tx-left" colspan="5">
+                                            국어<span class="row-line">|</span>정채영<br/>
+                                            <div class="w-tit tx-left strong">2018 정채영 국어 [현대문학] 137작품을 알려주마! (5월-6월)</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-type"><span class="tx-light-blue">주교재</span></td>
+                                        <td class="w-tit tx-left pl20">2018 정채영 국어 마무리 시리즈 [문학편]_ 137작품을 알려주마</td>
+                                        <td class="w-buy"><span class="tx-light-blue">[판매중]</span></td>
+                                        <td class="w-price">30,000원 (<span class="tx-red">↓10%</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-type"><span class="tx-light-blue">부교재</span></td>
+                                        <td class="w-tit tx-left pl20">2018 정채영 국어 마무리 시리즈 [문학편]_ 137작품을 알려주마</td>
+                                        <td class="w-buy"><span class="tx-red">[품절]</span></td>
+                                        <td class="w-price">30,000원 (<span class="tx-red">↓10%</span>)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 60px;">
+                                    <col style="width: 70px;">
+                                    <col style="width: 410px;">
+                                    <col style="width: 70px;">
+                                    <col style="width: 140px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="tx-left" colspan="5">
+                                            국어<span class="row-line">|</span>정채영<br/>
+                                            <div class="w-tit tx-left strong">2018 정채영 국어 [현대문학] 137작품을 알려주마! (5월-6월)</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-type"><span class="tx-light-blue">주교재</span></td>
+                                        <td class="w-tit tx-left pl20">2018 정채영 국어 마무리 시리즈 [문학편]_ 137작품을 알려주마</td>
+                                        <td class="w-buy"><span class="tx-light-blue">[판매중]</span></td>
+                                        <td class="w-price">30,000원 (<span class="tx-red">↓10%</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-type"><span class="tx-light-blue">부교재</span></td>
+                                        <td class="w-tit tx-left pl20">2018 정채영 국어 마무리 시리즈 [문학편]_ 137작품을 알려주마</td>
+                                        <td class="w-buy"><span class="tx-red">[품절]</span></td>
+                                        <td class="w-price">30,000원 (<span class="tx-red">↓10%</span>)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="Search-Result strong mt40 mb20 tx-gray">· 선택교재</div>
+                        <div class="LeclistTable LeclistPASSTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 60px;">
+                                    <col style="width: 550px;">
+                                    <col style="width: 140px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>삭제<span class="row-line">|</span></th>
+                                        <th>상품정보<span class="row-line">|</span></th>
+                                        <th>판매가</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                        <td class="w-tit tx-left pl60">2018 정채영 국어 마무리 시리즈[문학편]_137 작품을 알려주마 (제2판)</td>
+                                        <td class="w-price">70,000원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ul class="cart-PriceBox NG">
+                            <li class="price-list p_re">
+                                <dl class="priceBox">
+                                    <dt>
+                                        <div>상품주문금액</div>
+                                        <div class="price tx-light-blue">140,000원</div>
+                                    </dt>
+                                    <dt class="price-img">
+                                        <span class="row-line">|</span>
+                                        <img src="/public/img/willbes/sub/icon_plus.gif">
+                                    </dt>
+                                    <dt>
+                                        <div>배송료</div>
+                                        <span class="price tx-light-blue">2,500원</span>
+                                    </dt>
+                                </dl>
+                            </li>
+                            <li class="price-total">
+                                <div>최종결제금액</div>
+                                <span class="price tx-light-blue">188,600원</span>
+                            </li>
+                        </ul>
+                        <div class="willbes-Lec-buyBtn">
+                            <ul>
+                                <li class="btnAuto95 h30">
+                                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                                        <span class="tx-light-blue">장바구니</span>
+                                    </button>
+                                </li>
+                                <li class="btnAuto95 h30">
+                                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>바로결제</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- PASSZONE-List -->
+            </div>
+
+        </div>
+        <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
+
+        <div id="MyTablets" class="willbes-Layer-PassBox willbes-Layer-PassBox800">
+            <a class="closeBtn" href="#none" onclick="closeWin('MyTablets')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">등록기기정보</div> 
+
+            <div class="lecMoreWrap">
+
+                <div class="PASSZONE-List widthAutoFull">
+                    <ul class="passzoneInfo tx-gray NGR">
+                        <li class="strong">· 기기등록 유의사항</li>
+                        <li>- MAC Address란 컴퓨터 내부에 장착된 LAN 카드 고유의 일련번호를 말합니다.</li>
+                        <li class="tx-red">- MAC Address는 PC/모바일 제한없이 최대 2대까지 등록이 가능합니다.</li>
+                        <li>- 기기정보는 수강신청후 강의시청 시 자동으로 저장됩니다.</li>
+                    </ul>
+                    <ul class="passzoneInfo tx-gray NGR">
+                        <li class="strong">· 등록기기 초기화(삭제)유의사항</li>
+                        <li>- 초기화(삭제)는 기기불량 등으로 인한 제품변경이나 A/S를 받은 경우,기기를 새로 구매한 경우 이용해 주시기 바랍니다.</li>
+                        <li>- 부득이하게 등록된 컴퓨터나 스마트기기의 변경을 원하실 경우, 고객센터(1588-5006)로 전화주시기 바랍니다.</li>
+                        <li>- 회원님께서 직접 등록기기 초기화(삭제)(MAC Address 초기화)를 하실 수 있으며, <span class="tx-red">직접 초기화(삭제) 횟수는 1회로 제한됩니다.</span></li>
+                        <li>- 수강중인 강좌가 없거나 현재 수강중인 강좌가 있어도 등록기기 초기화가 가능합니다.</li>
+                    </ul>
+                    <div class="PASSZONE-User-Tablets NG">
+                        <ul>
+                            <li>
+                                <dl>
+                                    <dt class="w-tit">기기등록현황</dt>
+                                    <dt>PC 1대 + 모바일 1대</dt>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt class="w-tit">초기화가능횟수 : <span class="tx-red">1</span>회</dt>
+                                    <dt>총초기화(삭제)횟수 : 10회</dt>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="PASSZONE-Lec-Section">
+                        <div class="Search-Result strong mt60 mb40 tx-gray">· 기기등록 / 초기화(삭제) 내역</div>
+                        <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray h46">
+                            <span class="w-data">
+                                기간검색 &nbsp;
+                                <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                            </span>
+                            <span class="w-month">
+                                <ul>
+                                    <li><a href="#none">전체</a></li>
+                                    <li><a class="on" href="#none">1개월</a></li>
+                                    <li><a href="#none">3개월</a></li>
+                                    <li><a href="#none">6개월</a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="LeclistTable bdt-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 70px;">
+                                    <col style="width: 270px;">
+                                    <col style="width: 120px;">
+                                    <col style="width: 90px;">
+                                    <col style="width: 110px;">
+                                    <col style="width: 90px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>구분<span class="row-line">|</span></th>
+                                        <th>기기정보(MAC Address)<span class="row-line">|</span></th>
+                                        <th>등록일시<span class="row-line">|</span></th>
+                                        <th>삭제자<span class="row-line">|</span></th>
+                                        <th>삭제일<span class="row-line">|</span></th>
+                                        <th>직접초기화</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-eq">PC</td>
+                                        <td class="w-tit">33C07FA1-7E23-4613-8F69-8C0D445985AA</td>
+                                        <td class="w-update-day">2018.00.00 00:00</td>
+                                        <td class="w-user">관리자명</td>
+                                        <td class="w-delete-day">2018.00.00 00:00</td>
+                                        <td class="w-reset tx-light-blue">초기화</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-eq">모바일</td>
+                                        <td class="w-tit">33C07FA1-7E23-4613-8F69-8C0D445985AA</td>
+                                        <td class="w-update-day">2018.00.00 00:00</td>
+                                        <td class="w-user">관리자명</td>
+                                        <td class="w-delete-day">2018.00.00 00:00</td>
+                                        <td class="w-reset">불가</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-eq">PC</td>
+                                        <td class="w-tit">33C07FA1-7E23-4613-8F69-8C0D445985AA</td>
+                                        <td class="w-update-day">2018.00.00 00:00</td>
+                                        <td class="w-user">관리자명</td>
+                                        <td class="w-delete-day">2018.00.00 00:00</td>
+                                        <td class="w-reset">불가</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-eq">모바일</td>
+                                        <td class="w-tit">33C07FA1-7E23-4613-8F69-8C0D445985AA</td>
+                                        <td class="w-update-day">2018.00.00 00:00</td>
+                                        <td class="w-user">관리자명</td>
+                                        <td class="w-delete-day">2018.00.00 00:00</td>
+                                        <td class="w-reset">불가</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-eq">PC</td>
+                                        <td class="w-tit">33C07FA1-7E23-4613-8F69-8C0D445985AA</td>
+                                        <td class="w-update-day">2018.00.00 00:00</td>
+                                        <td class="w-user">관리자명</td>
+                                        <td class="w-delete-day">2018.00.00 00:00</td>
+                                        <td class="w-reset">불가</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- PASSZONE-List -->
+            </div>
+
+        </div>
+        <!-- willbes-Layer-PassBox : 등록기기정보 -->
 
     </div>
     <div class="Quick-Bnr ml20">

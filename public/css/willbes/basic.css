@@ -328,6 +328,10 @@ strong {
   width: 1120px !important; 
   margin: 0 auto;
 }
+.widthAuto260 {
+  width: 260px;
+  margin: 0 auto;
+}
 .widthAuto290 {
   width: 290px;
   margin: 0 auto;
@@ -362,6 +366,10 @@ strong {
 }
 .widthAuto560 {
   width: 560px;
+  margin: 0 auto;
+}
+.widthAuto570 {
+  width: 570px;
   margin: 0 auto;
 }
 .widthAuto690 {
@@ -405,6 +413,10 @@ strong {
   width: 164px;
   margin: 0 auto;
 }
+.btnAuto95 {
+  width: 95px !important;
+  margin: 0 auto;
+}
 .btnAuto180 {
   width: 180px !important;
   margin: 0 auto;
@@ -413,8 +425,14 @@ strong {
   width: 250px !important;
   margin: 0 auto;
 }
+.h30 {
+  height: 30px !important;
+}
 .h36 {
   height: 36px !important;
+}
+.h46 {
+  height: 46px !important;
 }
 .h66 {
   height: 66px !important;
@@ -521,7 +539,9 @@ strong {
 .mr70 {
   margin-right: 70px !important;
 }
-
+.pt15 {
+  padding-top: 15px !important;
+}
 .pt20 {
   padding-top: 20px !important;
 }
@@ -697,6 +717,9 @@ strong {
 }
 .bg-light-white {
   background: #f9f9f9;
+}
+.bg-light-blue {
+  background: #eef7fc;
 }
 .bg-blue {
   background: #1a8ccb;

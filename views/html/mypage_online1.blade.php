@@ -7,22 +7,34 @@
         <h3>
             <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="#none">무한PASS존</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
+                </li>
+                <li class="dropdown">
                     <a href="#none">온라인강좌</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">학원강좌</a>
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
                 </li>
                 <li>
-                    <a href="#none">특강&이벤트 신청현황</a>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
                 <li>
                     <a href="#none">모의고사관리</a>
                 </li>
                 <li>
-                    <a href="#none">결제관리</a>
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
                 </li>
                 <li>
                     <a href="#none">학습지원관리</a>
@@ -54,10 +66,12 @@
                         <tr>
                             <td>
                                 <div class="Tit">수강시작일 설정</div>
-                                - 수강시작일은 개강일전까지만 변경 가능합니다.(수강연장강좌는 시작일 변경이 불가능합니다.)<br/>
-                                - '시작일 변경(잔여횟수)'버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</span><br/>
-                                - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
-                                - '수강시작'이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
+                                <div class="Txt">
+                                    - 수강시작일은 개강일전까지만 변경 가능합니다.(수강연장강좌는 시작일 변경이 불가능합니다.)<br/>
+                                    - '시작일 변경(잔여횟수)'버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</span><br/>
+                                    - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
+                                    - '수강시작'이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

@@ -1926,7 +1926,7 @@ table.auTable tr td {
 .willbes-Lec-buyBtn-sm {
     display: none;
     position: absolute;
-    z-index: 999;
+	z-index: 999;
 }
 .willbes-Lec-buyBtn-sm.active {
     display: block !important;
@@ -2748,7 +2748,7 @@ table.classTable {
 }
 table.classTable tr td {
     height: 100px;
-    line-height: 16px;
+    line-height: 16px !important;
 }
 table.classTable tr td.w-data {
     line-height: 20px;
@@ -5483,7 +5483,18 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-Mypage-Selected .search-Btn {
     margin-top: 0;
 }
-
+.willbes-Mypage-Selected-Search .w-data .iptDate {
+    height: 30px;
+}
+.willbes-Mypage-Selected-Search .w-month ul li {
+    height: 30px;
+}
+.willbes-Mypage-Selected-Search .w-month ul li a {
+    line-height: 30px;
+}
+.willbes-Mypage-Selected-Search select {
+    height: 30px;
+}
 .tabDepthPass {
     border-bottom: 1px solid #0d74ae;
 }
@@ -5656,7 +5667,7 @@ table.PassZoneTable .w-data {
 }
 .willbes-Layer-PassBox .lecMoreWrap {
     float: left;
-    width: 848px;
+    width: 100%;
     padding: 30px 0 20px;
 }
 .willbes-Layer-PassBox .passzoneInfo {
@@ -5666,11 +5677,13 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox .passzoneInfo li {
     line-height: 23px;
 }
+.willbes-Layer-PassBox800 {
+    width: 800px;
+}
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-List */
 .PASSZONE-List {
     float: left;
-    width: 570px;
 }
 .PASSZONE-List .willbes-Lec-Selected {
     float: none;
@@ -5694,9 +5707,22 @@ table.PassZoneTable .w-data {
 .PASSZONE-List .willbes-Lec-Selected select {
     width: 90px;
 }
+.PASSZONE-List .willbes-Lec-Selected.willbes-Pass-Selected {
+    margin-bottom: 30px;
+}
+.PASSZONE-List .willbes-Lec-Selected.willbes-Pass-Selected .inputBox {
+    width: auto;
+}
+.PASSZONE-List .willbes-Lec-Selected.willbes-Pass-Selected .inputBox input {
+    width: 260px;
+}
 .PASSZONE-List .PASSZONE-Lec-Wrap {
     border-top: 1px solid #959595;
-    height: 715px;
+    height: 722px;
+    overflow-x: auto;
+}
+.PASSZONE-List .PASSZONE-Lec-Wrap .LeclistPASSTable {
+    height: 255px;
     overflow-x: auto;
 }
 .PASSZONE-List tr th {
@@ -5707,6 +5733,21 @@ table.PassZoneTable .w-data {
 }
 .PASSZONE-List .passzone-Lecinfo {
     display: none;
+}
+.PASSZONE-List .lecDetailWrap .w-btn {
+    position: absolute;
+    top: -8px; 
+    right: 15px;
+}
+.PASSZONE-List .lecDetailWrap .w-btn a {
+    display: block;
+    margin: 0 auto;
+    width: 95px;
+    height: 27px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
 }
 .PASSZONE-List .tabBox {
     height: 180px;
@@ -5730,16 +5771,22 @@ table.PassZoneTable .w-data {
     font-size: 12px;
     line-height: 18px;
 }
+.PASSZONE-List .passTable thead tr th {
+    line-height: 22px;
+    padding: 15px 0 15px 25px;
+}
 
-
-
-
-
+.LeclistTable .passTable thead tr th .row-line {
+    background: #707070;
+    float: inherit;
+    width: 1px;
+    height: 10px;
+    margin: 0 8px 3px;
+}
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-Add */
 .PASSZONE-Add {
     float: right;
-    width: 260px;
     border: 1px solid #959595;
 }
 .PASSZONE-Add .Tit {
@@ -5755,9 +5802,36 @@ table.PassZoneTable .w-data {
 .PASSZONE-Add .passzoneInfo li {
     margin-bottom: 20px;
 }
+.PASSZONE-Add .Search-Result {
+    color: #707070;
+    height: 30px;
+    line-height: 28px;
+    letter-spacing: 0;
+}
+.PASSZONE-Add .Search-Result .Total {
+    float: left;
+}
+.PASSZONE-Add .Search-Result .chkBox {
+    float: right;
+}
+.PASSZONE-Add .Search-Result .chkBox li {
+    float: left;
+    margin-left: 5px;
+}
+.PASSZONE-Add .Search-Result .chkBox li a {
+    display: block;
+    margin: 0 auto;
+    width: 58px;
+    height: 24px;
+    line-height: 22px;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+}
 .PASSZONE-Add .PASSZONE-Lec-Grid {
-    height: 380px;
+    height: 620px;
     overflow-x: auto;
+    border-top: 1px solid #959595;
 }
 .PASSZONE-Add .PASSZONE-Lec-Grid .btnClose {
     vertical-align: top;
@@ -5776,13 +5850,6 @@ table.PassZoneTable .w-data {
     height: 9px;
     margin: 0 5px;
 }
-
-
-
-
-
-
-
 
 /* subContainer : Mypage : 무한PASS존 : 수강중인 강좌 */
 .willbes-Prof-Mypage {
@@ -5842,10 +5909,24 @@ table.PassZoneTable .w-data {
     letter-spacing: 0;
 }
 .ProfmypageTable tr td {
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 24px;
+}
+.ProfmypageTable tr td .w-lec {
+    font-size: 13px;
 }
 .ProfmypageTable span {
     vertical-align: baseline;
+}
+.ProfmypageTable .w-btn a {
+    display: block;
+    margin: 0 auto;
+    width: 52px;
+    height: 20px;
+    line-height: 18px;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
 }
 .Mypage-PASSZONE-Btn {
     display: inline-block;
@@ -5873,12 +5954,6 @@ table.PassZoneTable .w-data {
     font-size: 12px;
     line-height: 25px;
 }
-
-
-
-
-
-
 
 /* subContainer : Mypage : 온라인강좌 : willbes-Mypage-Txt */
 .willbes-Mypage-Txt {
@@ -5912,6 +5987,9 @@ table.PassZoneTable .w-data {
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 15px;
     margin-bottom: 10px;
+}
+.willbes-Mypage-Txt table.txtTable tr .Txt {
+    padding-left: 15px;
 }
 .willbes-Mypage-Txt table.txtTable tr td {
     width: 860px;
@@ -5998,6 +6076,8 @@ table.acadTable tr td {
     font-size: 12px;
     text-align: left;
 }
+
+
 
 
 

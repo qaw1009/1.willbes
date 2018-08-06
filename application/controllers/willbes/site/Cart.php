@@ -26,7 +26,7 @@ class Cart extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         // 장바구니 조회
-        $list = $this->cartFModel->listValidCart($this->session->userdata('mem_idx'), $this->_site_code, $this->_cate_code);
+        $list = $this->cartFModel->listValidCart($this->session->userdata('mem_idx'), $this->_site_code);
 
         $results = [];
         foreach ($list as $idx => $row) {
@@ -121,7 +121,7 @@ class Cart extends \app\controllers\FrontController
         }
 
         // 수강생교재 주문가능여부 확인
-        $returns['is_check'] = $this->cartFModel->checkStudentBook($prod_book_code, $input_prod_code);
+        $returns['is_check'] = $this->cartFModel->checkStudentBook($this->_site_code, $prod_book_code, $input_prod_code);
 
         $this->json_result(true, '', [], $returns);
     }

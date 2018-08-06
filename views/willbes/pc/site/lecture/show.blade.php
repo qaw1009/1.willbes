@@ -91,7 +91,7 @@
                             <td class="w-notice p_re tx-right">
                                 @foreach($data['ProdPriceData'] as $price_idx => $price_row)
                                     <div class="priceWrap p_re">
-                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['SaleStatusCcd'] == '618002') disabled="disabled" @endif></span>
+                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['IsCanSale'] == 'N') disabled="disabled" @endif></span>
                                         <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                         <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
@@ -160,20 +160,24 @@
                     </table>
                 </div>
                 <div class="willbes-Lec-buyBtn GM">
-                    <ul>
-                        <li class="btnAuto180 h36">
-                            @if($data['IsCart'] == 'Y')
-                            <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
-                                <span>장바구니</span>
-                            </button>
-                            @endif
-                        </li>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
-                                <span class="tx-light-blue">바로결제</span>
-                            </button>
-                        </li>
-                    </ul>
+                    @if($data['IsCanSale'] == 'Y')
+                        <ul>
+                            <li class="btnAuto180 h36">
+                                @if($data['IsCart'] == 'Y')
+                                <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
+                                    <span>장바구니</span>
+                                </button>
+                                @endif
+                            </li>
+                            <li class="btnAuto180 h36">
+                                <button type="submit" name="btn_direct_pay" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
+                                    <span class="tx-light-blue">바로결제</span>
+                                </button>
+                            </li>
+                        </ul>
+                    @else
+                        <span class="tx-red f_right">판매 중인 상품만 주문 가능합니다.</span>
+                    @endif
                 </div>
                 </form>
                 <!-- willbes-Lec-buyBtn -->

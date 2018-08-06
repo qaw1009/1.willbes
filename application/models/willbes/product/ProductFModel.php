@@ -7,6 +7,7 @@ class ProductFModel extends WB_Model
         'on_lecture' => 'vw_product_on_lecture',
         'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
+        'book' => 'vw_product_book',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
         'product_r_sublecture' => 'lms_product_r_sublecture',
@@ -28,6 +29,9 @@ class ProductFModel extends WB_Model
 
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['618001', '618002'];
+
+    // 판매가능 공통코드 (판매가능, 판매중)
+    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];    
 
     // 상품 메모타입 공통코드
     public $_memo_type_ccds = ['book' => '634002'];
@@ -51,24 +55,31 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm,  IsUse
-                , CourseIdx, CourseName, SchoolYear, StudyPeriod, MultipleApply, ProdPriceData, RegDatm';
+            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsUse
+                , CourseIdx, CourseName, SchoolYear, ProdPriceData, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
                 case 'on_lecture' :
                 case 'on_free_lecture' :
-                        $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, wLecIdx, ProfIdx, wProfIdx, wProfName, ProfSlogan, wUnitLectureCnt
-                            , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData';
+                        $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan
+                            , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData
+                            , if(IsSaleEnd = "N" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '" and NOW() between SaleStartDatm and SaleEndDatm and IsUse = "Y", "Y", "N") as IsCanSale';
                         $arr_condition = array_merge_recursive($arr_condition, [
                             'EQ' => ['wIsUse' => 'Y']   // 마스터강의 사용여부 추가
                         ]);
-
                     break;
 
                 //추천패키지
                 case 'adminpack_lecture' :
-                        $column .= ', StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, fn_product_sublecture_codes(ProdCode) as ProdCodeSub';
+                        $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount, fn_product_sublecture_codes(ProdCode) as ProdCodeSub
+                            , if(IsSaleEnd = "N" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '" and NOW() between SaleStartDatm and SaleEndDatm and IsUse = "Y", "Y", "N") as IsCanSale';
+                    break;
+
+                // 교재상품
+                case 'book' :
+                        $column .= ', wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName, ProfSlogan, ProfReferData
+                            , if(IsSaleEnd = "N" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '" and wSaleCcd = "' . $this->_available_sale_status_ccd['book'] . '" and NOW() between SaleStartDatm and SaleEndDatm and IsUse = "Y" and wIsUse = "Y", "Y", "N") as IsCanSale';
                     break;
 
                 default :
@@ -128,18 +139,28 @@ class ProductFModel extends WB_Model
     }
 
     /**
-     * 판매가능한 단일상품 조회 (판매예정 제외)
+     * 판매가능한 상품 조회 (판매예정 제외)
      * @param $learn_pattern
      * @param $prod_code
      * @param string $add_column
      * @return array
      */
-    public function findSalesProductByProdCode($learn_pattern, $prod_code, $add_column = '')
+    public function findOnlySaleProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
         $arr_condition = [
-            'EQ' => ['ProdCode' => $prod_code, 'IsSaleEnd' => 'N', 'SaleStatusCcd' => $this->_sale_status_ccds[0], 'IsUse' => 'Y'],
+            'EQ' => ['ProdCode' => $prod_code, 'IsSaleEnd' => 'N', 'SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'IsUse' => 'Y'],
             'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
         ];
+
+        switch ($learn_pattern) {
+            // 교재상품
+            case 'book' :
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'EQ' => ['wSaleCcd' => $this->_available_sale_status_ccd['book'], 'wIsUse' => 'Y']   // WBS 교재 판매상태, 사용여부
+                ]);
+                break;
+        }
+
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);

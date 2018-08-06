@@ -8,6 +8,8 @@ class CartFModel extends BaseOrderFModel
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
     }
 
     /**
@@ -122,11 +124,12 @@ class CartFModel extends BaseOrderFModel
 
     /**
      * 수강생교재 구매시 부모상품 주문여부 및 장바구니 확인
+     * @param $site_code
      * @param string $prod_book_code [교재상품코드]
      * @param array $arr_input_prod_code [교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
      * @return bool|string [true : 구매가능, string : 구매불가]
      */
-    public function checkStudentBook($prod_book_code, $arr_input_prod_code = [])
+    public function checkStudentBook($site_code, $prod_book_code, $arr_input_prod_code = [])
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
@@ -136,7 +139,6 @@ class CartFModel extends BaseOrderFModel
         logger('check start');
 
         // 1. 해당 도서 수강생교재 여부 확인, 수강생교재일 경우 연관된 부모상품코드 조회
-        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
         $arr_target_prod_code = array_pluck($this->productFModel->findParentProductToStudentBook($prod_book_code), 'ProdCode');
         if (empty($arr_target_prod_code) === true) {
             // 수강생교재가 아닐 경우
@@ -156,7 +158,7 @@ class CartFModel extends BaseOrderFModel
         logger('check 3', $arr_same_prod_code);
 
         // 4. 수강생교재 부모상품코드 장바구니 등록여부 확인 (등록되어 있다면 return true, 없다면 continue)
-        $cart_data = $this->cartFModel->listValidCart($sess_mem_idx, null, null, null);
+        $cart_data = $this->listValidCart($sess_mem_idx, $site_code);
 
         // 단강좌는 상품코드, 패키지 상품일 경우 연결된 단강좌 상품코드를 병합
         $arr_cart_prod_code = [];
@@ -199,11 +201,13 @@ class CartFModel extends BaseOrderFModel
             $reg_ip = $this->input->ip_address();
             $arr_prod_code = element('prod_code', $input, []);
             $arr_prod_code = $this->_makeProdCodeArray($learn_pattern, $arr_prod_code);
+            $site_code = element('site_code', $input, '');
+            $cate_code = element('cate_code', $input, '');
 
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 학습형태별 사전 체크
-                $check_result = $this->{'_check_' . $learn_pattern}($prod_code, $prod_row['ParentProdCode']);
+                $check_result = $this->_checkProduct($learn_pattern, $site_code, $prod_code, $prod_row['ParentProdCode']);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
@@ -230,8 +234,8 @@ class CartFModel extends BaseOrderFModel
 
                 $data = [
                     'MemIdx' => $sess_mem_idx,
-                    'SiteCode' => element('site_code', $input, ''),
-                    'CateCode' => element('cate_code', $input, ''),
+                    'SiteCode' => $site_code,
+                    'CateCode' => $cate_code,
                     'ProdCode' => $prod_code,
                     'ProdCodeSub' => $prod_sub_code,
                     'ParentProdCode' => $prod_row['ParentProdCode'],
@@ -323,57 +327,35 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
-     * 온라인 단강좌 사전 체크
+     * 장바구니 저장 전 사전체크
+     * @param $learn_pattern
+     * @param $site_code
      * @param $prod_code
      * @param $parent_prod_code
      * @return bool|string
      */
-    private function _check_on_lecture($prod_code, $parent_prod_code)
+    private function _checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code)
     {
         if ($prod_code != $parent_prod_code) {
-            // 수강생 교재 체크
-            $check_result = $this->checkStudentBook($prod_code);
-            if ($check_result !== true) {
-                return $check_result;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * 온라인 무료강좌 사전 체크 (단강좌와 동일)
-     * @param $prod_code
-     * @param $parent_prod_code
-     * @return bool|string
-     */
-    private function _check_on_free_lecture($prod_code, $parent_prod_code)
-    {
-        return $this->_check_on_lecture($prod_code, $parent_prod_code);
-    }
-
-    /**
-     * 온라인 운영자 패키지 사전 체크
-     * @param $prod_code
-     * @param $parent_prod_code
-     * @return bool
-     */
-    private function _check_adminpack_lecture($prod_code, $parent_prod_code)
-    {
-        if ($prod_code == $parent_prod_code) {
-            $data = $this->packageFModel->findSalesProductByProdCode('adminpack_lecture', $prod_code);
+            $data = $this->productFModel->findOnlySaleProductByProdCode('book', $prod_code);
 
             if (empty($data) === true) {
                 return '판매 중인 상품만 주문 가능합니다.';
             }
-        } else {
+
             // 수강생 교재 체크
-            $check_result = $this->checkStudentBook($prod_code);
+            $check_result = $this->checkStudentBook($site_code, $prod_code);
             if ($check_result !== true) {
                 return $check_result;
             }
+        } else {
+            $data = $this->productFModel->findOnlySaleProductByProdCode($learn_pattern, $prod_code);
+
+            if (empty($data) === true) {
+                return '판매 중인 상품만 주문 가능합니다.';
+            }
         }
 
-        return true;
+        return true;        
     }
 }

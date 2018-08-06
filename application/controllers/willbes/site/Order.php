@@ -30,7 +30,7 @@ class Order extends \app\controllers\FrontController
         $is_on_package = false;
 
         // 장바구니 조회
-        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, $this->_cate_code, $sess_cart_idx, null, null);
+        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null);
 
         $results = [];
         $total_price = 0;

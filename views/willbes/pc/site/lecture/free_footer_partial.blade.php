@@ -26,56 +26,75 @@
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
     var $buy_layer = $('#buy_layer');
+    var $is_show = location.href.indexOf('show') > -1;
 
     $(document).ready(function() {
-        // 강좌상품 선택/해제
-        $regi_form.on('change', '.chk_products', function() {
-            showBuyLayer($regi_form, $(this), 'buy_layer');
-            setCheckLectureProduct($regi_form, $(this), '', '', '', '');
-        });
+        if ($is_show === false) {
+            // 목록 페이지
+            // 상품 선택/해제
+            $regi_form.on('change', '.chk_products, .chk_books', function () {
+                showBuyLayer($regi_form, $(this), 'buy_layer');
+                setCheckLectureProduct($regi_form, $(this), '', '', '', '');
+            });
 
-        // 교재상품 선택/해제
-        $regi_form.on('change', '.chk_books', function() {
-            showBuyLayer($regi_form, $(this), 'buy_layer');
-            setCheckLectureProduct($regi_form, $(this), '', '', '', '');
-        });
+            // 내강의실 이동 버튼 클릭
+            $buy_layer.on('click', '.answerBox_block', function () {
+                alert('내 강의실로 이동합니다.');
+            });
 
-        // 내강의실 이동 버튼 클릭
-        $buy_layer.on('click', '.answerBox_block', function() {
-            alert('내 강의실로 이동합니다.');
-        });
+            // 아니오 버튼 클릭
+            $buy_layer.on('click', '.waitBox_block', function () {
+                $buy_layer.find('.pocketBox').css('display', 'none').hide();
+                $buy_layer.removeClass('active');
+            });
 
-        // 아니오 버튼 클릭
-        $buy_layer.on('click', '.waitBox_block', function() {
-            $buy_layer.find('.pocketBox').css('display','none').hide();
-            $buy_layer.removeClass('active');
-        });
+            // 교재구매 버튼 클릭
+            $buy_layer.on('click', '#btn_book_pay', function () {
+                var $cate_code = '{{ $__cfg['CateCode'] }}';
+                $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
+                cartNDirectPay($regi_form, $cate_code, 'Y', 'Y');
+            });
 
-        // 교재구매 버튼 클릭
-        $buy_layer.on('click', '#btn_book_pay', function() {
-            var $cate_code = '{{ $__cfg['CateCode'] }}';
-            $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
-            cartNDirectPay($regi_form, $cate_code, 'Y', 'Y');
-        });
+            // 바로결제 버튼 클릭
+            $('button[name="btn_direct_pay"]').on('click', function () {
+                var $is_direct_pay = $(this).data('direct-pay');
+                var $is_redirect = $(this).data('is-redirect');
+                var $cate_code = '{{ $__cfg['CateCode'] }}';
+                var $layer_type = $regi_form.find('.chk_books:checked').length < 1 ? 'pocketBox1' : 'pocketBox2';
 
-        // 바로결제 버튼 클릭
-        $('button[name="btn_direct_pay"]').on('click', function () {
-            var $is_direct_pay = $(this).data('direct-pay');
-            var $is_redirect = $(this).data('is-redirect');
-            var $cate_code = '{{ $__cfg['CateCode'] }}';
-            var $layer_type = $regi_form.find('.chk_books:checked').length < 1 ? 'pocketBox1' : 'pocketBox2';
+                // TODO : 무료강좌 지급 로직 추가 및 확인 필요
 
-            // TODO : 무료강좌 지급 로직 추가 및 확인 필요
+                if ($is_redirect === 'N') {
+                    openWin($layer_type);
+                } else {
+                    // 교재상품 바로결제
+                    if ($regi_form.find('.chk_books:checked').length > 0) {
+                        $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
+                        cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect);
+                    }
+                }
+            });
+        } else {
+            // 뷰 페이지
+            // 상품 선택/해제
+            $regi_form.on('change', '.chk_products, .chk_books', function() {
+                setCheckLectureProduct($regi_form, $(this), 'price', 'prod_sale_price', 'book_sale_price', 'tot_sale_price');
+            });
 
-            if ($is_redirect === 'N') {
-                openWin($layer_type);
-            } else {
+            // 바로결제 버튼 클릭
+            $('button[name="btn_direct_pay"]').on('click', function () {
+                var $cate_code = '{{ $__cfg['CateCode'] }}';
+
+                // TODO : 무료강좌 지급 로직 추가 및 확인 필요
+
                 // 교재상품 바로결제
                 if ($regi_form.find('.chk_books:checked').length > 0) {
                     $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
-                    cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect);
+                    cartNDirectPay($regi_form, $cate_code, 'Y', 'Y');
+                } else {
+                    alert('내 강의실로 이동합니다.');
                 }
-            }
-        });
+            });
+        }
     });
 </script>

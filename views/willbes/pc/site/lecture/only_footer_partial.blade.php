@@ -26,8 +26,8 @@
     var $is_show = location.href.indexOf('show') > -1;
 
     $(document).ready(function() {
-        // 목록 페이지
         if ($is_show === false) {
+            // 목록 페이지
             // 상품 선택/해제
             $regi_form.on('change', '.chk_products, .chk_books', function() {
                 showBuyLayer($regi_form, $(this), 'buy_layer');

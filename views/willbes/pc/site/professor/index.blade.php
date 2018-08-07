@@ -123,11 +123,14 @@
                     <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $row['ProfIdx'] . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
                         <div class="line">-</div>
                     </a>
-                    <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">
+                    @if(empty($row['ProfEventData']) === false)
+                        <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
+                    @endif
                     <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
                     <div class="Name">
                         <strong>{{ $row['wProfName'] }}</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        교수님
+                        @if($row['IsNew'] == 'Y') <img class="N" src="{{ img_url('prof/icon_N.gif') }}"> @endif
                     </div>
                     <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] or '' }}">
                     <div class="w-notice">

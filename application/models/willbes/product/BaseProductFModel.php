@@ -159,7 +159,11 @@ class BaseProductFModel extends WB_Model
         $add_column = '';   // 추가 조회 컬럼
         if (empty($arr_add_column) === false) {
             // 이미 정의된 추가 컬럼
-            $arr_define_column = ['ProfReferData' => 'ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData'];
+            $arr_define_column = [
+                'ProfReferData' => 'ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData',
+                'IsNew' => 'if(datediff(NOW(), P.RegDatm) > 30, "N", "Y") as IsNew',
+                'ProfEventData' => 'ifnull(fn_professor_event_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 1), "N") as ProfEventData'
+            ];
 
             $arr_make_column = [];
             foreach ($arr_add_column as $col) {
@@ -167,7 +171,7 @@ class BaseProductFModel extends WB_Model
                 $arr_make_column[] = isset($arr_define_column[$col]) === true ? $arr_define_column[$col] : $col;
             }
 
-            $add_column = ',' . implode(',', $arr_make_column);
+            $add_column = ', ' . implode(', ', $arr_make_column);
         }
 
         $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName' . $add_column;

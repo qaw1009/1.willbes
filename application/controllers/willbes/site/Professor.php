@@ -38,7 +38,7 @@ class Professor extends \app\controllers\FrontController
             , 5, 0, ['ProdCode' => 'desc']);
 
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData'], $this->_cate_code);
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
@@ -51,6 +51,7 @@ class Professor extends \app\controllers\FrontController
         foreach ($arr_professor as $idx => $row) {
             if (empty($subject_idx) === true || $subject_idx == $row['SubjectIdx']) {
                 $row['ProfReferData'] = $row['ProfReferData'] == 'N' ? [] : json_decode($row['ProfReferData'], true);
+                $row['ProfEventData'] = $row['ProfEventData'] == 'N' ? [] : json_decode($row['ProfEventData'], true);
 
                 $selected_subjects[$row['SubjectIdx']] = $row['SubjectName'];
                 $selected_list[$row['SubjectIdx']][] = $row;
@@ -126,7 +127,7 @@ class Professor extends \app\controllers\FrontController
 
         // 베스트강좌 조회
         $products['best'] = $this->lectureFModel->listSalesProduct('on_lecture', false
-            , array_merge_recursive($arr_condition, ['EQ' => ['IsBest' => 'Y']]), 3, 0, $order_by);
+            , array_merge_recursive($arr_condition, ['EQ' => ['IsBest' => 'Y']]), 4, 0, $order_by);
 
         $products['best'] = array_map(function ($arr) {
             $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);

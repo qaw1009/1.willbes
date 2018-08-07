@@ -65,10 +65,12 @@ $(function() {
             $lec_info_table_tr.attr('style', 'display: none; !important');
             $lec_info_table.addClass('off');
             $(this).text('유의사항안내 보기 ▼');
+            $.cookie('moreInfo', 'off', { expires: 7 });
         } else {
             $lec_info_table_tr.attr('style', 'display: block; !important');
             $lec_info_table.removeClass('off');
             $(this).text('유의사항안내 닫기 ▲');
+            $.cookie('moreInfo', 'on', { expires: 7 });
         }
     });
 });

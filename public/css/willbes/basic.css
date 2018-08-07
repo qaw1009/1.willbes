@@ -425,6 +425,7 @@ strong {
   width: 250px !important;
   margin: 0 auto;
 }
+
 .h30 {
   height: 30px !important;
 }
@@ -437,6 +438,8 @@ strong {
 .h66 {
   height: 66px !important;
 }
+
+.mt-zero,
 .mt0 {
   margin-top: 0px !important;
 }
@@ -589,6 +592,7 @@ strong {
 .pl135 {
   padding-left: 135px !important;
 }
+
 .pb-none {
   padding-bottom: 0 !important;
 }

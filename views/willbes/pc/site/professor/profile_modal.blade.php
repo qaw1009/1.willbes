@@ -1,5 +1,5 @@
-<div id="Profile" class="willbes-Layer-ProfileBox">
-    <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'); closeWin('Profile')">
+<div id="Profile{{ $ele_id }}" class="willbes-Layer-ProfileBox">
+    <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile{{ $ele_id }}'); closeWin('Profile{{ $ele_id }}')">
         <img src="{{ img_url('prof/close.png') }}">
     </a>
     <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['wProfName'] }}</span> 교수님 프로필</div>
@@ -14,4 +14,4 @@
         </div>
     </div>
 </div>
-<div id="LayerProfile" class="willbes-Layer-Black"></div>
+<div id="LayerProfile{{ $ele_id }}" class="willbes-Layer-Black"></div>

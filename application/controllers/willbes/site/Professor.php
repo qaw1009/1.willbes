@@ -83,6 +83,7 @@ class Professor extends \app\controllers\FrontController
         $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
 
         $this->load->view('site/professor/profile_modal', [
+            'ele_id' => $this->_req('ele_id'),
             'data' => $data
         ]);
     }

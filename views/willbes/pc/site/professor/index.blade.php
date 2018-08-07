@@ -133,10 +133,10 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="{{ $row['ProfReferData']['ot_url'] or 'javascript:alert(\'등록된 대표강의가 없습니다.\');' }}">대표강의</a></dt>
-                            <dt><a href="#none" class="btn-prof-profile" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
+                            <dt><a href="#none" class="btn-prof-profile" data-subject-idx="{{ $subject_idx }}" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
                         </dl>
                     </div>
-                    <div id="prof_profile_layer_{{ $row['ProfIdx'] }}"></div>
+                    <div id="ProfileWrap{{ $subject_idx . '' . $row['ProfIdx'] }}"></div>
                 </li>
                 @endforeach
             </ul>
@@ -151,14 +151,15 @@
         // 프로필 버튼 클릭
         $('.profList').on('click', '.btn-prof-profile', function() {
             var $prof_idx = $(this).data('prof-idx');
-            var data = {
-            };
+            var ele_id = $(this).data('subject-idx') + '' + $prof_idx;
+            var data = { 'ele_id' : ele_id };
+
             sendAjax('{{ site_url('/professor/profile/prof-idx/') }}' + $prof_idx, data, function(ret) {
-                $('#prof_profile_layer_' + $prof_idx).html(ret).show().css('display', 'block').trigger('create');
+                $('#ProfileWrap' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showError, false, 'GET', 'html');
 
-            openWin('LayerProfile');
-            openWin('Profile');
+            openWin('LayerProfile' + ele_id);
+            openWin('Profile' + ele_id);
         });
     });
 </script>

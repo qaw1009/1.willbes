@@ -19,14 +19,16 @@
                     · 수강종료강좌
                 </div>
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
-                    <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
-                    <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
+                    <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
+                    <table cellspacing="0" cellpadding="0" class="txtTable tx-black @if(get_cookie('moreInfo') == 'off') off @endif">
                         <tbody>
-                        <tr>
+                        <tr @if(get_cookie('moreInfo') == 'off') style="display: none; !important" @endif>
                             <td>
                                 <div class="Tit">수강종료강좌</div>
-                                - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br/>
-                                - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br/>
+                                <div class="Txt">
+                                    - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br/>
+                                    - 재수강시, 20% 할인된 가격으로 수강할 수 있습니다.<br/>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
@@ -36,10 +38,10 @@
             <!-- willbes-Mypage-ONLINEZONE -->
 
             <div class="willbes-Mypage-Tabs mt60">
-                <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                 <span class="w-data">
                     기간검색 &nbsp;
-                    <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                    <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp;
                     <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                 </span>
                     <span class="w-month">

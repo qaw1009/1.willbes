@@ -3,36 +3,7 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="subContainer widthAuto c_both">
-        <div class="Menu NSK c_both">
-            <h3>
-                <ul class="menu-List menu-List-Center">
-                    <li>
-                        <a href="#none">무한PASS존</a>
-                    </li>
-                    <li>
-                        <a href="#none">온라인강좌</a>
-                    </li>
-                    <li>
-                        <a href="#none">학원강좌</a>
-                    </li>
-                    <li>
-                        <a href="#none">특강&이벤트 신청현황</a>
-                    </li>
-                    <li>
-                        <a href="#none">모의고사관리</a>
-                    </li>
-                    <li>
-                        <a href="#none">결제관리</a>
-                    </li>
-                    <li>
-                        <a href="#none">학습지원관리</a>
-                    </li>
-                    <li>
-                        <a href="#none">회원정보</a>
-                    </li>
-                </ul>
-            </h3>
-        </div>
+        @include('willbes.pc.layouts.partial.www_menu')
         <div class="Depth">
             <img src="{{ img_url('sub/icon_home.gif') }}">
             <span class="1depth">
@@ -48,13 +19,15 @@
                     · 일시정지강좌
                 </div>
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
-                    <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
-                    <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
+                    <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
+                    <table cellspacing="0" cellpadding="0" class="txtTable tx-black @if(get_cookie('moreInfo') == 'off') off @endif ">
                         <tbody>
-                        <tr>
+                        <tr @if(get_cookie('moreInfo') == 'off') style="display: none; !important" @endif>
                             <td>
                                 <div class="Tit">일시정지강좌</div>
-                                - '일시정지해제'버튼을 클릭하시면 일시정지 상태가 해제되어 즉시 수강하실 수 있습니다.<br/>
+                                <div class="Txt">
+                                    - '일시정지해제'버튼을 클릭하시면 일시정지 상태가 해제되어 즉시 수강하실 수 있습니다.<br/>
+                                </div>
                             </td>
                         </tr>
                         </tbody>

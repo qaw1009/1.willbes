@@ -22,10 +22,10 @@
             <!-- willbes-Mypage-ONLINEZONE -->
 
             <div class="willbes-Mypage-Tabs">
-                <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                 <span class="w-data">
                     기간검색 &nbsp;
-                    <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                    <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp;
                     <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
                 </span>
                     <span class="w-month">
@@ -68,9 +68,7 @@
                                         <span class="NSK ml15 nBox n2">진행중</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
+                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
@@ -87,9 +85,7 @@
                                         <span class="NSK ml15 nBox n2">진행중</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
+                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
@@ -103,12 +99,10 @@
                                     <dt>
                                         영어<span class="row-line">|</span>
                                         한덕현교수님
-                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                        <span class="NSK ml15 nBox n4">완강</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
+                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
@@ -117,7 +111,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                            <td colspan="3" class="tx-center">수강종료 강좌 정보가 없습니다.</td>
                         </tr>
                         </tbody>
                     </table>

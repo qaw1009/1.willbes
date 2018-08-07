@@ -41,7 +41,7 @@
                         <div class="drop-Box myPage-Box">
                             <ul>
                                 <li>
-                                    <a href="{{ app_url('/Classroom/Ongoing/', 'www') }}">수강중인 강의</a>
+                                    <a href="{{ app_url('/Classroom/Lecture/ongoing/', 'www') }}">수강중인 강의</a>
                                 </li>
                                 <li>
                                     <a href="{{ app_url('/Classroom/Pass/', 'www') }}">PASS 강의</a>

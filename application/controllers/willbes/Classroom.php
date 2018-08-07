@@ -24,45 +24,79 @@ class Classroom extends \app\controllers\FrontController
 
 
     /**
+     * 기간제 강의실
+     */
+    public function Pass()
+    {
+        $this->load->view('/classroom/pass');
+    }
+
+
+    /**
      * 단강좌 리스트페이지
      */
-    public function Standby()
+    public function Lecture($params = [])
     {
-        $this->load->view('classroom/standby', []);
+        if(empty($params) === true){
+            $listType = "ongoing";
+        } else {
+            $listType = $params[0];
+        }
+
+        if($listType != 'standby' && $listType != 'ongoing' && $listType != 'pause' && $listType != 'end'){
+            $listType = "ongoing";
+        }
+
+        $this->load->view('classroom/'.$listType, [
+            'data' => [],
+            'lecList' => [],
+            'pkgList' => [],
+            'freeList' => [],
+            'adminList' => []
+            ]);
     }
 
-    public function Ongoing()
-    {
 
-        $this->load->view('classroom/ongoing', []);
+    
+    /**
+     * 실세 강의 상세페이지
+     * @param array $params
+     */
+    public function View($params = [])
+    {
+        if(empty($params[0]) == true || empty($params[1]) == true || empty($params[1]) == true ){
+            show_alert('수강정보가 정확하지 않습니다.', 'back');
+        } else {
+            $OrderIdx = $params[0];
+            $ProdCode = $params[1];
+            $subProdCode = $params[2];
+        }
+
+        $this->load->view('classroom/view');
     }
 
-    public function pause()
-    {
-        $this->load->view('classroom/pause', []);
-    }
 
-    public function end()
-    {
-
-        $this->load->view('classroom/end', []);
-    }
-
-
+    /**
+     * 학원강의 신청목록
+     * @param array $params
+     */
     public function offline($params = [])
     {
         if(empty($params[0]) === true){
-            $listType = 'ing';
+            $listType = 'ongoing';
         } else {
             $listType = strtolower($params[0]);
         }
 
-        if($listType != 'ing' && $listType != 'end'){
-           $listType = 'ing';
+        if($listType != 'ongoing' && $listType != 'end'){
+           $listType = 'ongoing';
         }
 
 
-        $this->load->view('classroom/offline_'.$listType, []);
+        $this->load->view('classroom/offline_'.$listType, [
+            'data' => [],
+            'list' => []
+        ]);
     }
 
 }

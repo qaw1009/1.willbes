@@ -188,7 +188,8 @@
 
     function getScreenSize() {
         if (pcScreenWidth <= 800) {
-            playerWidth = 640;playerHeight = 300;
+            playerWidth = 640;
+            playerHeight = 300;
             SubFrameTag_width = 0;
         } else {
             playerWidth = parseInt(pcScreenWidth * 0.8);
@@ -229,9 +230,9 @@
     }
 
     $(document).keydown(function (event) {
-        if (event.keyCode == 123) { // Prevent F12
+        if (event.keyCode == 123) {
             return false;
-        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I
+        } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
             return false;
         }
     });
@@ -283,7 +284,7 @@
 
         var startPosition = {{$data['startPosition']}};
         var config = {
-            userId: "test",
+            userId: "{{$data['memid']}}",
             id: "starplayer",
             videoContainer: "video-container",
             controllerContainer: "controller-container",

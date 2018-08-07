@@ -1,4 +1,4 @@
-<a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
+<a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}')">
     <img src="{{ img_url('sub/close.png') }}">
 </a>
 

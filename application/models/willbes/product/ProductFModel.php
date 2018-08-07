@@ -73,7 +73,7 @@ class ProductFModel extends WB_Model
                 //추천-선택 패키지
                 case 'adminpack_lecture' :
                         $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
-                            , CourseIdx, CourseName, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
+                            , CourseIdx, CourseName, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
                     break;
 
                 //사용자패키지

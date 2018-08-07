@@ -27,9 +27,10 @@
     var $regi_form = $('#regi_form');
     var $buy_layer = $('#buy_layer');
     var $is_show = location.href.indexOf('show') > -1;
+    var $is_professor =  location.href.indexOf('professor') > -1;
 
     $(document).ready(function() {
-        if ($is_show === false) {
+        if ($is_show === false || $is_professor === true) {
             // 목록 페이지
             // 상품 선택/해제
             $regi_form.on('change', '.chk_products, .chk_books', function () {

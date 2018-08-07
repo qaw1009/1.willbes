@@ -8,9 +8,9 @@
         <div id="acad1" class="tabContent">
             <div class="tabGrid">
                 <dl class="online">
-                    <dt><a href="#none">단강좌</a></dt>
-                    <dt><a href="#none">추천패키지</a></dt>
-                    <dt><a href="#none">선택패키지</a></dt>
+                    <dt><a href="#only_lecture">단강좌</a></dt>
+                    <dt><a href="#pack_normal">추천패키지</a></dt>
+                    <dt><a href="#pack_choice">선택패키지</a></dt>
                 </dl>
             </div>
             <div class="user-lec-list pt40 c_both">
@@ -28,6 +28,7 @@
                     <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
                     <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+                    <a name="only_lecture"></a>
                     <div class="willbes-Lec NG mt20 c_both">
                         <div class="willbes-Lec-Subject tx-dark-black">· {{ rawurldecode($arr_input['subject_name']) }}<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                         <!-- willbes-Lec-Subject -->
@@ -61,7 +62,7 @@
 
                         {{-- 교수별 상품 리스트 loop --}}
                         @php $pattern = 'only'; @endphp
-                        @foreach($tab_data['product']['only'] as $idx => $row)
+                        @foreach($tab_data['lecture'] as $idx => $row)
                             <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                                 <table cellspacing="0" cellpadding="0" class="lecTable">
                                     <colgroup>
@@ -145,17 +146,17 @@
                                                         <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
                                                         <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
                                                         <span class="chk buybtn p_re">
-                                                                                <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
-                                                                                    [{{ $book_row['wSaleCcdName'] }}]
-                                                                                </label>
+                                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                                [{{ $book_row['wSaleCcdName'] }}]
+                                                            </label>
                                                             @if($row['IsCart'] == 'Y' || $pattern == 'free')
                                                                 <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
                                                             @endif
-                                                                            </span>
+                                                        </span>
                                                         <span class="priceWrap">
-                                                                                <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                                                                <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
-                                                                            </span>
+                                                            <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                            <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                                        </span>
                                                     </div>
                                                 @endforeach
                                                 @if($pattern == 'only')
@@ -178,26 +179,149 @@
                             </div>
                             <!-- willbes-Lec-Table -->
                         @endforeach
+
+                        <div class="willbes-Lec-buyBtn mt30" style="position: relative;">
+                            <ul>
+                                <li class="btnAuto180 h36">
+                                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>장바구니</span>
+                                    </button>
+                                </li>
+                                <li class="btnAuto180 h36">
+                                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
+                                        <span class="tx-light-blue">바로결제</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- willbes-Lec-buyBtn -->
                     </div>
                     <!-- willbes-Lec -->
-                    <div class="willbes-Lec-buyBtn">
-                        <ul>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                                    <span>장바구니</span>
-                                </button>
-                            </li>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                                    <span class="tx-light-blue">바로결제</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- willbes-Lec-buyBtn -->
                 </form>
 
+                <div class="willbes-Lec NG c_both">
+                    <a name="pack_normal"></a>
+                    <div class="willbes-Lec-Subject tx-dark-black pt40">추천패키지</div>
+                    <!-- willbes-Lec-Subject -->
+
+                    <div class="willbes-Lec-Line">-</div>
+                    <!-- willbes-Lec-Line -->
+
+                    <div class="willbes-Lec-Table d_block">
+                        <table cellspacing="0" cellpadding="0" class="lecTable">
+                            <colgroup>
+                                <col style="width: 95px;">
+                                <col style="width: 665px;">
+                                <col style="width: 180px;">
+                            </colgroup>
+                            <tbody>
+
+                            @php $pack = '648001'; @endphp
+                            @foreach($tab_data['pack_normal'] as $row)
+                                <tr>
+                                    <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
+                                    <td class="w-data tx-left pl25">
+                                        <div class="w-tit">
+                                            <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                        </div>
+                                        <dl class="w-info">
+                                            <dt class="mr20">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package', '', 'InfoFormPack')">
+                                                    <strong>패키지상세정보</strong>
+                                                </a>
+                                            </dt>
+                                            <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
+                                            <dt><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                            <dt class="NSK ml15">
+                                                <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
+                                            </dt>
+                                        </dl>
+                                    </td>
+                                    <td class="w-notice">
+                                        @if(empty($row['ProdPriceData'] ) === false)
+                                            @foreach($row['ProdPriceData'] as $price_row)
+                                                @if($loop -> index === 1)
+                                                    <div class="priceWrap">
+                                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <!-- lecTable -->
+                    </div>
+                    <!-- willbes-Lec-Table -->
+                </div>
+                <!-- willbes-Lec -->
+
+                <div class="willbes-Lec NG c_both">
+                    <a name="pack_choice"></a>
+                    <div class="willbes-Lec-Subject tx-dark-black">선택패키지</div>
+                    <!-- willbes-Lec-Subject -->
+
+                    <div class="willbes-Lec-Line">-</div>
+                    <!-- willbes-Lec-Line -->
+
+                    <div class="willbes-Lec-Table d_block">
+                        <table cellspacing="0" cellpadding="0" class="lecTable">
+                            <colgroup>
+                                <col style="width: 95px;">
+                                <col style="width: 665px;">
+                                <col style="width: 180px;">
+                            </colgroup>
+                            <tbody>
+
+                            @php $pack = '648002'; @endphp
+                            @foreach($tab_data['pack_choice'] as $row)
+                                <tr>
+                                    <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
+                                    <td class="w-data tx-left pl25">
+                                        <div class="w-tit">
+                                            <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                        </div>
+                                        <dl class="w-info">
+                                            <dt class="mr20">
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package', '', 'InfoFormPack')">
+                                                    <strong>패키지상세정보</strong>
+                                                </a>
+                                            </dt>
+                                            <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
+                                            <dt><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
+                                            <dt class="NSK ml15">
+                                                <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
+                                            </dt>
+                                        </dl>
+                                    </td>
+                                    <td class="w-notice">
+                                        @if(empty($row['ProdPriceData'] ) === false)
+                                            @foreach($row['ProdPriceData'] as $price_row)
+                                                @if($loop -> index === 1)
+                                                    <div class="priceWrap">
+                                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <!-- lecTable -->
+                    </div>
+                </div>
+                <!-- willbes-Lec -->
+
                 <div id="InfoForm" class="willbes-Layer-Box"></div>
+                <div id="InfoFormPack" class="willbes-Layer-Box d2"></div>
                 <!-- willbes-Layer-Box -->
 
                 {{-- 단강좌 footer script --}}

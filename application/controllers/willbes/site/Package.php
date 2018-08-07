@@ -94,6 +94,7 @@ class Package extends \app\controllers\FrontController
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
 
         $this->load->view('site/package/info_modal', [
+            'ele_id' => $this->_req('ele_id'),
             'data' => $data
         ]);
     }

@@ -215,13 +215,16 @@ function goCartPage($cate_code, $tab_id) {
  * @param tab_id
  * @param url
  * @param add_url
+ * @param ele_id
  */
-function productInfoModal(prod_code, tab_id, url, add_url) {
+function productInfoModal(prod_code, tab_id, url, add_url, ele_id) {
     add_url = add_url || '';
     url = url + '/info/' + add_url + 'prod-code/' + prod_code;
+    ele_id = ele_id || 'InfoForm';
+    var data = { 'ele_id' : ele_id };
 
-    sendAjax(url, {}, function(ret) {
-        $('#InfoForm').html(ret).show().css('display', 'block').trigger('create');
+    sendAjax(url, data, function(ret) {
+        $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
     }, showAlertError, false, 'GET', 'html');
 
     if(tab_id !== '') {

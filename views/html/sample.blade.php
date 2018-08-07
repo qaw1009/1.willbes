@@ -47,10 +47,6 @@
 
 <div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
-    <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter#cs1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
-
     <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 > 무한PASS존 Index page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_pass1') }}">내강의실 > 무한PASS존 page 이동</a><br/><br/>
@@ -81,9 +77,19 @@
 
     <a href="{{ site_url('/home/html/mypage_payment4') }}">내강의실 > 결제관리 > 쿠폰/수강권관리 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/mypage_support1') }}">내강의실 > 학습지원관리 > 쪽지관리 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_support2') }}">내강의실 > 학습지원관리 > 알림관리 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_support3') }}">내강의실 > 학습지원관리 > 상담내역 page 이동</a><br/><br/>
+
 </div>
 
 <div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+
+    <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter#cs1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/acad_list') }}">학원수강신청 > 단과반 page 이동</a><br/><br/>
 

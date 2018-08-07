@@ -1780,6 +1780,13 @@ table.auTable tr td {
 .willbes-Lec-Search button span {
     font-size: 12px;
 }
+.willbes-Lec-Search .inputBox button.whiteBox {
+    background: #fff;
+    border: 1px solid #d4d4d4;
+}
+.willbes-Lec-Search .inputBox button.whiteBox span {
+    color: #707070;
+}
 .InfoBtn {
     float: right;
     width: 110px;
@@ -4601,8 +4608,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .aBox {
     display: inline-block;
-    width: 47px;
-    height: 20px;
+    width: 52px;
+    height: 22px;
     font-size: 11px;
     font-weight: 300;
     line-height: 20px;
@@ -5690,6 +5697,15 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox540 .userCouponTable {
     height: 80px;
 }
+.willbes-Layer-PassBox600 {
+    width: 600px;
+    height: 550px;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-top: -275px;
+    margin-left: -300px;
+}
 .willbes-Layer-PassBox740 {
     width: 740px;
     height: 800px;
@@ -6184,6 +6200,117 @@ table.acadTable tr td {
     font-size: 12px;
     text-align: left;
 }
+
+/* subContainer : Mypage : 학습지원관리 : 쪽지관리 */
+.userMemoTable tr th.w-tit {
+    background: #f9f9f9;
+}
+.userMemoTable tr td.w-list {
+    text-align: left;
+    padding-left: 20px;
+}
+.userMemoTable tr td.w-file a {
+    margin-right: 30px;
+}
+
+.Memolist .w-btn {
+    float: right; 
+    display: block;
+    margin-top: 20px;
+    width: 47px;
+    height: 22px;
+    line-height: 20px;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+} 
+.Memolist .w-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* subContainer : Mypage : 학습지원관리 : 알림관리 */
+.willbes-Notice-chk .subTit {
+    float: right;
+    margin-bottom: 10px;
+}
+.userNoticeTable {
+    border: 1px solid #edeeef;
+    height: 90px;
+}
+.userNoticeTable tr td {
+    font-size: 14px;
+    text-align: center;
+    border-left: 1px solid #edeeef;
+    line-height: 18px;
+    letter-spacing: 0;
+}
+.userNoticeTable tr td:first-child {
+    border-left: none;
+}
+.userNoticeTable tr td span {
+    vertical-align: baseline;
+}
+.userNoticeTable tr td.w-chk {
+    font-size: 12px;
+    line-height: 26px;
+}
+.userNoticeTable ul {
+    clear: both;
+}
+.userNoticeTable ul li {
+    float: left;
+    margin-right: 20px;
+}
+.userNoticeTable label {
+    float: left;
+}
+.userNoticeTable input {
+    float: left;
+    margin: 6px 5px 0 0;
+    width: 15px;
+    height: 15px;
+}
+.willbes-Notice-Tit {
+    font-size: 15px;
+    line-height: 30px;    
+    padding: 40px 0 10px;
+}
+.LeclistTable .userNoticeBoxTable tr th,
+.LeclistTable .userNoticeBoxTable tr td {
+    line-height: 22px;
+    padding: 12px 0;
+}
+.userNoticeBoxTable tr th.w-tit {
+    background: #f9f9f9;
+    color: #707070;
+    text-align: left;
+    padding-left: 30px;
+}
+.userNoticeBoxTable tr th.w-tit .w-subtit {
+    color: #a0a0a0;
+}
+.userNoticeBoxTable ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+.userNoticeBoxTable input {
+    float: left;
+    margin: 4px 10px 0 0;
+    width: 15px;
+    height: 15px;
+}
+
+/* subContainer : Mypage : 학습지원관리 : 상담내역 */
+.pointDetailWrap .subTit {
+    position: absolute;
+    top: -20px;
+    right: 0;
+}
+
+
+
 
 
 

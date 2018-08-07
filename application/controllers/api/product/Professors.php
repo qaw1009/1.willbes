@@ -30,8 +30,12 @@ class Professors extends \app\controllers\RestController
         $column = false;
         if ($this->_req('is_count') == 'Y') {
             $column = true;
-        } else if ($this->_req('is_refer') == 'Y') {
-            $column = 'refer';
+        }
+
+        // 추가 조회 컬럼
+        $arr_add_column = null;
+        if ($this->_req('is_refer') == 'Y') {
+            $arr_add_column = ['ProfReferData'];
         }
 
         // 정렬순서
@@ -44,7 +48,7 @@ class Professors extends \app\controllers\RestController
         }
 
         // 데이터 조회
-        $data = $this->professorFModel->listProfessor($column, $arr_condition, $this->_req('limit'), $this->_req('offset'), $arr_order_by);
+        $data = $this->professorFModel->listProfessor($column, $arr_condition, $this->_req('limit'), $this->_req('offset'), $arr_order_by, $arr_add_column);
 
         if (empty($prof_idx) === false) {
             $data = element('0', $data, []);

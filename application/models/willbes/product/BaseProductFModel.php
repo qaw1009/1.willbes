@@ -149,15 +149,28 @@ class BaseProductFModel extends WB_Model
     /**
      * 과목별 교수 데이터 조회
      * @param string $site_code
-     * @param bool $is_refer
+     * @param array $arr_add_column
      * @param null|$cate_code
      * @param null|$subject_idx
      * @return mixed
      */
-    public function listProfessorSubjectMapping($site_code, $is_refer = false, $cate_code = null, $subject_idx = null)
+    public function listProfessorSubjectMapping($site_code, $arr_add_column = [], $cate_code = null, $subject_idx = null)
     {
-        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName';
-        $is_refer === true && $column .= ', ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData';
+        $add_column = '';   // 추가 조회 컬럼
+        if (empty($arr_add_column) === false) {
+            // 이미 정의된 추가 컬럼
+            $arr_define_column = ['ProfReferData' => 'ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData'];
+
+            $arr_make_column = [];
+            foreach ($arr_add_column as $col) {
+                // 이미 정의된 추가 컬럼일 경우 그 값을 사용하고 이외에는 전달받은 배열값(컬럼명)을 그대로 사용
+                $arr_make_column[] = isset($arr_define_column[$col]) === true ? $arr_define_column[$col] : $col;
+            }
+
+            $add_column = ',' . implode(',', $arr_make_column);
+        }
+
+        $column = 'PSC.CateCode, P.ProfIdx, P.wProfIdx, WP.wProfName, P.ProfNickName, P.ProfSlogan, PSC.SubjectIdx, PS.SubjectName' . $add_column;
         $from = '
             from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
                 inner join ' . $this->_table['professor'] . ' as P

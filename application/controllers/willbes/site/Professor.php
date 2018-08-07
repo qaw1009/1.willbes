@@ -38,7 +38,7 @@ class Professor extends \app\controllers\FrontController
             , 5, 0, ['ProdCode' => 'desc']);
 
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, true, $this->_cate_code);
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData'], $this->_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
@@ -102,7 +102,7 @@ class Professor extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, false, $this->_cate_code);
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);

@@ -25,17 +25,31 @@ class ProfessorFModel extends WB_Model
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param array $arr_add_column
      * @return array|int
      */
-    public function listProfessor($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listProfessor($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_column = [])
     {
-        if ($column !== true || $column == 'refer') {
-            $refer_column = $column == 'refer' ? ', ifnull(fn_professor_refer_data(PF.ProfIdx), "N") as ProfReferData' : '';
+        if ($column !== true) {
+            // 추가 조회 컬럼
+            $add_column = '';
+            if (empty($arr_add_column) === false) {
+                // 이미 정의된 추가 컬럼
+                $arr_define_column = ['ProfReferData' => 'ifnull(fn_professor_refer_data(PF.ProfIdx), "N") as ProfReferData'];
+
+                $arr_make_column = [];
+                foreach ($arr_add_column as $col) {
+                    // 이미 정의된 추가 컬럼일 경우 그 값을 사용하고 이외에는 전달받은 배열값(컬럼명)을 그대로 사용
+                    $arr_make_column[] = isset($arr_define_column[$col]) === true ? $arr_define_column[$col] : $col;
+                }
+
+                $add_column = ',' . implode(',', $arr_make_column);
+            }
 
             $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.ProfCurriculum, WPF.wProfProfile, WPF.wBookContent 
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard' . $refer_column;
+                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard' . $add_column;
         }
 
         $arr_condition = array_merge_recursive($arr_condition, [
@@ -55,10 +69,10 @@ class ProfessorFModel extends WB_Model
      */
     public function findProfessorByProfIdx($prof_idx, $is_refer = true)
     {
-        $column = ($is_refer === true) ? 'refer' : false;
+        $arr_add_column = ($is_refer === true) ? ['ProfReferData'] : null;
         $arr_condition = ['EQ' => ['PF.Profidx' => $prof_idx]];
 
-        $data = $this->listProfessor($column, $arr_condition, null, null, []);
+        $data = $this->listProfessor(false, $arr_condition, null, null, [], $arr_add_column);
 
         return element('0', $data, []);
     }

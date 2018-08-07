@@ -43,7 +43,7 @@ class Lecture extends \app\controllers\FrontController
 
         // 과목이 선택된 경우 해당 교수 조회
         if (empty(element('subject_idx', $arr_input)) === false) {
-            $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, false, $this->_cate_code, element('subject_idx', $arr_input));
+            $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code, element('subject_idx', $arr_input));
         }
 
         // 상품 조회

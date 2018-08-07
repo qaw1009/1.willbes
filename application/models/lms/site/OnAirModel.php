@@ -437,9 +437,9 @@ class OnAirModel extends WB_Model
                 ]);
             }
 
-            //등록
+            //수정
             if ($this->_conn->set($data)->where('Oaidx', $oa_idx)->update($this->_table['onair']) === false) {
-                throw new \Exception('온에어 등록에 실패했습니다.');
+                throw new \Exception('온에어 수정에 실패했습니다.');
             }
 
             if($this->_setDataDelete($oa_idx, $this->_table['onair_r_category']) !== true) {

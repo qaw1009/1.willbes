@@ -9,7 +9,7 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
-                    <div class="col-md-11 form-inline">
+                    <div class="col-md-4 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $offLineSite_list) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
@@ -19,10 +19,16 @@
                         </select>
 
                         <select class="form-control" id="search_category" name="search_category">
-                            <option value="">구분</option>
+                            <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_consult_type" name="search_consult_type">
+                            <option value="">마감여부</option>
+                            <option value="I">진행중</option>
+                            <option value="E">마감</option>
                         </select>
 
                         <select class="form-control" id="search_is_use" name="search_is_use">
@@ -31,16 +37,15 @@
                             <option value="N">미사용</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">제목/내용</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_value" name="search_value">
-                    </div>
-                    <label class="control-label col-md-1" for="search_start_date">등록일</label>
-                    <div class="col-md-5 form-inline">
-                        <div class="input-group">
+
+                    <label class="control-label col-md-1" for="search_start_date">기간검색</label>
+                    <div class="col-md-6 form-inline">
+                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                            <option value="I">접수일</option>
+                            <option value="R">등록일</option>
+                        </select>
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -113,10 +118,14 @@
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                "createdRow": function( row, data, dataIndex ) {
+                    var reg_date = parseInt(dateFormat(data.RegDatm));
+                    var now_date = parseInt(nowDate());
+                    if (reg_date == now_date) {
+                        $(row).addClass("warning");
+                    }
+                },
                 columns: [
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat" name="copy" value="' +row.BoardIdx+ '">';
-                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             if (row.IsBest == 'Y') {
@@ -135,32 +144,21 @@
                             }
                             return str;
                         }},
-                    {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                    {'data' : 'ConsultDate', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.CsIdx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
-                            var tmp_return;
-                            (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
-                            return tmp_return;
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.CsIdx + '"><u>' + data.memCount +' / '+ data.totalConsult + '</u></a>';
                         }},
 
-                    {'data' : 'wAdminName'},
-                    {'data' : 'RegDatm'},
-
-                    {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
-                            //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
-                            var chk = '';
-                            if (data == 'Y') { chk = 'checked=checked'; } else { chk = ''; }
-                            return '<input type="checkbox" name="is_best" value="Y" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if (data.memCount == data.totalConsult) { return '마감'; } else { return '진행중'; }
                         }},
-
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                         }},
-                    {'data' : 'ReadCnt'},
-                    {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
-                        }},
+                    {'data' : 'RegAdminName'},
+                    {'data' : 'RegDatm'}
                 ],
             });
 
@@ -175,5 +173,32 @@
             });
 
         });
+
+        //날짜 형식 리턴 (yyyymmdd)
+        function dateFormat(input) {
+            var date = new Date(input);
+            return [
+                date.getFullYear(),
+                ("0" + (date.getMonth()+1)).slice(-2),
+                ("0" + date.getDate()).slice(-2)
+            ].join('');
+        }
+        
+        function nowDate() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if(dd<10) {
+                dd='0'+dd
+            }
+            if(mm<10) {
+                mm='0'+mm
+            }
+
+            today = yyyy+mm+dd;
+            return today;
+        }
     </script>
 @stop

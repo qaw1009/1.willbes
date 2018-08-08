@@ -712,7 +712,7 @@
                                         <col style="width: 160px;">
                                     </colgroup>
                                     <thead>
-                                        <tr><th colspan="4" class="w-list tx-left pl20"><strong>안녕하세요. 커리질문입니다~</strong></th></tr>
+                                        <tr><th colspan="3" class="w-list tx-left pl20"><strong>안녕하세요. 커리질문입니다~</strong></th></tr>
                                         <tr>
                                             <td class="w-acad tx-left pl20">
                                                 <span class="pBox p6">공무원</span>
@@ -726,13 +726,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="w-file tx-left pl20" colspan="4">
+                                            <td class="w-file tx-left pl20" colspan="3">
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-txt answer tx-left" colspan="4">
+                                            <td class="w-txt answer tx-left" colspan="3">
                                                 기승전결문제에서가부분이인믈과배경제시나,<br/>
                                                 다부분이주인공이동라,마부분이문제발샹및해결바부분이<br/>
                                                 후일담여기까지는이해가되는데선택지4번이왜정답인지모르겠어요.....<br/>

@@ -4600,8 +4600,10 @@ ul li.profList .willbes-Layer-ProfileBox {
 .qnaTable .w-list img {
     margin-right: 10px;
 }
-.qnaTable .w-list .subTit {
+.qnaTable .w-list .subTit,
+.w-list .w-subtit {
     font-size: 11px;
+    font-weight: 300;
     color: #959595;
     line-height: 15px;
     padding-bottom: 10px;

@@ -160,7 +160,7 @@
                                         <td class="w-process">경찰</td>
                                         <td class="w-acad">학원</td>
                                         <td class="w-type">기기</td>
-                                        <td class="w-list tx-left pl20 strong"><a href="#none" onclick="openWin('MEMOPASS')">3법 해피엔딩 이벤트☆수험표 인증시 무료!</a></td>
+                                        <td class="w-list tx-left pl20 strong"><a href="#none">3법 해피엔딩 이벤트☆수험표 인증시 무료!</a></td>
                                         <td class="w-date">2018-00-00</td>
                                         <td class="w-answer"><span class="aBox waitBox_block NSK">답변대기</span></td>
                                     </tr>
@@ -169,7 +169,7 @@
                                         <td class="w-process">공무원</td>
                                         <td class="w-acad">온라인</td>
                                         <td class="w-type">수강</td>
-                                        <td class="w-list tx-left pl20 strong"><a href="#none">김원욱 형법 최신 1개년 기출 판례이벤트</a></td>
+                                        <td class="w-list tx-left pl20 strong">김원욱 형법 최신 1개년 기출 판례이벤트</td>
                                         <td class="w-date">2018-00-00</td>
                                         <td class="w-answer"><span class="aBox answerBox_block NSK">답변완료</span></td>
                                     </tr>
@@ -236,6 +236,96 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+
+                    <br/><br/><br/>
+
+                    <!-- View -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecViewTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black tx-gray">
+                                <colgroup>
+                                    <col style="width: 70px;">
+                                    <col style="width: 575px;">
+                                    <col style="width: 135px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                    <tr><th colspan="4" class="w-list tx-left pl20"><strong>안녕하세요. 커리질문입니다~</strong></th></tr>
+                                    <tr>
+                                        <td class="w-acad">헌법<span class="row-line">|</span></td>
+                                        <td class="w-tit tx-left pl20"><strong>2018 [지방직/서울시]137작품을 알려주마!(4-6월)</strong></td>
+                                        <td class="w-write">작성자명<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00 00:00</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-file tx-left pl20" colspan="4">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-txt answer tx-left" colspan="4">
+                                            기승전결문제에서가부분이인믈과배경제시나,<br/>
+                                            다부분이주인공이동라,마부분이문제발샹및해결바부분이<br/>
+                                            후일담여기까지는이해가되는데선택지4번이왜정답인지모르겠어요.....<br/>
+                                            4번답이가ㅡ나, 다ㅡ라,마ㅡ바입니다ㅠㅠ
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 90px;">
+                                    <col style="width: 690px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <td class="w-answer"><img src="{{ img_url('prof/icon_answer.gif') }}"></td>
+                                        <td class="w-write tx-left">홍길*<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00 00:00</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-file tx-left pl20" colspan="3">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-txt answer tx-left" colspan="3">
+                                            기승전결문제에서가부분이인믈과배경제시나,<br/>
+                                            다부분이주인공이동라,마부분이문제발샹및해결바부분이<br/>
+                                            후일담여기까지는이해가되는데선택지4번이왜정답인지모르겠어요.....<br/>
+                                            4번답이가ㅡ나, 다ㅡ라,마ㅡ바입니다ㅠㅠ
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn mt20 mb50 f_left">
+                                <ul>
+                                    <li class="btnAuto90 h36">
+                                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                            <span class="tx-purple-gray">수정</span>
+                                        </button>
+                                    </li>
+                                    <li class="btnAuto90 h36">
+                                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                            <span class="tx-purple-gray">삭제</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
+                                <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                    <span>목록</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -316,7 +406,10 @@
                                         <td class="w-prof">장정훈</td>
                                         <td class="w-acad">행정법</td>
                                         <td class="w-type">기기</td>
-                                        <td class="w-list tx-left pl20 strong"><a href="#none" onclick="openWin('MEMOPASS')">3법 해피엔딩 이벤트☆수험표 인증시 무료!</a></td>
+                                        <td class="w-list tx-left pl20 strong">
+                                            3법 해피엔딩 이벤트☆수험표 인증시 무료!
+                                            <div class="w-subtit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                        </td>
                                         <td class="w-date">2018-00-00</td>
                                         <td class="w-answer"><span class="aBox waitBox_block NSK">답변대기</span></td>
                                     </tr>
@@ -399,6 +492,94 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+
+                    <br/><br/><br/>
+
+                    <!-- View -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecViewTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black tx-gray">
+                                <colgroup>
+                                    <col style="width: 645px;">
+                                    <col style="width: 135px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                    <tr><th colspan="3" class="w-list tx-left pl20"><strong>안녕하세요. 커리질문입니다~</strong></th></tr>
+                                    <tr>
+                                        <td class="w-acad tx-left pl20">
+                                            <span class="pBox p6">공무원</span>
+                                            <span class="oBox onlineBox NSK">온라인</span>
+                                            <span class="oBox nyBox NSK">노량진</span>
+                                            <span class="row-line">|</span>
+                                        </td>
+                                        <td class="w-write">작성자명<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00 00:00</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-file tx-left pl20" colspan="3">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-txt answer tx-left" colspan="3">
+                                            기승전결문제에서가부분이인믈과배경제시나,<br/>
+                                            다부분이주인공이동라,마부분이문제발샹및해결바부분이<br/>
+                                            후일담여기까지는이해가되는데선택지4번이왜정답인지모르겠어요.....<br/>
+                                            4번답이가ㅡ나, 다ㅡ라,마ㅡ바입니다ㅠㅠ
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 90px;">
+                                    <col style="width: 690px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <td class="w-answer"><img src="{{ img_url('prof/icon_answer.gif') }}"></td>
+                                        <td class="w-write tx-left">홍길*<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00 00:00</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-txt answer tx-left" colspan="3">
+                                            기승전결문제에서가부분이인믈과배경제시나,<br/>
+                                            다부분이주인공이동라,마부분이문제발샹및해결바부분이<br/>
+                                            후일담여기까지는이해가되는데선택지4번이왜정답인지모르겠어요.....<br/>
+                                            4번답이가ㅡ나, 다ㅡ라,마ㅡ바입니다ㅠㅠ
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn mt20 mb50 f_left">
+                                <ul>
+                                    <li class="btnAuto90 h36">
+                                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                            <span class="tx-purple-gray">수정</span>
+                                        </button>
+                                    </li>
+                                    <li class="btnAuto90 h36">
+                                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                            <span class="tx-purple-gray">삭제</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
+                                <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                    <span>목록</span>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

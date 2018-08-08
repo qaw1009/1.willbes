@@ -134,7 +134,6 @@
     var cart_idx = '{{ $cart_data['CartIdx'] }}';
     var real_sale_price = '{{ $cart_data['RealSalePrice'] }}';
     var coupon_disc_price = 0;
-    var $ori_selected_data = {};    // 이미 선택된 쿠폰 식별자
 
     $(document).ready(function() {
         // 적용가능쿠폰 체크박스 선택

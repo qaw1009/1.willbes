@@ -47,7 +47,7 @@
             });
 
             // 장바구니, 바로결제 버튼 클릭
-            $('button[name="btn_cart"], button[name="btn_direct_pay"]').on('click', function () {
+            $('button[name="btn_cart"], button[name="btn_direct_pay"]').on('click', function() {
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
@@ -66,7 +66,7 @@
             });
 
             // 장바구니, 바로결제 버튼 클릭
-            $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
+            $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function() {
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
 

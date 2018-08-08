@@ -33,31 +33,31 @@
         if ($is_show === false || $is_professor === true) {
             // 목록 페이지
             // 상품 선택/해제
-            $regi_form.on('change', '.chk_products, .chk_books', function () {
+            $regi_form.on('change', '.chk_products, .chk_books', function() {
                 showBuyLayer($regi_form, $(this), 'buy_layer');
                 setCheckLectureProduct($regi_form, $(this), '', '', '', '');
             });
 
             // 내강의실 이동 버튼 클릭
-            $buy_layer.on('click', '.answerBox_block', function () {
+            $buy_layer.on('click', '.answerBox_block', function() {
                 alert('내 강의실로 이동합니다.');
             });
 
             // 아니오 버튼 클릭
-            $buy_layer.on('click', '.waitBox_block', function () {
+            $buy_layer.on('click', '.waitBox_block', function() {
                 $buy_layer.find('.pocketBox').css('display', 'none').hide();
                 $buy_layer.removeClass('active');
             });
 
             // 교재구매 버튼 클릭
-            $buy_layer.on('click', '#btn_book_pay', function () {
+            $buy_layer.on('click', '#btn_book_pay', function() {
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
                 $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
                 cartNDirectPay($regi_form, $cate_code, 'Y', 'Y');
             });
 
             // 바로결제 버튼 클릭
-            $('button[name="btn_direct_pay"]').on('click', function () {
+            $('button[name="btn_direct_pay"]').on('click', function() {
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
@@ -83,7 +83,7 @@
             });
 
             // 바로결제 버튼 클릭
-            $('button[name="btn_direct_pay"]').on('click', function () {
+            $('button[name="btn_direct_pay"]').on('click', function() {
                 var $cate_code = '{{ $__cfg['CateCode'] }}';
 
                 // TODO : 무료강좌 지급 로직 추가 및 확인 필요

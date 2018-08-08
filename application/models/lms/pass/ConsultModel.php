@@ -8,10 +8,12 @@ class ConsultModel extends WB_Model
         'consult_r_category' => 'lms_consult_r_category',
         'consult_schedule_time' => 'lms_consult_schedule_time',
         'consult_schedule_member' => 'lms_consult_schedule_member',
+        'member' => 'lms_member',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'admin' => 'wbs_sys_admin',
-        'sys_code' => 'lms_sys_code'
+        'sys_code' => 'lms_sys_code',
+        'product_subject' => 'lms_product_subject'
     ];
 
     public function __construct()
@@ -51,29 +53,29 @@ class ConsultModel extends WB_Model
         $where_category = $where_category->getMakeWhere(false);
 
         $from = "
-        FROM {$this->_table['consult_schedule']} AS A
-        LEFT JOIN (
-            SELECT tA.CsIdx, GROUP_CONCAT(CONCAT(tB.CateName,'[',tA.CateCode,']')) AS CateCode
-            FROM {$this->_table['consult_r_category']} AS tA
-            INNER JOIN {$this->_table['sys_category']} AS tB ON tA.CateCode = tB.CateCode AND tA.IsStatus = 'Y'
-            {$where_category}
-            GROUP BY tA.CsIdx
-        ) AS B ON A.CsIdx = B.CsIdx
-        INNER JOIN {$this->_table['site']} AS C ON A.SiteCode = C.SiteCode
-        
-        INNER JOIN (
-            SELECT CsIdx, SUM(ConsultPersonCount) AS totalConsult
-            FROM {$this->_table['consult_schedule_time']}
-            WHERE IsUse = 'Y' AND IsStatus = 'Y'
-            GROUP BY CsIdx
-        ) AS D ON A.CsIdx = D.CsIdx
-        
-        LEFT JOIN (
-            SELECT tA.CsIdx, COUNT(tB.CstIdx) AS memCount FROM {$this->_table['consult_schedule_time']} AS tA
-            LEFT JOIN {$this->_table['consult_schedule_member']} AS tB ON tA.CstIdx = tB.CstIdx AND tB.IsReg = 'Y' AND tA.IsUse = 'Y' AND tA.IsStatus = 'Y'
-            GROUP BY tA.CsIdx
-        ) AS E ON A.CsIdx = E.CsIdx
-            ";
+            FROM {$this->_table['consult_schedule']} AS A
+            LEFT JOIN (
+                SELECT tA.CsIdx, GROUP_CONCAT(CONCAT(tB.CateName,'[',tA.CateCode,']')) AS CateCode
+                FROM {$this->_table['consult_r_category']} AS tA
+                INNER JOIN {$this->_table['sys_category']} AS tB ON tA.CateCode = tB.CateCode AND tA.IsStatus = 'Y'
+                {$where_category}
+                GROUP BY tA.CsIdx
+            ) AS B ON A.CsIdx = B.CsIdx
+            INNER JOIN {$this->_table['site']} AS C ON A.SiteCode = C.SiteCode
+            
+            INNER JOIN (
+                SELECT CsIdx, SUM(ConsultPersonCount) AS totalConsult
+                FROM {$this->_table['consult_schedule_time']}
+                WHERE IsUse = 'Y' AND IsStatus = 'Y'
+                GROUP BY CsIdx
+            ) AS D ON A.CsIdx = D.CsIdx
+            
+            LEFT JOIN (
+                SELECT tA.CsIdx, COUNT(tB.CstIdx) AS memCount FROM {$this->_table['consult_schedule_time']} AS tA
+                LEFT JOIN {$this->_table['consult_schedule_member']} AS tB ON tA.CstIdx = tB.CstIdx AND tB.IsReg = 'Y' AND tA.IsUse = 'Y' AND tA.IsStatus = 'Y'
+                GROUP BY tA.CsIdx
+            ) AS E ON A.CsIdx = E.CsIdx
+        ";
 
         $from .= "
             INNER JOIN {$this->_table['admin']} AS F ON A.RegAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
@@ -109,7 +111,7 @@ class ConsultModel extends WB_Model
     }
 
     /**
-     * 온에어 테이블 조회
+     * 상담일정 테이블 조회
      * @param string $column
      * @param array $arr_condition
      * @return array
@@ -118,7 +120,7 @@ class ConsultModel extends WB_Model
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table['consult_schedule'], $column, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['con'], $column, $arr_condition);
     }
 
     /**
@@ -184,7 +186,7 @@ class ConsultModel extends WB_Model
      */
     public function findConsultScheduleTimeForModify($arr_condition)
     {
-        $column = "CstIdx, ConsultPersonCount, ConsultTargetType, IsUse";
+        $column = "A.CstIdx, A.ConsultPersonCount, A.ConsultTargetType, A.IsUse";
 
         $form = "
             FROM {$this->_table['consult_schedule_time']} AS A
@@ -193,6 +195,37 @@ class ConsultModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['CstIdx' => 'ASC'])->getMakeOrderBy();
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $form . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 특정시간표읠 회원 정보 조회
+     * @param $cs_idx
+     * @param $join_type
+     * @return mixed
+     */
+    public function findConsultScheduleTimeForMember($cs_idx, $join_type = 'LEFT')
+    {
+        $arr_condition['EQ']['A.CsIdx'] = $cs_idx;
+
+        $column = "A.CstIdx, B.CsmIdxs, B.Mem_Infos";
+        $form = "
+            FROM {$this->_table['consult_schedule_time']} AS A
+            {$join_type} JOIN (
+                SELECT tA.CstIdx, GROUP_CONCAT(tA.CsmIdx) AS CsmIdxs, GROUP_CONCAT(tA.MemIdx) AS MemIdxs, GROUP_CONCAT(CONCAT(tC.MemName, '[',tC.MemId,']')) AS Mem_Infos
+                FROM {$this->_table['consult_schedule_member']} AS tA
+                INNER JOIN {$this->_table['consult_schedule_time']} AS tB ON tA.CstIdx = tB.CstIdx
+                INNER JOIN {$this->_table['member']} AS tC ON tA.MemIdx = tC.MemIdx
+                WHERE tB.CsIdx = {$cs_idx} AND tA.IsReg = 'Y'
+                GROUP BY tA.CstIdx
+            ) AS B ON A.CstIdx = B.CstIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = $this->_conn->makeOrderBy(['A.CstIdx' => 'ASC'])->getMakeOrderBy();
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $form . $where . $order_by)->result_array();
@@ -208,7 +241,7 @@ class ConsultModel extends WB_Model
         $column = '
             CC.CateCode, C.CateName
                 , ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
-                , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName            
+                , concat(if(PC.CateCode is null, "", concat(PC.CateName, " > ")), C.CateName) as CateRouteName
         ';
         $from = '
             from ' . $this->_table['consult_r_category'] . ' as CC
@@ -224,6 +257,65 @@ class ConsultModel extends WB_Model
         $data = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$cs_idx])->result_array();
 
         return array_pluck($data, 'CateRouteName', 'CateCode');
+    }
+
+    /**
+     * 간편 상담정보 조회
+     * @param string $column
+     * @param array $arr_condition
+     * @return array
+     */
+    public function findSimpleConsultScheduleDetailForMember($column = '*', $arr_condition = [])
+    {
+        return $this->_conn->getFindResult($this->_table['consult_schedule_member'], $column, $arr_condition);
+    }
+
+    /**
+     * 상담정보 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function findConsultScheduleDetailForMember($arr_condition)
+    {
+        $column = '
+            C.CsIdx, C.SiteCode, J.SiteName, C.CampusCcd, K.CcdName AS CampusName, C.ConsultDate
+            ,B.ConsultTargetType
+            ,C.StartTime, C.EndTime
+            ,DATE_FORMAT(C.StartTime,\'%H\') AS StartHour
+            ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
+            ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
+            ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
+            ,D.MemName, D.MemId, D.BirthDay
+            ,fn_dec(D.PhoneEnc) AS Phone
+            ,fn_dec(D.MailEnc) AS Mail
+            ,A.CateCode, E.CateName #응시직급
+            ,A.SerialCcd, F.CcdName AS SerialName #응시직렬
+            ,A.CandidateAreaCcd, G.CcdName AS CandidateAreaName #응시지역
+            ,A.ExamPeriod #수험기간
+            ,A.SubjectIdx, H.SubjectName #과목식별자(취약과목)
+            ,A.IsStudy #수강여부
+            ,A.Memo #메모
+            ,A.IsConsult #여부상담 (상담상태)
+            ,A.ConsultMemo #상담내용 (코멘트)
+        ';
+
+        $from = "
+            FROM {$this->_table['consult_schedule_member']} AS A
+            INNER JOIN {$this->_table['consult_schedule_time']} AS B ON A.CstIdx = B.CstIdx AND B.IsStatus = 'Y'
+            INNER JOIN {$this->_table['consult_schedule']} AS C ON B.CsIdx = C.CsIdx AND C.IsStatus = 'Y'
+            INNER JOIN {$this->_table['member']} AS D ON A.MemIdx = D.MemIdx
+            INNER JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode AND E.IsStatus = 'Y'
+            INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
+            LEFT JOIN {$this->_table['sys_code']} AS K ON C.CampusCcd = K.Ccd            
+            LEFT JOIN {$this->_table['sys_code']} AS F ON A.SerialCcd = F.Ccd
+            LEFT JOIN {$this->_table['sys_code']} AS G ON A.CandidateAreaCcd = G.Ccd
+            LEFT JOIN {$this->_table['product_subject']} AS H ON A.SubjectIdx = H.SubjectIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
     /**
@@ -316,7 +408,6 @@ class ConsultModel extends WB_Model
                         }
                         $_order_num++;
                     }
-
                 }
                 $strtotime_start = strtotime("+1 day",$strtotime_start);
             }
@@ -369,6 +460,75 @@ class ConsultModel extends WB_Model
                 if ($this->_modifyConsultScheduleTime($val, $time_data) === false) {
                     throw new \Exception('상담예약시간 수정에 실패했습니다.');
                 }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $cs_idx
+     * @return array|bool
+     */
+    public function deleteConsultSchedule($cs_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $join_type = 'INNER';
+            $arr_schedule_member_list = $this->findConsultScheduleTimeForMember($cs_idx,$join_type);
+
+            if (count($arr_schedule_member_list) > 0 ) {
+                throw new \Exception('이미 접수된 상담이 있습니다.');
+            }
+
+            //일자별 관리 테이블 삭제
+            $data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            if ($this->_conn->set($data)->where('Csidx', $cs_idx)->update($this->_table['consult_schedule']) === false) {
+                throw new \Exception('상담일 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 회원 상담정보 수정
+     * @param array $input
+     * @return bool
+     */
+    public function modifyDetailConsultMember($input = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $csm_idx = element('csm_idx', $input);
+
+            // 기본정보 조회
+            $row = $this->findSimpleConsultScheduleDetailForMember('CsmIdx', ['EQ' => ['CsmIdx' => $csm_idx]]);
+            if (count($row) < 1) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            $member_data['ConsultAdminIdx'] = $admin_idx;
+            $member_data['ConsultDatm'] = date('Y-m-d H:i:s');
+            $member_data['IsConsult'] = element('is_consult', $input);
+            $member_data['ConsultMemo'] = element('consult_memo', $input);
+
+            if ($this->_conn->set($member_data)->where('CsmIdx', $csm_idx)->update($this->_table['consult_schedule_member']) === false) {
+                throw new \Exception('상담 등록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

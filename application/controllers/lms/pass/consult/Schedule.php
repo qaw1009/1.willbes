@@ -6,6 +6,8 @@ class Schedule extends \app\controllers\BaseController
     protected $models = array('pass/consult', 'sys/site', 'sys/category', 'sys/code');
     protected $helpers = array();
 
+    private $yoil = array("일","월","화","수","목","금","토");
+
     public function __construct()
     {
         parent::__construct();
@@ -63,8 +65,8 @@ class Schedule extends \app\controllers\BaseController
         $method = 'POST';
         $cs_idx = null;
         $data = null;
-        $time_list = null;
-        $yoil = array("일","월","화","수","목","금","토");
+        $arr_schedule_list = null;
+        /*$yoil = array("일","월","화","수","목","금","토");*/
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
@@ -81,7 +83,7 @@ class Schedule extends \app\controllers\BaseController
                 ]
             ]);
             $data = $this->consultModel->findConsultScheduleForModify($arr_condition);
-            $time_list = $this->consultModel->findConsultScheduleTimeForModify($arr_condition);
+            $arr_schedule_list = $this->consultModel->findConsultScheduleTimeForModify($arr_condition);
 
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
@@ -98,11 +100,14 @@ class Schedule extends \app\controllers\BaseController
             'arr_campus' => $arr_campus,
             'cs_idx' => $cs_idx,
             'data' => $data,
-            'time_list' => json_encode($time_list),
-            'yoil' => $yoil
+            'arr_schedule_list' => json_encode($arr_schedule_list),
+            'yoil' => $this->yoil
         ]);
     }
 
+    /**
+     * 상담예약관리 등록/수정
+     */
     public function store()
     {
         if(empty($this->_reqP('cs_idx',false))===true) {
@@ -148,6 +153,113 @@ class Schedule extends \app\controllers\BaseController
         $result = $this->consultModel->{$method.'ConsultSchedule'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 상담일정관리 read 페이지
+     * @param array $params
+     */
+    public function read($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $cs_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'A.CsIdx' => $cs_idx,
+                'A.IsStatus' => 'Y'
+            ]
+        ]);
+
+        //상담예약관리 정보 조회
+        $data = $this->consultModel->findConsultScheduleForModify($arr_condition);
+        $arr_cate_code = $this->consultModel->listConsultScheduleCategory($cs_idx);
+        $data['CateCodes'] = $arr_cate_code;
+        $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+
+        //상담예약시간관리 정보 조회
+        $arr_schedule_list = $this->consultModel->findConsultScheduleTimeForModify($arr_condition);
+
+        //특정시간표읠 회원 정보 조회
+        $join_type = 'LEFT';
+        $arr_schedule_member_list = $this->consultModel->findConsultScheduleTimeForMember($cs_idx, $join_type);
+
+        $this->load->view("pass/consult/schedule/read",[
+            'cs_idx' => $cs_idx,
+            'data' => $data,
+            'arr_schedule_list' => json_encode($arr_schedule_list),
+            'arr_schedule_member_list' => json_encode($arr_schedule_member_list),
+            'yoil' => $this->yoil
+        ]);
+    }
+
+    public function delete($params = [])
+    {
+        if (empty($params[0]) === true) {
+            $rules = [
+                ['field'=>'cs_idx', 'label' => '상담예약관리식별자', 'rules' => 'trim|required']
+            ];
+
+            if($this->validate($rules) === false) {
+                return;
+            }
+        }
+
+        $result = $this->consultModel->deleteConsultSchedule($params[0]);
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 특정 시간대의 회원 상담정보 조회
+     * @param array $params
+     */
+    public function detailMemberModal($params = [])
+    {
+        $data = null;
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $csm_idx = $params[0];
+        $advertise_placeholder = "상담 코멘트를 남겨주세요..";
+        $advertise_placeholder .= "&#13;&#10;Ex) 상담종료 후 단과반 등록, 7월부터 수강 예정으로 강좌 할인쿠폰 지급함.";
+
+        $arr_condition = ([
+            'EQ'=>[
+                'A.CsmIdx' => $csm_idx
+            ]
+        ]);
+        $data = $this->consultModel->findConsultScheduleDetailForMember($arr_condition);
+        $arr_cate_code = $this->consultModel->listConsultScheduleCategory($data['CsIdx']);
+        $data['CateCodes'] = $arr_cate_code;
+        $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+
+        $this->load->view("pass/consult/schedule/detail_member_modal",[
+            'csm_idx' => $csm_idx,
+            'method' => 'PUT',
+            'data' => $data,
+            'yoil' => $this->yoil,
+            'advertise_placeholder' => $advertise_placeholder
+        ]);
+    }
+
+    /**
+     * 상담정보 수정
+     * @param array $params
+     */
+    public function storeDetailMember()
+    {
+        $rules = [
+            ['field'=>'csm_idx', 'label' => '상담정보식별자', 'rules' => 'trim|required']
+        ];
+
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->consultModel->modifyDetailConsultMember($this->_reqP(null));
+        //var_dump($result);exit;
+        $this->json_result($result, '수정 되었습니다.', $result);
     }
 
     /**

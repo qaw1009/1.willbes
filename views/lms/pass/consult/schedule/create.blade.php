@@ -286,10 +286,10 @@
                         <table id="schedule_list_table" class="table table-striped table-bordered dataTable no-footer dtr-inline" role="grid">
                             <thead>
                                 <tr role="row">
-                                    <th class="no-sort sorting_disabled" rowspan="1" colspan="1" data-column-index="0">시간</th>
-                                    <th class="sorting_disabled" rowspan="1" colspan="1" data-column-index="1">상담인원</th>
-                                    <th class="searching rowspan sorting_disabled" rowspan="1" colspan="1" data-column-index="2">상담대상</th>
-                                    <th class="sorting_disabled" rowspan="1" colspan="1" data-column-index="3">사용여부</th>
+                                    <th>시간</th>
+                                    <th>상담인원</th>
+                                    <th>상담대상</th>
+                                    <th>사용여부</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -384,7 +384,7 @@
                 var list_schedule_lunch = '';   //점심시간 row data
                 var lunch_count = 0;            //점심시간 1row만 노출하기 위한 변수
                 var list_count = 0;             //리스트순서 (수정페이지에서 데이터 적용시 사용)
-                var arr_data = {!! $time_list !!};
+                var arr_schedule_list = {!! $arr_schedule_list !!};
 
                 for (var i=consult_start_min; i<consult_end_min; i+=z){
                     st = i;
@@ -399,7 +399,7 @@
                             }
                             lunch_count++;
                         } else {
-                            list_schedule += add_schedule_row(st, et, list_count, arr_data);
+                            list_schedule += add_schedule_row(st, et, list_count, arr_schedule_list);
                             list_count++;
                         }
                         list_schedule += list_schedule_lunch;
@@ -434,7 +434,7 @@
         });
 
         //스케줄 생성
-        function add_schedule_row(st, et, list_count, arr_data)
+        function add_schedule_row(st, et, list_count, arr_schedule_list)
         {
             var consult_person_count = '';
             var consult_target_type = '';
@@ -446,12 +446,12 @@
             var is_use_selected_1 = '';
             var is_use_selected_2 = '';
 
-            if (arr_data != null) {
+            if (arr_schedule_list != null) {
                 //수정 (스케줄 리스트정보가 있을 경우)
-                schedule_idx = arr_data[list_count]['CstIdx'];
-                consult_person_count = arr_data[list_count]['ConsultPersonCount'];
-                consult_target_type = arr_data[list_count]['ConsultTargetType'];
-                is_use = arr_data[list_count]['IsUse'];
+                schedule_idx = arr_schedule_list[list_count]['CstIdx'];
+                consult_person_count = arr_schedule_list[list_count]['ConsultPersonCount'];
+                consult_target_type = arr_schedule_list[list_count]['ConsultTargetType'];
+                is_use = arr_schedule_list[list_count]['IsUse'];
             } else {
                 //등록
                 schedule_idx = '';

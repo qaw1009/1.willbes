@@ -238,24 +238,8 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div id="Coupon"class="willbes-Layer-Black">
-            <div class="willbes-Layer-CartBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('Coupon')">
-                    <img src="{{ img_url('cart/close_cart.png') }}">
-                </a>
-                <div class="Layer-Tit NG bg-blue">쿠폰적용</div>
-                <div class="Layer-Cont">
-                    <div class="tit NG">
-                        <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- willbes-Layer-CartBox : Coupon -->
-
-
         <div id="MEMOPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h550">
                 <a class="closeBtn" href="#none" onclick="closeWin('MEMOPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>

@@ -493,7 +493,7 @@
         </div>
         <!-- willbes-Mypage-Tabs -->
 
-        <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740">
+        <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800">
             <a class="closeBtn" href="#none" onclick="closeWin('STOPPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
@@ -591,7 +591,7 @@
         </div>
         <!-- willbes-Layer-PassBox : 일시정지 -->
 
-        <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740">
+        <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800">
             <a class="closeBtn" href="#none" onclick="closeWin('EXTRAPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>

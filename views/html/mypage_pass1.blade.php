@@ -633,7 +633,7 @@
         </div>
         <!-- willbes-Mypage-Tabs -->
 
-        <div id="MoreLec" class="willbes-Layer-PassBox">
+        <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100">
             <a class="closeBtn" href="#none" onclick="closeWin('MoreLec')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
@@ -1186,7 +1186,7 @@
         </div>
         <!-- willbes-Layer-PassBox : 강좌추가 -->
 
-        <div id="MorePASS" class="willbes-Layer-PassBox willbes-Layer-PassBox800">
+        <div id="MorePASS" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100">
             <a class="closeBtn" href="#none" onclick="closeWin('MorePASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
@@ -1387,7 +1387,7 @@
         </div>
         <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
 
-        <div id="MyTablets" class="willbes-Layer-PassBox willbes-Layer-PassBox800">
+        <div id="MyTablets" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100">
             <a class="closeBtn" href="#none" onclick="closeWin('MyTablets')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>

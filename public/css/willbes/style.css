@@ -5658,11 +5658,7 @@ table.PassZoneTable .w-data {
     display: none;
     background: #fff;
     position: absolute;
-    top: 229px;
-    right: 0;
     z-index: 101;
-    width: 900px;
-    height: 1100px;
     border: 1px solid #2f2f2f;
     padding: 20px 25px;
 }
@@ -5690,33 +5686,88 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox .passzoneInfo li {
     line-height: 23px;
 }
+.willbes-Layer-PassBox .emailBox {
+    float: left;
+}
+.willbes-Layer-PassBox .Member .inputBox button.sm {
+    float: right;
+    width: 96px;
+}
 .willbes-Layer-PassBox540 {
     width: 540px;
+}
+.willbes-Layer-PassBox540.h400 {
     height: 400px;
     top: 180px;
-    right: 65px;
+    right: 65px;  
 }
 .willbes-Layer-PassBox540 .userCouponTable {
     height: 80px;
 }
+
 .willbes-Layer-PassBox600 {
     width: 600px;
+}
+.willbes-Layer-PassBox600.h550 {
     height: 550px;
     display: block;
     top: 50%;
     left: 50%;
     margin-top: -275px;
-    margin-left: -300px;
+    margin-left: -300px;  
 }
+
 .willbes-Layer-PassBox740 {
     width: 740px;
+}
+.willbes-Layer-PassBox740.h420 {
+    height: 420px;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-top: -210px;
+    margin-left: -370px;  
+}
+.willbes-Layer-PassBox740.h460 {
+    height: 460px;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-top: -230px;
+    margin-left: -370px;  
+}
+.willbes-Layer-PassBox740.h800 {
     height: 800px;
     top: 135px;
-    right: 65px;
+    right: 65px; 
 }
+.willbes-Layer-PassBox740.h900 {
+    height: 900px;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-top: -450px;
+    margin-left: -370px;  
+}
+
 .willbes-Layer-PassBox800 {
     width: 800px;
 }
+.willbes-Layer-PassBox800.h1100 {
+    height: 1100px;
+    top: 229px;
+    right: 0;
+}
+
+.willbes-Layer-PassBox900 {
+    width: 900px;
+}
+.willbes-Layer-PassBox900.h1100 {
+    height: 1100px;
+    top: 229px;
+    right: 0;
+}
+
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-List */
 .PASSZONE-List {
@@ -6311,12 +6362,174 @@ table.acadTable tr td {
     right: 0;
 }
 
+/* subContainer : Mypage : 회원정보 */
+.InfoTable {
+    padding-bottom: 20px;
+}
+.willbes-UserInfo-Tit {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d74ae;
+    line-height: 20px;
+    margin: 30px 0 10px;
+    letter-spacing: 0;
+}
+.UserInfo-subTit {
+    font-size: 11px;
+    color: #707070;
+    padding-left: 5px;
+}
+table.userInfoTable .w-tit {
+    background: #f9f9f9;
+    text-align: left;
+    padding-left: 25px;
+}
+table.userInfoTable .w-info {
+    text-align: left;
+    padding-left: 25px;
+}
+table.userInfoTable tr td {
+    height: 40px;
+    padding: 7px 0;
+}
+table.userInfoTable .w-info label {
+    display: inline-block;
+    margin-top: -8px;
+}
+table.userInfoTable .w-info .w-txt {
+    padding: 5px 0 10px;
+}
+table.userInfoTable select {
+    height: 27px;
+}
+table.userInfoTable input[type="text"] {
+    border: 1px solid #d4d4d4;
+    height: 27px;
+    padding: 0 10px;
+}
+table.userInfoTable input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 10px 0 0 10px;
+}
+table.userInfoTable select.phone,
+table.userInfoTable input.phone {
+    width: 82px;
+    text-align: center;
+}
+table.userInfoTable select.email,
+table.userInfoTable input.email {
+    width: 179px;
+    text-align: center;
+}
+table.userInfoTable select.zipcode,
+table.userInfoTable input.zipcode {
+    width: 60px;
+    text-align: center;
+}
+table.userInfoTable select.address,
+table.userInfoTable input.address {
+    width: 300px;
+    text-align: left;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+table.userInfoTable .phoneBox,
+table.userInfoTable .emailBox,
+table.userInfoTable .addressBox {
+    float: left;
+}
+table.userInfoTable .searchadd {
+    margin-bottom: 8px;
+}
+table.userInfoTable button {
+    width: auto;
+    height: 27px;
+    line-height: 25px;
+    margin-left: 10px;
+}
+table.userInfoTable button span {
+    font-size: 11px;
+    padding: 0 10px;
+}
+table.userInfoTable select.option {
+    width: 130px;
+}
+table.userInfoTable .w-JJ-Box,
+table.userInfoTable .w-Area-Box {
+    clear: both;
+    float: left;
+    widtH: 100%;
+    line-height: 27px;
+}
+table.userInfoTable .w-tit-JJ,
+table.userInfoTable .w-tit-Area {
+    float: left;
+    font-weight: 600;
+    margin-right: 15px;
+}
 
+table.userInfoTable .w-selec-Area {
+    float: left;
+    width: 650px;
+}
+table.userInfoTable .w-selec-Area ul li {
+    float: left;
+}
+table.userInfoTable .w-selec-Area input[type="checkbox"] {
+    margin: 5px 5px 0 0;
+}
+table.userInfoTable .w-selec-Area label {
+    margin-right: 20px;
+}
 
-
-
-
-
+/* subContainer : Mypage : 회원탈퇴 : withdrawalTable */
+.LeclistTable .withdrawalTable tr th {
+    line-height: 50px;
+}
+.LeclistTable .withdrawalTable tr td {
+    line-height: 20px;
+    padding: 10px 0;
+}
+.LeclistTable .withdrawalTable tr td span {
+    vertical-align: baseline;
+}
+.LeclistTable .withdrawalTable tr th,
+.LeclistTable .withdrawalTable tr td {
+   border-left: 1px solid #edeeef; 
+}
+.LeclistTable .withdrawalTable tr th.Top,
+.LeclistTable .withdrawalTable tr td.Top {
+   border-left: none;
+}
+.withdrawalListTable input,
+.withdrawalListTable select {
+    border: 1px solid #d4d4d4;
+    width: 154px;
+    height: 26px;
+}
+.withdrawal .w-btn {
+    margin-top: 15px;
+    text-align: center;
+}
+.withdrawal .w-btn ul li {
+    display: inline-block;
+    width: 67px;
+    height: 22px;
+    margin: 0 3px;
+}
+.withdrawal .w-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 20px;
+}
+.withdrawal .w-btn a.blueBox {
+    color: #fff
+}
+.withdrawal .w-btn a.whiteBox {
+    color: #3c3c3c;    
+}
 
 
 
@@ -6609,6 +6822,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .drop-Box.academy-Box:after {
     margin-left: -86px;
 }
+
 
 
 

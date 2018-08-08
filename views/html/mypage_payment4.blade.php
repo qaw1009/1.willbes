@@ -374,7 +374,7 @@
         </div>
         <!-- useDetailWrap -->
 
-        <div id="COUPONPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox540">
+        <div id="COUPONPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox540 h400">
             <a class="closeBtn" href="#none" onclick="closeWin('COUPONPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>

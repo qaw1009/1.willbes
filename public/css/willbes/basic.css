@@ -295,7 +295,7 @@ button {
 }
 button span {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 300;
   color: #fff;
 }
 a, a:hover, a:active, a:link, a:visited {
@@ -346,6 +346,10 @@ strong {
 }
 .widthAuto365 {
   width: 365px;
+  margin: 0 auto;
+}
+.widthAuto400 {
+  width: 400px;
   margin: 0 auto;
 }
 .widthAuto445 {
@@ -477,6 +481,9 @@ strong {
   margin-top: 100px !important;
 }
 
+.mb5 {
+  margin-bottom: 5px !important;
+}
 .mb10 {
   margin-bottom: 10px !important;
 }
@@ -505,6 +512,9 @@ strong {
   margin-bottom: 170px !important;
 }
 
+.ml-zero {
+  margin-left: 0 !important;
+}
 .ml5 {
   margin-left: 5px !important;
 }
@@ -593,8 +603,12 @@ strong {
   padding-left: 135px !important;
 }
 
+.pb-zero,
 .pb-none {
   padding-bottom: 0 !important;
+}
+.pb40 {
+  padding-bottom: 40px !important;
 }
 .pb60 {
   padding-bottom: 60px !important;
@@ -751,6 +765,7 @@ strong {
 .bd-dark-gray {
   border: 1px solid #555;
 }
+
 .bdt-bright-gray {
   border-top: 1px solid #edeeef;
 }
@@ -763,6 +778,7 @@ strong {
 .bdt-gray {
   border-top: 1px solid #959595;
 }
+
 .bdb-black2 {
   border-bottom: 2px solid #000;
 }

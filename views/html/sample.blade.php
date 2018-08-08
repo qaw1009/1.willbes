@@ -87,6 +87,10 @@
 
 <div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
+    <a href="{{ site_url('/home/html/mypage_userinfo1') }}">내강의실 > 회원정보 > 개인정보관리 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_userinfo2') }}">내강의실 > 회원정보 > 비밀번호변경 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cscenter#cs1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>

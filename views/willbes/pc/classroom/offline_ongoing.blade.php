@@ -59,71 +59,74 @@
                             <col style="width: 120px;">
                         </colgroup>
                         <tbody>
-                        <tr>
-                            <td class="w-data tx-left pl10">
-                                <dl class="w-info">
-                                    <dt>
-                                        영어<span class="row-line">|</span>
-                                        한덕현교수님
-                                        <span class="NSK ml15 nBox n2">진행중</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
-                            </td>
-                            <td class="w-period">2018.10.20 ~ 2018.11.20</td>
-                            <td class="w-schedule">
-                                월 ~ 금<br/>
-                                14:00~18:00
-                            </td>
-                            <td class="w-answer">
-                                2018.00.00<br/>
-                                개강
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pl10">
-                                <dl class="w-info">
-                                    <dt>
-                                        영어<span class="row-line">|</span>
-                                        한덕현교수님
-                                        <span class="NSK ml15 nBox n2">진행중</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
-                            </td>
-                            <td class="w-period">2018.10.20 ~ 2018.11.20</td>
-                            <td class="w-schedule">
-                                월 ~ 금<br/>
-                                14:00~18:00
-                            </td>
-                            <td class="w-answer">
-                                2018.00.00<br/>
-                                개강
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pl10">
-                                <dl class="w-info">
-                                    <dt>
-                                        영어<span class="row-line">|</span>
-                                        한덕현교수님
-                                        <span class="NSK ml15 nBox n4">완강</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
-                            </td>
-                            <td class="w-period">2018.10.20 ~ 2018.11.20</td>
-                            <td class="w-schedule">
-                                월 ~ 금<br/>
-                                14:00~18:00
-                            </td>
-                            <td class="w-answer">
-                                <a href="#none"><span class="bBox blueBox NSK">보강동영상</span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
-                        </tr>
+                        @forelse( $list as $row )
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <dl class="w-info">
+                                        <dt>
+                                            영어<span class="row-line">|</span>
+                                            한덕현교수님
+                                            <span class="NSK ml15 nBox n2">진행중</span>
+                                        </dt>
+                                    </dl><br/>
+                                    <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                </td>
+                                <td class="w-period">2018.10.20 ~ 2018.11.20</td>
+                                <td class="w-schedule">
+                                    월 ~ 금<br/>
+                                    14:00~18:00
+                                </td>
+                                <td class="w-answer">
+                                    2018.00.00<br/>
+                                    개강
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <dl class="w-info">
+                                        <dt>
+                                            영어<span class="row-line">|</span>
+                                            한덕현교수님
+                                            <span class="NSK ml15 nBox n2">진행중</span>
+                                        </dt>
+                                    </dl><br/>
+                                    <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                </td>
+                                <td class="w-period">2018.10.20 ~ 2018.11.20</td>
+                                <td class="w-schedule">
+                                    월 ~ 금<br/>
+                                    14:00~18:00
+                                </td>
+                                <td class="w-answer">
+                                    2018.00.00<br/>
+                                    개강
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <dl class="w-info">
+                                        <dt>
+                                            영어<span class="row-line">|</span>
+                                            한덕현교수님
+                                            <span class="NSK ml15 nBox n4">완강</span>
+                                        </dt>
+                                    </dl><br/>
+                                    <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                </td>
+                                <td class="w-period">2018.10.20 ~ 2018.11.20</td>
+                                <td class="w-schedule">
+                                    월 ~ 금<br/>
+                                    14:00~18:00
+                                </td>
+                                <td class="w-answer">
+                                    <a href="#none"><span class="bBox blueBox NSK">보강동영상</span></a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>

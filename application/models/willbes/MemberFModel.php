@@ -15,17 +15,6 @@ class MemberFModel extends WB_Model
         'authmail' => 'lms_member_certifiedmail'
     ];
 
-    protected $_columnName = [
-        'MemPassword' => '비밀번호',
-        'BirthDay' => '생년월일',
-        'Sex' => '성별',
-        'PhoneEnc' => '전화번호',
-        'MailEnc' => '메일주소',
-        'ZipCode' => '주소',
-        'Addr1' => '주소',
-        'Addr2Enc' => '주소',
-    ];
-
     protected $_mailSendTypeCcd = [
         'JOIN' => '662001',
         'FINDID' => '662002',
@@ -67,9 +56,11 @@ class MemberFModel extends WB_Model
             $column = ' COUNT(*) AS rownums ';
 
         } else {
-            $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.BirthDay,
-            fn_dec(Mem.PhoneEnc) AS Phone, Mem.Phone1, fn_dec(Mem.Phone2Enc) AS Phone2, Mem.Phone3, Info.SmsRcvStatus,
-            fn_dec(Mem.MailEnc) AS Mail, Info.MailRcvStatus,
+            $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.BirthDay, Mem.Sex, 
+            fn_dec(Mem.PhoneEnc) AS Phone, Mem.Phone1, fn_dec(Mem.Phone2Enc) AS Phone2, Mem.Phone3, 
+            fn_dec(Info.TelEnc) AS Tel, Info.Tel1, fn_dec(Info.Tel2Enc) AS Tel2, Info.Tel3,
+            Info.SmsRcvStatus,
+            fn_dec(Mem.MailEnc) AS Mail, Mem.MailId, Mem.MailDomain, Info.MailRcvStatus,
             Info.ZipCode, Info.Addr1, fn_dec(Info.Addr2Enc) as Addr2,
             IFNULL(Mem.IsStatus, '') AS IsStatus,
             IFNULL(Mem.IsDup, '') AS IsDup,
@@ -197,29 +188,176 @@ class MemberFModel extends WB_Model
 
         $updateColumnText = '';
 
-        //$this->_conn->trans_begin();
+        $this->_conn->trans_begin();
+        try {
+            $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
+            if(empty($oriData) == true){
+                throw new \Exception('사용자 데이타 조회에 실패했습니다.');
+            }
+            
+            if($oriData['ZipCode'] != $data['ZipCode'] || $oriData['Addr1'] != $data['Addr1'] || $oriData['Addr2'] != $data['Addr2']){
+                $updateColumnText .= '주소 ';
+            }
+
+            if($oriData['Tel1'] != $data['Tel1'] || $oriData['Tel2'] != $data['Tel2'] || $oriData['Tel3'] != $data['Tel3']){
+                $updateColumnText .= '전화번호';
+            }
+
+            // 추가정보변경
+            $input = [
+                'ZipCode' => element('ZipCode', $data),
+                'Addr1' => element('Addr1', $data),
+                'Tel1' => element('Tel1', $data),
+                'Tel3' => element('Tel3', $data)
+            ];
+            if($this->_conn->set($input)->
+                set('TelEnc',"fn_enc('".element('Tel', $data)."')",false)->
+                set('Tel2Enc',"fn_enc('".element('Tel2', $data)."')",false)->
+                set('Addr2Enc',"fn_enc('".element('Addr2', $data)."')",false)->
+                where('MemIdx', $MemIdx)->update($this->_table['info']) === false){
+                throw new \Exception('회원정보 변경에 실패했습니다.');
+            }
+
+            // 정보변경날짜 업데이트
+            if($this->_conn->
+                set('LastInfoModyDatm', 'NOW()', false)->
+                where('MemIdx', $MemIdx)->update($this->_table['member']) === false){
+                throw new \Exception('회원정보 변경에 실패했습니다.');
+            }
+            
+            // 업데이트 로그데이타
+            $input = [
+                'MemIdx' => $MemIdx,
+                'UpdTypeCcd' => '656004',
+                'UpdData' => $updateColumnText,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if($this->_conn->set($input)->insert($this->_table['infolog']) === false){
+                throw new \Exception('변경로그 기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
+    }
+
+
+    /**
+     * 핸드폰번호 변경
+     * @param $MemIdx
+     * @param array $data
+     * @return bool
+     */
+    public function setMemberPhone($MemIdx, $data = [])
+    {
+        if(empty($MemIdx) == true){
+            return false;
+        }
+
+        $updateColumnText = '';
+
+        $this->_conn->trans_begin();
+        try {
+            $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
+            if(empty($oriData) == true){
+                throw new \Exception('사용자 데이타 조회에 실패했습니다.');
+            }
+            
+            $updateColumnText .= '핸드폰번호';
+            
+            // 추가정보변경
+            $input = [
+                'Phone1' => element('Phone1', $data),
+                'Phone3' => element('Phone3', $data)
+            ];
+
+            // 정보변경날짜 업데이트
+            if($this->_conn->
+                set($input)->
+                set('PhoneEnc',"fn_enc('".element('Phone', $data)."')",false)->
+                set('Phone2Enc',"fn_enc('".element('Phone2', $data)."')",false)->
+                set('LastInfoModyDatm', 'NOW()', false)->
+                where('MemIdx', $MemIdx)->update($this->_table['member']) === false){
+                throw new \Exception('회원정보 변경에 실패했습니다.');
+            }
+
+            // 업데이트 로그데이타
+            $input = [
+                'MemIdx' => $MemIdx,
+                'UpdTypeCcd' => '656004',
+                'UpdData' => $updateColumnText,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if($this->_conn->set($input)->insert($this->_table['infolog']) === false){
+                throw new \Exception('변경로그 기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public function setMemberMail($MemIdx, $data = [])
+    {
+        if(empty($MemIdx) == true || empty($data) == true){
+            return false;
+        }
+
+        $updateColumnText = '';
+
+        $this->_conn->trans_begin();
         try {
             $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
             if(empty($oriData) == true){
                 throw new \Exception('사용자 데이타 조회에 실패했습니다.');
             }
 
-            foreach($data as $key => $value){
-                if($key == 'MemPassword') {
-                    $updateColumnText .= ",비밀번호";
-                } else {
-                    echo "{$key} => {$value} : {$oriData[$key]}";
-                }
+            $updateColumnText .= '이메일주소';
 
+            // 추가정보변경
+            $input = [
+                'MailDomain' => element('MailDomain', $data),
+                'MailId' => element('MailId', $data)
+            ];
+
+            // 정보변경날짜 업데이트
+            if($this->_conn->
+                set($input)->
+                set('MailEnc',"fn_enc('".element('Mail', $data)."')",false)->
+                set('LastInfoModyDatm', 'NOW()', false)->
+                where('MemIdx', $MemIdx)->update($this->_table['member']) === false){
+                throw new \Exception('회원정보 변경에 실패했습니다.');
             }
 
-            echo $updateColumnText;
+            // 업데이트 로그데이타
+            $input = [
+                'MemIdx' => $MemIdx,
+                'UpdTypeCcd' => '656004',
+                'UpdData' => $updateColumnText,
+                'UpdIp' => $this->input->ip_address()
+            ];
 
-            exit(0);
+            if($this->_conn->set($input)->insert($this->_table['infolog']) === false){
+                throw new \Exception('변경로그 기록에 실패했습니다.');
+            }
 
-           // $this->_conn->trans_commit();
+            $this->_conn->trans_commit();
+
         } catch (\Exception $e) {
-            //$this->_conn->trans_rollback();
+            $this->_conn->trans_rollback();
             return false;
         }
 
@@ -273,6 +411,32 @@ class MemberFModel extends WB_Model
         return true;
     }
 
+
+    /**
+     * 비밀번호 확인
+     * @param $Password
+     * @param $arr_cond
+     * @return bool
+     */
+    public function checkMemberPassword($MemIdx, $Password)
+    {
+        if(empty($Password) === true || empty($MemIdx) === true){
+            return false;
+        }
+
+        $query = "
+            SELECT COUNT(*) AS rownums
+            FROM {$this->_table['member']} AS Mem 
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
+            WHERE Mem.MemIdx = ? 
+            AND Mem.MemPassword = fn_hash(?) 
+            AND Mem.MemPassword != ''
+           ";
+
+        $rows = $this->_conn->query($query, [$MemIdx, $Password]);
+
+        return ($rows->row(0)->rownums == 1) ? true : false ;
+    }
     
 
     /**
@@ -371,6 +535,14 @@ class MemberFModel extends WB_Model
             ];
 
             if($this->_conn->set($data)->
+                set('ChangeDatm', 'NOW()', false)->
+                set('PhoneEnc',"fn_enc('".element('Phone', $input)."')",false)->
+                set('Phone2Enc',"fn_enc('".element('Phone2', $input)."')",false)->
+                set('MailEnc',"fn_enc('".element('Mail', $input)."')",false)->
+                set('MemPassword',"fn_hash('".element('MemPassword', $input)."')",false)->
+                insert($this->_table['member']) === false){
+                throw new \Exception('회원가입에 실패했습니다.');
+            }if($this->_conn->set($data)->
                 set('ChangeDatm', 'NOW()', false)->
                 set('PhoneEnc',"fn_enc('".element('Phone', $input)."')",false)->
                 set('Phone2Enc',"fn_enc('".element('Phone2', $input)."')",false)->
@@ -548,6 +720,8 @@ class MemberFModel extends WB_Model
     {
         return true;
     }
+
+
 
 
     /**

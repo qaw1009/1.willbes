@@ -76,9 +76,6 @@
 
                 },
                 success: function(label, el) {
-                    if($(el).attr("name") == "id"){
-                        $("div[name=move_login]").css("display","none");
-                    }
                 },
                 invalidHandler: function(form, validator) {
                     var errors = validator.numberOfInvalids();

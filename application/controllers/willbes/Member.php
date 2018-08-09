@@ -6,7 +6,7 @@ class Member extends \app\controllers\FrontController
     protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('Password', 'Change', 'ChangeProc', 'ChangePhone', 'ChangePhoneSms');
 
     protected $_urlFromMailAuthCcd = [
         '662001' => '/member/join',
@@ -571,6 +571,216 @@ class Member extends \app\controllers\FrontController
 
 
 
+
+    /**
+     * 회원정보 변경 페이지
+     * @return object|string
+     */
+    public function Change()
+    {
+        $Password = $this->_req('Password');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($Password) === true){
+            return $this->load->view('member/change/info_check');
+        }
+
+        if($this->memberFModel->checkMemberPassword($MemIdx, $Password) === false){
+            show_alert('비밀번호가 일치하지 않습니다.', '/Member/Change/', false);
+        }
+
+        $codes = $this->codeModel->getCcdInArray(['661']);
+
+        $this->load->library('encrypt');
+
+        $data = $this->memberFModel->getMember(false, ['EQ'=>['Mem.MemIdx'=>$MemIdx]]);
+
+        return $this->load->view('member/change/info', [
+            'mail_domain_ccd' => $codes['661'],
+            'password' => $this->encrypt->encode($Password),
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 회원정보변경 처리
+     */
+    public function ChangeProc()
+    {
+        $Password = $this->_req('Password');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($Password) === true){
+            show_alert('비밀번호를 다시 한번 입력해야 정보변경이 가능합니다.', '/Member/Change/', false);
+        }
+
+        $this->load->library('encrypt');
+        $Password = $this->encrypt->decode($Password);
+        if($this->memberFModel->checkMemberPassword($MemIdx, $Password) === false){
+            show_alert('비밀번호가 일치하지 않습니다.', '/Member/Change/', false);
+        }
+
+        $data = [
+            'Tel' => $this->_req('Tel1').$this->_req('Tel2').$this->_req('Tel3'),
+            'Tel1' => $this->_req('Tel1'),
+            'Tel2' => $this->_req('Tel2'),
+            'Tel3' => $this->_req('Tel3'),
+            'ZipCode' => $this->_req('ZipCode'),
+            'Addr1' => $this->_req('Addr1'),
+            'Addr2' => $this->_req('Addr2')
+        ];
+
+        if($this->memberFModel->setMember($MemIdx, $data) == false){
+            show_alert('회원정보가 변경에 실패했습니다..', '/Member/Change/', false);
+        }
+
+        show_alert('회원정보가 변경되었습니다.', '/Classroom/', false);
+    }
+
+    public function ChangePhone()
+    {
+        $enc_data = $this->_req('enc_data');
+
+        $this->load->library('encrypt');
+        $plainText = $this->encrypt->decode($enc_data);
+
+        // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
+        $data_arr = explode("^", $plainText);
+        $phone = $data_arr[1];
+        $MemIdx = $data_arr[3];
+
+        if($this->session->userdata('mem_idx') != $MemIdx){
+            return $this->json_error('정보가 일치하지 않습니다.');
+        }
+
+        // 전화번호 나누기
+        $phone1 = substr($phone,0,3);
+        $phone2 = substr($phone,3,-4);
+        $phone3 = substr($phone,-4);
+
+        // 데이타에 추가
+        $input = [
+            'Phone' => $phone,
+            'Phone1' => $phone1,
+            'Phone2' => $phone2,
+            'Phone3' => $phone3
+        ];
+
+        if($this->memberFModel->setMemberPhone($MemIdx, $input) == false){
+            return $this->json_error('핸드폰번호 변경에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '핸드폰번호가 변경되었습니다.', null, [
+            'phone1' => $phone1,
+            'phone2' => $phone2,
+            'phone3' => $phone3
+        ]);
+    }
+
+
+    /**
+     * 메일주소변경 메일인증처리
+     * @return object|string
+     */
+    public function ChangeMailProc()
+    {
+        // 주소/인증키/인증메일
+        $certKey = $this->_req('enc_data');
+
+        // 검색쿼리
+        $result = $this->memberFModel->getMailAuth([
+            'EQ' => [
+                'certKey' => $certKey
+            ]]);
+
+        if(empty($result) === true){
+            // 검색정보 없음
+            show_alert('인증정보가 올바르지 않습니다.', '/', false);
+        }
+
+        // 시간체크
+        $now = strtotime(date('Y-m-d H:i:s')); // 지금 시간
+        $sendDate = strtotime($result['MailSendDatm'].'+30 minutes'); // 보낸시간 더하기 30분
+
+        // 인증시간 초과 보내고나서 30분
+        if($now > $sendDate){
+            show_alert('인증시간이 초과했습니다.', '/', false);
+        }
+
+        // 이미 사용한 인증키
+        if($result['IsCert'] == 'Y'){
+            show_alert('이미 사용한 인증코드입니다.', '/', false);
+        }
+
+        $mailArr = explode('@', $result['CertMail']);
+        $mailId = $mailArr[0];
+        $mailDomain = $mailArr[1];
+
+        $data = [
+            'Mail' => $result['CertMail'],
+            'MailId' => $mailId,
+            'MailDomain' => $mailDomain
+        ];
+
+        if($this->memberFModel->setMemberMail($result['MemIdx'], $data) == false){
+            show_alert('메일주소변경이 실패하였습니다. 다시 시도해주십시요.', '/', false);
+        }
+
+        // 해당 인증 메일 사용 처리
+        $result = $this->memberFModel->updateMailAuth($certKey);
+
+        show_alert('메일주소변경이 처리되었습니다.', '/', false);
+    }
+
+    /**
+     * 비밀번호 변경 페이지
+     * @return object|string
+     */
+    public function Password()
+    {
+        $oldPassword = $this->_req('oldPass');
+        $newPassword = $this->_req('newPass');
+        $newPasswordchk = $this->_req('newPasschk');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($oldPassword) === false && empty($newPassword) === true){
+            // 새로운 비밀번호 입력
+            if($this->memberFModel->checkMemberPassword($MemIdx, $oldPassword) === false){
+                show_alert('비밀번호가 일치하지 않습니다.', '/Member/Password/', false);
+            }
+
+            $this->load->library('encrypt');
+
+            return $this->load->view('member/change/password', [
+                'method' => 'change',
+                'password' => $this->encrypt->encode($oldPassword)
+            ]);
+
+        } else if(empty($oldPassword) === false && empty($newPassword) === false){
+            $this->load->library('encrypt');
+            $oldPassword = $this->encrypt->decode($oldPassword);
+
+            // 비밀번호 변경 프로세스
+            if($this->memberFModel->checkMemberPassword($MemIdx, $oldPassword) === false){
+                show_alert('비밀번호가 일치하지 않습니다.', '/Member/Password/', false);
+            }
+
+            if($this->memberFModel->setMemberPassword(['MemIdx' => $MemIdx, 'MemPassword' => $newPassword, 'UpdTypeCcd' => '656001']) === false){
+                show_alert('비밀번호 변경이 실패했습니다. 다시 시도해주십시요.', '/Member/Password/', false);
+            } else {
+                show_alert('비밀번호 변경이 완료되었습니다.', '/Classroom/', false);
+            }
+        }
+
+        return $this->load->view('member/change/password', [
+            'method' => 'check',
+            'password' => ''
+        ]);
+    }
+
+
+
+
     /*
      * 아이디찾기 폼
      */
@@ -987,7 +1197,7 @@ class Member extends \app\controllers\FrontController
                     $result = $this->memberFModel->setMemberPassword([
                         'MemIdx' => $result['MemIdx'],
                         'MemPassword' => $MemPassword,
-                        'UpdTypeCcd' => '656001'
+                        'UpdTypeCcd' => '656002'
                     ]);
 
                     // 변경실패
@@ -1040,7 +1250,7 @@ class Member extends \app\controllers\FrontController
                     $result = $this->memberFModel->setMemberPassword([
                         'MemIdx' => $result['MemIdx'],
                         'MemPassword' => $MemPassword,
-                        'UpdTypeCcd' => '656001'
+                        'UpdTypeCcd' => '656002'
                     ]);
 
                     if($result == false){
@@ -1106,7 +1316,7 @@ class Member extends \app\controllers\FrontController
                     $result = $this->memberFModel->setMemberPassword([
                         'MemIdx' => $result['MemIdx'],
                         'MemPassword' => $MemPassword,
-                        'UpdTypeCcd' => '656001'
+                        'UpdTypeCcd' => '656002'
                     ]);
 
                     if($result == false){
@@ -2063,6 +2273,29 @@ class Member extends \app\controllers\FrontController
     }
 
 
+    /**
+     * 핸드폰번호변경 SMS
+     * @return CI_Output
+     */
+    public function ChangPhoneSms()
+    {
+        $phonenumber = $this->_req('var_phone');
+        $authcode = $this->_req('var_auth');
+        $sms_stat = $this->_req('sms_stat');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        $isNew = ($sms_stat == "NEW" ? true : false);
+
+        // SMS 인증 처리
+        return $this->sendSms([
+            'phone' => $phonenumber,
+            'code' => $authcode,
+            'id' => $MemIdx,
+            'isnew' => $isNew
+        ]);
+    }
+
+
 
 
     /**
@@ -2290,6 +2523,29 @@ class Member extends \app\controllers\FrontController
 
 
     /**
+     * 이메일주소 변경 메일
+     * @return CI_Output
+     */
+    public function ChangeMail()
+    {
+        $mailid = $this->_req('mail_id');
+        $maildomain = $this->_req('mail_domain');
+        $idx = $this->session->userdata('mem_idx');
+
+        $mail = $mailid.'@'.$maildomain;
+
+        // 인증메일 전송
+        return $this->sendMail([
+            'mail' => $mail,
+            'MemIdx' => $idx,
+            'typeccd' => 'UPDMAIL' // 회원가입인증메일
+        ]);
+    }
+
+
+
+
+    /**
      * 통합회원 전환 메일 전송
      * @return CI_Output
      */
@@ -2470,7 +2726,7 @@ class Member extends \app\controllers\FrontController
         }
 
         // 성공리턴
-        return $this->json_result(true, "인증메일을 발송했습니다.");
+        return $this->json_result(true, "인증메일을 발송했습니다.\n발송된 메일의 인증링크를 30분 안에 클릭해 주세요. ");
     }
 
 

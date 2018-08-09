@@ -130,6 +130,7 @@
 
             $("#btn_send_sms").click(function () {
                 var _url = "/Member/JoinSms/";
+                $("#btn_send_sms").prop("disabled", true);
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     $("#btn_send_sms").prop("disabled", true);
@@ -144,6 +145,7 @@
                     alert(ret.ret_msg);
 
                 }, function(ret){
+                    $("#btn_send_sms").prop("disabled", false);
                     alert(ret.ret_msg);
                 }, null, true, 'alert');
             });

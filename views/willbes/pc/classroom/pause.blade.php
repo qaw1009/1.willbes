@@ -37,43 +37,45 @@
             <!-- willbes-Mypage-ONLINEZONE -->
 
             <div class="willbes-Mypage-Tabs mt60">
-                <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                    <select id="process" name="process" title="process" class="seleProcess">
-                        <option selected="selected">과정</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="lec" name="lec" title="lec" class="seleLec">
-                        <option selected="selected">과목</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="Prof" name="Prof" title="Prof" class="seleProf">
-                        <option selected="selected">교수님</option>
-                        <option value="정채영">정채영</option>
-                        <option value="기미진">기미진</option>
-                        <option value="김세령">김세령</option>
-                    </select>
-                    <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy">
-                        <option selected="selected">최종학습일순</option>
-                        <option value="최근추가순">최근추가순</option>
-                        <option value="종료임박순">종료임박순</option>
-                    </select>
-                    <div class="willbes-Lec-Search GM f_right">
-                        <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
+                <form method='get' action="{{site_url('/Classroom/Lecture/standby')}}">
+                    <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                        <select id="process" name="process" title="process" class="seleProcess">
+                            <option selected="selected">과정</option>
+                            <option value="헌법">헌법</option>
+                            <option value="스파르타반">스파르타반</option>
+                            <option value="공직선거법">공직선거법</option>
+                        </select>
+                        <select id="lec" name="lec" title="lec" class="seleLec">
+                            <option selected="selected">과목</option>
+                            <option value="헌법">헌법</option>
+                            <option value="스파르타반">스파르타반</option>
+                            <option value="공직선거법">공직선거법</option>
+                        </select>
+                        <select id="Prof" name="Prof" title="Prof" class="seleProf">
+                            <option selected="selected">교수님</option>
+                            <option value="정채영">정채영</option>
+                            <option value="기미진">기미진</option>
+                            <option value="김세령">김세령</option>
+                        </select>
+                        <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy">
+                            <option selected="selected">최종학습일순</option>
+                            <option value="최근추가순">최근추가순</option>
+                            <option value="종료임박순">종료임박순</option>
+                        </select>
+                        <div class="willbes-Lec-Search GM f_right">
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="DetailWrap c_both">
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" class="on">단강좌 (3)</a></li>
-                        <li><a href="#Mypagetab2">패키지강좌 (2)</a></li>
+                        <li><a href="#Mypagetab1" class="on">단강좌 ({{count($lecList)}})</a></li>
+                        <li><a href="#Mypagetab2">패키지강좌 ({{count($pkgList)}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">
@@ -84,57 +86,60 @@
                                         <col style="width: 120px;">
                                     </colgroup>
                                     <tbody>
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                    </tr>
+                                    @forelse( $lecList as $row )
+                                        <tr>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        영어<span class="row-line">|</span>
+                                                        한덕현교수님
+                                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        영어<span class="row-line">|</span>
+                                                        한덕현교수님
+                                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>강의수 : <span class="tx-black">24강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -147,57 +152,60 @@
                                         <col style="width: 120px;">
                                     </colgroup>
                                     <tbody>
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n4">완강</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지333</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                    </tr>
+                                    @forelse( $pkgList as $row )
+                                        <tr>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        영어<span class="row-line">|</span>
+                                                        한덕현교수님
+                                                        <span class="NSK ml15 nBox n4">완강</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        영어<span class="row-line">|</span>
+                                                        한덕현교수님
+                                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지333</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>강의수 : <span class="tx-black">24강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>

@@ -291,4 +291,28 @@ class ProductFModel extends WB_Model
 
         return $query->result_array();
     }
+
+    /**
+     * 랜딩컨텐트 추출
+     * @param $prod_code
+     */
+    public function findProductLanding($lidx)
+    {
+        $column = ' A.* ';
+        $from = '
+            from lms_landing A
+            where A.IsUse = "Y" and A.IsStatus = "Y"
+        ';
+
+        $arr_condition = [
+            'EQ' => ['A.lidx' => $lidx]
+            ,'RAW' => ['NOW() between ' => 'DispStartDatm and DispEndDatm']
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->row_array();
+    }
 }

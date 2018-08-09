@@ -165,7 +165,7 @@
 
         // 목록 버튼 클릭
         $('#btn_list').click(function() {
-            location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+            location.href='{{ site_url("/board/{$boardName}") }}' + getQueryString();
         });
 
         function boradIsUse(val, msg) {

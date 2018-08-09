@@ -150,20 +150,20 @@
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
                 console.log(getQueryString());
-                /*location.replace('{{ site_url("/board/offline/{$boardName}") }}' + getQueryString());*/
+                /*location.href='{{ site_url("/board/offline/{$boardName}") }}' + getQueryString();*/
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString());
+                location.href='{{ site_url("/board/offline/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString();
             });
 
             $('#btn_previous').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/offline/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             //데이터 삭제

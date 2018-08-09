@@ -223,7 +223,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/offline/{$boardName}") }}/' + getQueryString());
+                location.href='{{ site_url("/board/offline/{$boardName}") }}/' + getQueryString();
             });
 
             //조회수

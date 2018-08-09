@@ -237,21 +237,21 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}") }}' + getQueryString();
             });
 
             $('#btn_previous').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + getQueryString();
             });
 
             // 답변 수정/등록 폼
             $('#btn_reply_modify').click(function() {
                 var idx = $regi_form.find('input[name="idx"]').val();
-                location.replace('{{ site_url("/board/{$boardName}/createCounselReply") }}/' + idx + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}/createCounselReply") }}/' + idx + getQueryString();
             });
 
             // 메모

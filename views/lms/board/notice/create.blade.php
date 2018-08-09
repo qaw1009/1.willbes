@@ -188,7 +188,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}") }}/' + getQueryString();
             });
 
             //조회수
@@ -223,7 +223,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
+                        location.href='{{ site_url("/board/{$boardName}") }}/' + getQueryString();
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

@@ -133,20 +133,20 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}") }}' + getQueryString();
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}/create") }}/' + {{$board_idx}} + getQueryString();
             });
 
             $('#btn_previous').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
             });
 
             //데이터 삭제
@@ -163,7 +163,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/{$boardName}") }}' + getQueryString());
+                        location.href='{{ site_url("/board/{$boardName}") }}' + getQueryString();
                     }
                 }, showError, false, 'POST');
             });

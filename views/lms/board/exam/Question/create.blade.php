@@ -165,7 +165,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/exam/{$boardName}") }}/' + getQueryString());
+                location.href='{{ site_url("/board/exam/{$boardName}") }}/' + getQueryString();
             });
 
             // 운영사이트 변경

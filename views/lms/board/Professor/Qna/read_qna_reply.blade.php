@@ -192,15 +192,15 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}") }}/detailList/' + getQueryString());
+                location.href='{{ site_url("/board/professor/{$boardName}") }}/detailList/' + getQueryString();
             });
 
             $('#btn_previous').click(function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/professor/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + getQueryString());
+                location.href='{{ site_url("/board/professor/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + getQueryString();
             });
 
             // 답변 수정/등록 폼

@@ -192,7 +192,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}") }}/detailList/' + getQueryString());
+                location.href='{{ site_url("/board/professor/{$boardName}") }}/detailList/' + getQueryString();
             });
 
             //조회수

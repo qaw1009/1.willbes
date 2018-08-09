@@ -218,7 +218,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
+                location.href='{{ site_url("/board/{$boardName}") }}/' + getQueryString();
             });
 
             //조회수

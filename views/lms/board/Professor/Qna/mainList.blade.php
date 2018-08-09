@@ -86,7 +86,7 @@
 
             // 교수별 리스트 페이지
             $list_table.on('click', '.btn-detailList', function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/detailList") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx'));
+                location.href='{{ site_url("/board/professor/{$boardName}/detailList") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx');
             });
         });
     </script>

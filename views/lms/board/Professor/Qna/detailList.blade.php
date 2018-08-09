@@ -256,22 +256,22 @@
 
             // 공지 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.href='{{ site_url("/board/professor/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
             });
 
             // 공지 데이터 Read 페이지
             $list_table.on('click', '.btn-admin-read', function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/readDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.href='{{ site_url("/board/professor/{$boardName}/readDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
             });
 
             // 답변 수정/등록 폼
             $list_table.on('click', '.btn-reply-modify', function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/createQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.href='{{ site_url("/board/professor/{$boardName}/createQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
             });
 
             // 공지 데이터 Read 페이지
             $list_table.on('click', '.btn-counsel-read', function() {
-                location.replace('{{ site_url("/board/professor/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}');
+                location.href='{{ site_url("/board/professor/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
             });
 
         });

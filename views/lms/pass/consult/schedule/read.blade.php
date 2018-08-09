@@ -47,18 +47,6 @@
                 </div>
             </div>
 
-            {{--<div class="form-group">
-                <label class="control-label col-md-1-1">상담대상</label>
-                <div class="form-control-static col-md-4">
-
-                </div>
-
-                <label class="control-label col-md-1-1 d-line">상담인원/1회</label>
-                <div class="form-control-static col-md-4 ml-12-dot">
-
-                </div>
-            </div>--}}
-
             <div class="form-group">
                 <label class="control-label col-md-1-1">1회상담시간</label>
                 <div class="form-control-static col-md-4">
@@ -246,10 +234,8 @@
             add_lists = '<input type="hidden" name="add_schedule_idx[]" value="'+schedule_idx+'">';
             add_lists += '<tr role="row">';
             add_lists += '<td><p class="form-control-static">'+start_time+'~'+end_time+'</p></td>';
-            add_lists += '<td>'+consult_person_count+' 명</td>';
-
             add_lists += '<td>'+str_member_info+'</td>';
-
+            add_lists += '<td>'+consult_person_count+' 명</td>';
             add_lists += '<td>'+((consult_target_type == "M") ? "회원" : "수강생")+'</td>';
             add_lists += '<td>'+((is_use == 'Y') ? "사용" : "미사용")+'</td>';
             add_lists += '</tr>';

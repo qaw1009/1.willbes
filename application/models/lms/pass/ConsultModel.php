@@ -16,6 +16,8 @@ class ConsultModel extends WB_Model
         'product_subject' => 'lms_product_subject'
     ];
 
+    public $yoil = array("일","월","화","수","목","금","토");
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -120,7 +122,7 @@ class ConsultModel extends WB_Model
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table['con'], $column, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['consult_schedule'], $column, $arr_condition);
     }
 
     /**
@@ -260,6 +262,74 @@ class ConsultModel extends WB_Model
     }
 
     /**
+     * 상담정보 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllConsultMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                C.CsIdx, C.SiteCode, J.SiteName
+                ,fn_ccd_name(C.CampusCcd) as CampusName
+                ,C.ConsultDate ,B.ConsultTargetType ,C.StartTime, C.EndTime
+                ,DATE_FORMAT(C.StartTime,\'%H\') AS StartHour
+                ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
+                ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
+                ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
+                ,A.CsmIdx, A.MemIdx, D.MemId, D.MemName ,A.BirthDay ,fn_dec(A.PhoneEnc) AS Phone ,fn_dec(A.MailEnc) AS Mail
+                ,E.CateName ,fn_ccd_name(A.SerialCcd) as SerialName ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
+                ,A.SubjectName ,fn_ccd_name(A.StudyCcd) as StudyName
+                ,A.Memo ,A.IsReg ,A.IsConsult ,A.ConsultMemo ,A.RegDatm, IFNULL(A.CancelDatm, \'\') AS CancelDatm
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['consult_schedule_member']} AS A
+            INNER JOIN {$this->_table['consult_schedule_time']} AS B ON A.CstIdx = B.CstIdx AND B.IsStatus = 'Y'
+            INNER JOIN {$this->_table['consult_schedule']} AS C ON B.CsIdx = C.CsIdx AND C.IsStatus = 'Y'
+            INNER JOIN {$this->_table['member']} AS D ON A.MemIdx = D.MemIdx
+            INNER JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode AND E.IsStatus = 'Y'
+            INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
+        ";
+        $arr_condition['IN']['C.SiteCode'] = get_auth_site_codes(false, true);
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
+
+        // 캠퍼스 권한
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('C.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('C.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('C.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('C.CampusCcd', "''", false);
+        $where_campus->or_where('C.CampusCcd IS NULL');
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+        $where = $where_temp . $where_campus;
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
      * 간편 상담정보 조회
      * @param string $column
      * @param array $arr_condition
@@ -278,25 +348,28 @@ class ConsultModel extends WB_Model
     public function findConsultScheduleDetailForMember($arr_condition)
     {
         $column = '
-            C.CsIdx, C.SiteCode, J.SiteName, C.CampusCcd, K.CcdName AS CampusName, C.ConsultDate
+            C.CsIdx, C.SiteCode, J.SiteName
+            ,fn_ccd_name(C.CampusCcd) as CampusName
+            ,C.ConsultDate
             ,B.ConsultTargetType
             ,C.StartTime, C.EndTime
             ,DATE_FORMAT(C.StartTime,\'%H\') AS StartHour
             ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
             ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
             ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
-            ,D.MemName, D.MemId, D.BirthDay
-            ,fn_dec(D.PhoneEnc) AS Phone
-            ,fn_dec(D.MailEnc) AS Mail
-            ,A.CateCode, E.CateName #응시직급
-            ,A.SerialCcd, F.CcdName AS SerialName #응시직렬
-            ,A.CandidateAreaCcd, G.CcdName AS CandidateAreaName #응시지역
-            ,A.ExamPeriod #수험기간
-            ,A.SubjectIdx, H.SubjectName #과목식별자(취약과목)
-            ,A.IsStudy #수강여부
-            ,A.Memo #메모
-            ,A.IsConsult #여부상담 (상담상태)
-            ,A.ConsultMemo #상담내용 (코멘트)
+            ,D.MemId, D.MemName
+            ,A.BirthDay
+            ,fn_dec(A.PhoneEnc) AS Phone
+            ,fn_dec(A.MailEnc) AS Mail
+            ,E.CateName AS CandidatePositionName
+            ,fn_ccd_name(A.SerialCcd) as SerialName
+            ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName
+            ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
+            ,A.SubjectName
+            ,fn_ccd_name(A.StudyCcd) as StudyName
+            ,A.Memo
+            ,A.IsConsult
+            ,A.ConsultMemo
         ';
 
         $from = "
@@ -304,12 +377,8 @@ class ConsultModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule_time']} AS B ON A.CstIdx = B.CstIdx AND B.IsStatus = 'Y'
             INNER JOIN {$this->_table['consult_schedule']} AS C ON B.CsIdx = C.CsIdx AND C.IsStatus = 'Y'
             INNER JOIN {$this->_table['member']} AS D ON A.MemIdx = D.MemIdx
-            INNER JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode AND E.IsStatus = 'Y'
+            INNER JOIN {$this->_table['sys_category']} AS E ON A.CandidatePosition = E.CateCode AND E.IsStatus = 'Y'
             INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
-            LEFT JOIN {$this->_table['sys_code']} AS K ON C.CampusCcd = K.Ccd            
-            LEFT JOIN {$this->_table['sys_code']} AS F ON A.SerialCcd = F.Ccd
-            LEFT JOIN {$this->_table['sys_code']} AS G ON A.CandidateAreaCcd = G.Ccd
-            LEFT JOIN {$this->_table['product_subject']} AS H ON A.SubjectIdx = H.SubjectIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

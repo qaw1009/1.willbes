@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">응시직급</label>
                     <div class="form-control-static col-md-4">
-                        {{$data['CateName']}}
+                        {{$data['CandidatePositionName']}}
                     </div>
 
                     <label class="control-label col-md-1-1 d-line">상담예약일시</label>
@@ -89,7 +89,7 @@
 
                     <label class="control-label col-md-1-1 d-line">수험기간</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
-                        {{$data['ExamPeriod']}} 개월 미만 (???????)
+                        {{$data['ExamPeriodName']}}
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">수강여부</label>
                     <div class="form-control-static col-md-4">
-                        {!! ($data['IsStudy'] == 'Y') ? '수강중' : '미수강'!!}
+                        {{$data['StudyName']}}
                     </div>
                 </div>
 
@@ -131,8 +131,8 @@
                     <label class="control-label col-md-1-1">상담상태</label>
                     <div class="form-inline col-md-4">
                         <div class="radio">
-                        <input type="radio" id="is_consult_y" name="is_consult" class="flat" value="Y" required="required" title="사용여부" @if($data['IsConsult']=='Y')checked="checked"@endif/> <label for="is_consult_y" class="input-label">완료</label>
-                        <input type="radio" id="is_consult_n" name="is_consult" class="flat" value="N" @if($data['IsConsult']=='N')checked="checked"@endif/> <label for="is_consult_n" class="input-label">미방문</label>
+                        <input type="radio" id="is_consult_y" name="is_consult" class="flat" value="Y" required="required" title="완료" @if($data['IsConsult']=='Y')checked="checked"@endif/> <label for="is_consult_y" class="input-label">완료</label>
+                        <input type="radio" id="is_consult_n" name="is_consult" class="flat" value="N" title="미방문" @if($data['IsConsult']=='N')checked="checked"@endif/> <label for="is_consult_n" class="input-label">미방문</label>
                         </div>
                     </div>
 

@@ -6,8 +6,6 @@ class Schedule extends \app\controllers\BaseController
     protected $models = array('pass/consult', 'sys/site', 'sys/category', 'sys/code');
     protected $helpers = array();
 
-    private $yoil = array("일","월","화","수","목","금","토");
-
     public function __construct()
     {
         parent::__construct();
@@ -66,7 +64,6 @@ class Schedule extends \app\controllers\BaseController
         $cs_idx = null;
         $data = null;
         $arr_schedule_list = null;
-        /*$yoil = array("일","월","화","수","목","금","토");*/
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
@@ -101,7 +98,7 @@ class Schedule extends \app\controllers\BaseController
             'cs_idx' => $cs_idx,
             'data' => $data,
             'arr_schedule_list' => json_encode($arr_schedule_list),
-            'yoil' => $this->yoil
+            'yoil' => $this->consultModel->yoil
         ]);
     }
 
@@ -190,7 +187,7 @@ class Schedule extends \app\controllers\BaseController
             'data' => $data,
             'arr_schedule_list' => json_encode($arr_schedule_list),
             'arr_schedule_member_list' => json_encode($arr_schedule_member_list),
-            'yoil' => $this->yoil
+            'yoil' => $this->consultModel->yoil
         ]);
     }
 
@@ -238,7 +235,7 @@ class Schedule extends \app\controllers\BaseController
             'csm_idx' => $csm_idx,
             'method' => 'PUT',
             'data' => $data,
-            'yoil' => $this->yoil,
+            'yoil' => $this->consultModel->yoil,
             'advertise_placeholder' => $advertise_placeholder
         ]);
     }

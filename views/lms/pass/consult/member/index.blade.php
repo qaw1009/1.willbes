@@ -72,7 +72,7 @@
                     <th>운영사이트</th>
                     <th>캠퍼스</th>
                     <th>카테고리</th>
-                    <th>상담일자(요일)</th>
+                    <th>일자(요일)</th>
                     <th>이름</th>
                     <th>연락처</th>
                     <th>생년월일</th>
@@ -128,8 +128,9 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
                     {'data' : 'CateName'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.ConsultDate + ' ('+data.yoil+')';
+                    {'data' : 'ConsultDate', 'render' : function(data, type, row, meta) {
+                            /*return data.ConsultDate + ' ('+data.yoil+')';*/
+                            return data + ' ('+ getInputDayLabel(data) +')';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-schedule-member-read" data-csm-idx="'+data.CsmIdx+'"><u>'+data.MemName+'<Br>'+data.MemId+'</u></a>';
@@ -209,5 +210,12 @@
                 });
             });
         });
+
+        function getInputDayLabel(val_date) {
+            var week = new Array('일', '월', '화', '수', '목', '금', '토');
+            var today = new Date(val_date).getDay();
+            var todayLabel = week[today];
+            return todayLabel;
+        }
     </script>
 @stop

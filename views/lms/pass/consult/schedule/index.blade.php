@@ -145,7 +145,7 @@
                             return str;
                         }},
                     {'data' : 'ConsultDate', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.CsIdx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.CsIdx + '"><u>' + data + ' ('+ getInputDayLabel(data) +')' + '</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.CsIdx + '"><u>' + data.memCount +' / '+ data.totalConsult + '</u></a>';
@@ -164,12 +164,12 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url("/pass/consult/schedule/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href='{{ site_url("/pass/consult/schedule/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
             // 데이터 Read 페이지
             $list_table.on('click', '.btn-read', function() {
-                location.replace('{{ site_url("/pass/consult/schedule/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href='{{ site_url("/pass/consult/schedule/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
         });
@@ -199,6 +199,13 @@
 
             today = yyyy+mm+dd;
             return today;
+        }
+
+        function getInputDayLabel(val_date) {
+            var week = new Array('일', '월', '화', '수', '목', '금', '토');
+            var today = new Date(val_date).getDay();
+            var todayLabel = week[today];
+            return todayLabel;
         }
     </script>
 @stop

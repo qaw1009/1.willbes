@@ -120,12 +120,12 @@
         $(document).ready(function() {
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/pass/consult/schedule/") }}' + getQueryString());
+                location.href='{{ site_url("/pass/consult/schedule/") }}' + getQueryString();
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.replace('{{ site_url("/pass/consult/schedule/create") }}/' + {{$cs_idx}} + getQueryString());
+                location.href='{{ site_url("/pass/consult/schedule/create") }}/' + {{$cs_idx}} + getQueryString();
             });
 
             //데이터 삭제

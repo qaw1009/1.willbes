@@ -25,8 +25,7 @@ class Member extends \app\controllers\BaseController
         $this->load->view("pass/consult/member/index", [
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
-            'arr_category' => $arr_category,
-            'yoil' => $this->consultModel->yoil
+            'arr_category' => $arr_category
         ]);
     }
 
@@ -38,10 +37,6 @@ class Member extends \app\controllers\BaseController
         $count = $this->consultModel->listAllConsultMember(true, $arr_condition);
         if ($count > 0) {
             $list = $this->consultModel->listAllConsultMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CsmIdx' => 'desc']);
-        }
-
-        foreach ($list as $row => $data) {
-            $list[$row]['yoil'] = $this->consultModel->yoil[date('w', strtotime($data['ConsultDate']))];
         }
 
         return $this->response([

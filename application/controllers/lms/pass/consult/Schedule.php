@@ -28,7 +28,8 @@ class Schedule extends \app\controllers\BaseController
         $this->load->view("pass/consult/schedule/index", [
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
-            'arr_category' => $arr_category
+            'arr_category' => $arr_category,
+            'yoil' => $this->consultModel->yoil
         ]);
     }
 
@@ -50,7 +51,7 @@ class Schedule extends \app\controllers\BaseController
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list,
+            'data' => $list
         ]);
     }
 

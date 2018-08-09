@@ -728,9 +728,9 @@ class BoardModel extends WB_Model
             $file_path = $arr_data['AttachFilePath'].$arr_data['AttachFileName'];
             $this->load->helper('file');
             $real_file_path = public_to_upload_path($file_path);
-            if (@unlink($real_file_path) === false) {
+            /*if (@unlink($real_file_path) === false) {
                 throw new \Exception('이미지 삭제에 실패했습니다.');
-            }
+            }*/
 
             $data = ['IsStatus'=>'N'];
             $this->_conn->set($data)->where('BoardFileIdx', $attach_idx);
@@ -1146,9 +1146,9 @@ class BoardModel extends WB_Model
                         //up, 기존 파일 삭제
                         $this->load->helper('file');
                         $real_img_path = public_to_upload_path($arr_board_attach[$arr_board_attach_keys[$key]]);
-                        if (@unlink($real_img_path) === false) {
+                        /*if (@unlink($real_img_path) === false) {
                             throw new \Exception('이미지 삭제에 실패했습니다.');
-                        }
+                        }*/
 
                         $set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
                         $set_board_attach_data['AttachFileName'] = $uploaded[$key]['orig_name'];

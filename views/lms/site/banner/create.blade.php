@@ -198,7 +198,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/banner/regist/") }}' + getQueryString());
+                location.href='{{ site_url("/site/banner/regist/") }}' + getQueryString();
             });
             // ajax submit
             $regi_form.submit(function() {

@@ -126,17 +126,17 @@
         $(document).ready(function() {
             // 목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/eventLecture") }}/' + getQueryString());
+                location.href='{{ site_url("/site/eventLecture") }}/' + getQueryString();
             });
 
             //데이터 수정 폼
             $('#btn_modify').click(function() {
-                location.replace('{{ site_url("/site/eventLecture/create") }}/' + {{$el_idx}} + getQueryString());
+                location.href='{{ site_url("/site/eventLecture/create") }}/' + {{$el_idx}} + getQueryString();
             });
 
             // 목록
             $('.btn-list').click(function() {
-                location.replace('{{ site_url("/site/eventLecture/") }}');
+                location.href='{{ site_url("/site/eventLecture/") }}';
             });
         });
     </script>

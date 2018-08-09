@@ -148,7 +148,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/terms/privacy/") }}' + getQueryString());
+                location.href='{{ site_url("/site/terms/privacy/") }}' + getQueryString();
             });
 
             // ajax submit

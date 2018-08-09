@@ -197,7 +197,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/landingPage/") }}' + getQueryString());
+                location.href='{{ site_url("/site/landingPage/") }}' + getQueryString();
             });
 
             // ajax submit

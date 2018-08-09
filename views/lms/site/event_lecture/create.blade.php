@@ -601,7 +601,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/eventLecture") }}/' + getQueryString());
+                location.href='{{ site_url("/site/eventLecture") }}/' + getQueryString();
             });
 
             // ajax submit

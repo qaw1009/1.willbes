@@ -179,7 +179,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/site/banner/disp/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href='{{ site_url('/site/banner/disp/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

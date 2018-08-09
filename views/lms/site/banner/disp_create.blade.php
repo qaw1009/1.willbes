@@ -170,7 +170,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/banner/disp/") }}' + getQueryString());
+                location.href='{{ site_url("/site/banner/disp/") }}' + getQueryString();
             });
             // ajax submit
             $regi_form.submit(function() {

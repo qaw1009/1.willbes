@@ -183,12 +183,12 @@
 
             // 데이터 Read 페이지
             $list_table.on('click', '.btn-read', function() {
-                location.replace('{{ site_url('/site/eventLecture/read') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href='{{ site_url('/site/eventLecture/read') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/site/eventLecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href='{{ site_url('/site/eventLecture/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
             // 복사

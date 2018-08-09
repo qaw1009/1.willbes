@@ -148,7 +148,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/dDay") }}/' + getQueryString());
+                location.href='{{ site_url("/site/dDay") }}/' + getQueryString();
             });
 
             // ajax submit

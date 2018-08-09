@@ -148,7 +148,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/terms/agreement/") }}' + getQueryString());
+                location.href='{{ site_url("/site/terms/agreement/") }}' + getQueryString();
             });
 
             // ajax submit

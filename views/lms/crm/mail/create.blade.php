@@ -406,7 +406,7 @@
 
         // 목록 이동
         $('#btn_list').click(function() {
-            location.replace('{{ site_url('/crm/mail/') }}' + getQueryString());
+            location.href='{{ site_url('/crm/mail/') }}' + getQueryString();
         });
     </script>
 @stop

@@ -349,7 +349,7 @@
 
             //목록
             $('#btn_list').click(function() {
-                location.replace('{{ site_url("/site/popup") }}/' + getQueryString());
+                location.href='{{ site_url("/site/popup") }}/' + getQueryString();
             });
             // ajax submit
             $regi_form.submit(function() {

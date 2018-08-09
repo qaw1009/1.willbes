@@ -159,7 +159,7 @@
 
             // 메일 발송
             $('.btn-sand-create').click(function() {
-                location.replace('{{ site_url('crm/mail/createSend') }}/');
+                location.href='{{ site_url('crm/mail/createSend') }}/';
             });
 
             // 예약취소

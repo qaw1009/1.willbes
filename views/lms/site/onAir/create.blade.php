@@ -311,7 +311,7 @@
 
                 //목록
                 $('#btn_list').click(function() {
-                    location.replace('{{ site_url("/site/onAir/") }}' + getQueryString());
+                    location.href='{{ site_url("/site/onAir/") }}' + getQueryString();
                 });
 
                 // ajax submit

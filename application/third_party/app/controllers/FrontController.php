@@ -103,14 +103,20 @@ abstract class FrontController extends BaseController
         // URL 세그먼트 배열 (key => value 형태)
         $uri_segments = $this->uri->ruri_to_assoc();
 
+        // 전체 사이트 캐쉬
+        $all_site_cache = $this->getCacheItem('site');
+
         // 현재 사이트 정보 캐쉬
-        $site_cache = element($site_key, $this->getCacheItem('site'), []);
+        $site_cache = element($site_key, $all_site_cache, []);
 
         // 현재 사이트 코드
         $this->_site_code = element('SiteCode', $site_cache);
 
         // 사이트 코드 (URL 세그먼트 배열에 site 값이 있다면 site 값 우선)
         $site_code = isset($uri_segments[config_get('uri_segment_keys.site')]) === true ? $uri_segments[config_get('uri_segment_keys.site')] : $this->_site_code;
+
+        // GNB Active Group Id
+        $gnb_active_group_id = str_first_pos_before(element($site_code, element('SiteKeys', $all_site_cache)), '>');
 
         // 전체 사이트 메뉴 캐쉬 조회
         $site_menu_cache = $this->getCacheItem('site_menu');
@@ -179,7 +185,7 @@ abstract class FrontController extends BaseController
                         $site_cache,
                         ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
                         config_item(SUB_DOMAIN),
-                        ['GnbActiveGroupId' => SUB_DOMAIN],
+                        ['GnbActiveGroupId' => $gnb_active_group_id],
                         ['GnbTreeMenu' => element('GnbTreeMenus', $site_menu_cache, [])],
                         ['SiteTreeMenu' => $site_tree_menu],
                         ['SiteActiveMenu' => $site_active_menu]

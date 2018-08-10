@@ -40,7 +40,8 @@ class Caching_site extends CI_Driver
             'code' => 'lms_sys_code',
             'tmp_numbers' => 'tmp_numbers'
         ];
-        $_ccd = [
+        $_group_ccd = [
+            'Pg' => '603',
             'PayMethod' => '604',
             'Campus' => '605',
             'DeliveryComp' => '606'
@@ -51,19 +52,20 @@ class Caching_site extends CI_Driver
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo
                 , DCC.CcdName as DeliveryCompName
+                , PGC.CcdEtc as PgDriver
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CONCAT(RC.CampusCcd, ":", C.CcdName) separator ",") 
                     from ' . $_table['site_r_campus'] . ' as RC inner join ' . $_table['code'] . ' as C
                         on RC.CampusCcd = C.Ccd
                     where RC.SiteCode = S.SiteCode and RC.IsStatus = "Y"
-                        and C.GroupCcd = "' . $_ccd['Campus'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
+                        and C.GroupCcd = "' . $_group_ccd['Campus'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
                   ), "N") as CampusCcdArr
                 , (
                     select GROUP_CONCAT(CONCAT(substring_index(substring_index(S.PayMethodCcds, ",", TN.num), ",", -1), ":", C.CcdName) separator ",")	
                     from ' . $_table['tmp_numbers'] . ' as TN, ' . $_table['code'] . ' as C
                     where char_length(S.PayMethodCcds) - char_length(replace(S.PayMethodCcds, ",", "")) >= TN.num - 1
                         and substring_index(substring_index(S.PayMethodCcds, ",", TN.num), ",", -1) = C.Ccd
-                        and C.GroupCcd = "' . $_ccd['PayMethod'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
+                        and C.GroupCcd = "' . $_group_ccd['PayMethod'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
                   ) as PayMethodCcdArr 
                 , substring_index(SiteUrl, ".", 1) as SiteGroupId
                 , substring(replace(substring_index(SiteUrl, "/", 2), substring_index(SiteUrl, "/", 1), ""), 2) as SiteId                                                           
@@ -73,7 +75,9 @@ class Caching_site extends CI_Driver
                 inner join ' . $_table['site_group'] . ' as SG
                     on S.SiteGroupCode = SG.SiteGroupCode
                 left join ' . $_table['code'] . ' as DCC
-                    on S.DeliveryCompCcd = DCC.Ccd and DCC.GroupCcd = "' . $_ccd['DeliveryComp'] . '" and DCC.IsUse = "Y" and DCC.IsStatus = "Y"
+                    on S.DeliveryCompCcd = DCC.Ccd and DCC.GroupCcd = "' . $_group_ccd['DeliveryComp'] . '" and DCC.IsStatus = "Y"
+                left join ' . $_table['code'] . ' as PGC
+                    on S.PgCcd = PGC.Ccd and PGC.GroupCcd = "' . $_group_ccd['Pg'] . '" and PGC.IsStatus = "Y"                    
             where S.IsUse = "Y" and S.IsStatus = "Y" and SG.IsUse = "Y" and SG.IsStatus = "Y"
         ';
 
@@ -88,6 +92,9 @@ class Caching_site extends CI_Driver
 
             $data[$key] = $row;
         }, $result);
+
+        // add site key array
+        $data['SiteKeys'] = array_pluck($data, 'SiteKey', 'SiteCode');
 
         return $data;
     }

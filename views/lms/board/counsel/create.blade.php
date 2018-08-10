@@ -8,6 +8,8 @@
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
+        <input type="hidden" name="is_best" value="{{$arr_reg_type['admin']}}"/>
+
         <div class="x_panel">
             <div class="x_title">
                 <h2>상담게시판 정보</h2>
@@ -24,7 +26,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item ml-12-dot">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @php $temp='0'; @endphp
                             @foreach($arr_campus as $row)
@@ -64,18 +66,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="is_public_y">공개여부<span class="required">*</span></label>
-                    <div class="col-md-10 item form-inline">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            <input type="radio" id="is_public_y" name="is_public" class="flat" value="Y" required="required" title="공개여부" @if($method == 'POST' || $data['IsPublic']=='Y')checked="checked"@endif/> <label for="is_public_y" class="input-label">공개</label>
-                            <input type="radio" id="is_public_n" name="is_public" class="flat" value="N" @if($data['IsPublic']=='N')checked="checked"@endif/> <label for="is_public_n" class="input-label">미공개</label>
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-10 item">
                         <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>

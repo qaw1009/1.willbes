@@ -352,10 +352,6 @@ class BoardModel extends WB_Model
         try {
             $arr_board_category = $this->_getBoardCategoryArray($board_idx);
 
-            if (count($arr_board_category) <= 0) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
-            }
-
             $insert_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
                 VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
@@ -615,7 +611,7 @@ class BoardModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            $set_data_Y = ['IsBest'=>'Y'];
+            $set_data_Y = ['IsBest'=>'1'];
             $str_board_idx_Y = implode(',', array_keys($params));
             $arr_board_idx_Y = explode(',', $str_board_idx_Y);
             $this->_conn-> set($set_data_Y)->where_in('boardIdx',$arr_board_idx_Y);

@@ -193,14 +193,11 @@ class VideoManager extends \app\controllers\BaseController
     {
         $bm_idx = $params[0];
         $site_code = $this->_req('site_code');
-        $is_best_type = ($this->_reqP('search_modal_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $bm_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
-                'LB.IsBest' => 'N',
                 'LB.CampusCcd' => $this->_reqP('search_modal_campus_ccd'),
                 'LB.SubjectIdx' => $this->_reqP('search_modal_subject'),
                 'LB.CourseIdx' => $this->_reqP('search_modal_course'),
@@ -214,6 +211,10 @@ class VideoManager extends \app\controllers\BaseController
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_modal_chk_hot_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
+        }
 
         if (!empty($this->_reqP('search_modal_start_date')) && !empty($this->_reqP('search_modal_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -234,24 +235,11 @@ class VideoManager extends \app\controllers\BaseController
             LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
             ';
 
-        $best_count = 0;
-        $best_list = [];
-        if ($is_best_type == 0) {
-            $best_data = $this->_bestBoardData($column, $bm_idx, $site_code);
-            $best_count = $best_data['count'];
-            $best_list = $best_data['data'];
-        }
-
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name[$bm_idx],true, $arr_condition, $sub_query_condition, $site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_condition, $sub_query_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
-        }
-
-        if ($best_count > 0) {
-            $count = $count + $best_count;
-            $list = array_merge($best_list, $list);
+            $list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_condition, $sub_query_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([
@@ -297,14 +285,11 @@ class VideoManager extends \app\controllers\BaseController
     {
         $bm_idx = $params[0];
         $site_code = $this->_req('site_code');
-        $is_best_type = ($this->_reqP('search_modal_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $bm_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
-                'LB.IsBest' => 'N',
                 'LB.CampusCcd' => $this->_reqP('search_modal_campus_ccd'),
                 'LB.IsUse' => $this->_reqP('search_modal_is_use'),
             ],
@@ -315,6 +300,10 @@ class VideoManager extends \app\controllers\BaseController
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_modal_chk_hot_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
+        }
 
         if (!empty($this->_reqP('search_modal_start_date')) && !empty($this->_reqP('search_modal_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -334,24 +323,11 @@ class VideoManager extends \app\controllers\BaseController
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
         ';
 
-        $best_count = 0;
-        $best_list = [];
-        if ($is_best_type == 0) {
-            $best_data = $this->_bestBoardData($column, $bm_idx, $site_code);
-            $best_count = $best_data['count'];
-            $best_list = $best_data['data'];
-        }
-
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name[$bm_idx],true, $arr_condition, $sub_query_condition, $site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_condition, $sub_query_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
-        }
-
-        if ($best_count > 0) {
-            $count = $count + $best_count;
-            $list = array_merge($best_list, $list);
+            $list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_condition, $sub_query_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([
@@ -466,38 +442,5 @@ class VideoManager extends \app\controllers\BaseController
             'getCategoryArray' => $get_category_array,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
-    }
-
-    /**
-     * 게시판 BEST 정보 조회
-     * @param $column
-     * @param $bm_idx
-     * @param $site_code
-     * @return array
-     */
-    private function _bestBoardData($column, $bm_idx, $site_code)
-    {
-        $arr_best_condition = [
-            'EQ' => [
-                'LB.BmIdx' => $bm_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
-                'LB.IsBest' => 'Y'
-            ]
-        ];
-
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y'
-            ]
-        ];
-
-        $best_list = $this->boardModel->listAllBoard($this->board_name[$bm_idx],false, $arr_best_condition, $sub_query_condition, $site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
-        $datas = [
-            'count' => count($best_list),
-            'data' => $best_list
-        ];
-
-        return $datas;
     }
 }

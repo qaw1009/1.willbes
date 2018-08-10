@@ -53,8 +53,8 @@
 
                         <select class="form-control" id="search_is_best" name="search_is_best">
                             <option value="">BEST 여부</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                            <option value="1">사용</option>
+                            <option value="2">미사용</option>
                         </select>
 
                         <select class="form-control" id="search_is_use" name="search_is_use">
@@ -159,7 +159,7 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            if (row.IsBest == 'Y') {
+                            if (row.IsBest == '1') {
                                 return 'BEST';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -168,7 +168,7 @@
                         }},
                     {'data' : 'OrderNum', 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            if (row.IsBest == 'Y') {
+                            if (row.IsBest == '1') {
                                 return 'BEST';
                             } else {
                                 return data;
@@ -208,8 +208,8 @@
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                             var chk = '';
-                            if (data == 'Y') { chk = 'checked=checked'; } else { chk = ''; }
-                            return '<input type="checkbox" name="is_best" value="Y" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
+                            if (data == '1') { chk = 'checked=checked'; } else { chk = ''; }
+                            return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
                         }},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {

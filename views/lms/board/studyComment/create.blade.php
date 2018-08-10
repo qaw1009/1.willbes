@@ -86,7 +86,7 @@
                     <label class="control-label col-md-1 b-line" for="is_best">BEST</label>
                     <div class="col-md-3 ml-8-dot form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="Y" class="flat" @if($data['IsBest']=='Y')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">BEST</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">BEST</label>
                         </div>
                     </div>
                     <label class="control-label col-md-1 c-line" for="is_use_y">사용여부<span class="required">*</span></label>

@@ -160,7 +160,6 @@ class Qna extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
         $prof_idx = $this->_req('prof_idx');
-        $is_notice_type = ($this->_reqP('search_chk_notice_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
@@ -179,13 +178,16 @@ class Qna extends BaseBoard
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
                     'LB.ReplyContent' => $this->_reqP('search_replay_value'),
-
                     'MEM.MemId' => $this->_reqP('search_member_value'),
                     'MEM.MemName' => $this->_reqP('search_member_value'),
                     'MEM.Phone3' => $this->_reqP('search_member_value'),
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_chk_notice_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
+        }
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -213,25 +215,11 @@ class Qna extends BaseBoard
             LB.MdCateCode, MdSysCate.CateName as MdCateName
         ';
 
-        //공지사항
-        $notice_count = 0;
-        $notice_list = [];
-        if ($is_notice_type == 0) {
-            $notice_data = $this->_noticeBoardData($column);
-            $notice_count = $notice_data['count'];
-            $notice_list = $notice_data['data'];
-        }
-
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
-        }
-
-        if ($notice_count > 0) {
-            $count = $count + $notice_count;
-            $list = array_merge($notice_list, $list);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([

@@ -164,7 +164,7 @@
                     }
                 },
                 "createdRow" : function( row, data, index ) {
-                    if (data['RegType'] == '1') {
+                    if (data['IsBest'] == '1') {
                         $(row).addClass('blue-sky');
                     }
 
@@ -175,7 +175,7 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            if (row.RegType == '1') {
+                            if (row.IsBest == '1') {
                                 return '<b>공지</b>';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -184,17 +184,20 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
+                            var str = '없음';
+                            if (data != null) {
+                                str = '';
+                                var obj = data.split(',');
+                                for (key in obj) {
+                                    str += obj[key] + "<br>";
+                                }
                             }
                             return str;
                         }},
                     {'data' : 'TypeCcdName'},
                     {'data' : 'TypeCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            if (row.RegType == 1) {
+                            if (row.IsBest == 1) {
                                 return '<a href="javascript:void(0);" class="btn-admin-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                             } else {
                                 return '<a href="javascript:void(0);" class="btn-counsel-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
@@ -219,7 +222,11 @@
                     {'data' : 'ReplyRegAdminName'},
                     {'data' : 'ReplyRegDatm'},
                     {'data' : 'IsPublic', 'render' : function(data, type, row, meta) {
-                            return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
+                            if (row.IsBest == 1) {
+                                return '';
+                            } else {
+                                return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
+                            }
                         }},
 
                     /*{'data' : 'ReadCnt'},*/

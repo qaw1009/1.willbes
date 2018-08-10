@@ -95,14 +95,12 @@ class Counsel extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
-        $is_notice_type = ($this->_reqP('search_chk_notice_display') == 1) ? '1' : '0';
 
         //상담글 조건
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 /*'LB.IsStatus' => ($this->_reqP('search_chk_delete_value') == 1) ? 'N' : 'Y',*/
-                'LB.RegType' => $this->_reg_type['user'],
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
@@ -128,6 +126,10 @@ class Counsel extends BaseBoard
 
         if ($this->_req('search_chk_vod_value') == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.VocCcd' => $this->_Ccd['voc']]);
+        }
+
+        if ($this->_reqP('search_chk_notice_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
         }
 
         //등록일
@@ -156,25 +158,25 @@ class Counsel extends BaseBoard
         ';
 
         //공지사항
-        $notice_count = 0;
+        /*$notice_count = 0;
         $notice_list = [];
         if ($is_notice_type == 0) {
             $notice_data = $this->_noticeBoardData($column);
             $notice_count = $notice_data['count'];
             $notice_list = $notice_data['data'];
-        }
+        }*/
 
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'desc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
-        if ($notice_count > 0) {
+        /*if ($notice_count > 0) {
             $count = $count + $notice_count;
             $list = array_merge($notice_list, $list);
-        }
+        }*/
 
         return $this->response([
             'recordsTotal' => $count,
@@ -258,7 +260,7 @@ class Counsel extends BaseBoard
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
-            ['field' => 'is_public', 'label' => '공개여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
 
@@ -318,7 +320,7 @@ class Counsel extends BaseBoard
         $arr_condition = ([
             'EQ'=>[
                 'BmIdx' => $this->bm_idx,
-                'RegType' => $data['RegType']
+                'IsBest' => $data['IsBest']
             ]
         ]);
 
@@ -522,7 +524,7 @@ class Counsel extends BaseBoard
         $arr_condition = ([
             'EQ'=>[
                 'BmIdx' => $this->bm_idx,
-                'RegType' => $data['RegType']
+                'IsBest' => $data['IsBest']
             ]
         ]);
 
@@ -678,9 +680,10 @@ class Counsel extends BaseBoard
                 'BmIdx' => $this->bm_idx,
                 'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
+                'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Title' => element('title', $input),
                 'Content' => element('board_content', $input),
-                'IsPublic' => (element('is_public', $input) == 'Y') ? 'Y' : 'N',
+                'IsUse' => element('is_use', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'SettingReadCnt' => element('setting_readCnt', $input),
             ],

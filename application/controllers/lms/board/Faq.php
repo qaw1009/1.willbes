@@ -82,14 +82,13 @@ class Faq extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
-        $is_best_type = ($this->_reqP('search_chk_hot_display') == 1) ? '1' : '0';
 
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
-                'LB.IsBest' => 'N',
+                /*'LB.RegType' => '1',
+                'LB.IsBest' => 'N',*/
                 /*'LB.SiteCode' => $this->site_code,*/
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.FaqGroupTypeCcd' => $this->_reqP('search_group_faq_ccd'),
@@ -103,6 +102,12 @@ class Faq extends BaseBoard
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_is_best') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '1']);
+        } else if ($this->_reqP('search_is_best') == 2) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
+        }
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -124,25 +129,17 @@ class Faq extends BaseBoard
             LB.OrderNum
         ';
 
-        $best_count = 0;
-        $best_list = [];
-        if ($is_best_type == 0) {
-            $best_data = $this->_bestBoardData($column);
-            $best_count = $best_data['count'];
-            $best_list = $best_data['data'];
-        }
-
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.BoardIdx' => 'asc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'asc'], $column);
         }
 
-        if ($best_count > 0) {
+        /*if ($best_count > 0) {
             $count = $count + $best_count;
             $list = array_merge($best_list, $list);
-        }
+        }*/
 
         return $this->response([
             'recordsTotal' => $count,
@@ -315,8 +312,7 @@ class Faq extends BaseBoard
             'EQ'=>[
                 'BmIdx' => $this->bm_idx,
                 'IsStatus' => 'Y',
-                'IsBest' => $data['IsBest'],
-                'RegType' => $this->_reg_type['admin']
+                'IsBest' => $data['IsBest']
             ]
         ]);
         //이전글
@@ -473,38 +469,6 @@ class Faq extends BaseBoard
         $this->json_result(true, '정렬이 변경되었습니다.', [], $result);
     }
 
-    /**
-     * 게시판 BEST 정보 조회
-     * @param $column
-     * @return array
-     */
-    private function _bestBoardData($column)
-    {
-        $arr_best_condition = [
-            'EQ' => [
-                'LB.BmIdx' => $this->bm_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
-                'LB.IsBest' => 'Y',
-                /*'LB.SiteCode' => $this->site_code,*/
-            ]
-        ];
-
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y'
-            ]
-        ];
-
-        $best_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, $this->site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
-        $datas = [
-            'count' => count($best_list),
-            'data' => $best_list
-        ];
-
-        return $datas;
-    }
-
     private function _setInputData($input){
         $arr_condition = [
             'EQ' => [
@@ -525,7 +489,7 @@ class Faq extends BaseBoard
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
                 'OrderNum' => (empty($order_num) === true) ? '1' : $order_num + 1,
-                'IsBest' => (element('is_best', $input) == 'Y') ? 'Y' : 'N',
+                'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),

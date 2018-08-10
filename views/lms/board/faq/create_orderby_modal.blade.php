@@ -125,6 +125,7 @@
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 replaceModal("{{ site_url('board/faq/createOrderByModal?') }}" + '{!! $boardDefaultQueryString !!}' + '&select_group_ccd=' + $('#model_faq_group_ccd').val());
+                                datatableSearching();
                             }
                         }, showError, false, 'POST', 'json');
                     }

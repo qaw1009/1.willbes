@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1" for="">제목</label>
                 <div class="form-control-static col-md-10">
-                    {!! ($data['IsBest'] == 'Y') ? '<span class="red">[HOT]</span>' : '' !!} {{$data['Title']}}
+                    {!! ($data['IsBest'] == '1') ? '<span class="red">[HOT]</span>' : '' !!} {{$data['Title']}}
                 </div>
             </div>
 

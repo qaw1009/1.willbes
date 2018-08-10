@@ -87,9 +87,6 @@ class Faq extends BaseBoard
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
-                /*'LB.RegType' => '1',
-                'LB.IsBest' => 'N',*/
-                /*'LB.SiteCode' => $this->site_code,*/
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.FaqGroupTypeCcd' => $this->_reqP('search_group_faq_ccd'),
                 'LB.FaqTypeCcd' => $this->_reqP('search_faq_type'),
@@ -135,11 +132,6 @@ class Faq extends BaseBoard
         if ($count > 0) {
             $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'asc'], $column);
         }
-
-        /*if ($best_count > 0) {
-            $count = $count + $best_count;
-            $list = array_merge($best_list, $list);
-        }*/
 
         return $this->response([
             'recordsTotal' => $count,
@@ -193,8 +185,7 @@ class Faq extends BaseBoard
             $arr_condition = ([
                 'EQ'=>[
                     'LB.BoardIdx' => $board_idx,
-                    'LB.IsStatus' => 'Y',
-                    'LB.RegType' => $this->_reg_type['admin']
+                    'LB.IsStatus' => 'Y'
                 ]
             ]);
             $arr_condition_file = [
@@ -294,8 +285,7 @@ class Faq extends BaseBoard
         $arr_condition = ([
             'EQ'=>[
                 'LB.BoardIdx' => $board_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => $this->_reg_type['admin']
+                'LB.IsStatus' => 'Y'
             ]
         ]);
         $arr_condition_file = [

@@ -70,8 +70,6 @@ class Notice extends BaseBoard
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
-                /*'LB.RegType' => '1',
-                'LB.IsBest' => 'N',*/
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
@@ -183,8 +181,7 @@ class Notice extends BaseBoard
             $arr_condition = ([
                 'EQ'=>[
                     'LB.BoardIdx' => $board_idx,
-                    'LB.IsStatus' => 'Y',
-                    'LB.RegType' => $this->_reg_type['admin']
+                    'LB.IsStatus' => 'Y'
                 ]
             ]);
             $arr_condition_file = [
@@ -283,8 +280,7 @@ class Notice extends BaseBoard
         $arr_condition = ([
             'EQ'=>[
                 'LB.BoardIdx' => $board_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => $this->_reg_type['admin']
+                'LB.IsStatus' => 'Y'
             ]
         ]);
         $arr_condition_file = [

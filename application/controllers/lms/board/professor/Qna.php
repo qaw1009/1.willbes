@@ -261,8 +261,7 @@ class Qna extends BaseBoard
             $arr_condition = ([
                 'EQ'=>[
                     'LB.BoardIdx' => $board_idx,
-                    'LB.IsStatus' => 'Y',
-                    'LB.RegType' => $this->_reg_type['admin']
+                    'LB.IsStatus' => 'Y'
                 ]
             ]);
             $arr_condition_file = [
@@ -396,8 +395,7 @@ class Qna extends BaseBoard
             'EQ'=>[
                 'LB.BoardIdx' => $board_idx,
                 'LB.ProfIdx' => $prof_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => $this->_reg_type['admin']
+                'LB.IsStatus' => 'Y'
             ]
         ]);
         $arr_condition_file = [
@@ -678,36 +676,6 @@ class Qna extends BaseBoard
 
         $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
         $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * 상담게시판 공지사항 정보 조회
-     * @param $column
-     * @return array
-     */
-    private function _noticeBoardData($column)
-    {
-        $arr_best_condition = [
-            'EQ' => [
-                'LB.BmIdx' => $this->bm_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => $this->_reg_type['admin']
-            ]
-        ];
-
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y'
-            ]
-        ];
-
-        $notice_list = $this->boardModel->listAllBoard($this->board_name,false, $arr_best_condition, $sub_query_condition, $this->site_code, '10', '', ['LB.BoardIdx' => 'desc'], $column);
-        $datas = [
-            'count' => count($notice_list),
-            'data' => $notice_list
-        ];
-
-        return $datas;
     }
 
     private function _setInputData($input, $prof_idx){

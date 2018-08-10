@@ -214,8 +214,7 @@ class LiveLectureMaterial extends BaseBoard
             $arr_condition = ([
                 'EQ'=>[
                     'LB.BoardIdx' => $board_idx,
-                    'LB.IsStatus' => 'Y',
-                    'LB.RegType' => $this->_reg_type['admin']
+                    'LB.IsStatus' => 'Y'
                 ]
             ]);
             $arr_condition_file = [
@@ -317,8 +316,7 @@ class LiveLectureMaterial extends BaseBoard
         $arr_condition = ([
             'EQ'=>[
                 'LB.BoardIdx' => $board_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => $this->_reg_type['admin']
+                'LB.IsStatus' => 'Y'
             ]
         ]);
         $arr_condition_file = [

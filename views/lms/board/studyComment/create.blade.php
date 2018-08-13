@@ -9,7 +9,7 @@
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
-        <input type="hidden" name="lec_score" value=""/>
+        <input type="hidden" name="lec_score" value="{{$data['LecScore']}}"/>
         <div class="x_panel">
             <div class="x_title">
                 <h2>공지게시판 정보</h2>
@@ -67,30 +67,51 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="subject_idx">강좌명<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="subject_idx">강좌적용구분<span class="required">*</span></label>
                     <div class="col-md-4 item">
-                        <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
-                        <span id="selected_lec_idx" class="pl-10"></span>
+                        <div class="radio">
+                            @foreach($arr_prodType_ccd as $key => $arr)
+                                <input type="radio" id="prod_type_ccd_{{ $loop->index }}" name="prod_type_ccd" data-input="{{ $arr[1] }}" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="쿠폰적용구분" @endif @if($data['ProdApplyTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $arr[0] }}</label>
+                            @endforeach
+                        </div>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="lec_score">평점<span class="required">*</span></label>
-                    <div class="form-inline col-md-4 ml-12-dot item">
+                    <div class="form-inline col-md-4 ml-12-dot">
                         <ul class="star-rating cs-pointer" id="starRating" data-stars="5" data-current="{{$data['LecScore']}}" data-static="false"></ul>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="reg_mem_name">회원명<span class="required">*</span></label>
-                    <div class="form-inline col-md-3">
+                    <label class="control-label col-md-1-1" for="subject_idx">강좌명<span class="required">*</span></label>
+                    <div class="col-md-10">
+                        <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
+                        <span id="selected_product" class="pl-10">
+                            @if(empty($data['ProdCode']) === false)
+                                <span class="pr-10">{{$data['ProdName']}}
+                                    <a href="#none" data-prod-code="{{$data['ProdCode']}}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                    <input type="hidden" name="prod_code[]" value="{{$data['ProdCode']}}"/>
+                                </span>
+                            @endif
+                            </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="reg_mem_name">회원명<span class="required">*</span></label>
+                    <div class="form-inline col-md-4">
                         <input type="text" id="reg_mem_name" name="reg_mem_name" required="required" class="form-control" maxlength="46" title="회원명" value="{{$data['RegMemName']}}">
                     </div>
-                    <label class="control-label col-md-1 b-line" for="is_best">BEST</label>
-                    <div class="col-md-3 ml-8-dot form-inline">
+                    <label class="control-label col-md-1-1 d-line" for="is_best">BEST</label>
+                    <div class="col-md-3 form-inline ml-8-dot">
                         <div class="checkbox">
                             <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">BEST</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-1 c-line" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-3 ml-8-dot item form-inline">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <div class="col-md-3 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/><label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
@@ -100,7 +121,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
+                    <div class="col-md-10 item">
                         <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
@@ -194,24 +215,35 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+                $('#selected_product').html('');
             });
 
-            // 카테고리 검색
-            $('#btn_category_search').on('click', function(event) {
+            // 카테고리 검색 or 상품 검색
+            $('#btn_category_search, #btn_product_search').on('click', function(event) {
+                var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.')
                     return;
                 }
 
-                $('#btn_category_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
-                    'width' : 900
-                });
+                if (btn_id === 'btn_category_search') {
+                    $('#btn_category_search').setLayer({
+                        'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                        'width' : 900
+                    });
+                } else if (btn_id === 'btn_product_search') {
+                    // 강좌 검색
+                    var prod_type = $('input[name="prod_type_ccd"]:checked').data('input').split(':');
+                    $('#btn_product_search').setLayer({
+                        'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                        'width' : 1200
+                    });
+                }
             });
 
-            // 카테고리 삭제
-            $regi_form.on('click', '.selected-category-delete', function() {
+            // 카테고리, 상품 삭제
+            $regi_form.on('click', '.selected-category-delete, .selected-product-delete', function() {
                 var that = $(this);
                 that.parent().remove();
             });
@@ -258,5 +290,21 @@
                 }, showValidateError, addValidate, false, 'alert');
             });
         });
+
+        function addValidate() {
+            if($regi_form.find('input[name="cate_code[]"]').length < 1) {
+                alert('카테고리 선택 필드는 필수입니다.');
+                return false;
+            }
+
+            if($regi_form.find('input[name="prod_code[]"]').length < 1) {
+                alert('강좌명 선택 필드는 필수입니다.');
+                return false;
+            } else if($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                alert('강좌명 선택 필드는 1개만 선택 가능합니다.');
+                return false;
+            }
+            return true;
+        }
     </script>
 @stop

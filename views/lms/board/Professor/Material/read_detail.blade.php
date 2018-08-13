@@ -44,9 +44,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">강좌명</label>
+                    <label class="control-label col-md-1-1" for="">강좌적용구분</label>
                     <div class="form-control-static col-md-4">
+                        {{$data['ProdApplyTypeName']}}
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="">강좌명</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
+                        {{$data['ProdName']}}
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="">조회수(생성)</label>
+                    <div class="form-control-static col-md-4">
+                        {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">사용</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
@@ -56,16 +67,12 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">첨부</label>
-                    <div class="col-md-4">
+                    <div class="col-md-10">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
                                 <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
                             @endif
                         @endfor
-                    </div>
-                    <label class="control-label col-md-1-1 d-line" for="">조회수(생성)</label>
-                    <div class="form-control-static col-md-4 ml-12-dot">
-                        {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                 </div>
 

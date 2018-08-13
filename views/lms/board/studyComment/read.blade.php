@@ -44,20 +44,24 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-1-1" for="">강좌명</label>
+                <label class="control-label col-md-1-1" for="">강좌적용구분</label>
                 <div class="form-control-static col-md-4">
-                    {{$data['ProdCode']}}
+                    {{$data['ProdApplyTypeName']}}
                 </div>
-                <label class="control-label col-md-1-1 d-line" for="">평점</label>
-                <div class="col-md-4 ml-12-dot">
-                    <ul class="star-rating" id="starRating" data-stars="5" data-current="{{$data['LecScore']}}" data-static="true"></ul>
+                <label class="control-label col-md-1-1 d-line" for="">강좌명</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{$data['ProdName']}}
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-1-1" for="">사용</label>
-                <div class="form-control-static col-md-10">
+                <div class="form-control-static col-md-4">
                     {{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}
+                </div>
+                <label class="control-label col-md-1-1 d-line" for="">평점</label>
+                <div class="col-md-4 ml-12-dot">
+                    <ul class="star-rating" id="starRating" data-stars="5" data-current="{{$data['LecScore']}}" data-static="true"></ul>
                 </div>
             </div>
 

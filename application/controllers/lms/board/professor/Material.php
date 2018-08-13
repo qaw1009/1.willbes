@@ -22,6 +22,11 @@ class Material extends BaseBoard
     private $_groupCcd = [
         'type_group_ccd' => '632' //유형 그룹 코드 = 자료유형
     ];
+    private $_prodType_group_ccs = '636';   //강좌적용구분
+    private $_prodType_ccds = [     //강좌적용구분 : 온라인강좌, 학원강좌
+        '636001' => 'on',
+        '636002' => 'off'
+    ];
 
     public function __construct()
     {
@@ -180,7 +185,8 @@ class Material extends BaseBoard
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName, LB.ProdApplyTypeCcd, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdCode, lms_product.ProdName
         ';
 
         $list = [];
@@ -254,12 +260,22 @@ class Material extends BaseBoard
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
 
+        //상품타입
+        $arr_prodType_ccds = [];
+        $codes = $this->codeModel->getCcd($this->_prodType_group_ccs);
+        foreach ($this->_prodType_ccds as $key => $val) {
+            if (empty($codes[$key]) === false) {
+                $arr_prodType_ccds[$key][] = $codes[$key];
+                $arr_prodType_ccds[$key][] = $val;
+            }
+        }
+
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName,
-            LB.ProdCode
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName, LB.ProdApplyTypeCcd, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdCode, lms_product.ProdName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -304,6 +320,7 @@ class Material extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
+            'arr_prodType_ccd' => $arr_prodType_ccds,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
     }
@@ -322,6 +339,8 @@ class Material extends BaseBoard
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
             ['field' => 'type_ccd', 'label' => '자료유형', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'trim|required'],
+            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'trim|required'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
@@ -366,7 +385,8 @@ class Material extends BaseBoard
         $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName, LB.ProdApplyTypeCcd, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdCode, lms_product.ProdName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -486,6 +506,7 @@ class Material extends BaseBoard
     }
 
     private function _setInputData($input, $prof_idx){
+        $prod_code = element('prod_code', $input)[0];
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
@@ -494,6 +515,8 @@ class Material extends BaseBoard
                 'ProfIdx' => $prof_idx,
                 'TypeCcd' => element('type_ccd', $input),
                 'SubjectIdx' => element('subject_idx', $input),
+                'ProdApplyTypeCcd' => element('prod_type_ccd', $input),
+                'ProdCode' => $prod_code,
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),

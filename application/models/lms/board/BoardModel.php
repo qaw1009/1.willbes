@@ -120,6 +120,8 @@ class BoardModel extends WB_Model
                 break;
             case "Material" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
+                    LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
                 ";
@@ -139,7 +141,8 @@ class BoardModel extends WB_Model
                 break;
             case "studyComment" :
                 $from = $from."
-                    INNER JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
+                    LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";
@@ -354,7 +357,7 @@ class BoardModel extends WB_Model
 
             $insert_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 Title, Content, ReadCnt, SettingReadCnt, OrderNum,
                 IsUse,
                 IsStatus, RegMemIdx, 
@@ -364,7 +367,7 @@ class BoardModel extends WB_Model
             ';
             $select_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, 
-                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdCode,
+                VocCcd, AreaCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
                 Content, ReadCnt, SettingReadCnt, OrderNum, 
                 CASE IsUse WHEN "Y" THEN "N" ELSE "N" END AS IsUse,
@@ -501,6 +504,8 @@ class BoardModel extends WB_Model
                 break;
             case "Material" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
+                    LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
                 ";
@@ -520,6 +525,8 @@ class BoardModel extends WB_Model
                 break;
             case "studyComment" :
                 $from = $from."
+                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
+                    LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
                 ";

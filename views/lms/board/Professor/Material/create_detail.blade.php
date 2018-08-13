@@ -63,13 +63,39 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="subject_idx">강좌적용구분<span class="required">*</span></label>
+                    <div class="col-md-4 item">
+                        <div class="radio">
+                            @foreach($arr_prodType_ccd as $key => $arr)
+                                <input type="radio" id="prod_type_ccd_{{ $loop->index }}" name="prod_type_ccd" data-input="{{ $arr[1] }}" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="쿠폰적용구분" @endif @if($data['ProdApplyTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $arr[0] }}</label>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="subject_idx">강좌명<span class="required">*</span></label>
+                    <div class="col-md-10">
+                        <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
+                        <span id="selected_product" class="pl-10">
+                            @if(empty($data['ProdCode']) === false)
+                                <span class="pr-10">{{$data['ProdName']}}
+                                    <a href="#none" data-prod-code="{{$data['ProdCode']}}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                    <input type="hidden" name="prod_code[]" value="{{$data['ProdCode']}}"/>
+                                </span>
+                            @endif
+                            </span>
+                    </div>
+                </div>
+
+                {{--<div class="form-group">
                     <label class="control-label col-md-1-1" for="prod_code">강좌명<span class="required">*</span></label>
                     <div class="form-inline col-md-10 item">
                         <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
                         <span id="selected_prod_code" class="pl-10"></span>
                         <p class="form-control-static">• 명칭, 코드 검색 가능</p>
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_best">HOT</label>
@@ -89,7 +115,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
+                    <div class="col-md-10 item">
                         <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
@@ -168,20 +194,37 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+                $('#selected_product').html('');
             });
 
-            // 카테고리 검색
-            $('#btn_category_search').on('click', function(event) {
+            // 카테고리 검색 or 상품 검색
+            $('#btn_category_search, #btn_product_search').on('click', function(event) {
+                var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
                     alert('운영사이트를 먼저 선택해 주십시오.')
                     return;
                 }
 
-                $('#btn_category_search').setLayer({
-                    'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
-                    'width' : 900
-                });
+                if (btn_id === 'btn_category_search') {
+                    $('#btn_category_search').setLayer({
+                        'url' : '{{ site_url('/common/searchCategory/index/multiple/site_code/') }}' + site_code + '/cate_depth/1',
+                        'width' : 900
+                    });
+                } else if (btn_id === 'btn_product_search') {
+                    // 강좌 검색
+                    var prod_type = $('input[name="prod_type_ccd"]:checked').data('input').split(':');
+                    $('#btn_product_search').setLayer({
+                        'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                        'width' : 1200
+                    });
+                }
+            });
+
+            // 카테고리, 상품 삭제
+            $regi_form.on('click', '.selected-category-delete, .selected-product-delete', function() {
+                var that = $(this);
+                that.parent().remove();
             });
 
             // 카테고리 삭제
@@ -238,5 +281,21 @@
                 }, showValidateError, addValidate, false, 'alert');
             });
         });
+
+        function addValidate() {
+            if($regi_form.find('input[name="cate_code[]"]').length < 1) {
+                alert('카테고리 선택 필드는 필수입니다.');
+                return false;
+            }
+
+            if($regi_form.find('input[name="prod_code[]"]').length < 1) {
+                alert('강좌명 선택 필드는 필수입니다.');
+                return false;
+            } else if($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                alert('강좌명 선택 필드는 1개만 선택 가능합니다.');
+                return false;
+            }
+            return true;
+        }
     </script>
 @stop

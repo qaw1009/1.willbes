@@ -19,6 +19,11 @@ class studyComment extends BaseBoard
         'default' => 0,     //본문글 첨부
         'reply' => 1        //본문 답변글첨부
     ];
+    private $_prodType_group_ccs = '636';   //강좌적용구분
+    private $_prodType_ccds = [     //강좌적용구분 : 온라인강좌, 학원강좌
+        '636001' => 'on',
+        '636002' => 'off'
+    ];
 
     public function __construct()
     {
@@ -111,7 +116,7 @@ class studyComment extends BaseBoard
 
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode, lms_product.ProdName,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
 
@@ -167,10 +172,20 @@ class studyComment extends BaseBoard
         //교수조회
         $arr_professor = $this->_getProfessorArray();
 
+        //상품타입
+        $arr_prodType_ccds = [];
+        $codes = $this->codeModel->getCcd($this->_prodType_group_ccs);
+        foreach ($this->_prodType_ccds as $key => $val) {
+            if (empty($codes[$key]) === false) {
+                $arr_prodType_ccds[$key][] = $codes[$key];
+                $arr_prodType_ccds[$key][] = $val;
+            }
+        }
+
         if (empty($params[0]) === false) {
             $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdApplyTypeCcd, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -209,6 +224,7 @@ class studyComment extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
+            'arr_prodType_ccd' => $arr_prodType_ccds,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
     }
@@ -229,7 +245,8 @@ class studyComment extends BaseBoard
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
             ['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],
-            /*['field' => 'prod_code', 'label' => '강좌명', 'rules' => 'trim|required'],*/
+            ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'trim|required'],
+            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'trim|required'],
             ['field' => 'lec_score', 'label' => '평점', 'rules' => 'trim|required'],
             ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -271,7 +288,7 @@ class studyComment extends BaseBoard
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -466,13 +483,15 @@ class studyComment extends BaseBoard
     }
 
     private function _setInputData($input){
+        $prod_code = element('prod_code', $input)[0];
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
-                'ProdCode' => element('prod_code', $input),
+                'ProdApplyTypeCcd' => element('prod_type_ccd', $input),
+                'ProdCode' => $prod_code,
                 'LecScore' => element('lec_score', $input),
                 'RegMemName' => element('reg_mem_name', $input),
                 'RegType' => element('reg_type', $input),

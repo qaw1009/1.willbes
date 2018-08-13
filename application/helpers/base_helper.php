@@ -211,13 +211,27 @@ if (!function_exists('logger')) {
     /**
      * log message
      * @param $msg
-     * @param array $vars
+     * @param null|mixed $vars
      * @param string $log_level
+     * @param string $log_path
      */
-    function logger($msg, $vars = array(), $log_level = 'debug')
+    function logger($msg, $vars = null, $log_level = 'debug', $log_path = '')
     {
-        $msg .= (is_array($vars) === true && count($vars) > 0) ? ' ' . json_encode($vars, JSON_UNESCAPED_UNICODE) : '';
-        log_message($log_level, $msg);
+        //$msg .= is_array($vars) === true && empty($vars) === false ? ' ' . json_encode($vars, JSON_UNESCAPED_UNICODE) : '';
+        $msg .= empty($vars) === false ? ' : ' . var_export($vars, true) : '';
+
+        if (empty($log_path) === true) {
+            log_message($log_level, $msg);
+        } else {
+            $_CI =& get_instance();
+            $_CI->load->helper('file');
+
+            $msg = strtoupper($log_level) . ' - ' . date('Y-m-d H:i:s') . ' --> ' . $msg . PHP_EOL;
+
+            if(write_file($log_path, $msg, 'a+') === false) {
+                log_message('debug', 'Unable to write the custom log file');
+            }
+        }
     }
 }
 

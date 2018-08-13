@@ -9,6 +9,7 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+        <input type="hidden" name="total_pay_price" value="{{ $results['total_pay_price'] }}"/>  {{-- 최종결제금액 --}}
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
@@ -101,7 +102,6 @@
                                     <dl>
                                         <dt class="tit">
                                             <span class="pBox p4">배송</span> 배송비
-                                            <input type="hidden" name="delivery_price" value="{{ $results['delivery_price'] }}" class="chk_price"/>
                                             @if($results['cart_type'] == 'book')
                                                 <span class="tx-light-blue">(교재 총 결제금액이 {{ number_format($__cfg['DeliveryFreePrice']) }}원 이상 인 경우 배송비 무료)</span>
                                             @endif
@@ -127,7 +127,7 @@
                     <dl class="priceBox">
                         <dt>
                             <div>상품주문금액</div>
-                            <div class="price tx-light-blue">{{ number_format($results['total_price']) }}원</div>
+                            <div class="price tx-light-blue">{{ number_format($results['total_order_price']) }}원</div>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -135,7 +135,7 @@
                         </dt>
                         <dt>
                             <div>쿠폰할인금액</div>
-                            <div class="price tx-light-pink"><span id="coupon_disc_price">0</span>원</div>
+                            <div class="price tx-light-pink"><span id="total_coupon_disc_price">0</span>원</div>
                         </dt>
                         <dt class="price-img">
                             <span class="row-line">|</span>
@@ -157,7 +157,7 @@
                 </li>
                 <li class="price-total">
                     <div>결제예상금액</div>
-                    <span class="price tx-light-blue"><span class="total-pay-price">{{ number_format($results['total_price'] + $results['delivery_price']) }}</span>원</span>
+                    <span class="price tx-light-blue"><span class="total-pay-price">{{ number_format($results['total_pay_price']) }}</span>원</span>
                 </li>
             </ul>
             <div class="cart-PointBox NG">
@@ -309,7 +309,7 @@
                             <td class="w-buyinfo tx-left pl25">
                                 <dl>
                                     <dt>
-                                        <span class="t-price tx-light-blue NGEB"><span class="total-pay-price">{{ number_format($results['total_price'] + $results['delivery_price']) }}</span>원</span>
+                                        <span class="t-price tx-light-blue NGEB"><span class="total-pay-price">{{ number_format($results['total_pay_price']) }}</span>원</span>
                                         <span id="pay_method_name"></span>
                                         <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
                                     </dt>
@@ -521,9 +521,9 @@
 
         // 포인트 전액사용 버튼 클릭
         $regi_form.on('click', '#btn-all-use-point', function() {
-            var point_amt = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
+            var has_point = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
             var $use_point = $regi_form.find('input[name="use_point"]');
-            $use_point.val(point_amt).trigger('change').trigger('blur');
+            $use_point.val(has_point).trigger('change').trigger('blur');
         });
 
         // 포인트 사용
@@ -531,11 +531,11 @@
             var use_point = parseInt($(this).val()) || 0;
             var is_on_package = '{{ $results['is_on_package'] === true ? 'Y' : 'N' }}';
             var point_type_name = '{{ $results['cart_type_name'] }}';
-            var point_amt = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
+            var has_point = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
             var use_min_point = parseInt('{{ config_item('use_min_point') }}');     // 사용 가능 최소 포인트
             var use_point_unit = parseInt('{{ config_item('use_point_unit') }}');   // 사용 포인트 단위
             var use_max_point_rate = parseInt('{{ config_item('use_max_point_rate') }}');   // 주문금액 대비 포인트 사용 비율
-            var real_pay_price = parseInt('{{ $results['total_price'] }}') - parseInt($regi_form.find('#coupon_disc_price').html().replace(/,/g, ''));
+            var real_pay_price = parseInt('{{ $results['total_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, ''));
             var use_max_point = real_pay_price * (use_max_point_rate / 100);
 
             if (use_point < 1) {
@@ -548,7 +548,7 @@
                 return;
             }
 
-            if (point_amt < use_min_point || use_point % use_point_unit !== 0) {
+            if (has_point < use_min_point || use_point % use_point_unit !== 0) {
                 alert(point_type_name + ' 포인트는 ' + addComma(use_min_point) + 'P부터 ' + use_point_unit + 'P 단위로 사용 가능합니다.');
                 $(this).val('').trigger('change');
                 return;
@@ -562,20 +562,21 @@
 
         // 결제금액 계산 및 표기
         $regi_form.on('change', '.chk_price', function() {
-            var total_price = parseInt('{{ $results['total_price'] }}');      // 전체상품주문금액
-            var delivery_price = parseInt($regi_form.find('input[name="delivery_price"]').val()) || 0;     // 배송료
+            var total_order_price = parseInt('{{ $results['total_order_price'] }}');      // 전체상품주문금액
+            var delivery_price = parseInt('{{ $results['delivery_price'] }}');     // 배송료
             var point_disc_price = parseInt($regi_form.find('input[name="use_point"]').val()) || 0;        // 포인트 사용금액
-            var coupon_disc_price = 0;      // 쿠폰할인금액
+            var total_coupon_disc_price = 0;      // 쿠폰할인금액
             $regi_form.find('.chk_coupon').each(function() {
-                coupon_disc_price += parseInt($(this).data('coupon-disc-price'));
+                total_coupon_disc_price += parseInt($(this).data('coupon-disc-price'));
             });
-            var total_pay_price = total_price - coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
+            var total_pay_price = total_order_price - total_coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
 
             // 금액표기
-            $regi_form.find('#coupon_disc_price').html(addComma(coupon_disc_price));
+            $regi_form.find('#total_coupon_disc_price').html(addComma(total_coupon_disc_price));
             $regi_form.find('#point_disc_price').html(addComma(point_disc_price));
             $regi_form.find('#delivery_price').html(addComma(delivery_price));
             $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
+            $regi_form.find('input[name="total_pay_price"]').val(total_pay_price);
 
             // 적립포인트 계산
             if (point_disc_price > 0) {
@@ -735,9 +736,10 @@
 
         // 결제하기 버튼 클릭
         $('button[name="btn_pay"]').on('click', function () {
-            var url = '{{ site_url('/order/store/cate/' . $__cfg['CateCode']) }}';
+            var url = '{{ site_url('/payment/request') }}';
             ajaxSubmit($regi_form, url, function(ret) {
                 if(ret.ret_cd) {
+                    $('body').append(ret.ret_data);
                 }
             }, showValidateError, null, false, 'alert');
         });

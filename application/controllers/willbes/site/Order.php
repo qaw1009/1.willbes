@@ -33,7 +33,7 @@ class Order extends \app\controllers\FrontController
         $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null);
 
         $results = [];
-        $total_price = 0;
+        $total_order_price = 0;
         $total_save_point = 0;
         $arr_is_freebies_trans = [];
         foreach ($list as $idx => $row) {
@@ -82,7 +82,7 @@ class Order extends \app\controllers\FrontController
             }
 
             // 전체 주문금액
-            $total_price += $row['RealSalePrice'];
+            $total_order_price += $row['RealSalePrice'];
 
             $results['list'][] = $row;
         }
@@ -91,12 +91,13 @@ class Order extends \app\controllers\FrontController
         if ($cart_type === 'on_lecture') {
             $results['delivery_price'] = $this->orderFModel->getLectureDeliveryPrice($arr_is_freebies_trans);
         } else {
-            $results['delivery_price'] = $this->orderFModel->getBookDeliveryPrice($total_price);
+            $results['delivery_price'] = $this->orderFModel->getBookDeliveryPrice($total_order_price);
         }
 
         $results['cart_type'] = $cart_type;     // 장바구니 구분 (강좌 : on_lecture, 교재 : book)
         $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명
-        $results['total_price'] = $total_price;     // 전체 주문금액
+        $results['total_order_price'] = $total_order_price;     // 전체 주문금액
+        $results['total_pay_price'] = $total_order_price + $results['delivery_price'];  // 전체 결제예상금액
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_on_package'] = $is_on_package;   // 패키지상품 존재 여부

@@ -453,6 +453,9 @@ strong {
 .mt20 {
   margin-top: 20px !important;
 }
+.mt25 {
+  margin-top: 25px !important;
+}
 .mt30 {
   margin-top: 30px !important;
 }
@@ -777,6 +780,9 @@ strong {
 }
 .bdt-gray {
   border-top: 1px solid #959595;
+}
+.bdt-m-gray {
+  border-top: 1px solid #ccc;
 }
 
 .bdb-black2 {

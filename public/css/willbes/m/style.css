@@ -1,0 +1,507 @@
+/* BASIC CODE */
+body {
+    position: relative;
+    min-width: 320px;
+    font-size: 0.75em;
+}
+.hidden  {
+    overflow: hidden;
+    font-size: 0;
+    text-indent: -9999px;
+    width: 0;
+    height: 0;
+}
+
+/* Aside */
+#aside {
+    display: block;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    -webkit-transition:transform 0.3s ease;
+    transition:transform 0.3s ease;
+    z-index: 4;
+}
+#aside.on {
+    visibility:visible; 
+    -webkit-transform: translate3d(100%, 0px, 0px);
+    -moz-transform: translate3d(100%, 0px, 0px);
+    -o-transform: translate3d(100%, 0px, 0px);
+    -ms-transform: translate3d(100%, 0px, 0px);
+    transform: translate3d(100%, 0px, 0px);
+}
+.dim {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.8;
+    z-index: 3;
+}
+#aside h1 {
+    background: #1a8ccc;
+    height: 72px;
+    font-size: 25px;
+    color: #fff;
+    line-height: 72px;
+    padding-left: 20px;
+}
+#aside .List {
+    font-size: 20px;
+    color: #000;
+    line-height: 60px;
+    padding-left: 20px;
+    border-bottom: 1px solid #ccc;
+}
+#aside .Depth,
+#aside .List-Depth {
+    font-size: 18px;
+    color: #4d4d4d;
+    line-height: 30px;
+    padding: 15px 0 15px 20px;
+    border-bottom: 1px solid #ccc;
+}
+#aside .List-Depth {
+    display: none;
+}
+
+/* Header : 공통 */
+#Header .Menu-List {
+    height: 76px;
+    border-bottom: 1px solid #ccc;
+}
+#Header button.menubar {
+    background: url("../../../img/willbes/m/main/icon_menu.png") no-repeat 0 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    margin-top: -18px;
+}
+#Header button.mypage {
+    background: url("../../../img/willbes/m/main/icon_mypage.png") no-repeat 0 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -18px;
+}
+#header .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -67px;
+}
+#Header .Login-List {
+    height: 62px;
+}
+#header .myLog {
+    float: right;
+    margin-right: 15px;
+}
+#header .myLog li {
+    float: left;
+    line-height: 62px;
+}
+#header .myLog li a {
+    font-size: 18px;
+}
+#header .myLog .row-line {
+    background: #b7b7b7;
+    width: 1px;
+    height: 16px;
+    margin: -5px 10px 0;
+}
+
+/* MainTxtBnr */
+.MainTxtBnr {
+    background: #1a8ccc;
+    height: 46px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    line-height: 46px;
+}
+
+
+
+/*********************************************     MAIN PAGE     *********************************************/
+
+/* MainSlider */
+
+/* Slider RESET */
+.bx-wrapper {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.bx-wrapper .bx-controls-direction a {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+}
+
+/* slider : 페이징 버튼(공통 GNB) => bSlider */
+.bSlider .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    height: 12px;
+    top: 20px;
+    right: 30px;
+    text-align: right;
+    padding: 0;
+}
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    margin: 0 2px;
+    border: 1px solid #ccc;
+}
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #1a8ccc;
+}
+.MainSlider .slider img {
+    width: 100%;
+}
+
+/* MainFixBnr */
+.MainFixBnr {
+    float: left;
+    width: 100%;
+}
+.MainFixBnr ul li {
+    float: left;
+    width: 50%;
+}
+.MainFixBnr ul li img {
+    width: 100%;
+}
+
+
+/* Tabs : 공통 */
+.lineTabs {
+    float: left;
+    width: 100%;
+    padding: 20px;
+}
+.lineWrap {
+    height: 48px;
+    border-bottom: 1px solid #1a8ccc;
+}
+.lineWrap li {
+    float: left;
+    height: 48px;
+    box-sizing: border-box;
+}
+.lineWrap li a {
+    display: block;
+    width: 100%;
+    height: 47px;
+    line-height: 46px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+}
+.lineWrap li a span {
+    vertical-align: baseline;
+}
+.lineWrap li:first-child a {
+    border-left: 1px solid #e4e4e4;
+} 
+.lineWrap li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 48px;
+    line-height: 46px;
+    border-top: 1px solid #1a8ccc;
+    border-left: 1px solid #1a8ccc;
+    border-right: 1px solid #1a8ccc;
+}
+
+
+
+/* lecProfTabs */
+.lecProfWrap li {
+    width: 50%;
+}
+.lecProfBox ul {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #e4e4e4;
+}
+.lecBox ul:first-child {
+    border-top: none;
+}
+.lecProfBox ul li {
+    float: left;
+}
+.lecProfBox ul li.w-list {
+    width: 70%;
+    margin-left: 15px;
+}
+.lecProfBox ul li .w-tit {
+    font-size: 20px;
+    color: #000;
+    line-height: 24px;
+    padding: 10px 0;
+    width: 100%;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.lecProfBox ul li .w-name {
+    font-size: 14px;
+    color: #707070;
+}
+
+
+/* noticeTabs */
+.noticeTabs {
+    float: left;
+    width: 92%;
+    margin: 20px 4% 40px;
+}
+.noticeWrap {
+    height: 42px;
+}
+.noticeWrap li {
+    float: left;
+    width: 33.33333333%;
+    height: 42px;
+    box-sizing: border-box;
+}
+.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 42px;
+    line-height: 40px;
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    letter-spacing: 0;
+    border: 1px solid #e4e4e4;
+}
+.noticeWrap li a.on {
+    position: relative;
+    z-index: 2;
+    background: #1a8ccc;
+    font-weight: 600;
+    color: #fff;
+}
+.noticeBox .List-Table li {
+    font-size: 15px;
+    line-height: 40px;
+    height: 42px;
+    border-top: 1px solid #e4e4e4;
+}
+.noticeBox .List-Table li:first-child {
+    border-top: none;
+}
+.noticeBox .List-Table li a {
+    float: left;
+    width: 70%;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.noticeBox .List-Table li .date {
+    float: right;
+    width: 30%;
+    color: #959595;
+    text-align: right;
+}
+
+/* appPlayer */
+.appPlayer {
+    margin: 0 4%;
+}
+.appPlayer img {
+    width: 100%;
+}
+
+/* Footer */
+#Footer .ft-Link {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    padding: 40px 0;
+}
+#Footer .ft-Link ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+#Footer address {
+    font-size: 12px;
+    color: #707070;
+    text-align: center;
+}
+
+
+
+/*********************************************     CONTAINER PAGE     *********************************************/
+.willbes-Tit {
+    font-size: 20px;
+    color: #323232;
+    text-align: center;
+    line-height: 68px;
+    background: #ececec;
+    height: 70px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.willbes-Line {
+    font-size: 20px;
+    color: #fff;
+    text-align: left;
+    line-height: 68px;
+    background: #1a8ccc;
+    height: 70px;
+    padding-left: 20px;
+}
+.willbes-Lec-Selected {
+    padding: 30px 20px 20px;
+}
+.willbes-Lec-Selected select {
+    height: 60px;
+}
+
+/* btn : 공통 */
+.btn_white {
+    background: #fff;
+    border: 1px solid #c9c9c9;
+    color: #636363;
+}
+.btn_gray {
+    background: #636363;
+    border: 1px solid #636363;
+    color: #fff;
+}
+.btn_black {
+    background: #333;
+    border: 1px solid #333;
+    color: #fff;
+}
+.btn_blue {
+    background: #1a8ccc;
+    border: 1px solid #1a8ccc;
+    color: #fff;
+}
+
+.lecTable .w-tit {
+    font-size: 20px;
+    color: #323232;
+    line-height: 24px;
+    padding: 10px 0;
+}
+.lecTable .w-info {
+    font-size: 16px;
+    line-height: 20px;
+}
+.lecTable .w-info span {
+    vertical-align: baseline;
+}
+.lecTable .w-info .row-line {
+    background: #b5b5b5;
+    width: 1px;
+    height: 12px;
+    margin: 0 10px;
+}
+.lecTable .w-info dt {
+    display: inline-block;
+}
+.lecTable tr td {
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+.lecTable tr td:first-child {
+    padding-left: 20px;
+}
+.lecTable tr td:last-child {
+    padding-right: 20px;
+}
+.lecTable input[type='checkbox'] {
+    width: 25px;
+    height: 25px;
+}
+
+.InfoBtn {
+    float: left;
+    font-size: 14px;
+}
+.InfoBtn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+/* lecListTabs */
+.lecListWrap li {
+    width: 33.33333333%;
+}
+.lecListWrap li a {
+    color: #999;
+}
+.lecListWrap li a.on {
+    color: #000;
+}
+.lecListWrap li a.on span {
+    color: #1a8ccc;
+}
+.lecListBox .lecTxt {
+    font-size: 15px;
+    color: #999;
+    padding: 20px 30px;
+}
+
+
+.w-info dt .nBox {
+    height: 20px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    padding: 1px 8px;
+}
+.w-info dt .nBox.n1 {
+    background: #f14078;
+}
+.w-info dt .nBox.n2 {
+    background: #21abc8;
+}
+.w-info dt .nBox.n3 {
+    background: #1087ef;
+}
+.w-info dt .nBox.n4 {
+    background: #333
+}
+
+
+
+
+/*********************************************     MYPAGE     *********************************************/
+
+

@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>모바일 윌비스 통합 사이트</title>
+
+    <!-- CSS -->
+    <!-- Slider jQuery -->
+    <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+    <!-- bootstrap-datepicker -->
+    <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
+    <!-- Custom Theme Style -->
+    <link href="/public/css/willbes/basic.css" rel="stylesheet">
+    <link href="/public/css/willbes/m/style.css" rel="stylesheet">
+    <!--// CSS -->
+    <!-- JAVASCRIPT -->
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
+    <script src="/public/vendor/jquery/form/jquery.form.js"></script>
+    <!--// JAVASCRIPT -->
+
+    <!-- Custom Script -->
+    <script>
+        $(function() {
+            $('.Menu_open').click(function() {
+                $('.dim').show().css('display','block');
+                $('#aside').addClass('on');
+            });
+        });
+        $(function() {
+            $('.Menu_close').click(function() {
+                $('.dim').hide().css('display','none');
+                $('#aside').removeClass('on');
+            });
+        });
+
+        // Aside 아코디언 메뉴 Script
+        $(function() {
+            $('.ListBox .List').click(function() {
+
+                $('.ListBox .List').removeClass('on')
+
+                if ($(this).next().is(':visible')) {
+                    $(this).next().slideUp('normal');
+                    $(this).removeClass('on');
+
+                } else {
+                    $('.ListBox .List-Depth').slideUp('normal');
+                    $(this).next().slideDown('normal');
+                    $(this).addClass('on');
+
+                }   
+            });
+        });
+    </script>
+</head>

@@ -151,7 +151,7 @@
                         }},
                     {'data' : 'ProfNickName'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.OaIdx + '"><u>' + row.OnAirName + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.OaIdx + '"><u>' + row.OnAirName + '</u></a>';
                         }},
 
                     {'data' : 'OnAirLastDate', 'render' : function(data, type, row, meta) {

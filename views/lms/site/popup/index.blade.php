@@ -141,7 +141,7 @@
                         }},
                     {'data' : 'DispName'},
                     {'data' : 'PopUpName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.PIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.PIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : 'PopUpRealFullPath', 'render' : function(data, type, row, meta) {
                             var img_url = row.PopUpFullPath + row.PopUpImgName;

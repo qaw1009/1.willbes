@@ -153,7 +153,7 @@
 
                     {'data' : 'RequstTypeName'},
                     {'data' : 'EventName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-read" data-idx="' + row.ElIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.ElIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
 
                     {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {

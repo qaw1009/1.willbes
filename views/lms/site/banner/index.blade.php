@@ -143,7 +143,7 @@
                     {'data' : 'CateName'},
                     {'data' : 'DispName'},
                     {'data' : 'BannerName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : 'BannerRealFullPath', 'render' : function(data, type, row, meta) {
                             var img_url = row.BannerFullPath + row.BannerImgName;

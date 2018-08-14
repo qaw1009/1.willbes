@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">배너명 검색 가능</p>
+                        <p class="form-control-static">제목 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
@@ -124,7 +124,7 @@
                         }},
                     {'data' : 'LIdx'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.LIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.LIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.DispStartDatm + ' ~ ' + row.DispEndDatm;

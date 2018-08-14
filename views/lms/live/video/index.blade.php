@@ -74,7 +74,7 @@
                             <td>{{ $loop->index }}</td>
                             <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
                             <td>{{ $row['CampusName'] }}<span class="hide">{{ $row['CampusCcd'] }}</span></td>
-                            <td><a href="#" class="btn-modify" data-idx="{{ $row['LecLiveVideoIdx'] }}"><u>{{ $row['ClassRoomName'] }}</u></a></td>
+                            <td><a href="javascript:void(0);" class="btn-modify" data-idx="{{ $row['LecLiveVideoIdx'] }}"><u>{{ $row['ClassRoomName'] }}</u></a></td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['IsUse'] }}</span>
                             </td>
@@ -84,7 +84,7 @@
                             <td>{{ $row['RegAdminName'] }}</td>
                             <td>{{ $row['RegDatm'] }}</td>
                             {{--<td><a href="javascript:void(0);" onclick="javascript:liveOn('{{ $row['LiveVideoRoute'] }}');">수강하기</a></td>--}}
-                            <td><a href="#" class="btn-video" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
+                            <td><a href="javascript:void(0);" class="btn-video" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
                         </tr>
                     @endforeach
                     </tbody>

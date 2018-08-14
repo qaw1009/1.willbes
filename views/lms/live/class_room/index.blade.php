@@ -67,7 +67,7 @@
                             <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
                             <td>{{ $row['CampusName'] }}<span class="hide">{{ $row['CampusCcd'] }}</span></td>
                             <td>{{ $row['CIdx'] }}</td>
-                            <td><a href="#" class="btn-modify" data-idx="{{ $row['CIdx'] }}"><u>{{ $row['ClassRoomName'] }}</u></a></td>
+                            <td><a href="javascript:void(0);" class="btn-modify" data-idx="{{ $row['CIdx'] }}"><u>{{ $row['ClassRoomName'] }}</u></a></td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['IsUse'] }}</span>
                             </td>

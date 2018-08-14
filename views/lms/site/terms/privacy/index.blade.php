@@ -112,7 +112,7 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.SupIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.SupIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.ApplayStartDatm + ' ~ ' + row.ApplayEndDatm;

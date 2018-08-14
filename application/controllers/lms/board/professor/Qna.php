@@ -165,7 +165,6 @@ class Qna extends BaseBoard
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.ProfIdx' => $prof_idx,
-                'LB.RegType' => $this->_reg_type['user'],
                 'LB.MdCateCode' => $this->_reqP('search_md_cate_code'),
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
@@ -205,7 +204,7 @@ class Qna extends BaseBoard
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic, LB.IsStatus,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
             LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Phone1, MEM.Phone2Enc, MEM.Phone3,
             LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
@@ -253,7 +252,7 @@ class Qna extends BaseBoard
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsPublic, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
             LB.SubjectIdx, PS.SubjectName
             ';
             $method = 'PUT';
@@ -281,6 +280,7 @@ class Qna extends BaseBoard
             $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+            $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
         //과목
@@ -386,7 +386,7 @@ class Qna extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
             ';
 
@@ -428,6 +428,7 @@ class Qna extends BaseBoard
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;
@@ -475,8 +476,8 @@ class Qna extends BaseBoard
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
             LB.ReadCnt, LB.SettingReadCnt,
-            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName,
-            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             MEM.MemName, MEM.MemId, MEM.Phone1,
@@ -506,10 +507,12 @@ class Qna extends BaseBoard
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
         $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
         $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
         $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+        $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
 
         $get_category_array = $this->_getCategoryArray($site_code);
 
@@ -558,8 +561,8 @@ class Qna extends BaseBoard
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
             LB.ReadCnt, LB.SettingReadCnt,
-            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName,
-            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             MEM.MemName, MEM.MemId, MEM.Phone1,
@@ -614,10 +617,12 @@ class Qna extends BaseBoard
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
         $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
         $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
         $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+        $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
 
         $get_category_array = $this->_getCategoryArray($site_code);
         foreach ($arr_cate_code as $item => $code) {

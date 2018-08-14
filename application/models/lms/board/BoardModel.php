@@ -62,7 +62,7 @@ class BoardModel extends WB_Model
                 GROUP BY subLBrC.BoardIdx
             ) AS LBC ON LB.BoardIdx = LBC.BoardIdx
             LEFT OUTER JOIN (
-                SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 FROM {$this->_table_attach}
                 WHERE IsStatus = 'Y'
                 GROUP BY BoardIdx
@@ -424,13 +424,13 @@ class BoardModel extends WB_Model
                 group by subLBrC.BoardIdx
             ) as LBC ON LB.BoardIdx = LBC.BoardIdx
             LEFT OUTER JOIN (
-                select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 from {$this->_table_attach}
                 where IsStatus = 'Y' ";
-                if (empty($arr_condition_file['reg_type']) === false) {
+                if (isset($arr_condition_file['reg_type']) === true) {
                     $from .= "and RegType = {$arr_condition_file['reg_type']} ";
                 }
-                if (empty($arr_condition_file['attach_file_type']) === false) {
+                if (isset($arr_condition_file['attach_file_type']) === true) {
                     $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
                 }
                 $from .= "GROUP BY BoardIdx
@@ -451,7 +451,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN (
-                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                         from {$this->_table_attach}
                         where IsStatus = 'Y' and RegType = 1
                         GROUP BY BoardIdx
@@ -492,7 +492,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_admin} as profADMIN ON LB.ReplyAdminIdx = profADMIN.wAdminIdx
                     LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN (
-                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                         from {$this->_table_attach}
                         where IsStatus = 'Y' and RegType = 1
                         GROUP BY BoardIdx

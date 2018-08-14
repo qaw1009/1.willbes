@@ -8,6 +8,8 @@
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
+        <input type="hidden" name="is_best" value="{{$arr_reg_type['admin']}}"/>
+
         <div class="x_panel">
             <div class="x_title">
                 <h2>{{$arr_prof_info['ProfNickName']}} 교수 학습Q&A</h2>

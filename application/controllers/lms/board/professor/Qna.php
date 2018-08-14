@@ -689,6 +689,7 @@ class Qna extends BaseBoard
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
                 'RegType' => element('reg_type', $input),
+                'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'ProfIdx' => $prof_idx,
                 'SubjectIdx' => element('subject_idx', $input),
                 'Title' => element('title', $input),

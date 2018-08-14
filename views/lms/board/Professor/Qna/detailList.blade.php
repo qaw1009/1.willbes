@@ -168,7 +168,7 @@
                     }
                 },
                 "createdRow" : function( row, data, index ) {
-                    if (data['RegType'] == '1') {
+                    if (data['IsBest'] == '1') {
                         $(row).addClass('blue-sky');
                     }
 
@@ -179,7 +179,7 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            if (row.RegType == '1') {
+                            if (row.IsBest == '1') {
                                 return '<b>공지</b>';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);

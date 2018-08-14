@@ -36,7 +36,7 @@ class BannerRegistModel extends WB_Model
             A.BIdx, A.SiteCode, A.CateCode, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
             A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.OrderNum,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
-            B.SiteName, E.CateName, F.DispName,
+            B.SiteName, IFNULL(E.CateName,"전체카테고리") AS CateName, F.DispName,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ';
 

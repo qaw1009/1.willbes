@@ -28,16 +28,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">카테고리정보<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
-                        {{--@if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['CateName'] }}</p>
-                        @else--}}
-                            <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리" @if($method == 'PUT')disabled="disabled"@endif>
-                                <option value="">카테고리</option>
-                                @foreach($arr_cate_code as $row)
-                                    <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}" @if($row['SiteCode'].'_'.$row['CateCode'] == $data['SiteCode'].'_'.$data['CateCode'])selected="selected"@endif>{{ $row['CateName'] }}</option>
-                                @endforeach
-                            </select>
-                        {{--@endif--}}
+                        <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리" @if($method == 'PUT')disabled="disabled"@endif>
+                            <option value="">카테고리</option>
+                            @foreach($arr_cate_code as $row)
+                                <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}" @if($row['SiteCode'].'_'.$row['CateCode'] == $data['SiteCode'].'_'.$data['CateCode'])selected="selected"@endif>{{ $row['CateName'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <label class="control-label col-md-1-1 d-line" for="banner_disp_idx">노출섹션<span class="required">*</span></label>
@@ -143,7 +139,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="order_num">정렬</label>
                     <div class="col-md-4 ml-12-dot">
-                        <input type="text" id="order_num" name="order_num" class="form-control" maxlength="3" title="정렬" value="{{ $data['OrderNum'] }}" >
+                        <input type="text" id="order_num" name="order_num" class="form-control" maxlength="3" title="정렬" value="{{ $data['OrderNum'] }}" style="width: 100px;">
                     </div>
                 </div>
 

@@ -21,14 +21,14 @@
                         <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
 
                         <select class="form-control mr-10" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
-                                <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}">{{$row['DispName']}}</option>
+                                <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}_{{$row['CateCode']}}">{{$row['DispName']}}</option>
                             @endforeach
                         </select>
 
@@ -112,7 +112,7 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
-            $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_site_code");
+            $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

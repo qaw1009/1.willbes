@@ -24,7 +24,7 @@ class BannerDispModel extends WB_Model
         } else {
             $column = '
             A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTypeCcd, A.DispRollingTime, A.IsUse, A.IsStatus, A.RegDatm, A.RegAdminIdx,
-            B.SiteName, C.CateName, D.CcdName,
+            B.SiteName, IFNULL(C.CateName,"전체카테고리") AS CateName, D.CcdName,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ';
 

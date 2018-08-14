@@ -16,8 +16,8 @@ class Regist extends \app\controllers\BaseController
      */
     public function index()
     {
-        // 카테고리 조회
-        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+        //카테고리 조회
+        $category_data = $this->_getCategoryArray();
 
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
@@ -61,20 +61,8 @@ class Regist extends \app\controllers\BaseController
         $data = null;
         $b_idx = null;
 
-        $total_category_data = [];
-        foreach (get_auth_site_codes(false, true) as $site_code) {
-            $total_category_data[] = [
-                'SiteCode' => $site_code,
-                'CateCode' => '0',
-                'CateName' => '전체카테고리',
-                'ParentCateCode' => '0',
-                'GroupCateCode' => '0',
-                'CateDepth' => '1'
-            ];
-        }
-        // 카테고리 조회
-        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
-        $category_data = array_merge($total_category_data, $category_data);
+        //카테고리 조회
+        $category_data = $this->_getCategoryArray();
 
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
@@ -166,8 +154,8 @@ class Regist extends \app\controllers\BaseController
         $this->load->helper('file');
         $arr_condition = [];
 
-        // 카테고리 조회
-        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+        //카테고리 조회
+        $category_data = $this->_getCategoryArray();
 
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
@@ -206,6 +194,30 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
+     * 카테고리 조회 (전체카테고리 값 추가)
+     * @return array
+     */
+    private function _getCategoryArray()
+    {
+        $total_category_data = [];
+        foreach (get_auth_site_codes(false, true) as $site_code) {
+            $total_category_data[] = [
+                'SiteCode' => $site_code,
+                'CateCode' => '0',
+                'CateName' => '전체카테고리',
+                'ParentCateCode' => '0',
+                'GroupCateCode' => '0',
+                'CateDepth' => '1'
+            ];
+        }
+        // 카테고리 조회
+        $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $category_data = array_merge($total_category_data, $category_data);
+
+        return $category_data;
+    }
+
+    /**
      * 검색 조건 셋팅
      * @return array
      */
@@ -215,7 +227,6 @@ class Regist extends \app\controllers\BaseController
             'EQ' => [
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.CateCode' => $this->_reqP('search_cate_code'),
                 'A.BdIdx' => $this->_reqP('search_banner_disp_idx'),
                 'A.IsUse' => $this->_reqP('search_is_use')
             ],
@@ -225,6 +236,12 @@ class Regist extends \app\controllers\BaseController
                 ]
             ]
         ];
+
+        if (empty($this->_reqP('search_cate_code')) === false) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'A.CateCode' => explode('_', $this->_reqP('search_cate_code'))[1]
+            ]);
+        }
 
         // 날짜 검색
         if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {

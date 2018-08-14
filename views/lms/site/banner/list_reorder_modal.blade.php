@@ -25,7 +25,7 @@
                             <select class="form-control mr-10" id="search_modal_cate_code" name="search_modal_cate_code" title="카테고리">
                                 <option value="">카테고리</option>
                                 @foreach($arr_cate_code as $row)
-                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                    <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -33,7 +33,7 @@
                             <select class="form-control mr-10" id="search_modal_banner_disp_idx" name="search_modal_banner_disp_idx" title="노출섹션">
                                 <option value="">노출섹션</option>
                                 @foreach($arr_disp_data as $row)
-                                    <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}">{{$row['DispName']}}</option>
+                                    <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}_{{$row['CateCode']}}">{{$row['DispName']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -74,7 +74,7 @@
                                     </td>
                                     <td>
                                         {{ $row['CateName'] }}
-                                        <span class="hide">{{ $row['CateCode'] }}</span>
+                                        <span class="hide">{{$row['SiteCode']}}_{{$row['CateCode']}}</span>
                                     </td>
                                     <td>{{ $row['DispName'] }}<span class="hide">{{ $row['BdIdx'] }}</span></td>
                                     <td>{{ $row['BannerName'] }}</td>
@@ -102,7 +102,7 @@
                 $(document).ready(function() {
                     // site-code에 매핑되는 select box 자동 변경
                     $search_form_modal.find('select[name="search_modal_cate_code"]').chained("#search_modal_site_code");
-                    $search_form_modal.find('select[name="search_modal_banner_disp_idx"]').chained("#search_modal_site_code");
+                    $search_form_modal.find('select[name="search_modal_banner_disp_idx"]').chained("#search_modal_cate_code");
 
                     $datatable_modal = $list_modal_table.DataTable({
                         ajax: false,

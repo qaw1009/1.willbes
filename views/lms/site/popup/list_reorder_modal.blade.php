@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <div class="row mt-5">
                         <div class="col-md-2">
-                            {!! html_site_select('', 'search_modal_site_code', 'search_modal_site_code', '', '운영 사이트', '') !!}
+                            {!! html_site_select('', 'search_modal_site_code', 'search_modal_site_code', '', '운영 사이트', 'required', '', true) !!}
                         </div>
                         <div class="col-md-3">
                             <input type="text" class="form-control" id="search_value" name="search_value">

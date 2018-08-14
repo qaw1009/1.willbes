@@ -36,7 +36,7 @@ class Regist extends \app\controllers\BaseController
         $list = [];
         $count = $this->bannerRegistModel->listAllBanner(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BIdx' => 'desc']);
+            $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.BIdx' => 'desc']);
 
             foreach ($list as $key => $val) {
                 $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);
@@ -160,7 +160,7 @@ class Regist extends \app\controllers\BaseController
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
 
-        $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'BIdx' => 'desc']);
+        $list = $this->bannerRegistModel->listAllBanner(false, $arr_condition, null, null, ['A.SiteCode' => 'asc', 'A.BdIdx' => 'asc', 'A.OrderNum' => 'asc', 'A.BIdx' => 'desc']);
 
         foreach ($list as $key => $val) {
             $img_real_path = public_to_upload_path($list[$key]['BannerFullPath'].$list[$key]['BannerImgName']);

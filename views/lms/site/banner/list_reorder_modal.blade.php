@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <div class="row mt-5">
                         <div class="col-md-2">
-                            {!! html_site_select('', 'search_modal_site_code', 'search_modal_site_code', '', '운영 사이트', '') !!}
+                            {!! html_site_select('', 'search_modal_site_code', 'search_modal_site_code', '', '운영 사이트', 'required', '', true) !!}
                         </div>
                         <div class="col-md-3">
                             <input type="text" class="form-control" id="search_value" name="search_value">
@@ -49,9 +49,9 @@
                             <thead>
                             <tr>
                                 <th class="searching_site_code rowspan">운영사이트</th>
+                                <th class="searching_banner_disp_idx rowspan">노출섹션</th>
                                 <th>정렬</th>
                                 <th class="searching_category">카테고리</th>
-                                <th class="searching_banner_disp_idx">노출섹션</th>
                                 <th class="searching">배너명</th>
                                 <th width="25%">배너이미지</th>
                                 <th>노출기간</th>
@@ -61,12 +61,8 @@
                             <tbody>
                             @foreach($data as $row)
                                 <tr>
-                                    {{--<td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>--}}
-                                    <td>
-                                        <span class="btn-site-modal" style="cursor:pointer" data-site-code="{{$row['SiteCode']}}"><b>{{ $row['SiteName'] }}</b></span>
-                                        <span class="hide">{{ $row['SiteCode'] }}</span>
-                                    </td>
-
+                                    <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
+                                    <td>{{ $row['DispName'] }}<span class="hide">{{ $row['BdIdx'] }}</span></td>
                                     <td>
                                         <div class="form-group form-group-sm">
                                             <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['BIdx'] }}" style="width: 80px;" />
@@ -76,7 +72,6 @@
                                         {{ $row['CateName'] }}
                                         <span class="hide">{{$row['SiteCode']}}_{{$row['CateCode']}}</span>
                                     </td>
-                                    <td>{{ $row['DispName'] }}<span class="hide">{{ $row['BdIdx'] }}</span></td>
                                     <td>{{ $row['BannerName'] }}</td>
                                     <td>
                                         <img src="{{$row['BannerFullPath']}}{{$row['BannerImgName']}}" width='100%' height='30%'>
@@ -112,12 +107,6 @@
                         buttons: [
                             { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' }
                         ]
-                    });
-
-                    // 운영사이트 클릭
-                    $('.btn-site-modal').on('click', function() {
-                        $('#search_modal_site_code').val($(this).data('site-code'));
-                        datatableSearching();
                     });
 
                     // 순서 변경

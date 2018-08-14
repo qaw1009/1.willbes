@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">카테고리정보<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
-                        <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리" @if($method == 'PUT')disabled="disabled"@endif>
+                        <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
                                 <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}" @if($row['SiteCode'].'_'.$row['CateCode'] == $data['SiteCode'].'_'.$data['CateCode'])selected="selected"@endif>{{ $row['CateName'] }}</option>
@@ -190,6 +190,10 @@
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="cate_code"]').chained("#site_code");
             $regi_form.find('select[name="banner_disp_idx"]').chained("#cate_code");
+
+            @if($method == 'PUT')
+                $regi_form.find('select[name="cate_code"]').prop('disabled', true);
+            @endif
 
             //목록
             $('#btn_list').click(function() {

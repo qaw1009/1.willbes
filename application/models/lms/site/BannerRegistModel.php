@@ -109,15 +109,15 @@ class BannerRegistModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $site_code = element('site_code', $input);
             $arr_cate_code = explode('_',element('cate_code', $input));
-
             if (isset($arr_cate_code[1]) === false) {
                 throw new \Exception('카테고리 정보가 올바르지 않습니다.');
             }
 
             $cate_code = $arr_cate_code[1];
             $banner_disp_idx = element('banner_disp_idx', $input);
-            $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($cate_code, $banner_disp_idx));
+            $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $cate_code, $banner_disp_idx));
             $admin_idx = $this->session->userdata('admin_idx');
 
             if (empty(element('disp_start_datm', $input)) === true) {
@@ -198,8 +198,9 @@ class BannerRegistModel extends WB_Model
             }
 
             $cate_code = $row['CateCode'];
+            $site_code = $row['SiteCode'];
             $banner_disp_idx = element('banner_disp_idx', $input);
-            $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($cate_code, $banner_disp_idx));
+            $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $cate_code, $banner_disp_idx));
 
             if (empty(element('disp_start_datm', $input)) === true) {
                 $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
@@ -335,14 +336,16 @@ class BannerRegistModel extends WB_Model
 
     /**
      * 사이트 코드, 노출섹션, 배너위치 별 정렬순서 값 조회
+     * @param $site_code
      * @param $cate_code
      * @param $banner_disp_idx
      * @return mixed
      */
-    private function _getBannerOrderNum($cate_code, $banner_disp_idx)
+    private function _getBannerOrderNum($site_code, $cate_code, $banner_disp_idx)
     {
         return $this->_conn->getFindResult($this->_table['banner'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => [
+                'SiteCode' => $site_code,
                 'CateCode' => $cate_code,
                 'BdIdx' => $banner_disp_idx
             ]

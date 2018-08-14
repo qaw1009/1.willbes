@@ -57,7 +57,7 @@
                     </li>
                 @endif
                 <li class="csCenter">
-                    <a class="Tit" href="#none">고객센터</a>
+                    <a class="Tit" href="{{ site_url('/support/main') }}">고객센터</a>
                 </li>
             </ul>
         </div>

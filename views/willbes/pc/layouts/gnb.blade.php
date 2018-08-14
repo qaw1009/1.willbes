@@ -81,21 +81,24 @@
     <div class="gnb-List">
         @foreach($__cfg['GnbTreeMenu'] as $menu_group_id => $menu_group_row)
             @foreach($menu_group_row as $menu_idx => $menu_row)
-                <div class="gnb-List-Tit">
-                    <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
-                        <div class="willbes-icon_sm">
-                            <img src="{{ img_url('gnb/icon_' . $menu_group_id . '_sm.gif') }}">
-                        </div>
-                        <span class="Txt">{{ $menu_row['MenuName'] }}<span class="arrow-Btn">></span></span>
-                    </a>
-                </div>
-                <div class="gnb-List-Depth">
-                    <dl>
-                        @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
-                            <dt><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
-                        @endforeach
-                    </dl>
-                </div>
+                {{-- 예외메뉴 (GNB 미노출)이 아닐 경우만 노출 --}}
+                @if($menu_row['MenuType'] != 'PG')
+                    <div class="gnb-List-Tit">
+                        <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
+                            <div class="willbes-icon_sm">
+                                <img src="{{ img_url('gnb/icon_' . $menu_group_id . '_sm.gif') }}">
+                            </div>
+                            <span class="Txt">{{ $menu_row['MenuName'] }}<span class="arrow-Btn">></span></span>
+                        </a>
+                    </div>
+                    <div class="gnb-List-Depth">
+                        <dl>
+                            @foreach(element('Children', $menu_row) as $menu_child_idx => $menu_child_row)
+                                <dt><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></dt>
+                            @endforeach
+                        </dl>
+                    </div>
+                @endif
             @endforeach
         @endforeach
     </div>

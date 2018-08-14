@@ -115,14 +115,17 @@ abstract class FrontController extends BaseController
         // 사이트 코드 (URL 세그먼트 배열에 site 값이 있다면 site 값 우선)
         $site_code = isset($uri_segments[config_get('uri_segment_keys.site')]) === true ? $uri_segments[config_get('uri_segment_keys.site')] : $this->_site_code;
 
-        // GNB Active Group Id
-        $gnb_active_group_id = str_first_pos_before(element($site_code, element('SiteKeys', $all_site_cache)), '>');
-
         // 전체 사이트 메뉴 캐쉬 조회
         $site_menu_cache = $this->getCacheItem('site_menu');
 
         // 사이트 메뉴
         $site_tree_menu = array_get($site_menu_cache, 'SiteTreeMenus.' . $site_code, []);
+
+        // 일반 사이트 접근시 Active 되는 GNB 그룹메뉴 아이디 (서브 도메인과 동일)
+        $gnb_active_group_id = '';
+        if (empty($site_tree_menu) === false) {
+            $gnb_active_group_id = str_first_pos_before(element($site_code, element('SiteKeys', $all_site_cache)), '>');
+        }
 
         // 사이트 과목+교수 연결정보 캐쉬 조회, Active 사이트 메뉴 정보
         //$site_subject_professors = [];

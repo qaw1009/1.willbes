@@ -119,7 +119,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-register-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '">';
+                            return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-register-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '" data-is-checked-register-phone="' + row.Phone + '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -181,19 +181,19 @@
             // SMS발송
             $('.btn-send-register-sms').click(function() {
                 var $params = new Array();
-                var uri_param = '';
-                var $params_length = 0;
+                var $phone_params = new Array();
                 $('input[name="is_checked"]:checked').each(function(key) {
                     $params[key] = $(this).data('is-checked-register-id');
+                    $phone_params[key] = $(this).data('is-checked-register-phone');
                 });
 
-                $params_length = Object.keys($params).length;
-                if ($params_length <= '0') {
+                var params_length = Object.keys($params).length;
+                if (params_length <= '0') {
                     alert('수신인 명단을 선택해주세요.');
                     return false;
                 }
-                uri_param = '?target_id=' + $params;
 
+                var uri_param = '?target_id=' + $params + '&target_phone=' + $phone_params;
                 $('.btn-send-register-sms').setLayer({
                     "url" : "{{ site_url('crm/sms/createSendModal') }}" + uri_param,
                     "width" : "1200"

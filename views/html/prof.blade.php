@@ -94,7 +94,7 @@
     </div>
     <div class="Content p_re ml20">
 
-        <div class="willbes-NoticeWrap mb60 c_both">
+        <div class="willbes-NoticeWrap mb40 c_both">
             <div class="sliderPromotion nSlider widthAuto460 f_left mr20">
                 <div class="sliderNum">
                     <div><img src="{{ img_url('sample/roll1.jpg') }}"></div>
@@ -124,7 +124,7 @@
         </div>
         <!-- willbes-NoticeWrap -->
 
-        <div class="curriWrap GM c_both">
+        <div class="curriWrap GM c_both mb10">
             <div class="CurriBox">
                 <table cellspacing="0" cellpadding="0" class="curriTable">
                     <colgroup>
@@ -227,7 +227,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -244,7 +244,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -261,7 +261,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -279,7 +279,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -298,7 +298,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -315,7 +315,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -332,7 +332,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -349,7 +349,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -374,7 +374,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -391,7 +391,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -416,7 +416,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -433,7 +433,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>
@@ -450,7 +450,7 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">맛보기</a></dt>
+                            <dt><a href="#none222">프로필</a></dt>
                         </dl>
                     </div>
                 </li>

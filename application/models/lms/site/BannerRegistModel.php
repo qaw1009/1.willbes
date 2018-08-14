@@ -78,7 +78,7 @@ class BannerRegistModel extends WB_Model
     public function findBannerForModify($arr_condition)
     {
         $column = "
-            A.BIdx, A.SiteCode, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
+            A.BIdx, A.SiteCode, A.CateCode, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
             DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
             A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
@@ -109,7 +109,13 @@ class BannerRegistModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-            $cate_code = element('cate_code', $input);
+            $arr_cate_code = explode('_',element('cate_code', $input));
+
+            if (isset($arr_cate_code[1]) === false) {
+                throw new \Exception('카테고리 정보가 올바르지 않습니다.');
+            }
+
+            $cate_code = $arr_cate_code[1];
             $banner_disp_idx = element('banner_disp_idx', $input);
             $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($cate_code, $banner_disp_idx));
             $admin_idx = $this->session->userdata('admin_idx');

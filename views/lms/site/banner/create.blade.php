@@ -26,19 +26,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">카테고리정보
-                    </label>
+                    <label class="control-label col-md-1-1">카테고리정보<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
-                        @if($method == 'PUT')
+                        {{--@if($method == 'PUT')
                             <p class="form-control-static">{{ $data['CateName'] }}</p>
-                        @else
+                        @else--}}
                             <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리" @if($method == 'PUT')disabled="disabled"@endif>
                                 <option value="">카테고리</option>
                                 @foreach($arr_cate_code as $row)
-                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                    <option value="{{$row['SiteCode']}}_{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}" @if($row['SiteCode'].'_'.$row['CateCode'] == $data['SiteCode'].'_'.$data['CateCode'])selected="selected"@endif>{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
-                        @endif
+                        {{--@endif--}}
                     </div>
 
                     <label class="control-label col-md-1-1 d-line" for="banner_disp_idx">노출섹션<span class="required">*</span></label>
@@ -46,7 +45,7 @@
                         <select class="form-control mr-10" id="banner_disp_idx" name="banner_disp_idx" required="required" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
-                                <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}" @if($row['BdIdx'] == $data['BdIdx'])selected="selected"@endif>{{$row['DispName']}}</option>
+                                <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}_{{ $row['CateCode'] }}" @if($row['BdIdx'] == $data['BdIdx'])selected="selected"@endif>{{$row['DispName']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -194,7 +193,7 @@
         $(document).ready(function() {
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="cate_code"]').chained("#site_code");
-            $regi_form.find('select[name="banner_disp_idx"]').chained("#site_code");
+            $regi_form.find('select[name="banner_disp_idx"]').chained("#cate_code");
 
             //목록
             $('#btn_list').click(function() {

@@ -61,8 +61,20 @@ class Regist extends \app\controllers\BaseController
         $data = null;
         $b_idx = null;
 
+        $total_category_data = [];
+        foreach (get_auth_site_codes(false, true) as $site_code) {
+            $total_category_data[] = [
+                'SiteCode' => $site_code,
+                'CateCode' => '0',
+                'CateName' => '전체카테고리',
+                'ParentCateCode' => '0',
+                'GroupCateCode' => '0',
+                'CateDepth' => '1'
+            ];
+        }
         // 카테고리 조회
         $category_data = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $category_data = array_merge($total_category_data, $category_data);
 
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
@@ -108,6 +120,7 @@ class Regist extends \app\controllers\BaseController
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
+                ['field' => 'cate_code', 'label' => '카테고리정보', 'rules' => 'trim|required'],
                 ['field' => 'attach_img', 'label' => '배너이미지', 'rules' => 'callback_validateFileRequired[attach_img]']
             ]);
         } else {

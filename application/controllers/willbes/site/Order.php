@@ -118,11 +118,6 @@ class Order extends \app\controllers\FrontController
         ]);
     }
 
-    public function store($params = [])
-    {
-        var_dump($this->_reqP(null));
-    }
-
     /**
      * 회원 식별자 기준 최근 배송정보 조회
      */

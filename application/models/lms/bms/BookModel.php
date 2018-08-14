@@ -268,7 +268,7 @@ class BookModel extends WB_Model
             }
 
             // 카테고리 정보 등록
-            $is_book_category = $this->_replaceBookCategory([element('cate_code', $input)], $row['ProdCode']);
+            $is_book_category = $this->_replaceBookCategory($row['ProdCode'], [element('cate_code', $input)]);
             if ($is_book_category !== true) {
                 throw new \Exception($is_book_category);
             }
@@ -332,7 +332,7 @@ class BookModel extends WB_Model
             }
 
             // 판매가격 수정
-            if ($this->_replaceBookSale($input, $prod_code) !== true) {
+            if ($this->_replaceBookSale($prod_code, $input) !== true) {
                 throw new \Exception('판매가격 정보 수정에 실패했습니다.');
             }            
 
@@ -380,11 +380,11 @@ class BookModel extends WB_Model
 
     /**
      * 이전 판매가격 정보 삭제 처리 후 신규 등록
-     * @param array $input
      * @param $prod_code
+     * @param array $input
      * @return bool|string
      */
-    private function _replaceBookSale($input = [], $prod_code)
+    private function _replaceBookSale($prod_code, $input = [])
     {
         $admin_idx = $this->session->userdata('admin_idx');
 
@@ -420,11 +420,11 @@ class BookModel extends WB_Model
 
     /**
      * 교재 카테고리 연결 데이터 저장
-     * @param $arr_cate_code
      * @param $prod_code
+     * @param $arr_cate_code
      * @return bool|string
      */
-    private function _replaceBookCategory($arr_cate_code, $prod_code)
+    private function _replaceBookCategory($prod_code, $arr_cate_code)
     {
         $_table = $this->_table['product_r_category'];
         $arr_cate_code = (is_null($arr_cate_code) === true) ? [] : array_values(array_unique($arr_cate_code));

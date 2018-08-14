@@ -9,7 +9,6 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
-        <input type="hidden" name="total_pay_price" value="{{ $results['total_pay_price'] }}"/>  {{-- 최종결제금액 --}}
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
@@ -330,7 +329,7 @@
                                         @endforeach
                                         </ul>
                                     </dt>
-                                    <dt id="pay_method_caution_txt"></dt>
+                                    <dt><div id="pay_method_caution_txt" class="caution-txt"></div></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -576,7 +575,6 @@
             $regi_form.find('#point_disc_price').html(addComma(point_disc_price));
             $regi_form.find('#delivery_price').html(addComma(delivery_price));
             $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
-            $regi_form.find('input[name="total_pay_price"]').val(total_pay_price);
 
             // 적립포인트 계산
             if (point_disc_price > 0) {
@@ -711,8 +709,8 @@
 
             // 에스크로 필드 노출 여부
             if ($regi_form.find('.willbes-Delivery-Info').length > 0) {
-                if (code === '604001') {
-                    $regi_form.find('#is_escrow').css('display', '');   // 신용카드 일 경우
+                if (code === '604002' || code === '604003') {
+                    $regi_form.find('#is_escrow').css('display', '');   // 실시간 계좌이체, 무통장입금(가상계좌) 일 경우
                 } else {
                     $regi_form.find('#is_escrow').css('display', 'none');
                 }
@@ -720,7 +718,7 @@
 
             // 결제수단별 주의사항
             if (code === '604001') {
-                caution_txt = '<div class="caution-txt">카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.</div>';
+                caution_txt = '카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.';
             }
             $regi_form.find('#pay_method_caution_txt').html(caution_txt);
 
@@ -736,7 +734,7 @@
 
         // 결제하기 버튼 클릭
         $('button[name="btn_pay"]').on('click', function () {
-            var url = '{{ site_url('/payment/request') }}';
+            var url = '{{ site_url('/payment/request/cate/' . $__cfg['CateCode']) }}';
             ajaxSubmit($regi_form, url, function(ret) {
                 if(ret.ret_cd) {
                     $('body').append(ret.ret_data);

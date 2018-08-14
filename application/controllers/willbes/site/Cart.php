@@ -19,9 +19,6 @@ class Cart extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
-        // 장바구니 식별자 세션 삭제
-        $this->cartFModel->destroySessCartIdx();
-
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 

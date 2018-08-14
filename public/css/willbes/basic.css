@@ -430,6 +430,9 @@ strong {
   margin: 0 auto;
 }
 
+.h27 {
+  height: 27px !important;
+}
 .h30 {
   height: 30px !important;
 }

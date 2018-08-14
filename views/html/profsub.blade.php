@@ -141,9 +141,16 @@
                                 <dt><span class="tx-blue">100,000</span>원</dt>
                                 <dt class="w-notice p_re">
                                     <ul class="w-sp">
-                                        <li><a href="#none">OT</a></li>
-                                        <li><a href="#none">맛보기</a></li>
+                                        <li><a href="#none" onclick="openWin('viewBox')">맛보기</a></li>
                                     </ul>
+                                    <div id="viewBox" class="viewBox" style="top: 0; left: 63px;">
+                                        <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                        <dl class="NSK">
+                                            <dt class="Tit NG">맛보기1</dt>
+                                            <dt class="tBox t1 black"><a href="">HIGH</a></dt>
+                                            <dt class="tBox t2 gray"><a href="">LOW</a></dt>
+                                        </dl>
+                                    </div>
                                 </dt>
                             </dl>
                         </div>
@@ -157,7 +164,6 @@
                                 <dt><span class="tx-blue">180,000</span>원</dt>
                                 <dt class="w-notice p_re">
                                     <ul class="w-sp">
-                                        <li><a href="#none">OT</a></li>
                                         <li><a href="#none">맛보기</a></li>
                                     </ul>
                                 </dt>
@@ -314,7 +320,11 @@
                                 <dt><a href="#none">최신순</a></dt>
                                 <dt><a href="#none">평점순</a></dt>
                             </dl>
-                            <div class="reply-Btn h36 f_right"><a class="bg-blue bd-dark-blue NSK" href="#none" onclick="closeWin('replyListLayer'),openWin('replyWrite')">수강후기 작성</a></div>
+                            <div class="search-Btn btnAuto120 h27 f_right">
+                                <button type="submit" onclick="closeWin('replyListLayer'),openWin('replyWrite')" class="mem-Btn bg-blue bd-dark-blue">
+                                    <span>수강후기 작성</span>
+                                </button>
+                            </div>
                         </div>
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable replyTable upper-black upper-gray bdb-gray tx-gray">
@@ -339,7 +349,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
                                         <td class="w-lec">헌법</td>
                                         <td class="w-name">정채영</td>
@@ -351,7 +361,7 @@
                                         <td class="w-write">장동*</td>
                                         <td class="w-date">2018-00-00</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             Woo ah(우와) Dae Bark(박) 입니다!!! 정채영 교수님 수업을 온/오프라인으로 몇번 들었던 장수생입니다.
@@ -359,7 +369,7 @@
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
                                         <td class="w-lec">공직선거법</td>
                                         <td class="w-name">한덕현</td>
@@ -371,14 +381,14 @@
                                         <td class="w-write">박형*</td>
                                         <td class="w-date">2018-00-00</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             베스트 댓글2
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">8</td>
                                         <td class="w-lec">스파르타반</td>
                                         <td class="w-name">김쌤</td>
@@ -390,14 +400,14 @@
                                         <td class="w-write">최귀*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">7</td>
                                         <td class="w-lec">행정법</td>
                                         <td class="w-name">최진우</td>
@@ -409,14 +419,14 @@
                                         <td class="w-write">박형*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다.
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">6</td>
                                         <td class="w-lec">공통</td>
                                         <td class="w-name">윤세훈</td>
@@ -428,14 +438,14 @@
                                         <td class="w-write">장동*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div> 
                                             좋네요 좋네요 좋네요
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">5</td>
                                         <td class="w-lec">헌법</td>
                                         <td class="w-name">정채영</td>
@@ -447,14 +457,14 @@
                                         <td class="w-write">최귀*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다.
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">4</td>
                                         <td class="w-lec">공직선거법</td>
                                         <td class="w-name">한덕현</td>
@@ -466,14 +476,14 @@
                                         <td class="w-write">최귀*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             쉽게 설명해주시네요. 쉽게 설명해주시네요. 쉽게 설명해주시네요.
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">3</td>
                                         <td class="w-lec">스파르타반</td>
                                         <td class="w-name">김쌤</td>
@@ -485,14 +495,14 @@
                                         <td class="w-write">최귀*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">2</td>
                                         <td class="w-lec">행정법</td>
                                         <td class="w-name">최진우</td>
@@ -504,14 +514,14 @@
                                         <td class="w-write">최귀*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt tx-gray">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             좋네요 좋네요
                                         </td>
                                     </tr>
 
-                                    <tr class="replyList tx-gray">
+                                    <tr class="replyList w-replyList">
                                         <td class="w-no">1</td>
                                         <td class="w-lec">공통</td>
                                         <td class="w-name">윤세훈</td>
@@ -523,7 +533,7 @@
                                         <td class="w-write">최귀*</td>
                                         <td class="w-date">2018-04-22</td>
                                     </tr>
-                                    <tr class="replyTxt">
+                                    <tr class="replyTxt w-replyTxt tx-gray">
                                         <td colspan="7">
                                             <div class="tx-blue">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
                                             좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
@@ -532,8 +542,17 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="willbes-Lec-Search GM p_re mt30">
+                            <div class="inputBox">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div> 
                     </div>
                     <!-- willbes-Leclist -->
+
                 </div>
 
                 <!-- Write -->
@@ -556,13 +575,13 @@
                                     <tr>
                                         <td class="w-tit bg-light-white tx-left strong pl30">수강정보<span class="tx-light-blue">(*)</span></td>
                                         <td class="w-selected tx-left pl30">
-                                            <select id="Sbj" name="Sbj" title="Sbj" class="seleSbj">
+                                            <select id="Sbj" name="Sbj" title="Sbj" class="seleSbj" style="width: 150px;">
                                                 <option selected="selected">과목선택</option>
                                                 <option value="헌법">헌법</option>
                                                 <option value="스파르타반">스파르타반</option>
                                                 <option value="공직선거법">공직선거법</option>
                                             </select>
-                                            <select id="Prof" name="Prof" title="Prof" class="seleProf">
+                                            <select id="Prof" name="Prof" title="Prof" class="seleProf" style="width: 150px;">
                                                 <option selected="selected">교수선택</option>
                                                 <option value="정채영">정채영</option>
                                                 <option value="한덕현">한덕현</option>
@@ -594,20 +613,13 @@
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <div class="search-Btn mt20 mb50 f_right">
-                                <ul>
-                                    <li class="btnAuto90 h36">
-                                        <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                            <span>저장</span>
-                                        </button>
-                                    </li>
-                                    <li class="btnAuto90 h36">
-                                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
-                                            <span class="tx-purple-gray">취소</span>
-                                        </button>
-                                    </li>
-                                </ul>
+                            <div class="search-Btn mt20 h36 p_re">
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                    <span class="tx-purple-gray">취소</span>
+                                </button>
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                                    <span>저장</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -637,7 +649,7 @@
                 </ul>
                 <div class="tabBox">
                     <div id="Proftab1" class="tabLink">
-                        <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">· 개설강좌</div>
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 개설강좌</div>
                         <div class="acadBoxWrap">
                             <ul class="tabWrap tabDepthAcad">
                                 <li><a href="#acad1" class="on">온라인강좌</a></li>
@@ -699,8 +711,7 @@
                                                         <col style="width: 75px;">
                                                         <col style="width: 85px;">
                                                         <col style="width: 490px;">
-                                                        <col style="width: 110px;">
-                                                        <col style="width: 180px;">
+                                                        <col style="width: 290px;">
                                                     </colgroup>
                                                     <tbody>
                                                         <tr>
@@ -712,7 +723,7 @@
                                                                 </div>
                                                                 <dl class="w-info">
                                                                     <dt class="mr20">
-                                                                        <a href="#ch1" onclick="openLink('ch1','hover1'),openWin('InfoForm')">
+                                                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
                                                                             <strong>강좌상세정보</strong>
                                                                         </a>
                                                                     </dt>
@@ -725,26 +736,13 @@
                                                                         <span class="nBox n3">예정</span>
                                                                         <span class="nBox n4">완강</span>
                                                                     </dt>
-                                                                </dl>
-                                                            </td>
-                                                            <td class="chk buybtn p_re">
-                                                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                                                <div class="willbes-Lec-buyBtn-sm">
-                                                                    <div>
-                                                                        <button type="submit" onclick="" class="bg-deep-gray">
-                                                                            <span>장바구니</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div>
-                                                                        <button type="submit" onclick="" class="bg-dark-blue">
-                                                                            <span>바로결제</span>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
+                                                                </dl><br/>
+                                                                <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
                                                             </td>
                                                             <td class="w-notice p_re">
                                                                 <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
                                                                 <div id="viewBox" class="viewBox">
+                                                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                                     <dl class="NSK">
                                                                         <dt class="Tit NG">맛보기1</dt>
                                                                         <dt class="tBox t1 black"><a href="">HIGH</a></dt>
@@ -756,9 +754,23 @@
                                                                         <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                                                     </dl>
                                                                 </div>
-                                                                <div class="priceWrap">
-                                                                    <span class="price tx-blue">80,000원</span>
+                                                                <div class="priceWrap chk buybtn p_re">
+                                                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                    <span class="select">[PC]</span>
+                                                                    <span class="price tx-blue">7,000원</span>
                                                                     <span class="discount">(↓20%)</span>
+                                                                </div>
+                                                                <div class="priceWrap chk buybtn p_re">
+                                                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                    <span class="select">[모바일]</span>
+                                                                    <span class="price tx-blue">80,000원</span>
+                                                                    <span class="discount">(↓10%)</span>
+                                                                </div>
+                                                                <div class="priceWrap chk buybtn p_re">
+                                                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                    <span class="select">[PC+모바일]</span>
+                                                                    <span class="price tx-blue">123,000원</span>
+                                                                    <span class="discount">(↓15%)</span>
                                                                 </div>
                                                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                                             </td>
@@ -779,7 +791,7 @@
                                                                 <div class="w-sub">
                                                                     <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                                     <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                                    <span class="chk">
+                                                                    <span class="chk buybtn p_re">
                                                                         <label>[판매중]</label>
                                                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                                     </span>
@@ -811,8 +823,9 @@
                                                                         <span class="price tx-blue">0원</span>
                                                                     </span>
                                                                 </div>
-                                                                <div class="w-sub ml10">
-                                                                    <a href="#ch2" onclick="openLink('ch2','hover2'),openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                                                <div class="w-sub">
+                                                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -896,6 +909,11 @@
                                                 <!-- lecTable -->
                                             </div>
                                             <!-- willbes-Lec-Table -->
+
+                                            <div class="TopBtn">
+                                                <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                                            </div>
+                                            <!-- TopBtn-->
                                         </div>
                                         <!-- willbes-Lec -->
 
@@ -943,6 +961,11 @@
                                                 <!-- lecTable -->
                                             </div>
                                             <!-- willbes-Lec-Table -->
+
+                                            <div class="TopBtn">
+                                                <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
+                                            </div>
+                                            <!-- TopBtn-->
                                         </div>
                                         <!-- willbes-Lec -->
 
@@ -959,7 +982,7 @@
                         </div>
                     </div>
                     <div id="Proftab2" class="tabLink">
-                        <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · 공지사항
                             <div class="willbes-Lec-Search GM f_right">
                                 <div class="inputBox p_re">
@@ -1012,7 +1035,7 @@
                                             <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">헌법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
@@ -1023,7 +1046,7 @@
                                             <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">스파르타반</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
@@ -1031,10 +1054,28 @@
                                             <td class="w-click">244</td>
                                         </tr>
                                         <tr>
+                                            <td class="w-no">10</td>
+                                            <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                            <td class="w-lec">헌법</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">355</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">9</td>
+                                            <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                            <td class="w-lec">공직선거법</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">466</td>
+                                        </tr>
+                                        <tr>
                                             <td class="w-no">8</td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">헌법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">355</td>
@@ -1043,7 +1084,7 @@
                                             <td class="w-no">7</td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">공직선거법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">466</td>
@@ -1052,7 +1093,7 @@
                                             <td class="w-no">6</td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">헌법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">355</td>
@@ -1061,7 +1102,7 @@
                                             <td class="w-no">5</td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">공직선거법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">466</td>
@@ -1070,7 +1111,7 @@
                                             <td class="w-no">4</td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">헌법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">355</td>
@@ -1079,7 +1120,7 @@
                                             <td class="w-no">3</td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">공직선거법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">466</td>
@@ -1088,7 +1129,7 @@
                                             <td class="w-no">2</td>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">헌법</td>
-                                            <td class="w-list tx-left pl20">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">355</td>
@@ -1139,12 +1180,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
+                                <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
                                         <span>목록</span>
                                     </button>
                                 </div>
-                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 150px;">
                                         <col style="width: 640px;">
@@ -1168,7 +1209,7 @@
                         <!-- willbes-Leclist -->
                     </div>
                     <div id="Proftab3" class="tabLink">
-                        <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · 학습Q&A
                             <div class="willbes-Lec-Search GM f_right">
                                 <div class="inputBox p_re">
@@ -1194,7 +1235,7 @@
                                     <option value="강좌내용">강좌내용</option>
                                     <option value="학습상담">학습상담</option>
                                 </select>
-                                <ul class="chkBox">
+                                <ul class="chkBox" style="position: relative; top: -1px;">
                                     <li>
                                         <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                         <label>공지숨기기</label>
@@ -1204,7 +1245,7 @@
                                         <label>내질문보기</label>
                                     </li>
                                 </ul>
-                                <div class="search-Btn btnAuto90 h36 f_right">
+                                <div class="search-Btn btnAuto90 h27 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                                         <span>질문하기</span>
                                     </button>
@@ -1237,7 +1278,7 @@
                                             <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-question">기타</td>
-                                            <td class="w-list tx-left pl20">[주의] 이럴 경우 답변되지 않을수 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-answer">&nbsp;</td>
@@ -1246,17 +1287,48 @@
                                             <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-question">강좌내용</td>
-                                            <td class="w-list tx-left pl20">[필독] 가장자주묻는질문7가지</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[필독] 가장자주묻는질문7가지</a></td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-answer">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">10</td>
+                                            <td class="w-lec">공직선거법</td>
+                                            <td class="w-question">학습상담</td>
+                                            <td class="w-list tx-left pl20">
+                                                <a href="#none">
+                                                    <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
+                                                </a>
+                                            </td>
+                                            <td class="w-write">장동*</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-answer">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">9</td>
+                                            <td class="w-lec">행정법</td>
+                                            <td class="w-question">기타</td>
+                                            <td class="w-list tx-left pl20">
+                                                <a href="#none">
+                                                    <img src="{{ img_url('prof/icon_locked.gif') }}"> 만띄어쓰기질문이요 
+                                                    <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                                    <img src="{{ img_url('prof/icon_file.gif') }}">
+                                                    <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                </a>
+                                            </td>
+                                            <td class="w-write">박형*</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-answer"><span class="aBox waitBox NSK">답변대기</span></td>
                                         </tr>
                                         <tr>
                                             <td class="w-no">8</td>
                                             <td class="w-lec">공직선거법</td>
                                             <td class="w-question">학습상담</td>
                                             <td class="w-list tx-left pl20">
-                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
+                                                <a href="#none">
+                                                    <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
+                                                </a>
                                             </td>
                                             <td class="w-write">장동*</td>
                                             <td class="w-date">2018-00-00</td>
@@ -1267,10 +1339,12 @@
                                             <td class="w-lec">행정법</td>
                                             <td class="w-question">기타</td>
                                             <td class="w-list tx-left pl20">
-                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 만띄어쓰기질문이요 
-                                                <img src="{{ img_url('prof/icon_N.gif') }}"> 
-                                                <img src="{{ img_url('prof/icon_file.gif') }}">
-                                                <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                <a href="#none">
+                                                    <img src="{{ img_url('prof/icon_locked.gif') }}"> 만띄어쓰기질문이요 
+                                                    <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                                    <img src="{{ img_url('prof/icon_file.gif') }}">
+                                                    <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                </a>
                                             </td>
                                             <td class="w-write">박형*</td>
                                             <td class="w-date">2018-00-00</td>
@@ -1281,7 +1355,9 @@
                                             <td class="w-lec">공통</td>
                                             <td class="w-question">강좌내용</td>
                                             <td class="w-list tx-left pl20">
-                                                <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
+                                                <a href="#none">
+                                                    <img src="{{ img_url('prof/icon_locked.gif') }}"> 안녕하세요?
+                                                </a>
                                             </td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
@@ -1291,7 +1367,7 @@
                                             <td class="w-no">5</td>
                                             <td class="w-lec">행정법</td>
                                             <td class="w-question">기타</td>
-                                            <td class="w-list tx-left pl20">3월 24일 시험과 관련해서 질문 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">3월 24일 시험과 관련해서 질문 있습니다.</a></td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-answer">&nbsp;</td>
@@ -1300,7 +1376,7 @@
                                             <td class="w-no">4</td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-question">강좌내용</td>
-                                            <td class="w-list tx-left pl20">3월 24일 시험과 관련해서 질문 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">3월 24일 시험과 관련해서 질문 있습니다.</a></td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-answer">&nbsp;</td>
@@ -1309,7 +1385,7 @@
                                             <td class="w-no">3</td>
                                             <td class="w-lec">행정법</td>
                                             <td class="w-question">기타</td>
-                                            <td class="w-list tx-left pl20">3월 24일 시험과 관련해서 질문 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">3월 24일 시험과 관련해서 질문 있습니다.</a></td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-answer">&nbsp;</td>
@@ -1318,7 +1394,7 @@
                                             <td class="w-no">2</td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-question">강좌내용</td>
-                                            <td class="w-list tx-left pl20">3월 24일 시험과 관련해서 질문 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">3월 24일 시험과 관련해서 질문 있습니다.</a></td>
                                             <td class="w-write">관리자명</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-answer">&nbsp;</td>
@@ -1506,32 +1582,24 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="search-Btn mt20 mb50 f_left">
-                                    <ul>
-                                        <li class="btnAuto90 h36">
-                                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
-                                                <span class="tx-purple-gray">수정</span>
-                                            </button>
-                                        </li>
-                                        <li class="btnAuto90 h36">
-                                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
-                                                <span class="tx-purple-gray">삭제</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
-                                    <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+
+                                <div class="search-Btn mt20 mb30 h36 p_re">
+                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                        <span class="tx-purple-gray">삭제</span>
+                                    </button>
+                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center">
+                                        <span class="tx-purple-gray">수정</span>
+                                    </button>
+                                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
                                         <span>목록</span>
                                     </button>
                                 </div>
-
                             </div>
                         </div>
                         <!-- willbes-Leclist -->
                     </div>
                     <div id="Proftab4" class="tabLink">
-                        <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · 학습자료실
                             <div class="willbes-Lec-Search GM f_right">
                                 <div class="inputBox p_re">
@@ -1557,16 +1625,6 @@
                                     <option value="스파르타반">스파르타반</option>
                                     <option value="공직선거법">공직선거법</option>
                                 </select>
-                                <ul class="chkBox">
-                                    <li>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                        <label>공지숨기기</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                        <label>내질문보기</label>
-                                    </li>
-                                </ul>
                             </div>
                             <div class="LeclistTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
@@ -1598,7 +1656,7 @@
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-type"><div class="pBox p1 NSK">강좌</div></td>
-                                            <td class="w-list tx-left pl20">[주의] 이럴 경우 답변되지 않을수 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1608,10 +1666,39 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-type"><div class="pBox p2 NSK">패키지</div></td>
-                                            <td class="w-list tx-left pl20">[필독] 가장자주묻는질문7가지</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[필독] 가장자주묻는질문7가지</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">456</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">10</td>
+                                            <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                            <td class="w-lec">공직선거법</td>
+                                            <td class="w-type"><div class="pBox p1 NSK">강좌</div></td>
+                                            <td class="w-list tx-left pl20">
+                                                <a href="#none">
+                                                    2018 필살기실전모의고사파본관련공지
+                                                    <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                </a>
+                                            </td>
+                                            <td class="w-file">
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                            </td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">123</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">9</td>
+                                            <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                            <td class="w-lec">공통</td>
+                                            <td class="w-type"><div class="pBox p3 NSK">교재</div></td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
+                                            <td class="w-file">
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                            </td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">123</td>
                                         </tr>
                                         <tr>
                                             <td class="w-no">8</td>
@@ -1619,8 +1706,10 @@
                                             <td class="w-lec">공직선거법</td>
                                             <td class="w-type"><div class="pBox p1 NSK">강좌</div></td>
                                             <td class="w-list tx-left pl20">
-                                                2018 필살기실전모의고사파본관련공지
-                                                <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                <a href="#none">
+                                                    2018 필살기실전모의고사파본관련공지
+                                                    <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                </a>
                                             </td>
                                             <td class="w-file">
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
@@ -1633,7 +1722,7 @@
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">공통</td>
                                             <td class="w-type"><div class="pBox p3 NSK">교재</div></td>
-                                            <td class="w-list tx-left pl20">[주의] 이럴 경우 답변되지 않을수 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
                                             <td class="w-file">
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
@@ -1645,7 +1734,7 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">공직선거법</td>
                                             <td class="w-type"><div class="pBox p1 NSK">강좌</div></td>
-                                            <td class="w-list tx-left pl20">2018 필살기실전모의고사파본관련공지</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1655,7 +1744,7 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-type"><div class="pBox p2 NSK">패키지</div></td>
-                                            <td class="w-list tx-left pl20">2018 필살기실전모의고사파본관련공지</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1665,7 +1754,7 @@
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">공직선거법</td>
                                             <td class="w-type"><div class="pBox p3 NSK">교재</div></td>
-                                            <td class="w-list tx-left pl20">2018 필살기실전모의고사파본관련공지</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
                                             <td class="w-file">
                                                 <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                             </td>
@@ -1677,7 +1766,7 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-lec">스파르타반</td>
                                             <td class="w-type"><div class="pBox p2 NSK">패키지</div></td>
-                                            <td class="w-list tx-left pl20">[주의] 이럴 경우 답변되지 않을수 있습니다.</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1687,7 +1776,7 @@
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-lec">공직선거법</td>
                                             <td class="w-type"><div class="pBox p3 NSK">교재</div></td>
-                                            <td class="w-list tx-left pl20">2018 필살기실전모의고사파본관련공지</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
                                             <td class="w-file">&nbsp;</td>
                                             <td class="w-date">2018-00-00</td>
                                             <td class="w-click">123</td>
@@ -1740,12 +1829,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="search-Btn btnAuto90 h36 mt20 mb50 f_right">
+                                <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
                                     <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
                                         <span>목록</span>
                                     </button>
                                 </div>
-                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
                                     <colgroup>
                                         <col style="width: 150px;">
                                         <col style="width: 640px;">
@@ -1769,7 +1858,176 @@
                         <!-- willbes-Leclist -->
                     </div>
                     <div id="Proftab5" class="tabLink">
-                        <div class="willbes-Prof-Subject pl-zero pt50 NG tx-dark-black">· 무료강좌</div>
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 무료강좌</div>
+
+                        <div class="willbes-Lec NG c_both">
+                            <div class="willbes-Lec-Profdata tx-dark-black">
+                                <ul>
+                                    <li class="ProfImg"><img src="{{ img_url('sample/prof2.png') }}"></li>
+                                    <li class="ProfDetail">
+                                        <div class="Obj">
+                                            국어강의의 뉴 패러다임!<br/>듣기만 해도 암기되는 강의
+                                        </div>
+                                        <div class="Name">기미진 교수님</div>
+                                    </li>
+                                    <li class="Reply tx-blue">
+                                        <strong>수강후기</strong>
+                                        <div class="sliderUp">
+                                            <div class="sliderVertical roll-Reply tx-dark-black">
+                                                <div>444국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                                <div>555국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                                <div>666국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- willbes-Lec-Profdata -->
+
+                            <div class="willbes-Lec-Line">-</div>
+                            <!-- willbes-Lec-Line -->
+
+                            <div class="willbes-Lec-Table">
+                                <table cellspacing="0" cellpadding="0" class="lecTable">
+                                    <colgroup>
+                                        <col style="width: 75px;">
+                                        <col style="width: 85px;">
+                                        <col style="width: 490px;">
+                                        <col style="width: 290px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-list">유료특강</td>
+                                            <td class="w-name">국어<br/><span class="tx-blue">기미진</span></td>
+                                            <td class="w-data tx-left pl25">
+                                                <div class="w-tit">2018 기미진 국어 아침 실전 동형모의고사 특강[국가직~서울시](3-6개월)</div>
+                                                <dl class="w-info">
+                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>강의수 : <span class="tx-blue">48강 (예정)</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>수강기간 : <span class="tx-blue">100일</span></dt>
+                                                    <dt class="NSK ml15">
+                                                        <span class="nBox n1">2배수</span>
+                                                        <span class="nBox n2">진행중</span>
+                                                    </dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-notice p_re">
+                                                <div class="w-sp one"><a href="#none">맛보기</a></div>
+                                                <div class="priceWrap chk buybtn p_re">
+                                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                    <span class="price tx-blue">0원</span>
+                                                </div>
+                                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- lecTable -->
+
+                                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                    <colgroup>
+                                        <col style="width: 75px;">
+                                        <col style="width: 865px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <div class="w-sub">
+                                                    <span class="w-obj tx-blue tx11">부교재</span> 
+                                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
+                                                    <span class="chk">
+                                                        <label class="press">[출간예정]</label>
+                                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                                    </span>
+                                                    <span class="priceWrap">
+                                                        <span class="price tx-blue">0원</span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- lecInfoTable -->
+                            </div>
+                            <!-- willbes-Lec-Table -->
+
+                            <div class="willbes-Lec-Table">
+                                <table cellspacing="0" cellpadding="0" class="lecTable">
+                                    <colgroup>
+                                        <col style="width: 75px;">
+                                        <col style="width: 85px;">
+                                        <col style="width: 490px;">
+                                        <col style="width: 290px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-list">문제풀이</td>
+                                            <td class="w-name">국어<br/><span class="tx-blue">기미진</span></td>
+                                            <td class="w-data tx-left pl25">
+                                                <div class="w-tit">2018 [서울시대비] 기미진 기특한 국어 아침 실전동형모의고사 (5-6월)</div>
+                                                <dl class="w-info">
+                                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
+                                                    <dt>강의수 : <span class="tx-blue">16강 (예정)</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>수강기간 : <span class="tx-blue">40일</span></dt>
+                                                    <dt class="NSK ml15">
+                                                        <span class="nBox n1">2배수</span>
+                                                        <span class="nBox n3">예정</span>
+                                                    </dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-notice p_re">
+                                                <div class="w-sp one"><a href="#none">맛보기</a></div>
+                                                <div class="priceWrap chk buybtn p_re">
+                                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                    <span class="price tx-blue">0원</span>
+                                                </div>
+                                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- lecTable -->
+
+                                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                    <colgroup>
+                                        <col style="width: 75px;">
+                                        <col style="width: 865px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <div class="w-sub">
+                                                    <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- lecInfoTable -->
+                            </div>
+                            <!-- willbes-Lec-Table --> 
+                        </div>
+                        <!-- willbes-Lec -->
+
+                        <div class="willbes-Lec-buyBtn">
+                            <ul>
+                                <li class="btnAuto180 h36">
+                                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                                        <span>장바구니</span>
+                                    </button>
+                                </li>
+                                <li class="btnAuto180 h36">
+                                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                                        <span class="tx-light-blue">바로결제</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- willbes-Lec-buyBtn -->
                     </div>
                 </div>
             </div>

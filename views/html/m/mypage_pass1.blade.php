@@ -20,8 +20,6 @@
         </select>
     </div>
 
-
-
     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
         <tbody>
             <tr>
@@ -37,11 +35,6 @@
             </tr>
         </tbody>
     </table>
-
-
-
-
-
 
     <div class="lineTabs lecListTabs c_both">
         <ul class="tabWrap lineWrap lecListWrap">
@@ -110,7 +103,6 @@
                 </table>
             </div>
 
-
             <div id="leclist2" class="tabContent" style="display: none;">
                 <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
                 aaa
@@ -121,7 +113,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 <!-- End Container -->

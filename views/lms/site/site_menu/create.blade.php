@@ -67,8 +67,8 @@
             <div class="col-md-10 item form-inline">
                 <select class="form-control" id="menu_type" name="menu_type" title="메뉴 구분">
                     <option value="GN">일반메뉴</option>
-                    <option value="PA">예외메뉴 (학원)</option>
-                    <option value="PG">예외메뉴 (GNB 미노출)</option>
+                    <option value="GA">일반메뉴 (학원)</option>
+                    <option value="PS">예외메뉴 (고객센터)</option>
                 </select>
             </div>
         </div>

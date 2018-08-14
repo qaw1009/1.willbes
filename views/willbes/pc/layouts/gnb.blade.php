@@ -49,7 +49,7 @@
                                         </div>
                                     @endif
                                 </li>
-                            @elseif($menu_row['MenuType'] == 'PA')
+                            @elseif($menu_row['MenuType'] == 'GA')
                                 <li class="Acad">
                                     <a class="willbes-Acad-Tit" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
                                     <dl class="sns-Btn">
@@ -81,8 +81,8 @@
     <div class="gnb-List">
         @foreach($__cfg['GnbTreeMenu'] as $menu_group_id => $menu_group_row)
             @foreach($menu_group_row as $menu_idx => $menu_row)
-                {{-- 예외메뉴 (GNB 미노출)이 아닐 경우만 노출 --}}
-                @if($menu_row['MenuType'] != 'PG')
+                {{-- 예외메뉴 (미노출)이 아닐 경우만 노출 --}}
+                @if($menu_row['MenuType'] != 'PS')
                     <div class="gnb-List-Tit">
                         <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
                             <div class="willbes-icon_sm">

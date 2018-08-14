@@ -21,13 +21,9 @@
                                 </div>
                             @endif
                         </li>
-                    @elseif($menu_row['MenuType'] == 'PA')
+                    @elseif($menu_row['MenuType'] == 'GA')
                         <li class="Acad">
                             <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }} <span class="arrow-Btn">></span></a>
-                        </li>
-                    @elseif($menu_row['MenuType'] == 'PF')
-                        <li>
-                            <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
                         </li>
                     @endif
                 @endforeach

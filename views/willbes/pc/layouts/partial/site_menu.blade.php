@@ -1,13 +1,12 @@
-@if(empty($__cfg['SiteTreeMenu']) === false)
+@if(empty($__cfg['FrontMenus'][$__cfg['SiteCode']]['TreeMenu']) === false)
     <div class="Menu NSK c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">{{ $__cfg['SiteActiveMenu']['UrlRouteNames'][0] }}<span class="row-line">|</span></li>
-                <li class="subTit">{{ $__cfg['SiteActiveMenu']['UrlRouteNames'][1] }}</li>
+                <li class="Tit">{{ $__cfg['FrontMenus'][$__cfg['SiteCode']]['ActiveMenu']['UrlRouteNames'][0] }}<span class="row-line">|</span></li>
+                <li class="subTit">{{ $__cfg['FrontMenus'][$__cfg['SiteCode']]['ActiveMenu']['UrlRouteNames'][1] }}</li>
             </ul>
             <ul class="menu-List">
-                {{-- 3depth 메뉴부터 표기 --}}
-                @foreach(current(current($__cfg['SiteTreeMenu'])['Children'])['Children'] as $menu_idx => $menu_row)
+                @foreach($__cfg['FrontMenus'][$__cfg['SiteCode']]['TreeMenu'] as $menu_idx => $menu_row)
                     @if($menu_row['MenuType'] == 'GN')
                         <li class="@if(isset($menu_row['Children']) === true) dropdown @endif">
                             <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>

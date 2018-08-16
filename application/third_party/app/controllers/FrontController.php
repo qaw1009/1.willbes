@@ -115,85 +115,101 @@ abstract class FrontController extends BaseController
         // 사이트 코드 (URL 세그먼트 배열에 site 값이 있다면 site 값 우선)
         $site_code = isset($uri_segments[config_get('uri_segment_keys.site')]) === true ? $uri_segments[config_get('uri_segment_keys.site')] : $this->_site_code;
 
+        // 현재 사이트의 카테고리 코드
+        $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
+
         // 전체 사이트 메뉴 캐쉬 조회
-        $site_menu_cache = $this->getCacheItem('site_menu');
+        $all_site_menu_cache = $this->getCacheItem('site_menu');
 
-        // 사이트 메뉴
-        $site_tree_menu = array_get($site_menu_cache, 'SiteTreeMenus.' . $site_code, []);
+        // 전체 트리 메뉴
+        $all_site_tree_menus = element('TreeMenus', $all_site_menu_cache, []);
 
-        // 일반 사이트 접근시 Active 되는 GNB 그룹메뉴 아이디 (서브 도메인과 동일)
-        $gnb_active_group_id = '';
-        if (empty($site_tree_menu) === false) {
-            $gnb_active_group_id = str_first_pos_before(element($site_code, element('SiteKeys', $all_site_cache)), '>');
-        }
+        // 전체 메뉴 URL
+        $all_site_menu_urls_cache = element('MenuUrls', $all_site_menu_cache, []);
 
-        // 사이트 과목+교수 연결정보 캐쉬 조회, Active 사이트 메뉴 정보
-        //$site_subject_professors = [];
-        $site_active_menu = [];
+        // 메뉴 정보 배열
+        $front_menus = [];
 
-        if (empty($site_tree_menu) === false) {
-            // 사이트 전체 메뉴 URL
-            $site_menu_urls = array_get($site_menu_cache, 'SiteMenuUrls.' . $site_code, []);
-            $site_menu_tmp_urls = $site_menu_urls;
+        // 현재 URL의 디렉토리/컨트롤러까지의 URI (/{directory}/{controller}/)
+        $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
 
-            // 현재 사이트의 카테고리 코드
-            $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
+        foreach (['GNB', $site_code] as $group_menu_key) {
+            // Active 메뉴 route idx
+            $_active_route_idx = '';
 
-            // 현재 URL의 디렉토리/컨트롤러까지의 URI (/{directory}/{controller}/)
-            $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
+            // GNB, 접근 사이트 메뉴 URL
+            $menu_urls = element($group_menu_key, $all_site_menu_urls_cache, []);
+            $menu_tmp_urls = $menu_urls;
 
-            foreach ($site_menu_urls as $menu_route_idx => $menu_url) {
+            foreach ($menu_urls as $menu_route_idx => $menu_url) {
                 // 동일한 메뉴 URL이 다음 루프에서 존재하는지 여부를 체크하기 위해 맨처음 배열 원소부터 차례로 시프트
-                array_shift($site_menu_tmp_urls);
-                if (array_search($menu_url, $site_menu_tmp_urls) != false) {
+                array_shift($menu_tmp_urls);
+                if (array_search($menu_url, $menu_tmp_urls) != false) {
                     continue;   // 동일한 URL이 존재한다면 continue
                 }
 
-                // 1depth 메뉴 제외
-                if (strpos($menu_route_idx, '>') > -1) {
-                    $menu_path = parse_url($menu_url, PHP_URL_PATH);
+                // controller check
+                $menu_parse_url = parse_url($menu_url);
+                $menu_path = element('path', $menu_parse_url);
 
-                    // controller check
-                    if (empty($menu_path) === false && starts_with($menu_path, $check_menu_prefix) === true) {
-                        // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
-                        $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
+                if (empty($menu_path) === false && starts_with($menu_path, $check_menu_prefix) === true) {
+                    // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
+                    $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
 
-                        if (strpos(uri_string(), $check_menu_postfix) !== false) {
-                            $site_active_menu = array_get($site_tree_menu, str_replace('>', '.Children.', $menu_route_idx));
-                            $site_active_menu['IsDefault'] = false;
-                            break;
-                        }
+                    if (strpos(current_url(), $menu_parse_url['host']) !== false && strpos(uri_string(), $check_menu_postfix) !== false) {
+                        $_active_route_idx = $menu_route_idx;
+                        break;
                     }
                 }
             }
 
-            // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
-            if (empty($site_active_menu) === true) {
-                $site_active_menu = current(current($site_tree_menu)['Children']);
-                $site_active_menu['IsDefault'] = true;
+            $_tree_menu = element($group_menu_key, $all_site_tree_menus, []);
+            $_active_menu = [];
+            if ($group_menu_key == 'GNB') {
+                if (empty($_active_route_idx) === false) {
+                    $_active_menu = array_get($all_site_tree_menus, $_active_route_idx, []);
+                }
+            } else {
+                if (empty($_tree_menu) === false) {
+                    if (empty($_active_route_idx) === false) {
+                        $_active_menu = array_get($all_site_tree_menus, $_active_route_idx, []);
+                        $_active_group_menu_idx = explode('.', $_active_route_idx)[1];
+
+                        if (is_numeric($_active_group_menu_idx) === true) {
+                            // 사이트 일반 메뉴
+                            $_tree_menu = array_get($all_site_tree_menus, implode('.', array_slice(explode('.', $_active_route_idx), 0, 4)) . '.Children');
+                        } else {
+                            // 사이트 예외메뉴
+                            $_tree_menu = current(current($_tree_menu)['Children'])['Children'];
+                            $_tree_menu[$_active_group_menu_idx] = array_get($all_site_tree_menus, $group_menu_key . '.' . $_active_group_menu_idx);
+                        }
+                    } else {
+                        // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
+                        $_active_menu = current(current($_tree_menu)['Children']);
+                        $_tree_menu = $_active_menu['Children'];
+                    }
+                }
             }
 
-            // router name 배열
-            $site_active_menu['UrlRouteNames'] = explode('>', $site_active_menu['UrlRouteName']);
-            unset($site_active_menu['Children']);
+            if (empty($_active_menu) === false) {
+                $_active_menu['UrlRouteNames'] = explode('>', $_active_menu['UrlRouteName']);
+                unset($_active_menu['Children']);
+            }
 
-            // site active 메뉴가 소속된 site tree menu 조회 (2 depth 메뉴까지는 제외 처리) ==> view에서 직접 처리
-            //$site_tree_menu = array_get($site_tree_menu, implode('.Children.', array_slice(explode('>', $site_active_menu['UrlRouteIdx']), 0, 2)) . '.Children');
-
-            // 사이트 과목+교수 연결정보 캐쉬 조회 (교수진 소개에서 API를 통해 데이터 조회)
-            //$site_subject_professors = array_get($this->getCacheItem('site_subject_professor'), $site_code . '.' . $this->_cate_code);
+            $front_menus[$group_menu_key] = [
+                'ActiveMenu' => $_active_menu,
+                'TreeMenu' => $_tree_menu
+            ];
         }
 
+        $front_menus['GNB']['ActiveGroupMenuIdx'] = array_get($all_site_menu_cache, 'GNBGroupMenuIdxs.' . SUB_DOMAIN);
+
         $configs = array_merge(
-                        $site_cache,
-                        ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
-                        config_item(SUB_DOMAIN),
-                        ['GnbActiveGroupId' => $gnb_active_group_id],
-                        ['GnbTreeMenu' => element('GnbTreeMenus', $site_menu_cache, [])],
-                        ['SiteTreeMenu' => $site_tree_menu],
-                        ['SiteActiveMenu' => $site_active_menu]
-                        //['Subject2Professor' => $site_subject_professors]
-            );
+            $site_cache,
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
+            config_item(SUB_DOMAIN),
+            ['FrontMenus' => $front_menus]
+        );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }
 

@@ -22,7 +22,6 @@
         <!-- gnb site menu -->
         <div class="topView">
             @php $menu_group_row = $__cfg['FrontMenus']['GNB']['TreeMenu'][$__cfg['FrontMenus']['GNB']['ActiveGroupMenuIdx']] @endphp
-
             <h1>
                 <img src="{{ img_url('gnb/icon_' . $menu_group_row['UrlSubDomain'] . '.gif') }}">{{ $menu_group_row['MenuName'] }}
             </h1>

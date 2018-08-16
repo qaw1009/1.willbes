@@ -130,7 +130,7 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
                     {'data' : 'DispName', 'render' : function(data, type, row, meta) {
-                            return '<a href="#" class="btn-modify" data-idx="' + row.BdIdx + '"><u class="blue">' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BdIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
 
                     {'data' : 'CcdName'},

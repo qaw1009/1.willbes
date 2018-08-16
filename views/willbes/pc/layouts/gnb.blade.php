@@ -80,9 +80,9 @@
     <!-- gnb menu -->
     <div class="gnb-List">
         @foreach($__cfg['GnbTreeMenu'] as $menu_group_id => $menu_group_row)
-            @foreach($menu_group_row as $menu_idx => $menu_row)
-                {{-- 예외메뉴 (미노출)이 아닐 경우만 노출 --}}
-                @if($menu_row['MenuType'] != 'PS')
+            @if($menu_group_id != 'PS')
+                @foreach($menu_group_row as $menu_idx => $menu_row)
+                    {{-- 예외메뉴 (미노출)이 아닐 경우만 노출 --}}
                     <div class="gnb-List-Tit">
                         <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">
                             <div class="willbes-icon_sm">
@@ -98,8 +98,8 @@
                             @endforeach
                         </dl>
                     </div>
-                @endif
-            @endforeach
+                @endforeach
+            @endif
         @endforeach
     </div>
     <!-- gnb site setting -->

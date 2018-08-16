@@ -72,6 +72,8 @@
                     if ($regi_form.find('.chk_books:checked').length > 0) {
                         $regi_form.find('.chk_products').prop('checked', false);    // 무료강좌상품 체크해제
                         cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect);
+                    } else {
+                        alert('내 강의실로 이동합니다.');
                     }
                 }
             });

@@ -359,7 +359,7 @@ if (!function_exists('str_first_pos_before')) {
      */
     function str_first_pos_before($haystack, $needle)
     {
-        return substr($haystack, 0, strpos($haystack, $needle));
+        return strpos($haystack, $needle) === false ? $haystack : substr($haystack, 0, strpos($haystack, $needle));
     }
 }
 
@@ -372,7 +372,7 @@ if (!function_exists('str_first_pos_after')) {
      */
     function str_first_pos_after($haystack, $needle)
     {
-        return substr($haystack, strpos($haystack, $needle) + strlen($needle));
+        return strpos($haystack, $needle) === false ? $haystack : substr($haystack, strpos($haystack, $needle) + strlen($needle));
     }
 }
 

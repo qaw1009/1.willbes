@@ -71,6 +71,10 @@ class Caching_site_menu extends CI_Driver
 
                 if ($row['MenuDepth'] == '1') {
                     $key_group = empty($arr_parse_url['host']) === false ? str_first_pos_before($arr_parse_url['host'], '.') : str_first_pos_before($row['SiteUrl'], '.');
+
+                    if (starts_with($row['MenuType'], 'P') === true) {
+                        $key_group = $row['MenuType'];
+                    }
                 }
 
                 if (empty($arr_parse_url['host']) === true) {
@@ -82,13 +86,17 @@ class Caching_site_menu extends CI_Driver
                 $menu_url = '//' . $row['SiteUrl'] . '' . $row['MenuUrl'];
             }
 
+            // tree menu base key
+            if ($key_prefix == 'Site' && starts_with($row['MenuType'], 'P') === true) {
+                $base_key = $key_prefix . 'TreeMenus.' . $key_group. '.' . $row['MenuType'] . '.Children';
+            } else {
+                $base_key = $key_prefix . 'TreeMenus.' . $key_group;
+            }
+
             // 개발환경에 맞게 URL 변환
             if ($row['UrlType'] == 'route' && empty($menu_url) === false) {
                 $menu_url = app_to_env_url($menu_url);
             }
-
-            // tree menu base key
-            $base_key = $key_prefix . 'TreeMenus.' . $key_group;
 
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
@@ -119,6 +127,10 @@ class Caching_site_menu extends CI_Driver
             }
 
             // make menu url array
+            if ($key_prefix == 'Site' && starts_with($row['MenuType'], 'P') === true) {
+                $url_route_idx = $row['MenuType'] . '>' . $url_route_idx;
+            }
+
             $data[$key_prefix . 'MenuUrls'][$key_group][$url_route_idx] = $menu_url;
         }
 

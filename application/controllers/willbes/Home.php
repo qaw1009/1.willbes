@@ -55,6 +55,8 @@ class Home extends \app\controllers\FrontController
         $this->load->driver('caching');
         $this->caching->{$param[0]}->delete();
         $this->caching->{$param[0]}->save();
+
+        dd($this->getCacheItem($param[0]));
     }
 
     /**

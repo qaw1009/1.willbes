@@ -177,8 +177,8 @@ abstract class FrontController extends BaseController
             $site_active_menu['UrlRouteNames'] = explode('>', $site_active_menu['UrlRouteName']);
             unset($site_active_menu['Children']);
 
-            // site active 메뉴가 소속된 site tree menu 조회 (2 depth 메뉴까지는 제외 처리)
-            $site_tree_menu = array_get($site_tree_menu, implode('.Children.', array_slice(explode('>', $site_active_menu['UrlRouteIdx']), 0, 2)) . '.Children');
+            // site active 메뉴가 소속된 site tree menu 조회 (2 depth 메뉴까지는 제외 처리) ==> view에서 직접 처리
+            //$site_tree_menu = array_get($site_tree_menu, implode('.Children.', array_slice(explode('>', $site_active_menu['UrlRouteIdx']), 0, 2)) . '.Children');
 
             // 사이트 과목+교수 연결정보 캐쉬 조회 (교수진 소개에서 API를 통해 데이터 조회)
             //$site_subject_professors = array_get($this->getCacheItem('site_subject_professor'), $site_code . '.' . $this->_cate_code);

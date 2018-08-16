@@ -1621,7 +1621,7 @@ table.auTable tr td {
     position: relative;
     z-index: 3;
     border: 1px solid #0d74ae;
-    padding: 10px 20px;
+    padding: 0 20px;
 }
 .curriWrap .CurriBox ul.btn {
     height: 30px;
@@ -1738,8 +1738,8 @@ table.auTable tr td {
 /* subContainer : Content : Bnr */
 .willbes-Bnr {
     clear: both;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 /* subContainer : Content : Lec-Search */
@@ -1867,11 +1867,11 @@ table.auTable tr td {
 }
 .willbes-Lec-Profdata .Reply {
     background: url("../../img/willbes/sub/icon_reply.gif") no-repeat 0 7px;
-    margin-top: 70px;
     width: 480px;
     height: 25px;
     line-height: 25px;
     padding-left: 25px;
+    margin: 45px 0;
 }
 .willbes-Lec-Profdata .Reply strong {
     float: left;
@@ -1911,11 +1911,11 @@ table.auTable tr td {
 }
 .willbes-Lec-buyBtn .btnAgree {
     float: left;
-    line-height: 34px;
+    line-height: 16px;
 }
 .willbes-Lec-buyBtn .btnAgree input[type="checkbox"] {
     float: left;
-    margin: 11px;
+    margin: 4px 11px;
 }
 .willbes-Lec-buyBtn ul {
     float: right;
@@ -1984,10 +1984,11 @@ table.auTable tr td {
 .willbes-Lec-Tit {
     font-size: 20px;
     font-weight: 600;
-    line-height: 45px;
+    line-height: 24px;
     border-bottom: 1px solid #959595;
     padding-left: 10px;
-    padding-top: 80px;
+    padding-top: 35px;
+    padding-bottom: 10px;
 }
 
 /* subContainer : Content : willbes-Lec-Tit-select */
@@ -1997,7 +1998,8 @@ table.auTable tr td {
     line-height: 45px;
     border-bottom: 1px solid #959595;
     padding-left: 10px;
-    padding-top: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .willbes-Lec-subTit {
     font-size: 12px;
@@ -2196,7 +2198,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     float: right;
     right: 26px;
     width: 64px;
-    margin: 0 26px 0 0;
+    margin: -8px 26px 0 0;
 }
 .w-sp li {
     float: left;
@@ -2367,12 +2369,14 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     float: right;
     width: 68px;
     color: #464646;
+    text-align: left;
 }
 .lecInfoTable .w-sub strong {
     background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 8px;
     height: 30px;
     padding-left: 18px;
     display: inline-block;
+    margin-top: 5px;
 }
 
 /* subContainer : Content : willbes-Layer-Box */
@@ -2411,9 +2415,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .willbes-Layer-Box .Layer-Tit {
     font-size: 20px;
     font-weight: 600;
-    line-height: 60px;
+    line-height: 25px;
     letter-spacing: 0;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 25px;
 }
 .willbes-Layer-Box-sm {
     display: none;
@@ -2700,6 +2705,8 @@ table.profTable tr td .priceWrap {
     clear: both;
 }
 .sticky-menu {
+    position: absolute;
+    width: 100%;
     background: #fff;
     height: 45px;
     padding: 13px 35px;
@@ -2743,7 +2750,7 @@ table.profTable tr td .priceWrap {
 .classInfo {
     float: left;
     width: 100%;
-    padding-top: 60px;
+    padding-top: 25px;
     padding-bottom: 20px;
     border-bottom: 1px solid #959595;
     color: #3a3a3a;
@@ -2768,7 +2775,7 @@ table.classTable tr td.w-data {
     border-top: 1px solid #959595;
 }
 .bookWrap {
-    margin: 60px -20px 20px;
+    margin: 25px -20px 20px;
     padding: 0 20px;
     height: 448px;
     overflow-x: auto;
@@ -3062,7 +3069,7 @@ table.classTable tr td.w-data {
 .willbes-LecreplyList {
     height: 50px;
     line-height: 50px;
-    margin-top: 30px;
+    margin-top: 25px;
     letter-spacing: 0;
 }
 .willbes-LecreplyList .Select-Btn dt {
@@ -3290,7 +3297,7 @@ table.classTable tr td.w-data {
 }
 .willbes-Buy-PackageList {
     width: 940px;
-    padding-bottom: 40px;
+    padding-bottom: 25px;
     border-bottom: 1px solid #e7e7e7;
 }
 .willbes-Buy-PackageList table.lecTable {
@@ -3313,7 +3320,7 @@ table.classTable tr td.w-data {
 
 /* subContainer : Cart : 장바구니 */
 .willbes-Cartlist {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 .willbes-Cartlist .stepCart {
     margin-bottom: 44px;
@@ -3347,8 +3354,6 @@ table.classTable tr td.w-data {
     height: 25px;
     line-height: 23px;
     text-align: right;
-    margin: 10px 0;
-
 }
 .willbes-Cartlist .LeclistTable ul li {
     display: inline-block;
@@ -3375,7 +3380,7 @@ table.classTable tr td.w-data {
 }
 .willbes-Cart-Price {
     height: 190px;
-    margin: 85px 0 60px;
+    margin: 25px 0 40px;
 }
 .cart-PriceBox {
     float: left;
@@ -3410,11 +3415,6 @@ table.classTable tr td.w-data {
     margin: 0 50px;
     padding: 24px 0;
 }
-.cart-PriceBox .row-line {
-    background: #e7e7e7;
-    width: 1px;
-    height: 100px;
-}
 .cart-PriceBox dl.priceBox a {
     font-size: 14px;
 }
@@ -3422,6 +3422,15 @@ table.classTable tr td.w-data {
     position: relative;
     margin: 0 !important;
     padding: 19px 0;
+}
+.cart-PriceBox-two dl.priceBox {
+    width: 360px;
+    left: 175px;
+}
+.cart-PriceBox .row-line {
+    background: #e7e7e7;
+    width: 1px;
+    height: 100px;
 }
 .cart-PriceBox .price-img img {
     position: absolute;
@@ -3499,6 +3508,9 @@ table.classTable tr td.w-data {
 }
 .LeclistTable .buyTable .w-coupon {
     float: right;
+}
+.LeclistTable .buyTable tr td .w-coupon a {
+    display: inline-block;
 }
 .LeclistTable .buyTable .tx-blue {
     font-weight: 600;
@@ -3706,7 +3718,7 @@ ul.btnWrapbt li {
     padding: 0;
 }
 .pointBox .p-tit {
-    margin: 0 30px 0 60px;
+    margin: 0 30px;
 }
 .pointBox .p-tit span {
     vertical-align: baseline;
@@ -3724,7 +3736,6 @@ ul.btnWrapbt li {
     background: #fff;
     display: block;
     font-size: 11px;
-    font-weight: 600;
     color: #898989;
     border: 1px solid #898989;
     line-height: 20px;
@@ -3734,11 +3745,12 @@ ul.btnWrapbt li {
 .pointBox input[type=text] {
     background: none;
     width: 100px;
-    height: 27px;
+    height: 22px;
     color: #707070;
     text-align: right;
+    line-height: 23px;
     padding: 5px;
-    border: 0px solid #898989;
+    border: 1px solid #898989;
 }
 /*
 .willbes-Buylist-Price .price-total {
@@ -3753,7 +3765,6 @@ ul.btnWrapbt li {
 .willbes-Buylist-Price .p-info {
     padding: 20px 30px;
     letter-spacing: 0;
-    border-bottom: 1px solid #e7e7e7;
 }
 .willbes-Buylist-Price .p-info span {
     font-weight: 600;
@@ -3870,7 +3881,7 @@ table.deliveryTable input.phone {
 
 /* subContainer : Cart : 결제하기 : 유의사항 및 환불정책안내 */
 .willbes-PolicyInfo {
-    padding-bottom: 66px;
+    padding-bottom: 60px;
 }
 .willbes-PolicyInfo .w-txt .txtBox {
     height: 140px;
@@ -3907,7 +3918,7 @@ table.deliveryTable input.phone {
     text-align: center;
     border: 1px solid #e7e7e7;
     padding: 35px 0;
-    margin-top: 40px;
+    margin-top: 15px;
 }
 .willbes-Payment-Fin .subTit {
     font-size: 15px;

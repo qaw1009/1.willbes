@@ -47,7 +47,7 @@
                     <li><div><img src="{{ img_url('cart/icon_cart3.png') }}"> 결제완료</div></li>
                 </ul>
             </div>
-            <div class="willbes-Cart-Txt p_re pt30">
+            <div class="willbes-Cart-Txt p_re pt15">
                 <span class="MoreBtn underline NG"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
                     <tbody>
@@ -249,7 +249,7 @@
                 <dl class="pointBox">
                     <dt class="p-tit"><span class="tx-blue">강좌</span> 포인트 사용</dt>
                     <dt>
-                        <span class="u-point tx-pink">30,000P 보유</span>
+                        <span class="u-point">30,000P 보유</span>
                         <span class="btnAll NSK"><a href="#none">전액사용</a></span>
                         <input type="text" id="POINT" name="POINT" class="iptPoint" maxlength="30"> P 차감
                     </dt>
@@ -369,7 +369,7 @@
         <div class="willbes-BuyInfo c_both">
             <div class="willbes-Lec-Tit NG tx-black">결제정보</div>
             <div class="buyInfoTable GM">
-                <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 140px;">
                         <col width="*">
@@ -425,7 +425,7 @@
         <div class="willbes-PolicyInfo p_re c_both">
             <div class="willbes-Lec-Tit NG tx-black">유의사항 및 환불정책안내</div>
             <div class="policyInfoTable GM">
-                <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 140px;">
                         <col width="*">

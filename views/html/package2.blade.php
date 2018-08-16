@@ -99,7 +99,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb60">
+        <div class="willbes-Lec-Search mb25">
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="직접입력" class="">
@@ -211,7 +211,7 @@
                     </dl>
                 </div>
                 <div class="classInfoTable">
-                    <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                         <colgroup>
                             <col style="width: 140px;">
                             <col width="*">

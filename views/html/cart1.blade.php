@@ -47,7 +47,7 @@
                 </ul>
             </div>
         </div>
-        <div class="pocketDetailWrap pt40">
+        <div class="pocketDetailWrap pt15">
             <ul class="tabWrap tabDepth1 NG">
                 <li><a id="hover1" href="#pocket1" class="on">강좌</a></li>
                 <li><a id="hover2" href="#pocket2">교재</a></li>
@@ -339,7 +339,7 @@
                     <!-- willbes-Cartlist -->
 
                     <div class="willbes-Cart-Price p_re">
-                        <ul class="cart-PriceBox pl40 NG">
+                        <ul class="cart-PriceBox cart-PriceBox-two NG">
                             <li class="price-list p_re">
                                 <dl class="priceBox">
                                     <dt>

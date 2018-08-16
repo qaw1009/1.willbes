@@ -93,7 +93,7 @@
         </div>
         <!-- willbes-Prof-Detail -->
 
-        <div class="willbes-Lec mb170 NG c_both">
+        <div class="willbes-Lec mb100 NG c_both">
             <div class="willbes-Buy-Table p_re mt20">
                 <div class="willbes-Buy-List">
                     <table cellspacing="0" cellpadding="0" class="lecTable profTable">

@@ -1429,6 +1429,9 @@ table.auTable tr td {
     display: inline-block;
     margin: 0 20px;
 }
+.Menu .menu-List-Center.cscenter li {
+    margin: 0 26px;
+}
 
 /* subContainer : Menu : list-drop-Box  */
 .menu-List-Center .list-drop-Box {
@@ -1437,8 +1440,8 @@ table.auTable tr td {
 .list-drop-Box {
     top: 38px;
     left: 50%;
-    margin-left: -65px;
-    width: 130px;
+    margin-left: -70px;
+    width: 140px;
     padding: 20px;
     text-align: left;
 }
@@ -2969,7 +2972,7 @@ table.classTable tr td.w-data {
     margin: 14px 0;
 }
 .LecWriteTable tr td.w-selected select {
-    width: 360px;
+    width: 220px;
     height: 25px;
 }
 .LecWriteTable tr td.w-selected.full select {
@@ -3199,12 +3202,12 @@ table.classTable tr td.w-data {
     background: #fff;
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
     display: inline-block;
-    width: 37px;
-    height: 15px;
+    width: 40px;
+    height: 17px;
     border: 1px solid #000;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
-    line-height: 12px;
+    line-height: 14px;
     text-align: center;
     letter-spacing: -1px;
 }
@@ -4597,7 +4600,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: #4b9e2b;
 }
 .willbes-Lec-Selected {
-    margin: 10px 0 20px;
+    margin: 10px 0 15px;
 }
 .willbes-Lec-Selected select {
     width: 92px;
@@ -4981,7 +4984,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0;
-    padding: 20px 0 30px;
+    padding: 20px 0 25px;
     border-bottom: 2px solid #000;
 }
 .willbes-Layer-CScenterBox .Layer-Tit span {
@@ -4993,11 +4996,11 @@ ul li.profList .willbes-Layer-ProfileBox {
 } 
 .willbes-Layer-CScenterBox table tr th,
 .willbes-Layer-CScenterBox table tr td {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 300;
 }
 .willbes-Layer-CScenterBox table tr td {
-    line-height: 17px !important;
+    line-height: 20px !important;
     padding: 13px 0;
 }
 
@@ -5025,11 +5028,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 202px;
 }
 .willbes-info .List-Table {
-    margin-top: 9px;
+    margin-top: 1px;
 }
 .willbes-info .List-Table li {
-    line-height: 40px;
-    height: 42px;
+    line-height: 42px;
+    height: 44px;
 }
 .willbes-info .List-Table li a {
     float: left;
@@ -5263,7 +5266,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     text-align: center;
     line-height: 18px;
     border: 1px solid #d5d5d5;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .SupportTable tr td ul li .w-tit {
     background: #ececec;
@@ -5272,6 +5275,11 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .SupportTable tr td ul li .w-txt {
     margin: 17px 0;
+}
+.SupportTable tr td ul li.arrow {
+    width: 11px;
+    height: 20px;
+    border: none;
 }
 
 /* subContainer : Cs : CScenter1 : Act6 : 학습 프로그램 설치 */
@@ -5291,7 +5299,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-size: 15px;
     text-align: center;
     line-height: 26px;
-    padding: 50px 0 90px;
+    padding: 40px 0 80px;
 }
 .announce_infoBox span {
     vertical-align: baseline;

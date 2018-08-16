@@ -587,7 +587,7 @@
                                                 <option value="한덕현">한덕현</option>
                                                 <option value="김쌤">김쌤</option>
                                             </select>
-                                            <select id="Lec" name="Lec" title="Lec" class="seleLec">
+                                            <select id="Lec" name="Lec" title="Lec" class="seleLec" style="width: 360px;">
                                                 <option selected="selected">강좌선택</option>
                                                 <option value="기타">기타</option>
                                                 <option value="강좌내용">강좌내용</option>

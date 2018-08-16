@@ -5,34 +5,37 @@
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu NSK c_both">
         <h3>
-            <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">일반경찰</li>
-            </ul>
-            <ul class="menu-List">
+            <ul class="menu-List menu-List-Center cscenter">
                 <li>
-                    <a href="#none">교수진소개</a>
+                    <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 HOME</a>
                 </li>
                 <li>
-                    <a href="#none">PASS</a>
+                    <a href="{{ site_url('/home/html/cscenter1') }}">자주하는 질문</a>
                 </li>
                 <li>
-                    <a href="#none">패키지</a>
+                    <a href="{{ site_url('/home/html/cscenter2') }}">공지사항</a>
                 </li>
                 <li>
-                    <a href="#none">단강좌</a>
+                    <a href="{{ site_url('/home/html/cscenter3') }}">1:1 상담</a>
                 </li>
                 <li>
-                    <a href="#none">무료강좌</a>
+                    <a href="{{ site_url('/home/html/cscenter4') }}">사이트 이용가이드</a>
                 </li>
                 <li>
-                    <a href="#none">수험정보</a>
+                    <a href="{{ site_url('/home/html/cscenter5') }}">모바일 이용가이드</a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/cscenter6_1') }}">수강지원</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">수강지원</li>
+                            <li><a href="{{ site_url('/home/html/cscenter6_1') }}">PC 원격지원</a></li>
+                            <li><a href="{{ site_url('/home/html/cscenter6_2') }}">학습 프로그램 설치</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">이벤트</a>
-                </li>
-                <li class="Acad">
-                    <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>
+                    <a href="{{ site_url('/home/html/cscenter7') }}">부정사용자 규제</a>
                 </li>
             </ul>
         </h3>
@@ -44,6 +47,7 @@
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
+            <!--
             <ul class="tabWrapIndex NSK">
                 <li class="Act1"><a href="{{ site_url('/home/html/cscenter#cs1') }}">자주하는 질문</a></li>
                 <li class="Act2"><a href="{{ site_url('/home/html/cscenter#cs2') }}">공지사항</a></li>
@@ -53,9 +57,10 @@
                 <li class="Act6"><a href="{{ site_url('/home/html/cscenter#cs6') }}">수강지원</a></li>
                 <li class="Act7"><a href="{{ site_url('/home/html/cscenter#cs7') }}">부정사용자 규제</a></li>
             </ul>
+            -->
             <div class="CScenterIndex willbes-listTable">
                 <!-- ActIndex1 -->
-                <div class="ActIndex1 mt65">
+                <div class="ActIndex1">
                     <div class="CSpartner widthAuto530 f_left">
                         <div class="will-Tit NG">든든한 학습 파트너, <span class="tx-blue">윌비스 통합 고객센터</span></div>
                         <div class="centerList NG">
@@ -145,7 +150,7 @@
                                         <tbody>
                                             <tr>
                                                 <td class="w-site">교재문의</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                <td class="w-acad"><span class="oBox onlineBox NSK">공통</span></td>
                                                 <td class="w-call">1544-4944</td>
                                                 <td class="w-time tx-left pl25">
                                                     평일 9:00~18:00<br/>
@@ -154,7 +159,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="2">윌비스 공무원</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-5006</td>
                                                 <td class="w-time tx-left pl25">
                                                     평일 9:00~18:00 | 토요일 9:00~13:00<br/>
@@ -162,7 +167,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-0330</td>
                                                 <td class="w-time tx-left pl25">
                                                     평일/주말 9:00~22:00
@@ -171,18 +176,19 @@
 
                                             <tr>
                                                 <td class="w-site" rowspan="2">신광은 경찰</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-call">1544-0336</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 | 토요일 9:00~13:00<br/>
-                                                    일요일/공휴일 휴무
-                                                </td>
-                                            </tr>
-                                            <tr>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-5006</td>
                                                 <td class="w-time tx-left pl25">
-                                                    평일/주말 9:00~22:00
+                                                    평일 9:00~18:00<br/>
+                                                    주말/공휴일 휴무
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                <td class="w-call">1544-0336</td>
+                                                <td class="w-time tx-left pl25">
+                                                    월~토 9:00~22:00<br/>
+                                                    일요일 9:00~20:00
                                                 </td>
                                             </tr>
                                             <tr>
@@ -231,7 +237,7 @@
                                         <ul>
                                             <li><a href="#none">회원정보</a></li>
                                             <li><a href="#none">결제/환불</a></li>
-                                            <li><a href="#none">배송</a></li>
+                                            <li><a href="#none">교재</a></li>
                                             <li><a href="#none">취소/환불/반품</a></li>
                                             <li><a href="#none">온라인수강</a></li>
                                             <li><a href="#none">학원수강</a></li>
@@ -311,7 +317,7 @@
                     <!--LeclistTable -->
                 </div>
                 <!-- ActIndex3 -->
-                <div class="ActIndex3 mt65">
+                <div class="ActIndex3 mt30">
                     <div class="willbes-firstinfo NGEB">
                         <ul>
                             <li class="Tit">
@@ -328,7 +334,7 @@
                     </div>
                 </div>
                 <!-- ActIndex4 -->
-                <div class="ActIndex4 mt60">
+                <div class="ActIndex4 mt30">
                     <div class="widthAuto530 f_left">
                         <div class="willbes-listTable willbes-program mr30 widthAuto330">
                             <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>

@@ -149,13 +149,17 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
-     * GroupCcd 조회
-     * @param $arr_groupCcd : 그룹 코드 배열
+     * FAQ GroupCcd 조회
      * @return array
      */
-    protected function _getFaqGroupInfo($arr_groupCcd)
+    protected function _getFaqGroupInfo()
     {
-        return $this->codeModel->getGroupCcdInArray($arr_groupCcd);
+        $add_condition = [
+            'EQ' => [
+                'CcdDesc' => 'faq_use'
+            ]
+        ];
+        return $this->codeModel->getCcd(0,'',$add_condition);
     }
 
     /**

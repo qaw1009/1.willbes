@@ -11,9 +11,6 @@ class Faq extends BaseBoard
     private $board_name = 'faq';
     private $site_code = '';
     private $bm_idx;
-    private $_groupCcd = [
-        'faq_group_type_ccd' => ['623','624','625','626','627','628','629'],
-    ];
     private $_reg_type = [
         'user' => 0,    //유저 등록 정보
         'admin' => 1    //admin 등록 정보
@@ -49,17 +46,18 @@ class Faq extends BaseBoard
         $arr_campus = $this->_getCampusArray('');
 
         //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo($this->_groupCcd['faq_group_type_ccd']);
+        $faq_group_ccd = $this->_getFaqGroupInfo();
+        
+        //FAQ분류리스트
+        $faq_ccd_list = $this->_listAllCode(array_keys($faq_group_ccd));
 
         $faq_ccd = [];
         if (empty($group_ccd) === false) {
-            $faq_ccd = $result = $this->_getCcdArray($group_ccd);
+            $faq_ccd = $this->_getCcdArray($group_ccd);
         }
 
-        $faq_ccd_list = $result = $this->_listAllCode($this->_groupCcd['faq_group_type_ccd']);
-
         //FAQ구분별 게시글 횟수
-        $faq_group_ccd_countList = $this->boardModel->getFaqBoardCcdCountList($this->bm_idx, $this->_groupCcd['faq_group_type_ccd']);
+        $faq_group_ccd_countList = $this->boardModel->getFaqBoardCcdCountList($this->bm_idx, array_keys($faq_group_ccd));
 
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
@@ -209,7 +207,10 @@ class Faq extends BaseBoard
         }
 
         //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo($this->_groupCcd['faq_group_type_ccd']);
+        $faq_group_ccd = $this->_getFaqGroupInfo();
+
+        //FAQ분류리스트
+        $faq_ccd_list = $this->_listAllCode(array_keys($faq_group_ccd));
 
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
@@ -217,6 +218,7 @@ class Faq extends BaseBoard
             'arr_campus' => $arr_campus,
             'campus_all_ccd' => $this->codeModel->campusAllCcd,
             'faq_group_ccd' => $faq_group_ccd,
+            'faq_ccd_list' => $faq_ccd_list,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -402,7 +404,7 @@ class Faq extends BaseBoard
         $select_faq_group = $this->_req('select_group_ccd');
 
         //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo($this->_groupCcd['faq_group_type_ccd']);
+        $faq_group_ccd = $this->_getFaqGroupInfo();
         $method = 'POST';
 
         $arr_condition = [
@@ -410,9 +412,7 @@ class Faq extends BaseBoard
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1',
-                'LB.SiteCode' => $this->site_code,
-                //'LB.FaqGroupTypeCcd' => (empty($this->_req('group_ccd')) === true) ? $this->_groupCcd['faq_group_type_ccd'][0] : $this->_req('group_ccd'),
-                //'LB.FaqGroupTypeCcd' => (empty($this->_reqP('model_faq_group_ccd')) === true) ? $this->_groupCcd['faq_group_type_ccd'][0] : $this->_reqP('model_faq_group_ccd')
+                'LB.SiteCode' => $this->site_code
             ]
         ];
 

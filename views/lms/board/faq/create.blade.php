@@ -49,15 +49,21 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="faq_group_ccd">FAQ구분<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        <select class="form-control" id="faq_group_ccd" name="faq_group_ccd">
+                        <select class="form-control" id="faq_group_ccd" name="faq_group_ccd" title="FAQ구분" required="required">
+                            <option value="">FAQ구분</option>
                             @foreach($faq_group_ccd as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['FaqGroupTypeCcd'])selected="selected"@endif>{{$val}}</option>
+                                <option value="{{$key}}" class="{{$key}}" @if($key == $data['FaqGroupTypeCcd'])selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="faq_ccd">FAQ분류<span class="required">*</span></label></label>
                    <div class="form-inline col-md-4 ml-12-dot item">
-                        <select class="form-control" id="faq_ccd" name="faq_ccd"></select>
+                        <select class="form-control" id="faq_ccd" name="faq_ccd" title="FAQ분류" required="required">
+                            <option value="">FAQ분류</option>
+                            @foreach($faq_ccd_list as $row)
+                                <option value="{{ $row['Ccd'] }}" class="{{ $row['GroupCcd'] }}" @if($row['Ccd'] == $data['FaqTypeCcd'])selected="selected"@endif>{{ $row['CcdName'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -163,11 +169,7 @@
         $(document).ready(function() {
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
-
-            // FAQ
-            var set_faq_group_code = $("#faq_group_ccd option:selected").val();
-            var _faq_url = '{{ site_url("/board/{$boardName}/getAjaxFaqList/") }}' + set_faq_group_code + getQueryString();
-            var faq_ccd = '{{$data['FaqTypeCcd']}}';
+            $regi_form.find('select[name="faq_ccd"]').chained("#faq_group_ccd");
 
             //editor load
             var $editor_profile = new cheditor();
@@ -177,7 +179,6 @@
             $editor_profile.run();
 
             /**페이지 로딩시 실행**/
-            getFaqGroup(_faq_url, faq_ccd);
             $('#total_read_count').val(SumReadCount());
 
             // 운영사이트 변경
@@ -205,17 +206,6 @@
             $regi_form.on('click', '.selected-category-delete', function() {
                 var that = $(this);
                 that.parent().remove();
-            });
-
-            $('#faq_group_ccd').change(function() {
-                var _faq_url = '{{ site_url("/board/{$boardName}/getAjaxFaqList/") }}' + this.value + getQueryString();
-                getFaqGroup(_faq_url, faq_ccd);
-            });
-            $('#faq_group_ccd').on('change', function() {
-                $('input[type="checkbox"].flat').iCheck({
-                    checkboxClass: 'icheckbox_flat-blue',
-                    radioClass: 'iradio_flat-blue'
-                });
             });
 
             //조회수

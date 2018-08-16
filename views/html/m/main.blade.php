@@ -62,14 +62,13 @@
         </div>
     </div>
 
-
-    <div class="noticeTabs c_both">
-        <ul class="tabWrap noticeWrap">
+    <div class="buttonTabs noticeTabs c_both">
+        <ul class="tabWrap buttonWrap noticeWrap">
             <li><a href="#notice1" class="on">공지사항</a></li>
             <li><a href="#notice2">시험공고</a></li>
             <li><a href="#notice3">수험뉴스</a></li>
         </ul>
-        <div class="tabBox noticeBox">
+        <div class="tabBox buttonBox noticeBox">
             <div id="notice1" class="tabContent">
                 <ul class="List-Table">
                     <li><a href="#none">공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>

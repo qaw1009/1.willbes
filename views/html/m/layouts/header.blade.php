@@ -57,5 +57,12 @@
                 }   
             });
         });
+
+        // Top Script
+        function link_go() {
+            $('html, body').animate({
+                scrollTop: $("#goTop").offset().top
+            }, 200);
+        }
     </script>
 </head>

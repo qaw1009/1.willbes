@@ -1,6 +1,6 @@
 @include('html.m.layouts.header')
 
-<body>
+<body id="goTop">
     <!-- Gnb -->
     @include('html.m.layouts.gnb')
 

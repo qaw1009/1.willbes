@@ -161,6 +161,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
  * @property PlayerFModel $playerFModel                                          Player Model Class
+ * @property SupportMainFModel $supportFModel                               Support Model Class
  */
 class PHPStorm_CI_CC
 {

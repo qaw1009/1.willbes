@@ -200,7 +200,7 @@
 
         <div class="willbes-Delivery-Info-Fin p_re c_both">
             <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
-            <div class="deliveryInfoTable pb110 GM">
+            <div class="deliveryInfoTable pb60 GM">
                 <table cellspacing="0" cellpadding="0" class="classTable deliveryTable upper-gray tx-gray">
                     <colgroup>
                         <col style="width: 140px;">

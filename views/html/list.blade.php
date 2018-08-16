@@ -188,7 +188,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb60">
+        <div class="willbes-Lec-Search mb40">
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="직접입력" class="">
@@ -709,7 +709,7 @@
                                                     셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
                                                     기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
                                                 </div>
-                                                <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
+                                                <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
                                             </div>
                                             <div id="info2" class="tabContent">
                                                 <div class="book-TxtBox tx-gray">
@@ -761,7 +761,7 @@
                                                     셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
                                                     기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
                                                 </div>
-                                                <div class="caution-txt tx-red">수강생교재는해당온라인강좌수강생에한해구매가능합니다. (교재만별도구매불가능)</div>
+                                                <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
                                             </div>
                                             <div id="info4" class="tabContent">
                                                 <div class="book-TxtBox tx-gray">

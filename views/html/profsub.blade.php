@@ -633,7 +633,7 @@
         </div>
         <!-- willbes-NoticeWrap -->
 
-        <div class="willbes-Bnr mb15">
+        <div class="willbes-Bnr mb15 pt10 pb10">
             <img src="{{ img_url('sample/bnr5.jpg') }}">
         </div>
         <!-- willbes-Bnr -->

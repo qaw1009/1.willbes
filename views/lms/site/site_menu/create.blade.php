@@ -66,9 +66,9 @@
             </label>
             <div class="col-md-10 item form-inline">
                 <select class="form-control" id="menu_type" name="menu_type" title="메뉴 구분">
-                    <option value="GN">일반메뉴</option>
-                    <option value="GA">일반메뉴 (학원)</option>
-                    <option value="PS">예외메뉴 (고객센터)</option>
+                    @foreach($menu_type_code as $key => $val)
+                        <option value="{{ $key }}">{{ $val }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

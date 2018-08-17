@@ -79,7 +79,7 @@
     <!-- gnb menu -->
     <div class="gnb-List">
         @foreach($__cfg['GNBMenu']['TreeMenu'] as $menu_group_id => $menu_group_row)
-            @if($menu_group_id != 'PS')
+            @if(is_numeric($menu_group_id) === true)
                 {{-- 예외메뉴 (미노출)이 아닐 경우만 노출 --}}
                 <div class="gnb-List-Tit">
                     <a href="{{ $menu_group_row['MenuUrl'] }}" target="_{{ $menu_group_row['UrlTarget'] }}">

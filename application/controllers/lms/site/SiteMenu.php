@@ -6,6 +6,10 @@ class SiteMenu extends \app\controllers\BaseController
     protected $models = array('site/siteMenu', 'sys/site');
     protected $helpers = array('text');
 
+    private $_menu_type_code = [
+        'GN' => '일반메뉴', 'GA' => '일반메뉴 (학원)', 'PS' => '예외메뉴 (고객센터)', 'PC' => '예외메뉴 (내강의실)'
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -17,6 +21,12 @@ class SiteMenu extends \app\controllers\BaseController
     public function index()
     {
         $list = $this->siteMenuModel->listAllSiteMenu();
+
+        // 메뉴타입명 추가
+        $list = array_map(function ($row) {
+            $row['MenuTypeName'] = $this->_menu_type_code[$row['MenuType']];
+            return $row;
+        }, $list);
 
         $this->load->view('site/site_menu/index', [
             'data' => $list
@@ -72,7 +82,8 @@ class SiteMenu extends \app\controllers\BaseController
             'site_code' => $site_code,
             'menu_depth' => $menu_depth,
             'parent_menu_idx' => $parent_menu_idx,
-            'menu_route_name' => $menu_route_name
+            'menu_route_name' => $menu_route_name,
+            'menu_type_code' => $this->_menu_type_code
         ]);
     }
 

@@ -182,7 +182,6 @@ abstract class FrontController extends BaseController
                         } else {
                             // 사이트 예외메뉴
                             $_tree_menu = current(current($_tree_menu)['Children'])['Children'];
-                            $_tree_menu[$_active_group_menu_idx] = array_get($all_site_tree_menus, $group_menu_key . '.' . $_active_group_menu_idx);
                         }
                     } else {
                         // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
@@ -210,11 +209,12 @@ abstract class FrontController extends BaseController
                     $tab_menus['TreeMenu'] = $front_menus['GNB']['TreeMenu'][$_active_group_menu_idx];
                 } else {
                     $tab_menus['ActiveMenu'] = $front_menus[$this->_site_code]['ActiveMenu'];
-                    $tab_menus['TreeMenu'] = $front_menus[$this->_site_code]['TreeMenu'][$_active_group_menu_idx];
+                    $tab_menus['TreeMenu'] = array_get($all_site_tree_menus, $this->_site_code . '.' . $_active_group_menu_idx);
                 }
             }
         }
 
+        // GNB 메뉴에서 Active 되는 그룹메뉴 식별자
         $front_menus['GNB']['ActiveGroupMenuIdx'] = array_get($all_site_menu_cache, 'GNBGroupMenuIdxs.' . SUB_DOMAIN);
 
         $configs = array_merge(

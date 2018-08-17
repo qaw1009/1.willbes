@@ -40,7 +40,6 @@ class SiteMenuModel extends WB_Model
         $column = '
             M.MenuIdx, M.SiteCode, M.MenuType, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.MenuEtc, M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.RegAdminIdx
                 , fn_site_menu_connect_by_type(M.MenuIdx, "name") as MenuRouteName, S.SiteName, A.wAdminName as RegAdminName
-                , if(M.MenuType = "GN", "일반메뉴", if(M.MenuType = "GA", "일반메뉴 (학원)", "예외메뉴 (고객센터)")) as MenuTypeName
         ';
         $from = '
             from ' . $this->_table['site_menu'] . ' as M 

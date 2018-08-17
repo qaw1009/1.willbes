@@ -184,6 +184,9 @@ class Sms extends \app\controllers\BaseController
         $set_row_count = '12';
         $list_send_member = null;
 
+        //고객센터 전화번호 조회
+        $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
+
         $target_id = $this->_req('target_id');
         $target_phone = $this->_req('target_phone');
         if (empty($target_id) === false) {
@@ -209,6 +212,7 @@ class Sms extends \app\controllers\BaseController
 
         $this->load->view("crm/sms/create_modal", [
             'method' => $method,
+            'site_csTel' => $site_csTel,
             'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
             'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
             'set_row_count' => $set_row_count,
@@ -223,21 +227,6 @@ class Sms extends \app\controllers\BaseController
     {
         $fileinfo = '/public/uploads/lms/_sample_download/sample_sms.xlsx';
         public_download($fileinfo);
-    }
-
-    /**
-     * 사이트별 고객센터번호조회
-     * @param array $params
-     * @return CI_Output
-     */
-    public function getSiteCsTelAjax($params = [])
-    {
-        $site_code = $params[0];
-        // 사이트 고객센터전화번호
-        $result = $this->siteModel->findSite('CsTel', ['EQ' => ['SiteCode' => $site_code]]);
-        return $this->response([
-            'cs_tel' => $result['CsTel']
-        ]);
     }
 
     /**

@@ -111,6 +111,9 @@ class EventLecture extends \app\controllers\BaseController
         //교수조회
         $arr_professor = $this->professorModel->getProfessorArray();
 
+        //고객센터 전화번호 조회
+        $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $el_idx = $params[0];
@@ -162,6 +165,7 @@ class EventLecture extends \app\controllers\BaseController
             'offLineSite_list' => $offLineSite_list,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
+            'site_csTel' => $site_csTel,
             'arr_requst_types' => $this->eventLectureModel->_requst_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
             'arr_is_registers' => $this->eventLectureModel->_is_register_names,

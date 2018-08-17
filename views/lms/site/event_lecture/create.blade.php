@@ -599,6 +599,19 @@
                 }, showError, false, 'POST');
             });
 
+            // 고객센터 전화번호
+            $regi_form.on('change', 'select[name="site_code"]', function() {
+                var $arr_site_csTel = {!! $site_csTel !!};
+                var cs_tel = '';
+                var this_site_code = $(this).val();
+                if (this_site_code == '') {
+                    cs_tel = '';
+                } else {
+                    cs_tel = $arr_site_csTel[this_site_code].replace('-','');
+                }
+                $('#send_tel').val(cs_tel);
+            });
+
             //목록
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/eventLecture") }}/' + getQueryString();

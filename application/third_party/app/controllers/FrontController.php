@@ -129,6 +129,7 @@ abstract class FrontController extends BaseController
 
         // 메뉴 정보 배열
         $front_menus = [];
+        $tab_menus = [];
 
         // 현재 URL의 디렉토리/컨트롤러까지의 URI (/{directory}/{controller}/)
         $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
@@ -165,16 +166,16 @@ abstract class FrontController extends BaseController
 
             $_tree_menu = element($group_menu_key, $all_site_tree_menus, []);
             $_active_menu = [];
-            if ($group_menu_key == 'GNB') {
-                if (empty($_active_route_idx) === false) {
-                    $_active_menu = array_get($all_site_tree_menus, $_active_route_idx, []);
-                }
-            } else {
+            $_active_group_menu_idx = null;
+
+            if (empty($_active_route_idx) === false) {
+                $_active_menu = array_get($all_site_tree_menus, $_active_route_idx, []);
+                $_active_group_menu_idx = explode('.', $_active_route_idx)[1];
+            }
+
+            if ($group_menu_key != 'GNB') {
                 if (empty($_tree_menu) === false) {
                     if (empty($_active_route_idx) === false) {
-                        $_active_menu = array_get($all_site_tree_menus, $_active_route_idx, []);
-                        $_active_group_menu_idx = explode('.', $_active_route_idx)[1];
-
                         if (is_numeric($_active_group_menu_idx) === true) {
                             // 사이트 일반 메뉴
                             $_tree_menu = array_get($all_site_tree_menus, implode('.', array_slice(explode('.', $_active_route_idx), 0, 4)) . '.Children');
@@ -196,10 +197,22 @@ abstract class FrontController extends BaseController
                 unset($_active_menu['Children']);
             }
 
+            // GNB, Site 메뉴
             $front_menus[$group_menu_key] = [
                 'ActiveMenu' => $_active_menu,
                 'TreeMenu' => $_tree_menu
             ];
+
+            // 탭 메뉴
+            if (empty($_active_group_menu_idx) === false && is_numeric($_active_group_menu_idx) === false) {
+                if (config_item('app_intg_site_code') == $this->_site_code) {
+                    $tab_menus['ActiveMenu'] = $front_menus['GNB']['ActiveMenu'];
+                    $tab_menus['TreeMenu'] = $front_menus['GNB']['TreeMenu'][$_active_group_menu_idx];
+                } else {
+                    $tab_menus['ActiveMenu'] = $front_menus[$this->_site_code]['ActiveMenu'];
+                    $tab_menus['TreeMenu'] = $front_menus[$this->_site_code]['TreeMenu'][$_active_group_menu_idx];
+                }
+            }
         }
 
         $front_menus['GNB']['ActiveGroupMenuIdx'] = array_get($all_site_menu_cache, 'GNBGroupMenuIdxs.' . SUB_DOMAIN);
@@ -209,7 +222,8 @@ abstract class FrontController extends BaseController
             ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
             config_item(SUB_DOMAIN),
             ['GNBMenu' => $front_menus['GNB']],
-            ['SiteMenu' => $front_menus[$this->_site_code]]
+            ['SiteMenu' => $front_menus[$this->_site_code]],
+            ['TabMenu' => $tab_menus]
         );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

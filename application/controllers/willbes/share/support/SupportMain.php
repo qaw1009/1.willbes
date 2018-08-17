@@ -1,13 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
-/**
- * 고객센터 공용으로 사용하기 위한 기본 컨트롤 (메인 및 각 사이트 공용사용)
- */
-class SupportMain extends \app\controllers\FrontController
+class SupportMain extends BaseSupport
 {
-    protected $models = array();
+    protected $models = array('support/supportMainF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -20,7 +18,7 @@ class SupportMain extends \app\controllers\FrontController
     public function index($params=[])
     {
         $list = [];
-
+        //dd(config_app("TabMenu.ActiveMenu"));
         $this->load->view('support/main', [
             'list'=>$list
         ]);

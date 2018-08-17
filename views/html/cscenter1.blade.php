@@ -67,7 +67,7 @@
                         <ul class="tabWrap tabcsDepth2 tab_Question p_re NG">
                             <li>
                                 <a class="qBox" href="#question1">
-                                    <img src="{{ img_url('cs/icon_question1.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question623.gif') }}">
                                     <div>회원정보</div>
                                 </a>
                                 <div class="subBox on">
@@ -81,7 +81,7 @@
                             </li>
                             <li>
                                 <a class="qBox" href="#question2">
-                                    <img src="{{ img_url('cs/icon_question2.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question624.gif') }}">
                                     <div>결제/환불</div>
                                 </a>
                                 <div class="subBox">
@@ -94,25 +94,25 @@
                             </li>
                             <li>
                                 <a class="qBox" href="#question3">
-                                    <img src="{{ img_url('cs/icon_question3.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question625.gif') }}">
                                     <div>교재</div>
                                 </a>
                             </li>
                             <li>
                                 <a class="qBox" href="#question4">
-                                    <img src="{{ img_url('cs/icon_question4.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question626.gif') }}">
                                     <div>온라인수강</div>
                                 </a>
                             </li>
                             <li>
                                 <a class="qBox" href="#question5">
-                                    <img src="{{ img_url('cs/icon_question5.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question627.gif') }}">
                                     <div>모바일</div>
                                 </a>
                             </li>
                             <li>
                                 <a class="qBox" href="#question6">
-                                    <img src="{{ img_url('cs/icon_question6.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question628.gif') }}">
                                     <div>학원수강</div>
                                 </a>
                             </li>
@@ -199,6 +199,28 @@
 
                                     </tbody>
                                 </table>
+
+
+                                <div class="Paging">
+                                    <ul>
+                                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">10</a></li>
+                                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                    </ul>
+
+                                </div>
+
+
+
                             </div>
                             <div id="question2" class="tabContent">
                                 결제/환불

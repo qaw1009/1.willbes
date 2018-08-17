@@ -208,7 +208,8 @@ abstract class FrontController extends BaseController
             $site_cache,
             ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
             config_item(SUB_DOMAIN),
-            ['FrontMenus' => $front_menus]
+            ['GNBMenu' => $front_menus['GNB']],
+            ['SiteMenu' => $front_menus[$this->_site_code]]
         );
         $this->config->set_item(SUB_DOMAIN, $configs);
     }

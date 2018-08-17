@@ -8,7 +8,7 @@
         <a href="{{ app_url('/', 'www') }}"><img src="{{ $__cfg['Logo'] }}" onerror="this.src='{{ img_url('gnb/logo.gif') }}'"></a>
     </div>
 
-    @if(empty($__cfg['FrontMenus']['GNB']['ActiveGroupMenuIdx']) === true)
+    @if(empty($__cfg['GNBMenu']['ActiveGroupMenuIdx']) === true)
         <!-- main slider -->
         <div class="sliderGNB bSlider">
             <div class="slider">
@@ -21,7 +21,7 @@
     @else
         <!-- gnb site menu -->
         <div class="topView">
-            @php $menu_group_row = $__cfg['FrontMenus']['GNB']['TreeMenu'][$__cfg['FrontMenus']['GNB']['ActiveGroupMenuIdx']] @endphp
+            @php $menu_group_row = $__cfg['GNBMenu']['TreeMenu'][$__cfg['GNBMenu']['ActiveGroupMenuIdx']] @endphp
             <h1>
                 <img src="{{ img_url('gnb/icon_' . $menu_group_row['UrlSubDomain'] . '.gif') }}">{{ $menu_group_row['MenuName'] }}
             </h1>
@@ -78,7 +78,7 @@
     @endif
     <!-- gnb menu -->
     <div class="gnb-List">
-        @foreach($__cfg['FrontMenus']['GNB']['TreeMenu'] as $menu_group_id => $menu_group_row)
+        @foreach($__cfg['GNBMenu']['TreeMenu'] as $menu_group_id => $menu_group_row)
             @if($menu_group_id != 'PS')
                 {{-- 예외메뉴 (미노출)이 아닐 경우만 노출 --}}
                 <div class="gnb-List-Tit">

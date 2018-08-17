@@ -1,7 +1,7 @@
 @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))
-    @php $_active_menu = $__cfg['FrontMenus']['GNB']['ActiveMenu'] @endphp
+    @php $_active_menu = $__cfg['GNBMenu']['ActiveMenu'] @endphp
 @else
-    @php $_active_menu = $__cfg['FrontMenus'][$__cfg['SiteCode']]['ActiveMenu'] @endphp
+    @php $_active_menu = $__cfg['SiteMenu']['ActiveMenu'] @endphp
 @endif
 
 @if(starts_with($_active_menu['MenuType'], 'P') === true)

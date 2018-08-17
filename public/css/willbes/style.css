@@ -5055,13 +5055,13 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 /* subContainer : Cs : CScenter1 : Act1 : 자주하는 질문 */
-.tabWrap.tab_Question {
+.tab_Question {
     height: 95px;
     text-align: center;
     border-top: 1px solid #dedede;
     border-bottom: 3px solid #ccc;
 }
-.tabWrap.tab_Question li {
+.tab_Question li {
     float: inherit;
     display: inline-block;
     width: 120px;
@@ -5069,7 +5069,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding-top: 10px;
     margin: 0 8px;
 }
-.tabWrap.tab_Question li a {
+.tab_Question li a {
     display: block;
     background: none;
     width: 100%;
@@ -5082,7 +5082,10 @@ ul li.profList .willbes-Layer-ProfileBox {
     letter-spacing: 0;
     border: none;
 }
-.tabWrap.tab_Question li a.on {
+.tab_Question li:first-child a {
+    border-left: none;
+}
+.tab_Question li a.on {
     background: none;
     height: 84px;
     line-height: 5px;
@@ -5091,7 +5094,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: none;
     border-bottom: 3px solid #0d74ae;
 }
-.tabWrap.tab_Question .subBox {
+.tab_Question .subBox {
     top: 94px;
 }
 .cscenterList {
@@ -5107,21 +5110,21 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 /* subContainer : Cs : tabcsDepth2 공통 */
-.tabWrap.tabcsDepth2 .subBox {
+.tabcsDepth2 .subBox {
     display: none;
     position: absolute;
     left: 0;
     width: 940px;
     padding: 10px 50px;
 }
-.tabWrap.tabcsDepth2 .subBox.on {
+.tabcsDepth2 .subBox.on {
     display: block;
 }
-.tabWrap.tabcsDepth2 .subBox dl dt {
+.tabcsDepth2 .subBox dl dt {
     float: left;
     margin-right: 10px;
 }
-.tabWrap.tabcsDepth2 .subBox dl dt button {
+.tabcsDepth2 .subBox dl dt button {
     float: left;
     font-size: 13px;
     font-weight: 600;
@@ -5132,7 +5135,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: none;
     outline: none;
 }
-.tabWrap.tabcsDepth2 .subBox dl dt .row-line {
+.tabcsDepth2 .subBox dl dt .row-line {
     float: right;
     background: #d3d3d3;
     width: 1px;

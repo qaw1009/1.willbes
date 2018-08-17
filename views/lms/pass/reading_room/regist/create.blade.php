@@ -91,7 +91,7 @@
                         <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ $data['BannerName'] }}" style="width: 140px;">
                         <select name="sale_disc_type" id="sale_disc_type" class="form-control">
                             <option value="R">%</option>
-                            <option value="P">-</option>
+                            <option value="P">원</option>
                         </select>
                         <span class="mr-20"></span>
 
@@ -101,9 +101,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">예치금<span class="required">*</span></label>
-                    <div class="col-md-10 form-inline item">
-                        <input type="number" class="form-control mr-5" id="" name="" required="required" title="예치금" value="{{ $data['BannerName'] }}" style="width: 140px;">원
+                    <label class="control-label col-md-1-1" for="">예치금</label>
+                    <div class="col-md-10 form-inline">
+                        <input type="number" class="form-control mr-5" id="" name="" title="예치금" value="{{ $data['BannerName'] }}" style="width: 140px;">원
                     </div>
                 </div>
 

@@ -224,17 +224,17 @@
                     $regi_form.find('input[name="send_type"]').val($(this).data('content-type'));
                 });
 
-                // 운영사이트에 따른 고객센터전화번호 값 호출
-                $('#site_code').change(function() {
-                    var _url = '{{ site_url("/crm/sms/getSiteCsTelAjax/") }}' + this.value;
-                    var _data = {
-                        '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                        '_method' : 'POST'
-                    };
-                    sendAjax(_url, _data, function(ret) {
-                        var cs_tel = ret.cs_tel.replace('-','');
-                        $('#cs_tel').val(cs_tel);
-                    }, showError, false, 'POST');
+                // 고객센터 전화번호
+                $regi_form.on('change', 'select[name="site_code"]', function() {
+                    var $arr_site_csTel = {!! $site_csTel !!};
+                    var cs_tel = '';
+                    var this_site_code = $(this).val();
+                    if (this_site_code == '') {
+                        cs_tel = '';
+                    } else {
+                        cs_tel = $arr_site_csTel[this_site_code].replace('-','');
+                    }
+                    $('#cs_tel').val(cs_tel);
                 });
 
                 // 일괄발송 -> 파일 등록 및 Excel Data 셋팅

@@ -130,9 +130,10 @@ abstract class FrontController extends BaseController
         // 메뉴 정보 배열
         $front_menus = [];
         $tab_menus = [];
+        $uri_string = $this->getFinalUriString();
 
         // 현재 URL의 디렉토리/컨트롤러까지의 URI (/{directory}/{controller}/)
-        $check_menu_prefix = '/' . str_first_pos_before(uri_string(), $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
+        $check_menu_prefix = '/' . str_first_pos_before($uri_string, $this->router->class . '/' . $this->router->method) . $this->router->class . '/';
 
         foreach (['GNB', $site_code] as $group_menu_key) {
             // Active 메뉴 route idx
@@ -157,7 +158,7 @@ abstract class FrontController extends BaseController
                     // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
                     $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
 
-                    if (strpos(current_url(), $menu_parse_url['host']) !== false && strpos(uri_string(), $check_menu_postfix) !== false) {
+                    if (strpos(current_url(), $menu_parse_url['host']) !== false && strpos($uri_string, $check_menu_postfix) !== false) {
                         $_active_route_idx = $menu_route_idx;
                         break;
                     }
@@ -254,5 +255,20 @@ abstract class FrontController extends BaseController
     public function isLogin()
     {
         return $this->session->userdata('is_login');
+    }
+
+    /**
+     * uri string 리턴 (index 메소드와 같이 생략된 내용 추가하여 리턴)
+     * @return string
+     */
+    public function getFinalUriString()
+    {
+        $diff = array_diff($this->uri->rsegments, $this->uri->segments);
+
+        if (empty($diff) === true) {
+            return uri_string();
+        } else {
+            return implode('/', array_merge($this->uri->segments, $diff));
+        }
     }
 }

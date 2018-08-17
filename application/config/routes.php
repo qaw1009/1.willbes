@@ -64,14 +64,12 @@ $__app_except_config = config_item('app_except_config');
 if (array_key_exists(SUB_DOMAIN, $__app_except_config) === true && empty($__app_except_config[SUB_DOMAIN]['route_add_path']) === false) {
     // 사이트 라우터 예외 처리
     $route['(' . $__app_mobile_site_prefix . '\/)?(\/?' . $__app_pass_site_prefix . '\/)?(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$3';
+
+    if (empty($this->uri->uri_string) === true) {
+        // 사이트 디폴트 컨트롤러 설정
+        $route['default_controller'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/home/index';
+    }
 } else {
     // 디폴트 라우터
     $route['(.*)'] = APP_NAME . '/$1';
 }
-/*$route['(:any)/?(:any)?((/:any)*)'] = function($controller_name, $method_name = null, $param = null) {
-    $mapping_uri = APP_NAME . '/' . $controller_name . '/';
-    $mapping_uri .= (is_null($method_name) === true || empty($method_name) === true) ? 'index' : $method_name;
-    $mapping_uri .= (is_null($param) === true || empty($param) === true) ? '' : $param;
-
-    return $mapping_uri;
-};*/

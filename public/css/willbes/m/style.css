@@ -273,6 +273,7 @@ input {
     width: 100%;
 }
 
+
 /* Tabs : lineTab 공통 */
 .lineTabs {
     float: left;
@@ -317,7 +318,21 @@ input {
     border-left: 1px solid #1a8ccc;
     border-right: 1px solid #1a8ccc;
 }
-
+.lineWrap.one li {
+    width: 100%;
+}
+.lineWrap.two li {
+    width: 50%;
+}
+.lineWrap.three li {
+    width: 33.33333333%;
+}
+.lineWrap.four li {
+    width: 25%;
+}
+.lineWrap.five li {
+    width: 20%;
+}
 
 /* Tabs : buttonTab 공통 */
 .buttonTabs {
@@ -351,11 +366,24 @@ input {
     font-weight: 600;
     color: #fff;
 }
-
-/* Tabs : lecProfTabs */
-.lecProfWrap li {
+.buttonWrap.one li {
+    width: 100%;
+}
+.buttonWrap.two li {
     width: 50%;
 }
+.buttonWrap.three li {
+    width: 33.33333333%;
+}
+.buttonWrap.four li {
+    width: 25%;
+}
+.buttonWrap.five li {
+    width: 20%;
+}
+
+
+/* Main : Tabs : lecProfBox */
 .lecProfBox ul {
     float: left;
     width: 100%;
@@ -387,10 +415,7 @@ input {
     color: #707070;
 }
 
-/* Tabs : noticeTabs */
-.noticeWrap li {
-    width: 33.33333333%;
-}
+/* Main : Tabs : noticeBox */
 .noticeBox .List-Table li {
     font-size: 15px;
     line-height: 40px;
@@ -444,6 +469,7 @@ input {
 /*********************************************     CONTAINER PAGE     *********************************************/
 
 /* 무한 PASS존 */
+/* Tit : 공통 */
 .willbes-Tit {
     font-size: 20px;
     color: #323232;
@@ -473,6 +499,9 @@ input {
 .willbes-Txt.on {
     height: 50px;
     overflow: hidden;
+}
+.willbes-Txt span {
+    vertical-align: baseline;
 }
 .willbes-Txt-Tit {
     font-size: 18px;
@@ -537,6 +566,29 @@ input {
     color: #fff;
 }
 
+/* 상태 공통 */
+.w-info dt .nBox {
+    height: 20px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    padding: 1px 8px;
+}
+.w-info dt .nBox.n1 {
+    background: #f14078;
+}
+.w-info dt .nBox.n2 {
+    background: #21abc8;
+}
+.w-info dt .nBox.n3 {
+    background: #1087ef;
+}
+.w-info dt .nBox.n4 {
+    background: #333
+}
+
+/* lecTable : 공통 */
 .lecTable .w-tit {
     font-size: 20px;
     color: #323232;
@@ -560,6 +612,38 @@ input {
 .lecTable .w-info dt {
     display: inline-block;
 }
+.lecTable .w-start {
+    font-size: 15px;
+    margin: 20px -20px 0;
+    padding: 15px 20px;
+    border-top: 1px solid #ccc;
+    line-height: 39px;
+    height: 70px;
+}
+.lecTable .w-start ul {
+    width: 50%;
+}
+.lecTable .w-start ul li {
+    float: left;
+    width: 48%;
+    height: 40px;
+    margin: 0 1%;
+}
+.lecTable .w-start ul li a {
+    display: block; 
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    text-align: center;
+    line-height: 38px;
+}
+.lecTable .w-line {
+    background: #e9e9e9;
+    height: 15px;
+    margin: 0 -20px;
+    border-top: 1px solid #ccc;
+    text-indent: -9999px;
+}
 .lecTable tr td {
     padding: 20px 0;
     border-bottom: 1px solid #ccc;
@@ -575,6 +659,7 @@ input {
     height: 25px;
 }
 
+/* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;
     font-size: 14px;
@@ -621,16 +706,54 @@ input {
 .lecMore span {
     vertical-align: baseline;
 }
+.BuylecMore {
+    clear: both;
+    background: #1a8ccc;
+    height: 55px;
+}
+.BuylecMore a {
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 55px;
+}
+.Fixbtn {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.Fixbtn ul li {
+    float:left;
+    height: 65px;
+}
+.Fixbtn ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 65px;
+}
+.Fixbtn.one ul li {
+    width: 100%;
+}
+.Fixbtn.two ul li {
+    width: 50%;
+}
+.Fixbtn.three ul li {
+    width: 33.33333333%;
+}
 
-/* Tabs : lecListTabs */
+
+/* 무한 PASS존 : Tabs : lecListTabs */
 .lecListTabs {
     padding: 0;
 }
 .lecListWrap {
     margin: 20px 20px 0;
-}
-.lecListWrap li {
-    width: 33.33333333%;
 }
 .lecListWrap li a {
     color: #999;
@@ -647,38 +770,7 @@ input {
     padding: 20px 30px;
 }
 
-/* 상태 공통 */
-.w-info dt .nBox {
-    height: 20px;
-    font-size: 12px;
-    color: #fff;
-    text-align: center;
-    line-height: 20px;
-    padding: 1px 8px;
-}
-.w-info dt .nBox.n1 {
-    background: #f14078;
-}
-.w-info dt .nBox.n2 {
-    background: #21abc8;
-}
-.w-info dt .nBox.n3 {
-    background: #1087ef;
-}
-.w-info dt .nBox.n4 {
-    background: #333
-}
-
-/* 무한 PASS존 자세히 보기 */
-.buylecTable tr td {
-    padding: 40px 0 30px;
-}
-.buylecTable tr td.w-chk {
-    vertical-align: top;
-}
-.buylecTable tr td.w-chk input[type="checkbox"] {
-    margin-top: 10px;
-}
+/* 무한 PASS존 자세히 보기 : Tabs : passProfTabs */
 .passProfTabs tr td {
     border-bottom: none;
 }
@@ -706,9 +798,19 @@ input {
 .passTabs {
     padding: 0 20px;
 }
-.passTabs li {
-    width: 25%;
+
+/* 무한 PASS존 자세히 보기 : Tabs : buylecTable */
+.buylecTable tr td {
+    padding: 40px 0 30px;
 }
+.buylecTable tr td.w-chk {
+    vertical-align: top;
+}
+.buylecTable tr td.w-chk input[type="checkbox"] {
+    margin-top: 10px;
+}
+
+/* 무한 PASS존 자세히 보기 : Tabs : passListTabs */
 .passListTabs thead tr td {
     padding-top: 40px;
     padding-bottom: 20px;  
@@ -772,21 +874,6 @@ input {
     width: 100%;
     padding: 0 20px;
 }
-.BuylecMore {
-    clear: both;
-    background: #1a8ccc;
-    height: 55px;
-}
-.BuylecMore a {
-    display: block;
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
-    line-height: 55px;
-}
-
-
-
 
 /* 무한 PASS 강좌추가 */
 .willbes-Lec-Search {
@@ -820,35 +907,6 @@ input {
     display: block;
 }
 
-.Fixbtn {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-.Fixbtn ul li {
-    float:left;
-    height: 65px;
-}
-.Fixbtn ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    font-size: 20px;
-    text-align: center;
-    line-height: 65px;
-}
-.Fixbtn.one ul li {
-    width: 100%;
-}
-.Fixbtn.two ul li {
-    width: 50%;
-}
-.Fixbtn.three ul li {
-    width: 33.33333333%;
-}
-
 /* 등록기기 정보 */
 .willbes-User-Tablet {
     float: left;
@@ -871,7 +929,6 @@ input {
     height: 17px;
     margin: 0 10px;
 }
-
 .willbes-User-Tablet ul li {
     float: left;
     width: 25%;
@@ -907,14 +964,31 @@ input {
     font-size: 13px;
 }
 
-
-
-
+/* 수강중강좌 : 패키지강좌 */
+.willbes-Open-Table .openTable {
+    display: none;
+}
+.willbes-Open-Table .MoreBtn {
+    width: 50%;
+    height: 40px;
+}
+.willbes-Open-Table .MoreBtn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    color: #9a9a9a;
+}
+.willbes-Open-Table .MoreBtn a img {
+    margin: -4px 0;
+}
 
 
 
 
 
 /*********************************************     MYPAGE     *********************************************/
+
+
 
 

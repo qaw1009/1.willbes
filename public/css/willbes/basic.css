@@ -670,10 +670,10 @@ strong {
   position: absolute;
 }
 .f_left {
-  float: left;
+  float: left !important;
 }
 .f_right {
-  float: right;
+  float: right !important;
 }
 .f_inherit {
   float: inherit !important;

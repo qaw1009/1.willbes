@@ -19,7 +19,7 @@
         </ul>
     </div>
     <div class="lineTabs lecProfTabs c_both">
-        <ul class="tabWrap lineWrap lecProfWrap">
+        <ul class="tabWrap lineWrap lecProfWrap two">
             <li><a href="#lecprof1" class="on">신규강좌</a></li>
             <li><a href="#lecprof2">추천강좌</a></li>
         </ul>
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="buttonTabs noticeTabs c_both">
-        <ul class="tabWrap buttonWrap noticeWrap">
+        <ul class="tabWrap buttonWrap noticeWrap three">
             <li><a href="#notice1" class="on">공지사항</a></li>
             <li><a href="#notice2">시험공고</a></li>
             <li><a href="#notice3">수험뉴스</a></li>

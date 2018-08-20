@@ -39,18 +39,17 @@
                         </div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
     <div class="buttonTabs passTabs c_both">
-        <ul class="tabWrap buttonWrap noticeWrap">
+        <ul class="tabWrap buttonWrap passWrap four">
             <li><a href="#notice1" class="on">일시정지</a></li>
             <li><a href="#notice2">수강연장</a></li>
             <li><a href="#notice3">수강후기</a></li>
             <li><a href="#notice4">학습 Q&A</a></li>
         </ul>
-        <div class="tabBox buttonBox noticeBox">
+        <div class="tabBox buttonBox passBox">
             <div id="notice1" class="tabContent">
                 aa
             </div>
@@ -180,6 +179,7 @@
             <li class="btn_gray"><a href="#none">LOW 다운</a></li>
         </ul>
     </div>
+    <!-- Fixbtn -->
 
 </div>
 <!-- End Container -->

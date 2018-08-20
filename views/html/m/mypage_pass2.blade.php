@@ -114,6 +114,7 @@
             <li class="btn_gray"><a href="#none">목록</a></li>
         </ul>
     </div>
+    <!-- Fixbtn -->
 
 </div>
 <!-- End Container -->

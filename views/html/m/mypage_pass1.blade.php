@@ -68,7 +68,7 @@
         </select>
     </div>
     <div class="lineTabs lecListTabs c_both">
-        <ul class="tabWrap lineWrap lecListWrap">
+        <ul class="tabWrap lineWrap lecListWrap three">
             <li><a href="#leclist1" class="on">즐겨찾기강좌 <span>3</span></a></li>
             <li><a href="#leclist2">수강중강좌 <span>6</span></a></li>
             <li><a href="#leclist3">숨긴강좌 <span>4</span></a></li>
@@ -96,7 +96,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>진동율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                             </td>
@@ -112,7 +112,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
-                                    <dt>진동율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
                                     <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
                                 </dl>
                             </td>
@@ -128,7 +128,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>진동율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                             </td>
@@ -162,7 +162,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>진동율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                             </td>
@@ -178,7 +178,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
-                                    <dt>진동율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
                                     <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
                                 </dl>
                             </td>
@@ -194,7 +194,7 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>진동율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
+                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                             </td>

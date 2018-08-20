@@ -62,7 +62,7 @@
         // 열기, 닫기 버튼 Script
         $(function() {
             $('.willbes-Txt .MoreBtn a').click(function() {
-                var $txt_info = $('.willbes-Txt');
+                var $txt_info = $(this).parents('.willbes-Txt');
 
                 if ($txt_info.hasClass('on')) {
                     $txt_info.removeClass('on');
@@ -71,6 +71,21 @@
                 } else {
                     $txt_info.addClass('on');
                     $(this).text('열기 ▼');
+                }
+            });
+        });
+
+        // 내강의실 온라인강좌 버튼 Script
+        $(function() {
+            $('.willbes-Open-Table .MoreBtn a').click(function() {
+                var $lec_info_table = $(this).parents('.willbes-Open-Table').find('.openTable');
+
+                if ($lec_info_table.is(':hidden')) {
+                    $lec_info_table.show().css('display','block');
+                    $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off.png');
+                } else {
+                    $lec_info_table.hide().css('display','none');
+                    $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
                 }
             });
         });

@@ -116,38 +116,40 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat" name="copy" value="' +row.OaIdx+ '">';
-                        }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'SiteName'},
-                    {'data' : 'StudyStartDate'},
-
-                    {'data' : 'OnAirNum'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.OnAirStartTime + ' ~ ' + row.OnAirEndTime;
+                    {'data' : 'ReadingRoomCode'},
+                    {'data' : 'ReadingRoomName', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.Idx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'ProfNickName'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.OaIdx + '"><u>' + row.OnAirName + '</u></a>';
-                        }},
+                    {'data' : 'ClassRoomName'},
+                    {'data' : '예치금'},
+                    {'data' : '판매가'},
+                    {'data' : '좌석현황'},
+                    {'data' : '잔여석'},
+                    {'data' : '마감여부'},
+                    {'data' : '자동문자'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'},
-                    {'data' : 'RegDatm'}
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.Idx + '"><u>' + row.aaa + '</u></a>';
+                        }}
                 ]
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.href='{{ site_url('/pass/readingRoom/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
+            // 독서실 신청현황 리스트
+            $list_table.on('click', '.btn-detail-list', function() {
+                location.href='{{ site_url('/pass/readingRoom/regist/applyMemberList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

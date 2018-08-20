@@ -26,6 +26,7 @@
 
     <!-- Custom Script -->
     <script>
+        // Menu Script
         $(function() {
             $('.Menu_open').click(function() {
                 $('.dim').show().css('display','block');
@@ -55,6 +56,29 @@
                     $(this).addClass('on');
 
                 }   
+            });
+        });
+
+        // 열기, 닫기 버튼 Script
+        $(function() {
+            $('.willbes-Txt .MoreBtn a').click(function() {
+                var $txt_info = $('.willbes-Txt');
+
+                if ($txt_info.hasClass('on')) {
+                    $txt_info.removeClass('on');
+                    $(this).text('닫기 ▲');
+
+                } else {
+                    $txt_info.addClass('on');
+                    $(this).text('열기 ▼');
+                }
+            });
+        });
+
+        // Top fixed Script
+        $(function() {
+            $('*[id*=Fixbtn]:visible').each(function() {
+                $(".goTopbtn").addClass('on');
             });
         });
 

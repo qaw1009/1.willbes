@@ -10,7 +10,7 @@
         무한 PASS존
     </div>
     <div class="willbes-Line">이용중인 무한 PASS (2)</div>
-    <div class="willbes-Lec-Selected NG tx-gray">
+    <div class="willbes-Lec-Selected NG c_both tx-gray">
         <select id="process" name="process" title="process" class="seleProcess width25p">
             <option selected="selected">과정</option>
             <option value="헌법">헌법</option>
@@ -40,10 +40,10 @@
         </tbody>
     </table>
     <div class="AddlecMore">
-        <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/main/icon_add_black.png') }}"> 강좌추가</a>
+        <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/mypage/icon_add_black.png') }}"> 강좌추가</a>
     </div>
 
-    <div class="willbes-Lec-Selected NG tx-gray">
+    <div class="willbes-Lec-Selected NG c_both tx-gray">
         <select id="lecture" name="lecture" title="lecture" class="seleLec width24p">
             <option selected="selected">과목</option>
             <option value="헌법">헌법</option>
@@ -142,7 +142,7 @@
             <div id="leclist2" class="tabContent" style="display: none;">
                 <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
                 <div class="btnBox">
-                    <div class="InfoBtn btn_white"><a href="#none" style="padding: 2px;"><img src="{{ img_url('m/main/icon_star_off.png') }}"></a></div>
+                    <div class="InfoBtn btn_white"><a href="#none" style="padding: 2px;"><img src="{{ img_url('m/mypage/icon_star_off.png') }}"></a></div>
                     <div class="InfoBtn btn_white"><a href="#none">숨기기</a></div>
                 </div>
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">

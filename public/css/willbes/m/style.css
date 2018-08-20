@@ -16,7 +16,9 @@ body {
     bottom: 10px;
     right: 10px;
 }
-
+.goTopbtn.on {
+    bottom: 75px; 
+}
 .width10p {
     width: 10%;
 }
@@ -462,6 +464,27 @@ input {
     left: 10px;
     margin-top: -23px;
 }
+.willbes-Txt {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 24px;
+    padding: 0 20px; 
+}
+.willbes-Txt.on {
+    height: 50px;
+    overflow: hidden;
+}
+.willbes-Txt-Tit {
+    font-size: 18px;
+    color: #3a3a3a;
+    line-height: 50px;
+}
+.willbes-Txt-Tit .MoreBtn {
+    float: right;
+}
+.willbes-Txt-Tit .MoreBtn a {
+    font-size: 14px;
+}
 .willbes-Line {
     font-size: 20px;
     color: #fff;
@@ -472,7 +495,8 @@ input {
     padding-left: 20px;
 }
 .willbes-Lec-Selected {
-    height: 110px;
+    float: left;
+    width: 100%;
     padding: 30px 20px 20px;
 }
 .willbes-Lec-Selected select {
@@ -493,13 +517,23 @@ input {
     color: #fff;
 }
 .btn_black {
-    background: #333;
-    border: 1px solid #333;
+    background: #000;
+    border: 1px solid #000;
     color: #fff;
+}
+.btn_black_line {
+    background: #fff;
+    border: 1px solid #000;
+    color: #000;
 }
 .btn_blue {
     background: #1a8ccc;
     border: 1px solid #1a8ccc;
+    color: #fff;
+}
+.btn-purple {
+    background: #264abf;
+    border: 1px solid #264abf;
     color: #fff;
 }
 
@@ -510,6 +544,7 @@ input {
     padding: 10px 0;
 }
 .lecTable .w-info {
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 16px;
     line-height: 20px;
 }
@@ -535,7 +570,7 @@ input {
 .lecTable tr td:last-child {
     padding-right: 20px;
 }
-.lecTable input[type='checkbox'] {
+.lecTable input[type="checkbox"] {
     width: 25px;
     height: 25px;
 }
@@ -557,6 +592,7 @@ input {
     margin: 20px;
 }
 .lecMore {
+    clear: both;
     background: #f7f7f7;
     height: 70px;
     font-size: 20px;
@@ -567,6 +603,7 @@ input {
     border-bottom: 1px solid #ccc;
 }
 .AddlecMore {
+    clear: both;
     background: #1a8ccc;
     height: 55px;
     margin: 10px 20px;
@@ -632,7 +669,126 @@ input {
     background: #333
 }
 
-/* 무한 PASS 추가하기 */
+/* 무한 PASS존 자세히 보기 */
+.buylecTable tr td {
+    padding: 40px 0 30px;
+}
+.buylecTable tr td.w-chk {
+    vertical-align: top;
+}
+.buylecTable tr td.w-chk input[type="checkbox"] {
+    margin-top: 10px;
+}
+.passProfTabs tr td {
+    border-bottom: none;
+}
+.passProfTabs .w-prof {
+    float: left;
+    width: 35%;
+    max-width: 122px;
+}
+.passProfTabs .w-prof img {
+    width: 100%;
+}
+.passProfTabs .w-prof .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.passProfTabs .w-data {
+    float: left;
+    width: 65%;
+}
+.passProfTabs .w-info {
+    clear: both;
+    padding-top: 20px;
+}
+.passTabs {
+    padding: 0 20px;
+}
+.passTabs li {
+    width: 25%;
+}
+.passListTabs thead tr td {
+    padding-top: 40px;
+    padding-bottom: 20px;  
+}
+.passListTabs thead tr td.w-chk input[type="checkbox"] {
+    float: left;
+    margin-top: 0;
+}
+.passListTabs thead tr td label {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 15px;
+}
+.passListTabs tr td {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.passListTabs tr td:first-child {
+    padding-left: 0;
+}
+.passListTabs tr td:last-child {
+    padding-right: 0;
+}
+.passListTabs tr td.w-chk {
+    vertical-align: top;
+}
+.passListTabs tr td.w-chk input[type="checkbox"] {
+    margin-top: 10px;
+}
+.passListTabs tr td .w-tit {
+    font-size: 18px;    
+}
+.passListTabs tr td .w-info {
+    font-size: 14px;
+}
+.passListTabs tbody tr:last-child td {
+    border-bottom: none;
+}
+.passListTabs .w-free li {
+    float: left;
+    width: 23%;
+    height: 40px;
+}
+.passListTabs .w-free li:last-child {
+    width: 31%
+}
+.passListTabs .w-free li a {
+    display: block; 
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    text-align: center;
+    line-height: 38px;
+}
+.passListTabs .w-free li.w-data a {
+    font-size: 14px;
+    line-height: 45px;
+    text-align: right;
+}
+.passListTabs .passListWrap {
+    width: 100%;
+    padding: 0 20px;
+}
+.BuylecMore {
+    clear: both;
+    background: #1a8ccc;
+    height: 55px;
+}
+.BuylecMore a {
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 55px;
+}
+
+
+
+
+/* 무한 PASS 강좌추가 */
 .willbes-Lec-Search {
     float: left;
     font-size: 18px;
@@ -663,6 +819,96 @@ input {
 .willbes-Lec-Search .reset-Btn a {
     display: block;
 }
+
+.Fixbtn {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.Fixbtn ul li {
+    float:left;
+    height: 65px;
+}
+.Fixbtn ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 65px;
+}
+.Fixbtn.one ul li {
+    width: 100%;
+}
+.Fixbtn.two ul li {
+    width: 50%;
+}
+.Fixbtn.three ul li {
+    width: 33.33333333%;
+}
+
+/* 등록기기 정보 */
+.willbes-User-Tablet {
+    float: left;
+    width: 100%;
+    padding: 40px;  
+    margin-top: 30px;
+    border-top: 1px solid #ccc;  
+}
+.willbes-User-Tablet dl {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.willbes-User-Tablet dl dt {
+    display: inline-block;
+    font-size: 19px;
+}
+.willbes-User-Tablet dl dt .row-line {
+    background: #b5b5b5;
+    width: 1px;
+    height: 17px;
+    margin: 0 10px;
+}
+
+.willbes-User-Tablet ul li {
+    float: left;
+    width: 25%;
+    height: 42px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 40px;
+    border-top: 1px solid #d4d4d4;
+    border-right: 1px solid #d4d4d4;
+    border-bottom: 1px solid #d4d4d4;
+}
+.willbes-User-Tablet ul li:first-child {
+    border-left: 1px solid #d4d4d4;
+}
+.willbes-User-Tablet ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.willbes-User-Tablet ul li a.on,
+.willbes-User-Tablet ul li a:hover,
+.willbes-User-Tablet ul li a:active {
+    background: #1a8ccc;
+    color: #fff;
+}
+.tabletTabs table tr td {
+    padding: 30px 20px;
+}
+.tabletTabs table tr td .w-info {
+    line-height: 30px;
+}
+.tabletTabs table tr td .w-info.tx-gray {
+    font-size: 13px;
+}
+
+
+
 
 
 

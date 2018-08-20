@@ -11,6 +11,10 @@
 
     <a href="{{ site_url('/home/html/m/mypage_pass1') }}">내강의실 > 무한PASS존 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/m/mypage_pass4') }}">내강의실 > 무한PASS존 수강중인 강좌 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/m/mypage_pass2') }}">내강의실 > 무한PASS 강좌추가 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_pass3') }}">내강의실 > 무한PASS 등록기기 정보 page 이동</a><br/><br/>
 
 </div>

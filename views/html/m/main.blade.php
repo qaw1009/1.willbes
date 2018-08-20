@@ -3,9 +3,7 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="MainTxtBnr">
-        이제 2018년 목표는 "경찰합격생 10명중 8~9명 신광은 경찰수강생"
-    </div>
+    <div class="MainTxtBnr">이제 2018년 목표는 "경찰합격생 10명중 8~9명 신광은 경찰수강생"</div>
     <div class="MainSlider bSlider c_both">
         <div class="slider">
             <div><img src="{{ img_url('m/sample/slider1.jpg') }}"></div>
@@ -20,7 +18,6 @@
             <li><img src="{{ img_url('m/sample/bnr2.jpg') }}"></li>
         </ul>
     </div>
-
     <div class="lineTabs lecProfTabs c_both">
         <ul class="tabWrap lineWrap lecProfWrap">
             <li><a href="#lecprof1" class="on">신규강좌</a></li>
@@ -61,7 +58,6 @@
             </div>
         </div>
     </div>
-
     <div class="buttonTabs noticeTabs c_both">
         <ul class="tabWrap buttonWrap noticeWrap">
             <li><a href="#notice1" class="on">공지사항</a></li>
@@ -98,7 +94,6 @@
             </div>
         </div>
     </div>
-
     <div class="appPlayer c_both">
         <a href="#none">
             <img src="{{ img_url('m/main/icon_app_player.jpg') }}">

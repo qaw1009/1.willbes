@@ -9,6 +9,10 @@
         </button>    
         무한 PASS 강좌추가
     </div>
+    <div class="willbes-Txt NGR c_both mt30">
+        - 체크박스 선택후 '강좌추가' 버튼을 클릭하시면 수강이 가능합니다.<br/>
+        - 강좌상세정보는 PC 버전에서만 확인할 수 있습니다.
+    </div>
     <div class="willbes-Lec-Selected NG tx-gray">
         <select id="process" name="process" title="process" class="seleProcess width24p">
             <option selected="selected">과정</option>
@@ -27,8 +31,7 @@
             <option value="학습유형1">학습유형1</option>
             <option value="학습유형2">학습유형2</option>
         </select>
-
-        <div class="willbes-Lec-Search NG width100p mt1p mb50">
+        <div class="willbes-Lec-Search NG width100p mt1p mb30">
             <div class="inputBox width74p p_re">
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="강좌명" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
@@ -39,7 +42,6 @@
         </div>
     </div>
 
-  
     <div class="lineTabs lecListTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <colgroup>
@@ -105,6 +107,13 @@
         </a>
     </div>
     <!-- Topbtn -->
+
+    <div id="Fixbtn" class="Fixbtn two">
+        <ul>
+            <li class="btn_blue"><a href="#none">선택강좌추가</a></li>
+            <li class="btn_gray"><a href="#none">목록</a></li>
+        </ul>
+    </div>
 
 </div>
 <!-- End Container -->

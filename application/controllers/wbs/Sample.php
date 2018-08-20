@@ -87,39 +87,19 @@ class Sample extends \app\controllers\BaseController
     public function paging($params = [])
     {
         $this->output->enable_profiler(true);
-        
         $arr_condition = [];
 
-        // paging
-        $this->load->library('pagination');
+        $total_rows = $this->sampleModel->listSample(true, $arr_condition);
 
-        $paging['total_rows'] = $this->sampleModel->listSample(true, $arr_condition);
-
-        $config['base_url'] = '/sample/paging/';
-        $config['total_rows'] = $paging['total_rows'];
-        // 페이지 번호가 위치한 세그먼트
-        $config['uri_segment'] = 3;
-        $config['per_page'] = 1;
-
-        $this->pagination->initialize($config);
-        $paging['pagination'] = $this->pagination->create_links();
-
-        // paging query
-        $page = empty($params[0]) ? 1 : $params[0];
-        $limit = $this->pagination->per_page;
-
-        $paging['data'] = [];
-        if ($paging['total_rows'] > 0) {
-            $start = ($page - 1) * $limit;
-            $paging['list_num'] = $paging['total_rows'] - $start;
-
-            $paging['data'] = $this->sampleModel->listSample(false, $arr_condition, $limit, $start, ['idx' => 'desc']);
+        $paging = $this->pagination('/sample/paging/', $total_rows, 1, 5, false);
+        if ($total_rows > 0) {
+            $paging['data'] = $this->sampleModel->listSample(false, $arr_condition, $paging['limit'], $paging['offset'], ['idx' => 'desc']);
         }
 
         $this->load->view('sample/paging', [
             'paging' => $paging
         ]);
-    }    
+    }
 
     /**
      * 샘플 등록 Form

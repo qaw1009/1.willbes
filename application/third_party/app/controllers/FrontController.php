@@ -271,4 +271,71 @@ abstract class FrontController extends BaseController
             return implode('/', array_merge($this->uri->segments, $diff));
         }
     }
+
+    /**
+     * pagination 설정 및 값 리턴
+     * @param string $base_url [페이징 링크 기본 URI]
+     * @param int $total_rows   [전체 데이터 건수]
+     * @param int $limit [페이지 당 노출될 데이터 건수]
+     * @param int $show_page_num [노출되는 페이지 수]
+     * @param bool $page_query_string [페이지 번호 query string 사용 여부]
+     * @return array
+     */
+    public function pagination($base_url, $total_rows, $limit = 10, $show_page_num = 10, $page_query_string = true)
+    {
+        $this->load->library('pagination');
+
+        // set pagination config
+        $config['base_url'] = $base_url;    // 페이징 링크 기본 URI
+        $config['total_rows'] = $total_rows;    // 전체 데이터 건수
+        $config['per_page'] = $limit;   // 페이지 당 노출될 데이터 건수
+        $config['fixed_page_num'] = $show_page_num;     // 노출되는 페이지 수
+
+        if ($page_query_string === true) {
+            $config['use_first_page_number'] = true;    // 첫번째 페이지 번호 사용 여부
+            $config['page_query_string'] = true;    // 페이지 번호 query string 사용 여부
+            $config['query_string_segment'] = 'page';   // 페이지 번호 get 파라미터 명
+        } else {
+            $config['uri_segment'] = substr_count($config['base_url'], '/');    // 페이지 번호가 위치한 세그먼트
+        }
+
+        // set pagination view config
+        $config['full_tag_open'] = '<div class="Paging"><ul>';
+        $config['full_tag_close'] = '</ul></div>';
+        $config['first_link'] = false;
+        $config['first_tag_open'] = '';
+        $config['first_tag_close'] = '';
+        $config['last_link'] = false;
+        $config['last_tag_open'] = '';
+        $config['last_tag_close'] = '';
+        $config['prev_link'] = '<img src="' . img_url('paging/paging_prev.png') . '">';
+        $config['prev_tag_open'] = '<li class="Prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '<img src="' . img_url('paging/paging_next.png') . '">';
+        $config['next_tag_open'] = '<li class="Next">';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li><a class="on" href="#none">';
+        $config['cur_tag_close'] = '</a><span class="row-line">|</span></li>';
+        $config['num_tag_open'] = '<li><a href="#none">';
+        $config['num_tag_close'] = '</a><span class="row-line">|</span></li>';
+
+        // create pagination
+        $this->pagination->initialize($config);
+        $pagination = $this->pagination->create_links();
+
+        $offset = 0;
+        $rownum = 0;
+        if ($config['total_rows'] > 0) {
+            $offset = ($this->pagination->cur_page - 1) * $this->pagination->per_page;
+            $rownum = $config['total_rows'] - $offset;
+        }
+
+        return [
+            'pagination' => $pagination,
+            'page' => $this->pagination->cur_page,
+            'offset' => $offset,
+            'limit' => $this->pagination->per_page,
+            'rownum' => $rownum
+        ];
+    }
 }

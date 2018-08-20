@@ -3,58 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class WB_Pagination extends CI_Pagination
 {
-	var $display_always			= FALSE; // Display pagination even it has one page only.
-	var $use_fixed_page			= TRUE; // Use a fixed number of pages.
-	var $fixed_page_num		= 10; // A fixed number of pages on the pagination.
-	var $disable_first_link		= FALSE; // Disable the first link when the current page is the first page.
-	var $disable_last_link		= FALSE; // Disable the last link when the current page is the last page.
-	var $disable_prev_link		= FALSE; // Disable the previous link when the current page is the first page.
-	var $disable_next_link		= FALSE; // Disable the next link when the current page is the last page.
-	var $display_first_always	= TRUE; // Always display the first link even the current page is the first page.
-	var $display_last_always	= TRUE; // Always display the last link even the current page is the last page.
-	var $display_prev_always	= TRUE; // Always display the previous link even the current page is the first page.
-	var $display_next_always	= TRUE; // Always display the next link even the current page is the last page.
-	
-	var $disabled_first_tag_open	= '';
-	var $disabled_first_tag_close	= '&nbsp;';
-	var $disabled_last_tag_open	= '&nbsp;';
-	var $disabled_last_tag_close	= '';
-	var $disabled_prev_tag_open	= '&nbsp;';
-	var $disabled_prev_tag_close	= '';
-	var $disabled_next_tag_open	= '&nbsp;';
-	var $disabled_next_tag_close	= '&nbsp;';
+	protected $display_always			= false; // Display pagination even it has one page only.
+    protected $use_fixed_page		= true; // Use a fixed number of pages.
+    protected $fixed_page_num		= 10; // A fixed number of pages on the pagination.
+    protected $disable_first_link		= false; // Disable the first link when the current page is the first page.
+    protected $disable_last_link		= false; // Disable the last link when the current page is the last page.
+    protected $disable_prev_link		= false; // Disable the previous link when the current page is the first page.
+    protected $disable_next_link		= false; // Disable the next link when the current page is the last page.
+    protected $display_first_always	= true; // Always display the first link even the current page is the first page.
+    protected $display_last_always	= true; // Always display the last link even the current page is the last page.
+    protected $display_prev_always	= true; // Always display the previous link even the current page is the first page.
+    protected $display_next_always	= true; // Always display the next link even the current page is the last page.
 
-	var $anchor_class = '';
+    protected $disabled_first_tag_open	    = '';
+    protected $disabled_first_tag_close	    = '&nbsp;';
+    protected $disabled_last_tag_open	    = '&nbsp;';
+    protected $disabled_last_tag_close	    = '';
+    protected $disabled_prev_tag_open	    = '&nbsp;';
+    protected $disabled_prev_tag_close	= '';
+    protected $disabled_next_tag_open	    = '&nbsp;';
+    protected $disabled_next_tag_close	= '&nbsp;';
+
+    protected $use_page_numbers = true;
+    protected $use_first_page_number = false;
+    protected $anchor_class = '';
 
 	public function __construct()
 	{
 		parent::__construct();
-
-		$this->use_page_numbers = TRUE;
-		$this->per_page = 20;
-
-		$this->full_tag_open = '<ul class="pagination mt5">';
-		$this->full_tag_close = '</ul>';
-		//$this->first_link = '<span>&laquo;</span>';
-        $this->first_link = '<span>처음</span>';
-		$this->first_tag_open = '<li>';
-		$this->first_tag_close = '</li>';
-        //$this->last_link = '<span>&raquo;</span>';
-        $this->last_link = '<span>마지막</span>';
-        $this->last_tag_open = '<li>';
-        $this->last_tag_close = '</li>';
-        //$this->next_link = '<span>&rsaquo;</span>';
-        $this->next_link = '<span>다음</span>';
-        $this->next_tag_open = '<li>';
-        $this->next_tag_close = '</li>';
-        //$this->prev_link = '<span>&lsaquo;</span>';
-        $this->prev_link = '<span>이전</span>';
-        $this->prev_tag_open = '<li>';
-        $this->prev_tag_close = '</li>';
-        $this->cur_tag_open = '<li class="active"><a href="#none">';
-        $this->cur_tag_close = '</a></li>';
-        $this->num_tag_open = '<li>';
-        $this->num_tag_close = '</li>';
 	}
 	
 	/**
@@ -66,7 +42,7 @@ class WB_Pagination extends CI_Pagination
 	function create_links()
 	{
 		// If our item count or per-page total is zero there is no need to continue.
-		if ($this->total_rows == 0 OR $this->per_page == 0) {
+		if ($this->total_rows == 0 || $this->per_page == 0) {
 			return '';
 		}
 
@@ -74,7 +50,7 @@ class WB_Pagination extends CI_Pagination
 		$num_pages = ceil($this->total_rows / $this->per_page);
 
 		// Is there only one page? Hm... nothing more to do here then.
-		if ($this->display_always === FALSE && $num_pages == 1) {
+		if ($this->display_always === false && $num_pages == 1) {
 			return '';
 		}
 
@@ -85,10 +61,16 @@ class WB_Pagination extends CI_Pagination
 			$base_page = 0;
 		}
 
+		// Set the first page number
+        $first_page = '';
+		if ($this->use_first_page_number === true) {
+            $first_page = $base_page;
+        }
+
 		// Determine the current page number.
 		$CI =& get_instance();
 
-		if ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE) {
+		if ($CI->config->item('enable_query_strings') === true || $this->page_query_string === true) {
 			if ($CI->input->get($this->query_string_segment) != $base_page) {
 				$this->cur_page = $CI->input->get($this->query_string_segment);
 
@@ -103,9 +85,9 @@ class WB_Pagination extends CI_Pagination
 				$this->cur_page = (int) $this->cur_page;
 			}
 		}
-		
+
 		// Set current page to 1 if using page numbers instead of offset
-		if ($this->use_page_numbers AND $this->cur_page == 0) {
+		if ($this->use_page_numbers && $this->cur_page == 0) {
 			$this->cur_page = $base_page;
 		}
 
@@ -132,7 +114,7 @@ class WB_Pagination extends CI_Pagination
 		}
 
 		$uri_page_number = $this->cur_page;
-		
+
 		if ( ! $this->use_page_numbers) {
 			$this->cur_page = floor(($this->cur_page/$this->per_page) + 1);
 		}
@@ -140,7 +122,7 @@ class WB_Pagination extends CI_Pagination
 		// Calculate the start and end numbers. These determine
 		// which number to start and end the digit links with
 		if ($this->use_fixed_page) {
-			$start = (ceil($this->cur_page / $this->fixed_page_num) - 1) * $this->fixed_page_num + 1 + 1; // Last plus one is for loop statement starts $start - 1 
+			$start = (ceil($this->cur_page / $this->fixed_page_num) - 1) * $this->fixed_page_num + 1 + 1; // Last plus one is for loop statement starts $start - 1
 			$end   = (ceil($this->cur_page / $this->fixed_page_num) == ceil($num_pages / $this->fixed_page_num)) ? $num_pages : ceil($this->cur_page / $this->fixed_page_num) * $this->fixed_page_num;
 		} else {
 			$start = (($this->cur_page - $this->num_links) > 0) ? $this->cur_page - ($this->num_links - 1) : 1;
@@ -150,8 +132,9 @@ class WB_Pagination extends CI_Pagination
 
 		// Is pagination being used over GET or POST?  If get, add a per_page query
 		// string. If post, add a trailing slash to the base URL if needed
-		if ($CI->config->item('enable_query_strings') === TRUE OR $this->page_query_string === TRUE) {
-			$this->base_url = rtrim($this->base_url).'&amp;'.$this->query_string_segment.'=';
+		if ($CI->config->item('enable_query_strings') === true || $this->page_query_string === true) {
+            $query_string_sep = (strpos($this->base_url, '?') === false) ? '?' : '&amp;';
+			$this->base_url = rtrim($this->base_url).$query_string_sep.$this->query_string_segment.'=';
 		} else {
 			$this->base_url = rtrim($this->base_url, '/') .'/';
 		}
@@ -160,37 +143,40 @@ class WB_Pagination extends CI_Pagination
 		$output = '';
 
 		// Render the "First" link
-		if  ($this->first_link !== FALSE) {
-			if ($this->display_first_always === TRUE AND $this->disable_first_link === TRUE AND $this->cur_page == 1) {
+		if  ($this->first_link !== false) {
+			if ($this->display_first_always === true && $this->disable_first_link === true && $this->cur_page == 1) {
 				$output .= $this->disabled_first_tag_open.$this->first_link.$this->disabled_first_tag_close;
-			} else if ($this->display_first_always === TRUE OR $this->cur_page != 1) {
-				$first_url = ($this->first_url == '') ? $this->base_url : $this->first_url;
+			} else if ($this->display_first_always === true || $this->cur_page != 1) {
+				$first_url = (($this->first_url == '') ? $this->base_url : $this->first_url) . $first_page;
 				$output .= $this->first_tag_open.'<a '.$this->anchor_class.'href="'.$first_url.'">'.$this->first_link.'</a>'.$this->first_tag_close;
 			}
-		} 		
+		}
 
 		// Render the "previous" link
-		if  ($this->prev_link !== FALSE) {
-			if ($this->display_prev_always === TRUE AND $this->disable_prev_link === TRUE AND $this->cur_page == 1) {
+		if  ($this->prev_link !== false) {
+			if ($this->display_prev_always === true && $this->disable_prev_link === true && $this->cur_page == 1) {
 				$output .= $this->disabled_prev_tag_open.$this->prev_link.$this->disabled_prev_tag_close;
-			} else if ($this->display_prev_always === TRUE OR $this->cur_page != 1) {
+			} else if ($this->display_prev_always === true || $this->cur_page != 1) {
 				if ($this->use_page_numbers) {
-					$i = $uri_page_number - 1;
+					//$i = $uri_page_number - 1;    // prev page
+                    // prev group
+                    $i = $start - 2;
+                    $i < 1 && $i = $first_page;
 				} else {
 					$i = $uri_page_number - $this->per_page;
 				}
-				
+
 				if ($i == 0 && $this->first_url != '') {
 					$output .= $this->prev_tag_open.'<a '.$this->anchor_class.'href="'.$this->first_url.'">'.$this->prev_link.'</a>'.$this->prev_tag_close;
 				} else {
-					$i = ($i == 0) ? '' : $this->prefix.$i.$this->suffix;
+					$i = ($i == 0) ? $first_page : $this->prefix.$i.$this->suffix;
 					$output .= $this->prev_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$i.'">'.$this->prev_link.'</a>'.$this->prev_tag_close;
 				}
 			}
 		}
 
 		// Render the pages
-		if ($this->display_pages !== FALSE) {
+		if ($this->display_pages !== false) {
 			// Write the digit links
 			for ($loop = $start -1; $loop <= $end; $loop++) {
 				if ($this->use_page_numbers) {
@@ -208,7 +194,7 @@ class WB_Pagination extends CI_Pagination
 						if ($n == '' && $this->first_url != '') {
 							$output .= $this->num_tag_open.'<a '.$this->anchor_class.'href="'.$this->first_url.'">'.$loop.'</a>'.$this->num_tag_close;
 						} else {
-							$n = ($n == '') ? '' : $this->prefix.$n.$this->suffix;
+							$n = ($n == '') ? $first_page : $this->prefix.$n.$this->suffix;
 
 							$output .= $this->num_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$n.'">'.$loop.'</a>'.$this->num_tag_close;
 						}
@@ -218,29 +204,32 @@ class WB_Pagination extends CI_Pagination
 		}
 
 		// Render the "next" link
-		if ($this->next_link !== FALSE) {
-			if ($this->display_next_always === TRUE AND $this->disable_next_link === TRUE AND $this->cur_page == $num_pages) {
+		if ($this->next_link !== false) {
+			if ($this->display_next_always === true && $this->disable_next_link === true && $this->cur_page == $num_pages) {
 				$output .= $this->disabled_next_tag_open.$this->next_link.$this->disabled_next_tag_close;
-			} else if ($this->display_next_always === TRUE OR $this->cur_page != $num_pages) {
+			} else if ($this->display_next_always === true || $this->cur_page != $num_pages) {
 				if ($this->use_page_numbers) {
 					if ($this->cur_page == $num_pages) {
 						$i = $num_pages;
 					} else {
-						$i = $this->cur_page + 1;
+						//$i = $this->cur_page + 1;     // next page
+                        // next group
+                        $i = $this->cur_page + ($start + $this->fixed_page_num - $this->cur_page - 1);
+                        $i > $num_pages && $i = $num_pages;
 					}
 				} else {
 					$i = ($this->cur_page * $this->per_page);
 				}
-		
+
 				$output .= $this->next_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$this->prefix.$i.$this->suffix.'">'.$this->next_link.'</a>'.$this->next_tag_close;
 			}
 		}
 
 		// Render the "Last" link
-		if ($this->last_link !== FALSE) {
-			if ($this->display_last_always === TRUE AND $this->disable_last_link === TRUE AND $this->cur_page == $num_pages) {
+		if ($this->last_link !== false) {
+			if ($this->display_last_always === true && $this->disable_last_link === true && $this->cur_page == $num_pages) {
 				$output .= $this->disabled_last_tag_open.$this->last_link.$this->disabled_last_tag_close;
-			} else if ($this->display_first_always === TRUE OR $this->cur_page != $num_pages) {
+			} else if ($this->display_first_always === true || $this->cur_page != $num_pages) {
 				if ($this->use_page_numbers) {
 					$i = $num_pages;
 				} else {

@@ -48,7 +48,7 @@
                 </ul>
             </div>
             <div class="willbes-Cart-Txt p_re pt15">
-                <span class="MoreBtn underline NG"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                <span class="MoreBtn underline NG" style="top: 30px;"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-gray">
                     <tbody>
                         <tr>
@@ -255,7 +255,7 @@
                     </dt>
                 </dl>
             </div>
-            <div class="p-info tx-gray c_both">
+            <div class="p-info tx-gray c_both pb-zero">
                 • 강좌 포인트는 <span class="tx-light-blue">6,000p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능하며, 주문금액의 <span class="tx-light-blue">80%</span>까지만 사용 가능합니다.
             </div>
         </div>

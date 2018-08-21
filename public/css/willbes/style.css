@@ -1592,6 +1592,7 @@ table.auTable tr td {
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
     box-sizing: border-box;
+    margin-bottom: 15px;
 }
 .curriWrap .curriTabs li {
     display: inline-block;
@@ -2311,7 +2312,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .lecInfoTable .w-sub {
     clear: both;
     height: 30px;
-    line-height: 26px;
+    line-height: 28px;
     margin-left: 10px;
 }
 .lecInfoTable .w-sub.overflow {
@@ -2374,9 +2375,10 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .lecInfoTable .w-sub strong {
     background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 8px;
     height: 30px;
+    line-height: 28px;
     padding-left: 18px;
     display: inline-block;
-    margin-top: 5px;
+    margin-top: 3px;
 }
 
 /* subContainer : Content : willbes-Layer-Box */
@@ -2705,7 +2707,7 @@ table.profTable tr td .priceWrap {
     clear: both;
 }
 .sticky-menu {
-    position: absolute;
+    position: relative;
     width: 100%;
     background: #fff;
     height: 45px;
@@ -2735,6 +2737,8 @@ table.profTable tr td .priceWrap {
     margin: 0 auto;
 }
 .sticky-top {
+    position: absolute;
+    top: -45px;
     display: block;
     clear: both;
 }
@@ -3748,8 +3752,7 @@ ul.btnWrapbt li {
     height: 22px;
     color: #707070;
     text-align: right;
-    line-height: 23px;
-    padding: 5px;
+    padding: 0px 5px 2px;
     border: 1px solid #898989;
 }
 /*

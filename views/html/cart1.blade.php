@@ -55,9 +55,9 @@
             <div class="tabBox">
                 <div id="pocket1" class="tabLink">
 
-                    <div class="willbes-Cartlist c_both">
+                    <div class="willbes-Cartlist c_both mt20">
                         <div class="LeclistTable">
-                            <ul>
+                            <ul class="mb20">
                                 <li class="subBtn NSK"><a href="#none">선택 상품 삭제 ></a></li>
                             </ul>
                             <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
@@ -251,12 +251,12 @@
                 </div>
                 <div id="pocket2" class="tabLink">
 
-                    <div class="willbes-Cartlist c_both">
+                    <div class="willbes-Cartlist c_both mt20">
                         <div class="LeclistTable">
-                            <ul>
+                            <ul class="mb20">
                                 <li class="subBtn NSK"><a href="#none">선택 상품 삭제 ></a></li>
                             </ul>
-                            <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray mt20">
                                 <colgroup>
                                     <col style="width: 80px;">
                                     <col style="width: 550px;">

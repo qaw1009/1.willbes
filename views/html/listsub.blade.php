@@ -255,8 +255,8 @@
         </div>
         <!-- sticky-menu -->
    
-        <a name="Class" class="sticky-top"></a>
-        <div class="willbes-Class c_both">
+        <div class="willbes-Class p_re c_both">
+            <a name="Class" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">강좌정보</div>
             <div class="classInfoTable GM">
                 <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
@@ -300,8 +300,8 @@
         </div>
         <!-- TopBtn-->
 
-        <a name="BookInfo" class="sticky-top"></a>
-        <div class="willbes-BookInfo c_both">
+        <div class="willbes-BookInfo p_re c_both">
+            <a name="BookInfo" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
             <div class="bookInfo">
                 <div class="bookImg">
@@ -335,7 +335,7 @@
                                     셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
                                     기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
                                 </div>
-                                <div class="caution-txt tx-red">수강생교재는 해당온라인강좌 수강생에 한해 구매 가능합니다. (교재만별도구매불가능)</div>
+                                <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
                             </div>
                             <div id="info2" class="tabContent">
                                 <div class="book-TxtBox tx-gray">
@@ -363,8 +363,8 @@
         </div>
         <!-- TopBtn-->
 
-        <a name="Leclist" class="sticky-top"></a>
-        <div class="willbes-Leclist c_both">
+        <div class="willbes-Leclist p_re c_both">
+            <a name="Leclist" class="sticky-top"></a>   
             <div class="willbes-Lec-Tit NG tx-black">강의목차</div>
             <div class="LeclistTable">
                 <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
@@ -439,8 +439,8 @@
         </div>
         <!-- TopBtn-->
 
-        <a name="Reply" class="sticky-top"></a>
-        <div class="willbes-Reply c_both">
+        <div class="willbes-Reply p_re c_both">
+            <a name="Reply" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">수강후기</div>
             <div class="ReplylistTable tx-gray">
                 <div class="replyBox">

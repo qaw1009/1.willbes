@@ -26,9 +26,9 @@
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
                         <input type="hidden" name="cart_type" value="on_lecture"/>
-                        <div class="willbes-Cartlist c_both">
+                        <div class="willbes-Cartlist c_both mt20">
                             <div class="LeclistTable">
-                                <ul>
+                                <ul class="mb20">
                                     <li class="subBtn NSK"><a href="#none" class="btn-checked-delete" data-tab-id="on_lecture">선택 상품 삭제 ></a></li>
                                 </ul>
                                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
@@ -151,9 +151,9 @@
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
                         <input type="hidden" name="cart_type" value="book"/>
-                        <div class="willbes-Cartlist c_both">
+                        <div class="willbes-Cartlist c_both mt20">
                             <div class="LeclistTable">
-                                <ul>
+                                <ul class="mb20">
                                     <li class="subBtn NSK"><a href="#none" class="btn-checked-delete" data-tab-id="book">선택 상품 삭제 ></a></li>
                                 </ul>
                                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-black upper-gray tx-gray">
@@ -365,7 +365,7 @@
             var $form = $('#' + $tab_id + '_form');
 
             if ($form.find('input[name="cart_idx[]"]').length < 1) {
-                alert('결제할 상품이 없습니다.');
+                alert('구매할 상품이 없습니다.');
                 return;
             }
 
@@ -376,8 +376,10 @@
                 }
             }
 
-            // 상품 자동 선택 처리
-            $form.find('input[name="cart_idx[]"]').prop('checked', true);
+            if ($form.find('input[name="cart_idx[]"]:checked').length < 1) {
+                // 상품 자동 선택 처리
+                $form.find('input[name="cart_idx[]"]').prop('checked', true);
+            }
 
             var url = '{{ site_url('/cart/toOrder/cate/' . $__cfg['CateCode']) }}';
             ajaxSubmit($form, url, function(ret) {

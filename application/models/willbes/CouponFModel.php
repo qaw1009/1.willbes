@@ -71,6 +71,7 @@ class CouponFModel extends WB_Model
     }
 
     /**
+     * 상품별 적용가능한 회원 쿠폰 조회
      * @param $column
      * @param array $arr_param
      * @param null $limit
@@ -84,7 +85,7 @@ class CouponFModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'C.CouponIdx, CD.MemIdx, C.SiteCode, CC.CateCodes, if(CD.CouponPin = "N", "", CD.CouponPin) as CouponPin, C.CouponName
+            $column = 'C.CouponIdx, CD.CdIdx, CD.MemIdx, C.SiteCode, CC.CateCodes, if(CD.CouponPin = "N", "", CD.CouponPin) as CouponPin, C.CouponName
                 , C.ApplyTypeCcd, replace(fn_ccd_name(C.ApplyTypeCcd), "온라인", "") as ApplyTypeCcdName, ifnull(CP.ProdCodes, "") as ProdCodes
                 , C.DiscRate, C.DiscType, C.DiscAllowPrice, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.ValidDay, CD.ExpireDatm
                 , (case when now() between CD.IssueDatm and CD.ExpireDatm then "유효"
@@ -121,8 +122,7 @@ class CouponFModel extends WB_Model
                 and C.IsStatus = "Y"                
                 and now() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
                 and CD.ValidStatus = "Y"                                
-                and C.ApplyTypeCcd = ?   # 상품분류 구분                
-                and C.LecTypeCcds like ?   # 학습형태 구분      
+                and C.ApplyTypeCcd = ?   # 상품분류 구분                     
                 and C.DiscAllowPrice < ?    # 할인허용가능금액            
                 and (                
                     case C.ApplyRangeType   # 적용범위
@@ -144,7 +144,6 @@ class CouponFModel extends WB_Model
         $arr_binding = [
             $this->session->userdata('mem_idx'),
             element('ApplyTypeCcd', $arr_param),
-            '%' . element('LecTypeCcd', $arr_param) . '%',
             element('RealSalePrice', $arr_param),   // 상품 실제판매가격
             element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-1)
             element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-2)
@@ -161,8 +160,8 @@ class CouponFModel extends WB_Model
 
         // where 조건
         $arr_condition = [
-            'EQ' => ['C.SiteCode' => element('SiteCode', $arr_param)],
-            'LKB' => ['CC.CateCodes' => element('CateCode', $arr_param)]
+            'EQ' => ['C.SiteCode' => element('SiteCode', $arr_param), 'CD.CdIdx' => element('CdIdx', $arr_param)],  // 사이트코드, 사용자쿠폰식별자
+            'LKB' => ['C.LecTypeCcds' => element('LecTypeCcd', $arr_param), 'CC.CateCodes' => element('CateCode', $arr_param)]  // 학습형태구분, 카테고리코드
         ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);

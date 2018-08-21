@@ -72,7 +72,7 @@
                             <tbody>
                             @foreach($results['usable'] as $idx => $row)
                                 <tr>
-                                    <td><input type="radio" name="_coupon_idx" value="{{ $row['CouponIdx'] }}" data-coupon-name="{{ $row['CouponName'] }}" data-disc-rate="{{ $row['DiscRate'] }}" data-disc-type="{{ $row['DiscType'] }}" @if(in_array($row['CouponIdx'], $arr_coupon_idx) === true) disabled="disabled" @endif/></td>
+                                    <td><input type="radio" name="_coupon_detail_idx" value="{{ $row['CdIdx'] }}" data-coupon-name="{{ $row['CouponName'] }}" data-disc-rate="{{ $row['DiscRate'] }}" data-disc-type="{{ $row['DiscType'] }}" @if(in_array($row['CdIdx'], $arr_coupon_detail_idx) === true) disabled="disabled" @endif/></td>
                                     <td>{{ $row['ApplyTypeCcdName'] }}</td>
                                     <td>{{ $row['CouponPin'] }}</td>
                                     <td>{{ $row['CouponName'] }}</td>
@@ -137,7 +137,7 @@
 
     $(document).ready(function() {
         // 적용가능쿠폰 체크박스 선택
-        $_coupon_form.on('click', 'input[name="_coupon_idx"]', function() {
+        $_coupon_form.on('click', 'input[name="_coupon_detail_idx"]', function() {
             var input_data = $(this).data();
 
             // 할인금액 계산
@@ -150,11 +150,11 @@
         $('#_btn_coupon_apply').on('click', function() {
             if (confirm('해당 쿠폰을 적용하시겠습니까?')) {
                 var $cart_row = $parent_regi_form.find('#cart_row_' + cart_idx);
-                var $selected_coupon = $_coupon_form.find('input[name="_coupon_idx"]:checked');
+                var $selected_coupon = $_coupon_form.find('input[name="_coupon_detail_idx"]:checked');
 
                 // 주문 폼에 선택된 쿠폰정보 셋팅
-                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').data('coupon-disc-price', coupon_disc_price);
-                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').val($selected_coupon.val()).trigger('change');
+                $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price', coupon_disc_price);
+                $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').val($selected_coupon.val()).trigger('change');
                 $cart_row.find('.wrap-coupon').removeClass('d_none').addClass('d_block');
                 $cart_row.find('.wrap-real-sale-price').removeClass('d_none').addClass('d_block');
                 $cart_row.find('.coupon-name').html($selected_coupon.data('coupon-name'));

@@ -9,6 +9,7 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+        <input type="hidden" name="cart_type" value="{{ $results['cart_type'] }}"/>
         <div class="willbes-Cartlist c_both">
             <div class="stepCart NG">
                 <ul class="tabs-Step">
@@ -56,7 +57,7 @@
                                             <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                             {{ $row['ProdName'] }}
                                             <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealSalePrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
-                                            <input type="hidden" name="coupon_idx[{{ $row['CartIdx'] }}]" value="" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
+                                            <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
                                             @if($row['IsCoupon'] == 'Y')
                                                 <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
                                             @endif
@@ -487,13 +488,13 @@
             }
 
             var ele_id = 'Coupon';
-            var coupon_idx = {};
+            var coupon_detail_idx = {};
             $regi_form.find('.chk_coupon').each(function(idx) {
                 if ($(this).val().length > 0) {
-                    coupon_idx[idx] = $(this).val();
+                    coupon_detail_idx[idx] = $(this).val();
                 }
             });
-            var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_idx' : JSON.stringify(coupon_idx) };
+            var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_detail_idx' : JSON.stringify(coupon_detail_idx) };
 
             sendAjax('{{ site_url('/myCoupon/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
@@ -506,8 +507,8 @@
                 var cart_idx = $(this).data('cart-idx');
                 var $cart_row = $regi_form.find('#cart_row_' + cart_idx);
 
-                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').data('coupon-disc-price', 0);
-                $cart_row.find('input[name="coupon_idx[' + cart_idx + ']"]').val('').trigger('change');
+                $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price', 0);
+                $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').val('').trigger('change');
                 $cart_row.find('.wrap-coupon').removeClass('d_block').addClass('d_none');
                 $cart_row.find('.wrap-real-sale-price').removeClass('d_block').addClass('d_none');
                 $cart_row.find('.coupon-name').html('');
@@ -528,35 +529,28 @@
         // 포인트 사용
         $regi_form.on('blur', 'input[name="use_point"]', function() {
             var use_point = parseInt($(this).val()) || 0;
-            var is_on_package = '{{ $results['is_on_package'] === true ? 'Y' : 'N' }}';
-            var point_type_name = '{{ $results['cart_type_name'] }}';
-            var has_point = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
-            var use_min_point = parseInt('{{ config_item('use_min_point') }}');     // 사용 가능 최소 포인트
-            var use_point_unit = parseInt('{{ config_item('use_point_unit') }}');   // 사용 포인트 단위
-            var use_max_point_rate = parseInt('{{ config_item('use_max_point_rate') }}');   // 주문금액 대비 포인트 사용 비율
-            var real_pay_price = parseInt('{{ $results['total_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, ''));
-            var use_max_point = real_pay_price * (use_max_point_rate / 100);
-
             if (use_point < 1) {
                 return;
             }
 
-            if (is_on_package === 'Y') {
-                alert('패키지 상품은 포인트 사용이 불가능합니다.');
-                $(this).val('').trigger('change');
-                return;
-            }
-
-            if (has_point < use_min_point || use_point % use_point_unit !== 0) {
-                alert(point_type_name + ' 포인트는 ' + addComma(use_min_point) + 'P부터 ' + use_point_unit + 'P 단위로 사용 가능합니다.');
-                $(this).val('').trigger('change');
-                return;
-            }
-
-            if (use_point > use_max_point) {
-                alert(point_type_name + ' 포인트는 주문금액의 ' + use_max_point_rate + '%까지만 사용 가능합니다.');
-                $(this).val(use_max_point).trigger('change');
-            }
+/*            // 사용포인트 체크
+            var url = '{{ site_url('/order/checkUsePoint') }}';
+            var data = {
+                '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'POST',
+                'cart_type' : '{{ $results['cart_type'] }}',
+                'use_point' : use_point,
+                'total_prod_pay_price' : parseInt('{{ $results['total_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, '')),
+                'is_on_package' : '{{ $results['is_on_package'] === true ? 'Y' : 'N' }}'
+            };
+            sendAjax(url, data, function (ret) {
+                if (ret.ret_cd) {
+                    if (ret.ret_data.is_check !== true) {
+                        alert(ret.ret_data.is_check);
+                        $regi_form.find('input[name="use_point"]').val('').trigger('change');
+                    }
+                }
+            }, showValidateError, false, 'POST');*/
         });
 
         // 결제금액 계산 및 표기
@@ -586,7 +580,7 @@
                 $regi_form.find('input[name="cart_idx[]"]').each(function() {
                     cart_idx = $(this).val();
                     cart_data = $(this).data();
-                    real_pay_price = cart_data.realSalePrice - parseInt($regi_form.find('input[name="coupon_idx[' + cart_idx + ']"]').data('coupon-disc-price'));
+                    real_pay_price = cart_data.realSalePrice - parseInt($regi_form.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').data('coupon-disc-price'));
 
                     if (cart_data.isPoint === 'Y') {
                         total_save_point += cart_data.savePointType === 'R' ? parseInt(real_pay_price * (cart_data.savePointPrice / 100), 10) : cart_data.savePointPrice;

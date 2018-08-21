@@ -25,7 +25,7 @@ class MyCoupon extends \app\controllers\FrontController
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
         // 이미 선택한 쿠폰 식별자
-        $arr_coupon_idx = json_decode($this->_req('coupon_idx'), true);
+        $arr_coupon_detail_idx = json_decode($this->_req('coupon_detail_idx'), true);
 
         // 장바구니 조회
         $cart_data = $this->cartFModel->findCartByCartIdx($cart_idx, $sess_mem_idx);
@@ -57,7 +57,7 @@ class MyCoupon extends \app\controllers\FrontController
             'ele_id' => $this->_req('ele_id'),
             'arr_cart_prod_type_name' => $this->cartFModel->_cart_prod_type_name,
             'arr_cart_prod_type_idx' => $this->cartFModel->_cart_prod_type_idx,
-            'arr_coupon_idx' => $arr_coupon_idx,
+            'arr_coupon_detail_idx' => $arr_coupon_detail_idx,
             'cart_data' => $cart_data,
             'results' => $results
         ]);

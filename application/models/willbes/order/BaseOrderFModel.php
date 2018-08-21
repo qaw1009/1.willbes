@@ -8,6 +8,7 @@ class BaseOrderFModel extends WB_Model
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'order_delivery_address' => 'lms_order_delivery_address',
+        'order_post_data' => 'lms_order_post_data',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_book' => 'lms_product_book',
@@ -45,13 +46,16 @@ class BaseOrderFModel extends WB_Model
     public $_student_book_ccd = '610003';
 
     // 상품타입과 쿠폰적용구분 공통코드 맵핑 (온라인강좌, 학원강좌, 교재, 사은품, 배송료)
-    public $_coupon_apply_type_ccd = ['636001' => '645001', '636002' => '645004', '636003' => '645005', '636004' => 'x', 'delivery_price' => '645006'];
+    public $_coupon_apply_type_ccd = ['636001' => '645001', '636002' => '645004', '636003' => '645005', '636004' => '', 'delivery_price' => '645006'];
 
     // 학습형태와 쿠폰상세구분 공통코드 맵핑 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
-    public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => 'x', '615003' => '646002', '615004' => '646003', '615005' => 'x', '615006' => '646004', '615007' => '646005'];
+    public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => '', '615003' => '646002', '615004' => '646003', '615005' => '', '615006' => '646004', '615007' => '646005'];
 
     // 장바구니 식별자 세션명
     public $_sess_cart_idx_name = 'usable_cart_idx';
+
+    // 주문번호 세션명
+    public $_sess_order_no_name = 'order_no';
 
     public function __construct()
     {
@@ -80,12 +84,20 @@ class BaseOrderFModel extends WB_Model
 
     /**
      * 장바구니 식별자 세션 체크 및 리턴
-     * @return mixed
+     * @param bool $is_error_alert 세션값이 없을 경우 스크립트 에러 리턴 여부
+     * @return bool|mixed
      */
-    public function checkSessCartIdx()
+    public function checkSessCartIdx($is_error_alert = true)
     {
         $sess_cart_idx = $this->session->userdata($this->_sess_cart_idx_name);
-        empty($sess_cart_idx) === true && show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+
+        if (empty($sess_cart_idx) === true) {
+            if ($is_error_alert === true) {
+                show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+            } else {
+                return false;
+            }
+        }
 
         return $sess_cart_idx;
     }
@@ -96,6 +108,7 @@ class BaseOrderFModel extends WB_Model
      */
     public function makeSessCartIdx($arr_cart_idx = [])
     {
+        $this->destroySessCartIdx();
         $this->session->set_userdata($this->_sess_cart_idx_name, $arr_cart_idx);
     }
 
@@ -105,5 +118,45 @@ class BaseOrderFModel extends WB_Model
     public function destroySessCartIdx()
     {
         $this->session->unset_userdata($this->_sess_cart_idx_name);
+    }
+
+    /**
+     * 주문번호 세션 체크 및 리턴
+     * @return mixed
+     */
+    public function checkSessOrderNo()
+    {
+        $sess_order_no = $this->session->userdata($this->_sess_order_no_name);
+        empty($sess_order_no) === true && show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+
+        return $sess_order_no;
+    }
+
+    /**
+     * 주문번호 세션 생성
+     * @param string $order_no
+     */
+    public function makeSessOrderNo($order_no = '')
+    {
+        $this->destroySessOrderNo();
+        empty($order_no) === true && $order_no = $this->makeOrderNo();
+        $this->session->set_userdata($this->_sess_order_no_name, $order_no);
+    }
+
+    /**
+     * 주문번호 세션 삭제
+     */
+    public function destroySessOrderNo()
+    {
+        $this->session->unset_userdata($this->_sess_order_no_name);
+    }
+
+    /**
+     * 주문번호 생성 및 리턴 (년월일시분초 (14) + microtime (3) + 랜덤숫자 (3) = 20자리)
+     * @return string
+     */
+    public function makeOrderNo()
+    {
+        return date_format(date_create(), 'YmdHisv') . '' . str_pad(mt_rand(0, 999), 3, '0', STR_PAD_LEFT);
     }
 }

@@ -21,9 +21,10 @@ class Cart extends \app\controllers\FrontController
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $sess_mem_idx = $this->session->userdata('mem_idx');
 
         // 장바구니 조회
-        $list = $this->cartFModel->listValidCart($this->session->userdata('mem_idx'), $this->_site_code);
+        $list = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code);
 
         $results = [];
         foreach ($list as $idx => $row) {

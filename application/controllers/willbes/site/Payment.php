@@ -132,11 +132,11 @@ class Payment extends \app\controllers\FrontController
     {
         // 주문요청 데이터 삭제
         $order_no = $this->orderFModel->checkSessOrderNo();
-        //$this->orderFModel->removeOrderPostData($order_no, $this->session->userdata('mem_idx'));
+        $is_delete = $this->orderFModel->removeOrderPostData($order_no, $this->session->userdata('mem_idx'));
         
         // 주문번호 세션삭제
         $this->orderFModel->destroySessOrderNo();
 
-        return $this->pg->requestCancel(['order_no' => $order_no]);
+        return $this->pg->requestCancel(['order_no' => $order_no, 'is_post_data_delete' => $is_delete]);
     }
 }

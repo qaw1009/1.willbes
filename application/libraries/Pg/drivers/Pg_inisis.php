@@ -154,7 +154,7 @@ class Pg_inisis extends CI_Driver
      */
     public function requestCancel($params = [])
     {
-        logger('결제 요청 취소 (주문번호 : ' . $params['order_no'] . ')', null, 'debug', $this->_log_path);
+        logger('결제 요청 취소 (주문번호 : ' . $params['order_no'] . ', 주문요청 데이터 삭제 : ' . $params['is_post_data_delete'] . ')', null, 'debug', $this->_log_path);
         return $this->_CI->load->view('pg/inisis/close', [], false);
     }
 

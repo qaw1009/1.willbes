@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 독서실 상품을 등록하고 사용현황을 확인하여 좌석을 배정하는 메뉴입니다. (주문회원 기준으로 좌석 신규배정 및 연장배정)</h5>
+    <h5>- 독서실 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code', 'tab', false) !!}
@@ -16,12 +16,6 @@
                             @foreach($arr_campus as $row)
                                 <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
                             @endforeach
-                        </select>
-
-                        <select class="form-control" id="" name="">
-                            <option value="">마감여부</option>
-                            <option value="Y">진행중</option>
-                            <option value="N">마감</option>
                         </select>
 
                         <select class="form-control" id="" name="">
@@ -51,6 +45,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_value">통합검색</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="search_value" name="search_value">
+                    </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">명칭, 코드, 강의실 검색 가능</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -67,6 +70,7 @@
                 <tr>
                     <th>No</th>
                     <th>운영사이트</th>
+                    <th>캠퍼스</th>
                     <th>독서실코드</th>
                     <th>독서실명</th>
                     <th>강의실</th>
@@ -74,7 +78,6 @@
                     <th>판매가</th>
                     <th>좌석현황</th>
                     <th>잔여석</th>
-                    <th>마감여부</th>
                     <th>자동문자</th>
                     <th>사용여부</th>
                     <th>등록자</th>
@@ -120,6 +123,7 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'SiteName'},
+                    {'data' : 'CampusName'},
                     {'data' : 'ReadingRoomCode'},
                     {'data' : 'ReadingRoomName', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.Idx + '"><u>' + data + '</u></a>';
@@ -129,7 +133,6 @@
                     {'data' : '판매가'},
                     {'data' : '좌석현황'},
                     {'data' : '잔여석'},
-                    {'data' : '마감여부'},
                     {'data' : '자동문자'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -149,7 +152,7 @@
 
             // 독서실 신청현황 리스트
             $list_table.on('click', '.btn-detail-list', function() {
-                location.href='{{ site_url('/pass/readingRoom/regist/applyMemberList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href='{{ site_url('/pass/readingRoom/regist/assignManageList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

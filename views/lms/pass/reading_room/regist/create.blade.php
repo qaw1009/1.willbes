@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 독서실 상품을 등록하고 사용현황을 확인하여 좌석을 배정하는 메뉴입니다. (주문회원 기준으로 좌석 신규배정 및 연장배정)</h5>
+    <h5>- 독서실 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/pass/readingRoom/regist/store") }}?bm_idx=45" novalidate>--}}
@@ -70,13 +70,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">시작번호<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="">좌석시작번호<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="시작번호" value="{{ $data['BannerName'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="" name="" required="required" title="좌석시작번호" value="{{ $data['BannerName'] }}" > <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">종료번호<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 d-line" for="">좌석종료번호<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="종료번호" value="{{ $data['BannerName'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="" name="" required="required" title="좌석종료번호" value="{{ $data['BannerName'] }}" > <span class="ml-10">• 숫자만 입력</span>
                     </div>
                 </div>
 

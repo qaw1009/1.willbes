@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    좌석배정
+    좌석변경
 @stop
 
 @section('layer_header')
@@ -113,9 +113,10 @@
                         <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
                     </div>
                     <p class="form-control-static">
-                        <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_member_searching">1주일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_member_searching">15일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary" id="btn_member_searching">1개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="1-weeks">1주일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="15-days">15일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="1-months">1개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="2-months">2개월</button>
                     </p> 
                 </div>
             </div>
@@ -161,46 +162,46 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><button type="submit" class="btn btn-info">1<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">2<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">3<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">4<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-primary">5<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">6<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">7<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-warning">8<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">9<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-success">10<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">1<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">2<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">3<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">4<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">5<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">6<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">7<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-warning">8<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">9<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-success">10<br/>회원명</button></td>
                             </tr>
                             <tr>
-                                <td><button type="submit" class="btn btn-warning">11<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">12<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">13<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">14<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">15<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">16<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">17<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-info">18<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-danger">19<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">20<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-warning">11<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">12<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">13<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">14<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">15<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">16<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">17<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-info">18<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-danger">19<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">20<br/>회원명</button></td>
                             </tr>
                             <tr>
-                                <td><button type="submit" class="btn btn-default">141<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">142<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">143<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">144<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">145<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">146<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">147<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-default">148<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-success">149<br/>회원명</button></td>
-                                <td><button type="submit" class="btn btn-danger">150<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">141<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">142<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">143<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">144<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">145<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">146<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">147<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-default">148<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-success">149<br/>회원명</button></td>
+                                <td><button type="button" class="btn btn-danger">150<br/>회원명</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="form-group text-center btn-wrap clear pt-70">
-                    <button type="submit" class="btn btn-success">저장</button>
+                <div class="form-group text-center btn-wrap clear pt-20">
+                    <button type="button" class="btn btn-success">저장</button>
                 </div>
             </div>
 
@@ -261,10 +262,6 @@
                 </div>
             </div>
         @stop
-
-        @section('add_buttons')
-            <button type="submit" class="btn btn-success">저장</button>
-        @endsection
 
         @section('layer_footer')
     </form>

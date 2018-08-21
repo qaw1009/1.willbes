@@ -249,9 +249,10 @@
                 <dl class="pointBox">
                     <dt class="p-tit"><span class="tx-blue">강좌</span> 포인트 사용</dt>
                     <dt>
-                        <span class="u-point">30,000P 보유</span>
+                        <span class="u-point NGEB">30,000P 보유</span>
                         <span class="btnAll NSK"><a href="#none">전액사용</a></span>
-                        <input type="text" id="POINT" name="POINT" class="iptPoint" maxlength="30"> P 차감
+                        <input type="text" id="POINT" name="POINT" class="iptPoint" maxlength="30">
+                        <span class="u-point NGEB">P 차감</span> 
                     </dt>
                 </dl>
             </div>

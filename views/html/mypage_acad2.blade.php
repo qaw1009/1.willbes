@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="willbes-Lec-Table pt20 NG d_block c_both">
+            <div class="willbes-Lec-Table NG d_block c_both">
                 <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                     <colgroup>
                         <col style="width: 550px;">
@@ -121,7 +121,7 @@
                                     <dt>
                                         영어<span class="row-line">|</span>
                                         한덕현교수님
-                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                        <span class="NSK ml15 nBox n2">접수중</span>
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
@@ -129,7 +129,7 @@
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
                                 월 ~ 금<br/>
-                                14:00~18:00
+                                10회차
                             </td>
                         </tr>
                         <tr>
@@ -138,15 +138,15 @@
                                     <dt>
                                         영어<span class="row-line">|</span>
                                         한덕현교수님
-                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                        <span class="NSK ml15 nBox n2">접수중</span>
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
-                                월 ~ 금<br/>
-                                14:00~18:00
+                                월,화,금<br/>
+                                8회차
                             </td>
                         </tr>
                         <tr>
@@ -155,15 +155,15 @@
                                     <dt>
                                         영어<span class="row-line">|</span>
                                         한덕현교수님
-                                        <span class="NSK ml15 nBox n4">완강</span>
+                                        <span class="NSK ml15 nBox n4">마감</span>
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                             </td>
                             <td class="w-period">2018.10.20 ~ 2018.11.20</td>
                             <td class="w-schedule">
-                                월 ~ 금<br/>
-                                14:00~18:00
+                                화,금<br/>
+                                8회차
                             </td>
                         </tr>
                         <tr>
@@ -171,6 +171,22 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                        <li><a href="#none">10</a></li>
+                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- willbes-Mypage-Tabs -->

@@ -68,7 +68,7 @@
             <span class="depth-Arrow">></span><strong>수강대기강좌</strong>
         </span>
     </div>
-    <div class="Content p_re">
+    <div class="Content p_re">   
 
         <div class="willbes-Mypage-ONLINEZONE c_both">
             <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
@@ -95,7 +95,7 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="willbes-Mypage-Tabs mt60">
+        <div class="willbes-Mypage-Tabs mt40">
             <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
                 <select id="process" name="process" title="process" class="seleProcess">
                     <option selected="selected">과정</option>
@@ -131,7 +131,7 @@
                 </ul>
                 <div class="tabBox">
                     <div id="Mypagetab1" class="tabLink">
-                        <div class="willbes-Lec-Table pt40 NG d_block">
+                        <div class="willbes-Lec-Table pt20 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
                                     <col style="width: 820px;">
@@ -151,11 +151,11 @@
                                                 <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
                                                 <dt>강의수 : <span class="tx-black">12강</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
                                             </dl>
                                         </td>
                                         <td class="w-answer">
@@ -176,11 +176,11 @@
                                                 <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
                                                 <dt>강의수 : <span class="tx-black">24강</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
                                             </dl>
                                         </td>
                                         <td class="w-answer">
@@ -192,10 +192,26 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="Paging">
+                                <ul>
+                                    <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">10</a></li>
+                                    <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div id="Mypagetab2" class="tabLink">
-                        <div class="willbes-Lec-Table pt40 NG d_block">
+                        <div class="willbes-Lec-Table pt20 NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                 <colgroup>
                                     <col style="width: 820px;">
@@ -215,11 +231,11 @@
                                                 <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
                                                 <dt>강의수 : <span class="tx-black">12강</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
                                             </dl>
                                         </td>
                                         <td class="w-answer">
@@ -239,11 +255,11 @@
                                                 <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지333</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
                                                 <dt>강의수 : <span class="tx-black">24강</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
                                             </dl>
                                         </td>
                                         <td class="w-answer">
@@ -255,6 +271,22 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="Paging">
+                                <ul>
+                                    <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">10</a></li>
+                                    <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -267,9 +299,7 @@
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">수강시작일 변경</div> 
-
             <div class="lecMoreWrap">
-
                 <div class="PASSZONE-List widthAutoFull">
                     <ul class="passzoneInfo tx-gray NGR">
                         <li class="strong">· 수강시작일 설정</li>
@@ -356,7 +386,6 @@
                 </div>
                 <!-- PASSZONE-List -->
             </div>
-
         </div>
         <!-- willbes-Layer-PassBox : 수강시작일 변경 -->
 

@@ -99,7 +99,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb25">
+        <div class="willbes-Lec-Search mb15">
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="직접입력" class="">

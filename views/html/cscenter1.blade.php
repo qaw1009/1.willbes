@@ -87,7 +87,7 @@
                                 <div class="subBox">
                                     <dl>
                                         <dt><button type="submit" onclick="">전체</button><span class="row-line">|</span></dt>
-                                        <dt><button type="submit" onclick="">결제</buttona><span class="row-line">|</span></dt>
+                                        <dt><button type="submit" onclick="">결제</button><span class="row-line">|</span></dt>
                                         <dt><button type="submit" onclick="">환불</button></dt>
                                     </dl>
                                 </div>
@@ -200,7 +200,6 @@
                                     </tbody>
                                 </table>
 
-
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -216,11 +215,8 @@
                                         <li><a href="#none">10</a></li>
                                         <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                                     </ul>
-
                                 </div>
-
-
-
+                                
                             </div>
                             <div id="question2" class="tabContent">
                                 결제/환불

@@ -206,6 +206,9 @@ class Pg_inisis extends CI_Driver
 
                     logger('결제 승인결과 리턴', $auth_results, 'debug', $this->_log_path);
 
+                    // 승인요청 결과로그 저장
+                    $this->_saveLog($auth_results);
+
                     // 승인결과 위변조 체크 파라미터
                     $auth_signature = $this->_util->makeSignatureAuth([
                         'mid' => $auth_results['mid'],
@@ -219,13 +222,14 @@ class Pg_inisis extends CI_Driver
                         // 승인결과 리턴
                         logger('결제 승인완료', null, 'debug', $this->_log_path);
 
-                        /* 망취소 테스트
+/*                        // 망취소 테스트
                         throw new AuthException('망취소 테스트');*/
 
-                        /* 승인취소 테스트
+/*                        // 승인취소 테스트
                         $this->cancel([
+                            'order_no' => $auth_results['MOID'],
                             'tid' => $auth_results['tid'],
-                            'cancel_msg' => '취소 테스트'
+                            'cancel_reason' => '취소 테스트'
                         ]);*/
                         
                         return [
@@ -245,8 +249,10 @@ class Pg_inisis extends CI_Driver
                 } catch (AuthException $e) {
                     // 망취소 API
                     $this->cancel([
+                        'order_no' => $returns['orderNumber'],
                         'net_cancel_url' => $returns['netCancelUrl'],
-                        'auth_params' => $auth_params
+                        'auth_params' => $auth_params,
+                        'cancel_reason' => $e->getMessage()
                     ]);
 
                     throw new \Exception($e->getMessage());
@@ -267,8 +273,16 @@ class Pg_inisis extends CI_Driver
      */
     public function cancel($params = [])
     {
+        $log_params = [];
+        $order_no = element('order_no', $params);
+
         try {
+            if (empty($order_no) === true) {
+                throw new \Exception('결제취소에 필요한 주문번호가 없습니다.');
+            }
+
             $tid = element('tid', $params);
+            $cancel_reason = element('cancel_reason', $params, '');
 
             if (empty($tid) === false) {
                 // 관리자 취소
@@ -287,18 +301,29 @@ class Pg_inisis extends CI_Driver
                 $inipay->SetField('mid', $this->_parent->getMid());
                 $inipay->SetField('admin', $this->_mode_config['adminkey']);
                 $inipay->SetField('tid', $tid);
-                $inipay->SetField('cancelmsg', element('cancel_msg', $params, ''));
+                $inipay->SetField('cancelmsg', $cancel_reason);
 
                 $inipay->startAction();
 
-                $cancel_result = '(결과코드 : ' . $inipay->getResult('ResultCode') . ', 결과메시지 : ' . iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
-                $cancel_result .= ', TID : ' . $tid . ', 취소날짜 : ' . $inipay->getResult('CancelDate') . ', 취소시간 : ' . $inipay->getResult('CancelTime') . ')';
+                $cancel_result_code = $inipay->getResult('ResultCode');
+                $cancel_result_msg = iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
+                
+                // 승인취소 결과로그 전달 파라미터 설정
+                $log_params = [
+                    'cancel_result_code' => $cancel_result_code,
+                    'cancel_result_msg' => $cancel_result_msg,
+                    'cancel_reason' => $cancel_reason
+                ];
+
+                // 로그 메시지
+                $cancel_log_msg = '(결과코드 : ' . $cancel_result_code . ', 결과메시지 : ' . $cancel_result_msg;
+                $cancel_log_msg .= ', 주문번호 : ' . $order_no . ', TID : ' . $tid . ', 취소날짜 : ' . $inipay->getResult('CancelDate') . ', 취소시간 : ' . $inipay->getResult('CancelTime') . ')';                
 
                 if (strcmp('00', $inipay->getResult('ResultCode')) == 0) {
                     // 취소성공
-                    logger('결제 승인취소 성공 ' . $cancel_result, null, 'debug', $this->_log_path);
+                    logger('결제 승인취소 성공 ' . $cancel_log_msg, null, 'debug', $this->_log_path);
                 } else {
-                    throw new \Exception('결제 승인취소 실패 ' . $cancel_result);
+                    throw new \Exception('결제 승인취소 실패 ' . $cancel_log_msg);
                 }
             } else {
                 // 망취소
@@ -307,14 +332,93 @@ class Pg_inisis extends CI_Driver
 
                 // 망취소 API
                 if ($this->_http_util->processHTTP($net_cancel_url, $auth_params)) {
+                    $cancel_results = json_decode($this->_http_util->body, true);
+                    $cancel_result_code = element('resultCode', $cancel_results);
+                    $cancel_result_msg = element('resultMsg', $cancel_results);
+
+                    if ($cancel_result_code != '416623') {
+                        // 망취소 결과로그 전달 파라미터 설정 (해당거래 없음이 아닐 경우)
+                        $log_params = [
+                            'cancel_result_code' => $cancel_result_code,
+                            'cancel_result_msg' => $cancel_result_msg,
+                            'cancel_reason' => $cancel_reason
+                        ];
+                    }
+
                     logger('망취소 성공 (결과메시지 : ' . $this->_http_util->body . ')', null, 'debug', $this->_log_path);
                 } else {
+                    // 망취소 결과로그 전달 파라미터 설정 (통신에러일 경우)
+                    $log_params = [
+                        'cancel_result_code' => $this->_http_util->errorcode,
+                        'cancel_result_msg' => $this->_http_util->errormsg,
+                        'cancel_reason' => $cancel_reason
+                    ];
+
                     throw new \Exception('망취소 실패 (결과메시지 : ' . $this->_http_util->errormsg . ')');
                 }
             }
         } catch (\Exception $e) {
             logger($e->getMessage(), null, 'error', $this->_log_path);
             return false;
+        } finally {
+            // 로그 전달 파라미터가 있을 경우
+            if (empty($log_params) === false) {
+                $is_log = $this->_saveLog($log_params, $order_no);
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 로그 저장
+     * @param array $params
+     * @param null|string $order_no
+     * @return bool
+     */
+    private function _saveLog($params = [], $order_no = null)
+    {
+        $_db = $this->_CI->load->database('lms', true);   // load database
+        $_table = 'lms_pg_inisis_log';
+
+        try {
+            if (empty($order_no) === true) {
+                $data = [
+                    'OrderNo' => element('MOID', $params),
+                    'PgMid' => element('mid', $params),
+                    'PgTid' => element('tid', $params),
+                    'ResultCode' => element('resultCode', $params),
+                    'ResultMsg' => element('resultMsg', $params),
+                    'ApprovalNo' => element('applNum', $params),
+                    'PayMethod' => element('payMethod', $params),
+                    'RealPayPrice' => element('TotPrice', $params)
+                ];
+
+                if (empty(element('applDate', $params)) === false && empty(element('applTime', $params)) === false) {
+                    $_db->set('ApprovalDatm', date('Y-m-d H:i:s', strtotime(element('applDate', $params) . ' ' . element('applTime', $params))));
+                } else {
+                    $_db->set('ApprovalDatm', NOW(), false);
+                }
+
+                if ($_db->set($data)->insert($_table) === false) {
+                    throw new \Exception('결제 승인결과 로그 저장에 실패했습니다.');
+                }
+            } else {
+                $data = [
+                    'CancelResultCode' => element('cancel_result_code', $params),
+                    'CancelResultMsg' => element('cancel_result_msg', $params),
+                    'CancelReason' => element('cancel_reason', $params),
+                ];
+
+                if ($_db->set('CancelDatm', 'NOW()', false)->set($data)->where('OrderNo', $order_no)->update($_table) === false) {
+                    throw new \Exception('결제취소 로그 업데이트에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            logger($e->getMessage(), null, 'error', $this->_log_path);
+            return false;
+        } finally {
+            $_db->close();
         }
 
         return true;

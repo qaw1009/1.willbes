@@ -27,7 +27,7 @@ class Pg extends CI_Driver_Library
         isset($config['mid']) && $this->_mid = $config['mid'];
 
         if (in_array($this->_driver, $this->valid_drivers) === false) {
-            log_message('error', '[결제 모듈] 허용된 PG사 드라이버가 아닙니다.');
+            log_message('error', '[결제모듈] 허용된 PG사 드라이버가 아닙니다.');
             return;
         }
 
@@ -44,7 +44,7 @@ class Pg extends CI_Driver_Library
         }
 
         if (empty($this->_mid) === true) {
-            log_message('error', '[결제 모듈] 상점 아이디(mid)가 없습니다.');
+            log_message('error', '[결제모듈] 상점 아이디(mid)가 없습니다.');
             return;
         }
     }

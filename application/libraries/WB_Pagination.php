@@ -49,17 +49,18 @@ class WB_Pagination extends CI_Pagination
 		// Calculate the total number of pages
 		$num_pages = ceil($this->total_rows / $this->per_page);
 
-		// Is there only one page? Hm... nothing more to do here then.
-		if ($this->display_always === false && $num_pages == 1) {
-			return '';
-		}
-
 		// Set the base page index for starting page number
 		if ($this->use_page_numbers) {
 			$base_page = 1;
 		} else {
 			$base_page = 0;
 		}
+
+        // Is there only one page? Hm... nothing more to do here then.
+        if ($this->display_always === false && $num_pages == 1) {
+            $this->cur_page = $base_page;
+            return '';
+        }
 
 		// Set the first page number
         $first_page = '';

@@ -1746,7 +1746,7 @@ table.auTable tr td {
 /* subContainer : Content : Lec-Search */
 .willbes-Lec-Search {
     font-weight: 300;
-    height: 20px;
+    height: 30px;
 }
 .willbes-Lec-Search .selectBox {
     float: left;
@@ -1810,7 +1810,7 @@ table.auTable tr td {
 /* subContainer : Content : SelectBox */
 .willbes-SelectBox select {
    width: 110px;
-   height: 27px; 
+   height: 30px; 
 }
 
 /* subContainer : Content : Lec */
@@ -2273,8 +2273,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     display: block;
     width: 100%;
     height: 100%;
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 12px;
     color: #fff;
     text-align: center;
 }
@@ -2293,8 +2292,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     color: #898989;
 }
 .tBox.t2Box {
-    height: 26px;
-    line-height: 26px;
+    width: 54px;
+    height: 22px;
+    line-height: 20px;
 }
 
 /* subContainer : Content : lecInfoTable */
@@ -2475,6 +2475,76 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .tabWrap.tabDepth1 li:first-child a.on {
     border-left: 4px solid #4f4f4f;
 }
+
+.tabWrap.tabDepth3 {
+    height: 40px;
+    border: none;
+}
+.tabWrap.tabDepth3 li {
+    float: left;
+    width: 50%;
+    height: 40px;
+}
+.tabWrap.tabDepth3 li a {
+    background: #f5f5f5;
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #878787;
+    text-align: center;
+    letter-spacing: 0;
+    border: none;
+}
+.tabWrap.tabDepth3 li a.on {
+    background: #4f4f4f;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    border: none;
+}
+
+.tabWrap.tabDepth4 {
+    height: 40px;
+    border-bottom: 1px solid #4f4f4f;
+}
+.tabWrap.tabDepth4 li {
+    float: left;
+    width: 50%;
+    height: 40px;
+}
+.tabWrap.tabDepth4 li a {
+    display: block;
+    width: 100%;
+    height: 39px;
+    line-height: 38px;
+    background: #f5f5f5;
+    font-size: 16px;
+    font-weight: 600;
+    color: #878787;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+.tabWrap.tabDepth4 li a.on {
+    background: #fff;
+    height: 40px;
+    line-height: 32px;
+    color: #3a3a3a;
+    border-top: 4px solid #4f4f4f;
+    border-left: 4px solid #4f4f4f;
+    border-right: 4px solid #4f4f4f;
+}
+.tabWrap.tabDepth4 li:first-child a.on {
+    border-left: 4px solid #4f4f4f;
+}
+
+
+
+
 .willbes-Layer-Box.d2 .Layer-Tit {
     margin-bottom: 0;
     border-bottom: 2px solid #000;
@@ -3211,14 +3281,12 @@ table.classTable tr td.w-data {
 }
 .pBox {
     background: #fff;
-    font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
     display: inline-block;
     width: 40px;
-    height: 17px;
+    height: 18px;
     border: 1px solid #000;
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 16px;
     text-align: center;
     letter-spacing: -1px;
 }
@@ -3363,13 +3431,21 @@ table.classTable tr td.w-data {
     display: inline-block;
     line-height: 20px;
 }
+.willbes-Delivery-Info table {
+    letter-spacing: 0;
+}
 .LeclistTable .listTable.cartTable {
     border-bottom: 1px solid #959595;
 }
 .LeclistTable .listTable.cartTable .w-list a {
     display: block;
 }
-.LeclistTable .listTable.cartTable .productTable {width: 100%}
+.LeclistTable .listTable.cartTable .w-list span {
+    margin-right: 5px;
+}
+.LeclistTable .listTable.cartTable .productTable {
+    width: 100%;
+}
 .LeclistTable .listTable.cartTable .productTable tr td {
     border: none;
     height: 30px;
@@ -4614,6 +4690,35 @@ ul li.profList .willbes-Layer-ProfileBox {
 .smBox {
     background: #4b9e2b;
 }
+
+.campus_605001 {
+    background: #703eb4;
+}
+.campus_605002 {
+    background: #4b9e2b;
+}
+.campus_605003 {
+    background: #0d74ae;
+}
+.campus_605004 {
+    background: #f14078;
+}
+.campus_605005 {
+    background: #21abc8;
+}
+.campus_605006 {
+    background: #17396b;
+}
+.campus_605007 {
+    background: #509122;
+}
+.campus_605008 {
+    background: #2799b5;
+}
+.campus_605009 {
+    background: #af645a;
+}
+
 .willbes-Lec-Selected {
     margin: 10px 0 15px;
 }
@@ -5525,6 +5630,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     border-left: 1px solid #d4d4d4;
 }
 .willbes-Mypage-Selected .w-month ul li a {
+    background: #fff;
     display: block;
     width: 100%;
     height: 100%;
@@ -5538,8 +5644,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Mypage-Selected button {
     background: #636363;
-    width: 60px;
-    height: 22px;
+    width: 80px;
+    height: 30px;
     border: 1px solid #636363;
     margin-top: 0;
     margin-left: 10px;
@@ -5795,6 +5901,14 @@ table.PassZoneTable .w-data {
     top: 50%;
     left: 50%;
     margin-top: -275px;
+    margin-left: -300px;  
+}
+.willbes-Layer-PassBox600.h590 {
+    height: 590px;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin-top: -295px;
     margin-left: -300px;  
 }
 
@@ -6329,7 +6443,7 @@ table.acadTable tr td {
 }
 .userPointTable {
     border: 1px solid #edeeef;
-    height: 120px;
+    height: 100px;
 }
 .userPointTable tr td {
     font-size: 14px;
@@ -6383,6 +6497,12 @@ table.acadTable tr td {
     display: block;
     width: 100%;
     height: 100%;
+}
+.Memolist .w-content {
+    line-height: 20px !important;
+    height: 160px;
+    padding-top: 20px;
+    vertical-align: top;
 }
 
 /* subContainer : Mypage : 학습지원관리 : 알림관리 */

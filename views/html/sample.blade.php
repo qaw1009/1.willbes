@@ -93,8 +93,6 @@
 
     <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cscenter#cs1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
-
     <a href="{{ site_url('/home/html/acad_list') }}">학원수강신청 > 단과반 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/acad_list_package') }}">학원수강신청 > 종합반 page 이동</a><br/><br/>

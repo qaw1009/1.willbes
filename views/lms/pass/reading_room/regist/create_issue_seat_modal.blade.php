@@ -109,18 +109,18 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                        <input type="text" class="form-control datepicker" id="search_start_date_modal" name="search_start_date_modal" value="">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
                         <div class="input-group-addon no-border-right">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                        <input type="text" class="form-control datepicker" id="search_end_date_modal" name="search_end_date_modal" value="">
                     </div>
                     <p class="form-control-static">
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="1-weeks">1주일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="15-days">15일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="1-months">1개월</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="2-months">2개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="1-weeks">1주일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="15-days">15일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="1-months">1개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="2-months">2개월</button>
                     </p>
                 </div>
             </div>
@@ -237,6 +237,19 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.n_mem_seat li').css("width", "calc(100% / 10)");
+
+            // 기간설정 버튼 클릭
+            $('.btn-set-search-date-modal').click(function() {
+                var period = $(this).data('period');
+                var periods = period.split('-');
+
+                // 날짜 설정
+                setDefaultDatepicker(-periods[0], periods[1], 'search_start_date_modal', 'search_end_date_modal');
+
+                // set active class
+                $('.btn-set-search-date-modal').removeClass('active');
+                $(this).addClass('active');
+            });
         });
     </script>
 @endsection

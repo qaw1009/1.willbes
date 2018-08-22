@@ -118,10 +118,10 @@
                         <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
                     </div>
                     <p class="form-control-static">
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="1-weeks">1주일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="15-days">15일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="1-months">1개월</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" id="btn_member_searching" data-period="2-months">2개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="1-weeks">1주일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="15-days">15일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="1-months">1개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="2-months">2개월</button>
                     </p> 
                 </div>
             </div>

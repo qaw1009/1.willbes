@@ -891,6 +891,64 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     height: 100%;
 }
 
+/* modal seat : li.Ver */
+.n_mem_seat_info {
+    float: right;
+    margin: 10px 0;
+}
+.n_mem_seat_info .color-box {
+    display: inline-block;
+    width: 40px;
+    height: 12px;
+    text-indent: -9999px;
+    border: 1px solid #ccc;
+}
+.n_mem_seat_info li {
+    float: left;
+    list-style: none;
+    line-height: 12px;
+    margin-left: 10px;
+}
+.n_mem_seat {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.n_mem_seat li {
+    float: left;
+    list-style: none;
+}
+.n_mem_seat li button {
+    width: 96%;
+    height: 100%;
+    margin-right: 0;
+    margin-bottom: 4% !important;
+}
+
+.n_mem_seat table {
+    float: left;
+}
+.n_mem_seat table tr td {
+    margin: 0;
+    padding: 0;
+}
+.n_mem_seat table button {
+    width: 96%;
+    height: 100%;
+    margin-right: 0;
+    margin-bottom: 4% !important;
+}
+#n_mem_seat_list.table>tbody>tr>td,
+#n_mem_seat_list.table>tbody>tr>th, 
+#n_mem_seat_list.table>tfoot>tr>td,
+#n_mem_seat_list.table>tfoot>tr>th,
+#n_mem_seat_list.table>thead>tr>td,
+#n_mem_seat_list.table>thead>tr>th {
+    border-top: none;
+}
+
+
 /* form-control-static */
 .form-horizontal .form-group .form-control-static p {
     margin: 0;

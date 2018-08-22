@@ -95,6 +95,83 @@
                 </div>
             </div>
 
+            <!-- New.Ver -->
+            <script>
+                $(function() {
+                    $('.n_mem_seat li').css("width","calc(100% / 9)");
+                    $('.n_mem_seat tr td').css("width","calc(100% / 9)");
+                });
+            </script>
+            <div class="form-group form-group-sm">
+                <div class="col-md-12 form-inline">
+                    <div class="n_mem_seat_info">
+                        <ul class="clearfix-r">
+                            <li><span class="color-box btn-default">-</span> 미사용</li>
+                            <li><span class="color-box btn-info">-</span> 사용중</li>
+                            <li><span class="color-box btn-warning">-</span> 대기</li>
+                            <li><span class="color-box btn-success">-</span> 홀드</li>
+                            <li><span class="color-box btn-danger">-</span> 고장</li>
+                        </ul>
+                    </div>
+                    <ul class="n_mem_seat">
+                        <li><button type="button" class="btn btn-info create-seat-modal" data-seat-num="1" data-member-idx="100001">1<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info modify-seat-modal" data-seat-num="2" data-member-idx="100002">2<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">3<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">4<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">5<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">6<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">7<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-warning">8<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">9<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-success">10<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-warning">11<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">12<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">13<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">14<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">15<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">16<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">17<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">18<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-danger">19<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">20<br/>회원명</button></li>
+                    </ul>
+                    <div class="n_mem_seat">
+                        <table cellspacing="0" cellpadding="0" id="n_mem_seat_list" class="table" style="font-size: 12px;">
+                            <tbody>
+                                <tr>
+                                    <td><button type="button" class="btn btn-info create-seat-modal" data-seat-num="1" data-member-idx="100001">1<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info modify-seat-modal" data-seat-num="2" data-member-idx="100002">2<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">3<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">4<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">5<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">6<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-default">7<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-warning">8<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-default">9<br/>회원명</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button type="button" class="btn btn-success">10<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-warning">11<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">12<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">13<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">14<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-default">15<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">16<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-default">17<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-info">18<br/>회원명</button></td>                   
+                                </tr>
+                                <tr>
+                                    <td><button type="button" class="btn btn-danger">19<br/>회원명</button></td>
+                                    <td><button type="button" class="btn btn-default">20<br/>회원명</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+             <!-- End New.Ver -->
+
+             <!-- 구버전
             <div class="form-group form-group-sm">
                 <div class="col-md-12 form-inline">
                     <table cellspacing="0" cellpadding="0" id="mem_seat_list" class="table" style="font-size: 12px;">
@@ -172,6 +249,7 @@
                     </div>
                 </div>
             </div>
+            -->
 
             <br/><br/>
             <h5 class="clearfix">• 메모관리</h5>

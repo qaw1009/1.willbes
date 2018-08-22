@@ -51,11 +51,26 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">학습지원관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>
@@ -94,7 +109,7 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="willbes-Mypage-PointBox NG mt70 c_both">
+        <div class="willbes-Mypage-PointBox NG mt40 c_both">
             <ul>
                 <li class="Tit">포인트현황</li>
                 <li>강좌포인트 <span class="tx-light-blue">105,000</span>P</li>
@@ -103,14 +118,14 @@
         </div>
         <!-- willbes-Mypage-PointBox -->
 
-        <div class="pointDetailWrap mt70">
-            <ul class="tabWrap tabDepth1 NG">
+        <div class="pointDetailWrap mt35">
+            <ul class="tabWrap tabDepth3 NG">
                 <li><a href="#point1">강좌포인트</a></li>
                 <li><a href="#point2">교재포인트</a></li>
             </ul>
             <div class="tabBox">
                 <div id="point1">
-                    <table cellspacing="0" cellpadding="0" class="userPointTable NG mt40">
+                    <table cellspacing="0" cellpadding="0" class="userPointTable NG mt20">
                         <colgroup>
                             <col style="width: 50%;"/>
                             <col style="width: 50%;"/>
@@ -118,7 +133,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    사용가능포인트 <span class="tx-light-blue">105,000</span>P<br/><br/>
+                                    <div style="margin-bottom: 5px;">사용가능포인트 <span class="tx-light-blue">105,000</span>P</div>
                                     <div class="tx-gray">
                                         총적립포인트 200,000 P<br/>
                                         총사용포인트 95,000 P
@@ -130,9 +145,276 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="useDetailWrap mt25">
+                        <ul class="tabWrap tabDepthPass">
+                            <li><a href="#use1">적립내역</a></li>
+                            <li><a href="#use2">사용내역</a></li>
+                        </ul>
+                        <div class="tabBox mt20">
+                            <div id="use1">
+                                <div class="willbes-Mypage-Tabs">
+                                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                        <span class="w-data">
+                                            기간검색 &nbsp;
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                        </span>
+                                        <span class="w-month">
+                                            <ul>
+                                                <li><a href="#none">전체</a></li>
+                                                <li><a class="on" href="#none">1개월</a></li>
+                                                <li><a href="#none">3개월</a></li>
+                                                <li><a href="#none">6개월</a></li>
+                                            </ul>
+                                        </span>
+                                        <button type="submit" onclick="" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <select id="process" name="process" title="process" class="seleProcess f_left">
+                                            <option selected="selected">과정</option>
+                                            <option value="헌법">헌법</option>
+                                            <option value="스파르타반">스파르타반</option>
+                                            <option value="공직선거법">공직선거법</option>
+                                        </select>
+                                    </div>
+                                    <div class="LeclistTable pointTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 80px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 300px;">
+                                                <col style="width: 150px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정<span class="row-line">|</span></li></th>
+                                                    <th>적립일<span class="row-line">|</span></li></th>
+                                                    <th>적립액<span class="row-line">|</span></li></th>
+                                                    <th>적립내역<span class="row-line">|</span></li></th>
+                                                    <th>주문번호<span class="row-line">|</span></li></th>
+                                                    <th>유효기간</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-process">공무원1</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰1</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용1</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="Paging">
+                                            <ul>
+                                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">10</a></li>
+                                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="use2">
+                                <div class="willbes-Mypage-Tabs">
+                                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                        <span class="w-data">
+                                            기간검색 &nbsp;
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                        </span>
+                                        <span class="w-month">
+                                            <ul>
+                                                <li><a href="#none">전체</a></li>
+                                                <li><a class="on" href="#none">1개월</a></li>
+                                                <li><a href="#none">3개월</a></li>
+                                                <li><a href="#none">6개월</a></li>
+                                            </ul>
+                                        </span>
+                                        <button type="submit" onclick="" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <select id="process" name="process" title="process" class="seleProcess f_left">
+                                            <option selected="selected">과정</option>
+                                            <option value="헌법">헌법</option>
+                                            <option value="스파르타반">스파르타반</option>
+                                            <option value="공직선거법">공직선거법</option>
+                                        </select>
+                                    </div>
+                                    <div class="LeclistTable pointTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 80px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 450px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정<span class="row-line">|</span></li></th>
+                                                    <th>차감일<span class="row-line">|</span></li></th>
+                                                    <th>사용액<span class="row-line">|</span></li></th>
+                                                    <th>차감내역<span class="row-line">|</span></li></th>
+                                                    <th>주문번호</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-process">공무원2</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰2</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제시 사용</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용2</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제시 사용</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제시 사용</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="Paging">
+                                            <ul>
+                                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">10</a></li>
+                                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- useDetailWrap -->
                 </div>
                 <div id="point2">
-                    <table cellspacing="0" cellpadding="0" class="userPointTable NG mt40">
+                    <table cellspacing="0" cellpadding="0" class="userPointTable NG mt20">
                         <colgroup>
                             <col style="width: 50%;"/>
                             <col style="width: 50%;"/>
@@ -140,7 +422,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    사용가능포인트 <span class="tx-light-blue">15,000</span>P<br/><br/>
+                                <div style="margin-bottom: 5px;">사용가능포인트 <span class="tx-light-blue">15,000</span>P</div>
                                     <div class="tx-gray">
                                         총적립포인트 198,000 P<br/>
                                         총사용포인트 23,000 P
@@ -152,246 +434,277 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="useDetailWrap mt25">
+                        <ul class="tabWrap tabDepthPass">
+                            <li><a href="#use3">적립내역</a></li>
+                            <li><a href="#use4">사용내역</a></li>
+                        </ul>
+                        <div class="tabBox mt20">
+                            <div id="use3">
+                                <div class="willbes-Mypage-Tabs">
+                                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                        <span class="w-data">
+                                            기간검색 &nbsp;
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                        </span>
+                                        <span class="w-month">
+                                            <ul>
+                                                <li><a href="#none">전체</a></li>
+                                                <li><a class="on" href="#none">1개월</a></li>
+                                                <li><a href="#none">3개월</a></li>
+                                                <li><a href="#none">6개월</a></li>
+                                            </ul>
+                                        </span>
+                                        <button type="submit" onclick="" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <select id="process" name="process" title="process" class="seleProcess f_left">
+                                            <option selected="selected">과정</option>
+                                            <option value="헌법">헌법</option>
+                                            <option value="스파르타반">스파르타반</option>
+                                            <option value="공직선거법">공직선거법</option>
+                                        </select>
+                                    </div>
+                                    <div class="LeclistTable pointTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 80px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 300px;">
+                                                <col style="width: 150px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정<span class="row-line">|</span></li></th>
+                                                    <th>적립일<span class="row-line">|</span></li></th>
+                                                    <th>적립액<span class="row-line">|</span></li></th>
+                                                    <th>적립내역<span class="row-line">|</span></li></th>
+                                                    <th>주문번호<span class="row-line">|</span></li></th>
+                                                    <th>유효기간</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-process">공무원3</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰3</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용3</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제포인트적립</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-period">~ 2018-00-00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="Paging">
+                                            <ul>
+                                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">10</a></li>
+                                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="use4">
+                                <div class="willbes-Mypage-Tabs">
+                                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                        <span class="w-data">
+                                            기간검색 &nbsp;
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                        </span>
+                                        <span class="w-month">
+                                            <ul>
+                                                <li><a href="#none">전체</a></li>
+                                                <li><a class="on" href="#none">1개월</a></li>
+                                                <li><a href="#none">3개월</a></li>
+                                                <li><a href="#none">6개월</a></li>
+                                            </ul>
+                                        </span>
+                                        <button type="submit" onclick="" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <select id="process" name="process" title="process" class="seleProcess f_left">
+                                            <option selected="selected">과정</option>
+                                            <option value="헌법">헌법</option>
+                                            <option value="스파르타반">스파르타반</option>
+                                            <option value="공직선거법">공직선거법</option>
+                                        </select>
+                                    </div>
+                                    <div class="LeclistTable pointTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 80px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 130px;">
+                                                <col style="width: 450px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정4<span class="row-line">|</span></li></th>
+                                                    <th>차감일<span class="row-line">|</span></li></th>
+                                                    <th>사용액<span class="row-line">|</span></li></th>
+                                                    <th>차감내역<span class="row-line">|</span></li></th>
+                                                    <th>주문번호</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-process">공무원4</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰4</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제시 사용</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제시 사용</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">임용</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 30,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 10,000</td>
+                                                    <td class="w-list">유효기간 만료로 인한 소멸</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-point">+ 20,000</td>
+                                                    <td class="w-list">결제시 사용</td>
+                                                    <td class="w-number">20180000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="Paging">
+                                            <ul>
+                                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">10</a></li>
+                                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- useDetailWrap -->
                 </div>
             </div>
         </div>
         <!-- pointDetailWrap -->
-
-        <div class="useDetailWrap mt70">
-            <ul class="tabWrap tabDepth1 NG">
-                <li><a href="#use1">적립내역</a></li>
-                <li><a href="#use2">사용내역</a></li>
-            </ul>
-            <div class="tabBox mt40">
-                <div id="use1">
-                    <div class="willbes-Mypage-Tabs">
-                        <div class="willbes-Lec-Selected willbes-Mypage-Selected center tx-gray">
-                            <span class="w-data">
-                                기간검색 &nbsp;
-                                <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
-                                <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                            </span>
-                            <span class="w-month">
-                                <ul>
-                                    <li><a href="#none">전체</a></li>
-                                    <li><a class="on" href="#none">1개월</a></li>
-                                    <li><a href="#none">3개월</a></li>
-                                    <li><a href="#none">6개월</a></li>
-                                </ul>
-                            </span>
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                            <select id="process" name="process" title="process" class="seleProcess f_left">
-                                <option selected="selected">과정</option>
-                                <option value="헌법">헌법</option>
-                                <option value="스파르타반">스파르타반</option>
-                                <option value="공직선거법">공직선거법</option>
-                            </select>
-                        </div>
-                        <div class="LeclistTable pointTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 80px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 300px;">
-                                    <col style="width: 150px;">
-                                    <col style="width: 150px;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>과정<span class="row-line">|</span></li></th>
-                                        <th>적립일<span class="row-line">|</span></li></th>
-                                        <th>적립액<span class="row-line">|</span></li></th>
-                                        <th>적립내역<span class="row-line">|</span></li></th>
-                                        <th>주문번호<span class="row-line">|</span></li></th>
-                                        <th>유효기간</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 10,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 20,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 30,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 10,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 20,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 30,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 10,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 20,000</td>
-                                        <td class="w-list">결제포인트적립</td>
-                                        <td class="w-number">20180000</td>
-                                        <td class="w-period">~ 2018-00-00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div id="use2">
-                    <div class="willbes-Mypage-Tabs">
-                        <div class="willbes-Lec-Selected willbes-Mypage-Selected center tx-gray">
-                            <span class="w-data">
-                                기간검색 &nbsp;
-                                <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
-                                <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                            </span>
-                            <span class="w-month">
-                                <ul>
-                                    <li><a href="#none">전체</a></li>
-                                    <li><a class="on" href="#none">1개월</a></li>
-                                    <li><a href="#none">3개월</a></li>
-                                    <li><a href="#none">6개월</a></li>
-                                </ul>
-                            </span>
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                            <select id="process" name="process" title="process" class="seleProcess f_left">
-                                <option selected="selected">과정</option>
-                                <option value="헌법">헌법</option>
-                                <option value="스파르타반">스파르타반</option>
-                                <option value="공직선거법">공직선거법</option>
-                            </select>
-                        </div>
-                        <div class="LeclistTable pointTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 80px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 450px;">
-                                    <col style="width: 150px;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>과정<span class="row-line">|</span></li></th>
-                                        <th>차감일<span class="row-line">|</span></li></th>
-                                        <th>사용액<span class="row-line">|</span></li></th>
-                                        <th>차감내역<span class="row-line">|</span></li></th>
-                                        <th>유효기간</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 10,000</td>
-                                        <td class="w-list">유효기간 만료로 인한 소멸</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 20,000</td>
-                                        <td class="w-list">결제시 사용</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 30,000</td>
-                                        <td class="w-list">유효기간 만료로 인한 소멸</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 10,000</td>
-                                        <td class="w-list">유효기간 만료로 인한 소멸</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 20,000</td>
-                                        <td class="w-list">결제시 사용</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 30,000</td>
-                                        <td class="w-list">유효기간 만료로 인한 소멸</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 10,000</td>
-                                        <td class="w-list">유효기간 만료로 인한 소멸</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-point">+ 20,000</td>
-                                        <td class="w-list">결제시 사용</td>
-                                        <td class="w-number">20180000</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- useDetailWrap -->
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

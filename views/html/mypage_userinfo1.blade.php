@@ -504,7 +504,7 @@
                             <li class="strong">· 탈퇴전 꼭 확인하세요.</li>
                             <li>- 회원탈퇴 시, 그동안 윌비스의 <span class="tx-red">모든 이용 내역 및 보유하신 포인트와 쿠폰 등의 혜택은 모두 삭제</span>되며, <span class="tx-red">복구가 불가능</span>합니다.</li>
                             <li>- 회원탈퇴 후, 임의해지 및 재가입 방지를 목적으로 1년 간 회원의 성명, 휴대폰번호, 아이디, 비밀번호, 이메일 등의 정보를 보관합니다.</li>
-                            <li>- 그 외 개인정보는 개인정보처리방침에 따라 처리됩니다.  <span class="tx-red underline">개인정보처리방침 자세히보기 ></span></li>
+                            <li>- 그 외 개인정보는 개인정보처리방침에 따라 처리됩니다.  <a href="#none" class="tx-red underline">개인정보처리방침 자세히보기 ></a></li>
                             <li>- 회원탈퇴 후 재가입 시 신규 가입으로 처리되며, 탈퇴 전 사용한 아이디로는 재가입이 불가능합니다.</li>
                             <li>- 회원탈퇴 즉시 회원정보에 등록된 이메일로 탈퇴 완료 메일이 발송됩니다.</li>
                             <li>- 최근 배송완료 교재가 있을 경우 교재 환불 기간으로 인해 ‘구매일로부터 30일 이후 탈퇴’가 가능합니다.</li>
@@ -527,42 +527,42 @@
                             <tbody>
                                 <tr>
                                     <td class="Top">수강중인 온라인강좌</td>
-                                    <td>
-                                        유료강좌: <span class="tx-blue strong">0</span>건<br/>
-                                        무료강좌: <span class="tx-blue strong">1</span>건
+                                    <td class="tx-left pl15">
+                                        유료강좌: <a href="#none" class="tx-blue strong">0</a>건<br/>
+                                        무료강좌: <a href="#none" class="tx-blue strong">1</a>건
                                     </td>
                                     <td>즉시탈퇴가능</td>
-                                    <td>탈퇴후 강좌 수강 및 서비스 이용불가</td>
+                                    <td class="tx-left pl15">탈퇴후 강좌 수강 및 서비스 이용불가</td>
                                 </tr>
                                 <tr>
                                     <td class="Top">수강중인 학원강좌</td>
-                                    <td>
-                                        유료강좌: <span class="tx-blue strong">0</span>건<br/>
-                                        무료강좌: <span class="tx-blue strong">1</span>건
+                                    <td class="tx-left pl15">
+                                        유료강좌: <a href="#none" class="tx-blue strong">0</a>건<br/>
+                                        무료강좌: <a href="#none" class="tx-blue strong">1</a>건
                                     </td>
                                     <td>즉시탈퇴가능</td>
-                                    <td>탈퇴후 강좌 수강불가</td>
+                                    <td class="tx-left pl15">탈퇴후 강좌 수강불가</td>
                                 </tr>
                                 <tr>
                                     <td class="Top">사용중인 서비스</td>
-                                    <td>응시예정 모의고사: <span class="tx-blue strong">1</span>건</td>
+                                    <td class="tx-left pl15">응시예정 모의고사: <a href="#none" class="tx-blue strong">1</a>건</td>
                                     <td>즉시탈퇴가능</td>
-                                    <td>탈퇴후 모의고사 응시 서비스 이용불가</td>
+                                    <td class="tx-left pl15">탈퇴후 모의고사 응시 서비스 이용불가</td>
                                 </tr>
                                 <tr>
                                     <td class="Top">30일 이내 배송 내역</td>
-                                    <td>교재: <span class="tx-blue strong">1</span>건</td>
+                                    <td class="tx-left pl15">교재: <a href="#none" class="tx-blue strong">1</a>건</td>
                                     <td><span class="tx-red">즉시탈퇴 불가능</span></td>
-                                    <td>거래 종료(환불) 후 탈퇴 가능</td>
+                                    <td class="tx-left pl15">거래 종료(환불) 후 탈퇴 가능</td>
                                 </tr>
                                 <tr>
                                     <td class="Top">포인트/쿠폰</td>
-                                    <td>
-                                        포인트: <span class="tx-blue strong">50,000</span>P<br/>
-                                        쿠폰: <span class="tx-blue strong">0</span>장
+                                    <td class="tx-left pl15">
+                                        포인트: <a href="#none" class="tx-blue strong">50,000</a>P<br/>
+                                        쿠폰: <a href="#none" class="tx-blue strong">0</a>장
                                     </td>
                                     <td>즉시탈퇴가능</td>
-                                    <td>탈퇴후 복구 불가</td>
+                                    <td class="tx-left pl15">탈퇴후 복구 불가</td>
                                 </tr>
                             </tbody>
                         </table>

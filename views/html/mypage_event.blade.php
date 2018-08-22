@@ -51,11 +51,26 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">학습지원관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>
@@ -168,7 +183,7 @@
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="#none"><strong class="tx-light-blue">[이벤트]</strong>이벤트/설명회/특강명이 노출됩니다.</a>
+                                    <a href="#none"><strong><span class="tx-light-blue">[이벤트]</span> 이벤트/설명회/특강명이 노출됩니다.</strong></a>
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
@@ -194,7 +209,7 @@
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="#none"><strong class="tx-light-blue">[이벤트]</strong>이벤트/설명회/특강명이 노출됩니다.</a>
+                                    <a href="#none"><strong><span class="tx-light-blue">[이벤트]</span> 이벤트/설명회/특강명이 노출됩니다.</strong></a>
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
@@ -220,7 +235,7 @@
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="#none"><strong class="tx-light-blue">[이벤트]</strong>이벤트/설명회/특강명이 노출됩니다.</a>
+                                    <a href="#none"><strong><span class="tx-light-blue">[이벤트]</span> 이벤트/설명회/특강명이 노출됩니다.</strong></a>
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
@@ -235,6 +250,22 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                        <li><a href="#none">10</a></li>
+                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- willbes-Mypage-Tabs -->

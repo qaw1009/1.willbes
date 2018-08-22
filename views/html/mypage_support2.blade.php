@@ -62,8 +62,15 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>

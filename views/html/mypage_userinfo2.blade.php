@@ -86,9 +86,7 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-ONLINEZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 비밀번호변경
-            </div>
+            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG tx-center">비밀번호변경</div>
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
@@ -116,13 +114,11 @@
          <!-- 비밀번호 재설정 -->
 
 
-         <br/><br/></br>
+         <br/><br/><br/>
 
 
         <div class="willbes-Mypage-ONLINEZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 비밀번호확인
-            </div>
+            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG tx-center">비밀번호확인</div>
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 

@@ -51,11 +51,26 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">학습지원관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>

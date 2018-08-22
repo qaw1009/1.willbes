@@ -51,11 +51,26 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">학습지원관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>
@@ -96,8 +111,8 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="willbes-Mypage-Tabs mt60">
-            <div class="willbes-Lec-Selected willbes-Mypage-Selected center tx-gray">
+        <div class="willbes-Mypage-Tabs mt40">
+            <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                 <span class="w-data">
                     기간검색 &nbsp;
                     <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
@@ -183,6 +198,22 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                        <li><a href="#none">10</a></li>
+                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- willbes-Mypage-Tabs -->

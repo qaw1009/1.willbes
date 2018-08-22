@@ -51,11 +51,26 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">학습지원관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>
@@ -96,14 +111,14 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="pointDetailWrap mt70">
-            <ul class="tabWrap tabDepth1 NG">
+        <div class="pointDetailWrap mt40">
+            <ul class="tabWrap tabDepth3 NG">
                 <li><a href="#point1">쿠폰</a></li>
                 <li><a href="#point2">수강권</a></li>
             </ul>
-            <div class="tabBox">
+            <div class="tabBox mt20">
                 <div id="point1">
-                    <table cellspacing="0" cellpadding="0" class="userPointTable NG mt40">
+                    <table cellspacing="0" cellpadding="0" class="userPointTable NG" style="height: 60px;">
                         <colgroup>
                             <col style="width: 50%;"/>
                             <col style="width: 50%;"/>
@@ -111,7 +126,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    사용가능한쿠폰 <span class="tx-light-blue">10</span>장 <span class="tBox t2Box NSK light-gray ml20"><a href="#none" onclick="openWin('COUPONPASS')">쿠폰등록</a></span>
+                                    사용가능한쿠폰 <span class="tx-light-blue">10</span>장 <span class="tBox t2Box black ml20"><a href="#none" onclick="openWin('COUPONPASS')">쿠폰등록</a></span>
                                 </td>
                                 <td>
                                     당월소멸예정쿠폰 <span class="tx-light-blue">5</span>장
@@ -119,260 +134,509 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="useDetailWrap mt25">
+                        <ul class="tabWrap tabDepthPass">
+                            <li><a href="#use1">보유쿠폰</a></li>
+                            <li><a href="#use2">사용/만료쿠폰</a></li>
+                        </ul>
+                        <div class="tabBox mt20">
+                            <div id="use1">
+                                <div class="willbes-Mypage-Tabs">
+                                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                        <span class="w-data">
+                                            기간검색 &nbsp;
+                                            <select id="days" name="days" title="days" class="seleDays">
+                                                <option selected="selected">발급일</option>
+                                                <option value="남은일자">남은일자</option>
+                                            </select>
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                        </span>
+                                        <span class="w-month">
+                                            <ul>
+                                                <li><a href="#none">전체</a></li>
+                                                <li><a class="on" href="#none">1개월</a></li>
+                                                <li><a href="#none">3개월</a></li>
+                                                <li><a href="#none">6개월</a></li>
+                                            </ul>
+                                        </span>
+                                        <button type="submit" onclick="" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <select id="process" name="process" title="process" class="seleProcess f_left mr10">
+                                            <option selected="selected">과정</option>
+                                            <option value="헌법">헌법</option>
+                                            <option value="스파르타반">스파르타반</option>
+                                            <option value="공직선거법">공직선거법</option>
+                                        </select>
+                                        <select id="date" name="date" title="date" class="seleDate">
+                                            <option selected="selected">최근발급순</option>
+                                            <option value="만료임박순">만료임박순</option>
+                                        </select>
+                                    </div>
+                                    <div class="LeclistTable pointTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 80px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 90px;">
+                                                <col style="width: 90px;">
+                                                <col style="width: 120px;">
+                                                <col style="width: 180px;">
+                                                <col style="width: 80px;">
+                                                <col style="width: 100px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정<span class="row-line">|</span></li></th>
+                                                    <th>쿠폰번호<span class="row-line">|</span></li></th>
+                                                    <th>쿠폰명<span class="row-line">|</span></li></th>
+                                                    <th>할인율(금액)<span class="row-line">|</span></li></th>
+                                                    <th>적용대상<span class="row-line">|</span></li></th>
+                                                    <th>적용제한금액<span class="row-line">|</span></li></th>
+                                                    <th>사용가능기간<span class="row-line">|</span></li></th>
+                                                    <th>남은일자<span class="row-line">|</span></li></th>
+                                                    <th>발급일</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">온라인강좌</td>
+                                                    <td class="w-l-price">10,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">3일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">5,000원</td>
+                                                    <td class="w-product">수강연장</td>
+                                                    <td class="w-l-price">50,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">5일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">배수</td>
+                                                    <td class="w-l-price">10,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">30일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">5,000원</td>
+                                                    <td class="w-product">교재할인</td>
+                                                    <td class="w-l-price">50,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">5일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">온라인강좌</td>
+                                                    <td class="w-l-price">10,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">3일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">온라인강좌</td>
+                                                    <td class="w-l-price">10,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">30일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">배수</td>
+                                                    <td class="w-l-price">10,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">3일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">교재할인</td>
+                                                    <td class="w-l-price">50,000원 이상</td>
+                                                    <td class="w-period">2018-00-00 ~ 2018-00-00</td>
+                                                    <td class="w-d-day">5일</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="Paging">
+                                            <ul>
+                                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">10</a></li>
+                                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="use2">
+                                <div class="willbes-Mypage-Tabs">
+                                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                        <span class="w-data">
+                                            기간검색 &nbsp;
+                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                        </span>
+                                        <span class="w-month">
+                                            <ul>
+                                                <li><a href="#none">전체</a></li>
+                                                <li><a class="on" href="#none">1개월</a></li>
+                                                <li><a href="#none">3개월</a></li>
+                                                <li><a href="#none">6개월</a></li>
+                                            </ul>
+                                        </span>
+                                        <button type="submit" onclick="" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <select id="process" name="process" title="process" class="seleProcess f_left mr10">
+                                            <option selected="selected">과정</option>
+                                            <option value="헌법">헌법</option>
+                                            <option value="스파르타반">스파르타반</option>
+                                            <option value="공직선거법">공직선거법</option>
+                                        </select>
+                                        <select id="state" name="state" title="state" class="seleState">
+                                            <option selected="selected">상태</option>
+                                            <option value="전체">전체</option>
+                                            <option value="기간만료">기간만료</option>
+                                            <option value="사용완료">사용완료</option>
+                                        </select>
+                                    </div>
+                                    <div class="LeclistTable pointTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 80px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 90px;">
+                                                <col style="width: 90px;">
+                                                <col style="width: 180px;">
+                                                <col style="width: 120px;">
+                                                <col style="width: 80px;">
+                                                <col style="width: 100px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정<span class="row-line">|</span></li></th>
+                                                    <th>쿠폰번호<span class="row-line">|</span></li></th>
+                                                    <th>쿠폰명<span class="row-line">|</span></li></th>
+                                                    <th>할인율(금액)<span class="row-line">|</span></li></th>
+                                                    <th>적용대상<span class="row-line">|</span></li></th>
+                                                    <th>쿠폰사용상품<span class="row-line">|</span></li></th>
+                                                    <th>주문번호<span class="row-line">|</span></li></th>
+                                                    <th>상태<span class="row-line">|</span></li></th>
+                                                    <th>사용/소멸일</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">온라인강좌</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">만료</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">5,000원</td>
+                                                    <td class="w-product">수강연장</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">사용</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">배수</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">만료</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">5,000원</td>
+                                                    <td class="w-product">교재할인</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">사용</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">경찰</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">온라인강좌</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">만료</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">온라인강좌</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">사용</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">배수</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">만료</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-process">공무원</td>
+                                                    <td class="w-c-num">CODE</td>
+                                                    <td class="w-list">쿠폰명 출력</td>
+                                                    <td class="w-discount">10%</td>
+                                                    <td class="w-product">교재할인</td>
+                                                    <td class="w-list">상품명이 출력됩니다.</td>
+                                                    <td class="w-number">20180000</td>
+                                                    <td class="w-state">사용</td>
+                                                    <td class="w-date">2018-00-00</td> 
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="Paging">
+                                            <ul>
+                                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                                <li><a href="#none">10</a></li>
+                                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- useDetailWrap -->
                 </div>
                 <div id="point2">
-                    <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG mt40">
+                    <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
                         <tbody>
                             <tr>
                                 <td>
                                     수강권 번호 &nbsp; 
                                     <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
-                                    <span class="tBox t2Box NSK light-gray"><a href="">등록</a></span>
+                                    <span class="tBox t2Box black" style="height: 26px;"><a href="" style="padding: 4px 0;">등록</a></span>
                                     <div class="tx-gray">'-'를 제외한 숫자 16자리만 입력해 주세요.</div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="useDetailWrap mt20">
+                        <div class="willbes-Mypage-Tabs">
+                            <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                                <span class="w-data">
+                                    기간검색 &nbsp;
+                                    <select id="days" name="days" title="days" class="seleDays">
+                                        <option selected="selected">발급일</option>
+                                        <option value="남은일자">남은일자</option>
+                                    </select>
+                                    <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
+                                    <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
+                                </span>
+                                <span class="w-month">
+                                    <ul>
+                                        <li><a href="#none">전체</a></li>
+                                        <li><a class="on" href="#none">1개월</a></li>
+                                        <li><a href="#none">3개월</a></li>
+                                        <li><a href="#none">6개월</a></li>
+                                    </ul>
+                                </span>
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                            <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                <select id="process" name="process" title="process" class="seleProcess f_left mr10">
+                                    <option selected="selected">과정</option>
+                                    <option value="헌법">헌법</option>
+                                    <option value="스파르타반">스파르타반</option>
+                                    <option value="공직선거법">공직선거법</option>
+                                </select>
+                                <select id="date" name="date" title="date" class="seleDate">
+                                    <option selected="selected">최근발급순</option>
+                                    <option value="만료임박순">만료임박순</option>
+                                </select>
+                            </div>
+                            <div class="LeclistTable pointTable">
+                                <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 80px;">
+                                        <col style="width: 130px;">
+                                        <col style="width: 370px;">
+                                        <col style="width: 150px;">
+                                        <col style="width: 210px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>과정<span class="row-line">|</span></li></th>
+                                            <th>수강권번호<span class="row-line">|</span></li></th>
+                                            <th>수강권명<span class="row-line">|</span></li></th>
+                                            <th>수강권적용강좌<span class="row-line">|</span></li></th>
+                                            <th>등록일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-process">공무원</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">온라인강좌</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">경찰</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">수강연장</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">공무원</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">배수</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">공무원</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">교재할인</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">경찰</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">온라인강좌</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">공무원</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">온라인강좌</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">공무원</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">배수</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                        <tr>
+                                            <td class="w-process">공무원</td>
+                                            <td class="w-c-num">CODE</td>
+                                            <td class="w-list">쿠폰명 출력</td>
+                                            <td class="w-product">교재할인</td>
+                                            <td class="w-date">2018-00-00</td> 
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="Paging">
+                                    <ul>
+                                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                        <li><a href="#none">10</a></li>
+                                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <!-- useDetailWrap -->
+
                 </div>
             </div>
         </div>
         <!-- pointDetailWrap -->
-
-        <div class="useDetailWrap mt70">
-            <ul class="tabWrap tabDepth1 NG">
-                <li><a href="#use1">보유내역</a></li>
-                <li><a href="#use2">사용내역</a></li>
-            </ul>
-            <div class="tabBox mt40">
-                <div id="use1">
-                    <div class="willbes-Mypage-Tabs">
-                        <div class="willbes-Lec-Selected willbes-Mypage-Selected center tx-gray">
-                            <span class="w-data">
-                                기간검색 &nbsp;
-                                <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
-                                <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                            </span>
-                            <span class="w-month">
-                                <ul>
-                                    <li><a href="#none">전체</a></li>
-                                    <li><a class="on" href="#none">1개월</a></li>
-                                    <li><a href="#none">3개월</a></li>
-                                    <li><a href="#none">6개월</a></li>
-                                </ul>
-                            </span>
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                            <select id="process" name="process" title="process" class="seleProcess f_left mr10">
-                                <option selected="selected">과정</option>
-                                <option value="헌법">헌법</option>
-                                <option value="스파르타반">스파르타반</option>
-                                <option value="공직선거법">공직선거법</option>
-                            </select>
-                            <select id="date" name="date" title="date" class="seleDate">
-                                <option selected="selected">최근발급순</option>
-                                <option value="만료임박순">만료임박순</option>
-                            </select>
-                        </div>
-                        <div class="LeclistTable pointTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 80px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 370px;">
-                                    <col style="width: 150px;">
-                                    <col style="width: 210px;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>과정<span class="row-line">|</span></li></th>
-                                        <th>등록일<span class="row-line">|</span></li></th>
-                                        <th>쿠폰명<span class="row-line">|</span></li></th>
-                                        <th>적용상품<span class="row-line">|</span></li></th>
-                                        <th>사용가능기간</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">온라인강좌</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">수강연장</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">배수</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">교재할인</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">온라인강좌</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">수강연장</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">배수</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">교재할인</td>
-                                        <td class="w-period">2018-00-00 ~ 2018-00-00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div id="use2">
-                    <div class="willbes-Mypage-Tabs">
-                        <div class="willbes-Lec-Selected willbes-Mypage-Selected center tx-gray">
-                            <span class="w-data">
-                                기간검색 &nbsp;
-                                <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp; 
-                                <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                            </span>
-                            <span class="w-month">
-                                <ul>
-                                    <li><a href="#none">전체</a></li>
-                                    <li><a class="on" href="#none">1개월</a></li>
-                                    <li><a href="#none">3개월</a></li>
-                                    <li><a href="#none">6개월</a></li>
-                                </ul>
-                            </span>
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                            <select id="process" name="process" title="process" class="seleProcess f_left mr10">
-                                <option selected="selected">과정</option>
-                                <option value="헌법">헌법</option>
-                                <option value="스파르타반">스파르타반</option>
-                                <option value="공직선거법">공직선거법</option>
-                            </select>
-                            <select id="state" name="state" title="state" class="seleState">
-                                <option selected="selected">상태</option>
-                                <option value="전체">전체</option>
-                                <option value="기간만료">기간만료</option>
-                                <option value="사용완료">사용완료</option>
-                            </select>
-                        </div>
-                        <div class="LeclistTable pointTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 80px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 130px;">
-                                    <col style="width: 450px;">
-                                    <col style="width: 150px;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>과정<span class="row-line">|</span></li></th>
-                                        <th>사용일<span class="row-line">|</span></li></th>
-                                        <th>상태<span class="row-line">|</span></li></th>
-                                        <th>쿠폰명<span class="row-line">|</span></li></th>
-                                        <th>적용상품</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">온라인강좌</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">수강연장</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">배수</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">교재할인</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">배송료</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">임용</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">모의고사</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">공무원</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">학원강좌</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-process">경찰</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-state">기간만료</td>
-                                        <td class="w-list">쿠폰명이 출력됩니다.</td>
-                                        <td class="w-product">온라인강좌</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- useDetailWrap -->
 
         <div id="COUPONPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox540 h400">
             <a class="closeBtn" href="#none" onclick="closeWin('COUPONPASS')">
@@ -396,7 +660,7 @@
                                 <td>
                                     쿠폰 번호 &nbsp; 
                                     <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" style="width: 290px;">
-                                    <span class="tBox t2Box NSK light-gray"><a href="">등록</a></span>
+                                    <span class="tBox t2Box black" style="height: 26px;"><a href="" style="padding: 4px 0;">등록</a></span>
                                 </td>
                             </tr>
                         </tbody>

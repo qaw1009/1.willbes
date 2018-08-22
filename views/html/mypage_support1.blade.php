@@ -62,8 +62,15 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>
@@ -140,7 +147,7 @@
                             <td class="w-no">8</td>
                             <td class="w-process">경찰</td>
                             <td class="w-acad">학원</td>
-                            <td class="w-list strong"><a href="#none" onclick="openWin('MEMOPASS')">3법 해피엔딩 이벤트☆수험표 인증시 무료!</a></td>
+                            <td class="w-list tx-left pl25 strong"><a href="#none" onclick="openWin('MEMOPASS')">3법 해피엔딩 이벤트☆수험표 인증시 무료!</a></td>
                             <td class="w-file">
                                 <a href="#none">
                                     <img src="{{ img_url('prof/icon_file.gif') }}">
@@ -154,7 +161,7 @@
                             <td class="w-no">7</td>
                             <td class="w-process">공무원</td>
                             <td class="w-acad">온라인</td>
-                            <td class="w-list strong">김원욱 형법 최신 1개년 기출 판례이벤트</td>
+                            <td class="w-list tx-left pl25 strong"><a href="#none">김원욱 형법 최신 1개년 기출 판례이벤트</a></td>
                             <td class="w-file">
                                 <a href="#none">
                                     <img src="{{ img_url('prof/icon_file.gif') }}">
@@ -168,7 +175,7 @@
                             <td class="w-no">6</td>
                             <td class="w-process">임용</td>
                             <td class="w-acad">학원</td>
-                            <td class="w-list">2018년 제1차 경찰 공무원 채용필기시험 가답안 공지</td>
+                            <td class="w-list tx-left pl25"><a href="#none">2018년 제1차 경찰 공무원 채용필기시험 가답안 공지</a></td>
                             <td class="w-file">&nbsp;</td>
                             <td class="w-admin">관리자명</td>
                             <td class="w-date">2018-00-00</td>
@@ -178,7 +185,7 @@
                             <td class="w-no">5</td>
                             <td class="w-process">경찰</td>
                             <td class="w-acad">온라인</td>
-                            <td class="w-list">[신규강의안내] 2018 대비 3~4월안내</td>
+                            <td class="w-list tx-left pl25"><a href="#none">[신규강의안내] 2018 대비 3~4월안내</a></td>
                             <td class="w-file">
                                 <a href="#none">
                                     <img src="{{ img_url('prof/icon_file.gif') }}">
@@ -192,7 +199,7 @@
                             <td class="w-no">4</td>
                             <td class="w-process">공무원</td>
                             <td class="w-acad">온라인</td>
-                            <td class="w-list">설연휴 학원 고객센터 운영안내</td>
+                            <td class="w-list tx-left pl25"><a href="#none">설연휴 학원 고객센터 운영안내</a></td>
                             <td class="w-file">&nbsp;</td>
                             <td class="w-admin">관리자명</td>
                             <td class="w-date">2018-00-00</td>
@@ -202,7 +209,7 @@
                             <td class="w-no">3</td>
                             <td class="w-process">임용</td>
                             <td class="w-acad">온라인</td>
-                            <td class="w-list">추석 교재 배송 및 고객센터 휴무안내</td>
+                            <td class="w-list tx-left pl25"><a href="#none">추석 교재 배송 및 고객센터 휴무안내</a></td>
                             <td class="w-file">&nbsp;</td>
                             <td class="w-admin">관리자명</td>
                             <td class="w-date">2018-00-00</td>
@@ -212,7 +219,7 @@
                             <td class="w-no">2</td>
                             <td class="w-process">경찰</td>
                             <td class="w-acad">학원</td>
-                            <td class="w-list">4월 무이자카드 안내</td>
+                            <td class="w-list tx-left pl25"><a href="#none">4월 무이자카드 안내</a></td>
                             <td class="w-file">&nbsp;</td>
                             <td class="w-admin">관리자명</td>
                             <td class="w-date">2018-00-00</td>
@@ -222,7 +229,7 @@
                             <td class="w-no">1</td>
                             <td class="w-process">공무원</td>
                             <td class="w-acad">온라인</td>
-                            <td class="w-list">3월 무이자카드 안내</td>
+                            <td class="w-list tx-left pl25"><a href="#none">3월 무이자카드 안내</a></td>
                             <td class="w-file">
                                 <a href="#none">
                                     <img src="{{ img_url('prof/icon_file.gif') }}">
@@ -234,12 +241,28 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                        <li><a href="#none">10</a></li>
+                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
         <div id="MEMOPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h550">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590">
                 <a class="closeBtn" href="#none" onclick="closeWin('MEMOPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -282,8 +305,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-list" colspan="3" height="120px">  
-                                        내용이 출력됩니다.              
+                                    <td class="w-list w-content" colspan="3">  
+                                        내용이 출력됩니다.<br/>
+                                        내용이 출력됩니다.<br/>  
+                                        내용이 출력됩니다.<br/>              
                                     </td>
                                 </tr>
                             </tbody>

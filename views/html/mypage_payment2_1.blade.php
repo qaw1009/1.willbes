@@ -51,11 +51,26 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">학습지원관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>
@@ -65,7 +80,7 @@
         <span class="1depth">
             <span class="depth-Arrow">></span><strong>내강의실</strong>
             <span class="depth-Arrow">></span><strong>결제관리</strong>
-            <span class="depth-Arrow">></span><strong>쿠폰/수강권관리</strong>
+            <span class="depth-Arrow">></span><strong>주문/배송조회</strong>
         </span>
     </div>
     <div class="Content p_re">
@@ -96,7 +111,7 @@
                         <td class="bg-light-white">결제상태</td>
                         <td>결제완료</td>
                         <td class="bg-light-white">영수증출력</td>
-                        <td><span class="btnAll NSK"><a href="#none">영수증출력하기</a></span></td>
+                        <td><span class="btnAll NSK"><a href="#none">확인</a></span></td>
                     </tr>
                     <!-- 결제수단 무통장일때만 보임 -->
                     <tr>
@@ -114,7 +129,7 @@
         </div>
         <!-- willbes-Delivery-Info -->
 
-        <div class="willbes-Buylist-Price Fin mt60 p_re">
+        <div class="willbes-Buylist-Price Fin p_re">
             <ul class="cart-PriceBox NG">
                 <li class="price-list p_re">
                     <dl class="priceBox">
@@ -223,7 +238,7 @@
 
         <div class="willbes-Delivery-Info-Fin p_re c_both">
             <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
-            <div class="deliveryInfoTable pb110 GM">
+            <div class="deliveryInfoTable pb60 GM">
                 <table cellspacing="0" cellpadding="0" class="classTable deliveryTable upper-gray tx-gray">
                     <colgroup>
                         <col style="width: 140px;">

@@ -120,8 +120,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">80,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -132,8 +132,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">70,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -144,8 +144,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">180,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -156,8 +156,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">8,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -168,8 +168,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">5,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -280,8 +280,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">80,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -292,8 +292,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">70,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -304,8 +304,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">180,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -316,8 +316,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">8,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -328,8 +328,8 @@
                                         </td>
                                         <td class="w-price tx-light-blue">5,000원</td>
                                         <td class="w-buy">
-                                            <span class="tBox NSK t1 black"><a href="">결제</a></span>
-                                            <span class="tBox NSK t2 white"><a href="">삭제</a></span>
+                                            <span class="tBox t1 black"><a href="">결제</a></span>
+                                            <span class="tBox t2 white"><a href="">삭제</a></span>
                                         </td>
                                     </tr>
                                 </tbody>

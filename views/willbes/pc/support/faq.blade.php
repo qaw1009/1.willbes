@@ -6,17 +6,20 @@
         @include('willbes.pc.layouts.partial.site_tab_menu')
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
-        </span>
         </div>
         <div class="Content p_re">
-
+            <form id="url_form" name="url_form" method="GET">
+                @foreach($arr_input as $key => $val)
+                    <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+                @endforeach
+            </form>
             <div class="willbes-CScenter c_both">
                 <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
                     · 자주하는 질문
                     <div class="willbes-Lec-Search GM f_right">
                         <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                            <button type="submit" onclick="" class="search-Btn">
+                            <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                            <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
                                 <span>검색</span>
                             </button>
                         </div>
@@ -54,14 +57,12 @@
                                     <table cellspacing="0" cellpadding="0" class="listTable csCenterTable upper-gray bdt-gray bdb-gray tx-gray">
                                         <colgroup>
                                             <col style="width: 70px;">
-                                            @if($is_campus=='Y')<col style="width: 100px;">@endif
                                             <col style="width: 120px;">
                                             <col>
                                         </colgroup>
                                         <thead>
                                         <tr>
                                             <th>No<span class="row-line">|</span></th>
-                                            @if($is_campus=='Y')<th>캠퍼스<span class="row-line">|</span></th>@endif
                                             <th>분류<span class="row-line">|</span></th>
                                             <th>제목<span class="row-line">|</span></th>
                                         </tr>
@@ -78,7 +79,6 @@
                                         @foreach($list as $row)
                                         <tr class="replyList cscenterList">
                                             <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_best_reply.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                            @if($is_campus=='Y')<td class="w-acad"><span class="oBox offlineBox NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                             <td class="w-select">{{$row['FaqTypeCcd_Name']}}</td>
                                             <td class="w-list tx-left pl20">{{$row['Title']}}</td>
                                         </tr>
@@ -89,9 +89,6 @@
                                         </tr>
                                         @php $paging['rownum']-- @endphp
                                         @endforeach
-
-
-
                                         </tbody>
                                     </table>
                                 </div>

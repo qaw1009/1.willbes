@@ -27,14 +27,16 @@ class SupportFaq extends BaseSupport
             $faq_ccd[$idx]['subFaqData']  = json_decode($row['subFaqData'], true);
         }
 
-        $s_faq = $this->_reqG('s_faq');
-        $s_sub_faq = $this->_reqG('s_sub_faq');
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $s_faq = element('s_faq',$arr_input);
+        $s_sub_faq = element('s_sub_faq',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+
 
         if($s_faq === null) {
             $s_faq = $faq_ccd[0]['Ccd'];    //초기값
         }
-
-        $is_campus = ($s_faq === '628') ? 'Y' : 'N'; //학원수강일경우 view단 캠퍼스 노출 여부
 
         $list = [];
 
@@ -45,6 +47,12 @@ class SupportFaq extends BaseSupport
                 ,'b.IsUse' => 'Y'
                 ,'b.FaqGroupTypeCcd' => $s_faq
                 ,'b.FaqTypeCcd' => $s_sub_faq
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $s_keyword
+                    ,'b.Content' => $s_keyword
+                ]
             ]
         ];
 
@@ -58,7 +66,7 @@ class SupportFaq extends BaseSupport
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination('/support/faq/index/?s_faq='.$s_faq.'&s_sub_faq='.$s_sub_faq,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/support/faq/index/?s_faq='.$s_faq.'&s_sub_faq='.$s_sub_faq.'&s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
@@ -68,9 +76,10 @@ class SupportFaq extends BaseSupport
             'faq_ccd' => $faq_ccd,
             's_faq' => $s_faq,
             's_sub_faq' => $s_sub_faq,
+            'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
-            'is_campus' => $is_campus
+
         ]);
     }
 

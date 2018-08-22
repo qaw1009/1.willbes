@@ -69,8 +69,7 @@
             <!-- New.Ver -->
             <script>
                 $(function() {
-                    $('.n_mem_seat li').css("width","calc(100% / 7)");
-                    $('.n_mem_seat tr td').css("width","calc(100% / 9)");
+                    $('.n_mem_seat li').css("width","calc(100% / 10)");
                 });
             </script>
             <div class="form-group form-group-sm">
@@ -106,6 +105,15 @@
                         <li><button type="button" class="btn btn-danger">19<br/>회원명</button></li>
                         <li><button type="button" class="btn btn-default">20<br/>회원명</button></li>
                     </ul>
+
+
+
+                    {{--<script>
+                        $(function() {
+                            $('.n_mem_seat tr td').css("width","calc(100% / 9)");
+                        });
+                    </script>
+
                     <div class="n_mem_seat">
                         <table cellspacing="0" cellpadding="0" id="n_mem_seat_list" class="table" style="font-size: 12px;">
                             <tbody>
@@ -137,12 +145,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div>--}}
+
+
+
                 </div>
             </div>
              <!-- End New.Ver -->
 
-            <div class="form-group form-group-sm">
+            {{--<div class="form-group form-group-sm">
                 <div class="col-md-12 form-inline">
                     <table cellspacing="0" cellpadding="0" id="mem_seat_list" class="table" style="font-size: 12px;">
                         <colgroup>
@@ -210,7 +221,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>--}}
 
         </div>
     </div>

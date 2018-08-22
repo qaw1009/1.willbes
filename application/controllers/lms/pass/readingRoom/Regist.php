@@ -12,7 +12,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록관리 인덱스
+     * 독서실등록/배정관리 인덱스
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록관리 목록 조회
+     * 독서실등록/배정관리 목록 조회
      * @return CI_Output
      */
     public function listAjax()
@@ -59,7 +59,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록관리 등록/수정 폼
+     * 독서실등록/배정관리 등록/수정 폼
      * @param array $params
      */
     public function create($params = [])
@@ -86,7 +86,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록관리 배정관리
+     * 독서실등록/배정관리 배정관리
      */
     public function assignManageList($params = [])
     {
@@ -132,7 +132,7 @@ class Regist extends \app\controllers\BaseController
 
 
     /**
-     *
+     * 좌석 버튼 TEST
      */
     public function testPage()
     {
@@ -147,7 +147,9 @@ class Regist extends \app\controllers\BaseController
             'arr_campus' => $arr_campus
         ]);
     }
-
+    /**
+     * 좌석 버튼 TEST
+     */
     public function testPopup()
     {
         //캠퍼스 조회

@@ -913,11 +913,12 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     float: left;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 10px;
 }
 .n_mem_seat li {
     float: left;
     list-style: none;
+    padding: 3px;
 }
 .n_mem_seat li button {
     width: 96%;

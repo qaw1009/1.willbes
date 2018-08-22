@@ -130,4 +130,31 @@ class Regist extends \app\controllers\BaseController
         ]);
     }
 
+
+    /**
+     *
+     */
+    public function testPage()
+    {
+        $post_data = null;
+
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        $this->load->view("pass/reading_room/test/page", [
+            'idx' => 1,
+            'post_data' => $post_data,
+            'arr_campus' => $arr_campus
+        ]);
+    }
+
+    public function testPopup()
+    {
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        $this->load->view("pass/reading_room/test/popup", [
+            'arr_campus' => $arr_campus,
+        ]);
+    }
 }

@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    좌석변경
+    좌석변경 (TEST)
 @stop
 
 @section('layer_header')
@@ -111,55 +111,55 @@
                             <col width="*">
                         </colgroup>
                         <thead>
-                            <tr>
-                                <th colspan="10">
-                                    <ul class="clearfix-r">
-                                        <li><span class="color-box btn-default">-</span> 미사용</li>
-                                        <li><span class="color-box btn-info">-</span> 사용중</li>
-                                        <li><span class="color-box btn-warning">-</span> 대기</li>
-                                        <li><span class="color-box btn-success">-</span> 홀드</li>
-                                        <li><span class="color-box btn-danger">-</span> 고장</li>
-                                    </ul>
-                                </th>
-                            </tr>
+                        <tr>
+                            <th colspan="10">
+                                <ul class="clearfix-r">
+                                    <li><span class="color-box btn-default">-</span> 미사용</li>
+                                    <li><span class="color-box btn-info">-</span> 사용중</li>
+                                    <li><span class="color-box btn-warning">-</span> 대기</li>
+                                    <li><span class="color-box btn-success">-</span> 홀드</li>
+                                    <li><span class="color-box btn-danger">-</span> 고장</li>
+                                </ul>
+                            </th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><button type="button" class="btn btn-info">1<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">2<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">3<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">4<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">5<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">6<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">7<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-warning">8<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">9<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-success">10<br/>회원명</button></td>
-                            </tr>
-                            <tr>
-                                <td><button type="button" class="btn btn-warning">11<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">12<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">13<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">14<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">15<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">16<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">17<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-info">18<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-danger">19<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">20<br/>회원명</button></td>
-                            </tr>
-                            <tr>
-                                <td><button type="button" class="btn btn-default">141<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">142<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">143<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">144<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">145<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">146<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">147<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-default">148<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-success">149<br/>회원명</button></td>
-                                <td><button type="button" class="btn btn-danger">150<br/>회원명</button></td>
-                            </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-info">1<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">2<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">3<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">4<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">5<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">6<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">7<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-warning">8<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">9<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-success">10<br/>회원명</button></td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-warning">11<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">12<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">13<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">14<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">15<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">16<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">17<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-info">18<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-danger">19<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">20<br/>회원명</button></td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-default">141<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">142<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">143<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">144<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">145<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">146<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">147<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-default">148<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-success">149<br/>회원명</button></td>
+                            <td><button type="button" class="btn btn-danger">150<br/>회원명</button></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -187,44 +187,44 @@
                 <div class="col-md-12">
                     <table id="mem_memo_list" class="table" style="font-size: 12px;">
                         <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>메모내용</th>
-                                <th>등록자</th>
-                                <th>등록일</th>
-                            </tr>
+                        <tr>
+                            <th>No</th>
+                            <th>메모내용</th>
+                            <th>등록자</th>
+                            <th>등록일</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>5</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>4</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
+                        <tr>
+                            <th>5</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -48,4 +48,16 @@ class SupportBoardFModel extends BaseSupportFModel
         return $query->result_array();
     }
 
+    /**
+     * 게시판 글 목록 추출
+     */
+    public function listBoard($is_count, $arr_condition = [], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+
+        $column = ($is_count === true) ? $is_count :  $column;
+        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
+        //echo $this->_conn->last_query();
+        return $result;
+    }
+
 }

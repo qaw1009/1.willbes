@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BaseSupportFModel extends WB_Model
 {
     protected $_table = [
-        'board' => 'vw_board'
+        'board' => 'vw_board as b'
         ,'board_qna' => 'vw_board_qna'
         ,'menu' => 'lms_site_menu'
         ,'code' => 'lms_sys_code'

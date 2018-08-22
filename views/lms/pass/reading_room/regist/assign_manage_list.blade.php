@@ -162,7 +162,7 @@
             // 좌석배정
             $list_table.on('click', '.create-seat-modal', function() {
                 $('.create-seat-modal').setLayer({
-                    "url" : "<?php echo static::e(site_url('/pass/readingRoom/regist/createSeatModal')); ?>/" + $(this).data('seat-num'),
+                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('seat-num'),
                     "width" : "1200",
                     "modal_id" : "modal_html"
                 });
@@ -171,7 +171,7 @@
             // 좌석변경
             $list_table.on('click', '.modify-seat-modal', function() {
                 $('.modify-seat-modal').setLayer({
-                    "url" : "<?php echo static::e(site_url('/pass/readingRoom/regist/modifySeatModal')); ?>/" + $(this).data('seat-num'),
+                    "url" : "{{ site_url('/pass/readingRoom/regist/modifySeatModal/') }}"+ $(this).data('seat-num'),
                     "width" : "1200",
                     "modal_id" : "modal_html"
                 });

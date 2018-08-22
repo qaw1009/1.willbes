@@ -33,7 +33,6 @@ class SupportFaq extends BaseSupport
         $s_sub_faq = element('s_sub_faq',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
 
-
         if($s_faq === null) {
             $s_faq = $faq_ccd[0]['Ccd'];    //초기값
         }
@@ -79,10 +78,7 @@ class SupportFaq extends BaseSupport
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
-
         ]);
     }
-
-
 
 }

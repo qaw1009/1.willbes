@@ -51,6 +51,15 @@ class BaseOrderFModel extends WB_Model
     // 학습형태와 쿠폰상세구분 공통코드 맵핑 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
     public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => '', '615003' => '646002', '615004' => '646003', '615005' => '', '615006' => '646004', '615007' => '646005'];
 
+    // 결제방법 공통코드
+    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004'];
+
+    // 결제채널 공통코드
+    public $_pay_channel_ccd = ['pc' => '669001', 'm' => '669002', 'app' => '669003'];
+
+    // 결제루트 공통코드
+    public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'no_pay' => '670003', 'alliance' => '670004'];
+
     // 장바구니 식별자 세션명
     public $_sess_cart_idx_name = 'usable_cart_idx';
 
@@ -122,12 +131,20 @@ class BaseOrderFModel extends WB_Model
 
     /**
      * 주문번호 세션 체크 및 리턴
+     * @param bool $is_error_alert 세션값이 없을 경우 스크립트 에러 리턴 여부
      * @return mixed
      */
-    public function checkSessOrderNo()
+    public function checkSessOrderNo($is_error_alert = true)
     {
         $sess_order_no = $this->session->userdata($this->_sess_order_no_name);
-        empty($sess_order_no) === true && show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+
+        if (empty($sess_order_no) === true) {
+            if ($is_error_alert === true) {
+                show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+            } else {
+                return false;
+            }
+        }
 
         return $sess_order_no;
     }

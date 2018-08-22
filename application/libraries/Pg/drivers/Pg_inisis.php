@@ -161,12 +161,16 @@ class Pg_inisis extends CI_Driver
     /**
      * 이니시스 결제 결과 검증 및 리턴
      * @param array $params
-     * @return bool|array
+     * @return array
      */
     public function returnResult($params = [])
     {
         // 리턴 결과
         $returns = array_merge($this->_CI->input->get(null, false), $this->_CI->input->post(null, false));
+
+        // 상점 데이터
+        $return_data = [];
+        empty($returns['merchantData']) === false && parse_str($returns['merchantData'], $return_data);
 
         try {
             // 불필요한 로그 내용 삭제 (authToken)
@@ -233,11 +237,12 @@ class Pg_inisis extends CI_Driver
                         ]);*/
                         
                         return [
+                            'result' => true,
                             'order_no' => $auth_results['MOID'],
-                            'repr_prod_name' => $auth_results['goodsName'],
-                            'req_pay_price' => $auth_results['TotPrice'],
                             'mid' => $auth_results['mid'],
-                            'tid' => $auth_results['tid']
+                            'tid' => $auth_results['tid'],
+                            'total_pay_price' => $auth_results['TotPrice'],
+                            'return_data' => $return_data
                         ];
                     } else {
                         if (strcmp($auth_signature, $auth_results['authSignature']) != 0) {
@@ -262,7 +267,12 @@ class Pg_inisis extends CI_Driver
             }
         } catch (\Exception $e) {
             logger($e->getMessage(), null, 'error', $this->_log_path);
-            return false;
+
+            return [
+                'result' => false,
+                'order_no' => $returns['orderNumber'],
+                'return_data' => $return_data
+            ];
         }
     }
 
@@ -363,7 +373,7 @@ class Pg_inisis extends CI_Driver
         } finally {
             // 로그 전달 파라미터가 있을 경우
             if (empty($log_params) === false) {
-                $is_log = $this->_saveLog($log_params, $order_no);
+                $this->_saveLog($log_params, $order_no);
             }
         }
 

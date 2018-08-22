@@ -533,7 +533,7 @@
                 return;
             }
 
-/*            // 사용포인트 체크
+            // 사용포인트 체크
             var url = '{{ site_url('/order/checkUsePoint') }}';
             var data = {
                 '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
@@ -550,7 +550,7 @@
                         $regi_form.find('input[name="use_point"]').val('').trigger('change');
                     }
                 }
-            }, showValidateError, false, 'POST');*/
+            }, showValidateError, false, 'POST');
         });
 
         // 결제금액 계산 및 표기

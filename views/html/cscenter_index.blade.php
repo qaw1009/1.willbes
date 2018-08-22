@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <!-- ActIndex2 -->
-                <div class="ActIndex2 mt70">
+                <div class="ActIndex2 mt45">
                     <div class="LeclistTable c_both">
                         <table cellspacing="0" cellpadding="0" class="listTable csCenterTable upper-gray bdb-gray tx-gray">
                             <colgroup>
@@ -238,7 +238,6 @@
                                             <li><a href="#none">회원정보</a></li>
                                             <li><a href="#none">결제/환불</a></li>
                                             <li><a href="#none">교재</a></li>
-                                            <li><a href="#none">취소/환불/반품</a></li>
                                             <li><a href="#none">온라인수강</a></li>
                                             <li><a href="#none">학원수강</a></li>
                                             <li><a href="#none">모바일</a></li>
@@ -317,7 +316,7 @@
                     <!--LeclistTable -->
                 </div>
                 <!-- ActIndex3 -->
-                <div class="ActIndex3 mt30">
+                <div class="ActIndex3 mt45">
                     <div class="willbes-firstinfo NGEB">
                         <ul>
                             <li class="Tit">
@@ -334,7 +333,7 @@
                     </div>
                 </div>
                 <!-- ActIndex4 -->
-                <div class="ActIndex4 mt30">
+                <div class="ActIndex4 mt45">
                     <div class="widthAuto530 f_left">
                         <div class="willbes-listTable willbes-program mr30 widthAuto330">
                             <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>

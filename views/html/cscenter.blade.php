@@ -92,7 +92,7 @@
                                         <div class="subBox">
                                             <dl>
                                                 <dt><button type="submit" onclick="">전체</button><span class="row-line">|</span></dt>
-                                                <dt><button type="submit" onclick="">결제</buttona><span class="row-line">|</span></dt>
+                                                <dt><button type="submit" onclick="">결제</button><span class="row-line">|</span></dt>
                                                 <dt><button type="submit" onclick="">환불</button></dt>
                                             </dl>
                                         </div>

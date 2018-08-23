@@ -24,8 +24,15 @@
                 <li>
                     <a href="{{ site_url('/home/html/cscenter5') }}">모바일 이용가이드</a>
                 </li>
-                <li>
-                    <a href="{{ site_url('/home/html/cscenter6') }}">수강지원</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/cscenter6_1') }}">수강지원</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">수강지원</li>
+                            <li><a href="{{ site_url('/home/html/cscenter6_1') }}">PC 원격지원</a></li>
+                            <li><a href="{{ site_url('/home/html/cscenter6_2') }}">학습 프로그램 설치</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="{{ site_url('/home/html/cscenter7') }}">부정사용자 규제</a>

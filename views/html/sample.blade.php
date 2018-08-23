@@ -93,6 +93,22 @@
 
     <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/cscenter1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter2') }}">고객센터 > 공지사항 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter3') }}">고객센터 > 1:1상담 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter4') }}">고객센터 > 사이트 이용가이드 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter5') }}">고객센터 > 모바일 이용가이드 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter6_1') }}">고객센터 > PC 원격지원 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter6_2') }}">고객센터 > 학습 프로그램설치 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter7') }}">고객센터 > 부정사용자 규제 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/acad_list') }}">학원수강신청 > 단과반 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/acad_list_package') }}">학원수강신청 > 종합반 page 이동</a><br/><br/>

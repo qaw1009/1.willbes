@@ -2112,8 +2112,8 @@ table.lecTable {
     letter-spacing: 0;
 }
 table.lecTable tr td {
-    height: 120px;
     line-height: 16px;
+    padding: 15px 0;
 }
 table.lecTable tr td.w-data {
     line-height: 30px;
@@ -2668,6 +2668,8 @@ table.profTable tr td .priceWrap {
 .willbes-Buy-List table.lecTable tr td {
     height: 30px;
     padding-right: 15px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .willbes-Buy-List table.lecTable .w-lectit {
     padding-left: 10px;
@@ -2776,8 +2778,15 @@ table.profTable tr td .priceWrap {
 #Sticky {
     clear: both;
 }
-.sticky-menu {
+.sticky-Wrap {
     position: relative;
+    height: 45px;
+}
+.sticky-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     background: #fff;
     height: 45px;
@@ -2808,7 +2817,8 @@ table.profTable tr td .priceWrap {
 }
 .sticky-top {
     position: absolute;
-    top: -45px;
+    top: 0;
+    left: 0;
     display: block;
     clear: both;
 }
@@ -5186,10 +5196,10 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 202px;
 }
 .willbes-info .List-Table {
-    margin-top: 1px;
+
 }
 .willbes-info .List-Table li {
-    line-height: 42px;
+    line-height: 44px;
     height: 44px;
 }
 .willbes-info .List-Table li a {
@@ -5587,37 +5597,35 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 25px;
     line-height: 25px;
 }
-
 /* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex2 */
 .Mypage_PASS_Index .ActIndex2 table.lecTable tr td.w-list {
     background: #f9f9f9;
     font-size: 14px;
     line-height: 18px;
+    padding: 0;
 }
-
+.Mypage_PASS_Index .ActIndex2 table.lecTable tr td.w-list a {
+    display: block; 
+    padding: 0
+}
 /* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
 .Mypage_PASS_Index .ActIndex3 {
     height: 202px;
 }
 .willbes-info .List-Table .aBox {
     float: right;
-    margin: 10px 5px 10px 20px;
+    margin: 11px 5px 11px 20px;
 }
-.willbes-info300 .List-Table li a {
-    width: 300px;
-}
-
 /* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex4 */
 .Mypage_PASS_Index .ActIndex4 {
     height: 202px;
 }
-.willbes-info870 .List-Table li a {
+.willbes-info860 .List-Table li a {
     width: 870px;
 }
-
-
-
-
+.willbes-info860 .List-Table li span.date {
+    padding-right: 5px;
+}
 
 /* subContainer : Mypage : 공통 */
 .willbes-Mypage-Tit {
@@ -5900,7 +5908,7 @@ table.PassZoneTable .w-data {
 }
 .willbes-Layer-PassBox .passzoneInfo {
     background: #f9f9f9;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 35px;
     letter-spacing: 0;
 }
@@ -5910,6 +5918,9 @@ table.PassZoneTable .w-data {
 }
 .willbes-Layer-PassBox .passzoneInfo li {
     line-height: 23px;
+}
+.willbes-Layer-PassBox .passzoneInfo li.txt {
+    padding-left: 10px;
 }
 .willbes-Layer-PassBox .emailBox {
     float: left;
@@ -6459,7 +6470,7 @@ table.acadTable tr td {
 
 /* subContainer : Mypage : 결제관리 : 포인트관리 */
 .willbes-Mypage-PointBox {
-    height: 70px;
+    height: 55px;
     border-top: 1px solid #edeeef;
     border-bottom: 1px solid #edeeef;
 }
@@ -6469,7 +6480,7 @@ table.acadTable tr td {
     border-right: 1px solid #edeeef;
     font-size: 14px;
     text-align: center;
-    line-height: 68px;
+    line-height: 53px;
     letter-spacing: 0;
 }
 .willbes-Mypage-PointBox ul li span {

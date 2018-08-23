@@ -174,8 +174,8 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none" onclick="openWin('STARTPASS')"><span class="bBox blueBox NSK">수강시작 ></span></a>
-                                            <a href="#none"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>
+                                            <a href="#none" onclick="openWin('STARTPASS')"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -317,11 +317,11 @@
             <div class="lecMoreWrap">
                 <div class="PASSZONE-List widthAutoFull">
                     <ul class="passzoneInfo tx-gray NGR">
-                        <li class="strong">· 수강시작일 설정</li>
-                        <li>- 수강시작일은 개강일 전까지만 변경 가능합니다.</li>
-                        <li>- '시작일변경' 버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</li>
-                        <li>- 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.</li>
-                        <li>- 수강시작이 이루어진 강좌는 시작일 변경이 불가능 합니다.</li>
+                        <li class="tit strong">· 수강시작일 설정</li>
+                        <li class="txt">- 수강시작일은 개강일 전까지만 변경 가능합니다.</li>
+                        <li class="txt">- '시작일변경' 버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</li>
+                        <li class="txt">- 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.</li>
+                        <li class="txt">- 수강시작이 이루어진 강좌는 시작일 변경이 불가능 합니다.</li>
                     </ul>
                     <div class="PASSZONE-Lec-Section">
                         <div class="Search-Result strong mt40 mb15 tx-gray">· 수강시작일 변경</div>

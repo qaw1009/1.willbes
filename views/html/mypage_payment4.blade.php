@@ -118,7 +118,7 @@
             </ul>
             <div class="tabBox mt20">
                 <div id="point1">
-                    <table cellspacing="0" cellpadding="0" class="userPointTable NG" style="height: 60px;">
+                    <table cellspacing="0" cellpadding="0" class="userPointTable h55 NG">
                         <colgroup>
                             <col style="width: 50%;"/>
                             <col style="width: 50%;"/>
@@ -648,11 +648,11 @@
 
                 <div class="PASSZONE-List widthAutoFull">
                     <ul class="passzoneInfo tx-gray NGR">
-                        <li class="strong">· 쿠폰등록안내
-                        <li>- 오프라인에서 발급받은 쿠폰은 쿠폰등록후 사용할 수 있습니다.</li>
-                        <li>- <span class="tx-red">쿠폰등록시, '-' 를 제외한 숫자 12자리만 입력해 주세요.</span></li>
-                        <li>- 쿠폰발급후 등록된 쿠폰 내역에서 쿠폰적용상품과 사용기간을 확인하시기 바랍니다.</li>
-                        <li>- 사용기간내 사용하지 못한 쿠폰은 소멸처리됩니다.</li>
+                        <li class="tit strong">· 쿠폰등록안내
+                        <li class="txt">- 오프라인에서 발급받은 쿠폰은 쿠폰등록후 사용할 수 있습니다.</li>
+                        <li class="txt">- <span class="tx-red">쿠폰등록시, '-' 를 제외한 숫자 12자리만 입력해 주세요.</span></li>
+                        <li class="txt">- 쿠폰발급후 등록된 쿠폰 내역에서 쿠폰적용상품과 사용기간을 확인하시기 바랍니다.</li>
+                        <li class="txt">- 사용기간내 사용하지 못한 쿠폰은 소멸처리됩니다.</li>
                     </ul>
                     <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
                         <tbody>

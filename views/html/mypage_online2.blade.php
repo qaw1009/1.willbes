@@ -582,11 +582,11 @@
 
                 <div class="PASSZONE-List widthAutoFull">
                     <ul class="passzoneInfo tx-gray NGR">
-                        <li class="strong">· 일시정지 신청</li>
-                        <li>- 일시정지는 강좌별로 <span class="tx-red">최대 3회</span>까지 가능합니다.</li>
-                        <li>- 1회 일시정지 기간은 수강잔여일을 초과할 수 없습니다.</li>
-                        <li>- <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span></li>
-                        <li>- '일시정지된 강좌는 일시정지강좌' 에서 확인할 수 있습니다.</li>
+                        <li class="tit strong">· 일시정지 신청</li>
+                        <li class="txt">- 일시정지는 강좌별로 <span class="tx-red">최대 3회</span>까지 가능합니다.</li>
+                        <li class="txt">- 1회 일시정지 기간은 수강잔여일을 초과할 수 없습니다.</li>
+                        <li class="txt">- <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span></li>
+                        <li class="txt">- '일시정지된 강좌는 일시정지강좌' 에서 확인할 수 있습니다.</li>
                     </ul>
                     <div class="PASSZONE-Lec-Section">
                         <div class="Search-Result strong mt40 mb15 tx-gray">· 일시정지 신청</div>
@@ -680,10 +680,10 @@
 
                 <div class="PASSZONE-List widthAutoFull">
                     <ul class="passzoneInfo tx-gray NGR">
-                        <li class="strong">· 수강연장</li>
-                        <li>- 수강연장된 강의는 일시정지를 신청할 수 없습니다.</li>
-                        <li>- 강좌별로 <span class="tx-red">최대3회까지</span>만 가능하며, <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span></li>
-                        <li>- 수강연장은 종료일까지만 신청이 가능하며 5일단위(5일, 10일, 15일)로 신청할 수 있습니다.</li>
+                        <li class="tit strong">· 수강연장</li>
+                        <li class="txt">- 수강연장된 강의는 일시정지를 신청할 수 없습니다.</li>
+                        <li class="txt">- 강좌별로 <span class="tx-red">최대3회까지</span>만 가능하며, <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span></li>
+                        <li class="txt">- 수강연장은 종료일까지만 신청이 가능하며 5일단위(5일, 10일, 15일)로 신청할 수 있습니다.</li>
                     </ul>
                     <div class="PASSZONE-Lec-Section">
                         <div class="Search-Result strong mt40 mb15 tx-gray">· 수강연장 신청</div>

@@ -189,16 +189,22 @@ function fnMove(seq){
 }
 
 // scroll top fixed Script
-$('*[id*=Sticky]:visible').each(function() {
-    var stickyOffset = $('.sticky-menu').offset().top;
-    $(window).scroll(function(){
-        var sticky = $('.sticky-menu'),
-            scroll = $(window).scrollTop();
+function movePos(divId){
+    var hrefTop = $(divId).offset().top;
+    var hrefTopPos = hrefTop - 45;
 
-        if (scroll >= stickyOffset) {
-            sticky.addClass('fixed');
+    $('html, body').animate({
+    scrollTop: hrefTopPos
+    }, 200);
+}
+$('*[id*=Sticky]:visible').ready(function() {
+    var stickyOffset = $('.sticky-menu').offset();
+
+    $(window).scroll(function() {
+        if ( $(document).scrollTop() > stickyOffset.top ) {
+            $('.sticky-menu').addClass('fixed');
         } else {
-            sticky.removeClass('fixed');
+            $('.sticky-menu').removeClass('fixed');
         }
     });
 });

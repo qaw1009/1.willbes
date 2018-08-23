@@ -501,13 +501,13 @@
                 <div class="lecMoreWrap">
                     <div class="PASSZONE-List widthAutoFull LeclistTable withdrawal">
                         <ul class="passzoneInfo tx-gray NGR">
-                            <li class="strong">· 탈퇴전 꼭 확인하세요.</li>
-                            <li>- 회원탈퇴 시, 그동안 윌비스의 <span class="tx-red">모든 이용 내역 및 보유하신 포인트와 쿠폰 등의 혜택은 모두 삭제</span>되며, <span class="tx-red">복구가 불가능</span>합니다.</li>
-                            <li>- 회원탈퇴 후, 임의해지 및 재가입 방지를 목적으로 1년 간 회원의 성명, 휴대폰번호, 아이디, 비밀번호, 이메일 등의 정보를 보관합니다.</li>
-                            <li>- 그 외 개인정보는 개인정보처리방침에 따라 처리됩니다.  <a href="#none" class="tx-red underline">개인정보처리방침 자세히보기 ></a></li>
-                            <li>- 회원탈퇴 후 재가입 시 신규 가입으로 처리되며, 탈퇴 전 사용한 아이디로는 재가입이 불가능합니다.</li>
-                            <li>- 회원탈퇴 즉시 회원정보에 등록된 이메일로 탈퇴 완료 메일이 발송됩니다.</li>
-                            <li>- 최근 배송완료 교재가 있을 경우 교재 환불 기간으로 인해 ‘구매일로부터 30일 이후 탈퇴’가 가능합니다.</li>
+                            <li class="tit strong">· 탈퇴전 꼭 확인하세요.</li>
+                            <li class="txt">- 회원탈퇴 시, 그동안 윌비스의 <span class="tx-red">모든 이용 내역 및 보유하신 포인트와 쿠폰 등의 혜택은 모두 삭제</span>되며, <span class="tx-red">복구가 불가능</span>합니다.</li>
+                            <li class="txt">- 회원탈퇴 후, 임의해지 및 재가입 방지를 목적으로 1년 간 회원의 성명, 휴대폰번호, 아이디, 비밀번호, 이메일 등의 정보를 보관합니다.</li>
+                            <li class="txt">- 그 외 개인정보는 개인정보처리방침에 따라 처리됩니다.  <a href="#none" class="tx-red underline">개인정보처리방침 자세히보기 ></a></li>
+                            <li class="txt">- 회원탈퇴 후 재가입 시 신규 가입으로 처리되며, 탈퇴 전 사용한 아이디로는 재가입이 불가능합니다.</li>
+                            <li class="txt">- 회원탈퇴 즉시 회원정보에 등록된 이메일로 탈퇴 완료 메일이 발송됩니다.</li>
+                            <li class="txt">- 최근 배송완료 교재가 있을 경우 교재 환불 기간으로 인해 ‘구매일로부터 30일 이후 탈퇴’가 가능합니다.</li>
                         </ul>
                         <table cellspacing="0" cellpadding="0" class="listTable withdrawalTable under-gray bdt-gray tx-gray GM">
                             <colgroup>

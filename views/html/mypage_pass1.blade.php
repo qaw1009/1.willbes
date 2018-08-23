@@ -1421,15 +1421,15 @@
 
                 <div class="PASSZONE-List widthAutoFull">
                     <ul class="passzoneInfo tx-gray NGR">
-                        <li class="strong">· 기기등록 유의사항</li>
-                        <li>- MAC Address란 컴퓨터 내부에 장착된 LAN 카드 고유의 일련번호를 말합니다.</li>
-                        <li class="tx-red">- MAC Address는 PC/모바일 제한없이 최대 2대까지 등록이 가능합니다.</li>
-                        <li>- 기기정보는 수강신청후 강의시청 시 자동으로 저장됩니다.</li>
-                        <li class="strong mt30">· 등록기기 초기화(삭제)유의사항</li>
-                        <li>- 초기화(삭제)는 기기불량 등으로 인한 제품변경이나 A/S를 받은 경우,기기를 새로 구매한 경우 이용해 주시기 바랍니다.</li>
-                        <li>- 부득이하게 등록된 컴퓨터나 스마트기기의 변경을 원하실 경우, 고객센터(1588-5006)로 전화주시기 바랍니다.</li>
-                        <li>- 회원님께서 직접 등록기기 초기화(삭제)(MAC Address 초기화)를 하실 수 있으며, <span class="tx-red">직접 초기화(삭제) 횟수는 1회로 제한됩니다.</span></li>
-                        <li>- 수강중인 강좌가 없거나 현재 수강중인 강좌가 있어도 등록기기 초기화가 가능합니다.</li>
+                        <li class="tit strong">· 기기등록 유의사항</li>
+                        <li class="txt">- MAC Address란 컴퓨터 내부에 장착된 LAN 카드 고유의 일련번호를 말합니다.</li>
+                        <li class="txt tx-red">- MAC Address는 PC/모바일 제한없이 최대 2대까지 등록이 가능합니다.</li>
+                        <li class="txt">- 기기정보는 수강신청후 강의시청 시 자동으로 저장됩니다.</li>
+                        <li class="tit strong mt30">· 등록기기 초기화(삭제)유의사항</li>
+                        <li class="txt">- 초기화(삭제)는 기기불량 등으로 인한 제품변경이나 A/S를 받은 경우,기기를 새로 구매한 경우 이용해 주시기 바랍니다.</li>
+                        <li class="txt">- 부득이하게 등록된 컴퓨터나 스마트기기의 변경을 원하실 경우, 고객센터(1588-5006)로 전화주시기 바랍니다.</li>
+                        <li class="txt">- 회원님께서 직접 등록기기 초기화(삭제)(MAC Address 초기화)를 하실 수 있으며, <span class="tx-red">직접 초기화(삭제) 횟수는 1회로 제한됩니다.</span></li>
+                        <li class="txt">- 수강중인 강좌가 없거나 현재 수강중인 강좌가 있어도 등록기기 초기화가 가능합니다.</li>
                     </ul>
                     <div class="PASSZONE-User-Tablets NG">
                         <ul>
@@ -1492,7 +1492,7 @@
                                         <td class="w-update-day">2018.00.00 00:00</td>
                                         <td class="w-user">관리자명</td>
                                         <td class="w-delete-day">2018.00.00 00:00</td>
-                                        <td class="w-reset tx-light-blue">초기화</td>
+                                        <td class="w-reset tx-light-blue"><a href="#none">초기화</a></td>
                                     </tr>
                                     <tr>
                                         <td class="w-eq">모바일</td>

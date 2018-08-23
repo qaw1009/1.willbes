@@ -90,7 +90,7 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="Member mem-renew-Password widthAuto530 pt50">
+        <div class="Member mem-renew-Password widthAuto530 pt15">
             <div class="user-Txt tx-black pb40">
                 <div class="user-sub-Txt tx-gray" style="letter-spacing: 0;">
                     비밀번호를 재설정 해주세요.<br/>
@@ -105,7 +105,7 @@
                     </button>
                 </div>
             </div>
-            <div class="renew-password-Btn btnAuto180 h36 mt60">
+            <div class="renew-password-Btn btnAuto180 h36">
                 <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                     <span>비밀번호 변경하기</span>
                 </button>
@@ -122,7 +122,7 @@
         </div>
         <!-- willbes-Mypage-ONLINEZONE -->
 
-        <div class="Member mem-renew-Password widthAuto530 pt50">
+        <div class="Member mem-renew-Password widthAuto530 pt15">
             <div class="user-Txt tx-black pb40">
                 <div class="user-sub-Txt tx-gray" style="letter-spacing: 0;">
                     회원님의 정보를 더 안전하게 보호하기 위해 비밀번호를 다시 한 번 확인합니다.<br/>
@@ -135,7 +135,7 @@
                     <input type="password" id="USER_PWD_NEW" name="USER_PWD_NEW" class="iptPwdNew" placeholder="비밀번호를 입력해 주세요." maxlength="30">
                 </div>
             </div>
-            <div class="renew-password-Btn btnAuto180 h36 mt60">
+            <div class="renew-password-Btn btnAuto180 h36">
                 <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                     <span>확인</span>
                 </button>

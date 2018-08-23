@@ -243,20 +243,20 @@
         <div id="Sticky" class="sticky-Wrap">
             <div class="sticky-menu NG">
                 <ul>
-                    <li><a href="#Class">강좌정보 ▼</a></li>
+                    <li><a href="#none" onclick="movePos('#Class');">강좌정보 ▼</a></li>
                     <li class="row-line">|</li>
-                    <li><a href="#BookInfo">교재정보 ▼</a></li>
+                    <li><a href="#none" onclick="movePos('#BookInfo');">교재정보 ▼</a></li>
                     <li class="row-line">|</li>
-                    <li><a href="#Leclist">강의목차 ▼</a></li>
+                    <li><a href="#none" onclick="movePos('#Leclist');">강의목차 ▼</a></li>
                     <li class="row-line">|</li>
-                    <li><a href="#Reply">수강후기 ▼</a></li>
+                    <li><a href="#none" onclick="movePos('#Reply');">수강후기 ▼</a></li>
                 </ul>
             </div>
         </div>
         <!-- sticky-menu -->
    
         <div class="willbes-Class p_re c_both">
-            <a name="Class" class="sticky-top"></a>
+            <a id="Class" name="Class" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">강좌정보</div>
             <div class="classInfoTable GM">
                 <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
@@ -301,7 +301,7 @@
         <!-- TopBtn-->
 
         <div class="willbes-BookInfo p_re c_both">
-            <a name="BookInfo" class="sticky-top"></a>
+            <a id="BookInfo" name="BookInfo" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">교재정보</div>
             <div class="bookInfo">
                 <div class="bookImg">
@@ -364,7 +364,7 @@
         <!-- TopBtn-->
 
         <div class="willbes-Leclist p_re c_both">
-            <a name="Leclist" class="sticky-top"></a>   
+            <a id="Leclist" name="Leclist" class="sticky-top"></a>   
             <div class="willbes-Lec-Tit NG tx-black">강의목차</div>
             <div class="LeclistTable">
                 <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
@@ -440,7 +440,7 @@
         <!-- TopBtn-->
 
         <div class="willbes-Reply p_re c_both">
-            <a name="Reply" class="sticky-top"></a>
+            <a id="Reply" name="Reply" class="sticky-top"></a>
             <div class="willbes-Lec-Tit NG tx-black">수강후기</div>
             <div class="ReplylistTable tx-gray">
                 <div class="replyBox">

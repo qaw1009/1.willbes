@@ -100,7 +100,7 @@
             <div class="tabBox mt40">
                 <div id="point1">
                     <span class="subTit tx-gray">답변대기 수가 표시됩니다.</span>
-                    <div class="willbes-Mypage-PointBox NG">
+                    <div class="willbes-Mypage-PointBox h55 NG">
                         <ul>
                             <li class="Tit">1:1 상담현황</li>
                             <li>답변대기 <a href="#none" class="tx-light-blue">1</a>건</li>
@@ -350,7 +350,7 @@
                 </div>
                 <div id="point2">
                     <span class="subTit tx-gray">2답변대기 수가 표시됩니다.</span>
-                    <div class="willbes-Mypage-PointBox NG">
+                    <div class="willbes-Mypage-PointBox h55 NG">
                         <ul>
                             <li class="Tit">1:1 상담현황</li>
                             <li>답변대기 <a href="#none" class="tx-light-blue">5</a>건</li>

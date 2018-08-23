@@ -154,7 +154,7 @@
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td class="w-list NGEB">무한<br/>PASS<br/>+</td>
+                                    <td class="w-list NGEB"><a href="#none">무한<br/>PASS<br/>+</a></td>
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">77%</span>
                                     </td>
@@ -180,7 +180,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-list NGEB">패키지<br/>+</td>
+                                    <td class="w-list NGEB"><a href="#none">패키지<br/>+</a></td>
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">5%</span>
                                     </td>
@@ -206,7 +206,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-list NGEB">단강좌<br/>+</td>
+                                    <td class="w-list NGEB"><a href="#none">단강좌<br/>+</a></td>
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">9%</span>
                                     </td>
@@ -240,7 +240,7 @@
             </div>
             <!-- ActIndex3 -->
             <div class="ActIndex3 mt35">
-                <div class="willbes-listTable willbes-info willbes-info300 widthAuto445 f_left">
+                <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
                     <div class="will-Tit NG">나의 상담내역 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                     <ul class="List-Table GM tx-gray">
                         <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
@@ -249,7 +249,7 @@
                         <li>등록된 상담 내용이 없습니다.</li>
                     </ul>
                 </div>
-                <div class="willbes-listTable willbes-info willbes-info300 widthAuto445 f_left ml50">
+                <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left ml50">
                     <div class="will-Tit NG">나의 학습Q&A <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                     <ul class="List-Table GM tx-gray">
                         <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
@@ -261,7 +261,7 @@
             </div>
             <!-- ActIndex4 -->
             <div class="ActIndex4 mt35">
-                <div class="willbes-listTable willbes-info willbes-info870 widthAuto940 f_left">
+                <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
                     <div class="will-Tit NG">공지사항 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                     <ul class="List-Table GM tx-gray">
                         <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>

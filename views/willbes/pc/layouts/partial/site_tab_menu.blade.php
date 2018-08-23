@@ -1,4 +1,3 @@
-
 @if(empty($__cfg["TabMenu"]["TreeMenu"]) === false)
 <div class="Menu NSK c_both">
     <h3>

@@ -56,10 +56,9 @@ class SupportFaq extends BaseSupport
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.FaqGroupTypeCcd,b.FaqTypeCcd,b.TypeCcd,b.IsBest,b.AreaCcd
-                       ,b.Title,b.Content,b.ReadCnt,b.SettingReadCnt
+                       ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name,b.FaqGroupTypeCcd_Name, b.FaqTypeCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
-                       ,b.SubjectName,b.CourseName,b.AttachData
-                       ';
+                       ,b.AttachData';
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
@@ -74,11 +73,11 @@ class SupportFaq extends BaseSupport
         $this->load->view('support/faq', [
             'faq_ccd' => $faq_ccd,
             's_faq' => $s_faq,
-            's_sub_faq' => $s_sub_faq,
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
         ]);
     }
+
 
 }

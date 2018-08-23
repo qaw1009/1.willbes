@@ -12,7 +12,7 @@
                 @foreach($arr_input as $key => $val)
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                 @endforeach
-            </form>
+
             <div class="willbes-CScenter c_both">
                 <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
                     · 자주하는 질문
@@ -58,29 +58,28 @@
                                         <colgroup>
                                             <col style="width: 70px;">
                                             <col style="width: 120px;">
-                                            <col>
+                                            <col style="width: 750px;">
                                         </colgroup>
                                         <thead>
                                         <tr>
                                             <th>No<span class="row-line">|</span></th>
                                             <th>분류<span class="row-line">|</span></th>
-                                            <th>제목<span class="row-line">|</span></th>
+                                            <th>제목</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @if(empty($list))
-                                            <tr class="replyList cscenterList">
-                                                <td colspan="4">
-                                                    등록된 내용이 없습니다.
-                                                </td>
+                                            <tr>
+                                                <td class="w-list tx-center" colspan="3">등록된 내용이 없습니다.</td>
                                             </tr>
                                         @endif
 
                                         @foreach($list as $row)
+
                                         <tr class="replyList cscenterList">
                                             <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_best_reply.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                             <td class="w-select">{{$row['FaqTypeCcd_Name']}}</td>
-                                            <td class="w-list tx-left pl20">{{$row['Title']}}</td>
+                                            <td class="w-list tx-left pl20">@if($row['IsBest'] == '1')<strong>@endif{{$row['Title']}}@if($row['IsBest'] == '1')</strong>@endif</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
                                             <td colspan="5">
@@ -104,6 +103,7 @@
                     <!--LeclistTable -->
                 </div>
             </div>
+            </form>
             <!-- willbes-CScenter -->
 
         </div>

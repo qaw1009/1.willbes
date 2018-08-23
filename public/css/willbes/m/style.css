@@ -87,6 +87,14 @@ body {
     margin-left: 1%;
 }
 
+lh20 {
+    line-height: 20px !important;
+}
+
+lh30 {
+    line-height: 30px !important;
+}
+
 input {
     border: 1px solid #d4d4d4;
 }
@@ -488,6 +496,12 @@ input {
     left: 10px;
     margin-top: -23px;
 }
+.willbes-List-Tit {
+    font-size: 20px;
+    color: #323232;
+    padding: 15px 20px;
+
+}
 .willbes-Txt {
     font-size: 14px;
     color: #3a3a3a;
@@ -497,6 +511,7 @@ input {
 .willbes-Txt.on {
     height: 50px;
     overflow: hidden;
+    margin-bottom: 0 !important;
 }
 .willbes-Txt span {
     vertical-align: baseline;
@@ -505,6 +520,12 @@ input {
     font-size: 18px;
     color: #3a3a3a;
     line-height: 50px;
+}
+.willbes-Txt-Tit .row-line {
+    background: #b5b5b5;
+    width: 1px;
+    height: 12px;
+    margin: 0 10px;
 }
 .willbes-Txt-Tit .MoreBtn {
     float: right;
@@ -585,6 +606,12 @@ input {
 .w-info dt .nBox.n4 {
     background: #333
 }
+.w-info dt .nBox.n5 {
+    background: #fe3333
+}
+.w-info dt .nBox.n6 {
+    background: #46a1dc
+}
 
 /* lecTable : 공통 */
 .lecTable .w-tit {
@@ -609,6 +636,23 @@ input {
 }
 .lecTable .w-info dt {
     display: inline-block;
+}
+.lecTable .w-info.acad {
+    line-height: 30px;
+}
+.lecTable .w-file {
+    font-size: 18px;
+    line-height: 40px;
+}
+.lecTable .w-file a {
+    display: block;
+}
+.lecTable .w-file a img {
+    padding-right: 5px;
+}
+.lecTable .w-txt {
+    font-size: 18px;
+    line-height: 24px;
 }
 .lecTable .w-start {
     font-size: 15px;
@@ -637,22 +681,18 @@ input {
 }
 .lecTable .w-s-date {
     background: #e9e9e9;
-    height: 70px;
     font-size: 16px;
-    text-align: center;
-    margin: 0 -20px;
+    margin: 20px -20px 0;
+    line-height: 69px;
+}
+.lecTable .w-s-date .grid {
     border-top: 1px solid #ccc;
-    line-height: 70px;
+    padding-left: 20px;
 }
 .lecTable .w-s-date input[type="text"] {
     width: 20%; 
-    max-width: 120px;
     height: 45px;
 }
-
-
-
-
 .lecTable .w-line {
     background: #e9e9e9;
     height: 15px;
@@ -703,6 +743,12 @@ input {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
+.lecMore a {
+    display: block;
+}
+.lecMore span {
+    vertical-align: baseline;
+}
 .AddlecMore {
     clear: both;
     background: #1a8ccc;
@@ -716,12 +762,6 @@ input {
     text-align: center;
     line-height: 55px;
 }
-.lecMore a {
-    display: block;
-}
-.lecMore span {
-    vertical-align: baseline;
-}
 .BuylecMore {
     clear: both;
     background: #1a8ccc;
@@ -733,6 +773,18 @@ input {
     color: #fff;
     text-align: center;
     line-height: 55px;
+}
+.lecSubject {
+    clear: both;
+    background: #4f4f4f;
+    height: 70px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 70px;
+}
+.lecSubject a {
+    display: block;
 }
 .Fixbtn {
     position: fixed;
@@ -1012,8 +1064,23 @@ input {
     line-height: 30px;
 }
 
-
-
+/* 자주하는 질문 */
+.replyList.willbes-Open-Table {
+    cursor: pointer;
+}
+.replyList.willbes-Open-Table .MoreBtn {
+    background: url("../../../img/willbes/m/mypage/icon_arrow_on.png") no-repeat center center;
+    width: 46px;
+    height: 46px;   
+    padding-right: 0;
+    text-indent: -9999px;
+} 
+.replyList.willbes-Open-Table.hover .MoreBtn {
+    background: url("../../../img/willbes/m/mypage/icon_arrow_off.png") no-repeat center center;
+} 
+.willbes-Open-List {
+    display: none;
+}
 
 
 

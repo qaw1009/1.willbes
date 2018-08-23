@@ -503,7 +503,10 @@
                         <ul class="passzoneInfo tx-gray NGR">
                             <li class="tit strong">· 탈퇴전 꼭 확인하세요.</li>
                             <li class="txt">- 회원탈퇴 시, 그동안 윌비스의 <span class="tx-red">모든 이용 내역 및 보유하신 포인트와 쿠폰 등의 혜택은 모두 삭제</span>되며, <span class="tx-red">복구가 불가능</span>합니다.</li>
-                            <li class="txt">- 회원탈퇴 후, 임의해지 및 재가입 방지를 목적으로 1년 간 회원의 성명, 휴대폰번호, 아이디, 비밀번호, 이메일 등의 정보를 보관합니다.</li>
+                            <li class="txt">
+                                - 회원탈퇴 후, 임의해지 및 재가입 방지를 목적으로 1년 간 회원의 성명, 휴대폰번호, 아이디, 비밀번호, 이메일 등의 정보를<br/>
+                                 &nbsp;&nbsp; 보관합니다.
+                            </li>
                             <li class="txt">- 그 외 개인정보는 개인정보처리방침에 따라 처리됩니다.  <a href="#none" class="tx-red underline">개인정보처리방침 자세히보기 ></a></li>
                             <li class="txt">- 회원탈퇴 후 재가입 시 신규 가입으로 처리되며, 탈퇴 전 사용한 아이디로는 재가입이 불가능합니다.</li>
                             <li class="txt">- 회원탈퇴 즉시 회원정보에 등록된 이메일로 탈퇴 완료 메일이 발송됩니다.</li>

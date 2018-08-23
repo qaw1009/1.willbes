@@ -25,4 +25,18 @@
 
     <a href="{{ site_url('/home/html/m/mypage_online4') }}">내강의실 > 온라인강좌 > 수강종료강좌 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/m/mypage_online5') }}">내강의실 > 온라인강좌 > 시작일변경 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_online6') }}">내강의실 > 온라인강좌 > 일시정지 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_acad1') }}">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_acad2') }}">내강의실 > 학원강좌 > 수강종료강좌 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}">내강의실 > 고객센터 > 공지사항 List page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_csnotice_read') }}">내강의실 > 고객센터 > 공지사항 Read page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/m/mypage_csqna') }}">내강의실 > 고객센터 > 자주하는 질문 page 이동</a><br/><br/>
+
 </div>

@@ -74,17 +74,17 @@
                 }
             });
         });
-
+        
         // 내강의실 온라인강좌 버튼 Script
         $(function() {
             $('.willbes-Open-Table .MoreBtn a').click(function() {
                 var $lec_info_table = $(this).parents('.willbes-Open-Table').find('.openTable');
 
                 if ($lec_info_table.is(':hidden')) {
-                    $lec_info_table.show().css('display','block');
+                    $lec_info_table.show().css('visibility','visible');
                     $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off.png');
                 } else {
-                    $lec_info_table.hide().css('display','none');
+                    $lec_info_table.hide().css('visibility','hidden');
                     $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
                 }
             });

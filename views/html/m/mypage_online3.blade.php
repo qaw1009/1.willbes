@@ -62,8 +62,8 @@
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <span class="w-txt">휴학 : 2018-00-00 ~2018-00-00</span>
-                                    <ul class="f_right">
+                                    <span class="w-subtxt">휴학 : 2018-00-00 ~2018-00-00</span>
+                                    <ul class="f_right one">
                                         <li class="btn_white f_right"><a href="#none">일시정지해제</a></li>
                                     </ul> 
                                 </div>
@@ -84,8 +84,8 @@
                                     <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <span class="w-txt">휴학 : 2018-00-00 ~2018-00-00</span>
-                                    <ul class="f_right">
+                                    <span class="w-subtxt">휴학 : 2018-00-00 ~2018-00-00</span>
+                                    <ul class="f_right one">
                                         <li class="btn_white f_right"><a href="#none">일시정지해제</a></li>
                                     </ul> 
                                 </div>
@@ -106,8 +106,8 @@
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <span class="w-txt">휴학 : 2018-00-00 ~2018-00-00</span>
-                                    <ul class="f_right">
+                                    <span class="w-subtxt">휴학 : 2018-00-00 ~2018-00-00</span>
+                                    <ul class="f_right one">
                                         <li class="btn_white f_right"><a href="#none">일시정지해제</a></li>
                                     </ul> 
                                 </div>
@@ -128,8 +128,8 @@
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <span class="w-txt">휴학 : 2018-00-00 ~2018-00-00</span>
-                                    <ul class="f_right">
+                                    <span class="w-subtxt">휴학 : 2018-00-00 ~2018-00-00</span>
+                                    <ul class="f_right one">
                                         <li class="btn_white f_right"><a href="#none">일시정지해제</a></li>
                                     </ul> 
                                 </div>
@@ -188,8 +188,8 @@
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <span class="w-txt">휴학 : 2018-00-00 ~2018-00-00</span>
-                                    <ul class="f_right">
+                                    <span class="w-subtxt">휴학 : 2018-00-00 ~2018-00-00</span>
+                                    <ul class="f_right one">
                                         <li class="btn_white f_right"><a href="#none">일시정지해제</a></li>
                                     </ul> 
                                 </div>
@@ -210,8 +210,8 @@
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <span class="w-txt">휴학 : 2018-00-00 ~2018-00-00</span>
-                                    <ul class="f_right">
+                                    <span class="w-subtxt">휴학 : 2018-00-00 ~2018-00-00</span>
+                                    <ul class="f_right one">
                                         <li class="btn_white f_right"><a href="#none">일시정지해제</a></li>
                                     </ul> 
                                 </div>

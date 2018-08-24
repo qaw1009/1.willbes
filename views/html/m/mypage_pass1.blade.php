@@ -76,7 +76,7 @@
         <div class="tabBox lineBox lecListBox">
             <div id="leclist1" class="tabContent">
                 <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
-                <div class="btnBox">
+                <div class="btnBox mb20">
                     <div class="InfoBtn btn_white"><a href="#none">삭제</a></div>
                 </div>
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
@@ -87,7 +87,7 @@
                     <tbody>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-data tx-left">
+                            <td class="w-data tx-left pl2p">
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
                                 </dl>
@@ -103,7 +103,7 @@
                         </tr>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-data tx-left">
+                            <td class="w-data tx-left pl2p">
                                 <dl class="w-info">
                                     <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
                                 </dl>
@@ -119,7 +119,7 @@
                         </tr>
                         <tr>
                             <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                            <td class="w-data tx-left">
+                            <td class="w-data tx-left pl2p">
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span></dt>
                                 </dl>
@@ -141,7 +141,7 @@
             </div>
             <div id="leclist2" class="tabContent" style="display: none;">
                 <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
-                <div class="btnBox">
+                <div class="btnBox mb20">
                     <div class="InfoBtn btn_white"><a href="#none" style="padding: 2px;"><img src="{{ img_url('m/mypage/icon_star_off.png') }}"></a></div>
                     <div class="InfoBtn btn_white"><a href="#none">숨기기</a></div>
                 </div>

@@ -30,7 +30,6 @@
                     <div class="willbes-Leclist c_both">
                         @if(empty($campus_ccd) === false)
                         <div class="willbes-Lec-Selected tx-gray">
-
                             <select id="s_campus" name="s_campus" title="campus" class="seleCampus">
                                 <option value="">캠퍼스</option>
                                 @foreach($campus_ccd as $row)
@@ -43,7 +42,7 @@
                             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 65px;">
-                                    @if(empty($campus_ccd) === false)<col style="width: 110px;">@endif
+                                    @if($__cfg['CampusCcdArr'] != 'N')<col style="width: 110px;">@endif
                                     <col style="width: 445px;">
                                     <col style="width: 65px;">
                                     <col style="width: 100px;">
@@ -52,7 +51,7 @@
                                 <thead>
                                 <tr>
                                     <th>No<span class="row-line">|</span></th>
-                                    @if(empty($campus_ccd) === false)<th>캠퍼스<span class="row-line">|</span></th>@endif
+                                    @if($__cfg['CampusCcdArr'] != 'N')<th>캠퍼스<span class="row-line">|</span></th>@endif
                                     <th>제목<span class="row-line">|</span></th>
                                     <th>첨부<span class="row-line">|</span></th>
                                     <th>작성일<span class="row-line">|</span></th>
@@ -69,7 +68,7 @@
                                 @foreach($list as $row)
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                    @if(empty($campus_ccd) === false)<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
+                                    @if($__cfg['CampusCcdArr'] != 'N')<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                     <td class="w-list tx-left pl20">
                                         <a href="{{site_url('support/notice/show?board_idx='.$row['BoardIdx'].'&s_campus='.element('s_campus',$arr_input).'&s_keyword='.urlencode(element('s_keyword',$arr_input)).'&page='.element('page',$paging).'&isBestcheck='.$row['IsBest'])}}">
                                             @if($row['IsBest'] == '1')<strong>@endif{{$row['Title']}}@if($row['IsBest'] == '1')</strong>@endif
@@ -85,8 +84,6 @@
                                 </tr>
                                 @php $paging['rownum']-- @endphp
                                 @endforeach
-
-
                                 </tbody>
                             </table>
                         </div>

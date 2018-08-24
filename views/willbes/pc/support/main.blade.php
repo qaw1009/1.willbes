@@ -188,6 +188,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+
                             <div class="csCenterTable">
                                 <ul class="tabWrap tabcsDepth2 bg-light-gray p_re">
                                     @foreach($faq_ccd as $row)
@@ -284,7 +285,10 @@
                             <div class="will-Tit NG">공지사항 <a class="f_right" href="{{site_url('support/notice')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
                                 @foreach($list_notice as $row)
-                                    <li><a href="{{site_url('support/notice/show?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a><span class="date">{{$row['RegDatm']}}</span></li>
+                                    <li><a href="{{site_url('support/notice/show?board_idx='.$row['BoardIdx'])}}">
+                                            @if($__cfg['CampusCcdArr'] != 'N')<span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span>@endif
+                                                {{$row['Title']}}</a><span class="date">{{$row['RegDatm']}}</span>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>

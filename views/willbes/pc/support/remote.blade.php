@@ -15,7 +15,7 @@
                     <div class="support_infoBox tx-black p_re NGR">
                         <img src="{{ img_url('cs/willbes_pc_support.jpg') }}">
                         <div class="support-Btn NSK">
-                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue"><span>PC 원격지원 시작</span></button>
+                            <button type="button" onclick='remoteOpen()' class="mem-Btn bg-blue bd-dark-blue"><span>PC 원격지원 시작</span></button>
                         </div>
                     </div>
                     <div class="willbes-Leclist mt25 c_both">

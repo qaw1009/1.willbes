@@ -544,6 +544,22 @@ function fn_chk_byte(val){
 }
 
 /**
+ * 원격지원서비스 실행
+ */
+function remoteOpen() {
+    popupOpen("https://www.whelper.co.kr/willbes","whelper","1000","800",'','',"yes");
+}
+
+/*
+단축키
+*/
+$(document).bind('keypress', function(event) {
+    if( event.which===90 && event.shiftKey ) {
+        remoteOpen();
+    }
+});
+
+/**
  * Layer popup
  * Modal Close 버튼이 있는 경우 id를 btn_modal_close로 지정해야 Modal 창이 닫힘
  * 사용 예

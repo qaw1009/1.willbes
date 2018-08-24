@@ -4995,15 +4995,37 @@ ul li.profList .willbes-Layer-ProfileBox {
 .csCenterTable tr.SearchBox {
     border-top: 2px solid #000;
 }
-.csCenterTable tr th ul {
+.csCenterTable ul {
+    text-align: center;
     height: 50px;
     border-bottom: 2px solid #b5b5b5;
 }
-.csCenterTable tr th ul li {
+.csCenterTable ul li {
     display: inline-block;
     margin: 0 45px;
     line-height: 50px;
+    width: auto;
+    height: 50px;
+    float: inherit;
 }
+.csCenterTable ul li:first-child a {
+    border: none;
+}
+.csCenterTable ul li a {
+    background: none;
+    border: none;
+    height: auto;
+    line-height: 48px;
+}
+
+.csCenterTable ul li a.on {
+    background: none;
+    height: auto;
+    border: none;
+    line-height: 48px;
+    color: #323232;
+}
+
 .csCenterTable .replyList .arrow-Btn {
     background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 -18px;
     float: right;
@@ -5213,6 +5235,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-info .List-Table li a {
     float: left;
     width: 295px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 .willbes-info .List-Table li .date {
     float: right;

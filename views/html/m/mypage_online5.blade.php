@@ -55,7 +55,7 @@
             <tbody>
                 <tr>
                     <td class="w-num"><strong>1차</strong></td>
-                    <td class="w-data tx-left">
+                    <td class="w-data tx-left pl2p">
                         <dl class="w-info">
                             <dt>[수강변경일] 2018-00-00 ~ 2018-00-00</dt>
                         </dl>
@@ -66,7 +66,7 @@
                 </tr>
                 <tr>
                     <td class="w-num"><strong>2차</strong></td>
-                    <td class="w-data tx-left">
+                    <td class="w-data tx-left pl2p">
                         <dl class="w-info">
                             <dt>[수강변경일] 2018-00-00 ~ 2018-00-00</dt>
                         </dl>
@@ -77,7 +77,7 @@
                 </tr>
                 <tr>
                     <td class="w-num"><strong>3차</strong></td>
-                    <td class="w-data tx-left">
+                    <td class="w-data tx-left pl2p">
                         <dl class="w-info">
                             <dt>[수강변경일] 2018-00-00 ~ 2018-00-00</dt>
                         </dl>

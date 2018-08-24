@@ -70,7 +70,7 @@
                                     <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_right">
+                                    <ul class="f_right two">
                                         <li class="btn_white"><a href="#none">일시정지</a></li>
                                         <li class="btn_blue"><a href="#none">수강연장</a></li>
                                     </ul> 
@@ -91,7 +91,7 @@
                                     <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="f_right">
+                                    <ul class="f_right two">
                                         <li class="btn_white"><a href="#none">일시정지</a></li>
                                         <li class="btn_blue"><a href="#none">수강연장</a></li>
                                     </ul> 
@@ -142,7 +142,7 @@
                                         <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
                                     </dl>
                                     <div class="w-start tx-gray">                      
-                                        <ul class="f_left">
+                                        <ul class="f_left two">
                                             <li class="btn_white"><a href="#none">일시정지</a></li>
                                             <li class="btn_blue"><a href="#none">수강연장</a></li>
                                         </ul> 
@@ -171,7 +171,7 @@
                                         <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                     </dl>
                                     <div class="w-start tx-gray">                        
-                                        <ul class="f_right">
+                                        <ul class="f_right two">
                                             <li class="btn_white"><a href="#none">시작일변경</a></li>
                                             <li class="btn_blue"><a href="#none">수강시작</a></li>
                                         </ul> 
@@ -193,7 +193,7 @@
                                         <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
                                     </dl>
                                     <div class="w-start tx-gray">                        
-                                        <ul class="f_right">
+                                        <ul class="f_right two">
                                             <li class="btn_white"><a href="#none">시작일변경</a></li>
                                             <li class="btn_blue"><a href="#none">수강시작</a></li>
                                         </ul> 

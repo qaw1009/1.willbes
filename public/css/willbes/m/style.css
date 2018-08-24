@@ -87,6 +87,13 @@ body {
     margin-left: 1%;
 }
 
+.pl1p {
+    padding-left: 1%;
+}
+.pl2p {
+    padding-left: 2% !important;
+}
+
 lh20 {
     line-height: 20px !important;
 }
@@ -132,24 +139,24 @@ input {
 }
 #aside h1 {
     background: #1a8ccc;
-    height: 72px;
-    font-size: 25px;
+    height: 52px;
+    font-size: 18px;
     color: #fff;
-    line-height: 72px;
+    line-height: 52px;
     padding-left: 20px;
 }
 #aside .List {
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
-    line-height: 60px;
+    line-height: 40px;
     padding-left: 20px;
     border-bottom: 1px solid #ccc;
 }
 #aside .Depth,
 #aside .List-Depth {
-    font-size: 14px;
+    font-size: 12px;
     color: #4d4d4d;
-    line-height: 30px;
+    line-height: 20px;
     padding: 15px 0 15px 20px;
     border-bottom: 1px solid #ccc;
 }
@@ -206,7 +213,7 @@ input {
 #header .myLog .row-line {
     background: #b7b7b7;
     width: 1px;
-    height: 16px;
+    height: 10px;
     margin: -5px 10px 0;
 }
 
@@ -464,7 +471,7 @@ input {
 }
 #Footer .ft-Link ul li {
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 5px;
 }
 #Footer address {
     font-size: 12px;
@@ -588,12 +595,13 @@ input {
 
 /* 상태 공통 */
 .w-info dt .nBox {
+    display: inline-block;
     height: 20px;
     font-size: 12px;
     color: #fff;
     text-align: center;
     line-height: 20px;
-    padding: 1px 8px;
+    padding: 0 6px;
 }
 .w-info dt .nBox.n1 {
     background: #f14078;
@@ -654,36 +662,48 @@ input {
     font-size: 14px;
     line-height: 24px;
 }
+.lecTable .w-subtxt {
+    width: 50%;
+
+} 
 .lecTable .w-start {
-    font-size: 15px;
+    font-size: 12px;
     margin: 20px -20px 0;
     padding: 15px 20px;
     border-top: 1px solid #ccc;
-    line-height: 39px;
-    height: 70px;
-}
-.lecTable .w-start ul {
-    width: 50%;
+    line-height: 33px;
+    height: 65px;
 }
 .lecTable .w-start ul li {
     float: left;
-    width: 48%;
-    height: 40px;
+    height: 34px;
     margin: 0 1%;
 }
 .lecTable .w-start ul li a {
     display: block; 
     width: 100%;
     height: 100%;
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
-    line-height: 38px;
+    line-height: 32px;
+}
+.lecTable .w-start ul.one {
+    width: 25%;
+}
+.lecTable .w-start ul.one li {
+    width: 98%;
+}
+.lecTable .w-start ul.two {
+    width: 50%;
+}
+.lecTable .w-start ul.two li {
+    width: 48%;
 }
 .lecTable .w-s-date {
     background: #e9e9e9;
-    font-size: 16px;
+    font-size: 14px;
     margin: 20px -20px 0;
-    line-height: 69px;
+    line-height: 49px;
 }
 .lecTable .w-s-date .grid {
     border-top: 1px solid #ccc;
@@ -691,7 +711,7 @@ input {
 }
 .lecTable .w-s-date input[type="text"] {
     width: 20%; 
-    height: 45px;
+    height: 30px;
 }
 .lecTable .w-line {
     background: #e9e9e9;
@@ -711,8 +731,8 @@ input {
     padding-right: 20px;
 }
 .lecTable input[type="checkbox"] {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 /* ETC : 나머지 버튼 공통 */
@@ -730,7 +750,7 @@ input {
 }
 .btnBox {
     float: left;
-    margin: 20px;
+    margin: 0 20px;
 }
 .lecMore {
     clear: both;
@@ -834,6 +854,7 @@ input {
     color: #1a8ccc;
 }
 .lecListBox .lecTxt {
+    float: left;
     font-size: 12px;
     color: #999;
     padding: 20px 30px;
@@ -894,8 +915,8 @@ input {
     margin-left: 15px;
 }
 .passListTabs tr td {
-    padding-top: 3%;
-    padding-bottom: 3%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 .passListTabs tr td:first-child {
     padding-left: 0;
@@ -921,7 +942,7 @@ input {
 .passListTabs .w-free li {
     float: left;
     width: 23%;
-    height: 40px;
+    height: 34px;
 }
 .passListTabs .w-free li:last-child {
     width: 31%
@@ -930,12 +951,12 @@ input {
     display: block; 
     width: 100%;
     height: 100%;
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
-    line-height: 38px;
+    line-height: 32px;
 }
 .passListTabs .w-free li.w-data a {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 45px;
     text-align: right;
 }
@@ -1054,7 +1075,7 @@ input {
 
 /* 시작일변경 */
 .daysListTabs table tr td {
-    padding: 20px 0 !important;
+    padding-right: 0 !important;
 }
 .daysListTabs table tr td.w-num {
     font-size: 14px;

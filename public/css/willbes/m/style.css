@@ -302,7 +302,7 @@ input {
     width: 100%;
     height: 47px;
     line-height: 46px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     color: #000;
     text-align: center;
@@ -503,13 +503,13 @@ input {
 
 }
 .willbes-Txt {
-    font-size: 14px;
+    font-size: 12px;
     color: #3a3a3a;
-    line-height: 24px;
+    line-height: 20px;
     padding: 0 20px; 
 }
 .willbes-Txt.on {
-    height: 50px;
+    height: 40px;
     overflow: hidden;
     margin-bottom: 0 !important;
 }
@@ -519,7 +519,7 @@ input {
 .willbes-Txt-Tit {
     font-size: 14px;
     color: #3a3a3a;
-    line-height: 50px;
+    line-height: 40px;
 }
 .willbes-Txt-Tit .row-line {
     background: #b5b5b5;
@@ -534,23 +534,24 @@ input {
     font-size: 14px;
 }
 .willbes-Line {
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     text-align: left;
-    line-height: 68px;
+    line-height: 48px;
     background: #1a8ccc;
-    height: 70px;
+    height: 50px;
     padding-left: 20px;
 }
 .willbes-Lec-Selected {
     float: left;
     width: 100%;
-    padding: 30px 20px 20px;
+    padding: 3% 20px 20px;
 }
 .willbes-Lec-Selected select {
+    background: #fff;
     float: left;
     font-size: 14px;
-    height: 60px;
+    height: 45px;
 }
 
 /* btn : 공통 */
@@ -615,15 +616,14 @@ input {
 
 /* lecTable : 공통 */
 .lecTable .w-tit {
-    font-size: 16px;
+    font-size: 14px;
     color: #323232;
-    line-height: 24px;
-    padding: 10px 0;
+    line-height: 20px;
 }
 .lecTable .w-info {
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 16px;
 }
 .lecTable .w-info span {
     vertical-align: baseline;
@@ -631,8 +631,8 @@ input {
 .lecTable .w-info .row-line {
     background: #b5b5b5;
     width: 1px;
-    height: 12px;
-    margin: 0 10px;
+    height: 8px;
+    margin: 0 5px;
 }
 .lecTable .w-info dt {
     display: inline-block;
@@ -718,7 +718,7 @@ input {
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;
-    font-size: 14px;
+    font-size: 12px;
 }
 .InfoBtn a {
     display: block;
@@ -735,11 +735,11 @@ input {
 .lecMore {
     clear: both;
     background: #f7f7f7;
-    height: 70px;
-    font-size: 16px;
+    height: 50px;
+    font-size: 14px;
     color: #999;
     text-align: center;
-    line-height: 70px;
+    line-height: 50px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
@@ -757,7 +757,7 @@ input {
 }
 .AddlecMore a {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     text-align: center;
     line-height: 45px;
@@ -769,7 +769,7 @@ input {
 }
 .BuylecMore a {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     text-align: center;
     line-height: 45px;
@@ -777,11 +777,11 @@ input {
 .lecSubject {
     clear: both;
     background: #4f4f4f;
-    height: 70px;
-    font-size: 16px;
+    height: 50px;
+    font-size: 14px;
     color: #fff;
     text-align: center;
-    line-height: 70px;
+    line-height: 50px;
 }
 .lecSubject a {
     display: block;
@@ -795,15 +795,15 @@ input {
 }
 .Fixbtn ul li {
     float:left;
-    height: 65px;
+    height: 45px;
 }
 .Fixbtn ul li a {
     display: block;
     width: 100%;
     height: 100%;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
-    line-height: 65px;
+    line-height: 45px;
 }
 .Fixbtn.one ul li {
     width: 100%;
@@ -834,7 +834,7 @@ input {
     color: #1a8ccc;
 }
 .lecListBox .lecTxt {
-    font-size: 15px;
+    font-size: 12px;
     color: #999;
     padding: 20px 30px;
 }
@@ -870,7 +870,7 @@ input {
 
 /* 무한 PASS존 자세히 보기 : Tabs : buylecTable */
 .buylecTable tr td {
-    padding: 40px 0 30px;
+    padding: 4% 0 3%;
 }
 .buylecTable tr td.w-chk {
     vertical-align: top;
@@ -881,8 +881,8 @@ input {
 
 /* 무한 PASS존 자세히 보기 : Tabs : passListTabs */
 .passListTabs thead tr td {
-    padding-top: 40px;
-    padding-bottom: 20px;  
+    padding-top: 4%;
+    padding-bottom: 2%;  
 }
 .passListTabs thead tr td.w-chk input[type="checkbox"] {
     float: left;
@@ -953,7 +953,7 @@ input {
     float: left;
 }
 .willbes-Lec-Search input[type="text"] {
-    height: 60px;
+    height: 45px;
 }
 .willbes-Lec-Search button.search-Btn {
     background: url("../../../img/willbes/m/main/icon_search_btn.png") no-repeat 0 0;
@@ -966,11 +966,11 @@ input {
 }
 .willbes-Lec-Search .reset-Btn {
     background: #4f4f4f;
-    height: 60px;
+    height: 45px;
     font-size: 14px;
     color: #fff;
     text-align: center;
-    line-height: 60px;
+    line-height: 45px;
 }
 .willbes-Lec-Search .reset-Btn a {
     display: block;
@@ -981,7 +981,7 @@ input {
     float: left;
     width: 100%;
     padding: 40px;  
-    margin-top: 30px;
+    margin-top: 20px;
     border-top: 1px solid #ccc;  
 }
 .willbes-User-Tablet dl {
@@ -990,19 +990,19 @@ input {
 }
 .willbes-User-Tablet dl dt {
     display: inline-block;
-    font-size: 19px;
+    font-size: 14px;
 }
 .willbes-User-Tablet dl dt .row-line {
     background: #b5b5b5;
     width: 1px;
-    height: 17px;
-    margin: 0 10px;
+    height: 10px;
+    margin: 0 5px;
 }
 .willbes-User-Tablet ul li {
     float: left;
     width: 25%;
     height: 42px;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
     line-height: 40px;
     border-top: 1px solid #d4d4d4;
@@ -1024,7 +1024,7 @@ input {
     color: #fff;
 }
 .tabletTabs table tr td {
-    padding: 30px 20px;
+    padding: 3% 20px;
 }
 .tabletTabs table tr td .w-info {
     line-height: 30px;

@@ -34,7 +34,7 @@
                     <dl class="w-info tx-gray">
                         <dt>[수강기간] <span class="tx-blue">2018.10.20 ~ 2018.11.20</span> <span class="tx-black">(잔여기간<span class="tx-pink">100일</span>)</span></dt>
                     </dl>
-                    <div class="InfoBtn btn_white mt25"><a href="#none">등록기기정보 <span>▶</span></a></div>
+                    <div class="InfoBtn btn_white mt10"><a href="#none">등록기기정보 <span>▶</span></a></div>
                 </td>
             </tr>
         </tbody>

@@ -107,7 +107,7 @@
                         <div class="w-tit">
                             <a href="#none">1강. 강의명이 출력됩니다.</a>
                         </div>
-                        <dl class="w-info tx-gray mb30">
+                        <dl class="w-info tx-gray mb10">
                             <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                             <dt>수강시간 : 60분<span class="row-line">|</span></dt>
                             <dt>잔여기간 : <span class="tx-blue">60분</span></dt>
@@ -126,7 +126,7 @@
                         <div class="w-tit">
                             <a href="#none">2강. 강의명이 출력됩니다.</a>
                         </div>
-                        <dl class="w-info tx-gray mb30">
+                        <dl class="w-info tx-gray mb10">
                             <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                             <dt>수강시간 : 60분<span class="row-line">|</span></dt>
                             <dt>잔여기간 : <span class="tx-blue">60분</span></dt>
@@ -145,7 +145,7 @@
                         <div class="w-tit">
                             <a href="#none">3강. 강의명이 출력됩니다.</a>
                         </div>
-                        <dl class="w-info tx-gray mb30">
+                        <dl class="w-info tx-gray mb10">
                             <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                             <dt>수강시간 : 60분<span class="row-line">|</span></dt>
                             <dt>잔여기간 : <span class="tx-blue">60분</span></dt>

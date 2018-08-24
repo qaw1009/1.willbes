@@ -5044,13 +5044,18 @@ ul li.profList .willbes-Layer-ProfileBox {
 } 
 .csCenterTable .SearchBox .sTit {
     font-size: 17px;
-    margin: 0 30px;
+    margin: 0 15px;
 }
 .csCenterTable .willbes-Lec-Search .inputBox {
     width: 570px;
 }
 .csCenterTable .willbes-Lec-Search .inputBox input {
     width: 490px;
+}
+.csCenterTable .SearchBox select {
+    widtH: 90px;
+    height: 30px;
+    padding-bottom: 1px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex3 */

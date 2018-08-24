@@ -206,6 +206,14 @@
                                 <tr class="SearchBox NG">
                                     <td>
                                         <span class="sTit tx-black">자주하는 질문</span>
+                                        <select id="question" name="question" title="question" class="seleQuestion">
+                                            <option selected="selected">회원정보</option>
+                                            <option value="결제/환불">결제/환불</option>
+                                            <option value="교재">교재</option>
+                                            <option value="온라인수강">온라인수강</option>
+                                            <option value="학원수강">학원수강</option>
+                                            <option value="모바일">모바일</option>
+                                        </select>
                                         <span class="willbes-Lec-Search">
                                             <div class="inputBox p_re">
                                                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">

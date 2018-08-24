@@ -10,6 +10,4 @@ class Main extends SupportMain
         parent::__construct();
     }
 
-
-
 }

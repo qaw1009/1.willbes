@@ -71,7 +71,7 @@
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                     @if(empty($campus_ccd) === false)<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                     <td class="w-list tx-left pl20">
-                                        <a href="{{site_url('support/notice/show').'?board_idx='.$row['BoardIdx'].'&s_campus='.element('s_campus',$arr_input).'&s_keyword='.urlencode(element('s_keyword',$arr_input)).'&page='.element('page',$paging).'&isBestcheck='.$row['IsBest']}}">
+                                        <a href="{{site_url('support/notice/show?board_idx='.$row['BoardIdx'].'&s_campus='.element('s_campus',$arr_input).'&s_keyword='.urlencode(element('s_keyword',$arr_input)).'&page='.element('page',$paging).'&isBestcheck='.$row['IsBest'])}}">
                                             @if($row['IsBest'] == '1')<strong>@endif{{$row['Title']}}@if($row['IsBest'] == '1')</strong>@endif
                                         </a>
                                     </td>

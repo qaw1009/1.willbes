@@ -18,21 +18,21 @@
                             <div class="centerList NG">
                                 <ul>
                                     <li>
-                                        <a href="#none">
+                                        <a href="{{site_url('support/notice/index')}}">
                                             <img src="{{ img_url('cs/icon_center1.png') }}">
                                             <div class="nTxt">고객센터<br/>공지사항</div>
                                         </a>
                                     </li>
                                     <li><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
-                                        <a href="#none">
+                                        <a href="{{site_url('support/faq/index')}}">
                                             <img src="{{ img_url('cs/icon_center2.png') }}">
                                             <div class="nTxt">자주하는<br/>질문</div>
                                         </a>
                                     </li>
                                     <li><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
-                                        <a href="#none">
+                                        <a href="{{site_url('support/qna/index')}}">
                                             <img src="{{ img_url('cs/icon_center3.png') }}">
                                             <div class="nTxt">1:1 상담</div>
                                         </a>
@@ -164,107 +164,68 @@
                     <!-- ActIndex2 -->
                     <div class="ActIndex2 mt70">
                         <div class="LeclistTable c_both">
-                            <table cellspacing="0" cellpadding="0" class="listTable csCenterTable upper-gray bdb-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 100px;">
-                                    <col style="width: 100px;">
-                                    <col style="width: 740px;">
-                                </colgroup>
-                                <thead>
-                                <tr class="SearchBox NG">
-                                    <td colspan="3">
-                                        <span class="sTit tx-black">자주하는 질문</span>
-                                        <span class="willbes-Lec-Search">
-                                            <div class="inputBox p_re">
-                                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
-                                                <button type="submit" onclick="" class="search-Btn">
-                                                    <span>검색</span>
-                                                </button>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="bg-light-gray" colspan="3">
-                                        <ul>
-                                            <li><a href="#none">회원정보</a></li>
-                                            <li><a href="#none">결제/환불</a></li>
-                                            <li><a href="#none">교재</a></li>
-                                            <li><a href="#none">취소/환불/반품</a></li>
-                                            <li><a href="#none">온라인수강</a></li>
-                                            <li><a href="#none">학원수강</a></li>
-                                            <li><a href="#none">모바일</a></li>
-                                        </ul>
-                                    </th>
-                                </tr>
-                                </thead>
+                            <table cellspacing="0" cellpadding="0" class="listTable csCenterTable upper-gray tx-gray">
                                 <tbody>
-                                <tr class="replyList w-replyList">
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
-                                    <td class="w-select tx-blue">[회원정보]</td>
-                                    <td class="w-list tx-left pl20">로그인이 되지 않아요. <span class="arrow-Btn">></span></td>
-                                </tr>
-                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
-                                    <td colspan="3">
-                                        로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
-                                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/>
-                                        만약 그래도 로그인에 문제가 생길시에는 불편 하시더라도 동영상 고객센터 (☎1544-6219) 문의해 주시기 바랍니다.
-                                    </td>
-                                </tr>
-
-                                <tr class="replyList">
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
-                                    <td class="w-select tx-blue">[회원정보]</td>
-                                    <td class="w-list tx-left pl20">회원탈퇴는 어떻게 하나요? <span class="arrow-Btn">></span></td>
-                                </tr>
-                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
-                                    <td colspan="3">
-                                        로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
-                                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/>
-                                        만약 그래도 로그인에 문제가 생길시에는 불편 하시더라도 동영상 고객센터 (☎1544-6219) 문의해 주시기 바랍니다.
-                                    </td>
-                                </tr>
-
-                                <tr class="replyList">
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
-                                    <td class="w-select tx-blue">[회원정보]</td>
-                                    <td class="w-list tx-left pl20">회원정보는 어떻게 수정하나요? <span class="arrow-Btn">></span></td>
-                                </tr>
-                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
-                                    <td colspan="3">
-                                        로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
-                                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/>
-                                        만약 그래도 로그인에 문제가 생길시에는 불편 하시더라도 동영상 고객센터 (☎1544-6219) 문의해 주시기 바랍니다.
-                                    </td>
-                                </tr>
-
-                                <tr class="replyList">
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
-                                    <td class="w-select tx-blue">[회원정보]</td>
-                                    <td class="w-list tx-left pl20">가입시 받게 되는 혜택은 무엇이 있나요? <span class="arrow-Btn">></span></td>
-                                </tr>
-                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
-                                    <td colspan="3">
-                                        로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
-                                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/>
-                                        만약 그래도 로그인에 문제가 생길시에는 불편 하시더라도 동영상 고객센터 (☎1544-6219) 문의해 주시기 바랍니다.
-                                    </td>
-                                </tr>
-
-                                <tr class="replyList">
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
-                                    <td class="w-select tx-blue">[회원정보]</td>
-                                    <td class="w-list tx-left pl20">탈퇴 후 재가입이 가능한가요? <span class="arrow-Btn">></span></td>
-                                </tr>
-                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
-                                    <td colspan="3">
-                                        로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
-                                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/>
-                                        만약 그래도 로그인에 문제가 생길시에는 불편 하시더라도 동영상 고객센터 (☎1544-6219) 문의해 주시기 바랍니다.
+                                <tr class="SearchBox NG">
+                                    <td>
+                                        <form id="url_form" name="url_form" method="GET" action="{{site_url('support/faq/index')}}">
+                                            <span class="sTit tx-black">자주하는 질문</span>
+                                            <select id="s_faq" name="s_faq" title="question" class="seleQuestion">
+                                                @foreach($faq_ccd as $row)
+                                                <option value="{{$row['Ccd']}}">{{$row['CcdName']}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="willbes-Lec-Search">
+                                                <div class="inputBox p_re">
+                                                    <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
+                                                    <button type="submit" class="search-Btn">
+                                                        <span>검색</span>
+                                                    </button>
+                                                </div>
+                                            </span>
+                                        </form>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
+                            <div class="csCenterTable">
+                                <ul class="tabWrap tabcsDepth2 bg-light-gray p_re">
+                                    @foreach($faq_ccd as $row)
+                                        <li><a class="qBox" href="#question{{$row['Ccd']}}">{{$row['CcdName']}}</a></li>
+                                    @endforeach
+                                </ul>
+                                <div class="tabBox">
+                                    @foreach($faq_ccd as $row)
+                                    <div id="question{{$row['Ccd']}}" class="tabContent">
+                                        <table cellspacing="0" cellpadding="0" class="listTable csCenterTable upper-gray bdb-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 100px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 740px;">
+                                            </colgroup>
+                                            <tbody>
+                                        @php $int=0 @endphp
+                                        @foreach($list_faq as $list)
+                                            @if($list['FaqGroupTypeCcd'] == $row['Ccd'] && $int < 5)
+                                                <tr class="replyList w-replyList">
+                                                    <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
+                                                    <td class="w-select tx-blue">[{{$list['FaqTypeCcd_Name']}}]</td>
+                                                    <td class="w-list tx-left pl20">{{$list['Title']}}<span class="arrow-Btn">></span></td>
+                                                </tr>
+                                                <tr class="replyTxt w-replyTxt bg-light-gray tx-gray">
+                                                    <td colspan="3">
+                                                        {!! $list['Content'] !!}
+                                                    </td>
+                                                </tr>
+                                                @php $int++ @endphp
+                                            @endif
+                                         @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                         <!--LeclistTable -->
                     </div>
@@ -289,7 +250,7 @@
                     <div class="ActIndex4 mt30">
                         <div class="widthAuto530 f_left">
                             <div class="willbes-listTable willbes-program mr30 widthAuto330">
-                                <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>
+                                <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="{{site_url('support/program/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                                 <dl class="List-Table NG tx-gray">
                                     <dt>
                                         <a href="#none">
@@ -317,15 +278,14 @@
                                     </dt>
                                 </dl>
                             </div>
-                            <a href="#none"><img src="{{ img_url('cs/bnr_mobile.jpg') }}"></a>
+                            <a href="{{site_url('support/mobile/index')}}"><img src="{{ img_url('cs/bnr_mobile.jpg') }}"></a>
                         </div>
                         <div class="willbes-listTable willbes-info widthAuto365 f_left ml45">
-                            <div class="will-Tit NG">공지사항 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>
+                            <div class="will-Tit NG">공지사항 <a class="f_right" href="{{site_url('support/notice')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
-                                <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">3월 31일(금) 새벽시스템점검안내</a><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
+                                @foreach($list_notice as $row)
+                                    <li><a href="{{site_url('support/notice/show?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a><span class="date">{{$row['RegDatm']}}</span></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

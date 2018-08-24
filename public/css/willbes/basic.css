@@ -432,15 +432,19 @@ strong {
 
 .h22 {
   height: 22px !important;
+  line-height: 20px;
 }
 .h27 {
   height: 27px !important;
+  line-height: 25px;
 }
 .h30 {
   height: 30px !important;
+  line-height: 28px;
 }
 .h36 {
   height: 36px !important;
+  line-height: 34px;
 }
 .h42 {
   height: 42px !important;

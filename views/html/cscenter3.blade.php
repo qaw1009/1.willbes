@@ -431,15 +431,15 @@
                         </table>
 
                         <div class="search-Btn mt20 h36 p_re">
-                            <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
-                                <span class="tx-purple-gray">삭제</span>
-                            </button>
-                            <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center">
-                                <span class="tx-purple-gray">수정</span>
-                            </button>
-                            <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
-                                <span>목록</span>
-                            </button>
+                            <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                <a href="#none" class="tx-purple-gray">삭제</a>
+                            </div>
+                            <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center">
+                                <a href="#none" class="tx-purple-gray">수정</a>
+                            </div>
+                            <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
+                                <a href="#none">목록</a>
+                            </div>
                         </div>
 
                     </div>

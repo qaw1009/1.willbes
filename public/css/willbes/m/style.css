@@ -34,6 +34,9 @@ body {
 .width30p {
     width: 30%;
 }
+.width34p {
+    width: 34%;
+}
 .width35p {
     width: 35%;
 }
@@ -552,13 +555,42 @@ input {
 .willbes-Lec-Selected {
     float: left;
     width: 100%;
-    padding: 3% 20px 20px;
+    padding: 30px 20px 20px;
 }
 .willbes-Lec-Selected select {
     background: #fff;
     float: left;
     font-size: 14px;
     height: 45px;
+}
+.willbes-Lec-Selected .chkBox {
+    float: right;
+    font-size: 14px;
+    text-align: right;
+    line-height: 45px;
+}
+.willbes-Lec-Selected .chkBox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 12px 4px;
+}
+.willbes-Lec-Selected .chkBox span {
+    float: right;
+}
+.willbes-WriteBox {
+    width: 100%;
+    float: left;
+    padding: 0 20px;
+}
+.willbes-WriteBox textarea {
+    border: 1px solid #d4d4d4;
+    resize: none;
+    width: 100%;
+    height: 315px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 20px;
 }
 
 /* btn : 공통 */
@@ -620,6 +652,28 @@ input {
 }
 .w-info dt .nBox.n6 {
     background: #46a1dc
+}
+
+.w-info .lBox {
+    display: inline-block;
+    min-width: 50px;
+    height: 30px;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    line-height: 30px;
+    padding: 0 6px;
+    border: 1px solid #000
+}
+.w-info .lBox.n1 {
+    background: #fff;
+    color: #1a8ccc;
+    border-color: #1a8ccc;
+}
+.w-info .lBox.n2 {
+    background: #4b4b4b;
+    color: #fff;
+    border-color: #4b4b4b;
 }
 
 /* lecTable : 공통 */
@@ -749,8 +803,12 @@ input {
 }
 .btnBox {
     clear: both;
+    width: 100%;
     float: left;
-    margin: 0 20px;
+    padding: 0 20px;
+}
+.btnBox ul li {
+    margin-right: 5px
 }
 .lecMore {
     clear: both;
@@ -1094,6 +1152,50 @@ input {
     display: none;
 }
 
+/* 동영상 상담실 */
+.filetype {
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    height: 45px;
+}
+.filetype .file-text {
+    background: #fff;
+    float: left;
+    position: relative;
+    width: 74%;
+    height: 45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    line-height: 45px;
+    z-index: 10;
+}
+.filetype .file-select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    overflow: hidden;
+}
+.filetype .file-select .input-file {
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+.filetype .file-btn {
+    display: inline-block;
+    background: #4f4f4f;
+    height: 45px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+}
 
 
 

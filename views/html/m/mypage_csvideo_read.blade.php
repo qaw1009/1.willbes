@@ -7,7 +7,7 @@
         <button type="button" class="goback" onclick="history.back(-1); return false;">
             <span class="hidden">뒤로가기</span>
         </button>    
-        자주하는 질문
+        동영상 상담실
     </div>
     <div class="willbes-Lec-Selected NG tx-gray">
         <select id="process" name="process" title="process" class="seleProcess width24p">
@@ -40,44 +40,51 @@
 
     <div class="lineTabs lecListTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
-            <colgroup>
-                <col style="width: 87%;">
-                <col style="width: 13%;">
-            </colgroup>
             <tbody>
-                <tr class="replyList willbes-Open-Table">
+                <tr class="list bg-light-gray">
                     <td class="w-data tx-left">
                         <dl class="w-info">
-                            <dt><strong>학원</strong><span class="row-line">|</span><span class="tx-light-blue">회원정보 > 회원가입</span></dt>
+                            <dt>학원<span class="row-line">|</span>노량진</dt>
                         </dl>
                         <div class="w-tit">
-                            가입시 받게되는 혜택은 무엇이 있나요?<br/>
-                            혜택은 무엇이 있나요?
+                            <a href="#none">공개제목이 최대2줄 노출됩니다. 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                         </div>
-                    </td>
-                    <td class="MoreBtn tx-center">></td>
-                </tr>
-                <tr class="replyTxt willbes-Open-List bg-light-gray">
-                    <td class="w-txt NGR" colspan="2">
-                        로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
-                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
-                        소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/>
+                        <dl class="w-info tx-gray">
+                            <dt>2018-00-00<span class="row-line">|</span></dt>
+                            <dt>조회수 : <span class="tx-blue">10</span></dt>
+                        </dl>
                     </td>
                 </tr>
-                <tr class="replyList willbes-Open-Table">
+                <tr class="flie">
+                    <td class="w-file NGR">
+                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                    </td>
+                </tr>
+                <tr class="txt">
+                    <td class="w-txt NGR">
+                        수험생 여러분들께 보다 나은 수강환경을 제공해 드리기 위해<br/>
+                        서버점검 및 개선작업이 진행될 예정입니다.<br/>
+                        점검시간에는 수강이 원활하지 않으니 양해 부탁드립니다.<br/>
+                        점검시간에는 수강이 원활하지 않으니 양해 부탁드립니다.<br/>
+                    </td>
+                </tr>
+                <tr class="list bg-light-gray">
                     <td class="w-data tx-left">
-                        <dl class="w-info">
-                            <dt><strong>공통</strong><span class="row-line">|</span><span class="tx-light-blue">회원정보 > 회원가입</span></dt>
+                        <dl class="w-info tx-gray">
+                            <dt><span class="tx-blue strong">[답변]</span> 답변자명<span class="row-line">|</span></dt>
+                            <dt>2018-00-00 00:00</dt>
                         </dl>
-                        <div class="w-tit">
-                            가입시 받게되는 혜택은 무엇이 있나요?????<br/>
-                            혜택은 무엇이 있나요222222?
-                        </div>
                     </td>
-                    <td class="MoreBtn tx-center">></td>
                 </tr>
-                <tr class="replyTxt willbes-Open-List bg-light-gray">
-                    <td class="w-txt NGR" colspan="2">
+                <tr class="flie">
+                    <td class="w-file NGR">
+                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                    </td>
+                </tr>
+                <tr class="txt">
+                    <td class="w-txt NGR">
                         수험생 여러분들께 보다 나은 수강환경을 제공해 드리기 위해<br/>
                         서버점검 및 개선작업이 진행될 예정입니다.<br/>
                         점검시간에는 수강이 원활하지 않으니 양해 부탁드립니다.<br/>
@@ -85,7 +92,10 @@
                     </td>
                 </tr>
             </tbody>
-        </table> 
+        </table>
+        <div class="lecSubject mt40">
+            <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}">목록</a>
+        </div>
     </div>
 
     <div class="goTopbtn">
@@ -94,6 +104,15 @@
         </a>
     </div>
     <!-- Topbtn -->
+
+    <div id="Fixbtn" class="Fixbtn three">
+        <ul>
+            <li class="btn_gray"><a href="#none">삭제</a></li>
+            <li class="btn_blue"><a href="#none">수정</a></li>
+            <li class="btn_gray"><a href="#none">목록</a></li>
+        </ul>
+    </div>
+    <!-- Fixbtn -->
 
 </div>
 <!-- End Container -->

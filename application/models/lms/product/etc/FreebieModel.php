@@ -103,7 +103,7 @@ class FreebieModel extends WB_Model
             ]);
 
             if($this->_conn->set($product_data)->insert($this->_table['product']) === false) {
-                echo $this->_conn->last_query();
+                //echo $this->_conn->last_query();
                 throw new \Exception('상품 등록에 실패했습니다.');
             };
 

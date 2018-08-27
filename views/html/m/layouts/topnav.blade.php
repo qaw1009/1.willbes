@@ -13,11 +13,11 @@
             </button>
         </div>
         <div class="Login-List p_re">
-            <!-- 2차 오픈메뉴
+            <!-- 2차 오픈메뉴 -->
             <button type="button" class="myacad">
                 <span class="hidden">수강신청</span>
             </button>
-            -->
+            
             <ul class="myLog tx-black NG">
                 <li class="Login">
                     <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>

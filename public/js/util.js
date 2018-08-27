@@ -153,12 +153,23 @@ function getQueryString() {
 function goUrl(key, val, selector) {
     var $url_form = $(selector || '#url_form');
     var $url_input = $url_form.find('input[name="' + key + '"]');
+    var $url_hidden = $url_form.find('input[type="hidden"][name="' + key + '"]');
+    var $arr_except = ['page'];
 
     if ($url_input.length > 0) {
         $url_input.val(val);
+        if ($url_input.length > 1 && $url_hidden.length > 0) {
+            // 동일한 파라미터가 2개 이상일 경우 hidden 파라미터 제거
+            $url_hidden.remove();
+        }
     } else {
         $url_form.append('<input type="hidden" name="' + key + '" value="' + val + '"/>');
     }
+
+    // 제외 파라미터 제거
+    $.each($arr_except, function(index, item) {
+        $url_form.find('input[type="hidden"][name="' + item + '"]').remove();
+    });
 
     $url_form.prop('action', location.protocol + '//' + location.host + location.pathname);
     $url_form.submit();

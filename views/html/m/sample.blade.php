@@ -29,9 +29,9 @@
 
     <a href="{{ site_url('/home/html/m/mypage_online6') }}">내강의실 > 온라인강좌 > 일시정지 page 이동</a><br/><br/>
 
- </div>
+</div>
 
-  <div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">  
+<div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">  
 
     <a href="{{ site_url('/home/html/m/mypage_acad1') }}">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a><br/><br/>
 

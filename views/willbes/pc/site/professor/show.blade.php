@@ -175,6 +175,13 @@
             $('.willbes-Prof-Tabs .tabWrap li a').removeClass('on');
             $('.willbes-Prof-Tabs .tabWrap #hover_{{ $arr_input['tab'] }}').addClass('on');
             $('.willbes-Prof-Tabs .tabBox .tabLink').css('display', 'block');
+
+            // 개설강좌 첫번째 탭 active 처리
+            @if($arr_input['tab'] == 'open_lecture')
+                $('.acadBoxWrap .tabWrap.tabDepthAcad li:eq(0) a').addClass('on');
+                $('.acadBoxWrap #acad1 .tabWrap.acadline li:eq(0) a').addClass('on');
+                $('.acadBoxWrap #acad2 .tabWrap.acadline li:eq(0) a').addClass('on');
+            @endif
         });
     });
 </script>

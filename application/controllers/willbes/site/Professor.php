@@ -166,7 +166,7 @@ class Professor extends \app\controllers\FrontController
         $data = $this->_getLectureData('on_lecture', $prof_idx, $arr_input);
 
         // 추천, 선택 운영자 패키지 조회
-        $admin_package_type_ccd = ['normal' => '648001', 'choice' => '648002'];
+        $admin_package_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002'];
         $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'CourseIdx' => element('course_idx',$arr_input)],
             'LKR' => ['CateCode'=>$this->_cate_code],
             'LKB' => ['ProfIdx_String' => $prof_idx]
@@ -174,7 +174,6 @@ class Professor extends \app\controllers\FrontController
         $order_by = ['ProdCode' => 'desc'];
 
         foreach ($admin_package_type_ccd as $key => $code) {
-            $key = 'pack_' . $key;
             $data[$key] = $this->packageFModel->listSalesProduct('adminpack_lecture',false
                 , array_merge_recursive($arr_condition, ['EQ' => ['PackTypeCcd' => $code]]),null,null, $order_by);
 
@@ -208,7 +207,7 @@ class Professor extends \app\controllers\FrontController
     private function _getLectureData($learn_pattern, $prof_idx, $arr_input)
     {
         // 과정 조회
-        $data['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+        $data['on_course'] = $this->baseProductFModel->listCourse($this->_site_code);
 
         // 상품조회 기본조건
         $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => $arr_input['subject_idx']],
@@ -217,18 +216,18 @@ class Professor extends \app\controllers\FrontController
         $order_by = ['ProdCode' => 'desc'];
 
         // 상품 조회
-        $data['lecture'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
+        $data['on_lecture'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
             , array_merge_recursive($arr_condition, ['EQ' => ['CourseIdx' => element('course_idx', $arr_input)]]), null, null, $order_by);
 
         // 상품 json 데이터 decode
-        $data['lecture'] = array_map(function ($row) {
+        $data['on_lecture'] = array_map(function ($row) {
             $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
             $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
             $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
             unset($row['ProfReferData']);
 
             return $row;
-        }, $data['lecture']);
+        }, $data['on_lecture']);
 
         return $data;
     }

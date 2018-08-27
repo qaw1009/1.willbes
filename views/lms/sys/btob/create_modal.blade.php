@@ -52,7 +52,7 @@
                     <div class="item inline-block">
                         <select class="form-control" id="Tel1" name="Tel1" style="width: 105px;">
                             @foreach($tel as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                                <option value="{{$key}}" @if($data['Tel1'] == $key) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select> -
                         <input type="number" id="Tel2" name="Tel2" class="form-control" title="전화번호" value="{{ $data['Tel2'] }}" style="width: 60px" maxlength="4"> -
@@ -64,8 +64,8 @@
                 <div class="col-md-4 form-inline item">
                     <div class="item inline-block">
                         <select class="form-control" id="Phone1" name="Phone1" style="width: 105px;">
-                            @foreach($tel as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                            @foreach($hp as $key => $val)
+                                <option value="{{$key}}"  @if($data['Phone1'] == $key) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select> -
                         <input type="number" id="Phone2" name="Phone2" class="form-control" title="휴대폰번호" value="{{ $data['Phone2'] }}" style="width: 60px" maxlength="4"> -

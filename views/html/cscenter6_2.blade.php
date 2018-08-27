@@ -63,7 +63,7 @@
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_ZIP.gif') }}"></td>
+                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_671001.gif') }}"></td>
                                     <td class="w-txt tx-left pl20">
                                         <div class="tx-black">알집</div>
                                         데이터 압축/압축해제에 이용되는 프로그램입니다.<br/>
@@ -74,7 +74,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_Word.gif') }}"></td>
+                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_671002.gif') }}"></td>
                                     <td class="w-txt tx-left pl20">
                                         <div class="tx-black">한글과 컴퓨터 뷰어 v2007</div>
                                         한글97 등의 한글 프로그램이 설치되어 있지 않는 경우에 HWP 한글문서를 열어볼 수 있도록 해주는 프로그램입니다.
@@ -84,7 +84,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_MS.gif') }}"></td>
+                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_671003.gif') }}"></td>
                                     <td class="w-txt tx-left pl20">
                                         <div class="tx-black">MS Word 뷰어</div>
                                         MicroSoft의 Word 프로그램이 설치되어있지 않는 경우에 doc문서를 열어볼 수 있도록 해주는 프로그램입니다.
@@ -94,7 +94,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_PDF.gif') }}"></td>
+                                    <td class="w-img"><img src="{{ img_url('cs/icon_program_671004.gif') }}"></td>
                                     <td class="w-txt tx-left pl20">
                                         <div class="tx-black">한글 Adobe Reader</div>
                                         Adobe Acrobat eBook Reader로 제작된 온라인 문서(PDF)를 열어볼 수 있도록 해주는 프로그램입니다.

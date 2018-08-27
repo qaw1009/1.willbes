@@ -29,7 +29,7 @@ class BaseSupportFModel extends WB_Model
 
         $from  = '
             from 
-                lms_sys_code A
+                '.$this->_table['code'].' A
                 left outer join
                     (
                         SELECT 
@@ -39,7 +39,7 @@ class BaseSupportFModel extends WB_Model
                                 \'Ccd\', Ccd,
                                 \'CcdName\', CcdName
                             )), \']\') AS subFaqData
-                        FROM lms_sys_code 
+                        FROM '.$this->_table['code'].' 
                         WHERE CcdDesc=\'faq_use\' AND GroupCcd != 0 AND IsStatus=\'Y\' AND IsUse = \'Y\'  
                         GROUP BY GroupCcd
                         order by OrderNum ASC
@@ -74,7 +74,7 @@ class BaseSupportFModel extends WB_Model
             from 
                 lms_site A 
                 join lms_site_r_campus B on A.SiteCode = B.SiteCode
-                join lms_sys_code C on B.CampusCcd = C.Ccd 
+                join '.$this->_table['code'].' C on B.CampusCcd = C.Ccd 
             WHERE 
                 A.IsCampus=\'Y\' and A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\' and C.IsUse=\'Y\'
         ';
@@ -83,6 +83,34 @@ class BaseSupportFModel extends WB_Model
         $order_by = ' order by C.OrderNum ASC';
 
         $query = $this->_conn->query('select ' . $column . $from . $where. $order_by);
+        return $query->result_array();
+    }
+
+
+    /**
+     * 학습프로그램 목록 추출
+     * @return mixed
+     */
+    public function listProgramCcd()
+    {
+        $arr_condition=[
+            'EQ' => ['GroupCcd'=>'671']
+        ];
+
+        $column = 'Ccd,CcdName, CcdValue, CcdDesc, CcdEtc';
+
+        $from = '
+            from 
+                '.$this->_table['code'] .'
+            WHERE 
+                IsStatus=\'Y\' and IsUse=\'Y\'
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $order_by = ' order by OrderNum ASC';
+
+        $query = $this->_conn->query('select '. $column . $from . $where. $order_by);
         return $query->result_array();
     }
 

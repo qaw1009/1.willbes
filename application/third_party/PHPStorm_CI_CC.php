@@ -145,6 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property DDayModel $dDayModel                                                  d-day Model Class
  * @property OnAirModel $onAirModel                                                OnAir Model Class
  * @property SearchaAnalysisModel $searchaAnalysisModel                            SearchaAnalysis Model Class
+ * @property BtobModel $btobModel                                  BtoB Model Class
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

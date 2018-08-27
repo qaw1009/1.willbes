@@ -16,7 +16,7 @@
         <span class="tx-blue">학원 방문결제 접수</span>
     </div>
     <div class="widthAuto">
-        <div class="curriWrap c_both mb50">
+        <div class="curriWrap c_both mb25">
             <ul class="curriTabs c_both">
                 <li><a class="on" href="#none">전체</a></li>
                 <li><a href="#none">9/7급 공무원</a></li>
@@ -119,8 +119,8 @@
             </div>
         </div>
         <!-- curriWrap -->
-        <div class="Content widthAuto820 p_re">
-            <div class="willbes-Lec-Search mb60">
+        <div class="Content widthAuto810 p_re">
+            <div class="willbes-Lec-Search mb15">
                 <div class="inputBox p_re">
                     <div class="selectBox">
                         <select id="select" name="select" title="강좌명" class="">
@@ -139,11 +139,11 @@
             </div>
             <!-- willbes-Lec-Search -->
 
-            <div class="willbes-Lec NG c_both">
+            <div class="willbes-Lec NG c_both mb25">
                 <div class="willbes-Lec-Subject tx-dark-black">· 국어<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
                 <!-- willbes-Lec-Subject -->
 
-                <div class="willbes-Lec-Line mt20">-</div>
+                <div class="willbes-Lec-Line">-</div>
                 <!-- willbes-Lec-Line -->
 
                 <div class="willbes-Lec-Table">
@@ -282,11 +282,11 @@
             </div>
             <!-- willbes-Lec -->
 
-            <div class="willbes-Lec NG c_both">
+            <div class="willbes-Lec NG c_both mb25">
                 <div class="willbes-Lec-Subject tx-dark-black">· 영어<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
                 <!-- willbes-Lec-Subject -->
 
-                <div class="willbes-Lec-Line mt20">-</div>
+                <div class="willbes-Lec-Line">-</div>
                 <!-- willbes-Lec-Line -->
 
                 <div class="willbes-Lec-Table">
@@ -560,7 +560,7 @@
             </div>
             <!-- willbes-Layer-Box -->
         </div>
-        <div class="Aside widthAuto290 NG ml10">
+        <div class="Aside widthAuto290 NG ml20">
             <div class="Tit tx-light-black">장바구니</div>
             <div class="Lec-Pocket-Grid">
                 <div class="LecPocketlist">
@@ -572,9 +572,9 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰등록 후 display:none -->
-                        <li class="aBox waitBox_block"><a href="#none" onclick="openWin('Coupon')">쿠폰등록</a></li>
-                        <!-- 쿠폰등록 적용후 활성화
+                        <!-- 쿠폰적용 후 display:none -->
+                        <li class="aBox waitBox_block"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></li>
+                        <!-- 쿠폰적용 적용후 활성화
                         <li class="aBox answerBox_block"><a href="#none">변경</a></li>
                         <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
                         -->
@@ -590,10 +590,10 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰등록 후 display:none
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰등록</a></li>
+                        <!-- 쿠폰적용 후 display:none
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
                         -->
-                        <!-- 쿠폰등록 적용후 활성화 -->
+                        <!-- 쿠폰적용 적용후 활성화 -->
                         <li class="aBox answerBox_block"><a href="#none">변경</a></li>
                         <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
                         <li class="price tx-blue f_right">80,000원</li>
@@ -608,9 +608,9 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰등록 후 display:none -->
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰등록</a></li>
-                        <!-- 쿠폰등록 적용후 활성화
+                        <!-- 쿠폰적용 후 display:none -->
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
+                        <!-- 쿠폰적용 적용후 활성화
                         <li class="aBox answerBox_block"><a href="#none">변경</a></li>
                         <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
                         -->
@@ -626,9 +626,9 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰등록 후 display:none -->
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰등록</a></li>
-                        <!-- 쿠폰등록 적용후 활성화
+                        <!-- 쿠폰적용 후 display:none -->
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
+                        <!-- 쿠폰적용 적용후 활성화
                         <li class="aBox answerBox_block"><a href="#none">변경</a></li>
                         <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
                         -->
@@ -644,10 +644,10 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰등록 후 display:none
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰등록</a></li>
+                        <!-- 쿠폰적용 후 display:none
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
                         -->
-                        <!-- 쿠폰등록 적용후 활성화 -->
+                        <!-- 쿠폰적용 적용후 활성화 -->
                         <li class="aBox answerBox_block"><a href="#none">변경</a></li>
                         <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
                         <li class="price tx-blue f_right">80,000원</li>
@@ -662,9 +662,9 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰등록 후 display:none -->
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰등록</a></li>
-                        <!-- 쿠폰등록 적용후 활성화
+                        <!-- 쿠폰적용 후 display:none -->
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
+                        <!-- 쿠폰적용 적용후 활성화
                         <li class="aBox answerBox_block"><a href="#none">변경</a></li>
                         <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
                         -->
@@ -672,7 +672,7 @@
                     </ul>
                 </div>
             </div>
-            <table cellspacing="0" cellpadding="0" class="listTable lecPocketTable tx-light-gray p_re">
+            <table cellspacing="0" cellpadding="0" class="listTable lecPocketTable tx-black p_re">
                 <tbody>
                     <tr class="AllchkBox"><td><input type="checkbox" id="info_chk" name="info_chk" class="info_chk"></td></tr>
                     <tr class="replyList w-replyList">
@@ -681,7 +681,7 @@
                             <span class="arrow-Btn">></span>
                         </td>
                     </tr>
-                    <tr class="replyTxt w-replyTxt bg-gray">
+                    <tr class="replyTxt w-replyTxt bg-light-gray">
                         <td class="w-txt">
                             <div class="w-txt-Grid">
                                 <input type="checkbox" id="info_chk" name="info_chk" class="info_chk">

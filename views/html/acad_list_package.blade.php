@@ -101,7 +101,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb60">
+        <div class="willbes-Lec-Search mb15">
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="강좌명" class="">
@@ -121,7 +121,7 @@
         </div>
         <!-- willbes-Lec-Search -->
 
-        <div class="willbes-Lec NG c_both">
+        <div class="willbes-Lec NG c_both mb60">
             <div class="willbes-Lec-Subject tx-dark-black">· 종합반<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
             <!-- willbes-Lec-Subject -->
 
@@ -142,14 +142,10 @@
                             <td class="w-place">노량진</td>
                             <td class="w-list">문제<br/>풀이</td>
                             <td class="w-data tx-left pl15">
-                                <div class="w-tit w-acad-tit">
-                                    <a href="#none">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a>
-                                </div>
-                                <dl class="w-info">
+                                <div class="w-tit w-acad-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
+                                <dl class="w-info acad">
                                     <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>종합반 상세정보</strong>
-                                        </a>
+                                        <a href="#none"><strong>종합반 상세정보</strong></a>
                                     </dt>
                                     <dt class="NSK">
                                         <span class="acadBox n1">방문+온라인</span>
@@ -178,7 +174,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div class="w-tit w-Infotit tx-black">▷ 강좌정보</div>
+                                <div class="w-tit w-Infotit tx-black">▷ 종합반정보</div>
                                 <div class="w-txt">
                                     <strong>[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</strong><br/>
                                     <span class="tx-blue">· 강의일정 :</span> 5.21(월)~6.11(월) 매주월요일08:40~13:00 총4회<br/>
@@ -197,13 +193,13 @@
                 <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoPackageTable tx-dark-gray">
                     <colgroup>
                         <col style="width: 75px;">
-                        <col style="width: 525px;">
-                        <col style="width: 170px;">
+                        <col style="width: 515px;">
+                        <col style="width: 180px;">
                         <col style="width: 90px;">
                     </colgroup>
                     <thead>
                         <tr>
-                            <th colspan="4"><div class="w-tit w-Infotit tx-black tx-left mb15 bd-none">▷ 필수과목 <span class="w-InfoSubtit">(과목별 1개만 선택해 주세요)</span></div></th>
+                            <th colspan="4"><div class="w-tit w-Infotit tx-black tx-left mb15">▷ 필수과목 <span class="w-InfoSubtit">(과목별 1개만 선택해 주세요)</span></div></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -221,8 +217,8 @@
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월 ~ 금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
@@ -237,8 +233,8 @@
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월 ~ 금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -254,8 +250,8 @@
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월 ~ 금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -270,8 +266,8 @@
                 <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoPackageTable tx-dark-gray">
                     <colgroup>
                         <col style="width: 75px;">
-                        <col style="width: 525px;">
-                        <col style="width: 170px;">
+                        <col style="width: 515px;">
+                        <col style="width: 180px;">
                         <col style="width: 90px;">
                     </colgroup>
                     <thead>
@@ -294,8 +290,8 @@
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월 ~ 금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -310,8 +306,8 @@
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월 ~ 금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -327,8 +323,8 @@
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월 ~ 금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -342,15 +338,11 @@
 
                 <div class="lecInfoTable willbes-Lec-buyBtn GM">
                     <ul>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                                <span>방문접수</span>
-                            </button>
+                        <li class="InfoBtn ml10">
+                            <a href="#none">방문접수</a>
                         </li>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                <span class="tx-light-blue">바로결제</span>
-                            </button>
+                        <li class="InfoBtn">
+                            <a href="#none">바로결제</a>
                         </li>
                     </ul>
                 </div>
@@ -371,14 +363,10 @@
                             <td class="w-place">노량진</td>
                             <td class="w-list">문제<br/>풀이</td>
                             <td class="w-data tx-left pl15">
-                                <div class="w-tit w-acad-tit">
-                                    <a href="#none">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a>
-                                </div>
-                                <dl class="w-info">
+                                <div class="w-tit w-acad-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
+                                <dl class="w-info acad">
                                     <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>종합반 상세정보</strong>
-                                        </a>
+                                        <a href="#none"><strong>종합반 상세정보</strong></a>
                                     </dt>
                                     <dt class="NSK">
                                         <span class="acadBox n2">방문접수</span>
@@ -422,15 +410,11 @@
 
                 <div class="lecInfoTable willbes-Lec-buyBtn GM">
                     <ul>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                                <span>방문접수</span>
-                            </button>
+                        <li class="InfoBtn ml10">
+                            <a href="#none">방문접수</a>
                         </li>
-                        <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                <span class="tx-light-blue">바로결제</span>
-                            </button>
+                        <li class="InfoBtn">
+                            <a href="#none">바로결제</a>
                         </li>
                     </ul>
                 </div>
@@ -466,7 +450,7 @@
                     </dl>
                 </div>
                 <div class="classInfoTable">
-                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="classTable under-black tx-gray">
                         <colgroup>
                             <col style="width: 140px;">
                             <col width="*">

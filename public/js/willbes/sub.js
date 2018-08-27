@@ -15,10 +15,12 @@ $(function() {
             $lec_into_btn_txt.text('전체보기 ▼');
             $(this).removeClass('on');
             $lec_into_btn.text('교재정보 보기 ▼');
+            $('.willbes-Lec-Table').removeClass('active');
         } else {
             $lec_info_table.show().css('display','block');
             $lec_into_btn_txt.text('전체닫기 ▲');
             $(this).addClass('on');
+            $('.willbes-Lec-Table').addClass('active');
             $lec_into_btn.text('교재정보 닫기 ▲');
         }
     });
@@ -41,7 +43,7 @@ $(function() {
 
 // 교재정보 보기(학원) 버튼 Script
 $(function() {
-    $('.willbes-Lec-Table .w-acad-tit a').click(function() {
+    $('.willbes-Lec-Table .w-info.acad a').click(function() {
         var $lec_info_table = $(this).parents('.willbes-Lec-Table').find('.lecInfoTable');
         var $lec_info = $(this).parents('.willbes-Lec-Table');
 

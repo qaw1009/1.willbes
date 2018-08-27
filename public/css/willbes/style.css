@@ -1797,6 +1797,7 @@ table.auTable tr td {
     width: 100%;
     height: 100%;
     font-size: 12px;
+    font-weight: 300;
     color: #555;
     text-align: center;
     border: 1px solid #c9c9c9;
@@ -2113,7 +2114,7 @@ table.lecTable {
 }
 table.lecTable tr td {
     line-height: 16px;
-    padding: 15px 0;
+    padding: 30px 0;
 }
 table.lecTable tr td.w-data {
     line-height: 30px;
@@ -2168,6 +2169,7 @@ table.lecTable tr td .MoreBtn {
     color: #808080;
     line-height: 18px;
 }
+
 /* subContainer : Content : lecWrapTable */
 table.lecWrapTable {
     width: 100%;
@@ -2305,7 +2307,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     letter-spacing: 0;
 }
 .lecInfoTable tr td {
-    background: #f5f5f5;
+    background: #f9f9f9;
     padding: 15px 0;
     line-height: 25px;
 }
@@ -2542,9 +2544,6 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     border-left: 4px solid #4f4f4f;
 }
 
-
-
-
 .willbes-Layer-Box.d2 .Layer-Tit {
     margin-bottom: 0;
     border-bottom: 2px solid #000;
@@ -2559,6 +2558,8 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .willbes-Layer-Box.d3 .Layer-Tit {
     margin-bottom: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c9c9c9;
 }
 .willbes-Layer-Box.d3 .classInfo {
     padding-top: 20px;
@@ -6495,6 +6496,7 @@ table.PassZoneTable .w-data {
 /* subContainer : Mypage : 학원강좌 : acadTable */
 table.acadTable tr td {
     line-height: 24px;
+    padding: 15px 0;
 }
 
 /* subContainer : Mypage : 결제관리 : orderTable */
@@ -6860,19 +6862,23 @@ table.acadlecTable tr td .priceWrap .chkBox {
     margin: 1px;
 }
 table.acadlecInfoTable {
-    background: #f5f5f5;
+    background: #f9f9f9;
     height: 240px;
     overflow-x: auto;
+}
+table.acadlecInfoTable tr td .w-tit {
+    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 5px;
 }
 table.acadlecInfoTable tr td {
     width: 940px;
     padding: 25px 40px;
 }
 .willbes-Lec-Table.active.pb_active {
-    padding-bottom: 130px;
+    padding-bottom: 80px;
 }
 .willbes-Lec-Table.active .willbes-Lec-buyBtn {
-    bottom: 60px;
+    bottom: 25px;
 }
 .willbes-Lec-Table.active .Lec-buyBtn-Wrap table {
     padding-bottom: 110px;
@@ -6905,6 +6911,11 @@ table.acadlecInfoPackageTable {
     padding: 30px 40px;
     border-bottom: 1px solid #c9c9c9;
 }
+table.acadlecInfoPackageTable tr th .w-tit {
+    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 5px;
+    line-height: 25px;
+}
 table.acadlecInfoPackageTable tr td {
     text-align: center;
     padding: 0;
@@ -6932,6 +6943,12 @@ table.acadlecInfoPackageTable tr td.w-list ul li.w-name {
 }
 table.acadlecInfoPackageTable tr td.w-list ul li input {
     margin: 18px;
+}
+table.acadlecInfoPackageTable tr td.w-schedule .row-line {
+    background: #b7b7b7;
+    width: 1px;
+    height: 10px;
+    margin: 0 10px -1px;
 }
 table.acadlecInfoPackageTable tr td span {
     vertical-align: baseline;
@@ -7020,18 +7037,19 @@ table.acadlecInfoPackageTable tr.Top td {
 .LecPocketlist ul li.price {
     letter-spacing: 0;
     line-height: 20px;
+    margin-right: 20px;
 }
 .LecPocketlist .oBox {
     float: left;
 }
 .LecPocketlist .w-tit {
     display: inline-block;
-    width: 170px;
+    width: 160px;
     line-height: 16px;
 }
 .LecPocketlist .w-tit .closeBtn {
     position: absolute;
-    right: -25px;
+    right: -20px;
 }
 .lecPocketTable {
     border-top: 1px solid #c9c9c9;

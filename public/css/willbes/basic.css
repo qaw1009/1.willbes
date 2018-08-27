@@ -384,6 +384,10 @@ strong {
   width: 770px;
   margin: 0 auto;
 }
+.widthAuto810 {
+  width: 810px !important;
+  margin: 0 auto;
+}
 .widthAuto820 {
   width: 820px !important;
   margin: 0 auto;
@@ -658,6 +662,9 @@ strong {
 }
 .pb60 {
   padding-bottom: 60px !important;
+}
+.pb85 {
+  padding-bottom: 85px !important;
 }
 .pb110 {
   padding-bottom: 110px !important;

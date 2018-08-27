@@ -142,7 +142,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb60">
+        <div class="willbes-Lec-Search mb15">
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="강좌명" class="">
@@ -185,14 +185,10 @@
                             <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
                             <td class="w-list">이론</td>
                             <td class="w-data tx-left">
-                                <div class="w-tit w-acad-tit">
-                                    <a href="#none">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a>
-                                </div>
-                                <dl class="w-info">
+                                <div class="w-tit w-acad-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
+                                <dl class="w-info acad">
                                     <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
-                                        </a>
+                                        <a href="#none"><strong>강좌상세정보</strong></a>
                                     </dt>
                                     <dt class="NSK">
                                         <span class="acadBox n1">방문+온라인</span>
@@ -255,14 +251,10 @@
                             <td class="w-name">국어<br/><span class="tx-blue">기미진</span></td>
                             <td class="w-list">이론</td>
                             <td class="w-data tx-left">
-                                <div class="w-tit w-acad-tit">
-                                    <a href="#none">[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</a>
-                                </div>
-                                <dl class="w-info">
+                                <div class="w-tit w-acad-tit">[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</div>
+                                <dl class="w-info acad">
                                     <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
-                                        </a>
+                                        <a href="#none"><strong>강좌상세정보</strong></a>
                                     </dt>
                                     <dt class="NSK">
                                         <span class="acadBox n2">방문접수</span>
@@ -308,7 +300,7 @@
         </div>
         <!-- willbes-Lec -->
 
-        <div class="willbes-Lec NG c_both">
+        <div class="willbes-Lec NG c_both mb60">
             <div class="willbes-Lec-Subject tx-dark-black">· 영어<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
             <!-- willbes-Lec-Subject -->
 
@@ -331,14 +323,10 @@
                             <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
                             <td class="w-list">이론</td>
                             <td class="w-data tx-left">
-                                <div class="w-tit w-acad-tit">
-                                    <a href="#none">[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</a>
-                                </div>
-                                <dl class="w-info">
+                                <div class="w-tit w-acad-tit">[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</div>
+                                <dl class="w-info acad">
                                     <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
-                                        </a>
+                                        <a href="#none"><strong>강좌상세정보</strong></a>
                                     </dt>
                                     <dt class="NSK">
                                         <span class="acadBox n3">온라인 접수</span>

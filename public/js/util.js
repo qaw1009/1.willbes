@@ -10,7 +10,7 @@ function app_url($uri, $sub_domain) {
     var $base_domain = 'willbes.net';
     var $env_domain = '';
 
-    if($uri.substring(0,1) != '/') {
+    if($uri.substring(0,1) !== '/') {
         $uri = '/'+$uri;
     }
 

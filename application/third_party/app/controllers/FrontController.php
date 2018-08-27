@@ -154,11 +154,11 @@ abstract class FrontController extends BaseController
                 $menu_parse_url = parse_url($menu_url);
                 $menu_path = element('path', $menu_parse_url);
 
-                if (empty($menu_path) === false && starts_with($menu_path, $check_menu_prefix) === true) {
+                if (empty($menu_path) === false && strpos(current_url(), $menu_parse_url['host']) !== false && starts_with($menu_path, $check_menu_prefix) === true) {
                     // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
                     $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
 
-                    if (strpos(current_url(), $menu_parse_url['host']) !== false && strpos($uri_string, $check_menu_postfix) !== false) {
+                    if (strpos($check_menu_postfix, '/') === false || strpos($uri_string, $check_menu_postfix) !== false) {
                         $_active_route_idx = $menu_route_idx;
                         break;
                     }

@@ -196,17 +196,20 @@ function movePos(divId){
     var hrefTopPos = hrefTop - 45;
 
     $('html, body').animate({
-    scrollTop: hrefTopPos
+        scrollTop: hrefTopPos
     }, 200);
 }
+
 $('*[id*=Sticky]:visible').ready(function() {
     var stickyOffset = $('.sticky-menu').offset();
 
-    $(window).scroll(function() {
-        if ( $(document).scrollTop() > stickyOffset.top ) {
-            $('.sticky-menu').addClass('fixed');
-        } else {
-            $('.sticky-menu').removeClass('fixed');
-        }
-    });
+    if (typeof stickyOffset !== 'undefined') {
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > stickyOffset.top) {
+                $('.sticky-menu').addClass('fixed');
+            } else {
+                $('.sticky-menu').removeClass('fixed');
+            }
+        });
+    }
 });

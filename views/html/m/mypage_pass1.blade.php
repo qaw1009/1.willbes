@@ -40,7 +40,7 @@
         </tbody>
     </table>
     <div class="AddlecMore">
-        <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/mypage/icon_add_black.png') }}"> 강좌추가</a>
+        <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/mypage/icon_add_black.gif') }}"> 강좌추가</a>
     </div>
 
     <div class="willbes-Lec-Selected NG c_both tx-gray">

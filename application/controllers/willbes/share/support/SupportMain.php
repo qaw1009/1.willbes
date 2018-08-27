@@ -25,6 +25,8 @@ class SupportMain extends BaseSupport
             $faq_ccd[$idx]['subFaqData']  = json_decode($row['subFaqData'], true);
         }
 
+        $program_ccd = $this->supportBoardFModel->listProgramCcd();
+
         $arr_condition = [
             'EQ' => [
                 'b.SiteCode' => $this->_site_code
@@ -61,6 +63,7 @@ class SupportMain extends BaseSupport
 
         $this->load->view('support/main', [
             'faq_ccd' => $faq_ccd,
+            'program_ccd' => $program_ccd,
             'list_faq'=>$list_faq,
             'list_notice'=>$list_notice,
         ]);

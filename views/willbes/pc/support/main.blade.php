@@ -253,30 +253,14 @@
                             <div class="willbes-listTable willbes-program mr30 widthAuto330">
                                 <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="{{site_url('support/program/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                                 <dl class="List-Table NG tx-gray">
+                                    @foreach($program_ccd as $row)
                                     <dt>
-                                        <a href="#none">
-                                            <div>MS Word<br/>뷰어</div>
-                                            <img src="{{ img_url('cs/icon_program_MS.gif') }}">
+                                        <a href="{{$row['CcdEtc']}}" target="_blank">
+                                            <div>{{$row['CcdName']}}</div>
+                                            <img src="{{ img_url('cs/icon_program_'.$row['Ccd'].'.gif') }}">
                                         </a>
                                     </dt>
-                                    <dt>
-                                        <a href="#none">
-                                            <div>한글 어도비<br/>리더</div>
-                                            <img src="{{ img_url('cs/icon_program_PDF.gif') }}">
-                                        </a>
-                                    </dt>
-                                    <dt>
-                                        <a href="#none">
-                                            <div>한글과 컴퓨터<br/>뷰어</div>
-                                            <img src="{{ img_url('cs/icon_program_Word.gif') }}">
-                                        </a>
-                                    </dt>
-                                    <dt>
-                                        <a href="#none">
-                                            <div>ALZIP</div>
-                                            <img src="{{ img_url('cs/icon_program_ZIP.gif') }}">
-                                        </a>
-                                    </dt>
+                                    @endforeach
                                 </dl>
                             </div>
                             <a href="{{site_url('support/mobile/index')}}"><img src="{{ img_url('cs/bnr_mobile.jpg') }}"></a>

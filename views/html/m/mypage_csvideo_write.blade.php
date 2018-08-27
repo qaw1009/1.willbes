@@ -22,7 +22,7 @@
             <option value="강좌내용">강좌내용</option>
             <option value="학습상담">학습상담</option>
         </select>
-        <span class="chkBox width30p ml1p">
+        <span class="chkBox width30p">
             <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <span>비밀글 여부</span>
         </span>
         <div class="willbes-Lec-Search NG width100p mt1p">

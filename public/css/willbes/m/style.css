@@ -221,7 +221,7 @@ button {
 }
 #header .myLog li {
     float: left;
-    line-height: 42px;
+    line-height: 52px;
 }
 #header .myLog li a {
     font-size: 14px;
@@ -585,10 +585,11 @@ button {
 .willbes-Lec-Selected .chkBox input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    margin: 12px 4px;
+    margin: 12px 4px 12px 0;
 }
 .willbes-Lec-Selected .chkBox span {
     float: right;
+    font-size: 0.85rem
 }
 .willbes-WriteBox {
     width: 100%;
@@ -640,13 +641,13 @@ button {
 
 /* 상태 공통 */
 .w-info dt .nBox {
-    display: inline-block;
+    display: inline;
     height: 20px;
     font-size: 12px;
     color: #fff;
     text-align: center;
     line-height: 20px;
-    padding: 0 6px;
+    padding: 1px 6px;
 }
 .w-info dt .nBox.n1 {
     background: #f14078;

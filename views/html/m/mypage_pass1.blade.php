@@ -40,7 +40,7 @@
         </tbody>
     </table>
     <div class="AddlecMore">
-        <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/mypage/icon_add_black.gif') }}"> 강좌추가</a>
+        <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/mypage/icon_add_black.png') }}"> 강좌추가</a>
     </div>
 
     <div class="willbes-Lec-Selected NG c_both tx-gray">
@@ -142,7 +142,7 @@
             <div id="leclist2" class="tabContent" style="display: none;">
                 <div class="lecTxt">* 모바일에서 수강완료강좌는 수강중 강좌에서 확인할 수 있습니다.</div>
                 <div class="btnBox mb20">
-                    <div class="InfoBtn btn_white"><a href="#none" style="padding: 2px;"><img src="{{ img_url('m/mypage/icon_star_off.png') }}"></a></div>
+                    <div class="InfoBtn btn_white"><a href="#none" style="padding: 0;"><img src="{{ img_url('m/mypage/icon_star_off.png') }}"></a></div>
                     <div class="InfoBtn btn_white"><a href="#none">숨기기</a></div>
                 </div>
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">

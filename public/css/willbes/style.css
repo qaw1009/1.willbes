@@ -4704,6 +4704,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: 0 7px;
     line-height: 18px;
 }
+.ListTabs ul li a.on {
+    font-weight: 600;
+}
 .ListTabs ul li .row-line {
     background: #ddd;
     width: 1px;

@@ -172,8 +172,8 @@
                                     </dl>
                                     <div class="w-start tx-gray">                        
                                         <ul class="f_left two">
-                                            <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                            <li class="btn_blue"><a href="#none">수강시작</a></li>
+                                            <li class="btn_white"><a href="#none">일시정지</a></li>
+                                            <li class="btn_blue"><a href="#none">수강연장</a></li>
                                         </ul> 
                                     </div>
                                     <div class="w-line">-</div>
@@ -194,8 +194,8 @@
                                     </dl>
                                     <div class="w-start tx-gray">                        
                                         <ul class="f_left two">
-                                            <li class="btn_white"><a href="#none">시작일변경</a></li>
-                                            <li class="btn_blue"><a href="#none">수강시작</a></li>
+                                            <li class="btn_white"><a href="#none">일시정지</a></li>
+                                            <li class="btn_blue"><a href="#none">수강연장</a></li>
                                         </ul> 
                                     </div>
                                     <div class="w-line">-</div>

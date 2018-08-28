@@ -54,7 +54,9 @@
                             <td>{{ $row['CompIdx'] }}</td>
                             <td><a href="#" class="btn-modify" data-idx="{{ $row['CompIdx'] }}"><u>{{ $row['CompName'] }}</u></a></td>
                             <td>{{ $row['Desc'] }}</td>
-                            <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
+                            <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
+                                <span class="hide">{{ $row['IsUse'] }}</span>
+                            </td>
                             <td>{{ $row['RegAdminName'] }}</td>
                             <td>{{ $row['RegDatm'] }}</td>
                         </tr>

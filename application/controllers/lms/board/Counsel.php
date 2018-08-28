@@ -145,7 +145,7 @@ class Counsel extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
             LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Phone1, MEM.Phone2Enc, MEM.Phone3,
@@ -193,7 +193,7 @@ class Counsel extends BaseBoard
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsPublic, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsPublic, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -288,7 +288,7 @@ class Counsel extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
         $board_idx = $params[0];
@@ -357,7 +357,7 @@ class Counsel extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
             LB.ReadCnt, LB.SettingReadCnt,
             LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
@@ -475,7 +475,7 @@ class Counsel extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
             LB.ReadCnt, LB.SettingReadCnt,
             LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,

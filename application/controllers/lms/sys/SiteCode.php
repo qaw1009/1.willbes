@@ -73,7 +73,7 @@ class SiteCode
         $site_group_codes = $this->_CI->siteGroupModel->getSiteGroupArray();
 
         // 사용하는 코드값 조회
-        $add_condition = ['NOT' => ['CcdDesc' => 'campus_all']];        // 캠퍼스 코드가 '전체' 코드인 값 제외
+        $add_condition = ['NOT' => ['Ccd' => $this->_CI->codeModel->campusAllCcd]];                     // 캠퍼스 코드가 '전체' 코드인 값 제외
         $codes = $this->_CI->codeModel->getCcdInArray(array_values($this->_ccd), '', $add_condition);
 
         $mail_domain_ccd = $this->_CI->wCodeModel->getCcd('103');

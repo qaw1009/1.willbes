@@ -20,10 +20,10 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
-                    <div class="form-inline col-md-4 item">
+                    <div class="form-inline col-md-2 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', '', '', false, $offLineSite_list) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
+                    <label class="control-label col-md-1-1 b-line" for="campus_ccd">캠퍼스</label>
                     <div class="form-inline col-md-4 ml-12-dot">
                         <select class="form-control" id="campus_ccd" name="campus_ccd" required="required">
                             <option value="">캠퍼스</option>
@@ -65,8 +65,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="subject_idx">과목명<span class="required">*</span></label>
-                    <div class="form-inline col-md-3 item">
+                    <label class="control-label col-md-1-1" for="subject_idx">과목명<span class="required">*</span></label>
+                    <div class="form-inline col-md-2 item">
                         <select class="form-control" id="subject_idx" name="subject_idx" title="과목명" required="required">
                             <option value="">과목명</option>
                             @foreach($arr_subject as $row)
@@ -76,7 +76,7 @@
                     </div>
 
                     <label class="control-label col-md-1 b-line" for="course_idx">과정<span class="required">*</span></label>
-                    <div class="form-inline col-md-3 ml-8-dot item">
+                    <div class="form-inline col-md-3 ml-12-dot item">
                         <select class="form-control" id="course_idx" name="course_idx" title="과정" required="required">
                             <option value="">과정</option>
                             @foreach($arr_course as $row)
@@ -86,7 +86,7 @@
                     </div>
 
                     <label class="control-label col-md-1 c-line" for="prof_idx">교수명<span class="required">*</span></label>
-                    <div class="form-inline col-md-3 ml-8-dot item">
+                    <div class="form-inline col-md-2 ml-12-dot item">
                         <select class="form-control" id="prof_idx" name="prof_idx" title="교수명" required="required">
                             <option value="">교수명</option>
                             @foreach($arr_professor as $row)
@@ -98,12 +98,12 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_best">HOT</label>
-                    <div class="col-md-4 form-inline">
+                    <div class="col-md-2 form-inline">
                         <div class="checkbox">
                             <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 b-line" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-4 ml-12-dot item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>

@@ -118,7 +118,7 @@ class Faq extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
             LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName,
             LB.OrderNum
@@ -175,7 +175,7 @@ class Faq extends BaseBoard
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -280,7 +280,7 @@ class Faq extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.IsBest, LB.RegType, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.IsBest, LB.RegType, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName
         ';

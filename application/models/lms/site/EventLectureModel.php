@@ -724,7 +724,7 @@ class EventLectureModel extends WB_Model
     public function findEventNoticeForModify($board_idx)
     {
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, IF(LB.CampusCcd = \''.$this->codeModel->campusAllCcd.'\', \'전체\', LSC.CcdName) AS CampusName, LBC.CateCode, LS.SiteName,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';

@@ -187,10 +187,12 @@
                             <td class="w-data tx-left">
                                 <div class="w-tit w-acad-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
                                 <dl class="w-info acad">
-                                    <dt class="mr20">
+                                    <dt>
                                         <a href="#none"><strong>강좌상세정보</strong></a>
                                     </dt>
-                                    <dt class="NSK">
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강형태 : <span class="tx-blue">실강</span></dt>
+                                    <dt class="NSK ml15">
                                         <span class="acadBox n1">방문+온라인</span>
                                     </dt>
                                 </dl><br/>
@@ -253,11 +255,13 @@
                             <td class="w-data tx-left">
                                 <div class="w-tit w-acad-tit">[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</div>
                                 <dl class="w-info acad">
-                                    <dt class="mr20">
+                                    <dt>
                                         <a href="#none"><strong>강좌상세정보</strong></a>
                                     </dt>
-                                    <dt class="NSK">
-                                        <span class="acadBox n2">방문접수</span>
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강형태 : <span class="tx-blue">실강</span></dt>
+                                    <dt class="NSK ml15">
+                                        <span class="acadBox n3">온라인 접수</span>
                                     </dt>
                                 </dl><br/>
                             </td>
@@ -325,11 +329,13 @@
                             <td class="w-data tx-left">
                                 <div class="w-tit w-acad-tit">[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</div>
                                 <dl class="w-info acad">
-                                    <dt class="mr20">
+                                    <dt>
                                         <a href="#none"><strong>강좌상세정보</strong></a>
                                     </dt>
-                                    <dt class="NSK">
-                                        <span class="acadBox n3">온라인 접수</span>
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
+                                    <dt class="NSK ml15">
+                                        <span class="acadBox n2">방문접수</span>
                                     </dt>
                                 </dl><br/>
                             </td>

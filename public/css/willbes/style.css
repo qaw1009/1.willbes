@@ -1793,6 +1793,7 @@ table.auTable tr td {
     height: 30px;
 }
 .InfoBtn a {
+    background: #fff;
     display: block;
     width: 100%;
     height: 100%;
@@ -6884,11 +6885,12 @@ table.acadlecInfoTable tr td {
     bottom: 25px;
 }
 .willbes-Lec-Table.active .Lec-buyBtn-Wrap table {
-    padding-bottom: 110px;
+    padding-bottom: 80px;
 }
 .willbes-Lec-Table.active .Lec-buyBtn-Wrap .willbes-Lec-buyBtn {
+    width: auto;
     right: 39px;
-    bottom: 40px;
+    bottom: 25px;
 }
 table.lecInfoTable .w-Infotit {
     border-bottom: 1px solid #e1e1e1;
@@ -7023,6 +7025,8 @@ table.acadlecInfoPackageTable tr.Top td {
     margin-bottom: 50px;
 }
 .LecPocketlist {
+    float: left;
+    width: 230px;
     font-size: 14px;
     margin: 0 20px;
     padding: 30px 0 20px;
@@ -7041,6 +7045,35 @@ table.acadlecInfoPackageTable tr.Top td {
     letter-spacing: 0;
     line-height: 20px;
     margin-right: 20px;
+}
+.LecPocketlist dl {
+    float: left;
+    clear: both;
+    width: 100%;
+    line-height: 20px;
+}
+.LecPocketlist dl dt {
+    float: left;
+}
+.LecPocketlist dl dt.c-txt {
+    width: 110px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.LecPocketlist dl dt.price {
+    float: right;
+    margin-right: 20px;
+}
+.LecPocketlist dl dt.closeBtn {
+    float: right;
+    margin-right: 20px;
+}
+.LecPocketlist dl dt span {
+    float: right;
+}
+.LecPocketlist dl dt .o-price {
+    margin-left: 10px;
 }
 .LecPocketlist .oBox {
     float: left;

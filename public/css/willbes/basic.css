@@ -467,6 +467,9 @@ strong {
 .mt0 {
   margin-top: 0px !important;
 }
+.mt5 {
+  margin-top: 5px !important;
+}
 .mt10 {
   margin-top: 10px !important;
 }
@@ -883,6 +886,9 @@ strong {
 }
 .underline {
   text-decoration: underline !important;
+}
+.line-through {
+  text-decoration: line-through !important;
 }
 .caution-txt {
   background: url("../../img/willbes/sub/icon_caution.gif") no-repeat 0 center;

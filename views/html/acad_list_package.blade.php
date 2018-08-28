@@ -144,10 +144,12 @@
                             <td class="w-data tx-left pl15">
                                 <div class="w-tit w-acad-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
                                 <dl class="w-info acad">
-                                    <dt class="mr20">
+                                    <dt>
                                         <a href="#none"><strong>종합반 상세정보</strong></a>
                                     </dt>
-                                    <dt class="NSK">
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강형태 : <span class="tx-blue">실강</span></dt>
+                                    <dt class="NSK ml15">
                                         <span class="acadBox n1">방문+온라인</span>
                                     </dt>
                                 </dl><br/>
@@ -365,10 +367,12 @@
                             <td class="w-data tx-left pl15">
                                 <div class="w-tit w-acad-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
                                 <dl class="w-info acad">
-                                    <dt class="mr20">
+                                    <dt>
                                         <a href="#none"><strong>종합반 상세정보</strong></a>
                                     </dt>
-                                    <dt class="NSK">
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
+                                    <dt class="NSK ml15">
                                         <span class="acadBox n2">방문접수</span>
                                     </dt>
                                 </dl><br/>
@@ -468,25 +472,31 @@
             </div>
         </div>
         <!-- willbes-Layer-Box -->
-
+        <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
+            <div>
+                <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
+                    <span>방문접수</span>
+                </button>
+            </div>
+            <div>
+                <button type="submit" onclick="" class="bg-dark-blue">
+                    <span>바로결제</span>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
-
-<div class="willbes-Lec-buyBtn-sm NG">
-    <div>
-        <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
-            <span>방문접수</span>
-        </button>
-    </div>
-    <div>
-        <button type="submit" onclick="" class="bg-dark-blue">
-            <span>바로결제</span>
-        </button>
-    </div>
-</div>
+<script src="/public/js/willbes/product_util.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.goods_chk').on('change', function() {
+            showBuyLayer('off', $(this), 'buy_layer');
+        });
+    });
+</script>
 
 <!-- End Container -->
 @stop

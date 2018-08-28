@@ -98,7 +98,7 @@
             </div>
             <!-- willbes-Lec-Search -->
 
-            <div class="willbes-Lec NG c_both mb25">
+            <div class="willbes-Lec NG c_both mb60">
                 <div class="willbes-Lec-Subject tx-dark-black">· 종합반<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
                 <!-- willbes-Lec-Subject -->
 
@@ -117,17 +117,18 @@
                                 <td class="w-list">문제<br/>풀이</td>
                                 <td class="w-data tx-left">
                                     <div class="w-tit w-acad-tit">
-                                        <a href="#none"><강제합격반> [서울시대비] 행정법,행정학(5~6월)</a><span class="oBox smBox ml10 NSK">신림</span>
+                                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)<span class="oBox smBox ml10 NSK">신림</span>
                                     </div>
-                                    <dl class="w-info">
-                                        <dt class="mr20">
-                                            <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                                <strong>상세정보</strong>
+                                    <dl class="w-info acad">
+                                        <dt>
+                                            <a href="#none">
+                                                <strong>종합반상세정보</strong>
                                             </a>
                                         </dt>
-                                        <dt>
-                                            <span class="tx-blue">2018/05/10(목)</span> ~ 2018/06/30 (토)
-                                        </dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="tx-blue">실강</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="tx-gray">2018-05-10 ~ 2018-06-30</dt>
                                     </dl>
                                 </td>
                                 <td class="w-notice p_re">
@@ -328,17 +329,13 @@
                             </tbody>
                         </table>
                         <!-- lecInfoTable : 선택과목 -->
-                        <div class="willbes-Lec-buyBtn GM">
+                        <div class="lecInfoTable willbes-Lec-buyBtn GM">
                             <ul>
-                                <li class="btnAuto180 h36">
-                                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                                        <span>방문접수</span>
-                                    </button>
+                                <li class="InfoBtn ml10">
+                                    <a href="#none">방문접수</a>
                                 </li>
-                                <li class="btnAuto180 h36">
-                                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                        <span class="tx-light-blue">바로결제</span>
-                                    </button>
+                                <li class="InfoBtn">
+                                    <a href="#none">바로결제</a>
                                 </li>
                             </ul>
                         </div>
@@ -379,17 +376,18 @@
                                 <td class="w-list">문제<br/>풀이</td>
                                 <td class="w-data tx-left">
                                     <div class="w-tit w-acad-tit">
-                                        <a href="#none"><강제합격반> [서울시대비] 행정법,행정학 (5~6월)[서울시대비] 행정법,행정학 (5~6월) 행정법,행정학 (5~6월)</a><span class="oBox nyBox ml10 NSK">노량진</span>
+                                        <강제합격반> [서울시대비] 행정법,행정학 (5~6월)<span class="oBox nyBox ml10 NSK">노량진</span>
                                     </div>
-                                    <dl class="w-info">
-                                        <dt class="mr20">
-                                            <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                                <strong>상세정보</strong>
+                                    <dl class="w-info acad">
+                                        <dt>
+                                            <a href="#none">
+                                                <strong>종합반상세정보</strong>
                                             </a>
                                         </dt>
-                                        <dt>
-                                            <span class="tx-blue">2018/05/10(목)</span> ~ 2018/06/30 (토)
-                                        </dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="tx-blue">실강</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="tx-gray">2018-05-10 ~ 2018-06-30</dt>
                                     </dl>
                                 </td>
                                 <td class="w-notice p_re">
@@ -425,15 +423,11 @@
 
                     <div class="lecInfoTable willbes-Lec-buyBtn GM">
                         <ul>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                                    <span>방문접수</span>
-                                </button>
+                            <li class="InfoBtn ml10">
+                                <a href="#none">방문접수</a>
                             </li>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                                    <span class="tx-light-blue">바로결제</span>
-                                </button>
+                            <li class="InfoBtn">
+                                <a href="#none">바로결제</a>
                             </li>
                         </ul>
                     </div>
@@ -839,19 +833,5 @@
         </div>
     </div>
 </div>
-
-<div class="willbes-Lec-buyBtn-sm NG">
-    <div>
-        <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
-            <span>방문접수</span>
-        </button>
-    </div>
-    <div>
-        <button type="submit" onclick="" class="bg-dark-blue">
-            <span>바로결제</span>
-        </button>
-    </div>
-</div>
-
 <!-- End Container -->
 @stop

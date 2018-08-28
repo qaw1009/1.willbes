@@ -128,7 +128,7 @@
                     </select>
                 </div>
                 <input type="text" id="search_value" name="search_value" maxlength="30" value="{{ element('1', $arr_search_text) }}">
-                <button type="submit" onclick="goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));" class="search-Btn">
+                <button type="button" id="btn_search" onclick="" class="search-Btn">
                     <span>검색</span>
                 </button>
             </div>
@@ -329,5 +329,24 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 검색어 입력 후 엔터
+        $('#search_value').on('keyup', function() {
+            if (window.event.keyCode === 13) {
+                goSearch();
+            }
+        });
+
+        // 검색 버튼 클릭
+        $('#btn_search').on('click', function() {
+            goSearch();
+        });
+
+        var goSearch = function() {
+            goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
+        };
+    });
+</script>
 <!-- End Container -->
 @stop

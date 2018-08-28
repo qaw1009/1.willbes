@@ -52,6 +52,10 @@ class Counsel extends BaseBoard
 
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
+        /*print_r($arr_category);*/
+
+        //사이트카테고리 중분류 조회
+        $arr_m_category = $this->categoryModel->getCategoryArray('','','','2');
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
@@ -76,6 +80,7 @@ class Counsel extends BaseBoard
             'arr_ccd_reply' => $this->_Ccd['reply'],
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
+            'arr_m_category' => $arr_m_category,
             'boardName' => $this->board_name,
             'arr_unAnswered' => $arr_unAnswered,
             'arr_type_group_ccd' => $arr_type_group_ccd,
@@ -100,6 +105,7 @@ class Counsel extends BaseBoard
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'LB.MdCateCode' => $this->_reqP('search_md_cate_code'),
                 'LB.TypeCcd' => $this->_reqP('search_type_group_ccd'),
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
                 'LB.isPublic' => $this->_reqP('search_is_public'),
@@ -145,14 +151,15 @@ class Counsel extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
             LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Phone1, MEM.Phone2Enc, MEM.Phone3,
             LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
-            ADMIN2.wAdminName as ReplyRegAdminName
+            ADMIN2.wAdminName as ReplyRegAdminName,
+            MdSysCate.CateName as MdCateName
         ';
 
         $list = [];
@@ -485,7 +492,8 @@ class Counsel extends BaseBoard
             MEM.MemName, MEM.MemId, MEM.Phone1,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             counselAdmin.wAdminName AS counselAdminName, counselAdmin2.wAdminName AS counselUpdAdminName,
-            LB.ReplyRegDatm, LB.ReplyUpdDatm
+            LB.ReplyRegDatm, LB.ReplyUpdDatm,
+            MdSysCate.CateName as MdCateName
             ';
         $board_idx = $params[0];
         $arr_condition = ([

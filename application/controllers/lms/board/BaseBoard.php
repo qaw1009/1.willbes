@@ -76,6 +76,7 @@ class BaseBoard extends \app\controllers\BaseController
                 'A.IsBest' => $is_best,
                 'A.ProfIdx' => $prof_idx,
                 'A.SiteCode' => element('search_site_code', $search_datas),
+                'A.MdCateCode' => element('search_md_cate_code', $search_datas),
                 'A.CampusCcd' => element('search_campus_ccd', $search_datas),
                 'A.FaqGroupTypeCcd' => element('search_group_faq_ccd', $search_datas),
                 'A.FaqTypeCcd' => element('search_faq_type', $search_datas),

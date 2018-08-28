@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">분류</label>
                     <div class="form-control-static col-md-4">
-
+                        {{$data['MdCateName']}}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">상담유형</label>
                     <div class="form-control-static col-md-4 ml-12-dot">

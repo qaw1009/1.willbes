@@ -425,25 +425,31 @@
             </div>
         </div>
         <!-- willbes-Layer-Box -->
-
+        <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
+            <div>
+                <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
+                    <span>방문접수</span>
+                </button>
+            </div>
+            <div>
+                <button type="submit" onclick="" class="bg-dark-blue">
+                    <span>바로결제</span>
+                </button>
+            </div>
+        </div>
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
-
-<div class="willbes-Lec-buyBtn-sm NG">
-    <div>
-        <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
-            <span>방문접수</span>
-        </button>
-    </div>
-    <div>
-        <button type="submit" onclick="" class="bg-dark-blue">
-            <span>바로결제</span>
-        </button>
-    </div>
-</div>
+<script src="/public/js/willbes/product_util.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.goods_chk').on('change', function() {
+            showBuyLayer('off', $(this), 'buy_layer');
+        });
+    });
+</script>
 
 <!-- End Container -->
 @stop

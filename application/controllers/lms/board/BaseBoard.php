@@ -59,6 +59,69 @@ class BaseBoard extends \app\controllers\BaseController
     }
 
     /**
+     * 게시글의 이전글, 다음글
+     * @param $bm_idx
+     * @param $board_idx
+     * @param int $is_best          현재 게시글의 isBest 기준으로 검색
+     * @param int $reg_type         사용자 등록글인 경우 isStatus 값 where 절에서 제외
+     * @param array $search_datas   검색데이터
+     * @param int $ccd_voc          상담게시판
+     * @param null $prof_idx        강사게시판
+     * @return mixed
+     */
+    protected function _findBoardPrevious_Next($bm_idx, $board_idx, $is_best = 0, $reg_type = 1, $search_datas = [], $ccd_voc = 0, $prof_idx = null){
+        $arr_condition = [
+            'EQ' => [
+                'A.BmIdx' => $bm_idx,
+                'A.IsBest' => $is_best,
+                'A.ProfIdx' => $prof_idx,
+                'A.SiteCode' => element('search_site_code', $search_datas),
+                'A.CampusCcd' => element('search_campus_ccd', $search_datas),
+                'A.FaqGroupTypeCcd' => element('search_group_faq_ccd', $search_datas),
+                'A.FaqTypeCcd' => element('search_faq_type', $search_datas),
+                'A.AreaCcd' => element('search_area_ccd', $search_datas),
+                'A.SubjectIdx' => element('search_subject', $search_datas),
+                'A.IsUse' => element('search_is_use', $search_datas),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'A.Title' => element('search_value', $search_datas),
+                    'A.Content' => element('search_value', $search_datas),
+                    'A.ReplyContent' => element('search_replay_value', $search_datas),
+
+                    'MEM.MemId' => element('search_member_value', $search_datas),
+                    'MEM.MemName' => element('search_member_value', $search_datas),
+                    'MEM.Phone3' => element('search_member_value', $search_datas)
+                ]
+            ],
+            'BDT' => ['A.RegDatm' => [element('search_start_date', $search_datas), element('search_end_date', $search_datas)]]
+        ];
+
+        if ($reg_type == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['A.IsStatus' => 'Y']);
+        }
+
+        if (element('search_chk_vod_value', $search_datas) == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['A.VocCcd' => $ccd_voc]);
+        }
+
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y',
+                'subLBrC.CateCode' => element('search_category', $search_datas)
+            ]
+        ];
+
+        $arr_condition_previous = array_merge($arr_condition, ['LT'=>['A.BoardIdx' => $board_idx]]);
+        $data['previous'] = $this->boardModel->findBoardPrevious($arr_condition_previous, $sub_query_condition);
+
+        $arr_condition_next = array_merge($arr_condition, ['GT'=>['A.BoardIdx' => $board_idx]]);
+        $data['next'] = $this->boardModel->findBoardNext($arr_condition_next, $sub_query_condition);
+
+        return $data;
+    }
+
+    /**
      * 권한유형별 캠퍼스 목록 조회
      * @param $site_code
      * @return array
@@ -87,65 +150,6 @@ class BaseBoard extends \app\controllers\BaseController
     {
         $arr_condition['EQ']['SiteCode'] = $param;
         return $this->siteModel->listSite($column, $arr_condition);
-    }
-
-    /**
-     * 운영사이트에 따른 카테고리(구분), 캠퍼스 정보 리턴
-     * @param array $params
-     * @return mixed
-     */
-    protected function _getSiteCategoryInfo($params = [])
-    {
-        $result = [];
-        if (empty($params) === false) {
-            $resultSiteArray = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
-            $get_site_array = [];
-            foreach ($resultSiteArray as $keys => $vals) {
-                foreach ($vals as $key => $val) {
-                    $get_site_array[$vals['SiteCode']] = array(
-                        'SiteName' => $vals['SiteName'],
-                        'IsCampus' => $vals['IsCampus']
-                    );
-                }
-            }
-
-            //사이트카테고리
-            $result['category'] = $this->_getCategoryArray($params[0]);
-            //캠퍼스
-            $result['campus'] = $this->_getCampusArray($params[0]);
-
-            //캠퍼스 사용 유무
-            $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
-        }
-
-        return $result;
-    }
-
-    /**
-     * 캠퍼스 정보 리턴
-     * @param array $params
-     * @return mixed
-     */
-    protected function _getCampusInfo($params = [])
-    {
-        $result = [];
-        if (empty($params) === false) {
-            $result_site_array = $this->_listSite('SiteCode,SiteName,IsCampus', $params[0]);
-            $get_site_array = [];
-            foreach ($result_site_array as $keys => $vals) {
-                foreach ($vals as $key => $val) {
-                    $get_site_array[$vals['SiteCode']] = array(
-                        'SiteName' => $vals['SiteName'],
-                        'IsCampus' => $vals['IsCampus']
-                    );
-                }
-            }
-
-            $result['campus'] = $this->_getCampusArray($params[0]);
-            //캠퍼스 사용 유무
-            $result['isCampus'] = $get_site_array[$params[0]]['IsCampus'];
-        }
-        return $result;
     }
 
     /**
@@ -184,7 +188,6 @@ class BaseBoard extends \app\controllers\BaseController
 
     protected function _listAllCode($group_ccds = [])
     {
-        //return $this->codeModel->getCcdInArray($group_ccds);
         $arr_condition = [
             'IN' => [
                 'GroupCcd' => $group_ccds
@@ -332,5 +335,14 @@ class BaseBoard extends \app\controllers\BaseController
     protected function getMaxOrderNum($arr_condition)
     {
         return $this->boardModel->getMaxOrderNumData($arr_condition);
+    }
+
+    /**
+     * 첨부파일 다운로드
+     * @param array $fileinfo
+     */
+    protected function _download($fileinfo=[])
+    {
+        public_download($fileinfo[0], $fileinfo[1]);
     }
 }

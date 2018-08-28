@@ -542,18 +542,30 @@ class BoardModel extends WB_Model
     /**
      * 게시판 이전글
      * @param $arr_condition
+     * @param $sub_query_condition
      * @return mixed
      */
-    public function findBoardPrevious($arr_condition)
+    public function findBoardPrevious($arr_condition, $sub_query_condition)
     {
-        $column = 'BoardIdx, Title';
+        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
+        $sub_query_where = $sub_query_where->getMakeWhere(false);
+
+        $column = 'A.BoardIdx, A.Title';
         $from = "
-            FROM {$this->_table}
+            FROM {$this->_table} AS A
+            LEFT JOIN (
+                SELECT subLBrC.BoardIdx
+                FROM {$this->_table_r_category} AS subLBrC
+                LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
+                {$sub_query_where}
+                GROUP BY subLBrC.BoardIdx
+            ) AS B ON A.BoardIdx = B.BoardIdx
+            LEFT OUTER JOIN {$this->_table_member} AS MEM ON A.RegMemIdx = MEM.MemIdx
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $order_by_offset_limit = $this->_conn->makeOrderBy(['BoardIdx'=>'DESC'])->getMakeOrderBy();
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['A.BoardIdx'=>'DESC'])->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
         $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
@@ -563,18 +575,30 @@ class BoardModel extends WB_Model
     /**
      * 게시판 다음글
      * @param $arr_condition
+     * @param $sub_query_condition
      * @return mixed
      */
-    public function findBoardNext($arr_condition)
+    public function findBoardNext($arr_condition, $sub_query_condition)
     {
-        $column = 'BoardIdx, Title';
+        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
+        $sub_query_where = $sub_query_where->getMakeWhere(false);
+
+        $column = 'A.BoardIdx, A.Title';
         $from = "
-            FROM {$this->_table}
+            FROM {$this->_table} AS A
+            LEFT JOIN (
+                SELECT subLBrC.BoardIdx
+                FROM {$this->_table_r_category} AS subLBrC
+                LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
+                {$sub_query_where}
+                GROUP BY subLBrC.BoardIdx
+            ) AS B ON A.BoardIdx = B.BoardIdx
+            LEFT OUTER JOIN {$this->_table_member} AS MEM ON A.RegMemIdx = MEM.MemIdx
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $order_by_offset_limit = $this->_conn->makeOrderBy(['BoardIdx'=>'ASC'])->getMakeOrderBy();
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['A.BoardIdx'=>'ASC'])->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
         $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
@@ -883,7 +907,7 @@ class BoardModel extends WB_Model
         $this->_conn->from($this->_table_sys_code);
         $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
         $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
-        $this->_conn->where_in($this->_table.'.SiteCode', get_auth_site_codes());
+        $this->_conn->where_in($this->_table.'.SiteCode', get_auth_site_codes(false, true));
         $this->_conn->join($this->_table, "{$this->_table_sys_code}.Ccd = {$this->_table}.FaqGroupTypeCcd");
         $this->_conn->group_by($this->_table.'.FaqGroupTypeCcd');
         $data = $this->_conn->get()->result_array();

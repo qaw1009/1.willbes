@@ -6,7 +6,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 class Announcement extends BaseBoard
 {
     protected $temp_models = array('sys/boardMaster', 'board/board');
-    protected $helpers = array();
+    protected $helpers = array('download','file');
 
     private $board_name = 'Announcement';
     private $site_code = '';
@@ -280,7 +280,7 @@ class Announcement extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LB.TypeCcd, LB.AreaCcd, LSC1.CcdName as AnnouncementName, LSC2.CcdName as AreaName
             ';
@@ -301,19 +301,12 @@ class Announcement extends BaseBoard
             show_error('데이터 조회에 실패했습니다.');
         }
 
-        $arr_condition = ([
-            'EQ'=>[
-                'BmIdx' => $this->bm_idx,
-                'IsStatus' => 'Y',
-                'IsBest' => $data['IsBest']
-            ]
-        ]);
-        //이전글
-        $arr_condition_previous = array_merge($arr_condition, ['LT'=>['BoardIdx' => $board_idx]]);
-        $board_previous = $this->boardModel->findBoardPrevious($arr_condition_previous);
-        //다음글
-        $arr_condition_next = array_merge($arr_condition, ['GT'=>['BoardIdx' => $board_idx]]);
-        $board_next = $this->boardModel->findBoardNext($arr_condition_next);
+        $query_string = base64_decode(element('q',$this->_reqG(null)));
+        $search_datas = json_decode($query_string,true);
+
+        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas);
+        $board_previous = $data_PN['previous'];     //이전글
+        $board_next = $data_PN['next'];             //다음글
 
         $site_code = $data['SiteCode'];
         $arr_cate_code = explode(',', $data['CateCode']);
@@ -377,6 +370,15 @@ class Announcement extends BaseBoard
 
         $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 첨부파일 다운로드
+     * @param array $fileinfo
+     */
+    public function download($fileinfo = [])
+    {
+        $this->_download($fileinfo);
     }
 
     private function _setInputData($input){

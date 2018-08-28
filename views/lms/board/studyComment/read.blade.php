@@ -69,9 +69,13 @@
                 <label class="control-label col-md-1-1" for="">첨부</label>
                 <div class="col-md-4">
                     @for($i = 0; $i < $attach_file_cnt; $i++)
-                            @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]</p>
-                            @endif
+                        @if(empty($data['arr_attach_file_path'][$i]) === false)
+                            <p class="form-control-static">
+                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i]).'/'.urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                    {{ $data['arr_attach_file_real_name'][$i] }}
+                                </a> ]
+                            </p>
+                        @endif
                     @endfor
                 </div>
                 <label class="control-label col-md-1-1 d-line" for="">조회수(생성)</label>
@@ -179,6 +183,11 @@
 
             $('#btn_next').click(function() {
                 location.href='{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + getQueryString();
+            });
+
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/board/{$boardName}/download") }}/' + $(this).data('file-path') + getQueryString();
+                window.open(_url, '_blank');
             });
 
             //데이터 삭제

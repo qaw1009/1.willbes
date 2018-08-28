@@ -68,7 +68,11 @@
                     <div class="col-md-4">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]</p>
+                                <p class="form-control-static">
+                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i]).'/'.urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                        {{ $data['arr_attach_file_real_name'][$i] }}
+                                    </a> ]
+                                </p>
                             @endif
                         @endfor
                     </div>
@@ -130,11 +134,16 @@
 
                     <div class="form-control-static col-md-4">
                         <div class="short-div">
-                        @for($i = 1; $i <= $attach_file_cnt; $i++)
+                        @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
+                                <p class="form-control-static">
+                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_reply_attach_file_path'][$i].$data['arr_reply_attach_file_name'][$i]).'/'.urlencode($data['arr_reply_attach_file_real_name'][$i]) }}" target="_blank">
+                                        {{ $data['arr_reply_attach_file_real_name'][$i] }}
+                                    </a> ]
+                                </p>
                             @endif
                         @endfor
+
                         </div>
                         <div class="form-control-static short-div"></div>
                         <div class="form-control-static short-div">{{$data['ReplyRegDatm']}}</div>
@@ -246,6 +255,11 @@
 
             $('#btn_next').click(function() {
                 location.href='{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + getQueryString();
+            });
+
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/board/{$boardName}/download") }}/' + $(this).data('file-path') + getQueryString();
+                window.open(_url, '_blank');
             });
 
             // 답변 수정/등록 폼

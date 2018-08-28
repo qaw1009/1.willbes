@@ -663,13 +663,45 @@
                             <img src="{{ img_url('cart/close.png') }}">
                         </a>
                     </span>
+                    <!-- 쿠폰 미적용시 -->
                     <ul class="NSK">
-                        <!-- 쿠폰적용 후 display:none -->
                         <li class="aBox waitBox_block"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></li>
-                        <!-- 쿠폰적용 적용후 활성화
-                        <li class="aBox answerBox_block"><a href="#none">변경</a></li>
-                        <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
-                        -->
+                        <li class="price tx-blue f_right">80,000원</li>
+                    </ul>
+                    <!-- // 쿠폰 미적용시 -->
+                </div>
+                <div class="LecPocketlist">
+                    <span class="oBox nyBox NSK mr10">노량진</span>
+                    <span class="w-tit p_re">
+                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)
+                        <a class="closeBtn" href="#none">
+                            <img src="{{ img_url('cart/close.png') }}">
+                        </a>
+                    </span>
+                    <!-- 쿠폰 적용시 -->
+                    <dl class="mt25">
+                        <dt class="aBox waitBox_block">쿠폰적용</dt>
+                        <dt class="price tx-blue">75,000원 <span class="o-price tx-gray line-through">(80,000원)</span></dt>
+                    </dl>
+                    <dl class="mt5">
+                        <dt class="c-txt">쿠폰명 노출 쿠폰명 노출 쿠폰명 노출 쿠폰명 노출 쿠폰명 노출</dt>
+                        <dt class="d-price tx-light-pink">(5,000원할인)</dt>
+                        <dt class="closeBtn">                        
+                            <a href="#none"><img src="/public/img/willbes/cart/close.png"></a>
+                        </dt>
+                    </dl>
+                    <!-- // 쿠폰 적용시 -->
+                </div>
+                <div class="LecPocketlist">
+                    <span class="oBox smBox NSK mr10">신림</span>
+                    <span class="w-tit p_re">
+                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)
+                        <a class="closeBtn" href="#none">
+                            <img src="{{ img_url('cart/close.png') }}">
+                        </a>
+                    </span>
+                    <ul class="NSK">
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
                         <li class="price tx-blue f_right">80,000원</li>
                     </ul>
                 </div>
@@ -682,12 +714,20 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰적용 후 display:none
                         <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
-                        -->
-                        <!-- 쿠폰적용 적용후 활성화 -->
-                        <li class="aBox answerBox_block"><a href="#none">변경</a></li>
-                        <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
+                        <li class="price tx-blue f_right">80,000원</li>
+                    </ul>
+                </div>
+                <div class="LecPocketlist">
+                    <span class="oBox nyBox NSK mr10">노량진</span>
+                    <span class="w-tit p_re">
+                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)
+                        <a class="closeBtn" href="#none">
+                            <img src="{{ img_url('cart/close.png') }}">
+                        </a>
+                    </span>
+                    <ul class="NSK">
+                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
                         <li class="price tx-blue f_right">80,000원</li>
                     </ul>
                 </div>
@@ -700,66 +740,7 @@
                         </a>
                     </span>
                     <ul class="NSK">
-                        <!-- 쿠폰적용 후 display:none -->
                         <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
-                        <!-- 쿠폰적용 적용후 활성화
-                        <li class="aBox answerBox_block"><a href="#none">변경</a></li>
-                        <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
-                        -->
-                        <li class="price tx-blue f_right">80,000원</li>
-                    </ul>
-                </div>
-                <div class="LecPocketlist">
-                    <span class="oBox nyBox NSK mr10">노량진</span>
-                    <span class="w-tit p_re">
-                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)
-                        <a class="closeBtn" href="#none">
-                            <img src="{{ img_url('cart/close.png') }}">
-                        </a>
-                    </span>
-                    <ul class="NSK">
-                        <!-- 쿠폰적용 후 display:none -->
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
-                        <!-- 쿠폰적용 적용후 활성화
-                        <li class="aBox answerBox_block"><a href="#none">변경</a></li>
-                        <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
-                        -->
-                        <li class="price tx-blue f_right">80,000원</li>
-                    </ul>
-                </div>
-                <div class="LecPocketlist">
-                    <span class="oBox nyBox NSK mr10">노량진</span>
-                    <span class="w-tit p_re">
-                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)
-                        <a class="closeBtn" href="#none">
-                            <img src="{{ img_url('cart/close.png') }}">
-                        </a>
-                    </span>
-                    <ul class="NSK">
-                        <!-- 쿠폰적용 후 display:none
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
-                        -->
-                        <!-- 쿠폰적용 적용후 활성화 -->
-                        <li class="aBox answerBox_block"><a href="#none">변경</a></li>
-                        <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
-                        <li class="price tx-blue f_right">80,000원</li>
-                    </ul>
-                </div>
-                <div class="LecPocketlist">
-                    <span class="oBox smBox NSK mr10">신림</span>
-                    <span class="w-tit p_re">
-                        <강제합격반> [서울시대비] 행정법,행정학(5~6월)
-                        <a class="closeBtn" href="#none">
-                            <img src="{{ img_url('cart/close.png') }}">
-                        </a>
-                    </span>
-                    <ul class="NSK">
-                        <!-- 쿠폰적용 후 display:none -->
-                        <li class="aBox waitBox_block"><a href="#none">쿠폰적용</a></li>
-                        <!-- 쿠폰적용 적용후 활성화
-                        <li class="aBox answerBox_block"><a href="#none">변경</a></li>
-                        <li class="aBox cancelBox_block"><a href="#none">취소</a></li>
-                        -->
                         <li class="price tx-blue f_right">80,000원</li>
                     </ul>
                 </div>

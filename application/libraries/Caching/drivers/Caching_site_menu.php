@@ -72,7 +72,7 @@ class Caching_site_menu extends CI_Driver
                 }
             } else {
                 $key_group = $row['SiteCode'];
-                $menu_url = '//' . $row['SiteUrl'] . '' . $row['MenuUrl'];
+                $menu_url = '//' . parse_url('//' . $row['SiteUrl'], PHP_URL_HOST) . '' . $row['MenuUrl'];
             }
 
             $url_sub_domain = str_first_pos_before(parse_url($menu_url)['host'], '.');

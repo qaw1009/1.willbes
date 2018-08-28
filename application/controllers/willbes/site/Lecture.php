@@ -47,6 +47,8 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
+        $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);
+
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,
@@ -59,7 +61,7 @@ class Lecture extends \app\controllers\FrontController
                 'CateCode' => $this->_cate_code,
             ],
             'LKB' => [
-                'ProdName' => $this->_req('prod_name'),
+                $arr_search_text[0] => element('1', $arr_search_text),
             ]
         ];
 

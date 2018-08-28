@@ -118,8 +118,17 @@
 
         <div class="willbes-Lec-Search mb60">
             <div class="inputBox p_re">
-                <input type="text" id="prod_name" name="prod_name" maxlength="30" value="{{ element('prod_name', $arr_input) }}" placeholder="강의명">
-                <button type="submit" onclick="goUrl('prod_name', document.getElementById('prod_name').value);" class="search-Btn">
+                @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
+                <div class="selectBox">
+                    <select id="search_keyword" name="search_keyword" title="직접입력" class="">
+                        <option value="ProdName" @if($arr_search_text[0] == 'ProdName') selected="selected" @endif>강좌명</option>
+                        <option value="SubjectName" @if($arr_search_text[0] == 'SubjectName') selected="selected" @endif>과목명</option>
+                        <option value="wProfName" @if($arr_search_text[0] == 'wProfName') selected="selected" @endif>교수명</option>
+                        <option value="CourseName" @if($arr_search_text[0] == 'CourseName') selected="selected" @endif>과정명</option>
+                    </select>
+                </div>
+                <input type="text" id="search_value" name="search_value" maxlength="30" value="{{ element('1', $arr_search_text) }}">
+                <button type="submit" onclick="goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));" class="search-Btn">
                     <span>검색</span>
                 </button>
             </div>

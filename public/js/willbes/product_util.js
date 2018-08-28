@@ -59,20 +59,24 @@ function getCartType($regi_form) {
 
 /**
  * 장바구니, 바로결제 레이어 노출
- * @param $regi_form
+ * @param $type
  * @param $chk_obj
  * @param $target_id
  */
-function showBuyLayer($regi_form, $chk_obj, $target_id) {
+function showBuyLayer($type, $chk_obj, $target_id) {
     var $target_layer = $('#' + $target_id);
 
     if($chk_obj.is(':checked')) {
         //var top = $chk_obj.offset().top;
         //var left = $chk_obj.offset().left - 52;
-        var top = $chk_obj.offset().top - 196;
+        var top = $chk_obj.offset().top - 180;
         var right = 242;
-        if ($chk_obj.hasClass('chk_books') === true) {
-            right += 50;
+        if ($type === 'on') {
+            if ($chk_obj.hasClass('chk_books') === true) {
+                right += 50;
+            }
+        } else {
+            right = 163;
         }
 
         $target_layer.css({

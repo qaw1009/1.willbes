@@ -31,7 +31,7 @@
             // 목록 페이지
             // 상품 선택/해제
             $regi_form.on('change', '.chk_products, .chk_books', function() {
-                showBuyLayer($regi_form, $(this), 'buy_layer');
+                showBuyLayer('on', $(this), 'buy_layer');
                 setCheckLectureProduct($regi_form, $(this), '', '', '', '');
             });
 

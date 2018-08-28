@@ -3,23 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF', 'memberF', '_lms/sys/code', '_lms/sys/wCode');
+    protected $models = array('order/cartF', 'order/orderF', 'memberF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
 
     // 사용하는 그룹공통코드
-    private $_tel1_ccd = '101';
-    private $_phone1_ccd = '102';
+    private $_tel1_ccd = '672';
+    private $_phone1_ccd = '673';
 
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function test()
+    public function test($params = [])
     {
-        dd($this->cartFModel->checkSessCartIdx());
+        var_dump($params);
     }
 
     /**
@@ -51,11 +51,11 @@ class Order extends \app\controllers\FrontController
         $results['point'] = ['on_lecture' => 3000, 'book' => 3000];
 
         // 지역번호, 휴대폰번호 공통코드 조회
-        $wcodes = $this->wCodeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
+        $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
 
         $this->load->view('site/order/index', [
-            'arr_tel1_ccd' => $wcodes[$this->_tel1_ccd],
-            'arr_phone1_ccd' => $wcodes[$this->_phone1_ccd],
+            'arr_tel1_ccd' => $codes[$this->_tel1_ccd],
+            'arr_phone1_ccd' => $codes[$this->_phone1_ccd],
             'results' => $results
         ]);
     }

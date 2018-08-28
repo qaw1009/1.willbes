@@ -169,6 +169,19 @@ if (!function_exists('form_errors')) {
     }
 }
 
+if (!function_exists('front_url')) {
+    /**
+     * site_url 대체 헬퍼 (학원 사이트 여부를 판별하여 URI 생성)
+     * @param $uri
+     * @return string
+     */
+    function front_url($uri)
+    {
+        config_app('IsPassSite') === true && $uri = '/' . config_app('PassSiteVal') . $uri;
+        return site_url($uri);
+    }
+}
+
 if (!function_exists('get_var')) {
     /**
      * 변수값이 빈값일 경우 default 값 리턴

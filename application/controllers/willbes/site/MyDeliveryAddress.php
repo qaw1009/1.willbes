@@ -3,14 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MyDeliveryAddress extends \app\controllers\FrontController
 {
-    protected $models = array('order/myDeliveryAddressF', '_lms/sys/wCode');
+    protected $models = array('order/myDeliveryAddressF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
 
     // 사용하는 그룹공통코드
-    private $_tel1_ccd = '101';
-    private $_phone1_ccd = '102';
+    private $_tel1_ccd = '672';
+    private $_phone1_ccd = '673';
 
     public function __construct()
     {
@@ -26,7 +26,7 @@ class MyDeliveryAddress extends \app\controllers\FrontController
         $list = $this->myDeliveryAddressFModel->listMyDeliveryAddress(false, $arr_condition, 5, 0, ['AddrIdx' => 'asc']);
 
         // 지역번호, 휴대폰번호 공통코드 조회
-        $codes = $this->wCodeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
+        $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
 
         $this->load->view('site/order/my_delivery_address_list', [
             'arr_tel1_ccd' => $codes[$this->_tel1_ccd],

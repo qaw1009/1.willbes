@@ -66,6 +66,16 @@ $(function() {
     });
 });
 
+// Slider 000 Script
+$(function() {
+    $('.sliderSwipe').bxSlider({
+        swipeThreshold: 50,
+        controls: false,
+        pager: false,
+    });
+});
+
+
 /**
  * slider util
  * @param ele_id

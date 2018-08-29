@@ -27,6 +27,25 @@
         </div>
     </div>
     <div class="line">-</div>
+
+    <div class="MainSlider c_both">
+        <div class="sliderSwipe">
+            <ul class="w-nav">
+                <li class="nav_top"><a href="">뉴스</a></li>
+                <li><a href="">연예</a></li>
+                <li><a href="">스포츠</a></li>
+                <li><a href="">쇼핑</a></li>
+                <li><a href="">우리동네</a></li>
+                <li><a href="">건강</a></li>
+                <li><a href="">FARM</a></li>
+                <li><a href="">JOB&</a></li>
+                <li><a href="">책문화</a></li>
+                <li><a href="">게임</a></li>
+            </ul>
+        </div>
+    </div>
+
+
     <div class="lineTabs lecProfTabs c_both">
         <ul class="tabWrap lineWrap lecProfWrap two">
             <li><a href="#lecprof1" class="on">신규강좌</a></li>

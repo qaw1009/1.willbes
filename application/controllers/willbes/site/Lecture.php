@@ -29,6 +29,9 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
+        // 과정 조회
+        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+
         if ($this->_site_code == '2004') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
             $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
@@ -38,16 +41,13 @@ class Lecture extends \app\controllers\FrontController
             $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_cate_code);
         }
 
-        // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
-
         // 과목이 선택된 경우 해당 교수 조회
         if (empty(element('subject_idx', $arr_input)) === false) {
             $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code, element('subject_idx', $arr_input));
         }
 
         // 상품 조회
-        $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);
+        $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
 
         $arr_condition = [
             'EQ' => [

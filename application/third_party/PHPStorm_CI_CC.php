@@ -153,7 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property LectureFModel $lectureFModel                                         Lecture Product Model Class
  * @property FreeLectureFModel $freeLectureFModel                             Free Lecture Product Model Class
  * @property PackageFModel $packageFModel                                      Package Product Model Class
- * @property UserPackageFModel $userPackageFModel                                 User  Package Product Model Class
+ * @property UserPackageFModel $userPackageFModel                           User  Package Product Model Class
  * @property PassPackageFModel $passPackageFModel                          Pass Package Product Model Class
  * @property CartFModel $cartFModel                                                 Cart Model Class
  * @property OrderFModel $orderFModel                                              Order Model Class
@@ -161,11 +161,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CouponFModel $couponFModel                                         Coupon Model Class
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
- * @property PlayerFModel $playerFModel                                          Player Model Class
- * @property BaseSupportFModel $baseSupportFModel                              BaseSupport Model Class
- * @property SupportMainFModel $supportMainFModel                               SupportMain Model Class
- * @property SupportBoardFModel $supportBoardFModel                               SupportBoard Model Class
- * @property SupportQnaFModel $supportQnaFModel                               SupportQna Model Class
+ * @property PlayerFModel $playerFModel                                            Player Model Class
+ * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
+ * @property SupportMainFModel $supportMainFModel                            SupportMain Model Class
+ * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
+ * @property SupportQnaFModel $supportQnaFModel                              SupportQna Model Class
+ * @property CategoryFModel $categoryFModel                                     Category Model Class
  */
 class PHPStorm_CI_CC
 {

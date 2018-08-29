@@ -116,7 +116,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb60">
+        <div class="willbes-Lec-Search">
             <div class="inputBox p_re">
                 @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                 <div class="selectBox">
@@ -144,7 +144,7 @@
             <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
             <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
-            <div class="willbes-Lec NG c_both">
+            <div class="willbes-Lec NG c_both mt20">
                 <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                 <!-- willbes-Lec-Subject -->
                 {{-- 교수명 타이틀 loop --}}
@@ -300,23 +300,24 @@
             <!-- willbes-Lec -->
         @endforeach
 
-        <div class="willbes-Lec-buyBtn">
-            <ul>
-                @if($pattern == 'only')
-                <li class="btnAuto180 h36">
-                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>장바구니</span>
-                    </button>
-                </li>
-                @endif
-                <li class="btnAuto180 h36">
-                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                        <span class="tx-light-blue">바로결제</span>
-                    </button>
-                </li>
-            </ul>
-        </div>
-        <!-- willbes-Lec-buyBtn -->
+            <div class="mb60"></div>
+            <div class="willbes-Lec-buyBtn">
+                <ul>
+                    @if($pattern == 'only')
+                    <li class="btnAuto180 h36">
+                        <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                            <span>장바구니</span>
+                        </button>
+                    </li>
+                    @endif
+                    <li class="btnAuto180 h36">
+                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
+                            <span class="tx-light-blue">바로결제</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- willbes-Lec-buyBtn -->
         </form>
 
         <div id="InfoForm" class="willbes-Layer-Box"></div>

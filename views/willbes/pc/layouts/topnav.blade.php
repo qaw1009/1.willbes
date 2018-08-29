@@ -31,7 +31,7 @@
                             <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>
                         </li>
                     @endif
-                    @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
+                    @if($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['IsPassSite'] === false)
                         <li class="myCart">
                             <a class="Tit" href="{{ site_url('/cart/index') }}">장바구니</a>
                         </li>

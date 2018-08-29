@@ -33,7 +33,7 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * @param string $make_type [데이터 생성구분, 주문 : order, 결제 : pay]
-     * @param string $cart_type [장바구니 구분, 강좌 : on_lecture, 교재 : book]
+     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
@@ -56,7 +56,7 @@ class OrderFModel extends BaseOrderFModel
         $use_point = get_var($use_point, 0);
 
         foreach ($cart_rows as $idx => $row) {
-            // 장바구니 구분과 실제 상품구분 값 비교 (강좌 : on_lecture, 교재 : book)
+            // 장바구니 구분과 실제 상품구분 값 비교 (온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book)
             if ($cart_type != $row['CartType']) {
                 return '장바구니와 주문상품의 구분이 일치하지 않습니다.';
             }
@@ -66,7 +66,7 @@ class OrderFModel extends BaseOrderFModel
 
             if ($make_type == 'order') {
                 // 주문정보 입력에서 필요한 데이터 생성
-                // 상품구분명 / 상품구분명 색상 class 번호 (단강좌 : on_lecture / 1, 패키지: on_package / 2, 교재 : book / 3)
+                // 상품구분명 / 상품구분명 색상 class 번호
                 $row['CartProdTypeName'] = $this->_cart_prod_type_name[$row['CartProdType']];
                 $row['CartProdTypeNum'] = $this->_cart_prod_type_idx[$row['CartProdType']];
 
@@ -246,7 +246,6 @@ class OrderFModel extends BaseOrderFModel
                 'CartType' => element('cart_type', $input),
                 'CartIdxs' => implode(',', element('cart_idx', $input)),
                 'SiteCode' => element('site_code', $params),
-                'CateCode' => element('cate_code', $params),
                 'PgCcd' => element('pg_ccd', $params),
                 'PayMethodCcd' => element('pay_method_ccd', $input),
                 'ReprProdName' => element('repr_prod_name', $params),
@@ -295,5 +294,87 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
+    }
+
+    /**
+     * 주문 데이터 등록
+     * @param array $pay_results
+     * @return array|bool
+     */
+    public function procOrder($pay_results = [])
+    {
+        $this->load->loadModels(['order/cartF']);   // 장바구니 모델 로드
+        $this->_conn->trans_begin();
+        
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $sess_cart_idx = $this->cartFModel->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
+            $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
+            $order_no = $pay_results['order_no'];
+
+            if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no) {
+                throw new \Exception('잘못된 접근입니다.');
+            }
+
+            // 주문요청 데이터 조회
+            $post_row = $this->_conn->getFindResult($this->_table['order_post_data'],
+                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, ReqPayPrice, PostData',
+                ['EQ' => ['OrderNo' => $order_no, 'MemIdx' => $sess_mem_idx]]
+            );
+
+            if (empty($post_row) === true) {
+                throw new \Exception('주문요청 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+            
+            // 주문 폼 데이터 unserialize
+            $post_data = unserialize($post_row['PostData']);
+            
+            // 장바구니 데이터 조회
+
+            // 주문 데이터 등록
+            $data = [
+                'OrderNo' => $order_no,
+                'MemIdx' => $sess_mem_idx,
+                'SiteCode' => $post_row['SiteCode'],
+                'ReprProdName' => $post_row['ReprProdName'],
+                'PayChannelCcd' => $this->_pay_channel_ccd[APP_DEVICE],
+                'PayRouteCcd' => $this->_pay_route_ccd['pg'],
+                'PayMethodCcd' => $post_row['PayMethodCcd'],
+                'PgCcd' => $post_row['PgCcd'],
+                'PgMid' => $pay_results['mid'],
+                'PgTid' => $pay_results['tid'],
+                'OrderPrice' => '',
+                'RealPayPrice' => $pay_results['total_pay_price'],
+                'CardPayPrice' => $pay_results['total_pay_price'],
+                'CashPayPrice' => '0',
+                'DiscPrice' => '',
+                'UseLecPoint' => '',
+                'UseBookPoint' => '',
+                'SaveLecPoint' => '',
+                'SaveBookPoint' => '',
+                'IsEscrow' => element('is_escrow', $post_data, 'N'),
+                'IsCashReceipt' => 'N',
+                'IsDelivery' => 'N',
+                'IsVisitPay' => 'N',
+                'GwIdx' => $this->session->userdata('gw_idx'),
+                'OrderIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_pay_method_ccd['vbank'] != $post_row['PayMethodCcd']) {
+                $this->_conn->set('CompleteDatm', 'NOW()', false);
+            }
+
+            if ($this->_conn->set($data)->insert($this->_table['order']) === false) {
+                throw new \Exception('주문 정보 등록에 실패했습니다.');
+            }
+
+            // 주문 정보 식별자
+            $order_idx = $this->_conn->insert_id();
+
+            return ['ret_cd' => true, 'ret_msg' => '', 'ret_url' => ''];
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);            
+        }        
     }
 }

@@ -33,7 +33,7 @@ class Payment extends \app\controllers\FrontController
         // 주문요청 폼 데이터 유효성 검증
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,book]'],
+            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니식별자', 'rules' => 'trim|required'],
             ['field' => 'pay_method_ccd', 'label' => '결제수단', 'rules' => 'trim|required|integer'],
             ['field' => 'agree1', 'label' => '유의사항안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
@@ -64,7 +64,7 @@ class Payment extends \app\controllers\FrontController
         }
 
         // 장바구니 조회
-        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, null);
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
 
         // 장바구니 데이터 가공 (전체결제금액 리턴)
         $results = $this->orderFModel->getMakeCartReData(
@@ -74,6 +74,9 @@ class Payment extends \app\controllers\FrontController
             return $this->json_error($results);
         }
 
+        // TODO : 테스트 (추후 주석 삭제)
+        $results['total_pay_price'] = 1000;
+
         // 주문번호 생성
         $order_no = $this->orderFModel->makeOrderNo();
 
@@ -81,7 +84,6 @@ class Payment extends \app\controllers\FrontController
         $is_post_data = $this->orderFModel->addOrderPostData([
             'order_no' => $order_no,
             'site_code' => $this->_site_code,
-            'cate_code' => $this->_cate_code,
             'pg_ccd' => config_app('PgCcd'),
             'repr_prod_name' => $results['repr_prod_name'],
             'req_pay_price' => $results['total_pay_price']
@@ -107,20 +109,37 @@ class Payment extends \app\controllers\FrontController
 
         $form = $this->pg->requestForm($data);
         if ($form === false) {
-            $this->json_error('결제요청 중 오류가 발생하였습니다.');
+            return $this->json_error('결제요청 중 오류가 발생하였습니다.');
         } else {
             // 주문번호 세션생성
             $this->orderFModel->makeSessOrderNo($order_no);
 
-            $this->json_result(true, '', [], $form);
+            return $this->json_result(true, '', [], $form);
         }
     }
 
+    /**
+     * PG사 결제완료
+     */
     public function returns()
     {
-        $result = $this->pg->returnResult();
+        // 결제연동 결과 리턴
+        $pay_results = $this->pg->returnResult();
+        if ($pay_results['result'] === false) {
+            show_alert('결제연동 중 오류가 발생하였습니다.', site_url('/cart/index'), false);
+        }
 
-        dd($result);
+        var_dump($pay_results);
+
+        $result = $this->orderFModel->procOrder($pay_results);
+        if ($result['ret_cd'] === true) {
+            // 결제완료 페이지 이동
+            redirect($result['ret_url']);
+        } else {
+            // 결제취소
+            $this->pg->cancel(['order_no' => $pay_results['order_no'], 'tid' => $pay_results['tid'], 'cancel_reason' => $result['ret_msg']]);
+            show_alert('결제연동 중 오류가 발생하였습니다.', site_url('/cart/index'), false);
+        }
     }
 
     /**

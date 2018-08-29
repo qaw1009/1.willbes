@@ -38,10 +38,10 @@ class Order extends \app\controllers\FrontController
         // 장바구니 데이터 가공 (전체주문금액, 배송비, 적립예정포인트 계산 등 필요 데이터 가공)
         $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows);
         if (is_array($results) === false) {
-            show_alert($results, site_url('/cart/index'), false);
+            show_alert($results, 'back');
         }
 
-        $results['cart_type'] = $cart_type;     // 장바구니 구분 (강좌 : on_lecture, 교재 : book)
+        $results['cart_type'] = $cart_type;     // 장바구니 구분 (온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book)
         $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명 (강좌, 교재)
 
         // 회원정보 조회

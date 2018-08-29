@@ -103,7 +103,7 @@ class BaseOrderFModel extends WB_Model
 
         if (empty($sess_cart_idx) === true) {
             if ($is_error_alert === true) {
-                show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+                show_alert('잘못된 접근입니다.', site_url('/cart/index'), false);
             } else {
                 return false;
             }
@@ -141,7 +141,7 @@ class BaseOrderFModel extends WB_Model
 
         if (empty($sess_order_no) === true) {
             if ($is_error_alert === true) {
-                show_alert('잘못된 접근입니다.', site_url('/cart/index/cate/' . config_app('CateCode')), false);
+                show_alert('잘못된 접근입니다.', site_url('/cart/index'), false);
             } else {
                 return false;
             }

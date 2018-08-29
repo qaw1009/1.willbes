@@ -137,6 +137,21 @@ function formCreateSubmit(url, params, method)
 }
 
 /**
+ * 온라인, 학원 사이트를 구분하여 URL 생성 (base_helper > front_url 함수와 동일한 역할 수행)
+ * @param uri
+ * @returns {string}
+ */
+function frontUrl(uri) {
+    var url = location.protocol + '//' + location.host;
+
+    if (location.pathname.indexOf('/pass/') === 0) {
+        url += '/pass';
+    }
+
+    return url + uri;
+}
+
+/**
  * get query string
  * @returns {string}
  */

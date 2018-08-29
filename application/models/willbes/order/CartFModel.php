@@ -100,12 +100,15 @@ class CartFModel extends BaseOrderFModel
     {
         $arr_condition = [
             'EQ' => [
-                'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'PC.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
-                'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y'
+                'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
+                'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N'
             ],
             'IN' => [
                 'CA.CartIdx' => $cart_idx,
                 'CA.ProdCode' => $prod_code
+            ],
+            'LKR' => [
+                'PC.CateCode' => $cate_code,
             ],
             'RAW' => [
                 'CA.ExpireDatm > ' => 'NOW()',

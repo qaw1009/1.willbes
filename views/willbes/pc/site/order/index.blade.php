@@ -160,21 +160,24 @@
                             <span class="price tx-light-blue"><span class="total-pay-price">{{ number_format($results['total_pay_price']) }}</span>원</span>
                         </li>
                     </ul>
-                    <div class="cart-PointBox NG">
-                        <dl class="pointBox">
-                            <dt class="p-tit"><span class="tx-blue">{{ $results['cart_type_name'] }}</span> 포인트 사용</dt>
-                            <dt>
-                                <span class="u-point tx-pink">{{ number_format($results['point'][$results['cart_type']]) }}P 보유</span>
-                                <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
-                                <input type="text" name="use_point" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="0" value="" placeholder="0" maxlength="10"> P 차감
-                            </dt>
-                        </dl>
-                    </div>
-                    <div class="p-info tx-gray c_both">
-                        • {{ $results['cart_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
-                        <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 사용 가능하며,
-                        주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만 사용 가능합니다.
-                    </div>
+                    @if($results['cart_type'] != 'off_lecture')
+                        {{-- 학원강좌일 경우 포인트 사용 불가 --}}
+                        <div class="cart-PointBox NG">
+                            <dl class="pointBox">
+                                <dt class="p-tit"><span class="tx-blue">{{ $results['cart_type_name'] }}</span> 포인트 사용</dt>
+                                <dt>
+                                    <span class="u-point tx-pink">{{ number_format($results['point'][$results['cart_type']]) }}P 보유</span>
+                                    <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
+                                    <input type="text" name="use_point" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="0" value="" placeholder="0" maxlength="10"> P 차감
+                                </dt>
+                            </dl>
+                        </div>
+                        <div class="p-info tx-gray c_both">
+                            • {{ $results['cart_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
+                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 사용 가능하며,
+                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만 사용 가능합니다.
+                        </div>
+                    @endif
                 </div>
                 <!-- willbes-Cart-Price -->
                 @if($results['is_delivery_info'] === true)

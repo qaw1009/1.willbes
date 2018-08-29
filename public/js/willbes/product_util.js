@@ -8,7 +8,7 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
     // 초기값 설정
     $is_direct_pay = $is_direct_pay || 'N';
     $is_redirect = $is_redirect || 'Y';
-    
+
     if ($regi_form.find('input[name="sale_status_ccd"]').length > 0 && $regi_form.find('input[name="sale_status_ccd"]').val() !== '618001') {
         alert('판매 중인 상품만 주문 가능합니다.');
         return;
@@ -31,7 +31,7 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
     }
     $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
 
-    var url = location.protocol + '//' + location.host + '/cart/store';
+    var url = frontUrl('/cart/store');
     ajaxSubmit($regi_form, url, function(ret) {
         if(ret.ret_cd) {
             if ($is_redirect === 'Y') {
@@ -165,7 +165,7 @@ function checkStudentBook($regi_form, $chk_obj) {
             });
         }
 
-        var url = location.protocol + '//' + location.host + '/cart/checkStudentBook';
+        var url = frontUrl('/cart/checkStudentBook');
         var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
             'prod_code' : input_data.prodCode,
             'parent_prod_code' : input_data.parentProdCode,
@@ -210,7 +210,7 @@ function checkDirectPay($regi_form) {
   * @param $tab_id
  */
 function goCartPage($tab_id) {
-    location.href = location.protocol + '//' + location.host + '/cart/index?tab=' + $tab_id;
+    location.href = frontUrl('/cart/index?tab=' + $tab_id);
 }
 
 /**

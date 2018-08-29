@@ -72,7 +72,8 @@ class ProductFModel extends WB_Model
                 case 'off_lecture' :
                         $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName
                                 , CampusCcd, CampusCcdName, FixNumber, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
-                                , StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData, fn_product_content(ProdCode, "633002") as Content';
+                                , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
+                                , fn_product_content(ProdCode, "633002") as Content';
                     break;
 
                 //추천-선택 패키지

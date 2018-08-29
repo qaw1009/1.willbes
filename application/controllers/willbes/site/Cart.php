@@ -40,6 +40,10 @@ class Cart extends \app\controllers\FrontController
 
             // 강좌, 교재 목록 구분, 배송료 배열 키 (on_lecture : 온라인강좌, book : 교재)
             $results['list'][$row['CartType']][] = $row;
+
+            if ($idx == 0) {
+                $results['recent_cate_code'] = substr($row['CateCode'], 0, 4);
+            }
         }
 
         // 온라인 강좌 배송료
@@ -158,10 +162,16 @@ class Cart extends \app\controllers\FrontController
         $_cart_type = $this->_reqP('cart_type');
         $_prod_code = $this->_reqP('prod_code');
         $_prod_code_sub = $this->_reqP('prod_code_sub');
+        $_is_visit_pay = 'N';
         $returns = [];
 
         if (empty($_prod_code) === true || empty($_learn_pattern) === true || empty($_is_direct_pay) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 학원강좌 방문접수 (학원상품이면서 바로결제가 아닌 경우 방문접수)
+        if (starts_with($_learn_pattern, 'off') === true && $_is_direct_pay == 'N') {
+            $_is_visit_pay = 'Y';
         }
 
         // 장바구니 저장
@@ -170,11 +180,16 @@ class Cart extends \app\controllers\FrontController
             'prod_code_sub' => $_prod_code_sub,
             'site_code' => $this->_site_code,
             'is_direct_pay' => $_is_direct_pay,
-            'is_visit_pay' => get_var($this->_reqP('is_visit_pay'), 'N')
+            'is_visit_pay' => $_is_visit_pay
         ]);
 
         // 리턴 URL 지정
-        $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/order/index?tab=' . $_cart_type) : site_url('/cart/index?tab=' . $_cart_type);
+        if ($_is_visit_pay == 'Y') {
+            // TODO : 방문접수 URL 지정
+            $returns['ret_url'] = '';
+        } else {
+            $returns['ret_url'] = $_is_direct_pay == 'Y' ? front_url('/order/index?tab=' . $_cart_type) : site_url('/cart/index?tab=' . $_cart_type);
+        }
 
         // 바로결제일 경우 장바구니 식별자 세션 생성
         if ($result['ret_cd'] === true && $_is_direct_pay == 'Y') {

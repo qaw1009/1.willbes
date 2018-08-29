@@ -69,14 +69,13 @@ $(function() {
 // Slider Swipe Script
 $(function() {
     $('.sliderSwipe').bxSlider({
+        infiniteLoop: true,
         touchEnabled: true,
-        swipeThreshold: 1,
-        infiniteLoop: false,
+        swipeThreshold: 100,
         controls: false,
         pager: false,
     });
 });
-
 
 /**
  * slider util

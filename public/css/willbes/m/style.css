@@ -256,6 +256,9 @@ button {
     margin: 0;
     padding: 0;
 }
+.bx-wrapper .bx-viewport img {
+    width: 100%;
+}
 .bx-wrapper .bx-controls-direction a {
     top: 0;
     left: 0;
@@ -287,19 +290,8 @@ button {
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #1a8ccc;
 }
-.MainSlider .slider img {
-    width: 100%;
-}
 
 /* slider : 좌우 버튼(공통 GNB) => cSlider */
-.cSlider .bx-wrapper .bx-prev {
-    background: url("../../../img/willbes/m/main/btn_prev.png") no-repeat 0 0;
-    left: 20px !important;
-}
-.cSlider .bx-wrapper .bx-next {
-    background: url("../../../img/willbes/m/main/btn_next.png") no-repeat 0 0;
-    right: 20px !important;
-}
 .cSlider .bx-wrapper .bx-controls-direction {
     position: absolute;
     top: 50%;
@@ -316,30 +308,39 @@ button {
     right: auto;
     z-index: 1;
 }
-.MainSlider .sliderControls img {
-    width: 100%;
-}
 
-/* slider : swipe 버튼(공통 GNB) => 000 */
-.sliderSwipe ul {
-    display: table;
-    width: 100%;
-}
-.sliderSwipe div {
-    width: 65px !important;
+/* slider : swipe 버튼(공통 GNB) => swSlider */
+.swSlider .Grid div {
+    width: auto !important;
     height: 30px;
     white-space: nowrap;
     box-sizing: border-box;
     line-height: 30px;
     text-align: center;
 }
-.sliderSwipe div a {
-    padding: 0 20px;
+.swSlider .Grid div a {
+    padding: 8px 20px;
 }
-.sliderSwipe div .row-line {
+.swSlider .Grid div a.on {
+    color: #1a8ccc;
+}
+.swSlider .Grid div .row-line {
     background: #b5b5b5;
     width: 1px;
     height: 8px;
+}
+.swSlider.control-none .bx-controls {
+    display: none;
+}
+
+/* Main : MainBnrSlider */
+.MainBnrSlider .bx-wrapper .bx-prev {
+    background: url("../../../img/willbes/m/main/btn_prev_blue.png") no-repeat 0 0;
+    left: 20px !important;
+}
+.MainBnrSlider .bx-wrapper .bx-next {
+    background: url("../../../img/willbes/m/main/btn_next_blue.png") no-repeat 0 0;
+    right: 20px !important;
 }
 
 /* MainFixBnr */
@@ -363,6 +364,57 @@ button {
     text-indent: -9999px;
 }
 
+/* Main : MainCampusTabs */
+.MainCampusTabs .willbes-Txt-Tit {
+    border-bottom: 1px solid #e4e4e4;
+}
+
+/* Main : willbes-Campus-List */
+.willbes-Campus-List {
+    background: #eaeaea;
+    height: 50px;
+    margin: 10px -20px 30px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.willbes-Campus-List .bx-wrapper {
+    background: none;
+}
+.willbes-Campus-List .bx-wrapper .bx-viewport {
+    width: 80% !important;
+    height: 50px !important;
+    margin: 0 10%;
+    z-index: 2;
+}
+.willbes-Campus-List .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 15px;
+    margin-top: -7px;
+}
+.willbes-Campus-List .bx-wrapper .bx-controls-direction a {
+    width: 9px;
+    height: 15px;
+    left: auto;
+    right: auto;
+    z-index: 1;
+}
+.willbes-Campus-List .bx-wrapper .bx-prev {
+    background: url("../../../img/willbes/m/main/btn_prev_gray.png") no-repeat 0 0;
+    left: 20px !important;
+}
+.willbes-Campus-List .bx-wrapper .bx-next {
+    background: url("../../../img/willbes/m/main/btn_next_gray.png") no-repeat 0 0;
+    right: 20px !important;
+}
+.willbes-Campus-List.swSlider .Grid div {
+    height: 50px;
+    line-height: 50px;
+}
+
 /* Tabs : lineTab 공통 */
 .lineTabs {
     float: left;
@@ -383,13 +435,18 @@ button {
     width: 100%;
     height: 47px;
     line-height: 46px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: #000;
     text-align: center;
     letter-spacing: 0;
     border-top: 1px solid #e4e4e4;
     border-right: 1px solid #e4e4e4;
+}
+.lineWrap li a img {
+    vertical-align: top;
+    margin-top: 11px;
+    height: 25%;
 }
 .lineWrap li a span {
     vertical-align: baseline;
@@ -476,7 +533,6 @@ button {
     width: 20%;
 }
 
-
 /* Main : Tabs : lecProfBox */
 .lecProfBox ul {
     float: left;
@@ -550,7 +606,7 @@ button {
 }
 #Footer .ft-Link ul li {
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 3%;
 }
 #Footer address {
     font-size: 11px;

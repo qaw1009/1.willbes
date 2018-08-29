@@ -69,13 +69,30 @@ $(function() {
 // Slider Swipe Script
 $(function() {
     $('.sliderSwipe').bxSlider({
-        minSlides: 1,
+        minSlides: 10,
         maxSlides: 10, //지역 갯수와 동일하게
         slideWidth: 0,
         slideMargin: 0,
-        controls: false,
+        controls: true,
         pager: false,
-        auto: true,
+        auto: false,
+    });
+    $('.willbes-Campus .sliderSwipe  div a').click(function() {
+        $('.willbes-Campus .sliderSwipe div a').removeClass('on');
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on');
+        } else {
+            $(this).addClass('on');
+        } 
+    });
+
+    $('.willbes-Campus-List .sliderSwipe div a').click(function() {
+        $('.willbes-Campus-List .sliderSwipe div a').removeClass('on');
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on');
+        } else {
+            $(this).addClass('on');
+        } 
     });
 });
 

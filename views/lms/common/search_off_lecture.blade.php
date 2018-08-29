@@ -119,7 +119,7 @@
                                         +row.CampusCcd_Name+'@$'            //8
                                         +row.SchoolStartYear+'/'+row.SchoolStartMonth+'@$'  //9
                                         +((row.IsLecOpen === 'Y') ? '개설' : '폐강')+'@$'       //10
-                                        +((row.IsSaleEnd === 'N') ? '접수중' : '접수마감')+'@$'    //11
+                                        +row.AcceptStatusCcd_Name+'@$'    //11
                                     ;
                                     return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
@@ -155,8 +155,8 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SaleStartDatm +' ~ '+row.SaleEndDatm
                                 }},
-                            {'data' : 'IsSaleEnd', 'render' : function(data, type, row, meta) {
-                                    return  ((data === 'N') ? ' 접수중 ' : '<span class="red">접수마감</span>');
+                            {'data' : 'AcceptStatusCcd_Name', 'render' : function(data, type, row, meta) {
+                                    return  ((data === '접수마감') ? ' <span class="red">'+data+'</span>' : data);
                                 }},
 
                             {'data' : 'IsUse', 'render' : function(data, type, row, meta) {

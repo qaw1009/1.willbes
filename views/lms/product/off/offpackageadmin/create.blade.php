@@ -282,7 +282,7 @@
                                         <td style='text-align:left'>{{$row['ProdName']}}</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['IsLecOpen'] === 'N' ? '<span class="red">폐강</span>' :'개설' !!}</td>
-                                        <td>{!!  $row['IsSaleEnd'] === 'Y' ? '<span class="red">접수마감</span>' :'접수중' !!}</td>
+                                        <td>{!!  $row['AcceptStatusCcd_Name'] === '접수마감' ? '<span class="red">'.$row['AcceptStatusCcd_Name'].'</span>' :$row['AcceptStatusCcd_Name'] !!}</td>
                                         <td><a href='javascript:;' onclick="rowDelete('essLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                     </tr>
                                 @endif
@@ -337,7 +337,7 @@
                                         <td style='text-align:left'>{{$row['ProdName']}}</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['IsLecOpen'] === 'N' ? '<span class="red">폐강</span>' :'개설' !!}</td>
-                                        <td>{!!  $row['IsSaleEnd'] === 'Y' ? '<span class="red">접수마감</span>' :'접수중' !!}</td>
+                                        <td>{!!  $row['AcceptStatusCcd_Name'] === '접수마감' ? '<span class="red">'.$row['AcceptStatusCcd_Name'].'</span>' :$row['AcceptStatusCcd_Name'] !!}</td>
                                         <td><a href='javascript:;' onclick="rowDelete('selLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                     </tr>
                                 @endif
@@ -370,9 +370,10 @@
                             </select> 시
                             &nbsp;&nbsp;
                         <!--input type="checkbox" name="IsSaleEnd" id="IsSaleEnd" value="Y" class="flat" @if($data['IsSaleEnd'] === 'Y') checked="checked"@endif//-->
-                            <select name="IsSaleEnd" id="IsSaleEnd" class="form-control" title="접수상태" required="required" >
-                                <option value="N" @if($data['IsSaleEnd'] === 'N') selected="selected"@endif>접수중</option>
-                                <option value="Y" @if($data['IsSaleEnd'] === 'Y') selected="selected"@endif>접수마감</option>
+                            <select name="AcceptStatusCcd" id="AcceptStatusCcd" class="form-control" title="접수상태" required="required" >
+                                @foreach($accept_ccd as $key=>$val)
+                                    <option value="{{$key}}" @if($data['AcceptStatusCcd'] == $key) selected="selected"@endif>{{$val}}</option>
+                                @endforeach
                             </select>
                             &nbsp;&nbsp;
                             • 접수기간 미 입력시 ‘개설여부’로 강좌 노출 설정

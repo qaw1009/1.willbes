@@ -217,8 +217,8 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SaleStartDatm +' ~ '+row.SaleEndDatm
                                 }},
-                            {'data' : 'IsSaleEnd', 'render' : function(data, type, row, meta) {
-                                    return (data === 'Y') ? '접수마감' : '접수중';
+                            {'data' : 'AcceptStatusCcd_Name', 'render' : function(data, type, row, meta) {
+                                    return  ((data === '접수마감') ? ' <span class="red">'+data+'</span>' :data);
                                 }},
                         @endif
 

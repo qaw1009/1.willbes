@@ -17,7 +17,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
     public function index()
     {
         //공통코드
-        $codes = $this->codeModel->getCcdInArray(['653','654']);
+        $codes = $this->codeModel->getCcdInArray(['653','654','675']);
 
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
@@ -34,6 +34,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             'arr_md_category' => element('MD', $arr_category, []),
             'studypattern_ccd' => $codes['653'],
             'studyapply_ccd' => $codes['654'],
+            'accept_ccd' => $codes['675'],
             'campusList' => $campusList,
         ]);
     }
@@ -58,7 +59,8 @@ Class OffPackageAdmin extends \app\controllers\BaseController
                 'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
                 'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
                 'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
-                'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
+                //'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
+                'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'B.CampusCcd' => $this->_reqP('search_campus_code'),
             ],
@@ -120,7 +122,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['653','654','613','648','649']);
+        $codes = $this->codeModel->getCcdInArray(['653','654','613','648','649','675']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
 
         $siteList = $this->siteModel->getSiteArray(false,'CsTel');
@@ -171,6 +173,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             ,'salestype_ccd'=>$codes['613'] //강좌제공구분
             ,'packtype_ccd'=>$codes['648'] //패키지유형
             ,'packcate_ccd'=>$codes['649'] //패키지분류
+            ,'accept_ccd' => $codes['675'] //접수상태
             ,'courseList'=>$courseList      //과정
             ,'siteList' =>$siteList           //사이트목록
             ,'campusList' =>$campusList     //캠퍼스목록
@@ -262,7 +265,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offpackageadminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('IsSaleEnd'));
+        $result = $this->offpackageadminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

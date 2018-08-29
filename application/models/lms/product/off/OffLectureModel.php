@@ -23,17 +23,18 @@ class OffLectureModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                            A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsSaleEnd,A.RegDatm
+                            A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                             ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                             ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                             ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                             ,Ac.CcdName as ProdTypeCcd_Name
                             ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
-                            ,B.SchoolStartYear,B.SchoolStartMonth
+                            ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as StudyPatternCcd_Name
                             ,Be.CcdName as StudyApplyCcd_Name
                             ,Bg.CcdName as CampusCcd_Name
+                            ,Bh.CcdName as AcceptStatusCcd_Name
                             ,C.CateCode
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.SaleRate, D.RealSalePrice
@@ -57,6 +58,7 @@ class OffLectureModel extends CommonLectureModel
                             left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
                             left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
                             left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
+                            left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
@@ -393,6 +395,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'wCpIdx'=>element('wCpIdx',$input)
                 ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
                 ,'IsLecOpen'=>element('IsLecOpen',$input,'N')
+                ,'AcceptStatusCcd'=>element('AcceptStatusCcd',$input,null)
             ];
    }
 

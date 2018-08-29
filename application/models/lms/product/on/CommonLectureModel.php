@@ -236,11 +236,12 @@ class CommonLectureModel extends WB_Model
                             ,A.ProdCode,A.ProdName,A.IsUse,A.IsSaleEnd
                             ,Aa.CcdName as SaleStatusCcd_Name
                             ,B.MultipleApply
-                            ,B.SchoolStartYear,B.SchoolStartMonth,B.IsLecOpen
+                            ,B.SchoolStartYear,B.SchoolStartMonth,B.IsLecOpen,B.AcceptStatusCcd
                             ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                             ,Bd.CcdName as LecTypeCcd_Name
                             ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
                             ,Bg.CcdName as CampusCcd_Name
+                            ,Bh.CcdName as AcceptStatusCcd_Name
                             ,C.CateCode
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.RealSalePrice
@@ -258,6 +259,7 @@ class CommonLectureModel extends WB_Model
                                 left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
                                 left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
                                 left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
+                                left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
                                 join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx=1026
                             join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                 join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
@@ -921,7 +923,7 @@ class CommonLectureModel extends WB_Model
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
                     , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount,PackAutoStudyExtenCcd,PackAutoStudyPeriod, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
-                    , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, LecPlace,WeekArray,Amount,DeviceLimitCount';
+                    , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,DeviceLimitCount';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
 
@@ -1120,7 +1122,7 @@ class CommonLectureModel extends WB_Model
      * @param $prodcode
      * @return mixed
      */
-    public function _modifyOptionByColumn($prodcode, $islecopen=null, $issaleend=null)
+    public function _modifyOptionByColumn($prodcode, $islecopen=null, $acceptstatusccd=null)
     {
         $this->_conn->trans_begin();
 
@@ -1130,15 +1132,29 @@ class CommonLectureModel extends WB_Model
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ];
 
-            $opt_data = null;
+            //개설여부, 접수상태
+            if(empty($islecopen) === false || empty($acceptstatusccd) === false ) {
 
-            //개설여부
-            if(empty($islecopen) === false) {
                 $table = $this->_table['lecture'];
-                $opt_data = [
-                    'IsLecOpen' => $islecopen
-                ];
-                /* lms_product_lecture 테이블에는 관리자정보, 수정일자의 수정 정보가 존재하지 않으므로 일단 lms_product 테이블에 수정한 관리자 정보를 업데이트 함*/
+
+                if(empty($islecopen) === false) {
+                    $opt_data = [
+                        'IsLecOpen' => $islecopen
+                    ];
+                }else {
+                    $opt_data =[
+                        'AcceptStatusCcd' => $acceptstatusccd
+                    ];
+                }
+
+                if (empty($opt_data) === false) {
+                    $this->_conn->set($opt_data)->where('ProdCode', $prodcode);
+                    if ($this->_conn->update($table) === false) {
+                        throw new \Exception('옵션 수정에 실패했습니다.');
+                    }
+                }
+
+                /* lms_product_lecture 테이블에는 관리자정보, 수정일자의 수정 정보가 존재하지 않으므로  lms_product 테이블에 수정한 관리자 정보를 업데이트 함*/
                 /* 업데이트 정보가 기존하고 같을경우 업데이트 일자가 수정이 안됨. 해서 강제로 업데이트 일자를 수정해야 함*/
                 $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode);
                 if($this->_conn->update($this->_table['product']) === false) {
@@ -1146,20 +1162,6 @@ class CommonLectureModel extends WB_Model
                 }
             }
 
-            //접수상태
-            if(empty($issaleend) === false) {
-                $table = $this->_table['product'];
-                $opt_data = array_merge($data,[
-                    'IsSaleEnd' => $issaleend
-                ]);
-            }
-
-            if (empty($opt_data) === false) {
-                $this->_conn->set($opt_data)->where('ProdCode', $prodcode);
-                if ($this->_conn->update($table) === false) {
-                    throw new \Exception('옵션 수정에 실패했습니다.');
-                }
-            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

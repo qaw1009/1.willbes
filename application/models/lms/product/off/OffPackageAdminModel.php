@@ -23,12 +23,12 @@ class OffPackageAdminModel extends CommonLectureModel
         } else {
 
             $column = ' STRAIGHT_JOIN
-                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.IsSaleEnd,A.RegDatm
+                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                     ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.FixNumber,B.StudyStartDate,B.StudyEndDate,B.IsLecOpen
-                    ,B.SchoolStartYear,B.SchoolStartMonth
+                    ,B.SchoolStartYear,B.SchoolStartMonth,B.AcceptStatusCcd
                     ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as StudyPatternCcd_Name
                     ,Be.CcdName as StudyApplyCcd_Name
@@ -374,6 +374,7 @@ class OffPackageAdminModel extends CommonLectureModel
             ,'LecPlace'=>element('LecPlace',$input)
             ,'LecCalcType'=>element('LecCalcType',$input)
             ,'IsLecOpen'=>element('IsLecOpen',$input,'N')
+            ,'AcceptStatusCcd'=>element('AcceptStatusCcd',$input,null)
         ];
     }
 

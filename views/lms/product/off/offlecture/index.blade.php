@@ -99,10 +99,11 @@
                             <option value="N">폐강</option>
                         </select>
                         &nbsp;
-                        <select class="form-control" id="search_issaleend" name="search_issaleend">
+                        <select class="form-control" id="search_acceptccd" name="search_acceptccd">
                             <option value="">접수상태</option>
-                            <option value="N">접수중</option>
-                            <option value="Y">접수마감</option>
+                            @foreach($accept_ccd as $key => $val)
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                         &nbsp;
                         <select class="form-control" id="search_is_use" name="search_is_use">
@@ -244,11 +245,12 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.SaleStartDatm +' ~ '+row.SaleEndDatm
                         }},
-                    {'data' : 'IsSaleEnd', 'render' : function(data, type, row, meta) {
+                    {'data' : 'AcceptStatusCcd', 'render' : function(data, type, row, meta) {
                             var html = '';
-                            html += '<select class="form-control input-sm" name="is_saleend" data-idx="' + row.ProdCode + '">';
-                            html += '<option value="N"' + ((data === 'N') ? ' selected="selected"' : '') + '>접수중</option>';
-                            html += '<option value="Y"' + ((data === 'Y') ? ' selected="selected"' : '') + '>접수마감</option>';
+                            html += '<select class="form-control input-sm" name="AcceptStatusCcd" data-idx="' + row.ProdCode + '">';
+                            @foreach($accept_ccd as $key => $val)
+                                html += '<option value="{{ $key }}"' + ((data == '{{$key}}') ? ' selected="selected"' : '')+ '>{{ $val }}</option>';
+                            @endforeach
                             html += '</select>';
                             return html;
                         }},
@@ -314,7 +316,7 @@
             });
 
             // 접수상태
-            $list_table.on('change', 'select[name="is_saleend"]', function() {
+            $list_table.on('change', 'select[name="AcceptStatusCcd"]', function() {
                 if (!confirm('변경된 사항을 적용하시겠습니까??')) {
                     return;
                 }
@@ -322,7 +324,7 @@
                     '_csrf_token' : $search_form.find('input[name="_csrf_token"]').val(),
                     '_method' : 'PUT',
                     'prodCode' : $(this).data('idx'),
-                    'IsSaleEnd' : $(this).val()
+                    'AcceptStatusCcd' : $(this).val()
                 };
                 sendAjax('{{ site_url('/product/off/offlecture/reoption') }}', data, function(ret) {
                     if (ret.ret_cd) {

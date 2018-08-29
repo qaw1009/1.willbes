@@ -17,7 +17,7 @@ Class OffLecture extends \app\controllers\BaseController
     public function index()
     {
         //공통코드
-        $codes = $this->codeModel->getCcdInArray(['653','654']);
+        $codes = $this->codeModel->getCcdInArray(['653','654','675']);
 
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
@@ -37,6 +37,7 @@ Class OffLecture extends \app\controllers\BaseController
             'arr_professor' => $this->professorModel->getProfessorArray(),
             'studypattern_ccd' => $codes['653'],
             'studyapply_ccd' => $codes['654'],
+            'accept_ccd' => $codes['675'],
             'campusList' => $campusList,
         ]);
     }
@@ -61,7 +62,8 @@ Class OffLecture extends \app\controllers\BaseController
                 'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
                 'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
                 'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
-                'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
+                //'A.IsSaleEnd' =>$this->_reqP('search_issaleend'),
+                'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'B.CampusCcd' => $this->_reqP('search_campus_code'),
             ],
@@ -123,7 +125,7 @@ Class OffLecture extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['653','654','613']);
+        $codes = $this->codeModel->getCcdInArray(['653','654','613','675']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
         $siteList = $this->siteModel->getSiteArray(false,'CsTel');
@@ -171,6 +173,7 @@ Class OffLecture extends \app\controllers\BaseController
             ,'studypattern_ccd'=>$codes['653']       //수강형태(학원) [653]
             ,'studyapply_ccd'=>$codes['654']          //수강신청구분(학원) [654]
             ,'salestype_ccd'=>$codes['613'] //강좌제공구분
+            ,'accept_ccd' => $codes['675'] //접수상태
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
             ,'siteList' =>$siteList           //사이트목록
@@ -277,7 +280,7 @@ Class OffLecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offlectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('IsSaleEnd'));
+        $result = $this->offlectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

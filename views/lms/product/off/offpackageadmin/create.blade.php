@@ -849,12 +849,11 @@
                 }
             });
 
-            @if($data['CourseIdx'] === '649001')
+            @if($data['PackCateCcd'] == '649001')
             $("#CourseIdx").attr("disabled", false);
             @else
             $("#CourseIdx").attr("disabled", true);
             @endif
-
 
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){

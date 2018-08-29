@@ -91,7 +91,7 @@
                             <td class="w-notice p_re tx-right">
                                 @foreach($data['ProdPriceData'] as $price_idx => $price_row)
                                     <div class="priceWrap p_re">
-                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['IsOrderable'] == 'N') disabled="disabled" @endif></span>
+                                        <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif></span>
                                         <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
                                         <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                         <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
@@ -160,7 +160,7 @@
                     </table>
                 </div>
                 <div class="willbes-Lec-buyBtn GM">
-                    @if($data['IsOrderable'] == 'Y')
+                    @if($data['IsSalesAble'] == 'Y')
                         <ul>
                             <li class="btnAuto180 h36">
                                 @if($data['IsCart'] == 'Y')

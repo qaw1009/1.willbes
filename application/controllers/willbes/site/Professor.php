@@ -231,4 +231,10 @@ class Professor extends \app\controllers\FrontController
 
         return $data;
     }
+
+    private function _tab_notice_list()
+    {
+        $data = [];
+        return $data;
+    }
 }

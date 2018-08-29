@@ -147,7 +147,7 @@
                 <a name="tabLink"></a>
                 <ul class="tabWrap tabDepthProf">
                     <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
-                    <li><a href="#none">공지사항</a></li>
+                    <li><a href="#none" id="hover_notice_list" onclick="goUrl('tab', 'notice_list');">공지사항</a></li>
                     <li><a href="#none">학습Q&A</a></li>
                     <li><a href="#none">학습자료실</a></li>
                     <li><a href="#none" id="hover_free_lecture" onclick="goUrl('tab', 'free_lecture');">무료강좌</a></li>

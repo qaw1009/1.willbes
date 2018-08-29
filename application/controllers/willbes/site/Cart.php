@@ -133,7 +133,7 @@ class Cart extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니 식별자', 'rules' => 'trim|required'],
-            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required'],
+            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -143,7 +143,7 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 식별자 세션 생성
         $this->cartFModel->makeSessCartIdx($this->_reqP('cart_idx'));
 
-        $this->json_result(true, '', [], ['ret_url' => site_url('/order/index/cate/' . $this->_cate_code . '?tab=' . $this->_reqP('cart_type'))]);
+        $this->json_result(true, '', [], ['ret_url' => site_url('/order/index?tab=' . $this->_reqP('cart_type'))]);
     }
 
     /**
@@ -169,13 +169,12 @@ class Cart extends \app\controllers\FrontController
             'prod_code' => $_prod_code,
             'prod_code_sub' => $_prod_code_sub,
             'site_code' => $this->_site_code,
-            'cate_code' => $this->_cate_code,
             'is_direct_pay' => $_is_direct_pay,
             'is_visit_pay' => get_var($this->_reqP('is_visit_pay'), 'N')
         ]);
 
         // 리턴 URL 지정
-        $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/order/index/cate/' . $this->_cate_code . '/?tab=' . $_cart_type) : site_url('/cart/index/cate/' . $this->_cate_code . '/?tab=' . $_cart_type);
+        $returns['ret_url'] = $_is_direct_pay == 'Y' ? site_url('/order/index?tab=' . $_cart_type) : site_url('/cart/index?tab=' . $_cart_type);
 
         // 바로결제일 경우 장바구니 식별자 세션 생성
         if ($result['ret_cd'] === true && $_is_direct_pay == 'Y') {

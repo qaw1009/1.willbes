@@ -9,6 +9,7 @@ class ProductFModel extends WB_Model
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'userpack_lecture' => 'vw_product_userpack_lecture',
         'book' => 'vw_product_book',
+        'off_lecture' => 'vw_product_off_lecture',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
         'product_r_sublecture' => 'lms_product_r_sublecture',
@@ -28,8 +29,8 @@ class ProductFModel extends WB_Model
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
 
-    // 판매가능 공통코드 (판매중)
-    public $_available_sale_status_ccd = '618001';    
+    // 판매가능 공통코드 (판매가능, 판매중)
+    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
     // 상품 메모타입 공통코드
     public $_memo_type_ccds = ['book' => '634002'];
@@ -54,7 +55,7 @@ class ProductFModel extends WB_Model
     {
         if ($column === false) {
             $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, SchoolYear, RegDatm
-                , if(IsSalesAble = "Y" and SaleStatusCcd = "' . $this->_available_sale_status_ccd . '", "Y", "N") as IsOrderable';
+                , if(IsSalesAble = "Y" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '", "Y", "N") as IsOrderable';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
@@ -68,8 +69,8 @@ class ProductFModel extends WB_Model
                 // 학원 단과
                 case 'off_lecture' :
                         $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName
-                                , CampusCcd, CampusCcdName, FixNumber, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternName, StudyApplyCcdName
-                                , ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, SalesAbleName, ProdPriceData, fn_product_content(ProdCode, "633002") as Content';
+                                , CampusCcd, CampusCcdName, FixNumber, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
+                                , StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData, fn_product_content(ProdCode, "633002") as Content';
                     break;
 
                 //추천-선택 패키지
@@ -139,7 +140,7 @@ class ProductFModel extends WB_Model
      */
     public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
-        $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['ProdCode' => (string) $prod_code, 'IsUse' => 'Y']];
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);
@@ -155,7 +156,7 @@ class ProductFModel extends WB_Model
     public function findOnlySaleProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
         $arr_condition = [
-            'EQ' => ['ProdCode' => $prod_code, 'IsSalesAble' => 'Y', 'SaleStatusCcd' => $this->_available_sale_status_ccd]
+            'EQ' => ['ProdCode' => (string) $prod_code, 'IsSalesAble' => 'Y', 'SaleStatusCcd' => $this->_available_sale_status_ccd['product']]
         ];
 
         switch ($learn_pattern) {

@@ -27,7 +27,7 @@ class CartFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, CA.CateCode, CA.ProdCode
+            $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['admin_package'] . '" and PL.PackTypeCcd = "' . $this->_admin_package_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
@@ -35,11 +35,17 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , ifnull(PB.SubjectIdx, PL.SubjectIdx) as SubjectIdx, ifnull(PB.ProfIdx, PD.ProfIdx) as ProfIdx                
                 , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
-                , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart
-                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", "on_lecture") as CartType
+                , PL.StudyPeriod, PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart               
+                , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
+                    when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
+                    when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
+                    else P.ProdTypeCcd
+                  end as CartType                                  
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", 
-                    case when PL.LearnPatternCcd in ("' . implode('","', $this->_package_pattern_ccd) . '") then "on_package" 
+                    case when PL.LearnPatternCcd in ("' . implode('","', $this->_on_package_pattern_ccd) . '") then "on_package" 
                          when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture"
+                         when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
+                         when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_package'] . '" then "off_package"
                          else PL.LearnPatternCcd 
                     end) as CartProdType';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -50,6 +56,8 @@ class CartFModel extends BaseOrderFModel
             from ' . $this->_table['cart'] . ' as CA
                 inner join ' . $this->_table['product'] . ' as P
                     on CA.ProdCode = P.ProdCode
+                inner join ' . $this->_table['product_r_category'] . ' as PC
+                    on CA.ProdCode = PC.ProdCode    
                 inner join ' . $this->_table['product_sale'] . ' as PS
                     on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
                 left join ' . $this->_table['product_lecture'] . ' as PL
@@ -62,7 +70,8 @@ class CartFModel extends BaseOrderFModel
                     on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
             where CA.IsStatus = "Y"   
                 and P.IsUse = "Y"
-                and P.IsStatus = "Y"                
+                and P.IsStatus = "Y"
+                and PC.IsStatus = "Y"                
                 and PS.IsStatus = "Y"
                 and PS.SalePriceIsUse = "Y"                                   
         ';
@@ -91,7 +100,7 @@ class CartFModel extends BaseOrderFModel
     {
         $arr_condition = [
             'EQ' => [
-                'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'CA.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
+                'CA.MemIdx' => $mem_idx, 'CA.SiteCode' => $site_code, 'PC.CateCode' => $cate_code, 'CA.IsDirectPay' => $is_direct_pay, 'CA.IsVisitPay' => $is_visit_pay,
                 'P.SaleStatusCcd' => $this->_available_sale_status_ccd['product'], 'P.IsSaleEnd' => 'N', 'P.IsCart' => 'Y'
             ],
             'IN' => [
@@ -101,7 +110,7 @@ class CartFModel extends BaseOrderFModel
             'RAW' => [
                 'CA.ExpireDatm > ' => 'NOW()',
                 'NOW() between ' => 'P.SaleStartDatm and P.SaleEndDatm',
-                '(P.ProdTypeCcd = ' => '"' . $this->_prod_type_ccd['on_lecture']. '" OR (P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '" and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book']. '"))'
+                '(P.ProdTypeCcd != ' => '"' . $this->_prod_type_ccd['book']. '" OR (P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '" and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book']. '"))'
             ]
         ];
 
@@ -202,7 +211,6 @@ class CartFModel extends BaseOrderFModel
             $arr_prod_code = element('prod_code', $input, []);
             $arr_prod_code = $this->_makeProdCodeArray($learn_pattern, $arr_prod_code);
             $site_code = element('site_code', $input, '');
-            $cate_code = element('cate_code', $input, '');
 
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
@@ -235,7 +243,6 @@ class CartFModel extends BaseOrderFModel
                 $data = [
                     'MemIdx' => $sess_mem_idx,
                     'SiteCode' => $site_code,
-                    'CateCode' => $cate_code,
                     'ProdCode' => $prod_code,
                     'ProdCodeSub' => $prod_sub_code,
                     'ParentProdCode' => $prod_row['ParentProdCode'],

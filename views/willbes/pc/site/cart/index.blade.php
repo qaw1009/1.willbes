@@ -346,7 +346,7 @@
                     'cart_idx[]' : $(this).data('cart-idx').toString(),
                     'cart_type' : $form.find('input[name="cart_type"]').val()
                 };
-                sendAjax('{{ site_url('/cart/toOrder/cate/' . $__cfg['CateCode']) }}', data, function(ret) {
+                sendAjax('{{ site_url('/cart/toOrder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         location.href = ret.ret_data.ret_url;
                     }
@@ -381,7 +381,7 @@
                 $form.find('input[name="cart_idx[]"]').prop('checked', true);
             }
 
-            var url = '{{ site_url('/cart/toOrder/cate/' . $__cfg['CateCode']) }}';
+            var url = '{{ site_url('/cart/toOrder') }}';
             ajaxSubmit($form, url, function(ret) {
                 if(ret.ret_cd) {
                     location.href = ret.ret_data.ret_url;

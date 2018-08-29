@@ -37,7 +37,7 @@
 
             // 장바구니 이동 버튼 클릭
             $buy_layer.on('click', '.answerBox_block', function() {
-                goCartPage('{{ $__cfg['CateCode'] }}', getCartType($regi_form));
+                goCartPage(getCartType($regi_form));
             });
 
             // 계속구매 버튼 클릭
@@ -50,9 +50,8 @@
             $('button[name="btn_cart"], button[name="btn_direct_pay"]').on('click', function() {
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
-                var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-                cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect);
+                cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
 
                 if ($is_redirect === 'N') {
                     openWin('pocketBox');
@@ -68,9 +67,8 @@
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function() {
                 var $is_direct_pay = $(this).data('direct-pay');
-                var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-                cartNDirectPay($regi_form, $cate_code, $is_direct_pay, 'Y');
+                cartNDirectPay($regi_form, $is_direct_pay, 'Y');
             });
         }
     });

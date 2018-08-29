@@ -19,7 +19,7 @@ class Order extends \app\controllers\FrontController
 
     public function test($params = [])
     {
-        var_dump($params);
+        var_dump(explode('^', base64_decode('U3ViamVjdE5hbWVeMTEx'), 2));
     }
 
     /**
@@ -33,12 +33,12 @@ class Order extends \app\controllers\FrontController
         $cart_type = $this->_req('tab');    // 장바구니 구분
 
         // 장바구니 조회
-        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null);
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
 
         // 장바구니 데이터 가공 (전체주문금액, 배송비, 적립예정포인트 계산 등 필요 데이터 가공)
         $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows);
         if (is_array($results) === false) {
-            show_alert($results, site_url('/cart/index/cate/' . $this->_cate_code), false);
+            show_alert($results, site_url('/cart/index'), false);
         }
 
         $results['cart_type'] = $cart_type;     // 장바구니 구분 (강좌 : on_lecture, 교재 : book)
@@ -71,7 +71,7 @@ class Order extends \app\controllers\FrontController
 
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,book]'],
+            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
             ['field' => 'use_point', 'label' => '사용포인트', 'rules' => 'trim|required|integer'],
             ['field' => 'total_prod_pay_price', 'label' => '전체상품결제금액', 'rules' => 'trim|required|integer'],
             ['field' => 'is_on_package', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[Y,N]'],

@@ -336,9 +336,8 @@
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
                 var $is_direct_pay = $(this).data('direct-pay');
-                var $cate_code = '{{ $__cfg['CateCode'] }}';
 
-                cartNDirectPay($regi_form, $cate_code, $is_direct_pay, 'Y');
+                cartNDirectPay($regi_form, $is_direct_pay, 'Y');
             });
         });
     </script>

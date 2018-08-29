@@ -12,6 +12,7 @@ class BaseOrderFModel extends WB_Model
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'product_book' => 'lms_product_book',
+        'product_r_category' => 'lms_product_r_category',
         'product_sale' => 'lms_product_sale',
         'product_division' => 'lms_product_division',
         'product_r_product' => 'lms_product_r_product',
@@ -19,22 +20,22 @@ class BaseOrderFModel extends WB_Model
     ];
 
     // 장바구니 구분명
-    public $_cart_type_name = ['on_lecture' => '강좌', 'book' => '교재'];
+    public $_cart_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재'];
 
     // 장바구니 상품타입명
-    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'on_package' => '패키지', 'book' => '교재'];
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재'];
 
     // 장바구니 상품타입 순번
-    public $_cart_prod_type_idx = ['on_lecture' => '1', 'on_package' => '2', 'book' => '3'];
+    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_package' => '2', 'off_package' => '2', 'book' => '3'];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재)
     public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003'];
 
-    // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지)
-    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004'];
+    // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
+    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004', 'free_lecture' => '615005', 'off_lecture' => '615006', 'off_package' => '615007'];
 
-    // 패키지 학습형태 공통코드 (사용자패키지, 운영자패키지, 기간제패키지)
-    public $_package_pattern_ccd = ['615002', '615003', '615004'];
+    // 온라인 패키지 학습형태 공통코드 (사용자패키지, 운영자패키지, 기간제패키지)
+    public $_on_package_pattern_ccd = ['615002', '615003', '615004'];
 
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
     public $_admin_package_type_ccd = ['normal' => '648001', 'choice' => '648002'];

@@ -1,11 +1,10 @@
 /**
  * 장바구니 저장 및 바로결제
  * @param $regi_form
- * @param $cate_code
- * @param $is_direct_pay
+  * @param $is_direct_pay
  * @param $is_redirect
  */
-function cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect) {
+function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
     // 초기값 설정
     $is_direct_pay = $is_direct_pay || 'N';
     $is_redirect = $is_redirect || 'Y';
@@ -32,7 +31,7 @@ function cartNDirectPay($regi_form, $cate_code, $is_direct_pay, $is_redirect) {
     }
     $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
 
-    var url = location.protocol + '//' + location.host + '/cart/store/cate/' + $cate_code;
+    var url = location.protocol + '//' + location.host + '/cart/store';
     ajaxSubmit($regi_form, url, function(ret) {
         if(ret.ret_cd) {
             if ($is_redirect === 'Y') {
@@ -52,6 +51,8 @@ function getCartType($regi_form) {
     
     if ($regi_form.find('.chk_products:checked').length < 1 && $regi_form.find('.chk_books:checked').length > 0) {
         cart_type = 'book';
+    } else if($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') !== -1) {
+        cart_type = 'off_lecture';
     }
     
     return cart_type;
@@ -206,11 +207,10 @@ function checkDirectPay($regi_form) {
 
 /**
  * 장바구니 페이지 이동
- * @param $cate_code
- * @param $tab_id
+  * @param $tab_id
  */
-function goCartPage($cate_code, $tab_id) {
-    location.href = location.protocol + '//' + location.host + '/cart/index/cate/' + $cate_code + '?tab=' + $tab_id;
+function goCartPage($tab_id) {
+    location.href = location.protocol + '//' + location.host + '/cart/index?tab=' + $tab_id;
 }
 
 /**

@@ -69,11 +69,13 @@ $(function() {
 // Slider Swipe Script
 $(function() {
     $('.sliderSwipe').bxSlider({
-        infiniteLoop: true,
-        touchEnabled: true,
-        swipeThreshold: 100,
+        minSlides: 1,
+        maxSlides: 10, //지역 갯수와 동일하게
+        slideWidth: 0,
+        slideMargin: 0,
         controls: false,
         pager: false,
+        auto: true,
     });
 });
 

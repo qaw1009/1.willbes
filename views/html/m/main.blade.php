@@ -30,21 +30,18 @@
 
     <div class="MainSlider c_both mt10">
         <div class="sliderSwipe">
-            <ul class="w-nav">
-                <li class="nav_top"><a href="#none">노량진</a><span class="row-line">|</span></li>
-                <li><a href="#none">신림</a><span class="row-line">|</span></li>
-                <li><a href="#none">인천</a><span class="row-line">|</span></li>
-                <li><a href="#none">대구</a><span class="row-line">|</span></li>
-                <li><a href="#none">부산</a><span class="row-line">|</span></li>
-                <li><a href="#none">광주</a><span class="row-line">|</span></li>
-                <li><a href="#none">제주</a><span class="row-line">|</span></li>
-                <li><a href="#none">전북</a><span class="row-line">|</span></li>
-                <li><a href="#none">전남</a><span class="row-line">|</span></li>
-                <li><a href="#none">강원</a></li>
-            </ul>
+            <div class="nav_top"><a href="#none">노량진</a><span class="row-line">|</span></div>
+            <div><a href="#none">신림</a><span class="row-line">|</span></div>
+            <div><a href="#none">인천</a><span class="row-line">|</span></div>
+            <div><a href="#none">대구</a><span class="row-line">|</span></div>
+            <div><a href="#none">부산</a><span class="row-line">|</span></div>
+            <div><a href="#none">광주</a><span class="row-line">|</span></div>
+            <div><a href="#none">제주</a><span class="row-line">|</span></div>
+            <div><a href="#none">전북</a><span class="row-line">|</span></div>
+            <div><a href="#none">전남</a><span class="row-line">|</span></div>
+            <div><a href="#none">강원</a><span class="row-line">|</span></div>
         </div>
     </div>
-
 
     <div class="lineTabs lecProfTabs c_both">
         <ul class="tabWrap lineWrap lecProfWrap two">

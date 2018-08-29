@@ -314,6 +314,7 @@ button {
     height: 15px;
     left: auto;
     right: auto;
+    z-index: 1;
 }
 .MainSlider .sliderControls img {
     width: 100%;
@@ -323,21 +324,19 @@ button {
 .sliderSwipe ul {
     display: table;
     width: 100%;
+}
+.sliderSwipe div {
+    width: 65px !important;
     height: 30px;
     white-space: nowrap;
     box-sizing: border-box;
+    line-height: 30px;
     text-align: center;
 }
-.sliderSwipe ul li {
-    display: inline-block;
-    height: 30px;
-    white-space: nowrap;
-    line-height: 30px;
-}
-.sliderSwipe ul li a {
+.sliderSwipe div a {
     padding: 0 20px;
 }
-.sliderSwipe ul li .row-line {
+.sliderSwipe div .row-line {
     background: #b5b5b5;
     width: 1px;
     height: 8px;

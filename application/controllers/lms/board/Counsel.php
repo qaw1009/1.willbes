@@ -372,7 +372,8 @@ class Counsel extends BaseBoard
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
-            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent
+            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
+            MdSysCate.CateName as MdCateName
             ';
         $board_idx = $params[0];
         $arr_condition = ([

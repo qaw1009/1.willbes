@@ -314,7 +314,7 @@
                                 </button>
                             </li>
                             <li class="btnAuto180 h36">
-                                <button type="submit" onclick="openWin('WITHDRAWALPASS')" class="mem-Btn bg-white bd-dark-gray">
+                                <button type="button" onclick="openWin('WITHDRAWALPASS')" class="mem-Btn bg-white bd-dark-gray">
                                     <span class="tx-purple-gray">회원탈퇴신청</span>
                                 </button>
                             </li>
@@ -501,9 +501,9 @@
                                 <tbody>
                                 <tr>
                                     <th class="w-tit">이름</th>
-                                    <td class="w-list">홍길동</td>
+                                    <td class="w-list">{{$data['MemName']}}</td>
                                     <th class="w-tit">아이디</th>
-                                    <td class="w-list">willbes1</td>
+                                    <td class="w-list">{{$data['MemId']}}</td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">비밀번호*</th>
@@ -590,11 +590,6 @@
                 }
 
                 objTimer = setTimeout(remainTime, 1000);
-            }
-
-            function changePhone()
-            {
-
             }
 
             $("#btn_send_sms").click(function () {

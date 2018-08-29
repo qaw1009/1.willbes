@@ -5,20 +5,20 @@
             <ul class="myLog">
                 @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
                     @if(sess_data('is_login') != true)
-                        @if(strpos(strtoupper(current_url()), '/MEMBER/LOGINFORM') === false)
+                        @if(strpos(strtoupper(current_url()), '/MEMBER/LOGIN') === false)
                             <li class="Login">
-                                <a class="Tit" href="{{ app_url('/member/loginForm/?rtnUrl='.rawurlencode(current_url()), 'www')}}" >로그인</a>
+                                <a class="Tit" href="{{ app_url('/member/login/?rtnUrl='.rawurlencode(current_url()), 'www')}}" >로그인</a>
                             </li>
                         @endif
                         <li class="joinUs dropdown">
-                            <a class="Tit" href="{{ app_url('/member/join', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
+                            <a class="Tit" href="{{ app_url('/member/join/', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
                             <div class="drop-Box joinUs-Box">
                                 <ul>
                                     <li>
-                                        <a href="{{ app_url('/member/findId', 'www') }}">아이디찾기</a>
+                                        <a href="{{ app_url('/member/find/id/', 'www') }}">아이디찾기</a>
                                     </li>
                                     <li>
-                                        <a href="{{ app_url('/member/findPwd', 'www') }}">비밀번호 찾기</a>
+                                        <a href="{{ app_url('/member/find/pwd/', 'www') }}">비밀번호 찾기</a>
                                     </li>
                                 </ul>
                             </div>
@@ -28,7 +28,7 @@
                             {{sess_data('mem_name')}}님 ( IDX:{{sess_data('mem_idx')}} | ID:{{sess_data('mem_id')}} | MAIL:{{sess_data('mem_mail')}} | PHONE:{{sess_data('mem_phone')}})
                         </li>
                         <li class="joinUs">
-                            <a class="Tit" href="{{ app_url('/member/logout', 'www') }}">로그아웃</a>
+                            <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>
                         </li>
                     @endif
                     @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
@@ -37,14 +37,14 @@
                         </li>
                     @endif
                     <li class="myPage dropdown">
-                        <a class="Tit" href="{{ app_url('/Classroom/', 'www') }}">내강의실<span class="arrow-Btn">></span></a>
+                        <a class="Tit" href="{{ app_url('/classroom/', 'www') }}">내강의실<span class="arrow-Btn">></span></a>
                         <div class="drop-Box myPage-Box">
                             <ul>
                                 <li>
-                                    <a href="{{ app_url('/Classroom/Lecture/ongoing/', 'www') }}">수강중인 강의</a>
+                                    <a href="{{ app_url('/classroom/online/list/ongoing/', 'www') }}">수강중인 강의</a>
                                 </li>
                                 <li>
-                                    <a href="{{ app_url('/Classroom/Pass/', 'www') }}">PASS 강의</a>
+                                    <a href="{{ app_url('/classroom/online/pass/', 'www') }}">PASS 강의</a>
                                 </li>
                                 <li>
                                     <a href="#none">배송조회</a>
@@ -94,7 +94,7 @@
                 </div>
                 <ul class="btn-Txt tx-dark-black">
                     <li>
-                        <span><a class="tx-dark-black" href="{{ app_url('/member/findId', 'www') }}">아이디</a>/<a class="tx-dark-black" href="{{ app_url('/member/findPwd', 'www') }}">비밀번호찾기</a><span class="row-line">|</span></span>
+                        <span><a class="tx-dark-black" href="{{ app_url('/member/find/id/', 'www') }}">아이디</a>/<a class="tx-dark-black" href="{{ app_url('/member/find/password', 'www') }}">비밀번호찾기</a><span class="row-line">|</span></span>
                     </li>
                     <li>
                         <span><a class="tx-dark-blue" href="{{ app_url('/member/join', 'www') }}">회원가입</a></span>

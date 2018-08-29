@@ -26,7 +26,7 @@
                             <label for="save_id" class="labelSave tx-gray">아이디 저장</label>
                         </li>
                         <li class="chkBox-Search tx-gray">
-                            <span><a class="tx-gray" href="{{ app_url('/Member/FindID', 'www') }}">아이디</a>/<a class="tx-gray" href="{{ app_url('/member/findPwd', 'www') }}">비밀번호찾기</a></span>
+                            <span><a class="tx-gray" href="{{ app_url('/member/find/id/', 'www') }}">아이디</a>/<a class="tx-gray" href="{{ app_url('/member/find/pwd/', 'www') }}">비밀번호찾기</a></span>
                         </li>
                     </ul>
                 </div>
@@ -45,7 +45,7 @@
                             가입 즉시 패밀리 포인트 3,000P를 받으실 수 있습니다.
                         </td>
                         <td>
-                            <a class="bg-dark-blue" href="{{ app_url('/Member/Join', 'www') }}">통합회원가입</a>
+                            <a class="bg-dark-blue" href="{{ app_url('/member/join/', 'www') }}">통합회원가입</a>
                         </td>
                     </tr>
                     <tr>
@@ -62,7 +62,7 @@
         </form>
     </div>
     <!-- End Container -->
-    <form method="get" id="real_login_frm" name="real_login_frm" action="{{ app_url('/Member/Login/', 'www') }}">
+    <form method="get" id="real_login_frm" name="real_login_frm" action="{{ app_url('/member/login/proc/', 'www') }}">
         {!! csrf_field() !!}
         <input type="hidden" name="chklogin" value="0" />
         <input type="hidden" name="rtnUrl" value="{{$rtnUrl}}" />
@@ -85,7 +85,7 @@
             });
 
             $login_frm.submit(function () {
-                var _url = '{{ app_url('/Member/Login/', 'www') }}';
+                var _url = '{{ app_url('/member/login/proc/', 'www') }}';
 
                 $('#ret_msg').text('');
 

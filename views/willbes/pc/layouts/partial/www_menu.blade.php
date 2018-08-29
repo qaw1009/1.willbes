@@ -5,17 +5,17 @@
                 <a href="{{ site_url('/Classroom/') }}">내강의실 HOME</a>
             </li>
             <li>
-                <a href="{{ site_url('/Classroom/Pass') }}">무한PASS존</a>
+                <a href="{{ site_url('/classroom/online/pass/') }}">무한PASS존</a>
             </li>
             <li class="dropdown">
-                <a href="{{ site_url('/Classroom/Lecture/ongoing') }}">온라인강좌</a>
+                <a href="{{ site_url('/classroom/online/list/ongoing/') }}">온라인강좌</a>
                 <div class="drop-Box list-drop-Box">
                     <ul>
                         <li class="Tit">온라인강좌</li>
-                        <li><a href="{{ site_url('/Classroom/Lecture/standby') }}">수강대기강좌</a></li>
-                        <li><a href="{{ site_url('/Classroom/Lecture/ongoing') }}">수강중강좌</a></li>
-                        <li><a href="{{ site_url('/Classroom/Lecture/pause') }}">일시정지강좌</a></li>
-                        <li><a href="{{ site_url('/Classroom/Lecture/end') }}">수강종료강좌</a></li>
+                        <li><a href="{{ site_url('/classroom/online/list/standby') }}">수강대기강좌</a></li>
+                        <li><a href="{{ site_url('/classroom/online/list/ongoing') }}">수강중강좌</a></li>
+                        <li><a href="{{ site_url('/classroom/online/list/pause') }}">일시정지강좌</a></li>
+                        <li><a href="{{ site_url('/classroom/online/list/end') }}">수강종료강좌</a></li>
                     </ul>
                 </div>
             </li>
@@ -24,8 +24,8 @@
                 <div class="drop-Box list-drop-Box">
                     <ul>
                         <li class="Tit">학원강좌</li>
-                        <li><a href="{{ site_url('/Classroom/offline/ongoing') }}">수강신청강좌</a></li>
-                        <li><a href="{{ site_url('/Classroom/offline/end') }}">수강종료강좌</a></li>
+                        <li><a href="{{ site_url('/classroom/offline/list/ongoing') }}">수강신청강좌</a></li>
+                        <li><a href="{{ site_url('/classroom/offline/list/end') }}">수강종료강좌</a></li>
                     </ul>
                 </div>
             </li>
@@ -62,8 +62,8 @@
                 <div class="drop-Box list-drop-Box">
                     <ul>
                         <li class="Tit">회원정보</li>
-                        <li><a href="{{ site_url('/Member/Change') }}">개인정보관리</a></li>
-                        <li><a href="{{ site_url('/Member/Password') }}">비밀번호변경</a></li>
+                        <li><a href="{{ site_url('/member/change/') }}">개인정보관리</a></li>
+                        <li><a href="{{ site_url('/member/change/password/') }}">비밀번호변경</a></li>
                     </ul>
                 </div>
             </li>

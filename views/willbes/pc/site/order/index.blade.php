@@ -195,15 +195,15 @@
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                            <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
+                            <td class="w-info tx-left pl20">{{ $results['BaseMember']['MemName'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                            <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
+                            <td class="w-info tx-left pl20">{{ $results['BaseMember']['Phone'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이메일</td>
-                            <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
+                            <td class="w-info tx-left pl20">{{ $results['BaseMember']['Mail'] }}</td>
                         </tr>
                         <tr class="u-to">
                             <th class="w-list" rowspan="6">받는사람<br/>정보<br/><span class="tx-light-blue">(* 필수입력항목)</span></th>
@@ -218,7 +218,7 @@
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이름<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20 item"><input type="text" id="receiver" name="receiver" value="{{ $results['member']['MemName'] }}" title="이름" required="required" class="iptName" maxlength="30"></td>
+                            <td class="w-info tx-left pl20 item"><input type="text" id="receiver" name="receiver" value="{{ $results['BaseMember']['MemName'] }}" title="이름" required="required" class="iptName" maxlength="30"></td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
@@ -634,14 +634,14 @@
             var addr_type = $(this).val();
 
             if (addr_type === 'E') {
-                $regi_form.find('input[name="receiver"]').val('{{ $results['member']['MemName'] }}');
-                $regi_form.find('input[name="zipcode"]').val('{{ $results['member']['ZipCode'] }}');
-                $regi_form.find('input[name="addr1"]').val('{{ $results['member']['Addr1'] }}');
-                $regi_form.find('input[name="addr2"]').val('{{ $results['member']['Addr2'] }}');
-                $regi_form.find('input[name="receiver_phone"]').val('{{ $results['member']['Phone'] }}');
-                $regi_form.find('select[name="receiver_phone1"]').val('{{ $results['member']['Phone1'] }}');
-                $regi_form.find('input[name="receiver_phone2"]').val('{{ $results['member']['Phone2'] }}');
-                $regi_form.find('input[name="receiver_phone3"]').val('{{ $results['member']['Phone3'] }}');
+                $regi_form.find('input[name="receiver"]').val('{{ $results['BaseMember']['MemName'] }}');
+                $regi_form.find('input[name="zipcode"]').val('{{ $results['BaseMember']['ZipCode'] }}');
+                $regi_form.find('input[name="addr1"]').val('{{ $results['BaseMember']['Addr1'] }}');
+                $regi_form.find('input[name="addr2"]').val('{{ $results['BaseMember']['Addr2'] }}');
+                $regi_form.find('input[name="receiver_phone"]').val('{{ $results['BaseMember']['Phone'] }}');
+                $regi_form.find('select[name="receiver_phone1"]').val('{{ $results['BaseMember']['Phone1'] }}');
+                $regi_form.find('input[name="receiver_phone2"]').val('{{ $results['BaseMember']['Phone2'] }}');
+                $regi_form.find('input[name="receiver_phone3"]').val('{{ $results['BaseMember']['Phone3'] }}');
             } else if (addr_type === 'R') {
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),

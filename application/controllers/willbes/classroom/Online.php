@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Classroom extends \app\controllers\FrontController
+class Online extends \app\controllers\FrontController
 {
     protected $models = array();
     protected $helpers = array();
@@ -26,7 +26,7 @@ class Classroom extends \app\controllers\FrontController
     /**
      * 기간제 강의실
      */
-    public function Pass()
+    public function pass()
     {
         $this->load->view('/classroom/pass');
     }
@@ -35,7 +35,7 @@ class Classroom extends \app\controllers\FrontController
     /**
      * 단강좌 리스트페이지
      */
-    public function Lecture($params = [])
+    public function list($params = [])
     {
         if(empty($params) === true){
             $listType = "ongoing";
@@ -62,7 +62,7 @@ class Classroom extends \app\controllers\FrontController
      * 실세 강의 상세페이지
      * @param array $params
      */
-    public function View($params = [])
+    public function view($params = [])
     {
         if(empty($params[0]) == true || empty($params[1]) == true || empty($params[1]) == true ){
             show_alert('수강정보가 정확하지 않습니다.', 'back');
@@ -73,30 +73,6 @@ class Classroom extends \app\controllers\FrontController
         }
 
         $this->load->view('classroom/view');
-    }
-
-
-    /**
-     * 학원강의 신청목록
-     * @param array $params
-     */
-    public function offline($params = [])
-    {
-        if(empty($params[0]) === true){
-            $listType = 'ongoing';
-        } else {
-            $listType = strtolower($params[0]);
-        }
-
-        if($listType != 'ongoing' && $listType != 'end'){
-           $listType = 'ongoing';
-        }
-
-
-        $this->load->view('classroom/offline_'.$listType, [
-            'data' => [],
-            'list' => []
-        ]);
     }
 
 }

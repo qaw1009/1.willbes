@@ -171,11 +171,11 @@
                                         <li class="w-tit">
                                             [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                             <dl class="w-info">
-                                                <dt class="tx-blue">5/1~6/30</dt>
+                                                <dt class="tx-gray">실강</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt class="tx-gray">16회차</dt>
+                                                <dt class="tx-blue">2018-05-20 ~ 2018-06-25</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt class="tx-gray">월~금 14:00~18:00</dt>
+                                                <dt class="tx-gray">월화수목금 (16회차)</dt>
                                             </dl>
                                         </li>
                                     </ul>
@@ -194,11 +194,11 @@
                                         <li class="w-tit">
                                             [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                             <dl class="w-info">
-                                                <dt class="tx-blue">5/1~6/30</dt>
+                                                <dt class="tx-gray">실강</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt class="tx-gray">16회차</dt>
+                                                <dt class="tx-blue">2018-05-20 ~ 2018-06-25</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt class="tx-gray">월~금 14:00~18:00</dt>
+                                                <dt class="tx-gray">월화수목금 (16회차)</dt>
                                             </dl>
                                         </li>
                                     </ul>
@@ -218,11 +218,11 @@
                                         <li class="w-tit">
                                             [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                             <dl class="w-info">
-                                                <dt class="tx-blue">5/1~6/30</dt>
+                                                <dt class="tx-gray">실강</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt class="tx-gray">16회차</dt>
+                                                <dt class="tx-blue">2018-05-20 ~ 2018-06-25</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt class="tx-gray">월~금 14:00~18:00</dt>
+                                                <dt class="tx-gray">월화수목금 (16회차)</dt>
                                             </dl>
                                         </li>
                                     </ul>
@@ -264,11 +264,11 @@
                                             <li class="w-tit">
                                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                                 <dl class="w-info">
-                                                    <dt class="tx-blue">5/1~6/30</dt>
+                                                    <dt class="tx-gray">실강</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">16회차</dt>
+                                                    <dt class="tx-blue">2018-05-20 ~ 2018-06-25</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">월~금 14:00~18:00</dt>
+                                                    <dt class="tx-gray">월화수목금 (16회차)</dt>
                                                 </dl>
                                             </li>
                                         </ul>
@@ -287,11 +287,11 @@
                                             <li class="w-tit">
                                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                                 <dl class="w-info">
-                                                    <dt class="tx-blue">5/1~6/30</dt>
+                                                    <dt class="tx-gray">실강</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">16회차</dt>
+                                                    <dt class="tx-blue">2018-05-20 ~ 2018-06-25</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">월~금 14:00~18:00</dt>
+                                                    <dt class="tx-gray">월화수목금 (16회차)</dt>
                                                 </dl>
                                             </li>
                                         </ul>
@@ -311,11 +311,11 @@
                                             <li class="w-tit">
                                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                                 <dl class="w-info">
-                                                    <dt class="tx-blue">5/1~6/30</dt>
+                                                    <dt class="tx-gray">실강</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">16회차</dt>
+                                                    <dt class="tx-blue">2018-05-20 ~ 2018-06-25</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">월~금 14:00~18:00</dt>
+                                                    <dt class="tx-gray">월화수목금 (16회차)</dt>
                                                 </dl>
                                             </li>
                                         </ul>
@@ -329,7 +329,7 @@
                             </tbody>
                         </table>
                         <!-- lecInfoTable : 선택과목 -->
-                        <div class="lecInfoTable willbes-Lec-buyBtn GM">
+                        <div class="willbes-Lec-buyBtn GM">
                             <ul>
                                 <li class="InfoBtn ml10">
                                     <a href="#none">방문접수</a>
@@ -683,9 +683,9 @@
                         <dt class="aBox waitBox_block">쿠폰적용</dt>
                         <dt class="price tx-blue">75,000원 <span class="o-price tx-gray line-through">(80,000원)</span></dt>
                     </dl>
-                    <dl class="mt5">
+                    <dl class="mt5 tx-bright-gray">
                         <dt class="c-txt">쿠폰명 노출 쿠폰명 노출 쿠폰명 노출 쿠폰명 노출 쿠폰명 노출</dt>
-                        <dt class="d-price tx-light-pink">(5,000원할인)</dt>
+                        <dt class="d-price">(5,000원할인)</dt>
                         <dt class="closeBtn">                        
                             <a href="#none"><img src="/public/img/willbes/cart/close.png"></a>
                         </dt>

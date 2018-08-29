@@ -1943,14 +1943,15 @@ table.auTable tr td {
     margin-bottom: 1px;
 }
 .willbes-Lec-buyBtn-sm button {
-    width: 50px;
+    width: 60px;
     height: 30px;
+    line-height: 28px;
     border: none;
     padding: 0;
     margin: 0;
 }
 .willbes-Lec-buyBtn-sm button span {
-    font-size: 9px;
+    font-size: 11px;
 }
 .pocketBox {
     background: #fff;
@@ -7060,6 +7061,10 @@ table.acadlecInfoPackageTable tr.Top td {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 12px;
+}
+.LecPocketlist dl dt.d-price {
+    font-size: 12px;
 }
 .LecPocketlist dl dt.price {
     float: right;

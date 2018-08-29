@@ -198,8 +198,8 @@
                                 </dl><br/>
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
-                                월~금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월화수목 (10회차)
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n1">접수중</div>
@@ -266,8 +266,8 @@
                                 </dl><br/>
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/3 ~ 6/30</span> (16회차)<br/>
-                                월~금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-30</span><br/>
+                                월화수 (10회차)
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n2">접수예정</div>
@@ -340,8 +340,8 @@
                                 </dl><br/>
                             </td>
                             <td class="w-schedule">
-                                <span class="tx-blue">5/3 ~ 6/30</span> (16회차)<br/>
-                                월~금 14:00 ~ 18:00
+                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                월수금 (10회차)
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n3">마감</div>

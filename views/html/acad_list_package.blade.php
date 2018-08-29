@@ -155,8 +155,8 @@
                                 </dl><br/>
                             </td>
                             <td class="w-schedule">
-                                개강 : <span class="tx-blue">2018/05/10(목)</span><br/>
-                                종료 : 2018/06/30 (토)
+                                개강 : <span class="tx-blue">2018/05/10</span><br/>
+                                종료 : 2018/06/30
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n1">접수중</div>
@@ -196,8 +196,8 @@
                     <colgroup>
                         <col style="width: 75px;">
                         <col style="width: 515px;">
-                        <col style="width: 180px;">
-                        <col style="width: 90px;">
+                        <col style="width: 200px;">
+                        <col style="width: 70px;">
                     </colgroup>
                     <thead>
                         <tr>
@@ -220,7 +220,7 @@
                             </td>
                             <td class="w-schedule">
                                 <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
+                                월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
@@ -236,7 +236,7 @@
                             </td>
                             <td class="w-schedule">
                                 <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
+                                월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -253,7 +253,7 @@
                             </td>
                             <td class="w-schedule">
                                 <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
+                                월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -269,8 +269,8 @@
                     <colgroup>
                         <col style="width: 75px;">
                         <col style="width: 515px;">
-                        <col style="width: 180px;">
-                        <col style="width: 90px;">
+                        <col style="width: 200px;">
+                        <col style="width: 70px;">
                     </colgroup>
                     <thead>
                         <tr>
@@ -293,7 +293,7 @@
                             </td>
                             <td class="w-schedule">
                                 <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
+                                월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -309,7 +309,7 @@
                             </td>
                             <td class="w-schedule">
                                 <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
+                                월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -326,7 +326,7 @@
                             </td>
                             <td class="w-schedule">
                                 <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월 ~ 금 (16회차) <span class="row-line">|</span> 실강
+                                월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
                                 <a href="#none">
@@ -378,8 +378,8 @@
                                 </dl><br/>
                             </td>
                             <td class="w-schedule">
-                                개강 : <span class="tx-blue">2018/05/10(목)</span><br/>
-                                종료 : 2018/06/30 (토)
+                                개강 : <span class="tx-blue">2018/05/10</span><br/>
+                                종료 : 2018/06/30
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n2">접수예정</div>

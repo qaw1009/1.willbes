@@ -591,9 +591,9 @@
                         <dt class="aBox waitBox_block">쿠폰적용</dt>
                         <dt class="price tx-blue">75,000원 <span class="o-price tx-gray line-through">(80,000원)</span></dt>
                     </dl>
-                    <dl class="mt5">
+                    <dl class="mt5 tx-bright-gray">
                         <dt class="c-txt">쿠폰명 노출 쿠폰명 노출 쿠폰명 노출 쿠폰명 노출 쿠폰명 노출</dt>
-                        <dt class="d-price tx-light-pink">(5,000원할인)</dt>
+                        <dt class="d-price">(5,000원할인)</dt>
                         <dt class="closeBtn">                        
                             <a href="#none"><img src="/public/img/willbes/cart/close.png"></a>
                         </dt>

@@ -234,7 +234,8 @@ class BoardModel extends WB_Model
         $this->_conn->trans_begin();
         try {
             $board_data = array_merge($board_data,[
-                'RegAdminIdx'=> $this->session->userdata('admin_idx')
+                'RegAdminIdx'=> $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
             ]);
 
             // 데이터 등록

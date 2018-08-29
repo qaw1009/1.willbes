@@ -29,6 +29,9 @@ class ProductFModel extends WB_Model
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
 
+    // 상품 판매상태 > 판매가능, 판매예정
+    public $_sale_status_ccds = ['618001', '618002'];
+
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
@@ -54,8 +57,7 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, SchoolYear, RegDatm
-                , if(IsSalesAble = "Y" and SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '", "Y", "N") as IsOrderable';
+            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, SchoolYear, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
@@ -113,20 +115,7 @@ class ProductFModel extends WB_Model
      */
     public function listSalesProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
-        $arr_condition = array_merge_recursive($arr_condition, [
-            'EQ' => ['IsSalesAble' => 'Y']
-        ]);
-
-        switch ($learn_pattern) {
-            // 온라인 단강좌, 온라인 무료강좌, 학원 단과
-            case 'on_lecture' :
-            case 'on_free_lecture' :
-            case 'off_lecture' :
-                    $arr_condition = array_merge_recursive($arr_condition, [
-                        'EQ' => ['LecSaleType' => 'N']   // 일반강의
-                    ]);
-                break;
-        }
+        $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern));
 
         return $this->listProduct($learn_pattern, $column, $arr_condition, $limit, $offset, $order_by, $add_column);
     }
@@ -140,7 +129,7 @@ class ProductFModel extends WB_Model
      */
     public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
-        $arr_condition = ['EQ' => ['ProdCode' => (string) $prod_code, 'IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']];
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);
@@ -155,24 +144,49 @@ class ProductFModel extends WB_Model
      */
     public function findOnlySaleProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
+        $arr_condition = array_merge_recursive([
+                'EQ' => ['ProdCode' => $prod_code, 'SaleStatusCcd' => $this->_available_sale_status_ccd['product']]
+            ], $this->getSalesProductCondition($learn_pattern));
+
+        $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
+
+        return element('0', $data, []);
+    }
+
+    /**
+     * 판매가능, 판매예정 상품 목록 조회 조건 리턴
+     * @param $learn_pattern
+     * @return array
+     */
+    public function getSalesProductCondition($learn_pattern)
+    {
         $arr_condition = [
-            'EQ' => ['ProdCode' => (string) $prod_code, 'IsSalesAble' => 'Y', 'SaleStatusCcd' => $this->_available_sale_status_ccd['product']]
+            'EQ' => ['IsSaleEnd' => 'N', 'IsUse' => 'Y'],
+            'IN' => ['SaleStatusCcd' => $this->_sale_status_ccds],
+            'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
         ];
 
         switch ($learn_pattern) {
             // 온라인 단강좌, 온라인 무료강좌, 학원 단과
             case 'on_lecture' :
             case 'on_free_lecture' :
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부
+                ]);
+                break;
             case 'off_lecture' :
-                    $arr_condition = array_merge_recursive($arr_condition, [
-                        'EQ' => ['LecSaleType' => 'N']   // 일반강의
-                    ]);
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y', 'IsLecOpen' => 'Y']   // 일반강의, 마스터강의 사용여부, 강의개설여부
+                ]);
+                break;
+            case 'book' :
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'EQ' => ['wSaleCcd' => $this->_available_sale_status_ccd['book'], 'wIsUse' => 'Y']   // WBS 교재 판매상태 (판매중), 사용여부
+                ]);
                 break;
         }
 
-        $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
-
-        return element('0', $data, []);
+        return $arr_condition;
     }
 
     /**

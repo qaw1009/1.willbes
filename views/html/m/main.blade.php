@@ -28,19 +28,19 @@
     </div>
     <div class="line">-</div>
 
-    <div class="MainSlider c_both">
+    <div class="MainSlider c_both mt10">
         <div class="sliderSwipe">
             <ul class="w-nav">
-                <li class="nav_top"><a href="">뉴스</a></li>
-                <li><a href="">연예</a></li>
-                <li><a href="">스포츠</a></li>
-                <li><a href="">쇼핑</a></li>
-                <li><a href="">우리동네</a></li>
-                <li><a href="">건강</a></li>
-                <li><a href="">FARM</a></li>
-                <li><a href="">JOB&</a></li>
-                <li><a href="">책문화</a></li>
-                <li><a href="">게임</a></li>
+                <li class="nav_top"><a href="#none">노량진</a><span class="row-line">|</span></li>
+                <li><a href="#none">신림</a><span class="row-line">|</span></li>
+                <li><a href="#none">인천</a><span class="row-line">|</span></li>
+                <li><a href="#none">대구</a><span class="row-line">|</span></li>
+                <li><a href="#none">부산</a><span class="row-line">|</span></li>
+                <li><a href="#none">광주</a><span class="row-line">|</span></li>
+                <li><a href="#none">제주</a><span class="row-line">|</span></li>
+                <li><a href="#none">전북</a><span class="row-line">|</span></li>
+                <li><a href="#none">전남</a><span class="row-line">|</span></li>
+                <li><a href="#none">강원</a></li>
             </ul>
         </div>
     </div>

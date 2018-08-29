@@ -320,24 +320,28 @@ button {
 }
 
 /* slider : swipe 버튼(공통 GNB) => 000 */
-.sliderSwipe {}
 .sliderSwipe ul {
     display: table;
     width: 100%;
-    height: 40px;
+    height: 30px;
     white-space: nowrap;
     box-sizing: border-box;
     text-align: center;
 }
 .sliderSwipe ul li {
     display: inline-block;
-    width: 100px;
-    height: 40px;
+    height: 30px;
     white-space: nowrap;
+    line-height: 30px;
 }
-
-
-
+.sliderSwipe ul li a {
+    padding: 0 20px;
+}
+.sliderSwipe ul li .row-line {
+    background: #b5b5b5;
+    width: 1px;
+    height: 8px;
+}
 
 /* MainFixBnr */
 .MainFixBnr {

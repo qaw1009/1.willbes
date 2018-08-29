@@ -66,10 +66,12 @@ $(function() {
     });
 });
 
-// Slider 000 Script
+// Slider Swipe Script
 $(function() {
     $('.sliderSwipe').bxSlider({
-        swipeThreshold: 50,
+        touchEnabled: true,
+        swipeThreshold: 1,
+        infiniteLoop: false,
         controls: false,
         pager: false,
     });

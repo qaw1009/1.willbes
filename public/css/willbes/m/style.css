@@ -291,19 +291,6 @@ button {
     width: 100%;
 }
 
-/* MainFixBnr */
-.MainFixBnr {
-    float: left;
-    width: 100%;
-}
-.MainFixBnr ul li {
-    float: left;
-    width: 50%;
-}
-.MainFixBnr ul li img {
-    width: 100%;
-}
-
 /* slider : 좌우 버튼(공통 GNB) => cSlider */
 .cSlider .bx-wrapper .bx-prev {
     background: url("../../../img/willbes/m/main/btn_prev.png") no-repeat 0 0;
@@ -329,6 +316,39 @@ button {
     right: auto;
 }
 .MainSlider .sliderControls img {
+    width: 100%;
+}
+
+/* slider : swipe 버튼(공통 GNB) => 000 */
+.sliderSwipe {}
+.sliderSwipe ul {
+    display: table;
+    width: 100%;
+    height: 40px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    text-align: center;
+}
+.sliderSwipe ul li {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    white-space: nowrap;
+}
+
+
+
+
+/* MainFixBnr */
+.MainFixBnr {
+    float: left;
+    width: 100%;
+}
+.MainFixBnr ul li {
+    float: left;
+    width: 50%;
+}
+.MainFixBnr ul li img {
     width: 100%;
 }
 

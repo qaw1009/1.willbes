@@ -6976,10 +6976,10 @@ table.acadlecInfoPackageTable tr.Top td {
     margin-right: 70px;
 }
 .w-notice .acadInfo.n1 {
-    background: #fe0000;
+    background: #46a1dc;
 }
 .w-notice .acadInfo.n2 {
-    background: #46a1dc;
+    background: #fe0000;
 }
 .w-notice .acadInfo.n3 {
     background: #333;
@@ -6995,16 +6995,16 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 0 4px;
 }
 .w-info dt .acadBox.n1 {
-    color: #9c3eb4;
-    border-color: #9c3eb4;
-}
-.w-info dt .acadBox.n2 {
     color: #1345b6;
     border-color: #1345b6;
 }
-.w-info dt .acadBox.n3 {
+.w-info dt .acadBox.n2 {
     color: #0a8cc2;
     border-color: #0a8cc2;
+}
+.w-info dt .acadBox.n3 {
+    color: #9c3eb4;
+    border-color: #9c3eb4;
 }
 
 /* subContainer : Content : Aside */

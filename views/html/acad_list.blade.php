@@ -193,7 +193,7 @@
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                     <dt class="NSK ml15">
-                                        <span class="acadBox n1">방문+온라인</span>
+                                        <span class="acadBox n3">방문+온라인</span>
                                     </dt>
                                 </dl><br/>
                             </td>
@@ -202,7 +202,7 @@
                                 월화수목 (10회차)
                             </td>
                             <td class="w-notice p_re">
-                                <div class="acadInfo NSK n1">접수중</div>
+                                <div class="acadInfo NSK n2">접수중</div>
                                 <div class="priceWrap chk buybtn p_re">
                                     <span class="price tx-blue">
                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
@@ -261,7 +261,7 @@
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                     <dt class="NSK ml15">
-                                        <span class="acadBox n3">온라인 접수</span>
+                                        <span class="acadBox n2">온라인 접수</span>
                                     </dt>
                                 </dl><br/>
                             </td>
@@ -270,7 +270,7 @@
                                 월화수 (10회차)
                             </td>
                             <td class="w-notice p_re">
-                                <div class="acadInfo NSK n2">접수예정</div>
+                                <div class="acadInfo NSK n1">접수예정</div>
                                 <div class="priceWrap chk buybtn p_re">
                                     <span class="price tx-blue">
                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
@@ -335,7 +335,7 @@
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
                                     <dt class="NSK ml15">
-                                        <span class="acadBox n2">방문접수</span>
+                                        <span class="acadBox n1">방문접수</span>
                                     </dt>
                                 </dl><br/>
                             </td>

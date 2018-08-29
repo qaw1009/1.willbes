@@ -18,6 +18,15 @@
             <li><img src="{{ img_url('m/sample/bnr2.jpg') }}"></li>
         </ul>
     </div>
+    <div class="MainSlider cSlider c_both">
+        <div class="sliderControls">
+            <div><img src="{{ img_url('m/sample/roll1.jpg') }}"></div>
+            <div><img src="{{ img_url('m/sample/roll2.jpg') }}"></div>
+            <div><img src="{{ img_url('m/sample/roll3.jpg') }}"></div>
+            <div><img src="{{ img_url('m/sample/roll4.jpg') }}"></div>
+        </div>
+    </div>
+    <div class="line">-</div>
     <div class="lineTabs lecProfTabs c_both">
         <ul class="tabWrap lineWrap lecProfWrap two">
             <li><a href="#lecprof1" class="on">신규강좌</a></li>

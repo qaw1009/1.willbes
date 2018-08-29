@@ -154,7 +154,7 @@ class Counsel extends BaseBoard
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
-            LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.Phone1, MEM.Phone2Enc, MEM.Phone3,
+            LB.RegMemIdx, MEM.MemName AS RegMemName,
             LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
@@ -371,7 +371,7 @@ class Counsel extends BaseBoard
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            MEM.MemName, MEM.MemId, MEM.Phone1,
+            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent
             ';
         $board_idx = $params[0];
@@ -489,7 +489,7 @@ class Counsel extends BaseBoard
             LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            MEM.MemName, MEM.MemId, MEM.Phone1,
+            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             counselAdmin.wAdminName AS counselAdminName, counselAdmin2.wAdminName AS counselUpdAdminName,
             LB.ReplyRegDatm, LB.ReplyUpdDatm,

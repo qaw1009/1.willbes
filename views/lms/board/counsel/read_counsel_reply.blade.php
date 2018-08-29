@@ -48,7 +48,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">휴대폰 번호</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
-                        010-1234-1234 (Y)
+                        {{$data['MemPhone']}}
                     </div>
                 </div>
 

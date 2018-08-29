@@ -48,18 +48,18 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">질문강좌</label>
                     <div class="form-control-static col-md-10">
-                        {{$data['MemName']}}({{$data['MemId']}})
+
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">등록자</label>
                     <div class="form-control-static col-md-4">
-                        회원명(아이디)
+                        {{$data['MemName']}}({{$data['MemId']}})
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">휴대폰 번호</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
-                        010-1234-1234 (Y)
+                        {{$data['MemPhone']}}
                     </div>
                 </div>
 

@@ -388,7 +388,12 @@ button {
     color: #000;
     text-align: center;
     letter-spacing: 0;
-    border: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+}
+.buttonWrap li:first-child a {
+    border-left: 1px solid #e4e4e4;
 }
 .buttonWrap li a.on {
     position: relative;
@@ -710,9 +715,6 @@ button {
     height: 8px;
     margin: 0 5px;
 }
-.lecTable .w-info dt {
-    display: inline-block;
-}
 .lecTable .w-info.acad {
     line-height: 30px;
 }
@@ -796,6 +798,9 @@ button {
 }
 .lecTable tr td:last-child {
     padding-right: 20px;
+}
+.lecTable dl dt {
+    display: inline-block;
 }
 .lecTable input[type="checkbox"] {
     width: 20px;
@@ -959,7 +964,22 @@ button {
     padding-top: 10px;
 }
 .passTabs {
-    padding: 0 20px;
+    padding: 0;
+}
+.passTabs .passWrap {
+    margin: 20px;
+}
+.passWrap li.ready {
+    display: block;
+    height: 42px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
 }
 
 /* 무한 PASS존 자세히 보기 : Tabs : buylecTable */
@@ -971,6 +991,10 @@ button {
 }
 
 /* 무한 PASS존 자세히 보기 : Tabs : passListTabs */
+.passListTabs {
+    width: 100%;
+    padding: 0 20px;
+}
 .passListTabs thead tr td {
     padding-top: 20px;
     padding-bottom: 10px;  
@@ -994,7 +1018,7 @@ button {
     vertical-align: top;
 }
 .passListTabs tr td.w-chk input[type="checkbox"] {
-    margin-top: 10px;
+    margin-top: 0;
 }
 .passListTabs tr td .w-tit {
     font-size: 14px;    
@@ -1025,10 +1049,6 @@ button {
     font-size: 12px;
     line-height: 45px;
     text-align: right;
-}
-.passListTabs .passListWrap {
-    width: 100%;
-    padding: 0 20px;
 }
 
 /* 무한 PASS 강좌추가 */

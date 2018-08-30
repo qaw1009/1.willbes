@@ -57,8 +57,8 @@ class CouponRegistModel extends WB_Model
             }
         }
 
-        $from = '
-            select
+        $from = /** @lang text */
+            'select
                 C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
                     , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.DiscRate, C.DiscType, C.IsIssue, C.RegDatm, C.RegAdminIdx
                     , if(C.PinType = "S", "공통핀번호", if(C.PinType = "R", "랜덤핀번호", "")) as PinName
@@ -249,7 +249,7 @@ class CouponRegistModel extends WB_Model
             $pin_issue_cnt = ($deploy_type == 'F') ? element('pin_issue_cnt', $input) : 0;
             $apply_type_ccd = element('apply_type_ccd', $input);
             $lec_type_ccd = (in_array($apply_type_ccd, $this->_apply_type_to_lec_ccds) === true) ? implode(',', element('lec_type_ccd', $input)) : '';
-            $apply_range_type = (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) ? element('apply_range_type', $input) : '';
+            $apply_range_type = (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) ? element('apply_range_type', $input) : 'A';
             $apply_school_year = ($apply_range_type == 'I') ? element('apply_school_year', $input) : '';
             $apply_subject_idx = ($apply_range_type == 'I') ? element('apply_subject_idx', $input) : '';
             $apply_course_idx = ($apply_range_type == 'I') ? element('apply_course_idx', $input) : '';

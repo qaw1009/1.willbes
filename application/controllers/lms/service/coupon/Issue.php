@@ -129,12 +129,15 @@ class Issue extends \app\controllers\BaseController
         }
 
         // 적용상세구분 코드 조회
-        $lec_type_ccds = $this->codeModel->getCcd($this->_ccd['LecType']);
-        $lec_type_names = '';
-        foreach (explode(',', $data['LecTypeCcds']) as $lec_type_ccd) {
-            $lec_type_names .= ',' . $lec_type_ccds[$lec_type_ccd];
+        $data['LecTypeNames'] = '';
+        if (empty($data['LecTypeCcds']) === false) {
+            $lec_type_ccds = $this->codeModel->getCcd($this->_ccd['LecType']);
+
+            foreach (explode(',', $data['LecTypeCcds']) as $lec_type_ccd) {
+                $data['LecTypeNames'] .= ',' . $lec_type_ccds[$lec_type_ccd];
+            }
+            $data['LecTypeNames'] = substr($data['LecTypeNames'], 1);
         }
-        $data['LecTypeNames'] = substr($lec_type_names, 1);
 
         $this->load->view('service/coupon/issue_create', [
             'coupon_idx' => $coupon_idx,

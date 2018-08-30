@@ -24,6 +24,7 @@ class MyCoupon extends \app\controllers\FrontController
         if (empty($cart_idx) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
+
         // 이미 선택한 쿠폰 식별자
         $arr_coupon_detail_idx = json_decode($this->_req('coupon_detail_idx'), true);
 

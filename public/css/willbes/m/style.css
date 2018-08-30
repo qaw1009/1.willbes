@@ -374,6 +374,9 @@ button {
 }
 
 /* Main : willbes-Campus */
+.willbes-Campus .swWrap {
+    height: 30px;
+}
 .willbes-Campus .list {
     width: auto !important;
     height: 30px;
@@ -416,6 +419,9 @@ button {
 .willbes-Campus-List .bx-wrapper .bx-next {
     background: url("../../../img/willbes/m/main/btn_next_gray.png") no-repeat 0 0;
     right: 20px !important;
+}
+.willbes-Campus-List .swGrid {
+    height: 48px;
 }
 .willbes-Campus-List .list {
     width: auto !important;

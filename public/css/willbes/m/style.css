@@ -293,10 +293,17 @@ button {
 .swiper-button-next, 
 .swiper-button-prev {
     border: none;
-    outline:none;
+    outline: none;
 }
-
-
+[role="button"]:active {
+    background: #000
+}
+[role="button"]:link {
+    background: #f90
+}
+[role="button"]:visited {
+    background: #f00
+}
 
 /* Main : MainSlider */
 .MainSlider,
@@ -514,7 +521,7 @@ button {
     width: 100%;
     height: 47px;
     line-height: 46px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     color: #000;
     text-align: center;
@@ -618,6 +625,9 @@ button {
     width: 100%;
     padding: 20px;
 }
+.lecProfWrap li a {
+    font-size: 14px;
+}
 .lecProfTabs {
     padding: 0;
 }
@@ -638,7 +648,7 @@ button {
     margin-left: 15px;
 }
 .lecProfBox ul li .w-tit {
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
     line-height: 24px;
     padding: 10px 0;
@@ -648,13 +658,13 @@ button {
     white-space: nowrap;
 }
 .lecProfBox ul li .w-name {
-    font-size: 14px;
+    font-size: 12px;
     color: #707070;
 }
 
 /* Main : Tabs : noticeBox */
 .noticeBox .List-Table li {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 40px;
     height: 42px;
     border-top: 1px solid #e4e4e4;

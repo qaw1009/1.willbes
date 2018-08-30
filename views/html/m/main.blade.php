@@ -22,7 +22,7 @@
     </div>
     <div class="MainBnrSlider swiper-container swiper-container-arrow">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="{{ site_url('/home/html/m/mypage_online1') }}"><img src="{{ img_url('m/sample/roll1.jpg') }}"></a></div>
+            <div class="swiper-slide"><a href="#none"><img src="{{ img_url('m/sample/roll1.jpg') }}"></a></div>
             <div class="swiper-slide"><a href="#none"><img src="{{ img_url('m/sample/roll2.jpg') }}"></a></div>
             <div class="swiper-slide"><a href="#none"><img src="{{ img_url('m/sample/roll3.jpg') }}"></a></div>
             <div class="swiper-slide"><a href="#none"><img src="{{ img_url('m/sample/roll4.jpg') }}"></a></div>
@@ -38,7 +38,7 @@
             <div class="MainCampusSlider swiper-container swiper-container-campus c_both">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><a class="on" href="#none">노량진</a><span class="row-line">|</span></div>
-                    <div class="swiper-slide"><a href="{{ site_url('/home/html/m/mypage_online2') }}">신림</a><span class="row-line">|</span></div>
+                    <div class="swiper-slide"><a href="#none">신림</a><span class="row-line">|</span></div>
                     <div class="swiper-slide"><a href="#none">인천</a><span class="row-line">|</span></div>
                     <div class="swiper-slide"><a href="#none">대구</a><span class="row-line">|</span></div>
                     <div class="swiper-slide"><a href="#none">부산</a><span class="row-line">|</span></div>
@@ -50,10 +50,10 @@
                 </div>
             </div>
             <div class="MainCampusListSlider c_both p_re">
-                <div class="campuslistWrap swiper-container swiper-container-campus-list">
+                <div class="campuslistWrap swiper-container swiper-container-campus-list swiper-wrapper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><a class="on" href="#none">국어</a></div>
-                        <div class="swiper-slide"><a href="{{ site_url('/home/html/m/mypage_online3') }}">공무원영어</a></div>
+                        <div class="swiper-slide"><a href="#none">공무원영어</a></div>
                         <div class="swiper-slide"><a href="#none">공무원국어</a></div>
                         <div class="swiper-slide"><a href="#none">영어</a></div>
                         <div class="swiper-slide"><a href="#none">공무원수학</a></div>

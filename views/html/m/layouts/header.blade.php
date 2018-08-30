@@ -128,16 +128,10 @@
             var swiper = new Swiper('.swiper-container-campus', {
                 slidesPerView: 'auto',
                 spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
             });
             var swiper = new Swiper('.swiper-container-campus-list', {
-                slidesPerView: 4,
+                slidesPerView: 'auto',
                 spaceBetween: 0,
-                loop: true,
-                loopFillGroupWithBlank: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',

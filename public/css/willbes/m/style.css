@@ -289,6 +289,14 @@ button {
     color:#fff;
     background: #007aff;
 }
+.swiper-pagination-bullet,
+.swiper-button-next, 
+.swiper-button-prev {
+    border: none;
+    outline:none;
+}
+
+
 
 /* Main : MainSlider */
 .MainSlider,
@@ -330,10 +338,6 @@ button {
 .MainBnrSlider .swiper-wrapper,
 .MainBnrSlider .swiper-slide {
     height: auto;
-}
-.MainBnrSlider .swiper-pagination-bullet-active {
-    color:#fff;
-    background: #007aff;
 }
 .MainBnrSlider .swiper-button-next,
 .MainBnrSlider .swiper-button-prev {
@@ -383,8 +387,6 @@ button {
     text-indent: -9999px;
 }
 
-
-
 /* Main : MainCampusTabs */
 .MainCampusTabs .willbes-Txt-Tit {
     border-bottom: 1px solid #e4e4e4;
@@ -430,7 +432,6 @@ button {
     margin: 21px 0;
 }
 
-
 /* Main : MainCampusListSlider */
 .MainCampusListSlider,
 .MainCampusListSlider .swiper-wrapper,
@@ -463,9 +464,6 @@ button {
 .MainCampusListSlider .swiper-button-prev.swiper-button-disabled {
     pointer-events: auto;
 }
-
-
-/* Main : willbes-Campus-List */
 .MainCampusListSlider {
     background: #eaeaea;
     height: 50px;
@@ -617,6 +615,7 @@ button {
 /* Main : Tabs : lecProfBox */
 .tabSection {
     float: left;
+    width: 100%;
     padding: 20px;
 }
 .lecProfTabs {

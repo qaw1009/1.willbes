@@ -20,10 +20,10 @@
     </div>
     <div class="MainBnrSlider cSlider c_both">
         <div class="sliderControls">
-            <div><img src="{{ img_url('m/sample/roll1.jpg') }}"></div>
-            <div><img src="{{ img_url('m/sample/roll2.jpg') }}"></div>
-            <div><img src="{{ img_url('m/sample/roll3.jpg') }}"></div>
-            <div><img src="{{ img_url('m/sample/roll4.jpg') }}"></div>
+            <div><a href="#1"><img src="{{ img_url('m/sample/roll1.jpg') }}"></a></div>
+            <div><a href="#2"><img src="{{ img_url('m/sample/roll2.jpg') }}"></a></div>
+            <div><a href="#3"><img src="{{ img_url('m/sample/roll3.jpg') }}"></a></div>
+            <div><a href="#4"><img src="{{ img_url('m/sample/roll4.jpg') }}"></a></div>
         </div>
     </div>
     <div class="line">-</div>

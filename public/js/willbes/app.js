@@ -77,17 +77,17 @@ $(function() {
         pager: false,
         auto: false,
     });
-    $('.willbes-Campus .sliderSwipe  div a').click(function() {
-        $('.willbes-Campus .sliderSwipe div a').removeClass('on');
+
+    $('.willbes-Campus .list a').click(function() {
+        $('.willbes-Campus .list a').removeClass('on');
         if ($(this).hasClass('on')) {
             $(this).removeClass('on');
         } else {
             $(this).addClass('on');
         } 
     });
-
-    $('.willbes-Campus-List .sliderSwipe div a').click(function() {
-        $('.willbes-Campus-List .sliderSwipe div a').removeClass('on');
+    $('.willbes-Campus-List .list a').click(function() {
+        $('.willbes-Campus-List .list a').removeClass('on');
         if ($(this).hasClass('on')) {
             $(this).removeClass('on');
         } else {

@@ -309,30 +309,6 @@ button {
     z-index: 1;
 }
 
-/* slider : swipe 버튼(공통 GNB) => swSlider */
-.swSlider .Grid div {
-    width: auto !important;
-    height: 30px;
-    white-space: nowrap;
-    box-sizing: border-box;
-    line-height: 30px;
-    text-align: center;
-}
-.swSlider .Grid div a {
-    padding: 8px 20px;
-}
-.swSlider .Grid div a.on {
-    color: #1a8ccc;
-}
-.swSlider .Grid div .row-line {
-    background: #b5b5b5;
-    width: 1px;
-    height: 8px;
-}
-.swSlider.control-none .bx-controls {
-    display: none;
-}
-
 /* Main : MainBnrSlider */
 .MainBnrSlider .bx-wrapper .bx-prev {
     background: url("../../../img/willbes/m/main/btn_prev_blue.png") no-repeat 0 0;
@@ -369,24 +345,12 @@ button {
     border-bottom: 1px solid #e4e4e4;
 }
 
-/* Main : willbes-Campus-List */
-.willbes-Campus-List {
-    background: #eaeaea;
-    height: 50px;
-    margin: 10px -20px 30px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-}
-.willbes-Campus-List .bx-wrapper {
+
+/* slider : swipe 버튼(공통 GNB) => swSlider */
+.swSlider .bx-wrapper {
     background: none;
 }
-.willbes-Campus-List .bx-wrapper .bx-viewport {
-    width: 80% !important;
-    height: 50px !important;
-    margin: 0 10%;
-    z-index: 2;
-}
-.willbes-Campus-List .bx-wrapper .bx-controls-direction {
+.swSlider .bx-wrapper .bx-controls-direction {
     position: absolute;
     top: 50%;
     left: 0;
@@ -395,12 +359,52 @@ button {
     height: 15px;
     margin-top: -7px;
 }
-.willbes-Campus-List .bx-wrapper .bx-controls-direction a {
+.swSlider .bx-wrapper .bx-controls-direction a {
     width: 9px;
     height: 15px;
     left: auto;
     right: auto;
     z-index: 1;
+}
+.swSlider.control-none .bx-controls {
+    display: none;
+}
+
+/* Main : willbes-Campus */
+.willbes-Campus .list {
+    width: auto !important;
+    height: 30px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    line-height: 30px;
+    text-align: center;
+}
+.willbes-Campus .list a {
+    padding: 8px 20px;
+    line-height: 30px;
+}
+.willbes-Campus .list a.on {
+    color: #1a8ccc;
+}
+.willbes-Campus .list .row-line {
+    background: #b5b5b5;
+    width: 1px;
+    height: 8px;
+}
+
+/* Main : willbes-Campus-List */
+.willbes-Campus-List {
+    background: #eaeaea;
+    height: 50px;
+    margin: 10px -20px 30px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.willbes-Campus-List .bx-wrapper .bx-viewport {
+    width: 80% !important;
+    height: 50px !important;
+    margin: 0 10%;
+    z-index: 2;
 }
 .willbes-Campus-List .bx-wrapper .bx-prev {
     background: url("../../../img/willbes/m/main/btn_prev_gray.png") no-repeat 0 0;
@@ -410,9 +414,20 @@ button {
     background: url("../../../img/willbes/m/main/btn_next_gray.png") no-repeat 0 0;
     right: 20px !important;
 }
-.willbes-Campus-List.swSlider .Grid div {
+.willbes-Campus-List .list {
+    width: auto !important;
     height: 50px;
+    white-space: nowrap;
+    box-sizing: border-box;
     line-height: 50px;
+    text-align: center;
+}
+.willbes-Campus-List .list a {
+    line-height: 48px;
+    padding: 17px 20px;
+}
+.willbes-Campus-List .list a.on {
+    color: #1a8ccc;
 }
 
 /* Tabs : lineTab 공통 */

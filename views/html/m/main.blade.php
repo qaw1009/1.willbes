@@ -29,35 +29,33 @@
     <div class="line">-</div>
 
     <div class="lineTabs lecProfTabs c_both">
-
         <div class="MainCampusTabs">
             <div class="willbes-Txt-Tit NG">· 전국캠퍼스</div>
             <div class="willbes-Campus swSlider control-none mt10">
-                <div class="sliderSwipe Grid">
-                    <div class="nav_top"><a class="on" href="#none">노량진</a><span class="row-line">|</span></div>
-                    <div><a href="#none">신림</a><span class="row-line">|</span></div>
-                    <div><a href="#none">인천</a><span class="row-line">|</span></div>
-                    <div><a href="#none">대구</a><span class="row-line">|</span></div>
-                    <div><a href="#none">부산</a><span class="row-line">|</span></div>
-                    <div><a href="#none">광주</a><span class="row-line">|</span></div>
-                    <div><a href="#none">제주</a><span class="row-line">|</span></div>
-                    <div><a href="#none">전북</a><span class="row-line">|</span></div>
-                    <div><a href="#none">전남</a><span class="row-line">|</span></div>
-                    <div><a href="#none">강원</a><span class="row-line">|</span></div>
+                <div class="sliderSwipe swWrap">
+                    <div class="list"><a class="on" href="#none">노량진</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">신림</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">인천</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">대구</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">부산</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">광주</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">제주</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">전북</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">전남</a><span class="row-line">|</span></div>
+                    <div class="list"><a href="#none">강원</a><span class="row-line">|</span></div>
                 </div>
             </div>
             <div class="willbes-Campus-List swSlider">
-                <div class="sliderSwipe Grid">
-                    <div class="nav_top"><a href="#none">국어</a></div>
-                    <div><a href="#none">공무원영어</a></div>
-                    <div><a href="#none">공무원국어</a></div>
-                    <div><a href="#none">영어</a></div>
-                    <div><a href="#none">공무원수학</a></div>
-                    <div><a href="#none">공무원한국사</a></div>
+                <div class="sliderSwipe swGrid">
+                    <div class="list"><a class="on" href="#none">국어</a></div>
+                    <div class="list"><a href="#none">공무원영어</a></div>
+                    <div class="list"><a href="#none">공무원국어</a></div>
+                    <div class="list"><a href="#none">영어</a></div>
+                    <div class="list"><a href="#none">공무원수학</a></div>
+                    <div class="list"><a href="#none">공무원한국사</a></div>
                 </div>
             </div>
         </div>
-
         <ul class="tabWrap lineWrap lecProfWrap two">
             <li><a href="#lecprof1" class="on"><img src="{{ img_url('m/main/icon_new.png') }}">신규강좌</a></li>
             <li><a href="#lecprof2"><img src="{{ img_url('m/main/icon_best.png') }}">추천강좌</a></li>

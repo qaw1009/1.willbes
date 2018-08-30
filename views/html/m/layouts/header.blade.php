@@ -10,7 +10,12 @@
 
     <!-- CSS -->
     <!-- Slider jQuery -->
-    <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+    <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.css">
+    <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
+    <script src="/public/vendor/jquery/swiper/swiper.js"></script>
+    <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
+    <script src="/public/vendor/jquery/swiper/swiper.esm.js"></script>
+    <script src="/public/vendor/jquery/swiper/swiper.esm.bundle.js"></script>
     <!-- bootstrap-datepicker -->
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
@@ -87,6 +92,76 @@
                     $lec_info_table.hide().css('visibility','hidden');
                     $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
                 }
+            });
+        });
+
+        // Swiper Script
+        $(function() {
+            var swiper = new Swiper('.swiper-container-page', {
+                spaceBetween: 0,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                loopFillGroupWithBlank: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+            var swiper = new Swiper('.swiper-container-arrow', {
+                spaceBetween: 0,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                loopFillGroupWithBlank: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+            var swiper = new Swiper('.swiper-container-campus', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+            var swiper = new Swiper('.swiper-container-campus-list', {
+                slidesPerView: 4,
+                spaceBetween: 0,
+                loop: true,
+                loopFillGroupWithBlank: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
+
+        // Slider Swipe Script
+        $(function() {
+            $('.swiper-container-campus .swiper-slide a').click(function() {
+                $('.swiper-container-campus .swiper-slide a').removeClass('on');
+                if ($(this).hasClass('on')) {
+                    $(this).removeClass('on');
+                } else {
+                    $(this).addClass('on');
+                } 
+            });
+            $('.swiper-container-campus-list .swiper-slide a').click(function() {
+                $('.swiper-container-campus-list .swiper-slide a').removeClass('on');
+                if ($(this).hasClass('on')) {
+                    $(this).removeClass('on');
+                } else {
+                    $(this).addClass('on');
+                } 
             });
         });
 

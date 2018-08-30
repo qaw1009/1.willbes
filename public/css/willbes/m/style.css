@@ -249,75 +249,117 @@ button {
 
 /* MainSlider */
 
-/* Slider RESET */
-.bx-wrapper {
-    box-shadow: none;
-    border: none;
-    margin: 0;
-    padding: 0;
+/* Slider BASIC */
+.swiper-container {
+    width: 100%;
+    height: 100%;
 }
-.bx-wrapper .bx-viewport {
-    height: auto !important;
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }
-.bx-wrapper .bx-viewport img {
+.swiper-slide img {
     width: 100%;
 }
-.bx-wrapper .bx-viewport a {
-    display: block;
-    width: 100%;
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color:#000;
+    opacity: 1;
+    background: rgba(0,0,0,0.2);
 }
-.bx-wrapper .bx-controls-direction a {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
+.swiper-pagination-bullet-active {
+    color:#fff;
+    background: #007aff;
 }
 
-/* slider : 페이징 버튼(공통 GNB) => bSlider */
-.bSlider .bx-wrapper .bx-pager {
+/* Main : MainSlider */
+.MainSlider,
+.MainSlider .swiper-wrapper,
+.MainSlider .swiper-slide {
+    height: auto;
+}
+.MainSlider > .swiper-pagination-bullets, 
+.MainSlider .swiper-pagination-custom, 
+.MainSlider .swiper-pagination-fraction {
     float: right;
     width: auto;
     height: 12px;
-    top: 20px;
-    right: 30px;
+    top: 15px;
+    right: 10px;
     text-align: right;
     padding: 0;
 }
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+.MainSlider .swiper-pagination-bullet {
     background: #fff;
     width: 12px;
     height: 12px;
+    line-height: 12px;
     border-radius: 12px;
     margin: 0 2px;
     border: 1px solid #ccc;
+    text-align: center;
+    font-size: 12px;
+    color:#000;
+    opacity: 1;
 }
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #1a8ccc;
-}
-
-/* slider : 좌우 버튼(공통 GNB) => cSlider */
-.cSlider .bx-wrapper .bx-controls-direction a {
-    position: absolute;
-    top: 50%;
-    margin-top: -7px;
-    width: 9px;
-    height: 15px;
-    left: auto;
-    right: auto;
-    z-index: 1;
+.MainSlider .swiper-pagination-bullet-active {
+    color:#fff;
+    background: #007aff;
 }
 
 /* Main : MainBnrSlider */
-.MainBnrSlider .bx-wrapper .bx-prev {
-    background: url("../../../img/willbes/m/main/btn_prev_blue.png") no-repeat 0 0;
-    left: 20px !important;
+.MainBnrSlider,
+.MainBnrSlider .swiper-wrapper,
+.MainBnrSlider .swiper-slide {
+    height: auto;
 }
-.MainBnrSlider .bx-wrapper .bx-next {
-    background: url("../../../img/willbes/m/main/btn_next_blue.png") no-repeat 0 0;
-    right: 20px !important;
+.MainBnrSlider .swiper-pagination-bullet-active {
+    color:#fff;
+    background: #007aff;
+}
+.MainBnrSlider .swiper-button-next,
+.MainBnrSlider .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: 49px;
+    height: 45px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    left: auto;
+    right: auto;
+}
+.MainBnrSlider .swiper-button-next,
+.MainBnrSlider .swiper-container-rtl .swiper-button-prev {
+    background: url("../../../img/willbes/m/main/btn_next_blue.png") no-repeat center center;
+    right: 0;
+}
+.MainBnrSlider .swiper-button-prev,
+.MainBnrSlider .swiper-container-rtl .swiper-button-next {
+    background: url("../../../img/willbes/m/main/btn_prev_blue.png") no-repeat center center;
+    left: 0;
+}
+.MainBnrSlider .swiper-button-next.swiper-button-disabled, 
+.MainBnrSlider .swiper-button-prev.swiper-button-disabled {
+    pointer-events: auto;
 }
 
 /* MainFixBnr */
@@ -341,38 +383,29 @@ button {
     text-indent: -9999px;
 }
 
+
+
 /* Main : MainCampusTabs */
 .MainCampusTabs .willbes-Txt-Tit {
     border-bottom: 1px solid #e4e4e4;
+    margin: 20px 20px 0;
 }
 
-
-/* slider : swipe 버튼(공통 GNB) => swSlider */
-.swSlider .bx-wrapper {
-    background: none;
+/* Main : MainCampusSlider */
+.MainCampusSlider,
+.MainCampusSlider .swiper-wrapper,
+.MainCampusSlider .swiper-slide {
+    height: auto;
 }
-.swSlider .bx-wrapper .bx-viewport {
-    z-index: 10;
+.MainCampusSlider {
+    width: auto;
+    margin: 0 20px;
+    overflow: hidden;
 }
-.swSlider .bx-wrapper .bx-controls-direction a {
-    position: absolute;
-    top: 50%;
-    margin-top: -7px;
-    width: 9px;
-    height: 15px;
-    left: auto;
-    right: auto;
-    z-index: 1;
-}
-.swSlider.control-none .bx-controls {
-    display: none;
-}
-
-/* Main : willbes-Campus */
-.willbes-Campus .swWrap {
+.MainCampusSlider .swiper-wrapper {
     height: 50px;
 }
-.willbes-Campus .list {
+.MainCampusSlider .swiper-slide {
     width: auto !important;
     height: 50px;
     white-space: nowrap;
@@ -380,60 +413,86 @@ button {
     line-height: 50px;
     text-align: center;
 }
-.willbes-Campus .list a {
+.MainCampusSlider .swiper-slide a {
     float: left;
     display: block;
     padding: 0 20px;
     line-height: 50px;
+    font-size: 12px;
 }
-.willbes-Campus .list a.on {
+.MainCampusSlider .swiper-slide a.on {
     color: #1a8ccc;
 }
-.willbes-Campus .list .row-line {
+.MainCampusSlider .swiper-slide .row-line {
     background: #b5b5b5;
     width: 1px;
     height: 8px;
     margin: 21px 0;
 }
 
+
+/* Main : MainCampusListSlider */
+.MainCampusListSlider,
+.MainCampusListSlider .swiper-wrapper,
+.MainCampusListSlider .swiper-slide {
+    height: auto;
+}
+.MainCampusListSlider .swiper-button-next,
+.MainCampusListSlider .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: 49px;
+    height: 45px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    left: auto;
+    right: auto;
+}
+.MainCampusListSlider .swiper-button-next,
+.MainCampusListSlider .swiper-container-rtl .swiper-button-prev {
+    background: url("../../../img/willbes/m/main/btn_next_gray.png") no-repeat center center;
+    right: 0;
+}
+.MainCampusListSlider .swiper-button-prev,
+.MainCampusListSlider .swiper-container-rtl .swiper-button-next {
+    background: url("../../../img/willbes/m/main/btn_prev_gray.png") no-repeat center center;
+    left: 0;
+}
+.MainCampusListSlider .swiper-button-next.swiper-button-disabled, 
+.MainCampusListSlider .swiper-button-prev.swiper-button-disabled {
+    pointer-events: auto;
+}
+
+
 /* Main : willbes-Campus-List */
-.willbes-Campus-List {
+.MainCampusListSlider {
     background: #eaeaea;
     height: 50px;
-    margin: 0 -20px 30px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
 }
-.willbes-Campus-List .bx-wrapper .bx-viewport {
-    width: 80% !important;
-    height: 50px !important;
-    margin: 0 10%;
+.campuslistWrap {
+    width: auto;
+    margin: 0 50px;
 }
-.willbes-Campus-List .bx-wrapper .bx-prev {
-    background: url("../../../img/willbes/m/main/btn_prev_gray.png") no-repeat 0 0;
-    left: 20px !important;
-}
-.willbes-Campus-List .bx-wrapper .bx-next {
-    background: url("../../../img/willbes/m/main/btn_next_gray.png") no-repeat 0 0;
-    right: 20px !important;
-}
-.willbes-Campus-List .swGrid {
-    height: 48px;
-}
-.willbes-Campus-List .list {
+.MainCampusListSlider .swiper-slide {
+    background: none;
     width: auto !important;
-    height: 50px;
+    height: 48px;
     white-space: nowrap;
     box-sizing: border-box;
     line-height: 50px;
     text-align: center;
 }
-.willbes-Campus-List .list a {
+.MainCampusListSlider .swiper-slide a {
     display: inline-block;
     padding: 0 20px;
     line-height: 48px;
+    font-size: 12px;
 }
-.willbes-Campus-List .list a.on {
+.MainCampusListSlider .swiper-slide a.on {
     color: #1a8ccc;
 }
 
@@ -556,6 +615,13 @@ button {
 }
 
 /* Main : Tabs : lecProfBox */
+.tabSection {
+    float: left;
+    padding: 20px;
+}
+.lecProfTabs {
+    padding: 0;
+}
 .lecProfBox ul {
     float: left;
     width: 100%;

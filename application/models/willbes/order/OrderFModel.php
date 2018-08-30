@@ -51,7 +51,7 @@ class OrderFModel extends BaseOrderFModel
         $total_coupon_disc_price = 0;
         $total_save_point = 0;
         $is_delivery_info = false;
-        $is_on_package = false;
+        $is_package = false;
         $arr_is_freebies_trans = [];
         $use_point = get_var($use_point, 0);
 
@@ -70,9 +70,10 @@ class OrderFModel extends BaseOrderFModel
                 $row['CartProdTypeName'] = $this->_cart_prod_type_name[$row['CartProdType']];
                 $row['CartProdTypeNum'] = $this->_cart_prod_type_idx[$row['CartProdType']];
 
-                // 강좌시작일 설정
+                // 강좌시작일 설정 (온라인강좌 + 강좌시작일 설정 가능일 경우)
                 $row['DefaultStudyStartDate'] = $row['DefaultStudyEndDate'] = $row['IsStudyStartDate'] = '';
-                if ($row['IsLecStart'] == 'Y') {
+
+                if ($row['CartType'] == 'on_lecture' && $row['IsLecStart'] == 'Y') {
                     if (empty($row['StudyStartDate']) === false && date('Y-m-d') < $row['StudyStartDate']) {
                         // 개강일이 오늘 날짜보다 이후 인 경우 (개강하지 않은 상품)
                         $row['DefaultStudyStartDate'] = $row['StudyStartDate'];
@@ -91,15 +92,15 @@ class OrderFModel extends BaseOrderFModel
                 $total_coupon_disc_price += $row['CouponDiscPrice'];
             }
 
-            // 적립 포인트
-            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y') {
+            // 적립 포인트 (학원강좌일 경우 포인트 적립 불가)
+            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y' || $row['CartType'] == 'off_lecture') {
                 $row['RealSavePoint'] = 0;
             } else {
                 $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? $row['RealPayPrice'] * ($row['PointSavePrice'] / 100) : $row['PointSavePrice'];
             }
 
             // 강좌상품일 경우 사은품/무료교재 배송료 부과여부
-            if ($row['CartProdType'] == 'on_lecture') {
+            if ($row['CartType'] != 'book') {
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
             }
 
@@ -109,8 +110,8 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 패키지상품 포함 여부
-            if ($is_on_package === false && $row['CartProdType'] === 'on_package') {
-                $is_on_package = true;
+            if ($is_package === false && ends_with($row['CartProdType'], '_package') === true) {
+                $is_package = true;
             }
 
             // 전체상품 주문금액, 결제금액
@@ -121,9 +122,9 @@ class OrderFModel extends BaseOrderFModel
             $results['list'][] = $row;
         }
 
-        // 사용포인트 체크
+        // 사용포인트 체크 (학원강좌일 경우 포인트 사용 불가)
         if ($make_type == 'pay' && $use_point > 0) {
-            $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_prod_pay_price, $is_on_package);
+            $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_prod_pay_price, $is_package);
             if ($check_use_point !== true) {
                 return $check_use_point;
             }
@@ -132,10 +133,10 @@ class OrderFModel extends BaseOrderFModel
         }
         
         // 배송료 계산
-        if ($cart_type == 'on_lecture') {
-            $results['delivery_price'] = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
-        } else {
+        if ($cart_type == 'book') {
             $results['delivery_price'] = $this->getBookDeliveryPrice($total_order_price);
+        } else {
+            $results['delivery_price'] = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
         }
 
         $results['total_prod_cnt'] = count($results['list']);   // 전체상품 갯수
@@ -143,7 +144,7 @@ class OrderFModel extends BaseOrderFModel
         $results['total_pay_price'] = $total_prod_pay_price + $results['delivery_price'] - $use_point;    // 전체상품 결제금액 + 배송료 - 사용포인트
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
-        $results['is_on_package'] = $is_on_package;   // 패키지상품 포함 여부
+        $results['is_package'] = $is_package;   // 패키지상품 포함 여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($results['total_prod_cnt'] > 1 ? ' 외 ' . ($results['total_prod_cnt'] - 1) . '건' : '');   // 대표 주문상품명
 
         return $results;
@@ -189,18 +190,16 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 사용포인트 체크
-     * @param string $point_type [포인트 구분, 강좌 : on_lecture, 교재 : book]
+     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
      * @param int $use_point [사용 포인트]
      * @param int $total_prod_pay_price [전체상품 결제금액, 배송료 제외]
-     * @param bool $is_on_package [패키지상품 포함 여부]
+     * @param bool $is_package [패키지상품 포함 여부]
      * @return bool|string
      */
-    public function checkUsePoint($point_type, $use_point = 0, $total_prod_pay_price = 0, $is_on_package = false)
+    public function checkUsePoint($cart_type, $use_point = 0, $total_prod_pay_price = 0, $is_package = false)
     {
-        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요
-        $arr_has_point = ['on_lecture' => 3000, 'book' => 3000];
-
-        $has_point = element($point_type, $arr_has_point, 0); // 보유포인트
+        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
+        $has_point = 3000;
         $use_min_point = config_item('use_min_point');  // 최소 사용 포인트
         $use_point_unit = config_item('use_point_unit');    // 포인트 사용 단위
         $use_max_point_rate = config_item('use_max_point_rate');    // 결제금액 대비 포인트 사용 가능 최대 비율
@@ -210,11 +209,15 @@ class OrderFModel extends BaseOrderFModel
             return true;
         }
 
+        if ($cart_type == 'off_lecture') {
+            return '학원강좌 상품은 포인트 사용이 불가능합니다.';
+        }
+
         if ($has_point < $use_point) {
             return '보유 포인트가 부족합니다.';
         }
 
-        if ($is_on_package === true) {
+        if ($is_package === true) {
             return '패키지 상품은 포인트 사용이 불가능합니다.';
         }
 

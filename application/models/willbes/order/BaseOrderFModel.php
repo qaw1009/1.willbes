@@ -40,10 +40,13 @@ class BaseOrderFModel extends WB_Model
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
     public $_admin_package_type_ccd = ['normal' => '648001', 'choice' => '648002'];
 
-    // 판매가능 공통코드 (판매가능, 판매중)
+    // 학원상품 수강신청 구분 공통코드 (방문, 온라인, 방문+온라인)
+    public $_off_study_apply_ccd = ['visit' => '654001', 'online' => '654002', 'visit_online' => '654003'];
+
+    // 판매가능 공통코드 (판매가능, 판매중 (WBS))
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
-    // 수강생 교재 공통코드
+    // 교재제공구분 > 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
 
     // 상품타입과 쿠폰적용구분 공통코드 맵핑 (온라인강좌, 학원강좌, 교재, 사은품, 배송료)

@@ -66,7 +66,9 @@
                                                 @if($row['CartProdType'] != 'book')
                                                     <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
                                                     <span class="w-data">
-                                                    [강좌시작일 설정]
+                                                    @if($results['cart_type'] == 'on_lecture')
+                                                        {{-- 온라인강좌일 경우만 강좌시작일 설정 --}}
+                                                        [강좌시작일 설정]
                                                         {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능, 개강일 전이라면 개강일부터 30일 이내 설정 가능 --}}
                                                         {{-- 디폴트 설정 => 시작일자 : 결제일 + 8일, 종료일자 : 시작일자 + 수강기간 --}}
                                                         @if($row['IsLecStart'] == 'Y')
@@ -76,6 +78,7 @@
                                                         @else
                                                             <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
                                                         @endif
+                                                    @endif
                                                 </span>
                                                 @endif
                                                 @if($row['IsCoupon'] == 'Y')
@@ -166,7 +169,7 @@
                             <dl class="pointBox">
                                 <dt class="p-tit"><span class="tx-blue">{{ $results['cart_type_name'] }}</span> 포인트 사용</dt>
                                 <dt>
-                                    <span class="u-point tx-pink">{{ number_format($results['point'][$results['cart_type']]) }}P 보유</span>
+                                    <span class="u-point tx-pink">{{ number_format($results['point']) }}P 보유</span>
                                     <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
                                     <input type="text" name="use_point" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="0" value="" placeholder="0" maxlength="10"> P 차감
                                 </dt>
@@ -314,7 +317,10 @@
                                         <dt>
                                             <span class="t-price tx-light-blue NGEB"><span class="total-pay-price">{{ number_format($results['total_pay_price']) }}</span>원</span>
                                             <span id="pay_method_name"></span>
-                                            <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
+                                            @if($results['cart_type'] != 'off_lecture')
+                                                {{-- 학원강좌일 경우 포인트 적립 불가 --}}
+                                                <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
+                                            @endif
                                         </dt>
                                         <dt>
                                             <div class="caution-txt">회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 {{ number_format(config_app('DeliveryAddPrice')) }}원이 추가</span>로 적용 되었습니다.</div>
@@ -485,7 +491,7 @@
             // 쿠폰적용 버튼 클릭
             $regi_form.on('click', '.btn-coupon-apply', function() {
                 var $use_point = $regi_form.find('input[name="use_point"]');
-                if (parseInt($use_point.val()) > 0) {
+                if ($use_point.length > 0 && parseInt($use_point.val()) > 0) {
                     alert('이미 적용하신 포인트는 쿠폰 적용 후 재 적용해 주십시오.');
                     $use_point.val('').trigger('change');
                 }
@@ -524,7 +530,7 @@
 
             // 포인트 전액사용 버튼 클릭
             $regi_form.on('click', '#btn-all-use-point', function() {
-                var has_point = parseInt('{{ $results['point'][$results['cart_type']] }}');     // 보유 포인트
+                var has_point = parseInt('{{ $results['point'] }}');     // 보유 포인트
                 var $use_point = $regi_form.find('input[name="use_point"]');
                 $use_point.val(has_point).trigger('change').trigger('blur');
             });
@@ -544,7 +550,7 @@
                     'cart_type' : '{{ $results['cart_type'] }}',
                     'use_point' : use_point,
                     'total_prod_pay_price' : parseInt('{{ $results['total_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, '')),
-                    'is_on_package' : '{{ $results['is_on_package'] === true ? 'Y' : 'N' }}'
+                    'is_package' : '{{ $results['is_package'] === true ? 'Y' : 'N' }}'
                 };
                 sendAjax(url, data, function (ret) {
                     if (ret.ret_cd) {

@@ -195,14 +195,14 @@
                                 </td>
                                 <td class="w-schedule">
                                     <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> ({{ $row['FixNumber'] }}회차)<br/>
-                                    {{ $row['WeekArrayName'] }} 14:00 ~ 18:00
+                                    {{ $row['WeekArrayName'] }}
                                 </td>
                                 <td class="w-notice p_re">
                                     <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
                                     @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                         <div class="priceWrap chk buybtn p_re">
                                             <span class="price tx-blue">
-                                                <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                                <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
                                                 {{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                             <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
                                         </div>
@@ -296,8 +296,8 @@
             showBuyLayer('off', $(this), 'buy_layer');
         });
 
-        // 바로결제 버튼 클릭
-        $('button[name="btn_direct_pay"]').on('click', function() {
+        // 방문접수, 바로결제 버튼 클릭
+        $('button[name="btn_visit_pay"], button[name="btn_direct_pay"]').on('click', function() {
             var $is_direct_pay = $(this).data('direct-pay');
             var $is_redirect = $(this).data('is-redirect');
 

@@ -25,6 +25,13 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
         }
     }
 
+    if ($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') === 0) {
+        // 학원강좌일 경우 방문접수와 바로결제 동시 진행 불가
+        if (checkOffLecture($regi_form, $is_direct_pay) === false) {
+            return;
+        }
+    }
+
     // set hidden value
     if ($regi_form.find('input[name="cart_type"]').val().length < 1) {
         $regi_form.find('input[name="cart_type"]').val(getCartType($regi_form));
@@ -42,6 +49,38 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
 }
 
 /**
+ * 바로결제 버튼 클릭시 체크사항 확인
+ * @param $regi_form
+ * @returns {boolean}
+ */
+function checkDirectPay($regi_form) {
+    if ($regi_form.find('.chk_products:checked').length > 0 && $regi_form.find('.chk_books:checked').length > 0) {
+        alert('바로결제 시 강좌와 교재는 동시 결제가 불가능합니다.');
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * 학원강좌일 경우 방문 접수, 온라인 접수 전용상품 관련 확인
+ * @param $regi_form
+ * @param $is_direct_pay
+ * @returns {boolean}
+ */
+function checkOffLecture($regi_form, $is_direct_pay) {
+    if ($is_direct_pay === 'Y' && $regi_form.find('.chk_products[data-study-apply-ccd="654001"]:checked').length > 0) {
+        alert('방문 접수 전용상품은 바로 결제 하실 수 없습니다.1');
+        return false;
+    } else if ($is_direct_pay === 'N' && $regi_form.find('.chk_products[data-study-apply-ccd="654002"]:checked').length > 0) {
+        alert('온라인 접수 전용상품은 방문 접수 하실 수 없습니다.1');
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * 장바구니 타입 리턴
  * @param $regi_form
  * @returns {string}
@@ -51,11 +90,19 @@ function getCartType($regi_form) {
     
     if ($regi_form.find('.chk_products:checked').length < 1 && $regi_form.find('.chk_books:checked').length > 0) {
         cart_type = 'book';
-    } else if($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') !== -1) {
+    } else if($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') === 0) {
         cart_type = 'off_lecture';
     }
     
     return cart_type;
+}
+
+/**
+ * 장바구니 페이지 이동
+ * @param $tab_id
+ */
+function goCartPage($tab_id) {
+    location.href = frontUrl('/cart/index?tab=' + $tab_id);
 }
 
 /**
@@ -190,27 +237,6 @@ function checkStudentBook($regi_form, $chk_obj) {
     }
 
     return is_check;
-}
-
-/**
- * 바로결제 버튼 클릭시 체크사항 확인
- * @param $regi_form
- * @returns {boolean}
- */
-function checkDirectPay($regi_form) {
-    if ($regi_form.find('.chk_products:checked').length > 0 && $regi_form.find('.chk_books:checked').length > 0) {
-        alert('바로결제 시 강좌와 교재는 동시 결제가 불가능합니다.');
-        return false;
-    }
-    return true;
-}
-
-/**
- * 장바구니 페이지 이동
-  * @param $tab_id
- */
-function goCartPage($tab_id) {
-    location.href = frontUrl('/cart/index?tab=' + $tab_id);
 }
 
 /**

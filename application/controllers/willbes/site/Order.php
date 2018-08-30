@@ -47,8 +47,8 @@ class Order extends \app\controllers\FrontController
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
-        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요
-        $results['point'] = ['on_lecture' => 3000, 'book' => 3000];
+        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
+        $results['point'] = 3000;
 
         // 지역번호, 휴대폰번호 공통코드 조회
         $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
@@ -74,7 +74,7 @@ class Order extends \app\controllers\FrontController
             ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
             ['field' => 'use_point', 'label' => '사용포인트', 'rules' => 'trim|required|integer'],
             ['field' => 'total_prod_pay_price', 'label' => '전체상품결제금액', 'rules' => 'trim|required|integer'],
-            ['field' => 'is_on_package', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_package', 'label' => '패키지상품여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -85,7 +85,7 @@ class Order extends \app\controllers\FrontController
         $check_use_point = $this->orderFModel->checkUsePoint(
             element('cart_type', $arr_input), element('use_point', $arr_input, 0),
             element('total_prod_pay_price', $arr_input, 0),
-            element('is_on_package', $arr_input, 'N') == 'Y' ? true : false
+            element('is_package', $arr_input, 'N') == 'Y' ? true : false
         );
 
         return $this->json_result(true, '', [], ['is_check' => $check_use_point]);

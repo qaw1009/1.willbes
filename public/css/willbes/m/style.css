@@ -292,16 +292,10 @@ button {
 }
 
 /* slider : 좌우 버튼(공통 GNB) => cSlider */
-.cSlider .bx-wrapper .bx-controls-direction {
+.cSlider .bx-wrapper .bx-controls-direction a {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 15px;
     margin-top: -7px;
-}
-.cSlider .bx-wrapper .bx-controls-direction a {
     width: 9px;
     height: 15px;
     left: auto;
@@ -353,16 +347,10 @@ button {
 .swSlider .bx-wrapper .bx-viewport {
     z-index: 10;
 }
-.swSlider .bx-wrapper .bx-controls-direction {
+.swSlider .bx-wrapper .bx-controls-direction a {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 15px;
     margin-top: -7px;
-}
-.swSlider .bx-wrapper .bx-controls-direction a {
     width: 9px;
     height: 15px;
     left: auto;

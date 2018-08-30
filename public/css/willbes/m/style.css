@@ -380,7 +380,8 @@ button {
     text-align: center;
 }
 .willbes-Campus .list a {
-    padding: 8px 20px;
+    display: inline-block;
+    padding: 0 20px;
     line-height: 30px;
 }
 .willbes-Campus .list a.on {
@@ -423,8 +424,9 @@ button {
     text-align: center;
 }
 .willbes-Campus-List .list a {
+    display: inline-block;
+    padding: 0 20px;
     line-height: 48px;
-    padding: 17px 20px;
 }
 .willbes-Campus-List .list a.on {
     color: #1a8ccc;

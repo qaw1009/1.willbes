@@ -326,6 +326,12 @@ class BoardModel extends WB_Model
                 if ($is_category !== true) {
                     throw new \Exception($is_category);
                 }
+            } else {
+                // 카테고리삭제
+                $up_cate_data['BoardIdx'] = $board_idx;
+                if ($this->_updateBoardCategory($up_cate_data) === false) {
+                    throw new \Exception('게시판 등록(카테고리)에 실패했습니다.');
+                }
             }
 
             // 파일 수정

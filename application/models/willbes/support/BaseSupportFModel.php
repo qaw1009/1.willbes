@@ -5,6 +5,7 @@ class BaseSupportFModel extends WB_Model
 {
     protected $_table = [
         'board' => 'vw_board as b'
+        ,'twoway_board' => 'vw_board_twoway as b'
         ,'board_qna' => 'vw_board_qna'
         ,'lms_board' => 'lms_board'
         ,'lms_board_log' => 'lms_board_read_log'

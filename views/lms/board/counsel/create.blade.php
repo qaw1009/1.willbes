@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">운영사이트<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item ml-12-dot">

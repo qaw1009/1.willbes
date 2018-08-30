@@ -47,4 +47,23 @@ class SupportBoardFModel extends BaseSupportFModel
         return element('0', $result, []);
     }
 
+
+    /***** 쌍방향 Method ****/
+    /**
+     * 게시판 글 목록 추출
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function listBoardTwoWay($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        $column = ($is_count === true) ? $is_count :  $column;
+        $result = $this->_conn->getListResult($this->_table['twoway_board'], $column, $arr_condition, $limit, $offset, $order_by);
+        //echo $this->_conn->last_query();
+        return $result;
+    }
 }

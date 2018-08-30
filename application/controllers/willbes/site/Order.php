@@ -41,14 +41,12 @@ class Order extends \app\controllers\FrontController
             show_alert($results, 'back');
         }
 
-        $results['cart_type'] = $cart_type;     // 장바구니 구분 (온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book)
-        $results['cart_type_name'] = $this->orderFModel->_cart_type_name[$cart_type];   // 장바구니 구분명 (강좌, 교재)
-
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
         // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
         $results['point'] = 3000;
+        $results['point_type_name'] = $this->orderFModel->_point_type_name[$cart_type];
 
         // 지역번호, 휴대폰번호 공통코드 조회
         $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);

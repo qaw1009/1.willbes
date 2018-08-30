@@ -33,6 +33,10 @@ class MyCoupon extends \app\controllers\FrontController
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
         }
 
+        // 상품구분명 / 상품구분명 색상 class 번호
+        $cart_data['CartProdTypeName'] = $this->cartFModel->_cart_prod_type_name[$cart_data['CartProdType']];
+        $cart_data['CartProdTypeNum'] = $this->cartFModel->_cart_prod_type_idx[$cart_data['CartProdType']];
+
         // 쿠폰조회 전달 기본 파라미터
         $arr_param = ['SiteCode' => $cart_data['SiteCode'], 'CateCode' => $cart_data['CateCode']];
 
@@ -55,8 +59,6 @@ class MyCoupon extends \app\controllers\FrontController
 
         $this->load->view('site/order/my_coupon_list', [
             'ele_id' => $this->_req('ele_id'),
-            'arr_cart_prod_type_name' => $this->cartFModel->_cart_prod_type_name,
-            'arr_cart_prod_type_idx' => $this->cartFModel->_cart_prod_type_idx,
             'arr_coupon_detail_idx' => $arr_coupon_detail_idx,
             'cart_data' => $cart_data,
             'results' => $results

@@ -5,8 +5,8 @@
     <div class="Layer-Tit NG bg-blue">쿠폰적용</div>
     <div class="Layer-Cont">
         <div class="tit NG">
-            <span class="pBox p{{ element($cart_data['CartProdType'], $arr_cart_prod_type_idx) }}">
-                {{ element($cart_data['CartProdType'], $arr_cart_prod_type_name) }}
+            <span class="pBox p{{ $cart_data['CartProdTypeNum'] }}">
+                {{ $cart_data['CartProdTypeName'] }}
             </span>
             {{ $cart_data['ProdName'] }}
         </div>

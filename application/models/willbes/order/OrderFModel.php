@@ -146,6 +146,7 @@ class OrderFModel extends BaseOrderFModel
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($results['total_prod_cnt'] > 1 ? ' 외 ' . ($results['total_prod_cnt'] - 1) . '건' : '');   // 대표 주문상품명
+        $results['cart_type'] = $cart_type;
 
         return $results;
     }

@@ -167,7 +167,7 @@
                         {{-- 학원강좌일 경우 포인트 사용 불가 --}}
                         <div class="cart-PointBox NG">
                             <dl class="pointBox">
-                                <dt class="p-tit"><span class="tx-blue">{{ $results['cart_type_name'] }}</span> 포인트 사용</dt>
+                                <dt class="p-tit"><span class="tx-blue">{{ $results['point_type_name'] }}</span> 포인트 사용</dt>
                                 <dt>
                                     <span class="u-point tx-pink">{{ number_format($results['point']) }}P 보유</span>
                                     <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
@@ -176,7 +176,7 @@
                             </dl>
                         </div>
                         <div class="p-info tx-gray c_both">
-                            • {{ $results['cart_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
+                            • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
                             <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 사용 가능하며,
                             주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만 사용 가능합니다.
                         </div>
@@ -429,9 +429,12 @@
                         <div class="btnAgree NG"><input type="checkbox" name="agree_always" value="Y"/><label>앞으로 결제 시 항상 동의하기</label></div>
                         <ul>
                             <li class="btnAuto180 h36">
+                            @if($results['cart_type'] != 'off_lecture')
+                                {{-- 학원강좌일 경우 장바구니가기 버튼 노출 안함 --}}
                                 <button type="button" name="btn_cart" class="mem-Btn bg-white bd-dark-blue">
                                     <span class="tx-light-blue">장바구니가기</span>
                                 </button>
+                            @endif
                             </li>
                             <li class="btnAuto180 h36">
                                 <button type="submit" name="btn_pay" class="mem-Btn bg-blue bd-dark-blue">

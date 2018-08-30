@@ -220,6 +220,7 @@
                             <td>
                                 <div class="w-tit tx-black">▷ 강좌정보</div>
                                 <div class="w-txt">
+                                    <strong>{{ $row['ProdName'] }}</strong><br/>
                                     {!! $row['Content'] !!}<br/>
                                     * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
                                 </div>

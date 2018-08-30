@@ -19,9 +19,6 @@ class BaseOrderFModel extends WB_Model
         'bms_book' => 'wbs_bms_book',
     ];
 
-    // 장바구니 구분명
-    public $_cart_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재'];
-
     // 장바구니 상품타입명
     public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재'];
 
@@ -48,6 +45,9 @@ class BaseOrderFModel extends WB_Model
 
     // 교재제공구분 > 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
+
+    // 포인트 구분명 (장바구니 구분명과 맵핑)
+    public $_point_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재'];
 
     // 상품타입과 쿠폰적용구분 공통코드 맵핑 (온라인강좌, 학원강좌, 교재, 사은품, 배송료)
     public $_coupon_apply_type_ccd = ['636001' => '645001', '636002' => '645004', '636003' => '645005', '636004' => '', 'delivery_price' => '645006'];

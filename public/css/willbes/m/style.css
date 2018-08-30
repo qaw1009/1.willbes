@@ -350,6 +350,9 @@ button {
 .swSlider .bx-wrapper {
     background: none;
 }
+.swSlider .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
 .swSlider .bx-wrapper .bx-controls-direction {
     position: absolute;
     top: 50%;
@@ -405,7 +408,6 @@ button {
     width: 80% !important;
     height: 50px !important;
     margin: 0 10%;
-    z-index: 2;
 }
 .willbes-Campus-List .bx-wrapper .bx-prev {
     background: url("../../../img/willbes/m/main/btn_prev_gray.png") no-repeat 0 0;

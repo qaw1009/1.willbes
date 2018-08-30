@@ -256,7 +256,14 @@ button {
     margin: 0;
     padding: 0;
 }
+.bx-wrapper .bx-viewport {
+    height: auto !important;
+}
 .bx-wrapper .bx-viewport img {
+    width: 100%;
+}
+.bx-wrapper .bx-viewport a {
+    display: block;
     width: 100%;
 }
 .bx-wrapper .bx-controls-direction a {
@@ -374,7 +381,8 @@ button {
     text-align: center;
 }
 .willbes-Campus .list a {
-    display: inline-block;
+    float: left;
+    display: block;
     padding: 0 20px;
     line-height: 50px;
 }
@@ -385,6 +393,7 @@ button {
     background: #b5b5b5;
     width: 1px;
     height: 8px;
+    margin: 21px 0;
 }
 
 /* Main : willbes-Campus-List */

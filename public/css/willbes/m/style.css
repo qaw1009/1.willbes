@@ -375,20 +375,20 @@ button {
 
 /* Main : willbes-Campus */
 .willbes-Campus .swWrap {
-    height: 30px;
+    height: 50px;
 }
 .willbes-Campus .list {
     width: auto !important;
-    height: 30px;
+    height: 50px;
     white-space: nowrap;
     box-sizing: border-box;
-    line-height: 30px;
+    line-height: 50px;
     text-align: center;
 }
 .willbes-Campus .list a {
     display: inline-block;
     padding: 0 20px;
-    line-height: 30px;
+    line-height: 50px;
 }
 .willbes-Campus .list a.on {
     color: #1a8ccc;
@@ -403,7 +403,7 @@ button {
 .willbes-Campus-List {
     background: #eaeaea;
     height: 50px;
-    margin: 10px -20px 30px;
+    margin: 0 -20px 30px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }

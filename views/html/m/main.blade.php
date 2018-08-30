@@ -31,7 +31,7 @@
     <div class="lineTabs lecProfTabs c_both">
         <div class="MainCampusTabs">
             <div class="willbes-Txt-Tit NG">· 전국캠퍼스</div>
-            <div class="willbes-Campus swSlider control-none pt10">
+            <div class="willbes-Campus swSlider control-none">
                 <div class="sliderSwipe swWrap">
                     <div class="list"><a class="on" href="#none">노량진</a><span class="row-line">|</span></div>
                     <div class="list"><a href="#none">신림</a><span class="row-line">|</span></div>

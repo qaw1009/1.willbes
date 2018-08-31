@@ -256,7 +256,7 @@ class SiteModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'ret_data' => ['site_code' => $site_code]];
+        return ['ret_cd' => true, 'ret_data' => $site_code];
     }
 
     /**
@@ -355,7 +355,7 @@ class SiteModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true, 'ret_data' => ['site_code' => $site_code]];
+        return ['ret_cd' => true, 'ret_data' => $site_code];
     }
 
     /**

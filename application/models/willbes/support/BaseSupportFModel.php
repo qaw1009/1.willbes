@@ -9,13 +9,48 @@ class BaseSupportFModel extends WB_Model
         ,'board_qna' => 'vw_board_qna'
         ,'lms_board' => 'lms_board'
         ,'lms_board_log' => 'lms_board_read_log'
+        ,'lms_board_r_category' => 'lms_board_r_category'
+        ,'lms_board_attach' => 'lms_board_attach'
         ,'menu' => 'lms_site_menu'
         ,'code' => 'lms_sys_code'
+        ,'site' => 'lms_site'
     ];
 
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 구분 목록 조회 (학원,온라인 사이트정보의 IsCampus 값으로 구분)
+     */
+    public function listSiteOnOffType()
+    {
+        $this->_conn->select("IF(IsCampus='Y','학원','온라인') AS SiteTypeName, IsCampus");
+        $this->_conn->from($this->_table['site']);
+        $this->_conn->group_by('IsCampus');
+        $data = $this->_conn->get()->result_array();
+        $data = array_pluck($data, 'SiteTypeName', 'IsCampus');
+        return $data;
+    }
+
+    public function getSiteOnOffType($site_code)
+    {
+        $column = 'SiteCode, IsCampus';
+
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $site_code,
+                'IsStatus' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = '
+            FROM '.$this->_table['site'].'
+        ';
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
     /**

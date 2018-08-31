@@ -168,6 +168,15 @@ function goTop() {
     document.documentElement.scrollTop = 0;
 }
 
+// 멤버십 페이지 Body Class 추가
+$('*[class*=memContainer]:visible').ready(function() {
+    if ($('#Container').hasClass('memContainer')) {
+        $('body').addClass('memBody');
+    } else {
+        $('body').removeClass('memBody');
+    }
+});
+
 $(function() {
     if (typeof ($.fn.datepicker) !== 'undefined') {
         // datepicker default setting

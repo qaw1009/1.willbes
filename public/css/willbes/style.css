@@ -7275,24 +7275,24 @@ table.acadlecInfoPackageTable tr.Top td {
 
 @media only screen and (max-width: 768px) {
 
-    body {
+    body.memBody {
         min-width: 360px;
         word-break:keep-all;
     }
 
     /* Basic Code */
-    .widthAuto,
-    .widthAuto320,
-    .widthAuto460,
-    .widthAuto550,
-    .widthAuto690,
-    .widthAuto770 {
+    body.memBody .widthAuto,
+    body.memBody .widthAuto320,
+    body.memBody .widthAuto460,
+    body.memBody .widthAuto550,
+    body.memBody .widthAuto690,
+    body.memBody .widthAuto770 {
         width: 100% !important;
         margin: 0 auto;
     }
-    #Gnb,
-    #Header,
-    #Footer {
+    body.memBody #Gnb,
+    body.memBody #Header,
+    body.memBody #Footer {
         display: none;
     }
 

@@ -191,12 +191,13 @@ class SiteModel extends WB_Model
 
             // 등록될 사이트 코드,  정렬순서 조회
             $row = $this->_conn->getFindResult($this->_table['site'], 'ifnull(max(SiteCode) + 1, 2001) as SiteCode, ifnull(max(OrderNum) + 1, 1) as OrderNum');
+            $site_code = $row['SiteCode'];
 
             // 로고, 파비콘 업로드
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/site/' . $row['SiteCode'];
+            $upload_sub_dir = SUB_DOMAIN . '/site/' . $site_code;
 
-            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $row['SiteCode'], 'favicon_' . $row['SiteCode']], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
+            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code, 'favicon_' . $site_code], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -209,7 +210,7 @@ class SiteModel extends WB_Model
 
             // 데이터 저장
             $data = [
-                'SiteCode' => $row['SiteCode'],
+                'SiteCode' => $site_code,
                 'SiteGroupCode' => $site_group_code,
                 'SiteTypeCcd' => element('site_type_ccd', $input),
                 'SiteName' => element('site_name', $input),
@@ -245,7 +246,7 @@ class SiteModel extends WB_Model
             }
 
             // 사이트별 캠퍼스 등록
-            if ($this->replaceSiteCampus(element('campus_ccd', $input), element('is_campus', $input), $row['SiteCode']) !== true) {
+            if ($this->replaceSiteCampus(element('campus_ccd', $input), element('is_campus', $input), $site_code) !== true) {
                 throw new \Exception('캠퍼스 등록에 실패했습니다.');
             }
 
@@ -255,7 +256,7 @@ class SiteModel extends WB_Model
             return error_result($e);
         }
 
-        return true;
+        return ['ret_cd' => true, 'ret_data' => ['site_code' => $site_code]];
     }
 
     /**
@@ -267,10 +268,10 @@ class SiteModel extends WB_Model
     {
         $this->_conn->trans_begin();
 
-        try {
-            // 사이트 코드
-            $site_code = element('idx', $input);
+        // 사이트 코드
+        $site_code = element('idx', $input);
 
+        try {
             // 기존 사이트 정보 조회
             $row = $this->findSiteForModify($site_code);
             if (count($row) < 1) {
@@ -346,7 +347,7 @@ class SiteModel extends WB_Model
             // 사이트별 캠퍼스 등록/삭제
             if ($this->replaceSiteCampus(element('campus_ccd', $input), element('is_campus', $input), $site_code) !== true) {
                 throw new \Exception('캠퍼스 등록에 실패했습니다.');
-            }            
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -354,7 +355,7 @@ class SiteModel extends WB_Model
             return error_result($e);
         }
 
-        return true;
+        return ['ret_cd' => true, 'ret_data' => ['site_code' => $site_code]];
     }
 
     /**

@@ -122,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MessageModel $messageModel                                         Search Message Model Class
  * @property MailModel $mailModel                                                      Search Mail Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class
- * @property ManageMemberModel $managememberModel                                           Manage Member Model Class
+ * @property ManageMemberModel $managememberModel                       Manage Member Model Class
  * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
  * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
  * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
@@ -130,22 +130,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PackageAdminModel $packageadminModel                           Lecture admin package Model Class
  * @property PackagePeriodModel $packageperiodModel                          Lecture period package Model Class
  * @property LectureFreeModel $lecturefreeModel                                 Lecture free Model Class
- * @property OffLectureModel $offlectureModel                                           Off Lecture Model Class
- * @property OffPackageAdminModel $offpackageadminModel                                    Off admin package Model Class
+ * @property OffLectureModel $offlectureModel                                     Off Lecture Model Class
+ * @property OffPackageAdminModel $offpackageadminModel                   Off admin package Model Class
  * @property BeforeLectureModel $beforelectureModel                            BeforeLecture Model Model Class
- * @property VideoManagerModel $videoManagerModel                              Live Video Manager Model Class
+ * @property VideoManagerModel $videoManagerModel                           Live Video Manager Model Class
  * @property ClassRoomModel $classRoomModel                                    ClassRoom Model Class
  * @property ConsultModel $consultModel                                            Consult Model Class
- * @property LandingPageModel $landingPageModel                                    landingPage Model Class
- * @property BannerRegistModel $bannerRegistModel                                  bannerRegist Model Class
- * @property BannerDispModel $bannerDispModel                                      bannerDisp Model Class
+ * @property LandingPageModel $landingPageModel                                landingPage Model Class
+ * @property BannerRegistModel $bannerRegistModel                              bannerRegist Model Class
+ * @property BannerDispModel $bannerDispModel                                   bannerDisp Model Class
  * @property PopupModel $popupModel                                                popup Model Class
- * @property EventLectureModel $eventLectureModel                                  EventLecture Model Class
+ * @property EventLectureModel $eventLectureModel                             EventLecture Model Class
  * @property TermsModel $termsModel                                                Terms Model Class
  * @property DDayModel $dDayModel                                                  d-day Model Class
- * @property OnAirModel $onAirModel                                                OnAir Model Class
- * @property SearchaAnalysisModel $searchaAnalysisModel                            SearchaAnalysis Model Class
- * @property BtobModel $btobModel                                  BtoB Model Class
+ * @property OnAirModel $onAirModel                                                  OnAir Model Class
+ * @property SearchaAnalysisModel $searchaAnalysisModel                     SearchaAnalysis Model Class
+ * @property BtobModel $btobModel                                                    BtoB Model Class
+ * @property DeliveryPriceModel $deliveryPriceModel                               Delivery Price Product Model Class
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

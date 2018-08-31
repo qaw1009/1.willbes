@@ -124,15 +124,28 @@ class SiteCode
         }
 
         if ($this->_CI->validate($rules) === false) {
-            return;
+            return null;
         }
 
+        // 사이트 정보 저장
         $result = $this->_CI->siteModel->{$method . 'Site'}($this->_CI->_reqP(null, false));
 
-        // 사이트 정보 캐쉬 저장
-        $this->_saveSiteCache($result);
+        if ($result['ret_cd'] === false) {
+            return $this->_CI->json_error($result['ret_msg'], $result['ret_status']);
+        }
 
-        $this->_CI->json_result($result, '저장 되었습니다.', $result);
+        // 배송료, 추가 배송료 상품 등록
+        $this->_CI->load->loadModels(['product/etc/deliveryPrice']);
+
+        $is_delivery_price = $this->_CI->deliveryPriceModel->replaceProduct($result['ret_data']['site_code'], $this->_CI->_reqP('delivery_price'), $this->_CI->_reqP('delivery_add_price'));
+        if ($is_delivery_price !== true) {
+            return $this->_CI->json_error($is_delivery_price['ret_msg'], $is_delivery_price['ret_status']);
+        }
+
+        // 사이트 정보 캐쉬 저장
+        $this->_saveSiteCache(true);
+
+        return $this->_CI->json_result(true, '저장 되었습니다.');
     }
 
     /**

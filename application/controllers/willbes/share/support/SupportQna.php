@@ -56,7 +56,7 @@ class SupportQna extends BaseSupport
         $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
         $column .= ', IF(b.RegType=1, \'\', b.RegMemName) AS RegName';
         $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
-        $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name,';
+        $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
         $total_rows = $this->supportBoardFModel->listBoardTwoWay(true, $arr_condition);

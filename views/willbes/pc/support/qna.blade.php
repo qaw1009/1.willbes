@@ -81,7 +81,7 @@
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_notice.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                        <td class="w-process"><div class="pBox p5">{{$row['SiteName']}}</div></td>
+                                        <td class="w-process"><div class="pBox p5">{{$row['SiteGroupName']}}</div></td>
                                         <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
                                         <td class="w-A">{{$row['TypeCcd_Name']}}</td>
                                         <td class="w-list tx-left pl20">

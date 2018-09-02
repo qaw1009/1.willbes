@@ -10,7 +10,7 @@
             <form id="url_form" name="url_form" method="GET">
                 @foreach($arr_input as $key => $val)
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
-            @endforeach
+                @endforeach
             <div class="willbes-CScenter c_both">
                 <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
                     · 1:1 상담
@@ -46,7 +46,7 @@
                                 <option value="강좌내용">강좌내용</option>
                                 <option value="학습상담">학습상담</option>
                             </select>
-                            <div class="subBtn NSK f_right"><a href="#none">문의하기 ></a></div>
+                            <div class="subBtn NSK f_right"><a href="{{site_url('support/qna/create?&s_keyword='.urlencode(element('s_keyword',$arr_input)))}}">문의하기 ></a></div>
                         </div>
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
@@ -81,12 +81,13 @@
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_notice.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                        <td class="w-process"><div class="pBox p5">{{$row['SiteName']}}</div></td>
+                                        <td class="w-process"><div class="pBox p5">{{$row['SiteGroupName']}}</div></td>
                                         <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
                                         <td class="w-A">{{$row['TypeCcd_Name']}}</td>
                                         <td class="w-list tx-left pl20">
                                             @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_N.gif') }}">@endif
-                                            <a href="#none">{{$row['Title']}}
+                                            <a href="{{site_url('support/qna/show?board_idx='.$row['BoardIdx'].'&page='.element('page',$paging).'&isBestcheck='.$row['IsBest'].'&s_keyword='.urlencode(element('s_keyword',$arr_input)))}}">
+                                                {{$row['Title']}}
                                                 @if($row['RegDatm'] == date('Y-m-d'))<img src="{{ img_url('prof/icon_N.gif') }}">@endif
                                                 @if(empty($row['AttachData']) === false)<img src="{{ img_url('prof/icon_file.gif') }}">@endif
                                             </a>
@@ -108,9 +109,19 @@
                             </table>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {!! $paging['pagination'] !!}
+                        </div>
+                    </div>
                 </div>
             </div>
             </form>
+            <!-- willbes-CScenter -->
+        </div>
+        <div class="Quick-Bnr ml20">
+            <img src="{{ img_url('sample/banner_180605.jpg') }}">
         </div>
     </div>
+    <!-- End Container -->
 @stop

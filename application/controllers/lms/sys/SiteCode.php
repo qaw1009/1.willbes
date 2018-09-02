@@ -137,7 +137,7 @@ class SiteCode
         // 배송료, 추가 배송료 상품 등록
         $this->_CI->load->loadModels(['product/etc/deliveryPrice']);
 
-        $is_delivery_price = $this->_CI->deliveryPriceModel->replaceProduct($result['ret_data']['site_code'], $this->_CI->_reqP('delivery_price'), $this->_CI->_reqP('delivery_add_price'));
+        $is_delivery_price = $this->_CI->deliveryPriceModel->replaceProduct($result['ret_data'], $this->_CI->_reqP('delivery_price'), $this->_CI->_reqP('delivery_add_price'));
         if ($is_delivery_price !== true) {
             return $this->_CI->json_error($is_delivery_price['ret_msg'], $is_delivery_price['ret_status']);
         }

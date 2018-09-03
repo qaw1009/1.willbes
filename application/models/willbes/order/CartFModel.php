@@ -40,15 +40,16 @@ class CartFModel extends BaseOrderFModel
                 , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
                     when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
                     when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
-                    else P.ProdTypeCcd
-                  end as CartType                                  
-                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", "book", 
-                    case when PL.LearnPatternCcd in ("' . implode('","', $this->_on_package_pattern_ccd) . '") then "on_package" 
-                         when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture"
+                    else "etc"
+                  end as CartType
+                , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
+                         when PL.LearnPatternCcd in ("' . implode('","', $this->_on_package_pattern_ccd) . '") then "on_package"
                          when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
                          when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_package'] . '" then "off_package"
-                         else PL.LearnPatternCcd 
-                    end) as CartProdType';
+                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
+                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
+                         else "etc" 
+                  end as CartProdType';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -57,8 +58,8 @@ class CartFModel extends BaseOrderFModel
             from ' . $this->_table['cart'] . ' as CA
                 inner join ' . $this->_table['product'] . ' as P
                     on CA.ProdCode = P.ProdCode
-                inner join ' . $this->_table['product_r_category'] . ' as PC
-                    on CA.ProdCode = PC.ProdCode    
+                left join ' . $this->_table['product_r_category'] . ' as PC
+                    on CA.ProdCode = PC.ProdCode and PC.IsStatus = "Y"    
                 inner join ' . $this->_table['product_sale'] . ' as PS
                     on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
                 left join ' . $this->_table['product_lecture'] . ' as PL
@@ -71,8 +72,7 @@ class CartFModel extends BaseOrderFModel
                     on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
             where CA.IsStatus = "Y"   
                 and P.IsUse = "Y"
-                and P.IsStatus = "Y"
-                and PC.IsStatus = "Y"                
+                and P.IsStatus = "Y"                                
                 and PS.IsStatus = "Y"
                 and PS.SalePriceIsUse = "Y"                                   
         ';
@@ -118,7 +118,7 @@ class CartFModel extends BaseOrderFModel
             ]
         ];
 
-        return $this->listCart(false, $arr_condition, null, null, ['CA.CartIdx' => 'desc']);
+        return $this->listCart(false, $arr_condition, null, null, ['P.ProdTypeCcd' => 'asc', 'CA.CartIdx' => 'desc']);
     }
 
     /**
@@ -275,6 +275,99 @@ class CartFModel extends BaseOrderFModel
         }
 
         return ['ret_cd' => true, 'ret_data' => $results];
+    }
+
+    /**
+     * 배송료 상품 전용 장바구니 등록
+     * @param int $site_code [사이트코드]
+     * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
+     * @param array $arr_cart_idx [선택된 장바구니 식별자 배열]
+     * @return array|bool
+     */
+    public function addCartForDeliveryPrice($site_code, $cart_type, $arr_cart_idx = [])
+    {
+        $this->_conn->trans_begin();
+
+        // 신규 등록되는 장바구니 식별자
+        $insert_cart_idx = '';
+
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');
+            $gw_idx = $this->session->userdata('gw_idx');
+            $reg_ip = $this->input->ip_address();
+            $total_order_price = 0;
+            $arr_is_freebies_trans = [];
+
+            // 장바구니 데이터 조회
+            $cart_rows = $this->listValidCart($sess_mem_idx, $site_code, null, $arr_cart_idx, null, null, null);
+
+            foreach ($cart_rows as $idx => $row) {
+                // 배송료 부과여부
+                $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
+                
+                // 전체상품 주문금액
+                $total_order_price += $row['RealSalePrice'];
+            }
+
+            // 배송료 계산
+            if ($cart_type == 'book') {
+                $delivery_price = $this->getBookDeliveryPrice($total_order_price);
+            } else {
+                $delivery_price = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
+            }
+
+            // 배송료 상품 등록
+            if ($delivery_price > 0) {
+                // 배송료 상품 조회
+                $prod_rows = $this->productFModel->listSalesProduct('delivery_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
+                if (empty($prod_rows) === false) {
+                    $prod_row = element('0', $prod_rows);
+                    $prod_row['ProdPriceData'] = json_decode($prod_row['ProdPriceData'], true);
+
+                    // 이미 장바구니에 담긴 상품이 있는지 여부 확인
+                    $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
+                        'EQ' => ['MemIdx' => $sess_mem_idx, 'ProdCode' => $prod_row['ProdCode'], 'IsStatus' => 'Y'],
+                        'RAW' => ['ExpireDatm > ' => 'NOW()']
+                    ]);
+
+                    if (empty($cart_row) === false) {
+                        // 이미 장바구니에 담겨 있다면 삭제
+                        $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $sess_mem_idx)->delete($this->_table['cart']);
+                        if ($is_delete === false) {
+                            throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
+                        }
+                    }
+
+                    $data = [
+                        'MemIdx' => $sess_mem_idx,
+                        'SiteCode' => $site_code,
+                        'ProdCode' => $prod_row['ProdCode'],
+                        'ProdCodeSub' => '',
+                        'ParentProdCode' => $prod_row['ProdCode'],
+                        'SaleTypeCcd' => $prod_row['ProdPriceData'][0]['SaleTypeCcd'],
+                        'IsDirectPay' => 'Y',
+                        'IsVisitPay' => 'N',
+                        'GwIdx' => $gw_idx,
+                        'RegIp' => $reg_ip
+                    ];
+                    $this->_conn->set($data)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
+
+                    // 데이터 등록
+                    if ($this->_conn->insert($this->_table['cart']) === false) {
+                        throw new \Exception('장바구니 등록에 실패했습니다.');
+                    }
+
+                    $insert_cart_idx = $this->_conn->insert_id();
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'ret_data' => $insert_cart_idx];
     }
 
     /**

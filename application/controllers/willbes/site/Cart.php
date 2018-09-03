@@ -129,8 +129,9 @@ class Cart extends \app\controllers\FrontController
     }
 
     /**
-     * 주문 페이지 이동
+     * 주문 페이지 이동 (장바구니 페이지에서 결제하기 버튼 클릭)
      * @param array $params
+     * @return mixed
      */
     public function toOrder($params = [])
     {
@@ -141,13 +142,27 @@ class Cart extends \app\controllers\FrontController
         ];
 
         if ($this->validate($rules) === false) {
-            return;
+            return null;
+        }
+        
+        $cart_type = $this->_reqP('cart_type'); // 장바구니 구분값
+        $arr_cart_idx = $this->_reqP('cart_idx');   // 선택한 장바구니 식별자 배열
+        
+        // 배송료가 부가되는지 여부 체크 후 배송료 상품 장바구니 추가
+        $result = $this->cartFModel->addCartForDeliveryPrice($this->_site_code, $cart_type, $arr_cart_idx);
+        if ($result['ret_cd'] === false) {
+            return $this->json_error($result['ret_msg'], $result['ret_status']);
+        } else {
+            // 추가된 배송료 상품이 있을 경우
+            if (empty($result['ret_data']) === false) {
+                $arr_cart_idx[] = $result['ret_data'];
+            }
         }
 
         // 장바구니 식별자 세션 생성
-        $this->cartFModel->makeSessCartIdx($this->_reqP('cart_idx'));
+        $this->cartFModel->makeSessCartIdx($arr_cart_idx);
 
-        $this->json_result(true, '', [], ['ret_url' => site_url('/order/index?tab=' . $this->_reqP('cart_type'))]);
+        return $this->json_result(true, '', [], ['ret_url' => site_url('/order/index?tab=' . $this->_reqP('cart_type'))]);
     }
 
     /**
@@ -193,10 +208,23 @@ class Cart extends \app\controllers\FrontController
 
         // 바로결제일 경우 장바구니 식별자 세션 생성
         if ($result['ret_cd'] === true && $_is_direct_pay == 'Y') {
-            $this->cartFModel->makeSessCartIdx($result['ret_data']);
+            $arr_cart_idx = $result['ret_data'];
+
+            // 배송료가 부가되는지 여부 체크 후 배송료 상품 장바구니 추가
+            $add_result = $this->cartFModel->addCartForDeliveryPrice($this->_site_code, $_cart_type, $arr_cart_idx);
+            if ($add_result['ret_cd'] === false) {
+                return $this->json_error($add_result['ret_msg'], $add_result['ret_status']);
+            } else {
+                // 추가된 배송료 상품이 있을 경우
+                if (empty($add_result['ret_data']) === false) {
+                    $arr_cart_idx[] = $add_result['ret_data'];
+                }
+            }
+
+            $this->cartFModel->makeSessCartIdx($arr_cart_idx);
         }
 
-        $this->json_result($result['ret_cd'], '', $result, $returns);
+        return $this->json_result($result['ret_cd'], '', $result, $returns);
     }
 
     /**

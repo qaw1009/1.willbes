@@ -50,14 +50,14 @@ class OrderFModel extends BaseOrderFModel
         $total_prod_pay_price = 0;
         $total_coupon_disc_price = 0;
         $total_save_point = 0;
+        $delivery_price = 0;
         $is_delivery_info = false;
         $is_package = false;
-        $arr_is_freebies_trans = [];
         $use_point = get_var($use_point, 0);
 
         foreach ($cart_rows as $idx => $row) {
-            // 장바구니 구분과 실제 상품구분 값 비교 (온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book)
-            if ($cart_type != $row['CartType']) {
+            // 장바구니 구분과 실제 상품구분 값 비교 (온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book, 기타 : etc (배송료))
+            if ($cart_type != $row['CartType'] && $row['CartType'] != 'etc') {
                 return '장바구니와 주문상품의 구분이 일치하지 않습니다.';
             }
 
@@ -99,11 +99,6 @@ class OrderFModel extends BaseOrderFModel
                 $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? $row['RealPayPrice'] * ($row['PointSavePrice'] / 100) : $row['PointSavePrice'];
             }
 
-            // 강좌상품일 경우 사은품/무료교재 배송료 부과여부
-            if ($row['CartType'] != 'book') {
-                $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
-            }
-
             // 배송정보 입력 여부
             if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
                 $is_delivery_info = true;
@@ -112,6 +107,11 @@ class OrderFModel extends BaseOrderFModel
             // 패키지상품 포함 여부
             if ($is_package === false && ends_with($row['CartProdType'], '_package') === true) {
                 $is_package = true;
+            }
+            
+            // 배송료
+            if ($row['CartProdType'] == 'delivery_price') {
+                $delivery_price = $row['RealSalePrice'];
             }
 
             // 전체상품 주문금액, 결제금액
@@ -131,13 +131,9 @@ class OrderFModel extends BaseOrderFModel
 
             $results['use_point'] = $use_point;     // 사용포인트
         }
-        
+
         // 배송료 계산
-        if ($cart_type == 'book') {
-            $results['delivery_price'] = $this->getBookDeliveryPrice($total_order_price);
-        } else {
-            $results['delivery_price'] = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
-        }
+        $results['delivery_price'] = $delivery_price;
 
         $results['total_prod_cnt'] = count($results['list']);   // 전체상품 갯수
         $results['total_order_price'] = $total_order_price;     // 전체 주문금액

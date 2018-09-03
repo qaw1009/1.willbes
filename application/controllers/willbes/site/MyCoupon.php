@@ -47,7 +47,7 @@ class MyCoupon extends \app\controllers\FrontController
         // 적용가능한 쿠폰조회
         $arr_param = array_merge($arr_param, [
             'ApplyTypeCcd' => $this->cartFModel->_coupon_apply_type_ccd[$cart_data['ProdTypeCcd']],
-            'LecTypeCcd' => $this->cartFModel->_coupon_lec_type_ccd[$cart_data['LearnPatternCcd']],
+            'LecTypeCcd' => element($cart_data['LearnPatternCcd'], $this->cartFModel->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_data['RealSalePrice'],
             'SchoolYear' => $cart_data['SchoolYear'],
             'CourseIdx' => $cart_data['CourseIdx'],

@@ -277,7 +277,7 @@
             var cart_idx = $(this).data('cart-idx');
             var ele_id = 'package_lec_list_' + cart_idx;
             var data = { 'ele_id' : ele_id, 'cart_idx' : cart_idx };
-            sendAjax('{{ site_url('/cart/info') }}', data, function(ret) {
+            sendAjax('{{ front_url('/cart/info') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
         });
@@ -318,7 +318,7 @@
                     '_method' : 'DELETE',
                     'cart_idx' : JSON.stringify(data)
                 };
-                sendAjax('{{ site_url('/cart/destroy') }}', data, function(ret) {
+                sendAjax('{{ front_url('/cart/destroy') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         var reload_url = location.href.replace('#none', '') + '?tab=' + $tab_id;
                         location.replace(reload_url);
@@ -346,7 +346,7 @@
                     'cart_idx[]' : $(this).data('cart-idx').toString(),
                     'cart_type' : $form.find('input[name="cart_type"]').val()
                 };
-                sendAjax('{{ site_url('/cart/toOrder') }}', data, function(ret) {
+                sendAjax('{{ front_url('/cart/toOrder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         location.href = ret.ret_data.ret_url;
                     }
@@ -356,7 +356,7 @@
 
         // 다른상품 더보기 버튼 클릭
         $('button[name="btn_continue"]').on('click', function () {
-            location.href = '{{ site_url('/lecture/index/cate/' . $results['recent_cate_code'] . '/pattern/only') }}';
+            location.href = '{{ front_url('/lecture/index/cate/' . $results['recent_cate_code'] . '/pattern/only') }}';
         });
 
         // 결제하기 버튼 클릭
@@ -381,7 +381,7 @@
                 $form.find('input[name="cart_idx[]"]').prop('checked', true);
             }
 
-            var url = '{{ site_url('/cart/toOrder') }}';
+            var url = '{{ front_url('/cart/toOrder') }}';
             ajaxSubmit($form, url, function(ret) {
                 if(ret.ret_cd) {
                     location.href = ret.ret_data.ret_url;

@@ -63,11 +63,10 @@
                                                 @endif
                                             </dt>
                                             <dt>
-                                                @if($row['CartProdType'] != 'book')
+                                                {{-- 온라인강좌일 경우만 강좌시작일 설정 --}}
+                                                @if($row['CartType'] == 'on_lecture')
                                                     <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
                                                     <span class="w-data">
-                                                    @if($results['cart_type'] == 'on_lecture')
-                                                        {{-- 온라인강좌일 경우만 강좌시작일 설정 --}}
                                                         [강좌시작일 설정]
                                                         {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능, 개강일 전이라면 개강일부터 30일 이내 설정 가능 --}}
                                                         {{-- 디폴트 설정 => 시작일자 : 결제일 + 8일, 종료일자 : 시작일자 + 수강기간 --}}
@@ -78,7 +77,6 @@
                                                         @else
                                                             <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
                                                         @endif
-                                                    @endif
                                                 </span>
                                                 @endif
                                                 @if($row['IsCoupon'] == 'Y')
@@ -98,27 +96,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- 배송료 --}}
-                            @if($results['delivery_price'] > 0)
-                                <tr>
-                                    <td class="w-list tx-left pl20">
-                                        <dl>
-                                            <dt class="tit">
-                                                <span class="pBox p4">배송</span> 배송비
-                                                @if($results['cart_type'] == 'book')
-                                                    <span class="tx-light-blue">(교재 총 결제금액이 {{ number_format($__cfg['DeliveryFreePrice']) }}원 이상 인 경우 배송비 무료)</span>
-                                                @endif
-                                                <span class="tBox NSK t1 black"><a href="#none">쿠폰적용</a></span>
-                                            </dt>
-                                        </dl>
-                                    </td>
-                                    <td class="w-buy-price">
-                                        <dl>
-                                            <dt class="tx-light-blue">{{ number_format($results['delivery_price']) }}원</dt>
-                                        </dl>
-                                    </td>
-                                </tr>
-                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -508,7 +485,7 @@
                 });
                 var data = { 'ele_id' : ele_id, 'cart_idx' : $(this).data('cart-idx'), 'coupon_detail_idx' : JSON.stringify(coupon_detail_idx) };
 
-                sendAjax('{{ site_url('/myCoupon/') }}', data, function(ret) {
+                sendAjax('{{ front_url('/myCoupon/') }}', data, function(ret) {
                     $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                 }, showAlertError, false, 'GET', 'html');
             });
@@ -546,7 +523,7 @@
                 }
 
                 // 사용포인트 체크
-                var url = '{{ site_url('/order/checkUsePoint') }}';
+                var url = '{{ front_url('/order/checkUsePoint') }}';
                 var data = {
                     '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'POST',
@@ -607,7 +584,7 @@
             $regi_form.on('click', '#btn_my_addr_list', function() {
                 var ele_id = 'MyAddress';
                 var data = { 'ele_id' : ele_id };
-                sendAjax('{{ site_url('/myDeliveryAddress/') }}', data, function(ret) {
+                sendAjax('{{ front_url('/myDeliveryAddress/') }}', data, function(ret) {
                     $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                 }, showAlertError, false, 'GET', 'html');
             });
@@ -615,7 +592,7 @@
             // 나의 배송 주소록 등록하기 버튼 클릭
             $regi_form.on('click', '#btn_my_addr_regist', function() {
                 if (confirm('입력한 주소를 나의 배송 주소록에 등록하시겠습니까?')) {
-                    var url = '{{ site_url('/myDeliveryAddress/store') }}';
+                    var url = '{{ front_url('/myDeliveryAddress/store') }}';
                     var data = {
                         '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                         '_method' : 'POST',
@@ -659,7 +636,7 @@
                         '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                         '_method' : 'POST'
                     };
-                    sendAjax('{{ site_url('/order/recentDeliveryAddress') }}', data, function(ret) {
+                    sendAjax('{{ front_url('/order/recentDeliveryAddress') }}', data, function(ret) {
                         if (ret.ret_cd) {
                             if (ret.ret_data.length < 1) {
                                 alert('최근 배송지 정보가 없습니다.');
@@ -735,12 +712,12 @@
 
             // 장바구니 가기 버튼 클릭
             $('button[name="btn_cart"]').on('click', function () {
-                location.href = '{{ site_url('/cart/index') }}';
+                location.href = '{{ front_url('/cart/index') }}';
             });
 
             // 결제하기 버튼 클릭
             $('button[name="btn_pay"]').on('click', function () {
-                var url = '{{ site_url('/payment/request') }}';
+                var url = '{{ front_url('/payment/request') }}';
                 ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {
                         $('body').append(ret.ret_data);

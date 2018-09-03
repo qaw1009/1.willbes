@@ -20,13 +20,13 @@ class BaseOrderFModel extends WB_Model
     ];
 
     // 장바구니 상품타입명
-    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재'];
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재', 'delivery_price' => '배송'];
 
     // 장바구니 상품타입 순번
-    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_package' => '2', 'off_package' => '2', 'book' => '3'];
+    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_package' => '2', 'off_package' => '2', 'book' => '3', 'delivery_price' => '4'];
 
-    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재)
-    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003'];
+    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료)
+    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'];
 
     // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
     public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004', 'free_lecture' => '615005', 'off_lecture' => '615006', 'off_package' => '615007'];
@@ -49,8 +49,8 @@ class BaseOrderFModel extends WB_Model
     // 포인트 구분명 (장바구니 구분명과 맵핑)
     public $_point_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재'];
 
-    // 상품타입과 쿠폰적용구분 공통코드 맵핑 (온라인강좌, 학원강좌, 교재, 사은품, 배송료)
-    public $_coupon_apply_type_ccd = ['636001' => '645001', '636002' => '645004', '636003' => '645005', '636004' => '', 'delivery_price' => '645006'];
+    // 상품타입과 쿠폰적용구분 공통코드 맵핑 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료)
+    public $_coupon_apply_type_ccd = ['636001' => '645001', '636002' => '645004', '636003' => '645005', '636004' => '', '636005' => '645006', '636006' => '645006'];
 
     // 학습형태와 쿠폰상세구분 공통코드 맵핑 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
     public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => '', '615003' => '646002', '615004' => '646003', '615005' => '', '615006' => '646004', '615007' => '646005'];

@@ -8,8 +8,10 @@ class ProductFModel extends WB_Model
         'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'userpack_lecture' => 'vw_product_userpack_lecture',
-        'book' => 'vw_product_book',
         'off_lecture' => 'vw_product_off_lecture',
+        'book' => 'vw_product_book',
+        'delivery_price' => 'vw_product_delivery_price',
+        'delivery_add_price' => 'vw_product_delivery_add_price',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
         'product_r_sublecture' => 'lms_product_r_sublecture',
@@ -57,20 +59,20 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
-            $column = 'ProdCode, SiteCode, CateCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, SchoolYear, RegDatm';
+            $column = 'ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, RegDatm';
 
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
                 case 'on_lecture' :
                 case 'on_free_lecture' :
-                        $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, SubjectIdx, SubjectName, CourseIdx, CourseName
-                            , ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType
+                        $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, SubjectIdx, SubjectName, CourseIdx, CourseName
+                            , SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType
                             , LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
                     break;
                 
                 // 학원 단과
                 case 'off_lecture' :
-                        $column .= ', IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName
+                        $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, SchoolYear
                                 , CampusCcd, CampusCcdName, FixNumber, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
                                 , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
                                 , fn_product_content(ProdCode, "633002") as Content';
@@ -78,19 +80,25 @@ class ProductFModel extends WB_Model
 
                 //추천-선택 패키지
                 case 'adminpack_lecture' :
-                        $column .= ', StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
-                            , CourseIdx, CourseName, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
+                        $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+                            , CourseIdx, CourseName, SchoolYear, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
                     break;
 
                 //사용자패키지
                 case 'userpack_lecture' :
-                    $column .= ', StudyStartDate, IsSelLecCount,SelCount, PackSaleData';
+                    $column .= ', CateCode, SchoolYear, StudyStartDate, IsSelLecCount,SelCount, PackSaleData';
                     break;
 
                 // 교재상품
                 case 'book' :
-                        $column .= ', wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, ProfIdx, wProfIdx, wProfName
-                            , CourseIdx, CourseName, ProfSlogan, ProfReferData, ProdPriceData';
+                        $column .= ', CateCode, wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName
+                            , SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, ProfReferData, ProdPriceData';
+                    break;
+
+                // 배송료 상품
+                case 'delivery_price' :
+                case 'delivery_add_price' :
+                        $column .= ', IsCoupon, IsCart, ProdPriceData';
                     break;
 
                 default :

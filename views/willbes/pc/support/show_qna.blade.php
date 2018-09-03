@@ -101,7 +101,7 @@
                     </table>
                 @endif
                 <div class="search-Btn mt20 h36 p_re">
-                    @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx'))
+                    @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx') && $data['ReplyStatusCcd'] != $reply_type_complete)
                         <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">
                             <a href="#none" class="tx-purple-gray">삭제</a>
                         </div>
@@ -124,8 +124,19 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        //목록
         $('#btn_list').click(function() {
             location.href = '{!! site_url('support/qna/index?'.$get_params) !!}';
+        });
+
+        //수정
+        $('#btn_modify').click(function() {
+            location.href = '{!! site_url('support/qna/create?'.$get_params.'&board_idx='.$board_idx) !!}';
+        });
+
+        //삭제
+        $('#btn_del').click(function() {
+            location.href = '{!! site_url('support/qna/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
     });
 </script>

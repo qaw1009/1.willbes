@@ -15,7 +15,8 @@ class SupportQna extends BaseSupport
     protected $_paging_count = 10;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
-        'consult_ccd' => '622'   //유형 그룹 코드 = 상담유형
+        'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
+        'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
     ];
 
     public function __construct()
@@ -107,8 +108,17 @@ class SupportQna extends BaseSupport
     /**
      * 고객센터 > 상담게시판 등록/수정 폼
      */
-    public function create($params = [])
+    public function create()
     {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $board_idx = element('board_idx',$arr_input);
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $page = element('page',$arr_input);
+        $get_params = 's_keyword='.urlencode($s_keyword).'&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type.'&page='.$page;
+
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
 
@@ -124,14 +134,48 @@ class SupportQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input);
-        $get_params = 's_keyword='.$s_keyword.'&page='.$page;
-
         $method = 'POST';
         $data = null;
-        $board_idx = null;
+
+        if (empty($board_idx) === false) {
+            $method = 'PUT';
+
+            $arr_condition = [
+                'EQ' => [
+                    'BmIdx' => $this->_bm_idx,
+                    'IsUse' => 'Y'
+                ],
+            ];
+
+            $column = '
+            BoardIdx, SiteCode, MdCateCode, CampusCcd
+            , RegType, TypeCcd, IsBest, IsPublic
+            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore
+            , Title, Content, ReadCnt, SettingReadCnt
+            , RegDatm
+            , RegMemIdx, RegMemId, RegMemName
+            , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+            , CampusCcd_Name
+            , ReplyStatusCcd_Name
+            , VocCcd_Name, MdCateCode_Name, SubJectName
+            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+            , AttachData
+        ';
+
+            $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+
+            if (empty($data)) {
+                show_alert('게시글이 존재하지 않습니다.', 'back');
+            }
+            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+
+            $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+            if($result !== true) {
+                show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+            }
+        }
 
         $this->load->view('support/create_qna', [
             'method' => $method,
@@ -147,8 +191,8 @@ class SupportQna extends BaseSupport
 
     public function show()
     {
-
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
@@ -157,7 +201,6 @@ class SupportQna extends BaseSupport
 
         $get_params = 's_keyword='.urlencode($s_keyword).'&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type.'&page='.$page;
 
-        $board_idx = element('board_idx',$arr_input);
         if (empty($board_idx)) {
             show_alert('게시글번호가 존재하지 않습니다.', 'back');
         }
@@ -168,13 +211,6 @@ class SupportQna extends BaseSupport
                 'IsUse' => 'Y'
             ],
         ];
-
-        // 통합사이트일 경우 전체 사이트 조회
-        if ($this->_site_code != config_item('app_intg_site_code')) {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'SiteCode' => $this->_site_code
-            ]);
-        }
 
         $column = '
             BoardIdx, SiteCode, MdCateCode, CampusCcd
@@ -208,7 +244,9 @@ class SupportQna extends BaseSupport
         $this->load->view('support/show_qna',[
                 'arr_input' => $arr_input,
                 'get_params' => $get_params,
-                'data' => $data
+                'data' => $data,
+                'board_idx' => $board_idx,
+                'reply_type_complete' => $this->_groupCcd['reply_status_ccd_complete']
             ]
         );
     }
@@ -229,6 +267,7 @@ class SupportQna extends BaseSupport
         $site_onoff_info = $this->supportBoardTwoWayFModel->getSiteOnOffType($this->_site_code);
 
         $method = 'add';
+        $msg = '저장되었습니다';
         $rules = [
             ['field' => 's_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
             ['field' => 's_consult_type', 'label' => '상담유형', 'rules' => 'trim|required|integer'],
@@ -257,6 +296,7 @@ class SupportQna extends BaseSupport
 
         if (empty($this->_reqP('idx')) === false) {
             $method = 'modify';
+            $msg = '수정되었습니다';
             $idx = $this->_reqP('idx');
         }
 
@@ -265,10 +305,30 @@ class SupportQna extends BaseSupport
         //_addBoard, _modifyBoard
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
         if (empty($result) === true) {
-            show_alert('등록 실패입니다. 관리자에게 문의해주세요.', 'back');
+            show_alert('처리 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('저장되었습니다.', '/support/qna/index?'.$get_params);
+        show_alert($msg, '/support/qna/index?'.$get_params);
+    }
+
+    public function delete()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $board_idx = element('board_idx',$arr_input);
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $page = element('page',$arr_input);
+        $get_params = 's_keyword='.urlencode($s_keyword).'&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type.'&page='.$page;
+
+        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, $this->_groupCcd['reply_status_ccd_complete']);
+
+        if (empty($result) === true) {
+            show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
+        }
+
+        show_alert('삭제되었습니다.', '/support/qna/index?'.$get_params);
     }
 
     /**

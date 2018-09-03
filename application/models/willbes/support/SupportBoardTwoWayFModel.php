@@ -124,6 +124,100 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         return true;
     }
 
+    public function modifyBoard($inputData = [], $idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $board_idx = $idx;
+            $board_data = $inputData['board'];
+            $board_category_data = $inputData['board_r_category'];
+
+            $result = $this->findBoard($board_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $board_data = array_merge($board_data,[
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ]);
+            $this->_conn->set($board_data)->where('BoardIdx', $board_idx);
+            if ($this->_conn->update($this->_table['lms_board']) === false) {
+                throw new \Exception('게시판 수정에 실패했습니다.');
+            }
+
+            // 카테고리
+            if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+                $set_board_category_data['BoardIdx'] = $board_idx;
+                $set_board_category_data['CateCode'] = $board_category_data['site_category'];
+                $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
+                $set_board_category_data['RegIp'] = $this->input->ip_address();
+                if ($this->_addBoardCategory($set_board_category_data) === false) {
+                    throw new \Exception('게시판 수정에 실패했습니다.');
+                }
+            } else {
+                // 카테고리삭제
+                $up_cate_data['BoardIdx'] = $board_idx;
+                if ($this->_updateBoardCategory($up_cate_data) === false) {
+                    throw new \Exception('게시판 수정에 실패했습니다.');
+                }
+            }
+
+            // 파일 수정
+            $reg_type = 0;              //0:일반유저등록, 1:관리자등록
+            $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
+            $is_attach = $this->modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type);
+            if ($is_attach !== true) {
+                throw new \Exception($is_attach);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 상담게시글 답변완료글 제외
+     * @param $idx
+     * @param $reply_status_ccd_complete
+     * @return array|bool
+     */
+    public function boardDelete($idx, $reply_status_ccd_complete)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $board_idx = $idx;
+            $result = $this->findBoard($board_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdMemIdx'=> $this->session->userdata('mem_idx'),
+                'UpdMemId'=> $this->session->userdata('mem_id'),
+                'UpdMemName'=> $this->session->userdata('mem_name'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('BoardIdx', $board_idx)
+                ->where('IsStatus', 'Y')
+                ->where_not_in('ReplyStatusCcd', $reply_status_ccd_complete)
+                ->update($this->_table['lms_board']);
+
+            if ($is_update === false) {
+                throw new \Exception('삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
     /**
      * 카테고리 등록
      * @param $inputData
@@ -171,5 +265,28 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
         }
         return $attach_file_names;
+    }
+
+    /**
+     * 카테고리 업데이트
+     * @param $whereData
+     * @return bool
+     */
+    private function _updateBoardCategory($whereData)
+    {
+        try {
+            $input['IsStatus'] = 'N';
+            $input['UpdMemIdx'] = $this->session->userdata('mem_idx');
+            $input['UpdDatm'] = date('Y-m-d H:i:s');
+
+            $this->_conn->set($input)->where($whereData);
+
+            if ($this->_conn->update($this->_table['lms_board_r_category']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 }

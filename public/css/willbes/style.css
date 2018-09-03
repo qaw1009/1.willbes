@@ -3295,13 +3295,14 @@ table.classTable tr td.w-data {
 .pBox {
     background: #fff;
     display: inline-block;
-    width: 40px;
+    min-width: 40px;
     height: 18px;
     border: 1px solid #000;
     font-size: 12px;
     line-height: 16px;
     text-align: center;
     letter-spacing: -1px;
+    padding: 0 4px;
 }
 .pBox.p1 {
     color: #3e93be;
@@ -4719,14 +4720,16 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* subContainer : Prof : 공지사항 */
 .oBox {
+    font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
     display: inline-block;
-    width: 40px;
-    height: 17px;
-    font-size: 11px;
+    min-width: 40px;
+    height: 18px;
+    font-size: 12px;
     font-weight: 300;
     color: #fff;
-    line-height: 17px;
-    text-align: center;  
+    line-height: 18px;
+    text-align: center;
+    padding: 0 4px;
 }
 .offlineBox {
     background: #6f6f6f;

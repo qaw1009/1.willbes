@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
  * @property SupportMainFModel $supportMainFModel                            SupportMain Model Class
  * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
- * @property SupportQnaFModel $supportQnaFModel                              SupportQna Model Class
+ * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel              SupportBoardTwoWayF Model Class
  * @property CategoryFModel $categoryFModel                                     Category Model Class
  * @property AccessFModel $accessFModel                                     Access Model Class
  */

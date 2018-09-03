@@ -26,14 +26,21 @@
                         <td class="w-selected tx-left pl30">
                             <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                                 <option value="">과정선택</option>
-                                @foreach($arr_site as $key => $val)
+                                @foreach($arr_base['site_list'] as $key => $val)
                                     <option value="{{$key}}" @if($data['SiteCode'] == $key || $__cfg['SiteCode'] == $key)selected="selected"@endif>{{$val}}</option>
+                                @endforeach
+                            </select>
+
+                            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                                <option value="">구분</option>
+                                @foreach($arr_base['category'] as $row)
+                                    <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
                                 @endforeach
                             </select>
 
                             <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus" style="width: 250px;">
                                 <option value="">캠퍼스 선택</option>
-                                @foreach($campus_ccd as $row)
+                                @foreach($arr_base['campus'] as $row)
                                     <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CampusCcd'])selected="selected"@endif>{{$row['CcdName']}}</option>
                                 @endforeach
                             </select>
@@ -45,7 +52,7 @@
                         <td class="w-selected full tx-left pl30" colspan="3">
                             <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA">
                                 <option value="">상담 유형 선택</option>
-                                @foreach($arr_consult_type as $key => $val)
+                                @foreach($arr_base['consult_type'] as $key => $val)
                                     <option value="{{$key}}" @if($data['TypeCcd'] == $key)selected="selected"@endif>{{$val}}</option>
                                 @endforeach
                             </select>
@@ -79,9 +86,9 @@
                                 @for($i = 0; $i < $attach_file_cnt; $i++)
                                     <li>
                                         <div class="filetype">
-                                            <input type="text" id="attach_file{{ $i }}" name="attach_file[]" class="file-text" />
+                                            <input type="text" class="file-text" />
                                             <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                            <span class="file-select"><input type="file" class="input-file" size="3"></span>
+                                            <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
                                         </div>
                                     </li>
                                 @endfor
@@ -112,6 +119,7 @@
     var $regi_form = $('#regi_form');
 
     $(document).ready(function() {
+        $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");
         $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
 
         $('#btn_list').click(function() {

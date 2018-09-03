@@ -135,7 +135,7 @@
                     <div class="form-control-static col-md-4">
                         <div class="short-div">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
-                            @if(empty($data['arr_attach_file_path'][$i]) === false)
+                            @if(empty($data['arr_reply_attach_file_path'][$i]) === false)
                                 <p class="form-control-static">
                                     [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_reply_attach_file_path'][$i].$data['arr_reply_attach_file_name'][$i]).'/'.urlencode($data['arr_reply_attach_file_real_name'][$i]) }}" target="_blank">
                                         {{ $data['arr_reply_attach_file_real_name'][$i] }}

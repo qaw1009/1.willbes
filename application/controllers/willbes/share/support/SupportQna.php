@@ -33,7 +33,7 @@ class SupportQna extends BaseSupport
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
 
         // 카테고리 조회
-        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
 
         //구분목록 (학원,온라인)
         $arr_base['onoff_type'] = $this->supportBoardTwoWayFModel->listSiteOnOffType();
@@ -43,17 +43,27 @@ class SupportQna extends BaseSupport
 
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
+        $page = element('page',$arr_input);
+
+        $get_params = 's_keyword='.urlencode($s_keyword).'&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type.'&page='.$page;
 
         $arr_condition = [
             'EQ' => [
                 'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y'
+                'IsUse' => 'Y',
+                'SiteCode' => $s_site_code,
+                'TypeCcd' => $s_consult_type
             ],
             'ORG' => [
                 'LKB' => [
-                    'Title' => $s_keyword
-                    ,'Content' => $s_keyword
+                    'Title' => $s_keyword,
+                    'Content' => $s_keyword,
+                    'Category_String' => $s_cate_code,
                 ]
             ]
         ];
@@ -77,7 +87,7 @@ class SupportQna extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination('/support/qna/index/?s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/support/qna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -90,6 +100,7 @@ class SupportQna extends BaseSupport
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
+            'get_params' => $get_params
         ]);
     }
 
@@ -136,10 +147,15 @@ class SupportQna extends BaseSupport
 
     public function show()
     {
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $page = element('page',$arr_input);
-        $get_params = 's_keyword='.$s_keyword.'&page='.$page;
+
+        $get_params = 's_keyword='.urlencode($s_keyword).'&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type.'&page='.$page;
 
         $board_idx = element('board_idx',$arr_input);
         if (empty($board_idx)) {
@@ -184,25 +200,15 @@ class SupportQna extends BaseSupport
         }
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
 
-        print_r($data['AttachData']);
-
         $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
         if($result !== true) {
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
-        /* 이전글, 다음글*/
-
-
-        $pre_data = null;
-        $next_data = null;
-
         $this->load->view('support/show_qna',[
                 'arr_input' => $arr_input,
                 'get_params' => $get_params,
-                'data' => $data,
-                'pre_data' => $pre_data,
-                'next_data' =>  $next_data,
+                'data' => $data
             ]
         );
     }
@@ -258,6 +264,9 @@ class SupportQna extends BaseSupport
 
         //_addBoard, _modifyBoard
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
+        if (empty($result) === true) {
+            show_alert('등록 실패입니다. 관리자에게 문의해주세요.', 'back');
+        }
 
         show_alert('저장되었습니다.', '/support/qna/index?'.$get_params);
     }

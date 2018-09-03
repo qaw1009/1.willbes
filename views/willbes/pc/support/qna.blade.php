@@ -7,17 +7,14 @@
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
     <div class="Content p_re">
-        <form id="url_form" name="url_form" method="GET">
-            @foreach($arr_input as $key => $val)
-                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
-            @endforeach
+        <form id="search_form" name="search_form" method="GET">
         <div class="willbes-CScenter c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
                 · 1:1 상담
                 <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
                     <div class="inputBox p_re">
                         <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                        <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
+                        <button type="submit" class="search-Btn">
                             <span>검색</span>
                         </button>
                     </div>
@@ -28,23 +25,25 @@
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray">
-                        {{--<select id="process" name="process" title="process" class="seleProcess">
-                            <option selected="selected">과정</option>
-                            <option value="헌법">헌법</option>
-                            <option value="스파르타반">스파르타반</option>
-                            <option value="공직선거법">공직선거법</option>
+                        <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                            <option value="">과정</option>
+                            @foreach($arr_base['site_list'] as $key => $val)
+                                <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
+                            @endforeach
                         </select>
-                        <select id="div" name="div" title="div" class="seleDiv">
-                            <option selected="selected">구분</option>
-                            <option value="기타">기타</option>
-                            <option value="강좌내용">강좌내용</option>
-                            <option value="학습상담">학습상담</option>
-                        </select>--}}
-                        <select id="s_aaa" name="s_aaa" title="상담유형" class="seleLecA">
-                            <option selected="selected">상담유형</option>
-                            <option value="기타">기타</option>
-                            <option value="강좌내용">강좌내용</option>
-                            <option value="학습상담">학습상담</option>
+
+                        <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                            <option value="">구분</option>
+                            @foreach($arr_base['category'] as $row)
+                                <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
+                            @endforeach
+                        </select>
+
+                        <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA">
+                            <option value="">상담유형</option>
+                            @foreach($arr_base['consult_type'] as $key => $val)
+                                <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
+                            @endforeach
                         </select>
                         <div class="subBtn NSK f_right"><a href="{{site_url('support/qna/create?&s_keyword='.urlencode(element('s_keyword',$arr_input)))}}">문의하기 ></a></div>
                     </div>
@@ -85,7 +84,7 @@
                                     <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
                                     <td class="w-A">{{$row['TypeCcd_Name']}}</td>
                                     <td class="w-list tx-left pl20">
-                                        <a href="{{site_url('support/qna/show?board_idx='.$row['BoardIdx'].'&page='.element('page',$paging).'&isBestcheck='.$row['IsBest'].'&s_keyword='.urlencode(element('s_keyword',$arr_input)))}}">
+                                        <a href="{{site_url('support/qna/show?board_idx='.$row['BoardIdx'].'&isBestcheck='.$row['IsBest'].'&'.$get_params)}}">
                                             @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
                                             {{$row['Title']}}
                                             @if($row['RegDatm'] == date('Y-m-d'))<img src="{{ img_url('prof/icon_N.gif') }}">@endif
@@ -123,5 +122,18 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">
     </div>
 </div>
+<script type="text/javascript">
+    var $search_form = $('#search_form');
+
+    $(document).ready(function() {
+        $search_form.find('select[name="s_cate_code"]').chained("#s_site_code");
+        $search_form.find('select[name="s_campus"]').chained("#s_site_code");
+
+        /*$url_form.on('change','#s_site_code', function (){
+
+        });*/
+    });
+</script>
+
 <!-- End Container -->
 @stop

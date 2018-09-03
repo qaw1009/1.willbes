@@ -48,7 +48,7 @@ class CouponFModel extends WB_Model
             from ' . $this->_table['coupon'] . ' as C
                 inner join ' . $this->_table['coupon_detail'] . ' as CD
                     on C.CouponIdx = CD.CouponIdx
-                inner join (
+                left join (
                     select CouponIdx, group_concat(CateCode) as CateCodes from ' . $this->_table['coupon_r_category'] . ' where IsStatus = "Y" group by CouponIdx
                 ) as CC 	
                     on C.CouponIdx = CC.CouponIdx	
@@ -59,7 +59,7 @@ class CouponFModel extends WB_Model
         // where 조건
         $arr_condition = [
             'EQ' => ['C.SiteCode' => element('SiteCode', $arr_param)],
-            'LKB' => ['CC.CateCodes' => element('CateCode', $arr_param)]
+            'LKB' => ['CC.CateCodes' => substr(element('CateCode', $arr_param), 0, 4)]
         ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
@@ -103,7 +103,7 @@ class CouponFModel extends WB_Model
             from ' . $this->_table['coupon'] . ' as C
                 inner join ' . $this->_table['coupon_detail'] . ' as CD
                     on C.CouponIdx = CD.CouponIdx
-                inner join (
+                left join (
                     select CouponIdx, group_concat(CateCode) as CateCodes
                     from ' . $this->_table['coupon_r_category'] . '
                     where IsStatus = "Y"
@@ -123,7 +123,7 @@ class CouponFModel extends WB_Model
                 and now() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
                 and CD.ValidStatus = "Y"                                
                 and C.ApplyTypeCcd = ?   # 상품분류 구분                     
-                and C.DiscAllowPrice < ?    # 할인허용가능금액            
+                and C.DiscAllowPrice <= ?    # 할인허용가능금액            
                 and (                
                     case C.ApplyRangeType   # 적용범위
                         when "A" then "Y"
@@ -161,7 +161,7 @@ class CouponFModel extends WB_Model
         // where 조건
         $arr_condition = [
             'EQ' => ['C.SiteCode' => element('SiteCode', $arr_param), 'CD.CdIdx' => element('CdIdx', $arr_param)],  // 사이트코드, 사용자쿠폰식별자
-            'LKB' => ['C.LecTypeCcds' => element('LecTypeCcd', $arr_param), 'CC.CateCodes' => element('CateCode', $arr_param)]  // 학습형태구분, 카테고리코드
+            'LKB' => ['C.LecTypeCcds' => element('LecTypeCcd', $arr_param), 'CC.CateCodes' => substr(element('CateCode', $arr_param), 0, 4)]  // 학습형태구분, 카테고리코드
         ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);

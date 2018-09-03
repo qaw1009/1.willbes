@@ -51,6 +51,7 @@ class OrderFModel extends BaseOrderFModel
         $total_coupon_disc_price = 0;
         $total_save_point = 0;
         $delivery_price = 0;
+        $delivery_pay_price = 0;
         $is_delivery_info = false;
         $is_package = false;
         $use_point = get_var($use_point, 0);
@@ -92,8 +93,8 @@ class OrderFModel extends BaseOrderFModel
                 $total_coupon_disc_price += $row['CouponDiscPrice'];
             }
 
-            // 적립 포인트 (학원강좌일 경우 포인트 적립 불가)
-            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y' || $row['CartType'] == 'off_lecture') {
+            // 적립 포인트 (학원강좌, 배송료 상품일 경우 포인트 적립 불가)
+            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y' || $row['CartType'] == 'off_lecture' || $row['CartProdType'] == 'delivery_price') {
                 $row['RealSavePoint'] = 0;
             } else {
                 $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? $row['RealPayPrice'] * ($row['PointSavePrice'] / 100) : $row['PointSavePrice'];
@@ -108,16 +109,17 @@ class OrderFModel extends BaseOrderFModel
             if ($is_package === false && ends_with($row['CartProdType'], '_package') === true) {
                 $is_package = true;
             }
-            
-            // 배송료
-            if ($row['CartProdType'] == 'delivery_price') {
-                $delivery_price = $row['RealSalePrice'];
-            }
 
-            // 전체상품 주문금액, 결제금액
-            $total_order_price += $row['RealSalePrice'];
-            $total_prod_pay_price += $row['RealPayPrice'];
-            $total_save_point += $row['RealSavePoint'];
+            if ($row['CartProdType'] == 'delivery_price') {
+                // 주문 배송료, 실제 결제 배송료
+                $delivery_price = $row['RealSalePrice'];
+                $delivery_pay_price = $row['RealPayPrice'];
+            } else {
+                // 전체상품 주문금액, 실제 결제금액, 실제 적립 포인트
+                $total_order_price += $row['RealSalePrice'];
+                $total_prod_pay_price += $row['RealPayPrice'];
+                $total_save_point += $row['RealSavePoint'];
+            }
 
             $results['list'][] = $row;
         }
@@ -132,12 +134,11 @@ class OrderFModel extends BaseOrderFModel
             $results['use_point'] = $use_point;     // 사용포인트
         }
 
-        // 배송료 계산
-        $results['delivery_price'] = $delivery_price;
-
+        $results['delivery_price'] = $delivery_price;   // 주문 배송료
+        $results['delivery_pay_price'] = $delivery_pay_price;   // 실제 결제 배송료
         $results['total_prod_cnt'] = count($results['list']);   // 전체상품 갯수
         $results['total_order_price'] = $total_order_price;     // 전체 주문금액
-        $results['total_pay_price'] = $total_prod_pay_price + $results['delivery_price'] - $use_point;    // 전체상품 결제금액 + 배송료 - 사용포인트
+        $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 - 사용포인트
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
@@ -166,7 +167,7 @@ class OrderFModel extends BaseOrderFModel
             'SiteCode' => $cart_row['SiteCode'],
             'CateCode' => $cart_row['CateCode'],
             'ApplyTypeCcd' => $this->_coupon_apply_type_ccd[$cart_row['ProdTypeCcd']],
-            'LecTypeCcd' => $this->_coupon_lec_type_ccd[$cart_row['LearnPatternCcd']],
+            'LecTypeCcd' => element($cart_row['LearnPatternCcd'], $this->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_row['RealSalePrice'],
             'SchoolYear' => $cart_row['SchoolYear'],
             'CourseIdx' => $cart_row['CourseIdx'],

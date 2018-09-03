@@ -22,7 +22,7 @@ class CouponRegistModel extends WB_Model
     ];
     public $_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004']; // 온라인강좌, 수강연장, 배수, 학원강좌
     public $_apply_type_to_range_ccds = ['645001', '645002', '645003', '645004', '645005']; // 온라인강좌, 수강연장, 배수, 학원강좌, 교재
-    public $_apply_type_to_mock_ccds = ['645007'];
+    public $_apply_type_to_mock_ccd = '645007'; // 모의고사
 
     public function __construct()
     {
@@ -71,7 +71,7 @@ class CouponRegistModel extends WB_Model
                     , SCC.CcdName as CouponTypeName, SCA.CcdName as ApplyTypeName                      
                     , S.SiteName, CC.CateCode, CC.CateCodes, SC.CateName, ifnull(CD.IssueCnt, 0) as IssueCnt, ifnull(CD.UseCnt, 0) as UseCnt, A.wAdminName as RegAdminName            
             from ' . $this->_table['coupon'] . ' as C
-                inner join (
+                left join (
                     select CouponIdx, min(CateCode) as CateCode, GROUP_CONCAT(CateCode separator ",") as CateCodes
                     from ' . $this->_table['coupon_r_category'] . '
                     where IsStatus = "Y"
@@ -244,6 +244,7 @@ class CouponRegistModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
+            $cate_code = element('cate_code', $input);
             $deploy_type = element('deploy_type', $input);
             $pin_type = ($deploy_type == 'F') ? element('pin_type', $input) : 'N';
             $pin_issue_cnt = ($deploy_type == 'F') ? element('pin_issue_cnt', $input) : 0;
@@ -289,9 +290,11 @@ class CouponRegistModel extends WB_Model
             $coupon_idx = $this->_conn->insert_id();
 
             // 카테고리 정보 등록
-            $is_coupon_category = $this->_replaceCouponCategory(element('cate_code', $input), $coupon_idx);
-            if ($is_coupon_category !== true) {
-                throw new \Exception($is_coupon_category);
+            if (empty($cate_code) === false) {
+                $is_coupon_category = $this->_replaceCouponCategory($cate_code, $coupon_idx);
+                if ($is_coupon_category !== true) {
+                    throw new \Exception($is_coupon_category);
+                }
             }
 
             // 상품 정보 등록

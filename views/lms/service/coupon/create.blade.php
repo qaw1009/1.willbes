@@ -26,7 +26,7 @@
                         <p class="form-control-static"># 최초 등록 후 운영사이트, 카테고리 정보는 수정이 불가능합니다.</p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div id="category" class="form-group">
                     <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 form-inline">
@@ -306,14 +306,15 @@
             // ajax submit
             $regi_form.submit(function() {
                 @if($method == 'POST')
-                    if($regi_form.find('input[name="cate_code[]"]').length < 1) {
-                        alert('카테고리 선택 필드는 필수입니다.');
-                        return false;
-                    }
-                    if($regi_form.find('input[name="apply_range_type"]:checked').val() === 'P' && $regi_form.find('input[name="prod_code[]"]').length < 1) {
-                        alert('상품 선택 필드는 필수입니다.');
-                        return false;
-                    }
+                {{-- 배송료는 카테고리 선택 불가 --}}
+                if($regi_form.find('input[name="apply_type_ccd"]:checked').val() !== '645006' && $regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    alert('카테고리 선택 필드는 필수입니다.');
+                    return false;
+                }
+                if($regi_form.find('input[name="apply_range_type"]:checked').val() === 'P' && $regi_form.find('input[name="prod_code[]"]').length < 1) {
+                    alert('상품 선택 필드는 필수입니다.');
+                    return false;
+                }
                 @endif
 
                 var _url = '{{ site_url('/service/coupon/regist/store') }}';
@@ -421,8 +422,15 @@
                 var arr_set = $(this).data('input').split(':');
 
                 // input 초기화
+                $('#category').removeClass('hide');
                 $('.form-apply-input').removeClass('show').addClass('hide');
                 $('.form-range-input').removeClass('show').addClass('hide');
+
+                // 카테고리
+                if($(this).val() === '645006') {
+                    {{-- 배송료는 카테고리 선택 불가 --}}
+                    $('#category').addClass('hide');
+                }
 
                 // 쿠폰상세구분
                 if (arr_set[0] !== 'no') {

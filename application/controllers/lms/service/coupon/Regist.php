@@ -220,7 +220,7 @@ class Regist extends \app\controllers\BaseController
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'cate_code[]', 'label' => '카테고리 선택', 'rules' => 'trim|required'],
+                ['field' => 'cate_code[]', 'label' => '카테고리 선택', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_range_ccds) . ',' . $this->couponRegistModel->_apply_type_to_mock_ccd . ']'],
                 ['field' => 'deploy_type', 'label' => '쿠폰배포루트', 'rules' => 'trim|required|in_list[N,F]'],
                 ['field' => 'coupon_type_ccd', 'label' => '쿠폰유형', 'rules' => 'trim|required'],
                 ['field' => 'pin_type', 'label' => '쿠폰핀번호유형', 'rules' => 'trim|required|callback_validateRequiredIf[deploy_type,F]|in_list[S,R]'],

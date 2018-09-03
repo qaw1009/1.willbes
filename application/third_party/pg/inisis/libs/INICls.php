@@ -1219,13 +1219,13 @@ class INICrypto {
     }
 
     function SymmEncrypt($src_data, &$enc_data, $key, $iv) {
-        $size = mcrypt_get_block_size(MCRYPT_3DES, MCRYPT_MODE_CBC);
+        $size = @mcrypt_get_block_size(MCRYPT_3DES, MCRYPT_MODE_CBC);
         $src_data = $this->pkcs5_pad($src_data, $size);
-        $cipher = mcrypt_module_open(MCRYPT_3DES, '', MCRYPT_MODE_CBC, '');
-        mcrypt_generic_init($cipher, $key, $iv);
-        $enc_data = mcrypt_generic($cipher, $src_data);
-        mcrypt_generic_deinit($cipher);
-        mcrypt_module_close($cipher);
+        $cipher = @mcrypt_module_open(MCRYPT_3DES, '', MCRYPT_MODE_CBC, '');
+        @mcrypt_generic_init($cipher, $key, $iv);
+        $enc_data = @mcrypt_generic($cipher, $src_data);
+        @mcrypt_generic_deinit($cipher);
+        @mcrypt_module_close($cipher);
 
         if (!$enc_data)
             return ENC_FINAL_ERR;
@@ -1235,11 +1235,11 @@ class INICrypto {
     }
 
     function SymmDecrypt($enc_data, &$dec_data, $key, $iv) {
-        $cipher = mcrypt_module_open(MCRYPT_3DES, '', MCRYPT_MODE_CBC, '');
-        mcrypt_generic_init($cipher, $key, $iv);
-        $dec_data = mdecrypt_generic($cipher, $enc_data);
-        mcrypt_generic_deinit($cipher);
-        mcrypt_module_close($cipher);
+        $cipher = @mcrypt_module_open(MCRYPT_3DES, '', MCRYPT_MODE_CBC, '');
+        @mcrypt_generic_init($cipher, $key, $iv);
+        $dec_data = @mdecrypt_generic($cipher, $enc_data);
+        @mcrypt_generic_deinit($cipher);
+        @mcrypt_module_close($cipher);
 
         if (!$dec_data)
             return false;

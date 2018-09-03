@@ -162,7 +162,7 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 식별자 세션 생성
         $this->cartFModel->makeSessCartIdx($arr_cart_idx);
 
-        return $this->json_result(true, '', [], ['ret_url' => site_url('/order/index?tab=' . $this->_reqP('cart_type'))]);
+        return $this->json_result(true, '', [], ['ret_url' => front_url('/order/index?tab=' . $this->_reqP('cart_type'))]);
     }
 
     /**

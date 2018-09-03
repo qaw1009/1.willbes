@@ -230,7 +230,7 @@ class Pg_inisis extends CI_Driver
                         throw new AuthException('망취소 테스트');*/
 
 /*                        // 승인취소 테스트
-                        $this->cancel([
+                        return $this->cancel([
                             'order_no' => $auth_results['MOID'],
                             'tid' => $auth_results['tid'],
                             'cancel_reason' => '취소 테스트'

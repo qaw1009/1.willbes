@@ -19,7 +19,11 @@ class Order extends \app\controllers\FrontController
 
     public function test($params = [])
     {
-        var_dump(explode('^', base64_decode('U3ViamVjdE5hbWVeMTEx'), 2));
+        $arr = ['1' => '', '2' => ''];
+
+        $s = implode(',', array_filter($arr));
+
+        dd($s);
     }
 
     /**
@@ -56,6 +60,22 @@ class Order extends \app\controllers\FrontController
             'arr_phone1_ccd' => $codes[$this->_phone1_ccd],
             'results' => $results
         ]);
+    }
+
+    /**
+     * 주문완료 페이지
+     * @param array $params
+     */
+    public function complete($params = [])
+    {
+        $order_no = $this->_req('order_no');
+        if (empty($order_no) === true) {
+            show_alert('필수 파라미터 오류입니다.', site_url('/cart/index'), false);
+        }
+        
+        // 주문정보 조회
+
+        $this->load->view('site/order/complete', []);
     }
 
     /**

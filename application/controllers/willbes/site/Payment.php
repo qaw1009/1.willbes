@@ -70,6 +70,7 @@ class Payment extends \app\controllers\FrontController
         $results = $this->orderFModel->getMakeCartReData(
             'pay', element('cart_type', $arr_input), $cart_rows, element('coupon_detail_idx', $arr_input, []), element('use_point', $arr_input)
         );
+
         if (is_array($results) === false) {
             return $this->json_error($results);
         }
@@ -86,7 +87,13 @@ class Payment extends \app\controllers\FrontController
             'site_code' => $this->_site_code,
             'pg_ccd' => config_app('PgCcd'),
             'repr_prod_name' => $results['repr_prod_name'],
-            'req_pay_price' => $results['total_pay_price']
+            'order_price' => $results['total_order_price'],
+            'req_pay_price' => $results['total_pay_price'],
+            'delivery_price' => $results['delivery_price'],
+            'delivery_add_price' => 0,
+            'coupon_disc_price' => $results['total_coupon_disc_price'],
+            'use_point' => $results['use_point'],
+            'save_point' => $results['total_save_point']
         ], $arr_input);
 
         if ($is_post_data !== true) {
@@ -103,7 +110,7 @@ class Payment extends \app\controllers\FrontController
             'order_mail' => $this->session->userdata('mem_mail'),
             'pay_method_ccd' => element('pay_method_ccd', $arr_input),
             'is_escrow' => element('is_escrow', $arr_input),
-            'return_prefix_url' => site_url('/payment/'),
+            'return_prefix_url' => front_url('/payment/'),
             'return_data' => ''
         ];
 
@@ -129,16 +136,16 @@ class Payment extends \app\controllers\FrontController
             show_alert('결제연동 중 오류가 발생하였습니다.', site_url('/cart/index'), false);
         }
 
-        var_dump($pay_results);
+        logger('pay_results', $pay_results);
 
         $result = $this->orderFModel->procOrder($pay_results);
         if ($result['ret_cd'] === true) {
             // 결제완료 페이지 이동
-            redirect($result['ret_url']);
+            redirect(front_url('/order/complete?order_no=' . $result['ret_data']));
         } else {
             // 결제취소
             $this->pg->cancel(['order_no' => $pay_results['order_no'], 'tid' => $pay_results['tid'], 'cancel_reason' => $result['ret_msg']]);
-            show_alert('결제연동 중 오류가 발생하였습니다.', site_url('/cart/index'), false);
+            show_alert($result['ret_msg'], site_url('/cart/index'), false);
         }
     }
 

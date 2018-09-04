@@ -29,7 +29,7 @@
                             @if(empty($data['CampusCcd_Name']) === false)<span class="oBox nyBox NSK">{{$data['CampusCcd_Name']}}</span>@endif
                             <span class="row-line">|</span>
                         </td>
-                        <td class="w-write">{{$data['RegName']}}<span class="row-line">|</span></td>
+                        <td class="w-write">{{hpSubString($data['RegName'],0,2,'*')}}<span class="row-line">|</span></td>
                         <td class="w-date">{{$data['RegDatm']}}</td>
                     </tr>
                     </thead>

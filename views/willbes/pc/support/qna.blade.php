@@ -86,12 +86,12 @@
                                     <td class="w-list tx-left pl20">
                                         <a href="{{site_url('support/qna/show?board_idx='.$row['BoardIdx'].'&isBestcheck='.$row['IsBest'].'&'.$get_params)}}">
                                             @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
-                                            {{$row['Title']}}
+                                            {{hpSubString($row['Title'],0,20,'...')}}
                                             @if($row['RegDatm'] == date('Y-m-d'))<img src="{{ img_url('prof/icon_N.gif') }}">@endif
                                             @if(empty($row['AttachData']) === false)<img src="{{ img_url('prof/icon_file.gif') }}">@endif
                                         </a>
                                     </td>
-                                    <td class="w-write">{{$row['RegName']}}</td>
+                                    <td class="w-write">{{hpSubString($row['RegName'],0,2,'*')}}</td>
                                     <td class="w-date">{{$row['RegDatm']}}</td>
                                     <td class="w-answer">
                                         @if($row['IsBest'] == 0)

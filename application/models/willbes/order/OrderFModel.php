@@ -340,7 +340,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문요청 데이터 조회
             $post_row = $this->_conn->getFindResult($this->_table['order_post_data'],
-                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderPrice, ReqPayPrice, CouponDiscPrice, UsePoint, SavePoint, UserCouponIdxJson, PostData',
+                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderPrice, ReqPayPrice, DeliveryPrice, DeliveryAddPrice, CouponDiscPrice, UsePoint, SavePoint, UserCouponIdxJson, PostData',
                 ['EQ' => ['OrderNo' => $order_no, 'MemIdx' => $sess_mem_idx]]
             );
 
@@ -355,6 +355,9 @@ class OrderFModel extends BaseOrderFModel
 
             $post_data = unserialize($post_row['PostData']);    // 주문 폼 데이터 unserialize
             $arr_user_coupon_idx = json_decode($post_row['UserCouponIdxJson'], true);   // 사용자 쿠폰
+            $is_pay_method_vbank = $this->_pay_method_ccd['vbank'] == $post_row['PayMethodCcd'];   // 가상계좌 여부
+            $pay_method_ccd = $is_pay_method_vbank === true ? $this->_pay_status_ccd['vbank_wait'] : $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료/입금대기)
+            $is_escrow = element('is_escrow', $post_data, 'N'); // 에스크로 결제 여부
             
             // 장바구니 조회
             $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N');
@@ -386,16 +389,19 @@ class OrderFModel extends BaseOrderFModel
                 'PgCcd' => $post_row['PgCcd'],
                 'PgMid' => $pay_results['mid'],
                 'PgTid' => $pay_results['tid'],
-                'OrderPrice' => $post_row['OrderPrice'],
+                'OrderPrice' => $post_row['OrderPrice'] + $post_row['DeliveryPrice'] + $post_row['DeliveryAddPrice'],
+                'OrderProdPrice' => $post_row['OrderPrice'],
                 'RealPayPrice' => $cart_results['total_pay_price'],
                 'CardPayPrice' => $cart_results['total_pay_price'],
                 'CashPayPrice' => '0',
+                'DeliveryPrice' => $post_row['DeliveryPrice'],
+                'DeliveryAddPrice' => $post_row['DeliveryAddPrice'],
                 'DiscPrice' => $post_row['CouponDiscPrice'],
                 'UseLecPoint' => ($post_row['CartType'] == 'book' ? 0 : $post_row['UsePoint']),
                 'UseBookPoint' => ($post_row['CartType'] == 'book' ? $post_row['UsePoint'] : 0),
                 'SaveLecPoint' => ($post_row['CartType'] == 'book' ? 0 : $post_row['SavePoint']),
                 'SaveBookPoint' => ($post_row['CartType'] == 'book' ? $post_row['SavePoint'] : 0),
-                'IsEscrow' => element('is_escrow', $post_data, 'N'),
+                'IsEscrow' => $is_escrow,
                 'IsCashReceipt' => 'N',
                 'IsDelivery' => ($cart_results['is_delivery_info'] === true ? 'Y' : 'N'),
                 'IsVisitPay' => 'N',
@@ -403,7 +409,7 @@ class OrderFModel extends BaseOrderFModel
                 'OrderIp' => $this->input->ip_address()
             ];
 
-            if ($this->_pay_method_ccd['vbank'] != $post_row['PayMethodCcd']) {
+            if ($is_pay_method_vbank === false) {
                 $this->_conn->set('CompleteDatm', 'NOW()', false);
             }
 
@@ -416,7 +422,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
-                $is_order_product = $this->addOrderProduct($order_idx, $this->_pay_status_ccd['paid'], $cart_row);
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_method_ccd, $is_escrow, $cart_row);
                 if ($is_order_product === false) {
                     throw new \Exception($is_order_product);
                 }
@@ -432,9 +438,9 @@ class OrderFModel extends BaseOrderFModel
             
             // TODO : 포인트 적립/차감
 
-            // 주문완료 장바구니 업데이트
-            $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->where_in('CartIdx', $sess_cart_idx)->where('MemIdx', $sess_mem_idx)
-                ->update($this->_table['cart']);
+            // 주문완료 장바구니 업데이트 (주문식별자, 만료일시 -> 현재시각으로 업데이트)
+            $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->set('ExpireDatm', 'NOW()', false)
+                ->where_in('CartIdx', $sess_cart_idx)->where('MemIdx', $sess_mem_idx)->update($this->_table['cart']);
             if ($is_complete_update === false) {
                 throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
             }
@@ -456,10 +462,11 @@ class OrderFModel extends BaseOrderFModel
      * 주문상품 등록
      * @param int $order_idx [주문식별자]
      * @param string $pay_status_ccd [결제상태 공통코드]
+     * @param string $is_escrow [에스크로 결제 여부, Y/N]
      * @param array $input [상품별 장바구니 데이터 배열]
      * @return bool|string
      */
-    public function addOrderProduct($order_idx, $pay_status_ccd, $input = [])
+    public function addOrderProduct($order_idx, $pay_status_ccd, $is_escrow = 'N', $input = [])
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
@@ -493,6 +500,19 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품 식별자
             $order_prod_idx = $this->_conn->insert_id();
+
+            // 주문상품배송정보 데이터 등록
+            if (element('IsDeliveryInfo', $input, 'N') == 'Y') {
+                $data = [
+                    'OrderProdIdx' => $order_prod_idx,
+                    'DeliveryCompCcd' => config_app('DeliveryCompCcd'),
+                    'IsEscrowSend' => $is_escrow
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['order_product_delivery_info']) === false) {
+                    throw new \Exception('주문상품 배송정보 등록에 실패했습니다.');
+                }
+            }
 
             // 회원쿠폰 사용 업데이트
             if (empty($user_coupon_idx) === false) {

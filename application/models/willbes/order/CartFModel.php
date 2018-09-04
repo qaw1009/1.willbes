@@ -113,6 +113,7 @@ class CartFModel extends BaseOrderFModel
             ],
             'RAW' => [
                 'CA.ExpireDatm > ' => 'NOW()',
+                'CA.ConnOrderIdx is ' => 'null',
                 'NOW() between ' => 'P.SaleStartDatm and P.SaleEndDatm',
                 '(P.ProdTypeCcd != ' => '"' . $this->_prod_type_ccd['book']. '" OR (P.ProdTypeCcd = "' . $this->_prod_type_ccd['book']. '" and WB.wSaleCcd = "' . $this->_available_sale_status_ccd['book']. '"))'
             ]

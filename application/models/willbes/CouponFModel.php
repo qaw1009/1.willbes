@@ -121,7 +121,8 @@ class CouponFModel extends WB_Model
                 and C.IsIssue = "Y"
                 and C.IsStatus = "Y"                
                 and now() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
-                and CD.ValidStatus = "Y"                                
+                and CD.ValidStatus = "Y"    
+                and CD.IsUse = "N"  # 미사용 쿠폰                            
                 and C.ApplyTypeCcd = ?   # 상품분류 구분                     
                 and C.DiscAllowPrice <= ?    # 할인허용가능금액            
                 and (                

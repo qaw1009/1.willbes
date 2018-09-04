@@ -46,6 +46,7 @@ class OrderFModel extends BaseOrderFModel
         }
 
         $results = [];
+        $total_prod_cnt = 0;
         $total_order_price = 0;
         $total_prod_pay_price = 0;
         $total_coupon_disc_price = 0;
@@ -54,6 +55,7 @@ class OrderFModel extends BaseOrderFModel
         $delivery_pay_price = 0;
         $is_delivery_info = false;
         $is_package = false;
+        $arr_user_coupon_idx = [];
         $use_point = get_var($use_point, 0);
 
         foreach ($cart_rows as $idx => $row) {
@@ -88,16 +90,22 @@ class OrderFModel extends BaseOrderFModel
                 }
             } else {
                 // 결제할 경우 쿠폰할인금액 조회
-                $row['CouponDiscPrice'] = $this->getCouponDiscPrice(element($row['CartIdx'], $arr_coupon_detail_idx), $row);
+                $coupon_disc_row = $this->getCouponDiscPrice(element($row['CartIdx'], $arr_coupon_detail_idx, ''), $row);
+                $row['UserCouponIdx'] = $coupon_disc_row['UserCouponIdx'];
+                $row['CouponDiscPrice'] = $coupon_disc_row['CouponDiscPrice'];
+                $row['CouponDiscType'] = $coupon_disc_row['CouponDiscType'];
+                $row['CouponDiscRate'] = $coupon_disc_row['CouponDiscRate'];
+
                 $row['RealPayPrice'] -= $row['CouponDiscPrice'];
                 $total_coupon_disc_price += $row['CouponDiscPrice'];
+                $arr_user_coupon_idx[$row['CartIdx']] = $row['UserCouponIdx'];
             }
 
             // 적립 포인트 (학원강좌, 배송료 상품일 경우 포인트 적립 불가)
             if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y' || $row['CartType'] == 'off_lecture' || $row['CartProdType'] == 'delivery_price') {
                 $row['RealSavePoint'] = 0;
             } else {
-                $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? $row['RealPayPrice'] * ($row['PointSavePrice'] / 100) : $row['PointSavePrice'];
+                $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? (int) ($row['RealPayPrice'] * ($row['PointSavePrice'] / 100)) : $row['PointSavePrice'];
             }
 
             // 배송정보 입력 여부
@@ -115,10 +123,11 @@ class OrderFModel extends BaseOrderFModel
                 $delivery_price = $row['RealSalePrice'];
                 $delivery_pay_price = $row['RealPayPrice'];
             } else {
-                // 전체상품 주문금액, 실제 결제금액, 실제 적립 포인트
+                // 전체상품 주문금액, 실제 결제금액, 실제 적립 포인트, 전체상품수
                 $total_order_price += $row['RealSalePrice'];
                 $total_prod_pay_price += $row['RealPayPrice'];
                 $total_save_point += $row['RealSavePoint'];
+                $total_prod_cnt++;
             }
 
             $results['list'][] = $row;
@@ -130,16 +139,17 @@ class OrderFModel extends BaseOrderFModel
             if ($check_use_point !== true) {
                 return $check_use_point;
             }
-
-            $results['use_point'] = $use_point;     // 사용포인트
         }
 
         $results['delivery_price'] = $delivery_price;   // 주문 배송료
         $results['delivery_pay_price'] = $delivery_pay_price;   // 실제 결제 배송료
-        $results['total_prod_cnt'] = count($results['list']);   // 전체상품 갯수
+        $results['total_prod_cnt'] = $total_prod_cnt;   // 전체상품 갯수
         $results['total_order_price'] = $total_order_price;     // 전체 주문금액
         $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 - 사용포인트
+        $results['total_coupon_disc_price'] = $total_coupon_disc_price; // 전체 쿠폰할인금액
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
+        $results['user_coupon_idxs'] = $arr_user_coupon_idx;     // 유효한 사용자 쿠폰식별자 배열
+        $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($results['total_prod_cnt'] > 1 ? ' 외 ' . ($results['total_prod_cnt'] - 1) . '건' : '');   // 대표 주문상품명
@@ -152,7 +162,7 @@ class OrderFModel extends BaseOrderFModel
      * 주문상품 쿠폰적용 할인금액 리턴
      * @param $coupon_detail_idx
      * @param array $cart_row
-     * @return int
+     * @return array
      */
     public function getCouponDiscPrice($coupon_detail_idx, $cart_row = [])
     {
@@ -160,7 +170,7 @@ class OrderFModel extends BaseOrderFModel
         $this->load->loadModels(['couponF']);
 
         if (empty($coupon_detail_idx) === true || empty($cart_row) === true || $cart_row['IsCoupon'] != 'Y') {
-            return 0;
+            return ['UserCouponIdx' => '', 'CouponDiscPrice' => 0, 'CouponDiscType' => 'R', 'CouponDiscRate' => 0];
         }
 
         $arr_param = [
@@ -180,10 +190,13 @@ class OrderFModel extends BaseOrderFModel
         // 쿠폰 정보
         $coupon_row = element('0', $this->couponFModel->listMemberProductCoupon(false, $arr_param), []);
         if (empty($coupon_row) === true) {
-            return 0;
+            return ['UserCouponIdx' => '', 'CouponDiscPrice' => 0, 'CouponDiscType' => 'R', 'CouponDiscRate' => 0];
         }
+        
+        // 할인금액 계산
+        $coupon_disc_price = $coupon_row['DiscType'] === 'R' ? (int) ($cart_row['RealSalePrice'] * ($coupon_row['DiscRate'] / 100)) : $coupon_row['DiscRate'];
 
-        return $coupon_row['DiscType'] === 'R' ? (int) ($cart_row['RealSalePrice'] * ($coupon_row['DiscRate'] / 100)) : $coupon_row['DiscRate'];
+        return ['UserCouponIdx' => $coupon_detail_idx, 'CouponDiscPrice' => $coupon_disc_price, 'CouponDiscType' => $coupon_row['DiscType'], 'CouponDiscRate' => $coupon_row['DiscRate']];
     }
 
     /**
@@ -244,13 +257,20 @@ class OrderFModel extends BaseOrderFModel
             $data = [
                 'OrderNo' => element('order_no', $params),
                 'MemIdx' => $this->session->userdata('mem_idx'),
-                'CartType' => element('cart_type', $input),
-                'CartIdxs' => implode(',', element('cart_idx', $input)),
+                'CartType' => element('cart_type', $params),
+                'CartIdxs' => implode(',', element('cart_idxs', $params)),
                 'SiteCode' => element('site_code', $params),
                 'PgCcd' => element('pg_ccd', $params),
-                'PayMethodCcd' => element('pay_method_ccd', $input),
+                'PayMethodCcd' => element('pay_method_ccd', $params),
                 'ReprProdName' => element('repr_prod_name', $params),
+                'OrderPrice' => element('order_price', $params),
                 'ReqPayPrice' => element('req_pay_price', $params),
+                'DeliveryPrice' => element('delivery_price', $params),
+                'DeliveryAddPrice' => element('delivery_add_price', $params),
+                'CouponDiscPrice' => element('coupon_disc_price', $params),
+                'UsePoint' => element('use_point', $params),
+                'SavePoint' => element('save_point', $params),
+                'UserCouponIdxJson' => element('user_coupon_idx_json', $params, ''),
                 'PostData' => serialize($input),
                 'RegIp' => $this->input->ip_address()
             ];
@@ -305,13 +325,14 @@ class OrderFModel extends BaseOrderFModel
     public function procOrder($pay_results = [])
     {
         $this->load->loadModels(['order/cartF']);   // 장바구니 모델 로드
+        $order_no = $pay_results['order_no'];   // 결제모듈에서 전달받은 주문번호
+
         $this->_conn->trans_begin();
         
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $sess_cart_idx = $this->cartFModel->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
-            $order_no = $pay_results['order_no'];
 
             if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no) {
                 throw new \Exception('잘못된 접근입니다.');
@@ -319,18 +340,39 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문요청 데이터 조회
             $post_row = $this->_conn->getFindResult($this->_table['order_post_data'],
-                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, ReqPayPrice, PostData',
+                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderPrice, ReqPayPrice, CouponDiscPrice, UsePoint, SavePoint, UserCouponIdxJson, PostData',
                 ['EQ' => ['OrderNo' => $order_no, 'MemIdx' => $sess_mem_idx]]
             );
 
             if (empty($post_row) === true) {
                 throw new \Exception('주문요청 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
+
+            // 장바구니 식별자 세션과 결제요청 장바구니 식별자 비교
+            if (empty(array_diff($sess_cart_idx, explode(',', $post_row['CartIdxs']))) === false) {
+                throw new \Exception('잘못된 접근입니다.');
+            }
+
+            $post_data = unserialize($post_row['PostData']);    // 주문 폼 데이터 unserialize
+            $arr_user_coupon_idx = json_decode($post_row['UserCouponIdxJson'], true);   // 사용자 쿠폰
             
-            // 주문 폼 데이터 unserialize
-            $post_data = unserialize($post_row['PostData']);
-            
-            // 장바구니 데이터 조회
+            // 장바구니 조회
+            $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N');
+
+            // 장바구니 데이터 가공
+            $cart_results = $this->orderFModel->getMakeCartReData(
+                'pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx, $post_row['UsePoint']
+            );
+
+            if (is_array($cart_results) === false) {
+                throw new \Exception($cart_results);
+            }
+
+            // TODO : 테스트 (추후 주석 삭제)
+/*            // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
+            if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
+                throw new \Exception('결제금액정보가 올바르지 않습니다.');
+            }*/
 
             // 주문 데이터 등록
             $data = [
@@ -338,24 +380,24 @@ class OrderFModel extends BaseOrderFModel
                 'MemIdx' => $sess_mem_idx,
                 'SiteCode' => $post_row['SiteCode'],
                 'ReprProdName' => $post_row['ReprProdName'],
-                'PayChannelCcd' => $this->_pay_channel_ccd[APP_DEVICE],
-                'PayRouteCcd' => $this->_pay_route_ccd['pg'],
+                'PayChannelCcd' => element(APP_DEVICE, $this->_pay_channel_ccd),
+                'PayRouteCcd' => element('pg', $this->_pay_route_ccd),
                 'PayMethodCcd' => $post_row['PayMethodCcd'],
                 'PgCcd' => $post_row['PgCcd'],
                 'PgMid' => $pay_results['mid'],
                 'PgTid' => $pay_results['tid'],
-                'OrderPrice' => '',
-                'RealPayPrice' => $pay_results['total_pay_price'],
-                'CardPayPrice' => $pay_results['total_pay_price'],
+                'OrderPrice' => $post_row['OrderPrice'],
+                'RealPayPrice' => $cart_results['total_pay_price'],
+                'CardPayPrice' => $cart_results['total_pay_price'],
                 'CashPayPrice' => '0',
-                'DiscPrice' => '',
-                'UseLecPoint' => '',
-                'UseBookPoint' => '',
-                'SaveLecPoint' => '',
-                'SaveBookPoint' => '',
+                'DiscPrice' => $post_row['CouponDiscPrice'],
+                'UseLecPoint' => ($post_row['CartType'] == 'book' ? 0 : $post_row['UsePoint']),
+                'UseBookPoint' => ($post_row['CartType'] == 'book' ? $post_row['UsePoint'] : 0),
+                'SaveLecPoint' => ($post_row['CartType'] == 'book' ? 0 : $post_row['SavePoint']),
+                'SaveBookPoint' => ($post_row['CartType'] == 'book' ? $post_row['SavePoint'] : 0),
                 'IsEscrow' => element('is_escrow', $post_data, 'N'),
                 'IsCashReceipt' => 'N',
-                'IsDelivery' => 'N',
+                'IsDelivery' => ($cart_results['is_delivery_info'] === true ? 'Y' : 'N'),
                 'IsVisitPay' => 'N',
                 'GwIdx' => $this->session->userdata('gw_idx'),
                 'OrderIp' => $this->input->ip_address()
@@ -369,13 +411,143 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('주문 정보 등록에 실패했습니다.');
             }
 
-            // 주문 정보 식별자
+            // 주문 식별자
             $order_idx = $this->_conn->insert_id();
 
-            return ['ret_cd' => true, 'ret_msg' => '', 'ret_url' => ''];
+            // 주문상품 데이터 등록
+            foreach ($cart_results['list'] as $idx => $cart_row) {
+                $is_order_product = $this->addOrderProduct($order_idx, $this->_pay_status_ccd['paid'], $cart_row);
+                if ($is_order_product === false) {
+                    throw new \Exception($is_order_product);
+                }
+            }
+
+            // 주문배송주소 데이터 등록
+            if ($cart_results['is_delivery_info'] === true) {
+                $is_order_delivery_address = $this->addOrderDeliveryAddress($order_idx, $post_data);
+                if ($is_order_delivery_address === false) {
+                    throw new \Exception($is_order_delivery_address);
+                }
+            }
+            
+            // TODO : 포인트 적립/차감
+
+            // 주문완료 장바구니 업데이트
+            $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->where_in('CartIdx', $sess_cart_idx)->where('MemIdx', $sess_mem_idx)
+                ->update($this->_table['cart']);
+            if ($is_complete_update === false) {
+                throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
-            return error_result($e);            
-        }        
+            return error_result($e);
+        } finally {
+            // 장바구니 식별자, 주문번호 세션 삭제
+            $this->destroySessCartIdx();
+            $this->destroySessOrderNo();
+        }
+
+        return ['ret_cd' => true, 'ret_data' => $order_no];
+    }
+
+    /**
+     * 주문상품 등록
+     * @param int $order_idx [주문식별자]
+     * @param string $pay_status_ccd [결제상태 공통코드]
+     * @param array $input [상품별 장바구니 데이터 배열]
+     * @return bool|string
+     */
+    public function addOrderProduct($order_idx, $pay_status_ccd, $input = [])
+    {
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $user_coupon_idx = element('UserCouponIdx', $input, 0);
+
+            $data = [
+                'OrderIdx' => $order_idx,
+                'MemIdx' => $sess_mem_idx,
+                'ProdCode' => element('ProdCode', $input),
+                'ProdCodeSub' => element('ProdCodeSub', $input),
+                'ParentProdCode' => element('ParentProdCode', $input),
+                'SaleTypeCcd' => element('SaleTypeCcd', $input),
+                'PayStatusCcd' => $pay_status_ccd,
+                'OrderPrice' => element('RealSalePrice', $input),
+                'RealPayPrice' => element('RealPayPrice', $input),
+                'CardPayPrice' => element('RealPayPrice', $input),
+                'CashPayPrice' => 0,
+                'DiscPrice' => element('CouponDiscPrice', $input, 0),
+                'DiscRate' => element('CouponDiscRate', $input, 0),
+                'DiscType' => element('CouponDiscType', $input, 'R'),
+                'DiscReason' => (empty($user_coupon_idx) === false  ? '쿠폰사용' : ''),
+                'UsePoint' => element('RealUsePoint', $input, 0),   // TODO : 상품결제금액별 사용포인트 분할 계산 값 저장 필요
+                'SavePoint' => element('RealSavePoint', $input, 0),
+                'IsUseCoupon' => (empty($user_coupon_idx) === false  ? 'Y' : 'N'),
+                'UserCouponIdx' => $user_coupon_idx
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['order_product']) === false) {
+                throw new \Exception('주문상품 정보 등록에 실패했습니다.');
+            }
+
+            // 주문상품 식별자
+            $order_prod_idx = $this->_conn->insert_id();
+
+            // 회원쿠폰 사용 업데이트
+            if (empty($user_coupon_idx) === false) {
+                $this->load->loadModels(['couponF']);   // 쿠폰 모델 로드
+                
+                $is_udpate = $this->couponFModel->modifyUseMemberCoupon($user_coupon_idx, $order_prod_idx);
+                if ($is_udpate !== true) {
+                    throw new \Exception($is_udpate);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문배송주소 정보 등록
+     * @param int $order_idx [주문식별자]
+     * @param array $input [주문배송주소 데이터 배열]
+     * @return bool|string
+     */
+    public function addOrderDeliveryAddress($order_idx, $input = [])
+    {
+        try {
+            $receiver_tel = element('receiver_tel1', $input) . '' . element('receiver_tel2', $input) . '' . element('receiver_tel3', $input);
+            $receiver_phone = element('receiver_phone1', $input) . '' . element('receiver_phone2', $input) . '' . element('receiver_phone3', $input);
+
+            $data = [
+                'OrderIdx' => $order_idx,
+                'Receiver' => element('receiver', $input),
+                'ReceiverTel1' => element('receiver_tel1', $input),
+                'ReceiverTel3' => element('receiver_tel3', $input),
+                'ReceiverPhone1' => element('receiver_phone1', $input),
+                'ReceiverPhone3' => element('receiver_phone3', $input),
+                'ZipCode' => element('zipcode', $input),
+                'Addr1' => element('addr1', $input),
+                'DeliveryMemo' => element('delivery_memo', $input),
+            ];
+
+            $this->_conn->set($data)
+                ->set('ReceiverTel2Enc', 'fn_enc("' . element('receiver_tel2', $input, '') . '")', false)
+                ->set('ReceiverTelEnc', 'fn_enc("' . $receiver_tel . '")', false)
+                ->set('ReceiverPhone2Enc', 'fn_enc("' . element('receiver_phone2', $input, '') . '")', false)
+                ->set('ReceiverPhoneEnc', 'fn_enc("' . $receiver_phone . '")', false)
+                ->set('Addr2Enc', 'fn_enc("' . element('addr2', $input, '') . '")', false);
+
+            if ($this->_conn->insert($this->_table['order_delivery_address']) === false) {
+                throw new \Exception('주문 배송주소 정보 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 }

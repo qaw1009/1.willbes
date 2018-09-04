@@ -84,8 +84,11 @@ class Payment extends \app\controllers\FrontController
         // 주문요청 데이터 저장
         $is_post_data = $this->orderFModel->addOrderPostData([
             'order_no' => $order_no,
+            'cart_type' => $results['cart_type'],
+            'cart_idxs' => $sess_cart_idx,
             'site_code' => $this->_site_code,
             'pg_ccd' => config_app('PgCcd'),
+            'pay_method_ccd' => element('pay_method_ccd', $arr_input),
             'repr_prod_name' => $results['repr_prod_name'],
             'order_price' => $results['total_order_price'],
             'req_pay_price' => $results['total_pay_price'],
@@ -93,7 +96,8 @@ class Payment extends \app\controllers\FrontController
             'delivery_add_price' => 0,
             'coupon_disc_price' => $results['total_coupon_disc_price'],
             'use_point' => $results['use_point'],
-            'save_point' => $results['total_save_point']
+            'save_point' => $results['total_save_point'],
+            'user_coupon_idx_json' => json_encode($results['user_coupon_idxs'])
         ], $arr_input);
 
         if ($is_post_data !== true) {

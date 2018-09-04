@@ -55,7 +55,7 @@ class CouponFModel extends WB_Model
             where CD.MemIdx = ?
                 and C.IsIssue = "Y"
                 and C.IsStatus = "Y"';
-        
+
         // where 조건
         $arr_condition = [
             'EQ' => ['C.SiteCode' => element('SiteCode', $arr_param)],
@@ -170,5 +170,34 @@ class CouponFModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, $arr_binding);
 
         return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 회원쿠폰 사용 처리 업데이트
+     * @param int $coupon_detail_idx [사용자쿠폰 식별자]
+     * @param int $order_prod_idx [주문상품 식별자] 
+     * @return bool|string
+     */
+    public function modifyUseMemberCoupon($coupon_detail_idx, $order_prod_idx)
+    {
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+
+            $data = [
+                'UseOrderProdIdx' => $order_prod_idx,
+                'IsUse' => 'Y'
+            ];
+
+            $is_update = $this->_conn->set($data)->set('UseDatm', 'NOW()', false)->where('CdIdx', $coupon_detail_idx)->where('MemIdx', $sess_mem_idx)
+                ->update($this->_table['coupon_detail']);
+
+            if ($is_update === false) {
+                throw new \Exception('회원쿠폰 사용 업데이트에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 }

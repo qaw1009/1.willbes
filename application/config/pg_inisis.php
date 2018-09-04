@@ -31,5 +31,6 @@ $config = [
         '604002' => 'DirectBank',
         '604003' => 'VBank',
         '604004' => 'HPP',
-    ]
+    ],
+    'receipt_url' => 'https://iniweb.inicis.com/mall/cr/cm/mCmReceipt_head.jsp?noMethod=1&noTid={{$tid$}}'
 ];

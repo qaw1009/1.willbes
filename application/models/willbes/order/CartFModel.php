@@ -296,7 +296,7 @@ class CartFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');
             $gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
-            $total_order_price = 0;
+            $total_order_prod_price = 0;
             $arr_is_freebies_trans = [];
 
             // 장바구니 데이터 조회
@@ -307,12 +307,12 @@ class CartFModel extends BaseOrderFModel
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
                 
                 // 전체상품 주문금액
-                $total_order_price += $row['RealSalePrice'];
+                $total_order_prod_price += $row['RealSalePrice'];
             }
 
             // 배송료 계산
             if ($cart_type == 'book') {
-                $delivery_price = $this->getBookDeliveryPrice($total_order_price);
+                $delivery_price = $this->getBookDeliveryPrice($total_order_prod_price);
             } else {
                 $delivery_price = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
             }

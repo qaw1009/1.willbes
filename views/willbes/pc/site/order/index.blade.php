@@ -107,7 +107,7 @@
                             <dl class="priceBox">
                                 <dt>
                                     <div>상품주문금액</div>
-                                    <div class="price tx-light-blue">{{ number_format($results['total_order_price']) }}원</div>
+                                    <div class="price tx-light-blue">{{ number_format($results['total_prod_order_price']) }}원</div>
                                 </dt>
                                 <dt class="price-img">
                                     <span class="row-line">|</span>
@@ -529,7 +529,7 @@
                     '_method' : 'POST',
                     'cart_type' : '{{ $results['cart_type'] }}',
                     'use_point' : use_point,
-                    'total_prod_pay_price' : parseInt('{{ $results['total_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, '')),
+                    'total_prod_pay_price' : parseInt('{{ $results['total_prod_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, '')),
                     'is_package' : '{{ $results['is_package'] === true ? 'Y' : 'N' }}'
                 };
                 sendAjax(url, data, function (ret) {
@@ -544,14 +544,14 @@
 
             // 결제금액 계산 및 표기
             $regi_form.on('change', '.chk_price', function() {
-                var total_order_price = parseInt('{{ $results['total_order_price'] }}');      // 전체상품주문금액
+                var total_prod_order_price = parseInt('{{ $results['total_prod_order_price'] }}');      // 전체상품주문금액
                 var delivery_price = parseInt('{{ $results['delivery_price'] }}');     // 배송료
                 var point_disc_price = parseInt($regi_form.find('input[name="use_point"]').val()) || 0;        // 포인트 사용금액
                 var total_coupon_disc_price = 0;      // 쿠폰할인금액
                 $regi_form.find('.chk_coupon').each(function() {
                     total_coupon_disc_price += parseInt($(this).data('coupon-disc-price'));
                 });
-                var total_pay_price = total_order_price - total_coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
+                var total_pay_price = total_prod_order_price - total_coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
 
                 // 금액표기
                 $regi_form.find('#total_coupon_disc_price').html(addComma(total_coupon_disc_price));

@@ -47,7 +47,7 @@ class OrderFModel extends BaseOrderFModel
 
         $results = [];
         $total_prod_cnt = 0;
-        $total_order_price = 0;
+        $total_prod_order_price = 0;
         $total_prod_pay_price = 0;
         $total_coupon_disc_price = 0;
         $total_save_point = 0;
@@ -124,7 +124,7 @@ class OrderFModel extends BaseOrderFModel
                 $delivery_pay_price = $row['RealPayPrice'];
             } else {
                 // 전체상품 주문금액, 실제 결제금액, 실제 적립 포인트, 전체상품수
-                $total_order_price += $row['RealSalePrice'];
+                $total_prod_order_price += $row['RealSalePrice'];
                 $total_prod_pay_price += $row['RealPayPrice'];
                 $total_save_point += $row['RealSavePoint'];
                 $total_prod_cnt++;
@@ -141,10 +141,9 @@ class OrderFModel extends BaseOrderFModel
             }
         }
 
-        $results['delivery_price'] = $delivery_price;   // 주문 배송료
-        $results['delivery_pay_price'] = $delivery_pay_price;   // 실제 결제 배송료
         $results['total_prod_cnt'] = $total_prod_cnt;   // 전체상품 갯수
-        $results['total_order_price'] = $total_order_price;     // 전체 주문금액
+        $results['total_prod_order_price'] = $total_prod_order_price;     // 전체 상품주문금액
+        $results['delivery_price'] = $delivery_price;   // 주문 배송료
         $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 - 사용포인트
         $results['total_coupon_disc_price'] = $total_coupon_disc_price; // 전체 쿠폰할인금액
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
@@ -263,7 +262,7 @@ class OrderFModel extends BaseOrderFModel
                 'PgCcd' => element('pg_ccd', $params),
                 'PayMethodCcd' => element('pay_method_ccd', $params),
                 'ReprProdName' => element('repr_prod_name', $params),
-                'OrderPrice' => element('order_price', $params),
+                'OrderProdPrice' => element('order_prod_price', $params),
                 'ReqPayPrice' => element('req_pay_price', $params),
                 'DeliveryPrice' => element('delivery_price', $params),
                 'DeliveryAddPrice' => element('delivery_add_price', $params),
@@ -340,7 +339,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문요청 데이터 조회
             $post_row = $this->_conn->getFindResult($this->_table['order_post_data'],
-                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderPrice, ReqPayPrice, DeliveryPrice, DeliveryAddPrice, CouponDiscPrice, UsePoint, SavePoint, UserCouponIdxJson, PostData',
+                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderProdPrice, ReqPayPrice, DeliveryPrice, DeliveryAddPrice, CouponDiscPrice, UsePoint, SavePoint, UserCouponIdxJson, PostData',
                 ['EQ' => ['OrderNo' => $order_no, 'MemIdx' => $sess_mem_idx]]
             );
 
@@ -389,8 +388,8 @@ class OrderFModel extends BaseOrderFModel
                 'PgCcd' => $post_row['PgCcd'],
                 'PgMid' => $pay_results['mid'],
                 'PgTid' => $pay_results['tid'],
-                'OrderPrice' => $post_row['OrderPrice'] + $post_row['DeliveryPrice'] + $post_row['DeliveryAddPrice'],
-                'OrderProdPrice' => $post_row['OrderPrice'],
+                'OrderPrice' => $post_row['OrderProdPrice'] + $post_row['DeliveryPrice'] + $post_row['DeliveryAddPrice'],
+                'OrderProdPrice' => $post_row['OrderProdPrice'],
                 'RealPayPrice' => $cart_results['total_pay_price'],
                 'CardPayPrice' => $cart_results['total_pay_price'],
                 'CashPayPrice' => '0',

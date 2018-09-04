@@ -90,7 +90,7 @@ class Payment extends \app\controllers\FrontController
             'pg_ccd' => config_app('PgCcd'),
             'pay_method_ccd' => element('pay_method_ccd', $arr_input),
             'repr_prod_name' => $results['repr_prod_name'],
-            'order_price' => $results['total_order_price'],
+            'order_prod_price' => $results['total_prod_order_price'],
             'req_pay_price' => $results['total_pay_price'],
             'delivery_price' => $results['delivery_price'],
             'delivery_add_price' => 0,

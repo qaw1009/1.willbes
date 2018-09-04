@@ -83,7 +83,7 @@
                                     <td class="w-process"><div class="pBox p5">{{$row['SiteGroupName']}}</div></td>
                                     <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
                                     <td class="w-A">{{$row['TypeCcd_Name']}}</td>
-                                    <td class="w-list tx-left pl20">
+                                    <td class="w-list tx-left pl20 {{($row['IsBest'] == 1) ? 'strong' : ''}}">
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                             <a href="javascript:void(0);">
                                         @else

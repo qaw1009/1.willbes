@@ -48,7 +48,11 @@
                     </tr>
                     <tr>
                         <td class="w-txt answer tx-left" colspan="3">
-                            {!! $data['Content'] !!}
+                            @if($data['RegType'] == 1)
+                                {!! $data['Content'] !!}
+                            @else
+                                {!! nl2br($data['Content']) !!}
+                            @endif
                         </td>
                     </tr>
                     </tbody>

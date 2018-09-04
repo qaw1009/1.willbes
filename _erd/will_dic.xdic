@@ -203,4 +203,7 @@
   <term name="방문" physicalName="Visit"/>
   <term name="게이트웨이" description="Gateway" physicalName="Gw"/>
   <term name="발송" physicalName="Send" physicalDescription="Send"/>
+  <term name="결과" physicalName="Result"/>
+  <term name="메시지" description="Message" physicalName="Msg" physicalDescription="Msg"/>
+  <term name="메세지" description="Message" physicalName="Msg" physicalDescription="Msg"/>
 </tm:TermDictionary>

@@ -103,6 +103,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                            @php $paging['rownum']-- @endphp
                             @endforeach
                             </tbody>
                         </table>

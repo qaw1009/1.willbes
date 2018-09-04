@@ -6,7 +6,7 @@ require_once APPPATH . 'controllers/willbes/share/support/basesupport.php';
 class SupportQna extends BaseSupport
 {
     protected $models = array('categoryF', 'support/supportBoardTwoWayF', '_lms/sys/site', '_lms/sys/code');
-    protected $helpers = array();
+    protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store');
 
@@ -250,9 +250,8 @@ class SupportQna extends BaseSupport
 
     /**
      * 고객센터 > 상담게시판 등록/수정
-     * @param array $params
      */
-    public function store($params = [])
+    public function store()
     {
         $idx = '';
         $arr_input = array_merge($this->_reqG(null));
@@ -301,13 +300,17 @@ class SupportQna extends BaseSupport
 
         //_addBoard, _modifyBoard
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
-        if (empty($result) === true) {
-            show_alert('처리 실패입니다. 관리자에게 문의해주세요.', 'back');
+
+        if (empty($result['ret_status']) === false) {
+            show_alert('등록 실패입니다. 확인 후 다시 등록해 주세요.', 'back');
         }
 
         show_alert($msg, '/support/qna/index?'.$get_params);
     }
 
+    /**
+     * 고객센터 > 상담게시판 삭제
+     */
     public function delete()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -321,7 +324,7 @@ class SupportQna extends BaseSupport
 
         $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, $this->_groupCcd['reply_status_ccd_complete']);
 
-        if (empty($result) === true) {
+        if (empty($result['ret_status']) === false) {
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 

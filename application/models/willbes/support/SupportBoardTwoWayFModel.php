@@ -92,10 +92,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $this->load->library('upload');
             //$upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
             $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].'');
 
             if (is_array($uploaded) === false) {
-                throw new \Exception($uploaded);
+                throw new \Exception('파일 등록에 실패했습니다.');
             }
 
             foreach ($uploaded as $idx => $attach_files) {

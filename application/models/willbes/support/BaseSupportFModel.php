@@ -16,6 +16,12 @@ class BaseSupportFModel extends WB_Model
         ,'site' => 'lms_site'
     ];
 
+    //등록파일 확장자 허용 설정
+    protected $upload_file_rule = [
+        'allowed_types' => 'hwp|doc|pdf|jpg|gif|png|zip',
+        'overwrite' => 'false'
+    ];
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -212,7 +218,8 @@ class BaseSupportFModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].'');
 
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);

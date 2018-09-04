@@ -13,6 +13,8 @@ class Package extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    private $_learn_pattern = 'adminpack_lecture';  //운영자패키지(추천, 선택 패키지) 공통
+
     /**
      * 패키지 목록
      * @param array $params
@@ -54,7 +56,7 @@ class Package extends \app\controllers\FrontController
             ]
         ];
 
-        $list = $this->packageFModel->listSalesProduct('adminpack_lecture',false,$arr_condition,null,null,['ProdCode'=>'desc']);
+        $list = $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,['ProdCode'=>'desc']);
 
         $prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
 
@@ -90,7 +92,7 @@ class Package extends \app\controllers\FrontController
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
-        $data['lecture'] = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);
+        $data['lecture'] = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code);
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
 
         $this->load->view('site/package/info_modal', [
@@ -132,7 +134,7 @@ class Package extends \app\controllers\FrontController
         }
 
 
-        $data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $prod_code);  //상품 정보 추출
+        $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code);  //상품 정보 추출
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
@@ -140,7 +142,7 @@ class Package extends \app\controllers\FrontController
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
 
-        $data_sublist = $this->packageFModel->subListProduct($prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
+        $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
 
         foreach ($data_sublist as $idx => $row) {
             $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);

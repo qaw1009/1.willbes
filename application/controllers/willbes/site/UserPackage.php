@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserPackage extends \app\controllers\FrontController
 {
-    protected $models = array('product/baseProductF', 'product/userPackageF');
+    protected $models = array('product/baseProductF', 'product/packageF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -13,6 +13,7 @@ class UserPackage extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    private $_learn_pattern = 'userpack_lecture';  //사용자 패키지
 
     /**
      * 패키지 상세 보기
@@ -36,12 +37,12 @@ class UserPackage extends \app\controllers\FrontController
 
         $order_by=[];
 
-        $data = $this->userPackageFModel->findProductByProdCode('userpack_lecture', $prod_code);  //상품 정보 추출
+        $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code);  //상품 정보 추출
         $data['PackSaleData'] = json_decode($data['PackSaleData'], true);
-        $data_sublist = $this->userPackageFModel->subListProduct($prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
+        $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
         $selected_subjects = array_pluck($data_sublist, 'SubjectName', 'SubjectIdx');
 
-        $data_landing = $this->userPackageFModel->findProductLanding($lidx);
+        $data_landing = $this->packageFModel->findProductLanding($lidx);
 
         foreach ($data_sublist as $idx => $row) {
             $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);

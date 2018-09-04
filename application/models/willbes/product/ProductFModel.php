@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ProductFModel extends WB_Model
 {
-    private $_table = [
+    protected $_table = [
         'on_lecture' => 'vw_product_on_lecture',
         'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',

@@ -307,6 +307,9 @@ strong {
 	font-weight: 700;
 	vertical-align: baseline;
 }
+select[disabled] {
+  background: #eee;
+}
 .GM {
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
 }

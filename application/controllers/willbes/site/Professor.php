@@ -3,10 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\FrontController
 {
-    protected $models = array('product/baseProductF', 'product/lectureF', 'product/packageF', 'product/professorF');
+    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/professorF', 'support/supportBoardF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
+
+    protected $_bm_idx = '63';       //bmidx : 강사게시판 : 공지사항
+    protected $_paging_limit = 10;
+    protected $_paging_count = 10;
 
     public function __construct()
     {
@@ -198,6 +202,54 @@ class Professor extends \app\controllers\FrontController
     }
 
     /**
+     * 공지사항 탭
+     * @param $prof_idx
+     * @param $arr_input
+     * @return array
+     */
+    private function _tab_notice_list($prof_idx, $arr_input)
+    {
+        $list = null;
+        $get_params = '';
+
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+                'BmIdx' => $this->_bm_idx,
+                'ProfIdx' => $prof_idx,
+                'SubjectIdx' =>element('subject_idx',$arr_input)
+            ],
+            'LKB' => ['Category_String'=>$this->_cate_code]
+        ];
+
+        $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, AreaCcd
+                   ,Title, (ReadCnt + SettingReadCnt) as TotalReadCnt
+                   ,CampusCcd_Name, TypeCcd_Name, AreaCcd_Name
+                   ,IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+                   ,IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName
+                   ,SiteGroupName
+                   ,SubjectName, CourseName, AttachData, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+
+        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
+        $paging = $this->pagination('/support/qna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+
+        if ($total_rows > 0) {
+            $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+            }
+        }
+
+        $data = [
+            'paging' => $paging,
+            'list' => $list
+        ];
+        return $data;
+    }
+
+    /**
      * 단강좌, 무료강좌 데이터 조회
      * @param $learn_pattern
      * @param $prof_idx
@@ -229,12 +281,6 @@ class Professor extends \app\controllers\FrontController
             return $row;
         }, $data['on_lecture']);
 
-        return $data;
-    }
-
-    private function _tab_notice_list()
-    {
-        $data = [];
         return $data;
     }
 }

@@ -32,8 +32,8 @@
                             @endforeach
                         </select>
 
-                        <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
-                            <option value="">구분</option>
+                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                            <option value="">카테고리</option>
                             @foreach($arr_base['category'] as $row)
                                 <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
                             @endforeach
@@ -52,7 +52,7 @@
                             <colgroup>
                                 <col style="width: 65px;">
                                 <col style="width: 90px;">
-                                <col style="width: 80px;">
+                                @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))<col style="width: 80px;">@endif
                                 <col style="width: 100px;">
                                 <col style="width: 315px;">
                                 <col style="width: 90px;">
@@ -63,7 +63,7 @@
                             <tr>
                                 <th>No<span class="row-line">|</span></th>
                                 <th>과정<span class="row-line">|</span></th>
-                                <th>구분<span class="row-line">|</span></th>
+                                @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))<th>구분<span class="row-line">|</span></th>@endif
                                 <th>상담유형<span class="row-line">|</span></th>
                                 <th>제목<span class="row-line">|</span></th>
                                 <th>작성자<span class="row-line">|</span></th>
@@ -81,7 +81,9 @@
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_notice.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                     <td class="w-process"><div class="pBox p5">{{$row['SiteGroupName']}}</div></td>
-                                    <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
+                                    @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))
+                                        <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
+                                    @endif
                                     <td class="w-A">{{$row['TypeCcd_Name']}}</td>
                                     <td class="w-list tx-left pl20 {{($row['IsBest'] == 1) ? 'strong' : ''}}">
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
@@ -90,12 +92,14 @@
                                             <a href="{{site_url('support/qna/show?board_idx='.$row['BoardIdx'].'&isBestcheck='.$row['IsBest'].'&'.$get_params)}}">
                                         @endif
                                                 @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
-                                                {{hpSubString($row['Title'],0,20,'...')}}
+                                                {{hpSubString($row['Title'],0,16,'...')}}
                                                 @if($row['RegDatm'] == date('Y-m-d'))<img src="{{ img_url('prof/icon_N.gif') }}">@endif
                                                 @if(empty($row['AttachData']) === false)<img src="{{ img_url('prof/icon_file.gif') }}">@endif
                                             </a>
                                     </td>
-                                    <td class="w-write">{{hpSubString($row['RegName'],0,2,'*')}}</td>
+                                    <td class="w-write">
+                                        {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}
+                                    </td>
                                     <td class="w-date">{{$row['RegDatm']}}</td>
                                     <td class="w-answer">
                                         @if($row['IsBest'] == 0)

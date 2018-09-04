@@ -6882,9 +6882,6 @@ table.acadlecInfoTable tr td {
     width: 940px;
     padding: 25px 40px;
 }
-.willbes-Lec-Table.active.pb_active {
-    padding-bottom: 80px;
-}
 .willbes-Lec-Table.active .willbes-Lec-buyBtn {
     bottom: 25px;
 }

@@ -128,7 +128,7 @@
             <div class="willbes-Lec-Line mt20">-</div>
             <!-- willbes-Lec-Line -->
 
-            <div class="willbes-Lec-Table p_re pb_active">
+            <div class="willbes-Lec-Table p_re">
                 <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                     <colgroup>
                         <col style="width: 75px;">
@@ -265,93 +265,94 @@
                 </table>
                 <!-- lecInfoTable : 필수과목 -->
 
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoPackageTable tx-dark-gray">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 515px;">
-                        <col style="width: 200px;">
-                        <col style="width: 70px;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th colspan="4"><div class="w-tit w-Infotit tx-black tx-left mb15 bd-none">▷ 선택과목 <span class="w-InfoSubtit">(전체 선태과목 중 2개를 선택해 주세요)</span></div></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="Top">
-                            <td class="w-sbj">과목</td>
-                            <td class="w-list">교수/강좌명</td>
-                            <td class="w-schedule">강의시간</td>
-                            <td class="w-info">강좌정보</td>
-                        </tr>
-                        <tr>
-                            <td class="w-sbj" rowspan="2">국어</td>
-                            <td class="w-list tx-left pl10">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                <span class="tx-blue">김세령</span>
-                                [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
-                            </td>
-                            <td class="w-schedule">
-                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월화수목금 (16회차) <span class="row-line">|</span> 실강
-                            </td>
-                            <td class="w-info">
-                                <a href="#none">
-                                    <img src="{{ img_url('sub/icon_detail.gif') }}">
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left pl10">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                <span class="tx-blue">김세령</span>
-                                [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
-                            </td>
-                            <td class="w-schedule">
-                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월화수목금 (16회차) <span class="row-line">|</span> 실강
-                            </td>
-                            <td class="w-info">
-                                <a href="#none">
-                                    <img src="{{ img_url('sub/icon_detail.gif') }}">
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-sbj">영어</td>
-                            <td class="w-list tx-left pl10">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                <span class="tx-blue">김세령</span>
-                                [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
-                            </td>
-                            <td class="w-schedule">
-                                <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
-                                월화수목금 (16회차) <span class="row-line">|</span> 실강
-                            </td>
-                            <td class="w-info">
-                                <a href="#none">
-                                    <img src="{{ img_url('sub/icon_detail.gif') }}">
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable : 선택과목 -->
-
-                <div class="lecInfoTable willbes-Lec-buyBtn GM">
-                    <ul>
-                        <li class="InfoBtn ml10">
-                            <a href="#none">방문접수</a>
-                        </li>
-                        <li class="InfoBtn">
-                            <a href="#none">바로결제</a>
-                        </li>
-                    </ul>
+                <div class="lecInfoTable Lec-buyBtn-Wrap p_re">
+                    <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoPackageTable tx-dark-gray bd-none">
+                        <colgroup>
+                            <col style="width: 75px;">
+                            <col style="width: 515px;">
+                            <col style="width: 200px;">
+                            <col style="width: 70px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4"><div class="w-tit w-Infotit tx-black tx-left mb15 bd-none">▷ 선택과목 <span class="w-InfoSubtit">(전체 선태과목 중 2개를 선택해 주세요)</span></div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="Top">
+                                <td class="w-sbj">과목</td>
+                                <td class="w-list">교수/강좌명</td>
+                                <td class="w-schedule">강의시간</td>
+                                <td class="w-info">강좌정보</td>
+                            </tr>
+                            <tr>
+                                <td class="w-sbj" rowspan="2">국어</td>
+                                <td class="w-list tx-left pl10">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <span class="tx-blue">김세령</span>
+                                    [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
+                                </td>
+                                <td class="w-schedule">
+                                    <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                    월화수목금 (16회차) <span class="row-line">|</span> 실강
+                                </td>
+                                <td class="w-info">
+                                    <a href="#none">
+                                        <img src="{{ img_url('sub/icon_detail.gif') }}">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list tx-left pl10">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <span class="tx-blue">김세령</span>
+                                    [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
+                                </td>
+                                <td class="w-schedule">
+                                    <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                    월화수목금 (16회차) <span class="row-line">|</span> 실강
+                                </td>
+                                <td class="w-info">
+                                    <a href="#none">
+                                        <img src="{{ img_url('sub/icon_detail.gif') }}">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-sbj">영어</td>
+                                <td class="w-list tx-left pl10">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <span class="tx-blue">김세령</span>
+                                    [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
+                                </td>
+                                <td class="w-schedule">
+                                    <span class="tx-blue">2018-05-20 ~ 2018-06-25</span><br/>
+                                    월화수목금 (16회차) <span class="row-line">|</span> 실강
+                                </td>
+                                <td class="w-info">
+                                    <a href="#none">
+                                        <img src="{{ img_url('sub/icon_detail.gif') }}">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- lecInfoTable : 선택과목 -->
+                    <div class="willbes-Lec-buyBtn GM">
+                        <ul>
+                            <li class="InfoBtn ml10">
+                                <a href="#none">방문접수</a>
+                            </li>
+                            <li class="InfoBtn">
+                                <a href="#none">바로결제</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- willbes-Lec-Table -->
 
-            <div class="willbes-Lec-Table p_re pb_active">
+            <div class="willbes-Lec-Table p_re">
                 <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                     <colgroup>
                         <col style="width: 75px;">
@@ -395,32 +396,33 @@
                 </table>
                 <!-- lecTable -->
 
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="w-tit tx-black">▷ 강좌정보</div>
-                                <div class="w-txt">
-                                    <strong>[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</strong><br/>
-                                    <span class="tx-blue">· 강의일정 :</span> 5.21(월)~6.11(월) 매주월요일08:40~13:00 총4회<br/>
-                                    * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
-                                </div>            
+                <div class="lecInfoTable Lec-buyBtn-Wrap p_re">
+                    <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable pb-zero">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="w-tit tx-black">▷ 강좌정보</div>
+                                    <div class="w-txt">
+                                        <strong>[서울시] 정채영 국어 필살기 모의고사IV [5~6월]</strong><br/>
+                                        <span class="tx-blue">· 강의일정 :</span> 5.21(월)~6.11(월) 매주월요일08:40~13:00 총4회<br/>
+                                        * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
+                                    </div>            
 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
-
-                <div class="lecInfoTable willbes-Lec-buyBtn GM">
-                    <ul>
-                        <li class="InfoBtn ml10">
-                            <a href="#none">방문접수</a>
-                        </li>
-                        <li class="InfoBtn">
-                            <a href="#none">바로결제</a>
-                        </li>
-                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- lecInfoTable -->
+                    <div class="willbes-Lec-buyBtn GM">
+                        <ul>
+                            <li class="InfoBtn ml10">
+                                <a href="#none">방문접수</a>
+                            </li>
+                            <li class="InfoBtn">
+                                <a href="#none">바로결제</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- willbes-Lec-Table -->
@@ -489,14 +491,5 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
-<script src="/public/js/willbes/product_util.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.goods_chk').on('change', function() {
-            showBuyLayer('off', $(this), 'buy_layer');
-        });
-    });
-</script>
-
 <!-- End Container -->
 @stop

@@ -133,8 +133,7 @@
                     <colgroup>
                         <col style="width: 75px;">
                         <col style="width: 90px;">
-                        <col style="width: 425px;">
-                        <col style="width: 165px;">
+                        <col style="width: 590px;">
                         <col style="width: 185px;">
                     </colgroup>
                     <tbody>
@@ -148,15 +147,13 @@
                                         <a href="#none"><strong>종합반 상세정보</strong></a>
                                     </dt>
                                     <dt><span class="row-line">|</span></dt>
+                                    <dt>개강월 : <span class="tx-blue">2018-02</span></dt>
+                                    <dt><span class="row-line">|</span></dt>
                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="acadBox n1">방문+온라인</span>
                                     </dt>
                                 </dl><br/>
-                            </td>
-                            <td class="w-schedule">
-                                개강 : <span class="tx-blue">2018/05/10</span><br/>
-                                종료 : 2018/06/30
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n1">접수중</div>
@@ -214,7 +211,7 @@
                         <tr>
                             <td class="w-sbj" rowspan="2">국어</td>
                             <td class="w-list tx-left pl10">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk">
                                 <span class="tx-blue">김세령</span>
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
@@ -230,7 +227,7 @@
                         </tr>
                         <tr>
                             <td class="w-list tx-left pl10">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk">
                                 <span class="tx-blue">김세령</span>
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
@@ -247,7 +244,7 @@
                         <tr>
                             <td class="w-sbj">영어</td>
                             <td class="w-list tx-left pl10">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk">
                                 <span class="tx-blue">김세령</span>
                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                             </td>
@@ -288,7 +285,7 @@
                             <tr>
                                 <td class="w-sbj" rowspan="2">국어</td>
                                 <td class="w-list tx-left pl10">
-                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk">
                                     <span class="tx-blue">김세령</span>
                                     [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                 </td>
@@ -304,7 +301,7 @@
                             </tr>
                             <tr>
                                 <td class="w-list tx-left pl10">
-                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk">
                                     <span class="tx-blue">김세령</span>
                                     [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                 </td>
@@ -321,7 +318,7 @@
                             <tr>
                                 <td class="w-sbj">영어</td>
                                 <td class="w-list tx-left pl10">
-                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk">
                                     <span class="tx-blue">김세령</span>
                                     [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
                                 </td>
@@ -357,8 +354,7 @@
                     <colgroup>
                         <col style="width: 75px;">
                         <col style="width: 90px;">
-                        <col style="width: 425px;">
-                        <col style="width: 165px;">
+                        <col style="width: 590px;">
                         <col style="width: 185px;">
                     </colgroup>
                     <tbody>
@@ -372,15 +368,13 @@
                                         <a href="#none"><strong>종합반 상세정보</strong></a>
                                     </dt>
                                     <dt><span class="row-line">|</span></dt>
+                                    <dt>개강월 : <span class="tx-blue">2018-02</span></dt>
+                                    <dt><span class="row-line">|</span></dt>
                                     <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
                                     <dt class="NSK ml15">
                                         <span class="acadBox n2">방문접수</span>
                                     </dt>
                                 </dl><br/>
-                            </td>
-                            <td class="w-schedule">
-                                개강 : <span class="tx-blue">2018/05/10</span><br/>
-                                종료 : 2018/06/30
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n2">접수예정</div>
@@ -491,5 +485,14 @@
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     
     </div>
 </div>
+<script src="/public/js/willbes/product_util.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.goods_chk').on('change', function() {
+            showBuyLayer('off', $(this), 'buy_layer');
+        });
+    });
+</script>
+
 <!-- End Container -->
 @stop

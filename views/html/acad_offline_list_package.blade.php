@@ -126,9 +126,9 @@
                                             </a>
                                         </dt>
                                         <dt><span class="row-line">|</span></dt>
-                                        <dt class="tx-blue">실강</dt>
+                                        <dt>개강월 : <span class="tx-blue">2018-02</span></dt>
                                         <dt><span class="row-line">|</span></dt>
-                                        <dt class="tx-gray">2018-05-10 ~ 2018-06-30</dt>
+                                        <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                     </dl>
                                 </td>
                                 <td class="w-notice p_re">
@@ -166,7 +166,7 @@
                                 <td class="w-sbj" rowspan="2">국어</td>
                                 <td class="w-list tx-left">
                                     <ul>
-                                        <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></li>
+                                        <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk"></li>
                                         <li class="w-name tx-blue">김세령</li>
                                         <li class="w-tit">
                                             [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
@@ -189,7 +189,7 @@
                             <tr>
                                 <td class="w-list tx-left">
                                     <ul>
-                                        <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></li>
+                                        <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk"></li>
                                         <li class="w-name tx-blue">김세령</li>
                                         <li class="w-tit">
                                             [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
@@ -213,7 +213,7 @@
                                 <td class="w-sbj">영어</td>
                                 <td class="w-list tx-left">
                                     <ul>
-                                        <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></li>
+                                        <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk"></li>
                                         <li class="w-name tx-blue">김세령</li>
                                         <li class="w-tit">
                                             [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
@@ -259,7 +259,7 @@
                                     <td class="w-sbj" rowspan="2">국어</td>
                                     <td class="w-list tx-left">
                                         <ul>
-                                            <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></li>
+                                            <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk"></li>
                                             <li class="w-name tx-blue">김세령</li>
                                             <li class="w-tit">
                                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
@@ -282,7 +282,7 @@
                                 <tr>
                                     <td class="w-list tx-left">
                                         <ul>
-                                            <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></li>
+                                            <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk"></li>
                                             <li class="w-name tx-blue">김세령</li>
                                             <li class="w-tit">
                                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
@@ -306,7 +306,7 @@
                                     <td class="w-sbj">영어</td>
                                     <td class="w-list tx-left">
                                         <ul>
-                                            <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></li>
+                                            <li class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_sub_chk"></li>
                                             <li class="w-name tx-blue">김세령</li>
                                             <li class="w-tit">
                                                 [문풀종합][서울시] 정채영 국어 필살기 모의고사IV [5~6월]
@@ -385,9 +385,9 @@
                                             </a>
                                         </dt>
                                         <dt><span class="row-line">|</span></dt>
-                                        <dt class="tx-blue">실강</dt>
+                                        <dt>개강월 : <span class="tx-blue">2018-02</span></dt>
                                         <dt><span class="row-line">|</span></dt>
-                                        <dt class="tx-gray">2018-05-10 ~ 2018-06-30</dt>
+                                        <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
                                     </dl>
                                 </td>
                                 <td class="w-notice p_re">

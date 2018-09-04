@@ -16,10 +16,11 @@ class BaseSupportFModel extends WB_Model
         ,'site' => 'lms_site'
     ];
 
-    //등록파일 확장자 허용 설정
+    //등록파일 rule 설정
     protected $upload_file_rule = [
         'allowed_types' => 'hwp|doc|pdf|jpg|gif|png|zip',
-        'overwrite' => 'false'
+        'overwrite' => 'false',
+        'max_size' => 2560
     ];
 
     public function __construct()
@@ -217,16 +218,14 @@ class BaseSupportFModel extends WB_Model
 
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
-
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir
-                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].'');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx) , $upload_sub_dir
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
 
             foreach ($board_attach_data as $key => $val) {
-                /*if (empty($val) === false && $val != 'blob') {*/
                 if ($val > 0) {
                     if (empty($arr_board_attach_keys[$key]) === true) {
                         //ins

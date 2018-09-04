@@ -167,7 +167,7 @@ function getQueryString() {
  */
 function goUrl(key, val, selector) {
     var $url_form = $(selector || '#url_form');
-    var $url_input = $url_form.find('input[name="' + key + '"]');
+    var $url_input = $url_form.find('[name="' + key + '"]');
     var $url_hidden = $url_form.find('input[type="hidden"][name="' + key + '"]');
     var $arr_except = ['page'];
 

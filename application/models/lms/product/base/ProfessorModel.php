@@ -117,7 +117,11 @@ class ProfessorModel extends WB_Model
                 left join ' . $this->_table['category'] . ' as PC
                     on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
                 inner join ' . $this->_table['subject'] . ' as PS
-                    on PSC.SubjectIdx = PS.SubjectIdx        
+                    on PSC.SubjectIdx = PS.SubjectIdx                    
+                inner join ' . $this->_table['professor'] . ' as P
+                    on PSC.ProfIdx = P.ProfIdx
+                inner join ' . $this->_table['pms_professor'] . ' as WP
+                    on P.wProfIdx = WP.wProfIdx
         ';
         $where = ' where PSC.ProfIdx = ? and PSC.IsStatus = "Y" and C.IsUse = "Y" and C.IsStatus = "Y" and PS.IsUse = "Y" and PS.IsStatus = "Y"';
         $order_by_offset_limit = ' order by PSC.PcIdx asc';

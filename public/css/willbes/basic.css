@@ -307,6 +307,8 @@ strong {
 	font-weight: 700;
 	vertical-align: baseline;
 }
+
+.sel_disabled,
 select[disabled] {
   background: #eee;
 }

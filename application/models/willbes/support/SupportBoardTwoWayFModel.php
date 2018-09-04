@@ -84,7 +84,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 $set_board_category_data['CateCode'] = $board_category_data['site_category'];
                 $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
                 $set_board_category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addBoardCategory($set_board_category_data) === false) {
+                if ($this->addBoardCategory($set_board_category_data) === false) {
                     throw new \Exception('게시판 등록에 실패했습니다.');
                 }
             }
@@ -92,7 +92,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $this->load->library('upload');
             //$upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
             $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
@@ -110,7 +110,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     $set_board_attach_data['RegMemIdx'] = $this->session->userdata('mem_idx');
                     $set_board_attach_data['RegIp'] = $this->input->ip_address();
 
-                    if ($this->_addBoardAttach($set_board_attach_data) === false) {
+                    if ($this->addBoardAttach($set_board_attach_data) === false) {
                         throw new \Exception('게시판 등록에 실패했습니다.');
                     }
                 }
@@ -148,17 +148,17 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
             // 카테고리
             if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+                // 카테고리삭제
+                $up_cate_data['BoardIdx'] = $board_idx;
+                if ($this->updateBoardCategory($up_cate_data) === false) {
+                    throw new \Exception('게시판 수정에 실패했습니다.');
+                }
+
                 $set_board_category_data['BoardIdx'] = $board_idx;
                 $set_board_category_data['CateCode'] = $board_category_data['site_category'];
                 $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
                 $set_board_category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addBoardCategory($set_board_category_data) === false) {
-                    throw new \Exception('게시판 수정에 실패했습니다.');
-                }
-            } else {
-                // 카테고리삭제
-                $up_cate_data['BoardIdx'] = $board_idx;
-                if ($this->_updateBoardCategory($up_cate_data) === false) {
+                if ($this->addBoardCategory($set_board_category_data) === false) {
                     throw new \Exception('게시판 수정에 실패했습니다.');
                 }
             }
@@ -214,78 +214,6 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
-        }
-        return true;
-    }
-
-    /**
-     * 카테고리 등록
-     * @param $inputData
-     * @return bool
-     */
-    private function _addBoardCategory($inputData)
-    {
-        try {
-            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_r_category']) === false) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * 파일 등록
-     * @param $inputData
-     * @return bool
-     */
-    private function _addBoardAttach($inputData)
-    {
-        try {
-            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_attach']) === false) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * 파일명 배열 생성
-     * @param $board_idx
-     * @return array
-     */
-    private function _getAttachImgNames($board_idx)
-    {
-        $attach_file_names = [];
-        $temp_time = date('YmdHis');
-        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
-            $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
-        }
-        return $attach_file_names;
-    }
-
-    /**
-     * 카테고리 업데이트
-     * @param $whereData
-     * @return bool
-     */
-    private function _updateBoardCategory($whereData)
-    {
-        try {
-            $input['IsStatus'] = 'N';
-            $input['UpdMemIdx'] = $this->session->userdata('mem_idx');
-            $input['UpdDatm'] = date('Y-m-d H:i:s');
-
-            $this->_conn->set($input)->where($whereData);
-
-            if ($this->_conn->update($this->_table['lms_board_r_category']) === false) {
-                throw new \Exception('데이터 수정에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return false;
         }
         return true;
     }

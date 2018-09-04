@@ -212,7 +212,7 @@ class BaseSupportFModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
@@ -233,7 +233,7 @@ class BaseSupportFModel extends WB_Model
                         $set_board_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                         $set_board_attach_data['RegIp'] = $this->input->ip_address();
 
-                        if ($this->_addBoardAttach($set_board_attach_data) === false) {
+                        if ($this->addBoardAttach($set_board_attach_data) === false) {
                             throw new \Exception('파일 등록에 실패했습니다.');
                         }
                     } else {
@@ -266,6 +266,78 @@ class BaseSupportFModel extends WB_Model
     }
 
     /**
+     * 카테고리 등록
+     * @param $inputData
+     * @return bool
+     */
+    protected function addBoardCategory($inputData)
+    {
+        try {
+            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_r_category']) === false) {
+                throw new \Exception('게시판 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 카테고리 업데이트
+     * @param $whereData
+     * @return bool
+     */
+    protected function updateBoardCategory($whereData)
+    {
+        try {
+            $input['IsStatus'] = 'N';
+            $input['UpdMemIdx'] = $this->session->userdata('mem_idx');
+            $input['UpdDatm'] = date('Y-m-d H:i:s');
+
+            $this->_conn->set($input)->where($whereData);
+
+            if ($this->_conn->update($this->_table['lms_board_r_category']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 파일 등록
+     * @param $inputData
+     * @return bool
+     */
+    protected function addBoardAttach($inputData)
+    {
+        try {
+            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_attach']) === false) {
+                throw new \Exception('게시판 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 파일명 배열 생성
+     * @param $board_idx
+     * @return array
+     */
+    protected function getAttachImgNames($board_idx)
+    {
+        $attach_file_names = [];
+        $temp_time = date('YmdHis');
+        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
+            $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
+        }
+        return $attach_file_names;
+    }
+
+    /**
      * 게시판 식별자 기준 파일 목록 조회
      * @param $board_idx
      * @param $reg_type
@@ -291,23 +363,6 @@ class BaseSupportFModel extends WB_Model
     }
 
     /**
-     * 파일 등록
-     * @param $inputData
-     * @return bool
-     */
-    private function _addBoardAttach($inputData)
-    {
-        try {
-            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_attach']) === false) {
-                throw new \Exception('게시판 등록에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * 파일 수정
      * @param $input
      * @param $whereData
@@ -328,20 +383,5 @@ class BaseSupportFModel extends WB_Model
             return false;
         }
         return true;
-    }
-
-    /**
-     * 파일명 배열 생성
-     * @param $board_idx
-     * @return array
-     */
-    private function _getAttachImgNames($board_idx)
-    {
-        $attach_file_names = [];
-        $temp_time = date('YmdHis');
-        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
-            $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
-        }
-        return $attach_file_names;
     }
 }

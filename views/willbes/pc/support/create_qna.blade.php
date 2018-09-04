@@ -35,7 +35,7 @@
                                 <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                                     <option value="">구분</option>
                                     @foreach($arr_base['category'] as $row)
-                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
+                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
                                     @endforeach
                                 </select>
 
@@ -129,6 +129,10 @@
 
         $('#btn_list').click(function() {
             location.href = '{!! site_url('support/qna/index?'.$get_params) !!}';
+        });
+
+        $regi_form.bind('submit', function () {
+            $(this).find(':input').prop('disabled', false);
         });
 
         $('#btn_submit').click(function () {

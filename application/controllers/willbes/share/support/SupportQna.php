@@ -148,20 +148,17 @@ class SupportQna extends BaseSupport
             ];
 
             $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd
-            , RegType, TypeCcd, IsBest, IsPublic
+            BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore
             , Title, Content, ReadCnt, SettingReadCnt
-            , RegDatm
-            , RegMemIdx, RegMemId, RegMemName
+            , RegDatm, RegMemIdx, RegMemId, RegMemName
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
-            , CampusCcd_Name
-            , ReplyStatusCcd_Name
+            , CampusCcd_Name, ReplyStatusCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
             , IF(RegType=1, \'\', RegMemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
-            , AttachData
+            , AttachData, Category_String
         ';
 
             $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
@@ -264,7 +261,7 @@ class SupportQna extends BaseSupport
         $get_params = 's_keyword='.$s_keyword.'&page='.$page;
 
         //캠퍼스 사용 유/무 조회
-        $site_onoff_info = $this->supportBoardTwoWayFModel->getSiteOnOffType($this->_site_code);
+        $site_onoff_info = $this->supportBoardTwoWayFModel->getSiteOnOffType($this->_reqP('s_site_code'));
 
         $method = 'add';
         $msg = '저장되었습니다';

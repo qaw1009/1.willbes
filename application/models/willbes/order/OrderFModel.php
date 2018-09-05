@@ -422,7 +422,15 @@ class OrderFModel extends BaseOrderFModel
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
                 $is_order_product = $this->addOrderProduct($order_idx, $pay_method_ccd, $is_escrow, $cart_row);
-                if ($is_order_product === false) {
+                if ($is_order_product !== true) {
+                    throw new \Exception($is_order_product);
+                }
+            }
+            
+            // 추가 배송료 주문상품 데이터 등록
+            if ($post_row['DeliveryAddPrice'] > 0) {
+                $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_method_ccd, $post_row['SiteCode']);
+                if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
             }
@@ -430,7 +438,7 @@ class OrderFModel extends BaseOrderFModel
             // 주문배송주소 데이터 등록
             if ($cart_results['is_delivery_info'] === true) {
                 $is_order_delivery_address = $this->addOrderDeliveryAddress($order_idx, $post_data);
-                if ($is_order_delivery_address === false) {
+                if ($is_order_delivery_address !== true) {
                     throw new \Exception($is_order_delivery_address);
                 }
             }
@@ -521,6 +529,47 @@ class OrderFModel extends BaseOrderFModel
                 if ($is_udpate !== true) {
                     throw new \Exception($is_udpate);
                 }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 추가 배송료 주문상품 등록
+     * @param int $order_idx [주문식별자]
+     * @param string $pay_status_ccd [결제상태 공통코드]
+     * @param int $site_code [사이트코드]
+     * @return bool|string
+     */
+    public function addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $site_code)
+    {
+        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
+
+        try {
+            // 추가 배송료 상품 조회
+            $prod_rows = $this->productFModel->listSalesProduct('delivery_add_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
+            if (empty($prod_rows) === true) {
+                throw new \Exception('추가 배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
+            }
+
+            $prod_row = element('0', $prod_rows);
+            $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
+
+            $data = [
+                'ProdCode' => $prod_rows['ProdCode'],
+                'ProdCodeSub' => '',
+                'ParentProdCode' => $prod_rows['ProdCode'],
+                'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
+                'OrderPrice' => $prod_row['ProdPriceData']['SalePrice'],
+                'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice'],
+                'CardPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
+            ];
+            
+            if ($this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data) !== true) {
+                throw new \Exception('추가 배송료 주문상품 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();

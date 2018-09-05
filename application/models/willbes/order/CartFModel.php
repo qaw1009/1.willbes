@@ -227,26 +227,13 @@ class CartFModel extends BaseOrderFModel
                     throw new \Exception($check_result);
                 }
 
-                // 이미 장바구니에 담긴 상품이 있는지 여부 확인
-                $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
-                    'EQ' => ['MemIdx' => $sess_mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
-                    'RAW' => ['ExpireDatm > ' => 'NOW()']
-                ]);
-
-                if (empty($cart_row) === false) {
-                    // 이미 장바구니에 담겨 있다면 삭제
-                    $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $sess_mem_idx)->delete($this->_table['cart']);
-                    if ($is_delete === false) {
-                        throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
-                    }
-                }
-
                 $prod_sub_code = '';
                 if ($prod_code == $prod_row['ParentProdCode'] && isset($input['prod_code_sub']) === true) {
                     // 서브 강좌가 있는 경우 (운영자 선택형 패키지)
                     $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
                 }
 
+                // 데이터 등록
                 $data = [
                     'MemIdx' => $sess_mem_idx,
                     'SiteCode' => $site_code,
@@ -259,14 +246,13 @@ class CartFModel extends BaseOrderFModel
                     'GwIdx' => $gw_idx,
                     'RegIp' => $reg_ip
                 ];
-                $this->_conn->set($data)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
+                
+                $insert_cart_idx = $this->_addCart($data);
+                if (is_numeric($insert_cart_idx) === false) {
+                    throw new \Exception($insert_cart_idx);
+                }                
 
-                // 데이터 등록
-                if ($this->_conn->insert($this->_table['cart']) === false) {
-                    throw new \Exception('장바구니 등록에 실패했습니다.');
-                }
-
-                $results[] = $this->_conn->insert_id();
+                $results[] = $insert_cart_idx;
             }
 
             $this->_conn->trans_commit();
@@ -296,7 +282,7 @@ class CartFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');
             $gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
-            $total_order_prod_price = 0;
+            $total_prod_order_price = 0;
             $arr_is_freebies_trans = [];
 
             // 장바구니 데이터 조회
@@ -307,12 +293,12 @@ class CartFModel extends BaseOrderFModel
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
                 
                 // 전체상품 주문금액
-                $total_order_prod_price += $row['RealSalePrice'];
+                $total_prod_order_price += $row['RealSalePrice'];
             }
 
             // 배송료 계산
             if ($cart_type == 'book') {
-                $delivery_price = $this->getBookDeliveryPrice($total_order_prod_price);
+                $delivery_price = $this->getBookDeliveryPrice($total_prod_order_price);
             } else {
                 $delivery_price = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
             }
@@ -321,44 +307,30 @@ class CartFModel extends BaseOrderFModel
             if ($delivery_price > 0) {
                 // 배송료 상품 조회
                 $prod_rows = $this->productFModel->listSalesProduct('delivery_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
-                if (empty($prod_rows) === false) {
-                    $prod_row = element('0', $prod_rows);
-                    $prod_row['ProdPriceData'] = json_decode($prod_row['ProdPriceData'], true);
+                if (empty($prod_rows) === true) {
+                    throw new \Exception('배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
+                }
 
-                    // 이미 장바구니에 담긴 상품이 있는지 여부 확인
-                    $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
-                        'EQ' => ['MemIdx' => $sess_mem_idx, 'ProdCode' => $prod_row['ProdCode'], 'IsStatus' => 'Y'],
-                        'RAW' => ['ExpireDatm > ' => 'NOW()']
-                    ]);
+                $prod_row = element('0', $prod_rows);
+                $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
 
-                    if (empty($cart_row) === false) {
-                        // 이미 장바구니에 담겨 있다면 삭제
-                        $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $sess_mem_idx)->delete($this->_table['cart']);
-                        if ($is_delete === false) {
-                            throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
-                        }
-                    }
+                // 장바구니 등록
+                $data = [
+                    'MemIdx' => $sess_mem_idx,
+                    'SiteCode' => $site_code,
+                    'ProdCode' => $prod_row['ProdCode'],
+                    'ProdCodeSub' => '',
+                    'ParentProdCode' => $prod_row['ProdCode'],
+                    'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
+                    'IsDirectPay' => 'Y',
+                    'IsVisitPay' => 'N',
+                    'GwIdx' => $gw_idx,
+                    'RegIp' => $reg_ip
+                ];
 
-                    $data = [
-                        'MemIdx' => $sess_mem_idx,
-                        'SiteCode' => $site_code,
-                        'ProdCode' => $prod_row['ProdCode'],
-                        'ProdCodeSub' => '',
-                        'ParentProdCode' => $prod_row['ProdCode'],
-                        'SaleTypeCcd' => $prod_row['ProdPriceData'][0]['SaleTypeCcd'],
-                        'IsDirectPay' => 'Y',
-                        'IsVisitPay' => 'N',
-                        'GwIdx' => $gw_idx,
-                        'RegIp' => $reg_ip
-                    ];
-                    $this->_conn->set($data)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
-
-                    // 데이터 등록
-                    if ($this->_conn->insert($this->_table['cart']) === false) {
-                        throw new \Exception('장바구니 등록에 실패했습니다.');
-                    }
-
-                    $insert_cart_idx = $this->_conn->insert_id();
+                $insert_cart_idx = $this->_addCart($data);
+                if (is_numeric($insert_cart_idx) === false) {
+                    throw new \Exception($insert_cart_idx);
                 }
             }
 
@@ -369,6 +341,45 @@ class CartFModel extends BaseOrderFModel
         }
 
         return ['ret_cd' => true, 'ret_data' => $insert_cart_idx];
+    }
+
+    /**
+     * 장바구니 데이터 등록
+     * @param array $input
+     * @return string
+     */
+    private function _addCart($input = [])
+    {
+        try {
+            $mem_idx = element('MemIdx', $input);
+            $prod_code = element('ProdCode', $input);
+
+            // 이미 장바구니에 담긴 상품이 있는지 여부 확인
+            $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
+                'EQ' => ['MemIdx' => $mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
+                'RAW' => ['ExpireDatm > ' => 'NOW()']
+            ]);
+
+            if (empty($cart_row) === false) {
+                // 이미 장바구니에 담겨 있다면 삭제
+                $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $mem_idx)->delete($this->_table['cart']);
+                if ($is_delete === false) {
+                    throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
+                }
+            }
+
+            // 데이터 등록
+            $this->_conn->set($input)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
+            if ($this->_conn->insert($this->_table['cart']) === false) {
+                throw new \Exception('장바구니 등록에 실패했습니다.');
+            }
+
+            $insert_cart_idx = $this->_conn->insert_id();            
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return $insert_cart_idx;
     }
 
     /**

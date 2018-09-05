@@ -10,7 +10,8 @@ class SupportNotice extends BaseSupport
     protected $auth_controller = false;
     protected $auth_methods = array();
 
-    protected $_bm_idx = '45';       //bmidx : notice 게시판
+    protected $_bm_idx;
+    protected $_default_path;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
 
@@ -22,11 +23,17 @@ class SupportNotice extends BaseSupport
     public function index($params=[])
     {
         $campus_ccd = $this->supportBoardFModel->listCampusCcd($this->_site_code);
-
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
+        $cate = element('cate',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $view_type = element('view_type',$arr_input);
+
+        $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params .= '&cate='.$cate.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
+        $get_params .= '&view_type='.$view_type;
 
         //var_dump($arr_input);
         $list = [];
@@ -37,13 +44,18 @@ class SupportNotice extends BaseSupport
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.CampusCcd' => $s_campus
+                ,'b.ProfIdx' => element('prof_idx',$arr_input)
+                ,'b.SubjectIdx' => element('subject_idx',$arr_input)
             ],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword
                     ,'b.Content' => $s_keyword
                 ]
-            ]
+            ],
+            'LKB' => [
+                'Category_String'=>$this->_cate_code
+            ],
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
@@ -56,7 +68,7 @@ class SupportNotice extends BaseSupport
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination('/support/notice/index/?s_campus='.$s_campus.'&s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
@@ -65,8 +77,10 @@ class SupportNotice extends BaseSupport
             }
         }
 
-        $this->load->view('support/notice', [
+        $this->load->view('support/'.$view_type.'/notice', [
             'campus_ccd' => $campus_ccd,
+            'default_path' => $this->_default_path,
+            'get_params' => $get_params,
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
@@ -76,7 +90,7 @@ class SupportNotice extends BaseSupport
     public function show()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
+        $view_type = element('view_type',$arr_input);
         $board_idx = element('board_idx',$arr_input);
 
         if (empty($board_idx)) {
@@ -149,7 +163,7 @@ class SupportNotice extends BaseSupport
         $pre_data = $this->supportBoardFModel->findBoard(false,$pre_arr_condition,$column,1,null,$pre_order_by);
         $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
 
-        $this->load->view('support/show_notice',[
+        $this->load->view('support/'.$view_type.'/show_notice',[
                 'arr_input' => $arr_input,
                 'data' => $data,
                 'pre_data' => $pre_data,

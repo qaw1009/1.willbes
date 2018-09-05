@@ -5,8 +5,8 @@ require_once APPPATH . 'controllers/willbes/share/support/supportnotice.php';
 
 class Notice extends SupportNotice
 {
-    protected $_bm_idx = '45';       //bmidx : notice 게시판
-    protected $_default_path = '/support';
+    protected $_bm_idx = '63';       //bmidx : notice 게시판
+    protected $_default_path = '/prof';
 
     public function __construct()
     {

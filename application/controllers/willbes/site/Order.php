@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF', 'memberF', '_lms/sys/code');
+    protected $models = array('order/cartF', 'order/orderF', 'order/orderListF', 'memberF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -19,11 +19,10 @@ class Order extends \app\controllers\FrontController
 
     public function test($params = [])
     {
-        $arr = ['1' => '', '2' => ''];
+        $arr = ['1' => '1', '2' => '2'];
+        $json = '{"1":"","2":""}';
 
-        $s = implode(',', array_filter($arr));
-
-        dd($s);
+        dd(empty(array_filter($arr)), json_encode($arr), json_decode($json, true));
     }
 
     /**
@@ -68,14 +67,47 @@ class Order extends \app\controllers\FrontController
      */
     public function complete($params = [])
     {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
         $order_no = $this->_req('order_no');
         if (empty($order_no) === true) {
             show_alert('필수 파라미터 오류입니다.', site_url('/cart/index'), false);
         }
         
         // 주문정보 조회
+        $results['order'] = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
+        if (empty($results['order']) === true) {
+            show_alert('주문정보 데이터가 없습니다.', site_url('/cart/index'), false);
+        }
 
-        $this->load->view('site/order/complete', []);
+        $order_idx = $results['order']['OrderIdx']; // 주문식별자
+        $is_vbank = $results['order']['IsVBank'];   // 가상계좌 결제여부
+
+        // 가상계좌 결제가 아닐 경우 영수증 출력 URL 조회
+        if ($is_vbank == 'N') {
+            $pg_config_file = 'pg_' . config_app('PgDriver', 'inisis');
+            $this->load->config($pg_config_file, true, true);
+
+            $results['order']['ReceiptUrl'] = str_replace('{{$tid$}}', $results['order']['PgTid'], config_get($pg_config_file . '.receipt_url'));
+        }
+
+        // 주문상품 목록 조회
+        $results['order_product'] = $this->orderListFModel->listOrderProduct(false
+            , ['EQ' => ['O.OrderIdx' => $order_idx, 'O.MemIdx' => $sess_mem_idx]]
+            , null, null, ['OP.OrderProdIdx' => 'asc']);
+
+        // 주문배송정보 조회
+        $results['order_delivery'] = $this->orderListFModel->findOrderDeliveryAddressByOrderIdx($order_idx, $sess_mem_idx);
+
+        // 회원정보 조회
+        $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
+
+        //dd($results);
+
+        $this->load->view('site/order/complete', [
+            'arr_prod_type_name' => $this->cartFModel->_cart_prod_type_name,
+            'arr_prod_type_idx' => $this->cartFModel->_cart_prod_type_idx,
+            'results' => $results
+        ]);
     }
 
     /**
@@ -123,7 +155,9 @@ class Order extends \app\controllers\FrontController
         }
 
         // 최근 배송정보 조회
-        $data = $this->orderFModel->getRecentDeliveryAddress($this->session->userdata('mem_idx'));
+        $arr_condition = ['EQ' => ['O.MemIdx' => $this->session->userdata('mem_idx')]];
+        $list = $this->orderListFModel->listOrderDeliveryAddress(false, $arr_condition, 1, 0, ['O.OrderIdx' => 'desc']);
+        $data = element('0', $list, []);
 
         $this->json_result(true, '', [], $data);
     }

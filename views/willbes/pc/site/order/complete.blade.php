@@ -15,7 +15,12 @@
                     </ul>
                 </div>
                 <div class="willbes-Payment-Fin NG">
-                    <img src="{{ img_url('cart/icon_check.gif') }}"> 결제가 성공적으로 완료되었습니다.
+                    @if($results['order']['IsVBank'] == 'Y')
+                        <img src="{{ img_url('cart/icon_check.gif') }}"> 무통장입금(가상계좌) 신청이 완료되었습니다.
+                        <div class="subTit tx-gray mt20 NGR">가상계좌는 신청일로부터 <strong class="tx-light-blue">7일간</strong>만 유효하며, 기간 내에 입금해 주셔야 정상적으로 결제완료됩니다.</div>
+                    @else
+                        <img src="{{ img_url('cart/icon_check.gif') }}"> 결제가 성공적으로 완료되었습니다.
+                    @endif
                 </div>
             </div>
             <!-- willbes-Cartlist -->
@@ -30,36 +35,45 @@
                         <col style="width: 330px;"/>
                     </colgroup>
                     <tbody>
-                    <tr>
-                        <td class="bg-light-white">결제번호</td>
-                        <td><strong>1246258742</strong></td>
-                        <td class="bg-light-white">결제일</td>
-                        <td><strong>2018-04-20 12:22:11</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="bg-light-white">결제금액</td>
-                        <td><strong class="tx-light-blue">188,600원</strong></td>
-                        <td class="bg-light-white">결제수단</td>
-                        <td><strong class="tx-light-blue">신용카드(현대)</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="bg-light-white">결제상태</td>
-                        <td>결제완료</td>
-                        <td class="bg-light-white">영수증출력</td>
-                        <td><span class="btnAll NSK"><a href="#none">영수증출력하기</a></span></td>
-                    </tr>
-                    <!-- 결제수단 무통장일때만 보임
-                    <tr>
-                        <td class="bg-light-white">무통장 입금정보</td>
-                        <td class="" colspan="3">
-                            가상계좌신청일 : 2018-07-21 09:33
-                            <span class="row-line">|</span>
-                            가상계좌정보 : [우리은행] 12345678912345
-                            <span class="row-line">|</span>
-                            입금자명 : 홍길동
-                        </td>
-                    </tr>
-                    -->
+                    @if($results['order']['IsVBank'] == 'Y')
+                        <tr>
+                            <td class="bg-light-white">가상계좌신청일</td>
+                            <td>2018-04-20 01:12:14</td>
+                            <td class="bg-light-white">가상계좌정보</td>
+                            <td>우리은행 234-234532-092 (주)윌비스</td>
+                        </tr>
+                        <tr>
+                            <td class="bg-light-white">입금기한</td>
+                            <td>2018-04-27 01:12:14</td>
+                            <td class="bg-light-white">결제금액</td>
+                            <td><strong class="tx-light-blue">{{ number_format($results['order']['RealPayPrice']) }}원</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-light-white">주문번호</td>
+                            <td><strong class="tx-light-blue">{{ $results['order']['OrderNo'] }}</strong></td>
+                            <td class="bg-light-white">가상계좌취소</td>
+                            <td><span class="btnAll NSK"><a href="#none" id="btn_vbank_cancel">취소</a></span></td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td class="bg-light-white">주문번호</td>
+                            <td><strong>{{ $results['order']['OrderNo'] }}</strong></td>
+                            <td class="bg-light-white">결제일</td>
+                            <td><strong>{{ $results['order']['CompleteDatm'] }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-light-white">결제금액</td>
+                            <td><strong class="tx-light-blue">{{ number_format($results['order']['RealPayPrice']) }}원</strong></td>
+                            <td class="bg-light-white">결제수단</td>
+                            <td><strong class="tx-light-blue">{{ $results['order']['PayMethodCcdName'] }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-light-white">영수증출력</td>
+                            <td class=""><span class="btnAll NSK"><a href="#none" id="btn_receipt_print">영수증출력하기</a></span></td>
+                            <td class=""></td>
+                            <td class=""></td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
             </div>
@@ -71,7 +85,7 @@
                         <dl class="priceBox">
                             <dt>
                                 <div>상품주문금액</div>
-                                <div class="price tx-light-blue">140,000원</div>
+                                <div class="price tx-light-blue">{{ number_format($results['order']['OrderProdPrice']) }}원</div>
                             </dt>
                             <dt class="price-img">
                                 <span class="row-line">|</span>
@@ -79,7 +93,7 @@
                             </dt>
                             <dt>
                                 <div>쿠폰할인금액</div>
-                                <div class="price tx-light-pink">180,000원</div>
+                                <div class="price tx-light-pink">{{ number_format($results['order']['DiscPrice']) }}원</div>
                             </dt>
                             <dt class="price-img">
                                 <span class="row-line">|</span>
@@ -87,7 +101,7 @@
                             </dt>
                             <dt>
                                 <div>포인트 차감금액</div>
-                                <span class="price tx-light-pink">13,000원</span>
+                                <span class="price tx-light-pink">{{ number_format($results['order']['UsePoint']) }}원</span>
                             </dt>
                             <dt class="price-img">
                                 <span class="row-line">|</span>
@@ -95,13 +109,13 @@
                             </dt>
                             <dt>
                                 <div>배송료</div>
-                                <span class="price tx-light-blue">2,500원</span>
+                                <span class="price tx-light-blue">{{ number_format($results['order']['DeliveryPrice'] + $results['order']['DeliveryAddPrice']) }}원</span>
                             </dt>
                         </dl>
                     </li>
                     <li class="price-total">
-                        <div>결제예상금액</div>
-                        <span class="price tx-light-blue">188,600원</span>
+                        <div>결제금액</div>
+                        <span class="price tx-light-blue">{{ number_format($results['order']['RealPayPrice']) }}원</span>
                     </li>
                 </ul>
             </div>
@@ -124,41 +138,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p1">강좌</span> 2018 정채영 국어 [현대]문학 종결자 문학집중강의(5-6월)
-                            </td>
-                            <td class="w-day">40일</td>
-                            <td class="w-price tx-light-blue">75,000원</td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p1">강좌</span> 2018 김용철행정법총론실전동형모의고사(3월)
-                            </td>
-                            <td class="w-day">40일</td>
-                            <td class="w-price tx-light-blue">80,000원</td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p2">패키지</span> 2017 9급공무원이론선택형종합패키지-30일완성
-                            </td>
-                            <td class="w-day">140일</td>
-                            <td class="w-price tx-light-blue">180,000원</td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p3">교재</span> 2017 정채영국어서울시문제를알려주마!1
-                            </td>
-                            <td class="w-day">&nbsp;</td>
-                            <td class="w-price tx-light-blue">7,000원</td>
-                        </tr>
-                        <tr>
-                            <td class="w-list tx-left p_re pl20">
-                                <span class="pBox p3">교재</span> 2017정채영국어서울시문제를알려주마!2
-                            </td>
-                            <td class="w-day">&nbsp;</td>
-                            <td class="w-price tx-light-blue">5,000원</td>
-                        </tr>
+                        @foreach($results['order_product'] as $idx => $row)
+                            <tr>
+                                <td class="w-list tx-left p_re pl20">
+                                    <span class="pBox p{{ $arr_prod_type_idx[$row['OrderProdType']] }}">{{ $arr_prod_type_name[$row['OrderProdType']] }}</span> {{ $row['ProdName'] }}
+                                </td>
+                                <td class="w-day">@if(empty($row['StudyPeriod']) === false) {{ $row['StudyPeriod'] }}일 @endif</td>
+                                <td class="w-price tx-light-blue">{{ number_format($row['RealPayPrice']) }}원</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -178,41 +166,41 @@
                         <tr class="u-from">
                             <th class="w-list" rowspan="3">구매자<br/>정보</th>
                             <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                            <td class="w-info tx-left pl20">홍길동</td>
+                            <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                            <td class="w-info tx-left pl20">010-1234-5678</td>
+                            <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">이메일</td>
-                            <td class="w-info tx-left pl20">willbes@willbes.com</td>
+                            <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
                         </tr>
 
                         <tr class="u-to">
                             <th class="w-list" rowspan="5">받는사람<br/>정보</th>
-                            <td class="w-tit bg-light-white tx-left pl20">이름<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20">홍길동</td>
+                            <td class="w-tit bg-light-white tx-left pl20">이름</td>
+                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['Receiver'] }}</td>
                         </tr>
                         <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
+                            <td class="w-tit bg-light-white tx-left pl20">주소</td>
                             <td class="w-info tx-left pl20">
-                                [258445]<br/>
-                                서울시 동작구 만양로 105 한성빌딩<br/>
-                                2층 (동작구 노량진동) ㈜윌비스
+                                [{{ $results['order_delivery']['ZipCode'] }}]<br/>
+                                {{ $results['order_delivery']['Addr1'] }}<br/>
+                                {{ $results['order_delivery']['Addr2'] }}
                             </td>
                         </tr>
                         <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
-                            <td class="w-info tx-left pl20">010-1234-5678</td>
+                            <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
+                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverPhone'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                            <td class="w-info tx-left pl20">02-1234-5678</td>
+                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverTel'] }}</td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
-                            <td class="w-info tx-left pl20">부재 시 경비실에 맡겨주세요.</td>
+                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['DeliveryMemo'] }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -241,6 +229,15 @@
     <!-- End Container -->
     <script type="text/javascript">
         $(document).ready(function() {
+            // 영수증 출력하기 버튼 클릭
+            $('#btn_receipt_print').on('click', function() {
+                popupOpen('{!! $results['order']['ReceiptUrl'] !!}', '_receipt_print', 430, 700);
+            });
+
+            // 가상계좌취소 버튼 클릭
+            $('#btn_vbank_cancel').on('click', function() {
+
+            });
         });
     </script>
 @stop

@@ -11,27 +11,6 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
-     * 회원식별자 기준 최근 배송정보 조회
-     * @param $mem_idx
-     * @return mixed
-     */
-    public function getRecentDeliveryAddress($mem_idx)
-    {
-        $column = 'OD.Receiver
-            , OD.ReceiverTel1, if(length(OD.ReceiverTel2Enc) > 0, fn_dec(OD.ReceiverTel2Enc), "") as ReceiverTel2, OD.ReceiverTel3, if(length(OD.ReceiverTelEnc) > 0, fn_dec(OD.ReceiverTelEnc), "") as ReceiverTel
-            , OD.ReceiverPhone1, fn_dec(OD.ReceiverPhone2Enc) as ReceiverPhone2, OD.ReceiverPhone3, fn_dec(OD.ReceiverPhoneEnc) as ReceiverPhone
-            , OD.ZipCode, OD.Addr1, fn_dec(OD.Addr2Enc) as Addr2, OD.DeliveryMemo';
-        $arr_condition = ['EQ' => ['O.MemIdx' => $mem_idx]];
-
-        $data = $this->_conn->getJoinListResult($this->_table['order'] . ' as O', 'inner', $this->_table['order_delivery_address'] . ' as OD'
-            , 'O.OrderIdx = OD.OrderIdx'
-            , $column, $arr_condition, 1, 0, ['O.OrderIdx' => 'desc']
-        );
-
-        return element('0', $data, []);
-    }
-
-    /**
      * @param string $make_type [데이터 생성구분, 주문 : order, 결제 : pay]
      * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
      * @param array $cart_rows [유효한 장바구니 데이터]

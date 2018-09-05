@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BaseOrderFModel extends WB_Model
 {
     protected $_table = [
+        'site' => 'lms_site',
         'cart' => 'lms_cart',
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
@@ -18,13 +19,14 @@ class BaseOrderFModel extends WB_Model
         'product_division' => 'lms_product_division',
         'product_r_product' => 'lms_product_r_product',
         'bms_book' => 'wbs_bms_book',
+        'code' => 'lms_sys_code'
     ];
 
     // 장바구니 상품타입명
-    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재', 'delivery_price' => '배송'];
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재', 'delivery_price' => '배송', 'delivery_add_price' => '배송'];
 
     // 장바구니 상품타입 순번
-    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_package' => '2', 'off_package' => '2', 'book' => '3', 'delivery_price' => '4'];
+    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_package' => '2', 'off_package' => '2', 'book' => '3', 'delivery_price' => '4', 'delivery_add_price' => '4'];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료)
     public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'];

@@ -87,20 +87,16 @@
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth">
             <span class="depth-Arrow">></span><strong>내강의실</strong>
-            <span class="depth-Arrow">></span><strong>학습지원관리</strong>
-            <span class="depth-Arrow">></span><strong>쪽지관리</strong>
+            <span class="depth-Arrow">></span><strong>모의고사관리</strong>
+            <span class="depth-Arrow">></span><strong>접수현황</strong>
         </span>
     </div>
     <div class="Content p_re">
 
-        <div class="willbes-Mypage-SUPPORTZONE c_both">
+        <div class="willbes-Mypage-ONLINEZONE c_both">
             <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                 · 쪽지관리
             </div>
-        </div>
-        <!-- willbes-Mypage-SUPPORTZONE -->
-
-        <div class="willbes-Leclist c_both">
             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                 → 총 <a class="num tx-light-blue strong" href="#none">2</a>건
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
@@ -271,7 +267,7 @@
                 </div>
             </div>
         </div>
-        <!-- willbes-Leclist -->
+        <!-- willbes-Mypage-ONLINEZONE -->
 
         <div id="MEMOPASS" class="willbes-Layer-Black">
             <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590">

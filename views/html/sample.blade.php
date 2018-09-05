@@ -5,7 +5,7 @@
 
 <h3>HTML 퍼블리싱 페이지</h3>
 
-<div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
     <a href="{{ site_url('/home/html/main') }}">메인 page 이동</a><br/><br/>
 
@@ -45,7 +45,7 @@
 
 </div>
 
-<div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+<div style="float:left; width: 480px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
     <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 > 무한PASS존 Index page 이동</a><br/><br/>
 
@@ -67,6 +67,12 @@
 
     <a href="{{ site_url('/home/html/mypage_event') }}">내강의실 > 특강&이벤트 신청현황 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 모의고사관리 > 접수현황 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 모의고사관리 > 온라인모의고사 응시 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 모의고사관리 > 성적결과 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/mypage_payment1') }}">내강의실 > 결제관리 > 주문/배송조회 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_payment2_1') }}">내강의실 > 결제관리 > 주문/배송조회(신용카드) page 이동</a><br/><br/>
@@ -77,15 +83,15 @@
 
     <a href="{{ site_url('/home/html/mypage_payment4') }}">내강의실 > 결제관리 > 쿠폰/수강권관리 page 이동</a><br/><br/>
 
+</div>
+
+<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+
     <a href="{{ site_url('/home/html/mypage_support1') }}">내강의실 > 학습지원관리 > 쪽지관리 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_support2') }}">내강의실 > 학습지원관리 > 알림관리 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_support3') }}">내강의실 > 학습지원관리 > 상담내역 page 이동</a><br/><br/>
-
-</div>
-
-<div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
     <a href="{{ site_url('/home/html/mypage_userinfo1') }}">내강의실 > 회원정보 > 개인정보관리 page 이동</a><br/><br/>
 
@@ -108,6 +114,10 @@
     <a href="{{ site_url('/home/html/cscenter6_2') }}">고객센터 > 학습 프로그램설치 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cscenter7') }}">고객센터 > 부정사용자 규제 page 이동</a><br/><br/>
+
+</div>
+
+<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
     <a href="{{ site_url('/home/html/acad_list') }}">학원수강신청 > 단과반 page 이동</a><br/><br/>
 

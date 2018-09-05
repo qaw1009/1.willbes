@@ -37,8 +37,16 @@
                 <li>
                     <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
-                <li>
-                    <a href="#none">모의고사관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_test1') }}">모의고사관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">모의고사관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_test1') }}">접수현황</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_test2') }}">온라인모의고사 응시</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_test3') }}">성적결과</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
@@ -85,331 +93,336 @@
     </div>
     <div class="Content p_re">
 
-        <div class="willbes-Mypage-ONLINEZONE c_both">
+        <div class="willbes-Mypage-USERINFOZONE c_both">
             <div class="willbes-Prof-Subject willbes-Mypage-Tit NG pb-zero">
                 · 개인정보관리
             </div>
         </div>
-        <!-- willbes-Mypage-ONLINEZONE -->
+        <!-- willbes-Mypage-USERINFOZONE -->
 
-        <div class="willbes-User-Info p_re pb60 _both">
-            <div class="InfoTable GM">
-                <div class="willbes-UserInfo-Tit NG">* 기본정보</div>
-                <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
-                    <colgroup>
-                        <col style="width: 150px;">
-                        <col style="width: 790px;">
-                        <col width="*">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="w-tit">아이디</td>
-                            <td class="w-info">willbes1</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">이름(성별)</td>
-                            <td class="w-info">홍길동 (남성)</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">생년월일</td>
-                            <td class="w-info">1990-00-00</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">휴대폰번호</td>
-                            <td class="w-info">
-                                <div class="phoneBox">
-                                    <select id="phone" name="phone" title="010" class="selePhone phone">
-                                        <option selected="selected">010</option>
-                                        <option value="011">011</option>
-                                        <option value="016">016</option>
-                                        <option value="017">017</option>
-                                        <option value="018">018</option>
-                                    </select> -
-                                    <input type="text" id="USER_CELLPHONE1" name="USER_CELLPHONE1" class="iptCellhone1 phone" maxlength="30"> -
-                                    <input type="text" id="USER_CELLPHONE2" name="USER_CELLPHONE2" class="iptCellhone2 phone" maxlength="30">
-                                </div>
-                                <button type="submit" onclick="openWin('PHONEPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
-                                    <span>변경</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">일반전화</td>
-                            <td class="w-info">
-                                <div class="phoneBox">
-                                    <select id="phone" name="phone" title="02" class="selePhone phone">
-                                        <option selected="selected">02</option>
-                                        <option value="031">031</option>
-                                        <option value="032">032</option>
-                                        <option value="033">033</option>
-                                        <option value="041">041</option>
-                                    </select> -
-                                    <input type="text" id="USER_PHONE1" name="USER_PHONE1" class="iptPhone1 phone" maxlength="30"> -
-                                    <input type="text" id="USER_PHONE2" name="USER_PHONE2" class="iptPhone2 phone" maxlength="30">
-                                </div>
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>없음</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">이메일</td>
-                            <td class="w-info">
-                                <div class="emailBox">
-                                    <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail1 email" maxlength="30"> @
-                                    <select id="email" name="email" title="email" class="seleEmail email">
-                                        <option selected="selected">willbes.net</option>
-                                        <option value="naver.com">naver.com</option>
-                                        <option value="daum.net<">daum.net</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                    </select>
-                                </div>
-                                <button type="submit" onclick="openWin('EMAILPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
-                                    <span>변경</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">주소</td>
-                            <td class="w-info">
-                                <div class="w-txt">교재 및 경품을 받으실 주소를 정확하게 입력해 주세요.</div>
-                                <div class="inputBox Add p_re">
-                                    <div class="searchadd">
-                                        <div class="addressBox">
-                                            <input type="text" id="ADD1" name="ADD1" class="iptAdd zipcode" maxlength="30"> -
-                                            <input type="text" id="ADD2" name="ADD2" class="iptAdd zipcode" maxlength="30"> 
+        <div class="willbes-Leclist c_both pb60">
+
+            <div class="willbes-User-Info p_re">
+                <div class="InfoTable GM">
+                    <div class="willbes-UserInfo-Tit NG">* 기본정보</div>
+                    <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 150px;">
+                            <col style="width: 790px;">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-tit">아이디</td>
+                                <td class="w-info">willbes1</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">이름(성별)</td>
+                                <td class="w-info">홍길동 (남성)</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">생년월일</td>
+                                <td class="w-info">1990-00-00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">휴대폰번호</td>
+                                <td class="w-info">
+                                    <div class="phoneBox">
+                                        <select id="phone" name="phone" title="010" class="selePhone phone">
+                                            <option selected="selected">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                        </select> -
+                                        <input type="text" id="USER_CELLPHONE1" name="USER_CELLPHONE1" class="iptCellhone1 phone" maxlength="30"> -
+                                        <input type="text" id="USER_CELLPHONE2" name="USER_CELLPHONE2" class="iptCellhone2 phone" maxlength="30">
+                                    </div>
+                                    <button type="submit" onclick="openWin('PHONEPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
+                                        <span>변경</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">일반전화</td>
+                                <td class="w-info">
+                                    <div class="phoneBox">
+                                        <select id="phone" name="phone" title="02" class="selePhone phone">
+                                            <option selected="selected">02</option>
+                                            <option value="031">031</option>
+                                            <option value="032">032</option>
+                                            <option value="033">033</option>
+                                            <option value="041">041</option>
+                                        </select> -
+                                        <input type="text" id="USER_PHONE1" name="USER_PHONE1" class="iptPhone1 phone" maxlength="30"> -
+                                        <input type="text" id="USER_PHONE2" name="USER_PHONE2" class="iptPhone2 phone" maxlength="30">
+                                    </div>
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>없음</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">이메일</td>
+                                <td class="w-info">
+                                    <div class="emailBox">
+                                        <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail1 email" maxlength="30"> @
+                                        <select id="email" name="email" title="email" class="seleEmail email">
+                                            <option selected="selected">willbes.net</option>
+                                            <option value="naver.com">naver.com</option>
+                                            <option value="daum.net<">daum.net</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" onclick="openWin('EMAILPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
+                                        <span>변경</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">주소</td>
+                                <td class="w-info">
+                                    <div class="w-txt">교재 및 경품을 받으실 주소를 정확하게 입력해 주세요.</div>
+                                    <div class="inputBox Add p_re">
+                                        <div class="searchadd">
+                                            <div class="addressBox">
+                                                <input type="text" id="ADD1" name="ADD1" class="iptAdd zipcode" maxlength="30"> -
+                                                <input type="text" id="ADD2" name="ADD2" class="iptAdd zipcode" maxlength="30"> 
+                                            </div>
+                                            <button type="submit" onclick="" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
+                                                <span>주소찾기</span>
+                                            </button>
                                         </div>
-                                        <button type="submit" onclick="" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
-                                            <span>주소찾기</span>
-                                        </button>
+                                        <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray address" placeholder="기본주소" maxlength="30" disabled="disabled">
+                                        <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2 address" placeholder="상세주소" maxlength="30">
                                     </div>
-                                    <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray address" placeholder="기본주소" maxlength="30" disabled="disabled">
-                                    <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2 address" placeholder="상세주소" maxlength="30">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="InfoTable GM">
+                    <div class="willbes-UserInfo-Tit NG">* 부가정보<span class="UserInfo-subTit">(부가정보를 입력하시면 맞춤형 수험관리 혜택을 받으실 수 있습니다.)</span></div>
+                    <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 150px;">
+                            <col style="width: 790px;">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-tit">가입경로</td>
+                                <td class="w-info">
+                                    <select id="option1" name="option1" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="인터넷카페">인터넷카페</option>
+                                        <option value="인터넷검색">인터넷검색</option>
+                                        <option value="인터넷광고">인터넷광고</option>
+                                        <option value="신문광고">신문광고</option>
+                                        <option value="학원">학원</option>
+                                        <option value="전단지">전단지</option>
+                                        <option value="친구소개">친구소개</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">직업</td>
+                                <td class="w-info">                               
+                                    <select id="option2" name="option2" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="학생">학생</option>
+                                        <option value="취업준비생">취업준비생</option>
+                                        <option value="직장인">직장인</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">관심직렬</td>
+                                <td class="w-info">
+                                    <select id="option3" name="option3" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="경찰">경찰</option>
+                                        <option value="공무원">공무원</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">수험기간</td>
+                                <td class="w-info">                            
+                                    <select id="option4" name="option4" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="처음">처음</option>
+                                        <option value="6월 ~ 1년">6월 ~ 1년</option>
+                                        <option value="1년 ~ 2년">1년 ~ 2년</option>
+                                        <option value="2년 이상">2년 이상</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">선호하는 선택과목</td>
+                                <td class="w-info">
+                                    <div class="w-txt">선호하는 선택과목 2개를 선택해 주세요.</div>
+                                    <select id="option5-1" name="option5-1" title="선택" class="seleOption option mr10">
+                                        <option selected="selected">선택</option>
+                                        <option value="경찰1">경찰1</option>
+                                        <option value="공무원1">공무원1</option>
+                                    </select>
+                                    <select id="option5-2" name="option5-2" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="경찰2">경찰2</option>
+                                        <option value="공무원2">공무원2</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">1차 관심직종 및<br/>지역</td>
+                                <td class="w-info">
+                                    <div class="w-txt">1차 관심직종 선택후, 관심지역을 모두 선택해 주세요.</div>
+                                    <div class="w-JJ-Box mb5">
+                                        <div class="w-tit-JJ">직종</div>
+                                        <div class="w-selec-JJ">
+                                            <select id="option6-1" name="option6-1" title="선택" class="seleOption option mr10">
+                                                <option selected="selected">선택</option>
+                                                <option value="경찰1">경찰1</option>
+                                                <option value="공무원1">공무원1</option>
+                                            </select>
+                                            <select id="option6-2" name="option6-2" title="선택" class="seleOption option">
+                                                <option selected="selected">선택</option>
+                                                <option value="경찰2">경찰2</option>
+                                                <option value="공무원2">공무원2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="w-Area-Box">
+                                        <div class="w-tit-Area">지역</div>
+                                        <div class="w-selec-Area">
+                                            <ul>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>서울</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경기</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>강원</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충북</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충남</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경북</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경남</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전북</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전남</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>제주</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>부산</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>인천</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대전</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>광주</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>울산</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>세종</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대구</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>국가직</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">2차 관심직종 및<br/>지역</td>
+                                <td class="w-info">
+                                    <div class="w-txt">2차 관심직종 선택후, 관심지역을 모두 선택해 주세요.</div>
+                                    <div class="w-JJ-Box mb5">
+                                        <div class="w-tit-JJ">직종</div>
+                                        <div class="w-selec-JJ">
+                                            <select id="option7-1" name="option7-1" title="선택" class="seleOption option mr10">
+                                                <option selected="selected">선택</option>
+                                                <option value="경찰1">경찰1</option>
+                                                <option value="공무원1">공무원1</option>
+                                            </select>
+                                            <select id="option7-2" name="option7-2" title="선택" class="seleOption option">
+                                                <option selected="selected">선택</option>
+                                                <option value="경찰2">경찰2</option>
+                                                <option value="공무원2">공무원2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="w-Area-Box">
+                                        <div class="w-tit-Area">지역</div>
+                                        <div class="w-selec-Area">
+                                            <ul>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>서울</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경기</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>강원</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충북</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충남</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경북</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경남</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전북</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전남</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>제주</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>부산</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>인천</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대전</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>광주</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>울산</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>세종</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대구</label></li>
+                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>국가직</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">관심정보</td>
+                                <td class="w-info">                                
+                                    <select id="option7" name="option7" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="수험정보">수험정보</option>
+                                        <option value="신규강의">신규강의</option>
+                                        <option value="이벤트">이벤트</option>
+                                        <option value="학습질문">학습질문</option>
+                                        <option value="기출 및 강의자료">기출 및 강의자료</option>
+                                        <option value="모의고사">모의고사</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">선호이벤트</td>
+                                <td class="w-info">                                
+                                    <select id="option8" name="option8" title="선택" class="seleOption option">
+                                        <option selected="selected">선택</option>
+                                        <option value="수강료할인">수강료할인</option>
+                                        <option value="교재무료">교재무료</option>
+                                        <option value="경품">경품</option>
+                                        <option value="수강기간연장">수강기간연장</option>
+                                        <option value="포인트적립">포인트적립</option>
+                                        <option value="쿠폰제공">쿠폰제공</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">수신동의</td>
+                                <td class="w-info">
+                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk ml-zero"> <label>개인정보 위탁동의</label>
+                                </td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="willbes-Lec-buyBtn">
+                    <ul>
+                        <li class="btnAuto180 h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                <span>개인정보수정</span>
+                            </button>
+                        </li>
+                        <li class="btnAuto180 h36">
+                            <button type="submit" onclick="openWin('WITHDRAWALPASS')" class="mem-Btn bg-white bd-dark-gray">
+                                <span class="tx-purple-gray">회원탈퇴신청</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="InfoTable GM">
-                <div class="willbes-UserInfo-Tit NG">* 부가정보<span class="UserInfo-subTit">(부가정보를 입력하시면 맞춤형 수험관리 혜택을 받으실 수 있습니다.)</span></div>
-                <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
-                    <colgroup>
-                        <col style="width: 150px;">
-                        <col style="width: 790px;">
-                        <col width="*">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="w-tit">가입경로</td>
-                            <td class="w-info">
-                                <select id="option1" name="option1" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="인터넷카페">인터넷카페</option>
-                                    <option value="인터넷검색">인터넷검색</option>
-                                    <option value="인터넷광고">인터넷광고</option>
-                                    <option value="신문광고">신문광고</option>
-                                    <option value="학원">학원</option>
-                                    <option value="전단지">전단지</option>
-                                    <option value="친구소개">친구소개</option>
-                                    <option value="기타">기타</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">직업</td>
-                            <td class="w-info">                               
-                                <select id="option2" name="option2" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="학생">학생</option>
-                                    <option value="취업준비생">취업준비생</option>
-                                    <option value="직장인">직장인</option>
-                                    <option value="기타">기타</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">관심직렬</td>
-                            <td class="w-info">
-                                <select id="option3" name="option3" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="경찰">경찰</option>
-                                    <option value="공무원">공무원</option>
-                                    <option value="기타">기타</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">수험기간</td>
-                            <td class="w-info">                            
-                                <select id="option4" name="option4" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="처음">처음</option>
-                                    <option value="6월 ~ 1년">6월 ~ 1년</option>
-                                    <option value="1년 ~ 2년">1년 ~ 2년</option>
-                                    <option value="2년 이상">2년 이상</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">선호하는 선택과목</td>
-                            <td class="w-info">
-                                <div class="w-txt">선호하는 선택과목 2개를 선택해 주세요.</div>
-                                <select id="option5-1" name="option5-1" title="선택" class="seleOption option mr10">
-                                    <option selected="selected">선택</option>
-                                    <option value="경찰1">경찰1</option>
-                                    <option value="공무원1">공무원1</option>
-                                </select>
-                                <select id="option5-2" name="option5-2" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="경찰2">경찰2</option>
-                                    <option value="공무원2">공무원2</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">1차 관심직종 및<br/>지역</td>
-                            <td class="w-info">
-                                <div class="w-txt">1차 관심직종 선택후, 관심지역을 모두 선택해 주세요.</div>
-                                <div class="w-JJ-Box mb5">
-                                    <div class="w-tit-JJ">직종</div>
-                                    <div class="w-selec-JJ">
-                                        <select id="option6-1" name="option6-1" title="선택" class="seleOption option mr10">
-                                            <option selected="selected">선택</option>
-                                            <option value="경찰1">경찰1</option>
-                                            <option value="공무원1">공무원1</option>
-                                        </select>
-                                        <select id="option6-2" name="option6-2" title="선택" class="seleOption option">
-                                            <option selected="selected">선택</option>
-                                            <option value="경찰2">경찰2</option>
-                                            <option value="공무원2">공무원2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w-Area-Box">
-                                    <div class="w-tit-Area">지역</div>
-                                    <div class="w-selec-Area">
-                                        <ul>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>서울</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경기</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>강원</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충북</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충남</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경북</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경남</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전북</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전남</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>제주</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>부산</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>인천</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대전</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>광주</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>울산</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>세종</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대구</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>국가직</label></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">2차 관심직종 및<br/>지역</td>
-                            <td class="w-info">
-                                <div class="w-txt">2차 관심직종 선택후, 관심지역을 모두 선택해 주세요.</div>
-                                <div class="w-JJ-Box mb5">
-                                    <div class="w-tit-JJ">직종</div>
-                                    <div class="w-selec-JJ">
-                                        <select id="option7-1" name="option7-1" title="선택" class="seleOption option mr10">
-                                            <option selected="selected">선택</option>
-                                            <option value="경찰1">경찰1</option>
-                                            <option value="공무원1">공무원1</option>
-                                        </select>
-                                        <select id="option7-2" name="option7-2" title="선택" class="seleOption option">
-                                            <option selected="selected">선택</option>
-                                            <option value="경찰2">경찰2</option>
-                                            <option value="공무원2">공무원2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w-Area-Box">
-                                    <div class="w-tit-Area">지역</div>
-                                    <div class="w-selec-Area">
-                                        <ul>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>서울</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경기</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>강원</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충북</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충남</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경북</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경남</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전북</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전남</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>제주</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>부산</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>인천</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대전</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>광주</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>울산</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>세종</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대구</label></li>
-                                            <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>국가직</label></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">관심정보</td>
-                            <td class="w-info">                                
-                                <select id="option7" name="option7" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="수험정보">수험정보</option>
-                                    <option value="신규강의">신규강의</option>
-                                    <option value="이벤트">이벤트</option>
-                                    <option value="학습질문">학습질문</option>
-                                    <option value="기출 및 강의자료">기출 및 강의자료</option>
-                                    <option value="모의고사">모의고사</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">선호이벤트</td>
-                            <td class="w-info">                                
-                                <select id="option8" name="option8" title="선택" class="seleOption option">
-                                    <option selected="selected">선택</option>
-                                    <option value="수강료할인">수강료할인</option>
-                                    <option value="교재무료">교재무료</option>
-                                    <option value="경품">경품</option>
-                                    <option value="수강기간연장">수강기간연장</option>
-                                    <option value="포인트적립">포인트적립</option>
-                                    <option value="쿠폰제공">쿠폰제공</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit">수신동의</td>
-                            <td class="w-info">
-                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk ml-zero"> <label>개인정보 위탁동의</label>
-                            </td>
-                        </tr> 
-                    </tbody>
-                </table>
-            </div>
-            <div class="willbes-Lec-buyBtn">
-                <ul>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                            <span>개인정보수정</span>
-                        </button>
-                    </li>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" onclick="openWin('WITHDRAWALPASS')" class="mem-Btn bg-white bd-dark-gray">
-                            <span class="tx-purple-gray">회원탈퇴신청</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            <!-- willbes-User-Info -->
+            
         </div>
-        <!-- willbes-User-Info -->
+        <!-- willbes-Leclist -->
 
         <div id="PHONEPASS" class="willbes-Layer-Black">
             <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h460">

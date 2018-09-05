@@ -1440,13 +1440,14 @@ table.auTable tr td {
 .list-drop-Box {
     top: 38px;
     left: 50%;
-    margin-left: -70px;
-    width: 140px;
+    margin-left: -72px;
+    width: 144px;
     padding: 20px;
     text-align: left;
 }
 .list-drop-Box ul li {
     line-height: 22px;
+    margin: 0 !important;
 }
 .list-drop-Box ul li a {
     font-size: 13px;
@@ -1937,7 +1938,7 @@ table.auTable tr td {
 	z-index: 999;
 }
 .willbes-Lec-buyBtn-sm.active {
-    display: block !important;
+    display: block !important;;
 }
 .willbes-Lec-buyBtn-sm div {
     margin-bottom: 1px;
@@ -2982,7 +2983,6 @@ table.classTable tr td.w-data {
 .LeclistTable .listTable tr td.w-list a {
     display: block;
 }
-
 .LeclistTable .listTable .w-chk input[type="checkbox"] {
     cursor: pointer;
 }
@@ -3774,7 +3774,8 @@ ul.btnWrapbt li {
 
 /* subContainer : Cart : 결제하기 : 결제금액리스트 */
 .willbes-Buylist-Price {
-    margin-top: 30px;
+    float: left;
+    widtH: 100%;
 }
 .willbes-Buylist-Price .cart-PriceBox {
     clear: both;
@@ -4472,6 +4473,36 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .LecWriteTable .writeTable tr td.w-textarea textarea {
     width: 670px;
+}
+
+/* subContainer : rating-stars */
+.rating-stars ul {
+    float: left;
+}
+.rating-stars ul > li.star {
+    display:inline-block;
+    margin: 0 -2px;
+}
+.rating-stars ul > li.star > i.fa {
+    background: url("../../img/willbes/mypage/icon_star_off.png") no-repeat center center;
+    width: 18px;
+    height: 12px;
+    display: block;  
+    cursor: pointer;
+}
+.rating-stars ul > li.star.hover > i.fa {
+    background: url("../../img/willbes/mypage/icon_star_on.png") no-repeat center center;
+}
+.rating-stars ul > li.star.selected > i.fa {
+    background: url("../../img/willbes/mypage/icon_star_on.png") no-repeat center center;
+}
+.success-box {
+    display: inline-block;
+    margin-left: 10px;
+}
+.success-box > div {
+    vertical-align: baseline;
+    display: inline-block;
 }
 
 /* subContainer : Prof : replyTable */
@@ -5879,7 +5910,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Lec-Table.d_block .w-answer .w-chk-st a {
     display: block;
-    line-height: 22px;
+    line-height: 20px;
 }
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE */
@@ -6064,7 +6095,6 @@ table.PassZoneTable .w-data {
     right: 0;
 }
 
-
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-List */
 .PASSZONE-List {
     float: left;
@@ -6195,9 +6225,6 @@ table.PassZoneTable .w-data {
     height: 16px;
     margin: 0 10px;
 }
-
-
-
 .PASSZONE-List .passzone-Leclist {
     cursor: pointer;
 }
@@ -6270,7 +6297,6 @@ table.PassZoneTable .w-data {
     width: 360px;
     left: 80px;
 }
-
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-Add */
 .PASSZONE-Add {
@@ -6505,6 +6531,22 @@ table.PassZoneTable .w-data {
 table.acadTable tr td {
     line-height: 24px;
     padding: 15px 0;
+}
+
+/* subContainer : Mypage : 모의고사관리 : testTable */
+table.testTable tr td.w-file.on {
+    line-height: 20px;
+    padding: 15px 0;
+}
+table.testTable tr td.w-btn a {
+    display: block;
+    margin: 0 auto;
+    width: 77px;
+    height: 27px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
 }
 
 /* subContainer : Mypage : 결제관리 : orderTable */

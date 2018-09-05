@@ -37,8 +37,16 @@
                 <li>
                     <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
                 </li>
-                <li>
-                    <a href="#none">모의고사관리</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_test1') }}">모의고사관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">모의고사관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_test1') }}">접수현황</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_test2') }}">온라인모의고사 응시</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_test3') }}">성적결과</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
@@ -105,7 +113,7 @@
         </div>
         <!-- willbes-Mypage-EVTZONE -->
 
-        <div class="willbes-Mypage-Tabs mt60">
+        <div class="willbes-Leclist c_both mt60">
             <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                 <span class="w-data">
                     기간검색 &nbsp;
@@ -268,7 +276,7 @@
                 </div>
             </div>
         </div>
-        <!-- willbes-Mypage-Tabs -->
+        <!-- willbes-Leclist -->
 
     </div>
     <div class="Quick-Bnr ml20">

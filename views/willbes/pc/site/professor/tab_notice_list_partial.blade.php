@@ -1,9 +1,10 @@
 <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
     · 공지사항
     <div class="willbes-Lec-Search GM f_right">
+
         <div class="inputBox p_re">
-            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-            <button type="submit" onclick="" class="search-Btn">
+            <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+            <button type="button" id="btn_search" class="search-Btn">
                 <span>검색</span>
             </button>
         </div>
@@ -65,4 +66,24 @@
         {!! $tab_data['paging']['pagination'] !!}
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 검색어 입력 후 엔터
+        $('#s_keyword').on('keyup', function() {
+            if (window.event.keyCode === 13) {
+                goSearch();
+            }
+        });
+
+        // 검색 버튼 클릭
+        $('#btn_search').on('click', function() {
+            goSearch();
+        });
+
+        var goSearch = function() {
+            goUrl('s_keyword', document.getElementById('s_keyword').value);
+        };
+    });
+</script>
 <!-- willbes-Leclist -->

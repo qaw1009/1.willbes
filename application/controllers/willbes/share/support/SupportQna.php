@@ -60,11 +60,13 @@ class SupportQna extends BaseSupport
                 'SiteCode' => $s_site_code,
                 'TypeCcd' => $s_consult_type
             ],
+            'LKB' => [
+                'Category_String'=>$this->_cate_code
+            ],
             'ORG' => [
                 'LKB' => [
                     'Title' => $s_keyword,
-                    'Content' => $s_keyword,
-                    'Category_String' => $s_cate_code,
+                    'Content' => $s_keyword
                 ]
             ]
         ];

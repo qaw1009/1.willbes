@@ -210,7 +210,8 @@ class Professor extends \app\controllers\FrontController
     private function _tab_notice_list($prof_idx, $arr_input)
     {
         $list = null;
-        $get_params = '';
+        $uri_path = '/professor/show/cate/'.$this->_cate_code.'/prof-idx/'.$prof_idx.'/';
+        $get_params = 'subject_idx='.element('subject_idx',$arr_input).'&subject_name='.element('subject_name',$arr_input).'&tab=notice_list&s_keyword='.element('s_keyword', $arr_input);
 
         $arr_condition = [
             'EQ' => [
@@ -219,7 +220,15 @@ class Professor extends \app\controllers\FrontController
                 'ProfIdx' => $prof_idx,
                 'SubjectIdx' =>element('subject_idx',$arr_input)
             ],
-            'LKB' => ['Category_String'=>$this->_cate_code]
+            'LKB' => [
+                'Category_String'=>$this->_cate_code
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'Title' => element('s_keyword', $arr_input),
+                    'Content' => element('s_keyword', $arr_input)
+                ]
+            ]
         ];
 
         $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, AreaCcd
@@ -233,7 +242,7 @@ class Professor extends \app\controllers\FrontController
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination('/support/qna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($uri_path.'?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);

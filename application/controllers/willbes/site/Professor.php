@@ -210,7 +210,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_notice($prof_idx, $arr_input)
     {
         $frame_path = '/prof/notice/index';
-        $frame_params = 'cate='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=frame';
 
         $data = [

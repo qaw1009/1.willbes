@@ -26,14 +26,16 @@ class SupportNotice extends BaseSupport
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $cate = element('cate',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
         $view_type = element('view_type',$arr_input);
+        $page = element('page',$arr_input);
 
         $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
-        $get_params .= '&cate='.$cate.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
+        $get_params .= '&s_cate_code='.$s_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_params .= '&view_type='.$view_type;
+        $get_params .= '&page='.$page;
 
         //var_dump($arr_input);
         $list = [];
@@ -44,8 +46,8 @@ class SupportNotice extends BaseSupport
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.CampusCcd' => $s_campus
-                ,'b.ProfIdx' => element('prof_idx',$arr_input)
-                ,'b.SubjectIdx' => element('subject_idx',$arr_input)
+                ,'b.ProfIdx' => $prof_idx
+                ,'b.SubjectIdx' => $subject_idx
             ],
             'ORG' => [
                 'LKB' => [
@@ -78,10 +80,10 @@ class SupportNotice extends BaseSupport
         }
 
         $this->load->view('support/'.$view_type.'/notice', [
-            'campus_ccd' => $campus_ccd,
             'default_path' => $this->_default_path,
             'get_params' => $get_params,
             'arr_input' => $arr_input,
+            'campus_ccd' => $campus_ccd,
             'list'=>$list,
             'paging' => $paging,
         ]);
@@ -90,8 +92,19 @@ class SupportNotice extends BaseSupport
     public function show()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $view_type = element('view_type',$arr_input);
         $board_idx = element('board_idx',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $view_type = element('view_type',$arr_input);
+        $page = element('page',$arr_input);
+
+        $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params .= '&s_cate_code='.$s_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
+        $get_params .= '&view_type='.$view_type;
+        $get_params .= '&page='.$page;
 
         if (empty($board_idx)) {
             show_alert('게시글번호가 존재하지 않습니다.', 'back');
@@ -133,15 +146,21 @@ class SupportNotice extends BaseSupport
         $arr_condition_base = [
             'EQ' => [
                 'b.SiteCode' => $this->_site_code
+                ,'b.IsBest' => '0'
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.CampusCcd' => $s_campus
+                ,'b.ProfIdx' => $prof_idx
+                ,'b.SubjectIdx' => $subject_idx
             ],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword
                     ,'b.Content' => $s_keyword
                 ]
+            ],
+            'LKB' => [
+                'Category_String'=>$this->_cate_code
             ],
         ];
 
@@ -164,6 +183,8 @@ class SupportNotice extends BaseSupport
         $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
 
         $this->load->view('support/'.$view_type.'/show_notice',[
+                'default_path' => $this->_default_path,
+                'get_params' => $get_params,
                 'arr_input' => $arr_input,
                 'data' => $data,
                 'pre_data' => $pre_data,

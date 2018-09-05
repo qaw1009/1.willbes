@@ -50,11 +50,11 @@
                     </table>
                     <div class="search-Btn mt20 mb20 h36 p_re">
                         <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
-                            <a href="{{site_url('support/notice/index').'?&s_campus='.element('s_campus',$arr_input).'&s_keyword='.urlencode(element('s_keyword',$arr_input)).'&page='.element('page',$arr_input)}}">목록</a>
+                            <a href="{{site_url($default_path.'/notice/index?'.$get_params)}}">목록</a>
                         </div>
                     </div>
 
-                    @if(element('isBestcheck',$arr_input) != '1')
+                    @if($data['IsBest'] != '1')
                         <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
                             <colgroup>
                                 <col style="width: 150px;">
@@ -66,7 +66,7 @@
                                 <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
                                 <td class="tx-left pl20">
                                     @if(empty($pre_data) === false)
-                                        <a href="{{site_url('support/notice/show').'?board_idx='.$pre_data['BoardIdx'].'&s_campus='.element('s_campus',$arr_input).'&s_keyword='.urlencode(element('s_keyword',$arr_input)).'&page='.element('page',$arr_input)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
+                                        <a href="{{site_url($default_path.'/notice/show?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
                                     @else
                                         이전글이 없습니다.
                                     @endif
@@ -77,7 +77,7 @@
                                 <td class="w-next bg-light-gray"><strong>다음글</strong></td>
                                 <td class="tx-left pl20">
                                     @if(empty($next_data) === false)
-                                        <a href="{{site_url('support/notice/show').'?board_idx='.$next_data['BoardIdx'].'&s_campus='.element('s_campus',$arr_input).'&s_keyword='.urlencode(element('s_keyword',$arr_input)).'&page='.element('page',$arr_input)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
+                                        <a href="{{site_url($default_path.'/notice/show?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
                                     @else
                                         다음글이 없습니다.
                                     @endif

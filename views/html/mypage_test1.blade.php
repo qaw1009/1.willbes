@@ -93,32 +93,46 @@
     </div>
     <div class="Content p_re">
 
-        <div class="willbes-Mypage-ONLINEZONE c_both">
+        <div class="willbes-Mypage-TESTZONE c_both">
             <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 쪽지관리
+                · 접수현황
             </div>
+            <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
+                <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
+                <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
+                    <tbody>
+                        <tr>
+                            <td>
+                                - 해당 모의고사명 클릭시 접수내역 확인 및 응시표를 출력할 수 있습니다.(단, 환불 완료된 모의고사는 응시표 출력불가능)<br/>
+                                - 접수상태가 '결제대기'인 경우 해당 모의고사명 클릭시 결제(접수)하기가 가능합니다.<br/>
+                                - 온라인 모의고사(응시형태가 Online인 경우)는 내강의실 > 모의고사관리 > 온라인 모의고사 응시메뉴에서 응시해 주시기 바랍니다.<br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+        <!-- willbes-Mypage-TESTZONE -->
+
+        <div class="willbes-Leclist c_both mt60">
             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                → 총 <a class="num tx-light-blue strong" href="#none">2</a>건
+                → 총 <a class="num tx-light-blue strong" href="#none">4</a>건
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                    <select id="all" name="all" title="all" class="seleAll mr10 h30 f_left">
-                        <option selected="selected">전체쪽지</option>
-                        <option value="미확인쪽지">미확인쪽지</option>
-                        <option value="확인쪽지">확인쪽지</option>
-                    </select>
-                    <select id="process" name="process" title="process" class="seleProcess mr10 h30 f_left">
-                        <option selected="selected">과정</option>
-                        <option value="헌법">헌법</option>
-                        <option value="스파르타반">스파르타반</option>
-                        <option value="공직선거법">공직선거법</option>
-                    </select>
-                    <select id="academy" name="academy" title="academy" class="seleAcad mr10 h30 f_left">
-                        <option selected="selected">구분</option>
-                        <option value="온라인">온라인</option>
-                        <option value="학원">학원</option>
-                    </select>
                     <div class="willbes-Lec-Search GM f_right">
+                        <select id="route" name="route" title="route" class="seleRoute mr10 h30 f_left">
+                            <option selected="selected">접수루트</option>
+                            <option value="학원">학원</option>
+                            <option value="온라인">온라인</option>
+                        </select>
+                        <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
+                            <option selected="selected">접수상태</option>
+                            <option value="결제완료">결제완료</option>
+                            <option value="결제대기">결제대기</option>
+                            <option value="환불완료">환불완료</option>
+                            <option value="접수마감">접수마감</option>
+                        </select>
                         <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
+                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                             <button type="submit" onclick="" class="search-Btn">
                                 <span>검색</span>
                             </button>
@@ -127,125 +141,119 @@
                 </span>
             </div>
             <div class="LeclistTable pointTable">
-                <table cellspacing="0" cellpadding="0" class="listTable cartTable under-gray bdt-gray tx-gray">
+                <table cellspacing="0" cellpadding="0" class="listTable testTable under-gray bdt-gray tx-gray">
                     <colgroup>
                         <col style="width: 60px;">
                         <col style="width: 70px;">
+                        <col style="width: 90px;">
                         <col style="width: 80px;">
-                        <col style="width: 370px;">
-                        <col style="width: 70px;">
                         <col style="width: 100px;">
-                        <col style="width: 110px;">
-                        <col style="width: 80px;">
+                        <col style="width: 210px;">
+                        <col style="width: 90px;">
+                        <col style="width: 120px;">
+                        <col style="width: 120px;">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>No<span class="row-line">|</span></li></th>
                             <th>과정<span class="row-line">|</span></li></th>
-                            <th>구분<span class="row-line">|</span></li></th>
-                            <th>제목<span class="row-line">|</span></li></th>
-                            <th>첨부<span class="row-line">|</span></li></th>
-                            <th>발송자<span class="row-line">|</span></li></th>
-                            <th>발송일<span class="row-line">|</span></li></th>
-                            <th>상태</th>
+                            <th>응시분야<span class="row-line">|</span></li></th>
+                            <th>응시형태<span class="row-line">|</span></li></th>
+                            <th>시험응시일<span class="row-line">|</span></li></th>
+                            <th>모의고사명<span class="row-line">|</span></li></th>
+                            <th>접수루트<span class="row-line">|</span></li></th>
+                            <th>접수일<span class="row-line">|</span></li></th>
+                            <th>결제(접수)상태</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="w-no">8</td>
                             <td class="w-process">경찰</td>
-                            <td class="w-acad">학원</td>
-                            <td class="w-list tx-left pl25 strong"><a href="#none" onclick="openWin('MEMOPASS')">3법 해피엔딩 이벤트☆수험표 인증시 무료!</a></td>
-                            <td class="w-file">
-                                <a href="#none">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}">
-                                </a>
-                            </td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state tx-red strong">미확인</td>
+                            <td class="w-type">일반경찰</td>
+                            <td class="w-form">Off</td>
+                            <td class="w-date">2018-10-10</td>
+                            <td class="w-list"><a href="#none" onclick="openWin('MEMOPASS')">7/2 전국모의고사-일방경찰</a></td>
+                            <td class="w-route">학원</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state">결제완료</td>
                         </tr>
                         <tr>
                             <td class="w-no">7</td>
                             <td class="w-process">공무원</td>
-                            <td class="w-acad">온라인</td>
-                            <td class="w-list tx-left pl25 strong"><a href="#none">김원욱 형법 최신 1개년 기출 판례이벤트</a></td>
-                            <td class="w-file">
-                                <a href="#none">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}">
-                                </a>
-                            </td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state tx-red strong">미확인</td>
+                            <td class="w-type">일반경찰</td>
+                            <td class="w-form">Online</td>
+                            <td class="w-date">2018-10-10~</td>
+                            <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
+                            <td class="w-route">학원</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state tx-blue">결제대기</td>
                         </tr>
                         <tr>
                             <td class="w-no">6</td>
                             <td class="w-process">임용</td>
-                            <td class="w-acad">학원</td>
-                            <td class="w-list tx-left pl25"><a href="#none">2018년 제1차 경찰 공무원 채용필기시험 가답안 공지</a></td>
-                            <td class="w-file">&nbsp;</td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state">확인</td>
+                            <td class="w-type">경행경채</td>
+                            <td class="w-form">Off</td>
+                            <td class="w-date">상시</td>
+                            <td class="w-list">7/2 전국모의고사-일방경찰</td>
+                            <td class="w-route">온라인</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state">환불완료</td>
                         </tr>
                         <tr>
                             <td class="w-no">5</td>
                             <td class="w-process">경찰</td>
-                            <td class="w-acad">온라인</td>
-                            <td class="w-list tx-left pl25"><a href="#none">[신규강의안내] 2018 대비 3~4월안내</a></td>
-                            <td class="w-file">
-                                <a href="#none">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}">
-                                </a>
-                            </td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state">확인</td>
+                            <td class="w-type">일반경찰</td>
+                            <td class="w-form">Online</td>
+                            <td class="w-date">2018-10-10</td>
+                            <td class="w-list">7/2 전국모의고사-일방경찰</td>
+                            <td class="w-route">온라인</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state tx-red">접수마감</td>
                         </tr>
                         <tr>
                             <td class="w-no">4</td>
-                            <td class="w-process">공무원</td>
-                            <td class="w-acad">온라인</td>
-                            <td class="w-list tx-left pl25"><a href="#none">설연휴 학원 고객센터 운영안내</a></td>
-                            <td class="w-file">&nbsp;</td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state">확인</td>
+                            <td class="w-process">임용</td>
+                            <td class="w-type">경행경채</td>
+                            <td class="w-form">Off</td>
+                            <td class="w-date">상시</td>
+                            <td class="w-list">7/2 전국모의고사-일방경찰</td>
+                            <td class="w-route">온라인</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state">결제완료</td>
                         </tr>
                         <tr>
                             <td class="w-no">3</td>
-                            <td class="w-process">임용</td>
-                            <td class="w-acad">온라인</td>
-                            <td class="w-list tx-left pl25"><a href="#none">추석 교재 배송 및 고객센터 휴무안내</a></td>
-                            <td class="w-file">&nbsp;</td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state">확인</td>
+                            <td class="w-process">공무원</td>
+                            <td class="w-type">일반경찰</td>
+                            <td class="w-form">Online</td>
+                            <td class="w-date">2018-10-10~</td>
+                            <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
+                            <td class="w-route">학원</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state tx-blue">결제대기</td>
                         </tr>
                         <tr>
                             <td class="w-no">2</td>
-                            <td class="w-process">경찰</td>
-                            <td class="w-acad">학원</td>
-                            <td class="w-list tx-left pl25"><a href="#none">4월 무이자카드 안내</a></td>
-                            <td class="w-file">&nbsp;</td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state">확인</td>
+                            <td class="w-process">임용</td>
+                            <td class="w-type">경행경채</td>
+                            <td class="w-form">Off</td>
+                            <td class="w-date">상시</td>
+                            <td class="w-list">7/2 전국모의고사-일방경찰</td>
+                            <td class="w-route">온라인</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state">환불완료</td>
                         </tr>
                         <tr>
                             <td class="w-no">1</td>
-                            <td class="w-process">공무원</td>
-                            <td class="w-acad">온라인</td>
-                            <td class="w-list tx-left pl25"><a href="#none">3월 무이자카드 안내</a></td>
-                            <td class="w-file">
-                                <a href="#none">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}">
-                                </a>
-                            </td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">2018-00-00</td>
-                            <td class="w-state">확인</td>
+                            <td class="w-process">경찰</td>
+                            <td class="w-type">일반경찰</td>
+                            <td class="w-form">Online</td>
+                            <td class="w-date">2018-10-10</td>
+                            <td class="w-list">7/2 전국모의고사-일방경찰</td>
+                            <td class="w-route">온라인</td>
+                            <td class="w-day">2018-10-10 20:10</td>
+                            <td class="w-state tx-red">접수마감</td>
                         </tr>
                     </tbody>
                 </table>
@@ -267,8 +275,8 @@
                 </div>
             </div>
         </div>
-        <!-- willbes-Mypage-ONLINEZONE -->
-
+        <!-- willbes-Leclist -->
+   
         <div id="MEMOPASS" class="willbes-Layer-Black">
             <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590">
                 <a class="closeBtn" href="#none" onclick="closeWin('MEMOPASS')">

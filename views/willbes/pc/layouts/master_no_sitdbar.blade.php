@@ -1,5 +1,5 @@
 @include('willbes.pc.layouts.header')
-<body>
+<body id="widthFrame">
 
 <!-- content -->
 @yield('content')

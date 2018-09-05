@@ -271,6 +271,9 @@ body {
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
 	min-width: 1120px;
 }
+body#widthFrame {
+  min-width: 100%;
+}
 ol, ul {
 	list-style: none;
 }
@@ -307,11 +310,11 @@ strong {
 	font-weight: 700;
 	vertical-align: baseline;
 }
-
 .sel_disabled,
 select[disabled] {
   background: #eee;
 }
+
 .GM {
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
 }

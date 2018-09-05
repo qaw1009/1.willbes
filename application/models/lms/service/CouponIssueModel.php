@@ -10,6 +10,9 @@ class CouponIssueModel extends WB_Model
         'coupon_pin' => 'lms_coupon_pin',
         'member' => 'lms_member',
         'member_otherinfo' => 'lms_member_otherinfo',
+        'order' => 'lms_order',
+        'order_product' => 'lms_order_product',
+        'product' =>  'lms_product',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
@@ -58,12 +61,12 @@ class CouponIssueModel extends WB_Model
             $join_type = 'left';
         }
 
-        // TODO : 추후 주문정보 추가 필요
         $from = '
             select CD.CdIdx, ' . $column_coupon_pin . ' as CouponPin, CD.MemIdx, CD.IssueTypeCcd, CD.IssueDatm, CD.IssueUserIdx, CD.ExpireDatm, CD.IsUse, CD.UseDatm, CD.RetireDatm, CD.RetireUserIdx
                 , C.CouponIdx, C.SiteCode, C.CouponName
                 , M.MemId, M.MemName, M.PhoneEnc, fn_dec(M.PhoneEnc) as Phone, M.Phone3, MO.SmsRcvStatus
-                , "추후 주문정보 추가 필요" as ProdName, "000000" as OrderNo
+                , concat(ifnull(P.ProdName, ""), if(P.ProdCode is not null and P.IsStatus = "N", " (삭제)", "")) as ProdName
+                , ifnull(O.OrderNo, "") as OrderNo
                 , SC.CcdName as IssueTypeName
                 , (case when now() between CD.IssueDatm and CD.ExpireDatm then "유효"
                         when now() > CD.ExpireDatm then "만료"
@@ -97,6 +100,12 @@ class CouponIssueModel extends WB_Model
                     on M.MemIdx = MO.MemIdx	
                 ' . $join_type . ' join ' . $this->_table['code'] . ' as SC
                     on CD.IssueTypeCcd = SC.Ccd and SC.GroupCcd = "' . $this->_ccd['IssueType'] . '"
+                left join ' . $this->_table['order_product'] . ' as OP                     
+                    on CD.CdIdx = OP.UserCouponIdx and CD.UseOrderProdIdx = OP.OrderProdIdx and CD.IsUse = "Y"            
+                left join ' . $this->_table['order'] . ' as O
+                    on OP.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OP.ProdCode = P.ProdCode                                                       
                 left join ' . $this->_table['admin'] . ' as AI
                     on CD.IssueUserIdx = AI.wAdminIdx and AI.wIsStatus = "Y"
                 left join ' . $this->_table['admin'] . ' as AR

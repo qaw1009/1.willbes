@@ -5,6 +5,6 @@
 @yield('content')
 
 <!-- scripts -->
-{{--@include('willbes.pc.layouts.footer_script')--}}
+@include('willbes.pc.layouts.footer_script')
 </body>
 </html>

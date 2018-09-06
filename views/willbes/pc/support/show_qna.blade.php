@@ -133,17 +133,17 @@
     $(document).ready(function() {
         //목록
         $('#btn_list').click(function() {
-            location.href = '{!! site_url('support/qna/index?'.$get_params) !!}';
+            location.href = '{!! site_url($default_path.'/qna/index?'.$get_params) !!}';
         });
 
         //수정
         $('#btn_modify').click(function() {
-            location.href = '{!! site_url('support/qna/create?'.$get_params.'&board_idx='.$board_idx) !!}';
+            location.href = '{!! site_url($default_path.'/qna/create?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
 
         //삭제
         $('#btn_del').click(function() {
-            location.href = '{!! site_url('support/qna/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
+            location.href = '{!! site_url($default_path.'/qna/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
     });
 </script>

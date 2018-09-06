@@ -283,6 +283,7 @@ class CartFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');
             $gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
+            $is_delivery_info = false;
             $total_prod_order_price = 0;
             $arr_is_freebies_trans = [];
 
@@ -290,6 +291,11 @@ class CartFModel extends BaseOrderFModel
             $cart_rows = $this->listValidCart($sess_mem_idx, $site_code, null, $arr_cart_idx, null, null, null);
 
             foreach ($cart_rows as $idx => $row) {
+                // 배송정보 입력 여부
+                if ($is_delivery_info === false && $row['IsDeliveryInfo'] == 'Y') {
+                    $is_delivery_info = true;
+                }
+
                 // 배송료 부과여부
                 $arr_is_freebies_trans[] = $row['IsFreebiesTrans'];
                 
@@ -297,41 +303,43 @@ class CartFModel extends BaseOrderFModel
                 $total_prod_order_price += $row['RealSalePrice'];
             }
 
-            // 배송료 계산
-            if ($cart_type == 'book') {
-                $delivery_price = $this->getBookDeliveryPrice($total_prod_order_price);
-            } else {
-                $delivery_price = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
-            }
-
-            // 배송료 상품 등록
-            if ($delivery_price > 0) {
-                // 배송료 상품 조회
-                $prod_rows = $this->productFModel->listSalesProduct('delivery_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
-                if (empty($prod_rows) === true) {
-                    throw new \Exception('배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
+            if ($is_delivery_info === true) {
+                // 배송료 계산
+                if ($cart_type == 'book') {
+                    $delivery_price = $this->getBookDeliveryPrice($total_prod_order_price);
+                } else {
+                    $delivery_price = $this->getLectureDeliveryPrice($arr_is_freebies_trans);
                 }
 
-                $prod_row = element('0', $prod_rows);
-                $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
+                // 배송료 상품 등록
+                if ($delivery_price > 0) {
+                    // 배송료 상품 조회
+                    $prod_rows = $this->productFModel->listSalesProduct('delivery_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
+                    if (empty($prod_rows) === true) {
+                        throw new \Exception('배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
+                    }
 
-                // 장바구니 등록
-                $data = [
-                    'MemIdx' => $sess_mem_idx,
-                    'SiteCode' => $site_code,
-                    'ProdCode' => $prod_row['ProdCode'],
-                    'ProdCodeSub' => '',
-                    'ParentProdCode' => $prod_row['ProdCode'],
-                    'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
-                    'IsDirectPay' => 'Y',
-                    'IsVisitPay' => 'N',
-                    'GwIdx' => $gw_idx,
-                    'RegIp' => $reg_ip
-                ];
+                    $prod_row = element('0', $prod_rows);
+                    $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
 
-                $insert_cart_idx = $this->_addCart($data);
-                if (is_numeric($insert_cart_idx) === false) {
-                    throw new \Exception($insert_cart_idx);
+                    // 장바구니 등록
+                    $data = [
+                        'MemIdx' => $sess_mem_idx,
+                        'SiteCode' => $site_code,
+                        'ProdCode' => $prod_row['ProdCode'],
+                        'ProdCodeSub' => '',
+                        'ParentProdCode' => $prod_row['ProdCode'],
+                        'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
+                        'IsDirectPay' => 'Y',
+                        'IsVisitPay' => 'N',
+                        'GwIdx' => $gw_idx,
+                        'RegIp' => $reg_ip
+                    ];
+
+                    $insert_cart_idx = $this->_addCart($data);
+                    if (is_numeric($insert_cart_idx) === false) {
+                        throw new \Exception($insert_cart_idx);
+                    }
                 }
             }
 

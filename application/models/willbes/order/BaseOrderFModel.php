@@ -70,7 +70,10 @@ class BaseOrderFModel extends WB_Model
     // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
     public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'accept_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];
 
-    // 장바구니 식별자 세션명
+    // 결제은행 공통 그룹코드
+    public $_bank_group_ccd = '678';
+
+   // 장바구니 식별자 세션명
     public $_sess_cart_idx_name = 'usable_cart_idx';
 
     // 주문번호 세션명

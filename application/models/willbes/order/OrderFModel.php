@@ -112,7 +112,7 @@ class OrderFModel extends BaseOrderFModel
             $results['list'][] = $row;
         }
 
-        // 사용포인트 체크 (학원강좌일 경우 포인트 사용 불가)
+        // 사용포인트 체크 (온라인 단강좌, 교재상품만 구매할 경우 사용 가능)
         if ($make_type == 'pay' && $use_point > 0) {
             $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_prod_pay_price, $is_package);
             if ($check_use_point !== true) {
@@ -120,17 +120,19 @@ class OrderFModel extends BaseOrderFModel
             }
         }
 
-        $results['total_prod_cnt'] = $total_prod_cnt;   // 전체상품 갯수
+        $results['total_prod_cnt'] = $total_prod_cnt;   // 전체상품 갯수 (배송료 상품 제외)
         $results['total_prod_order_price'] = $total_prod_order_price;     // 전체 상품주문금액
-        $results['delivery_price'] = $delivery_price;   // 주문 배송료
+        $results['total_prod_pay_price'] = $total_prod_pay_price;     // 전체 상품결제금액
+        $results['delivery_price'] = $delivery_price;   // 배송료
+        $results['delivery_pay_price'] = $delivery_pay_price;   // 실제 결제 배송료
         $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 - 사용포인트
         $results['total_coupon_disc_price'] = $total_coupon_disc_price; // 전체 쿠폰할인금액
-        $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
         $results['user_coupon_idxs'] = $arr_user_coupon_idx;     // 유효한 사용자 쿠폰식별자 배열
+        $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
         $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
-        $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($results['total_prod_cnt'] > 1 ? ' 외 ' . ($results['total_prod_cnt'] - 1) . '건' : '');   // 대표 주문상품명
+        $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($total_prod_cnt > 1 ? ' 외 ' . ($total_prod_cnt - 1) . '건' : '');   // 대표 주문상품명
         $results['cart_type'] = $cart_type;
 
         return $results;
@@ -198,16 +200,16 @@ class OrderFModel extends BaseOrderFModel
             return true;
         }
 
+        if ($is_package === true) {
+            return '패키지 상품은 포인트 사용이 불가능합니다.';
+        }
+
         if ($cart_type == 'off_lecture') {
             return '학원강좌 상품은 포인트 사용이 불가능합니다.';
         }
 
         if ($has_point < $use_point) {
             return '보유 포인트가 부족합니다.';
-        }
-
-        if ($is_package === true) {
-            return '패키지 상품은 포인트 사용이 불가능합니다.';
         }
 
         if ($use_point < $use_min_point || $has_point < $use_min_point || ($use_point % $use_point_unit != 0)) {
@@ -389,6 +391,20 @@ class OrderFModel extends BaseOrderFModel
 
             if ($is_pay_method_vbank === false) {
                 $this->_conn->set('CompleteDatm', 'NOW()', false);
+            } else {
+                // PG사 은행코드에 해당하는 공통코드 조회
+                $ccd_row = $this->_conn->getFindResult($this->_table['code'], 'Ccd', [
+                    'EQ' => ['GroupCcd' => $this->_bank_group_ccd],
+                    'RAW' => ['json_value(CcdEtc, "$.' . $post_row['PgCcd'] . '") = ' => $pay_results['vbank_code']]
+                ]);
+                $vbank_ccd = empty($ccd_row) === true ? $pay_results['vbank_name'] : $ccd_row['Ccd'];
+
+                $data = array_merge($data, [
+                    'VBankCcd' => $vbank_ccd,
+                    'VBankAccountNo' => $pay_results['vbank_account_no'],
+                    'VBankDepositName' => $pay_results['vbank_deposit_name'],
+                    'VBankExpireDatm' => $pay_results['vbank_expire_datm']
+                ]);
             }
 
             if ($this->_conn->set($data)->insert($this->_table['order']) === false) {

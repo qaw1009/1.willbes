@@ -17,7 +17,7 @@
                 <div class="willbes-Payment-Fin NG">
                     @if($results['order']['IsVBank'] == 'Y')
                         <img src="{{ img_url('cart/icon_check.gif') }}"> 무통장입금(가상계좌) 신청이 완료되었습니다.
-                        <div class="subTit tx-gray mt20 NGR">가상계좌는 신청일로부터 <strong class="tx-light-blue">7일간</strong>만 유효하며, 기간 내에 입금해 주셔야 정상적으로 결제완료됩니다.</div>
+                        <div class="subTit tx-gray mt20 NGR">가상계좌는 신청일로부터 <strong class="tx-light-blue">{{ config_get('vbank_expire_days', '7') }}일간</strong>만 유효하며, 기간 내에 입금해 주셔야 정상적으로 결제완료됩니다.</div>
                     @else
                         <img src="{{ img_url('cart/icon_check.gif') }}"> 결제가 성공적으로 완료되었습니다.
                     @endif
@@ -38,13 +38,13 @@
                     @if($results['order']['IsVBank'] == 'Y')
                         <tr>
                             <td class="bg-light-white">가상계좌신청일</td>
-                            <td>2018-04-20 01:12:14</td>
+                            <td>{{ $results['order']['OrderDatm'] }}</td>
                             <td class="bg-light-white">가상계좌정보</td>
-                            <td>우리은행 234-234532-092 (주)윌비스</td>
+                            <td>{{ $results['order']['VBankName'] }} {{ $results['order']['VBankAccountNo'] }} {{ config_get('vbank_account_name', '(주)윌비스') }}</td>
                         </tr>
                         <tr>
                             <td class="bg-light-white">입금기한</td>
-                            <td>2018-04-27 01:12:14</td>
+                            <td>{{ $results['order']['VBankExpireDatm'] }}</td>
                             <td class="bg-light-white">결제금액</td>
                             <td><strong class="tx-light-blue">{{ number_format($results['order']['RealPayPrice']) }}원</strong></td>
                         </tr>

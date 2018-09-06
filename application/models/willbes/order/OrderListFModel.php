@@ -28,6 +28,7 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'O.OrderIdx, O.OrderNo, O.ReprProdName, O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgTid
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
                 , O.DeliveryPrice, O.DeliveryAddPrice, O.CompleteDatm, O.OrderDatm
+                , O.VBankCcd, ifnull(CBC.CcdName, O.VBankCcd) as VBankName, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm
                 , if(O.PayMethodCcd = "' . $this->_pay_method_ccd['vbank'] . '", "Y", "N") as IsVBank
                 , S.SiteName, S.IsCampus, if(S.IsCampus = "N", "온라인", "학원") as SiteOnOffName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -40,6 +41,8 @@ class OrderListFModel extends BaseOrderFModel
                     on O.SiteCode = S.SiteCode and S.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CPM
                     on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CBC
+                    on O.VBankCcd = CBC.Ccd and CBC.IsStatus = "Y"                
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -15,6 +15,10 @@ $config['use_min_point'] = '2500';  // 최소 사용 포인트
 $config['use_point_unit'] = '1';    // 포인트 사용 단위
 $config['use_max_point_rate'] = '80';   // 결제금액 대비 포인트 사용 가능 최대 비율
 
+// 가상계좌결제
+$config['vbank_account_name'] = '(주)윌비스';   // 예금주 명
+$config['vbank_expire_days'] = '7'; // 입금시한 설정 일수
+
 // 통합사이트 설정
 $config['www'] = array(
 

@@ -19,10 +19,9 @@ class Order extends \app\controllers\FrontController
 
     public function test($params = [])
     {
-        $arr = ['1' => '1', '2' => '2'];
-        $json = '{"1":"","2":""}';
+        $d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
 
-        dd(empty(array_filter($arr)), json_encode($arr), json_decode($json, true));
+        dd($d);
     }
 
     /**
@@ -100,8 +99,6 @@ class Order extends \app\controllers\FrontController
 
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
-
-        //dd($results);
 
         $this->load->view('site/order/complete', [
             'arr_prod_type_name' => $this->cartFModel->_cart_prod_type_name,

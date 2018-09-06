@@ -40,6 +40,11 @@ class Pg_inisis extends CI_Driver
     protected $_log_path = '';
 
     /**
+     * @var string 결제연동 결과 저장 테이블
+     */
+    protected $_log_table = 'lms_order_payment';
+
+    /**
      * @var string 망취소 API URL
      */
     protected $_net_cancel_url = '';
@@ -105,7 +110,11 @@ class Pg_inisis extends CI_Driver
             ]);
 
             // 기타 옵션
-            $accept_method = element('is_escrow', $params, 'N') == 'Y' ? 'useescrow' : '';
+            $accept_method = 'va_receipt:vbank(' . date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +' . config_get('vbank_expire_days', '7') . ' day')) . ')';
+            if (element('is_escrow', $params, 'N') == 'Y') {
+                $accept_method .= ':useescrow';
+            }
+
             // 상점 데이터
             $return_data = empty(element('return_data', $params)) === false ? http_build_query(element('return_data', $params)) : '';
 
@@ -235,15 +244,34 @@ class Pg_inisis extends CI_Driver
                             'tid' => $auth_results['tid'],
                             'cancel_reason' => '취소 테스트'
                         ]);*/
+
+                        $add_results = [];  // 결제방법별 추가 리턴 결과 배열
+
+                        // 가상계좌 결제일 경우 추가 정보 리턴
+                        if (element('payMethod', $auth_results) == 'VBank') {
+                            if (empty(element('VACT_Date', $auth_results)) === false && empty(element('VACT_Time', $auth_results)) === false) {
+                                $vbank_expire_datm = date('Y-m-d H:i:s', strtotime(element('VACT_Date', $auth_results) . ' ' . element('VACT_Time', $auth_results)));
+                            } else {
+                                $vbank_expire_datm = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s') . ' +' . config_get('vbank_expire_days', '7') . ' day'));
+                            }
+
+                            $add_results = [
+                                'vbank_code' => element('VACT_BankCode', $auth_results, ''),
+                                'vbank_name' => element('vactBankName', $auth_results, ''),
+                                'vbank_account_no' => element('VACT_Num', $auth_results, ''),
+                                'vbank_deposit_name' => element('VACT_InputName', $auth_results, ''),
+                                'vbank_expire_datm' => $vbank_expire_datm
+                            ];
+                        }
                         
-                        return [
+                        return array_merge([
                             'result' => true,
                             'order_no' => $auth_results['MOID'],
                             'mid' => $auth_results['mid'],
                             'tid' => $auth_results['tid'],
                             'total_pay_price' => $auth_results['TotPrice'],
                             'return_data' => $return_data
-                        ];
+                        ], $add_results);
                     } else {
                         if (strcmp($auth_signature, $auth_results['authSignature']) != 0) {
                             throw new AuthException('결제 승인요청 위변조 체크 오류 발생');
@@ -389,18 +417,30 @@ class Pg_inisis extends CI_Driver
     private function _saveLog($params = [], $order_no = null)
     {
         $_db = $this->_CI->load->database('lms', true);   // load database
-        $_table = 'lms_pg_inisis_log';
+        $_table = $this->_log_table;
 
         try {
             if (empty($order_no) === true) {
+                // 결제방법별 상세 코드 (신용카드, 은행)
+                $pay_detail_code = '';
+                if (empty(element('CARD_Code', $params)) === false) {
+                    $pay_detail_code = element('CARD_Code', $params);
+                } else if (empty(element('ACCT_BankCode', $params)) === false) {
+                    $pay_detail_code = element('ACCT_BankCode', $params);
+                } else if (empty(element('VACT_BankCode', $params)) === false) {
+                    $pay_detail_code = element('VACT_BankCode', $params);
+                }
+
                 $data = [
                     'OrderNo' => element('MOID', $params),
+                    'PgDriver' => 'inisis',
                     'PgMid' => element('mid', $params),
                     'PgTid' => element('tid', $params),
                     'ResultCode' => element('resultCode', $params),
                     'ResultMsg' => element('resultMsg', $params),
                     'ApprovalNo' => element('applNum', $params),
                     'PayMethod' => element('payMethod', $params),
+                    'PayDetailCode' => $pay_detail_code,
                     'RealPayPrice' => element('TotPrice', $params)
                 ];
 

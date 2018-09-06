@@ -274,7 +274,7 @@
         <!-- willbes-Leclist -->
 
         <div id="MEMOPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590 fix">
                 <a class="closeBtn" href="#none" onclick="closeWin('MEMOPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>

@@ -67,11 +67,11 @@
 
     <a href="{{ site_url('/home/html/mypage_event') }}">내강의실 > 특강&이벤트 신청현황 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 모의고사관리 > 접수현황 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mypage_test1') }}">내강의실 > 모의고사관리 > 접수현황 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 모의고사관리 > 온라인모의고사 응시 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mypage_test2') }}">내강의실 > 모의고사관리 > 온라인모의고사 응시 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/mypage_payment3') }}">내강의실 > 모의고사관리 > 성적결과 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mypage_test3') }}">내강의실 > 모의고사관리 > 성적결과 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_payment1') }}">내강의실 > 결제관리 > 주문/배송조회 page 이동</a><br/><br/>
 

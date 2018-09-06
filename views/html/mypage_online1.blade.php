@@ -317,7 +317,7 @@
         </div>
         <!-- willbes-Mypage-Tabs -->
 
-        <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800">
+        <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('STARTPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>

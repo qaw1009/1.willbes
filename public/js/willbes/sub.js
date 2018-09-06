@@ -195,16 +195,16 @@ $(document).ready(function(){
     // Now highlight all the stars that's not after the current hovered star
     $(this).parent().children('li.star').each(function(e){
         if (e < onStar) {
-        $(this).addClass('hover');
+        $(this).addClass('hover').removeClass('none');
         }
         else {
-        $(this).removeClass('hover');
+        $(this).removeClass('hover').addClass('none');
         }
     });
 
     }).on('mouseout', function(){
         $(this).parent().children('li.star').each(function(e){
-            $(this).removeClass('hover');
+            $(this).removeClass('hover').removeClass('none');
         });
     });
 

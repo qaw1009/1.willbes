@@ -425,7 +425,7 @@
         <!-- willbes-Leclist -->
 
         <div id="PHONEPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h460">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h460 fix">
                 <a class="closeBtn" href="#none" onclick="closeWin('PHONEPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -463,7 +463,7 @@
         <!-- willbes-Layer-PassBox : 휴대폰번호 인증 -->
 
         <div id="EMAILPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h420">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h420 fix">
                 <a class="closeBtn" href="#none" onclick="closeWin('EMAILPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -505,13 +505,13 @@
         <!-- willbes-Layer-PassBox : 이메일 인증 -->
 
         <div id="WITHDRAWALPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h900">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h900 fix">
                 <a class="closeBtn" href="#none" onclick="closeWin('WITHDRAWALPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
                 <div class="Layer-Tit tx-dark-black NG">회원탈퇴</div> 
 
-                <div class="lecMoreWrap">
+                <div class="lecMoreWrap pt-zero">
                     <div class="PASSZONE-List widthAutoFull LeclistTable withdrawal">
                         <ul class="passzoneInfo tx-gray NGR">
                             <li class="tit strong">· 탈퇴전 꼭 확인하세요.</li>

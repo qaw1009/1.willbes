@@ -649,7 +649,7 @@
         </div>
         <!-- willbes-Mypage-Tabs -->
 
-        <div id="COUPONPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox540 h400">
+        <div id="COUPONPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox540 h400 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('COUPONPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>

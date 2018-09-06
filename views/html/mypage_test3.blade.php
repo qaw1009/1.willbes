@@ -173,7 +173,7 @@
                             <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red"><a href="#none">성적확인</a></td>
                             <td class="w-file on tx-blue">
                                 <a href="#none">[문제/해설]</a><br/>
                                 <a href="#none">[오답노트]</a>
@@ -270,68 +270,6 @@
         </div>
         <!-- willbes-Leclist -->
    
-        <div id="MEMOPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h590">
-                <a class="closeBtn" href="#none" onclick="closeWin('MEMOPASS')">
-                    <img src="{{ img_url('sub/close.png') }}">
-                </a>
-                <div class="Layer-Tit tx-dark-black NG">쪽지</div> 
-
-                <div class="lecMoreWrap">
-
-                    <div class="PASSZONE-List widthAutoFull LeclistTable Memolist">
-                        <table cellspacing="0" cellpadding="0" class="listTable userMemoTable under-gray bdt-gray tx-gray GM">
-                            <colgroup>
-                                <col style="width: 20%;"/>
-                                <col style="width: 30%;"/>
-                                <col style="width: 20%;"/>
-                                <col style="width: 30%;"/>
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th class="w-tit">과정</th>
-                                    <td class="w-list">경찰</td>
-                                    <th class="w-tit">구분</th>
-                                    <td class="w-list">온라인</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">발송자</th>
-                                    <td class="w-list" colspan="3">윌비스</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">발송일</th>
-                                    <td class="w-list" colspan="3">2018-00-00 00:00</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">확인일</th>
-                                    <td class="w-list" colspan="3">2018-00-00 00:00</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit" rowspan="2">내용</th>
-                                    <td class="w-list w-file" colspan="3">                
-                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
-                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-list w-content" colspan="3">  
-                                        내용이 출력됩니다.<br/>
-                                        내용이 출력됩니다.<br/>  
-                                        내용이 출력됩니다.<br/>              
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="w-btn">
-                            <a class="answerBox_block NSK" href="#none" onclick="">삭제</a>
-                        </div>
-                    </div>
-                    <!-- PASSZONE-List -->
-                </div>
-            </div>
-        </div>
-        <!-- willbes-Layer-PassBox : 쪽지 -->
-
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

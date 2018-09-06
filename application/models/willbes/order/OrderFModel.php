@@ -11,12 +11,13 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
-     * @param string $make_type [데이터 생성구분, 주문 : order, 결제 : pay]
+     * 장바구니 데이터 가공
+     * @param string $make_type [데이터 생성구분, 주문 : order, 결제 : pay, 사용포인트 체크 : check_use_point]
      * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
-     * @return array|string
+     * @return array|bool|string
      */
     public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0)
     {
@@ -28,6 +29,7 @@ class OrderFModel extends BaseOrderFModel
         $total_prod_cnt = 0;
         $total_prod_order_price = 0;
         $total_prod_pay_price = 0;
+        $total_use_point_target_price = 0;
         $total_coupon_disc_price = 0;
         $total_save_point = 0;
         $delivery_price = 0;
@@ -109,13 +111,23 @@ class OrderFModel extends BaseOrderFModel
                 $total_prod_cnt++;
             }
 
+            if ($row['CartProdType'] == 'on_lecture' || $row['CartProdType'] == 'book') {
+                // 포인트 사용 가능상품의 실제 결제금액 합계
+                $total_use_point_target_price += $row['RealPayPrice'];
+            }
+
             $results['list'][] = $row;
         }
 
         // 사용포인트 체크 (온라인 단강좌, 교재상품만 구매할 경우 사용 가능)
-        if ($make_type == 'pay' && $use_point > 0) {
-            $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_prod_pay_price, $is_package);
-            if ($check_use_point !== true) {
+        if ($make_type == 'pay' || $make_type == 'check_use_point') {
+            $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_use_point_target_price, $is_package);
+
+            if ($make_type == 'pay') {
+                if ($check_use_point !== true) {
+                    return $check_use_point;
+                }
+            } else {
                 return $check_use_point;
             }
         }
@@ -123,6 +135,7 @@ class OrderFModel extends BaseOrderFModel
         $results['total_prod_cnt'] = $total_prod_cnt;   // 전체상품 갯수 (배송료 상품 제외)
         $results['total_prod_order_price'] = $total_prod_order_price;     // 전체 상품주문금액
         $results['total_prod_pay_price'] = $total_prod_pay_price;     // 전체 상품결제금액
+        $results['total_use_point_target_price'] = $total_use_point_target_price;     // 포인트 사용 가능상품의 실제 결제금액
         $results['delivery_price'] = $delivery_price;   // 배송료
         $results['delivery_pay_price'] = $delivery_pay_price;   // 실제 결제 배송료
         $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 - 사용포인트
@@ -183,30 +196,36 @@ class OrderFModel extends BaseOrderFModel
      * 사용포인트 체크
      * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
      * @param int $use_point [사용 포인트]
-     * @param int $total_prod_pay_price [전체상품 결제금액, 배송료 제외]
+     * @param int $total_use_point_target_price [포인트 사용 가능상품의 실제 결제금액 합계, 온라인 단강좌, 교재 상품만 포인트 사용 가능]
      * @param bool $is_package [패키지상품 포함 여부]
      * @return bool|string
      */
-    public function checkUsePoint($cart_type, $use_point = 0, $total_prod_pay_price = 0, $is_package = false)
+    public function checkUsePoint($cart_type, $use_point = 0, $total_use_point_target_price = 0, $is_package = false)
     {
-        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
-        $has_point = 3000;
-        $use_min_point = config_item('use_min_point');  // 최소 사용 포인트
-        $use_point_unit = config_item('use_point_unit');    // 포인트 사용 단위
-        $use_max_point_rate = config_item('use_max_point_rate');    // 결제금액 대비 포인트 사용 가능 최대 비율
-        $use_max_point = (int) ($total_prod_pay_price * ($use_max_point_rate / 100));
-
-        if ($use_point < 1 || $total_prod_pay_price < 1) {
+        if ($use_point < 1 || $total_use_point_target_price < 1) {
             return true;
         }
 
         if ($is_package === true) {
-            return '패키지 상품은 포인트 사용이 불가능합니다.';
+            return '패키지 상품이 포함된 경우 포인트 사용이 불가능합니다.';
         }
 
         if ($cart_type == 'off_lecture') {
             return '학원강좌 상품은 포인트 사용이 불가능합니다.';
         }
+
+        // 사용 포인트 설정
+        $use_min_point = config_item('use_min_point');  // 최소 사용 포인트
+        $use_point_unit = config_item('use_point_unit');    // 포인트 사용 단위
+        $use_max_point_rate = config_item('use_max_point_rate');    // 결제금액 대비 포인트 사용 가능 최대 비율
+        $use_max_point = (int) ($total_use_point_target_price * ($use_max_point_rate / 100));
+
+        if ($use_point > $use_max_point) {
+            return '포인트는 주문금액의 ' . $use_max_point_rate . '%까지만 사용 가능합니다.' . PHP_EOL . '(최대 사용가능 포인트 : ' . number_format($use_max_point) . 'P)';
+        }
+
+        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
+        $has_point = 3000;
 
         if ($has_point < $use_point) {
             return '보유 포인트가 부족합니다.';
@@ -214,10 +233,6 @@ class OrderFModel extends BaseOrderFModel
 
         if ($use_point < $use_min_point || $has_point < $use_min_point || ($use_point % $use_point_unit != 0)) {
             return '포인트는 ' . number_format($use_min_point) . 'P부터 ' . $use_point_unit . 'P 단위로 사용 가능합니다.';
-        }
-
-        if ($use_point > $use_max_point) {
-            return '포인트는 주문금액의 ' . $use_max_point_rate . '%까지만 사용 가능합니다.' . PHP_EOL . '(최대 사용가능 포인트 : ' . number_format($use_max_point) . 'P)';
         }
 
         return true;
@@ -335,8 +350,8 @@ class OrderFModel extends BaseOrderFModel
 
             $post_data = unserialize($post_row['PostData']);    // 주문 폼 데이터 unserialize
             $arr_user_coupon_idx = json_decode($post_row['UserCouponIdxJson'], true);   // 사용자 쿠폰
-            $is_pay_method_vbank = $this->_pay_method_ccd['vbank'] == $post_row['PayMethodCcd'];   // 가상계좌 여부
-            $pay_method_ccd = $is_pay_method_vbank === true ? $this->_pay_status_ccd['vbank_wait'] : $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료/입금대기)
+            $is_vbank = $this->_pay_method_ccd['vbank'] == $post_row['PayMethodCcd'];   // 가상계좌 여부
+            $pay_status_ccd = $is_vbank === true ? $this->_pay_status_ccd['vbank_wait'] : $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료/입금대기)
             $is_escrow = element('is_escrow', $post_data, 'N'); // 에스크로 결제 여부
             
             // 장바구니 조회
@@ -389,7 +404,7 @@ class OrderFModel extends BaseOrderFModel
                 'OrderIp' => $this->input->ip_address()
             ];
 
-            if ($is_pay_method_vbank === false) {
+            if ($is_vbank === false) {
                 $this->_conn->set('CompleteDatm', 'NOW()', false);
             } else {
                 // PG사 은행코드에 해당하는 공통코드 조회
@@ -416,7 +431,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
-                $is_order_product = $this->addOrderProduct($order_idx, $pay_method_ccd, $is_escrow, $cart_row);
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, $is_escrow, $cart_row);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
@@ -424,7 +439,7 @@ class OrderFModel extends BaseOrderFModel
             
             // 추가 배송료 주문상품 데이터 등록
             if ($post_row['DeliveryAddPrice'] > 0) {
-                $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_method_ccd, $post_row['SiteCode']);
+                $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $post_row['SiteCode']);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }

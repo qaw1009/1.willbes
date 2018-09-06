@@ -39,13 +39,14 @@ class MyCoupon extends \app\controllers\FrontController
         $cart_data['CartProdTypeNum'] = $this->cartFModel->_cart_prod_type_idx[$cart_data['CartProdType']];
 
         // 쿠폰조회 전달 기본 파라미터
-        $arr_param = ['SiteCode' => $cart_data['SiteCode'], 'CateCode' => $cart_data['CateCode']];
+        $arr_param = ['SiteCode' => $cart_data['SiteCode']];
 
         // 전체보유 쿠폰조회
         $results['all'] = $this->couponFModel->listMemberCoupon(false, $arr_param, null, null, ['CD.IssueDatm' => 'desc']);
 
         // 적용가능한 쿠폰조회
         $arr_param = array_merge($arr_param, [
+            'CateCode' => $cart_data['CateCode'],
             'ApplyTypeCcd' => $this->cartFModel->_coupon_apply_type_ccd[$cart_data['ProdTypeCcd']],
             'LecTypeCcd' => element($cart_data['LearnPatternCcd'], $this->cartFModel->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_data['RealSalePrice'],

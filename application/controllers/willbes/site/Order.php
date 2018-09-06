@@ -115,27 +115,40 @@ class Order extends \app\controllers\FrontController
     {
         // 전달 폼 데이터
         $arr_input = $this->_reqP(null, false);
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        // 장바구니 식별자 세션 체크
+        $sess_cart_idx = $this->cartFModel->checkSessCartIdx(false);
+        if ($sess_cart_idx === false) {
+            return $this->json_error('잘못된 접근입니다.');
+        }
 
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
             ['field' => 'use_point', 'label' => '사용포인트', 'rules' => 'trim|required|integer'],
-            ['field' => 'total_prod_pay_price', 'label' => '전체상품결제금액', 'rules' => 'trim|required|integer'],
-            ['field' => 'is_package', 'label' => '패키지상품여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'coupon_detail_idx', 'label' => '쿠폰식별자', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
             return null;
         }
 
-        // 사용포인트 체크
-        $check_use_point = $this->orderFModel->checkUsePoint(
-            element('cart_type', $arr_input), element('use_point', $arr_input, 0),
-            element('total_prod_pay_price', $arr_input, 0),
-            element('is_package', $arr_input, 'N') == 'Y' ? true : false
+        // 장바구니 조회
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
+        
+        // 사용자 쿠폰 식별자
+        $arr_coupon_detail_idx = json_decode(element('coupon_detail_idx', $arr_input, []), true);
+        
+        $results = $this->orderFModel->getMakeCartReData(
+            'check_use_point', element('cart_type', $arr_input), $cart_rows, $arr_coupon_detail_idx, element('use_point', $arr_input)
         );
 
-        return $this->json_result(true, '', [], ['is_check' => $check_use_point]);
+        if (is_array($results) === false) {
+            return $this->json_result(true, '', [], ['is_check' => $results]);
+        }
+
+        return $this->json_result(true, '', [], ['is_check' => true]);
     }
 
     /**

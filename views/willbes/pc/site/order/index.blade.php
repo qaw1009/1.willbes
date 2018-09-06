@@ -57,7 +57,7 @@
                                                 <span class="pBox p{{ $row['CartProdTypeNum'] }}">{{ $row['CartProdTypeName'] }}</span>
                                                 {{ $row['ProdName'] }}
                                                 <input type="hidden" name="cart_idx[]" value="{{ $row['CartIdx'] }}" data-real-sale-price="{{ $row['RealSalePrice'] }}" data-is-point="{{ $row['IsPoint'] }}" data-save-point-price="{{ $row['PointSavePrice'] }}" data-save-point-type="{{ $row['PointSaveType'] }}"/>
-                                                <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
+                                                <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-cart-idx="{{ $row['CartIdx'] }}" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
                                                 @if($row['IsCoupon'] == 'Y')
                                                     <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
                                                 @endif
@@ -522,24 +522,34 @@
                     return;
                 }
 
+                var coupon_detail_idx = {};
+                $regi_form.find('.chk_coupon').each(function(idx) {
+                    coupon_detail_idx[$(this).data('cart-idx')] = $(this).val();
+                });
+
                 // 사용포인트 체크
+                var is_check = false;
                 var url = '{{ front_url('/order/checkUsePoint') }}';
                 var data = {
                     '{{ csrf_token_name() }}': $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'POST',
                     'cart_type' : '{{ $results['cart_type'] }}',
                     'use_point' : use_point,
-                    'total_prod_pay_price' : parseInt('{{ $results['total_prod_order_price'] }}') - parseInt($regi_form.find('#total_coupon_disc_price').html().replace(/,/g, '')),
-                    'is_package' : '{{ $results['is_package'] === true ? 'Y' : 'N' }}'
+                    'coupon_detail_idx' : JSON.stringify(coupon_detail_idx)
                 };
                 sendAjax(url, data, function (ret) {
                     if (ret.ret_cd) {
-                        if (ret.ret_data.is_check !== true) {
+                        if (ret.ret_data.is_check === true) {
+                            is_check = true;
+                        } else {
                             alert(ret.ret_data.is_check);
-                            $regi_form.find('input[name="use_point"]').val('').trigger('change');
                         }
                     }
                 }, showValidateError, false, 'POST');
+
+                if (is_check === false) {
+                    $regi_form.find('input[name="use_point"]').val('').trigger('change');
+                }
             });
 
             // 결제금액 계산 및 표기

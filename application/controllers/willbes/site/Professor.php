@@ -220,9 +220,34 @@ class Professor extends \app\controllers\FrontController
         return $data;
     }
 
+    /**
+     * Q&A 탭
+     * @param $prof_idx
+     * @param $arr_input
+     * @return array
+     */
     private function _tab_qna($prof_idx, $arr_input)
     {
         $frame_path = '/prof/qna/index';
+        $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params .= '&view_type=frame';
+
+        $data = [
+            'frame_path' => $frame_path,
+            'frame_params' => $frame_params
+        ];
+        return $data;
+    }
+
+    /**
+     * 학습자료실 탭
+     * @param $prof_idx
+     * @param $arr_input
+     * @return array
+     */
+    private function _tab_material($prof_idx, $arr_input)
+    {
+        $frame_path = '/prof/material/index';
         $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=frame';
 

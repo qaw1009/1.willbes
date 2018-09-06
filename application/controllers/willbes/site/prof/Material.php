@@ -1,17 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once APPPATH . 'controllers/willbes/share/support/basesupport.php';
-
-class SupportNotice extends BaseSupport
+class Material extends \app\controllers\FrontController
 {
     protected $models = array('support/supportBoardF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
 
-    protected $_bm_idx;
-    protected $_default_path;
+    protected $_bm_idx = '69';       //bmidx : 강사게시판 -> 학습자료실
+    protected $_default_path = '/prof';
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
 
@@ -20,11 +18,9 @@ class SupportNotice extends BaseSupport
         parent::__construct();
     }
 
-    public function index($params=[])
+    public function index()
     {
-        $campus_ccd = $this->supportBoardFModel->listCampusCcd($this->_site_code);
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -32,20 +28,17 @@ class SupportNotice extends BaseSupport
         $view_type = element('view_type',$arr_input);
         $page = element('page',$arr_input);
 
-        $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params = 's_keyword='.$s_keyword;
         $get_params .= '&s_cate_code='.$s_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_params .= '&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
-        //var_dump($arr_input);
         $list = [];
-
         $arr_condition = [
             'EQ' => [
                 'b.SiteCode' => $this->_site_code
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
             ],
@@ -62,7 +55,7 @@ class SupportNotice extends BaseSupport
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
+                       ,b.CampusCcd_Name, b.TypeCcd_Name, b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
@@ -70,7 +63,7 @@ class SupportNotice extends BaseSupport
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/material/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
@@ -79,11 +72,10 @@ class SupportNotice extends BaseSupport
             }
         }
 
-        $this->load->view('support/'.$view_type.'/notice', [
+        $this->load->view('support/'.$view_type.'/material', [
             'default_path' => $this->_default_path,
             'get_params' => $get_params,
             'arr_input' => $arr_input,
-            'campus_ccd' => $campus_ccd,
             'list'=>$list,
             'paging' => $paging,
         ]);
@@ -93,7 +85,6 @@ class SupportNotice extends BaseSupport
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $board_idx = element('board_idx',$arr_input);
-        $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -101,7 +92,7 @@ class SupportNotice extends BaseSupport
         $view_type = element('view_type',$arr_input);
         $page = element('page',$arr_input);
 
-        $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params = 's_keyword='.$s_keyword;
         $get_params .= '&s_cate_code='.$s_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_params .= '&view_type='.$view_type;
         $get_params .= '&page='.$page;
@@ -110,7 +101,6 @@ class SupportNotice extends BaseSupport
             show_alert('게시글번호가 존재하지 않습니다.', 'back');
         }
 
-        #-------------------------------- 게시글 조회
         $arr_condition = [
             'EQ' => [
                 'b.SiteCode' => $this->_site_code
@@ -140,16 +130,12 @@ class SupportNotice extends BaseSupport
 
 
         #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
-        $s_campus = element('s_campus',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
-
         $arr_condition_base = [
             'EQ' => [
                 'b.SiteCode' => $this->_site_code
                 ,'b.IsBest' => '0'
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
             ],
@@ -178,11 +164,10 @@ class SupportNotice extends BaseSupport
         ]);
         $next_order_by = ['b.BoardIdx'=>'Asc'];
 
-
         $pre_data = $this->supportBoardFModel->findBoard(false,$pre_arr_condition,$column,1,null,$pre_order_by);
         $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
 
-        $this->load->view('support/'.$view_type.'/show_notice',[
+        $this->load->view('support/'.$view_type.'/show_material',[
                 'default_path' => $this->_default_path,
                 'get_params' => $get_params,
                 'arr_input' => $arr_input,
@@ -193,4 +178,10 @@ class SupportNotice extends BaseSupport
         );
     }
 
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+        public_download($file_path, $file_name);
+    }
 }

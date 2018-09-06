@@ -14,7 +14,7 @@ class BaseSupport extends \app\controllers\FrontController
     public function download()
     {
         $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('name');
+        $file_name = $this->_reqG('fname');
         public_download($file_path, $file_name);
     }
 

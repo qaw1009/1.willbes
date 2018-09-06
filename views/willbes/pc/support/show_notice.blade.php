@@ -47,7 +47,7 @@
                                     <tr>
                                         <td class="w-file tx-left pl20" colspan="4">
                                             @foreach($data['AttachData'] as $row)
-                                                <a href="{{site_url('/support/notice/download/').urlencode($row['FilePath'].$row['FileName']).'/'.urlencode($row['RealName']) }}" target="_blank">
+                                                <a href="{{site_url($default_path.'/qna/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']) }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                             @endforeach
                                         </td>

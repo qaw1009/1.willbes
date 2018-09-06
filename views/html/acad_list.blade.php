@@ -396,41 +396,6 @@
             </ul>
         </div>
         <!-- willbes-Lec-buyBtn -->
-
-        <div id="InfoForm" class="willbes-Layer-Box d3">
-            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
-                <img src="{{ img_url('sub/close.png') }}">
-            </a>
-            <div class="Layer-Tit tx-dark-black NG">
-                2018 국가직대비 실전 동형모의고사 선택형 패키지
-            </div>
-            <div class="lecDetailWrap">
-                <div class="classInfo">
-                    <dl class="w-info NG">
-                        <dt>개강일 : <span class="tx-blue">18/5/1 ~ 18/6/30 (16회차)</span></dt>
-                        <dt><span class="row-line">|</span></dt>
-                        <dt>월~금 : <span class="tx-blue">14:00 ~ 18:00</span></dt>
-                    </dl>
-                </div>
-                <div class="classInfoTable">
-                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 140px;">
-                            <col width="*">
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td class="w-list bg-light-white">강좌정보</td>
-                                <td class="w-data tx-left pl25">
-                                    LMS > 상품관리> [학원]상품관리> 단강좌 메뉴의 ‘강좌정보’ 항목에 입력된 정보가 자동 출력됩니다
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!-- willbes-Layer-Box -->
         <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
             <div>
                 <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">

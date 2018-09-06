@@ -2550,6 +2550,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .willbes-Layer-Box.d2 .Layer-Tit {
     margin-bottom: 0;
     border-bottom: 2px solid #000;
+    padding-bottom: 20px;
 }
 .willbes-Layer-Box.d2 .classInfo {
     padding-top: 20px;

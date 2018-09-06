@@ -260,14 +260,15 @@
         </div>
         <!-- willbes-Leclist -->
 
-        <div id="TESTSTARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h960 abs">
+        <div id="TESTSTARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h860 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('TESTSTARTPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">모의고사 응시</div> 
-            <div class="lecMoreWrap">
+            <div class="lecMoreWrap pt10">
                 <div class="PASSZONE-List widthAutoFull">
-                    <ul class="passzoneInfo tx-gray NGR">
+                    <div class="passzoneTitInfo tx-light-blue tx-center NG">8/13 빅매지2 - 경행경채 모의고사</div>
+                    <ul class="passzoneSubInfo tx-gray NGR">
                         <li class="tit strong">· 응시 전 필독사항</li>
                         <li class="txt">- 온라인 응시기간 및 지정된 시간에만 응시가 가능하오니 <span class="tx-red">시험시간을 엄수</span>해 주세요.</li>
                         <li class="txt">- '시작하기'클릭 직후부터 시험이 시작되며 시험시간이 카운트다운 됩니다.</li>
@@ -279,7 +280,7 @@
                     <div class="PASSZONE-Lec-Section">
                         <div class="Search-Result strong mb15 tx-gray">· 응시과목</div>
                         <div class="LeclistTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable withdrawalTable under-gray bdt-gray tx-gray GM">
+                            <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">
                                 <colgroup>
                                     <col style="width: 20%;"/>
                                     <col style="width: 20%;"/>
@@ -306,10 +307,10 @@
                             </table>
                         </div>
                     </div>
-                    <div class="PASSZONE-Lec-Section pt30">
+                    <div class="PASSZONE-Lec-Section pt40">
                         <div class="Search-Result strong mb15 tx-gray">· 응시기간 및 시험시간</div>
                         <div class="LeclistTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable withdrawalTable under-gray bdt-gray tx-gray GM">
+                            <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">
                                 <colgroup>
                                     <col style="width: 50%;"/>
                                     <col style="width: 50%;"/>
@@ -329,36 +330,149 @@
                             </table>
                         </div>
                     </div>
-                    <div class="PASSZONE-Lec-Section pt30">
+                    <div class="PASSZONE-Lec-Section pt40">
                         <div class="Search-Result strong mb15 tx-gray">· 응시기간 참고</div>
                         <div class="LeclistTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable withdrawalTable under-gray bdt-gray tx-gray GM">
+                            <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">
                                 <colgroup>
                                     <col style="width: 25%;"/>
                                     <col style="width: 25%;"/>
                                     <col style="width: 25%;"/>
                                     <col style="width: 25%;"/>
                                 </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th class="Top">응시기간</th>
-                                        <th>시험시간</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="Top">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
-                                        <td>1시간 40분 (100분)</td>
+                                        <td class="Top">
+                                            진행중인 과목<br/>
+                                            <span class="tx-y-green">- 녹색</span>으로 표시
+                                            <div class="s-line tx-y-green">국어</div>
+                                        </td>
+                                        <td>
+                                            마킹완료 과목<br/>
+                                            - 빨간색 원 표시
+                                            <div class="s-line round-red">국어</div>
+                                        </td>
+                                        <td>
+                                            고민 중 문제<br/>
+                                            - 문제번호<img src="{{ img_url('mypage/icon_question_orange.png') }}" style="margin-top: -5px">표시
+                                            <div class="s-line"><img src="{{ img_url('mypage/icon_question_orange.png') }}"> 3</div>
+                                        </td>
+                                        <td>
+                                            임시저장 (마킹미완료)<br/>
+                                            - 파란색 원 표시
+                                            <div class="s-line round-blue">국어</div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="passzonebtn tx-center mt5">
+                        <span>
+                            <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
+                                <span class="strong">닫기</span>
+                            </button>
+                        </span>
+                        <span>
+                            <!-- 버튼 클릭시 모의고사 응시완료 팝업 출력 : 작업하기 위해 링크 걸어둠 -->
+                            <button type="submit" onclick="openWin('TESTFINPASS')" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
+                                <span class="strong">시험시작하기</span>
+                            </button>
+                        </span>
                     </div>
                 </div>
                 <!-- PASSZONE-List -->
             </div>
         </div>
         <!-- willbes-Layer-PassBox : 모의고사 응시 : 응시전 -->
+
+        <div id="TESTFINPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h750 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('TESTFINPASS')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">모의고사 응시</div> 
+            <div class="lecMoreWrap pt10">
+                <div class="PASSZONE-List widthAutoFull">
+                    <div class="passzoneTitInfo tx-light-blue tx-center NG">8/13 빅매지2 - 경행경채 모의고사</div>
+                    <div class="PASSZONE-Lec-Section">
+                        <div class="Search-Result strong mb15 tx-gray">· 응시과목</div>
+                        <div class="LeclistTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">
+                                <colgroup>
+                                    <col style="width: 20%;"/>
+                                    <col style="width: 20%;"/>
+                                    <col style="width: 20%;"/>
+                                    <col style="width: 20%;"/>
+                                    <col style="width: 20%;"/>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="Top" colspan="3">필수과목</th>
+                                        <th>선택과목1</th>
+                                        <th>선택과목2</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="Top round-red">국어</td>
+                                        <td class="round-blue">영어</td>
+                                        <td class="round-red">한국사</td>
+                                        <td class="round-red">행정법</td>
+                                        <td class="round-red">행정학</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="PASSZONE-Lec-Section pt40">
+                        <div class="Search-Result strong mb15 tx-gray">· 응시기간 및 시험시간</div>
+                        <div class="LeclistTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">
+                                <colgroup>
+                                    <col style="width: 40%;"/>
+                                    <col style="width: 30%;"/>
+                                    <col style="width: 30%;"/>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="Top">응시기간</th>
+                                        <th>시험시간</th>
+                                        <th>남은시간</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="Top">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
+                                        <td>1시간 40분 (100분)</td>
+                                        <td>1:00:50</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="passzonefinInfo tx-gray tx-center mt50">
+                        답안제출이 모두 완료되었습니다.<br/>
+                        성적이 집계된 후 성적표를 확인할 수 있습니다.<br/>
+                        <strong>시험을 끝내시면 재응시할 수 없습니다.</strong><br/>
+                        <div>시험을 끝내시겠습니까?</div>
+                    </div>
+                    <div class="passzonebtn tx-center mt30">
+                        <span>
+                            <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
+                                <span class="strong">시험종료</span>
+                            </button>
+                        </span>
+                        <span>
+                            <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
+                                <span class="strong">답안 다시 확인</span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <!-- PASSZONE-List -->
+            </div>
+        </div>
+        <!-- willbes-Layer-PassBox : 모의고사 응시 : 응시완료 -->
    
     </div>
     <div class="Quick-Bnr ml20">

@@ -485,8 +485,14 @@ select[disabled] {
 .h590 {
   height: 590px !important;
 }
+.h750 {
+  height: 750px !important;
+}
 .h800 {
   height: 800px !important;
+}
+.h860 {
+  height: 860px !important;
 }
 .h900 {
   height: 900px !important;
@@ -776,6 +782,9 @@ select[disabled] {
 .tx-light-pink {
   color: #f24d80 !important;
 }
+.tx-y-green {
+  color: #35820e;
+}
 .tx-light-blue {
   color: #1a8ccc !important;
 }
@@ -810,6 +819,9 @@ select[disabled] {
   color: #7e7e86 !important;
 }
 
+.bg-black {
+  background: #333;
+}
 .bg-light-gray {
   background: #f5f5f5;
 }

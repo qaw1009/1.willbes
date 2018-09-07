@@ -245,7 +245,7 @@
 
             <!-- willbes-Layer-ReplyBox -->
             <div id="Reply" class="willbes-Layer-ReplyBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('LayerReply'),closeWin('Reply')"><img src="{{ img_url('prof/close.png') }}"></a>
+                <a class="closeBtn" href="#none" onclick="closeWin('LayerReply'),closeWin('Reply'),closeWin('replyWrite'),openWin('replyListLayer')"><img src="{{ img_url('prof/close.png') }}"></a>
                 <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 
                 <!-- List -->
@@ -646,7 +646,7 @@
                                 </tbody>
                             </table>
                             <div class="search-Btn mt20 h36 p_re">
-                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                <button type="submit" onclick="closeWin('replyWrite'),openWin('replyListLayer')" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
                                     <span class="tx-purple-gray">취소</span>
                                 </button>
                                 <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
@@ -659,6 +659,7 @@
                 </div>
 
             </div>
+
             <div id="LayerReply" class="willbes-Layer-Black"></div>
             <!-- // willbes-Layer-ReplyBox -->
 

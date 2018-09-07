@@ -123,7 +123,7 @@
                 </ul>
             </div>
             <div class="willbes-listTable willbes-reply widthAuto460">
-                {{--<div class="will-Tit NG">수강후기<a href="#none" class="f_right" onclick="openWin('LayerReply'); openWin('Reply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>--}}
+                {{--<div class="will-Tit NG">수강후기<a href="#none" class="f_right" onclick="openWin('WrapReply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>--}}
                 <div class="will-Tit NG">수강후기<a href="#none" class="f_right" id="btn_study_comment"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                 <ul class="List-Table GM tx-gray">
                     @if($data['StudyCommentData'] != 'N')
@@ -133,9 +133,9 @@
                     @endif
                 </ul>
             </div>
+
+            <div id="WrapReply"></div>
             <!-- willbes-Layer-ReplyBox -->
-            <div id="LayerReply" class="willbes-Layer-Black"></div>
-            <!-- // willbes-Layer-ReplyBox -->
         </div>
         <!-- // willbes-NoticeWrap -->
         <!-- willbes-Bnr -->
@@ -188,7 +188,7 @@
 
         /*$regi_form.on('click', '#btn_my_addr_list', function() {*/
         $('#btn_study_comment').click(function () {
-            var ele_id = 'LayerReply';
+            var ele_id = 'WrapReply';
             var data = { 'ele_id' : ele_id };
             sendAjax('{{ front_url('/StudyComment/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');

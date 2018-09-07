@@ -2557,8 +2557,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     padding-left: 15px;
 }
 .willbes-Layer-Box.d3 {
-    height: 260px;
-    margin-top: -130px;
+    height: auto;
+    margin-top: 0;
+    top: 25%;
 }
 .willbes-Layer-Box.d3 .Layer-Tit {
     margin-bottom: 0;
@@ -2567,6 +2568,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .willbes-Layer-Box.d3 .classInfo {
     padding-top: 20px;
+}
+.willbes-Layer-Box.d3 table.classTable tr td {
+    line-height: 20px !important;
 }
 
 /* subContainer : Content : 단강좌상세정보 */
@@ -2854,6 +2858,8 @@ table.classTable {
 table.classTable tr td {
     height: 100px;
     line-height: 16px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 table.classTable tr td.w-data {
     line-height: 20px;

@@ -77,16 +77,20 @@
                     <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                     <div class="willbes-Lec-buyBtn">
                         <ul>
+                            @if(strpos("654001,654003", $data['StudyApplyCcd']) !== false)
                             <li class="btnAuto180 h36">
                                 <button type="submit" name="btn_visit_pay" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
                                     <span>방문접수</span>
                                 </button>
                             </li>
+                            @endif
+                            @if(strpos("654002,654003", $data['StudyApplyCcd']) !== false)
                             <li class="btnAuto180 h36">
                                 <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
                                     <span class="tx-light-blue">바로결제</span>
                                 </button>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

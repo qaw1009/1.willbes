@@ -189,8 +189,11 @@
         /*$regi_form.on('click', '#btn_my_addr_list', function() {*/
         $('#btn_study_comment').click(function () {
             var ele_id = 'WrapReply';
-            var data = { 'ele_id' : ele_id };
-            sendAjax('{{ front_url('/StudyComment/') }}', data, function(ret) {
+            var data = {
+                'ele_id' : ele_id,
+                'cate_code' : '{{$__cfg['CateCode']}}'
+            };
+            sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
         });

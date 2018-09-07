@@ -3,6 +3,8 @@
     <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 
     <!-- List -->
+    <form class="form-horizontal form-label-left" id="_search_form" name="_search_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
     <div id="AddList" class="Layer-Cont">
         <div class="curriWrap c_both">
             <div class="CurriBox">
@@ -23,25 +25,17 @@
                         <th class="tx-gray">과목선택</th>
                         <td colspan="8">
                             <ul class="curriSelect">
-                                <li><a href="#none">사회복지학</a></li>
-                                <li><a href="#none">국어</a></li>
-                                <li><a href="#none">영어</a></li>
-                                <li><a href="#none">한국사</a></li>
-                                <li><a href="#none">행정법</a></li>
-                                <li><a href="#none">행정학</a></li>
-                                <li><a href="#none">교육학</a></li>
-                                <li><a href="#none">수학</a></li>
-                                <li><a href="#none">독일어</a></li>
-                                <li><a href="#none">경영학</a></li>
-                                <li><a href="#none">일본어</a></li>
-                                <li><a href="#none">관세법</a></li>
-                                <li><a href="#none">공직선거법</a></li>
+                                <li><a href="#none">전체</a></li>
+                                @foreach($arr_base['subject'] as $idx => $row)
+                                    <li><a href="#none" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}');">{{$row['SubjectName']}}</a></li>
+                                @endforeach
                             </ul>
                         </td>
                     </tr>
                     <tr>
                         <th class="tx-gray">교수선택</th>
-                        <td colspan="8" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
+                        <td colspan="8" id="default_prof_list" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
+                        <div id="prof_list"></div>
                         <!-- 과목선택 시 해당 과목 교수 출력
                         <td>
                             <a href="#none">정채영</a>
@@ -315,6 +309,7 @@
         </div>
         <!-- willbes-Leclist -->
     </div>
+    </form>
 
     <!-- Write -->
     <div id="AddModify" class="Layer-Cont" style="display: none">
@@ -415,59 +410,78 @@
 
 <script src="/public/vendor/validator/multifield.js"></script>
 <script type="text/javascript">
+    var $search_form = $('#_search_form');
+
     // star rating Script //
     $(document).ready(function(){
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function(){
+        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
 
-    /* 1. Visualizing things on Hover - See next part for action on click */
-    $('#stars li').on('mouseover', function(){
-    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
-    // Now highlight all the stars that's not after the current hovered star
-    $(this).parent().children('li.star').each(function(e){
-        if (e < onStar) {
-        $(this).addClass('hover').removeClass('none');
-        }
-        else {
-        $(this).removeClass('hover').addClass('none');
-        }
-    });
-
-    }).on('mouseout', function(){
+        // Now highlight all the stars that's not after the current hovered star
         $(this).parent().children('li.star').each(function(e){
-            $(this).removeClass('hover').removeClass('none');
+            if (e < onStar) {
+                $(this).addClass('hover').removeClass('none');
+            } else {
+                $(this).removeClass('hover').addClass('none');
+            }
+        });
+
+        }).on('mouseout', function(){
+            $(this).parent().children('li.star').each(function(e){
+                $(this).removeClass('hover').removeClass('none');
+            });
+        });
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function(){
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = "";
+            if (ratingValue > 1) {
+                msg = ratingValue;
+            } else {
+                msg = ratingValue;
+            }
+            responseMessage(msg);
         });
     });
 
-
-    /* 2. Action to perform on click */
-    $('#stars li').on('click', function(){
-    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-    var stars = $(this).parent().children('li.star');
-
-    for (i = 0; i < stars.length; i++) {
-        $(stars[i]).removeClass('selected');
-    }
-
-    for (i = 0; i < onStar; i++) {
-        $(stars[i]).addClass('selected');
-    }
-
-    // JUST RESPONSE (Not needed)
-    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-    var msg = "";
-    if (ratingValue > 1) {
-        msg = ratingValue;
-    }
-    else {
-        msg = ratingValue;
-    }
-    responseMessage(msg);
-
-    });
-
-    });
     function responseMessage(msg) {
-    $('.success-box').fadeIn(200);  
-    $('.success-box div.text-message').html(msg);
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html(msg);
+    }
+
+    function ajaxProfInfo(cate_code, subject_idx) {
+        var _url = '{{ site_url("support/studyComment/ajaxProfInfo") }}' + getQueryString();
+        var data = {
+            '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+            'cate_code' : cate_code,
+            'subject_idx' : subject_idx
+        };
+
+        sendAjax(_url, data, function(ret) {
+            var add_data = '';
+            if (ret.ret_cd) {
+                console.log(ret.ret_data);
+                $('#default_prof_list').remove();
+
+                $.each(ret.ret_data, function(k, v) {
+                    /*add_data +=
+                    $children.append($('<option>', { 'value' : k, 'text' : v}));*/
+                });
+            }
+        }, showError, false, 'POST');
     }
 </script>

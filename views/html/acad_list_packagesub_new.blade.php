@@ -62,7 +62,7 @@
                                 <dt><span class="row-line">|</span></dt>
                                 <dt>수강형태 : <span class="tx-blue">혼합</span></dt>
                                 <dt class="w-notice NSK ml15">
-                                    <span class="acadInfo n1">접수중</span>
+                                    <span class="acadInfo n2">접수중</span>
                                 </dt>
                             </dl>
                         </td>
@@ -189,7 +189,7 @@
                                                     </dt>
                                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n1">접수중</span>
+                                                        <span class="acadInfo n2">접수중</span>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -229,7 +229,7 @@
                                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                                     <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n2">접수예정</span>
+                                                        <span class="acadInfo n1">접수예정</span>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -279,7 +279,7 @@
                                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n1">접수중</span>
+                                                        <span class="acadInfo n2">접수중</span>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -319,7 +319,7 @@
                                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n1">접수중</span>
+                                                        <span class="acadInfo n2">접수중</span>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -420,7 +420,7 @@
                                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n1">접수중</span>
+                                                        <span class="acadInfo n2">접수중</span>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -470,7 +470,7 @@
                                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                                     <dt>수강형태 : <span class="tx-blue">라이브</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n1">접수중</span>
+                                                        <span class="acadInfo n2">접수중</span>
                                                     </dt>
                                                 </dl>
                                             </td>
@@ -510,7 +510,7 @@
                                                     <dt class="mr20"><strong>강좌상세정보</strong></dt>
                                                     <dt>수강형태 : <span class="tx-blue">실강</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n1">접수중</span>
+                                                        <span class="acadInfo n2">접수중</span>
                                                     </dt>
                                                 </dl>
                                             </td>

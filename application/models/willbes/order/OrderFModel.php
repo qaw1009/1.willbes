@@ -559,8 +559,6 @@ class OrderFModel extends BaseOrderFModel
                 'OrderIdx' => $order_idx,
                 'MemIdx' => $sess_mem_idx,
                 'ProdCode' => element('ProdCode', $input),
-                'ProdCodeSub' => element('ProdCodeSub', $input),
-                'ParentProdCode' => element('ParentProdCode', $input),
                 'SaleTypeCcd' => element('SaleTypeCcd', $input),
                 'PayStatusCcd' => $pay_status_ccd,
                 'OrderPrice' => element('RealSalePrice', $input),

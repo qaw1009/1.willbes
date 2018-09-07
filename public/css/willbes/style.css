@@ -3382,6 +3382,10 @@ table.classTable tr td.w-data {
     font-size: 20px;
     font-weight: 600;
 }
+.packageDetailTable .w-tit .w-info {
+    clear: none;
+    display: inline-block;
+}
 .willbes-Buy-PackageList {
     width: 940px;
     padding-bottom: 25px;
@@ -6948,6 +6952,10 @@ table.acadlecInfoTable {
     height: 240px;
     overflow-x: auto;
 }
+table.acadlecTable tr.w-info td span.MoreBtn {
+    display: inline-block;
+    line-height: 22px;
+}
 table.acadlecInfoTable tr td .w-tit {
     border-bottom: 1px solid #c9c9c9;
     padding-bottom: 5px;
@@ -7058,6 +7066,11 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-notice .acadInfo.n3 {
     background: #333;
 }
+.w-info .w-notice .acadInfo {
+    float: none;
+    margin: 0;
+}
+
 .w-info dt .acadBox {
     display: inline-block;
     font-size: 11px;

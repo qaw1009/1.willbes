@@ -127,6 +127,10 @@
 
     <a href="{{ site_url('/home/html/acad_offline_list') }}">학원 방문결제 접수 > 단과반 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_offline_list_package') }}">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/acad_offline_list_package') }}">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_package_new') }}">**학원수강신청 > 종합반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">**학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
 
 </div>

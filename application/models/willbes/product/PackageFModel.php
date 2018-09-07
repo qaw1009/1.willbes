@@ -18,28 +18,40 @@ class PackageFModel extends ProductFModel
      * 패키지 연결 하위 강좌 목록 추출
      * @param $prod_code
      */
-    public function subListProduct($learn_pattern,$prod_code,$arr_condition=[],$limit = null, $offset = null, $order_by = [])
+    public function subListProduct($learn_pattern,$prod_code=[],$arr_condition=[],$limit = null, $offset = null, $order_by = [])
     {
-        $column =  'B.IsEssential, B.SubGroupName, B.OrderNum, C.*';
+        $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
+
+        $column =  'A.ProdCode As Parent_ProdCode, B.IsEssential, B.SubGroupName, B.OrderNum, C.*';
+
+        //학원종합반 일경우.
+        if($learn_pattern === 'off_pack_lecture') {
+            $_join_table = $this->_table['off_lecture'];        //단과반 뷰
+            $column = $column.',fn_product_content(C.ProdCode, "633002") as Content ';
+        } else {
+            $_join_table = $this->_table['on_lecture'];        //단강좌 뷰
+        }
+
+
 
         $arr_condition = array_merge_recursive($arr_condition,[
-            //'EQ' => ['A.ProdCode'=>$prod_code, 'A.IsSaleEnd' => 'N', 'A.IsUse' => 'Y', 'B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],
-            //'RAW' => ['NOW() between ' => 'A.SaleStartDatm and A.SaleEndDatm']
-            'EQ' => ['A.ProdCode'=>$prod_code, 'B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],         //패키지 하위 과정이므로 특정 조건을 제외하고 상품에 관계 없이 노출
+            'IN' => ['A.ProdCode' => $prod_code],
+            'EQ' => ['B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],         //패키지 하위 과정이므로 특정 조건을 제외하고 상품에 관계 없이 노출
         ]);
 
         $from = ' 
                     from
                         '.$this->_table[$learn_pattern].' A
 	                    join lms_product_r_sublecture B on A.ProdCode = B.ProdCode	
-	                    join vw_product_on_lecture C on B.ProdCodeSub = C.ProdCode ';
+	                    join '.$_join_table.' C on B.ProdCodeSub = C.ProdCode ';
 
         $order_by = array_merge($order_by,[
-            'B.OrderNum'=>'ASC'
+            'A.ProdCode, B.OrderNum'=>'ASC'
         ]);
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        //echo 'Select straight_join '. $column. $from. $where .$order_by;
         return $this->_conn->query('Select straight_join '. $column. $from. $where .$order_by)->result_array();
     }
 }

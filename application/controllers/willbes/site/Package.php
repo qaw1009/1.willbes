@@ -58,9 +58,8 @@ class Package extends \app\controllers\FrontController
 
         $list = $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,['ProdCode'=>'desc']);
 
-        $prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
-
-        $contents = $this->packageFModel->findProductContents($prod_codes); //상품 컨텐츠 추출
+        //$prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
+        //$contents = $this->packageFModel->findProductContents($prod_codes); //상품 컨텐츠 추출  : info() 로 대체
 
         $selected_list=[];
         foreach ($list as  $idx => $row) {
@@ -75,7 +74,7 @@ class Package extends \app\controllers\FrontController
             'title' => $title,
             'data' => [
                 'list' => $selected_list
-                ,'contents' => $contents
+                //,'contents' => $contents
             ]
         ]);
     }

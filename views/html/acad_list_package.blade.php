@@ -220,7 +220,7 @@
                                 월화수목금 (16회차) <span class="row-line">|</span> 실강
                             </td>
                             <td class="w-info">
-                                <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm11')">
                                     <img src="{{ img_url('sub/icon_detail.gif') }}">
                                 </a>
                             </td>
@@ -434,8 +434,8 @@
         </div>
         <!-- willbes-Lec-buyBtn -->
 
-        <div id="InfoForm" class="willbes-Layer-Box d3">
-            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
+        <div id="InfoForm11" class="willbes-Layer-Box d3">
+            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm11')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">

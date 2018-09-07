@@ -9,6 +9,7 @@ class ProductFModel extends WB_Model
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'userpack_lecture' => 'vw_product_userpack_lecture',
         'off_lecture' => 'vw_product_off_lecture',
+        'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
         'delivery_price' => 'vw_product_delivery_price',
         'delivery_add_price' => 'vw_product_delivery_add_price',
@@ -33,6 +34,9 @@ class ProductFModel extends WB_Model
 
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['618001', '618002'];
+
+    // 학원 단과,종합반 접수상태 > 접수예정, 접수중
+    public $_accept_status_ccds = ['675001', '675002'];
 
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
@@ -75,6 +79,15 @@ class ProductFModel extends WB_Model
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, SchoolYear
                                 , CampusCcd, CampusCcdName, FixNumber, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
                                 , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
+                                , fn_product_content(ProdCode, "633002") as Content';
+                    break;
+
+                // 학원 종합반
+                case 'off_pack_lecture' :
+                    $column .= ', CateCode, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo,  CourseIdx, CourseName, SchoolYear,
+                                , CampusCcd, CampusCcdName, FixNumber, StudyPatternCcd, StudyPatternCcdName
+                                , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, LecSaleType, ProdPriceData
+                                , SchoolStartYear,SchoolStartMonth,PackSelCount,
                                 , fn_product_content(ProdCode, "633002") as Content';
                     break;
 
@@ -176,16 +189,25 @@ class ProductFModel extends WB_Model
         ];
 
         switch ($learn_pattern) {
-            // 온라인 단강좌, 온라인 무료강좌, 학원 단과
+            // 온라인 단강좌, 온라인 무료강좌
             case 'on_lecture' :
             case 'on_free_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부
                 ]);
                 break;
+            //학원 단과
             case 'off_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
-                    'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y', 'IsLecOpen' => 'Y']   // 일반강의, 마스터강의 사용여부, 강의개설여부
+                    'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y', 'IsLecOpen' => 'Y'],   // 일반강의, 마스터강의 사용여부, 강의개설여부
+                    'IN' => ['AcceptStatusCcd' => $this->_accept_status_ccds]   //접수예정, 접수중
+                ]);
+                break;
+            //학원 종합반
+            case 'off_pack_lecture' :
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'EQ' => ['LecSaleType' => 'N', 'IsLecOpen' => 'Y'],   // 일반강의, 강의개설여부
+                    'IN' => ['AcceptStatusCcd' => $this->_accept_status_ccds]   //접수예정, 접수중
                 ]);
                 break;
             case 'book' :
@@ -203,12 +225,12 @@ class ProductFModel extends WB_Model
      * @param array $prod_code
      * @return array
      */
-    public function findProductContents($prod_code = [])
+    public function findProductContents($prod_code = [],$conten_type_ccd=[])
     {
         $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
         $column = 'PC.ProdCode, PC.ContentTypeCcd, CD.CcdName as ContentTypeCcdName, PC.Content';
         $arr_condition = [
-            'EQ' => ['PC.IsStatus' => 'Y'], 'IN' => ['PC.ProdCode' => $prod_code]
+            'EQ' => ['PC.IsStatus' => 'Y'], 'IN' => ['PC.ProdCode' => $prod_code, 'PC.ContentTypeCcd' => $conten_type_ccd]
         ];
 
         return $this->_conn->getJoinListResult($this->_table['product_content'] . ' as PC', 'inner', $this->_table['code'] . ' as CD', 'PC.ContentTypeCcd = CD.Ccd'

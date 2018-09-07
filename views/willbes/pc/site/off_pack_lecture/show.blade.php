@@ -196,7 +196,7 @@
                                                     </dt>
                                                     <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n{{ substr($data['AcceptStatusCcd'], -1) }}">{{$data['AcceptStatusCcdName']}}</span>
+                                                        <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                     </dt>
                                                 </dl>
                                                 @php
@@ -278,7 +278,7 @@
                                                     </dt>
                                                     <dt>수강형태 : <span class="tx-blue">{{$sub_row['StudyPatternCcdName']}}</span></dt>
                                                     <dt class="w-notice NSK ml15">
-                                                        <span class="acadInfo n{{ substr($data['AcceptStatusCcd'], -1) }}">{{$data['AcceptStatusCcdName']}}</span>
+                                                        <span class="acadInfo n{{ substr($sub_row['AcceptStatusCcd'], -1) }}">{{$sub_row['AcceptStatusCcdName']}}</span>
                                                     </dt>
                                                 </dl>
                                                 <!-- willbes-Layer-Box -->

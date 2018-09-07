@@ -231,7 +231,7 @@
         $(document).ready(function() {
             // 영수증 출력하기 버튼 클릭
             $('#btn_receipt_print').on('click', function() {
-                popupOpen('{!! $results['order']['ReceiptUrl'] !!}', '_receipt_print', 430, 700);
+                popupOpen('{!! $results['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 430, 700);
             });
 
             // 가상계좌취소 버튼 클릭

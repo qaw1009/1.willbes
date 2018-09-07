@@ -112,7 +112,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             if ($row['CartProdType'] == 'on_lecture' || $row['CartProdType'] == 'book') {
-                // 포인트 사용 가능상품의 실제 결제금액 합계
+                // 포인트 사용 가능상품의 실제 결제금액 합계 (온라인 단강좌, 교재상품만 구매할 경우 사용 가능)
                 $total_use_point_target_price += $row['RealPayPrice'];
             }
 
@@ -200,7 +200,7 @@ class OrderFModel extends BaseOrderFModel
      * @param bool $is_package [패키지상품 포함 여부]
      * @return bool|string
      */
-    public function checkUsePoint($cart_type, $use_point = 0, $total_use_point_target_price = 0, $is_package = false)
+    public function checkUsePoint($cart_type, $use_point, $total_use_point_target_price, $is_package = false)
     {
         if ($use_point < 1 || $total_use_point_target_price < 1) {
             return true;
@@ -429,6 +429,11 @@ class OrderFModel extends BaseOrderFModel
             // 주문 식별자
             $order_idx = $this->_conn->insert_id();
 
+            // 주문상품 데이터에 사용포인트 컬럼 추가 (실제 결제금액 대비 사용 포인트 분할)
+            if ($post_row['UsePoint'] > 0 && $cart_results['total_use_point_target_price'] > 0) {
+                $cart_results['list'] = $this->getUsePointDivisionCartData($post_row['UsePoint'], $cart_results['total_use_point_target_price'], $cart_results['list']);
+            }
+
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
                 $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, $is_escrow, $cart_row);
@@ -476,6 +481,63 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
+     * 주문상품 등록 대상 데이터에 사용포인트를 각 상품별로 분할 계산하여 사용포인트 컬럼 추가 후 리턴
+     * @param int $use_point [결제 사용 포인트]
+     * @param int $total_use_point_target_price [포인트 사용 가능상품의 실제 결제금액]
+     * @param array $cart_rows [유효한 장바구니 데이터]
+     * @return array
+     */
+    public function getUsePointDivisionCartData($use_point, $total_use_point_target_price, $cart_rows = [])
+    {
+        if ($use_point < 1 || $total_use_point_target_price < 1) {
+            return $cart_rows;
+        }
+
+        $min_idx = 0;
+        $max_idx = 0;
+        $min_price = 0;
+        $max_price = 0;
+        $total_div_point = 0;
+        $n = 0;
+
+        foreach ($cart_rows as $idx => $row) {
+            if ($row['CartProdType'] == 'on_lecture' || $row['CartProdType'] == 'book') {
+                $rate = round($row['RealPayPrice'] / $total_use_point_target_price, 7);
+                $cart_rows[$idx]['RealUsePoint'] = round($use_point * $rate);
+                $total_div_point += $cart_rows[$idx]['RealUsePoint'];
+
+                if ($n == 0) {
+                    $min_price = $row['RealPayPrice'];
+                    $max_price = $row['RealPayPrice'];
+                } else {
+                    if ($min_price > $row['RealPayPrice']) {
+                        $min_price = $row['RealPayPrice'];
+                        $min_idx = $idx;
+                    } elseif ($max_price < $row['RealPayPrice']) {
+                        $max_price = $row['RealPayPrice'];
+                        $max_idx = $idx;
+                    }
+                }
+
+                $n++;
+            } else {
+                $cart_rows[$idx]['RealUsePoint'] = 0;
+            }
+        }
+
+        // 사용포인트와 분할포인트 합계 차이
+        $diff_use_point = $use_point - $total_div_point;
+
+        if ($diff_use_point > 0) {
+            $cart_rows[$min_idx]['RealUsePoint'] += $diff_use_point;    // 분할포인트 합계가 작을 경우 가장 작은 결제금액을 가진 주문상품에 사용포인트 플러스
+        } elseif ($diff_use_point < 0) {
+            $cart_rows[$max_idx]['RealUsePoint'] += $diff_use_point;    // 분할포인트 합계가 클 경우 가장 큰 결제금액을 가진 주문상품에 사용포인트 마이너스
+        }
+
+        return $cart_rows;
+    }
+
+    /**
      * 주문상품 등록
      * @param int $order_idx [주문식별자]
      * @param string $pay_status_ccd [결제상태 공통코드]
@@ -489,6 +551,10 @@ class OrderFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $user_coupon_idx = element('UserCouponIdx', $input, 0);
 
+            // 실결제금액에서 사용포인트 차감
+            $real_use_point = element('RealUsePoint', $input, 0);
+            $real_pay_price = element('RealPayPrice', $input) - $real_use_point;
+
             $data = [
                 'OrderIdx' => $order_idx,
                 'MemIdx' => $sess_mem_idx,
@@ -498,14 +564,14 @@ class OrderFModel extends BaseOrderFModel
                 'SaleTypeCcd' => element('SaleTypeCcd', $input),
                 'PayStatusCcd' => $pay_status_ccd,
                 'OrderPrice' => element('RealSalePrice', $input),
-                'RealPayPrice' => element('RealPayPrice', $input),
-                'CardPayPrice' => element('RealPayPrice', $input),
+                'RealPayPrice' => $real_pay_price,
+                'CardPayPrice' => $real_pay_price,
                 'CashPayPrice' => 0,
                 'DiscPrice' => element('CouponDiscPrice', $input, 0),
                 'DiscRate' => element('CouponDiscRate', $input, 0),
                 'DiscType' => element('CouponDiscType', $input, 'R'),
                 'DiscReason' => (empty($user_coupon_idx) === false  ? '쿠폰사용' : ''),
-                'UsePoint' => element('RealUsePoint', $input, 0),   // TODO : 상품결제금액별 사용포인트 분할 계산 값 저장 필요
+                'UsePoint' => $real_use_point,
                 'SavePoint' => element('RealSavePoint', $input, 0),
                 'IsUseCoupon' => (empty($user_coupon_idx) === false  ? 'Y' : 'N'),
                 'UserCouponIdx' => $user_coupon_idx

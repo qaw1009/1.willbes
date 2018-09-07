@@ -12,16 +12,16 @@ class OrderListFModel extends BaseOrderFModel
 
     /**
      * 주문 목록 조회
-     * @param $column
+     * @param bool $is_count
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listOrder($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        if ($column === true) {
+        if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
@@ -51,7 +51,7 @@ class OrderListFModel extends BaseOrderFModel
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
-        return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
@@ -90,16 +90,16 @@ class OrderListFModel extends BaseOrderFModel
 
     /**
      * 주문상품 목록 조회
-     * @param $column
+     * @param bool $is_count
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listOrderProduct($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listOrderProduct($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        if ($column === true) {
+        if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
@@ -137,7 +137,7 @@ class OrderListFModel extends BaseOrderFModel
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
-        return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

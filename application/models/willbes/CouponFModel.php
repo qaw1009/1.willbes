@@ -17,16 +17,16 @@ class CouponFModel extends WB_Model
 
     /**
      * 회원별 보유 쿠폰
-     * @param $column
+     * @param bool $is_count
      * @param array $arr_param
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listMemberCoupon($column, $arr_param = [], $limit = null, $offset = null, $order_by = [])
+    public function listMemberCoupon($is_count, $arr_param = [], $limit = null, $offset = null, $order_by = [])
     {
-        if ($column === true) {
+        if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
@@ -67,21 +67,21 @@ class CouponFModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx')]);
 
-        return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
      * 상품별 적용가능한 회원 쿠폰 조회
-     * @param $column
+     * @param bool $is_count
      * @param array $arr_param
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listMemberProductCoupon($column, $arr_param = [], $limit = null, $offset = null, $order_by = [])
+    public function listMemberProductCoupon($is_count, $arr_param = [], $limit = null, $offset = null, $order_by = [])
     {
-        if ($column === true) {
+        if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
@@ -170,7 +170,7 @@ class CouponFModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, $arr_binding);
 
-        return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

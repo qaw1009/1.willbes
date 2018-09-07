@@ -14,16 +14,16 @@ class CartFModel extends BaseOrderFModel
 
     /**
      * 장바구니 목록 조회
-     * @param bool $column
+     * @param bool $is_count
      * @param array $arr_condition
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listCart($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listCart($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        if ($column === true) {
+        if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
@@ -84,7 +84,7 @@ class CartFModel extends BaseOrderFModel
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
-        return ($column === true) ? $query->row(0)->numrows : $query->result_array();
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
@@ -146,6 +146,8 @@ class CartFModel extends BaseOrderFModel
      */
     public function checkStudentBook($site_code, $prod_book_code, $arr_input_prod_code = [])
     {
+        // 주문정보 모델 로드
+        $this->load->loadModels(['order/orderListF']);
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
         // 에러 메시지
@@ -162,9 +164,18 @@ class CartFModel extends BaseOrderFModel
 
         logger('check 2', [$arr_target_prod_code]);
 
-        // TODO : 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
+        // 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
+        $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+            'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $prod_book_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
+        ]);
 
-        // 3. 교재상품과 동시에 장바구니에 저장되는 상품코드와 수강생교재 부모상품코드와 비교 (동일한 상품코드가 있다면 return true, 없다면 continue)
+        logger('check 2-2', $book_paid_cnt);
+
+        if ($book_paid_cnt > 0) {
+            return '이미 동일한 수강생 교재를 구매하셨습니다.';
+        }
+
+        // 3. 교재상품과 동시에 장바구니에 저장되는 상품코드와 수강생교재 부모상품코드 비교 (동일한 상품코드가 있다면 return true, 없다면 continue)
         $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_input_prod_code);
         if (empty($arr_same_prod_code) === false) {
             return true;

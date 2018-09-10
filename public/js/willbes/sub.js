@@ -169,6 +169,13 @@ $(function() {
     });
 });
 
+
+// popup 중앙정렬 Script
+$(function() {
+    $('#InfoForm').css({margin:'-'+($('#InfoForm').height() / 2 + 20)+'px 0 0 -490px'});
+});
+
+
 // 첨부파일 찾아보기 버튼 Script
 $(function() {
     var $fileBox = $('.filetype');

@@ -266,10 +266,10 @@
                             <a href="{{site_url('support/mobile/index')}}"><img src="{{ img_url('cs/bnr_mobile.jpg') }}"></a>
                         </div>
                         <div class="willbes-listTable willbes-info widthAuto365 f_left ml45">
-                            <div class="will-Tit NG">공지사항 <a class="f_right" href="{{site_url('support/notice')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">공지사항 <a class="f_right" href="{{front_url('/support/notice')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
                                 @foreach($list_notice as $row)
-                                    <li><a href="{{site_url('support/notice/show?board_idx='.$row['BoardIdx'])}}">
+                                    <li><a href="{{front_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">
                                             @if($__cfg['CampusCcdArr'] != 'N')<span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span>@endif
                                                 {{$row['Title']}}</a><span class="date">{{$row['RegDatm']}}</span>
                                     </li>

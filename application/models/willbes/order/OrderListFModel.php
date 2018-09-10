@@ -27,7 +27,7 @@ class OrderListFModel extends BaseOrderFModel
         } else {
             $column = 'O.OrderIdx, O.OrderNo, O.ReprProdName, O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgTid
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
-                , O.DeliveryPrice, O.DeliveryAddPrice, O.CompleteDatm, O.OrderDatm
+                , O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
                 , O.VBankCcd, ifnull(CBC.CcdName, O.VBankCcd) as VBankName, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm
                 , if(O.PayMethodCcd = "' . $this->_pay_method_ccd['vbank'] . '", "Y", "N") as IsVBank
                 , S.SiteName, S.IsCampus, if(S.IsCampus = "N", "온라인", "학원") as SiteOnOffName';

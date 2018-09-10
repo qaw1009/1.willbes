@@ -563,6 +563,7 @@ class OrderFModel extends BaseOrderFModel
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $user_coupon_idx = element('UserCouponIdx', $input, 0);
+            $prod_code_sub = element('ProdCodeSub', $input);    // 패키지의 서브상품코드
 
             // 실결제금액에서 사용포인트 차감
             $real_use_point = element('RealUsePoint', $input, 0);
@@ -595,6 +596,22 @@ class OrderFModel extends BaseOrderFModel
             // 주문상품 식별자
             $order_prod_idx = $this->_conn->insert_id();
 
+            // 주문상품서브 등록
+            if (empty($prod_code_sub) === false) {
+                $arr_prod_code_sub = explode(',', $prod_code_sub);
+                foreach ($arr_prod_code_sub as $idx => $prod_code) {
+                    $data = [
+                        'OrderProdIdx' => $order_prod_idx,
+                        'ProdCodeSub' => $prod_code,
+                        'RealPayPrice' => array_get(element('UserPackPriceData', $input, []), 'SubRealSalePrice.' . $prod_code, 0)
+                    ];
+
+                    if ($this->_conn->set($data)->insert($this->_table['order_sub_product']) === false) {
+                        throw new \Exception('주문상품서브 정보 등록에 실패했습니다.');
+                    }
+                }
+            }
+
             // 주문상품배송정보 데이터 등록
             if (element('IsDeliveryInfo', $input, 'N') == 'Y') {
                 $data = [
@@ -622,11 +639,6 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
-    }
-
-    public function addOrderSubProduct()
-    {
-
     }
 
     /**

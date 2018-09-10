@@ -154,57 +154,60 @@
             <!-- willbes-Cartlist-Fin -->
 
             <div class="willbes-Delivery-Info-Fin p_re c_both">
-                <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
-                <div class="deliveryInfoTable pb60 GM">
-                    <table cellspacing="0" cellpadding="0" class="classTable deliveryTable upper-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 140px;">
-                            <col style="width: 140px;">
-                            <col width="*">
-                        </colgroup>
-                        <tbody>
-                        <tr class="u-from">
-                            <th class="w-list" rowspan="3">구매자<br/>정보</th>
-                            <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                            <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                            <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">이메일</td>
-                            <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
-                        </tr>
-
-                        <tr class="u-to">
-                            <th class="w-list" rowspan="5">받는사람<br/>정보</th>
-                            <td class="w-tit bg-light-white tx-left pl20">이름</td>
-                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['Receiver'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">주소</td>
-                            <td class="w-info tx-left pl20">
-                                [{{ $results['order_delivery']['ZipCode'] }}]<br/>
-                                {{ $results['order_delivery']['Addr1'] }}<br/>
-                                {{ $results['order_delivery']['Addr2'] }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
-                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverPhone'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverTel'] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
-                            <td class="w-info tx-left pl20">{{ $results['order_delivery']['DeliveryMemo'] }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                @if($results['order']['IsDelivery'] == 'Y')
+                    {{-- 배송정보가 있는 경우만 노출 --}}
+                    <div class="willbes-Lec-Tit NG tx-black">배송정보</div>
+                    <div class="deliveryInfoTable pb60 GM">
+                        <table cellspacing="0" cellpadding="0" class="classTable deliveryTable upper-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 140px;">
+                                <col style="width: 140px;">
+                                <col width="*">
+                            </colgroup>
+                            <tbody>
+                                <tr class="u-from">
+                                    <th class="w-list" rowspan="3">구매자<br/>정보</th>
+                                    <td class="w-tit bg-light-white tx-left pl20">이름</td>
+                                    <td class="w-info tx-left pl20">{{ $results['member']['MemName'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
+                                    <td class="w-info tx-left pl20">{{ $results['member']['Phone'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">이메일</td>
+                                    <td class="w-info tx-left pl20">{{ $results['member']['Mail'] }}</td>
+                                </tr>
+                                <tr class="u-to">
+                                    <th class="w-list" rowspan="5">받는사람<br/>정보</th>
+                                    <td class="w-tit bg-light-white tx-left pl20">이름</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['Receiver'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">주소</td>
+                                    <td class="w-info tx-left pl20">
+                                        [{{ $results['order_delivery']['ZipCode'] }}]<br/>
+                                        {{ $results['order_delivery']['Addr1'] }}<br/>
+                                        {{ $results['order_delivery']['Addr2'] }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">휴대폰번호</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverPhone'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['ReceiverTel'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">배송시 요청사항</td>
+                                    <td class="w-info tx-left pl20">{{ $results['order_delivery']['DeliveryMemo'] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+                <div class="mb60"></div>
                 <div class="willbes-Lec-buyBtn">
                     <ul>
                         <li class="btnAuto180 h36">

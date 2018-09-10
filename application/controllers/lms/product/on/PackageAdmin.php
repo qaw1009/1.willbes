@@ -26,7 +26,7 @@ Class PackageAdmin extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/packageAdmin/index',[
+        $this->load->view('product/on/packageadmin/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'Sales_ccd' => $codes['618'],
@@ -137,7 +137,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 
         //var_dump($codes['613']['613001']);
 
-        $this->load->view('product/on/packageAdmin/create',[
+        $this->load->view('product/on/packageadmin/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd

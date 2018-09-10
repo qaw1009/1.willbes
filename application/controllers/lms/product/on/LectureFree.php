@@ -27,7 +27,7 @@ Class LectureFree extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/lectureFree/index',[
+        $this->load->view('product/on/lecturefree/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
@@ -155,7 +155,7 @@ Class LectureFree extends \app\controllers\BaseController
             $data_sublecture = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
-        $this->load->view('product/on/lectureFree/create',[
+        $this->load->view('product/on/lecturefree/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd

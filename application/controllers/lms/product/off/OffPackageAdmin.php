@@ -164,7 +164,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
 
         }
 
-        $this->load->view('product/off/offPackageAdmin/create',[
+        $this->load->view('product/off/offpackageadmin/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd

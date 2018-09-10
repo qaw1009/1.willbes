@@ -29,7 +29,7 @@ Class OffLecture extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/off/offLecture/index',[
+        $this->load->view('product/off/offlecture/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
@@ -166,7 +166,7 @@ Class OffLecture extends \app\controllers\BaseController
             $data_lecturedate = $this->offLectureModel->findLectureDateListForModify($prodcode);
         }
 
-        $this->load->view('product/off/offLecture/create',[
+        $this->load->view('product/off/offlecture/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd

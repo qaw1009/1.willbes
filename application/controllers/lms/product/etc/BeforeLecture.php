@@ -13,7 +13,7 @@ Class BeforeLecture extends \app\controllers\BaseController
 
     public function index()
     {
-        $this->load->view('product/etc/beforeLecture/index');
+        $this->load->view('product/etc/beforelecture/index');
     }
 
     /**
@@ -94,7 +94,7 @@ Class BeforeLecture extends \app\controllers\BaseController
 
         }
 
-        $this->load->view('product/etc/beforeLecture/create',[
+        $this->load->view('product/etc/beforelecture/create',[
             'method'=>$method
             ,'BlIdx' => $blidx
             ,'data'=>$data

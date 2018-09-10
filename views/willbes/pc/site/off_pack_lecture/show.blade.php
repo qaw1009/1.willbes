@@ -402,7 +402,7 @@
             $('button[name="btn_visit_pay"], button[name="btn_direct_pay"]').on('click', function() {
 
                 @if($data["IsSalesAble"] !== 'Y')
-                    alert("주문 할 수 없는 강좌입니다.");return;
+                    alert("신청할 수 없는 강좌입니다.");return;
                 @endif
 
                 //필수강좌 체크 여부
@@ -415,7 +415,7 @@
                         }
                     });
                     if($checked === "") {
-                        alert("필수 과목은 과목별 1개씩 선택하셔야 합니다.");
+                        alert("필수과목은 과목별 1개씩 선택하셔야 합니다.");
                         return;
                     }
                 }

@@ -38,6 +38,103 @@ class StudyComment extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * ajax list
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $cate_code = element('search_cate_code',$arr_input);
+        $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
+        $prof_idx = element('search_prof_idx',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $page = element('page',$arr_input);
+
+        $get_params = 'search_cate_code='.$cate_code.'&search_prof_idx='.$prof_idx.'&search_subject_idx='.$subject_idx;
+        $get_params .= '&s_keyword='.$s_keyword;
+        $get_params .= '&page='.$page;
+
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y',
+                'SubjectIdx' => $subject_idx,
+                'ProfIdx' => $prof_idx
+            ],
+            'LKB' => [
+                'Category_String' => $cate_code
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'Title' => $s_keyword,
+                    'Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
+        $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
+        $column .= ',AttachData, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ',SubjectIdx, ProfIdx, ProdCode';
+        $column .= ',SubjectName, ProfName, ProdName';
+        $column .= ',ProdApplyTypeCcd, ProdCode, LecScore';
+
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+
+        $list = [];
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        if ($total_rows > 0) {
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+        }
+        return $this->response([
+            'paging' => $paging,
+            'ret_data' => $list,
+        ]);
+    }
+
+    public function ajaxPaging()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $cate_code = element('search_cate_code',$arr_input);
+        $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
+        $prof_idx = element('search_prof_idx',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $page = element('page',$arr_input);
+
+        $get_params = 'search_cate_code='.$cate_code.'&search_prof_idx='.$prof_idx.'&search_subject_idx='.$subject_idx;
+        $get_params .= '&s_keyword='.$s_keyword;
+        $get_params .= '&page='.$page;
+
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y',
+                'SubjectIdx' => $subject_idx,
+                'ProfIdx' => $prof_idx
+            ],
+            'LKB' => [
+                'Category_String' => $cate_code
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'Title' => $s_keyword,
+                    'Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+
+        return $this->response([
+            'paging' => $paging,
+        ]);
+    }
+
     public function ajaxProfInfo()
     {
         $data = [];

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class PackageUser extends \app\controllers\BaseController
 {
-    protected $models = array('sys/wCode', 'sys/site', 'sys/code', 'sys/category', 'product/on/packageuser');
+    protected $models = array('sys/wCode', 'sys/site', 'sys/code', 'sys/category', 'product/on/packageUser');
     protected $helpers = array('download');
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615002'; //사용자 패키지
@@ -27,7 +27,7 @@ Class PackageUser extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/packageuser/index',[
+        $this->load->view('product/on/packageUser/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'Sales_ccd' => $codes['618'],

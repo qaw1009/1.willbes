@@ -26,7 +26,7 @@ Class PackagePeriod extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/packagePeriod/index',[
+        $this->load->view('product/on/packageperiod/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'Sales_ccd' => $codes['618'],
@@ -130,7 +130,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 
         //var_dump($codes['613']['613001']);
 
-        $this->load->view('product/on/packagePeriod/create',[
+        $this->load->view('product/on/packageperiod/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd

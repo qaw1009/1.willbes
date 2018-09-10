@@ -403,7 +403,6 @@
                         </div>
                     </div>
                     <div class="willbes-Lec-buyBtn">
-                        <div class="btnAgree NG"><input type="checkbox" name="agree_always" value="Y"/><label>앞으로 결제 시 항상 동의하기</label></div>
                         <ul>
                             <li class="btnAuto180 h36">
                             @if($results['cart_type'] != 'off_lecture')

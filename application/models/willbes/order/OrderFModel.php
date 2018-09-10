@@ -45,6 +45,19 @@ class OrderFModel extends BaseOrderFModel
                 return '장바구니와 주문상품의 구분이 일치하지 않습니다.';
             }
 
+            // 사용자 패키지 가격 정보 셋팅
+            if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['user_package']) {
+                if (empty($row['UserPackPriceData']) === true || $row['UserPackPriceData'] == 'NODATA') {
+                    return '사용자 패키지 가격정보가 올바르지 않습니다.';
+                }
+
+                $row['UserPackPriceData'] = json_decode($row['UserPackPriceData'], true);
+                $row['SalePrice'] = element('SalePrice', $row['UserPackPriceData']);
+                $row['SaleRate'] = element('SaleRate', $row['UserPackPriceData']);
+                $row['SaleDiscType'] = element('SaleDiscType', $row['UserPackPriceData']);
+                $row['RealSalePrice'] = element('RealSalePrice', $row['UserPackPriceData']);
+            }
+
             // 상품 결제금액 초기화
             $row['RealPayPrice'] = $row['RealSalePrice'];
 
@@ -609,6 +622,11 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
+    }
+
+    public function addOrderSubProduct()
+    {
+
     }
 
     /**

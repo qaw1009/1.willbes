@@ -31,6 +31,7 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['admin_package'] . '" and PL.PackTypeCcd = "' . $this->_admin_package_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
+                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['user_package'] . '", fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub), "") as UserPackPriceData 
                 , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , ifnull(PB.SubjectIdx, PL.SubjectIdx) as SubjectIdx, ifnull(PB.ProfIdx, PD.ProfIdx) as ProfIdx                
@@ -61,8 +62,8 @@ class CartFModel extends BaseOrderFModel
                     on CA.ProdCode = P.ProdCode
                 left join ' . $this->_table['product_r_category'] . ' as PC
                     on CA.ProdCode = PC.ProdCode and PC.IsStatus = "Y"    
-                inner join ' . $this->_table['product_sale'] . ' as PS
-                    on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd
+                left join ' . $this->_table['product_sale'] . ' as PS
+                    on CA.ProdCode = PS.ProdCode and CA.SaleTypeCcd = PS.SaleTypeCcd and PS.IsStatus = "Y" and PS.SalePriceIsUse = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on CA.ProdCode = PL.ProdCode
                 left join ' . $this->_table['product_division'] . ' as PD
@@ -73,9 +74,7 @@ class CartFModel extends BaseOrderFModel
                     on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
             where CA.IsStatus = "Y"   
                 and P.IsUse = "Y"
-                and P.IsStatus = "Y"                                
-                and PS.IsStatus = "Y"
-                and PS.SalePriceIsUse = "Y"                                   
+                and P.IsStatus = "Y"                                                                  
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

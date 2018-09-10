@@ -2408,9 +2408,8 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     left: 50%;
     z-index: 11;
     width: 980px;
-    height: 700px;
-    margin-top: -350px;
-    margin-left: -490px;
+    height: auto;
+    transform: translate(-50%, -50%);
     border: 1px solid #2f2f2f;
     padding: 20px;
 }
@@ -2555,11 +2554,6 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .willbes-Layer-Box.d2 .classInfo {
     padding-top: 20px;
     padding-left: 15px;
-}
-.willbes-Layer-Box.d3 {
-    height: auto;
-    margin-top: 0;
-    top: 25%;
 }
 .willbes-Layer-Box.d3 .Layer-Tit {
     margin-bottom: 0;

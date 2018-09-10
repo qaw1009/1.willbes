@@ -184,7 +184,6 @@ $(function() {
     });
 });
 
-
 // star rating Script //
 $(document).ready(function(){
 

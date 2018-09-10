@@ -55,7 +55,7 @@ class Join extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                 }
 
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
@@ -65,7 +65,7 @@ class Join extends BaseMember
 
                 // 암호화애서 넘어온 전화번호와 post 로 넘어온 전화번호가 다르면 오류
                 if($phone !== $phonenumber){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                 }
 
                 // 가입한 정보가 있는지 검색
@@ -102,7 +102,7 @@ class Join extends BaseMember
                 ]);
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
             }
 
         } else if($jointype === "655003") {
@@ -113,7 +113,7 @@ class Join extends BaseMember
 
                 // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                 }
 
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
@@ -157,12 +157,12 @@ class Join extends BaseMember
                 ]);
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
         }
     }
 
@@ -180,7 +180,7 @@ class Join extends BaseMember
 
         // 인증정보 검사
         if(empty($input['CertifiedInfoTypeCcd']) === true || empty($input['enc_data']) === true ){
-            show_alert('인증정보가 없습니다..','/Member/Join');
+            show_alert('인증정보가 없습니다..','/member/join');
         }
 
         $enc_data = $input['enc_data'];
@@ -194,7 +194,7 @@ class Join extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
                 }
 
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
@@ -204,7 +204,7 @@ class Join extends BaseMember
 
                 // 인증정보 불일치
                 if($input['MemName'] != $name || $input['Phone'] != $phone) {
-                    show_alert("인증정보가 일치하지 않습니다.", '/Member/Join');
+                    show_alert("인증정보가 일치하지 않습니다.", '/member/join');
                 }
 
                 // 검색쿼리
@@ -229,7 +229,7 @@ class Join extends BaseMember
                     ]);
                 }
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
             }
 
         } else if($CertifiedInfoTypeCcd == '655003') {
@@ -254,7 +254,7 @@ class Join extends BaseMember
 
                 // 인증정보 불일치
                 if($input['MemName'] != $name || $input['MailId'] != $mailId || $input['MailDomain'] != $mailDomain) {
-                    show_alert("인증정보가 일치하지 않습니다.", '/Member/Join');
+                    show_alert("인증정보가 일치하지 않습니다.", '/member/join');
                 }
 
                 // 회원가입처리후 메일 인증 사용 처리
@@ -282,11 +282,11 @@ class Join extends BaseMember
                     ]);
                 }
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Join');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/join');
             }
 
         } else {
-            show_alert('인증정보가 없습니다.','/Member/Join');
+            show_alert('인증정보가 없습니다.','/member/join');
         }
 
         // 중요 파라미터검사
@@ -300,7 +300,7 @@ class Join extends BaseMember
         ];
 
         // 파라미터오류발생시 오류페이지로 넘겨버림
-        $this->validate($rules, '/Member/JoinError');
+        $this->validate($rules, '/member/join/error');
 
         // 전화번호 나누기
         $Phone = $input['Phone'];
@@ -332,7 +332,7 @@ class Join extends BaseMember
             $data = $this->memberFModel->getMemberForLogin($input['MemId'], $input['MemPassword'], false);
             $result = $this->memberFModel->storeMemberLogin($data);
 
-            redirect('/member/JoinSuccess');
+            redirect('/member/join/success');
         } else {
             // 실패시 오류 메세지 출력
             return $this->load->view('member/join/error');

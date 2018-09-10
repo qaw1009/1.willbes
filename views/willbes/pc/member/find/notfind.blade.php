@@ -22,7 +22,7 @@
                         </button>
                     </li>
                     <li class="btnAuto180 h36">
-                        <button type="button" onclick="location.replace('{{app_url('/member/findid/', 'www')}}');" class="mem-Btn bg-white bd-dark-blue">
+                        <button type="button" onclick="location.replace('{{app_url('/member/find/id/', 'www')}}');" class="mem-Btn bg-white bd-dark-blue">
                             <span class="tx-light-blue">아이디/비밀번호 찾기</span>
                         </button>
                     </li>

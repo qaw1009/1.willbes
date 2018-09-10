@@ -24,12 +24,12 @@
             <div class="combinefin-Btn mt60">
                 <ul>
                     <li class="btnAuto180 h36">
-                        <button type="button" onclick="location.replace('{{app_url('/member/loginform/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
+                        <button type="button" onclick="location.replace('{{app_url('/member/login/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
                             <span>로그인</span>
                         </button>
                     </li>
                     <li class="btnAuto180 h36">
-                        <button type="button" onclick="location.replace('{{app_url('/member/findpwd/', 'www')}}');" class="mem-Btn bg-white bd-dark-blue">
+                        <button type="button" onclick="location.replace('{{app_url('/member/find/pwd/', 'www')}}');" class="mem-Btn bg-white bd-dark-blue">
                             <span class="tx-light-blue">비밀번호 찾기</span>
                         </button>
                     </li>

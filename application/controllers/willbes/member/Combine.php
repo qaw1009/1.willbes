@@ -10,20 +10,14 @@ class Combine extends BaseMember
         parent::__construct();
     }
 
-
-
     /**
      * 회원통합 페이지
      */
-    public function Combine($params = [])
+    public function index($params = [])
     {
-        if(empty($params[0]) != true){
-            $agree = $params[0];
-        } else {
-            $agree = 'N';
-        }
+        $agree = $this->_req('agree');
 
-        if(strtolower($agree) === 'agree'){
+        if($agree === 'Y'){
             $agree = 'Y';
         } else {
             $agree = 'N';
@@ -43,13 +37,11 @@ class Combine extends BaseMember
         ]);
     }
 
-
-
     /**
      * 회원통합 데이타 입력페이지
      * @return object|string
      */
-    public function CombineForm()
+    public function form()
     {
         // 이미 로그인한 상태이면 초기 페이지로 돌려보낸다.
         if($this->session->userdata('is_login') === true){
@@ -69,7 +61,7 @@ class Combine extends BaseMember
 
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
                 }
 
                 // 고유번호
@@ -91,9 +83,9 @@ class Combine extends BaseMember
                 if($count > 0){
                     //가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/CombineForm', [
+                    return $this->load->view('member/find/combine/form', [
                         'MemId' => $MemId,
-                        'BaseMember' => $result,
+                        'Member' => $result,
                         'enc_data' => $enc_data,
                         'jointype' => $jointype,
                         'IsDup' => $result['IsDup']
@@ -104,7 +96,7 @@ class Combine extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
             }
 
         } else if($jointype === "655002") {
@@ -116,7 +108,7 @@ class Combine extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
                 }
 
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
@@ -139,9 +131,9 @@ class Combine extends BaseMember
                 if($count > 0){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/CombineForm', [
+                    return $this->load->view('member/find/combineform', [
                         'MemId' => $MemId,
-                        'BaseMember' => $result,
+                        'Member' => $result,
                         'enc_data' => $enc_data,
                         'jointype' => $jointype,
                         'IsDup' => $result['IsDup']
@@ -151,7 +143,7 @@ class Combine extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
             }
 
         } else if($jointype === "655003") {
@@ -166,7 +158,7 @@ class Combine extends BaseMember
 
                 if(empty($result) === true){
                     // 인증메일 없음
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
                 }
 
                 // 복호화
@@ -175,7 +167,7 @@ class Combine extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
                 }
 
                 // 0000-00-00 00:00:00^메일주소^이름^회원아이디^0000-00-00 00:00:00
@@ -198,9 +190,9 @@ class Combine extends BaseMember
                 if($count > 0){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/CombineForm', [
+                    return $this->load->view('member/find/combineform', [
                         'MemId' => $MemId,
-                        'BaseMember' => $result,
+                        'Member' => $result,
                         'enc_data' => $enc_data,
                         'jointype' => $jointype,
                         'IsDup' => $result['IsDup']
@@ -210,21 +202,20 @@ class Combine extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
         }
     }
-
 
     /**
      * 회원통합 처리
      * @return object|string
      */
-    public function CombineProc()
+    public function proc()
     {
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
         if($this->session->userdata('is_login') === true){
@@ -252,7 +243,7 @@ class Combine extends BaseMember
 
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
                 }
 
                 // 고유번호
@@ -282,13 +273,13 @@ class Combine extends BaseMember
 
                         if($result === true){
                             $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
-                            return $this->load->view('member/find/CombineSuccess', [
+                            return $this->load->view('member/find/combinesuccess', [
                                 'MemName' => $data['MemName'],
                                 'MemId' => $data['MemId'],
                                 'ChangeDate' => $data['ChangeDate']
                             ]);
                         } else {
-                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                     } else {
@@ -296,14 +287,14 @@ class Combine extends BaseMember
                         //
                         if(empty($ChangeID) == true || empty($ChangePassword) == true){
                             // 변경할 아이디나 암호없음
-                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                         // 아이디 검색
                         $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
                         if($result > 0){
                             // 이미 사용하고 있는 아이디
-                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                         // 아이디가 중복 상태이므로 아이디 비밀번호 변경
@@ -315,13 +306,13 @@ class Combine extends BaseMember
 
                         if($result === true){
                             $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
-                            return $this->load->view('member/find/CombineSuccess', [
+                            return $this->load->view('member/find/combinesuccess', [
                                 'MemName' => $data['MemName'],
                                 'MemId' => $data['MemId'],
                                 'ChangeDate' => $data['ChangeDate']
                             ]);
                         } else {
-                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
                         }
                     }
                 }
@@ -330,7 +321,7 @@ class Combine extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
             }
 
         } else if($jointype === "655002") {
@@ -341,7 +332,7 @@ class Combine extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
                 }
 
                 $data_arr = explode("^", $plainText);
@@ -372,24 +363,24 @@ class Combine extends BaseMember
 
                         if($result === true){
                             $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
-                            return $this->load->view('member/find/CombineSuccess', [
+                            return $this->load->view('member/find/combinesuccess', [
                                 'MemName' => $data['MemName'],
                                 'MemId' => $data['MemId'],
                                 'ChangeDate' => $data['ChangeDate']
                             ]);
                         } else {
-                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                     } else {
                         if(empty($ChangeID) == true || empty($ChangePassword) == true){
-                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                         $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
                         if($result > 0){
                             // 존재하는 아이디
-                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                         // 아이디가 중복 상태이므로 아이디 비밀번호 변경
@@ -401,13 +392,13 @@ class Combine extends BaseMember
 
                         if($result === true){
                             $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
-                            return $this->load->view('member/find/CombineSuccess', [
+                            return $this->load->view('member/find/combinesuccess', [
                                 'MemName' => $data['MemName'],
                                 'MemId' => $data['MemId'],
                                 'ChangeDate' => $data['ChangeDate']
                             ]);
                         } else {
-                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
                         }
                     }
                 }
@@ -415,7 +406,7 @@ class Combine extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
             }
 
         } else if($jointype === "655003") {
@@ -428,7 +419,7 @@ class Combine extends BaseMember
                     ]]);
 
                 if(empty($result) === true){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.1", '/Member/Combine');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.1", '/member/combine');
                 }
 
                 $this->load->library('encrypt');
@@ -436,7 +427,7 @@ class Combine extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.2", '/Member/Combine');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.2", '/member/combine');
                 }
 
                 $data_arr = explode("^", $plainText);
@@ -467,24 +458,24 @@ class Combine extends BaseMember
 
                         if($result === true){
                             $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
-                            return $this->load->view('member/find/CombineSuccess', [
+                            return $this->load->view('member/find/combinesuccess', [
                                 'MemName' => $data['MemName'],
                                 'MemId' => $data['MemId'],
                                 'ChangeDate' => $data['ChangeDate']
                             ]);
                         } else {
-                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                     } else {
                         if(empty($ChangeID) == true || empty($ChangePassword) == true){
-                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("정보가 정확하지않습니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                         $result = $this->memberFModel->getMember(true, ['EQ'=>['MemId'=>$ChangeID]]);
                         if($result > 0){
                             // 존재하는 아이디
-                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("사용할수없는 아이디입니다. 다시 시도해주십시요.", '/member/combine');
                         }
 
                         // 아이디가 중복 상태이므로 아이디 비밀번호 변경
@@ -499,13 +490,13 @@ class Combine extends BaseMember
                             $result = $this->memberFModel->updateMailAuth($enc_data);
 
                             $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
-                            return $this->load->view('member/find/CombineSuccess', [
+                            return $this->load->view('member/find/combinesuccess', [
                                 'MemName' => $data['MemName'],
                                 'MemId' => $data['MemId'],
                                 'ChangeDate' => $data['ChangeDate']
                             ]);
                         } else {
-                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
                         }
                     }
                 }
@@ -513,25 +504,21 @@ class Combine extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/Combine');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/combine');
         }
 
     }
-
-
-
-
 
     /**
      * 통합회원 전환 SMS
      * @return CI_Output
      */
-    public function CombineSms()
+    public function sms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -567,12 +554,11 @@ class Combine extends BaseMember
         ]);
     }
 
-
     /**
      * 통합회원 전환 메일 전송
      * @return CI_Output
      */
-    public function CombineMail()
+    public function mail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');

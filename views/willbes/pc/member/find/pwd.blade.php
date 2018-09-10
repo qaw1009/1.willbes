@@ -15,9 +15,9 @@
                 원하시는 인증방법을 선택해 주세요.
             </div>
             <ul class="tabs c_both">
-                <li><a href="{{app_url('/Member/FindID', 'www')}}">아이디 찾기</a></li>
-                <li><a class='on' href="{{app_url('/Member/FindPWD', 'www')}}">비밀번호 찾기</a></li>
-                <li><a href="{{app_url('/Member/Sleep', 'www')}}">휴면회원 해제</a></li>
+                <li><a href="{{app_url('/member/find/id/', 'www')}}">아이디 찾기</a></li>
+                <li><a class='on' href="{{app_url('/member/find/pwd/', 'www')}}">비밀번호 찾기</a></li>
+                <li><a href="{{app_url('/member/sleep/', 'www')}}">휴면회원 해제</a></li>
             </ul>
             <ul class="tabWrap tabLoginDepth2 tabs-Certi">
                 <li id="tab1"><a href="#pwd_certi1"><div>휴대폰 인증</div></a></li>
@@ -112,7 +112,7 @@
         <br/><br/><br/><br/><br/><br/>
     </div>
     <!-- End Container -->
-    <form name="vnoform" id="vnoform" method="post" action="/Member/FindPWDForm/">
+    <form name="vnoform" id="vnoform" method="post" action="/member/find/pwdform/">
         {!! csrf_field() !!}
         <input type="hidden" name="jointype" value="655001" />
         <input type="hidden" name="enc_data" value="" />
@@ -176,7 +176,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/Member/FindPWDSms/";
+                var _url = "/member/find/pwdsms/";
                 $('#sms_msg').html('');
 
                 ajaxSubmit($p_form, _url, function(ret) {
@@ -205,13 +205,13 @@
                     return;
                 }
 
-                var _url = "/Member/FindPWDSms/";
+                var _url = "/member/find/pwdsms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     clearTimeout(objTimer);
                     $("#enc_data").val(ret.ret_data.enc_data);
                     $("#phone_number").val(ret.ret_data.phone_number);
-                    $("#find_form").prop("action", "/Member/FindPWDForm/").submit();
+                    $("#find_form").prop("action", "/member/find/pwdform/").submit();
 
                 }, function(ret){
                     //alert(ret.ret_msg);
@@ -221,7 +221,7 @@
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/Member/FindPWDMail/";
+                var _url = "/member/find/pwdmail/";
                 $('#mail_msg').html('');
 
                 ajaxSubmit($m_form, _url, function(ret){

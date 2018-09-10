@@ -57,7 +57,7 @@ class Find extends BaseMember
 
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
                 }
 
                 // 아이핀 고유번호
@@ -88,7 +88,7 @@ class Find extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
             }
 
         } else if($jointype === "655002") {
@@ -99,7 +99,7 @@ class Find extends BaseMember
 
                 // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
                 }
 
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
@@ -131,7 +131,7 @@ class Find extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
             }
 
         } else if($jointype === "655003") {
@@ -142,7 +142,7 @@ class Find extends BaseMember
 
                 // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
                 }
 
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
@@ -176,12 +176,12 @@ class Find extends BaseMember
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindID');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/id/');
         }
     }
 
@@ -235,7 +235,7 @@ class Find extends BaseMember
 
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
                 // 고유번호
                 $dupInfo = $data['dupInfo'];
@@ -267,7 +267,7 @@ class Find extends BaseMember
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
             }
 
         } else if($jointype === "655002") {
@@ -278,7 +278,7 @@ class Find extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
 
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
@@ -311,7 +311,7 @@ class Find extends BaseMember
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
             }
 
         } else if($jointype === "655003") {
@@ -325,7 +325,7 @@ class Find extends BaseMember
                     ]]);
 
                 if(empty($result) === true){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
 
                 // 복호화
@@ -334,7 +334,7 @@ class Find extends BaseMember
 
                 // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
 
                 // 0000-00-00 00:00:00^메일주소^이름^회원아이디^0000-00-00 00:00:00
@@ -366,12 +366,12 @@ class Find extends BaseMember
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
         }
     }
 
@@ -402,7 +402,7 @@ class Find extends BaseMember
                 $data = $this->niceauth->ipinDec($enc_data);
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
                 // 고유번호
                 $dupInfo = $data['dupInfo'];
@@ -432,17 +432,17 @@ class Find extends BaseMember
 
                     // 변경실패
                     if($result == false){
-                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                     }
 
-                    redirect('/Member/setPwdSuccess');
+                    redirect('/member/setpwd/');
                 }
 
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
             }
 
         } else if($jointype === "655002") {
@@ -453,7 +453,7 @@ class Find extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
 
                 $data_arr = explode("^", $plainText);
@@ -485,17 +485,17 @@ class Find extends BaseMember
 
                     if($result == false){
                         // 변경 실패
-                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                     }
 
-                    redirect('/Member/setPwdSuccess');
+                    redirect('/member/setpwd/');
                 }
 
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
             }
 
         } else if($jointype === "655003") {
@@ -510,7 +510,7 @@ class Find extends BaseMember
 
                 if(empty($result) === true){
                     // 인증 이메일 없음
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
 
                 // 복호화
@@ -519,7 +519,7 @@ class Find extends BaseMember
 
                 if(empty($plainText)){
                     // 암호화 해제 오류 발생
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                 }
 
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
@@ -551,24 +551,24 @@ class Find extends BaseMember
 
                     if($result == false){
                         // 변경실패
-                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                        show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                     }
 
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/Member/setPwdSuccess');
+                    redirect('/member/setpwd/');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/Member/FindPWD');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
         }
 
     }
@@ -578,7 +578,7 @@ class Find extends BaseMember
     /**
      * 암호변경 완료페이지
      */
-    public function setpwdsuccess()
+    public function setpwd()
     {
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
         if($this->session->userdata('is_login') === true){

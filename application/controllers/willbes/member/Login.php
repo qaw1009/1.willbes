@@ -106,7 +106,7 @@ class Login extends BaseMember
 
             }
 
-            if($data['IsChange'] !== 'Y') {
+            if($data['IsChange'] != 'Y') {
                 // 아이디가 통합상태가 아니면
                 $this->session->set_userdata('combine_id', $data['MemId']);
                 redirect('/member/combine/');

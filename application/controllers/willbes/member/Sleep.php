@@ -12,13 +12,10 @@ class Sleep extends BaseMember
 
 
 
-
-
-
     /**
      * 휴면회원처리 폼
      */
-    public function Sleep()
+    public function index()
     {
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
         if($this->session->userdata('is_login') === true){
@@ -43,7 +40,7 @@ class Sleep extends BaseMember
     /**
      * 휴면회원 정상화 처리
      */
-    public function ActivateSleep()
+    public function activate()
     {
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
         if($this->session->userdata('is_login') === true){
@@ -63,7 +60,7 @@ class Sleep extends BaseMember
 
                 // 정상 복호화
                 if($data['rtnCode'] != 1){
-                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                    show_alert("아이핀 인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
                 }
 
                 // 고유번호
@@ -91,16 +88,16 @@ class Sleep extends BaseMember
 
                     if($result == false){
                         // 복구 실패
-                        show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep');
+                        show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep/');
                     }
-                    redirect('/Member/ActivateSleepSuccess');
+                    redirect('/member/sleep/activate-success/');
                 }
 
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
             }
 
         } else if($jointype === "655002") {
@@ -111,7 +108,7 @@ class Sleep extends BaseMember
 
                 // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
                 }
 
                 // 0000-00-00 00:00:00^전화번호^이름^회원번호^0000-00-00 00:00:00
@@ -139,16 +136,16 @@ class Sleep extends BaseMember
                     $result = $this->memberFModel->ActivateSleepMember($result['MemIdx']);
 
                     if($result == false){
-                        show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep');
+                        show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep/');
                     }
 
-                    redirect('/Member/ActivateSleepSuccess');
+                    redirect('/member/activate-success');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
             }
 
         } else if($jointype === "655003") {
@@ -163,7 +160,7 @@ class Sleep extends BaseMember
 
                 // 이증메일 없음
                 if(empty($result) === true){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
                 }
 
                 // 복호화
@@ -172,7 +169,7 @@ class Sleep extends BaseMember
 
                 // 암호화 해제 오류 발생
                 if(empty($plainText)){
-                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                    show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
                 }
 
                 // 0000-00-00 00:00:00^메일주소^이름^회원번호^0000-00-00 00:00:00
@@ -200,24 +197,24 @@ class Sleep extends BaseMember
                     $result = $this->memberFModel->ActivateSleepMember($result['MemIdx']);
 
                     if($result == false){
-                        show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep');
+                        show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep/');
                     }
 
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/Member/ActivateSleepSuccess');
+                    redirect('/member/activate-success/');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
 
             } catch(Exception $e) {
-                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+                show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
             }
 
         } else {
             // 오류발생
-            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep');
+            show_alert("인증정보에 오류가 발생했습니다. 다시 시도해주십시요.", '/member/sleep/');
         }
     }
 
@@ -226,12 +223,10 @@ class Sleep extends BaseMember
     /**
      * 휴면회원 해제 완료페이지
      */
-    public function ActivateSleepSuccess()
+    public function activate-success()
     {
         $this->load->view('member/find/sleepProc');
     }
-
-
 
 
 
@@ -239,7 +234,7 @@ class Sleep extends BaseMember
      * 휴면회원 해제 SMS
      * @return CI_Output
      */
-    public function SleepSms()
+    public function sms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -290,7 +285,7 @@ class Sleep extends BaseMember
      * 휴면회원 해지메일
      * @return CI_Output
      */
-    public function SleepMail()
+    public function mail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');
@@ -333,7 +328,5 @@ class Sleep extends BaseMember
             'typeccd' => 'UNSLEEP' // 회원가입인증메일
         ]);
     }
-
-
 
 }

@@ -9,37 +9,38 @@
                 <span class="tx-blue">통합 서비스 안내</span>
             </div>
             <!-- 통합 서비스 안내 -->
-            <div class="Member mem-Convert widthAuto690">
-                <div class="user-Txt tx-black">
-                    윌비스공무원(www.willbesgosi.net), 신광은경찰(www.willbescop.net),<br/>
-                    윌비스임용(ssam.willbes.net)이<br/>
-                    더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
-                    기존 수강 강좌 및 혜택을 유지하기 위해 윌비스 통합회원으로 전환이 필요하며,<br/>
-                    <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
-                </div>
-                <div class="info-Txt tx-black">
-                    통합회원 전환 시 전원 특별 혜택 증정은 물론,<br/>
-                    <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
-                </div>
-                <div class="convert-chkBox mt30">
-                    <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
-                    <div class="chkBox-Save mt30 mb30">
-                        <input type="checkbox" id="agree" name="agree" class="iptSave">
-                        <label for="agree" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
+            <form id="agree_form" name="agree_form" method="post" action="/member/combine/">
+                <div class="Member mem-Convert widthAuto690">
+                    <div class="user-Txt tx-black">
+                        윌비스공무원(www.willbesgosi.net), 신광은경찰(www.willbescop.net),<br/>
+                        윌비스임용(ssam.willbes.net)이<br/>
+                        더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
+                        기존 수강 강좌 및 혜택을 유지하기 위해 윌비스 통합회원으로 전환이 필요하며,<br/>
+                        <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
                     </div>
-                    <div class="search-Btn btnAuto180 h36">
-                        <button type="button" id="btn_submit" class="mem-Btn bg-blue bd-dark-blue">
-                            <span>통합회원 신청하기</span>
-                        </button>
+                    <div class="info-Txt tx-black">
+                        통합회원 전환 시 전원 특별 혜택 증정은 물론,<br/>
+                        <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
+                    </div>
+                    <div class="convert-chkBox mt30">
+                        <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
+                        <div class="chkBox-Save mt30 mb30">
+                            <input type="checkbox" id="agree" name="agree" value="Y" class="iptSave">
+                            <label for="agree" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>
+                        </div>
+                        <div class="search-Btn btnAuto180 h36">
+                            <button type="button" id="btn_submit" class="mem-Btn bg-blue bd-dark-blue">
+                                <span>통합회원 신청하기</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="info-Txt tx-black mt60">
+                        <div class="tx-red">※ 기존사용하는 ID 그대로 통합 ID로 사용할 수 있습니다.</div>
+                        단, ID가 중복된 통합ID가 있을 경우, 신규 통합 ID를 생성이 필요합니다.<br/>
+                        <div class="tx-red">※ 기존 수강 강좌, 포인트, 쿠폰은 '통합ID'계정으로 이관됩니다.</div>
                     </div>
                 </div>
-                <div class="info-Txt tx-black mt60">
-                    <div class="tx-red">※ 기존사용하는 ID 그대로 통합 ID로 사용할 수 있습니다.</div>
-                    단, ID가 중복된 통합ID가 있을 경우, 신규 통합 ID를 생성이 필요합니다.<br/>
-                    <div class="tx-red">※ 기존 수강 강좌, 포인트, 쿠폰은 '통합ID'계정으로 이관됩니다.</div>
-                </div>
-            </div>
-            <form id="agree_form" name="agree_form" method="post" action="/Member/Combine/Agree">
+
                 {!! csrf_field() !!}
             </form>
             <script>
@@ -157,7 +158,7 @@
                         </form>
                     </div>
                 </div>
-                <form name="vnoform" id="vnoform" method="post" action="/member/CombineForm/">
+                <form name="vnoform" id="vnoform" method="post" action="/member/combine/form/">
                     {!! csrf_field() !!}
                     <input type="hidden" name="jointype" value="655001" />
                     <input type="hidden" name="enc_data" value="" />
@@ -221,7 +222,7 @@
                         }
 
                         $("#btn_send_sms").click(function () {
-                            var _url = "/member/CombineSms/";
+                            var _url = "/member/combine/sms/";
                             $('#sms_msg').html('');
 
                             ajaxSubmit($p_form, _url, function(ret) {
@@ -250,13 +251,13 @@
                                 return;
                             }
 
-                            var _url = "/member/CombineSms/";
+                            var _url = "/member/combine/sms/";
 
                             ajaxSubmit($p_form, _url, function(ret) {
                                 clearTimeout(objTimer);
                                 $("#enc_data").val(ret.ret_data.enc_data);
                                 $("#phone_number").val(ret.ret_data.phone_number);
-                                $("#find_form").prop("action", "/Member/CombineForm/").submit();
+                                $("#find_form").prop("action", "/Member/combine/form/").submit();
 
                             }, function(ret){
                                 //alert(ret.ret_msg);
@@ -266,7 +267,7 @@
 
 
                         $("#btn_send_mail").click(function () {
-                            var _url = "/member/CombineMail/";
+                            var _url = "/member/combine/mail/";
                             $('#mail_msg').html('');
 
                             ajaxSubmit($m_form, _url, function(ret){

@@ -13,7 +13,7 @@
         </span>
     </div>
     <div class="Content p_re">
-        <form method="post" action="/Member/Change/" onsubmit="return chkSubmit();">
+        <form method="post" action="/member/change/" onsubmit="return chkSubmit();">
             {!! csrf_field() !!}
             <div class="willbes-Mypage-ONLINEZONE c_both">
                 <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">

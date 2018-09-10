@@ -3,17 +3,17 @@
 @section('content')
     <form name="mail_form" id="mail_form" method="post" action=
     @if($CertTypeCcd == '662001')
-        "/Member/joinForm/"
+        "/member/join/form/"
     @elseif($CertTypeCcd == '662002')
-        "/Member/FindIDProc/"
+        "/member/find/idproc/"
     @elseif($CertTypeCcd == '662003')
-        "/Member/FindPWDForm/"
+        "/member/find/pwdform/"
     @elseif($CertTypeCcd == '662004')
-        "/Member/ActivateSleep/"
+        "/member/sleep/activate/"
     @elseif($CertTypeCcd == '662005')
-        "/Member/ChangeMailProc/"
+        "/member/change/mailproc/"
     @elseif($CertTypeCcd == '662006')
-        "/Member/CombineForm/"
+        "/member/combine/form/"
     @endif >
     {!! csrf_field() !!}
     <input type="hidden" id="enc_data" name="enc_data" value="{{$enc_data}}">

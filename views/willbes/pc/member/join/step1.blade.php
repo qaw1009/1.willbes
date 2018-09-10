@@ -129,7 +129,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/Member/JoinSms/";
+                var _url = "/member/join/sms/";
                 $("#btn_send_sms").prop("disabled", true);
 
                 ajaxSubmit($p_form, _url, function(ret) {
@@ -156,13 +156,13 @@
                     return;
                 }
 
-                var _url = "/Member/JoinSms/";
+                var _url = "/member/join/sms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     clearTimeout(objTimer);
                     $("#enc_data").val(ret.ret_data.enc_data);
                     $("#phone_number").val(ret.ret_data.phone_number);
-                    $("#join_form").prop("action", "/member/joinForm/").submit();
+                    $("#join_form").prop("action", "/member/join/form/").submit();
 
                 }, function(ret){
                     alert(ret.ret_msg);
@@ -171,7 +171,7 @@
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/Member/JoinMail/";
+                var _url = "/member/join/mail/";
 
                 ajaxSubmit($m_form, _url, function(ret){
                     alert(ret.ret_msg);

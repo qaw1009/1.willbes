@@ -20,7 +20,7 @@
                 </div>
             </div>
             <!-- willbes-Mypage-ONLINEZONE -->
-            <form method="post" id="pwd_form" name="pwd_form" action="/Member/ChangeProc/" novalidate="novalidate">
+            <form method="post" id="pwd_form" name="pwd_form" action="/member/change/proc/" novalidate="novalidate">
                 <input type="hidden" name="Password" value="{{$password}}" >
                 {!! csrf_field() !!}
                 <div class="willbes-User-Info p_re pb60 _both">
@@ -593,7 +593,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/Member/ChangPhoneSms/";
+                var _url = "/member/change/phonesms/";
                 $("#btn_send_sms").prop("disabled", true);
                 ajaxSubmit($p_form, _url, function(ret) {
                     $("#btn_send_sms").prop("disabled", true);
@@ -619,12 +619,12 @@
                     return;
                 }
 
-                var _url = "/Member/ChangPhoneSms/";
+                var _url = "/member/change/phonesms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     clearTimeout(objTimer);
                     $("#enc_data").val(ret.ret_data.enc_data);
-                    ajaxSubmit($('#ajaxForm'), '/Member/ChangePhone/', function(ret) {
+                    ajaxSubmit($('#ajaxForm'), '/member/change/phone/', function(ret) {
                         $("#Phone1").val(ret.ret_data.phone1);
                         $("#Phone2").val(ret.ret_data.phone2);
                         $("#Phone3").val(ret.ret_data.phone3);
@@ -643,7 +643,7 @@
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/Member/ChangeMail/";
+                var _url = "/member/change/mail/";
 
                 ajaxSubmit($m_form, _url, function(ret){
                     alert(ret.ret_msg);

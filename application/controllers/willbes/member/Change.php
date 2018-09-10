@@ -43,7 +43,7 @@ class Change extends BaseMember
     /**
      * 회원정보변경 처리
      */
-    public function changeProc()
+    public function proc()
     {
         $Password = $this->_req('Password');
         $MemIdx = $this->session->userdata('mem_idx');
@@ -75,7 +75,7 @@ class Change extends BaseMember
         show_alert('회원정보가 변경되었습니다.', '/Classroom/', false);
     }
 
-    public function changePhone()
+    public function phone()
     {
         $enc_data = $this->_req('enc_data');
 
@@ -120,7 +120,7 @@ class Change extends BaseMember
      * 메일주소변경 메일인증처리
      * @return object|string
      */
-    public function changeMailProc()
+    public function mailproc()
     {
         // 주소/인증키/인증메일
         $certKey = $this->_req('enc_data');
@@ -206,7 +206,7 @@ class Change extends BaseMember
             if($this->memberFModel->setMemberPassword(['MemIdx' => $MemIdx, 'MemPassword' => $newPassword, 'UpdTypeCcd' => '656001']) === false){
                 show_alert('비밀번호 변경이 실패했습니다. 다시 시도해주십시요.', '/member/password/', false);
             } else {
-                show_alert('비밀번호 변경이 완료되었습니다.', '/lassroom/', false);
+                show_alert('비밀번호 변경이 완료되었습니다.', '/classroom/', false);
             }
         }
 
@@ -220,7 +220,7 @@ class Change extends BaseMember
      * 핸드폰번호변경 SMS
      * @return CI_Output
      */
-    public function changePhoneSms()
+    public function phonesms()
     {
         $phonenumber = $this->_req('var_phone');
         $authcode = $this->_req('var_auth');
@@ -242,7 +242,7 @@ class Change extends BaseMember
      * 이메일주소 변경 메일
      * @return CI_Output
      */
-    public function changeMail()
+    public function mail()
     {
         $mailid = $this->_req('mail_id');
         $maildomain = $this->_req('mail_domain');

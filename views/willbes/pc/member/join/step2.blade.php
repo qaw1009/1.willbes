@@ -388,7 +388,7 @@
                         return;
                     }
 
-                    $join_form.attr("action", "/member/joinProc");
+                    $join_form.attr("action", "/member/join/proc");
                     $join_form.submit();
                 }
             });
@@ -397,7 +397,7 @@
             {
                 var obj = $('input[name="MemId"]');
                 var msg = obj.parent().parent().children('.error_msg');
-                var _url = '{{app_url("/Member/checkID/", "www")}}';
+                var _url = '{{app_url("/member/join/checkID/", "www")}}';
                 var data = $('#join_form').formSerialize();
 
                 $.ajax({

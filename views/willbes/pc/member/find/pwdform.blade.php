@@ -130,7 +130,7 @@
 
             $('#btn_submit').click(function(){
                 if($pwd_form.valid() == true){
-                    $pwd_form.attr("action", "/Member/FindPWDProc/");
+                    $pwd_form.attr("action", "/member/find/pwdproc/");
                     $pwd_form.submit();
                 }
             });

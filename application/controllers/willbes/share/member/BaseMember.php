@@ -63,7 +63,7 @@ class BaseMember extends \app\controllers\FrontController
     /**
      * 핸드폰 번호로 인증번호를 보내거나 해당 핸드폰으로 보낸 인증번호가 맞는지 체크
      */
-    private function sendSms($param = [])
+    public function sendSms($param = [])
     {
         $phone = element('phone', $param);
         $code = element('code', $param);
@@ -151,7 +151,7 @@ class BaseMember extends \app\controllers\FrontController
      * @param array $param
      * @return CI_Output
      */
-    private function sendMail($param = [])
+    public function sendMail($param = [])
     {
         $typeccd = element('typeccd', $param);
         $mail = element('mail', $param);

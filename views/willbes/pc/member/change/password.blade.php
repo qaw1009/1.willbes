@@ -14,7 +14,7 @@
         </div>
         <div class="Content p_re">
             @if($method == 'check')
-                <form method="post" action="/Member/Password/" onsubmit="return chkSubmit();">
+                <form method="post" action="/member/change/password/" onsubmit="return chkSubmit();">
                     {!! csrf_field() !!}
                     <div class="willbes-Mypage-ONLINEZONE c_both">
                         <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
@@ -174,7 +174,7 @@
 
                         $('#btn_submit').click(function(){
                             if($pwd_form.valid() == true){
-                                $pwd_form.attr("action", "/Member/Password/");
+                                $pwd_form.attr("action", "/member/change/password/");
                                 $pwd_form.submit();
                             }
                         });

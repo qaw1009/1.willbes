@@ -615,7 +615,7 @@ $(document).bind('keypress', function(event) {
         this.css('cursor','pointer');
 
         // modal html source
-        var modal_html = '<div class="modal fade" id="' + settings.modal_id + '" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">...</div></div></div>';
+        var modal_html = '<div class="modal" id="' + settings.modal_id + '" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">...</div></div></div>';
 
         if(settings.add_param.constructor !== Array) {
             settings.add_param = [settings.add_param];

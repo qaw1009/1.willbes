@@ -27,7 +27,7 @@ Class PackageUser extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/packageUser/index',[
+        $this->load->view('product/on/packageuser/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'Sales_ccd' => $codes['618'],

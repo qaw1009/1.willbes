@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
  * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
  * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
- * @property PackageUserModel $packageuserModel                               Lecture user package Model Class
+ * @property PackageUserModel $packageUserModel                               Lecture user package Model Class
  * @property PackageAdminModel $packageadminModel                           Lecture admin package Model Class
  * @property PackagePeriodModel $packageperiodModel                          Lecture period package Model Class
  * @property LectureFreeModel $lecturefreeModel                                 Lecture free Model Class

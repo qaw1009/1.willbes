@@ -27,6 +27,8 @@ Class PackageUser extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
+
+
         $this->load->view('product/on/packageuser/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
@@ -74,10 +76,10 @@ Class PackageUser extends \app\controllers\BaseController
 
         //var_dump($arr_condition);
         $list = [];
-        $count = $this->packageuserModel->listLecture(true, $arr_condition);
+        $count = $this->packageUserModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->packageuserModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->packageUserModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -112,16 +114,16 @@ Class PackageUser extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->packageuserModel->_findProductForModify($prodcode);
-            $data_memo = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_memo');
-            $data_sms = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data = $this->packageUserModel->_findProductForModify($prodcode);
+            $data_memo = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_sms = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_autolec = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
-            $data_autofreebie = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+            $data_autolec = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
-            $data_autocoupon = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_sublecture = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
-            $data_packsaleinfo = $this->packageuserModel->_findProductEtcModify($prodcode,'lms_product_pack_saleinfo');
+            $data_autocoupon = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+            $data_sublecture = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_packsaleinfo = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_pack_saleinfo');
         }
 
         $this->load->view('product/on/packageuser/create',[
@@ -174,7 +176,7 @@ Class PackageUser extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->packageuserModel->{$method.'Product'}($this->_reqP(null),'packageuser');
+        $result = $this->packageUserModel->{$method.'Product'}($this->_reqP(null),'packageuser');
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -196,7 +198,7 @@ Class PackageUser extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->packageuserModel->_prodCopy($prodcode,'packageuser');
+        $result = $this->packageUserModel->_prodCopy($prodcode,'packageuser');
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }

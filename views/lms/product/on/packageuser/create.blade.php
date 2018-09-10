@@ -732,11 +732,11 @@
             // ajax submit
             $regi_form.submit(function() {
 
-                var _url = '{{ site_url('/product/on/packageuser/store') }}';
+                var _url = '{{ site_url('/product/on/packageUser/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/on/packageuser/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/on/packageUser/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -808,7 +808,7 @@
 
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/on/packageuser/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/on/packageUser/') }}' + getQueryString());
             });
         });
 

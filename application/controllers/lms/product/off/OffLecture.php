@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class OffLecture extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/off/offlecture');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/off/offLecture');
     protected $helpers = array('download');
     protected $prodtypeccd = '636002';  //학원강좌
     protected $learnpatternccd = '615006'; //단과반 [학원]
@@ -29,7 +29,7 @@ Class OffLecture extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/off/offlecture/index',[
+        $this->load->view('product/off/offLecture/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
@@ -104,10 +104,10 @@ Class OffLecture extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->offlectureModel->listLecture(true, $arr_condition);
+        $count = $this->offLectureModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->offlectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->offLectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -151,22 +151,22 @@ Class OffLecture extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->offlectureModel->_findProductForModify($prodcode);
-            $data_sale = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_sale');
-            $data_division = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_division');
-            $data_memo = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
-            $data_content = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_content');
-            $data_sms = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data = $this->offLectureModel->_findProductForModify($prodcode);
+            $data_sale = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_sale');
+            $data_division = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_division');
+            $data_memo = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_content');
+            $data_sms = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_autolec = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
-            $data_autofreebie = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+            $data_autolec = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
-            $data_autocoupon = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_sublecture = $this->offlectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
-            $data_lecturedate = $this->offlectureModel->findLectureDateListForModify($prodcode);
+            $data_autocoupon = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+            $data_sublecture = $this->offLectureModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_lecturedate = $this->offLectureModel->findLectureDateListForModify($prodcode);
         }
 
-        $this->load->view('product/off/offlecture/create',[
+        $this->load->view('product/off/offLecture/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
@@ -240,7 +240,7 @@ Class OffLecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offlectureModel->{$method.'Product'}($this->_reqP(null));
+        $result = $this->offLectureModel->{$method.'Product'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -261,7 +261,7 @@ Class OffLecture extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->offlectureModel->_prodCopy($prodcode);
+        $result = $this->offLectureModel->_prodCopy($prodcode);
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
@@ -280,7 +280,7 @@ Class OffLecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offlectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
+        $result = $this->offLectureModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

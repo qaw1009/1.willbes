@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchLectureBlend extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code','product/on/lecture','product/on/lecturefree','product/off/offlecture');
+    protected $models = array('sys/code','product/on/lecture','product/on/lectureFree','product/off/offLecture');
     protected $helpers = array();
 
     public function __construct()
@@ -60,7 +60,7 @@ class SearchLectureBlend extends \app\controllers\BaseController
         } elseif($LearnPatternCcd === '615005') {
             $modelname = "lecturefreeModel";
         } elseif($LearnPatternCcd === '615006') {
-            $modelname = "offlectureModel";
+            $modelname = "offLectureModel";
         }
 
 

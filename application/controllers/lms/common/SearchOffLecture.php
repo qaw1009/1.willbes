@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchOffLecture extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code','product/off/offlecture');
+    protected $models = array('sys/code','product/off/offLecture');
     protected $helpers = array();
 
     public function __construct()
@@ -61,10 +61,10 @@ class SearchOffLecture extends \app\controllers\BaseController
         ]);
 
         $list = [];
-        $count = $this->offlectureModel->listLecture(true, $arr_condition);
+        $count = $this->offLectureModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->offlectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->offLectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([

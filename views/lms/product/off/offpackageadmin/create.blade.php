@@ -982,11 +982,11 @@
                 getEditorBodyContent($editor_2);
                 getEditorBodyContent($editor_4);
 
-                var _url = '{{ site_url('/product/off/offpackageadmin/store') }}';
+                var _url = '{{ site_url('/product/off/offPackageAdmin/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/off/offpackageadmin/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/off/offPackageAdmin/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -1004,7 +1004,7 @@
             }
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/off/offpackageadmin/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/off/offPackageAdmin/') }}' + getQueryString());
             });
         });
 

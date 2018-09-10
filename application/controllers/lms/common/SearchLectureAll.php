@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchLectureAll extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code','product/on/lecture','product/on/packageadmin','product/on/packageperiod','product/off/offlecture','product/off/offpackageadmin');
+    protected $models = array('sys/code','product/on/lecture','product/on/packageAdmin','product/on/packagePeriod','product/off/offLecture','product/off/offPackageAdmin');
     protected $helpers = array();
 
     public function __construct()
@@ -70,13 +70,13 @@ class SearchLectureAll extends \app\controllers\BaseController
         if($LearnPatternCcd === '615001') {
             $modelname = "lectureModel";
         } elseif($LearnPatternCcd === '615003') {
-            $modelname = "packageadminModel";
+            $modelname = "packageAdminModel";
         } elseif($LearnPatternCcd === '615004') {
-            $modelname = "packageperiodModel";
+            $modelname = "packagePeriodModel";
         } elseif($LearnPatternCcd === '615006') {
-            $modelname = "offlectureModel";
+            $modelname = "offLectureModel";
         } elseif($LearnPatternCcd === '615007') {
-            $modelname = "offpackageadminModel";
+            $modelname = "offPackageAdminModel";
         }
 
         $list = [];

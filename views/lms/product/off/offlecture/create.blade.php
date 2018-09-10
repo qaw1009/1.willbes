@@ -948,11 +948,11 @@
                 $("#week_str").val(week_str);
 
 
-                var _url = '{{ site_url('/product/off/offlecture/store') }}';
+                var _url = '{{ site_url('/product/off/offLecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/off/offlecture/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/off/offLecture/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -968,7 +968,7 @@
 
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/off/offlecture/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/off/offLecture/') }}' + getQueryString());
             });
         });
 

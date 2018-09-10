@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class OffPackageAdmin extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/off/offpackageadmin');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/off/offPackageAdmin');
     protected $helpers = array('download');
     protected $prodtypeccd = '636002';  //학원강좌
     protected $learnpatternccd = '615007'; //종합반 [학원]
@@ -101,10 +101,10 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->offpackageadminModel->listLecture(true, $arr_condition);
+        $count = $this->offPackageAdminModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->offpackageadminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -147,24 +147,24 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->offpackageadminModel->_findProductForModify($prodcode);
-            $data_sale = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_sale');
-            $data_division = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_division','offpackageadmin');
-            $data_memo = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_memo');
-            $data_content = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_content');
-            $data_sms = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data = $this->offPackageAdminModel->_findProductForModify($prodcode);
+            $data_sale = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_sale');
+            $data_division = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_division','offpackageadmin');
+            $data_memo = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_content');
+            $data_sms = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_autolec = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
-            $data_autofreebie = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+            $data_autolec = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
             //var_dump($data_autolec);
 
-            $data_autocoupon = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_sublecture = $this->offpackageadminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_autocoupon = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+            $data_sublecture = $this->offPackageAdminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
 
         }
 
-        $this->load->view('product/off/offpackageadmin/create',[
+        $this->load->view('product/off/offPackageAdmin/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
@@ -225,7 +225,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offpackageadminModel->{$method.'Product'}($this->_reqP(null));
+        $result = $this->offPackageAdminModel->{$method.'Product'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -246,7 +246,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->offpackageadminModel->_prodCopy($prodcode,'offpackageadmin');
+        $result = $this->offPackageAdminModel->_prodCopy($prodcode,'offpackageadmin');
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
@@ -265,7 +265,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->offpackageadminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
+        $result = $this->offPackageAdminModel->_modifyOptionByColumn($this->_reqP('prodCode'), $this->_reqP('IsLecOpen'), $this->_reqP('AcceptStatusCcd'));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

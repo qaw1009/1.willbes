@@ -135,13 +135,13 @@
                     { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 운영자패키지복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 운영자패키지등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
-                            location.href = '{{ site_url('product/on/packageadmin/create') }}';
+                            location.href = '{{ site_url('product/on/packageAdmin/create') }}';
                         }
                     }
                 ],
 
                 ajax: {
-                    'url' : '{{ site_url('/product/on/packageadmin/listAjax') }}'
+                    'url' : '{{ site_url('/product/on/packageAdmin/listAjax') }}'
                     ,'type' : 'post'
                     ,'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -217,7 +217,7 @@
                     'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
                 };
 
-                sendAjax('{{ site_url('/product/on/packageadmin/copy') }}', data, function(ret) {
+                sendAjax('{{ site_url('/product/on/packageAdmin/copy') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
@@ -259,7 +259,7 @@
                     'params' : JSON.stringify($params)
                 };
 
-                sendAjax('{{ site_url('/product/on/packageadmin/redata') }}', data, function(ret) {
+                sendAjax('{{ site_url('/product/on/packageAdmin/redata') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
@@ -269,7 +269,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/product/on/packageadmin/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url('/product/on/packageAdmin/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
 
 

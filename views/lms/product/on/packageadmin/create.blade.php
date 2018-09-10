@@ -1122,11 +1122,11 @@
                 getEditorBodyContent($editor_3);
                 getEditorBodyContent($editor_4);
 
-                var _url = '{{ site_url('/product/on/packageadmin/store') }}';
+                var _url = '{{ site_url('/product/on/packageAdmin/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/on/packageadmin/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/on/packageAdmin/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -1143,7 +1143,7 @@
 
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/on/packageadmin/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/on/packageAdmin/') }}' + getQueryString());
             });
         });
 

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class PackageAdmin extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/on/packageadmin');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/professor','product/on/packageAdmin');
     protected $helpers = array('download');
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615003'; //운영자 패키지
@@ -26,7 +26,7 @@ Class PackageAdmin extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/packageadmin/index',[
+        $this->load->view('product/on/packageAdmin/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'Sales_ccd' => $codes['618'],
@@ -78,10 +78,10 @@ Class PackageAdmin extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->packageadminModel->listLecture(true, $arr_condition);
+        $count = $this->packageAdminModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->packageadminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->packageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -121,23 +121,23 @@ Class PackageAdmin extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->packageadminModel->_findProductForModify($prodcode);
-            $data_sale = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_sale');
-            $data_division = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_division','packageadmin');
-            $data_memo = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_memo');
-            $data_content = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_content');
-            $data_sms = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data = $this->packageAdminModel->_findProductForModify($prodcode);
+            $data_sale = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_sale');
+            $data_division = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_division','packageadmin');
+            $data_memo = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_content');
+            $data_sms = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_autolec = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
-            $data_autofreebie = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+            $data_autolec = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
-            $data_autocoupon = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_sublecture = $this->packageadminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_autocoupon = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+            $data_sublecture = $this->packageAdminModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
         //var_dump($codes['613']['613001']);
 
-        $this->load->view('product/on/packageadmin/create',[
+        $this->load->view('product/on/packageAdmin/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
@@ -211,7 +211,7 @@ Class PackageAdmin extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->packageadminModel->{$method.'Product'}($this->_reqP(null));
+        $result = $this->packageAdminModel->{$method.'Product'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -232,7 +232,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->packageadminModel->_prodCopy($prodcode,'packageadmin');
+        $result = $this->packageAdminModel->_prodCopy($prodcode,'packageadmin');
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
@@ -251,7 +251,7 @@ Class PackageAdmin extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->packageadminModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+        $result = $this->packageAdminModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

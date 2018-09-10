@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class PackagePeriod extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packageperiod');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/on/packagePeriod');
     protected $helpers = array('download');
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615004'; //기간제 패키지
@@ -26,7 +26,7 @@ Class PackagePeriod extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/packageperiod/index',[
+        $this->load->view('product/on/packagePeriod/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'Sales_ccd' => $codes['618'],
@@ -76,10 +76,10 @@ Class PackagePeriod extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->packageperiodModel->listLecture(true, $arr_condition);
+        $count = $this->packagePeriodModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->packageperiodModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->packagePeriodModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -115,22 +115,22 @@ Class PackagePeriod extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->packageperiodModel->_findProductForModify($prodcode);
-            $data_sale = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_sale');
-            $data_memo = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_memo');
-            $data_content = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_content');
-            $data_sms = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data = $this->packagePeriodModel->_findProductForModify($prodcode);
+            $data_sale = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_sale');
+            $data_memo = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_content');
+            $data_sms = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_autolec = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
-            $data_autofreebie = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
+            $data_autolec = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_product','636001');
+            $data_autofreebie = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_product','636004');
 
-            $data_autocoupon = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
-            $data_sublecture = $this->packageperiodModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_autocoupon = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_product_r_autocoupon');
+            $data_sublecture = $this->packagePeriodModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
         //var_dump($codes['613']['613001']);
 
-        $this->load->view('product/on/packageperiod/create',[
+        $this->load->view('product/on/packagePeriod/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
@@ -204,7 +204,7 @@ Class PackagePeriod extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->packageperiodModel->{$method.'Product'}($this->_reqP(null));
+        $result = $this->packagePeriodModel->{$method.'Product'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -225,7 +225,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->packageperiodModel->_prodCopy($prodcode,'packageperiod');
+        $result = $this->packagePeriodModel->_prodCopy($prodcode,'packagePeriod');
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }

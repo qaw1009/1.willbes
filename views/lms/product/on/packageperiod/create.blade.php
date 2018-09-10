@@ -953,11 +953,11 @@
                 getEditorBodyContent($editor_3);
                 getEditorBodyContent($editor_4);
 
-                var _url = '{{ site_url('/product/on/packageperiod/store') }}';
+                var _url = '{{ site_url('/product/on/packagePeriod/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/on/packageperiod/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/on/packagePeriod/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -973,7 +973,7 @@
             }
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/on/packageperiod/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/on/packagePeriod/') }}' + getQueryString());
             });
         });
 

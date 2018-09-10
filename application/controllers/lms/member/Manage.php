@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/ManageMember');
+    protected $models = array('member/manageMember');
     protected $helpers = array();
 
     public function __construct()
@@ -28,7 +28,7 @@ class Manage extends \app\controllers\BaseController
     public function ajaxList()
     {
         $search_value = $this->_reqP('search_value'); // 검색어
-        $search_value_enc = $this->managememberModel->getEncString($search_value); // 검색어 암호화
+        $search_value_enc = $this->manageMemberModel->getEncString($search_value); // 검색어 암호화
         $inQuery = "";
         $list = [];
 
@@ -133,12 +133,12 @@ class Manage extends \app\controllers\BaseController
         }
 
         // 갯수 구해오기
-        $count = $this->managememberModel->list(true, $arr_condition,
+        $count = $this->manageMemberModel->list(true, $arr_condition,
             $this->_reqP('length'), $this->_reqP('start'), $orderby, $inQuery);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
-            $list = $this->managememberModel->list(false, $arr_condition,
+            $list = $this->manageMemberModel->list(false, $arr_condition,
                 $this->_reqP('length'), $this->_reqP('start'), $orderby, $inQuery);
         }
 
@@ -167,7 +167,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if(is_numeric($memIdx) == true){
-                $data = $this->managememberModel->getMember($memIdx);
+                $data = $this->manageMemberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -215,7 +215,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->managememberModel->getMember($memIdx);
+                $data = $this->manageMemberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -262,12 +262,12 @@ class Manage extends \app\controllers\BaseController
         ];
 
         // 갯수 구해오기
-        $count = $this->managememberModel->loginlogList(true, $arr_condition,
+        $count = $this->manageMemberModel->loginlogList(true, $arr_condition,
             $this->_reqP('length'), $this->_reqP('start'), $orderby);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
-            $list = $this->managememberModel->loginlogList(false, $arr_condition,
+            $list = $this->manageMemberModel->loginlogList(false, $arr_condition,
                 $this->_reqP('length'), $this->_reqP('start'), $orderby);
         }
 
@@ -300,7 +300,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->managememberModel->getMember($memIdx);
+                $data = $this->manageMemberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -358,12 +358,12 @@ class Manage extends \app\controllers\BaseController
         ];
 
         // 갯수 구해오기
-        $count = $this->managememberModel->infologList(true, $arr_condition,
+        $count = $this->manageMemberModel->infologList(true, $arr_condition,
             $this->_reqP('length'), $this->_reqP('start'), $orderby);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
-            $list = $this->managememberModel->infologList(false, $arr_condition,
+            $list = $this->manageMemberModel->infologList(false, $arr_condition,
                 $this->_reqP('length'), $this->_reqP('start'), $orderby);
         }
 
@@ -387,7 +387,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->managememberModel->getMember($memIdx);
+                $data = $this->manageMemberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -426,12 +426,12 @@ class Manage extends \app\controllers\BaseController
         ];
 
         // 갯수 구해오기
-        $count = $this->managememberModel->deviceList(true, $arr_condition,
+        $count = $this->manageMemberModel->deviceList(true, $arr_condition,
             $this->_reqP('length'), $this->_reqP('start'), $orderby);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
-            $list = $this->managememberModel->deviceList(false, $arr_condition,
+            $list = $this->manageMemberModel->deviceList(false, $arr_condition,
                 $this->_reqP('length'), $this->_reqP('start'), $orderby);
         }
 
@@ -459,7 +459,7 @@ class Manage extends \app\controllers\BaseController
             'MdIdx' => element('MdIdx', $input)
         ];
 
-        $result = $this->managememberModel->deleteDevice($input);
+        $result = $this->manageMemberModel->deleteDevice($input);
 
         $this->json_result($result, '처리되었습니다.', $result);
     }
@@ -478,7 +478,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->managememberModel->getMember($memIdx);
+                $data = $this->manageMemberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }
@@ -504,12 +504,12 @@ class Manage extends \app\controllers\BaseController
         ];
 
         // 갯수 구해오기
-        $count = $this->managememberModel->infologList(true, $arr_condition,
+        $count = $this->manageMemberModel->infologList(true, $arr_condition,
             $this->_reqP('length'), $this->_reqP('start'), $orderby);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
-            $cdata = $this->managememberModel->infologList(false, $arr_condition,
+            $cdata = $this->manageMemberModel->infologList(false, $arr_condition,
                 $this->_reqP('length'), $this->_reqP('start'), $orderby);
         }
 
@@ -535,7 +535,7 @@ class Manage extends \app\controllers\BaseController
             return;
         }
 
-        $data = $this->managememberModel->getMember(element('memIdx', $input));
+        $data = $this->manageMemberModel->getMember(element('memIdx', $input));
 
         if(empty($data) == true){
             $this->json_result(false, '', [
@@ -552,7 +552,7 @@ class Manage extends \app\controllers\BaseController
             'UpdData' => $data['MemName'].' ▶ '.element('chg_name', $input)
         ];
 
-        $result = $this->managememberModel->chgName($input);
+        $result = $this->manageMemberModel->chgName($input);
 
         $this->json_result($result, '처리되었습니다.', $result);
     }
@@ -570,7 +570,7 @@ class Manage extends \app\controllers\BaseController
             $memIdx = $params[0]; //회원번호
 
             if (is_numeric($memIdx) == true) {
-                $data = $this->managememberModel->getMember($memIdx);
+                $data = $this->manageMemberModel->getMember($memIdx);
             } else {
                 show_error('파라미터가 정확하기 않습니다.');
             }

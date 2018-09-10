@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/managemember');
+    protected $models = array('member/ManageMember');
     protected $helpers = array();
 
     public function __construct()

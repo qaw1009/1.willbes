@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once APPPATH . 'controllers/willbes/share/member/basemember.php';
+require_once APPPATH . 'controllers/willbes/share/member/BaseMember.php';
 
 class MailAuth extends BaseMember
 {

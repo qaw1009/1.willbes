@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class LectureFree extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/on/lecturefree');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/on/lectureFree');
     protected $helpers = array('download');
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615005'; //무료강좌
@@ -27,7 +27,7 @@ Class LectureFree extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-        $this->load->view('product/on/lecturefree/index',[
+        $this->load->view('product/on/lectureFree/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
@@ -100,10 +100,10 @@ Class LectureFree extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->lecturefreeModel->listLecture(true, $arr_condition);
+        $count = $this->lectureFreeModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->lecturefreeModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->lectureFreeModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -143,19 +143,19 @@ Class LectureFree extends \app\controllers\BaseController
             $method='PUT';
             $prodcode = $params[0];
 
-            $data = $this->lecturefreeModel->_findProductForModify($prodcode);
-            $data_sample = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_lecture_sample');
-            $data_division = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_division');
-            $data_memo = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_memo');
-            $data_content = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_content');
-            $data_sms = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_sms');
+            $data = $this->lectureFreeModel->_findProductForModify($prodcode);
+            $data_sample = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_lecture_sample');
+            $data_division = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_division');
+            $data_memo = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_memo');
+            $data_content = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_content');
+            $data_sms = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_sms');
 
-            $data_book = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
+            $data_book = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_product_r_product','636003');
 
-            $data_sublecture = $this->lecturefreeModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
+            $data_sublecture = $this->lectureFreeModel->_findProductEtcModify($prodcode,'lms_Product_R_SubLecture');
         }
 
-        $this->load->view('product/on/lecturefree/create',[
+        $this->load->view('product/on/lectureFree/create',[
             'method'=>$method
             ,'prodtypeccd' => $this->prodtypeccd
             ,'learnpatternccd' => $this->learnpatternccd
@@ -232,7 +232,7 @@ Class LectureFree extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lecturefreeModel->{$method.'Product'}($this->_reqP(null));
+        $result = $this->lectureFreeModel->{$method.'Product'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
@@ -253,7 +253,7 @@ Class LectureFree extends \app\controllers\BaseController
 
         $prodcode = $this->_reqP('prodCode');
 
-        $result = $this->lecturefreeModel->_prodCopy($prodcode);
+        $result = $this->lectureFreeModel->_prodCopy($prodcode);
         //var_dump($result);exit;
         $this->json_result($result,'저장 되었습니다.',$result);
     }
@@ -272,7 +272,7 @@ Class LectureFree extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->lecturefreeModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
+        $result = $this->lectureFreeModel->_modifyLectureByColumn(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

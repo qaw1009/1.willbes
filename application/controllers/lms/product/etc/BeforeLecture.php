@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class BeforeLecture extends \app\controllers\BaseController
 {
-    protected $models = array( 'sys/wCode','sys/site','sys/code','product/on/lecture','product/off/offlecture','product/etc/beforelecture');
+    protected $models = array( 'sys/wCode','sys/site','sys/code','product/on/lecture','product/off/offLecture','product/etc/beforeLecture');
 
 
     public function __construct()
@@ -13,7 +13,7 @@ Class BeforeLecture extends \app\controllers\BaseController
 
     public function index()
     {
-        $this->load->view('product/etc/beforelecture/index');
+        $this->load->view('product/etc/beforeLecture/index');
     }
 
     /**
@@ -57,10 +57,10 @@ Class BeforeLecture extends \app\controllers\BaseController
         //var_dump($arr_condition);
 
         $list = [];
-        $count = $this->beforelectureModel->listLecture(true, $arr_condition);
+        $count = $this->beforeLectureModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->beforelectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.BlIdx' => 'desc']);
+            $list = $this->beforeLectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.BlIdx' => 'desc']);
         }
 
         return $this->response([
@@ -87,14 +87,14 @@ Class BeforeLecture extends \app\controllers\BaseController
         if(empty($params[0]) === false) {
             $method='PUT';
             $blidx = $params[0];
-            $data = $this->beforelectureModel->_findBeforeLectureForModify($blidx);
-            $data_sale_ess =$this->beforelectureModel->_findBeforeLectureSaleForModify($blidx,'E');
-            $data_sale_cho =$this->beforelectureModel->_findBeforeLectureSaleForModify($blidx,'C');
-            $data_product =$this->beforelectureModel->_findBeforeLectureProductForModify($blidx);
+            $data = $this->beforeLectureModel->_findBeforeLectureForModify($blidx);
+            $data_sale_ess =$this->beforeLectureModel->_findBeforeLectureSaleForModify($blidx,'E');
+            $data_sale_cho =$this->beforeLectureModel->_findBeforeLectureSaleForModify($blidx,'C');
+            $data_product =$this->beforeLectureModel->_findBeforeLectureProductForModify($blidx);
 
         }
 
-        $this->load->view('product/etc/beforelecture/create',[
+        $this->load->view('product/etc/beforeLecture/create',[
             'method'=>$method
             ,'BlIdx' => $blidx
             ,'data'=>$data
@@ -138,7 +138,7 @@ Class BeforeLecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->beforelectureModel->{$method.'BeforeLecture'}($this->_reqP(null));
+        $result = $this->beforeLectureModel->{$method.'BeforeLecture'}($this->_reqP(null));
         //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }

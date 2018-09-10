@@ -832,11 +832,11 @@
                 getEditorBodyContent($editor_2);
                 getEditorBodyContent($editor_3);
 
-                var _url = '{{ site_url('/product/on/lecturefree/store') }}';
+                var _url = '{{ site_url('/product/on/lectureFree/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/on/lecturefree/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/on/lectureFree/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -858,7 +858,7 @@
 
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/on/lecturefree/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/on/lectureFree/') }}' + getQueryString());
             });
         });
 

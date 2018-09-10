@@ -40,7 +40,7 @@ class SearchLectureBlend extends \app\controllers\BaseController
         if($this->_reqP('locationid') === 'tar') {      //대상강좌일경우 ... 선수강으로 설정 된 놈만
             $arr_condition = array_merge_recursive($arr_condition,[
                 'EQ' => [
-                    'B.LecSaleType' => 'F',
+                    'B.LecSaleType' => 'B',
                 ],
             ]);
         }
@@ -58,7 +58,7 @@ class SearchLectureBlend extends \app\controllers\BaseController
         if($LearnPatternCcd === '615001') {
             $modelname = "lectureModel";
         } elseif($LearnPatternCcd === '615005') {
-            $modelname = "lecturefreeModel";
+            $modelname = "lectureFreeModel";
         } elseif($LearnPatternCcd === '615006') {
             $modelname = "offLectureModel";
         }

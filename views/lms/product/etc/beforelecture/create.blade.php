@@ -329,11 +329,11 @@
             // ajax submit
             $regi_form.submit(function() {
 
-                var _url = '{{ site_url('/product/etc/beforelecture/store') }}';
+                var _url = '{{ site_url('/product/etc/beforeLecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/product/etc/beforelecture/') }}' + getQueryString());
+                        location.replace('{{ site_url('/product/etc/beforeLecture/') }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
@@ -352,7 +352,7 @@
 
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/product/etc/beforelecture/') }}' + getQueryString());
+                location.replace('{{ site_url('/product/etc/beforeLecture/') }}' + getQueryString());
             });
 
 

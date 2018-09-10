@@ -52,7 +52,7 @@ class SearchLectureAll extends \app\controllers\BaseController
         if($this->_reqP('locationid') === 'tar') {      //대상강좌일경우 ... 선수강으로 설정 된 놈만
             $arr_condition = array_merge_recursive($arr_condition,[
                 'EQ' => [
-                    'B.LecSaleType' => 'F',
+                    'B.LecSaleType' => 'B',
                 ],
             ]);
         }

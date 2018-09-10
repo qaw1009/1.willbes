@@ -169,13 +169,13 @@
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 무료강좌복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 무료강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
-                            location.href = '{{ site_url('product/on/lecturefree/create') }}';
+                            location.href = '{{ site_url('product/on/lectureFree/create') }}';
                         }
                     }
                 ],
 
                 ajax: {
-                    'url' : '{{ site_url('/product/on/lecturefree/listAjax') }}'
+                    'url' : '{{ site_url('/product/on/lectureFree/listAjax') }}'
                     ,'type' : 'post'
                     ,'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -243,7 +243,7 @@
                     'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
                 };
 
-                sendAjax('{{ site_url('/product/on/lecturefree/copy') }}', data, function(ret) {
+                sendAjax('{{ site_url('/product/on/lectureFree/copy') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
@@ -285,7 +285,7 @@
                     'params' : JSON.stringify($params)
                 };
 
-                sendAjax('{{ site_url('/product/on/lecturefree/redata') }}', data, function(ret) {
+                sendAjax('{{ site_url('/product/on/lectureFree/redata') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
@@ -295,7 +295,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/product/on/lecturefree/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.replace('{{ site_url('/product/on/lectureFree/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
 
         });

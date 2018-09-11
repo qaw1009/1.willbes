@@ -157,8 +157,9 @@ abstract class FrontController extends BaseController
                 if (empty($menu_path) === false && strpos(current_url(), $menu_parse_url['host']) !== false && starts_with($menu_path, $check_menu_prefix) === true) {
                     // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
                     $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
-
-                    if (strpos($check_menu_postfix, '/') === false || strpos($uri_string, $check_menu_postfix) !== false) {
+                    
+                    // controller 만으로 체크 가능 || controller + 후위 uri string 으로 체크
+                    if (substr_count($menu_path, '/') == substr_count($check_menu_prefix, '/') || strpos($uri_string, $check_menu_postfix) !== false) {
                         $_active_route_idx = $menu_route_idx;
                         break;
                     }

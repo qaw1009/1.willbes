@@ -361,7 +361,7 @@
                                         <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
                                         <td class="w-lec">헌법</td>
                                         <td class="w-name">정채영</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star5.gif') }}"></td>
+                                        <td class="w-star star1"></td>
                                         <td class="w-list tx-left pl20">
                                             좋은강의입니다.
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -381,7 +381,7 @@
                                         <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
                                         <td class="w-lec">공직선거법</td>
                                         <td class="w-name">한덕현</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></td>
+                                        <td class="w-star star5"></td>
                                         <td class="w-list tx-left pl20">
                                             쉽게 설명해주시네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -400,7 +400,7 @@
                                         <td class="w-no">8</td>
                                         <td class="w-lec">스파르타반</td>
                                         <td class="w-name">김쌤</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></td>
+                                        <td class="w-star star4"></td>
                                         <td class="w-list tx-left pl20">
                                             좋네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -419,7 +419,7 @@
                                         <td class="w-no">7</td>
                                         <td class="w-lec">행정법</td>
                                         <td class="w-name">최진우</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star2.gif') }}"></td>
+                                        <td class="w-star star2"></td>
                                         <td class="w-list tx-left pl20">
                                             저랑 잘 맞는 강의입니다.
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -438,7 +438,7 @@
                                         <td class="w-no">6</td>
                                         <td class="w-lec">공통</td>
                                         <td class="w-name">윤세훈</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star2.gif') }}"></td>
+                                        <td class="w-star star2"></td>
                                         <td class="w-list tx-left pl20">
                                             좋네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -457,7 +457,7 @@
                                         <td class="w-no">5</td>
                                         <td class="w-lec">헌법</td>
                                         <td class="w-name">정채영</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star2.gif') }}"></td>
+                                        <td class="w-star star2"></td>
                                         <td class="w-list tx-left pl20">
                                             좋은강의입니다.
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -476,7 +476,7 @@
                                         <td class="w-no">4</td>
                                         <td class="w-lec">공직선거법</td>
                                         <td class="w-name">한덕현</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star3.gif') }}"></td>
+                                        <td class="w-star star3"></td>
                                         <td class="w-list tx-left pl20">
                                             쉽게 설명해주시네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -495,7 +495,7 @@
                                         <td class="w-no">3</td>
                                         <td class="w-lec">스파르타반</td>
                                         <td class="w-name">김쌤</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></td>
+                                        <td class="w-star star4"></td>
                                         <td class="w-list tx-left pl20">
                                             좋네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -514,7 +514,7 @@
                                         <td class="w-no">2</td>
                                         <td class="w-lec">행정법</td>
                                         <td class="w-name">최진우</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star3.gif') }}"></td>
+                                        <td class="w-star star3"></td>
                                         <td class="w-list tx-left pl20">
                                             좋네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
@@ -533,7 +533,7 @@
                                         <td class="w-no">1</td>
                                         <td class="w-lec">공통</td>
                                         <td class="w-name">윤세훈</td>
-                                        <td class="w-star"><img src="{{ img_url('sub/star1.gif') }}"></td>
+                                        <td class="w-star star1"></td>
                                         <td class="w-list tx-left pl20">
                                             좋네요
                                             <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>

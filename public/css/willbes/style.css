@@ -3180,6 +3180,7 @@ table.classTable tr td.w-data {
 .willbes-LecreplyList dl dt {
     display: inline-block;
 }
+
 .w-reply-teaser {
     width: 940px;
     border-bottom: 1px solid #edeeef;
@@ -4520,6 +4521,21 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-size: 11px;
     color: #959595;
     line-height: 15px;
+}
+.LeclistTable .replyTable tr td.w-star.star1 {
+    background: url("../../img/willbes/sub/star1.gif") no-repeat center center;
+}
+.LeclistTable .replyTable tr td.w-star.star2 {
+    background: url("../../img/willbes/sub/star2.gif") no-repeat center center;
+}
+.LeclistTable .replyTable tr td.w-star.star3 {
+    background: url("../../img/willbes/sub/star3.gif") no-repeat center center;
+}
+.LeclistTable .replyTable tr td.w-star.star4 {
+    background: url("../../img/willbes/sub/star4.gif") no-repeat center center;
+}
+.LeclistTable .replyTable tr td.w-star.star5 {
+    background: url("../../img/willbes/sub/star5.gif") no-repeat center center;
 }
 .LeclistTable .w-replyList {
     cursor: pointer;

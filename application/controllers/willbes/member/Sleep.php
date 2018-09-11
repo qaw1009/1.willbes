@@ -5,12 +5,12 @@ require_once APPPATH . 'controllers/willbes/share/member/BaseMember.php';
 
 class Sleep extends BaseMember
 {
+    protected $auth_controller = false;
+
     public function __construct()
     {
         parent::__construct();
     }
-
-
 
     /**
      * 휴면회원처리 폼

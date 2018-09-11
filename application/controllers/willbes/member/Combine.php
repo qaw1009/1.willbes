@@ -5,6 +5,8 @@ require_once APPPATH . 'controllers/willbes/share/member/BaseMember.php';
 
 class Combine extends BaseMember
 {
+    protected $auth_controller = false;
+
     public function __construct()
     {
         parent::__construct();

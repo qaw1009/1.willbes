@@ -12,8 +12,7 @@
                 <div class="willbes-Mypage-USERINFOZONE c_both">
                     <div class="willbes-Prof-Subject willbes-Mypage-Tit NG tx-center">비밀번호확인</div>
                 </div>
-
-                <form method="post" action="/member/change/password/" onsubmit="return chkSubmit();">
+                <form method="post" action="/member/change/index/password/" onsubmit="return chkSubmit();">
                     {!! csrf_field() !!}
                     <div class="Member mem-renew-Password widthAuto530 pt15">
                         <div class="user-Txt tx-black pb40">
@@ -166,7 +165,7 @@
 
                         $('#btn_submit').click(function(){
                             if($pwd_form.valid() == true){
-                                $pwd_form.attr("action", "/member/change/password/");
+                                $pwd_form.attr("action", "/member/change/index/password/");
                                 $pwd_form.submit();
                             }
                         });

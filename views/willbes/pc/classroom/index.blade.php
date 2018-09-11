@@ -19,28 +19,28 @@
                                 <li>
                                     <div class="Tit bg-blue NGEB">온라인강좌<br/><span class="tx-light-gray NG">현황</span></div>
                                     <dl>
-                                        <dt>무한PASS<br/><span class="tx-blue">10</span>개</dt>
-                                        <dt>수강중<br/><span class="tx-blue">5</span>개</dt>
-                                        <dt>수강대기<br/><span class="tx-blue">10</span>개</dt>
+                                        <dt>무한PASS<br/><a class="tx-blue" href="#none">10</a>개</dt>
+                                        <dt>수강중<br/><a class="tx-blue" href="#none">5</a>개</dt>
+                                        <dt>수강대기<br/><a class="tx-blue" href="#none">10</a>개</dt>
                                     </dl>
                                 </li>
                                 <li class="sm">
                                     <div class="Tit bg-blue NGEB">학원강좌<br/><span class="tx-light-gray NG">현황</span></div>
                                     <dl>
-                                        <dt>수강신청<br/><span class="tx-blue">5</span>개</dt>
+                                        <dt>수강신청<br/><a class="tx-blue" href="#none">5</a>개</dt>
                                     </dl>
                                 </li>
                                 <li>
                                     <div class="Tit bg-heavy-gray NGEB">포인트<br/><span class="tx-light-gray NG">현황</span></div>
-                                    <dl>
-                                        <dt>강좌<br/><span class="tx-blue">410,000</span>P</dt>
-                                        <dt>교재<br/><span class="tx-blue">130,000</span>P</dt>
+                                    <dl class="point">
+                                        <dt>강좌<br/><a class="tx-blue" href="#none">410,000</a>P</dt>
+                                        <dt>교재<br/><a class="tx-blue" href="#none">130,000</a>P</dt>
                                     </dl>
                                 </li>
                                 <li class="sm">
                                     <div class="Tit bg-heavy-gray NGEB">쿠폰<br/><span class="tx-light-gray NG">현황</span></div>
                                     <dl>
-                                        <dt>쿠폰<br/><span class="tx-blue">5</span>장</dt>
+                                        <dt>쿠폰<br/><a class="tx-blue" href="#none">5</a>장</dt>
                                     </dl>
                                 </li>
                             </ul>
@@ -70,9 +70,9 @@
                     </div>
                 </div>
                 <!-- ActIndex2 -->
-                <div class="ActIndex2 mt60">
+                <div class="ActIndex2 mt35">
                     <div class="willbes-listTable widthAuto940 f_inherit">
-                        <div class="will-Tit NG">최근 수강강좌<span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다</span></div>
+                        <div class="will-Tit NG">최근 수강강좌<span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다.</span></div>
                         <div class="willbes-Lec-Table NG d_block">
                             <table cellspacing="0" cellpadding="0" class="lecTable">
                                 <colgroup>
@@ -82,7 +82,7 @@
                                 </colgroup>
                                 <tbody>
                                 <tr>
-                                    <td class="w-list"><img src="{{ img_url('mypage/icon_name1.png') }}"></td>
+                                    <td class="w-list NGEB"><a href="#none">무한<br/>PASS<br/>+</a></td>
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">77%</span>
                                     </td>
@@ -108,7 +108,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-list"><img src="{{ img_url('mypage/icon_name2.png') }}"></td>
+                                    <td class="w-list NGEB"><a href="#none">패키지<br/>+</a></td>
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">5%</span>
                                     </td>
@@ -134,7 +134,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-list"><img src="{{ img_url('mypage/icon_name3.png') }}"></td>
+                                    <td class="w-list NGEB"><a href="#none">단강좌<br/>+</a></td>
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">9%</span>
                                     </td>
@@ -167,8 +167,8 @@
                     </div>
                 </div>
                 <!-- ActIndex3 -->
-                <div class="ActIndex3 mt60">
-                    <div class="willbes-listTable willbes-info willbes-info300 widthAuto445 f_left">
+                <div class="ActIndex3 mt35">
+                    <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
                         <div class="will-Tit NG">나의 상담내역 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM tx-gray">
                             <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
@@ -177,7 +177,7 @@
                             <li>등록된 상담 내용이 없습니다.</li>
                         </ul>
                     </div>
-                    <div class="willbes-listTable willbes-info willbes-info300 widthAuto445 f_left ml50">
+                    <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left ml50">
                         <div class="will-Tit NG">나의 학습Q&A <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM tx-gray">
                             <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
@@ -188,8 +188,8 @@
                     </div>
                 </div>
                 <!-- ActIndex4 -->
-                <div class="ActIndex4 mt60">
-                    <div class="willbes-listTable willbes-info willbes-info870 widthAuto940 f_left">
+                <div class="ActIndex4 mt35">
+                    <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
                         <div class="will-Tit NG">공지사항 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM tx-gray">
                             <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
@@ -201,6 +201,8 @@
                 </div>
             </div>
             <!-- Mypage_PASS_Index -->
+
+
             <script src="/public/js/willbes/player.js"></script>
             <a href="#none" onclick='fnPlayerProf("50004", "OT");'>OT</a><br>
             <a href="#none" onclick='fnPlayerProf("50004", "WS");'>샘플</a><br>
@@ -213,6 +215,8 @@
             <a href="#none" onclick='fnPlayerSample("200006", "1111344", "WD");'>WD강의 샘플</a><br>
             <br>
             <a href="#none" onclick='fnPlayer("200006", "1111344", "WD");'>강의보기</a><br>
+
+
         </div>
         <div class="Quick-Bnr ml20">
             <img src="{{ img_url('sample/banner_180605.jpg') }}">

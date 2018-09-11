@@ -14,23 +14,47 @@ class Off extends \app\controllers\FrontController
     }
 
     /**
-     * 학원강의 신청목록
+     * 학원강의 리스트 분기
      * @param array $params
      */
     public function list($params = [])
     {
         if(empty($params[0]) === true){
-            $listType = 'ongoing';
-        } else {
-            $listType = strtolower($params[0]);
+            redirect('/classroom/off/list/ongoing/');
         }
 
-        if($listType != 'ongoing' && $listType != 'end'){
-            $listType = 'ongoing';
+        switch($params[0]) {
+            case 'ongoing':
+                $this->ongoing();
+                break;
+
+            case 'end':
+                $this->end();
+                break;
+
+            default:
+                redirect('/classroom/off/list/ongoing/');
+                break;
         }
+    }
 
+    /**
+     *  수강중인 강의
+     */
+    public function ongoing()
+    {
+        $this->load->view('/classroom/off_ongoing', [
+            'data' => [],
+            'list' => []
+        ]);
+    }
 
-        $this->load->view('/classroom/off_'.$listType, [
+    /**
+     *  수강종료강의
+     */
+    public function end()
+    {
+        $this->load->view('/classroom/off_end', [
             'data' => [],
             'list' => []
         ]);

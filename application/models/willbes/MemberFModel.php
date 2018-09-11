@@ -534,6 +534,7 @@ class MemberFModel extends WB_Model
                 'IsChange' => 'Y'
             ];
 
+            // lms_member 저장
             if($this->_conn->set($data)->
                 set('ChangeDatm', 'NOW()', false)->
                 set('PhoneEnc',"fn_enc('".element('Phone', $input)."')",false)->
@@ -563,6 +564,7 @@ class MemberFModel extends WB_Model
                 'TrustStatus' => $TrustStatus
             ];
 
+            // lms_member_otherinfo 저장
             if($this->_conn->set($data)->
                 set('TrustStatusDatm', 'NOW()', false)->
                 set('Addr2Enc',"fn_enc('".element('Addr2', $input)."')",false)->

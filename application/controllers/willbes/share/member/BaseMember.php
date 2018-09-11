@@ -6,7 +6,7 @@ class BaseMember extends \app\controllers\FrontController
     protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('Password', 'Change', 'ChangeProc', 'ChangePhone', 'ChangePhoneSms');
+    protected $auth_methods = array();
 
     protected $_urlFromMailAuthCcd = [
         '662001' => '/member/join',

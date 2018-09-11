@@ -14,31 +14,93 @@ class On extends \app\controllers\FrontController
     }
 
     /**
-     * 단강좌 리스트페이지
+     *  강좌리스트 분기
      */
     public function list($params = [])
     {
-        if(empty($params) === true){
-            $listType = "ongoing";
-        } else {
-            $listType = $params[0];
+        if(empty($params[0]) === true){
+            redirect('/classroom/on/list/ongoing/');
         }
 
-        if($listType != 'standby' && $listType != 'ongoing' && $listType != 'pause' && $listType != 'end'){
-            $listType = "ongoing";
-        }
+        switch($params[0]) {
+            case 'standby':
+                $this->standby();
+                break;
 
-        $this->load->view('/classroom/on_'.$listType, [
+            case 'ongoing':
+                $this->ongoing();
+                break;
+
+            case 'pause':
+                $this->pause();
+                break;
+
+            case 'end':
+                $this->end();
+                break;
+
+            default:
+                redirect('/classroom/on/list/ongoing/');
+                break;
+        }
+    }
+
+    /**
+     *  수강대기강의
+     */
+    public function standby()
+    {
+        $this->load->view('/classroom/on_standby', [
             'data' => [],
             'lecList' => [],
             'pkgList' => [],
             'freeList' => [],
             'adminList' => []
-            ]);
+        ]);
+    }
+    
+    /**
+     *  수강중인강의
+     */
+    public function ongoing()
+    {
+        $this->load->view('/classroom/on_ongoing', [
+            'data' => [],
+            'lecList' => [],
+            'pkgList' => [],
+            'freeList' => [],
+            'adminList' => []
+        ]);
     }
 
+    /**
+     *  일시중지강의
+     */
+    public function pause()
+    {
+        $this->load->view('/classroom/on_pause', [
+            'data' => [],
+            'lecList' => [],
+            'pkgList' => [],
+            'freeList' => [],
+            'adminList' => []
+        ]);
+    }
 
-    
+    /**
+     *  수강종료 강의
+     */
+    public function end()
+    {
+        $this->load->view('/classroom/on_end', [
+            'data' => [],
+            'lecList' => [],
+            'pkgList' => [],
+            'freeList' => [],
+            'adminList' => []
+        ]);
+    }
+
     /**
      * 실세 강의 상세페이지
      * @param array $params

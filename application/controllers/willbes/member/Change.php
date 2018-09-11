@@ -5,18 +5,39 @@ require_once APPPATH . 'controllers/willbes/share/member/BaseMember.php';
 
 class Change extends BaseMember
 {
+    protected $auth_controller = true;
+
     public function __construct()
     {
         parent::__construct();
     }
 
     /**
+     * @param array $params
+     * @return object|string
+     */
+    public function index($params = [])
+    {
+        if(empty($params[0]) === true){
+            redirect('/member/change/index/info/');
+        }
+
+        if($params[0] == 'info'){
+            return $this->info();
+        } else if($params[0] == 'password'){
+            return $this->password();
+        } else {
+            redirect('/member/change/index/info/');
+        }
+    }
+
+    /**
      * 회원정보 변경 페이지
      * @return object|string
      */
-    public function index()
+    public function info()
     {
-        $Password = $this->_req('Password');
+        $Password = $this->_req('password');
         $MemIdx = $this->session->userdata('mem_idx');
 
         if(empty($Password) === true){
@@ -24,7 +45,7 @@ class Change extends BaseMember
         }
 
         if($this->memberFModel->checkMemberPassword($MemIdx, $Password) === false){
-            show_alert('비밀번호가 일치하지 않습니다.', '/member/change/', false);
+            show_alert('비밀번호가 일치하지 않습니다.', '/member/change/index/info/', false);
         }
 
         $codes = $this->codeModel->getCcdInArray(['661']);
@@ -41,6 +62,52 @@ class Change extends BaseMember
     }
 
     /**
+     * 비밀번호 변경 페이지
+     * @return object|string
+     */
+    public function password()
+    {
+        $oldPassword = $this->_req('oldPass');
+        $newPassword = $this->_req('newPass');
+        $newPasswordchk = $this->_req('newPasschk');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($oldPassword) === false && empty($newPassword) === true){
+            // 새로운 비밀번호 입력
+            if($this->memberFModel->checkMemberPassword($MemIdx, $oldPassword) === false){
+                show_alert('비밀번호가 일치하지 않습니다.', '/member/change/index/password/', false);
+            }
+
+            $this->load->library('encrypt');
+
+            return $this->load->view('member/change/password', [
+                'method' => 'change',
+                'password' => $this->encrypt->encode($oldPassword)
+            ]);
+
+        } else if(empty($oldPassword) === false && empty($newPassword) === false){
+            $this->load->library('encrypt');
+            $oldPassword = $this->encrypt->decode($oldPassword);
+
+            // 비밀번호 변경 프로세스
+            if($this->memberFModel->checkMemberPassword($MemIdx, $oldPassword) === false){
+                show_alert('비밀번호가 일치하지 않습니다.', '/member/change/index/password/', false);
+            }
+
+            if($this->memberFModel->setMemberPassword(['MemIdx' => $MemIdx, 'MemPassword' => $newPassword, 'UpdTypeCcd' => '656001']) === false){
+                show_alert('비밀번호 변경이 실패했습니다. 다시 시도해주십시요.', '/member/change/index/password/', false);
+            } else {
+                show_alert('비밀번호 변경이 완료되었습니다.', '/classroom/', false);
+            }
+        }
+
+        return $this->load->view('member/change/password', [
+            'method' => 'check',
+            'password' => ''
+        ]);
+    }
+
+    /**
      * 회원정보변경 처리
      */
     public function proc()
@@ -49,13 +116,13 @@ class Change extends BaseMember
         $MemIdx = $this->session->userdata('mem_idx');
 
         if(empty($Password) === true){
-            show_alert('비밀번호를 다시 한번 입력해야 정보변경이 가능합니다.', '/member/change/', false);
+            show_alert('비밀번호를 다시 한번 입력해야 정보변경이 가능합니다.', '/member/change/index/info/', false);
         }
 
         $this->load->library('encrypt');
         $Password = $this->encrypt->decode($Password);
         if($this->memberFModel->checkMemberPassword($MemIdx, $Password) === false){
-            show_alert('비밀번호가 일치하지 않습니다.', '/member/change/', false);
+            show_alert('비밀번호가 일치하지 않습니다.', '/member/change/index/info/', false);
         }
 
         $data = [
@@ -69,12 +136,16 @@ class Change extends BaseMember
         ];
 
         if($this->memberFModel->setMember($MemIdx, $data) == false){
-            show_alert('회원정보가 변경에 실패했습니다..', '/member/change/', false);
+            show_alert('회원정보가 변경에 실패했습니다..', '/member/change/index/info/', false);
         }
 
-        show_alert('회원정보가 변경되었습니다.', '/Classroom/', false);
+        show_alert('회원정보가 변경되었습니다.', '/classroom/', false);
     }
 
+    /**
+     * 회원정보 핸드폰번호 변경
+     * @return CI_Output
+     */
     public function phone()
     {
         $enc_data = $this->_req('enc_data');
@@ -168,52 +239,6 @@ class Change extends BaseMember
         $result = $this->memberFModel->updateMailAuth($certKey);
 
         show_alert('메일주소변경이 처리되었습니다.', '/', false);
-    }
-
-    /**
-     * 비밀번호 변경 페이지
-     * @return object|string
-     */
-    public function password()
-    {
-        $oldPassword = $this->_req('oldPass');
-        $newPassword = $this->_req('newPass');
-        $newPasswordchk = $this->_req('newPasschk');
-        $MemIdx = $this->session->userdata('mem_idx');
-
-        if(empty($oldPassword) === false && empty($newPassword) === true){
-            // 새로운 비밀번호 입력
-            if($this->memberFModel->checkMemberPassword($MemIdx, $oldPassword) === false){
-                show_alert('비밀번호가 일치하지 않습니다.', '/member/password/', false);
-            }
-
-            $this->load->library('encrypt');
-
-            return $this->load->view('member/change/password', [
-                'method' => 'change',
-                'password' => $this->encrypt->encode($oldPassword)
-            ]);
-
-        } else if(empty($oldPassword) === false && empty($newPassword) === false){
-            $this->load->library('encrypt');
-            $oldPassword = $this->encrypt->decode($oldPassword);
-
-            // 비밀번호 변경 프로세스
-            if($this->memberFModel->checkMemberPassword($MemIdx, $oldPassword) === false){
-                show_alert('비밀번호가 일치하지 않습니다.', '/member/password/', false);
-            }
-
-            if($this->memberFModel->setMemberPassword(['MemIdx' => $MemIdx, 'MemPassword' => $newPassword, 'UpdTypeCcd' => '656001']) === false){
-                show_alert('비밀번호 변경이 실패했습니다. 다시 시도해주십시요.', '/member/password/', false);
-            } else {
-                show_alert('비밀번호 변경이 완료되었습니다.', '/classroom/', false);
-            }
-        }
-
-        return $this->load->view('member/change/password', [
-            'method' => 'check',
-            'password' => ''
-        ]);
     }
 
     /**

@@ -224,9 +224,11 @@
                         <div class="item inline-block">
                             <p>
                             <input type="radio" name="IsPackMultipleType" required="required" class="flat" value="S" @if($method == 'POST' || $data['IsPackMultipleType']=='S')checked="checked"@endif/> 단강좌 속성 기준
-                            &nbsp;&nbsp;
+                            <div style="display: none">
                             <input type="radio" name="IsPackMultipleType" required="required" class="flat" value="P" @if($data['IsPackMultipleType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            </div>
                             </p>
+
                             <select name="MultipleApply" id="MultipleApply" required="required" class="form-control" title="">
                                 @foreach($multiplelimit_ccd as $key => $val)
                                     <option value="{{$key}}" @if($data['MultipleApply'] == $key)selected="selected"@endif>{{$val}}</option>
@@ -282,12 +284,14 @@
                         <div class="radio">
                             <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="S" @if($method == 'POST' || $data['IsPackLecStartType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="P" @if($data['IsPackLecStartType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            <div style="display: none">
+                            <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="P" @if($data['IsPackLecStartType']=='P')checked="checked"@endif disabled/> 패키지 속성 기준
                             (
-                            <input type="radio" name="IsLecStart" class="flat" value="Y" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsLecStart" class="flat" value="Y" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif /> 가능
                             &nbsp;&nbsp;
                             <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($data['IsLecStart']=='N')checked="checked"@endif/> 불가능
                             )
+                            </div>
                             &nbsp;&nbsp;
                             [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">
                         </div>
@@ -301,7 +305,8 @@
                         <div class="item inline-block">
                             <input type="radio" name="IsPackPauseType" class="flat" value="S" @if($method == 'POST' || $data['IsPackPauseType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsPackPauseType" class="flat" value="P" @if($data['IsPackPauseType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            <div style="display: none">
+                            <input type="radio" name="IsPackPauseType" class="flat" value="P" @if($data['IsPackPauseType']=='P')checked="checked"@endif disabled/> 패키지 속성 기준
                             (
                             <input type="radio" name="IsPause" class="flat" value="Y"  title="일시정지설정" @if($data['IsPause']=='Y')checked="checked"@endif/> 가능
                             [
@@ -316,6 +321,7 @@
                             &nbsp;
                             <input type="radio" name="IsPause" class="flat" value="N" @if($data['IsPause']=='N')checked="checked"@endif/> 불가능
                             )
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -327,7 +333,8 @@
                         <div class="item inline-block">
                             <input type="radio" name="IsPackExtenType" class="flat" value="S" @if($method == 'POST' || $data['IsPackExtenType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsPackExtenType" class="flat" value="P" @if($data['IsPackExtenType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            <div style="display: none">
+                            <input type="radio" name="IsPackExtenType" class="flat" value="P" @if($data['IsPackExtenType']=='P')checked="checked"@endif disabled/> 패키지 속성 기준
                             (
                             <input type="radio" name="IsExten" class="flat" value="Y" title="수강연장신청" @if($data['IsExten']=='Y')checked="checked"@endif/> 가능
                             [
@@ -342,6 +349,7 @@
                             &nbsp;
                             <input type="radio" name="IsExten" class="flat" value="N" @if($data['IsExten']=='N')checked="checked"@endif/> 불가능
                             )
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -352,7 +360,8 @@
                     <div class="col-md-10 form-inline">
                         <input type="radio" name="IsPackRetakeType" class="flat" value="S" @if($method == 'POST' || $data['IsPackRetakeType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                         &nbsp;&nbsp;
-                        <input type="radio" name="IsPackRetakeType" class="flat" value="P" @if($data['IsPackRetakeType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                        <div style="display: none">
+                        <input type="radio" name="IsPackRetakeType" class="flat" value="P" @if($data['IsPackRetakeType']=='P')checked="checked"@endif disabled/> 패키지 속성 기준
                         (
                         <input type="radio" name="IsRetake" class="flat" value="Y" title="재수강신청" @if($data['IsRetake']=='Y')checked="checked"@endif/> 가능
                         &nbsp;&nbsp;
@@ -362,6 +371,7 @@
                         &nbsp;&nbsp;
                         <input type="radio" name="IsRetake" class="flat" value="N" @if($data['IsRetake']=='N')checked="checked"@endif/> 불가능
                         )
+                        </div>
                     </div>
                 </div>
 

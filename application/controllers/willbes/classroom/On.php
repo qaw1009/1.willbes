@@ -28,7 +28,7 @@ class On extends \app\controllers\FrontController
             $listType = "ongoing";
         }
 
-        $this->load->view('classroom/'.$listType, [
+        $this->load->view('/classroom/on_'.$listType, [
             'data' => [],
             'lecList' => [],
             'pkgList' => [],
@@ -53,7 +53,7 @@ class On extends \app\controllers\FrontController
             $subProdCode = $params[2];
         }
 
-        $this->load->view('classroom/view');
+        $this->load->view('/classroom/on_view');
     }
 
 }

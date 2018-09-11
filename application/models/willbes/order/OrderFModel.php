@@ -563,7 +563,9 @@ class OrderFModel extends BaseOrderFModel
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $user_coupon_idx = element('UserCouponIdx', $input, 0);
-            $prod_code_sub = element('ProdCodeSub', $input);    // 패키지의 서브상품코드
+            $cart_type = element('CartType', $input);   // 장바구니 타입
+            $prod_code = element('ProdCode', $input);   // 상품코드
+            $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
 
             // 실결제금액에서 사용포인트 차감
             $real_use_point = element('RealUsePoint', $input, 0);
@@ -572,7 +574,7 @@ class OrderFModel extends BaseOrderFModel
             $data = [
                 'OrderIdx' => $order_idx,
                 'MemIdx' => $sess_mem_idx,
-                'ProdCode' => element('ProdCode', $input),
+                'ProdCode' => $prod_code,
                 'SaleTypeCcd' => element('SaleTypeCcd', $input),
                 'PayStatusCcd' => $pay_status_ccd,
                 'OrderPrice' => element('RealSalePrice', $input),
@@ -597,18 +599,25 @@ class OrderFModel extends BaseOrderFModel
             $order_prod_idx = $this->_conn->insert_id();
 
             // 주문상품서브 등록
-            if (empty($prod_code_sub) === false) {
-                $arr_prod_code_sub = explode(',', $prod_code_sub);
-                foreach ($arr_prod_code_sub as $idx => $prod_code) {
+            if (empty($arr_prod_code_sub) === false) {
+                foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
                     $data = [
                         'OrderProdIdx' => $order_prod_idx,
-                        'ProdCodeSub' => $prod_code,
-                        'RealPayPrice' => array_get(element('UserPackPriceData', $input, []), 'SubRealSalePrice.' . $prod_code, 0)
+                        'ProdCodeSub' => $prod_code_sub,
+                        'RealPayPrice' => array_get(element('UserPackPriceData', $input, []), 'SubRealSalePrice.' . $prod_code_sub, 0)
                     ];
 
                     if ($this->_conn->set($data)->insert($this->_table['order_sub_product']) === false) {
                         throw new \Exception('주문상품서브 정보 등록에 실패했습니다.');
                     }
+                }
+            }
+
+            // 나의 강좌수정정보 데이터 등록
+            if ($cart_type == 'on_lecture') {
+                $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub);
+                if ($is_add_my_lecture !== true) {
+                    throw new \Exception($is_add_my_lecture);
                 }
             }
 
@@ -629,9 +638,91 @@ class OrderFModel extends BaseOrderFModel
             if (empty($user_coupon_idx) === false) {
                 $this->load->loadModels(['couponF']);   // 쿠폰 모델 로드
                 
-                $is_udpate = $this->couponFModel->modifyUseMemberCoupon($user_coupon_idx, $order_prod_idx);
-                if ($is_udpate !== true) {
-                    throw new \Exception($is_udpate);
+                $is_coupon_udpate = $this->couponFModel->modifyUseMemberCoupon($user_coupon_idx, $order_prod_idx);
+                if ($is_coupon_udpate !== true) {
+                    throw new \Exception($is_coupon_udpate);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 나의 강좌수정정보 데이터 등록
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code [상품코드]
+     * @param array $arr_prod_code_sub [상품코드서브]
+     * @return bool|string
+     */
+    public function addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub = [])
+    {
+        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
+
+        try {
+            $row = $this->productFModel->findProductLectureInfo($prod_code);
+            if (empty($row) === true) {
+                throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 기본 입력정보
+            $data = [
+                'OrderIdx' => $order_idx,
+                'OrderProdIdx' => $order_prod_idx,
+                'ProdCode' => $prod_code,
+                'LecStartDate' => $row['StudyStartDate'],
+                'LecEndDate' => $row['StudyEndDate'],
+                'RealLecEndDate' => $row['StudyEndDate'],
+                'LecStudyTime' => $row['MultipleAllLecSec'],
+                'RealLecStudyTime' => $row['MultipleAllLecSec'],
+                'LecExpireDay' => $row['StudyPeriod'],
+                'RealLecExpireDay' => $row['StudyPeriod']
+            ];
+
+            if (empty($arr_prod_code_sub) === true) {
+                // 단강좌
+                if ($row['LearnPatternCcd'] != $this->_learn_pattern_ccd['on_lecture']) {
+                    throw new \Exception('상품 학습형태 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+                }
+
+                if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code)->insert($this->_table['my_lecture']) === false) {
+                    throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
+                }
+            } else {
+                if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['user_package']) {
+                    // 사용자 패키지 (단강좌 속성 정보를 등록함)
+                    // 단강좌 정보 조회
+                    $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
+                    foreach ($prod_rows as $idx => $prod_row) {
+                        $data = [
+                            'OrderIdx' => $order_idx,
+                            'OrderProdIdx' => $order_prod_idx,
+                            'ProdCode' => $prod_code,
+                            'LecStartDate' => $prod_row['StudyStartDate'],
+                            'LecEndDate' => $prod_row['StudyEndDate'],
+                            'RealLecEndDate' => $prod_row['StudyEndDate'],
+                            'LecStudyTime' => $prod_row['MultipleAllLecSec'],
+                            'RealLecStudyTime' => $prod_row['MultipleAllLecSec'],
+                            'LecExpireDay' => $prod_row['StudyPeriod'],
+                            'RealLecExpireDay' => $prod_row['StudyPeriod']
+                        ];
+
+                        if ($this->_conn->set($data)->set('ProdCodeSub', $prod_row['ProdCode'])->insert($this->_table['my_lecture']) === false) {
+                            throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
+                        }
+                    }
+                } elseif ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['admin_package']) {
+                    // 운영자 패키지 (패키지 속성 정보를 등록함)
+                    foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
+                        if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code_sub)->insert($this->_table['my_lecture']) === false) {
+                            throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
+                        }
+                    }
+                } else {
+                    throw new \Exception('상품 학습형태 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
                 }
             }
         } catch (\Exception $e) {

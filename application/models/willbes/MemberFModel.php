@@ -542,14 +542,6 @@ class MemberFModel extends WB_Model
                 set('MemPassword',"fn_hash('".element('MemPassword', $input)."')",false)->
                 insert($this->_table['member']) === false){
                 throw new \Exception('회원가입에 실패했습니다.');
-            }if($this->_conn->set($data)->
-                set('ChangeDatm', 'NOW()', false)->
-                set('PhoneEnc',"fn_enc('".element('Phone', $input)."')",false)->
-                set('Phone2Enc',"fn_enc('".element('Phone2', $input)."')",false)->
-                set('MailEnc',"fn_enc('".element('Mail', $input)."')",false)->
-                set('MemPassword',"fn_hash('".element('MemPassword', $input)."')",false)->
-                insert($this->_table['member']) === false){
-                throw new \Exception('회원가입에 실패했습니다.');
             }
 
             // 입력된 회원 번호 읽어오기

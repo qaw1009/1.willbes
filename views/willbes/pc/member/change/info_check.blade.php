@@ -8,13 +8,11 @@
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
     <div class="Content p_re">
+        <div class="willbes-Mypage-USERINFOZONE c_both">
+            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG tx-center">비밀번호확인</div>
+        </div>
         <form method="post" action="/member/change/" onsubmit="return chkSubmit();">
             {!! csrf_field() !!}
-            <div class="willbes-Mypage-ONLINEZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 비밀번호확인
-                </div>
-            </div>
             <div class="Member mem-renew-Password widthAuto530 pt50">
                 <div class="user-Txt tx-black pb40">
                     <div class="user-sub-Txt tx-gray" style="letter-spacing: 0;">

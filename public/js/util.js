@@ -586,6 +586,21 @@ $(document).bind('keypress', function(event) {
 });
 
 /**
+ * setRowspan 함수
+ * @param classname
+ */
+function setRowspan(classname) {
+    $("."+classname).each(function () {
+        var rows = $("."+classname+":contains('" + $(this).text() + "')");
+        if (rows.length > 1) {
+            rows.eq(0).attr("rowspan", rows.length);
+            rows.not(":eq(0)").remove();
+        }
+    });
+};
+
+
+/**
  * Layer popup
  * Modal Close 버튼이 있는 경우 id를 btn_modal_close로 지정해야 Modal 창이 닫힘
  * 사용 예

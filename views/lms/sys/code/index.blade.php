@@ -75,24 +75,14 @@
 
         $(document).ready(function() {
 
-            rowspan = function(classname) {
-                $("."+classname).each(function () {
-                    var rows = $("."+classname+":contains('" + $(this).text() + "')");
-                    if (rows.length > 1) {
-                        rows.eq(0).attr("rowspan", rows.length);
-                        rows.not(":eq(0)").remove();
-                    }
-                });
-            };
-
-            rowspan('row_td');  //td rowspan
+            setRowspan('row_td'); //td rowspan
 
             $datatable = $list_table.DataTable({
                 serverSide: false,
                 ajax : false,
                 paging: false,
                 searching: true,
-                //rowsGroup: ['.rowspan'],
+                //rowsGroup: ['.rowspan'],      // setRowspan 함수 로 대체
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 그룹유형등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
@@ -134,6 +124,8 @@
                     ,width : "650"
                 });
             });
+
+
         });
 
         // datatable searching
@@ -143,5 +135,8 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .draw();
         }
+
+
+
     </script>
 @stop

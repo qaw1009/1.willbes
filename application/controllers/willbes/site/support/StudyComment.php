@@ -50,7 +50,7 @@ class StudyComment extends \app\controllers\FrontController
         $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
         $prof_idx = element('search_prof_idx',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input);
+        $page = element('page',$arr_input,1);
 
         $get_params = 'search_cate_code='.$cate_code.'&search_prof_idx='.$prof_idx.'&search_subject_idx='.$subject_idx;
         $get_params .= '&s_keyword='.$s_keyword;
@@ -85,7 +85,9 @@ class StudyComment extends \app\controllers\FrontController
 
         $list = [];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        /*$paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);*/
+        $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
+
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
         }
@@ -95,6 +97,9 @@ class StudyComment extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * @return CI_Output
+     */
     public function ajaxPaging()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -103,7 +108,7 @@ class StudyComment extends \app\controllers\FrontController
         $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
         $prof_idx = element('search_prof_idx',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input);
+        $page = element('page',$arr_input,1);
 
         $get_params = 'search_cate_code='.$cate_code.'&search_prof_idx='.$prof_idx.'&search_subject_idx='.$subject_idx;
         $get_params .= '&s_keyword='.$s_keyword;
@@ -128,13 +133,53 @@ class StudyComment extends \app\controllers\FrontController
         ];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        /*$paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);*/
+        $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         return $this->response([
             'paging' => $paging,
         ]);
     }
 
+    /**
+     * 수강후기 등록/수정
+     */
+    public function store()
+    {
+        $idx = '';
+        $method = 'add';
+        $msg = '저장되었습니다';
+
+        $rules = [
+            ['field' => 'study_cate_code', 'label' => '카테고리', 'rules' => 'trim|required'],
+            ['field' => 'study_subject_idx', 'label' => '과목', 'rules' => 'trim|required'],
+            ['field' => 'study_prof_idx', 'label' => '교수', 'rules' => 'trim|required'],
+            ['field' => 'study_prod_code', 'label' => '강좌', 'rules' => 'trim|required|integer'],
+            ['field' => 'start_count', 'label' => '평점', 'rules' => 'trim|required|integer'],
+            ['field' => 'study_title', 'label' => '제목', 'rules' => 'trim|required'],
+            ['field' => 'study_content', 'label' => '내용', 'rules' => 'trim|required']
+        ];
+
+        if (empty($this->_reqP('idx')) === false) {
+            $method = 'modify';
+            $msg = '수정되었습니다';
+            $idx = $this->_reqP('idx');
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $inputData = $this->_setInputData($this->_reqP(null, false));
+
+        $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
+
+        $this->json_result($result, $msg, $result);
+    }
+
+    /**
+     * 교수정보조회
+     */
     public function ajaxProfInfo()
     {
         $data = [];
@@ -145,5 +190,35 @@ class StudyComment extends \app\controllers\FrontController
         }
 
         $this->json_result(true, '', [], array_pluck($data, 'wProfName', 'ProfIdx'));
+    }
+
+    /**
+     * 저장 데이터 셋팅
+     * @param $input
+     * @return array
+     */
+    private function _setInputData($input){
+        $input_data = [
+            'board' => [
+                'BmIdx' => $this->_bm_idx,
+                'SiteCode' => $this->_site_code,
+                'RegType' => '0',
+                'IsBest' => '0',
+                'Title' => element('study_title', $input),
+                'Content' => element('study_content', $input),
+                'ReadCnt' => '0',
+                'SettingReadCnt' => '0',
+                'ProfIdx' => element('study_prof_idx', $input),
+                'SubjectIdx' => element('study_subject_idx', $input),
+                'ProdApplyTypeCcd' => '636001',     //온라인,학원강좌 공통코드
+                'LecScore' => element('start_count', $input),
+                'ProdCode' => element('study_prod_code', $input),
+            ],
+            'board_r_category' => [
+                'site_category' => element('study_cate_code', $input)
+            ]
+        ];
+
+        return$input_data;
     }
 }

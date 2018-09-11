@@ -454,7 +454,7 @@ class SupportQna extends BaseSupport
                 'SubjectIdx' => element('s_subject_idx', $input)
             ],
             'board_r_category' => [
-                'site_category' => element('s_cate_code', $input, $this->_site_code)
+                'site_category' => element('s_cate_code', $input, $this->_cate_code)
             ]
         ];
 

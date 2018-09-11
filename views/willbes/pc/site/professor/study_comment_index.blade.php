@@ -119,6 +119,9 @@
         <form id="_ajax_reg_form" name="_ajax_reg_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
+            <input type="hidden" id="start_count" name="start_count">
+            <input type="hidden" name="board_idx" value=""/>
+            <input type="hidden" name="study_cate_code" value="{{element('cate_code', $arr_input)}}"/>
             <div class="willbes-Leclist c_both">
                 <div class="LecWriteTable">
                     <table cellspacing="0" cellpadding="0" class="listTable writeTable upper-gray upper-black bdt-gray bdb-gray fc-bd-none tx-gray">
@@ -138,15 +141,15 @@
                                 </select>
                                 <select id="study_prof_idx" name="study_prof_idx" title="교수" class="seleProf" required="required" style="width: 150px;">
                                     <option value="">교수선택</option>
-                                    <option value="정채영">정채영</option>
-                                    <option value="한덕현">한덕현</option>
-                                    <option value="김쌤">김쌤</option>
+                                    <option value="50004">김현식</option>
+                                    <option value="50070">테스트</option>
                                 </select>
-                                <select id="study_lecture_idx" name="study_lecture_idx" title="강좌" class="seleLec" required="required" style="width: 360px;">
+                                <select id="study_prod_code" name="study_prod_code" title="강좌" class="seleLec" required="required" style="width: 360px;">
                                     <option value="">강좌선택</option>
-                                    <option value="기타">기타</option>
-                                    <option value="강좌내용">강좌내용</option>
-                                    <option value="학습상담">학습상담</option>
+                                    <option value="200025">[복사]뿜뿜 모모랜드</option>
+                                    <option value="200020">뿜뿜 모모랜드</option>
+                                    <option value="200019">[복사]강의 복사 정보 확인</option>
+                                    <option value="200018">강의 복사 정보 확인</option>
                                 </select>
                             </td>
                         </tr>
@@ -156,19 +159,19 @@
                                 <!-- Rating Stars Box -->
                                 <div class="rating-stars text-center GM">
                                     <ul id="stars">
-                                        <li class="star" title="" data-value='1'>
+                                        <li class="star" title="평점1" data-value='1' onclick="starCount(1);">
                                             <i class="fa fa-star fa-fw"></i>
                                         </li>
-                                        <li class="star" title="" data-value='2'>
+                                        <li class="star" title="평점2" data-value='2' onclick="starCount(2);">
                                             <i class="fa fa-star fa-fw"></i>
                                         </li>
-                                        <li class="star" title="" data-value='3'>
+                                        <li class="star" title="평점3" data-value='3' onclick="starCount(3);">
                                             <i class="fa fa-star fa-fw"></i>
                                         </li>
-                                        <li class="star" title="" data-value='4'>
+                                        <li class="star" title="평점4" data-value='4' onclick="starCount(4);">
                                             <i class="fa fa-star fa-fw"></i>
                                         </li>
-                                        <li class="star" title="" data-value='5'>
+                                        <li class="star" title="평점5" data-value='5' onclick="starCount(5);">
                                             <i class="fa fa-star fa-fw"></i>
                                         </li>
                                     </ul>
@@ -259,8 +262,7 @@
         });
 
         $('#btn_search').click(function () {
-            listAjax(1);
-            ajaxPaging(1);
+            callAjax(1);
         });
 
         //페이지번호클릭
@@ -272,10 +274,9 @@
         $_ajax_search_form.on('click', '.prof-list', function() {
             $('#search_prof_idx').val($(this).data('prof-idx'));
             $('.prof-list').attr('class','prof-list off');
-            $('#prof_'+prof_idx).attr('class','prof-list on');
+            $('#prof_' + $(this).data('prof-idx')).attr('class','prof-list on');
 
-            listAjax(1);
-            ajaxPaging(1);
+            callAjax(1);
         });
 
         //수강후기 등록
@@ -284,20 +285,21 @@
             ajaxSubmit($_ajax_reg_form, url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
-                    /*_reloadList();*/
+                    closeWin('AddModify'),openWin('AddList');
+                    callAjax(1);
                 }
             }, showValidateError, null, false, 'alert');
         });
 
-        listAjax(1);    //list data load
-        ajaxPaging(1);  //page data load
+        callAjax(1);
     });
 
     function responseMessage(msg) {
         $('.success-box').fadeIn(200);
         $('.success-box div.text-message').html(msg);
     }
-    
+
+    //list ajax
     function listAjax(page) {
         var add_table = '';
         var _url = '{{ site_url("support/studyComment/listAjax") }}';
@@ -322,7 +324,7 @@
                 add_table += '</td>';
                 add_table += '<td class="w-lec">'+item.SubjectName+'</td>';
                 add_table += '<td class="w-name">'+item.ProfName+'</td>';
-                add_table += '<td class="w-star"><img src="{{ img_url('sub/star5.gif') }}"></td>';
+                add_table += '<td class="w-star start'+item.LecScore+'"></td>';
                 add_table += '<td class="w-list tx-left pl20">';
                 add_table += item.Title;
                 add_table += '<div class="subTit">'+item.ProdName+'</div>';
@@ -337,12 +339,12 @@
                 rownum = rownum - 1;
             });
             $('#ajax_table > tbody').html(add_table);
-        }, showError, false, 'POST');
+        }, showError, false, 'GET');
     }
 
+    //page ajax
     function ajaxPaging(page)
     {
-        var add_page = '';
         var _url = '{{ site_url("support/studyComment/ajaxPaging") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
@@ -353,11 +355,27 @@
             'page' : page
         };
         sendAjax(_url, data, function(ret) {
-            console.log(ret.paging);
             $('.add-paging').html(ret.paging.pagination);
-        }, showError, false, 'POST');
+        }, showError, false, 'GET');
     }
 
+    //list,page, page href 함수 일괄 호출
+    function callAjax(num) {
+        listAjax(num);    //list data load
+        ajaxPaging(num);  //page data load
+        applyPagination();
+    }
+
+    //href 리턴 false, list,page ajax 호출
+    function applyPagination() {
+        $("div.Paging a").on("click", function() {
+            var num = $(this).text();
+            callAjax(num);
+            return false;
+        });
+    }
+
+    //교수목록조회
     function ajaxProfInfo(cate_code, subject_idx) {
         $('#search_subject_idx').val(subject_idx);
         $('#search_prof_idx').val('');
@@ -392,7 +410,10 @@
                 }
             }
         }, showError, false, 'POST');
-        listAjax(1);
-        ajaxPaging(1);
+        callAjax(1);
+    }
+
+    function starCount(count) {
+        $('#start_count').val(count);
     }
 </script>

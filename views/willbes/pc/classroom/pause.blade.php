@@ -3,14 +3,9 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="subContainer widthAuto c_both">
-        @include('willbes.pc.layouts.partial.www_menu')
+        @include('willbes.pc.layouts.partial.site_tab_menu')
         <div class="Depth">
-            <img src="{{ img_url('sub/icon_home.gif') }}">
-            <span class="1depth">
-            <span class="depth-Arrow">></span><strong>내강의실</strong>
-            <span class="depth-Arrow">></span><strong>온라인강좌</strong>
-            <span class="depth-Arrow">></span><strong>일시정지강좌</strong>
-        </span>
+            @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
 

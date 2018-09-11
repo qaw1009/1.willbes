@@ -283,7 +283,7 @@
                 if($combine_form.valid() == true)
                     @endif
                 {
-                    $combine_form.attr("action", "/member/combine/proc");
+                    $combine_form.attr("action", "/member/combine/proc/");
                     $combine_form.submit();
                 }
             });

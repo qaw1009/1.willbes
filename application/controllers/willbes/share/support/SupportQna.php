@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportQna extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', '_lms/sys/site', '_lms/sys/code');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', '_lms/sys/site', '_lms/sys/code', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store');

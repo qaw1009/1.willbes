@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Material extends \app\controllers\FrontController
 {
-    protected $models = array('support/supportBoardF');
+    protected $models = array('support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -169,6 +169,7 @@ class Material extends \app\controllers\FrontController
 
         $this->load->view('support/'.$view_type.'/show_material',[
                 'default_path' => $this->_default_path,
+                'board_idx' => $board_idx,
                 'get_params' => $get_params,
                 'arr_input' => $arr_input,
                 'data' => $data,
@@ -182,6 +183,11 @@ class Material extends \app\controllers\FrontController
     {
         $file_path = $this->_reqG('path');
         $file_name = $this->_reqG('fname');
+        $board_idx = $this->_reqG('board_idx');
+
+        $this->downloadFModel->saveLog($board_idx);
         public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 }

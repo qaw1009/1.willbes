@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportNotice extends BaseSupport
 {
-    protected $models = array('support/supportBoardF');
+    protected $models = array('support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -184,6 +184,7 @@ class SupportNotice extends BaseSupport
 
         $this->load->view('support/'.$view_type.'/show_notice',[
                 'default_path' => $this->_default_path,
+                'board_idx' => $board_idx,
                 'get_params' => $get_params,
                 'arr_input' => $arr_input,
                 'data' => $data,

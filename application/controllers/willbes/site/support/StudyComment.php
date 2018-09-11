@@ -18,7 +18,6 @@ class StudyComment extends \app\controllers\FrontController
         parent::__construct();
     }
 
-
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null));

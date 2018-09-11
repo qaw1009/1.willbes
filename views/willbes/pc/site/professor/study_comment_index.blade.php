@@ -133,7 +133,7 @@
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">수강정보<span class="tx-light-blue">(*)</span></td>
                             <td class="w-selected tx-left pl30 item">
-                                <select id="study_subject_idx" name="study_subject_idx" title="과목" class="seleSbj" required="required" style="width: 150px;">
+                                <select id="study_subject_idx" name="study_subject_idx" title="과목" class="seleSbj" onchange="ajaxProfInfoForSelectBox('{{element('cate_code', $arr_input)}}', this.value);" required="required" style="width: 150px;">
                                     <option value="">과목선택</option>
                                     @foreach($arr_base['subject'] as $idx => $row)
                                         <option value="{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
@@ -141,8 +141,8 @@
                                 </select>
                                 <select id="study_prof_idx" name="study_prof_idx" title="교수" class="seleProf" required="required" style="width: 150px;">
                                     <option value="">교수선택</option>
-                                    <option value="50004">김현식</option>
-                                    <option value="50070">테스트</option>
+                                    {{--<option value="50004">김현식</option>
+                                    <option value="50070">테스트</option>--}}
                                 </select>
                                 <select id="study_prod_code" name="study_prod_code" title="강좌" class="seleLec" required="required" style="width: 360px;">
                                     <option value="">강좌선택</option>
@@ -322,6 +322,7 @@
         };
         sendAjax(_url, data, function(ret) {
             var rownum = ret.paging.rownum;
+            var lecture_path = "{{ site_url('/lecture/show/cate/' . element('cate_code', $arr_input) . '/pattern/only' . '/prod-code/') }}";
             $.each(ret.ret_data, function (i, item) {
                 add_table += '<tr class="replyList w-replyList">';
                 add_table += '<td class="w-no">';
@@ -342,7 +343,10 @@
                 add_table += '<td class="w-date">'+item.RegDatm+'</td>';
                 add_table += '</tr>';
                 add_table += '<tr class="replyTxt w-replyTxt tx-gray">';
-                add_table += '<td colspan="7">'+item.Content+'</td>';
+                add_table += '<td colspan="7">';
+                add_table += '<div class="tx-blue"><a href="'+lecture_path+item.ProdCode+'" target="_blank">'+item.ProdName+'</a></div>';
+                add_table += item.Content;
+                add_table += '</td>';
                 add_table += '</tr>';
 
                 rownum = rownum - 1;
@@ -420,6 +424,30 @@
             }
         }, showError, false, 'POST');
         callAjax(1);
+    }
+
+    //등록 : 과목값에 따른 교수목록 조회 (select box option 생성)
+    function ajaxProfInfoForSelectBox(cate_code, subject_idx) {
+        var $study_prof_idx = $_ajax_reg_form.find('select[name="study_prof_idx"]');
+        var _url = '{{ site_url("support/studyComment/ajaxProfInfo") }}';
+        var data = {
+            '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+            'cate_code' : cate_code,
+            'subject_idx' : subject_idx
+        };
+
+        $study_prof_idx.empty();
+        $study_prof_idx.append(('<option value="">교수선택</option>'));
+
+        if (subject_idx == '') { return false; }
+        sendAjax(_url, data, function(ret) {
+            var add_data = '';
+            if (ret.ret_cd) {
+                $.each(ret.ret_data, function (k, v) {
+                    $study_prof_idx.append($('<option>', { 'value' : k, 'text' : v}));
+                });
+            }
+        }, showError, false, 'POST');
     }
 
     function starCount(count) {

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Online extends \app\controllers\FrontController
+class On extends \app\controllers\FrontController
 {
     protected $models = array();
     protected $helpers = array();

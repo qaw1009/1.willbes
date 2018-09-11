@@ -97,6 +97,24 @@
 
     <a href="{{ site_url('/home/html/mypage_userinfo2') }}">내강의실 > 회원정보 > 비밀번호변경 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/acad_list') }}">학원수강신청 > 단과반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_package') }}">학원수강신청 > 종합반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_memjoin') }}">학원 방문결제 접수 > 로그인 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_offline_list') }}">학원 방문결제 접수 > 단과반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_offline_list_package') }}">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_package_new') }}">**학원수강신청 > 종합반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">**학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
+
+</div>
+
+<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+
     <a href="{{ site_url('/home/html/cscenter_index') }}">고객센터 Index page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cscenter1') }}">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
@@ -115,22 +133,16 @@
 
     <a href="{{ site_url('/home/html/cscenter7') }}">고객센터 > 부정사용자 규제 page 이동</a><br/><br/>
 
-</div>
+    <a href="{{ site_url('/home/html/mocktest1') }}">수험정보 > 시험공고 page 이동</a><br/><br/>
 
-<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+    <a href="{{ site_url('/home/html/mocktest2') }}">수험정보 > 수험뉴스 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_list') }}">학원수강신청 > 단과반 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mocktest3') }}">수험정보 > 기출문제 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_list_package') }}">학원수강신청 > 종합반 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mocktest6_1') }}">수험정보 > 모의고사 > 모의고사안내 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_memjoin') }}">학원 방문결제 접수 > 로그인 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mocktest6_2') }}">수험정보 > 모의고사 > 모의고사접수 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_offline_list') }}">학원 방문결제 접수 > 단과반 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_offline_list_package') }}">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_list_package_new') }}">**학원수강신청 > 종합반 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">**학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/mocktest6_3') }}">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a><br/><br/>
 
 </div>

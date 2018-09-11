@@ -1589,6 +1589,11 @@ table.auTable tr td {
     color: #fff;
     border: 1px solid #0d74ae;
 }
+.subBtn.black a {
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+}
 
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
@@ -3407,6 +3412,11 @@ table.classTable tr td.w-data {
 }
 
 /* subContainer : Content : mockTable */
+.willbes-Mock-Subject {
+    font-size: 16px;
+    line-height: 25px;
+    padding: 50px 0 25px;
+}
 .tabMock {
     height: 34px;
     border-bottom: 1px solid #0d74ae;
@@ -3443,6 +3453,12 @@ table.classTable tr td.w-data {
     border-top: 1px solid #0d74ae;
     border-left: 1px solid #0d74ae;
     border-right: 1px solid #0d74ae;
+}
+.LeclistTable table.mockTable tr.two th {
+    line-height: 30px;
+}
+.LeclistTable table.mockTable tr.two th .row-line {
+    margin: 8px 0;
 }
 .LeclistTable table.mockTable tr td.w-price {
     font-weight: 300;

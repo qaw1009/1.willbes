@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once APPPATH . 'controllers/willbes/share/support/basesupport.php';
+require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportNotice extends BaseSupport
 {

@@ -49,7 +49,7 @@
                 @foreach($data as $row)
                     <tr>
                         <td>{{ $loop->index }}</td>
-                        <td>
+                        <td class="row_td">
                             <input type="radio" name="GroupCcd" value="{{ $row['ParentCcd'] }}"  class="flat"/>
                             <a href="#none" class="btn-modify" data-ccd="{{ $row['ParentCcd'] }}" data-code-type="group" data-group-ccd="0" ><u> {{ $row['ParentName'] }}  [<span class="blue">{{$row['ParentCcd']}}</span>]</u></a>
                         </td>
@@ -74,12 +74,25 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+
+            rowspan = function(classname) {
+                $("."+classname).each(function () {
+                    var rows = $("."+classname+":contains('" + $(this).text() + "')");
+                    if (rows.length > 1) {
+                        rows.eq(0).attr("rowspan", rows.length);
+                        rows.not(":eq(0)").remove();
+                    }
+                });
+            };
+
+            rowspan('row_td');  //td rowspan
+
             $datatable = $list_table.DataTable({
                 serverSide: false,
                 ajax : false,
                 paging: false,
                 searching: true,
-                rowsGroup: ['.rowspan'],
+                //rowsGroup: ['.rowspan'],
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 그룹유형등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]

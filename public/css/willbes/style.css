@@ -3406,6 +3406,62 @@ table.classTable tr td.w-data {
     top: 0;
 }
 
+/* subContainer : Content : mockTable */
+
+.tabGrid {
+    height: 40px;
+    border-bottom: 1px solid #4f4f4f;
+}
+.tabGrid li {
+    float: left;
+    width: 50%;
+    height: 40px;
+}
+.tabGrid.three li {
+    float: left;
+    width: 33.33333333%;
+    height: 40px;
+}
+.tabGrid li a {
+    display: block;
+    width: 100%;
+    height: 39px;
+    line-height: 38px;
+    background: #f5f5f5;
+    font-size: 15px;
+    font-weight: 600;
+    color: #878787;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+.tabGrid li a.on {
+    background: #fff;
+    height: 40px;
+    line-height: 32px;
+    color: #3a3a3a;
+    border-top: 4px solid #4f4f4f;
+    border-left: 4px solid #4f4f4f;
+    border-right: 4px solid #4f4f4f;
+}
+.tabGrid li:first-child a.on {
+    border-left: 4px solid #4f4f4f;
+}
+
+
+
+.LeclistTable table.mockTable tr td.w-price {
+    font-weight: 300;
+    text-align: center;
+    padding: 0;
+}
+.LeclistTable table.mockTable tr td.w-day {
+    line-height: 16px;
+    padding: 12px 0;
+}
+
 
 
 /*********************************************     CART PAGE     *********************************************/
@@ -3557,7 +3613,7 @@ table.classTable tr td.w-data {
     position: absolute;
     top: 45px;
     right: 20px;
-    z-index: 10;
+    z-index: 5;
 }
 .willbes-Cart-Txt .MoreBtn a {
     font-size: 11px;
@@ -4828,7 +4884,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 .willbes-Lec-Selected {
-    margin: 10px 0 15px;
+    margin: 10px 0 20px;
 }
 .willbes-Lec-Selected select {
     width: 92px;
@@ -6541,8 +6597,8 @@ table.acadTable tr td {
 
 /* subContainer : Mypage : 모의고사관리 : testTable */
 table.testTable tr td.w-file.on {
-    line-height: 20px;
-    padding: 15px 0;
+    line-height: 18px;
+    padding: 10px 0;
 }
 table.testTable tr td.w-btn a {
     display: block;

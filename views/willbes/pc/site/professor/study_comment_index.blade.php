@@ -416,4 +416,20 @@
     function starCount(count) {
         $('#start_count').val(count);
     }
+    
+    // 수강후기 리스트 Script
+    $(function() {
+        $('tr.replyList').click(function() {
+            $('tr.replyList').removeClass('hover');
+
+            if ($(this).next().is(':visible')) {
+                $(this).next().hide();
+                $(this).removeClass('hover');
+            } else {
+                $('tr.replyTxt').hide();
+                $(this).next().show();
+                $(this).addClass('hover');
+            }   
+        });
+    });
 </script>

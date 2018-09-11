@@ -24,7 +24,7 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                                    <button type="button" id="btn_qna" class="mem-Btn bg-blue bd-dark-blue">
                                         <span>신고하기</span>
                                     </button>
                                 </li>
@@ -100,4 +100,10 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+        $('#btn_qna').click(function() {
+            location.href = frontUrl('/support/qna/index?s_keyword=&s_site_code=&s_consult_type=622005');
+        });
+    </script>
 @stop

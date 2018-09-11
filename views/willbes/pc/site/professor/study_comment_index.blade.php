@@ -261,13 +261,22 @@
             responseMessage(msg);
         });
 
-        $('#btn_search').click(function () {
-            callAjax(1);
+        //contents hide,show
+        $_ajax_search_form.on('click', 'tr.replyList', function() {
+            $('tr.replyList').removeClass('hover');
+
+            if ($(this).next().is(':visible')) {
+                $(this).next().hide();
+                $(this).removeClass('hover');
+            } else {
+                $('tr.replyTxt').hide();
+                $(this).next().show();
+                $(this).addClass('hover');
+            }
         });
 
-        //페이지번호클릭
-        $('.add-paging > div > ul > li > a').click(function () {
-            return false;
+        $('#btn_search').click(function () {
+            callAjax(1);
         });
 
         //교수선택
@@ -416,20 +425,4 @@
     function starCount(count) {
         $('#start_count').val(count);
     }
-    
-    // 수강후기 리스트 Script
-    $(function() {
-        $('tr.replyList').click(function() {
-            $('tr.replyList').removeClass('hover');
-
-            if ($(this).next().is(':visible')) {
-                $(this).next().hide();
-                $(this).removeClass('hover');
-            } else {
-                $('tr.replyTxt').hide();
-                $(this).next().show();
-                $(this).addClass('hover');
-            }   
-        });
-    });
 </script>

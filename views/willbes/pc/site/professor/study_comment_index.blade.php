@@ -324,7 +324,7 @@
                 add_table += '</td>';
                 add_table += '<td class="w-lec">'+item.SubjectName+'</td>';
                 add_table += '<td class="w-name">'+item.ProfName+'</td>';
-                add_table += '<td class="w-star start'+item.LecScore+'"></td>';
+                add_table += '<td class="w-star star'+item.LecScore+'"></td>';
                 add_table += '<td class="w-list tx-left pl20">';
                 add_table += item.Title;
                 add_table += '<div class="subTit">'+item.ProdName+'</div>';

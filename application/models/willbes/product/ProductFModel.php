@@ -221,16 +221,39 @@ class ProductFModel extends WB_Model
     }
 
     /**
+     * 상품강좌정보 조회
+     * @param array $prod_code
+     * @return array|int|mixed
+     */
+    public function findProductLectureInfo($prod_code = [])
+    {
+        $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
+        $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, PL.StudyPeriod, PL.StudyStartDate, date_add(PL.StudyStartDate, interval (PL.StudyPeriod - 1) day) as StudyEndDate
+        	, PL.MultipleTypeCcd, PL.MultipleApply, PL.AllLecTime
+	        , if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
+	        , PL.IsPackLecStartType';
+        $arr_condition = [
+            'EQ' => ['P.IsStatus' => 'Y'], 'IN' => ['P.ProdCode' => (array) $prod_code]
+        ];
+
+        $data = $this->_conn->getJoinListResult($this->_table['product'] . ' as P', 'inner', $this->_table['product_lecture'] . ' as PL', 'P.ProdCode = PL.ProdCode'
+            , $column, $arr_condition
+        );
+
+        return is_array($prod_code) === true ? $data : element('0', $data, []);
+    }
+
+    /**
      * 상품 컨텐츠 조회
      * @param array $prod_code
-     * @return array
+     * @param array $conten_type_ccd
+     * @return array|int
      */
-    public function findProductContents($prod_code = [],$conten_type_ccd=[])
+    public function findProductContents($prod_code = [], $conten_type_ccd = [])
     {
-        $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
         $column = 'PC.ProdCode, PC.ContentTypeCcd, CD.CcdName as ContentTypeCcdName, PC.Content';
         $arr_condition = [
-            'EQ' => ['PC.IsStatus' => 'Y'], 'IN' => ['PC.ProdCode' => $prod_code, 'PC.ContentTypeCcd' => $conten_type_ccd]
+            'EQ' => ['PC.IsStatus' => 'Y'], 'IN' => ['PC.ProdCode' => (array) $prod_code, 'PC.ContentTypeCcd' => $conten_type_ccd]
         ];
 
         return $this->_conn->getJoinListResult($this->_table['product_content'] . ' as PC', 'inner', $this->_table['code'] . ' as CD', 'PC.ContentTypeCcd = CD.Ccd'

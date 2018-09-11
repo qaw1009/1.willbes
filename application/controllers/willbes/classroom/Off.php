@@ -30,7 +30,7 @@ class Off extends \app\controllers\FrontController
         }
 
 
-        $this->load->view('classroom/offline_'.$listType, [
+        $this->load->view('/classroom/off_'.$listType, [
             'data' => [],
             'list' => []
         ]);

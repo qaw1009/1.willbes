@@ -9,14 +9,13 @@
         </div>
         <div class="Content p_re">
             @if($method == 'check')
+                <div class="willbes-Mypage-USERINFOZONE c_both">
+                    <div class="willbes-Prof-Subject willbes-Mypage-Tit NG tx-center">비밀번호확인</div>
+                </div>
+
                 <form method="post" action="/member/change/password/" onsubmit="return chkSubmit();">
                     {!! csrf_field() !!}
-                    <div class="willbes-Mypage-ONLINEZONE c_both">
-                        <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                            · 비밀번호확인
-                        </div>
-                    </div>
-                    <div class="Member mem-renew-Password widthAuto530 pt50">
+                    <div class="Member mem-renew-Password widthAuto530 pt15">
                         <div class="user-Txt tx-black pb40">
                             <div class="user-sub-Txt tx-gray" style="letter-spacing: 0;">
                                 회원님의 정보를 더 안전하게 보호하기 위해 비밀번호를 다시 한 번 확인합니다.<br/>
@@ -47,15 +46,13 @@
                     }
                 </script>
             @elseif($method == 'change')
+                <div class="willbes-Mypage-USERINFOZONE c_both">
+                    <div class="willbes-Prof-Subject willbes-Mypage-Tit NG tx-center">비밀번호변경</div>
+                </div>
                 <form method="post" id="pwd_form" name="pwd_form" novalidate="novalidate">
                     <input type="hidden" name="oldPass" value="{{$password}}" >
                     {!! csrf_field() !!}
-                    <div class="willbes-Mypage-ONLINEZONE c_both">
-                        <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                            · 비밀번호변경
-                        </div>
-                    </div>
-                    <div class="Member mem-renew-Password widthAuto530 pt50">
+                    <div class="Member mem-renew-Password widthAuto530 pt15">
                         <div class="user-Txt tx-black pb40">
                             <div class="user-sub-Txt tx-gray" style="letter-spacing: 0;">
                                 비밀번호를 재설정 해주세요.<br/>
@@ -63,13 +60,13 @@
                             </div>
                         </div>
                         <div class="widthAuto400">
-                            <div class="inputBox mt30 p_re">
+                            <div class="inputBox p_re">
                                 <input type="password" id="newPass" name="newPass" class="iptPwdNew sm" placeholder="새비밀번호" maxlength="30">
                             </div>
                             <div class="tx-red err_msg" style="display: block;" ></div>
                         </div>
                         <div class="widthAuto400">
-                            <div class="inputBox mt30 p_re">
+                            <div class="inputBox mt20 p_re">
                                 <input type="password" id="newPasschk" name="newPasschk" class="iptPwdNew sm" placeholder="새비밀번호 확인" maxlength="30">
                             </div>
                             <div class="tx-red err_msg" style="display: block;" ></div>

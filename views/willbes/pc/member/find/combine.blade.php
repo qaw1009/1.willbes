@@ -257,7 +257,7 @@
                                 clearTimeout(objTimer);
                                 $("#enc_data").val(ret.ret_data.enc_data);
                                 $("#phone_number").val(ret.ret_data.phone_number);
-                                $("#find_form").prop("action", "/Member/combine/form/").submit();
+                                $("#find_form").prop("action", "/member/combine/form/").submit();
 
                             }, function(ret){
                                 //alert(ret.ret_msg);

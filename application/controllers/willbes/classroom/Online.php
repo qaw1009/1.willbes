@@ -14,25 +14,6 @@ class Online extends \app\controllers\FrontController
     }
 
     /**
-     * 내강의실 인덱스페이지
-     */
-    public function index()
-    {
-
-        $this->load->view('/classroom/index');
-    }
-
-
-    /**
-     * 기간제 강의실
-     */
-    public function pass()
-    {
-        $this->load->view('/classroom/pass');
-    }
-
-
-    /**
      * 단강좌 리스트페이지
      */
     public function list($params = [])

@@ -1,7 +1,7 @@
-@if(empty($__cfg["TabMenu"]["TreeMenu"]) === false)
+@if(empty($__cfg['TabMenu']['TreeMenu']) === false)
 <div class="Menu NSK c_both">
     <h3>
-        <ul class="menu-List menu-List-Center cscenter">
+        <ul class="menu-List menu-List-Center @if($__cfg['TabMenu']['ActiveMenu']['MenuType'] == 'PS') cscenter @endif">
             @foreach($__cfg["TabMenu"]["TreeMenu"] as $top_row)
             <li>
                 <a href="{{$top_row['MenuUrl']}}">{{$top_row['MenuName']}} HOME</a>

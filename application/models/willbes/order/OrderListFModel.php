@@ -176,4 +176,44 @@ class OrderListFModel extends BaseOrderFModel
 
         return element('0', $data, []);
     }
+
+    /**
+     * 회원이 구매한 상품코드 조회
+     * @param string|array $pay_status_ccd
+     * @param null|int $order_idx
+     * @param null|int $order_prod_idx
+     * @return mixed
+     */
+    public function getMemberOrderProdCodes($pay_status_ccd = [], $order_idx = null, $order_prod_idx = null)
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+        $column = 'distinct(ProdCode) as ProdCode';
+        $from = '
+            from (
+                select OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.PayStatusCcd
+                from ' . $this->_table['order_product'] . ' as OP
+                where OP.MemIdx = ?
+                union all
+                select OP.OrderIdx, OP.OrderProdIdx, OSP.ProdCodeSub as ProdCode, OP.PayStatusCcd
+                from ' . $this->_table['order_product'] . ' as OP
+                    left join ' . $this->_table['order_sub_product'] . ' as OSP
+                        on OP.OrderProdIdx = OSP.OrderProdIdx
+                where OP.MemIdx = ?
+                    and OSP.ProdCodeSub is not null	
+            ) U	            
+        ';
+
+        // 추가 조건
+        $arr_condition = [
+            'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx],
+            'IN' => ['PayStatusCcd' => (array) $pay_status_ccd]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where, [$sess_mem_idx, $sess_mem_idx]);
+
+        return $query->result_array();
+    }
 }

@@ -152,8 +152,6 @@ class CartFModel extends BaseOrderFModel
         // 에러 메시지
         $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
 
-        logger('check start');
-
         // 1. 해당 도서 수강생교재 여부 확인, 수강생교재일 경우 연관된 부모상품코드 조회
         $arr_target_prod_code = array_pluck($this->productFModel->findParentProductToStudentBook($prod_book_code), 'ProdCode');
         if (empty($arr_target_prod_code) === true) {
@@ -161,14 +159,10 @@ class CartFModel extends BaseOrderFModel
             return true;
         }
 
-        logger('check 2', [$arr_target_prod_code]);
-
         // 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
         $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
             'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $prod_book_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
         ]);
-
-        logger('check 2-2', $book_paid_cnt);
 
         if ($book_paid_cnt > 0) {
             return '이미 동일한 수강생 교재를 구매하셨습니다.';
@@ -179,8 +173,6 @@ class CartFModel extends BaseOrderFModel
         if (empty($arr_same_prod_code) === false) {
             return true;
         }
-
-        logger('check 3', $arr_same_prod_code);
 
         // 4. 수강생교재 부모상품코드 장바구니 등록여부 확인 (등록되어 있다면 return true, 없다면 continue)
         $cart_data = $this->listValidCart($sess_mem_idx, $site_code);
@@ -194,17 +186,18 @@ class CartFModel extends BaseOrderFModel
         }
         $arr_cart_prod_code = array_unique($arr_cart_prod_code);
 
-        logger('check 4', [$arr_cart_prod_code]);
-
         // 수강생교재 부모상품코드와 병합된 상품코드 비교
         $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_cart_prod_code);
         if (empty($arr_same_prod_code) === false) {
             return true;
         }
 
-        logger('check 5', $arr_same_prod_code);
-
-        // TODO : 5. 수강생교재 부모 단강좌 상품 구매여부 확인 (구매정보가 있다면 return true, 없다면 continue)
+        // 5. 수강생교재 부모 단강좌 상품 구매여부 확인 (구매정보가 있다면 return true, 없다면 continue)
+        $arr_paid_prod_code = array_pluck($this->orderListFModel->getMemberOrderProdCodes($this->_pay_status_ccd['paid']), 'ProdCode');
+        $arr_same_prod_code = array_intersect($arr_target_prod_code, $arr_paid_prod_code);
+        if (empty($arr_same_prod_code) === false) {
+            return true;
+        }
 
         return $err_msg;
     }

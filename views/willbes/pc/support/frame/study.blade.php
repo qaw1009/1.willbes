@@ -83,6 +83,11 @@
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {!! $paging['pagination'] !!}
+        </div>
+    </div>
 </div>
 <div id="WrapReply"></div>
 

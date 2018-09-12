@@ -26,9 +26,11 @@ class SupportStudyComment extends BaseSupport
     public function listFrame()
     {
         $arr_input = array_merge($this->_reqG(null));
+        $paging = null;
 
         $this->load->view('support/frame/study', [
             'arr_input' => $arr_input,
+            'paging' => $paging,
         ]);
     }
 

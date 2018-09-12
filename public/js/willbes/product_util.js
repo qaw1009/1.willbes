@@ -20,9 +20,11 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
     }
 
     if ($is_direct_pay === 'Y') {
+        alertDirectPay($regi_form);
+        /* 바로결제할 경우 강좌상품은 바로결제, 교재상품은 장바구니 저장 프로세스로 변경
         if (checkDirectPay($regi_form) === false) {
             return;
-        }
+        }*/
     }
 
     if ($regi_form.find('input[name="learn_pattern"]').val().indexOf('off') === 0) {
@@ -60,6 +62,16 @@ function checkDirectPay($regi_form) {
     }
 
     return true;
+}
+
+/**
+ * 바로결제 버튼 클릭시 경고 메시지 리턴
+ * @param $regi_form
+ */
+function alertDirectPay($regi_form) {
+    if ($regi_form.find('.chk_products:checked').length > 0 && $regi_form.find('.chk_books:checked').length > 0) {
+        alert('바로결제 시 강좌와 교재는 동시 결제가 불가능하여\n교재는 강좌결제 후 장바구니를 통해 결제해 주시기 바랍니다.');
+    }
 }
 
 /**

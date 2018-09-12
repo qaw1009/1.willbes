@@ -172,9 +172,6 @@ class OrderFModel extends BaseOrderFModel
      */
     public function getCouponDiscPrice($coupon_detail_idx, $cart_row = [])
     {
-        // 사용자 쿠폰 모델 로드
-        $this->load->loadModels(['couponF']);
-
         if (empty($coupon_detail_idx) === true || empty($cart_row) === true || $cart_row['IsCoupon'] != 'Y') {
             return ['UserCouponIdx' => '', 'CouponDiscPrice' => 0, 'CouponDiscType' => 'R', 'CouponDiscRate' => 0];
         }
@@ -194,6 +191,7 @@ class OrderFModel extends BaseOrderFModel
         ];
 
         // 쿠폰 정보
+        $this->load->loadModels(['couponF']);   // 쿠폰 모델 로드
         $coupon_row = element('0', $this->couponFModel->listMemberProductCoupon(false, $arr_param), []);
         if (empty($coupon_row) === true) {
             return ['UserCouponIdx' => '', 'CouponDiscPrice' => 0, 'CouponDiscType' => 'R', 'CouponDiscRate' => 0];
@@ -237,8 +235,9 @@ class OrderFModel extends BaseOrderFModel
             return '포인트는 주문금액의 ' . $use_max_point_rate . '%까지만 사용 가능합니다.' . PHP_EOL . '(최대 사용가능 포인트 : ' . number_format($use_max_point) . 'P)';
         }
 
-        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
-        $has_point = 3000;
+        // 회원 보유포인트
+        $this->load->loadModels(['pointF']);    // 포인트 모델 로드
+        $has_point = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
 
         if ($has_point < $use_point) {
             return '보유 포인트가 부족합니다.';

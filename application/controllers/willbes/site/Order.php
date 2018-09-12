@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\FrontController
 {
-    protected $models = array('order/cartF', 'order/orderF', 'order/orderListF', 'memberF', '_lms/sys/code');
+    protected $models = array('order/cartF', 'order/orderF', 'order/orderListF', 'memberF', 'pointF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -19,9 +19,7 @@ class Order extends \app\controllers\FrontController
 
     public function test($params = [])
     {
-        $d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
-
-        dd($d);
+        //$d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
     }
 
     /**
@@ -46,9 +44,9 @@ class Order extends \app\controllers\FrontController
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
-        // 회원 보유포인트     // TODO : 회원포인트 조회 로직 추가 필요 (강좌, 교재 포인트 구분하여 조회)
-        $results['point'] = 3000;
+        // 회원 보유포인트
         $results['point_type_name'] = $this->orderFModel->_point_type_name[$cart_type];
+        $results['point'] = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
 
         // 지역번호, 휴대폰번호 공통코드 조회
         $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);

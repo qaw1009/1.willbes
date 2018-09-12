@@ -217,8 +217,9 @@ class CartFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');
             $gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
-            $arr_prod_code = element('prod_code', $input, []);
-            $arr_prod_code = $this->_makeProdCodeArray($learn_pattern, $arr_prod_code);
+            $arr_temp_prod_code = $this->_makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
+            $arr_prod_code = element('data', $arr_temp_prod_code);
+            $is_mixed = element('is_mixed', $arr_temp_prod_code);
             $site_code = element('site_code', $input, '');
             $is_direct_pay = element('is_direct_pay', $input, 'N');
             $is_visit_pay = element('is_visit_pay', $input, 'N');
@@ -237,6 +238,12 @@ class CartFModel extends BaseOrderFModel
                     $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
                 }
 
+                // 강좌, 교재상품이 동시에 바로 결제될 경우 교재상품은 바로결제 여부를 N으로 강제 변경
+                $is_direct_pay_change = false;
+                if ($is_direct_pay == 'Y' && $is_mixed === true && $prod_code != $prod_row['ParentProdCode']) {
+                    $is_direct_pay_change = true;
+                }
+
                 // 데이터 등록
                 $data = [
                     'MemIdx' => $sess_mem_idx,
@@ -245,7 +252,7 @@ class CartFModel extends BaseOrderFModel
                     'ProdCodeSub' => $prod_sub_code,
                     'ParentProdCode' => $prod_row['ParentProdCode'],
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
-                    'IsDirectPay' => $is_direct_pay,
+                    'IsDirectPay' => $is_direct_pay_change === true ? 'N' : $is_direct_pay,
                     'IsVisitPay' => $is_visit_pay,
                     'GwIdx' => $gw_idx,
                     'RegIp' => $reg_ip
@@ -256,7 +263,10 @@ class CartFModel extends BaseOrderFModel
                     throw new \Exception($insert_cart_idx);
                 }                
 
-                $results[] = $insert_cart_idx;
+                // 바로결제 여부가 변경된 경우 장바구니 식별자 리턴 안함
+                if ($is_direct_pay_change === false) {
+                    $results[] = $insert_cart_idx;
+                }
             }
 
             $this->_conn->trans_commit();
@@ -369,7 +379,7 @@ class CartFModel extends BaseOrderFModel
             // 이미 장바구니에 담긴 상품이 있는지 여부 확인
             $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
                 'EQ' => ['MemIdx' => $mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
-                'RAW' => ['ExpireDatm > ' => 'NOW()']
+                'RAW' => ['ExpireDatm > ' => 'NOW()', 'ConnOrderIdx is ' => 'null']
             ]);
 
             if (empty($cart_row) === false) {
@@ -440,7 +450,7 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
-     * 상품코드 재정의
+     * 상품코드 재정의 및 강좌, 교재상품 혼재 여부 리턴
      * @param string $learn_pattern [학습형태]
      * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드]
      * @return array
@@ -448,10 +458,17 @@ class CartFModel extends BaseOrderFModel
     private function _makeProdCodeArray($learn_pattern, $arr_prod_code)
     {
         $results = [];
+        $lecture_cnt = 0;
+        $book_cnt = 0;
+
         foreach ($arr_prod_code as $idx => $val) {
             $tmp_arr = explode(':', $val);
-            $results[$tmp_arr[0]] = ['ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
+            $results['data'][$tmp_arr[0]] = ['ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
+
+            $tmp_arr[0] == $tmp_arr[2] ? $lecture_cnt++ : $book_cnt++;
         }
+
+        $results['is_mixed'] = $lecture_cnt > 0 && $book_cnt > 0;
 
         return $results;
     }

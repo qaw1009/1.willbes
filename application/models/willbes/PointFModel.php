@@ -17,9 +17,18 @@ class PointFModel extends WB_Model
         parent::__construct('lms');
     }
 
+    /**
+     * 회원 포인트 조회
+     * @param string $point_type [포인트구분, lecture : 강좌, book : 교재, all : 전체]
+     * @return mixed
+     */
     public function getMemberPoint($point_type = 'all')
     {
+        $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+        $query = $this->_conn->query('select fn_member_point(?, ?) as MemPoint', [$sess_mem_idx, $point_type]);
+        $data = $query->row(0)->MemPoint;
 
+        return $point_type == 'all' ? json_decode($data, true) : $data;
     }
 
     /**

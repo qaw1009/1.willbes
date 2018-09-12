@@ -83,7 +83,7 @@
                                         <a href="{{site_url($default_path.'/qna/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                             @endif
                                             @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
-                                            {{hpSubString($row['Title'],0,16,'...')}}
+                                            {{hpSubString($row['Title'],0,40,'...')}}
                                             @if($row['RegDatm'] == date('Y-m-d'))<img src="{{ img_url('prof/icon_N.gif') }}">@endif
                                             @if(empty($row['AttachData']) === false)<img src="{{ img_url('prof/icon_file.gif') }}">@endif
                                         </a>

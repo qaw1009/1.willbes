@@ -128,7 +128,7 @@
                 <ul class="List-Table GM tx-gray">
                     @if($data['StudyCommentData'] != 'N')
                         @foreach(json_decode($data['StudyCommentData'], true) as $idx => $row)
-                            <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ $row['Title'] }}</a></li>
+                            <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ hpSubString($row['Title'],0,25,'...') }}</a></li>
                         @endforeach
                     @endif
                 </ul>

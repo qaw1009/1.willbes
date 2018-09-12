@@ -52,7 +52,7 @@
                         <td class="w-type"><div class="pBox p1 NSK">{{$row['TypeCcd_Name']}}</div></td>
                         <td class="w-list tx-left pl20">
                             <a href="{{site_url($default_path.'/material/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
-                                {{$row['Title']}}
+                                {{hpSubString($row['Title'],0,40,'...')}}
                             </a>
                         </td>
                         <td class="w-file">

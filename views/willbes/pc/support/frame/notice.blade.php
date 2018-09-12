@@ -50,7 +50,7 @@
                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                         <td class="w-list tx-left pl20">
                             <a href="{{site_url($default_path.'/notice/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
-                                {{$row['Title']}}
+                                {{hpSubString($row['Title'],0,40,'...')}}
                             </a>
                         </td>
                         <td class="w-file">

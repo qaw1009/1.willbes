@@ -357,7 +357,7 @@
                 add_table += '<td class="w-name">'+item.ProfName+'</td>';
                 add_table += '<td class="w-star star'+item.LecScore+'"></td>';
                 add_table += '<td class="w-list tx-left pl20">';
-                add_table += item.Title;
+                add_table += sub_str(item.Title);
                 add_table += '<div class="subTit">'+item.ProdName+'</div>';
                 add_table += '</td>';
                 add_table += '<td class="w-write">'+item.RegMemName+'</td>';
@@ -374,6 +374,15 @@
             });
             $('#ajax_table > tbody').html(add_table);
         }, showError, false, 'GET');
+    }
+
+    //문자열 길이 체크
+    function sub_str(string) {
+        if(string.length > 15) {
+            return string.substr(0,15)+'...';
+        } else {
+            return string;
+        }
     }
 
     //page ajax

@@ -48,35 +48,44 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">독서실명<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="rd_name">독서실명<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="text" class="form-control" id="" name="" required="required" title="독서실명" value="{{ $data['BannerName'] }}" >
-                    </div>
-                    <label class="control-label col-md-1-1 d-line" for="">강의실<span class="required">*</span></label>
-                    <div class="col-md-5 form-inline ml-12-dot item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="강의실" value="{{ $data['BannerName'] }}" > 호 <span class="ml-10">• 숫자만 입력</span>
+                        <input type="text" class="form-control" id="rd_name" name="rd_name" required="required" title="독서실명" value="{{ $data['BannerName'] }}" >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">독서실총좌석수<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="lake_layer">강의실<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="독서실총좌석수" value="{{ $data['BannerName'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="lake_layer" name="lake_layer" required="required" title="강의실명" value="{{ $data['LakeLayer'] }}" > <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">가로수<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 d-line" for="use_start_date">사용기간<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="가로수" value="{{ $data['BannerName'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
+                        <input type="text" class="form-control datepicker" id="use_start_date" name="use_start_date" value="{{$data['UseStartDate']}}">
+                        <div class="form-control input-group-addon no-border no-bgcolor">~</div>
+                        <input type="text" class="form-control datepicker" id="use_end_date" name="use_end_date" value="{{$data['UseEndDate']}}">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">좌석시작번호<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="use_qty">독서실총좌석수<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="좌석시작번호" value="{{ $data['BannerName'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="use_qty" name="use_qty" required="required" title="독서실총좌석수" value="{{ $data['UseQty'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="">좌석종료번호<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 d-line" for="transverse_num">가로수<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
-                        <input type="number" class="form-control" id="" name="" required="required" title="좌석종료번호" value="{{ $data['BannerName'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="transverse_num" name="transverse_num" required="required" title="가로수" value="{{ $data['TransverseNum'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="start_no">좌석시작번호<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline item">
+                        <input type="number" class="form-control" id="start_no" name="start_no" required="required" title="좌석시작번호" value="{{ $data['StartNo'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="end_no">좌석종료번호<span class="required">*</span></label>
+                    <div class="col-md-5 form-inline ml-12-dot item">
+                        <input type="number" class="form-control" id="end_no" name="end_no" required="required" title="좌석종료번호" value="{{ $data['EndNo'] }}" > <span class="ml-10">• 숫자만 입력</span>
                     </div>
                 </div>
 
@@ -120,8 +129,8 @@
                         <div class="row-line mb-10">
                             <div class="radio">
                                 <span class="mr-5">[문자발송사용여부]</span>
-                                <input type="radio" id="sms_is_use_y" name="sms_is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="sms_is_use_y" class="input-label">사용</label>
-                                <input type="radio" id="sms_is_use_n" name="sms_is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="sms_is_use_n" class="input-label">미사용</label>
+                                <input type="radio" id="sms_is_use_y" name="sms_is_use" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUse']=='Y')checked="checked"@endif/> <label for="sms_is_use_y" class="input-label">사용</label>
+                                <input type="radio" id="sms_is_use_n" name="sms_is_use" class="flat" value="N" @if($method == 'POST' || $data['IsUse']=='N')checked="checked"@endif/> <label for="sms_is_use_n" class="input-label">미사용</label>
                             </div>
                         </div>
                         <div class="row-line mb-10">

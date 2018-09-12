@@ -124,11 +124,11 @@
             </div>
             <div class="willbes-listTable willbes-reply widthAuto460">
                 {{--<div class="will-Tit NG">수강후기<a href="#none" class="f_right" onclick="openWin('WrapReply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>--}}
-                <div class="will-Tit NG">수강후기<a href="#none" class="f_right" id="btn_study_comment"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                <div class="will-Tit NG">수강후기<a href="#none" class="f_right btn-study" data-board-idx=""><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                 <ul class="List-Table GM tx-gray">
                     @if($data['StudyCommentData'] != 'N')
                         @foreach(json_decode($data['StudyCommentData'], true) as $idx => $row)
-                            <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none">{{ $row['Title'] }}</a></li>
+                            <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ $row['Title'] }}</a></li>
                         @endforeach
                     @endif
                 </ul>
@@ -186,13 +186,14 @@
             @endif
         });
 
-        /*$regi_form.on('click', '#btn_my_addr_list', function() {*/
-        $('#btn_study_comment').click(function () {
+        //수강후기 레이어팝업
+        $('.btn-study').click(function () {
             var ele_id = 'WrapReply';
             var data = {
                 'ele_id' : ele_id,
                 'show_onoff' : 'off',
-                'cate_code' : '{{$__cfg['CateCode']}}'
+                'cate_code' : '{{$__cfg['CateCode']}}',
+                'board_idx' : $(this).data('board-idx')
             };
             sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');

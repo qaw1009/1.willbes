@@ -10,6 +10,7 @@
             <input type="hidden" id="search_subject_idx" name="search_subject_idx">
             <input type="hidden" id="search_prof_idx" name="search_prof_idx">
             <input type="hidden" id="orderby" name="orderby">
+
             <div class="curriWrap c_both">
                 <div class="CurriBox">
                     <table cellspacing="0" cellpadding="0" class="curriTable curriTableLayer">
@@ -333,9 +334,17 @@
             'orderby' : orderby
         };
         sendAjax(_url, data, function(ret) {
+            var set_table_style;
+            var param_board_idx = "{{ element('board_idx', $arr_input) }}";
             var rownum = ret.paging.rownum;
             var lecture_path = "{{ site_url('/lecture/show/cate/' . element('cate_code', $arr_input) . '/pattern/only' . '/prod-code/') }}";
             $.each(ret.ret_data, function (i, item) {
+                if(item.BoardIdx == param_board_idx) {
+                    set_table_style = "table-row";
+                } else {
+                    set_table_style = 'none';
+                }
+
                 add_table += '<tr class="replyList w-replyList">';
                 add_table += '<td class="w-no">';
                 if(item.IsBest == 1) {
@@ -354,7 +363,7 @@
                 add_table += '<td class="w-write">'+item.RegMemName+'</td>';
                 add_table += '<td class="w-date">'+item.RegDatm+'</td>';
                 add_table += '</tr>';
-                add_table += '<tr class="replyTxt w-replyTxt tx-gray">';
+                add_table += '<tr class="replyTxt w-replyTxt tx-gray" style="display:'+set_table_style+'">';
                 add_table += '<td colspan="7">';
                 add_table += '<div class="tx-blue"><a href="'+lecture_path+item.ProdCode+'" target="_blank">'+item.ProdName+'</a></div>';
                 add_table += (item.RegType == 1) ? item.Content : nl2br(item.Content);

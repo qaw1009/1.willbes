@@ -12,7 +12,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록/배정관리 인덱스
+     * 독서실등록/좌석현황 인덱스
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록/배정관리 목록 조회
+     * 독서실등록/좌석현황 목록 조회
      * @return CI_Output
      */
     public function listAjax()
@@ -59,7 +59,7 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록/배정관리 등록/수정 폼
+     * 독서실등록/좌석현황 등록/수정 폼
      * @param array $params
      */
     public function create($params = [])
@@ -86,7 +86,15 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록/배정관리 배정관리
+     * 독서실등록/좌석현황 등록/수정
+     */
+    public function store()
+    {
+        
+    }
+
+    /**
+     * 독서실등록/좌석현황 배정관리
      */
     public function assignManageList($params = [])
     {

@@ -191,6 +191,7 @@
             var ele_id = 'WrapReply';
             var data = {
                 'ele_id' : ele_id,
+                'show_onoff' : 'off',
                 'cate_code' : '{{$__cfg['CateCode']}}'
             };
             sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {

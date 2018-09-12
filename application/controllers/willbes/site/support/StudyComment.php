@@ -18,9 +18,24 @@ class StudyComment extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    public function listFrame()
+    {
+        $this->load->view('support/frame/study', [
+
+        ]);
+    }
+
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null));
+        if (element('show_onoff',$arr_input) == 'on') {
+            $style_display['list'] = 'none';
+            $style_display['show'] = 'block';
+        } else {
+            $style_display['list'] = 'block';
+            $style_display['show'] = 'none';
+        }
+
 
         if ($this->_site_code == '2004') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
@@ -31,9 +46,11 @@ class StudyComment extends \app\controllers\FrontController
             $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, element('cate_code', $arr_input));
         }
 
-        $this->load->view('site/professor/study_comment_index', [
+        $this->load->view('support/popup_study', [
+        //$this->load->view('site/professor/study_comment_index', [
             'arr_input' => $arr_input,
-            'arr_base' => $arr_base
+            'arr_base' => $arr_base,
+            'style_display' => $style_display
         ]);
     }
 

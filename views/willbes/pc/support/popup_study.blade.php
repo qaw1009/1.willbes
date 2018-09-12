@@ -3,7 +3,7 @@
     <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 
     <!-- List -->
-    <div id="AddList" class="Layer-Cont">
+    <div id="AddList" class="Layer-Cont" style="display: {{$style_display['list']}}">
         <form class="form-horizontal form-label-left" id="_ajax_search_form" name="_ajax_search_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
@@ -109,7 +109,7 @@
     </div>
 
     <!-- Write -->
-    <div id="AddModify" class="Layer-Cont" style="display: none">
+    <div id="AddModify" class="Layer-Cont" style="display: {{$style_display['show']}}">
         <ul class="replyInfo tx-gray NG">
             <li>· 수강생에 한해 강좌당 1회 작성이 가능합니다.</li>
             <li>· 수강 종료 강좌는 수강이 종료된 날로부터 30일 이내에만 후기 등록이 가능합니다.</li>
@@ -222,7 +222,7 @@
 
         /* 1. Visualizing things on Hover - See next part for action on click */
         $('#stars li').on('mouseover', function(){
-        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
             // Now highlight all the stars that's not after the current hovered star
             $(this).parent().children('li.star').each(function(e){
                 if (e < onStar) {

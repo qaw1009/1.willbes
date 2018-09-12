@@ -3190,9 +3190,6 @@ table.classTable tr td.w-data {
 .replyBtnBox.top {
     top: 35px;
 }
-.replyBtnBox.btm {
-    bottom: 0;
-}
 .replyBtnBox ul {
     float: right;
 }

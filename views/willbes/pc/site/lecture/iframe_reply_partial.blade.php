@@ -1,4 +1,4 @@
-<div class="replyiFrame p_re pb40">
+<div class="replyiFrame p_re">
     <div class="replyBtnBox top">
         <ul>
             <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기 ></a></li>
@@ -27,11 +27,4 @@
             iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
         }
     </script>
-
-    <div class="replyBtnBox btm">
-        <ul>
-            <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기 ></a></li>
-            <li class="subBtn NSK"><a href="#none" class="btn-study" data-write-type="off">수강후기 전체보기 ></a></li>
-        </ul>
-    </div>
 </div>

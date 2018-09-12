@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// TODO : 추후 회원 모델과 병합 예정
 class SearchMemberModel extends WB_Model
 {
     private $_table = [

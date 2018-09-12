@@ -25,7 +25,7 @@ class SearchWProfessorModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listSearchProfessor($search_type = '', $site_code = '', $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSearchProfessor($search_type, $site_code, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';

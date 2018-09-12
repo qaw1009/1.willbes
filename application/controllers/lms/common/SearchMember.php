@@ -73,7 +73,7 @@ class SearchMember extends \app\controllers\BaseController
     {
         $rules = [['field' => 'search_mem_file', 'label' => '일괄등록파일', 'rules' => 'callback_validateFileRequired[search_mem_file]']];
         if ($this->validate($rules) === false) {
-            return;
+            return null;
         }
 
         // 첨부파일 읽기

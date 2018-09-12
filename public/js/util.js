@@ -576,9 +576,9 @@ function remoteOpen() {
     popupOpen("https://www.whelper.co.kr/willbes","whelper","1000","800",'','',"yes");
 }
 
-/*
-단축키
-*/
+/**
+ * 단축키
+ */
 $(document).bind('keypress', function(event) {
     if( event.which===90 && event.shiftKey ) {
         remoteOpen();
@@ -597,8 +597,7 @@ function setRowspan(classname) {
             rows.not(":eq(0)").remove();
         }
     });
-};
-
+}
 
 /**
  * Layer popup

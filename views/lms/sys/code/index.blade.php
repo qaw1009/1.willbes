@@ -74,15 +74,15 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
-            setRowspan('row_td'); //td rowspan
+            //setRowspan('row_td'); //td rowspan
 
             $datatable = $list_table.DataTable({
                 serverSide: false,
                 ajax : false,
-                paging: false,
+                paging: true,
+                pageLength: 50,
                 searching: true,
-                //rowsGroup: ['.rowspan'],      // setRowspan 함수 로 대체
+                rowsGroup: ['.rowspan'],
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 그룹유형등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
@@ -93,11 +93,9 @@
                 var strGroupCcd = '';
                 var strCcd = '';
                 var uri_param = '';
-
                 var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
 
                 if (is_regist) {    //등록
-
                     strMakeType = (typeof $(this).data('code-type') != 'undefined') ? $(this).data('code-type') : "group";
 
                     if(strMakeType == "group") {
@@ -111,7 +109,6 @@
                     }
                     uri_param = strMakeType+"/"+strGroupCcd+"/";
                 }  else {           //수정
-
                     strMakeType = $(this).data('code-type');
                     strGroupCcd = $(this).data('group-ccd');
                     strCcd = $(this).data('ccd');
@@ -124,8 +121,6 @@
                     ,width : "650"
                 });
             });
-
-
         });
 
         // datatable searching
@@ -135,8 +130,5 @@
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
                 .draw();
         }
-
-
-
     </script>
 @stop

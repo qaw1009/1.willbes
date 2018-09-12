@@ -148,7 +148,7 @@
                                 <dt>
                                     <span class="u-point tx-pink">{{ number_format($results['point']) }}P 보유</span>
                                     <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
-                                    <input type="text" name="use_point" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="0" value="" placeholder="0" maxlength="10"> P 차감
+                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="-1" value="" placeholder="0" maxlength="10"> P 차감
                                 </dt>
                             </dl>
                         </div>

@@ -152,25 +152,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ProfessorFModel $professorFModel                                    Professor Model Class
  * @property ProductFModel $productFModel                                        Product Main Model Class
  * @property LectureFModel $lectureFModel                                         Lecture Product Model Class
- * @property FreeLectureFModel $freeLectureFModel                             Free Lecture Product Model Class
  * @property PackageFModel $packageFModel                                      Package Product Model Class
- * @property UserPackageFModel $userPackageFModel                           User  Package Product Model Class
- * @property PassPackageFModel $passPackageFModel                          Pass Package Product Model Class
  * @property CartFModel $cartFModel                                                 Cart Model Class
  * @property OrderFModel $orderFModel                                              Order Model Class
  * @property OrderListFModel $orderListFModel                                     Order List Model Class
  * @property MyDeliveryAddressFModel $myDeliveryAddressFModel           My Delivery Address Model Class
  * @property CouponFModel $couponFModel                                         Coupon Model Class
+ * @property PointFModel $pointFModel                                               Point Model Class
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
  * @property PlayerFModel $playerFModel                                            Player Model Class
  * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
- * @property SupportMainFModel $supportMainFModel                            SupportMain Model Class
  * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
- * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel              SupportBoardTwoWayF Model Class
+ * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel   SupportBoardTwoWayF Model Class
  * @property CategoryFModel $categoryFModel                                     Category Model Class
- * @property AccessFModel $accessFModel                                     Access Model Class
- * @property DownloadFModel $downloadFModel                                 Download Model Class
+ * @property AccessFModel $accessFModel                                          Access Model Class
+ * @property DownloadFModel $downloadFModel                                    Download Model Class
  */
 class PHPStorm_CI_CC
 {

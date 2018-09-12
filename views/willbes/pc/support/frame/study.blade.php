@@ -37,10 +37,10 @@
 <div class="willbes-Leclist c_both">
     <div class="willbes-LecreplyList tx-gray">
         → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">{{$total_rows}}건</a> ]
-        <ul>
+        {{--<ul>
             <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기 ></a></li>
             <li class="subBtn NSK"><a href="#none" class="btn-study" data-write-type="off">수강후기 전체보기 ></a></li>
-        </ul>
+        </ul>--}}
     </div>
     <div class="LeclistTable">
         <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
@@ -82,22 +82,4 @@
         </div>
     </div>
 </div>
-<div id="WrapReply"></div>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.btn-study').click(function () {
-            var ele_id = 'WrapReply';
-            var data = {
-                'ele_id' : ele_id,
-                'show_onoff' : $(this).data('write-type'),
-                'cate_code' : '{{element('cate',$arr_input)}}'
-            };
-            sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {
-                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-                /*$('#' + ele_id, parent.document).html(ret).show().css('display', 'block').trigger('create');*/
-            }, showAlertError, false, 'GET', 'html');
-        });
-    });
-</script>
 @stop

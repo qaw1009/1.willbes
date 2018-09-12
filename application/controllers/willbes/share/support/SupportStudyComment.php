@@ -64,17 +64,16 @@ class SupportStudyComment extends BaseSupport
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, ProdCode, LecScore';
 
-        $order_by = ['BoardIdx'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $list = [];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
-        /*$paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);*/
         $paging = $this->pagination('/support/studyComment/listFrame/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
         }
-        $list_best = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,2,0,['LecScore' => 'Desc','BoardIdx'=>'Desc']);
+        $list_best = $this->supportBoardTwoWayFModel->listBoard(false,$arr_best_condition,$column,2,0,['LecScore' => 'Desc','BoardIdx'=>'Desc']);
 
         $this->load->view('support/frame/study', [
             'arr_input' => $arr_input,
@@ -110,7 +109,6 @@ class SupportStudyComment extends BaseSupport
         }
 
         $this->load->view('support/popup_study', [
-            //$this->load->view('site/professor/study_comment_index', [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'style_display' => $style_display
@@ -129,11 +127,7 @@ class SupportStudyComment extends BaseSupport
         $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
         $prof_idx = element('search_prof_idx',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input,1);
-
-        $get_params = 'search_cate_code='.$cate_code.'&search_prof_idx='.$prof_idx.'&search_subject_idx='.$subject_idx;
-        $get_params .= '&s_keyword='.$s_keyword;
-        $get_params .= '&page='.$page;
+        $orderby = element('orderby',$arr_input, 'best');
 
         $arr_condition = [
             'EQ' => [
@@ -160,11 +154,23 @@ class SupportStudyComment extends BaseSupport
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, ProdCode, LecScore';
 
-        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        switch ($orderby) {
+            case "best" :
+                $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+                break;
+            case "date" :
+                $order_by = ['BoardIdx'=>'Desc'];
+                break;
+            case "score" :
+                $order_by = ['LecScore'=>'Desc','BoardIdx'=>'Desc'];
+                break;
+            default :
+                $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+                break;
+        }
 
         $list = [];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
-        /*$paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);*/
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
@@ -187,11 +193,6 @@ class SupportStudyComment extends BaseSupport
         $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
         $prof_idx = element('search_prof_idx',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input,1);
-
-        $get_params = 'search_cate_code='.$cate_code.'&search_prof_idx='.$prof_idx.'&search_subject_idx='.$subject_idx;
-        $get_params .= '&s_keyword='.$s_keyword;
-        $get_params .= '&page='.$page;
 
         $arr_condition = [
             'EQ' => [
@@ -212,7 +213,6 @@ class SupportStudyComment extends BaseSupport
         ];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
-        /*$paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);*/
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         return $this->response([

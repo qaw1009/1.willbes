@@ -9,6 +9,7 @@
             <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
             <input type="hidden" id="search_subject_idx" name="search_subject_idx">
             <input type="hidden" id="search_prof_idx" name="search_prof_idx">
+            <input type="hidden" id="orderby" name="orderby">
             <div class="curriWrap c_both">
                 <div class="CurriBox">
                     <table cellspacing="0" cellpadding="0" class="curriTable curriTableLayer">
@@ -57,9 +58,9 @@
             <div class="willbes-Leclist c_both">
                 <div class="willbes-LecreplyList tx-gray">
                     <dl class="Select-Btn NG">
-                        <dt><a class="on" href="#none">BEST순</a></dt>
-                        <dt><a href="#none">최신순</a></dt>
-                        <dt><a href="#none">평점순</a></dt>
+                        <dt><a href="#none" id="order_by_best" class="btn-order-by on" data-order-by="best">BEST순</a></dt>
+                        <dt><a href="#none" id="order_by_date" class="btn-order-by" data-order-by="date">최신순</a></dt>
+                        <dt><a href="#none" id="order_by_score" class="btn-order-by" data-order-by="score">평점순</a></dt>
                     </dl>
                     <div class="search-Btn btnAuto120 h27 f_right">
                         <button type="submit" onclick="{!! (sess_data('is_login') == true) ? "closeWin('AddList'); openWin('AddModify')" : "javascript:alert('로그인 후 이용해 주십시오.');"!!}" class="mem-Btn bg-blue bd-dark-blue">
@@ -275,6 +276,7 @@
             }
         });
 
+        //검색
         $('#btn_search').click(function () {
             callAjax(1);
         });
@@ -285,6 +287,14 @@
             $('.prof-list').attr('class','prof-list off');
             $('#prof_' + $(this).data('prof-idx')).attr('class','prof-list on');
 
+            callAjax(1);
+        });
+
+        //정렬
+        $_ajax_search_form.on('click', '.btn-order-by', function() {
+            $('#orderby').val($(this).data('order-by'));
+            $('.btn-order-by').attr('class','btn-order-by off');
+            $('#order_by_' + $(this).data('order-by')).attr('class','btn-order-by on');
             callAjax(1);
         });
 
@@ -311,6 +321,7 @@
     //list ajax
     function listAjax(page) {
         var add_table = '';
+        var orderby = $_ajax_search_form.find('input[name="orderby"]').val();
         var _url = '{{ site_url("support/studyComment/listAjax") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
@@ -318,7 +329,8 @@
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),
             's_keyword' : $('#s_keyword').val(),
-            'page' : page
+            'page' : page,
+            'orderby' : orderby
         };
         sendAjax(_url, data, function(ret) {
             var rownum = ret.paging.rownum;

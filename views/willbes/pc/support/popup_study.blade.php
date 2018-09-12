@@ -345,7 +345,7 @@
                 add_table += '<tr class="replyTxt w-replyTxt tx-gray">';
                 add_table += '<td colspan="7">';
                 add_table += '<div class="tx-blue"><a href="'+lecture_path+item.ProdCode+'" target="_blank">'+item.ProdName+'</a></div>';
-                add_table += item.Content;
+                add_table += (item.RegType == 1) ? item.Content : nl2br(item.Content);
                 add_table += '</td>';
                 add_table += '</tr>';
 
@@ -452,5 +452,9 @@
 
     function starCount(count) {
         $('#start_count').val(count);
+    }
+
+    function nl2br(str){
+        return str.replace(/\n/g, "<br />");
     }
 </script>

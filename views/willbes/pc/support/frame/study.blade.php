@@ -4,48 +4,39 @@
 <div class="willbes-Leclist c_both">
     <div class="willbes-Lec-Tit NG tx-black">수강후기</div>
     <div class="ReplylistTable tx-gray">
-        <div class="replyBox">
-            <div class="w-reply-teaser">
-                <ul>
-                    <li class="w-tit tx-light-blue">2017 기미진 국어 아침특강(5-6월)</li>
-                    <li class="w-name tx-center">홍길동</li>
-                    <li class="row-line">|</li>
-                    <li class="w-date tx-center">2018-03-24</li>
-                </ul>
-                <ul>
-                    <li class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></li>
-                    <li class="w-subtit">강의 잘 들었습니다.</li>
-                </ul>
-            </div>
-            <div class="w-reply">
-                군더더기없는 깔끔한 강의입니다 강의시간이나 분량이 부담이 없어서 마음에 들었습니다~~ 군더더기없는 깔끔한 강의입니다 강의시간이나 분량이 부담이
-                없어서 마음에 들었습니다~~
-            </div>
-        </div>
-        <div class="replyBox">
-            <div class="w-reply-teaser">
-                <ul>
-                    <li class="w-tit tx-light-blue">2018 신광은 형사소송법 기본이론(3월)</li>
-                    <li class="w-name tx-center">홍진경</li>
-                    <li class="row-line">|</li>
-                    <li class="w-date tx-center">2018-03-24</li>
-                </ul>
-                <ul>
-                    <li class="w-star"><img src="{{ img_url('sub/star5.gif') }}"></li>
-                    <li class="w-subtit">역시 신광은교수님 강의 재미있게 잘 들었습니다.</li>
-                </ul>
-            </div>
-            <div class="w-reply">
-                체포는 48시간을 초과하면 안된다고 했는데 법관이 48시간 이내에 구속영장을 발부 해주지 않으면 피의자를 석방을 한 상태로 기다려야되는게 맞나요??
-            </div>
-        </div>
+        @if(count($list_best) > 0)
+            @foreach($list_best as $row)
+                <div class="replyBox">
+                    <div class="w-reply-teaser">
+                        <ul>
+                            <li class="w-tit tx-light-blue">{{$row['ProdName']}}</li>
+                            <li class="w-name tx-center">{{$row['RegMemName']}}</li>
+                            <li class="row-line">|</li>
+                            <li class="w-date tx-center">{{$row['RegDatm']}}</li>
+                        </ul>
+                        <ul>
+                            {{--<li class="w-star"><img src="{{ img_url('sub/star4.gif') }}"></li>--}}
+                            <li class="w-star"><img src="{{img_url("sub/star".$row['LecScore'].".gif")}}"></li>
+                            <li class="w-subtit">{{$row['Title']}}</li>
+                        </ul>
+                    </div>
+                    <div class="w-reply">
+                        @if($row['RegType'] == 1)
+                            {!! $row['Content'] !!}
+                        @else
+                            {!! nl2br($row['Content']) !!}
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        @endif
     </div>
 </div>
 <!-- willbes-Reply -->
 
 <div class="willbes-Leclist c_both">
     <div class="willbes-LecreplyList tx-gray">
-        → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">2건</a> ]
+        → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">{{$total_rows}}건</a> ]
         <ul>
             <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기 ></a></li>
             <li class="subBtn NSK"><a href="#none" class="btn-study" data-write-type="off">수강후기 전체보기 ></a></li>
@@ -68,18 +59,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td class="w-no">2</td>
-                <td class="w-list tx-left pl20">시험에 나올 쟁점들을 꼭꼭 짚어주셔서 좋습니다. 수험생의 눈높이에 맞춰 주셔서 강의를...</td>
-                <td class="w-name">홍길동</td>
-                <td class="w-date">2018-04-22</td>
-            </tr>
-            <tr>
-                <td class="w-no">1</td>
-                <td class="w-list tx-left pl20">서울시 7급, 국가직 7급 합격생입니다.</td>
-                <td class="w-name">홍길순</td>
-                <td class="w-date">2018-04-22</td>
-            </tr>
+            @if(empty($list))
+                <tr>
+                    <td class="w-list tx-center" colspan="6">등록된 내용이 없습니다.</td>
+                </tr>
+            @endif
+            @foreach($list as $row)
+                <tr>
+                    <td class="w-no">{{$paging['rownum']}}</td>
+                    <td class="w-list tx-left pl20">{{$row['Title']}}</td>
+                    <td class="w-name">{{$row['RegMemName']}}</td>
+                    <td class="w-date">{{$row['RegDatm']}}</td>
+                </tr>
+                @php $paging['rownum']-- @endphp
+            @endforeach
             </tbody>
         </table>
     </div>

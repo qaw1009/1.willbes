@@ -26,11 +26,62 @@ class SupportStudyComment extends BaseSupport
     public function listFrame()
     {
         $arr_input = array_merge($this->_reqG(null));
-        $paging = null;
+        $cate_code = element('cate',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        /*$prof_idx = '50070';*/
+        $page = element('page',$arr_input);
+
+        $get_params = 'cate='.$cate_code.'&prof_idx='.$prof_idx;
+        $get_params .= '&page='.$page;
+
+        $arr_best_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y',
+                'IsBest' => '1',
+                'ProfIdx' => $prof_idx
+            ],
+            'LKB' => [
+                'Category_String' => $cate_code
+            ]
+        ];
+
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y',
+                'ProfIdx' => $prof_idx
+            ],
+            'LKB' => [
+                'Category_String' => $cate_code
+            ]
+        ];
+
+        $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
+        $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
+        $column .= ',AttachData, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ',SubjectIdx, ProfIdx, ProdCode';
+        $column .= ',SubjectName, ProfName, ProdName';
+        $column .= ',ProdApplyTypeCcd, ProdCode, LecScore';
+
+        $order_by = ['BoardIdx'=>'Desc'];
+
+        $list = [];
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        /*$paging = $this->pagination('/support/studyComment/listAjax/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);*/
+        $paging = $this->pagination('/support/studyComment/listFrame/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+
+        if ($total_rows > 0) {
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+        }
+        $list_best = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,2,0,['LecScore' => 'Desc','BoardIdx'=>'Desc']);
 
         $this->load->view('support/frame/study', [
             'arr_input' => $arr_input,
             'paging' => $paging,
+            'total_rows' => $total_rows,
+            'list' => $list,
+            'list_best' => $list_best
         ]);
     }
 

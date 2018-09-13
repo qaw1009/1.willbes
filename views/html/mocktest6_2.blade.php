@@ -118,7 +118,7 @@
                         </div>
                     </span>
                 </div>
-                <div class="LeclistTable pointTable">
+                <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable mockTable under-gray bdt-gray tx-gray">
                         <colgroup>
                             <col style="width: 50px;">
@@ -150,7 +150,7 @@
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Off</td>
                                 <td class="w-date">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
-                                <td class="w-list tx-left pl15"><a href="#none">7/2 전국모의고사-일방경찰</a></td>
+                                <td class="w-list tx-left pl15"><a href="#none" onclick="openWin('MOCKTESTPASS')">7/2 전국모의고사-일방경찰</a></td>
                                 <td class="w-price">5,000원</td>
                                 <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
                                 <td class="w-state">진행중</td>
@@ -255,6 +255,323 @@
             </div> 
         </div>
         <!-- willbes-Mypage-Tabs -->
+
+        <div id="MOCKTESTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('MOCKTESTPASS')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">윌비스 <span class="tx-blue">전국모의고사</span></div> 
+            <div class="mockTabWrap mt35">
+                <ul class="tabWrap tabMockblack three NG">
+                    <li><a href="#mock1" class="on">접수하기</a></li>
+                    <li><a href="#mock2" class="">결제하기</a></li>
+                    <li><a href="#mock3" class="">결제완료</a></li>
+                </ul>
+                <div class="passzoneTitInfo tx-light-blue tx-center NG mt20">2018년 9급 시험대비 제 4회 전국 모의고사 (02/25 시행)</div>
+                <div class="tabBox">
+                    <div id="mock1">
+                        <div class="PASSZONE-List widthAutoFull">
+                            <div class="PASSZONE-Lec-Section pt20">
+                                <div class="LeclistTable">
+                                    <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
+                                        <colgroup>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th class="w-tit">이름(아이디)</th>
+                                                <td class="w-list" colspan="3">홍길동(ABC***)</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시형태</th>
+                                                <td class="w-list">Off(학원)</td>
+                                                <th class="w-tit">응시분야</th>
+                                                <td class="w-list">9급</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시지역</th>
+                                                <td class="w-list">전국</td>
+                                                <th class="w-tit">응시번호</th>
+                                                <td class="w-list tx-bright-gray">결제후 응시번호 확인 가능</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">시험응시일</th>
+                                                <td class="w-list" colspan="3">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시직렬</th>
+                                                <td class="w-list" colspan="3">
+                                                    <select id="cause" name="cause" title="cause" class="seleCause">
+                                                        <option selected="selected">직렬선택</option>
+                                                        <option value="강사불만">강사불만</option>
+                                                        <option value="강좌불만">강좌불만</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시필수과목</th>
+                                                <td class="w-list" colspan="3">한국사, 영어</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시선택과목</th>
+                                                <td class="w-list" colspan="3">
+                                                    <select id="sele1" name="sele1" title="sele1" class="sele1">
+                                                        <option selected="selected">선택과목1</option>
+                                                        <option value="강사불만">강사불만1</option>
+                                                        <option value="강좌불만">강좌불만1</option>
+                                                        <option value="교재불만">교재불만1</option>
+                                                    </select>
+                                                    <select id="sele2" name="sele2" title="sele2" class="sele2">
+                                                        <option selected="selected">선택과목2</option>
+                                                        <option value="강사불만">강사불만2</option>
+                                                        <option value="강좌불만">강좌불만2</option>
+                                                        <option value="교재불만">교재불만2</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">가산점</th>
+                                                <td class="w-list" colspan="3">
+                                                    <ul>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>해당없음</label></li>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>5%</label></li>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>10%</label></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시료</th>
+                                                <td class="w-list" colspan="3">5,000원</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="passzoneDayInfo tx-gray tx-center NGEB mt30 mb30">[접수기간] <span class="tx-light-blue">2018-00-00 00:00 ~ 2018-00-00 00:00</span> <span class="tx-red">(마감3일전)</span></div>
+                            <div class="passzonebtn tx-center">
+                                <span>
+                                    <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
+                                        <span class="strong">접수하기</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mock2">
+                        <div class="PASSZONE-List widthAutoFull">
+                            <div class="PASSZONE-Lec-Section pt20">
+                                <div class="LeclistTable">
+                                    <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
+                                        <colgroup>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th class="w-tit">이름(아이디)</th>
+                                                <td class="w-list" colspan="3">홍길동(ABC***)</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시형태</th>
+                                                <td class="w-list">Off(학원)</td>
+                                                <th class="w-tit">응시분야</th>
+                                                <td class="w-list">9급</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시지역</th>
+                                                <td class="w-list">전국</td>
+                                                <th class="w-tit">응시번호</th>
+                                                <td class="w-list tx-bright-gray">결제후 응시번호 확인 가능</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">시험응시일</th>
+                                                <td class="w-list" colspan="3">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시직렬</th>
+                                                <td class="w-list" colspan="3">일반행정직</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시필수과목</th>
+                                                <td class="w-list" colspan="3">한국사, 영어</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시선택과목</th>
+                                                <td class="w-list" colspan="3">[선택과목1] 행정학 [선택과목2] 수학</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">가산점</th>
+                                                <td class="w-list" colspan="3">
+                                                    <ul>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>해당없음</label></li>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>5%</label></li>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>10%</label></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">결제(접수)금액</th>
+                                                <td class="w-list">5,000원</td>
+                                                <th class="w-tit">쿠폰적용</th>
+                                                <td class="w-list">
+                                                    <select id="coupon" name="coupon" title="coupon" class="seleCoupon">
+                                                        <option selected="selected">쿠폰선택</option>
+                                                        <option value="쿠폰선택1">쿠폰선택1</option>
+                                                        <option value="쿠폰선택2">쿠폰선택2</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">결제(접수)루트</th>
+                                                <td class="w-list">온라인</td>
+                                                <th class="w-tit">결제(접수)상태</th>
+                                                <td class="w-list">결제대기 (2018-00-00 00:00)</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">결제(접수)수단</th>
+                                                <td class="w-list">
+                                                    <ul>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>신용카드</label></li>
+                                                        <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>실시간계좌이체</label></li>
+                                                    </ul>
+                                                </td>
+                                                <th class="w-tit">결제(접수)일</th>
+                                                <td class="w-list">2018-00-00 00:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <ul class="passzoneListInfo tx-gray GM mt20 mb20">
+                                <li class="tit strong">[결제시 유의사항]</li>
+                                <li class="txt">· 접수기간이 마감된 후에는 결제하기가 불가능합니다.</li>
+                                <li class="txt">· 환불요청은 시험응시2일전까지 가능하며, 시험응시일 이후에는 환불이 불가능합니다.</li>
+                                <li class="txt">· 결제(접수)상태가 '결제대기'인 경우만 모의고사 접수정보수정이 가능합니다.(단, 접수기간이 마감된경우 수정불가합니다.)</li>
+                                <li class="txt">· 결제대기취소시에는 해당모의고사 접수정보는 내강의실 > 모의고사관리 > 접수현황메뉴에서 삭제처리됩니다.</li>
+                                <li class="txt">· 자세한사항은 고객센터 1566-5006으로 문의해주세요.</li>
+                            </ul>
+                            <div class="passzoneDayInfo tx-gray tx-center NG mt30 mb30">
+                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>본인은 유의사항을 모두 이해하였으며 이에 동의합니다.</label>
+                            </div>
+                            <div class="passzonebtn tx-center">
+                                <span>
+                                    <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
+                                        <span class="strong">접수정보수정</span>
+                                    </button>
+                                </span>
+                                <span>
+                                    <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
+                                        <span class="strong">결제대기취소</span>
+                                    </button>
+                                </span>
+                                <span>
+                                    <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
+                                        <span class="strong">접수하기</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mock3">
+                        <div class="PASSZONE-List widthAutoFull">
+                            <div class="PASSZONE-Lec-Section pt20">
+                                <div class="LeclistTable">
+                                    <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
+                                        <colgroup>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th class="w-tit">이름(아이디)</th>
+                                                <td class="w-list" colspan="3">홍길동(ABC***)</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시형태</th>
+                                                <td class="w-list">Off(학원)</td>
+                                                <th class="w-tit">응시분야</th>
+                                                <td class="w-list">9급</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시지역</th>
+                                                <td class="w-list">전국</td>
+                                                <th class="w-tit">응시번호</th>
+                                                <td class="w-list tx-bright-gray">결제후 응시번호 확인 가능</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">시험응시일</th>
+                                                <td class="w-list" colspan="3">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시직렬</th>
+                                                <td class="w-list" colspan="3">일반행정직</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시필수과목</th>
+                                                <td class="w-list" colspan="3">한국사, 영어</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">응시선택과목</th>
+                                                <td class="w-list" colspan="3">[선택과목1] 행정학 [선택과목2] 수학</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">가산점</th>
+                                                <td class="w-list" colspan="3">해당없음</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">결제(접수)금액</th>
+                                                <td class="w-list">5,000원</td>
+                                                <th class="w-tit">쿠폰적용</th>
+                                                <td class="w-list">미적용</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">결제(접수)루트</th>
+                                                <td class="w-list">온라인</td>
+                                                <th class="w-tit">결제(접수)상태</th>
+                                                <td class="w-list">결제완료</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w-tit">결제(접수)수단</th>
+                                                <td class="w-list">신용카드</td>
+                                                <th class="w-tit">결제(접수)일</th>
+                                                <td class="w-list">2018-00-00 00:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <ul class="passzoneListInfo tx-gray GM mt20 mb20">
+                                <li class="txt">· 나의 전국 모의고사 접수현황은 내강의실 > 모의고사관리 > 접수현황 메뉴에서 확인 가능합니다.</li>
+                                <li class="txt">· 나의 전국 모의고사 성적결과는 내강의실 > 모의고사관리 > 성적결과 메뉴에서 확인 가능합니다.</li>
+                                <li class="txt">· 단, 해당 모의고사 응시완료 시에만 성적결과 보기 및 문제/해설 다운로드가 가능합니다.</li>
+                                <li class="tit strong mt20">[온라인 모의고사 유의사항]</li>
+                                <li class="txt">· 온라인 모의고사(응시형태가 Online인경우)는 내강의실 > 모의고사관리 > 온라인 모의고사 응시메뉴에서<br/>
+                                &nbsp;응시해 주시기 바랍니다.</li>
+                                <li class="txt">· 시험응시 기간동안 지정된 시간에만 응시 가능합니다.</li>
+                            </ul>
+                            <div class="passzoneDayInfo tx-gray tx-center NG mt30 mb30">
+                                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>본인은 유의사항을 모두 이해하였으며 이에 동의합니다.</label>
+                            </div>
+                            <div class="passzonebtn tx-center">
+                                <span>
+                                    <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
+                                        <span class="strong">응시표 출력</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- willbes-Layer-PassBox : 윌비스 전국모의고사 -->
 
     </div>
     <div class="Quick-Bnr ml20">

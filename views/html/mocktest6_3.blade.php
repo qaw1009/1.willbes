@@ -113,7 +113,7 @@
                         </div>
                     </span>
                 </div>
-                <div class="LeclistTable pointTable">
+                <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable mockTable under-gray bdt-gray tx-gray">
                         <colgroup>
                             <col style="width: 50px;">

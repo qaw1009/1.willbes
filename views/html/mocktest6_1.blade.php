@@ -125,120 +125,120 @@
                         </div>
                     </span>
                 </div>
-                <div class="LeclistTable pointTable">
-                    <table cellspacing="0" cellpadding="0" class="listTable testTable under-gray bdt-gray tx-gray">
+                <div class="LeclistTable">
+                    <table cellspacing="0" cellpadding="0" class="listTable mockTable under-gray bdt-gray tx-gray">
                         <colgroup>
-                            <col style="width: 60px;">
-                            <col style="width: 70px;">
-                            <col style="width: 90px;">
+                            <col style="width: 50px;">
                             <col style="width: 80px;">
-                            <col style="width: 100px;">
-                            <col style="width: 210px;">
-                            <col style="width: 90px;">
-                            <col style="width: 120px;">
-                            <col style="width: 120px;">
+                            <col style="width: 70px;">
+                            <col style="width: 130px;">
+                            <col style="width: 220px;">
+                            <col style="width: 60px;">
+                            <col style="width: 140px;">
+                            <col style="width: 80px;">
+                            <col style="width: 110px;">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>No<span class="row-line">|</span></li></th>
-                                <th>과정<span class="row-line">|</span></li></th>
                                 <th>응시분야<span class="row-line">|</span></li></th>
                                 <th>응시형태<span class="row-line">|</span></li></th>
                                 <th>시험응시일<span class="row-line">|</span></li></th>
                                 <th>모의고사명<span class="row-line">|</span></li></th>
-                                <th>접수루트<span class="row-line">|</span></li></th>
-                                <th>접수일<span class="row-line">|</span></li></th>
-                                <th>결제(접수)상태</th>
+                                <th>응시료<span class="row-line">|</span></li></th>
+                                <th>접수기간<span class="row-line">|</span></li></th>
+                                <th>진행상태<span class="row-line">|</span></li></th>
+                                <th>나의 접수상태</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="w-no">8</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Off</td>
-                                <td class="w-date">2018-10-10</td>
-                                <td class="w-list"><a href="#none">7/2 전국모의고사-일방경찰</a></td>
-                                <td class="w-route">학원</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state">결제완료</td>
+                                <td class="w-date">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-list tx-left pl15"><a href="#none">7/2 전국모의고사-일방경찰</a></td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state">진행중</td>
+                                <td class="w-user-state">미접수</td>
                             </tr>
                             <tr>
                                 <td class="w-no">7</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Online</td>
                                 <td class="w-date">2018-10-10~</td>
-                                <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
-                                <td class="w-route">학원</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state tx-blue">결제대기</td>
+                                <td class="w-list tx-left pl15">8/13 빅매지2-경행경채 모의고사</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state tx-red">접수마감</td>
+                                <td class="w-user-state tx-blue">결제대기</td>
                             </tr>
                             <tr>
                                 <td class="w-no">6</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">경행경채</td>
                                 <td class="w-form">Off</td>
                                 <td class="w-date">상시</td>
-                                <td class="w-list">7/2 전국모의고사-일방경찰</td>
-                                <td class="w-route">온라인</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state">환불완료</td>
+                                <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state">진행중</td>
+                                <td class="w-user-state">결제완료</td>
                             </tr>
                             <tr>
                                 <td class="w-no">5</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Online</td>
                                 <td class="w-date">2018-10-10</td>
-                                <td class="w-list">7/2 전국모의고사-일방경찰</td>
-                                <td class="w-route">온라인</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state tx-red">접수마감</td>
+                                <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state">진행중</td>
+                                <td class="w-user-state tx-blue">결제대기</td>
                             </tr>
                             <tr>
                                 <td class="w-no">4</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">경행경채</td>
                                 <td class="w-form">Off</td>
                                 <td class="w-date">상시</td>
-                                <td class="w-list">7/2 전국모의고사-일방경찰</td>
-                                <td class="w-route">온라인</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state">결제완료</td>
+                                <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state tx-red">접수마감</td>
+                                <td class="w-user-state">결제완료</td>
                             </tr>
                             <tr>
                                 <td class="w-no">3</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Online</td>
                                 <td class="w-date">2018-10-10~</td>
-                                <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
-                                <td class="w-route">학원</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state tx-blue">결제대기</td>
+                                <td class="w-list tx-left pl15">8/13 빅매지2-경행경채 모의고사</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state tx-red">접수마감</td>
+                                <td class="w-user-state">결제완료</td>
                             </tr>
                             <tr>
                                 <td class="w-no">2</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">경행경채</td>
                                 <td class="w-form">Off</td>
                                 <td class="w-date">상시</td>
-                                <td class="w-list">7/2 전국모의고사-일방경찰</td>
-                                <td class="w-route">온라인</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state">환불완료</td>
+                                <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state">진행중</td>
+                                <td class="w-user-state">미접수</td>
                             </tr>
                             <tr>
                                 <td class="w-no">1</td>
-                                <td class="w-price">5,000원</td>
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Online</td>
                                 <td class="w-date">2018-10-10</td>
-                                <td class="w-list">7/2 전국모의고사-일방경찰</td>
-                                <td class="w-route">온라인</td>
-                                <td class="w-day">2018-10-10 20:10</td>
-                                <td class="w-state tx-red">접수마감</td>
+                                <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
+                                <td class="w-price">5,000원</td>
+                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-state">진행중</td>
+                                <td class="w-user-state tx-blue">결제대기</td>
                             </tr>
                         </tbody>
                     </table>

@@ -3486,6 +3486,85 @@ table.classTable tr td.w-data {
     padding: 12px 0;
 }
 
+.mockTabWrap {
+    float: left;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.tabMockblack {
+    height: 50px;
+    border-bottom: 1px solid #4f4f4f;
+}
+.tabMockblack.three li {
+    float: left;
+    width: 33.33333333%;
+    height: 50px;
+}
+.tabMockblack li a {
+    display: block;
+    width: 100%;
+    height: 49px;
+    line-height: 48px;
+    background: #f5f5f5;
+    font-size: 15px;
+    font-weight: 600;
+    color: #878787;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+.tabMockblack li a.on {
+    background: #fff;
+    height: 50px;
+    line-height: 42px;
+    color: #3a3a3a;
+    border-top: 4px solid #4f4f4f;
+    border-left: 4px solid #4f4f4f;
+    border-right: 4px solid #4f4f4f;
+}
+.tabMockblack li:first-child a.on {
+    border-left: 4px solid #4f4f4f;
+}
+.mockpopupTable select {
+    border: 1px solid #d4d4d4;
+    width: 154px;
+    height: 26px;
+}
+.mockpopupTable ul li {
+    float: left;
+    margin-right: 30px;
+}
+.mockpopupTable ul li input[type="radio"] {
+    float: left;
+    margin-top: 14px;
+    margin-right: 5px;
+}
+.willbes-Layer-PassBox .passzoneListInfo {
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+.willbes-Layer-PassBox .passzoneListInfo span {
+    vertical-align: baseline;
+}
+.willbes-Layer-PassBox .passzoneDayInfo {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+.willbes-Layer-PassBox .passzoneDayInfo span {
+    vertical-align: baseline;
+}
+.willbes-Layer-PassBox .passzoneDayInfo input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+.willbes-Layer-PassBox .passzoneDayInfo label {
+    display: inline-block;
+    margin-top: -10px;
+}
 
 
 /*********************************************     CART PAGE     *********************************************/
@@ -6081,6 +6160,9 @@ table.PassZoneTable .w-data {
     letter-spacing: 0;
     padding: 20px 0 25px;
     border-bottom: 2px solid #000;
+}
+.willbes-Layer-PassBox .Layer-Tit span {
+    vertical-align: baseline;
 }
 .willbes-Layer-PassBox .lecMoreWrap {
     float: left;

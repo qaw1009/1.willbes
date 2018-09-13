@@ -1853,10 +1853,10 @@ table.auTable tr td {
     float: left;
 }
 .willbes-Lec-Profdata .ProfImg {
-    width: 102px;
-    height: 107px;
+    width: 104px;
+    height: 104px;
     overflow: hidden;
-    margin: 8px 8px 0;
+    margin: 11px 7px 0;
 }
 .willbes-Lec-Profdata .ProfDetail {
     width: 320px;
@@ -2126,6 +2126,9 @@ table.lecTable tr td {
 }
 table.lecTable tr td.w-data {
     line-height: 30px;
+}
+table.lecTable tr td.w-img img {
+    width: 60px;
 }
 table.lecTable tr td .w-tit {
     font-size: 14px;
@@ -2879,6 +2882,10 @@ table.classTable tr td.w-data {
 .bookInfo .bookImg {
     float: left;
     margin: 15px 15px 0;
+    width: 200px;
+}
+.bookInfo .bookImg img {
+    max-width: 200px;
 }
 .bookDetail {
     float: right;

@@ -257,7 +257,7 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            <input type="text" name="SaleStartDat" id="SaleStartDat" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['SaleStartDatm']))}}@endif" class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
+                            <input type="text" name="SaleStartDat" id="SaleStartDat" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['SaleStartDatm']))}}@endif" class="form-control datepicker" title="접수기간" style="width:100px;" >
                             &nbsp;
                             <select name="SaleStartTime" id="SaleStartTime"  class="form-control" title="">
                                 @for($i=0;$i<=23;$i++)
@@ -266,7 +266,7 @@
                                 @endfor
                             </select> 시
                             ~
-                            <input type="text" name="SaleEndDat" id="SaleEndDat" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['SaleEndDatm']))}}@endif"  class="form-control datepicker" title="접수기간" style="width:100px;" readonly>
+                            <input type="text" name="SaleEndDat" id="SaleEndDat" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['SaleEndDatm']))}}@endif"  class="form-control datepicker" title="접수기간" style="width:100px;" >
                             &nbsp;
                             <select name="SaleEndTime" id="SaleEndTime" class="form-control" title="">
                                 @for($i=0;$i<=23;$i++)

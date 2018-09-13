@@ -169,6 +169,29 @@ $(function() {
     });
 });
 
+
+$(function() {
+    $('.w-info dt strong').click(function() {
+
+        var $target_layer = $('.willbes-Layer-Box');
+
+        if($target_layer.css('display','block')) {
+            var top = $(this).parents('.willbes-Lec-Table').find('.lecTable').offset().top - 61;
+            var left = 0;
+
+            $target_layer.css({
+                'top': top,
+                'left': left,
+                'position': 'absolute'
+            });
+        } else {
+            $(this).parents('.willbes-Lec-Table').find('.willbes-Layer-Box').css('display','none').hide();
+        }
+
+    });
+});
+
+
 // 첨부파일 찾아보기 버튼 Script
 $(function() {
     var $fileBox = $('.filetype');

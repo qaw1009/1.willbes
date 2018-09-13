@@ -2408,12 +2408,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 .willbes-Layer-Box {
     display: none;
     background: #fff;
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    position: absolute;
     z-index: 11;
     width: 980px;
-    margin-left: -490px;
     height: auto;
     border: 1px solid #2f2f2f;
     padding: 20px;

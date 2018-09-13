@@ -219,7 +219,7 @@ class CartFModel extends BaseOrderFModel
             $reg_ip = $this->input->ip_address();
             $arr_temp_prod_code = $this->_makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
             $arr_prod_code = element('data', $arr_temp_prod_code);
-            $is_mixed = element('is_mixed', $arr_temp_prod_code);
+            $is_prod_mixed = element('is_mixed', $arr_temp_prod_code);
             $site_code = element('site_code', $input, '');
             $is_direct_pay = element('is_direct_pay', $input, 'N');
             $is_visit_pay = element('is_visit_pay', $input, 'N');
@@ -240,7 +240,7 @@ class CartFModel extends BaseOrderFModel
 
                 // 강좌, 교재상품이 동시에 바로 결제될 경우 교재상품은 바로결제 여부를 N으로 강제 변경
                 $is_direct_pay_change = false;
-                if ($is_direct_pay == 'Y' && $is_mixed === true && $prod_code != $prod_row['ParentProdCode']) {
+                if ($is_direct_pay == 'Y' && $is_prod_mixed === true && $prod_code != $prod_row['ParentProdCode']) {
                     $is_direct_pay_change = true;
                 }
 

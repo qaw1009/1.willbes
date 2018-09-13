@@ -70,7 +70,7 @@ function checkDirectPay($regi_form) {
  */
 function alertDirectPay($regi_form) {
     if ($regi_form.find('.chk_products:checked').length > 0 && $regi_form.find('.chk_books:checked').length > 0) {
-        alert('바로결제 시 강좌와 교재는 동시 결제가 불가능하여\n교재는 강좌결제 후 장바구니를 통해 결제해 주시기 바랍니다.');
+        alert('도서구입비 소득공제 시행에 따라 강좌와 교재는 동시 결제가 불가능 합니다.\n선택한 교재는 장바구니에 자동으로 담기며, 강좌 선 결제 후 장바구니에 담긴 교재를 결제하실 수 있습니다.');
     }
 }
 

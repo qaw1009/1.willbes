@@ -51,9 +51,9 @@
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
 
-                cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
+                var $result = cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
 
-                if ($is_redirect === 'N') {
+                if ($is_redirect === 'N' && $result === true) {
                     openWin('pocketBox');
                 }
             });

@@ -338,7 +338,7 @@ class OrderFModel extends BaseOrderFModel
         
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
-            $sess_cart_idx = $this->cartFModel->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
+            $sess_cart_idx = $this->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
 
             if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no) {
@@ -370,7 +370,7 @@ class OrderFModel extends BaseOrderFModel
             $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $post_row['SiteCode'], null, $sess_cart_idx, null, null, 'N');
 
             // 장바구니 데이터 가공
-            $cart_results = $this->orderFModel->getMakeCartReData(
+            $cart_results = $this->getMakeCartReData(
                 'pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx, $post_row['UsePoint']
             );
 
@@ -453,7 +453,7 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception($is_order_product);
                 }
             }
-            
+
             // 추가 배송료 주문상품 데이터 등록
             if ($post_row['DeliveryAddPrice'] > 0) {
                 $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $post_row['SiteCode']);
@@ -650,6 +650,16 @@ class OrderFModel extends BaseOrderFModel
                 $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $real_save_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_save !== true) {
                     throw new \Exception($is_point_save);
+                }
+            }
+
+            // 회원 포인트 사용
+            if ($real_use_point > 0) {
+                $this->load->loadModels(['pointF']);    // 포인트 모델 로드
+
+                $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $order_idx, $order_prod_idx);
+                if ($is_point_use !== true) {
+                    throw new \Exception($is_point_use);
                 }
             }
         } catch (\Exception $e) {

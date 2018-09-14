@@ -8,7 +8,7 @@ class PointFModel extends WB_Model
         'point_use' => 'lms_point_use',
     ];
 
-    private $_point_status_ccd = ['save' => '679001', 'used' => '679002', 'expire' => '679003'];    // 포인트상태 (적립, 소진, 소멸)
+    private $_point_status_ccd = ['save' => '679001', 'useall' => '679002', 'expire' => '679003'];    // 포인트상태 (적립, 소진, 소멸)
     private $_point_save_reason_ccd = ['paid' => '680001'];   // 포인트 적립사유 (결제완료)
     private $_point_use_reason_ccd = ['paid' => '681001'];    // 포인트 사용사유 (주문결제)
 
@@ -29,6 +29,58 @@ class PointFModel extends WB_Model
         $data = $query->row(0)->MemPoint;
 
         return $point_type == 'all' ? json_decode($data, true) : $data;
+    }
+
+    /**
+     * 결제시 사용한 포인트 내역 저장 및 적립 포인트 차감
+     * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
+     * @param int $use_point [사용포인트]
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @return bool|string
+     */
+    public function addOrderUsePoint($point_type, $use_point, $order_idx, $order_prod_idx)
+    {
+        $input = [
+            'order_idx' => $order_idx,
+            'order_prod_idx' => $order_prod_idx,
+            'reason_type' => 'paid'
+        ];
+
+        return $this->addUsePoint($point_type, $use_point, $input);
+    }
+
+    /**
+     * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
+     * @param int $use_point [사용포인트]
+     * @param array $input
+     * @return bool|string
+     */
+    public function addUsePoint($point_type, $use_point, $input = [])
+    {
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+
+            $data = [
+                $sess_mem_idx, $point_type, $use_point, element('order_idx', $input, 0), element('order_prod_idx', $input, 0),
+                $this->_point_use_reason_ccd[element('reason_type', $input)], element('etc_reason', $input), $this->input->ip_address()
+            ];
+
+            $query = $this->_conn->query('call sp_member_point_use(?, ?, ?, ?, ?, ?, ?, null, ?)', $data);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                $err_msg = '포인트 사용에 실패했습니다.';
+                if ($result == 'NotEnoughPoint') {
+                    $err_msg = '보유 포인트가 부족합니다.';
+                }
+                throw new \Exception($err_msg);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 
     /**

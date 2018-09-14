@@ -70,7 +70,8 @@ class OffLecture extends \app\controllers\FrontController
             ],
             'LKB' => [
                 $arr_search_text[0] => element('1', $arr_search_text),
-            ]
+            ],
+            'IN' => ['StudyApplyCcd' => ['654002', '654003'] ] // 온라인 접수, 방문+온라인
         ];
 
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);

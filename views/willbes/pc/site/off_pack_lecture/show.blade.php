@@ -385,6 +385,7 @@
         }
     @endphp
 
+
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
@@ -395,8 +396,10 @@
             // 방문접수, 바로결제 버튼 클릭
             $('button[name="btn_visit_pay"], button[name="btn_direct_pay"]').on('click', function() {
 
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
                 @if($data["IsSalesAble"] !== 'Y')
-                    alert("신청할 수 없는 강좌입니다.");return;
+                    alert("신청 할 수 없는 강좌입니다.");return;
                 @endif
 
                 //필수강좌 체크 여부

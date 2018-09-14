@@ -50,28 +50,16 @@ class OffPackage extends \app\controllers\FrontController
             ],
             'LKB' => [
                 $arr_search_text[0] => element('1', $arr_search_text),
-            ]
+            ],
+            'IN' => ['StudyApplyCcd' => ['654002', '654003'] ] // 온라인 접수, 방문+온라인
         ];
 
         $list= $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,['ProdCode'=>'desc']);
         //var_dump($list);
 
-        /*
-        $prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
-        $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_codes,[],null,null,[],[]); //하위 학원 강좌 추출
-        */
-
         foreach ($list as $idx => $row) {
             $list[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'] , true);
-            /*foreach ($data_sublist as $idx2=>$sub) {
-                if($row['ProdCode'] === $sub['Parent_ProdCode']) {
-                    //echo $sub['Parent_ProdCode'].'---'.$sub['ProdCode'].'<BR>';
-                    $list[$idx]['SubList'][] = $sub;
-                }
-            }*/
         }
-
-        //dd($list);
 
         $this->load->view('site/off_pack_lecture/index',[
             'arr_input' => $arr_input,

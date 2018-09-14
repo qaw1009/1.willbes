@@ -8,7 +8,7 @@ class Qna extends BaseBoard
     protected $temp_models = array('sys/boardMaster', 'board/board', 'product/base/professor', 'product/base/subject');
     protected $helpers = array('download','file');
 
-    private $board_name = 'Qna';
+    private $board_name = 'qna';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [

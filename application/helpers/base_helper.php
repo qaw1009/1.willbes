@@ -345,6 +345,32 @@ if (!function_exists('show_alert')) {
     }
 }
 
+if (!function_exists('login_check_inner_script')) {
+    /**
+     * javascript 내 로그인 여부 적용
+     * @param string $msg  - 경고 메세지
+     * @param string $move - 로그인 페이지로 이동여부 : Y 이동
+     */
+    function login_check_inner_script($msg='',$move='')
+    {
+        if (sess_data('is_login') !== true) {
+
+            $output = '';
+            if (empty($msg) === false) {
+                $output .= 'alert("' . $msg . '");' . PHP_EOL;
+            }
+            if ($move === 'Y') {
+                $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode(current_url()), 'www') . '";' . PHP_EOL;
+            }
+
+            if(empty($msg) === false || empty($move) === false) {
+                $output .= 'return;';
+            }
+            echo($output);
+        }
+    }
+}
+
 if (!function_exists('starts_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 시작하는지 여부 체크

@@ -176,8 +176,12 @@ $(function() {
         var $target_layer = $('.willbes-Layer-Box');
 
         if($target_layer.css('display','block')) {
-            var top = $(this).parents('.willbes-Lec-Table').find('.lecTable').offset().top - 61;
             var left = 0;
+            if ($('#InfoForm').hasClass('willbes-offLine-Layer-Box')) {
+                var top = $(this).parents('.willbes-Lec-Table').find('.lecTable').offset().top - 418;
+            } else {
+                var top = $(this).parents('.willbes-Lec-Table').find('.lecTable').offset().top - 61;
+            }
 
             $target_layer.css({
                 'top': top,

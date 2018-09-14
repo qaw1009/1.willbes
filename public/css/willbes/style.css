@@ -3448,7 +3448,7 @@ table.classTable tr td.w-data {
     display: inline-block;
 }
 .willbes-Buy-PackageList {
-    width: 940px;
+    width: auto;
     padding-bottom: 25px;
     border-bottom: 1px solid #e7e7e7;
 }

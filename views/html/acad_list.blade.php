@@ -381,6 +381,18 @@
         </div>
         <!-- willbes-Lec -->
 
+        <div class="mb60"></div>
+
+        <div class="willbes-Lec-buyBtn">
+            <ul>
+                <li class="btnAuto180 h36">
+                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                        <span class="tx-light-blue">바로결제</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
         <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
             <div>
                 <button type="submit" onclick="" class="bg-dark-blue">

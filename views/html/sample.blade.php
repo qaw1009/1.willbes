@@ -7,7 +7,9 @@
 
 <div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
-    <a href="{{ site_url('/home/html/main') }}" target="_blank">메인 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a><!--&nbsp;
+    <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;
+    <a href="{{ site_url('/home/html/main_gosi') }}" target="_blank">공무원메인</a>--><br/><br/>
 
     <a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진 page 이동</a><br/><br/>
 
@@ -99,17 +101,21 @@
 
     <a href="{{ site_url('/home/html/acad_list') }}" target="_blank">학원수강신청 > 단과반 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_list_package') }}" target="_blank">학원수강신청 > 종합반 page 이동</a><br/><br/>
+    <!--<a href="{{ site_url('/home/html/acad_list_package') }}" target="_blank">학원수강신청 > 종합반 page 이동</a><br/><br/>-->
+
+    <a href="{{ site_url('/home/html/acad_list_package_new') }}" target="_blank">** 학원수강신청 > 종합반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}" target="_blank">** 학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/acad_memjoin') }}" target="_blank">학원 방문결제 접수 > 로그인 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/acad_offline_list') }}" target="_blank">학원 방문결제 접수 > 단과반 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_offline_list_package') }}" target="_blank">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/><br/><br/>
+    <!--<a href="{{ site_url('/home/html/acad_offline_list_package') }}" target="_blank">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>-->
 
-    <a href="{{ site_url('/home/html/acad_list_package_new') }}" target="_blank">**학원수강신청 > 종합반 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/acad_offline_list_package_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}" target="_blank">**학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 상세 page 이동</a><br/><br/>
 
 </div>
 

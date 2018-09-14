@@ -164,73 +164,72 @@
                 <div class="willbes-Lec-Line mt20">-</div>
                 <!-- willbes-Lec-Line -->
 
-                <div class="willbes-Lec-Table">
-                    <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
-                        <colgroup>
-                            <col style="width: 75px;">
-                            <col style="width: 85px;">
-                            <col style="width: 75px;">
-                            <col style="width: 355px;">
-                            <col style="width: 165px;">
-                            <col style="width: 185px;">
-                        </colgroup>
-                        <tbody>
-                        @foreach($data['list'][$subject_idx] as $idx => $row)
+                @foreach($data['list'][$subject_idx] as $idx => $row)
+                    <div class="willbes-Lec-Table">
+                        <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
+                            <colgroup>
+                                <col style="width: 75px;">
+                                <col style="width: 85px;">
+                                <col style="width: 75px;">
+                                <col style="width: 355px;">
+                                <col style="width: 165px;">
+                                <col style="width: 185px;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td class="w-place">{{ $row['CampusCcdName'] }}</td>
+                                    <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
+                                    <td class="w-list">{{ $row['CourseName'] }}</td>
+                                    <td class="w-data tx-left">
+                                        <div class="w-tit w-acad-tit">{{ $row['ProdName'] }}</div>
+                                        <dl class="w-info acad">
+                                            <dt>
+                                                <a href="#none"><strong>강좌상세정보</strong></a>
+                                            </dt>
+                                            <dt><span class="row-line">|</span></dt>
+                                            <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
+                                            <dt class="NSK ml15">
+                                                <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
+                                            </dt>
+                                        </dl><br/>
+                                    </td>
+                                    <td class="w-schedule">
+                                        <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> ({{ $row['FixNumber'] }}회차)<br/>
+                                        {{ $row['WeekArrayName'] }}
+                                    </td>
+                                    <td class="w-notice p_re">
+                                        <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
+                                        @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                            <div class="priceWrap chk buybtn p_re">
+                                                <span class="price tx-blue">
+                                                    <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                                    {{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                            </div>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- lecTable -->
+                        <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
+                            <tbody>
                             <tr>
-                                <td class="w-place">{{ $row['CampusCcdName'] }}</td>
-                                <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
-                                <td class="w-list">{{ $row['CourseName'] }}</td>
-                                <td class="w-data tx-left">
-                                    <div class="w-tit w-acad-tit">{{ $row['ProdName'] }}</div>
-                                    <dl class="w-info acad">
-                                        <dt>
-                                            <a href="#none"><strong>강좌상세정보</strong></a>
-                                        </dt>
-                                        <dt><span class="row-line">|</span></dt>
-                                        <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
-                                        <dt class="NSK ml15">
-                                            <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
-                                        </dt>
-                                    </dl><br/>
-                                </td>
-                                <td class="w-schedule">
-                                    <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> ({{ $row['FixNumber'] }}회차)<br/>
-                                    {{ $row['WeekArrayName'] }}
-                                </td>
-                                <td class="w-notice p_re">
-                                    <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
-                                    @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                        <div class="priceWrap chk buybtn p_re">
-                                            <span class="price tx-blue">
-                                                <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
-                                                {{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                        </div>
-                                    @endforeach
+                                <td>
+                                    <div class="w-tit tx-black">▷ 강좌정보</div>
+                                    <div class="w-txt">
+                                        <strong>{{ $row['ProdName'] }}</strong><br/>
+                                        {!! $row['Content'] !!}<br/>
+                                        * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
+                                    </div>
                                 </td>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <!-- lecTable -->
-
-                    <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="w-tit tx-black">▷ 강좌정보</div>
-                                <div class="w-txt">
-                                    <strong>{{ $row['ProdName'] }}</strong><br/>
-                                    {!! $row['Content'] !!}<br/>
-                                    * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <!-- lecInfoTable -->
-                </div>
-                <!-- willbes-Lec-Table -->
+                            </tbody>
+                        </table>
+                        <!-- lecInfoTable -->
+                    </div>
+                    <!-- willbes-Lec-Table -->
+                @endforeach
             </div>
             <!-- willbes-Lec -->
         @endforeach

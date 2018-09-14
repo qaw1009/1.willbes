@@ -79,8 +79,8 @@
     <!-- gnb menu -->
     <div class="gnb-List">
         @foreach($__cfg['GNBMenu']['TreeMenu'] as $menu_group_id => $menu_group_row)
-            @if(is_numeric($menu_group_id) === true)
-                {{-- 일반메뉴일 경우만 노출 --}}
+            @if(is_numeric($menu_group_id) === true && $menu_group_id != $__cfg['GNBMenu']['ActiveGroupMenuIdx'])
+                {{-- 일반메뉴이면서 접근 사이트와 다른 그룹메뉴만 노출 --}}
                 <div class="gnb-List-Tit">
                     <a href="{{ $menu_group_row['MenuUrl'] }}" target="_{{ $menu_group_row['UrlTarget'] }}">
                         <div class="willbes-icon_sm">

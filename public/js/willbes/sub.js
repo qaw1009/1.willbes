@@ -169,13 +169,13 @@ $(function() {
     });
 });
 
-
+// 레이어 팝업 위치 Script
 $(function() {
     $('.w-info dt strong').click(function() {
 
         var $target_layer = $('.willbes-Layer-Box');
 
-        if($target_layer.css('display','block')) {
+        if($target_layer.css('display','')) {
             var left = 0;
             if ($('#InfoForm').hasClass('willbes-offLine-Layer-Box')) {
                 var top = $(this).parents('.willbes-Lec-Table').find('.lecTable').offset().top - 418;

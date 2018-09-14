@@ -451,7 +451,8 @@ class SupportQna extends BaseSupport
                 'ReadCnt' => 0,
                 'SettingReadCnt' => 0,
                 'ProfIdx' => element('s_prof_idx', $input),
-                'SubjectIdx' => element('s_subject_idx', $input)
+                'SubjectIdx' => element('s_subject_idx', $input),
+                'ProdCode' => element('study_prod_code', $input),
             ],
             'board_r_category' => [
                 'site_category' => element('s_cate_code', $input, $this->_cate_code)

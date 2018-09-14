@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SortMappingModel $sortMappingModel                               Product Sort Mapping Model Class
  * @property BoardMasterModel $boardMasterModel                               BoardMaster Model Class
  * @property BoardModel $boardModel                                                 Board Model Class
- * @property WCpModel $wcpModel                                                    WCp Model Class
+ * @property WCpModel $wCpModel                                                    WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
  * @property SmsModel $smsModel                                                     Search Sms Model Class
  * @property MessageModel $messageModel                                         Search Message Model Class

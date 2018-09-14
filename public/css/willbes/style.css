@@ -630,7 +630,7 @@ table.auTable tr td {
 
 
 
-/*********************************************     MAIN PAGE     *********************************************/
+/*********************************************     NAV TOP     *********************************************/
 
 /* Gnb */
 #Gnb {
@@ -858,6 +858,14 @@ table.auTable tr td {
     background: #f4f4f4;
     height: 40px;
     letter-spacing: -1px;
+}
+#Header .topnavTxt {
+    float: left;
+    font-size: 14px;
+    line-height: 40px;
+}
+#Header .topnavTxt span {
+    vertical-align: baseline;
 }
 #Header .loginDepth {
     float: right;
@@ -1216,6 +1224,10 @@ table.auTable tr td {
     margin-top: 48px;
 }
 
+
+
+/*********************************************     MAIN PAGE     *********************************************/
+
 /* Main Container */
 #Container {
     letter-spacing: -1px;
@@ -1241,7 +1253,7 @@ table.auTable tr td {
 
 /* Main Container : Tit */
 .Section .will-Tit {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #363636;
     border-bottom: 1px solid #000;
@@ -1346,6 +1358,25 @@ table.auTable tr td {
     padding: 15px 20px;
     line-height: 20px;
 }
+
+
+
+/* Main Container : Cop */
+.cop .tx-color {
+    color: #1087ef;
+}
+
+
+
+
+/* Main Container : Gosi */
+.gosi .tx-color {
+    color: #8c6239;
+}
+
+
+
+
 
 
 
@@ -2085,6 +2116,7 @@ table.auTable tr td {
 .w-info dt .nBox.n4 {
     background: #333
 }
+.w-info dt.strong a,
 .w-info dt strong {
     background: url("../../img/willbes/sub/icon_detail.gif") no-repeat 0 10px;
     height: 30px;

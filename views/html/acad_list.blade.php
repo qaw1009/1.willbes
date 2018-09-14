@@ -304,7 +304,7 @@
         </div>
         <!-- willbes-Lec -->
 
-        <div class="willbes-Lec NG c_both mb60">
+        <div class="willbes-Lec NG c_both">
             <div class="willbes-Lec-Subject tx-dark-black">· 영어<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
             <!-- willbes-Lec-Subject -->
 
@@ -381,27 +381,7 @@
         </div>
         <!-- willbes-Lec -->
 
-        <div class="willbes-Lec-buyBtn">
-            <ul>
-                <li class="btnAuto180 h36">
-                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>방문접수</span>
-                    </button>
-                </li>
-                <li class="btnAuto180 h36">
-                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                        <span class="tx-light-blue">바로결제</span>
-                    </button>
-                </li>
-            </ul>
-        </div>
-        <!-- willbes-Lec-buyBtn -->
         <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
-            <div>
-                <button type="submit" onclick="openWin('pocketBox')" class="bg-deep-gray">
-                    <span>방문접수</span>
-                </button>
-            </div>
             <div>
                 <button type="submit" onclick="" class="bg-dark-blue">
                     <span>바로결제</span>

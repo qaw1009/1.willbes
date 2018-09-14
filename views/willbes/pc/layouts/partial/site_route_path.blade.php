@@ -4,10 +4,10 @@
     @php $_active_menu = $__cfg['SiteMenu']['ActiveMenu'] @endphp
 @endif
 
-@if(starts_with($_active_menu['MenuType'], 'P') === true)
-    @php $_url_route_names = $_active_menu['UrlRouteNames'] @endphp
+@if(starts_with(element('MenuType', $_active_menu), 'P') === true)
+    @php $_url_route_names = element('UrlRouteNames', $_active_menu) @endphp
 @else
-    @php $_url_route_names = array_slice($_active_menu['UrlRouteNames'], 2) @endphp
+    @php $_url_route_names = array_slice(element('UrlRouteNames', $_active_menu, []), 2) @endphp
 @endif
 
 @if(empty($_url_route_names) === false)

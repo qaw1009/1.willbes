@@ -1,6 +1,6 @@
 @include('willbes.pc.layouts.header')
 
-<body>
+<body class="{{ SUB_DOMAIN }}">
     <!-- Gnb -->
     @include('willbes.pc.layouts.gnb')
 

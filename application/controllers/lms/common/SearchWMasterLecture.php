@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchWMasterLecture extends \app\controllers\BaseController
 {
-    protected $models = array('common/searchWMasterLecture','sys/wcp','sys/wCode');
+    protected $models = array('common/searchWMasterLecture','sys/wCp','sys/wCode');
     protected $helpers = array();
 
     public function __construct()
@@ -13,7 +13,7 @@ class SearchWMasterLecture extends \app\controllers\BaseController
 
     public function index()
     {
-        $cp_list = $this->wcpModel->getRoleCpArray();       //관리자권한 CP 목록
+        $cp_list = $this->wCpModel->getRoleCpArray();       //관리자권한 CP 목록
         $codes = $this->wCodeModel->getCcdInArray(['105','111']);    //강의진행상태,콘텐츠유형
 
         $this->load->view('common/search_wmasterlecture',[

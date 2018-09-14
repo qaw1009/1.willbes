@@ -80,7 +80,7 @@
         <div class="Content widthAuto810 p_re">
 
             <div class="willbes-Lec NG c_both">
-                <div class="willbes-Lec-Subject tx-dark-black">강좌구성 및 교재선택</div>
+                <div class="willbes-Lec-Subject tx-dark-black" style="padding-top: 0; line-height: inherit">강좌구성 및 교재선택</div>
                 <!-- willbes-Lec-Subject -->
 
                 <div class="willbes-Lec-Line">-</div>

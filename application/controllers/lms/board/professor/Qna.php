@@ -286,7 +286,7 @@ class Qna extends BaseBoard
         //과목
         $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
 
-        $this->load->view("board/professor/{$this->board_name}/create_Detail", [
+        $this->load->view("board/professor/{$this->board_name}/create_detail", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'arr_prof_info' => $arr_prof_info,

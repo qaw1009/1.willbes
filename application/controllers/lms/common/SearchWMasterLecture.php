@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchWMasterLecture extends \app\controllers\BaseController
 {
-    protected $models = array('common/searchWMasterLecture','sys/wcp','sys/wCode');
+    protected $models = array('common/searchWMasterLecture','sys/wCp','sys/wCode');
     protected $helpers = array();
 
     public function __construct()

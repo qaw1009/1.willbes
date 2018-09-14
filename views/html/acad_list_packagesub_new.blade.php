@@ -58,9 +58,9 @@
                                 </dl>
                             </div>
                             <dl class="w-info">
-                                <dt>개강월 : <span class="tx-blue">2018-02</span></dt>
-                                <dt><span class="row-line">|</span></dt>
                                 <dt>수강형태 : <span class="tx-blue">혼합</span></dt>
+                                <dt><span class="row-line">|</span></dt>
+                                <dt>접수기간 : <span class="tx-blue">2018-05-20 ~ 2018-05-30</span></dt>
                                 <dt class="w-notice NSK ml15">
                                     <span class="acadInfo n2">접수중</span>
                                 </dt>
@@ -84,11 +84,6 @@
             </div>
             <div class="willbes-Lec-buyBtn">
                 <ul>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                            <span>방문접수</span>
-                        </button>
-                    </li>
                     <li class="btnAuto180 h36">
                         <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
                             <span class="tx-light-blue">바로결제</span>

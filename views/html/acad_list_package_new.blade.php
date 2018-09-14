@@ -144,7 +144,7 @@
                                 <div class="w-tit w-acad-tit"><a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a></div>
                                 <dl class="w-info acad">
                                     <dt>
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                        <a href="#none" onclick="openWin('InfoForm')">
                                             <strong>종합반 상세정보</strong>
                                         </a>
                                     </dt>
@@ -187,7 +187,7 @@
                                 <div class="w-tit w-acad-tit"><a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a></div>
                                 <dl class="w-info acad">
                                     <dt>
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                        <a href="#none" onclick="openWin('InfoForm')">
                                             <strong>종합반 상세정보</strong>
                                         </a>
                                     </dt>
@@ -230,7 +230,7 @@
                                 <div class="w-tit w-acad-tit"><a href="{{ site_url('/home/html/acad_list_packagesub_new') }}">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</a></div>
                                 <dl class="w-info acad">
                                     <dt>
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                        <a href="#none" onclick="openWin('InfoForm')">
                                             <strong>종합반 상세정보</strong>
                                         </a>
                                     </dt>

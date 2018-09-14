@@ -28,8 +28,15 @@ class WB_Model extends CI_Model
      */
     private function _loadDatabase($databases)
     {
+        $_CI =& get_instance();
+
         foreach ($databases as $database) {
-            $this->{$database} = $this->load->database($database, true);
+            // 동일한 이름의 DB가 연결되어 있다면 다시 연결하지 않고 기존 연결정보를 설정
+            if (isset($_CI->{$database}) === false || is_object($_CI->{$database}) === false || empty($_CI->{$database}) === true) {
+                $_CI->{$database} = $this->load->database($database, true);
+            }
+
+            $this->{$database} = $_CI->{$database};
         }
     }
 
@@ -68,14 +75,13 @@ class WB_Model extends CI_Model
         $sql = "DROP TEMPORARY TABLE {$temp_table_name}";
         $this->_conn->query($sql);
 
-        $sql = "
-                CREATE TEMPORARY TABLE IF NOT EXISTS {$temp_table_name} (
+        $sql = /** @lang text */
+            "CREATE TEMPORARY TABLE IF NOT EXISTS {$temp_table_name} (
                   tempIdx INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                   tempData VARCHAR(520) NOT NULL,
                   tempData2 VARCHAR(20) NULL,
                   PRIMARY KEY (tempIdx)
-                )
-            ";
+            )";
 
         return $this->_conn->query($sql);
     }
@@ -86,7 +92,7 @@ class WB_Model extends CI_Model
      */
     public function dropTampTable($temp_table_name = '_lms_temp_table')
     {
-        $sql = "DROP TEMPORARY TABLE {$temp_table_name}";
+        $sql = /** @lang text */ "DROP TEMPORARY TABLE {$temp_table_name}";
         $this->_conn->query($sql);
     }
 
@@ -104,10 +110,7 @@ class WB_Model extends CI_Model
         if (empty($input_data) === false) {
             foreach ($input_data as $key => $val) {
                 $tempData2 = (empty($input_data2[$key]) === false) ? $input_data2[$key] : '';
-                $sql = "
-                  INSERT INTO {$temp_table_name} (tempData, tempData2)
-                  SELECT fn_enc('{$val}'), '{$tempData2}'
-                ";
+                $sql = /** @lang text */ "INSERT INTO {$temp_table_name} (tempData, tempData2) SELECT fn_enc('{$val}'), '{$tempData2}'";
 
                 $result[$key] = $this->_conn->query($sql);
             }

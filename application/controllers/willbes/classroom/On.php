@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class On extends \app\controllers\FrontController
 {
-    protected $models = array();
+    protected $models = array('classroomF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -45,17 +45,64 @@ class On extends \app\controllers\FrontController
         }
     }
 
-    /**
-     *  수강대기강의
+    /** 
+     * 수강대기 강의
+     * @return object|string
      */
     public function standby()
     {
-        $this->load->view('/classroom/on_standby', [
-            'data' => [],
-            'lecList' => [],
-            'pkgList' => [],
-            'freeList' => [],
-            'adminList' => []
+        // 검색
+        $input_arr = $this->_reqG(null);
+
+        // 기본 검색옵션 시작일이 오늘 보다 크면 수강대기강의
+        $cond_arr = [
+            'GT' => [
+                'LecStartDate' => date("Y-m-d", time())
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615002','615003','615005'],
+                'PayRouteCcd' => ['670001','670002']
+            ]
+        ];
+
+        // 셀렉트박스용 데이타
+        $course_arr = $this->classroomFModel->getCourseList($cond_arr);
+        $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
+        $prof_arr = $this->classroomFModel->getProfList($cond_arr);
+
+        // 나머지 선택 검색
+        $cond_arr = [
+            'GT' => [
+                'LecStartDate' => date("Y-m-d", time())
+            ],
+            'EQ' => [
+                'SubjectIdx' => $this->_req('subject_ccd'),
+                'wProfIdx' => $this->_req('prof_ccd'),
+                'CourseIdx' => $this->_req('course_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $this->_req('search_text'),
+                    'subProdName' => $this->_req('search_text')
+                ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615003'],
+                'PayRouteCcd' => ['670001','670002']
+            ]
+        ];
+
+        $leclist = $this->classroomFModel->getSingleLec($cond_arr);
+        $pkglist = $this->classroomFModel->getPackage($cond_arr);
+
+        return $this->load->view('/classroom/on_standby', [
+            'course_arr' => $course_arr,
+            'subject_arr' => $subject_arr,
+            'prof_arr' => $prof_arr,
+            'input_arr' => $input_arr,
+            'lecList' => $leclist,
+            'pkgList' => $pkglist
         ]);
     }
     
@@ -64,12 +111,69 @@ class On extends \app\controllers\FrontController
      */
     public function ongoing()
     {
-        $this->load->view('/classroom/on_ongoing', [
-            'data' => [],
-            'lecList' => [],
-            'pkgList' => [],
-            'freeList' => [],
-            'adminList' => []
+        // 검색
+        $input_arr = $this->_reqG(null);
+
+        // 기본 검색옵션 시작일이 오늘 보다 크면 수강대기강의
+        $cond_arr = [
+            'LTE' => [
+                'LecStartDate' => date("Y-m-d", time()),
+                'lastPauseEndDate' => date("Y-m-d", time())
+            ],
+            'GTE' => [
+                'RealLecEndDate' => date("Y-m-d", time())
+            ],
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615002','615003','615005'],
+                'PayRouteCcd' => ['670001','670002']
+            ]
+        ];
+
+        // 셀렉트박스용 데이타
+        $course_arr = $this->classroomFModel->getCourseList($cond_arr);
+        $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
+        $prof_arr = $this->classroomFModel->getProfList($cond_arr);
+
+        // 나머지 선택 검색
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'SubjectIdx' => $this->_req('subject_ccd'),
+                'wProfIdx' => $this->_req('prof_ccd'),
+                'CourseIdx' => $this->_req('course_ccd')
+            ],
+            'LTE' => [
+                'LecStartDate' => date("Y-m-d", time()),
+                'lastPauseEndDate' => date("Y-m-d", time())
+            ],
+            'GTE' => [
+                'RealLecEndDate' => date("Y-m-d", time())
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $this->_req('search_text'),
+                    'subProdName' => $this->_req('search_text')
+                ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615003'],
+                'PayRouteCcd' => ['670001','670002']
+            ]
+        ];
+
+        $leclist = $this->classroomFModel->getSingleLec($cond_arr);
+        $pkglist = $this->classroomFModel->getPackage($cond_arr);
+
+        return $this->load->view('/classroom/on_ongoing', [
+            'course_arr' => $course_arr,
+            'subject_arr' => $subject_arr,
+            'prof_arr' => $prof_arr,
+            'input_arr' => $input_arr,
+            'lecList' => $leclist,
+            'pkgList' => $pkglist
         ]);
     }
 
@@ -78,12 +182,37 @@ class On extends \app\controllers\FrontController
      */
     public function pause()
     {
+        // 검색
+        $input_arr = $this->_reqG(null);
+
+        // 기본 검색옵션 시작일이 오늘 보다 크면 수강대기강의
+        $cond_arr = [
+            'GT' => [
+                'LecStartDate' => date("Y-m-d", time())
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615002','615003','615005'],
+                'PayRouteCcd' => ['670001','670002']
+            ]
+        ];
+
+        // 셀렉트박스용 데이타
+        $course_arr = $this->classroomFModel->getCourseList($cond_arr);
+        $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
+        $prof_arr = $this->classroomFModel->getProfList($cond_arr);
+
+
+
+
+
+
         $this->load->view('/classroom/on_pause', [
-            'data' => [],
+            'course_arr' => $course_arr,
+            'subject_arr' => $subject_arr,
+            'prof_arr' => $prof_arr,
+            'input_arr' => $input_arr,
             'lecList' => [],
-            'pkgList' => [],
-            'freeList' => [],
-            'adminList' => []
+            'pkgList' => []
         ]);
     }
 
@@ -92,12 +221,37 @@ class On extends \app\controllers\FrontController
      */
     public function end()
     {
+        // 검색
+        $input_arr = $this->_reqG(null);
+
+        // 기본 검색옵션 시작일이 오늘 보다 크면 수강대기강의
+        $cond_arr = [
+            'GT' => [
+                'LecStartDate' => date("Y-m-d", time())
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615002','615003','615005'],
+                'PayRouteCcd' => ['670001','670002']
+            ]
+        ];
+
+        // 셀렉트박스용 데이타
+        $course_arr = $this->classroomFModel->getCourseList($cond_arr);
+        $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
+        $prof_arr = $this->classroomFModel->getProfList($cond_arr);
+
+
+
+
+
+
         $this->load->view('/classroom/on_end', [
-            'data' => [],
+            'course_arr' => $course_arr,
+            'subject_arr' => $subject_arr,
+            'prof_arr' => $prof_arr,
+            'input_arr' => $input_arr,
             'lecList' => [],
-            'pkgList' => [],
-            'freeList' => [],
-            'adminList' => []
+            'pkgList' => []
         ]);
     }
 
@@ -105,16 +259,8 @@ class On extends \app\controllers\FrontController
      * 실세 강의 상세페이지
      * @param array $params
      */
-    public function view($params = [])
+    public function view()
     {
-        if(empty($params[0]) == true || empty($params[1]) == true || empty($params[1]) == true ){
-            show_alert('수강정보가 정확하지 않습니다.', 'back');
-        } else {
-            $OrderIdx = $params[0];
-            $ProdCode = $params[1];
-            $subProdCode = $params[2];
-        }
-
         $this->load->view('/classroom/on_view');
     }
 

@@ -5,7 +5,7 @@ class PlayerFModel extends WB_Model
 {
     private $_table = [
         'sample' => 'lms_product_lecture_sample',
-        'unit' => 'wbs_cms_lecture_unit',
+        'unit' => 'wbs_cms_lecture_unit_combine',
         'wbs_code' => 'wbs_sys_code'
     ];
 
@@ -38,8 +38,6 @@ class PlayerFModel extends WB_Model
         $cond = [
             'EQ' => [
                 'S.IsStatus' => 'Y',
-                'U.wIsUse' => 'Y',
-                'U.wIsStatus' => 'Y',
                 'S.ProdCode' => $ProdCode,
                 'S.wUnitIdx' => $UnitIdx
             ]
@@ -57,12 +55,6 @@ class PlayerFModel extends WB_Model
         $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
 
         return empty($rows) === true ? [] : $rows->row_array();
-    }
-
-
-    public function getCurriculum()
-    {
-
     }
 
     /**

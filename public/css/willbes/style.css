@@ -4823,33 +4823,13 @@ ul li.profList {
 ul li.profList.nth {
     margin-right: 0;
 }
-ul li.profList:hover .line {
-    display: block;
-    border: 1px solid #1b6db6;
-    width: 100%;
-    height: 100%;
-}
-
-
-ul li.profList a {
+ul li.profList a.profBox {
     display: block;
     width: 100%;
     height: 100%;
 }
-ul li.profList a:hover {
+ul li.profList a.profBox:hover {
     border: 1px solid #1b6db6;
-}
-
-
-ul li.profList a .line {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    text-indent: -9999px;
 }
 ul li.profList .Obj {
     position: absolute;
@@ -4892,21 +4872,20 @@ ul li.profList .w-notice {
     left: 20px;
     z-index: 2;
 }
-ul li.profList .w-notice dl dt button {
-    background: #fff;
+ul li.profList .w-notice dl dt {
     position: relative;
     width: 68px;
     height: 22px;
     border: 1px solid #c9c9c9;
 }
-ul li.profList .w-notice dl dt button:hover {
+ul li.profList .w-notice dl dt:hover {
     border: 1px solid #898989;
     z-index: 1;
 }
-ul li.profList .w-notice dl dt button:first-child {
+ul li.profList .w-notice dl dt:first-child {
     margin-bottom: -1px;
 }
-ul li.profList .w-notice dl dt button span {
+ul li.profList .w-notice a {
     background: #fff;
     display: block;
     width: 100%;

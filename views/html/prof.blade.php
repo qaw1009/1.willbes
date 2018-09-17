@@ -216,14 +216,13 @@
             <ul class="profGrid">
                 <li class="profList">
                     <a href="{{ site_url('/home/html/profsub') }}">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>정채영</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>정채영</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -233,14 +232,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>기미진</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>기미진</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -250,14 +248,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>김세령</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>김세령</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -267,15 +264,14 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>오대혁</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <img class="Evt" src="{{ img_url('prof/icon_event.gif') }}">
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>오대혁</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -287,14 +283,13 @@
             <ul class="profGrid">
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>정채영</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>정채영</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -304,14 +299,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>기미진</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>기미진</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -321,14 +315,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>김세령</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>김세령</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -338,14 +331,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>오대혁</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>오대혁</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -363,14 +355,13 @@
             <ul class="profGrid">
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>정채영</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>정채영</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -380,14 +371,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>오대혁</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>오대혁</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -405,14 +395,13 @@
             <ul class="profGrid">
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>정채영</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>정채영</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -422,14 +411,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>오대혁</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>오대혁</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
@@ -439,14 +427,13 @@
                 </li>
                 <li class="profList">
                     <a href="#none000">
-                        <div class="line">-</div>
+                        <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
+                        <div class="Name">
+                            <strong>오대혁</strong><br/>
+                            교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
+                        </div>
+                        <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     </a>
-                    <div class="Obj">공무원 국어종결자<br/>정채영 국어</div>
-                    <div class="Name">
-                        <strong>오대혁</strong><br/>
-                        교수님 <img class="N" src="{{ img_url('prof/icon_N.gif') }}">
-                    </div>
-                    <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
                             <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>

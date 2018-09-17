@@ -79,7 +79,7 @@
                     <div class="form-control-static col-md-4">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i]).'/'.urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
                                     {{ $data['arr_attach_file_real_name'][$i] }}
                                 </a> ]
                             @endif
@@ -122,7 +122,7 @@
                         <div class="form-control-static short-div">
                             @for($i = 0; $i < $attach_file_cnt; $i++)
                                 @if(empty($data['arr_reply_attach_file_idx'][$i]) === false)
-                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_reply_attach_file_path'][$i].$data['arr_reply_attach_file_name'][$i]).'/'.urlencode($data['arr_reply_attach_file_real_name'][$i]) }}" target="_blank">
+                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_reply_attach_file_path'][$i].$data['arr_reply_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_reply_attach_file_real_name'][$i]) }}" target="_blank">
                                         {{ $data['arr_reply_attach_file_real_name'][$i] }}
                                     </a> ]
                                 @endif
@@ -208,7 +208,7 @@
             });
 
             $('.file-download').click(function() {
-                var _url = '{{ site_url("/board/professor/{$boardName}/download") }}/' + $(this).data('file-path') + getQueryString();
+                var _url = '{{ site_url("/board/professor/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                 window.open(_url, '_blank');
             });
 

@@ -155,16 +155,6 @@
         @endforeach
     </div>
     <!-- willbes-Lec -->
-    <div class="willbes-Lec-buyBtn">
-        <ul>
-            <li class="btnAuto180 h36">
-                <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                    <span class="tx-light-blue">바로결제</span>
-                </button>
-            </li>
-        </ul>
-    </div>
-    <!-- willbes-Lec-buyBtn -->
 </form>
 
 <div id="InfoForm" class="willbes-Layer-Box"></div>

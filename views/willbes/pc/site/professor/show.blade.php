@@ -140,7 +140,7 @@
         <!-- // willbes-NoticeWrap -->
         <!-- willbes-Bnr -->
         <div class="willbes-Bnr mb15">
-            <img src="{{ img_url('sample/bnr5.jpg') }}">
+            {!! banner('교수진소개_서브_중단', '', $__cfg['SiteCode'], '0') !!}
         </div>
         <!-- // willbes-Bnr -->
         <!-- willbes-Prof-Tabs -->

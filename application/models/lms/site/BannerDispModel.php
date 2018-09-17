@@ -113,6 +113,7 @@ class BannerDispModel extends WB_Model
 
             // 기존 배너정보 조회
             $arr_condition['EQ']['DispName'] = element('disp_name', $input);
+            $arr_condition['EQ']['SiteCode'] = $site_code;
             $arr_condition['EQ']['CateCode'] = element('cate_code', $input, 0);
 
             $row = $this->findBannerDisp('BdIdx', $arr_condition);
@@ -159,13 +160,14 @@ class BannerDispModel extends WB_Model
             $bd_idx = element('bd_idx', $input);
 
             // 기존 배너 기본정보 조회
-            $row = $this->findBannerDisp('BdIdx', ['EQ' => ['BdIdx' => $bd_idx]]);
+            $row = $this->findBannerDisp('BdIdx, SiteCode', ['EQ' => ['BdIdx' => $bd_idx]]);
             if (count($row) < 1) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             // 기존 배너정보 조회
             $arr_condition['EQ']['DispName'] = element('disp_name', $input);
+            $arr_condition['EQ']['SiteCode'] = $row['SiteCode'];
             $arr_condition['EQ']['CateCode'] = element('cate_code', $input, 0);
             $arr_condition['NOT']['BdIdx'] = $bd_idx;
             $row = $this->findBannerDisp('BdIdx', $arr_condition);

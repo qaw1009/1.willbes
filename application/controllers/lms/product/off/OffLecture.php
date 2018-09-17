@@ -1,4 +1,4 @@
-<?
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class OffLecture extends \app\controllers\BaseController

@@ -73,49 +73,51 @@ class Player extends \app\controllers\FrontController
 
         switch($quility){
             case 'WD':
-                $url = $data['wWD'];
+                $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
                 break;
 
             case 'HD':
-                $url = $data['wHD'];
+                $filename = $data['wHD'];
                 $ratio = $data['wRatio']; // 고화질은 설정한 비율
                 break;
 
             case 'SD':
-                $url = $data['wSD'];
+                $filename = $data['wSD'];
                 $ratio = $data['wRatio']; // 저화질도 설정한 비율
                 break;
 
             default:
-                $url = $data['wWD'];
+                $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
                 break;
         }
 
         // 동영상 경로가 없을때 다른 경로로 재생
-        if(empty($url) === true){
-            $url = $data['wWD'];
+        if(empty($filename) === true){
+            $filename = $data['wWD'];
             $ratio = 21;
         }
-        if(empty($url) === true){
-            $url = $data['wHD'];
+        if(empty($filename) === true){
+            $filename = $data['wHD'];
             $ratio = $data['wRatio'];
         }
-        if(empty($url) === true){
-            $url = $data['wSD'];
+        if(empty($filename) === true){
+            $filename = $data['wSD'];
             $ratio = $data['wRatio'];
         }
 
         // 모든 경로가 존재 없을때
-        if(empty($url) === true){
+        if(empty($filename) === true){
             show_alert('샘플파일이 없습니다.', 'close');
         }
+
+        $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
 
         $this->load->view('/player/sample', [
             'data' => [
                 'isIntro' => false,
-                'ratio' => $ratio, 
+                'ratio' => $ratio,
                 'startPosition' => 0,
                 'url' => $url,
                 'memid' => $MemId
@@ -165,7 +167,7 @@ class Player extends \app\controllers\FrontController
             show_alert('맛보기 강좌가 없습니다.', 'close');
         }
 
-        $url = $profRefer[$viewType];
+        $url = $this->clearUrl($profRefer[$viewType]);
 
         if(empty($url) === true){
             show_alert('샘플강의가 없습니다.', 'close');
@@ -190,7 +192,7 @@ class Player extends \app\controllers\FrontController
      */
     public function Curriculum($params = [])
     {
-        
+
     }
 
     /**
@@ -209,6 +211,40 @@ class Player extends \app\controllers\FrontController
     public function deleteBookmark()
     {
 
+    }
+
+    /** URL 에서 // 를 제거하기 위해서
+     * @param $str
+     * @return string
+     */
+    private function clearUrl($str)
+    {
+        $protocol_arr = ['mms://', 'http://', 'https://'];
+        $protocol = '';
+        $i = 0;
+
+        // 앞에 protocol 제거 하고 저장
+        foreach($protocol_arr as $key){
+            $str = str_replace($key, '', $str, $i);
+            if($i > 0){
+                $protocol = $key;
+                break;
+            }
+        }
+
+        // 프로코톨이 겁색이 안되었을경우 기본 http로 설정
+        if($protocol == ""){
+            $protocol = 'http://';
+        }
+
+        // 공백제거
+        $str = str_replace(' ', '', $str, $i);
+
+        do {
+            $str = str_replace('//', '/', $str, $i);
+        } while($i > 0);
+
+        return $protocol.$str;
     }
 
 }

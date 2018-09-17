@@ -5,6 +5,8 @@ class PlayerFModel extends WB_Model
 {
     private $_table = [
         'sample' => 'lms_product_lecture_sample',
+        'lecture' => 'lms_product_lecture',
+        'mstlec' => 'wbs_cms_lecture',
         'unit' => 'wbs_cms_lecture_unit_combine',
         'wbs_code' => 'wbs_sys_code'
     ];
@@ -31,7 +33,9 @@ class PlayerFModel extends WB_Model
             return [];
         }
 
-        $column = 'wSD, wHD, wWD,
+        $column = '
+            ML.wMediaUrl,
+            U.wSD, U.wHD, U.wWD,
             IFNULL(C.wCcdValue, 16) AS wRatio
             ';
 
@@ -43,8 +47,10 @@ class PlayerFModel extends WB_Model
             ]
         ];
 
-        $from = " FROM 
-            {$this->_table['sample']} AS S
+        $from = " FROM
+            {$this->_table['lecture']} AS L
+            INNER JOIN {$this->_table['mstlec']} AS ML ON L.wLecIdx = ML.wLecIdx
+            INNER JOIN {$this->_table['sample']} AS S ON L.ProdCode = S.ProdCode 
             INNER JOIN {$this->_table['unit']} AS U ON S.wUnitIdx = U.wUnitIdx
             LEFT JOIN {$this->_table['wbs_code']} AS C ON U.wContentSizeCcd = C.wCcd 
         ";
@@ -53,7 +59,7 @@ class PlayerFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
-
+        logger($from);
         return empty($rows) === true ? [] : $rows->row_array();
     }
 

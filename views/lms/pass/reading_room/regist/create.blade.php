@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="lake_layer">강의실<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="lake_layer">{{($mang_type == 'R') ? '강의실' : '층'}}<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
                         <input type="number" class="form-control" id="lake_layer" name="lake_layer" required="required" title="강의실명" value="{{ $data['LakeLayer'] }}" > 호 <span class="ml-10">• 숫자만 입력</span>
                     </div>
@@ -69,9 +69,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="use_qty">{{$mang_title}}총좌석수<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="use_qty">{{$mang_title}}총{{($mang_type == 'R') ? '좌석' : '개'}}수<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="use_qty" name="use_qty" required="required" title="{{$mang_title}}총좌석수" value="{{ $data['UseQty'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="use_qty" name="use_qty" required="required" title="{{$mang_title}}총{{$mang_title}}총{{($mang_type == 'R') ? '좌석' : '개'}}수" value="{{ $data['UseQty'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="transverse_num">가로수<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
@@ -80,13 +80,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="start_no">좌석시작번호<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="start_no">{{($mang_type == 'R') ? '좌석' : ''}}시작번호<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="start_no" name="start_no" required="required" title="좌석시작번호" value="{{ $data['StartNo'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="start_no" name="start_no" required="required" title="{{($mang_type == 'R') ? '좌석' : ''}}시작번호" value="{{ $data['StartNo'] }}" > <span class="ml-10">• 숫자만 입력</span>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="end_no">좌석종료번호<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 d-line" for="end_no">{{($mang_type == 'R') ? '좌석' : ''}}종료번호<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
-                        <input type="number" class="form-control" id="end_no" name="end_no" required="required" title="좌석종료번호" value="{{ $data['EndNo'] }}" readonly="readonly"> <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="end_no" name="end_no" required="required" title="{{($mang_type == 'R') ? '좌석' : ''}}종료번호" value="{{ $data['EndNo'] }}" readonly="readonly"> <span class="ml-10">• 숫자만 입력</span>
                     </div>
                 </div>
 

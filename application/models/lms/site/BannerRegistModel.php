@@ -247,7 +247,8 @@ class BannerRegistModel extends WB_Model
                 $this->load->helper('file');
                 $real_img_path = public_to_upload_path($row['BannerFullPath'].$row['BannerImgName']);
                 if (@unlink($real_img_path) === false) {
-                    throw new \Exception('이미지 삭제에 실패했습니다.');
+                    // 로컬에서 등록한 이미지는 삭제가 안되기 때문에 에러 메시지 노출 안함으로 변경
+                    //throw new \Exception('이미지 삭제에 실패했습니다.');
                 }
 
                 $img_data['BannerFullPath'] = $this->upload->_upload_url . $upload_dir . '/';

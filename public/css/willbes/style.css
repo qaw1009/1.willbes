@@ -1253,6 +1253,10 @@ table.auTable tr td {
     display: inline-block;
     width: 425px;
 }
+.List-Table li a img {
+    background: #009ef5;
+    margin: -2px 0 0 5px;
+}
 .List-Table li span.date {
     float: right;
 }
@@ -1307,14 +1311,19 @@ table.auTable tr td {
 }
 .VisualBox .MaintabList ul li {
     background: #38434d;
-    display: inline-block;
-    width: 156px;
+    display: inline-block; 
     height: 28px;
     font-size: 14px;
     color: #fff;
     line-height: 26px;
     border: 1px solid #fff;
     margin: 0 -2px;
+}
+.VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.VisualBox .MaintabList.four ul li {
+    width: 156px;
 }
 .VisualBox .MaintabList ul li a {
     display: block;
@@ -1837,6 +1846,13 @@ table.auTable tr td {
 .cop .tx-color {
     color: #1087ef;
 }
+.cop .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
+    color: #2784d2;
+}
+.cop .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
+}
 .cop .Section3 {
     background: #f0f0f0;
     padding: 40px 0;
@@ -1846,10 +1862,28 @@ table.auTable tr td {
 .gosi .tx-color {
     color: #8c6239;
 }
-
-
-
-
+.gosi .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
+    color: #8c6239;
+}
+.gosi .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
+}
+.gosi .Section3 {
+    background: #f0f0f0;
+    padding: 40px 0;
+}
+.gosi .List-Table li a img,
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #8c6239;
+}
+.gosi .Section .SpecialBox dt .infoBox .infoTit,
+.gosi .Section .NoticeBox dt .infoBox .infoTit,
+.gosi .tabWrap.noticeWrap li a.on {
+    color: #8c6239;
+}
 
 
 

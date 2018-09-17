@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="subContainer widthAuto c_both">
-    <div class="Menu NSK c_both">
+<div id="Container" class="Container gosi NSK c_both">
+    <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">공무원<span class="row-line">|</span></li>
@@ -53,426 +53,577 @@
             </ul>
         </h3>
     </div>
-    <div class="Depth">
-        <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth"><span class="depth-Arrow">></span><strong>공무원</strong></span>
+
+    <div class="Section MainVisual mt20 mb30">
+        <div class="widthAuto">
+            <div class="VisualBox p_re">
+                <div id="MainRollingDiv" class="MaintabList three">
+                    <ul class="Maintab">
+                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급 PASS</a></li>
+                        <li><a data-slide-index="1" href="javascript:void(0);" class="">제니스 영어</a></li>
+                        <li><a data-slide-index="2" href="javascript:void(0);" class="">영어완성 PACK</a></li>
+                    </ul>
+                </div>
+                <div id="MainRollingSlider" class="MaintabBox">
+                    <div class="bx-wrapper">
+                        <div class="bx-viewport">
+                            <ul class="MaintabSlider">
+                                <li><a href="#none"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}"></a></li>
+                                <li><a href="#none"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}"></a></li>
+                                <li><a href="#none"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="VisualsubBox">
+                <ul>
+                    <li><a href="#none"><img src="{{ img_url('gosi/visual/visualsub_180914.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></a></li>
+                    <!--
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></a></div>
+                                <div><img src="{{ img_url('gosi/visual/visualsub_180916.jpg') }}"></div>
+                                <div><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></div>
+                                <div><img src="{{ img_url('gosi/visual/visualsub_180916.jpg') }}"></div>
+                            </div>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <div class="VisualList c_both mt20">
+                <ul>
+                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180917.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180918.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180919.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180920.jpg') }}"></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="Content p_re">
-
-        <div class="willbes-Bnr">
-            <img src="{{ img_url('sample/bnr1.jpg') }}">
-        </div>
-        <!-- willbes-Bnr -->
-
-        <div class="willbes-Lec NG c_both">
-            <div class="willbes-Lec-Subject tx-dark-black">· 국어<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
-            <!-- willbes-Lec-Subject -->
-
-            <div class="willbes-Lec-Profdata tx-dark-black">
-                <ul>
-                    <li class="ProfImg"><img src="{{ img_url('sample/prof1.png') }}"></li>
-                    <li class="ProfDetail">
-                        <div class="Obj">
-                            공무원 국어종결자<br/>정채영 국어
+    <div class="Section Section1 mb50">
+        <div class="widthAuto">
+            <div class="will-Tit">윌비스 <span class="tx-color">공무원</span> 강사진</div>
+            <ul class="ProfBox">
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180914.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180915.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180916.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180917.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180918.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180919.png') }}"></a></li>
+                <!--
+                <li class="p_re">         
+                    <div class="cSlider graySlider AbsControls">
+                        <div class="sliderControls">
+                            <div><a href="#none"><img src="{{ img_url('gosi/prof/prof_180918.png') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/prof/prof_180914.png') }}"></a></div>
                         </div>
-                        <div class="Name">정채영 교수님</div>
-                    </li>
-                    <li class="Reply tx-blue">
-                        <strong>수강후기</strong>
-                        <div class="sliderUp">
-                            <div class="sliderVertical roll-Reply tx-dark-black">
-                                <div>1국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                                <div>2국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                                <div>3국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- willbes-Lec-Profdata -->
-
-            <div class="willbes-Lec-Line">-</div>
-            <!-- willbes-Lec-Line -->
-
-            <div class="willbes-Lec-Table">
-                <table cellspacing="0" cellpadding="0" class="lecTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
-                        <col style="width: 290px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="w-list">문제풀이</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
-                            <td class="w-data tx-left pl25">
-                                <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
-                                </div>
-                                <dl class="w-info">
-                                    <dt class="mr20">
-                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
-                                            <strong>강좌상세정보</strong>
-                                        </a>
-                                    </dt>
-                                    <dt>강의수 : <span class="tx-blue">70강</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
-                            </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none" onclick="openWin('viewBox')">맛보기</a></div>
-                                <div id="viewBox" class="viewBox">
-                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기1</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                    <dl class="NSK">
-                                        <dt class="Tit NG">맛보기2</dt>
-                                        <dt class="tBox t1 black"><a href="">HIGH</a></dt>
-                                        <dt class="tBox t2 gray"><a href="">LOW</a></dt>
-                                    </dl>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC]</span>
-                                    <span class="price tx-blue">7,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[모바일]</span>
-                                    <span class="price tx-blue">80,000원</span>
-                                    <span class="discount">(↓10%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC+모바일]</span>
-                                    <span class="price tx-blue">123,000원</span>
-                                    <span class="discount">(↓15%)</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">수강생 교재</span> 
-                                    <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                    <span class="chk buybtn p_re">
-                                        <label>[판매중]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">30,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">주교재</span> 
-                                    <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
-                                    <span class="chk">
-                                        <label class="soldout">[품절]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">20,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">부교재</span> 
-                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
-                                    <span class="chk">
-                                        <label class="press">[출간예정]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">0원</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
-                                <div class="w-sub">
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
-            </div>
-            <!-- willbes-Lec-Table -->
-
-            <div class="willbes-Lec-Table">
-                <table cellspacing="0" cellpadding="0" class="lecTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
-                        <col style="width: 290px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="w-list">문제풀이</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
-                            <td class="w-data tx-left pl25">
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</div>
-                                <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
-                                    <dt>강의수 : <span class="tx-blue">70강</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
-                                        <span class="nBox n3">예정</span>
-                                        <span class="nBox n4">완강</span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC]</span>
-                                    <span class="price tx-blue">6,000원</span>
-                                    <span class="discount">(↓12%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[모바일]</span>
-                                    <span class="price tx-blue">90,000원</span>
-                                    <span class="discount">(↓50%)</span>
-                                </div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="select">[PC+모바일]</span>
-                                    <span class="price tx-blue">154,000원</span>
-                                    <span class="discount">(↓5%)</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
-            </div>
-            <!-- willbes-Lec-Table -->
-        </div>
-        <!-- willbes-Lec -->
-
-        <div class="willbes-Lec NG c_both">
-            <div class="willbes-Lec-Profdata tx-dark-black">
-                <ul>
-                    <li class="ProfImg"><img src="{{ img_url('sample/prof2.png') }}"></li>
-                    <li class="ProfDetail">
-                        <div class="Obj">
-                            국어강의의 뉴 패러다임!<br/>듣기만 해도 암기되는 강의
-                        </div>
-                        <div class="Name">기미진 교수님</div>
-                    </li>
-                    <li class="Reply tx-blue">
-                        <strong>수강후기</strong>
-                        <div class="sliderUp">
-                            <div class="sliderVertical roll-Reply tx-dark-black">
-                                <div>444국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                                <div>555국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                                <div>666국어 정말 약했는데 정채영국어를 알게되서 정말 다행이라고 생각합니다.</div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- willbes-Lec-Profdata -->
-
-            <div class="willbes-Lec-Line">-</div>
-            <!-- willbes-Lec-Line -->
-
-            <div class="willbes-Lec-Table">
-                <table cellspacing="0" cellpadding="0" class="lecTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
-                        <col style="width: 290px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="w-list">유료특강</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">기미진</span></td>
-                            <td class="w-data tx-left pl25">
-                                <div class="w-tit">2018 기미진 국어 아침 실전 동형모의고사 특강[국가직~서울시](3-6개월)</div>
-                                <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
-                                    <dt>강의수 : <span class="tx-blue">48강 (예정)</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">100일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">2배수</span>
-                                        <span class="nBox n2">진행중</span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="price tx-blue">0원</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">부교재</span> 
-                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
-                                    <span class="chk">
-                                        <label class="press">[출간예정]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">0원</span>
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
-            </div>
-            <!-- willbes-Lec-Table -->
-
-            <div class="willbes-Lec-Table">
-                <table cellspacing="0" cellpadding="0" class="lecTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 85px;">
-                        <col style="width: 490px;">
-                        <col style="width: 290px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="w-list">문제풀이</td>
-                            <td class="w-name">국어<br/><span class="tx-blue">기미진</span></td>
-                            <td class="w-data tx-left pl25">
-                                <div class="w-tit">2018 [서울시대비] 기미진 기특한 국어 아침 실전동형모의고사 (5-6월)</div>
-                                <dl class="w-info">
-                                    <dt class="mr20"><strong>강좌상세정보</strong></dt>
-                                    <dt>강의수 : <span class="tx-blue">16강 (예정)</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">40일</span></dt>
-                                    <dt class="NSK ml15">
-                                        <span class="nBox n1">2배수</span>
-                                        <span class="nBox n3">예정</span>
-                                    </dt>
-                                </dl>
-                            </td>
-                            <td class="w-notice p_re">
-                                <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                    <span class="price tx-blue">0원</span>
-                                </div>
-                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecTable -->
-
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- lecInfoTable -->
-            </div>
-            <!-- willbes-Lec-Table --> 
-        </div>
-        <!-- willbes-Lec -->
-
-        <div class="willbes-Lec-buyBtn">
-            <ul>
-                <li class="btnAuto180 h36">
-                    <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                        <span>장바구니</span>
-                    </button>
+                    </div>
                 </li>
-                <li class="btnAuto180 h36">
-                    <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                        <span class="tx-light-blue">바로결제</span>
-                    </button>
+                <li class="p_re">         
+                    <div class="cSlider graySlider AbsControls">
+                        <div class="sliderControls">
+                            <div><a href="#none"><img src="{{ img_url('gosi/prof/prof_180919.png') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/prof/prof_180916.png') }}"></a></div>
+                        </div>
+                    </div>
                 </li>
+                -->
             </ul>
         </div>
-        <!-- willbes-Lec-buyBtn -->
-
     </div>
-    <div class="Quick-Bnr ml20">
-        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
+    <div class="Section Section2 mb50">
+        <div class="widthAuto">
+            <div class="will-Tit">윌비스 <span class="tx-color">공무원</span> Hot Pick</div>
+            <div class="willbes-Bnr">
+                <ul>
+                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180914.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180915.jpg') }}"></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div class="Section Section3 mb50">
+        <div class="widthAuto">
+            <div class="will-Tit bd-none">시험대비 <span class="tx-color">합격특강</span></div>
+            <div class="SpecialBox">
+                <dl>
+                    <dt class="oneLec p_re">
+                        <div class="bSlider blueSlider AbsControls">
+                            <div class="slider">
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180917.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2019 기미진기특한국어기출특강(9-10월)<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180918.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2018년 3차대비 신광은 형사소송법 파이널 찍기특강<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dt class="oneLec p_re">
+                        <div class="bSlider blueSlider AbsControls">
+                            <div class="slider">
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180918.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2019 한덕현영어필살기출비법특강(9-10월)<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180917.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2018년 3차대비 신광은 형사소송법 파이널 찍기특강<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dt class="twoLec p_re">
+                        <ul>
+                            <li class="p_re">            
+                                <a href="#none">
+                                    <div class="infoTxt">
+                                        2019 김영 영어<br/>
+                                        <span class="tx-bright-brown">기출문제 특강</span>(9-10월)<br/>
+                                        <span class="w-date">2018.9.28 개강 / 50일</span><br/>
+                                    </div>
+                                    <div class="imgBox">
+                                        <img src="{{ img_url('sample/prof6.jpg') }}">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="p_re">
+                                <div class="bSlider blueSlider AbsControls Left">
+                                    <div class="slider">
+                                        <div>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2019 박민주 <span class="tx-bright-brown">민주 한국사</span><br/>
+                                                    <span class="tx-bright-brown">기본+심회</span>(9-10월)<br/>
+                                                    <span class="w-date">2018.9.28 개강 / 20일</span><br/>
+                                                </div>
+                                                <div class="imgBox">
+                                                    <img src="{{ img_url('sample/prof7.jpg') }}">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2018년 3차대비 <span class="tx-bright-brown">3단계 Final</span><br/>
+                                                    <span class="tx-bright-brown">실전모의고사</span>(史 오태진)<br/>
+                                                    <span class="w-date">2018.9.28 개강 / 20일</span><br/>
+                                                </div>
+                                                <div class="imgBox">
+                                                    <img src="{{ img_url('sample/prof6.jpg') }}">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="Section Section4 mb50">
+        <div class="widthAuto">
+            <dl class="NoticeBox two">
+                <dt class="noticeList">
+                    <div class="noticeTabs c_both">
+                        <ul class="tabWrap noticeWrap three">
+                            <li><a href="#notice1" class="on">공지사항</a><span class="row-line">|</span></li>
+                            <li><a href="#notice2" class="">시험공고</a><span class="row-line">|</span></li>
+                            <li><a href="#notice3" class="">수험뉴스</a></li>
+                        </ul>
+                        <div class="tabBox noticeBox">
+                            <div id="notice1" class="tabContent p_re">
+                                <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                <ul class="List-Table">
+                                    <li><a href="#none">공지사항 제목이 출력됩니다. <img class="nBasic {{ SUB_DOMAIN }}" src="{{ img_url('sub/icon_new.png') }}"></a><span class="date">2018.09.06</span></li>
+                                    <li><a href="#none">3월 31일(금) 새벽시스템점검안내 안내안내안내</a><span class="date">2018.09.01</span></li>
+                                    <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018.08.24</span></li>
+                                    <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018.08.13</span></li>
+                                </ul>
+                            </div>
+                            <div id="notice2" class="tabContent p_re">
+                                <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                <ul class="List-Table">
+                                    <li><a href="#none">공지사항 제목이 출력됩니다.</a><span class="date">2018.09.06</span></li>
+                                    <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a><span class="date">2018.09.01</span></li>
+                                    <li><a href="#none">설연휴학원고객센터운영안내22</a><span class="date">2018.08.24</span></li>
+                                    <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2018.08.13</span></li>
+                                </ul>
+                            </div>
+                            <div id="notice3" class="tabContent p_re">
+                                <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                <ul class="List-Table">
+                                    <li><a href="#none">공지사항 제목이 출력됩니다.333</a><span class="date">2018.09.06</span></li>
+                                    <li><a href="#none">3월 31일(금) 새벽시스템점검안내33</a><span class="date">2018.09.01</span></li>
+                                    <li><a href="#none">설연휴학원고객센터운영안내33</a><span class="date">2018.08.24</span></li>
+                                    <li><a href="#none">추석교재배송및고객센터휴무안내33</a><span class="date">2018.08.13</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </dt>
+                <dt class="freeLec p_re">
+                    <div class="will-listTit">윌비스 공무원 무료강좌</div>
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
+                            <div>
+                                <ul>
+                                    <li class="p_re">
+                                        <div class="infoBox">
+                                            <div class="infoTit">[테마별특강]</div>
+                                            <a class="btn-add" href="#none"><img src="{{ img_url('cop/icon_add_mid.png') }}"></a>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2019 김영 영어<br/>
+                                                    기출문제특강<br/>
+                                                    (9-10월)<br/>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="p_re">
+                                        <div class="infoBox">
+                                            <div class="infoTit">[입문특강]</div>
+                                            <a class="btn-add" href="#none"><img src="{{ img_url('cop/icon_add_mid.png') }}"></a>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2019 박민주 미친한국사<br/>
+                                                    기본+심화이론<br/>
+                                                    (9-10월)<br/>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="p_re">
+                                        <div class="infoBox">
+                                            <div class="infoTit">[기출해설특강]</div>
+                                            <a class="btn-add" href="#none"><img src="{{ img_url('cop/icon_add_mid.png') }}"></a>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2019 기미진 기특한국어<br/>
+                                                    기출특강<br/>
+                                                    (9월-10월)<br/>
+                                                </div> 
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li class="p_re">
+                                        <div class="infoBox">
+                                            <div class="infoTit">[테마별특강2]</div>
+                                            <a class="btn-add" href="#none"><img src="{{ img_url('cop/icon_add_mid.png') }}"></a>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2018년 1차 대비aa<br/>
+                                                    김원욱 형법<br/>
+                                                    1개년 최신 판례특강<br/>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="p_re">
+                                        <div class="infoBox">
+                                            <div class="infoTit">[입문특강3]</div>
+                                            <a class="btn-add" href="#none"><img src="{{ img_url('cop/icon_add_mid.png') }}"></a>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    신광은 형사소송법bb<br/>
+                                                    상소 및 재심특강<br/>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="p_re">
+                                        <div class="infoBox">
+                                            <div class="infoTit">[기출해설특강4]</div>
+                                            <a class="btn-add" href="#none"><img src="{{ img_url('cop/icon_add_mid.png') }}"></a>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    신광은형소법 17년 상반기cc<br/>
+                                                    최신기출특강(북부여경, 경찰특공대, 국가직 9급)<br/>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </dt>
+            </dl>
+            <dl class="NoticeBox four">
+                <dt class="recommendBook p_re">
+                    <div class="will-listTit">추천교재</div>
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="{{ img_url('sample/book1.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">예문사 / 최우영</div>
+                                        <div class="infoTxt">
+                                            2019 최우영전기이론<br/>
+                                            [3차개정]<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="{{ img_url('sample/book2.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">좋은책 / 김원욱22222</div>
+                                        <div class="infoTxt">
+                                            2018 김원욱 형법aaaa<br/>
+                                            원욱이형 키워드1.0<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dt>
+                <dt class="newBook p_re">
+                    <div class="will-listTit">신규교재</div>
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="{{ img_url('sample/book2.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">서울고시각 / 장사원</div>
+                                        <div class="infoTxt">
+                                            2019 NO.1 농업직<br/>
+                                            컨셉식용작물(학)<br/>
+                                            (개정6판)<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox">
+                                        <img src="{{ img_url('sample/book1.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">웅비 / 신광은222222</div>
+                                        <div class="infoTxt">
+                                            신광은 형사소송법gggg<br/>
+                                            필기노트 신정4판ssss<br/>
+                                            기본이론 (18년 4월)<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dt>
+                <dt class="recommendLec p_re">
+                    <div class="will-listTit">추천강좌</div>
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox cover">
+                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img src="{{ img_url('sample/prof3-5.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">[한국사] 박민주</div>
+                                        <div class="infoTxt">
+                                            2019 박민주 민주한국사<br/>
+                                            심화이론(9-10월)<br/>
+                                            135,000원(10%할인)<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox cover">
+                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img src="{{ img_url('sample/prof3.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">[형사소송법] 신광은222222222</div>
+                                        <div class="infoTxt">
+                                            2018 신광은 형사소송법<br/>
+                                            기본이론 (3월)<br/>
+                                            90,000원(0%할인)<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dt>
+                <dt class="newLec p_re">
+                    <div class="will-listTit">신규강좌</div>
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox cover">
+                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img src="{{ img_url('sample/prof3-6.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">[영어] 김영</div>
+                                        <div class="infoTxt">
+                                            2019 김영 영어<br/>
+                                            기출문제 특강(9-10월)<br/>
+                                            81,000원(10%할인)<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                    <div class="imgBox cover">
+                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img src="{{ img_url('sample/prof3-4.jpg') }}">
+                                    </div>
+                                    <div class="infoBox">
+                                        <div class="infoTit">[경찰학개론] 장정훈22222</div>
+                                        <div class="infoTxt">
+                                            2018 장정훈 경찰학개론<br/>
+                                            기본이론 (18년 4월)<br/>
+                                            90,000원(0%할인)<br/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </dt>
+            </dl>
+        </div>
+    </div>
+    <div class="Section Section5 mb50">
+        <div class="widthAuto">
+            <div class="CScenterBox">
+                <dl>
+                    <dt class="willbesCenter">
+                        <div class="centerTit">윌비스 공무원 사이트에 물어보세요!</div>
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <img src="{{ img_url('cop/icon_cecenter1.png') }}">
+                                    <div class="nTxt">자주하는<br/>질문</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <img src="{{ img_url('cop/icon_cecenter2.png') }}">
+                                    <div class="nTxt">모바일<br/>서비스</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
+                                    <div class="nTxt">동영상<br/>상담실</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <img src="{{ img_url('cop/icon_cecenter4.png') }}">
+                                    <div class="nTxt">1:1<br/>고객지원</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </dt>
+                    <dt class="willbesNumber">
+                        <ul>
+                            <li>
+                                <div class="nTit">온라인 수강문의</div>
+                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 2</div>
+                                <div class="nTxt">
+                                    [운영시간]<br/>
+                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
+                                    공휴일/일요일휴무<br/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nTit">교재문의</div>
+                                <div class="nNumber tx-color">1544-4944</div>
+                                <div class="nTxt">
+                                    [운영시간]<br/>
+                                    평일: 09시~ 17시 (점심시간12시~13시)<br/>
+                                    공휴일/일요일휴무<br/>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nTit">학원 고객센터</div>
+                                <div class="nNumber tx-color">1544-0336</div>
+                                <div class="nTxt">
+                                    [전화/방문상담 운영시간]<br/>
+                                    평일/주말: 09시~ 22시<br/>
+                                </div>
+                            </li>
+                        </ul>
+                    </dt>
+                </dl>
+            </div>
+            
+        </div>
+    </div>   
 </div>
 <!-- End Container -->
 @stop

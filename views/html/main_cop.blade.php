@@ -66,7 +66,7 @@
     <div class="Section MainVisual mt20 mb30">
         <div class="widthAuto">
             <div class="VisualBox p_re">
-                <div id="MainRollingDiv" class="MaintabList">
+                <div id="MainRollingDiv" class="MaintabList four">
                     <ul class="Maintab">
                         <li><a data-slide-index="0" href="javascript:void(0);" class="active">평생 12개월 PASS</a></li>
                         <li><a data-slide-index="1" href="javascript:void(0);" class="">필합 문풀 PASS</a></li>

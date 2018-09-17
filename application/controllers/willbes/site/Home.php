@@ -15,6 +15,6 @@ class Home extends \app\controllers\FrontController
 
     public function index()
     {
-        $this->load->view('site/main_' . $this->_site_id . $this->_pass_site_val);
+        $this->load->view('site/main_' . SUB_DOMAIN);
     }
 }

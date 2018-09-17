@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class studyComment extends BaseBoard
+class StudyComment extends BaseBoard
 {
     protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board', 'product/base/subject', 'product/base/professor', 'product/on/lecture');
     protected $helpers = array('download','file');

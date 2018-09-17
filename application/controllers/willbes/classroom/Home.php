@@ -5,7 +5,7 @@ class Home extends \app\controllers\FrontController
 {
     protected $models = array();
     protected $helpers = array();
-    protected $auth_controller = false;
+    protected $auth_controller = true;
     protected $auth_methods = array();
 
     public function __construct()

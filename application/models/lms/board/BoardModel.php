@@ -111,7 +111,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
                 break;
-            case "Qna" :
+            case "qna" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
@@ -120,7 +120,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
                 ";
                 break;
-            case "Material" :
+            case "material" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
@@ -494,7 +494,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
                 break;
-            case "Qna" :
+            case "qna" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
@@ -512,7 +512,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
                 ";
                 break;
-            case "Material" :
+            case "material" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode

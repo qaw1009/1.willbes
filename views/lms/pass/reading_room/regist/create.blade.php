@@ -1,14 +1,15 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 독서실 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
+    <h5>- {{$mang_title}} 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/pass/readingRoom/regist/store") }}?bm_idx=45" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/pass/readingRoom/regist/store") }}?{!! $default_query_string !!}" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
+        <input type="hidden" name="mang_type" value="{{$mang_type}}">
         <div class="x_panel">
             <div class="x_title">
-                <h2>독서실등록관리 정보</h2>
+                <h2>{{$mang_title}}등록관리 정보</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
                 </div>
@@ -34,7 +35,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">독서실코드 코드</label>
+                    <label class="control-label col-md-1-1" for="">{{$mang_title}}코드</label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['DIdx'] }}@else # 등록 시 자동 생성 @endif</p>
                     </div>
@@ -48,16 +49,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="rd_name">독서실명<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="rd_name">{{$mang_title}}명<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="text" class="form-control" id="rd_name" name="rd_name" required="required" title="독서실명" value="{{ $data['BannerName'] }}" >
+                        <input type="text" class="form-control" id="rd_name" name="rd_name" required="required" title="{{$mang_title}}명" value="{{ $data['BannerName'] }}" >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="lake_layer">강의실<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="lake_layer" name="lake_layer" required="required" title="강의실명" value="{{ $data['LakeLayer'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="lake_layer" name="lake_layer" required="required" title="강의실명" value="{{ $data['LakeLayer'] }}" > 호 <span class="ml-10">• 숫자만 입력</span>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="use_start_date">사용기간<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
@@ -68,9 +69,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="use_qty">독서실총좌석수<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="use_qty">{{$mang_title}}총좌석수<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="number" class="form-control" id="use_qty" name="use_qty" required="required" title="독서실총좌석수" value="{{ $data['UseQty'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="use_qty" name="use_qty" required="required" title="{{$mang_title}}총좌석수" value="{{ $data['UseQty'] }}" > 개 <span class="ml-10">• 숫자만 입력</span>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="transverse_num">가로수<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
@@ -85,12 +86,12 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="end_no">좌석종료번호<span class="required">*</span></label>
                     <div class="col-md-5 form-inline ml-12-dot item">
-                        <input type="number" class="form-control" id="end_no" name="end_no" required="required" title="좌석종료번호" value="{{ $data['EndNo'] }}" > <span class="ml-10">• 숫자만 입력</span>
+                        <input type="number" class="form-control" id="end_no" name="end_no" required="required" title="좌석종료번호" value="{{ $data['EndNo'] }}" readonly="readonly"> <span class="ml-10">• 숫자만 입력</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">판매가<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="sale_price">판매가<span class="required">*</span></label>
                     <div class="col-md-10 form-inline item">
                         <span class="blue mr-10">[정상가]</span>
                         <input type="number" class="form-control mr-5" id="sale_price" name="sale_price" required="required" title="정상가" value="{{ $data['BannerName'] }}" style="width: 140px;">원
@@ -110,9 +111,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">예치금</label>
+                    <label class="control-label col-md-1-1" for="sub_prod_code_price">예치금</label>
                     <div class="col-md-10 form-inline">
-                        <input type="number" class="form-control mr-5" id="" name="" title="예치금" value="{{ $data['BannerName'] }}" style="width: 140px;">원
+                        <input type="number" class="form-control mr-5" id="sub_prod_code_price" name="sub_prod_code_price" title="예치금" value="{{ $data['BannerName'] }}" style="width: 140px;">원
                     </div>
                 </div>
 
@@ -134,7 +135,7 @@
                             </div>
                         </div>
                         <div class="row-line mb-10">
-                            <textarea id="sms_content" name="sms_content" class="form-control" rows="3" title="내용" placeholder="">{!! $data['Desc'] !!}</textarea>
+                            <textarea id="sms_memo" name="sms_memo" class="form-control" rows="3" title="내용" placeholder="">{!! $data['Desc'] !!}</textarea>
                         </div>
 
                         <div class="row form-inline">
@@ -190,13 +191,24 @@
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
 
+            //좌석종료번호 계산
+            $regi_form.on('keyup change', 'input[name="use_qty"], input[name="start_no"]', function() {
+                var end_no;
+                var use_qty = 0 || parseInt($regi_form.find('input[name="use_qty"]').val(), 10);
+                var start_no = 0 || parseInt($regi_form.find('input[name="start_no"]').val(), 10);
+                if (use_qty < 1 || start_no < 1) { return; }
+                end_no = (start_no + use_qty) -1;
+
+                $regi_form.find('input[name="end_no"]').val(end_no);
+            });
+
             // 판매가 계산
             $regi_form.on('keyup change', 'input[name="sale_price"], input[name="sale_rate"], select[name="sale_disc_type"]', function() {
                 var sale_price = 0 || parseInt($regi_form.find('input[name="sale_price"]').val(), 10);
                 var sale_rate = 0 || parseInt($regi_form.find('input[name="sale_rate"]').val(), 10);
                 var sale_disc_type = $regi_form.find('select[name="sale_disc_type"]').val();
 
-                if (sale_price < 1 || sale_rate < 1) { return; }
+                if (sale_price < 1 || sale_rate < 0) { return; }
                 if (sale_disc_type === 'R') {
                     sale_price = sale_price - ((sale_price * sale_rate) / 100);
                 } else {
@@ -233,12 +245,12 @@
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/pass/readingRoom/regist/store") }}' + getQueryString();
 
-                ajaxSubmit($regi_form, _url, function(ret) {
+                /*ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/pass/readingRoom/regist/") }}/' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, null, false, 'alert');*/
             });
         });
     </script>

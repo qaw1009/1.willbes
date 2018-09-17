@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 독서실 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
+    <h5>- {{$mang_title}} 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code', 'tab', false) !!}
@@ -71,8 +71,8 @@
                     <th>No</th>
                     <th>운영사이트</th>
                     <th>캠퍼스</th>
-                    <th>독서실코드</th>
-                    <th>독서실명</th>
+                    <th>{{$mang_title}}코드</th>
+                    <th>{{$mang_title}}명</th>
                     <th>강의실</th>
                     <th>예치금</th>
                     <th>판매가</th>
@@ -106,12 +106,12 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 독서실등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable);
+                    { text: '<i class="fa fa-pencil mr-5"></i> {{$mang_title}}등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                            location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pass/readingRoom/regist/listAjax') }}',
+                    'url' : '{{ site_url('/pass/readingRoom/regist/listAjax') }}' + '?' + '{!! $default_query_string !!}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -147,12 +147,12 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.href='{{ site_url('/pass/readingRoom/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href='{{ site_url('/pass/readingRoom/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
             });
 
-            // 독서실 신청현황 리스트
+            // 독서실/사물함 신청현황 리스트
             $list_table.on('click', '.btn-detail-list', function() {
-                location.href='{{ site_url('/pass/readingRoom/regist/assignManageList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href='{{ site_url('/pass/readingRoom/regist/assignManageList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
             });
         });
     </script>

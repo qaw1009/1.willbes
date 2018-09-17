@@ -30,7 +30,7 @@
                             </ul>
                         </div>
                         <div class="willbes-Lec NG c_both">
-                            <div class="willbes-Lec-Subject tx-dark-black">· {{ rawurldecode($arr_input['subject_name']) }}<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
+                            <div class="willbes-Lec-Subject tx-dark-black">단강좌<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                             <!-- willbes-Lec-Subject -->
                             <div class="willbes-Lec-Profdata tx-dark-black">
                                 <ul>
@@ -60,7 +60,7 @@
                             <div class="willbes-Lec-Line">-</div>
                             <!-- willbes-Lec-Line -->
 
-                            {{-- 교수별 상품 리스트 loop --}}
+                            {{-- 온라인 단강좌 상품 리스트 loop --}}
                             @php $pattern = 'only'; @endphp
                             @foreach($tab_data['on_lecture'] as $idx => $row)
                                 <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
@@ -182,7 +182,7 @@
                         </div>
                         <!-- willbes-Lec -->
                     </form>
-                    {{-- 단강좌 footer script --}}
+                    {{-- 온라인 단강좌 footer script --}}
                     @include('willbes.pc.site.lecture.only_footer_partial')
                 </div>
 
@@ -325,9 +325,90 @@
             </div>
             <div class="AcadListBox user-lec-list c_both">
                 <div id="off_only_lecture" class="tabContent">
-                    <div class="willbes-Lec NG c_both">
-                        단과반
-                    </div>
+                    <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
+                        {!! csrf_field() !!}
+                        {!! method_field('POST') !!}
+                        <input type="hidden" name="learn_pattern" value="off_lecture"/>  {{-- 학습형태 --}}
+                        <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
+                        <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+
+                        <div class="willbes-Lec NG c_both mt20">
+                            <div class="willbes-Lec-Subject tx-dark-black">단과<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
+                            <!-- willbes-Lec-Subject -->
+
+                            <div class="willbes-Lec-Line mt20">-</div>
+                            <!-- willbes-Lec-Line -->
+
+                            @foreach($tab_data['off_lecture'] as $idx => $row)
+                                <div class="willbes-Lec-Table">
+                                    <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
+                                        <colgroup>
+                                            <col style="width: 75px;">
+                                            <col style="width: 85px;">
+                                            <col style="width: 75px;">
+                                            <col style="width: 355px;">
+                                            <col style="width: 165px;">
+                                            <col style="width: 185px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td class="w-place">{{ $row['CampusCcdName'] }}</td>
+                                            <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
+                                            <td class="w-list">{{ $row['CourseName'] }}</td>
+                                            <td class="w-data tx-left">
+                                                <div class="w-tit w-acad-tit">{{ $row['ProdName'] }}</div>
+                                                <dl class="w-info acad">
+                                                    <dt>
+                                                        <a href="#none"><strong>강좌상세정보</strong></a>
+                                                    </dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
+                                                    <dt class="NSK ml15">
+                                                        <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
+                                                    </dt>
+                                                </dl><br/>
+                                            </td>
+                                            <td class="w-schedule">
+                                                <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> <br/>
+                                                {{ $row['WeekArrayName'] }} ({{ $row['FixNumber'] }}회차)
+                                            </td>
+                                            <td class="w-notice p_re">
+                                                <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
+                                                @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                    <div class="priceWrap chk buybtn p_re">
+                                                <span class="price tx-blue">
+                                                    <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                                    {{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                    </div>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- lecTable -->
+                                    <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="w-tit tx-black">▷ 강좌정보</div>
+                                                <div class="w-txt">
+                                                    <strong>{{ $row['ProdName'] }}</strong><br/>
+                                                    {!! $row['Content'] !!}<br/>
+                                                    * 강의일정은 학원 사정으로 인하여 추후 변동될 수 있습니다.<br/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- lecInfoTable -->
+                                </div>
+                                <!-- willbes-Lec-Table -->
+                            @endforeach
+                        </div>
+                    </form>
+                    {{-- 학원 단과 footer script --}}
+                    @include('willbes.pc.site.off_lecture.only_footer_partial')
                 </div>
                 <div id="off_pack_normal" class="tabContent">
                     <div class="willbes-Lec NG c_both">

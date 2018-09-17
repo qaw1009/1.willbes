@@ -36,7 +36,7 @@
 
         {{-- 교수별 상품 리스트 loop --}}
         @php $pattern = 'free'; @endphp
-        @foreach($tab_data['on_lecture'] as $idx => $row)
+        @foreach($tab_data as $idx => $row)
             <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>

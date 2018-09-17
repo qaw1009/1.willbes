@@ -6,6 +6,8 @@ class ProfessorFModel extends WB_Model
     private $_table = [
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
+        'site' => 'lms_site',
+        'site_group' => 'lms_site_group'
     ];
 
     // 교수 게시판관리 식별자
@@ -94,5 +96,34 @@ class ProfessorFModel extends WB_Model
         $query = $this->_conn->query($query, [$prof_idx, $site_code, $cate_code, $subject_idx, $limit_cnt]);
 
         return array_get($query->result_array(), '0.StudyCommentData', []);
+    }
+
+    /**
+     * 사이트 그룹코드에 속한 교수식별자를 on/off 로 구분하여 리턴
+     * @param int $wprof_idx [WBS 교수식별자]
+     * @param int $site_group_code [사이트그룹 코드]
+     * @return array
+     */
+    public function getProfIdxBySiteGroupCode($wprof_idx, $site_group_code)
+    {
+        $column = 'P.ProfIdx, S.SiteCode, S.IsCampus, if(S.IsCampus = "Y", "off", "on") as SiteOnOff';
+        $from = '
+            from ' . $this->_table['professor'] . ' as P 
+                inner join ' . $this->_table['site'] . ' as S
+                    on P.SiteCode = S.SiteCode
+                inner join ' . $this->_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode
+            where P.wProfIdx = ?
+                and S.SiteGroupCode = ?
+                and P.IsStatus = "Y"
+                and S.IsStatus = "Y"
+                and SG.IsStatus = "Y"                            
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$wprof_idx, $site_group_code]);
+        $data = $query->result_array();
+
+        return array_pluck($data, 'ProfIdx', 'SiteOnOff');
     }
 }

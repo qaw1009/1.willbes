@@ -148,7 +148,7 @@
         </div>
         <!-- willbes-Lec-Search -->
 
-        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
@@ -238,7 +238,7 @@
             <div class="willbes-Lec-buyBtn">
                 <ul>
                     <li class="btnAuto180 h36">
-                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
+                        <button type="submit" name="btn_off_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
                             <span class="tx-light-blue">바로결제</span>
                         </button>
                     </li>
@@ -247,23 +247,14 @@
             <!-- willbes-Lec-buyBtn -->
         </form>
 
-        <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG">
-            <div>
-                <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
-                    <span>바로결제</span>
-                </button>
-            </div>
-        </div>
+        {{-- footer script --}}
+        @include('willbes.pc.site.off_lecture.only_footer_partial')
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">
     </div>
 </div>
-<script src="/public/js/willbes/product_util.js"></script>
 <script type="text/javascript">
-    var $regi_form = $('#regi_form');
-    var $buy_layer = $('#buy_layer');
-
     $(document).ready(function() {
         // 검색어 입력 후 엔터
         $('#search_value').on('keyup', function() {
@@ -280,22 +271,6 @@
         var goSearch = function() {
             goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
         };
-
-        // 상품 선택/해제
-        $regi_form.on('change', '.chk_products', function() {
-            showBuyLayer('off', $(this), 'buy_layer');
-        });
-
-        // 방문접수, 바로결제 버튼 클릭
-        $('button[name="btn_visit_pay"], button[name="btn_direct_pay"]').on('click', function() {
-
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-            var $is_direct_pay = $(this).data('direct-pay');
-            var $is_redirect = $(this).data('is-redirect');
-
-            cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
-        });
     });
 </script>
 <!-- End Container -->

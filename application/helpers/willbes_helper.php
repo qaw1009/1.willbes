@@ -5,16 +5,17 @@ if (!function_exists('banner')) {
     /**
      * 배너 script 리턴
      * @param string $section
+     * @param string $css_class
      * @param string $site_code
      * @param string $cate_code
      * @return string
      */
-    function banner($section, $site_code = '', $cate_code = '')
+    function banner($section, $css_class = '', $site_code = '', $cate_code = '')
     {
         empty($site_code) === true && $site_code = config_app('SiteCode');
-        empty($cate_code) === true && $cate_code = config_app('CateCode');
+        empty($cate_code) === true || strlen($cate_code) < 1 && $cate_code = config_app('CateCode');
 
-        return '<script src="' . app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section), 'www') . '"></script>';
+        return '<script src="' . app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class), 'www') . '"></script>';
     }
 
     /**

@@ -16,9 +16,15 @@ class PackageFModel extends ProductFModel
 
     /**
      * 패키지 연결 하위 강좌 목록 추출
-     * @param $prod_code
+     * @param $learn_pattern
+     * @param array $prod_code
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
      */
-    public function subListProduct($learn_pattern,$prod_code=[],$arr_condition=[],$limit = null, $offset = null, $order_by = [])
+    public function subListProduct($learn_pattern, $prod_code=[], $arr_condition=[], $limit = null, $offset = null, $order_by = [])
     {
         $prod_code = is_array($prod_code) ? $prod_code : array($prod_code);
 
@@ -32,20 +38,18 @@ class PackageFModel extends ProductFModel
             $_join_table = $this->_table['on_lecture'];        //단강좌 뷰
         }
 
-
-
         $arr_condition = array_merge_recursive($arr_condition,[
             'IN' => ['A.ProdCode' => $prod_code],
             'EQ' => ['B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],         //패키지 하위 과정이므로 특정 조건을 제외하고 상품에 관계 없이 노출
         ]);
 
         $from = ' 
-                    from
-                        '.$this->_table[$learn_pattern].' A
-	                    join lms_product_r_sublecture B on A.ProdCode = B.ProdCode	
-	                    join '.$_join_table.' C on B.ProdCodeSub = C.ProdCode ';
+            from
+                '.$this->_table[$learn_pattern].' A
+                join lms_product_r_sublecture B on A.ProdCode = B.ProdCode	
+                join '.$_join_table.' C on B.ProdCodeSub = C.ProdCode ';
 
-        $order_by = array_merge($order_by,[
+        $order_by = array_merge($order_by, [
             'A.ProdCode, B.OrderNum'=>'ASC'
         ]);
 

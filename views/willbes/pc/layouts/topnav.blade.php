@@ -7,7 +7,7 @@
                     @if(sess_data('is_login') != true)
                         @if(strpos(strtoupper(current_url()), '/MEMBER/LOGIN') === false)
                             <li class="Login">
-                                <a class="Tit" href="{{ app_url('/member/login/?rtnUrl='.rawurlencode(current_url()), 'www')}}" >로그인</a>
+                                <a class="Tit" href="{{ app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')}}" >로그인</a>
                             </li>
                         @endif
                         <li class="joinUs dropdown">

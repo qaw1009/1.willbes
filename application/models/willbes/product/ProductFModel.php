@@ -228,9 +228,10 @@ class ProductFModel extends WB_Model
     public function findProductLectureInfo($prod_code = [])
     {
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
-        $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, PL.StudyPeriod, PL.StudyStartDate, date_add(PL.StudyStartDate, interval (PL.StudyPeriod - 1) day) as StudyEndDate
+        $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, ifnull(PL.IsLecStart, "N") as IsLecStart, ifnull(PL.StudyPeriod, 0) as StudyPeriod
+            , PL.StudyStartDate, date_add(PL.StudyStartDate, interval (PL.StudyPeriod - 1) day) as StudyEndDate
         	, PL.MultipleTypeCcd, PL.MultipleApply, PL.AllLecTime
-	        , if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
+        	, if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
 	        , PL.IsPackLecStartType';
         $arr_condition = [
             'EQ' => ['P.IsStatus' => 'Y'], 'IN' => ['P.ProdCode' => (array) $prod_code]

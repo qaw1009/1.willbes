@@ -71,13 +71,15 @@ class OrderFModel extends BaseOrderFModel
                 $row['DefaultStudyStartDate'] = $row['DefaultStudyEndDate'] = $row['IsStudyStartDate'] = '';
 
                 if ($row['CartType'] == 'on_lecture' && $row['IsLecStart'] == 'Y') {
-                    if (empty($row['StudyStartDate']) === false && date('Y-m-d') < $row['StudyStartDate']) {
+                    $today_date = date('Y-m-d');    // 결제일
+                    
+                    if (empty($row['StudyStartDate']) === false && $today_date < $row['StudyStartDate']) {
                         // 개강일이 오늘 날짜보다 이후 인 경우 (개강하지 않은 상품)
-                        $row['DefaultStudyStartDate'] = $row['StudyStartDate'];
+                        $row['DefaultStudyStartDate'] = $row['StudyStartDate'];     // 개강일
                         $row['IsStudyStartDate'] = 'N';
                     } else {
                         // 이미 개강한 상품
-                        $row['DefaultStudyStartDate'] = date('Y-m-d', strtotime(date('Y-m-d') . ' +8 day'));
+                        $row['DefaultStudyStartDate'] = date('Y-m-d', strtotime($today_date . ' +7 day'));    // 결제일 익일 + 7일
                         $row['IsStudyStartDate'] = 'Y';
                     }
                     $row['DefaultStudyEndDate'] = date('Y-m-d', strtotime($row['DefaultStudyStartDate'] . ' +' . ($row['StudyPeriod'] - 1) . ' day'));
@@ -448,6 +450,8 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
+                // 사용자 지정 강좌시작일
+                $cart_row['UserStudyStartDate'] = array_get($post_data, 'study_start_date.' . $cart_row['CartIdx']);
                 $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, $is_escrow, $cart_row);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
@@ -614,7 +618,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 나의 강좌수정정보 데이터 등록
             if ($cart_type == 'on_lecture') {
-                $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub);
+                $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub, element('UserStudyStartDate', $input, ''));
                 if ($is_add_my_lecture !== true) {
                     throw new \Exception($is_add_my_lecture);
                 }
@@ -675,9 +679,10 @@ class OrderFModel extends BaseOrderFModel
      * @param int $order_prod_idx [주문상품식별자]
      * @param int $prod_code [상품코드]
      * @param array $arr_prod_code_sub [상품코드서브]
+     * @param string $user_study_start_date [사용자 지정 강좌시작일]
      * @return bool|string
      */
-    public function addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub = [])
+    public function addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub = [], $user_study_start_date = '')
     {
         $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
 
@@ -687,14 +692,23 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 기본 입력정보
+            // 단강좌, 운영자 패키지 수강시작일, 수강종료일 셋팅
+            $today_date = date('Y-m-d');    // 결제일
+            if (empty($user_study_start_date) === false && empty($row['StudyStartDate']) === false && $user_study_start_date >= $row['StudyStartDate']) {
+                $study_start_date = $user_study_start_date;
+            } else {
+                $study_start_date = $today_date;
+            }
+            $study_end_date = date('Y-m-d', strtotime($study_start_date . ' +' . ($row['StudyPeriod'] - 1) . ' day'));
+
+            // 단강좌, 운영자 패키지 입력정보
             $data = [
                 'OrderIdx' => $order_idx,
                 'OrderProdIdx' => $order_prod_idx,
                 'ProdCode' => $prod_code,
-                'LecStartDate' => $row['StudyStartDate'],
-                'LecEndDate' => $row['StudyEndDate'],
-                'RealLecEndDate' => $row['StudyEndDate'],
+                'LecStartDate' => $study_start_date,
+                'LecEndDate' => $study_end_date,
+                'RealLecEndDate' => $study_end_date,
                 'LecStudyTime' => $row['MultipleAllLecSec'],
                 'RealLecStudyTime' => $row['MultipleAllLecSec'],
                 'LecExpireDay' => $row['StudyPeriod'],
@@ -711,18 +725,29 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
                 }
             } else {
-                if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['user_package']) {
+                if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['admin_package']) {
+                    // 운영자 패키지 (패키지 속성 정보를 등록함)
+                    foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
+                        if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code_sub)->insert($this->_table['my_lecture']) === false) {
+                            throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
+                        }
+                    }
+                } elseif ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['user_package']) {
                     // 사용자 패키지 (단강좌 속성 정보를 등록함)
                     // 단강좌 정보 조회
                     $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
                     foreach ($prod_rows as $idx => $prod_row) {
+                        // 수강시작일, 수강종료일 셋팅 (결제일이 개강일보다 이전일 경우 수강시작일은 개강일로 설정)
+                        $study_start_date = $prod_row['StudyStartDate'] > $today_date ? $prod_row['StudyStartDate'] : $today_date;
+                        $study_end_date = date('Y-m-d', strtotime($study_start_date . ' +' . ($prod_row['StudyPeriod'] - 1) . ' day'));
+
                         $data = [
                             'OrderIdx' => $order_idx,
                             'OrderProdIdx' => $order_prod_idx,
                             'ProdCode' => $prod_code,
-                            'LecStartDate' => $prod_row['StudyStartDate'],
-                            'LecEndDate' => $prod_row['StudyEndDate'],
-                            'RealLecEndDate' => $prod_row['StudyEndDate'],
+                            'LecStartDate' => $study_start_date,
+                            'LecEndDate' => $study_end_date,
+                            'RealLecEndDate' => $study_end_date,
                             'LecStudyTime' => $prod_row['MultipleAllLecSec'],
                             'RealLecStudyTime' => $prod_row['MultipleAllLecSec'],
                             'LecExpireDay' => $prod_row['StudyPeriod'],
@@ -730,13 +755,6 @@ class OrderFModel extends BaseOrderFModel
                         ];
 
                         if ($this->_conn->set($data)->set('ProdCodeSub', $prod_row['ProdCode'])->insert($this->_table['my_lecture']) === false) {
-                            throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
-                        }
-                    }
-                } elseif ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['admin_package']) {
-                    // 운영자 패키지 (패키지 속성 정보를 등록함)
-                    foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
-                        if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code_sub)->insert($this->_table['my_lecture']) === false) {
                             throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
                         }
                     }

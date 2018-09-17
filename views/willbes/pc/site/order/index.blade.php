@@ -71,7 +71,7 @@
                                                         {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능, 개강일 전이라면 개강일부터 30일 이내 설정 가능 --}}
                                                         {{-- 디폴트 설정 => 시작일자 : 결제일 + 8일, 종료일자 : 시작일자 + 수강기간 --}}
                                                         @if($row['IsLecStart'] == 'Y')
-                                                            <input type="text" name="study_start_date[{{ $row['CartIdx'] }}]" class="iptDate datepicker btn-set-study-date" data-study-period="{{ $row['StudyPeriod'] }}" data-is-study-start-date="{{ $row['IsStudyStartDate'] }}" value="{{ $row['DefaultStudyStartDate'] }}" readonly="readonly"/>
+                                                            <input type="text" name="study_start_date[{{ $row['CartIdx'] }}]" class="iptDate datepicker btn-set-study-date" data-cart-idx="{{ $row['CartIdx'] }}" data-study-period="{{ $row['StudyPeriod'] }}" data-is-study-start-date="{{ $row['IsStudyStartDate'] }}" value="{{ $row['DefaultStudyStartDate'] }}" readonly="readonly"/>
                                                             <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
                                                             <input type="text" name="study_end_date[{{ $row['CartIdx'] }}]" class="iptDate bg-gray" value="{{ $row['DefaultStudyEndDate'] }}" readonly="readonly"/>
                                                         @else
@@ -443,7 +443,7 @@
             $regi_form.on('change keyup input', '.btn-set-study-date', function() {
                 var default_date = $(this).prop('defaultValue')
                     , selected_date = $(this).val()
-                    , event_idx = $(this).index('.btn-set-study-date')
+                    , cart_idx = $(this).data('cart-idx')
                     , study_days = $(this).data('study-period')
                     , is_study_start_date = $(this).data('is-study-start-date')
                     , base_date = moment().format('YYYY-MM-DD')
@@ -464,7 +464,7 @@
                 }
 
                 // 강좌종료일 설정
-                $regi_form.find('input[name="study_end_date[]"]').eq(event_idx).val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
+                $regi_form.find('input[name="study_end_date[' + cart_idx + ']"]').val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
             });
 
             // 쿠폰적용 버튼 클릭

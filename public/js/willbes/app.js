@@ -42,6 +42,18 @@ $(function() {
     });
 });
 
+// Slider Number Script (수동)
+$(function() {
+    $('.sliderNumTM').bxSlider({
+        auto: false,
+        controls: true,
+        pause: 3000,
+        pager: true,
+        pagerType: 'short',
+        moveSlides:1,
+    });
+});
+
 // Slider Controls Script
 $(function() {
     $('.sliderControls').bxSlider({
@@ -103,6 +115,9 @@ function slider(ele_id, type, pause_sec) {
         case 'vSlider' :
                 option = { mode: 'vertical', auto: true, controls: false, pause: pasue_msec, pager: false, minSlides: 1 };
             break;
+        case 'nSliderTM' :
+            option = { mode: 'vertical', auto: false, controls: false, pause: pasue_msec, pager: false, minSlides: 1 };
+        break;
     }
 
     $('#' + ele_id).bxSlider(option);

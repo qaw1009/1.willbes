@@ -130,6 +130,9 @@
                 <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180915.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180917.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></li>
+                <!--
                 <li class="p_re">         
                     <div class="cSlider graySlider AbsControls">
                         <div class="sliderControls">
@@ -146,6 +149,7 @@
                         </div>
                     </div>
                 </li>
+                -->
             </ul>
         </div>
     </div>
@@ -335,8 +339,8 @@
                 </dt>
                 <dt class="freeLec p_re">
                     <div class="will-listTit">신광은경찰 무료강좌</div>
-                    <div class="nSlider graySlider AbsControls">
-                        <div class="sliderNum">
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
                             <div>
                                 <ul>
                                     <li class="p_re">
@@ -426,8 +430,8 @@
             <dl class="NoticeBox four">
                 <dt class="recommendBook p_re">
                     <div class="will-listTit">추천교재</div>
-                    <div class="nSlider graySlider AbsControls">
-                        <div class="sliderNum">
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
                             <div>
                                 <a href="#none">
                                     <div class="imgBox">
@@ -461,8 +465,8 @@
                 </dt>
                 <dt class="newBook p_re">
                     <div class="will-listTit">신규교재</div>
-                    <div class="nSlider graySlider AbsControls">
-                        <div class="sliderNum">
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
                             <div>
                                 <a href="#none">
                                     <div class="imgBox">
@@ -498,8 +502,8 @@
                 </dt>
                 <dt class="recommendLec p_re">
                     <div class="will-listTit">추천강좌</div>
-                    <div class="nSlider graySlider AbsControls">
-                        <div class="sliderNum">
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
                             <div>
                                 <a href="#none">
                                     <div class="imgBox cover">
@@ -537,8 +541,8 @@
                 </dt>
                 <dt class="newLec p_re">
                     <div class="will-listTit">신규강좌</div>
-                    <div class="nSlider graySlider AbsControls">
-                        <div class="sliderNum">
+                    <div class="nSliderTM graySlider AbsControls">
+                        <div class="sliderNumTM">
                             <div>
                                 <a href="#none">
                                     <div class="imgBox cover">
@@ -577,7 +581,6 @@
             </dl>
         </div>
     </div>
-
     <div class="Section Section5 mb50">
         <div class="widthAuto">
             <div class="CScenterBox">
@@ -646,8 +649,7 @@
             </div>
             
         </div>
-    </div>
-    
+    </div>   
 </div>
 <!-- End Container -->
 @stop

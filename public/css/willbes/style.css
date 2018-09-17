@@ -1302,7 +1302,7 @@ table.auTable tr td {
     bottom: 8px;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 99;
     text-align: center;
 }
 .VisualBox .MaintabList ul li {
@@ -1637,25 +1637,25 @@ table.auTable tr td {
 }
 
 /* Main Container : Notice : nSlider : graySlider 회색버전 */
-.nSlider.graySlider .bx-wrapper .bx-prev {
+.nSliderTM.graySlider .bx-wrapper .bx-prev {
     background: url("../../img/willbes/cop/btn_notice_prev.jpg") no-repeat 0 0;
 }
-.nSlider.graySlider .bx-wrapper .bx-next {
+.nSliderTM.graySlider .bx-wrapper .bx-next {
     background: url("../../img/willbes/cop/btn_notice_next.jpg") no-repeat 0 0;
     left: 20px;
 }
-.nSlider.graySlider .bx-wrapper .bx-controls-direction {
+.nSliderTM.graySlider .bx-wrapper .bx-controls-direction {
     position: absolute;
     top: 0;
     right: 0;
     width: 40px;
     height: 16px;
 }
-.nSlider.graySlider .bx-wrapper .bx-controls-direction a {
+.nSliderTM.graySlider .bx-wrapper .bx-controls-direction a {
     width: 20px;
     height: 16px;
 }
-.nSlider.graySlider .bx-wrapper .bx-pager {
+.nSliderTM.graySlider .bx-wrapper .bx-pager {
     width: auto;
     position: absolute;
     top: 3px;
@@ -1668,10 +1668,10 @@ table.auTable tr td {
     padding: 0;
     letter-spacing: 0;
 }
-.nSlider.graySlider .bx-viewport {
+.nSliderTM.graySlider .bx-viewport {
     height:90px !important;
 }
-.nSlider.AbsControls .bx-controls {
+.nSliderTM.AbsControls .bx-controls {
     position: absolute;
     top: -42px;
     right: 0;
@@ -4829,11 +4829,18 @@ ul li.profList:hover .line {
     width: 100%;
     height: 100%;
 }
+
+
 ul li.profList a {
     display: block;
     width: 100%;
     height: 100%;
 }
+ul li.profList a:hover {
+    border: 1px solid #1b6db6;
+}
+
+
 ul li.profList a .line {
     display: none;
     z-index: 1;
@@ -4885,20 +4892,21 @@ ul li.profList .w-notice {
     left: 20px;
     z-index: 2;
 }
-ul li.profList .w-notice dl dt {
+ul li.profList .w-notice dl dt button {
+    background: #fff;
     position: relative;
     width: 68px;
     height: 22px;
     border: 1px solid #c9c9c9;
 }
-ul li.profList .w-notice dl dt:hover {
+ul li.profList .w-notice dl dt button:hover {
     border: 1px solid #898989;
     z-index: 1;
 }
-ul li.profList .w-notice dl dt:first-child {
+ul li.profList .w-notice dl dt button:first-child {
     margin-bottom: -1px;
 }
-ul li.profList .w-notice a {
+ul li.profList .w-notice dl dt button span {
     background: #fff;
     display: block;
     width: 100%;

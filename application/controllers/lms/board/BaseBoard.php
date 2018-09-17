@@ -342,8 +342,11 @@ class BaseBoard extends \app\controllers\BaseController
      * 첨부파일 다운로드
      * @param array $fileinfo
      */
-    protected function _download($fileinfo=[])
+    protected function _download()
     {
-        public_download($fileinfo[0], $fileinfo[1]);
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
     }
 }

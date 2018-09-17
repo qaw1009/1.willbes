@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mail extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'crm/send/mail', 'member/managemember');
+    protected $models = array('sys/code', 'sys/site', 'crm/send/mail', 'member/manageMember');
     protected $helpers = array('download');
 
     private $_send_type = 'mail';
@@ -124,7 +124,7 @@ class Mail extends \app\controllers\BaseController
                     'MemId' => $set_send_member_ids
                 ]
             ];
-            $list_send_member = $this->managememberModel->listSendMemberInfo($arr_condition);
+            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
         }
 
         $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd'], $this->_groupCcd['AdvertisePatternCcd']]);

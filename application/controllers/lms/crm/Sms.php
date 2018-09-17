@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sms extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'sys/site', 'crm/send/sms', 'member/managemember');
+    protected $models = array('sys/code', 'sys/site', 'crm/send/sms', 'member/manageMember');
     protected $helpers = array('download');
 
     private $_send_type = 'sms';
@@ -196,7 +196,7 @@ class Sms extends \app\controllers\BaseController
                     'MemId' => $set_send_member_ids
                 ]
             ];
-            $list_send_member = $this->managememberModel->listSendMemberInfo($arr_condition);
+            $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
 
             //전송할 휴대폰번호가 폼데이터에 있을 경우 넘어온 휴대폰 번호로 대체
             if (empty($target_phone) === false) {

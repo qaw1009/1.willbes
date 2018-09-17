@@ -372,9 +372,9 @@ class Notice extends BaseBoard
      * 첨부파일 다운로드
      * @param array $fileinfo
      */
-    public function download($fileinfo = [])
+    public function download()
     {
-        $this->_download($fileinfo);
+        $this->_download();
     }
 
     private function _setInputData($input){

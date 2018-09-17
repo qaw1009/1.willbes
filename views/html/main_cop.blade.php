@@ -12,7 +12,6 @@
             </div>
         </div>
     </div>
-
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
@@ -91,6 +90,8 @@
             <div class="VisualsubBox">
                 <ul>
                     <li><a href="#none"><img src="{{ img_url('cop/visual/visualsub_180914.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('cop/visual/visualsub_180915.jpg') }}"></a></li>
+                    <!--
                     <li>
                         <div class="bSlider">
                             <div class="slider">
@@ -101,6 +102,7 @@
                             </div>
                         </div>
                     </li>
+                    -->
                 </ul>
             </div>
             <div class="VisualList c_both mt20">

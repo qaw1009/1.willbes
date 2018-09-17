@@ -44,9 +44,10 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>로그인일</th>
-                            <th>로그아웃일</th>
-                            <th>IP정보</th>
+                            <th>로그인 날짜</th>
+                            <th>로그인 IP</th>
+                            <th>로그아웃 날짜</th>
+                            <th>로그아웃 IP</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -79,8 +80,9 @@
                                     return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'LoginDatm'},
-                            {'data' : null},
-                            {'data' : 'LoginIp'}
+                            {'data' : 'LoginIp'},
+                            {'data' : 'LogoutDatm'},
+                            {'data' : 'LogoutIp'}
                         ]
                     });
                 });

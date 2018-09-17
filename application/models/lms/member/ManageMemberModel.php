@@ -201,7 +201,7 @@ class ManageMemberModel extends WB_Model
             $order_by_offset_limit = '';
 
         } else {
-            $column = "MemIdx, IsLogin, LoginIp, LoginDatm ";
+            $column = "MemIdx, IsLogin, LoginIp, LoginDatm, LogoutIp, LogoutDatm ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

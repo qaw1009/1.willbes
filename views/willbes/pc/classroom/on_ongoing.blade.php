@@ -124,9 +124,9 @@
                 <div class="DetailWrap c_both">
                     <ul class="tabWrap tabDepthPass">
                         <li><a href="#Mypagetab1" onclick="fnSetMoreTable();openTxt('info1')" class="on">단강좌 ({{count($lecList)}})</a></li>
-                        <li><a href="#Mypagetab2" onclick="fnSetMoreTable();openTxt('info2')">패키지강좌 (2)</a></li>
-                        <li><a href="#Mypagetab3" onclick="fnSetMoreTable();openTxt('info3')">무료강좌 (3)</a></li>
-                        <li><a href="#Mypagetab4" onclick="fnSetMoreTable();openTxt('info4')">관리자부여강좌 (4)</a></li>
+                        <li><a href="#Mypagetab2" onclick="fnSetMoreTable();openTxt('info2')">패키지강좌 ({{count($pkgList)}})</a></li>
+                        <li><a href="#Mypagetab3" onclick="fnSetMoreTable();openTxt('info3')">무료강좌 ({{count($freeList)}})</a></li>
+                        <li><a href="#Mypagetab4" onclick="fnSetMoreTable();openTxt('info4')">관리자부여강좌 ({{count($adminList['lec'])+count($adminList['pkg'])}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">
@@ -152,7 +152,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/classroom/on/view/ongoging/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -195,7 +195,8 @@
                                             <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
-                                    </tr> -->
+                                    </tr>
+                                    -->
                                     @empty
                                         <tr>
                                             <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
@@ -203,6 +204,7 @@
                                     @endforelse
                                     </tbody>
                                 </table>
+                                <!--
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -219,6 +221,7 @@
                                         <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                                     </ul>
                                 </div>
+                                -->
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
@@ -229,6 +232,7 @@
                                         <col style="width: 120px;">
                                     </colgroup>
                                     <tbody>
+                                    @forelse( $pkgList as $row )
                                     <tr class="bg-light-blue">
                                         <td class="w-data tx-left pl30">
                                             <div class="w-tit">
@@ -246,6 +250,11 @@
                                             <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                                 <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
@@ -313,6 +322,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <!--
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -329,6 +339,7 @@
                                         <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                                     </ul>
                                 </div>
+                                -->
                             </div>
                         </div>
                         <div id="Mypagetab3" class="tabLink">
@@ -339,6 +350,7 @@
                                         <col style="width: 820px;">
                                     </colgroup>
                                     <tbody>
+                                    @forelse( $freeList as $row )
                                     <tr>
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">77%</span>
@@ -363,6 +375,12 @@
                                             </dl>
                                         </td>
                                     </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
+                                    <!--
                                     <tr>
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">55%</span>
@@ -389,9 +407,10 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                    </tr>
+                                    </tr> -->
                                     </tbody>
                                 </table>
+                                <!--
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -408,6 +427,7 @@
                                         <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                                     </ul>
                                 </div>
+                                -->
                             </div>
                         </div>
                         <div id="Mypagetab4" class="tabLink">
@@ -425,6 +445,7 @@
                                         <col style="width: 820px;">
                                     </colgroup>
                                     <tbody>
+                                    @forelse( $adminList as $row )
                                     <tr>
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">77%</span>
@@ -449,6 +470,12 @@
                                             </dl>
                                         </td>
                                     </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
+                                        </tr>
+                                    @endforelse
+                                    <!--
                                     <tr>
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">55%</span>
@@ -476,8 +503,10 @@
                                     <tr>
                                         <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                                     </tr>
+                                    -->
                                     </tbody>
                                 </table>
+                                <!--
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -494,6 +523,7 @@
                                         <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                                     </ul>
                                 </div>
+                                -->
                             </div>
                         </div>
                     </div>

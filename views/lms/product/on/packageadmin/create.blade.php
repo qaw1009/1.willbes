@@ -1066,7 +1066,6 @@
                             $("#rateRemainProfIdx").val(''); //선택교수 초기화
                             $("#rateRemain").val('');//남는안분값 초기화
 
-                            radioclass();   //강제로 라디오버튼에 클래스를 먹이는데... 적용이 안됨.
                         } else {
                             alert("등록된 교수정보가 존재하지 않습니다.");
                         }
@@ -1079,7 +1078,11 @@
             //단강좌검색
             $('#lecAdd,#essLecAdd,#selLecAdd').on('click', function(e) {
                 var id = e.target.getAttribute('id');
+
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
+
+                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {alert("선택형 패키지의 경우 선택과목을 선택할 수 없습니다.");return;}
+
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()
                     ,'width' : 1200
@@ -1122,6 +1125,12 @@
                 getEditorBodyContent($editor_3);
                 getEditorBodyContent($editor_4);
 
+                //선택과목 지우기  : addValidate 에서 처리가 안됨
+                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648001') {
+                    $("tr[name='selLecTrId']").remove();
+                    $("#PackSelCount").val('0');
+                }
+
                 var _url = '{{ site_url('/product/on/packageAdmin/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -1143,14 +1152,13 @@
                         $('#PackSelCount').focus();
                         return;
                     }
-
                     if ($("input[name='selLecAddCheck[]']").length == 0) {
                         alert('선택과목강좌구성을 선택하여 주십시오.');
                         $('#selLecAdd').focus();
                         return;
                     }
-                }
 
+                }
 
                 return true;
             }
@@ -1161,10 +1169,7 @@
             });
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
-        function radioclass() {
-            $("input[name=mainFlag]").attr({"class":"flat"});
-        }
+
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }

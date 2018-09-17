@@ -184,7 +184,7 @@
                                 temp_data_arr = temp_data.split("@$");
 
                                 $(document).find("#"+$parent_location).append(
-                                    "<tr id='"+$parent_location_tr+seq+"'>"
+                                    "<tr id='"+$parent_location_tr+seq+"' name='"+ $parent_location_tr +"'>"
                                     +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
                                         @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
                                     +"		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}"+seq+"' value=Y'>"

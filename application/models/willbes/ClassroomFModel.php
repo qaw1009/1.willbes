@@ -34,7 +34,7 @@ class ClassroomFModel extends WB_Model
     private function getSelectList($columns, $cond)
     {
         $query = "SELECT DISTINCT ".$columns;
-        $query .= " FROM {$this->_table['mylecture']} WHERE LearnPatternCcd IN ('615001','615002','615003','615005')";
+        $query .= " FROM {$this->_table['mylecture']} WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(true);
 
@@ -77,15 +77,15 @@ class ClassroomFModel extends WB_Model
      * @param array $cond_arr
      * @return array
      */
-    public function getSingleLec($cond_arr = [])
+    public function getLecture($cond_arr = [])
     {
         $query = "SELECT *,
             TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
         ";
-        $query .= " FROM {$this->_table['mylecture']} WHERE LearnPatternCcd IN ('615001','615003') ";
+        $query .= " FROM {$this->_table['mylecture']} ";
 
         $where = $this->_conn->makeWhere($cond_arr);
-        $query .= $where->getMakeWhere(true);
+        $query .= $where->getMakeWhere(false);
         $rows = $this->_conn->query($query);
         return empty($rows) === true ? [] : $rows->result_array();
     }
@@ -95,7 +95,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getPackage($cond_arr = [])
     {
-        return [];
+        return empty($rows) === true ? [] : $rows->result_array();
     }
 
     /**
@@ -103,7 +103,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getDiyPackage($cond_arr = [])
     {
-
+        return empty($rows) === true ? [] : $rows->result_array();
     }
 
     /**
@@ -111,7 +111,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getPackageSub($cond_arr = [])
     {
-
+        return empty($rows) === true ? [] : $rows->result_array();
     }
 
     /**
@@ -119,7 +119,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getPass($cond_arr = [])
     {
-
+        return empty($rows) === true ? [] : $rows->result_array();
     }
 
     /**
@@ -128,7 +128,7 @@ class ClassroomFModel extends WB_Model
      * @param bool $isCount
      * @return mixed
      */
-    public function getCurriculum($wLecIdx, $isCount = false)
+    public function getCurriculum($cond_arr = [], $isCount = false)
     {
         if($isCount === true){
             $query = "SELECT COUNT(*) AS rownums ";
@@ -143,11 +143,16 @@ class ClassroomFModel extends WB_Model
             ";
         }
 
-        $query .= " FROM {$this->_table['lec_unit']} AS U ";
-        $query .= " WHERE U.wLecIdx = ? ";
+        $query .= " FROM {$this->_table['lec_unit']} AS U
+        LEFT JOIN {$this->_table['mylec_unit']} AS MU ON U.wLecIdx = MU.wLecIdx AND U.wUnitIdx = MU.wUnitIdx  
+        ";
+
+        $where = $this->_conn->makeWhere($cond_arr);
+        $query .= $where->getMakeWhere(true);
+
         $query .= " ORDER BY U.wOrderNum ASC ";
 
-        $query = $this->_conn->query( $query , [$wLecIdx]);
+        $query = $this->_conn->query( $query);
 
         return ($isCount === true) ? $query->row(0)->rownums : $query->row_array();
     }

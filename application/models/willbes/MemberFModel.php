@@ -147,6 +147,8 @@ class MemberFModel extends WB_Model
                 throw new \Exception('로그인기록 입력 실패');
             }
 
+            $loginKey = $this->_conn->insert_id();
+
             // 마지막 로그인일자 업데이트
             if ($this->_conn->set('LastLoginDatm','NOW()',false)->
                 where('MemIdx', $data['MemIdx'])->update($this->_table['member']) === false) {
@@ -160,6 +162,7 @@ class MemberFModel extends WB_Model
             $this->session->set_userdata('mem_name', $data['MemName']);
             $this->session->set_userdata('mem_mail', $data['Mail']);
             $this->session->set_userdata('mem_phone', $data['Phone']);
+            $this->session->set_userdata('login_key', $loginKey);
             $this->session->set_userdata('is_login', true);
 
             $this->_conn->trans_commit();
@@ -172,7 +175,23 @@ class MemberFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 로그아웃시에 로그아웃 데이타 업데이트
+     * @param $login_key
+     * @return bool
+     */
+    public function setMemberLogout($login_key)
+    {
+        if(empty($login_key)){
+            return false;
+        }
 
+        $this->_conn->set('LogoutDatm','NOW()',false)->
+        set('LogoutIp', $this->input->ip_address(), true)->
+        where('Lidx', $login_key)->update($this->_table['loginlog']);
+
+        return true;
+    }
 
     /**
      * 사용자 정보 수정

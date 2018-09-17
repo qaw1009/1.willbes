@@ -110,6 +110,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    <!--
                     <div class="Paging">
                         <ul>
                             <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -126,6 +127,7 @@
                             <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                         </ul>
                     </div>
+                    -->
                 </div>
             </div>
             <!-- willbes-Leclist -->

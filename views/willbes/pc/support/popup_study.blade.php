@@ -88,13 +88,13 @@
                         </colgroup>
                         <thead>
                         <tr>
-                            <th><li>No<span class="row-line">|</span></li></th>
-                            <th><li>과목<span class="row-line">|</span></li></th>
-                            <th><li>교수명<span class="row-line">|</span></li></th>
-                            <th><li>평점<span class="row-line">|</span></li></th>
-                            <th><li>제목<span class="row-line">|</span></li></th>
-                            <th><li>작성자<span class="row-line">|</span></li></th>
-                            <th><li>등록일</th>
+                            <th>No<span class="row-line">|</span></th>
+                            <th>과목<span class="row-line">|</span></th>
+                            <th>교수명<span class="row-line">|</span></th>
+                            <th>평점<span class="row-line">|</span></th>
+                            <th>제목<span class="row-line">|</span></th>
+                            <th>작성자<span class="row-line">|</span></th>
+                            <th>등록일</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -227,6 +227,7 @@
 <script type="text/javascript">
     var $_ajax_search_form = $('#_ajax_search_form');
     var $_ajax_reg_form = $('#_ajax_reg_form');
+    var $mem_id = '{{sess_data('mem_id')}}';
 
     // star rating Script //
     $(document).ready(function(){
@@ -367,10 +368,16 @@
                 add_table += '<td class="w-name">'+item.ProfName+'</td>';
                 add_table += '<td class="w-star star'+item.LecScore+'"></td>';
                 add_table += '<td class="w-list tx-left pl20">';
-                add_table += sub_str(item.Title);
+                add_table += sub_str(item.Title, 15, '...');
                 add_table += '<div class="subTit">'+item.ProdName+'</div>';
                 add_table += '</td>';
-                add_table += '<td class="w-write">'+item.RegMemName+'</td>';
+
+                if (item.RegMemId == $mem_id) {
+                    add_table += '<td class="w-write">'+item.RegMemName+'</td>';
+                } else {
+                    add_table += '<td class="w-write">' + sub_str(item.RegMemName, 2, '*') + '</td>';
+                }
+
                 add_table += '<td class="w-date">'+item.RegDatm+'</td>';
                 add_table += '</tr>';
                 add_table += '<tr class="replyTxt w-replyTxt tx-gray" style="display:'+set_table_style+'">';
@@ -387,9 +394,9 @@
     }
 
     //문자열 길이 체크
-    function sub_str(string) {
-        if(string.length > 15) {
-            return string.substr(0,15)+'...';
+    function sub_str(string, length, sing) {
+        if(string.length > length) {
+            return string.substr(0,length)+sing;
         } else {
             return string;
         }

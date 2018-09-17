@@ -25,7 +25,7 @@
                         </li>
                     @else
                         <li class="Login">
-                            {{sess_data('mem_name')}}님 ({{sess_data('login_key')}})
+                            {{sess_data('mem_name')}}님
                         </li>
                         <li class="joinUs">
                             <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>

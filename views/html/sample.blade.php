@@ -7,9 +7,9 @@
 
 <div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
-    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a><!--&nbsp;
+    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>&nbsp;
     <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;
-    <a href="{{ site_url('/home/html/main_gosi') }}" target="_blank">공무원메인</a>--><br/><br/>
+    <a href="{{ site_url('/home/html/main_gosi') }}" target="_blank">공무원메인</a><br/><br/>
 
     <a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진 page 이동</a><br/><br/>
 

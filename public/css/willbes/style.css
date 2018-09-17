@@ -727,6 +727,7 @@ table.auTable tr td {
     border: none;
     margin: 0;
     padding: 0;
+    background: none;
 }
 .bx-wrapper .bx-controls-direction a {
     top: 0;
@@ -1236,6 +1237,11 @@ table.auTable tr td {
     width: 100%;
     clear: both;
 }
+.Section:after {
+    content: "";
+    display: block;
+    clear: both;
+}
 .List-Table {
     padding: 20px 0;
 }
@@ -1245,7 +1251,7 @@ table.auTable tr td {
 }
 .List-Table li a {
     display: inline-block;
-    width: 470px;
+    width: 425px;
 }
 .List-Table li span.date {
     float: right;
@@ -1257,21 +1263,489 @@ table.auTable tr td {
     font-weight: 600;
     color: #363636;
     border-bottom: 1px solid #000;
-    line-height: 40px;
-    margin-top: 10px;
+    line-height: 36px;
+    margin-bottom: 20px;
 }
 .Section .will-subTit {
     float: right;
     font-size: 13px;
     font-weight: 300;
 }
+.Section .will-listTit {
+    font-size: 14px;
+    font-weight: 600;
+    color: #464646;
+    line-height: 16px;
+    margin-bottom: 25px;
+}
 
 /* Main Container : MainVisual */
+.MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
 .MainVisual .will-Tit {
     border-bottom: 0;
     margin-top:0;
     padding-top: 35px;
 }
+
+.VisualBox {
+    float: left;
+    width: 740px;
+    height: 268px;
+    overflow: hidden;
+}
+.VisualBox .MaintabList {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    text-align: center;
+}
+.VisualBox .MaintabList ul li {
+    background: #38434d;
+    display: inline-block;
+    width: 156px;
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+}
+.VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.VisualsubBox {
+    float: right;
+    width: 380px;
+    height: 268px;
+    overflow: hidden;
+}
+.VisualList {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+}
+.VisualList:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.VisualList ul li {
+    float: left;
+    border-right: 1px solid #ebebeb;
+}
+.VisualList ul li:first-child {
+    border-left: 1px solid #ebebeb;
+}
+
+/* Main Container : Bnr */
+.Section .willbes-Bnr {
+    padding: 0;
+}
+.Section .willbes-Bnr ul li {
+    margin-top: 10px;
+}
+.Section .willbes-Bnr ul li:first-child {
+    margin-top: 0;
+}
+
+/* Main Container : Prof */
+.Section .ProfBox li {
+    float: left;
+    width: 185px;
+    height: 297px;
+    margin-left: 2px;
+}
+.Section .ProfBox li:first-child {
+    margin-left: 0;
+}
+
+/* Main Container : Prof : cSlider : graySlider 회색버전 */
+.cSlider.graySlider .bx-wrapper {
+    background: none;
+}
+.cSlider.graySlider .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prof_prev.jpg") no-repeat 0 0;
+}
+.cSlider.graySlider .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_prof_next.jpg") no-repeat 0 0;
+    left: 14px;
+}
+.cSlider.graySlider .bx-wrapper .bx-controls {
+    position: absolute;
+    width: 27px;
+    height: 14px;
+    z-index: 1;
+}
+.cSlider.graySlider .bx-wrapper .bx-controls-direction {
+    width: 27px;
+    height: 14px; 
+}
+.cSlider.graySlider .bx-wrapper .bx-controls-direction a {
+    width: auto;
+    height: 14px;
+}
+.cSlider.AbsControls .bx-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100%;
+}
+
+/* Main Container : SpecialLec */
+.Section .SpecialBox dl dt {
+    background: #fff;
+    float: left;
+    height: 260px;
+    border-top: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+}
+.Section .SpecialBox dl dt:first-child {
+    border-left: 1px solid #e3e3e3;
+}
+.Section .SpecialBox dt .infoBox {
+    font-size: 13px;
+    margin-top: 15px;
+}
+.Section .SpecialBox dt .infoBox .infoTit {
+    color: #009ef5;
+    line-height: 15px;
+}
+.Section .SpecialBox dt .infoBox .infoTxt {
+    color: #3a3a3a;
+    line-height: 18px;
+}
+.Section .SpecialBox dt .infoTxt ul {
+    margin-top: 15px;
+}
+.Section .SpecialBox dt .infoTxt ul li {
+    float: left;
+    width: 76px;
+    height: 22px;
+    border-top: 1px solid #898989;
+    border-right: 1px solid #898989;
+    border-bottom: 1px solid #898989;
+}
+.Section .SpecialBox dt .infoTxt ul li:first-child {
+    border-left: 1px solid #898989;
+}
+.Section .SpecialBox dt .infoTxt ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 11px;
+    color: #898989;
+    line-height: 20px;
+    text-align: center;
+}
+.Section .SpecialBox dl dt.oneLec {
+    width: 370px;
+    padding: 26px;
+}
+.Section .SpecialBox dl dt.twoLec {
+    width: 380px;
+}
+.Section dt.twoLec ul li {
+    height: 129px;
+    border-top: 1px solid #e3e3e3;
+}
+.Section dt.twoLec ul li:first-child {
+    border-top: none;
+}
+.Section dt.twoLec ul li:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.Section dt.twoLec .infoTxt {
+    height: 128px;
+    float: left;
+    font-size: 16px;
+    color: #464646;
+    line-height: 20px;
+    padding: 30px 0 0 30px;
+}
+.Section dt.twoLec .infoTxt span {
+    vertical-align: baseline;
+}
+.Section dt.twoLec .infoTxt .w-date {
+    font-size: 13px;
+    color: #3a3a3a;
+}
+.Section dt.twoLec .imgBox {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    float: right;
+    width: 110px;
+}
+.Section dt.twoLec .imgBox img {
+    width: 100%
+}
+
+/* Main Container : SpecialLec : bSlider : blueSlider 블루버전 */
+.bSlider.blueSlider .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    bottom: 8px;
+    text-align: right;
+}
+.bSlider.blueSlider.Left .bx-wrapper .bx-pager {
+    left: 30px;
+    right: auto;
+    bottom: 12px;
+}
+.bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #d7d7d7;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #009ef5;
+}
+.bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
+    width: 30px;
+}
+.oneLec .bSlider.blueSlider .bx-viewport {
+    height: 208px !important;
+}
+.twoLec .bSlider.blueSlider .bx-viewport {
+    height: 130px !important;
+}
+
+/* Main Container : Notice */
+.Section .NoticeBox {
+    clear: both;
+}
+.Section .NoticeBox:first-child dt {
+    border-top: 1px solid #e3e3e3;
+}
+.Section .NoticeBox dt {
+    float: left;
+    height: 180px;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 25px 30px;
+}
+.Section .NoticeBox dt:first-child {
+    border-left: 1px solid #e3e3e3;
+}
+.Section .NoticeBox.two dt {
+    width: 50%
+}
+.Section .NoticeBox.four dt {
+    width: 25%;
+}
+.Section .NoticeBox dt .imgBox {
+    float: left;
+    width: 64px;
+    margin: 5px 20px 10px 0;
+}
+.Section .NoticeBox dt .imgBox img {
+    width: 100%;
+} 
+.Section .NoticeBox dt .imgBox.cover {
+    position: relative;
+}
+.Section .NoticeBox dt .imgBox.cover img.coverImg {
+    position: absolute;
+}
+.Section .NoticeBox dt .infoBox {
+    font-size: 13px;
+}
+.Section .NoticeBox dt .infoBox .infoTit {
+    color: #009ef5;
+    line-height: 15px;
+}
+.Section .NoticeBox dt .infoBox .infoTxt {
+    color: #3a3a3a;
+    line-height: 18px;
+}
+
+/* Main Container : Notice : noticeTabs */
+.tabWrap.noticeWrap {
+    height: 16px;
+    border: none;
+}
+.tabWrap.noticeWrap li {
+    float: left;
+    width: auto;
+    height: 16px;
+    margin-right: 10px;
+}
+.tabWrap.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 16px;
+    line-height: 16px;
+    background: none;
+    font-size: 14px;
+    color: #898989;
+    text-align: center;
+    letter-spacing: 0;
+    border: none;
+    padding-right: 10px;
+}
+.tabWrap.noticeWrap li:first-child a {
+    border: none;
+}
+.tabWrap.noticeWrap li a.on {
+    position: relative;
+    z-index: 2;
+    background: none;
+    height: 16px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #009ef5;
+    border: none;
+}
+.tabWrap.noticeWrap .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 12px;
+    margin: -14px 0 0;
+}
+.tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+
+/* Main Container : Notice : freeLec */
+.freeLec ul li {
+    float: left;
+    width: 33.33333333%
+}
+.freeLec .infoTit {
+    float: left;
+    line-height: 15px;
+    margin-right: 8px;
+}
+
+/* Main Container : Notice : nSlider : graySlider 회색버전 */
+.nSlider.graySlider .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_notice_prev.jpg") no-repeat 0 0;
+}
+.nSlider.graySlider .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_notice_next.jpg") no-repeat 0 0;
+    left: 20px;
+}
+.nSlider.graySlider .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 16px;
+}
+.nSlider.graySlider .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 16px;
+}
+.nSlider.graySlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 3px;
+    right: 50px;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #888;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+.nSlider.graySlider .bx-viewport {
+    height:90px !important;
+}
+.nSlider.AbsControls .bx-controls {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    width: 100%;
+}
+
+/* Main Container : cscenterBox */
+.CScenterBox dl dt {
+    float: left;
+    height: 180px;
+}
+.CScenterBox ul li {
+    display: inline-block;
+}
+
+/* Main Container : cscenterBox : willbesCenter */
+.willbesCenter {
+    background: #e2e2e2;
+    width: 400px;
+    text-align: center;
+}
+.willbesCenter .centerTit {
+    font-size: 17px;
+    color: #464646;
+    text-align: center;
+    line-height: 75px;
+}
+.willbesCenter ul li {
+    margin: 0 20px;
+}
+.willbesCenter ul li .nTxt {
+    font-size: 12px;
+    font-weight: 600;
+    color: #464646;
+    line-height: 14px;
+    margin-top: 10px;
+}
+
+/* Main Container : cscenterBox : willbesNumber */
+.willbesNumber {
+    background: #f6f6f6;
+    width: 720px;
+    padding: 30px 0 0 50px;
+}
+.willbesNumber ul li {
+    margin-left: 50px;
+}
+.willbesNumber ul li:first-child {
+    margin-left: 0;
+}
+.willbesNumber .nTit {
+    font-size: 17px;
+    color: #464646;
+}
+.willbesNumber .nNumber {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 55px;
+}
+.willbesNumber .nNumber span {
+    font-size: 12px;
+}
+.willbesNumber .nTxt {
+    font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
+    font-size: 11px;
+    color: #888;
+    line-height: 16px;
+}
+
+
+
+
+
+
 
 /* Main Container : Section3 */
 .Section .will-News {
@@ -1327,11 +1801,6 @@ table.auTable tr td {
 }
 
 /* Main Container : Section5 */
-.Section5 {
-    background: #f6f6f6;
-    padding-top: 20px;
-    padding-bottom: 70px;   
-}
 .will-FamilySite .will-Tit {
     line-height: 70px;
     margin: 0;
@@ -1361,13 +1830,17 @@ table.auTable tr td {
 
 
 
+
+
+
 /* Main Container : Cop */
 .cop .tx-color {
     color: #1087ef;
 }
-
-
-
+.cop .Section3 {
+    background: #f0f0f0;
+    padding: 40px 0;
+}
 
 /* Main Container : Gosi */
 .gosi .tx-color {

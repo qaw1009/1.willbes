@@ -66,6 +66,23 @@ $(function() {
     });
 });
 
+// Slider Main Script
+$(function(){ 
+    $(".MaintabSlider").bxSlider({
+        mode:'fade',
+        speed:400,
+        pause:2000,
+        auto : true,	
+        autoHover: true,						
+        pagerCustom: '#MainRollingDiv',
+        controls:false, 
+        onSliderLoad: function(){
+            $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+        }
+    });
+});
+                
+
 /**
  * slider util
  * @param ele_id

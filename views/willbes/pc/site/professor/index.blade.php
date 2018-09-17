@@ -116,24 +116,23 @@
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
                     <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $row['ProfIdx'] . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
-                        <div class="line">-</div>
+                        @if(empty($row['ProfEventData']) === false)
+                            <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
+                        @endif
+                        <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
+                        <div class="Name">
+                            <strong>{{ $row['wProfName'] }}</strong><br/>
+                            교수님
+                            @if($row['IsNew'] == 'Y') <img class="N" src="{{ img_url('prof/icon_N.gif') }}"> @endif
+                        </div>
+                        <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] or '' }}">
+                        <div class="w-notice">
+                            <dl>
+                                <dt><button type="submit" href="{{ $row['ProfReferData']['ot_url'] or 'javascript:alert(\'등록된 대표강의가 없습니다.\');' }}"><span>대표강의</span></button></dt>
+                                <dt><button type="submit" href="#none" class="btn-prof-profile" data-subject-idx="{{ $subject_idx }}" data-prof-idx="{{ $row['ProfIdx'] }}"><span>프로필</span></button></dt>
+                            </dl>
+                        </div>
                     </a>
-                    @if(empty($row['ProfEventData']) === false)
-                        <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
-                    @endif
-                    <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
-                    <div class="Name">
-                        <strong>{{ $row['wProfName'] }}</strong><br/>
-                        교수님
-                        @if($row['IsNew'] == 'Y') <img class="N" src="{{ img_url('prof/icon_N.gif') }}"> @endif
-                    </div>
-                    <img class="profImg" src="{{ $row['ProfReferData']['prof_index_img'] or '' }}">
-                    <div class="w-notice">
-                        <dl>
-                            <dt><a href="{{ $row['ProfReferData']['ot_url'] or 'javascript:alert(\'등록된 대표강의가 없습니다.\');' }}">대표강의</a></dt>
-                            <dt><a href="#none" class="btn-prof-profile" data-subject-idx="{{ $subject_idx }}" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
-                        </dl>
-                    </div>
                     <div id="ProfileWrap{{ $subject_idx . '' . $row['ProfIdx'] }}"></div>
                 </li>
                 @endforeach

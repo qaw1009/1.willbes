@@ -226,8 +226,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -243,8 +243,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -260,8 +260,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -278,8 +278,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -297,8 +297,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -314,8 +314,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -331,8 +331,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -348,8 +348,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -373,8 +373,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -390,8 +390,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -415,8 +415,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -432,8 +432,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>
@@ -449,8 +449,8 @@
                     <img class="profImg" src="{{ img_url('sample/prof4.png') }}">
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="#none111">대표강의</a></dt>
-                            <dt><a href="#none222">프로필</a></dt>
+                            <dt><button type="submit" href="#none"><span>대표강의</span></button></dt>
+                            <dt><button type="submit" href="#none"><span>프로필</span></button></dt>
                         </dl>
                     </div>
                 </li>

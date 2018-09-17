@@ -311,7 +311,7 @@ class Material extends BaseBoard
         //자료유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
 
-        $this->load->view("board/professor/{$this->board_name}/create_Detail", [
+        $this->load->view("board/professor/{$this->board_name}/create_detail", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'arr_prof_info' => $arr_prof_info,

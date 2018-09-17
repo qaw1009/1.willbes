@@ -10,7 +10,9 @@
                     <div class="w-reply-teaser">
                         <ul>
                             <li class="w-tit tx-light-blue">{{$row['ProdName']}}</li>
-                            <li class="w-name tx-center">{{$row['RegMemName']}}</li>
+                            <li class="w-name tx-center">
+                                {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegMemName'] : hpSubString($row['RegMemName'],0,2,'*') !!}
+                            </li>
                             <li class="row-line">|</li>
                             <li class="w-date tx-center">{{$row['RegDatm']}}</li>
                         </ul>
@@ -37,10 +39,6 @@
 <div class="willbes-Leclist c_both">
     <div class="willbes-LecreplyList tx-gray">
         → 해당 강좌 총 수강후기 [ <a class="num tx-light-blue underline" href="#none">{{$total_rows}}건</a> ]
-        {{--<ul>
-            <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기 ></a></li>
-            <li class="subBtn NSK"><a href="#none" class="btn-study" data-write-type="off">수강후기 전체보기 ></a></li>
-        </ul>--}}
     </div>
     <div class="LeclistTable">
         <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
@@ -68,7 +66,9 @@
                 <tr>
                     <td class="w-no">{{$paging['rownum']}}</td>
                     <td class="w-list tx-left pl20">{{$row['Title']}}</td>
-                    <td class="w-name">{{$row['RegMemName']}}</td>
+                    <td class="w-name">
+                        {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegMemName'] : hpSubString($row['RegMemName'],0,2,'*') !!}
+                    </td>
                     <td class="w-date">{{$row['RegDatm']}}</td>
                 </tr>
                 @php $paging['rownum']-- @endphp

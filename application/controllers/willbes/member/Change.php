@@ -97,7 +97,7 @@ class Change extends BaseMember
             if($this->memberFModel->setMemberPassword(['MemIdx' => $MemIdx, 'MemPassword' => $newPassword, 'UpdTypeCcd' => '656001']) === false){
                 show_alert('비밀번호 변경이 실패했습니다. 다시 시도해주십시요.', '/member/change/index/password/', false);
             } else {
-                show_alert('비밀번호 변경이 완료되었습니다.', '/classroom/', false);
+                show_alert('비밀번호 변경이 완료되었습니다.', '/classroom/home/', false);
             }
         }
 
@@ -139,7 +139,7 @@ class Change extends BaseMember
             show_alert('회원정보가 변경에 실패했습니다..', '/member/change/index/info/', false);
         }
 
-        show_alert('회원정보가 변경되었습니다.', '/classroom/', false);
+        show_alert('회원정보가 변경되었습니다.', '/classroom/home/', false);
     }
 
     /**

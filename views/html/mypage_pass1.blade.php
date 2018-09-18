@@ -103,8 +103,8 @@
             <div class="willbes-Lec-Table NG d_block">
                 <div class="willbes-PASS-Line bg-blue">이용중인 PASS (2)</div>
                 <div class="will-Tit-Zone">
-                    <div class="will-Tit NG f_left">· 나의학습/혜택정보</div>
-                    <span class="willbes-Lec-Selected GM tx-gray">
+                    <div class="will-Tit NG f_left">· 무한PASS선택</div>
+                    <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
                         <select id="process" name="process" title="process" class="seleProcess">
                             <option selected="selected">과정</option>
                             <option value="헌법">헌법</option>

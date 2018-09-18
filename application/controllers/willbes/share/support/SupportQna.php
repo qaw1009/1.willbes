@@ -52,7 +52,7 @@ class SupportQna extends BaseSupport
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
-        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
+        /*unset($arr_base['site_list'][config_item('app_intg_site_code')]);*/
 
         // 카테고리 조회
         $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);

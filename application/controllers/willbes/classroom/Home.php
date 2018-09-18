@@ -17,4 +17,15 @@ class Home extends \app\controllers\FrontController
     {
         $this->load->view('/classroom/index');
     }
+
+    public function view($params = [])
+    {
+        if(empty($params[0]) === true){
+            $view = "event";
+        } else {
+            $view = $params[0];
+        }
+
+        $this->load->view('/classroom/temp/'.$view);
+    }
 }

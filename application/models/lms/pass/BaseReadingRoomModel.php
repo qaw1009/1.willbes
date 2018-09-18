@@ -20,14 +20,17 @@ class BaseReadingRoomModel extends WB_Model
         'main' => '618001',    //판매상태(판매가능)
         'sub' => '618003'      //판매상태(판매불가)
     ];
-    private $_arr_reading_room_status_ccd = [
+    private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
+
+    protected $_arr_reading_room_status_ccd = [
         'N' => '682001',      //독서실사물함 좌석상태(미사용)
         'Y' => '682002'    //독서실사물함 좌석상태(사용중)
     ];
 
-    private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
-
-    private $_table = [
+    protected $_table = [
+        'lms_site' => 'lms_site',
+        'lms_sys_code' => 'lms_sys_code',
+        'wbs_sys_admin' => 'wbs_sys_admin',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
         'product_sale' => 'lms_product_sale',
@@ -373,6 +376,29 @@ class BaseReadingRoomModel extends WB_Model
             return $e->getMessage();
         }
         return true;
+    }
+
+    /**
+     * 캠퍼스 권한 쿼리 스트링
+     * @return string
+     */
+    protected function _makeAuthCampusQueryString()
+    {
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('a.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('a.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('a.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('a.CampusCcd', "''", false);
+        $where_campus->or_where('a.CampusCcd IS NULL');
+        $where_campus->group_end();
+        return $where_campus->getMakeWhere(true);
     }
 
     /**

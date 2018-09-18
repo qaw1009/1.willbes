@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site', 'pass/readingRoom');
+    protected $models = array('sys/site', 'sys/code', 'pass/readingRoom');
     protected $helpers = array();
     protected $mang_type;
 
@@ -35,26 +35,35 @@ class Regist extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $count = 1;
-        $list = [
-            '0' => [
-                'Idx' => '1',
-                'SiteName' => '학원경찰',
-                'CampusName' => '신림',
-                'ReadingRoomCode' => '1',
-                'ReadingRoomName' => '1층 A',
-                'ClassRoomName' => '101',
-                '예치금' => '10000',
-                '판매가' => '20000',
-                '좌석현황' => '10/100',
-                '잔여석' => '90',
-                '자동문자' => '사용',
-                'IsUse' => 'Y',
-                'RegAdminName' => '관리자명',
-                'RegDatm' => '2018-01-01 10:00:00',
-                'aaa' => '배정'
+        $arr_condition = [
+            'EQ' => [
+                'a.IsStatus' => 'Y',
+                'a.SiteCode' => $this->_reqP('search_site_code'),
+                'a.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'a.IsSmsUse' => $this->_reqP('search_is_sms_use'),
+                'a.IsUse' => $this->_reqP('search_is_use'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'a.Name' => $this->_reqP('search_value'),
+                    'a.ProdCode' => $this->_reqP('search_value'),
+                    'a.LakeLayer' => $this->_reqP('search_value'),
+                ]
             ]
         ];
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
+
+        $list = [];
+        $count = $this->readingRoomModel->listAllReadingRoom(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->readingRoomModel->listAllReadingRoom(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc']);
+        }
 
         return $this->response([
             'recordsTotal' => $count,

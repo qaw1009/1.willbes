@@ -4,13 +4,13 @@
     <h5>- {{$mang_title}} 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code', 'tab', false) !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true, []) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">조건</label>
                     <div class="col-md-4 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
@@ -18,13 +18,13 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_is_sms_use" name="search_is_sms_use">
                             <option value="">자동문자</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -124,23 +124,27 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
-                    {'data' : 'ReadingRoomCode'},
+                    {'data' : 'ProdCode'},
                     {'data' : 'ReadingRoomName', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.Idx + '"><u>' + data + '</u></a>';
                         }},
-                    {'data' : 'ClassRoomName'},
-                    {'data' : '예치금'},
-                    {'data' : '판매가'},
-                    {'data' : '좌석현황'},
-                    {'data' : '잔여석'},
-                    {'data' : '자동문자'},
+                    {'data' : 'LakeLayer'},
+                    {'data' : 'sub_RealSalePrice'},
+                    {'data' : 'main_RealSalePrice'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.countY+'/'+row.UseQty;
+                        }},
+                    {'data' : 'countN'},
+                    {'data' : 'IsSmsUse', 'render' : function(data, type, row, meta) {
+                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.Idx + '"><u>' + row.aaa + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.LrIdx + '"><u>' + row.LrIdx + '</u></a>';
                         }}
                 ]
             });

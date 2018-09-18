@@ -13,6 +13,7 @@ class Off extends \app\controllers\FrontController
         parent::__construct();
     }
 
+
     /**
      * 학원강의 리스트 분기
      * @param array $params
@@ -38,6 +39,7 @@ class Off extends \app\controllers\FrontController
         }
     }
 
+
     /**
      *  수강중인 강의
      */
@@ -48,6 +50,7 @@ class Off extends \app\controllers\FrontController
             'list' => []
         ]);
     }
+
 
     /**
      *  수강종료강의

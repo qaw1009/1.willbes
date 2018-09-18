@@ -54,6 +54,7 @@
                             <col style="width: 120px;">
                         </colgroup>
                         <tbody>
+                        @forelse( $list as $row )
                         <tr>
                             <td class="w-data tx-left pl10">
                                 <dl class="w-info">
@@ -75,6 +76,12 @@
                                 개강
                             </td>
                         </tr>
+                        @empty
+                            <tr>
+                                <td colspan="2" class="tx-center">수강신청 강좌가 없습니다.</td>
+                            </tr>
+                        @endforelse
+                        <!--
                         <tr>
                             <td class="w-data tx-left pl10">
                                 <dl class="w-info">
@@ -118,7 +125,7 @@
                         </tr>
                         <tr>
                             <td colspan="4" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
-                        </tr>
+                        </tr> -->
                         </tbody>
                     </table>
                     <!--

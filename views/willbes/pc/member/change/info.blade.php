@@ -323,7 +323,7 @@
                 <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
                     <input type="hidden" name="sms_stat" id="sms_stat" value="NEW" />
                     {!! csrf_field() !!}
-                    <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h460">
+                    <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h460 fix">
                         <a class="closeBtn" href="#none" onclick="closeWin('PHONEPASS')">
                             <img src="{{ img_url('sub/close.png') }}">
                         </a>
@@ -367,7 +367,7 @@
             <div id="EMAILPASS" class="willbes-Layer-Black">
                 <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
                     {!! csrf_field() !!}
-                    <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h420">
+                    <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h420 fix">
                         <a class="closeBtn" href="#none" onclick="closeWin('EMAILPASS')">
                             <img src="{{ img_url('sub/close.png') }}">
                         </a>
@@ -411,7 +411,7 @@
 
 
             <div id="WITHDRAWALPASS" class="willbes-Layer-Black">
-                <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h900">
+                <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h900 fix">
                     <a class="closeBtn" href="#none" onclick="closeWin('WITHDRAWALPASS')">
                         <img src="{{ img_url('sub/close.png') }}">
                     </a>

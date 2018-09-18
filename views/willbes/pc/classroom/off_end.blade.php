@@ -140,9 +140,7 @@
             <!-- willbes-Leclist -->
 
         </div>
-        <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
-        </div>
+        {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 @stop

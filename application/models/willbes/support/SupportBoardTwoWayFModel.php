@@ -137,6 +137,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 throw new \Exception('필수 데이터 누락입니다.');
             }
 
+            if ($result['RegType'] == '0' && $result['IsPublic'] == 'N' && $result['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+                throw new \Exception('잘못된 접근 입니다.');
+            }
+
             $board_data = array_merge($board_data,[
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdDatm' => date('Y-m-d H:i:s')

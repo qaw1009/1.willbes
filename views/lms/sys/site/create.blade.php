@@ -264,6 +264,7 @@
                         <textarea id="footer_info" name="footer_info" class="form-control" rows="7" title="푸터영역" placeholder="">{!! $data['FooterInfo'] !!}</textarea>
                     </div>
                 </div>
+                {{-- 사용안함
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">이용약관
                         <br/><button class="btn btn-dark btn-xs mt-5">불러오기</button>
@@ -279,7 +280,7 @@
                     <div class="col-md-9">
                         <textarea id="terms_privacy" name="terms_privacy" class="form-control" rows="7" title="개인정보취급방침" placeholder=""></textarea>
                     </div>
-                </div>
+                </div>--}}
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
@@ -320,7 +321,7 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            // editor load
+            /*// editor load
             var $editor_terms_use = new cheditor();
             $editor_terms_use.config.editorHeight = '170px';
             $editor_terms_use.config.editorWidth = '100%';
@@ -331,15 +332,15 @@
             $editor_terms_privacy.config.editorHeight = '170px';
             $editor_terms_privacy.config.editorWidth = '100%';
             $editor_terms_privacy.inputForm = 'terms_privacy';
-            $editor_terms_privacy.run();
+            $editor_terms_privacy.run();*/
 
             // 사이트 등록/수정
             $regi_form.submit(function() {
                 var _url = '{{ site_url('/sys/site/store/code') }}';
 
                 // editor
-                getEditorBodyContent($editor_terms_use);
-                getEditorBodyContent($editor_terms_privacy);
+                //getEditorBodyContent($editor_terms_use);
+                //getEditorBodyContent($editor_terms_privacy);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

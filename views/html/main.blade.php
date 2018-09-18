@@ -5,7 +5,7 @@
 <div id="Container" class="Container main NSK c_both">
     <div class="Section MainVisual mt30 mb50">
         <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
+            <a href="https://www.dev.willbes.net/member/join/" target="_blank"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
         </div>
     </div>
     <div class="Section Act1 mb50">
@@ -14,7 +14,7 @@
             <div class="ProcessBox">
                 <ul>
                     <li>
-                        <a href="#none">
+                        <a href="https://gosi.dev.willbes.net/home/index/cate/3010" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
                             </div>
@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="https://cop.dev.willbes.net/home/index/cate/3001" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                             </div>
@@ -111,14 +111,11 @@
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('main/banner/bnr_180913.png') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_180826_p&topMenuType=O#main" target="_blank"><img src="{{ img_url('main/banner/bnr_180913.png') }}"></a></li>
                 </ul>
             </div>
         </div>
     </div>
-
-
-
     <div class="Section Act2 mb50">
         <div class="widthAuto">
             <div class="will-Tit mb-zero">시험일정</div>
@@ -228,9 +225,6 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="Section Act3 mb90">
         <div class="widthAuto">
             <dl>
@@ -283,6 +277,8 @@
         <div class="widthAuto">
             <dl class="willbes-Bnr">
                 <dt>
+                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp&topMenuType=O" target="_blank"><img src="{{ img_url('main/banner/bnr_180918.jpg') }}"></a>
+                    <!--
                     <ul>
                         <li>
                             <div class="bSlider">
@@ -293,8 +289,11 @@
                             </div>
                         </li>
                     </ul>
+                    -->
                 </dt>
                 <dt>
+                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180823_p&topMenuType=O" target="_blank"><img src="{{ img_url('main/banner/bnr_180919.jpg') }}"></a>
+                    <!--
                     <ul>
                         <li>
                             <div class="bSlider">
@@ -305,6 +304,7 @@
                             </div>
                         </li>
                     </ul>
+                    -->
                 </dt>
             </dl>
         </div>
@@ -388,9 +388,9 @@
                 </dt>
                 <dt class="imgBox">
                     <ul>
-                        <li><a class="btn-add" href="#none"><img src="{{ img_url('main/familysite_willstory.jpg') }}"></a></li>
-                        <li><a class="btn-add" href="#none"><img src="{{ img_url('main/familysite_life.jpg') }}"></a></li>
-                        <li><a class="btn-add" href="#none"><img src="{{ img_url('main/familysite_edu.jpg') }}"></a></li>
+                        <li><a href="http://www.willstory.co.kr/" target="_blank"><img src="{{ img_url('main/familysite_willstory.jpg') }}"></a></li>
+                        <li><a href="http://www.willbeslife.net/" target="_blank"><img src="{{ img_url('main/familysite_life.jpg') }}"></a></li>
+                        <li><a href="http://www.willbes.co.kr/" target="_blank"><img src="{{ img_url('main/familysite_edu.jpg') }}"></a></li>
                     </ul>
                 </dt>
             </dl>

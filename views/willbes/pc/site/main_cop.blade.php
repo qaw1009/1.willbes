@@ -30,10 +30,10 @@
                     <div class="bx-wrapper">
                         <div class="bx-viewport">
                             <ul class="MaintabSlider">
-                                <li><a href="#none"><img src="{{ img_url('cop/visual/visual_180914.jpg') }}"></a></li>
-                                <li><a href="#none"><img src="{{ img_url('cop/visual/visual_180915.jpg') }}"></a></li>
-                                <li><a href="#none"><img src="{{ img_url('cop/visual/visual_180916.jpg') }}"></a></li>
-                                <li><a href="#none"><img src="{{ img_url('cop/visual/visual_180917.jpg') }}"></a></li>
+                                <li><a href="http://www.willbescop.net/gosi/event.html?event_cd=On_180327_yp&topMenuType=O" target="_blank"><img src="{{ img_url('cop/visual/visual_180914.jpg') }}"></a></li>
+                                <li><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180830_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/visual/visual_180915.jpg') }}"></a></li>
+                                <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank"><img src="{{ img_url('cop/visual/visual_180916.jpg') }}"></a></li>
+                                <li><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180904_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/visual/visual_180917.jpg') }}"></a></li>
                             </ul>
                         </div>
                     </div> 
@@ -41,8 +41,8 @@
             </div>
             <div class="VisualsubBox">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop/visual/visualsub_180914.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('cop/visual/visualsub_180915.jpg') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170511_p&topMenuType=O#main" target="_blank"><img src="{{ img_url('cop/visual/visualsub_180914.jpg') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_180826_p&topMenuType=O#main" target="_blank"><img src="{{ img_url('cop/visual/visualsub_180915.jpg') }}"></a></li>
                     <!--
                     <li>
                         <div class="bSlider">
@@ -71,7 +71,7 @@
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_180913.png') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180905_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/banner/bnr_180913.png') }}"></a></li>
                 </ul>
             </div>
         </div>
@@ -80,8 +80,8 @@
         <div class="widthAuto">
             <div class="will-Tit">윌비스 <span class="tx-color">신광은경찰</span> 강사진</div>
             <ul class="ProfBox">
-                <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180915.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50082/?subject_idx=10028&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50083/?subject_idx=10030&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank"><img src="{{ img_url('cop/prof/prof_180915.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180917.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></li>
@@ -112,8 +112,8 @@
             <div class="will-Tit">윌비스 <span class="tx-color">신광은경찰</span> Hot Pick</div>
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_180914.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_180915.jpg') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_180906_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/banner/bnr_180914.jpg') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_180724_y&EventReply=&topMenuType=O&searchEventNo=152" target="_blank"><img src="{{ img_url('cop/banner/bnr_180915.jpg') }}"></a></li>
                 </ul>
             </div>
         </div>
@@ -245,7 +245,7 @@
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_180916.jpg') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank"><img src="{{ img_url('cop/banner/bnr_180916.jpg') }}"></a></li>
                 </ul>
             </div>
         </div>

@@ -20,9 +20,9 @@
                     <div class="bx-wrapper">
                         <div class="bx-viewport">
                             <ul class="MaintabSlider">
-                                <li><a href="#none"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}"></a></li>
-                                <li><a href="#none"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}"></a></li>
-                                <li><a href="#none"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180703_c" target="_blank"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180627_g" target="_blank"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180906_c#event" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
                             </ul>
                         </div>
                     </div> 
@@ -30,8 +30,8 @@
             </div>
             <div class="VisualsubBox">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('gosi/visual/visualsub_180914.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180820_c" target="_blank"><img src="{{ img_url('gosi/visual/visualsub_180914.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180901_L" target="_blank"><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></a></li>
                     <!--
                     <li>
                         <div class="bSlider">
@@ -48,10 +48,10 @@
             </div>
             <div class="VisualList c_both mt20">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180917.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180918.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180919.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180920.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180831_g" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180917.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_170405_c" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180918.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_161116_c" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180919.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180831_g2" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180920.jpg') }}"></a></li>
                 </ul>
             </div>
         </div>
@@ -60,8 +60,8 @@
         <div class="widthAuto">
             <div class="will-Tit">윌비스 <span class="tx-color">공무원</span> 강사진</div>
             <ul class="ProfBox">
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180914.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180915.png') }}"></a></li>
+                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50080/?subject_idx=10014&subject_name=%EA%B5%AD%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_180914.png') }}"></a></li>
+                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50081/?subject_idx=10017&subject_name=%EC%98%81%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_180915.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180916.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180917.png') }}"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180918.png') }}"></a></li>
@@ -92,8 +92,8 @@
             <div class="will-Tit">윌비스 <span class="tx-color">공무원</span> Hot Pick</div>
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180914.jpg') }}"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_180915.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180129_k" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180914.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180622_c" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180915.jpg') }}"></a></li>
                 </ul>
             </div>
         </div>

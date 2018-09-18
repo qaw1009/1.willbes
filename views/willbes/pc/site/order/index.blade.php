@@ -424,7 +424,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="AllchkBox tx-gray">
+                        <div class="AllchkBox chk tx-gray">
                             위 유의사항, 개인정보활용, 환불정책안내사항을 모두 읽었으면 동의합니다. <span class="tx-blue">(전체동의)</span>
                             <span class="chkBox-Agree">
                                 <input type="checkbox" id="agree_all" name="agree_all" value="Y"/>

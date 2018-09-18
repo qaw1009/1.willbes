@@ -175,7 +175,7 @@ $(function() {
 
 // checkbox 필수체크버튼(개별동의) Script
 $(function() {
-    $('.chkBox-Agree input').click(function() {
+    $('.chkBox-Agree input:checkbox').click(function() {
         var $chk_box = $(this).parents('.chk').find('input:checked');
 
         if ($chk_box.is(':checked')) {

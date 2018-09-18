@@ -1761,7 +1761,7 @@ table.auTable tr td {
 }
 
 /* Main Container : Act1 */
-.Act1 .ProcessBox ul li {
+.main .Act1 .ProcessBox ul li {
     float: left;
     width: 274px;
     height: 116px;
@@ -1770,27 +1770,27 @@ table.auTable tr td {
     margin-top: 8px;
     margin-left: 8px; 
 }
-.Act1 .ProcessBox ul:first-child li {
+.main .Act1 .ProcessBox ul:first-child li {
     margin-top: 0;
 }
-.Act1 .ProcessBox ul li:first-child {
+.main .Act1 .ProcessBox ul li:first-child {
     margin-left: 0;
 }
-.Act1 .ProcessBox ul li .wTit {
+.main .Act1 .ProcessBox ul li .wTit {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 10px;
 }
-.Act1 .ProcessBox ul li .wTit img {
+.main .Act1 .ProcessBox ul li .wTit img {
     float: left;
     margin-right: 5px;
 }
-.Act1 .ProcessBox ul li .wTxt {
+.main .Act1 .ProcessBox ul li .wTxt {
     font-size: 13px;
     line-height: 19px;
 }
 
-.Act1 .ProcessBox ul li a {
+.main .Act1 .ProcessBox ul li a {
     display: block;
     width: 100%;
     height: 100%;
@@ -1798,33 +1798,33 @@ table.auTable tr td {
 }
 
 /* Main Container : Act2 */
-.Act2 .sliderDayList {
+.main .Act2 .sliderDayList {
     background: #f6f6f6;
     height: 150px;
     padding: 35px 50px;
 }
-.Act2 span {
+.main .Act2 span {
     display: inline-block;
 }
-.Act2 tr td {
+.main .Act2 tr td {
     padding: 20px 0;
     text-align: center;
 }
-.Act2 .dTit {
+.main .Act2 .dTit {
     font-size: 14px;
     color: #464646;
     line-height: 20px;
     text-align: left;
 }
-.Act2 .dTit .w-date {
+.main .Act2 .dTit .w-date {
     font-size: 12px;
 }
-.Act2 .dDay {
+.main .Act2 .dDay {
     font-size: 27px;
     font-weight: 600;
     padding: 0 25px;
 }
-.Act2 .line {
+.main .Act2 .line {
     background: #e2e2e2;
     text-indent: -9999px;
 }
@@ -1860,47 +1860,47 @@ table.auTable tr td {
 }
 
 /* Main Container : Act3 */
-.Act3 dl dt.BestLec {
+.main .Act3 dl dt.BestLec {
     float: left;
     width: 560px;
 }
-.Act3 dl dt.passInterview {
+.main .Act3 dl dt.passInterview {
     float: left;
     width: 530px;
     margin-left: 30px;
 }
-.Act3 .List-Table {
+.main .Act3 .List-Table {
     padding: 0;
     margin-top: -5px;
 }
-.Act3 .List-Table li {
+.main .Act3 .List-Table li {
     line-height: 30px;
 }
-.Act3 .List-Table a {
+.main .Act3 .List-Table a {
     width: 100%;
 }
-.Act3 .List-Table span {
+.main .Act3 .List-Table span {
     display: inline-block;
 }
-.Act3 .List-Table .w-sbj {
+.main .Act3 .List-Table .w-sbj {
     width: 60px;
     text-align: center;
 }
-.Act3 .List-Table .w-prof {
+.main .Act3 .List-Table .w-prof {
     width: 100px;
     text-align: center;
 }
-.Act3 .List-Table .w-tit {
+.main .Act3 .List-Table .w-tit {
     width: 225px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
-.Act3 .List-Table .w-user {
+.main .Act3 .List-Table .w-user {
     width: 90px;
     text-align: center;
 }
-.Act3 .List-Table .w-star {
+.main .Act3 .List-Table .w-star {
     width: 85px;
     text-align: center;
 }
@@ -1959,57 +1959,57 @@ table.auTable tr td {
 }
 
 /* Main Container : Act4 */
-.Act4 dl dt.WhyWillbes {
+.main .Act4 dl dt.WhyWillbes {
     float: left;
     width: 560px;
 }
-.Act4 dl dt.NowWillbes {
+.main .Act4 dl dt.NowWillbes {
     float: left;
     width: 530px;
     margin-left: 30px;
 }
-.Act4 .List-Table {
+.main .Act4 .List-Table {
     padding: 0;
     margin-top: -5px;
 }
-.Act4 .List-Table li {
+.main .Act4 .List-Table li {
     line-height: 30px;
 }
-.Act4 .List-Table a {
+.main .Act4 .List-Table a {
     width: 100%;
 }
-.Act4 .List-Table span {
+.main .Act4 .List-Table span {
     display: inline-block;
 }
-.Act4 .List-Table .w-sbj {
+.main .Act4 .List-Table .w-sbj {
     width: 60px;
     text-align: center;
 }
-.Act4 .List-Table .w-tit {
+.main .Act4 .List-Table .w-tit {
     width: 390px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
-.Act4 .List-Table .w-date {
+.main .Act4 .List-Table .w-date {
     width: 80px;
     text-align: center;
 }
 
 /* Main Container : Act5 */
-.Act5 dl dt.acadList {
+.main .Act5 dl dt.acadList {
     float: left;
     width: 800px;
 }
-.Act5 dl dt.acadList table tr {
+.main .Act5 dl dt.acadList table tr {
     display: inline-block;
     width: 800px;
     margin-top: 10px;   
 }
-.Act5 dl dt.acadList table tr:first-child {
+.main .Act5 dl dt.acadList table tr:first-child {
     margin-top: 0;
 }
-.Act5 dl dt.acadList table tr th {
+.main .Act5 dl dt.acadList table tr th {
     background: #1b1b1b;
     width: 125px;
     height: 30px;
@@ -2018,69 +2018,69 @@ table.auTable tr td {
     line-height: 30px;
     text-align: center;
 }
-.Act5 dl dt.acadList table tr td a {
+.main .Act5 dl dt.acadList table tr td a {
     display: inline-block;
     font-size: 15px;
     line-height: 15px;
     padding: 0 10px;
     border-left: 1px solid #1b1b1b;
 }
-.Act5 dl dt.acadList table tr td a:first-child {
+.main .Act5 dl dt.acadList table tr td a:first-child {
     border-left: none;
     margin-left: 10px;
 }
-.Act5 dl dt.imgBox {
+.main .Act5 dl dt.imgBox {
     float: left;
     width: 320px;
 }
-.Act5 dl dt.imgBox ul li {
+.main .Act5 dl dt.imgBox ul li {
     margin-top: 2px;
 }
-.Act5 dl dt.imgBox ul li:first-child {
+.main .Act5 dl dt.imgBox ul li:first-child {
     margin-top: 0;
 }
 
 /* Main Container : Act6 */
-.Act6 .CScenterBox {
+.main .Act6 .CScenterBox {
     background: #f6f6f6;
     height: 120px;
     padding: 15px 0;
 }
-.Act6 tr td {
+.main .Act6 tr td {
     text-align: center;
     padding: 5px 0;
 }
-.Act6 .mTit {
+.main .Act6 .mTit {
     font-size: 26px;
     color: #464646;
 }
-.Act6 .nTit {
+.main .Act6 .nTit {
     font-size: 17px;
     color: #464646;
 }
-.Act6 .nNumber {
+.main .Act6 .nNumber {
     font-size: 32px;
     font-weight: 600;
     line-height: 40px;
     margin-left: 10px;
 }
-.Act6 .nTxt {
+.main .Act6 .nTxt {
     font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
     font-size: 12px;
     color: #888;
     line-height: 18px;
     text-align: left;
 }
-.Act6 .nInfo {
+.main .Act6 .nInfo {
     font-size: 14px;
     color: #464646;
     line-height: 20px;
 }
-.Act6 .nInfo span {
+.main .Act6 .nInfo span {
     display: inline-block;
     margin-left: 10px;
 }
-.Act6 .line {
+.main .Act6 .line {
     background: #e2e2e2;
     text-indent: -9999px;
 }

@@ -870,7 +870,7 @@ table.auTable tr td {
 }
 #Header .loginDepth {
     float: right;
-    z-index: 10;
+    z-index: 101;
 }
 #Header ul.myLog {
     line-height: 40px;
@@ -1752,6 +1752,13 @@ table.auTable tr td {
 }
 
 /* Main Container : Main */
+
+.Act1 {}
+.Act1 .ProcessBox {}
+.Act1 .ProcessBox li {
+    border: 1px solid #eaeaea;
+}
+
 
 
 

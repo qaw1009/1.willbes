@@ -9,11 +9,14 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1">조건</label>
+                    <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
-                            <option value="">namucpa.com</option>
-                        </select>
+                        <div class="input-group mb-0 mr-20">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -28,8 +31,6 @@
         <div class="x_content">
             <div class="pull-right mb-10">
                 <button class="btn btn-sm btn-success border-radius-reset mr-15 btn-excel"><i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드</button>
-                <button class="btn btn-sm btn-primary mr-15 btn-message"><i class="fa fa-comment-o mr-5"></i> 쪽지발송</button>
-                <button class="btn btn-sm btn-primary border-radius-reset btn-sms"><i class="fa fa-mobile mr-5"></i> SMS발송</button>
             </div>
             <div style="overflow-y: auto; width: 100%;">
                 <table id="list_ajax_table" class="table table-striped table-bordered">

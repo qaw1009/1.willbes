@@ -34,7 +34,7 @@ class ClassroomFModel extends WB_Model
      */
     private function getSelectList($columns, $cond)
     {
-        $query = "SELECT DISTINCT ".$columns;
+        $query = "SELECT STRAIGHT_JOIN DISTINCT ".$columns;
         $query .= " FROM {$this->_table['mylecture']} WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(true);
@@ -84,7 +84,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getLecture($cond = [])
     {
-        $query = "SELECT *,
+        $query = "SELECT STRAIGHT_JOIN *,
             TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
         ";
         $query .= " FROM {$this->_table['mylecture']} ";
@@ -143,9 +143,9 @@ class ClassroomFModel extends WB_Model
     public function getCurriculum($cond = [], $isCount = false)
     {
         if($isCount === true){
-            $query = "SELECT COUNT(*) AS rownums ";
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT 
+            $query = "SELECT STRAIGHT_JOIN
                 U.wUnitIdx, U.wLecIdx,
                 U.wUnitNum, U.wUnitLectureNum,
                 U.wUniName, U.wShootingDate, U.wBookPage, U.wRuntime,  

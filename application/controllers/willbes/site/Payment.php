@@ -76,7 +76,7 @@ class Payment extends \app\controllers\FrontController
         }
 
         // TODO : 테스트 (추후 주석 삭제)
-        $results['total_pay_price'] = 1000;
+        //$results['total_pay_price'] = 1000;
 
         // 주문번호 생성
         $order_no = $this->orderFModel->makeOrderNo();

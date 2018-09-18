@@ -640,7 +640,7 @@ table.auTable tr td {
     border-right: 1px solid #aeaeae;
     color: #383838;
     letter-spacing: -1px;
-    z-index: 10;
+    z-index: 100;
 }
 #Gnb .toggle-Btn {
     position: absolute;
@@ -1254,11 +1254,13 @@ table.auTable tr td {
     width: 425px;
 }
 .List-Table li a img {
-    background: #009ef5;
     margin: -2px 0 0 5px;
 }
 .List-Table li span.date {
     float: right;
+}
+.Section  .List-Table li a img {
+    background: #009ef5;   
 }
 
 /* Main Container : Tit */
@@ -1294,7 +1296,6 @@ table.auTable tr td {
     margin-top:0;
     padding-top: 35px;
 }
-
 .VisualBox {
     float: left;
     width: 740px;
@@ -1750,92 +1751,12 @@ table.auTable tr td {
     line-height: 16px;
 }
 
+/* Main Container : Main */
 
 
 
 
 
-
-/* Main Container : Section3 */
-.Section .will-News {
-    float: left;
-    height: 300px;
-}
-.Section .will-Evt {
-    float: left;
-    height: 300px;
-}
-
-/* Main Container : Section4 */
-.Section .will-Talk {
-    float: left;
-    margin-bottom: 60px;
-}
-.Section .will-Talk .will-Tit {
-    margin-bottom: 10px;
-}
-.Section .will-Talk ul li {
-    float: left;
-    width: 240px;
-    height: 295px;
-    border: 1px solid #ececec;
-    margin: 20px;
-    text-align: center;
-}
-.Section .will-Talk .Tit-Grid {
-    font-size: 19px;
-    font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-.Section .will-Talk .Tit-Grid-Sub {
-    font-size: 13px;
-    line-height: 19px;
-}
-.Section .will-Talk .Img-Grid {
-    width: 86px;
-    height: 86px;
-    margin: 0 auto;
-    text-align: center;
-}
-.Section .will-Talk .Name-Grid {
-    font-size: 11px;
-    font-weight: 600;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-.Section .will-Talk .Txt-Grid {
-    font-size: 13px;
-    line-height: 16px;
-}
-
-/* Main Container : Section5 */
-.will-FamilySite .will-Tit {
-    line-height: 70px;
-    margin: 0;
-    border-bottom: 0;
-}
-.will-FamilySite ul li {
-    display: inline-block;
-    width: 16%;
-    margin: 0 3px;
-}
-.will-FamilySite ul li .fs-Tit {
-    background: #1b1b1b;
-    width: 100%;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 30px;
-    padding-left: 20px;
-}
-.will-FamilySite dl {
-    background: #fff;
-    height: 110px;
-    padding: 15px 20px;
-    line-height: 20px;
-}
 
 
 
@@ -1931,7 +1852,7 @@ table.auTable tr td {
 }
 .Menu .menu-List {
     position: relative;
-    z-index: 9;
+    z-index: 100;
     float: right;
 }
 .Menu .menu-List li {
@@ -5984,9 +5905,6 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-info {
     height: 202px;
-}
-.willbes-info .List-Table {
-
 }
 .willbes-info .List-Table li {
     line-height: 44px;

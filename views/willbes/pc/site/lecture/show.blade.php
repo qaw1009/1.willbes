@@ -352,7 +352,7 @@
         <!-- TopBtn-->
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="{{ img_url('sample/banner_180605.jpg') }}">
+        {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
     </div>
 </div>
 <!-- End Container -->

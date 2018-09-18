@@ -96,7 +96,7 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
 
-                <div class="willbes-Lec NG c_both mb60">
+                <div class="willbes-Lec NG c_both mt20">
                     <div class="willbes-Lec-Subject tx-dark-black">· 종합반</div>
                     <!-- willbes-Lec-Subject -->
 
@@ -161,13 +161,13 @@
 
                 <div id="InfoForm" class="willbes-Layer-Box d3"></div>
                 <!-- willbes-Layer-Box -->
+            </form>
         </div>
         <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
+            {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
         </div>
     </div>
-
-
+    <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');

@@ -557,6 +557,9 @@ select[disabled] {
   margin-top: 100px !important;
 }
 
+.mb-zero {
+  margin-bottom: 0 !important;
+}
 .mb5 {
   margin-bottom: 5px !important;
 }
@@ -589,6 +592,12 @@ select[disabled] {
 }
 .mb70 {
   margin-bottom: 70px !important;
+}
+.mb80 {
+  margin-bottom: 80px !important;
+}
+.mb90 {
+  margin-bottom: 90px !important;
 }
 .mb100 {
   margin-bottom: 100px !important;

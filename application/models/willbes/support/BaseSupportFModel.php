@@ -222,7 +222,7 @@ class BaseSupportFModel extends WB_Model
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 
             if (is_array($uploaded) === false) {
-                throw new \Exception($uploaded);
+                throw new \Exception('파일 등록에 실패했습니다.');
             }
 
             foreach ($board_attach_data as $key => $val) {

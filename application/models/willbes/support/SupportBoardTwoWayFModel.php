@@ -168,7 +168,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
             $is_attach = $this->modifyBoardAttach($board_idx, $board_data, $reg_type, $attach_file_type);
             if ($is_attach !== true) {
-                throw new \Exception($is_attach);
+                throw new \Exception('파일 등록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

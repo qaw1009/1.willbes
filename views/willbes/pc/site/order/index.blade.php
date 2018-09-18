@@ -352,7 +352,7 @@
                                 <col width="*">
                             </colgroup>
                             <tbody>
-                            <tr>
+                            <tr class="chk">
                                 <td class="w-list bg-light-white">유의사항 안내</td>
                                 <td class="w-txt tx-left">
                                     <div class="txtBox">
@@ -379,7 +379,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="chk">
                                 <td class="w-list bg-light-white">개인정보 활용안내</td>
                                 <td class="w-txt tx-left">
                                     <div class="txtBox">
@@ -399,7 +399,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="chk">
                                 <td class="w-list bg-light-white">환불정책 안내</td>
                                 <td class="w-txt tx-left">
                                     <div class="txtBox">
@@ -417,8 +417,8 @@
                                     <div class="chkBox">
                                         위 환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                         <span class="chkBox-Agree item">
-                                        <input type="checkbox" id="agree3" name="agree3" value="Y" title="환불정책 안내" required="required"/>
-                                    </span>
+                                            <input type="checkbox" id="agree3" name="agree3" value="Y" title="환불정책 안내" required="required"/>
+                                        </span>
                                     </div>
                                 </td>
                             </tr>
@@ -427,8 +427,8 @@
                         <div class="AllchkBox tx-gray">
                             위 유의사항, 개인정보활용, 환불정책안내사항을 모두 읽었으면 동의합니다. <span class="tx-blue">(전체동의)</span>
                             <span class="chkBox-Agree">
-                        <input type="checkbox" id="agree_all" name="agree_all" value="Y"/>
-                    </span>
+                                <input type="checkbox" id="agree_all" name="agree_all" value="Y"/>
+                            </span>
                         </div>
                     </div>
                     <div class="willbes-Lec-buyBtn">

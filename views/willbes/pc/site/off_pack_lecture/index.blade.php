@@ -118,11 +118,11 @@
                                 <td class="w-list">{{$row['CourseName']}}</td>
                                 <td class="w-data tx-left pl15">
                                     <div class="w-tit w-acad-tit">
-                                        <a href="{{ front_url('/offpackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                        <a href="{{ front_url('/offPackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                     </div>
                                     <dl class="w-info acad">
                                         <dt>
-                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}OffPackage')">
+                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}offPackage')">
                                                 <strong>종합반 상세정보</strong>
                                             </a>
                                         </dt>

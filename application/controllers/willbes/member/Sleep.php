@@ -203,7 +203,7 @@ class Sleep extends BaseMember
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/member/activate-success/');
+                    redirect('/member/activatesuccess/');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
@@ -223,7 +223,7 @@ class Sleep extends BaseMember
     /**
      * 휴면회원 해제 완료페이지
      */
-    public function activate-success()
+    public function activatesuccess()
     {
         $this->load->view('member/find/sleepProc');
     }

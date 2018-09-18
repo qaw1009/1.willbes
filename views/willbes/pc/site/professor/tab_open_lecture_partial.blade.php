@@ -336,7 +336,7 @@
                             <div class="willbes-Lec-Subject tx-dark-black">단과<span class="MoreBtn"><a href="#none">강좌정보 <span>전체보기 ▼</span></a></span></div>
                             <!-- willbes-Lec-Subject -->
 
-                            <div class="willbes-Lec-Line mt20">-</div>
+                            <div class="willbes-Lec-Line">-</div>
                             <!-- willbes-Lec-Line -->
 
                             @foreach($tab_data['off_lecture'] as $idx => $row)
@@ -411,8 +411,61 @@
                     @include('willbes.pc.site.off_lecture.only_footer_partial')
                 </div>
                 <div id="off_pack_normal" class="tabContent">
-                    <div class="willbes-Lec NG c_both">
-                        종합반
+                    <div class="willbes-Lec NG c_both mt20">
+                        <div class="willbes-Lec-Subject tx-dark-black">종합반</div>
+                        <!-- willbes-Lec-Subject -->
+
+                        <div class="willbes-Lec-Line">-</div>
+                        <!-- willbes-Lec-Line -->
+
+                        @foreach($tab_data['off_pack_lecture'] as $row)
+                            <div class="willbes-Lec-Table p_re">
+                                <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
+                                    <colgroup>
+                                        <col style="width: 75px;">
+                                        <col style="width: 90px;">
+                                        <col style="width: 590px;">
+                                        <col style="width: 185px;">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td class="w-place bg-light-white">{{$row['CampusCcdName']}}</td>
+                                        <td class="w-list">{{$row['CourseName']}}</td>
+                                        <td class="w-data tx-left pl15">
+                                            <div class="w-tit w-acad-tit">
+                                                <a href="{{ front_url('/offpackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                            </div>
+                                            <dl class="w-info acad">
+                                                <dt>
+                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}OffPackage')">
+                                                        <strong>종합반 상세정보</strong>
+                                                    </a>
+                                                </dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>개강월 : <span class="tx-blue">{{$row['SchoolStartYear']}}-{{$row['SchoolStartMonth']}}</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강형태 : <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span></dt>
+                                                <dt class="NSK ml15">
+                                                    <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{$row['StudyApplyCcdName']}}</span>
+                                                </dt>
+                                            </dl><br/>
+                                        </td>
+                                        <td class="w-notice p_re">
+                                            <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
+                                            @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                <div class="priceWrap chk buybtn p_re">
+                                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                </div>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- lecTable -->
+                            </div>
+                            <!-- willbes-Lec-Table -->
+                    @endforeach
                     </div>
                 </div>
             </div>

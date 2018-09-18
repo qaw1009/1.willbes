@@ -24,8 +24,8 @@ class SiteFModel extends WB_Model
         $arr_condition = [
             'EQ' => [
                 'S.SiteGroupCode' => $site_group_code,
-                'S.IsStatus' => 'Y',
-                'SG.IsStatus' => 'Y'
+                'S.IsUse' => 'Y', 'S.IsStatus' => 'Y',
+                'SG.IsUse' => 'Y', 'SG.IsStatus' => 'Y'
             ]
         ];
 

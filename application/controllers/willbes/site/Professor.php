@@ -107,14 +107,17 @@ class Professor extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
+        // 교수 정보 조회
+        $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
+        if (empty($data) === true) {
+            show_alert('해당하는 교수정보가 없습니다.', 'back');
+        }
+
         // 전체 교수 조회
         $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
-
-        // 교수 정보 조회
-        $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
 
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
@@ -194,7 +197,7 @@ class Professor extends \app\controllers\FrontController
             $data['off_lecture'] = $this->_getOffLectureData('off_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
 
             // 학원 종합반 조회
-            $data['off_pack_lecture'] = [];
+            $data['off_pack_lecture'] = $this->_getOffLectureData('off_pack_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
         }
 
         return [
@@ -208,7 +211,7 @@ class Professor extends \app\controllers\FrontController
     }
 
     /**
-     * 학원 단과 조회
+     * 학원 단과, 종합반 조회
      * @param $learn_pattern
      * @param $site_code
      * @param $prof_idx
@@ -218,9 +221,15 @@ class Professor extends \app\controllers\FrontController
     private function _getOffLectureData($learn_pattern, $site_code, $prof_idx, $arr_input = [])
     {
         $arr_condition = [
-            'EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $site_code],
+            'EQ' => ['SiteCode' => $site_code],
             'IN' => ['StudyApplyCcd' => ['654002', '654003']] // 온라인 접수, 방문+온라인
         ];
+
+        if ($learn_pattern === 'off_lecture') {
+            $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['ProfIdx' => $prof_idx]]);
+        } else {
+            $arr_condition = array_replace_recursive($arr_condition, ['LKB' => ['ProfIdx_String' => $prof_idx]]);
+        }
 
         $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 

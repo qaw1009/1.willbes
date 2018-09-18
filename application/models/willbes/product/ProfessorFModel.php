@@ -106,18 +106,18 @@ class ProfessorFModel extends WB_Model
      */
     public function getProfIdxBySiteGroupCode($wprof_idx, $site_group_code)
     {
-        $column = 'P.ProfIdx, S.SiteCode, S.IsCampus, if(S.IsCampus = "Y", "off", "on") as SiteOnOff';
+        $column = 'PF.ProfIdx, S.SiteCode, S.IsCampus, if(S.IsCampus = "Y", "off", "on") as SiteOnOff';
         $from = '
-            from ' . $this->_table['professor'] . ' as P 
+            from ' . $this->_table['professor'] . ' as PF 
                 inner join ' . $this->_table['site'] . ' as S
-                    on P.SiteCode = S.SiteCode
+                    on PF.SiteCode = S.SiteCode
                 inner join ' . $this->_table['site_group'] . ' as SG
                     on S.SiteGroupCode = SG.SiteGroupCode
-            where P.wProfIdx = ?
+            where PF.wProfIdx = ?
                 and S.SiteGroupCode = ?
-                and P.IsStatus = "Y"
-                and S.IsStatus = "Y"
-                and SG.IsStatus = "Y"                            
+                and PF.IsUse = "Y" and PF.IsStatus = "Y"
+                and S.IsUse = "Y" and S.IsStatus = "Y"
+                and SG.IsUse = "Y" and SG.IsStatus = "Y"                            
         ';
 
         // 쿼리 실행

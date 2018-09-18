@@ -12,10 +12,8 @@
         <!-- main slider -->
         <div class="sliderGNB bSlider">
             <div class="slider">
-                <div><img src="{{ img_url('sample/gnb1.jpg') }}"></div>
-                <div><img src="{{ img_url('sample/gnb2.jpg') }}"></div>
-                <div><img src="{{ img_url('sample/gnb3.jpg') }}"></div>
-                <div><img src="{{ img_url('sample/gnb4.jpg') }}"></div>
+                <div><img src="{{ img_url('gnbbanner/gnb_180918.jpg') }}"></div>
+                <div><img src="{{ img_url('gnbbanner/gnb_180919.jpg') }}"></div>
             </div>
         </div>
     @else
@@ -40,10 +38,8 @@
                                         </ul>
                                         <div class="sliderView bSlider">
                                             <div class="slider">
-                                                <div><img src="{{ img_url('sample/gnb5.jpg') }}"></div>
-                                                <div><img src="{{ img_url('sample/gnb6.jpg') }}"></div>
-                                                <div><img src="{{ img_url('sample/gnb7.jpg') }}"></div>
-                                                <div><img src="{{ img_url('sample/gnb8.jpg') }}"></div>
+                                                <div><img src="{{ img_url('gnbbanner/gnb_180920.jpg') }}"></div>
+                                                <div><img src="{{ img_url('gnbbanner/gnb_180921.jpg') }}"></div>
                                             </div>
                                         </div>
                                     </div>

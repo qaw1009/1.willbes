@@ -96,20 +96,20 @@
                     @foreach($menus as $row)
                         <tr>
                             <td>
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="checkbox" name="menu_idx[]" value="{{ $row['BMenuIdx'] }}" class="flat menu-depth1" @if($row['BMenuIdx']==$row['RBMenuIdx'])checked="checked"@endif/> {{ $row['BMenuName'] }}
                                 </div>
                             </td>
                             <td>
                                 @if(empty($row['MMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="checkbox" name="menu_idx[]" value="{{ $row['MMenuIdx'] }}" data-group-menu-idx="{{ $row['GroupMenuIdx'] }}" data-parent-menu-idx="{{ $row['MParentMenuIdx'] }}" class="flat menu-depth2" @if($row['MMenuIdx']==$row['RMMenuIdx'])checked="checked"@endif/> {{ $row['MMenuName'] }}
                                 </div>
                                 @endif
                             </td>
                             <td>
                                 @if(empty($row['SMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="checkbox" name="menu_idx[]" value="{{ $row['SMenuIdx'] }}" data-group-menu-idx="{{ $row['GroupMenuIdx'] }}" data-parent-menu-idx="{{ $row['SParentMenuIdx'] }}" class="flat menu-depth3" @if($row['SMenuIdx']==$row['RSMenuIdx'])checked="checked"@endif/> {{ $row['SMenuName'] }}
                                 </div>
                                 @endif

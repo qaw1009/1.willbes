@@ -55,7 +55,7 @@
                         <tr>
                             <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
                             <td>
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BCateCode'] }}" style="width: 30px;" />
                                     <input type="radio" name="cate_code" value="{{ $row['BCateCode'] }}" data-cate-depth="{{ $row['BCateDepth'] }}" data-site-code="{{ $row['SiteCode'] }}" class="flat"/>
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['BCateCode'] }}"><u>{{ $row['BCateName'] }}</u></a>
@@ -65,7 +65,7 @@
                             </td>
                             <td>
                                 @if(empty($row['MCateCode']) === false)
-                                    <div class="form-group form-group-sm">
+                                    <div class="form-group form-group-sm no-border-bottom">
                                         <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MCateCode'] }}" style="width: 30px;" />
                                         <a href="#none" class="btn-modify" data-idx="{{ $row['MCateCode'] }}"><u>{{ $row['MCateName'] }}</u></a>
                                         [<span class="blue">{{ $row['MCateCode'] }}</span>]

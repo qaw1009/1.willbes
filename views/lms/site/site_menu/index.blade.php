@@ -57,7 +57,7 @@
                         <tr>
                             <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
                             <td>
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['MenuIdx'] }}" style="width: 80px;" />
                                 </div>
                             </td>

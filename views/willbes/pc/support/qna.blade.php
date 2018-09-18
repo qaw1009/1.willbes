@@ -87,7 +87,7 @@
                                     <td class="w-A">{{$row['TypeCcd_Name']}}</td>
                                     <td class="w-list tx-left pl20 {{($row['IsBest'] == 1) ? 'strong' : ''}}">
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
-                                            <a href="javascript:void(0);">
+                                            <a href="javascript:alert('비밀글입니다.');">
                                         @else
                                             <a href="{{site_url($default_path.'/qna/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                         @endif

@@ -52,6 +52,7 @@ class SupportQna extends BaseSupport
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
+        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
 
         // 카테고리 조회
         $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
@@ -167,6 +168,7 @@ class SupportQna extends BaseSupport
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
+        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
 
         // 카테고리 조회
         $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
@@ -213,6 +215,10 @@ class SupportQna extends BaseSupport
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
             $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+
+            if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+                show_alert('잘못된 접근 입니다.', 'back');
+            }
 
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
             if($result !== true) {

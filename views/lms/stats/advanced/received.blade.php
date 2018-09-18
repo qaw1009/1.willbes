@@ -3,8 +3,13 @@
 @section('content')
     <h5>- 온라인 선수금을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        <ul id="tabs_site_code" class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
+            <li role="presentation" class="active"><a href="#none" role="tab" data-toggle="tab" data-site-code="2001"><strong>경찰 [온라인]</strong></a></li>
+            <li role="presentation" class=""><a href="#none" role="tab" data-toggle="tab" data-site-code="2002"><strong>경찰 [학원]</strong></a></li>
+            <li role="presentation" class=""><a href="#none" role="tab" data-toggle="tab" data-site-code="2003"><strong>공무원 [온라인]</strong></a></li>
+            <li role="presentation" class=""><a href="#none" role="tab" data-toggle="tab" data-site-code="2004"><strong>공무원 [학원]</strong></a></li>
+        </ul>
+
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
@@ -159,7 +164,7 @@
                             <td>50000</td>
                             <td>2018-00-00 00:00</td>
                             <td>10000</td>
-                            <td>환불완료2018-00-00</td>
+                            <td>환불완료<br/>2018-00-00</td>
                             <td>50000</td>
                             <td>300</td>
                             <td>1</td>
@@ -267,7 +272,7 @@
                             <td>50000</td>
                             <td>2018-00-00 00:00</td>
                             <td>10000</td>
-                            <td>환불완료2018-00-00</td>
+                            <td>환불완료<br/>2018-00-00</td>
                             <td>50000</td>
                             <td>300</td>
                             <td>1</td>

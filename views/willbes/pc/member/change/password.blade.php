@@ -99,8 +99,8 @@
                             messages: {
                                 newPass:{
                                     required:"비밀번호를 입력해주십시요.",
-                                    minlength:"비밀번호는 8~20자리로 입력해주십시요.1",
-                                    maxlength:"비밀번호는 8~20자리로 입력해주십시요.2",
+                                    minlength:"비밀번호는 8~20자리로 입력해주십시요.",
+                                    maxlength:"비밀번호는 8~20자리로 입력해주십시요.",
                                     pwd_mix:"영문대소문자, 숫자, 특수문자중 2종류이상 조합해야 합니다."
                                 },
                                 newPasschk:{

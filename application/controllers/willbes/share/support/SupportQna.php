@@ -319,19 +319,6 @@ class SupportQna extends BaseSupport
     public function store()
     {
         $idx = '';
-        $get_params = '';
-        $arr_input = array_merge($this->_reqG(null));
-        $s_site_code = element('s_site_code',$arr_input);
-        $s_cate_code = element('s_cate_code',$arr_input);
-        $s_consult_type = element('s_consult_type',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
-        $prof_idx = element('prof_idx',$arr_input);
-        $subject_idx = element('subject_idx',$arr_input);
-        $s_is_display = element('s_is_display',$arr_input);
-        $s_is_my_contents = element('s_is_my_contents',$arr_input);
-        $view_type = element('view_type',$arr_input);
-        $page = element('page',$arr_input);
-
         //캠퍼스 사용 유/무 조회
         $site_onoff_info = $this->supportBoardTwoWayFModel->getSiteOnOffType($this->_reqP('s_site_code'));
 
@@ -346,8 +333,6 @@ class SupportQna extends BaseSupport
 
         switch ($this->_default_path) {
             case '/support' :    //고객센터 상담게시판
-                $get_params .= 's_keyword='.$s_keyword.'&page='.$page;
-
                 $rules = array_merge($rules, [
                     ['field' => 's_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
                 ]);
@@ -368,12 +353,6 @@ class SupportQna extends BaseSupport
                 break;
 
             case "/prof" :   //교수게시판 학습Q&A
-                $get_params .= 's_keyword='.urlencode($s_keyword);
-                $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
-                $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
-                $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
-                $get_params .= '&page='.$page;
-
                 $rules = array_merge($rules, [
                     ['field' => 's_cate_code', 'label' => '카테고리', 'rules' => 'trim|required|integer'],
                     ['field' => 's_prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
@@ -383,7 +362,7 @@ class SupportQna extends BaseSupport
         }
 
         if ($this->validate($rules) === false) {
-            show_alert('필수항목이 없습니다.', 'back');
+            return;
         }
 
         if (empty($this->_reqP('idx')) === false) {
@@ -396,12 +375,7 @@ class SupportQna extends BaseSupport
 
         //_addBoard, _modifyBoard
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
-
-        if (empty($result['ret_status']) === false) {
-            show_alert('등록 실패입니다. 확인 후 다시 등록해 주세요.', 'back');
-        }
-
-        show_alert($msg, site_url($this->_default_path.'/qna/index?'.$get_params));
+        $this->json_result($result, $msg, $result);
     }
 
     /**

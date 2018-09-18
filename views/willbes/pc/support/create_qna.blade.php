@@ -10,7 +10,7 @@
         <!-- Write -->
         <div class="willbes-Leclist mt40 c_both">
             <div class="LecWriteTable">
-                <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return true;" action="{!! site_url('support/qna/store?'.$get_params) !!}">
+                <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                     {!! csrf_field() !!}
                     {!! method_field($method) !!}
                     <input type="hidden" name="idx" value="{{ $board_idx }}"/>
@@ -102,7 +102,6 @@
                         </tr>
                         </tbody>
                     </table>
-                </form>
 
                 <div class="search-Btn mt20 h36 p_re">
                     <button type="button" id="btn_list" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
@@ -112,6 +111,7 @@
                         <span>저장</span>
                     </button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -135,7 +135,19 @@
             $(this).find(':input').prop('disabled', false);
         });
 
-        $('#btn_submit').click(function () {
+        $regi_form.submit(function() {
+            var _url = '{!! site_url('support/qna/store?'.$get_params) !!}';
+            if (!confirm('저장하시겠습니까?')) { return true; }
+
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.href = '{!! site_url('support/qna/index?'.$get_params) !!}';
+                }
+            }, showValidateError, addValidate, false, 'alert');
+        });
+
+        function addValidate() {
             var is_public = $(":input:radio[name=is_public]:checked").length;
 
             if ($('#s_site_code').val() == '') {
@@ -162,12 +174,8 @@
                 alert('제목을 선택해 주세요.');
                 return false;
             }
-
-            if (!confirm('저장하시겠습니까?')) {
-                return;
-            }
-            $regi_form.submit();
-        });
+            return true;
+        }
     });
 </script>
 <!-- End Container -->

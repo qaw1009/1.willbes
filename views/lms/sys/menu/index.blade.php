@@ -51,7 +51,7 @@
                     <tr>
                         <td>
                             <div class="form-group form-group-sm">
-                                <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BMenuIdx'] }}" style="width: 30px;" />
+                                <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BMenuIdx'] }}" style="width: 50px;" />
                                 <input type="radio" name="menu_idx" value="{{ $row['BMenuIdx'] }}" data-menu-depth="{{ $row['BMenuDepth'] }}" class="flat"/>
                                 <a href="#none" class="btn-modify" data-idx="{{ $row['BMenuIdx'] }}"><u>{{ $row['BMenuName'] }}</u></a>
                                 [<span class="blue">{{ $row['BMenuIdx'] }}</span>]
@@ -61,7 +61,7 @@
                         <td>
                             @if(empty($row['MMenuIdx']) === false)
                                 <div class="form-group form-group-sm">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MMenuIdx'] }}" style="width: 30px;" />
+                                    <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MMenuIdx'] }}" style="width: 50px;" />
                                     <input type="radio" name="menu_idx" value="{{ $row['MMenuIdx'] }}" data-menu-depth="{{ $row['MMenuDepth'] }}" class="flat"/>
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['MMenuIdx'] }}"><u>{{ $row['MMenuName'] }}</u></a>
                                     [<span class="blue">{{ $row['MMenuIdx'] }}</span>]
@@ -72,7 +72,7 @@
                         <td>
                             @if(empty($row['SMenuIdx']) === false)
                                 <div class="form-group form-group-sm">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['SOrderNum'] }}" data-origin-order-num="{{ $row['SOrderNum'] }}" data-idx="{{ $row['SMenuIdx'] }}" style="width: 30px;" />
+                                    <input type="text" name="order_num" class="form-control" value="{{ $row['SOrderNum'] }}" data-origin-order-num="{{ $row['SOrderNum'] }}" data-idx="{{ $row['SMenuIdx'] }}" style="width: 50px;" />
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['SMenuIdx'] }}"><u>{{ $row['SMenuName'] }}</u></a>
                                     [<span class="blue">{{ $row['SMenuIdx'] }}</span>]
                                 </div>

@@ -41,7 +41,7 @@ class Login extends \app\controllers\BaseController
         ];
 
         if ($this->validate($rules) === false) {
-            return;
+            return null;
         }
 
         $admin_id = $this->_reqP('admin_id');

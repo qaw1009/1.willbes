@@ -30,11 +30,6 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
                 <ul class="nav side-menu">
-                    @if(SUB_DOMAIN == 'wbs')
-                        <li><a href="{{ site_url('sample/index') }}"><i class="fa fa-file-text"></i> 샘플-인덱스</a>
-                        <li><a href="{{ site_url('sample/list') }}"><i class="fa fa-file-text"></i> 샘플-리스트</a>
-                        <li><a href="{{ site_url('sample/paging') }}"><i class="fa fa-file-text"></i> 샘플-페이징</a>
-                    @endif
                     @if(isset($__menu['LNB']['Children']) === true)
                         @foreach($__menu['LNB']['Children'] as $mmenu)
                             @if(isset($mmenu['Children']) === true)

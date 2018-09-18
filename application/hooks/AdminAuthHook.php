@@ -38,7 +38,8 @@ class AdminAuthHook
 
         if (empty(uri_string()) === false && starts_with('/' . uri_string(), $this->excepts) === false) {
             if ($this->_CI->session->userdata('is_admin_login') !== true) {
-                show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
+                //show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
+                show_alert('운영자 인증에 실패했습니다.', site_url('/lcms/auth/login'), false);
             }
 
             // 현재 URI의 /{directory}/{controller}/{method}
@@ -52,8 +53,9 @@ class AdminAuthHook
 
             // 1. 관리자별 권한유형 정보 조회
             $role = $adminAuthService->getAdminRole();
-            if (is_null($role) === true) {
-                show_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED, '운영자 권한 없음');
+            if (is_null($role) === true || empty(element('Role', $role)) === true) {
+                //show_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED, '운영자 권한 없음');
+                show_alert('운영자 권한이 없습니다.', site_url('/lcms/auth/login'), false);
             }
 
             // 관리자 권한 정보 설정

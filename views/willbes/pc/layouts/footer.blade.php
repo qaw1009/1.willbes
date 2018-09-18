@@ -7,7 +7,7 @@
                     <span class="row-line">|</span>
                 </li>
                 <li>
-                    <a href="javascript:;" onclick="popupOpen('http://www.willbes.net/company/protect.asp', 'profPlayer', '1000', '600', null, null);">개인정보 취급방침</a>
+                    <a href="javascript:;" onclick="popupOpen('http://www.willbes.net/company/protect.asp', 'profPlayer', '1000', '600', null, null, 'yes');">개인정보 취급방침</a>
                     <span class="row-line">|</span>
                 </li>
                 <li>

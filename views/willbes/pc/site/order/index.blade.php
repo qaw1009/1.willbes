@@ -299,9 +299,10 @@
                                                 <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
                                             @endif
                                         </dt>
+                                        {{-- TODO : 도서산간 배송비 관련 부분 주석 (추후 개발 필요)
                                         <dt>
                                             <div class="caution-txt">회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 {{ number_format(config_app('DeliveryAddPrice')) }}원이 추가</span>로 적용 되었습니다.</div>
-                                        </dt>
+                                        </dt>--}}
                                     </dl>
                                 </td>
                             </tr>

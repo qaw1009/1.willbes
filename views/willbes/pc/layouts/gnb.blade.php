@@ -13,7 +13,7 @@
         <div class="sliderGNB bSlider">
             <div class="slider">
                 <div><img src="{{ img_url('gnbbanner/gnb_180918.jpg') }}"></div>
-                <div><a href="https://www.dev.willbes.net/support/notice/show?board_idx=1057"><img src="{{ img_url('gnbbanner/gnb_180919.jpg') }}"></a></div>
+                <div><a href="https://www.dev.willbes.net/support/notice/show?board_idx=1057" target="_blank"><img src="{{ img_url('gnbbanner/gnb_180919.jpg') }}"></a></div>
             </div>
         </div>
     @else
@@ -39,7 +39,7 @@
                                         <div class="sliderView bSlider">
                                             <div class="slider">
                                                 <div><img src="{{ img_url('gnbbanner/gnb_180920.jpg') }}"></div>
-                                                <div><a href="https://www.dev.willbes.net/support/notice/show?board_idx=1057"><img src="{{ img_url('gnbbanner/gnb_180921.jpg') }}"></a></div>
+                                                <div><a href="https://www.dev.willbes.net/support/notice/show?board_idx=1057" target="_blank"><img src="{{ img_url('gnbbanner/gnb_180921.jpg') }}"></a></div>
                                             </div>
                                         </div>
                                     </div>

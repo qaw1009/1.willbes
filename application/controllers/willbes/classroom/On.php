@@ -13,6 +13,7 @@ class On extends \app\controllers\FrontController
         parent::__construct();
     }
 
+
     /**
      *  강좌리스트 분기
      */
@@ -44,6 +45,7 @@ class On extends \app\controllers\FrontController
                 break;
         }
     }
+
 
     /**
      * 수강대기 강의
@@ -104,6 +106,7 @@ class On extends \app\controllers\FrontController
             'pkgList' => $pkglist
         ]);
     }
+
 
     /**
      * 수강중인 강의
@@ -219,6 +222,7 @@ class On extends \app\controllers\FrontController
         ]);
     }
 
+
     /**
      *  일시중지강의
      */
@@ -284,9 +288,11 @@ class On extends \app\controllers\FrontController
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
-            'lecList' => $leclist
+            'lecList' => $leclist,
+            'pkgList' => []
         ]);
     }
+
 
     /**
      *  수강종료 강의
@@ -347,6 +353,7 @@ class On extends \app\controllers\FrontController
             'pkgList' => []
         ]);
     }
+
 
     /**
      * 강의 상세페이지

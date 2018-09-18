@@ -56,7 +56,7 @@
                     <div id="join2">
                         <div class="widthAuto460">
                             <div class="inputBox p_re item">
-                                <input type="text" id="var_name" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required" title="이름">
+                                <input type="text" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required" title="이름">
                             </div>
                             <!-- <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div> -->
                             <div class="inputBox p_re item">
@@ -130,7 +130,7 @@
 
             $("#btn_send_sms").click(function () {
                 var _url = "/member/join/sms/";
-                $("#btn_send_sms").prop("disabled", true);
+                //$("#btn_send_sms").prop("disabled", true);
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     $("#btn_send_sms").prop("disabled", true);

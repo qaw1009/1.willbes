@@ -69,7 +69,7 @@
                     <div class="DetailWrap c_both">
                         <ul class="tabWrap tabDepthPass">
                             <li><a href="#Mypagetab1" class="on">단강좌 ({{count($lecList)}})</a></li>
-                            <li><a href="#Mypagetab2">패키지강좌 (2)</a></li>
+                            <li><a href="#Mypagetab2">패키지강좌 ({{count($pkgList)}})</a></li>
                         </ul>
                         <div class="tabBox">
                             <div id="Mypagetab1" class="tabLink">
@@ -107,7 +107,7 @@
                                         </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
+                                                <td colspan="2" class="tx-center">일시중지 강좌가 없습니다.</td>
                                             </tr>
                                         @endforelse
                                         <!--
@@ -168,6 +168,7 @@
                                             <col style="width: 120px;">
                                         </colgroup>
                                         <tbody>
+                                        @forelse( $pkgList as $row )
                                         <tr>
                                             <td class="w-data tx-left pl10">
                                                 <dl class="w-info">
@@ -192,6 +193,12 @@
                                                 <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
                                             </td>
                                         </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="2" class="tx-center">일시중지 강좌가 없습니다.</td>
+                                            </tr>
+                                        @endforelse
+                                        <!--
                                         <tr>
                                             <td class="w-data tx-left pl10">
                                                 <dl class="w-info">
@@ -218,7 +225,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                        </tr>
+                                        </tr> -->
                                         </tbody>
                                     </table>
                                     <!--

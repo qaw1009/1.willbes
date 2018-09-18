@@ -25,6 +25,7 @@ class ClassroomFModel extends WB_Model
         parent::__construct('lms');
     }
 
+
     /**
      *  강의리스트에서 셀렉트를 위해서
      * @param $columns
@@ -43,6 +44,7 @@ class ClassroomFModel extends WB_Model
         return empty($rows) === true ? [] : $rows->result_array();
     }
 
+
     /**
      * 과정리스트
      * @return array
@@ -52,6 +54,7 @@ class ClassroomFModel extends WB_Model
         $columns = " CourseIdx, CourseName ";
         return $this->getSelectList($columns, $cond);
     }
+
 
     /** 과목리스트
      * @return array
@@ -63,6 +66,7 @@ class ClassroomFModel extends WB_Model
 
     }
 
+
     /** 강사리스트
      * @return array
      */
@@ -73,54 +77,62 @@ class ClassroomFModel extends WB_Model
 
     }
 
+
     /** 단과강의리스트
      * @param array $cond_arr
      * @return array
      */
-    public function getLecture($cond_arr = [])
+    public function getLecture($cond = [])
     {
         $query = "SELECT *,
             TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
         ";
         $query .= " FROM {$this->_table['mylecture']} ";
 
-        $where = $this->_conn->makeWhere($cond_arr);
+        $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
         $rows = $this->_conn->query($query);
         return empty($rows) === true ? [] : $rows->result_array();
     }
 
+
     /**
      * 패키지 강좌 리스트
      */
-    public function getPackage($cond_arr = [])
+    public function getPackage($cond = [])
     {
+
+
         return empty($rows) === true ? [] : $rows->result_array();
     }
+
 
     /**
      * DIY 패키지 리스트
      */
-    public function getDiyPackage($cond_arr = [])
+    public function getDiyPackage($cond = [])
     {
         return empty($rows) === true ? [] : $rows->result_array();
     }
+
 
     /**
      * 패키지 서브강좌 리스트
      */
-    public function getPackageSub($cond_arr = [])
+    public function getPackageSub($cond = [])
     {
         return empty($rows) === true ? [] : $rows->result_array();
     }
 
+
     /**
      * 기간제패키지 PASS 강좌 리스트
      */
-    public function getPass($cond_arr = [])
+    public function getPass($cond = [])
     {
         return empty($rows) === true ? [] : $rows->result_array();
     }
+
 
     /**
      *  강의 커리뮬럼
@@ -128,7 +140,7 @@ class ClassroomFModel extends WB_Model
      * @param bool $isCount
      * @return mixed
      */
-    public function getCurriculum($cond_arr = [], $isCount = false)
+    public function getCurriculum($cond = [], $isCount = false)
     {
         if($isCount === true){
             $query = "SELECT COUNT(*) AS rownums ";
@@ -147,7 +159,7 @@ class ClassroomFModel extends WB_Model
         LEFT JOIN {$this->_table['mylec_unit']} AS MU ON U.wLecIdx = MU.wLecIdx AND U.wUnitIdx = MU.wUnitIdx  
         ";
 
-        $where = $this->_conn->makeWhere($cond_arr);
+        $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(true);
 
         $query .= " ORDER BY U.wOrderNum ASC ";

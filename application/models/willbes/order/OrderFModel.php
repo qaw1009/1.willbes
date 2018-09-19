@@ -955,4 +955,60 @@ class OrderFModel extends BaseOrderFModel
 
         return true;
     }
+
+    /**
+     * 주문 취소 (가상계좌만 취소 가능)
+     * @param $order_no
+     * @return array|bool
+     */
+    public function cancelOrder($order_no)
+    {
+        $this->load->loadModels(['order/orderListF']);  // 주문내역 조회 모델 로드
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+
+            // 주문정보 조회
+            $order_row = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
+            if (empty($order_row) === true) {
+                throw new \Exception('주문내역이 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['PayMethodCcd'] != $this->_pay_method_ccd['vbank']) {
+                throw new \Exception('무통장입금(가상계좌)으로 결제한 주문만 취소 가능합니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if (empty($order_row['VBankCancelDatm']) === false) {
+                throw new \Exception('이미 취소한 주문내역입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if ($order_row['VBankExpireDatm'] < date('Y-m-d H:i:s')) {
+                throw new \Exception('입금기한이 만료된 주문내역입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            $order_idx = $order_row['OrderIdx'];    // 주문식별자
+
+            // 주문 데이터 가상계좌 취소 업데이트
+            $is_cancel = $this->_conn->set('VBankCancelDatm', 'NOW()', false)
+                ->where('OrderIdx', $order_idx)->where('MemIdx', $sess_mem_idx)->update($this->_table['order']);
+            if ($is_cancel === false) {
+                throw new \Exception('주문 취소에 실패했습니다.');
+            }
+
+            // 주문상품 데이터 취소 업데이트
+            $is_cancel = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['vbank_wait_cancel'])
+                ->where('OrderIdx', $order_idx)->where('MemIdx', $sess_mem_idx)->update($this->_table['order_product']);
+            if ($is_cancel === false) {
+                throw new \Exception('주문상품 취소에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 }

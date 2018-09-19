@@ -167,4 +167,22 @@ class Payment extends \app\controllers\FrontController
 
         return $this->pg->requestCancel(['order_no' => $order_no, 'is_post_data_delete' => $is_delete]);
     }
+
+    /**
+     * PG사 결제취소
+     * @param array $params
+     * @return CI_Output
+     */
+    public function cancel($params = [])
+    {
+        $order_no = $this->_reqP('order_no');
+
+        if (empty($order_no) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $result = $this->orderFModel->cancelOrder($order_no);
+
+        return $this->json_result($result, '취소되었습니다.', $result);
+    }
 }

@@ -436,12 +436,50 @@ class On extends \app\controllers\FrontController
      */
     public function view()
     {
+        $today = date('Y-m-d');
+        $ispause = 'N';
+
         // 강좌정보 읽어오기
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodsub');
+        $prodcodesub = $this->_req('prodcodesub');
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        if($lec['LecStartDate'] > $today){
+            $canTake = 'N';
+        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+            $canTake = 'N';
+            $ispause = 'Y';
+        } else {
+            $canTake = 'Y';
+        }
+
+        $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
 
         // 커리큘럼 읽어오기
 
+        $data = [
+            'cantake' => $canTake,
+            'ispause' => $ispause
+        ];
+
         return $this->load->view('/classroom/on_view', [
-            'lecinfo' => [],
+            'data' => $data,
+            'lec' => $lec,
             'curriculum' => []
         ]);
     }

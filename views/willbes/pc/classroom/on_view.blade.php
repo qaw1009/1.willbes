@@ -16,22 +16,21 @@
                 <div class="willbes-Prof-Mypage NG tx-black">
                     <div class="prof-profile p_re">
                         <div class="Name">
-                            <strong>정채영</strong><br>
+                            <strong>{{$lec['wProfName']}}</strong><br>
                             교수님
                         </div>
                         <div class="ProfImg">
-                            <img src="/public/img/willbes/sample/prof2-1.png">
+                            <img src="{{ $lec['ProfReferData']['prof_index_img'] or '' }}">
+                            <!-- img src="/public/img/willbes/sample/prof2-1.png" -->
                         </div>
                         <div class="prof-home subBtn NSK"><a href="#none"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
                     <div class="lec-profile p_re">
-                        <div class="w-tit">2018 정채영 국어 [현대] 문학종결자 문학집중강의 (5-6월 문학집중)</div>
+                        <div class="w-tit">{{$lec['subProdName']}}</div>
                         <dl class="w-info tx-dark-gray">
                             <dt class="NSK ml10">
                                 <span class="nBox n1">2배수</span>
-                                <span class="nBox n2">진행중</span>
-                                <span class="nBox n3">예정</span>
-                                <span class="nBox n4">완강</span>
+                                <span class="nBox n{{ substr($lec['wLectureProgressCcd'], -1)+1 }}">{{$lec['wLectureProgressCcdName']}}</span>
                             </dt>
                         </dl>
                         <div class="Prof-MypageBox pt15 c_both">
@@ -52,17 +51,17 @@
                                     </td>
                                     <td>
                                         <div class="w-lectit">진도율</div>
-                                        <div class="w-lec NGEB">20%</div>
+                                        <div class="w-lec NGEB">{{$lec['StudyRate']}}%</div>
                                         <div class="w-date tx-gray">(수강시간기준)</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">일시정지</div>
-                                        <div class="w-lec NGEB"><span class="tx-light-blue">2</span>회</div>
-                                        <div class="w-date tx-gray">(3.20~4.20)</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['PauseCount']}}</span>회</div>
+                                        <div class="w-date tx-gray">@if($data['ispause'] == 'Y')({{$lec['lastPauseStartDate']}}~{{$lec['lastPauseEndDate']}})@else&nbsp;@endif</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">수강연장</div>
-                                        <div class="w-lec NGEB"><span class="tx-light-blue">3</span>회</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['ExtendCount']}}</span>회</div>
                                         <div class="w-date tx-gray">
                                             <div class="w-btn">
                                                 <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a>
@@ -71,8 +70,8 @@
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
-                                        <div class="w-lec NGEB"><span class="tx-light-blue">10</span>일/ 100일</div>
-                                        <div class="w-date tx-gray">(2018.3.20~2018.6.20)</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">10</span>일/ {{$lec['RealLecExpireDay']}}일</div>
+                                        <div class="w-date tx-gray">({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</div>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -116,6 +115,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @forelse($curriculum as $row)
                         <tr>
                             <td class="w-no">1강</td>
                             <td class="w-lec">강의명이 출력됩니다.</td>
@@ -132,6 +132,12 @@
                             <td class="w-study-time">40분/ 100분</td>
                             <td class="w-r-time">50분</td>
                         </tr>
+                        @empty
+                            <tr>
+                                <td colspan="8" class="w-no">개설된 강좌 목록이 없습니다.</td>
+                            </tr>
+                        @endforelse
+                        <!--
                         <tr>
                             <td class="w-no">2강</td>
                             <td class="w-lec">강의명이 출력됩니다.</td>
@@ -179,7 +185,7 @@
                             <td class="w-lec-time">20분</td>
                             <td class="w-study-time">70분/ 100분</td>
                             <td class="w-r-time">20분</td>
-                        </tr>
+                        </tr> -->
                         </tbody>
                     </table>
                 </div>

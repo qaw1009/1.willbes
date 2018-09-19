@@ -239,7 +239,19 @@
 
             // 가상계좌취소 버튼 클릭
             $('#btn_vbank_cancel').on('click', function() {
-
+                if (confirm('해당 가상계좌를 취소하시겠습니까?\n취소할 경우 해당 정보는 삭제 처리됩니다.')) {
+                    var url = frontUrl('/payment/cancel');
+                    var data = {
+                        '{{ csrf_token_name() }}' : '{{ csrf_token() }}',
+                        'order_no' : '{{ $results['order']['OrderNo'] }}'
+                    };
+                    sendAjax(url, data, function (ret) {
+                        if (ret.ret_cd) {
+                            alert(ret.ret_msg);
+                            location.replace('{{ app_url('/classroom/order/index', 'www') }}');     // 내강의실 > 결제관리 > 주문/배송조회 페이지로 이동
+                        }
+                    }, showAlertError, false, 'POST');
+                }
             });
         });
     </script>

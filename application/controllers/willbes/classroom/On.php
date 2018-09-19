@@ -438,11 +438,12 @@ class On extends \app\controllers\FrontController
     {
         $today = date('Y-m-d');
         $ispause = 'N';
+        $isstart = 'Y';
 
         // 강좌정보 읽어오기
-        $orderidx = $this->_req('orderidx');
-        $prodcode = $this->_req('prodsub');
-        $prodcodesub = $this->_req('prodcodesub');
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
 
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
@@ -450,6 +451,9 @@ class On extends \app\controllers\FrontController
                 'OrderIdx' => $orderidx,
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => date("Y-m-d", time())
             ]
         ]);
 
@@ -460,27 +464,87 @@ class On extends \app\controllers\FrontController
         $lec = $lec[0];
 
         if($lec['LecStartDate'] > $today){
-            $canTake = 'N';
+            $isstart = 'N';
         } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
-            $canTake = 'N';
+            $isstart = 'N';
             $ispause = 'Y';
         } else {
-            $canTake = 'Y';
+            $isstart = 'Y';
         }
 
+        // 감사정보 디코딩
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
+        $lec['isstart'] = $isstart;
+        $lec['ispause'] = $ispause;
 
         // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx']
+            ]
+        ]);
 
-        $data = [
-            'cantake' => $canTake,
-            'ispause' => $ispause
-        ];
+        // 회차별 수강시간 체크
+        foreach($curriculum AS $idx => $row){
+            $curriculum[$idx]['isstart'] = $isstart;
+            $curriculum[$idx]['ispause'] = $ispause;
+
+            if($lec['MultipleApply'] == '1'){
+                // 무제한 
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($row['RealStudyTime']);
+                // 제한시간 분 -> 초
+                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+                
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['AllLecTime']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+            }
+        }
 
         return $this->load->view('/classroom/on_view', [
-            'data' => $data,
             'lec' => $lec,
-            'curriculum' => []
+            'curriculum' => $curriculum
         ]);
     }
 

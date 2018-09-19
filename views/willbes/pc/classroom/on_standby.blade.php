@@ -90,7 +90,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/classroom/on/view/standby/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>

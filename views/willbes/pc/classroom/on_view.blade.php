@@ -29,7 +29,7 @@
                         <div class="w-tit">{{$lec['subProdName']}}</div>
                         <dl class="w-info tx-dark-gray">
                             <dt class="NSK ml10">
-                                <span class="nBox n1">2배수</span>
+                                <span class="nBox n1">{{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }}</span>
                                 <span class="nBox n{{ substr($lec['wLectureProgressCcd'], -1)+1 }}">{{$lec['wLectureProgressCcdName']}}</span>
                             </dt>
                         </dl>
@@ -46,8 +46,8 @@
                                 <tr>
                                     <td>
                                         <div class="w-lectit">최근수강강의</div>
-                                        <div class="w-lec NGEB">2강</div>
-                                        <div class="w-date tx-gray">(수강일 : 2018.3.20)</div>
+                                        <div class="w-lec NGEB">{{ $lec['lastStudyInfo'] == '' ? '학습이력없음' : $lec['lastStudyInfo'] }}</div>
+                                        <div class="w-date tx-gray">(수강일 : {{ $lec['lastStudyDate'] == '' ? '학습이력없음' : $lec['lastStudyDate'] }})</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">진도율</div>
@@ -57,7 +57,7 @@
                                     <td>
                                         <div class="w-lectit">일시정지</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['PauseCount']}}</span>회</div>
-                                        <div class="w-date tx-gray">@if($data['ispause'] == 'Y')({{$lec['lastPauseStartDate']}}~{{$lec['lastPauseEndDate']}})@else&nbsp;@endif</div>
+                                        <div class="w-date tx-gray">@if($lec['ispause'] == 'Y')({{$lec['lastPauseStartDate']}}~{{$lec['lastPauseEndDate']}})@else&nbsp;@endif</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">수강연장</div>
@@ -116,22 +116,32 @@
                         </thead>
                         <tbody>
                         @forelse($curriculum as $row)
-                        <tr>
-                            <td class="w-no">1강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-page">10p~15p</td>
-                            <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                            </td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-lec-time">50분</td>
-                            <td class="w-study-time">40분/ 100분</td>
-                            <td class="w-r-time">50분</td>
-                        </tr>
+                            <tr>
+                                <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
+                                <td class="w-lec">{{$row['wUnitName']}}</td>
+                                <td class="w-page">{{$row['wBookPage']}}</td>
+                                <td class="w-file">
+                                    <a href=""><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                </td>
+                                <td class="w-free mypage">
+                                    @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
+                                        @if($row['timeover'] == 'N')
+                                            @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD");' >WIDE</a></div>@endif
+                                            @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD");' >HIGH</a></div>@endif
+                                            @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD");' >LOW</a></div>@endif
+                                        @else
+                                            <div class="tBox NSK t1 black"><a>시간초과</a></div>
+                                        @endif
+                                    @elseif($row['ispause'] == 'Y')
+                                        <div class="tBox NSK t1 black"><a>일시중지</a></div>
+                                    @else
+                                        <div class="tBox NSK t1 black"><a>수강대기</a></div>
+                                    @endif
+                                </td>
+                                <td class="w-lec-time">{{$row['wRuntime']}}분</td>
+                                <td class="w-study-time">{{$row['RealStudyTime']}}분 / {{$row['limittime']}}</td>
+                                <td class="w-r-time">{{$row['remaintime']}}</td>
+                            </tr>
                         @empty
                             <tr>
                                 <td colspan="8" class="w-no">개설된 강좌 목록이 없습니다.</td>
@@ -196,4 +206,6 @@
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <script src="/public/js/willbes/player.js"></script>
+
 @stop

@@ -154,7 +154,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -275,7 +275,7 @@
                                                     </dt>
                                                 </dl><br/>
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$subrow['OrderIdx']}}&prodcode={{$subrow['ProdCode']}}&prodcodesub={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
                                                 </div>
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
@@ -378,7 +378,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -473,7 +473,7 @@
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
+                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
                                                 <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>

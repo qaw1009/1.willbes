@@ -12,7 +12,7 @@ class ClassroomFModel extends WB_Model
         'lecture' => 'vw_product_on_lecture',
         'mylec' => 'lms_my_lecture',
         'mst_lec' => '',
-        'lec_unit' => 'wbs_cms_lecture_unit_combine',
+        'lec_unit' => 'vw_unit_mylecture',
         'mylec_unit' => 'lms_lecture_studyinfo',
         'mylechistory' => 'lms_my_lecture_history',
         'pause_history' => 'lms_lecture_pause_history',
@@ -135,28 +135,19 @@ class ClassroomFModel extends WB_Model
         if($isCount === true){
             $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT STRAIGHT_JOIN
-                U.wUnitIdx, U.wLecIdx,
-                U.wUnitNum, U.wUnitLectureNum,
-                U.wUniName, U.wShootingDate, U.wBookPage, U.wRuntime,  
-                U.wContentTypeCcd, U.wContentSiteCcd,
-                U.wWD, U.wHD, U.wSD, 
-                U.wUnitAttachFileReal, U.wUnitAttachFile
-            ";
+            $query = "SELECT STRAIGHT_JOIN * ";
         }
 
-        $query .= " FROM {$this->_table['lec_unit']} AS U
-        LEFT JOIN {$this->_table['mylec_unit']} AS MU ON U.wLecIdx = MU.wLecIdx AND U.wUnitIdx = MU.wUnitIdx  
-        ";
+        $query .= " FROM {$this->_table['lec_unit']} ";
 
         $where = $this->_conn->makeWhere($cond);
-        $query .= $where->getMakeWhere(true);
+        $query .= $where->getMakeWhere(false);
 
-        $query .= " ORDER BY U.wOrderNum ASC ";
+        $query .= " ORDER BY wOrderNum ASC ";
 
-        $query = $this->_conn->query( $query);
+        $query = $this->_conn->query($query);
 
-        return ($isCount === true) ? $query->row(0)->rownums : $query->row_array();
+        return ($isCount === true) ? $query->row(0)->rownums : $query->result_array();
     }
 
 }

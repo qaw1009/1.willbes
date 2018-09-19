@@ -20,8 +20,8 @@ function fnPlayerProf($ProfessorCode, $viewType){
 /**
  * 일반강좌 플레이어
  */
-function fnPlayer($OrderIdx, $ProdCode, $subProdCode, $unitIdx, $quility){
-    popupOpen(app_url('/Player/o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&u='+$unitIdx+'&q='+$quility, 'www'), 'samplePlayer', '1000', '600', null, null);
+function fnPlayer($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quility){
+    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility, 'www'), 'samplePlayer', '1000', '600', null, null);
 }
 
 /**

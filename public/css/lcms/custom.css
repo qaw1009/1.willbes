@@ -421,6 +421,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     line-height: 0;
 }
 
+/* float */
+.pull-none {
+    float : none !important;
+}
+
 /* border */
 .border-default {
     border-color: #ddd !important;

@@ -597,7 +597,6 @@ class OrderFModel extends BaseOrderFModel
                 'DiscPrice' => element('CouponDiscPrice', $input, 0),
                 'DiscRate' => element('CouponDiscRate', $input, 0),
                 'DiscType' => element('CouponDiscType', $input, 'R'),
-                'DiscReason' => (empty($user_coupon_idx) === false  ? '쿠폰사용' : ''),
                 'UsePoint' => $real_use_point,
                 'SavePoint' => $real_save_point,
                 'IsUseCoupon' => (empty($user_coupon_idx) === false  ? 'Y' : 'N'),

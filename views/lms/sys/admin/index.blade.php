@@ -39,11 +39,7 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5 col-md-offset-7">
-                        <div class="checkbox">
+                        <div class="checkbox mt-10">
                             <input type="checkbox" id="search_chk_no_site_campus" name="search_chk_no_site_campus" class="flat" value="N"/> <label for="search_chk_no_site_campus" class="input-label">사이트/캠퍼스 권한 미부여</label>
                         </div>
                     </div>

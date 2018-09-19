@@ -92,6 +92,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search btn-reset-search" id="btn_reset_search"><i class="fa fa-arrow-right"></i>&nbsp; 초기화</button>
             </div>
         </div>
     </form>

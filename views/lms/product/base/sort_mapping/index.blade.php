@@ -23,12 +23,10 @@
                             <option value="N">미사용</option>
                         </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-10 col-md-offset-1 mt-10">
                         <div class="checkbox">
-                            <input type="checkbox" id="search_chk_no_category" name="search_chk_no_category" class="flat" value="N"/> <label for="search_chk_no_category" class="input-label">과목연결(<span class="red">N</span>) 카테고리만 보기</label>
-                            &nbsp; <input type="checkbox" id="search_chk_no_complex" name="search_chk_no_complex" class="flat" value="N"/> <label for="search_chk_no_complex" class="input-label">복합연결(<span class="red">N</span>) 카테고리만 보기</label>
+                            <input type="checkbox" id="search_chk_no_category" name="search_chk_no_category" class="flat" value="N"/> <label for="search_chk_no_category" class="input-label">과목연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
+                            &nbsp; <input type="checkbox" id="search_chk_no_complex" name="search_chk_no_complex" class="flat" value="N"/> <label for="search_chk_no_complex" class="input-label">복합연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
                         </div>
                     </div>
                 </div>

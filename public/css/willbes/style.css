@@ -902,6 +902,7 @@ table.auTable tr td {
     border: 1px solid #999;
     border-radius: 3px;
     padding: 2px 8px;
+    display: inline-block;
 }
 #Header ul.myLog li.myPage a.Tit {
     color:#008bff;
@@ -922,6 +923,14 @@ table.auTable tr td {
 #Header ul.myLog li.csCenter a {
     background: url("../../img/willbes/gnb/icon_cs.gif") no-repeat 0 0;
     padding-left: 25px;
+}
+#Header ul.myLog li.dropdown {
+    position: relative;
+}
+#Header ul.myLog li.dropdown .drop-Box {
+    top: 40px;
+    left: 50%;
+    margin-left: -50px;  
 }
 
 /* Header : drop-Box */
@@ -970,14 +979,6 @@ table.auTable tr td {
     display: block;
     width: 100%;
     height: 100%;
-}
-.drop-Box.joinUs-Box {
-    top: 40px;
-    right: 162px;
-}
-.drop-Box.myPage-Box {
-    top: 40px;
-    right: 70px;
 }
 
 /* Header : left-drop-Box */

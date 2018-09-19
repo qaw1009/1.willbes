@@ -315,9 +315,14 @@ class OfflineBoard extends BaseBoard
             $site_code = $this->site_code;
         }
         $get_category_array = $this->_getCategoryArray($site_code);
-
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        if (empty($get_category_array) === true) {
+            $data['arr_cate_code'] = [];
+        } else {
+            foreach ($arr_cate_code as $item => $code) {
+                if (empty($get_category_array[$code]) === false) {
+                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+                }
+            }
         }
 
         $this->load->view("board/offline/{$this->board_name}/read",[

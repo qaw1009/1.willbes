@@ -344,7 +344,9 @@ class Counsel extends BaseBoard
             $data['arr_cate_code'] = [];
         } else {
             foreach ($arr_cate_code as $item => $code) {
-                $data['arr_cate_code'][$code] = $get_category_array[$code];
+                if (empty($get_category_array[$code]) === false) {
+                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+                }
             }
         }
 

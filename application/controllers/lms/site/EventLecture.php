@@ -609,9 +609,14 @@ class EventLecture extends \app\controllers\BaseController
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
 
         $get_category_array = $this->categoryModel->getCategoryArray($site_code);
-
-        foreach ($arr_cate_code as $item => $code) {
-            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        if (empty($get_category_array) === true) {
+            $data['arr_cate_code'] = [];
+        } else {
+            foreach ($arr_cate_code as $item => $code) {
+                if (empty($get_category_array[$code]) === false) {
+                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+                }
+            }
         }
 
         $this->load->view("site/event_lecture/read_notice_modal", [

@@ -20,7 +20,7 @@
                             교수님
                         </div>
                         <div class="ProfImg">
-                            <img src="{{ $lec['ProfReferData']['prof_list_img'] or '' }}">
+                            <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
                             <!-- img src="/public/img/willbes/sample/prof2-1.png" -->
                         </div>
                         <div class="prof-home subBtn NSK"><a href="#none"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>

@@ -87,15 +87,32 @@ class On extends \app\controllers\FrontController
                     'ProdName' => $this->_req('search_text'), // 검색 : 패키지이름 
                     'subProdName' => $this->_req('search_text') // 검색 : 단과이름
                 ]
-            ],
-            'IN' => [
-                'LearnPatternCcd' => ['615001','615002'], // 학습형태 : 단과 , 사용자
-                'PayRouteCcd' => ['670001','670002'] // 결제루트 : 온, 방
             ]
         ];
 
-        $leclist = $this->classroomFModel->getLecture($cond_arr);
-        $pkglist = $this->classroomFModel->getPackage($cond_arr);
+        $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+            'IN' => [
+                'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                'PayRouteCcd' => ['670001','670002'] // 온, 방
+            ]
+        ]));
+
+        $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'IN' => [
+                'PayRouteCcd' => ['670001','670002'] // 온, 방
+            ]
+        ]));
+        foreach($pkglist as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pkglist[$idx]['subleclist'] = $pkgsublist;
+        }
 
         return $this->load->view('/classroom/on_standby', [
             'course_arr' => $course_arr,
@@ -176,10 +193,20 @@ class On extends \app\controllers\FrontController
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
-                'LearnPatternCcd' => ['615003'], // 패키지
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
         ]));
+        foreach($pkglist as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pkglist[$idx]['subleclist'] = $pkgsublist;
+        }
 
         // 학습형태 : 무료강좌
         // 결제방식 : 모두
@@ -202,10 +229,20 @@ class On extends \app\controllers\FrontController
         // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
         $adminlistPkg = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
-                'LearnPatternCcd' => ['615002'], // 패키지
                 'PayRouteCcd' => ['670003','670004','670005'] // 0원, 무료, 제휴사
             ]
         ]));
+        foreach($adminlistPkg as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $adminlistPkg[$idx]['subleclist'] = $pkgsublist;
+        }
 
         // 관리자부여 : lec + pkg
         $adminlist = [ 'lec' => $adminlistLec, 'pkg' => $adminlistPkg ];
@@ -283,13 +320,32 @@ class On extends \app\controllers\FrontController
             'PayRouteCcd' => ['670001','670002'] // 온, 방
         ]]));
 
+        // 학습형태 : 관리자패키지
+        // 결제방식 : 온라인결제, 학원방문결제
+        $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'IN' => [
+                'PayRouteCcd' => ['670001','670002'] // 온, 방
+            ]
+        ]));
+        foreach($pkglist as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pkglist[$idx]['subleclist'] = $pkgsublist;
+        }
+
         return $this->load->view('/classroom/on_pause', [
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
             'lecList' => $leclist,
-            'pkgList' => []
+            'pkgList' => $pkglist
         ]);
     }
 
@@ -344,13 +400,32 @@ class On extends \app\controllers\FrontController
             'PayRouteCcd' => ['670001','670002'] // 온, 방
         ]]));
 
+        // 학습형태 : 관리자패키지
+        // 결제방식 : 온라인결제, 학원방문결제
+        $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'IN' => [
+                'PayRouteCcd' => ['670001','670002'] // 온, 방
+            ]
+        ]));
+        foreach($pkglist as $idx => $row){
+            $pkgsublist =  $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pkglist[$idx]['subleclist'] = $pkgsublist;
+        }
+
         return $this->load->view('/classroom/on_end', [
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
             'lecList' => $leclist,
-            'pkgList' => []
+            'pkgList' => $pkglist
         ]);
     }
 

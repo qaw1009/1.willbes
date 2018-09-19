@@ -101,7 +101,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강시작</span></a>
                                             <a href="#none" onclick="openWin('STARTPASS')"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
                                         </td>
                                     </tr>
@@ -161,7 +161,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강시작</span></a>
                                         </td>
                                     </tr>
                                     <tr>

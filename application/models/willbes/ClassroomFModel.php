@@ -16,7 +16,8 @@ class ClassroomFModel extends WB_Model
         'mylec_unit' => 'lms_lecture_studyinfo',
         'mylechistory' => 'lms_my_lecture_history',
         'pause_history' => 'lms_lecture_pause_history',
-        'mylecture' => 'vw_on_mylecture'
+        'mylecture' => 'vw_on_mylecture',
+        'mylecture_pkg' => 'vw_pkg_mylecture'
     ];
 
 
@@ -101,26 +102,15 @@ class ClassroomFModel extends WB_Model
      */
     public function getPackage($cond = [])
     {
+        $query = "SELECT STRAIGHT_JOIN *,
+            TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+        ";
+        $query .= " FROM {$this->_table['mylecture_pkg']} ";
 
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $rows = $this->_conn->query($query);
 
-        return empty($rows) === true ? [] : $rows->result_array();
-    }
-
-
-    /**
-     * DIY 패키지 리스트
-     */
-    public function getDiyPackage($cond = [])
-    {
-        return empty($rows) === true ? [] : $rows->result_array();
-    }
-
-
-    /**
-     * 패키지 서브강좌 리스트
-     */
-    public function getPackageSub($cond = [])
-    {
         return empty($rows) === true ? [] : $rows->result_array();
     }
 

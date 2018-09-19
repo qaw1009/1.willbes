@@ -165,8 +165,8 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none" onclick="openWin('EXTRAPASS')"><span class="bBox blueBox NSK">수강연장(3)</span></a>
-                                            <a href="#none" onclick="openWin('STOPPASS')"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none" onclick="openWin('EXTRAPASS')"><span class="bBox blueBox NSK">수강연장({{$row['ExtendCount']}})</span></a>
+                                            <a href="#none" onclick="openWin('STOPPASS')"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
                                         </td>
                                     </tr>
                                     <!--
@@ -228,72 +228,71 @@
                     </div>
                     <div id="Mypagetab2" class="tabLink">
                         <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
-                            <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
-                                <colgroup>
-                                    <col style="width: 820px;">
-                                    <col style="width: 120px;">
-                                </colgroup>
-                                <tbody>
-                                @forelse( $pkgList as $row )
+                            @forelse( $pkgList as $row )
+                                <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                    <colgroup>
+                                        <col style="width: 820px;">
+                                        <col style="width: 120px;">
+                                    </colgroup>
+                                    <tbody>
+
                                     <tr class="bg-light-blue">
                                         <td class="w-data tx-left pl30">
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
+                                                {{$row['ProdName']}}
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                 <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
-                                            <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
+                                            <a href="#none"><span class="bBox blueBox NSK">수강연장({{$row['ExtendCount']}})</span></a>
+                                            <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
                                         </td>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>
-                                    </tr>
-                                @endforelse
-                                </tbody>
-                            </table>
-                            <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
-                                <colgroup>
-                                    <col style="width: 120px;">
-                                    <col style="width: 700px;">
-                                    <col style="width: 120px;">
-                                </colgroup>
-                                <tbody>
-                                <tr class="replyTxt">
-                                    <td class="w-percent">진도율<br/>
-                                        <span class="tx-blue">77%</span>
-                                    </td>
-                                    <td class="w-data tx-left pl10">
-                                        <dl class="w-info">
-                                            <dt>
-                                                영어<span class="row-line">|</span>
-                                                한덕현교수님
-                                                <span class="NSK ml15 nBox n4">완강</span>
-                                            </dt>
-                                        </dl><br/>
-                                        <div class="w-tit">
-                                            <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
-                                        </div>
-                                        <dl class="w-info tx-gray">
-                                            <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                            <dt><span class="row-line">|</span></dt>
-                                            <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            <dt><span class="row-line">|</span></dt>
-                                            <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                        </dl>
-                                    </td>
-                                    <td class="w-answer">
-                                        <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
-                                        <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
-                                    </td>
-                                </tr>
+                                    </tbody>
+                                </table>
+                                <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                                    <colgroup>
+                                        <col style="width: 120px;">
+                                        <col style="width: 820px;">
+                                    </colgroup>
+                                    <tbody>
+                                    @foreach( $row['subleclist'] as $subrow )
+                                        <tr>
+                                            <td class="w-percent">진도율<br/>
+                                                <span class="tx-blue">{{$subrow['StudyRate']}}%</span>
+                                            </td>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        {{$subrow['SubjectName']}}<span class="row-line">|</span>
+                                                        {{$subrow['wProfName']}}교수님
+                                                        <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$subrow['OrderIdx']}}&prodcode={{$subrow['ProdCode']}}&prodcodesub={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{$subrow['LecStartDate']}}~{{$subrow['RealLecEndDate']}})</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
+                                                </dl>
+                                            </td>
+                                            <!--
+                                            <td class="w-answer">
+                                                <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
+                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
+                                            </td> -->
+                                        </tr>
+                                    @endforeach
+                                    <!--
                                 <tr class="replyTxt">
                                     <td class="w-percent">진도율<br/>
                                         <span class="tx-blue">25%</span>
@@ -321,9 +320,22 @@
                                         <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
                                         <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
                                     </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                </tr> -->
+                                    </tbody>
+                                </table>
+                            @empty
+                                <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                    <colgroup>
+                                        <col style="width: 820px;">
+                                        <col style="width: 120px;">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="2" class="tx-center">수강중인 패키지강좌가 없습니다.</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                        @endforelse
                         <!--
                                 <div class="Paging">
                                     <ul>
@@ -355,25 +367,25 @@
                                 @forelse( $freeList as $row )
                                     <tr>
                                         <td class="w-percent">진도율<br/>
-                                            <span class="tx-blue">77%</span>
+                                            <span class="tx-blue">{{$row['StudyRate']}}%</span>
                                         </td>
                                         <td class="w-data tx-left pl10">
                                             <dl class="w-info">
                                                 <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
+                                                    {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                    {{$row['wProfName']}}교수님
+                                                    <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                                 </dt>
                                             </dl><br/>
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
                                                 <dt><span class="row-line">|</span></dt>
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                             </dl>
                                         </td>
                                     </tr>
@@ -447,7 +459,32 @@
                                     <col style="width: 820px;">
                                 </colgroup>
                                 <tbody>
-                                @forelse( $adminList as $row )
+                                @forelse( $adminList['lec'] as $row )
+                                    <tr>
+                                        <td class="w-percent">진도율<br/>
+                                            <span class="tx-blue">{{$row['StudyRate']}}%</span>
+                                        </td>
+                                        <td class="w-data tx-left pl10">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                    {{$row['wProfName']}}교수님
+                                                    <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                                </dt>
+                                            </dl><br/>
+                                            <div class="w-tit">
+                                                <a href="{{ site_url('/classroom/on/view/ongoing/') }}?orderidx={{$row['OrderIdx']}}&prodcode={{$row['ProdCode']}}&prodcodesub={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                            </dl>
+                                        </td>
+                                    </tr>
+                                    <!--
                                     <tr>
                                         <td class="w-percent">진도율<br/>
                                             <span class="tx-blue">77%</span>
@@ -472,6 +509,7 @@
                                             </dl>
                                         </td>
                                     </tr>
+                                    -->
                                 @empty
                                     <tr>
                                         <td colspan="2" class="tx-center">수강중인 강좌가 없습니다.</td>

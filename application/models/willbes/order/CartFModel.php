@@ -217,7 +217,7 @@ class CartFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');
             $gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
-            $arr_temp_prod_code = $this->_makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
+            $arr_temp_prod_code = $this->makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
             $arr_prod_code = element('data', $arr_temp_prod_code);
             $is_prod_mixed = element('is_mixed', $arr_temp_prod_code);
             $site_code = element('site_code', $input, '');
@@ -447,30 +447,6 @@ class CartFModel extends BaseOrderFModel
         }
 
         return true;
-    }
-
-    /**
-     * 상품코드 재정의 및 강좌, 교재상품 혼재 여부 리턴
-     * @param string $learn_pattern [학습형태]
-     * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드]
-     * @return array
-     */
-    private function _makeProdCodeArray($learn_pattern, $arr_prod_code)
-    {
-        $results = [];
-        $lecture_cnt = 0;
-        $book_cnt = 0;
-
-        foreach ($arr_prod_code as $idx => $val) {
-            $tmp_arr = explode(':', $val);
-            $results['data'][$tmp_arr[0]] = ['ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
-
-            $tmp_arr[0] == $tmp_arr[2] ? $lecture_cnt++ : $book_cnt++;
-        }
-
-        $results['is_mixed'] = $lecture_cnt > 0 && $book_cnt > 0;
-
-        return $results;
     }
 
     /**

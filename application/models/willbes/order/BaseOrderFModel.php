@@ -34,7 +34,7 @@ class BaseOrderFModel extends WB_Model
     public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'];
 
     // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
-    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004', 'free_lecture' => '615005', 'off_lecture' => '615006', 'off_package' => '615007'];
+    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004', 'on_free_lecture' => '615005', 'off_lecture' => '615006', 'off_package' => '615007'];
 
     // 온라인 패키지 학습형태 공통코드 (사용자패키지, 운영자패키지, 기간제패키지)
     public $_on_package_pattern_ccd = ['615002', '615003', '615004'];
@@ -80,6 +80,9 @@ class BaseOrderFModel extends WB_Model
 
     // 주문번호 세션명
     public $_sess_order_no_name = 'order_no';
+    
+    // 중복 접근방지 주문번호 세션명
+    public $_sess_proc_order_no_name = 'proc_order_no';
 
     public function __construct()
     {
@@ -184,11 +187,74 @@ class BaseOrderFModel extends WB_Model
     }
 
     /**
+     * 중복 접근방지 주문번호 세션과 주문번호 비교, 주문번호가 동일하다면 에러 처리 
+     * @param int $order_no
+     * @param bool $is_error_alert
+     * @return bool|mixed
+     */
+    public function checkSessProcOrderNo($order_no, $is_error_alert = true)
+    {
+        $sess_proc_order_no = $this->session->userdata($this->_sess_proc_order_no_name);
+
+        if ($sess_proc_order_no == $order_no) {
+            if ($is_error_alert === true) {
+                show_alert('잘못된 접근입니다.', site_url('/cart/index'), false);
+            } else {
+                return false;
+            }
+        }
+
+        return $sess_proc_order_no;
+    }    
+
+    /**
+     * 중복 접근방지 주문번호 세션 생성
+     * @param string $order_no
+     */
+    public function makeSessProcOrderNo($order_no)
+    {
+        $this->destroySessProcOrderNo();
+        $this->session->set_userdata($this->_sess_proc_order_no_name, $order_no);
+    }
+
+    /**
+     * 중복 접근방지 주문번호 세션 삭제
+     */
+    public function destroySessProcOrderNo()
+    {
+        $this->session->unset_userdata($this->_sess_proc_order_no_name);
+    }    
+
+    /**
      * 주문번호 생성 및 리턴 (년월일시분초 (14) + microtime (3) + 랜덤숫자 (3) = 20자리)
      * @return string
      */
     public function makeOrderNo()
     {
         return date_format(date_create(), 'YmdHisv') . '' . str_pad(mt_rand(0, 999), 3, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * 상품코드 재정의 및 강좌, 교재상품 혼재 여부 리턴
+     * @param string $learn_pattern [학습형태]
+     * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드]
+     * @return array
+     */
+    public function makeProdCodeArray($learn_pattern, $arr_prod_code)
+    {
+        $results = [];
+        $lecture_cnt = 0;
+        $book_cnt = 0;
+
+        foreach ($arr_prod_code as $idx => $val) {
+            $tmp_arr = explode(':', $val);
+            $results['data'][$tmp_arr[0]] = ['ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
+
+            $tmp_arr[0] == $tmp_arr[2] ? $lecture_cnt++ : $book_cnt++;
+        }
+
+        $results['is_mixed'] = $lecture_cnt > 0 && $book_cnt > 0;
+
+        return $results;
     }
 }

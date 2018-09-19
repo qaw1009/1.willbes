@@ -169,4 +169,26 @@ class Order extends \app\controllers\FrontController
 
         $this->json_result(true, '', [], $data);
     }
+
+    /**
+     * 무료강좌 주문 저장
+     * @param array $params
+     * @return CI_Output
+     */
+    public function free($params = [])
+    {
+        $_learn_pattern = $this->_reqP('learn_pattern');
+        $_prod_code = $this->_reqP('prod_code');
+
+        if (empty($_prod_code) === true || empty($_learn_pattern) === true || $_learn_pattern != 'on_free_lecture') {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 배열이 아닐 경우 json decode
+        is_array($_prod_code) === false && $_prod_code = json_decode($_prod_code, true);
+
+        $result = $this->orderFModel->procFreeOrder($_prod_code, $this->_site_code);
+
+        return $this->json_result($result, '', $result);
+    }
 }

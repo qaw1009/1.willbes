@@ -112,7 +112,7 @@
         <!-- search -->
 
         <div class="willbes-Bnr">
-            {!! banner($pattern_name . '_중단') !!}
+            {!! banner($pattern_name . '_중단', '', $__cfg['SiteCode'], '0') !!}
         </div>
         <!-- willbes-Bnr -->
 

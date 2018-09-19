@@ -339,6 +339,10 @@ class OrderFModel extends BaseOrderFModel
         $this->_conn->trans_begin();
         
         try {
+            // 중복 접근 방지
+            $this->checkSessProcOrderNo($order_no);
+            $this->makeSessProcOrderNo($order_no);
+            
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $sess_cart_idx = $this->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
@@ -402,7 +406,7 @@ class OrderFModel extends BaseOrderFModel
                 'OrderProdPrice' => $post_row['OrderProdPrice'],
                 'RealPayPrice' => $cart_results['total_pay_price'],
                 'CardPayPrice' => $cart_results['total_pay_price'],
-                'CashPayPrice' => '0',
+                'CashPayPrice' => 0,
                 'DeliveryPrice' => $post_row['DeliveryPrice'],
                 'DeliveryAddPrice' => $post_row['DeliveryAddPrice'],
                 'DiscPrice' => $post_row['CouponDiscPrice'],
@@ -486,9 +490,10 @@ class OrderFModel extends BaseOrderFModel
             $this->_conn->trans_rollback();
             return error_result($e);
         } finally {
-            // 장바구니 식별자, 주문번호 세션 삭제
+            // 장바구니 식별자, 주문번호, 중복 접근방지 주문번호 세션 삭제
             $this->destroySessCartIdx();
             $this->destroySessOrderNo();
+            $this->destroySessProcOrderNo();
         }
 
         return ['ret_cd' => true, 'ret_data' => $order_no];
@@ -573,6 +578,11 @@ class OrderFModel extends BaseOrderFModel
             $real_use_point = element('RealUsePoint', $input, 0);   // 사용포인트
             $real_pay_price = element('RealPayPrice', $input) - $real_use_point;    // 실결제금액에서 사용포인트 차감
             $real_save_point = element('RealSavePoint', $input, 0);     // 적립포인트
+            
+            // 실결제금액 체크
+            if ($real_pay_price < 0) {
+                throw new \Exception('주문상품 결제금액이 올바르지 않습니다.');
+            }
 
             $data = [
                 'OrderIdx' => $order_idx,
@@ -701,7 +711,7 @@ class OrderFModel extends BaseOrderFModel
             }
             $study_end_date = date('Y-m-d', strtotime($study_start_date . ' +' . ($row['StudyPeriod'] - 1) . ' day'));
 
-            // 단강좌, 운영자 패키지 입력정보
+            // 단강좌, 무료강좌, 운영자 패키지 입력정보
             $data = [
                 'OrderIdx' => $order_idx,
                 'OrderProdIdx' => $order_prod_idx,
@@ -716,8 +726,8 @@ class OrderFModel extends BaseOrderFModel
             ];
 
             if (empty($arr_prod_code_sub) === true) {
-                // 단강좌
-                if ($row['LearnPatternCcd'] != $this->_learn_pattern_ccd['on_lecture']) {
+                // 단강좌, 무료강좌
+                if (in_array($row['LearnPatternCcd'], [$this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['on_free_lecture']]) === false) {
                     throw new \Exception('상품 학습형태 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
                 }
 
@@ -791,13 +801,12 @@ class OrderFModel extends BaseOrderFModel
             $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
 
             $data = [
+                'CartType' => 'delivery_add_price',
+                'SiteCode' => $site_code,
                 'ProdCode' => $prod_rows['ProdCode'],
-                'ProdCodeSub' => '',
-                'ParentProdCode' => $prod_rows['ProdCode'],
                 'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
-                'OrderPrice' => $prod_row['ProdPriceData']['SalePrice'],
-                'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice'],
-                'CardPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
+                'RealSalePrice' => $prod_row['ProdPriceData']['SalePrice'],
+                'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
             ];
             
             if ($this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data) !== true) {
@@ -846,6 +855,103 @@ class OrderFModel extends BaseOrderFModel
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 무료강좌 주문 데이터 등록
+     * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드]
+     * @param int $site_code [사이트코드]
+     * @return array|bool
+     */
+    public function procFreeOrder($arr_prod_code, $site_code)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $learn_pattern = 'on_free_lecture';
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $order_no = $this->makeOrderNo();   // 주문번호 생성
+            $arr_temp_prod_code = $this->makeProdCodeArray($learn_pattern, $arr_prod_code);
+            $arr_prod_code = element('data', $arr_temp_prod_code);
+            $arr_prod_name = [];
+            $pay_status_ccd = $this->_pay_status_ccd['apply'];    // 주문완료 결제상태공통코드 (신청완료)
+
+            // 상품 판매여부 체크
+            foreach ($arr_prod_code as $prod_code => $prod_row) {
+                $chk_data = $this->productFModel->findOnlySaleProductByProdCode($learn_pattern, $prod_code);
+                if (empty($chk_data) === true) {
+                    throw new \Exception('판매 중인 상품만 주문 가능합니다.');
+                }
+
+                $arr_prod_name[] = $chk_data['ProdName'];
+            }
+
+            // 대표 주문상품명
+            $repr_prod_name = $arr_prod_name[0] . (count($arr_prod_name) > 1 ? ' 외 ' . (count($arr_prod_name) - 1) . '건' : '');
+
+            // 주문 데이터 등록
+            $data = [
+                'OrderNo' => $order_no,
+                'MemIdx' => $sess_mem_idx,
+                'SiteCode' => $site_code,
+                'ReprProdName' => $repr_prod_name,
+                'PayChannelCcd' => element(APP_DEVICE, $this->_pay_channel_ccd),
+                'PayRouteCcd' => element('free', $this->_pay_route_ccd),
+                'PayMethodCcd' => '',
+                'PgCcd' => '',
+                'PgMid' => '',
+                'PgTid' => '',
+                'OrderPrice' => 0,
+                'OrderProdPrice' => 0,
+                'RealPayPrice' => 0,
+                'CardPayPrice' => 0,
+                'CashPayPrice' => 0,
+                'DeliveryPrice' => 0,
+                'DeliveryAddPrice' => 0,
+                'DiscPrice' => 0,
+                'UseLecPoint' => 0,
+                'UseBookPoint' => 0,
+                'SaveLecPoint' => 0,
+                'SaveBookPoint' => 0,
+                'IsEscrow' => 'N',
+                'IsCashReceipt' => 'N',
+                'IsDelivery' => 'N',
+                'IsVisitPay' => 'N',
+                'GwIdx' => $this->session->userdata('gw_idx'),
+                'OrderIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)->insert($this->_table['order']) === false) {
+                throw new \Exception('주문 정보 등록에 실패했습니다.');
+            }
+
+            // 주문 식별자
+            $order_idx = $this->_conn->insert_id();
+
+            // 주문상품 데이터 등록
+            foreach ($arr_prod_code as $prod_code => $prod_row) {
+                $data = [
+                    'CartType' => 'on_lecture',
+                    'SiteCode' => $site_code,
+                    'ProdCode' => $prod_code,
+                    'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
+                    'RealSalePrice' => 0,
+                    'RealPayPrice' => 0
+                ];
+
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data);
+                if ($is_order_product !== true) {
+                    throw new \Exception($is_order_product);
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

@@ -164,25 +164,6 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 독서실등록/좌석현황 배정관리
-     */
-    public function assignManageList($params = [])
-    {
-        $post_data = null;
-        $post_data['search_site_code'] = $this->_reqP('search_site_code');
-
-        //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
-
-        $this->load->view("pass/reading_room/regist/assign_manage_list", [
-            'idx' => $params[0],
-            'arr_campus' => $arr_campus,
-            'post_data' => $post_data,
-        ]);
-    }
-
-
-    /**
      * 좌석배정
      */
     public function createSeatModal()

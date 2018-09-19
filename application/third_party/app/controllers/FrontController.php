@@ -41,6 +41,9 @@ abstract class FrontController extends BaseController
 
         // 사이트 환경설정
         $this->_setSiteConfig();
+        
+        // 접속별 고유 세션아이디 생성
+        $this->_setMakeSessionId();
     }
 
     /**
@@ -338,5 +341,15 @@ abstract class FrontController extends BaseController
             'limit' => $this->pagination->per_page,
             'rownum' => $rownum
         ];
+    }
+
+    /**
+     * 접속시 세션아이디 생성 : 학원수강신청 시 사용 및 기타 사용을 위한 값
+     */
+    public function _setMakeSessionId()
+    {
+        if(empty($this->session->userdata('make_sessionid'))){
+            $this->session->set_userdata('make_sessionid', time().substr(microtime(), 2, 6).rand(1000, 9999)); //15373248440179507411  (20자리)
+        }
     }
 }

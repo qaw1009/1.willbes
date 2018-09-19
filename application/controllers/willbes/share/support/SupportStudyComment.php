@@ -27,11 +27,10 @@ class SupportStudyComment extends BaseSupport
     {
         $arr_input = array_merge($this->_reqG(null));
         $cate_code = element('cate',$arr_input);
-        $prof_idx = element('prof_idx',$arr_input);
-        /*$prof_idx = '50070';*/
+        $prod_code = element('prod_code',$arr_input);
         $page = element('page',$arr_input);
 
-        $get_params = 'cate='.$cate_code.'&prof_idx='.$prof_idx;
+        $get_params = 'cate='.$cate_code.'&prod_code='.$prod_code;
         $get_params .= '&page='.$page;
 
         $arr_best_condition = [
@@ -39,7 +38,7 @@ class SupportStudyComment extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'IsBest' => '1',
-                'ProfIdx' => $prof_idx
+                'ProdCode' => $prod_code
             ],
             'LKB' => [
                 'Category_String' => $cate_code
@@ -50,7 +49,7 @@ class SupportStudyComment extends BaseSupport
             'EQ' => [
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
-                'ProfIdx' => $prof_idx
+                'ProdCode' => $prod_code
             ],
             'LKB' => [
                 'Category_String' => $cate_code
@@ -126,6 +125,7 @@ class SupportStudyComment extends BaseSupport
         $cate_code = element('search_cate_code',$arr_input);
         $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
         $prof_idx = element('search_prof_idx',$arr_input);
+        $prod_code = element('search_prod_code',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $orderby = element('orderby',$arr_input, 'best');
 
@@ -134,7 +134,8 @@ class SupportStudyComment extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'SubjectIdx' => $subject_idx,
-                'ProfIdx' => $prof_idx
+                'ProfIdx' => $prof_idx,
+                'ProdCode' => $prod_code
             ],
             'LKB' => [
                 'Category_String' => $cate_code
@@ -192,6 +193,7 @@ class SupportStudyComment extends BaseSupport
         $cate_code = element('search_cate_code',$arr_input);
         $subject_idx = (element('search_subject_idx',$arr_input) == 'all') ? '' : element('search_subject_idx',$arr_input);
         $prof_idx = element('search_prof_idx',$arr_input);
+        $prod_code = element('search_prod_code',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
 
         $arr_condition = [
@@ -199,7 +201,8 @@ class SupportStudyComment extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'SubjectIdx' => $subject_idx,
-                'ProfIdx' => $prof_idx
+                'ProfIdx' => $prof_idx,
+                'ProdCode' => $prod_code
             ],
             'LKB' => [
                 'Category_String' => $cate_code

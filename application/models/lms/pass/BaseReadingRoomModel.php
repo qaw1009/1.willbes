@@ -100,6 +100,31 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
+     * 독서실/사물함 데이터 조회
+     * @param $lr_idx
+     * @param string $column
+     * @return mixed
+     */
+    protected function getReadingRoomInfo($lr_idx, $column = '*')
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LrIdx' => $lr_idx,
+                'IsStatus' => 'Y'
+            ]
+        ];
+
+        $from = "
+            FROM {$this->_table['readingRoom']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
      * 상품등록
      * @param array $input
      * @return bool|string
@@ -159,6 +184,71 @@ class BaseReadingRoomModel extends WB_Model
             if($this->_conn->set($product_data)->insert($this->_table['product']) === false) {
                 throw new \Exception('상품 등록에 실패했습니다.');
             };
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 상품수정
+     * @param array $input
+     * @return bool|string
+     */
+    protected function _modifyProductForReadingRoom($input = [])
+    {
+        try {
+            // 상품코드 조회
+            $data = $this->getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, ProdCode, SubProdCode');
+            if (empty($data)) {
+                throw new \Exception('조회된 상품이 없습니다.');
+            }
+            $this->_setProdCode($data['ProdCode']);
+            $this->_setSubProdCode($data['SubProdCode']);
+
+            // 입력항목 셋팅
+            $set_product_data = $this->_setProductData($input, 'main');
+            $product_data = array_merge($set_product_data, [
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ]);
+
+            if ($this->_conn->set($product_data)->where('ProdCode', $data['ProdCode'])->update($this->_table['product']) === false) {
+                throw new \Exception('상품 정보 수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 예치금 상품수정
+     * @param array $input
+     * @return bool|string
+     */
+    protected function _modifySubProductForReadingRoom($input = [])
+    {
+        try {
+            // 상품코드 조회
+            $data = $this->getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, SubProdCode');
+            if (empty($data)) {
+                throw new \Exception('조회된 상품이 없습니다.');
+            }
+            $sub_prod_code = $this->_getSubProdCode();
+
+            // 입력항목 셋팅
+            $set_product_data = $this->_setProductData($input, 'sub');
+            $product_data = array_merge($set_product_data, [
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ]);
+
+            if ($this->_conn->set($product_data)->where('ProdCode', $sub_prod_code)->update($this->_table['product']) === false) {
+                throw new \Exception('예치금 상품 정보 수정에 실패했습니다.');
+            }
 
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -283,6 +373,11 @@ class BaseReadingRoomModel extends WB_Model
         try {
             $prod_code = $this->_getProdCode();
 
+            /*  기존 컨텐트 정보 상태값 변경 */
+            if($this->_setDataDelete($prod_code, $this->_table['product_sms'],'SMS') !== true) {
+                throw new \Exception('SMS 수정에 실패했습니다.');
+            }
+
             if(empty(element('sms_memo',$input)) === false && empty(element('cs_tel',$input)) === false) {
                 $data = [
                     'ProdCode' => $prod_code,
@@ -315,6 +410,7 @@ class BaseReadingRoomModel extends WB_Model
 
             $data = array_merge($set_data, [
                 'ProdCode' => $prod_code,
+                'SiteCode' => element('site_code',$input),
                 'SubProdCode' => $sub_prod_code,
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -332,7 +428,36 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
+     * 독서실/사물함 수정
+     * @param array $input
+     * @return bool|string
+     */
+    protected function _modifyReadingRoom($input = [])
+    {
+        try {
+            $lr_idx = element('lr_idx', $input);
+            $set_data = $this->_setReadingRoomData($input);
+
+            $data = array_merge($set_data, [
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ]);
+
+            if ($this->_conn->set($data)->where('LrIdx', $lr_idx)->update($this->_table['readingRoom']) === false) {
+                throw new \Exception($this->readingRoomModel->arr_mang_title[element('mang_type',$input)].' 정보 수정에 실패했습니다.');
+            }
+
+            $this->_setReadingRoomIdx($lr_idx);
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
      * 독서실/사물함 좌석 등록/수정
+     * @param array $input
+     * @return bool|string
      */
     protected function _setReadingRoomMst($input = [])
     {
@@ -470,7 +595,6 @@ class BaseReadingRoomModel extends WB_Model
     {
         $input_data = [
             'MangType' => element('mang_type',$input),
-            'SiteCode' => element('site_code',$input),
             'CampusCcd' => element('campus_ccd',$input),
             'IsUse' => element('is_use',$input),
             'Name' => element('rd_name',$input),

@@ -16,7 +16,6 @@
                 <label class="control-label col-md-1-1">주문번호
                 </label>
                 <div class="col-md-4 form-inline">
-                    <button type="button" id="btn_orderno_search" class="btn btn-sm btn-primary">주문번호검색</button>
                     <span class="pl-10">20180000</span>
                 </div>
                 <label class="control-label col-md-1-1">결제금액(결제상태)
@@ -110,19 +109,19 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                        <input type="text" class="form-control datepicker" id="search_start_date_modal" name="search_start_date_modal" value="">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
                         <div class="input-group-addon no-border-right">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                        <input type="text" class="form-control datepicker" id="search_end_date_modal" name="search_end_date_modal" value="">
                     </div>
                     <p class="form-control-static">
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="1-weeks">1주일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="15-days">15일</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="1-months">1개월</button>
-                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date" data-period="2-months">2개월</button>
-                    </p> 
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="1-weeks">1주일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="15-days">15일</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="1-months">1개월</button>
+                        <button type="button" class="btn btn-default btn-sm btn-primary btn-set-search-date-modal" data-period="2-months">2개월</button>
+                    </p>
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -135,6 +134,42 @@
                         <div class="iradio_flat-blue" style="position: relative;"><input type="radio" id="" name="" class="flat send_option_ccd" title="대기" data-option-type="N" value="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> <label for="" class="input-label">예치금 없음</label>
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;• 결제/환불정보로 자동 셋팅 (환불 시 '반환', 예치금 0원 시 '없음')
+                </div>
+            </div>
+
+            <div class="form-group form-group-sm">
+                <div class="col-md-12 form-inline">
+                    <div class="n_mem_seat_info">
+                        <ul class="clearfix-r">
+                            <li><span class="color-box btn-default">-</span> 미사용</li>
+                            <li><span class="color-box btn-info">-</span> 사용중</li>
+                            <li><span class="color-box btn-warning">-</span> 대기</li>
+                            <li><span class="color-box btn-success">-</span> 홀드</li>
+                            <li><span class="color-box btn-danger">-</span> 고장</li>
+                        </ul>
+                    </div>
+                    <ul class="n_mem_seat">
+                        <li><button type="button" class="btn btn-info" data-seat-num="1" data-member-idx="100001">1<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info" data-seat-num="2" data-member-idx="100002">2<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">3<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">4<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">5<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">6<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">7<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-warning">8<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">9<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-success">10<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-warning">11<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">12<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">13<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">14<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">15<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">16<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">17<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-info">18<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-danger">19<br/>회원명</button></li>
+                        <li><button type="button" class="btn btn-default">20<br/>회원명</button></li>
+                    </ul>
                 </div>
             </div>
 
@@ -152,44 +187,44 @@
                 <div class="col-md-12">
                     <table id="mem_memo_list" class="table" style="font-size: 12px;">
                         <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>메모내용</th>
-                                <th>등록자</th>
-                                <th>등록일</th>
-                            </tr>
+                        <tr>
+                            <th>No</th>
+                            <th>메모내용</th>
+                            <th>등록자</th>
+                            <th>등록일</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>5</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>4</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <th>메모 내용이 출력됩니다.</th>
-                                <th>관리자명</th>
-                                <th>2018-00-00 00:00</th>
-                            </tr>
+                        <tr>
+                            <th>5</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <th>메모 내용이 출력됩니다.</th>
+                            <th>관리자명</th>
+                            <th>2018-00-00 00:00</th>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -198,4 +233,23 @@
 
         @section('layer_footer')
     </form>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.n_mem_seat li').css("width", "calc(100% / 10)");
+
+            // 기간설정 버튼 클릭
+            $('.btn-set-search-date-modal').click(function() {
+                var period = $(this).data('period');
+                var periods = period.split('-');
+
+                // 날짜 설정
+                setDefaultDatepicker(-periods[0], periods[1], 'search_start_date_modal', 'search_end_date_modal');
+
+                // set active class
+                $('.btn-set-search-date-modal').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
 @endsection

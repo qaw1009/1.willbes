@@ -4,13 +4,13 @@
     <h5>- {{$mang_title}} 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true, []) !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, []) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">조건</label>
                     <div class="col-md-4 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
@@ -126,7 +126,7 @@
                     {'data' : 'CampusName'},
                     {'data' : 'ProdCode'},
                     {'data' : 'ReadingRoomName', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.Idx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.LrIdx + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'LakeLayer'},
                     {'data' : 'sub_RealSalePrice'},
@@ -144,7 +144,8 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.LrIdx + '"><u>' + row.LrIdx + '</u></a>';
+                            /*return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.LrIdx + '"><u>배정TEST</u></a>';*/
+                            return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-order-idx="10000001"><u>배정TEST</u></a>';
                         }}
                 ]
             });
@@ -155,9 +156,42 @@
             });
 
             // 독서실/사물함 신청현황 리스트
-            $list_table.on('click', '.btn-detail-list', function() {
+            /*$list_table.on('click', '.btn-detail-list', function() {
                 location.href='{{ site_url('/pass/readingRoom/regist/assignManageList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
+            });*/
+
+            // 좌석배정 TEST
+            $list_table.on('click', '.btn-create-seat-modal', function() {
+                $('.btn-create-seat-modal').setLayer({
+                    /*"url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('order-idx') + '?' + '{!! $default_query_string !!}',*/
+                    "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('order-idx') + '?' + '{!! $default_query_string !!}',
+                    "width" : "1200",
+                    "modal_id" : "modal_html"
+                });
             });
+
+
+            /*// 좌석배정
+            $list_table.on('click', '.create-seat-modal', function() {
+                $('.create-seat-modal').setLayer({
+                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('seat-num'),
+                    "width" : "1200",
+                    "modal_id" : "modal_html"
+                });
+            });
+
+            // 좌석변경
+            $list_table.on('click', '.modify-seat-modal', function() {
+                $('.modify-seat-modal').setLayer({
+                    "url" : "{{ site_url('/pass/readingRoom/regist/modifySeatModal/') }}"+ $(this).data('seat-num'),
+                    "width" : "1200",
+                    "modal_id" : "modal_html"
+                });
+            });*/
+
+
+
+
         });
     </script>
 @stop

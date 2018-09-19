@@ -9,6 +9,7 @@
             <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
             <input type="hidden" id="search_subject_idx" name="search_subject_idx">
             <input type="hidden" id="search_prof_idx" name="search_prof_idx">
+            <input type="hidden" id="search_prod_code" name="search_prod_code">
             <input type="hidden" id="orderby" name="orderby">
 
             <div class="curriWrap c_both">
@@ -44,8 +45,8 @@
                         <tr>
                             <th class="tx-gray">강좌선택</th>
                             <td colspan="8" class="tx-left">
-                                <select id="email" name="email" title="강좌를 선택해 주세요." class="seleEmail">
-                                    <option selected="selected">강좌를 선택해 주세요.</option>
+                                <select id="sel_prod_code" name="sel_prod_code" title="강좌를 선택해 주세요.">
+                                    <option value="">강좌를 선택해 주세요.</option>
                                     <option value="200105">2018 신광은 형사소송법 기본이론 (18년 9월)</option>
                                     <option value="200107">2018 신광은 형사소송법 파이널 실전모의고사</option>
                                     <option value="200113">2018 장정훈 경찰학개론 기본이론 (18년 9월)</option>
@@ -302,6 +303,12 @@
             callAjax(1);
         });
 
+        //강좌선택
+        $_ajax_search_form.on('change', '#sel_prod_code', function() {
+            $('#search_prod_code').val($('#sel_prod_code').val());
+            callAjax(1);
+        });
+
         //정렬
         $_ajax_search_form.on('click', '.btn-order-by', function() {
             $('#orderby').val($(this).data('order-by'));
@@ -340,6 +347,7 @@
             'search_cate_code' : $('#search_cate_code').val(),
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),
+            'search_prod_code' : $('#search_prod_code').val(),
             's_keyword' : $('#s_keyword').val(),
             'page' : page,
             'orderby' : orderby
@@ -349,46 +357,53 @@
             var param_board_idx = "{{ element('board_idx', $arr_input) }}";
             var rownum = ret.paging.rownum;
             var lecture_path = "{{ site_url('/lecture/show/cate/' . element('cate_code', $arr_input) . '/pattern/only' . '/prod-code/') }}";
-            $.each(ret.ret_data, function (i, item) {
-                if(item.BoardIdx == param_board_idx) {
-                    set_table_style = "table-row";
-                } else {
-                    set_table_style = 'none';
-                }
 
+            if (ret.ret_data.length < 1) {
                 add_table += '<tr class="replyList w-replyList">';
-                add_table += '<td class="w-no">';
-                if(item.IsBest == 1) {
-                    add_table += '<img src="{{ img_url('prof/icon_best_reply.gif') }}">';
-                } else {
-                    add_table += rownum;
-                }
-                add_table += '</td>';
-                add_table += '<td class="w-lec">'+item.SubjectName+'</td>';
-                add_table += '<td class="w-name">'+item.ProfName+'</td>';
-                add_table += '<td class="w-star star'+item.LecScore+'"></td>';
-                add_table += '<td class="w-list tx-left pl20">';
-                add_table += sub_str(item.Title, 15, '...');
-                add_table += '<div class="subTit">'+item.ProdName+'</div>';
-                add_table += '</td>';
-
-                if (item.RegMemId == $mem_id) {
-                    add_table += '<td class="w-write">'+item.RegMemName+'</td>';
-                } else {
-                    add_table += '<td class="w-write">' + sub_str(item.RegMemName, 2, '*') + '</td>';
-                }
-
-                add_table += '<td class="w-date">'+item.RegDatm+'</td>';
+                add_table += '<td colspan="7">수강후기 목록이 없습니다.</td>';
                 add_table += '</tr>';
-                add_table += '<tr class="replyTxt w-replyTxt tx-gray" style="display:'+set_table_style+'">';
-                add_table += '<td colspan="7">';
-                add_table += '<div class="tx-blue"><a href="'+lecture_path+item.ProdCode+'" target="_blank">'+item.ProdName+'</a></div>';
-                add_table += (item.RegType == 1) ? item.Content : nl2br(item.Content);
-                add_table += '</td>';
-                add_table += '</tr>';
+            } else {
+                $.each(ret.ret_data, function (i, item) {
+                    if (item.BoardIdx == param_board_idx) {
+                        set_table_style = "table-row";
+                    } else {
+                        set_table_style = 'none';
+                    }
 
-                rownum = rownum - 1;
-            });
+                    add_table += '<tr class="replyList w-replyList">';
+                    add_table += '<td class="w-no">';
+                    if (item.IsBest == 1) {
+                        add_table += '<img src="{{ img_url('prof/icon_best_reply.gif') }}">';
+                    } else {
+                        add_table += rownum;
+                    }
+                    add_table += '</td>';
+                    add_table += '<td class="w-lec">' + item.SubjectName + '</td>';
+                    add_table += '<td class="w-name">' + item.ProfName + '</td>';
+                    add_table += '<td class="w-star star' + item.LecScore + '"></td>';
+                    add_table += '<td class="w-list tx-left pl20">';
+                    add_table += sub_str(item.Title, 15, '...');
+                    add_table += '<div class="subTit">' + item.ProdName + '</div>';
+                    add_table += '</td>';
+
+                    if (item.RegMemId == $mem_id) {
+                        add_table += '<td class="w-write">' + item.RegMemName + '</td>';
+                    } else {
+                        add_table += '<td class="w-write">' + sub_str(item.RegMemName, 2, '*') + '</td>';
+                    }
+
+                    add_table += '<td class="w-date">' + item.RegDatm + '</td>';
+                    add_table += '</tr>';
+                    add_table += '<tr class="replyTxt w-replyTxt tx-gray" style="display:' + set_table_style + '">';
+                    add_table += '<td colspan="7">';
+                    add_table += '<div class="tx-blue"><a href="' + lecture_path + item.ProdCode + '" target="_blank">' + item.ProdName + '</a></div>';
+                    add_table += (item.RegType == 1) ? item.Content : nl2br(item.Content);
+                    add_table += '</td>';
+                    add_table += '</tr>';
+
+                    rownum = rownum - 1;
+                });
+            }
             $('#ajax_table > tbody').html(add_table);
         }, showError, false, 'GET');
     }
@@ -411,6 +426,7 @@
             'search_cate_code' : $('#search_cate_code').val(),
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),
+            'search_prod_code' : $('#search_prod_code').val(),
             's_keyword' : $('#s_keyword').val(),
             'page' : page
         };

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Issue extends \app\controllers\BaseController
 {
-    protected $models = array('sys/site');
+    protected $models = array('sys/site', 'sys/code', 'pass/readingRoom');
     protected $helpers = array();
 
     public function __construct()
@@ -16,10 +16,14 @@ class Issue extends \app\controllers\BaseController
      */
     public function index()
     {
+        $mang_type = $this->_req('mang_type');
+
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         $this->load->view("pass/reading_room/issue/index", [
+            'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
+            'default_query_string' => '&mang_type='.$mang_type,
             'arr_campus' => $arr_campus
         ]);
     }
@@ -80,14 +84,14 @@ class Issue extends \app\controllers\BaseController
     }
 
     /**
-     * 좌석배정
+     * 좌석이동
      */
-    public function createIssueSeatModal()
+    public function modifySeatModal()
     {
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
-        $this->load->view("pass/reading_room/regist/create_issue_seat_modal", [
+        $this->load->view("pass/reading_room/issue/modify_seat_modal", [
             'arr_campus' => $arr_campus,
         ]);
     }

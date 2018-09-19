@@ -2,11 +2,12 @@
 @section('content')
     <h5>- {{$mang_title}} 상품을 등록하고 현황을 확인하여 좌석을 배정하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/pass/readingRoom/regist/store") }}?{!! $default_query_string !!}" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/pass/readingRoom/regist/store") }}?{!! $default_query_string !!}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="mang_type" value="{{$mang_type}}">
+        <input type="hidden" name="lr_idx" value="{{$lr_idx}}">
         <div class="x_panel">
             <div class="x_title">
                 <h2>{{$mang_title}}등록관리 정보</h2>
@@ -20,12 +21,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-4 ml-12-dot item form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control" id="campus_ccd" name="campus_ccd">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" @if($method == 'PUT')disabled="disabled"@endif>
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">{{$mang_title}}코드</label>
                     <div class="col-md-4">
-                        <p class="form-control-static">@if($method == 'PUT'){{ $data['DIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+                        <p class="form-control-static">@if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif</p>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-4 ml-12-dot item form-inline">
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="rd_name">{{$mang_title}}명<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <input type="text" class="form-control" id="rd_name" name="rd_name" required="required" title="{{$mang_title}}명" value="{{ $data['BannerName'] }}" >
+                        <input type="text" class="form-control" id="rd_name" name="rd_name" required="required" title="{{$mang_title}}명" value="{{ $data['ReadingRoomName'] }}" >
                     </div>
                 </div>
 
@@ -94,26 +94,26 @@
                     <label class="control-label col-md-1-1" for="sale_price">판매가<span class="required">*</span></label>
                     <div class="col-md-10 form-inline item">
                         <span class="blue mr-10">[정상가]</span>
-                        <input type="number" class="form-control mr-5" id="sale_price" name="sale_price" required="required" title="정상가" value="{{ $data['BannerName'] }}" style="width: 140px;">원
+                        <input type="number" class="form-control mr-5" id="sale_price" name="sale_price" required="required" title="정상가" value="{{ $data['main_SalePrice'] }}" style="width: 140px;">원
                         <span class="mr-20"></span>
 
                         <span class="blue mr-10">[할인율]</span>
-                        <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ $data['BannerName'] }}" style="width: 140px;">
+                        <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ $data['main_SaleRate'] }}" style="width: 140px;">
                         <select name="sale_disc_type" id="sale_disc_type" class="form-control">
-                            <option value="R">%</option>
-                            <option value="P">원</option>
+                            <option value="R" @if($data['main_SaleDiscType'] == 'R')selected="selected"@endif>%</option>
+                            <option value="P" @if($data['main_SaleDiscType'] == 'L')selected="selected"@endif>원</option>
                         </select>
                         <span class="mr-20"></span>
 
                         <span class="blue mr-10">[판매가]</span>
-                        <input type="number" class="form-control mr-5" id="real_sale_price" name="real_sale_price" required="required" title="판매가" value="{{ $data['BannerName'] }}" style="width: 140px;" readonly="readonly">원
+                        <input type="number" class="form-control mr-5" id="real_sale_price" name="real_sale_price" required="required" title="판매가" value="{{ $data['main_RealSalePrice'] }}" style="width: 140px;" readonly="readonly">원
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="sub_prod_code_price">예치금</label>
                     <div class="col-md-10 form-inline">
-                        <input type="number" class="form-control mr-5" id="sub_prod_code_price" name="sub_prod_code_price" title="예치금" value="{{ $data['BannerName'] }}" style="width: 140px;">원
+                        <input type="number" class="form-control mr-5" id="sub_prod_code_price" name="sub_prod_code_price" title="예치금" value="{{ $data['sub_RealSalePrice'] }}" style="width: 140px;">원
                     </div>
                 </div>
 
@@ -135,13 +135,13 @@
                             </div>
                         </div>
                         <div class="row-line mb-10">
-                            <textarea id="sms_memo" name="sms_memo" class="form-control" rows="3" title="내용" placeholder="">{!! $data['Desc'] !!}</textarea>
+                            <textarea id="sms_memo" name="sms_memo" class="form-control" rows="3" title="내용" placeholder="">{!! $data['SmsContent'] !!}</textarea>
                         </div>
 
                         <div class="row form-inline">
                             <div class="col-md-8">
                                 <span class="mr-5">[발신번호]</span>
-                                <input type="text" class="form-control" id="cs_tel" name="cs_tel" title="발신번호" value="{{ $data['BannerName'] }}">
+                                <input type="text" class="form-control" id="cs_tel" name="cs_tel" title="발신번호" value="{{ $data['SendTel'] }}">
                             </div>
                             <div class="col-md-4 red text-right">
                                 <span class="content_byte">0</span> Byte <span style="color: #73879C">(80byte 초과 시 LMS 문자로 전환됩니다.)</span>
@@ -245,12 +245,12 @@
             $regi_form.submit(function() {
                 var _url = '{{ site_url("/pass/readingRoom/regist/store") }}' + getQueryString();
 
-                /*ajaxSubmit($regi_form, _url, function(ret) {
+                ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/pass/readingRoom/regist/") }}/' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');*/
+                }, showValidateError, null, false, 'alert');
             });
         });
     </script>

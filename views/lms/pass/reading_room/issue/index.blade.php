@@ -1,15 +1,16 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 독서실 주문 내역을 확인하고, 좌석배정/변경하거나 연장하는 메뉴입니다. (좌석 신규배정 및 변경/연장배정 가능)</h5>
+    <h5>- {{$mang_title}} 주문 내역을 확인하고, 좌석배정/변경하거나 연장하는 메뉴입니다. (좌석 신규배정 및 변경/연장배정 가능)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code', 'tab', false) !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, []) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">조건</label>
                     <div class="col-md-10 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
                         <select class="form-control" id="" name="">
                             <option value="">결제상태</option>
                         </select>
@@ -28,7 +29,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">독서실검색</label>
+                    <label class="control-label col-md-1" for="search_value">{{$mang_title}}검색</label>
                     <div class="col-md-4 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
@@ -39,7 +40,7 @@
                         </select>
 
                         <select class="form-control" id="" name="">
-                            <option value="">독서실명</option>
+                            <option value="">{{$mang_title}}명</option>
                         </select>
                     </div>
                 </div>
@@ -103,7 +104,7 @@
                     <th>연락처</th>
                     <th>결제완료일</th>
                     <th>캠퍼스</th>
-                    <th>독서실명</th>
+                    <th>{{$mang_title}}명</th>
                     <th>결제금액</th>
                     <th>결제상태</th>
                     <th>좌석번호</th>
@@ -135,12 +136,12 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 독서실등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable);
+                    { text: '<i class="fa fa-pencil mr-5"></i> {{$mang_title}}등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                            location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
                         }}
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pass/readingRoom/issue/listAjax') }}',
+                    'url' : '{{ site_url('/pass/readingRoom/issue/listAjax') }}' + '?' + '{!! $default_query_string !!}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -178,15 +179,6 @@
                             return '<a href="javascript:void(0);" class="btn-seat" data-idx="' + row.Idx + '"><u>' + row.bbb + '</u></a>';
                         }}
                 ]
-            });
-
-            // 좌석배정
-            $list_table.on('click', '.create-seat-modal', function() {
-                $('.create-seat-modal').setLayer({
-                    "url" : "{{ site_url('/pass/readingRoom/issue/createIssueSeatModal/') }}"+ $(this).data('seat-num'),
-                    "width" : "1200",
-                    "modal_id" : "modal_html"
-                });
             });
         });
     </script>

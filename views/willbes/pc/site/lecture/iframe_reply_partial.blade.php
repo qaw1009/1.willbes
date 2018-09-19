@@ -7,7 +7,8 @@
     </div>
     <div id="WrapReply"></div>
 
-    <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&prof_idx=".$data['ProfIdx'])}}"></iframe>
+    {{--<iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&prof_idx=".$data['ProfIdx'])}}"></iframe>--}}
+    <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&prod_code=".$data['ProdCode'])}}"></iframe>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.btn-study').click(function () {

@@ -75,8 +75,11 @@ class BaseOrderFModel extends WB_Model
     // 결제은행 공통 그룹코드
     public $_bank_group_ccd = '678';
 
-   // 장바구니 식별자 세션명
+    // 장바구니 식별자 세션명
     public $_sess_cart_idx_name = 'usable_cart_idx';
+
+    // 학원 방문결제 장바구니 세션 아이디 세션명
+    public $_sess_cart_sess_id = 'make_sessionid';
 
     // 주문번호 세션명
     public $_sess_order_no_name = 'order_no';

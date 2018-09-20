@@ -119,6 +119,11 @@ class CartFModel extends BaseOrderFModel
             ]
         ];
 
+        // 방문결제일 경우 세션 아이디 컬럼 추가
+        if ($is_visit_pay == 'Y') {
+            $arr_condition['EQ']['CA.SessId'] = $this->session->userdata($this->_sess_cart_sess_id);
+        }
+
         return $this->listCart(false, $arr_condition, null, null, ['P.ProdTypeCcd' => 'asc', 'CA.CartIdx' => 'desc']);
     }
 
@@ -257,6 +262,11 @@ class CartFModel extends BaseOrderFModel
                     'GwIdx' => $gw_idx,
                     'RegIp' => $reg_ip
                 ];
+
+                // 방문결제일 경우 세션 아이디 컬럼 저장
+                if ($is_visit_pay == 'Y') {
+                    $data['SessId'] = $this->session->userdata($this->_sess_cart_sess_id);
+                }
                 
                 $insert_cart_idx = $this->_addCart($data);
                 if (is_numeric($insert_cart_idx) === false) {

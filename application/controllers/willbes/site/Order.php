@@ -17,11 +17,6 @@ class Order extends \app\controllers\FrontController
         parent::__construct();
     }
 
-    public function test($params = [])
-    {
-        //$d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
-    }
-
     /**
      * 주문하기 폼
      * @param array $params

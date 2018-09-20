@@ -43,6 +43,11 @@ class Home extends \app\controllers\FrontController
         $this->load->view('main');
     }
 
+    public function test()
+    {
+        //$d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
+    }
+
     public function cache()
     {
         unset($this->caching);

@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * TODO : 주의 요망
+ * 방문신청 컨트롤러(VisitOffLecture)에서 확장 사용함. 수정시 주의 요망
+ * Class OffLecture
+ */
 class OffLecture extends \app\controllers\FrontController
 {
     protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF');
@@ -8,7 +13,7 @@ class OffLecture extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
 
-    private $_learn_pattern = 'off_lecture';     // 학습형태 (학원단과)
+    protected $_learn_pattern = 'off_lecture';     // 학습형태 (학원단과)
 
     public function __construct()
     {
@@ -16,11 +21,22 @@ class OffLecture extends \app\controllers\FrontController
     }
 
     /**
-     * 단과 신청 목록
+     * 단과 신청 목록  : 
      * @param array $params
      */
     public function index($params = [])
     {
+        $class_type = strtolower($this->router->class);
+
+        /*  온라인 신청 과 방문신청 일 경우 분기*/
+        if($class_type === 'offlecture') {
+            $_study_apply_ccds = ['654002', '654003']; //온라인 접수, 방문+온라인
+            $_view_page = 'site/off_lecture/index';
+        } else {    //VisitOffLecture
+            $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인
+            $_view_page = 'site/visit_off_lecture/index';
+        }
+
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
@@ -71,7 +87,7 @@ class OffLecture extends \app\controllers\FrontController
             'LKB' => [
                 $arr_search_text[0] => element('1', $arr_search_text),
             ],
-            'IN' => ['StudyApplyCcd' => ['654002', '654003'] ] // 온라인 접수, 방문+온라인
+            'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
 
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
@@ -86,7 +102,7 @@ class OffLecture extends \app\controllers\FrontController
             $selected_list[$row['SubjectIdx']][] = $row;
         }
 
-        $this->load->view('site/off_lecture/index', [
+        $this->load->view($_view_page, [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'learn_pattern' => $this->_learn_pattern,

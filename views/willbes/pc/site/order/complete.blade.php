@@ -211,12 +211,12 @@
                 <div class="willbes-Lec-buyBtn">
                     <ul>
                         <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                            <button type="button" name="btn_go_classroom" class="mem-Btn bg-white bd-dark-gray">
                                 <span class="tx-purple-gray">내강의실 바로가기</span>
                             </button>
                         </li>
                         <li class="btnAuto180 h36">
-                            <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                            <button type="button" name="btn_go_order_hist" class="mem-Btn bg-purple-gray bd-dark-gray">
                                 <span>결제내역 바로가기</span>
                             </button>
                         </li>
@@ -252,6 +252,16 @@
                         }
                     }, showAlertError, false, 'POST');
                 }
+            });
+
+            // 내강의실 바로가기 버튼 클릭
+            $('button[name="btn_go_classroom"]').on('click', function() {
+                location.replace('{{ app_url('/classroom/home/index', 'www') }}');
+            });
+
+            // 결제내역 바로가기 버튼 클릭
+            $('button[name="btn_go_order_hist"]').on('click', function() {
+                location.replace('{{ app_url('/classroom/order/index', 'www') }}');
             });
         });
     </script>

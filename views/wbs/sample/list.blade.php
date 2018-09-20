@@ -48,7 +48,7 @@
                     <tr>
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['idx'] }}</td>
-                        <td>{{ $row['title'] }}</td>
+                        <td><a href="#none" data-title="{{ $row['title'] }}">{{ $row['title'] }}</a></td>
                         <td>{{ $row['name'] }}</td>
                         <td>{{ $row['regi_date'] }}</td>
                     </tr>
@@ -70,6 +70,21 @@
                 paging: false,
                 searching: true,
                 rowsGroup: ['.rowspan'],
+                rowGroup: {
+                    startRender: null,
+                    endRender: function(rows, group) {
+                        var sum = rows.data().pluck(1).reduce(function(a, b) {
+                            return a + b.replace(/[^\d]/g, '') * 1;
+                        }, 0);
+
+                        var txt = $(group).data('title');
+
+                        return $('<td colspan="5">')
+                            .append('[' + txt + ' ==> 합계] <span class="blue"><strong>' + addComma(sum) + '</strong></span>')
+                            .append('</td>');
+                    },
+                    dataSrc : 2
+                }
             });
 
             $search_form.submit(function() {

@@ -98,11 +98,6 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <div class="pull-right mb-10">
-                <button class="btn btn-sm btn-success border-radius-reset mr-15 btn-excel"><i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드</button>
-                <button class="btn btn-sm btn-primary mr-15 btn-message"><i class="fa fa-comment-o mr-5"></i> 쪽지발송</button>
-                <button class="btn btn-sm btn-primary border-radius-reset btn-sms"><i class="fa fa-mobile mr-5"></i> SMS발송</button>
-            </div>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -128,16 +123,14 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td rowspan="6"><input type="checkbox" id="order_idx" name="order_idx" class="flat" value="Y"/></td>
-                        <td rowspan="6">5</td>
-                        <td rowspan="6"><a href="{{ site_url('/pay/order/order/edit') }}" class="blue">2018000000</a><br/>경찰[온라인] (e)</td>
-                        <td rowspan="6">홍길동(id)<br/>010-0000-0000 (Y)</td>
-                        <td rowspan="6">PC</td>
-                        <td rowspan="6">온라인</td>
-                        <td rowspan="6">신용카드</td>
-                        <td rowspan="6" style="border-right-width: 1px;">2018-00-00 00:00</td>
-                    </tr>
-                    <tr>
+                        <td><input type="checkbox" id="order_idx" name="order_idx" class="flat" value="Y"/></td>
+                        <td>5</td>
+                        <td><a href="{{ site_url('/pay/order/order/edit') }}" class="blue" data-use-lec-point="2000" data-use-book-point="0">2018000000</a><br/>경찰[온라인] (e)</td>
+                        <td>홍길동(id)<br/>010-0000-0000 (Y)</td>
+                        <td>PC</td>
+                        <td>온라인</td>
+                        <td>신용카드</td>
+                        <td>2018-00-00 00:00</td>
                         <td>온라인강좌</td>
                         <td><span class="blue">[운영자패키지] 패키지명</span></td>
                         <td>500,000</td>
@@ -147,6 +140,14 @@
                         <td>10%</td>
                     </tr>
                     <tr>
+                        <td><input type="checkbox" id="order_idx" name="order_idx" class="flat" value="Y"/></td>
+                        <td>5</td>
+                        <td><a href="{{ site_url('/pay/order/order/edit') }}" class="blue" data-use-lec-point="2000" data-use-book-point="0">2018000000</a><br/>경찰[온라인] (e)</td>
+                        <td>홍길동(id)<br/>010-0000-0000 (Y)</td>
+                        <td>PC</td>
+                        <td>온라인</td>
+                        <td>신용카드</td>
+                        <td>2018-00-00 00:00</td>
                         <td>온라인강좌</td>
                         <td><span class="blue">[단강좌] 단강좌명</span></td>
                         <td>150,000</td>
@@ -156,6 +157,14 @@
                         <td></td>
                     </tr>
                     <tr>
+                        <td><input type="checkbox" id="order_idx" name="order_idx" class="flat" value="Y"/></td>
+                        <td>5</td>
+                        <td><a href="{{ site_url('/pay/order/order/edit') }}" class="blue" data-use-lec-point="2000" data-use-book-point="0">2018000000</a><br/>경찰[온라인] (e)</td>
+                        <td>홍길동(id)<br/>010-0000-0000 (Y)</td>
+                        <td>PC</td>
+                        <td>온라인</td>
+                        <td>신용카드</td>
+                        <td>2018-00-00 00:00</td>
                         <td>교재</td>
                         <td><span class="blue">[교재] 교재명</span></td>
                         <td>20,000</td>
@@ -165,6 +174,14 @@
                         <td></td>
                     </tr>
                     <tr>
+                        <td><input type="checkbox" id="order_idx" name="order_idx" class="flat" value="Y"/></td>
+                        <td>5</td>
+                        <td><a href="{{ site_url('/pay/order/order/edit') }}" class="blue" data-use-lec-point="2000" data-use-book-point="0">2018000000</a><br/>경찰[온라인] (e)</td>
+                        <td>홍길동(id)<br/>010-0000-0000 (Y)</td>
+                        <td>PC</td>
+                        <td>온라인</td>
+                        <td>신용카드</td>
+                        <td>2018-00-00 00:00</td>
                         <td>배송료</td>
                         <td>일반배송료</td>
                         <td>2,500</td>
@@ -172,12 +189,6 @@
                         <td>결제완료</td>
                         <td></td>
                         <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="7">
-                            [총 실결제금액] <span class="blue"><strong>675,500</strong></span> (사용 포인트 : 2,000 | 교재 : 0) &nbsp; &nbsp;
-                            <span class="red">[총 환불금액] 100,000</span> = [남은금액] 570,500
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -191,6 +202,41 @@
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
             setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+
+            $datatable = $list_table.DataTable({
+                ajax: false,
+                paging: true,
+                searching: false,
+                rowsGroup: ['.rowspan'],
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
+                ],
+                rowGroup: {
+                    startRender: null,
+                    endRender: function(rows, group) {
+                        var real_pay_price = rows.data().pluck(10).reduce(function(a, b) {
+                            return a + b.replace(/[^\d]/g, '') * 1;
+                        }, 0);
+
+                        var refund_price = rows.data().pluck(11).reduce(function(a, b) {
+                            return a + b.replace(/[^\d]/g, '') * 1;
+                        }, 0);
+
+                        var remain_price = real_pay_price - refund_price;
+                        var use_lec_point = $(group).data('use-lec-point');
+                        var use_book_point = $(group).data('use-book-point');
+
+                        return $('<td colspan="15" class="pull-right pr-30">')
+                            .append('[총 실결제금액] <span class="blue"><strong>' + addComma(real_pay_price) + '</strong></span>')
+                            .append(' (사용 포인트 : ' + addComma(use_lec_point) + ' | 교재 : ' + addComma(use_book_point) + ')')
+                            .append('<span class="red pl-20">[총 환불금액] ' + addComma(refund_price) + '</span> = [남은금액] ' + addComma(remain_price))
+                            .append('</td>');
+                    },
+                    dataSrc : 2
+                }
+            });
 
 /*            // 주문 목록
             $datatable = $list_table.DataTable({

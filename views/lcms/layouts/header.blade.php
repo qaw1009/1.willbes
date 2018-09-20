@@ -89,6 +89,7 @@
     <script src="/public/vendor/datatables/keytable/js/dataTables.keyTable.min.js"></script>
     <script src="/public/vendor/datatables/select/js/dataTables.select.min.js"></script>
     <script src="/public/vendor/datatables/rowsgroup/js/dataTables.rowsGroup.js"></script>
+    <script src="/public/vendor/datatables/rowgroup/js/dataTables.rowGroup.js"></script>
     <script src="/public/vendor/datatables/responsive/js/dataTables.responsive.min.js"></script>
     <script src="/public/vendor/datatables/responsive/js/responsive.bootstrap.js"></script>
     <!-- FullCalendar -->

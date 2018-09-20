@@ -21,23 +21,22 @@ class LogQueryHook
 
         $output = $slow_output = '';
         $idx = 0;
+
         foreach (get_object_vars($this->_CI) as $name => $object) {
             if (is_object($object)) {
-                // 연결된 DB Connection별로 로그 저장
-                if ($object instanceof CI_Model === true) {
-                    foreach (get_object_vars($object) as $dbname => $dbobject) {
-                        if ($dbobject instanceof CI_DB === true) {
-                            $exec_times = $dbobject->query_times;
+                if ($object instanceof CI_DB === true) {
+                    $exec_times = $object->query_times;
 
-                            foreach($dbobject->queries as $key => $query) {
-                                $output .= $this->_makeLogData($idx, $query, $exec_times[$key]);
+                    foreach($object->queries as $key => $query) {
+                        // DB 세션 관련 쿼리 제외
+                        if (strpos($query, 'ci_session_lock') === false && strpos($query, 'wb_sessions') === false) {
+                            $output .= $this->_makeLogData($idx, $query, $exec_times[$key]);
 
-                                if($this->_checkSlowQuery($exec_times[$key]) === true) {
-                                    $slow_output .= $this->_makeLogData($idx, $query, $exec_times[$key]);
-                                }
-
-                                $idx++;
+                            if($this->_checkSlowQuery($exec_times[$key]) === true) {
+                                $slow_output .= $this->_makeLogData($idx, $query, $exec_times[$key]);
                             }
+
+                            $idx++;
                         }
                     }
                 }

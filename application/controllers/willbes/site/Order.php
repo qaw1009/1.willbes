@@ -26,12 +26,14 @@ class Order extends \app\controllers\FrontController
         $sess_mem_idx = $this->session->userdata('mem_idx');
         $sess_cart_idx = $this->orderFModel->checkSessCartIdx();
         $cart_type = $this->_req('tab');    // 장바구니 구분
+        $pay_type = get_var($this->_req('pay_type'), 'pg');    // 결제루트 구분
+        $is_visit_pay = $pay_type == 'visit' ? 'Y' : 'N';     // 방문결제 여부
 
         // 장바구니 조회
-        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, 'N');
+        $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, $is_visit_pay);
 
         // 장바구니 데이터 가공 (전체주문금액, 배송비, 적립예정포인트 계산 등 필요 데이터 가공)
-        $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows);
+        $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, null, null, $is_visit_pay);
         if (is_array($results) === false) {
             show_alert($results, 'back');
         }

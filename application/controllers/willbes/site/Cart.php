@@ -147,22 +147,28 @@ class Cart extends \app\controllers\FrontController
         
         $cart_type = $this->_reqP('cart_type'); // 장바구니 구분값
         $arr_cart_idx = $this->_reqP('cart_idx');   // 선택한 장바구니 식별자 배열
-        
-        // 배송료가 부가되는지 여부 체크 후 배송료 상품 장바구니 추가
-        $result = $this->cartFModel->addCartForDeliveryPrice($this->_site_code, $cart_type, $arr_cart_idx);
-        if ($result['ret_cd'] === false) {
-            return $this->json_error($result['ret_msg'], $result['ret_status']);
-        } else {
-            // 추가된 배송료 상품이 있을 경우
-            if (empty($result['ret_data']) === false) {
-                $arr_cart_idx[] = $result['ret_data'];
+        $pay_type = get_var($this->_req('pay_type'), 'pg');    // 결제루트 구분
+        $return_url = front_url('/order/index?tab=' . $cart_type);  // 리턴 URL
+
+        if ($pay_type == 'pg') {
+            // 배송료가 부가되는지 여부 체크 후 배송료 상품 장바구니 추가
+            $result = $this->cartFModel->addCartForDeliveryPrice($this->_site_code, $cart_type, $arr_cart_idx);
+            if ($result['ret_cd'] === false) {
+                return $this->json_error($result['ret_msg'], $result['ret_status']);
+            } else {
+                // 추가된 배송료 상품이 있을 경우
+                if (empty($result['ret_data']) === false) {
+                    $arr_cart_idx[] = $result['ret_data'];
+                }
             }
+        } else {
+            $return_url .= '&pay_type=' . $pay_type;
         }
 
         // 장바구니 식별자 세션 생성
         $this->cartFModel->makeSessCartIdx($arr_cart_idx);
 
-        return $this->json_result(true, '', [], ['ret_url' => front_url('/order/index?tab=' . $this->_reqP('cart_type'))]);
+        return $this->json_result(true, '', [], ['ret_url' => $return_url]);
     }
 
     /**
@@ -200,7 +206,6 @@ class Cart extends \app\controllers\FrontController
 
         // 리턴 URL 지정
         if ($_is_visit_pay == 'Y') {
-            // TODO : 방문접수 URL 지정
             $returns['ret_url'] = '';
         } else {
             $returns['ret_url'] = $_is_direct_pay == 'Y' ? front_url('/order/index?tab=' . $_cart_type) : site_url('/cart/index?tab=' . $_cart_type);

@@ -9,7 +9,8 @@ class CartFModel extends BaseOrderFModel
     {
         parent::__construct();
 
-        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
+        // 사용 모델 로드
+        $this->load->loadModels(['product/productF', 'order/orderListF']);
     }
 
     /**
@@ -37,7 +38,7 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(PB.SubjectIdx, PL.SubjectIdx) as SubjectIdx, ifnull(PB.ProfIdx, PD.ProfIdx) as ProfIdx                
                 , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
-                , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart               
+                , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName               
                 , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
                     when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
                     when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
@@ -150,8 +151,6 @@ class CartFModel extends BaseOrderFModel
      */
     public function checkStudentBook($site_code, $prod_book_code, $arr_input_prod_code = [])
     {
-        // 주문정보 모델 로드
-        $this->load->loadModels(['order/orderListF']);
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
         // 에러 메시지
@@ -232,7 +231,7 @@ class CartFModel extends BaseOrderFModel
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 학습형태별 사전 체크
-                $check_result = $this->_checkProduct($learn_pattern, $site_code, $prod_code, $prod_row['ParentProdCode'], $is_direct_pay);
+                $check_result = $this->_checkProduct($learn_pattern, $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
@@ -465,10 +464,10 @@ class CartFModel extends BaseOrderFModel
      * @param int $site_code [사이트코드]
      * @param int $prod_code [상품코드]
      * @param int $parent_prod_code [부모상품코드]
-     * @param string $is_direct_pay [바로결제여부, Y/N]
+     * @param string $is_visit_pay [방문결제여부, Y/N]
      * @return bool|string
      */
-    private function _checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_direct_pay)
+    private function _checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay)
     {
         if ($prod_code != $parent_prod_code) {
             $data = $this->productFModel->findOnlySaleProductByProdCode('book', $prod_code);
@@ -491,10 +490,10 @@ class CartFModel extends BaseOrderFModel
 
             // 학원강좌일 경우
             if (starts_with($learn_pattern, 'off') === true) {
-                if ($is_direct_pay == 'Y' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['visit']) {
-                    return '방문 접수 전용상품은 바로 결제 하실 수 없습니다.';
-                } elseif ($is_direct_pay == 'N' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['online']) {
+                if ($is_visit_pay == 'Y' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['online']) {
                     return '온라인 접수 전용상품은 방문 접수 하실 수 없습니다.';
+                } elseif ($is_visit_pay == 'N' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['visit']) {
+                    return '방문 접수 전용상품은 바로 결제 하실 수 없습니다.';
                 }
             }
         }

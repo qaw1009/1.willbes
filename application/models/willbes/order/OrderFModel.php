@@ -8,6 +8,9 @@ class OrderFModel extends BaseOrderFModel
     public function __construct()
     {
         parent::__construct();
+
+        // 사용 모델 로드
+        $this->load->loadModels(['product/productF', 'couponF', 'pointF', 'order/cartF', 'order/orderListF']);
     }
 
     /**
@@ -17,9 +20,10 @@ class OrderFModel extends BaseOrderFModel
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
+     * @param string $is_visit_pay [방문결제여부]
      * @return array|bool|string
      */
-    public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0)
+    public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0, $is_visit_pay = 'N')
     {
         if (empty($cart_rows) === true) {
             return '장바구니 데이터가 없습니다.';
@@ -193,7 +197,6 @@ class OrderFModel extends BaseOrderFModel
         ];
 
         // 쿠폰 정보
-        $this->load->loadModels(['couponF']);   // 쿠폰 모델 로드
         $coupon_row = element('0', $this->couponFModel->listMemberProductCoupon(false, $arr_param), []);
         if (empty($coupon_row) === true) {
             return ['UserCouponIdx' => '', 'CouponDiscPrice' => 0, 'CouponDiscType' => 'R', 'CouponDiscRate' => 0];
@@ -238,7 +241,6 @@ class OrderFModel extends BaseOrderFModel
         }
 
         // 회원 보유포인트
-        $this->load->loadModels(['pointF']);    // 포인트 모델 로드
         $has_point = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
 
         if ($has_point < $use_point) {
@@ -333,7 +335,6 @@ class OrderFModel extends BaseOrderFModel
      */
     public function procOrder($pay_results = [])
     {
-        $this->load->loadModels(['order/cartF']);   // 장바구니 모델 로드
         $order_no = $pay_results['order_no'];   // 결제모듈에서 전달받은 주문번호
 
         $this->_conn->trans_begin();
@@ -570,6 +571,7 @@ class OrderFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $user_coupon_idx = element('UserCouponIdx', $input, 0);
             $cart_type = element('CartType', $input);   // 장바구니 타입
+            $cart_prod_type = element('CartProdType', $input);   // 장바구니 상품 타입
             $site_code = element('SiteCode', $input);   // 사이트코드
             $prod_code = element('ProdCode', $input);   // 상품코드
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
@@ -648,8 +650,6 @@ class OrderFModel extends BaseOrderFModel
 
             // 회원쿠폰 사용 업데이트
             if (empty($user_coupon_idx) === false) {
-                $this->load->loadModels(['couponF']);   // 쿠폰 모델 로드
-                
                 $is_coupon_udpate = $this->couponFModel->modifyUseMemberCoupon($user_coupon_idx, $order_prod_idx);
                 if ($is_coupon_udpate !== true) {
                     throw new \Exception($is_coupon_udpate);
@@ -658,8 +658,6 @@ class OrderFModel extends BaseOrderFModel
 
             // 회원포인트 적립 (결제상태가 결제완료일 경우)
             if ($real_save_point > 0 && $pay_status_ccd == $this->_pay_status_ccd['paid']) {
-                $this->load->loadModels(['pointF']);    // 포인트 모델 로드
-
                 $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $real_save_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_save !== true) {
                     throw new \Exception($is_point_save);
@@ -668,8 +666,6 @@ class OrderFModel extends BaseOrderFModel
 
             // 회원 포인트 사용
             if ($real_use_point > 0) {
-                $this->load->loadModels(['pointF']);    // 포인트 모델 로드
-
                 $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $order_idx, $order_prod_idx);
                 if ($is_point_use !== true) {
                     throw new \Exception($is_point_use);
@@ -693,8 +689,6 @@ class OrderFModel extends BaseOrderFModel
      */
     public function addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub = [], $user_study_start_date = '')
     {
-        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
-
         try {
             $row = $this->productFModel->findProductLectureInfo($prod_code);
             if (empty($row) === true) {
@@ -787,8 +781,6 @@ class OrderFModel extends BaseOrderFModel
      */
     public function addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $site_code)
     {
-        $this->load->loadModels(['product/productF']);  // 기본상품모델 로드
-
         try {
             // 추가 배송료 상품 조회
             $prod_rows = $this->productFModel->listSalesProduct('delivery_add_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
@@ -800,7 +792,8 @@ class OrderFModel extends BaseOrderFModel
             $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
 
             $data = [
-                'CartType' => 'delivery_add_price',
+                'CartType' => 'etc',
+                'CartProdType' => 'delivery_add_price',
                 'SiteCode' => $site_code,
                 'ProdCode' => $prod_rows['ProdCode'],
                 'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
@@ -934,6 +927,7 @@ class OrderFModel extends BaseOrderFModel
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 $data = [
                     'CartType' => 'on_lecture',
+                    'CartProdType' => 'on_free_lecture',
                     'SiteCode' => $site_code,
                     'ProdCode' => $prod_code,
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
@@ -963,7 +957,6 @@ class OrderFModel extends BaseOrderFModel
      */
     public function cancelOrder($order_no)
     {
-        $this->load->loadModels(['order/orderListF']);  // 주문내역 조회 모델 로드
         $this->_conn->trans_begin();
 
         try {

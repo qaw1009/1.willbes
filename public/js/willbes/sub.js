@@ -195,18 +195,23 @@ $(function() {
     });
 });
 
-
 // 첨부파일 찾아보기 버튼 Script
 $(function() {
     var $fileBox = $('.filetype');
 
     $fileBox.each(function() {
         var $fileUpload = $(this).find('.input-file'),
-            $fileText = $(this).find('.file-text').attr('disabled', 'disabled');
+            $fileText = $(this).find('.file-text').attr('disabled', 'disabled'),
+            $fileReset = $(this).find('.file-reset');
 
         $fileUpload.on('change', function() {
             var fileName = $(this).val();
             $fileText.attr('disabled', 'disabled').val(fileName);
+        });
+
+        $fileReset.click(function() {
+            $(this).parents($fileBox).find($fileText).val('');
+            $(this).parents($fileBox).find($fileUpload).val('');
         });
     });
 });

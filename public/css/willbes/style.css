@@ -3966,7 +3966,22 @@ table.classTable tr td.w-data {
     filter: alpha(opacity=0);
     opacity: 0;
 }
-
+.filetype .file-reset {
+    position: relative;
+    float: right;
+    display: inline-block;
+    z-index: 10;
+    background: #000;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    line-height: 23px;
+    cursor: pointer;
+    margin-left: 3px;
+    border: none;
+    outline: none;
+}
 .filetype .file-btn {
     display: inline-block;
     width: 90px;

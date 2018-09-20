@@ -90,6 +90,7 @@
                                                 <input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
+                                                <input class="file-reset NSK" type="button" value="X" />
                                             </div>
                                         </li>
                                     @endfor

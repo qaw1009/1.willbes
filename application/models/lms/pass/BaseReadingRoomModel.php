@@ -11,8 +11,11 @@ class BaseReadingRoomModel extends WB_Model
         'R' => '636007',    //상품타입공통코드 독서실
         'L' => '636008'     //상품타입공통코드 사물함
     ];
-    private $sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
+    public $_groupCcd = [
+        'seat' => '682'     //좌석상태 (미사용,사용중,대기,홀드,고장)
+    ];
 
+    private $sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
     private $_prod_code;
     private $_sub_prod_code;
     private $_lr_idx;
@@ -30,6 +33,8 @@ class BaseReadingRoomModel extends WB_Model
     protected $_table = [
         'lms_site' => 'lms_site',
         'lms_sys_code' => 'lms_sys_code',
+        'lms_order' => 'lms_order',
+        'lms_member' => 'lms_member',
         'wbs_sys_admin' => 'wbs_sys_admin',
         'product' => 'lms_product',
         'product_r_product' => 'lms_product_r_product',
@@ -37,7 +42,8 @@ class BaseReadingRoomModel extends WB_Model
         'product_sms' => 'lms_product_sms',
         'readingRoom' => 'lms_readingroom',
         'readingRoom_mst' => 'lms_readingroommst',
-        'readingRoom_useDetail' => 'lms_readingroomusedetail'
+        'readingRoom_useDetail' => 'lms_readingroomusedetail',
+        'readingRoom_Memo' => 'lms_readingroommemo'
     ];
 
     public function __construct()
@@ -105,7 +111,7 @@ class BaseReadingRoomModel extends WB_Model
      * @param string $column
      * @return mixed
      */
-    protected function getReadingRoomInfo($lr_idx, $column = '*')
+    protected function _getReadingRoomInfo($lr_idx, $column = '*')
     {
         $arr_condition = [
             'EQ' => [
@@ -201,7 +207,7 @@ class BaseReadingRoomModel extends WB_Model
     {
         try {
             // 상품코드 조회
-            $data = $this->getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, ProdCode, SubProdCode');
+            $data = $this->_getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, ProdCode, SubProdCode');
             if (empty($data)) {
                 throw new \Exception('조회된 상품이 없습니다.');
             }
@@ -234,7 +240,7 @@ class BaseReadingRoomModel extends WB_Model
     {
         try {
             // 상품코드 조회
-            $data = $this->getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, SubProdCode');
+            $data = $this->_getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, SubProdCode');
             if (empty($data)) {
                 throw new \Exception('조회된 상품이 없습니다.');
             }

@@ -145,7 +145,7 @@
                     {'data' : 'RegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             /*return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.LrIdx + '"><u>배정TEST</u></a>';*/
-                            return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-order-idx="10000001"><u>배정TEST</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-prod-code="'+row.ProdCode+'">배정TEST</u></a>';
                         }}
                 ]
             });
@@ -163,12 +163,39 @@
             // 좌석배정/좌석이동 TEST
             $list_table.on('click', '.btn-create-seat-modal', function() {
                 $('.btn-create-seat-modal').setLayer({
-                    /*"url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('order-idx') + '?' + '{!! $default_query_string !!}',*/
-                    "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('order-idx') + '?' + '{!! $default_query_string !!}',
-                    "width" : "1200",
-                    "modal_id" : "modal_html"
+                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&master_order_idx=',
+                    /*"url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&master_order_idx=',*/
+                    "width" : "1200"
                 });
             });
+        });
+    </script>
+
+
+    <!-- TODO : TEST 결제위한 폼 -> lms 방문결제페이지 개발 시 해당 기능 삭제 -->
+    {{--<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" ></form>--}}
+    <form id="regi_form" name="regi_form" method="POST" action="{{ site_url("/pass/readingRoom/regist/testStorePayment/?{$default_query_string}") }}" novalidate>
+    {!! csrf_field() !!}
+    </form>
+    <div class="x_panel mt-10">
+        <button type="button" class="btn btn-default" id="btn_test_submit">독서실 좌석 배정 TEST 결제</button>
+        <button type="button" class="btn btn-default" id="btn_test_cancel">독서실 좌석 배정 취소</button>
+    </div>
+
+    <script type="text/javascript">
+        var $regi_form = $('#regi_form');
+        $('#btn_test_submit').click(function() {
+            $regi_form.submit();
+        });
+
+        $('#btn_test_cancel').click(function() {
+            $regi_form.find('input[name="rdr_prod_code[]"]').remove();
+            $regi_form.find('input[name="rdr_serial_num[]"]').remove();
+            $regi_form.find('input[name="rdr_seat_status[]"]').remove();
+            $regi_form.find('input[name="rdr_use_start_date[]"]').remove();
+            $regi_form.find('input[name="rdr_use_end_date[]"]').remove();
+            $regi_form.find('input[name="rdr_is_sub_price[]"]').remove();
+            $regi_form.find('input[name="rdr_memo[]"]').remove();
         });
     </script>
 @stop

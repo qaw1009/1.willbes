@@ -94,13 +94,8 @@ class Regist extends \app\controllers\BaseController
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $lr_idx = $params[0];
-            $arr_condition = ([
-                'EQ'=>[
-                    'a.LrIdx' => $lr_idx,
-                    'a.IsStatus' => 'Y'
-                ]
-            ]);
-            $data = $this->readingRoomModel->findReadingRoom($mang_type, $arr_condition);
+            $tempData = $this->readingRoomModel->getReadingRoomInfo($lr_idx, 'ProdCode');
+            $data = $this->readingRoomModel->findReadingRoom($tempData['ProdCode']);
 
             if (count($data) < 1) {
                 show_error('데이터 조회에 실패했습니다.');
@@ -164,45 +159,65 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
-     * 좌석배정
+     * 좌석배정/연장 레이어 팝업
+     * @param array $params
      */
-    public function createSeatModal()
+    public function createSeatModal($params = [])
     {
-        //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
+        $prod_code = $params[0];
+        $master_order_idx = $this->_reqG('master_order_idx');
+
+        //좌석상태공통코드
+        $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->_groupCcd['seat']);
+
+        //상품기본정보
+        $data = $this->readingRoomModel->findReadingRoom($prod_code);
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        //좌석정보
+        $seat_data = $this->readingRoomModel->listSeat($prod_code);
+
+        //기준주문식별자 메모 데이터 조회
+        $memo_data = [];
+        /*$memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);*/
+        for ($i = 0; $i<40; $i++) {
+            $memo_data[$i] = [
+                'Memo' => '123123',
+                'wAdminName' => '최현탁',
+                'RegDatm' => '2018-01-01 01:01:01'
+            ];
+        }
 
         $this->load->view("pass/reading_room/regist/create_seat_modal", [
-            'arr_campus' => $arr_campus,
+            'prod_code' => $prod_code,
+            'arr_seat_status' => $arr_seat_status,
+            'data' => $data,
+            'seat_data' => $seat_data,
+            'memo_data' => $memo_data
         ]);
     }
 
 
     /**
-     * 좌석 버튼 TEST
+     * 독서실/사물함 방문결제 TEST
+     * TODO : 방문결제 개발 시 해당 메소드 삭제
      */
-    public function testPage()
+    public function testStorePayment()
     {
-        $post_data = null;
+        $arr_input = [
+            'serial_num' => $this->_reqP('rdr_serial_num'),
+            'seat_status' => $this->_reqP('rdr_seat_status'),
+            'rdr_use_start_date' => $this->_reqP('rdr_use_start_date'),
+            'rdr_use_end_date' => $this->_reqP('rdr_use_end_date'),
+            'rdr_is_sub_price' => $this->_reqP('rdr_is_sub_price'),
+            'rdr_memo' => $this->_reqP('rdr_memo'),
+        ];
 
-        //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
+        print_r($arr_input);
+        exit;
 
-        $this->load->view("pass/reading_room/test/page", [
-            'idx' => 1,
-            'post_data' => $post_data,
-            'arr_campus' => $arr_campus
-        ]);
-    }
-    /**
-     * 좌석 버튼 TEST
-     */
-    public function testPopup()
-    {
-        //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
-
-        $this->load->view("pass/reading_room/test/popup", [
-            'arr_campus' => $arr_campus,
-        ]);
+        $this->readingRoomModel->addSeat($this->_reqP(null, false), '', '');
     }
 }

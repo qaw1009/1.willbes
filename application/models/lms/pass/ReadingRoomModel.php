@@ -68,12 +68,22 @@ class ReadingRoomModel extends BaseReadingRoomModel
     }
 
     /**
-     * 독서실/사물함 수정 폼을 위한 데이터 조회
-     * @param $mang_type
-     * @param $arr_condition
+     * 독서실/사물함 데이터 조회
+     * @param $lr_idx
+     * @param $column
      * @return mixed
      */
-    public function findReadingRoom($mang_type, $arr_condition)
+    public function getReadingRoomInfo($lr_idx, $column)
+    {
+        return $this->_getReadingRoomInfo($lr_idx, $column);
+    }
+
+    /**
+     * 독서실/사물함 상세 데이터 조회
+     * @param $prod_code
+     * @return mixed
+     */
+    public function findReadingRoom($prod_code)
     {
         $column = '
                 a.*
@@ -90,7 +100,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 LrIdx, ProdCode, SubProdCode, SiteCode, CampusCcd, IsUse, IsStatus, Name AS ReadingRoomName, LakeLayer, UseQty, TransverseNum, StartNo, EndNo, IsSmsUse, UseStartDate, UseEndDate
                 ,{$this->_table['readingRoom']}.Desc, SendTel, SmsContent ,RegDatm, RegAdminIdx, UpdAdminIdx, UpdDatm
                 FROM {$this->_table['readingRoom']}
-                WHERE MangType = '{$mang_type}' AND IsStatus = 'Y'
+                WHERE ProdCode = '{$prod_code}' AND IsStatus = 'Y'
             ) AS a
             INNER JOIN {$this->_table['product_sale']} AS pa ON a.ProdCode = pa.ProdCode AND pa.IsStatus = 'Y'
             INNER JOIN {$this->_table['product_sale']} AS pb ON a.SubProdCode = pb.ProdCode AND pb.IsStatus = 'Y'
@@ -103,15 +113,39 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['N']}, '1', '0')) AS countN,
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['Y']}, '1', '0')) AS countY
                 FROM {$this->_table['readingRoom_mst']} AS temp_a
-                INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx AND temp_b.MangType = '{$mang_type}'
+                INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx AND temp_b.ProdCode = '{$prod_code}' AND temp_b.IsStatus = 'Y'
                 GROUP BY temp_a.LrIdx
-            ) AS ab ON a.LrIdx = ab.LrIdx        
+            ) AS ab ON a.LrIdx = ab.LrIdx
         ";
 
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select '.$column .$from)->row_array();
+    }
 
-        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    /**
+     * 독서실/사물함 좌석리스트
+     * @param $prod_code
+     * @return mixed
+     */
+    public function listSeat($prod_code)
+    {
+        $column = 'a.*, b.SerialNumber, b.StatusCcd, b.MemIdx, b.MemName';
+        $from = "
+            FROM (
+                SELECT LrIdx, ProdCode
+                FROM {$this->_table['readingRoom']}
+                WHERE ProdCode = '{$prod_code}' AND IsUse = 'Y' AND IsStatus = 'Y'
+            ) AS a
+            INNER JOIN (
+                SELECT temp_a.LrIdx, temp_a.SerialNumber, temp_a.StatusCcd, temp_d.MemIdx, temp_d.MemName
+                FROM {$this->_table['readingRoom_mst']} AS temp_a
+                INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx
+                LEFT JOIN {$this->_table['lms_order']} AS temp_c ON temp_a.NowOrderIdx = temp_c.OrderIdx
+                LEFT JOIN {$this->_table['lms_member']} AS temp_d ON temp_c.MemIdx = temp_d.MemIdx
+                WHERE temp_b.ProdCode = '{$prod_code}' AND temp_b.IsUse = 'Y' AND temp_b.IsStatus = 'Y'
+            ) AS b ON a.LrIdx = b.LrIdx
+        ";
+
+        return $this->_conn->query('select '.$column .$from)->result_array();
     }
 
     /**
@@ -226,5 +260,45 @@ class ReadingRoomModel extends BaseReadingRoomModel
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 메모 리스트
+     * @param $master_order_idx
+     * @return mixed
+     */
+    public function getMemoListAll($master_order_idx = '')
+    {
+        $column = 'a.RmIdx, a.Memo, b.wAdminName AS RegAdminName, a.RegDatm';
+        $from = "
+            FROM {$this->_table['readingRoom_Memo']} as a
+            INNER JOIN {$this->_table['wbs_sys_admin']} as b ON a.RegAdminIdx = b.wAdminIdx AND b.wIsStatus='Y'
+        ";
+
+        $arr_condition = [
+            'RAW' => [
+                'a.MasterOrderIdx = ' => (empty($master_order_idx) === true) ? '\'\'' : $master_order_idx
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['a.RmIdx' => 'DESC'])->getMakeOrderBy();
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return $query->result_array();
+    }
+
+    /**
+     * 좌석배정/연장
+     * @param $input
+     * @param $now_order_idx
+     * @param $master_order_idx : 연장 시 필요한 값
+     */
+    public function addSeat($input, $now_order_idx, $master_order_idx = null)
+    {
+        /**
+         * 좌석상태 체크
+         *
+         */
     }
 }

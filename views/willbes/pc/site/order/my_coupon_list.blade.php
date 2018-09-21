@@ -40,7 +40,7 @@
                 <li><a href="#coupon2">전체 보유 쿠폰</a></li>
             </ul>
             <ul class="btnWrap">
-                <li class="subBtn white NSK"><a href="#none" onclick="closeWin('{{ $ele_id }}')">쿠폰 적용 안함 ></a></li>
+                <li class="subBtn white NSK"><a href="#none" id="_btn_coupon_cancel">쿠폰 적용 안함 ></a></li>
                 <li class="subBtn NSK"><a href="#none" id="_btn_coupon_apply">쿠폰 적용 ></a></li>
             </ul>
             <div class="tabBox couponBox">
@@ -147,6 +147,7 @@
             $('#_real_pay_price').html(addComma(real_sale_price - coupon_disc_price));
         });
 
+        // 쿠폰 적용 버튼 클릭
         $('#_btn_coupon_apply').on('click', function() {
             if (confirm('해당 쿠폰을 적용하시겠습니까?')) {
                 var $cart_row = $parent_regi_form.find('#cart_row_' + cart_idx);
@@ -163,6 +164,20 @@
 
                 alert('적용 되었습니다.');
                 closeWin('{{ $ele_id }}');
+            }
+        });
+
+        // 쿠폰 적용 안함 버튼 클릭
+        $('#_btn_coupon_cancel').on('click', function() {
+            var $cart_row = $parent_regi_form.find('#cart_row_' + cart_idx);
+            var $coupon_detail_idx = $cart_row.find('input[name="coupon_detail_idx[' + cart_idx + ']"]').val();
+
+            if ($coupon_detail_idx !== '') {
+                // 주문 폼 쿠폰적용 삭제버튼 클릭
+                $cart_row.find('.btn-coupon-apply-delete').click();
+                closeWin('{{ $ele_id }}');
+            } else {
+                alert('적용된 쿠폰이 없습니다.');
             }
         });
     });

@@ -191,7 +191,7 @@
                     <!-- willbes-Lec-Table -->
                 @endforeach
 
-                    <div id="InfoForm" class="willbes-Layer-Box d2"></div>
+                    <div id="InfoForm" class="willbes-Layer-Box"></div>
 
                     <div class="TopBtn">
                         <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>

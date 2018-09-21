@@ -28,7 +28,7 @@ class Cart extends \app\controllers\FrontController
 
         $results = [];
         foreach ($list as $idx => $row) {
-            // 상품 갯수, 상품 금액 배열 키 (on_lecture : 단강좌, on_package : 패키지, book : 교재)
+            // 상품 갯수, 상품 금액 배열 키 (on_lecture : 단강좌, on_pack_lecture : 패키지, book : 교재)
             $count_key = 'count.' . $row['CartProdType'];
             $price_key = 'price.' . $row['CartProdType'];
 
@@ -85,7 +85,7 @@ class Cart extends \app\controllers\FrontController
         $this->load->view('site/cart/info_modal', [
             'ele_id' => $this->_req('ele_id'),
             'arr_learn_pattern_ccd' => $this->cartFModel->_learn_pattern_ccd,
-            'arr_admin_package_type_ccd' => $this->cartFModel->_admin_package_type_ccd,
+            'arr_adminpack_lecture_type_ccd' => $this->cartFModel->_adminpack_lecture_type_ccd,
             'results' => ['data' => $cart_data, 'list' => $list]
         ]);        
     }
@@ -117,7 +117,7 @@ class Cart extends \app\controllers\FrontController
         if ($learn_pattern == 'adminpack_lecture') {
             // 운영자 일반형 패키지 연결 단강좌 조회
             $pack_data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $group_prod_code);
-            if (empty($pack_data) === false && $pack_data['PackTypeCcd'] === $this->cartFModel->_admin_package_type_ccd['normal']) {
+            if (empty($pack_data) === false && $pack_data['PackTypeCcd'] === $this->cartFModel->_adminpack_lecture_type_ccd['normal']) {
                 $input_prod_code = explode(',', $pack_data['ProdCodeSub']);
             }
         }

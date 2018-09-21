@@ -50,7 +50,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 사용자 패키지 가격 정보 셋팅
-            if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['user_package']) {
+            if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
                 if (empty($row['UserPackPriceData']) === true || $row['UserPackPriceData'] == 'NODATA') {
                     return '사용자 패키지 가격정보가 올바르지 않습니다.';
                 }
@@ -114,7 +114,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 패키지상품 포함 여부
-            if ($is_package === false && ends_with($row['CartProdType'], '_package') === true) {
+            if ($is_package === false && ends_with($row['CartProdType'], '_pack_lecture') === true) {
                 $is_package = true;
             }
 
@@ -728,14 +728,14 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
                 }
             } else {
-                if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['admin_package']) {
+                if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture']) {
                     // 운영자 패키지 (패키지 속성 정보를 등록함)
                     foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
                         if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code_sub)->insert($this->_table['my_lecture']) === false) {
                             throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
                         }
                     }
-                } elseif ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['user_package']) {
+                } elseif ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
                     // 사용자 패키지 (단강좌 속성 정보를 등록함)
                     // 단강좌 정보 조회
                     $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);

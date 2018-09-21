@@ -51,7 +51,7 @@
                                         @foreach($results['list']['on_lecture'] as $idx => $row)
                                             <tr>
                                                 <td class="w-chk"><input type="checkbox" name="cart_idx[]" value="{{ $row['CartIdx'] }}" class="chk-cart"/></td>
-                                                @if($row['CartProdType'] != 'on_package')
+                                                @if($row['CartProdType'] != 'on_pack_lecture')
                                                     <td class="w-list tx-left pl20"><span class="pBox p1">강좌</span> {{ $row['ProdName'] }}</td>
                                                 @else
                                                     <td class="w-list tx-left p_re pl20">
@@ -94,9 +94,9 @@
                                         <dt>
                                             <div>
                                                 <span class="pBox p2">패키지</span>
-                                                ( <a class="num tx-light-blue underline" href="#none">{{ array_get($results, 'count.on_package', 0) }}건</a> )
+                                                ( <a class="num tx-light-blue underline" href="#none">{{ array_get($results, 'count.on_pack_lecture', 0) }}건</a> )
                                             </div>
-                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_package', 0)) }}원</span>
+                                            <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_pack_lecture', 0)) }}원</span>
                                         </dt>
                                         <dt class="price-img">
                                             <span class="row-line">|</span>
@@ -112,7 +112,7 @@
                                 </li>
                                 <li class="price-total">
                                     <div>결제예상금액</div>
-                                    <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_lecture', 0) + array_get($results, 'price.on_package', 0) + array_get($results, 'delivery_price.on_lecture', 0)) }}원</span>
+                                    <span class="price tx-light-blue">{{ number_format(array_get($results, 'price.on_lecture', 0) + array_get($results, 'price.on_pack_lecture', 0) + array_get($results, 'delivery_price.on_lecture', 0)) }}원</span>
                                 </li>
                             </ul>
                             <div class="willbes-Lec-buyBtn">

@@ -107,9 +107,9 @@ class OrderListFModel extends BaseOrderFModel
                             , P.ProdName
                             , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
                             , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
-                                 when PL.LearnPatternCcd in ("' . implode('","', $this->_on_package_pattern_ccd) . '") then "on_package"
+                                 when PL.LearnPatternCcd in ("' . implode('","', $this->_on_pack_lecture_pattern_ccd) . '") then "on_pack_lecture"
                                  when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
-                                 when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_package'] . '" then "off_package"
+                                 when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "off_pack_lecture"
                                  when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
                                  when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                                  when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"

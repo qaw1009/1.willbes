@@ -25,22 +25,22 @@ class BaseOrderFModel extends WB_Model
     ];
 
     // 장바구니 상품타입명
-    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_package' => '패키지', 'off_package' => '패키지', 'book' => '교재', 'delivery_price' => '배송', 'delivery_add_price' => '배송'];
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '패키지', 'book' => '교재', 'delivery_price' => '배송', 'delivery_add_price' => '배송'];
 
     // 장바구니 상품타입 순번
-    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_package' => '2', 'off_package' => '2', 'book' => '3', 'delivery_price' => '4', 'delivery_add_price' => '4'];
+    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_pack_lecture' => '2', 'off_pack_lecture' => '2', 'book' => '3', 'delivery_price' => '4', 'delivery_add_price' => '4'];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료)
     public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'];
 
     // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
-    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'user_package' => '615002', 'admin_package' => '615003', 'period_package' => '615004', 'on_free_lecture' => '615005', 'off_lecture' => '615006', 'off_package' => '615007'];
+    public $_learn_pattern_ccd = ['on_lecture' => '615001', 'userpack_lecture' => '615002', 'adminpack_lecture' => '615003', 'periodpack_lecture' => '615004', 'on_free_lecture' => '615005', 'off_lecture' => '615006', 'off_pack_lecture' => '615007'];
 
     // 온라인 패키지 학습형태 공통코드 (사용자패키지, 운영자패키지, 기간제패키지)
-    public $_on_package_pattern_ccd = ['615002', '615003', '615004'];
+    public $_on_pack_lecture_pattern_ccd = ['615002', '615003', '615004'];
 
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
-    public $_admin_package_type_ccd = ['normal' => '648001', 'choice' => '648002'];
+    public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002'];
 
     // 학원상품 수강신청 구분 공통코드 (방문, 온라인, 방문+온라인)
     public $_off_study_apply_ccd = ['visit' => '654001', 'online' => '654002', 'visit_online' => '654003'];

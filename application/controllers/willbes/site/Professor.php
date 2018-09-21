@@ -186,8 +186,8 @@ class Professor extends \app\controllers\FrontController
             $data['on_lecture'] = $this->_getOnLectureData('on_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
 
             // 온라인 패키지 조회
-            $admin_package_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002'];
-            foreach ($admin_package_type_ccd as $key => $code) {
+            $adminpack_lecture_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002'];
+            foreach ($adminpack_lecture_type_ccd as $key => $code) {
                 $data[$key] = $this->_getOnPackageData('adminpack_lecture', $code, $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
             }
         }
@@ -271,15 +271,15 @@ class Professor extends \app\controllers\FrontController
     /**
      * 온라인 패키지 데이터 조회
      * @param $learn_pattern
-     * @param $admin_package_type_ccd
+     * @param $adminpack_lecture_type_ccd
      * @param $site_code
      * @param $prof_idx
      * @param array $arr_input
      * @return array
      */
-    private function _getOnPackageData($learn_pattern, $admin_package_type_ccd, $site_code, $prof_idx, $arr_input = [])
+    private function _getOnPackageData($learn_pattern, $adminpack_lecture_type_ccd, $site_code, $prof_idx, $arr_input = [])
     {
-        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $admin_package_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
+        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $adminpack_lecture_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
 
         $data = $this->packageFModel->listSalesProduct($learn_pattern,false, $arr_condition,null,null, ['ProdCode' => 'desc']);
 

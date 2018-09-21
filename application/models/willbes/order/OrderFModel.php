@@ -164,6 +164,7 @@ class OrderFModel extends BaseOrderFModel
         $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
+        $results['is_available_use_point'] = $is_package === false && $cart_type != 'off_lecture';  // 포인트 사용 가능여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($total_prod_cnt > 1 ? ' 외 ' . ($total_prod_cnt - 1) . '건' : '');   // 대표 주문상품명
         $results['cart_type'] = $cart_type;
 
@@ -455,6 +456,15 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
+                // 상품 판매여부 체크
+                $learn_pattern = array_search($cart_row['LearnPatternCcd'], $this->_learn_pattern_ccd);
+                $learn_pattern === false && $learn_pattern = $cart_row['CartProdType'];
+
+                $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $post_row['SiteCode'], $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'N');
+                if ($is_prod_check !== true) {
+                    throw new \Exception($is_prod_check);
+                }
+
                 // 사용자 지정 강좌시작일
                 $cart_row['UserStudyStartDate'] = array_get($post_data, 'study_start_date.' . $cart_row['CartIdx']);
                 $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, $is_escrow, $cart_row);
@@ -782,8 +792,10 @@ class OrderFModel extends BaseOrderFModel
     public function addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $site_code)
     {
         try {
+            $learn_pattern = 'delivery_add_price';
+
             // 추가 배송료 상품 조회
-            $prod_rows = $this->productFModel->listSalesProduct('delivery_add_price', false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
+            $prod_rows = $this->productFModel->listSalesProduct($learn_pattern, false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
             if (empty($prod_rows) === true) {
                 throw new \Exception('추가 배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
             }
@@ -793,7 +805,7 @@ class OrderFModel extends BaseOrderFModel
 
             $data = [
                 'CartType' => 'etc',
-                'CartProdType' => 'delivery_add_price',
+                'CartProdType' => $learn_pattern,
                 'SiteCode' => $site_code,
                 'ProdCode' => $prod_rows['ProdCode'],
                 'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
@@ -873,9 +885,9 @@ class OrderFModel extends BaseOrderFModel
 
             // 상품 판매여부 체크
             foreach ($arr_prod_code as $prod_code => $prod_row) {
-                $chk_data = $this->productFModel->findOnlySaleProductByProdCode($learn_pattern, $prod_code);
-                if (empty($chk_data) === true) {
-                    throw new \Exception('판매 중인 상품만 주문 가능합니다.');
+                $chk_data = $this->cartFModel->checkProduct($learn_pattern, $site_code, $prod_code, $prod_code, 'N', true);
+                if (is_array($chk_data) === false) {
+                    throw new \Exception($chk_data);
                 }
 
                 $arr_prod_name[] = $chk_data['ProdName'];

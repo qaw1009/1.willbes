@@ -121,14 +121,17 @@
                                     <span class="row-line">|</span>
                                     <img src="{{ img_url('sub/icon_minus_black.gif') }}">
                                 </dt>
-                                <dt>
-                                    <div>포인트 차감금액</div>
-                                    <span class="price tx-light-pink"><span id="point_disc_price">0</span>원</span>
-                                </dt>
-                                <dt class="price-img">
-                                    <span class="row-line">|</span>
-                                    <img src="{{ img_url('sub/icon_plus.gif') }}">
-                                </dt>
+                                @if($results['is_available_use_point'] === true)
+                                    {{-- 온라인강좌 패키지 포함 or 학원강좌일 경우 포인트 사용 불가 --}}
+                                    <dt>
+                                        <div>포인트 차감금액</div>
+                                        <span class="price tx-light-pink"><span id="point_disc_price">0</span>원</span>
+                                    </dt>
+                                    <dt class="price-img">
+                                        <span class="row-line">|</span>
+                                        <img src="{{ img_url('sub/icon_plus.gif') }}">
+                                    </dt>
+                                @endif
                                 <dt>
                                     <div>배송료</div>
                                     <span class="price tx-light-blue"><span id="delivery_price">{{ number_format($results['delivery_price']) }}</span>원</span>
@@ -140,8 +143,8 @@
                             <span class="price tx-light-blue"><span class="total-pay-price">{{ number_format($results['total_pay_price']) }}</span>원</span>
                         </li>
                     </ul>
-                    @if($results['cart_type'] != 'off_lecture')
-                        {{-- 학원강좌일 경우 포인트 사용 불가 --}}
+                    @if($results['is_available_use_point'] === true)
+                        {{-- 온라인강좌 패키지 포함 or 학원강좌일 경우 포인트 사용 불가 --}}
                         <div class="cart-PointBox NG">
                             <dl class="pointBox">
                                 <dt class="p-tit"><span class="tx-blue">{{ $results['point_type_name'] }}</span> 포인트 사용</dt>

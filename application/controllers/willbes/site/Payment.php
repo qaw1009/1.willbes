@@ -140,7 +140,12 @@ class Payment extends \app\controllers\FrontController
             show_alert('결제연동 중 오류가 발생하였습니다.', site_url('/cart/index'), false);
         }
 
+        // 결제 프로세스 실행
         $result = $this->orderFModel->procOrder($pay_results);
+
+        // 수동 쿼리 로그 저장 (후킹 안됨)
+        $this->save_log_queries();
+
         if ($result['ret_cd'] === true) {
             // 결제완료 페이지 이동
             redirect(front_url('/order/complete?order_no=' . $result['ret_data']));

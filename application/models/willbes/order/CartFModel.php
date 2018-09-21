@@ -231,20 +231,20 @@ class CartFModel extends BaseOrderFModel
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 학습형태별 사전 체크
-                $check_result = $this->_checkProduct($learn_pattern, $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay);
+                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
 
                 $prod_sub_code = '';
-                if ($prod_code == $prod_row['ParentProdCode'] && isset($input['prod_code_sub']) === true) {
-                    // 서브 강좌가 있는 경우 (운영자 선택형 패키지)
+                if (empty($input['prod_code_sub']) === false) {
+                    // 서브 강좌가 있는 경우 (운영자 선택형 패키지, 사용자 패키지)
                     $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
                 }
 
                 // 강좌, 교재상품이 동시에 바로 결제될 경우 교재상품은 바로결제 여부를 N으로 강제 변경
                 $is_direct_pay_change = false;
-                if ($is_direct_pay == 'Y' && $is_prod_mixed === true && $prod_code != $prod_row['ParentProdCode']) {
+                if ($is_direct_pay == 'Y' && $is_prod_mixed === true && $prod_row['LearnPattern'] == 'book') {
                     $is_direct_pay_change = true;
                 }
 
@@ -459,35 +459,30 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
-     * 장바구니 저장 전 사전체크
+     * 상품 체크
      * @param string $learn_pattern [학습형태]
      * @param int $site_code [사이트코드]
      * @param int $prod_code [상품코드]
      * @param int $parent_prod_code [부모상품코드]
      * @param string $is_visit_pay [방문결제여부, Y/N]
-     * @return bool|string
+     * @param bool $is_data_return [상품 데이터 리턴 여부]
+     * @return bool|array|string
      */
-    private function _checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay)
+    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false)
     {
-        if ($prod_code != $parent_prod_code) {
-            $data = $this->productFModel->findOnlySaleProductByProdCode('book', $prod_code);
+        $data = $this->productFModel->findOnlySaleProductByProdCode($learn_pattern, $prod_code);
 
-            if (empty($data) === true) {
-                return '판매 중인 상품만 주문 가능합니다.';
-            }
+        if (empty($data) === true) {
+            return '판매 중인 상품만 주문 가능합니다.';
+        }
 
+        if ($learn_pattern == 'book') {
             // 수강생 교재 체크
             $check_result = $this->checkStudentBook($site_code, $prod_code);
             if ($check_result !== true) {
                 return $check_result;
             }
         } else {
-            $data = $this->productFModel->findOnlySaleProductByProdCode($learn_pattern, $prod_code);
-
-            if (empty($data) === true) {
-                return '판매 중인 상품만 주문 가능합니다.';
-            }
-
             // 학원강좌일 경우
             if (starts_with($learn_pattern, 'off') === true) {
                 if ($is_visit_pay == 'Y' && $data['StudyApplyCcd'] == $this->_off_study_apply_ccd['online']) {
@@ -498,6 +493,6 @@ class CartFModel extends BaseOrderFModel
             }
         }
 
-        return true;        
+        return $is_data_return === true ? $data : true;
     }
 }

@@ -272,4 +272,15 @@ abstract class BaseController extends \CI_Controller
             'rownum' => $rownum
         ];
     }
+
+    /**
+     * 수동 쿼리 로그 저장 (후킹이 되지 않는 경우 사용)
+     */
+    public function save_log_queries()
+    {
+        require APPPATH . 'hooks/LogQueryHook.php';
+        
+        $query_log = new \LogQueryHook();
+        $query_log->logQueries();        
+    }
 }

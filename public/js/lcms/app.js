@@ -454,9 +454,10 @@ function init_base() {
     $('.btn-set-search-date').click(function() {
         var period = $(this).data('period');
         var periods = period.split('-');
+        var default_date = $(this).data('default-date');
 
         // 날짜 설정
-        setDefaultDatepicker(-periods[0], periods[1], 'search_start_date', 'search_end_date');
+        setDefaultDatepicker(-periods[0], periods[1], 'search_start_date', 'search_end_date', default_date);
 
         // set active class
         $('.btn-set-search-date').removeClass('active');

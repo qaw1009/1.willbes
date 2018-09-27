@@ -528,9 +528,10 @@ function showError(result, status) {
  * @param s_period_type (ex. days, weeks, months ...)
  * @param sdate_id_name (ex. id="sDate" id name)
  * @param edate_id_name (ex. id="eDate" id name)
+ * @param s_default_date (ex. 2018-01-01)
  */
-function setDefaultDatepicker(i_period, s_period_type, sdate_id_name, edate_id_name) {
-    var return_data = computeDate(i_period, s_period_type);
+function setDefaultDatepicker(i_period, s_period_type, sdate_id_name, edate_id_name, s_default_date) {
+    var return_data = computeDate(i_period, s_period_type, s_default_date);
 
     $('#' + sdate_id_name).val(return_data['s_start_date']);
     $('#' + edate_id_name).val(return_data['s_end_date']);
@@ -540,26 +541,28 @@ function setDefaultDatepicker(i_period, s_period_type, sdate_id_name, edate_id_n
  * 날짜 계산
  * @param i_period
  * @param s_period_type
+ * @param s_default_date
  * @returns {any[]}
  */
-function computeDate(i_period, s_period_type) {
+function computeDate(i_period, s_period_type, s_default_date) {
     var return_arr = new Array();
     var s_start_date = "";
     var s_end_date = "";
+    s_default_date = moment(s_default_date).format('YYYY-MM-DD') || moment().format('YYYY-MM-DD');
 
     if(s_period_type === 'days' || s_period_type === 'weeks' || s_period_type === 'months') {
-        var calc_date = moment().add(i_period, s_period_type).format('YYYY-MM-DD');
+        var calc_date = moment(s_default_date).add(i_period, s_period_type).format('YYYY-MM-DD');
         if(i_period >= 0) {
             // s_period = moment().format('YYYY-MM-DD') + ' - ' + calc_date;
-            s_start_date = moment().format('YYYY-MM-DD');
+            s_start_date = moment(s_default_date).format('YYYY-MM-DD');
             s_end_date = calc_date;
         } else{
             s_start_date = calc_date;
-            s_end_date = moment().format('YYYY-MM-DD');
+            s_end_date = moment(s_default_date).format('YYYY-MM-DD');
         }
     } else if(s_period_type === 'mon') {
-        s_start_date = moment().add(i_period, 'months').date(1).format('YYYY-MM-DD');
-        s_end_date = moment().add(i_period, 'months').endOf('month').format('YYYY-MM-DD');
+        s_start_date = moment(s_default_date).add(i_period, 'months').date(1).format('YYYY-MM-DD');
+        s_end_date = moment(s_default_date).add(i_period, 'months').endOf('month').format('YYYY-MM-DD');
     } else if(s_period_type === 'all') {
         s_start_date = '';
         s_end_date = '';

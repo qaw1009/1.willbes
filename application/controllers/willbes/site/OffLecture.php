@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class OffLecture extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF');
+    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF','order/cartF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();

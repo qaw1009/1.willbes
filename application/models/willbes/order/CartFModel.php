@@ -123,9 +123,12 @@ class CartFModel extends BaseOrderFModel
         // 방문결제일 경우 세션 아이디 컬럼 추가
         if ($is_visit_pay == 'Y') {
             $arr_condition['EQ']['CA.SessId'] = $this->session->userdata($this->_sess_cart_sess_id);
+            $order_by =['CA.CartIdx' => 'asc'];
+        } else {
+            $order_by =['P.ProdTypeCcd' => 'asc', 'CA.CartIdx' => 'desc'];
         }
 
-        return $this->listCart(false, $arr_condition, null, null, ['P.ProdTypeCcd' => 'asc', 'CA.CartIdx' => 'desc']);
+        return $this->listCart(false, $arr_condition, null, null, $order_by);
     }
 
     /**

@@ -4,11 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * TODO : 주의 요망
  * 방문신청 컨트롤러(VisitOffLecture)에서 확장 사용함. 수정시 주의 요망
- * Class OffLecture
- */
+  */
 class OffLecture extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF','order/cartF');
+    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF', 'order/cartF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -28,13 +27,13 @@ class OffLecture extends \app\controllers\FrontController
     {
         $class_type = strtolower($this->router->class);
 
-        /*  온라인 신청 과 방문신청 일 경우 분기*/
+        /*  온라인신청 과 방문신청 분기*/
         if($class_type === 'offlecture') {
             $_study_apply_ccds = ['654002', '654003']; //온라인 접수, 방문+온라인
             $_view_page = 'site/off_lecture/index';
-        } else {    //VisitOffLecture
+        } else {    //OffVisitLecture
             $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인
-            $_view_page = 'site/visit_off_lecture/index';
+            $_view_page = 'site/off_visit/index';
         }
 
         // input parameter

@@ -1,9 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * TODO : 주의 요망
+ * 방문신청 컨트롤러(VisitOffPackage)에서 확장 사용함. 수정시 주의 요망
+  */
 class OffPackage extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF','product/baseProductF', 'product/packageF');
+    protected $models = array('categoryF','product/baseProductF', 'product/packageF', 'order/cartF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -21,6 +25,18 @@ class OffPackage extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
+        $class_type = strtolower($this->router->class);
+
+        /*  온라인신청 과 방문신청 분기*/
+        if($class_type === 'offpackage') {
+            $_study_apply_ccds = ['654002', '654003']; //온라인 접수, 방문+온라인
+            $_view_page = 'site/off_pack_lecture/index';
+        } else {    //OffVisitPackage
+            $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인
+            $_view_page = 'site/off_visit/package_index';
+        }
+
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
 
@@ -51,7 +67,7 @@ class OffPackage extends \app\controllers\FrontController
             'LKB' => [
                 $arr_search_text[0] => element('1', $arr_search_text),
             ],
-            'IN' => ['StudyApplyCcd' => ['654002', '654003'] ] // 온라인 접수, 방문+온라인
+            'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
 
         $list= $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,['ProdCode'=>'desc']);
@@ -61,7 +77,7 @@ class OffPackage extends \app\controllers\FrontController
             $list[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'] , true);
         }
 
-        $this->load->view('site/off_pack_lecture/index',[
+        $this->load->view($_view_page,[
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'learn_pattern' => $this->_learn_pattern,
@@ -93,6 +109,14 @@ class OffPackage extends \app\controllers\FrontController
 
     public function show($params = [])
     {
+
+        /*  온라인신청 과 방문신청 분기*/
+        if($class_type === 'offpackage') {
+            $_view_page = 'site/off_pack_lecture/show';
+        } else {    //OffVisitPackage
+            $_view_page = 'site/off_visit/package_show';
+        }
+
         $prod_code = element('prod-code',$params);
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -117,7 +141,7 @@ class OffPackage extends \app\controllers\FrontController
             $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
         }
 
-        $this->load->view('site/off_pack_lecture/show',[
+        $this->load->view($_view_page,[
             'arr_input' => $arr_input,
             'learn_pattern' => $this->_learn_pattern,
             'data' => $data,

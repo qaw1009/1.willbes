@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/willbes/site/OffLecture.php';
 
-class VisitOffLecture extends OffLecture
+class OffVisitLecture extends OffLecture
 {
     protected $auth_controller = true;
 

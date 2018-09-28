@@ -30,7 +30,7 @@ class OrderListFModel extends BaseOrderFModel
                 , O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
                 , O.VBankCcd, ifnull(CBC.CcdName, O.VBankCcd) as VBankName, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
                 , if(O.PayMethodCcd = "' . $this->_pay_method_ccd['vbank'] . '", "Y", "N") as IsVBank
-                , S.SiteName, S.IsCampus, if(S.IsCampus = "N", "온라인", "학원") as SiteOnOffName';
+                , SG.SiteGroupName, S.SiteName, S.IsCampus, if(S.IsCampus = "N", "온라인", "학원") as SiteOnOffName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -39,6 +39,8 @@ class OrderListFModel extends BaseOrderFModel
             from ' . $this->_table['order'] . ' as O
                 left join ' . $this->_table['site'] . ' as S
                     on O.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join ' . $this->_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus = "Y"                    
                 left join ' . $this->_table['code'] . ' as CPM
                     on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CBC
@@ -104,6 +106,7 @@ class OrderListFModel extends BaseOrderFModel
             $order_by_offset_limit = '';
         } else {
             $column = 'OP.OrderProdIdx, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName, OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice
+                            , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
                             , P.ProdName
                             , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
                             , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 

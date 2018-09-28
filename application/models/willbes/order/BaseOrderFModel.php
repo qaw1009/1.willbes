@@ -5,6 +5,7 @@ class BaseOrderFModel extends WB_Model
 {
     protected $_table = [
         'site' => 'lms_site',
+        'site_group' => 'lms_site_group',
         'cart' => 'lms_cart',
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',

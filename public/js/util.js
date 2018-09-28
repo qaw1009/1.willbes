@@ -479,21 +479,21 @@ function sendLoadingAjax(url, data, callback, error_callback, method, loading_ta
  * @param status
  */
 function showAlertError(result, status) {
-     var err_msg = result.ret_msg || '';
+    var err_msg = result.ret_msg || '';
 
-     if (err_msg === '') {
-         if (status === 401) {  //권한 없음 || 미로그인
-             err_msg = '권한이 없습니다.';
-         } else if (status === 403) {
-             err_msg = '토큰 정보가 올바르지 않습니다.';
-         } else if (status === 404) {
-             err_msg = '데이터 조회에 실패했습니다.';
-         } else if (status === 422) {
-             err_msg = '필수 파라미터 오류입니다.';
-         }
-     }
+    if (err_msg === '') {
+        if (status === 401) {  //권한 없음 || 미로그인
+            err_msg = '권한이 없습니다.';
+        } else if (status === 403) {
+            err_msg = '토큰 정보가 올바르지 않습니다.';
+        } else if (status === 404) {
+            err_msg = '데이터 조회에 실패했습니다.';
+        } else if (status === 422) {
+            err_msg = '필수 파라미터 오류입니다.';
+        }
+    }
 
-     alert(err_msg);
+    alert(err_msg);
 }
 
 /**
@@ -502,8 +502,6 @@ function showAlertError(result, status) {
  * @param status
  */
 function showError(result, status) {
-    console.log(result);
-
     var err_msg = result.ret_msg || '';
 
     if (err_msg === '') {

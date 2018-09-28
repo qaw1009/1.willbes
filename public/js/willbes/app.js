@@ -241,6 +241,9 @@ $(function() {
         // 날짜 설정
         setDefaultDatepicker(-periods[0], periods[1], 'search_start_date', 'search_end_date', default_date);
 
+        // 설정된 날짜로 업데이트
+        $('.datepicker').datepicker('update');
+
         // set active class
         $('.btn-set-search-date').removeClass('on');
         $(this).addClass('on');

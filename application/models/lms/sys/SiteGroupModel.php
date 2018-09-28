@@ -7,6 +7,9 @@ class SiteGroupModel extends WB_Model
         'site_group' => 'lms_site_group',
         'admin' => 'wbs_sys_admin'
     ];
+    
+    private $_intg_site_group_code = 1000;  // 통합 사이트 그룹 코드
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -31,15 +34,20 @@ class SiteGroupModel extends WB_Model
 
     /**
      * 사이트 그룹 코드 목록 조회
+     * @param bool $is_intg_site_group_use [통합사이트 리턴 여부]
      * @return array
      */
-    public function getSiteGroupArray()
+    public function getSiteGroupArray($is_intg_site_group_use = true)
     {
-        $data = $this->_conn->getListResult($this->_table['site_group'], 'SiteGroupCode, SiteGroupName', [
+        $arr_condition = [
             'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'SiteGroupCode' => 'asc'
-        ]);
+        ];
+
+        if ($is_intg_site_group_use !== true) {
+            $arr_condition['NOT'] = ['SiteGroupCode' => $this->_intg_site_group_code];
+        }
+
+        $data = $this->_conn->getListResult($this->_table['site_group'], 'SiteGroupCode, SiteGroupName', $arr_condition, null, null, ['SiteGroupCode' => 'asc']);
 
         return array_pluck($data, 'SiteGroupName', 'SiteGroupCode');
     }

@@ -38,24 +38,31 @@ class MyCoupon extends \app\controllers\FrontController
         $cart_data['CartProdTypeName'] = $this->cartFModel->_cart_prod_type_name[$cart_data['CartProdType']];
         $cart_data['CartProdTypeNum'] = $this->cartFModel->_cart_prod_type_idx[$cart_data['CartProdType']];
 
-        // 쿠폰조회 전달 기본 파라미터
-        $arr_param = ['SiteCode' => $cart_data['SiteCode']];
+        // 전체보유 쿠폰조회 조건
+        $arr_condition = [
+            'EQ' => [
+                'C.SiteCode' => $cart_data['SiteCode'],
+                'C.CouponTypeCcd' => $this->couponFModel->_coupon_type_ccd['coupon']
+            ]            
+        ];
 
         // 전체보유 쿠폰조회
-        $results['all'] = $this->couponFModel->listMemberCoupon(false, $arr_param, null, null, ['CD.IssueDatm' => 'desc']);
+        $results['all'] = $this->couponFModel->listMemberCoupon(false, $arr_condition, null, null, ['CD.IssueDatm' => 'desc']);
 
         // 적용가능한 쿠폰조회
-        $arr_param = array_merge($arr_param, [
+        $arr_param = [
+            'SiteCode' => $cart_data['SiteCode'],
+            'CouponTypeCcd' => $this->couponFModel->_coupon_type_ccd['coupon'],
             'CateCode' => $cart_data['CateCode'],
-            'ApplyTypeCcd' => $this->cartFModel->_coupon_apply_type_ccd[$cart_data['ProdTypeCcd']],
-            'LecTypeCcd' => element($cart_data['LearnPatternCcd'], $this->cartFModel->_coupon_lec_type_ccd),
+            'ApplyTypeCcd' => $this->couponFModel->_coupon_apply_type_ccd[$cart_data['ProdTypeCcd']],
+            'LecTypeCcd' => element($cart_data['LearnPatternCcd'], $this->couponFModel->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_data['RealSalePrice'],
             'SchoolYear' => $cart_data['SchoolYear'],
             'CourseIdx' => $cart_data['CourseIdx'],
             'SubjectIdx' => $cart_data['SubjectIdx'],
             'ProfIdx' => $cart_data['ProfIdx'],
             'ProdCode' => $cart_data['ProdCode'],
-        ]);
+        ];
 
         $results['usable'] = $this->couponFModel->listMemberProductCoupon(false, $arr_param, null, null, ['CD.IssueDatm' => 'desc']);
 

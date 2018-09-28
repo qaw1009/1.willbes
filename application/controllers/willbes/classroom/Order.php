@@ -22,14 +22,14 @@ class Order extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        // 사이트그룹 코드 조회
-        $arr_site_group = $this->siteGroupModel->getSiteGroupArray(false);
-
         // 디폴트 주문일자
         if (isset($arr_input['search_start_date']) === false) {
             $arr_input['search_end_date'] = date('Y-m-d');
             $arr_input['search_start_date'] = date('Y-m-d', strtotime($arr_input['search_end_date'] . ' -1 month'));
         }
+
+        // 사이트그룹 코드 조회
+        $arr_site_group = $this->siteGroupModel->getSiteGroupArray(false);
 
         // 검색조건
         $arr_condition = [

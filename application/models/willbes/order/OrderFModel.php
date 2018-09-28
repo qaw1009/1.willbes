@@ -186,8 +186,9 @@ class OrderFModel extends BaseOrderFModel
         $arr_param = [
             'SiteCode' => $cart_row['SiteCode'],
             'CateCode' => $cart_row['CateCode'],
-            'ApplyTypeCcd' => $this->_coupon_apply_type_ccd[$cart_row['ProdTypeCcd']],
-            'LecTypeCcd' => element($cart_row['LearnPatternCcd'], $this->_coupon_lec_type_ccd),
+            'CouponTypeCcd' => $this->couponFModel->_coupon_type_ccd['coupon'],
+            'ApplyTypeCcd' => $this->couponFModel->_coupon_apply_type_ccd[$cart_row['ProdTypeCcd']],
+            'LecTypeCcd' => element($cart_row['LearnPatternCcd'], $this->couponFModel->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_row['RealSalePrice'],
             'SchoolYear' => $cart_row['SchoolYear'],
             'CourseIdx' => $cart_row['CourseIdx'],

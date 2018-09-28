@@ -233,7 +233,7 @@
             // 가상계좌취소 버튼 클릭
             $('#btn_vbank_cancel').on('click', function() {
                 if (confirm('해당 가상계좌를 취소하시겠습니까?\n취소할 경우 해당 정보는 삭제 처리됩니다.')) {
-                    var url = '{{ app_url('/payment/cancel', 'www') }}';
+                    var url = '{{ site_url('/payment/cancel') }}';
                     var data = {
                         '{{ csrf_token_name() }}' : '{{ csrf_token() }}',
                         'order_no' : '{{ $results['order']['OrderNo'] }}'
@@ -249,12 +249,12 @@
 
             // 내강의실 바로가기 버튼 클릭
             $('button[name="btn_go_classroom"]').on('click', function() {
-                location.replace('{{ app_url('/classroom/home/index', 'www') }}');
+                location.replace('{{ site_url('/classroom/home/index') }}');
             });
 
             // 주문/배송 조회 목록 버튼 클릭
             $('button[name="btn_go_order_hist"]').on('click', function() {
-                location.replace('{{ app_url('/classroom/order/index?', 'www') }}{!! $query_string !!}');
+                location.replace('{{ site_url('/classroom/order/index') }}?{!! $query_string !!}');
             });
         });
     </script>

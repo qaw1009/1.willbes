@@ -11,20 +11,22 @@
                     <label class="control-label col-md-1" for="search_value">조건</label>
                     <div class="col-md-10 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false) !!}
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_pay_status" name="search_pay_status">
                             <option value="">결제상태</option>
+                            @foreach($arr_search_data['pay_status'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
 
                         <select class="form-control" id="" name="">
                             <option value="">예치금반환</option>
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_seat_status" name="search_seat_status">
                             <option value="">배정여부</option>
-                        </select>
-
-                        <select class="form-control" id="" name="">
-                            <option value="">좌석상태</option>
+                            @foreach($arr_search_data['seat_status'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -34,13 +36,16 @@
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
-                            @foreach($arr_campus as $row)
+                            @foreach($arr_search_data['campus'] as $row)
                                 <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="" name="">
+                        <select class="form-control" id="search_readingroom_idx" name="search_readingroom_idx">
                             <option value="">{{$mang_title}}명</option>
+                            @foreach($arr_search_data['readingroom'] as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -111,11 +116,10 @@
                     <th>예치금</th>
                     <th>대여시작일</th>
                     <th>대여종료일</th>
-                    <th>배정여부</th>
                     <th>좌석상태</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>배정/변경</th>
+                    <th>변경</th>
                     <th>연장</th>
                 </tr>
                 </thead>
@@ -157,26 +161,23 @@
                         }},
                     {'data' : 'MemName'},
                     {'data' : 'MemPhone'},
-                    {'data' : '결제완료일'},
+                    {'data' : 'OrderDatm'},
                     {'data' : 'CampusName'},
-                    {'data' : 'ReadingRoomName'},
-                    {'data' : '결제금액'},
-                    {'data' : '결제상태'},
-                    {'data' : '좌석번호'},
-                    {'data' : '예치금'},
-                    {'data' : '대여시작일'},
-                    {'data' : '대여종료일'},
-                    {'data' : 'AssingIsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '배정' : '<span class="red">미배정</span>';
-                        }},
-                    {'data' : '좌석상태'},
+                    {'data' : 'ReprProdName'},
+                    {'data' : 'OrderPrice'},
+                    {'data' : 'PayStatusName'},
+                    {'data' : 'NowMIdx'},
+                    {'data' : 'SubPayStatusName'},
+                    {'data' : 'UseStartDate'},
+                    {'data' : 'UseEndDate'},
+                    {'data' : 'SeatStatusName'},
                     {'data' : 'RegAdminName'},
-                    {'data' : 'RegDatm'},
+                    {'data' : 'SeatRegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="create-seat-modal" data-idx="' + row.Idx + '"><u>' + row.aaa + '</u></a>';
+                            return '<a href="javascript:void(0);" class="create-seat-modal" data-idx="' + row.OrderIdx + '"><u>[변경]</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-seat" data-idx="' + row.Idx + '"><u>' + row.bbb + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-seat" data-idx="' + row.OrderIdx + '"><u>[연장]</u></a>';
                         }}
                 ]
             });

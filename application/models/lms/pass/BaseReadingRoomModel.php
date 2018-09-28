@@ -7,15 +7,17 @@ class BaseReadingRoomModel extends WB_Model
         'R' => '독서실',
         'L' => '사물함'
     ];
-    public $arr_product_type_ccd = [
+    public $groupCcd = [
+        'seat' => '682',        //좌석상태 (미사용, 사용중, 대기, 홀드, 고장)
+        'payStatus' => '676',    //결제상태 (결제완료, 환불완료..)
+        'seatStatus' => '683',  //배정여부 (배정,연장,자리이동,퇴실)
+    ];
+
+    private $_arr_product_type_ccd = [
         'R' => '636007',    //상품타입공통코드 독서실
         'L' => '636008'     //상품타입공통코드 사물함
     ];
-    public $_groupCcd = [
-        'seat' => '682'     //좌석상태 (미사용,사용중,대기,홀드,고장)
-    ];
-
-    private $sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
+    private $_sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
     private $_prod_code;
     private $_sub_prod_code;
     private $_lr_idx;
@@ -25,22 +27,22 @@ class BaseReadingRoomModel extends WB_Model
     ];
     private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
 
+    protected $_order_route_ccd = '670002';    //학원방문결제
     protected $_arr_reading_room_status_ccd = [
-        'N' => '682001',      //독서실사물함 좌석상태(미사용)
-        'Y' => '682002'    //독서실사물함 좌석상태(사용중)
+        'N' => '682001',    //독서실사물함 좌석상태(미사용)
+        'Y' => '682002'     //독서실사물함 좌석상태(사용중)
     ];
-
     protected $_arr_reading_room_seat_status_ccd = [
         'in' => '683001',           //배정
         'extension' => '683002',    //연장
         'change' => '683003',       //자리이동
         'out' => '683004',          //퇴실
     ];
-
     protected $_table = [
         'lms_site' => 'lms_site',
         'lms_sys_code' => 'lms_sys_code',
         'lms_order' => 'lms_order',
+        'lms_order_product' => 'lms_order_product',
         'lms_member' => 'lms_member',
         'wbs_sys_admin' => 'wbs_sys_admin',
         'product' => 'lms_product',
@@ -113,7 +115,7 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
-     * 독서실/사물함 데이터 조회
+     * 독서실/사물함 단일 데이터 조회
      * @param $arr_condition
      * @param string $column
      * @return mixed
@@ -128,6 +130,24 @@ class BaseReadingRoomModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 독서실/사물함 다중 데이터 조회
+     * @param $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    protected function _listReadingRoomInfo($arr_condition, $column = '*')
+    {
+        $from = "
+            FROM {$this->_table['readingRoom']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column .$from .$where)->result_array();
     }
 
     /**
@@ -165,7 +185,7 @@ class BaseReadingRoomModel extends WB_Model
             $set_product_data = $this->_setProductData($input, 'main');
             $product_data = array_merge($set_product_data, [
                 'ProdCode' => $prod_code,
-                'ProdTypeCcd' => $this->arr_product_type_ccd[element('mang_type',$input)],
+                'ProdTypeCcd' => $this->_arr_product_type_ccd[element('mang_type',$input)],
                 'SiteCode' => element('site_code',$input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -199,7 +219,7 @@ class BaseReadingRoomModel extends WB_Model
             $set_product_data = $this->_setProductData($input, 'sub');
             $product_data = array_merge($set_product_data, [
                 'ProdCode' => $prod_code,
-                'ProdTypeCcd' => $this->sub_product_type_ccd,
+                'ProdTypeCcd' => $this->_sub_product_type_ccd,
                 'SiteCode' => element('site_code',$input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
@@ -377,7 +397,7 @@ class BaseReadingRoomModel extends WB_Model
             $sub_prod_code = $this->_getSubProdCode();
 
             //연관상품 상태값 변경
-            if($this->_setDataDelete($prod_code,$this->_table['product_r_product'],'연관상품','where','ProdTypeCcd', $this->arr_product_type_ccd[element('mang_type',$input)]) !== true) {
+            if($this->_setDataDelete($prod_code,$this->_table['product_r_product'],'연관상품','where','ProdTypeCcd', $this->_arr_product_type_ccd[element('mang_type',$input)]) !== true) {
                 throw new \Exception('연관상품 수정에 실패했습니다.');
             }
 
@@ -385,7 +405,7 @@ class BaseReadingRoomModel extends WB_Model
                 'ProdCode' => $prod_code,
                 'ProdCodeSub' => $sub_prod_code,
                 'IsSale' => 'N',
-                'ProdTypeCcd' => $this->arr_product_type_ccd[element('mang_type',$input)],
+                'ProdTypeCcd' => $this->_arr_product_type_ccd[element('mang_type',$input)],
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 'RegIp' => $this->input->ip_address()
             ];

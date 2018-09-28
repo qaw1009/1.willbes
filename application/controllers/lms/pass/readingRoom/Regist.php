@@ -173,7 +173,7 @@ class Regist extends \app\controllers\BaseController
         $prod_code = $params[0];
 
         //좌석상태공통코드
-        $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->_groupCcd['seat']);
+        $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
 
         //상품기본정보
         $data = $this->readingRoomModel->findReadingRoom($prod_code);
@@ -192,9 +192,10 @@ class Regist extends \app\controllers\BaseController
                 'RegAdminName' => '최현탁',
                 'RegDatm' => '2018-01-01 01:01:01'
             ];
-        }*/
-
-        $master_order_idx = '63';
+        }
+        */
+        /*$master_order_idx = '63';*/
+        $master_order_idx = '';
         $memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);
 
         $this->load->view("pass/reading_room/regist/create_seat_modal", [

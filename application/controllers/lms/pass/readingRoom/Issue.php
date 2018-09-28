@@ -17,64 +17,63 @@ class Issue extends \app\controllers\BaseController
     public function index()
     {
         $mang_type = $this->_req('mang_type');
+        $arr_search_data = [];
 
         //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
+        $arr_search_data['campus'] = $this->siteModel->getSiteCampusArray('');
+
+        //결제상태
+        $arr_search_data['pay_status'] = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['payStatus']);
+
+        //예치금반환
+
+        //배정여부
+        $arr_search_data['seat_status'] = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seatStatus']);
+
+        //독서실명(정보 LrIdx)
+        $arr_condition = [
+            'IsStatus' => 'Y'
+        ];
+        $reading_info = $this->readingRoomModel->listReadingRoomInfo($arr_condition, 'LrIdx, Name AS ReadingRoomName');
+        $arr_search_data['readingroom'] = array_pluck($reading_info, 'ReadingRoomName', 'LrIdx');
 
         $this->load->view("pass/reading_room/issue/index", [
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
-            'arr_campus' => $arr_campus
+            'arr_search_data' => $arr_search_data
         ]);
     }
 
     public function listAjax()
     {
-        $count = 2;
-        $list = [
-            '0' => [
-                'Idx' => '1',
-                'OrderNo' => '2018000001',
-                'MemName' => '홍길동',
-                'MemPhone' => '010-1234-1234',
-                '결제완료일' => '2018-01-01 10:00:00',
-                'CampusName' => '신림',
-                'ReadingRoomName' => '1층 A',
-                '결제금액' => '10000',
-                '결제상태' => '결제완료',
-                '좌석번호' => '',
-                '예치금' => '',
-                '대여시작일' => '',
-                '대여종료일' => '',
-                'AssingIsUse' => 'N',
-                '좌석상태' => '신규',
-                'RegAdminName' => '',
-                'RegDatm' => '',
-                'aaa' => '배정',
-                'bbb' => ''
+        $mang_type = $this->_req('mang_type');
+
+        $arr_condition = [
+            'EQ' => [
+                'a.SiteCode' => $this->_reqP('search_site_code'),
+                'a.CampusCcd' => $this->_reqP('search_campus_ccd'),
             ],
-            '1' => [
-                'Idx' => '1',
-                'OrderNo' => '2018000001',
-                'MemName' => '홍길동',
-                'MemPhone' => '010-1234-1234',
-                '결제완료일' => '2018-01-01 10:00:00',
-                'CampusName' => '신림',
-                'ReadingRoomName' => '1층 A',
-                '결제금액' => '10000',
-                '결제상태' => '결제완료',
-                '좌석번호' => '3',
-                '예치금' => '반환',
-                '대여시작일' => '2018-01-01 10:00:00',
-                '대여종료일' => '2018-01-01 10:00:00',
-                '배정여부' => 'Y',
-                '좌석상태' => '연장',
-                'RegAdminName' => '관리자명',
-                'RegDatm' => '2018-01-01 10:00:00',
-                'aaa' => '배정',
-                'bbb' => '연장'
+            'ORG' => [
+                'LKB' => [
+                    'a.Name' => $this->_reqP('search_value'),
+                    'a.ProdCode' => $this->_reqP('search_value'),
+                    'a.LakeLayer' => $this->_reqP('search_value'),
+                ]
             ]
         ];
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+            ]);
+        }
+
+        $list = [];
+        $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc', 'c.RrudIdx' => 'asc']);
+        }
 
         return $this->response([
             'recordsTotal' => $count,

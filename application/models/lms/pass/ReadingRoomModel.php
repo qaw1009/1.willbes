@@ -68,7 +68,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
     }
 
     /**
-     * 독서실/사물함 데이터 조회
+     * 독서실/사물함 단일 데이터 조회
      * @param $arr_condition
      * @param $column
      * @return mixed
@@ -76,6 +76,17 @@ class ReadingRoomModel extends BaseReadingRoomModel
     public function getReadingRoomInfo($arr_condition, $column)
     {
         return $this->_getReadingRoomInfo($arr_condition, $column);
+    }
+
+    /**
+     * 독서실/사물함 다중 데이터 조회
+     * @param $arr_condition
+     * @param $column
+     * @return mixed
+     */
+    public function listReadingRoomInfo($arr_condition, $column)
+    {
+        return $this->_listReadingRoomInfo($arr_condition, $column);
     }
 
     /**
@@ -355,6 +366,70 @@ class ReadingRoomModel extends BaseReadingRoomModel
 
         return true;
     }
+
+    /**
+     * 독서실/사물함 신청내역/연장 리스트
+     * @param $mang_type
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSeatDetail($mang_type, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                b.OrderIdx, b.OrderNo, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, b.ReprProdName, b.OrderDatm, op.OrderPrice
+                , c.NowMIdx, a.CampusCcd, op.PayStatusCcd, d.PayStatusCcd AS SubPayStatusCcd
+                , op.ProdCode, op.OrderPrice, op.PayStatusCcd, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone
+                , fn_ccd_name(a.CampusCcd) AS CampusName
+                , fn_ccd_name(op.PayStatusCcd) AS PayStatusName
+                , fn_ccd_name(d.PayStatusCcd) AS SubPayStatusName
+                , c.UseStartDate, c.UseEndDate, c.StatusCcd AS SeatStatusCcd
+                , fn_ccd_name(c.StatusCcd) AS SeatStatusName
+                , e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM (
+                SELECT o.OrderIdx, o.OrderNo, o.MemIdx, o.SiteCode, o.ReprProdName, o.OrderDatm
+                FROM {$this->_table['lms_order']} AS o
+                WHERE o.PayRouteCcd = {$this->_order_route_ccd}
+            ) AS b
+            
+            INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
+            INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
+            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}'
+            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
+            INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode
+            INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
+        ";
+        /*INNER JOIN lms_readingroomusedetail AS c ON b.LrIdx = c.LrIdx*/
+
+
+        //사이트 권한
+        $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes();
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
+
+        //켐퍼스 권한
+        $where_campus = $this->_makeAuthCampusQueryString();
+        $where = $where_temp . $where_campus;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+
+
 
     /**
      * @param $input

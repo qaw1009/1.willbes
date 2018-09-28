@@ -247,7 +247,13 @@ class Cart extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->cartFModel->removeCart(json_decode($this->_reqP('cart_idx'), true));
+        if($this->_reqP('_del_type') === 'each') {  //cartIdx 개별삭제
+            $_method_name = 'removeCartByCartIdx';
+        } else {
+            $_method_name = 'removeCart';
+        }
+
+        $result = $this->cartFModel->$_method_name(json_decode($this->_reqP('cart_idx'), true));
 
         $this->json_result($result, '삭제 되었습니다.', $result);        
     }

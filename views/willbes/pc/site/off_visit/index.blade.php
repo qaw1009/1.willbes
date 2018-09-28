@@ -189,7 +189,7 @@
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt class="tx-blue">{{ $row['StudyPatternCcdName'] }}</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt class="tx-gray">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</dt>
+                                                    <dt class="tx-gray">{{ date('Y-m-d', strtotime($row['SaleStartDatm'])) }} ~ {{ date('Y-m-d', strtotime($row['SaleEndDatm'])) }}</dt>
                                                 </dl>
                                             </td>
                                             <td class="w-notice p_re">

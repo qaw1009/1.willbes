@@ -109,11 +109,13 @@ class OffPackage extends \app\controllers\FrontController
 
     public function show($params = [])
     {
-
+        $class_type = strtolower($this->router->class);
         /*  온라인신청 과 방문신청 분기*/
         if($class_type === 'offpackage') {
+            $_study_apply_ccds = ['654002', '654003']; //온라인 접수, 방문+온라인
             $_view_page = 'site/off_pack_lecture/show';
         } else {    //OffVisitPackage
+            $_study_apply_ccds = ['654001', '654003']; //방문접수, 방문+온라인
             $_view_page = 'site/off_visit/package_show';
         }
 
@@ -128,7 +130,12 @@ class OffPackage extends \app\controllers\FrontController
             show_alert('상품코드가 존재하지 않습니다.', 'back');
         }
 
-        $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code);  //상품 정보 추출
+
+        $arr_condition = [
+            'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
+        ];
+
+        $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '',$arr_condition);  //상품 정보 추출
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }

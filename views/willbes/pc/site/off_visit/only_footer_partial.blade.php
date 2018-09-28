@@ -110,12 +110,12 @@
             if(ret.data.length > 0) {
                 $.each(ret.data, function (i, item) {
                     //console.log(item.ProdCode +' -- '+ item.ProdName);
-                    html += '<div class="LecPocketlist" id="'+ item.CartIdx + '" data-prod-code="'+item.ProdCode+'">\n';
+                    html += '<div class="LecPocketlist" id="'+ item.CartIdx + '" data-prod-code="'+item.ProdCode+'">';
                     html += '  <span class="oBox campus_'+item.CampusCcd+' ml10 NSK">' + item.CampusCcdName + '</span>\n';
-                    html +='  <span class="w-tit p_re">' + item.ProdName + '\n';
+                    html +='   &nbsp;<span class="w-tit p_re">' + item.ProdName + '\n';
                     html +='          <a class="closeBtn" href="javascript:rowDelete(\'' + item.CartIdx + '\')"><img src="{{ img_url('cart/close.png') }}"></a>\n';
-                    html +='  </span>\n';
-                    html +='  <ul class="NSK"><li class="price tx-blue f_right">' + addComma(item.RealSalePrice) + '원</li></ul>\n';
+                    html +='   </span>\n';
+                    html +='   <ul class="NSK"><li class="price tx-blue f_right">' + addComma(item.RealSalePrice) + '원</li></ul>\n';
                     html +='</div>\n';
                     seq += 1;
                     price_sum += parseInt(item.RealSalePrice);

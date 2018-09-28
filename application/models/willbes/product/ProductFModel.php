@@ -149,9 +149,9 @@ class ProductFModel extends WB_Model
      * @param string $add_column
      * @return array
      */
-    public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '')
+    public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '', $arr_condition = [])
     {
-        $arr_condition = ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']];
+        $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']]);
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);

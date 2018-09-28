@@ -94,7 +94,13 @@ class Regist extends \app\controllers\BaseController
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $lr_idx = $params[0];
-            $tempData = $this->readingRoomModel->getReadingRoomInfo($lr_idx, 'ProdCode');
+            $arr_condition = [
+                'EQ' => [
+                    'LrIdx' => $lr_idx,
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $tempData = $this->readingRoomModel->getReadingRoomInfo($arr_condition, 'ProdCode');
             $data = $this->readingRoomModel->findReadingRoom($tempData['ProdCode']);
 
             if (count($data) < 1) {
@@ -165,7 +171,6 @@ class Regist extends \app\controllers\BaseController
     public function createSeatModal($params = [])
     {
         $prod_code = $params[0];
-        $master_order_idx = $this->_reqG('master_order_idx');
 
         //좌석상태공통코드
         $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->_groupCcd['seat']);
@@ -180,15 +185,17 @@ class Regist extends \app\controllers\BaseController
         $seat_data = $this->readingRoomModel->listSeat($prod_code);
 
         //기준주문식별자 메모 데이터 조회
-        $memo_data = [];
-        /*$memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);*/
+        /*$memo_data = [];
         for ($i = 0; $i<40; $i++) {
             $memo_data[$i] = [
                 'Memo' => '123123',
-                'wAdminName' => '최현탁',
+                'RegAdminName' => '최현탁',
                 'RegDatm' => '2018-01-01 01:01:01'
             ];
-        }
+        }*/
+
+        $master_order_idx = '63';
+        $memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);
 
         $this->load->view("pass/reading_room/regist/create_seat_modal", [
             'prod_code' => $prod_code,
@@ -207,6 +214,7 @@ class Regist extends \app\controllers\BaseController
     public function testStorePayment()
     {
         $arr_input = [
+            'prod_code' => $this->_reqP('rdr_prod_code'),
             'serial_num' => $this->_reqP('rdr_serial_num'),
             'seat_status' => $this->_reqP('rdr_seat_status'),
             'rdr_use_start_date' => $this->_reqP('rdr_use_start_date'),
@@ -215,9 +223,9 @@ class Regist extends \app\controllers\BaseController
             'rdr_memo' => $this->_reqP('rdr_memo'),
         ];
 
-        print_r($arr_input);
-        exit;
+        $order_idx = '63';
 
-        $this->readingRoomModel->addSeat($this->_reqP(null, false), '', '');
+        $result = $this->readingRoomModel->testAddSeat($arr_input, $order_idx);
+        return $result;
     }
 }

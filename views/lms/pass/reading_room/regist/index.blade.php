@@ -163,8 +163,8 @@
             // 좌석배정/좌석이동 TEST
             $list_table.on('click', '.btn-create-seat-modal', function() {
                 $('.btn-create-seat-modal').setLayer({
-                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&master_order_idx=',
-                    /*"url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&master_order_idx=',*/
+                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}',
+                    /*"url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}',*/
                     "width" : "1200"
                 });
             });

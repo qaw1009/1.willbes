@@ -96,15 +96,11 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1-1">예치금반환여부 <span class="required">*</span>
+                <label class="control-label col-md-1-1" for="is_sub_price">예치금반환여부 <span class="required">*</span>
                 </label>
                 <div class="col-md-10 form-inline">
                     <div class="checkbox">
-                        @if ($data['sub_RealSalePrice'] > 0)
-                            <input type="checkbox" id="rdr_is_sub_price" name="rdr_is_sub_price" value="Y" class="flat" checked="checked"/> <label class="inline-block mr-5" for="rdr_is_sub_price">예치금있음</label>
-                        @else
-                            <input type="checkbox" id="rdr_is_sub_price" name="rdr_is_sub_price" value="N" class="flat" /> <label class="inline-block mr-5" for="rdr_is_sub_price">예치금없음</label>
-                        @endif
+                        <input type="checkbox" id="is_sub_price" name="is_sub_price" value="Y" class="flat" @if($data['sub_RealSalePrice'] > 0)checked="checked"@endif/> <label class="inline-block mr-5" for="is_sub_price">예치금있음</label>
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;• 결제/환불정보로 자동 셋팅 (환불 시 '반환', 예치금 0원 시 '없음')
                 </div>
@@ -143,7 +139,6 @@
                             @endphp
                             <li>
                                 <button type="button" id="_seat_{{$row['SerialNumber']}}" class="btn {{$btn_type}} btn_choice_seat" data-seat-type="{{$row['StatusCcd']}}" data-seat-num="{{$row['SerialNumber']}}" data-member-idx="{{$row['MemIdx']}}">{{$row['SerialNumber']}}
-                                    <br/>{{$row['MemName']}}
                                     <p>{{(empty($row['MemName']) === true) ? '미사용' : $row['MemName']}}</p>
                                 </button>
                             </li>
@@ -173,6 +168,12 @@
             <div class="form-group form-group-sm">
                 <div class="col-md-12">
                     <table id="list_ajax_table_modal" class="table table-striped table-bordered">
+                        <colgroup>
+                            <col style="width: 8%;">
+                            <col>
+                            <col style="width: 15%;">
+                            <col style="width: 20%;">
+                        </colgroup>
                         <thead>
                         <tr>
                             <th>No</th>
@@ -186,7 +187,7 @@
                             <tr>
                                 <td>{{ $loop->index }}</td>
                                 <td>{!! nl2br($row['Memo']) !!}</td>
-                                <td>{{$row['wAdminName']}}</td>
+                                <td>{{$row['RegAdminName']}}</td>
                                 <td>{{$row['RegDatm']}}</td>
                             </tr>
                         @endforeach
@@ -223,16 +224,16 @@
             var set_rdr_seat_status = $parent_regi_form.find('input[id="rdr_seat_status_{{$prod_code}}"]').val();
             var set_rdr_use_start_date = $parent_regi_form.find('input[id="rdr_use_start_date_{{$prod_code}}"]').val();
             var set_rdr_use_end_date = $parent_regi_form.find('input[id="rdr_use_end_date_{{$prod_code}}"]').val();
-            var set_rdr_is_sub_price = $parent_regi_form.find('input[id="rdr_is_sub_price_{{$prod_code}}"]').val();
+            var set_rdr_is_sub_price = $parent_regi_form.find('input[id="is_sub_price_{{$prod_code}}"]').val();
             var set_rdr_memo = $parent_regi_form.find('input[id="rdr_memo_{{$prod_code}}"]').val();
             $_search_form.find('input[name="rdr_choice_serial_num"]').val(set_rdr_serial_num);
             $_search_form.find('input:radio[name=rdr_seat_status]:input[value='+set_rdr_seat_status+']').attr("checked", true);
             $_search_form.find('input[name="rdr_use_start_date"]').val(set_rdr_use_start_date);
             $_search_form.find('input[name="rdr_use_end_date"]').val(set_rdr_use_end_date);
             if (set_rdr_is_sub_price == 'Y') {
-                $_search_form.find('input:checkbox[name="rdr_is_sub_price"]').attr("checked", true);
+                $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", true);
             } else {
-                $_search_form.find('input:checkbox[name="rdr_is_sub_price"]').attr("checked", false);
+                $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", false);
             }
             $_search_form.find('textarea[name="rdr_memo"]').val(set_rdr_memo);
             $('#_seat_'+set_rdr_serial_num).css('background-color','#12ec23');
@@ -241,9 +242,12 @@
             $('.btn-set-search-date-modal').click(function() {
                 var period = $(this).data('period');
                 var periods = period.split('-');
-
+                var start_date = $_search_form.find('input[name="rdr_use_start_date"]').val();
+                if (start_date == '') {
+                    start_date = moment().format('YYYY-MM-DD');
+                }
                 // 날짜 설정
-                setDefaultDatepicker(+periods[0], periods[1], 'rdr_use_start_date', 'rdr_use_end_date');
+                setDefaultDatepicker(+periods[0], periods[1], 'rdr_use_start_date', 'rdr_use_end_date', start_date);
 
                 // set active class
                 $('.btn-set-search-date-modal').removeClass('active');
@@ -288,7 +292,7 @@
                 rdr_use_start_date = $('#rdr_use_start_date').val();
                 rdr_use_end_date = $('#rdr_use_end_date').val();
                 rdr_memo = $('#rdr_memo').val();
-                if ($('input:checkbox[name="rdr_is_sub_price"]').is(":checked") ==  true) {
+                if ($('input:checkbox[name="is_sub_price"]').is(":checked") ==  true) {
                     rdr_is_sub_price = 'Y';
                 } else {
                     rdr_is_sub_price = 'N';
@@ -314,7 +318,7 @@
                 html += '<input type="hidden" id="rdr_seat_status_{{$prod_code}}" name="rdr_seat_status[]" value="'+rdr_seat_status+'">';
                 html += '<input type="hidden" id="rdr_use_start_date_{{$prod_code}}" name="rdr_use_start_date[]" value="'+rdr_use_start_date+'">';
                 html += '<input type="hidden" id="rdr_use_end_date_{{$prod_code}}" name="rdr_use_end_date[]" value="'+rdr_use_end_date+'">';
-                html += '<input type="hidden" id="rdr_is_sub_price_{{$prod_code}}" name="rdr_is_sub_price[]" value="'+rdr_is_sub_price+'">';
+                html += '<input type="hidden" id="rdr_is_sub_price_{{$prod_code}}" name="is_sub_price[]" value="'+rdr_is_sub_price+'">';
                 html += '<input type="hidden" id="rdr_memo_{{$prod_code}}" name="rdr_memo[]" value="'+rdr_memo+'">';
 
                 $parent_regi_form.find('input[id="rdr_prod_code_{{$prod_code}}"]').remove();

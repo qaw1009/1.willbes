@@ -30,6 +30,13 @@ class BaseReadingRoomModel extends WB_Model
         'Y' => '682002'    //독서실사물함 좌석상태(사용중)
     ];
 
+    protected $_arr_reading_room_seat_status_ccd = [
+        'in' => '683001',           //배정
+        'extension' => '683002',    //연장
+        'change' => '683003',       //자리이동
+        'out' => '683004',          //퇴실
+    ];
+
     protected $_table = [
         'lms_site' => 'lms_site',
         'lms_sys_code' => 'lms_sys_code',
@@ -107,21 +114,32 @@ class BaseReadingRoomModel extends WB_Model
 
     /**
      * 독서실/사물함 데이터 조회
-     * @param $lr_idx
+     * @param $arr_condition
      * @param string $column
      * @return mixed
      */
-    protected function _getReadingRoomInfo($lr_idx, $column = '*')
+    protected function _getReadingRoomInfo($arr_condition, $column = '*')
     {
-        $arr_condition = [
-            'EQ' => [
-                'LrIdx' => $lr_idx,
-                'IsStatus' => 'Y'
-            ]
-        ];
-
         $from = "
             FROM {$this->_table['readingRoom']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 상품가격조회
+     * @param $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    protected function _getProductSaleForReadingRoomInfo($arr_condition, $column = '*')
+    {
+        $from = "
+            FROM {$this->_table['product_sale']}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -207,7 +225,13 @@ class BaseReadingRoomModel extends WB_Model
     {
         try {
             // 상품코드 조회
-            $data = $this->_getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, ProdCode, SubProdCode');
+            $arr_condition = [
+                'EQ' => [
+                    'LrIdx' => element('lr_idx', $input),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $data = $this->_getReadingRoomInfo($arr_condition, 'LrIdx, ProdCode, SubProdCode');
             if (empty($data)) {
                 throw new \Exception('조회된 상품이 없습니다.');
             }
@@ -240,7 +264,13 @@ class BaseReadingRoomModel extends WB_Model
     {
         try {
             // 상품코드 조회
-            $data = $this->_getReadingRoomInfo(element('lr_idx', $input), 'LrIdx, SubProdCode');
+            $arr_condition = [
+                'EQ' => [
+                    'LrIdx' => element('lr_idx', $input),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $data = $this->_getReadingRoomInfo($arr_condition, 'LrIdx, SubProdCode');
             if (empty($data)) {
                 throw new \Exception('조회된 상품이 없습니다.');
             }
@@ -403,6 +433,43 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
+     * 독서실/사물함 좌석 상태 조회
+     * @param $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    protected function _getReadingRoomMst($arr_condition, $column = 'MIdx')
+    {
+        $from = "
+            FROM {$this->_table['readingRoom_mst']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 독서실/사물함 결제정보 조회
+     * @param $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    protected function _getReadingRoomUseDetail($arr_condition, $column = 'LrIdx')
+    {
+        $from = "
+            FROM {$this->_table['readingRoom_useDetail']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->result_array();
+    }
+
+    /**
      * 독서실/사물함 등록
      * @param array $input
      * @return bool|string
@@ -474,7 +541,12 @@ class BaseReadingRoomModel extends WB_Model
             }
 
             // 좌석 결제 정보 조회
-            $detail_data = $this->_getReadingRoomUseDetail($_lr_idx);
+            $arr_condition = [
+                'EQ' => [
+                    'LrIdx' => $_lr_idx
+                ]
+            ];
+            $detail_data = $this->_getReadingRoomUseDetail($arr_condition);
             if (count($detail_data) > 0) {
                 throw new \Exception('등록된 결제 정보가 있습니다.');
             }
@@ -492,8 +564,6 @@ class BaseReadingRoomModel extends WB_Model
                     'LrIdx' => $_lr_idx,
                     'SerialNumber' => $i,
                     'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
-                    'UseStartDate' => element('use_start_date',$input),
-                    'UseEndDate' => element('use_end_date',$input),
                     'RegAdminIdx' => $this->session->userdata('admin_idx'),
                     'RegIp' => $this->input->ip_address()
                 ];
@@ -530,31 +600,6 @@ class BaseReadingRoomModel extends WB_Model
         $where_campus->or_where('a.CampusCcd IS NULL');
         $where_campus->group_end();
         return $where_campus->getMakeWhere(true);
-    }
-
-    /**
-     * 독서실/사물함 결제정보 조회
-     * @param string $column
-     * @param $lr_idx
-     * @return mixed
-     */
-    private function _getReadingRoomUseDetail($lr_idx, $column = 'LrIdx')
-    {
-        $arr_condition = [
-            'EQ' => [
-                'LrIdx' => $lr_idx
-            ]
-        ];
-
-        $from = "
-            FROM {$this->_table['readingRoom_useDetail']}
-        ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
-        $query = $this->_conn->query('select ' . $column . $from . $where);
-        return $query->result_array();
     }
 
     /**
@@ -654,5 +699,224 @@ class BaseReadingRoomModel extends WB_Model
             return $e->getMessage();
         }
         return true;
+    }
+
+    /**
+     * 좌석상태 업데이트
+     * @param $lr_idx           [상품코드에 매핑되는 식별자]
+     * @param $serial_number    [좌석번호]
+     * @param $now_order_idx    [생성된 주문 식별자]
+     * @param $status_ccd       [좌석상태 -> 682001:미사용, 682002:사용중, 682003:대기, 682004:홀드, 682005:고장]
+     * @param $start_date
+     * @param $end_date
+     * @return bool|string
+     */
+    protected function _updateSeatMst($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date)
+    {
+        try {
+            //최초좌석등록 시 현재 주문번호가 마스터주문번호로 셋팅
+            $master_o_idx = $now_order_idx;
+            $now_o_idx = $now_order_idx;
+
+            $data = [
+                'MasterOrderIdx' => $master_o_idx,
+                'NowOrderIdx' => $now_o_idx,
+                'StatusCcd' => $status_ccd,
+                'UseStartDate' => $start_date,
+                'UseEndDate' => $end_date,
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->set($data)->where('LrIdx', $lr_idx)->where('SerialNumber', $serial_number)->update($this->_table['readingRoom_mst']) === false) {
+                throw new \Exception('좌석상태 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 좌석 상세 정보 저장 [입실 (자리이동/퇴실)]
+     * @param $prod_code        [상품코드]
+     * @param $lr_idx
+     * @param $now_order_idx    [현재주문식별자]
+     * @param $now_m_idx        [사용중인좌석]
+     * @param $old_m_idx        [이전사용좌석]
+     * @param $use_start_date   [시작일 월단위]
+     * @param $use_end_date     [종료일 월단위]
+     * @return bool|string
+     */
+    protected function _insertSeatDetail($prod_code, $lr_idx, $now_order_idx, $now_m_idx, $old_m_idx, $use_start_date, $use_end_date)
+    {
+        try {
+            if ($use_start_date >= $use_end_date) {
+                throw new \Exception('날짜 정보가 올바르지 않습니다. 다시 시도해 주세요.');
+            }
+
+            //독서실/사물함 판매가 조회
+            $arr_condition = [
+                'EQ' => [
+                    'ProdCode' => $prod_code,
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $product_data = $this->_getProductSaleForReadingRoomInfo($arr_condition, 'RealSalePrice');
+            if (empty($product_data) === true) {
+                throw new \Exception('조회된 상품가격 정보가 없습니다.');
+            }
+
+            //월별가격 [일별가격 * 월별기간]
+            $arr_monthly_price = $this->_setMonthlyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
+
+            foreach ($arr_monthly_price as $key => $val) {
+                $seat_data = [
+                    'LrIdx' => $lr_idx,
+                    'MasterOrderIdx' => $now_order_idx,
+                    'NowOrderIdx' => $now_order_idx,
+                    'NowMIdx' => $now_m_idx,
+                    'OldMIdx' => $old_m_idx,
+                    'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['in'],
+                    'UseStartDate' => $val[0],
+                    'UseEndDate' => $val[1],
+                    'Price' => $val[2],
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address()
+                ];
+                if($this->_conn->set($seat_data)->insert($this->_table['readingRoom_useDetail']) === false) {
+                    throw new \Exception('좌석 배정에 실패했습니다.');
+                };
+
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 메모저장
+     * @param $master_order_idx
+     * @param $memo
+     * @return bool|string
+     */
+    protected function _addMemo($master_order_idx, $memo)
+    {
+        try {
+            $data = [
+                'MasterOrderIdx' => $master_order_idx,
+                'Memo' => $memo,
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if($this->_conn->set($data)->insert($this->_table['readingRoom_Memo']) === false) {
+                throw new \Exception('메모 등록에 실패했습니다.');
+            };
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 월별 가격 계산
+     * @param $price
+     * @param $start_date
+     * @param $end_date
+     * @return mixed
+     */
+    private function _setMonthlyPrice($price, $start_date, $end_date)
+    {
+        //일별가격
+        $daily_price = $this->_setDailyPrice($price, $start_date, $end_date);
+
+        //월별 시작일,종료일 셋팅
+        $arr_day = $this->_setMonthDays($start_date, $end_date);
+
+        //월별(일자계산) 가격
+        foreach ($arr_day as $key => $day) {
+            $interval = $this->_setDayDiff($day[0], $day[1]);
+            $arr_day[$key][] = $interval * $daily_price;
+        }
+        return $arr_day;
+    }
+
+    /**
+     * 일별 가격 계산 [소수점 반올림]
+     * @param $price
+     * @param $start_date
+     * @param $end_date
+     * @return mixed
+     */
+    private function _setDailyPrice($price, $start_date, $end_date)
+    {
+        $interval = $this->_setDayDiff($start_date, $end_date);
+        $daily_price = round($price / $interval);
+        return $daily_price;
+    }
+
+    /**
+     * 월별 시작일,종료일 셋팅
+     * @param $start_date
+     * @param $end_date
+     * @return mixed
+     */
+    private function _setMonthDays($start_date, $end_date)
+    {
+        $m_diff = $this->_setMonthDiff($start_date, $end_date);
+
+        $set_start_date = date('Y-m',strtotime($start_date));
+        if ($m_diff <= 0) {
+            $set_days[$set_start_date][] = $start_date;  //시작일
+            $set_days[$set_start_date][] = $set_start_date.'-'.date('d', strtotime($end_date));   //시작월의 마지막 날짜
+        } else {
+            $set_days[$set_start_date][] = $start_date;  //시작일
+            $set_days[$set_start_date][] = $set_start_date.'-'.date('t', strtotime($set_start_date));   //시작월의 마지막 날짜
+        }
+
+        //시작월 기준 +1개월
+        for($i=0; $i<$m_diff; $i++) {
+            $start_date = date("Y-m", strtotime(date($start_date)." +1 month"));
+            $set_days[$start_date][] = $start_date.'-01';  //시작일
+
+            //last loop
+            if ($i == ($m_diff-1)) {
+                $set_days[$start_date][] = $start_date . '-' . date('d', strtotime($end_date));   //시작월의 마지막 날짜
+            } else {
+                $set_days[$start_date][] = $start_date . '-' . date('t', strtotime($start_date));   //시작월의 마지막 날짜
+            }
+        }
+        return $set_days;
+    }
+
+    /**
+     * 날짜차이 (일수)
+     * @param $start_date   [시작일]
+     * @param $end_date     [종료일]
+     * @param $is_today     [시작일 포함여부]
+     * @return int|string
+     */
+    private function _setDayDiff($start_date, $end_date, $is_today = true)
+    {
+        $datetime1 = new DateTime($start_date);
+        $datetime2 = new DateTime($end_date);
+        $day_diff = $datetime1->diff($datetime2);
+        $interval = $day_diff->format('%a') + (($is_today === true) ? 1 : 0);
+        return $interval;
+    }
+
+    /**
+     * 날짜차이 (월수)
+     * @param $start_date
+     * @param $end_date
+     * @return float|int
+     */
+    private function _setMonthDiff($start_date, $end_date)
+    {
+        $s_date = explode('-',date('Y-m', strtotime(date($start_date))));
+        $e_date = explode('-',date('Y-m', strtotime(date($end_date))));
+        $diff_month = ($e_date[0] - $s_date[0])*12 + $e_date[1] - $s_date[1];
+        return $diff_month;
     }
 }

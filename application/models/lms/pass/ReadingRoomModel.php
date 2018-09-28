@@ -69,13 +69,13 @@ class ReadingRoomModel extends BaseReadingRoomModel
 
     /**
      * 독서실/사물함 데이터 조회
-     * @param $lr_idx
+     * @param $arr_condition
      * @param $column
      * @return mixed
      */
-    public function getReadingRoomInfo($lr_idx, $column)
+    public function getReadingRoomInfo($arr_condition, $column)
     {
-        return $this->_getReadingRoomInfo($lr_idx, $column);
+        return $this->_getReadingRoomInfo($arr_condition, $column);
     }
 
     /**
@@ -292,13 +292,89 @@ class ReadingRoomModel extends BaseReadingRoomModel
      * 좌석배정/연장
      * @param $input
      * @param $now_order_idx
-     * @param $master_order_idx : 연장 시 필요한 값
+     * @return array|bool
      */
-    public function addSeat($input, $now_order_idx, $master_order_idx = null)
+    public function addSeat($input, $now_order_idx)
     {
-        /**
-         * 좌석상태 체크
-         *
-         */
+        try {
+            foreach ($input['prod_code'] as $key => $prod_code) {
+                $arr_condition = [
+                    'EQ' => [
+                        'ProdCode' => $prod_code,
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+
+                //독서실/사물함 식별자 조회
+                $reading_info = $this->getReadingRoomInfo($arr_condition, 'LrIdx');
+
+                //사용중인 좌석 조회 [readingRoomMst, readingRoomDetail 2개 테이블 확인]
+                $arr_condition = [
+                    'EQ' => [
+                        'SerialNumber' => $input['serial_num'][$key],
+                        'StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
+                        'LrIdx' => $reading_info['LrIdx']
+                    ]
+                ];
+                $mst_data = $this->_getReadingRoomMst($arr_condition, 'MIdx');
+                if (empty($mst_data['MIdx']) === false) {
+                    throw new \Exception('사용중인 좌석입니다.');
+                }
+
+                $arr_condition = [
+                    'EQ' => [
+                        'NowMIdx' => $input['serial_num'][$key],
+                        'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['in'],
+                        'LrIdx' => $reading_info['LrIdx']
+                    ]
+                ];
+                $detail_data = $this->_getReadingRoomUseDetail($arr_condition);
+                if (count($detail_data) > 0) {
+                    throw new \Exception('등록된 좌석 정보가 있습니다.');
+                }
+
+                //좌석상태업데이트
+                if ($this->_updateSeatMst($reading_info['LrIdx'], $input['serial_num'][$key], $now_order_idx, $input['seat_status'][$key], $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
+                    throw new \Exception('좌석상태 수정에 실패했습니다.');
+                }
+
+                //좌석상세정보저장
+                if ($this->_insertSeatDetail($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
+                    throw new \Exception('좌석 등록에 실패했습니다.');
+                }
+
+                //메모 저장
+                if ($this->_addMemo($now_order_idx, $input['rdr_memo'][$key]) !== true) {
+                    throw new \Exception('메모 등록에 실패했습니다.');
+                }
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $input
+     * @param $now_order_idx
+     * @return array|bool
+     * TODO : 방문결제 개발 시 해당 메소드 삭제
+     */
+    public function testAddSeat($input, $now_order_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if ($this->addSeat($input, $now_order_idx) !== true) {
+                throw new \Exception('좌석 등록에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 }

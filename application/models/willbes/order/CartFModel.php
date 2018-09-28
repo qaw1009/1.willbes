@@ -462,6 +462,33 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
+     * 개별 장바구니 데이터 삭제 by CartIdx
+     * @param $cart_idx
+     * @return array|bool
+     */
+    public function removeCartByCartIdx($cart_idx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 세션 회원 식별자
+            $sess_mem_idx = $this->session->userdata('mem_idx');
+
+            $is_delete = $this->_conn->where('MemIdx', $sess_mem_idx)->where('CartIdx', $cart_idx)->delete($this->_table['cart']);
+            if ($is_delete === false) {
+                throw new \Exception('장바구니 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 상품 체크
      * @param string $learn_pattern [학습형태]
      * @param int $site_code [사이트코드]

@@ -460,16 +460,6 @@
 
         $(document).ready(function() {
 
-            rowspan = function(classname) {
-                $("."+classname).each(function () {
-                    var rows = $("."+classname+":contains('" + $(this).text() + "')");
-                    if (rows.length > 1) {
-                        rows.eq(0).attr("rowspan", rows.length);
-                        rows.not(":eq(0)").remove();
-                    }
-                });
-            };
-
             price_cal = function() {
                 var $lecPrice_total = 0;
                 var $bookPrice_total = 0;
@@ -548,8 +538,9 @@
                 cartNDirectPay($regi_form, $is_direct_pay, 'Y');
             });
 
-            rowspan('row_td');  //td rowspan
-            rowspan('row_td2');  //td rowspan
+            setRowspan('row_td');
+            setRowspan('row_td2');
+
             price_cal();            //가격 계산
 
         });

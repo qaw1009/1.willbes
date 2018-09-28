@@ -69,9 +69,9 @@
                         <span class="price-tit">총 주문금액</span>
                         <span class="row-line">|</span>
                         <span>
-                        <span class="price-txt">종합반</span>
-                        <span class="tx-light-blue">{{ number_format($real_sale_price,0)}}원</span>
-                    </span>
+                            <span class="price-txt">종합반</span>
+                            <span class="tx-light-blue">{{ number_format($real_sale_price,0)}}원</span>
+                        </span>
                         <span class="price-total tx-light-blue">{{ number_format($real_sale_price,0)}}원</span>
                     </div>
                     <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$real_sale_price}}"/>
@@ -435,19 +435,8 @@
                 cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
             });
 
-
-
-            rowspan = function(classname) {
-                $("."+classname).each(function () {
-                    var rows = $("."+classname+":contains('" + $(this).text() + "')");
-                    if (rows.length > 1) {
-                        rows.eq(0).attr("rowspan", rows.length);
-                        rows.not(":eq(0)").remove();
-                    }
-                });
-            };
-            rowspan('row_td');
-            rowspan('row_td2');
+            setRowspan('row_td');
+            setRowspan('row_td2');
 
         });
     </script>

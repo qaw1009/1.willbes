@@ -10,19 +10,16 @@
         {!! method_field($method) !!}
 
         <input type="hidden" name="LecIdx" id="LecIdx" value="{{$lecidx}}" />
-
         <input type="hidden" name="delwUnitIdx[]" id="delwUnitIdx" value="">
 
         @endsection
 
         @section('layer_content')
-            <div class="form-group form-group-sm">
-                <div class="x_title text-right">
-                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
-                </div>
+            <div class="x_title text-right">
+                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
             </div>
 
-            <div class="form-group form-group-sm">
+            <div class="form-group form-group-sm no-border-bottom">
                 <div class="x_title text-left">
                     마스터강의기본정보
                    · {{ $data['wCpName'] }} > {{ $data['wContentCcdName'] }} > {{ $data['wLecName'] }} > {{ $data['profName_string'] }}
@@ -31,8 +28,8 @@
 
             {!! form_errors() !!}
 
-            <div class="form-group form-group-sm">
-                <p class="x_title text-left">
+            <div class="form-group form-group-sm no-border-bottom">
+                <div class="">
                     <div class="item form-inline">
                         <select name='rowNum' id='rowNum' class="form-control" title="갯수" style="width: 50px">
                             @for($i=1; $i<=10; $i++)

@@ -64,14 +64,15 @@ class CouponFModel extends WB_Model
         } else {
             $column = 'C.CouponIdx, CD.MemIdx, C.SiteCode, CC.CateCodes, if(CD.CouponPin = "N", "", CD.CouponPin) as CouponPin, C.CouponName
                 , C.ApplyTypeCcd, fn_ccd_name(C.ApplyTypeCcd) as ApplyTypeCcdName
-                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IsUse, CD.UseDatm, CD.IssueDatm, CD.ExpireDatm
+                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IsUse, CD.UseDatm, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
                 , (case when CD.IsUse = "Y" then "사용"
-                        when now() between CD.IssueDatm and CD.ExpireDatm then "유효"
-                        when now() > CD.ExpireDatm then "만료"
+                        when NOW() between CD.IssueDatm and CD.ExpireDatm then "유효"
+                        when NOW() > CD.ExpireDatm then "만료"
+                        when CD.ValidStatus = "N" then "비유효"                        
                         when CD.ValidStatus = "C" then "취소"
                         else CD.ValidStatus			
-                  end) as ValidStatus
-                , if(now() < CD.ExpireDatm, to_days(CD.ExpireDatm) - to_days(now()), 0) as RemainDay' . $add_column;
+                  end) as ValidStatusName
+                , if(NOW() < CD.ExpireDatm, to_days(CD.ExpireDatm) - to_days(NOW()), 0) as RemainDay' . $add_column;
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -116,8 +117,8 @@ class CouponFModel extends WB_Model
         } else {
             $column = 'C.CouponIdx, CD.CdIdx, CD.MemIdx, C.SiteCode, CC.CateCodes, if(CD.CouponPin = "N", "", CD.CouponPin) as CouponPin, C.CouponName
                 , C.ApplyTypeCcd, fn_ccd_name(C.ApplyTypeCcd) as ApplyTypeCcdName, ifnull(CP.ProdCodes, "") as ProdCodes
-                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IssueDatm, CD.ExpireDatm
-                , if(now() < CD.ExpireDatm, to_days(CD.ExpireDatm) - to_days(now()), 0) as RemainDay                
+                , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
+                , if(NOW() < CD.ExpireDatm, to_days(CD.ExpireDatm) - to_days(NOW()), 0) as RemainDay                
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -144,7 +145,7 @@ class CouponFModel extends WB_Model
             where CD.MemIdx = ?
                 and C.IsIssue = "Y"
                 and C.IsStatus = "Y"                
-                and now() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
+                and NOW() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
                 and CD.ValidStatus = "Y"    
                 and CD.IsUse = "N"  # 미사용 쿠폰                            
                 and C.ApplyTypeCcd = ?   # 상품분류 구분                     

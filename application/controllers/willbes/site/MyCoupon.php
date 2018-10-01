@@ -47,7 +47,7 @@ class MyCoupon extends \app\controllers\FrontController
         ];
 
         // 전체보유 쿠폰조회
-        $results['all'] = $this->couponFModel->listMemberCoupon(false, $arr_condition, null, null, ['CD.IssueDatm' => 'desc']);
+        $results['all'] = $this->couponFModel->listMemberCoupon(false, $arr_condition, null, null, ['CD.CdIdx' => 'desc']);
 
         // 적용가능한 쿠폰조회
         $arr_param = [
@@ -64,7 +64,7 @@ class MyCoupon extends \app\controllers\FrontController
             'ProdCode' => $cart_data['ProdCode'],
         ];
 
-        $results['usable'] = $this->couponFModel->listMemberProductCoupon(false, $arr_param, null, null, ['CD.IssueDatm' => 'desc']);
+        $results['usable'] = $this->couponFModel->listMemberProductCoupon(false, $arr_param, null, null, ['CD.CdIdx' => 'desc']);
 
         $this->load->view('site/order/my_coupon_list', [
             'ele_id' => $this->_req('ele_id'),

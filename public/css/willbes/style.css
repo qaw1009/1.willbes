@@ -7606,8 +7606,6 @@ table.testTable tr td.w-btn a {
     background: url("../../img/willbes/mypage/icon_round_blue.png") no-repeat center center;
 }
 
-
-
 /* subContainer : Mypage : 결제관리 : orderTable */
 .orderTable.LeclistTable .listTable tr td {
     line-height: 25px;
@@ -7666,6 +7664,12 @@ table.testTable tr td.w-btn a {
     margin: 10px auto 0;
     font-size: 12px;
     text-align: left;
+}
+
+/* subContainer : Mypage : 결제관리 : 쿠폰/수강권관리 */
+.pointTable tr td.w-list {
+    line-height: 16px;
+    padding: 10px 0;
 }
 
 /* subContainer : Mypage : 학습지원관리 : 쪽지관리 */

@@ -237,41 +237,9 @@
 
                 {{-- footer script --}}
                 @include('willbes.pc.site.off_visit.only_footer_partial')
-
             </div>
     </div>
     <script type="text/javascript">
-
-        $(document).ready(function() {
-            // 검색어 입력 후 엔터
-            $('#search_value').on('keyup', function() {
-                if (window.event.keyCode === 13) {
-                    goSearch();
-                }
-            });
-
-            // 검색 버튼 클릭
-            $('#btn_search').on('click', function() {
-                goSearch();
-            });
-
-            var goSearch = function() {
-                goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
-            };
-
-            // 방문접수, 바로결제 버튼 클릭
-            $('button[name="btn_off_visit_pay"], button[name="btn_off_direct_pay"]').on('click', function() {
-
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-                var $is_direct_pay = $(this).data('direct-pay');
-                var $is_redirect = $(this).data('is-redirect');
-
-                cartNDirectPay($regi_off_form, $is_direct_pay, $is_redirect);
-            });
-
-        });
-
     </script>
     <!-- End Container -->
 @stop

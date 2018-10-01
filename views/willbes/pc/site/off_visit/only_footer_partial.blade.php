@@ -48,12 +48,28 @@
                             <span class="">방문결제 접수</span>
                         </button>
                     </div>
-
                 </div>
 
 <script type="text/javascript">
     var $regi_off_form = $('#regi_off_form');
     $(document).ready(function() {
+
+        // 검색어 입력 후 엔터
+        $('#search_value').on('keyup', function() {
+            if (window.event.keyCode === 13) {
+                goSearch();
+            }
+        });
+
+        // 검색 버튼 클릭
+        $('#btn_search').on('click', function() {
+            goSearch();
+        });
+
+        var goSearch = function() {
+            goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
+        };
+
         {{-- 장바구니 추출 / 왼쪽-오른쪽 동기화 --}}
         cartList();
         sameContent();
@@ -110,7 +126,7 @@
             if(ret.data.length > 0) {
                 $.each(ret.data, function (i, item) {
                     //console.log(item.ProdCode +' -- '+ item.ProdName);
-                    html += '<div class="LecPocketlist" id="'+ item.CartIdx + '" data-prod-code="'+item.ProdCode+'">';
+                    html += '<div class="LecPocketlist" id="'+ item.CartIdx + '" data-prod-code="'+item.ProdCode+'" data-sub-prod-code="'+item.ProdCodeSub +'">';
                     html += '  <span class="oBox campus_'+item.CampusCcd+' ml10 NSK">' + item.CampusCcdName + '</span>\n';
                     html +='   &nbsp;<span class="w-tit p_re">' + item.ProdName + '\n';
                     html +='          <a class="closeBtn" href="javascript:rowDelete(\'' + item.CartIdx + '\')"><img src="{{ img_url('cart/close.png') }}"></a>\n';
@@ -199,18 +215,41 @@
 
     {{-- 상품목록 과 장바구니 일치시키기 --}}
     function sameContent() {
-        $_checkbox_cnt = $("input[name='prod_code[]']").length;
-        $_basket_cnt = $(".LecPocketlist").length;
-        if($_checkbox_cnt > 0) {
-            for(i=0;i<$_checkbox_cnt;i++){
-                for(k=0;k<$_basket_cnt;k++) {
-                    if(  $("input[name='prod_code[]']:eq("+i+")").data('prod-code') == $( ".LecPocketlist:eq("+k+")" ).data('prod-code') ) {
-                        $("input[name='prod_code[]']:eq("+i+")").prop('checked',true); break ;
-                    } else {
-                        $("input[name='prod_code[]']:eq("+i+")").prop('checked',false);
+
+        @if($class_type == 'offvisitpackage') {{-- 패키지 일경우 하위상품 동기화--}}
+            $_basket_cnt = $(".LecPocketlist").length;
+            $_basket_sub_prod_code = '';
+            for(k=0;k<$(".LecPocketlist").length;k++) {
+                if($("input[name='prod_code[]']").data('prod-code')== $( ".LecPocketlist:eq("+k+")" ).data('prod-code') )  {
+                    //alert($( ".LecPocketlist:eq("+k+")" ).data('sub-prod-code'))
+                    $_basket_sub_prod_code = $( ".LecPocketlist:eq("+k+")" ).data('sub-prod-code')
+                }
+            }
+            {{-- 하위상품 존재시 체크 하기 --}}
+            $_checkbox_cnt = $("input[name='prod_code_sub[]']").length;
+            if($_checkbox_cnt > 0) {
+                for(i=0;i<$_checkbox_cnt;i++) {
+                    if( $_basket_sub_prod_code.indexOf($("input[name='prod_code_sub[]']:eq(" + i + ")").val()) >= 0){
+                        $("input[name='prod_code_sub[]']:eq(" + i + ")").prop('checked',true)
                     }
                 }
             }
-        }
+
+        @else   {{-- 단과반 일경우 왼쪽과 오른쪽 동기화--}}
+            $_checkbox_cnt = $("input[name='prod_code[]']").length;
+            $_basket_cnt = $(".LecPocketlist").length;
+            if($_checkbox_cnt > 0) {
+                for(i=0;i<$_checkbox_cnt;i++){
+                    for(k=0;k<$_basket_cnt;k++) {
+                        if(  $("input[name='prod_code[]']:eq("+i+")").data('prod-code') == $( ".LecPocketlist:eq("+k+")" ).data('prod-code') ) {
+                            $("input[name='prod_code[]']:eq("+i+")").prop('checked',true); break ;
+                        } else {
+                            $("input[name='prod_code[]']:eq("+i+")").prop('checked',false);
+                        }
+                    }
+                }
+            }
+        @endif
     }
+
 </script>

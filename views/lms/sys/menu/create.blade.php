@@ -12,11 +12,9 @@
 @endsection
 
 @section('layer_content')
-    <div class="form-group form-group-sm">
         <div class="x_title text-right">
             <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
         </div>
-    </div>
     {!! form_errors() !!}
     @if($menu_depth == '1')
         {{-- GNB 메뉴 등록 --}}

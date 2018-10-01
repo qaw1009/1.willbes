@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary btn_list" type="button">목록</button>
                 </div>
@@ -119,9 +119,8 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="clearfix"></div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center clear">
                     <button type="submit" class="btn btn-success mr-10" id="btn_menu_regist">저장</button>
                     <button class="btn btn-primary btn_list" type="button">목록</button>
                 </div>

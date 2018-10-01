@@ -14,10 +14,8 @@
         @endsection
 
         @section('layer_content')
-            <div class="form-group form-group-sm">
-                <div class="x_title text-right">
-                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
-                </div>
+            <div class="x_title text-right">
+                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
             </div>
             {!! form_errors() !!}
             <div class="form-group form-group-sm">

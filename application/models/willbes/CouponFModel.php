@@ -5,6 +5,7 @@ class CouponFModel extends WB_Model
 {
     private $_table = [
         'coupon' => 'lms_coupon',
+        'coupon_pin' => 'lms_coupon_pin',
         'coupon_detail' => 'lms_coupon_detail',
         'coupon_r_category' => 'lms_coupon_r_category',
         'coupon_r_product' => 'lms_coupon_r_product',
@@ -23,6 +24,9 @@ class CouponFModel extends WB_Model
 
     // 학습형태와 쿠폰상세구분 공통코드 맵핑 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
     public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => '', '615003' => '646002', '615004' => '646003', '615005' => '', '615006' => '646004', '615007' => '646005'];
+
+    // 발급타입 공통코드 (자동, 수동, 환불재발급)
+    private $_coupon_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'reissue' => '647003'];
 
     public function __construct()
     {
@@ -230,6 +234,118 @@ class CouponFModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 쿠폰정보 조회
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function findCoupon($arr_condition = [])
+    {
+        $column = 'C.CouponIdx, C.CouponTypeCcd, C.DeployType, C.PinType, C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.IsIssue
+            , ifnull(CP.CouponPin, "N") as CouponPin, date_add(NOW(), interval C.ValidDay day) as ExpireDatm';
+
+        $arr_condition = array_merge_recursive($arr_condition, [
+            'EQ' => ['C.IsIssue' => 'Y', 'C.IsStatus' => 'Y']
+        ]);
+
+        return $this->_conn->getJoinFindResult($this->_table['coupon'] . ' as C', 'left', $this->_table['coupon_pin'] . ' as CP'
+            , 'C.CouponIdx = CP.CouponIdx', $column, $arr_condition);
+    }
+
+    /**
+     * 쿠폰정보 조회 by 쿠폰식별자
+     * @param int $coupon_idx
+     * @return mixed
+     */
+    public function findCouponByIdx($coupon_idx)
+    {
+        $arr_condition = ['EQ' => ['C.CouponIdx' => $coupon_idx, 'C.DeployType' => 'N']];
+        return $this->findCoupon($arr_condition);
+    }
+
+    /**
+     * 쿠폰정보 조회 by 핀번호
+     * @param string $coupon_pin
+     * @return mixed
+     */
+    public function findCouponByPin($coupon_pin)
+    {
+        $arr_condition = ['EQ' => ['CP.CouponPin' => $coupon_pin, 'C.DeployType' => 'F']];
+        return $this->findCoupon($arr_condition);
+    }
+
+    /**
+     * 회원 쿠폰발급
+     * @param int|string $coupon_no [쿠폰식별자 or 핀번호]
+     * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회]
+     * @return array|bool
+     */
+    public function addMemberCoupon($coupon_no, $is_pin = true)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $find_method = $is_pin === true ? 'Pin' : 'Idx';
+            $today = date('Y-m-d');
+            $reg_ip = $this->input->ip_address();
+
+            // 쿠폰정보 조회
+            $row = $this->{'findCouponBy' . $find_method}($coupon_no);
+            if (empty($row) === true) {
+                throw new \Exception('유효하지 않은 번호입니다. 쿠폰번호를 확인해주세요.', _HTTP_NOT_FOUND);
+            }
+
+            // 발급유효기간 확인
+            if ($today < $row['IssueStartDate'] || $today > $row['IssueEndDate']) {
+                throw new \Exception('유효기간이 만료된 번호입니다.', _HTTP_NO_PERMISSION);
+            }
+
+            if ($row['PinType'] == 'R') {
+                // 오프라인 > 랜덤핀
+                $chk_condition = ['EQ' => ['CouponPin' => $row['CouponPin'], 'ValidStatus' => 'Y']];
+            } else {
+                // 온라인 or 오프라인 > 공통핀
+                $chk_condition = ['EQ' => ['CouponIdx' => $row['CouponIdx'], 'MemIdx' => $sess_mem_idx, 'ValidStatus' => 'Y']];
+            }
+
+            $chk_row = $this->_conn->getFindResult($this->_table['coupon_detail'], 'CdIdx', $chk_condition);
+            if (empty($chk_row) === false) {
+                throw new \Exception('이미 등록된 쿠폰입니다.', _HTTP_NO_PERMISSION);
+            }
+
+            // 회원쿠폰 등록
+            $data = [
+                'CouponPin' => $row['CouponPin'],
+                'CouponIdx' => $row['CouponIdx'],
+                'MemIdx' => $sess_mem_idx,
+                'IssueTypeCcd' => $this->_coupon_issue_type_ccd['auto'],
+                'ValidStatus' => 'Y',
+                'ExpireDatm' => $row['ExpireDatm'],
+                'IssueUserType' => 'M',
+                'IssueUserIdx' => $sess_mem_idx,
+                'IssueIp' => $reg_ip
+            ];
+
+            $is_insert = $this->_conn->set($data)->set('IssueDatm', 'NOW()', false)->set('RegDatm', 'NOW()', false)->insert($this->_table['coupon_detail']);
+            if ($is_insert === false) {
+                throw new \Exception('쿠폰 등록에 실패했습니다.');
+            }
+
+            // 쿠폰타입이 수강권일 경우
+            if ($row['CouponTypeCcd'] == $this->_coupon_type_ccd['voucher']) {
+                // TODO : 주문, 나의 강의정보 등록
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

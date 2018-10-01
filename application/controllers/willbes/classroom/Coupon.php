@@ -127,4 +127,24 @@ class Coupon extends \app\controllers\FrontController
             'orderby' => $date_orderby[$search_date_type]
         ];
     }
+
+    /**
+     * 쿠폰 등록
+     * @param array $params
+     */
+    public function store($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'coupon_no', 'label' => '쿠폰번호', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->couponFModel->addMemberCoupon($this->_reqP('coupon_no'), true);
+
+        $this->json_result($result, '쿠폰이 등록되었습니다.', $result);
+    }
 }

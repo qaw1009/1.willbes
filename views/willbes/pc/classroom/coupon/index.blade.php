@@ -55,6 +55,7 @@
     <!-- End Container -->
     <script type="text/javascript">
         var $search_form = $('#search_form');
+        var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
             // 검색어 디폴트 설정
@@ -85,6 +86,30 @@
                 $('.pointDetailWrap .tabWrap li a').removeClass('on');
                 $('.pointDetailWrap .tabWrap #hover_{{ $tab }}').addClass('on');
                 $('.pointDetailWrap .tabWrap #hover_{{ $tab . '_' .$stab }}').addClass('on');
+            });
+
+            // 쿠폰번호 등록 버튼 클릭
+            $regi_form.on('click', '#btn_coupon_regi', function() {
+                var $coupon_no = $regi_form.find('input[name="coupon_no"]');
+
+                if ($coupon_no.val().trim() === '' || $coupon_no.val().length !== 16) {
+                    alert('16자리의 쿠폰번호를 입력해 주세요.');
+                    $coupon_no.focus();
+                    return;
+                }
+
+                if (confirm('쿠폰을 등록하시겠습니까?')) {
+                    var url = '{{ site_url('/classroom/coupon/store') }}';
+                    var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
+                        'coupon_no' : $coupon_no.val()
+                    });
+                    sendAjax(url, data, function(ret) {
+                        if (ret.ret_cd) {
+                            alert(ret.ret_msg);
+                            location.reload();
+                        }
+                    }, showAlertError, false, 'POST');
+                }
             });
         });
     </script>

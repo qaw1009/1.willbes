@@ -1,15 +1,17 @@
-<table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
-    <tbody>
-    <tr>
-        <td>
-            수강권 번호 &nbsp;
-            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">
-            <span class="tBox t2Box black" style="height: 26px;"><a href="" style="padding: 4px 0;">등록</a></span>
-            <div class="tx-gray">'-'를 제외한 숫자 16자리만 입력해 주세요.</div>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
+        <tbody>
+        <tr>
+            <td>
+                수강권 번호 &nbsp;
+                <input type="text" id="coupon_no" name="coupon_no" title="쿠폰번호" maxlength="16">
+                <span class="tBox t2Box black" style="height: 26px;"><a href="#none" id="btn_coupon_regi" style="padding: 4px 0;">등록</a></span>
+                <div class="tx-gray">'-'를 제외한 숫자 16자리만 입력해 주세요.</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
 <div class="useDetailWrap mt20">
     <div class="willbes-Mypage-Tabs">
         <form id="search_form" name="search_form" method="GET">

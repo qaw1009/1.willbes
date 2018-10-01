@@ -215,17 +215,21 @@
                 <li class="txt">- 쿠폰발급후 등록된 쿠폰 내역에서 쿠폰적용상품과 사용기간을 확인하시기 바랍니다.</li>
                 <li class="txt">- 사용기간내 사용하지 못한 쿠폰은 소멸처리됩니다.</li>
             </ul>
-            <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
-                <tbody>
-                <tr>
-                    <td>
-                        쿠폰 번호 &nbsp;
-                        <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" style="width: 290px;">
-                        <span class="tBox t2Box black" style="height: 26px;"><a href="" style="padding: 4px 0;">등록</a></span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+                <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
+                    <tbody>
+                    <tr>
+                        <td>
+                            {!! csrf_field() !!}
+                            {!! method_field('POST') !!}
+                            쿠폰 번호 &nbsp;
+                            <input type="text" id="coupon_no" name="coupon_no" title="쿠폰번호" maxlength="16" style="width: 290px;">
+                            <span class="tBox t2Box black" style="height: 26px;"><a href="#none" id="btn_coupon_regi" style="padding: 4px 0;">등록</a></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
         <!-- PASSZONE-List -->
     </div>

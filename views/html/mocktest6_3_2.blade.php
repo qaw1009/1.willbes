@@ -89,7 +89,7 @@
             <div class="LeclistTable">
                 <div class="willbes-Mock-Subject NG">
                     · 정오표
-                    <div class="subBtn black NSK f_right"><a href="{{ site_url('/home/html/mocktest6_3') }}">전체 모의고사 목록</a></div>
+                    <div class="subBtn mock black f_right"><a href="{{ site_url('/home/html/mocktest6_3') }}">전체 모의고사 목록</a></div>
                 </div>
                 <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                     <colgroup>

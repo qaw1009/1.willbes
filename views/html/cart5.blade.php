@@ -86,7 +86,7 @@
                             <td class="w-list tx-left pl20">
                                 <dl>
                                     <dt class="tit">
-                                        <span class="pBox p3">모의고사</span> 2018 9급 시험대비 제4회 전국모의고사 (02/25시행) <span class="tBox NSK t1 white f_inherit mt-zero"><a href="#none" onclick="openWin('MOCKTESTPASS')">응시정보</a></span>
+                                        <span class="pBox p3">모의고사</span> 2018 9급 시험대비 제4회 전국모의고사 (02/25시행) <span class="tBox NSK t1 white f_inherit mt-zero"><a href="#none" onclick="openWin('MOCKTESTPASSINFO')">응시정보</a></span>
                                         <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
                                     </dt>
                                     <dt>
@@ -460,8 +460,8 @@
         </div>
         <!-- willbes-Layer-CartBox : Coupon -->
 
-        <div id="MOCKTESTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs">
-            <a class="closeBtn" href="#none" onclick="closeWin('MOCKTESTPASS')">
+        <div id="MOCKTESTPASSINFO" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('MOCKTESTPASSINFO')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">윌비스 <span class="tx-blue">전국모의고사</span></div> 
@@ -525,19 +525,12 @@
                 <ul class="passzoneListInfo tx-gray GM mt20 mb20">
                     <li class="tit strong">[온라인 모의고사 유의사항]</li>
                     <li class="txt">· 온라인 모의고사(응시형태가 Online인 경우)는 내강의실 > 모의고사관리 > 온라인 모의고사 응시 메뉴에서<br/>
-                    &nbsp;응시해 주시기 바랍니다.</li>
+                        &nbsp; 응시해 주시기 바랍니다.</li>
                     <li class="txt">· 시험응시 기간 동안 지정된 시간에만 응시 가능합니다.</li>
                 </ul>
-                <div class="passzonebtn tx-center">
-                    <span>
-                        <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
-                            <span class="strong">응시표 출력</span>
-                        </button>
-                    </span>
-                </div>
             </div>
         </div>
-        <!-- willbes-Layer-PassBox : 윌비스 전국모의고사 -->
+        <!-- willbes-Layer-PassBox : 윌비스 전국모의고사 : 응시정보 -->
 
     </div>
     <div class="Quick-Bnr ml20 mt85">

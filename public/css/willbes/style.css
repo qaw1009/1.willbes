@@ -2405,6 +2405,12 @@ table.auTable tr td {
     color: #fff;
     border: 1px solid #333;
 }
+.subBtn.mock a {
+    width: 125px;
+    height: 30px;
+    line-height: 20px;
+    font-size: 13px;
+}
 
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
@@ -4390,7 +4396,6 @@ table.classTable tr td.w-data {
 .willbes-Layer-PassBox .passzoneDayInfo {
     background: #f9f9f9;
     font-size: 14px;
-    font-weight: 600;
     letter-spacing: 0;
     padding: 10px;
 }
@@ -7015,8 +7020,8 @@ table.PassZoneTable .w-data {
     background: #f9f9f9;
     font-size: 14px;
     font-weight: 600;
-    padding: 10px;
-    margin-bottom: 45px;
+    padding: 15px 10px;
+    margin-bottom: 20px;
     letter-spacing: 0;
 }
 .willbes-Layer-PassBox .passzoneInfo {

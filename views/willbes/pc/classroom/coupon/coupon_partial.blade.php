@@ -63,15 +63,15 @@
                     <div class="LeclistTable pointTable">
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
-                                <col style="width: 80px;">
-                                <col style="width: 100px;">
+                                <col style="width: 70px;">
+                                <col style="width: 140px;">
                                 <col style="width: 100px;">
                                 <col style="width: 90px;">
                                 <col style="width: 90px;">
                                 <col style="width: 120px;">
-                                <col style="width: 180px;">
+                                <col style="width: 160px;">
                                 <col style="width: 80px;">
-                                <col style="width: 100px;">
+                                <col style="width: 90px;">
                             </colgroup>
                             <thead>
                                 <tr>
@@ -146,15 +146,15 @@
                     <div class="LeclistTable pointTable">
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
-                                <col style="width: 80px;">
-                                <col style="width: 100px;">
+                                <col style="width: 70px;">
+                                <col style="width: 140px;">
                                 <col style="width: 100px;">
                                 <col style="width: 90px;">
                                 <col style="width: 90px;">
-                                <col style="width: 180px;">
-                                <col style="width: 120px;">
-                                <col style="width: 80px;">
-                                <col style="width: 100px;">
+                                <col style="width: 150px;">
+                                <col style="width: 140px;">
+                                <col style="width: 70px;">
+                                <col style="width: 90px;">
                             </colgroup>
                             <thead>
                             <tr>
@@ -211,7 +211,7 @@
             <ul class="passzoneInfo tx-gray NGR">
                 <li class="tit strong">· 쿠폰등록안내
                 <li class="txt">- 오프라인에서 발급받은 쿠폰은 쿠폰등록후 사용할 수 있습니다.</li>
-                <li class="txt">- <span class="tx-red">쿠폰등록시, '-' 를 제외한 숫자 12자리만 입력해 주세요.</span></li>
+                <li class="txt">- <span class="tx-red">쿠폰등록시, '-' 를 제외한 숫자 16자리만 입력해 주세요.</span></li>
                 <li class="txt">- 쿠폰발급후 등록된 쿠폰 내역에서 쿠폰적용상품과 사용기간을 확인하시기 바랍니다.</li>
                 <li class="txt">- 사용기간내 사용하지 못한 쿠폰은 소멸처리됩니다.</li>
             </ul>

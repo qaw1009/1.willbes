@@ -66,9 +66,10 @@ class CouponFModel extends WB_Model
                 , C.ApplyTypeCcd, fn_ccd_name(C.ApplyTypeCcd) as ApplyTypeCcdName
                 , C.DiscRate, C.DiscType, if(C.DiscType = "R", "%", "원") as DiscRateUnit, C.DiscAllowPrice, C.ValidDay, CD.IsUse, CD.UseDatm, CD.IssueDatm, CD.RegDatm, CD.ExpireDatm
                 , (case when CD.IsUse = "Y" then "사용"
-                        when NOW() between CD.IssueDatm and CD.ExpireDatm then "유효"
+                        when NOW() between CD.IssueDatm and CD.ExpireDatm and CD.ValidStatus = "Y" then "유효"
                         when NOW() > CD.ExpireDatm then "만료"
-                        when CD.ValidStatus = "N" then "비유효"                        
+                        when CD.ValidStatus = "N" then "비유효"
+                        when CD.ValidStatus = "R" then "회수"                    
                         when CD.ValidStatus = "C" then "취소"
                         else CD.ValidStatus			
                   end) as ValidStatusName

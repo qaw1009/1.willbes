@@ -53,8 +53,8 @@
             <div class="LeclistTable pointTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                     <colgroup>
-                        <col style="width: 80px;">
-                        <col style="width: 130px;">
+                        <col style="width: 70px;">
+                        <col style="width: 140px;">
                         <col style="width: 370px;">
                         <col style="width: 150px;">
                         <col style="width: 210px;">

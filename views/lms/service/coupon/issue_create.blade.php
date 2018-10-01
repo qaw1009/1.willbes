@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="ln_solid"></div>
-                        <div class="form-group text-center">
+                        <div class="text-center">
                             <button type="submit" class="btn btn-success mr-10">쿠폰발급</button>
                         </div>
                     </form>
@@ -233,7 +233,7 @@
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/service/coupon/issue/listAjax/' . ($data['PinType'] == 'R' ? 'pins' : '')) }}',
+                    'url' : '{{ site_url('/service/coupon/issue/listAjax/' . ($data['PinType'] != 'N' ? 'pins' : '')) }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});

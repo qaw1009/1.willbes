@@ -68,8 +68,10 @@ class CouponIssueModel extends WB_Model
                 , concat(ifnull(P.ProdName, ""), if(P.ProdCode is not null and P.IsStatus = "N", " (삭제)", "")) as ProdName
                 , ifnull(O.OrderNo, "") as OrderNo
                 , SC.CcdName as IssueTypeName
-                , (case when now() between CD.IssueDatm and CD.ExpireDatm then "유효"
+                , (case when now() between CD.IssueDatm and CD.ExpireDatm and CD.ValidStatus = "Y" then "유효"
                         when now() > CD.ExpireDatm then "만료"
+                        when CD.ValidStatus = "N" then "비유효"
+                        when CD.ValidStatus = "R" then "회수"
                         when CD.ValidStatus = "C" then "취소"
                         else CD.ValidStatus			
                   end) as ValidStatus
@@ -82,7 +84,7 @@ class CouponIssueModel extends WB_Model
         if ($list_type == 'pins') {
             $from .= '
                 left join ' . $this->_table['coupon_pin'] . ' as CP	        
-                    on C.CouponIdx = CP.CouponIdx and CP.CouponIdx is not null and C.DeployType = "F" and C.PinType = "R"
+                    on C.CouponIdx = CP.CouponIdx and CP.CouponIdx is not null and C.DeployType = "F" #and C.PinType = "R"
                 left join ' . $this->_table['coupon_detail'] . ' as CD
                     on C.CouponIdx = CD.CouponIdx and CP.CouponPin = CD.CouponPin                                                        
             ';
@@ -192,25 +194,25 @@ class CouponIssueModel extends WB_Model
             $reg_ip = $this->input->ip_address();
             $binds = [];
 
-            $query = 'insert into ' . $this->_table['coupon_detail']. ' (CouponPin, CouponIdx, MemIdx, IssueTypeCcd, IssueDatm, RegDatm, ExpireDatm, IssueUserType, IssueUserIdx, IssueIp)';
+            $query = /** @lang text */ 'insert into ' . $this->_table['coupon_detail']. ' (CouponPin, CouponIdx, MemIdx, IssueTypeCcd, IssueDatm, RegDatm, ExpireDatm, IssueUserType, IssueUserIdx, IssueIp)';
             if ($coupon_data['DeployType'] == 'N') {
                 // 온라인 배포
                 $binds = ['N', $coupon_idx, $this->_lec_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
-                $query .= '
+                $query .= /** @lang text */ '
                     select ?, ?, MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
                     from ' . $this->_table['member']. ' where MemIdx in ?
                 ';
             } elseif ($coupon_data['DeployType'] == 'F' && $coupon_data['PinType'] == 'S') {
                 // 오프라인 배포 && 공통핀번호
                 $binds = [$coupon_idx, $coupon_idx, $this->_lec_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
-                $query .= '
+                $query .= /** @lang text */ '
                     select (select CouponPin from ' . $this->_table['coupon_pin'] . ' where CouponIdx = ?), ?, MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
                     from ' . $this->_table['member']. ' where MemIdx in ?
                 ';
             } elseif ($coupon_data['DeployType'] == 'F' && $coupon_data['PinType'] == 'R') {
                 // 오프라인 배포 && 랜덤핀번호
                 $binds = [$coupon_idx, $this->_lec_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $coupon_idx, $arr_mem_idx];
-                $query .= '
+                $query .= /** @lang text */ '
                     select A.CouponPin, ?, B.MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
                     from (
                         select CP.CouponPin, (@rownum1 := @rownum1 + 1) as RowNum
@@ -261,7 +263,7 @@ class CouponIssueModel extends WB_Model
 
             foreach ($params as $coupon_idx => $cd_idx) {
                 $this->_conn->set('RetireDatm', 'now()', false);
-                $this->_conn->set(['RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
+                $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
                 $this->_conn->where(['CdIdx' => $cd_idx, 'CouponIdx' => $coupon_idx, 'IsUse' => 'N']);
 
                 if ($this->_conn->update($this->_table['coupon_detail']) === false) {

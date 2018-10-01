@@ -47,25 +47,54 @@ class Issue extends \app\controllers\BaseController
     public function listAjax()
     {
         $mang_type = $this->_req('mang_type');
+        $search_value = $this->_reqP('search_value'); // 검색어
+        $search_value_enc = $this->readingRoomModel->getEncString($search_value); // 검색어 암호화
 
         $arr_condition = [
             'EQ' => [
-                'a.SiteCode' => $this->_reqP('search_site_code'),
-                'a.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'a.SiteCode' => $this->_reqP('search_site_code'),       //사이트
+                'a.CampusCcd' => $this->_reqP('search_campus_ccd'),     //캠퍼스
+                'op.PayStatusCcd' => $this->_reqP('search_pay_status'), //결제상태
+                'c.StatusCcd' => $this->_reqP('search_seat_status'),    //배정여부
+                'a.LrIdx' => $this->_reqP('search_readingroom_idx'),    //독서실명
+                //예치금반환
             ],
             'ORG' => [
                 'LKB' => [
-                    'a.Name' => $this->_reqP('search_value'),
-                    'a.ProdCode' => $this->_reqP('search_value'),
-                    'a.LakeLayer' => $this->_reqP('search_value'),
+                    'm.MemName' => $search_value,
+                    'm.MemID' => $search_value, // 아이디
+                    'm.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
+                    'm.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
+                    'm.Phone3' => $search_value, // 전화번호 뒷자리
+                    'b.OrderNo' => $search_value, // 주문번호
                 ]
             ]
         ];
 
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
-            $arr_condition = array_merge($arr_condition, [
-                'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
-            ]);
+            switch ($this->_reqP('search_date_type')) {
+                case "P" :  //결제완료일
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['b.OrderDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                        //'BDT' => ['b.CompleteDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "R" :  //등록일 [자리등록일]
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['c.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "S" :  //대여시작일
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['c.UseStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+                case "E" :  //대여종료일
+                    $arr_condition = array_merge($arr_condition, [
+                        'BDT' => ['c.UseEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                    ]);
+                    break;
+            }
         }
 
         $list = [];
@@ -83,15 +112,80 @@ class Issue extends \app\controllers\BaseController
     }
 
     /**
-     * 좌석이동
+     * 좌석이동 레이어 팝업
+     * @param array $params
      */
-    public function modifySeatModal()
+    public function modifySeatModal($params = [])
     {
-        //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
+        $prod_code = $params[0];
+        $mang_type = $this->_req('mang_type');
+        $now_order_idx = $this->_reqG('now_order_idx');
+
+        //좌석상태공통코드
+        $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
+
+        //상품기본정보
+        $data = $this->readingRoomModel->findReadingRoomForModify($now_order_idx);
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        //좌석정보
+        $seat_data = $this->readingRoomModel->listSeat($prod_code);
+
+        //기준주문식별자 메모 데이터 조회
+        /*$master_order_idx = $data['MasterOrderIdx'];
+        $memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);*/
 
         $this->load->view("pass/reading_room/issue/modify_seat_modal", [
-            'arr_campus' => $arr_campus,
+            'prod_code' => $prod_code,
+            'default_query_string' => '&mang_type='.$mang_type,
+            'arr_seat_status' => $arr_seat_status,
+            'data' => $data,
+            'seat_data' => $seat_data,
+            /*'memo_data' => $memo_data*/
         ]);
+    }
+
+    /**
+     * 메모 리스트
+     * @param array $params
+     * @return CI_Output
+     */
+    public function ajaxListMemo($params = [])
+    {
+        $master_order_idx = $params[0];
+        $memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);
+
+        return $this->response([
+            'recordsTotal' => count($memo_data),
+            'recordsFiltered' => count($memo_data),
+            'data' => $memo_data,
+        ]);
+    }
+
+    /**
+     * 메모 등록
+     */
+    public function storeMemo()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'master_order_idx', 'label' => '메인주문번호', 'rules' => 'trim|required|integer'],
+            ['field' => 'memo_content', 'label' => '메모', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->readingRoomModel->addMemo($this->_reqP(null,false));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function storeSeatOut()
+    {
+        $result = true;
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 }

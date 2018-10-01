@@ -104,14 +104,14 @@
                 <thead>
                 <tr>
                     <th>NO</th>
-                    <th>주문번호</th>
-                    <th>회원명</th>
-                    <th>연락처</th>
-                    <th>결제완료일</th>
-                    <th>캠퍼스</th>
-                    <th>{{$mang_title}}명</th>
-                    <th>결제금액</th>
-                    <th>결제상태</th>
+                    <th class="rowspan">주문번호</th>
+                    <th class="rowspan">회원명</th>
+                    <th class="rowspan">연락처</th>
+                    <th class="rowspan">결제완료일</th>
+                    <th class="rowspan">캠퍼스</th>
+                    <th class="rowspan">{{$mang_title}}명</th>
+                    <th class="rowspan">결제금액</th>
+                    <th class="rowspan">결제상태</th>
                     <th>좌석번호</th>
                     <th>예치금</th>
                     <th>대여시작일</th>
@@ -144,6 +144,7 @@
                             location.href = '{{ site_url('/pass/readingRoom/regist/create') }}' + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
                         }}
                 ],
+                rowsGroup: ['.rowspan'],
                 ajax: {
                     'url' : '{{ site_url('/pass/readingRoom/issue/listAjax') }}' + '?' + '{!! $default_query_string !!}',
                     'type' : 'POST',
@@ -157,7 +158,7 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.Idx + '"><u>' + data + '</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-modify" data-lr-idx="' + row.LrIdx + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'MemName'},
                     {'data' : 'MemPhone'},
@@ -174,12 +175,20 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'SeatRegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="create-seat-modal" data-idx="' + row.OrderIdx + '"><u>[변경]</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-prod-code="'+row.ProdCode+'" data-order-idx="'+row.NowOrderIdx+'">[변경]</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-seat" data-idx="' + row.OrderIdx + '"><u>[연장]</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-seat" data-order-idx="' + row.MasterOrderIdx + '"><u>[연장]</u></a>';
                         }}
                 ]
+            });
+
+            // 좌석배정/좌석이동 TEST
+            $list_table.on('click', '.btn-create-seat-modal', function() {
+                $('.btn-create-seat-modal').setLayer({
+                    "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&now_order_idx=' + $(this).data('order-idx'),
+                    "width" : "1200"
+                });
             });
         });
     </script>

@@ -49,7 +49,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['N']}, '1', '0')) AS countN,
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['Y']}, '1', '0')) AS countY
                 FROM {$this->_table['readingRoom_mst']} AS temp_a
-                INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx AND temp_b.MangType = '{$mang_type}'
+                INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx AND temp_b.MangType = '{$mang_type}' AND temp_b.IsStatus = 'Y'
                 GROUP BY temp_a.LrIdx
             ) AS ab ON a.LrIdx = ab.LrIdx        
         ";
@@ -129,6 +129,40 @@ class ReadingRoomModel extends BaseReadingRoomModel
             ) AS ab ON a.LrIdx = ab.LrIdx
         ";
 
+        return $this->_conn->query('select '.$column .$from)->row_array();
+    }
+
+    /**
+     * 독서실/사물함 상세 데이터 조회
+     * @param $OrderIdx
+     * @return mixed
+     */
+    public function findReadingRoomForModify($OrderIdx)
+    {
+        $column = '
+                a.LrIdx, a.CampusCcd, b.OrderIdx, b.OrderNo, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
+                c.MasterOrderIdx, c.NowOrderIdx, c.SerialNumber, c.StatusCcd AS SeatStatusCcd, c.UseStartDate, c.UseEndDate,
+                op.PayStatusCcd, d.PayStatusCcd AS SubPayStatusCcd, d.RealPayPrice AS SubRealPayPrice, f.SiteName,
+                fn_ccd_name(a.CampusCcd) AS CampusName,
+                fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
+                fn_ccd_name(d.PayStatusCcd) AS SubPayStatusName,
+                e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
+            ';
+        $from = "
+            FROM (
+                SELECT
+                o.OrderIdx, o.OrderNo, o.MemIdx, o.SiteCode, o.ReprProdName, o.OrderDatm, o.CompleteDatm
+                FROM {$this->_table['lms_order']} AS o
+                WHERE o.OrderIdx = '{$OrderIdx}'
+                  ) AS b
+            INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
+            INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
+            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
+            INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
+            INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode
+            INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
+            INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
+        ";
         return $this->_conn->query('select '.$column .$from)->row_array();
     }
 
@@ -384,9 +418,9 @@ class ReadingRoomModel extends BaseReadingRoomModel
             $order_by_offset_limit = '';
         } else {
             $column = '
-                b.OrderIdx, b.OrderNo, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, b.ReprProdName, b.OrderDatm, op.OrderPrice
+                a.LrIdx, b.OrderIdx, b.OrderNo, c.MasterOrderIdx, c.NowOrderIdx, b.ReprProdName, b.OrderDatm, op.OrderPrice
                 , c.NowMIdx, a.CampusCcd, op.PayStatusCcd, d.PayStatusCcd AS SubPayStatusCcd
-                , op.ProdCode, op.OrderPrice, op.PayStatusCcd, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone
+                , op.ProdCode, op.OrderPrice, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone
                 , fn_ccd_name(a.CampusCcd) AS CampusName
                 , fn_ccd_name(op.PayStatusCcd) AS PayStatusName
                 , fn_ccd_name(d.PayStatusCcd) AS SubPayStatusName
@@ -400,19 +434,19 @@ class ReadingRoomModel extends BaseReadingRoomModel
 
         $from = "
             FROM (
-                SELECT o.OrderIdx, o.OrderNo, o.MemIdx, o.SiteCode, o.ReprProdName, o.OrderDatm
+                SELECT o.OrderIdx, o.OrderNo, o.MemIdx, o.SiteCode, o.ReprProdName, o.OrderDatm, o.CompleteDatm
                 FROM {$this->_table['lms_order']} AS o
                 WHERE o.PayRouteCcd = {$this->_order_route_ccd}
             ) AS b
             
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}'
+            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
             INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
         ";
-        /*INNER JOIN lms_readingroomusedetail AS c ON b.LrIdx = c.LrIdx*/
+        /*INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON a.LrIdx = c.LrIdx*/
 
 
         //사이트 권한
@@ -426,6 +460,23 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function addMemo($params = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            //메모 저장
+            if ($this->_addMemo($params['master_order_idx'], $params['memo_content']) !== true) {
+                throw new \Exception('메모 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
 

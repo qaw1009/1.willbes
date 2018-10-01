@@ -134,26 +134,22 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-area">경기도</td>
                                 <td class="w-year">2017</td>
                                 <td class="w-sbj">국어</td>
                                 <td class="w-list tx-left pl20"><a href="#none">18년 제1차 경찰공무원(순경) 채용시험 문제-국어</a></td>
-                                <td class="w-file">
-                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                </td>
+                                <td class="w-file"><img src="{{ img_url('prof/icon_file.gif') }}"></td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">123</td>
                             </tr>
                             <tr>
-                                <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-area">경상북도</td>
                                 <td class="w-year">2016</td>
                                 <td class="w-sbj">형상소송법</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[2014년 1차] 경찰공무원(순경) 채용시험-형사소송법</a></td>
-                                <td class="w-file">
-                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                </td>
+                                <td class="w-file"><img src="{{ img_url('prof/icon_file.gif') }}"></td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">244</td>
                             </tr>
@@ -285,7 +281,7 @@
                             <col style="width: 150px;">
                         </colgroup>
                         <thead>
-                            <tr><th colspan="5" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>[2014년 1차] 경찰공무원(순경) 채용시험-형법</strong></th></tr>
+                            <tr><th colspan="5" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>[2014년 1차] 경찰공무원(순경) 채용시험-형법</strong></th></tr>
                             <tr>
                                 <td class="w-area">서울<span class="row-line">|</span></td>
                                 <td class="w-year">2015<span class="row-line">|</span></td>

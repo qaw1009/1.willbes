@@ -101,7 +101,7 @@
             </div>
             <div class="willbes-Leclist c_both mt60">
                 <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                    → 총 <a class="num tx-light-blue strong" href="#none">4</a>건
+                    [ 총 <a class="num tx-light-blue strong" href="#none">4</a>건 ]
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
                         <div class="willbes-Lec-Search GM f_right">
                             <select id="route" name="route" title="route" class="seleRoute mr10 h30 f_left">
@@ -128,13 +128,13 @@
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable mockTable under-gray bdt-gray tx-gray">
                         <colgroup>
-                            <col style="width: 50px;">
+                            <col style="width: 40px;">
                             <col style="width: 80px;">
                             <col style="width: 70px;">
                             <col style="width: 130px;">
-                            <col style="width: 220px;">
-                            <col style="width: 60px;">
-                            <col style="width: 140px;">
+                            <col style="width: 230px;">
+                            <col style="width: 70px;">
+                            <col style="width: 130px;">
                             <col style="width: 80px;">
                             <col style="width: 110px;">
                         </colgroup>
@@ -156,10 +156,10 @@
                                 <td class="w-no">8</td>
                                 <td class="w-type">일반경찰</td>
                                 <td class="w-form">Off</td>
-                                <td class="w-date">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-date">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-list tx-left pl15"><a href="#none">7/2 전국모의고사-일방경찰</a></td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state">진행중</td>
                                 <td class="w-user-state">미접수</td>
                             </tr>
@@ -170,7 +170,7 @@
                                 <td class="w-date">2018-10-10~</td>
                                 <td class="w-list tx-left pl15">8/13 빅매지2-경행경채 모의고사</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state tx-red">접수마감</td>
                                 <td class="w-user-state tx-blue">결제대기</td>
                             </tr>
@@ -181,7 +181,7 @@
                                 <td class="w-date">상시</td>
                                 <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state">진행중</td>
                                 <td class="w-user-state">결제완료</td>
                             </tr>
@@ -192,7 +192,7 @@
                                 <td class="w-date">2018-10-10</td>
                                 <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state">진행중</td>
                                 <td class="w-user-state tx-blue">결제대기</td>
                             </tr>
@@ -203,7 +203,7 @@
                                 <td class="w-date">상시</td>
                                 <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state tx-red">접수마감</td>
                                 <td class="w-user-state">결제완료</td>
                             </tr>
@@ -214,7 +214,7 @@
                                 <td class="w-date">2018-10-10~</td>
                                 <td class="w-list tx-left pl15">8/13 빅매지2-경행경채 모의고사</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state tx-red">접수마감</td>
                                 <td class="w-user-state">결제완료</td>
                             </tr>
@@ -225,7 +225,7 @@
                                 <td class="w-date">상시</td>
                                 <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state">진행중</td>
                                 <td class="w-user-state">미접수</td>
                             </tr>
@@ -236,7 +236,7 @@
                                 <td class="w-date">2018-10-10</td>
                                 <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-price">5,000원</td>
-                                <td class="w-day">2018-10-10 20:10 ~ 2018-00-00 00:00</td>
+                                <td class="w-day">2018-10-10 20:10 ~<br/>2018-00-00 00:00</td>
                                 <td class="w-state">진행중</td>
                                 <td class="w-user-state tx-blue">결제대기</td>
                             </tr>

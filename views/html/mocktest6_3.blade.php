@@ -101,7 +101,7 @@
             </div>
             <div class="willbes-Leclist c_both mt60">
                 <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                    → 총 <a class="num tx-light-blue strong" href="#none">4</a>건
+                    [ 총 <a class="num tx-light-blue strong" href="#none">4</a>건 ]
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
                         <div class="willbes-Lec-Search GM f_right">
                             <div class="inputBox p_re">
@@ -140,7 +140,7 @@
                             <tr>
                                 <td class="w-no">8</td>
                                 <td class="w-type">일반경찰</td>
-                                <td class="w-list tx-left pl20"><a href="{{ site_url('/home/html/mocktest6_3_1') }}">7/5 전국모의고사-일방경찰</a></td>
+                                <td class="w-list tx-left pl20">7/5 전국모의고사-일방경찰</td>
                                 <td class="w-test"><a class="tx-light-blue" href="{{ site_url('/home/html/mocktest6_3_1') }}">9개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="{{ site_url('/home/html/mocktest6_3_2') }}">8개</a></td>
@@ -148,7 +148,7 @@
                             <tr>
                                 <td class="w-no">7</td>
                                 <td class="w-type">일반경찰</td>
-                                <td class="w-list tx-left pl20"><a href="#none">7/2 전국모의고사-일방경찰</a></td>
+                                <td class="w-list tx-left pl20">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">1개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">7개</a></td>
@@ -156,7 +156,7 @@
                             <tr>
                                 <td class="w-no">6</td>
                                 <td class="w-type">경행경채</td>
-                                <td class="w-list tx-left pl20"><a href="#none">8/13 빅매지2-경행경채 모의고사</a></td>
+                                <td class="w-list tx-left pl20">8/13 빅매지2-경행경채 모의고사</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">2개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">6개</a></td>
@@ -164,7 +164,7 @@
                             <tr>
                                 <td class="w-no">5</td>
                                 <td class="w-type">일반경찰</td>
-                                <td class="w-list tx-left pl20"><a href="#none">8/13 빅매지2-경행경채 모의고사</a></td>
+                                <td class="w-list tx-left pl20">8/13 빅매지2-경행경채 모의고사</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">3개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">5개</a></td>
@@ -172,7 +172,7 @@
                             <tr>
                                 <td class="w-no">4</td>
                                 <td class="w-type">일반경찰</td>
-                                <td class="w-list tx-left pl20"><a href="#none">7/2 전국모의고사-일방경찰</a></td>
+                                <td class="w-list tx-left pl20">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">9개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">4개</a></td>
@@ -180,7 +180,7 @@
                             <tr>
                                 <td class="w-no">3</td>
                                 <td class="w-type">일반경찰</td>
-                                <td class="w-list tx-left pl20"><a href="#none">8/13 빅매지2-경행경채 모의고사</a></td>
+                                <td class="w-list tx-left pl20">8/13 빅매지2-경행경채 모의고사</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">9개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">3개</a></td>
@@ -188,7 +188,7 @@
                             <tr>
                                 <td class="w-no">2</td>
                                 <td class="w-type">경행경채</td>
-                                <td class="w-list tx-left pl20"><a href="#none">8/13 빅매지2-경행경채 모의고사</a></td>
+                                <td class="w-list tx-left pl20">8/13 빅매지2-경행경채 모의고사</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">9개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">2개</a></td>
@@ -196,7 +196,7 @@
                             <tr>
                                 <td class="w-no">1</td>
                                 <td class="w-type">경행경채</td>
-                                <td class="w-list tx-left pl20"><a href="#none">7/5 전국모의고사-일방경찰</a></td>
+                                <td class="w-list tx-left pl20">7/5 전국모의고사-일방경찰</td>
                                 <td class="w-test"><a class="tx-light-blue" href="#none">9개</a></td>
                                 <td class="w-state"><a href="#none">[등록]</a></td>
                                 <td class="w-graph"><a class="tx-light-blue" href="#none">0개</a></td>

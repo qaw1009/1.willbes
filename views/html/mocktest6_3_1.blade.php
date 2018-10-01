@@ -154,7 +154,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="w-no strong">[공지]</td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-process">&nbsp;</td>
                                 <td class="w-list tx-left pl20"><a href="#none">18년 제1차 경찰 공무원(순경) 체용시험문제- 국어</a></td>
                                 <td class="w-write">&nbsp;</td>
@@ -162,7 +162,7 @@
                                 <td class="w-answer">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td class="w-no strong">[공지]</td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-process">&nbsp;</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[2014년 1차] 경찰 공무원(순경) 채용시험 - 형사소송법</a></td>
                                 <td class="w-write">&nbsp;</td>

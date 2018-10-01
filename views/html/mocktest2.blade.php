@@ -111,20 +111,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-list tx-left pl20"><a href="#none">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</a></td>
-                                <td class="w-file">
-                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                </td>
+                                <td class="w-file"><img src="{{ img_url('prof/icon_file.gif') }}"></td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">123</td>
                             </tr>
                             <tr>
-                                <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-list tx-left pl20"><a href="#none">2018년 제2차경찰공무원(순경)채용시험 공고</a></td>
-                                <td class="w-file">
-                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                </td>
+                                <td class="w-file"><img src="{{ img_url('prof/icon_file.gif') }}"></td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">244</td>
                             </tr>
@@ -227,7 +223,7 @@
                             <col style="width: 150px;">
                         </colgroup>
                         <thead>
-                            <tr><th colspan="3" class="w-list tx-left pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>2018년 제1차 경찰공무원채용 필기시험 가답안 공지</strong></th></tr>
+                            <tr><th colspan="3" class="w-list tx-left pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>2018년 제1차 경찰공무원채용 필기시험 가답안 공지</strong></th></tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td class="w-date">2018-00-00<span class="row-line">|</span></td>

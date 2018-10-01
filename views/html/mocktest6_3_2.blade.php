@@ -93,13 +93,15 @@
                 </div>
                 <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                     <colgroup>
-                        <col style="width: 150px;">
-                        <col style="width: 610px;">
+                        <col style="width: 120px;">
+                        <col style="width: 120px;">
+                        <col style="width: 520px;">
                         <col style="width: 180px;">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>응시분야<span class="row-line">|</span></th>
+                            <th>직렬<span class="row-line">|</span></th>
                             <th>모의고사명<span class="row-line">|</span></th>
                             <th>정오표</th>
                         </tr>
@@ -107,6 +109,7 @@
                     <tbody>
                         <tr>
                             <td class="w-type">일반경찰</td>
+                            <td class="w-col">남자,여자</td>
                             <td class="w-list tx-left pl20">7/5 전국모의고사-일방경찰</td>
                             <td class="w-graph">8개</td>
                         </tr>
@@ -144,7 +147,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="w-no strong">[공지]</td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-list tx-left pl20"><a href="#none">18년 제1차 경찰 공무원(순경) 체용시험문제- 국어</a></td>
                                 <td class="w-file">
                                     <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
@@ -152,7 +155,7 @@
                                 <td class="w-date">2018-00-00</td>
                             </tr>
                             <tr>
-                                <td class="w-no strong">[공지]</td>
+                                <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                 <td class="w-list tx-left pl20"><a href="#none">[2014년 1차] 경찰 공무원(순경) 채용시험 - 형사소송법</a></td>
                                 <td class="w-file">
                                     <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>

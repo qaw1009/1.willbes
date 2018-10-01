@@ -54,7 +54,7 @@
 @endphp
 
             <!-- willbes-Package-Detail -->
-            <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+            <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 @foreach($arr_input as $key => $val)
@@ -387,9 +387,7 @@
 
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
-        var $regi_form = $('#regi_form');
-        var $buy_layer = $('#buy_layer');
-
+        var $regi_off_form = $('#regi_off_form');
         $(document).ready(function() {
 
             // 방문접수, 바로결제 버튼 클릭
@@ -432,7 +430,7 @@
 
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
-                cartNDirectPay($regi_form, $is_direct_pay, $is_redirect);
+                cartNDirectPay($regi_off_form, $is_direct_pay, $is_redirect);
             });
 
             setRowspan('row_td');

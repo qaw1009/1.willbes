@@ -83,7 +83,8 @@ class OffPackage extends \app\controllers\FrontController
             'learn_pattern' => $this->_learn_pattern,
             'data' => [
                 'list' => $list
-            ]
+            ],
+            'class_type' => $class_type     //방문신청시 패키지 여부 확인 차
         ]);
     }
 
@@ -152,7 +153,8 @@ class OffPackage extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'learn_pattern' => $this->_learn_pattern,
             'data' => $data,
-            'data_sublist' => $data_sublist
+            'data_sublist' => $data_sublist,
+            'class_type' => $class_type     //방문신청시 패키지 여부 확인 차
         ]);
     }
 }

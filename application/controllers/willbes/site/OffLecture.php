@@ -108,7 +108,8 @@ class OffLecture extends \app\controllers\FrontController
             'data' => [
                 'subjects' => $selected_subjects,
                 'list' => $selected_list
-            ]
+            ],
+            'class_type' => $class_type     //방문신청시 패키지 여부 확인 차
         ]);
     }    
 }

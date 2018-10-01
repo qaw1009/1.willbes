@@ -18,7 +18,7 @@
     <div class="form-group form-group-bordered bg-odd">
         <label class="control-label col-md-2">카테고리 정보
         </label>
-        <div class="col-md-10 bg-white form-inline">
+        <div class="col-md-10 form-inline">
             <p class="form-control-static">{{ str_last_pos_before($cate_route_name, ' > ') }} > <span class="blue">{{ str_last_pos_after($cate_route_name, ' > ') }}</span></p>
             @if(count($arr_series) > 0)
                 <select class="form-control input-sm ml-10" id="child_ccd" name="child_ccd" required="required" title="하위 구분">
@@ -29,10 +29,8 @@
             @endif
         </div>
     </div>
-    <div class="form-group form-group-sm mt-20 mb-0">
-        <div class="x_title mb-5">
-            <span class="required">*</span> 과목을 선택해 주세요. (다중 선택 가능합니다.)
-        </div>
+    <div class="x_title mt-20 mb-0">
+        <span class="required">*</span> 과목을 선택해 주세요. (다중 선택 가능합니다.)
     </div>
     <div class="form-group form-group-sm">
         @foreach($arr_subject_idx as $row)

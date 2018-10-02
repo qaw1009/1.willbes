@@ -98,7 +98,7 @@
                     });
 
                     // select 메뉴 정리
-                    $regi_form.find('#subject_site').val({{ $subjectDB[0]['sSiteCode'] }}).prop('disabled', true);
+                    $regi_form.find('#subject_site').val({{ $baseDB['SiteCode'] }}).prop('disabled', true);
                     $regi_form.find('#subject_cateD1').val({{ $_GET['gcate'] }}).prop('disabled', true);
                     $regi_form.find('#subject_cateD2').val({{ $baseDB['CateCode'] }}).prop('disabled', true);
                 });

@@ -70,7 +70,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($list as $row)
+                @foreach($listDB as $row)
                     <tr data-idx="{{ $row['MmIdx'] }}" data-gcate="{{ $row['gCateCode'] }}">
                         <td class="hide">
                             {{ $row['SiteName'] }}
@@ -87,24 +87,26 @@
                             @endif
                         </td>
                         <td>
-                            @if(empty($row['SubjectIdx']))
+                            @if( !isset($subjectNames[$row['MmIdx'].'-E']) )
                                 <div class="text-center">
                                     <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="E">추가</button>
                                 </div>
                             @else
                                 <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="E">
-                                    {{ implode(', ', $row['subjectName']) }}
+                                    {{ $subjectNames[$row['MmIdx'].'-E'] }}
+                                    <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-E'] }}</span> {{-- datatable 검색용 --}}
                                 </span>
                             @endif
                         </td>
                         <td>
-                            @if(empty($row['SubjectIdx']))
+                            @if( !isset($subjectNames[$row['MmIdx'].'-S']) )
                                 <div class="text-center">
                                     <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="S">추가</button>
                                 </div>
                             @else
                                 <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="S">
-                                    {{ implode(', ', $row['subjectName']) }}
+                                    {{ $subjectNames[$row['MmIdx'].'-S'] }}
+                                    <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-S'] }}</span>
                                 </span>
                             @endif
                         </td>
@@ -178,7 +180,7 @@
                         else { key = 'Y'; txt = '사용'; }
 
                         _this.text(txt).toggleClass('red')
-                            .closest('td').data('search', key).attr('data-search', key);
+                             .closest('td').data('search', key).attr('data-search', key);
                         $datatable.row(_this.closest('tr')).invalidate().draw();
 
                         notifyAlert('success', '알림', ret.ret_msg);

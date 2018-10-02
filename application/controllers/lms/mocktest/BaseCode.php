@@ -31,13 +31,16 @@ class BaseCode extends \app\controllers\BaseController
             else $cateD2[] = $it;
         }
 
+        list($listDB, $subjectNames, $subjectIdxs) = $this->baseCodeModel->list();
         $this->load->view('mocktest/base/code/index', [
             'siteCodeDef' => $cateList[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
             'adminName' => $this->baseCodeModel->getAdminNames(),
-            'list' => $this->baseCodeModel->list(),
+            'listDB' => $listDB,
+            'subjectNames' => $subjectNames,
+            'subjectIdxs' => $subjectIdxs,
         ]);
     }
 

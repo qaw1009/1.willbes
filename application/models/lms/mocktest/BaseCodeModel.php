@@ -43,6 +43,7 @@ class BaseCodeModel extends WB_Model
      */
     public function list()
     {
+        // 리스트
         $in = "('". implode("', '", array_values(get_auth_site_codes())) ."')"; // 사이트 접근권한
         $sql = "
             SELECT M.*, S.SiteName,
@@ -56,7 +57,22 @@ class BaseCodeModel extends WB_Model
             WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
             ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC";
 
-        return $this->_conn->query($sql)->result_array();
+        $listDB = $this->_conn->query($sql)->result_array();
+
+        // 과목
+        $sql = "
+            SELECT CONCAT(SJ.MmIdx,'-',SJ.SubjectType) AS SubjectKey, GROUP_CONCAT(SJ.SubjectIdx) AS SubjectIdxs, GROUP_CONCAT(PS.SubjectName SEPARATOR ', ') AS SubjectNames
+            FROM {$this->_table['mockSubject']} AS SJ
+            JOIN {$this->_table['subject']} AS PS ON SJ.SubjectIdx = PS.SubjectIdx AND PS.IsStatus = 'Y' AND PS.IsUse = 'Y'
+            WHERE SJ.IsStatus = 'Y' AND SJ.IsUse = 'Y'
+            GROUP BY SJ.MmIdx, SJ.SubjectType
+            ORDER BY PS.SiteCode ASC, PS.OrderNum ASC";
+
+        $subjectDB = $this->_conn->query($sql)->result_array();
+        $subjectNames = array_column($subjectDB, 'SubjectNames', 'SubjectKey');
+        $subjectIdxs = array_column($subjectDB, 'SubjectIdxs', 'SubjectKey');
+
+        return array($listDB, $subjectNames, $subjectIdxs);
     }
 
 
@@ -138,7 +154,7 @@ class BaseCodeModel extends WB_Model
     public function getSubject($MmIdx, $SubjectType)
     {
         $baseDB = $this->getKind($MmIdx);
-        if(!$baseDB) return false;
+        if(empty($baseDB)) return false;
 
         $sql = "
             SELECT S.SiteCode AS sSiteCode, S.SubjectIdx AS sSubjectIdx, S.SubjectName AS sSubjectName, MS.*
@@ -153,7 +169,7 @@ class BaseCodeModel extends WB_Model
 
 
         $adminNames = $this->getAdminNames();
-        $adminInfo = array('RegDatm'     => '', 'RegAdminIdx' => '','UpdDatm'     => '', 'UpdAdminIdx' => '');
+        $adminInfo = array('RegDatm' => '', 'RegAdminIdx' => '','UpdDatm' => '', 'UpdAdminIdx' => '');
         foreach ($subjectDB as $it) {
             if($it['MrsIdx']) {
                 $adminInfo = array(
@@ -174,6 +190,7 @@ class BaseCodeModel extends WB_Model
      *
      * MmIdx + SubjectIdx + SubjectType 이 중복되지 않게 유니크하게 처리 (IsStatus는 사용안함)
      * IsUse 값으로 사용여부 표시
+     * SubjectType - E:필수, S:선택
      */
     public function storeSubject()
     {
@@ -182,7 +199,7 @@ class BaseCodeModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
-            // 저장되어 있지 않은 과목 모두 저장
+            // 저장되어 있지 않은 과목 저장
             foreach ($this->input->post('subjectIdx') as $it) {
                 $data = array(
                     'MmIdx' => $this->input->post('idx'),
@@ -190,6 +207,7 @@ class BaseCodeModel extends WB_Model
                     'SubjectType' => $this->input->post('sjType'),
                     'isUse' => 'Y',
                     'RegIp' => $this->input->ip_address(),
+                    'RegDatm' => date("Y-m-d H:i:s"),
                     'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 );
 
@@ -212,7 +230,6 @@ class BaseCodeModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             );
             $where = array('MmIdx' => $this->input->post('idx'), 'SubjectType' => $this->input->post('sjType'));
-
             $this->_conn->update($table, $data, $where);
 
 
@@ -223,7 +240,6 @@ class BaseCodeModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             );
             $where = array('MmIdx' => $this->input->post('idx'), 'SubjectType' => $this->input->post('sjType'));
-
             $this->_conn->where($where)
                         ->where_in('SubjectIdx', $this->input->post('subjectIdx'))
                         ->update($table, $data);

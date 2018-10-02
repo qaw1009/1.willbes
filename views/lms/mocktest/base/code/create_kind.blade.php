@@ -98,7 +98,6 @@
                                 mCateUsed.push($(v).data('mcate'));
                             });
                             $regi_form.find('#kind_cateD2 > option').each(function () {
-                                //var val = parseInt($(this).attr('value'));
                                 if( $.inArray(parseInt($(this).attr('value')), mCateUsed) !== -1 ) {
                                     $(this).prop('disabled', true).addClass('aero');
                                 }

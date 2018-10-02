@@ -34,7 +34,7 @@ class Coupon extends \app\controllers\FrontController
         // 조회 조건, 정렬 설정 조회
         $arr_condition_orderby = $this->_getConditionOrderBy($arr_input, $coupon_type, $valid_type);
 
-        // 쿠폰조회
+        // 목록 조회
         $list = [];
         $count = $this->couponFModel->listMemberCoupon(true, $arr_condition_orderby['condition'], null, null, [], true);
         $paging = $this->pagination('/classroom/coupon/index?' . http_build_query($arr_input), $count, 10, 10,true);

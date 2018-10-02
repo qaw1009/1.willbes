@@ -677,7 +677,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 회원 포인트 사용
             if ($real_use_point > 0) {
-                $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $order_idx, $order_prod_idx);
+                $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_use !== true) {
                     throw new \Exception($is_point_use);
                 }

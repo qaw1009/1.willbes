@@ -6,6 +6,10 @@ class PointFModel extends WB_Model
     private $_table = [
         'point_save' => 'lms_point_save',
         'point_use' => 'lms_point_use',
+        'site' => 'lms_site',
+        'site_group' => 'lms_site_group',
+        'order' => 'lms_order',
+        'code' => 'lms_sys_code'
     ];
 
     private $_point_status_ccd = ['save' => '679001', 'useall' => '679002', 'expire' => '679003'];    // 포인트상태 (적립, 소진, 소멸)
@@ -15,6 +19,104 @@ class PointFModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 회원 적립 포인트 목록
+     * @param bool|string $is_count [count 조회 여부 or 조회 컬럼]
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listMemberSavePoint($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if (is_bool($is_count) === true) {
+            if ($is_count === true) {
+                $column = 'count(*) AS numrows';
+            } else {
+                $column = 'PS.PointIdx, PS.PointType, PS.SiteCode, PS.OrderIdx, PS.OrderProdIdx, PS.SavePoint, PS.RemainPoint, PS.SaveDatm, PS.ExpireDatm, PS.ReasonCcd
+                    , if(PS.EtcReason is null or length(PS.EtcReason) < 1, CR.CcdName, PS.EtcReason) as ReasonName, SG.SiteGroupName, O.OrderNo';
+            }
+        } else {
+            $column = $is_count;
+        }
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        $from = '
+            from ' . $this->_table['point_save'] . ' as PS
+                left join ' . $this->_table['order'] . ' as O
+                    on PS.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['site'] . ' as S
+                    on PS.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join ' . $this->_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CR
+                    on PS.ReasonCcd = CR.Ccd and CR.IsStatus = "Y"
+            where PS.MemIdx = ?';
+
+        // where 조건
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx')]);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 회원 사용 포인트 목록
+     * @param bool|string $is_count [count 조회 여부 or 조회 컬럼]
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listMemberUsePoint($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if (is_bool($is_count) === true) {
+            if ($is_count === true) {
+                $column = 'count(*) AS numrows';
+            } else {
+                $column = 'PU.PointUseIdx, PU.PointIdx, PS.PointType, PU.SiteCode, PU.OrderIdx, PU.OrderProdIdx, PU.UsePoint, PU.UseDatm, PU.ReasonCcd
+                    , if(PU.EtcReason is null or length(PU.EtcReason) < 1, CR.CcdName, PU.EtcReason) as ReasonName, SG.SiteGroupName, O.OrderNo';
+            }
+        } else {
+            $column = $is_count;
+        }
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        $from = '
+            from ' . $this->_table['point_use'] . ' as PU
+                inner join ' . $this->_table['point_save'] . ' as PS
+                    on PU.PointIdx = PS.PointIdx
+                left join ' . $this->_table['order'] . ' as O
+                    on PU.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['site'] . ' as S
+                    on PU.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join ' . $this->_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CR
+                    on PU.ReasonCcd = CR.Ccd and CR.IsStatus = "Y"		
+            where PS.MemIdx = ?';
+
+        // where 조건
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx')]);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
@@ -35,13 +137,15 @@ class PointFModel extends WB_Model
      * 결제시 사용한 포인트 내역 저장 및 적립 포인트 차감
      * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
      * @param int $use_point [사용포인트]
+     * @param int $site_code [사이트코드]
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]
      * @return bool|string
      */
-    public function addOrderUsePoint($point_type, $use_point, $order_idx, $order_prod_idx)
+    public function addOrderUsePoint($point_type, $use_point, $site_code, $order_idx, $order_prod_idx)
     {
         $input = [
+            'site_code' => $site_code,
             'order_idx' => $order_idx,
             'order_prod_idx' => $order_prod_idx,
             'reason_type' => 'paid'
@@ -62,11 +166,12 @@ class PointFModel extends WB_Model
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
 
             $data = [
-                $sess_mem_idx, $point_type, $use_point, element('order_idx', $input, 0), element('order_prod_idx', $input, 0),
+                $sess_mem_idx, element('site_code', $input, 0), $point_type, $use_point,
+                element('order_idx', $input, 0), element('order_prod_idx', $input, 0),
                 $this->_point_use_reason_ccd[element('reason_type', $input)], element('etc_reason', $input), $this->input->ip_address()
             ];
 
-            $query = $this->_conn->query('call sp_member_point_use(?, ?, ?, ?, ?, ?, ?, null, ?)', $data);
+            $query = $this->_conn->query('call sp_member_point_use(?, ?, ?, ?, ?, ?, ?, ?, null, ?)', $data);
             $result = $query->row(0)->ReturnMsg;
 
             if ($result != 'Success') {

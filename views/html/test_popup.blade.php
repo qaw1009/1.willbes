@@ -18,6 +18,7 @@
                     </tr>
                     <tr>
                         <td class="w-radio tx-left">
+                            <div>인증파일등록</div>
                             <ul>
                                 <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>경찰공무원</label></li>
                                 <li><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"><label>의무경찰</label></li>

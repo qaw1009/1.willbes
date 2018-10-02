@@ -52,28 +52,26 @@ class BookModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $in_column = '
-                B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
-                    , P.wPublName, A.wAdminName as wRegAdminName
-                    , ifnull((
-                        select GROUP_CONCAT(A.wAuthorName separator ", ")
-                        from ' . $this->_table['author'] . ' as A 
-                            inner join ' . $this->_table['book_r_author'] . ' as BA
-                                on A.wAuthorIdx = BA.wAuthorIdx
-                        where A.wIsStatus = "Y"
-                            and BA.wIsStatus = "Y" and BA.wBookIdx = B.wBookIdx
-                        group by BA.wBookIdx
-                    ), "") as wAuthorNames           
-         ';
+        $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
+            , ifnull(A.wAuthorNames, "") as wAuthorNames, P.wPublName, A.wAdminName as wRegAdminName';
 
         $from = '
             from ' . $this->_table['book'] . ' as B 
+                left join (
+                    select GROUP_CONCAT(A.wAuthorName separator ", ") as wAuthorNames, BA.wBookIdx
+                    from ' . $this->_table['author'] . ' as A 
+                        inner join ' . $this->_table['book_r_author'] . ' as BA
+                            on A.wAuthorIdx = BA.wAuthorIdx
+                    where A.wIsStatus = "Y"
+                        and BA.wIsStatus = "Y"
+                    group by BA.wBookIdx                    
+                ) as A
+                    on B.wBookIdx = A.wBookIdx
                 left join ' . $this->_table['publisher'] . ' as P
                     on B.wPublIdx = P.wPublIdx and P.wIsStatus = "Y"
                 left join ' . $this->_table['admin'] . ' as A 
                     on B.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
-            where B.wIsStatus = "Y" 
-        ';
+            where B.wIsStatus = "Y"';
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

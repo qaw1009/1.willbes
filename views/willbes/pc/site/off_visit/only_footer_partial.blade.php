@@ -129,7 +129,7 @@
                     html += '<div class="LecPocketlist" id="'+ item.CartIdx + '" data-prod-code="'+item.ProdCode+'" data-sub-prod-code="'+item.ProdCodeSub +'">';
                     html += '  <span class="oBox campus_'+item.CampusCcd+' ml10 NSK">' + item.CampusCcdName + '</span>\n';
                     html +='   &nbsp;<span class="w-tit p_re">' + item.ProdName + '\n';
-                    html +='          <a class="closeBtn" href="javascript:rowDelete(\'' + item.CartIdx + '\')"><img src="{{ img_url('cart/close.png') }}"></a>\n';
+                    html +='          <a class="closeBtn" href="javascript:;" onclick="rowDelete(\'' + item.CartIdx + '\')"><img src="{{ img_url('cart/close.png') }}"></a>\n';
                     html +='   </span>\n';
                     html +='   <ul class="NSK"><li class="price tx-blue f_right">' + addComma(item.RealSalePrice) + '원</li></ul>\n';
                     html +='</div>\n';

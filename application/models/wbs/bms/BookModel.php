@@ -55,7 +55,7 @@ class BookModel extends WB_Model
         $in_column = '
                 B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
                     , P.wPublName, A.wAdminName as wRegAdminName
-                    , (
+                    , ifnull((
                         select GROUP_CONCAT(A.wAuthorName separator ", ")
                         from ' . $this->_table['author'] . ' as A 
                             inner join ' . $this->_table['book_r_author'] . ' as BA
@@ -63,7 +63,7 @@ class BookModel extends WB_Model
                         where A.wIsStatus = "Y"
                             and BA.wIsStatus = "Y" and BA.wBookIdx = B.wBookIdx
                         group by BA.wBookIdx
-                    ) as wAuthorNames           
+                    ), "") as wAuthorNames           
          ';
 
         $from = '

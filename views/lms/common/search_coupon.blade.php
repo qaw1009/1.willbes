@@ -158,8 +158,7 @@
                                     $(document).find('#'+$parent_location).append(
                                          "<span id='coupon_"+temp_data_arr[0]+"'><input type='hidden'  name='CouponIdx[]' id='CouponIdx" + temp_data_arr[2] + "' value='" + temp_data_arr[0] + "'>"
                                         + "		["+temp_data_arr[0]+"]" + temp_data_arr[2] + "</td>"
-                                        + "		&nbsp;<a href='javascript:;' onclick=\"rowDelete(\'coupon_" + temp_data_arr[0] + "')\"><i class=\"fa fa-times red\"></i></a></span>"
-                                        + "	&nbsp;&nbsp;"
+                                        + "		&nbsp;<a href='javascript:;' onclick=\"rowDelete(\'coupon_" + temp_data_arr[0] + "')\"><i class=\"fa fa-times red\"></i></a>&nbsp;&nbsp;</span>"
                                     );
                                  //##
                                 }

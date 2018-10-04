@@ -23,7 +23,6 @@ class BaseCodeModel extends WB_Model
         parent::__construct('lms');
     }
 
-
     /**
      * 관리자이름 배열 로딩
      * @param array $in : wAdminIdx
@@ -51,9 +50,9 @@ class BaseCodeModel extends WB_Model
                    C2.CateCode AS mCateCode, C2.CateName AS mCateName, C2.CateDepth AS mCateDepth, C2.OrderNum AS mOrderNum, C2.IsUse AS mIsUse,
                    GREATEST(C1.CateDepth, IFNULL(C2.CateDepth, 0)) as LastCateDepth
             FROM {$this->_table['site']} AS S
-            JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y'
-            RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C2.CateCode
+            JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
+            LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y' AND C2.IsUse = 'Y'
+            RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C2.CateCode  AND M.IsStatus = 'Y'
             WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
             ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC";
 
@@ -99,7 +98,7 @@ class BaseCodeModel extends WB_Model
                 'SiteCode' => $this->input->post('site'),
                 'CateCode' => $this->input->post('cateD2'),
                 'OrderNum' => $this->input->post('orderNum'),
-                'isUse' => $this->input->post('isUse'),
+                'IsUse' => $this->input->post('isUse'),
                 'RegIp' => $this->input->ip_address(),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
             );
@@ -132,7 +131,7 @@ class BaseCodeModel extends WB_Model
     {
         $data = array(
             'OrderNum' => $this->input->post('orderNum'),
-            'isUse' => $this->input->post('isUse'),
+            'IsUse' => $this->input->post('isUse'),
             'UpdDatm' => date("Y-m-d H:i:s"),
             'UpdAdminIdx' => $this->session->userdata('admin_idx'),
         );
@@ -164,9 +163,7 @@ class BaseCodeModel extends WB_Model
             ORDER BY S.SiteCode ASC, S.OrderNum ASC
         ";
         $subjectDB = $this->_conn->query($sql, array($MmIdx, $SubjectType, $baseDB['SiteCode']))->result_array();
-
         if(empty($subjectDB)) return false;
-
 
         $adminNames = $this->getAdminNames();
         $adminInfo = array('RegDatm' => '', 'RegAdminIdx' => '','UpdDatm' => '', 'UpdAdminIdx' => '');
@@ -188,7 +185,7 @@ class BaseCodeModel extends WB_Model
     /**
      * 과목 등록,수정
      *
-     * MmIdx + SubjectIdx + SubjectType 이 중복되지 않게 유니크하게 처리 (IsStatus는 사용안함)
+     * MmIdx + SubjectIdx + SubjectType 이 중복되지 않게 유니크하게 처리
      * IsUse 값으로 사용여부 표시
      * SubjectType - E:필수, S:선택
      */
@@ -200,49 +197,51 @@ class BaseCodeModel extends WB_Model
             $this->_conn->trans_start();
 
             // 저장되어 있지 않은 과목 저장
-            foreach ($this->input->post('subjectIdx') as $it) {
-                $data = array(
-                    'MmIdx' => $this->input->post('idx'),
-                    'SubjectIdx' => $it,
-                    'SubjectType' => $this->input->post('sjType'),
-                    'isUse' => 'Y',
-                    'RegIp' => $this->input->ip_address(),
-                    'RegDatm' => date("Y-m-d H:i:s"),
-                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                );
+            if( !empty($this->input->post('subjectIdx')) ) {
+                foreach ($this->input->post('subjectIdx') as $it) {
+                    $data = array(
+                        'MmIdx' => $this->input->post('idx'),
+                        'SubjectIdx' => $it,
+                        'SubjectType' => $this->input->post('sjType'),
+                        'IsUse' => 'Y',
+                        'RegIp' => $this->input->ip_address(),
+                        'RegDatm' => date("Y-m-d H:i:s"),
+                        'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    );
 
-                $keys = "`". implode("`, `", array_keys($data)) ."`";
-                $values = "'". implode("', '", $this->_conn->escape_str(array_values($data))) ."'";
-                $exist_where = "`MmIdx` = '". $this->_conn->escape_str($this->input->post('idx')) ."'";
-                $exist_where .= "AND `SubjectIdx` = '". $this->_conn->escape_str($it) ."'";
-                $exist_where .= "AND `SubjectType` = '". $this->_conn->escape_str($this->input->post('sjType')) ."'";
+                    $keys = "`" . implode("`, `", array_keys($data)) . "`";
+                    $values = "'" . implode("', '", $this->_conn->escape_str(array_values($data))) . "'";
+                    $exist_where = "`MmIdx` = '" . $this->_conn->escape_str($this->input->post('idx')) . "'";
+                    $exist_where .= "AND `SubjectIdx` = '" . $this->_conn->escape_str($it) . "'";
+                    $exist_where .= "AND `SubjectType` = '" . $this->_conn->escape_str($this->input->post('sjType')) . "'";
 
-                $sql = "INSERT INTO $table ($keys) SELECT $values FROM DUAL
+                    $sql = "INSERT INTO $table ($keys) SELECT $values FROM DUAL
 					WHERE NOT EXISTS (SELECT * FROM $table WHERE $exist_where)";
-                $this->_conn->query($sql);
+                    $this->_conn->query($sql);
+                }
             }
-
 
             // IsUse 모두 미사용으로 Update
             $data = array(
-                'isUse' => 'N',
+                'IsUse' => 'N',
                 'UpdDatm' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             );
             $where = array('MmIdx' => $this->input->post('idx'), 'SubjectType' => $this->input->post('sjType'));
             $this->_conn->update($table, $data, $where);
 
-
             // 체크된 항목 IsUse 사용으로 Update
-            $data = array(
-                'isUse' => 'Y',
-                'UpdDatm' => date("Y-m-d H:i:s"),
-                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
-            );
-            $where = array('MmIdx' => $this->input->post('idx'), 'SubjectType' => $this->input->post('sjType'));
-            $this->_conn->where($where)
-                        ->where_in('SubjectIdx', $this->input->post('subjectIdx'))
-                        ->update($table, $data);
+            if( !empty($this->input->post('subjectIdx')) ) {
+                $data = array(
+                    'IsUse' => 'Y',
+                    'UpdDatm' => date("Y-m-d H:i:s"),
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                );
+                $where = array('MmIdx' => $this->input->post('idx'), 'SubjectType' => $this->input->post('sjType'));
+                $this->_conn->where($where)
+                    ->where_in('SubjectIdx', $this->input->post('subjectIdx'))
+                    ->update($table, $data);
+            }
 
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {
@@ -263,7 +262,7 @@ class BaseCodeModel extends WB_Model
     public function useToggle()
     {
         $data = array(
-            'isUse' => ($this->input->post('isUse') == 'Y') ? 'N' : 'Y',
+            'IsUse' => ($this->input->post('isUse') == 'Y') ? 'N' : 'Y',
             'UpdDatm' => date("Y-m-d H:i:s"),
             'UpdAdminIdx' => $this->session->userdata('admin_idx'),
         );

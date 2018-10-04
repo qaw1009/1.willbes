@@ -18,7 +18,6 @@ class BaseCode extends \app\controllers\BaseController
         parent::__construct();
     }
 
-
     /**
      * 메인 (전체 로딩 후 dataTable로 처리)
      */
@@ -181,7 +180,7 @@ class BaseCode extends \app\controllers\BaseController
     public function storeSubject()
     {
         $rules = [
-            ['field' => 'subjectIdx[]', 'label' => '과목', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'subjectIdx[]', 'label' => '과목', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'sjType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]'],

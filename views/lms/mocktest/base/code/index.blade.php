@@ -52,7 +52,7 @@
     <div class="x_panel mt-10">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
-                {!! csrf_field() !!}
+            {!! csrf_field() !!}
             <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                 <thead class="bg-odd">
                     <tr>
@@ -87,7 +87,7 @@
                             @endif
                         </td>
                         <td>
-                            @if( !isset($subjectNames[$row['MmIdx'].'-E']) )
+                            @if( empty($subjectNames[$row['MmIdx'].'-E']) )
                                 <div class="text-center">
                                     <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="E">추가</button>
                                 </div>
@@ -99,7 +99,7 @@
                             @endif
                         </td>
                         <td>
-                            @if( !isset($subjectNames[$row['MmIdx'].'-S']) )
+                            @if( empty($subjectNames[$row['MmIdx'].'-S']) )
                                 <div class="text-center">
                                     <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="S">추가</button>
                                 </div>

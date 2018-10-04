@@ -54,14 +54,16 @@
                             <td class="bg-light-white">결제금액</td>
                             <td><strong class="tx-light-blue">{{ number_format($results['order']['RealPayPrice']) }}원</strong></td>
                             <td class="bg-light-white">결제수단</td>
-                            <td><strong class="tx-light-blue">{{ $results['order']['PayMethodCcdName'] }}</strong></td>
+                            <td><strong class="tx-light-blue">{{ empty($results['order']['PayMethodCcd']) === false ? $results['order']['PayMethodCcdName'] : $results['order']['PayRouteCcdName'] }}</strong></td>
                         </tr>
-                        <tr>
-                            <td class="bg-light-white">영수증출력</td>
-                            <td class=""><span class="btnAll NSK"><a href="#none" id="btn_receipt_print">영수증출력하기</a></span></td>
-                            <td class=""></td>
-                            <td class=""></td>
-                        </tr>
+                        @if(empty($results['order']['PgTid']) === false)
+                            <tr>
+                                <td class="bg-light-white">영수증출력</td>
+                                <td class=""><span class="btnAll NSK"><a href="#none" id="btn_receipt_print">영수증출력하기</a></span></td>
+                                <td class=""></td>
+                                <td class=""></td>
+                            </tr>
+                        @endif
                     @endif
                     </tbody>
                 </table>

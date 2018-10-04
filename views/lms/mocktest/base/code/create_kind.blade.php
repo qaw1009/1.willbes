@@ -52,7 +52,7 @@
                     </td>
                     {{--<th>정렬</th>--}}
                     {{--<td class="form-inline">--}}
-                        {{--<input type="text" class="form-control mr-10" name="orderNum" value="@if($method == 'PUT') {{ ($data['OrderNum'] == '0') ? '' :$data['OrderNum'] }} @endif" style="width:50px;"> 미입력시 마지막 DP--}}
+                    {{--<input type="text" class="form-control mr-10" name="orderNum" value="@if($method == 'PUT') {{ ($data['OrderNum'] == '0') ? '' :$data['OrderNum'] }} @endif" style="width:50px;"> 미입력시 마지막 DP--}}
                     {{--</td>--}}
                 </tr>
                 <tr>

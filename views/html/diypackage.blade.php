@@ -49,87 +49,96 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Package-Price p_re">
-            <div class="total-PriceBox NG">
-                <span class="price-tit">총 주문금액</span>
-                <span class="row-line">|</span>
-                <span>
-                    <span class="price-txt">패키지</span>
-                    <span class="tx-light-blue">140,000원</span>
-                </span>
-                <span class="price-img">
-                    <img src="{{ img_url('sub/icon_plus.gif') }}">
-                </span>
-                <span>
-                    <span class="price-txt">교재</span>
-                    <span class="tx-light-blue">48,600원</span>
-                </span>
-                <span class="price-img">
-                    <img src="{{ img_url('sub/icon_minus.gif') }}">
-                </span>
-                <span>
-                    <span class="price-txt">강좌할인금액</span>
-                    <span class="tx-pink">15,000원</span>
-                </span>
-                <span class="price-total tx-light-blue">188,600원</span>
-            </div>
-            <div class="willbes-Lec-buyBtn">
-                <ul>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
-                            <span class="tx-light-blue">바로결제</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- willbes-Lec-Package-Price -->
 
-        <div class="willbes-Lec-Package NG c_both">
-            <div class="packageTable">
-                <div class="w-package">
-                    <span class="w-obj NSK"><div class="pBox p1">강좌</div></span> 
-                    <span class="w-tit">2018 9급공무원 단원별문제풀이 선택형 종합 Plus 패키지</span>
-                    <span class="priceWrap">
-                        <span class="price tx-blue">200,000원</span>
-                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
-                    </span>
+        <div id="Sticky" class="sticky-Package">
+            <div class="sticky-Grid sticky-total NG">
+                <div class="willbes-Lec-Package-Price p_re">
+                    <div class="total-PriceBox NG">
+                        <span class="price-tit">총 주문금액</span>
+                        <span class="row-line">|</span>
+                        <span>
+                            <span class="price-txt">패키지</span>
+                            <span class="tx-light-blue">140,000원</span>
+                        </span>
+                        <span class="price-img">
+                            <img src="{{ img_url('sub/icon_plus.gif') }}">
+                        </span>
+                        <span>
+                            <span class="price-txt">교재</span>
+                            <span class="tx-light-blue">48,600원</span>
+                        </span>
+                        <span class="price-img">
+                            <img src="{{ img_url('sub/icon_minus.gif') }}">
+                        </span>
+                        <span>
+                            <span class="price-txt">강좌할인금액</span>
+                            <span class="tx-pink">15,000원</span>
+                        </span>
+                        <span class="price-total tx-light-blue">188,600원</span>
+                    </div>
+                    <div class="willbes-Lec-buyBtn">
+                        <ul>
+                            <li class="btnAuto180 h36">
+                                <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
+                                    <span class="tx-light-blue">바로결제</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="w-package">
-                    <span class="w-obj NSK"><div class="pBox p2">패키지</div></span> 
-                    <span class="w-tit">2018 9급공무원 기출문제 선택형 종합 Master패키지</span>
-                    <span class="priceWrap">
-                        <span class="price tx-blue">200,000원</span>
-                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
-                    </span>
+                <!-- willbes-Lec-Package-Price -->
+
+                <div class="willbes-Lec-Package NG c_both">
+                    <div class="packageTable">
+                        <div class="w-package">
+                            <span class="w-obj NSK"><div class="pBox p1">강좌</div></span> 
+                            <span class="w-tit">2018 9급공무원 단원별문제풀이 선택형 종합 Plus 패키지</span>
+                            <span class="priceWrap">
+                                <span class="price tx-blue">200,000원</span>
+                                <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
+                            </span>
+                        </div>
+                        <div class="w-package">
+                            <span class="w-obj NSK"><div class="pBox p2">패키지</div></span> 
+                            <span class="w-tit">2018 9급공무원 기출문제 선택형 종합 Master패키지</span>
+                            <span class="priceWrap">
+                                <span class="price tx-blue">200,000원</span>
+                                <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
+                            </span>
+                        </div>
+                        <div class="w-package">
+                            <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
+                            <span class="w-tit">2017 [하반기 국가직 추가 시험대비] 실전 동형문풀 패키지</span>
+                            <span class="priceWrap">
+                                <span class="price tx-blue">60,000원</span>
+                                <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
+                            </span>
+                        </div>
+                        <div class="w-package">
+                            <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
+                            <span class="w-tit">2017 [하반기 지방직 추가시험 대비] 실전 동형모의고사 선택형 종합패키지</span>
+                            <span class="priceWrap">
+                                <span class="price tx-blue">99,000원</span>
+                                <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
+                            </span>
+                        </div>
+                        <div class="w-package">
+                            <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
+                            <span class="w-tit">2018 9급공무원 단원별문제풀이 선택형 종합 Plus 패키지</span>
+                            <span class="priceWrap">
+                                <span class="price tx-blue">200,000원</span>
+                                <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-package">
-                    <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
-                    <span class="w-tit">2017 [하반기 국가직 추가 시험대비] 실전 동형문풀 패키지</span>
-                    <span class="priceWrap">
-                        <span class="price tx-blue">60,000원</span>
-                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
-                    </span>
-                </div>
-                <div class="w-package">
-                    <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
-                    <span class="w-tit">2017 [하반기 지방직 추가시험 대비] 실전 동형모의고사 선택형 종합패키지</span>
-                    <span class="priceWrap">
-                        <span class="price tx-blue">99,000원</span>
-                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
-                    </span>
-                </div>
-                <div class="w-package">
-                    <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
-                    <span class="w-tit">2018 9급공무원 단원별문제풀이 선택형 종합 Plus 패키지</span>
-                    <span class="priceWrap">
-                        <span class="price tx-blue">200,000원</span>
-                        <span class="delete"><a href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></span>
-                    </span>
-                </div>
+                <!-- willbes-Lec-Package -->
             </div>
         </div>
-        <!-- willbes-Lec-Package -->
+        <!-- sticky-menu -->
+
+
+
 
         <div class="willbes-Lec NG c_both">
             <div class="willbes-Lec-Subject tx-dark-black">· 국어<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>

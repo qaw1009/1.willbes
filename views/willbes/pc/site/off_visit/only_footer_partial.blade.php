@@ -1,59 +1,61 @@
-                <div class="Aside widthAuto290 NG ml20">
-                    <div class="Tit tx-light-black">장바구니</div>
-                    <div class="Lec-Pocket-Grid">
-                        <div id="basket_list"></div>
+<form id="regi_visit_form" name="regi_visit_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+    <div class="Aside widthAuto290 NG ml20">
+        <div class="Tit tx-light-black">장바구니</div>
+        <div class="Lec-Pocket-Grid">
+            <div id="basket_list"></div>
+        </div>
+        <table cellspacing="0" cellpadding="0" class="listTable lecPocketTable tx-black p_re">
+            <tbody>
+            <tr class="AllchkBox"><td><input type="checkbox" id="agree" name="agree" value="Y"/></td></tr>
+            <tr class="replyList w-replyList">
+                <td class="w-tit">
+                    유의사항을 모두 확인했고 동의합니다
+                    <span class="arrow-Btn">></span>
+                </td>
+            </tr>
+            <tr class="replyTxt w-replyTxt bg-light-gray">
+                <td class="w-txt">
+                    <div class="w-txt-Grid">
+                        <div class="info-txt">
+                            - 수강증 분실시 재발급/변경/환불되지 않으며,<br/>
+                            판매 및 양도되지 않습니다.<br/>
+                            <span class="tx-blue">(절도, 위.변조시 법적 책임이 따릅니다.)</span>
+                        </div>
                     </div>
-                    <table cellspacing="0" cellpadding="0" class="listTable lecPocketTable tx-black p_re">
-                        <tbody>
-                        <tr class="AllchkBox"><td><input type="checkbox" id="info_chk" name="info_chk" class="info_chk"></td></tr>
-                        <tr class="replyList w-replyList">
-                            <td class="w-tit">
-                                유의사항을 모두 확인했고 동의합니다
-                                <span class="arrow-Btn">></span>
-                            </td>
-                        </tr>
-                        <tr class="replyTxt w-replyTxt bg-light-gray">
-                            <td class="w-txt">
-                                <div class="w-txt-Grid">
-                                    <input type="checkbox" id="info_chk" name="info_chk" class="info_chk">
-                                    <div class="info-txt">
-                                        수강증 분실시 재발급/변경/환불되지 않으며,<br/>
-                                        판매 및 양도되지 않습니다.<br/>
-                                        <span class="tx-blue">(절도, 위.변조시 법적 책임이 따릅니다.)</span>
-                                    </div>
-                                </div>
-                                <div class="w-txt-Grid">
-                                    <input type="checkbox" id="info_chk" name="info_chk" class="info_chk">
-                                    <div class="info-txt">
-                                        수강 총 횟수의 1/2 미경과시에만 변경 및<br/>
-                                        환불이 가능합니다.
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="priceBox">
-                        <ul>
-                            <li class="p-tit">
-                                <span class="a-txt">총</span>
-                                <span class="tx-light-blue" id="totalCnt">0</span>건
-                            </li>
-                            <li class="w-price t-price tx-light-blue NGEB"  id="totalPrice">0원</li>
-                        </ul>
+                    <div class="w-txt-Grid">
+                        <div class="info-txt">
+                            - 수강 총 횟수의 1/2 미경과시에만 변경 및<br/>
+                            환불이 가능합니다.
+                        </div>
                     </div>
-
-                    <div class="btnAuto250 GM h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                            <span class="">방문결제 접수</span>
-                        </button>
-                    </div>
-                </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="priceBox">
+            <ul>
+                <li class="p-tit">
+                    <span class="a-txt">총</span>
+                    <span class="tx-light-blue" id="totalCnt">0</span>건
+                </li>
+                <li class="w-price t-price tx-light-blue NGEB"  id="totalPrice">0원</li>
+            </ul>
+        </div>
+        <div class="btnAuto250 GM h36">
+            <button type="button" name="btn_visit_pay" class="mem-Btn bg-blue bd-dark-blue">
+                <span class="">방문결제 접수</span>
+            </button>
+        </div>
+    </div>
+</form>
 
 <script type="text/javascript">
     var $regi_off_form = $('#regi_off_form');
-    $(document).ready(function() {
+    var $regi_visit_form = $('#regi_visit_form');
 
+    $(document).ready(function() {
         // 검색어 입력 후 엔터
         $('#search_value').on('keyup', function() {
             if (window.event.keyCode === 13) {
@@ -70,26 +72,42 @@
             goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
         };
 
+        {{-- checkbox 클릭시 --}}
+        $regi_off_form.on('change', '.chk_products', function() {
+            $_id = $(this).data('prod-code');
+            $_val = $(this).val();
+            if ($(this).prop('checked') === true) {
+                eachProductCart($_id, $_val);
+            } else {
+                seachCartIdx($_id);
+            }
+        });
+
         {{-- 장바구니 추출 / 왼쪽-오른쪽 동기화 --}}
         cartList();
         sameContent();
-    });
 
+        // 방문결제 접수 버튼 클릭
+        $regi_visit_form.on('click', 'button[name="btn_visit_pay"]', function() {
+            if ($regi_visit_form.find('input[name="agree"]:checked').length < 1) {
+                alert('유의사항을 확인 후 동의해 주세요.');
+                return;
+            }
 
-    {{-- checkbox 클릭시 --}}
-    $regi_off_form.on('change', '.chk_products', function() {
-        $_id = $(this).data('prod-code');
-        $_val = $(this).val();
-        if ($(this).prop('checked') === true) {
-            eachProductCart($_id, $_val);
-        } else {
-            seachCartIdx($_id);
-        }
+            if (confirm('해당 강좌를 방문결제 접수하시겠습니까?')) {
+                var url = '{{ front_url('/order/visit') }}';
+                ajaxSubmit($regi_visit_form, url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.replace(ret.ret_data.ret_url);
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        });
     });
 
     {{-- 개별상품 장바구니 담기 --}}
     function eachProductCart(id,val) {
-
         $_prod_code_array = [];
         $_learn_pattern = '{{$learn_pattern}}';
         $_is_direct_pay = 'N';

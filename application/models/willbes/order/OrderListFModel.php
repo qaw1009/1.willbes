@@ -25,7 +25,8 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'O.OrderIdx, O.OrderNo, O.ReprProdName, O.PayRouteCcd, O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgTid
+            $column = 'O.OrderIdx, O.OrderNo, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
+                , O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgCcd, O.PgMid, O.PgTid
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
                 , O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
                 , O.VBankCcd, ifnull(CBC.CcdName, O.VBankCcd) as VBankName, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
@@ -41,6 +42,8 @@ class OrderListFModel extends BaseOrderFModel
                     on O.SiteCode = S.SiteCode and S.IsStatus = "Y"
                 left join ' . $this->_table['site_group'] . ' as SG
                     on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus = "Y"                    
+                left join ' . $this->_table['code'] . ' as CPR
+                    on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CPM
                     on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CBC

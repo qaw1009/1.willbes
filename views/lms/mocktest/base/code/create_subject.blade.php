@@ -59,13 +59,13 @@
                     </td>
                 </tr>
                 {{--<tr>--}}
-                    {{--<th colspan="1">사용여부 <span class="required">*</span></th>--}}
-                    {{--<td colspan="3">--}}
-                        {{--<div>--}}
-                            {{--<input type="radio" name="isUse" class="flat" value="Y" required="required" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-20">사용</span>--}}
-                            {{--<input type="radio" name="isUse" class="flat" value="N" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>--}}
-                        {{--</div>--}}
-                    {{--</td>--}}
+                {{--<th colspan="1">사용여부 <span class="required">*</span></th>--}}
+                {{--<td colspan="3">--}}
+                {{--<div>--}}
+                {{--<input type="radio" name="isUse" class="flat" value="Y" required="required" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-20">사용</span>--}}
+                {{--<input type="radio" name="isUse" class="flat" value="N" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>--}}
+                {{--</div>--}}
+                {{--</td>--}}
                 {{--</tr>--}}
                 <tr>
                     <th>등록자</th>

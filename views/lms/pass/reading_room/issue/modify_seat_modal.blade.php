@@ -5,8 +5,11 @@
 @stop
 
 @section('layer_header')
-    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>--}}
+    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" action="{{ site_url("/pass/readingRoom/issue/storeSeatChang") }}?{!! $default_query_string !!}" novalidate>
         {!! csrf_field() !!}
+        {!! method_field($method) !!}
+        <input type="hidden" name="now_order_idx" value="{{ $data['NowOrderIdx'] }}"/>
         @endsection
 
         @section('layer_content')
@@ -134,7 +137,7 @@
                     <button type="button" class="btn btn-sm btn-default" id="btn_seat_out">퇴실처리</button>
                 </div>
                 <div class="text-left col-md-6 form-inline">
-                    <button type="button" class="btn btn-sm btn-success" id="btn_seat_modify">수정</button>
+                    <button type="submit" class="btn btn-sm btn-success">수정</button>
                 </div>
             </div>
 
@@ -228,7 +231,7 @@
             });
 
             //메모저장
-            $('#btn_memo').click(function() {
+            $('#btn_memo').on('click', function() {
                 var _url = '{{ site_url('/pass/readingRoom/issue/storeMemo') }}' + '?' + '{!! $default_query_string !!}';
                 var memo = $('#memo_content').val();
 
@@ -253,7 +256,7 @@
             });
 
             //퇴실처리
-            $('#btn_seat_out').click(function() {
+            $('#btn_seat_out').on('click', function() {
                 var now_seat_id = "_seat_{{$data['SerialNumber']}}";
                 var _url = '{{ site_url('/pass/readingRoom/issue/storeSeatOut') }}' + '?' + '{!! $default_query_string !!}';
                 var data = {
@@ -271,14 +274,35 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         $('#'+now_seat_id).removeClass('btn-info').addClass('btn-default');
                         $('#'+now_seat_id+'> p').text('미사용');
-                        /*location.reload();*/
+                        $("input:radio[name='rdr_seat_status']").removeAttr("checked");
+                        $("input:radio[name='rdr_seat_status']").prop('checked', false).iCheck('update');
                     }
                 }, showError, false, 'POST');
             });
+
+            $_regi_form.submit(function() {
+                var _url = '{{ site_url('/pass/readingRoom/issue/storeSeatChang') }}' + '?' + '{!! $default_query_string !!}';
+
+                if (!confirm('수정 하시겠습니까?')) {
+                    return false;
+                }
+
+                /*ajaxSubmit($_regi_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+
+                    }
+                }, showValidateError, addValidate, false, 'alert');*/
+            });
+
         });
 
         function nl2br(str){
             return str.replace(/\n/g, "<br />");
+        }
+
+        function addValidate() {
+            return true;
         }
     </script>
 @endsection

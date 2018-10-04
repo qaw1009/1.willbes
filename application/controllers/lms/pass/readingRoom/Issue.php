@@ -101,7 +101,7 @@ class Issue extends \app\controllers\BaseController
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc', 'c.RrudIdx' => 'asc']);
+            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc', 'c.UseStartDate' => 'asc']);
         }
 
         return $this->response([
@@ -133,17 +133,13 @@ class Issue extends \app\controllers\BaseController
         //좌석정보
         $seat_data = $this->readingRoomModel->listSeat($prod_code);
 
-        //기준주문식별자 메모 데이터 조회
-        /*$master_order_idx = $data['MasterOrderIdx'];
-        $memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);*/
-
         $this->load->view("pass/reading_room/issue/modify_seat_modal", [
             'prod_code' => $prod_code,
             'default_query_string' => '&mang_type='.$mang_type,
             'arr_seat_status' => $arr_seat_status,
             'data' => $data,
             'seat_data' => $seat_data,
-            /*'memo_data' => $memo_data*/
+            'method' => 'modify'
         ]);
     }
 
@@ -183,6 +179,31 @@ class Issue extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 좌석변경처리
+     */
+    public function storeSeatChang()
+    {
+        $mang_type = $this->_req('mang_type');
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[modify]'],
+            ['field' => 'now_order_idx', 'label' => '주문번호식별자', 'rules' => 'trim|required'],
+            ['field' => 'rdr_seat_status', 'label' => '좌석상태', 'rules' => 'trim|required'],
+            ['field' => 'set_seat', 'label' => '좌석번호', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->readingRoomModel->modifyReadingRoomSeat($this->_reqP(null,false), $mang_type);
+        $this->json_result($result, '변경 되었습니다.', $result);
+    }
+
+    /**
+     * 퇴실처리
+     */
     public function storeSeatOut()
     {
         $result = true;

@@ -133,11 +133,12 @@ class ReadingRoomModel extends BaseReadingRoomModel
     }
 
     /**
-     * 독서실/사물함 상세 데이터 조회
+     * 독서실/사물함 상세 데이터 조회 [현재주문 식별자 기준 좌석데이터 조인]
      * @param $OrderIdx
+     * @param array $arr_condition
      * @return mixed
      */
-    public function findReadingRoomForModify($OrderIdx)
+    public function findReadingRoomForModify($OrderIdx, $arr_condition = [])
     {
         $column = '
                 a.LrIdx, a.CampusCcd, b.OrderIdx, b.OrderNo, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
@@ -163,7 +164,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
         ";
-        return $this->_conn->query('select '.$column .$from)->row_array();
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '.$column . $from . $where)->row_array();
     }
 
     /**
@@ -253,6 +258,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
     /**
      * 독서실/사물함 수정
      * @param array $input
+     * @param $lr_idx
      * @return array|bool
      */
     public function modifyReadingRoom($input = [], $lr_idx)
@@ -383,8 +389,8 @@ class ReadingRoomModel extends BaseReadingRoomModel
                     throw new \Exception('좌석상태 수정에 실패했습니다.');
                 }
 
-                //좌석상세정보저장
-                if ($this->_insertSeatDetail($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
+                //입실 좌석상세정보저장
+                if ($this->_insertSeatDetailForRoomIn($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
                     throw new \Exception('좌석 등록에 실패했습니다.');
                 }
 
@@ -462,6 +468,51 @@ class ReadingRoomModel extends BaseReadingRoomModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    /**
+     * 독서실/사물함 좌석 이동
+     * @param array $input
+     * @param $mang_type
+     * @return array|bool
+     */
+    public function modifyReadingRoomSeat($input = [], $mang_type)
+    {
+        $this->_conn->trans_begin();
+        try {
+            //좌석검증, 조회
+            $arr_condition = [
+                'EQ' => [
+                    'c.StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
+                ],
+                'RAW' => ['(c.UseStartDate <= "' => date('Y-m-d') . '" AND c.UseEndDate > "' . date('Y-m-d') . '")']
+            ];
+            $data = $this->findReadingRoomForModify($input['now_order_idx'], $arr_condition);
+            if (empty($data) === true) {
+                throw new \Exception('조회된 좌석정보가 없습니다.');
+            }
+
+            //좌석관리테이블 수정
+            if ($this->_modifyReadingRoomMst($input, $data) !== true) {
+                throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type].' 좌석 수정에 실패했습니다.');
+            }
+
+            //좌석관리현황테이블 데이터 등록,수정
+            if ($this->_modifyReadingRoomDetail($input, $data) !== true) {
+                throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type].' 좌석 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 메모저장
+     * @param array $params
+     * @return array|bool
+     */
     public function addMemo($params = [])
     {
         $this->_conn->trans_begin();

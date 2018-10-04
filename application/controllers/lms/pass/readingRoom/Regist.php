@@ -221,7 +221,7 @@ class Regist extends \app\controllers\BaseController
             'rdr_use_start_date' => $this->_reqP('rdr_use_start_date'),
             'rdr_use_end_date' => $this->_reqP('rdr_use_end_date'),
             'rdr_is_sub_price' => $this->_reqP('rdr_is_sub_price'),
-            'rdr_memo' => $this->_reqP('rdr_memo'),
+            'rdr_memo' => $this->_reqP('rdr_memo')
         ];
 
         $order_idx = '63';

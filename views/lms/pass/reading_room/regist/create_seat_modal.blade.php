@@ -27,7 +27,9 @@
                 </label>
                 <div class="col-md-4">
                     <p class="form-control-static">
-                        {{--<span class="red">연장</span> - 1층A--}}
+                        @if($is_extension === true)
+                            <span class="red">연장</span> -
+                        @endif
                         {{$data['ReadingRoomName']}}
                     </p>
                 </div>
@@ -57,7 +59,7 @@
                 <label class="control-label col-md-1-1">좌석번호 <span class="required">*</span>
                 </label>
                 <div class="col-md-10 form-inline">
-                    <input type="text" id="rdr_choice_serial_num" name="rdr_choice_serial_num" class="form-control" required="required" title="좌석번호" style="width: 60px;" readonly="readonly">
+                    <input type="text" id="rdr_choice_serial_num" name="rdr_choice_serial_num" class="form-control" title="좌석번호" required="required" style="width: 60px;" readonly="readonly">
                     &nbsp;&nbsp;&nbsp;&nbsp;• 신규배정 시 좌석표의 좌석선택으로만 번호 입력 가능 (연장 시, 이전 좌석번호가 자동 입력되나 변경 가능)
                 </div>
             </div>
@@ -67,7 +69,7 @@
                 <div class="col-md-10 form-inline">
                     <div class="radio">
                         @foreach($arr_seat_status as $key => $val)
-                            <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" /> <label for="rdr_seat_status_{{$key}}" class="input-label">{{$val}}</label>
+                            <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" @if($now_status_ccd == $key)checked="checked"@endif/> <label for="rdr_seat_status_{{$key}}" class="input-label">{{$val}}</label>
                         @endforeach
                     </div>
                 </div>
@@ -205,6 +207,7 @@
         var $list_table_modal = $('#list_ajax_table_modal');
         var $_search_form = $('#_search_form');
         var $parent_regi_form = $('#regi_form');
+        var $extension_seat_num = '{{$now_seat_num}}';
 
         $(document).ready(function() {
             var set_table_row = '{{$data['TransverseNum']}}';
@@ -226,7 +229,13 @@
             var set_rdr_use_end_date = $parent_regi_form.find('input[id="rdr_use_end_date_{{$prod_code}}"]').val();
             var set_rdr_is_sub_price = $parent_regi_form.find('input[id="is_sub_price_{{$prod_code}}"]').val();
             var set_rdr_memo = $parent_regi_form.find('input[id="rdr_memo_{{$prod_code}}"]').val();
-            $_search_form.find('input[name="rdr_choice_serial_num"]').val(set_rdr_serial_num);
+
+            if (typeof set_rdr_serial_num != 'undefined') {
+                $_search_form.find('input[name="rdr_choice_serial_num"]').val(set_rdr_serial_num);
+            } else if ($extension_seat_num != '') {
+                $_search_form.find('input[name="rdr_choice_serial_num"]').val($extension_seat_num);
+            }
+
             $_search_form.find('input:radio[name=rdr_seat_status]:input[value='+set_rdr_seat_status+']').attr("checked", true);
             $_search_form.find('input[name="rdr_use_start_date"]').val(set_rdr_use_start_date);
             $_search_form.find('input[name="rdr_use_end_date"]').val(set_rdr_use_end_date);
@@ -314,6 +323,8 @@
                 }
 
                 html += '<input type="hidden" id="rdr_prod_code_{{$prod_code}}" name="rdr_prod_code[]" value="{{$prod_code}}">';
+                html += '<input type="hidden" id="rdr_master_order_idx_{{$prod_code}}" name="rdr_master_order_idx[]" value="{{$rdr_master_order_idx}}">';
+                html += '<input type="hidden" id="rdr_is_extension_{{$prod_code}}" name="rdr_is_extension[]" value="{{$is_extension}}">';
                 html += '<input type="hidden" id="rdr_serial_num_{{$prod_code}}" name="rdr_serial_num[]" value="'+rdr_serial_num+'">';
                 html += '<input type="hidden" id="rdr_seat_status_{{$prod_code}}" name="rdr_seat_status[]" value="'+rdr_seat_status+'">';
                 html += '<input type="hidden" id="rdr_use_start_date_{{$prod_code}}" name="rdr_use_start_date[]" value="'+rdr_use_start_date+'">';
@@ -322,6 +333,8 @@
                 html += '<input type="hidden" id="rdr_memo_{{$prod_code}}" name="rdr_memo[]" value="'+rdr_memo+'">';
 
                 $parent_regi_form.find('input[id="rdr_prod_code_{{$prod_code}}"]').remove();
+                $parent_regi_form.find('input[id="rdr_master_order_idx_{{$prod_code}}"]').remove();
+                $parent_regi_form.find('input[id="rdr_is_extension_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_serial_num_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_seat_status_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_use_start_date_{{$prod_code}}"]').remove();

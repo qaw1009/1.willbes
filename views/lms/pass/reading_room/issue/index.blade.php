@@ -178,7 +178,7 @@
                             return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-prod-code="'+row.ProdCode+'" data-order-idx="'+row.NowOrderIdx+'">[변경]</u></a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-seat" data-order-idx="' + row.MasterOrderIdx + '"><u>[연장]</u></a>';
+                            return '<a href="javascript:void(0);" class="btn-seat" data-prod-code="'+row.ProdCode+'" data-order-idx="' + row.MasterOrderIdx + '"><u>[연장]</u></a>';
                         }}
                 ]
             });
@@ -189,6 +189,15 @@
                     "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&now_order_idx=' + $(this).data('order-idx'),
                     "width" : "1200"
                 });
+            });
+
+            /**
+             * TODO : lms 방문결제페이지 개발 시 해당 페이지로 링크 수정
+             */
+            $list_table.on('click', '.btn-seat', function() {
+                var param = '&rdr_master_order_idx=' + $(this).data('order-idx');
+                param += '&rdr_prod_code=' + $(this).data('prod-code');
+                location.href='{{ site_url('/pass/readingRoom/regist') }}/?' + '{!! $default_query_string !!}' + param;
             });
         });
     </script>

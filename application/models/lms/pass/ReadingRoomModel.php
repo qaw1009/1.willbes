@@ -51,7 +51,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 FROM {$this->_table['readingRoom_mst']} AS temp_a
                 INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx AND temp_b.MangType = '{$mang_type}' AND temp_b.IsStatus = 'Y'
                 GROUP BY temp_a.LrIdx
-            ) AS ab ON a.LrIdx = ab.LrIdx        
+            ) AS ab ON a.LrIdx = ab.LrIdx
         ";
 
         //사이트 권한
@@ -196,6 +196,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
         ";
 
         return $this->_conn->query('select '.$column .$from)->result_array();
+    }
+
+    public function getReadingRoomMst($arr_condition, $column)
+    {
+        return $this->_getReadingRoomMst($arr_condition, $column);
     }
 
     /**
@@ -359,44 +364,24 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 //독서실/사물함 식별자 조회
                 $reading_info = $this->getReadingRoomInfo($arr_condition, 'LrIdx');
 
-                //사용중인 좌석 조회 [readingRoomMst, readingRoomDetail 2개 테이블 확인]
-                $arr_condition = [
-                    'EQ' => [
-                        'SerialNumber' => $input['serial_num'][$key],
-                        'StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
-                        'LrIdx' => $reading_info['LrIdx']
-                    ]
-                ];
-                $mst_data = $this->_getReadingRoomMst($arr_condition, 'MIdx');
-                if (empty($mst_data['MIdx']) === false) {
-                    throw new \Exception('사용중인 좌석입니다.');
-                }
-
-                $arr_condition = [
-                    'EQ' => [
-                        'NowMIdx' => $input['serial_num'][$key],
-                        'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['in'],
-                        'LrIdx' => $reading_info['LrIdx']
-                    ]
-                ];
-                $detail_data = $this->_getReadingRoomUseDetail($arr_condition);
-                if (count($detail_data) > 0) {
-                    throw new \Exception('등록된 좌석 정보가 있습니다.');
-                }
-
-                //좌석상태업데이트
-                if ($this->_updateSeatMst($reading_info['LrIdx'], $input['serial_num'][$key], $now_order_idx, $input['seat_status'][$key], $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
-                    throw new \Exception('좌석상태 수정에 실패했습니다.');
-                }
-
-                //입실 좌석상세정보저장
-                if ($this->_insertSeatDetailForRoomIn($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
-                    throw new \Exception('좌석 등록에 실패했습니다.');
+                //연장 : 1, 신규 : else
+                if ($input['rdr_is_extension'][$key] == 1) {
+                    $memo_master_order_idx = $input['rdr_master_order_idx'][$key];
+                    if ($this->_addSeatExtension($prod_code, $key, $reading_info, $input, $now_order_idx) !== true) {
+                        throw new \Exception('좌석 등록에 실패했습니다.');
+                    }
+                } else {
+                    $memo_master_order_idx = $now_order_idx;
+                    if ($this->_addSeatNotExtension($prod_code, $key, $reading_info, $input, $now_order_idx) !== true) {
+                        throw new \Exception('좌석 등록에 실패했습니다.');
+                    }
                 }
 
                 //메모 저장
-                if ($this->_addMemo($now_order_idx, $input['rdr_memo'][$key]) !== true) {
-                    throw new \Exception('메모 등록에 실패했습니다.');
+                if (empty($input['rdr_memo'][$key]) === false) {
+                    if ($this->_addMemo($memo_master_order_idx, $input['rdr_memo'][$key]) !== true) {
+                        throw new \Exception('메모 등록에 실패했습니다.');
+                    }
                 }
             }
 
@@ -404,6 +389,86 @@ class ReadingRoomModel extends BaseReadingRoomModel
             return error_result($e);
         }
 
+        return true;
+    }
+
+    /**
+     * 신규등록
+     * @param $prod_code
+     * @param $key
+     * @param $reading_info
+     * @param $input
+     * @param $now_order_idx
+     * @return array|bool
+     */
+    private function _addSeatNotExtension($prod_code, $key, $reading_info, $input, $now_order_idx)
+    {
+        try {
+            //사용중인 좌석 조회 [readingRoomMst, readingRoomDetail 2개 테이블 확인]
+            $arr_condition = [
+                'EQ' => [
+                    'SerialNumber' => $input['serial_num'][$key],
+                    'StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
+                    'LrIdx' => $reading_info['LrIdx']
+                ]
+            ];
+            $mst_data = $this->getReadingRoomMst($arr_condition, 'MIdx');
+            if (empty($mst_data['MIdx']) === false) {
+                throw new \Exception('사용중인 좌석입니다.');
+            }
+
+            $arr_condition = [
+                'EQ' => [
+                    'NowMIdx' => $input['serial_num'][$key],
+                    'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['in'],
+                    'LrIdx' => $reading_info['LrIdx']
+                ]
+            ];
+            $detail_data = $this->_getReadingRoomUseDetail($arr_condition);
+            if (count($detail_data) > 0) {
+                throw new \Exception('등록된 좌석 정보가 있습니다.');
+            }
+
+            //좌석상태업데이트
+            if ($this->_updateSeatMstNotExtension($reading_info['LrIdx'], $input['serial_num'][$key], $now_order_idx, $input['seat_status'][$key], $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
+                throw new \Exception('좌석상태 수정에 실패했습니다.');
+            }
+
+            //입실 좌석상세정보저장
+            if ($this->_insertSeatDetailForRoomIn($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
+                throw new \Exception('좌석 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 신규등록 [연장]
+     * @param $prod_code
+     * @param $key
+     * @param $reading_info
+     * @param $input
+     * @param $now_order_idx
+     * @return array|bool
+     */
+    private function _addSeatExtension($prod_code, $key, $reading_info, $input, $now_order_idx)
+    {
+        try {
+            //좌석상태업데이트
+            if ($this->_updateSeatMstExtension($reading_info['LrIdx'], $input['serial_num'][$key], $now_order_idx, $input['seat_status'][$key], $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key], $input['rdr_master_order_idx'][$key]) !== true) {
+                throw new \Exception('좌석상태 수정에 실패했습니다.');
+            }
+
+            //입실 좌석상세정보저장
+            if ($this->_insertSeatDetailForRoomInExtension($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key], $input['rdr_master_order_idx'][$key]) !== true) {
+                throw new \Exception('좌석 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
         return true;
     }
 
@@ -449,10 +514,16 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
-            INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
+            INNER JOIN (
+                SELECT temp_b.ProdCode, temp_b.PayStatusCcd
+                FROM lms_order AS temp_a
+                INNER JOIN lms_order_product temp_b ON temp_a.OrderIdx = temp_b.OrderIdx AND temp_a.PayRouteCcd = '{$this->_sub_order_route_ccd}'
+                GROUP BY temp_b.ProdCode
+            ) AS d ON a.SubProdCode = d.ProdCode
         ";
         /*INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON a.LrIdx = c.LrIdx*/
+        /*INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode //예치금 금액 관련 조인 -> prodcode 기준 group by 진행*/
 
 
         //사이트 권한
@@ -546,6 +617,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             if ($this->addSeat($input, $now_order_idx) !== true) {
                 throw new \Exception('좌석 등록에 실패했습니다.');
             }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

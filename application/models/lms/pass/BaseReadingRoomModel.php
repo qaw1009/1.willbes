@@ -28,7 +28,8 @@ class BaseReadingRoomModel extends WB_Model
     private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
 
     protected $_order_route_ccd = '670002';    //학원방문결제
-    protected $_arr_reading_room_status_ccd = [
+    protected $_sub_order_route_ccd = '670003';    //0원결제 [예치금]
+    public $_arr_reading_room_status_ccd = [
         'N' => '682001',    //독서실사물함 좌석상태(미사용)
         'Y' => '682002'     //독서실사물함 좌석상태(사용중)
     ];
@@ -729,14 +730,74 @@ class BaseReadingRoomModel extends WB_Model
      * @param $status_ccd       [좌석상태 -> 682001:미사용, 682002:사용중, 682003:대기, 682004:홀드, 682005:고장]
      * @param $start_date
      * @param $end_date
+     * @param @master_order_idx    [연장일 경우]
+     * @param @is_extension         [연장유무 = 연장:true, 신규:false]
      * @return bool|string
      */
-    protected function _updateSeatMst($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date)
+    protected function _updateSeatMstNotExtension($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date)
     {
         try {
             //최초좌석등록 시 현재 주문번호가 마스터주문번호로 셋팅
             $master_o_idx = $now_order_idx;
             $now_o_idx = $now_order_idx;
+
+            $data = [
+                'MasterOrderIdx' => $master_o_idx,
+                'NowOrderIdx' => $now_o_idx,
+                'StatusCcd' => $status_ccd,
+                'UseStartDate' => $start_date,
+                'UseEndDate' => $end_date,
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->set($data)->where('LrIdx', $lr_idx)->where('SerialNumber', $serial_number)->update($this->_table['readingRoom_mst']) === false) {
+                throw new \Exception('좌석상태 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 좌석상태 업데이트
+     * @param $lr_idx           [상품코드에 매핑되는 식별자]
+     * @param $serial_number    [좌석번호]
+     * @param $now_order_idx    [생성된 주문 식별자]
+     * @param $status_ccd       [좌석상태 -> 682001:미사용, 682002:사용중, 682003:대기, 682004:홀드, 682005:고장]
+     * @param $start_date
+     * @param $end_date
+     * @param @master_order_idx    [연장일 경우]
+     * @return bool|string
+     */
+    protected function _updateSeatMstExtension($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date, $master_order_idx)
+    {
+        try {
+            $master_o_idx = $master_order_idx;
+            $now_o_idx = $now_order_idx;
+
+            //기존좌석번호조회 -> 좌석이동일 경우 기존좌석번호에 해당되는 데이터 초기화
+            $arr_condition = [
+                'EQ' => [
+                    'MasterOrderIdx' => $master_order_idx,
+                    'StatusCcd' => $this->readingRoomModel->_arr_reading_room_status_ccd['Y']
+                ]
+            ];
+            $now_seat_data = $this->_getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd');
+            if ($serial_number != $now_seat_data['SerialNumber']) {
+                $data = [
+                    'MasterOrderIdx' => null,
+                    'NowOrderIdx' => null,
+                    'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+                    'UseStartDate' => null,
+                    'UseEndDate' => null,
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+
+                if ($this->_conn->set($data)->where('LrIdx', $lr_idx)->where('SerialNumber', $now_seat_data['SerialNumber'])->update($this->_table['readingRoom_mst']) === false) {
+                    throw new \Exception('좌석상태 수정에 실패했습니다.');
+                }
+            }
 
             $data = [
                 'MasterOrderIdx' => $master_o_idx,
@@ -811,6 +872,67 @@ class BaseReadingRoomModel extends WB_Model
                     'NowMIdx' => $now_m_idx,
                     'OldMIdx' => $old_m_idx,
                     'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['in'],
+                    'UseStartDate' => $val[0],
+                    'UseEndDate' => $val[1],
+                    'Price' => $val[2],
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address()
+                ];
+
+                if($this->_conn->set($seat_data)->insert($this->_table['readingRoom_useDetail']) === false) {
+                    throw new \Exception('좌석 배정에 실패했습니다.');
+                };
+
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 좌석 상세 정보 저장 [입실 연장]
+     * @param $prod_code
+     * @param $lr_idx
+     * @param $now_order_idx
+     * @param $now_m_idx
+     * @param $old_m_idx
+     * @param $use_start_date
+     * @param $use_end_date
+     * @param $master_order_idx
+     * @return bool|string
+     */
+    protected function _insertSeatDetailForRoomInExtension($prod_code, $lr_idx, $now_order_idx, $now_m_idx, $old_m_idx, $use_start_date, $use_end_date, $master_order_idx)
+    {
+        try {
+            if ($use_start_date >= $use_end_date) {
+                throw new \Exception('날짜 정보가 올바르지 않습니다. 다시 시도해 주세요.');
+            }
+
+            //독서실/사물함 판매가 조회
+            $arr_condition = [
+                'EQ' => [
+                    'ProdCode' => $prod_code,
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $product_data = $this->_getProductSaleForReadingRoomInfo($arr_condition, 'RealSalePrice');
+            if (empty($product_data) === true) {
+                throw new \Exception('조회된 상품가격 정보가 없습니다.');
+            }
+
+            //월별가격 [일별가격 * 월별기간]
+            $arr_monthly_price = $this->_setMonthlyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
+            $insert_data = $arr_monthly_price;
+
+            foreach ($insert_data as $key => $val) {
+                $seat_data = [
+                    'LrIdx' => $lr_idx,
+                    'MasterOrderIdx' => $master_order_idx,
+                    'NowOrderIdx' => $now_order_idx,
+                    'NowMIdx' => $now_m_idx,
+                    'OldMIdx' => $old_m_idx,
+                    'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['extension'],
                     'UseStartDate' => $val[0],
                     'UseEndDate' => $val[1],
                     'Price' => $val[2],

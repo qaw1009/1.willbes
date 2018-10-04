@@ -101,7 +101,7 @@ class Issue extends \app\controllers\BaseController
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc', 'c.UseStartDate' => 'asc']);
+            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc', 'c.RrudIdx' => 'asc', 'c.UseStartDate' => 'asc']);
         }
 
         return $this->response([

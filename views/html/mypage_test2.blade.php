@@ -260,7 +260,7 @@
         </div>
         <!-- willbes-Leclist -->
 
-        <div id="TESTSTARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h860 abs">
+        <div id="TESTSTARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('TESTSTARTPASS')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
@@ -367,7 +367,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="passzonebtn tx-center mt5">
+                    <div class="passzonebtn tx-center mt5 none">
                         <span>
                             <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
                                 <span class="strong">닫기</span>
@@ -456,7 +456,7 @@
                         <strong>시험을 끝내시면 재응시할 수 없습니다.</strong><br/>
                         <div>시험을 끝내시겠습니까?</div>
                     </div>
-                    <div class="passzonebtn tx-center mt30">
+                    <div class="passzonebtn tx-center mt30 none">
                         <span>
                             <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
                                 <span class="strong">시험종료</span>

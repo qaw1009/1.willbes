@@ -4414,6 +4414,10 @@ table.classTable tr td.w-data {
     border-top: 1px solid #edeeef;
     padding: 20px 0 25px;
 }
+.willbes-Layer-PassBox .passzonebtn.none {
+    border-top: none;
+    padding: 0;
+}
 
 
 

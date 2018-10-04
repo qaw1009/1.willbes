@@ -48,7 +48,7 @@
                                     {!! method_field('POST') !!}
                                     <input type="hidden" name="orderidx" value="{{$lec['OrderIdx']}}" />
                                     <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
-                                    <input type="hidden" name="prodcodesub" value="{{$lec['ProdCodeSub']}}" />
+                                    <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
                                     <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
                                     <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
                                     <input type="text" id="startdate" name="startdate" class="iptDate" maxlength="10" value="" data-maxdate="{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}" data-study-period="{{ $lec['RealLecExpireDay'] }}" readonly="readonly">&nbsp; ~&nbsp;

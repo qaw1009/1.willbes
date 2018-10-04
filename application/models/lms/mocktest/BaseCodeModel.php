@@ -216,7 +216,7 @@ class BaseCodeModel extends WB_Model
                     $exist_where .= "AND `SubjectType` = '" . $this->_conn->escape_str($this->input->post('sjType')) . "'";
 
                     $sql = "INSERT INTO $table ($keys) SELECT $values FROM DUAL
-					WHERE NOT EXISTS (SELECT * FROM $table WHERE $exist_where)";
+					        WHERE NOT EXISTS (SELECT * FROM $table WHERE $exist_where)";
                     $this->_conn->query($sql);
                 }
             }
@@ -239,8 +239,8 @@ class BaseCodeModel extends WB_Model
                 );
                 $where = array('MmIdx' => $this->input->post('idx'), 'SubjectType' => $this->input->post('sjType'));
                 $this->_conn->where($where)
-                    ->where_in('SubjectIdx', $this->input->post('subjectIdx'))
-                    ->update($table, $data);
+                            ->where_in('SubjectIdx', $this->input->post('subjectIdx'))
+                            ->update($table, $data);
             }
 
             $this->_conn->trans_complete();

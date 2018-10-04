@@ -55,11 +55,12 @@ class On extends \app\controllers\FrontController
     {
         // 검색
         $input_arr = $this->_reqG(null);
+        $today = date("Y-m-d", time());
 
         // 셀렉트박스 구해오기
         $cond_arr = [
             'GT' => [
-                'LecStartDate' => date("Y-m-d", time()) // 시작일 > 오늘
+                'LecStartDate' => $today // 시작일 > 오늘
             ],
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002','615003','615005'] // 학습형태
@@ -74,7 +75,7 @@ class On extends \app\controllers\FrontController
         // 실제 목록 뽑아오기
         $cond_arr = [
             'GT' => [
-                'LecStartDate' => date("Y-m-d", time()) // 시작일 > 오늘
+                'LecStartDate' => $today // 시작일 > 오늘
             ],
             'EQ' => [
                 'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
@@ -133,15 +134,16 @@ class On extends \app\controllers\FrontController
     {
         // 검색
         $input_arr = $this->_reqG(null);
+        $today = date("Y-m-d", time());
 
         // 셀렉트박스 수해오기
         $cond_arr = [
             'LTE' => [
-                'LecStartDate' => date("Y-m-d", time()), // 시작일이 <= 오늘
-                'lastPauseEndDate' => date("Y-m-d", time()) // 일시정지종료일 <= 오늘
+                'LecStartDate' => $today, // 시작일이 <= 오늘
+                'lastPauseEndDate' => $today // 일시정지종료일 <= 오늘
             ],
             'GTE' => [
-                'RealLecEndDate' => date("Y-m-d", time()) // 종료일 >= 오늘
+                'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx') // 사용자 아이디
@@ -166,11 +168,11 @@ class On extends \app\controllers\FrontController
                 'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ],
             'LTE' => [
-                'LecStartDate' => date("Y-m-d", time()), // 시작일 <= 오늘
-                'lastPauseEndDate' => date("Y-m-d", time()) // 일시중지종료일 <= 오늘
+                'LecStartDate' => $today, // 시작일 <= 오늘
+                'lastPauseEndDate' => $today // 일시중지종료일 <= 오늘
             ],
             'GTE' => [
-                'RealLecEndDate' => date("Y-m-d", time()) // 종료일 >= 오늘
+                'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
             'ORG' => [
                 'LKB' => [
@@ -267,14 +269,15 @@ class On extends \app\controllers\FrontController
     {
         // 검색
         $input_arr = $this->_reqG(null);
+        $today = date("Y-m-d", time());
 
         $cond_arr = [
             'LTE' => [
-                'LecStartDate' => date("Y-m-d", time()) // 시작일이 <= 오늘
+                'LecStartDate' => $today // 시작일이 <= 오늘
             ],
             'GTE' => [
-                'RealLecEndDate' => date("Y-m-d", time()), // 종료일 >= 오늘
-                'lastPauseEndDate' => date("Y-m-d", time()) // 일시정지종료일 >= 오늘
+                'RealLecEndDate' => $today, // 종료일 >= 오늘
+                'lastPauseEndDate' => $today // 일시정지종료일 >= 오늘
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx') // 사용자 아이디
@@ -299,11 +302,11 @@ class On extends \app\controllers\FrontController
                 'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ],
             'LTE' => [
-                'LecStartDate' => date("Y-m-d", time()) // 시작일 <= 오늘
+                'LecStartDate' => $today // 시작일 <= 오늘
             ],
             'GTE' => [
-                'RealLecEndDate' => date("Y-m-d", time()), // 종료일 >= 오늘
-                'lastPauseEndDate' => date("Y-m-d", time()) // 일시중지종료일 >= 오늘
+                'RealLecEndDate' => $today, // 종료일 >= 오늘
+                'lastPauseEndDate' => $today // 일시중지종료일 >= 오늘
             ],
             'ORG' => [
                 'LKB' => [
@@ -357,11 +360,12 @@ class On extends \app\controllers\FrontController
     {
         // 검색
         $input_arr = $this->_reqG(null);
+        $today = date("Y-m-d", time());
 
         // 기본 검색옵션 시작일이 오늘 보다 크면 수강대기강의
         $cond_arr = [
             'LT' => [
-                'RealLecEndDate' => date("Y-m-d", time()) // 종료날짜 < 오늘
+                'RealLecEndDate' => $today // 종료날짜 < 오늘
             ],
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002','615003','615005'],
@@ -383,7 +387,7 @@ class On extends \app\controllers\FrontController
                 'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ],
             'LT' => [
-                'RealLecEndDate' => date("Y-m-d", time()), // 종료일 < 오늘
+                'RealLecEndDate' => $today, // 종료일 < 오늘
             ],
             'ORG' => [
                 'LKB' => [
@@ -436,7 +440,7 @@ class On extends \app\controllers\FrontController
      */
     public function view()
     {
-        $today = date('Y-m-d');
+        $today = date("Y-m-d", time());
         $ispause = 'N';
         $isstart = 'Y';
 
@@ -444,6 +448,10 @@ class On extends \app\controllers\FrontController
         $orderidx = $this->_req('o');
         $prodcode = $this->_req('p');
         $prodcodesub = $this->_req('ps');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
 
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
@@ -453,7 +461,7 @@ class On extends \app\controllers\FrontController
                 'ProdCodeSub' => $prodcodesub
             ],
             'GTE' => [
-                'RealLecEndDate' => date("Y-m-d", time())
+                'RealLecEndDate' => $today
             ]
         ]);
 
@@ -546,6 +554,184 @@ class On extends \app\controllers\FrontController
             'lec' => $lec,
             'curriculum' => $curriculum
         ]);
+    }
+
+
+    /**
+     * 수강시작일 변경 레이어
+     * @return CI_Output|object|string
+     */
+    function layerStartDate()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('mem_idx');
+
+        $today = date("Y-m-d", time());
+
+        $cond_arr = [
+            'GT' => [
+                'LecStartDate' => $today // 시작일 > 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsLecStart'] != 'Y'){
+            return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
+        }
+
+        if($lec['ChgStartNum'] >= 3) {
+            //return $this->json_error('시작일 변경횟수를 초과했습니다.');
+        }
+
+        $log = $this->classroomFModel->getStartDateLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ]
+        ]);
+
+        return $this->load->view('/classroom/layer/change_start_date', [
+            'lec' => $lec,
+            'log' => $log
+        ]);
+    }
+
+
+    /**
+     * 오늘부터 시작처리
+     */
+    function setStartToday()
+    {
+        $today = date("Y-m-d", time());
+        $this->setStartDate($today);
+    }
+
+
+    /**
+     * @param null $start_date
+     * @return CI_Output
+     */
+    function setStartDate($start_date = null)
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('mem_idx');
+        $today = date("Y-m-d", time());
+
+        if(empty($start_date) === true){
+            $start_date = $this->_req("startdate");
+        }
+
+        if(empty($start_date) === true){
+            return $this->json_error('시작일이 잘못된 날짜 입니다.'.$start_date);
+        }
+
+        if(strtotime($start_date) == false){
+            return $this->json_error('시작일이 잘못된 날짜 입니다.'.$start_date);
+        }
+
+        if($start_date < $today){
+            return $this->json_error('시작일은 오늘 이후 날짜만 가능합니다.');
+        }
+
+        $cond_arr = [
+            'GT' => [
+                'LecStartDate' => $today // 시작일 > 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsLecStart'] != 'Y'){
+            return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
+        }
+
+        if($lec['ChgStartNum'] >= 3) {
+           return $this->json_error('시작일 변경횟수를 초과했습니다.');
+        }
+
+        if($start_date > date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day'))){
+            return $this->json_error('시작일은 주문일로부터 30일 이내만 변경 가능합니다.');
+        }
+
+        if($this->classroomFModel->setStartDate([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ], $start_date) === true){
+            return $this->json_result(true);
+        } else {
+            return $this->json_error('강의 시작일 변경중에 오류가 발생했습니다.');
+        }
     }
 
 }

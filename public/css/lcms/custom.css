@@ -417,6 +417,7 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .form-table.form-table-sm .table .form-control { height: 27px; padding: 3px 6px; }
 
 .underline-link { text-decoration-line: underline; cursor: pointer; }
+.link-cursor { cursor: pointer; }
 
 .page-title .title_left { width: 60%; }
 .page-title .title_right { width: 40%; }

@@ -25,12 +25,12 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'O.OrderIdx, O.OrderNo, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
+            $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
                 , O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgCcd, O.PgMid, O.PgTid
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
-                , O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
+                , O.SaveLecPoint, O.SaveBookPoint, O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
                 , O.VBankCcd, ifnull(CBC.CcdName, O.VBankCcd) as VBankName, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
-                , if(O.PayMethodCcd = "' . $this->_pay_method_ccd['vbank'] . '", "Y", "N") as IsVBank
+                , json_value(CBC.CcdEtc, concat("$.", O.PgCcd)) as VBankPgCode, if(O.PayMethodCcd = "' . $this->_pay_method_ccd['vbank'] . '", "Y", "N") as IsVBank
                 , SG.SiteGroupName, S.SiteName, S.IsCampus, if(S.IsCampus = "N", "온라인", "학원") as SiteOnOffName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -108,7 +108,7 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'OP.OrderProdIdx, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName, OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice
+            $column = 'OP.OrderProdIdx, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName, OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint
                             , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
                             , P.ProdName
                             , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod

@@ -36,7 +36,7 @@
                             <td><strong>{{ $results['order']['OrderNo'] }}</strong></td>
                             <td class="bg-light-white">가상계좌취소</td>
                             <td>
-                                @if(empty($results['order']['VBankCancelDatm']) === true)
+                                @if(empty($results['order']['VBankCancelDatm']) === true && empty($results['order']['CompleteDatm']) === true)
                                     <span class="btnAll NSK"><a href="#none" id="btn_vbank_cancel">취소</a></span>
                                 @else
                                     {{ $results['order']['VBankCancelDatm'] }}

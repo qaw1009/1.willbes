@@ -8,15 +8,12 @@ class Payment extends \app\controllers\FrontController
     protected $auth_controller = true;
     protected $auth_methods = array();
 
-    private $_pg_driver = null;    // PG driver
-
     public function __construct()
     {
         parent::__construct();
         
         // pg 라이브러리 로드
-        $this->_pg_driver = config_app('PgDriver', 'inisis');
-        $this->load->driver('pg', ['driver' => $this->_pg_driver, 'mid' => config_app('PgMid')]);
+        $this->load->driver('pg', ['driver' => config_app('PgDriver', 'inisis')]);
     }
 
     /**
@@ -106,6 +103,7 @@ class Payment extends \app\controllers\FrontController
 
         // PG사 결제요청 폼 생성
         $data = [
+            'mid' => config_app('PgMid'),
             'order_no' => $order_no,
             'repr_prod_name' => $results['repr_prod_name'],
             'req_pay_price' => $results['total_pay_price'],
@@ -151,7 +149,7 @@ class Payment extends \app\controllers\FrontController
             redirect(front_url('/order/complete?order_no=' . $result['ret_data']));
         } else {
             // 결제취소
-            $this->pg->cancel(['order_no' => $pay_results['order_no'], 'tid' => $pay_results['tid'], 'cancel_reason' => $result['ret_msg']]);
+            $this->pg->cancel(['order_no' => $pay_results['order_no'], 'mid' => $pay_results['mid'], 'tid' => $pay_results['tid'], 'cancel_reason' => $result['ret_msg']]);
             show_alert($result['ret_msg'], site_url('/cart/index'), false);
         }
     }

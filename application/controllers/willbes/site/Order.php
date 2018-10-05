@@ -188,4 +188,28 @@ class Order extends \app\controllers\FrontController
 
         return $this->json_result($result, '', $result);
     }
+
+    /**
+     * 방문결제 주문 저장
+     * @param array $params
+     * @return CI_Output|null
+     */
+    public function visit($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'agree', 'label' => '유의사항안내 동의여부', 'rules' => 'trim|required|in_list[Y]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        $result = $this->orderFModel->procVisitOrder($this->_site_code);
+
+        $succ_msg = '정상적으로 방문결제가 접수되었습니다.' . PHP_EOL . '학원에 방문하여 결제를 완료해 주세요.';
+        $return_url = app_url('/classroom/order/index', 'www');
+
+        return $this->json_result($result, $succ_msg, $result, ['ret_url' => $return_url]);
+    }
 }

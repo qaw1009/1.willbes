@@ -285,14 +285,14 @@ function movePos(divId){
 }
 
 $('*[id*=Sticky]:visible').ready(function() {
-    var stickyOffset = $('.sticky-menu').offset();
+    var stickyOffset = $('.sticky-Grid').offset();
 
     if (typeof stickyOffset !== 'undefined') {
         $(window).scroll(function () {
             if ($(document).scrollTop() > stickyOffset.top) {
-                $('.sticky-menu').addClass('fixed');
+                $('.sticky-Grid').addClass('fixed');
             } else {
-                $('.sticky-menu').removeClass('fixed');
+                $('.sticky-Grid').removeClass('fixed');
             }
         });
     }

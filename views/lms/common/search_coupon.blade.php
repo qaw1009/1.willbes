@@ -8,6 +8,7 @@
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" value="{{ $site_code }}"/>
+        <input type="hidden" name="locationid" id="locationid" value="{{$locationid}}"/>
         @endsection
 
         @section('layer_content')
@@ -52,6 +53,8 @@
                 var $search_form = $('#_search_form');
                 var $list_table = $('#_list_ajax_table');
                 var $parent_regi_form = $('#regi_form');
+
+                var $parent_location = "{{$locationid}}";
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
@@ -104,35 +107,63 @@
 
                         var addCnt = $("input[name='checkIdx']:checked").length;		//적용할 갯수
                         var allCnt = $("input[name='checkIdx']").length;		//노출된 전체 갯수
-                        if(addCnt == 0) {alert("적용할 쿠폰이이 없습니다. 선택 후 적용하여 주십시오.");return;}
-                        if (!confirm('해당 쿠폰을 적용하시겠습니까?')) {return;}
+                        if (addCnt == 0) {
+                            alert("적용할 쿠폰이이 없습니다. 선택 후 적용하여 주십시오.");
+                            return;
+                        }
+                        if (!confirm('해당 쿠폰을 적용하시겠습니까?')) {
+                            return;
+                        }
 
-                        var nowRowCnt = ($parent_regi_form.find("#couponList tr")).length - 1;
-                        var seq = nowRowCnt+1;
 
-                        for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
-                            //##
-                            if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
 
-                                temp_data = $("#checkIdx"+i).val();		//해당 id값 추출
-                                temp_data_arr = temp_data.split("@$")		//문자열 분리
+                        if($parent_location == '') {  //일반적인 쿠폰 적용 (강좌상품들..)
 
-                                $(document).find("#couponList").append(
-                                    "<tr id='couponTrId"+seq+"'>"
-                                    +"		<input type='hidden'  name='CouponIdx[]' id='CouponIdx"+seq+"' value='"+temp_data_arr[0]+"'>"
-                                    +"		<td>"+temp_data_arr[1]+"</td>"
-                                    +"		<td>"+temp_data_arr[0]+"</td>"
-                                    +"		<td style='text-align:left'>"+temp_data_arr[2]+"</td>"
-                                    +"		<td>"+temp_data_arr[3]+"</td>"
-                                    +"		<td>"+temp_data_arr[4]+"</td>"
-                                    +"		<td>"+temp_data_arr[5]+"</td>"
-                                    +"		<td><a href='javascript:;' onclick=\"rowDelete(\'couponTrId"+seq+"')\"><i class=\"fa fa-times red\"></i></a></td>"
-                                    +"	</tr>"
-                                );
-                                seq = seq + 1;
+                            var nowRowCnt = ($parent_regi_form.find("#couponList tr")).length - 1;
+                            var seq = nowRowCnt + 1;
+
+                            for (i = 0; i < allCnt; i++) {	//노출된 갯수에서 선택한 것만 적용되게끔...
                                 //##
+                                if ($("input:checkbox[id='checkIdx" + i + "']").is(":checked") == true) {
+
+                                    temp_data = $("#checkIdx" + i).val();		//해당 id값 추출
+                                    temp_data_arr = temp_data.split("@$")		//문자열 분리
+
+                                    $(document).find("#couponList").append(
+                                        "<tr id='couponTrId" + seq + "'>"
+                                        + "		<input type='hidden'  name='CouponIdx[]' id='CouponIdx" + seq + "' value='" + temp_data_arr[0] + "'>"
+                                        + "		<td>" + temp_data_arr[1] + "</td>"
+                                        + "		<td>" + temp_data_arr[0] + "</td>"
+                                        + "		<td style='text-align:left'>" + temp_data_arr[2] + "</td>"
+                                        + "		<td>" + temp_data_arr[3] + "</td>"
+                                        + "		<td>" + temp_data_arr[4] + "</td>"
+                                        + "		<td>" + temp_data_arr[5] + "</td>"
+                                        + "		<td><a href='javascript:;' onclick=\"rowDelete(\'couponTrId" + seq + "')\"><i class=\"fa fa-times red\"></i></a></td>"
+                                        + "	</tr>"
+                                    );
+                                    seq = seq + 1;
+                                    //##
+                                }
+                                //#
                             }
-                            //#
+
+                        }else{      //수강인증등록 쿠폰 적용
+
+                            for (i = 0; i < allCnt; i++) {	//노출된 갯수에서 선택한 것만 적용되게끔...
+                                //##
+                                if ($("input:checkbox[id='checkIdx" + i + "']").is(":checked") == true) {
+                                    temp_data = $("#checkIdx" + i).val();		//해당 id값 추출
+                                    temp_data_arr = temp_data.split("@$")		//문자열 분리
+
+                                    $(document).find('#'+$parent_location).append(
+                                         "<span id='coupon_"+temp_data_arr[0]+"'><input type='hidden'  name='CouponIdx[]' id='CouponIdx" + temp_data_arr[2] + "' value='" + temp_data_arr[0] + "'>"
+                                        + "		["+temp_data_arr[0]+"]" + temp_data_arr[2] + ""
+                                        + "		&nbsp;<a href='javascript:;' onclick=\"rowDelete(\'coupon_" + temp_data_arr[0] + "')\"><i class=\"fa fa-times red\"></i></a>&nbsp;&nbsp;</span>"
+                                    );
+                                 //##
+                                }
+                            }
+
                         }
                         $("#pop_modal").modal('toggle');
                     }

@@ -699,7 +699,7 @@ class CommonLectureModel extends WB_Model
                     ];
 
                     if($this->_conn->set($data)->insert($this->_table['autocoupon']) === false) {
-                        echo $this->_conn->last_query();
+                        //echo $this->_conn->last_query();
                         throw new \Exception('쿠폰 등록에 실패했습니다.');
                     }
 

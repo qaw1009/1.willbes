@@ -23,52 +23,59 @@
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
-                <div class="willbes-Lec-Package-Price p_re">
-                    <div class="total-PriceBox NG">
-                        <span class="price-tit">총 주문금액</span>
-                        <span class="row-line">|</span>
-                        <span>
-                            <span class="price-txt">강좌</span>
-                            <span class="tx-light-blue" id="lecPrice">0원</span>
-                        </span>
-                        <span class="price-img">
-                            <img src="{{ img_url('sub/icon_plus.gif') }}">
-                        </span>
-                        <span>
-                            <span class="price-txt">교재</span>
-                            <span class="tx-light-blue" id="bookPrice">0원</span>
-                        </span>
-                        <span class="price-img">
-                            <img src="{{ img_url('sub/icon_minus.gif') }}">
-                        </span>
-                        <span>
-                            <span class="price-txt">강좌할인금액</span>
-                            <span class="tx-pink" id="lecSalePrice">0원</span>
-                        </span>
-                        <span class="price-total tx-light-blue" id="totalPrice">0원</span>
-                    </div>
-                    @php
-                        $sale_type_ccd = '613001';  #판매타입 강제 설정 - 사용자패키지는 가격정보를 가지고 있지 않음
-                    @endphp
-                    <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="0"/>
-                    <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
-                    <div class="willbes-Lec-buyBtn">
-                        <ul>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
-                                    <span class="tx-light-blue">바로결제</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- willbes-Lec-Package-Price -->
+                <div id="Sticky" class="sticky-Package">
+                    <div class="sticky-Grid sticky-total NG">
 
-                <div class="willbes-Lec-Package NG c_both">
-                    <div class="packageTable" id="gather-table">
+                        <div class="willbes-Lec-Package-Price p_re">
+                            <div class="total-PriceBox NG">
+                                <span class="price-tit">총 주문금액</span>
+                                <span class="row-line">|</span>
+                                <span>
+                                    <span class="price-txt">강좌</span>
+                                    <span class="tx-light-blue" id="lecPrice">0원</span>
+                                </span>
+                                <span class="price-img">
+                                    <img src="{{ img_url('sub/icon_plus.gif') }}">
+                                </span>
+                                <span>
+                                    <span class="price-txt">교재</span>
+                                    <span class="tx-light-blue" id="bookPrice">0원</span>
+                                </span>
+                                <span class="price-img">
+                                    <img src="{{ img_url('sub/icon_minus.gif') }}">
+                                </span>
+                                <span>
+                                    <span class="price-txt">강좌할인금액</span>
+                                    <span class="tx-pink" id="lecSalePrice">0원</span>
+                                </span>
+                                <span class="price-total tx-light-blue" id="totalPrice">0원</span>
+                            </div>
+                            @php
+                                $sale_type_ccd = '613001';  #판매타입 강제 설정 - 사용자패키지는 가격정보를 가지고 있지 않음
+                            @endphp
+                            <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="0"/>
+                            <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
+                            <div class="willbes-Lec-buyBtn">
+                                <ul>
+                                    <li class="btnAuto180 h36">
+                                        <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
+                                            <span class="tx-light-blue">바로결제</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- willbes-Lec-Package-Price -->
+
+                        <div class="willbes-Lec-Package NG c_both">
+                            <div class="packageTable" id="gather-table">
+                            </div>
+                        </div>
+                        <!-- willbes-Lec-Package -->
+
                     </div>
                 </div>
-                <!-- willbes-Lec-Package -->
+                <!-- sticky-menu -->
 
             @foreach($data_subjects as $subject_idx => $subject_name)
                 <div class="willbes-Lec NG c_both">

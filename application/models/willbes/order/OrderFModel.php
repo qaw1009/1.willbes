@@ -351,7 +351,7 @@ class OrderFModel extends BaseOrderFModel
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
 
             if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no) {
-                throw new \Exception('잘못된 접근입니다.');
+                throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 
             // 주문요청 데이터 조회
@@ -366,7 +366,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 장바구니 식별자 세션과 결제요청 장바구니 식별자 비교
             if (empty(array_diff($sess_cart_idx, explode(',', $post_row['CartIdxs']))) === false) {
-                throw new \Exception('잘못된 접근입니다.');
+                throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 
             $post_data = unserialize($post_row['PostData']);    // 주문 폼 데이터 unserialize
@@ -390,7 +390,7 @@ class OrderFModel extends BaseOrderFModel
             // TODO : 테스트 (추후 주석 삭제)
 /*            // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
             if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
-                throw new \Exception('결제금액정보가 올바르지 않습니다.');
+                throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
             }*/
 
             // 주문 데이터 등록
@@ -444,7 +444,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             if ($this->_conn->set($data)->insert($this->_table['order']) === false) {
-                throw new \Exception('주문 정보 등록에 실패했습니다.');
+                throw new \Exception('주문정보 등록에 실패했습니다.');
             }
 
             // 주문 식별자
@@ -591,6 +591,8 @@ class OrderFModel extends BaseOrderFModel
             $real_use_point = element('RealUsePoint', $input, 0);   // 사용포인트
             $real_pay_price = element('RealPayPrice', $input) - $real_use_point;    // 실결제금액에서 사용포인트 차감
             $real_save_point = element('RealSavePoint', $input, 0);     // 적립포인트
+            $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
+            $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
             
             // 실결제금액 체크
             if ($real_pay_price < 0) {
@@ -638,7 +640,7 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 나의 강좌수정정보 데이터 등록
+            // 나의 강좌수정정보 데이터 등록 (온라인 강좌일 경우만)
             if ($cart_type == 'on_lecture') {
                 $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub, element('UserStudyStartDate', $input, ''));
                 if ($is_add_my_lecture !== true) {
@@ -646,8 +648,8 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 주문상품배송정보 데이터 등록
-            if (element('IsDeliveryInfo', $input, 'N') == 'Y') {
+            // 주문상품배송정보 데이터 등록 (방문결제가 아닐 경우)
+            if ($is_delivery_info == 'Y' && $is_visit_pay == 'N') {
                 $data = [
                     'OrderProdIdx' => $order_prod_idx,
                     'DeliveryCompCcd' => config_app('DeliveryCompCcd'),
@@ -866,6 +868,106 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
+     * 방문결제 주문 데이터 등록
+     * @param int $site_code [사이트코드]
+     * @return array|bool
+     */
+    public function procVisitOrder($site_code)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $sess_cart_sess_id = $this->session->userdata($this->_sess_cart_sess_id);   // 학원 방문결제 장바구니 세션 아이디 세션
+            $order_no = $this->makeOrderNo();   // 주문번호 생성
+            $cart_type = 'off_lecture';     // 장바구니 타입
+            $pay_status_ccd = $this->_pay_status_ccd['receipt_wait'];    // 주문완료 결제상태공통코드 (접수대기)
+
+            // 장바구니 조회
+            $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $site_code, null, null, null, null, 'Y');
+
+            // 장바구니 데이터 가공
+            $cart_results = $this->getMakeCartReData(
+                'pay', $cart_type, $cart_rows, [], 0, 'Y'
+            );
+
+            if (is_array($cart_results) === false) {
+                throw new \Exception($cart_results);
+            }
+
+            // 주문 데이터 등록 (방문결제는 배송료, 쿠폰 사용, 포인트 사용/적립, 주문배송주소 등록 없음)
+            $data = [
+                'OrderNo' => $order_no,
+                'MemIdx' => $sess_mem_idx,
+                'SiteCode' => $site_code,
+                'ReprProdName' => $cart_results['repr_prod_name'],
+                'PayChannelCcd' => element(APP_DEVICE, $this->_pay_channel_ccd),
+                'PayRouteCcd' => element('visit', $this->_pay_route_ccd),
+                'PayMethodCcd' => '',
+                'PgCcd' => '',
+                'PgMid' => '',
+                'PgTid' => '',
+                'OrderPrice' => $cart_results['total_prod_order_price'],
+                'OrderProdPrice' => $cart_results['total_prod_order_price'],
+                'RealPayPrice' => $cart_results['total_pay_price'],
+                'CardPayPrice' => $cart_results['total_pay_price'],
+                'CashPayPrice' => 0,
+                'DeliveryPrice' => 0,
+                'DeliveryAddPrice' => 0,
+                'DiscPrice' => 0,
+                'UseLecPoint' => 0,
+                'UseBookPoint' => 0,
+                'SaveLecPoint' => 0,
+                'SaveBookPoint' => 0,
+                'IsEscrow' => 'N',
+                'IsCashReceipt' => 'N',
+                'IsDelivery' => 'N',
+                'IsVisitPay' => 'Y',
+                'GwIdx' => $this->session->userdata('gw_idx'),
+                'OrderIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['order']) === false) {
+                throw new \Exception('주문정보 등록에 실패했습니다.');
+            }
+
+            // 주문 식별자
+            $order_idx = $this->_conn->insert_id();
+
+            // 주문상품 데이터 등록
+            foreach ($cart_results['list'] as $idx => $cart_row) {
+                // 상품 판매여부 체크
+                $learn_pattern = array_search($cart_row['LearnPatternCcd'], $this->_learn_pattern_ccd);
+                $learn_pattern === false && $learn_pattern = $cart_row['CartProdType'];
+
+                $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $site_code, $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'Y');
+                if ($is_prod_check !== true) {
+                    throw new \Exception($is_prod_check);
+                }
+
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $cart_row);
+                if ($is_order_product !== true) {
+                    throw new \Exception($is_order_product);
+                }
+            }
+
+            // 주문완료 장바구니 업데이트 (주문식별자, 만료일시 -> 현재시각으로 업데이트)
+            $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->set('ExpireDatm', 'NOW()', false)
+                ->where('SessId', $sess_cart_sess_id)->where('MemIdx', $sess_mem_idx)->where('IsVisitPay', 'Y')->update($this->_table['cart']);
+            if ($is_complete_update === false) {
+                throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 무료강좌 주문 데이터 등록
      * @param array $arr_prod_code [상품코드배열, 상품코드:가격구분 공통코드:부모상품코드]
      * @param int $site_code [사이트코드]
@@ -930,7 +1032,7 @@ class OrderFModel extends BaseOrderFModel
             ];
 
             if ($this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)->insert($this->_table['order']) === false) {
-                throw new \Exception('주문 정보 등록에 실패했습니다.');
+                throw new \Exception('주문정보 등록에 실패했습니다.');
             }
 
             // 주문 식별자
@@ -961,6 +1063,80 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
+    }
+
+    /**
+     * 가상계좌 입금통보 결과 수신 후 결제완료 업데이트
+     * @param array $deposit_results
+     * @return array|bool
+     */
+    public function procDepositComplete($deposit_results = [])
+    {
+        $order_no = $deposit_results['order_no'];   // 결제모듈에서 전달받은 주문번호
+
+        $this->_conn->trans_begin();
+
+        try {
+            // 주문정보 조회
+            $order_row = $this->orderListFModel->findOrder([
+                'EQ' => ['O.OrderNo' => $order_no, 'O.PgTid' => $deposit_results['tid'], 'O.PgMid' => $deposit_results['mid']]
+            ]);
+            if (empty($order_row) === true) {
+                throw new \Exception('주문내역이 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['PayMethodCcd'] != $this->_pay_method_ccd['vbank']) {
+                throw new \Exception('무통장입금(가상계좌)으로 결제한 주문만 처리가 가능합니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if (empty($order_row['CompleteDatm']) === false) {
+                throw new \Exception('이미 결제완료 처리된 주문내역 입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if ($order_row['RealPayPrice'] != $deposit_results['total_pay_price']) {
+                throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 주문 식별자
+            $order_idx = $order_row['OrderIdx'];
+
+            // 주문정보 완료일시 업데이트
+            $is_update = $this->_conn->set('CompleteDatm', $deposit_results['deposit_datm'])
+                ->where('OrderIdx', $order_idx)->where('OrderNo', $order_no)->update($this->_table['order']);
+            if ($is_update === false) {
+                throw new \Exception('주문정보 완료일시 업데이트에 실패했습니다.');
+            }
+
+            // 주문상품 결제완료 업데이트
+            $is_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])
+                ->where('OrderIdx', $order_idx)->update($this->_table['order_product']);
+            if ($is_update === false) {
+                throw new \Exception('주문상품 결제완료 업데이트에 실패했습니다.');
+            }
+
+            // 회원포인트 적립
+            if ($order_row['SaveLecPoint'] > 0 || $order_row['SaveBookPoint'] > 0) {
+                // 주문상품 목록 조회
+                $order_prod_rows = $this->orderListFModel->listOrderProduct(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, ['OP.OrderProdIdx' => 'asc']);
+                foreach ($order_prod_rows as $idx => $order_prod_row) {
+                    if ($order_prod_row['SavePoint'] > 0) {
+                        $point_type = $order_prod_row['OrderProdType'] == 'book' ? 'book' : 'lecture';
+
+                        $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx']);
+                        if ($is_point_save !== true) {
+                            throw new \Exception($is_point_save);
+                        }
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'ret_data' => $order_no];
     }
 
     /**

@@ -57,20 +57,28 @@
                                     <td>
                                         <div class="w-lectit">일시정지</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['PauseCount']}}</span>회</div>
-                                        <div class="w-date tx-gray">@if($lec['ispause'] == 'Y')({{$lec['lastPauseStartDate']}}~{{$lec['lastPauseEndDate']}})@else&nbsp;@endif</div>
+                                        <div class="w-date tx-gray">@if($lec['ispause'] == 'Y')({{str_replace('-', '.', $lec['lastPauseStartDate']) }}~{{str_replace('-', '.', $lec['lastPauseEndDate'])}})@else&nbsp;@endif</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">수강연장</div>
-                                        <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['ExtendCount']}}</span>회</div>
-                                        <div class="w-date tx-gray">
-                                            <div class="w-btn">
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['ExtenCount']}}</span>회</div>
+                                        <div class="w-date tx-gray">&nbsp;
+<!--                                            <div class="w-btn">
                                                 <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
-                                        <div class="w-lec NGEB"><span class="tx-light-blue">10</span>일/ {{$lec['RealLecExpireDay']}}일</div>
+                                        <div class="w-lec NGEB"><span class="tx-light-blue">
+                                                @if(empty($lec['lastPauseEndDate']) == true)
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}
+                                                @elseif(strtotime($lec['lastPauseEndDate']) >= date("Y-m-d", time()))
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}
+                                                @else
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}
+                                                @endif
+                                            </span>일/ {{$lec['RealLecExpireDay']}}일</div>
                                         <div class="w-date tx-gray">({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</div>
                                     </td>
                                 </tr>

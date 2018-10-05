@@ -241,7 +241,7 @@
         <!-- willbes-Lec -->
 
         <div id="Sticky" class="sticky-Wrap">
-            <div class="sticky-menu NG">
+            <div class="sticky-Grid sticky-menu NG">
                 <ul>
                     <li><a href="#none" onclick="movePos('#Class');">강좌정보 ▼</a></li>
                     <li class="row-line">|</li>

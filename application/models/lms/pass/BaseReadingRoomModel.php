@@ -28,7 +28,8 @@ class BaseReadingRoomModel extends WB_Model
     private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
 
     protected $_order_route_ccd = '670002';    //학원방문결제
-    protected $_arr_reading_room_status_ccd = [
+    protected $_sub_order_route_ccd = '670003';    //0원결제 [예치금]
+    public $_arr_reading_room_status_ccd = [
         'N' => '682001',    //독서실사물함 좌석상태(미사용)
         'Y' => '682002'     //독서실사물함 좌석상태(사용중)
     ];
@@ -729,9 +730,11 @@ class BaseReadingRoomModel extends WB_Model
      * @param $status_ccd       [좌석상태 -> 682001:미사용, 682002:사용중, 682003:대기, 682004:홀드, 682005:고장]
      * @param $start_date
      * @param $end_date
+     * @param @master_order_idx    [연장일 경우]
+     * @param @is_extension         [연장유무 = 연장:true, 신규:false]
      * @return bool|string
      */
-    protected function _updateSeatMst($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date)
+    protected function _updateSeatMstNotExtension($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date)
     {
         try {
             //최초좌석등록 시 현재 주문번호가 마스터주문번호로 셋팅
@@ -757,7 +760,65 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
-     * 좌석 상세 정보 저장 [입실 (자리이동/퇴실)]
+     * 좌석상태 업데이트
+     * @param $lr_idx           [상품코드에 매핑되는 식별자]
+     * @param $serial_number    [좌석번호]
+     * @param $now_order_idx    [생성된 주문 식별자]
+     * @param $status_ccd       [좌석상태 -> 682001:미사용, 682002:사용중, 682003:대기, 682004:홀드, 682005:고장]
+     * @param $start_date
+     * @param $end_date
+     * @param @master_order_idx    [연장일 경우]
+     * @return bool|string
+     */
+    protected function _updateSeatMstExtension($lr_idx, $serial_number, $now_order_idx, $status_ccd, $start_date, $end_date, $master_order_idx)
+    {
+        try {
+            $master_o_idx = $master_order_idx;
+            $now_o_idx = $now_order_idx;
+
+            //기존좌석번호조회 -> 좌석이동일 경우 기존좌석번호에 해당되는 데이터 초기화
+            $arr_condition = [
+                'EQ' => [
+                    'MasterOrderIdx' => $master_order_idx,
+                    'StatusCcd' => $this->readingRoomModel->_arr_reading_room_status_ccd['Y']
+                ]
+            ];
+            $now_seat_data = $this->_getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd');
+            if ($serial_number != $now_seat_data['SerialNumber']) {
+                $data = [
+                    'MasterOrderIdx' => null,
+                    'NowOrderIdx' => null,
+                    'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+                    'UseStartDate' => null,
+                    'UseEndDate' => null,
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+
+                if ($this->_conn->set($data)->where('LrIdx', $lr_idx)->where('SerialNumber', $now_seat_data['SerialNumber'])->update($this->_table['readingRoom_mst']) === false) {
+                    throw new \Exception('좌석상태 수정에 실패했습니다.');
+                }
+            }
+
+            $data = [
+                'MasterOrderIdx' => $master_o_idx,
+                'NowOrderIdx' => $now_o_idx,
+                'StatusCcd' => $status_ccd,
+                'UseStartDate' => $start_date,
+                'UseEndDate' => $end_date,
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->set($data)->where('LrIdx', $lr_idx)->where('SerialNumber', $serial_number)->update($this->_table['readingRoom_mst']) === false) {
+                throw new \Exception('좌석상태 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 좌석 상세 정보 저장 [입실]
      * @param $prod_code        [상품코드]
      * @param $lr_idx
      * @param $now_order_idx    [현재주문식별자]
@@ -765,9 +826,11 @@ class BaseReadingRoomModel extends WB_Model
      * @param $old_m_idx        [이전사용좌석]
      * @param $use_start_date   [시작일 월단위]
      * @param $use_end_date     [종료일 월단위]
+     * @param $target_month     [좌석 이동시 사용]
+     * @param $target_start_date [좌석 이동시 사용]
      * @return bool|string
      */
-    protected function _insertSeatDetail($prod_code, $lr_idx, $now_order_idx, $now_m_idx, $old_m_idx, $use_start_date, $use_end_date)
+    protected function _insertSeatDetailForRoomIn($prod_code, $lr_idx, $now_order_idx, $now_m_idx, $old_m_idx, $use_start_date, $use_end_date, $target_month = null, $target_start_date = null)
     {
         try {
             if ($use_start_date >= $use_end_date) {
@@ -789,7 +852,19 @@ class BaseReadingRoomModel extends WB_Model
             //월별가격 [일별가격 * 월별기간]
             $arr_monthly_price = $this->_setMonthlyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
 
-            foreach ($arr_monthly_price as $key => $val) {
+            if (empty($target_month) === false) {
+                $arr_monthly_price[$target_month][0] = $target_start_date;
+                $daily_price = $this->_setDailyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
+                $interval = $this->_setDayDiff($arr_monthly_price[$target_month][0], $arr_monthly_price[$target_month][1]);
+                $day_total_price = $interval * $daily_price;
+                $arr_monthly_price[$target_month][2] = $day_total_price;
+
+                $insert_data[$target_month] = $arr_monthly_price[$target_month];
+            } else {
+                $insert_data = $arr_monthly_price;
+            }
+
+            foreach ($insert_data as $key => $val) {
                 $seat_data = [
                     'LrIdx' => $lr_idx,
                     'MasterOrderIdx' => $now_order_idx,
@@ -803,6 +878,68 @@ class BaseReadingRoomModel extends WB_Model
                     'RegAdminIdx' => $this->session->userdata('admin_idx'),
                     'RegIp' => $this->input->ip_address()
                 ];
+
+                if($this->_conn->set($seat_data)->insert($this->_table['readingRoom_useDetail']) === false) {
+                    throw new \Exception('좌석 배정에 실패했습니다.');
+                };
+
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 좌석 상세 정보 저장 [입실 연장]
+     * @param $prod_code
+     * @param $lr_idx
+     * @param $now_order_idx
+     * @param $now_m_idx
+     * @param $old_m_idx
+     * @param $use_start_date
+     * @param $use_end_date
+     * @param $master_order_idx
+     * @return bool|string
+     */
+    protected function _insertSeatDetailForRoomInExtension($prod_code, $lr_idx, $now_order_idx, $now_m_idx, $old_m_idx, $use_start_date, $use_end_date, $master_order_idx)
+    {
+        try {
+            if ($use_start_date >= $use_end_date) {
+                throw new \Exception('날짜 정보가 올바르지 않습니다. 다시 시도해 주세요.');
+            }
+
+            //독서실/사물함 판매가 조회
+            $arr_condition = [
+                'EQ' => [
+                    'ProdCode' => $prod_code,
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $product_data = $this->_getProductSaleForReadingRoomInfo($arr_condition, 'RealSalePrice');
+            if (empty($product_data) === true) {
+                throw new \Exception('조회된 상품가격 정보가 없습니다.');
+            }
+
+            //월별가격 [일별가격 * 월별기간]
+            $arr_monthly_price = $this->_setMonthlyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
+            $insert_data = $arr_monthly_price;
+
+            foreach ($insert_data as $key => $val) {
+                $seat_data = [
+                    'LrIdx' => $lr_idx,
+                    'MasterOrderIdx' => $master_order_idx,
+                    'NowOrderIdx' => $now_order_idx,
+                    'NowMIdx' => $now_m_idx,
+                    'OldMIdx' => $old_m_idx,
+                    'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['extension'],
+                    'UseStartDate' => $val[0],
+                    'UseEndDate' => $val[1],
+                    'Price' => $val[2],
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address()
+                ];
+
                 if($this->_conn->set($seat_data)->insert($this->_table['readingRoom_useDetail']) === false) {
                     throw new \Exception('좌석 배정에 실패했습니다.');
                 };
@@ -835,6 +972,32 @@ class BaseReadingRoomModel extends WB_Model
             };
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
+     * 좌석관리테이블 업데이트
+     * @param $arr_condition
+     * @param $input
+     * @return array|bool
+     */
+    protected function updateReadingRoomMst($arr_condition, $input)
+    {
+        try {
+            $input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+            $input['UpdDatm'] = date('Y-m-d H:i:s');
+
+            $is_update = $this->_conn->set($input);
+            $is_update = $is_update->where($arr_condition);
+            $is_update = $is_update->update($this->_table['readingRoom_mst']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
         }
         return true;
     }
@@ -938,5 +1101,168 @@ class BaseReadingRoomModel extends WB_Model
         $e_date = explode('-',date('Y-m', strtotime(date($end_date))));
         $diff_month = ($e_date[0] - $s_date[0])*12 + $e_date[1] - $s_date[1];
         return $diff_month;
+    }
+
+    /**
+     * 좌석관리데이타 수정 [기존좌석 퇴실, 변경할 좌석 입실처리]
+     * @param $input
+     * @param $data
+     * @return array|bool
+     */
+    protected function _modifyReadingRoomMst($input, $data)
+    {
+        try {
+            $arr_update_condition = [
+                'LrIdx' => $data['LrIdx'],
+                'NowOrderIdx' => $data['NowOrderIdx'],
+                'SerialNumber' => $data['SerialNumber'],
+                'StatusCcd' => $data['SeatStatusCcd']
+            ];
+            $arr_target_data = [
+                'MasterOrderIdx' => null,
+                'NowOrderIdx' => null,
+                'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+                'UseStartDate' => null,
+                'UseEndDate' => null
+            ];
+            if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data) !== true) {
+                throw new \Exception('좌석 수정에 실패했습니다.');
+            }
+
+            $arr_update_condition = [
+                'LrIdx' => $data['LrIdx'],
+                'SerialNumber' => $input['set_seat'],
+                'StatusCcd' => $this->_arr_reading_room_status_ccd['N']
+            ];
+            $arr_target_data = [
+                'MasterOrderIdx' => $data['MasterOrderIdx'],
+                'NowOrderIdx' => $data['NowOrderIdx'],
+                'StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
+                'UseStartDate' => $data['UseStartDate'],
+                'UseEndDate' => $data['UseEndDate'],
+            ];
+            if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data) !== true) {
+                throw new \Exception('좌석 수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    protected function _modifyReadingRoomDetail($input = [], $data)
+    {
+        try {
+            $int_now_date = date('Ymd');
+            $now_date = date('Y-m-d');
+            $now_month = date('Y-m');
+            $beforeDay = date("Y-m-d", strtotime($now_date." -1 day"));
+
+            //기존데이터조회
+            $arr_condition = [
+                'EQ' => [
+                    'NowOrderIdx' => $input['now_order_idx'],
+                    'NowMIdx' => $data['SerialNumber'],
+                    'LrIdx' => $data['LrIdx'],
+                ]
+            ];
+            $old_detail_data = $this->_getReadingRoomUseDetail($arr_condition, 'RrudIdx, LrIdx, MasterOrderIdx, NowOrderIdx, NowMIdx, StatusCcd, UseStartDate, UseEndDate, Price');
+
+            foreach ($old_detail_data as $row) {
+                $arr_condition = ['RrudIdx' => $row['RrudIdx']];
+                $start_date = str_replace('-', '', $row['UseStartDate']);
+                $end_date = str_replace('-', '', $row['UseEndDate']);
+
+                if ($start_date == $int_now_date) {
+                    //퇴실
+                    $update_input = [
+                        'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out']
+                    ];
+                    if ($this->_updateSeatDetail($arr_condition, $update_input) !== true) {
+                        throw new \Exception('좌석 수정에 실패했습니다.');
+                    }
+
+                    if ($this->_insertSeatDetailForRoomIn($data['ProdCode'], $row['LrIdx'], $row['NowOrderIdx'], $input['set_seat'], $row['NowMIdx'], $data['UseStartDate'], $data['UseEndDate'], $now_month, $now_date) !== true) {
+                        throw new \Exception('좌석 등록에 실패했습니다.');
+                    }
+                } else {
+                    if ($start_date < $int_now_date || $end_date < $int_now_date) {
+                        if ($start_date < $int_now_date && $end_date < $int_now_date) {
+                            //퇴실
+                            $update_input = [
+                                'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out']
+                            ];
+                            if ($this->_updateSeatDetail($arr_condition, $update_input) !== true) {
+                                throw new \Exception('좌석 수정에 실패했습니다.');
+                            }
+
+                        } else {
+                            //해당 월, 전일 날짜까지의 금액
+                            $daily_price = $this->_setDailyPrice($data['RealPayPrice'], $row['UseStartDate'], $data['UseEndDate']);
+                            $interval = $this->_setDayDiff($row['UseStartDate'], $beforeDay);
+                            $day_total_price = $interval * $daily_price;
+
+                            $update_input = [
+                                'UseStartDate' => $row['UseStartDate'],
+                                'UseEndDate' => $beforeDay,
+                                'Price' => $day_total_price,
+                                'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out']
+                            ];
+
+                            if ($this->_updateSeatDetail($arr_condition, $update_input) !== true) {
+                                throw new \Exception('좌석 수정에 실패했습니다.');
+                            }
+
+                            if ($this->_insertSeatDetailForRoomIn($data['ProdCode'], $row['LrIdx'], $row['NowOrderIdx'], $input['set_seat'], $row['NowMIdx'], $data['UseStartDate'], $data['UseEndDate'], $now_month, $now_date) !== true) {
+                                throw new \Exception('좌석 등록에 실패했습니다.');
+                            }
+                        }
+
+                    } else {
+                        //자리이동
+                        $update_input = [
+                            'NowMIdx' => $input['set_seat'],
+                            'OldMIdx' => $row['NowMIdx'],
+                            'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['change']
+                        ];
+
+                        if ($this->_updateSeatDetail($arr_condition, $update_input) !== true) {
+                            throw new \Exception('좌석 수정에 실패했습니다.');
+                        }
+                    }
+                }
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 좌석현황 정보 수정
+     * @param $arr_condition
+     * @param $input
+     * @return array|bool
+     */
+    private function _updateSeatDetail($arr_condition, $input)
+    {
+        try {
+            $input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
+            $input['UpdDatm'] = date('Y-m-d H:i:s');
+
+            $is_update = $this->_conn->set($input);
+            $is_update = $is_update->where($arr_condition);
+            $is_update = $is_update->update($this->_table['readingRoom_useDetail']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
     }
 }

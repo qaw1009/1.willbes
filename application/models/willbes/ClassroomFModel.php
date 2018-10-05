@@ -4,20 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ClassroomFModel extends WB_Model
 {
     private $_table = [
-        'order' => 'lms_order',
-        'order_prod' => 'lms_order_product',
-        'order_sub_prod' => 'lms_order_sub_product',
-        'product' => 'lms_product',
-        'product_lec' => 'lms_product_lecture',
-        'lecture' => 'vw_product_on_lecture',
         'mylec' => 'lms_my_lecture',
-        'mst_lec' => '',
         'lec_unit' => 'vw_unit_mylecture',
-        'mylec_unit' => 'lms_lecture_studyinfo',
-        'mylechistory' => 'lms_my_lecture_history',
-        'pause_history' => 'lms_lecture_pause_history',
         'mylecture' => 'vw_on_mylecture',
-        'mylecture_pkg' => 'vw_pkg_mylecture'
+        'mylecture_pkg' => 'vw_pkg_mylecture',
+        'start_log' => 'lms_my_lecture_history',
+        'admin' => 'wbs_sys_admin',
+        'pause_log' => 'lms_lecture_pause_history',
+        'extend' => 'lms_lecture_extend'
     ];
 
 
@@ -40,9 +34,9 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(true);
 
-        $rows = $this->_conn->query($query);
+        $result = $this->_conn->query($query);
 
-        return empty($rows) === true ? [] : $rows->result_array();
+        return empty($result) === true ? [] : $result->result_array();
     }
 
 
@@ -83,42 +77,54 @@ class ClassroomFModel extends WB_Model
      * @param array $cond_arr
      * @return array
      */
-    public function getLecture($cond = [])
+    public function getLecture($cond = [], $isCount = false)
     {
-        $query = "SELECT STRAIGHT_JOIN *,
+        if($isCount == true)
+        {
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
+        } else {
+            $query = "SELECT STRAIGHT_JOIN *,
             TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
-        ";
+            ";
+        }
+
         $query .= " FROM {$this->_table['mylecture']} ";
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
-        $rows = $this->_conn->query($query);
-        return empty($rows) === true ? [] : $rows->result_array();
+        $result = $this->_conn->query($query);
+        return empty($result) === true ? [] : $result->result_array();
     }
 
 
     /**
      * 패키지 강좌 리스트
      */
-    public function getPackage($cond = [])
+    public function getPackage($cond = [], $isCount = false)
     {
-        $query = "SELECT STRAIGHT_JOIN *,
-            TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
-        ";
+        if($isCount == true)
+        {
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
+        } else {
+            $query = "SELECT STRAIGHT_JOIN *,
+                TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            ";
+        }
+
         $query .= " FROM {$this->_table['mylecture_pkg']} ";
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
-        $rows = $this->_conn->query($query);
+        $result = $this->_conn->query($query);
 
-        return empty($rows) === true ? [] : $rows->result_array();
+        return empty($result) === true ? [] : $result->result_array();
     }
 
 
     /**
      * 기간제패키지 PASS 강좌 리스트
      */
-    public function getPass($cond = [])
+    public function getPass($cond = [], $isCount = false)
     {
         return empty($rows) === true ? [] : $rows->result_array();
     }
@@ -145,9 +151,279 @@ class ClassroomFModel extends WB_Model
 
         $query .= " ORDER BY wOrderNum ASC ";
 
-        $query = $this->_conn->query($query);
+        $result = $this->_conn->query($query);
 
-        return ($isCount === true) ? $query->row(0)->rownums : $query->result_array();
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
+
+    /**
+     * 수강시작일 변경 레이어팝업
+     * @param array $cond
+     * @param bool $isCount
+     * @return mixed
+     */
+    public function getStartDateLog($cond = [], $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * , ifnull(UpdAdminIdx, '') AS Name 
+              ";
+        }
+
+        $query .= " FROM {$this->_table['start_log']}  
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY MlhIdx ASC ";
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+
+    /**
+     * 수강시작일 변경
+     * @param $cond
+     * @param $startdate
+     * @return array|bool
+     */
+    public function setStartDate($cond, $startdate)
+    {
+
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'OrderIdx' => element('OrderIdx', $cond),
+                'ProdCode' => element('ProdCode', $cond),
+                'ProdCodeSub' => element('ProdCodeSub', $cond)
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        $query = "SELECT LecStartDate, LecExpireDay, LecEndDate, RealLecExpireDay, RealLecEndDate FROM {$this->_table['mylec']} " . $where . " LIMIT 1 ";
+
+        $result = $this->_conn->query($query);
+
+        if(empty($result) === true){
+            return false;
+        }
+
+        $result = $result->row(0);
+
+        $ori_startdate = $result->LecStartDate;
+        $ori_expday = $result->LecExpireDay -1;
+        $ori_enddate = $result->LecEndDate;
+        $ori_realexpday = $result->RealLecExpireDay -1;
+        $ori_realenddate = $result->RealLecEndDate;
+
+        $this->_conn->trans_begin();
+
+        try {
+
+            if(empty(element('ProdCodeSub', $cond)) === true){
+                if($this->_conn->
+                    set('LecStartDate', $startdate)->
+                    set('LecEndDate', date("Y-m-d", strtotime($startdate.'+'.$ori_expday.'day')))->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($startdate.'+'.$ori_realexpday.'day')))->
+                    where('OrderIdx', element('OrderIdx', $cond))->
+                    where('ProdCode', element('ProdCode', $cond))->
+                    where('OrderProdIdx', element('OrderProdIdx', $cond))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+
+            } else {
+                if($this->_conn->
+                    set('LecStartDate', $startdate)->
+                    set('LecEndDate', date("Y-m-d", strtotime($startdate.'+'.$ori_expday.'day')))->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($startdate.'+'.$ori_realexpday.'day')))->
+                    where('OrderIdx', element('OrderIdx', $cond))->
+                    where('ProdCode', element('ProdCode', $cond))->
+                    where('ProdCodeSub', element('ProdCodeSub', $cond))->
+                    where('OrderProdIdx', element('OrderProdIdx', $cond))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+            }
+
+
+            $input = [
+                'MemIdx' => element('MemIdx', $cond),
+                'OrderIdx' => element('OrderIdx', $cond),
+                'OrderProdIdx' => element('OrderProdIdx', $cond),
+                'ProdCode' => element('ProdCode', $cond),
+                'ProdCodeSub' => element('ProdCodeSub', $cond),
+                'BeforeStartDate' => $ori_startdate,
+                'BeforeEndDate' => $ori_realenddate,
+                'UpdStudyStartDate' => $startdate,
+                'UpdStudyEndDate' => date("Y-m-d", strtotime($startdate.'+'.$ori_realexpday.'day')),
+                'UpdIp' => $this->input->ip_address(),
+                'Memo' => '사용자가 시작일 변경'
+            ];
+
+            if($this->_conn->set($input)->insert($this->_table['start_log']) === false){
+                throw new \Exception('로그기록에 실패했습니다.');
+            }
+            
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+
+    /**
+     * 일시중지 로그
+     * @param array $cond
+     * @param bool $isCount
+     * @return mixed
+     */
+    public function getPauseLog($cond = [], $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * , ifnull(PauseAdminIdx, '') AS Name 
+              ";
+        }
+
+        $query .= " FROM {$this->_table['pause_log']}  
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY LphIdx ASC ";
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+
+    /**
+     * 일시중지 처리
+     * @param $input
+     * @return array|bool
+     */
+    public function setPause($input)
+    {
+        $lecstartdate = element('lecstartdate', $input);
+        $realecexpireday = element('realecexpireday', $input);
+
+        $this->_conn->trans_begin();
+
+        try{
+            if(empty(element('ProdCodeSub', $input)) === true){
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+
+            } else {
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('ProdCodeSub', element('ProdCodeSub', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+            }
+
+
+            $input = [
+                'MemIdx' => element('MemIdx', $input),
+                'OrderIdx' => element('OrderIdx', $input),
+                'OrderProdIdx' => element('OrderProdIdx', $input),
+                'ProdCode' => element('ProdCode', $input),
+                'ProdCodeSub' => element('ProdCodeSub', $input),
+                'PauseStartDate' => element('pausestartdate', $input),
+                'PauseEndDate' => element('pauseenddate', $input),
+                'PauseDays' => element('pauseday', $input),
+                'PauseRegIp' => $this->input->ip_address(),
+                'Memo' => '사용자가 일시중지 등록'
+            ];
+
+            if($this->_conn->set($input)->insert($this->_table['pause_log']) === false){
+                throw new \Exception('로그기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function setRestartPause($input)
+    {
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

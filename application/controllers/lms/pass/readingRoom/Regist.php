@@ -18,13 +18,19 @@ class Regist extends \app\controllers\BaseController
     {
         $mang_type = $this->_req('mang_type');
 
+        // TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제
+        $rdr_master_order_idx = $this->_reqG('rdr_master_order_idx');
+        $rdr_prod_code = $this->_reqG('rdr_prod_code');
+
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         $this->load->view("pass/reading_room/regist/index", [
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
-            'arr_campus' => $arr_campus
+            'arr_campus' => $arr_campus,
+            'rdr_master_order_idx' => $rdr_master_order_idx,     //TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제
+            'rdr_prod_code' => $rdr_prod_code     //TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제
         ]);
     }
 
@@ -170,7 +176,10 @@ class Regist extends \app\controllers\BaseController
      */
     public function createSeatModal($params = [])
     {
+        $is_extension = false;  //연장여부 기본 설정
         $prod_code = $params[0];
+        $rdr_master_order_idx = $this->_reqG('rdr_master_order_idx');
+        $rdr_prod_code = $this->_reqG('rdr_prod_code');
 
         //좌석상태공통코드
         $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
@@ -184,18 +193,28 @@ class Regist extends \app\controllers\BaseController
         //좌석정보
         $seat_data = $this->readingRoomModel->listSeat($prod_code);
 
-        //기준주문식별자 메모 데이터 조회
-        /*$memo_data = [];
-        for ($i = 0; $i<40; $i++) {
-            $memo_data[$i] = [
-                'Memo' => '123123',
-                'RegAdminName' => '최현탁',
-                'RegDatm' => '2018-01-01 01:01:01'
+        //연장일 경우
+        if ($prod_code == $rdr_prod_code) {
+            $is_extension = true;
+            $master_order_idx = $rdr_master_order_idx;
+
+            //좌석번호 조회
+            $arr_condition = [
+                'EQ' => [
+                    'MasterOrderIdx' => $master_order_idx,
+                    'StatusCcd' => $this->readingRoomModel->_arr_reading_room_status_ccd['Y']
+                ]
             ];
+            $now_seat_data = $this->readingRoomModel->getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd');
+            $now_seat_num = $now_seat_data['SerialNumber']; //현재 좌석번호
+            $now_status_ccd = $now_seat_data['StatusCcd'];  //좌석 상태
+        } else {
+            $master_order_idx = '';
+            $now_seat_num = '';
+            $now_status_ccd = '';
         }
-        */
-        /*$master_order_idx = '63';*/
-        $master_order_idx = '';
+
+        //기준주문식별자 메모 데이터 조회
         $memo_data = $this->readingRoomModel->getMemoListAll($master_order_idx);
 
         $this->load->view("pass/reading_room/regist/create_seat_modal", [
@@ -203,7 +222,11 @@ class Regist extends \app\controllers\BaseController
             'arr_seat_status' => $arr_seat_status,
             'data' => $data,
             'seat_data' => $seat_data,
-            'memo_data' => $memo_data
+            'memo_data' => $memo_data,
+            'rdr_master_order_idx' => $rdr_master_order_idx,
+            'is_extension' => $is_extension,
+            'now_seat_num' => $now_seat_num,
+            'now_status_ccd' => $now_status_ccd
         ]);
     }
 
@@ -212,21 +235,24 @@ class Regist extends \app\controllers\BaseController
      * 독서실/사물함 방문결제 TEST
      * TODO : 방문결제 개발 시 해당 메소드 삭제
      */
-    public function testStorePayment()
+    public function testStoreSeat()
     {
         $arr_input = [
             'prod_code' => $this->_reqP('rdr_prod_code'),
+            'rdr_master_order_idx' => $this->_reqP('rdr_master_order_idx'),
+            'rdr_is_extension' => $this->_reqP('rdr_is_extension'),
             'serial_num' => $this->_reqP('rdr_serial_num'),
             'seat_status' => $this->_reqP('rdr_seat_status'),
             'rdr_use_start_date' => $this->_reqP('rdr_use_start_date'),
             'rdr_use_end_date' => $this->_reqP('rdr_use_end_date'),
             'rdr_is_sub_price' => $this->_reqP('rdr_is_sub_price'),
-            'rdr_memo' => $this->_reqP('rdr_memo'),
+            'rdr_memo' => $this->_reqP('rdr_memo')
         ];
 
-        $order_idx = '63';
+        $order_idx = '96';
 
         $result = $this->readingRoomModel->testAddSeat($arr_input, $order_idx);
+        print_r($result);
         return $result;
     }
 }

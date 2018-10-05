@@ -17,36 +17,35 @@ class Pg extends CI_Driver_Library
     protected $_driver = 'dummy';
 
     /**
-     * @var string 상점 아이디 (mid)
+     * @var string log directory
      */
-    protected $_mid = '';
+    protected $_log_dir = '';
 
+    /**
+     * @var string 결제연동 결과 저장 테이블
+     */
+    public $_log_table = 'lms_order_payment';
+
+    /**
+     * @var string 가상계좌 입금통보 결과 저장 테이블
+     */
+    public $_log_deposit_table = 'lms_order_deposit';
+
+    /**
+     * Pg constructor.
+     * @param array $config
+     */
     public function __construct($config = array())
     {
         isset($config['driver']) && $this->_driver = $config['driver'];
-        isset($config['mid']) && $this->_mid = $config['mid'];
 
         if (in_array($this->_driver, $this->valid_drivers) === false) {
             log_message('error', '[결제모듈] 허용된 PG사 드라이버가 아닙니다.');
             return;
         }
 
-        // get ci instance
-        $_CI =& get_instance();
-
-        // load driver config
-        if ($_CI->config->load('pg_' . $this->_driver, true, true)) {
-            $driver_config = $_CI->config->config['pg_' . $this->_driver];
-
-            if (element('mode', $driver_config) === 'test') {
-                $this->_mid = element('mid', $driver_config['test']);
-            }
-        }
-
-        if (empty($this->_mid) === true) {
-            log_message('error', '[결제모듈] 상점 아이디(mid)가 없습니다.');
-            return;
-        }
+        // log directory
+        $this->_log_dir = STORAGEPATH . 'logs/pg/' . $this->_driver . '/';
     }
 
     /**
@@ -90,11 +89,38 @@ class Pg extends CI_Driver_Library
     }
 
     /**
-     * 상점 아이디(mid) 리턴
-     * @return string
+     * 가상계좌 입금 통보 수신
+     * @param array $params
+     * @return mixed
      */
-    public function getMid()
+    public function depositResult($params = [])
     {
-        return $this->_mid;
+        return $this->{$this->_driver}->depositResult($params);
+    }
+
+    /**
+     * 가상계좌 입금 통보 처리 결과 리턴 (to PG사)
+     * @param bool $ret_cd
+     * @param string $err_msg
+     * @param string $log_idx
+     * @return mixed
+     */
+    public function depositReturn($ret_cd, $err_msg = '', $log_idx = '')
+    {
+        return $this->{$this->_driver}->depositReturn($ret_cd, $err_msg, $log_idx);
+    }
+
+    /**
+     * save file log
+     * @param $msg
+     * @param null $vars
+     * @param string $log_level
+     * @param string $log_type
+     */
+    public function saveFileLog($msg, $vars = null, $log_level = 'debug', $log_type = 'pay')
+    {
+        $log_path = $this->_log_dir . ($log_type != 'pay' ? $log_type . '-' : '') . 'log-' . date('Y-m-d') . '.log';
+
+        logger($msg, $vars, $log_level, $log_path);
     }
 }

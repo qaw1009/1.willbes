@@ -91,8 +91,7 @@ class Order extends \app\controllers\FrontController
         }
 
         // 주문상품 목록 조회
-        $results['order_product'] = $this->orderListFModel->listOrderProduct(false
-            , ['EQ' => ['O.OrderIdx' => $order_idx, 'O.MemIdx' => $sess_mem_idx]]
+        $results['order_product'] = $this->orderListFModel->listOrderProduct(false, ['EQ' => ['O.OrderIdx' => $order_idx, 'O.MemIdx' => $sess_mem_idx]]
             , null, null, ['OP.OrderProdIdx' => 'asc']);
 
         // 주문배송정보 조회

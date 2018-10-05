@@ -13,9 +13,13 @@ class SearchCoupon extends \app\controllers\BaseController
 
     public function index()
     {
+
+        $locationid = empty($this->_req('locationid')) ? null : $this->_req('locationid');
+
         $this->load->view('common/search_coupon',[
             'site_code' => $this->_req('site_code')
             ,'ProdCode' => $this->_req('ProdCode')
+            ,'locationid' => $locationid
         ]);
     }
 

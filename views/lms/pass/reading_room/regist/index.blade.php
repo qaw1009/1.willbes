@@ -160,10 +160,13 @@
                 location.href='{{ site_url('/pass/readingRoom/regist/assignManageList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
             });*/
 
-            // 좌석배정/좌석이동 TEST
+            // TODO : 좌석배정/좌석이동 TEST
             $list_table.on('click', '.btn-create-seat-modal', function() {
+                var param = '&rdr_master_order_idx=' + '{{$rdr_master_order_idx}}';
+                param += '&rdr_prod_code=' + '{{$rdr_prod_code}}';
+
                 $('.btn-create-seat-modal').setLayer({
-                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}',
+                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + param,
                     "width" : "1200"
                 });
             });
@@ -173,7 +176,7 @@
 
     <!-- TODO : TEST 결제위한 폼 -> lms 방문결제페이지 개발 시 해당 기능 삭제 -->
     {{--<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" ></form>--}}
-    <form id="regi_form" name="regi_form" method="POST" action="{{ site_url("/pass/readingRoom/regist/testStorePayment/?{$default_query_string}") }}" novalidate>
+    <form id="regi_form" name="regi_form" method="POST" action="{{ site_url("/pass/readingRoom/regist/testStoreSeat/?{$default_query_string}") }}" novalidate>
     {!! csrf_field() !!}
     </form>
     <div class="x_panel mt-10">
@@ -189,6 +192,9 @@
 
         $('#btn_test_cancel').click(function() {
             $regi_form.find('input[name="rdr_prod_code[]"]').remove();
+            $regi_form.find('input[name="rdr_master_order_idx[]"]').remove();
+            $regi_form.find('input[name="rdr_is_extension[]"]').remove();
+            $regi_form.find('input[name="is_sub_price[]"]').remove();
             $regi_form.find('input[name="rdr_serial_num[]"]').remove();
             $regi_form.find('input[name="rdr_seat_status[]"]').remove();
             $regi_form.find('input[name="rdr_use_start_date[]"]').remove();

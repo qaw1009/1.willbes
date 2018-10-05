@@ -32,5 +32,8 @@ $config = [
         '604003' => 'VBank',
         '604004' => 'HPP',
     ],
+    'allow_vbank_ip' => [
+        '203.238.37.3', '203.238.37.15', '203.238.37.16', '203.238.37.25', '39.115.212.9'
+    ],
     'receipt_url' => 'https://iniweb.inicis.com/mall/cr/cm/mCmReceipt_head.jsp?noMethod=1&noTid={{$tid$}}'
 ];

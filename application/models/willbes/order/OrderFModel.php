@@ -351,7 +351,7 @@ class OrderFModel extends BaseOrderFModel
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
 
             if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no) {
-                throw new \Exception('잘못된 접근입니다.');
+                throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 
             // 주문요청 데이터 조회
@@ -366,7 +366,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 장바구니 식별자 세션과 결제요청 장바구니 식별자 비교
             if (empty(array_diff($sess_cart_idx, explode(',', $post_row['CartIdxs']))) === false) {
-                throw new \Exception('잘못된 접근입니다.');
+                throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 
             $post_data = unserialize($post_row['PostData']);    // 주문 폼 데이터 unserialize
@@ -390,7 +390,7 @@ class OrderFModel extends BaseOrderFModel
             // TODO : 테스트 (추후 주석 삭제)
 /*            // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
             if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
-                throw new \Exception('결제금액정보가 올바르지 않습니다.');
+                throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
             }*/
 
             // 주문 데이터 등록
@@ -444,7 +444,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             if ($this->_conn->set($data)->insert($this->_table['order']) === false) {
-                throw new \Exception('주문 정보 등록에 실패했습니다.');
+                throw new \Exception('주문정보 등록에 실패했습니다.');
             }
 
             // 주문 식별자
@@ -928,7 +928,7 @@ class OrderFModel extends BaseOrderFModel
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order']) === false) {
-                throw new \Exception('주문 정보 등록에 실패했습니다.');
+                throw new \Exception('주문정보 등록에 실패했습니다.');
             }
 
             // 주문 식별자
@@ -1032,7 +1032,7 @@ class OrderFModel extends BaseOrderFModel
             ];
 
             if ($this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)->insert($this->_table['order']) === false) {
-                throw new \Exception('주문 정보 등록에 실패했습니다.');
+                throw new \Exception('주문정보 등록에 실패했습니다.');
             }
 
             // 주문 식별자
@@ -1063,6 +1063,80 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
+    }
+
+    /**
+     * 가상계좌 입금통보 결과 수신 후 결제완료 업데이트
+     * @param array $deposit_results
+     * @return array|bool
+     */
+    public function procDepositComplete($deposit_results = [])
+    {
+        $order_no = $deposit_results['order_no'];   // 결제모듈에서 전달받은 주문번호
+
+        $this->_conn->trans_begin();
+
+        try {
+            // 주문정보 조회
+            $order_row = $this->orderListFModel->findOrder([
+                'EQ' => ['O.OrderNo' => $order_no, 'O.PgTid' => $deposit_results['tid'], 'O.PgMid' => $deposit_results['mid']]
+            ]);
+            if (empty($order_row) === true) {
+                throw new \Exception('주문내역이 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['PayMethodCcd'] != $this->_pay_method_ccd['vbank']) {
+                throw new \Exception('무통장입금(가상계좌)으로 결제한 주문만 처리가 가능합니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if (empty($order_row['CompleteDatm']) === false) {
+                throw new \Exception('이미 결제완료 처리된 주문내역 입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            if ($order_row['RealPayPrice'] != $deposit_results['total_pay_price']) {
+                throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 주문 식별자
+            $order_idx = $order_row['OrderIdx'];
+
+            // 주문정보 완료일시 업데이트
+            $is_update = $this->_conn->set('CompleteDatm', $deposit_results['deposit_datm'])
+                ->where('OrderIdx', $order_idx)->where('OrderNo', $order_no)->update($this->_table['order']);
+            if ($is_update === false) {
+                throw new \Exception('주문정보 완료일시 업데이트에 실패했습니다.');
+            }
+
+            // 주문상품 결제완료 업데이트
+            $is_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])
+                ->where('OrderIdx', $order_idx)->update($this->_table['order_product']);
+            if ($is_update === false) {
+                throw new \Exception('주문상품 결제완료 업데이트에 실패했습니다.');
+            }
+
+            // 회원포인트 적립
+            if ($order_row['SaveLecPoint'] > 0 || $order_row['SaveBookPoint'] > 0) {
+                // 주문상품 목록 조회
+                $order_prod_rows = $this->orderListFModel->listOrderProduct(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, ['OP.OrderProdIdx' => 'asc']);
+                foreach ($order_prod_rows as $idx => $order_prod_row) {
+                    if ($order_prod_row['SavePoint'] > 0) {
+                        $point_type = $order_prod_row['OrderProdType'] == 'book' ? 'book' : 'lecture';
+
+                        $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx']);
+                        if ($is_point_save !== true) {
+                            throw new \Exception($is_point_save);
+                        }
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true, 'ret_data' => $order_no];
     }
 
     /**

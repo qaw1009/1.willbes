@@ -35,34 +35,34 @@
 
             <div class="willbes-Mypage-Tabs mt40">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/on/list/standby/', 'www')}}" onsubmit="">
-                <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                    <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
-                        <option selected="selected" value="">과정</option>
-                        @foreach($course_arr as $row )
-                            <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
-                        @endforeach
-                    </select>
-                    <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
-                        <option selected="selected" value="">과목</option>
-                        @foreach($subject_arr as $row )
-                            <option value="{{$row['SubjectIdx']}}" @if(isset($input_arr['subject_ccd']) && $input_arr['subject_ccd'] == $row['SubjectIdx']) selected="selected" @endif >{{$row['SubjectName']}}</option>
-                        @endforeach
-                    </select>
-                    <select id="prof_ccd" name="prof_ccd" title="Prof" class="seleProf">
-                        <option selected="selected" value="">교수님</option>
-                        @foreach($prof_arr as $row )
-                            <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
-                        @endforeach
-                    </select>
-                    <div class="willbes-Lec-Search GM f_right">
-                        <div class="inputBox p_re">
-                            <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30">
-                            <button type="submit" class="search-Btn">
-                                <span>검색</span>
-                            </button>
+                    <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                        <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
+                            <option selected="selected" value="">과정</option>
+                            @foreach($course_arr as $row )
+                                <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
+                            @endforeach
+                        </select>
+                        <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
+                            <option selected="selected" value="">과목</option>
+                            @foreach($subject_arr as $row )
+                                <option value="{{$row['SubjectIdx']}}" @if(isset($input_arr['subject_ccd']) && $input_arr['subject_ccd'] == $row['SubjectIdx']) selected="selected" @endif >{{$row['SubjectName']}}</option>
+                            @endforeach
+                        </select>
+                        <select id="prof_ccd" name="prof_ccd" title="Prof" class="seleProf">
+                            <option selected="selected" value="">교수님</option>
+                            @foreach($prof_arr as $row )
+                                <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
+                            @endforeach
+                        </select>
+                        <div class="willbes-Lec-Search GM f_right">
+                            <div class="inputBox p_re">
+                                <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30">
+                                <button type="submit" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </form>
 
                 <div class="DetailWrap c_both">
@@ -80,39 +80,43 @@
                                     </colgroup>
                                     <tbody>
                                     @forelse( $lecList as $row )
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    {{$row['SubjectName']}}<span class="row-line">|</span>
-                                                    {{$row['wProfName']}}교수님
-                                                    <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">수강시작</span></a>
-                                            <a href="#none" onclick="openWin('STARTPASS')"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td class="w-data tx-left pl10">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                        {{$row['wProfName']}}교수님
+                                                        <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                                    </dt>
+                                                </dl><br/>
+                                                <div class="w-tit">
+                                                    <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                @if($row['IsLecStart'] == 'Y')
+                                                    <a href="javascript:;" onclick="start_today('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    <a href="javascript:;" onclick="start_change_layer('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                                @else
+                                                    <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                @endif
+                                            </td>
+                                        </tr>
                                     @empty
-                                    <tr>
-                                        <td colspan="2" class="tx-center">수강대기중인 강좌가 없습니다.</td>
-                                    </tr>
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강대기중인 강좌가 없습니다.</td>
+                                        </tr>
                                     @endforelse
                                     </tbody>
                                 </table>
-                                <!--
+                            <!--
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -132,70 +136,92 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-                            <div class="willbes-Lec-Table pt20 NG d_block">
-                                <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
-                                    <colgroup>
-                                        <col style="width: 820px;">
-                                        <col style="width: 120px;">
-                                    </colgroup>
-                                    <tbody>
-                                    @forelse( $pkgList as $row )
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n4">완강</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">수강시작</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지333</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>수강시작일 : <span class="tx-black">2018.10.20</span></dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">3</span>)</span></a>
-                                        </td>
-                                    </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="2" class="tx-center">수강대기중인 강좌가 없습니다.</td>
-                                    </tr>
-                                    @endforelse
-                                    </tbody>
-                                </table>
-                                <!--
+                            <!-- <div class="willbes-Lec-Table pt20 NG d_block"> -->
+                            <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+
+                                @forelse( $pkgList as $row )
+                                    <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 820px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr class="bg-light-blue">
+                                            <td class="w-data tx-left pl10">
+                                                <div class="w-tit">
+                                                    {{$row['ProdName']}}
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
+                                                    <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                                @if($row['IsLecStart'] == 'Y')
+                                                    <a href="javascript:;" onclick="start_today('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    <a href="javascript:;" onclick="start_change_layer('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                                @else
+                                                    <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                                        <colgroup>
+                                            <col style="width: 120px;">
+                                            <col style="width: 820px;">
+                                        </colgroup>
+                                        <tbody>
+                                        @foreach( $row['subleclist'] as $subrow )
+                                            <tr>
+                                                <td class="w-percent">진도율<br/>
+                                                    <span class="tx-blue">{{$subrow['StudyRate']}}%</span>
+                                                </td>
+                                                <td class="w-data tx-left pl10">
+                                                    <dl class="w-info">
+                                                        <dt>
+                                                            {{$subrow['SubjectName']}}<span class="row-line">|</span>
+                                                            {{$subrow['wProfName']}}교수님
+                                                            <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                        </dt>
+                                                    </dl><br/>
+                                                    <div class="w-tit">
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{$subrow['LecStartDate']}}~{{$subrow['RealLecEndDate']}})</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
+                                                    </dl>
+                                                </td>
+                                                <!--
+                                                <td class="w-answer">
+                                                    <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
+                                                    <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
+                                                </td> -->
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @empty
+                                    <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 820px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강대기중인 강좌가 없습니다.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                            @endforelse
+                            <!--
                                 <div class="Paging">
                                     <ul>
                                         <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -220,117 +246,132 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
 
-            <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs">
-                <a class="closeBtn" href="#none" onclick="closeWin('STARTPASS')">
-                    <img src="{{ img_url('sub/close.png') }}">
-                </a>
-                <div class="Layer-Tit tx-dark-black NG">수강시작일 변경</div>
-                <div class="lecMoreWrap">
-                    <div class="PASSZONE-List widthAutoFull">
-                        <ul class="passzoneInfo tx-gray NGR">
-                            <li class="tit strong">· 수강시작일 설정</li>
-                            <li class="txt">- 수강시작일은 개강일 전까지만 변경 가능합니다.</li>
-                            <li class="txt">- '시작일변경' 버튼을 클릭하면 강의별 <span class="tx-red">최대3회, 개강일 기준 30일까지</span>만 변경이 가능합니다.</li>
-                            <li class="txt">- 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.</li>
-                            <li class="txt">- 수강시작이 이루어진 강좌는 시작일 변경이 불가능 합니다.</li>
-                        </ul>
-                        <div class="PASSZONE-Lec-Section">
-                            <div class="Search-Result strong mt40 mb15 tx-gray">· 수강시작일 변경</div>
-                            <div class="LeclistTable bdt-gray">
-                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 135px;">
-                                        <col style="width: 565px;">
-                                    </colgroup>
-                                    <tbody>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">강의정보</th>
-                                        <td class="w-data tx-left pl15">
-                                            <dl class="w-info strong">
-                                                <dt>
-                                                    영어<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
-                                                    한덕현교수님
-                                                </dt>
-                                            </dl><br>
-                                            <div class="w-tit strong">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">수강 시작일 변경</th>
-                                        <td class="w-data tx-left pl15">
-                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">&nbsp; ~&nbsp;
-                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">&nbsp;
-                                            시작일 입력시, 종료일이 자동 변경됩니다
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="w-btn"><a class="answerBox_block NSK" href="#none" onclick="">변경</a></div>
-                            </div>
-                        </div>
-                        <div class="PASSZONE-Lec-Section">
-                            <div class="Search-Result strong mb15 tx-gray">· 수강시작일 변경이력 <span class="w-info normal">( 잔여횟수 : <span class="strong tx-light-blue">1</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span> 잔여기간 : <span class="strong tx-light-blue">15</span>일 )</span></div>
-                            <div class="LeclistTable bdt-gray">
-                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 100px;">
-                                        <col style="width: 270px;">
-                                        <col style="width: 170px;">
-                                        <col style="width: 160px;">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>회차<span class="row-line">|</span></th>
-                                        <th>수강시작일<span class="row-line">|</span></th>
-                                        <th>변경일자<span class="row-line">|</span></th>
-                                        <th>변경자</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="w-num">1차</td>
-                                        <td class="w-day">2018.00.00 ~ 2018.00.00</td>
-                                        <td class="w-modify-day">2018.00.00</td>
-                                        <td class="w-user">회원명</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-num">2차</td>
-                                        <td class="w-day">2018.00.00 ~ 2018.00.00</td>
-                                        <td class="w-modify-day">2018.00.00</td>
-                                        <td class="w-user">회원명</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">수강시작일 변경 이력이 없습니다.</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PASSZONE-List -->
-                </div>
-            </div>
+            <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
             <!-- willbes-Layer-PassBox : 수강시작일 변경 -->
 
         </div>
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <form name="chgForm" id="chgForm" >
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="orderidx" id="orderidx" value="" />
+        <input type="hidden" name="prodcode" id="prodcode" value="" />
+        <input type="hidden" name="prodcodesub" id="prodcodesub" value="" />
+        <input type="hidden" name="prodtype" id="prodtype" value="" />
+    </form>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd').on('change', function (){
-               $('#searchFrm').submit();
+                $('#searchFrm').submit();
             });
 
             // 검색어 입력 후 엔터
             $('#search_text').on('keyup', function() {
                 if (window.event.keyCode === 13) {
-
                 }
             });
         });
+
+        function start_change_layer(o, p, sp, t)
+        {
+            $("#STARTPASS").html('');
+            $('#orderidx').val(o);
+            $('#prodcode').val(p);
+            $('#prodcodesub').val(sp);
+            $('#prodtype').val(t);
+
+            url = "{{ site_url("/classroom/on/layerStartDate/") }}";
+            data = $('#chgForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#STARTPASS").html(d).end();
+                    openWin('STARTPASS');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
+
+        function start_today(o, p, sp, t)
+        {
+            if(window.confirm('시작일을 오늘로 설정하시겠습니까?') == false){
+                return;
+            }
+
+            $('#orderidx').val(o);
+            $('#prodcode').val(p);
+            $('#prodcodesub').val(sp);
+            $('#prodtype').val(t);
+
+            url = "{{ site_url("/classroom/on/setStartToday/") }}";
+            data = $('#chgForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    alert("시작일이 오늘로 설정되었습니다.");
+                    //location.reload();
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, true, 'POST', 'html');
+        }
     </script>
 @stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

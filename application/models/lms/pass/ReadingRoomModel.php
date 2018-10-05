@@ -435,7 +435,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             }
 
             //입실 좌석상세정보저장
-            if ($this->_insertSeatDetailForRoomIn($prod_code, $reading_info['LrIdx'], $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
+            if ($this->_insertSeatDetailForRoomIn($prod_code, $reading_info['LrIdx'], $now_order_idx, $now_order_idx, $input['serial_num'][$key], '', $input['rdr_use_start_date'][$key], $input['rdr_use_end_date'][$key]) !== true) {
                 throw new \Exception('좌석 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
@@ -498,6 +498,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 , c.UseStartDate, c.UseEndDate, c.StatusCcd AS SeatStatusCcd
                 , fn_ccd_name(c.StatusCcd) AS SeatStatusName
                 , e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
+                , IFNULL(f.ExtensionType,\'N\') AS ExtensionType
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -507,24 +508,39 @@ class ReadingRoomModel extends BaseReadingRoomModel
             FROM (
                 SELECT o.OrderIdx, o.OrderNo, o.MemIdx, o.SiteCode, o.ReprProdName, o.OrderDatm, o.CompleteDatm
                 FROM {$this->_table['lms_order']} AS o
-                WHERE o.PayRouteCcd = {$this->_order_route_ccd}
+                WHERE o.PayRouteCcd = '{$this->_order_route_ccd}'
             ) AS b
             
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
-            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
+            
+            INNER JOIN (
+                SELECT temp_c.RrudIdx, temp_c.MasterOrderIdx, temp_c.NowOrderIdx, temp_c.UseStartDate, temp_c.UseEndDate, temp_c.StatusCcd, temp_c.RegDatm, temp_c.RegAdminIdx, temp_c.NowMIdx
+                FROM {$this->_table['readingRoom_useDetail']} AS temp_c
+                INNER JOIN {$this->_table['readingRoom_mst']} AS temp_d ON temp_c.MasterOrderIdx = temp_d.MasterOrderIdx 
+                WHERE temp_d.StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
+            ) AS c ON b.OrderIdx = c.NowOrderIdx
+            
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             INNER JOIN (
                 SELECT temp_b.ProdCode, temp_b.PayStatusCcd
-                FROM lms_order AS temp_a
-                INNER JOIN lms_order_product temp_b ON temp_a.OrderIdx = temp_b.OrderIdx AND temp_a.PayRouteCcd = '{$this->_sub_order_route_ccd}'
+                FROM {$this->_table['lms_order']} AS temp_a
+                INNER JOIN {$this->_table['lms_order_product']} temp_b ON temp_a.OrderIdx = temp_b.OrderIdx AND temp_a.PayRouteCcd = '{$this->_sub_order_route_ccd}'
                 GROUP BY temp_b.ProdCode
             ) AS d ON a.SubProdCode = d.ProdCode
+            
+            LEFT JOIN (
+                SELECT 
+                    LrIdx, MasterOrderIdx, NowOrderIdx, SerialNumber, UseEndDate,
+                    IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 7) ||
+                            (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= -7), 'Y','N'
+                    ) AS ExtensionType
+                    FROM {$this->_table['readingRoom_mst']}
+                    WHERE StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
+            ) AS f ON
+            f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
         ";
-        /*INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON a.LrIdx = c.LrIdx*/
-        /*INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode //예치금 금액 관련 조인 -> prodcode 기준 group by 진행*/
-
 
         //사이트 권한
         $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes();
@@ -551,8 +567,8 @@ class ReadingRoomModel extends BaseReadingRoomModel
         try {
             //좌석검증, 조회
             $arr_condition = [
-                'EQ' => [
-                    'c.StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
+                'NOT' => [
+                    'c.StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
                 ],
                 'RAW' => ['(c.UseStartDate <= "' => date('Y-m-d') . '" AND c.UseEndDate > "' . date('Y-m-d') . '")']
             ];
@@ -569,6 +585,68 @@ class ReadingRoomModel extends BaseReadingRoomModel
             //좌석관리현황테이블 데이터 등록,수정
             if ($this->_modifyReadingRoomDetail($input, $data) !== true) {
                 throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type].' 좌석 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 퇴실처리 [기존주문식별자에 해당되는 데이터 퇴실 처리]
+     * @param array $input
+     * @return array|bool
+     */
+    public function modifyReadingRoomSeatForOut($input = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            //좌석검증, 조회
+            $arr_condition = [
+                'EQ' => [
+                    'NowOrderIdx' => $input['now_order_idx'],
+                    'LrIdx' => $input['lr_idx'],
+                    'SerialNumber' => $input['now_seat_num'],
+                    'StatusCcd' => $this->_arr_reading_room_status_ccd['Y']
+                ]
+            ];
+            $now_seat_data = $this->_getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd');
+            if (empty($now_seat_data['SerialNumber']) === true) {
+                throw new \Exception('조회된 좌석정보가 없습니다.');
+            }
+
+            //좌석관리테이블
+            $arr_where = [
+                'NowOrderIdx' => $input['now_order_idx'],
+                'LrIdx' => $input['lr_idx'],
+                'SerialNumber' => $input['now_seat_num'],
+                'StatusCcd' => $this->_arr_reading_room_status_ccd['Y']
+            ];
+            $update_data = [
+                'MasterOrderIdx' => null,
+                'NowOrderIdx' => null,
+                'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+                'UseStartDate' => null,
+                'UseEndDate' => null
+            ];
+            if ($this->updateReadingRoomMst($arr_where, $update_data) !== true) {
+                throw new \Exception('좌석 수정에 실패했습니다.');
+            }
+
+            //좌석현황테이블
+            $arr_where = [
+                'NowOrderIdx' => $input['now_order_idx'],
+                'LrIdx' => $input['lr_idx'],
+                'NowMIdx' => $input['now_seat_num']
+            ];
+            $update_data = [
+                'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out']
+            ];
+            if ($this->updateSeatDetail($arr_where, $update_data) !== true) {
+                throw new \Exception('좌석 수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

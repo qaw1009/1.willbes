@@ -69,7 +69,7 @@
                 <div class="col-md-10 form-inline">
                     <div class="radio">
                         @foreach($arr_seat_status as $key => $val)
-                            <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" @if($now_status_ccd == $key)checked="checked"@endif/> <label for="rdr_seat_status_{{$key}}" class="input-label">{{$val}}</label>
+                            <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" @if($arr_use_seat_data['StatusCcd'] == $key)checked="checked"@endif/> <label for="rdr_seat_status_{{$key}}" class="input-label">{{$val}}</label>
                         @endforeach
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="rdr_use_start_date" name="rdr_use_start_date" value="">
+                        <input type="text" class="form-control datepicker" id="rdr_use_start_date" name="rdr_use_start_date" value="{{$arr_use_seat_data['UseEndDate']}}">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
                         <div class="input-group-addon no-border-right">
                             <i class="fa fa-calendar"></i>
@@ -207,7 +207,7 @@
         var $list_table_modal = $('#list_ajax_table_modal');
         var $_search_form = $('#_search_form');
         var $parent_regi_form = $('#regi_form');
-        var $extension_seat_num = '{{$now_seat_num}}';
+        var $extension_seat_num = '{!! $arr_use_seat_data['SerialNumber'] !!}';
 
         $(document).ready(function() {
             var set_table_row = '{{$data['TransverseNum']}}';
@@ -227,7 +227,7 @@
             var set_rdr_seat_status = $parent_regi_form.find('input[id="rdr_seat_status_{{$prod_code}}"]').val();
             var set_rdr_use_start_date = $parent_regi_form.find('input[id="rdr_use_start_date_{{$prod_code}}"]').val();
             var set_rdr_use_end_date = $parent_regi_form.find('input[id="rdr_use_end_date_{{$prod_code}}"]').val();
-            var set_rdr_is_sub_price = $parent_regi_form.find('input[id="is_sub_price_{{$prod_code}}"]').val();
+            var set_rdr_is_sub_price = $parent_regi_form.find('input[id="rdr_is_sub_price_{{$prod_code}}"]').val();
             var set_rdr_memo = $parent_regi_form.find('input[id="rdr_memo_{{$prod_code}}"]').val();
 
             if (typeof set_rdr_serial_num != 'undefined') {
@@ -237,12 +237,18 @@
             }
 
             $_search_form.find('input:radio[name=rdr_seat_status]:input[value='+set_rdr_seat_status+']').attr("checked", true);
-            $_search_form.find('input[name="rdr_use_start_date"]').val(set_rdr_use_start_date);
+            if (typeof set_rdr_use_start_date != 'undefined') {
+                $_search_form.find('input[name="rdr_use_start_date"]').val(set_rdr_use_start_date);
+            }
             $_search_form.find('input[name="rdr_use_end_date"]').val(set_rdr_use_end_date);
-            if (set_rdr_is_sub_price == 'Y') {
-                $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", true);
-            } else {
-                $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", false);
+
+            console.log(set_rdr_is_sub_price);
+            if (typeof set_rdr_is_sub_price != 'undefined') {
+                if (set_rdr_is_sub_price == 'Y') {
+                    $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", true);
+                } else {
+                    $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", false);
+                }
             }
             $_search_form.find('textarea[name="rdr_memo"]').val(set_rdr_memo);
             $('#_seat_'+set_rdr_serial_num).css('background-color','#12ec23');

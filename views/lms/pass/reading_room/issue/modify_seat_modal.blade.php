@@ -263,9 +263,11 @@
                     '{{ csrf_token_name() }}' : $_regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE',
                     'lr_idx' : '{{$data['LrIdx']}}',
+                    'now_order_idx' : '{{$data['NowOrderIdx']}}',
+                    'now_seat_num' : '{{$data['SerialNumber']}}'
                 };
 
-                if (!confirm('퇴실처리 하시겠습니까?')) {
+                if (!confirm('퇴실 시 좌석 정보가 리셋됩니다. 퇴실처리 하시겠습니까?’')) {
                     return;
                 }
 

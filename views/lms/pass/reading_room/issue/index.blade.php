@@ -175,10 +175,30 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'SeatRegDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-prod-code="'+row.ProdCode+'" data-order-idx="'+row.NowOrderIdx+'">[변경]</u></a>';
+                            if(row.SeatStatusCcd == '{{$arr_seat_status_ccd['out']}}' || row.SeatStatusCcd == '{{$arr_seat_status_ccd['end']}}') {
+                                return '<p style="color: #bdbdbd">[변경]</p>';
+                            } else {
+                                return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-prod-code="'+row.ProdCode+'" data-order-idx="'+row.NowOrderIdx+'"><u>[변경]</u></a>';
+                            }
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-seat" data-prod-code="'+row.ProdCode+'" data-order-idx="' + row.MasterOrderIdx + '"><u>[연장]</u></a>';
+                            //퇴실
+                            if(row.SeatStatusCcd == '{{$arr_seat_status_ccd['out']}}') {
+                                return '<p style="color: #bdbdbd">[연장]</p>';
+                            } else {
+                                //기간 미만족
+                                /*if (row.ExtensionType == 'Y' && (row.SeatStatusCcd != '{{$arr_seat_status_ccd['out']}}' || row.SeatStatusCcd != '{{$arr_seat_status_ccd['end']}}')) {*/
+                                if (row.ExtensionType == 'Y'
+                                    && (row.SeatStatusCcd == '{{$arr_seat_status_ccd['in']}}'
+                                        || row.SeatStatusCcd == '{{$arr_seat_status_ccd['extension']}}'
+                                        || row.SeatStatusCcd == '{{$arr_seat_status_ccd['change']}}')
+                                ) {
+                                    return '<a href="javascript:void(0);" class="btn-seat" data-prod-code="' + row.ProdCode + '" data-order-idx="' + row.MasterOrderIdx + '"><u>[연장]</u></a>';
+                                } else {
+                                    return '<p style="color: #bdbdbd">[연장]</p>';
+                                }
+                            }
+
                         }}
                 ]
             });

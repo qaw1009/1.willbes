@@ -40,7 +40,8 @@ class Issue extends \app\controllers\BaseController
         $this->load->view("pass/reading_room/issue/index", [
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
-            'arr_search_data' => $arr_search_data
+            'arr_search_data' => $arr_search_data,
+            'arr_seat_status_ccd' => $this->readingRoomModel->_arr_reading_room_seat_status_ccd
         ]);
     }
 
@@ -101,7 +102,7 @@ class Issue extends \app\controllers\BaseController
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'desc', 'c.RrudIdx' => 'asc', 'c.UseStartDate' => 'asc']);
+            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'DESC', 'c.StatusCcd' => 'ASC', 'c.RegDatm' => 'DESC']);
         }
 
         return $this->response([
@@ -123,6 +124,7 @@ class Issue extends \app\controllers\BaseController
 
         //좌석상태공통코드
         $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
+        unset($arr_seat_status[$this->readingRoomModel->_arr_reading_room_status_ccd['N']]);
 
         //상품기본정보
         $data = $this->readingRoomModel->findReadingRoomForModify($now_order_idx);
@@ -206,7 +208,18 @@ class Issue extends \app\controllers\BaseController
      */
     public function storeSeatOut()
     {
-        $result = true;
-        $this->json_result($result, '저장 되었습니다.', $result);
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'lr_idx', 'label' => '상품식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'now_order_idx', 'label' => '현재주문번호식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'now_seat_num', 'label' => '좌석번호', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->readingRoomModel->modifyReadingRoomSeatForOut($this->_reqP(null,false));
+        $this->json_result($result, '퇴실되었습니다.', $result);
     }
 }

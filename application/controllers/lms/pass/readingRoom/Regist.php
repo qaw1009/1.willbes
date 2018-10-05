@@ -183,6 +183,7 @@ class Regist extends \app\controllers\BaseController
 
         //좌석상태공통코드
         $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
+        unset($arr_seat_status[$this->readingRoomModel->_arr_reading_room_status_ccd['N']]);
 
         //상품기본정보
         $data = $this->readingRoomModel->findReadingRoom($prod_code);
@@ -198,20 +199,17 @@ class Regist extends \app\controllers\BaseController
             $is_extension = true;
             $master_order_idx = $rdr_master_order_idx;
 
-            //좌석번호 조회
+            //좌석정보 조회
             $arr_condition = [
                 'EQ' => [
                     'MasterOrderIdx' => $master_order_idx,
                     'StatusCcd' => $this->readingRoomModel->_arr_reading_room_status_ccd['Y']
                 ]
             ];
-            $now_seat_data = $this->readingRoomModel->getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd');
-            $now_seat_num = $now_seat_data['SerialNumber']; //현재 좌석번호
-            $now_status_ccd = $now_seat_data['StatusCcd'];  //좌석 상태
+            $arr_use_seat_data = $this->readingRoomModel->getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd, UseEndDate');
         } else {
+            $arr_use_seat_data = null;
             $master_order_idx = '';
-            $now_seat_num = '';
-            $now_status_ccd = '';
         }
 
         //기준주문식별자 메모 데이터 조회
@@ -225,8 +223,7 @@ class Regist extends \app\controllers\BaseController
             'memo_data' => $memo_data,
             'rdr_master_order_idx' => $rdr_master_order_idx,
             'is_extension' => $is_extension,
-            'now_seat_num' => $now_seat_num,
-            'now_status_ccd' => $now_status_ccd
+            'arr_use_seat_data' => $arr_use_seat_data
         ]);
     }
 
@@ -249,7 +246,8 @@ class Regist extends \app\controllers\BaseController
             'rdr_memo' => $this->_reqP('rdr_memo')
         ];
 
-        $order_idx = '96';
+        $order_idx = '63';      //임의 생성한 주문식별자
+        $order_idx = '96';      //임의 생성한 주문식별자
 
         $result = $this->readingRoomModel->testAddSeat($arr_input, $order_idx);
         print_r($result);

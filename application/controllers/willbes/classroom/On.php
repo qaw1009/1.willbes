@@ -115,7 +115,7 @@ class On extends \app\controllers\FrontController
             $pkglist[$idx]['subleclist'] = $pkgsublist;
         }
 
-        return $this->load->view('/classroom/on_standby', [
+        return $this->load->view('/classroom/on/on_standby', [
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -169,7 +169,9 @@ class On extends \app\controllers\FrontController
             ],
             'LTE' => [
                 'LecStartDate' => $today, // 시작일 <= 오늘
-                'lastPauseEndDate' => $today // 일시중지종료일 <= 오늘
+            ],
+            'LT' => [
+                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
             ],
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
@@ -249,7 +251,7 @@ class On extends \app\controllers\FrontController
         // 관리자부여 : lec + pkg
         $adminlist = [ 'lec' => $adminlistLec, 'pkg' => $adminlistPkg ];
 
-        return $this->load->view('/classroom/on_ongoing', [
+        return $this->load->view('/classroom/on/on_ongoing', [
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -342,7 +344,7 @@ class On extends \app\controllers\FrontController
             $pkglist[$idx]['subleclist'] = $pkgsublist;
         }
 
-        return $this->load->view('/classroom/on_pause', [
+        return $this->load->view('/classroom/on/on_pause', [
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -423,7 +425,7 @@ class On extends \app\controllers\FrontController
             $pkglist[$idx]['subleclist'] = $pkgsublist;
         }
 
-        return $this->load->view('/classroom/on_end', [
+        return $this->load->view('/classroom/on/on_end', [
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -471,6 +473,28 @@ class On extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        if($lec['LearnPatternCcd'] == '615003'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ]);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+        }
+
         if($lec['LecStartDate'] > $today){
             $isstart = 'N';
         } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
@@ -501,7 +525,13 @@ class On extends \app\controllers\FrontController
             $curriculum[$idx]['isstart'] = $isstart;
             $curriculum[$idx]['ispause'] = $ispause;
 
-            if($lec['MultipleApply'] == '1'){
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            }
+            else if($lec['MultipleApply'] == '1'){
                 // 무제한 
                 $curriculum[$idx]['timeover'] = 'N';
                 $curriculum[$idx]['limittime'] = '무제한';
@@ -550,7 +580,7 @@ class On extends \app\controllers\FrontController
             }
         }
 
-        return $this->load->view('/classroom/on_view', [
+        return $this->load->view('/classroom/on/on_view', [
             'lec' => $lec,
             'curriculum' => $curriculum
         ]);
@@ -626,7 +656,7 @@ class On extends \app\controllers\FrontController
             ]
         ]);
 
-        return $this->load->view('/classroom/layer/change_start_date', [
+        return $this->load->view('/classroom/on/layer/change_start_date', [
             'lec' => $lec,
             'log' => $log
         ]);
@@ -644,6 +674,7 @@ class On extends \app\controllers\FrontController
 
 
     /**
+     * 시작일 설정
      * @param null $start_date
      * @return CI_Output
      */
@@ -661,11 +692,11 @@ class On extends \app\controllers\FrontController
         }
 
         if(empty($start_date) === true){
-            return $this->json_error('시작일이 잘못된 날짜 입니다.'.$start_date);
+            return $this->json_error('시작일이 잘못된 날짜 입니다.');
         }
 
         if(strtotime($start_date) == false){
-            return $this->json_error('시작일이 잘못된 날짜 입니다.'.$start_date);
+            return $this->json_error('시작일이 잘못된 날짜 입니다.');
         }
 
         if($start_date < $today){
@@ -714,7 +745,9 @@ class On extends \app\controllers\FrontController
         }
 
         if($lec['ChgStartNum'] >= 3) {
-           return $this->json_error('시작일 변경횟수를 초과했습니다.');
+            if($start_date != $today){
+                return $this->json_error('시작일 변경횟수를 초과했습니다.');
+            }
         }
 
         if($start_date > date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day'))){
@@ -732,6 +765,274 @@ class On extends \app\controllers\FrontController
         } else {
             return $this->json_error('강의 시작일 변경중에 오류가 발생했습니다.');
         }
+    }
+
+
+    /**
+     * 일시중지 레이어
+     * @return CI_Output|object|string
+     */
+    public function layerPause()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('mem_idx');
+
+        $today = date("Y-m-d", time());
+
+        $cond_arr = [
+            'LTE' => [
+                'LecStartDate' => $today, // 시작일 <= 오늘
+                'lastPauseEndDate' => $today // 일시중지종료일 <= 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsPause'] != 'Y'){
+            return $this->json_error('일시중지할 수 없는 강좌입니다.');
+        }
+
+        $PauseRemain = $lec['LecExpireDay'] - $lec['PauseSum'];
+
+        if($PauseRemain < 0){
+            $PauseRemain = 0;
+        }
+
+        if($PauseRemain > $lec['remainDays']){
+            $PauseRemain = $lec['remainDays'];
+        }
+
+        $lec['PauseRemain'] = $PauseRemain;
+
+
+        $log = $this->classroomFModel->getPauseLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ]
+        ]);
+
+        return $this->load->view('/classroom/on/layer/pause', [
+            'lec' => $lec,
+            'log' => $log
+        ]);
+    }
+
+
+    /**
+     * 일시중지 처리
+     * @return CI_Output
+     */
+    public function setPause()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('mem_idx');
+        $enddate = $this->_req("enddate");
+
+        $today = date("Y-m-d", time());
+
+        if(empty($enddate) === true){
+            return $this->json_error('일시중지 종료일이 잘못된 날짜 입니다.');
+        }
+
+        if(strtotime($enddate) == false){
+            return $this->json_error('일시중지 종료일이 잘못된 날짜 입니다.');
+        }
+
+        if($enddate < $today){
+            return $this->json_error('일시중지 종료일이 오늘 이후 날짜만 가능합니다.');
+        }
+
+        $cond_arr = [
+            'LTE' => [
+                'LecStartDate' => $today, // 시작일 <= 오늘
+                'lastPauseEndDate' => $today // 일시중지종료일 <= 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsPause'] != 'Y'){
+            return $this->json_error('일시중지할 수 없는 강좌입니다.');
+        }
+
+        $PauseRemain = $lec['LecExpireDay'] - $lec['PauseSum'];
+
+        if($PauseRemain > $lec['remainDays']){
+            $PauseRemain = $lec['remainDays'];
+        }
+
+        if($PauseRemain <= 0){
+            return $this->json_error('일시중지 기간을 초과했습니다.');
+        }
+
+        if($lec['RealLecEndDate'] < $enddate){
+            return $this->json_error('일시중지 기간은 강의 종료일을 초과할 수 없습니다.');
+        }
+
+        // 날짜 계산
+        $PauseDay = intval((strtotime($enddate)-strtotime($today))/86400) +1;
+
+        $log = $this->classroomFModel->setPause([
+            'MemIdx' => $memidx,
+            'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $lec['OrderProdIdx'],
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub,
+            'lecstartdate' => $lec['LecStartDate'],
+            'realecexpireday' => $lec['LecExpireDay'] + $PauseDay + $lec['PauseSum'] + $lec['ExtenSum'],
+            'pausestartdate' => $today,
+            'pauseenddate' => $enddate,
+            'pauseday' => $PauseDay
+            ]);
+
+    }
+
+
+    /**
+     * 일시중지해제처리
+     * @return CI_Output
+     */
+    public function restartPause()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('mem_idx');
+
+        $today = date("Y-m-d", time());
+
+        $cond_arr = [
+            'LTE' => [
+                'LecStartDate' => $today // 시작일 <= 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today, // 종료일 >= 오늘
+                'lastPauseEndDate' => $today // 일시중지종료일 >= 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        $log = $this->classroomFModel->setRestartPause([
+            'MemIdx' => $memidx,
+            'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $lec['OrderProdIdx'],
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub
+        ]);
+
+    }
+
+
+    public function layerExtend()
+    {
+
+        return $this->load->view('/classroom/on/layer/extend', [
+        ]);
     }
 
 }

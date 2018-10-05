@@ -45,7 +45,7 @@ class Off extends \app\controllers\FrontController
      */
     public function ongoing()
     {
-        $this->load->view('/classroom/off_ongoing', [
+        $this->load->view('/classroom/off/off_ongoing', [
             'data' => [],
             'list' => []
         ]);
@@ -57,7 +57,7 @@ class Off extends \app\controllers\FrontController
      */
     public function end()
     {
-        $this->load->view('/classroom/off_end', [
+        $this->load->view('/classroom/off/off_end', [
             'data' => [],
             'list' => []
         ]);

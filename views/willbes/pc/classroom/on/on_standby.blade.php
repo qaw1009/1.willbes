@@ -95,15 +95,15 @@
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['RealLecExpireDay']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
                                                 @if($row['IsLecStart'] == 'Y')
-                                                    <a href="javascript:;" onclick="start_today('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
-                                                    <a href="javascript:;" onclick="start_change_layer('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                 @else
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
                                                 @endif
@@ -152,7 +152,7 @@
                                                     {{$row['ProdName']}}
                                                 </div>
                                                 <dl class="w-info tx-gray">
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
                                                     <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
@@ -160,8 +160,8 @@
                                             </td>
                                             <td class="w-answer">
                                                 @if($row['IsLecStart'] == 'Y')
-                                                    <a href="javascript:;" onclick="start_today('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
-                                                    <a href="javascript:;" onclick="start_change_layer('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
+                                                    <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox blueBox NSK">수강시작</span></a>
+                                                    <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','', 'P');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                 @else
                                                     <span class="bBox blueBox NSK">시작일변경 불가</span>
                                                 @endif
@@ -274,7 +274,7 @@
             });
         });
 
-        function start_change_layer(o, p, sp, t)
+        function fnStartChange(o, p, sp, t)
         {
             $("#STARTPASS").html('');
             $('#orderidx').val(o);
@@ -296,7 +296,7 @@
                 }, false, 'GET', 'html');
         }
 
-        function start_today(o, p, sp, t)
+        function fnStartToday(o, p, sp, t)
         {
             if(window.confirm('시작일을 오늘로 설정하시겠습니까?') == false){
                 return;

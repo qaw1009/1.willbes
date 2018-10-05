@@ -158,7 +158,7 @@
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                 </dl>
@@ -169,7 +169,7 @@
                                                 @elseif($row['ExtenCount'] >= $row['ExtenNum'])
                                                     <a><span class="bBox blueBox NSK">연장횟수초과({{$row['ExtenCount']}})</span></a>
                                                 @else
-                                                    <a href="#none" onclick="openWin('EXTRAPASS')"><span class="bBox blueBox NSK">수강연장({{$row['ExtenCount']}})</span></a>
+                                                    <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강연장({{$row['ExtenCount']}})</span></a>
                                                 @endif
 
                                                 @if($row['IsPause'] == 'N')
@@ -177,7 +177,7 @@
                                                 @elseif($row['PauseCount'] >= $row['PauseNum'])
                                                     <a><span class="bBox whiteBox NSK">정지횟수초과(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
                                                 @else
-                                                    <a href="#none" onclick="openWin('STOPPASS')"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
+                                                    <a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -247,22 +247,34 @@
                                             <col style="width: 120px;">
                                         </colgroup>
                                         <tbody>
-
                                         <tr class="bg-light-blue">
                                             <td class="w-data tx-left pl30">
                                                 <div class="w-tit">
                                                     {{$row['ProdName']}}
                                                 </div>
                                                 <dl class="w-info tx-gray">
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                     <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
-                                                <a href="#none"><span class="bBox blueBox NSK">수강연장({{$row['ExtenCount']}})</span></a>
-                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
+                                                @if($row['IsExten'] == 'N')
+                                                    <a><span class="bBox blueBox NSK">수강연장불가</span></a>
+                                                @elseif($row['ExtenCount'] >= $row['ExtenNum'])
+                                                    <a><span class="bBox blueBox NSK">연장횟수초과({{$row['ExtenCount']}})</span></a>
+                                                @else
+                                                    <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');"><span class="bBox blueBox NSK">수강연장({{$row['ExtenCount']}})</span></a>
+                                                @endif
+
+                                                @if($row['IsPause'] == 'N')
+                                                    <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
+                                                @elseif($row['PauseCount'] >= $row['PauseNum'])
+                                                    <a><span class="bBox whiteBox NSK">정지횟수초과(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
+                                                @else
+                                                    <a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
+                                                @endif
                                             </td>
                                         </tr>
                                         </tbody>
@@ -292,7 +304,7 @@
                                                     <dl class="w-info tx-gray">
                                                         <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
                                                         <dt><span class="row-line">|</span></dt>
-                                                        <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{$subrow['LecStartDate']}}~{{$subrow['RealLecEndDate']}})</dt>
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                         <dt><span class="row-line">|</span></dt>
                                                         <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                                     </dl>
@@ -395,7 +407,7 @@
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                 </dl>
@@ -490,7 +502,7 @@
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{$row['LecStartDate']}}~{{$row['RealLecEndDate']}})</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                 </dl>
@@ -583,217 +595,24 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
 
-            <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs">
-                <a class="closeBtn" href="#none" onclick="closeWin('STOPPASS')">
-                    <img src="{{ img_url('sub/close.png') }}">
-                </a>
-                <div class="Layer-Tit tx-dark-black NG">일시정지</div>
-
-                <div class="lecMoreWrap">
-
-                    <div class="PASSZONE-List widthAutoFull">
-                        <ul class="passzoneInfo tx-gray NGR">
-                            <li class="tit strong">· 일시정지 신청</li>
-                            <li class="txt">- 일시정지는 강좌별로 <span class="tx-red">최대 3회</span>까지 가능합니다.</li>
-                            <li class="txt">- 1회 일시정지 기간은 수강잔여일을 초과할 수 없습니다.</li>
-                            <li class="txt">- <span class="tx-red">일시정지기간의 총합은 수강기간을 초과할 수 없습니다.</span></li>
-                            <li class="txt">- '일시정지된 강좌는 일시정지강좌' 에서 확인할 수 있습니다.</li>
-                        </ul>
-                        <div class="PASSZONE-Lec-Section">
-                            <div class="Search-Result strong mt40 mb15 tx-gray">· 일시정지 신청</div>
-                            <div class="LeclistTable bdt-gray">
-                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 135px;">
-                                        <col style="width: 565px;">
-                                    </colgroup>
-                                    <tbody>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">강의정보</th>
-                                        <td class="w-data tx-left pl15">
-                                            <dl class="w-info strong">
-                                                <dt>
-                                                    영어<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
-                                                    한덕현교수님
-                                                </dt>
-                                            </dl><br>
-                                            <div class="w-tit strong">2018 (교육행정대비) 9급 단원별 실전 동형모의고사 PACK</div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">일시정지기간</th>
-                                        <td class="w-data tx-left pl15">
-                                            <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30">&nbsp; ~&nbsp;
-                                            <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">&nbsp;
-                                            [변경수강기간] 2018.00.00~2018.00.00
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a></div>
-                            </div>
-                        </div>
-                        <div class="PASSZONE-Lec-Section">
-                            <div class="Search-Result strong mb15 tx-gray">· 일시정지 이력 <span class="w-info normal">( 잔여횟수 : <span class="strong tx-light-blue">1</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span> 잔여기간 : <span class="strong tx-light-blue">15</span>일 )</span></div>
-                            <div class="LeclistTable bdt-gray">
-                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 100px;">
-                                        <col style="width: 270px;">
-                                        <col style="width: 170px;">
-                                        <col style="width: 160px;">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>회차<span class="row-line">|</span></th>
-                                        <th>일시정지기간<span class="row-line">|</span></th>
-                                        <th>신청일자<span class="row-line">|</span></th>
-                                        <th>신청자</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="w-num">1차</td>
-                                        <td class="w-day">2018.00.00 ~ 2018.00.00</td>
-                                        <td class="w-modify-day">2018.00.00</td>
-                                        <td class="w-user">회원명</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-num">2차</td>
-                                        <td class="w-day">2018.00.00 ~ 2018.00.00</td>
-                                        <td class="w-modify-day">2018.00.00</td>
-                                        <td class="w-user">회원명</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">일시정지 이력이 없습니다.</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PASSZONE-List -->
-                </div>
-
-            </div>
+            <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
             <!-- willbes-Layer-PassBox : 일시정지 -->
 
-            <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs">
-                <a class="closeBtn" href="#none" onclick="closeWin('EXTRAPASS')">
-                    <img src="{{ img_url('sub/close.png') }}">
-                </a>
-                <div class="Layer-Tit tx-dark-black NG">수강연장</div>
-
-                <div class="lecMoreWrap">
-
-                    <div class="PASSZONE-List widthAutoFull">
-                        <ul class="passzoneInfo tx-gray NGR">
-                            <li class="tit strong">· 수강연장</li>
-                            <li class="txt">- 수강연장된 강의는 일시정지를 신청할 수 없습니다.</li>
-                            <li class="txt">- 강좌별로 <span class="tx-red">최대3회까지</span>만 가능하며, <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span></li>
-                            <li class="txt">- 수강연장은 종료일까지만 신청이 가능하며 5일단위(5일, 10일, 15일)로 신청할 수 있습니다.</li>
-                        </ul>
-                        <div class="PASSZONE-Lec-Section">
-                            <div class="Search-Result strong mt40 mb15 tx-gray">· 수강연장 신청</div>
-                            <div class="LeclistTable bdt-gray">
-                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 135px;">
-                                        <col style="width: 565px;">
-                                    </colgroup>
-                                    <tbody>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">강의정보</th>
-                                        <td class="w-data tx-left pl15">
-                                            <dl class="w-info strong">
-                                                <dt>
-                                                    영어<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
-                                                    한덕현교수님
-                                                </dt>
-                                            </dl><br>
-                                            <div class="w-tit strong">2018 (교육행정대비) 9급 단원별 실전 동형모의고사 PACK</div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                            </dl>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">연장일수</th>
-                                        <td class="w-data tx-left pl15">
-                                            <select id="day" name="day" title="day" class="seleDay" style="width: 60px; height: 20px;">
-                                                <option selected="selected">5일</option>
-                                                <option value="10일">10일</option>
-                                                <option value="15일">15일</option>
-                                                <option value="20일">20일</option>
-                                                <option value="25일">25일</option>
-                                                <option value="30일">30일</option>
-                                                <option value="35일">35일</option>
-                                                <option value="40일">40일</option>
-                                            </select>&nbsp; 일 &nbsp;
-                                            [연장수강종료일] 2018-00-00
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w-tit bg-light-white strong">결제금액</th>
-                                        <td class="w-data tx-left pl15">10,000원</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a></div>
-                            </div>
-                        </div>
-                        <div class="PASSZONE-Lec-Section">
-                            <div class="Search-Result strong mb15 tx-gray">· 수강연장 이력 <span class="w-info normal">( 잔여횟수 : <span class="strong tx-light-blue">1</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span> 잔여기간 : <span class="strong tx-light-blue">15</span>일 )</span></div>
-                            <div class="LeclistTable bdt-gray">
-                                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 100px;">
-                                        <col style="width: 270px;">
-                                        <col style="width: 170px;">
-                                        <col style="width: 160px;">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>회차<span class="row-line">|</span></th>
-                                        <th>연장수강 종료일(연장일수)<span class="row-line">|</span></th>
-                                        <th>신청일자<span class="row-line">|</span></th>
-                                        <th>신청자</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="w-num">1차</td>
-                                        <td class="w-day">2018.00.00(5일)</td>
-                                        <td class="w-modify-day">2018.00.00</td>
-                                        <td class="w-user">회원명</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-num">2차</td>
-                                        <td class="w-day">2018.00.00(5일)</td>
-                                        <td class="w-modify-day">2018.00.00</td>
-                                        <td class="w-user">회원명</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">수강연장 이력이 없습니다.</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PASSZONE-List -->
-                </div>
-
-            </div>
+            <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
             <!-- willbes-Layer-PassBox : 수강연장 -->
 
         </div>
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <form name="postForm" id="postForm" >
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="orderidx" id="orderidx" value="" />
+        <input type="hidden" name="prodcode" id="prodcode" value="" />
+        <input type="hidden" name="prodcodesub" id="prodcodesub" value="" />
+        <input type="hidden" name="prodtype" id="prodtype" value="" />
+    </form>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd').on('change', function (){
@@ -831,6 +650,50 @@
                     $(this).find('span a').text('유의사항안내 닫기 ▲');
                 }
             });
+        }
+
+        function fnPause(o, p, sp, t)
+        {
+            $("#STARTPASS").html('');
+            $('#orderidx').val(o);
+            $('#prodcode').val(p);
+            $('#prodcodesub').val(sp);
+            $('#prodtype').val(t);
+
+            url = "{{ site_url("/classroom/on/layerPause/") }}";
+            data = $('#postForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#STOPPASS").html(d).end();
+                    openWin('STOPPASS');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
+
+        function fnExtend(o, p, sp, t)
+        {
+            $("#STARTPASS").html('');
+            $('#orderidx').val(o);
+            $('#prodcode').val(p);
+            $('#prodcodesub').val(sp);
+            $('#prodtype').val(t);
+
+            url = "{{ site_url("/classroom/on/layerExtend/") }}";
+            data = $('#postForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#EXTRAPASS").html(d).end();
+                    openWin('EXTRAPASS');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
         }
     </script>
 @stop

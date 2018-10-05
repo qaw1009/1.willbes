@@ -9,7 +9,9 @@ class ClassroomFModel extends WB_Model
         'mylecture' => 'vw_on_mylecture',
         'mylecture_pkg' => 'vw_pkg_mylecture',
         'start_log' => 'lms_my_lecture_history',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'pause_log' => 'lms_lecture_pause_history',
+        'extend' => 'lms_lecture_extend'
     ];
 
 
@@ -183,8 +185,12 @@ class ClassroomFModel extends WB_Model
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
+
     /**
      * 수강시작일 변경
+     * @param $cond
+     * @param $startdate
+     * @return array|bool
      */
     public function setStartDate($cond, $startdate)
     {
@@ -273,4 +279,151 @@ class ClassroomFModel extends WB_Model
         return true;
     }
 
+
+    /**
+     * 일시중지 로그
+     * @param array $cond
+     * @param bool $isCount
+     * @return mixed
+     */
+    public function getPauseLog($cond = [], $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * , ifnull(PauseAdminIdx, '') AS Name 
+              ";
+        }
+
+        $query .= " FROM {$this->_table['pause_log']}  
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY LphIdx ASC ";
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+
+    /**
+     * 일시중지 처리
+     * @param $input
+     * @return array|bool
+     */
+    public function setPause($input)
+    {
+        $lecstartdate = element('lecstartdate', $input);
+        $realecexpireday = element('realecexpireday', $input);
+
+        $this->_conn->trans_begin();
+
+        try{
+            if(empty(element('ProdCodeSub', $input)) === true){
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+
+            } else {
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('ProdCodeSub', element('ProdCodeSub', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+            }
+
+
+            $input = [
+                'MemIdx' => element('MemIdx', $input),
+                'OrderIdx' => element('OrderIdx', $input),
+                'OrderProdIdx' => element('OrderProdIdx', $input),
+                'ProdCode' => element('ProdCode', $input),
+                'ProdCodeSub' => element('ProdCodeSub', $input),
+                'PauseStartDate' => element('pausestartdate', $input),
+                'PauseEndDate' => element('pauseenddate', $input),
+                'PauseDays' => element('pauseday', $input),
+                'PauseRegIp' => $this->input->ip_address(),
+                'Memo' => '사용자가 일시중지 등록'
+            ];
+
+            if($this->_conn->set($input)->insert($this->_table['pause_log']) === false){
+                throw new \Exception('로그기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function setRestartPause($input)
+    {
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

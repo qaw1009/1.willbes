@@ -227,7 +227,6 @@ class Regist extends \app\controllers\BaseController
                 ['field' => 'pin_issue_cnt', 'label' => '발급개수', 'rules' => 'trim|required|callback_validateRequiredIf[deploy_type,F]|integer'],
                 ['field' => 'apply_type_ccd', 'label' => '쿠폰적용구분', 'rules' => 'trim|required'],
                 ['field' => 'lec_type_ccd[]', 'label' => '쿠폰상세구분', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_lec_ccds) . ']'],
-                ['field' => 'apply_school_year', 'label' => '대비학년도', 'rules' => 'callback_validateRequiredIf[apply_range_type,I]|integer'],
                 ['field' => 'prod_code[]', 'label' => '상품선택', 'rules' => 'callback_validateRequiredIf[apply_range_type,P]|integer'],
                 ['field' => 'disc_rate', 'label' => '할인율', 'rules' => 'trim|required|integer'],
                 ['field' => 'disc_type', 'label' => '할인구분', 'rules' => 'trim|required|in_list[R,P]'],
@@ -242,7 +241,13 @@ class Regist extends \app\controllers\BaseController
         }
 
         if ($this->validate($rules) === false) {
-            return;
+            return null;
+        }
+        
+        // 적용범위가 항목별일 경우 대비학년도, 과정, 과목, 교수 중 하나 이상 등록 필수
+        if ($this->_reqP('apply_range_type') == 'I' && empty($this->_reqP('apply_school_year')) === true && empty($this->_reqP('apply_course_idx')) === true
+            && empty($this->_reqP('apply_subject_idx')) === true && empty($this->_reqP('apply_prof_idx')) === true) {
+            return $this->json_error('대비학년도, 과정, 과목, 교수 중 하나 이상의 필드를 입력해 주십시오.');
         }
 
         $result = $this->couponRegistModel->{$method . 'Coupon'}($this->_reqP(null, false));

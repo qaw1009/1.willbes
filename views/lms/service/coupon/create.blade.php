@@ -233,7 +233,7 @@
                     </label>
                     <div class="col-md-3 form-inline">
                         <div class="input-group mb-0 item">
-                            <input type="text" class="form-control datepicker" id="issue_start_date" name="issue_start_date" required="required" title="유효시작일자" value="{{ $data['IssueStartDate'] }}">
+                            <input type="text" class="form-control datepicker" id="issue_start_date" name="issue_start_date" required="required" title="유효시작일자" value="{{ $data['IssueStartDate'] or date('Y-m-d') }}">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <input type="text" class="form-control datepicker" id="issue_end_date" name="issue_end_date" required="required" title="유효종료일자" value="{{ $data['IssueEndDate'] }}">
                             <div class="input-group-addon no-border no-bgcolor"># 발급 유효기간</div>
@@ -392,6 +392,20 @@
             $regi_form.on('click', '.selected-category-delete, .selected-product-delete', function() {
                 var that = $(this);
                 that.parent().remove();
+            });
+
+            // 쿠폰유형 선택
+            $regi_form.on('ifChanged ifCreated', 'input[name="coupon_type_ccd"]:checked', function() {
+                if ($(this).val() === '644002') {
+                    // 수강권 선택
+                    $regi_form.find('input[name="disc_rate"]').prop('readonly', 'readonly');
+                    $regi_form.find('select[name="disc_type"] option[value="P"]').hide();
+                    $regi_form.find('input[name="disc_rate"]').val('100');
+                } else {
+                    $regi_form.find('input[name="disc_rate"]').prop('readonly', '');
+                    $regi_form.find('select[name="disc_type"] option[value="P"]').show();
+                    $regi_form.find('input[name="disc_rate"]').val($regi_form.find('input[name="disc_rate"]').prop('defaultValue'));
+                }
             });
 
             // 쿠폰배포루트 선택

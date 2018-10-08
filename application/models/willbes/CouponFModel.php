@@ -25,6 +25,9 @@ class CouponFModel extends WB_Model
     // 학습형태와 쿠폰상세구분 공통코드 맵핑 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)
     public $_coupon_lec_type_ccd = ['615001' => '646001', '615002' => '', '615003' => '646002', '615004' => '646003', '615005' => '', '615006' => '646004', '615007' => '646005'];
 
+    // 쿠폰적용구분이 온라인강좌, 수강연장, 배수, 학원강좌일 경우 쿠폰상세구분 적용 (학습형태)
+    public $_coupon_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004'];
+
     // 발급타입 공통코드 (자동, 수동, 환불재발급)
     private $_coupon_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'reissue' => '647003'];
 
@@ -152,20 +155,19 @@ class CouponFModel extends WB_Model
                 and C.IsStatus = "Y"                
                 and NOW() between CD.IssueDatm and CD.ExpireDatm    # 쿠폰 유효성 체크
                 and CD.ValidStatus = "Y"    
-                and CD.IsUse = "N"  # 미사용 쿠폰                            
-                and C.ApplyTypeCcd = ?   # 상품분류 구분                     
-                and C.DiscAllowPrice <= ?    # 할인허용가능금액            
+                and CD.IsUse = "N"  # 미사용 쿠폰                                                
+                and C.DiscAllowPrice <= ?    # 할인허용가능금액          
+                and C.ApplyTypeCcd = ?   # 쿠폰적용구분 (상품분류)
+                and (      
+                    case    # 쿠폰상세구분 (학습형태) 
+                        when find_in_set(C.ApplyTypeCcd, "' . implode(',', $this->_coupon_apply_type_to_lec_ccds) . '") > 0 then if(C.LecTypeCcds like ?, "Y", "N")
+                        else "Y"
+                    end    				    		
+                ) = "Y"                                       
                 and (                
                     case C.ApplyRangeType   # 적용범위
                         when "A" then "Y"
-                        when "I" then 
-                            (case 
-                                when C.ApplySchoolYear = ? and C.ApplyCourseIdx = 0 and C.ApplySubjectIdx = 0 and C.ApplyProfIdx = 0 then "Y" 
-                                when C.ApplySchoolYear = ? and C.ApplyCourseIdx = ? and C.ApplySubjectIdx = 0 and C.ApplyProfIdx = 0 then "Y"
-                                when C.ApplySchoolYear = ? and C.ApplyCourseIdx = ? and C.ApplySubjectIdx = ? and C.ApplyProfIdx = 0 then "Y"
-                                when C.ApplySchoolYear = ? and C.ApplyCourseIdx = ? and C.ApplySubjectIdx = ? and C.ApplyProfIdx = ? then "Y"
-                                else "N"
-                            end)
+                        when "I" then fn_coupon_item_validate(C.ApplySchoolYear, C.ApplyCourseIdx, C.ApplySubjectIdx, C.ApplyProfIdx, ?, ?, ?, ?)
                         when "P" then if(CP.ProdCodes like ?, "Y", "N")
                         else "N"
                     end			
@@ -174,15 +176,10 @@ class CouponFModel extends WB_Model
         // binding 배열
         $arr_binding = [
             $this->session->userdata('mem_idx'),
-            element('ApplyTypeCcd', $arr_param),
             element('RealSalePrice', $arr_param),   // 상품 실제판매가격
-            element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-1)
-            element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-2)
-            element('CourseIdx', $arr_param),
-            element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-3)
-            element('CourseIdx', $arr_param),
-            element('SubjectIdx', $arr_param),
-            element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I-4)
+            element('ApplyTypeCcd', $arr_param),    // 쿠폰적용구분 (상품분류)
+            '%' . element('LecTypeCcd', $arr_param) . '%',  // 쿠폰상세구분 (학습형태)
+            element('SchoolYear', $arr_param),  // ApplyRangeType : 항목별 (I)
             element('CourseIdx', $arr_param),
             element('SubjectIdx', $arr_param),
             element('ProfIdx', $arr_param),
@@ -197,9 +194,8 @@ class CouponFModel extends WB_Model
                 'C.CouponTypeCcd' => element('CouponTypeCcd', $arr_param)
             ],  // 사이트코드, 사용자쿠폰식별자, 쿠폰유형
             'LKB' => [
-                'C.LecTypeCcds' => element('LecTypeCcd', $arr_param), 
                 'CC.CateCodes' => substr(element('CateCode', $arr_param), 0, 4)
-            ]  // 학습형태구분, 카테고리코드
+            ]  // 카테고리코드
         ];
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);

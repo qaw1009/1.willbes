@@ -247,7 +247,7 @@ class Regist extends \app\controllers\BaseController
         ];
 
         $order_idx = '63';      //임의 생성한 주문식별자
-        $order_idx = '96';      //임의 생성한 주문식별자
+        //$order_idx = '96';      //임의 생성한 주문식별자
 
         $result = $this->readingRoomModel->testAddSeat($arr_input, $order_idx);
         print_r($result);

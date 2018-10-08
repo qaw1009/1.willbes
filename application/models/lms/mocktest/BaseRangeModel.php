@@ -56,6 +56,7 @@ class BaseRangeModel extends WB_Model
                 'QuestionArea' => $this->input->post('questionArea', true),
                 'IsUse' => $this->input->post('isUse'),
                 'RegIp' => $this->input->ip_address(),
+                'RegDatm' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
             );
             $this->_conn->insert($this->_table['mockArea'], $data);
@@ -69,6 +70,7 @@ class BaseRangeModel extends WB_Model
                     'MrsIdx' => $it,
                     'MaIdx' => $nowMaIdx,
                     'RegIp' => $this->input->ip_address(),
+                    'RegDatm' => date("Y-m-d H:i:s"),
                     'RegAdminIdx' => $this->session->userdata('admin_idx'),
                 );
                 $this->_conn->insert($this->_table['mockAreaCate'], $data);
@@ -117,21 +119,34 @@ class BaseRangeModel extends WB_Model
 
     /**
      * 문제영역, 출제챕터 조회
+     *
+     * (주의) lms_Mock_R_Category에 등록된 카테고리 상태가 Y라도 상위의 lms_Mock_R_Subject, lms_sys_Subject에서 사용불가상태일 경우 표시안됨
      */
     public function getMockArea($idx)
     {
         if (!preg_match('/^[0-9]+$/', $idx)) return false;
 
-        $data = $this->_conn->get_where($this->_table['mockArea'], array('MaIdx' => $idx))->row_array();
+        $where = array('MaIdx' => $idx, 'IsStatus' => 'Y');
+
+        // 기본정보
+        $data = $this->_conn->get_where($this->_table['mockArea'], $where)->row_array();
         if(empty($data)) return false;
 
         // 챕터리스트
-        $chData = $this->_conn->order_by('OrderNum ASC')->get_where($this->_table['mockAreaList'], array('MaIdx' => $idx))->result_array();
+        $chData = $this->_conn->order_by('OrderNum ASC')->get_where($this->_table['mockAreaList'], $where)->result_array();
 
-        // 모의고사 카테고리 링크테이블
-        $moCateLink = $this->_conn->select('MrsIdx')->get_where($this->_table['mockAreaCate'], array('MaIdx' => $idx))->result_array();
+        // 등록된 모의고사 카테고리 로드
+        $moCate = array();
+        $moCateLink = $this->_conn->select('MrsIdx')->get_where($this->_table['mockAreaCate'], $where)->result_array();
+        if($moCateLink) {
+            $condition = [
+                'IN' => ['MS.MrsIdx' => array_column($moCateLink, 'MrsIdx')]
+            ];
+            $moCate = $this->mockCommonModel->moCateList($condition, '', '', false);
+            $moCate = array_column($moCate, 'CateRouteName', 'MrsIdx');
+        }
 
-        return array($data, $chData, $moCateLink);
+        return array($data, $chData, $moCate);
     }
 
 

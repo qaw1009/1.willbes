@@ -251,7 +251,7 @@ class BaseCode extends \app\controllers\BaseController
             ],
             'ORG' => [
                 'LKB' => [
-                    'SJ.SubjectName' => $this->input->post('sc_fi')
+                    'SJ.SubjectName' => $this->input->post('sc_fi', true)
                 ]
             ],
         ];

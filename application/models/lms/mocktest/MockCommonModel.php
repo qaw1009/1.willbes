@@ -46,12 +46,12 @@ class MockCommonModel extends WB_Model
         if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(true);
 
-        $offset_limit = ($limit && $offset) ? "LIMIT $offset, $limit" : "";
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "\nLIMIT $offset, $limit" : "";
 
         $select = "
             SELECT MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode, C2.CateCode,
                    S.SiteName, C1.CateName, C2.CateName, SJ.SubjectName,
-                   CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', C2.CateName, ' > ', SJ.SubjectName) AS CateRouteName";
+                   CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', C2.CateName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']') AS CateRouteName";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $from = "
             FROM {$this->_table['mockSubject']} AS MS
@@ -63,7 +63,7 @@ class MockCommonModel extends WB_Model
             JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
             WHERE MS.IsStatus = 'Y' AND MS.IsUse = 'Y' $where
         ";
-        $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC, SJ.OrderNum";
+        $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC, SJ.OrderNum ASC, MS.SubjectType ASC";
 
         $data = $this->_conn->query($select . $from . $order . $offset_limit)->result_array();
         if($useCount) $count = $this->_conn->query($selectCount . $from)->row()->cnt;

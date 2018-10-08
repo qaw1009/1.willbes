@@ -16,7 +16,7 @@
             </div>
             <div>
                 <div class="panel panel-default">
-                    <div class="panel-body" style="min-height:60px; max-height: 120px; overflow-y: auto;">
+                    <div class="panel-body" style="min-height:60px; max-height: 120px; padding:0; padding-top: 10px; padding-bottom: 5px; overflow-y: auto;">
                         <ul id="_selected_category" class="list-unstyled mb-0">
                         </ul>
                     </div>
@@ -82,12 +82,12 @@
                                     var code = row.MrsIdx;
                                     var checked = ($ori_selected_data.hasOwnProperty(code) === true) ? 'checked="checked"' : '';
 
-                                    return '<input type="checkbox" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '/>';
-                                }},
+                                    return '<input type="checkbox" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '>';
+                            }},
                             {'data' : 'CateRouteName'},
                             {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                                     return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                                }},
+                            }},
                             {'data' : 'wAdminName', 'class': 'text-center'},
                             {'data' : 'RegDatm', 'class': 'text-center'}
                         ]
@@ -128,7 +128,7 @@
                         var code, route_name, html = '';
 
                         if ($selected_category.html().trim() === '') {
-                            alert('선택된 카테고리 정보가 없습니다.')
+                            alert('선택된 카테고리 정보가 없습니다.');
                             return;
                         }
 
@@ -142,7 +142,7 @@
 
                             html += '<div class="col-xs-4 pb-5">' + route_name;
                             html += '   <a href="#none" data-cate-code="' + code + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
-                            html += '   <input type="hidden" name="moLink[]" value="' + code + '"/>';
+                            html += '   <input type="hidden" name="moLink[]" value="' + code + '">';
                             html += '</div>';
                         });
                         $parent_selected_category.html(html);

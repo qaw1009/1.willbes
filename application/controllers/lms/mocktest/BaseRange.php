@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseRange extends \app\controllers\BaseController
 {
-    protected $models = array('sys/category', 'product/base/subject', 'mocktest/mockCommon', 'mocktest/baseCode', 'mocktest/baseRange');
+    protected $models = array('sys/category', 'product/base/subject', 'mocktest/mockCommon', 'mocktest/baseRange');
     protected $helpers = array();
 
     public function __construct()
@@ -80,17 +80,10 @@ class BaseRange extends \app\controllers\BaseController
      */
     public function edit($param = [])
     {
-        list($data, $chData, $moCateLink) = $this->baseRangeModel->getMockArea($param[0]);
+        list($data, $chData, $moCate) = $this->baseRangeModel->getMockArea($param[0]);
         if (!$data) {
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
-        }
-
-        if($moCateLink) { // 등록된 모의고사 카테고리 이름 로드
-            $condition = [
-                'IN' => ['MS.MrsIdx' => array_column($moCateLink, 'MrsIdx')]
-            ];
-            $moCate = $this->mockCommonModel->moCateList($condition, '', '', false);
         }
 
         $this->load->view('mocktest/base/range/create', [
@@ -98,7 +91,7 @@ class BaseRange extends \app\controllers\BaseController
             'method' => 'PUT',
             'data' => $data,
             'chData' => $chData,
-            'moCate' => isset($moCate) ? array_column($moCate, 'CateRouteName', 'MrsIdx') : '',
+            'moCate' => $moCate,
             'adminName' => $this->mockCommonModel->getAdminNames(),
         ]);
     }

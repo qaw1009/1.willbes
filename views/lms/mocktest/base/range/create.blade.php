@@ -17,7 +17,7 @@
                         <th colspan="1">운영사이트 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             {!! html_site_select($siteCodeDef, 'site_code', 'siteCode', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '') !!}
-                            <span class="ml-20">최종 저장 후 운영사이트, 모의고사카테고리 정보는 수정이 불가능합니다.</span>
+                            <span class="ml-20">저장 후 운영사이트, 모의고사카테고리 정보는 수정이 불가능합니다.</span>
                         </td>
                     </tr>
                     <tr>
@@ -193,13 +193,18 @@
 
                 $('.act-searchCate').setLayer({
                     'url' : '{{ site_url() }}' + 'mocktest/baseCode/moCate/?siteCode=' + $('[name=siteCode]').val(),
-                    'width' : 900
+                    'width' : 1100
                 });
             });
 
             // 선택 카테고리 삭제
             $('#selected_category').on('click', '.selected-category-delete', function () {
                 $(this).closest('div').remove();
+            });
+
+            // 운영사이트 변경시 카테고리 선택 초기화
+            $('[name=siteCode]').on('change', function () {
+                $('#selected_category').empty();
             });
 
             // 목록 이동
@@ -236,7 +241,9 @@
 
             // 챕터필드 삭제
             $regi_sub_form.on('click', '.addRow-del', function () {
-                if (!confirm("삭제는 저장시 적용됩니다.\n삭제 대기목록에 추가하시겠습니까?")) return false;
+                if( $(this).closest('tr').find('[name="areaName[]"]').val() ) {
+                    if (!confirm("삭제는 저장시 적용됩니다.\n삭제 대기목록에 추가하시겠습니까?")) return false;
+                }
 
                 var cIDX = $(this).closest('tr').data('chapter-idx');
 

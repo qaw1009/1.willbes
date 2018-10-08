@@ -46,14 +46,16 @@ class Book extends \app\controllers\BaseController
             'EQ' => [
                 'P.SiteCode' => $this->_reqP('search_site_code'),
                 'BC.CateCode' => $this->_reqP('search_md_cate_code'),
-                'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
-                'B.ProfIdx' => $this->_reqP('search_prof_idx'),
                 'P.IsUse' => $this->_reqP('search_is_use'),
                 'VWB.wIsUse' => $this->_reqP('search_w_is_use'),
                 'VWB.wSaleCcd' => $this->_reqP('search_sale_ccd'),
             ],
             'LKR' => [
                 'BC.CateCode' => $this->_reqP('search_lg_cate_code'),
+            ],
+            'LKB' => [
+                'BPS.SubjectIdxs' => $this->_reqP('search_subject_idx'),
+                'BPS.ProfIdxs' => $this->_reqP('search_prof_idx'),
             ],
             'ORG1' => [
                 'LKB' => [
@@ -106,11 +108,12 @@ class Book extends \app\controllers\BaseController
             $arr_book_category = $this->bookModel->listBookCategory($idx);
             $data['CateCode'] = key($arr_book_category);
             $data['CateRouteName'] = current($arr_book_category);
+
+            // 과목/교수 연결 데이터 조회
+            $data['ProfSubject'] = $this->bookModel->listBookProfessorSubject($idx);
         }
 
         $arr_course = $this->courseModel->getCourseArray();
-        $arr_subject = $this->subjectModel->getSubjectArray();
-        $arr_professor = $this->professorModel->getProfessorArray();
 
         $this->load->view('bms/book/create', [
             'method' => $method,
@@ -118,9 +121,7 @@ class Book extends \app\controllers\BaseController
             'data' => $data,
             'arr_disp_type_ccd' => $this->codeModel->getCcd($this->_ccd['DispType']),
             'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
-            'arr_course' => $arr_course,
-            'arr_subject' => $arr_subject,
-            'arr_professor' => $arr_professor,
+            'arr_course' => $arr_course
         ]);
     }
 
@@ -132,8 +133,7 @@ class Book extends \app\controllers\BaseController
         $rules = [
             ['field' => 'school_year', 'label' => '대비학년도', 'rules' => 'trim|required'],
             ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required|integer'],
-            ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
-            ['field' => 'prof_idx', 'label' => '교수', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_subject_idx[]', 'label' => '과목/교수 정보', 'rules' => 'trim|required'],
             ['field' => 'book_name', 'label' => '교재명', 'rules' => 'trim|required'],
             ['field' => 'disp_type_ccd', 'label' => '노출위치', 'rules' => 'trim|required'],
             ['field' => 'is_free', 'label' => '무료여부', 'rules' => 'trim|required|in_list[Y,N]'],

@@ -83,8 +83,7 @@
                     <th>운영사이트</th>
                     <th>대분류</th>
                     <th>중분류</th>
-                    <th>과목</th>
-                    <th>교수</th>
+                    <th>과목/교수정보</th>
                     <th>교재코드</th>
                     <th>교재명</th>
                     <th>출판사</th>
@@ -135,8 +134,9 @@
                     {'data' : 'SiteName'},
                     {'data' : 'BCateName'},
                     {'data' : 'MCateName'},
-                    {'data' : 'SubjectName'},
-                    {'data' : 'wProfName'},
+                    {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {
+                        return data.replace(/,/g, '<br/>');
+                    }},
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u class="blue">' + data + '</u></a>';

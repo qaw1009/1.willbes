@@ -98,7 +98,7 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 카테고리 + 과목 매핑 데이터 조회
+     * 교수별 카테고리 + 과목 매핑 데이터 조회
      * @param $prof_idx
      * @return array
      */
@@ -138,7 +138,7 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 카테고리 + 과목 + 교수별 게시판 답변현황 매핑 데이터 조회
+     * 카테고리 + 과목 + 교수별 게시판 답변현황 매핑 데이터 조회
      * @param $is_count
      * @param $arr_condition
      * @param $bm_idx
@@ -202,6 +202,55 @@ class ProfessorModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 카테고리별 과목/교수 데이터 조회
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSearchProfessorSubjectMapping($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                PSC.PcIdx, PSC.ProfIdx, PF.SiteCode, PSC.CateCode, PSC.SubjectIdx, WP.wProfName, PS.SubjectName
+                    , concat(PSC.ProfIdx, "_", PSC.SubjectIdx) as ProfSubjectIdx, concat(PS.SubjectName, ">", WP.wProfName) as ProfSubjectName
+                    , PSC.RegDatm, PSC.RegAdminIdx, A.wAdminName as RegAdminName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['professor_r_subject_r_category'] . ' as PSC
+                inner join ' . $this->_table['professor'] . ' as PF
+                    on PSC.ProfIdx = PF.ProfIdx
+                inner join ' . $this->_table['pms_professor'] . ' as WP
+                    on PF.wProfIdx = WP.wProfIdx
+                inner join ' . $this->_table['subject'] . ' as PS
+                    on PSC.SubjectIdx = PS.SubjectIdx		
+                left join ' . $this->_table['admin'] . ' as A 	
+                    on PSC.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y" 
+            where PSC.IsStatus = "Y"
+                and PF.IsUse = "Y" and PF.IsStatus = "Y"
+                and WP.wIsUse = "Y" and WP.wIsStatus = "Y"	
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"                               
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -630,7 +679,7 @@ class ProfessorModel extends WB_Model
      * @param $prof_idx
      * @return bool|string
      */
-    private function _attachProfessorImg($arr_attach_refer = [], $arr_attach_value = [], $prof_idx)
+    private function _attachProfessorImg($arr_attach_refer, $arr_attach_value, $prof_idx)
     {
         try {
             $this->load->library('upload');
@@ -706,11 +755,10 @@ class ProfessorModel extends WB_Model
      */
     private function _replaceProfessorSubjectMapping($arr_subject_mapping_code, $prof_idx)
     {
-        $_table_key = 'professor_r_subject_r_category';
+        $_table = $this->_table['professor_r_subject_r_category'];
         $_arr_condition = ['ProfIdx' => $prof_idx, 'IsStatus' => 'Y'];
 
         try {
-            $_table = $this->_table[$_table_key];
             $arr_subject_mapping_code = (is_null($arr_subject_mapping_code) === true) ? [] : array_values(array_unique($arr_subject_mapping_code));
             $admin_idx = $this->session->userdata('admin_idx');
 
@@ -807,25 +855,20 @@ class ProfessorModel extends WB_Model
      */
     public function getProfessorSubjectArray($prof_idx)
     {
-        $column = '
-            S.SubjectIdx, PS.SubjectName
-        ';
+        $column = 'S.SubjectIdx, PS.SubjectName';
 
         $from = '
             FROM (
                 SELECT SubjectIdx
-                FROM lms_professor_r_subject_r_category
+                FROM ' . $this->_table['professor_r_subject_r_category'] . '
                 WHERE ProfIdx = "'.$prof_idx.'" AND IsStatus = "Y"
                 GROUP BY SubjectIdx
             ) AS S
-            INNER JOIN lms_product_subject AS PS ON S.SubjectIdx = PS.SubjectIdx
-        ';
+            INNER JOIN ' . $this->_table['subject'] . ' AS PS ON S.SubjectIdx = PS.SubjectIdx';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from);
-        $result = $query->result_array();
+        $result = $this->_conn->query('select ' . $column . $from)->result_array();
 
-        $data = array_pluck($result, 'SubjectName', 'SubjectIdx');
-        return $data;
+        return array_pluck($result, 'SubjectName', 'SubjectIdx');
     }
 }

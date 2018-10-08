@@ -20,6 +20,7 @@ class CouponRegistModel extends WB_Model
         'LecType' => '646',
         'IssueType' => '647'
     ];
+    public $_coupon_type_ccd = ['coupon' => '644001', 'voucher' => '644002'];   // 쿠폰유형 (할인권, 수강권)
     public $_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004']; // 온라인강좌, 수강연장, 배수, 학원강좌
     public $_apply_type_to_range_ccds = ['645001', '645002', '645003', '645004', '645005']; // 온라인강좌, 수강연장, 배수, 학원강좌, 교재
     public $_apply_type_to_mock_ccd = '645007'; // 모의고사
@@ -245,6 +246,7 @@ class CouponRegistModel extends WB_Model
 
         try {
             $cate_code = element('cate_code', $input);
+            $coupon_type_ccd = element('coupon_type_ccd', $input);
             $deploy_type = element('deploy_type', $input);
             $pin_type = ($deploy_type == 'F') ? element('pin_type', $input) : 'N';
             $pin_issue_cnt = ($deploy_type == 'F') ? element('pin_issue_cnt', $input) : 0;
@@ -256,10 +258,19 @@ class CouponRegistModel extends WB_Model
             $apply_course_idx = ($apply_range_type == 'I') ? element('apply_course_idx', $input) : '';
             $apply_prof_idx = ($apply_range_type == 'I') ? element('apply_prof_idx', $input) : '';
 
+            // 쿠폰유형이 수강권일 경우 할인율 100%로 고정
+            if ($coupon_type_ccd == $this->_coupon_type_ccd['voucher']) {
+                $disc_type = 'R';
+                $disc_rate = '100';
+            } else {
+                $disc_type = element('disc_type', $input);
+                $disc_rate = element('disc_rate', $input);
+            }
+
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CouponName' => element('coupon_name', $input),
-                'CouponTypeCcd' => element('coupon_type_ccd', $input),
+                'CouponTypeCcd' => $coupon_type_ccd,
                 'PinType' => $pin_type,
                 'PinIssueCnt' => $pin_issue_cnt,
                 'DeployType' => $deploy_type,
@@ -270,8 +281,8 @@ class CouponRegistModel extends WB_Model
                 'ApplySubjectIdx' => $apply_subject_idx,
                 'ApplyCourseIdx' => $apply_course_idx,
                 'ApplyProfIdx' => $apply_prof_idx,
-                'DiscType' => element('disc_type', $input),
-                'DiscRate' => element('disc_rate', $input),
+                'DiscType' => $disc_type,
+                'DiscRate' => $disc_rate,
                 'DiscAllowPrice' => element('disc_allow_price', $input),
                 'IssueStartDate' => element('issue_start_date', $input),
                 'IssueEndDate' => element('issue_end_date', $input),

@@ -160,7 +160,13 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
-            INNER JOIN {$this->_table['lms_order_product']} AS d ON a.SubProdCode = d.ProdCode
+            INNER JOIN (
+                SELECT temp_b.ProdCode, temp_b.PayStatusCcd, temp_b.RealPayPrice
+                FROM {$this->_table['lms_order']} AS temp_a
+                INNER JOIN {$this->_table['lms_order_product']} temp_b ON temp_a.OrderIdx = temp_b.OrderIdx AND temp_a.PayRouteCcd = '{$this->_sub_order_route_ccd}'
+                GROUP BY temp_b.ProdCode
+            ) AS d ON a.SubProdCode = d.ProdCode
+            
             INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
         ";
@@ -513,15 +519,8 @@ class ReadingRoomModel extends BaseReadingRoomModel
             
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
-            
-            INNER JOIN (
-                SELECT temp_c.RrudIdx, temp_c.MasterOrderIdx, temp_c.NowOrderIdx, temp_c.UseStartDate, temp_c.UseEndDate, temp_c.StatusCcd, temp_c.RegDatm, temp_c.RegAdminIdx, temp_c.NowMIdx
-                FROM {$this->_table['readingRoom_useDetail']} AS temp_c
-                INNER JOIN {$this->_table['readingRoom_mst']} AS temp_d ON temp_c.MasterOrderIdx = temp_d.MasterOrderIdx 
-                WHERE temp_d.StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
-            ) AS c ON b.OrderIdx = c.NowOrderIdx
-            
+            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'            
+            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx            
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             INNER JOIN (
                 SELECT temp_b.ProdCode, temp_b.PayStatusCcd
@@ -566,13 +565,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $this->_conn->trans_begin();
         try {
             //좌석검증, 조회
-            $arr_condition = [
-                'NOT' => [
-                    'c.StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
-                ],
-                'RAW' => ['(c.UseStartDate <= "' => date('Y-m-d') . '" AND c.UseEndDate > "' . date('Y-m-d') . '")']
-            ];
-            $data = $this->findReadingRoomForModify($input['now_order_idx'], $arr_condition);
+            $data = $this->findReadingRoomForModify($input['now_order_idx']);
             if (empty($data) === true) {
                 throw new \Exception('조회된 좌석정보가 없습니다.');
             }
@@ -582,9 +575,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type].' 좌석 수정에 실패했습니다.');
             }
 
-            //좌석관리현황테이블 데이터 등록,수정
-            if ($this->_modifyReadingRoomDetail($input, $data) !== true) {
-                throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type].' 좌석 수정에 실패했습니다.');
+            //기존 좌석 이동할 경우 좌석관리현황테이블 데이터 등록,수정
+            if ($data['SerialNumber'] != $input['set_seat']) {
+                if ($this->_modifyReadingRoomDetail($input, $data) !== true) {
+                    throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type] . ' 좌석 수정에 실패했습니다.');
+                }
             }
 
             $this->_conn->trans_commit();
@@ -609,9 +604,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 'EQ' => [
                     'NowOrderIdx' => $input['now_order_idx'],
                     'LrIdx' => $input['lr_idx'],
-                    'SerialNumber' => $input['now_seat_num'],
-                    'StatusCcd' => $this->_arr_reading_room_status_ccd['Y']
-                ]
+                    'SerialNumber' => $input['now_seat_num']
+                ],
+                'NOT' => [
+                    'StatusCcd' => $this->_arr_reading_room_status_ccd['N']
+                ],
             ];
             $now_seat_data = $this->_getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd');
             if (empty($now_seat_data['SerialNumber']) === true) {
@@ -622,8 +619,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             $arr_where = [
                 'NowOrderIdx' => $input['now_order_idx'],
                 'LrIdx' => $input['lr_idx'],
-                'SerialNumber' => $input['now_seat_num'],
-                'StatusCcd' => $this->_arr_reading_room_status_ccd['Y']
+                'SerialNumber' => $input['now_seat_num']
             ];
             $update_data = [
                 'MasterOrderIdx' => null,

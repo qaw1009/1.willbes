@@ -9,7 +9,8 @@ class SiteCode
         'Campus' => '605',
         'Pg' => '603',
         'PayMethod' => '604',
-        'DeliveryComp' => '606'
+        'DeliveryComp' => '606',
+        'MailDomain' => '103'
     ];
 
     public function __construct()
@@ -52,6 +53,22 @@ class SiteCode
         $idx = null;
         $data = null;
 
+        // 사이트 그룹코드 조회
+        $site_group_codes = $this->_CI->siteGroupModel->getSiteGroupArray();
+
+        // 사용하는 코드값 조회
+        // 사이트 타입, PG사, 택배사 코드 조회
+        $codes = $this->_CI->codeModel->getCcdInArray([$this->_ccd['SiteType'], $this->_ccd['Pg'], $this->_ccd['DeliveryComp']]);
+
+        // 캠퍼스 코드 조회 (캠퍼스 코드가 '전체' 코드인 값 제외)
+        $codes[$this->_ccd['Campus']] = $this->_CI->codeModel->getCcd($this->_ccd['Campus'], '', ['NOT' => ['Ccd' => $this->_CI->codeModel->campusAllCcd]]);
+
+        // 결제방법 코드 조회 (PG사 사용 결제방법만 조회)
+        $codes[$this->_ccd['PayMethod']] = $this->_CI->codeModel->getCcd($this->_ccd['PayMethod'], '', ['RAW' => ['json_value(CcdEtc, "$.is_pg") = ' => '"Y"']]);
+
+        // 메일 도메인 코드 조회 (WBS 공통코드 조회)
+        $codes[$this->_ccd['MailDomain']] = $this->_CI->wCodeModel->getCcd($this->_ccd['MailDomain']);
+
         if (empty($params[1]) === false) {
             $method = 'PUT';
             $idx = $params[1];
@@ -66,29 +83,19 @@ class SiteCode
 
             $data['SiteMailId'] = substr($data['UseMail'], 0, strpos($data['UseMail'], '@'));
             $data['SiteMailDomain'] = substr($data['UseMail'], strpos($data['UseMail'], '@') + 1);
-            $data['SiteMailDomainCcd'] = (empty($codes['103'][$data['SiteMailDomain']]) === true) ? '' : $data['SiteMailDomain'];
         }
-
-        // 사이트 그룹코드 조회
-        $site_group_codes = $this->_CI->siteGroupModel->getSiteGroupArray();
-
-        // 사용하는 코드값 조회
-        $add_condition = ['NOT' => ['Ccd' => $this->_CI->codeModel->campusAllCcd]];                     // 캠퍼스 코드가 '전체' 코드인 값 제외
-        $codes = $this->_CI->codeModel->getCcdInArray(array_values($this->_ccd), '', $add_condition);
-
-        $mail_domain_ccd = $this->_CI->wCodeModel->getCcd('103');
 
         $this->_CI->load->view('sys/site/create', [
             'method' => $method,
             'idx' => $idx,
             'data' => $data,
-            'mail_domain_ccd' => $mail_domain_ccd,
+            'site_group_codes' => $site_group_codes,
+            'mail_domain_ccd' => element($this->_ccd['MailDomain'], $codes),
             'site_type_ccd' => element($this->_ccd['SiteType'], $codes),
             'campus_ccd' => element($this->_ccd['Campus'], $codes),
-            'site_group_codes' => $site_group_codes,
             'pg_ccd' => element($this->_ccd['Pg'], $codes),
             'pay_method_ccd' => element($this->_ccd['PayMethod'], $codes),
-            'delivery_comp_ccd' => element($this->_ccd['DeliveryComp'], $codes),
+            'delivery_comp_ccd' => element($this->_ccd['DeliveryComp'], $codes)
         ]);
     }
 

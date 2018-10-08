@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
-    @include('willbes.pc.layouts.partial.site_tab_menu')
+    @include('willbes.pc.layouts.partial.site_menu')
     <div class="Depth">
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>

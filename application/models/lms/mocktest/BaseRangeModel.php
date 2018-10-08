@@ -10,9 +10,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BaseRangeModel extends WB_Model
 {
     private $_table = [
+        'admin' => 'wbs_sys_admin',
         'mockArea' => 'lms_mock_area',
-        'mockAreaCate' => 'lms_Mock_R_Category',
         'mockAreaList' => 'lms_mock_area_list',
+        'mockAreaCate' => 'lms_Mock_R_Category',
     ];
 
     public function __construct()
@@ -22,29 +23,21 @@ class BaseRangeModel extends WB_Model
 
     /**
      * 메인리스트
+     *
+     * 영역수 : 사용,미사용 포함 전체갯수
      */
     public function list()
     {
-//        $in = "('". implode("', '", array_values(get_auth_site_codes())) ."')"; // 사이트 접근권한
-//        $sql = "
-//            SELECT M.*, S.SiteName,
-//                   C1.CateCode AS gCateCode, C1.CateName AS gCateName, C1.CateDepth AS gCateDepth, C1.OrderNum AS gOrderNum, C1.IsUse AS gIsUse,
-//                   C2.CateCode AS mCateCode, C2.CateName AS mCateName, C2.CateDepth AS mCateDepth, C2.OrderNum AS mOrderNum, C2.IsUse AS mIsUse,
-//                   GREATEST(C1.CateDepth, IFNULL(C2.CateDepth, 0)) as LastCateDepth
-//            FROM {$this->_table['site']} AS S
-//            JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
-//            LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y' AND C2.IsUse = 'Y'
-//            RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C2.CateCode  AND M.IsStatus = 'Y'
-//            WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
-//            ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC";
-
         $sql = "
-            SELECT B.*, COUNT(*) AS ListCnt
-            FROM {$this->_table['mockArea']} AS B
-            JOIN {$this->_table['mockAreaList']} AS L ON B.MaIdx = L.MaIdx AND L.IsStatus = 'Y'
-            WHERE B.IsStatus = 'Y'
-            GROUP BY B.MaIdx
+            SELECT MB.*, COUNT(*) AS ListCnt, MC.MrsIdx, A.wAdminName
+            FROM {$this->_table['mockArea']} AS MB
+            JOIN {$this->_table['mockAreaList']} AS ML ON MB.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y'
+            JOIN {$this->_table['mockAreaCate']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
+            JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
+            WHERE MB.IsStatus = 'Y'
+            GROUP BY MB.MaIdx
         ";
+
         return $this->_conn->query($sql)->result_array();
     }
 
@@ -70,8 +63,8 @@ class BaseRangeModel extends WB_Model
             $nowMaIdx = $this->_conn->insert_id();
 
             // 관련 카테고리 저장 (lms_Mock_R_Category)
-            $mCate = array_filter($this->input->post('mCate'));
-            foreach ($mCate as $it) {
+            $moLink = array_filter($this->input->post('moLink'));
+            foreach ($moLink as $it) {
                 $data = array(
                     'MrsIdx' => $it,
                     'MaIdx' => $nowMaIdx,
@@ -132,9 +125,13 @@ class BaseRangeModel extends WB_Model
         $data = $this->_conn->get_where($this->_table['mockArea'], array('MaIdx' => $idx))->row_array();
         if(empty($data)) return false;
 
-        $cData = $this->_conn->order_by('OrderNum ASC')->get_where($this->_table['mockAreaList'], array('MaIdx' => $idx))->result_array();
+        // 챕터리스트
+        $chData = $this->_conn->order_by('OrderNum ASC')->get_where($this->_table['mockAreaList'], array('MaIdx' => $idx))->result_array();
 
-        return array($data, $cData);
+        // 모의고사 카테고리 링크테이블
+        $moCateLink = $this->_conn->select('MrsIdx')->get_where($this->_table['mockAreaCate'], array('MaIdx' => $idx))->result_array();
+
+        return array($data, $chData, $moCateLink);
     }
 
 
@@ -147,7 +144,7 @@ class BaseRangeModel extends WB_Model
 
         if( !empty($this->input->post('chapterIdx')) ) {
             foreach ($this->input->post('chapterIdx') as $k => $v) {
-                if (!$v) { // 신규등록 데이터
+                if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) { // 신규등록 데이터
                     $dataReg[] = array(
                         'MaIdx' => $this->input->post('idx'),
                         'AreaName' => $this->security->xss_clean($_POST['areaName'][$k]),

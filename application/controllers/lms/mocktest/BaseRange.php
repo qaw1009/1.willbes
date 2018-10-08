@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseRange extends \app\controllers\BaseController
 {
-    protected $models = array('sys/category', 'product/base/subject', 'mocktest/baseCode', 'mocktest/baseRange');
+    protected $models = array('sys/category', 'product/base/subject', 'mocktest/mockCommon', 'mocktest/baseCode', 'mocktest/baseRange');
     protected $helpers = array();
 
     public function __construct()
@@ -31,13 +31,15 @@ class BaseRange extends \app\controllers\BaseController
             else $cateD2[] = $it;
         }
 
+        $moCate = $this->mockCommonModel->moCateList('', '', '', false);
+
         $this->load->view('mocktest/base/range/index', [
             'siteCodeDef' => $cateList[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
-            'adminName' => $this->baseCodeModel->getAdminNames(),
             'data' => $this->baseRangeModel->list(),
+            'moData' => array_column($moCate, 'CateRouteName', 'MrsIdx'),
         ]);
     }
 
@@ -61,7 +63,7 @@ class BaseRange extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'mCate[]', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'moLink[]', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'questionArea', 'label' => '문제영역명', 'rules' => 'trim|required'],
             ['field' => 'isUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
@@ -78,18 +80,26 @@ class BaseRange extends \app\controllers\BaseController
      */
     public function edit($param = [])
     {
-        list($data, $cData) = $this->baseRangeModel->getMockArea($param[0]);
+        list($data, $chData, $moCateLink) = $this->baseRangeModel->getMockArea($param[0]);
         if (!$data) {
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
+        }
+
+        if($moCateLink) { // 등록된 모의고사 카테고리 이름 로드
+            $condition = [
+                'IN' => ['MS.MrsIdx' => array_column($moCateLink, 'MrsIdx')]
+            ];
+            $moCate = $this->mockCommonModel->moCateList($condition, '', '', false);
         }
 
         $this->load->view('mocktest/base/range/create', [
             'siteCodeDef' => $data['SiteCode'],
             'method' => 'PUT',
             'data' => $data,
-            'cData' => $cData,
-            'adminName' => $this->baseCodeModel->getAdminNames(),
+            'chData' => $chData,
+            'moCate' => isset($moCate) ? array_column($moCate, 'CateRouteName', 'MrsIdx') : '',
+            'adminName' => $this->mockCommonModel->getAdminNames(),
         ]);
     }
 

@@ -10,7 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BaseCodeModel extends WB_Model
 {
     private $_table = [
-        'admin' => 'wbs_sys_admin',
         'site' => 'lms_site',
         'category' => 'lms_sys_category',
         'subject' => 'lms_product_subject',
@@ -22,20 +21,6 @@ class BaseCodeModel extends WB_Model
     {
         parent::__construct('lms');
     }
-
-    /**
-     * 관리자이름 배열 로딩
-     * @param array $in : wAdminIdx
-     * @return array('wAdminIdx' => 'wAdminName')
-     */
-    public function getAdminNames($in = array())
-    {
-        if($in) $this->_conn->where_in('wAdminIdx', $in);
-        $db = $this->_conn->select('wAdminIdx, wAdminName')->where(array('wIsUse'=>'Y','wIsStatus'=>'Y'))->get($this->_table['admin'])->result_array();
-
-        return array_column($db, 'wAdminName', 'wAdminIdx');
-    }
-
 
     /**
      * 메인리스트
@@ -100,6 +85,7 @@ class BaseCodeModel extends WB_Model
                 'OrderNum' => $this->input->post('orderNum'),
                 'IsUse' => $this->input->post('isUse'),
                 'RegIp' => $this->input->ip_address(),
+                'RegDatm' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
             );
 
@@ -165,7 +151,7 @@ class BaseCodeModel extends WB_Model
         $subjectDB = $this->_conn->query($sql, array($MmIdx, $SubjectType, $baseDB['SiteCode']))->result_array();
         if(empty($subjectDB)) return false;
 
-        $adminNames = $this->getAdminNames();
+        $adminNames = $this->mockCommonModel->getAdminNames();
         $adminInfo = array('RegDatm' => '', 'RegAdminIdx' => '','UpdDatm' => '', 'UpdAdminIdx' => '');
         foreach ($subjectDB as $it) {
             if($it['MrsIdx']) {

@@ -52,77 +52,77 @@
     <div class="x_panel mt-10">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
-            {!! csrf_field() !!}
-            <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
-                <thead class="bg-odd">
+                {!! csrf_field() !!}
+                <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
+                    <thead class="bg-white-gray">
                     <tr>
                         <th rowspan="2" class="rowspan hide">사이트</th>
-                        <th rowspan="2" class="text-center rowspan">카테고리(대분류)</th>
-                        <th rowspan="2" class="text-center">직렬 [코드] <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Kind">추가</button></th>
+                        <th rowspan="2" class="text-center rowspan" style="width:13%">카테고리(대분류)</th>
+                        <th rowspan="2" class="text-center" style="width:13%">직렬 [코드] <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Kind">추가</button></th>
                         <th colspan="2" class="text-center">과목</th>
-                        <th rowspan="2" class="text-center">사용여부</th>
-                        <th rowspan="2" class="text-center">등록자</th>
-                        <th rowspan="2" class="text-center" style="width:150px">등록일</th>
+                        <th rowspan="2" class="text-center" style="width:7%">사용여부</th>
+                        <th rowspan="2" class="text-center" style="width:7%">등록자</th>
+                        <th rowspan="2" class="text-center" style="width:10%">등록일</th>
                     </tr>
                     <tr>
-                        <th class="text-center">필수</th>
-                        <th class="text-center">선택</th>
+                        <th class="text-center" style="width:30%">필수</th>
+                        <th class="text-center" style="width:20%">선택</th>
                     </tr>
-                </thead>
-                <tbody>
-                @foreach($listDB as $row)
-                    <tr data-idx="{{ $row['MmIdx'] }}" data-gcate="{{ $row['gCateCode'] }}">
-                        <td class="hide">
-                            {{ $row['SiteName'] }}
-                            [<span class="blue">{{ $row['SiteCode'] }}</span>]
-                        </td>
-                        <td>
-                            {{ $row['gCateName'] }}
-                            [<span class="blue">{{ $row['gCateCode'] }}</span>]
-                        </td>
-                        <td>
-                            @if(!empty($row['mCateCode']))
-                                <span class="underline-link act-reg" data-act="edit" data-type="Kind" data-mcate="{{ $row['mCateCode'] }}">{{ $row['mCateName'] }}</span>
-                                [<span class="blue">{{ $row['mCateCode'] }}</span>]
-                            @endif
-                        </td>
-                        <td>
-                            @if( empty($subjectNames[$row['MmIdx'].'-E']) )
-                                <div class="text-center">
-                                    <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="E">추가</button>
-                                </div>
-                            @else
-                                <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="E">
-                                    {{ $subjectNames[$row['MmIdx'].'-E'] }}
-                                    <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-E'] }}</span> {{-- datatable 검색용 --}}
-                                </span>
-                            @endif
-                        </td>
-                        <td>
-                            @if( empty($subjectNames[$row['MmIdx'].'-S']) )
-                                <div class="text-center">
-                                    <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="S">추가</button>
-                                </div>
-                            @else
-                                <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="S">
-                                    {{ $subjectNames[$row['MmIdx'].'-S'] }}
-                                    <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-S'] }}</span>
-                                </span>
-                            @endif
-                        </td>
-                        <td class="text-center" data-search="{{ $row['IsUse'] }}">
-                            @if($row['IsUse'] == 'Y')
-                                <span class="act-use underline-link">사용</span>
-                            @elseif($row['IsUse'] == 'N')
-                                <span class="act-use underline-link red">미사용</span>
-                            @endif
-                        </td>
-                        <td class="text-center">{{ @$adminName[$row['RegAdminIdx']] }}</td>
-                        <td class="text-center">{{ $row['RegDatm'] }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach($listDB as $row)
+                        <tr data-idx="{{ $row['MmIdx'] }}" data-gcate="{{ $row['gCateCode'] }}">
+                            <td class="hide">
+                                {{ $row['SiteName'] }}
+                                [<span class="blue">{{ $row['SiteCode'] }}</span>]
+                            </td>
+                            <td>
+                                {{ $row['gCateName'] }}
+                                [<span class="blue">{{ $row['gCateCode'] }}</span>]
+                            </td>
+                            <td>
+                                @if(!empty($row['mCateCode']))
+                                    <span class="underline-link act-reg" data-act="edit" data-type="Kind" data-mcate="{{ $row['mCateCode'] }}">{{ $row['mCateName'] }}</span>
+                                    [<span class="blue">{{ $row['mCateCode'] }}</span>]
+                                @endif
+                            </td>
+                            <td>
+                                @if( empty($subjectNames[$row['MmIdx'].'-E']) )
+                                    <div class="text-center">
+                                        <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="E">추가</button>
+                                    </div>
+                                @else
+                                    <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="E">
+                                        {{ $subjectNames[$row['MmIdx'].'-E'] }}
+                                        <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-E'] }}</span> {{-- datatable 검색용 --}}
+                                    </span>
+                                @endif
+                            </td>
+                            <td>
+                                @if( empty($subjectNames[$row['MmIdx'].'-S']) )
+                                    <div class="text-center">
+                                        <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Subject" data-sj-type="S">추가</button>
+                                    </div>
+                                @else
+                                    <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="S">
+                                        {{ $subjectNames[$row['MmIdx'].'-S'] }}
+                                        <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-S'] }}</span>
+                                    </span>
+                                @endif
+                            </td>
+                            <td class="text-center" data-search="{{ $row['IsUse'] }}">
+                                @if($row['IsUse'] == 'Y')
+                                    <span class="act-use underline-link">사용</span>
+                                @elseif($row['IsUse'] == 'N')
+                                    <span class="act-use underline-link red">미사용</span>
+                                @endif
+                            </td>
+                            <td class="text-center">{{ @$adminName[$row['RegAdminIdx']] }}</td>
+                            <td class="text-center">{{ $row['RegDatm'] }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </form>
         </div>
     </div>

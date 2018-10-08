@@ -54,10 +54,14 @@
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
-                    <thead class="bg-odd">
+                    <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">선택</th>
                         <th class="text-center">NO</th>
+                        <th class="text-center hide">사이트</th>
+                        <th class="text-center hide">카테고리</th>
+                        <th class="text-center hide">직렬</th>
+                        <th class="text-center hide">과목</th>
                         <th class="text-center">모의고사 카테고리<br>(카테고리>직렬>과목)</th>
                         <th class="text-center">문제영역코드</th>
                         <th class="text-center">문제영역명</th>
@@ -73,12 +77,18 @@
                         <tr>
                             <td class="text-center"><input type="radio" class="flat" name="target" value="{{ $row['MaIdx'] }}"></td>
                             <td class="text-center">{{ $num-- }}</td>
-                            <td></td>
+                            <td>
+                                {{--{{ preg_replace('/^(.*?\s>\s)/', '',$moData[$row['MrsIdx']]) }}--}}
+                            </td>
+                            <td class="text-center hide"></td>
+                            <td class="text-center hide"></td>
+                            <td class="text-center hide"></td>
+                            <td class="text-center hide"></td>
                             <td class="text-center">{{ $row['MaIdx'] }}</td>
                             <td><span class="underline-link act-edit">{{ $row['QuestionArea'] }}</span></td>
                             <td class="text-center">{{ $row['ListCnt'] }}</td>
                             <td class="text-center">@if($row['IsUse'] == 'Y') <span>사용</span> @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
-                            <td class="text-center">{{ @$adminName[$row['RegAdminIdx']] }}</td>
+                            <td class="text-center">{{ $row['wAdminName'] }}</td>
                             <td class="text-center">{{ $row['RegDatm'] }}</td>
                         </tr>
                     @endforeach
@@ -145,14 +155,14 @@
         });
 
         // DataTable Search
-        function datatableSearching() {
-            $datatable
-                .search($search_form.find('#sc_fi').val())
-                .column(2).search($search_form.find('#search_site_code').val())
-                .column(3).search($search_form.find('#sc_cateD1').val())
-                .column(4).search($search_form.find('#sc_cateD2').val())
-                .column(8).search($search_form.find('#sc_use').val())
-                .draw();
-        }
+        // function datatableSearching() {
+        //     $datatable
+        //         .search($search_form.find('#sc_fi').val())
+        //         .column(2).search($search_form.find('#search_site_code').val())
+        //         .column(3).search($search_form.find('#sc_cateD1').val())
+        //         .column(4).search($search_form.find('#sc_cateD2').val())
+        //         .column(8).search($search_form.find('#sc_use').val())
+        //         .draw();
+        // }
     </script>
 @stop

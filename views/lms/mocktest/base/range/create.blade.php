@@ -23,20 +23,18 @@
                     <tr>
                         <th colspan="1">모의고사카테고리 <span class="required">*</span></th>
                         <td colspan="3">
-                            <button type="button" id="btn_subject_mapping_search" class="btn btn-sm btn-primary" {{($method == 'PUT') ? 'disabled' : ''}}>카테고리검색</button>
-                            <span id="selected_subject_mapping" class="pl-10">
-                            {{--@if(empty($data['SubjectMapping']) === false)--}}
-                                {{--@foreach($data['SubjectMapping'] as $key => $val)--}}
-                                {{--<span class="pr-10">{{ $val }}--}}
-                                {{--<a href="#none" data-subject-mapping-code="{{ $key }}" class="selected-subject-mapping-delete"><i class="fa fa-times red"></i></a>--}}
-                                {{--<input type="hidden" name="subject_mapping_code[]" value="{{ $key }}"/>--}}
-                                {{--</span>--}}
-                                {{--@endforeach--}}
-                                {{--@endif--}}
-                        </span>
-                            <input type="text" class="form-control" name="mCate[]" value="2">
-                            <input type="text" class="form-control" name="mCate[]" value="3">
-
+                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT') ? 'disabled' : ''}}>카테고리검색</button>
+                            <div id="selected_category" class="row">
+                                @if($method == 'PUT')
+                                    @foreach($moCate as $code => $name)
+                                        <div class="col-xs-4 pb-5">
+                                            {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
+                                            {{--<a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>--}}
+                                            {{--<input type="hidden" name="moLink[]" value="{{ $code }}">--}}
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -75,7 +73,7 @@
         @if($method == 'PUT')
             <div class="x_content mt-50">
                 <div>
-                    <div class="pull-left mt-15 mb-10">[ 총 {{ count($cData) }}건 ]</div>
+                    <div class="pull-left mt-15 mb-10">[ 총 {{ count($chData) }}건 ]</div>
                     <div class="pull-right text-right form-inline mb-5">
                         <select class="form-control">
                             @foreach(range(1, 20) as $n)
@@ -92,40 +90,40 @@
 
                     <table class="table table-bordered modal-table">
                         <thead>
-                            <tr>
-                                <th class="text-center">NO</th>
-                                <th class="text-center">영역명</th>
-                                <th class="text-center">정렬</th>
-                                <th class="text-center">사용여부</th>
-                                <th class="text-center">등록자</th>
-                                <th class="text-center">등록일</th>
-                                <th class="text-center">수정자</th>
-                                <th class="text-center">수정일</th>
-                                <th class="text-center">삭제</th>
-                            </tr>
+                        <tr>
+                            <th class="text-center">NO</th>
+                            <th class="text-center">영역명</th>
+                            <th class="text-center">정렬</th>
+                            <th class="text-center">사용여부</th>
+                            <th class="text-center">등록자</th>
+                            <th class="text-center">등록일</th>
+                            <th class="text-center">수정자</th>
+                            <th class="text-center">수정일</th>
+                            <th class="text-center">삭제</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            {{-- [S] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
-                            <tr data-chapter-idx="">
-                                <td class="text-center"></td>
-                                <td class="text-center"><input type="text" class="form-control" name="areaName[]" value=""></td>
-                                <td class="text-center form-inline"><input type="text" class="form-control" style="width:30px" name="orderNum[]" value=""></td>
-                                <td class="text-center">
-                                    <select class="form-control" name="isUse[]">
-                                        <option value="">사용여부</option>
-                                        <option value="Y">사용</option>
-                                        <option value="N">미사용</option>
-                                    </select>
-                                </td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
-                            </tr>
-                            {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
+                        {{-- [S] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
+                        <tr data-chapter-idx="">
+                            <td class="text-center"></td>
+                            <td class="text-center"><input type="text" class="form-control" name="areaName[]" value=""></td>
+                            <td class="text-center form-inline"><input type="text" class="form-control" style="width:30px" name="orderNum[]" value=""></td>
+                            <td class="text-center">
+                                <select class="form-control" name="isUse[]">
+                                    <option value="">사용여부</option>
+                                    <option value="Y">사용</option>
+                                    <option value="N">미사용</option>
+                                </select>
+                            </td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
+                        </tr>
+                        {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
 
-                            @foreach($cData as $row)
+                        @foreach($chData as $row)
                             <tr data-chapter-idx="{{ $row['MalIdx'] }}">
                                 <td class="text-center">{{ $loop->index }}</td>
                                 <td class="text-center"><input type="text" class="form-control" name="areaName[]" value="{{ $row['AreaName'] }}"></td>
@@ -143,7 +141,7 @@
                                 <td class="text-center">{{ $row['UpdDate'] }}</td>
                                 <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                             </tr>
-                            @endforeach
+                        @endforeach
                         </tbody>
                     </table>
                     <div class="form-group text-center">
@@ -189,6 +187,21 @@
                 }, showValidateError, false, 'POST');
             });
 
+            // 모달창 오픈
+            $('.act-searchCate').on('click', function() {
+                if( !$('[name=siteCode]').val() ) { alert('운영사이트를 먼저 선택해 주세요'); return false; }
+
+                $('.act-searchCate').setLayer({
+                    'url' : '{{ site_url() }}' + 'mocktest/baseCode/moCate/?siteCode=' + $('[name=siteCode]').val(),
+                    'width' : 900
+                });
+            });
+
+            // 선택 카테고리 삭제
+            $('#selected_category').on('click', '.selected-category-delete', function () {
+                $(this).closest('div').remove();
+            });
+
             // 목록 이동
             $('#goList').on('click', function() {
                 location.replace('{{ site_url('/mocktest/baseRange') }}' + getQueryString());
@@ -213,7 +226,7 @@
                 var count = $(this).closest('div').find('select').val();
 
                 for (i=0; i < count; i++) {
-                   cList.append('<tr>' + addField + '</tr>');
+                    cList.append('<tr>' + addField + '</tr>');
                 }
 
                 cList.find('tr').each(function (index) {
@@ -234,7 +247,6 @@
                     $(this).find('td:eq(0)').text(++index);
                 });
             });
-
         });
     </script>
 @stop

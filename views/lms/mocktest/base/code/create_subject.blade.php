@@ -51,7 +51,7 @@
                             @foreach($subjectDB as $row)
                                 <div class="col-xs-4 checkbox">
                                     <input type="checkbox" class="flat" id="subject_idx_{{ $loop->index }}" name="subjectIdx[]" value="{{ $row['sSubjectIdx'] }}"
-                                           @if(!empty($row['IsUse'] == 'Y')) checked="checked" @endif>
+                                           @if($row['IsUse'] == 'Y') checked="checked" @endif>
                                     <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row['sSubjectName'] }}</label>
                                 </div>
                             @endforeach

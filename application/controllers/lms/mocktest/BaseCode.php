@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseCode extends \app\controllers\BaseController
 {
-    protected $models = array('sys/category', 'product/base/subject', 'mocktest/baseCode');
+    protected $models = array('sys/category', 'product/base/subject', 'mocktest/mockCommon', 'mocktest/baseCode');
     protected $helpers = array();
 
 
@@ -36,7 +36,7 @@ class BaseCode extends \app\controllers\BaseController
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
-            'adminName' => $this->baseCodeModel->getAdminNames(),
+            'adminName' => $this->mockCommonModel->getAdminNames(),
             'listDB' => $listDB,
             'subjectNames' => $subjectNames,
             'subjectIdxs' => $subjectIdxs,
@@ -77,7 +77,7 @@ class BaseCode extends \app\controllers\BaseController
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'method' => $method,
-            'adminName' => $this->baseCodeModel->getAdminNames(),
+            'adminName' => $this->mockCommonModel->getAdminNames(),
             'data' => array_merge($data, array('gCateCode' => $gCateCode)),
         ]);
     }
@@ -210,5 +210,57 @@ class BaseCode extends \app\controllers\BaseController
             $this->json_result($result, '변경되었습니다.', $result);
         else
             $this->json_error('변경에 실패했습니다.');
+    }
+
+
+    /**
+     * 모의고사카테고리 검색 팝업 메인
+     *
+     * Input  $_GET['siteCode'] OR null
+     * Output $moLink[] AND "카테고리>직렬>과목" 문자열
+     *        $moLink : lms_Mock_R_Subject DB의 MrsIdx
+     *        부모창 <div id="selected_category"> 안에 생성
+     */
+    public function moCate()
+    {
+        $siteCode = $this->input->get('siteCode');
+        if ( !empty($siteCode) && !preg_match('/^[0-9]+$/', $siteCode) ) return false;
+
+        $this->load->view('mocktest/search_mockCategory', [
+            'siteCode' => $siteCode,
+        ]);
+    }
+
+
+    /**
+     * 모의고사카테고리 검색 팝업 리스트
+     */
+    public function moCateList()
+    {
+        $rules = [
+            ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'sc_fi', 'label' => '검색', 'rules' => 'trim'],
+            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
+            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $condition = [
+            'EQ' => [
+                'S.SiteCode' => $this->input->post('siteCode')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'SJ.SubjectName' => $this->input->post('sc_fi')
+                ]
+            ],
+        ];
+        list($data, $count) = $this->mockCommonModel->moCateList($condition, $this->input->post('length'), $this->input->post('start'));
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $data,
+        ]);
     }
 }

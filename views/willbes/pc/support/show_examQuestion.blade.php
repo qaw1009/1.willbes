@@ -49,7 +49,8 @@
                                         <tr>
                                             <td class="w-file tx-left pl20" colspan="5">
                                                 @foreach($data['AttachData'] as $row)
-                                                    <a href="{{front_url($default_path.'/examQuestion/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                                    <a href="javascript:void(0);" onclick='javascript:file_download("{{front_url($default_path.'/examQuestion/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}");'>
+                                                    {{--<a href="{{front_url($default_path.'/examQuestion/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" onclick="javascript:file_download();" target="_blank">--}}
                                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                 @endforeach
                                             </td>
@@ -111,4 +112,15 @@
         {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+
+    <script>
+        function file_download(url) {
+            @if(sess_data('is_login') != true)
+                alert('로그인 후 이용해 주세요.');
+            @else
+                window.open(url, '_blank');
+            @endif
+            /*return false;*/
+        }
+    </script>
 @stop

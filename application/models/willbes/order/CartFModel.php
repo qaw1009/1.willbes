@@ -34,8 +34,7 @@ class CartFModel extends BaseOrderFModel
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
                 , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub), "") as UserPackPriceData 
                 , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
-                , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
-                , ifnull(PB.SubjectIdx, PL.SubjectIdx) as SubjectIdx, ifnull(PB.ProfIdx, PD.ProfIdx) as ProfIdx                
+                , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx, PL.SubjectIdx, PD.ProfIdx
                 , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
                 , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName               

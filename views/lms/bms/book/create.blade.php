@@ -98,22 +98,23 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="inline-block mr-5 item">
-                            <select class="form-control" id="subject_idx" name="subject_idx" required="required" title="과목">
-                                <option value="">과목</option>
-                                @foreach($arr_subject as $row)
-                                    <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['SubjectIdx'] == $data['SubjectIdx']) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">과목/교수정보 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9 form-inline">
+                        <button type="button" id="btn_prof_subject_search" class="btn btn-sm btn-primary">과목/교수검색</button>
+                        <span id="selected_prof_subject" class="pl-10">
+                            @if(empty($data['ProfSubject']) === false)
+                                @foreach($data['ProfSubject'] as $idx => $row)
+                                    <span class="pr-10">{{ $row['ProfSubjectName'] }}
+                                        <a href="#none" data-prof-subject-idx="{{ $row['ProfSubjectIdx'] }}" class="selected-prof-subject-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="prof_subject_idx[]" value="{{ $row['ProfSubjectIdx'] }}"/>
+                                    </span>
                                 @endforeach
-                            </select>
-                        </div>
-                        <div class="inline-block mr-5 item">
-                            <select class="form-control" id="prof_idx" name="prof_idx" required="required" title="교수">
-                                <option value="">교수</option>
-                                @foreach($arr_professor as $row)
-                                    <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['ProfIdx'] == $data['ProfIdx']) selected="selected" @endif>{{ $row['wProfName'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            @endif
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -297,8 +298,16 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url('/bms/book/index') }}' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
+
+            function addValidate() {
+                if($regi_form.find('input[name="prof_subject_idx[]"]').length < 1) {
+                    alert('과목/교수 정보 필드는 필수입니다.');
+                    return false;
+                }
+                return true;
+            }
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -327,10 +336,31 @@
                 'width' : 900
             });
 
-            // 과정, 과목, 교수 자동 변경
+            // 과정 자동 변경
             $regi_form.find('select[name="course_idx"]').chained("#site_code");
-            $regi_form.find('select[name="subject_idx"]').chained("#site_code");
-            $regi_form.find('select[name="prof_idx"]').chained("#site_code");
+
+            // 과목/교수 검색 버튼 클릭
+            $('#btn_prof_subject_search').on('click', function(event) {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                var cate_code = $regi_form.find('input[name="cate_code"]').val();
+                var search_url = '{{ site_url('/common/searchProfessorSubject/index/') }}';
+
+                if (!site_code || !cate_code) {
+                    alert('운영사이트와 카테고리를 먼저 선택해 주십시오.');
+                    return;
+                }
+
+                $('#btn_prof_subject_search').setLayer({
+                    'url' : search_url + site_code + '/' + cate_code,
+                    'width' : 900
+                });
+            });
+
+            // 과목/교수 연결 데이터 삭제
+            $regi_form.on('click', '.selected-prof-subject-delete', function() {
+                var that = $(this);
+                that.parent().remove();
+            });
 
             // 무료여부 값에 따른 교재비, 쿠폰, 북포인트 설정
             $regi_form.on('ifChanged ifCreated', 'input[name="is_free"]:checked', function() {

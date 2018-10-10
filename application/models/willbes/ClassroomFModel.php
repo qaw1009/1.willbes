@@ -376,7 +376,119 @@ class ClassroomFModel extends WB_Model
 
     public function setRestartPause($input)
     {
+        $lecstartdate = element('lecstartdate', $input);
+        $realecexpireday = element('realecexpireday', $input);
 
+        $today = date("Y-m-d", time());
+        $enddate = date("Y-m-d", strtotime($today.'-1day'));
+
+        // 해당 주문 강의의 일시정지 번호를 읽어온다.
+        $query = "SELECT * ";
+        $query .= " FROM {$this->_table['pause_log']} ";
+
+        $cond = [
+            'EQ' => [
+                'MemIdx' => element('MemIdx', $input),
+                'OrderIdx' => element('OrderIdx', $input),
+                'ProdCode' => element('ProdCode', $input),
+                'ProdCodeSub' => element('ProdCodeSub', $input),
+                'OrderProdIdx' => element('OrderProdIdx', $input),
+                'IsDel' => 'N'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY LphIdx DESC LIMIT 1";
+
+        $result = $this->_conn->query($query);
+        $result = $result->result_array();;
+
+        if(empty($result) == true){
+            return false;
+        }
+
+        $row = $result[0];
+
+        if($row['PauseEndDate'] < $today){
+            return false;
+        }
+
+        $this->_conn->trans_begin();
+
+        try {
+            // 일시정지 정보 삭제
+            if( $this->_conn->set('IsDel', 'Y')
+                ->set('DelIp', $this->input->ip_address())
+                ->set('DelDate', 'NOW()', false)
+                ->set('Memo', $row['Memo'].' / 사용자가 일시정지 해제')
+                ->where('LphIdx', $row['LphIdx'])
+                ->update($this->_table['pause_log']) == false){
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+
+            // 일시정지 날짜가 오늘이면 새로운 정보를 입력하지 않는다.
+            if($row['PauseStartDate'] < $today){
+                // 날짜 계산
+                $PauseDay = intval((strtotime($enddate)-strtotime($row['PauseStartDate']))/86400) +1;
+
+                // 일시정지 날짜가 오늘 이전이면 새로운 일시정지 정보를 입력한다.
+                $input = [
+                    'MemIdx' => element('MemIdx', $input),
+                    'OrderIdx' => element('OrderIdx', $input),
+                    'OrderProdIdx' => element('OrderProdIdx', $input),
+                    'ProdCode' => element('ProdCode', $input),
+                    'ProdCodeSub' => element('ProdCodeSub', $input),
+                    'PauseStartDate' => $row['PauseStartDate'],
+                    'PauseEndDate' => $enddate,
+                    'PauseDays' => $PauseDay,
+                    'PauseRegIp' => $this->input->ip_address(),
+                    'Memo' => '사용자가 일시중지 해제로 인해 재등록'
+                ];
+
+                if($this->_conn->set($input)->insert($this->_table['pause_log']) === false){
+                    throw new \Exception('로그기록에 실패했습니다.');
+                }
+            } else {
+                $PauseDay = 0;
+            }
+
+            // 실제 수강일은 이전 수강일 - 취소한 일시정지일 + 일시 정지일
+            $realecexpireday = $realecexpireday - $row['PauseDays'] + $PauseDay;
+            
+            // 강의 수강기간을 업데이트한다.
+            if(empty(element('ProdCodeSub', $input)) === true){
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+
+            } else {
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('ProdCodeSub', element('ProdCodeSub', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
     }
 }
 

@@ -75,7 +75,7 @@
         </div>
         <div class="PASSZONE-Lec-Section">
             <div class="Search-Result strong mb15 tx-gray">· 일시정지 이력 <span class="w-info normal">(
-                    잔여횟수 : <span class="strong tx-light-blue">@if(count($log) >= $lec['PauseNum']){{'0'}}@else{{$lec['PauseNum'] - count($log)}}@endif</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
+                    잔여횟수 : <span class="strong tx-light-blue">@if($lec['PauseCount'] >= $lec['PauseNum']){{'0'}}@else{{$lec['PauseNum'] - $lec['PauseCount']}}@endif</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
                     잔여기간 : <span class="strong tx-light-blue">{{$lec['PauseRemain']}}</span>일
                     )</span></div>
             <div class="LeclistTable bdt-gray">
@@ -95,9 +95,15 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @php
+                        $i = 0;
+                    @endphp
                     @forelse( $log as $key => $row)
+                        @php
+                            if($row['IsDel'] == 'N'){ $i = $i+1;}
+                        @endphp
                         <tr>
-                            <td class="w-num">{{$key+1}}차</td>
+                            <td class="w-num">{{$row['IsDel'] == 'Y' ? '취소' : $i.'차'}}</td>
                             <td class="w-day">{{$row['PauseStartDate']}} ~ {{$row['PauseEndDate']}} ({{$row['PauseDays']}}일)</td>
                             <td class="w-modify-day">{{$row['PauseRegDate']}}</td>
                             <td class="w-user">{{$row['Name'] == '' ? sess_data('mem_name') : '관리자' }}</td>

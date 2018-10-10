@@ -139,8 +139,10 @@ class On extends \app\controllers\FrontController
         // 셀렉트박스 수해오기
         $cond_arr = [
             'LTE' => [
-                'LecStartDate' => $today, // 시작일이 <= 오늘
-                'lastPauseEndDate' => $today // 일시정지종료일 <= 오늘
+                'LecStartDate' => $today // 시작일이 <= 오늘
+            ],
+            'LT' => [
+                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
             ],
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
@@ -168,7 +170,7 @@ class On extends \app\controllers\FrontController
                 'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ],
             'LTE' => [
-                'LecStartDate' => $today, // 시작일 <= 오늘
+                'LecStartDate' => $today // 시작일 <= 오늘
             ],
             'LT' => [
                 'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
@@ -958,7 +960,6 @@ class On extends \app\controllers\FrontController
             'pauseenddate' => $enddate,
             'pauseday' => $PauseDay
             ]);
-
     }
 
 
@@ -1017,14 +1018,19 @@ class On extends \app\controllers\FrontController
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
         }
 
-        $log = $this->classroomFModel->setRestartPause([
+        if($this->classroomFModel->setRestartPause([
             'MemIdx' => $memidx,
             'OrderIdx' => $orderidx,
             'OrderProdIdx' => $lec['OrderProdIdx'],
             'ProdCode' => $prodcode,
-            'ProdCodeSub' => $prodcodesub
-        ]);
-
+            'ProdCodeSub' => $prodcodesub,
+            'lecstartdate' => $lec['LecStartDate'],
+            'realecexpireday' => $lec['RealLecExpireDay']
+        ]) == true){
+            return $this->json_result(true, '일시정지가 해제되었습니다.');
+        } else {
+            return $this->json_error('일시정지 해제에 실패했습니다.');
+        }
     }
 
 

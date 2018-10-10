@@ -65,6 +65,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
 
                     <div class="DetailWrap c_both">
                         <ul class="tabWrap tabDepthPass">
@@ -102,7 +103,7 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                                    <a href="javascript:;" onclick="fnRestart('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox whiteBox NSK">일시정지해제</span></a>
                                                 </td>
                                             </tr>
                                         @empty
@@ -182,7 +183,7 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                                    <a href="javascript:;" onclick="fnRestart('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');"><span class="bBox whiteBox NSK">일시정지해제</span></a>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -296,6 +297,14 @@
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <form name="postForm" id="postForm" >
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="orderidx" id="orderidx" value="" />
+        <input type="hidden" name="prodcode" id="prodcode" value="" />
+        <input type="hidden" name="prodcodesub" id="prodcodesub" value="" />
+        <input type="hidden" name="prodtype" id="prodtype" value="" />
+    </form>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd').on('change', function (){
@@ -310,6 +319,29 @@
             });
         });
 
-        function fn
+        function fnRestart(o, p, sp, t)
+        {
+            if(window.confirm('일시정지를 해제하고 오늘부터 수강을 시작하시겠습니까?') == false){
+                return;
+            }
+
+            $('#orderidx').val(o);
+            $('#prodcode').val(p);
+            $('#prodcodesub').val(sp);
+            $('#prodtype').val(t);
+
+            url = "{{ site_url("/classroom/on/restartPause/") }}";
+            data = $('#postForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    alert('일시정지가 해제되었습니다.\n수강중인 강의에서 수강해주십시요.');
+                    location.reload();
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
     </script>
 @stop

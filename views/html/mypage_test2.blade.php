@@ -166,7 +166,7 @@
                             <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-state">미응시</td>
                             <td class="w-dday">2018-10-10</td>
-                            <td class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="#none" onclick="openWin('TESTSTARTPASS')">응시하기</a></td>
+                            <td class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="{{ site_url('/home/html/startExam') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=no, resizable=yes' ); return false">응시하기</a></td>
                         </tr>
                         <tr>
                             <td class="w-no">7</td>
@@ -176,7 +176,7 @@
                             <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
                             <td class="w-state">응시완료</td>
                             <td class="w-dday">2018-10-10</td>
-                            <td class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="#none">응시하기</a></td>
+                            <td class="w-btn tx-red">응시마감</td>
                         </tr>
                         <tr>
                             <td class="w-no">6</td>
@@ -260,10 +260,8 @@
         </div>
         <!-- willbes-Leclist -->
 
+        <!--
         <div id="TESTSTARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs">
-            <a class="closeBtn" href="#none" onclick="closeWin('TESTSTARTPASS')">
-                <img src="{{ img_url('sub/close.png') }}">
-            </a>
             <div class="Layer-Tit tx-dark-black NG">모의고사 응시</div> 
             <div class="lecMoreWrap pt10">
                 <div class="PASSZONE-List widthAutoFull">
@@ -374,22 +372,19 @@
                             </button>
                         </span>
                         <span>
-                            <!-- 버튼 클릭시 모의고사 응시완료 팝업 출력 : 작업하기 위해 링크 걸어둠 -->
                             <button type="submit" onclick="openWin('TESTFINPASS')" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
                                 <span class="strong">시험시작하기</span>
                             </button>
                         </span>
                     </div>
                 </div>
-                <!-- PASSZONE-List -->
             </div>
         </div>
+        -->
         <!-- willbes-Layer-PassBox : 모의고사 응시 : 응시전 -->
 
+        <!--
         <div id="TESTFINPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h750 abs">
-            <a class="closeBtn" href="#none" onclick="closeWin('TESTFINPASS')">
-                <img src="{{ img_url('sub/close.png') }}">
-            </a>
             <div class="Layer-Tit tx-dark-black NG">모의고사 응시</div> 
             <div class="lecMoreWrap pt10">
                 <div class="PASSZONE-List widthAutoFull">
@@ -414,11 +409,11 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="Top round-red">국어</td>
-                                        <td class="round-blue">영어</td>
-                                        <td class="round-red">한국사</td>
-                                        <td class="round-red">행정법</td>
-                                        <td class="round-red">행정학</td>
+                                        <td class="Top">국어</td>
+                                        <td>영어</td>
+                                        <td>한국사</td>
+                                        <td>행정법</td>
+                                        <td>행정학</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -444,7 +439,7 @@
                                     <tr>
                                         <td class="Top">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
                                         <td>1시간 40분 (100분)</td>
-                                        <td>1:00:50</td>
+                                        <td>1시간 00분 50초</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -454,7 +449,10 @@
                         답안제출이 모두 완료되었습니다.<br/>
                         성적이 집계된 후 성적표를 확인할 수 있습니다.<br/>
                         <strong>시험을 끝내시면 재응시할 수 없습니다.</strong><br/>
-                        <div>시험을 끝내시겠습니까?</div>
+                        <div>
+                            * 성적표는 시험응시일 마감 이후 3일 ~ 5일 안에 제공<br/>
+                            * 성적확인 메뉴 : 내강의실 > 모의고사관리 > 성적결과
+                        </div>
                     </div>
                     <div class="passzonebtn tx-center mt30 none">
                         <span>
@@ -469,9 +467,9 @@
                         </span>
                     </div>
                 </div>
-                <!-- PASSZONE-List -->
             </div>
         </div>
+        -->
         <!-- willbes-Layer-PassBox : 모의고사 응시 : 응시완료 -->
    
     </div>

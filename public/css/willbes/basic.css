@@ -504,6 +504,10 @@ select[disabled] {
   height: 1100px !important;
 }
 
+.mg-zero {
+  margin: 0 !important;
+}
+
 .mt-zero,
 .mt0 {
   margin-top: 0px !important;
@@ -808,6 +812,9 @@ select[disabled] {
 } 
 .tx-dark-blue {
   color: #003e7d !important;
+}
+.tx-deep-blue {
+  color: #0d56ae !important;
 }
 .tx-bright-brown {
   color: #8c6239 !important;

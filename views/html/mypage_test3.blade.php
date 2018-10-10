@@ -159,7 +159,7 @@
                             <td class="w-process">경찰</td>
                             <td class="w-type">일반경찰</td>
                             <td class="w-date">2018-10-10</td>
-                            <td class="w-list"><a href="#none" onclick="openWin('MEMOPASS')">7/2 전국모의고사-일방경찰</a></td>
+                            <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
                             <td class="w-report">집계중</td>
@@ -173,10 +173,10 @@
                             <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
-                            <td class="w-report tx-red"><a href="#none">성적확인</a></td>
+                            <td class="w-report tx-red">성적확인</td>
                             <td class="w-file on tx-blue">
-                                <a href="#none">[문제/해설]</a><br/>
-                                <a href="#none">[오답노트]</a>
+                                <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a><br/>
+                                <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=no, resizable=yes' ); return false">[오답노트]</a>
                             </td>
                         </tr>
                         <tr>
@@ -189,8 +189,8 @@
                             <td class="w-average">50</td>
                             <td class="w-report tx-red">성적확인</td>
                             <td class="w-file on tx-blue">
-                                <a href="#none">[문제/해설]</a><br/>
-                                <a href="#none">[오답노트]</a>
+                                [문제/해설]<br/>
+                                [오답노트]
                             </td>
                         </tr>
                         <tr>
@@ -269,6 +269,59 @@
             </div>
         </div>
         <!-- willbes-Leclist -->
+
+        <div id="EXAMPASS" class="willbes-Layer-PassBox abs willbes-Layer-PassBox450 h460 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('EXAMPASS')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">문제/해설</div> 
+            <div class="lecMoreWrap pt20">
+                <div class="LeclistTable">
+                    <table cellspacing="0" cellpadding="0" class="listTable usertestTable examTable under-gray bdt-gray tx-gray GM">
+                        <colgroup>
+                            <col style="width: 33.33333333%;"/>
+                            <col style="width: 33.33333333%;"/>
+                            <col style="width: 33.33333333%;"/>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="Top">과목</th>
+                                <th>문제</th>
+                                <th>해설</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="Top">국어</td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                            </tr>
+                            <tr>
+                                <td class="Top">영어</td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                            </tr>
+                            <tr>
+                                <td class="Top">한국사</td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                            </tr>
+                            <tr>
+                                <td class="Top">행정학</td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                            </tr>
+                            <tr>
+                                <td class="Top">사회</td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                                <td><a class="downBtn" href="#none">다운로드</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- willbes-Layer-PassBox : 문제/해설 -->
    
     </div>
     <div class="Quick-Bnr ml20">

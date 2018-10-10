@@ -7013,12 +7013,16 @@ table.PassZoneTable .w-data {
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox */
 .willbes-Layer-PassBox {
-    display: none;
+    float: left;
+    width: 100%;
     background: #fff;
+    padding: 20px 25px;
+}
+.willbes-Layer-PassBox.abs {
+    display: none;
     position: absolute;
     z-index: 101;
     border: 1px solid #2f2f2f;
-    padding: 20px 25px;
 }
 .willbes-Layer-PassBox .closeBtn {
     position: absolute;
@@ -7088,6 +7092,9 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox .Member .inputBox button.sm {
     float: right;
     width: 96px;
+}
+.willbes-Layer-PassBox450 {
+    width: 450px;
 }
 .willbes-Layer-PassBox540 {
     width: 540px;
@@ -7628,11 +7635,520 @@ table.testTable tr td.w-btn a {
     border-top: 1px solid #35820e;
     border-bottom: 1px solid #35820e;
 }
+.LeclistTable .usertestTable tr td div.s-line.tx-light-blue {
+    border-top: 1px solid #1a8ccc;
+    border-bottom: 1px solid #1a8ccc;
+}
 .LeclistTable .usertestTable tr td div.s-line.round-red {
     background: url("../../img/willbes/mypage/icon_round_red.png") no-repeat center center;
 }
 .LeclistTable .usertestTable tr td div.s-line.round-blue {
     background: url("../../img/willbes/mypage/icon_round_blue.png") no-repeat center center;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : examSjBx */
+.ExamBox .examSjBx {
+    height: 40px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    line-height: 39px;
+    border-bottom: 2px solid #0d56ae;
+}
+.ExamBox .examSjBx h3 {
+    float: left;
+    margin: 0 20px 0 25px;
+}
+.ExamBox .examSjBx li {
+    float: left;
+    position: relative;
+}
+.ExamBox .examSjBx li .exam-temp {
+    background: url("../../img/willbes/mypage/icon_round_blue.png") no-repeat center center;
+    padding: 8px 9px;
+}
+.ExamBox .examSjBx li .exam-ing {
+    color: #0d56ae;
+}
+.ExamBox .examSjBx li .exam-ing:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 40px;
+    left: 50%;
+    margin-left: -6px;
+    border-color: #0d56ae transparent transparent;
+    border-width: 6px;
+}
+.ExamBox .examSjBx li .row-line {
+    background: #b7b7b7;
+    width: 1px;
+    height: 10px;
+    margin: 0 20px;
+}
+.ExamBox .examSjBx .countTime {
+    float: right;
+    margin-right: 30px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : examPaperWp */
+.ExamBox .examPaperWp {
+    margin: 6px 10px 0 25px;
+}
+.ExamBox .examPaperWp:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.ExamBox .examPaperWp .exam-paper {
+    float: left;
+    width: 450px;
+    height: 665px;
+    overflow-x: auto;
+}
+.ExamBox .examPaperWp .exam-paper li {
+    margin-bottom: 20px;
+}
+.ExamBox .examPaperWp .exam-paper a {
+    font-size: 14px;
+    color: #555;
+    vertical-align: top;
+}
+.ExamBox .examPaperWp .answer-sheet {
+    float: right;
+    width: 460px;
+}
+.ExamBox .examPaperWp .answer-sheet .exam-txt {
+    font-size: 11px;
+    color: #056fac;  
+    line-height: 15px; 
+    padding: 10px 0; 
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : answerTb */
+.ExamBox .answerTb tr th,
+.ExamBox .answerTb tr td {
+    font-size: 12px;
+    color: #666; 
+    text-align: center;
+}
+.ExamBox .answerTb tr th {
+    background: #d4d4d4;
+    height: 30px;
+    font-weight: 600;
+    color: #666;
+}
+.ExamBox .answerTb tr td {
+    height: 28px;
+}
+.ExamBox .answerTb tr.nth {
+    background: #f4f4f4;
+}
+
+/* subContainer : Mypage : 모의고사관리 : examTable */
+.LeclistTable .examTable tr td {
+    padding: 15px 0;
+}
+.LeclistTable .examTable .downBtn {
+    border: 1px solid #c8c8c8;
+    padding: 7px 15px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox */
+.ExamBox .popTitBox {
+    background: #eaeaea;
+    height: 64px;
+    line-height: 64px;
+    letter-spacing: -1px;
+    border-bottom: 1px solid #ccc;
+}
+.ExamBox .popTitBox .pop-Tit {
+    float: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+.ExamBox .popTitBox .pop-Tit img {
+    float: left;
+    margin: 10px 0 0 25px;
+}
+.ExamBox .popTitBox .pop-subTit {
+    float: right;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d56ae;
+    padding-right: 25px;
+}
+.ExamBox .popupContainer {
+    margin: 30px 10px;
+}
+.ExamBox .popupContainer .tabSty:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.ExamBox .popupContainer .tabSty li {
+    float: left;
+    width: 33.2222%;
+    height: 40px;
+    margin-left: 1px;
+}
+.ExamBox .popupContainer .tabSty li:first-child {
+    width: 33.3333%;
+    margin-left: 0;
+}
+.ExamBox .popupContainer .tabSty li a {
+    background: #8c8c8c;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+}
+.ExamBox .popupContainer .tabSty li.active a {
+    background: #0d56ae;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : findTb */
+.ExamBox .findTb tr th,
+.ExamBox .findTb tr td {
+    height: 40px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 12px;
+    color: #666; 
+}
+.ExamBox .findTb tr:first-child th,
+.ExamBox .findTb tr:first-child td {
+    border-top: none;
+}
+.ExamBox .findTb tr th {
+    background: #f4f4f4;
+    font-weight: 600;
+}
+.ExamBox .findTb tr td select {
+    height: 26px;
+    margin-right: 5px;
+}
+.ExamBox .findTb tr td input {
+    vertical-align: middle;
+}
+.ExamBox .findTb tr td label {
+    padding: 0 20px 0 5px;
+}
+.ExamBox .findTb tr td .chkWp {
+    line-height: 27px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : btnAgR */
+.ExamBox .btnAgR a {
+    display: inline-block;
+    height: 28px;
+    border: 1px solid #e5e5e5;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    padding: 0 15px;
+}
+.ExamBox .btnAgR.btnc a {
+    width: 65px;
+    height: 20px;
+    font-size: 11px;
+    line-height: 18px;
+    padding: 0;
+}
+.ExamBox .btnAgR.btnl {
+    height: 28px;
+    margin: 10px 0 5px;
+}
+.ExamBox .btnAgR.btnl a {
+    font-size: 12px;
+    font-weight: 600;
+}
+.ExamBox .btnAgR.btns ul li {
+    float: left;
+    width: 225px;
+    height: 40px;
+    margin-left: 10px;
+}
+.ExamBox .btnAgR.btns ul li:first-child {
+    margin-left: 0;
+}
+.ExamBox .btnAgR.btns ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 38px;
+}
+.ExamBox .btnAgR .btnBlue {
+    background: #0d56ae;
+}
+.ExamBox .btnAgR .btnGray {
+    background: #636363;
+}
+.ExamBox .btnAgR .btnlightGray {
+    background: #ebebeb;
+    border: 1px solid #ccc;
+    color: #333;
+}
+.ExamBox .btnAgR .btnlineBlue {
+    color: #0d56ae;
+    border: 1px solid #0d56ae;
+}
+.ExamBox .btnAgR .btnlineGray {
+    color: #666;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+}
+.ExamBox .btnAgR .btntxtBlack {
+    color: #333;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+.ExamBox .btnAgR.mgB1 {
+    margin: 10px 0 40px;
+    text-align: right;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : exam-paperList */
+.ExamBox .wBx {
+    border: 1px solid #e5e5e5;
+}
+.ExamBox .exam-paperList.mgB3 li {
+    display: inline-block;
+    width: 49.5%;
+    vertical-align: top;
+    padding-top: 30px;
+    padding-left: 10px;
+    margin-bottom: 50px;
+}
+.ExamBox .exam-paperList.mgB3 li:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.ExamBox .exam-paperList.mgB3 li .no {
+    font-size: 14px;
+    color: #555;
+    vertical-align: top;
+}
+.ExamBox .exam-paperList.mgB3 li .agR {
+    margin-top: 5px;
+}
+.ExamBox .exam-paperList.mgB3 li .agR textarea {
+    display: none;
+    width: 395px;
+    height: 50px;
+    margin-left: 50px;
+    padding: 10px;
+    resize: none;
+}
+.ExamBox .exam-paperList.mgB3 li .btnAgR {
+    display: block; 
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 30px;
+}
+.ExamBox .exam-paperList.mgB3 li .btnAgR a.btnM3 {
+    display: none;
+} 
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : htit2 */
+.ExamBox .htit2Wp {
+    height: 15px;
+    line-height: 15px;
+    margin: 35px 0 10px;
+}
+.ExamBox .htit2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+.ExamBox .htit2 span {
+    background: url("../../img/willbes/mypage/icon_arrow_exam.png") no-repeat 0 center;
+    vertical-align: baseline;
+    padding-left: 15px;
+}
+.ExamBox .htit2Wp .markerTx {
+    font-size: 11px;
+    color: #666;
+}
+.ExamBox .htit2Wp .markerTx em {
+    float: left;
+    background: #ef0f0f;
+    width: 11px;
+    height: 11px;
+    font-size: 0;
+    text-indent: -9999px;
+    margin:1px 5px 0 0;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : sheetTb */
+.ExamBox .sheetTb {
+    border: 1px solid #e5e5e5;
+}
+.ExamBox .sheetTb tr th,
+.ExamBox .sheetTb tr td {
+    height: 40px;
+    font-size: 12px;
+    color: #666; 
+    text-align: center;
+}
+.ExamBox .sheetTb tr th {
+    background: #f4f4f4;
+    font-weight: 600;
+}
+.ExamBox .sheetTb tr td {
+    border-top: 1px solid #e5e5e5;
+}
+.ExamBox .sheetTb tr td .mis {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ef0f0f;
+    color: #fff;
+    line-height: 39px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : sheetTb2 */
+.ExamBox .sheetTb2 {
+    border: 1px solid #e5e5e5;
+}
+.ExamBox .sheetTb2 tr th,
+.ExamBox .sheetTb2 tr td {
+    height: 40px;
+    font-size: 12px;
+    color: #666; 
+    text-align: center;
+}
+.ExamBox .sheetTb2 tr th {
+    background: #f4f4f4;
+    font-weight: 600;
+}
+.ExamBox .sheetTb2 tr td {
+    line-height: 16px;
+    border-top: 1px solid #e5e5e5;
+    padding: 30px 0;
+}
+.ExamBox .sheetTb2 tr td.aMis {
+    color: #ef0f0f;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : whtInfoTb */
+.ExamBox .whtInfoTb {
+    border: 1px solid #e5e5e5;
+}
+.ExamBox .whtInfoTb tr th,
+.ExamBox .whtInfoTb tr td {
+    height: 40px;
+    font-size: 12px;
+    color: #666; 
+    text-align: center;
+    border-left: 1px solid #e5e5e5;    
+}
+.ExamBox .whtInfoTb tr th:first-child,
+.ExamBox .whtInfoTb tr td:first-child {
+    border-left: none;
+}
+.ExamBox .whtInfoTb tr th {
+    background: #f4f4f4;
+    font-weight: 300;
+}
+.ExamBox .whtInfoTb tr td {
+    border-top: 1px solid #e5e5e5;
+    font-weight: 600;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : htit1 */
+.ExamBox .htit1Wp {
+    height: 15px;
+    line-height: 15px;
+    margin: 35px 0 10px;
+}
+.ExamBox .htit1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+.ExamBox .htit1 span {
+    background: url("../../img/willbes/mypage/icon_arrow_exam.png") no-repeat 0 center;
+    vertical-align: baseline;
+    padding-left: 15px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : listTb */
+.ExamBox .listTb {
+    border: 1px solid #e5e5e5;
+}
+.ExamBox .listTb tr th,
+.ExamBox .listTb tr td {
+    height: 40px;
+    font-size: 12px;
+    color: #666; 
+    text-align: center;
+    border-left: 1px solid #e5e5e5; 
+}
+.ExamBox .listTb tr th:first-child,
+.ExamBox .listTb tr td:first-child {
+    border-left: none;
+}
+.ExamBox .listTb thead tr:first-child th {
+    border-top: none;
+}
+.ExamBox .listTb tr th {
+    background: #f4f4f4;
+    font-weight: 600;
+    border-top: 1px solid #e5e5e5;
+}
+.ExamBox .listTb tr td {
+    border-top: 1px solid #e5e5e5;
+}
+.ExamBox .listTb tr td.aMis {
+    color: #ef0f0f;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : anlyWp */
+.ExamBox .anlyWp:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.ExamBox .aBx {
+    width: 470px;
+}
+.ExamBox .gBx {
+    clear: both;
+    background: #d9d9d9;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    border: 1px solid #b0b0b0;
+    padding: 20px;
+}
+.ExamBox .gBx strong {
+    color: #0d56ae;
+}
+
+/* subContainer : Mypage : 모의고사관리 : ExamBox : viewTb */
+.ExamBox .viewTb tr th {
+    background: #f4f4f4;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666; 
+    text-align: center;
 }
 
 /* subContainer : Mypage : 결제관리 : orderTable */

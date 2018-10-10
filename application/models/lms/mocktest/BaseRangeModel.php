@@ -157,8 +157,8 @@ class BaseRangeModel extends WB_Model
     {
         $dataReg = $dataMod = $dataDel = array();
 
-        if( !empty($this->input->post('chapterIdx')) ) {
-            foreach ($this->input->post('chapterIdx') as $k => $v) {
+        if( !empty($this->input->post('chapterTotal')) ) {
+            foreach ($this->input->post('chapterTotal') as $k => $v) {
                 if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) { // 신규등록 데이터
                     $dataReg[] = array(
                         'MaIdx' => $this->input->post('idx'),
@@ -167,6 +167,7 @@ class BaseRangeModel extends WB_Model
                         'IsUse' => $_POST['isUse'][$k],
                         'RegIp' => $this->input->ip_address(),
                         'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                        'RegDate' => date("Y-m-d H:i:s"),
                     );
                 } else { // 수정 데이터
                     $dataMod[] = array(
@@ -185,6 +186,7 @@ class BaseRangeModel extends WB_Model
             foreach ($this->input->post('chapterDel') as $k => $v) {
                 $dataDel[] = array(
                     'MalIdx' => $v,
+                    'IsUse' => 'N',
                     'IsStatus' => 'N',
                     'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 );
@@ -211,4 +213,56 @@ class BaseRangeModel extends WB_Model
         return ['ret_cd' => true];
     }
 
+
+    /**
+     * 데이터 복사
+     */
+    public function copyData($idx)
+    {
+        if (!preg_match('/^[0-9]+$/', $idx)) return false;
+
+        $RegIp = $this->input->ip_address();
+        $RegAdminIdx = $this->session->userdata('admin_idx');
+        $RegDatm = date("Y-m-d H:i:s");
+
+        try {
+            $this->_conn->trans_start();
+
+            // lms_mock_area 복사
+            $sql = "
+                INSERT INTO {$this->_table['mockArea']} (SiteCode, QuestionArea, IsUse, RegIp, RegAdminIdx, RegDatm)
+                SELECT SiteCode, CONCAT('복사-', QuestionArea), 'N', ?, ?, ?
+                FROM {$this->_table['mockArea']}
+                WHERE MaIdx = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+            $nowMaIdx = $this->_conn->insert_id();
+
+            // lms_mock_area_list 복사
+            $sql = "
+                INSERT INTO {$this->_table['mockAreaList']} (MaIdx, OrderNum, AreaName, IsUse, RegIp, RegAdminIdx, RegDate)
+                SELECT ?, OrderNum, AreaName, IsUse, ?, ?, ?
+                FROM {$this->_table['mockAreaList']}
+                WHERE MaIdx = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($nowMaIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+            // lms_Mock_R_Category 복사
+            $sql = "
+                INSERT INTO {$this->_table['mockAreaCate']} (MrsIdx, MaIdx, RegIp, RegAdminIdx, RegDatm)
+                SELECT MrsIdx, ?, ?, ?, ?
+                FROM {$this->_table['mockAreaCate']}
+                WHERE MaIdx = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($nowMaIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+            $this->_conn->trans_complete();
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('복사에 실패했습니다.');
+            }
+        }
+        catch (Exception $e) {
+            return error_result($e);
+        }
+
+        return ['ret_cd' => true];
+    }
 }

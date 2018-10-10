@@ -14,32 +14,32 @@
                         <select class="form-control mr-5" id="sc_cateD1" name="sc_cateD1">
                             <option value="">카테고리</option>
                             @foreach($cateD1 as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" @if(isset($_GET['sc_cateD1']) && $_GET['sc_cateD1'] == $row['CateCode']) selected @endif>{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="sc_cateD2" name="sc_cateD2">
                             <option value="">직렬</option>
                             @foreach($cateD2 as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}" @if(isset($_GET['sc_cateD2']) && $_GET['sc_cateD2'] == $row['CateCode']) selected @endif>{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="sc_subject" name="sc_subject">
                             <option value="">과목</option>
                             @foreach($subject as $row)
-                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if(isset($_GET['sc_subject']) && $_GET['sc_subject'] == $row['SubjectIdx']) selected @endif>{{ $row['SubjectName'] }}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="sc_use" name="sc_use">
                             <option value="">사용여부</option>
-                            <option value="Y">사용</option>
-                            <option value="N">미사용</option>
+                            <option value="Y" @if(isset($_GET['sc_use']) && $_GET['sc_use'] == 'Y') selected @endif>사용</option>
+                            <option value="N" @if(isset($_GET['sc_use']) && $_GET['sc_use'] == 'N') selected @endif>미사용</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">통합검색</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="sc_fi" name="sc_fi"> 명칭, 코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="sc_fi" name="sc_fi" value="{{ @$_GET['sc_fi'] }}"> 명칭, 코드 검색 가능
                     </div>
                     <div class="col-md-5 text-right">
                         {{--<button type="submit" class="btn btn-primary" id="btn_search"><i class="fa fa-spin fa-refresh"></i> 검색</button>--}}
@@ -84,7 +84,7 @@
                             <td class="text-center hide"></td>
                             <td class="text-center hide"></td>
                             <td class="text-center hide"></td>
-                            <td class="text-center">{{ $row['MaIdx'] }}</td>
+                            <td class="text-center">{{ sprintf("%04d", $row['MaIdx']) }}</td>
                             <td><span class="underline-link act-edit">{{ $row['QuestionArea'] }}</span></td>
                             <td class="text-center">{{ $row['ListCnt'] }}</td>
                             <td class="text-center">@if($row['IsUse'] == 'Y') <span>사용</span> @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
@@ -106,15 +106,27 @@
         $(document).ready(function() {
             // 수정으로 이동
             $('.act-edit').on('click', function () {
-                location.href = '{{ site_url('/mocktest/baseRange/edit/') }}' + $(this).closest('tr').find('[name=target]').val();
+                var query = '?' + $search_form.serialize();
+               location.href = '{{ site_url('/mocktest/baseRange/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
             // 복사
             function copyAreaData() {
-                if( !$('[name="target"]:checked').val() ) { alert('복사할 문제영역을 선택해 주세요.'); return false; }
+                if( !$list_form.find('[name="target"]:checked').val() ) { alert('복사할 문제영역을 선택해 주세요.'); return false; }
                 if (!confirm("복사하시겠습니까?")) return false;
 
-                console.log(1);
+                var _url = '{{ site_url('/mocktest/baseRange/copyData') }}';
+                var data = {
+                    '{{ csrf_token_name() }}' : $list_form.find('[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'POST',
+                    'idx': $list_form.find('[name="target"]:checked').val()
+                };
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.replace('{{ site_url('/mocktest/baseRange') }}' + '?' + $search_form.serialize());
+                    }
+                }, showValidateError, false, 'POST');
             }
 
 
@@ -125,7 +137,6 @@
 
             // 검색 초기화
             $('#searchInit').on('click', function () {
-                //$search_form[0].reset();
                 $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
                     $(this).val('');
                 });
@@ -147,7 +158,7 @@
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
                     { text: '<i class="fa fa-pencil mr-5"></i> 문제영역등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                        location.href = '{{ site_url('/mocktest/baseRange/create') }}' + dtParamsToQueryString($datatable);
+                        location.href = '{{ site_url('/mocktest/baseRange/create') }}' + '?' + $search_form.serialize();
                     }}
                 ]
             });

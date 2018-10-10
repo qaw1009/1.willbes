@@ -82,7 +82,7 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="rdr_use_start_date" name="rdr_use_start_date" value="{{$arr_use_seat_data['UseEndDate']}}">
+                        <input type="text" class="form-control datepicker" id="rdr_use_start_date" name="rdr_use_start_date" value="{{$use_start_date}}">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
                         <div class="input-group-addon no-border-right">
                             <i class="fa fa-calendar"></i>

@@ -6,7 +6,7 @@
 
 @section('layer_header')
     {{--<form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" action="{{ site_url("/pass/readingRoom/issue/storeSeatChang") }}?{!! $default_query_string !!}" novalidate>
+    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" action="{{ site_url("/pass/readingRoom/issue/storeSeatChange") }}?{!! $default_query_string !!}" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="now_order_idx" value="{{ $data['NowOrderIdx'] }}"/>
@@ -184,12 +184,19 @@
         var $datatable_modal;
         var $list_ajax_table_modal = $('#list_ajax_table_modal');
         var $_regi_form = $('#_regi_form');
+        var is_change_seat = '{{$is_change_seat}}';
 
         $(document).ready(function() {
             //좌석선택
             $('.btn_choice_seat').click(function() {
                 var seat_num = $(this).data('seat-num');
                 var is_use_seat = 'N';
+
+                if (is_change_seat == 'N') {
+                    alert('대여기간이 만료된 상태에서는 좌석변경을 할 수 없습니다.');
+                    return false;
+                }
+
                 if ($(this).data('member-idx') != '') {
                     is_use_seat = 'Y';
                 }
@@ -283,7 +290,7 @@
             });
 
             $_regi_form.submit(function() {
-                var _url = '{{ site_url('/pass/readingRoom/issue/storeSeatChang') }}' + '?' + '{!! $default_query_string !!}';
+                var _url = '{{ site_url('/pass/readingRoom/issue/storeSeatChange') }}' + '?' + '{!! $default_query_string !!}';
 
                 if (!confirm('수정 하시겠습니까?')) {
                     return false;

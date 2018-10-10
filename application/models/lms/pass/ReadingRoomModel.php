@@ -359,6 +359,10 @@ class ReadingRoomModel extends BaseReadingRoomModel
     public function addSeat($input, $now_order_idx)
     {
         try {
+            if (empty($input['prod_code']) == true) {
+                throw new \Exception('좌석 등록에 필요한 데이터 없음.');
+            }
+
             foreach ($input['prod_code'] as $key => $prod_code) {
                 $arr_condition = [
                     'EQ' => [
@@ -564,10 +568,18 @@ class ReadingRoomModel extends BaseReadingRoomModel
     {
         $this->_conn->trans_begin();
         try {
+            $now_date = date('Ymd');
+            $is_change_seat = 'Y';      //좌석변경여부 설정
+
             //좌석검증, 조회
             $data = $this->findReadingRoomForModify($input['now_order_idx']);
             if (empty($data) === true) {
                 throw new \Exception('조회된 좌석정보가 없습니다.');
+            }
+
+            $use_end_date = str_replace('-','',$data['UseEndDate']);
+            if ($use_end_date < $now_date) {
+                $is_change_seat = 'N';
             }
 
             //좌석관리테이블 수정
@@ -575,8 +587,12 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type].' 좌석 수정에 실패했습니다.');
             }
 
-            //기존 좌석 이동할 경우 좌석관리현황테이블 데이터 등록,수정
-            if ($data['SerialNumber'] != $input['set_seat']) {
+            /**
+             * 좌석관리현황테이블 데이터 등록,수정
+             *  - 좌석 이동할 경우
+             *  - 금일 기준 종료일자가 남아있는 경우
+            */
+            if ($data['SerialNumber'] != $input['set_seat'] && $is_change_seat == 'Y') {
                 if ($this->_modifyReadingRoomDetail($input, $data) !== true) {
                     throw new \Exception($this->readingRoomModel->arr_mang_title[$mang_type] . ' 좌석 수정에 실패했습니다.');
                 }

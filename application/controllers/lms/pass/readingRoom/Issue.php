@@ -102,7 +102,8 @@ class Issue extends \app\controllers\BaseController
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.LrIdx' => 'DESC', 'c.StatusCcd' => 'ASC', 'c.RrudIdx' => 'DESC', 'c.RegDatm' => 'DESC']);
+            $order_by = ['c.StatusCcd' => 'ASC', 'c.UseEndDate' => 'ASC', 'c.RrudIdx' => 'DESC'];
+            $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
         }
 
         return $this->response([
@@ -121,6 +122,8 @@ class Issue extends \app\controllers\BaseController
         $prod_code = $params[0];
         $mang_type = $this->_req('mang_type');
         $now_order_idx = $this->_reqG('now_order_idx');
+        $now_date = date('Ymd');
+        $is_change_seat = 'Y';      //좌석변경여부 설정
 
         //좌석상태공통코드
         $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
@@ -132,6 +135,11 @@ class Issue extends \app\controllers\BaseController
             show_error('데이터 조회에 실패했습니다.');
         }
 
+        $use_end_date = str_replace('-','',$data['UseEndDate']);
+        if ($use_end_date < $now_date) {
+            $is_change_seat = 'N';
+        }
+
         //좌석정보
         $seat_data = $this->readingRoomModel->listSeat($prod_code);
 
@@ -141,6 +149,7 @@ class Issue extends \app\controllers\BaseController
             'arr_seat_status' => $arr_seat_status,
             'data' => $data,
             'seat_data' => $seat_data,
+            'is_change_seat' => $is_change_seat,
             'method' => 'modify'
         ]);
     }
@@ -184,7 +193,7 @@ class Issue extends \app\controllers\BaseController
     /**
      * 좌석변경처리
      */
-    public function storeSeatChang()
+    public function storeSeatChange()
     {
         $mang_type = $this->_req('mang_type');
 

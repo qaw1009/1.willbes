@@ -180,6 +180,7 @@ class Regist extends \app\controllers\BaseController
         $prod_code = $params[0];
         $rdr_master_order_idx = $this->_reqG('rdr_master_order_idx');
         $rdr_prod_code = $this->_reqG('rdr_prod_code');
+        $now_date = date('Ymd');
 
         //좌석상태공통코드
         $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
@@ -207,9 +208,18 @@ class Regist extends \app\controllers\BaseController
                 ]
             ];
             $arr_use_seat_data = $this->readingRoomModel->getReadingRoomMst($arr_condition, 'SerialNumber, StatusCcd, UseEndDate');
+
+            $use_end_date = str_replace('-','',$arr_use_seat_data['UseEndDate']);
+            if ($use_end_date < $now_date) {
+                $use_start_date = date('Y-m-d');
+            } else {
+                $use_start_date = $arr_use_seat_data['UseEndDate'];
+            }
+            
         } else {
             $arr_use_seat_data = null;
             $master_order_idx = '';
+            $use_start_date = '';
         }
 
         //기준주문식별자 메모 데이터 조회
@@ -223,7 +233,8 @@ class Regist extends \app\controllers\BaseController
             'memo_data' => $memo_data,
             'rdr_master_order_idx' => $rdr_master_order_idx,
             'is_extension' => $is_extension,
-            'arr_use_seat_data' => $arr_use_seat_data
+            'arr_use_seat_data' => $arr_use_seat_data,
+            'use_start_date' => $use_start_date     //대여기간 시작일 초기 값
         ]);
     }
 

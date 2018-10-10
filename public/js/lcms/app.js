@@ -395,6 +395,13 @@ function init_datatable() {
             $search_form[0].reset();
             $datatable.draw();
         });
+
+        // 초기화 버튼 클릭 (날짜 설정 버튼이 있는 경우, 당월, 1주일 ...)
+        $search_form.on('click', '#btn_reset_in_set_search_date, #_btn_reset_in_set_search_date', function() {
+            $search_form[0].reset();
+            $search_form.find('.btn-set-search-date:eq(0)').trigger('click');
+            $datatable.draw();
+        });
     }
 
     //modal search submit

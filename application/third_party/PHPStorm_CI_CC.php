@@ -126,6 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
  * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
  * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
+ * @property PointModel $pointModel                                                   Point Model Class
  * @property PackageUserModel $packageUserModel                               Lecture user package Model Class
  * @property PackageAdminModel $packageAdminModel                           Lecture admin package Model Class
  * @property PackagePeriodModel $packagePeriodModel                          Lecture period package Model Class
@@ -147,10 +148,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchaAnalysisModel $searchaAnalysisModel                     SearchaAnalysis Model Class
  * @property BtobModel $btobModel                                                    BtoB Model Class
  * @property DeliveryPriceModel $deliveryPriceModel                               Delivery Price Product Model Class
- * @property BaseReadingRoomModel $baseReadingRoomModel                      BaseReadingRoom Model Class
+ * @property BaseReadingRoomModel $baseReadingRoomModel                 BaseReadingRoom Model Class
  * @property ReadingRoomModel $readingRoomModel                              ReadingRoom Model Class
- * @property CertModel $certModel                                                   Cert Model Class
- * @property CertModel $certApplyModel                                                   Cert Apply Model Class
+ * @property CertModel $certModel                                                     Cert Model Class
+ * @property CertModel $certApplyModel                                              Cert Apply Model Class
+ * @property OrderModel $orderModel                                                  Order Model Class
+ * @property OrderMemoModel $orderMemoModel                                   Order Memo Model Class
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

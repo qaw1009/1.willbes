@@ -358,7 +358,7 @@ class PopupModel extends WB_Model
                 $this->load->helper('file');
                 $real_img_path = public_to_upload_path($row['PopUpFullPath'].$row['PopUpImgName']);
                 if (@unlink($real_img_path) === false) {
-                    throw new \Exception('이미지 삭제에 실패했습니다.');
+                    /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
                 }
 
                 $img_data['PopUpFullPath'] = $this->upload->_upload_url . $upload_dir . '/';

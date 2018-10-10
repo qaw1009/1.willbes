@@ -174,6 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property AccessFModel $accessFModel                                          Access Model Class
  * @property DownloadFModel $downloadFModel                                    Download Model Class
  * @property ClassroomFModel $classroomFModel                                   Classroom Model Class
+ * @property MessageFModel $messageFModel                                       Message Model Class
  */
 class PHPStorm_CI_CC
 {

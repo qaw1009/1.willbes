@@ -10,6 +10,7 @@ class ManageMemberModel extends WB_Model
         'changeLog' => 'lms_Member_Change_Log',
         'outLog' => 'lms_Member_Out_Log',
         'device' => 'lms_member_device',
+        'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
@@ -54,7 +55,7 @@ class ManageMemberModel extends WB_Model
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
-            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount             
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount         
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -79,8 +80,6 @@ class ManageMemberModel extends WB_Model
      */
     public function getMember($memIdx)
     {
-        $rows = [];
-
         $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.BirthDay, Mem.Sex, 
             Info.ZipCode, Info.Addr1, fn_dec(Info.Addr2Enc) AS Addr2,
             fn_dec(Mem.PhoneEnc) AS Phone, Info.SmsRcvStatus,
@@ -94,7 +93,8 @@ class ManageMemberModel extends WB_Model
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
-            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount             
+            (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
+            (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName               
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 
@@ -109,12 +109,13 @@ class ManageMemberModel extends WB_Model
 
     /**
      * 사용자 정보 업데이트
-     * @param $memIdx
-     * @param array $arr_data
+     * @param $MemIdx
+     * @param array $data
+     * @return array|bool
      */
     public function setMember($MemIdx, $data = [])
     {
-        $oriData = getMember($MemIdx);
+        $oriData = $this->getMember($MemIdx);
         $UpdData = '';
 
         if(empty($oriData) === true){
@@ -136,7 +137,6 @@ class ManageMemberModel extends WB_Model
             }
 
             $this->_conn->trans_commit();
-
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -279,7 +279,6 @@ class ManageMemberModel extends WB_Model
             }
 
             $this->_conn->trans_commit();
-
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -345,7 +344,6 @@ class ManageMemberModel extends WB_Model
             }
 
             $this->_conn->trans_commit();
-
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);

@@ -108,19 +108,30 @@
                         var route_name = '';
 
                         if (that.prop('checked') === true) {
-                            route_name = row.CateRouteName;
-                            route_name = route_name.substr(route_name.indexOf(' > ') + 3);
-                            $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="col-xs-4 pb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
+                            if(!$ori_selected_data.hasOwnProperty(code)) {
+                                route_name = row.CateRouteName;
+                                route_name = route_name.substr(route_name.indexOf(' > ') + 3);
+                                $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="col-xs-4 pb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
+
+                                $ori_selected_data[code] = route_name;
+                            }
                         } else {
                             $selected_category.find('#_selected_category_' + code).remove();
+                            delete $ori_selected_data[code];
                         }
+
+                        @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
                     });
 
                     // 선택한 카테고리 삭제
                     $selected_category.on('click', '._selected-category-delete', function() {
-                        var data = $(this).parent().data('cate-code');
+                        var code = $(this).parent().data('cate-code');
+
                         $(this).parent().remove();
-                        $('input[id="_cate_code_' + data + '"]').prop('checked', false).iCheck('update');
+                        $('input[id="_cate_code_' + code + '"]').prop('checked', false).iCheck('update');
+                        delete $ori_selected_data[code];
+
+                        @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
                     });
 
                     // 적용 버튼

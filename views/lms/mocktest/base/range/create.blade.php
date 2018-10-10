@@ -107,7 +107,7 @@
                         <tr data-chapter-idx="">
                             <td class="text-center"></td>
                             <td class="text-center"><input type="text" class="form-control" name="areaName[]" value=""></td>
-                            <td class="text-center form-inline"><input type="text" class="form-control" style="width:30px" name="orderNum[]" value=""></td>
+                            <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="orderNum[]" value=""></td>
                             <td class="text-center">
                                 <select class="form-control" name="isUse[]">
                                     <option value="">사용여부</option>
@@ -127,7 +127,7 @@
                             <tr data-chapter-idx="{{ $row['MalIdx'] }}">
                                 <td class="text-center">{{ $loop->index }}</td>
                                 <td class="text-center"><input type="text" class="form-control" name="areaName[]" value="{{ $row['AreaName'] }}"></td>
-                                <td class="text-center form-inline"><input type="text" class="form-control" style="width:30px" name="orderNum[]" value="{{ $row['OrderNum'] }}"></td>
+                                <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="orderNum[]" value="{{ $row['OrderNum'] }}"></td>
                                 <td class="text-center">
                                     <select class="form-control" name="isUse[]">
                                         <option value="">사용여부</option>
@@ -159,13 +159,13 @@
         $(document).ready(function() {
             // 기본정보 등록,수정
             $regi_form.submit(function() {
-                //if (!confirm("저장후 사이트, 카테고리정보는 수정이 불가능합니다.\n저장하시겠습니까?")) return false;
+                if (!confirm("저장후 사이트, 카테고리정보는 수정이 불가능합니다.\n저장하시겠습니까?")) return false;
 
                 var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/baseRange/update') : site_url('/mocktest/baseRange/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/baseRange/edit/') }}' + ret.ret_data.dt.idx + '/' + getQueryString());
+                        location.replace('{{ site_url('/mocktest/baseRange/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
@@ -174,11 +174,11 @@
             $regi_sub_form.submit(function () {
                 if( $regi_sub_form.find('tbody tr').length < 1 ) { alert('필드를 먼저 추가해 주세요'); return false; }
 
-                var chapterIdx = [];
-                cList.find('tr').each(function () { chapterIdx.push($(this).data('chapter-idx')); });
+                var chapterTotal = [];
+                cList.find('tr').each(function () { chapterTotal.push($(this).data('chapter-idx')); });
 
                 var _url = '{{ site_url('/mocktest/baseRange/storeChapter') }}';
-                var data = $regi_sub_form.serialize() + '&' + $.param({'chapterIdx':chapterIdx, 'chapterExist':chapterExist, 'chapterDel':chapterDel});
+                var data = $regi_sub_form.serialize() + '&' + $.param({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel});
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
@@ -187,7 +187,7 @@
                 }, showValidateError, false, 'POST');
             });
 
-            // 모달창 오픈
+            // 카테고리 검색창 오픈
             $('.act-searchCate').on('click', function() {
                 if( !$('[name=siteCode]').val() ) { alert('운영사이트를 먼저 선택해 주세요'); return false; }
 

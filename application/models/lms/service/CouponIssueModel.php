@@ -144,29 +144,13 @@ class CouponIssueModel extends WB_Model
                 throw new \Exception('등록할 회원 정보가 없습니다.', _HTTP_BAD_REQUEST);
             }
 
-            // 기존 쿠폰 기본정보 조회
-            // 쿠폰등록 모델 로드
-            $this->load->loadModels(['service/couponRegist']);
-
-            $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
-                , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
-            if (count($row) < 1) {
-                throw new \Exception('쿠폰 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
-            }
-
-            // 쿠폰발급 가능여부 확인
-            // 발급여부 확인
-            if ($row['IsIssue'] == 'N') {
-                throw new \Exception('해당 쿠폰은 미발급 상태입니다.', _HTTP_NO_PERMISSION);
-            }
-
-            // 발급유효기간 확인
-            if (date('Y-m-d') < $row['IssueStartDate'] || date('Y-m-d') > $row['IssueEndDate']) {
-                throw new \Exception('발급 유효기간이 아닙니다.', _HTTP_NO_PERMISSION);
+            $coupon_data = $this->checkAddCouponDetail($coupon_idx);
+            if (is_array($coupon_data) === false) {
+                throw new \Exception($coupon_data, _HTTP_NO_PERMISSION);
             }
 
             // 배포루트, 쿠폰핀타입에 따라 발급 처리
-            $is_issue = $this->_addCouponDetail($coupon_idx, $row, $arr_mem_idx);
+            $is_issue = $this->_addCouponDetail($coupon_idx, $coupon_data, $arr_mem_idx);
             if ($is_issue !== true) {
                 throw new \Exception($is_issue, _HTTP_NO_PERMISSION);
             }
@@ -181,7 +165,38 @@ class CouponIssueModel extends WB_Model
     }
 
     /**
-     * 온라인 사용자 쿠폰 발급
+     * 사용자 쿠폰 발급전 사전 체크
+     * @param int $coupon_idx
+     * @return array|string
+     */
+    public function checkAddCouponDetail($coupon_idx)
+    {
+        // 쿠폰등록 모델 로드
+        $this->load->loadModels(['service/couponRegist']);
+
+        // 기존 쿠폰 기본정보 조회
+        $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
+            , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
+        if (count($row) < 1) {
+            return '쿠폰 정보 조회에 실패했습니다.';
+        }
+
+        // 쿠폰발급 가능여부 확인
+        // 발급여부 확인
+        if ($row['IsIssue'] == 'N') {
+            return '해당 쿠폰은 미발급 상태입니다.';
+        }
+
+        // 발급유효기간 확인
+        if (date('Y-m-d') < $row['IssueStartDate'] || date('Y-m-d') > $row['IssueEndDate']) {
+            return '발급 유효기간이 아닙니다.';
+        }
+
+        return $row;
+    }
+
+    /**
+     * 사용자 쿠폰 발급
      * @param $coupon_idx
      * @param array $coupon_data
      * @param array $arr_mem_idx

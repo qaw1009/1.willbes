@@ -906,6 +906,19 @@ button {
 }
 
 /* lecTable : 공통 */
+.lecAllChk {
+    margin: 20px;
+}
+.lecAllChk input[type="checkbox"] {
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+.lecAllChk label {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 15px
+}
 .lecTable .w-tit {
     font-size: 14px;
     color: #323232;

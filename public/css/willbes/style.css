@@ -5363,7 +5363,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     position: absolute;
     top: 60px;
     right: 144px;
-    z-index: 101;
+    z-index: 110;
     width: 510px;
     height: 620px;
     border: 1px solid #2f2f2f;
@@ -5405,7 +5405,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     position: absolute;
     top: 60px;
     right: 20px;
-    z-index: 101;
+    z-index: 110;
     width: 740px;
     height: 620px;
     border: 1px solid #2f2f2f;
@@ -5445,7 +5445,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     position: absolute;
     top: 24px;
     right: 0;
-    z-index: 101;
+    z-index: 110;
     width: 890px;
     border: 1px solid #2f2f2f;
     padding: 20px 25px 30px;
@@ -6268,7 +6268,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     position: absolute;
     top: 85px;
     right: 0;
-    z-index: 101;
+    z-index: 110;
     width: 700px;
     height: 610px;
     border: 1px solid #2f2f2f;
@@ -7021,7 +7021,7 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox.abs {
     display: none;
     position: absolute;
-    z-index: 101;
+    z-index: 110;
     border: 1px solid #2f2f2f;
 }
 .willbes-Layer-PassBox .closeBtn {
@@ -7119,6 +7119,7 @@ table.PassZoneTable .w-data {
     right: 20px; 
 }
 .willbes-Layer-PassBox.fix {
+    position: fixed;
     display: block;
     top: 50%;
     left: 50%;

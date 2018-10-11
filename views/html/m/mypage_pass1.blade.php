@@ -97,7 +97,8 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -113,7 +114,8 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">100</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -129,9 +131,13 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -163,7 +169,8 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -179,7 +186,8 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">100</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -195,9 +203,13 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span><</dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -225,7 +237,8 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
                         </tr>
@@ -241,9 +254,13 @@
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
                                     <dt>진도율 : <span class="tx-blue">50%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일</dt>
+                                    <dt>잔여기간 : <span class="tx-blue">100</span>일<span class="row-line">|</span></dt>
+                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
                                 </dl>
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                         </tr>
                     </tbody>
                 </table>

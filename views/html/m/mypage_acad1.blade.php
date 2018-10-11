@@ -42,7 +42,7 @@
                     </div>
                     <dl class="w-info acad tx-gray">
                         <dt>수강기간 : 2018-00-00~2018-00-00</dt>
-                        <dt>요일/회차 : 월~금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
+                        <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
                     </dl>
                 </td>
             </tr>
@@ -56,7 +56,7 @@
                     </div>
                     <dl class="w-info acad tx-gray">
                         <dt>수강기간 : 2018-00-00~2018-00-00</dt>
-                        <dt>요일/회차 : 월~금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
+                        <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
                     </dl>
                 </td>
             </tr>
@@ -70,7 +70,7 @@
                     </div>
                     <dl class="w-info acad tx-gray">
                         <dt>수강기간 : 2018-00-00~2018-00-00</dt>
-                        <dt>요일/회차 : 월~금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
+                        <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
                     </dl>
                 </td>
             </tr>

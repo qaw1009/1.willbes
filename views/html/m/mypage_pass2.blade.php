@@ -43,6 +43,9 @@
     </div>
 
     <div class="lineTabs lecListTabs c_both">
+        <div class="lecAllChk">
+            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"><label>전체선택</label>
+        </div>
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <colgroup>
                 <col style="width: 13%;">

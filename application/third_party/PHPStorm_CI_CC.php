@@ -151,7 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BaseReadingRoomModel $baseReadingRoomModel                 BaseReadingRoom Model Class
  * @property ReadingRoomModel $readingRoomModel                              ReadingRoom Model Class
  * @property CertModel $certModel                                                     Cert Model Class
- * @property CertModel $certApplyModel                                              Cert Apply Model Class
+ * @property CertApplyModel $certApplyModel                                              Cert Apply Model Class
  * @property OrderModel $orderModel                                                  Order Model Class
  * @property OrderMemoModel $orderMemoModel                                   Order Memo Model Class
  ***************** FRONT ***********************

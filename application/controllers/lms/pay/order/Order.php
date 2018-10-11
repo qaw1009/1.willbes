@@ -11,7 +11,7 @@ class Order extends \app\controllers\BaseController
     {
         parent::__construct();
 
-        $this->_ccd = $this->orderModel->_ccd;
+        $this->_ccd = $this->orderListModel->_ccd;
     }
 
     /**
@@ -117,7 +117,7 @@ class Order extends \app\controllers\BaseController
                 $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'vbank' :
-                $arr_condition['EQ'] = ['O.PayMethodCcd' => $this->orderModel->_pay_method_ccd['vbank']];
+                $arr_condition['EQ'] = ['O.PayMethodCcd' => $this->orderListModel->_pay_method_ccd['vbank']];
                 $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
                 break;
 /*            case 'refund' :
@@ -154,7 +154,7 @@ class Order extends \app\controllers\BaseController
         $order_data = element('0', $data, []);
 
         // 가상계좌 결제가 아닐 경우 영수증 출력 URL 조회
-        if ($order_data['PayRouteCcd'] === $this->orderModel->_pay_route_ccd['pg'] && $order_data['PayMethodCcd'] !== $this->orderModel->_pay_method_ccd['vbank']) {
+        if ($order_data['PayRouteCcd'] === $this->orderListModel->_pay_route_ccd['pg'] && $order_data['PayMethodCcd'] !== $this->orderListModel->_pay_method_ccd['vbank']) {
             $pg_config_file = 'pg_' . $order_data['PgDriver'];
             $this->load->config($pg_config_file, true, true);
             $order_data['ReceiptUrl'] = str_replace('{{$tid$}}', $order_data['PgTid'], config_get($pg_config_file . '.receipt_url'));

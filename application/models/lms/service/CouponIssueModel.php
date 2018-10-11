@@ -187,7 +187,7 @@ class CouponIssueModel extends WB_Model
      * @param array $arr_mem_idx
      * @return bool|string
      */
-    private function _addCouponDetail($coupon_idx, $coupon_data = [], $arr_mem_idx = [])
+    public function _addCouponDetail($coupon_idx, $coupon_data = [], $arr_mem_idx = [])
     {
         try {
             $admin_idx = $this->session->userdata('admin_idx');

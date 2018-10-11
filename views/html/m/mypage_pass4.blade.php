@@ -74,6 +74,13 @@
                                 <dl class="w-info">
                                     <dt><span class="tx-light-blue">[판매중]</span> 30,000원↓ 20%</dt>
                                 </dl> 
+                                <div class="w-start w-start-go-pay tx-gray">                        
+                                    <ul class="f_right two">
+                                        <li class="btn_white"><a href="#none">장바구니</a></li>
+                                        <li class="btn_blue"><a href="#none">바로결제</a></li>
+                                    </ul> 
+                                </div>
+
                             </td>
                         </tr>
                     </tbody>

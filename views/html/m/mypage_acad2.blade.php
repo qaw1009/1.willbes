@@ -11,24 +11,27 @@
     </div>
 
     <div class="willbes-Lec-Selected NG c_both tx-gray">
-        <select id="process" name="process" title="process" class="seleProcess width24p">
+        <select id="process" name="process" title="process" class="seleProcess width21p">
             <option selected="selected">과정</option>
             <option value="헌법">헌법</option>
             <option value="스파르타반">스파르타반</option>
             <option value="공직선거법">공직선거법</option>
         </select>
-        <select id="lecture" name="lecture" title="lecture" class="seleLec width24p ml1p">
+        <select id="lecture" name="lecture" title="lecture" class="seleLec width21p ml1p">
             <option selected="selected">과목</option>
             <option value="헌법">헌법</option>
             <option value="스파르타반">스파르타반</option>
             <option value="공직선거법">공직선거법</option>
         </select>
-        <select id="prof" name="prof" title="prof" class="seleProf width50p ml1p">
+        <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p">
             <option selected="selected">교수님</option>
             <option value="교수님1">교수님1</option>
             <option value="교수님2">교수님2</option>
             <option value="교수님3">교수님3</option>
         </select>
+        <div class="resetBtn width10p ml1p">
+            <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+        </div>
     </div>
     <div class="willbes-Txt NGR c_both pb20">※ 3개월 이전 수강종료내역은 PC에서 확인할 수 있습니다.</div>
     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">

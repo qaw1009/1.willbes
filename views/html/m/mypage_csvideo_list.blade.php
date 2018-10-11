@@ -28,13 +28,15 @@
             <option value="학습상담">학습상담</option>
         </select>
         <div class="willbes-Lec-Search NG width100p mt1p">
-            <div class="inputBox width74p p_re">
+            <div class="inputBox width90p p_re">
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="제목 및 내용 검색" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span class="hidden">검색</span>
                 </button>
             </div>
-            <div class="reset-Btn f_right width25p ml1p"><a href="#none">초기화</a></div>
+            <div class="resetBtn width10p">
+                <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+            </div>
         </div>
     </div>
 
@@ -82,7 +84,7 @@
                 <td class="w-info"><span class="NSK lBox n1">대기</span></td>
                 <td class="w-data tx-left pl2p">
                     <dl class="w-info">
-                        <dt>온라인</dt>
+                        <dt>온라인<span class="row-line">|</span><span class="tx-light-blue">수강</span></dt>
                     </dl>
                     <div class="w-tit">
                         <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
@@ -97,7 +99,7 @@
                 <td class="w-info"><span class="NSK lBox n2">완료</span></td>
                 <td class="w-data tx-left pl2p">
                     <dl class="w-info">
-                        <dt>온라인</dt>
+                        <dt>온라인<span class="row-line">|</span><span class="tx-light-blue">교재</span></dt>
                     </dl>
                     <div class="w-tit">
                         <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>

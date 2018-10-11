@@ -25,6 +25,15 @@ body {
 .width20p {
     width: 20%;
 }
+.width21p {
+    width: 21%;
+}
+.width21n5p {
+    width: 21.5%;
+}
+.width22p {
+    width: 22%;
+}
 .width24p {
     width: 24%;
 }
@@ -991,6 +1000,12 @@ button {
 .lecTable .w-start ul.two li {
     width: 48%;
 }
+.lecTable .w-start-go-pay {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: auto;
+}
 .lecTable .w-s-date {
     background: #e9e9e9;
     font-size: 14px;
@@ -1134,6 +1149,10 @@ button {
 }
 .Fixbtn.three ul li {
     width: 33.33333333%;
+}
+.resetBtn {
+    float: right;
+    text-align: right;
 }
 
 

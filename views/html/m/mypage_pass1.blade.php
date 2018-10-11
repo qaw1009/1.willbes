@@ -44,28 +44,31 @@
     </div>
 
     <div class="willbes-Lec-Selected NG c_both tx-gray">
-        <select id="lecture" name="lecture" title="lecture" class="seleLec width24p">
+        <select id="lecture" name="lecture" title="lecture" class="seleLec width21n5p">
             <option selected="selected">과목</option>
             <option value="헌법">헌법</option>
             <option value="스파르타반">스파르타반</option>
             <option value="공직선거법">공직선거법</option>
         </select>
-        <select id="prof" name="prof" title="prof" class="seleProf width24p ml1p">
+        <select id="prof" name="prof" title="prof" class="seleProf width21n5p ml1p">
             <option selected="selected">교수님</option>
             <option value="교수님1">교수님1</option>
             <option value="교수님2">교수님2</option>
             <option value="교수님3">교수님3</option>
         </select>
-        <select id="type" name="type" title="type" class="seleType width24p ml1p">
+        <select id="type" name="type" title="type" class="seleType width21n5p ml1p">
             <option selected="selected">학습유형</option>
             <option value="학습유형1">학습유형1</option>
             <option value="학습유형2">학습유형2</option>
         </select>
-        <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy width24p ml1p">
+        <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy width21n5p ml1p">
             <option selected="selected">최종학습일순</option>
             <option value="최근추가순">최근추가순</option>
             <option value="종료임박순">종료임박순</option>
         </select>
+        <div class="resetBtn width10p ml1p">
+            <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+        </div>
     </div>
     <div class="lineTabs lecListTabs c_both">
         <ul class="tabWrap lineWrap lecListWrap three">

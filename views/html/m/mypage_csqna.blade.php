@@ -28,13 +28,15 @@
             <option value="학습상담">학습상담</option>
         </select>
         <div class="willbes-Lec-Search NG width100p mt1p mb30">
-            <div class="inputBox width74p p_re">
+            <div class="inputBox width90p p_re">
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="제목 및 내용 검색" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span class="hidden">검색</span>
                 </button>
             </div>
-            <div class="reset-Btn f_right width25p ml1p"><a href="#none">초기화</a></div>
+            <div class="resetBtn width10p">
+                <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+            </div>
         </div>
     </div>
 

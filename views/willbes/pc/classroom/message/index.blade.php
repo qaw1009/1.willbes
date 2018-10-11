@@ -9,7 +9,7 @@
     </div>
 
     <div class="Content p_re">
-        <form id="search_form" name="search_form" method="GET">N
+        <form id="search_form" name="search_form" method="GET">
         <div class="willbes-Mypage-SUPPORTZONE c_both">
             <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                 · 쪽지관리
@@ -53,7 +53,6 @@
                     <colgroup>
                         <col style="width: 60px;">
                         <col style="width: 70px;">
-                        <col style="width: 80px;">
                         <col style="width: 370px;">
                         <col style="width: 70px;">
                         <col style="width: 100px;">
@@ -64,10 +63,8 @@
                     <tr>
                         <th>No<span class="row-line">|</span></th>
                         <th>과정<span class="row-line">|</span></th>
-                        <th>구분<span class="row-line">|</span></th>
                         <th>제목<span class="row-line">|</span></th>
                         <th>첨부<span class="row-line">|</span></th>
-                        <th>발송자<span class="row-line">|</span></th>
                         <th>발송일<span class="row-line">|</span></th>
                         <th>상태</th>
                     </tr>
@@ -81,9 +78,11 @@
                     @foreach($list as $row)
                         <tr>
                             <td class="w-no">{{$paging['rownum']}}</td>
-                            <td class="w-process"><div class="pBox p5">{{$row['SiteGroupName']}}</div></td>
-                            <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
-                            <td class="w-list tx-left pl25 {{($row['IsReceive'] == 'Y') ? '' : 'strong'}}"><a href="#none" onclick="openWin('MEMOPASS')">{{hpSubString($row['Content'],0,40,'...')}}</a></td>
+                            <td class="w-process"><div class="pBox p5">{{$row['SiteName']}}</div></td>
+                            <td class="w-list tx-left pl25 {{($row['IsReceive'] == 'Y') ? '' : 'strong'}}">
+                                {{--<a href="#none" onclick="openWin('MEMOPASS')">{{hpSubString($row['Content'],0,40,'...')}}</a>--}}
+                                <a href="#none" class="btn-crm-view" data-send-Idx="{{$row['SendIdx']}}">{{hpSubString($row['Content'],0,40,'...')}}</a>
+                            </td>
                             <td class="w-file">
                                 <a href="#none">
                                     @if(empty($row['AttachData']) === false)
@@ -92,8 +91,7 @@
                                     @endif
                                 </a>
                             </td>
-                            <td class="w-admin">관리자명</td>
-                            <td class="w-date">{{$row['RegDatm']}}</td>
+                            <td class="w-date">{{$row['RegDate']}}</td>
                             <td class="w-state {{($row['IsReceive'] == 'Y') ? '' : 'tx-red'}} strong">
                                 {{($row['IsReceive'] == 'Y') ? '확인' : '미확인'}}
                             </td>
@@ -110,8 +108,26 @@
             </div>
         </div>
         </form>
+
+        <div id="MEMOPASS"></div>
         <!-- willbes-Leclist -->
     </div>
     {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.btn-crm-view').click(function () {
+            var ele_id = 'MEMOPASS';
+            var data = {
+                'ele_id' : ele_id,
+                'show_onoff' : 'off',
+                'send_idx' : $(this).data('send-Idx')
+            };
+            sendAjax('{{ site_url('/classroom/message/show') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
+        });
+    });
+</script>
 @stop

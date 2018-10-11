@@ -52,7 +52,6 @@
                             <colgroup>
                                 <col style="width: 65px;">
                                 <col style="width: 90px;">
-                                @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))<col style="width: 80px;">@endif
                                 <col style="width: 100px;">
                                 <col style="width: 315px;">
                                 <col style="width: 90px;">
@@ -63,7 +62,6 @@
                             <tr>
                                 <th>No<span class="row-line">|</span></th>
                                 <th>과정<span class="row-line">|</span></th>
-                                @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))<th>구분<span class="row-line">|</span></th>@endif
                                 <th>상담유형<span class="row-line">|</span></th>
                                 <th>제목<span class="row-line">|</span></th>
                                 <th>작성자<span class="row-line">|</span></th>
@@ -80,10 +78,7 @@
                             @foreach($list as $row)
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_notice.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                    <td class="w-process"><div class="pBox p5">{{$row['SiteGroupName']}}</div></td>
-                                    @if($__cfg['SiteCode'] == config_item('app_intg_site_code'))
-                                        <td class="w-acad"><span class="oBox {{$row['CampusType']}}Box NSK">{{$row['CampusType_Name']}}</span></td>
-                                    @endif
+                                    <td class="w-process"><div class="pBox p5">{{$row['SiteName']}}</div></td>
                                     <td class="w-A">{{$row['TypeCcd_Name']}}</td>
                                     <td class="w-list tx-left pl20 {{($row['IsBest'] == 1) ? 'strong' : ''}}">
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))

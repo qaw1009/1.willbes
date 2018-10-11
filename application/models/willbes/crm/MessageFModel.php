@@ -38,7 +38,7 @@ class MessageFModel extends WB_Model
         } else {
             $column = 'a.SendIdx, a.SendGroupTypeCcd, a.SiteCode, a.SendPatternCcd, a.SendTypeCcd, a.SendOptionCcd, a.SendStatusCcd, a.AdvertisePatternCcd,
             a.CsTel, a.SendMail, a.SendAttachFilePath, a.SendAttachFileName, a.SendAttachRealFileName,
-            a.Title, a.Content, a.AdvertiseAgreeContent, a.SendDatm, a.IsUse, a.IsStatus, a.RegDatm, a.RegAdminIdx, a.IsReceive,
+            a.Title, a.Content, a.AdvertiseAgreeContent, a.SendDatm, a.IsUse, a.IsStatus, a.RegDatm, a.RegDate, a.RcvDatm, a.RegAdminIdx, a.IsReceive,
             g.SiteName AS SiteName, g.IsCampus AS IsCampus, h.SiteGroupName AS SiteGroupName,
             IF(g.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType,
             IF(g.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name,
@@ -55,13 +55,13 @@ class MessageFModel extends WB_Model
                     temp_a.SendIdx, temp_a.SendGroupTypeCcd, temp_a.SiteCode, temp_a.SendPatternCcd, temp_a.SendTypeCcd, temp_a.SendOptionCcd, temp_a.SendStatusCcd, temp_a.AdvertisePatternCcd,
                     temp_a.CsTel, temp_a.SendMail, temp_a.SendAttachFilePath, temp_a.SendAttachFileName, temp_a.SendAttachRealFileName,
                     temp_a.Title, temp_a.Content, temp_a.AdvertiseAgreeContent, temp_a.SendDatm, temp_a.IsUse, temp_a.IsStatus,
-                    DATE_FORMAT(temp_a.RegDatm, \"%Y-%m-%d\") AS RegDatm,
+                    RegDatm, DATE_FORMAT(temp_a.RegDatm, \"%Y-%m-%d\") AS RegDate, RcvDatm,
                     temp_a.RegAdminIdx, temp_b.IsReceive
                 FROM {$this->_table['crm_send']} AS temp_a
                 INNER JOIN (
-                    SELECT SendIdx, MemIdx, IsReceive
+                    SELECT SendIdx, MemIdx, IsReceive, RcvDatm
                     FROM {$this->_table['crm_send_message']}
-                    WHERE MemIdx = '{$sess_mem_idx}'
+                    WHERE MemIdx = '{$sess_mem_idx}' AND IsStatus = 'Y'
                     GROUP BY SendIdx
                 ) AS temp_b ON temp_a.SendIdx = temp_b.SendIdx
             
@@ -86,6 +86,28 @@ class MessageFModel extends WB_Model
         $query = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 쪽지회원관리테이블 정보 수정
+     * @param $arr_condition
+     * @param $inputData
+     * @return array|bool
+     */
+    public function updateReceiveMessage($arr_condition, $inputData)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $this->_conn->set($inputData)->where($arr_condition);
+            if ($this->_conn->update($this->_table['crm_send_message']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**

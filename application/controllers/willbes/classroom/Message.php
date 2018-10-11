@@ -71,6 +71,72 @@ class Message extends \app\controllers\FrontController
     }
 
     /**
+     * 쪽지 뷰페이지
+     * @return CI_Output
+     */
+    public function show()
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+        $arr_input = $this->_reqG(null);
+
+        if (empty($arr_input['send_idx']) === true) {
+            $err_data = [
+                'ret_cd' => false,
+                'ret_msg' => '잘못된 접근입니다.',
+                'ret_status' => _HTTP_ERROR
+            ];
+            return $this->json_result(false, '잘못된 접근 입니다다.', $err_data);
+        }
+
+        //수신상태 업데이트
+        $arr_condition = [
+            'SendIdx' => $arr_input['send_idx'],
+            'MemIdx' => $sess_mem_idx,
+            'IsReceive' => 'N'
+        ];
+        $inputData = [
+            'IsReceive' => 'Y',
+            'RcvDatm' => date('Y-m-d H:i:s')
+        ];
+        if ($this->messageFModel->updateReceiveMessage($arr_condition, $inputData) === false) {
+            $err_data = [
+                'ret_cd' => false,
+                'ret_msg' => '잘못된 접근입니다.',
+                'ret_status' => _HTTP_ERROR
+            ];
+            return $this->json_result(false, '상태 수정 실패입니다. 관리자에게 문의해 주세요.', $err_data);
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'a.SendIdx' => $arr_input['send_idx']
+            ]
+        ];
+        $data = $this->messageFModel->listMessage(false, $arr_condition, $sess_mem_idx);
+
+        $this->load->view('/classroom/message/show', [
+            'arr_input' => $arr_input,
+            'data' => $data[0]
+        ]);
+    }
+
+    public function delete()
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $arr_condition = [
+            'SendIdx' => $this->_reqP('send_idx'),
+            'MemIdx' => $sess_mem_idx
+        ];
+        $inputData = [
+            'IsStatus' => 'N',
+            'DelDatm' => date('Y-m-d H:i:s')
+        ];
+        $result = $this->messageFModel->updateReceiveMessage($arr_condition, $inputData);
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 파일다운로드
      */
     public function download()

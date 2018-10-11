@@ -31,15 +31,15 @@ class BaseRange extends \app\controllers\BaseController
             else $cateD2[] = $it;
         }
 
-        $moCate = $this->mockCommonModel->moCateList('', '', '', false);
+        list($data, $modata) = $this->baseRangeModel->list();
 
         $this->load->view('mocktest/base/range/index', [
-            'siteCodeDef' => $cateList[0]['SiteCode'],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateList[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
-            'data' => $this->baseRangeModel->list(),
-            'moData' => array_column($moCate, 'CateRouteName', 'MrsIdx'),
+            'data' => $data,
+            'moData' => $modata,
         ]);
     }
 

@@ -49,8 +49,7 @@ class MockCommonModel extends WB_Model
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "\nLIMIT $offset, $limit" : "";
 
         $select = "
-            SELECT MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode, C2.CateCode,
-                   S.SiteName, C1.CateName, C2.CateName, SJ.SubjectName,
+            SELECT MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, C2.CateCode AS CateCode2,
                    CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', C2.CateName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']') AS CateRouteName";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $from = "
@@ -60,7 +59,7 @@ class MockCommonModel extends WB_Model
             JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode
             JOIN {$this->_table['category']} AS C2 ON MB.CateCode = C2.CateCode AND C2.IsStatus = 'Y' AND C2.IsUse = 'Y'
             JOIN {$this->_table['category']} AS C1 ON C2.GroupCateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
-            JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
             WHERE MS.IsStatus = 'Y' AND MS.IsUse = 'Y' $where
         ";
         $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC, SJ.OrderNum ASC, MS.SubjectType ASC";

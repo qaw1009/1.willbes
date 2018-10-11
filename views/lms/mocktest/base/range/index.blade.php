@@ -72,22 +72,33 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @php $num = count($data); @endphp
                     @foreach($data as $row)
                         <tr>
                             <td class="text-center"><input type="radio" class="flat" name="target" value="{{ $row['MaIdx'] }}"></td>
-                            <td class="text-center">{{ $num-- }}</td>
+                            <td class="text-center"></td>
                             <td>
-                                {{--{{ preg_replace('/^(.*?\s>\s)/', '',$moData[$row['MrsIdx']]) }}--}}
+                                @php
+                                    $moData_cate1 = $moData_cate2 = $moData_subject = [];
+                                    foreach(explode(',', $row['moCateKey']) as $it) {
+                                        if( isset($moData[$it]) ) {
+                                            echo preg_replace('/^(.*?\s>\s)/', '', $moData[$it]['name']).'<br>';
+                                            $moData_cate1[] = $moData[$it]['cate1'];
+                                            $moData_cate2[] = $moData[$it]['cate2'];
+                                            $moData_subject[] = $moData[$it]['subject'];
+                                        }
+                                    }
+                                @endphp
                             </td>
-                            <td class="text-center hide"></td>
-                            <td class="text-center hide"></td>
-                            <td class="text-center hide"></td>
-                            <td class="text-center hide"></td>
+                            <td class="text-center hide">{{ $row['SiteCode'] }}</td>
+                            <td class="text-center hide">@if($moData_cate1){{ implode(' ', $moData_cate1) }}@endif</td>
+                            <td class="text-center hide">@if($moData_cate2){{ implode(' ', $moData_cate2) }}@endif</td>
+                            <td class="text-center hide">@if($moData_subject){{ implode(' ', $moData_subject) }}@endif</td>
                             <td class="text-center">{{ sprintf("%04d", $row['MaIdx']) }}</td>
                             <td><span class="underline-link act-edit">{{ $row['QuestionArea'] }}</span></td>
                             <td class="text-center">{{ $row['ListCnt'] }}</td>
-                            <td class="text-center">@if($row['IsUse'] == 'Y') <span>사용</span> @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
+                            <td class="text-center" data-search="{{ $row['IsUse'] }}">
+                                @if($row['IsUse'] == 'Y') <span>사용</span> @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
+                            </td>
                             <td class="text-center">{{ $row['wAdminName'] }}</td>
                             <td class="text-center">{{ $row['RegDatm'] }}</td>
                         </tr>
@@ -154,7 +165,6 @@
                     "info": "[ 총 _END_ / _MAX_건 ]",
                 },
                 dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>t",
-                //rowsGroup: ['.rowspan'],
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
                     { text: '<i class="fa fa-pencil mr-5"></i> 문제영역등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
@@ -162,18 +172,25 @@
                     }}
                 ]
             });
-            //datatableSearching();
+            datatableSearching();
         });
 
         // DataTable Search
-        // function datatableSearching() {
-        //     $datatable
-        //         .search($search_form.find('#sc_fi').val())
-        //         .column(2).search($search_form.find('#search_site_code').val())
-        //         .column(3).search($search_form.find('#sc_cateD1').val())
-        //         .column(4).search($search_form.find('#sc_cateD2').val())
-        //         .column(8).search($search_form.find('#sc_use').val())
-        //         .draw();
-        // }
+        function datatableSearching() {
+            $datatable
+                .search($search_form.find('#sc_fi').val())
+                .column(3).search($search_form.find('#search_site_code').val())
+                .column(4).search($search_form.find('#sc_cateD1').val())
+                .column(5).search($search_form.find('#sc_cateD2').val())
+                .column(6).search($search_form.find('#sc_subject').val())
+                .column(10).search($search_form.find('#sc_use').val())
+                .draw();
+
+            // NO필드 처리
+            var len = $list_table.find('tbody > tr').length;
+            $list_table.find('tbody > tr').each(function () {
+                $(this).find('td:eq(1)').text(len--);
+            });
+        }
     </script>
 @stop

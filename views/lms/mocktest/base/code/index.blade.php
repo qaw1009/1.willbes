@@ -117,7 +117,7 @@
                                     <span class="act-use underline-link red">미사용</span>
                                 @endif
                             </td>
-                            <td class="text-center">{{ @$adminName[$row['RegAdminIdx']] }}</td>
+                            <td class="text-center">{{ $row['wAdminName'] }}</td>
                             <td class="text-center">{{ $row['RegDatm'] }}</td>
                         </tr>
                     @endforeach

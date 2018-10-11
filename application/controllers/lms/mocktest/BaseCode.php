@@ -36,7 +36,6 @@ class BaseCode extends \app\controllers\BaseController
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
-            'adminName' => $this->mockCommonModel->getAdminNames(),
             'listDB' => $listDB,
             'subjectNames' => $subjectNames,
             'subjectIdxs' => $subjectIdxs,

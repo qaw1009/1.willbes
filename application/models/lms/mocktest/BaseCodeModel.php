@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BaseCodeModel extends WB_Model
 {
     private $_table = [
+        'admin' => 'wbs_sys_admin',
         'site' => 'lms_site',
         'category' => 'lms_sys_category',
         'subject' => 'lms_product_subject',
@@ -30,7 +31,7 @@ class BaseCodeModel extends WB_Model
         // 리스트
         $in = "('". implode("', '", array_values(get_auth_site_codes())) ."')"; // 사이트 접근권한
         $sql = "
-            SELECT M.*, S.SiteName,
+            SELECT M.*, S.SiteName, A.wAdminName,
                    C1.CateCode AS gCateCode, C1.CateName AS gCateName, C1.CateDepth AS gCateDepth, C1.OrderNum AS gOrderNum, C1.IsUse AS gIsUse,
                    C2.CateCode AS mCateCode, C2.CateName AS mCateName, C2.CateDepth AS mCateDepth, C2.OrderNum AS mOrderNum, C2.IsUse AS mIsUse,
                    GREATEST(C1.CateDepth, IFNULL(C2.CateDepth, 0)) as LastCateDepth
@@ -38,6 +39,7 @@ class BaseCodeModel extends WB_Model
             JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
             LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y' AND C2.IsUse = 'Y'
             RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C2.CateCode  AND M.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON M.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
             WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
             ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC";
 

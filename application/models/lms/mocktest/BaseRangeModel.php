@@ -29,16 +29,29 @@ class BaseRangeModel extends WB_Model
     public function list()
     {
         $sql = "
-            SELECT MB.*, COUNT(*) AS ListCnt, MC.MrsIdx, A.wAdminName
+            SELECT MB.*, A.wAdminName, GROUP_CONCAT(MC.MrsIdx) AS moCateKey,
+            (SELECT COUNT(*) FROM {$this->_table['mockAreaList']} AS ML WHERE MB.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y') AS ListCnt
             FROM {$this->_table['mockArea']} AS MB
-            JOIN {$this->_table['mockAreaList']} AS ML ON MB.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y'
-            JOIN {$this->_table['mockAreaCate']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
-            JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
+            LEFT JOIN {$this->_table['mockAreaCate']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
             WHERE MB.IsStatus = 'Y'
             GROUP BY MB.MaIdx
+            ORDER BY MB.MaIdx DESC
         ";
+        $list = $this->_conn->query($sql)->result_array();
 
-        return $this->_conn->query($sql)->result_array();
+        $moCate = $this->mockCommonModel->moCateList('', '', '', false);
+        $moList = [];
+        foreach ($moCate as $it) {
+            $moList[ $it['MrsIdx'] ] = array(
+                'cate1'   => $it['CateCode1'],
+                'cate2'   => $it['CateCode2'],
+                'subject' => $it['SubjectIdx'],
+                'name'    => $it['CateRouteName'],
+            );
+        }
+
+        return array($list, $moList);
     }
 
 

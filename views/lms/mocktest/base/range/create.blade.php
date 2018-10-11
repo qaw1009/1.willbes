@@ -159,7 +159,7 @@
         $(document).ready(function() {
             // 기본정보 등록,수정
             $regi_form.submit(function() {
-                if (!confirm("저장후 사이트, 카테고리정보는 수정이 불가능합니다.\n저장하시겠습니까?")) return false;
+                //if (!confirm("저장후 사이트, 카테고리정보는 수정이 불가능합니다.\n저장하시겠습니까?")) return false;
 
                 var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/baseRange/update') : site_url('/mocktest/baseRange/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

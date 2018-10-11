@@ -176,7 +176,7 @@
                             <td class="w-report tx-red">성적확인</td>
                             <td class="w-file on tx-blue">
                                 <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a><br/>
-                                <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=no, resizable=yes' ); return false">[오답노트]</a>
+                                <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[오답노트]</a>
                             </td>
                         </tr>
                         <tr>

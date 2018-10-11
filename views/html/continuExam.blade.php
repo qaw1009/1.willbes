@@ -12,8 +12,8 @@
             <div class="inner">
                 <h3>응시과목 : </h3>
                 <ul class="sj">
-                    <li><a class=" exam-temp" href="" onclick="">국어</a><span class="row-line">|</span></li>    
-                    <li><a class=" exam-temp" href="" onclick="">영어</a><span class="row-line">|</span></li>
+                    <li><a class="exam-temp" href="" onclick="">국어</a><span class="row-line">|</span></li>    
+                    <li><a class="exam-fin" href="" onclick="">영어</a><span class="row-line">|</span></li>
                     <li><a href="" onclick="">한국사</a><span class="row-line">|</span></li>
                     <li><a href="" onclick="">행정법</a><span class="row-line">|</span></li>
                     <li><a class="exam-ing" href="" onclick="">행정학</a></li>

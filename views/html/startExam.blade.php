@@ -3,7 +3,6 @@
 @section('content')
 <!-- Popup -->
 <div class="Popup willbes-Layer-PassBox">
-    <div class="Layer-Tit tx-dark-black NG">모의고사 응시</div> 
     <div class="popupContainer">
         <div class="lecMoreWrap pt10">
             <div class="PASSZONE-List widthAutoFull">
@@ -47,7 +46,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="PASSZONE-Lec-Section pt20">
+                <div class="PASSZONE-Lec-Section pt25">
                     <div class="Search-Result strong mb15 tx-gray">· 응시기간 및 시험시간</div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">
@@ -73,7 +72,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="PASSZONE-Lec-Section pt20">
+                <div class="PASSZONE-Lec-Section pt25">
                     <div class="Search-Result strong mb15 tx-gray">· 응시하기 참고</div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable usertestTable under-gray bdt-gray tx-gray GM">

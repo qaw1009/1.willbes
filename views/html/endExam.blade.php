@@ -3,7 +3,6 @@
 @section('content')
 <!-- Popup -->
 <div class="Popup willbes-Layer-PassBox">
-    <div class="Layer-Tit tx-dark-black NG">모의고사 응시</div> 
     <div class="popupContainer">
         <div class="lecMoreWrap pt10">
             <div class="PASSZONE-List widthAutoFull">
@@ -81,7 +80,7 @@
                     </span>
                     <span>
                         <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
-                            <span class="strong">답안 다시 확인</span>
+                            <span class="strong">답안다시확인</span>
                         </button>
                     </span>
                 </div>

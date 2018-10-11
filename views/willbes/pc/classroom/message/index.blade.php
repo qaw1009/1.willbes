@@ -80,7 +80,6 @@
                             <td class="w-no">{{$paging['rownum']}}</td>
                             <td class="w-process"><div class="pBox p5">{{$row['SiteName']}}</div></td>
                             <td class="w-list tx-left pl25 {{($row['IsReceive'] == 'Y') ? '' : 'strong'}}">
-                                {{--<a href="#none" onclick="openWin('MEMOPASS')">{{hpSubString($row['Content'],0,40,'...')}}</a>--}}
                                 <a href="#none" class="btn-crm-view" data-send-Idx="{{$row['SendIdx']}}">{{hpSubString($row['Content'],0,40,'...')}}</a>
                             </td>
                             <td class="w-file">
@@ -92,7 +91,7 @@
                                 </a>
                             </td>
                             <td class="w-date">{{$row['RegDate']}}</td>
-                            <td class="w-state {{($row['IsReceive'] == 'Y') ? '' : 'tx-red'}} strong">
+                            <td class="w-state {{($row['IsReceive'] == 'Y') ? '' : 'tx-red strong'}}">
                                 {{($row['IsReceive'] == 'Y') ? '확인' : '미확인'}}
                             </td>
                         </tr>

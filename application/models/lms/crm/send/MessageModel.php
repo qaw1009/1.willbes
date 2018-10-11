@@ -168,7 +168,7 @@ class MessageModel extends WB_Model
 
         try{
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/send/message/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+            $upload_sub_dir = SUB_DOMAIN . '/send/message/' . date('Ymd');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
             if (empty($uploaded) === true || count($uploaded) <= 0) {
@@ -292,7 +292,7 @@ class MessageModel extends WB_Model
                 break;
             case "2" :
                 $this->load->library('upload');
-                $upload_sub_dir = SUB_DOMAIN . '/send/message/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+                $upload_sub_dir = SUB_DOMAIN . '/send/message/' . date('Ymd');
                 $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
                 if (!empty($uploaded) === true || count($uploaded) > 0) {
@@ -338,7 +338,7 @@ class MessageModel extends WB_Model
     private function _setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd)
     {
         $this->load->library('upload');
-        $upload_sub_dir = SUB_DOMAIN . '/send/message/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+        $upload_sub_dir = SUB_DOMAIN . '/send/message/' . date('Ymd');
         $uploaded = $this->upload->uploadFile('file', ['send_attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
         $input_data = [
@@ -353,7 +353,8 @@ class MessageModel extends WB_Model
 
         if (empty($uploaded) === false && count($uploaded[0]) > 0) {
             $input_data = array_merge($input_data,[
-                'SendAttachFileName' => $uploaded[0]['orig_name']
+                'SendAttachFileName' => $uploaded[0]['orig_name'],
+                'SendAttachRealFileName' => $uploaded[0]['client_name']
             ]);
         }
 

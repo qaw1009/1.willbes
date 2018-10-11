@@ -265,7 +265,7 @@ class SmsModel extends WB_Model
 
         try{
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/send/sms/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+            $upload_sub_dir = SUB_DOMAIN . '/send/sms/' . date('Ymd');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
             if (empty($uploaded) === true || count($uploaded) <= 0) {
@@ -361,7 +361,7 @@ class SmsModel extends WB_Model
             case "2" :
                 $i = 0;
                 $this->load->library('upload');
-                $upload_sub_dir = SUB_DOMAIN . '/send/sms/' . date('Y') . '/' . date('m') . '/' . date('d') ;
+                $upload_sub_dir = SUB_DOMAIN . '/send/sms/' . date('Ymd');
                 $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
                 if (!empty($uploaded) === true || count($uploaded) > 0) {

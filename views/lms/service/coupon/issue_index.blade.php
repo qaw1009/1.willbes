@@ -177,7 +177,9 @@
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                formCreateSubmit('{{ site_url('/service/coupon/issue/excel') }}', $search_form.serializeArray(), 'POST');
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/service/coupon/issue/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
             // 쿠폰발급회수 버튼 클릭

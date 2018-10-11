@@ -38,6 +38,44 @@ class Order extends \app\controllers\BaseController
      */
     public function listAjax()
     {
+        $arr_condition = $this->_getListConditions();
+
+        $list = [];
+        $count = $this->orderModel->listOrder(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->orderModel->listOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 전체결제현황 목록 엑셀다운로드
+     */
+    public function excel()
+    {
+        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '결제완료일 (가상계좌신청일)', '총 실결제금액', '사용강좌포인트', '사용교재포인트'
+            , '총 환불금액', '총 남은금액', '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '배송상태', '쿠폰적용'];
+
+        $arr_condition = $this->_getListConditions();
+        $list = $this->orderModel->listExcelOrder($arr_condition, ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel('전체결제현황리스트', $list, $headers);
+    }    
+
+    /**
+     * 전체결제현황 조회 조건 리턴 
+     * @return array
+     */
+    private function _getListConditions()
+    {
         // 기본조건
         $arr_condition = [
             'EQ' => [
@@ -93,18 +131,7 @@ class Order extends \app\controllers\BaseController
                 break;
         }
 
-        $list = [];
-        $count = $this->orderModel->listOrder(true, $arr_condition);
-
-        if ($count > 0) {
-            $list = $this->orderModel->listOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
-        }
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list
-        ]);
+        return $arr_condition;
     }
 
     /**

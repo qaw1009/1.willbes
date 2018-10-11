@@ -175,8 +175,8 @@
                         var t_real_pay_price = rows.data().pluck('tRealPayPrice')[0];
                         var t_use_lec_point = rows.data().pluck('tUseLecPoint')[0];
                         var t_use_book_point = rows.data().pluck('tUseBookPoint')[0];
-                        var t_refund_price = 0;
-                        var t_remain_price = t_real_pay_price - t_refund_price;
+                        var t_refund_price = rows.data().pluck('tRefundPrice')[0];
+                        var t_remain_price = rows.data().pluck('tRemainPrice')[0];
 
                         var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
                             + ' (사용 포인트 : ' + addComma(t_use_lec_point) + ' | 교재 : ' + addComma(t_use_book_point) + ')'
@@ -213,20 +213,27 @@
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        return data > 0 ? '<div class="red inline-block">0</div>' : '';
+                    {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
+                        return data > 0 ? '<div class="red inline-block">' + addComma(data) + '</div>' : '';
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
                         return data + (data.indexOf('환불') > -1 ? '<br/>2018-00-00<br/>(관리자명)' : '');
                     }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        //return data !== null ? data + '<br/>2018-00-00' : '';
-                        return '';
+                    {'data' : 'DeliveryStatusCcdName', 'render' : function(data, type, row, meta) {
+                        return data !== null ? data + '<br/>' + row.DeliverySendDatm.substr(0, 10) : '';
                     }},
                     {'data' : 'DiscRate', 'render' : function(data, type, row, meta) {
                         return row.IsUseCoupon === 'Y' ? data : '';
                     }}
                 ]
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/pay/order/order/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
             // 데이터 수정 폼

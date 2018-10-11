@@ -103,6 +103,10 @@ class Regist extends \app\controllers\BaseController
         $this->excel->exportExcel('쿠폰등록리스트', $list, $headers);
     }
 
+    /**
+     * 쿠폰등록/발급 목록 조회 조건 리턴
+     * @return array
+     */
     private function _getListConditions()
     {
         $arr_condition = [

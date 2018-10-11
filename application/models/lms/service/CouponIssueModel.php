@@ -143,7 +143,8 @@ class CouponIssueModel extends WB_Model
             if (empty($arr_mem_idx) === true) {
                 throw new \Exception('등록할 회원 정보가 없습니다.', _HTTP_BAD_REQUEST);
             }
-
+            
+            // 사용자 쿠폰 발급전 쿠폰 유효성 체크
             $coupon_data = $this->checkAddCouponDetail($coupon_idx);
             if (is_array($coupon_data) === false) {
                 throw new \Exception($coupon_data, _HTTP_NO_PERMISSION);

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order extends \app\controllers\BaseController
 {
-    protected $models = array('pay/order', 'pay/orderMemo', 'member/manageMember', 'service/point', 'sys/code');
+    protected $models = array('pay/orderList', 'pay/orderMemo', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
     private $_ccd = array();
 
@@ -41,10 +41,10 @@ class Order extends \app\controllers\BaseController
         $arr_condition = $this->_getListConditions();
 
         $list = [];
-        $count = $this->orderModel->listOrder(true, $arr_condition);
+        $count = $this->orderListModel->listOrder(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->orderModel->listOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
+            $list = $this->orderListModel->listOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
         }
 
         return $this->response([
@@ -63,7 +63,7 @@ class Order extends \app\controllers\BaseController
             , '총 환불금액', '총 남은금액', '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '배송상태', '쿠폰적용'];
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->orderModel->listExcelOrder($arr_condition, ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
+        $list = $this->orderListModel->listExcelOrder($arr_condition, ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
 
         // export excel
         $this->load->library('excel');
@@ -146,7 +146,7 @@ class Order extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderModel->listOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]]);
+        $data = $this->orderListModel->listOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]]);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }

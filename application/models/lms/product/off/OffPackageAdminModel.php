@@ -33,6 +33,7 @@ class OffPackageAdminModel extends CommonLectureModel
                     ,Bd.CcdName as StudyPatternCcd_Name
                     ,Be.CcdName as StudyApplyCcd_Name
                     ,Bg.CcdName as CampusCcd_Name
+                    ,Bh.CcdName as AcceptStatusCcd_Name
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
@@ -54,6 +55,7 @@ class OffPackageAdminModel extends CommonLectureModel
                             left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
                             left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
                             left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
+                            left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode

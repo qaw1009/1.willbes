@@ -3,11 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CertApplyModel extends WB_Model
 {
+    private $_lec_type_ccd = '647002';  // 쿠폰발급구분 > 수동발급
+    private $_cert_cancel_sms_content = '인증이 보류되었습니다. 자세한 사항은 고객센터로 문의해 주세요.';          //승인취소 공통 문자 내용
+
     public function __construct()
     {
         parent::__construct('lms');
     }
 
+    /**
+     * 신청현황 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
     public function listApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
@@ -62,35 +74,214 @@ class CertApplyModel extends WB_Model
 
     }
 
+    /**
+     * 신청현황 수정 - 승인 / 취소
+     * @param array $input
+     * @return array|bool
+     */
     public function changeApply($input=[])
     {
         $this->_conn->trans_begin();
 
         try {
 
+            // 쿠폰등록 / 회원발급 모델 로드
+            $this->load->loadModels(['service/couponRegist']);
+            $this->load->loadModels(['service/couponIssue']);
+
             $app_status = element('app_status',$input);
+            $process_type = element('process_type',$input);
 
-            /*
-            echo (is_array(element('checkIdx',$input)));
-            echo var_dump(element('checkIdx',$input));
-            exit;
-            */
-
-            if(is_array(element('checkIdx',$input))) {
+            if($process_type === 'all') {
                 $_checkidx = element('checkIdx',$input);
             } else {
-                $_checkidx = explode(element('checkIdx',$input));
+                $_checkidx = element('checkIdx_each',$input);
             }
 
-            $admin_idx = $this->session->userdata('admin_idx');
+            // 인증정보 가져오기 - 쿠폰 할당/회수를 위함
+            if(is_array($_checkidx)) {
+                $arr_condition = [
+                    'IN' => ['SA.CaIdx' => $_checkidx]
+                ];
+            } else {
+                $arr_condition = [
+                    'EQ' => ['SA.CaIdx' => $_checkidx]
+                ];
+            }
 
-            /*
-            $arr_condition = [
-                'IN' => [
-                    'CaIdx' => $_checkidx
-                ]
-            ];
-            */
+            if($app_status === 'Y') {       //승인할 경우 신청조건이 미승인 만 추출
+                $arr_condition = array_merge_recursive($arr_condition,[
+                    'EQ' => ['ApprovalStatus' => 'A']
+                ]);
+            } else if($app_status === 'N') {    //취소할 경우 신청조건이 미승인, 승인 만 추출
+                $arr_condition = array_merge_recursive($arr_condition,[
+                    'IN' => ['ApprovalStatus'  => ['A','Y']]
+                ]);
+            }
+
+            $column = ' STRAIGHT_JOIN 
+                SA.*
+                ,A.CertTypeCcd,A.CertConditionCcd,A.SiteCode
+                ,F.MemId,F.MemName, concat(F.Phone1, fn_dec(F.Phone2Enc), F.Phone3) as Phone
+                ,G.SiteName, G.CsTel
+                ,H.CcdDesc As SmsContent
+                ,J.couponData_json ';
+            $from = '
+                from
+                    lms_cert_apply SA
+                    join lms_cert A on SA.CertIdx = A.CertIdx
+                    join lms_member F on SA.MemIdx = F.MemIdx
+                    join lms_site G on A.SiteCode = G.SiteCode
+                    join lms_sys_code H on A.CertTypeCcd = H.Ccd
+                    left outer join
+                        (
+                        select
+                        aa.CertIdx,
+                        CONCAT(\'[\', GROUP_CONCAT(
+                            JSON_OBJECT(
+                                \'CouponIdx\', bb.CouponIdx,
+                                \'CouponName\', bb.CouponName
+                            )
+                        ) , \']\') AS couponData_json
+                        from
+                            lms_cert_r_coupon aa
+                            join lms_coupon bb on aa.CouponIdx = bb.CouponIdx and bb.IsIssue=\'Y\'
+                        where aa.IsStatus=\'Y\'
+                        group by CertIdx
+                    ) as J on A.CertIdx = J.CertIdx
+                where SA.IsStatus=\'Y\'
+            ';
+            $order_by_offset_limit = '';
+
+            $where = $this->_conn->makeWhere($arr_condition);
+            $where = $where->getMakeWhere(true);
+
+            // 신청정보 추출
+            $applyList = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit )->result_array();
+
+
+            if(empty($applyList)) {
+                throw new \Exception('선택된 신청 정보가 없습니다.');
+            }
+
+            if($app_status === 'Y') {   //승인 : 쿠폰삽입
+
+                foreach ($applyList as $idx) {
+                    
+                    $mem_idx = $idx['MemIdx'];
+
+                    //쿠폰발급 이면서 쿠폰정보가 있는경우
+                    if( $idx['CertConditionCcd'] ==='685002' && !empty($idx['couponData_json']) ) {
+
+                        $coupon_info = json_decode($idx['couponData_json'], true);
+
+                        //연결된 쿠폰 정보 등록
+                        foreach ($coupon_info as $c_idx){
+
+                            $coupon_idx =  $c_idx['CouponIdx'];
+
+                            //***************************       쿠폰 지급 여부    ********************************//
+                            $coupon_add_arr_condition['EQ'] = ['MemIdx'=>$mem_idx, 'CouponIdx' => $coupon_idx,'ValidStatus' => 'Y'];
+
+                            // 받은 쿠폰 존재 여부
+                            if($this->_conn->getFindResult('lms_coupon_detail', true,$coupon_add_arr_condition) > 0) {
+                                throw new \Exception('이미 받은 쿠폰이 존재합니다.', _HTTP_NO_PERMISSION);
+                            }
+                            //***************************       쿠폰 지급 여부    ********************************//
+
+                            //***************************       couponissuemodel        ****************************//
+                            // 사용자 쿠폰 발급전 쿠폰 유효성 체크
+                            $coupon_data = $this->couponIssueModel->checkAddCouponDetail($coupon_idx);
+                            if (is_array($coupon_data) === false) {
+                                throw new \Exception($coupon_data, _HTTP_NO_PERMISSION);
+                            }
+
+                            // 배포루트, 쿠폰핀타입에 따라 발급 처리
+                            $is_issue = $this->couponIssueModel->_addCouponDetail($coupon_idx, $coupon_data, explode(',',$idx['MemIdx']));
+                            if ($is_issue !== true) {
+                                throw new \Exception($is_issue, _HTTP_NO_PERMISSION);
+                            }
+
+                            //***************************       couponissuemodel        ****************************//
+                        }
+                    }
+                    
+                    //sms 발송하기
+                    $smsData = [];
+                    $smsData['SiteCode'] = $idx['SiteCode'];
+                    $smsData['SiteName'] = $idx['SiteName'];
+                    $smsData['CsTel'] = $idx['CsTel'];
+                    $smsData['SmsContent'] = $idx['SmsContent'];
+                    $smsData['MemIdx'] = $idx['MemIdx'];
+                    $smsData['MemName'] = $idx['MemName'];
+                    $smsData['Phone'] = $idx['Phone'];
+
+                    $is_sms = $this->addSms($smsData);
+                    if($is_sms !== true) {
+                        throw new \Exception($is_sms, _HTTP_NO_PERMISSION);
+                    }
+                }
+
+            } else if($app_status === 'N') {   //취소
+
+                foreach ($applyList as $idx) {
+
+                    //쿠폰발급 이면서 쿠폰정보가 있는경우
+                    if( $idx['CertConditionCcd'] ==='685002' && !empty($idx['couponData_json']) ) {
+
+                        $mem_idx = $idx['MemIdx'];
+                        $coupon_info = json_decode($idx['couponData_json'], true);
+
+                        foreach ($coupon_info as $c_idx){
+
+                            $coupon_idx =  $c_idx['CouponIdx'];
+
+                            //***************************       지급된 쿠폰 사용 여부    ********************************//
+                            $coupon_add_arr_condition['EQ'] = ['MemIdx'=>$mem_idx, 'CouponIdx' => $coupon_idx,'ValidStatus' => 'Y', 'IsUse' => 'N'];
+
+                            // 미사용 쿠폰이 존재 할 경우 : 쿠폰 회수
+                            if($this->_conn->getFindResult('lms_coupon_detail', true,$coupon_add_arr_condition) > 0) {
+
+                                $admin_idx = $this->session->userdata('admin_idx');
+                                $reg_ip = $this->input->ip_address();
+
+                                //$result = $this->couponIssueModel->modifyRetireCouponDetail(json_decode($this->_reqP('params'), true));
+                                $this->_conn->set('RetireDatm', 'now()', false);
+                                $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
+                                $this->_conn->where(['MemIdx' => $mem_idx, 'CouponIdx' => $coupon_idx, 'IsUse' => 'N']);
+
+                                if ($this->_conn->update('lms_coupon_detail') === false) {
+                                    throw new \Exception('사용자 쿠폰 회수에 실패했습니다.');
+                                }
+
+                            }
+                            //***************************       쿠폰 지급 여부    ********************************//
+
+                        }
+                    }
+
+                    //sms 발송하기
+                    $smsData = [];
+                    $smsData['SiteCode'] = $idx['SiteCode'];
+                    $smsData['SiteName'] = $idx['SiteName'];
+                    $smsData['CsTel'] = $idx['CsTel'];
+                    $smsData['SmsContent'] = $this->_cert_cancel_sms_content;
+                    $smsData['MemIdx'] = $idx['MemIdx'];
+                    $smsData['MemName'] = $idx['MemName'];
+                    $smsData['Phone'] = $idx['Phone'];
+
+                    $is_sms = $this->addSms($smsData);
+                    if($is_sms !== true) {
+                        throw new \Exception($is_sms, _HTTP_NO_PERMISSION);
+                    }
+
+                }
+
+            }
+
+
+            /***************************        신청현황 수정     ****************************/
+            $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
                 'ApprovalStatus' => $app_status
@@ -110,15 +301,17 @@ class CertApplyModel extends WB_Model
                 $this->_conn->set('CancelDatm', 'NOW()', false);
             }
 
+            if(is_array($_checkidx)) {
+                $this->_conn->set($data)->where_in('CaIdx', $_checkidx);
+            } else {
+                $this->_conn->set($data)->where('CaIdx', $_checkidx);
+            }
 
-            $this->_conn->set($data)->where_in('CaIdx', $_checkidx);
             $this->_conn->update('lms_cert_apply');
 
-            echo $this->_conn->last_query();
-
-
-            //$this->_conn->trans_commit();
-            $this->_conn->trans_rollback();
+            $this->_conn->trans_commit();
+            //$this->_conn->trans_rollback();
+            /***************************        신청현황 수정     ****************************/
 
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -126,6 +319,53 @@ class CertApplyModel extends WB_Model
         }
         return true;
 
+    }
+
+
+    public function addSms($data=[])
+    {
+
+        try {
+            $inputData = [
+                'SendGroupTypeCcd' => '641001',
+                'SiteCode' => $data['SiteCode'],
+                'SendPatternCcd' => '637002',       //메세지성격
+                'SendTypeCcd' => '638001',          //SMS메세지종류
+                'SendOptionCcd' => '640001',        //메세지 발송옵션
+                'SendStatusCcd' => '639001',        //메세지 발송상태
+                'CsTel' => $data['CsTel'],
+                'Content' => $data['SiteName'].'-'. $data['SmsContent'],
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            $this->_conn->set($inputData)->set('SendDatm', 'NOW()', false);
+
+            // 데이터 등록
+            if ($this->_conn->set($inputData)->insert('lms_crm_send') === false) {
+                throw new \Exception('등록에 실패했습니다.');
+            }
+            $send_idx = $this->_conn->insert_id();
+
+            $inputData_sms = [
+                'SendIdx' => $send_idx,
+                'MemIdx' => $data['MemIdx'],
+                //'Receive_PhoneEnc' => $data['Phone'],
+                'Receive_Name' => $data['MemName'],
+            ];
+            $this->_conn->set($inputData_sms)->set('Receive_PhoneEnc',  'fn_enc("' . $data['Phone'] . '")',false);
+
+            // SMS 개별등록 등록
+            if ($this->_conn->set($inputData_sms)->insert('lms_crm_send_r_receive_sms') === false) {
+                throw new \Exception('세부 발송 등록에 실패했습니다.');
+            }
+            
+            
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 
 

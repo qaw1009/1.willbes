@@ -92,7 +92,9 @@
 
     <form class="form-horizontal" id="regi_form" name="regi_form">
         {!! csrf_field() !!}
+        <input type="hidden" name="process_type" id="process_type" value="">
         <input type="hidden" name="app_status" id="app_status" value="">
+        <input type="hidden" name='checkIdx_each' id="checkIdx_each" value="">
 
 
     <div class="x_panel mt-10">
@@ -106,7 +108,7 @@
                     <th>운영사이트</th>
                     <th>카테고리</th>
                     <th>인증구분</th>
-                    <th>회차</th>
+                    <th width="70">회차</th>
                     <th>회원명</th>
                     <th>상세<br>정보</th>
                     <th>첨부</th>
@@ -154,7 +156,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return '<input type="checkbox" id="checkIdx'+data.CaIdx+ '" name="checkIdx[]" class="flat" value="'+data.CaIdx+'" data-memidx="'+data.MemIdx+'" '+ (data.ApprovalStatus == 'A' ? '' : "disabled=disabled") +'  />';
+                            return '<input type="checkbox" id="checkIdx'+data.CaIdx+ '" name="checkIdx[]" class="flat" value="'+data.CaIdx+'" data-memid="'+data.MemId+'"  data-memidx="'+data.MemIdx+'" data-approval="' + (data.ApprovalStatus ) + '"/>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -162,7 +164,9 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
                     {'data' : 'CertTypeCcd_Name'},
-                    {'data' : 'No'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return data.No + ' [' + data.CertIdx + ']';
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:;" class="btn-member" data-idx="'+ data.MemIdx+ '" ><u>'+data.MemName+'('+data.MemId+')</u></a><BR>'+data.Phone+'('+data.SmsRcvStatus+')';
                         }},
@@ -188,10 +192,10 @@
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             if(data.ApprovalStatus == 'A') {
-                                return '<a href="#" class="btn-permission btn-sm btn-success border-radius-reset mr-10" data-idx="' + data.CertIdx + '">승인</a>' +
-                                    '<a href="#" class="btn-cancel btn-sm btn-danger mr-1 border-radius-reset" data-idx="' + data.CertIdx + '">취소</a>';
+                                return '<a href="javascript:;" class="btn-permission btn-sm btn-success border-radius-reset mr-10" data-idx="' + data.CaIdx + '">승인</a>' +
+                                    '<a href="javascript:;" class="btn-cancel btn-sm btn-danger mr-1 border-radius-reset" data-idx="' + data.CaIdx + '">취소</a>';
                             } else if (data.ApprovalStatus === 'Y') {
-                                return '<a href="#" class="btn-cancel btn-sm btn-danger border-radius-reset" data-idx="' + data.CertIdx + '">취소</a>';
+                                return '<a href="javascript:;" class="btn-cancel btn-sm btn-danger border-radius-reset" data-idx="' + data.CaIdx + '">취소</a>';
                             } else {
                                 return '';
                             }
@@ -214,44 +218,108 @@
             });
 
 
-            //선택 취소
+            //선택 승인/취소
+
             $('.btn-all-cancel , .btn-all-permission').on('click', function() {
 
                 var $branching = '';
                 var $branching_msg = '';
-
                 if($(this).attr("class").match("btn-all-cancel")) {
-                    $branching = 'N'; //취소
+                    $branching = 'N';
                     $branching_msg = '승인 취소';
                 } else if($(this).attr("class").match("btn-all-permission")) {
-                    $branching = 'Y'; //승인
+                    $branching = 'Y';
                     $branching_msg = '승인';
                 }
 
-                if($('input:checkbox[name="checkIdx[]"]').is(":checked") ==  false) {
-                    alert($branching_msg+" 할 내역을 선택해 주세요.");return;
+
+                if ($('input:checkbox[name="checkIdx[]"]').is(":checked") == false || $('input:checkbox[name="checkIdx[]"]').length == 0) {
+                    alert($branching_msg + " 할 내역을 선택해 주세요.");
+                    return;
                 }
-                if(confirm($branching_msg+" 하시겠습니까?")) {
+
+                $bundle_check = ''; //일괄처리 가능여부
+
+                $('input:checkbox[name="checkIdx[]"]:checked').each(function() {
+                    if($(this).data('approval') != 'A') {
+                        $bundle_check = 'N';
+                    }
+                });
+
+                if($bundle_check=='N') {
+                    alert("'미승인' 의 경우만 일괄 처리가 가능합니다.");
+                    return;
+                }
+
+
+                if (confirm($branching_msg + " 하시겠습니까?")) {
 
                     $("#app_status").val($branching);
+                    $("#process_type").val('all');
 
                     var _url = '{{ site_url('/site/cert/apply/change') }}';
-                    ajaxSubmit($regi_form, _url, function(ret) {
-                        if(ret.ret_cd) {
+                    ajaxSubmit($regi_form, _url, function (ret) {
+                        if (ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $datatable.draw();
                         }
                     }, showValidateError, null, false, 'alert');
 
                 }
+
             });
 
+            //개별 승인/취소
+            $list_table.on('click', '.btn-cancel, .btn-permission', function() {
 
-            function change_all(){
+                var $branching = '';
+                var $branching_msg = '';
+                var $checkidx_each = $(this).data('idx');
 
+                if($(this).attr("class").match("btn-cancel")) {
+                    $branching = 'N';
+                    $branching_msg = '승인 취소';
+                } else if($(this).attr("class").match("btn-permission")) {
+                    $branching = 'Y';
+                    $branching_msg = '승인';
+                }
 
+                if (confirm($branching_msg + " 하시겠습니까?")) {
+                    $("#process_type").val('each');
+                    $("#app_status").val($branching);
+                    $("#checkIdx_each").val($checkidx_each);
 
-            }
+                    var _url = '{{ site_url('/site/cert/apply/change') }}';
+                    ajaxSubmit($regi_form, _url, function (ret) {
+                        if (ret.ret_cd) {
+                            notifyAlert('success', '알림', ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showValidateError, null, false, 'alert');
+
+                }
+
+            });
+
+            $('.btn-message').click(function (){
+                var target_id = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memid');}).get().join(',');
+                if(target_id == ''){ alert('쪽지발송 대상 회원을 선택해 주세요.');return;}
+                $('.btn-message').setLayer({
+                    url : "//lms.local.willbes.net/crm/message/createSendModal?target_id="+target_id,
+                    width : 800,
+                    modal_id : "message_modal"
+                });
+            });
+
+            $('.btn-sms').click(function (){
+                var target_id = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memid');}).get().join(',');
+                if(target_id == ''){ alert('SMS발송 대상 회원을 선택해 주세요.');return;}
+                $('.btn-sms').setLayer({
+                    url : "//lms.local.willbes.net/crm/sms/createSendModal?target_id="+target_id,
+                    width : 1100,
+                    modal_id : "message_modal"
+                });
+            });
 
 
 

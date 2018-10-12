@@ -32,26 +32,33 @@ class Apply extends \app\controllers\BaseController
      */
     public function listAjax()
     {
+        $search_value = $this->_reqP('search_value'); // 검색어
+        $search_value_enc = $this->certApplyModel->getEncString($search_value); // 검색어 암호화
+
         $arr_condition = [
             'EQ' => [
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'A.CateCode' => $this->_reqP('search_category'),
-                'A.CertTypeCcd' => $this->_reqP('search_type'),
+                'A.CertTypeCcd' => !empty($this->_reqP('search_type')) ? $this->_reqP('search_type') : '!!!!',          //인증구분이 필수로 있어야 검색함
                 'A.CertConditionCcd' =>$this->_reqP('search_condition'),
                 'A.No' =>$this->_reqP('search_no'),
-                'A.ApprovalStatus' =>$this->_reqP('search_approval'),
+                'SA.ApprovalStatus' =>$this->_reqP('search_approval'),
             ],
         ];
 
-        if(empty($this->_reqP('search_value')) === false) {
-            $arr_condition = array_merge($arr_condition, [
-
+        if(empty($search_value) === false) {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'ORG' => [
                     'LKB' => [
-                        'F.MemId' => $this->_reqP('search_value'),
-                        'F.MemName' => $this->_reqP('search_value'),
-                        'F.Phone2Enc' => 'fn_dec('.$this->_reqP('search_value').')'
+                        'F.MemId' => $search_value,
+                        'F.MemName' => $search_value,
+                    ],
+                    'EQ' => [
+                        'F.PhoneEnc' => $search_value_enc, // 암호화된 전화번호
+                        'F.Phone2Enc' => $search_value_enc, // 암호화된 전화번호 중간자리
+                        'F.Phone3' => $search_value, // 전화번호 뒷자리
                     ]
-
+                ]
             ]);
         }
 
@@ -63,7 +70,6 @@ class Apply extends \app\controllers\BaseController
             ]);
         }
 
-        //echo var_dump($arr_condition);
 
         $list = [];
         $count = $this->certApplyModel->listApply(true, $arr_condition);
@@ -71,6 +77,7 @@ class Apply extends \app\controllers\BaseController
         if ($count > 0) {
             $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.CaIdx' => 'desc']);
         }
+
 
         return $this->response([
             'recordsTotal' => $count,
@@ -107,44 +114,16 @@ class Apply extends \app\controllers\BaseController
      */
     public function change()
     {
-        if (empty($this->_reqP('checkIdx'))) {
+
+        if (empty($this->_reqP('checkIdx')) && empty($this->_reqP('checkIdx_each'))) {
             return $this->json_error('인증 신청코드가 존재하지 않습니다.');
         }
 
         $result = $this->certApplyModel->changeApply($this->_reqP(null));
-
-        var_dump($result);exit;
-
+        //var_dump($result);exit;
         $this->json_result($result, '수정 되었습니다.', $result);
     }
 
-
-
-
-
-    public function store()
-    {
-        $method = 'add';
-        $rules = [
-            ['field'=>'CateCode', 'label' => '카테고리', 'rules' => 'trim|required'],
-            ['field'=>'CertTypeCcd', 'label' => '인증구분', 'rules' => 'trim|required'],
-            ['field'=>'CertConditionCcd', 'label' => '인증조건', 'rules' => 'trim|required'],
-        ];
-
-
-        if($this->validate($rules) === false) {
-            return;
-        }
-
-        if(empty($this->_reqP('CertIdx',false))===false) {
-            $method = 'modify';
-        }
-
-        $result = $this->certModel->{$method.'Cert'}($this->_reqP(null));
-        //var_dump($result);exit;
-        $this->json_result($result, '저장 되었습니다.', $result);
-
-    }
 
     public function download($fileinfo=[])
     {

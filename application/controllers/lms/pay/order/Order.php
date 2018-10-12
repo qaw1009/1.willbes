@@ -43,7 +43,7 @@ class Order extends BaseOrder
         $count = $this->orderListModel->listAllOrder(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
+            $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy());
         }
 
         return $this->response([
@@ -118,6 +118,15 @@ class Order extends BaseOrder
     }
 
     /**
+     * 전체결제현황 조회 order by 배열 리턴
+     * @return array
+     */
+    private function _getListOrderBy()
+    {
+        return ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc'];
+    }
+
+    /**
      * 전체결제현황 목록 엑셀다운로드
      */
     public function excel()
@@ -130,7 +139,7 @@ class Order extends BaseOrder
             , ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, DeliveryStatusCcdName, DiscRate';
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc']);
+        $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy());
 
         // export excel
         $this->load->library('excel');

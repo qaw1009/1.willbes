@@ -30,6 +30,9 @@ class BaseOrderModel extends WB_Model
     // 공통그룹코드 => 결제채널, 결제루트, 결제방법, 상품구분, 학습형태, 결제상태, 배송상태
     public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'PayStatus' => '676', 'DeliveryStatus' => '677'];
 
+    // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료)
+    public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'];
+
     // 결제루트 공통코드
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005'];
 
@@ -38,6 +41,9 @@ class BaseOrderModel extends WB_Model
 
     // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
     public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'receipt_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];
+
+    // 판매가능 공통코드 (판매가능, 판매중 (WBS))
+    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
     public function __construct()
     {

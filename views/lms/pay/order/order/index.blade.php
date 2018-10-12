@@ -204,7 +204,7 @@
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
-                        return data !== null ? data : row.OrderDatm + (row.VBankOrderDatm !== null ? '<br/>(' + row.VBankOrderDatm + ')' : '');
+                        return data !== null ? data : '' + (row.VBankOrderDatm !== null ? '<br/>(' + row.VBankOrderDatm + ')' : row.OrderDatm);
                     }},
                     {'data' : 'ProdTypeCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {

@@ -50,15 +50,15 @@ class OrderListModel extends BaseOrderModel
             $column = $is_count;
         }
 
-        $order_by_offset_limit = '';
-        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-
         $from = $this->_getListFrom();
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

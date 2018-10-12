@@ -109,6 +109,7 @@
                     <th>카테고리</th>
                     <th>인증구분</th>
                     <th width="70">회차</th>
+                    <th>응시직렬</th>
                     <th>회원명</th>
                     <th>상세<br>정보</th>
                     <th>첨부</th>
@@ -121,6 +122,7 @@
                     <th>승인확인</th>
                     <th>구매여부</th>
                     <th>결제완료일</th>
+                    <th>기간연장<Br>(연장일)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -167,6 +169,7 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return data.No + ' [' + data.CertIdx + ']';
                         }},
+                    {'data' : 'TakeKind', 'name' : 'TakeKind'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:;" class="btn-member" data-idx="'+ data.MemIdx+ '" ><u>'+data.MemName+'('+data.MemId+')</u></a><BR>'+data.Phone+'('+data.SmsRcvStatus+')';
                         }},
@@ -201,12 +204,40 @@
                             }
                         }},
 
-                    {'data' : 'OrderStatus'},
-                    {'data' : 'OrderDatm'}
-
+                    {'data' : 'OrderStatus', 'name' : 'OrderStatus'},
+                    {'data' : 'OrderDatm' , 'name' : 'OrderDatm'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
+                        },'name' : 'Extend'}
                 ]
             });
 
+
+            $datatable.on( 'draw', function () {
+                //var column = $datatable.column(0);
+
+                if ($('#search_type').val() == '' || $('#search_type').val() == '684001' || $('#search_type').val() == '684003' ) {
+                    $datatable.column('OrderStatus:name').visible(true);
+                    $datatable.column('OrderDatm:name').visible(true);
+                    $datatable.column('Extend:name').visible(false);
+                    $datatable.column('TakeKind:name').visible(false);
+
+                }else if($('#search_type').val() == '684002') {         //제대군인인증
+                    $datatable.column('OrderStatus:name').visible(true);
+                    $datatable.column('OrderDatm:name').visible(true);
+                    $datatable.column('Extend:name').visible(true);
+                    $datatable.column('TakeKind:name').visible(false);
+
+                } else if($('#search_type').val() == '684005') {        //수험표 인증
+                    $datatable.column('TakeKind:name').visible(true);
+                    $datatable.column('OrderStatus:name').visible(false);
+                    $datatable.column('OrderDatm:name').visible(false);
+                    $datatable.column('Extend:name').visible(false);
+                } else {
+                    $datatable.column('Extend:name').visible(false);
+                    $datatable.column('TakeKind:name').visible(false);
+                }
+            });
 
 
             //상세정보

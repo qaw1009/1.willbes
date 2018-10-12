@@ -293,7 +293,7 @@
                                 <label class="inline-block mr-5" for="option_ccds_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• '정원제한'을 설정해야만 온라인에서 접수를 받을 수 있습니다
+                        &nbsp;&nbsp;&nbsp;&nbsp;• '신청리스트'을 설정해야만 온라인에서 접수를 받을 수 있습니다
                     </div>
                 </div>
 
@@ -302,7 +302,6 @@
                     <div class="col-md-8">
                         <div class="form-group hide" id="limit_{{$optoins_keys[0]}}">
                             <div class="row">
-                                <label class="control-label col-md-1 pr-5">정원제한 <span class="required">*</span></label>
                                 <div class="col-md-5 item form-inline">
                                     <div class="radio">
                                         <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$optoins_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif> <label for="limit_type_S">단일리스트</label>
@@ -314,21 +313,33 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-11 col-lg-offset-1 form-inline form-limit-type hide" id="table_limit_type_S">
-                                    <select class="form-control ml-5" id="person_limit_type" name="person_limit_type">
-                                        <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
-                                        <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
-                                    </select>
-                                    <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
+                                <div class="col-md-11 form-limit-type hide" id="table_limit_type_S">
+                                    <div class="form-group form-inline">
+                                        <div class="col-md-11">
+                                        <select class="form-control" id="person_limit_type" name="person_limit_type">
+                                            <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
+                                            <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
+                                        </select>
+                                        <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="col-md-11 col-lg-offset-1 form-limit-type hide" id="table_limit_type_M">
+                                <div class="col-md-11 form-limit-type hide" id="table_limit_type_M">
                                     <div class="form-group form-inline">
-                                        <select class="form-control ml-5" id="select_type" name="select_type">
-                                            <option value="S" @if($data['SelectType']=='S')selected="selected"@endif>단일선택</option>
-                                            <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
-                                        </select>
-                                        <select class="form-control ml-5" id="temp_person_limit_type" name="temp_person_limit_type">
+                                        <div class="col-md-2">
+                                            <select class="form-control" id="select_type" name="select_type">
+                                                <option value="S" @if($data['SelectType']=='S')selected="selected"@endif>단일선택</option>
+                                                <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p class="form-control-static">• 다중리스트 옵션</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <div class="col-md-11">
+                                        <select class="form-control" id="temp_person_limit_type" name="temp_person_limit_type">
                                             <option value="L">인원제한</option>
                                             <option value="N">무제한</option>
                                         </select>
@@ -336,6 +347,7 @@
                                         <p class="form-control-static ml-20">[특강명]</p>
                                         <input type="text" id="temp_lecture_name" name="temp_lecture_name" class="form-control ml-5" title="특강명">
                                         <button type="button" class="btn btn-info btn-lecture-add" style="margin-bottom: 2px;">등록</button>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-11">
@@ -515,7 +527,7 @@
                 }
             });
 
-            //정원제한 옵션 선택
+            //신청리스트 옵션 선택
             $regi_form.on('ifChanged ifCreated', 'input[name="limit_type"]:checked', function() {
                 var set_val = $(this).data('limit-type');
                 $('.form-limit-type').removeClass('show').addClass('hide');

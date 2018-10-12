@@ -8901,24 +8901,29 @@ table.acadlecInfoPackageTable tr.Top td {
     float: left;
     background: #000;
     width: 71%;
-    height: 394px;
-    text-indent: -9999px;
+    height: 100%;
 }
 
+/* Video Player : vodTabs */
 .vodTabs {
     float: left;
     background: #1c1c1c;
     width: 29%;
-    height: 394px;
+    height: 100%;
 }
 .vodTabs .vodWrap {
     height: 41px;
     border-bottom: 1px solid #0e79af;
 }
 .vodTabs .vodWrap li {
-    float: left;
-    width: 50%;
+    float: left; 
     height: 40px;
+}
+.vodTabs .vodWrap.two li {
+    width: 50%;
+}
+.vodTabs .vodWrap.four li {
+    width: 25%;
 }
 .vodTabs .vodWrap li a {
     display: block;
@@ -8937,86 +8942,374 @@ table.acadlecInfoPackageTable tr.Top td {
     color: #fff;
     border: none;
 }
+.vodTabs .linkTabs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 40px;
+}
+.vodTabs .linkTabs a {
+    display: block;
+    background: #1c1c1c;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    color: #b8b8b8;
+    text-align: center;
+    line-height: 40px;
+}
+.vodTabs .vodBox .tabContent {
+    height: 353px;
+}
+.vodTabs .vodBox .sbjGrid {
+    position: relative;
+}
 
-
-.vodTabs .vodBox {}
-.vodTabs .vodBox .tabContent {}
-
-
-.vodTabs .vodBox .info {}
-.vodTabs .vodBox .list {}
-
+/* Video Player : vodTabs : w-data */
 .vodTabs .vodBox .w-data {
-    padding: 10px 15px;
+    padding: 15px 20px;
 }
 .vodTabs .vodBox .w-data .w-subtit {
-    font-size: 12px;
-    color: #606060;
+    font-size: 11px;
+    color: #666;
     margin-bottom: 5px;
 }
 .vodTabs .vodBox .w-data .w-subtit .row-line {
-    background: #606060;
+    background: #666;
     width: 1px;
-    height: 7px;
+    height: 10px;
     margin: -2px 5px 0;
 }
 .vodTabs .vodBox .w-data .w-tit {
     font-size: 14px;
-    color: #fff;
-    line-height: 24px;
-    margin-bottom: 10px;
-}
-
-.vodTabs .vodBox .w-data .w-info li {
-    font-size: 12px;
-    color: #6b6b6b;
+    color: #eee;
     line-height: 20px;
 }
+.vodTabs .vodBox .w-data .w-tit span {
+    vertical-align: baseline;
+}
+.vodTabs .vodBox .w-data .w-info {
+    margin-top: 10px;
+}
+.vodTabs .vodBox .w-data .w-info li {
+    font-size: 12px;
+    color: #666;
+    line-height: 17px;
+}
 .vodTabs .vodBox .w-data .w-info .row-line {
-    background: #6b6b6b;
+    background: #666;
     width: 1px;
     height: 9px;
     margin: 0 5px;
 }
 
-.vodTopTable {}
-.vodTopTable tr th:first-child {
-    border-left: 0;
+/* Video Player : vodTabs : vodcartBox */
+.vodcartBox {
+    background: #111;
+    margin: 0 20px 5px;
 }
-.vodTopTable tr th {
-    background: #131313;
-    height: 30px;
-    color: #5e5e5e;
-    border-left: 1px solid #2b2b2b;
+.vodcartBox ul li {
+    font-size: 12px;
+    color: #fff;
+    line-height: 14px;
+    border-top: 1px solid #212121;
+    padding: 10px 0 10px 10px;
 }
-.vodTable {
-    display: block;
-    height: 168px;
+.vodcartBox ul li:first-child {
+    border-top: 0;
+}
+.vodcartBox ul li input[type="checkbox"] {
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+.vodcartBox ul li .tit {
+    margin: 0 5px;
+}
+.vodcartBox ul li .txt {
+    display: inline-block;
+}
+.vodcartBox ul li .discount {
+    margin-left: 5px;
+}
+.vodcartBox ul li .price {
+    font-size: 12px;
+}
+.vodcartBox ul li.last {
+    height: 95px;
     overflow-x: auto;
 }
-.vodTable tr {
-    background: #1c1c1c;
+
+/* Video Player : vodTabs : buttonBtn 공통 */
+.buttonBtn ul li button {
+    border: none;
 }
-.vodTable tr.nth {
-    background: #212121;
+.buttonBtn ul li button span {
+    font-size: 12px;
+    font-weight: 600;
 }
-.vodTable tr td:first-child {
-    border-left: 0;
+.buttonBtn ul li button.btnGray {
+    background: #999;
 }
-.vodTable tr td {
+.buttonBtn ul li button.btnGray span {
+    color: #333;
+}
+.buttonBtn ul li button.btnBlue {
+    background: #0d79ae;
+}
+.buttonBtn ul li button.btnBlue span {
     color: #fff;
+}
+
+/* Video Player : vodTabs : cartBtn */
+.cartBtn {
+    float: right;
+    margin: 0 20px;
+}
+.cartBtn ul li {
+    float: left;
+    min-width: 64px;
+    height: 25px;
+    border: 1px solid #121212;
+    margin-left: 5px;
+}
+
+/* Video Player : vodTabs : bookmarkBox */
+.bookmarkBox {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.bookmarkBox ul li {
+    height: 25px;
+    margin-top: 5px;
+}
+.bookmarkBox ul li:first-child {
+    margin-top: 0;
+}
+.bookmarkBox ul li input {
+    float: left;
+    width: 165px;
+    height: 25px;
+}
+.bookmarkBox ul li button {
+    float: right;
+    width: 64px;
+    height: 25px;
+    border: 1px solid #121212;
+}
+
+/* Video Player : vodTabs : vodlistBox 공통 */
+.vodlistBox ul li {
+    height: 30px;
+    font-size: 11px;
+    line-height: 30px;
+}
+.vodlistBox ul li div {
+    float: left;
     text-align: center;
+}
+.vodlistBox ul li .tt1 {
+    width: 20%;
+}
+.vodlistBox ul li .tt2 {
+    width: 60%;
     border-left: 1px solid #2b2b2b;
 }
-.vodTable tr td.w-tit {
-    width: 95%;
-    display: inline-block;
+.vodlistBox ul li .tt3 {
+    width: 20%;
+    border-left: 1px solid #2b2b2b;
+}
+.vodlistBox ul.top li {
+    background: #131313;
+    color: #5e5e5e;
+    padding-right: 17px;
+}
+.vodlistBox ul.top li .tt3 {
+    padding-left: 17px;
+} 
+.vodlistBox ul.list li {
+    background: #1c1c1c;
+    color: #fff;
+}
+.vodlistBox ul.list li.nth {
+    background: #212121;
+}
+.vodlistBox ul.list li .tt2 {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    line-height: 30px;
-    padding-left: 5%;
+    padding: 0 10px;
 }
+
+/* Video Player : vodTabs : vodSbjBox */
+.vodSbjBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.vodSbjBox ul.sbj {
+    height: 175px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* Video Player : vodTabs : w-box */
+.vodTabs .vodBox .w-box {
+    padding: 20px;
+}
+.vodTabs .vodBox .w-box:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Video Player : vodTabs : vodlecBox */
+.vodlecBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.vodlecBox ul.lec {
+    height: 240px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* Video Player : vodTabs : vodtableBox */
+.vodtableBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #2b2b2b;
+}
+.vodtableBox ul li {
+    height: 30px;
+    font-size: 11px;
+    line-height: 30px;
+    border-bottom: 1px solid #2b2b2b;
+}
+.vodtableBox ul li div {
+    float: left;
+    text-align: center;
+}
+.vodtableBox ul li .tt1 {
+    width: 20%;
+}
+.vodtableBox ul li .tt1 a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.vodtableBox ul li .tt2 {
+    width: 30%;
+    border-left: 1px solid #2b2b2b;
+}
+.vodtableBox ul li .tt3 {
+    width: 50%;
+    border-left: 1px solid #2b2b2b;
+}
+.vodtableBox ul.top li {
+    background: #131313;
+    color: #5e5e5e;
+    padding-right: 17px;
+}
+.vodtableBox ul.top li .tt3 {
+    padding-left: 17px;
+} 
+.vodtableBox ul.table {
+    height: 165px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.vodtableBox ul.table li {
+    background: #1c1c1c;
+    color: #fff;
+}
+.vodtableBox ul.table li.nth {
+    background: #212121;
+}
+.vodtableBox ul.table li .tt3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+/* Video Player : vodTabs : faqBox */
+.faqBox {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.faqBox ul li {
+    height: 25px;
+    margin-top: 5px;
+    line-height: 25px;
+}
+.faqBox ul li:first-child {
+    margin-top: 0;
+}
+.faqBox .w-faqtit {
+    float: left;
+    width: 50px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: left;
+}
+.faqBox ul li select,
+.faqBox ul li input {
+    float: right;
+    width: 180px;
+    height: 25px;
+}
+.faqBox ul li button {
+    float: right;
+    width: 64px;
+    height: 25px;
+    border: 1px solid #121212;
+}
+.faqBox textarea {
+    widtH: 100%;
+    height: 90px;
+    margin-top: 15px;
+    padding: 10px;
+    overflow: auto;
+    resize: none;
+}
+.faqBox .chkBtn li {
+    float: left;
+    margin-top: 0;
+    height: 35px;
+    line-height: 35px;
+}
+.faqBox .chkBtn li.radioBtn {
+    float: right;
+}
+.faqBox dl dt {
+    float: left;
+    margin-right: 25px;
+}
+.faqBox dl dt input[type="radio"] {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin: 9px 5px 0 0;
+}
+.faqBox dl dt label {
+    font-size: 12px;
+    color: #ccc;
+    text-align: left;
+}
+
+
+
+
 
 
 
@@ -9025,10 +9318,6 @@ table.acadlecInfoPackageTable tr.Top td {
 .Quick-Bnr {
     float: left;
 }
-
-
-
-
 
 
 

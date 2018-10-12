@@ -118,6 +118,7 @@
     <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 상세 page 이동</a><br/><br/><br/><br/>
 
     <a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video page 이동</a><br/><br/>
 
 </div>
 

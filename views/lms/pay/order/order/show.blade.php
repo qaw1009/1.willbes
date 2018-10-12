@@ -63,14 +63,25 @@
                             <th class="bg-odd">포인트사용금액</th>
                             <td class="bg-white-only">{{ number_format($data['order']['tUseLecPoint'] + $data['order']['tUseBookPoint']) }}p
                                 (잔액 : 강좌 {{ number_format($data['mem_point']['lecture']) }}p | 교재 {{ number_format($data['mem_point']['book']) }}p)</td>
-                            <th class="bg-odd">가상계좌취소</th>
-                            <td class="bg-white-only">{{ $data['order']['VBankCancelDatm'] }}</td>
+                            <th class="bg-odd">가상계좌취소(일)</th>
+                            <td class="bg-white-only">
+                                @if($data['order']['VBankStatus'] == 'O')
+                                    <button name="btn_vbank_cancel" class="btn btn-xs btn-success mb-0">계좌취소</button>
+                                @else
+                                    {{ $data['order']['VBankCancelDatm'] }}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <th class="bg-odd">결제수단</th>
                             <td class="bg-white-only" colspan="5">{{ $data['order']['PayMethodCcdName'] }}
                                 @if(isset($data['order']['ReceiptUrl']) === true)
                                     <button name="btn_receipt_print" class="btn btn-xs btn-success ml-20 mb-0">매출전표</button>
+                                @endif
+
+                                @if($data['order']['IsVBank'] == 'Y')
+                                    <span class="pl-20 no-line-height">({{ $data['order']['VBankCcdName'] }} | {{ $data['order']['VBankAccountNo'] }} | {{ $data['order']['VBankDepositName'] }} | {{ $data['order']['OrderDatm'] }})</span>
+                                    <span class="pl-20 pr-20 no-line-height">|</span> 입금만료일 : {{ $data['order']['VBankExpireDatm'] }}까지
                                 @endif
                             </td>
                         </tr>
@@ -110,7 +121,7 @@
                                 <tr>
                                     <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
                                     <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
-                                    <td></td>
+                                    <td>{{ empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcd'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' }}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
                                     <td>{{ $order_prod_row['IsUseCoupon'] }} {{ $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' }}</td>
@@ -118,7 +129,7 @@
                                     <td>0</td>
                                     <td></td>
                                     <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
-                                    <td></td>
+                                    <td>{{ $order_prod_row['InvoiceNo'] }}</td>
                                     <td>{{ $order_prod_row['DiscReason'] }}</td>
                                 </tr>
                             @endforeach
@@ -339,6 +350,25 @@
                 }, showValidateError, null, false, 'alert');
             });
 
+            // 계좌취소 버튼 클릭
+            $('button[name="btn_vbank_cancel"]').on('click', function() {
+                if (!confirm('해당 계좌를 취소하시겠습니까?')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_memo_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'order_idx' : $regi_memo_form.find('input[name="order_idx"]').val()
+                };
+                sendAjax('{{ site_url('/pay/order/order/cancel/vbank') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
+
             // 매출전표 버튼 클릭
             $('button[name="btn_receipt_print"]').on('click', function() {
                 popupOpen('{!! $data['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 430, 700);
@@ -346,7 +376,8 @@
 
             // 목록 이동
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/pay/order/order/index') }}' + getQueryString());
+                var url = location.protocol + '//' + location.host + location.pathname.substr(0, location.pathname.indexOf('/show/')) + '/index' + getQueryString();
+                location.replace(url);
             });
         });
     </script>

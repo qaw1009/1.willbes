@@ -53,7 +53,7 @@
                             <td><strong>{{ $results['order']['OrderNo'] }}</strong></td>
                             <td class="bg-light-white">가상계좌취소</td>
                             <td>
-                                @if(empty($results['order']['VBankCancelDatm']) === true)
+                                @if($results['order']['VBankStatus'] == 'O')
                                     <span class="btnAll NSK"><a href="#none" id="btn_vbank_cancel">취소</a></span>
                                 @else
                                     {{ $results['order']['VBankCancelDatm'] }}
@@ -75,7 +75,11 @@
                         </tr>
                         <tr>
                             <td class="bg-light-white">영수증출력</td>
-                            <td class=""><span class="btnAll NSK"><a href="#none" id="btn_receipt_print">영수증출력하기</a></span></td>
+                            <td class="">
+                                @if(isset($results['order']['ReceiptUrl']) === true)
+                                    <span class="btnAll NSK"><a href="#none" id="btn_receipt_print">영수증출력하기</a></span>
+                                @endif
+                            </td>
                             <td class=""></td>
                             <td class=""></td>
                         </tr>

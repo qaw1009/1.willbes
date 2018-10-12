@@ -4,7 +4,7 @@
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="mt40">
-        
+
         <div>무료버젼</div>
         <!-- 무료 Ver -->
         <div class="videoPopup" style="width: 938px; height: 394px">
@@ -58,7 +58,7 @@
                     <div id="Sbj" class="tabContent sbjGrid" style="display: none;">
                         <div class="w-data tx-left">
                             <div class="w-subtit NG">국어<span class="row-line">|</span>기미진교수님</div>
-                            <div class="w-tit NG">2018 기미진 기특한 국어 이론요약 + 기출문제(1월-3월)</div>
+                            <div class="w-tit NGR">2018 기미진 기특한 국어 이론요약 + 기출문제(1월-3월)</div>
                             <ul class="w-info">
                                 <li>· 강좌정보: 문제풀이 ( 진행중<span class="row-line">|</span>2배수 )</li>
                                 <li>· 수강기간: <span class="tx-red">50일</span></li>

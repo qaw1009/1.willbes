@@ -9070,7 +9070,7 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .cartBtn ul li {
     float: left;
-    width: 64px;
+    min-width: 64px;
     height: 25px;
     border: 1px solid #121212;
     margin-left: 5px;

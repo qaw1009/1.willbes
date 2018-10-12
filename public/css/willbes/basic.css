@@ -804,6 +804,9 @@ select[disabled] {
 .tx-y-green {
   color: #35820e;
 }
+.tx-sky-blue {
+  color: #2fb2f1 !important;
+}
 .tx-bright-blue {
   color: #1087ef !important;
 }

@@ -8,13 +8,14 @@ class Qna extends \app\controllers\FrontController
     protected $auth_controller = true;
     protected $auth_methods = array();
 
-    protected $_bm_idx = '48';       //bmidx : 상담게시판
+    protected $_bm_idx;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
         'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
-        'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
+        'reply_status_ccd_not_complete' => '621001',    //답변등록상태 (미답변)
+        'reply_status_ccd_complete' => '621004'         //답변등록상태 (답변완료)
     ];
 
     public function __construct()
@@ -24,7 +25,22 @@ class Qna extends \app\controllers\FrontController
 
     public function index()
     {
+        $tab_datas = null;
+        $list = [];
         $arr_input = $this->_reqG(null);
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_consult_type = element('s_consult_type',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $tab = element('tab',$arr_input,'counsel');
+
+        $get_params = 's_keyword='.urlencode($s_keyword);
+        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
+        $get_params .= '&tab='.$tab;
+        /*$get_params = http_build_query($arr_input);*/
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
@@ -36,45 +52,63 @@ class Qna extends \app\controllers\FrontController
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
-        // 선택된 탭에 맞는 정보 조회
-        $is_tab_select = isset($arr_input['tab']);
-        $arr_input['tab'] = element('tab', $arr_input, 'counsel');
-        $tab_data = $this->{'_tab_' . $arr_input['tab']}($arr_input);
+        $arr_condition = [
+            'EQ' => [
+                'RegMemIdx' => $this->session->userdata('mem_idx'),
+                'RegType' => '0',
+                'IsUse' => 'Y'
+            ]
+        ];
 
-        $this->load->view('classroom/qna/index', [
-            'arr_base' => $arr_base,
-            'arr_input' => $arr_input,
-            'list' => $tab_data['list'],
-            'paging' => $tab_data['paging'],
-            'get_params' => $tab_data['get_params'],
-            'is_tab_select' => $is_tab_select
+        //1:1상담
+        $arr_condition_not_complete['EQ'] = array_merge($arr_condition['EQ'], [
+                'ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_not_complete'],
+                'BmIdx' => $this->_tab_counsel()
         ]);
-    }
+        $count_complete_type['counsel']['not_complete'] = $this->supportBoardTwoWayFModel->getCountBoard($arr_condition_not_complete);
 
-    private function _tab_counsel($arr_input)
-    {
-        $list = [];
-        $s_site_code = element('s_site_code',$arr_input);
-        $s_cate_code = element('s_cate_code',$arr_input);
-        $s_consult_type = element('s_consult_type',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input);
+        $arr_condition_complete['EQ'] = array_merge($arr_condition['EQ'], [
+            'ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_complete'],
+            'BmIdx' => $this->_tab_counsel()
+        ]);
+        $count_complete_type['counsel']['complete'] = $this->supportBoardTwoWayFModel->getCountBoard($arr_condition_complete);
 
-        $get_params = 's_keyword='.urlencode($s_keyword);
-        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
-        $get_params .= '&page='.$page;
+        //학습상담
+        $arr_condition_not_complete['EQ'] = array_merge($arr_condition['EQ'], [
+            'ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_not_complete'],
+            'BmIdx' => $this->_tab_professor()
+        ]);
+        $count_complete_type['professor']['not_complete'] = $this->supportBoardTwoWayFModel->getCountBoard($arr_condition_not_complete);
+
+        $arr_condition_complete['EQ'] = array_merge($arr_condition['EQ'], [
+            'ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_complete'],
+            'BmIdx' => $this->_tab_professor()
+        ]);
+        $count_complete_type['professor']['complete'] = $this->supportBoardTwoWayFModel->getCountBoard($arr_condition_complete);
+
+        // 선택된 탭에 맞는 정보 조회
+        $is_tab_select = isset($tab);
+        switch ($tab) {
+            case "counsel" :
+            case "professor" :
+                $tab_bm_idx = $this->{'_tab_' . $tab}();
+                $arr_input['tab'] = $tab;
+                break;
+            default;
+                show_alert("잘못된 접근입니다.", "/", false);
+            break;
+        }
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
+                'BmIdx' => $tab_bm_idx,
                 'RegMemIdx' => $this->session->userdata('mem_idx'),
                 'RegType' => '0',
                 'IsUse' => 'Y',
                 'SiteCode' => $s_site_code,
                 'TypeCcd' => $s_consult_type,
-            ],
-            'LKB' => [
-                'Category_String'=>$this->_cate_code
+                'ProfIdx' => $prof_idx,
+                'SubjectIdx' => $subject_idx
             ],
             'ORG' => [
                 'LKB' => [
@@ -97,6 +131,9 @@ class Qna extends \app\controllers\FrontController
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
 
         $paging = $this->pagination('/classroom/qna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        /*$paging = $this->pagination('/classroom/qna/index?' . http_build_query($arr_input), $total_rows,$this->_paging_limit,$this->_paging_count,true);*/
+
+
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -104,10 +141,26 @@ class Qna extends \app\controllers\FrontController
             }
         }
 
-        return [
-            'get_params' => $get_params,
+        $this->load->view('classroom/qna/index', [
+            'arr_base' => $arr_base,
+            'count_complete_type' => $count_complete_type,
+            'arr_input' => $arr_input,
+            'list' => $list,
             'paging' => $paging,
-            'list' => $list
-        ];
+            /*'get_params' => $get_params,*/
+            'is_tab_select' => $is_tab_select
+        ]);
+    }
+
+    private function _tab_counsel()
+    {
+        $this->_bm_idx = 48;
+        return $this->_bm_idx;
+    }
+
+    private function _tab_professor()
+    {
+        $this->_bm_idx = 66;
+        return $this->_bm_idx;
     }
 }

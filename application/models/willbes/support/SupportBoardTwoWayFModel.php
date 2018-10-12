@@ -221,4 +221,26 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         }
         return true;
     }
+
+    /**
+     * 조건에 따른 카운트 값 리턴
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function getCountBoard($arr_condition)
+    {
+        $column = 'count(*) AS numrows';
+
+        $from = "
+            from {$this->_table['twoway_board']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return $query->row(0)->numrows;
+    }
 }

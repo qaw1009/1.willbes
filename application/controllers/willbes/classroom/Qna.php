@@ -25,7 +25,7 @@ class Qna extends \app\controllers\FrontController
 
     public function index()
     {
-        $tab_datas = null;
+        $tab_bm_idx = null;
         $list = [];
         $arr_input = $this->_reqG(null);
         $s_site_code = element('s_site_code',$arr_input);

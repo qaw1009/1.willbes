@@ -77,7 +77,7 @@ class Order extends \app\controllers\FrontController
         $is_vbank = $results['order']['IsVBank'];   // 가상계좌 결제여부
 
         // 가상계좌 결제가 아닐 경우 영수증 출력 URL 조회
-        if ($is_vbank == 'N') {
+        if ($results['order']['PayRouteCcd'] == $this->orderListFModel->_pay_route_ccd['pg'] && $is_vbank == 'N') {
             $pg_config_file = 'pg_' . config_app('PgDriver', 'inisis');
             $this->load->config($pg_config_file, true, true);
 
@@ -96,8 +96,8 @@ class Order extends \app\controllers\FrontController
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
         $this->load->view('site/order/complete', [
-            'arr_prod_type_name' => $this->cartFModel->_cart_prod_type_name,
-            'arr_prod_type_idx' => $this->cartFModel->_cart_prod_type_idx,
+            'arr_prod_type_name' => $this->orderListFModel->_cart_prod_type_name,
+            'arr_prod_type_idx' => $this->orderListFModel->_cart_prod_type_idx,
             'results' => $results
         ]);
     }

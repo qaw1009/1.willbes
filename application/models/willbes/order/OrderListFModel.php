@@ -30,7 +30,16 @@ class OrderListFModel extends BaseOrderFModel
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
                 , O.SaveLecPoint, O.SaveBookPoint, O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
                 , O.VBankCcd, ifnull(CBC.CcdName, O.VBankCcd) as VBankName, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
-                , json_value(CBC.CcdEtc, concat("$.", O.PgCcd)) as VBankPgCode, if(O.PayMethodCcd = "' . $this->_pay_method_ccd['vbank'] . '", "Y", "N") as IsVBank
+                , json_value(CBC.CcdEtc, concat("$.", O.PgCcd)) as VBankPgCode
+                , if(O.VBankAccountNo is not null, "Y", "N") as IsVBank
+                , if(O.VBankAccountNo is not null,
+                    case 
+                        when O.CompleteDatm is not null then "P"        # 결제완료
+                        when O.VBankCancelDatm is not null then "C"     # 계좌취소     
+                        when O.VBankExpireDatm < NOW() then "E"     # 입금기한만료
+                        else "O"    # 주문완료(계좌신청)
+                    end, NULL			
+                  ) as VBankStatus
                 , SG.SiteGroupName, S.SiteName, S.IsCampus, if(S.IsCampus = "N", "온라인", "학원") as SiteOnOffName';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

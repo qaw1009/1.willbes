@@ -36,7 +36,7 @@
                             <td><strong>{{ $results['order']['OrderNo'] }}</strong></td>
                             <td class="bg-light-white">가상계좌취소</td>
                             <td>
-                                @if(empty($results['order']['VBankCancelDatm']) === true && empty($results['order']['CompleteDatm']) === true)
+                                @if($results['order']['VBankStatus'] == 'O')
                                     <span class="btnAll NSK"><a href="#none" id="btn_vbank_cancel">취소</a></span>
                                 @else
                                     {{ $results['order']['VBankCancelDatm'] }}
@@ -56,7 +56,7 @@
                             <td class="bg-light-white">결제수단</td>
                             <td><strong class="tx-light-blue">{{ empty($results['order']['PayMethodCcd']) === false ? $results['order']['PayMethodCcdName'] : $results['order']['PayRouteCcdName'] }}</strong></td>
                         </tr>
-                        @if(empty($results['order']['PgTid']) === false)
+                        @if(isset($results['order']['ReceiptUrl']) === true)
                             <tr>
                                 <td class="bg-light-white">영수증출력</td>
                                 <td class=""><span class="btnAll NSK"><a href="#none" id="btn_receipt_print">영수증출력하기</a></span></td>

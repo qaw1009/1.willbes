@@ -1085,7 +1085,7 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('주문내역이 없습니다.', _HTTP_NOT_FOUND);
             }
 
-            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['PayMethodCcd'] != $this->_pay_method_ccd['vbank']) {
+            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['IsVBank'] == 'N') {
                 throw new \Exception('무통장입금(가상계좌)으로 결제한 주문만 처리가 가능합니다.', _HTTP_BAD_REQUEST);
             }
 
@@ -1157,7 +1157,7 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('주문내역이 없습니다.', _HTTP_NOT_FOUND);
             }
 
-            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['PayMethodCcd'] != $this->_pay_method_ccd['vbank']) {
+            if ($order_row['PayRouteCcd'] != $this->_pay_route_ccd['pg'] || $order_row['IsVBank'] == 'N') {
                 throw new \Exception('무통장입금(가상계좌)으로 결제한 주문만 취소 가능합니다.', _HTTP_BAD_REQUEST);
             }
 

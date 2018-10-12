@@ -28,13 +28,16 @@ class BaseOrderModel extends WB_Model
     ];
 
     // 공통그룹코드 => 결제채널, 결제루트, 결제방법, 상품구분, 학습형태, 결제상태, 배송상태
-    public $_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'PayStatus' => '676', 'DeliveryStatus' => '677'];
+    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'PayStatus' => '676', 'DeliveryStatus' => '677'];
 
     // 결제루트 공통코드
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005'];
 
     // 결제방법 공통코드
     public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004'];
+
+    // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
+    public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'receipt_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];
 
     public function __construct()
     {

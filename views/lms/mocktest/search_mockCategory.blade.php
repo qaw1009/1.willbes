@@ -1,20 +1,21 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    모의고사카테고리 검색
+    모의고사카테고리 검색 @if($isReg) [등록된] @endif
 @stop
 
 @section('layer_header')
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="siteCode" value="{{ $siteCode }}">
+        <input type="hidden" name="isReg" value="{{ $isReg }}">
         @endsection
 
         @section('layer_content')
             <div class="mt-10 mb-5">
-                <span class="required">*</span> 검색한 카테고리 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)
+                <span class="required">*</span> 검색한 카테고리 선택 후 적용 버튼을 클릭해 주세요. @if(!$isSingle) (다중 선택 가능합니다.) @endif
             </div>
-            <div>
+            <div class="mb-50 @if($isSingle) hide @endif">
                 <div class="panel panel-default">
                     <div class="panel-body" style="min-height:60px; max-height: 120px; padding:0; padding-top: 10px; padding-bottom: 5px; overflow-y: auto;">
                         <ul id="_selected_category" class="list-unstyled mb-0">
@@ -25,7 +26,7 @@
                     <button type="button" class="btn btn-success btn-sm mb-0" id="_btn_apply">적용</button>
                 </div>
             </div>
-            <div class="form-group form-group-bordered mt-50">
+            <div class="form-group form-group-bordered mt-20">
                 <div class="col-xs-9">
                     <div class="form-inline">
                         <label class="mr-15">과목검색</label>
@@ -42,7 +43,7 @@
                 <table id="_list_ajax_table" class="table table-striped table-bordered">
                     <thead class="bg-white-gray">
                     <tr>
-                        <th class="text-center"><input type="checkbox" id="_is_all" class="flat" value="Y"></th>
+                        <th class="text-center">@if(!$isSingle)<input type="checkbox" id="_is_all" class="flat" value="Y">@endif</th>
                         <th>카테고리 정보</th>
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
@@ -63,6 +64,8 @@
                 var $ori_selected_data = {};
 
                 $(document).ready(function() {
+                    var isSingle = '{{ $isSingle }}'; // 단일, 다중선택 여부
+
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable = $list_table.DataTable({
                         language: {
@@ -74,15 +77,16 @@
                             'url' : '{{ site_url('/mocktest/baseCode/moCateList') }}',
                             'type' : 'POST',
                             'data' : function(data) {
-                                return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                                return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                             }
                         },
                         columns: [
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                                     var code = row.MrsIdx;
                                     var checked = ($ori_selected_data.hasOwnProperty(code) === true) ? 'checked="checked"' : '';
+                                    var inputType = (isSingle) ? 'radio' : 'checkbox';
 
-                                    return '<input type="checkbox" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '>';
+                                    return '<input type="'+inputType+'" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '>';
                             }},
                             {'data' : 'CateRouteName'},
                             {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -95,7 +99,7 @@
 
                     // 전체선택
                     $datatable.on('ifChanged', '#_is_all', function() {
-                        var $_cate_code = $('input[name="_cate_code"]');
+                        var $_cate_code = $('[name="_cate_code"]');
                         if ($(this).prop('checked') === true) $_cate_code.iCheck('check');
                         else $_cate_code.iCheck('uncheck');
                     });
@@ -106,6 +110,8 @@
                         var row = $datatable.row(that.data('row-idx')).data();
                         var code = that.val();
                         var route_name = '';
+
+                        if(isSingle) { $selected_category.empty(); $ori_selected_data = {}; }
 
                         if (that.prop('checked') === true) {
                             if(!$ori_selected_data.hasOwnProperty(code)) {
@@ -121,6 +127,8 @@
                         }
 
                         @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
+
+                        if(isSingle && Object.keys($ori_selected_data).length) $('#_btn_apply').trigger('click');
                     });
 
                     // 선택한 카테고리 삭제
@@ -143,7 +151,7 @@
                             return;
                         }
 
-                        if (!confirm('카테고리를 선택하시겠습니까?')) {
+                        if (!isSingle && !confirm('카테고리를 선택하시겠습니까?')) {
                             return;
                         }
 
@@ -151,10 +159,18 @@
                             code = $(this).data('cate-code');
                             route_name = $(this).text().trim();
 
-                            html += '<div class="col-xs-4 pb-5">' + route_name;
-                            html += '   <a href="#none" data-cate-code="' + code + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
-                            html += '   <input type="hidden" name="moLink[]" value="' + code + '">';
-                            html += '</div>';
+                            if(isSingle) {
+                                html += '<span class="pb-5">' + route_name;
+                                html += '   <a href="#none" data-cate-code="' + code + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
+                                html += '   <input type="hidden" name="moLink" value="' + code + '">';
+                                html += '</span>';
+                            }
+                            else {
+                                html += '<div class="col-xs-4 pb-5">' + route_name;
+                                html += '   <a href="#none" data-cate-code="' + code + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
+                                html += '   <input type="hidden" name="moLink[]" value="' + code + '">';
+                                html += '</div>';
+                            }
                         });
                         $parent_selected_category.html(html);
 

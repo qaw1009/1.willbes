@@ -16,6 +16,7 @@ class MockCommonModel extends WB_Model
         'subject' => 'lms_product_subject',
         'mockBase' => 'lms_mock',
         'mockSubject' => 'lms_mock_r_subject',
+        'mockCate' => 'lms_mock_r_category',
     ];
 
     public function __construct()
@@ -40,13 +41,13 @@ class MockCommonModel extends WB_Model
     /**
      * 모의고사카테고리 검색
      */
-    public function moCateList($conditionAdd='', $limit='', $offset='', $useCount=true)
+    public function moCateList($conditionAdd='', $limit='', $offset='', $useCount=true, $isReg=false)
     {
         $condition = [ 'IN' => ['S.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
         if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
-        $where = $this->_conn->makeWhere($condition)->getMakeWhere(true);
 
-        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "\nLIMIT $offset, $limit" : "";
+        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+
 
         $select = "
             SELECT MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, C2.CateCode AS CateCode2,
@@ -60,12 +61,16 @@ class MockCommonModel extends WB_Model
             JOIN {$this->_table['category']} AS C2 ON MB.CateCode = C2.CateCode AND C2.IsStatus = 'Y' AND C2.IsUse = 'Y'
             JOIN {$this->_table['category']} AS C1 ON C2.GroupCateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
-            WHERE MS.IsStatus = 'Y' AND MS.IsUse = 'Y' $where
         ";
-        $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC, SJ.OrderNum ASC, MS.SubjectType ASC";
+        $where = "WHERE MS.IsStatus = 'Y' AND MS.IsUse = 'Y'";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC, SJ.OrderNum ASC, MS.SubjectType ASC\n";
 
-        $data = $this->_conn->query($select . $from . $order . $offset_limit)->result_array();
-        if($useCount) $count = $this->_conn->query($selectCount . $from)->row()->cnt;
+        if($isReg) $from .= "RIGHT JOIN {$this->_table['mockCate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'\n";
+
+
+        $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
+        if($useCount) $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         if($useCount) return array($data, $count);
         else return $data;

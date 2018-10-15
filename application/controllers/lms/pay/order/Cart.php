@@ -52,7 +52,7 @@ class Cart extends BaseOrder
         // 기본조건
         $arr_condition = [
             'EQ' => [
-                'O.SiteCode' => $this->_reqP('search_site_code')
+                'CA.SiteCode' => $this->_reqP('search_site_code')
             ],
             'LKB' => [
                 'P.ProdName' => $this->_reqP('search_prod_value')
@@ -100,5 +100,32 @@ class Cart extends BaseOrder
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel('장바구니관리리스트', $list, $headers);
+    }
+
+    /**
+     * 장바구니 내역 삭제
+     */
+    public function destroy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'cart_idx', 'label' => '장바구니식별자', 'rules' => 'trim|required'],
+            ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required'],
+            ['field' => 'prod_code', 'label' => '상품식별자', 'rules' => 'trim|required'],
+            ['field' => 'parent_prod_code', 'label' => '부모상품식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $arr_cart_idx = json_decode($this->_reqP('cart_idx'), true);
+        $arr_mem_idx = json_decode($this->_reqP('mem_idx'), true);
+        $arr_prod_code = json_decode($this->_reqP('prod_code'), true);
+        $arr_parent_prod_code = json_decode($this->_reqP('parent_prod_code'), true);
+
+        $result = $this->cartModel->removeCart($arr_cart_idx, $arr_mem_idx, $arr_prod_code, $arr_parent_prod_code);
+
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 }

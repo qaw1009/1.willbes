@@ -126,7 +126,7 @@
                 },
                 columns: [
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="mem_idx" class="flat" value="' + data + '">';
+                        return '<input type="checkbox" name="mem_idx[]" class="flat" value="' + data + '">';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -149,7 +149,7 @@
                     {'data' : 'RegDatm'},
                     {'data' : 'AdminRegReason'},
                     {'data' : 'CartIdx', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="cart_idx" class="flat" value="' + data + '">';
+                        return '<input type="checkbox" name="cart_idx[]" class="flat" value="' + data + '" data-mem-idx="' + row.MemIdx + '" data-prod-code="' + row.ProdCode + '" data-parent-prod-code="' + row.ParentProdCode + '">';
                     }}
                 ]
             });
@@ -159,6 +159,58 @@
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
                     formCreateSubmit('{{ site_url('/pay/order/cart/excel') }}', $search_form.serializeArray(), 'POST');
+                }
+            });
+
+            // 선택 체크박스 클릭
+            $datatable.on('ifChanged', 'input[name="mem_idx[]"]', function() {
+                var mem_idx = $(this).val();
+                var $cart_idx = $list_table.find('input[name="cart_idx[]"][data-mem-idx="' + mem_idx + '"]');
+
+                if ($(this).prop('checked') === true) {
+                    $cart_idx.iCheck('check');
+                    $cart_idx.iCheck('disable');
+                } else {
+                    $cart_idx.iCheck('uncheck');
+                    $cart_idx.iCheck('enable');
+                }
+            });
+
+            // 삭제 버튼 클릭
+            $('.btn-cart-delete').on('click', function() {
+                var $mem_idx = $list_table.find('input[name="mem_idx[]"]:checked');
+                var $cart_idx = $list_table.find('input[name="cart_idx[]"]:checked');
+                var confirm_msg = $mem_idx.length > 0 ? '해당 회원의 장바구니 전체 내역을 삭제하시겠습니까?' : '해당 장바구니 내역을 삭제하시겠습니까?';
+                var json_mem_idx = {}, json_cart_idx = {}, json_prod_code = {}, json_parent_prod_code = {}, data = {};
+
+                if ($cart_idx.length < 1) {
+                    alert('삭제할 장바구니 내역을 선택해 주세요.');
+                    return;
+                }
+
+                if (confirm(confirm_msg)) {
+                    $cart_idx.each(function(idx) {
+                        json_cart_idx[idx] = $(this).val();
+                        json_prod_code[idx] = $(this).data('prod-code');
+                        json_parent_prod_code[idx] = $(this).data('parent-prod-code');
+                        json_mem_idx[idx] = $(this).data('mem-idx');
+                    });
+
+                    data = {
+                        '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method' : 'DELETE',
+                        'cart_idx' : JSON.stringify(json_cart_idx),
+                        'mem_idx' : JSON.stringify(json_mem_idx),
+                        'prod_code' : JSON.stringify(json_prod_code),
+                        'parent_prod_code' : JSON.stringify(json_parent_prod_code)
+                    };
+
+                    sendAjax('{{ site_url('/pay/order/cart/destroy') }}', data, function(ret) {
+                        if (ret.ret_cd) {
+                            notifyAlert('success', '알림', ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
                 }
             });
         });

@@ -113,4 +113,49 @@ class CartModel extends BaseOrderModel
                 and PS.IsStatus = "Y" and PS.SalePriceIsUse = "Y"                	            
         ';
     }
+
+    /**
+     * 장바구니 삭제
+     * @param array $arr_cart_idx
+     * @param array $arr_mem_idx
+     * @param array $arr_prod_code
+     * @param array $arr_parent_prod_code
+     * @return array|bool
+     */
+    public function removeCart($arr_cart_idx, $arr_mem_idx, $arr_prod_code, $arr_parent_prod_code)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $data = ['IsStatus' => 'N', 'UpdAdminIdx' => $sess_admin_idx];
+
+            foreach ($arr_cart_idx as $idx => $cart_idx) {
+                // 부모상품일 경우 연계상품 동시 삭제 업데이트
+                if ($arr_prod_code[$idx] == $arr_parent_prod_code[$idx]) {
+                    $arr_condition = [
+                        'EQ' => ['IsDirectPay' => 'N', 'IsVisitPay' => 'N', 'IsStatus' => 'Y'],
+                        'RAW' => ['ExpireDatm > ' => 'NOW()', 'ConnOrderIdx is ' => 'null']
+                    ];
+
+                    $is_update = $this->_conn->where('MemIdx', $arr_mem_idx[$idx])->where('ParentProdCode', $arr_parent_prod_code[$idx])->makeWhere($arr_condition)
+                        ->set($data)->set('UpdDatm', 'NOW()', false)->update($this->_table['cart']);
+                } else {
+                    $is_update = $this->_conn->where('MemIdx', $arr_mem_idx[$idx])->where('CartIdx', $cart_idx)
+                        ->set($data)->set('UpdDatm', 'NOW()', false)->update($this->_table['cart']);
+                }
+
+                if ($is_update === false) {
+                    throw new \Exception('장바구니 삭제에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 }

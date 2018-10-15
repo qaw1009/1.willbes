@@ -443,7 +443,12 @@ class CartFModel extends BaseOrderFModel
 
                 // 부모상품일 경우 연계상품 동시 삭제
                 if ($data['ProdCode'] == $data['ParentProdCode']) {
-                    $is_delete = $this->_conn->where('MemIdx', $sess_mem_idx)->where('ParentProdCode', $data['ParentProdCode'])->delete($this->_table['cart']);
+                    $arr_condition = [
+                        'EQ' => ['IsDirectPay' => 'N', 'IsVisitPay' => 'N', 'IsStatus' => 'Y'],
+                        'RAW' => ['ExpireDatm > ' => 'NOW()', 'ConnOrderIdx is ' => 'null']
+                    ];
+
+                    $is_delete = $this->_conn->where('MemIdx', $sess_mem_idx)->where('ParentProdCode', $data['ParentProdCode'])->makeWhere($arr_condition)->delete($this->_table['cart']);
                 } else {
                     $is_delete = $this->_conn->where('MemIdx', $sess_mem_idx)->where('CartIdx', $cart_idx)->delete($this->_table['cart']);
                 }

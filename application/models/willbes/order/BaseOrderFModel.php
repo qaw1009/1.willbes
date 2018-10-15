@@ -248,13 +248,14 @@ class BaseOrderFModel extends WB_Model
             $tmp_arr = explode(':', $val);
 
             if ($tmp_arr[0] == $tmp_arr[2]) {
+                $_learn_pattern = $learn_pattern;
                 $lecture_cnt++;
             } else {
-                $learn_pattern = 'book';
+                $_learn_pattern = 'book';
                 $book_cnt++;
             }
 
-            $results['data'][$tmp_arr[0]] = ['LearnPattern' => $learn_pattern, 'ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
+            $results['data'][$tmp_arr[0]] = ['LearnPattern' => $_learn_pattern, 'ProdCode' => $tmp_arr[0], 'SaleTypeCcd' => $tmp_arr[1], 'ParentProdCode' => $tmp_arr[2]];
         }
 
         $results['is_mixed'] = $lecture_cnt > 0 && $book_cnt > 0;

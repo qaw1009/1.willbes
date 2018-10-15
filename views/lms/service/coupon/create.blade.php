@@ -361,7 +361,7 @@
                 var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
 

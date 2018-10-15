@@ -68,7 +68,7 @@
                     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         <input type="hidden" name="coupon_idx" value="{{ $coupon_idx }}" required="required" title="쿠폰 식별자"/>
-                        <div class="ln_solid mt-0"></div>
+                        <div class="bdt-line"></div>
                         <div class="form-group">
                             <label class="control-label col-md-1" for="regi_type_1">등록구분 <span class="required">*</span>
                             </label>
@@ -122,7 +122,7 @@
                     <form class="form-horizontal form-label-left" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         <input type="hidden" name="search_coupon_idx" value="{{ $coupon_idx }}"/>
-                        <div class="ln_solid mt-0"></div>
+                        <div class="bdt-line"></div>
                         <div class="form-group">
                             <label class="control-label col-md-1" for="search_member_value">회원검색
                             </label>
@@ -309,7 +309,7 @@
                 }
 
                 var fdata = new FormData();
-                fdata.append('{{ csrf_token_name() }}', $search_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                fdata.append('{{ csrf_token_name() }}', $regi_form.find('input[name="{{ csrf_token_name() }}"]').val());
                 fdata.append('search_mem_file', files);
 
                 sendAjax('{{ site_url('/common/searchMember/inFile') }}', fdata, function(ret) {

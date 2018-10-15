@@ -34,6 +34,7 @@
                         <thead>
                         <tr>
                             <th width="3%"><input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                            <th>운영사이트</th>
                             <th>교재코드</th>
                             <th>교재명</th>
                             <th>출판사</th>
@@ -85,6 +86,7 @@
 
                                 return '<input type="checkbox" id="checkBook' + seq + '" name="checkBook" class="flat" value="' + codeInfo + '"' + checked + '/>';
                             }},
+                            {'data' : 'SiteName'},
                             {'data' : 'ProdCode'},
                             {'data' : 'ProdName'},
                             {'data' : 'wPublName'},

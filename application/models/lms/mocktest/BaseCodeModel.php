@@ -36,10 +36,10 @@ class BaseCodeModel extends WB_Model
                    C2.CateCode AS mCateCode, C2.CateName AS mCateName, C2.CateDepth AS mCateDepth, C2.OrderNum AS mOrderNum, C2.IsUse AS mIsUse,
                    GREATEST(C1.CateDepth, IFNULL(C2.CateDepth, 0)) as LastCateDepth
             FROM {$this->_table['site']} AS S
-            JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
-            LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y' AND C2.IsUse = 'Y'
+            JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y'
             RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C2.CateCode  AND M.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON M.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON M.RegAdminIdx = A.wAdminIdx
             WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
             ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC";
 
@@ -47,9 +47,10 @@ class BaseCodeModel extends WB_Model
 
         // 과목
         $sql = "
-            SELECT CONCAT(SJ.MmIdx,'-',SJ.SubjectType) AS SubjectKey, GROUP_CONCAT(SJ.SubjectIdx) AS SubjectIdxs, GROUP_CONCAT(PS.SubjectName SEPARATOR ', ') AS SubjectNames
+            SELECT CONCAT(SJ.MmIdx,'-',SJ.SubjectType) AS SubjectKey, GROUP_CONCAT(SJ.SubjectIdx) AS SubjectIdxs,
+                   GROUP_CONCAT(IF(PS.IsUse = 'Y', PS.SubjectName, CONCAT(PS.SubjectName, '(미사용)')) SEPARATOR ', ') AS SubjectNames
             FROM {$this->_table['mockSubject']} AS SJ
-            JOIN {$this->_table['subject']} AS PS ON SJ.SubjectIdx = PS.SubjectIdx AND PS.IsStatus = 'Y' AND PS.IsUse = 'Y'
+            JOIN {$this->_table['subject']} AS PS ON SJ.SubjectIdx = PS.SubjectIdx AND PS.IsStatus = 'Y'
             WHERE SJ.IsStatus = 'Y' AND SJ.IsUse = 'Y'
             GROUP BY SJ.MmIdx, SJ.SubjectType
             ORDER BY PS.SiteCode ASC, PS.OrderNum ASC";
@@ -144,10 +145,10 @@ class BaseCodeModel extends WB_Model
         if(empty($baseDB)) return false;
 
         $sql = "
-            SELECT S.SiteCode AS sSiteCode, S.SubjectIdx AS sSubjectIdx, S.SubjectName AS sSubjectName, MS.*
+            SELECT S.SiteCode AS sSiteCode, S.SubjectIdx AS sSubjectIdx, S.SubjectName AS sSubjectName, S.IsUse AS sIsUse, MS.*
             FROM {$this->_table['subject']} AS S
             LEFT JOIN {$this->_table['mockSubject']} AS MS ON S.SubjectIdx = MS.SubjectIdx AND MS.MmIdx = ? AND MS.SubjectType = ? AND MS.IsStatus = 'Y'
-            WHERE S.SiteCode = ? AND S.IsStatus = 'Y' AND S.IsUse = 'Y'
+            WHERE S.SiteCode = ? AND S.IsStatus = 'Y' AND (S.IsUse = 'Y' OR MS.IsUse = 'Y')
             ORDER BY S.SiteCode ASC, S.OrderNum ASC
         ";
         $subjectDB = $this->_conn->query($sql, array($MmIdx, $SubjectType, $baseDB['SiteCode']))->result_array();

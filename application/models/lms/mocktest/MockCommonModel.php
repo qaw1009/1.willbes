@@ -33,7 +33,7 @@ class MockCommonModel extends WB_Model
     public function getAdminNames($in = array())
     {
         if ($in) $this->_conn->where_in('wAdminIdx', $in);
-        $db = $this->_conn->select('wAdminIdx, wAdminName')->where(array('wIsUse' => 'Y', 'wIsStatus' => 'Y'))->get($this->_table['admin'])->result_array();
+        $db = $this->_conn->select('wAdminIdx, wAdminName')->get($this->_table['admin'])->result_array();
 
         return array_column($db, 'wAdminName', 'wAdminIdx');
     }

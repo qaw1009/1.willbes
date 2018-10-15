@@ -57,15 +57,15 @@
                     <thead class="bg-white-gray">
                     <tr>
                         <th rowspan="2" class="rowspan hide">사이트</th>
-                        <th rowspan="2" class="text-center rowspan" style="width:13%">카테고리(대분류)</th>
-                        <th rowspan="2" class="text-center" style="width:13%">직렬 [코드] <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Kind">추가</button></th>
+                        <th rowspan="2" class="text-center rowspan" style="width:14%">카테고리(대분류)</th>
+                        <th rowspan="2" class="text-center" style="width:14%">직렬 [코드] <button class="btn btn-xs btn-default ml-10 act-reg" data-act="create" data-type="Kind">추가</button></th>
                         <th colspan="2" class="text-center">과목</th>
                         <th rowspan="2" class="text-center" style="width:7%">사용여부</th>
                         <th rowspan="2" class="text-center" style="width:7%">등록자</th>
                         <th rowspan="2" class="text-center" style="width:10%">등록일</th>
                     </tr>
                     <tr>
-                        <th class="text-center" style="width:30%">필수</th>
+                        <th class="text-center" style="width:28%">필수</th>
                         <th class="text-center" style="width:20%">선택</th>
                     </tr>
                     </thead>
@@ -79,11 +79,13 @@
                             <td>
                                 {{ $row['gCateName'] }}
                                 [<span class="blue">{{ $row['gCateCode'] }}</span>]
+                                @if($row['gIsUse'] == 'Y') <span class="mr-5">(사용)</span> @else <span class="mr-5 red">(미사용)</span> @endif
                             </td>
                             <td>
                                 @if(!empty($row['mCateCode']))
                                     <span class="underline-link act-reg" data-act="edit" data-type="Kind" data-mcate="{{ $row['mCateCode'] }}">{{ $row['mCateName'] }}</span>
                                     [<span class="blue">{{ $row['mCateCode'] }}</span>]
+                                    @if($row['mIsUse'] == 'Y') <span class="mr-5">(사용)</span> @else <span class="mr-5 red">(미사용)</span> @endif
                                 @endif
                             </td>
                             <td>
@@ -93,7 +95,7 @@
                                     </div>
                                 @else
                                     <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="E">
-                                        {{ $subjectNames[$row['MmIdx'].'-E'] }}
+                                        {!! str_replace('(미사용)', '<span class="red">(미사용)</span>', $subjectNames[$row['MmIdx'].'-E']) !!}
                                         <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-E'] }}</span> {{-- datatable 검색용 --}}
                                     </span>
                                 @endif
@@ -105,7 +107,7 @@
                                     </div>
                                 @else
                                     <span class="underline-link act-reg" data-act="edit" data-type="Subject" data-sj-type="S">
-                                        {{ $subjectNames[$row['MmIdx'].'-S'] }}
+                                        {!! str_replace('(미사용)', '<span class="red">(미사용)</span>', $subjectNames[$row['MmIdx'].'-S']) !!}
                                         <span class="hide">{{ $subjectIdxs[$row['MmIdx'].'-S'] }}</span>
                                     </span>
                                 @endif
@@ -155,7 +157,7 @@
 
                 $('.act-reg').setLayer({
                     'url' : '{{ site_url() }}' + '/mocktest/baseCode/create' + type + '?' + uri_param,
-                    'width' : 900
+                    'width' : 950
                 });
             });
 

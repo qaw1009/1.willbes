@@ -52,7 +52,10 @@
                                 <div class="col-xs-4 checkbox">
                                     <input type="checkbox" class="flat" id="subject_idx_{{ $loop->index }}" name="subjectIdx[]" value="{{ $row['sSubjectIdx'] }}"
                                            @if($row['IsUse'] == 'Y') checked="checked" @endif>
-                                    <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row['sSubjectName'] }}</label>
+                                    <label for="subject_idx_{{ $loop->index }}" class="input-label">
+                                        {{ $row['sSubjectName'] }}
+                                        @if($row['sIsUse'] == 'N') <span class="mr-5 red">(미사용)</span> @endif
+                                    </label>
                                 </div>
                             @endforeach
                         </div>

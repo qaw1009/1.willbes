@@ -26,7 +26,7 @@ class ProfQna extends SupportQna
     }
 
     /**
-     * 1:1상담, 학습Q&A 인덱스
+     * 학습Q&A 인덱스
      */
     public function index($params = [])
     {
@@ -184,6 +184,9 @@ class ProfQna extends SupportQna
         ]);
     }
 
+    /**
+     * 학습Q&A 등록 폼
+     */
     public function create()
     {
         $arr_input = $this->_reqG(null);
@@ -273,6 +276,9 @@ class ProfQna extends SupportQna
         ]);
     }
 
+    /**
+     * 학습Q&A 뷰 페이지
+     */
     public function show()
     {
         $arr_input = $this->_reqG(null);

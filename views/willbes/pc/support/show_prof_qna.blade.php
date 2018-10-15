@@ -30,11 +30,6 @@
                                 <thead>
                                 <tr><th colspan="4" class="w-list tx-left pl20"><strong>{{$data['Title']}}</strong></th></tr>
                                 <tr>
-                                    {{--<td class="w-write">
-                                        {!! $data['RegMemIdx'] == sess_data('mem_idx') ? $data['RegName'] : hpSubString($data['RegName'],0,2,'*') !!}
-                                        <span class="row-line">|</span>
-                                    </td>
-                                    <td class="w-date">{{$data['RegDatm']}}</td>--}}
                                     <td class="w-write">
                                         {!! $data['RegMemIdx'] == sess_data('mem_idx') ? $data['RegName'] : hpSubString($data['RegName'],0,2,'*') !!}
                                         <span class="row-line">|</span>

@@ -27,7 +27,7 @@ class Qna extends SupportQna
     }
 
     /**
-     * 1:1상담, 학습Q&A 인덱스
+     * 1:1상담 인덱스
      */
     public function index($params = [])
     {

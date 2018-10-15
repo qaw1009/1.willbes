@@ -18,7 +18,6 @@
             <!-- Write -->
             <div class="willbes-Leclist mt40 c_both">
                 <div class="LecWriteTable">
-                    {{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return true;" action="{!! site_url($default_path.'/store?'.$get_params) !!}">--}}
                     <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         {!! method_field($method) !!}

@@ -76,27 +76,27 @@ class OrderListModel extends BaseOrderModel
      */
     public function listExcelAllOrder($column, $arr_condition, $order_by = [])
     {
-        $in_column = 'if(O.OrderIdx != @LastOrderIdx, O.OrderNo, "") as OrderNo
-            , if(O.OrderIdx != @LastOrderIdx, S.SiteName, "") as SiteName
-            , if(O.OrderIdx != @LastOrderIdx, M.MemName, "") as MemName
-            , if(O.OrderIdx != @LastOrderIdx, M.MemId, "") as MemId
-            , if(O.OrderIdx != @LastOrderIdx, fn_dec(M.PhoneEnc), "") as MemPhone
-            , if(O.OrderIdx != @LastOrderIdx, CPC.CcdName, "") as PayChannelCcdName
-            , if(O.OrderIdx != @LastOrderIdx, CPR.CcdName, "") as PayRouteCcdName
-            , if(O.OrderIdx != @LastOrderIdx, CPM.CcdName, "") as PayMethodCcdName            
-            , if(O.OrderIdx != @LastOrderIdx, CVB.CcdName, "") as VBankCcdName
-            , if(O.OrderIdx != @LastOrderIdx, concat(O.VBankAccountNo, " "), "") as VBankAccountNo      # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
-            , if(O.OrderIdx != @LastOrderIdx, O.VBankDepositName, "") as VBankDepositName
-            , if(O.OrderIdx != @LastOrderIdx, O.VBankExpireDatm, "") as VBankExpireDatm
-            , if(O.OrderIdx != @LastOrderIdx, O.VBankCancelDatm, "") as VBankCancelDatm            
-            , if(O.OrderIdx != @LastOrderIdx, if(O.VBankAccountNo is not null, O.OrderDatm, ""), "") as VBankOrderDatm            
-            , if(O.OrderIdx != @LastOrderIdx, O.CompleteDatm, "") as CompleteDatm
-            , if(O.OrderIdx != @LastOrderIdx, O.OrderDatm, "") as OrderDatm
-            , if(O.OrderIdx != @LastOrderIdx, O.RealPayPrice, "") as tRealPayPrice
-            , if(O.OrderIdx != @LastOrderIdx, O.UseLecPoint, "") as tUseLecPoint
-            , if(O.OrderIdx != @LastOrderIdx, O.UseBookPoint, "") as tUseBookPoint
-            , if(O.OrderIdx != @LastOrderIdx, 0, "") as tRefundPrice
-            , if(O.OrderIdx != @LastOrderIdx, O.RealPayPrice - 0, "") as tRemainPrice
+        $in_column = 'if(O.OrderIdx != @LastIdx, O.OrderNo, "") as OrderNo
+            , if(O.OrderIdx != @LastIdx, S.SiteName, "") as SiteName
+            , if(O.OrderIdx != @LastIdx, M.MemName, "") as MemName
+            , if(O.OrderIdx != @LastIdx, M.MemId, "") as MemId
+            , if(O.OrderIdx != @LastIdx, fn_dec(M.PhoneEnc), "") as MemPhone
+            , if(O.OrderIdx != @LastIdx, CPC.CcdName, "") as PayChannelCcdName
+            , if(O.OrderIdx != @LastIdx, CPR.CcdName, "") as PayRouteCcdName
+            , if(O.OrderIdx != @LastIdx, CPM.CcdName, "") as PayMethodCcdName            
+            , if(O.OrderIdx != @LastIdx, CVB.CcdName, "") as VBankCcdName
+            , if(O.OrderIdx != @LastIdx, concat(O.VBankAccountNo, " "), "") as VBankAccountNo      # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
+            , if(O.OrderIdx != @LastIdx, O.VBankDepositName, "") as VBankDepositName
+            , if(O.OrderIdx != @LastIdx, O.VBankExpireDatm, "") as VBankExpireDatm
+            , if(O.OrderIdx != @LastIdx, O.VBankCancelDatm, "") as VBankCancelDatm            
+            , if(O.OrderIdx != @LastIdx, if(O.VBankAccountNo is not null, O.OrderDatm, ""), "") as VBankOrderDatm            
+            , if(O.OrderIdx != @LastIdx, O.CompleteDatm, "") as CompleteDatm
+            , if(O.OrderIdx != @LastIdx, O.OrderDatm, "") as OrderDatm
+            , if(O.OrderIdx != @LastIdx, O.RealPayPrice, "") as tRealPayPrice
+            , if(O.OrderIdx != @LastIdx, O.UseLecPoint, "") as tUseLecPoint
+            , if(O.OrderIdx != @LastIdx, O.UseBookPoint, "") as tUseBookPoint
+            , if(O.OrderIdx != @LastIdx, 0, "") as tRefundPrice
+            , if(O.OrderIdx != @LastIdx, O.RealPayPrice - 0, "") as tRemainPrice
             , CPT.CcdName as ProdTypeCcdName
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName
             , OP.RealPayPrice
@@ -104,19 +104,25 @@ class OrderListModel extends BaseOrderModel
             , CPS.CcdName as PayStatusCcdName
             , "" as DeliveryStatusCcdName
             , if(OP.IsUseCoupon = "Y", if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), ""), "") as DiscRate
-            , @LastOrderIdx := O.OrderIdx';
+            , O.OrderIdx, OP.OrderProdIdx   # order by
+            , @LastIdx := O.OrderIdx';
 
-        $from = $from = $this->_getListFrom() . ', (select @LastOrderIdx := 0) as SqlVars';
+        $from = $from = $this->_getListFrom() . ', (select @LastIdx := 0) as SqlVars';
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
         $order_by_offset_limit = '';
-        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        if (empty($order_by) === false) {
+            foreach ($order_by as $key => $val) {
+                $_order_by[str_first_pos_after($key, '.')] = $val;
+            }
+            $order_by_offset_limit = $this->_conn->makeOrderBy($_order_by)->getMakeOrderBy();
+        }
 
         // 쿼리 실행 및 결과값 리턴
-        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . $order_by_offset_limit . ') U')->result_array();
+        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
 
     /**

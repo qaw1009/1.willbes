@@ -125,7 +125,7 @@
                 </table>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
-                    <button class="btn btn-primary" type="button" id="goList">목록</button>
+                    <button class="btn btn-primary" style="position:absolute; right:0;" type="button" id="goList">목록</button>
                 </div>
             </form>
         </div>

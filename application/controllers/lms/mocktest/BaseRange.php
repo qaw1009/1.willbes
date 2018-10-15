@@ -93,6 +93,7 @@ class BaseRange extends \app\controllers\BaseController
             'chData' => $chData,
             'moCate' => $moCate,
             'adminName' => $this->mockCommonModel->getAdminNames(),
+            'isCopy' => ( empty($param[1]) ) ? false : true,
         ]);
     }
 
@@ -108,6 +109,13 @@ class BaseRange extends \app\controllers\BaseController
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
+        if($this->input->post('isCopy')) {
+            $rules_add = [
+                ['field' => 'moLink[]', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
+                ['field' => 'moLink_be[]', 'label' => '이전 카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
+            ];
+            $rules = array_merge($rules, $rules_add);
+        }
         if ($this->validate($rules) === false) return;
 
         $result = $this->baseRangeModel->update();

@@ -180,9 +180,9 @@
                     // 기존 선택된 정보 셋팅
                     var setOriSelectedData = function() {
                         var that, code, route_name;
-                        $parent_selected_category.find('div').each(function() {
+                        $parent_selected_category.children('div, span').each(function() {
                             that = $(this);
-                            code = that.find('input[name="moLink[]"]').val();
+                            code = that.find('input[name^="moLink"]').val();
                             route_name = that.text().trim();
 
                             $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="col-xs-4 pb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');

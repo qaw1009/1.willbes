@@ -140,7 +140,7 @@
             // 수정으로 이동
             $('.act-edit').on('click', function () {
                 var query = '?' + $search_form.serialize();
-               location.href = '{{ site_url('/mocktest/regExam/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/mocktest/regExam/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
             // 복사

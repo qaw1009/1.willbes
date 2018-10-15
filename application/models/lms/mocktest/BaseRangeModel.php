@@ -108,6 +108,31 @@ class BaseRangeModel extends WB_Model
     public function update()
     {
         try {
+            $this->_conn->trans_start();
+
+            // 복사된 경우 카테고리 변경 (한번만)
+            if($this->input->post('isCopy')) {
+                $moLink_del = array_diff($this->input->post('moLink_be'), $this->input->post('moLink'));
+                $moLink_add = array_diff($this->input->post('moLink'), $this->input->post('moLink_be'));
+
+                foreach ($moLink_del as $it) {
+                    $data = array('IsStatus' => 'N');
+                    $where = array('MaIdx' => $this->input->post('idx'), 'MrsIdx' => $it);
+                    $this->_conn->update($this->_table['mockAreaCate'], $data, $where);
+                }
+                foreach ($moLink_add as $it) {
+                    $data = array(
+                        'MrsIdx' => $it,
+                        'MaIdx' => $this->input->post('idx'),
+                        'RegIp' => $this->input->ip_address(),
+                        'RegDatm' => date("Y-m-d H:i:s"),
+                        'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    );
+                    $this->_conn->insert($this->_table['mockAreaCate'], $data);
+                }
+            }
+
+            // lms_Mock_Area 데이터 변경
             $data = array(
                 'QuestionArea' => $this->input->post('questionArea', true),
                 'IsUse' => $this->input->post('isUse'),
@@ -118,7 +143,8 @@ class BaseRangeModel extends WB_Model
 
             $this->_conn->update($this->_table['mockArea'], $data, $where);
 
-            if ( !$this->_conn->affected_rows() ) {
+            $this->_conn->trans_complete();
+            if ($this->_conn->trans_status() === false) {
                 throw new Exception('변경에 실패했습니다.');
             }
         }
@@ -276,6 +302,6 @@ class BaseRangeModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true];
+        return ['ret_cd' => true, 'dt' => ['idx' => $nowMaIdx]];
     }
 }

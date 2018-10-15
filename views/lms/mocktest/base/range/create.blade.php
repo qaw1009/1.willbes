@@ -11,6 +11,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['MaIdx'] : '' }}">
+                <input type="hidden" name="isCopy" value="@if($method == 'PUT'){{ $isCopy }}@endif">
 
                 <table class="table table-bordered modal-table">
                     <tr>
@@ -23,18 +24,31 @@
                     <tr>
                         <th colspan="1">모의고사카테고리 <span class="required">*</span></th>
                         <td colspan="3">
-                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT') ? 'disabled' : ''}}>카테고리검색</button>
+                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT' && !$isCopy) ? 'disabled' : ''}}>카테고리검색</button>
                             <div id="selected_category" class="row">
                                 @if($method == 'PUT')
+                                    @if($isCopy) {{-- 복사 후 첫 이동, 카테고리 변경 가능하게 --}}
                                     @foreach($moCate as $code => $name)
                                         <div class="col-xs-4 pb-5">
                                             {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
-                                            {{--<a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>--}}
-                                            {{--<input type="hidden" name="moLink[]" value="{{ $code }}">--}}
+                                            <a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
+                                            <input type="hidden" name="moLink[]" value="{{ $code }}">
                                         </div>
                                     @endforeach
+                                    @else
+                                        @foreach($moCate as $code => $name)
+                                            <div class="col-xs-4 pb-5">
+                                                {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 @endif
                             </div>
+                            @if($method == 'PUT' && $isCopy)
+                                @foreach($moCate as $code => $name)
+                                    <input type="hidden" name="moLink_be[]" value="{{ $code }}">
+                                @endforeach
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -65,7 +79,7 @@
                 </table>
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
-                    <button class="btn btn-primary" type="button" id="goList">목록</button>
+                    <button class="btn btn-primary" style="position:absolute; right:0;" type="button" id="goList">목록</button>
                 </div>
             </form>
         </div>

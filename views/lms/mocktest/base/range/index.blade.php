@@ -118,7 +118,7 @@
             // 수정으로 이동
             $('.act-edit').on('click', function () {
                 var query = '?' + $search_form.serialize();
-               location.href = '{{ site_url('/mocktest/baseRange/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/mocktest/baseRange/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
             // 복사
@@ -135,7 +135,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/baseRange') }}' + '?' + $search_form.serialize());
+                        location.replace('{{ site_url('/mocktest/baseRange/edit/') }}' + ret.ret_data.dt.idx + '/copy?' + $search_form.serialize());
                     }
                 }, showValidateError, false, 'POST');
             }

@@ -17,6 +17,7 @@ class MockCommonModel extends WB_Model
         'mockBase' => 'lms_mock',
         'mockSubject' => 'lms_mock_r_subject',
         'mockCate' => 'lms_mock_r_category',
+        'mockArea' => 'lms_mock_area',
     ];
 
     public function __construct()
@@ -66,8 +67,12 @@ class MockCommonModel extends WB_Model
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC, SJ.OrderNum ASC, MS.SubjectType ASC\n";
 
-        if($isReg) $from .= "RIGHT JOIN {$this->_table['mockCate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'\n";
-
+        if($isReg) { // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
+            $from .= "
+                JOIN {$this->_table['mockCate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'
+                JOIN {$this->_table['mockArea']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
+            ";
+        }
 
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         if($useCount) $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;

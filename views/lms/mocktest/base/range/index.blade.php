@@ -81,7 +81,9 @@
                                     $moData_cate1 = $moData_cate2 = $moData_subject = [];
                                     foreach(explode(',', $row['moCateKey']) as $it) {
                                         if( isset($moData[$it]) ) {
-                                            echo preg_replace('/^(.*?\s>\s)/', '', $moData[$it]['name']).'<br>';
+                                            $bIsUse = ($moData[$it]['bIsUse'] == 'N') ? '<span class="ml-5 red">(미사용)</span>' : '';
+
+                                            echo preg_replace('/^(.*?\s>\s)/', '', $moData[$it]['name']) . $bIsUse .'<br>';
                                             $moData_cate1[] = $moData[$it]['cate1'];
                                             $moData_cate2[] = $moData[$it]['cate2'];
                                             $moData_subject[] = $moData[$it]['subject'];
@@ -118,6 +120,9 @@
             // 수정으로 이동
             $('.act-edit').on('click', function () {
                 var query = '?' + $search_form.serialize();
+                if( $(this).closest('tr').find('td:eq(2) > span:eq(0)').text() == '(미사용)' ) { // 미사용인 카테고리가 포함된 경우 카테고리 변경가능하게
+                    query = '/copy' + query;
+                }
                 location.href = '{{ site_url('/mocktest/baseRange/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
@@ -187,9 +192,9 @@
                 .draw();
 
             // NO필드 처리
-            var len = $list_table.find('tbody > tr').length;
+            var len = 1;
             $list_table.find('tbody > tr').each(function () {
-                $(this).find('td:eq(1)').text(len--);
+                $(this).find('td:eq(1)').text(len++);
             });
         }
     </script>

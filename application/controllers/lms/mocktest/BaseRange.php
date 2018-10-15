@@ -77,10 +77,12 @@ class BaseRange extends \app\controllers\BaseController
 
     /**
      * 문제영역 기본정보 수정폼 ($param[0] - lms_Mock_Area DB의 MaIdx)
+     *
+     * 복사된 직후, 미사용 카테고리가 있는 경우 카테고리 변경가능
      */
     public function edit($param = [])
     {
-        list($data, $chData, $moCate) = $this->baseRangeModel->getMockArea($param[0]);
+        list($data, $chData, $moCate_name, $moCate_isUse) = $this->baseRangeModel->getMockArea($param[0]);
         if (!$data) {
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
@@ -91,7 +93,8 @@ class BaseRange extends \app\controllers\BaseController
             'method' => 'PUT',
             'data' => $data,
             'chData' => $chData,
-            'moCate' => $moCate,
+            'moCate_name' => $moCate_name,
+            'moCate_isUse' => $moCate_isUse,
             'adminName' => $this->mockCommonModel->getAdminNames(),
             'isCopy' => ( empty($param[1]) ) ? false : true,
         ]);

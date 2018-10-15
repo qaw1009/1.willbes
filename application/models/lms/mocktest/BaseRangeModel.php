@@ -33,14 +33,14 @@ class BaseRangeModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['mockAreaList']} AS ML WHERE MB.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y') AS ListCnt
             FROM {$this->_table['mockArea']} AS MB
             LEFT JOIN {$this->_table['mockAreaCate']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx AND A.wIsStatus = 'Y' AND A.wIsUse = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx
             WHERE MB.IsStatus = 'Y'
             GROUP BY MB.MaIdx
-            ORDER BY MB.MaIdx DESC
+            ORDER BY MB.MaIdx ASC
         ";
         $list = $this->_conn->query($sql)->result_array();
 
-        $moCate = $this->mockCommonModel->moCateList('', '', '', false);
+        $moCate = $this->mockCommonModel->moCateListAll('', '', '', false);
         $moList = [];
         foreach ($moCate as $it) {
             $moList[ $it['MrsIdx'] ] = array(
@@ -48,6 +48,7 @@ class BaseRangeModel extends WB_Model
                 'cate2'   => $it['CateCode2'],
                 'subject' => $it['SubjectIdx'],
                 'name'    => $it['CateRouteName'],
+                'bIsUse'   => $it['BaseIsUse'],
             );
         }
 
@@ -175,17 +176,18 @@ class BaseRangeModel extends WB_Model
         $chData = $this->_conn->order_by('OrderNum ASC')->get_where($this->_table['mockAreaList'], $where)->result_array();
 
         // 등록된 모의고사 카테고리 로드
-        $moCate = array();
+        $moCate_name = $moCate_isUse = array();
         $moCateLink = $this->_conn->select('MrsIdx')->get_where($this->_table['mockAreaCate'], $where)->result_array();
         if($moCateLink) {
             $condition = [
                 'IN' => ['MS.MrsIdx' => array_column($moCateLink, 'MrsIdx')]
             ];
-            $moCate = $this->mockCommonModel->moCateList($condition, '', '', false);
-            $moCate = array_column($moCate, 'CateRouteName', 'MrsIdx');
+            $moCate = $this->mockCommonModel->moCateListAll($condition, '', '', false);
+            $moCate_name = array_column($moCate, 'CateRouteName', 'MrsIdx');
+            $moCate_isUse = array_column($moCate, 'BaseIsUse', 'MrsIdx');
         }
 
-        return array($data, $chData, $moCate);
+        return array($data, $chData, $moCate_name, $moCate_isUse);
     }
 
 

@@ -214,28 +214,31 @@
 
 
             $datatable.on( 'draw', function () {
-                //var column = $datatable.column(0);
+                var $OrderStatus_col = $datatable.column('OrderStatus:name');
+                var $OrderDatm_col = $datatable.column('OrderDatm:name');
+                var $Extend_col = $datatable.column('Extend:name');
+                var $TakeKind_col = $datatable.column('TakeKind:name');
 
                 if ($('#search_type').val() == '' || $('#search_type').val() == '684001' || $('#search_type').val() == '684003' ) {
-                    $datatable.column('OrderStatus:name').visible(true);
-                    $datatable.column('OrderDatm:name').visible(true);
-                    $datatable.column('Extend:name').visible(false);
-                    $datatable.column('TakeKind:name').visible(false);
+                    $OrderStatus_col.visible(true);
+                    $OrderDatm_col.visible(true);
+                    $Extend_col.visible(false);
+                    $TakeKind_col.visible(false);
 
                 }else if($('#search_type').val() == '684002') {         //제대군인인증
-                    $datatable.column('OrderStatus:name').visible(true);
-                    $datatable.column('OrderDatm:name').visible(true);
-                    $datatable.column('Extend:name').visible(true);
-                    $datatable.column('TakeKind:name').visible(false);
+                    $OrderStatus_col.visible(true);
+                    $OrderDatm_col.visible(true);
+                    $Extend_col.visible(true);
+                    $TakeKind_col.visible(false);
 
                 } else if($('#search_type').val() == '684005') {        //수험표 인증
-                    $datatable.column('TakeKind:name').visible(true);
-                    $datatable.column('OrderStatus:name').visible(false);
-                    $datatable.column('OrderDatm:name').visible(false);
-                    $datatable.column('Extend:name').visible(false);
+                    $TakeKind_col.visible(true);
+                    $OrderStatus_col.visible(false);
+                    $OrderDatm_col.visible(false);
+                    $Extend_col.visible(false);
                 } else {
-                    $datatable.column('Extend:name').visible(false);
-                    $datatable.column('TakeKind:name').visible(false);
+                    $Extend_col.visible(false);
+                    $TakeKind_col.visible(false);
                 }
             });
 

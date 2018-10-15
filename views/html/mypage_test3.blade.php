@@ -173,7 +173,8 @@
                             <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">
+                                <a href="{{ site_url('/home/html/statsTotalList') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[성적확인]</a></td>
                             <td class="w-file on tx-blue">
                                 <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a><br/>
                                 <a href="{{ site_url('/home/html/answerNote') }}" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[오답노트]</a>
@@ -187,7 +188,7 @@
                             <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">50</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file on tx-blue">
                                 [문제/해설]<br/>
                                 [오답노트]
@@ -201,7 +202,7 @@
                             <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">40</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file">&nbsp;</td>
                         </tr>
                         <tr>
@@ -212,7 +213,7 @@
                             <td class="w-list">8/13 빅매지2-경행경채 모의고사</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">90</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file">&nbsp;</td>
                         </tr>
                         <tr>
@@ -223,7 +224,7 @@
                             <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">60</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file">&nbsp;</td>
                         </tr>
                         <tr>
@@ -234,7 +235,7 @@
                             <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">50</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file">&nbsp;</td>
                         </tr>
                         <tr>
@@ -245,7 +246,7 @@
                             <td class="w-list">7/2 전국모의고사-일방경찰</td>
                             <td class="w-t-grade">100</td>
                             <td class="w-average">40</td>
-                            <td class="w-report tx-red">성적확인</td>
+                            <td class="w-report tx-red">[성적확인]</td>
                             <td class="w-file">&nbsp;</td>
                         </tr>
                     </tbody>

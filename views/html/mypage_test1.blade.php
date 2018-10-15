@@ -143,11 +143,11 @@
                 <table cellspacing="0" cellpadding="0" class="listTable testTable under-gray bdt-gray tx-gray">
                     <colgroup>
                         <col style="width: 60px;">
-                        <col style="width: 70px;">
+                        <col style="width: 80px;">
                         <col style="width: 90px;">
                         <col style="width: 80px;">
                         <col style="width: 150px;">
-                        <col style="width: 230px;">
+                        <col style="width: 220px;">
                         <col style="width: 130px;">
                         <col style="width: 120px;">
                     </colgroup>

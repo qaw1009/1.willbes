@@ -26,7 +26,7 @@
                     <span class="row-line">|</span>
                 </td>
                 <td class="w-lec">{{$data['TypeCcd_Name']}}<span class="row-line">|</span></td>
-                <td class="subTit tx-left pl20"><strong class="tx-light-blue" style="padding-right: 5px;">[강좌내용]</strong>2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)<span class="row-line">|</span></td>
+                <td class="subTit tx-left pl20"><strong class="tx-light-blue" style="padding-right: 5px;">[강좌내용]</strong>{{$data['ProdName']}}<span class="row-line">|</span></td>
                 <td class="w-date">{{$data['RegDatm']}}</td>
             </tr>
             </thead>
@@ -36,7 +36,7 @@
                     @if(empty($data['AttachData']) === false)
                         @foreach($data['AttachData'] as $row)
                             @if($row['FileType'] == 0)
-                                <a href="{{site_url($default_path.'/qna/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                <a href="{{site_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                             @endif
                         @endforeach
@@ -55,7 +55,7 @@
             </tbody>
         </table>
 
-    @if($data['RegType'] == 0)
+        @if($data['RegType'] == 0)
         <!-- 답변 -->
             <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
                 <colgroup>
@@ -84,7 +84,7 @@
                         @if(empty($data['AttachData']) === false)
                             @foreach($data['AttachData'] as $row)
                                 @if($row['FileType'] == 1)
-                                    <a href="{{site_url($default_path.'/qna/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}"  target="_blank">
+                                    <a href="{{site_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}"  target="_blank">
                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                 @endif
                             @endforeach
@@ -121,17 +121,17 @@
     $(document).ready(function() {
         //목록
         $('#btn_list').click(function() {
-            location.href = '{!! site_url($default_path.'/qna/index?'.$get_params) !!}';
+            location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
         });
 
         //수정
         $('#btn_modify').click(function() {
-            location.href = '{!! site_url($default_path.'/qna/create?'.$get_params.'&board_idx='.$board_idx) !!}';
+            location.href = '{!! site_url($default_path.'/create?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
 
         //삭제
         $('#btn_del').click(function() {
-            location.href = '{!! site_url($default_path.'/qna/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
+            location.href = '{!! site_url($default_path.'/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
     });
 </script>

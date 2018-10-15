@@ -127,7 +127,7 @@
         $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
 
         $('#btn_list').click(function() {
-            location.href = '{!! site_url('support/qna/index?'.$get_params) !!}';
+            location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
         });
 
         $regi_form.bind('submit', function () {
@@ -135,13 +135,13 @@
         });
 
         $regi_form.submit(function() {
-            var _url = '{!! site_url('support/qna/store?'.$get_params) !!}';
+            var _url = '{!! site_url($default_path.'/store?'.$get_params) !!}';
             if (!confirm('저장하시겠습니까?')) { return true; }
 
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.href = '{!! site_url('support/qna/index?'.$get_params) !!}';
+                    location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
                 }
             }, showValidateError, addValidate, false, 'alert');
         });

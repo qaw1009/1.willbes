@@ -50,7 +50,7 @@
         });
 
         $('#hover_professor').click(function (){
-            location.href='{{ site_url("/classroom/qna/index?tab=professor") }}';
+            location.href='{{ site_url("/classroom/profQna/index?tab=professor") }}';
         });
     });
 </script>

@@ -11,7 +11,7 @@
 </div>
 <div class="willbes-Leclist mt10 c_both">
     <div class="LecWriteTable">
-        {{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return true;" action="{!! site_url($default_path.'/qna/store?'.$get_params) !!}">--}}
+        {{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return true;" action="{!! site_url($default_path.'/store?'.$get_params) !!}">--}}
         <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             {!! method_field($method) !!}
@@ -111,7 +111,7 @@
 
     $(document).ready(function() {
         $('#btn_list').click(function() {
-            location.href = '{!! site_url($default_path.'/qna/index?'.$get_params) !!}';
+            location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
         });
 
         $regi_form.bind('submit', function () {
@@ -119,13 +119,13 @@
         });
 
         $('#btn_submit').click(function () {
-            var _url = '{!! site_url($default_path.'/qna/store?'.$get_params) !!}';
+            var _url = '{!! site_url($default_path.'/store?'.$get_params) !!}';
             if (!confirm('저장하시겠습니까?')) { return true; }
 
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.href = '{!! site_url($default_path.'/qna/index?'.$get_params) !!}';
+                    location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
                 }
             }, showValidateError, addValidate, false, 'alert');
         });

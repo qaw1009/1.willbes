@@ -1,10 +1,10 @@
 <div id="point1">
-    <span class="subTit tx-gray">답변대기 수가 표시됩니다.</span>
+    <span class="subTit tx-gray">{{$count_complete_type['counsel']['not_complete']}} 답변대기 수가 표시됩니다.</span>
     <div class="willbes-Mypage-PointBox h55 NG">
         <ul>
             <li class="Tit">1:1 상담현황</li>
-            <li>답변대기 <a href="#none" class="tx-light-blue">{{$count_complete_type[$arr_input['tab']]['not_complete']}}</a>건</li>
-            <li>답변완료 <a href="#none" class="tx-light-blue">{{$count_complete_type[$arr_input['tab']]['complete']}}</a>건</li>
+            <li>답변대기 <a href="#none" onclick="goUrl('replay_type','N')" class="tx-light-blue">{{$count_complete_type['counsel']['not_complete']}}</a>건</li>
+            <li>답변완료 <a href="#none" onclick="goUrl('replay_type','Y')" class="tx-light-blue">{{$count_complete_type['counsel']['complete']}}</a>건</li>
         </ul>
     </div>
     <div class="willbes-Mypage-SUPPORT-list mt35 c_both">

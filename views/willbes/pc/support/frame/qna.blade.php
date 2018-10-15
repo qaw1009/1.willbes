@@ -80,7 +80,7 @@
                             @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                 <a href="javascript:void(0);">
                                     @else
-                                        <a href="{{site_url($default_path.'/qna/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                        <a href="{{site_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                             @endif
                                             @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
                                             {{hpSubString($row['Title'],0,40,'...')}}
@@ -138,7 +138,7 @@
                 alert('로그인 후 이용해 주십시오.');
                 return;
             }
-            location.href = "{!! site_url($default_path.'/qna/create?'.$get_params) !!}";
+            location.href = "{!! site_url($default_path.'/create?'.$get_params) !!}";
         });
     });
 </script>

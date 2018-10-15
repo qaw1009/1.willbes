@@ -243,4 +243,51 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         return $query->row(0)->numrows;
     }
+
+    /**
+     * 등록 게시글의 교수 정보 조회
+     * @param $arr_condition
+     * @param $column
+     * @return array
+     */
+    public function getProfForMemberList($arr_condition)
+    {
+        $column = 'ProfIdx, ProfName';
+        $from = "
+            from {$this->_table['twoway_board']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $group_by = '
+            GROUP BY ProfIdx
+        ';
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' .$column .$from .$where .$group_by)->result_array();
+        return array_pluck($data, 'ProfName', 'ProfIdx');
+    }
+
+    /**
+     * 등록 게시글의 과목 정보 조회
+     * @param $arr_condition
+     * @return array
+     */
+    public function getSubjectForMemberList($arr_condition)
+    {
+        $column = 'SubjectIdx, SubjectName';
+        $from = "
+            from {$this->_table['twoway_board']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $group_by = '
+            GROUP BY ProdCode
+        ';
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' .$column .$from .$where .$group_by)->result_array();
+        return array_pluck($data, 'SubjectName', 'SubjectIdx');
+    }
 }

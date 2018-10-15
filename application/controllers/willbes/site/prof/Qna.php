@@ -6,7 +6,7 @@ require_once APPPATH . 'controllers/willbes/share/support/SupportQna.php';
 class Qna extends SupportQna
 {
     protected $_bm_idx = '66';       //bmidx : 강사게시판 -> 학습Q&A
-    protected $_default_path = '/prof';
+    protected $_default_path = '/prof/qna';
 
     public function __construct()
     {

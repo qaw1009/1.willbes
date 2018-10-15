@@ -112,7 +112,7 @@ class SupportQna extends BaseSupport
             }
         }
 
-        $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, RegType, RegMemIdx';
+        $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, RegType, RegMemIdx, ProdName';
         $column .= ', Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ', AttachData,DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
@@ -124,7 +124,7 @@ class SupportQna extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/qna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -197,7 +197,7 @@ class SupportQna extends BaseSupport
 
             $column = '
             BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
-            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore
+            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt
             , RegDatm, RegMemIdx, RegMemId, RegMemName
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
@@ -274,7 +274,7 @@ class SupportQna extends BaseSupport
         $column = '
             BoardIdx, SiteCode, MdCateCode, CampusCcd
             , RegType, TypeCcd, IsBest, IsPublic
-            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore
+            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt
             , RegDatm
             , RegMemIdx, RegMemId, RegMemName
@@ -407,7 +407,7 @@ class SupportQna extends BaseSupport
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', $this->_default_path.'/qna/index?'.$get_params);
+        show_alert('삭제되었습니다.', $this->_default_path.'/index?'.$get_params);
     }
 
     /**

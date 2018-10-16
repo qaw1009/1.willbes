@@ -27,14 +27,17 @@ class Vbank extends BaseOrder
     public function index()
     {
         // 사용하는 코드값 조회
-        $group_ccd = [$this->_group_ccd['PayChannel'], $this->_group_ccd['ProdType'], $this->_group_ccd['LearnPattern'], $this->_group_ccd['PayStatus']];
-        $codes = $this->codeModel->getCcdInArray($group_ccd);
-
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'ProdType', 'LearnPattern', 'PayStatus']);
+        $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
+        
+        // 결제상태에서 무통장입금 관련 값만 필터링
+        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], $this->_vbank_pay_status_ccd);
+        
         $this->load->view('pay/order/vbank/index', [
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
-            'arr_pay_status_ccd' => array_flip(array_intersect(array_flip($codes[$this->_group_ccd['PayStatus']]), $this->_vbank_pay_status_ccd))
+            'arr_pay_status_ccd' => $arr_pay_status_ccd
         ]);
     }
 

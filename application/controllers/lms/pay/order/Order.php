@@ -19,7 +19,8 @@ class Order extends BaseOrder
     public function index()
     {
         // 사용하는 코드값 조회
-        $codes = $this->codeModel->getCcdInArray(array_values($this->_group_ccd));
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayRoute', 'PayMethod', 'ProdType', 'LearnPattern', 'PayStatus', 'DeliveryStatus']);
+        $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         $this->load->view('pay/order/order/index', [
             'arr_pay_route_ccd' => $codes[$this->_group_ccd['PayRoute']],

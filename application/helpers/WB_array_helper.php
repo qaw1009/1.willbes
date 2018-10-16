@@ -29,6 +29,19 @@ if (!function_exists('array_data_fill')) {
     }
 }
 
+if (!function_exists('array_filter_keys')) {
+    /**
+     * $array 배열에서 키값 배열과 일치하는 것만 필터링하여 리턴
+     * @param array $array [대상 배열]
+     * @param array $keys [대상 배열에서 필터링하고자 하는 키값 배열]
+     * @return array
+     */
+    function array_filter_keys($array, $keys)
+    {
+        return array_intersect_key($array, array_flip($keys));
+    }
+}
+
 if (!function_exists('array_get')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 $key에 해당하는 값 리턴

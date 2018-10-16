@@ -41,9 +41,6 @@ class ProductFModel extends WB_Model
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
-    // 상품 메모타입 공통코드
-    public $_memo_type_ccds = ['book' => '634002'];
-
     public function __construct()
     {
         parent::__construct('lms');
@@ -144,10 +141,11 @@ class ProductFModel extends WB_Model
 
     /**
      * 단일상품 조회
-     * @param $learn_pattern
-     * @param $prod_code
+     * @param string $learn_pattern
+     * @param int $prod_code
      * @param string $add_column
-     * @return array
+     * @param array $arr_condition
+     * @return mixed
      */
     public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '', $arr_condition = [])
     {

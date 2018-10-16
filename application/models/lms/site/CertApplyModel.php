@@ -359,8 +359,7 @@ class CertApplyModel extends WB_Model
             if ($this->_conn->set($inputData_sms)->insert('lms_crm_send_r_receive_sms') === false) {
                 throw new \Exception('세부 발송 등록에 실패했습니다.');
             }
-            
-            
+
         } catch (Exception $e) {
             return $e->getMessage();
         }

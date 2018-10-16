@@ -177,7 +177,7 @@
                             return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-idx="'+ data.CaIdx+ '">확인</a>';
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}'+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'" ></a>';
+                            return '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}'+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'/'+ encodeURIComponent(data.AttachFileReal) +'" ></a>';
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'ApprovalAdmin_Name'},
@@ -337,9 +337,10 @@
 
             $('.btn-message').click(function (){
                 var target_id = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memid');}).get().join(',');
+                var target_idx = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memidx');}).get().join(',');
                 if(target_id == ''){ alert('쪽지발송 대상 회원을 선택해 주세요.');return;}
                 $('.btn-message').setLayer({
-                    url : "//lms.local.willbes.net/crm/message/createSendModal?target_id="+target_id,
+                    url : "//lms.local.willbes.net/crm/message/createSendModal?target_id="+target_id+"&target_idx="+target_idx,
                     width : 800,
                     modal_id : "message_modal"
                 });

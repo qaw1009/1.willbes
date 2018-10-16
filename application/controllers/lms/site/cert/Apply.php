@@ -127,7 +127,7 @@ class Apply extends \app\controllers\BaseController
 
     public function download($fileinfo=[])
     {
-        public_download($fileinfo[0]);
+        public_download($fileinfo[0], $fileinfo[1]);
     }
 
 }

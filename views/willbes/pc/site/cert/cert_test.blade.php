@@ -71,7 +71,7 @@
         $(document).ready(function() {
 
             $('button[name="btn_cert_check"]').on('click', function() {
-                //alert("a");
+
                 @if($data["IsCertAble"] !== 'Y')
                     alert("인증 신청을 할 수 없습니다.");return;
                 @endif
@@ -105,11 +105,8 @@
                     alert('인증파일을 등록해 주세요.');
                     return;
                 }
-
-
                 var _url = '{!! front_url('CertApply/store/') !!}';
                 if (!confirm('저장하시겠습니까?')) { return true; }
-
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         //notifyAlert('success', '알림', ret.ret_msg);

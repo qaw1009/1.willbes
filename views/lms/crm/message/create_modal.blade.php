@@ -10,6 +10,10 @@
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="send_type" value="1" title="발송타입">
+        <input type="hidden" name="choice_mem_idx">
+        <input type="hidden" name="choice_mem_id">
+        <input type="hidden" name="temp_mem_idx" value="{{$target_idx}}">
+        <input type="hidden" name="temp_mem_id" value="{{$target_id}}">
     @endsection
 
     @section('layer_content')
@@ -74,7 +78,7 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11">
+                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly">
                                                 </td>
                                             </tr>
                                         @endfor
@@ -94,7 +98,7 @@
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11">
+                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly">
                                                 </td>
                                             </tr>
                                         @endfor
@@ -225,7 +229,7 @@
                                 send_list = '<tr>';
                                 send_list += '<td>'+i+'</td>';
                                 send_list += '<td>'+item.B+'</td>';
-                                send_list += '<td>'+item.A+'</td>';
+                                send_list += '<td>'+item.C+'</td>';
                                 send_list += '</tr>';
                                 $('#mem_id_list > tbody').append(send_list);
                             });
@@ -242,8 +246,13 @@
 
                 // 회원검색
                 $('#btn_member_searching').click(function() {
+                    var param = '?temp_mem_idx=' + $('input[name="temp_mem_idx"]').val();
+                    param += '&temp_mem_id=' + $('input[name="temp_mem_id"]').val();
+                    param += '&choice_mem_idx=' + $('input[name="choice_mem_idx"]').val();
+                    param += '&choice_mem_id=' + $('input[name="choice_mem_id"]').val();
+
                     $('#btn_member_searching').setLayer({
-                        "url" : "{{ site_url('crm/sms/listMemberModal/message') }}",
+                        "url" : "{{ site_url('crm/sms/listMemberModal/message') }}" + param,
                         "width" : "1200",
                         "modal_id" : "modal_html2"
                     });
@@ -275,7 +284,7 @@
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /*$("#pop_modal").modal('toggle');*/
+                            /!*$("#pop_modal").modal('toggle');*!/
                             location.reload();
                         }
                     }, showValidateError, addValidate, 'alert', $regi_form);
@@ -295,12 +304,10 @@
                     alert('수신번호는 필수입니다.');
                     return false;
                 }
-
                 return true;
             }
         </script>
     @stop
-
 
     @section('add_buttons')
         <button type="submit" class="btn btn-success">발송</button>

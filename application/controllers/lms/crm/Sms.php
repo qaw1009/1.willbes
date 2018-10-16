@@ -234,11 +234,23 @@ class Sms extends \app\controllers\BaseController
      */
     public function listMemberModal($params = [])
     {
+        $set_mem_idx = $this->_reqG('temp_mem_idx');
+        $set_mem_id = $this->_reqG('temp_mem_id');
+        $choice_mem_idx = $this->_reqG('choice_mem_idx');
+        $choice_mem_id = $this->_reqG('choice_mem_id');
+
+        //회원검색 1회 할 경우
+        if (empty($choice_mem_idx) === false) {
+            $set_mem_idx = $choice_mem_idx;
+            $set_mem_id = $choice_mem_id;
+        }
+
         $get_site_array = $this->siteModel->getSiteArray();
         $this->load->view("crm/sms/list_member_modal", [
             'send_type' => $params[0],
-            'get_site_array' => $get_site_array
-
+            'get_site_array' => $get_site_array,
+            'set_mem_idx' => $set_mem_idx,
+            'set_mem_id' => $set_mem_id,
         ]);
     }
 

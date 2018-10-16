@@ -302,10 +302,12 @@
                     <div class="col-md-8">
                         <div class="form-group hide" id="limit_{{$optoins_keys[0]}}">
                             <div class="row">
-                                <div class="col-md-5 item form-inline">
+                                <div class="col-md-3 item form-inline">
                                     <div class="radio">
-                                        <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$optoins_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif> <label for="limit_type_S">단일리스트</label>
-                                        <input type="radio" class="flat mr-10" id="limit_type_M" name="limit_type" data-limit-type="M" value="M" title="다중리스트" @if($data['LimitType']=='M')checked="checked"@endif> <label for="limit_type_M">다중리스트</label>
+                                        <input type="radio" class="flat mr-10" id="limit_type_S" name="limit_type" data-limit-type="S" value="S" required="required_if:option_ccds,{{$optoins_keys[0]}}" title="단일리스트" @if($method == 'POST' || $data['LimitType']=='S')checked="checked"@endif>
+                                        <label for="limit_type_S" class="input-label">단일리스트</label>
+                                        <input type="radio" class="flat mr-10" id="limit_type_M" name="limit_type" data-limit-type="M" value="M" title="다중리스트" @if($data['LimitType']=='M')checked="checked"@endif>
+                                        <label for="limit_type_M" class="input-label">다중리스트</label>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
@@ -327,13 +329,13 @@
 
                                 <div class="col-md-11 form-limit-type hide" id="table_limit_type_M">
                                     <div class="form-group form-inline">
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <select class="form-control" id="select_type" name="select_type">
                                                 <option value="S" @if($data['SelectType']=='S')selected="selected"@endif>단일선택</option>
                                                 <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-2">
                                             <p class="form-control-static">• 다중리스트 옵션</p>
                                         </div>
                                     </div>
@@ -391,7 +393,7 @@
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[1]}}">
-                            <label class="control-label col-md-1">댓글사용영역</label>
+                            <label class="control-label col-md-2">댓글사용영역</label>
                             <div class="col-md-7 form-inline">
                                 <div class="checkbox">
                                 <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
@@ -404,7 +406,7 @@
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[2]}}">
-                            <label class="control-label col-md-1">자동문자정보</label>
+                            <label class="control-label col-md-2">자동문자정보</label>
                             <div class="col-md-10">
                                 <div class="row">
                                     <label class="control-label col-md-1">발신번호</label>
@@ -425,7 +427,7 @@
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[3]}}">
-                            <label class="control-label col-md-1">바로신청팝업</label>
+                            <label class="control-label col-md-2">바로신청팝업</label>
                             <div class="col-md-5">
                                 <input type="text" id="popup_title" name="popup_title" class="form-control" value="{{$data['PopupTitle']}}" placeholder="팝업타이틀명" title="팝업타이틀명">
                             </div>

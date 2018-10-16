@@ -100,8 +100,14 @@
                 var $search_form_modal = $('#search_form_modal');
                 var $list_modal_table = $('#_list_modal_ajax_table');
                 var send_type_modal = '{{$send_type}}';
+                var $ori_selected_data = {};
 
                 $(document).ready(function() {
+                    var set_mem_idx = '{{$set_mem_idx}}';
+                    var set_mem_id = '{{$set_mem_id}}';
+                    var arr_set_mem_idx = set_mem_idx.split(',');
+                    var arr_set_mem_id = set_mem_id.split(',');
+
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_modal_table.DataTable({
                         serverSide: true,
@@ -141,7 +147,8 @@
                                             break;
                                         case 'message' : val = row.MemIdx; break;
                                     }
-                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '">';
+                                    var checked = ($ori_selected_data.hasOwnProperty(row.MemIdx) === true) ? 'checked="checked"' : '';
+                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" ' + checked + '>';
                                 }}
                         ]
                     });
@@ -153,8 +160,13 @@
                             $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-id'), $(this).val()];
                         });
 
-                        var $params_length = Object.keys($params).length;
+                        if (set_mem_idx != '') {
+                            $.each(arr_set_mem_idx,function(key,value) {
+                                $params[value] = [arr_set_mem_id[key], value];
+                            });
+                        }
 
+                        var $params_length = Object.keys($params).length;
                         if ($params_length <= '0') {
                             alert('수신인 명단을 선택해주세요.');
                             return false;
@@ -181,11 +193,20 @@
                                 break;
                             case "message" :
                                 $('input[name="mem_id[]"]').val('');
+                                $('input[name="temp_mem_idx"]').val('');
+                                $('input[name="temp_mem_id"]').val('');
                                 var i=1;
+                                var arr_temp_idx = new Array();
+                                var arr_temp_id = new Array();
                                 $.each($params, function(key, value) {
+                                    arr_temp_idx[i-1] = key;
+                                    arr_temp_id[i-1] = value[0];
                                     $('#mem_id_'+i).val(value[0]);
                                     i++;
                                 });
+                                $('input[name="choice_mem_idx"]').val(arr_temp_idx);
+                                $('input[name="choice_mem_id"]').val(arr_temp_id);
+
                                 break;
                             case "mail" :
                                 $('input[name="mem_mail[]"]').val('');
@@ -202,6 +223,14 @@
 
                         $("#modal_html2").modal('toggle');
                     });
+
+                    // 기존 선택된 정보 json 변수 저장
+                    var setOriSelectedData = function() {
+                        $.each(arr_set_mem_idx,function(key,value) {
+                            $ori_selected_data[value] = value;
+                        });
+                    };
+                    setOriSelectedData();
                 });
             </script>
         @stop

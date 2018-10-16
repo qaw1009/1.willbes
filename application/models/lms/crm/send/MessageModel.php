@@ -112,7 +112,7 @@ class MessageModel extends WB_Model
         $this->_conn->trans_begin();
         try {
             $get_send_data_count = 0;
-            list($get_send_data, $get_send_data_count) = $this->_get_send_detail_data($formData['send_type'], $formData['mem_id']);
+            list($get_send_data, $get_send_data_count) = $this->_get_send_detail_data($formData);
 
             $inputData = $this->_setInputData($formData, $_send_type, $_send_type_ccd, $_send_status_ccd, $_send_option_ccd);
 
@@ -141,7 +141,6 @@ class MessageModel extends WB_Model
             if ($datas === false) {
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
-
             $result = $this->_addTempDataForSendReceiveData($datas);
             if ($result === false) {
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
@@ -231,10 +230,10 @@ class MessageModel extends WB_Model
     // 회원테이블 임시테이블 조인
     private function _listTempTableData($send_idx, $get_send_data)
     {
-        $column = "{$send_idx} as SendIdx, IFNULL(Mem.MemIdx,'0') AS MemIdx, TP.item as Receive_MemId";
+        $column = "{$send_idx} as SendIdx, TP.item AS MemIdx, Mem.MemId AS Receive_MemId";
         $from = "
             FROM {$this->_table_member} as Mem
-            RIGHT JOIN
+            INNER JOIN
             (
                 SELECT TT.item AS item FROM
                 (
@@ -245,7 +244,7 @@ class MessageModel extends WB_Model
                 )
                 AS TT
             ) AS TP
-            ON Mem.MemId = TP.item
+            ON Mem.MemIdx = TP.item
         ";
 
         // 쿼리 실행
@@ -271,23 +270,23 @@ class MessageModel extends WB_Model
 
     /**
      * 수신데이터 셋팅
-     * @param $send_type : [1 : 입력데이터, 2 : 첨부파일]
-     * @param $arr_send_data : 입력데이터
+     * @param $formData
      * @return array
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
      */
-    private function _get_send_detail_data($send_type, $arr_send_data)
+    private function _get_send_detail_data($formData)
     {
         $set_send_data = '';
         $set_send_data_count = [];
-        switch ($send_type) {
+        //1 : 입력데이터, 2 : 첨부파일
+        switch ($formData['send_type']) {
             case "1" :
-                foreach ($arr_send_data as $key => $val) {
-                    if (empty($arr_send_data[$key]) === false) {
-                        $set_send_data_count[$key] = $val;
-                        $set_send_data .= $val.',';
-                    }
+                //회원검색창에서 선택된 회원식별자 + 모달창에 호출된 회원식별자
+                if (empty($formData['temp_mem_idx']) === false) {
+                    $set_send_data = $formData['temp_mem_idx'];
+                } else {
+                    $set_send_data = $formData['choice_mem_idx'];
                 }
                 break;
             case "2" :
@@ -298,23 +297,24 @@ class MessageModel extends WB_Model
                 if (!empty($uploaded) === true || count($uploaded) > 0) {
                     $excel_data = $this->_ExcelReader($uploaded[0]['full_path']);
                     foreach ($excel_data as $key => $val) {
-                        $set_send_data_count[$key] = $val['B'];
-                        $set_send_data .= $val['B'].',';
+                        $set_send_data_count[$key] = $val['A'];
+                        $set_send_data .= $val['A'].',';
                     }
 
                     // 업로드 파일 삭제
                     @unlink($uploaded[0]['full_path']);
                 }
+                $set_send_data = substr($set_send_data , 0, -1);
                 break;
 
             default :
                 $set_send_data = '';
                 break;
         }
-        $set_send_data = substr($set_send_data , 0, -1);
 
         return array($set_send_data, count($set_send_data_count));
     }
+
 
     /**
      * 파일명 배열 생성

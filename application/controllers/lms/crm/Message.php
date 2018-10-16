@@ -169,6 +169,7 @@ class Message extends \app\controllers\BaseController
         $set_row_count = '12';
         $list_send_member = [];
 
+        $target_idx = $this->_req('target_idx');
         $target_id = $this->_req('target_id');
         if (empty($target_id) === false) {
             $set_send_member_ids = explode(',', $target_id);
@@ -184,7 +185,9 @@ class Message extends \app\controllers\BaseController
             'method' => $method,
             'arr_send_option_ccd' => $arr_send_option_ccd,
             'set_row_count' => $set_row_count,
-            'list_send_member' => $list_send_member
+            'list_send_member' => $list_send_member,
+            'target_idx' => $target_idx,
+            'target_id' => $target_id
         ]);
     }
 
@@ -226,7 +229,6 @@ class Message extends \app\controllers\BaseController
         }
 
         list($result, $return_count) = $this->messageModel->addMessage($this->_reqP(null,false), $this->_send_type, $this->_send_type_ccd, $this->_send_status_ccd, $this->_send_option_ccd);
-
         $this->json_result($result, '정상 처리되었습니다.',null, ['upload_cnt' => $return_count]);
     }
 

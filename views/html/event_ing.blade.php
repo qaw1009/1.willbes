@@ -123,7 +123,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                            <td class="w-no"><img src="{{ img_url('sub/icon_HOT.gif') }}"></td>
                             <td class="w-img">
                                 <a href="#none" onclick="openWin('APPLYPASS')"><img src="{{ img_url('sample/evt2.jpg') }}"></a>
                             </td>

@@ -108,5 +108,12 @@
     <script src="/public/vendor/loading-indicator/js/jquery.showLoading.js"></script>
     <!-- config -->
     <script src="/public/js/lcms/init.js"></script>
+    <script type="text/javascript">
+        var $__global = {
+            'csrf_token_name' : '{{ csrf_token_name() }}',
+            'csrf_token' : '{{ csrf_token() }}',
+            'menu_current_idx' : '{{ element('MenuIdx', element('CURRENT', $__menu, [])) }}'
+        };
+    </script>
     <!--/ JAVASCRIPT -->
 </head>

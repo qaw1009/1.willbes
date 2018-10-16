@@ -105,7 +105,7 @@ class AdminSettingsModel extends WB_Model
                 ]
             ]);
 
-            if (count($data) > 0) {
+            if (empty($data) === false) {
                 // 기 설정된 데이터 삭제 처리
                 $is_excute = $this->_conn->set('IsStatus', 'N')->where('SettingIdx', $data['SettingIdx'])->update($this->_table);
             } else {

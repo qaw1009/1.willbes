@@ -735,6 +735,7 @@ table.auTable tr td {
     right: 0;
     bottom: 0;
     margin: 0;
+    z-index: 90;
 }
 
 /* slider : 페이징 버튼(공통 GNB) => bSlider */
@@ -3019,8 +3020,6 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     width: 455px;
 }
 
-
-
 /* subContainer : Content : w-sp */
 .w-sp {
     width: 128px;
@@ -3520,7 +3519,7 @@ table.profTable tr td .priceWrap {
     margin-top: 2px;
 }
 .willbes-Buy-Price {
-    background: #f9f9fa;
+    background: #f9f9f9;
     float: right;
     width: 230px;
     height: 254px;
@@ -3794,7 +3793,7 @@ table.classTable tr td.w-data {
     letter-spacing: 0;
 }
 .LeclistTable .listTable thead tr th {
-    background: #f9f9fa;
+    background: #f9f9f9;
     font-weight: 600;
 }
 .LeclistTable .listTable thead tr th .row-line {
@@ -3829,6 +3828,61 @@ table.classTable tr td.w-data {
     display: block;
     margin: 2px auto;
 }
+.LeclistTable .listTable .userInfoBox th,
+.LeclistTable .listTable .userInfoBox td {
+    line-height: 30px;
+    padding: 12px 0;
+}
+.LeclistTable .listTable .userInfoBox th {
+    background: #f9f9f9;
+}
+.LeclistTable .listTable .userInfoBox input[type="text"] {
+    border: 1px solid #d4d4d4;
+    height: 27px;
+    padding: 0 10px;
+}
+.LeclistTable .listTable .userInfoBox button {
+    width: auto;
+    height: 27px;
+    line-height: 23px;
+    margin-left: 10px;
+}
+.LeclistTable .listTable .userInfoBox button span {
+    font-size: 11px;
+    padding: 0 10px;
+}
+
+/* subContainer : Content : 강의목차 : LeclistTable : evtTable */
+.LeclistTable .evtTable thead tr td {
+    background: #f9f9f9;
+    border-top: 1px solid #edeeef;
+}
+.LeclistTable .evtTable thead tr:first-child td {
+    border-top: 1px solid #959595;
+}
+.LeclistTable .evtTable tr th textarea {
+    float: left;
+    width: 800px;
+    height: 80px;
+    font-weight: 300;
+    border: 1px solid #d4d4d4;
+    resize: none;
+    vertical-align: middle;
+    padding: 20px;
+    line-height: 16px;
+}
+.LeclistTable .evtTable tr th button {
+    height: 80px;
+    line-height: 78px;
+}
+.LeclistTable .evtTable tr td {
+    line-height: 16px;
+    padding: 12px 0;
+}
+.LeclistTable .evtTable tr td a.w-del {
+    display: inline-block;
+    margin-left: 10px;
+}
 
 /* subContainer : Content : 강의목차 : LecViewTable */
 .LecViewTable .listTable {
@@ -3842,7 +3896,7 @@ table.classTable tr td.w-data {
 }
 .LecViewTable .listTable thead tr th,
 .LecViewTable .listTable thead tr td {
-    background: #f9f9fa;
+    background: #f9f9f9;
 }
 .LecViewTable .listTable thead tr td {
     border-top: 1px solid #edeeef;
@@ -3883,7 +3937,7 @@ table.classTable tr td.w-data {
 }
 .LecWriteTable .listTable thead tr th,
 .LecWriteTable .listTable thead tr td {
-    background: #f9f9fa;
+    background: #f9f9f9;
 }
 .LecWriteTable .listTable thead tr td {
     border-top: 1px solid #edeeef;
@@ -4116,7 +4170,7 @@ table.classTable tr td.w-data {
 .total-PriceBox .price-total {
     float: right;
     width: 200px;
-    background: #f9f9fa;
+    background: #f9f9f9;
     font-size: 23px;
     text-align: right;
     padding-right: 30px;
@@ -4274,7 +4328,7 @@ table.classTable tr td.w-data {
     border-bottom: 1px solid #e7e7e7;
 }
 .willbes-Buy-PackageList table.lecTable {
-    background: #f9f9fa;
+    background: #f9f9f9;
     border-bottom: none;
 }
 .willbes-Buy-PackageList table.lecTable .w-lectit {
@@ -4576,7 +4630,7 @@ table.classTable tr td.w-data {
     float: right;
     width: 230px;
     height: 138px;
-    background: #f9f9fa;
+    background: #f9f9f9;
     font-size: 16px;
     color: #505050;
     text-align: center;
@@ -4695,7 +4749,7 @@ table.classTable tr td.w-data {
     letter-spacing: 1px;
 }
 .willbes-Pricelist {
-    background: #f9f9fa;
+    background: #f9f9f9;
     height: 135px;
     margin: 20px 0 30px;
 }
@@ -4757,7 +4811,7 @@ table.couponTable {
     text-align: center;
 }
 table.couponTable thead tr th {
-    background: #f9f9fa;
+    background: #f9f9f9;
     height: 45px;
     line-height: 14px;
 }
@@ -4825,7 +4879,7 @@ ul.btnWrapbt li {
 }
 .cart-PointBox {
     clear: both;
-    background: #f9f9fa;
+    background: #f9f9f9;
     height: 60px;
 }
 .pointBox {
@@ -7100,6 +7154,25 @@ table.PassZoneTable .w-data {
     float: right;
     width: 96px;
 }
+.willbes-Layer-PassBox .userInfoBox {
+    width: 260px;
+    margin: 0 55px;
+}
+.willbes-Layer-PassBox .userInfoBox input[type="text"] {
+    border: 1px solid #d4d4d4;
+    height: 27px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+.willbes-Layer-PassBox .userInfoBox button {
+    width: 106px;
+    height: 37px;
+    line-height: 33px;
+    margin: 15px 77px 0;
+}
+.willbes-Layer-PassBox420 {
+    width: 420px;
+}
 .willbes-Layer-PassBox450 {
     width: 450px;
 }
@@ -7111,6 +7184,9 @@ table.PassZoneTable .w-data {
 }
 .willbes-Layer-PassBox600 {
     width: 600px;
+}
+.willbes-Layer-PassBox700 {
+    width: 700px;
 }
 .willbes-Layer-PassBox740 {
     width: 740px;
@@ -7131,9 +7207,17 @@ table.PassZoneTable .w-data {
     top: 50%;
     left: 50%;
 }
+.willbes-Layer-PassBox420.h350.fix {
+    margin-top: -175px;
+    margin-left: -210px;  
+}
 .willbes-Layer-PassBox600.h590.fix {
     margin-top: -295px;
     margin-left: -300px;  
+}
+.willbes-Layer-PassBox700.h520.fix {
+    margin-top: -260px;
+    margin-left: -350px;  
 }
 .willbes-Layer-PassBox740.h420.fix {
     margin-top: -210px;
@@ -7252,7 +7336,7 @@ table.PassZoneTable .w-data {
     float: left;
     widtH: 369px;
     height: 70px;
-    background: #f9f9fa;
+    background: #f9f9f9;
     border: 1px solid #959595;
     margin-left: 10px;
 }

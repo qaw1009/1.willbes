@@ -1,19 +1,16 @@
 <br/>
 <a href="{{ site_url('/') }}" target="_blank">통합 메인 페이지 이동</a><br/><br/>
 
-=======================================================
+=====================================================================
 
-<h3>HTML 퍼블리싱 페이지</h3>
+<h3>HTML 퍼블리싱 페이지</h3>  
 
-<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+<div style="float:left; width: 380px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
-    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>&nbsp;
-    <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;
+
+    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>&nbsp;/
+    <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;/
     <a href="{{ site_url('/home/html/main_gosi') }}" target="_blank">공무원메인</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/profsub') }}" target="_blank">교수진 상세 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a><br/><br/>
 
@@ -23,27 +20,73 @@
 
     <a href="{{ site_url('/home/html/memconvert') }}" target="_blank">통합회원 전환 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/list') }}" target="_blank">단강좌,무료강좌 수강신청 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/prof') }}" target="_blank">교수진소개 > 교수진 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/listsub') }}" target="_blank">단강좌, 무료강좌 수강신청 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/profsub') }}" target="_blank">교수진소개 > 교수진 상세 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/package1') }}" target="_blank">추천패키지 수강신청 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/package1') }}" target="_blank">패키지 > 추천패키지 수강신청 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/packagesub1') }}" target="_blank">추천패키지 수강신청 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/packagesub1') }}" target="_blank">패키지 > 추천패키지 수강신청 상세 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/package2') }}" target="_blank">선택패키지 수강신청 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/package2') }}" target="_blank">패키지 > 선택패키지 수강신청 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/packagesub2') }}" target="_blank">선택패키지 수강신청 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/packagesub2') }}" target="_blank">패키지 > 선택패키지 수강신청 상세 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/diypackage') }}" target="_blank">DIY패키지 수강신청 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/diypackage') }}" target="_blank">패키지 > DIY패키지 수강신청 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cart1') }}" target="_blank">장바구니 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/list') }}" target="_blank">강좌 > 단강좌,무료강좌 수강신청 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cart2') }}" target="_blank">결제하기 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/listsub') }}" target="_blank">강좌 > 단강좌, 무료강좌 수강신청 상세 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cart3') }}" target="_blank">결제완료 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/event_ing') }}" target="_blank">이벤트 > 진행중인 이벤트 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cart4') }}" target="_blank">결제완료(무통장) page 이동</a>
+    <a href="{{ site_url('/home/html/event_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a><br/><br/>
+
+</div>
+
+<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+
+    <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mocktest6_1') }}" target="_blank">수험정보 > 모의고사 > 모의고사안내 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mocktest6_2') }}" target="_blank">수험정보 > 모의고사 > 모의고사접수 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cart2') }}" target="_blank">결제 > 결제하기 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cart3') }}" target="_blank">결제 > 결제완료 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cart4') }}" target="_blank">결제 > 결제완료(무통장) page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list') }}" target="_blank">학원수강신청 > 단과반 page 이동</a><br/><br/>
+
+    <!--<a href="{{ site_url('/home/html/acad_list_package') }}" target="_blank">학원수강신청 > 종합반 page 이동</a><br/><br/>-->
+
+    <a href="{{ site_url('/home/html/acad_list_package_new') }}" target="_blank">** 학원수강신청 > 종합반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}" target="_blank">** 학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_memjoin') }}" target="_blank">학원 방문결제 접수 > 로그인 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_offline_list') }}" target="_blank">학원 방문결제 접수 > 단과반 page 이동</a><br/><br/>
+
+    <!--<a href="{{ site_url('/home/html/acad_offline_list_package') }}" target="_blank">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>-->
+
+    <a href="{{ site_url('/home/html/acad_offline_list_package_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 상세 page 이동</a><br/><br/>
 
 </div>
 
@@ -99,31 +142,6 @@
 
     <a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/acad_list') }}" target="_blank">학원수강신청 > 단과반 page 이동</a><br/><br/>
-
-    <!--<a href="{{ site_url('/home/html/acad_list_package') }}" target="_blank">학원수강신청 > 종합반 page 이동</a><br/><br/>-->
-
-    <a href="{{ site_url('/home/html/acad_list_package_new') }}" target="_blank">** 학원수강신청 > 종합반 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_list_packagesub_new') }}" target="_blank">** 학원수강신청 > 종합반 상세 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_memjoin') }}" target="_blank">학원 방문결제 접수 > 로그인 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_offline_list') }}" target="_blank">학원 방문결제 접수 > 단과반 page 이동</a><br/><br/>
-
-    <!--<a href="{{ site_url('/home/html/acad_offline_list_package') }}" target="_blank">학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>-->
-
-    <a href="{{ site_url('/home/html/acad_offline_list_package_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 상세 page 이동</a><br/><br/><br/><br/>
-
-    <a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a><br/><br/>
-    <a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video page 이동</a><br/><br/>
-
-</div>
-
-<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
-
     <a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
@@ -140,20 +158,11 @@
 
     <a href="{{ site_url('/home/html/cscenter6_2') }}" target="_blank">고객센터 > 학습 프로그램설치 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제 page 이동</a><br/><br/><br/><br/>
 
-    <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/mocktest6_1') }}" target="_blank">수험정보 > 모의고사 > 모의고사안내 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/mocktest6_2') }}" target="_blank">수험정보 > 모의고사 > 모의고사접수 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video page 이동</a><br/><br/>
 
 </div>
+
+

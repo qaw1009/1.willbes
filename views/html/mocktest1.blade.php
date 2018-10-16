@@ -11,32 +11,24 @@
             </ul>
             <ul class="menu-List">
                 <li>
-                    <a href="#none">교수진소개</a>
+                    <a href="{{ site_url('/home/html/prof') }}">교수진소개</a>
                 </li>
-                <li class="dropdown">
+                <li>
                     <a href="#none">PASS</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li class="Tit">PASS</li>
-                            <li><a href="#none">0원 PASS</a></li>
-                            <li><a href="#none">6개월 PASS</a></li>
-                            <li><a href="#none">12개월 PASS</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#none">패키지</a>
+                    <a href="{{ site_url('/home/html/package1') }}">패키지</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
                         <li class="Tit">패키지</li>
-                            <li><a href="#none">추천 패키지</a></li>
-                            <li><a href="#none">선택 패키지</a></li>
-                            <li><a href="#none">DIY 패키지</a></li>
+                            <li><a href="{{ site_url('/home/html/package1') }}">추천 패키지</a></li>
+                            <li><a href="{{ site_url('/home/html/package2') }}">선택 패키지</a></li>
+                            <li><a href="{{ site_url('/home/html/diypackage') }}">DIY 패키지</a></li>
                         </ul>
                     </div>
                 </li>
                 <li>
-                    <a href="#none">단강좌</a>
+                    <a href="{{ site_url('/home/html/list') }}">단강좌</a>
                 </li>
                 <li>
                     <a href="#none">무료강좌</a>
@@ -55,8 +47,15 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="#none">이벤트</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/event_ing') }}">이벤트</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">이벤트</li>
+                            <li><a href="{{ site_url('/home/html/event_ing') }}">진행중인 이벤트</a></li>
+                            <li><a href="{{ site_url('/home/html/event_end') }}">마감된 이벤트</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="Acad">
                     <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>

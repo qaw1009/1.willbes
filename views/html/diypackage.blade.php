@@ -11,25 +11,51 @@
             </ul>
             <ul class="menu-List">
                 <li>
-                    <a href="#none">교수진소개</a>
+                    <a href="{{ site_url('/home/html/prof') }}">교수진소개</a>
                 </li>
                 <li>
                     <a href="#none">PASS</a>
                 </li>
-                <li>
-                    <a href="#none">패키지</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/package1') }}">패키지</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                        <li class="Tit">패키지</li>
+                            <li><a href="{{ site_url('/home/html/package1') }}">추천 패키지</a></li>
+                            <li><a href="{{ site_url('/home/html/package2') }}">선택 패키지</a></li>
+                            <li><a href="{{ site_url('/home/html/diypackage') }}">DIY 패키지</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none">단강좌</a>
+                    <a href="{{ site_url('/home/html/list') }}">단강좌</a>
                 </li>
                 <li>
                     <a href="#none">무료강좌</a>
                 </li>
-                <li>
-                    <a href="#none">수험정보</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mocktest1') }}">수험정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">수험정보</li>
+                            <li><a href="{{ site_url('/home/html/mocktest1') }}">시험공고</a></li>
+                            <li><a href="{{ site_url('/home/html/mocktest2') }}">수험뉴스</a></li>
+                            <li><a href="{{ site_url('/home/html/mocktest3') }}">기출문제</a></li>
+                            <li><a href="#none">공무원가이드</a></li>
+                            <li><a href="#none">초보합격전략</a></li>
+                            <li><a href="{{ site_url('/home/html/mocktest6_1') }}">모의고사</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li>
-                    <a href="#none">이벤트</a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/event_ing') }}">이벤트</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">이벤트</li>
+                            <li><a href="{{ site_url('/home/html/event_ing') }}">진행중인 이벤트</a></li>
+                            <li><a href="{{ site_url('/home/html/event_end') }}">마감된 이벤트</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="Acad">
                     <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>

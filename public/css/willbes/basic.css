@@ -470,6 +470,9 @@ select[disabled] {
 .h66 {
   height: 66px !important;
 }
+.h350 {
+  height: 350px !important;
+}
 .h400 {
   height: 400px !important;
 }
@@ -478,6 +481,9 @@ select[disabled] {
 }
 .h460 {
   height: 460px !important;
+}
+.h520 {
+  height: 520px !important;
 }
 .h550 {
   height: 550px !important;
@@ -708,6 +714,10 @@ select[disabled] {
 }
 .pl135 {
   padding-left: 135px !important;
+}
+
+.pr20 {
+  padding-right: 20px !important;
 }
 
 .pb-zero,

@@ -506,7 +506,7 @@ class CartFModel extends BaseOrderFModel
      */
     public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false)
     {
-        $data = $this->productFModel->findOnlySaleProductByProdCode($learn_pattern, $prod_code);
+        $data = $this->productFModel->findOnlySalesProductByProdCode($learn_pattern, $prod_code);
 
         if (empty($data) === true) {
             return '판매 중인 상품만 주문 가능합니다.';

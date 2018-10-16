@@ -33,10 +33,10 @@ class ProductFModel extends WB_Model
     public $_student_book_ccd = '610003';
 
     // 상품 판매상태 > 판매가능, 판매예정
-    public $_sale_status_ccds = ['618001', '618002'];
+    public $_sale_status_ccds = ['available' => '618001', 'expected' => '618002'];
 
     // 학원 단과,종합반 접수상태 > 접수예정, 접수중
-    public $_accept_status_ccds = ['675001', '675002'];
+    public $_accept_status_ccds = ['expected' => '675001', 'available' => '675002'];
 
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
@@ -118,7 +118,6 @@ class ProductFModel extends WB_Model
         }
 
         return $this->_conn->getListResult($this->_table[$learn_pattern], $column . $add_column, $arr_condition, $limit, $offset, $order_by);
-
     }
 
     /**
@@ -162,7 +161,7 @@ class ProductFModel extends WB_Model
      * @param string $add_column
      * @return array
      */
-    public function findOnlySaleProductByProdCode($learn_pattern, $prod_code, $add_column = '')
+    public function findOnlySalesProductByProdCode($learn_pattern, $prod_code, $add_column = '')
     {
         $arr_condition = array_merge_recursive([
                 'EQ' => ['ProdCode' => $prod_code, 'SaleStatusCcd' => $this->_available_sale_status_ccd['product']]
@@ -182,7 +181,7 @@ class ProductFModel extends WB_Model
     {
         $arr_condition = [
             'EQ' => ['IsSaleEnd' => 'N', 'IsUse' => 'Y'],
-            'IN' => ['SaleStatusCcd' => $this->_sale_status_ccds],
+            'IN' => ['SaleStatusCcd' => array_values($this->_sale_status_ccds)],
             'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm']
         ];
 
@@ -198,14 +197,14 @@ class ProductFModel extends WB_Model
             case 'off_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y', 'IsLecOpen' => 'Y'],   // 일반강의, 마스터강의 사용여부, 강의개설여부
-                    'IN' => ['AcceptStatusCcd' => $this->_accept_status_ccds]   //접수예정, 접수중
+                    'IN' => ['AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   //접수예정, 접수중
                 ]);
                 break;
             //학원 종합반
             case 'off_pack_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => ['LecSaleType' => 'N', 'IsLecOpen' => 'Y'],   // 일반강의, 강의개설여부
-                    'IN' => ['AcceptStatusCcd' => $this->_accept_status_ccds]   //접수예정, 접수중
+                    'IN' => ['AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   //접수예정, 접수중
                 ]);
                 break;
             case 'book' :

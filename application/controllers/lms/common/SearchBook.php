@@ -15,6 +15,7 @@ class SearchBook extends \app\controllers\BaseController
     {
         $return_type = get_var($this->_req('return_type'), 'table');
         $data = [
+            'prod_type' => 'book',
             'site_code' => $this->_req('site_code'),
             'return_type' => $return_type,
             'target_id' => get_var($this->_req('target_id'), 'bookList'),

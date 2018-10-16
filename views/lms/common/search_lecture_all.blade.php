@@ -263,27 +263,26 @@
                     // 적용 버튼
                     //$('#_btn_apply').on('click', function() {
                     function sendContent() {
-
                         var addCnt = $("input[name='checkIdx']:checked").length;		//적용할 갯수
                         var allCnt = $("input[name='checkIdx']").length;		//노출된 전체 갯수
-                        if(addCnt == 0) {alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
+                        if(addCnt === 0) {alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
+                        var prod_type = $search_form.find("input[name='prod_type']").val(); // 상품타입 (on/off)
+                        var learn_pattern_ccd = $search_form.find("input[name='LearnPatternCcd']").val(); // 학습형태
                         var html;
 
                         if (!confirm('해당 강좌를 적용하시겠습니까?')) {return;}
 
                         for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
                             //##
-                            if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
-
+                            if ($("input:checkbox[id='checkIdx"+i+"']").is(":checked") === true) {
                                 temp_data = $("#checkIdx"+i).val();
                                 temp_data_arr = temp_data.split("@$");
 
                                 html = '<span class="pr-10">' + temp_data_arr[1];
                                 html += '   <a href="#none" data-cate-code="' + temp_data_arr[0]  + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
-                                html += '   <input type="hidden" name="prod_code[]" value="' + temp_data_arr[0]  + '"/>';
+                                html += '   <input type="hidden" name="prod_code[]" value="' + temp_data_arr[0]  + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="' + learn_pattern_ccd + '"/>';
                                 html += '</span>';
                                 $(document).find("#"+$parent_location_span).append(html);
-
                                 //##
                             }
                             //#

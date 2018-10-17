@@ -70,7 +70,7 @@
         <div class="PASSZONE-Lec-Section">
             <div class="Search-Result strong mb15 tx-gray">· 수강시작일 변경이력
                 <span class="w-info normal">(
-                    잔여횟수 : <span class="strong tx-light-blue">@if(count($log) >= 3){{'0'}}@else{{3-count($log)}}@endif</span>회
+                    잔여횟수 : <span class="strong tx-light-blue">@if($lec['ChgStartNum'] >= 3){{'0'}}@else{{3-$lec['ChgStartNum']}}@endif</span>회
                     <!--<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
                     잔여기간 : <span class="strong tx-light-blue">15</span>일 --> )
                 </span>
@@ -114,8 +114,11 @@
 <script>
     $(document).ready(function() {
         $('#startdate').datepicker({
+            startDate: "{{ date("Y-m-d", time()) }}",
+            endDate: "{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}",
             format : "yyyy-mm-dd",
-            language : "kr"
+            language : "kr",
+            todayHighlight: true
         });
 
         $('#startdate').on('change', function(){

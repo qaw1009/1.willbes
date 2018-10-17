@@ -116,27 +116,9 @@
                                     @endforelse
                                     </tbody>
                                 </table>
-                            <!--
-                                <div class="Paging">
-                                    <ul>
-                                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">5</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">6</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">7</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">8</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">9</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">10</a></li>
-                                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                                    </ul>
-                                </div> -->
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-                            <!-- <div class="willbes-Lec-Table pt20 NG d_block"> -->
                             <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
 
                                 @forelse( $pkgList as $row )
@@ -199,11 +181,6 @@
                                                         <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                                     </dl>
                                                 </td>
-                                                <!--
-                                                <td class="w-answer">
-                                                    <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
-                                                    <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
-                                                </td> -->
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -221,24 +198,6 @@
                                         </tbody>
                                     </table>
                             @endforelse
-                            <!--
-                                <div class="Paging">
-                                    <ul>
-                                        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">5</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">6</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">7</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">8</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">9</a><span class="row-line">|</span></li>
-                                        <li><a href="#none">10</a></li>
-                                        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                                    </ul>
-                                </div>
-                                -->
                             </div>
                         </div>
                     </div>
@@ -314,7 +273,7 @@
                 data,
                 function(d){
                     alert("시작일이 오늘로 설정되었습니다.");
-                    //location.reload();
+                    location.reload();
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

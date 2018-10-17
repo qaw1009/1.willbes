@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class On extends \app\controllers\FrontController
 {
     protected $models = array('classroomF');
-    protected $helpers = array();
+    protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();
 
@@ -362,6 +362,7 @@ class On extends \app\controllers\FrontController
      */
     public function end()
     {
+        //app_to_env_url($this->getSiteCacheItem('2001', 'SiteUrl'));
         // 검색
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
@@ -398,6 +399,12 @@ class On extends \app\controllers\FrontController
                     'ProdName' => $this->_req('search_text'), // 강의명 검색 (사용자패키지일때 패키지명)
                     'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
                 ]
+            ],
+            'GTE' => [
+                'RealLecEndDate' => element('search_start_date', $input_arr)
+            ],
+            'LTE' => [
+                'RealLecEndDate' => element('search_end_date', $input_arr)
             ]
         ];
 
@@ -510,6 +517,7 @@ class On extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
+        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 커리큘럼 읽어오기
         $curriculum = $this->classroomFModel->getCurriculum([
@@ -948,7 +956,7 @@ class On extends \app\controllers\FrontController
         // 날짜 계산
         $PauseDay = intval((strtotime($enddate)-strtotime($today))/86400) +1;
 
-        $log = $this->classroomFModel->setPause([
+        if( $this->classroomFModel->setPause([
             'MemIdx' => $memidx,
             'OrderIdx' => $orderidx,
             'OrderProdIdx' => $lec['OrderProdIdx'],
@@ -959,7 +967,11 @@ class On extends \app\controllers\FrontController
             'pausestartdate' => $today,
             'pauseenddate' => $enddate,
             'pauseday' => $PauseDay
-            ]);
+            ]) == true){
+            return $this->json_result(true,'일시중지 성공');
+        } else {
+            return $this->json_error('일시중지중 에러발생');
+        }
     }
 
 
@@ -1036,9 +1048,184 @@ class On extends \app\controllers\FrontController
 
     public function layerExtend()
     {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('mem_idx');
+
+        $today = date("Y-m-d", time());
+
+        $cond_arr = [
+            'LTE' => [
+                'LecStartDate' => $today, // 시작일 <= 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsExten'] != 'Y'){
+            return $this->json_error('연장신청을 할 수 없는 강좌입니다.');
+        }
+
+        $lec['ProdPriceData'] = json_decode($lec['ProdPriceData'], true);
+
+        foreach($lec['ProdPriceData'] as $key => $row){
+            if($row['SaleTypeCcd'] == $lec['SaleTypeCcd']){
+                $lec['ExtenPrice'] = $row['SalePrice'];
+            }
+        }
+
+        if($lec['ExtenPrice'] <= 0){
+            return $this->json_error('연장신청을 할 수 없는 강좌입니다.');
+        }
+
+        $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
+        $lec['ExtenPrice'] = floor($lec['ExtenPrice'] / $lec['StudyPeriod']);
+
+        $log = $this->classroomFModel->getExtendLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'TargetOrderIdx' => $orderidx,
+                'TargetProdCode' => $prodcode,
+                'TargetProdCodeSub' => $prodcodesub
+            ]
+        ]);
 
         return $this->load->view('/classroom/on/layer/extend', [
+            'lec' => $lec,
+            'log' => $log
         ]);
+    }
+
+
+    public function download($params = [])
+    {
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
+
+        if(empty($orderidx) === true
+            || empty($prodcode) === true
+            || empty($prodcodesub) === true
+            || empty($lecidx) === true
+            || empty($unitidx) === true ){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        if($lec['LearnPatternCcd'] == '615003'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ]);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+        }
+
+        if($lec['LecStartDate'] > $today){
+            show_alert('아직 시작되지 않은 강의입니다.', 'back');
+        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+            show_alert('일시중지중인 강의입니다.', 'back');
+        }
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $unitidx
+            ]
+        ]);
+
+        if(empty($curriculum) == true){
+            show_alert('회차정보가 존재하지 않습니다.', 'back');
+        }
+        $curriculum = $curriculum[0];
+
+        $filepath = $curriculum['wAttachPath'] . $curriculum['wUnitAttachFile'];
+        $filename = $curriculum['wUnitAttachFileReal'];
+
+        if(is_file(public_to_upload_path($filepath)) == false){
+            show_alert('파일이 존재하지 않습니다.', 'back');
+        }
+        // 파일 다운로드 로그남기기
+        
+        // 실제로 파일 다운로드 처리
+        public_download($filepath, $filename);
     }
 
 }

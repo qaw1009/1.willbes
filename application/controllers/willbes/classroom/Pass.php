@@ -18,6 +18,6 @@ class Pass extends \app\controllers\FrontController
      */
     public function index()
     {
-        $this->load->view('/classroom/pass');
+        $this->load->view('/classroom/pass/index');
     }
 }

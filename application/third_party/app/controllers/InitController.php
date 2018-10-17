@@ -115,6 +115,7 @@ trait InitController
     public function getCacheItem($driver, $key = null, $site_id = 'all')
     {
         is_object(@$this->caching) === false && $this->load->driver('caching');
+        $this->caching->setDriver($driver);
 
         if (($items = $this->caching->{$driver}->get()) === false) {
             $items = [];

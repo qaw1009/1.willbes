@@ -162,6 +162,11 @@
                 }
             });
 
+            // 장바구니 담기 버튼 클릭
+            $('.btn-cart-regist').on('click', function(event) {
+                location.href = '{{ site_url('/pay/order/cart/create') }}' + dtParamsToQueryString($datatable);
+            });
+
             // 선택 체크박스 클릭
             $datatable.on('ifChanged', 'input[name="mem_idx[]"]', function() {
                 var mem_idx = $(this).val();

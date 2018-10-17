@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class RegExam extends \app\controllers\BaseController
 {
-    protected $models = array('sys/category', 'product/base/subject', 'mocktest/mockCommon', 'mocktest/regExam');
+    protected $models = array('sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regExam');
     protected $helpers = array();
 
 
@@ -74,18 +74,22 @@ class RegExam extends \app\controllers\BaseController
         $rules = [
             ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'moLink', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'wprof_idx', 'label' => '교수명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'ProfIdx', 'label' => '교수명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'QuestionFileImg', 'label' => '문제통파일', 'rules' => 'trim|required'],
-            ['field' => 'ExplanFileImg', 'label' => '해설지통파일', 'rules' => 'trim|required'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
         ];
+        if( $_FILES['QuestionFile']['error'] === UPLOAD_ERR_NO_FILE ) {
+            $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
+        }
+        if( $_FILES['ExplanFile']['error'] === UPLOAD_ERR_NO_FILE ) {
+            $rules[] = ['field' => 'ExplanFile', 'label' => '해설지통파일', 'rules' => 'required'];
+        }
         if ($this->validate($rules) === false) return;
 
         //TODO 업로드 이미지 저장
@@ -100,7 +104,7 @@ class RegExam extends \app\controllers\BaseController
      */
     public function edit($param = [])
     {
-        list($data, $chData, $moCate) = $this->regExamModel->getExamBase($param[0]);
+        list($data, $qData, $moCate_name, $moCate_isUse, $professor) = $this->regExamModel->getExamBase($param[0]);
         if (!$data) {
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
@@ -110,9 +114,12 @@ class RegExam extends \app\controllers\BaseController
             'siteCodeDef' => $data['SiteCode'],
             'method' => 'PUT',
             'data' => $data,
-            'chData' => $chData,
-            'moCate' => $moCate,
+            'qData' => $qData,
+            'moCate_name' => $moCate_name,
+            'moCate_isUse' => $moCate_isUse,
+            'professor' => $professor,
             'adminName' => $this->mockCommonModel->getAdminNames(),
+            'isCopy' => ( isset($param[1]) && $param[1] == 'copy' ) ? true : false,
         ]);
     }
 
@@ -123,19 +130,26 @@ class RegExam extends \app\controllers\BaseController
     public function update()
     {
         $rules = [
-            ['field' => 'wprof_idx', 'label' => '교수명', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'ProfIdx', 'label' => '교수명', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'QuestionFileImg', 'label' => '문제통파일', 'rules' => 'trim|required'],
-            ['field' => 'ExplanFileImg', 'label' => '해설지통파일', 'rules' => 'trim|required'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
+        if($this->input->post('isCopy')) {
+            $rules[] = ['field' => 'moLink', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'];
+        }
+        if( $_FILES['QuestionFile']['error'] === UPLOAD_ERR_NO_FILE ) {
+            $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
+        }
+        if( $_FILES['ExplanFile']['error'] === UPLOAD_ERR_NO_FILE ) {
+            $rules[] = ['field' => 'ExplanFile', 'label' => '해설지통파일', 'rules' => 'required'];
+        }
         if ($this->validate($rules) === false) return;
 
         //TODO 업로드 이미지 변경

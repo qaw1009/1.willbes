@@ -195,7 +195,7 @@ class SiteModel extends WB_Model
 
             // 로고, 파비콘 업로드
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/site/' . $site_code;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/site/' . $site_code;
 
             $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code, 'favicon_' . $site_code], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
             if (is_array($uploaded) === false) {
@@ -280,7 +280,7 @@ class SiteModel extends WB_Model
 
             // 로고, 파비콘 업로드
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/site/' . $site_code;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/site/' . $site_code;
             $attach_img_postfix = '_' . time();
             $bak_uploaded_files = [];
 

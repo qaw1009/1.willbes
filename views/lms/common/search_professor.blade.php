@@ -79,7 +79,7 @@
                             {'data' : 'wProfName', 'class': 'text-center'},
                             {'data' : 'ProfIdx', 'class': 'text-center'},
                             {'data' : 'wProfId', 'class': 'text-center'},
-                            {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            {'data' : 'BaseIsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                                     return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                             }},
                             {'data' : 'wAdminName', 'class': 'text-center'},
@@ -93,7 +93,7 @@
                         var txt = '';
 
                         if ($(this).prop('checked') === true) {
-                            txt = '<span>' + row.wProfName +' | '+ row.ProfIdx +' | '+ row.wProfId +' | '+ ((row.IsUse == 'Y') ? '사용' : '미사용');
+                            txt = '<span>' + row.wProfName +' | '+ row.ProfIdx +' | '+ row.wProfId +' | '+ ((row.BaseIsUse == 'Y') ? '사용' : '<span class="red">미사용</span>');
                             txt += '<input type="hidden" name="ProfIdx" value="' + row.ProfIdx + '"></span>';
 
                             $parent_selected_professor.html(txt);
@@ -105,7 +105,7 @@
                     // 초기화
                     $parent_selected_professor.find('[name="ProfIdx"]').each(function () {
                         var code = $(this).val();
-                        if(code) professorExist[code] = $(this).parent().text();
+                        if(code) professorExist[code] = $(this).parent().text().trim();
                     });
 
                     // 검색초기화

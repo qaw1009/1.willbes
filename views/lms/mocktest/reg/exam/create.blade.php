@@ -11,7 +11,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['MpIdx'] : '' }}">
-                <input type="hidden" name="wprof_idx" value="{{ ($method == 'PUT') ? $data['wProfIdx'] : '' }}">
+                <input type="hidden" name="isCopy" value="@if($method == 'PUT'){{ $isCopy }}@endif">
 
                 <table class="table table-bordered modal-table">
                     <tr>
@@ -24,16 +24,26 @@
                     <tr>
                         <th colspan="1">모의고사카테고리 <span class="required">*</span></th>
                         <td colspan="3">
-                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT') ? 'disabled' : ''}}>카테고리검색</button>
+                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT' && !$isCopy) ? 'disabled' : ''}}>카테고리검색</button>
                             <span id="selected_category">
                                 @if($method == 'PUT')
-                                    @foreach($moCate as $code => $name)
-                                        <span class="pb-5">
-                                            {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
-                                            {{--<a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>--}}
-                                            {{--<input type="hidden" name="moLink" value="{{ $code }}">--}}
-                                        </span>
-                                    @endforeach
+                                    @if($isCopy) {{-- 복사 후 첫 이동, 카테고리 변경 가능하게 --}}
+                                        @foreach($moCate_name as $code => $name)
+                                            <span class="pb-5">
+                                                {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
+                                                @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
+                                                <a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
+                                                <input type="hidden" name="moLink" value="{{ $code }}">
+                                            </span>
+                                        @endforeach
+                                    @else
+                                        @foreach($moCate_name as $code => $name)
+                                            <span class="pb-5">
+                                                {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
+                                                @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
+                                            </span>
+                                        @endforeach
+                                    @endif
                                 @endif
                             </span>
                         </td>
@@ -42,7 +52,18 @@
                         <th colspan="1">교수명 <span class="required">*</span></th>
                         <td colspan="3">
                             <button type="button" class="btn btn-sm btn-primary act-searchProfessor">교수검색</button>
-                            <span id="selected_professor" class="pl-10">교수명 | 교수코드 | 아이디 | 사용여부</span>
+                            <span id="selected_professor" class="pl-10">
+                                @if($method == 'PUT')
+                                    @foreach($professor as $it)
+                                        <span>
+                                            {!! $it['txt'] !!}
+                                            <input type="hidden" name="ProfIdx" value="{{ $it['code'] }}">
+                                        </span>
+                                    @endforeach
+                                @else
+                                    교수명 | 교수코드 | 아이디 | 사용여부
+                                @endif
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +72,7 @@
                             <input type="text" class="form-control" name="PapaerName" value="@if($method == 'PUT'){{ $data['PapaerName'] }}@endif">
                         </td>
                         <th style="width:15%;">과목문제지코드 <span class="required">*</span></th>
-                        <td style="width:35%;">@if($method == 'PUT'){{ sprintf("%05d", $data['MpIdx']) }}@endif</td>
+                        <td style="width:35%;">@if($method == 'PUT'){{ $data['MpIdx'] }}@endif</td>
                     </tr>
                     <tr>
                         <th>연도/회차 <span class="required">*</span></th>
@@ -59,13 +80,13 @@
                             <select class="form-control mr-5" name="Year">
                                 <option value="">연도</option>
                                 @for($i=(date('Y')+1); $i>=2005; $i--)
-                                    <option value="{{$i}}">{{$i}}</option>
+                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['Year']) selected @endif>{{$i}}</option>
                                 @endfor
                             </select>
                             <select class="form-control mr-5" name="RotationNo">
                                 <option value="">회차</option>
                                 @foreach(range(1, 20) as $i)
-                                    <option value="{{$i}}">{{$i}}</option>
+                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['RotationNo']) selected @endif>{{$i}}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -73,14 +94,14 @@
                         <td class="form-inline">
                             <select class="form-control mr-5" name="QuestionOption">
                                 <option value="">보기형식</option>
-                                <option value="S">객관식(단일정답)</option>
-                                <option value="M">객관식(복수정답)</option>
-                                <option value="J">주관식</option>
+                                <option value="S" @if($method == 'PUT' && $data['QuestionOption'] == 'S') selected @endif>객관식(단일정답)</option>
+                                <option value="M" @if($method == 'PUT' && $data['QuestionOption'] == 'M') selected @endif>객관식(복수정답)</option>
+                                <option value="J" @if($method == 'PUT' && $data['QuestionOption'] == 'J') selected @endif>주관식</option>
                             </select>
                             <select class="form-control mr-5" name="AnswerNum">
                                 <option value="">보기갯수</option>
                                 @foreach(range(1, 5) as $i)
-                                    <option value="{{$i}}">{{$i}}</option>
+                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['AnswerNum']) selected @endif>{{$i}}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -101,13 +122,13 @@
                     <tr>
                         <th colspan="1">문제통파일 <span class="required">*</span></th>
                         <td colspan="3">
-                            <input type="file" name="QuestionFileImg">
+                            <input type="file" name="QuestionFile">
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">해설지통파일 <span class="required">*</span></th>
                         <td colspan="3">
-                            <input type="file" name="ExplanFileImg">
+                            <input type="file" name="ExplanFile">
                         </td>
                     </tr>
                     <tr>
@@ -274,7 +295,7 @@
                 }
                 else if( $(this).hasClass('act-searchProfessor') ) {
                     $('.act-searchProfessor').setLayer({
-                        'url': '{{ site_url('/common/searchWProfessor/index/professor/') }}',
+                        'url': '{{ site_url('/common/searchProfessor/?siteCode=') }}' + $('[name=siteCode]').val(),
                         'width': 900
                     });
                 }
@@ -289,7 +310,6 @@
             $('[name=siteCode]').on('change', function () {
                 $('#selected_category').empty();
                 $('#selected_professor').empty();
-                $('[name="wprof_idx"]').val('');
             });
 
             // 목록 이동
@@ -299,7 +319,7 @@
 
             // 기본정보 등록,수정
             $regi_form.submit(function() {
-                @if($method == 'POST') if(!confirm("저장하시겠습니까?")) return false; @endif
+                {{--@if($method == 'POST') if(!confirm("저장하시겠습니까?")) return false; @endif--}}
 
                 var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/regExam/update') : site_url('/mocktest/regExam/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

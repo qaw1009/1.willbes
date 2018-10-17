@@ -7,7 +7,8 @@
 @section('layer_header')
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <input type="hidden" name="site_code" value="{{ $site_code }}"/>
+        <input type="hidden" name="site_code" id="site_code" value="{{ $site_code }}"/>
+        <input type="hidden" name="prod_type" id="prod_type" value="{{$prod_type}}"/>
 @endsection
 
 @section('layer_content')
@@ -160,13 +161,14 @@
                             $("input[name='checkBook']:checked").each(function() {
                                 var temp_data = $(this).val();		                //해당 id값 추출
                                 var temp_data_arr = temp_data.split("@$");	    //문자열 분리
+                                var prod_type = $search_form.find("input[name='prod_type']").val(); // 상품타입 (book)
 
                                 // 기존 선택된 것 이외의 것만 추가
                                 if ($ori_selected_data.hasOwnProperty(temp_data_arr[0]) === false) {
                                     $(document).find($target_id).append(
                                         '<span class="pr-10">' + temp_data_arr[1] +
                                         '   <a href="#none" data-prod-code="' + temp_data_arr[0] + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>' +
-                                        '   <input type="hidden" name="' + $target_field + '[]" value="' + temp_data_arr[0] + '"/>' +
+                                        '   <input type="hidden" name="' + $target_field + '[]" value="' + temp_data_arr[0] + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""/>' +
                                         '</span>'
                                     );
                                 }

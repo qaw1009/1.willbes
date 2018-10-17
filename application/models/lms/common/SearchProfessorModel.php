@@ -39,7 +39,8 @@ class SearchProfessorModel extends WB_Model
 
         $select = "
             SELECT P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.IsUse, P.RegDatm, P.RegAdminIdx,
-            PMS.wProfName, PMS.wProfId, S.SiteName, A.wAdminName";
+            PMS.wProfName, PMS.wProfId, S.SiteName, A.wAdminName,
+            IF(P.IsUse = 'N' OR PMS.wIsUse = 'N' OR S.IsUse = 'N', 'N', 'Y') AS BaseIsUse";
         $selectCount = "SELECT COUNT(*) AS cnt";
 
         $from = "

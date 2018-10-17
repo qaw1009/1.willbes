@@ -142,4 +142,13 @@ class Caching extends CI_Driver_Library
 
         return @$this->_CI->cache->delete($key);
     }
+
+    /**
+     * set driver
+     * @param $driver
+     */
+    public function setDriver($driver)
+    {
+        $this->_driver = $driver;
+    }
 }

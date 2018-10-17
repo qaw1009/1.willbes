@@ -7,6 +7,9 @@ $config['view_add_path'] = '/' . APP_DEVICE;
 // 이미지 경로
 $config['img_base_path'] = PUBLICURL . 'img/' . APP_NAME . '/';
 
+// 업로드 하위 디렉토리
+$config['upload_prefix_dir'] = APP_NAME;
+
 // URI 세그먼트 지정
 $config['uri_segment_keys'] = ['site' => 'site', 'cate' => 'cate'];
 

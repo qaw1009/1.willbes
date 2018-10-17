@@ -69,7 +69,7 @@ class UnitModel extends WB_Model
                 $this->load->library('upload');
 
                 $row = $this->lectureModel->findLectureForModify($lec_idx);
-                $upload_sub_dir = SUB_DOMAIN.'/lecture/'.date("Y",strtotime($row['wRegDatm'])).'/'.$lec_idx;
+                $upload_sub_dir = config_item('upload_prefix_dir').'/lecture/'.date("Y",strtotime($row['wRegDatm'])).'/'.$lec_idx;
 
                 //첨부자료 등록 처리
                 //$upload_result = $this->upload->uploadFile('file',['wUnitAttachFile'],'',$upload_sub_dir);

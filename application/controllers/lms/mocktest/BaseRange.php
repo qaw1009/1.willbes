@@ -96,7 +96,7 @@ class BaseRange extends \app\controllers\BaseController
             'moCate_name' => $moCate_name,
             'moCate_isUse' => $moCate_isUse,
             'adminName' => $this->mockCommonModel->getAdminNames(),
-            'isCopy' => ( empty($param[1]) ) ? false : true,
+            'isCopy' => ( isset($param[1]) && $param[1] == 'copy' ) ? true : false,
         ]);
     }
 

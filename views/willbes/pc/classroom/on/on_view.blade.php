@@ -23,7 +23,7 @@
                             <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
                             <!-- img src="/public/img/willbes/sample/prof2-1.png" -->
                         </div>
-                        <div class="prof-home subBtn NSK"><a href="#none"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
+                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
                     <div class="lec-profile p_re">
                         <div class="w-tit">{{$lec['subProdName']}}</div>
@@ -90,7 +90,7 @@
                 <div class="Mypage-PASSZONE-Btn">
                     <ul>
                         <li class="subBtn blue NSK"><a href="#none">수강후기 작성하기 ></a></li>
-                        <li class="subBtn NSK"><a href="#none">학습 Q&A</a></li>
+                        <li class="subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}&tab=qna">학습 Q&A</a></li>
                     </ul>
                     <div class="aBox passBox answerBox_block NSK f_right"><a href="#none">교재구매</a></div>
                 </div>
@@ -129,7 +129,9 @@
                                 <td class="w-lec">{{$row['wUnitName']}}</td>
                                 <td class="w-page">{{$row['wBookPage']}}</td>
                                 <td class="w-file">
-                                    <a href=""><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                    @if(empty($row['wUnitAttachFile']) == false)
+                                        <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                    @endif
                                 </td>
                                 <td class="w-free mypage">
                                     @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
@@ -214,6 +216,6 @@
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
-    <script src="/public/js/willbes/player.js"></script>
+    <script src="/public/js/willbes/player.js?ver={{time()}}"></script>
 
 @stop

@@ -81,4 +81,10 @@ class PlayerFModel extends WB_Model
 
     }
 
+
+    public function storeStudyLog($input)
+    {
+
+    }
+
 }

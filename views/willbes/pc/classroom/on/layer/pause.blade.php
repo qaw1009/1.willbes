@@ -72,21 +72,21 @@
                     <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnSetPause();">신청</a></div>
                 @endif
             </div>
-        </div>
-        <div class="PASSZONE-Lec-Section">
-            <div class="Search-Result strong mb15 tx-gray">· 일시정지 이력 <span class="w-info normal">(
+            </div>
+            <div class="PASSZONE-Lec-Section">
+                <div class="Search-Result strong mb15 tx-gray">· 일시정지 이력 <span class="w-info normal">(
                     잔여횟수 : <span class="strong tx-light-blue">@if($lec['PauseCount'] >= $lec['PauseNum']){{'0'}}@else{{$lec['PauseNum'] - $lec['PauseCount']}}@endif</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
                     잔여기간 : <span class="strong tx-light-blue">{{$lec['PauseRemain']}}</span>일
                     )</span></div>
-            <div class="LeclistTable bdt-gray">
-                <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                    <colgroup>
-                        <col style="width: 100px;">
-                        <col style="width: 270px;">
-                        <col style="width: 170px;">
-                        <col style="width: 160px;">
-                    </colgroup>
-                    <thead>
+                <div class="LeclistTable bdt-gray">
+                    <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 100px;">
+                            <col style="width: 270px;">
+                            <col style="width: 170px;">
+                            <col style="width: 160px;">
+                        </colgroup>
+                        <thead>
                     <tr>
                         <th>회차<span class="row-line">|</span></th>
                         <th>일시정지기간<span class="row-line">|</span></th>
@@ -95,13 +95,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @php
-                        $i = 0;
-                    @endphp
+                    @php $i = $lec['PauseCount']+1; @endphp
                     @forelse( $log as $key => $row)
-                        @php
-                            if($row['IsDel'] == 'N'){ $i = $i+1;}
-                        @endphp
+                        @php if($row['IsDel'] == 'N'){ $i = $i-1;} @endphp
                         <tr>
                             <td class="w-num">{{$row['IsDel'] == 'Y' ? '취소' : $i.'차'}}</td>
                             <td class="w-day">{{$row['PauseStartDate']}} ~ {{$row['PauseEndDate']}} ({{$row['PauseDays']}}일)</td>
@@ -123,8 +119,11 @@
 <script>
     $(document).ready(function() {
         $('#enddate').datepicker({
+            startDate: "{{ date("Y-m-d", time()) }}",
+            endDate: "@if( $lec['RealLecEndDate'] < date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))){{$lec['RealLecEndDate']}}@else{{date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))}}@endif",
             format : "yyyy-mm-dd",
-            language : "kr"
+            language : "kr",
+            todayHighlight: true
         });
 
         $('#enddate').on('change', function(){

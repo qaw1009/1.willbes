@@ -29,7 +29,6 @@
                     </table>
                 </div>
             </div>
-            <!-- willbes-Mypage-ONLINEZONE -->
             <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/on/list/ongoing/', 'www')}}" onsubmit="">
                 <div class="willbes-Mypage-Tabs mt40">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
@@ -111,54 +110,8 @@
                                                 <td colspan="2" class="tx-center">일시중지 강좌가 없습니다.</td>
                                             </tr>
                                         @endforelse
-                                        <!--
-                                        <tr>
-                                            <td class="w-data tx-left pl10">
-                                                <dl class="w-info">
-                                                    <dt>
-                                                        영어<span class="row-line">|</span>
-                                                        한덕현교수님
-                                                        <span class="NSK ml15 nBox n2">진행중</span>
-                                                    </dt>
-                                                </dl><br/>
-                                                <div class="w-tit">
-                                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                                </div>
-                                                <dl class="w-info tx-gray">
-                                                    <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                </dl>
-                                            </td>
-                                            <td class="w-answer">
-                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                        </tr> -->
                                         </tbody>
                                     </table>
-                                <!--
-                                    <div class="Paging">
-                                        <ul>
-                                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">10</a></li>
-                                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                                        </ul>
-                                    </div>
-                                    -->
                                 </div>
                             </div>
                             <div id="Mypagetab2" class="tabLink">
@@ -218,11 +171,6 @@
                                                             <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                                         </dl>
                                                     </td>
-                                                    <!--
-                                                    <td class="w-answer">
-                                                        <a href="#none"><span class="bBox blueBox NSK">수강연장(3)</span></a>
-                                                        <a href="#none"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">3</span>)</span></a>
-                                                    </td> -->
                                                 </tr>
                                             @endforeach
                                             </tbody>
@@ -240,52 +188,6 @@
                                             </tbody>
                                         </table>
                                 @endforelse
-                                <!--
-                                        <tr>
-                                            <td class="w-data tx-left pl10">
-                                                <dl class="w-info">
-                                                    <dt>
-                                                        영어<span class="row-line">|</span>
-                                                        한덕현교수님
-                                                        <span class="NSK ml15 nBox n2">진행중</span>
-                                                    </dt>
-                                                </dl><br/>
-                                                <div class="w-tit">
-                                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지333</a>
-                                                </div>
-                                                <dl class="w-info tx-gray">
-                                                    <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                </dl>
-                                            </td>
-                                            <td class="w-answer">
-                                                <a href="#none"><span class="bBox whiteBox NSK">일시정지해제</span></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                        </tr> -->
-                                <!--
-                                    <div class="Paging">
-                                        <ul>
-                                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                                            <li><a href="#none">10</a></li>
-                                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                                        </ul>
-                                    </div>
-                                    -->
                                 </div>
                             </div>
                         </div>

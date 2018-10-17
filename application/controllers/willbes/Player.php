@@ -6,7 +6,7 @@ class Player extends \app\controllers\FrontController
     protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('index');
 
     protected $_profReferDataName = [
         'OT' => 'ot_url',
@@ -29,7 +29,7 @@ class Player extends \app\controllers\FrontController
         $orderidx = $this->_req('o');
         $prodcode = $this->_req('p');
         $prodcodesub = $this->_req('sp');
-        $unitItx = $this->_req('u');
+        $unitidx = $this->_req('u');
         $quility = $this->_req('q');
 
         $today = date("Y-m-d", time());
@@ -113,7 +113,7 @@ class Player extends \app\controllers\FrontController
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
                 'wLecIdx' => $lec['wLecIdx'],
-                'wUnitIdx' => $unitItx
+                'wUnitIdx' => $unitidx
             ]
         ]);
 
@@ -208,13 +208,30 @@ class Player extends \app\controllers\FrontController
 
         $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
 
+        // 수강히스토리 기록생성
+        $logidx = $this->playerFModel->storeStudyLog([
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'OrderIdx' => $orderidx,
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub,
+            'wLecIdx' => $lec['wLecIdx'],
+            'wUnitIdx' => $unitidx
+        ]);
+
         return $this->load->view('/player/normal', [
             'data' => [
+                'orderidx' => $orderidx,
+                'prodcode' => $prodcode,
+                'prodcodesub' => $prodcodesub,
+                'unitidx' => $unitIdx,
+                'quility' => $quility,
                 'isIntro' => false,
                 'ratio' => $ratio,
-                'startPosition' => 0,
+                'lastposition' => $data['LastPosition'],
+                'title' => $data['wUnitName'],
                 'url' => $url,
-                'memid' => $MemId
+                'memid' => $MemId,
+                'logidx' => $logidx
             ]
         ]);
     }
@@ -230,8 +247,8 @@ class Player extends \app\controllers\FrontController
             show_alert('파라미터가 잘못 되었습니다.1', 'close');
         }
 
-        $prodCode = $params[0];
-        $unitIdx = $params[1];
+        $prodcode = $params[0];
+        $unitidx = $params[1];
         $quility = $params[2];
 
         if($this->session->userdata('is_login') === true){
@@ -244,7 +261,7 @@ class Player extends \app\controllers\FrontController
             $quility = 'WD';
         }
 
-        $data = $this->playerFModel->getLectureSample($prodCode, $unitIdx);
+        $data = $this->playerFModel->getLectureSample($prodcode, $unitidx);
 
         if(empty($data) === true){
             show_alert('샘플강좌가 없습니다.', 'close');
@@ -386,6 +403,14 @@ class Player extends \app\controllers\FrontController
     public function deleteBookmark()
     {
 
+    }
+
+    /**
+     * 강의수강 로그기록
+     */
+    public function log()
+    {
+        
     }
 
     /** URL 에서 // 를 제거하기 위해서

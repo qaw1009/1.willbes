@@ -301,7 +301,7 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
 
-        $query .= " ORDER BY LphIdx ASC ";
+        $query .= " ORDER BY LphIdx DESC ";
 
         $result = $this->_conn->query($query);
 
@@ -489,6 +489,33 @@ class ClassroomFModel extends WB_Model
         }
 
         return true;
+    }
+
+    public function getExtendLog($cond, $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * , ifnull(RegAdminIdx, '') AS Name 
+              ";
+        }
+
+        $query .= " FROM {$this->_table['extend']}  
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY MlIdx DESC ";
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+    public function storeDownloadLog($input)
+    {
+
     }
 }
 

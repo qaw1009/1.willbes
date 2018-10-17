@@ -319,14 +319,18 @@
 
         //수강후기 등록
         $_ajax_reg_form.on('click', '#btn_submit', function() {
-            var url = '{{ site_url('/support/studyComment/store') }}';
-            ajaxSubmit($_ajax_reg_form, url, function(ret) {
-                if(ret.ret_cd) {
-                    alert(ret.ret_msg);
-                    closeWin('AddModify'),openWin('AddList');
-                    callAjax(1);
-                }
-            }, showValidateError, null, false, 'alert');
+            @if(sess_data('is_login') != true)
+                alert('로그인 후 이용해 주세요.');
+            @else
+                var url = '{{ site_url('/support/studyComment/store') }}';
+                ajaxSubmit($_ajax_reg_form, url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        closeWin('AddModify'),openWin('AddList');
+                        callAjax(1);
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
         });
 
         callAjax(1);

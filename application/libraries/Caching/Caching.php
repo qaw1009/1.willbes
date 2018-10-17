@@ -38,6 +38,12 @@ class Caching extends CI_Driver_Library
     protected $_cache_backup_adapter = 'file';
 
     /**
+     * file cache adapter directory
+     * @var string
+     */
+    protected $_file_adapter_dir = 'memcached' . DIRECTORY_SEPARATOR;
+
+    /**
      * Caching constructor
      * @param array $config
      */
@@ -82,7 +88,7 @@ class Caching extends CI_Driver_Library
 
         if (($data = @$this->_CI->cache->get($key)) === false) {
             // get backup cache
-            $data = $this->_CI->cache->{$this->_cache_backup_adapter}->get($key);
+            $data = $this->_CI->cache->{$this->_cache_backup_adapter}->get($this->_file_adapter_dir . $key);
         }
 
         if ($data === false) {
@@ -114,7 +120,7 @@ class Caching extends CI_Driver_Library
             $data = $this->{$driver}->_getSaveData();
 
             // save backup cache
-            $this->_CI->cache->{$this->_cache_backup_adapter}->save($key, $data, $ttl);
+            $this->_CI->cache->{$this->_cache_backup_adapter}->save($this->_file_adapter_dir . $key, $data, $ttl);
 
             // save cache
             @$this->_CI->cache->save($key, $data, $ttl);
@@ -138,7 +144,7 @@ class Caching extends CI_Driver_Library
         $this->_driver != 'dummy' && $key =  $this->{$this->_driver}->_key;
 
         // delete backup cache
-        $this->_CI->cache->{$this->_cache_backup_adapter}->delete($key);
+        $this->_CI->cache->{$this->_cache_backup_adapter}->delete($this->_file_adapter_dir . $key);
 
         return @$this->_CI->cache->delete($key);
     }

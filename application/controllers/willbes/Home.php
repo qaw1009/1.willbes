@@ -48,10 +48,10 @@ class Home extends \app\controllers\FrontController
         //$d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
     }
 
-    public function cache()
+    public function cache($param)
     {
         unset($this->caching);
-        dd($this->getCacheItem('site_subject_professor'), $this->getCacheItem('site'), $this->getCacheItem('site_menu'));
+        dd($this->getCacheItem($param[0]));
     }
 
     public function save_cache($param)
@@ -62,6 +62,15 @@ class Home extends \app\controllers\FrontController
         $this->caching->{$param[0]}->save();
 
         dd($this->getCacheItem($param[0]));
+    }
+
+    public function remove_cache($param)
+    {
+        unset($this->caching);
+        $this->load->driver('caching');
+        $this->caching->{$param[0]}->delete();
+
+        dd('deleted');
     }
 
     /**

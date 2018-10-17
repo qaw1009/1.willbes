@@ -49,6 +49,7 @@ readme.rst
 /storage/cache/*
 !/storage/cache/index.html
 !/storage/cache/views/index.html
+!/storage/cache/memcached/index.html
 /storage/logs/*
 !/storage/logs/index.html
 /storage/sessions/*

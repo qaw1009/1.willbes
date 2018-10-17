@@ -389,7 +389,6 @@ class SmsModel extends WB_Model
 
     /**
      * 파일명 배열 생성
-     * @param $board_idx
      * @return array
      */
     private function _getAttachImgNames()

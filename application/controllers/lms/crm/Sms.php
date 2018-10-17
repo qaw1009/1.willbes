@@ -225,7 +225,7 @@ class Sms extends \app\controllers\BaseController
      */
     public function sampleDownload()
     {
-        $fileinfo = '/public/uploads/lms/_sample_download/sample_sms.xlsx';
+        $fileinfo = '/public/uploads/willbes/_sample_download/sample_sms.xlsx';
         public_download($fileinfo);
     }
 

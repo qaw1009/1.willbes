@@ -12,6 +12,7 @@
         <input type="hidden" name="send_type" value="1" title="발송타입">
         <input type="hidden" name="choice_mem_idx">
         <input type="hidden" name="choice_mem_id">
+        <input type="hidden" name="del_datas">
         <input type="hidden" name="temp_mem_idx" value="{{$temp_mem_idx}}">
         <input type="hidden" name="temp_mem_id" value="{{$temp_mem_id}}">
     @endsection
@@ -79,7 +80,7 @@
                                                 <td>{{$i}}</td>
                                                 <td class="col-md-12 form-inline">
                                                     <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly" style="width: 100px;">
-                                                    <a href="#none" class="selected-category-delete" data-><i class="fa fa-times red ml-10"></i></a>
+                                                    <a href="#none" data-del-number="{{$i-1}}" class="btn-member-del" data-><i class="fa fa-times red ml-10"></i></a>
                                                 </td>
                                             </tr>
                                         @endfor
@@ -100,7 +101,7 @@
                                                 <td>{{$i}}</td>
                                                 <td class="col-md-12 form-inline">
                                                     <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly" style="width: 100px;">
-                                                    <a href="#none" class="selected-category-delete"><i class="fa fa-times red ml-10"></i></a>
+                                                    <a href="#none" data-del-number="{{$i-1}}" class="btn-member-del" data-><i class="fa fa-times red ml-10"></i></a>
                                                 </td>
                                             </tr>
                                         @endfor
@@ -201,6 +202,37 @@
                 // 발송 타입 설정
                 $('.send_type').click(function (){
                     $regi_form.find('input[name="send_type"]').val($(this).data('content-type'));
+                });
+
+                //발송데이터 삭제
+                $regi_form.on('click', '.btn-member-del', function() {
+                    var temp_mem_idx;
+                    var temp_mem_id;
+
+                    if ($regi_form.find('input[name="temp_mem_idx"]').val() == '') {
+                        temp_mem_idx = $regi_form.find('input[name="choice_mem_idx"]').val();
+                        temp_mem_id = $regi_form.find('input[name="choice_mem_id"]').val();
+                    } else {
+                        temp_mem_idx = $regi_form.find('input[name="temp_mem_idx"]').val();
+                        temp_mem_id = $regi_form.find('input[name="temp_mem_id"]').val();
+                    }
+
+                    var arr_temp_mem_idx = temp_mem_idx.split(',');
+                    var arr_temp_mem_id = temp_mem_id.split(',');
+                    arr_temp_mem_idx.splice($(this).data('del-number'), 1);
+                    arr_temp_mem_id.splice($(this).data('del-number'), 1);
+
+                    $('input[name="mem_id[]"]').val('');
+                    var i=1;
+                    $.each(arr_temp_mem_idx, function(key, value) {
+                        $('#mem_id_'+i).val(arr_temp_mem_id[key]);
+                        i++;
+                    });
+
+                    $('input[name="choice_mem_idx"]').val(arr_temp_mem_idx);
+                    $('input[name="choice_mem_id"]').val(arr_temp_mem_id);
+                    $('input[name="temp_mem_idx"]').val('');
+                    $('input[name="temp_mem_id"]').val('');
                 });
 
                 // 일괄발송 -> 파일 등록 및 Excel Data 셋팅

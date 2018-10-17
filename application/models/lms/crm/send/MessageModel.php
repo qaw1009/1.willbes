@@ -288,6 +288,7 @@ class MessageModel extends WB_Model
                 } else {
                     $set_send_data = $formData['choice_mem_idx'];
                 }
+                $set_send_data_count = explode(',', $set_send_data);
                 break;
             case "2" :
                 $this->load->library('upload');
@@ -318,7 +319,7 @@ class MessageModel extends WB_Model
 
     /**
      * 파일명 배열 생성
-     * @return string
+     * @return array
      */
     private function _getAttachImgNames()
     {

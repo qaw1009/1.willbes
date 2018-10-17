@@ -172,7 +172,6 @@ class Message extends \app\controllers\BaseController
         $temp_mem_id = '';
 
         $target_idx = $this->_req('target_idx');
-        $target_id = $this->_req('target_id');
         if (empty($target_idx) === false) {
             $set_send_member_idx = explode(',', $target_idx);
             $arr_condition = [
@@ -204,7 +203,7 @@ class Message extends \app\controllers\BaseController
      */
     public function sampleDownload()
     {
-        $fileinfo = '/public/uploads/lms/_sample_download/sample_message.xlsx';
+        $fileinfo = '/public/uploads/willbes/_sample_download/sample_message.xlsx';
         public_download($fileinfo);
     }
 

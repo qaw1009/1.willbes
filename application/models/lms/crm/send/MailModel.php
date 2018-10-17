@@ -350,7 +350,6 @@ class MailModel extends WB_Model
 
     /**
      * 파일명 배열 생성
-     * @param $board_idx
      * @return array
      */
     private function _getAttachImgNames()
@@ -379,8 +378,8 @@ class MailModel extends WB_Model
      * @param $datas
      * @param $to_mail
      * @param $_send_advertise_pattern_ccd
-     * @param $_advertise_link  수신거부링크
-     * @param $mail_attach_path 첨부파일 경로
+     * @param $_advertise_link  [수신거부링크]
+     * @param $mail_attach_path [첨부파일 경로]
      * @return bool
      */
     private function _sendMailAuthNumber($datas, $to_mail, $_send_advertise_pattern_ccd, $_advertise_link, $mail_attach_path = '')

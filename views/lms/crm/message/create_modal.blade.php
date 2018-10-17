@@ -12,8 +12,8 @@
         <input type="hidden" name="send_type" value="1" title="발송타입">
         <input type="hidden" name="choice_mem_idx">
         <input type="hidden" name="choice_mem_id">
-        <input type="hidden" name="temp_mem_idx" value="{{$target_idx}}">
-        <input type="hidden" name="temp_mem_id" value="{{$target_id}}">
+        <input type="hidden" name="temp_mem_idx" value="{{$temp_mem_idx}}">
+        <input type="hidden" name="temp_mem_id" value="{{$temp_mem_id}}">
     @endsection
 
     @section('layer_content')
@@ -77,8 +77,9 @@
                                         @for($i = 1; $i <= $set_row_count-6; $i++)
                                             <tr>
                                                 <td>{{$i}}</td>
-                                                <td>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly">
+                                                <td class="col-md-12 form-inline">
+                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly" style="width: 100px;">
+                                                    <a href="#none" class="selected-category-delete" data-><i class="fa fa-times red ml-10"></i></a>
                                                 </td>
                                             </tr>
                                         @endfor
@@ -97,8 +98,9 @@
                                         @for($i = 7; $i <= $set_row_count; $i++)
                                             <tr>
                                                 <td>{{$i}}</td>
-                                                <td>
-                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly">
+                                                <td class="col-md-12 form-inline">
+                                                    <input type="text" id="mem_id_{{$i}}" name="mem_id[]" class="form-control mb-5" title="수신아이디" value="{{(empty($list_send_member[$i-1]['MemId']) === false  ) ? $list_send_member[$i-1]['MemId'] : ''}}" maxlength="11" readonly="readonly" style="width: 100px;">
+                                                    <a href="#none" class="selected-category-delete"><i class="fa fa-times red ml-10"></i></a>
                                                 </td>
                                             </tr>
                                         @endfor
@@ -284,8 +286,8 @@
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
-                            /!*$("#pop_modal").modal('toggle');*!/
-                            location.reload();
+                            $("#pop_modal").modal('toggle');
+                            /*location.reload();*/
                         }
                     }, showValidateError, addValidate, 'alert', $regi_form);
                 });

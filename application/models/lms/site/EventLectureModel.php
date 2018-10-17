@@ -755,7 +755,7 @@ class EventLectureModel extends WB_Model
             $this->load->library('upload');
             $this->load->library('image_lib');
 
-            $upload_dir = SUB_DOMAIN . '/event/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Ymd');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
@@ -1026,7 +1026,7 @@ class EventLectureModel extends WB_Model
 
             $this->load->library('upload');
             $this->load->library('image_lib');
-            $upload_dir = SUB_DOMAIN . '/event/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Ymd');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
             if (is_array($uploaded) === false) {

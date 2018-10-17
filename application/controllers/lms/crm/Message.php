@@ -168,26 +168,34 @@ class Message extends \app\controllers\BaseController
         $method = 'POST';
         $set_row_count = '12';
         $list_send_member = [];
+        $temp_mem_idx = '';
+        $temp_mem_id = '';
 
         $target_idx = $this->_req('target_idx');
         $target_id = $this->_req('target_id');
-        if (empty($target_id) === false) {
-            $set_send_member_ids = explode(',', $target_id);
+        if (empty($target_idx) === false) {
+            $set_send_member_idx = explode(',', $target_idx);
             $arr_condition = [
                 'IN' => [
-                    'MemId' => $set_send_member_ids
+                    'MemIdx' => $set_send_member_idx
                 ]
             ];
             $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
+            foreach ($list_send_member as $row) {
+                $temp_mem_idx .= $row['MemIdx'].',';
+                $temp_mem_id .= $row['MemId'].',';
+            }
         }
+        $temp_mem_idx = substr($temp_mem_idx , 0, -1);
+        $temp_mem_id = substr($temp_mem_id , 0, -1);
 
         $this->load->view("crm/message/create_modal", [
             'method' => $method,
             'arr_send_option_ccd' => $arr_send_option_ccd,
             'set_row_count' => $set_row_count,
             'list_send_member' => $list_send_member,
-            'target_idx' => $target_idx,
-            'target_id' => $target_id
+            'temp_mem_idx' => $temp_mem_idx,
+            'temp_mem_id' => $temp_mem_id
         ]);
     }
 

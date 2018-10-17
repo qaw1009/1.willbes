@@ -258,8 +258,7 @@ class BoardModel extends WB_Model
             }
 
             $this->load->library('upload');
-            //$upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
-            $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
             if (is_array($uploaded) === false) {
@@ -1153,7 +1152,7 @@ class BoardModel extends WB_Model
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
 

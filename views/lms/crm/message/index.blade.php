@@ -136,7 +136,7 @@
 
             // SMS 발송
             $('.btn-sand-create').click(function() {
-                var p = '?target_idx=5051746,5051745,5051744&target_id=test1234,cjy306,test39';
+                var p = '?target_idx=5051746,5051745,5051744';
                 $('.btn-sand-create').setLayer({
                     "url" : "{{ site_url('crm/message/createSendModal/') }}" + p,
                     /*"url" : "{{ site_url('crm/message/createSendModal/') }}",*/

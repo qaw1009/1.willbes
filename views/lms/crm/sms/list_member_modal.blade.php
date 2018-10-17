@@ -108,8 +108,12 @@
                     var arr_set_mem_idx = set_mem_idx.split(',');
                     var arr_set_mem_id = set_mem_id.split(',');
 
+                    $search_form_modal.on('click', '#btn_search_modal', function() {
+                        $datatable_modal.draw();
+                    });
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_modal_table.DataTable({
+                        deferLoading: false,    //datable autoload false
                         serverSide: true,
                         ajax: {
                             "url" : "{{ site_url('crm/sms/listMemberModalAjax') }}",
@@ -147,7 +151,8 @@
                                             break;
                                         case 'message' : val = row.MemIdx; break;
                                     }
-                                    var checked = ($ori_selected_data.hasOwnProperty(row.MemIdx) === true) ? 'checked="checked"' : '';
+                                    /!*var checked = ($ori_selected_data.hasOwnProperty(row.MemIdx) === true) ? 'checked="checked"' : '';*!/
+                                    var checked = '';
                                     return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" ' + checked + '>';
                                 }}
                         ]
@@ -193,6 +198,8 @@
                                 break;
                             case "message" :
                                 $('input[name="mem_id[]"]').val('');
+                                $('input[name="choice_mem_idx"]').val('');
+                                $('input[name="choice_mem_id"]').val('');
                                 $('input[name="temp_mem_idx"]').val('');
                                 $('input[name="temp_mem_id"]').val('');
                                 var i=1;
@@ -206,7 +213,6 @@
                                 });
                                 $('input[name="choice_mem_idx"]').val(arr_temp_idx);
                                 $('input[name="choice_mem_id"]').val(arr_temp_id);
-
                                 break;
                             case "mail" :
                                 $('input[name="mem_mail[]"]').val('');
@@ -232,6 +238,52 @@
                     };
                     setOriSelectedData();
                 });
+
+                /*$datatable_modal = $list_modal_table.DataTable({
+                    deferLoading: false,    //datable autoload false
+                    serverSide: true,
+                    ajax: {
+                        "url" : "{{ site_url('crm/sms/listMemberModalAjax') }}",
+                        'type' : 'POST',
+                        'data' : function(data) {
+                            return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        }
+                    },
+                    columns: [
+                        {'data' : null, 'render' : function(data, type, row, meta) {
+                                // 리스트 번호
+                                return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }},
+                        {'data' : 'SiteName'},
+                        {'data' : 'MemId'},
+                        {'data' : 'MemName'},
+                        {'data' : 'Phone'},
+                        {'data' : 'SmsRcvStatus', 'render' : function(data, type, row, meta) {
+                                if (data == 'Y') {return '동의'} else { return '미동의' }
+                            }},
+                        {'data' : 'MemMail'},
+                        {'data' : 'MailRcvStatus', 'render' : function(data, type, row, meta) {
+                                if (data == 'Y') {return '동의'} else { return '미동의' }
+                            }},
+                        {'data' : 'JoinDate'},
+                        {'data' : 'IsStatus'},
+                        {'data' : null, 'render' : function(data, type, row, meta) {
+                                var val = '0';
+                                switch (send_type_modal) {
+                                    case 'sms' :
+                                        if (row.Phone == '') { val = ''; } else { val = row.Phone; }
+                                        break;
+                                    case 'mail' :
+                                        if (row.MemMail == '') { val = ''; } else { val = row.MemMail; }
+                                        break;
+                                    case 'message' : val = row.MemIdx; break;
+                                }
+                                /!*var checked = ($ori_selected_data.hasOwnProperty(row.MemIdx) === true) ? 'checked="checked"' : '';*!/
+                                var checked = '';
+                                return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" ' + checked + '>';
+                            }}
+                    ]
+                });*/
             </script>
         @stop
 

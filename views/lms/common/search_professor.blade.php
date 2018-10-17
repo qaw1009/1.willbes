@@ -105,7 +105,7 @@
                     // 초기화
                     $parent_selected_professor.find('[name="ProfIdx"]').each(function () {
                         var code = $(this).val();
-                        if(code) professorExist[code] = $(this).parent().text();
+                        if(code) professorExist[code] = $(this).parent().text().trim();
                     });
 
                     // 검색초기화

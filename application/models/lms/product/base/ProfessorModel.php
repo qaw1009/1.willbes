@@ -683,7 +683,7 @@ class ProfessorModel extends WB_Model
     {
         try {
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/professor/' . $prof_idx;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/professor/' . $prof_idx;
             $bak_uploaded_files = [];
             $admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();

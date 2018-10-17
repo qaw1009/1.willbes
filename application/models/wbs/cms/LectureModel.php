@@ -154,7 +154,7 @@ class LectureModel extends WB_Model
             }
 
             //년도 삽입 새로운 경로로 수정
-            $filePath = SUB_DOMAIN.'/lecture/'.date("Y").'/'.$lec_idx;
+            $filePath = config_item('upload_prefix_dir').'/lecture/'.date("Y").'/'.$lec_idx;
 
             // 첨부파일 등록
             if($this->setUpload(element('attach_delete',$input),$lec_idx,$filePath) !== true) {
@@ -212,7 +212,7 @@ class LectureModel extends WB_Model
             //첨부파일 경로 생성을 위한 등록일 : 인풋에서 히든으로 전송
             $regdateyear = element('regdateyear', $input);
 
-            $filePath = SUB_DOMAIN.'/lecture/'.$regdateyear.'/'.$lec_idx;
+            $filePath = config_item('upload_prefix_dir').'/lecture/'.$regdateyear.'/'.$lec_idx;
 
             // 첨부파일 등록
             if($this->setUpload(element('attach_delete',$input),$lec_idx,$filePath) !== true) {

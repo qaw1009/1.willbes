@@ -226,8 +226,8 @@ class ProductFModel extends WB_Model
     {
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
         $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, ifnull(PL.IsLecStart, "N") as IsLecStart, ifnull(PL.StudyPeriod, 0) as StudyPeriod
-            , PL.StudyStartDate, date_add(PL.StudyStartDate, interval (PL.StudyPeriod - 1) day) as StudyEndDate
-        	, PL.MultipleTypeCcd, PL.MultipleApply, PL.AllLecTime
+            , PL.StudyStartDate, ifnull(PL.StudyEndDate, date_add(PL.StudyStartDate, interval (ifnull(PL.StudyPeriod, 1) - 1) day)) as StudyEndDate
+        	, PL.MultipleTypeCcd, PL.MultipleApply, ifnull(PL.AllLecTime, 0) as AllLecTime
         	, if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
 	        , PL.IsPackLecStartType';
         $arr_condition = [

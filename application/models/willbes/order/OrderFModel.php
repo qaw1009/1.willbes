@@ -640,8 +640,8 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 나의 강좌수정정보 데이터 등록 (온라인 강좌일 경우만)
-            if ($cart_type == 'on_lecture') {
+            // 나의 강좌수정정보 데이터 등록 (온라인강좌, 학원강좌일 경우만)
+            if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture') {
                 $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub, element('UserStudyStartDate', $input, ''));
                 if ($is_add_my_lecture !== true) {
                     throw new \Exception($is_add_my_lecture);
@@ -708,81 +708,116 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 단강좌, 운영자 패키지 수강시작일, 수강종료일 셋팅
-            $today_date = date('Y-m-d');    // 결제일
-            if (empty($user_study_start_date) === false && empty($row['StudyStartDate']) === false && $user_study_start_date >= $row['StudyStartDate']) {
-                $study_start_date = $user_study_start_date;
-            } else {
-                $study_start_date = $today_date;
-            }
-            $study_end_date = date('Y-m-d', strtotime($study_start_date . ' +' . ($row['StudyPeriod'] - 1) . ' day'));
+            $learn_pattern = array_search($row['LearnPatternCcd'], $this->_learn_pattern_ccd);  // 학습형태
 
-            // 단강좌, 무료강좌, 운영자 패키지 입력정보
-            $data = [
-                'OrderIdx' => $order_idx,
-                'OrderProdIdx' => $order_prod_idx,
-                'ProdCode' => $prod_code,
-                'LecStartDate' => $study_start_date,
-                'LecEndDate' => $study_end_date,
-                'RealLecEndDate' => $study_end_date,
-                'LecStudyTime' => $row['MultipleAllLecSec'],
-                'RealLecStudyTime' => $row['MultipleAllLecSec'],
-                'LecExpireDay' => $row['StudyPeriod'],
-                'RealLecExpireDay' => $row['StudyPeriod']
-            ];
+            if ($learn_pattern == 'on_lecture' || $learn_pattern == 'adminpack_lecture' || $learn_pattern == 'periodpack_lecture' || $learn_pattern == 'on_free_lecture'
+                || $learn_pattern == 'off_lecture') {
+                // 단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원 단과
+                // 수강시작일, 수강종료일 조회
+                $arr_lec_date = $this->getMyLectureLecStartEndDate($row['LearnPatternCcd'], $row['StudyStartDate'], $row['StudyEndDate'], $row['StudyPeriod'], $user_study_start_date);
 
-            if (empty($arr_prod_code_sub) === true) {
-                // 단강좌, 무료강좌
-                if (in_array($row['LearnPatternCcd'], [$this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['on_free_lecture']]) === false) {
-                    throw new \Exception('상품 학습형태 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
-                }
+                $data = [
+                    'OrderIdx' => $order_idx,
+                    'OrderProdIdx' => $order_prod_idx,
+                    'ProdCode' => $prod_code,
+                    'LecStartDate' => $arr_lec_date['lec_start_date'],
+                    'LecEndDate' => $arr_lec_date['lec_end_date'],
+                    'RealLecEndDate' => $arr_lec_date['lec_end_date'],
+                    'LecStudyTime' => $row['MultipleAllLecSec'],
+                    'RealLecStudyTime' => $row['MultipleAllLecSec'],
+                    'LecExpireDay' => $row['StudyPeriod'],
+                    'RealLecExpireDay' => $row['StudyPeriod']
+                ];
 
-                if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code)->insert($this->_table['my_lecture']) === false) {
-                    throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
-                }
-            } else {
-                if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture']) {
-                    // 운영자 패키지 (패키지 속성 정보를 등록함)
+                if (empty($arr_prod_code_sub) === true) {
+                    if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code)->insert($this->_table['my_lecture']) === false) {
+                        throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
+                    }
+                } else {
                     foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
                         if ($this->_conn->set($data)->set('ProdCodeSub', $prod_code_sub)->insert($this->_table['my_lecture']) === false) {
                             throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
                         }
                     }
-                } elseif ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
-                    // 사용자 패키지 (단강좌 속성 정보를 등록함)
-                    // 단강좌 정보 조회
-                    $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
-                    foreach ($prod_rows as $idx => $prod_row) {
-                        // 수강시작일, 수강종료일 셋팅 (결제일이 개강일보다 이전일 경우 수강시작일은 개강일로 설정)
-                        $study_start_date = $prod_row['StudyStartDate'] > $today_date ? $prod_row['StudyStartDate'] : $today_date;
-                        $study_end_date = date('Y-m-d', strtotime($study_start_date . ' +' . ($prod_row['StudyPeriod'] - 1) . ' day'));
-
-                        $data = [
-                            'OrderIdx' => $order_idx,
-                            'OrderProdIdx' => $order_prod_idx,
-                            'ProdCode' => $prod_code,
-                            'LecStartDate' => $study_start_date,
-                            'LecEndDate' => $study_end_date,
-                            'RealLecEndDate' => $study_end_date,
-                            'LecStudyTime' => $prod_row['MultipleAllLecSec'],
-                            'RealLecStudyTime' => $prod_row['MultipleAllLecSec'],
-                            'LecExpireDay' => $prod_row['StudyPeriod'],
-                            'RealLecExpireDay' => $prod_row['StudyPeriod']
-                        ];
-
-                        if ($this->_conn->set($data)->set('ProdCodeSub', $prod_row['ProdCode'])->insert($this->_table['my_lecture']) === false) {
-                            throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
-                        }
-                    }
-                } else {
-                    throw new \Exception('상품 학습형태 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
                 }
+            } elseif ($learn_pattern == 'userpack_lecture' || $learn_pattern == 'off_pack_lecture') {
+                // 사용자패키지, 학원 종합반 (단강좌, 학원 단과 속성 정보를 등록함)
+                // 단강좌, 학원단과 정보 조회
+                $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
+                foreach ($prod_rows as $idx => $prod_row) {
+                    // 수강시작일, 수강종료일 조회
+                    $arr_lec_date = $this->getMyLectureLecStartEndDate($prod_row['LearnPatternCcd'], $prod_row['StudyStartDate'], $prod_row['StudyEndDate'], $prod_row['StudyPeriod'], $user_study_start_date);
+
+                    $data = [
+                        'OrderIdx' => $order_idx,
+                        'OrderProdIdx' => $order_prod_idx,
+                        'ProdCode' => $prod_code,
+                        'LecStartDate' => $arr_lec_date['lec_start_date'],
+                        'LecEndDate' => $arr_lec_date['lec_end_date'],
+                        'RealLecEndDate' => $arr_lec_date['lec_end_date'],
+                        'LecStudyTime' => $prod_row['MultipleAllLecSec'],
+                        'RealLecStudyTime' => $prod_row['MultipleAllLecSec'],
+                        'LecExpireDay' => $prod_row['StudyPeriod'],
+                        'RealLecExpireDay' => $prod_row['StudyPeriod']
+                    ];
+
+                    if ($this->_conn->set($data)->set('ProdCodeSub', $prod_row['ProdCode'])->insert($this->_table['my_lecture']) === false) {
+                        throw new \Exception('나의 강좌수강정보 등록에 실패했습니다.');
+                    }
+                }
+            } else {
+                throw new \Exception('상품 학습형태 정보가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
             }
         } catch (\Exception $e) {
             return $e->getMessage();
         }
 
         return true;
+    }
+
+    /**
+     * 학습형태별 수강시작일, 수강종료일 리턴
+     * @param string $learn_pattern_ccd [학습형태공통코드]
+     * @param string $study_start_date [개강일]
+     * @param string $study_end_date [종강일]
+     * @param int $study_period [수강일수]
+     * @param string $user_study_start_date [사용자설정 수강시작일]
+     * @return array
+     */
+    public function getMyLectureLecStartEndDate($learn_pattern_ccd, $study_start_date, $study_end_date, $study_period, $user_study_start_date = '')
+    {
+        $today_date = date('Y-m-d');    // 결제일
+        $learn_pattern = array_search($learn_pattern_ccd, $this->_learn_pattern_ccd);
+        $lec_start_date = '';
+        $lec_end_date = '';
+
+        switch ($learn_pattern) {
+            case 'on_lecture' :
+            case 'adminpack_lecture' :
+            case 'periodpack_lecture' :
+                // 단강좌, 운영자패키지, 기간제패키지
+                if (empty($study_start_date) === false && empty($user_study_start_date) === false && $study_start_date <= $user_study_start_date) {
+                    $lec_start_date = $user_study_start_date;    // 사용자 설정 수강시작일이 개강일보다 이후일 경우만 수강시작일로 설정
+                } else {
+                    $lec_start_date = empty($study_start_date) === false && $today_date <= $study_start_date ? $study_start_date : $today_date;     // 결제일이 개강일보다 이전일 경우 수강시작일은 개강일로 설정
+                }
+                $lec_end_date = date('Y-m-d', strtotime($lec_start_date . ' +' . ($study_period - 1) . ' day'));
+                break;
+            case 'on_free_lecture' :
+                // 무료강좌
+                $lec_start_date = empty($study_start_date) === false && $today_date <= $study_start_date ? $study_start_date : $today_date;     // 결제일이 개강일보다 이전일 경우 수강시작일은 개강일로 설정
+                $lec_end_date = date('Y-m-d', strtotime($lec_start_date . ' +' . ($study_period - 1) . ' day'));
+                break;
+            case 'off_lecture' :
+                // 학원 단과
+                $lec_start_date = $study_start_date;
+                $lec_end_date = $study_end_date;
+                break;
+            default :
+                break;  // 사용자패키지, 학원 종합반은 단강좌, 학원 단과 개강일과 수강일수 설정값을 사용
+        }
+
+        return ['lec_start_date' => $lec_start_date, 'lec_end_date' => $lec_end_date];
     }
 
     /**

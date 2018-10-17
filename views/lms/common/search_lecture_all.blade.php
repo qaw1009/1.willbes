@@ -266,7 +266,7 @@
                         var addCnt = $("input[name='checkIdx']:checked").length;		//적용할 갯수
                         var allCnt = $("input[name='checkIdx']").length;		//노출된 전체 갯수
                         if(addCnt === 0) {alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
-                        var prod_type = $search_form.find("input[name='prod_type']").val(); // 상품타입 (on/off)
+                        var prod_type = $search_form.find("input[name='prod_type']").val() + '_lecture'; // 상품타입 (on/off)
                         var learn_pattern_ccd = $search_form.find("input[name='LearnPatternCcd']").val(); // 학습형태
                         var html;
 

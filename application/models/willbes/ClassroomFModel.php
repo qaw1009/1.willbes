@@ -11,7 +11,8 @@ class ClassroomFModel extends WB_Model
         'start_log' => 'lms_my_lecture_history',
         'admin' => 'wbs_sys_admin',
         'pause_log' => 'lms_lecture_pause_history',
-        'extend' => 'lms_lecture_extend'
+        'extend' => 'lms_lecture_extend',
+        'down_log' => 'lms_lecture_data_download_log'
     ];
 
 
@@ -374,6 +375,12 @@ class ClassroomFModel extends WB_Model
         return true;
     }
 
+
+    /**
+     * 일시중지 강의 재시작 설정
+     * @param $input
+     * @return array|bool
+     */
     public function setRestartPause($input)
     {
         $lecstartdate = element('lecstartdate', $input);
@@ -491,6 +498,12 @@ class ClassroomFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 강의 연장 기록 로그 읽어오기
+     * @param $cond
+     * @param bool $isCount
+     * @return mixed
+     */
     public function getExtendLog($cond, $isCount = false)
     {
         if($isCount === true){
@@ -513,9 +526,23 @@ class ClassroomFModel extends WB_Model
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
+    /**
+     * 강의자료 다운로드 로그 기록
+     * @param $input
+     */
     public function storeDownloadLog($input)
     {
+        $input = [
+            'MemIdx' => element('MemIdx', $input),
+            'OrderIdx' => element('OrderIdx', $input),
+            'ProdCode' => element('ProdCode', $input),
+            'ProdCodeSub' => element('ProdCodeSub', $input),
+            'wLecIdx' => element('wLecIdx', $input),
+            'wUnitIdx' => element('wUnitIdx', $input),
+            'DownloadIp' => $this->input->ip_address()
+        ];
 
+        $this->_conn->set($input)->insert($this->_table['down_log']);
     }
 }
 

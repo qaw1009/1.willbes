@@ -1222,7 +1222,18 @@ class On extends \app\controllers\FrontController
         if(is_file(public_to_upload_path($filepath)) == false){
             show_alert('파일이 존재하지 않습니다.', 'back');
         }
+
         // 파일 다운로드 로그남기기
+        $this->classroomFModel->storeDownloadLog(
+            [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx
+            ]
+        );
         
         // 실제로 파일 다운로드 처리
         public_download($filepath, $filename);

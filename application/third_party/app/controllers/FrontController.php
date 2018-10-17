@@ -277,6 +277,21 @@ abstract class FrontController extends BaseController
     }
 
     /**
+     * 사이트 캐쉬 값 리턴
+     * @param int $site_code [사이트 코드]
+     * @param string $item_key [해당 사이트 배열 키 값]
+     * @return mixed
+     */
+    public function getSiteCacheItem($site_code, $item_key)
+    {
+        // 전체 사이트 캐쉬
+        $all_site_cache = $this->getCacheItem('site');
+        $site_key = element($site_code, $all_site_cache['SiteKeys'], 'none');
+
+        return array_get($all_site_cache, $site_key . '.' . $item_key, '');
+    }
+
+    /**
      * pagination 설정 및 값 리턴
      * @param string $base_url [페이징 링크 기본 URI]
      * @param int $total_rows   [전체 데이터 건수]

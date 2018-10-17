@@ -163,7 +163,7 @@
             // SMS 발송
             $('.btn-sand-create').click(function() {
                 $('.btn-sand-create').setLayer({
-                    "url" : "{{ site_url('crm/sms/createSendModal') }}",
+                    "url" : "{{ site_url('crm/sms/createSendModal/') }}",
                     "width" : "1200",
                 });
             });

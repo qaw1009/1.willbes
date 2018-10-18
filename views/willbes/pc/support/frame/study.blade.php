@@ -67,7 +67,7 @@
                     <td class="w-no">{{$paging['rownum']}}</td>
                     <td class="w-list tx-left pl20">{{$row['Title']}}</td>
                     <td class="w-name">
-                        {!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegMemName'] : hpSubString($row['RegMemName'],0,2,'*') !!}
+                        {!! (empty(sess_data('mem_idx')) === false && $row['RegMemIdx'] == sess_data('mem_idx')) ? $row['RegMemName'] : hpSubString($row['RegMemName'],0,2,'*') !!}
                     </td>
                     <td class="w-date">{{$row['RegDatm']}}</td>
                 </tr>

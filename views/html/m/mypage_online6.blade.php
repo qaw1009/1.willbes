@@ -3,12 +3,17 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="willbes-Tit NGEB p_re">
-        <button type="button" class="goback" onclick="history.back(-1); return false;">
-            <span class="hidden">뒤로가기</span>
-        </button>    
-        일시정지
+    <div id="Sticky" class="sticky-Title">
+        <div class="sticky-Grid sticky-topTit">
+            <div class="willbes-Tit NGEB p_re">
+                <button type="button" class="goback" onclick="history.back(-1); return false;">
+                    <span class="hidden">뒤로가기</span>
+                </button>    
+                일시정지
+            </div>
+        </div>
     </div>
+
     <div class="willbes-Txt NGR c_both mt30 mb50">
         <div class="willbes-Txt-Tit NG">· 일시정지 신청 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
         - 일시정지는 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>

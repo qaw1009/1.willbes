@@ -19,6 +19,9 @@ body {
 .goTopbtn.on {
     bottom: 75px; 
 }
+.width8p {
+    width: 8%;
+}
 .width10p {
     width: 10%;
 }
@@ -42,6 +45,9 @@ body {
 }
 .width30p {
     width: 30%;
+}
+.width32n5p {
+    width: 32.5%;
 }
 .width34p {
     width: 34%;
@@ -106,19 +112,50 @@ body {
     padding-left: 2% !important;
 }
 
-lh20 {
+.lh20 {
     line-height: 20px !important;
 }
 
-lh30 {
+.lh30 {
     line-height: 30px !important;
 }
 
 input {
+    color: #333;
     border: 1px solid #d4d4d4;
+    padding: 0 3.2rem 0 0.6rem;
+}
+::placeholder {
+    color: #333;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #333;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #333;
 }
 button {
     padding: 0;
+}
+select {
+    -webkit-appearance: none;  /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+    border-radius:0;
+    min-width: 4rem;
+    height: 2.5rem;
+    background: url("../../../img/willbes/m/mypage/icon_select_arrow.png") no-repeat 95% center;
+    background-size: 0.8rem;
+    position: relative;
+    padding: 0 1.8rem 0 0.6rem;
+    display: inline-block;
+    border: 1px solid #d4d4d4;
+    color: #333;
+    cursor: pointer;
+}
+span {
+    vertical-align: baseline;
 }
 
 /* Aside */
@@ -516,49 +553,8 @@ button {
     width: 100%;
     padding: 20px;
 }
-.lineWrap {
-    height: 48px;
-    border-bottom: 1px solid #1a8ccc;
-}
-.lineWrap li {
-    float: left;
-    height: 48px;
-    box-sizing: border-box;
-}
-.lineWrap li a {
-    display: block;
-    width: 100%;
-    height: 47px;
-    line-height: 46px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #000;
-    text-align: center;
-    letter-spacing: 0;
-    border-top: 1px solid #e4e4e4;
-    border-right: 1px solid #e4e4e4;
-}
-.lineWrap li a img {
-    vertical-align: top;
-    margin-top: 11px;
-    height: 25%;
-}
-.lineWrap li a span {
-    vertical-align: baseline;
-}
-.lineWrap li:first-child a {
-    border-left: 1px solid #e4e4e4;
-} 
-.lineWrap li a.on {
-    position: relative;
-    z-index: 2;
-    background: #fff;
-    height: 48px;
-    line-height: 46px;
-    border-top: 1px solid #1a8ccc;
-    border-left: 1px solid #1a8ccc;
-    border-right: 1px solid #1a8ccc;
-}
+
+/* Tabs : lineTab : lineWrap 공통 */
 .lineWrap.one li {
     width: 100%;
 }
@@ -573,6 +569,97 @@ button {
 }
 .lineWrap.five li {
     width: 20%;
+}
+
+/* Tabs : lineTab : boxlineWrap 공통 */
+.boxlineWrap {
+    height: 45px;
+    border-bottom: 1px solid #1a8ccc;
+}
+.boxlineWrap li {
+    float: left;
+    height: 45px;
+    box-sizing: border-box;
+}
+.boxlineWrap li a {
+    display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 43px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+}
+.boxlineWrap li a img {
+    vertical-align: top;
+    margin-top: 11px;
+    height: 25%;
+}
+.boxlineWrap li a span {
+    vertical-align: baseline;
+}
+.boxlineWrap li:first-child a {
+    border-left: 1px solid #e4e4e4;
+} 
+.boxlineWrap li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 45px;
+    border-top: 1px solid #1a8ccc;
+    border-left: 1px solid #1a8ccc;
+    border-right: 1px solid #1a8ccc;
+}
+
+/* Tabs : lineTab : rowlineWrap 공통 */
+.rowlineWrap {
+    height: 45px;
+}
+.rowlineWrap li {
+    position: relative;
+    float: left;
+    height: 45px;
+    box-sizing: border-box;
+}
+.rowlineWrap li a {
+    display: block;
+    width: 100%;
+    height: 45px;
+    line-height: 44px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    letter-spacing: 0;
+    border-bottom: 1px solid #e4e4e4;
+}
+.rowlineWrap li a img {
+    vertical-align: top;
+    margin-top: 11px;
+    height: 25%;
+}
+.rowlineWrap li a span {
+    vertical-align: baseline;
+} 
+.rowlineWrap li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border-bottom: 1px solid #1a8ccc;
+}
+.rowlineWrap li .row-line {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    background: #e4e4e4;
+    width: 1px;
+    height: 20px;
+    margin-top: -10px;
+    z-index: 3;
 }
 
 /* Tabs : buttonTab 공통 */
@@ -715,9 +802,10 @@ button {
     margin: 0 3%;
 }
 #Footer address {
-    font-size: 11px;
+    font-size: 12px;
     color: #707070;
     text-align: center;
+    line-height: 16px;
 }
 
 
@@ -744,6 +832,28 @@ button {
     left: 10px;
     margin-top: -23px;
 }
+.sticky-Title {
+    position: relative;
+    height: 50px;
+}
+.sticky-topTit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    height: auto;
+}
+.sticky-topTit.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    margin: 0 auto;
+}
 .willbes-List-Tit {
     font-size: 16px;
     color: #323232;
@@ -753,7 +863,9 @@ button {
     font-size: 12px;
     color: #3a3a3a;
     line-height: 20px;
-    padding: 0 20px; 
+    padding: 0 0 20px; 
+    margin: 0 20px;
+    border-bottom: 1px solid #ccc;
 }
 .willbes-Txt.on {
     height: 40px;
@@ -790,15 +902,15 @@ button {
     padding-left: 20px;
 }
 .willbes-Lec-Selected {
+    position: relative;
     float: left;
     width: 100%;
-    padding: 30px 20px 20px;
+    padding: 20px;
 }
 .willbes-Lec-Selected select {
-    background: #fff;
     float: left;
     font-size: 14px;
-    height: 45px;
+    height: 40px;
 }
 .willbes-Lec-Selected .chkBox {
     float: right;
@@ -814,6 +926,10 @@ button {
 .willbes-Lec-Selected .chkBox span {
     float: right;
     font-size: 0.75rem
+}
+.willbes-Lec-Selected .resetBtn {
+    right: 20px;
+    bottom: 20px;
 }
 .willbes-WriteBox {
     width: 100%;
@@ -865,12 +981,12 @@ button {
 
 /* 상태 공통 */
 .w-info dt .nBox {
-    display: inline;
+    display: inline-block;
     font-size: 12px;
     color: #fff;
     text-align: center;
-    line-height: 20px;
-    padding: 4px 6px 0;
+    line-height: 14px;
+    padding: 3px 6px;
     vertical-align: middle !important;
 }
 .w-info dt .nBox.n1 {
@@ -924,9 +1040,9 @@ button {
     height: 20px;
 }
 .lecAllChk label {
-    font-size: 16px;
-    line-height: 24px;
-    margin-left: 15px
+    font-size: 15px;
+    line-height: 19px;
+    margin-left: 5px
 }
 .lecTable .w-tit {
     font-size: 14px;
@@ -937,6 +1053,7 @@ button {
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 12px;
     line-height: 16px;
+    margin-top: 5px;
 }
 .lecTable .w-info span {
     vertical-align: baseline;
@@ -1053,7 +1170,7 @@ button {
 .InfoBtn a {
     display: block;
     width: 100%;
-    padding: 14px 18px;
+    padding: 11px 15px;
 }
 .InfoBtn a span {
     vertical-align: baseline;
@@ -1151,6 +1268,7 @@ button {
     width: 33.33333333%;
 }
 .resetBtn {
+    position: absolute;
     float: right;
     text-align: right;
 }
@@ -1187,7 +1305,8 @@ button {
 .passProfTabs .w-prof {
     float: left;
     width: 35%;
-    max-width: 122px;
+    max-width: 85px;
+    margin-bottom: 10px;
 }
 .passProfTabs .w-prof img {
     width: 100%;
@@ -1246,9 +1365,9 @@ button {
     margin-top: 0;
 }
 .passListTabs thead tr td label {
-    font-size: 16px;
-    line-height: 24px;
-    margin-left: 15px;
+    font-size: 15px;
+    line-height: 19px;
+    margin-left: 5px;
 }
 .passListTabs tr td:first-child {
     padding-left: 0;
@@ -1295,6 +1414,7 @@ button {
 
 /* 무한 PASS 강좌추가 */
 .willbes-Lec-Search {
+    position: relative;
     float: left;
     font-size: 14px;
 }
@@ -1302,7 +1422,7 @@ button {
     float: left;
 }
 .willbes-Lec-Search input[type="text"] {
-    height: 45px;
+    height: 40px;
 }
 .willbes-Lec-Search button.search-Btn {
     background: url("../../../img/willbes/m/main/icon_search_btn.png") no-repeat 0 0;
@@ -1313,28 +1433,22 @@ button {
     top: 1px;
     right: 1px;
 }
-.willbes-Lec-Search .reset-Btn {
-    background: #4f4f4f;
-    height: 45px;
-    font-size: 14px;
-    color: #fff;
-    text-align: center;
-    line-height: 45px;
-}
-.willbes-Lec-Search .reset-Btn a {
-    display: block;
+.willbes-Lec-Search .resetBtn {
+    top: 0;
+    right: 0;
 }
 
 /* 등록기기 정보 */
 .willbes-User-Tablet {
     float: left;
     width: 100%;
-    padding: 40px;  
+    padding: 40px 20px 20px;  
     margin-top: 20px;
     border-top: 1px solid #ccc;  
 }
 .willbes-User-Tablet dl {
     text-align: center;
+    line-height: 20px;
     margin-bottom: 15px;
 }
 .willbes-User-Tablet dl dt {
@@ -1350,10 +1464,10 @@ button {
 .willbes-User-Tablet ul li {
     float: left;
     width: 25%;
-    height: 42px;
-    font-size: 14px;
+    height: 36px;
+    font-size: 13px;
     text-align: center;
-    line-height: 40px;
+    line-height: 34px;
     border-top: 1px solid #d4d4d4;
     border-right: 1px solid #d4d4d4;
     border-bottom: 1px solid #d4d4d4;

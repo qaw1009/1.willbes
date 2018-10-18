@@ -62,6 +62,21 @@ $(function() {
     });
 });
 
+// 강좌 교재구매 버튼 Script
+$(function() {
+    $('.BuylecMore a').click(function() {
+        var $lec_buy_table = $('.buylecTable');
+
+        if ($lec_buy_table.is(':hidden')) {
+            $lec_buy_table.show().css('visibility','visible');
+            $('.BuylecMore a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off_white.png');
+        } else {
+            $lec_buy_table.hide().css('visibility','hidden');
+            $('.BuylecMore a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on_white.png');
+        }
+    });
+});
+
 // Swiper Script
 $(function() {
     var swiper = new Swiper('.swiper-container-page', {

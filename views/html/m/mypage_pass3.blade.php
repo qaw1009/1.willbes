@@ -3,12 +3,17 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="willbes-Tit NGEB p_re">
-        <button type="button" class="goback" onclick="history.back(-1); return false;">
-            <span class="hidden">뒤로가기</span>
-        </button>    
-        등록기기 정보
+    <div id="Sticky" class="sticky-Title">
+        <div class="sticky-Grid sticky-topTit">
+            <div class="willbes-Tit NGEB p_re">
+                <button type="button" class="goback" onclick="history.back(-1); return false;">
+                    <span class="hidden">뒤로가기</span>
+                </button>    
+                등록기기 정보
+            </div>
+        </div>
     </div>
+
     <div class="willbes-Txt NGR c_both mt20">
         <div class="willbes-Txt-Tit NG">· 기기등록 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
         - MAC Address란 컴퓨터 내부에 장착된 LAN 카드고유의 일련번호를 말합니다.<br/>
@@ -20,7 +25,6 @@
         - 회원님께서 직접 등록기기 초기화(삭제) (MAC Address 초기화)를 하실수 있으며, <span class="tx-red">직접 초기화(삭제)횟수는 1회로 제한됩니다.</span><br/>
         - 수강중인 강좌가 없거나 현재 수강중인 강좌가 있어도 등록기기 초기화가 가능합니다.<br/>
     </div>
-
     <div class="willbes-User-Tablet">
         <dl>
             <dt>등록현황 PC 1대 + 모바일 1대</dt>
@@ -34,7 +38,6 @@
             <li><a href="#none">전체</a></li>
         </ul>
     </div>
-
     <div class="tabletTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <tbody>
@@ -45,7 +48,7 @@
                         </dl>
                         <dl class="w-info tx-gray">
                             <dt>등록일 : 2018-00-00 00:00</dt>
-                            <dt><span class="tx-blue">기기초기화</span></dt>
+                            <dt><a href="#none"><span class="tx-blue">[기기초기화]</span></a></dt>
                         </dl>
                     </td>
                 </tr>

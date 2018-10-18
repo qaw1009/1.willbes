@@ -938,6 +938,9 @@ select[disabled] {
 .bdb-dark-gray {
   border-bottom: 1px solid #c9c9c9;
 }
+.bdr-none {
+  border-right: none !important;
+}
 .bdb-none {
   border-bottom: none !important;
 }

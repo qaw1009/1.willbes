@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">참여구분</label>
+                    <label class="control-label col-md-1-1">참여구분 <span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
                         <div class="radio">
                             @foreach($arr_take_types as $key => $val)
@@ -88,25 +88,21 @@
                             @endforeach
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line">접수기간 <span class="required">*</span></label>
+                    <label class="control-label col-md-1-1 d-line">접수상태 <span class="required">*</span></label>
                     <div class="col-md-4 ml-12-dot item">
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="register_start_date" name="register_start_date" title="기간검색" required="required" value="{{$data['RegisterStartDate']}}">
-                            <div class="input-group-addon no-border no-bgcolor">~</div>
-                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="register_end_date" name="register_end_date" title="기간검색" required="required" value="{{$data['RegisterEndDate']}}">
+                        <div class="radio">
+                            @foreach($arr_is_registers as $key => $val)
+                                <input type="radio" class="flat" id="is_register_{{$key}}" name="is_register" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['IsRegister']==$key)checked="checked"@endif> <label for="is_register_{{$key}}" class="input-label">{{$val}}</label>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">접수상태 <span class="required">*</span></label>
+                    <label class="control-label col-md-1-1">HOT </label>
                     <div class="col-md-4 item form-inline">
-                        <div class="radio">
-                            @foreach($arr_is_registers as $key => $val)
-                                <input type="radio" class="flat" id="is_register_{{$key}}" name="is_register" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['IsRegister']==$key)checked="checked"@endif> <label for="is_register_{{$key}}" class="input-label">{{$val}}</label>
-                            @endforeach
+                        <div class="checkbox">
+                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
@@ -126,17 +122,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="event_start_datm">진행일시</label>
+                    <label class="control-label col-md-1-1" for="register_start_datm">접수기간 <span class="required">*</span></label>
                     <div class="col-md-6 form-inline">
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="event_start_datm" name="event_start_datm" value="{{$data['EventStartDay']}}">
+                            <input type="text" class="form-control datepicker" id="register_start_datm" name="register_start_datm" value="{{$data['RegisterStartDay']}}">
                             <div class="input-group-btn">
-                                <select class="form-control ml-5" id="event_start_hour" name="event_start_hour">
+                                <select class="form-control ml-5" id="register_start_hour" name="register_start_hour">
                                     @php
                                         for($i=0; $i<=23; $i++) {
                                             $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['EventStartHour']) ? "selected='selected'" : "";
+                                            $selected = ($i == $data['RegisterStartHour']) ? "selected='selected'" : "";
                                             echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
                                         }
                                     @endphp
@@ -144,11 +140,11 @@
                             </div>
                             <div class="col-md-1"><p class="form-control-static">:</p></div>
                             <div class="input-group-btn">
-                                <select class="form-control ml-5" id="event_start_min" name="event_start_min">
+                                <select class="form-control ml-5" id="register_start_min" name="register_start_min">
                                     @php
                                         for($i=0; $i<=59; $i++) {
                                             $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['EventStartMin']) ? "selected='selected'" : "";
+                                            $selected = ($i == $data['RegisterStartMin']) ? "selected='selected'" : "";
                                             echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
                                         }
                                     @endphp
@@ -157,13 +153,13 @@
 
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="event_end_datm" name="event_end_datm" value="{{$data['EventEndDay']}}">
+                            <input type="text" class="form-control datepicker" id="register_end_datm" name="register_end_datm" value="{{$data['RegisterEndDay']}}">
                             <div class="input-group-btn">
-                                <select class="form-control ml-5" id="event_end_hour" name="event_end_hour">
+                                <select class="form-control ml-5" id="register_end_hour" name="register_end_hour">
                                     @php
                                         for($i=0; $i<=23; $i++) {
                                             $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['EventEndHour']) ? "selected='selected'" : "";
+                                            $selected = ($i == $data['RegisterEndHour']) ? "selected='selected'" : "";
                                             echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
                                         }
                                     @endphp
@@ -171,21 +167,17 @@
                             </div>
                             <div class="col-md-1"><p class="form-control-static">:</p></div>
                             <div class="input-group-btn">
-                                <select class="form-control ml-5" id="event_end_min" name="event_end_min">
+                                <select class="form-control ml-5" id="register_end_min" name="register_end_min">
                                     @php
                                         for($i=0; $i<=59; $i++) {
                                             $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['EventEndMin']) ? "selected='selected'" : "";
+                                            $selected = ($i == $data['RegisterEndMin']) ? "selected='selected'" : "";
                                             echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
                                         }
                                     @endphp
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <label class="control-label col-md-1 tx-right">[회차]</label>
-                    <div class="col-md-1">
-                        <input type="text" id="event_num" name="event_num" class="form-control" maxlength="3" title="회차" value="{{ $data['EventNum'] }}">
                     </div>
                 </div>
 

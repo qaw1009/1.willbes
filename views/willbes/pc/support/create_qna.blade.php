@@ -32,7 +32,7 @@
                                     @endforeach
                                 </select>
 
-                                <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                                <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;">
                                     <option value="">구분</option>
                                     @foreach($arr_base['category'] as $row)
                                         <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
@@ -130,10 +130,6 @@
             location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
         });
 
-        $regi_form.bind('submit', function () {
-            $(this).find(':input').prop('disabled', false);
-        });
-
         $regi_form.submit(function() {
             var _url = '{!! site_url($default_path.'/store?'.$get_params) !!}';
             if (!confirm('저장하시겠습니까?')) { return true; }
@@ -165,12 +161,12 @@
             }
 
             if ($('#board_title').val() == '') {
-                alert('제목을 선택해 주세요.');
+                alert('제목을 입력해 주세요.');
                 return false;
             }
 
             if ($('#board_content').val() == '') {
-                alert('제목을 선택해 주세요.');
+                alert('제목을 입력해 주세요.');
                 return false;
             }
             return true;

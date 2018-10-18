@@ -80,8 +80,7 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate,
-            A.EventStartDatm, A.EventEndDatm, A.OptionCcds,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
             A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
@@ -144,16 +143,16 @@ class EventLectureModel extends WB_Model
                 $set_comment_use_area = implode(',', $comment_use_area);
             }
 
-            if (empty(element('event_start_datm', $input)) === true) {
-                $event_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            if (empty(element('register_start_datm', $input)) === true) {
+                $register_start_datm = date('Y-m-d') . ' ' . '00:00:00';
             } else {
-                $event_start_datm = element('event_start_datm', $input) . ' ' . element('event_start_hour', $input) . ':' . element('event_start_min', $input) . ':00';
+                $register_start_datm = element('register_start_datm', $input) . ' ' . element('register_start_hour', $input) . ':' . element('register_start_min', $input) . ':00';
             }
 
-            if (empty(element('event_end_datm', $input)) === true) {
-                $event_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            if (empty(element('register_end_datm', $input)) === true) {
+                $register_end_datm = '2100-12-31' . ' ' . '23:59:59';
             } else {
-                $event_end_datm = element('event_end_datm', $input) . ' ' . element('event_end_hour', $input) . ':' . element('event_end_min', $input) . ':00';
+                $register_end_datm = element('register_end_datm', $input) . ' ' . element('register_end_hour', $input) . ':' . element('register_end_min', $input) . ':00';
             }
 
             $data = [
@@ -161,16 +160,15 @@ class EventLectureModel extends WB_Model
                 'CampusCcd' => element('campus_ccd', $input),
                 'RequstType' => element('requst_type', $input),
                 'TakeType' => element('take_type', $input),
+                'BIdx' => element('b_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
-                'RegisterStartDate' => element('register_start_date', $input),
-                'RegisterEndDate' => element('register_end_date', $input),
+                'IsBest' => element('is_best', $input, 0),
+                'RegisterStartDate' => $register_start_datm,
+                'RegisterEndDate' => $register_end_datm,
                 'IsRegister' => element('is_register', $input),
                 'IsUse' => element('is_use', $input),
                 'EventName' => element('event_name', $input),
-                'EventStartDatm' => $event_start_datm,
-                'EventEndDatm' => $event_end_datm,
-                'EventNum' => (empty(element('event_num', $input))) ? '0' : element('event_num', $input),
                 'ContentType' => element('content_type', $input),
                 'Content' => element('content', $input),
                 'OptionCcds' => $set_option_ccd,
@@ -245,16 +243,13 @@ class EventLectureModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
-                EventName,
-                EventStartDatm, EventEndDatm, EventNum,
+                SiteCode, CampusCcd, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
+                SiteCode, CampusCcd, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
-                EventStartDatm, EventEndDatm, EventNum,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
                 REPLACE(RegIp, RegIp, "'.$reg_ip.'") AS RegIp
@@ -328,16 +323,16 @@ class EventLectureModel extends WB_Model
                 $set_comment_use_area = implode(',', $comment_use_area);
             }
 
-            if (empty(element('event_start_datm', $input)) === true) {
-                $event_start_datm = date('Y-m-d') . ' ' . '00:00:00';
+            if (empty(element('register_start_datm', $input)) === true) {
+                $register_start_datm = date('Y-m-d') . ' ' . '00:00:00';
             } else {
-                $event_start_datm = element('event_start_datm', $input) . ' ' . element('event_start_hour', $input) . ':' . element('event_start_min', $input) . ':00';
+                $register_start_datm = element('register_start_datm', $input) . ' ' . element('register_start_hour', $input) . ':' . element('register_start_min', $input) . ':00';
             }
 
-            if (empty(element('event_end_datm', $input)) === true) {
-                $event_end_datm = '2100-12-31' . ' ' . '23:59:59';
+            if (empty(element('register_end_datm', $input)) === true) {
+                $register_end_datm = '2100-12-31' . ' ' . '23:59:59';
             } else {
-                $event_end_datm = element('event_end_datm', $input) . ' ' . element('event_end_hour', $input) . ':' . element('event_end_min', $input) . ':00';
+                $register_end_datm = element('register_end_datm', $input) . ' ' . element('register_end_hour', $input) . ':' . element('register_end_min', $input) . ':00';
             }
 
             $data = [
@@ -345,16 +340,14 @@ class EventLectureModel extends WB_Model
                 'CampusCcd' => element('campus_ccd', $input),
                 'RequstType' => element('requst_type', $input),
                 'TakeType' => element('take_type', $input),
+                'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
-                'RegisterStartDate' => element('register_start_date', $input),
-                'RegisterEndDate' => element('register_end_date', $input),
+                'RegisterStartDate' => $register_start_datm,
+                'RegisterEndDate' => $register_end_datm,
                 'IsRegister' => element('is_register', $input),
                 'IsUse' => element('is_use', $input),
                 'EventName' => element('event_name', $input),
-                'EventStartDatm' => $event_start_datm,
-                'EventEndDatm' => $event_end_datm,
-                'EventNum' => (empty(element('event_num', $input))) ? '0' : element('event_num', $input),
                 'ContentType' => element('content_type', $input),
                 'Content' => element('content', $input),
                 'OptionCcds' => $set_option_ccd,
@@ -423,12 +416,11 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
-            A.EventStartDatm, A.EventEndDatm,
-            DATE_FORMAT(A.EventStartDatm, '%Y-%m-%d') AS EventStartDay, DATE_FORMAT(A.EventStartDatm, '%H') AS EventStartHour, DATE_FORMAT(A.EventStartDatm, '%i') AS EventStartMin,
-            DATE_FORMAT(A.EventEndDatm, '%Y-%m-%d') AS EventEndDay, DATE_FORMAT(A.EventEndDatm, '%H') AS EventEndHour, DATE_FORMAT(A.EventEndDatm, '%i') AS EventEndMin,
-            A.EventNum, A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
+            DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
+            DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
+            A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
             A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName
@@ -622,7 +614,6 @@ class EventLectureModel extends WB_Model
 
             if ($is_count == 'excel') {
                 $column = 'A.MemName, B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail, A.Comment AS eventComment, A.RegDatm, A.IsUse';
-                /*$column = 'A.MemName, B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail, REPLACE(A.Comment,\'\r\n\', \'\n\') AS eventComment, A.RegDatm, A.IsUse';*/
             }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

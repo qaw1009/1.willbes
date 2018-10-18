@@ -52,7 +52,7 @@ class EventLecture extends \app\controllers\BaseController
         $list = [];
         $count = $this->eventLectureModel->listAllEvent(true, $arr_condition, $sub_query_condition);
         if ($count > 0) {
-            $list = $this->eventLectureModel->listAllEvent(false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['ElIdx' => 'desc']);
+            $list = $this->eventLectureModel->listAllEvent(false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['IsBest' => 'desc', 'ElIdx' => 'desc']);
         }
 
         return $this->response([
@@ -187,8 +187,8 @@ class EventLecture extends \app\controllers\BaseController
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required|integer'],
             ['field' => 'requst_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
-            ['field' => 'register_start_date', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
-            ['field' => 'register_end_date', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],
+            ['field' => 'register_start_datm', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
+            ['field' => 'register_end_datm', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'event_name', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'content_type', 'label' => '내용옵션', 'rules' => 'trim|required|in_list[I,E]'],
@@ -708,10 +708,10 @@ class EventLecture extends \app\controllers\BaseController
             if ($this->_reqP('search_date_type') == 'I') {
                 // 유효기간 검색
                 $arr_condition['ORG2']['BET'] = [
-                    'A.EventStartDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
-                    'A.EventEndDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
+                    'A.RegisterStartDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
+                    'A.RegisterEndDate' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
                 ];
-                $arr_condition['ORG2']['RAW'] = ['(A.EventStartDatm < "' => $this->_reqP('search_start_date') . '" AND A.EventEndDatm > "' . $this->_reqP('search_end_date') . '")'];
+                $arr_condition['ORG2']['RAW'] = ['(A.RegisterStartDate < "' => $this->_reqP('search_start_date') . '" AND A.RegisterEndDate > "' . $this->_reqP('search_end_date') . '")'];
             } elseif ($this->_reqP('search_date_type') == 'R') {
                 // 등록일 기간 검색
                 $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]];

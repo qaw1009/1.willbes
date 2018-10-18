@@ -618,6 +618,8 @@ span {
 /* Tabs : lineTab : rowlineWrap 공통 */
 .rowlineWrap {
     height: 45px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 .rowlineWrap li {
     position: relative;
@@ -649,7 +651,8 @@ span {
     position: relative;
     z-index: 2;
     background: #fff;
-    border-bottom: 1px solid #1a8ccc;
+    color: #1a8ccc !important;
+    border-bottom: 2px solid #1a8ccc;
 }
 .rowlineWrap li .row-line {
     position: absolute;
@@ -863,8 +866,7 @@ span {
     font-size: 12px;
     color: #3a3a3a;
     line-height: 20px;
-    padding: 0 0 20px; 
-    margin: 0 20px;
+    padding: 0 20px 20px; 
     border-bottom: 1px solid #ccc;
 }
 .willbes-Txt.on {
@@ -1594,5 +1596,16 @@ span {
 /*********************************************     MYPAGE     *********************************************/
 
 
+/* iPhone 5/SE */
+@media only screen and (max-width: 320px) {
+    .width45p {
+        width: 40%;
+    }
+}
 
-
+/* iPhone 6/7/8 */
+@media only screen and (max-width: 375px) {
+    .width45p {
+        width: 44%;
+    }
+}

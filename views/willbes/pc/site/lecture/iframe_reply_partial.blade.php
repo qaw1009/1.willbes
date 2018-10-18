@@ -11,12 +11,19 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.btn-study').click(function () {
+                var is_login = '{{sess_data('is_login')}}';
                 var ele_id = 'WrapReply';
                 var data = {
                     'ele_id' : ele_id,
                     'show_onoff' : $(this).data('write-type'),
                     'cate_code' : '{{$__cfg['CateCode']}}'
                 };
+
+                if ($(this).data('write-type') == 'on' && is_login != true) {
+                    alert('로그인 후 이용해 주세요.');
+                    return false;
+                }
+
                 sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {
                     $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                 }, showAlertError, false, 'GET', 'html');

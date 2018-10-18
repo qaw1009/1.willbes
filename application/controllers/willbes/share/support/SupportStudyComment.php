@@ -8,7 +8,7 @@ class SupportStudyComment extends BaseSupport
     protected $models = array('product/baseProductF', 'support/supportBoardTwoWayF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('store');
 
     protected $_bm_idx;
     protected $_reg_type = 0;

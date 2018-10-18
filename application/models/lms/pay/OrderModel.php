@@ -23,6 +23,8 @@ class OrderModel extends BaseOrderModel
         $this->_conn->trans_begin();
 
         try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+
             // 주문정보 조회
             $order_row = $this->orderListModel->findOrderByOrderIdx($order_idx);
             if (empty($order_row) === true) {
@@ -49,8 +51,8 @@ class OrderModel extends BaseOrderModel
             }
 
             // 주문상품 데이터 취소 업데이트
-            $is_cancel = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['vbank_wait_cancel'])
-                ->where('OrderIdx', $order_idx)->where('MemIdx', $order_row['MemIdx'])->update($this->_table['order_product']);
+            $is_cancel = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['vbank_wait_cancel'])->set('UpdDatm', 'NOW()', false)
+                ->set('UpdAdminIdx', $sess_admin_idx)->where('OrderIdx', $order_idx)->where('MemIdx', $order_row['MemIdx'])->update($this->_table['order_product']);
             if ($is_cancel === false) {
                 throw new \Exception('주문상품 결제상태 업데이트에 실패했습니다.');
             }

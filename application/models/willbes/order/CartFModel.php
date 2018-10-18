@@ -292,6 +292,45 @@ class CartFModel extends BaseOrderFModel
     }
 
     /**
+     * 장바구니 데이터 등록
+     * @param array $input
+     * @return string
+     */
+    private function _addCart($input = [])
+    {
+        try {
+            $mem_idx = element('MemIdx', $input);
+            $prod_code = element('ProdCode', $input);
+
+            // 이미 장바구니에 담긴 상품이 있는지 여부 확인
+            $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
+                'EQ' => ['MemIdx' => $mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
+                'RAW' => ['ExpireDatm > ' => 'NOW()', 'ConnOrderIdx is ' => 'null']
+            ]);
+
+            if (empty($cart_row) === false) {
+                // 이미 장바구니에 담겨 있다면 삭제
+                $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $mem_idx)->delete($this->_table['cart']);
+                if ($is_delete === false) {
+                    throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
+                }
+            }
+
+            // 데이터 등록
+            $this->_conn->set($input)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
+            if ($this->_conn->insert($this->_table['cart']) === false) {
+                throw new \Exception('장바구니 등록에 실패했습니다.');
+            }
+
+            $insert_cart_idx = $this->_conn->insert_id();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return $insert_cart_idx;
+    }
+
+    /**
      * 배송료 상품 전용 장바구니 등록
      * @param int $site_code [사이트코드]
      * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
@@ -376,45 +415,6 @@ class CartFModel extends BaseOrderFModel
         }
 
         return ['ret_cd' => true, 'ret_data' => $insert_cart_idx];
-    }
-
-    /**
-     * 장바구니 데이터 등록
-     * @param array $input
-     * @return string
-     */
-    private function _addCart($input = [])
-    {
-        try {
-            $mem_idx = element('MemIdx', $input);
-            $prod_code = element('ProdCode', $input);
-
-            // 이미 장바구니에 담긴 상품이 있는지 여부 확인
-            $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
-                'EQ' => ['MemIdx' => $mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
-                'RAW' => ['ExpireDatm > ' => 'NOW()', 'ConnOrderIdx is ' => 'null']
-            ]);
-
-            if (empty($cart_row) === false) {
-                // 이미 장바구니에 담겨 있다면 삭제
-                $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $mem_idx)->delete($this->_table['cart']);
-                if ($is_delete === false) {
-                    throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
-                }
-            }
-
-            // 데이터 등록
-            $this->_conn->set($input)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
-            if ($this->_conn->insert($this->_table['cart']) === false) {
-                throw new \Exception('장바구니 등록에 실패했습니다.');
-            }
-
-            $insert_cart_idx = $this->_conn->insert_id();            
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-
-        return $insert_cart_idx;
     }
 
     /**

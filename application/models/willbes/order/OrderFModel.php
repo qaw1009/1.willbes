@@ -1143,7 +1143,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 주문상품 결제완료 업데이트
-            $is_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])
+            $is_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])->set('UpdDatm', 'NOW()', false)
                 ->where('OrderIdx', $order_idx)->update($this->_table['order_product']);
             if ($is_update === false) {
                 throw new \Exception('주문상품 결제완료 업데이트에 실패했습니다.');
@@ -1214,7 +1214,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 주문상품 데이터 취소 업데이트
-            $is_cancel = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['vbank_wait_cancel'])
+            $is_cancel = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['vbank_wait_cancel'])->set('UpdDatm', 'NOW()', false)
                 ->where('OrderIdx', $order_idx)->where('MemIdx', $sess_mem_idx)->update($this->_table['order_product']);
             if ($is_cancel === false) {
                 throw new \Exception('주문상품 취소에 실패했습니다.');

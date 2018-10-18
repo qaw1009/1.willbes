@@ -12,6 +12,7 @@ class BaseCodeModel extends WB_Model
     private $_table = [
         'admin' => 'wbs_sys_admin',
         'site' => 'lms_site',
+        'sysCode' => 'lms_sys_code',
         'category' => 'lms_sys_category',
         'subject' => 'lms_product_subject',
         'mockBase' => 'lms_mock',
@@ -32,16 +33,15 @@ class BaseCodeModel extends WB_Model
         $in = "('". implode("', '", array_values(get_auth_site_codes())) ."')"; // 사이트 접근권한
         $sql = "
             SELECT M.*, S.SiteName, A.wAdminName,
-                   C1.CateCode AS gCateCode, C1.CateName AS gCateName, C1.CateDepth AS gCateDepth, C1.OrderNum AS gOrderNum, C1.IsUse AS gIsUse,
-                   C2.CateCode AS mCateCode, C2.CateName AS mCateName, C2.CateDepth AS mCateDepth, C2.OrderNum AS mOrderNum, C2.IsUse AS mIsUse,
-                   GREATEST(C1.CateDepth, IFNULL(C2.CateDepth, 0)) as LastCateDepth
+                   C1.CateCode AS gCateCode, C1.CateName AS gCateName, C1.IsUse AS gIsUse,
+                   SC.Ccd AS mCateCode, SC.CcdName AS mCateName, SC.IsUse AS mIsUse                   
             FROM {$this->_table['site']} AS S
             JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['category']} AS C2 ON C2.GroupCateCode = C1.CateCode AND C2.CateDepth = 2 AND C2.IsStatus = 'Y'
-            RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C2.CateCode  AND M.IsStatus = 'Y'
+            RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C1.CateCode AND M.IsStatus = 'Y'
+            JOIN {$this->_table['sysCode']} AS SC ON M.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON M.RegAdminIdx = A.wAdminIdx
             WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
-            ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, C2.OrderNum ASC";
+            ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, SC.OrderNum ASC";
 
         $listDB = $this->_conn->query($sql)->result_array();
 
@@ -64,9 +64,26 @@ class BaseCodeModel extends WB_Model
 
 
     /**
-     * 직렬 조회 (1건)
+     * 직렬(운영코드) 전체 로딩 - SELECT MENU
      */
-    public function getKind($idx)
+    public function getMockKindAll($isUseChk=true, $in=array())
+    {
+        if($isUseChk)
+            $where = array('GroupCcd' => MOCK_KIND_SYS_CODE, 'IsStatus' => 'Y', 'IsUse' => 'Y');
+        else
+            $where = array('GroupCcd' => MOCK_KIND_SYS_CODE, 'IsStatus' => 'Y');
+
+        if ($in) $this->_conn->where_in('Ccd', $in);
+
+        $db = $this->_conn->select('Ccd, CcdName')->where($where)->order_by('OrderNum ASC, CcdName ASC')->get($this->_table['sysCode'])->result_array();
+        return $db;
+    }
+
+
+    /**
+     * lms_mock 조회 (1건)
+     */
+    public function getMockBase($idx)
     {
         if (!preg_match('/^[0-9]+$/', $idx)) return false;
 
@@ -84,7 +101,8 @@ class BaseCodeModel extends WB_Model
         try {
             $data = array(
                 'SiteCode' => $this->input->post('site'),
-                'CateCode' => $this->input->post('cateD2'),
+                'CateCode' => $this->input->post('cateD1'),
+                'Ccd' => $this->input->post('cateD2'),
                 'OrderNum' => $this->input->post('orderNum'),
                 'IsUse' => $this->input->post('isUse'),
                 'RegIp' => $this->input->ip_address(),
@@ -95,7 +113,7 @@ class BaseCodeModel extends WB_Model
             $table = $this->_table['mockBase'];
             $keys = "`". implode("`, `", array_keys($data)) ."`";
             $values = "'". implode("', '", $this->_conn->escape_str(array_values($data))) ."'";
-            $exist_where = "`CateCode` = '". $this->_conn->escape_str($data['CateCode']) ."'";
+            $exist_where = "`CateCode` = '". $this->_conn->escape_str($data['CateCode']) ."' AND `Ccd` = '". $this->_conn->escape_str($data['Ccd']) ."'";
 
             $sql = "INSERT INTO $table ($keys) SELECT $values FROM DUAL
 					WHERE NOT EXISTS (SELECT * FROM $table WHERE $exist_where)";
@@ -141,7 +159,7 @@ class BaseCodeModel extends WB_Model
      */
     public function getSubject($MmIdx, $SubjectType)
     {
-        $baseDB = $this->getKind($MmIdx);
+        $baseDB = $this->getMockBase($MmIdx);
         if(empty($baseDB)) return false;
 
         $sql = "

@@ -71,7 +71,7 @@
                     </thead>
                     <tbody>
                     @foreach($listDB as $row)
-                        <tr data-idx="{{ $row['MmIdx'] }}" data-gcate="{{ $row['gCateCode'] }}">
+                        <tr data-idx="{{ $row['MmIdx'] }}">
                             <td class="hide">
                                 {{ $row['SiteName'] }}
                                 [<span class="blue">{{ $row['SiteCode'] }}</span>]
@@ -83,7 +83,7 @@
                             </td>
                             <td>
                                 @if(!empty($row['mCateCode']))
-                                    <span class="underline-link act-reg" data-act="edit" data-type="Kind" data-mcate="{{ $row['mCateCode'] }}">{{ $row['mCateName'] }}</span>
+                                    <span class="underline-link act-reg" data-act="edit" data-type="Kind" data-gcate="{{ $row['gCateCode'] }}" data-mcate="{{ $row['mCateCode'] }}">{{ $row['mCateName'] }}</span>
                                     [<span class="blue">{{ $row['mCateCode'] }}</span>]
                                     @if($row['mIsUse'] == 'Y') <span class="mr-5">(사용)</span> @else <span class="mr-5 red">(미사용)</span> @endif
                                 @endif
@@ -142,17 +142,16 @@
                 var type = $(this).data('type');
                 var act = $(this).data('act');
                 var idx = $(this).closest('tr').data('idx');
-                var gcate = $(this).closest('tr').data('gcate');
                 var sjType = $(this).data('sj-type');
 
                 if(type == 'Kind') { // 직렬
                     if(act === 'create')
                         uri_param = 'act=' + act;
                     else
-                        uri_param = 'act=' + act + '&idx=' + idx + '&gcate=' + gcate;
+                        uri_param = 'act=' + act + '&idx=' + idx;
                 }
                 else { // 과목
-                    uri_param = 'act=' + act + '&idx=' + idx + '&gcate=' + gcate + '&sjType=' + sjType;
+                    uri_param = 'act=' + act + '&idx=' + idx + '&sjType=' + sjType;
                 }
 
                 $('.act-reg').setLayer({
@@ -219,7 +218,6 @@
 
             // 검색 초기화
             $('#searchInit').on('click', function () {
-                //$search_form[0].reset();
                 $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
                     $(this).val('');
                 });
@@ -252,7 +250,7 @@
                     else return false;
                 }
             );
-            datatableSearching(); {{-- 위치주의 : dom를 제거함으로 다른 로직의 이벤트가 안 걸릴 수 있음 --}}
+            datatableSearching();
         });
 
         // DataTable Search

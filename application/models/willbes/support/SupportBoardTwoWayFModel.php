@@ -151,7 +151,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
 
             // 카테고리
-            if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+            if ($result['SiteCode'] != config_item('app_intg_site_code')) {
                 // 카테고리삭제
                 $up_cate_data['BoardIdx'] = $board_idx;
                 if ($this->updateBoardCategory($up_cate_data) === false) {

@@ -371,7 +371,7 @@ class SupportQna extends BaseSupport
             $idx = $this->_reqP('idx');
         }
 
-        $inputData = $this->_setInputData($this->_reqP(null, false));
+        $inputData = $this->_setInputData($this->_reqP(null, false), $method);
 
         //_addBoard, _modifyBoard
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
@@ -413,9 +413,10 @@ class SupportQna extends BaseSupport
     /**
      * 저장 데이터 셋팅
      * @param $input
+     * @param $method
      * @return array
      */
-    private function _setInputData($input){
+    private function _setInputData($input, $method){
         $input_data = [
             'board' => [
                 'BmIdx' => $this->_bm_idx,
@@ -439,6 +440,10 @@ class SupportQna extends BaseSupport
             ]
         ];
 
+        //수정일 경우 사이트코드 제외
+        if ($method == 'modify') {
+            unset($input_data['board']['SiteCode']);
+        }
         return$input_data;
     }
 }

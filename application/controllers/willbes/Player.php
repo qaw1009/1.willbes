@@ -223,7 +223,7 @@ class Player extends \app\controllers\FrontController
                 'orderidx' => $orderidx,
                 'prodcode' => $prodcode,
                 'prodcodesub' => $prodcodesub,
-                'unitidx' => $unitIdx,
+                'unitidx' => $unitidx,
                 'quility' => $quility,
                 'isIntro' => false,
                 'ratio' => $ratio,

@@ -3,14 +3,19 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="willbes-Tit NGEB p_re">
-        <button type="button" class="goback" onclick="history.back(-1); return false;">
-            <span class="hidden">뒤로가기</span>
-        </button>    
-        무한 PASS 강좌추가
+    <div id="Sticky" class="sticky-Title">
+        <div class="sticky-Grid sticky-topTit">
+            <div class="willbes-Tit NGEB p_re">
+                <button type="button" class="goback" onclick="history.back(-1); return false;">
+                    <span class="hidden">뒤로가기</span>
+                </button>    
+                무한 PASS 강좌추가
+            </div>
+        </div>
     </div>
+
     <div class="willbes-Txt NGR c_both mt20">
-        - 체크박스 선택후 '강좌추가' 버튼을 클릭하시면 수강이 가능합니다.<br/>
+        - 체크박스 선택 후 '강좌추가' 버튼을 클릭하시면 수강이 가능합니다.<br/>
         - 강좌상세정보는 PC 버전에서만 확인할 수 있습니다.
     </div>
     <div class="willbes-Lec-Selected NG tx-gray">
@@ -43,7 +48,6 @@
             </div>
         </div>
     </div>
-
     <div class="lineTabs lecListTabs c_both">
         <div class="lecAllChk">
             <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"><label>전체선택</label>

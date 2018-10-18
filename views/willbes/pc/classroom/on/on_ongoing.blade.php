@@ -107,10 +107,10 @@
                                 <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
                             @endforeach
                         </select>
-                        <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy">
-                            <option selected="selected">최종학습일순</option>
-                            <option value="최근추가순">최근추가순</option>
-                            <option value="종료임박순">종료임박순</option>
+                        <select id="orderby" name="orderby" title="Laststudy" class="seleStudy">
+                            <option value="lastStudyDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'lastStudyDate') selected="selected" @endif>최종학습일순</option>
+                            <option value="LecStartDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'LecStartDate^ASC') selected="selected" @endif>개강일순</option>
+                            <option value="RealLecEndDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'RealLecEndDate^ASC') selected="selected" @endif>종료임박순</option>
                         </select>
                         <div class="willbes-Lec-Search GM f_right">
                             <div class="inputBox p_re">
@@ -396,7 +396,7 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd,#subject_ccd,#prof_ccd').on('change', function (){
+            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby').on('change', function (){
                 $('#searchFrm').submit();
             });
 

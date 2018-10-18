@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="tabSection">
-            <ul class="tabWrap lineWrap lecProfWrap two">
+            <ul class="tabWrap lineWrap boxlineWrap lecProfWrap two">
                 <li><a href="#lecprof1" class="on"><img src="{{ img_url('m/main/icon_new.png') }}">신규강좌</a></li>
                 <li><a href="#lecprof2"><img src="{{ img_url('m/main/icon_best.png') }}">추천강좌</a></li>
             </ul>

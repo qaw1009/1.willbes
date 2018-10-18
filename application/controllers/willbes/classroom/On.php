@@ -91,6 +91,16 @@ class On extends \app\controllers\FrontController
             ]
         ];
 
+        $orderby = element('orderby', $input_arr);
+        $orderby = (empty($orderby) == true) ? 'OrderDate^DESC' : $orderby;
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
+
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
@@ -102,7 +112,7 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
-        ]));
+        ]), $orderby);
         foreach($pkglist as $idx => $row){
             $pkgsublist =  $this->classroomFModel->getLecture([
                 'EQ' => [
@@ -186,6 +196,16 @@ class On extends \app\controllers\FrontController
             ]
         ];
 
+        $orderby = element('orderby', $input_arr);
+        $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
+
         // 학습형태 : 단광좌, 사용자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
@@ -193,7 +213,7 @@ class On extends \app\controllers\FrontController
                 'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
-        ]));
+        ]), $orderby);
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
@@ -201,7 +221,7 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
-        ]));
+        ]), $orderby);
         foreach($pkglist as $idx => $row){
             $pkgsublist =  $this->classroomFModel->getLecture([
                 'EQ' => [
@@ -220,7 +240,7 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'LearnPatternCcd' => ['615005'] // 무료
             ]
-        ]));
+        ]), $orderby);
 
         // 학습형태 : 단과반
         // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
@@ -229,7 +249,7 @@ class On extends \app\controllers\FrontController
                 'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
                 'PayRouteCcd' => ['670003','670004','670005'] // 0원, 무료, 제휴사
             ]
-        ]));
+        ]), $orderby);
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
@@ -237,7 +257,7 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'PayRouteCcd' => ['670003','670004','670005'] // 0원, 무료, 제휴사
             ]
-        ]));
+        ]), $orderby);
         foreach($adminlistPkg as $idx => $row){
             $pkgsublist =  $this->classroomFModel->getLecture([
                 'EQ' => [
@@ -245,7 +265,7 @@ class On extends \app\controllers\FrontController
                     'OrderIdx' => $row['OrderIdx'],
                     'ProdCode' => $row['ProdCode']
                 ]
-            ]);
+            ], $orderby);
 
             $adminlistPkg[$idx]['subleclist'] = $pkgsublist;
         }
@@ -320,6 +340,16 @@ class On extends \app\controllers\FrontController
             ]
         ];
 
+        $orderby = element('orderby', $input_arr);
+        $orderby = (empty($orderby) == true) ? 'lastPauseStartDate^ASC' : $orderby;
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
+
         // 학습형태 : 단광좌, 사용자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, ['IN' => [
@@ -333,7 +363,7 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
-        ]));
+        ]), $orderby);
         foreach($pkglist as $idx => $row){
             $pkgsublist =  $this->classroomFModel->getLecture([
                 'EQ' => [
@@ -408,6 +438,16 @@ class On extends \app\controllers\FrontController
             ]
         ];
 
+        $orderby = element('orderby', $input_arr);
+        $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
+
         // 학습형태 : 단광좌, 사용자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, ['IN' => [
@@ -421,7 +461,7 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
-        ]));
+        ]), $orderby);
         foreach($pkglist as $idx => $row){
             $pkgsublist =  $this->classroomFModel->getLecture([
                 'EQ' => [
@@ -492,7 +532,7 @@ class On extends \app\controllers\FrontController
                 'GTE' => [
                     'RealLecEndDate' => $today
                 ]
-            ]);
+            ], $orderby);
 
             $pkg = $pkg[0];
 
@@ -636,7 +676,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]));
+            ]), $orderby);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -738,7 +778,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]));
+            ]), $orderby);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -821,7 +861,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]));
+            ]), $orderby);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -923,7 +963,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]));
+            ]), $orderby);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1018,7 +1058,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]));
+            ]), $orderby);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1084,7 +1124,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]));
+            ]), $orderby);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1181,7 +1221,7 @@ class On extends \app\controllers\FrontController
                 'GTE' => [
                     'RealLecEndDate' => $today
                 ]
-            ]);
+            ], $orderby);
 
             $pkg = $pkg[0];
 

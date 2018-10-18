@@ -17,35 +17,37 @@
             <!-- willbes-Mypage-ACADZONE -->
 
             <div class="willbes-Leclist c_both">
-                <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
-                <span class="w-data">
-                    기간검색 &nbsp;
-                    <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30"> ~&nbsp;
-                    <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30">
-                </span>
-                    <span class="w-month">
-                    <ul>
-                        <li><a href="#none">전체</a></li>
-                        <li><a class="on" href="#none">1개월</a></li>
-                        <li><a href="#none">3개월</a></li>
-                        <li><a href="#none">6개월</a></li>
-                    </ul>
-                </span>
-                    <div class="willbes-Lec-Search GM f_right">
-                        <select id="process" name="process" title="process" class="seleProcess f_left">
-                            <option selected="selected">과정</option>
-                            <option value="헌법">헌법</option>
-                            <option value="스파르타반">스파르타반</option>
-                            <option value="공직선거법">공직선거법</option>
-                        </select>
-                        <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30" style="width: 220px;">
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
+                <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/end/', 'www')}}" onsubmit="">
+                    <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
+                    <span class="w-data">
+                        기간검색 &nbsp;
+                        <input type="text" id="search_start_date" name="search_start_date" value="{{ $input_arr['search_start_date'] or '' }}" title="검색시작일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/> ~&nbsp;
+                        <input type="text" id="search_end_date" name="search_end_date" value="{{ $input_arr['search_end_date'] or '' }}" title="검색종료일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/>
+                    </span>
+                        <span class="w-month">
+                        <ul>
+                            <li><a class="btn-set-search-date" data-period="0-all" style="cursor:pointer;">전체</a></li>
+                            <li><a class="btn-set-search-date" data-period="1-months" style="cursor:pointer;">1개월</a></li>
+                            <li><a class="btn-set-search-date" data-period="3-months" style="cursor:pointer;">3개월</a></li>
+                            <li><a class="btn-set-search-date" data-period="6-months" style="cursor:pointer;">6개월</a></li>
+                        </ul>
+                    </span>
+                        <div class="willbes-Lec-Search GM f_right">
+                            <select id="course_ccd" name="course_ccd" title="process" class="seleProcess f_left">
+                                <option selected="selected" value="">과정</option>
+                                @foreach($course_arr as $row )
+                                    <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
+                                @endforeach
+                            </select>
+                            <div class="inputBox p_re">
+                                <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30"  style="width: 220px;">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="willbes-Lec-Table NG d_block c_both">
                     <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                         <colgroup>
@@ -59,17 +61,17 @@
                             <td class="w-data tx-left pl10">
                                 <dl class="w-info">
                                     <dt>
-                                        영어<span class="row-line">|</span>
-                                        한덕현교수님
-                                        <span class="NSK ml15 nBox n2">접수중</span>
+                                        {{$row['SubjectName']}}<span class="row-line">|</span>
+                                        {{$row['wProfName']}} 교수님
+                                        <span class="NSK ml15 nBox n{{ substr($row['AcceptStatusCcd'], -1)+1 }}">{{$row['AcceptStatusCcdName']}}</span>
                                     </dt>
                                 </dl><br/>
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                <div class="w-tit">{{$row['subProdName']}}</div>
                             </td>
-                            <td class="w-period">2018.10.20 ~ 2018.11.20</td>
+                            <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
                             <td class="w-schedule">
-                                월 ~ 금<br/>
-                                10회차
+                                {{$row['WeekArrayName']}}<br/>
+                                {{$row['Amount']}}회차
                             </td>
                         </tr>
                         @empty
@@ -77,64 +79,8 @@
                                 <td colspan="2" class="tx-center">수강종료 강좌가 없습니다.</td>
                             </tr>
                         @endforelse
-                        <!--
-                        <tr>
-                            <td class="w-data tx-left pl10">
-                                <dl class="w-info">
-                                    <dt>
-                                        영어<span class="row-line">|</span>
-                                        한덕현교수님
-                                        <span class="NSK ml15 nBox n2">접수중</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
-                            </td>
-                            <td class="w-period">2018.10.20 ~ 2018.11.20</td>
-                            <td class="w-schedule">
-                                월,화,금<br/>
-                                8회차
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pl10">
-                                <dl class="w-info">
-                                    <dt>
-                                        영어<span class="row-line">|</span>
-                                        한덕현교수님
-                                        <span class="NSK ml15 nBox n4">마감</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="w-tit">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
-                            </td>
-                            <td class="w-period">2018.10.20 ~ 2018.11.20</td>
-                            <td class="w-schedule">
-                                화,금<br/>
-                                8회차
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="tx-center">수강종료 강좌 정보가 없습니다.</td>
-                        </tr> -->
                         </tbody>
                     </table>
-                    <!--
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                        </ul>
-                    </div>
-                    -->
                 </div>
             </div>
             <!-- willbes-Leclist -->
@@ -143,4 +89,18 @@
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#course_ccd').on('change', function (){
+                $('#searchFrm').submit();
+            });
+
+            // 검색어 입력 후 엔터
+            $('#search_text').on('keyup', function() {
+                if (window.event.keyCode === 13) {
+
+                }
+            });
+        });
+    </script>
 @stop

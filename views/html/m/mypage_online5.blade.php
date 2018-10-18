@@ -3,12 +3,17 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="willbes-Tit NGEB p_re">
-        <button type="button" class="goback" onclick="history.back(-1); return false;">
-            <span class="hidden">뒤로가기</span>
-        </button>    
-        시작일변경
+    <div id="Sticky" class="sticky-Title">
+        <div class="sticky-Grid sticky-topTit">
+            <div class="willbes-Tit NGEB p_re">
+                <button type="button" class="goback" onclick="history.back(-1); return false;">
+                    <span class="hidden">뒤로가기</span>
+                </button>    
+                시작일변경
+            </div>
+        </div>
     </div>
+
     <div class="willbes-Txt NGR c_both mt30 mb50">
         <div class="willbes-Txt-Tit NG">· 수강시작일 설정 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
         - 수강시작일은 개강일 전까지만 변경 가능합니다.<br/>
@@ -16,7 +21,6 @@
         - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
         - 수강시작이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
     </div>
-
     <div class="willbes-List-Tit NG">수강시작일 설정</div>
     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
         <tbody>

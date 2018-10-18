@@ -7,6 +7,7 @@ class ClassroomFModel extends WB_Model
         'mylec' => 'lms_my_lecture',
         'lec_unit' => 'vw_unit_mylecture',
         'mylecture' => 'vw_on_mylecture',
+        'myofflecture' => 'vw_off_mylecture',
         'mylecture_pkg' => 'vw_pkg_mylecture',
         'start_log' => 'lms_my_lecture_history',
         'admin' => 'wbs_sys_admin',
@@ -28,12 +29,17 @@ class ClassroomFModel extends WB_Model
      * @param $cond
      * @return array
      */
-    private function getSelectList($columns, $cond)
+    private function getSelectList($columns, $cond, $isoff = false)
     {
         $query = "SELECT STRAIGHT_JOIN DISTINCT ".$columns;
-        $query .= " FROM {$this->_table['mylecture']} WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
+        if($isoff == true){
+            $query .= " FROM {$this->_table['myofflecture']}"; // WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
+        } else {
+            $query .= " FROM {$this->_table['mylecture']}"; // WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
+        }
+
         $where = $this->_conn->makeWhere($cond);
-        $query .= $where->getMakeWhere(true);
+        $query .= $where->getMakeWhere(false);
 
         $result = $this->_conn->query($query);
 
@@ -45,20 +51,20 @@ class ClassroomFModel extends WB_Model
      * 과정리스트
      * @return array
      */
-    public function getCourseList($cond = [])
+    public function getCourseList($cond = [], $isoff = false)
     {
         $columns = " CourseIdx, CourseName ";
-        return $this->getSelectList($columns, $cond);
+        return $this->getSelectList($columns, $cond, $isoff);
     }
 
 
     /** 과목리스트
      * @return array
      */
-    public function getSubjectList($cond = [])
+    public function getSubjectList($cond = [], $isoff = false)
     {
         $columns = " SubjectIdx, SubjectName ";
-        return $this->getSelectList($columns, $cond);
+        return $this->getSelectList($columns, $cond, $isoff);
 
     }
 
@@ -66,10 +72,10 @@ class ClassroomFModel extends WB_Model
     /** 강사리스트
      * @return array
      */
-    public function getProfList($cond = [])
+    public function getProfList($cond = [], $isoff = false)
     {
         $columns = " wProfIdx, wProfName ";
-        return $this->getSelectList($columns, $cond);
+        return $this->getSelectList($columns, $cond, $isoff);
 
     }
 
@@ -78,10 +84,9 @@ class ClassroomFModel extends WB_Model
      * @param array $cond_arr
      * @return array
      */
-    public function getLecture($cond = [], $isCount = false)
+    public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false)
     {
-        if($isCount == true)
-        {
+        if($isCount == true){
             $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
         } else {
             $query = "SELECT STRAIGHT_JOIN *,
@@ -89,10 +94,16 @@ class ClassroomFModel extends WB_Model
             ";
         }
 
-        $query .= " FROM {$this->_table['mylecture']} ";
+        if($isoff == true){
+            $query .= " FROM {$this->_table['myofflecture']} ";
+        } else {
+            $query .= " FROM {$this->_table['mylecture']} ";
+        }
+
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
+        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
         $result = $this->_conn->query($query);
         return empty($result) === true ? [] : $result->result_array();
     }
@@ -101,10 +112,9 @@ class ClassroomFModel extends WB_Model
     /**
      * 패키지 강좌 리스트
      */
-    public function getPackage($cond = [], $isCount = false)
+    public function getPackage($cond = [], $order = [], $isCount = false)
     {
-        if($isCount == true)
-        {
+        if($isCount == true){
             $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
         } else {
             $query = "SELECT STRAIGHT_JOIN *,
@@ -116,6 +126,7 @@ class ClassroomFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
+        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
         $result = $this->_conn->query($query);
 
         return empty($result) === true ? [] : $result->result_array();
@@ -544,6 +555,7 @@ class ClassroomFModel extends WB_Model
 
         $this->_conn->set($input)->insert($this->_table['down_log']);
     }
+
 }
 
 

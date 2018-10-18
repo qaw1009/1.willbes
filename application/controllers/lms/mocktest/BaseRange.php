@@ -19,22 +19,19 @@ class BaseRange extends \app\controllers\BaseController
         parent::__construct();
     }
 
+
     /**
      * 메인
      */
     public function index()
     {
-        $cateList = $this->categoryModel->getCategoryArray();
-        $cateD1 = $cateD2 = array();
-        foreach ($cateList as $it) {
-            if ($it['CateDepth'] == '1') $cateD1[] = $it;
-            else $cateD2[] = $it;
-        }
+        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $cateD2 = $this->mockCommonModel->getMockKind();
 
         list($data, $modata) = $this->baseRangeModel->list();
 
         $this->load->view('mocktest/base/range/index', [
-            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateList[0]['SiteCode'],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),

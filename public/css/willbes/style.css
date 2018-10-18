@@ -9393,6 +9393,97 @@ table.acadlecInfoPackageTable tr.Top td {
 
 
 
+/* Certification */
+.CertiBox {
+    width: 900px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 40px;
+}
+.CertiBox .infoTxt {
+    font-size: 14px;
+    line-height: 20px;
+}
+.certiTable {
+    text-align: center;
+    margin: 40px 0 20px;
+}
+.certiTable tr th,
+.certiTable tr td {
+    height: 81px;
+}
+.certiTable .w-tit {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+}
+.certiTable .open {
+    display: none;
+}
+.certiTable .cover {
+    background: #898989;
+    font-size: 18px;
+    color: #fff;
+    line-height: 26px;
+    padding: 14px 0;
+}
+.certiTable .priceInfo {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    line-height: 16px;
+}
+.certiTable .priceInfo .originPrice {
+    background: url("../../img/willbes/sample/arrow.png") no-repeat right 0;
+    display: inline-block;
+    padding: 0 30px;
+}
+.certiTable .priceInfo .discountPrice {
+    display: inline-block;
+    line-height: 22px;
+    margin-left: 10px;
+}
+.certiTable .priceInfo .discountPrice .tx-red {
+    font-size: 22px;
+    font-weight: 600;
+}
+.certiTable .priceInfo .discountPrice .subInfo {
+    font-size: 13px;
+}
+.certiTable .w-btn button {
+    width: 145px;
+    height: 40px;
+    border: none;
+}
+.certiTable .w-btn button span {
+    font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+.certiTable .w-btn .btnBlue button {
+    background: #144999;
+}
+.certiTable .w-btn .btnRed button {
+    background: #ee1d23;
+}
+.CertiBox .agreeChkBox input[type="checkbox"] {
+    float: left;
+    width: 14px;
+    height: 14px;
+}
+.CertiBox .agreeChkBox label {
+    margin: 0 5px;
+}
+.CertiBox .agreeChkBox .infoBtn {
+    display: inline-block;
+}
+.CertiBox .agreeChkBox .infoBtn a {
+    background: #333;
+    color: #fff;
+    padding: 4px 8px;
+}
+
 
 
 

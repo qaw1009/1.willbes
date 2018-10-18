@@ -61,15 +61,6 @@
                         </div>
                     </td>
                 </tr>
-                {{--<tr>--}}
-                {{--<th colspan="1">사용여부 <span class="required">*</span></th>--}}
-                {{--<td colspan="3">--}}
-                {{--<div>--}}
-                {{--<input type="radio" name="isUse" class="flat" value="Y" required="required" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-20">사용</span>--}}
-                {{--<input type="radio" name="isUse" class="flat" value="N" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>--}}
-                {{--</div>--}}
-                {{--</td>--}}
-                {{--</tr>--}}
                 <tr>
                     <th>등록자</th>
                     <td>{{ $adminInfo['RegAdminIdx'] }}</td>
@@ -102,8 +93,8 @@
 
                     // select 메뉴 정리
                     $regi_form.find('#subject_site').val({{ $baseDB['SiteCode'] }}).prop('disabled', true);
-                    $regi_form.find('#subject_cateD1').val({{ $_GET['gcate'] }}).prop('disabled', true);
-                    $regi_form.find('#subject_cateD2').val({{ $baseDB['CateCode'] }}).prop('disabled', true);
+                    $regi_form.find('#subject_cateD1').val({{ $baseDB['CateCode'] }}).prop('disabled', true);
+                    $regi_form.find('#subject_cateD2').val({{ $baseDB['Ccd'] }}).prop('disabled', true);
                 });
             </script>
         @stop

@@ -3,11 +3,15 @@
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
-    <div class="willbes-Tit NGEB p_re">
-        <button type="button" class="goback" onclick="history.back(-1); return false;">
-            <span class="hidden">뒤로가기</span>
-        </button>    
-        무한 PASS존
+    <div id="Sticky" class="sticky-Title">
+        <div class="sticky-Grid sticky-topTit">
+            <div class="willbes-Tit NGEB p_re">
+                <button type="button" class="goback" onclick="history.back(-1); return false;">
+                    <span class="hidden">뒤로가기</span>
+                </button>    
+                무한 PASS존
+            </div>
+        </div>
     </div>
 
     <div class="passProfTabs c_both">
@@ -31,7 +35,7 @@
                                 <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사 (4-5월)</a>
                             </div>
                         </div>
-                        <div class="w-info tx-gray">
+                        <div class="w-info tx-gray bdt-bright-gray">
                             <dl>
                                 <dt><strong>강좌정보 :</strong> 진행중<span class="row-line">|</span>2배수</dt><br/>
                                 <dt><strong>진도율 :</strong> <span class="tx-blue">2%</span>(1강/20강)<span class="row-line">|</span> <strong>잔여기간 :</strong> <span class="tx-blue">10일</span>(~2018-00-00)</dt>
@@ -57,7 +61,7 @@
         <div class="tabBox buttonBox passBox">
             <div id="notice1" class="tabContent">
                 <div class="BuylecMore">
-                    <a href="{{ site_url('/home/html/m/mypage_pass2') }}">강좌 교재구매 <img src="{{ img_url('m/mypage/icon_arrow.png') }}"></a>
+                    <a href="#none">강좌 교재구매 <img src="{{ img_url('m/mypage/icon_arrow_off_white.png') }}"></a>
                 </div>
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable buylecTable">
                     <colgroup>
@@ -100,9 +104,7 @@
                             <tr>
                                 <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                 <td class="w-data tx-left">
-                                    <div class="w-tit mb10">
-                                        <a href="#none">1강. 강의명이 출력됩니다.</a>
-                                    </div>
+                                    <div class="w-tit mb10">>1강. 강의명이 출력됩니다.</div>
                                     <dl class="w-info tx-gray mb10">
                                         <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                                         <dt>수강시간 : 60분<span class="row-line">|</span></dt>
@@ -119,9 +121,7 @@
                             <tr>
                                 <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                 <td class="w-data tx-left">
-                                    <div class="w-tit mb10">
-                                        <a href="#none">2강. 강의명이 출력됩니다.</a>
-                                    </div>
+                                    <div class="w-tit mb10">2강. 강의명이 출력됩니다.</div>
                                     <dl class="w-info tx-gray mb10">
                                         <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                                         <dt>수강시간 : 60분<span class="row-line">|</span></dt>
@@ -138,9 +138,7 @@
                             <tr>
                                 <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                 <td class="w-data tx-left">
-                                    <div class="w-tit mb10">
-                                        <a href="#none">3강. 강의명이 출력됩니다.</a>
-                                    </div>
+                                    <div class="w-tit mb10">3강. 강의명이 출력됩니다.</div>
                                     <dl class="w-info tx-gray mb10">
                                         <dt>강의시간 : 60분<span class="row-line">|</span></dt>
                                         <dt>수강시간 : 60분<span class="row-line">|</span></dt>

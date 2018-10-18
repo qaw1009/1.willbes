@@ -158,9 +158,10 @@
 
     <a href="{{ site_url('/home/html/cscenter6_2') }}" target="_blank">고객센터 > 학습 프로그램설치 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제 page 이동</a><br/><br/><br/><br/>
+    <a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제 page 이동</a><br/><br/><br/>
 
     <a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기 page 이동</a><br/><br/>
     <a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video page 이동</a><br/><br/>
 
 </div>

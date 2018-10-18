@@ -37,7 +37,7 @@
                         <select class="form-control" style="width: 283px;" id="kind_cateD2" name="cateD2">
                             <option value="">직렬 선택</option>
                             @foreach($cateD2 as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['Ccd'] }}" class="">{{ $row['CcdName'] }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -85,28 +85,37 @@
                         }, showValidateError, null, false, 'alert');
                     });
 
-                    // select 메뉴 정리
+                    // Select 메뉴 정리
                     (function () {
                         @if($method == 'PUT') // 수정
                             $regi_form.find('#kind_site').val({{ $data['SiteCode'] }}).prop('disabled', true);
-                            $regi_form.find('#kind_cateD1').val({{ $data['gCateCode'] }}).prop('disabled', true);
-                            $regi_form.find('#kind_cateD2').val({{$data['CateCode'] }}).prop('disabled', true);
+                            $regi_form.find('#kind_cateD1').val({{ $data['CateCode'] }}).prop('disabled', true);
+                            $regi_form.find('#kind_cateD2').val({{ $data['Ccd'] }}).prop('disabled', true);
                         @else // 등록
                             // 이미 등록된 직렬 disable
-                            var mCateUsed = [];
-                            $datatable.column(2).data().each(function (v) {
-                                mCateUsed.push($(v).data('mcate'));
-                            });
-                            $regi_form.find('#kind_cateD2 > option').each(function () {
-                                if( $.inArray(parseInt($(this).attr('value')), mCateUsed) !== -1 ) {
-                                    $(this).prop('disabled', true).addClass('aero');
-                                }
+                            $('#kind_cateD1').on('change', function () {
+                                var that = $(this);
+                                var mCateUsed = [];
+
+                                $datatable.column(2).data().each(function (v) {
+                                    if( that.val() == $(v).data('gcate') ) {
+                                        mCateUsed.push($(v).data('mcate'));
+                                    }
+                                });
+
+                                $regi_form.find('#kind_cateD2').val('');
+                                $regi_form.find('#kind_cateD2 > option').each(function () {
+                                    $(this).prop('disabled', false).removeClass('aero');
+
+                                    if( $.inArray(parseInt($(this).attr('value')), mCateUsed) !== -1 ) {
+                                        $(this).prop('disabled', true).addClass('aero');
+                                    }
+                                });
                             });
 
                             $regi_form.find('#kind_site').val( $search_form.find('#search_site_code').val() );
-                            $regi_form.find('#kind_cateD1').val( $search_form.find('#sc_cateD1').val() );
+                            $regi_form.find('#kind_cateD1').val( $search_form.find('#sc_cateD1').val() ).trigger('change');
                             $regi_form.find('#kind_cateD1').chained('#kind_site');
-                            $regi_form.find('#kind_cateD2').chained('#kind_cateD1');
                         @endif
                     })();
                 });

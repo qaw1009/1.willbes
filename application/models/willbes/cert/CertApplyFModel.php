@@ -75,8 +75,6 @@ class CertApplyFModel extends WB_Model
             $this->load->library('upload');
 
             $file_path = config_item('upload_prefix_dir').'/cert_apply/'.date('Ym');
-            $file_path = 'lms/cert_apply/'.date('Ym');
-
             $file_name = element('CertTypeCcd', $input).'-'.date("YmdHis").rand(100,999);
             
             //첨부자료 등록

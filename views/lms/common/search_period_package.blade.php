@@ -37,6 +37,7 @@
                     <table id="_list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
+                            <th width="3%"> <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                             <th>대비학년도</th>
                             <th>패키지유형</th>
                             <th>수강가긴</th>
@@ -65,6 +66,13 @@
 
                     $datatable = $list_table.DataTable({
                         serverSide: true,
+                        buttons: [
+                            { text: '적용', className: 'btn btn-success btn-sm mb-0',action : function(e, dt, node, config) {
+                                    sendContent();
+                                }
+                            }
+                        ],
+
                         ajax: {
                             'url': '{{ site_url('/common/searchPeriodPackage/listAjax') }}',
                             'type': 'POST',
@@ -77,6 +85,11 @@
                         },
 
                         columns: [
+                            {'data' : null, 'render' : function(data, type, row, meta) {
+                                    var codeInfo = row.ProdCode + '@$'         //0
+                                        + row.ProdName;                      //1
+                                    return '<input type="checkbox" id="checkIdx' + row.ProdCode + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
+                                }},
                             {'data': 'SchoolYear'},//대비학년도
                             {
                                 'data': null, 'render': function (data, type, row, meta) {
@@ -87,9 +100,7 @@
 
                             {
                                 'data': null, 'render': function (data, type, row, meta) {
-                                    var codeInfo = row.ProdCode + '@$'         //0
-                                        + row.ProdName;                      //1
-                                    return '[' + row.ProdCode + '] <a href="#" class="btn-sendContent" data-info="' + codeInfo + '" ><u>' + row.ProdName + '</u></a> ';
+                                    return '[' + row.ProdCode + '] ' + row.ProdName + '';
                                 }
                             },//패키지명
                             {
@@ -114,24 +125,42 @@
                     });
 
 
-                    $datatable.on('click', '.btn-sendContent', function() {
-                        if (!confirm('해당 기간제패키지를 적용하시겠습니까?')) {
-                            return;
-                        }
-                        temp_data = $(this).data('info');
-                        temp_data_arr = temp_data.split("@$");
 
-                        $(document).find("#" + $parent_location).html(
-                            "<span id='prodcode_"+temp_data_arr[0]+"'><input type=\"hidden\" name=\"ProdCode\" id=\"ProdCode\" value=\"" + temp_data_arr[0] + "\">" +
-                            "["+temp_data_arr[0]+"]" + temp_data_arr[1]+"" +
-                            "<a onclick='rowDelete(\"prodcode_"+temp_data_arr[0]+"\")' href=\"javascript:;\"><i class=\"fa fa-times red\"></i></a>" +
-                            "</span>"
-                        );
-                        $("#pop_modal").modal('toggle');
+                    // 전체선택
+                    $datatable.on('ifChanged', '#_is_all', function() {
+                        if ($(this).prop('checked') === true) {
+                            $('input[name="checkIdx"]').iCheck('check');
+                        } else {
+                            $('input[name="checkIdx"]').iCheck('uncheck');
+                        }
                     });
 
-                });
 
+                    function sendContent() {
+                        var addCnt = $("input[name='checkIdx']:checked").length;		//적용할 갯수
+                        var allCnt = $("input[name='checkIdx']").length;		//노출된 전체 갯수
+                        if(addCnt == 0) {alert("적용할 패키지가 없습니다. 선택 후 적용하여 주십시오.");return;}
+                        if (!confirm('해당 기간제패키지를 적용하시겠습니까?')) {return;}
+
+                        for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
+                            //##
+                            //if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
+                            if ( $("input:checkbox[name='checkIdx']:eq("+i+")").is(":checked") == true  ) {
+                                //temp_data = $("#checkIdx"+i).val();
+                                temp_data = $("input:checkbox[name='checkIdx']:eq("+i+")").val();
+                                temp_data_arr = temp_data.split("@$");
+                                $(document).find("#" + $parent_location).append(
+                                    "<span id='prodcode_"+temp_data_arr[0]+"'><input type=\"hidden\" name=\"ProdCode[]\" value=\"" + temp_data_arr[0] + "\">" +
+                                    "["+temp_data_arr[0]+"]" + temp_data_arr[1]+"" +
+                                    "&nbsp;<a onclick='rowDelete(\"prodcode_"+temp_data_arr[0]+"\")' href=\"javascript:;\"><i class=\"fa fa-times red\"></i></a>" +
+                                    "&nbsp;&nbsp;&nbsp;</span>"
+                                );
+                            }
+                        }
+                        $("#pop_modal").modal('toggle');
+                    }
+
+                });
             </script>
         @stop
 

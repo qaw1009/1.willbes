@@ -109,19 +109,24 @@ class CertModel extends WB_Model
                 throw new \Exception('무한패스 수정에 실패했습니다.');
             }
 
-            if(empty(element('ProdCode', $input,'')) === false) {
-                /*  무한패스 등록 */
-                $data = [
-                    'CertIdx' => $CertIdx
-                    , 'ProdCode' => element('ProdCode', $input)
-                    , 'RegAdminIdx' => $this->session->userdata('admin_idx')
-                ];
+            $ProdCode = element('ProdCode',$input);
+            if(empty($ProdCode) === false) {
+                for($i=0;$i<count($ProdCode);$i++) {
+                    $data = [
+                        'CertIdx' => $CertIdx
+                        ,'ProdCode' => $ProdCode[$i]
+                        , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+                    ];
 
-                if ($this->_conn->set($data)->insert('lms_cert_r_product') === false) {
-                    //echo $this->_conn->last_query();
-                    throw new \Exception('무한패스 등록에 실패했습니다.');
+                    if($this->_conn->set($data)->insert('lms_cert_r_product') === false) {
+                        //echo $this->_conn->last_query();
+                        throw new \Exception('무한패스 등록에 실패했습니다.');
+                    }
+
                 }
             }
+
+
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -147,7 +152,7 @@ class CertModel extends WB_Model
                     ];
 
                     if($this->_conn->set($data)->insert('lms_cert_r_coupon') === false) {
-                        echo $this->_conn->last_query();
+                        //echo $this->_conn->last_query();
                         throw new \Exception('쿠폰 등록에 실패했습니다.');
                     }
 
@@ -203,9 +208,8 @@ class CertModel extends WB_Model
                             ,E.SiteName
                             ,F.wAdminName  as RegAdminName
                             ,F2.wAdminName as  UpdAdminName
-                            ,G.ProdCode,H.ProdName
+                            ,G.productData,G.productData_json
                             ,J.couponData,J.couponData_json
-                            
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -220,8 +224,25 @@ class CertModel extends WB_Model
                             join lms_site E on A.SiteCode=E.SiteCode and E.IsStatus=\'Y\'
                             left outer join wbs_sys_admin F on A.RegAdminIdx = F.wRegAdminIdx
                             left outer join wbs_sys_admin F2 on A.UpdAdminIdx = F2.wRegAdminIdx
-                            left outer join lms_cert_r_product G on A.CertIdx = G.CertIdx and G.IsStatus=\'Y\'
-                            left outer join lms_product H on G.ProdCode=H.ProdCode
+                            
+                            left outer join
+                            (
+                                select 
+                                cc.CertIdx,
+                                CONCAT(\'[\', GROUP_CONCAT(
+                                  JSON_OBJECT(
+                                    \'ProdCode\', dd.ProdCode,
+                                    \'ProdName\', dd.ProdName
+                                  )
+                                ) , \']\') AS productData_json
+                                ,group_concat(CONCAT(\'[\',dd.ProdCode,\']\',dd.ProdName) separator \'<BR>\') as productData
+                                from
+                                    lms_cert_r_product cc
+                                    join lms_product dd on cc.ProdCode = dd.ProdCode and dd.IsStatus=\'Y\'
+                                where cc.IsStatus=\'Y\'
+                                group by CertIdx
+                            ) as G on A.CertIdx = G.CertIdx 
+                            
                             left outer join
                             (
                                 select 

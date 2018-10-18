@@ -83,12 +83,12 @@
                         <button type="button" id="searchPackage" class="btn btn-sm btn-primary">무한패스검색</button>
 
                         <span id="selected_lecture">
-                            @if(empty($data['ProdCode']) === false)
-                                <span id='prodcode_{{$data['ProdCode']}}'>
-                                <input type="hidden" name="ProdCode" id="ProdCode" value="{{$data['ProdCode']}}">
-                                [{{$data['ProdCode']}}] {{$data['ProdName']}}
-                                <a onclick='rowDelete("prodcode_{{$data['ProdCode']}}")' href="javascript:;"><i class="fa fa-times red"></i></a>
-                                </span>
+                            @if(empty($data['productData_json']) === false)
+                                @foreach(json_decode($data['productData_json'], true) as $idx => $row)
+                                    <span id='prodcode_{{$row['ProdCode']}}'><input type='hidden'  name='ProdCode[]' value='{{$row['ProdCode']}}'>
+                                    [{{$row['ProdCode']}}] {{$row['ProdName']}}
+                                    <a href='javascript:;' onclick="rowDelete('prodcode_{{$row['ProdCode']}}')"><i class="fa fa-times red"></i></a>&nbsp;&nbsp;&nbsp;</span>
+                                @endforeach
                             @endif
                         </span>
                     </div>
@@ -102,7 +102,7 @@
                                 @foreach(json_decode($data['couponData_json'], true) as $idx => $row)
                                     <span id='coupon_{{$row['CouponIdx']}}'><input type='hidden'  name='CouponIdx[]' id='CouponIdx{{$row['CouponIdx']}}' value='{{$row['CouponIdx']}}'>
                                         [{{$row['CouponIdx']}}] {{$row['CouponName']}}
-                                        &nbsp;<a href='javascript:;' onclick="rowDelete('coupon_{{$row['CouponIdx']}}')"><i class="fa fa-times red"></i></a>&nbsp;&nbsp;</span>
+                                        <a href='javascript:;' onclick="rowDelete('coupon_{{$row['CouponIdx']}}')"><i class="fa fa-times red"></i></a>&nbsp;&nbsp;&nbsp;</span>
                                 @endforeach
                             @endif
                         </span>
@@ -210,7 +210,7 @@
                     function addValidate()
                     {
                         if($('input:radio[name="CertConditionCcd"]:checked').val() == '685001') {
-                            if($("input[name='ProdCode']").length == 0) {
+                            if($("input[name='ProdCode[]']").length == 0) {
                                 alert('무한패스를 선택하여 주십시오.');$('#searchLecture').focus();return;
                             }
                         } else if($('input:radio[name="CertConditionCcd"]:checked').val() == '685002') {

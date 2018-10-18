@@ -110,9 +110,7 @@
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return data.CertStartDate + ' ~ ' +data.CertEndDate;
                         }},
-                    {'data' : null, 'render' : function(data,type,row,meta) {
-                        return data.ProdCode === null ? '' : '['+data.ProdCode+'] '+data.ProdName;
-                    }},
+                    {'data' : 'productData'},
                     {'data' : 'couponData'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

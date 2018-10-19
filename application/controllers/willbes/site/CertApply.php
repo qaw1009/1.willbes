@@ -6,7 +6,7 @@ class CertApply extends \app\controllers\FrontController
     protected $models = array('cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('store');
+    protected $auth_methods = array('store','checkCert');
 
 
     public function __construct()
@@ -30,17 +30,13 @@ class CertApply extends \app\controllers\FrontController
         ];
 
         $data = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
-
-
-
+        $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx,$arr_condition);
 
         $this->load->view('site/cert/cert_test', [
             'cert_idx' => $cert_idx,
-            'data' => $data
+            'data' => $data,
+            'product_list' => $product_list
         ]);
-
-
-
 
     }
 
@@ -56,4 +52,31 @@ class CertApply extends \app\controllers\FrontController
         $result = $this->certApplyFModel->addApply($this->_reqP(null));
         $this->json_result($result, '인증 신청이 완료되었습니다.', $result);
     }
+
+
+    /**
+     * 상품코드 - 인증상품 여부, 인증했는지 여부
+     * @return CI_Output
+     */
+    public function checkCertApply()
+    {
+        if (empty($this->_reqP('prod_code'))) {
+            return $this->json_error('상품정보가 존재하지 않습니다.');
+        }
+        $cert_result = $this->certApplyFModel->findCertByProduct($this->_reqP(null));
+        if(empty($cert_result)) {   //인증상품이 아닐경우
+            $this->json_result(true, '', '','');
+
+        } else {    //인증상품일 경우 인증이 완료됐는지 여부
+
+            $apply_result = $this->certApplyFModel->findApplyByCertIdx($cert_result['CertIdx']);
+            if (empty($apply_result)) {
+                return $this->json_error('인증 신청을 하신 후 구매하여 주십시오. ');
+            }
+
+            $this->json_result(true, '','',$apply_result);
+        }
+
+    }
+
 }

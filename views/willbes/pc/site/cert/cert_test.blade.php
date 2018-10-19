@@ -15,7 +15,7 @@
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="CertIdx" id="CertIdx" value="{{$cert_idx}}">
-                <input type="hidden" name="CertTypeCcd" id=CertTypeCcd" value="{{$data['CertTypeCcd']}}">
+                <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$data['CertTypeCcd']}}">
                 <table cellspacing="0" cellpadding="0" class="listTable upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
                     <tbody>
 
@@ -59,6 +59,61 @@
                 </div>
             </form>
             <!-- willbes-Layer-Box -->
+        </div>
+
+        <div class="willbes-Leclist mt40 c_both">
+            <!-- 일반행정직 -->
+            <div class="CertiWrap">
+                <div>□ 일반행정직</div>
+                <div class="CertiBox">
+                    <ul class="infoTxt NGR">
+                        <li>
+                            2018년 9급 공무원 필수아이템!<br/>
+                            노량진 수험가 화제의 스타강사 총집합! 공무원 절대 합격을 확정 짓는 최적의 해답!<br/>
+                            이제 당신이 합격할 차례입니다.<br/>
+                        </li>
+                    </ul>
+                    <table cellspacing="0" cellpadding="0" class="listTable certiTable bdt-gray under-black tx-gray">
+                        <colgroup>
+                            <col style="width: 20%;"/>
+                            <col style="width: 55%;"/>
+                            <col style="width: 25%;"/>
+                        </colgroup>
+                        <tbody>
+
+
+
+                    @foreach($product_list as $row)
+                        <tr>
+                            <td class="w-tit">
+                                교재 포함
+                            </td>
+                            <td class="w-info">
+                                <div class="off cover">
+                                    {{$row['ProdName']}}
+                                </div>
+
+                            </td>
+                            <td class="w-btn">
+                                @if($data['ApprovalStatus'] == 'Y' )
+                                    <div class="btnRed">
+                                        <button type="button" onclick="contentInfo('{{$row['CateCode']}}','{{$row['ProdCode']}}','{{$row['PackTypeCcd']}}','{{$row['LearnPatternCcd']}}' )" data-prodcode="">
+                                            <span>결제하기</span>
+                                        </button>
+                                    </div>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <div class="agreeChkBox">
+                        <input type="checkbox" id="agreeChk" name="agreeChk" value="0">
+                        <label>상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label>
+                        <div class="infoBtn"><a href="#none">이용안내 확인하기</a></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -117,5 +172,9 @@
             });
 
         });
+
+        function contentInfo(strCate,strProd,strPack,strLearn) {
+            location.href= "{{front_url('periodPackage/show')}}/cate/"+strCate+"/pack/"+strPack+"/prod-code/"+strProd
+        }
     </script>
 @stop

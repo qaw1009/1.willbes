@@ -8,6 +8,7 @@ class ProductFModel extends WB_Model
         'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'userpack_lecture' => 'vw_product_userpack_lecture',
+        'periodpack_lecture' => 'vw_product_periodpack_lecture',
         'off_lecture' => 'vw_product_off_lecture',
         'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
@@ -97,6 +98,12 @@ class ProductFModel extends WB_Model
                 //사용자패키지
                 case 'userpack_lecture' :
                     $column .= ', CateCode, SchoolYear, StudyStartDate, IsSelLecCount,SelCount, PackSaleData';
+                    break;
+
+                //기간제패키지
+                case 'periodpack_lecture' :
+                    $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+                            , SchoolYear, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
                     break;
 
                 // 교재상품

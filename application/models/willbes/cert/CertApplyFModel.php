@@ -8,6 +8,12 @@ class CertApplyFModel extends WB_Model
         parent::__construct('lms');
     }
 
+    /**
+     * 인증코드로 인증설정 정보 추출
+     * @param $cert_idx
+     * @param array $arr_condition
+     * @return mixed
+     */
     public function findCertByCertIdx($cert_idx, $arr_condition=[])
     {
 
@@ -18,11 +24,9 @@ class CertApplyFModel extends WB_Model
                         ,C.CcdName as CertTypeCcd_Name, C.CcdDesc as Sms_Content
                         ,D.CcdName as CertConditionCcd_Name
                         ,E.SiteName
-                        ,G.ProdCode,H.ProdName
-                        ,J.couponData
-                        ,J.couponData_json
+                        ,G.productData,G.productData_json
+                        ,J.couponData,J.couponData_json
                         ,if( A.IsUse=\'Y\' and current_timestamp() between A.CertStartDate and A.CertEndDate,\'Y\', \'N\') as IsCertAble 
-                        #,(select ApprovalStatus from lms_cert_apply aa where aa.CertIdx=A.CertIdx and aa.MemIdx=\''.$this->session->userdata('mem_idx').'\' and aa.IsStatus=\'Y\' and (ApprovalStatus=\'Y\' or ApprovalStatus=\'A\')) as
                         ,K.ApprovalStatus';
         $from = '
                     from 
@@ -31,8 +35,24 @@ class CertApplyFModel extends WB_Model
                         join lms_sys_code C on A.CertTypeCcd = C.Ccd and C.IsStatus=\'Y\'
                         join lms_sys_code D on A.CertConditionCcd = D.Ccd and D.IsStatus=\'Y\'
                         join lms_site E on A.SiteCode=E.SiteCode and E.IsStatus=\'Y\'
-                        left outer join lms_cert_r_product G on A.CertIdx = G.CertIdx and G.IsStatus=\'Y\'
-                        left outer join lms_product H on G.ProdCode=H.ProdCode
+                        left outer join
+                            (
+                                select 
+                                cc.CertIdx,
+                                CONCAT(\'[\', GROUP_CONCAT(
+                                  JSON_OBJECT(
+                                    \'ProdCode\', dd.ProdCode,
+                                    \'ProdName\', dd.ProdName
+                                  )
+                                ) , \']\') AS productData_json
+                                ,group_concat(CONCAT(\'[\',dd.ProdCode,\']\',dd.ProdName) separator \'<BR>\') as productData
+                                from
+                                    lms_cert_r_product cc
+                                    join lms_product dd on cc.ProdCode = dd.ProdCode and dd.IsStatus=\'Y\'
+                                where cc.IsStatus=\'Y\'
+                                group by CertIdx
+                            ) as G on A.CertIdx = G.CertIdx 
+                        
                         left outer join
                         (
                             select 
@@ -63,6 +83,41 @@ class CertApplyFModel extends WB_Model
     }
 
     /**
+     * 인증에 엮인 상품목록 추출
+     * @param $cert_idx
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listProductByCertIdx($cert_idx, $arr_condition=[])
+    {
+
+        $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['A.CertIdx' => $cert_idx, 'A.IsUse' => 'Y']]);
+
+        $column = 'straight_join
+                        A.CertTypeCcd, A.CertConditionCcd
+                        ,C.ProdCode,C.ProdName
+                        ,D.LearnPatternCcd,D.PackTypeCcd
+                        ,D1.CcdName,D2.CcdName
+                        ,F.CateCode,F.CateName
+                        ,ifnull( fn_product_saleprice_data(C.ProdCode),\'N\') as ProdPriceData';
+
+        $from = ' from 
+                        lms_cert A
+                        join lms_cert_r_product B on A.CertIdx = B.CertIdx and B.IsStatus=\'Y\'
+                        join lms_product C on B.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                        join lms_product_lecture D on C.ProdCode = D.ProdCode
+                        join lms_sys_code D1 on D.LearnPatternCcd = D1.Ccd
+                        join lms_sys_code D2 on D.PackTypeCcd = D2.Ccd
+                        left outer join lms_product_r_category E on C.ProdCode = E.ProdCode and E.IsStatus=\'Y\'
+                        left outer join lms_sys_category F on E.CateCode = F.CateCode and F.IsStatus=\'Y\'
+                    where  A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\' and D1.IsStatus=\'Y\' and D2.IsStatus=\'Y\' ';
+        $where  = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        $query = $this->_conn->query('select '. $column .$from .$where)->result_array();
+        return $query;
+    }
+
+    
+    /**
      * 신청 처리 함수
      * @param array $input
      * @return array|bool
@@ -74,14 +129,17 @@ class CertApplyFModel extends WB_Model
         try {
             $this->load->library('upload');
 
+            $certtypeccd = element('CertTypeCcd', $input);
+
             $file_path = config_item('upload_prefix_dir').'/cert_apply/'.date('Ym');
-            $file_name = element('CertTypeCcd', $input).'-'.date("YmdHis").rand(100,999);
+            $file_name = $certtypeccd.'-'.date("YmdHis").rand(100,999);
             
             //첨부자료 등록
             $upload_result = $this->upload->uploadFile('file','attachfile',$file_name,$file_path,'overwrite:false');
 
             if(is_array($upload_result) === false) {
-                throw new \Exception('파일 등록에 실패했습니다.');
+                //throw new \Exception('파일 등록에 실패했습니다.');
+                throw new \Exception($upload_result);
             }
 
             $AttachFilePath = $this->upload->_upload_url.$file_path.'/';
@@ -113,6 +171,13 @@ class CertApplyFModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
+            if($certtypeccd === '684002') { //제대군인인증일 경우 자동 승인 처리
+                $data = array_merge($data,[
+                    'ApprovalStatus' => 'Y'
+                ]);
+            }
+            //echo var_dump($data);exit;
+
             if($this->_conn->insert('lms_cert_apply',$data) === false) {
                 throw new \Exception('인증 신청에 실패했습니다.');
             }
@@ -124,6 +189,42 @@ class CertApplyFModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+
+    /**
+     * 상품코드로 해당 상품이 인증에 엮인 상품인지 파악
+     * @param $prod_code
+     */
+    public function findCertByProduct($input=[])
+    {
+        $prod_code = element('prod_code', $input);
+
+            $column = " C.CertIdx ";
+            $from = "from
+                            lms_product A 
+                            join lms_cert_r_product B on A.ProdCode = B.ProdCode
+                            join lms_cert C on B.CertIdx = C.CertIdx
+                        Where A.IsStatus='Y' and B.IsStatus='Y' and C.IsStatus='Y' and C.IsUse='Y' and (now() between C.CertStartDate and C.CertEndDate) ";
+
+            $where = $this->_conn->makeWhere(['EQ'=>['B.ProdCode'=>$prod_code]])->getMakeWhere(true);
+            $order_by = "order by C.CertIdx desc limit 1";
+            //echo var_dump('select ' . $column . $from . $where . $order_by);
+            $query = $this->_conn->query('select ' . $column . $from . $where . $order_by)->row_array();
+            return $query;
+    }
+
+    /**
+     * 인증설정코드로 인증여부 추출
+     * @param $cert_idx
+     * @return mixed
+     */
+    public function findApplyByCertIdx($cert_idx)
+    {
+        $where = $this->_conn->makeWhere(['EQ'=>['CertIdx'=>$cert_idx , 'MemIdx'=>$this->session->userdata('mem_idx')]])->getMakeWhere(true);
+        $query = $this->_conn->query("select CaIdx from lms_cert_apply where ApprovalStatus='Y'".$where ." limit 1") -> row_array();
+        //echo $this->_conn->last_query();
+        return $query;
     }
 
 

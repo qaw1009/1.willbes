@@ -74,7 +74,7 @@
             <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
         </div>
     </div>
-    <div class="lineTabs lecListTabs c_both">
+    <div class="lineTabs lecListTabs c_both bdt-m-gray">
         <ul class="tabWrap lineWrap rowlineWrap lecListWrap three mt-zero">
             <li><a href="#leclist1" class="on">즐겨찾기강좌 <span>3</span></a><span class="row-line">|</span></li>
             <li><a href="#leclist2">수강중강좌 <span>6</span></a><span class="row-line">|</span></li>

@@ -10,22 +10,15 @@
         동영상 상담실
     </div>
     <div class="willbes-Lec-Selected NG tx-gray">
-        <select id="process" name="process" title="process" class="seleProcess width24p">
-            <option selected="selected">과정</option>
-            <option value="헌법">헌법</option>
-            <option value="스파르타반">스파르타반</option>
-            <option value="공직선거법">공직선거법</option>
-        </select>
-        <select id="acad" name="acad" title="구분" class="seleAcad width24p ml1p">
-            <option selected="selected">구분</option>
+        <select id="cate" name="cate" title="카테고리" class="seleCate width50p">
+            <option selected="selected">카테고리</option>
             <option value="학원">학원</option>
             <option value="온라인">온라인</option>
         </select>
-        <select id="A" name="A" title="A" class="seleLecA width50p ml1p">
+        <select id="type" name="type" title="상담유형" class="seleType width49p ml1p">
             <option selected="selected">상담유형</option>
-            <option value="기타">기타</option>
-            <option value="강좌내용">강좌내용</option>
-            <option value="학습상담">학습상담</option>
+            <option value="헌법">헌법</option>
+            <option value="스파르타반">스파르타반</option>
         </select>
         <div class="willbes-Lec-Search NG width100p mt1p">
             <div class="inputBox width90p p_re">
@@ -40,7 +33,7 @@
         </div>
     </div>
 
-    <div class="btnBox mt20 mb20">
+    <div class="btnBox mb20">
         <ul class="f_left width100p">
             <li class="InfoBtn btn_blue"><a href="#none">문의하기</a></li>
             <li class="InfoBtn btn_white"><a href="#none">나의문의</a></li>
@@ -48,8 +41,8 @@
     </div>
     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
         <colgroup>
-            <col style="width: 13%;">
-            <col style="width: 87%;">
+            <col style="width: 70px;">
+            <col width="*">
         </colgroup>
         <tbody>
             <tr class="bg-light-blue">
@@ -61,7 +54,6 @@
                         <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                     </div>
                     <dl class="w-info tx-gray">
-                        <dt>관리자<span class="row-line">|</span></dt>
                         <dt>2018-00-00</dt>
                     </dl>
                 </td>
@@ -75,14 +67,13 @@
                         <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
                     </div>
                     <dl class="w-info tx-gray">
-                        <dt>관리자<span class="row-line">|</span></dt>
                         <dt>2018-00-00</dt>
                     </dl>
                 </td>
             </tr>
             <tr>
                 <td class="w-info"><span class="NSK lBox n1">대기</span></td>
-                <td class="w-data tx-left pl2p">
+                <td class="w-data tx-left pl20">
                     <dl class="w-info">
                         <dt>온라인<span class="row-line">|</span><span class="tx-light-blue">수강</span></dt>
                     </dl>
@@ -90,14 +81,13 @@
                         <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                     </div>
                     <dl class="w-info tx-gray">
-                        <dt>관리자<span class="row-line">|</span></dt>
                         <dt>2018-00-00</dt>
                     </dl>
                 </td>
             </tr>
             <tr>
                 <td class="w-info"><span class="NSK lBox n2">완료</span></td>
-                <td class="w-data tx-left pl2p">
+                <td class="w-data tx-left pl20">
                     <dl class="w-info">
                         <dt>온라인<span class="row-line">|</span><span class="tx-light-blue">교재</span></dt>
                     </dl>
@@ -105,7 +95,6 @@
                         <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                     </div>
                     <dl class="w-info tx-gray">
-                        <dt>관리자<span class="row-line">|</span></dt>
                         <dt>2018-00-00</dt>
                     </dl>
                 </td>

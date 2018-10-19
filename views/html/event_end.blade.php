@@ -67,7 +67,7 @@
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth">
             <span class="depth-Arrow">></span><strong>이벤트</strong>
-            <span class="depth-Arrow">></span><strong>진행중인 이벤트</strong>
+            <span class="depth-Arrow">></span><strong>마감된 이벤트</strong>
         </span>
     </div>
     <div class="Content p_re">
@@ -88,8 +88,7 @@
 
         <div class="willbes-Leclist c_both mt30">
             <div class="willbes-LecreplyList tx-gray c_both">
-                [ 총 <a class="num tx-light-blue strong" href="#none">3</a>건 ]
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <select id="campus" name="campus" title="campus" class="seleCampus f_left">
                         <option selected="selected">전체 캠퍼스</option>
                         <option value="캠퍼스1">캠퍼스1</option>
@@ -129,7 +128,7 @@
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="#none"><strong><span class="tx-light-blue">[이벤트]</span> 18년 제1차 경찰공무원(순경) 채용 시험문제 - 국어</strong></a>
+                                    <a href="{{ site_url('/home/html/event_end_read') }}"><strong><span class="tx-light-blue">[이벤트]</span> 18년 제1차 경찰공무원(순경) 채용 시험문제 - 국어</strong></a>
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>

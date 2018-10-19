@@ -40,9 +40,11 @@
 
     <a href="{{ site_url('/home/html/event_ing') }}" target="_blank">이벤트 > 진행중인 이벤트 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/event_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/event_ing_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a><br/><br/>
 
 </div>
 

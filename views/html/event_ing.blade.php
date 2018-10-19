@@ -88,8 +88,7 @@
 
         <div class="willbes-Leclist c_both mt30">
             <div class="willbes-LecreplyList tx-gray c_both">
-                [ 총 <a class="num tx-light-blue strong" href="#none">2</a>건 ]
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <select id="event" name="event" title="event" class="seleEvt f_left">
                         <option selected="selected">전체 이벤트</option>
                         <option value="이벤트1">이벤트1</option>
@@ -134,7 +133,7 @@
                                     </dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/home/html/event_read') }}"><strong><span class="tx-light-blue">[이벤트]</span> 18년 제1차 경찰공무원(순경) 채용 시험문제 - 국어</strong></a>
+                                    <a href="{{ site_url('/home/html/event_ing_read') }}"><strong><span class="tx-light-blue">[이벤트]</span> 18년 제1차 경찰공무원(순경) 채용 시험문제 - 국어</strong></a>
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>

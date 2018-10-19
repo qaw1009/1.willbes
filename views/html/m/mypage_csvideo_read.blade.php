@@ -9,39 +9,9 @@
         </button>    
         동영상 상담실
     </div>
-    <div class="willbes-Lec-Selected NG tx-gray">
-        <select id="process" name="process" title="process" class="seleProcess width24p">
-            <option selected="selected">과정</option>
-            <option value="헌법">헌법</option>
-            <option value="스파르타반">스파르타반</option>
-            <option value="공직선거법">공직선거법</option>
-        </select>
-        <select id="acad" name="acad" title="구분" class="seleAcad width24p ml1p">
-            <option selected="selected">구분</option>
-            <option value="학원">학원</option>
-            <option value="온라인">온라인</option>
-        </select>
-        <select id="A" name="A" title="A" class="seleLecA width50p ml1p">
-            <option selected="selected">상담유형</option>
-            <option value="기타">기타</option>
-            <option value="강좌내용">강좌내용</option>
-            <option value="학습상담">학습상담</option>
-        </select>
-        <div class="willbes-Lec-Search NG width100p mt1p mb30">
-            <div class="inputBox width90p p_re">
-                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="제목 및 내용 검색" maxlength="30">
-                <button type="submit" onclick="" class="search-Btn">
-                    <span class="hidden">검색</span>
-                </button>
-            </div>
-            <div class="resetBtn width10p">
-                <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
-            </div>
-        </div>
-    </div>
 
     <div class="lineTabs lecListTabs c_both">
-        <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+        <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
             <tbody>
                 <tr class="list bg-light-gray">
                     <td class="w-data tx-left">

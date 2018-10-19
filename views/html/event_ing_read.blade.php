@@ -94,7 +94,7 @@
                         <thead>
                             <tr><th colspan="5" class="w-list tx-left pl20"><span class="w-select tx-blue">[이벤트]</span> <strong>합격생 중교 입교 버스 든든 이벤트</strong></th></tr>
                             <tr>
-                                <td class="w-type pl20">신림<span class="row-line">|</span></td>
+                                <td class="w-type">신림<span class="row-line">|</span></td>
                                 <td class="w-area tx-left pl20">회원+비회원<span class="row-line">|</span></td>
                                 <td class="w-area tx-left pl20">[접수기간] 2018-00-00 ~ 2018-00-00<span class="row-line">|</span></td>
                                 <td class="w-date">2018-00-00<span class="row-line">|</span></td>
@@ -187,7 +187,7 @@
                             </tr>
                         </thead>
                     </table>
-                    <table cellspacing="0" cellpadding="0" class="listTable evtTable upper-gray upper-black bdb-gray tx-gray mt50">
+                    <table cellspacing="0" cellpadding="0" class="listTable evtTable upper-gray upper-black bdb-gray tx-gray mt30">
                         <colgroup>
                             <col style="width: 95px;">
                             <col style="width: 90px;">

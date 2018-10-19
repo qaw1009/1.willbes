@@ -1,4 +1,4 @@
-<div id="Footer" class="widthAutoFull NGR c_both mb30">
+<div id="Footer" class="widthAutoFull NGR c_both pb30">
     <div class="ft-Link">
         <ul>
             <li><a href="#none">고객센터</a></li>

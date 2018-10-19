@@ -80,7 +80,7 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
             A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
@@ -137,6 +137,17 @@ class EventLectureModel extends WB_Model
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
 
+            //이벤트에 등록된 배너 정보 조회
+            $arr_condition = [
+                'EQ' => [
+                    'BIdx' => element('banner_idx', $input)
+                ]
+            ];
+            $banner_row = $this->findEvent('BIdx', $arr_condition);
+            if (count($banner_row) > 0) {
+                throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
+            }
+
             $set_option_ccd = implode(',', $option_ccds);
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
@@ -160,7 +171,7 @@ class EventLectureModel extends WB_Model
                 'CampusCcd' => element('campus_ccd', $input),
                 'RequstType' => element('requst_type', $input),
                 'TakeType' => element('take_type', $input),
-                'BIdx' => element('b_idx', $input),
+                'BIdx' => element('banner_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
@@ -243,12 +254,12 @@ class EventLectureModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
+                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -308,8 +319,20 @@ class EventLectureModel extends WB_Model
             $el_idx = element('el_idx', $input);
             $evnet_category_data = element('cate_code', $input);
 
-            // 기존 배너 기본정보 조회
-            $row = $this->findPopup('ElIdx', ['EQ' => ['ElIdx' => $el_idx]]);
+            //이벤트에 등록된 배너 정보 조회
+            $arr_condition = [
+                'EQ' => [
+                    'BIdx' => element('banner_idx', $input)
+                ],
+                'NOT' => ['ElIdx' => $el_idx]
+            ];
+            $banner_row = $this->findEvent('BIdx', $arr_condition);
+            if (count($banner_row) > 0) {
+                throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
+            }
+
+            //정보 조회
+            $row = $this->findEvent('ElIdx', ['EQ' => ['ElIdx' => $el_idx]]);
             if (count($row) < 1) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
@@ -340,6 +363,7 @@ class EventLectureModel extends WB_Model
                 'CampusCcd' => element('campus_ccd', $input),
                 'RequstType' => element('requst_type', $input),
                 'TakeType' => element('take_type', $input),
+                'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
@@ -401,11 +425,21 @@ class EventLectureModel extends WB_Model
      * @param array $arr_condition
      * @return array
      */
-    public function findPopup($column = '*', $arr_condition = [])
+    public function findEvent($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
         return $this->_conn->getFindResult($this->_table['event_lecture'], $column, $arr_condition);
+    }
+
+    public function getFindEventArray($arr_condition = [])
+    {
+        $column = 'ElIdx, SiteCode, BIdx';
+        $arr_condition['EQ']['IsStatus'] = 'Y';
+
+        $data = $this->_conn->getListResult($this->_table['event_lecture'], $column, $arr_condition);
+        return $data;
+        /*return array_pluck($data, 'BIdx', '');*/
     }
 
     /**
@@ -416,7 +450,7 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.BIdx,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,

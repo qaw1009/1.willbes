@@ -31,6 +31,9 @@
                         </select>
                         <select class="form-control mr-5" id="sc_professor" name="sc_professor">
                             <option value="">교수</option>
+                            @foreach($professor as $row)
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if(isset($_GET['sc_professor']) && $_GET['sc_professor'] == $row['ProfIdx']) selected @endif>{{ $row['wProfName'] }}</option>
+                            @endforeach
                         </select>
                         <select class="form-control mr-5" id="sc_year" name="sc_year">
                             <option value="">연도</option>
@@ -167,6 +170,7 @@
             $search_form.find('#sc_cateD1').chained('#search_site_code');
             $search_form.find('#sc_cateD2').chained('#sc_cateD1');
             $search_form.find('#sc_subject').chained('#search_site_code');
+            $search_form.find('#sc_professor').chained('#search_site_code');
 
             // 검색 초기화
             $('#searchInit').on('click', function () {
@@ -194,25 +198,26 @@
                     }}
                 ]
             });
-            //datatableSearching();
+            datatableSearching();
         });
 
-        // // DataTable Search
-        // function datatableSearching() {
-        //     $datatable
-        //         .search($search_form.find('#sc_fi').val())
-        //         .column(3).search($search_form.find('#search_site_code').val())
-        //         .column(4).search($search_form.find('#sc_cateD1').val())
-        //         .column(5).search($search_form.find('#sc_cateD2').val())
-        //         .column(6).search($search_form.find('#sc_subject').val())
-        //         .column(10).search($search_form.find('#sc_use').val())
-        //         .draw();
-        //
-        //     // NO필드 처리
-        //     var len = $list_table.find('tbody > tr').length;
-        //     $list_table.find('tbody > tr').each(function () {
-        //         $(this).find('td:eq(1)').text(len--);
-        //     });
-        // }
+        // DataTable Search
+        function datatableSearching() {
+            // $datatable
+            //     .search($search_form.find('#sc_fi').val())
+            //     .column(2).search($search_form.find('#search_site_code').val())
+            //     .column(3).search($search_form.find('#sc_cateD1').val())
+            //     .column(4).search($search_form.find('#sc_cateD2').val())
+            //     .column(6).search($search_form.find('#sc_subject').val())
+            //     .column(7).search($search_form.find('#sc_subject').val())
+            //     .column(10).search($search_form.find('#sc_use').val())
+            //     .draw();
+            //
+            // // NO필드 처리
+            // var len = $list_table.find('tbody > tr').length;
+            // $list_table.find('tbody > tr').each(function () {
+            //     $(this).find('td:eq(1)').text(len--);
+            // });
+        }
     </script>
 @stop

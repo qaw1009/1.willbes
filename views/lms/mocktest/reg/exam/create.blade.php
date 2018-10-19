@@ -94,9 +94,9 @@
                         <td class="form-inline">
                             <select class="form-control mr-5" name="QuestionOption">
                                 <option value="">보기형식</option>
-                                <option value="S" @if($method == 'PUT' && $data['QuestionOption'] == 'S') selected @endif>객관식(단일정답)</option>
-                                <option value="M" @if($method == 'PUT' && $data['QuestionOption'] == 'M') selected @endif>객관식(복수정답)</option>
-                                <option value="J" @if($method == 'PUT' && $data['QuestionOption'] == 'J') selected @endif>주관식</option>
+                                @foreach($exOpt as $k => $v)
+                                    <option value="{{$k}}" @if($method == 'PUT' && $k == $data['QuestionOption']) selected @endif>{{$v}}</option>
+                                @endforeach
                             </select>
                             <select class="form-control mr-5" name="AnswerNum">
                                 <option value="">보기갯수</option>
@@ -161,9 +161,9 @@
                                 <option value="{{$n}}" @if($loop->index == '20') selected @endif>{{$n}}개</option>
                             @endforeach
                         </select>
-                        <button class="btn btn-sm btn-primary ml-5" id="act-addRow">필드추가</button>
-                        <button class="btn btn-sm btn-primary ml-5" id="act-sortRow">정렬변경</button>
-                        <button class="btn btn-sm btn-success ml-5" id="act-callRow">문항호출</button>
+                        <button class="btn btn-sm btn-primary" id="act-addRow">필드추가</button>
+                        <button class="btn btn-sm btn-primary" id="act-sortRow">정렬변경</button>
+                        <button class="btn btn-sm btn-success" id="act-callRow">문항호출</button>
                     </div>
                 </div>
                 <form class="form-table" id="regi_sub_form" name="regi_sub_form" method="POST" onsubmit="return false;" novalidate>

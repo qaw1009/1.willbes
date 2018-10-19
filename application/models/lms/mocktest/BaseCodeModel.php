@@ -68,10 +68,11 @@ class BaseCodeModel extends WB_Model
      */
     public function getMockKindAll($isUseChk=true, $in=array())
     {
+        $sysCode_kind = $this->config->item('sysCode_kind', 'mock');
         if($isUseChk)
-            $where = array('GroupCcd' => MOCK_KIND_SYS_CODE, 'IsStatus' => 'Y', 'IsUse' => 'Y');
+            $where = array('GroupCcd' => $sysCode_kind, 'IsStatus' => 'Y', 'IsUse' => 'Y');
         else
-            $where = array('GroupCcd' => MOCK_KIND_SYS_CODE, 'IsStatus' => 'Y');
+            $where = array('GroupCcd' => $sysCode_kind, 'IsStatus' => 'Y');
 
         if ($in) $this->_conn->where_in('Ccd', $in);
 

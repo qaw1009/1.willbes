@@ -15,7 +15,6 @@ class BaseCode extends \app\controllers\BaseController
     public function __construct()
     {
         parent::__construct();
-        define('MOCK_KIND_SYS_CODE', 686); // 모의고사 직렬의 운영코드 그룹값
     }
 
 
@@ -201,10 +200,13 @@ class BaseCode extends \app\controllers\BaseController
      *
      * Input  $_GET['siteCode'] OR null
      *        $_GET['single'] OR null : 다중검색(변수없거나 N), 단일검색(Y) 여부
-     *        $_GET['reg'] OR null : 모의고사 기본정보 > 문제영역관리에 등록된 데이터만 불러올지 여부(lms_Mock_R_Category DB)
-     * Output ($moLink[] OR $moLink) AND "카테고리>직렬>과목" 문자열
-     *        $moLink : lms_Mock_R_Subject DB의 MrsIdx
-     *        부모창 <div id="selected_category"> 안에 생성
+     *        $_GET['reg'] : 1.모의고사 기본정보 > 문제영역관리 - null
+     *                       2.모의고사 등록 > 과목별 문제등록 - Y
+     * Output 부모창 <div id="selected_category"> 안에 생성
+     *        1.모의고사 기본정보 > 문제영역관리 - $moLink[] AND "카테고리>직렬>과목" 문자열
+     *                                           $moLink[] : lms_Mock_R_Subject의 MrsIdx
+     *        2.모의고사 등록 > 과목별문제등록 - $moLink AND "카테고리>직렬>과목 - 문제영역명" 문자열
+     *                                         $moLink : lms_Mock_R_Category의 MrcIdx
      */
     public function moCate()
     {

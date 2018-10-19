@@ -3,8 +3,6 @@
  * ======================================================================
  * 모의고사등록 > 과목별 문제등록
  * ======================================================================
- *
- * 보기형식 - S:객관식(단일정답), M:객관식(복수정답), J:주관식
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -25,20 +23,17 @@ class RegExam extends \app\controllers\BaseController
      */
     public function index()
     {
-        $cateList = $this->categoryModel->getCategoryArray();
-        $cateD1 = $cateD2 = array();
-        foreach ($cateList as $it) {
-            if ($it['CateDepth'] == '1') $cateD1[] = $it;
-            else $cateD2[] = $it;
-        }
+        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $cateD2 = $this->mockCommonModel->getMockKind();
 
         list($data, $modata) = $this->regExamModel->list();
 
         $this->load->view('mocktest/reg/exam/index', [
-            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateList[0]['SiteCode'],
+            'siteCodeDef' => $this->input->get('search_site_code') ? $this->input->get('search_site_code') : $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
+            'professor' => $this->searchProfessorModel->professorList('', '', '', false),
             'data' => $data,
             'moData' => $modata,
         ]);
@@ -62,6 +57,7 @@ class RegExam extends \app\controllers\BaseController
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => '',
             'method' => 'POST',
+            'exOpt' => $this->mockCommonModel->getSysCode($this->config->item('syscode_exOption', 'mock')),
         ]);
     }
 
@@ -78,7 +74,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
+            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -104,7 +100,7 @@ class RegExam extends \app\controllers\BaseController
      */
     public function edit($param = [])
     {
-        list($data, $qData, $moCate_name, $moCate_isUse, $professor) = $this->regExamModel->getExamBase($param[0]);
+        list($data, $qData, $moCate_name, $moCate_isUse, $professor, $areaList) = $this->regExamModel->getExamBase($param[0]);
         if (!$data) {
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
@@ -113,11 +109,13 @@ class RegExam extends \app\controllers\BaseController
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => $data['SiteCode'],
             'method' => 'PUT',
+            'exOpt' => $this->mockCommonModel->getSysCode($this->config->item('syscode_exOption', 'mock')),
             'data' => $data,
             'qData' => $qData,
             'moCate_name' => $moCate_name,
             'moCate_isUse' => $moCate_isUse,
             'professor' => $professor,
+            'areaList' => $areaList,
             'adminName' => $this->mockCommonModel->getAdminNames(),
             'isCopy' => ( isset($param[1]) && $param[1] == 'copy' ) ? true : false,
         ]);
@@ -134,7 +132,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
+            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],

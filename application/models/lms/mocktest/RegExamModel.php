@@ -13,6 +13,10 @@ class RegExamModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'mockExamBase' => 'lms_mock_paper',
         'mockExamQuestion' => 'lms_mock_questions',
+        'mockSubject' => 'lms_mock_r_subject',
+        'mockAreaCate' => 'lms_Mock_R_Category',
+        'mockArea' => 'lms_mock_area',
+        'mockAreaList' => 'lms_mock_area_list',
     ];
 
     public function __construct()
@@ -39,7 +43,7 @@ class RegExamModel extends WB_Model
 
             $data = array(
                 'SiteCode' => $this->input->post('siteCode'),
-                'MrsIdx' => $this->input->post('moLink'),
+                'MrcIdx' => $this->input->post('moLink'),
                 'ProfIdx' => $this->input->post('ProfIdx'),
                 'PapaerName' => $this->input->post('PapaerName', true),
                 'Year' => $this->input->post('Year'),
@@ -102,7 +106,7 @@ class RegExamModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             );
             if($this->input->post('isCopy')) {
-                $data['MrsIdx'] = $this->input->post('moLink');
+                $data['MrcIdx'] = $this->input->post('moLink');
             }
             $where = array('MpIdx' => $this->input->post('idx'));
 
@@ -141,13 +145,13 @@ class RegExamModel extends WB_Model
         // 등록된 카테고리정보 로드
         $moCate_name = $moCate_isUse = array();
         $condition = [
-            'EQ' => ['MS.MrsIdx' => $data['MrsIdx']]
+            'EQ' => ['MC.MrcIdx' => $data['MrcIdx']]
         ];
         $moCate = $this->mockCommonModel->moCateListAll($condition, '', '', false, true);
         if(empty($moCate)) return false;
 
-        $moCate_name = array_column($moCate, 'CateRouteName', 'MrsIdx');
-        $moCate_isUse = array_column($moCate, 'BaseIsUse', 'MrsIdx');
+        $moCate_name = array_column($moCate, 'CateRouteName', 'MrcIdx');
+        $moCate_isUse = array_column($moCate, 'BaseIsUse', 'MrcIdx');
 
 
         // 등록된 교수정보 로드
@@ -165,6 +169,25 @@ class RegExamModel extends WB_Model
             );
         }
 
-        return array($data, $qData, $moCate_name, $moCate_isUse, $professor);
+        // 문제영역 로드
+        $areaList = $this->getAreaList($data['MrcIdx']);
+
+        return array($data, $qData, $moCate_name, $moCate_isUse, $professor, $areaList);
+    }
+
+    /**
+     *  문제영역 로드 (lms_mock_area_list)
+     */
+    public function getAreaList($idx)
+    {
+        $sql = "
+            SELECT MC.*
+            FROM {$this->_table['mockAreaCate']} AS MC
+            JOIN {$this->_table['mockArea']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
+            JOIN {$this->_table['mockAreaList']} AS ML ON MA.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y' AND ML.IsUse = 'Y'
+            WHERE MC.MrcIdx = $idx AND MC.IsStatus = 'Y'
+            ORDER BY ML.OrderNum ASC";
+
+        return $this->_conn->query($sql)->result_array();
     }
 }

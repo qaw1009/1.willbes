@@ -43,7 +43,9 @@
                 <table id="_list_ajax_table" class="table table-striped table-bordered">
                     <thead class="bg-white-gray">
                     <tr>
-                        <th class="text-center">@if(!$isSingle)<input type="checkbox" id="_is_all" class="flat" value="Y">@endif</th>
+                        <th class="text-center">
+                            {{--@if(!$isSingle)<input type="checkbox" id="_is_all" class="flat" value="Y">@endif--}}
+                        </th>
                         <th>카테고리 정보</th>
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
@@ -64,6 +66,7 @@
                 var $ori_selected_data = {};
 
                 $(document).ready(function() {
+                    var isReg = '{{ $isReg }}';       // 기본정보 > 문제영역관리에 등록된 카테고리
                     var isSingle = '{{ $isSingle }}'; // 단일, 다중선택 여부
 
                     // 페이징 번호에 맞게 일부 데이터 조회
@@ -82,11 +85,12 @@
                         },
                         columns: [
                             {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                                    var code = row.MrsIdx;
+                                    var code = (isReg) ? row.MrcIdx : row.MrsIdx;
                                     var checked = ($ori_selected_data.hasOwnProperty(code) === true) ? 'checked="checked"' : '';
                                     var inputType = (isSingle) ? 'radio' : 'checkbox';
+                                    var disable = (!isReg && row.IsExist > 0 && !checked) ? 'disabled' : '';
 
-                                    return '<input type="'+inputType+'" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '>';
+                                    return '<input type="'+inputType+'" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + disable + '>';
                             }},
                             {'data' : 'CateRouteName'},
                             {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {

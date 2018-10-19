@@ -9,3 +9,9 @@ $config['lms'] = array(
     'head_title' => '미래를 준비는 사람들! : willbes.net',
     'home_url' => '/home/main',
 );
+
+// 모의고사
+$config['mock'] = array(
+    'sysCode_kind' => 686,     // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)
+    'syscode_exOption' => 687, // 모의고사 문제등록옵션 운영코드 그룹값 (lms_sys_code)
+);

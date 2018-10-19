@@ -94,9 +94,9 @@
                         <td class="form-inline">
                             <select class="form-control mr-5" name="QuestionOption">
                                 <option value="">보기형식</option>
-                                @foreach($exOpt as $k => $v)
-                                    <option value="{{$k}}" @if($method == 'PUT' && $k == $data['QuestionOption']) selected @endif>{{$v}}</option>
-                                @endforeach
+                                <option value="S" @if($method == 'PUT' && $data['QuestionOption'] == 'S') selected @endif>객관식(단일정답)</option>
+                                <option value="M" @if($method == 'PUT' && $data['QuestionOption'] == 'M') selected @endif>객관식(복수정답)</option>
+                                <option value="J" @if($method == 'PUT' && $data['QuestionOption'] == 'J') selected @endif>주관식</option>
                             </select>
                             <select class="form-control mr-5" name="AnswerNum">
                                 <option value="">보기갯수</option>
@@ -193,13 +193,18 @@
                         <tr data-chapter-idx="">
                             <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="" value=""></td>
                             <td class="text-center">
-                                <select class="form-control" name="">
-                                    <option value=""></option>
+                                <select class="form-control" name="MalIdx">
+                                    <option value="">선택</option>
+                                    @foreach($areaList as $it)
+                                        <option value="{{$it['MalIdx']}}">{{$it['AreaName']}}</option>
+                                    @endforeach
                                 </select>
                             </td>
                             <td class="text-center">
                                 <select class="form-control" name="QuestionOption">
-                                    <option value=""></option>
+                                    <option value="S">객관식(단일정답)</option>
+                                    <option value="M">객관식(복수정답)</option>
+                                    <option value="J">주관식</option>
                                 </select>
                             </td>
                             <td class="text-center">
@@ -208,11 +213,12 @@
                             <td class="text-center">
                                 <input type="file" class="mt-20" name=""><br>
                             </td>
-                            <td class="text-center">
-                                <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>1</span><br>
-                                <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>2</span><br>
-                                <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>3</span><br>
-                                <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>4</span><br>
+                            <td class="text-center right-answer">
+                                <span><input type="checkbox" class="flat" name="RightAnswer[]" value="1"> 1<br></span>
+                                <span><input type="checkbox" class="flat" name="RightAnswer[]" value="2"> 2<br></span>
+                                <span><input type="checkbox" class="flat" name="RightAnswer[]" value="3"> 3<br></span>
+                                <span><input type="checkbox" class="flat" name="RightAnswer[]" value="4"> 4<br></span>
+                                <span><input type="checkbox" class="flat" name="RightAnswer[]" value="5"> 5<br></span>
                             </td>
                             <td class="text-center"><input type="text" class="form-control" name="Scoring" value=""></td>
                             <td class="text-center">
@@ -233,13 +239,18 @@
                             <tr data-chapter-idx="{{ $row['MqIdx'] }}">
                                 <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="" value=""></td>
                                 <td class="text-center">
-                                    <select class="form-control" name="">
-                                        <option value=""></option>
+                                    <select class="form-control" name="MalIdx">
+                                        <option value="">선택</option>
+                                        @foreach($areaList as $it)
+                                            <option value="{{$it['MalIdx']}}" @if($method == 'PUT' && $it['MalIdx'] == 0) selected @endif>{{$it['AreaName']}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <td class="text-center">
                                     <select class="form-control" name="QuestionOption">
-                                        <option value=""></option>
+                                        <option value="S" @if($qData['QuestionOption'] == 'S') selected @endif>객관식(단일정답)</option>
+                                        <option value="M" @if($qData['QuestionOption'] == 'M') selected @endif>객관식(복수정답)</option>
+                                        <option value="J" @if($qData['QuestionOption'] == 'J') selected @endif>주관식</option>
                                     </select>
                                 </td>
                                 <td class="text-center">
@@ -248,11 +259,12 @@
                                 <td class="text-center">
                                     <input type="file" class="mt-20" name=""><br>
                                 </td>
-                                <td class="text-center">
-                                    <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>1</span><br>
-                                    <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>2</span><br>
-                                    <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>3</span><br>
-                                    <input type="checkbox" class="flat" name="RightAnswer" value=""> <span>4</span><br>
+                                <td class="text-center right-answer">
+                                    <span><input type="checkbox" class="flat" name="RightAnswer[]" value="1" @if($qData['RightAnswer'] == '1') checked @endif> 1<br></span>
+                                    <span><input type="checkbox" class="flat" name="RightAnswer[]" value="2" @if($qData['RightAnswer'] == '2') checked @endif> 2<br></span>
+                                    <span><input type="checkbox" class="flat" name="RightAnswer[]" value="3" @if($qData['RightAnswer'] == '3') checked @endif> 3<br></span>
+                                    <span><input type="checkbox" class="flat" name="RightAnswer[]" value="4" @if($qData['RightAnswer'] == '4') checked @endif> 4<br></span>
+                                    <span><input type="checkbox" class="flat" name="RightAnswer[]" value="5" @if($qData['RightAnswer'] == '5') checked @endif> 4<br></span>
                                 </td>
                                 <td class="text-center"><input type="text" class="form-control" name="Scoring" value=""></td>
                                 <td class="text-center">
@@ -331,6 +343,39 @@
             });
 
 
+            // 서브테이블 문제등록옵션
+            var exOpt = $regi_form.find('[name="QuestionOption"]').val();
+            var exOptS = (exOpt == 'M') ? ['S','M'] : [exOpt];
+            $regi_sub_form.find('[name="QuestionOption"] option').each(function () {
+                if( $.inArray($(this).attr('value'), exOptS) === -1 ) $(this).remove();
+            });
+
+            // 서브테이블 정답보기 갯수
+            var exNum = $regi_form.find('[name="AnswerNum"]').val();
+            $regi_sub_form.find('.right-answer > span').each(function (i,v) {
+                if(i >= exNum) $(this).remove();
+            });
+
+            // 서브테이블 정답보기 오류체크 (객관식(단수) 1개, 객관식(복수) 2개, 주관식 비활성)
+            if(exOpt == 'J') {
+                $regi_sub_form.find('.right-answer input').each(function () {
+                    $(this).prop('disabled', true);
+                });
+            }
+            else {
+                $regi_sub_form.on('ifChecked', '[name="RightAnswer[]"]', function () {
+                    var subExOpt = $(this).closest('tr').find('[name="QuestionOption"]').val();
+                    var rightNum = (subExOpt == 'M') ? 2 : 1;
+
+                    if($(this).closest('.right-answer').find('[name="RightAnswer[]"]:checked').length > rightNum) {
+                        $(this).delay(1000).iCheck('uncheck').iCheck('update');
+                        alert('객관식'+ ((subExOpt == 'M') ? '(복수)':'(단일)') +' 정답은 '+ rightNum +'개만 선택가능합니다.');
+                    }
+                });
+            }
+
+
+
             // 문항정보필드 처리을 위한 초기화작업
             var chapterExist = [];
             var chapterDel = [];
@@ -376,6 +421,17 @@
             // 문항정보필드 등록,수정
             $regi_sub_form.submit(function () {
                 if( $regi_sub_form.find('tbody tr').length < 1 ) { alert('필드를 먼저 추가해 주세요'); return false; }
+
+                // 배점합계 체크
+                var totalScore = 0;
+                $regi_sub_form.find('[name="Scoring"]').each(function () {
+                    totalScore += parseInt($(this).val());
+                });
+                if(totalScore !== parseInt($regi_form.find('[name="TotalScore"]').val())) {
+                    alert('문항별 배점의 합과 총점이 일치하지 않습니다.'); return false;
+                }
+
+
 
                 var chapterTotal = [];
                 cList.find('tr').each(function () { chapterTotal.push($(this).data('chapter-idx')); });

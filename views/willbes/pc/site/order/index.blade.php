@@ -151,7 +151,7 @@
                                 <dt>
                                     <span class="u-point tx-pink">{{ number_format($results['point']) }}P 보유</span>
                                     <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
-                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint chk_price optional" pattern="numeric" data-validate-minmax="-1" value="" placeholder="0" maxlength="10"> P 차감
+                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint optional chk_price" pattern="numeric" data-validate-minmax="-1" value="" placeholder="0" maxlength="10"> P 차감
                                 </dt>
                             </dl>
                         </div>
@@ -211,8 +211,8 @@
                                     <td class="w-info tx-left pl20">
                                         <div class="inputBox Add p_re">
                                             <div class="searchadd item">
-                                                <input type="text" id="zipcode" name="zipcode" title="우편번호" required="required" readonly="readonly" class="iptAdd bg-gray" maxlength="6">
-                                                <button type="button" onclick="searchPost('SearchPost', 'zipcode', 'addr1');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
+                                                <input type="text" id="zipcode" name="zipcode" title="우편번호" required="required" readonly="readonly" class="iptAdd bg-gray chk_price" maxlength="6">
+                                                <button type="button" onclick="searchPost('SearchPost', 'zipcode', 'addr1', 'Y');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
                                                     <span>우편번호 찾기</span>
                                                 </button>
                                                 <span class="btnAdd underline"><a href="#none" id="btn_my_addr_regist">[나의 배송 주소록에 등록하기]</a></span>
@@ -302,10 +302,9 @@
                                                 <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
                                             @endif
                                         </dt>
-                                        {{-- TODO : 도서산간 배송비 관련 부분 주석 (추후 개발 필요)
                                         <dt>
-                                            <div class="caution-txt">회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 {{ number_format(config_app('DeliveryAddPrice')) }}원이 추가</span>로 적용 되었습니다.</div>
-                                        </dt>--}}
+                                            <div id="delivery_add_price_caution_txt" class="caution-txt"></div>
+                                        </dt>
                                     </dl>
                                 </td>
                             </tr>
@@ -588,11 +587,36 @@
                 var total_prod_order_price = parseInt('{{ $results['total_prod_order_price'] }}');      // 전체상품주문금액
                 var delivery_price = parseInt('{{ $results['delivery_price'] }}');     // 배송료
                 var point_disc_price = parseInt($regi_form.find('input[name="use_point"]').val()) || 0;        // 포인트 사용금액
-                var total_coupon_disc_price = 0;      // 쿠폰할인금액
+
+                // 쿠폰할인금액 계산
+                var total_coupon_disc_price = 0;
                 $regi_form.find('.chk_coupon').each(function() {
                     total_coupon_disc_price += parseInt($(this).data('coupon-disc-price'));
                 });
-                var total_pay_price = total_prod_order_price - total_coupon_disc_price - point_disc_price + delivery_price;  // 실제결제금액
+
+                // 추가 배송료 계산
+                var delivery_add_price = 0;
+                if (delivery_price > 0) {
+                    var zipcode = $regi_form.find('input[name="zipcode"]').val().substr(0, 2);
+                    var chk_zipcode = '{{ implode(',', config_item('delivery_add_price_charge_zipcode')) }}';
+                    var caution_txt = '';
+
+                    $.each(chk_zipcode.split(','), function(k, v) {
+                        if (v === zipcode) {
+                            delivery_add_price = parseInt('{{ $__cfg['DeliveryAddPrice'] }}');
+                            caution_txt = '회원님께서는 <span class="tx-red">도서산간, 제주도 배송지 대상자로 배송료 ' + addComma(delivery_add_price) + '원이 추가</span>로 적용 되었습니다.';
+                            return false;
+                        }
+                    });
+
+                    $regi_form.find('#delivery_add_price_caution_txt').html(caution_txt);
+                }
+
+                // 배송료 + 추가 배송료
+                delivery_price = delivery_price + delivery_add_price;
+
+                // 실제결제금액
+                var total_pay_price = total_prod_order_price - total_coupon_disc_price - point_disc_price + delivery_price;
 
                 // 금액표기
                 $regi_form.find('#total_coupon_disc_price').html(addComma(total_coupon_disc_price));
@@ -712,8 +736,16 @@
                     $regi_form.find('input[name="receiver_tel2"]').val('');
                     $regi_form.find('input[name="receiver_tel3"]').val('');
                 }
+
+                // 추가 배송료 추가 여부 확인을 위해 이벤트 발생
+                $regi_form.find('input[name="zipcode"]').trigger('change');
             });
-            $regi_form.find('input[name="addr_type"]:checked').trigger('click');
+
+            // 배송 주소지 관련 로드 이벤트 발생
+            if ($regi_form.find('input[name="zipcode"]').length > 0) {
+                // 배송 주소지 디폴트 셋팅
+                $regi_form.find('input[name="addr_type"]:checked').trigger('click');
+            }
 
             // 배송메모 바이트수 계산
             $regi_form.find('input[name="delivery_memo"]').on('change keyup input', function() {

@@ -65,7 +65,7 @@ class Payment extends \app\controllers\FrontController
 
         // 장바구니 데이터 가공 (전체결제금액 리턴)
         $results = $this->orderFModel->getMakeCartReData(
-            'pay', element('cart_type', $arr_input), $cart_rows, element('coupon_detail_idx', $arr_input, []), element('use_point', $arr_input)
+            'pay', element('cart_type', $arr_input), $cart_rows, element('coupon_detail_idx', $arr_input, []), element('use_point', $arr_input, 0), element('zipcode', $arr_input, '')
         );
 
         if (is_array($results) === false) {
@@ -90,7 +90,7 @@ class Payment extends \app\controllers\FrontController
             'order_prod_price' => $results['total_prod_order_price'],
             'req_pay_price' => $results['total_pay_price'],
             'delivery_price' => $results['delivery_price'],
-            'delivery_add_price' => 0,
+            'delivery_add_price' => $results['delivery_add_price'],
             'coupon_disc_price' => $results['total_coupon_disc_price'],
             'use_point' => $results['use_point'],
             'save_point' => $results['total_save_point'],

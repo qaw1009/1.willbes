@@ -81,7 +81,7 @@
                         <div class="inputBox Add p_re">
                             <div class="searchadd item">
                                 <input type="text" id="_zipcode" name="zipcode" title="우편번호" required="required" readonly="readonly" class="iptAdd bg-gray" maxlength="6">
-                                <button type="button" onclick="searchPost('_SearchPost', '_zipcode', '_addr1');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
+                                <button type="button" onclick="searchPost('_SearchPost', '_zipcode', '_addr1', 'N');" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
                                     <span>우편번호 찾기</span>
                                 </button>
                                 <div id="_SearchPost" class="willbes-Layer-Black">
@@ -173,6 +173,9 @@
                 $parent_regi_form.find('input[name="zipcode"]').val(data.ZipCode);
                 $parent_regi_form.find('input[name="addr1"]').val(data.Addr1);
                 $parent_regi_form.find('input[name="addr2"]').val(data.Addr2);
+
+                // 추가 배송료 추가 여부 확인을 위해 이벤트 발생
+                $parent_regi_form.find('input[name="zipcode"]').trigger('change');
 
                 closeWin('{{ $ele_id }}');
             }

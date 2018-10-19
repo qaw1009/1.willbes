@@ -33,7 +33,7 @@ class Order extends \app\controllers\FrontController
         $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $this->_site_code, null, $sess_cart_idx, null, null, $is_visit_pay);
 
         // 장바구니 데이터 가공 (전체주문금액, 배송비, 적립예정포인트 계산 등 필요 데이터 가공)
-        $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, null, null, $is_visit_pay);
+        $results = $this->orderFModel->getMakeCartReData('order', $cart_type, $cart_rows, [], 0, '', $is_visit_pay);
         if (is_array($results) === false) {
             show_alert($results, 'back');
         }

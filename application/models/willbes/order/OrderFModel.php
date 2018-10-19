@@ -20,10 +20,11 @@ class OrderFModel extends BaseOrderFModel
      * @param array $cart_rows [유효한 장바구니 데이터]
      * @param array $arr_coupon_detail_idx [장바구니별 적용된 사용자쿠폰 식별자]
      * @param int $use_point [결제 사용 포인트]
+     * @param string $zipcode [배송지 주소 우편번호 (추가 배송료 계산용)]
      * @param string $is_visit_pay [방문결제여부]
      * @return array|bool|string
      */
-    public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0, $is_visit_pay = 'N')
+    public function getMakeCartReData($make_type, $cart_type, $cart_rows = [], $arr_coupon_detail_idx = [], $use_point = 0, $zipcode = '', $is_visit_pay = 'N')
     {
         if (empty($cart_rows) === true) {
             return '장바구니 데이터가 없습니다.';
@@ -38,6 +39,7 @@ class OrderFModel extends BaseOrderFModel
         $total_save_point = 0;
         $delivery_price = 0;
         $delivery_pay_price = 0;
+        $delivery_add_price = 0;
         $is_delivery_info = false;
         $is_package = false;
         $arr_user_coupon_idx = [];
@@ -151,13 +153,19 @@ class OrderFModel extends BaseOrderFModel
             }
         }
 
+        // 추가 배송료 계산
+        if ($make_type == 'pay' && $delivery_price > 0) {
+            $delivery_add_price = $this->getDeliveryAddPrice($zipcode);
+        }
+
         $results['total_prod_cnt'] = $total_prod_cnt;   // 전체상품 갯수 (배송료 상품 제외)
         $results['total_prod_order_price'] = $total_prod_order_price;     // 전체 상품주문금액
         $results['total_prod_pay_price'] = $total_prod_pay_price;     // 전체 상품결제금액
         $results['total_use_point_target_price'] = $total_use_point_target_price;     // 포인트 사용 가능상품의 실제 결제금액
         $results['delivery_price'] = $delivery_price;   // 배송료
         $results['delivery_pay_price'] = $delivery_pay_price;   // 실제 결제 배송료
-        $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 - 사용포인트
+        $results['delivery_add_price'] = $delivery_add_price;   // 추가 배송료
+        $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price + $delivery_add_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 + 추가 배송료 - 사용포인트
         $results['total_coupon_disc_price'] = $total_coupon_disc_price; // 전체 쿠폰할인금액
         $results['user_coupon_idxs'] = $arr_user_coupon_idx;     // 유효한 사용자 쿠폰식별자 배열
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
@@ -380,7 +388,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 장바구니 데이터 가공
             $cart_results = $this->getMakeCartReData(
-                'pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx, $post_row['UsePoint']
+                'pay', $post_row['CartType'], $cart_rows, $arr_user_coupon_idx, $post_row['UsePoint'], element('zipcode', $post_data, '')
             );
 
             if (is_array($cart_results) === false) {
@@ -390,7 +398,7 @@ class OrderFModel extends BaseOrderFModel
             // TODO : 테스트 (추후 주석 삭제)
 /*            // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
             if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
-                throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
+                throw new \Exception('결제금액이 일치하지 않습니다.', _HTTP_BAD_REQUEST);
             }*/
 
             // 주문 데이터 등록
@@ -476,7 +484,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 추가 배송료 주문상품 데이터 등록
             if ($post_row['DeliveryAddPrice'] > 0) {
-                $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $post_row['SiteCode']);
+                $is_order_product = $this->addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $post_row['SiteCode'], $post_row['DeliveryAddPrice']);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
@@ -692,6 +700,52 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
+     * 추가 배송료 주문상품 등록
+     * @param int $order_idx [주문식별자]
+     * @param string $pay_status_ccd [결제상태 공통코드]
+     * @param int $site_code [사이트코드]
+     * @param int $delivery_add_price [추가 배송료 (결제금액 확인용)]
+     * @return bool|string
+     */
+    public function addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $site_code, $delivery_add_price)
+    {
+        try {
+            $learn_pattern = 'delivery_add_price';
+
+            // 추가 배송료 상품 조회
+            $prod_rows = $this->productFModel->listSalesProduct($learn_pattern, false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
+            if (empty($prod_rows) === true) {
+                throw new \Exception('추가 배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
+            }
+
+            $prod_row = element('0', $prod_rows);
+            $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
+
+            if ($delivery_add_price != $prod_row['ProdPriceData']['RealSalePrice']) {
+                throw new \Exception('추가 배송료 금액이 일치하지 않습니다.');
+            }
+
+            $data = [
+                'CartType' => 'etc',
+                'CartProdType' => $learn_pattern,
+                'SiteCode' => $site_code,
+                'ProdCode' => $prod_row['ProdCode'],
+                'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
+                'RealSalePrice' => $prod_row['ProdPriceData']['SalePrice'],
+                'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
+            ];
+
+            if ($this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data) !== true) {
+                throw new \Exception('추가 배송료 주문상품 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
      * 나의 강좌수정정보 데이터 등록
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]
@@ -821,47 +875,6 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
-     * 추가 배송료 주문상품 등록
-     * @param int $order_idx [주문식별자]
-     * @param string $pay_status_ccd [결제상태 공통코드]
-     * @param int $site_code [사이트코드]
-     * @return bool|string
-     */
-    public function addOrderProductForDeliveryAddPrice($order_idx, $pay_status_ccd, $site_code)
-    {
-        try {
-            $learn_pattern = 'delivery_add_price';
-
-            // 추가 배송료 상품 조회
-            $prod_rows = $this->productFModel->listSalesProduct($learn_pattern, false, ['EQ' => ['SiteCode' => $site_code]], 1, 0, ['ProdCode' => 'desc']);
-            if (empty($prod_rows) === true) {
-                throw new \Exception('추가 배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
-            }
-
-            $prod_row = element('0', $prod_rows);
-            $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
-
-            $data = [
-                'CartType' => 'etc',
-                'CartProdType' => $learn_pattern,
-                'SiteCode' => $site_code,
-                'ProdCode' => $prod_rows['ProdCode'],
-                'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
-                'RealSalePrice' => $prod_row['ProdPriceData']['SalePrice'],
-                'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
-            ];
-            
-            if ($this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $data) !== true) {
-                throw new \Exception('추가 배송료 주문상품 등록에 실패했습니다.');
-            }
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-
-        return true;
-    }
-
-    /**
      * 주문배송주소 정보 등록
      * @param int $order_idx [주문식별자]
      * @param array $input [주문배송주소 데이터 배열]
@@ -922,9 +935,7 @@ class OrderFModel extends BaseOrderFModel
             $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $site_code, null, null, null, null, 'Y');
 
             // 장바구니 데이터 가공
-            $cart_results = $this->getMakeCartReData(
-                'pay', $cart_type, $cart_rows, [], 0, 'Y'
-            );
+            $cart_results = $this->getMakeCartReData('pay', $cart_type, $cart_rows, [], 0, '', 'Y');
 
             if (is_array($cart_results) === false) {
                 throw new \Exception($cart_results);

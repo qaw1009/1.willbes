@@ -4,7 +4,7 @@ function closeSearchPost(element_id) {
     element_layer.style.display = 'none';
 }
 
-function searchPost(element_id, zipcode_id, addr1_id) {
+function searchPost(element_id, zipcode_id, addr1_id, is_trigger_event) {
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById(element_id);
 
@@ -34,6 +34,11 @@ function searchPost(element_id, zipcode_id, addr1_id) {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById(zipcode_id).value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById(addr1_id).value = fullAddr;
+
+            // event trigger
+            if (is_trigger_event === 'Y') {
+                $('#' + zipcode_id).trigger('change');
+            }
 
             // iframe을 넣은 element를 안보이게 한다.
             // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)

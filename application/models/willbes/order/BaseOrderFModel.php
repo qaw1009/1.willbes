@@ -105,6 +105,16 @@ class BaseOrderFModel extends WB_Model
     }
 
     /**
+     * 추가 배송료 계산
+     * @param $zipcode
+     * @return int
+     */
+    public function getDeliveryAddPrice($zipcode)
+    {
+        return in_array(substr($zipcode, 0, 2), config_item('delivery_add_price_charge_zipcode')) === true ? config_app('DeliveryAddPrice', 0) : 0;
+    }
+
+    /**
      * 장바구니 식별자 세션 체크 및 리턴
      * @param bool $is_error_alert 세션값이 없을 경우 스크립트 에러 리턴 여부
      * @return bool|mixed

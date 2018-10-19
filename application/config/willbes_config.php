@@ -22,6 +22,9 @@ $config['use_max_point_rate'] = '80';   // 결제금액 대비 포인트 사용 
 $config['vbank_account_name'] = '(주)윌비스';   // 예금주 명
 $config['vbank_expire_days'] = '7'; // 입금시한 설정 일수
 
+// 추가 배송료 추가 대상 우편번호 앞자리
+$config['delivery_add_price_charge_zipcode'] = ['63', '69'];
+
 // 통합사이트 설정
 $config['www'] = array(
 

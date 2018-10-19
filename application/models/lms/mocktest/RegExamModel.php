@@ -181,7 +181,7 @@ class RegExamModel extends WB_Model
     public function getAreaList($idx)
     {
         $sql = "
-            SELECT MC.*
+            SELECT ML.*
             FROM {$this->_table['mockAreaCate']} AS MC
             JOIN {$this->_table['mockArea']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
             JOIN {$this->_table['mockAreaList']} AS ML ON MA.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y' AND ML.IsUse = 'Y'

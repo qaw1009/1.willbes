@@ -3,6 +3,8 @@
  * ======================================================================
  * 모의고사등록 > 과목별 문제등록
  * ======================================================================
+ *
+ * 보기형식 - S:객관식(단일정답), M:객관식(복수정답), J:주관식
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -57,7 +59,6 @@ class RegExam extends \app\controllers\BaseController
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => '',
             'method' => 'POST',
-            'exOpt' => $this->mockCommonModel->getSysCode($this->config->item('syscode_exOption', 'mock')),
         ]);
     }
 
@@ -74,7 +75,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -109,7 +110,6 @@ class RegExam extends \app\controllers\BaseController
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => $data['SiteCode'],
             'method' => 'PUT',
-            'exOpt' => $this->mockCommonModel->getSysCode($this->config->item('syscode_exOption', 'mock')),
             'data' => $data,
             'qData' => $qData,
             'moCate_name' => $moCate_name,
@@ -132,7 +132,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -142,12 +142,12 @@ class RegExam extends \app\controllers\BaseController
         if($this->input->post('isCopy')) {
             $rules[] = ['field' => 'moLink', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'];
         }
-        if( $_FILES['QuestionFile']['error'] === UPLOAD_ERR_NO_FILE ) {
-            $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
-        }
-        if( $_FILES['ExplanFile']['error'] === UPLOAD_ERR_NO_FILE ) {
-            $rules[] = ['field' => 'ExplanFile', 'label' => '해설지통파일', 'rules' => 'required'];
-        }
+//        if( $_FILES['QuestionFile']['error'] === UPLOAD_ERR_NO_FILE ) {
+//            $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
+//        }
+//        if( $_FILES['ExplanFile']['error'] === UPLOAD_ERR_NO_FILE ) {
+//            $rules[] = ['field' => 'ExplanFile', 'label' => '해설지통파일', 'rules' => 'required'];
+//        }
         if ($this->validate($rules) === false) return;
 
         //TODO 업로드 이미지 변경

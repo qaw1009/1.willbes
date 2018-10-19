@@ -142,11 +142,19 @@ class SiteCode
         }
 
         // 배송료, 추가 배송료 상품 등록
-        $this->_CI->load->loadModels(['product/etc/deliveryPrice']);
+        $this->_CI->load->loadModels(['product/etc/deliveryPrice', 'product/etc/extendNAgainLecture']);
 
         $is_delivery_price = $this->_CI->deliveryPriceModel->replaceProduct($result['ret_data'], $this->_CI->_reqP('delivery_price'), $this->_CI->_reqP('delivery_add_price'));
         if ($is_delivery_price !== true) {
             return $this->_CI->json_error($is_delivery_price['ret_msg'], $is_delivery_price['ret_status']);
+        }
+
+        if ($method == 'add') {
+            // 수강연장, 재수강 상품 등록 (등록만 있음)
+            $is_extend_again_lecture = $this->_CI->extendNAgainLectureModel->replaceProduct($result['ret_data']);
+            if ($is_extend_again_lecture !== true) {
+                return $this->_CI->json_error($is_extend_again_lecture['ret_msg'], $is_extend_again_lecture['ret_status']);
+            }
         }
 
         // 사이트 정보 캐쉬 저장

@@ -231,7 +231,7 @@
                     <div class="col-md-10 form-inline">
                         <p><button type="button" class="btn btn-sm btn-primary ml-5" id="selLecAdd">단강좌검색</button>
                             &nbsp;&nbsp;
-                            [선택과목 선택개수] <input type="number" name="PackSelCount" id="PackSelCount" required="required" value="{{$data['PackSelCount']}}" class="form-control" style="width: 50px;" title="선택과목 선택개수">개
+                            [선택과목 선택개수] <input type="number" name="PackSelCount" id="PackSelCount" value="{{$data['PackSelCount']}}" class="form-control" style="width: 50px;" title="선택과목 선택개수">개
                             <!--button type="button" class="btn btn-sm btn-primary ml-5" id="">정렬변경</button//-->
                         </p>
                         <table class="table table-striped table-bordered" id="selLecList" width="100%">
@@ -966,8 +966,22 @@
                 if( $("input[name='essLecAddCheck[]']").length == 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
-                if( $("input[name='selLecAddCheck[]']").length == 0) {
+                /*if( $("input[name='selLecAddCheck[]']").length == 0) {
                     alert('선택과목강좌구성을 선택하여 주십시오.');$('#selLecAdd').focus();return;
+                }*/
+                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
+
+                    if ($("#PackSelCount").val() == "") {
+                        alert('선택과목 선택개수 입력하여 주십시오.');
+                        $('#PackSelCount').focus();
+                        return;
+                    }
+                    if ($("input[name='selLecAddCheck[]']").length == 0) {
+                        alert('선택과목강좌구성을 선택하여 주십시오.');
+                        $('#selLecAdd').focus();
+                        return;
+                    }
+
                 }
                 return true;
             }

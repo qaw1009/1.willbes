@@ -12,13 +12,13 @@
             <div class="willbes-Package-Detail NG tx-black">
                 <table cellspacing="0" cellpadding="0" class="packageDetailTable">
                     <colgroup>
-                        <col style="width: 135px;"/>
+
                         <col style="width: 1px;"/>
                         <col style="width: 804px;"/>
                     </colgroup>
                     <tbody>
                     <tr>
-                        <td class="w-list tx-center">{{ $data['CourseName'] }} </td>
+
                         <td class="w-line"><span class="row-line">|</span></td>
                         <td class="pl30">
                             <div class="w-tit">{{$data['ProdName']}}</div>
@@ -45,6 +45,7 @@
                 <input type="hidden" name="learn_pattern" value="adminpack_lecture"/>  {{-- 학습형태 --}}
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+                <input type="hidden" name="ca_idx" id="ca_idx" value=""/>    {{-- 인증 여부 --}}
 
                 <div class="willbes-Lec-Package-Price p_re">
                     <div class="total-PriceBox NG">
@@ -52,18 +53,18 @@
                         <span class="row-line">|</span>
                         <span>
                                 <span class="price-txt">패키지</span>
-                            @if(empty($data['ProdPriceData'] ) === false)
-                                @foreach($data['ProdPriceData']  as $price_row)
-                                    @if($loop -> index === 1)
-                                        @php
-                                            $sale_type_ccd = $price_row['SaleTypeCcd'];
-                                        @endphp
-                                        <span class="lec_price tx-light-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                    @if(empty($data['ProdPriceData'] ) === false)
+                                        @foreach($data['ProdPriceData']  as $price_row)
+                                            @if($loop -> index === 1)
+                                                @php
+                                                    $sale_type_ccd = $price_row['SaleTypeCcd'];
+                                                @endphp
+                                                <span class="lec_price tx-light-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
+                                            @endif
+                                        @endforeach
                                     @endif
-                                @endforeach
-                            @endif
-                                </span>
-                        <span class="price-img">
+                                        </span>
+                                <span class="price-img">
                                 <img src="{{ img_url('sub/icon_plus.gif') }}">
                             </span>
                         <span>
@@ -76,11 +77,6 @@
                     <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                     <div class="willbes-Lec-buyBtn">
                         <ul>
-                            <li class="btnAuto180 h36">
-                                <button type="submit" name="btn_cart" data-direct-pay="N" class="mem-Btn bg-blue bd-dark-blue">
-                                    <span>장바구니</span>
-                                </button>
-                            </li>
                             <li class="btnAuto180 h36">
                                 <button type="submit" name="btn_cart" data-direct-pay="Y" class="mem-Btn bg-white bd-dark-blue">
                                     <span class="tx-light-blue">바로결제</span>
@@ -507,6 +503,9 @@
 
             // 장바구니, 바로결제 버튼 클릭
             $regi_form.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function () {
+
+                if(certCheck() == false) {return;}
+
                 var $is_direct_pay = $(this).data('direct-pay');
 
                 //필수강좌 체크 여부
@@ -547,6 +546,21 @@
 
         });
 
+        function certCheck() {
+            var is_ok = false;
+            var ca_idx = '';
+            var url = frontUrl('/certApply/checkCertApply');
+            var data = {
+                '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                'prod_code' : $regi_form.find('input[name="prod_code[]"]:checked').data('prod-code')
+            };
+            sendAjax(url, data, function(ret) {
+                ca_idx = ret.ret_data['CaIdx'];
+                is_ok = true;
+            }, showAlertError, false, 'POST');
+            $("ca_idx").val(ca_idx);
+            if(is_ok) {return;} else {return false;}
+        }
 
     </script>
 @stop

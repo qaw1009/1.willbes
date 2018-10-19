@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once  APPPATH . 'controllers/lms/pay/BaseOrder.php';
+require_once APPPATH . 'controllers/lms/pay/BaseOrder.php';
 
 class Cart extends BaseOrder
 {
@@ -100,6 +100,44 @@ class Cart extends BaseOrder
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel('장바구니관리리스트', $list, $headers);
+    }
+
+    /**
+     * 장바구니 담기 등록 폼
+     * @param array $params
+     */
+    public function create($params = [])
+    {
+        // 등록할 상품구분 공통코드 조회
+        $arr_prod_type_target_key = ['on_lecture', 'book'];
+        $arr_prod_type_target_ccd = array_filter_keys($this->cartModel->_prod_type_ccd, $arr_prod_type_target_key);
+        $arr_prod_type_target_name = $this->codeModel->getCcd($this->_group_ccd['ProdType'], '', ['IN' => ['Ccd' => array_values($arr_prod_type_target_ccd)]]);
+
+        $this->load->view('pay/order/cart/create', [
+            'arr_prod_type_target_ccd' => $arr_prod_type_target_ccd,
+            'arr_prod_type_target_name' => $arr_prod_type_target_name
+        ]);
+    }
+
+    /**
+     * 장바구니 등록
+     */
+    public function store()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],
+            ['field' => 'prod_code[]', 'label' => '상품식별자', 'rules' => 'trim|required'],
+            ['field' => 'admin_reg_reason', 'label' => '등록사유', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->cartModel->addCart($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

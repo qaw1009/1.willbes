@@ -115,6 +115,94 @@ class CartModel extends BaseOrderModel
     }
 
     /**
+     * 장바구니 등록
+     * @param array $input
+     * @return array|bool
+     */
+    public function addCart($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 판매상품 모델 로드
+            $this->load->loadModels(['pay/salesProduct']);
+
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+            $arr_mem_idx = element('mem_idx', $input, []);
+            $arr_prod_info = element('prod_code', $input, []);
+            $default_sale_type_ccd = '613001';  // 기본 판매타입 공통코드 (PC+모바일)
+
+            // 상품코드 기준으로 루프
+            foreach ($arr_prod_info as $prod_info) {
+                // 상품정보 변수 할당
+                list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
+
+                // 학습형태 조회 (단강좌, 운영자 일반형 패키지, 교재 상품만 장바구니 등록 가능)
+                $learn_pattern = $this->salesProductModel->getLearnPattern($prod_type, $learn_pattern_ccd);
+                if ($learn_pattern === false || ($learn_pattern != 'on_lecture' && $learn_pattern != 'adminpack_lecture' && $learn_pattern != 'book')) {
+                    throw new \Exception('장바구니에 담을 수 없는 상품입니다.' . PHP_EOL . '단강좌, 운영자 일반형 패키지, 교재 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
+                }
+
+                // 상품정보 조회
+                $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code);
+                if (empty($row) === true) {
+                    throw new \Exception('판매 중인 상품만 장바구니에 담을 수 있습니다.', _HTTP_NOT_FOUND);
+                }
+
+                // 운영자 선택형 패키지는 장바구니 등록 불가
+                if ($learn_pattern == 'adminpack_lecture' && $row['PackTypeCcd'] != $this->_adminpack_lecture_type_ccd['normal']) {
+                    throw new \Exception('운영자 선택형 패키지는 장바구니에 담을 수 없습니다.', _HTTP_BAD_REQUEST);
+                }
+
+                // 회원식별자 기준으로 루프
+                foreach ($arr_mem_idx as $mem_idx) {
+                    // 이미 장바구니에 담긴 상품이 있는지 여부 확인
+                    $cart_row = $this->_conn->getFindResult($this->_table['cart'], 'CartIdx', [
+                        'EQ' => ['MemIdx' => $mem_idx, 'ProdCode' => $prod_code, 'IsStatus' => 'Y'],
+                        'RAW' => ['ExpireDatm > ' => 'NOW()', 'ConnOrderIdx is ' => 'null']
+                    ]);
+
+                    if (empty($cart_row) === false) {
+                        // 이미 장바구니에 담겨 있다면 삭제
+                        $is_delete = $this->_conn->where('CartIdx', $cart_row['CartIdx'])->where('MemIdx', $mem_idx)->delete($this->_table['cart']);
+                        if ($is_delete === false) {
+                            throw new \Exception('기존 장바구니 데이터 삭제에 실패했습니다.');
+                        }
+                    }
+
+                    // 장바구니 등록
+                    $data = [
+                        'MemIdx' => $mem_idx,
+                        'SiteCode' => $row['SiteCode'],
+                        'ProdCode' => $prod_code,
+                        'ProdCodeSub' => '',
+                        'ParentProdCode' => $prod_code,
+                        'SaleTypeCcd' => $default_sale_type_ccd,
+                        'IsDirectPay' => 'N',
+                        'IsVisitPay' => 'N',
+                        'AdminRegReason' => element('admin_reg_reason', $input),
+                        'RegAdminIdx' => $sess_admin_idx,
+                        'RegIp' => $reg_ip
+                    ];
+
+                    $this->_conn->set($data)->set('ExpireDatm', 'date_add(NOW(), interval 14 day)', false);
+                    if ($this->_conn->insert($this->_table['cart']) === false) {
+                        throw new \Exception('장바구니 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 장바구니 삭제
      * @param array $arr_cart_idx
      * @param array $arr_mem_idx

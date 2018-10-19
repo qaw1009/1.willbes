@@ -13,15 +13,16 @@ class OrderListModel extends BaseOrderModel
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param array $arr_add_join
      * @return mixed
      */
-    public function listAllOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [])
     {
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
                 $column = 'count(*) AS numrows';
             } else {
-                $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
+                $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
                     , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
                     , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, 0 as tRefundPrice, (O.RealPayPrice - 0) as tRemainPrice
                     , O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
@@ -38,19 +39,21 @@ class OrderListModel extends BaseOrderModel
                         end, NULL			
                       ) as VBankStatus                    
                     , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
-                    , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd
                     , OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice, 0 as RefundPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
-                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx
+                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
+                    , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd                    
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName
                     , null as DeliveryStatusCcd, null as DeliveryStatusCcdName, null as DeliverySendDatm, null as InvoiceNo';
+
+                $column .= $this->_getAddListQuery('column', $arr_add_join);
             }
         } else {
             $column = $is_count;
         }
 
-        $from = $this->_getListFrom();
+        $from = $this->_getListFrom($arr_add_join);
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);
@@ -72,42 +75,25 @@ class OrderListModel extends BaseOrderModel
      * @param string $column
      * @param array $arr_condition
      * @param array $order_by
+     * @param array $arr_add_join
      * @return mixed
      */
-    public function listExcelAllOrder($column, $arr_condition, $order_by = [])
+    public function listExcelAllOrder($column, $arr_condition, $order_by = [], $arr_add_join = [])
     {
-        $in_column = 'if(O.OrderIdx != @LastIdx, O.OrderNo, "") as OrderNo
-            , if(O.OrderIdx != @LastIdx, S.SiteName, "") as SiteName
-            , if(O.OrderIdx != @LastIdx, M.MemName, "") as MemName
-            , if(O.OrderIdx != @LastIdx, M.MemId, "") as MemId
-            , if(O.OrderIdx != @LastIdx, fn_dec(M.PhoneEnc), "") as MemPhone
-            , if(O.OrderIdx != @LastIdx, CPC.CcdName, "") as PayChannelCcdName
-            , if(O.OrderIdx != @LastIdx, CPR.CcdName, "") as PayRouteCcdName
-            , if(O.OrderIdx != @LastIdx, CPM.CcdName, "") as PayMethodCcdName            
-            , if(O.OrderIdx != @LastIdx, CVB.CcdName, "") as VBankCcdName
-            , if(O.OrderIdx != @LastIdx, concat(O.VBankAccountNo, " "), "") as VBankAccountNo      # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
-            , if(O.OrderIdx != @LastIdx, O.VBankDepositName, "") as VBankDepositName
-            , if(O.OrderIdx != @LastIdx, O.VBankExpireDatm, "") as VBankExpireDatm
-            , if(O.OrderIdx != @LastIdx, O.VBankCancelDatm, "") as VBankCancelDatm            
-            , if(O.OrderIdx != @LastIdx, if(O.VBankAccountNo is not null, O.OrderDatm, ""), "") as VBankOrderDatm            
-            , if(O.OrderIdx != @LastIdx, O.CompleteDatm, "") as CompleteDatm
-            , if(O.OrderIdx != @LastIdx, O.OrderDatm, "") as OrderDatm
-            , if(O.OrderIdx != @LastIdx, O.RealPayPrice, "") as tRealPayPrice
-            , if(O.OrderIdx != @LastIdx, O.UseLecPoint, "") as tUseLecPoint
-            , if(O.OrderIdx != @LastIdx, O.UseBookPoint, "") as tUseBookPoint
-            , if(O.OrderIdx != @LastIdx, 0, "") as tRefundPrice
-            , if(O.OrderIdx != @LastIdx, O.RealPayPrice - 0, "") as tRemainPrice
-            , CPT.CcdName as ProdTypeCcdName
-            , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName
-            , OP.RealPayPrice
-            , 0 as RefundPrice
-            , CPS.CcdName as PayStatusCcdName
-            , "" as DeliveryStatusCcdName
+        $in_column = 'O.OrderIdx, OP.OrderProdIdx, O.OrderNo, S.SiteName, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
+            , O.RealPayPrice as tRealPayPrice, O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, 0 as tRefundPrice, O.RealPayPrice - 0 as tRemainPrice                        
+            , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
+            , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
+            , O.CompleteDatm, O.OrderDatm
+            , OP.RealPayPrice, 0 as RefundPrice, OP.UpdDatm
             , if(OP.IsUseCoupon = "Y", if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), ""), "") as DiscRate
-            , O.OrderIdx, OP.OrderProdIdx   # order by
-            , @LastIdx := O.OrderIdx';
+            , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName, P.ProdName as OnlyProdName                                    
+            , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
+            , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName           
+            , "" as DeliveryStatusCcdName';
+        $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
-        $from = $from = $this->_getListFrom() . ', (select @LastIdx := 0) as SqlVars';
+        $from = $from = $this->_getListFrom($arr_add_join);
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);
@@ -127,11 +113,12 @@ class OrderListModel extends BaseOrderModel
 
     /**
      * 주문목록 조회 from절 리턴
+     * @param array $arr_add_join
      * @return string
      */
-    private function _getListFrom()
+    private function _getListFrom($arr_add_join = [])
     {
-        return '
+        $from = '
             from ' . $this->_table['order'] . ' as O
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on O.OrderIdx = OP.OrderIdx
@@ -140,7 +127,7 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product'] . ' as P
                     on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL
-                    on P.ProdCode = PL.ProdCode
+                    on OP.ProdCode = PL.ProdCode
                 left join ' . $this->_table['member'] . ' as M
                     on O.MemIdx = M.MemIdx
                 left join ' . $this->_table['code'] . ' as CPG
@@ -158,8 +145,55 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"                 	            
-        ';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
+
+        return $from . $this->_getAddListQuery('from', $arr_add_join);
+    }
+
+    /**
+     * 추가 조인 테이블에 따른 쿼리 리턴
+     * @param string $add_type [리턴할 쿼리 구분 : from, column, excel_column (엑셀다운로드용 컬럼)]
+     * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수)]
+     * @return mixed
+     */
+    private function _getAddListQuery($add_type, $arr_add_join = [])
+    {
+        $from = '';
+        $column = '';
+        $excel_column = '';
+
+        if (empty($arr_add_join) === false) {
+            // 카테고리 정보 추가
+            if (in_array('category', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['product_r_category'] . ' as PC	    
+                        on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SC
+                        on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SPC
+                        on SC.ParentCateCode = SPC.CateCode and SPC.IsStatus = "Y"';
+                $column .= ', PC.CateCode, SC.CateName, ifnull(SPC.CateName, SC.CateName) as LgCateName, if(SPC.CateCode is not null, SC.CateName, "") as MdCateName';
+                $excel_column .= ', SC.CateName, ifnull(SPC.CateName, SC.CateName) as LgCateName, if(SPC.CateCode is not null, SC.CateName, "") as MdCateName';
+            }
+            // 과목 정보 추가
+            if (in_array('subject', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['subject'] . ' as PS
+                        on PL.SubjectIdx = PS.SubjectIdx and PS.IsStatus = "Y"';
+                $column .= ', PL.SubjectIdx, PS.SubjectName';
+                $excel_column .= ', PS.SubjectName';
+            }
+            // 교수 정보 추가
+            if (in_array('professor', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['product_professor_concat'] . ' as PPC
+                        on OP.ProdCode = PPC.ProdCode';
+                $column .= ', PPC.ProfIdx_String, PPC.wProfName_String, PPC.ReprProfIdx, PPC.ReprWProfName';
+                $excel_column .= ', PPC.wProfName_String, PPC.ReprWProfName';
+            }
+        }
+
+        return ${$add_type};
     }
 
     /**

@@ -442,7 +442,7 @@ class ProfessorModel extends WB_Model
             
             // 교수영역 이미지 업로드
             $is_upload = $this->_attachProfessorImg([], [], $prof_idx);
-            if ($is_subject_mapping !== true) {
+            if ($is_upload !== true) {
                 throw new \Exception($is_upload);
             }
 
@@ -450,7 +450,7 @@ class ProfessorModel extends WB_Model
             $calc_rate_input = elements(['calc_rate', 'contrib_rate', 'apply_start_date', 'apply_end_date', 'calc_memo', 'learn_pattern_ccd', 'prof_calc_idx'], $input);
             $is_calc_rate = $this->_replaceProfessorCalcRate($calc_rate_input, [], $prof_idx);
             if ($is_calc_rate !== true) {
-                throw new \Exception($is_upload);
+                throw new \Exception($is_calc_rate);
             }
 
             $this->_conn->trans_commit();
@@ -512,7 +512,7 @@ class ProfessorModel extends WB_Model
 
             // 교수영역 이미지 업로드
             $is_upload = $this->_attachProfessorImg(element('attach', $refer_data, []), element('attach_value', $refer_data, []), $prof_idx);
-            if ($is_subject_mapping !== true) {
+            if ($is_upload !== true) {
                 throw new \Exception($is_upload);
             }
 
@@ -520,7 +520,7 @@ class ProfessorModel extends WB_Model
             $calc_rate_input = elements(['calc_rate', 'contrib_rate', 'apply_start_date', 'apply_end_date', 'calc_memo', 'learn_pattern_ccd', 'prof_calc_idx'], $input);
             $is_calc_rate = $this->_replaceProfessorCalcRate($calc_rate_input, element('del_prof_calc_idx', $input, []), $prof_idx);
             if ($is_calc_rate !== true) {
-                throw new \Exception($is_upload);
+                throw new \Exception($is_calc_rate);
             }
 
             $this->_conn->trans_commit();

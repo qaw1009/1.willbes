@@ -168,7 +168,7 @@ class SiteMenuModel extends WB_Model
      */
     public function getChildSiteMenusIdx($parent_menu_idx)
     {
-        $query = '
+        $query = /** @lang text */ '
             select MenuIdx, @r := concat(@r, ",", MenuIdx) as TreeMenusIdx
             from (
                 select MenuIdx, ParentMenuIdx

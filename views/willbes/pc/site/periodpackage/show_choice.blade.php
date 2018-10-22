@@ -42,7 +42,7 @@
                 @foreach($arr_input as $key => $val)
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                 @endforeach
-                <input type="hidden" name="learn_pattern" value="adminpack_lecture"/>  {{-- 학습형태 --}}
+                <input type="hidden" name="learn_pattern" value="{{$learn_pattern}}"/>  {{-- 학습형태 --}}
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
                 <input type="hidden" name="ca_idx" id="ca_idx" value=""/>    {{-- 인증 여부 --}}
@@ -201,9 +201,6 @@
                                                                 </dt>
                                                             </dl>
                                                         </td>
-
-
-
                                                         <td class="w-notice p_re">
                                                             @if(empty($sub_row['LectureSampleData']) === false)
                                                                 <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>

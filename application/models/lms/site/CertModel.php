@@ -8,11 +8,29 @@ class CertModel extends WB_Model
         parent::__construct('lms');
     }
 
+    /**
+     * 인증정보등록
+     * @param array $input
+     * @return array|bool
+     */
     public function addCert($input = [])
     {
         $this->_conn->trans_begin();
 
         try {
+
+            $arr_condition = [
+                'EQ' => [
+                    'A.CertTypeCcd' => element('CertTypeCcd',$input),
+                    'A.No' => element('No',$input),
+                    'A.SiteCode' => element('site_code',$input)
+                ]
+            ];
+            $check = $this->listCert(true, $arr_condition, $limit = null, $offset = null, $order_by = []);
+
+            if($check > 0) {
+                throw new \Exception('이미 등록된 인증 정보입니다.');
+            }
 
             $common_data = $this->inputCommon($input);
 
@@ -37,7 +55,6 @@ class CertModel extends WB_Model
                 throw new \Exception('쿠폰 등록에 실패했습니다.');
             }
 
-
             $this->_conn->trans_commit();
         } catch(\Exception $e) {
             $this->_conn->trans_rollback();
@@ -46,6 +63,11 @@ class CertModel extends WB_Model
         return true;
     }
 
+    /**
+     * 인증정보 수정
+     * @param array $input
+     * @return array|bool
+     */
     public function modifyCert($input = [])
     {
         $this->_conn->trans_begin();
@@ -53,6 +75,24 @@ class CertModel extends WB_Model
         try {
 
             $CertIdx = element('CertIdx',$input);
+
+            $arr_condition = [
+                'EQ' => [
+                    'A.CertTypeCcd' => element('CertTypeCcd',$input),
+                    'A.No' => element('No',$input),
+                    'A.SiteCode' => element('site_code',$input)
+                ],
+
+                'NOT' => [
+                    'A.CertIdx' => $CertIdx
+                ]
+            ];
+            $check = $this->listCert(true, $arr_condition, $limit = null, $offset = null, $order_by = []);
+
+            if($check > 0) {
+                throw new \Exception('이미 등록된 인증 정보입니다.');
+            }
+
 
             $common_data = $this->inputCommon($input);
 
@@ -80,7 +120,11 @@ class CertModel extends WB_Model
         return true;
     }
 
-
+    /**
+     * 인풋항목 공통처리
+     * @param array $input
+     * @return array
+     */
     public function inputCommon($input=[])
     {
         $input_data = [
@@ -133,7 +177,12 @@ class CertModel extends WB_Model
         return true;
     }
 
-
+    /**
+     * 연결 쿠폰 등록
+     * @param array $input
+     * @param $CertIdx
+     * @return bool|string
+     */
     public function _setCoupon($input=[],$CertIdx)
     {
         try {
@@ -165,6 +214,17 @@ class CertModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 기존데이터 삭제 (쿠폰, 강좌)
+     * @param $CertIdx
+     * @param $tablename
+     * @param $msg
+     * @param null $whereType
+     * @param null $whereKey
+     * @param null $whereVal
+     * @return bool|string
+     */
     public function _setDataDelete($CertIdx,$tablename,$msg,$whereType=null,$whereKey=null,$whereVal=null)
     {
         try {
@@ -193,6 +253,15 @@ class CertModel extends WB_Model
     }
 
 
+    /**
+     * 인증정보 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
     public function listCert($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
@@ -264,7 +333,14 @@ class CertModel extends WB_Model
         ';
 
         // 사이트 권한 추가
-        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'IN' => [
+                'A.SiteCode' => get_auth_site_codes()
+            ]
+        ]);
+
+        //$arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 

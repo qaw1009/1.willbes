@@ -231,7 +231,7 @@
         @stop
 
         @section('add_buttons')
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">저장</button>
         @endsection
 
         @section('layer_footer')

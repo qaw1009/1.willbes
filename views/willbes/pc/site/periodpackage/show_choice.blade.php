@@ -555,7 +555,7 @@
                 ca_idx = ret.ret_data['CaIdx'];
                 is_ok = true;
             }, showAlertError, false, 'POST');
-            $("ca_idx").val(ca_idx);
+            $("#ca_idx").val(ca_idx);
             if(is_ok) {return;} else {return false;}
         }
 

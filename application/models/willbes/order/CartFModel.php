@@ -30,7 +30,7 @@ class CartFModel extends BaseOrderFModel
         } else {
             $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
-                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
                 , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub), "") as UserPackPriceData 
                 , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
@@ -262,6 +262,7 @@ class CartFModel extends BaseOrderFModel
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
                     'IsDirectPay' => $is_direct_pay_change === true ? 'N' : $is_direct_pay,
                     'IsVisitPay' => $is_visit_pay,
+                    'CaIdx' => element('ca_idx', $input),
                     'GwIdx' => $gw_idx,
                     'RegIp' => $reg_ip
                 ];

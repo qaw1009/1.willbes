@@ -182,7 +182,6 @@ class Cart extends \app\controllers\FrontController
         $_is_direct_pay = $this->_reqP('is_direct_pay');
         $_cart_type = $this->_reqP('cart_type');
         $_prod_code = $this->_reqP('prod_code');
-        $_prod_code_sub = $this->_reqP('prod_code_sub');
         $_is_visit_pay = 'N';
         $returns = [];
 
@@ -198,10 +197,11 @@ class Cart extends \app\controllers\FrontController
         // 장바구니 저장
         $result = $this->cartFModel->addCart($_learn_pattern, [
             'prod_code' => $_prod_code,
-            'prod_code_sub' => $_prod_code_sub,
+            'prod_code_sub' => $this->_reqP('prod_code_sub'),
             'site_code' => $this->_site_code,
             'is_direct_pay' => $_is_direct_pay,
-            'is_visit_pay' => $_is_visit_pay
+            'is_visit_pay' => $_is_visit_pay,
+            'ca_idx' => $this->_reqP('ca_idx')
         ]);
 
         // 리턴 URL 지정

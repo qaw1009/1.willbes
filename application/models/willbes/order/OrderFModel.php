@@ -601,12 +601,22 @@ class OrderFModel extends BaseOrderFModel
             $real_save_point = element('RealSavePoint', $input, 0);     // 적립포인트
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
+            $ca_idx = element('CaIdx', $input);     // 인증신청식별자
             
             // 실결제금액 체크
             if ($real_pay_price < 0) {
                 throw new \Exception('주문상품 결제금액이 올바르지 않습니다.');
             }
 
+            // 인증신청식별자 체크
+            if (empty($ca_idx) === false) {
+                $cert_row = $this->_conn->getFindResult($this->_table['cert_apply'], 'CaIdx', ['EQ' => ['CaIdx' => $ca_idx, 'MemIdx' => $sess_mem_idx, 'ApprovalStatus' => 'Y']]);
+                if (empty($cert_row['CaIdx']) === true) {
+                    throw new \Exception('주문상품 인증신청 정보가 없습니다.', _HTTP_NOT_FOUND);
+                }
+            }
+            
+            // 주문상품 등록
             $data = [
                 'OrderIdx' => $order_idx,
                 'MemIdx' => $sess_mem_idx,
@@ -623,7 +633,8 @@ class OrderFModel extends BaseOrderFModel
                 'UsePoint' => $real_use_point,
                 'SavePoint' => $real_save_point,
                 'IsUseCoupon' => (empty($user_coupon_idx) === false  ? 'Y' : 'N'),
-                'UserCouponIdx' => $user_coupon_idx
+                'UserCouponIdx' => $user_coupon_idx,
+                'CaIdx' => $ca_idx
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order_product']) === false) {

@@ -103,9 +103,9 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <table id="list_ajax_table" class="table table-bordered">
+            <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
-                <tr class="bg-odd">
+                <tr>
                     <th class="rowspan">선택</th>
                     <th class="">No</th>
                     <th class="rowspan">주문번호</th>

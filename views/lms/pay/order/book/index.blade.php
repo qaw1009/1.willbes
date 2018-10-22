@@ -60,7 +60,7 @@
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 주문번호 검색 가능</p>
                     </div>
-                    <label class="control-label col-md-1" for="search_prod_value">기타결제조건</label>
+                    <label class="control-label col-md-1" for="">기타결제조건</label>
                     <div class="col-md-5">
                         <div class="checkbox">
                             <input type="checkbox" id="search_chk_is_escrow" name="search_chk_is_escrow" class="flat" value="Y"/> <label for="search_chk_is_escrow" class="input-label">에스크로(e)</label>

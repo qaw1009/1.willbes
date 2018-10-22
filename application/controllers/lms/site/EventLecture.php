@@ -118,9 +118,7 @@ class EventLecture extends \app\controllers\BaseController
         $arr_banner = $this->bannerRegistModel->listAllBanner(false, ['EQ' => ['LinkType' => 'layer']], null, null, ['A.BdIdx' => 'DESC']);
 
         //이벤트에 등록된 배너식별자 조회
-        $arr_eventforbanner = $this->eventLectureModel->getFindEventArray(['RAW' => ['BIdx is ' => 'not null']]);
-        /*print_r($arr_banner);
-        print_r($arr_eventforbanner);*/
+        $arr_eventforbanner = $this->eventLectureModel->getFindEventForBannerArray(['RAW' => ['BIdx is ' => 'not null']]);
 
         if (empty($params[0]) === false) {
             $method = 'PUT';

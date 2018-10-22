@@ -434,7 +434,7 @@
                                 <select class="form-control" id="banner_idx" name="banner_idx">
                                     <option value="">배너선택</option>
                                     @foreach($arr_banner as $key => $row)
-                                        <option value="{{$row['BIdx']}}" class="{{$row['SiteCode']}} @if($row['BIdx'] == $arr_eventforbanner[$key]['BIdx']) {{$chk_css}} @endif" @if($row['BIdx'] == $data['BIdx']) selected @endif>{{$row['BannerName']}}</option>
+                                        <option value="{{$row['BIdx']}}" class="{{$row['SiteCode']}}" @if(empty($arr_eventforbanner[$arr_banner[$key]['BIdx']]) === false) style="color:red" @endif @if($method == 'PUT' && ($row['BIdx'] == $data['BIdx'])) selected @endif>{{$row['BannerName']}}</option>
                                     @endforeach
                                 </select>
                             </div>

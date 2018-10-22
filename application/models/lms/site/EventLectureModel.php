@@ -432,14 +432,19 @@ class EventLectureModel extends WB_Model
         return $this->_conn->getFindResult($this->_table['event_lecture'], $column, $arr_condition);
     }
 
-    public function getFindEventArray($arr_condition = [])
+    /**
+     * 이벤트에 등록된 배너정보 조회
+     * @param array $arr_condition
+     * @return array
+     */    
+    public function getFindEventForBannerArray($arr_condition = [])
     {
         $column = 'ElIdx, SiteCode, BIdx';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
         $data = $this->_conn->getListResult($this->_table['event_lecture'], $column, $arr_condition);
-        return $data;
-        /*return array_pluck($data, 'BIdx', '');*/
+        /*return $data;*/
+        return array_pluck($data, 'BIdx', 'BIdx');
     }
 
     /**

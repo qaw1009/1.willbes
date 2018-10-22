@@ -127,10 +127,21 @@ class CertApplyFModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            $this->load->library('upload');
 
+            $cert_idx = element('CertIdx', $input);
             $certtypeccd = element('CertTypeCcd', $input);
 
+            $add_condition = [
+                'IN' => [
+                    'ApprovalStatus' => ['A','Y']
+                ]
+            ];
+
+            if(empty($this->findApplyByCertIdx($cert_idx, $add_condition)) !== true) {
+                throw new \Exception('이미 신청하신 인증내역이 존재합니다.');
+            }
+
+            $this->load->library('upload');
             $file_path = config_item('upload_prefix_dir').'/cert_apply/'.date('Ym');
             $file_name = $certtypeccd.'-'.date("YmdHis").rand(100,999);
             
@@ -155,7 +166,7 @@ class CertApplyFModel extends WB_Model
             */
 
             $data = [
-              'CertIdx' => element('CertIdx', $input),
+              'CertIdx' => $cert_idx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'WorkType' => element('WorkType', $input,null),
                 'Affiliation' => element('Affiliation', $input,null),
@@ -219,13 +230,26 @@ class CertApplyFModel extends WB_Model
      * @param $cert_idx
      * @return mixed
      */
-    public function findApplyByCertIdx($cert_idx)
+    public function findApplyByCertIdx($cert_idx,$add_condition=[])
     {
-        $where = $this->_conn->makeWhere(['EQ'=>['CertIdx'=>$cert_idx , 'MemIdx'=>$this->session->userdata('mem_idx')]])->getMakeWhere(true);
-        $query = $this->_conn->query("select CaIdx from lms_cert_apply where ApprovalStatus='Y'".$where ." limit 1") -> row_array();
+
+        if(empty($add_condition)) {
+            $add_condition = [
+                'EQ' => ['ApprovalStatus'=>'Y']
+            ];
+        }
+
+        $arr_condition = array_merge_recursive($add_condition, [
+            'EQ'=>['CertIdx'=>$cert_idx , 'MemIdx'=>$this->session->userdata('mem_idx')]
+        ]);
+
+        //echo var_dump($arr_condition);
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $query = $this->_conn->query("select CaIdx from lms_cert_apply where IsStatus='Y' ".$where ." limit 1") -> row_array();
         //echo $this->_conn->last_query();
         return $query;
     }
-
 
 }

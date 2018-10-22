@@ -50,6 +50,8 @@ class CertApply extends \app\controllers\FrontController
             return $this->json_error('인증정보가 존재하지 않습니다.');
         }
         $result = $this->certApplyFModel->addApply($this->_reqP(null));
+
+        //echo var_dump($result);
         $this->json_result($result, '인증 신청이 완료되었습니다.', $result);
     }
 

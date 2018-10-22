@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class EventLecture extends \app\controllers\BaseController
 {
-    protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor', 'board/board', '_wbs/sys/admin');
+    protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor', 'board/board', 'site/bannerRegist', '_wbs/sys/admin');
     protected $helpers = array();
 
     protected $_groupCcd = [];
@@ -114,6 +114,14 @@ class EventLecture extends \app\controllers\BaseController
         //고객센터 전화번호 조회
         $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
 
+        //배너조회
+        $arr_banner = $this->bannerRegistModel->listAllBanner(false, ['EQ' => ['LinkType' => 'layer']], null, null, ['A.BdIdx' => 'DESC']);
+
+        //이벤트에 등록된 배너식별자 조회
+        $arr_eventforbanner = $this->eventLectureModel->getFindEventArray(['RAW' => ['BIdx is ' => 'not null']]);
+        /*print_r($arr_banner);
+        print_r($arr_eventforbanner);*/
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $el_idx = $params[0];
@@ -165,6 +173,8 @@ class EventLecture extends \app\controllers\BaseController
             'offLineSite_list' => $offLineSite_list,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
+            'arr_banner' => $arr_banner,
+            'arr_eventforbanner' => $arr_eventforbanner,
             'site_csTel' => $site_csTel,
             'arr_requst_types' => $this->eventLectureModel->_requst_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
@@ -233,7 +243,8 @@ class EventLecture extends \app\controllers\BaseController
                         break;
                     case $this->eventLectureModel->_event_lecture_option_ccds[3] :
                         $rules = array_merge($rules, [
-                            ['field' => 'popup_title', 'label' => '팝업타이틀명', 'rules' => 'trim|required']
+                            ['field' => 'popup_title', 'label' => '팝업타이틀명', 'rules' => 'trim|required'],
+                            ['field' => 'banner_idx', 'label' => '배너선택', 'rules' => 'trim|required|integer']
                         ]);
                         break;
                 }

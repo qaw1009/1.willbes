@@ -2,8 +2,8 @@
 @section('content')
     <h5>- 이벤트, 설명회, 특강 등을 등록하고 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventLecture/store") }}" novalidate>--}}
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventLecture/store") }}" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="el_idx" value="{{ $el_idx }}"/>
@@ -427,6 +427,21 @@
                                 <p class="form-control-static">• 사용자단에서 노출되는 신청 팝업 타이틀명 입니다.</p>
                             </div>
                         </div>
+
+                        <div class="form-group form-banner hide" id="banner_{{$optoins_keys[3]}}">
+                            <label class="control-label col-md-2" for="banner_idx">배너선택</label>
+                            <div class="col-md-3 item form-inline">
+                                <select class="form-control" id="banner_idx" name="banner_idx">
+                                    <option value="">배너선택</option>
+                                    @foreach($arr_banner as $key => $row)
+                                        <option value="{{$row['BIdx']}}" class="{{$row['SiteCode']}} @if($row['BIdx'] == $arr_eventforbanner[$key]['BIdx']) {{$chk_css}} @endif" @if($row['BIdx'] == $data['BIdx']) selected @endif>{{$row['BannerName']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <p class="form-control-static">• <span class="red">RED</span> 폰트로된 상태는 등록 불가입니다.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -476,6 +491,7 @@
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
             $regi_form.find('select[name="subject_code"]').chained("#site_code");
             $regi_form.find('select[name="prof_code"]').chained("#site_code");
+            $regi_form.find('select[name="banner_idx"]').chained("#site_code");
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -516,8 +532,10 @@
                 var set_val = $(this).data('code');
                 if ($(this).is(":checked") == true) {
                     $('#limit_' + set_val).removeClass('hide').addClass('show');
+                    $('#banner_' + set_val).removeClass('hide').addClass('show');
                 } else {
                     $('#limit_' + set_val).removeClass('show').addClass('hide');
+                    $('#banner_' + set_val).removeClass('show').addClass('hide');
                 }
             });
 
@@ -626,14 +644,14 @@
             // ajax submit
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
-                var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
+                /*var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/eventLecture/") }}' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');*/
             });
         });
 

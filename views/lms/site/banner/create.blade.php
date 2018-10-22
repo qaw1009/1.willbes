@@ -94,14 +94,16 @@
                         <div class="radio">
                             <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/> <label for="link_type_self" class="input-label">본창</label>
                             <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="input-label">새창</label>
+                            <input type="radio" id="link_type_layer" name="link_type" class="flat" value="layer" @if($data['LinkType']=='layer')checked="checked"@endif/>
+                            <label for="link_type_layer" class="input-label">레이어팝업 (이벤트 바로신청팝업)</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
-                    <div class="col-md-10 item">
-                        <input type="text" id="link_url" name="link_url" required="required" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
+                    <label class="control-label col-md-1-1" for="link_url">링크주소</label>
+                    <div class="col-md-10">
+                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
                     </div>
                 </div>
 
@@ -124,7 +126,6 @@
                     </div>
                     <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
                         <b>{{$data['BannerImgRealName']}}</b>
-                        {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['BIdx']}}"><i class="fa fa-times red"></i></a>--}}
                     </div>
                     @endif
                 </div>
@@ -191,6 +192,15 @@
             $regi_form.find('select[name="cate_code"]').chained("#site_code");
             $regi_form.find('select[name="banner_disp_idx"]').chained("#cate_code");
 
+            $regi_form.on('ifChanged ifCreated', 'input[name="link_type"]:checked', function() {
+                var $link_url = $regi_form.find('input[name="link_url"]');
+                if($(this).val() === 'layer') {
+                    $link_url.prop('disabled', true);
+                } else {
+                    $link_url.prop('disabled', false);
+                }
+            });
+
             @if($method == 'PUT')
                 $regi_form.find('select[name="cate_code"]').prop('disabled', true);
             @endif
@@ -208,8 +218,18 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/banner/regist/") }}' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
         });
+
+        function addValidate() {
+            var link_type = $(":input:radio[name=link_type]:checked").val();
+
+            if (link_type != 'layer' && $("input[name='link_url']").val() == '') {
+                alert('링크주소를 입력해 주세요.');
+                return false;
+            }
+            return true;
+        }
     </script>
 @stop

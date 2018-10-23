@@ -186,4 +186,52 @@ class MockCommonModel extends WB_Model
         if($useCount) return array($data, $count);
         else return $data;
     }
+
+
+    /**
+     *  업로드시 저장될 파일명 생성
+     */
+    public function makeUploadFileName($in, $prefixLen=0)
+    {
+        $names = array();
+
+        if( !empty($_FILES) ) {
+            foreach ($_FILES as $key => $it) {
+                if(in_array($key, $in)) {
+                    if (is_array($it['name'])) { // 업로드 배열로 받는 경우
+                        $i = 1;
+                        foreach ($it['name'] as $key_s => $it_s) {
+                            if ($it['error'][$key_s] === UPLOAD_ERR_OK) {
+                                $tmp = explode('.', $it['name'][$key_s]);
+                                $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
+                                $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . $i . '_' : '';
+
+                                $names[] = array(
+                                    'input' => $key,
+                                    'name' => $it['name'][$key_s],
+                                    'real' => $prefix . md5(uniqid(mt_rand())) . $ext,
+                                );
+                            }
+                            $i++;
+                        }
+                    }
+                    else {
+                        if ($it['error'] === UPLOAD_ERR_OK) {
+                            $tmp = explode('.', $it['name']);
+                            $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
+                            $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . '_' : '';
+
+                            $names[] = array(
+                                'input' => $key,
+                                'name' => $it['name'],
+                                'real' => $prefix . md5(uniqid(mt_rand())) . $ext,
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        return $names;
+    }
 }

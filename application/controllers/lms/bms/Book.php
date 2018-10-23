@@ -179,7 +179,7 @@ class Book extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+            ['field' => 'params', 'label' => '신규/추천여부', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {

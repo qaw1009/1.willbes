@@ -175,6 +175,7 @@ class OrderListModel extends BaseOrderModel
                 $column .= ', PC.CateCode, SC.CateName, ifnull(SPC.CateName, SC.CateName) as LgCateName, if(SPC.CateCode is not null, SC.CateName, "") as MdCateName';
                 $excel_column .= ', SC.CateName, ifnull(SPC.CateName, SC.CateName) as LgCateName, if(SPC.CateCode is not null, SC.CateName, "") as MdCateName';
             }
+
             // 과목 정보 추가
             if (in_array('subject', $arr_add_join) === true) {
                 $from .= '
@@ -183,6 +184,7 @@ class OrderListModel extends BaseOrderModel
                 $column .= ', PL.SubjectIdx, PS.SubjectName';
                 $excel_column .= ', PS.SubjectName';
             }
+
             // 교수 정보 추가
             if (in_array('professor', $arr_add_join) === true) {
                 $from .= '
@@ -190,6 +192,39 @@ class OrderListModel extends BaseOrderModel
                         on OP.ProdCode = PPC.ProdCode';
                 $column .= ', PPC.ProfIdx_String, PPC.wProfName_String, PPC.ReprProfIdx, PPC.ReprWProfName';
                 $excel_column .= ', PPC.wProfName_String, PPC.ReprWProfName';
+            }
+
+            // 배송지 추가
+            if (in_array('delivery_address', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['order_delivery_address'] . ' as ODA
+                        on O.OrderIdx = ODA.OrderIdx';
+                $column .= ', ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, fn_dec(ODA.ReceiverTelEnc) as ReceiverTel
+                    , ODA.ZipCode, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2, ODA.DeliveryMemo';
+                $excel_column .= $column;
+            }
+
+            // 배송정보 추가
+            if (in_array('delivery_info', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['order_product_delivery_info'] . ' as OPD		
+                        on OP.OrderProdIdx = OPD.OrderProdIdx
+                    left join ' . $this->_table['code'] . ' as CDS
+                        on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
+                    left join ' . $this->_table['admin'] . ' as AIR
+                        on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
+                    left join ' . $this->_table['admin'] . ' as AIU
+                        on OPD.InvoiceUpdAdminIdx = AIU.wAdminIdx and AIU.wIsStatus = "Y"
+                    left join ' . $this->_table['admin'] . ' as ADS
+                        on OPD.DeliverySendAdminIdx = ADS.wAdminIdx and ADS.wIsStatus = "Y"
+                    left join ' . $this->_table['admin'] . ' as ASU
+                        on OPD.StatusUpdAdminIdx = ASU.wAdminIdx and ASU.wIsStatus = "Y"';
+                $column .= ', OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
+                    , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm
+                    , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
+                    , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName                
+                ';
+                $excel_column .= $column;
             }
         }
 

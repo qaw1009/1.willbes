@@ -71,6 +71,11 @@ class SalesProductModel extends BaseOrderModel
                 $column .= ', CateCode, PackSaleData';
                 break;
 
+            //기간제패키지
+            case 'periodpack_lecture' :
+                $column .= ', CateCode, PackTypeCcd, ProdPriceData';
+                break;
+
             // 교재상품
             case 'book' :
                 $column .= ', CateCode, IsCart, IsFreebiesTrans, IsDeliveryInfo, ProdPriceData';

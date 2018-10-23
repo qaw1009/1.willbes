@@ -44,8 +44,7 @@ class OrderListModel extends BaseOrderModel
                     , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
                     , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd                    
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName
-                    , null as DeliveryStatusCcd, null as DeliveryStatusCcdName, null as DeliverySendDatm, null as InvoiceNo';
+                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $column .= $this->_getAddListQuery('column', $arr_add_join);
             }
@@ -81,7 +80,8 @@ class OrderListModel extends BaseOrderModel
     public function listExcelAllOrder($column, $arr_condition, $order_by = [], $arr_add_join = [])
     {
         $in_column = 'O.OrderIdx, OP.OrderProdIdx, O.OrderNo, S.SiteName, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
-            , O.RealPayPrice as tRealPayPrice, O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, 0 as tRefundPrice, O.RealPayPrice - 0 as tRemainPrice                        
+            , O.RealPayPrice as tRealPayPrice, 0 as tRefundPrice, O.RealPayPrice - 0 as tRemainPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
+            , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
             , O.CompleteDatm, O.OrderDatm
@@ -89,8 +89,7 @@ class OrderListModel extends BaseOrderModel
             , if(OP.IsUseCoupon = "Y", if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), ""), "") as DiscRate
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName, P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-            , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName           
-            , "" as DeliveryStatusCcdName';
+            , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
         $from = $from = $this->_getListFrom($arr_add_join);
@@ -201,7 +200,8 @@ class OrderListModel extends BaseOrderModel
                         on O.OrderIdx = ODA.OrderIdx';
                 $column .= ', ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, fn_dec(ODA.ReceiverTelEnc) as ReceiverTel
                     , ODA.ZipCode, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2, ODA.DeliveryMemo';
-                $excel_column .= $column;
+                $excel_column .= ', ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, fn_dec(ODA.ReceiverTelEnc) as ReceiverTel
+                    , ODA.ZipCode, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2, ODA.DeliveryMemo';
             }
 
             // 배송정보 추가
@@ -224,7 +224,11 @@ class OrderListModel extends BaseOrderModel
                     , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
                     , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName                
                 ';
-                $excel_column .= $column;
+                $excel_column .= ', CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
+                    , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm
+                    , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
+                    , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName                
+                ';
             }
         }
 

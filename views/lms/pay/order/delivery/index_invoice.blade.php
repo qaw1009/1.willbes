@@ -2,6 +2,16 @@
 
 @section('content')
     <h5>- 교재 구매자를 확인하고 송장번호를 업로드하여 배송이력을 관리하는 메뉴입니다.</h5>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs bar_tabs mb-0" role="tablist">
+                <li role="presentation" class="active"><a href="{{ site_url('/pay/order/delivery/index/book/invoice') }}" class="cs-pointer"><strong>송장등록</strong></a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/prepare') }}">발송준비(환불반영)</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/complete') }}">발송완료</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/cancel') }}">발송취소</a></li>
+            </ul>
+        </div>
+    </div>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
@@ -167,7 +177,9 @@
                     {'data' : 'Receiver', 'render' : function(data, type, row, meta) {
                         return data + '<br/>' + row.ReceiverPhone;
                     }},
-                    {'data' : 'Addr1'},
+                    {'data' : 'Addr1', 'render' : function(data, type, row, meta) {
+                        return '[' + row.ZipCode + '] ' + data + '<br/>' + row.Addr2;
+                    }},
                     {'data' : 'InvoiceNo', 'render' : function(data, type, row, meta) {
                         return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '" style="width: 120px;" />' +
                             '<button name="btn_invoice_regist" class="btn btn-xs btn-success mb-0 ml-10" data-order-idx="' + row.OrderIdx + '">저장</button>' +

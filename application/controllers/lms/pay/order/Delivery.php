@@ -19,7 +19,7 @@ class Delivery extends BaseOrder
         $this->_prod_type = get_var($this->uri->rsegment(3), 'book');
         $this->_tab = get_var($this->uri->rsegment(4), 'invoice');      // tab (invoice, prepare, complete, cancel)
 
-        // 배송관리용 결제상태 공통코드
+        // 교재배송관리용 결제상태 공통코드
         $this->_delivery_pay_status_ccd = array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund']));
         
         // 추가 조인 테이블
@@ -146,19 +146,27 @@ class Delivery extends BaseOrder
      */
     public function excel()
     {
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '가상계좌신청일', '주문일', '결제완료일', '총 실결제금액', '사용강좌포인트', '사용교재포인트'
-            , '총 환불금액', '총 남은금액', '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '배송상태', '쿠폰적용'];
+        $headers = [];
+        $column = '';
+        $file_name = '';
 
-        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, VBankOrderDatm, OrderDatm, CompleteDatm
-            , tRealPayPrice, tUseLecPoint, tUseBookPoint, tRefundPrice, tRemainPrice
-            , ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, DeliveryStatusCcdName, DiscRate';
+        switch ($this->_tab) {
+            case 'invoice' :
+                $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '수령인명', '수령인휴대폰번호', '배송지우편번호', '배송지주소', '배송지상세주소'];
+                $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, Receiver, ReceiverPhone, ZipCode, Addr1, Addr2';
+                $file_name = '송장등록';
+                break;
+            default :
+                show_error('잘못된 접근 입니다.');
+                break;
+        }
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('교재배송관리리스트', $list, $headers);
+        $this->excel->exportExcel('교재배송관리(' . $file_name . ')리스트', $list, $headers);
     }
 
     /**

@@ -25,7 +25,7 @@ class DeliveryInfoModel extends BaseOrderModel
             }
 
             foreach ($params as $order_idx => $invoice_no) {
-                if (empty($order_idx) === false && empty($invoice_no) === false) {
+                if (empty($order_idx) === false && empty($invoice_no) === false && is_numeric($order_idx) === true && is_numeric($invoice_no)) {
                     // 수정할 배송정보 셋팅
                     $data = [
                         'InvoiceNo' => trim($invoice_no),

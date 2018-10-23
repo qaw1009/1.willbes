@@ -4,11 +4,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class EventFModel extends WB_Model
 {
     private $_table = [
-        'event' => 'lms_evnet_lecture'
+        'event_lecture' => 'lms_evnet_lecture',
+        'event_lecture_r_category' => 'lms_event_r_category',
+        'event_file' => 'lms_event_file',
+        'event_comment' => 'lms_event_comment',
+        'sys_category' => 'lms_sys_category',
+        'site' => 'lms_site',
+        'sys_code' => 'lms_sys_code'
     ];
 
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    public function listAllEvent($is_count, $arr_condition=[], $sub_query_condition, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
+            A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
+            G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
+            K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
+            CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
+            CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
+        $sub_query_where = $sub_query_where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['event_lecture']} AS A
+            INNER JOIN (
+                SELECT B.ElIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
+                FROM {$this->_table['event_lecture_r_category']} AS B
+                INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
+                {$sub_query_where}
+                GROUP BY B.ElIdx
+            ) AS D ON A.ElIdx = D.ElIdx
+            LEFT JOIN (
+                SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
+                FROM {$this->_table['event_comment']}
+            ) AS H ON H.ElIdx = A.ElIdx
+            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
+            INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
+            LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        echo 'select ' . $column . $from . $where . $order_by_offset_limit.'<Br>';
+        exit;
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+
+        /*$result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
+        return $result;*/
     }
 }

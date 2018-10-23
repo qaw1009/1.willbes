@@ -86,7 +86,8 @@ class EventLectureModel extends WB_Model
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
-            CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName
+            CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
+            L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -114,6 +115,7 @@ class EventLectureModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['banner']} AS L ON A.BIdx = L.BIdx AND L.LinkType = 'layer'
         ";
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
@@ -138,15 +140,23 @@ class EventLectureModel extends WB_Model
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
 
-            //이벤트에 등록된 배너 정보 조회
-            $arr_condition = [
-                'EQ' => [
-                    'BIdx' => element('banner_idx', $input)
-                ]
-            ];
-            $banner_row = $this->findEvent('BIdx', $arr_condition);
-            if (count($banner_row) > 0) {
-                throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
+            if (count($option_ccds) > 0) {
+                foreach ($option_ccds as $key => $val) {
+                    switch ($val) {
+                        case $this->eventLectureModel->_event_lecture_option_ccds[3] :
+                            //이벤트에 등록된 배너 정보 조회
+                            $arr_condition = [
+                                'EQ' => [
+                                    'BIdx' => element('banner_idx', $input)
+                                ]
+                            ];
+                            $banner_row = $this->findEvent('BIdx', $arr_condition);
+                            if (count($banner_row) > 0) {
+                                throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
+                            }
+                            break;
+                    }
+                }
             }
 
             $set_option_ccd = implode(',', $option_ccds);

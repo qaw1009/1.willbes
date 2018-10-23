@@ -86,6 +86,7 @@
                     <th>댓글현황</th>
                     <th>조회수</th>
                     <th>접수상태</th>
+                    <th>배너명</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -169,7 +170,7 @@
                     {'data' : 'CommentCount'},
                     {'data' : 'ReadCnt'},
                     {'data' : 'IsRegisterName'},
-
+                    {'data' : 'BannerName'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},

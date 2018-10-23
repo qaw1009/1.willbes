@@ -24,11 +24,11 @@ class Event extends \app\controllers\FrontController
         }
 
         switch($params[0]) {
-            case 'ongoing': // 수강중인강좌 ( 일지중지웅이 아님)
+            case 'ongoing': // 진행중 이벤트
                 $this->ongoing();
                 break;
 
-            case 'end': // 수강종료 강좌
+            case 'end': // 종료 이벤트
                 $this->end();
                 break;
 

@@ -14,6 +14,7 @@ class EventLectureModel extends WB_Model
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
         'member' => 'lms_member',
+        'banner' => 'lms_banner',
         'admin' => 'wbs_sys_admin'
     ];
 
@@ -318,17 +319,26 @@ class EventLectureModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $el_idx = element('el_idx', $input);
             $evnet_category_data = element('cate_code', $input);
+            $option_ccds = element('option_ccds', $input);
 
-            //이벤트에 등록된 배너 정보 조회
-            $arr_condition = [
-                'EQ' => [
-                    'BIdx' => element('banner_idx', $input)
-                ],
-                'NOT' => ['ElIdx' => $el_idx]
-            ];
-            $banner_row = $this->findEvent('BIdx', $arr_condition);
-            if (count($banner_row) > 0) {
-                throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
+            if (count($option_ccds) > 0) {
+                foreach ($option_ccds as $key => $val) {
+                    switch ($val) {
+                        case $this->eventLectureModel->_event_lecture_option_ccds[3] :
+                            //이벤트에 등록된 배너 정보 조회
+                            $arr_condition = [
+                                'EQ' => [
+                                    'BIdx' => element('banner_idx', $input)
+                                ],
+                                'NOT' => ['ElIdx' => $el_idx]
+                            ];
+                            $banner_row = $this->findEvent('BIdx', $arr_condition);
+                            if (count($banner_row) > 0) {
+                                throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
+                            }
+                        break;
+                    }
+                }
             }
 
             //정보 조회
@@ -433,21 +443,6 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 이벤트에 등록된 배너정보 조회
-     * @param array $arr_condition
-     * @return array
-     */    
-    public function getFindEventForBannerArray($arr_condition = [])
-    {
-        $column = 'ElIdx, SiteCode, BIdx';
-        $arr_condition['EQ']['IsStatus'] = 'Y';
-
-        $data = $this->_conn->getListResult($this->_table['event_lecture'], $column, $arr_condition);
-        /*return $data;*/
-        return array_pluck($data, 'BIdx', 'BIdx');
-    }
-
-    /**
      * 수정 폼 데이터 조회
      * @param $arr_condition
      * @return mixed
@@ -455,7 +450,7 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.BIdx,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.BIdx, F.BannerName,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
@@ -471,6 +466,7 @@ class EventLectureModel extends WB_Model
             INNER JOIN {$this->_table['admin']} AS C ON A.RegAdminIdx = C.wAdminIdx AND C.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
             INNER JOIN {$this->_table['sys_code']} AS E ON A.CampusCcd = E.Ccd AND E.IsStatus='Y'
+            LEFT OUTER JOIN {$this->_table['banner']} as F ON A.BIdx = F.BIdx AND F.LinkType = 'layer'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

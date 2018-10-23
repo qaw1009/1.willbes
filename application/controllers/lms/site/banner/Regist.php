@@ -194,6 +194,43 @@ class Regist extends \app\controllers\BaseController
     }
 
     /**
+     * 사용되지 않은 이벤트용 배너 검색 리스트
+     * @param array $params
+     */
+    public function searchBannerForEventLectureModal($params = [])
+    {
+        $site_code = $params[0];
+        $this->load->view('site/banner/search_banner_modal',[
+            'site_code' => $site_code
+        ]);
+    }
+
+    public function searchBannerForEventLectureAjax()
+    {
+        $site_code = $this->_reqP('site_code');
+        $arr_condition = [
+            'ORG2' => [
+                'LKB' => [
+                    'a.BannerName' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $list = [];
+        $count = $this->bannerRegistModel->listSearchBannerForEvent(true, $arr_condition, $site_code);
+
+        if ($count > 0) {
+            $list = $this->bannerRegistModel->listSearchBannerForEvent(false, $arr_condition, $site_code, $this->_reqP('length'), $this->_reqP('start'), ['C.RegDatm' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
      * 카테고리 조회 (전체카테고리 값 추가)
      * @return array
      */

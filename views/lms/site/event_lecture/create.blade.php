@@ -2,8 +2,8 @@
 @section('content')
     <h5>- 이벤트, 설명회, 특강 등을 등록하고 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventLecture/store") }}" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/eventLecture/store") }}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="el_idx" value="{{ $el_idx }}"/>
@@ -429,17 +429,17 @@
                         </div>
 
                         <div class="form-group form-banner hide" id="banner_{{$optoins_keys[3]}}">
-                            <label class="control-label col-md-2" for="banner_idx">배너선택</label>
-                            <div class="col-md-3 item form-inline">
-                                <select class="form-control" id="banner_idx" name="banner_idx">
-                                    <option value="">배너선택</option>
-                                    @foreach($arr_banner as $key => $row)
-                                        <option value="{{$row['BIdx']}}" class="{{$row['SiteCode']}}" @if(empty($arr_eventforbanner[$arr_banner[$key]['BIdx']]) === false) style="color:red" @endif @if($method == 'PUT' && ($row['BIdx'] == $data['BIdx'])) selected @endif>{{$row['BannerName']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-5">
-                                <p class="form-control-static">• <span class="red">RED</span> 폰트로된 상태는 등록 불가입니다.</p>
+                            <label class="control-label col-md-2">배너선택</label>
+                            <div class="col-md-8 item form-inline">
+                                <button type="button" id="btn_banner_search" class="btn btn-sm btn-primary">배너검색</button>
+                                <span id="selected_banner" class="pl-10">
+                                    @if (empty($data['BIdx']) === false)
+                                    <span class="pr-10">{{ $data['BannerName'] }}
+                                        <a href="#none" data-banner-idx="{{ $data['BIdx'] }}" class="selected-banner-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="banner_idx" value="{{ $data['BIdx'] }}"/>
+                                    </span>
+                                    @endif
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -491,7 +491,6 @@
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
             $regi_form.find('select[name="subject_code"]').chained("#site_code");
             $regi_form.find('select[name="prof_code"]').chained("#site_code");
-            $regi_form.find('select[name="banner_idx"]').chained("#site_code");
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -514,8 +513,28 @@
                 });
             });
 
+            //배너검색
+            $('#btn_banner_search').on('click', function(event) {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                if (!site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    return;
+                }
+
+                $('#btn_banner_search').setLayer({
+                    'url' : '{{ site_url('/site/banner/regist/searchBannerForEventLectureModal/') }}' + site_code,
+                    'width' : 900
+                });
+            });
+
             // 카테고리 삭제
             $regi_form.on('click', '.selected-category-delete', function() {
+                var that = $(this);
+                that.parent().remove();
+            });
+
+            // 배너삭제
+            $regi_form.on('click', '.selected-banner-delete', function() {
                 var that = $(this);
                 that.parent().remove();
             });
@@ -644,14 +663,14 @@
             // ajax submit
             $regi_form.submit(function() {
                 getEditorBodyContent($editor_profile);
-                /*var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
+                var _url = '{{ site_url("/site/eventLecture/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/eventLecture/") }}' + getQueryString());
                     }
-                }, showValidateError, addValidate, false, 'alert');*/
+                }, showValidateError, addValidate, false, 'alert');
             });
         });
 

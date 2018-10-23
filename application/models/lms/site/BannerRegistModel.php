@@ -6,6 +6,7 @@ class BannerRegistModel extends WB_Model
     private $_table = [
         'banner' => 'lms_banner',
         'banner_disp' => 'lms_banner_disp',
+        'event_lecture' => 'lms_event_lecture',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
@@ -333,6 +334,57 @@ class BannerRegistModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 배너검색 [이벤트용 : 사용되지 않은 배너]
+     * @param $is_count
+     * @param array $arr_condition
+     * @param $site_code
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSearchBannerForEvent($is_count, $arr_condition = [], $site_code, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                a.BIdx, a.SiteCode, a.CateCode, a.BannerName, a.DispName, a.DispStartDatm, a.DispEndDatm,
+                a.wAdminName AS RegAdminName, a.RegDatm, IFNULL(c.CateName,"전체카테고리") AS CateName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM
+            ( SELECT 
+                a1.BIdx, a1.SiteCode, a1.CateCode, a1.BannerName, b1.DispName, a1.DispStartDatm, a1.DispEndDatm, c1.wAdminName, a1.RegDatm
+                FROM {$this->_table['banner']} AS a1
+                INNER JOIN {$this->_table['banner_disp']} AS b1 ON a1.BdIdx = b1.BdIdx AND b1.SiteCode = '{$site_code}'
+                INNER JOIN {$this->_table['admin']} AS c1 ON a1.RegAdminIdx = c1.wAdminIdx
+                WHERE a1.LinkType = 'layer' AND a1.SiteCode = '{$site_code}' AND a1.IsUse = 'Y' AND a1.IsStatus = 'Y'
+            ) AS a                
+            LEFT JOIN {$this->_table['event_lecture']} AS b ON a.BIdx = b.BIdx AND b.OptionCcds LIKE '%660004%'
+            LEFT JOIN {$this->_table['sys_category']} AS c ON a.CateCode = c.CateCode AND c.IsStatus = 'Y'
+        ";
+        $arr_condition['IN']['a.SiteCode'] = get_auth_site_codes(false, true);
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        $default_where = '
+            where (b.BIdx = \'0\' OR b.BIdx IS NULL)
+        ';
+        $where = $default_where . $where;
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

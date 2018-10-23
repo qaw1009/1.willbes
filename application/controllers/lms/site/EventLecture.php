@@ -114,12 +114,6 @@ class EventLecture extends \app\controllers\BaseController
         //고객센터 전화번호 조회
         $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
 
-        //배너조회
-        $arr_banner = $this->bannerRegistModel->listAllBanner(false, ['EQ' => ['LinkType' => 'layer']], null, null, ['A.BdIdx' => 'DESC']);
-
-        //이벤트에 등록된 배너식별자 조회
-        $arr_eventforbanner = $this->eventLectureModel->getFindEventForBannerArray(['RAW' => ['BIdx is ' => 'not null']]);
-
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $el_idx = $params[0];
@@ -171,8 +165,6 @@ class EventLecture extends \app\controllers\BaseController
             'offLineSite_list' => $offLineSite_list,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
-            'arr_banner' => $arr_banner,
-            'arr_eventforbanner' => $arr_eventforbanner,
             'site_csTel' => $site_csTel,
             'arr_requst_types' => $this->eventLectureModel->_requst_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,

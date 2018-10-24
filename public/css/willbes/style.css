@@ -6098,7 +6098,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .CSpartner .centerList ul li {
     display: inline-block;
-    margin: 0 5px;
+}
+.CSpartner .centerList ul li.arrow {
+    margin: 0 15px;
 }
 .CSpartner .centerList ul li .nTxt {
     font-size: 14px;
@@ -6211,18 +6213,18 @@ ul li.profList .willbes-Layer-ProfileBox {
 /* subContainer : Cs : CScenterIndex : ActIndex3 */
 .willbes-firstinfo {
     font-weight: 600;
-    height: 150px;
+    height: 110px;
     border-top: 1px solid #dedede;
     border-bottom: 3px solid #ccc;
 }
 .willbes-firstinfo ul li.Tit {
     position: relative;
-    width: 196px;
-    height: 146px;
-    font-size: 28px;
+    width: 210px;
+    height: 106px;
+    font-size: 24px;
     color: #3f3f3e;
     line-height: 32px;
-    padding: 26px;
+    padding: 22px;
     border-right: 1px solid #dedede;
 }
 .willbes-firstinfo ul li.Tit:after,
@@ -6265,7 +6267,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: #e4e4e4;
     width: 1px;
     height: 65px;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 .willbes-firstinfo ul li a {
     float: left;
@@ -6276,43 +6278,8 @@ ul li.profList .willbes-Layer-ProfileBox {
     text-align: center;
     margin: 0 1px;
 }
-.willbes-firstinfo ul li a:hover {
-    color: #0d74ae;
-}
-.willbes-firstinfo ul li a span {
-    display: block;
-    padding-top: 100px;
-}
-.willbes-firstinfo ul li.f-info1 a {
-    background: url("../../img/willbes/cs/icon_firstinfo1.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info2 a {
-    background: url("../../img/willbes/cs/icon_firstinfo2.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info3 a {
-    background: url("../../img/willbes/cs/icon_firstinfo3.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info4 a {
-    background: url("../../img/willbes/cs/icon_firstinfo4.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info5 a {
-    background: url("../../img/willbes/cs/icon_firstinfo5.gif") no-repeat center 15px;
-}
-
-.willbes-firstinfo ul li.f-info1 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo1_on.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info2 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo2_on.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info3 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo3_on.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info4 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo4_on.gif") no-repeat center 15px;
-}
-.willbes-firstinfo ul li.f-info5 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo5_on.gif") no-repeat center 15px;
+.willbes-firstinfo ul li a img {
+    padding-top: 15px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex3 : willbes-Layer-CScenterBox */

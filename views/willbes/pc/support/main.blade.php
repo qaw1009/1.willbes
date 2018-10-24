@@ -23,21 +23,21 @@
                                             <div class="nTxt">고객센터<br/>공지사항</div>
                                         </a>
                                     </li>
-                                    <li><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
+                                    <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
                                         <a href="{{site_url('support/faq/index')}}">
                                             <img src="{{ img_url('cs/icon_center2.png') }}">
                                             <div class="nTxt">자주하는<br/>질문</div>
                                         </a>
                                     </li>
-                                    <li><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
+                                    <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
                                         <a href="{{site_url('support/qna/index')}}">
                                             <img src="{{ img_url('cs/icon_center3.png') }}">
                                             <div class="nTxt">1:1 상담</div>
                                         </a>
                                     </li>
-                                    <li><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
+                                    <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
                                         <img src="{{ img_url('cs/icon_center4.png') }}">
                                         <div class="nTxt">전화상담</div>
@@ -236,14 +236,28 @@
                             <ul>
                                 <li class="Tit">
                                     윌비스<span class="NGR">에</span><br/>
-                                    <span class="tx-light-blue">처음</span><br/>
-                                    <span class="NGR">오셨나요?</span>
+                                    <span class="tx-light-blue">처음</span><span class="NGR">오셨나요?</span>
                                 </li>
-                                <li class="f-info1"><a href="#none"><span>주요메뉴 안내</span></a><span class="row-line">|</span></li>
-                                <li class="f-info2"><a href="#none"><span>회원가입</span></a><span class="row-line">|</span></li>
-                                <li class="f-info3"><a href="#none"><span>수강신청</span></a><span class="row-line">|</span></li>
-                                <li class="f-info4"><a href="#none"><span>주문/결제</span></a><span class="row-line">|</span></li>
-                                <li class="f-info5"><a href="#none"><span>강의수강</span></a></li>
+                                <li class="f-info1">
+                                    <a href="#none"><img src="{{ img_url('cs/icon_question.gif') }}"><div>주요메뉴 안내</div></a>
+                                    <span class="row-line">|</span>
+                                </li>
+
+                                <li class="f-info2">
+                                    <a href="#none"><img src="{{ img_url('cs/icon_question623.gif') }}"><div>회원정보</div></a>
+                                    <span class="row-line">|</span>
+                                </li>
+                                <li class="f-info3">
+                                    <a href="#none"><img src="{{ img_url('cs/icon_question624.gif') }}"><div>결제/환불</div></a>
+                                    <span class="row-line">|</span>
+                                </li>
+                                <li class="f-info4">
+                                    <a href="#none"><img src="{{ img_url('cs/icon_question625.gif') }}"><div>교재</div></a>
+                                    <span class="row-line">|</span>
+                                </li>
+                                <li class="f-info5">
+                                    <a href="#none"><img src="{{ img_url('cs/icon_question626.gif') }}"><div>온라인수강</div></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

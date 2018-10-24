@@ -159,6 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CartModel $cartModel                                                     Cart Model Class
  * @property DeliveryInfoModel $deliveryInfoModel                                 Delivery Info Model Class
  * @property SalesProductModel $salesProductModel                              Sales Product Model Class
+ * @property TmModel $tmModel                                                         Tm Model Class
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

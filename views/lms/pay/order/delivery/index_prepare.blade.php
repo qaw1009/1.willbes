@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs bar_tabs mb-0" role="tablist">
-                <li role="presentation" class="active"><a href="{{ site_url('/pay/order/delivery/index/book/invoice') }}" class="cs-pointer"><strong>송장등록</strong></a></li>
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/prepare') }}">발송준비 (환불반영)</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/invoice') }}">송장등록</a></li>
+                <li role="presentation" class="active"><a href="{{ site_url('/pay/order/delivery/index/book/prepare') }}" class="cs-pointer"><strong>발송준비 (환불반영)</strong></a></li>
                 <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/complete') }}">발송완료</a></li>
                 <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/cancel') }}">발송취소</a></li>
             </ul>
@@ -42,6 +42,12 @@
                             <option value="normal">일반배송료</option>
                             <option value="add">추가배송료</option>
                         </select>
+                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
+                            <option value="">결제상태</option>
+                            @foreach($arr_pay_status_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,6 +55,8 @@
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                             <option value="paid">결제완료일</option>
+                            <option value="invoice">송장등록일</option>
+                            <option value="refund">환불완료일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -82,24 +90,14 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
-            <form class="form-horizontal" id="invoice_form" name="invoice_form" method="POST" onsubmit="return false;">
-                {!! csrf_field() !!}
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="fa-ul mb-0">
-                            <li><i class="fa-li fa fa-check-square-o"></i>결제상태가 ‘결제완료’인 교재 정보만 노출되며, 송장을 등록하는 메뉴 (송장 등록시 ‘발송준비(환불반영)’ 탭으로 자동 이관)</li>
-                        </ul>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="fa-ul mb-0">
+                        <li><i class="fa-li fa fa-check-square-o"></i>송장 등록된 교재만 노출되며, ‘발송완료’ 처리 전 송장 수정 및 환불완료 교재 발송취소 처리 가능 (‘발송전취소’ 처리시 ‘발송취소’ 탭으로 자동 이관)</li>
+                        <li><i class="fa-li fa fa-check-square-o"></i>‘발송완료승인’ 클릭 시, ‘발송완료’ 탭으로 자동 이관</li>
+                    </ul>
                 </div>
-                <div class="form-group form-group-sm form-group-bordered mt-15">
-                    <label class="control-label col-md-1">송장정보</label>
-                    <div class="col-md-11 form-inline">
-                        <input type="file" id="attach_invoice_file" name="attach_invoice_file" class="form-control" title="송장엑셀파일" value="">
-                        <button type="button" name="btn_invoice_file_upload" class="btn btn-primary btn-sm mb-0 ml-10 mr-10">송장엑셀업로드</button>
-                        <button type="button" name="btn_invoice_file_download" class="btn btn-success btn-sm mb-0">송장엑셀다운로드</button>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     <div class="x_panel mt-10">
@@ -107,17 +105,24 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="rowspan">선택</th>
-                    <th class="">No</th>
-                    <th class="rowspan">주문번호</th>
-                    <th class="rowspan">회원정보</th>
-                    <th class="rowspan">결제완료일</th>
-                    <th class="">상품명</th>
-                    <th class="">결제금액</th>
-                    <th class="rowspan">배송료</th>
-                    <th class="rowspan">수령인정보</th>
-                    <th class="rowspan">배송지</th>
-                    <th class="rowspan">송장번호</th>
+                    <th rowspan="2" class="pb-30">선택</th>
+                    <th rowspan="2" class="pb-30">No</th>
+                    <th rowspan="2" class="rowspan pb-30">주문번호</th>
+                    <th rowspan="2" class="rowspan pb-30">회원정보</th>
+                    <th rowspan="2" class="rowspan pb-30">결제완료일</th>
+                    <th rowspan="2" class="pb-30">상품명</th>
+                    <th rowspan="2" class="pb-30">결제금액</th>
+                    <th rowspan="2" class="rowspan pb-30">배송료</th>
+                    <th rowspan="2" class="pb-30">결제상태</th>
+                    <th rowspan="2" class="pb-30">환불완료일</th>
+                    <th rowspan="2" class="rowspan pb-30">수령인정보</th>
+                    <th rowspan="2" class="rowspan pb-30">배송지</th>
+                    <th colspan="3" class="">송장정보</th>
+                </tr>
+                <tr>
+                    <th class="pb-20" style="min-width: 165px;">송장번호</th>
+                    <th>등록자<br/>(수정자)</th>
+                    <th>등록일<br/>(수정일)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -128,7 +133,6 @@
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
-        var $invoice_form = $('#invoice_form');
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
@@ -141,11 +145,12 @@
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
-                    { text: '<i class="fa fa-print mr-5"></i> 프린트', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-print' },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 송장번호저장', className: 'btn-sm btn-primary border-radius-reset btn-invoice-regist' }
+                    { text: '<i class="fa fa-pencil mr-5"></i> 송장번호수정', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-invoice-modify' },
+                    { text: '<i class="fa fa-undo mr-5"></i> 발송전취소', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-send-cancel' },
+                    { text: '<i class="fa fa-pencil mr-5"></i> 발송완료승인', className: 'btn-sm btn-success border-radius-reset btn-send-complete' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/delivery/listAjax/book/invoice') }}',
+                    'url' : '{{ site_url('/pay/order/delivery/listAjax/book/prepare') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -153,8 +158,8 @@
                 },
                 rowsGroup: ['.rowspan'],
                 columns: [
-                    {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="order_idx" class="flat" value="' + data + '">';
+                    {'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
+                        return '<input type="checkbox" name="order_prod_idx" class="flat" value="' + data + '" data-pay-status-ccd-name="' + row.PayStatusCcdName + '">';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -176,6 +181,10 @@
                     {'data' : 'tDeliveryPrice', 'render' : function(data, type, row, meta) {
                         return data > 0 ? '[일반] ' + addComma(data) + (row.tDeliveryAddPrice > 0 ? '<br/>[추가] ' + addComma(row.tDeliveryAddPrice) : '') : '';
                     }},
+                    {'data' : 'PayStatusCcdName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return '';
+                    }},
                     {'data' : 'Receiver', 'render' : function(data, type, row, meta) {
                         return data + '<br/>' + row.ReceiverPhone;
                     }},
@@ -183,64 +192,87 @@
                         return row.ZipCode + '<br/>' + data + '<br/>' + row.Addr2;
                     }},
                     {'data' : 'InvoiceNo', 'render' : function(data, type, row, meta) {
-                        return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '" style="width: 120px;" />' +
-                            '<button name="btn_invoice_regist" class="btn btn-xs btn-success mb-0 ml-5" data-order-idx="' + row.OrderIdx + '">저장</button>' +
-                            '<button name="btn_invoice_cancel" class="btn btn-xs btn-danger mb-0 mr-0" data-order-idx="' + row.OrderIdx + '">취소</button>';
+                        return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-prod-idx="' + row.OrderProdIdx + '" style="width: 120px;" />' +
+                            '<button name="btn_invoice_modify" class="btn btn-xs btn-success mb-0 ml-5 mr-0" data-order-prod-idx="' + row.OrderProdIdx + '">수정</button>';
+                    }},
+                    {'data' : 'InvoiceRegAdminName', 'render' : function(data, type, row, meta) {
+                        return data + (row.InvoiceUpdAdminName !== null ? '<br/>(' + row.InvoiceUpdAdminName + ')' : '');
+                    }},
+                    {'data' : 'InvoiceRegDatm', 'render' : function(data, type, row, meta) {
+                        return data + (row.InvoiceUpdDatm !== null ? '<br/>(' + row.InvoiceUpdDatm + ')' : '');
                     }}
                 ]
             });
 
-            // 송장엑셀업로드 버튼 클릭
-            $('button[name="btn_invoice_file_upload"]').on('click', function() {
-                registInvoiceNo('excel', {});
-            });
-
-            // 송장엑셀다운로드 버튼 클릭
-            $('button[name="btn_invoice_file_download"]').on('click', function() {
-                location.replace('{{ site_url('/pay/order/delivery/sampleDownload') }}');
-            });
-
-            // 프린트 버튼 클릭
-            $('.btn-print').on('click', function() {
+            // 발송전취소, 발송완료승인 버튼 클릭
+            $('.btn-send-cancel, .btn-send-complete').on('click', function() {
                 var $params = {};
-                var $order_idx = $list_table.find('input[name="order_idx"]');
+                var confirm_msg = '', no_data_msg = '', check_error_msg = '';
+                var is_check = true;
+                var $order_prod_idx = $list_table.find('input[name="order_prod_idx"]');
+                var delivery_status = $(this).prop('class').indexOf('btn-send-complete') !== -1 ? 'complete' : 'cancel';
 
-                $order_idx.each(function(idx) {
+                if (delivery_status === 'complete') {
+                    confirm_msg = '발송완료를 승인하시겠습니까?\n승인된 정보는 ‘발송완료탭’으로 이관됩니다.';
+                    no_data_msg = '발송완료 승인할 주문을 선택해 주세요.';
+                    check_error_msg = '결제완료된 주문만 발송완료 승인이 가능합니다.';
+                } else {
+                    confirm_msg = '선택된 주문의 발송을 취소하시겠습니까?';
+                    no_data_msg = '발송전 취소할 주문을 선택해 주세요.';
+                    check_error_msg = '환불완료된 주문만 발송전 취소가 가능합니다.';
+                }
+
+                $order_prod_idx.each(function(idx) {
                     if ($(this).is(':checked') === true) {
+                        if (delivery_status === 'complete' && $(this).data('pay-status-ccd-name').indexOf('환불') > -1) {
+                            is_check = false;
+                            return false;
+                        } else if (delivery_status === 'cancel' && $(this).data('pay-status-ccd-name').indexOf('결제') > -1) {
+                            is_check = false;
+                            return false;
+                        }
                         $params[idx] = $(this).val();
                     }
                 });
 
+                if (is_check === false) {
+                    alert(check_error_msg);
+                    return;
+                }
+
                 if (Object.keys($params).length < 1) {
-                    alert('프린트할 주문을 선택해 주세요.');
+                    alert(no_data_msg);
                     return;
                 }
 
-                if (Object.keys($params).length > 3) {
-                    alert('프린트할 주문을 3건 이하로 선택해 주세요.');
+                if (!confirm(confirm_msg)) {
                     return;
                 }
 
-                $('.btn-print').setLayer({
-                    'url' : '{{ site_url('/pay/order/delivery/print') }}',
-                    'width' : 1200,
-                    'add_param_type' : 'param',
-                    'add_param' : [
-                        { 'id' : 'params', 'value' : JSON.stringify($params) },
-                        { 'id' : 'status', 'value' : 'invoice' }
-                    ]
-                });
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'status' : delivery_status,
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/pay/order/delivery/restatus') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
 
-            // 송장번호 저장 버튼 클릭
-            $('.btn-invoice-regist').on('click', function() {
+            // 송장번호 수정 버튼 클릭
+            $('.btn-invoice-modify').on('click', function() {
                 var $params = {};
-                var $order_idx = $list_table.find('input[name="order_idx"]');
+                var $order_prod_idx = $list_table.find('input[name="order_prod_idx"]');
                 var $invoice_no = $list_table.find('input[name="invoice_no"]');
                 var invoice_no = '';
                 var is_check = true;
 
-                $order_idx.each(function(idx) {
+                $order_prod_idx.each(function(idx) {
                     if ($(this).is(':checked') === true) {
                         invoice_no = $invoice_no.eq(idx).val();
                         if (invoice_no.trim().length < 1) {
@@ -256,78 +288,50 @@
                     return;
                 }
 
-                registInvoiceNo('form', $params);
+                modifyInvoiceNo($params);
             });
 
-            // 개별 송장번호 저장 버튼 클릭
-            $list_table.on('click', 'button[name="btn_invoice_regist"]', function() {
+            // 개별 송장번호 수정 버튼 클릭
+            $list_table.on('click', 'button[name="btn_invoice_modify"]', function() {
                 var $params = {};
-                var order_idx = $(this).data('order-idx');
-                var invoice_no = $list_table.find('input[name="invoice_no"][data-order-idx="' + order_idx + '"]').val();
+                var order_prod_idx = $(this).data('order-prod-idx');
+                var invoice_no = $list_table.find('input[name="invoice_no"][data-order-prod-idx="' + order_prod_idx + '"]').val();
 
                 if (invoice_no.trim().length < 1) {
                     alert('송장번호를 입력해 주세요.');
                     return;
                 }
 
-                $params[order_idx] = invoice_no;
-                registInvoiceNo('form', $params);
+                $params[order_prod_idx] = invoice_no;
+                modifyInvoiceNo($params);
             });
 
-            // 개별 송장번호 취소 버튼 클릭
-            $list_table.on('click', 'button[name="btn_invoice_cancel"]', function() {
-                var order_idx = $(this).data('order-idx');
-                $list_table.find('input[name="invoice_no"][data-order-idx="' + order_idx + '"]').val('');
-            });
-
-            // 송장번호 저장
-            var registInvoiceNo = function($data_src, $params) {
-                var data, is_file, files;
-
-                if ($data_src === 'form') {
-                    data = {
-                        '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                        '_method' : 'POST',
-                        'data_src' : $data_src,
-                        'params' : JSON.stringify($params)
-                    };
-                    is_file = false;
-                } else {
-                    files = $invoice_form.find('input[name="attach_invoice_file"]')[0].files[0];
-                    if (typeof files === 'undefined') {
-                        alert('송장 엑셀파일을 선택해 주세요.');
-                        return;
-                    }
-
-                    data = new FormData();
-                    data.append('{{ csrf_token_name() }}', $invoice_form.find('input[name="{{ csrf_token_name() }}"]').val());
-                    data.append('_method', 'POST');
-                    data.append('data_src', $data_src);
-                    data.append('attach_invoice_file', $invoice_form.find('input[name="attach_invoice_file"]')[0].files[0]);
-                    is_file = true;
-                }
-
-                if (!confirm('송장번호 저장 후 ‘발송준비(환불반영)’탭으로 배송정보를 이관하시겠습니까?')) {
+            // 송장번호 수정
+            var modifyInvoiceNo = function($params) {
+                if (!confirm('현재 정보로 송장번호를 수정하시겠습니까?')) {
                     return;
                 }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'data_src' : 'form',
+                    'params' : JSON.stringify($params)
+                };
 
                 sendAjax('{{ site_url('/pay/order/delivery/redata') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
-
-                        if ($data_src === 'excel') {
-                            $invoice_form.find('input[name="attach_invoice_file"]').val('');
-                        }
                     }
-                }, showError, false, 'POST', 'json', is_file);
+                }, showError, false, 'POST');
             };
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/delivery/excel/book/invoice') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/order/delivery/excel/book/prepare') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 

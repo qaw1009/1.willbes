@@ -7,6 +7,7 @@ class Order extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
+    private $_list_add_join = array('delivery_info');
 
     public function __construct()
     {
@@ -41,10 +42,10 @@ class Order extends BaseOrder
         $arr_condition = $this->_getListConditions();
 
         $list = [];
-        $count = $this->orderListModel->listAllOrder(true, $arr_condition);
+        $count = $this->orderListModel->listAllOrder(true, $arr_condition, null, null, [], $this->_list_add_join);
 
         if ($count > 0) {
-            $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy());
+            $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy(), $this->_list_add_join);
         }
 
         return $this->response([
@@ -69,10 +70,10 @@ class Order extends BaseOrder
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
-                //'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),
+                'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),
                 'O.IsEscrow' => $this->_reqP('search_chk_is_escrow'),
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon'),
-                //'OPR.IsApproval' => $this->_reqP('search_chk_is_approval'),
+                'OPR.IsApproval' => $this->_reqP('search_chk_is_approval'),
             ],
             'IN' => ['O.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
             'ORG1' => [
@@ -104,12 +105,12 @@ class Order extends BaseOrder
                 $arr_condition['EQ'] = ['O.PayMethodCcd' => $this->orderListModel->_pay_method_ccd['vbank']];
                 $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
                 break;
-/*            case 'refund' :
+            case 'refund' :
                 $arr_condition['BDT'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'delivery_send' :
                 $arr_condition['BDT'] = ['OPD.DeliverySendDatm' => [$search_start_date, $search_end_date]];
-                break;*/
+                break;
             default :
                 $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
                 break;
@@ -140,7 +141,7 @@ class Order extends BaseOrder
             , ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, DeliveryStatusCcdName, DiscRate';
 
         $arr_condition = $this->_getListConditions();
-        $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy());
+        $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
 
         // export excel
         $this->load->library('excel');

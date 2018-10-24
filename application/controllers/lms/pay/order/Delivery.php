@@ -110,8 +110,20 @@ class Delivery extends BaseOrder
         // 탭별 조회 조건
         switch ($this->_tab) {
             case 'invoice' :
-                    $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['paid'];
-                    $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
+                $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['paid'];
+                $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
+                break;
+            case 'prepare' :
+                $arr_condition['IN']['OP.PayStatusCcd'] = $this->_delivery_pay_status_ccd;
+                $arr_condition['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['prepare'];
+                break;
+            case 'complete' :
+                $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['paid'];
+                $arr_condition['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['complete'];
+                break;
+            case 'cancel' :
+                $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['refund'];
+                $arr_condition['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['cancel'];
                 break;
         }
 
@@ -120,9 +132,17 @@ class Delivery extends BaseOrder
         $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
 
         switch ($this->_reqP('search_date_type')) {
-            case 'vbank' :
-                $arr_condition['EQ'] = ['O.PayMethodCcd' => $this->orderListModel->_pay_method_ccd['vbank']];
-                $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
+            case 'invoice' :
+                $arr_condition['BDT'] = ['OPD.InvoiceRegDatm' => [$search_start_date, $search_end_date]];
+                break;
+            case 'complete' :
+                $arr_condition['BDT'] = ['OPD.DeliverySendDatm' => [$search_start_date, $search_end_date]];
+                break;
+            case 'cancel' :
+                $arr_condition['BDT'] = ['OPD.StatusUpdDatm' => [$search_start_date, $search_end_date]];
+                break;
+            case 'refund' :
+                $arr_condition['BDT'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
                 break;
             default :
                 $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
@@ -155,6 +175,27 @@ class Delivery extends BaseOrder
                 $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '수령인명', '수령인휴대폰번호', '배송지우편번호', '배송지주소', '배송지상세주소'];
                 $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, Receiver, ReceiverPhone, ZipCode, Addr1, Addr2';
                 $file_name = '송장등록';
+                break;
+            case 'prepare' :
+                $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '결제상태', '환불완료일'
+                    , '수령인명', '수령인휴대폰번호', '배송지우편번호', '배송지주소', '배송지상세주소', '송장번호', '송장번호등록자', '송장번호등록일', '송장번호수정자', '송장번호수정일'];
+                $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, PayStatusCcdName, "" as RefundDatm
+                    , Receiver, ReceiverPhone, ZipCode, Addr1, Addr2, InvoiceNo, InvoiceRegAdminName, InvoiceRegDatm, InvoiceUpdAdminName, InvoiceUpdDatm';
+                $file_name = '발송준비';
+                break;
+            case 'complete' :
+                $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '수령인명', '수령인휴대폰번호'
+                    , '배송지우편번호', '배송지주소', '배송지상세주소', '송장번호', '송장번호등록자', '송장번호등록일', '송장번호수정자', '송장번호수정일', '발송완료승인자', '발송완료승인일'];
+                $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, Receiver, ReceiverPhone
+                    , ZipCode, Addr1, Addr2, InvoiceNo, InvoiceRegAdminName, InvoiceRegDatm, InvoiceUpdAdminName, InvoiceUpdDatm, DeliverySendAdminName, DeliverySendDatm';
+                $file_name = '발송완료';
+                break;
+            case 'cancel' :
+                $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품명', '결제금액', '배송료', '추가배송료', '결제상태', '환불완료일'
+                    , '수령인명', '수령인휴대폰번호', '배송지우편번호', '배송지주소', '배송지상세주소', '송장번호', '송장번호등록자', '송장번호등록일', '송장번호수정자', '송장번호수정일', '발송전취소자', '발송전취소일'];
+                $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdName, RealPayPrice, tDeliveryPrice, tDeliveryAddPrice, PayStatusCcdName, "" as RefundDatm
+                    , Receiver, ReceiverPhone, ZipCode, Addr1, Addr2, InvoiceNo, InvoiceRegAdminName, InvoiceRegDatm, InvoiceUpdAdminName, InvoiceUpdDatm, StatusUpdAdminName, StatusUpdDatm';
+                $file_name = '발송전취소';
                 break;
             default :
                 show_error('잘못된 접근 입니다.');
@@ -206,7 +247,7 @@ class Delivery extends BaseOrder
 
         $is_regist = $this->_reqP('_method') == 'POST' ? true : false;
         if ($data_src == 'form') {
-            $idx_column = 'OrderIdx';
+            $idx_column = $is_regist === true ? 'OrderIdx' : 'OrderProdIdx';
             $params = json_decode($this->_reqP('params'), true);
         } else {
             $idx_column = 'OrderNo';
@@ -237,5 +278,76 @@ class Delivery extends BaseOrder
         }
 
         return $data;
+    }
+
+    /**
+     * 발송전취소, 발송완료승인 상태 업데이트
+     */
+    public function restatus()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'status', 'label' => '변경배송상태', 'rules' => 'trim|required|in_list[complete,cancel]'],
+            ['field' => 'params', 'label' => '주문상품식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->deliveryInfoModel->modifyDeliveryStatus($this->_reqP('status'), json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '배송상태가 변경 되었습니다.', $result);
+    }
+
+    /**
+     * 프린트 폼
+     */
+    public function print()
+    {
+        $data = [];
+        $params = json_decode($this->_req('params'), true);
+        $delivery_status = $this->_req('status');
+
+        if (empty($params) === true || empty($delivery_status) === true) {
+            echo 'ERR:필수 파라미터 오류입니다.';
+            return null;
+        } else {
+            // 기본 조건
+            $arr_condition = [
+                'EQ' => [
+                    'P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['book'],
+                    'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid'],
+                ],
+                'IN' => [
+                    'O.OrderIdx' => array_values($params)
+                ]
+            ];
+
+            if ($delivery_status == 'invoice') {
+                $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
+            } else {
+                $arr_condition['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['complete'];
+            }
+
+            // 주문정보 조회 (회원정보 추가)
+            $order_rows = $this->orderListModel->listAllOrder(false, $arr_condition, null, null, [], array_merge($this->_list_add_join, ['member_info']));
+
+            if (empty($order_rows) === false) {
+                $tmp_order_idx = 0;
+                foreach ($order_rows as $idx => $order_row) {
+                    if ($tmp_order_idx != $order_row['OrderIdx']) {
+                        $data[$order_row['OrderIdx']]['order'] = $order_row;
+                    }
+                    $data[$order_row['OrderIdx']]['order_prod'][] = $order_row;
+
+                    $tmp_order_idx = $order_row['OrderIdx'];
+                }
+            }
+        }
+
+        $this->load->view('pay/order/delivery/print', [
+            'data' => $data
+        ]);        
     }
 }

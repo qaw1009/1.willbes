@@ -13,7 +13,7 @@
 @endsection
 
 @section('layer_content')
-    <div class="form-group form-group-sm mb-0">
+    <div class="form-group form-group-sm no-border-bottom mb-0">
         <p class="form-control-static"><span class="required">*</span> 검색한 회원 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
     </div>
     <div class="row">

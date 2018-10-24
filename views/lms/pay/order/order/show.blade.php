@@ -121,7 +121,7 @@
                                 <tr>
                                     <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
                                     <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
-                                    <td>{{ empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcd'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' }}</td>
+                                    <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
                                     <td>{{ $order_prod_row['IsUseCoupon'] }} {{ $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' }}</td>

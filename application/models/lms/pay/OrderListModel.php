@@ -6,7 +6,7 @@ require_once APPPATH . 'models/lms/pay/BaseOrderModel.php';
 class OrderListModel extends BaseOrderModel
 {
     /**
-     * TODO : 환불, 배송정보 추가 필요
+     * TODO : 환불 추가 필요
      * 주문 목록 조회
      * @param bool|string $is_count
      * @param array $arr_condition
@@ -69,7 +69,7 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * TODO : 환불, 배송정보 추가 필요
+     * TODO : 환불 추가 필요
      * 주문목록 엑셀 다운로드
      * @param string $column
      * @param array $arr_condition
@@ -229,6 +229,15 @@ class OrderListModel extends BaseOrderModel
                     , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
                     , ADS.wAdminName as DeliverySendAdminName, ASU.wAdminName as StatusUpdAdminName                
                 ';
+            }
+
+            // 회원정보 추가
+            if (in_array('member_info', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['member_info'] . ' as MI		
+                        on M.MemIdx = MI.MemIdx';
+                $column .= ', M.BirthDay as MemBirthDay, M.Sex as MemSex, fn_dec(M.MailEnc) as MemMail, MI.ZipCode as MemZipCode, MI.Addr1 as MemAddr1, fn_dec(MI.Addr2Enc) as MemAddr2';
+                $excel_column .= ', M.BirthDay as MemBirthDay, M.Sex as MemSex, fn_dec(M.MailEnc) as MemMail, MI.ZipCode as MemZipCode, MI.Addr1 as MemAddr1, fn_dec(MI.Addr2Enc) as MemAddr2';
             }
         }
 

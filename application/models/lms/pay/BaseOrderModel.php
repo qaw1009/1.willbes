@@ -24,6 +24,7 @@ class BaseOrderModel extends WB_Model
         'bms_book' => 'wbs_bms_book',
         'my_lecture' => 'lms_my_lecture',
         'member' => 'lms_member',
+        'member_info' => 'lms_member_otherinfo',
         'category' => 'lms_sys_category',
         'subject' => 'lms_product_subject',
         'code' => 'lms_sys_code',

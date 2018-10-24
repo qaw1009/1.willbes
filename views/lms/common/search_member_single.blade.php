@@ -13,7 +13,7 @@
 @endsection
 
 @section('layer_content')
-    <div class="form-group form-group-sm mb-0">
+    <div class="form-group form-group-sm no-border-bottom mb-0">
         <p class="form-control-static"><span class="required">*</span> 검색한 회원 정보를 선택해 주세요. (다중 선택 불가능합니다.)</p>
     </div>
     <div class="form-group form-group-bordered pt-10 pb-5">

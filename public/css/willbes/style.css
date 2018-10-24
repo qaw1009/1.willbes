@@ -6693,6 +6693,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .MyInfoBox table.myTable {
     width: 115px;
     height: 68px;
+    font-size: 13px;
 }
 .MyInfoBox table.myTable td.subTit {
     text-align: left;

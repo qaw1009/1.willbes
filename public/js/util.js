@@ -669,20 +669,21 @@ function setRowspan(classname) {
 (function($){
     $.fn.setLayer = function(options){
         var settings = $.extend({
-            url : "",
+            url : '',
             // add_param_type : add_param을 가져올 유형
             // 1) input : ID가 name 파라미터인 input을 찾아 해당 value를 ajax get의 파라미터로 함께 넘겨준다.
             // 2) attr_param : 클릭된 버튼의 data-ID 어트리뷰트의 value를 ajax get 의 파라미터로 함께 넘겨준다.
             // 3) attr_url : 클릭된 버튼의 data-ID 어트리뷰트의 value를 ajax get의 url로 함께 넘겨준다. url/param1_value/param2_value => 순서는 add_param 순서이다.
+            // 4) param : add_param의 id와 value 값을 그대로 넘겨준다.
             add_param_type : 'input',
-            add_param : [],  // 추가로 넘겨주는 값  ex) [{id : 'service_id', 'name' : '서비스 아이디', 'required' : true}
-            width : "620",
-            max_height : "400",   // scroll/hidden 일 경우만 쓰임
-            overflow : "auto",
+            add_param : [],  // 추가로 넘겨주는 값  ex) [{id : 'service_id', 'name' : '서비스 아이디', 'required' : true}], param => [{id : 'service_id', 'value' : '값'}]
+            width : '620',
+            max_height : '400',   // scroll/hidden 일 경우만 쓰임
+            overflow : 'auto',
             backdrop : 'static',        // true : 배경 포함, 클릭시 닫힘 / false : 배경 없음, 클릭시 닫히지 않음 / 'static' : 배경 포함, 클릭시 닫히지 않음
             modal_id : 'pop_modal'   // modal html element id
         }, options);
-        this.css('cursor','pointer');
+        this.css('cursor', 'pointer');
 
         // modal html source
         var modal_html = '<div class="modal" id="' + settings.modal_id + '" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">...</div></div></div>';
@@ -692,14 +693,15 @@ function setRowspan(classname) {
         }
 
         $(document).off("click", this.selector);
-        $(document).on("click", this.selector ,function(){
+        $(document).on("click", this.selector, function() {
             var event_btn = $(this);
+            var i, _param = '', _param_value = '';
 
-            for (var i = settings.add_param.length - 1; i >= 0; i--) {
-                var _param = settings.add_param[i];
+            for (i = settings.add_param.length - 1; i >= 0; i--) {
+                _param = settings.add_param[i];
                 if(_param.required){
-                    var _param_value = '';
-                    if(settings.add_param_type === 'input' && $("#"+_param.id).length >0) {
+                    _param_value = '';
+                    if(settings.add_param_type === 'input' && $('#' +_param.id).length > 0) {
                         _param_value = $("#"+_param.id).val();
                     } else if(settings.add_param_type === 'attr_param' || settings.add_param_type === 'attr_url') {
                         _param_value = event_btn.attr('data-'+_param.id);
@@ -710,7 +712,7 @@ function setRowspan(classname) {
                         return false;
                     }
                 }
-            };
+            }
 
             $('body').append(modal_html);
             var pop_modal = $("#" + settings.modal_id);
@@ -722,7 +724,7 @@ function setRowspan(classname) {
                 $(this).remove();
             });
 
-            var callback = function(d){
+            var callback = function(d) {
                 if(d === 'fail') {
                     notifyAlert('error', '알림', '표시할 내역이 없습니다.');
                     pop_modal.modal("toggle");
@@ -748,9 +750,10 @@ function setRowspan(classname) {
 
             var _url = settings.url;
             var _data = {};
-            for (var i = 0; i < settings.add_param.length; i++) {
-                var _param = settings.add_param[i];
-                var _param_value = null;
+            for (i = 0; i < settings.add_param.length; i++) {
+                _param = settings.add_param[i];
+                _param_value = null;
+
                 if(settings.add_param_type === 'input') {
                     _param_value = $("#"+_param.id).val();
                     if(_param_value) _data[_param.id] = _param_value;
@@ -760,8 +763,10 @@ function setRowspan(classname) {
                 } else if(settings.add_param_type === 'attr_url') {
                     _param_value = event_btn.attr('data-'+_param.id);
                     _url += '/' + _param_value
+                } else if(settings.add_param_type === 'param') {
+                    _data[_param.id] = _param.value;
                 }
-            };
+            }
 
             sendAjax(_url, _data, callback, function(req, status, err){
                 showError(req, status);

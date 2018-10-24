@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <!-- ActIndex2 -->
-                <div class="ActIndex2 mt35">
+                <div class="ActIndex2 mt45">
                     <div class="willbes-listTable widthAuto940 f_inherit">
                         <div class="will-Tit NG">최근 수강강좌<span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다.</span></div>
                         <div class="willbes-Lec-Table NG d_block">
@@ -220,7 +220,7 @@
                     </div>
                 </div>
                 <!-- ActIndex3 -->
-                <div class="ActIndex3 mt35">
+                <div class="ActIndex3 mt45">
                     <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
                         <div class="will-Tit NG">나의 상담내역 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM tx-gray">
@@ -241,7 +241,7 @@
                     </div>
                 </div>
                 <!-- ActIndex4 -->
-                <div class="ActIndex4 mt35">
+                <div class="ActIndex4 mt45">
                     <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
                         <div class="will-Tit NG">공지사항 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM tx-gray">

@@ -676,7 +676,7 @@ function setRowspan(classname) {
             // 3) attr_url : 클릭된 버튼의 data-ID 어트리뷰트의 value를 ajax get의 url로 함께 넘겨준다. url/param1_value/param2_value => 순서는 add_param 순서이다.
             // 4) param : add_param의 id와 value 값을 그대로 넘겨준다.
             add_param_type : 'input',
-            add_param : [],  // 추가로 넘겨주는 값  ex) [{id : 'service_id', 'name' : '서비스 아이디', 'required' : true}], param => [{id : 'service_id', 'value' : '값'}]
+            add_param : [],  // 추가로 넘겨주는 값  ex) [{id : 'service_id', 'name' : '서비스 아이디', 'required' : true}], param => [{id : 'service_id', 'name' : '서비스 아이디', 'value' : '값', 'required' : true}]
             width : '620',
             max_height : '400',   // scroll/hidden 일 경우만 쓰임
             overflow : 'auto',
@@ -705,6 +705,8 @@ function setRowspan(classname) {
                         _param_value = $("#"+_param.id).val();
                     } else if(settings.add_param_type === 'attr_param' || settings.add_param_type === 'attr_url') {
                         _param_value = event_btn.attr('data-'+_param.id);
+                    } else if(settings.add_param_type === 'param') {
+                        _param_value = _param.value;
                     }
 
                     if(_param_value === ''){

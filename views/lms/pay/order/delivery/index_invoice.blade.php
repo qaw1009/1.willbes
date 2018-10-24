@@ -226,8 +226,8 @@
                     'width' : 1200,
                     'add_param_type' : 'param',
                     'add_param' : [
-                        { 'id' : 'params', 'value' : JSON.stringify($params) },
-                        { 'id' : 'status', 'value' : 'invoice' }
+                        { 'id' : 'params', 'name' : '주문식별자', 'value' : JSON.stringify($params), 'required' : true },
+                        { 'id' : 'status', 'name' : '배송상태', 'value' : 'invoice', 'required' : true }
                     ]
                 });
             });

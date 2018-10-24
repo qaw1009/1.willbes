@@ -97,31 +97,84 @@
                     <div class="MyInfoBox NG">
                         <ul>
                             <li>
-                                <div class="Tit bg-blue NGEB">온라인강좌<br/><span class="tx-light-gray NG">현황</span></div>
-                                <dl>
-                                    <dt>무한PASS<br/><a class="tx-blue" href="#none">10</a>개</dt>
-                                    <dt>수강중<br/><a class="tx-blue" href="#none">5</a>개</dt>
-                                    <dt>수강대기<br/><a class="tx-blue" href="#none">10</a>개</dt>
-                                </dl>
+                                <div class="Tit bg-bright-blue tx-blue NGEB">온라인강좌<br/><span class="NG">현황</span></div>
+                                <div class="TableInfo">
+                                    <table cellspacing="0" cellpadding="0" class="myTable">
+                                        <colgroup>
+                                            <col style="width: 100px;"/>   
+                                            <col style="width: 40px;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="subTit">무한PASS</td>
+                                                <td><a class="tx-blue" href="#none">10</a>개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="subTit">수강중</td>
+                                                <td><a class="tx-blue" href="#none">5</a>개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="subTit">수강대기</td>
+                                                <td><a class="tx-blue" href="#none">10</a>개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </li>
                             <li class="sm">
-                                <div class="Tit bg-blue NGEB">학원강좌<br/><span class="tx-light-gray NG">현황</span></div>
-                                <dl>
-                                    <dt>수강신청<br/><a class="tx-blue" href="#none">5</a>개</dt>
-                                </dl>
+                                <div class="Tit bg-bright-blue tx-blue NGEB">학원강좌<br/><span class="NG">현황</span></div>
+                                <div class="TableInfo">
+                                    <table cellspacing="0" cellpadding="0" class="myTable">
+                                        <colgroup>
+                                            <col style="width: 100px;"/>   
+                                            <col style="width: 40px;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="subTit">수강신청</td>
+                                                <td><a class="tx-blue" href="#none">5</a>개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </li>
                             <li>
-                                <div class="Tit bg-heavy-gray NGEB">포인트<br/><span class="tx-light-gray NG">현황</span></div>
-                                <dl class="point">
-                                    <dt>강좌<br/><a class="tx-blue" href="#none">410,000</a>P</dt>
-                                    <dt>교재<br/><a class="tx-blue" href="#none">130,000</a>P</dt>
-                                </dl>
+                                <div class="Tit bg-bright-gray tx-dark-black NGEB">포인트<br/><span class="NG">현황</span></div>
+                                <div class="TableInfo">
+                                    <table cellspacing="0" cellpadding="0" class="myTable">
+                                        <colgroup>
+                                            <col style="width: 100px;"/>   
+                                            <col style="width: 40px;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="subTit">강좌</td>
+                                                <td><a class="tx-blue" href="#none">410,000</a>P</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="subTit">교재</td>
+                                                <td><a class="tx-blue" href="#none">130,000</a>P</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </li>
                             <li class="sm">
-                                <div class="Tit bg-heavy-gray NGEB">쿠폰<br/><span class="tx-light-gray NG">현황</span></div>
-                                <dl>
-                                    <dt>쿠폰<br/><a class="tx-blue" href="#none">5</a>장</dt>
-                                </dl>
+                                <div class="Tit bg-bright-gray tx-dark-black NGEB">쿠폰<br/><span class="NG">현황</span></div>
+                                <div class="TableInfo">
+                                    <table cellspacing="0" cellpadding="0" class="myTable">
+                                        <colgroup>
+                                            <col style="width: 100px;"/>   
+                                            <col style="width: 40px;"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="subTit">쿠폰</td>
+                                                <td><a class="tx-blue" href="#none">5</a>장</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -150,7 +203,7 @@
                 </div>
             </div>
             <!-- ActIndex2 -->
-            <div class="ActIndex2 mt35">
+            <div class="ActIndex2 mt45">
                 <div class="willbes-listTable widthAuto940 f_inherit">
                     <div class="will-Tit NG">최근 수강강좌<span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다.</span></div>
                     <div class="willbes-Lec-Table NG d_block">
@@ -247,7 +300,7 @@
                 </div>
             </div>
             <!-- ActIndex3 -->
-            <div class="ActIndex3 mt35">
+            <div class="ActIndex3 mt45">
                 <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
                     <div class="will-Tit NG">나의 상담내역 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                     <ul class="List-Table GM tx-gray">
@@ -268,7 +321,7 @@
                 </div>
             </div>
             <!-- ActIndex4 -->
-            <div class="ActIndex4 mt35">
+            <div class="ActIndex4 mt45">
                 <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
                     <div class="will-Tit NG">공지사항 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                     <ul class="List-Table GM tx-gray">

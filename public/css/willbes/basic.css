@@ -866,6 +866,9 @@ select[disabled] {
 .bg-black {
   background: #333;
 }
+.bg-bright-gray {
+  background: #d8d8d8;
+}
 .bg-light-gray {
   background: #f5f5f5;
 }
@@ -892,6 +895,9 @@ select[disabled] {
 }
 .bg-light-blue {
   background: #eef7fc;
+}
+.bg-bright-blue {
+  background: #c7e5f7;
 }
 .bg-blue {
   background: #1a8ccb;

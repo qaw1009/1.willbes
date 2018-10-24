@@ -6666,15 +6666,12 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .MyInfoBox ul li {
     float: left;
-    width: 340px;
+    width: 277px;
     height: 110px;
     border: 1px solid #d7d7d7;
     box-shadow: 0 2px 0 #e5e5e5;
     margin: 0 10px 5px 0;
     text-align: center;
-}
-.MyInfoBox ul li.sm {
-    width: 215px;
 }
 .MyInfoBox ul li .Tit {
     float: left;
@@ -6689,28 +6686,21 @@ ul li.profList .willbes-Layer-ProfileBox {
     background-position: 65px 85px;
     background-repeat: no-repeat; 
 }
-.MyInfoBox dl {
-    height: 108px;
-    text-align: center; 
+.MyInfoBox .TableInfo {
+    float: right;
+    margin: 20px 30px;
 }
-.MyInfoBox dl dt {
-    display: inline-block;
-    line-height: 20px;
-    font-size: 13px;
-    margin: 34px 12px;
-    letter-spacing: 0;
+.MyInfoBox table.myTable {
+    width: 115px;
+    height: 68px;
 }
-.MyInfoBox dl dt span {
-    vertical-align: baseline;
+.MyInfoBox table.myTable td.subTit {
+    text-align: left;
 }
-.MyInfoBox dl.point dt {
-    padding: 34px 29px;
-    margin: 0;
-    border-left: 1px solid #d7d7d7;
+.MyInfoBox table.myTable td {
+    text-align: right;
 }
-.MyInfoBox dl.point dt:first-child {
-    border-left: none;
-}
+
 .willbes-myinfo {
     float: left;
     width: 365px;

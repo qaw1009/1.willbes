@@ -4,13 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class EventFModel extends WB_Model
 {
     private $_table = [
-        'event_lecture' => 'lms_evnet_lecture',
+        'event_lecture' => 'lms_event_lecture',
         'event_lecture_r_category' => 'lms_event_r_category',
         'event_file' => 'lms_event_file',
         'event_comment' => 'lms_event_comment',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code'
+    ];
+
+    public $_request_type = [
+        '1' => '설명회',
+        '2' => '특강',
+        '3' => '이벤트',
     ];
 
     public function __construct()
@@ -25,12 +31,14 @@ class EventFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
-            A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
-            G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName,
+            A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
+            A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
+            G.SiteName, J.CcdName AS CampusName, D.CateCode,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
-            CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName
+            CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
+            CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
+            CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -61,13 +69,39 @@ class EventFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        echo 'select ' . $column . $from . $where . $order_by_offset_limit.'<Br>';
-        exit;
-
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
 
-        /*$result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
-        return $result;*/
+    public function findEvent($arr_condition)
+    {
+        $column = '
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName,
+            A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
+            A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
+            G.SiteName, J.CcdName AS CampusName,
+            K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
+            CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
+            CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
+            CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName
+            ';
+
+        $from = "
+            FROM {$this->_table['event_lecture']} AS A
+            LEFT JOIN (
+                SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
+                FROM {$this->_table['event_comment']}
+            ) AS H ON H.ElIdx = A.ElIdx
+            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
+            INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
+            LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        echo 'select '.$column .$from .$where;
+
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 }

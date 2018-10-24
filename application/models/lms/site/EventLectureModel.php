@@ -31,7 +31,7 @@ class EventLectureModel extends WB_Model
     ];
 
     // 신청유형
-    public $_requst_type_names = ['1' => '설명회','22' => '특강','3' => '이벤트',];
+    public $_requst_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트'];
 
     // 참여구분
     public $_take_type_names = ['1' => '회원','2' => '회원+비회원'];
@@ -86,7 +86,7 @@ class EventLectureModel extends WB_Model
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
-            CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
+            CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
             L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
             ';
 

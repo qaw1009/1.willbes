@@ -136,10 +136,10 @@
             <!-- willbes-Buy-PackageList -->
 
             <div id="Sticky" class="sticky-Wrap">
-                <div class="sticky-menu select-menu NG">
+                <div class="sticky-Grid sticky-menu select-menu NG">
                     <ul class="tabWrap">
-                        <li><a onclick="fnMove('1')" href="#Required">필수과목 ▼</a></li>
-                        <li><a onclick="fnMove('2')" href="#Choose">선택과목 ▼</a></li>
+                        <li><a href="#none" onclick="movePos('#Required');">필수과목 ▼</a></li>
+                        <li><a href="#none" onclick="movePos('#Choose');">선택과목 ▼</a></li>
                     </ul>
                 </div>
             </div>
@@ -147,7 +147,10 @@
 
             <!-- pos1 -->
             <div id="pos1" class="pt35">
-                <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black">· 필수과목</div>
+                <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black p_re">
+                    <a id="Required" name="Required" class="sticky-top" style="top: 10px;"></a>
+                    · 필수과목
+                </div>
             </div>
             <table cellspacing="0" cellpadding="0" class="lecWrapTable">
                 <colgroup>
@@ -339,8 +342,9 @@
             </div>
 
             <!-- pos2 -->
-            <div id="pos2" class="pt35 mt10">
-                <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black">
+            <div id="pos2" class="pt35 mt10"> 
+                <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black p_re">
+                    <a id="Choose" name="Choose" class="sticky-top" style="top: 10px;"></a>
                     · 선택과목<span class="willbes-Lec-subTit">(전체 선택과목 중 2개를 선택해 주세요.)</span>
                 </div>
             </div>

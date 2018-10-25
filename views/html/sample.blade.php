@@ -5,8 +5,7 @@
 
 <h3>HTML 퍼블리싱 페이지</h3>  
 
-<div style="float:left; width: 380px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
-
+<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>&nbsp;/
     <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;/
@@ -48,7 +47,7 @@
 
 </div>
 
-<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+<div style="float:left; width: 360px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a><br/><br/>
 
@@ -64,6 +63,10 @@
 
     <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 인적성/면접상담 page 이동</a><br/><br/>
+
+    <!--<a href="{{ site_url('/home/html/counsel2_1') }}" target="_blank">상담실 > 심층상담예약 page 이동</a><br/><br/>-->
+
     <a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cart2') }}" target="_blank">결제 > 결제하기 page 이동</a><br/><br/>
@@ -71,6 +74,10 @@
     <a href="{{ site_url('/home/html/cart3') }}" target="_blank">결제 > 결제완료 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cart4') }}" target="_blank">결제 > 결제완료(무통장) page 이동</a><br/><br/>
+
+</div>
+
+<div style="float:left; width: 340px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/acad_list') }}" target="_blank">학원수강신청 > 단과반 page 이동</a><br/><br/>
 
@@ -92,7 +99,7 @@
 
 </div>
 
-<div style="float:left; width: 480px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+<div style="float:left; width: 420px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index page 이동</a><br/><br/>
 
@@ -132,7 +139,7 @@
 
 </div>
 
-<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
+<div style="float:left; width: 330px; height: 750px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/mypage_support1') }}" target="_blank">내강의실 > 학습지원관리 > 쪽지관리 page 이동</a><br/><br/>
 

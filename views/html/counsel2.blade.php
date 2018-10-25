@@ -78,14 +78,14 @@
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth">
             <span class="depth-Arrow">></span><strong>상담실</strong>
-            <span class="depth-Arrow">></span><strong>일반상담</strong>
+            <span class="depth-Arrow">></span><strong>인적성/면접상담</strong>
         </span>
     </div>
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 일반상담
+                · 인적성/면접상담
                 <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
                     <div class="inputBox p_re">
                         <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
@@ -99,43 +99,45 @@
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray">
-                        <select id="process" name="process" title="process" class="seleProcess">
-                            <option selected="selected">과정</option>
+                        <select id="category" name="category" title="category" class="seleCate">
+                            <option selected="selected">전체카테고리</option>
                             <option value="헌법">헌법</option>
                             <option value="스파르타반">스파르타반</option>
                             <option value="공직선거법">공직선거법</option>
                         </select>
-                        <select id="div" name="div" title="div" class="seleDiv">
-                            <option selected="selected">구분</option>
+                        <select id="campus" name="campus" title="campus" class="seleCampus">
+                            <option selected="selected">전체캠퍼스</option>
                             <option value="기타">기타</option>
                             <option value="강좌내용">강좌내용</option>
                             <option value="학습상담">학습상담</option>
                         </select>
-                        <select id="A" name="A" title="A" class="seleLecA">
-                            <option selected="selected">상담유형</option>
+                        <select id="counsel" name="counsel" title="counsel" class="seleCounsel">
+                            <option selected="selected">전체상담유형</option>
                             <option value="기타">기타</option>
                             <option value="강좌내용">강좌내용</option>
                             <option value="학습상담">학습상담</option>
                         </select>
-                        <div class="subBtn NSK f_right"><a href="#none">문의하기 ></a></div>
+                        <div class="subBtn blue NSK f_right"><a href="#none">문의하기 ></a></div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
-                                <col style="width: 65px;">
-                                <col style="width: 90px;">
+                                <col style="width: 60px;">
                                 <col style="width: 80px;">
-                                <col style="width: 100px;">
+                                <col style="width: 85px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
                                 <col style="width: 315px;">
-                                <col style="width: 90px;">
-                                <col style="width: 110px;">
-                                <col style="width: 90px;">
+                                <col style="width: 60px;">
+                                <col style="width: 100px;">
+                                <col style="width: 80px;">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th>No<span class="row-line">|</span></th>
                                     <th>과정<span class="row-line">|</span></th>
-                                    <th>구분<span class="row-line">|</span></th>
+                                    <th>카테고리<span class="row-line">|</span></th>
+                                    <th>캠퍼스<span class="row-line">|</span></th>
                                     <th>상담유형<span class="row-line">|</span></th>
                                     <th>제목<span class="row-line">|</span></th>
                                     <th>작성자<span class="row-line">|</span></th>
@@ -145,92 +147,81 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
-                                    <td class="w-process"><div class="pBox p5">임용</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                    <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
-                                    <td class="w-write">관리자명</td>
-                                    <td class="w-date">2018-00-00</td>
-                                    <td class="w-answer"><span class="aBox answerBox NSK">답변완료</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
-                                    <td class="w-process"><div class="pBox p6">공무원</div></td>
-                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                    <td class="w-A">수강</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">만14세미만회원은어떻게가입하나요?</a></td>
-                                    <td class="w-write">장동*</td>
-                                    <td class="w-date">2018-00-00</td>
-                                    <td class="w-answer"><span class="aBox waitBox NSK">답변대기</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-no">10</td>
-                                    <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                    <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
-                                    <td class="w-write">관리자명</td>
-                                    <td class="w-date">2018-00-00</td>
-                                    <td class="w-answer">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-no">9</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">교재</td>
+                                    <td class="w-no"><img src="{{ img_url('sub/icon_notice.gif') }}"></td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">&nbsp;</td>
+                                    <td class="w-campus">전체</td>
+                                    <td class="w-counsel">&nbsp;</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
-                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요? 
-                                            <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                            2018년 하반기 경찰 공무원 경력 경쟁
                                             <img src="{{ img_url('prof/icon_file.gif') }}">
                                         </a>
                                     </td>
-                                    <td class="w-write">박형*</td>
+                                    <td class="w-write">&nbsp;</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td class="w-no">8</td>
-                                    <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                    <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
-                                    <td class="w-write">관리자명</td>
-                                    <td class="w-date">2018-00-00</td>
-                                    <td class="w-answer">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-no">7</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">교재</td>
-                                    <td class="w-list tx-left pl20">
-                                        <a href="#none">
-                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요? 
-                                            <img src="{{ img_url('prof/icon_N.gif') }}"> 
-                                            <img src="{{ img_url('prof/icon_file.gif') }}">
-                                        </a>
-                                    </td>
-                                    <td class="w-write">박형*</td>
+                                    <td class="w-no"><img src="{{ img_url('sub/icon_notice.gif') }}"></td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">&nbsp;</td>
+                                    <td class="w-campus">전체</td>
+                                    <td class="w-counsel">&nbsp;</td>
+                                    <td class="w-list tx-left pl20"><a href="#none">2018년 제2차 경찰 공무원(순경)</a></td>
+                                    <td class="w-write">&nbsp;</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td class="w-no">6</td>
-                                    <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                    <td class="w-A">기기</td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">일반경찰</td>
+                                    <td class="w-campus">노량진</td>
+                                    <td class="w-counsel">수강</td>
+                                    <td class="w-list tx-left pl20">
+                                        <a href="#none">
+                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요? 
+                                            <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                        </a>
+                                    </td>
+                                    <td class="w-write">장동*</td>
+                                    <td class="w-date">2018-00-00</td>
+                                    <td class="w-answer"><span class="aBox answerBox NSK">답변완료</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-no">5</td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">경행경채</td>
+                                    <td class="w-campus">노량진</td>
+                                    <td class="w-counsel">교재</td>
+                                    <td class="w-list tx-left pl20">
+                                        <a href="#none">
+                                            회원탈퇴는어떻게하나요? 
+                                            <img src="{{ img_url('prof/icon_file.gif') }}">
+                                        </a>
+                                    </td>
+                                    <td class="w-write">장동*</td>
+                                    <td class="w-date">2018-00-00</td>
+                                    <td class="w-answer"><span class="aBox waitBox NSK">답변대기</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-no">4</td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">경행경채</td>
+                                    <td class="w-campus">노량진</td>
+                                    <td class="w-counsel">이용</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
-                                    <td class="w-write">관리자명</td>
+                                    <td class="w-write">박형*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td class="w-no">5</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">교재</td>
+                                    <td class="w-no">3</td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">경행경채</td>
+                                    <td class="w-campus">노량진</td>
+                                    <td class="w-counsel">스파르타</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
                                             <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요? 
@@ -238,56 +229,56 @@
                                             <img src="{{ img_url('prof/icon_file.gif') }}">
                                         </a>
                                     </td>
-                                    <td class="w-write">박형*</td>
-                                    <td class="w-date">2018-00-00</td>
-                                    <td class="w-answer">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-no">4</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">결제/환불</td>
-                                    <td class="w-list tx-left pl20">
-                                        <a href="#none">
-                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요?
-                                        </a>
-                                    </td>
-                                    <td class="w-write">장동*</td>
-                                    <td class="w-date">2018-00-00</td>
-                                    <td class="w-answer">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-no">3</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">수강</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">박형*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td class="w-no">2</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">교재</td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">경행경채</td>
+                                    <td class="w-campus">신림</td>
+                                    <td class="w-counsel">수강</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
-                                    <td class="w-write">장동*</td>
+                                    <td class="w-write">박형*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td class="w-no">1</td>
-                                    <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
-                                    <td class="w-A">교재</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-process">경찰학원</td>
+                                    <td class="w-cate">경행경채</td>
+                                    <td class="w-campus">노량진</td>
+                                    <td class="w-counsel">교재</td>
+                                    <td class="w-list tx-left pl20">
+                                        <a href="#none">
+                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요? 
+                                            <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                            <img src="{{ img_url('prof/icon_file.gif') }}">
+                                        </a>
+                                    </td>
                                     <td class="w-write">박형*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="Paging">
+                            <ul>
+                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                <li><a href="#none">10</a></li>
+                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                            </ul>
+                        </div>   
                     </div>
                 </div>
 
@@ -416,7 +407,7 @@
                                 <tr>
                                     <td class="w-acad tx-left pl20">
                                         <span class="pBox p6">공무원</span>
-                                        <span class="oBox onlineBox NSK">온라인</span>
+                                        <span class="oBox offlineBox NSK">학원</span>
                                         <span class="oBox nyBox NSK">노량진</span>
                                         <span class="row-line">|</span>
                                     </td>

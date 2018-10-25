@@ -148,7 +148,7 @@ class Event extends \app\controllers\FrontController
         $arr_base['default_path'] = $pass_val;
         $arr_base['content_type'] = $this->eventFModel->_content_type;
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
-        $arr_base['comment_use_area'] = $this->eventFModel->_ccd['comment_use_area'];
+        $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
 
         $this->load->view('site/event/show',[
             'arr_base' => $arr_base,

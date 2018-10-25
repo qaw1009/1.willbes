@@ -21,17 +21,19 @@ class EventFModel extends WB_Model
         'image' => 'I',
         'editer' => 'E'
     ];
+
+    //이벤트 댓글 노출 영역
+    public $_comment_use_area_type = [
+        'event' => 'B',
+        'banner' => 'P'
+    ];
+
     public $_ccd = [
         'option' => [
             'regist_list' => '660001',
             'comment_list' => '660002'
-        ],
-        'comment_use_area' => [
-            'event' => 'B',
-            'banner' => 'P'
         ]
     ];
-
 
     public function __construct()
     {

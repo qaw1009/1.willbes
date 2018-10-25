@@ -104,6 +104,7 @@ class Order extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'arr_prod_type_name' => $this->orderListFModel->_cart_prod_type_name,
             'arr_prod_type_idx' => $this->orderListFModel->_cart_prod_type_idx,
+            'arr_delivery_status_ccd' => $this->orderListFModel->_delivery_status_ccd,
             'query_string' => http_build_query(array_slice($arr_input, 1)),
             'results' => $results
         ]);

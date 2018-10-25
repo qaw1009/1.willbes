@@ -54,11 +54,11 @@ class BaseOrderModel extends WB_Model
     // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
     public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'receipt_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];
 
-    // 판매가능 공통코드 (판매가능, 판매중, 접수중 (학원 단과, 종합반 접수상태))
-    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001', 'accept' => '675002'];
-
     // 배송상태 공통코드 (송장등록, 발송준비, 발송취소, 발송완료)
     public $_delivery_status_ccd = ['invoice' => '677001', 'prepare' => '677002', 'cancel' => '677003', 'complete' => '677004'];
+
+    // 판매가능 공통코드 (판매가능, 판매중, 접수중 (학원 단과, 종합반 접수상태))
+    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001', 'accept' => '675002'];
 
     public function __construct()
     {

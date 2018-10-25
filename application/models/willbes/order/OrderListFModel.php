@@ -129,7 +129,8 @@ class OrderListFModel extends BaseOrderFModel
                                  when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                                  when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
                                  else "etc" 
-                          end as OrderProdType';
+                              end as OrderProdType
+                            , OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, replace(CDC.CcdEtc, "{{$invoice_no$}}", OPD.InvoiceNo) as DeliverySearchUrl';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -142,8 +143,14 @@ class OrderListFModel extends BaseOrderFModel
                     on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on P.ProdCode = PL.ProdCode
+                left join ' . $this->_table['order_product_delivery_info'] . ' as OPD		
+                    on OP.OrderProdIdx = OPD.OrderProdIdx
                 left join ' . $this->_table['code'] . ' as CPS
-                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"
+                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"                                        
+                left join ' . $this->_table['code'] . ' as CDS
+                    on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CDC
+                    on OPD.DeliveryCompCcd = CDC.Ccd and CDC.IsStatus = "Y"                                        
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -114,7 +114,7 @@
 
             <div class="willbes-Cartlist-Fin c_both">
                 <div class="willbes-Lec-Tit NG tx-black">상품정보</div>
-                <div class="LeclistTable">
+                <div class="LeclistTable orderTable">
                     <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray tx-gray">
                         <colgroup>
                             <col style="width: 410px;">
@@ -135,13 +135,20 @@
                         <tbody>
                         @foreach($results['order_product'] as $idx => $row)
                             <tr>
-                                <td class="w-list tx-left p_re pl20">
+                                <td class="w-list tx-left p_re pl20 pt10 pb10">
                                     <span class="pBox p{{ $arr_prod_type_idx[$row['OrderProdType']] }}">{{ $arr_prod_type_name[$row['OrderProdType']] }}</span> {{ $row['ProdName'] }}
                                 </td>
-                                <td class="w-day">@if(empty($row['StudyPeriod']) === false) {{ $row['StudyPeriod'] }}일 @endif</td>
-                                <td class="w-price tx-light-blue">{{ number_format($row['RealPayPrice']) }}원</td>
-                                <td class="w-coupon">{{ $row['UseCoupon'] }}</td>
-                                <td class="w-state tx-light-blue">{{ $row['PayStatusCcdName'] }}</td>
+                                <td class="w-day pt10 pb10">@if(empty($row['StudyPeriod']) === false) {{ $row['StudyPeriod'] }}일 @endif</td>
+                                <td class="w-price tx-light-blue pt10 pb10">{{ number_format($row['RealPayPrice']) }}원</td>
+                                <td class="w-coupon pt10 pb10">{{ $row['UseCoupon'] }}</td>
+                                <td class="w-state tx-light-blue pt10 pb10">
+                                    @if($row['DeliveryStatusCcd'] == $arr_delivery_status_ccd['prepare'] || $row['DeliveryStatusCcd'] == $arr_delivery_status_ccd['complete'])
+                                        {{ $row['DeliveryStatusCcdName'] }}<br/>
+                                        <div class="tBox NSK light-gray"><a href="{{ $row['DeliverySearchUrl'] }}" target="_blank">배송조회</a></div>
+                                    @else
+                                        {{ $row['PayStatusCcdName'] }}
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

@@ -209,6 +209,7 @@ class EventLecture extends \app\controllers\BaseController
                             $rules = array_merge($rules, [
                                 ['field' => 'person_limit_type', 'label' => '인원제한타입', 'rules' => 'callback_validateRequiredIf[limit_type,S]|in_list[L,N]'],
                                 ['field' => 'person_limit', 'label' => '정원수', 'rules' => 'callback_validateRequiredIf[person_limit_type,L]|integer'],
+                                ['field' => 'register_name', 'label' => '특강명', 'rules' => 'trim|required']
                             ]);
                         } else if ($limit_type == 'M') {
                             $rules = array_merge($rules, [

@@ -315,6 +315,7 @@
                                             <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
                                         </select>
                                         <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
+                                        <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
                                         </div>
                                     </div>
                                 </div>

@@ -12,12 +12,26 @@ class EventFModel extends WB_Model
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code'
     ];
-
     public $_request_type = [
         '1' => '설명회',
         '2' => '특강',
         '3' => '이벤트',
     ];
+    public $_content_type = [
+        'image' => 'I',
+        'editer' => 'E'
+    ];
+    public $_ccd = [
+        'option' => [
+            'regist_list' => '660001',
+            'comment_list' => '660002'
+        ],
+        'comment_use_area' => [
+            'event' => 'B',
+            'banner' => 'P'
+        ]
+    ];
+
 
     public function __construct()
     {
@@ -76,12 +90,12 @@ class EventFModel extends WB_Model
     public function findEvent($arr_condition)
     {
         $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName, A.ContentType, A.Content, A.CommentUseArea,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
-            A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
+            A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             G.SiteName, J.CcdName AS CampusName,
             K.FileFullPath, K.FileName,
-            L.FileFullPath AS UploadFileFullPath, L.FileName AS UploadFileName,
+            L.FileFullPath AS UploadFileFullPath, L.FileName AS UploadFileName, L.FileRealName as UploadFileRealName,
             IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,

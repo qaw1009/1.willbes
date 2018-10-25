@@ -894,6 +894,7 @@ class EventLectureModel extends WB_Model
                     'ElIdx' => $el_idx,
                     'PersonLimitType' => element('person_limit_type', $input),
                     'PersonLimit' => element('person_limit', $input),
+                    'Name' => element('register_name', $input),
                     'RegAdminIdx' => $this->session->userdata('admin_idx'),
                     'RegIp' => $this->input->ip_address()
                 ];

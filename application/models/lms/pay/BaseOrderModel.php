@@ -36,7 +36,7 @@ class BaseOrderModel extends WB_Model
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 수강연장, 재수강, 모의고사)
     public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'
-        , 'reading_room' => '636007', 'locker' => '636008', 'deposit' => '636009', 'extend_lecture' => '636010', 'again_lecture' => '636011', 'mock_exam' => '636012'
+        , 'reading_room' => '636007', 'locker' => '636008', 'deposit' => '636009', 'extend_lecture' => '636010', 'retake_lecture' => '636011', 'mock_exam' => '636012'
     ];
 
     // 학습형태 공통코드 (단강좌, 사용자패키지, 운영자패키지, 기간제패키지, 무료강좌, 단과반, 종합반)

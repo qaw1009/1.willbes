@@ -132,8 +132,8 @@ class OrderFModel extends BaseOrderFModel
                 $total_prod_cnt++;
             }
 
-            if ($row['CartProdType'] == 'on_lecture' || $row['CartProdType'] == 'book') {
-                // 포인트 사용 가능상품의 실제 결제금액 합계 (온라인 단강좌, 교재상품만 구매할 경우 사용 가능)
+            if ($row['IsUsePoint'] == 'Y') {
+                // 포인트 사용 가능상품의 실제 결제금액 합계 (온라인 단강좌, 온라인 수강연장, 교재상품만 구매할 경우 사용 가능)
                 $total_use_point_target_price += $row['RealPayPrice'];
             }
 
@@ -142,7 +142,7 @@ class OrderFModel extends BaseOrderFModel
 
         // 사용포인트 체크 (온라인 단강좌, 교재상품만 구매할 경우 사용 가능)
         if ($make_type == 'pay' || $make_type == 'check_use_point') {
-            $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_use_point_target_price, $is_package);
+            $check_use_point = $this->checkUsePoint($cart_type, $use_point, $total_use_point_target_price);
 
             if ($make_type == 'pay') {
                 if ($check_use_point !== true) {
@@ -172,7 +172,7 @@ class OrderFModel extends BaseOrderFModel
         $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
         $results['is_package'] = $is_package;   // 패키지상품 포함 여부
-        $results['is_available_use_point'] = $is_package === false && $cart_type != 'off_lecture';  // 포인트 사용 가능여부
+        $results['is_available_use_point'] = $total_use_point_target_price > 0;  // 포인트 사용 가능여부
         $results['repr_prod_name'] = $results['list'][0]['ProdName'] . ($total_prod_cnt > 1 ? ' 외 ' . ($total_prod_cnt - 1) . '건' : '');   // 대표 주문상품명
         $results['cart_type'] = $cart_type;
 
@@ -222,22 +222,17 @@ class OrderFModel extends BaseOrderFModel
      * 사용포인트 체크
      * @param string $cart_type [장바구니 구분, 온라인강좌 : on_lecture, 학원강좌 : off_lecture, 교재 : book]
      * @param int $use_point [사용 포인트]
-     * @param int $total_use_point_target_price [포인트 사용 가능상품의 실제 결제금액 합계, 온라인 단강좌, 교재 상품만 포인트 사용 가능]
-     * @param bool $is_package [패키지상품 포함 여부]
+     * @param int $total_use_point_target_price [포인트 사용 가능상품의 실제 결제금액 합계, 온라인 단강좌, 온라인 수강연장, 교재 상품만 포인트 사용 가능]
      * @return bool|string
      */
-    public function checkUsePoint($cart_type, $use_point, $total_use_point_target_price, $is_package = false)
+    public function checkUsePoint($cart_type, $use_point, $total_use_point_target_price)
     {
-        if ($use_point < 1 || $total_use_point_target_price < 1) {
+        if ($use_point < 1) {
             return true;
         }
 
-        if ($is_package === true) {
-            return '패키지 상품이 포함된 경우 포인트 사용이 불가능합니다.';
-        }
-
-        if ($cart_type == 'off_lecture') {
-            return '학원강좌 상품은 포인트 사용이 불가능합니다.';
+        if ($total_use_point_target_price < 1) {
+            return '온라인 단강좌, 수강연장, 교재 상품만 포인트 사용이 가능합니다.';
         }
 
         // 사용 포인트 설정

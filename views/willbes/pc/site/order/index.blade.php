@@ -65,7 +65,9 @@
                                             <dt>
                                                 {{-- 온라인강좌일 경우만 강좌시작일 설정 --}}
                                                 @if($row['CartType'] == 'on_lecture')
-                                                    <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
+                                                    @if(empty($row['StudyPeriod']) === false)
+                                                        <span class="w-day">수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></span>
+                                                    @endif
                                                     <span class="w-data">
                                                         [강좌시작일 설정]
                                                         {{-- 강좌시작일지정 여부 : Y, 결제일 이후부터 30일 이내 날짜로 설정 가능, 개강일 전이라면 개강일부터 30일 이내 설정 가능 --}}

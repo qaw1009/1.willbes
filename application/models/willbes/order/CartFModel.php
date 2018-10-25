@@ -39,9 +39,12 @@ class CartFModel extends BaseOrderFModel
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                                   
                 , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
-                , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName               
+                , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName
+                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '", "' . $this->_prod_type_ccd['extend_lecture'] . '"), "Y", "N") as IsUsePoint               
                 , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
                     when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
+                    when "' . $this->_prod_type_ccd['extend_lecture'] . '" then "on_lecture"
+                    when "' . $this->_prod_type_ccd['retake_lecture'] . '" then "on_lecture"
                     when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
                     else "etc"
                   end as CartType
@@ -52,6 +55,8 @@ class CartFModel extends BaseOrderFModel
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
+                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['extend_lecture'] . '" then "extend_lecture"
+                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['retake_lecture'] . '" then "retake_lecture"
                          else "etc" 
                   end as CartProdType';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

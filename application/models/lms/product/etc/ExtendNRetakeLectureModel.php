@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'models/lms/product/on/CommonLectureModel.php';
 
-class ExtendNAgainLectureModel extends CommonLectureModel
+class ExtendNRetakeLectureModel extends CommonLectureModel
 {
-    private $_prod_type_ccd = ['extend_lecture' => '636010', 'again_lecture' => '636011'];
-    private $_prod_type_name = ['extend_lecture' => '수강연장', 'again_lecture' => '재수강'];
+    private $_prod_type_ccd = ['extend_lecture' => '636010', 'retake_lecture' => '636011'];
+    private $_prod_type_name = ['extend_lecture' => '수강연장', 'retake_lecture' => '재수강'];
     private $_available_sale_status_ccd = '618001'; // 판매상태 공통코드 : 판매가능
     private $_default_point_apply_ccd = '635001';   // 포인트 적용 공통코드 : 전체
     private $_default_sale_type_ccd = '613001'; // 판매가격 구분 공통코드 : PC+모바일

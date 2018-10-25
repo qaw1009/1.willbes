@@ -85,7 +85,8 @@
                                     <dt>{{$row['CampusName']}}</dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="{{site_url($arr_base['default_path'].'/event/show?event_idx='.$row['ElIdx'].'&onoff_type='.$arr_base['onoff_type'].'&'.$get_params)}}">
+                                    {{--<a href="{{site_url($arr_base['default_path'].'/event/show/?event_idx='.$row['ElIdx'].'&onoff_type='.$arr_base['onoff_type'].'&'.$get_params)}}">--}}
+                                    <a href="{{site_url($arr_base['default_path'].'/event/show/'.$arr_base['onoff_type'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
                                         <strong><span class="tx-light-blue">[{{$row['RequstTypeName']}}]</span> {{hpSubString($row['EventName'],0,40,'...')}}</strong>
                                     </a>
                                 </div>

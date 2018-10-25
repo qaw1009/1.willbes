@@ -21,9 +21,6 @@ class EventLecture extends \app\controllers\BaseController
      */
     public function index()
     {
-        //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
-
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
@@ -31,7 +28,6 @@ class EventLecture extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('');
 
         $this->load->view("site/event_lecture/index", [
-            'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'send_option_ccd' => $this->eventLectureModel->_event_lecture_option_ccds[2]
@@ -99,9 +95,6 @@ class EventLecture extends \app\controllers\BaseController
             $optoins_keys[] = $key;
         }
 
-        //캠퍼스'Y'상태 사이트 코드 조회
-        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
-
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
@@ -162,7 +155,6 @@ class EventLecture extends \app\controllers\BaseController
             'data' => $data,
             'el_idx' => $el_idx,
             'arr_campus' => $arr_campus,
-            'offLineSite_list' => $offLineSite_list,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
             'site_csTel' => $site_csTel,
@@ -182,10 +174,15 @@ class EventLecture extends \app\controllers\BaseController
         $method = 'add';
         $el_idx = '';
 
+        //캠퍼스 Y 값 조회
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
-            ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required|integer'],
+
+            ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
+
             ['field' => 'requst_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
             ['field' => 'register_start_datm', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
             ['field' => 'register_end_datm', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],

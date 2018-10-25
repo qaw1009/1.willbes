@@ -67,6 +67,35 @@ class Event extends \app\controllers\FrontController
         }
     }
 
+    public function show($params = [])
+    {
+        if (empty($this->_is_pass_site) === true) {
+            $pass_val = '';
+        } else {
+            $pass_val = '/' . substr($this->_pass_site_val, 1);
+        }
+
+        $onoff_type = $params[0];
+        if (empty($onoff_type) === true) {
+            redirect($pass_val . '/event/list/ongoing');
+        }
+        $this->setOnOffType($onoff_type);
+
+        switch ($onoff_type) {
+            case 'ongoing': // 진행중 이벤트
+                $this->ongoingShow();
+                break;
+
+            case 'end': // 종료 이벤트
+                $this->endShow();
+                break;
+
+            default:
+                redirect($pass_val . '/event/list/ongoing');
+                break;
+        }
+    }
+
     private function ongoing()
     {
         $list = [];
@@ -191,10 +220,13 @@ class Event extends \app\controllers\FrontController
         ]);
     }
 
-    public function show()
+    private function ongoingShow()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
+
+        //진행중,마감 이벤트 타입
+        $arr_base['onoff_type'] = $this->getOnOffType();
 
         $arr_condition = ([
             'EQ'=>[
@@ -209,9 +241,15 @@ class Event extends \app\controllers\FrontController
         }
 
         $this->load->view('site/event/show',[
+            'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
             'data' => $data
         ]);
+    }
+
+    private function endShow()
+    {
+
     }
 }

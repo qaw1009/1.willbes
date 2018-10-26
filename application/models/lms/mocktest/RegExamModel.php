@@ -472,6 +472,7 @@ class RegExamModel extends WB_Model
             if( !empty($this->input->post('chapterTotal')) ) {
                 foreach ($this->input->post('chapterTotal') as $k => $v) {
                     if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) { // 신규등록
+
                         $dataReg = array(
                             'MpIdx' => $this->input->post('idx'),
                             'MalIdx' => $_POST['MalIdx'][$k],
@@ -486,13 +487,30 @@ class RegExamModel extends WB_Model
                             'RegDatm' => date("Y-m-d H:i:s"),
                             'RegAdminIdx' => $this->session->userdata('admin_idx'),
                         );
-                        if( isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK ) {
-                            $dataReg['QuestionFile'] = $names['QuestionFile']['name'][$k];
-                            $dataReg['RealQuestionFile'] = $names['QuestionFile']['real'][$k];
+                        if($_POST['regKind'][$k] == 'call') { // 호출한 경우
+                            $dataReg['QuestionFile'] = $_POST['callQuestionFile'][$k];
+                            $dataReg['RealQuestionFile'] = $_POST['callRealQuestionFile'][$k];
+                            $dataReg['ExplanFile'] = $_POST['callExplanFile'][$k];
+                            $dataReg['RealExplanFile'] = $_POST['callRealExplanFile'][$k];
+
+                            // todo 파일 이동
+//                            $src = $this->upload_path . $this->upload_path_mock . $_POST['callIdx'][$k] . '/' . $_POST['callQuestionFile'][$k];
+//                            $dest = $this->upload_path . $this->upload_path_mock . $this->input->post('idx') . '/' $_POST['callQuestionFile'][$k];
+//
+//                            exec("cp -rf $src $dest");
+//                            if(is_dir($dest) === false) {
+//                                throw new Exception('파일 저장에 실패했습니다.');
+//                            }
                         }
-                        if( isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK ) {
-                            $dataReg['ExplanFile'] = $names['ExplanFile']['name'][$k];
-                            $dataReg['RealExplanFile'] = $names['ExplanFile']['real'][$k];
+                        else {
+                            if (isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK) {
+                                $dataReg['QuestionFile'] = $names['QuestionFile']['name'][$k];
+                                $dataReg['RealQuestionFile'] = $names['QuestionFile']['real'][$k];
+                            }
+                            if (isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK) {
+                                $dataReg['ExplanFile'] = $names['ExplanFile']['name'][$k];
+                                $dataReg['RealExplanFile'] = $names['ExplanFile']['real'][$k];
+                            }
                         }
 
                         $this->_conn->insert($this->_table['mockExamQuestion'], $dataReg);
@@ -619,18 +637,27 @@ class RegExamModel extends WB_Model
                 'EB.RotationNo' => $this->input->post('qu_round'),
                 'EQ.QuestionNO' => $this->input->post('qu_no'),
             ],
+            'NOT' => [
+                'EB.MpIdx' => $this->input->post('nowIdx')
+            ],
         ];
 
         $sql = "
-            SELECT EB.*, EQ.*
+            SELECT EQ.*, MA.AreaName, EB.QuestionOption AS EB_QuestionOption, EB.AnswerNum AS EB_AnswerNum, A.wAdminName
             FROM {$this->_table['mockExamBase']} AS EB
             JOIN {$this->_table['mockExamQuestion']} AS EQ ON EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y'
+            JOIN {$this->_table['mockAreaList']} AS MA ON EQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON EQ.RegAdminIdx = A.wAdminIdx
             WHERE EB.IsStatus = 'Y'
         ";
-        $sql .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $sql .= $this->_conn->makeWhere($condition)->getMakeWhere(true);
 
-        $data = $this->_conn->query($sql)->result_array();
+        $data = $this->_conn->query($sql)->row();
+        if($data) {
+            $data->upImgUrlQ = $this->config->item('upload_url_mock', 'mock') . $data->MpIdx . $this->config->item('upload_path_mockQ', 'mock');
+            $data->optSame = ($data->EB_QuestionOption == $this->input->post('QuestionOption') && $data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
+        }
 
-        return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
+        return ['ret_cd' => true, 'dt' => $data];
     }
 }

@@ -200,7 +200,10 @@
                         <tbody>
                         {{-- [S] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
                         <tr data-chapter-idx="">
-                            <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="QuestionNO[]" value=""></td>
+                            <td class="text-center form-inline">
+                                <input type="hidden" name="regKind[]" value="">
+                                <input type="text" class="form-control" style="width:45px" name="QuestionNO[]" value="">
+                            </td>
                             <td class="text-center">
                                 <select class="form-control" name="MalIdx[]">
                                     <option value="">선택</option>
@@ -218,9 +221,16 @@
                             </td>
                             <td>
                                 <input type="file" name="QuestionFile[]" style="width:180px">
+                                <input type="hidden" name="callIdx[]" value="">
+                                <input type="hidden" name="callQuestionFile[]" value="">
+                                <input type="hidden" name="callRealQuestionFile[]" value="">
+                                <div class="file-wrap" style="cursor:pointer"></div>
                             </td>
                             <td>
                                 <input type="file" name="ExplanFile[]" style="width:180px">
+                                <input type="hidden" name="callExplanFile[]" value="">
+                                <input type="hidden" name="callRealExplanFile[]" value="">
+                                <div class="file-wrap" style="cursor:pointer"></div>
                             </td>
                             <td class="text-center right-answer">
                                 <div><input type="checkbox" class="flat" name="RightAnswerTmp[]" value="1"> <label>1</label></div>
@@ -248,7 +258,10 @@
 
                         @foreach($qData as $row)
                             <tr data-chapter-idx="{{ $row['MqIdx'] }}">
-                                <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="QuestionNO[]" value="{{$row['QuestionNO']}}"></td>
+                                <td class="text-center form-inline">
+                                    <input type="hidden" name="regKind[]" value="">
+                                    <input type="text" class="form-control" style="width:45px" name="QuestionNO[]" value="{{$row['QuestionNO']}}">
+                                </td>
                                 <td class="text-center">
                                     <select class="form-control" name="MalIdx[]">
                                         <option value="">선택</option>
@@ -266,17 +279,22 @@
                                 </td>
                                 <td>
                                     <input type="file" name="QuestionFile[]" style="width:180px">
+                                    <input type="hidden" name="callIdx[]" value="">
+                                    <input type="hidden" name="callQuestionFile[]" value="">
+                                    <input type="hidden" name="callRealQuestionFile[]" value="">
                                     @if(!empty($row['QuestionFile']))
                                         <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link" data-toggle="popover" data-trigger="hover" data-html="true" data-content="<img src='{{ $upImgUrlQ.$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
+                                            <span class="blue underline-link" data-popover1="1" data-html="true" data-content="<img src='{{ $upImgUrlQ.$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
                                         </div>
                                     @endif
                                 </td>
                                 <td>
                                     <input type="file" name="ExplanFile[]" style="width:180px">
+                                    <input type="hidden" name="callExplanFile[]" value="">
+                                    <input type="hidden" name="callRealExplanFile[]" value="">
                                     @if(!empty($row['ExplanFile']))
                                         <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link" data-toggle="popover" data-trigger="hover" data-html="true" data-content="<img src='{{ $upImgUrlQ.$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
+                                            <span class="blue underline-link" data-popover1="1" data-html="true" data-content="<img src='{{ $upImgUrlQ.$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
                                         </div>
                                     @endif
                                 </td>
@@ -319,10 +337,9 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var $regi_sub_form = $('#regi_sub_form');
+        var addField;
 
         $(document).ready(function() {
-            $('[data-toggle="popover"]').popover({container: 'body'});
-
             // 카테고리, 교수 검색창 오픈
             $('.act-searchCate, .act-searchProfessor').on('click', function() {
                 if( !$('[name=siteCode]').val() ) { alert('운영사이트를 먼저 선택해 주세요'); return false; }
@@ -447,7 +464,7 @@
             var chapterExist = [];
             var chapterDel = [];
             var cList = $regi_sub_form.find('tbody');
-            var addField = cList.find('tr:eq(0)').html();
+            addField = cList.find('tr:eq(0)').html();
             cList.find('tr:eq(0)').remove();
 
             cList.find('tr').each(function () {

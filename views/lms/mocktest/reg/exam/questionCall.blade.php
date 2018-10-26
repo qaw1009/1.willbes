@@ -55,7 +55,7 @@
                     </thead>
                     <tbody>
                     {{-- [S] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
-                    <tr data-chapter-idx="">
+                    <tr data-order-no="">
                         <td class="text-center form-inline">
                             <select class="form-control mr-5" name="qu_year">
                                 <option value="">연도</option>
@@ -75,16 +75,12 @@
                                     <option value="{{$i}}">{{$i}}</option>
                                 @endforeach
                             </select>
-                            <button class="btn btn-sm btn-primary" id="act-getQuestion">조회</button>
+                            <button class="btn btn-sm btn-primary act-getQuestion">조회</button>
                         </td>
                         <td class="text-center"></td>
                         <td class="text-center"></td>
-                        <td class="text-center">
-                            <span class="underline-link act-review" data-review-type="q">확인</span>
-                        </td>
-                        <td class="text-center">
-                            <span class="underline-link act-review" data-review-type="e">확인</span>
-                        </td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
                         <td class="text-center"></td>
                         <td class="text-center"></td>
                     </tr>
@@ -109,6 +105,7 @@
                     $('#quInfoWrap tr:eq(2) > td').text( quInfo3 );
 
 
+                    var orderNo = 1;
                     var callList = $('#modal_reg_table').find('tbody');
                     var callAddField = callList.find('tr:eq(0)').html();
                     callList.find('tr:eq(0)').remove();
@@ -119,20 +116,24 @@
                         var count = $(this).closest('div').find('select').val();
 
                         for (i=0; i < count; i++) {
-                            callList.append('<tr data-chapter-idx="">' + callAddField + '</tr>');
+                            callList.append('<tr data-order-no="'+ orderNo +'">' + callAddField + '</tr>');
+                            orderNo++;
                         }
                     });
 
+
                     // 조회
-                    var $mTable = $('#modal_reg_table');
-                    $mTable.on('click', '.act-getQuestion', function() {
+                    var callData = {};
+                    $('#modal_reg_form').on('click', '.act-getQuestion', function() {
+                        var that = $(this).closest('tr');
                         var _url = '{{ site_url("/mocktest/regExam/call") }}';
                         var data = {
-                            '{{ csrf_token_name() }}' : $mTable.find('[name="{{ csrf_token_name() }}"]').val(),
+                            '{{ csrf_token_name() }}' : $('#modal_reg_form').find('[name="{{ csrf_token_name() }}"]').val(),
                             '_method' : 'GET',
-                            'qu_year' : $mTable.find('[name="qu_year"]').val(),
-                            'qu_round' : $mTable.find('[name="qu_round"]').val(),
-                            'qu_no' : $mTable.find('[name="qu_no"]').val(),
+                            'qu_year' : that.find('[name="qu_year"]').val(),
+                            'qu_round' : that.find('[name="qu_round"]').val(),
+                            'qu_no' : that.find('[name="qu_no"]').val(),
+                            'nowIdx' : $regi_form.find('[name="idx"]').val(),
                             'moLink' : $regi_form.find('[name="moLink"]').val(),
                             'ProfIdx' : $regi_form.find('[name="ProfIdx"]').val(),
                             'QuestionOption' : $regi_form.find('[name="QuestionOption"]').val(),
@@ -141,18 +142,88 @@
 
                         sendAjax(_url, data, function(ret) {
                             if (ret.ret_cd) {
+                                var rt = ret.ret_data.dt;
+                                var QuestionOption = Difficulty = '';
 
-                                alert('문제등록옵션 또는 정답의 보기갯수가 일치하지 않습니다.');
+                                if(!rt) { alert('일치하는 데이터가 없습니다.'); return false; }
+                                if(!rt.optSame) { alert('문제등록옵션 또는 정답의 보기갯수가 일치하지 않습니다.'); return false; }
+
+                                if(rt.QuestionOption == 'S') QuestionOption = '객관식(단일)';
+                                else if(rt.QuestionOption == 'M') QuestionOption = '객관식(복수)';
+                                else if(rt.QuestionOption == 'J') QuestionOption = '주관식';
+
+                                if(rt.Difficulty == 'T') Difficulty = '상';
+                                else if(rt.Difficulty == 'M') Difficulty = '중';
+                                else if(rt.Difficulty == 'B') Difficulty = '하';
+
+                                that.find('td:eq(1)').html(rt.AreaName);
+                                that.find('td:eq(2)').html(QuestionOption);
+                                that.find('td:eq(3)').html('<span class="blue underline-link" data-html="true" data-content="<img src=\''+rt.upImgUrlQ+rt.RealQuestionFile+'\'>">'+rt.QuestionFile+'</span>');
+                                that.find('td:eq(4)').html('<span class="blue underline-link" data-html="true" data-content="<img src=\''+rt.upImgUrlQ+rt.RealExplanFile+'\'>">'+rt.ExplanFile+'</span>');
+                                that.find('td:eq(5)').html(rt.RightAnswer);
+                                that.find('td:eq(6)').html(Difficulty);
+
+                                callData[that.data('order-no')] = rt;
+                                @if(in_array(ENVIRONMENT, ['local','development'])) console.log(1, callData); @endif
+
                             }
                         }, showValidateError, false, 'POST');
+                    });
 
+
+                    // 적용
+                    $("#act-qApply").on('click', function () {
+                        $.each(callData, function (i,v) {
+                            var target, right;
+
+                            $regi_sub_form.find('tbody').append('<tr data-chapter-idx="">' + addField + '</tr>');
+
+                            target = $regi_sub_form.find('tbody > tr').last();
+
+                            target.find('[name="regKind[]"]').val('call');
+                            target.find('[name="MalIdx[]"]').val(v.MalIdx);
+                            target.find('[name="QuestionOption[]"]').val(v.QuestionOption);
+                            target.find('[name="Scoring[]"]').val(v.Scoring);
+                            target.find('[name="Difficulty[]"]').val(v.Difficulty);
+                            target.find('[name="RightAnswer[]"]').val(v.RightAnswer);
+                            target.find('td:eq(9)').text(v.wAdminName);
+                            target.find('td:eq(10)').text(v.RegDatm);
+
+                            target.find('[name="RightAnswerTmp[]"]').each(function () {
+                                right = v.RightAnswer.split(',');
+
+                                if( $.inArray($(this).val(), right) !== -1 ) {
+                                    $(this).iCheck('check');
+                                }
+                            });
+
+                            if(v.QuestionFile) {
+                                target.find('td:eq(3)').append('<div>[호출]</div> <div class="file-wrap" style="cursor:pointer"><span class="blue underline-link" data-html="true" data-content="<img src=\''+v.upImgUrlQ+v.RealQuestionFile+'\'>">'+v.QuestionFile+'</span></div>');
+                                target.find('[name="callIdx[]"]').val(v.MpIdx);
+                                target.find('[name="callQuestionFile[]"]').val(v.QuestionFile);
+                                target.find('[name="callRealQuestionFile[]"]').val(v.RealQuestionFile);
+                                target.find('[name="QuestionFile[]"]').remove();
+                            }
+                            if(v.ExplanFile) {
+                                target.find('td:eq(4)').append('<div>[호출]</div> <div class="file-wrap" style="cursor:pointer"><span class="blue underline-link" data-html="true" data-content="<img src=\''+v.upImgUrlQ+v.RealExplanFile+'\'>">'+v.ExplanFile+'</span></div>');
+                                target.find('[name="callExplanFile[]"]').val(v.ExplanFile);
+                                target.find('[name="callRealExplanFile[]"]').val(v.RealExplanFile);
+                                target.find('[name="ExplanFile[]"]').remove();
+                            }
+
+                        });
+                        init_iCheck();
+
+                        $("#pop_modal").modal('toggle');
+
+                        @if(in_array(ENVIRONMENT, ['local','development'])) console.log(2, callData); @endif
                     });
                 });
             </script>
         @stop
 
         @section('add_buttons')
-            <button type="submit" class="btn btn-success">저장</button>
+            <button type="button" class="btn btn-success" id="act-qApply">저장</button>
         @endsection
 
         @section('layer_footer')

@@ -247,9 +247,11 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
 
-            ['field' => 'chapterTotal[]', 'label' => '챕터 tIDX', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'chapterExist[]', 'label' => '챕터 eIDX', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'chapterDel[]', 'label' => '챕터 dIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterTotal[]', 'label' => 'tIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterExist[]', 'label' => 'eIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterDel[]', 'label' => 'dIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'regKind[]', 'label' => 'Call등록타입', 'rules' => 'trim|in_list[call]'],
+            ['field' => 'callIdx[]', 'label' => 'CallIdx', 'rules' => 'trim|is_natural_no_zero'],
         ];
         foreach ($this->input->post('chapterTotal') as $k => $v) {
             if(!$v) {
@@ -352,6 +354,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'qu_year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'qu_round', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'qu_no', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'nowIdx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'moLink', 'label' => '과목', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'ProfIdx', 'label' => '교수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'QuestionOption', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],

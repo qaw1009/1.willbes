@@ -359,6 +359,7 @@ class RegExam extends \app\controllers\BaseController
         ];
         if ($this->validate($rules) === false) return;
 
-
+        $result = $this->regExamModel->call();
+        $this->json_result($result['ret_cd'], '', $result, $result);
     }
 }

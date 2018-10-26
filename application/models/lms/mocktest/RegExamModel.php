@@ -224,7 +224,6 @@ class RegExamModel extends WB_Model
                                     ->where(array('MpIdx' => $this->input->post('idx'), 'IsStatus' => 'Y'))
                                     ->get($this->_table['mockExamBase'])->row_array();
 
-
             // 데이터 수정
             $data = array(
                 'MrcIdx' => $this->input->post('moLink'),
@@ -295,7 +294,10 @@ class RegExamModel extends WB_Model
 
             $realFileNames = array();
             foreach ($names as $name) {
-                $realFileNames = array_merge($realFileNames, $name['real']);
+                if( is_array($name['real']) )
+                    $realFileNames = array_merge($realFileNames, $name['real']);
+                else
+                    $realFileNames[] = $name['real'];
             }
 
             // 이미지 업로드
@@ -313,59 +315,6 @@ class RegExamModel extends WB_Model
             }
         } catch (Exception $e) {
             return $e->getMessage();
-        }
-
-        return true;
-    }
-
-
-    /**
-     * 파일 복사 todo /////
-     */
-    public function uploadFileCopy($idx_be, $idx, $file, $type)
-    {
-        $filePath_be = $this->upload_path . $this->upload_path_mock . $idx_be . '/';
-        $filePath = $this->upload_path . $this->upload_path_mock . $idx . '/';
-        $filePathQ_be = $this->upload_path . $this->upload_path_mock . $idx_be . $this->upload_path_mockQ;
-        $filePathQ = $this->upload_path . $this->upload_path_mock . $idx . $this->upload_path_mockQ;
-
-        try {
-            if($type == 'base') {
-                $path_be = $filePath_be;
-                $path = $filePath;
-            }
-            else if($type == 'question') {
-                $path_be = $filePathQ_be;
-                $path = $filePathQ;
-            }
-            else {
-                throw new Exception('입력오류');
-            }
-
-            // 디렉토리 생성
-            if (is_dir($path) === false) {
-                if (mkdir($path, 0707, true) === false) {
-                    throw new Exception('디렉토리 생성에 실패했습니다.');
-                }
-            }
-
-            // 파일 복사
-            foreach ($file as $k => $v) {
-                if (file_exists($path_be . $k)) {
-                    if (rename($path_be . $k, $path . $v) === false) {
-                        throw new Exception('복사에 실패했습니다.');
-                    }
-                }
-            }
-        }
-        catch (Exception $e) {
-            // 롤백
-            foreach ($file as $k => $v) {
-                if (file_exists($path . $k)) {
-                    unlink($path . $v);
-                }
-            }
-            return error_result($e);
         }
 
         return true;
@@ -656,7 +605,32 @@ class RegExamModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
-
     }
 
+
+    // 호출
+    public function call()
+    {
+        $condition = [
+            'EQ' => [
+                'EB.MrcIdx' => $this->input->post('moLink'),
+                'EB.ProfIdx' => $this->input->post('ProfIdx'),
+                'EB.Year' => $this->input->post('qu_year'),
+                'EB.RotationNo' => $this->input->post('qu_round'),
+                'EQ.QuestionNO' => $this->input->post('qu_no'),
+            ],
+        ];
+
+        $sql = "
+            SELECT EB.*, EQ.*
+            FROM {$this->_table['mockExamBase']} AS EB
+            JOIN {$this->_table['mockExamQuestion']} AS EQ ON EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y'
+            WHERE EB.IsStatus = 'Y'
+        ";
+        $sql .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+
+        $data = $this->_conn->query($sql)->result_array();
+
+        return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
+    }
 }

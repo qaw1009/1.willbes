@@ -44,8 +44,7 @@
                 <table class="table table-bordered" id="modal_reg_table">
                     <thead>
                     <tr>
-                        <th class="text-center">문항번호</th>
-                        <th class="text-center">연도/회차/문항번호</th>
+                        <th class="text-center" style="width: 360px">연도/회차/문항번호</th>
                         <th class="text-center">문제영역</th>
                         <th class="text-center">문제등록옵션</th>
                         <th class="text-center">문제미리보기</th>
@@ -57,7 +56,6 @@
                     <tbody>
                     {{-- [S] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
                     <tr data-chapter-idx="">
-                        <td class="text-center form-inline"></td>
                         <td class="text-center form-inline">
                             <select class="form-control mr-5" name="qu_year">
                                 <option value="">연도</option>
@@ -81,8 +79,12 @@
                         </td>
                         <td class="text-center"></td>
                         <td class="text-center"></td>
-                        <td class="text-center"><span class="underline-link act-review" data-review-type="q">확인</span></td>
-                        <td class="text-center"><span class="underline-link act-review" data-review-type="e">확인</span></td>
+                        <td class="text-center">
+                            <span class="underline-link act-review" data-review-type="q">확인</span>
+                        </td>
+                        <td class="text-center">
+                            <span class="underline-link act-review" data-review-type="e">확인</span>
+                        </td>
                         <td class="text-center"></td>
                         <td class="text-center"></td>
                     </tr>
@@ -96,7 +98,7 @@
                     // 초기화
                     var quInfo2 = $regi_form.find('#selected_category').text().trim().replace(/\[.+/, '');
                     var quInfo3 = $regi_form.find('#selected_category').text().trim().replace(/^.+>\s/, '').replace(/\s\[.+$/, '') + ' | ' +
-                        $regi_form.find('#selected_professor').text().trim().replace(/\|.+/, '') + ' | ' +
+                        $regi_form.find('#selected_professor').text().trim().replace(/^\|.+/, '') + ' | ' +
                         $regi_form.find('[name="Year"] option:selected').text() + ' | ' +
                         $regi_form.find('[name="RotationNo"] option:selected').text() + '회차 | ' +
                         $regi_form.find('[name="QuestionOption"] option:selected').text() + ' | 보기 ' +
@@ -109,7 +111,7 @@
 
                     var callList = $('#modal_reg_table').find('tbody');
                     var callAddField = callList.find('tr:eq(0)').html();
-                    //callList.find('tr:eq(0)').remove();
+                    callList.find('tr:eq(0)').remove();
 
                     // 필드 추가
                     $('#act-call-addRow').on('click', function () {
@@ -119,22 +121,18 @@
                         for (i=0; i < count; i++) {
                             callList.append('<tr data-chapter-idx="">' + callAddField + '</tr>');
                         }
-
-                        callList.find('tr').each(function (index) {
-                            $(this).find('td:eq(0)').text(++index);
-                        });
                     });
 
                     // 조회
-                    $('.act-getQuestion').on('click', function() {
-                        var $mForm = $('#modal_reg_form');
+                    var $mTable = $('#modal_reg_table');
+                    $mTable.on('click', '.act-getQuestion', function() {
                         var _url = '{{ site_url("/mocktest/regExam/call") }}';
                         var data = {
-                            '{{ csrf_token_name() }}' : $mForm.find('[name="{{ csrf_token_name() }}"]').val(),
+                            '{{ csrf_token_name() }}' : $mTable.find('[name="{{ csrf_token_name() }}"]').val(),
                             '_method' : 'GET',
-                            'qu_year' : $mForm.find('[name="qu_year"]').val(),
-                            'qu_round' : $mForm.find('[name="qu_round"]').val(),
-                            'qu_no' : $mForm.find('[name="qu_no"]').val(),
+                            'qu_year' : $mTable.find('[name="qu_year"]').val(),
+                            'qu_round' : $mTable.find('[name="qu_round"]').val(),
+                            'qu_no' : $mTable.find('[name="qu_no"]').val(),
                             'moLink' : $regi_form.find('[name="moLink"]').val(),
                             'ProfIdx' : $regi_form.find('[name="ProfIdx"]').val(),
                             'QuestionOption' : $regi_form.find('[name="QuestionOption"]').val(),

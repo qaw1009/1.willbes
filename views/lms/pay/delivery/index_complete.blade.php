@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs bar_tabs mb-0" role="tablist">
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/invoice') }}">송장등록</a></li>
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/prepare') }}">발송준비 (환불반영)</a></li>
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/complete') }}">발송완료</a></li>
-                <li role="presentation" class="active"><a href="{{ site_url('/pay/order/delivery/index/book/cancel') }}" class="cs-pointer"><strong>발송취소</strong></a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/invoice') }}">송장등록</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/prepare') }}">발송준비 (환불반영)</a></li>
+                <li role="presentation" class="active"><a href="{{ site_url('/pay/delivery/index/book/complete') }}" class="cs-pointer"><strong>발송완료</strong></a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/cancel') }}">발송취소</a></li>
             </ul>
         </div>
     </div>
@@ -50,8 +50,7 @@
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                             <option value="paid">결제완료일</option>
                             <option value="invoice">송장등록일</option>
-                            <option value="refund">환불완료일</option>
-                            <option value="cancel">발송전취소일</option>
+                            <option value="complete">발송승인일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -88,7 +87,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="fa-ul mb-0">
-                        <li><i class="fa-li fa fa-check-square-o"></i>‘발송준비(환불반영)’ 탭에서 ‘발송전취소’ 처리된 내역을 확인하는 메뉴</li>
+                        <li><i class="fa-li fa fa-check-square-o"></i>실제 발송이 완료된 내역, 발송 수량 및 정보 확인, 발송내역 다운로드 가능</li>
                     </ul>
                 </div>
             </div>
@@ -107,19 +106,17 @@
                     <th rowspan="2" class="pb-30">상품명</th>
                     <th rowspan="2" class="pb-30">결제금액</th>
                     <th rowspan="2" class="rowspan pb-30">배송료</th>
-                    <th rowspan="2" class="pb-30">결제상태</th>
-                    <th rowspan="2" class="pb-30">환불완료일</th>
                     <th rowspan="2" class="rowspan pb-30">수령인정보</th>
                     <th rowspan="2" class="rowspan pb-30">배송지</th>
                     <th colspan="3" class="">송장정보</th>
-                    <th colspan="2" class="">발송전취소정보</th>
+                    <th colspan="2" class="">발송완료승인정보</th>
                 </tr>
                 <tr>
                     <th class="pb-20">송장번호</th>
                     <th>등록자<br/>(수정자)</th>
                     <th>등록일<br/>(수정일)</th>
-                    <th class="pb-20">취소자</th>
-                    <th class="pb-20">취소일</th>
+                    <th class="pb-20">완료자</th>
+                    <th class="pb-20">승인일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -141,10 +138,11 @@
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
-                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
+                    { text: '<i class="fa fa-print mr-5"></i> 프린트', className: 'btn-sm btn-primary border-radius-reset btn-print' },
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/delivery/listAjax/book/cancel') }}',
+                    'url' : '{{ site_url('/pay/delivery/listAjax/book/complete') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -175,10 +173,6 @@
                     {'data' : 'tDeliveryPrice', 'render' : function(data, type, row, meta) {
                         return data > 0 ? '[일반] ' + addComma(data) + (row.tDeliveryAddPrice > 0 ? '<br/>[추가] ' + addComma(row.tDeliveryAddPrice) : '') : '';
                     }},
-                    {'data' : 'PayStatusCcdName'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '';
-                    }},
                     {'data' : 'Receiver', 'render' : function(data, type, row, meta) {
                         return data + '<br/>' + row.ReceiverPhone;
                     }},
@@ -192,22 +186,54 @@
                     {'data' : 'InvoiceRegDatm', 'render' : function(data, type, row, meta) {
                         return data + (row.InvoiceUpdDatm !== null ? '<br/>(' + row.InvoiceUpdDatm + ')' : '');
                     }},
-                    {'data' : 'StatusUpdAdminName'},
-                    {'data' : 'StatusUpdDatm'}
+                    {'data' : 'DeliverySendAdminName'},
+                    {'data' : 'DeliverySendDatm'}
                 ]
+            });
+
+            // 프린트 버튼 클릭
+            $('.btn-print').on('click', function() {
+                var $params = {};
+                var $order_idx = $list_table.find('input[name="order_idx"]');
+
+                $order_idx.each(function(idx) {
+                    if ($(this).is(':checked') === true) {
+                        $params[idx] = $(this).val();
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('프린트할 주문을 선택해 주세요.');
+                    return;
+                }
+
+                if (Object.keys($params).length > 3) {
+                    alert('프린트할 주문을 3건 이하로 선택해 주세요.');
+                    return;
+                }
+
+                $('.btn-print').setLayer({
+                    'url' : '{{ site_url('/pay/delivery/print') }}',
+                    'width' : 1200,
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'params', 'name' : '주문식별자', 'value' : JSON.stringify($params), 'required' : true },
+                        { 'id' : 'status', 'name' : '배송상태', 'value' : 'complete', 'required' : true }
+                    ]
+                });
             });
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/delivery/excel/book/cancel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/delivery/excel/book/complete') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/pay/order/order/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/delivery/show/book/complete') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

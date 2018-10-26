@@ -20,7 +20,7 @@ class BaseOrder extends \app\controllers\BaseController
      */
     public function show($params = [])
     {
-        $order_idx = $params[0];
+        $order_idx = count($params) > 1 ? $params[2] : $params[0];  // 배송관리는 3번째 위치에 주문식별자가 있음
         if (empty($order_idx) === true) {
             show_error('필수 파라미터 오류입니다.');
         }
@@ -46,7 +46,7 @@ class BaseOrder extends \app\controllers\BaseController
         // 회원포인트 조회
         $point_data = $this->pointModel->getMemberPoint($order_data['MemIdx']);
 
-        $this->load->view('pay/order/order/show', [
+        $this->load->view('pay/order/show', [
             'idx' => $order_idx,
             'data' => [
                 'order' => $order_data,

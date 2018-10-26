@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 결제수단을 무통장입금으로 신청한 주문현황을 확인할 수 있습니다. (결제완료 주문건은 전체결제현황 메뉴에서 확인 가능합니다.)</h5>
+    <h5>- 온라인결제(PG사), 학원방문결제, 0원결제, 무료결제, 제휴사결제로 진행한 전체 결제현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
@@ -11,9 +11,15 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
-                            <option value="">결제채널</option>
-                        @foreach($arr_pay_channel_ccd as $key => $val)
+                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
+                            <option value="">결제루트</option>
+                        @foreach($arr_pay_route_ccd as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
+                            <option value="">결제수단</option>
+                        @foreach($arr_pay_method_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
@@ -32,6 +38,12 @@
                         <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
                             <option value="">결제상태</option>
                         @foreach($arr_pay_status_ccd as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                        </select>
+                        <select class="form-control mr-10" id="search_delivery_status_ccd" name="search_delivery_status_ccd">
+                            <option value="">배송상태</option>
+                        @foreach($arr_delivery_status_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
@@ -59,6 +71,7 @@
                         <div class="checkbox">
                             <input type="checkbox" id="search_chk_is_escrow" name="search_chk_is_escrow" class="flat" value="Y"/> <label for="search_chk_is_escrow" class="input-label">에스크로(e)</label>
                             <input type="checkbox" id="search_chk_is_coupon" name="search_chk_is_coupon" class="flat" value="Y"/> <label for="search_chk_is_coupon" class="input-label">쿠폰적용</label>
+                            <input type="checkbox" id="search_chk_is_approval" name="search_chk_is_approval" class="flat" value="Y"/> <label for="search_chk_is_approval" class="input-label">지결환불</label>
                         </div>
                     </div>
                 </div>
@@ -66,9 +79,11 @@
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                            <option value="order">주문완료일</option>
+                            <option value="paid">결제완료일</option>
                             <option value="vbank">가상계좌신청일</option>
-                            <option value="vbank_cancel">가상계좌취소일</option>
-                            <option value="vbank_expire">가상계좌만료일</option>
+                            <option value="refund">환불완료일</option>
+                            <option value="delivery_send">발송완료일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -110,16 +125,18 @@
                     <th rowspan="2" class="rowspan pb-30">주문번호</th>
                     <th rowspan="2" class="rowspan pb-30">회원정보</th>
                     <th rowspan="2" class="rowspan pb-30">결제채널</th>
-                    <th rowspan="2" class="rowspan pb-20">가상계좌신청일<br/>(가상계좌취소(만료)일)</th>
-                    <th rowspan="2" class="rowspan pb-30">가상계좌정보</th>
-                    <th rowspan="2" class="rowspan pb-30">가상계좌취소</th>
-                    <th colspan="5">상품구분별정보</th>
+                    <th rowspan="2" class="rowspan pb-30">결제루트</th>
+                    <th rowspan="2" class="rowspan pb-30">결제수단</th>
+                    <th rowspan="2" class="rowspan pb-20">결제완료(주문)일<br/>(가상계좌신청일)</th>
+                    <th colspan="7">상품구분별정보</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>상품구분</th>
                     <th>상품명</th>
                     <th>결제금액</th>
+                    <th>환불금액</th>
                     <th>결제상태</th>
+                    <th>배송상태</th>
                     <th>쿠폰적용</th>
                 </tr>
                 </thead>
@@ -145,7 +162,7 @@
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/vbank/listAjax') }}',
+                    'url' : '{{ site_url('/pay/order/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -158,11 +175,14 @@
                         var t_real_pay_price = rows.data().pluck('tRealPayPrice')[0];
                         var t_use_lec_point = rows.data().pluck('tUseLecPoint')[0];
                         var t_use_book_point = rows.data().pluck('tUseBookPoint')[0];
+                        var t_refund_price = rows.data().pluck('tRefundPrice')[0];
+                        var t_remain_price = rows.data().pluck('tRemainPrice')[0];
 
                         var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
-                            + ' (사용 포인트 : ' + addComma(t_use_lec_point) + ' | 교재 : ' + addComma(t_use_book_point) + ')</strong>';
+                            + ' (사용 포인트 : ' + addComma(t_use_lec_point) + ' | 교재 : ' + addComma(t_use_book_point) + ')'
+                            + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
 
-                        return $('<tr class="bg-odd"><td colspan="8"></td><td colspan="5">' + t_html + '</td></tr>');
+                        return $('<tr class="bg-odd"><td colspan="8"></td><td colspan="7">' + t_html + '</td></tr>');
                     },
                     dataSrc : 'OrderIdx'
                 },
@@ -181,14 +201,10 @@
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
                     {'data' : 'PayChannelCcdName'},
-                    {'data' : 'OrderDatm', 'render' : function(data, type, row, meta) {
-                        return data + '<br/>(' + (row.VBankCancelDatm !== null ? row.VBankCancelDatm : row.VBankExpireDatm) + ')';
-                    }},
-                    {'data' : 'VBankCcdName', 'render' : function(data, type, row, meta) {
-                        return data + '<br/>' + row.VBankAccountNo + '<br/>' + row.VBankDepositName + '<br/>' + row.VBankExpireDatm;
-                    }},
-                    {'data' : 'VBankStatus', 'render' : function(data, type, row, meta) {
-                        return data === 'O' ? '<a class="cs-pointer btn-vbank-cancel" data-idx="' + row.OrderIdx + '"><u>[계좌취소]</u></a>' : '';
+                    {'data' : 'PayRouteCcdName'},
+                    {'data' : 'PayMethodCcdName'},
+                    {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
+                        return data !== null ? data : '' + (row.VBankOrderDatm !== null ? '<br/>(' + row.VBankOrderDatm + ')' : row.OrderDatm);
                     }},
                     {'data' : 'ProdTypeCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
@@ -197,7 +213,15 @@
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
                     }},
-                    {'data' : 'PayStatusCcdName'},
+                    {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
+                        return data > 0 ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                    }},
+                    {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
+                        return data + (data.indexOf('환불') > -1 ? '<br/>2018-00-00<br/>(관리자명)' : '');
+                    }},
+                    {'data' : 'DeliveryStatusCcdName', 'render' : function(data, type, row, meta) {
+                        return data !== null ? data + '<br/>' + (row.DeliverySendDatm !== null ? row.DeliverySendDatm.substr(0, 10) : '') : '';
+                    }},
                     {'data' : 'DiscRate', 'render' : function(data, type, row, meta) {
                         return row.IsUseCoupon === 'Y' ? data : '';
                     }}
@@ -208,32 +232,13 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/vbank/excel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/order/excel') }}', $search_form.serializeArray(), 'POST');
                 }
-            });
-
-            // 계좌취소 버튼 클릭
-            $list_table.on('click', '.btn-vbank-cancel', function() {
-                if (!confirm('해당 계좌를 취소하시겠습니까?')) {
-                    return;
-                }
-
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'order_idx' : $(this).data('idx')
-                };
-                sendAjax('{{ site_url('/pay/order/order/cancel/vbank') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/pay/order/vbank/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/order/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

@@ -18,7 +18,7 @@ class Cart extends BaseOrder
      */
     public function index()
     {
-        $this->load->view('pay/order/cart/index', []);
+        $this->load->view('pay/cart/index', []);
     }
 
     /**
@@ -113,7 +113,7 @@ class Cart extends BaseOrder
         $arr_prod_type_target_ccd = array_filter_keys($this->cartModel->_prod_type_ccd, $arr_prod_type_target_key);
         $arr_prod_type_target_name = $this->codeModel->getCcd($this->_group_ccd['ProdType'], '', ['IN' => ['Ccd' => array_values($arr_prod_type_target_ccd)]]);
 
-        $this->load->view('pay/order/cart/create', [
+        $this->load->view('pay/cart/create', [
             'arr_prod_type_target_ccd' => $arr_prod_type_target_ccd,
             'arr_prod_type_target_name' => $arr_prod_type_target_name
         ]);

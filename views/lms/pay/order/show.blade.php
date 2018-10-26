@@ -361,7 +361,7 @@
                     '_method' : 'PUT',
                     'order_idx' : $regi_memo_form.find('input[name="order_idx"]').val()
                 };
-                sendAjax('{{ site_url('/pay/order/order/cancel/vbank') }}', data, function(ret) {
+                sendAjax('{{ site_url('/pay/order/cancel/vbank') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.reload();
@@ -376,7 +376,10 @@
 
             // 목록 이동
             $('#btn_list').click(function() {
-                var url = location.protocol + '//' + location.host + location.pathname.substr(0, location.pathname.indexOf('/show/')) + '/index' + getQueryString();
+                var url = location.protocol + '//' + location.host + location.pathname.substr(0, location.pathname.indexOf('/show/')) + '/index';
+                url += location.pathname.substr(location.pathname.indexOf('/show/') + 5).replace(/[0-9]/g, '').replace(/\/+$/, '');
+                url += getQueryString();
+
                 location.replace(url);
             });
         });

@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인결제(PG사), 학원방문결제, 0원결제, 무료결제, 제휴사결제로 진행한 전체 결제현황을 확인할 수 있습니다.</h5>
+    <h5>- 사용자가 구매한 교재의 전체 결제현황을 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
@@ -25,15 +25,9 @@
                         </select>
                         <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd">
                             <option value="">상품구분</option>
-                        @foreach($arr_prod_type_ccd as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                        @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd">
-                            <option value="">상품상세구분</option>
-                        @foreach($arr_learn_pattern_ccd as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
-                        @endforeach
+                            @foreach($arr_prod_type_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
                         </select>
                         <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
                             <option value="">결제상태</option>
@@ -162,7 +156,7 @@
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/order/listAjax') }}',
+                    'url' : '{{ site_url('/pay/book/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -172,14 +166,19 @@
                 rowGroup: {
                     startRender: null,
                     endRender: function(rows, group) {
-                        var t_real_pay_price = rows.data().pluck('tRealPayPrice')[0];
-                        var t_use_lec_point = rows.data().pluck('tUseLecPoint')[0];
+                        var t_real_pay_price = rows.data().pluck('RealPayPrice').reduce(function(a, b) {
+                            return a + b.replace(/[^\d]/g, '') * 1;
+                        }, 0);
+
+                        var t_refund_price = rows.data().pluck('RefundPrice').reduce(function(a, b) {
+                            return a + b.replace(/[^\d]/g, '') * 1;
+                        }, 0);
+
+                        var t_remain_price = t_real_pay_price - t_refund_price;
                         var t_use_book_point = rows.data().pluck('tUseBookPoint')[0];
-                        var t_refund_price = rows.data().pluck('tRefundPrice')[0];
-                        var t_remain_price = rows.data().pluck('tRemainPrice')[0];
 
                         var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
-                            + ' (사용 포인트 : ' + addComma(t_use_lec_point) + ' | 교재 : ' + addComma(t_use_book_point) + ')'
+                            + ' (사용 교재 포인트 : ' + addComma(t_use_book_point) + ')'
                             + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
 
                         return $('<tr class="bg-odd"><td colspan="8"></td><td colspan="7">' + t_html + '</td></tr>');
@@ -232,13 +231,13 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/order/excel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/book/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/pay/order/order/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/book/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

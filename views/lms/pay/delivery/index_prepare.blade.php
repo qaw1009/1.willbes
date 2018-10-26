@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs bar_tabs mb-0" role="tablist">
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/invoice') }}">송장등록</a></li>
-                <li role="presentation" class="active"><a href="{{ site_url('/pay/order/delivery/index/book/prepare') }}" class="cs-pointer"><strong>발송준비 (환불반영)</strong></a></li>
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/complete') }}">발송완료</a></li>
-                <li role="presentation"><a href="{{ site_url('/pay/order/delivery/index/book/cancel') }}">발송취소</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/invoice') }}">송장등록</a></li>
+                <li role="presentation" class="active"><a href="{{ site_url('/pay/delivery/index/book/prepare') }}" class="cs-pointer"><strong>발송준비 (환불반영)</strong></a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/complete') }}">발송완료</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/cancel') }}">발송취소</a></li>
             </ul>
         </div>
     </div>
@@ -150,7 +150,7 @@
                     { text: '<i class="fa fa-pencil mr-5"></i> 발송완료승인', className: 'btn-sm btn-success border-radius-reset btn-send-complete' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/delivery/listAjax/book/prepare') }}',
+                    'url' : '{{ site_url('/pay/delivery/listAjax/book/prepare') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -256,7 +256,7 @@
                     'params' : JSON.stringify($params)
                 };
 
-                sendAjax('{{ site_url('/pay/order/delivery/restatus') }}', data, function(ret) {
+                sendAjax('{{ site_url('/pay/delivery/restatus') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
@@ -319,7 +319,7 @@
                     'params' : JSON.stringify($params)
                 };
 
-                sendAjax('{{ site_url('/pay/order/delivery/redata') }}', data, function(ret) {
+                sendAjax('{{ site_url('/pay/delivery/redata') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();
@@ -331,13 +331,13 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/delivery/excel/book/prepare') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/delivery/excel/book/prepare') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/pay/order/order/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/delivery/show/book/prepare') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

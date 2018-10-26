@@ -1,58 +1,30 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 사용자가 신청한 무료강좌 신청현황을 확인할 수 있습니다.</h5>
+    <h5>- 교재 구매자를 확인하고 송장번호를 업로드하여 배송이력을 관리하는 메뉴입니다.</h5>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs bar_tabs mb-0" role="tablist">
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/invoice') }}">송장등록</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/prepare') }}">발송준비 (환불반영)</a></li>
+                <li role="presentation"><a href="{{ site_url('/pay/delivery/index/book/complete') }}">발송완료</a></li>
+                <li role="presentation" class="active"><a href="{{ site_url('/pay/delivery/index/book/cancel') }}" class="cs-pointer"><strong>발송취소</strong></a></li>
+            </ul>
+        </div>
+    </div>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
-                <div class="form-group">
-                    <label class="control-label col-md-1">신청기본정보</label>
-                    <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
-                            <option value="">신청채널</option>
-                            @foreach($arr_pay_channel_ccd as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
-                            <option value="">신청상태</option>
-                            @foreach($arr_pay_status_ccd as $key => $val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <label class="control-label col-md-1">상품기본정보</label>
-                    <div class="col-md-5 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
-                            <option value="">직종</option>
-                            @foreach($arr_category as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
-                            <option value="">과목</option>
-                            @foreach($arr_subject as $row)
-                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
-                            <option value="">교수</option>
-                            @foreach($arr_professor as $row)
-                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_member_value" name="search_member_value">
                     </div>
                     <div class="col-md-8">
-                        <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
+                        <p class="form-control-static">이름, 아이디, 휴대폰번호, 수령인명 검색 가능</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -61,15 +33,25 @@
                         <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">명칭, 주문번호 검색 가능</p>
+                        <p class="form-control-static">명칭, 주문/송장번호 검색 가능</p>
+                    </div>
+                    <label class="control-label col-md-1" for="">조건검색</label>
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control mr-10" id="search_delivery_price_type" name="search_delivery_price_type">
+                            <option value="">배송료구분</option>
+                            <option value="normal">일반배송료</option>
+                            <option value="add">추가배송료</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
-                            <option value="order">신청완료일</option>
-                            <option value="cancel">취소완료일</option>
+                            <option value="paid">결제완료일</option>
+                            <option value="invoice">송장등록일</option>
+                            <option value="refund">환불완료일</option>
+                            <option value="cancel">발송전취소일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
                             <div class="input-group-addon">
@@ -103,20 +85,41 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="fa-ul mb-0">
+                        <li><i class="fa-li fa fa-check-square-o"></i>‘발송준비(환불반영)’ 탭에서 ‘발송전취소’ 처리된 내역을 확인하는 메뉴</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="x_panel mt-10">
+        <div class="x_content">
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="rowspan">선택</th>
-                    <th class="">No</th>
-                    <th class="rowspan">주문번호</th>
-                    <th class="rowspan">회원정보</th>
-                    <th class="rowspan">신청채널</th>
-                    <th class="">직종</th>
-                    <th class="">과목</th>
-                    <th class="">교수</th>
-                    <th class="">무료강좌명</th>
-                    <th class="">신청상태</th>
-                    <th class="">신청일</th>
+                    <th rowspan="2" class="rowspan pb-30">선택</th>
+                    <th rowspan="2" class="pb-30">No</th>
+                    <th rowspan="2" class="rowspan pb-30">주문번호</th>
+                    <th rowspan="2" class="rowspan pb-30">회원정보</th>
+                    <th rowspan="2" class="rowspan pb-30">결제완료일</th>
+                    <th rowspan="2" class="pb-30">상품명</th>
+                    <th rowspan="2" class="pb-30">결제금액</th>
+                    <th rowspan="2" class="rowspan pb-30">배송료</th>
+                    <th rowspan="2" class="pb-30">결제상태</th>
+                    <th rowspan="2" class="pb-30">환불완료일</th>
+                    <th rowspan="2" class="rowspan pb-30">수령인정보</th>
+                    <th rowspan="2" class="rowspan pb-30">배송지</th>
+                    <th colspan="3" class="">송장정보</th>
+                    <th colspan="2" class="">발송전취소정보</th>
+                </tr>
+                <tr>
+                    <th class="pb-20">송장번호</th>
+                    <th>등록자<br/>(수정자)</th>
+                    <th>등록일<br/>(수정일)</th>
+                    <th class="pb-20">취소자</th>
+                    <th class="pb-20">취소일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -141,7 +144,7 @@
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/free/listAjax') }}',
+                    'url' : '{{ site_url('/pay/delivery/listAjax/book/cancel') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -162,34 +165,49 @@
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
-                    {'data' : 'PayChannelCcdName'},
-                    {'data' : 'LgCateName'},
-                    {'data' : 'SubjectName'},
-                    {'data' : 'wProfName_String'},
-                    {'data' : 'ProdName'},
-                    {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (data.indexOf('취소') > -1 ? '<br/>(' + row.UpdDatm + ')' : '');
+                    {'data' : 'CompleteDatm'},
+                    {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
+                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},
-                    {'data' : 'OrderDatm'}
+                    {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'tDeliveryPrice', 'render' : function(data, type, row, meta) {
+                        return data > 0 ? '[일반] ' + addComma(data) + (row.tDeliveryAddPrice > 0 ? '<br/>[추가] ' + addComma(row.tDeliveryAddPrice) : '') : '';
+                    }},
+                    {'data' : 'PayStatusCcdName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return '';
+                    }},
+                    {'data' : 'Receiver', 'render' : function(data, type, row, meta) {
+                        return data + '<br/>' + row.ReceiverPhone;
+                    }},
+                    {'data' : 'Addr1', 'render' : function(data, type, row, meta) {
+                        return row.ZipCode + '<br/>' + data + '<br/>' + row.Addr2;
+                    }},
+                    {'data' : 'InvoiceNo'},
+                    {'data' : 'InvoiceRegAdminName', 'render' : function(data, type, row, meta) {
+                        return data + (row.InvoiceUpdAdminName !== null ? '<br/>(' + row.InvoiceUpdAdminName + ')' : '');
+                    }},
+                    {'data' : 'InvoiceRegDatm', 'render' : function(data, type, row, meta) {
+                        return data + (row.InvoiceUpdDatm !== null ? '<br/>(' + row.InvoiceUpdDatm + ')' : '');
+                    }},
+                    {'data' : 'StatusUpdAdminName'},
+                    {'data' : 'StatusUpdDatm'}
                 ]
             });
-
-            // 과목, 교수 자동 변경
-            $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
-            $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
-            $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");            
 
             // 엑셀다운로드 버튼 클릭
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/free/excel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/delivery/excel/book/cancel') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-view', function() {
-                location.href = '{{ site_url('/pay/order/free/show') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/delivery/show/book/cancel') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

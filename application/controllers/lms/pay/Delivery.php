@@ -35,7 +35,7 @@ class Delivery extends BaseOrder
     {
         $arr_pay_status_ccd = array_filter_keys($this->codeModel->getCcd($this->_group_ccd['PayStatus']), $this->_delivery_pay_status_ccd);
 
-        $this->load->view('pay/order/delivery/index_' . $this->_tab, [
+        $this->load->view('pay/delivery/index_' . $this->_tab, [
             'arr_pay_status_ccd' => $arr_pay_status_ccd
         ]);
     }
@@ -346,7 +346,7 @@ class Delivery extends BaseOrder
             }
         }
 
-        $this->load->view('pay/order/delivery/print', [
+        $this->load->view('pay/delivery/print', [
             'data' => $data
         ]);        
     }

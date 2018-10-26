@@ -30,14 +30,14 @@ class CartFModel extends BaseOrderFModel
         } else {
             $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
-                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
                 , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub), "") as UserPackPriceData 
-                , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
+                , ifnull(TP.ProdName, P.ProdName) as ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
+                , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice                
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_subject_idxs(CA.ProdCode), PL.SubjectIdx) as SubjectIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                                   
-                , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
                 , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName
                 , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '", "' . $this->_prod_type_ccd['extend_lecture'] . '"), "Y", "N") as IsUsePoint               
@@ -74,11 +74,13 @@ class CartFModel extends BaseOrderFModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on CA.ProdCode = PL.ProdCode
                 left join ' . $this->_table['product_division'] . ' as PD
-                    on P.ProdCode = PD.ProdCode and PD.IsReprProf = "Y" and PD.IsStatus = "Y"                    
+                    on CA.ProdCode = PD.ProdCode and PD.IsReprProf = "Y" and PD.IsStatus = "Y"                    
                 left join ' . $this->_table['product_book'] . ' as PB
                     on CA.ProdCode = PB.ProdCode
                 left join ' . $this->_table['bms_book'] . ' as WB
                     on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
+                left join ' . $this->_table['product'] . ' as TP
+                    on CA.TargetProdCode = TP.ProdCode and TP.IsUse = "Y" and TP.IsStatus = "Y"                    
             where CA.IsStatus = "Y"   
                 and P.IsUse = "Y"
                 and P.IsStatus = "Y"                                                                  

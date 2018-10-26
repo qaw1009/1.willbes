@@ -3,38 +3,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/lms/pay/BaseOrder.php';
 
-class Order extends BaseOrder
+class Book extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
+    private $_book_prod_type_ccd = array();
     private $_list_add_join = array('delivery_info');
 
     public function __construct()
     {
         parent::__construct();
+
+        // 교재결제현황 상품타입
+        $this->_book_prod_type_ccd = array_values(array_filter_keys($this->orderListModel->_prod_type_ccd, ['book', 'delivery_price', 'delivery_add_price']));
     }
 
     /**
-     * 전체결제현황 인덱스
+     * 교재결제현황 인덱스
      */
     public function index()
     {
         // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayRoute', 'PayMethod', 'ProdType', 'LearnPattern', 'PayStatus', 'DeliveryStatus']);
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayRoute', 'PayMethod', 'ProdType', 'PayStatus', 'DeliveryStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
-        $this->load->view('pay/order/order/index', [
+        // 상품타입에서 교재 관련 값만 필터링
+        $arr_prod_type_ccd = array_filter_keys($codes[$this->_group_ccd['ProdType']], $this->_book_prod_type_ccd);
+
+        $this->load->view('pay/book/index', [
             'arr_pay_route_ccd' => $codes[$this->_group_ccd['PayRoute']],
             'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
-            'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
-            'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
+            'arr_prod_type_ccd' => $arr_prod_type_ccd,
             'arr_pay_status_ccd' => $codes[$this->_group_ccd['PayStatus']],
             'arr_delivery_status_ccd' => $codes[$this->_group_ccd['DeliveryStatus']]
         ]);
     }
 
     /**
-     * 전체결제현황 목록 조회
+     * 교재결제현황 목록 조회
      * @return CI_Output
      */
     public function listAjax()
@@ -56,7 +62,7 @@ class Order extends BaseOrder
     }
 
     /**
-     * 전체결제현황 조회 조건 리턴 
+     * 교재결제현황 조회 조건 리턴 
      * @return array
      */
     private function _getListConditions()
@@ -68,14 +74,16 @@ class Order extends BaseOrder
                 'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
-                'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),
                 'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),
                 'O.IsEscrow' => $this->_reqP('search_chk_is_escrow'),
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon'),
                 'OPR.IsApproval' => $this->_reqP('search_chk_is_approval'),
             ],
-            'IN' => ['O.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
+            'IN' => [
+                'P.ProdTypeCcd' => $this->_book_prod_type_ccd,
+                'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
+            ],
             'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),
@@ -120,7 +128,7 @@ class Order extends BaseOrder
     }
 
     /**
-     * 전체결제현황 조회 order by 배열 리턴
+     * 교재결제현황 조회 order by 배열 리턴
      * @return array
      */
     private function _getListOrderBy()
@@ -129,7 +137,7 @@ class Order extends BaseOrder
     }
 
     /**
-     * 전체결제현황 목록 엑셀다운로드
+     * 교재결제현황 목록 엑셀다운로드
      */
     public function excel()
     {
@@ -145,6 +153,6 @@ class Order extends BaseOrder
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('전체결제현황리스트', $list, $headers);
+        $this->excel->exportExcel('교재결제현황리스트', $list, $headers);
     }
 }

@@ -33,7 +33,7 @@ class Vbank extends BaseOrder
         // 결제상태에서 무통장입금 관련 값만 필터링
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], $this->_vbank_pay_status_ccd);
         
-        $this->load->view('pay/order/vbank/index', [
+        $this->load->view('pay/vbank/index', [
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],

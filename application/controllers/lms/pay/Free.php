@@ -34,7 +34,7 @@ class Free extends BaseOrder
         // 결제상태에서 무료강좌 관련 값만 필터링
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], $this->_free_pay_status_ccd);
 
-        $this->load->view('pay/order/free/index', [
+        $this->load->view('pay/free/index', [
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
             'arr_category' => $arr_category,

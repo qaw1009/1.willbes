@@ -130,7 +130,7 @@
                     $(this).val($(this).val() + ':' + $(this).data('prod-type') + ':' + $(this).data('learn-pattern-ccd'));
                 });
 
-                var _url = '{{ site_url('/pay/order/cart/store') }}';
+                var _url = '{{ site_url('/pay/cart/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
@@ -173,7 +173,7 @@
             });
 
             var goList = function() {
-                location.replace('{{ site_url('/pay/order/cart/index') }}' + getQueryString());
+                location.replace('{{ site_url('/pay/cart/index') }}' + getQueryString());
             };
         });
     </script>

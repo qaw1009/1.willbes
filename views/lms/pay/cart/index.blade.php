@@ -104,7 +104,7 @@
                     { text: '<i class="fa fa-trash-o mr-5"></i> 삭제', className: 'btn-sm btn-danger border-radius-reset btn-cart-delete' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/pay/order/cart/listAjax') }}',
+                    'url' : '{{ site_url('/pay/cart/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -158,13 +158,13 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/cart/excel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/pay/cart/excel') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 
             // 장바구니 담기 버튼 클릭
             $('.btn-cart-regist').on('click', function(event) {
-                location.href = '{{ site_url('/pay/order/cart/create') }}' + dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/pay/cart/create') }}' + dtParamsToQueryString($datatable);
             });
 
             // 선택 체크박스 클릭
@@ -210,7 +210,7 @@
                         'parent_prod_code' : JSON.stringify(json_parent_prod_code)
                     };
 
-                    sendAjax('{{ site_url('/pay/order/cart/destroy') }}', data, function(ret) {
+                    sendAjax('{{ site_url('/pay/cart/destroy') }}', data, function(ret) {
                         if (ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $datatable.draw();

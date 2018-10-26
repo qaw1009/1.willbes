@@ -39,13 +39,13 @@
                         <select class="form-control mr-5" id="sc_year" name="sc_year">
                             <option value="">연도</option>
                             @for($i=(date('Y')+1); $i>=2005; $i--)
-                                <option value="{{$i}}">{{$i}}</option>
+                                <option value="{{$i}}" @if(isset($_GET['sc_year']) && $_GET['sc_year'] == $i) selected @endif>{{$i}}</option>
                             @endfor
                         </select>
                         <select class="form-control mr-5" id="sc_round" name="sc_round">
                             <option value="">회차</option>
                             @foreach(range(1, 20) as $i)
-                                <option value="{{$i}}">{{$i}}</option>
+                                <option value="{{$i}}" @if(isset($_GET['sc_round']) && $_GET['sc_round'] == $i) selected @endif>{{$i}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="sc_use" name="sc_use">
@@ -69,7 +69,7 @@
         </div>
     </form>
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
-        <div class="x_content">
+        <div class="x_content mb-20">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
                 <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
@@ -77,10 +77,7 @@
                     <tr>
                         <th rowspan="2" class="text-center">선택</th>
                         <th rowspan="2" class="text-center">NO</th>
-                        <th rowspan="2" class="text-center hide">사이트</th>
-                        <th rowspan="2" class="text-center hide">카테고리</th>
-                        <th rowspan="2" class="text-center hide">직렬</th>
-                        <th rowspan="2" class="text-center">카테고리</th>
+                        <th rowspan="2" class="text-center" style="min-width:150px">카테고리</th>
                         <th rowspan="2" class="text-center">과목</th>
                         <th rowspan="2" class="text-center">교수</th>
                         <th rowspan="2" class="text-center">연도</th>
@@ -93,7 +90,7 @@
                         <th rowspan="2" class="text-center">사용여부</th>
                         {{--<th rowspan="2" class="text-center">문제보기</th>--}}
                         <th rowspan="2" class="text-center">등록자</th>
-                        <th rowspan="2" class="text-center">등록일</th>
+                        <th rowspan="2" class="text-center" style="width:130px">등록일</th>
                     </tr>
                     <tr>
                         <th class="text-center">ON</th>
@@ -113,8 +110,93 @@
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
+            // 검색 Select 메뉴
+            $search_form.find('#sc_cateD1').chained('#search_site_code');
+            $search_form.find('#sc_cateD2').chained('#sc_cateD1');
+            $search_form.find('#sc_subject').chained('#search_site_code');
+            $search_form.find('#sc_professor').chained('#search_site_code');
+
+            // 검색 초기화
+            $('#searchInit').on('click', function () {
+                $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
+                    $(this).val('');
+                });
+                $search_form.find('#sc_cateD1').trigger('change');
+                $datatable.draw();
+            });
+
+            // DataTables
+            $datatable = $list_table.DataTable({
+                info: true,
+                language: {
+                    "info": "[ 총 _MAX_건 ]",
+                },
+                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
+                buttons: [
+                    { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
+                    { text: '<i class="fa fa-pencil mr-5"></i> 문제등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
+                        $search_form.find('[name="_csrf_token"]').remove();
+                        location.href = '{{ site_url('/mocktest/regExam/create') }}' + '?' + $search_form.serialize();
+                    }}
+                ],
+                serverSide: true,
+                ajax: {
+                    'url' : '{{ site_url('/mocktest/regExam/list') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
+                    }
+                },
+                columns: [
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return '<input type="radio" class="flat" name="target" value="' + row.MpIdx + '">';
+                    }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
+                        return row.CateRouteName + IsUseCate;
+                    }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        var IsUseSubject = (row.IsUseSubject === 'Y') ? '' : '<span class="red">(미사용)</span>';
+                        return row.SubjectName + IsUseSubject;
+                    }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        var IsUseProfessor = (row.IsUseProfessor === 'Y') ? '' : '<span class="red">(미사용)</span>';
+                        return row.wProfName + IsUseProfessor;
+                    }},
+                    {'data' : 'Year', 'class': 'text-center'},
+                    {'data' : 'RotationNo', 'class': 'text-center'},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return '<span class="blue underline-link act-edit">[' + row.MpIdx + '] ' + row.PapaerName + '</span>';
+                    }},
+                    {'data' : 'AnswerNum', 'class': 'text-center'},
+                    {'data' : 'ListCnt', 'class': 'text-center'},
+                    {'data' : 'QuestionOption', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        var txt = '';
+                        if(data === 'S') txt = '객관식(단일)';
+                        else if(data === 'M') txt = '객관식(복수)';
+                        else if(data === 'J') txt = '주관식';
+
+                        return txt;
+                    }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
+                    // {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    //     return '';
+                    // }},
+                    {'data' : 'wAdminName', 'class': 'text-center'},
+                    {'data' : 'RegDate', 'class': 'text-center'}
+                ]
+            });
+
             // 수정으로 이동
-            $('.act-edit').on('click', function () {
+            $list_form.on('click', '.act-edit', function () {
+                $search_form.find('[name="_csrf_token"]').remove();
                 var query = '?' + $search_form.serialize();
                 location.href = '{{ site_url('/mocktest/regExam/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
@@ -137,89 +219,6 @@
                     }
                 }, showValidateError, false, 'POST');
             }
-
-            // 검색 Select 메뉴
-            $search_form.find('#sc_cateD1').chained('#search_site_code');
-            $search_form.find('#sc_cateD2').chained('#sc_cateD1');
-            $search_form.find('#sc_subject').chained('#search_site_code');
-            $search_form.find('#sc_professor').chained('#search_site_code');
-
-            // 검색 초기화
-            $('#searchInit').on('click', function () {
-                $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
-                    $(this).val('');
-                });
-                $search_form.find('#sc_cateD1').trigger('change');
-                $datatable.draw();
-            });
-
-            // DataTables
-            $datatable = $list_table.DataTable({
-                info: true,
-                language: {
-                    "info": "[ 총 _END_ / _MAX_건 ]",
-                },
-                dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>t",
-                buttons: [
-                    { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 문제등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/mocktest/regExam/create') }}' + '?' + $search_form.serialize();
-                        }}
-                ],
-                serverSide: true,
-                ajax: {
-                    'url' : '{{ site_url('/mocktest/regExam/list') }}',
-                    'type' : 'POST',
-                    'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
-                    }
-                },
-                columns: [
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<input type="radio" class="flat" name="target" value="' + row.MpIdx + '">';
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                            return row.CateRouteName + IsUseCate;
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var IsUseSubject = (row.IsUseSubject === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                            return row.SubjectName + IsUseSubject;
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var IsUseProfessor = (row.IsUseProfessor === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                            return row.wProfName + IsUseProfessor;
-                        }},
-                    {'data' : 'Year', 'class': 'text-center'},
-                    {'data' : 'RotationNo', 'class': 'text-center'},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '[' + row.MpIdx + '] ' + row.PapaerName;
-                        }},
-                    {'data' : 'AnswerNum', 'class': 'text-center'},
-                    {'data' : 'ListCnt', 'class': 'text-center'},
-                    {'data' : 'QuestionOption', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var txt = '';
-                            if(data === 'S') txt = '객관식(단일)';
-                            else if(data === 'M') txt = '객관식(복수)';
-                            else if(data === 'J') txt = '주관식';
-
-                            return txt;
-                        }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
-                    // {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                    //     return '';
-                    // }},
-                    {'data' : 'wAdminName', 'class': 'text-center'},
-                    {'data' : 'RegDate', 'class': 'text-center'}
-                ]
-            });
         });
     </script>
 @stop

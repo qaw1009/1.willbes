@@ -193,41 +193,27 @@ class MockCommonModel extends WB_Model
      */
     public function makeUploadFileName($in, $prefixLen=0)
     {
-        $names = array();
+        $names = $_FILES;
 
-        if( !empty($_FILES) ) {
-            foreach ($_FILES as $key => $it) {
-                if(in_array($key, $in)) {
-                    if (is_array($it['name'])) { // 업로드 배열로 받는 경우
-                        $i = 1;
-                        foreach ($it['name'] as $key_s => $it_s) {
-                            if ($it['error'][$key_s] === UPLOAD_ERR_OK) {
-                                $tmp = explode('.', $it['name'][$key_s]);
-                                $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
-                                $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . $i . '_' : '';
+        foreach ($names as $key => &$it) {
+            if(in_array($key, $in)) {
+                if (is_array($it['name'])) { // 업로드 배열로 받는 경우
+                    $i = 1;
+                    foreach ($it['name'] as $key_s => $it_s) {
+                        $tmp = explode('.', $it['name'][$key_s]);
+                        $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
+                        $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . $i . '_' : '';
 
-                                $names[] = array(
-                                    'input' => $key,
-                                    'name' => $it['name'][$key_s],
-                                    'real' => $prefix . md5(uniqid(mt_rand())) . $ext,
-                                );
-                            }
-                            $i++;
-                        }
+                        $it['real'][] = $prefix . md5(uniqid(mt_rand())) . $ext;
+                        $i++;
                     }
-                    else {
-                        if ($it['error'] === UPLOAD_ERR_OK) {
-                            $tmp = explode('.', $it['name']);
-                            $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
-                            $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . '_' : '';
+                }
+                else {
+                    $tmp = explode('.', $it['name']);
+                    $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
+                    $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . '_' : '';
 
-                            $names[] = array(
-                                'input' => $key,
-                                'name' => $it['name'],
-                                'real' => $prefix . md5(uniqid(mt_rand())) . $ext,
-                            );
-                        }
-                    }
+                    $it['real'] = $prefix . md5(uniqid(mt_rand())) . $ext;
                 }
             }
         }

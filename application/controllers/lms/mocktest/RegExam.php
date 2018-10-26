@@ -14,14 +14,10 @@ class RegExam extends \app\controllers\BaseController
     protected $models = array('sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regExam');
     protected $helpers = array();
 
-    public $upImgUrl;
 
     public function __construct()
     {
         parent::__construct();
-
-        $this->config->load('upload');
-        $this->upImgUrl = $this->config->item('upload_url') . $this->config->item('upload_prefix_dir') . '/mocktest/';
     }
 
     /**
@@ -48,7 +44,7 @@ class RegExam extends \app\controllers\BaseController
     public function list()
     {
         $rules = [
-            ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'sc_cateD1', 'label' => '카테고리', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'sc_cateD2', 'label' => '직렬', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'sc_subject', 'label' => '과목', 'rules' => 'trim|is_natural_no_zero'],
@@ -64,11 +60,18 @@ class RegExam extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'MB.SiteCode' => $this->input->post('siteCode')
+                'EB.SiteCode' => $this->input->post('search_site_code'),
+                'MB.CateCode' => $this->input->post('sc_cateD1'),
+                'MB.Ccd' => $this->input->post('sc_cateD2'),
+                'MS.SubjectIdx' => $this->input->post('sc_subject'),
+                'EB.ProfIdx' => $this->input->post('sc_professor'),
+                'EB.Year' => $this->input->post('sc_year'),
+                'EB.RotationNo' => $this->input->post('sc_round'),
+                'EB.IsUse' => $this->input->post('sc_use'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'MB.PapaerName' => $this->input->post('sc_fi', true),
+                    'EB.PapaerName' => $this->input->post('sc_fi', true),
                     'A.wAdminName' => $this->input->post('sc_fi', true),
                     'SC.CcdName' => $this->input->post('sc_fi', true),
                     'SJ.SubjectName' => $this->input->post('sc_fi', true),
@@ -166,7 +169,9 @@ class RegExam extends \app\controllers\BaseController
             'professor' => $professor,
             'areaList' => $areaList,
             'adminName' => $this->mockCommonModel->getAdminNames(),
-            'upImgUrl' => $this->upImgUrl,
+            'upImgUrl' => $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] .'/',
+            'upImgUrlQ' => $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] . $this->config->item('upload_path_mockQ', 'mock'),
+            'isDeny' => !empty($qData) ? true : false,  // 개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
         ]);
     }
 
@@ -182,13 +187,15 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            //['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
-            //['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
-            //['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
+        if(!$this->input->post('isDeny')) {
+            $rules[] = ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'];
+            $rules[] = ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'];
+            $rules[] = ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'];
+        }
         if ($this->validate($rules) === false) return;
 
         $result = $this->regExamModel->update();
@@ -217,13 +224,23 @@ class RegExam extends \app\controllers\BaseController
     /**
      * 문항정보 등록,수정
      */
-    public function storeUnit()
+    public function storeQuestion()
     {
+        $Info = @json_decode($this->input->post('Info'));
+        if(!is_object($Info)) {
+            $this->json_error("입력오류");
+            return;
+        }
+        else {
+            $_POST['chapterTotal'] = $Info->chapterTotal;
+            $_POST['chapterExist'] = $Info->chapterExist;
+            $_POST['chapterDel'] = $Info->chapterDel;
+        }
+
         $rules = [
-            ['field' => 'orderNum[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'QuestionNO[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MalIdx[]', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'QuestionOption[]', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],
-            ['field' => 'RightAnswer[][]', 'label' => '정답', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'Difficulty[]', 'label' => '난이도', 'rules' => 'trim|required|in_list[T,M,B]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
@@ -234,47 +251,55 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'chapterExist[]', 'label' => '챕터 eIDX', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'chapterDel[]', 'label' => '챕터 dIDX', 'rules' => 'trim|is_natural_no_zero'],
         ];
-//        if( $_FILES['UnitQuestionFile']['error'] === UPLOAD_ERR_NO_FILE ) {
-//            $rules[] = ['field' => 'UnitQuestionFile', 'label' => '문제파일', 'rules' => 'required'];
-//        }
-//        if( $_FILES['UnitExplanFile']['error'] === UPLOAD_ERR_NO_FILE ) {
-//            $rules[] = ['field' => 'UnitExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
-//        }
+        foreach ($this->input->post('chapterTotal') as $k => $v) {
+            if(!$v) {
+                if (isset($_FILES['QuestionFile']['error'][$k]) && $_FILES['QuestionFile']['error'][$k] !== UPLOAD_ERR_OK) {
+                    $rules[] = ['field' => 'QuestionFile', 'label' => '문제파일', 'rules' => 'required'];
+                    break;
+                }
+                if (isset($_FILES['ExplanFile']['error'][$k]) && $_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK) {
+                    $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
+                    break;
+                }
+            }
+        }
         if ($this->validate($rules) === false) return;
 
-        if( count($this->input->post('orderNum')) != count(array_unique($this->input->post('orderNum'))) ) {
+
+        if( count($this->input->post('QuestionNO')) != count(array_unique($this->input->post('QuestionNO'))) ) {
             $this->json_error('문항번호가 중복되어 있습니다.');
             return;
         }
-        if( $this->input->post('TotalScore') != array_reduce($this->input->post('Scoring[]'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
+        if( $_POST['QuestionOption'][0] != 'J' && array_filter($this->input->post('RightAnswer'), function ($v) { return !preg_match('/^[1-9,]+$/', $v); }) ) {
+            $this->json_error('정답을 선택하세요');
+            return;
+        }
+        if( $this->input->post('TotalScore') != array_reduce($this->input->post('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
             $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
             return;
         }
 
         $error = false;
-        foreach ($this->input->post('QuestionOption[]') as $k => $v) {
-            $count = count($this->input->post("RightAnswer[$k]"));
+        foreach ($this->input->post('QuestionOption') as $k => $v) {
+            $count = count( explode(',', $this->input->post("RightAnswer[$k]")) );
             switch ($v) {
                 case 'S': // 객관식 단일
                     if($count !== 1) $error = true;
                     break;
                 case 'M': // 객관식 복수
-                    if($count !== 1 && $count !== 2) $error = true;
+                    if($count < 2) $error = true;
                     break;
                 case 'J': // 주관식
                     if($count !== 0) $error = true;
                     break;
             }
             if($error) {
-                $this->json_error("정답갯수가 맞지 않습니다.\n\n객관식(단일): 정답1개 가능\n객관식(복수): 2개 가능\n주관식:입력X");
+                $this->json_error("정답갯수가 맞지 않습니다.\n\n객관식(단일): 정답 1개\n객관식(복수): 정답 2개 이상\n주관식:입력X");
                 return;
             }
-
         }
 
-        //TODO 업로드 이미지 변경
-
-        $result = $this->regExamModel->storeUint();
+        $result = $this->regExamModel->storeQuestion();
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);
     }
 

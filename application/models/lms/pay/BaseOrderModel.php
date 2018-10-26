@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseOrderModel extends WB_Model
 {
-    protected $_table = [
+    public $_table = [
         'site' => 'lms_site',
         'site_group' => 'lms_site_group',
         'cart' => 'lms_cart',

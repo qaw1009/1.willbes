@@ -20,7 +20,11 @@ class BaseOrder extends \app\controllers\BaseController
      */
     public function show($params = [])
     {
-        $order_idx = count($params) > 1 ? $params[2] : $params[0];  // 배송관리는 3번째 위치에 주문식별자가 있음
+        // url segment 에서 숫자 값 리턴
+        $order_idx = current(array_filter($params, function ($val) {
+            return is_numeric($val);
+        }));
+
         if (empty($order_idx) === true) {
             show_error('필수 파라미터 오류입니다.');
         }

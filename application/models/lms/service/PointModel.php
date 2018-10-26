@@ -27,6 +27,18 @@ class PointModel extends WB_Model
         $query = $this->_conn->query('select fn_member_point(?, ?) as MemPoint', [$mem_idx, $point_type]);
         $data = $query->row(0)->MemPoint;
 
-        return $point_type == 'all' ? json_decode($data, true) : $data;
+        if ($point_type == 'all') {
+            $data = json_decode($data, true);
+
+            // 조회되지 않는 포인트 초기화
+            $arr_point_type = ['lecture', 'book'];
+            foreach ($arr_point_type as $type) {
+                if (isset($data[$type]) === false) {
+                    $data[$type] = 0;
+                }
+            }
+        }
+
+        return $data;
     }
 }

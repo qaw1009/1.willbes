@@ -377,7 +377,7 @@
             // 목록 이동
             $('#btn_list').click(function() {
                 var url = location.protocol + '//' + location.host + location.pathname.substr(0, location.pathname.indexOf('/show/')) + '/index';
-                url += location.pathname.substr(location.pathname.indexOf('/show/') + 5).replace(/[0-9]/g, '').replace(/\/+$/, '');
+                url += location.pathname.substr(location.pathname.indexOf('/show/') + 5).replace(/\/[0-9]+/g, '');
                 url += getQueryString();
 
                 location.replace(url);

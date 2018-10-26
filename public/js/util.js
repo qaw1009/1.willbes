@@ -296,7 +296,9 @@ function setMailDomain(select, target, data) {
  * @param menu_link
  */
 function forceMenuActive(menu_link) {
-    $('#sidebar-menu').find('a[href="' + menu_link + '"]').parent('li').addClass('current-page').parents('ul').slideDown(function() {
+    var $sidebar_menu = $('#sidebar-menu');
+    $sidebar_menu.find('a').parent('li').removeClass('current-page').parents('ul').parent().removeClass('active');
+    $sidebar_menu.find('a[href="' + menu_link + '"]').parent('li').addClass('current-page').parents('ul').slideDown(function() {
         setContentHeight();
     }).parent().addClass('active');
 }

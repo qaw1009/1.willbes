@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Event extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'siteF', 'downloadF');
+    protected $models = array('eventF', 'siteF', 'downloadF', 'memberF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -84,6 +84,7 @@ class Event extends \app\controllers\FrontController
      */
     public function show($params = [])
     {
+        $method = 'POST';
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
 
@@ -102,16 +103,17 @@ class Event extends \app\controllers\FrontController
             redirect($page_url);
         }
 
-        $arr_condition = [
+        $default_condition = [
             'EQ'=>[
                 'A.ElIdx' => element('event_idx', $arr_input),
                 'A.IsStatus' => 'Y'
             ]
         ];
 
+        $arr_condition = [];
         switch ($onoff_type) {
             case 'ongoing': // 진행중 이벤트
-                $arr_condition = array_merge($arr_condition, [
+                $arr_condition = array_merge($default_condition, [
                     'GTE' => [
                         'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
                     ]
@@ -119,7 +121,7 @@ class Event extends \app\controllers\FrontController
                 break;
 
             case 'end': // 종료 이벤트
-                $arr_condition = array_merge($arr_condition, [
+                $arr_condition = array_merge($default_condition, [
                     'ORG2' => [
                         'EQ' => [
                             'A.IsRegister' => 'N',
@@ -136,6 +138,7 @@ class Event extends \app\controllers\FrontController
                 break;
         }
 
+        //이벤트 기본정보 조회
         $data = $this->eventFModel->findEvent($arr_condition);
         if (count($data) < 1) {
             show_alert('데이터 조회에 실패했습니다.', site_url($page_url), false);
@@ -143,18 +146,56 @@ class Event extends \app\controllers\FrontController
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
 
+        //이벤트 신청리스트 조회
+        $arr_register_data = $this->eventFModel->listEventForRegister($default_condition);
+        $arr_base['register_list'] = $arr_register_data;
+
+        //이벤트 신청리스트 회원정보 조회
+        $arr_condition = array_merge($default_condition, [
+            'EQ' => [
+                'A.MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ]);
+        $arr_register_data = $this->eventFModel->getRegisterMember($arr_condition);
+        $arr_base['arr_member_info'] = $arr_register_data;
+
+        $register_create_type = '1';    //등록가능
+        switch ($data['TakeType']) {
+            case "1":   //회원
+                if ($this->session->userdata('is_login') === false) {
+                    //비로그인 상태
+                    $register_create_type = '2';
+                } else {
+                    //로그인상태
+                    if (count($arr_base['arr_member_info']) <= 0) {
+                        //등록값 없음
+                        $register_create_type = '1';
+                    } else {
+                        //등록값 있음
+                        $register_create_type = '3';
+                    }
+                }
+                break;
+            case "2":   //회원 + 비회원
+                $register_create_type = '1';
+                break;
+        }
+
         $arr_base['onoff_type'] = $onoff_type;
         $arr_base['page_url'] = $page_url;
         $arr_base['default_path'] = $pass_val;
         $arr_base['content_type'] = $this->eventFModel->_content_type;
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
+        $arr_base['register_limit_type'] = $this->eventFModel->_register_limit_type;
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
+        $arr_base['register_create_type'] = $register_create_type;
 
         $this->load->view('site/event/show',[
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
-            'data' => $data
+            'data' => $data,
+            'method' => $method
         ]);
     }
 
@@ -162,6 +203,26 @@ class Event extends \app\controllers\FrontController
     {
         $this->load->view('site/event/frame_comment_list',[
         ]);
+    }
+
+    /**
+     * 특강 신청 처리
+     */
+    public function registerStore()
+    {
+        $rules = [
+            ['field' => 'register_chk[]', 'label' => '특강', 'rules' => 'trim|required|integer'],
+            ['field' => 'register_name', 'label' => '이름', 'rules' => 'trim|required|max_length[20]'],
+            ['field' => 'register_tel', 'label' => '휴대폰번호', 'rules' => 'trim|required|integer|max_length[11]'],
+            ['field' => 'register_email', 'label' => '이메일', 'rules' => 'trim|required|max_length[30]'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     public function download()
@@ -176,6 +237,9 @@ class Event extends \app\controllers\FrontController
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 
+    /**
+     * 진행중이벤트 인덱스
+     */
     private function ongoing()
     {
         $list = [];
@@ -237,6 +301,9 @@ class Event extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 종료된이벤트 인덱스
+     */
     private function end()
     {
         $list = [];

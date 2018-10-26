@@ -168,7 +168,7 @@
                     {'data' : 'wProfName_String'},
                     {'data' : 'ProdName'},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (data.indexOf('취소') > -1 ? '<br/>(' + row.UpdDatm + ')' : '');
+                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['cancel'] }}' ? '<br/>(' + row.UpdDatm + ')' : '');
                     }},
                     {'data' : 'OrderDatm'}
                 ]

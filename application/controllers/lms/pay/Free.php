@@ -39,7 +39,8 @@ class Free extends BaseOrder
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
             'arr_category' => $arr_category,
             'arr_subject' => $arr_subject,
-            'arr_professor' => $arr_professor
+            'arr_professor' => $arr_professor,
+            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
 

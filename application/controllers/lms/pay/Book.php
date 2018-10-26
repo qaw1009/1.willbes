@@ -35,7 +35,8 @@ class Book extends BaseOrder
             'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
             'arr_prod_type_ccd' => $arr_prod_type_ccd,
             'arr_pay_status_ccd' => $codes[$this->_group_ccd['PayStatus']],
-            'arr_delivery_status_ccd' => $codes[$this->_group_ccd['DeliveryStatus']]
+            'arr_delivery_status_ccd' => $codes[$this->_group_ccd['DeliveryStatus']],
+            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
 

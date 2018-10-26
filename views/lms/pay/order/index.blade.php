@@ -217,7 +217,7 @@
                         return data > 0 ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (data.indexOf('환불') > -1 ? '<br/>2018-00-00<br/>(관리자명)' : '');
+                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>2018-00-00<br/>(관리자명)' : '');
                     }},
                     {'data' : 'DeliveryStatusCcdName', 'render' : function(data, type, row, meta) {
                         return data !== null ? data + '<br/>' + (row.DeliverySendDatm !== null ? row.DeliverySendDatm.substr(0, 10) : '') : '';

@@ -137,7 +137,7 @@
                     <th>환불금액</th>
                     <th>결제상태</th>
                     <th>배송상태</th>
-                    <th>쿠폰적용</th>
+                    <th>할인율</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -223,7 +223,7 @@
                         return data !== null ? data + '<br/>' + (row.DeliverySendDatm !== null ? row.DeliverySendDatm.substr(0, 10) : '') : '';
                     }},
                     {'data' : 'DiscRate', 'render' : function(data, type, row, meta) {
-                        return row.IsUseCoupon === 'Y' ? data : '';
+                        return data + (row.IsUseCoupon === 'Y' ? ' (Y)' : '');
                     }}
                 ]
             });

@@ -120,7 +120,7 @@
                     <th>상품명</th>
                     <th>결제금액</th>
                     <th>결제상태</th>
-                    <th>쿠폰적용</th>
+                    <th>할인율</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -199,7 +199,7 @@
                     }},
                     {'data' : 'PayStatusCcdName'},
                     {'data' : 'DiscRate', 'render' : function(data, type, row, meta) {
-                        return row.IsUseCoupon === 'Y' ? data : '';
+                        return data + (row.IsUseCoupon === 'Y' ? ' (Y)' : '');
                     }}
                 ]
             });

@@ -137,10 +137,10 @@ class Vbank extends BaseOrder
     public function excel()
     {
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '가상계좌신청일', '가상계좌취소일', '가상계좌만료일', '입금은행', '계좌번호', '입금자명'
-            , '총 실결제금액', '사용강좌포인트', '사용교재포인트', '상품구분', '상품명', '결제금액', '결제상태', '쿠폰적용'];
+            , '총 실결제금액', '사용강좌포인트', '사용교재포인트', '상품구분', '상품명', '결제금액', '결제상태', '할인율', '쿠폰적용여부'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, VBankOrderDatm, VBankCancelDatm, VBankExpireDatm, VBankCcdName, VBankAccountNo
-            , VBankDepositName, tRealPayPrice, tUseLecPoint, tUseBookPoint, ProdTypeCcdName, ProdName, RealPayPrice, PayStatusCcdName, DiscRate';
+            , VBankDepositName, tRealPayPrice, tUseLecPoint, tUseBookPoint, ProdTypeCcdName, ProdName, RealPayPrice, PayStatusCcdName, DiscRate, IsUseCoupon';
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy());

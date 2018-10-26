@@ -85,8 +85,8 @@ class OrderListModel extends BaseOrderModel
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
             , O.CompleteDatm, O.OrderDatm
-            , OP.RealPayPrice, 0 as RefundPrice, OP.UpdDatm
-            , if(OP.IsUseCoupon = "Y", if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), ""), "") as DiscRate
+            , OP.RealPayPrice, 0 as RefundPrice, OP.IsUseCoupon, OP.UpdDatm
+            , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate           
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName, P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
             , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';

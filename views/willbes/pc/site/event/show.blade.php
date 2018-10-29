@@ -72,6 +72,11 @@
             @endif
             <!-- show_comment_list -->
 
+            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right p_ab" style="right: 0;">
+                <button type="button" id="btn_list" class="mem-Btn bg-purple-gray bd-dark-gray">
+                    <span>목록</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -82,4 +87,12 @@
         {!! banner('미정', '', $__cfg['SiteCode'], '0') !!}
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#btn_list').click(function() {
+            location.href = '{!! site_url($arr_base['page_url']) !!}';
+        });
+    });
+</script>
 @stop

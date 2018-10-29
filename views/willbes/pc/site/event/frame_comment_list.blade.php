@@ -3,6 +3,10 @@
 @section('content')
 
 <div class="willbes-Leclist c_both mt50" style="padding-bottom: 40px;">
+    <form id="regi_form_comment" name="regi_form_comment" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field($method) !!}
+    <input type="hidden" name="event_idx" value="{{element('event_idx', $arr_input)}}"/>
     <div class="LeclistTable p_re">
         <table cellspacing="0" cellpadding="0" class="listTable evtTable upper-gray upper-black bdb-gray tx-gray">
             <colgroup>
@@ -11,9 +15,11 @@
             </colgroup>
             <thead>
             <tr>
-                <th class="w-textarea pl20 pt25"><textarea placeholder="댓글을 입력해 주세요."></textarea></th>
+                <th class="w-textarea pl20 pt25">
+                    <textarea id="event_comment" name="event_comment" class="form-control" rows="15" title="댓글" placeholder="댓글을 입력해 주세요."></textarea>
+                </th>
                 <th class="w-btn pr20 pt25">
-                    <button type="submit" onclick="" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
+                    <button type="button" id="btn_submit_comment" class="mem-Btn combine-Btn {{($arr_base['comment_create_type'] == '3') ? 'bg-purple-gray bd-dark-gray' : 'bg-blue bd-dark-blue'}}">
                         <span>등록</span>
                     </button>
                 </th>
@@ -30,101 +36,99 @@
                 <col style="width: 615px;">
                 <col style="width: 140px;">
             </colgroup>
-            <thead>
-            <tr>
-                <td class="w-no"><img src="{{ img_url('sub/icon_notice.gif') }}"></td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-                <td class="w-more"><a class="tx-light-blue" href="#none" onclick="openWin('NOTICEPASS')">자세히보기 ></a></td>
-            </tr>
-            <tr>
-                <td class="w-no"><img src="{{ img_url('sub/icon_notice.gif') }}"></td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20">공지사항 제목이 노출됩니다.</td>
-                <td class="w-more"><a class="tx-light-blue" href="#none">자세히보기 ></a></td>
-            </tr>
-            </thead>
             <tbody>
-            <tr>
-                <td class="w-no">홍길동</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">
-                    2018년 하반기 경찰공무원 경력경쟁채용시험 공고<a class="w-del" href="#none"><img src="{{ img_url('sub/icon_delete.gif') }}"></a>
-                </td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">
-                    이벤트에 참여해 봤자 어차피 당첨이 안되서 별관심 없었는데 신광은 교수님 너무 좋아하고 존경하여 참여하게 되었습니다.<br/>
-                    모를 행운이 언젠간 올 수도 있겠죠? ㅎ 다른분이 당첨되셔도 미리 축하 말씀드릴께욧! 신광은 경찰팀 파이팅! 그뒤에서 묵묵히<br/>
-                    주시는 직원분들도 팟팅하시구요 감기 조심하세요 ㅎㅎ 어홍헝홍홍ㅋㅋ
-                </td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
-            <tr>
-                <td class="w-no">홍길*</td>
-                <td class="w-date">2018-00-00</td>
-                <td class="w-list tx-left pl20" colspan="2">2018년 하반기 경찰공무원 경력경쟁채용시험 공고</td>
-            </tr>
+            @if(empty($list))
+                <tr>
+                    <td class="w-list tx-center" colspan="4">등록된 댓글이 없습니다.</td>
+                </tr>
+            @endif
+
+            @foreach($list as $row)
+                <tr>
+                    <td class="w-no">
+                        @if($row['RegType'] == '1')
+                            <img src="{{ img_url('sub/icon_HOT.gif') }}">
+                        @else
+                            {!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}
+                        @endif
+                    </td>
+                    <td class="w-date">{{$row['RegDay']}}</td>
+                    <td class="w-list tx-left pl20">
+                        @if($row['RegType'] == '1')
+                            {{$row['Content']}}
+                        @else
+                            {!!nl2br($row['Content'])!!}
+                            @if(sess_data('mem_idx') === $row['MemIdx'])
+                                <a class="w-del btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none"><img src="/public/img/willbes/sub/icon_delete.gif"></a>
+                            @endif
+                        @endif
+                    </td>
+                    <td class="w-more">
+                        @if($row['RegType'] == '1')
+                            {{--<a class="tx-light-blue" href="#none" id="btn_notice_view" data-notice-idx="{{$row['Idx']}}" onclick="openWin('NOTICEPASS')">자세히보기 ></a>--}}
+                            <a class="tx-light-blue btn-notice-view" href="#none" data-notice-idx="{{$row['Idx']}}">자세히보기 ></a>
+                        @endif
+                    </td>
+                </tr>
+                @php $paging['rownum']-- @endphp
+            @endforeach
             </tbody>
         </table>
-        <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right p_ab" style="right: 0;">
-            <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                <span>목록</span>
-            </button>
-        </div>
-        <div class="Paging">
-            <ul>
-                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                <li><a href="#none">2</a><span class="row-line">|</span></li>
-                <li><a href="#none">3</a><span class="row-line">|</span></li>
-                <li><a href="#none">4</a><span class="row-line">|</span></li>
-                <li><a href="#none">5</a><span class="row-line">|</span></li>
-                <li><a href="#none">6</a><span class="row-line">|</span></li>
-                <li><a href="#none">7</a><span class="row-line">|</span></li>
-                <li><a href="#none">8</a><span class="row-line">|</span></li>
-                <li><a href="#none">9</a><span class="row-line">|</span></li>
-                <li><a href="#none">10</a></li>
-                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-            </ul>
-        </div>
+        {!! $paging['pagination'] !!}
     </div>
+    </form>
 </div>
 
+<script type="text/javascript">
+var $regi_form_comment = $('#regi_form_comment');
+$(document).ready(function() {
+    $('#btn_submit_comment').click(function() {
+        @if($arr_base['comment_create_type'] == '1')
+        comment_submit();
+        @elseif($arr_base['comment_create_type'] == '2')
+        alert('회원만 댓글을 등록할 수 있습니다.');
+        @elseif($arr_base['comment_create_type'] == '3')
+        alert('만료된 이벤트 입니다.');
+        @endif
+    });
+
+    $('.btn-comment-del').click(function () {
+        var comment_idx = $(this).data('comment-idx');
+
+        if (!confirm('해당 댓글을 삭제하시겠습니까?')) { return true; }
+        var data = {
+            '{{ csrf_token_name() }}' : $regi_form_comment.find('input[name="{{ csrf_token_name() }}"]').val(),
+            '_method' : 'PUT'
+        };
+        sendAjax('{{ site_url('/event/commentDel/') }}' + comment_idx, data, function(ret) {
+            if (ret.ret_cd) {
+                location.reload();
+            }
+        }, showError, false, 'POST');
+    });
+
+    $('.btn-notice-view').click(function () {
+        var notice_idx = $(this).data('notice-idx');
+        parent.popup_notice_view(notice_idx);
+    });
+});
+
+function comment_submit() {
+    var _url = '{!! site_url('/event/commentStore') !!}';
+    if (!confirm('등록하시겠습니까?')) { return true; }
+    ajaxSubmit($regi_form_comment, _url, function(ret) {
+        if(ret.ret_cd) {
+            location.reload();
+        }
+    }, showValidateError, addValidate, false, 'alert');
+}
+
+function addValidate() {
+    if ($('#event_comment').val() == '') {
+        alert('댓글을 입력해 주세요.');
+        return false;
+    }
+    return true;
+}
+</script>
 @stop

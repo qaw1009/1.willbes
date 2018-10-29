@@ -5,11 +5,14 @@ class EventFModel extends WB_Model
 {
     private $_table = [
         'event_lecture' => 'lms_event_lecture',
-        'event_lecture_r_category' => 'lms_event_r_category',
+        'event_r_category' => 'lms_event_r_category',
         'event_file' => 'lms_event_file',
         'event_comment' => 'lms_event_comment',
         'event_register' => 'lms_event_register',
         'event_member' => 'lms_event_member',
+        'board' => 'lms_board',
+        'board_r_category' => 'lms_board_r_category',
+        'vw_board' => 'vw_board',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code'
@@ -41,6 +44,9 @@ class EventFModel extends WB_Model
             'comment_list' => '660002'
         ]
     ];
+
+    //이벤트공지사항 (댓글영역)
+    public $_bm_idx = '86';
 
     public function __construct()
     {
@@ -75,7 +81,7 @@ class EventFModel extends WB_Model
             FROM {$this->_table['event_lecture']} AS A
             INNER JOIN (
                 SELECT B.ElIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
-                FROM {$this->_table['event_lecture_r_category']} AS B
+                FROM {$this->_table['event_r_category']} AS B
                 INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
                 {$sub_query_where}
                 GROUP BY B.ElIdx
@@ -162,6 +168,7 @@ class EventFModel extends WB_Model
         $from = " FROM {$this->_table['event_member']} AS A";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+
         $query = $this->_conn->query('select ' . $column . $from . $where);
         return $query->result_array();
     }
@@ -219,20 +226,40 @@ class EventFModel extends WB_Model
                     throw new \Exception('신청받는 횟수 제한이 넘었습니다.');
                 }
 
-                //중복체크
-                if ($this->session->userdata('is_login') === false) {
+                //중복체크, 저장 데이터 셋팅
+                if(empty($this->session->userdata('mem_idx')) === true) {
                     $arr_condition = [
                         'EQ' => [
+                            'A.ErIdx' => $key,
                             'A.UserName' => $inputData['register_name'],
                             'A.UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
                             'A.UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
                         ]
                     ];
+
+                    $input_register_data = [
+                        'ErIdx' => $key,
+                        'UserName' => $inputData['register_name'],
+                        'UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
+                        'UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                    ];
                 } else {
                     $arr_condition = [
                         'EQ' => [
-                            'A.MemIdx' => $this->session->userdata('mem_idx')
+                            'A.ErIdx' => $key,
+                            'A.MemIdx' => $this->session->userdata('mem_idx'),
+                            'A.UserName' => $inputData['register_name'],
+                            'A.UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
+                            'A.UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
                         ]
+                    ];
+
+                    $input_register_data = [
+                        'ErIdx' => $key,
+                        'MemIdx' => $this->session->userdata('mem_idx'),
+                        'UserName' => $inputData['register_name'],
+                        'UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
+                        'UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
                     ];
                 }
 
@@ -240,9 +267,11 @@ class EventFModel extends WB_Model
                 if (count($register_member_info) > 0) {
                     throw new \Exception('등록된 신청자 정보가 있습니다.');
                 }
-            }
 
-            //데이터 저장
+                if ($this->_addEventRegisterMember($input_register_data) !== true) {
+                    throw new \Exception('특강 신청에 등록 실패했습니다.');
+                }
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -250,5 +279,177 @@ class EventFModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 댓글 리스트
+     * @param $is_count
+     * @param $arr_condition_notice
+     * @param $arr_condition_event_comment
+     * @param null $limit
+     * @param null $offset
+     * @return mixed
+     */
+    public function listEventForComment($is_count, $arr_condition_notice, $arr_condition_event_comment, $limit = null, $offset = null)
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '*';
+            $order_by_offset_limit = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $where_notice = $this->_conn->makeWhere($arr_condition_notice);
+        $where_notice = $where_notice->getMakeWhere(false);
+
+        $where_comment = $this->_conn->makeWhere($arr_condition_event_comment);
+        $where_comment = $where_comment->getMakeWhere(false);
+
+        $from = "
+        FROM (
+            SELECT a.*
+            FROM (
+                SELECT a.BoardIdx AS Idx, '' AS MemIdx, '공지' AS MemName, a.Title AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '1' AS RegType
+                FROM {$this->_table['board']} AS a
+                INNER JOIN {$this->_table['board_r_category']} AS b ON a.BoardIdx = b.BoardIdx AND b.IsStatus = 'Y'
+                {$where_notice}
+                ORDER BY a.BoardIdx DESC
+            ) AS a
+            UNION ALL
+            SELECT b.*
+            FROM (
+                SELECT a.CIdx AS Idx, IFNULL(a.MemIdx, ''), a.MemName, a.Comment AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '2' AS RegType
+                FROM {$this->_table['event_comment']} AS a
+                INNER JOIN {$this->_table['event_lecture']} AS b ON a.ElIdx = b.ElIdx
+                INNER JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'
+                {$where_comment}
+                ORDER BY a.CIdx ASC
+            ) AS b
+        ) AS c
+        ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 댓글 등록 처리
+     * @param array $requestData
+     * @return array|bool
+     */
+    public function addEventComment($requestData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $inputData = [
+                'ElIdx' => $requestData['event_idx'],
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'MemName' => $this->session->userdata('mem_name'),
+                'CommentType' => 'U',
+                'Comment' => $requestData['event_comment'],
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($inputData)->insert($this->_table['event_comment']) === false) {
+                throw new \Exception('댓글 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 댓글 삭제 처리
+     * @param $comment_idx
+     * @return array|bool
+     */
+    public function delEventComment($comment_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $result = $this->_findCommentData($comment_idx, 'CIdx');
+            if (empty($result)) {
+                throw new \Exception('조회된 댓글이 없습니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('CIdx', $comment_idx)->where('IsStatus', 'Y')->update($this->_table['event_comment']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 이벤트용 공지사항
+     * @param $board_idx
+     * @param string $column
+     * @return mixed
+     */
+    public function findEventForNotice($board_idx, $column='*')
+    {
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'BoardIdx' => $board_idx,
+                'IsUse' => 'Y'
+            ],
+        ];
+        $result = $this->_conn->getListResult($this->_table['vw_board'], $column, $arr_condition, '1', null);
+        //echo $this->_conn->last_query();exit;
+        return element('0', $result, []);
+    }
+
+    /**
+     * 이벤트 특강 신청 데이터 저장
+     * @param $inputData
+     * @return array|bool
+     */
+    private function _addEventRegisterMember($inputData)
+    {
+        try {
+            if ($this->_conn->set($inputData)->insert($this->_table['event_member']) === false) {
+                throw new \Exception('특강 신청에 등록 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    private function _findCommentData($idx, $column = '*')
+    {
+        $from = "
+            FROM {$this->_table['event_comment']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'CIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
     }
 }

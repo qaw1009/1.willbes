@@ -85,7 +85,7 @@ class Event extends \app\controllers\FrontController
     public function show($params = [])
     {
         $method = 'POST';
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
 
         //학원,온라인 경로 셋팅
@@ -93,10 +93,12 @@ class Event extends \app\controllers\FrontController
             $pass_val = '';
             $onoff_type = $params['pattern'];
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
+            $frame_params = 'cate_code='.$params['cate'].'&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         } else {
             $pass_val = '/' . substr($this->_pass_site_val, 1);
             $onoff_type = $params[0];
             $page_url = $pass_val.'/event/list/'.$onoff_type;
+            $frame_params = 'cate_code=&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         }
 
         if (empty($onoff_type) === true) {
@@ -150,39 +152,28 @@ class Event extends \app\controllers\FrontController
         $arr_register_data = $this->eventFModel->listEventForRegister($default_condition);
         $arr_base['register_list'] = $arr_register_data;
 
-        //이벤트 신청리스트 회원정보 조회
-        $arr_condition = array_merge($default_condition, [
-            'EQ' => [
-                'A.MemIdx' => $this->session->userdata('mem_idx')
-            ]
-        ]);
-        $arr_register_data = $this->eventFModel->getRegisterMember($arr_condition);
-        $arr_base['arr_member_info'] = $arr_register_data;
-
         $register_create_type = '1';    //등록가능
-        switch ($data['TakeType']) {
-            case "1":   //회원
-                if ($this->session->userdata('is_login') === false) {
-                    //비로그인 상태
-                    $register_create_type = '2';
-                } else {
-                    //로그인상태
-                    if (count($arr_base['arr_member_info']) <= 0) {
-                        //등록값 없음
-                        $register_create_type = '1';
+        if ($onoff_type == 'ongoing') {
+            switch ($data['TakeType']) {
+                case "1":   //회원
+                    if ($this->session->userdata('is_login') === false) {
+                        //비로그인 상태
+                        $register_create_type = '2';
                     } else {
-                        //등록값 있음
-                        $register_create_type = '3';
+                        //로그인상태
+                        $register_create_type = '1';
                     }
-                }
-                break;
-            case "2":   //회원 + 비회원
-                $register_create_type = '1';
-                break;
+                    break;
+                case "2":   //회원 + 비회원
+                    $register_create_type = '1';
+                    break;
+            }
+        } else {
+            $register_create_type = '3';
         }
 
-        $arr_base['onoff_type'] = $onoff_type;
         $arr_base['page_url'] = $page_url;
+        $arr_base['onoff_type'] = $onoff_type;
         $arr_base['default_path'] = $pass_val;
         $arr_base['content_type'] = $this->eventFModel->_content_type;
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
@@ -194,14 +185,75 @@ class Event extends \app\controllers\FrontController
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
+            'frame_params' => $frame_params,
             'data' => $data,
             'method' => $method
         ]);
     }
 
+    /**
+     * 뷰페이지 > 댓글리스트
+     */
     public function frameCommentList()
     {
+        $list = [];
+        $method = 'POST';
+        $arr_input = array_merge($this->_reqG(null));
+        $get_params = http_build_query($arr_input);
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input);
+        $onoff_type = element('pattern', $arr_input);
+
+        if (empty($this->_is_pass_site) === true) {
+            $pass_val = '';
+        } else {
+            $pass_val = '/' . substr($this->_pass_site_val, 1);
+        }
+
+        $comment_create_type = '1';
+        if ($onoff_type == 'ongoing') {
+            if ($this->session->userdata('is_login') === false) {
+                $comment_create_type = '2';
+            }
+        } else {
+            $comment_create_type = '3';
+        }
+
+        $arr_base['page_url'] = $pass_val.'/event/frameCommentList';
+        $arr_base['comment_create_type'] = $comment_create_type;
+
+        $arr_condition_notice = [
+            'EQ' => [
+                'a.ElIdx' => element('event_idx', $arr_input),
+                'a.BmIdx' => $this->eventFModel->_bm_idx,
+                'a.IsStatus' => 'Y',
+                'a.RegType' => '1',
+                'a.SiteCode' => $this->_site_code,
+                'b.CateCode' => element('cate_code', $arr_input),
+            ]
+        ];
+
+        $arr_condition_event_comment = [
+            'EQ' => [
+                'a.ElIdx' => element('event_idx', $arr_input),
+                'a.IsStatus' => 'Y',
+                'b.SiteCode' => $this->_site_code,
+                'c.CateCode' => element('cate_code', $arr_input),
+            ]
+        ];
+
+        $total_rows = $this->eventFModel->listEventForComment(true, $arr_condition_notice, $arr_condition_event_comment);
+        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, 20, $this->_paging_count, true);
+
+        if ($total_rows > 0) {
+            $list = $this->eventFModel->listEventForComment(false, $arr_condition_notice, $arr_condition_event_comment, $paging['limit'], $paging['offset']);
+        }
+
         $this->load->view('site/event/frame_comment_list',[
+            'arr_input' => $arr_input,
+            'arr_base' => $arr_base,
+            'list' => $list,
+            'paging' => $paging,
+            'method' => $method
         ]);
     }
 
@@ -222,9 +274,68 @@ class Event extends \app\controllers\FrontController
         }
 
         $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false));
-        $this->json_result($result, '저장 되었습니다.', $result);
+        $this->json_result($result, '신청되었습니다.', $result);
     }
 
+    /**
+     * 댓글 등록 처리
+     */
+    public function commentStore()
+    {
+        $rules = [
+            ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'event_comment', 'label' => '댓글', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventFModel->addEventComment($this->_reqP(null, false));
+        $this->json_result($result, '등록되었습니다.', $result);
+    }
+
+    /**
+     * 댓글 삭제 처리
+     * @param array $params
+     */
+    public function commentDel($params = [])
+    {
+        $comment_idx = $params[0];
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($comment_idx) === true) {
+            $result = false;
+        } else {
+            $result = $this->eventFModel->delEventComment($comment_idx);
+        }
+        $this->json_result($result, '삭제되었습니다.', $result);
+    }
+
+    /**
+     * 이벤트용 공지사항 레이어팝업 [뷰페이지]
+     */
+    public function popupNoticeShow()
+    {
+        $arr_input = array_merge($this->_reqG(null));
+        $board_idx = element('board_idx', $arr_input);
+        $data = $this->eventFModel->findEventForNotice($board_idx);
+
+        $this->load->view('site/event/popup_show_notice',[
+            'arr_input' => $arr_input,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 이벤트 첨부파일 다운로드
+     */
     public function download()
     {
         $file_path = $this->_reqG('path');
@@ -243,7 +354,7 @@ class Event extends \app\controllers\FrontController
     private function ongoing()
     {
         $list = [];
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
         $get_page_params = 's_request_type=' . element('s_request_type', $arr_input) . '&s_campus=' . element('s_campus', $arr_input);
         $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input));
@@ -307,7 +418,7 @@ class Event extends \app\controllers\FrontController
     private function end()
     {
         $list = [];
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
         $get_page_params = 's_request_type=' . element('s_request_type', $arr_input) . '&s_campus=' . element('s_campus', $arr_input);
         $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input));

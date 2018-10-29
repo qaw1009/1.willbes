@@ -1,7 +1,6 @@
 <div class="willbes-Leclist c_both mt50">
     <div class="LeclistTable">
-        {{--<form id="regi_form_register" name="regi_form_register" method="POST" onsubmit="return false;" novalidate>--}}
-        <form id="regi_form_register" name="regi_form_register" method="POST" action="{{ site_url("/event/registerStore") }}" novalidate>
+        <form id="regi_form_register" name="regi_form_register" method="POST" onsubmit="return false;" novalidate>
         <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
             {!! csrf_field() !!}
             {!! method_field($method) !!}
@@ -35,16 +34,16 @@
                 <th><strong>신청자정보</strong></th>
                 <td class="w-list tx-left pl20" colspan="2">
                     · 이름, 연락처, 이메일주소를 모두 입력해 주세요.<br/>
-                    <input type="text" id="register_name" name="register_name" class="iptName" maxlength="20" placeholder="이름" style="width: 110px;" value="최현탁">
-                    <input type="text" id="register_tel" name="register_tel" class="iptTel" maxlength="11" placeholder="휴대폰번호('-'없이 입력)" style="width: 220px;" value="01012341234">
-                    <input type="text" id="register_email" name="register_email" class="iptEmail" maxlength="30" placeholder="이메일" style="width: 220px;" value="abcd@aaaaa.com">
+                    <input type="text" id="register_name" name="register_name" class="iptName" maxlength="20" placeholder="이름" style="width: 110px;" value="{{sess_data('mem_name')}}" @if(sess_data('is_login') === true) readonly @endif>
+                    <input type="text" id="register_tel" name="register_tel" class="iptTel" maxlength="11" placeholder="휴대폰번호('-'없이 입력)" style="width: 220px;" value="{{sess_data('mem_phone')}}">
+                    <input type="text" id="register_email" name="register_email" class="iptEmail" maxlength="30" placeholder="이메일" style="width: 220px;" value="{{sess_data('mem_mail')}}">
                     <button type="button" id="btn_submit_register" class="mem-Btn combine-Btn {{($arr_base['register_create_type'] == '3') ? 'bg-purple-gray bd-dark-gray' : 'bg-blue bd-dark-blue'}}">
                         @if($arr_base['register_create_type'] == '1')
                             <span>신청하기</span>
                         @elseif($arr_base['register_create_type'] == '2')
                             <span>신청하기</span>
                         @elseif($arr_base['register_create_type'] == '3')
-                            <span>신청완료</span>
+                            <span>신청만료</span>
                         @endif
                     </button>
                 </td>
@@ -66,20 +65,19 @@
             @elseif($arr_base['register_create_type'] == '2')
                 alert('로그인 후 신청해 주세요.');
             @elseif($arr_base['register_create_type'] == '3')
-                alert('신청완료되었습니다.');
+                alert('만료된 이벤트 입니다.');
             @endif
         });
 
         function register_submit() {
             var _url = '{!! site_url('/event/registerStore') !!}';
             if (!confirm('저장하시겠습니까?')) { return true; }
-            $regi_form_register.submit();
-            /*ajaxSubmit($regi_form_register, _url, function(ret) {
+            ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
+                    alert(ret.ret_msg);
                     location.reload();
                 }
-            }, showValidateError, addValidate, false, 'alert');*/
+            }, showValidateError, addValidate, false, 'alert');
         }
 
         function addValidate() {

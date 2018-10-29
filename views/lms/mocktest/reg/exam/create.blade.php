@@ -284,7 +284,7 @@
                                     <input type="hidden" name="callRealQuestionFile[]" value="">
                                     @if(!empty($row['QuestionFile']))
                                         <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link" data-popover1="1" data-html="true" data-content="<img src='{{ $upImgUrlQ.$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
+                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $upImgUrlQ.$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
                                         </div>
                                     @endif
                                 </td>
@@ -294,7 +294,7 @@
                                     <input type="hidden" name="callRealExplanFile[]" value="">
                                     @if(!empty($row['ExplanFile']))
                                         <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link" data-popover1="1" data-html="true" data-content="<img src='{{ $upImgUrlQ.$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
+                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $upImgUrlQ.$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
                                         </div>
                                     @endif
                                 </td>
@@ -332,14 +332,24 @@
     </div>
 
     <style>
-        .popover{ max-width: 100%; }
+        .tooltip-inner { max-width: 100%; padding: 2px; background: #555; }
+        .tooltip-arrow { display: none; }
     </style>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var $regi_sub_form = $('#regi_sub_form');
         var addField;
+        var chapterExist = [];
+        var chapterDel = [];
 
         $(document).ready(function() {
+            $('body').tooltip({
+                selector: '.img-tooltip',
+                container: 'body',
+                html: true,
+                placement: 'right',
+            });
+
             // 카테고리, 교수 검색창 오픈
             $('.act-searchCate, .act-searchProfessor').on('click', function() {
                 if( !$('[name=siteCode]').val() ) { alert('운영사이트를 먼저 선택해 주세요'); return false; }
@@ -371,22 +381,22 @@
 
             // 업로드파일 삭제
             {{--$('#regi_form, #regi_sub_form').on('click', '.act-fileDel', function () {--}}
-                {{--var that = $(this);--}}
-                {{--var _url = '{{ site_url("/mocktest/regExam/fileDel") }}';--}}
-                {{--var data = {--}}
-                    {{--'{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),--}}
-                    {{--'_method' : 'PUT',--}}
-                    {{--'type' : $(this).data('file-type'),--}}
-                    {{--'idx' : $(this).data('file-idx'),--}}
-                    {{--'name' : $(this).data('file-name')--}}
-                {{--};--}}
+            {{--var that = $(this);--}}
+            {{--var _url = '{{ site_url("/mocktest/regExam/fileDel") }}';--}}
+            {{--var data = {--}}
+            {{--'{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),--}}
+            {{--'_method' : 'PUT',--}}
+            {{--'type' : $(this).data('file-type'),--}}
+            {{--'idx' : $(this).data('file-idx'),--}}
+            {{--'name' : $(this).data('file-name')--}}
+            {{--};--}}
 
-                {{--sendAjax(_url, data, function(ret) {--}}
-                    {{--if (ret.ret_cd) {--}}
-                        {{--that.closest('.file-wrap').remove();--}}
-                        {{--notifyAlert('success', '알림', ret.ret_msg);--}}
-                    {{--}--}}
-                {{--}, showValidateError, false, 'POST');--}}
+            {{--sendAjax(_url, data, function(ret) {--}}
+            {{--if (ret.ret_cd) {--}}
+            {{--that.closest('.file-wrap').remove();--}}
+            {{--notifyAlert('success', '알림', ret.ret_msg);--}}
+            {{--}--}}
+            {{--}, showValidateError, false, 'POST');--}}
             {{--});--}}
 
             // 목록 이동
@@ -461,8 +471,6 @@
 
 
             // 문항정보필드 처리을 위한 초기화작업
-            var chapterExist = [];
-            var chapterDel = [];
             var cList = $regi_sub_form.find('tbody');
             addField = cList.find('tr:eq(0)').html();
             cList.find('tr:eq(0)').remove();
@@ -486,7 +494,9 @@
 
             // 문항정보필드 삭제
             $regi_sub_form.on('click', '.addRow-del', function () {
-                if (!confirm("삭제는 저장시 적용됩니다.\n삭제 대기목록에 추가하시겠습니까?")) return false;
+                if( $(this).closest('tr').data('chapter-idx') ) {
+                    if (!confirm("삭제는 저장시 적용됩니다.\n삭제 대기목록에 추가하시겠습니까?")) return false;
+                }
 
                 var cIDX = $(this).closest('tr').data('chapter-idx');
 
@@ -501,7 +511,7 @@
                 var chapterTotal = [];
                 cList.find('tr').each(function () { chapterTotal.push($(this).data('chapter-idx')); });
 
-                $regi_sub_form.find('[name="Info"]').val( JSON.stringify(({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel})) );
+                $regi_sub_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel}) );
 
                 var _url = '{{ site_url('/mocktest/regExam/storeQuestion') }}';
                 ajaxSubmit($regi_sub_form, _url, function(ret) {
@@ -518,6 +528,9 @@
                 $('#act-sort').prop('disabled', true);
             });
             $regi_sub_form.on('click', '.addRow-del, .act-call-unit', function () {
+                $('#act-sort').prop('disabled', true);
+            });
+            $('#act-call, #act-addRow').on('click', function () {
                 $('#act-sort').prop('disabled', true);
             });
 

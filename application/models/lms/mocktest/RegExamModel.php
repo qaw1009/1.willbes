@@ -71,7 +71,7 @@ class RegExamModel extends WB_Model
             JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
             JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
             JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
+            LEFT JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE EB.IsStatus = 'Y'";
@@ -192,7 +192,7 @@ class RegExamModel extends WB_Model
             // 파일 업로드
             $uploadSubPath = $this->upload_path_mock . $nowIdx;
             $isSave = $this->uploadFileSave($uploadSubPath, $names);
-            if(!$isSave) {
+            if($isSave !== true) {
                 throw new Exception('파일 저장에 실패했습니다.');
             }
 
@@ -264,7 +264,7 @@ class RegExamModel extends WB_Model
             if($fileBackup) {
                 $uploadSubPath = $this->upload_path_mock . $this->input->post('idx');
                 $isSave = $this->uploadFileSave($uploadSubPath, $names, $fileBackup);
-                if (!$isSave) {
+                if ($isSave !== true) {
                     throw new Exception('파일 저장에 실패했습니다.');
                 }
             }
@@ -277,47 +277,6 @@ class RegExamModel extends WB_Model
         }
 
         return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
-    }
-
-
-    /**
-     *  업로드 파일 저장 및 수정
-     */
-    public function uploadFileSave($uploadSubPath, $names, $fileBackup=array(), $type='file')
-    {
-        $this->load->library('upload');
-
-        try {
-            if (!$uploadSubPath || !$names) {
-                throw new Exception('파라메타 오류');
-            }
-
-            $realFileNames = array();
-            foreach ($names as $name) {
-                if( is_array($name['real']) )
-                    $realFileNames = array_merge($realFileNames, $name['real']);
-                else
-                    $realFileNames[] = $name['real'];
-            }
-
-            // 이미지 업로드
-            $uploaded = $this->upload->uploadFile($type, array_keys($names), $realFileNames, $uploadSubPath);
-            if (is_array($uploaded) === false) {
-                throw new Exception($uploaded);
-            }
-
-            // 수정, 삭제시 이미지 백업
-            if($fileBackup) {
-                $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($fileBackup), false, $this->upload_path_mockBackup);
-                if ($is_bak_uploaded_file !== true) {
-                    throw new Exception($is_bak_uploaded_file);
-                }
-            }
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-
-        return true;
     }
 
 
@@ -335,7 +294,7 @@ class RegExamModel extends WB_Model
         if(empty($data)) return false;
 
         // 문항정보
-        $qData = $this->_conn->get_where($this->_table['mockExamQuestion'], $where)->result_array();
+        $qData = $this->_conn->order_by('QuestionNO ASC')->get_where($this->_table['mockExamQuestion'], $where)->result_array();
 
 
         // 등록된 카테고리정보 로드
@@ -390,9 +349,80 @@ class RegExamModel extends WB_Model
 
 
     /**
-     * 업로드파일 삭제
+     *  파일저장 및 수정
      */
-    public function fileDel($type, $idx, $name)
+    public function uploadFileSave($uploadSubPath, $names, $fileBackup=array(), $type='file')
+    {
+        $this->load->library('upload');
+
+        try {
+            if (!$uploadSubPath) {
+                throw new Exception('파라메타 오류');
+            }
+
+            $realFileNames = array();
+            foreach ($names as $name) {
+                if( is_array($name['real']) )
+                    $realFileNames = array_merge($realFileNames, $name['real']);
+                else
+                    $realFileNames[] = $name['real'];
+            }
+
+            // 이미지 업로드
+            $uploaded = $this->upload->uploadFile($type, array_keys($names), $realFileNames, $uploadSubPath);
+            if (is_array($uploaded) === false) {
+                throw new Exception($uploaded);
+            }
+
+            // 수정, 삭제시 이미지 백업
+            if($fileBackup) {
+                $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($fileBackup), false, $this->upload_path_mockBackup);
+                if ($is_bak_uploaded_file !== true) {
+                    throw new Exception($is_bak_uploaded_file);
+                }
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+
+    // 파일복사
+    public function uploadFileCopy($fileCopy) {
+        $mainPath = $this->upload_path . $this->upload_path_mock;
+        $destPath = $mainPath . dirname(current($fileCopy)) . '/';
+
+        try {
+            if ( !is_dir($destPath) ) {
+                if ( !mkdir($destPath, 0707, true) ) {
+                    throw new Exception('디렉토리 생성에 실패했습니다.');
+                }
+            }
+
+            foreach ($fileCopy as $src => $dest) {
+                if ( !file_exists($mainPath . $src) || !copy($mainPath . $src, $mainPath . $dest) ) {
+                    throw new Exception('파일 복사에 실패했습니다.');
+                }
+            }
+        }
+        catch (Exception $e) {
+            foreach ($fileCopy as $src => $dest) { // 롤백
+                if ( file_exists($mainPath . $dest) ) {
+                    unlink($mainPath . $dest);
+                }
+            }
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+
+    /**
+     * 업로드 파일 삭제
+     */
+    public function uploadFileDel($type, $idx, $name)
     {
         $this->load->library('upload');
 
@@ -448,6 +478,8 @@ class RegExamModel extends WB_Model
 
     /**
      * 문항정보 등록,수정
+     *
+     * (주의) 저장파일에 Q1_~ 로 번호 붙으나 삭제를 하게 되면 index가 변경됨으로 번호가 안 맞을 수도 있음 (중복은 안됨)
      */
     public function storeQuestion()
     {
@@ -458,11 +490,11 @@ class RegExamModel extends WB_Model
             $this->_conn->trans_begin();
 
             // 기존데이터 첨부파일 이름 추출
-            $beforeDB = $fileBackup = array();
+            $beforeDB = $fileBackup = $fileCopy = array();
             if($this->input->post('chapterExist')) {
                 $bDB = $this->_conn->select('MqIdx,RealQuestionFile,RealExplanFile')
-                                   ->where_in($this->input->post('chapterExist'))
-                                   ->get($this->_table['mockExamQuestion'])->result_array();
+                    ->where_in($this->input->post('chapterExist'))
+                    ->get($this->_table['mockExamQuestion'])->result_array();
                 foreach ($bDB as $it) {
                     $beforeDB[$it['MqIdx']] = $it;
                 }
@@ -488,19 +520,21 @@ class RegExamModel extends WB_Model
                             'RegAdminIdx' => $this->session->userdata('admin_idx'),
                         );
                         if($_POST['regKind'][$k] == 'call') { // 호출한 경우
-                            $dataReg['QuestionFile'] = $_POST['callQuestionFile'][$k];
-                            $dataReg['RealQuestionFile'] = $_POST['callRealQuestionFile'][$k];
-                            $dataReg['ExplanFile'] = $_POST['callExplanFile'][$k];
-                            $dataReg['RealExplanFile'] = $_POST['callRealExplanFile'][$k];
+                            $index = $k + 1;
+                            $callRealQuestionFile = preg_replace('/^[a-z0-9]+_/i', 'Q'.$index.'_', $_POST['callRealQuestionFile'][$k]);
+                            $callRealExplanFile = preg_replace('/^[a-z0-9]+_/i', 'E'.$index.'_', $_POST['callRealExplanFile'][$k]);
 
-                            // todo 파일 이동
-//                            $src = $this->upload_path . $this->upload_path_mock . $_POST['callIdx'][$k] . '/' . $_POST['callQuestionFile'][$k];
-//                            $dest = $this->upload_path . $this->upload_path_mock . $this->input->post('idx') . '/' $_POST['callQuestionFile'][$k];
-//
-//                            exec("cp -rf $src $dest");
-//                            if(is_dir($dest) === false) {
-//                                throw new Exception('파일 저장에 실패했습니다.');
-//                            }
+                            $dataReg['QuestionFile'] = $_POST['callQuestionFile'][$k];
+                            $dataReg['RealQuestionFile'] = $callRealQuestionFile;
+                            $dataReg['ExplanFile'] = $_POST['callExplanFile'][$k];
+                            $dataReg['RealExplanFile'] = $callRealExplanFile;
+
+                            // 복사할 파일
+                            $src = $_POST['callIdx'][$k] . $this->upload_path_mockQ;
+                            $dest = $this->input->post('idx') . $this->upload_path_mockQ;
+
+                            $fileCopy[$src . $_POST['callRealQuestionFile'][$k]] = $dest . $callRealQuestionFile;
+                            $fileCopy[$src . $_POST['callRealExplanFile'][$k]]   = $dest . $callRealExplanFile;
                         }
                         else {
                             if (isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK) {
@@ -520,13 +554,11 @@ class RegExamModel extends WB_Model
                     }
                     else { // 수정
                         $dataMod = array(
-                            'MpIdx' => $this->input->post('idx'),
                             'MalIdx' => $_POST['MalIdx'][$k],
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'QuestionOption' => $_POST['QuestionOption'][$k],
 
                             'RightAnswer' => $_POST['RightAnswer'][$k],
-                            'RightAnswerRate' => 0,
                             'Scoring' => $_POST['Scoring'][$k],
                             'Difficulty' => $_POST['Difficulty'][$k],
                             'UpdDatm' => date("Y-m-d H:i:s"),
@@ -575,14 +607,19 @@ class RegExamModel extends WB_Model
                 }
             }
 
+            // 파일 복사 (호출한 경우)
+            if($fileCopy) {
+                if ($this->uploadFileCopy($fileCopy) !== true) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+            }
 
             // 파일 업로드 & 백업이동
             $uploadSubPath = $this->upload_path_mock . $this->input->post('idx') . $this->upload_path_mockQ;
             $isSave = $this->uploadFileSave($uploadSubPath, $names, $fileBackup, 'img');
-            if(!$isSave) {
+            if($isSave !== true) {
                 throw new Exception('파일 저장에 실패했습니다.');
             }
-
 
             $this->_conn->trans_commit();
         }
@@ -631,6 +668,7 @@ class RegExamModel extends WB_Model
     {
         $condition = [
             'EQ' => [
+                'EB.siteCode' => $this->input->post('siteCode'),
                 'EB.MrcIdx' => $this->input->post('moLink'),
                 'EB.ProfIdx' => $this->input->post('ProfIdx'),
                 'EB.Year' => $this->input->post('qu_year'),

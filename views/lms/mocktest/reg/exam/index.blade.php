@@ -88,7 +88,7 @@
                         <th rowspan="2" class="text-center">문제등록옵션</th>
                         <th colspan="2" class="text-center">응시현황</th>
                         <th rowspan="2" class="text-center">사용여부</th>
-                        {{--<th rowspan="2" class="text-center">문제보기</th>--}}
+                        <th rowspan="2" class="text-center">문제보기</th>
                         <th rowspan="2" class="text-center">등록자</th>
                         <th rowspan="2" class="text-center" style="width:130px">등록일</th>
                     </tr>
@@ -103,6 +103,12 @@
             </form>
         </div>
     </div>
+
+    <style>
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+            top: 14px;
+        }
+    </style>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');
@@ -117,16 +123,18 @@
             $search_form.find('#sc_professor').chained('#search_site_code');
 
             // 검색 초기화
-            $('#searchInit').on('click', function () {
+            $('#searchInit, #tabs_site_code > li').on('click', function () {
                 $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
                     $(this).val('');
                 });
                 $search_form.find('#sc_cateD1').trigger('change');
-                $datatable.draw();
+                if($(event.target).attr('id') == 'searchInit') $datatable.draw();
             });
 
             // DataTables
             $datatable = $list_table.DataTable({
+                stateSave: true,
+                stateDuration: -1,
                 info: true,
                 language: {
                     "info": "[ 총 _MAX_건 ]",
@@ -186,9 +194,10 @@
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
-                    // {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                    //     return '';
-                    // }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        upImgUrl = '{{$upImgUrl}}' + row.MpIdx + '/';
+                        return '<a href="'+ upImgUrl + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
+                    }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDate', 'class': 'text-center'}
                 ]

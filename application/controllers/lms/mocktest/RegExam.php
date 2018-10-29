@@ -34,6 +34,7 @@ class RegExam extends \app\controllers\BaseController
             'cateD2' => $cateD2,
             'subject' => $this->subjectModel->getSubjectArray(),
             'professor' => $this->searchProfessorModel->professorList('', '', '', false),
+            'upImgUrl' => $this->config->item('upload_url_mock', 'mock'),
         ]);
     }
 
@@ -216,7 +217,7 @@ class RegExam extends \app\controllers\BaseController
 //        ];
 //        if ($this->validate($rules) === false) return;
 //
-//        $result = $this->regExamModel->fileDel($this->input->post('type'), $this->input->post('idx'), $this->input->post('name'));
+//        $result = $this->regExamModel->uploadFileDel($this->input->post('type'), $this->input->post('idx'), $this->input->post('name'));
 //        $this->json_result($result['ret_cd'], '삭제되었습니다.', $result, $result);
 //    }
 
@@ -227,7 +228,7 @@ class RegExam extends \app\controllers\BaseController
     public function storeQuestion()
     {
         $Info = @json_decode($this->input->post('Info'));
-        if(!is_object($Info)) {
+        if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist) || !isset($Info->chapterDel)) {
             $this->json_error("입력오류");
             return;
         }
@@ -254,7 +255,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'callIdx[]', 'label' => 'CallIdx', 'rules' => 'trim|is_natural_no_zero'],
         ];
         foreach ($this->input->post('chapterTotal') as $k => $v) {
-            if(!$v) {
+            if(!$v && $_POST['regKind'][$k] != 'call') {
                 if (isset($_FILES['QuestionFile']['error'][$k]) && $_FILES['QuestionFile']['error'][$k] !== UPLOAD_ERR_OK) {
                     $rules[] = ['field' => 'QuestionFile', 'label' => '문제파일', 'rules' => 'required'];
                     break;
@@ -267,7 +268,20 @@ class RegExam extends \app\controllers\BaseController
         }
         if ($this->validate($rules) === false) return;
 
+        foreach ($this->input->post('regKind') as $k => $v) {
+            if($v == 'call') {
+                if( empty($_POST['callQuestionFile'][$k]) || empty($_POST['callExplanFile'][$k]) ||
+                    empty($_POST['callRealQuestionFile'][$k]) || !preg_match('/^[a-z0-9_]+\.{1}[a-z0-9]+$/i', $_POST['callRealQuestionFile'][$k]) ||
+                    empty($_POST['callRealExplanFile'][$k]) || !preg_match('/^[a-z0-9_]+\.{1}[a-z0-9]+$/i', $_POST['callRealExplanFile'][$k]) ) {
+                    $this->json_error("호출이 잘못되었습니다. 다시 시도해 주세요.");
+                    return;
+                }
+                $_POST['callQuestionFile'][$k] = $this->security->xss_clean(trim($_POST['callQuestionFile'][$k]));
+                $_POST['callExplanFile'][$k] = $this->security->xss_clean(trim($_POST['callExplanFile'][$k]));
+            }
+        }
 
+        // 조건체크
         if( count($this->input->post('QuestionNO')) != count(array_unique($this->input->post('QuestionNO'))) ) {
             $this->json_error('문항번호가 중복되어 있습니다.');
             return;
@@ -283,7 +297,8 @@ class RegExam extends \app\controllers\BaseController
 
         $error = false;
         foreach ($this->input->post('QuestionOption') as $k => $v) {
-            $count = count( explode(',', $this->input->post("RightAnswer[$k]")) );
+            $count = empty($_POST["RightAnswer"][$k]) ? 0 : count( explode(',', $_POST["RightAnswer"][$k]) );
+
             switch ($v) {
                 case 'S': // 객관식 단일
                     if($count !== 1) $error = true;
@@ -351,6 +366,7 @@ class RegExam extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[GET]'],
+            ['field' => 'siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'qu_year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'qu_round', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'qu_no', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],

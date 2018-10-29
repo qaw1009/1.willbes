@@ -20,17 +20,17 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <th style="width:20%">카테고리</th>
+                    <th>카테고리</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <th style="width:20%">과목별 문제지정보</th>
+                    <th>과목별 문제지정보</th>
                     <td></td>
                 </tr>
             </table>
 
             <div class="mt-50">
-                <div>
+                <div id="addrow-wrap">
                     <div class="pull-left mt-15 mb-10"></div>
                     <div class="pull-right text-right form-inline mb-5">
                         <select class="form-control">
@@ -91,20 +91,21 @@
 
             <script type="text/javascript">
                 $(document).ready(function() {
-                    // 초기화
+                    // 시험지정보
                     var quInfo2 = $regi_form.find('#selected_category').text().trim().replace(/\[.+/, '');
-                    var quInfo3 = $regi_form.find('#selected_category').text().trim().replace(/^.+>\s/, '').replace(/\s\[.+$/, '') + ' | ' +
-                        $regi_form.find('#selected_professor').text().trim().replace(/^\|.+/, '') + ' | ' +
-                        $regi_form.find('[name="Year"] option:selected').text() + ' | ' +
-                        $regi_form.find('[name="RotationNo"] option:selected').text() + '회차 | ' +
-                        $regi_form.find('[name="QuestionOption"] option:selected').text() + ' | 보기 ' +
-                        $regi_form.find('[name="AnswerNum"] option:selected').text() + '개';
+                    var quInfo3 = $regi_form.find('#selected_category').text().trim().replace(/^.+>\s*/, '').replace(/\s*\[.+$/, '') + ' | ' +
+                                  $regi_form.find('#selected_professor').text().trim().replace(/\s*\|.+/, '') + ' | ' +
+                                  $regi_form.find('[name="Year"] option:selected').text() + ' | ' +
+                                  $regi_form.find('[name="RotationNo"] option:selected').text() + '회차 | ' +
+                                  $regi_form.find('[name="QuestionOption"] option:selected').text() + ' | 보기 ' +
+                                  $regi_form.find('[name="AnswerNum"] option:selected').text() + '개';
 
                     $('#quInfoWrap tr:eq(0) > td').text( $regi_form.find('[name="siteCode"] option:selected').text() );
                     $('#quInfoWrap tr:eq(1) > td').text( quInfo2 );
                     $('#quInfoWrap tr:eq(2) > td').text( quInfo3 );
 
 
+                    // 초기화
                     var orderNo = 1;
                     var callList = $('#modal_reg_table').find('tbody');
                     var callAddField = callList.find('tr:eq(0)').html();
@@ -121,6 +122,14 @@
                         }
                     });
 
+                    // ROW속 호출버튼 클릭시 필드 1개만 입력할 수 있게 필드추가 제거
+                    var unit = $(event.target).hasClass('act-call-unit') ? $(event.target) : '';
+                    if(unit) {
+                        $('#addrow-wrap').find('select').val('1');
+                        $('#act-call-addRow').trigger('click');
+                        $('#addrow-wrap').remove();
+                    }
+
 
                     // 조회
                     var callData = {};
@@ -133,6 +142,7 @@
                             'qu_year' : that.find('[name="qu_year"]').val(),
                             'qu_round' : that.find('[name="qu_round"]').val(),
                             'qu_no' : that.find('[name="qu_no"]').val(),
+                            'siteCode' : $regi_form.find('[name="siteCode"]').val(),
                             'nowIdx' : $regi_form.find('[name="idx"]').val(),
                             'moLink' : $regi_form.find('[name="moLink"]').val(),
                             'ProfIdx' : $regi_form.find('[name="ProfIdx"]').val(),
@@ -146,6 +156,7 @@
                                 var QuestionOption = Difficulty = '';
 
                                 if(!rt) { alert('일치하는 데이터가 없습니다.'); return false; }
+                                if(!rt.RealQuestionFile || !rt.RealExplanFile) { alert('선택하신 문항에 이미지가 없습니다.'); return false; }
                                 if(!rt.optSame) { alert('문제등록옵션 또는 정답의 보기갯수가 일치하지 않습니다.'); return false; }
 
                                 if(rt.QuestionOption == 'S') QuestionOption = '객관식(단일)';
@@ -158,8 +169,8 @@
 
                                 that.find('td:eq(1)').html(rt.AreaName);
                                 that.find('td:eq(2)').html(QuestionOption);
-                                that.find('td:eq(3)').html('<span class="blue underline-link" data-html="true" data-content="<img src=\''+rt.upImgUrlQ+rt.RealQuestionFile+'\'>">'+rt.QuestionFile+'</span>');
-                                that.find('td:eq(4)').html('<span class="blue underline-link" data-html="true" data-content="<img src=\''+rt.upImgUrlQ+rt.RealExplanFile+'\'>">'+rt.ExplanFile+'</span>');
+                                that.find('td:eq(3)').html('<span class="blue underline-link img-tooltip" data-title="<img src=\''+rt.upImgUrlQ+rt.RealQuestionFile+'\'>">'+rt.QuestionFile+'</span>');
+                                that.find('td:eq(4)').html('<span class="blue underline-link img-tooltip" data-title="<img src=\''+rt.upImgUrlQ+rt.RealExplanFile+'\'>">'+rt.ExplanFile+'</span>');
                                 that.find('td:eq(5)').html(rt.RightAnswer);
                                 that.find('td:eq(6)').html(Difficulty);
 
@@ -174,11 +185,22 @@
                     // 적용
                     $("#act-qApply").on('click', function () {
                         $.each(callData, function (i,v) {
-                            var target, right;
+                            var target, right, callChangeIdx;
 
-                            $regi_sub_form.find('tbody').append('<tr data-chapter-idx="">' + addField + '</tr>');
+                            if(unit) {
+                                unit.closest('tr').after('<tr data-chapter-idx="">' + addField + '</tr>');
+                                target = unit.closest('tr').next();
 
-                            target = $regi_sub_form.find('tbody > tr').last();
+                                callChangeIdx = unit.closest('tr').data('chapter-idx');
+                                if(callChangeIdx) {
+                                    chapterExist.splice(chapterExist.indexOf(callChangeIdx), 1);
+                                    chapterDel.push(callChangeIdx);
+                                }
+                            }
+                            else {
+                                $regi_sub_form.find('tbody').append('<tr data-chapter-idx="">' + addField + '</tr>');
+                                target = $regi_sub_form.find('tbody > tr').last();
+                            }
 
                             target.find('[name="regKind[]"]').val('call');
                             target.find('[name="MalIdx[]"]').val(v.MalIdx);
@@ -186,31 +208,37 @@
                             target.find('[name="Scoring[]"]').val(v.Scoring);
                             target.find('[name="Difficulty[]"]').val(v.Difficulty);
                             target.find('[name="RightAnswer[]"]').val(v.RightAnswer);
-                            target.find('td:eq(9)').text(v.wAdminName);
-                            target.find('td:eq(10)').text(v.RegDatm);
+                            //target.find('td:eq(9)').text(v.wAdminName);
+                            //target.find('td:eq(10)').text(v.RegDatm);
 
                             target.find('[name="RightAnswerTmp[]"]').each(function () {
+                                $(this).iCheck('uncheck');
+                            });
+                            target.find('[name="RightAnswerTmp[]"]').each(function () {
                                 right = v.RightAnswer.split(',');
-
                                 if( $.inArray($(this).val(), right) !== -1 ) {
                                     $(this).iCheck('check');
                                 }
                             });
 
                             if(v.QuestionFile) {
-                                target.find('td:eq(3)').append('<div>[호출]</div> <div class="file-wrap" style="cursor:pointer"><span class="blue underline-link" data-html="true" data-content="<img src=\''+v.upImgUrlQ+v.RealQuestionFile+'\'>">'+v.QuestionFile+'</span></div>');
+                                target.find('[name="QuestionFile[]"]').hide();
+                                target.find('td:eq(3) .file-wrap').append('<div>[호출]</div><span class="blue underline-link img-tooltip" data-title="<img src=\''+v.upImgUrlQ+v.RealQuestionFile+'\'>">'+v.QuestionFile+'</span>');
                                 target.find('[name="callIdx[]"]').val(v.MpIdx);
                                 target.find('[name="callQuestionFile[]"]').val(v.QuestionFile);
                                 target.find('[name="callRealQuestionFile[]"]').val(v.RealQuestionFile);
-                                target.find('[name="QuestionFile[]"]').remove();
                             }
                             if(v.ExplanFile) {
-                                target.find('td:eq(4)').append('<div>[호출]</div> <div class="file-wrap" style="cursor:pointer"><span class="blue underline-link" data-html="true" data-content="<img src=\''+v.upImgUrlQ+v.RealExplanFile+'\'>">'+v.ExplanFile+'</span></div>');
+                                target.find('[name="ExplanFile[]"]').hide();
+                                target.find('td:eq(4) .file-wrap').append('<div>[호출]</div><span class="blue underline-link img-tooltip" data-title="<img src=\''+v.upImgUrlQ+v.RealExplanFile+'\'>">'+v.ExplanFile+'</span>');
                                 target.find('[name="callExplanFile[]"]').val(v.ExplanFile);
                                 target.find('[name="callRealExplanFile[]"]').val(v.RealExplanFile);
-                                target.find('[name="ExplanFile[]"]').remove();
                             }
 
+                            if(unit) {
+                                target.find('[name="QuestionNO[]"]').val( unit.closest('tr').find('[name="QuestionNO[]"]').val() );
+                                unit.closest('tr').remove();
+                            }
                         });
                         init_iCheck();
 

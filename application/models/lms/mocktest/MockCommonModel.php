@@ -201,7 +201,7 @@ class MockCommonModel extends WB_Model
                     $i = 1;
                     foreach ($it['name'] as $key_s => $it_s) {
                         $tmp = explode('.', $it['name'][$key_s]);
-                        $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
+                        $ext = isset($tmp[1]) ? '.' . $tmp[1] : '';
                         $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . $i . '_' : '';
 
                         $it['real'][] = $prefix . md5(uniqid(mt_rand())) . $ext;
@@ -210,7 +210,7 @@ class MockCommonModel extends WB_Model
                 }
                 else {
                     $tmp = explode('.', $it['name']);
-                    $ext = (isset($tmp[1]) ? '.' . $tmp[1] : '');
+                    $ext = isset($tmp[1]) ? '.' . $tmp[1] : '';
                     $prefix = ($prefixLen) ? substr($key, 0, $prefixLen) . '_' : '';
 
                     $it['real'] = $prefix . md5(uniqid(mt_rand())) . $ext;

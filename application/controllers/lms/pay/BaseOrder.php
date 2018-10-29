@@ -6,19 +6,21 @@ class BaseOrder extends \app\controllers\BaseController
     protected $models = array();
     protected $helpers = array();
     protected $_group_ccd = array();
+    private $_is_refund_proc = false;
 
     public function __construct()
     {
         parent::__construct();
 
         $this->_group_ccd = $this->orderListModel->_group_ccd;
+        $this->_is_refund_proc = strtolower($this->router->class) == 'refundproc' ? true : false;
     }
 
     /**
      * 주문내역 보기
      * @param array $params
      */
-    public function show($params = [])
+    protected function show($params = [])
     {
         // url segment 에서 숫자 값 리턴
         $order_idx = current(array_filter($params, function ($val) {
@@ -30,7 +32,7 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_address', 'delivery_info']);
+        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info']);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
@@ -58,6 +60,9 @@ class BaseOrder extends \app\controllers\BaseController
                 'mem' => $mem_data,
                 'mem_point' => $point_data
             ],
+            '_is_refund_proc' => $this->_is_refund_proc,
+            '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,
+            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
 
@@ -65,7 +70,7 @@ class BaseOrder extends \app\controllers\BaseController
      * 주문 취소
      * @param array $params
      */
-    public function cancel($params = [])
+    protected function cancel($params = [])
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
@@ -86,5 +91,14 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         $this->json_result($result, '취소 되었습니다.', $result);
+    }
+
+    /**
+     * 목록 order by 배열 리턴
+     * @return array
+     */
+    protected function _getListOrderBy()
+    {
+        return ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
     }
 }

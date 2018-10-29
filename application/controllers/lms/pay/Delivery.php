@@ -153,15 +153,6 @@ class Delivery extends BaseOrder
     }
 
     /**
-     * 교재배송관리 조회 order by 배열 리턴
-     * @return array
-     */
-    private function _getListOrderBy()
-    {
-        return ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc'];
-    }
-
-    /**
      * 교재배송관리 목록 엑셀다운로드
      */
     public function excel()

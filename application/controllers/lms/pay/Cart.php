@@ -82,7 +82,7 @@ class Cart extends BaseOrder
      * 장바구니 조회 order by 배열 리턴
      * @return array
      */
-    private function _getListOrderBy()
+    public function _getListOrderBy()
     {
         return ['CA.MemIdx' => 'desc', 'CA.SiteCode' => 'asc', 'CA.CartIdx' => 'asc'];
     }

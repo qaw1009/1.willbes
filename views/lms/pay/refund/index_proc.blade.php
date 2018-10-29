@@ -230,7 +230,7 @@
                         return data + (row.IsUseCoupon === 'Y' ? ' (Y)' : '');
                     }},
                     {'data' : 'PayStatusCcd', 'render' : function(data, type, row, meta) {
-                        return data === '{{ $_pay_status_ccd['paid'] }}' ? '<button name="btn_refund" class="btn btn-xs btn-success mb-0 ml-5" data-order-idx="' + row.OrderIdx + '">환불처리</button>' : '';
+                        return data === '{{ $_pay_status_ccd['paid'] }}' ? '<button name="btn_view" class="btn btn-xs btn-success mb-0 ml-5 btn-view" data-idx="' + row.OrderIdx + '">환불처리</button>' : '';
                     }}
                 ]
             });

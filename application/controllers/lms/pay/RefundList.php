@@ -132,15 +132,6 @@ class RefundList extends BaseOrder
     }
 
     /**
-     * 환불완료현황 조회 order by 배열 리턴
-     * @return array
-     */
-    private function _getListOrderBy()
-    {
-        return ['O.OrderIdx' => 'desc', 'OP.OrderProdIdx' => 'asc'];
-    }
-
-    /**
      * 환불완료현황 목록 엑셀다운로드
      */
     public function excel()
@@ -149,7 +140,7 @@ class RefundList extends BaseOrder
             , '총 환불금액', '총 남은금액', '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '배송상태', '할인율', '쿠폰적용여부'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, VBankOrderDatm, OrderDatm, CompleteDatm
-            , tRealPayPrice, tUseLecPoint, tUseBookPoint, tRefundPrice, tRemainPrice
+            , tRealPayPrice, tUseLecPoint, tUseBookPoint, tRefundPrice, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice
             , ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, DeliveryStatusCcdName, DiscRate, IsUseCoupon';
 
         $arr_condition = $this->_getListConditions();

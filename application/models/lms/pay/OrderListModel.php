@@ -20,11 +20,12 @@ class OrderListModel extends BaseOrderModel
     {
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
-                $column = 'count(*) AS numrows';
+                $in_column = 'count(*) AS numrows';
+                $column = 'numrows';
             } else {
-                $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
+                $in_column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
                     , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
-                    , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, 0 as tRefundPrice, (O.RealPayPrice - 0) as tRemainPrice
+                    , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, null, "refund") as tRefundPrice
                     , O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
                     , O.DiscPrice as tDiscPrice, O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, O.SaveLecPoint as tSaveLecPoint, O.SaveBookPoint as tSaveBookPoint
                     , O.VBankCcd, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
@@ -39,17 +40,22 @@ class OrderListModel extends BaseOrderModel
                         end, NULL			
                       ) as VBankStatus                    
                     , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
-                    , OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice, 0 as RefundPrice
+                    , OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice, fn_order_refund_price(O.OrderIdx, OP.OrderProdIdx, "all") as RefundPriceData
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
                     , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd                    
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
-                $column .= $this->_getAddListQuery('column', $arr_add_join);
+                $in_column .= $this->_getAddListQuery('column', $arr_add_join);
+                $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice
+                    , json_value(RefundPriceData, "$.refund") as RefundPrice, json_value(RefundPriceData, "$.card_refund") as CardRefundPrice
+                    , json_value(RefundPriceData, "$.cash_refund") as CashRefundPrice
+                ';
             }
         } else {
-            $column = $is_count;
+            $in_column = $is_count;
+            $column = '*';
         }
 
         $from = $this->_getListFrom($arr_add_join);
@@ -63,7 +69,7 @@ class OrderListModel extends BaseOrderModel
         is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -80,12 +86,12 @@ class OrderListModel extends BaseOrderModel
     public function listExcelAllOrder($column, $arr_condition, $order_by = [], $arr_add_join = [])
     {
         $in_column = 'O.OrderIdx, OP.OrderProdIdx, O.OrderNo, S.SiteName, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
-            , O.RealPayPrice as tRealPayPrice, 0 as tRefundPrice, O.RealPayPrice - 0 as tRemainPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
+            , O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, null, "refund") as tRefundPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
             , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
             , O.CompleteDatm, O.OrderDatm
-            , OP.RealPayPrice, 0 as RefundPrice, OP.IsUseCoupon, OP.UpdDatm
+            , OP.RealPayPrice, fn_order_refund_price(O.OrderIdx, OP.OrderProdIdx, "refund") as RefundPrice, OP.IsUseCoupon, OP.UpdDatm
             , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate           
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName, P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
@@ -254,9 +260,9 @@ class OrderListModel extends BaseOrderModel
     {
         if (empty($column) === true) {
             $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, O.ReprProdName, O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
-                , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice
-                , O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice, O.DiscPrice as tDiscPrice, O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint
-                , O.SaveLecPoint as tSaveLecPoint, O.SaveBookPoint as tSaveBookPoint
+                , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, null, "refund") as tRefundPrice
+                , O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice, O.DiscPrice as tDiscPrice
+                , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, O.SaveLecPoint as tSaveLecPoint, O.SaveBookPoint as tSaveBookPoint
                 , O.VBankCcd, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
                 , if(O.VBankAccountNo is not null, O.OrderDatm, NULL) as VBankOrderDatm
                 , if(O.VBankAccountNo is not null, "Y", "N") as IsVBank

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Event extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'siteF', 'downloadF', 'memberF');
+    protected $models = array('eventF', 'siteF', 'downloadF', 'memberF', '/support/supportBoardF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -325,8 +325,22 @@ class Event extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null));
         $board_idx = element('board_idx', $arr_input);
-        $data = $this->eventFModel->findEventForNotice($board_idx);
 
+        if (empty($board_idx) === true) {
+            show_alert('잘못된 접근입니다.', '/');
+        }
+
+        $data = $this->eventFModel->findEventForNotice($board_idx);
+        if (empty($data) === true) {
+            show_alert('잘못된 접근입니다.', '/');
+        }
+
+        $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
+        if($result !== true) {
+            show_alert('게시글 조회시 오류가 발생되었습니다.', '/');
+        }
+
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('site/event/popup_show_notice',[
             'arr_input' => $arr_input,
             'data' => $data

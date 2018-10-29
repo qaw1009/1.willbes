@@ -417,7 +417,12 @@ function resetModal(selector) {
  */
 function sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
 
-    var target = (event.target) ? $(event.target) : $("button, .btn");
+    //var target = (event.target) ? $(event.target) : $("button, .btn");
+    if (typeof(event) === 'undefined') {
+        var target = $("button, .btn");
+    } else {
+        var target = event.target;
+    }
     target.prop("disabled",true);
 
     if(typeof is_file === 'undefined') is_file = false;

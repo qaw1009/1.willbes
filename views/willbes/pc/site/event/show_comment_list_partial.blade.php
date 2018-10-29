@@ -1,5 +1,5 @@
 <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url($arr_base['default_path'].'/event/frameCommentList?'.$frame_params)}}"></iframe>
-<div id="NOTICEPASS"></div>
+<div id="NOTICEPASS" class="willbes-Layer-Black"></div>
 
 <script type="text/javascript">
     function resizeIframe(iframe) {

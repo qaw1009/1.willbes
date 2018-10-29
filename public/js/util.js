@@ -417,8 +417,9 @@ function resetModal(selector) {
  */
 function sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
 
-    $(event.target).prop("disabled",true);
-    //$("button, .btn").prop("disabled",true);
+    var target = (event.target) ? $(event.target) : $("button, .btn");
+    target.prop("disabled",true);
+
     if(typeof is_file === 'undefined') is_file = false;
     var process_data = true;
     var content_type = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -440,7 +441,7 @@ function sendAjax(url, data, callback, error_callback, async, method, data_type,
         if(typeof callback === "function") {
             callback(data);
         }
-        $(event.target).prop("disabled",false);
+        target.prop("disabled",false);
     }).error(function(req, status, err) {
         if(typeof error_callback === "function") {
             var ret = req.responseText;
@@ -450,7 +451,7 @@ function sendAjax(url, data, callback, error_callback, async, method, data_type,
             }
             error_callback(ret, req.status);
         }
-        $(event.target).prop("disabled",false);
+        target.prop("disabled",false);
     });
 }
 

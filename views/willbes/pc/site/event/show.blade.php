@@ -72,7 +72,7 @@
             @endif
             <!-- show_comment_list -->
 
-            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right p_ab" style="right: 0;">
+            <div class="search-Btn btnAuto90 h36 mt20 f_right p_ab" style="right: 0; bottom: 5px;">
                 <button type="button" id="btn_list" class="mem-Btn bg-purple-gray bd-dark-gray">
                     <span>목록</span>
                 </button>

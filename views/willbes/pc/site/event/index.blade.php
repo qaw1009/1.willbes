@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="willbes-Leclist c_both mt30">
+        <div class="willbes-Leclist c_both mt30 p_re">
             <div class="willbes-LecreplyList tx-gray c_both">
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <select id="s_request_type" name="s_request_type" title="이벤트종류" class="seleEvt f_left" onchange="goUrl('s_request_type',this.value)">

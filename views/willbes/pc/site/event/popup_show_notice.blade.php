@@ -32,8 +32,10 @@
                     </tr>
                 @endif
                 <tr>
-                    <td class="w-txt tx-left" colspan="5">
-                        {!! $data['Content'] !!}
+                    <td class="w-txt tx-left" colspan="5" style="height: auto; padding: 0;">
+                        <div class="scrollBox">
+                            {!! $data['Content'] !!}
+                        </div>
                     </td>
                 </tr>
                 </tbody>

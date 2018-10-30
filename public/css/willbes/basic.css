@@ -913,10 +913,13 @@ select[disabled] {
   border: 1px solid #0d74ae;
 }
 .bd-gray {
-  border: 1px solid #939393;
+  border: 1px solid #f3eded;
 }
 .bd-dark-gray {
   border: 1px solid #555;
+}
+.bd-light-gray {
+  border: 1px solid #c9c9c9;
 }
 
 .bdt-bright-gray {

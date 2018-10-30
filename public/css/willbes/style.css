@@ -3918,6 +3918,12 @@ table.classTable tr td.w-data {
     line-height: 20px !important;
     vertical-align: baseline;
 }
+.LecViewTable .w-txt .scrollBox {
+    padding: 15px 25px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 255px;
+}
 .LecViewTable .w-txt.answer {
     height: 200px;
 }
@@ -4493,6 +4499,138 @@ table.classTable tr td.w-data {
     padding: 0;
 }
 
+/* calendarTable */
+.calendarTable {
+    width: 630px;
+    border: 1px solid #bebebe;
+}
+.calendarTable .table-condensed thead tr.week th,
+.calendarTable .table-condensed tr td {
+    border-top: 1px solid #bebebe;
+    border-left: 1px solid #bebebe;
+    font-size: 13px;
+}
+.calendarTable .table-condensed thead tr.week th:first-child,
+.calendarTable .table-condensed tr td:first-child {
+    border-left: none;
+    color: #ed1c24;
+}
+.calendarTable .table-condensed thead tr.week th:last-child,
+.calendarTable .table-condensed tr td:last-child {
+    color: #1a8ccb;
+}
+.calendarTable .table-condensed thead tr.week th {
+    background: #f1f1f1;
+    height: 36px;
+    text-align: center;
+}
+.calendarTable .table-condensed tr td {
+    height: 66px;
+    padding: 12px 12px 8px;
+    vertical-align: top;
+}
+.calendarTable .table-condensed tr.month th {
+    font-size: 18px;
+    padding: 22px 0;
+}
+.calendarTable .table-condensed tr.month th span {
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+    margin: 0 30px;
+}
+.calendarTable .table-condensed tr td button {
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    display: block;
+    margin: 10px auto 0;
+}
+.calendarTable .table-condensed tr td button span {
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+}
+.calendarTable .table-condensed tr td button.end {
+    background: #eaeaea;
+    border: 1px solid #c9c9c9;
+}
+.calendarTable .table-condensed tr td button.end span {
+    color: #888;
+}
+.calendarTable .table-condensed tr td button.ing {
+    background: #1a8ccb;
+    border: 1px solid #1a8ccb;
+}
+.calendarTable .table-condensed tr td button.ing span {
+    color: #fff;
+}
+
+/* timeTable */
+.timeTable {
+    width: 285px;
+    height: 441px;
+    border: 1px solid #bebebe;
+}
+
+.timeTit {
+    font-size: 16px;
+    color: #323232;
+    text-align: center;
+    line-height: 20px;
+    padding: 10px 0 5px;
+}
+.timeSubTit {
+    font-size: 13px;
+    color: #707070;
+}
+
+.SelectDay {
+    background: #1b8ccc;
+    height: 36px;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    line-height: 36px;
+    border-top: 1px solid #e0e0e0;
+    letter-spacing: 0;
+}
+.SelectTime {
+    height: 348px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    letter-spacing: 0;
+}
+.SelectTime ul li {
+    height: 34px;
+    font-size: 12px;
+    color: #707070;
+    line-height: 32px;
+    border-top: 1px solid #e0e0e0;
+}
+.SelectTime ul li div {
+    float: left;
+}
+.SelectTime ul li div.Time {
+    width: 150px;
+    height: 34px;
+    text-align: center;
+    border-right: 1px solid #e0e0e0;
+}
+.SelectTime ul li div.Condition {
+    width: 116px;
+    height: 100%;
+    text-align: center;
+}
+.SelectTime ul li div.Condition a {
+    display: block;
+    widtH: 100%;
+    height: 100%;
+}
+
+
+
 
 
 /*********************************************     CART PAGE     *********************************************/
@@ -4543,6 +4681,9 @@ table.classTable tr td.w-data {
 }
 .LeclistTable .listTable.cartTable {
     border-bottom: 1px solid #959595;
+}
+.LeclistTable .listTable.cartTable .w-img a img {
+    width: 140px;
 }
 .LeclistTable .listTable.cartTable .w-list a {
     display: block;

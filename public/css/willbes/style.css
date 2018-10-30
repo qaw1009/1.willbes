@@ -2382,13 +2382,14 @@ table.auTable tr td {
 .subBtn a {
     display: block;
     background: #7d7e85;
-    height: 25px;
-    font-size: 11px;
-    font-weight: 300;
+    height: 27px;
+    font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
+    font-size: 12px;
+    font-weight: 600;
     color: #fff;
     text-align: center;
-    line-height: 16px;
-    padding: 4px 10px;
+    line-height: 18px;
+    padding: 4px 12px;
     border: 1px solid #7d7e85;
 }
 .subBtn.white a {
@@ -4499,6 +4500,124 @@ table.classTable tr td.w-data {
     padding: 0;
 }
 
+/* counsel Reserve */
+.counsel_infoBox {}
+
+.counsel_infoBox .listTable .userInfoBox th,
+.counsel_infoBox .listTable .userInfoBox td {
+    padding: 8px 0;
+}
+.counsel_infoBox .listTable .userInfoBox select {
+    width: 142px;
+    height: 27px;
+}
+
+/* counsel Step */
+.willbes-counsel_step .step:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.willbes-counsel_step .step ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.willbes-counsel_step .step ul {
+    margin-bottom: 25px;
+}
+.willbes-counsel_step .step ul li {
+    float: left;
+    width: 280px;
+    height: 80px;
+    border: 1px solid #d3d3d3;
+    font-size: 16px;
+    font-weight: 600;
+    color: #434343;
+    text-align: center;
+    line-height: 26px;
+}
+.willbes-counsel_step .step ul li.arrow {
+    float: left;
+    width: 30px;
+    height: 80px;
+    margin: 0 10px;
+    border: none;
+}
+.willbes-counsel_step .step ul li.arrow img {
+    position: relative;
+    top: 50%;
+    margin-top: -15px;
+}
+.willbes-counsel_step .step ul li.active {
+    border: 1px solid #1a8ccc;
+}
+.willbes-counsel_step .step ul li .num {
+    font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
+    font-size: 21px;
+    font-weight: 300;
+    color: #1a8ccc;
+    letter-spacing: 0;
+    margin-top: 10px;
+}
+
+
+.willbes-counsel_step .step .info-Box {
+    position: relative;
+    background: #eee;
+    width: 940px;
+    height: 130px;
+    padding: 25px;
+    border: 1px solid #bebebe;
+    font-size: 13px;
+    color: #434343;
+    line-height: 19px;
+}
+.willbes-counsel_step .step .info-Box:after,
+.willbes-counsel_step .step .info-Box:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+.willbes-counsel_step .step .info-Box:before {
+    top: -25px;
+    border-color: transparent transparent #bebebe;
+    border-width: 12px;
+}
+.willbes-counsel_step .step .info-Box:after {
+    top: -24px;
+    border-color: transparent transparent #eee;
+    border-width: 12px;
+}
+.willbes-counsel_step .step .info-Box1:before {
+    margin-left: 115px;
+}
+.willbes-counsel_step .step .info-Box1:after {
+    margin-left: 115px;
+}
+.willbes-counsel_step .step .info-Box2:before {
+    margin-left: 450px;
+}
+.willbes-counsel_step .step .info-Box2:after {
+    margin-left: 450px;
+}
+.willbes-counsel_step .step .info-Box3:before {
+    margin-left: 780px;
+}
+.willbes-counsel_step .step .info-Box3:after {
+    margin-left: 780px;
+}
+
+
+
+
+
+
+
+
 /* calendarTable */
 .calendarTable {
     width: 630px;
@@ -4609,6 +4728,9 @@ table.classTable tr td.w-data {
     line-height: 32px;
     border-top: 1px solid #e0e0e0;
 }
+.SelectTime ul li.lunchTime {
+    background: #f1f1f1;
+}
 .SelectTime ul li div {
     float: left;
 }
@@ -4628,8 +4750,10 @@ table.classTable tr td.w-data {
     widtH: 100%;
     height: 100%;
 }
-
-
+.SelectTime ul li div.Condition.ing a {
+    background: url("../../img/willbes/counsel/icon_arrow.png") no-repeat 85px center;
+    color: #1b8ccc;    
+}
 
 
 

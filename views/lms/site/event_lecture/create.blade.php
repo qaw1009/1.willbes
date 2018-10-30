@@ -373,7 +373,7 @@
                                                             {{$row['Name']}}
                                                             <input type="hidden" name="event_register_name[]" value="{{$row['Name']}}">
                                                         </td>
-                                                        <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
+                                                        <td><a href="#none" class="btn-lecture-delete-submit" data-lecture-idx="{{$el_idx}}" data-register-idx="{{$row['ErIdx']}}"><i class="fa fa-times fa-lg red"></i></a></td>
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -630,7 +630,8 @@
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE',
-                    'er_idx' : $(this).data('lecture-idx')
+                    'el_idx' : $(this).data('lecture-idx'),
+                    'er_idx' : $(this).data('register-idx')
                 };
                 if (!confirm('정말로 삭제하시겠습니까?')) {
                     return;

@@ -73,6 +73,7 @@
                 <th>댓글</th>
                 <th>작성일</th>
                 <th>사용여부</th>
+                <th>삭제여부</th>
             </tr>
             </thead>
             <tbody>
@@ -132,6 +133,9 @@
                 {'data' : 'temp_RegDatm'},
                 {'data' : 'temp_isUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
+                {'data' : 'temp_isStatus', 'render' : function(data, type, row, meta) {
+                        return (data === 'Y') ? '사용' : '<span class="red">삭제</span>';
                     }}
             ]
         });

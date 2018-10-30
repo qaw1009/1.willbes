@@ -284,14 +284,15 @@ class EventLecture extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
-            ['field' => 'er_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'el_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'er_idx', 'label' => '접수관리식별자', 'rules' => 'trim|required|integer'],
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->eventLectureModel->delRegister($this->_reqP('er_idx'));
+        $result = $this->eventLectureModel->delRegister($this->_reqP('el_idx'), $this->_reqP('er_idx'));
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
@@ -439,6 +440,7 @@ class EventLecture extends \app\controllers\BaseController
                     $list_comment[$key]['temp_Title'] = $row['eventComment'];
                     $list_comment[$key]['temp_RegDatm'] = $row['RegDatm'];
                     $list_comment[$key]['temp_isUse'] = $row['IsUse'];
+                    $list_comment[$key]['temp_isStatus'] = $row['IsStatus'];
                     $list_comment[$key]['temp_MemIdx'] = $row['MemIdx'];
                     $list_comment[$key]['temp_MemId'] = $row['MemId'];
                     $list_comment[$key]['temp_Phone'] = $row['Phone'];
@@ -758,7 +760,7 @@ class EventLecture extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'A.ElIdx' => $el_idx,
-                'A.IsStatus' => 'Y'
+                /*'A.IsStatus' => 'Y'*/
             ],
             'ORG1' => [
                 'LKB' => [

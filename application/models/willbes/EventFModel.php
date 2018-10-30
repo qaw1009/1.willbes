@@ -415,6 +415,26 @@ class EventFModel extends WB_Model
     }
 
     /**
+     * 이벤트에 매핑된 신청자 수
+     * @param $el_idx
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getMemberForRegisterCount($el_idx, $arr_condition = [])
+    {
+        $column = 'count(*) AS numrows';
+        $from = "
+            FROM {$this->_table['event_member']} as a
+            INNER JOIN {$this->_table['event_register']} as b ON a.ErIdx = b.ErIdx AND b.ElIdx = '{$el_idx}' AND b.IsStatus = 'Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->row(0)->numrows;
+    }
+
+    /**
      * 이벤트 특강 신청 데이터 저장
      * @param $inputData
      * @return array|bool

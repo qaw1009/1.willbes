@@ -270,7 +270,7 @@ class EventLectureModel extends WB_Model
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus,
+                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "N", IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -423,10 +423,12 @@ class EventLectureModel extends WB_Model
                 throw new \Exception($is_attach);
             }
 
-            // 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
-            if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
-                if ($this->_addEventRegister($el_idx, $input, 'modify') === false) {
-                    throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
+            // 신청자 정보가 없을 때 수정가능. 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
+            if ($this->getMemberForRegisterCount($el_idx) <= 0) {
+                if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
+                    if ($this->_addEventRegister($el_idx, $input, 'modify') === false) {
+                        throw new \Exception('이벤트 정원제한 등록에 실패했습니다.');
+                    }
                 }
             }
 
@@ -614,15 +616,40 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 이벤트에 매핑된 신청자 수
+     * @param $el_idx
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function getMemberForRegisterCount($el_idx, $arr_condition = [])
+    {
+        $column = 'count(*) AS numrows';
+        $from = "
+            FROM {$this->_table['event_member']} as a
+            INNER JOIN {$this->_table['event_register']} as b ON a.ErIdx = b.ErIdx AND b.ElIdx = '{$el_idx}' AND b.IsStatus = 'Y'
+        ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->row(0)->numrows;
+    }
+
+    /**
      * 이벤트 접수 관리(정원제한) 단일 데이터 삭제
+     * @param $el_idx
      * @param $er_idx
      * @return array|bool
      */
-    public function delRegister($er_idx)
+    public function delRegister($el_idx, $er_idx)
     {
         $this->_conn->trans_begin();
         try {
             $admin_idx = $this->session->userdata('admin_idx');
+
+            if ($this->getMemberForRegisterCount($el_idx) > 0) {
+                throw new \Exception('신청자 데이터가 존재합니다. 삭제할 수 없습니다..');
+            }
 
             $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx)->where('ErIdx', $er_idx);
             if ($this->_conn->update($this->_table['event_register']) === false) {
@@ -653,7 +680,7 @@ class EventLectureModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.Comment AS eventComment, A.IsUse, A.RegDatm,
+            $column = 'A.CIdx, A.ElIdx, A.MemIdx, A.MemName, A.AdminIdx, A.CommentType, A.Comment AS eventComment, A.IsUse, A.IsStatus, A.RegDatm,
                         B.MemId, fn_dec(B.PhoneEnc) AS Phone, fn_dec(B.MailEnc) AS Mail
             ';
 

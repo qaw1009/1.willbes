@@ -152,25 +152,7 @@ class Event extends \app\controllers\FrontController
         $arr_register_data = $this->eventFModel->listEventForRegister($default_condition);
         $arr_base['register_list'] = $arr_register_data;
 
-        $register_create_type = '1';    //등록가능
-        if ($onoff_type == 'ongoing') {
-            switch ($data['TakeType']) {
-                case "1":   //회원
-                    if ($this->session->userdata('is_login') === false) {
-                        //비로그인 상태
-                        $register_create_type = '2';
-                    } else {
-                        //로그인상태
-                        $register_create_type = '1';
-                    }
-                    break;
-                case "2":   //회원 + 비회원
-                    $register_create_type = '1';
-                    break;
-            }
-        } else {
-            $register_create_type = '3';
-        }
+        $register_create_type = $this->_createRegisterChk(count($arr_register_data), $arr_input, $data, $onoff_type);
 
         $arr_base['page_url'] = $page_url;
         $arr_base['onoff_type'] = $onoff_type;
@@ -492,5 +474,54 @@ class Event extends \app\controllers\FrontController
             'list' => $list,
             'paging' => $paging
         ]);
+    }
+
+    /**
+     * 회원 신청 상태 체크
+     * @param $register_count
+     * @param $arr_input
+     * @param $data
+     * @param $onoff_type
+     * @return int|string   1:신청가능, 2:로그인, 3:신청완료, 4:만료
+     */
+    private function _createRegisterChk($register_count, $arr_input, $data, $onoff_type)
+    {
+        $return_type = 1;
+        if ($onoff_type == 'ongoing') {
+            switch ($data['TakeType']) {
+                case "1":   //회원
+                    if ($this->session->userdata('is_login') === false) {
+                        //비로그인 상태
+                        $return_type = '2';
+                    } else {
+                        //로그인상태
+                        $m_count = $this->eventFModel->getMemberForRegisterCount(element('event_idx', $arr_input), ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]);
+                        if ($m_count < $register_count) {
+                            $return_type = '1';     //신청리스트 1개 이상 남았을 경우
+                        } else {
+                            $return_type = '3';     //회원이 신청한 수가 많을 경우
+                        }
+                    }
+                    break;
+                case "2":   //회원 + 비회원
+                    if ($this->session->userdata('is_login') === false) {
+                        //비로그인 상태
+                        $return_type = '1';
+                    } else {
+                        //로그인상태
+                        $m_count = $this->eventFModel->getMemberForRegisterCount(element('event_idx', $arr_input), ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]);
+                        if ($m_count < $register_count) {
+                            $return_type = '1';     //신청리스트 1개 이상 남았을 경우
+                        } else {
+                            $return_type = '3';     //회원이 신청한 수가 많을 경우
+                        }
+                    }
+                    break;
+            }
+        } else {
+            $return_type = '4';
+        }
+
+        return $return_type;
     }
 }

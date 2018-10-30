@@ -7,7 +7,7 @@ class RefundList extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('delivery_info');
+    private $_list_add_join = array('delivery_info', 'refund');
 
     public function __construct()
     {
@@ -74,7 +74,7 @@ class RefundList extends BaseOrder
                 'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),
                 'O.IsEscrow' => $this->_reqP('search_chk_is_escrow'),
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon'),
-                'OPR.IsApproval' => $this->_reqP('search_chk_is_approval'),
+                'ORR.IsApproval' => $this->_reqP('search_chk_is_approval'),
             ],
             'IN' => ['O.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
             'ORG1' => [

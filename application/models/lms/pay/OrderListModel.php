@@ -6,7 +6,6 @@ require_once APPPATH . 'models/lms/pay/BaseOrderModel.php';
 class OrderListModel extends BaseOrderModel
 {
     /**
-     * TODO : 환불 추가 필요
      * 주문 목록 조회
      * @param bool|string $is_count
      * @param array $arr_condition
@@ -40,7 +39,8 @@ class OrderListModel extends BaseOrderModel
                         end, NULL			
                       ) as VBankStatus                    
                     , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
-                    , OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice, fn_order_refund_price(O.OrderIdx, OP.OrderProdIdx, "all") as RefundPriceData
+                    , OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
+                    , OP.CardPayPrice as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice    # TODO : 임시 환불산출금액 (로직 추가 필요)
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
                     , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd                    
@@ -48,10 +48,7 @@ class OrderListModel extends BaseOrderModel
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
-                $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice
-                    , json_value(RefundPriceData, "$.refund") as RefundPrice, json_value(RefundPriceData, "$.card_refund") as CardRefundPrice
-                    , json_value(RefundPriceData, "$.cash_refund") as CashRefundPrice
-                ';
+                $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
             }
         } else {
             $in_column = $is_count;
@@ -75,7 +72,6 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * TODO : 환불 추가 필요
      * 주문목록 엑셀 다운로드
      * @param string $column
      * @param array $arr_condition
@@ -91,8 +87,7 @@ class OrderListModel extends BaseOrderModel
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
             , O.CompleteDatm, O.OrderDatm
-            , OP.RealPayPrice, fn_order_refund_price(O.OrderIdx, OP.OrderProdIdx, "refund") as RefundPrice, OP.IsUseCoupon, OP.UpdDatm
-            , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate           
+            , OP.RealPayPrice, OP.IsUseCoupon, OP.UpdDatm, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate           
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName, P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
             , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';
@@ -158,7 +153,7 @@ class OrderListModel extends BaseOrderModel
     /**
      * 추가 조인 테이블에 따른 쿼리 리턴
      * @param string $add_type [리턴할 쿼리 구분 : from, column, excel_column (엑셀다운로드용 컬럼)]
-     * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수)]
+     * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수), delivery_address (배송지), delivery_info (배송정보), member_info (회원정보), refund (환불정보)]
      * @return mixed
      */
     private function _getAddListQuery($add_type, $arr_add_join = [])
@@ -244,6 +239,21 @@ class OrderListModel extends BaseOrderModel
                         on M.MemIdx = MI.MemIdx';
                 $column .= ', M.BirthDay as MemBirthDay, M.Sex as MemSex, fn_dec(M.MailEnc) as MemMail, MI.ZipCode as MemZipCode, MI.Addr1 as MemAddr1, fn_dec(MI.Addr2Enc) as MemAddr2';
                 $excel_column .= ', M.BirthDay as MemBirthDay, M.Sex as MemSex, fn_dec(M.MailEnc) as MemMail, MI.ZipCode as MemZipCode, MI.Addr1 as MemAddr1, fn_dec(MI.Addr2Enc) as MemAddr2';
+            }
+
+            // 환불정보 추가
+            if (in_array('refund', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['order_product_refund'] . ' as OPR		
+                        on OP.OrderProdIdx = OPR.OrderProdIdx
+                    left join ' . $this->_table['order_refund_request'] . ' as ORR		
+                        on OPR.RefundReqIdx = ORR.RefundReqIdx
+                    left join ' . $this->_table['admin'] . ' as AR
+                        on OPR.RefundAdminIdx = AR.wAdminIdx and AR.wIsStatus = "Y"';
+                $column .= ', OPR.RefundReqIdx, ifnull(OPR.RefundPrice, 0) as RefundPrice, ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice, ifnull(OPR.CashRefundPrice, 0) as CashRefundPrice 
+                    , OPR.IsPointRefund, OPR.RecoPointIdx, OPR.IsCouponRefund, OPR.RecoCouponIdx
+                    , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.IsApproval';
+                $excel_column .= ', OPR.RefundPrice';
             }
         }
 

@@ -8,7 +8,7 @@ class Book extends BaseOrder
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
     private $_book_prod_type_ccd = array();
-    private $_list_add_join = array('delivery_info');
+    private $_list_add_join = array('delivery_info', 'refund');
 
     public function __construct()
     {
@@ -79,7 +79,7 @@ class Book extends BaseOrder
                 'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),
                 'O.IsEscrow' => $this->_reqP('search_chk_is_escrow'),
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon'),
-                'OPR.IsApproval' => $this->_reqP('search_chk_is_approval'),
+                'ORR.IsApproval' => $this->_reqP('search_chk_is_approval'),
             ],
             'IN' => [
                 'P.ProdTypeCcd' => $this->_book_prod_type_ccd,

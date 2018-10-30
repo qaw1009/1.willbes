@@ -176,9 +176,7 @@
                         return data > 0 ? '[일반] ' + addComma(data) + (row.tDeliveryAddPrice > 0 ? '<br/>[추가] ' + addComma(row.tDeliveryAddPrice) : '') : '';
                     }},
                     {'data' : 'PayStatusCcdName'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '';
-                    }},
+                    {'data' : 'RefundDatm'},
                     {'data' : 'Receiver', 'render' : function(data, type, row, meta) {
                         return data + '<br/>' + row.ReceiverPhone;
                     }},

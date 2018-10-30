@@ -32,7 +32,7 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info']);
+        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund']);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }

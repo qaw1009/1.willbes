@@ -716,7 +716,7 @@ function setRowspan(classname) {
                     }
 
                     if(_param_value === ''){
-                        alert(_param.name + '을 먼저 선택 하셔야 야 합니다.');
+                        alert(_param.name + '을 먼저 선택하셔야 합니다.');
                         return false;
                     }
                 }

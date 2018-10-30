@@ -7,7 +7,7 @@ class RefundProc extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('delivery_info');
+    private $_list_add_join = array('delivery_info', 'refund');
 
     public function __construct()
     {
@@ -74,7 +74,7 @@ class RefundProc extends BaseOrder
                 'OPD.DeliveryStatusCcd' => $this->_reqP('search_delivery_status_ccd'),
                 'O.IsEscrow' => $this->_reqP('search_chk_is_escrow'),
                 'OP.IsUseCoupon' => $this->_reqP('search_chk_is_coupon'),
-                'OPR.IsApproval' => $this->_reqP('search_chk_is_approval'),
+                'ORR.IsApproval' => $this->_reqP('search_chk_is_approval'),
             ],
             'IN' => ['O.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
             'ORG1' => [
@@ -145,5 +145,94 @@ class RefundProc extends BaseOrder
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel('환불처리리스트', $list, $headers);
+    }
+
+    /**
+     * 환불 처리하기 폼
+     * @return mixed
+     */
+    public function create()
+    {
+        $order_idx = $this->_reqG('order_idx');
+        $order_prod_param = json_decode($this->_reqG('params'), true);
+        $params = base64_encode($this->_reqG('params'));
+        $total_refund_price = 0;
+
+        if (empty($order_idx) === true || count($order_prod_param) < 1) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        // 주문상품 조회
+        $arr_condition = [
+            'EQ' => [
+                'O.OrderIdx' => $order_idx,
+                'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']
+            ],
+            'IN' => [
+                'OP.OrderProdIdx' => array_keys($order_prod_param),
+                'O.SiteCode' => get_auth_site_codes()
+            ]
+        ];
+
+        $order_prod_data = $this->orderListModel->listAllOrder(false, $arr_condition);
+        if (empty($order_prod_data) === true) {
+            return $this->json_error('주문상품 데이터가 없습니다.', _HTTP_NOT_FOUND);
+        }
+
+        // 총 환불금액 합산
+        foreach ($order_prod_param as $row) {
+            $total_refund_price += $row['card_refund_price'] + $row['cash_refund_price'];
+        }
+
+        // 은행코드 조회
+        $arr_bank_ccd = $this->codeModel->getCcd($this->_group_ccd['Bank']);
+
+        return $this->load->view('pay/refund/create', [
+            'arr_bank_ccd' => $arr_bank_ccd,
+            'params' => $params,    // 전달받은 주문상품 파라미터 base64_encode
+            'order_idx' => $order_idx,
+            'order_prod_param' => $order_prod_param,    // 주문상품 파라미터 json_decode
+            'order_prod_data' => $order_prod_data,      // 조회된 주문상품 데이터
+            'total_refund_price' => $total_refund_price
+        ]);        
+    }
+
+    /**
+     * 환불 처리하기
+     * @return mixed
+     */
+    public function store()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'order_idx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '주문상품정보', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+        
+        // 환불계좌 입력값 체크
+        if (empty($this->_reqP('refund_bank_ccd')) === false || empty($this->_reqP('refund_account_no')) === false || empty($this->_reqP('refund_deposit_name')) === false) {
+            if (!(empty($this->_reqP('refund_bank_ccd')) === false && empty($this->_reqP('refund_account_no')) === false && empty($this->_reqP('refund_deposit_name')) === false)) {
+                return $this->json_error('환불계좌정보를 모두 입력해 주세요.', _HTTP_BAD_REQUEST);
+            }
+        }
+
+        $result = $this->orderModel->refundOrderProduct($this->_reqP(null, false));
+
+        return $this->json_result($result, '환불이 정상적으로 처리되었습니다.', $result);
+    }
+
+    /**
+     * 환불산출금액확인 폼
+     */
+    public function calc()
+    {
+        var_dump($_GET);
+        $this->load->view('pay/refund/calc', [
+
+        ]);
     }
 }

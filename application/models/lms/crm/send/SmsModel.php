@@ -171,7 +171,10 @@ class SmsModel extends WB_Model
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
 
-            // 즉시 발송 시작 (솔루션 호출 구문 시작)
+            /**
+             * 즉시 발송 시작 (솔루션 호출 구문 시작)
+             * TODO : 솔루션 도입 시 해당 기능 추가
+            */
             if ($formData['send_option_ccd'] == $_send_option_ccd[0]) {
 
             }

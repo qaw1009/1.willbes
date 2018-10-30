@@ -245,6 +245,7 @@ class Event extends \app\controllers\FrontController
     public function registerStore()
     {
         $rules = [
+            ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'register_chk[]', 'label' => '특강', 'rules' => 'trim|required|integer'],
             ['field' => 'register_name', 'label' => '이름', 'rules' => 'trim|required|max_length[20]'],
             ['field' => 'register_tel', 'label' => '휴대폰번호', 'rules' => 'trim|required|integer|max_length[11]'],
@@ -255,7 +256,7 @@ class Event extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false));
+        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false), $this->_site_code);
         $this->json_result($result, '신청되었습니다.', $result);
     }
 

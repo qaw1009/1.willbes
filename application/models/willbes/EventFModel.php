@@ -15,7 +15,9 @@ class EventFModel extends WB_Model
         'vw_board' => 'vw_board',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
-        'sys_code' => 'lms_sys_code'
+        'sys_code' => 'lms_sys_code',
+        'crm_send' => 'lms_crm_send',
+        'crm_send_r_receive_sms' => 'lms_crm_send_r_receive_sms',
     ];
     public $_request_type = [
         '1' => '설명회',
@@ -41,7 +43,8 @@ class EventFModel extends WB_Model
     public $_ccd = [
         'option' => [
             'regist_list' => '660001',
-            'comment_list' => '660002'
+            'comment_list' => '660002',
+            'send_sms' => '660003'
         ]
     ];
 
@@ -108,6 +111,7 @@ class EventFModel extends WB_Model
             A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
+            A.SendTel, A.SmsContent,
             G.SiteName, J.CcdName AS CampusName,
             K.FileFullPath, K.FileName,
             L.FileFullPath AS UploadFileFullPath, L.FileName AS UploadFileName, L.FileRealName as UploadFileRealName,
@@ -192,12 +196,27 @@ class EventFModel extends WB_Model
     /**
      * 특강 신청자 등록
      * @param array $inputData
+     * @param $site_code
      * @return array|bool
      */
-    public function addEventRegisterMember($inputData = [])
+    public function addEventRegisterMember($inputData = [], $site_code)
     {
         $this->_conn->trans_begin();
         try {
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => element('event_idx', $inputData),
+                    'A.IsStatus' => 'Y'
+                ],
+                'GTE' => [
+                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]
+            ];
+            $event_data = $this->findEvent($arr_condition);
+            if (count($event_data) < 1) {
+                throw new \Exception('조회된 이벤트 정보가 없습니다.');
+            }
+
             $arr_condition = [
                 'EQ' => ['A.IsStatus' => 'Y'],
                 'IN' => ['A.ErIdx' => $inputData['register_chk']]
@@ -271,6 +290,12 @@ class EventFModel extends WB_Model
                 if ($this->_addEventRegisterMember($input_register_data) !== true) {
                     throw new \Exception('특강 신청에 등록 실패했습니다.');
                 }
+            }
+
+            //SMS 발송
+            $arr_event_option = array_flip(explode(',', $event_data['OptionCcds']));
+            if (empty($arr_event_option) === false && array_key_exists($this->_ccd['option']['send_sms'], $arr_event_option) === true) {
+                $this->_sendSms($event_data, $inputData, $site_code);
             }
 
             $this->_conn->trans_commit();
@@ -471,5 +496,48 @@ class EventFModel extends WB_Model
         $query = $query->row_array();
 
         return $query;
+    }
+
+    private function _sendSms($data, $send_data, $site_code)
+    {
+        try {
+            $inputData = [
+                'SendGroupTypeCcd' => '641001',
+                'SiteCode' => $site_code,
+                'SendPatternCcd' => '637002',       //메세지성격
+                'SendTypeCcd' => '638001',          //SMS메세지종류
+                'SendOptionCcd' => '640001',        //메세지 발송옵션
+                'SendStatusCcd' => '639001',        //메세지 발송상태
+                'CsTel' => $data['SendTel'],
+                'Content' => $data['SmsContent'],
+                'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            $this->_conn->set($inputData)->set('SendDatm', 'NOW()', false);
+
+            // 데이터 등록
+            if ($this->_conn->set($inputData)->insert($this->_table['crm_send']) === false) {
+                throw new \Exception('등록에 실패했습니다.');
+            }
+            $send_idx = $this->_conn->insert_id();
+
+            $inputData_sms = [
+                'SendIdx' => $send_idx,
+                'MemIdx' => (empty($this->session->userdata('mem_idx')) ? 0 : $this->session->userdata('mem_idx')),
+                'Receive_Name' => $send_data['register_name'],
+            ];
+            $this->_conn->set($inputData_sms)->set('Receive_PhoneEnc',  'fn_enc("' . $send_data['register_tel'] . '")',false);
+
+            // SMS 개별등록 등록
+            if ($this->_conn->set($inputData_sms)->insert($this->_table['crm_send_r_receive_sms']) === false) {
+                throw new \Exception('세부 발송 등록에 실패했습니다.');
+            }
+
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
     }
 }

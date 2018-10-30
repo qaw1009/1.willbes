@@ -12,53 +12,53 @@
                     <label class="col-md-1 control-label">조건</label>
                     <div class="col-md-11">
                         {!! html_site_select($siteCodeDef, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-5" id="sc_cateD1" name="sc_cateD1">
+                        <select class="form-control mr-5" id="search_cateD1" name="search_cateD1">
                             <option value="">카테고리</option>
                             @foreach($cateD1 as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" @if(isset($_GET['sc_cateD1']) && $_GET['sc_cateD1'] == $row['CateCode']) selected @endif>{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="sc_cateD2" name="sc_cateD2">
+                        <select class="form-control mr-5" id="search_cateD2" name="search_cateD2">
                             <option value="">직렬</option>
                             @foreach($cateD2 as $row)
-                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}" @if(isset($_GET['sc_cateD2']) && $_GET['sc_cateD2'] == $row['CateCode']) selected @endif>{{ $row['CateName'] }}</option>
+                                <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="sc_subject" name="sc_subject">
+                        <select class="form-control mr-5" id="search_subject" name="search_subject">
                             <option value="">과목</option>
                             @foreach($subject as $row)
-                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if(isset($_GET['sc_subject']) && $_GET['sc_subject'] == $row['SubjectIdx']) selected @endif>{{ $row['SubjectName'] }}</option>
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="sc_professor" name="sc_professor">
+                        <select class="form-control mr-5" id="search_professor" name="search_professor">
                             <option value="">교수</option>
                             @foreach($professor as $row)
-                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if(isset($_GET['sc_professor']) && $_GET['sc_professor'] == $row['ProfIdx']) selected @endif>{{ $row['wProfName'] }}</option>
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="sc_year" name="sc_year">
+                        <select class="form-control mr-5" id="search_year" name="search_year">
                             <option value="">연도</option>
                             @for($i=(date('Y')+1); $i>=2005; $i--)
-                                <option value="{{$i}}" @if(isset($_GET['sc_year']) && $_GET['sc_year'] == $i) selected @endif>{{$i}}</option>
+                                <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        <select class="form-control mr-5" id="sc_round" name="sc_round">
+                        <select class="form-control mr-5" id="search_round" name="search_round">
                             <option value="">회차</option>
                             @foreach(range(1, 20) as $i)
-                                <option value="{{$i}}" @if(isset($_GET['sc_round']) && $_GET['sc_round'] == $i) selected @endif>{{$i}}</option>
+                                <option value="{{$i}}">{{$i}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="sc_use" name="sc_use">
+                        <select class="form-control mr-5" id="search_use" name="search_use">
                             <option value="">사용여부</option>
-                            <option value="Y" @if(isset($_GET['sc_use']) && $_GET['sc_use'] == 'Y') selected @endif>사용</option>
-                            <option value="N" @if(isset($_GET['sc_use']) && $_GET['sc_use'] == 'N') selected @endif>미사용</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">통합검색</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="sc_fi" name="sc_fi" value="{{ @$_GET['sc_fi'] }}"> 명칭, 코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭, 코드 검색 가능
                     </div>
                     <div class="col-md-5 text-right">
                         <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
@@ -117,24 +117,22 @@
 
         $(document).ready(function() {
             // 검색 Select 메뉴
-            $search_form.find('#sc_cateD1').chained('#search_site_code');
-            $search_form.find('#sc_cateD2').chained('#sc_cateD1');
-            $search_form.find('#sc_subject').chained('#search_site_code');
-            $search_form.find('#sc_professor').chained('#search_site_code');
+            $search_form.find('#search_cateD1').chained('#search_site_code');
+            $search_form.find('#search_cateD2').chained('#search_cateD1');
+            $search_form.find('#search_subject').chained('#search_site_code');
+            $search_form.find('#search_professor').chained('#search_site_code');
 
             // 검색 초기화
             $('#searchInit, #tabs_site_code > li').on('click', function () {
-                $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
+                $search_form.find('[name^=search_]:not(#search_site_code)').each(function () {
                     $(this).val('');
                 });
-                $search_form.find('#sc_cateD1').trigger('change');
+                $search_form.find('#search_cateD1').trigger('change');
                 if($(event.target).attr('id') == 'searchInit') $datatable.draw();
             });
 
             // DataTables
             $datatable = $list_table.DataTable({
-                stateSave: true,
-                stateDuration: -1,
                 info: true,
                 language: {
                     "info": "[ 총 _MAX_건 ]",
@@ -143,8 +141,7 @@
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
                     { text: '<i class="fa fa-pencil mr-5"></i> 문제등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                        $search_form.find('[name="_csrf_token"]').remove();
-                        location.href = '{{ site_url('/mocktest/regExam/create') }}' + '?' + $search_form.serialize();
+                        location.href = '{{ site_url('/mocktest/regExam/create') }}' + dtParamsToQueryString($datatable);
                     }}
                 ],
                 serverSide: true,
@@ -205,8 +202,7 @@
 
             // 수정으로 이동
             $list_form.on('click', '.act-edit', function () {
-                $search_form.find('[name="_csrf_token"]').remove();
-                var query = '?' + $search_form.serialize();
+                var query = dtParamsToQueryString($datatable);
                 location.href = '{{ site_url('/mocktest/regExam/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
@@ -224,7 +220,7 @@
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/regExam/edit/') }}' + ret.ret_data.dt.idx + '?' + $search_form.serialize());
+                        location.replace('{{ site_url('/mocktest/regExam/edit/') }}' + ret.ret_data.dt.idx + dtParamsToQueryString($datatable));
                     }
                 }, showValidateError, false, 'POST');
             }

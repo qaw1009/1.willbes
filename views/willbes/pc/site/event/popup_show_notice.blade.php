@@ -1,7 +1,3 @@
-{{--@extends('willbes.pc.layouts.master_no_sitdbar')
-
-@section('content')--}}
-{{--<div class="willbes-Layer-Black">--}}
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox700 h520 fix">
     <a class="closeBtn" href="#none" onclick="closeWin('{{$arr_input['ele_id']}}')">
         <img src="{{ img_url('sub/close.png') }}">
@@ -25,12 +21,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{--<tr>
-                    <td class="w-file tx-left pl20" colspan="5">
-                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
-                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
-                    </td>
-                </tr>--}}
                 @if(empty($data['AttachData']) === false)
                     <tr>
                         <td class="w-file tx-left pl20" colspan="5">
@@ -42,7 +32,7 @@
                     </tr>
                 @endif
                 <tr>
-                    <td class="w-txt tx-left" colspan="5" style="height: 230px;">
+                    <td class="w-txt tx-left" colspan="5">
                         {!! $data['Content'] !!}
                     </td>
                 </tr>
@@ -51,6 +41,3 @@
         </div>
     </div>
 </div>
-{{--</div>--}}
-{{--
-@stop--}}

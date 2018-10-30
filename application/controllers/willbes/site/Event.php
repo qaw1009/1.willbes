@@ -370,6 +370,7 @@ class Event extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'A.IsRegister' => 'Y',
+                'A.IsUse' => 'Y',
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_site_code,
                 'A.RequstType' => element('s_request_type', $arr_input),
@@ -433,6 +434,7 @@ class Event extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
+                'A.IsUse' => 'Y',
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_site_code,
                 'A.RequstType' => element('s_request_type', $arr_input),

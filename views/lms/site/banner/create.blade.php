@@ -101,9 +101,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="link_url">링크주소</label>
+                    <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
                     <div class="col-md-10">
-                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
+                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다.">
                     </div>
                 </div>
 
@@ -191,15 +191,6 @@
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="cate_code"]').chained("#site_code");
             $regi_form.find('select[name="banner_disp_idx"]').chained("#cate_code");
-
-            $regi_form.on('ifChanged ifCreated', 'input[name="link_type"]:checked', function() {
-                var $link_url = $regi_form.find('input[name="link_url"]');
-                if($(this).val() === 'layer') {
-                    $link_url.prop('disabled', true);
-                } else {
-                    $link_url.prop('disabled', false);
-                }
-            });
 
             @if($method == 'PUT')
                 $regi_form.find('select[name="cate_code"]').prop('disabled', true);

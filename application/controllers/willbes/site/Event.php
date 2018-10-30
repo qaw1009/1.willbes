@@ -331,6 +331,61 @@ class Event extends \app\controllers\FrontController
     }
 
     /**
+     * 신청 팝업 페이지 [배너호출용]
+     */
+    public function popupRegistCreateByBanner()
+    {
+        $method = 'POST';
+        $arr_input = array_merge($this->_reqG(null));
+
+        $arr_condition = [
+            'EQ'=>[
+                'A.BIdx' => element('banner_idx', $arr_input),
+                'A.IsRegister' => 'Y',
+                'A.IsUse' => 'Y',
+                'A.IsStatus' => 'Y',
+                'A.SiteCode' => $this->_site_code,
+            ],
+            'GTE' => [
+                'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+            ]
+        ];
+
+        $data = $this->eventFModel->findEvent($arr_condition);
+        if (count($data) < 1) {
+            show_alert('데이터 조회에 실패했습니다.', '/', false);
+        }
+
+        //이벤트 신청리스트 조회
+        $arr_condition = [
+            'EQ'=>[
+                'A.ElIdx' => $data['ElIdx'],
+                'A.IsStatus' => 'Y'
+            ]
+        ];
+        $arr_register_data = $this->eventFModel->listEventForRegister($arr_condition);
+        if (count($arr_register_data) != 1 ) {
+            show_alert('잘못된 설정값이 존재합니다. 관리자에게 문의해 주세요.', '/', false);
+        }
+
+        $arr_base['register_list'] = $arr_register_data;
+        $register_create_type = $this->_createRegisterChk(count($arr_register_data), $arr_input, $data, 'ongoing');
+        $arr_base['register_create_type'] = $register_create_type;
+
+        $comment_create_type = '1';
+        if ($this->session->userdata('is_login') === false) {
+            $comment_create_type = '2';
+        }
+        $arr_base['comment_create_type'] = $comment_create_type;
+
+        $this->load->view('site/event/popup_create_regist',[
+            'data' => $data,
+            'arr_base' => $arr_base,
+            'method' => $method
+        ]);
+    }
+
+    /**
      * 이벤트 첨부파일 다운로드
      */
     public function download()

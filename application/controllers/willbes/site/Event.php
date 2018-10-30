@@ -182,7 +182,7 @@ class Event extends \app\controllers\FrontController
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input);
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input);
         $onoff_type = element('pattern', $arr_input);
 
         if (empty($this->_is_pass_site) === true) {

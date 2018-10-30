@@ -12,7 +12,11 @@ $config['lms'] = array(
 
 // 모의고사
 $config['mock'] = array(
-    'sysCode_kind' => 686,     // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)
+    'sysCode_kind' => 686,       // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)
+    'sysCode_applyType' => 690,  // 모의고사 응시형태
+    'sysCode_applyArea1' => 691, // 모의고사 Off 응시지역1
+    'sysCode_applyArea2' => 692, // 모의고사 Off 응시지역2
+    'sysCode_addPoint' => 693,   // 모의고사 가산점 (IsValueUse=Y)
 
     'upload_path_mock' => $config['upload_prefix_dir'] . '/mocktest/', // 통파일 저장경로: ~/mocktest/{idx}/
     'upload_path_mockQ' => '/question/',                               // 개별 문제파일 저장경로 {$uploadPath_mock}/question/

@@ -167,6 +167,7 @@ class PointFModel extends WB_Model
     }
 
     /**
+     * 포인트 사용
      * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
      * @param int $use_point [사용포인트]
      * @param array $input
@@ -215,7 +216,6 @@ class PointFModel extends WB_Model
             'site_code' => $site_code,
             'order_idx' => $order_idx,
             'order_prod_idx' => $order_prod_idx,
-            'point_status_type' => 'save',
             'reason_type' => 'paid',
             'valid_days' => '365'   // 유효기간 1년
         ];
@@ -224,7 +224,7 @@ class PointFModel extends WB_Model
     }
 
     /**
-     * 포인트 적립 저장
+     * 포인트 적립
      * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
      * @param int $save_point [적립포인트]
      * @param array $input
@@ -242,7 +242,7 @@ class PointFModel extends WB_Model
                 'SiteCode' => element('site_code', $input),
                 'OrderIdx' => element('order_idx', $input, 0),
                 'OrderProdIdx' => element('order_prod_idx', $input, 0),
-                'PointStatusCcd' => $this->_point_status_ccd[element('point_status_type', $input)],
+                'PointStatusCcd' => $this->_point_status_ccd['save'],
                 'SavePoint' => $save_point,
                 'RemainPoint' => $save_point,
                 'ReasonCcd' => $this->_point_save_reason_ccd[element('reason_type', $input)],

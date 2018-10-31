@@ -83,14 +83,8 @@ class OrderModel extends BaseOrderModel
 
             // 주문상품 조회
             $arr_condition = [
-                'EQ' => [
-                    'O.OrderIdx' => $order_idx,
-                    'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']
-                ],
-                'IN' => [
-                    'OP.OrderProdIdx' => array_keys($order_prod_param),
-                    'O.SiteCode' => get_auth_site_codes()
-                ]
+                'EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']],
+                'IN' => ['OP.OrderProdIdx' => array_keys($order_prod_param), 'O.SiteCode' => get_auth_site_codes()]
             ];
 
             $order_prod_data = $this->orderListModel->listAllOrder(false, $arr_condition);
@@ -100,7 +94,7 @@ class OrderModel extends BaseOrderModel
 
             // 환불요청된 주문상품식별자의 개수와 조회된 주문상품 개수가 다를 경우 에러 리턴
             if (count($order_prod_data) != count(array_keys($order_prod_param))) {
-                throw new \Exception('환불요청된 주문상품 중에서 이미 처리된 데이터가 있습니다.', _HTTP_NOT_FOUND);
+                throw new \Exception('환불요청된 주문상품 중에서 이미 처리된 상품이 있습니다.', _HTTP_NOT_FOUND);
             }
 
             // 환불신청 데이터 저장
@@ -123,7 +117,6 @@ class OrderModel extends BaseOrderModel
 
             $refund_req_idx = $this->_conn->insert_id();    // 환불요청식별자
 
-            // 환불상품 데이터 저장
             foreach ($order_prod_data as $row) {
                 $card_refund_price = array_get($order_prod_param, $row['OrderProdIdx'] . '.card_refund_price', 0);
                 $cash_refund_price = array_get($order_prod_param, $row['OrderProdIdx'] . '.cash_refund_price', 0);
@@ -136,6 +129,72 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception('환불요청 금액이 올바르지 않습니다.');
                 }
 
+                // 쿠폰 복구
+                if ($is_coupon_refund == 'Y' && $row['IsUseCoupon'] == 'Y') {
+                    // 사용자 쿠폰 발급 모델 로드
+                    $this->load->loadModels(['service/couponIssue']);
+
+                    // 사용자 쿠폰 조회
+                    $coupon_data = $this->couponIssueModel->findCouponDetailByCdIdx($row['UserCouponIdx'], 'CouponIdx');
+
+                    // 사용자 쿠폰 등록
+                    $data = [
+                        'coupon_idx' => $coupon_data['CouponIdx'], 'mem_idx' => [$row['MemIdx']], 'issue_type' => 'refund'
+                    ];
+
+                    $is_add_coupon = $this->couponIssueModel->addCouponDetail($data);
+                    if ($is_add_coupon !== true) {
+                        throw new \Exception($is_add_coupon['ret_msg']);
+                    }
+
+                    // 발급된 사용자 쿠폰 식별자 조회
+                    $reco_coupon_idx = array_get($this->couponIssueModel->listCouponDetail('CdIdx'
+                        , ['EQ' => ['CouponIdx' => $coupon_data['CouponIdx'], 'MemIdx' => $row['MemIdx'], 'IssueTypeCcd' => $this->couponIssueModel->_issue_type_ccd['refund']]]
+                        , 1, 0, ['CdIdx' => 'desc']
+                    ), '0.CdIdx');
+                }
+                
+                // 사용포인트 복구 or 적립포인트 회수
+                if (($is_point_refund == 'Y' && $row['UsePoint'] > 0) || $row['SavePoint'] > 0) {
+                    // 포인트 모델 로드
+                    $this->load->loadModels(['service/point']);
+
+                    // 포인트 구분
+                    $point_type = $row['ProdTypeCcd'] == $this->_prod_type_ccd['book'] ? 'book' : 'lecture';
+
+                    // 사용포인트 복구
+                    if ($is_point_refund == 'Y' && $row['UsePoint'] > 0) {
+                        // 포인트 적립
+                        $data = [
+                            'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'], 'reason_type' => 'refund', 'valid_days' => 3
+                        ];
+
+                        $is_add_point = $this->pointModel->addSavePoint($point_type, $row['UsePoint'], $row['MemIdx'], $data);
+                        if ($is_add_point !== true) {
+                            throw new \Exception($is_add_point);
+                        }
+
+                        // 적립된 포인트 식별자 조회
+                        $reco_point_idx = array_get($this->pointModel->listSavePoint('PointIdx'
+                            , ['EQ' => ['MemIdx' => $row['MemIdx'], 'OrderIdx' => $order_idx, 'OrderProdIdx' => $row['OrderProdIdx'], 'ReasonCcd' => $this->pointModel->_point_save_reason_ccd['refund']]]
+                            , 1, 0, ['PointIdx' => 'desc']
+                        ), '0.PointIdx');
+                    }
+                    
+                    // 적립포인트 회수
+                    if ($row['SavePoint'] > 0) {
+                        $data = [
+                            'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'], 'reason_type' => 'refund'
+                        ];
+
+                        $is_retire_point = $this->pointModel->addUsePoint($point_type, $row['UsePoint'], $row['MemIdx'], $data, true);
+                        if ($is_retire_point !== true) {
+                            throw new \Exception($is_retire_point);
+                        }
+                    }
+                }
+
+                // 환불상품 데이터 저장
                 $data = [
                     'RefundReqIdx' => $refund_req_idx,
                     'OrderIdx' => $order_idx,
@@ -160,14 +219,13 @@ class OrderModel extends BaseOrderModel
 
                 // 주문상품 결제상태 변경 (환불완료)
                 $data = [
-                    'PayStatusCcd' => $this->_pay_status_ccd['refund'],
-                    'UpdAdminIdx' => $sess_admin_idx
+                    'PayStatusCcd' => $this->_pay_status_ccd['refund'], 'UpdAdminIdx' => $sess_admin_idx
                 ];
 
-                $is_order_prod_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
+                $is_pay_status_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
                     ->where('OrderProdIdx', $row['OrderProdIdx'])->where('OrderIdx', $order_idx)->where('PayStatusCcd', $this->_pay_status_ccd['paid'])
                     ->update($this->_table['order_product']);
-                if ($is_order_prod_update === false) {
+                if ($is_pay_status_update === false) {
                     throw new \Exception('주문상품 결제상태 수정에 실패했습니다.');
                 }
             }

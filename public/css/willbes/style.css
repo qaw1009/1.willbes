@@ -4651,21 +4651,37 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 
 /* counsel Step : 02. 사전정보입력 */
-table.counselTable .w-info {
-    line-height: 25px !important;
-}
 table.counselTable .w-selec-Area input[type="checkbox"] {
     float: left;
+}
+table.counselTable .w-info {
+    line-height: 25px !important;
 }
 table.counselTable .w-info label {
     margin-top: 0 !important;
 }
-
-
-
-
-
-
+table.counselTable .w-info .ipttitle {
+    width: 120px;
+    border: none;
+}
+table.counselTable .w-info .iptsbj {
+    width: 90px;
+    border: none;
+    border-bottom: 1px dashed #707070;
+}
+table.counselTable .w-info .iptgrade,
+table.counselTable .w-info .iptallgrade {
+    width: 30px;
+    text-align: center;
+    padding: 0;
+    border: none;
+}
+table.counselTable .w-info input[type="text"] {
+    outline: none;    
+}
+table.counselTable .w-info .Detail-gradeBox {
+    margin-bottom: 10px;
+}
 
 /* calendarTable */
 .calendarTable {

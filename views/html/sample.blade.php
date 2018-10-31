@@ -67,7 +67,11 @@
 
     <a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/counsel3_2') }}" target="_blank">상담실 > 심층상담예약 > 사전정보입력 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/counsel3_3') }}" target="_blank">상담실 > 심층상담예약 > 상담예약확인 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니 page 이동</a><br/><br/>
 

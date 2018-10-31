@@ -124,7 +124,7 @@
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
-                                    <td>{{ $order_prod_row['IsUseCoupon'] }} {{ $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' }}</td>
+                                    <td>{{ $order_prod_row['IsUseCoupon'] }} {!! $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' !!}</td>
                                     <td>{{ $order_prod_row['DiscRate'] }}</td>
                                     <td>0</td>
                                     <td></td>
@@ -139,8 +139,8 @@
                             <td colspan="12" class="text-center bg-info">
                                 <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
                                     (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
-                                    <span class="red pl-20">[총 환불금액] 0</span>
-                                    = [남은금액] {{ number_format($data['order']['tRealPayPrice'] - 0) }}</strong>
+                                    <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>
+                                    = [남은금액] {{ number_format($data['order']['tRemainPrice']) }}</strong>
                             </td>
                         </tr>
                         </tfoot>
@@ -148,59 +148,221 @@
                 </div>
             </div>
             <div class="ln_solid mt-5"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4><strong>· 환불처리정보</strong></h4>
+            @if($_is_refund_proc === true)
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong>· 환불처리하기</strong></h4>
+                    </div>
+                    <div class="col-md-12">
+                        <form class="form-horizontal form-label-left" id="refund_proc_form" name="refund_proc_form" method="POST" onsubmit="return false;" novalidate>
+                            <input type="hidden" name="order_idx" value="{{ $idx }}"/>
+
+                            <table id="list_refund_proc_table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th rowspan="2" class="pb-20">선택</th>
+                                    <th rowspan="2" class="pb-20">상품구분</th>
+                                    <th rowspan="2" class="pb-20">상품명</th>
+                                    <th colspan="2">결제금액</th>
+                                    <th rowspan="2" class="pb-20">결제상태</th>
+                                    <th colspan="7">환불정보</th>
+                                </tr>
+                                <tr>
+                                    <th>카드</th>
+                                    <th>현금</th>
+                                    <th>환불산출금액확인</th>
+                                    <th>카드</th>
+                                    <th>현금</th>
+                                    <th>쿠폰복구</th>
+                                    <th>사용포인트복구</th>
+                                    <th>환불자</th>
+                                    <th>환불완료일</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($data['order_prod'] as $order_prod_row)
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="order_prod_idx[]" class="flat" value="{{ $order_prod_row['OrderProdIdx'] }}" data-real-pay-price="{{ $order_prod_row['RealPayPrice'] }}" @if($order_prod_row['PayStatusCcd'] != $_pay_status_ccd['paid']) disabled="disabled" @endif>
+                                        </td>
+                                        <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
+                                        <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
+                                        <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
+                                        <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
+                                        <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
+                                        @if($order_prod_row['PayStatusCcd'] == $_pay_status_ccd['paid'])
+                                            {{-- 결제완료 --}}
+                                            <td>
+                                                @if($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['on_lecture'])
+                                                    <button name="btn_refund_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">환불산출금액확인</button>
+                                                @elseif($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['book'])
+                                                    <button name="btn_delivery_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">반송확인</button>
+                                                    <input type="hidden" id="is_delivery_check_{{ $order_prod_row['OrderProdIdx'] }}" name="is_delivery_check[]" value="N"/>
+                                                    <span id="txt_delivery_check_{{ $order_prod_row['OrderProdIdx'] }}" class="red hide">확인완료</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" style="width: 140px;"/>
+                                            </td>
+                                            <td>
+                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" style="width: 140px;"/>
+                                            </td>
+                                            <td>
+                                                @if($order_prod_row['IsUseCoupon'] == 'Y')
+                                                    <input type="checkbox" id="is_coupon_refund_{{ $order_prod_row['OrderProdIdx'] }}" name="is_coupon_refund[]" class="flat" value="Y">
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($order_prod_row['UsePoint'] > 0)
+                                                    <input type="checkbox" id="is_point_refund_{{ $order_prod_row['OrderProdIdx'] }}" name="is_point_refund[]" class="flat" value="Y">
+                                                @endif
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        @else
+                                            {{-- 환불완료 --}}
+                                            <td></td>
+                                            <td>{{ $order_prod_row['CardRefundPrice'] }}</td>
+                                            <td>{{ $order_prod_row['CashRefundPrice'] }}</td>
+                                            <td>{!! $order_prod_row['IsCouponRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoCouponIdx'] . ')' : '' !!}</td>
+                                            <td>{!! $order_prod_row['IsPointRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoPointIdx'] . ')' : '' !!}</td>
+                                            <td>{{ $order_prod_row['RefundAdminName'] }}</td>
+                                            <td>{{ $order_prod_row['RefundDatm'] }}</td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="13" class="text-center bg-info form-inline">
+                                        <strong>총 환불금액 &nbsp;
+                                            [카드] <input name="total_card_refund_price" class="form-control input-sm ml-5 mr-5" title="총카드환불금액" value="0" readonly="readonly">
+                                            + [현금] <input name="total_cash_refund_price" class="form-control input-sm ml-5 mr-5" title="총현금환불금액" value="0" readonly="readonly">
+                                            = <input name="total_refund_price" class="form-control input-sm ml-5 mr-50" title="총환불금액" value="0" readonly="readonly">
+                                            ※ 해당 금액으로 환불처리됩니다.
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="13" class="text-center form-inline">
+                                        <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
+                                            (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
+                                            <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>
+                                            = [남은금액] {{ number_format($data['order']['tRemainPrice']) }}</strong>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                            <div class="text-center">
+                                <button type="submit" name="btn_refund_proc" class="btn btn-success">환불처리하기</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <table id="list_order_detail_table" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th rowspan="2" class="pb-20">상품구분</th>
-                            <th rowspan="2" class="pb-20">상품명</th>
-                            <th colspan="2">결제금액</th>
-                            <th rowspan="2" class="pb-20">결제상태</th>
-                            <th colspan="5">환불정보</th>
-                        </tr>
-                        <tr>
-                            <th>카드</th>
-                            <th>현금</th>
-                            <th>카드</th>
-                            <th>현금</th>
-                            <th>쿠폰복구</th>
-                            <th>환불자</th>
-                            <th>환불완료일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($data['order_prod'] as $order_prod_row)
+                <div class="ln_solid mt-5"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong>· 환불내역</strong></h4>
+                    </div>
+                    <div class="col-md-12">
+                        <table id="list_refund_list_table" class="table table-striped table-bordered">
+                            <thead>
                             <tr>
-                                <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
-                                <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
-                                <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
-                                <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
-                                <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th>NO</th>
+                                <th>환불일</th>
+                                <th>환불상품</th>
+                                <th>환불금액</th>
+                                <th>결제상태</th>
+                                <th>환불사유</th>
+                                <th>환불처리자</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="10" class="text-center bg-info">
-                                <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
-                                    (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
-                                    <span class="red pl-20">[총 환불금액] 0</span>
-                                    = [남은금액] {{ number_format($data['order']['tRealPayPrice'] - 0) }}</strong>
-                            </td>
-                        </tr>
-                        </tfoot>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2018-00-00 00:00:00</td>
+                                    <td>
+                                        <div class="blue inline-block">[상품구분]</div> 상품명
+                                    </td>
+                                    <td>
+                                        {{ number_format(1000) }}
+                                        (카드 {{ number_format(500) }} + 현금 {{ number_format(500) }})
+                                    </td>
+                                    <td>환불완료 (지출결의)</td>
+                                    <td>환불사유</td>
+                                    <td>관리자명</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="7" class="text-center bg-info">
+                                    <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
+                                        (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
+                                        <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>
+                                        = [남은금액] {{ number_format($data['order']['tRemainPrice']) }}</strong>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong>· 환불처리정보</strong></h4>
+                    </div>
+                    <div class="col-md-12">
+                        <table id="list_refund_list_table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th rowspan="2" class="pb-20">상품구분</th>
+                                <th rowspan="2" class="pb-20">상품명</th>
+                                <th colspan="2">결제금액</th>
+                                <th rowspan="2" class="pb-20">결제상태</th>
+                                <th colspan="6">환불정보</th>
+                            </tr>
+                            <tr>
+                                <th>카드</th>
+                                <th>현금</th>
+                                <th>카드</th>
+                                <th>현금</th>
+                                <th>쿠폰복구</th>
+                                <th>사용포인트복구</th>
+                                <th>환불자</th>
+                                <th>환불완료일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($data['order_prod'] as $order_prod_row)
+                                <tr>
+                                    <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
+                                    <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
+                                    <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
+                                    <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
+                                    <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
+                                    <td>{{ number_format($order_prod_row['CardRefundPrice']) }}</td>
+                                    <td>{{ number_format($order_prod_row['CashRefundPrice']) }}</td>
+                                    <td>{!! $order_prod_row['IsCouponRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoCouponIdx'] . ')' : '' !!}</td>
+                                    <td>{!! $order_prod_row['IsPointRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoPointIdx'] . ')' : '' !!}</td>
+                                    <td>{{ $order_prod_row['RefundAdminName'] }}</td>
+                                    <td>{{ $order_prod_row['RefundDatm'] }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="11" class="text-center bg-info">
+                                    <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
+                                        (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
+                                        <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>
+                                        = [남은금액] {{ number_format($data['order']['tRemainPrice']) }}</strong>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            @endif
             <div class="ln_solid mt-5"></div>
             <div class="row">
                 <div class="col-md-6">
@@ -309,6 +471,7 @@
     </div>
     <script type="text/javascript">
         var $datatable;
+        var $refund_proc_form = $('#refund_proc_form');
         var $regi_memo_form = $('#regi_memo_form');
         var $list_memo_table = $('#list_memo_table');
 
@@ -372,6 +535,104 @@
             // 매출전표 버튼 클릭
             $('button[name="btn_receipt_print"]').on('click', function() {
                 popupOpen('{!! $data['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 430, 700);
+            });
+
+            // 반송확인 버튼 클릭
+            $refund_proc_form.on('click', 'button[name="btn_delivery_check"]', function() {
+                var order_prod_idx = $(this).data('order-prod-idx');
+
+                if (confirm('환불할 교재가 반송되었습니까?')) {
+                    $refund_proc_form.find('#is_delivery_check_' + order_prod_idx).val('Y');
+                    $refund_proc_form.find('#txt_delivery_check_' + order_prod_idx).removeClass('hide');
+                }
+            });
+
+            // 환불산출금액확인 버튼 클릭
+            $refund_proc_form.on('click', 'button[name="btn_refund_check"]', function() {
+                var order_idx = $refund_proc_form.find('input[name="order_idx"]').val();
+                var order_prod_idx = $(this).data('order-prod-idx');
+
+                $('button[name="btn_refund_check"]').setLayer({
+                    'url' : '{{ site_url('/pay/refundProc/calc') }}',
+                    'width' : 900,
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : order_idx, 'required' : true },
+                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : order_prod_idx, 'required' : true }
+                    ]
+                });
+            });
+
+            // 환불처리하기 버튼 클릭
+            $refund_proc_form.on('click', 'button[name="btn_refund_proc"]', function() {
+                var $params = {};
+                var order_prod_idx = '', real_pay_price = 0, card_refund_price = 0, cash_refund_price = 0, is_coupon_refund = '', is_point_refund = '', is_delivery_check = '', is_check = true;
+                var $order_prod_idx = $refund_proc_form.find('input[name="order_prod_idx[]"]:checked');
+                var order_idx = $refund_proc_form.find('input[name="order_idx"]').val();
+
+                if ($order_prod_idx.length < 1) {
+                    alert('환불할 상품을 선택해 주세요.');
+                    return;
+                }
+
+                $order_prod_idx.each(function() {
+                    order_prod_idx = $(this).val();
+                    real_pay_price = parseInt($(this).data('real-pay-price'));
+                    card_refund_price = parseInt($refund_proc_form.find('#card_refund_price_' + order_prod_idx).val()) || 0;
+                    cash_refund_price = parseInt($refund_proc_form.find('#cash_refund_price_' + order_prod_idx).val()) || 0;
+                    is_coupon_refund = $refund_proc_form.find('#is_coupon_refund_' + order_prod_idx + ':checked').val() || 'N';
+                    is_point_refund = $refund_proc_form.find('#is_point_refund_' + order_prod_idx + ':checked').val() || 'N';
+                    is_delivery_check = $refund_proc_form.find('#is_delivery_check_' + order_prod_idx).val();
+
+                    if (real_pay_price < (card_refund_price + cash_refund_price)) {
+                        alert('환불금액이 결제금액보다 큽니다.');
+                        is_check = false;
+                        return false;
+                    }
+
+                    if (typeof is_delivery_check !== 'undefined' && is_delivery_check === 'N') {
+                        alert('먼저 반송확인 버튼을 클릭해 주세요.');
+                        is_check = false;
+                        return false;
+                    }
+
+                    $params[order_prod_idx] = {
+                        'card_refund_price' : card_refund_price,
+                        'cash_refund_price' : cash_refund_price,
+                        'is_coupon_refund' : is_coupon_refund,
+                        'is_point_refund' : is_point_refund
+                    };
+                });
+
+                if (is_check === false) {
+                    return;
+                }
+
+                $('button[name="btn_refund_proc"]').setLayer({
+                    'url' : '{{ site_url('/pay/refundProc/create') }}',
+                    'width' : 900,
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : order_idx, 'required' : true },
+                        { 'id' : 'params', 'name' : '주문상품정보', 'value' : JSON.stringify($params), 'required' : true }
+                    ]
+                });
+            });
+
+            // 환불금액 계산 및 표기
+            $refund_proc_form.on('ifChanged keyup input', 'input[name="order_prod_idx[]"], input[name="card_refund_price[]"], input[name="cash_refund_price[]"]', function() {
+                var $order_prod_idx = $refund_proc_form.find('input[name="order_prod_idx[]"]:checked');
+                var order_prod_idx = '', total_card_refund_price = 0, total_cash_refund_price = 0;
+
+                $order_prod_idx.each(function() {
+                    order_prod_idx = $(this).val();
+                    total_card_refund_price += parseInt($refund_proc_form.find('#card_refund_price_' + order_prod_idx).val()) || 0;
+                    total_cash_refund_price += parseInt($refund_proc_form.find('#cash_refund_price_' + order_prod_idx).val()) || 0;
+                });
+
+                $refund_proc_form.find('input[name="total_card_refund_price"]').val(total_card_refund_price);
+                $refund_proc_form.find('input[name="total_cash_refund_price"]').val(total_cash_refund_price);
+                $refund_proc_form.find('input[name="total_refund_price"]').val(total_card_refund_price + total_cash_refund_price);
             });
 
             // 목록 이동

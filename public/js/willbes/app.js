@@ -249,3 +249,16 @@ $(function() {
         $(this).addClass('on');
     });
 });
+
+/**
+ * 바로가기 이벤트 팝업 [사용처 : 배너]
+ * @param url
+ */
+function event_layer_popup(url) {
+    var ele_id = 'APPLYPASS';
+    var banner_idx = $(this).data('banner-idx');
+    var data = {'ele_id' : ele_id, 'banner_idx' : banner_idx};
+    sendAjax(url, data, function(ret) {
+        $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+    }, null, false, 'GET', 'html');
+};

@@ -8,7 +8,7 @@
         <a class="closeBtn" href="#none" onclick="closeWin('APPLYPASS')">
             <img src="{{ img_url('sub/close.png') }}">
         </a>
-        <div class="Layer-Tit tx-dark-black NG">{{$data['EventName']}}</div>
+        <div class="Layer-Tit tx-dark-black NG">{{$data['PopupTitle']}}</div>
 
         <div class="lecMoreWrap">
             <div class="PASSZONE-List widthAutoFull userInfoBox">

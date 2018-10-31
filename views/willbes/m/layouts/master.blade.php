@@ -1,19 +1,19 @@
-@include('willbes.layouts.pc.header')
+@include('willbes.m.layouts.header')
 
 <body>
     <!-- Gnb -->
-    @include('willbes.layouts.pc.gnb')
+    @include('willbes.m.layouts.gnb')
 
     <!-- topnav -->
-    @include('willbes.layouts.pc.topnav')
+    @include('willbes.m.layouts.topnav')
     
         <!-- content -->
         @yield('content')
 
     <!-- footer -->
-    @include('willbes.layouts.pc.footer')
+    @include('willbes.m.layouts.footer')
 
     <!-- scripts -->
-    @include('willbes.layouts.pc.footer_script')
+    @include('willbes.m.layouts.footer_script')
 </body>
 </html>

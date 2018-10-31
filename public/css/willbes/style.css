@@ -9279,6 +9279,73 @@ table.acadlecInfoPackageTable tr.Top td {
     width: 71%;
     height: 100%;
 }
+.videoPopup .view .viewList {
+    height: 45px;
+    padding: 0 15px;
+}
+.videoPopup .view .viewList .Tit {
+    font-size: 16px; 
+    color: #fff;
+    line-height: 45px;
+}
+.videoPopup .view .viewList span {
+    vertical-align: baseline;
+}
+.videoPopup .view  .viewList .btnList {
+    float: right;
+}
+.videoPopup .view  .viewList .btnList li {
+    display: inline-block;
+}
+.videoPopup .view  .viewList .btnList a.iconBtn {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    text-indent: -9999px;
+    margin: 9px 3px;
+}
+.videoPopup .view  .viewList .btnList .btnUP {
+    background: url("../../img/willbes/player/icon_up.png") no-repeat 0 0;
+}
+.videoPopup .view  .viewList .btnList .btnUP.on {
+    background: url("../../img/willbes/player/icon_up_on.png") no-repeat 0 0;
+}
+.videoPopup .view  .viewList .btnList .btnBookMark {
+    background: url("../../img/willbes/player/icon_bookmark.png") no-repeat 0 0;
+}
+.videoPopup .view  .viewList .btnList .btnBookMark.on {
+    background: url("../../img/willbes/player/icon_bookmark_on.png") no-repeat 0 0;
+}
+.videoPopup .view  .viewList .btnList .btnSetting {
+    background: url("../../img/willbes/player/icon_setting.png") no-repeat 0 0;
+}
+.videoPopup .view .viewList .btnFAQ {
+    float: right;
+    display: inline-block;
+    width: 80px;
+    height: 27px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    line-height: 25px;
+    border: 1px solid #212121;
+    margin: 9px 5px;
+}
+.videoPopup .view .viewList .btnFAQ a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.videoPopup .view .settingPOP {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.videoPopup .view .settingPOP a {
+    outline: none;
+    border: none;
+}
 
 /* Video Player : vodTabs */
 .vodTabs {

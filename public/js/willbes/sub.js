@@ -212,6 +212,20 @@ $(function() {
     });
 });
 
+// 동영상 플레이어 버튼 Script
+$(function() {
+    $('.videoPopup .btnList a.iconBtn').click(function() {
+        var $btn_icon = $(this).parents('li').find('a.iconBtn');
+
+        if ($(this).hasClass('on')) {
+            $btn_icon.removeClass('on');
+        } else {
+            $btn_icon.addClass('on');
+        }   
+    });
+});
+
+
 // star rating Script //
 $(document).ready(function(){
 

@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="willbes-Leclist c_both mt30">
+        <div class="willbes-Leclist c_both mt30 pb60">
             <!-- View -->
             <div class="willbes-Leclist c_both">
                 <div class="LecViewTable">

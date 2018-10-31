@@ -1,4 +1,4 @@
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox420 h350 fix">
+<div class="willbes-Layer-PassBox willbes-Layer-PassBox420 h470 fix">
     <form id="epopup_regi_form_register" name="epopup_regi_form_register" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
@@ -35,11 +35,11 @@
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="event_idx" value="{{$data['ElIdx']}}"/>
-        <div class="LeclistTable p_re">
+        <div class="LeclistTable p_re pt20">
             <table cellspacing="0" cellpadding="0" class="listTable evtTable upper-gray upper-black bdb-gray tx-gray">
                 <colgroup>
-                    <col style="width: 50px;">
-                    <col style="width: 30px;">
+                    <col style="width: 300px;">
+                    <col style="width: 70px;">
                 </colgroup>
                 <thead>
                 <tr>

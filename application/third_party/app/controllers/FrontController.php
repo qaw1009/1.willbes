@@ -13,12 +13,16 @@ abstract class FrontController extends BaseController
     protected $_site_code = null;
     // 프런트 사이트 아이디
     protected $_site_id = null;
+    // 프런트 사이트 키
+    protected $_site_key = null;
     // 프런트 사이트 카테고리 코드
     protected $_cate_code = null;
     // 학원(오프라인) 사이트 여부
     protected $_is_pass_site = false;
     // 학원(오프라인) 사이트 구분값
     protected $_pass_site_val = '';
+    // 모바일 사이트 여부
+    protected $_is_mobile = false;
 
     public function __construct()
     {
@@ -39,8 +43,13 @@ abstract class FrontController extends BaseController
         // 멤버 변수 설정
         $this->_setSiteVars();
 
-        // 사이트 환경설정
-        $this->_setSiteConfig();
+        if ($this->_is_mobile === true) {
+            // 모바일 사이트 환경설정
+            $this->_setMobileSiteConfig();
+        } else {
+            // 프런트 사이트 환경설정
+            $this->_setFrontSiteConfig();
+        }
         
         // 접속별 고유 세션아이디 생성
         $this->_setMakeSessionId();
@@ -85,24 +94,29 @@ abstract class FrontController extends BaseController
             $mobile_site_prefix = config_item('app_mobile_site_prefix');    // 모바일 사이트 구분값
             $pass_site_prefix = config_item('app_pass_site_prefix');    // 학원 사이트 구분값
 
+            // 모바일 사이트 여부
+            if (strtolower($this->uri->segment(1)) == $mobile_site_prefix) {
+                $this->_is_mobile = true;
+            }
+
             // 학원 사이트일 경우
             if ((strtolower($this->uri->segment(1)) == $pass_site_prefix)
-                || (strtolower($this->uri->segment(1)) == $mobile_site_prefix && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {
+                || ($this->_is_mobile === true && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {
                 $this->_site_id .= $pass_site_prefix;
                 $this->_is_pass_site = true;
                 $this->_pass_site_val = '_' . $pass_site_prefix;
             }
         }
+
+        // 사이트 키 (사이트 캐쉬 키 값)
+        $this->_site_key = SUB_DOMAIN . '>' . $this->_site_id;
     }
 
     /**
-     * 사이트 환경설정
+     * 프런트 사이트 환경설정
      */
-    private function _setSiteConfig()
+    private function _setFrontSiteConfig()
     {
-        // 사이트 정보 캐쉬 key
-        $site_key = SUB_DOMAIN . '>' . $this->_site_id;
-
         // URL 세그먼트 배열 (key => value 형태)
         $uri_segments = $this->uri->ruri_to_assoc();
 
@@ -110,7 +124,7 @@ abstract class FrontController extends BaseController
         $all_site_cache = $this->getCacheItem('site');
 
         // 현재 사이트 정보 캐쉬
-        $site_cache = element($site_key, $all_site_cache, []);
+        $site_cache = element($this->_site_key, $all_site_cache, []);
 
         // 현재 사이트 코드
         $this->_site_code = element('SiteCode', $site_cache);
@@ -224,12 +238,41 @@ abstract class FrontController extends BaseController
 
         $configs = array_merge(
             $site_cache,
-            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1)],
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1), 'IsMobile' => $this->_is_mobile],
             config_item(SUB_DOMAIN),
             ['GNBMenu' => $front_menus['GNB']],
             ['SiteMenu' => $front_menus[$this->_site_code]],
             ['TabMenu' => $tab_menus]
         );
+        $this->config->set_item(SUB_DOMAIN, $configs);
+    }
+
+    /**
+     * 모바일 사이트 환경설정
+     */
+    private function _setMobileSiteConfig()
+    {
+        // URL 세그먼트 배열 (key => value 형태)
+        $uri_segments = $this->uri->ruri_to_assoc();
+
+        // 전체 사이트 캐쉬
+        $all_site_cache = $this->getCacheItem('site');
+
+        // 현재 사이트 정보 캐쉬
+        $site_cache = element($this->_site_key, $all_site_cache, []);
+
+        // 현재 사이트 코드
+        $this->_site_code = element('SiteCode', $site_cache);
+
+        // 현재 사이트의 카테고리 코드
+        $this->_cate_code = element(config_get('uri_segment_keys.cate'), $uri_segments, '');
+
+        $configs = array_merge(
+            $site_cache,
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1), 'IsMobile' => $this->_is_mobile],
+            config_item(SUB_DOMAIN)
+        );
+        var_dump($configs);
         $this->config->set_item(SUB_DOMAIN, $configs);
     }
 

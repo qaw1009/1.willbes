@@ -7,7 +7,7 @@
 
         <div>무료버젼</div>
         <!-- 무료 Ver -->
-        <div class="videoPopup" style="width: 938px; height: 394px">
+        <div id="videoPopup" class="videoPopup">
             <div class="view p_re">
                 <div class="viewList">
                     <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
@@ -26,7 +26,7 @@
                 </div>
                 video Player
             </div>
-            <div class="vodTabs">
+            <div class="vodTabs p_re">
                 <ul class="tabWrap vodWrap two NGEB">
                     <li><a href="#Info" class="on">강좌정보</a></li>
                     <li><a href="#Sbj">강의목차</a></li>
@@ -155,7 +155,7 @@
 
         <div>유료버젼</div>
         <!-- 유료 Ver -->
-        <div class="videoPopup" style="width: 938px; height: 394px">
+        <div id="videoPopup" class="videoPopup">
             <div class="view">video Player</div>
             <div class="vodTabs p_re">
                 <ul class="tabWrap vodWrap four NGEB">
@@ -355,12 +355,25 @@
             </div>
         </div>
 
+
     </div>
 </div>
 <!-- End Container -->
 <script type="text/javascript">
 	$(function() {
         $(".vodlistBox ul.list li:nth-child(2n)").addClass("nth");
-	});
+    });
+    $(document).ready(function(){ 
+        $('#videoPopup').css('width', $(window).width()); 
+        $('#videoPopup').css('height', $(window).height()); 
+        $(window).resize(function() { 
+            $('#videoPopup').css('width', $(window).width()); 
+            $('#videoPopup').css('height', $(window).height()); 
+
+            $('.vodSbjBox ul.sbj').css('height', $(window).height() - 220); 
+            $('.vodlecBox ul.lec').css('height', $(window).height() - 150); 
+            $('.vodtableBox ul.table').css('height', $(window).height() - 230); 
+        }); 
+    });
 </script>
 @stop

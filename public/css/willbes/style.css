@@ -9403,12 +9403,6 @@ table.acadlecInfoPackageTable tr.Top td {
     text-align: center;
     line-height: 40px;
 }
-.vodTabs .vodBox .tabContent {
-    height: 353px;
-}
-.vodTabs .vodBox .sbjGrid {
-    position: relative;
-}
 
 /* Video Player : vodTabs : w-data */
 .vodTabs .vodBox .w-data {
@@ -9534,14 +9528,16 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .bookmarkBox ul li input {
     float: left;
-    width: 165px;
+    min-width: 165px;
+    width: 70%;
     height: 25px;
 }
 .bookmarkBox ul li button {
-    float: right;
+    float: left;
     width: 64px;
     height: 25px;
     border: 1px solid #121212;
+    margin-left: 2px;
 }
 
 /* Video Player : vodTabs : vodlistBox 공통 */
@@ -9588,14 +9584,7 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /* Video Player : vodTabs : vodSbjBox */
-.vodSbjBox {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 .vodSbjBox ul.sbj {
-    height: 175px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -9611,24 +9600,13 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /* Video Player : vodTabs : vodlecBox */
-.vodlecBox {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 .vodlecBox ul.lec {
-    height: 240px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
 /* Video Player : vodTabs : vodtableBox */
 .vodtableBox {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     border-top: 1px solid #2b2b2b;
 }
 .vodtableBox ul li {
@@ -9666,7 +9644,6 @@ table.acadlecInfoPackageTable tr.Top td {
     padding-left: 17px;
 } 
 .vodtableBox ul.table {
-    height: 165px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -9708,7 +9685,8 @@ table.acadlecInfoPackageTable tr.Top td {
 .faqBox ul li select,
 .faqBox ul li input {
     float: right;
-    width: 180px;
+    min-width: 180px;
+    width: 70%;
     height: 25px;
 }
 .faqBox ul li button {
@@ -9740,6 +9718,7 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .faqBox dl dt input[type="radio"] {
     float: left;
+    min-width: 15px;
     width: 15px;
     height: 15px;
     margin: 9px 5px 0 0;

@@ -10,6 +10,7 @@ class EventFModel extends WB_Model
         'event_comment' => 'lms_event_comment',
         'event_register' => 'lms_event_register',
         'event_member' => 'lms_event_member',
+        'event_read_log' => 'lms_event_read_log',
         'board' => 'lms_board',
         'board_r_category' => 'lms_board_r_category',
         'vw_board' => 'vw_board',
@@ -90,8 +91,9 @@ class EventFModel extends WB_Model
                 GROUP BY B.ElIdx
             ) AS D ON A.ElIdx = D.ElIdx
             LEFT JOIN (
-                SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
+                SELECT ElIdx, COUNT(CIdx) AS CCount
                 FROM {$this->_table['event_comment']}
+                GROUP BY ElIdx
             ) AS H ON H.ElIdx = A.ElIdx
             LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
@@ -457,6 +459,47 @@ class EventFModel extends WB_Model
 
         $query = $this->_conn->query('select ' . $column . $from . $where);
         return $query->row(0)->numrows;
+    }
+
+    /**
+     * 이벤트 조회수 수정 및 로그정보 저장
+     * @param $event_idx
+     * @return array|bool|string
+     */
+    public function modifyEventRead($event_idx)
+    {
+        if(empty($event_idx)) {
+            return '이벤트 번호가 없습니다.';
+        }
+
+        $this->_conn->trans_begin();
+        try{
+            #-----  조회수 업데이트
+            $this->_conn->set('ReadCnt', 'ReadCnt+1',false)->where('ElIdx', $event_idx);
+            if ($this->_conn->update($this->_table['event_lecture']) === false) {
+                throw new \Exception('조회수 수정에 실패했습니다.');
+            }
+
+            #----- 로그 저장
+            $log_data = [
+                'ElIdx' => $event_idx
+                ,'MemIdx' => sess_data('mem_idx')
+                ,'UserAgent' => substr($this->input->user_agent(),0,99)
+                ,'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($log_data)->insert($this->_table['event_read_log']) === false) {
+                throw new \Exception('로그 저장에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        //echo $this->_conn->last_query();
+        return true;
     }
 
     /**

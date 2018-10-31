@@ -88,6 +88,11 @@ class Event extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
 
+        $result = $this->eventFModel->modifyEventRead(element('event_idx', $arr_input));
+        if($result !== true) {
+            show_alert('이벤트 조회시 오류가 발생되었습니다.', '/');
+        }
+
         //학원,온라인 경로 셋팅
         if (empty($this->_is_pass_site) === true) {
             $pass_val = '';

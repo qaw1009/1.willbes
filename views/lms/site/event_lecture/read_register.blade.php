@@ -102,13 +102,13 @@
                         return $datatable_register.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
 
-                {'data' : 'MemName'},
+                {'data' : 'UserName'},
                 {'data' : 'MemId'},
                 {'data' : 'Phone'},
                 {'data' : 'Mail'},
                 {'data' : 'RegDatm'},
                 {'data' : 'RegisterName'},
-                {'data' : 'MemCnt'}
+                {'data' : 'registerCnt'}
             ]
         });
 

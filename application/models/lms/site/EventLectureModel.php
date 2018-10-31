@@ -569,11 +569,11 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.RegDatm,
-            C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail, D.MemCnt
+            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, D.registerCnt
             ';
 
             if ($is_count == 'excel') {
-                $column = 'C.MemName, C.MemId, fn_dec(C.PhoneEnc) AS Phone, fn_dec(C.MailEnc) AS Mail, A.RegDatm, B.Name AS RegisterName, D.MemCnt';
+                $column = 'A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.RegDatm, B.Name AS RegisterName, D.registerCnt';
             }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -583,10 +583,10 @@ class EventLectureModel extends WB_Model
         $from = "
             FROM {$this->_table['event_member']} AS A
             INNER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx
-            INNER JOIN {$this->_table['member']} AS C ON A.MemIdx = C.MemIdx
+            LEFT JOIN {$this->_table['member']} AS C ON A.MemIdx = C.MemIdx
             LEFT JOIN (
-		        SELECT MemIdx, COUNT(MemIdx) AS memCnt FROM {$this->_table['event_member']} GROUP BY MemIdx
-            ) AS D ON A.MemIdx = D.MemIdx
+		        SELECT ErIdx, COUNT(*) AS registerCnt FROM {$this->_table['event_member']} GROUP BY ErIdx
+            ) AS D ON B.ErIdx = D.ErIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

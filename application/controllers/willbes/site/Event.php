@@ -355,6 +355,8 @@ class Event extends \app\controllers\FrontController
         if (count($data) < 1) {
             show_alert('데이터 조회에 실패했습니다.', '/', false);
         }
+        $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
+        $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
 
         //이벤트 신청리스트 조회
         $arr_condition = [
@@ -377,6 +379,8 @@ class Event extends \app\controllers\FrontController
             $comment_create_type = '2';
         }
         $arr_base['comment_create_type'] = $comment_create_type;
+        $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
+        $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
 
         $this->load->view('site/event/popup_create_regist',[
             'data' => $data,
@@ -548,10 +552,11 @@ class Event extends \app\controllers\FrontController
         if ($onoff_type == 'ongoing') {
             switch ($data['TakeType']) {
                 case "1":   //회원
-                    if ($this->session->userdata('is_login') === false) {
+                    if (empty($this->session->userdata('mem_idx')) === true) {
                         //비로그인 상태
                         $return_type = '2';
                     } else {
+                        echo 'bbb';
                         //로그인상태
                         $m_count = $this->eventFModel->getMemberForRegisterCount(element('event_idx', $arr_input), ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]);
                         if ($m_count < $register_count) {
@@ -562,7 +567,7 @@ class Event extends \app\controllers\FrontController
                     }
                     break;
                 case "2":   //회원 + 비회원
-                    if ($this->session->userdata('is_login') === false) {
+                    if (empty($this->session->userdata('mem_idx')) === true) {
                         //비로그인 상태
                         $return_type = '1';
                     } else {

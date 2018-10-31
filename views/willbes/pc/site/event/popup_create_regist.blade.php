@@ -30,6 +30,7 @@
         </div>
     </form>
 
+    @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['banner'], $data['data_comment_use_area']) === true)
     <form id="epopup_regi_form_comment" name="epopup_regi_form_comment" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
@@ -58,6 +59,7 @@
             </table>
         </div>
     </form>
+    @endif
 </div>
 
 <script type="text/javascript">

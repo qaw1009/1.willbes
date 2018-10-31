@@ -62,7 +62,7 @@
                 <th>연락처</th>
                 <th>이메일</th>
                 <th>신청일</th>
-                <th>신청특강/설명회</th>
+                <th class="rowspan">신청특강/설명회</th>
                 <th>총신청수</th>
             </tr>
             </thead>
@@ -80,6 +80,7 @@
     $(document).ready(function() {
         $datatable_register = $list_regitster_table.DataTable({
             serverSide: true,
+            rowsGroup: ['.rowspan'],
             buttons: [
                 { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
                 { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-register-message' },

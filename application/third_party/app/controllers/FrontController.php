@@ -19,8 +19,6 @@ abstract class FrontController extends BaseController
     protected $_cate_code = null;
     // 학원(오프라인) 사이트 여부
     protected $_is_pass_site = false;
-    // 학원(오프라인) 사이트 구분값
-    protected $_pass_site_val = '';
     // 모바일 사이트 여부
     protected $_is_mobile = false;
 
@@ -102,7 +100,6 @@ abstract class FrontController extends BaseController
                 || ($this->_is_mobile === true && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {
                 $this->_site_id .= $pass_site_prefix;
                 $this->_is_pass_site = true;
-                $this->_pass_site_val = '_' . $pass_site_prefix;
             }
         }
 
@@ -236,7 +233,7 @@ abstract class FrontController extends BaseController
 
         $configs = array_merge(
             $site_cache,
-            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1), 'IsMobile' => $this->_is_mobile],
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile],
             config_item(SUB_DOMAIN),
             ['GNBMenu' => $front_menus['GNB']],
             ['SiteMenu' => $front_menus[$this->_site_code]],
@@ -267,7 +264,7 @@ abstract class FrontController extends BaseController
 
         $configs = array_merge(
             $site_cache,
-            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'PassSiteVal' => substr($this->_pass_site_val, 1), 'IsMobile' => $this->_is_mobile],
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile],
             config_item(SUB_DOMAIN)
         );
         $this->config->set_item(SUB_DOMAIN, $configs);

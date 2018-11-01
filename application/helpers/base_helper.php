@@ -171,14 +171,17 @@ if (!function_exists('form_errors')) {
 
 if (!function_exists('front_url')) {
     /**
-     * site_url 대체 헬퍼 (학원 사이트 여부를 판별하여 URI 생성)
+     * site_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
      * @param $uri
      * @return string
      */
     function front_url($uri)
     {
-        config_app('IsPassSite') === true && $uri = '/' . config_app('PassSiteVal') . $uri;
-        return site_url($uri);
+        $uri_prefix = '';
+        config_app('IsMobile') === true && $uri_prefix = '/' . config_item('app_mobile_site_prefix');
+        config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+
+        return site_url($uri_prefix . $uri);
     }
 }
 

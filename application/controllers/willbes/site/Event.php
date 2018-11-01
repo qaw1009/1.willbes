@@ -52,7 +52,7 @@ class Event extends \app\controllers\FrontController
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $view_url = '/event/show/cate/'.$params['cate'].'/pattern/'.$onoff_type;
         } else {
-            $pass_val = '/' . substr($this->_pass_site_val, 1);
+            $pass_val = '/' . config_item('app_pass_site_prefix');
             $onoff_type = $params[0];
             $page_url = $pass_val.'/event/list/'.$onoff_type;
             $view_url = $pass_val.'/event/show/'.$onoff_type;
@@ -100,7 +100,7 @@ class Event extends \app\controllers\FrontController
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $frame_params = 'cate_code='.$params['cate'].'&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         } else {
-            $pass_val = '/' . substr($this->_pass_site_val, 1);
+            $pass_val = '/' . config_item('app_pass_site_prefix');
             $onoff_type = $params[0];
             $page_url = $pass_val.'/event/list/'.$onoff_type;
             $frame_params = 'cate_code=&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
@@ -193,7 +193,7 @@ class Event extends \app\controllers\FrontController
         if (empty($this->_is_pass_site) === true) {
             $pass_val = '';
         } else {
-            $pass_val = '/' . substr($this->_pass_site_val, 1);
+            $pass_val = '/' . config_item('app_pass_site_prefix');
         }
 
         $comment_create_type = '1';

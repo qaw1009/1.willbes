@@ -151,7 +151,7 @@ class Professor extends \app\controllers\FrontController
         $arr_input['tab'] = element('tab', $arr_input, 'open_lecture');
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input);
 
-        $this->load->view('site/professor/show' . $this->_pass_site_val, [
+        $this->load->view('site/professor/show', [
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,
             'data' => $data,

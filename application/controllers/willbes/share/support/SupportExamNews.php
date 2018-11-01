@@ -23,13 +23,13 @@ class SupportExamNews extends BaseSupport
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $get_params = http_build_query($arr_input);
+
         $s_keyword = element('s_keyword',$arr_input);
-        $page = element('page',$arr_input);
         $view_type = element('view_type',$arr_input);
 
-        $get_params = 's_keyword='.$s_keyword;
-        $get_params .= '&view_type='.$view_type;
-        $get_params .= '&page='.$page;
+        $get_page_params = 's_keyword='.$s_keyword;
+        $get_page_params .= '&view_type='.$view_type;
 
         $list = [];
         $arr_condition = [
@@ -59,7 +59,7 @@ class SupportExamNews extends BaseSupport
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/examNews/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/examNews/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);

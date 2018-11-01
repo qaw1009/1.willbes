@@ -6,7 +6,7 @@
                 <span class="hidden">메뉴바</span>
             </button>
             <div class="logo">
-                <a href="{{ site_url('/home/html/m/sample') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
+                <a href="{{ front_url('/') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
             </div>
             <button type="button" class="mypage">
                 <span class="hidden">내강의실</span>
@@ -17,15 +17,26 @@
             <button type="button" class="myacad">
                 <span class="hidden">수강신청</span>
             </button>
-            
             <ul class="myLog tx-black NG">
-                <li class="Login">
-                    <a class="Tit" href="#none" onclick="openWin('LoginForm')">로그인</a>
-                    <span class="row-line">|</span>
-                </li>
-                <li class="joinUs">
-                    <a class="Tit" href="#none">회원가입</a>
-                </li>
+            @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
+                @if(sess_data('is_login') != true)
+                    <li class="Login">
+                        <a class="Tit" href="{{ app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')}}" >로그인</a>
+                        <span class="row-line">|</span>
+                    </li>
+                    <li class="joinUs">
+                        <a class="Tit" href="{{ app_url('/member/join/', 'www') }}">회원가입</a>
+                    </li>
+                @else
+                    <li class="Login">
+                        {{sess_data('mem_name')}}님 로그인중입니다
+                        <span class="row-line">|</span>
+                    </li>
+                    <li class="joinUs">
+                        <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>
+                    </li>
+                @endif
+            @endif
             </ul>
         </div>
     </div>

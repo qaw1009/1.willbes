@@ -33,6 +33,8 @@ class SupportQna extends BaseSupport
     {
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $get_params = http_build_query($arr_input);
+
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
@@ -42,20 +44,25 @@ class SupportQna extends BaseSupport
         $s_is_display = element('s_is_display',$arr_input);
         $s_is_my_contents = element('s_is_my_contents',$arr_input);
         $view_type = element('view_type',$arr_input);
-        $page = element('page',$arr_input);
-
-        $get_params = 's_keyword='.urlencode($s_keyword);
-        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
-        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
-        $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
-        $get_params .= '&page='.$page;
+        $get_page_params = 's_keyword='.urlencode($s_keyword);
+        $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
+        $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
         /*unset($arr_base['site_list'][config_item('app_intg_site_code')]);*/
 
         // 카테고리 조회
-        $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
+        if ($this->_site_code == config_item('app_intg_site_code')) {
+            if (empty($s_site_code) === true) {
+                $arr_base['category'] = [];
+            } else {
+                $arr_base['category'] = $this->categoryFModel->listSiteCategory($s_site_code);
+            }
+        } else {
+            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+        }
 
         //구분목록 (학원,온라인)
         $arr_base['onoff_type'] = $this->supportBoardTwoWayFModel->listSiteOnOffType();
@@ -124,7 +131,7 @@ class SupportQna extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {

@@ -7,14 +7,19 @@
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
     <div class="Content p_re">
-        <form id="search_form" name="search_form" method="GET">
+        <form id="url_form" name="url_form" method="GET">
+            @foreach($arr_input as $key => $val)
+                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+            @endforeach
+        </form>
+
         <div class="willbes-CScenter c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
                 · 1:1 상담
                 <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
                     <div class="inputBox p_re">
                         <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                        <button type="submit" class="search-Btn">
+                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
                             <span>검색</span>
                         </button>
                     </div>
@@ -25,21 +30,21 @@
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray">
-                        <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                        <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" style="width: 250px;" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                             <option value="">과정</option>
                             @foreach($arr_base['site_list'] as $key => $val)
                                 <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
 
-                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" style="width: 250px;" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" style="width: 250px;" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
                             <option value="">카테고리</option>
                             @foreach($arr_base['category'] as $row)
                                 <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
                             @endforeach
                         </select>
 
-                        <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA">
+                        <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA" onchange="goUrl('s_consult_type',this.value)">
                             <option value="">상담유형</option>
                             @foreach($arr_base['consult_type'] as $key => $val)
                                 <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -119,23 +124,10 @@
                 </div>
             </div>
         </div>
-        </form>
         <!-- willbes-CScenter -->
     </div>
     {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
-<script type="text/javascript">
-    var $search_form = $('#search_form');
-
-    $(document).ready(function() {
-        $search_form.find('select[name="s_cate_code"]').chained("#s_site_code");
-        $search_form.find('select[name="s_campus"]').chained("#s_site_code");
-
-        /*$url_form.on('change','#s_site_code', function (){
-
-        });*/
-    });
-</script>
 
 <!-- End Container -->
 @stop

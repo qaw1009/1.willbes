@@ -26,19 +26,18 @@ class SupportExamQuestion extends BaseSupport
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $get_params = http_build_query($arr_input);
+
         $s_keyword = element('s_keyword',$arr_input);
         $s_area = element('s_area',$arr_input);
         $s_year = element('s_year',$arr_input);
         $s_subject = element('s_subject',$arr_input);
-        $page = element('page',$arr_input);
         $view_type = element('view_type',$arr_input);
-
-        $get_params = 's_keyword='.$s_keyword;
-        $get_params .= '&view_type='.$view_type;
-        $get_params .= '&s_area='.$s_area;
-        $get_params .= '&s_year='.$s_year;
-        $get_params .= '&s_subject='.$s_subject;
-        $get_params .= '&page='.$page;
+        $get_page_params = 's_keyword='.$s_keyword;
+        $get_page_params .= '&view_type='.$view_type;
+        $get_page_params .= '&s_area='.$s_area;
+        $get_page_params .= '&s_year='.$s_year;
+        $get_page_params .= '&s_subject='.$s_subject;
 
         //지역
         $arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_area']);
@@ -77,7 +76,7 @@ class SupportExamQuestion extends BaseSupport
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/examQuestion/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/examQuestion/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);

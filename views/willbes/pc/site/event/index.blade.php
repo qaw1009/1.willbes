@@ -20,7 +20,7 @@
                 <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
                     <div class="inputBox p_re">
                         <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="제목을 입력해 주세요" maxlength="30" value="{{element('s_keyword', $arr_input)}}">
-                        <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
+                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
                             <span>검색</span>
                         </button>
                     </div>

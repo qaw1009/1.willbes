@@ -5,6 +5,34 @@
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="mt40">
 
+        <div>iFrame버젼</div>
+        <!-- iFrame Ver -->
+        <div id="videoPopup" class="videoPopup">
+            <div class="view p_re">
+                <div class="viewList">
+                    <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
+                    <ul class="btnList">
+                        <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
+                        <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
+                        <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
+                        <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
+                    </ul>
+                </div>
+                <div id="settingPOP" class="settingPOP">
+                    <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;"> 
+                    <map name="player_key">
+                        <area shape="rect" coords="234,1,262,32" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
+                    </map>
+                </div>
+                video Player
+            </div>
+            <iframe frameborder="0" scrolling="no" width="400px" height="100%" onload="resizeIframe(this)" src="{{ site_url('/home/html/test_video_iframe') }}"></iframe>
+        </div>
+
+
+        <br/><br/><br/><br/><br/>
+
+
         <div>무료버젼</div>
         <!-- 무료 Ver -->
         <div id="videoPopup" class="videoPopup">
@@ -354,7 +382,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
 </div>

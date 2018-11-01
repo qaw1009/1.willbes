@@ -9281,7 +9281,6 @@ table.acadlecInfoPackageTable tr.Top td {
 .videoPopup .view {
     float: left;
     background: #000;
-    width: 71%;
     height: 100%;
 }
 .videoPopup .view .viewList {
@@ -9346,17 +9345,14 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     top: 0;
     right: 0;
-}
-.videoPopup .view .settingPOP a {
-    outline: none;
-    border: none;
+    z-index: 9999;
 }
 
 /* Video Player : vodTabs */
 .vodTabs {
     float: left;
     background: #1c1c1c;
-    width: 29%;
+    width: 400px;
     height: 100%;
 }
 .vodTabs .vodWrap {

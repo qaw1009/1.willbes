@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
     <script src="/public/vendor/jquery/swiper/swiper.js"></script>
     <script src="/public/vendor/jquery/swiper/swiper.min.js"></script>
-    <script src="/public/vendor/jquery/swiper/swiper.esm.js"></script>
-    <script src="/public/vendor/jquery/swiper/swiper.esm.bundle.js"></script>
     <!-- bootstrap-datepicker -->
     <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
@@ -24,7 +22,6 @@
     <!--// CSS -->
     <!-- JAVASCRIPT -->
     <!-- jQuery -->
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
     <!--// JAVASCRIPT -->

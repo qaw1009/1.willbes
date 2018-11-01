@@ -107,6 +107,24 @@ $(function() {
     });
 });
 
+// 나의 예약현황 버튼 Script
+$(function() {
+    $('.reserveTable .MoreBtn a').click(function() {
+        var $lec_info_table = $(this).parents('.reserveTableList').find('.reserveTable');
+        var $lec_info_btn = $(this).parents('.PASSZONE-Lec-Section').find('.MoreBtn a');
+
+        if ($lec_info_table.hasClass('on')) {
+            $('.reserveTable').addClass('on');
+            $lec_info_btn.text('보기 ▼');
+            $lec_info_table.removeClass('on');
+            $(this).text('닫기 ▲');
+        } else {
+            $lec_info_table.addClass('on');
+            $(this).text('보기 ▼');
+        }
+    });
+});
+
 // 장바구니 상품정보 Script
 $(function() {
     $('td.w-list a').click(function(){

@@ -4825,6 +4825,51 @@ table.counselTable .w-info .Detail-gradeBox {
     color: #1b8ccc;    
 }
 
+/* counsel Step : 03. 상담예약확인 */
+.reserveTableList {
+    margin-bottom: 20px;
+}
+.reserveTableList .reserveTable.on {
+    display: block;
+    height: 39px;
+    overflow: hidden;
+}
+.reserveTableList .listTable tr th,
+.reserveTableList .listTable tr td {
+    line-height: 25px;
+    padding: 7px 0;
+}
+.reserveTableList .listTable tr td dl dt {
+    float: left;
+}
+.reserveTableList .listTable tr td dl dt.sList {
+    display: none;
+    margin-right: 10px;
+}
+.reserveTableList .listTable.on tr td dl dt.sList {
+    display: block;
+}
+.reserveTableList .listTable tr td dl dt.sList .row-line {
+    float: left;
+    width: 1px;
+    margin: 6px 10px;
+}
+.reserveTableList .listTable tr th .row-line,
+.reserveTableList .listTable tr td .row-line {
+    float: right;
+    background: #707070;
+    width: 2px;
+    height: 11px;
+    margin: 6px;
+}
+.reserveTableList .listTable tr td .MoreBtn {
+    float: right;
+}
+.reserveTableList .listTable tr td .MoreBtn a {
+    color: #363636;
+    text-decoration: underline;
+}
+
 
 
 /*********************************************     CART PAGE     *********************************************/
@@ -7382,6 +7427,11 @@ table.PassZoneTable .w-data {
     letter-spacing: 0;
     padding: 20px 0 25px;
     border-bottom: 2px solid #000;
+}
+.willbes-Layer-PassBox .Layer-SubTit {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 20px 0;
 }
 .willbes-Layer-PassBox .Layer-Tit span {
     vertical-align: baseline;

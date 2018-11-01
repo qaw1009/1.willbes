@@ -16,6 +16,7 @@ var video_container_height;
 var controller_container_width;
 
 var SubFrameTag_height;
+var SubFrameTag_width = 500;
 var player_tb_height;
 
 var moveLeft;
@@ -149,7 +150,7 @@ function setScreenReSizeVal()
     SubFrameTag_height = video_container_height + 130;
     player_tb_height = video_container_height - 30;
 
-    moveLeft = (video_container_width + SubFrameTag_width + playerPaddingWidth - SubFrameTag_width);
+    moveLeft = (video_container_width + SubFrameTag_width + playerPaddingWidth);
     moveTop = (video_container_height + controller_container_height+130);
     moveLeft = ( ( screen.availWidth - 10 ) - moveLeft) / 2;
     moveTop = ( ( screen.availHeight - 30 ) - moveTop) / 2;
@@ -159,7 +160,7 @@ function setScreenReSizeVal()
 function screenResize()
 {
     window.moveTo(moveLeft, moveTop);
-    window.resizeTo(video_container_width+SubFrameTag_width+20 +15 -SubFrameTag_width, video_container_height+controller_container_height+playerTitleHeight+80);
+    window.resizeTo(video_container_width+SubFrameTag_width+20 +15, video_container_height+controller_container_height+playerTitleHeight+80);
 
     $("#video-container").attr("style", "height:" + video_container_height + "px; width:" + video_container_width + "px;");
     $("#controller-container").attr("style", "height:" + controller_container_height + "px; width:" + controller_container_width + "px;");

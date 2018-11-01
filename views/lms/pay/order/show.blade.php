@@ -222,8 +222,8 @@
                                         @else
                                             {{-- 환불완료 --}}
                                             <td></td>
-                                            <td>{{ $order_prod_row['CardRefundPrice'] }}</td>
-                                            <td>{{ $order_prod_row['CashRefundPrice'] }}</td>
+                                            <td>{{ number_format($order_prod_row['CardRefundPrice']) }}</td>
+                                            <td>{{ number_format($order_prod_row['CashRefundPrice']) }}</td>
                                             <td>{!! $order_prod_row['IsCouponRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoCouponIdx'] . ')' : '' !!}</td>
                                             <td>{!! $order_prod_row['IsPointRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoPointIdx'] . ')' : '' !!}</td>
                                             <td>{{ $order_prod_row['RefundAdminName'] }}</td>
@@ -270,28 +270,35 @@
                             <tr>
                                 <th>NO</th>
                                 <th>환불일</th>
-                                <th>환불상품</th>
-                                <th>환불금액</th>
+                                <th>환불상품 (환불금액)</th>
+                                <th>총 환불금액</th>
                                 <th>결제상태</th>
                                 <th>환불사유</th>
                                 <th>환불처리자</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($data['refund_prod'] as $refund_req_idx => $refund_prod_row)
                                 <tr>
-                                    <td>1</td>
-                                    <td>2018-00-00 00:00:00</td>
+                                    <td>{{ $loop->index }}</td>
+                                    <td>{{ $refund_prod_row['RefundDatm'] }}</td>
                                     <td>
-                                        <div class="blue inline-block">[상품구분]</div> 상품명
+                                        @foreach($refund_prod_row['ProdName'] as $sub_idx => $refund_prod_name)
+                                            <div class="blue inline-block">[{{ $refund_prod_row['LearnPatternCcdName'][$sub_idx] or $refund_prod_row['ProdTypeCcdName'][$sub_idx] }}]</div> {{ $refund_prod_name }}
+                                            ({{ number_format($refund_prod_row['RefundPrice'][$sub_idx]) }}원)<br/>
+                                        @endforeach
                                     </td>
                                     <td>
-                                        {{ number_format(1000) }}
-                                        (카드 {{ number_format(500) }} + 현금 {{ number_format(500) }})
+                                        {{ number_format(array_sum($refund_prod_row['RefundPrice'])) }}<br/>
+                                        (카드 {{ number_format(array_sum($refund_prod_row['CardRefundPrice'])) }} + 현금 {{ number_format(array_sum($refund_prod_row['CashRefundPrice'])) }})
                                     </td>
-                                    <td>환불완료 (지출결의)</td>
-                                    <td>환불사유</td>
-                                    <td>관리자명</td>
+                                    <td>{{ $refund_prod_row['PayStatusCcdName'] }}<br/>
+                                        ({{ $refund_prod_row['IsBankRefund'] == 'Y' ? '계좌환불' : '연동환불' }}{{ $refund_prod_row['IsApproval'] == 'Y' ? ', 지출결의' : '' }})
+                                    </td>
+                                    <td>{{ $refund_prod_row['RefundReason'] }}</td>
+                                    <td>{{ $refund_prod_row['RefundAdminName'] }}</td>
                                 </tr>
+                            @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
@@ -537,6 +544,8 @@
                 popupOpen('{!! $data['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 430, 700);
             });
 
+        {{-- 환불처리 컨트롤러에서만 사용 --}}
+        @if($_is_refund_proc === true)
             // 반송확인 버튼 클릭
             $refund_proc_form.on('click', 'button[name="btn_delivery_check"]', function() {
                 var order_prod_idx = $(this).data('order-prod-idx');
@@ -634,6 +643,7 @@
                 $refund_proc_form.find('input[name="total_cash_refund_price"]').val(total_cash_refund_price);
                 $refund_proc_form.find('input[name="total_refund_price"]').val(total_card_refund_price + total_cash_refund_price);
             });
+        @endif
 
             // 목록 이동
             $('#btn_list').click(function() {

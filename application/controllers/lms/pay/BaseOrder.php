@@ -52,11 +52,32 @@ class BaseOrder extends \app\controllers\BaseController
         // 회원포인트 조회
         $point_data = $this->pointModel->getMemberPoint($order_data['MemIdx']);
 
+        // 환불내역 데이터 가공 (환불처리에서만 사용)
+        $refund_data = [];
+        if ($this->_is_refund_proc === true) {
+            foreach ($data as $row) {
+                if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
+                    $refund_data[$row['RefundReqIdx']]['ProdTypeCcdName'][] = $row['ProdTypeCcdName'];
+                    $refund_data[$row['RefundReqIdx']]['LearnPatternCcdName'][] = $row['LearnPatternCcdName'];
+                    $refund_data[$row['RefundReqIdx']]['ProdName'][] = $row['ProdName'];
+                    $refund_data[$row['RefundReqIdx']]['RefundPrice'][] = $row['RefundPrice'];
+                    $refund_data[$row['RefundReqIdx']]['CardRefundPrice'][] = $row['CardRefundPrice'];
+                    $refund_data[$row['RefundReqIdx']]['CashRefundPrice'][] = $row['CashRefundPrice'];
+
+                    $refund_data[$row['RefundReqIdx']] = array_merge($refund_data[$row['RefundReqIdx']], [
+                        'RefundDatm' => $row['RefundDatm'], 'PayStatusCcdName' => $row['PayStatusCcdName'], 'IsApproval' => $row['IsApproval'], 'IsBankRefund' => $row['IsBankRefund'],
+                        'RefundReason' => $row['RefundReason'], 'RefundAdminName' => $row['RefundAdminName']
+                    ]);
+                }
+            }
+        }
+
         $this->load->view('pay/order/show', [
             'idx' => $order_idx,
             'data' => [
                 'order' => $order_data,
                 'order_prod' => $data,
+                'refund_prod' => $refund_data,
                 'mem' => $mem_data,
                 'mem_point' => $point_data
             ],

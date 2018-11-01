@@ -73,11 +73,11 @@
                         </div>
                         <div class="mt-10 item">
                             [환불사유]
-                            <input type="text" id="refund_reason" name="refund_reason" class="form-control ml-5" title="환불사유" required="required" value="테스트" style="width: 86%;"/>
+                            <input type="text" id="refund_reason" name="refund_reason" class="form-control ml-5" title="환불사유" required="required" value="" style="width: 86%;"/>
                         </div>
                         <div class="mt-10">
                             [환불메모]
-                            <input type="text" id="refund_memo" name="refund_memo" class="form-control ml-5" title="환불메모" style="width: 86%;"/>
+                            <input type="text" id="refund_memo" name="refund_memo" class="form-control ml-5" title="환불메모" value="" style="width: 86%;"/>
                         </div>
                         <div class="mt-10 mb-10">
                             - 무통장입금 환불 처리나, 실시간계좌이체 자동 환불 기간이 만료된 경우 해당 환불계좌정보 입력하여 환불 진행

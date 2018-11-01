@@ -187,7 +187,7 @@ class OrderModel extends BaseOrderModel
                             'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'], 'reason_type' => 'refund'
                         ];
 
-                        $is_retire_point = $this->pointModel->addUsePoint($point_type, $row['UsePoint'], $row['MemIdx'], $data, true);
+                        $is_retire_point = $this->pointModel->addUsePoint($point_type, $row['SavePoint'], $row['MemIdx'], $data, true);
                         if ($is_retire_point !== true) {
                             throw new \Exception($is_retire_point);
                         }

@@ -5,7 +5,7 @@
  * @param $quility
  */
 function fnPlayerSample($prodCode, $unitIdx, $quility){
-    popupOpen(app_url('/Player/Sample/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'samplePlayer', '1000', '600', null, null);
+    popupOpen(app_url('/Player/Sample/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'samplePlayer', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
@@ -14,14 +14,14 @@ function fnPlayerSample($prodCode, $unitIdx, $quility){
  * @param $viewType ( OT | WS | S1 | S2 | S3 )
  */
 function fnPlayerProf($ProfessorCode, $viewType){
-    popupOpen(app_url('/Player/Professor/'+$ProfessorCode+'/'+$viewType+"/_", 'www'), 'profPlayer', '1000', '600', null, null);
+    popupOpen(app_url('/Player/Professor/'+$ProfessorCode+'/'+$viewType+"/_", 'www'), 'profPlayer', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
  * 일반강좌 플레이어
  */
 function fnPlayer($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quility){
-    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility, 'www'), 'samplePlayer', '1000', '600', null, null);
+    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility, 'www'), 'samplePlayer', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
@@ -341,20 +341,22 @@ function notifyAlert(type, title, text, delay, hide, center) {
  */
 var popupWins = new Array();
 
-function popupOpen(url, name, width, height, xpos, ypos, scrollbar) {
+function popupOpen(url, name, width, height, xpos, ypos, scrollbar, resizable) {
     try{
         name =  name || '_blank';
         xpos = xpos || (screen.availWidth-width)/2;
         ypos = ypos || (screen.availHeight-height)/2;
         scrollbar = scrollbar || 'no';
+        resizable = resizable || 'yes';
+
 
         if ( typeof( popupWins[name] ) !== "object" ){
-            popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable=yes');
+            popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable='+resizable);
         } else {
             if (!popupWins[name].closed){
                 popupWins[name].location.href = url;
             } else {
-                popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable=yes');
+                popupWins[name] = window.open(url, name, 'width='+width+', height='+height+', left='+xpos+', top='+ypos+', menubar=no, status=no, toolbar=no, scrollbars='+scrollbar+', resizable='+resizable);
             }
         }
 

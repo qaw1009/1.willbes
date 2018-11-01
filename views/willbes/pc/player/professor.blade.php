@@ -2,10 +2,9 @@
 
 @section('script')
     <script type="text/javascript">
-        ratio = {{$data['ratio']}};
-        startPosition = {{$data['startPosition']}};
-
         $(document).ready(function (){
+            SubFrameTag_width = 0;
+
             getScreenSize();
             setScreenReSizeVal();
             screenResize();
@@ -39,7 +38,7 @@
                 intro: "http://hd.willbes.gscdn.com/warning/warning_new_5.mp4",
                 @endif
                 autoPlay: true,
-                startTime: startPosition
+                startTime: 0
             };
 
             fnPlayer();

@@ -15,7 +15,7 @@
 <div class="videoPopup">
     <div class="view p_re">
         <div class="viewList">
-            <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
+            <span class="Tit NGR"><span class="NG">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
             <ul class="btnList">
                 <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
                 <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
@@ -24,7 +24,7 @@
             </ul>
         </div>
         <div id="settingPOP" class="settingPOP">
-            <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;z-index:100;">
+            <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;">
             <map name="player_key">
                 <area shape="rect" coords="234,1,262,32" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
             </map>
@@ -80,17 +80,20 @@
             </div>
         </div>
     </div>
-    <div class="vodTabs p_re">
-        @yield('subframe')
-    </div>
+    <iframe id="subframe" frameborder="0" scrolling="no" width="400px" height="500px" src=""></iframe>
 </div>
-
 <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
+<script src="/public/js/willbes/app.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/speedplaytime.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/js/willbes/player.js?token={{time()}}"></script>
+<script>
+    ratio = {{empty($data['ratio']) == true ? '16' : $data['ratio']}};
+    startPosition = {{empty($data['startPosition']) == true ? '0' : $data['startPosition']}};
+    video_container_width = @if($data['quility'] == 'WD'){{'1000'}}@elseif($data['quility'] == 'HD'){{'700'}}@else{{'500'}}@endif;
+</script>
 @yield('script')
 </body>
 </html>

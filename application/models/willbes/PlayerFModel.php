@@ -8,7 +8,8 @@ class PlayerFModel extends WB_Model
         'lecture' => 'lms_product_lecture',
         'mstlec' => 'wbs_cms_lecture',
         'unit' => 'wbs_cms_lecture_unit_combine',
-        'wbs_code' => 'wbs_sys_code'
+        'wbs_code' => 'wbs_sys_code',
+        'bookmark' => 'lms_bookmark'
     ];
 
     public function __construct()
@@ -54,26 +55,70 @@ class PlayerFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
-        logger($from);
         return empty($rows) === true ? [] : $rows->row_array();
     }
 
     /**
      * 북마크관리
      */
-    public function getBookmark()
+    public function getBookmark($input)
     {
+        $query = "SELECT * FROM {$this->_table['bookmark']} ";
+        $cond = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'prodCode' => element('sp', $input),
+                'wLecIdx' =>  element('l', $input),
+                'wUnitIdx' =>  element('u', $input)
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($cond);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query($query . $where . ' ORDER BY bmIdx DESC');
+
+        return empty($rows) === true ? [] : $rows->result_array();
 
     }
 
-    public function storeBookmark()
+    public function storeBookmark($input)
     {
+        $input = [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'ProdCode' => element('p', $input),
+            'wLecIdx' => element('l', $input),
+            'wUnitIdx' => element('u', $input),
+            'Time' => element('bmtime', $input),
+            'Title' => element('bmtitle', $input)
+        ];
+        try {
+            if($this->_conn->set($input)->insert($this->_table['bookmark']) === false){
+                throw new \Exception('북마크저장에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
 
+        return true;
     }
 
-    public function deleteBookmark()
+    public function deleteBookmark($input)
     {
+        $where = [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'bmIdx' => element('bmidx', $input)
+        ];
 
+        try {
+            if($this->_conn->delete($this->_table['bookmark'], $where) === false){
+                throw new \Exception('북마크삭제에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
     }
 
     public function storeStudyLog($input)

@@ -221,16 +221,24 @@ class Player extends \app\controllers\FrontController
             'wUnitIdx' => $unitidx
         ]);
 
+        if(empty($data['StudyTime']) == true || $data['StudyTime'] == 0) {
+            $isintro = true;
+        } else {
+            $isintro = false;
+        }
+
         return $this->load->view('/player/normal', [
             'data' => [
                 'orderidx' => $orderidx,
                 'prodcode' => $prodcode,
                 'prodcodesub' => $prodcodesub,
+                'lecidx' => $lec['wLecIdx'],
                 'unitidx' => $unitidx,
                 'quility' => $quility,
-                'isIntro' => false,
+                'isIntro' => $isintro,
                 'ratio' => $ratio,
                 'startPosition' => $data['LastPosition'],
+                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
                 'url' => $url,
                 'memid' => $MemId,
@@ -387,25 +395,214 @@ class Player extends \app\controllers\FrontController
      */
     public function Curriculum($params = [])
     {
+        $input = $this->_reqG(null);
 
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.111', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        if($lec['LearnPatternCcd'] == '615003'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ], $orderby);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+        }
+
+        if($lec['LecStartDate'] > $today){
+            $isstart = 'N';
+        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+            $isstart = 'N';
+            $ispause = 'Y';
+        } else {
+            $isstart = 'Y';
+        }
+
+        // 감사정보 디코딩
+        $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
+        $lec['isstart'] = $isstart;
+        $lec['ispause'] = $ispause;
+        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx']
+            ]
+        ]);
+
+        // 회차별 수강시간 체크
+        foreach($curriculum AS $idx => $row){
+            $curriculum[$idx]['isstart'] = $isstart;
+            $curriculum[$idx]['ispause'] = $ispause;
+
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            }
+            else if($lec['MultipleApply'] == '1'){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($row['RealStudyTime']);
+                // 제한시간 분 -> 초
+                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['AllLecTime']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+            }
+        }
+
+        $this->load->view('/player/list', [
+            'input' => $input,
+            'lec' => $lec,
+            'curriculum' => $curriculum
+        ]);
+    }
+
+    function info()
+    {
+        $this->load->view('/player/info', [
+            'input' => $input,
+            'data' => $data
+        ]);
+    }
+
+    function qna()
+    {
+        $this->load->view('/player/qna',[
+            'input' => $input,
+            'data' => $data
+        ]);
     }
 
     /**
-     * 플레이어 우측 북마크
+     * 북마크 리스트
      */
-    public function listBookmark($params = [])
+    public function listBookmark()
     {
+        $input = $this->_reqG(null);
+        $data = $this->playerFModel->getBookmark($input);
 
+        if(empty($data) == false) {
+            foreach ($data AS $idx => $row) {
+                $data[$idx]['ConvertTime'] = gmdate('H:i:s', $row['Time']);;
+            }
+        }
+
+        $this->load->view('/player/bookmark',[
+            'input' => $input,
+            'data' => $data
+        ]);
     }
 
+    /**
+     * 북마크저장
+     */
     public function storeBookmark()
     {
+        $input = $this->_reqG(null);
+        if($this->playerFModel->storeBookmark($input) == false){
+            $this->json_error('북마크 저장에 실패했습니다. 다시 시도해주십시요.');
+        }
 
+        $this->json_result(true, "북마크를 저장했습니다.");
     }
 
+    /**
+     * 북마크삭제
+     */
     public function deleteBookmark()
     {
+        $input = $this->_reqG(null);
+        if($this->playerFModel->deleteBookmark($input) == false){
+            $this->json_error('북마크 삭제에 실패했습니다. 다시 시도해주십시요.');
+        }
 
+        $this->json_result(true, "북마크를 삭제했습니다.");
     }
 
     /**
@@ -462,5 +659,9 @@ class Player extends \app\controllers\FrontController
 
         return $protocol.$str;
     }
+
+
+
+
 
 }

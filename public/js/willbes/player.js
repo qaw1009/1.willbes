@@ -1,23 +1,21 @@
 var player;
 var step_;
 var realPlayerTime = null;
-var pcScreenWidth = screen.availWidth;
-var pcScreenHeight = screen.availHeight;
+//var pcScreenWidth = screen.availWidth;
+//var pcScreenHeight = screen.availHeight;
 
 var playerWidth;
 var playerHeight;
 
 var playerTitleHeight = 45;
-var controller_container_height	= 80;
-var playerPaddingWidth = 24;
+var playerPaddingWidth = 20;
+var playerPaddingHeight = 70;
 
 var video_container_width;
 var video_container_height;
-var controller_container_width;
+var controller_container_height = 80;
 
-var SubFrameTag_height;
-var SubFrameTag_width = 500;
-var player_tb_height;
+var SubFrameTag_width = 400;
 
 var moveLeft;
 var moveTop;
@@ -124,53 +122,48 @@ function click()
 
 function getScreenSize()
 {
+    /*
     if (pcScreenWidth <= 800) {
-        playerWidth = 640;
-        playerHeight = 300;
+        video_container_width = 640;
         SubFrameTag_width = 0;
     } else {
-        playerWidth = parseInt(pcScreenWidth * 0.8);
-        playerHeight = parseInt((pcScreenWidth-334) * 9 / ratio) + controller_container_height + playerTitleHeight;
-        SubFrameTag_width = 310;
+        video_container_width = parseInt(pcScreenWidth - 500); // * 0.5);
     }
 
     if ( pcScreenWidth > 1600 && playerHeight > pcScreenHeight - 50 ) {
-        playerWidth = parseInt(pcScreenWidth * 0.7);
-        playerHeight = parseInt((pcScreenWidth-334) * 9 / ratio) + controller_container_height + playerTitleHeight;
-        SubFrameTag_width = 310;
+        video_container_width = parseInt(pcScreenWidth * 0.6);
     }
+    */
+
+    //playerWidth = parseInt(pcScreenWidth - 500);
+    //playerHeight = parseInt((pcScreenWidth - 334) * 9 / ratio) + controller_container_height + playerTitleHeight;
+    video_container_height = parseInt(video_container_width * 9 / ratio);
 }
-
-
 function setScreenReSizeVal()
 {
-    video_container_width = playerWidth - SubFrameTag_width - playerPaddingWidth ;
-    video_container_height = parseInt ( video_container_width * 9 / ratio );
-    controller_container_width = video_container_width;
-    SubFrameTag_height = video_container_height + 130;
-    player_tb_height = video_container_height - 30;
-
-    moveLeft = (video_container_width + SubFrameTag_width + playerPaddingWidth);
-    moveTop = (video_container_height + controller_container_height+130);
-    moveLeft = ( ( screen.availWidth - 10 ) - moveLeft) / 2;
-    moveTop = ( ( screen.availHeight - 30 ) - moveTop) / 2;
+    playerWidth = video_container_width + SubFrameTag_width + playerPaddingWidth;
+    playerHeight = video_container_height + playerTitleHeight + controller_container_height + playerPaddingHeight;
+    moveLeft = parseInt((( screen.availWidth - 10 ) - playerWidth) / 2);
+    moveTop = parseInt((( screen.availHeight - 30 ) - playerHeight) / 2);
 }
-
 
 function screenResize()
 {
     window.moveTo(moveLeft, moveTop);
-    window.resizeTo(video_container_width+SubFrameTag_width+20 +15, video_container_height+controller_container_height+playerTitleHeight+80);
+    window.resizeTo(playerWidth, playerHeight);
+    $("#subframe").attr("style", "height:" + parseInt(video_container_height + playerTitleHeight + controller_container_height) + "px; width:" + SubFrameTag_width + "px;");
 
     $("#video-container").attr("style", "height:" + video_container_height + "px; width:" + video_container_width + "px;");
-    $("#controller-container").attr("style", "height:" + controller_container_height + "px; width:" + controller_container_width + "px;");
-    $("#controller-container2").attr("style", "position:absolute;display:block;left:0px;height:" + controller_container_height + "px; width:" + controller_container_width + "px;top:" + parseInt(video_container_height +0) + "px;");
-    $("#SubFrameTag").attr("style", "height:" + SubFrameTag_height + "px; width:" + SubFrameTag_width + "px;");
+    $("#controller-container").attr("style", "height:" + controller_container_height + "px; width:" + video_container_width + "px;");
+    $("#controller-container").attr("style", "height:1px; width:1px;");
+    $("#controller-container2").attr("style", "position:absolute;display:block;left:0px;height:" + controller_container_height + "px; width:" + video_container_width + "px;top:" + parseInt(video_container_height +playerTitleHeight) + "px;");
 }
 
 
 function fnDefense()
 {
+    return ;
+
     var checkStatus;
     var checkCrome = true;
     var element = new Image();
@@ -237,11 +230,4 @@ $(document).on("contextmenu", function (e) {
 });
 */
 
-// 닫기 Script
-function closeWin(divID) {
-    document.getElementById(divID).style.display = "none";
-}
-// 열기 Script
-function openWin(divID) {
-    document.getElementById(divID).style.display = "block";
-}
+

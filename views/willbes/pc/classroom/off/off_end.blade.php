@@ -19,19 +19,19 @@
             <div class="willbes-Leclist c_both">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/end/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
-                    <span class="w-data">
-                        기간검색 &nbsp;
-                        <input type="text" id="search_start_date" name="search_start_date" value="{{ $input_arr['search_start_date'] or '' }}" title="검색시작일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/> ~&nbsp;
-                        <input type="text" id="search_end_date" name="search_end_date" value="{{ $input_arr['search_end_date'] or '' }}" title="검색종료일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/>
-                    </span>
+                        <span class="w-data">
+                            기간검색 &nbsp;
+                            <input type="text" id="search_start_date" name="search_start_date" value="{{ $input_arr['search_start_date'] or '' }}" title="검색시작일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/> ~&nbsp;
+                            <input type="text" id="search_end_date" name="search_end_date" value="{{ $input_arr['search_end_date'] or '' }}" title="검색종료일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/>
+                        </span>
                         <span class="w-month">
-                        <ul>
-                            <li><a class="btn-set-search-date" data-period="0-all" style="cursor:pointer;">전체</a></li>
-                            <li><a class="btn-set-search-date" data-period="1-months" style="cursor:pointer;">1개월</a></li>
-                            <li><a class="btn-set-search-date" data-period="3-months" style="cursor:pointer;">3개월</a></li>
-                            <li><a class="btn-set-search-date" data-period="6-months" style="cursor:pointer;">6개월</a></li>
-                        </ul>
-                    </span>
+                            <ul>
+                                <li><a class="btn-set-search-date" data-period="0-all" style="cursor:pointer;">전체</a></li>
+                                <li><a class="btn-set-search-date" data-period="1-months" style="cursor:pointer;">1개월</a></li>
+                                <li><a class="btn-set-search-date" data-period="3-months" style="cursor:pointer;">3개월</a></li>
+                                <li><a class="btn-set-search-date" data-period="6-months" style="cursor:pointer;">6개월</a></li>
+                            </ul>
+                        </span>
                         <div class="willbes-Lec-Search GM f_right">
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess f_left">
                                 <option selected="selected" value="">과정</option>

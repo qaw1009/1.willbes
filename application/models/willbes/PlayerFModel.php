@@ -16,11 +16,6 @@ class PlayerFModel extends WB_Model
         parent::__construct('lms');
     }
 
-    public function getProfSample($arr_cond)
-    {
-
-    }
-
     /**
      * 강좌코드와 유닛코드로 샘플강좌 데이타 읽어오기
      * @param $ProdCode
@@ -81,8 +76,12 @@ class PlayerFModel extends WB_Model
 
     }
 
-
     public function storeStudyLog($input)
+    {
+
+    }
+
+    public function updateStudyLog($input)
     {
 
     }

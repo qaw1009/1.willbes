@@ -22,7 +22,8 @@ class Player extends \app\controllers\FrontController
     }
 
     /**
-     * 일반 강좌 수강 플레이어
+     * 정상강좌 수강
+     * @return object|string
      */
     public function index()
     {
@@ -44,7 +45,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
-            show_alert('강좌정보가 없습니다.', 'back');
+            show_alert('강좌정보가 없습니다.', 'close');
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -60,7 +61,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            show_alert('강좌정보가 없습니다.', 'back');
+            show_alert('강좌정보가 없습니다.', 'close');
         }
 
         $lec = $lec[0];
@@ -201,6 +202,8 @@ class Player extends \app\controllers\FrontController
             $ratio = $data['wRatio'];
         }
 
+        $ratio = 21;
+
         // 모든 경로없을때
         if(empty($filename) === true){
             show_alert('수강가능한 파일이 없습니다.', 'close');
@@ -227,7 +230,7 @@ class Player extends \app\controllers\FrontController
                 'quility' => $quility,
                 'isIntro' => false,
                 'ratio' => $ratio,
-                'lastposition' => $data['LastPosition'],
+                'startPosition' => $data['LastPosition'],
                 'title' => $data['wUnitName'],
                 'url' => $url,
                 'memid' => $MemId,
@@ -410,7 +413,20 @@ class Player extends \app\controllers\FrontController
      */
     public function log()
     {
-        
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+        $unitidx = $this->_req('u');
+        $logidx = $this->_req('l');
+        $studytime = $this->_req('st');
+        $studyrealtime = $this->_req('srt');
+        $studyrealtime = $this->_req('pos');
+
+        $input = null;
+
+        $this->playerFModel->updateStudyLog($input);
+
+        echo 'OK';
     }
 
     /** URL 에서 // 를 제거하기 위해서

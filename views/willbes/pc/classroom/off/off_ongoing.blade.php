@@ -38,8 +38,8 @@
                             @endforeach
                         </select>
                         <select id="orderby" name="orderby" title="Laststudy" class="seleStudy">
-                            <option value="OrderDate^ASC @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'OrderDate^ASC') selected="selected" @endif>신청일순</option>
-                            <option value="StudyStartDate^ASC @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'StudyStartDate^ASC') selected="selected" @endif>개강일순</option>
+                            <option value="OrderDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'OrderDate^ASC') selected="selected" @endif>신청일순</option>
+                            <option value="StudyStartDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'StudyStartDate^ASC') selected="selected" @endif>개강일순</option>
                             <option value="StudyEndDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'StudyEndDate^ASC') selected="selected" @endif>종료임박순</option>
                         </select>
                         <div class="willbes-Lec-Search GM f_right">

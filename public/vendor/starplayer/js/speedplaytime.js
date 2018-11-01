@@ -1,4 +1,4 @@
-function SpeedPlayTime(player)
+function Speedplaytime(player)
 {
     var self_ = this;
     var time_ = 0;

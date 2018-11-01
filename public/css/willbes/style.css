@@ -3951,6 +3951,12 @@ form .LeclistTable .evtTable tr td a.w-del {
     height: 11px;
     margin: 14px 0;
 }
+.LecViewTable .listTable thead tr td dl dt {
+    float: left;
+}
+.LecViewTable .listTable thead tr td dl dt .row-line {
+    margin: 14px;
+}
 .LecViewTable .w-file a {
     margin-right: 70px;
 }
@@ -4605,12 +4611,11 @@ form .LeclistTable .evtTable tr td a.w-del {
     position: relative;
     background: #eee;
     width: 940px;
-    height: 130px;
     padding: 25px;
     border: 1px solid #bebebe;
     font-size: 13px;
     color: #434343;
-    line-height: 19px;
+    line-height: 26px;
 }
 .willbes-counsel_step .step .info-Box:after,
 .willbes-counsel_step .step .info-Box:before {

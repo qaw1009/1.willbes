@@ -127,14 +127,14 @@
                     <div class="info-Box info-Box2 NG">
                         <dl>
                             <dt>
-                                · 원활한 상담 예약을 위해 사전정보 사항을 정확히 입력해 주세요. (<span class="tx-red">*</span>필수항목)<br/>
+                                · 원활한 상담 예약을 위해 사전정보 사항을 정확히 입력해 주세요. (<span class="tx-red">(*)</span>필수항목)<br/>
                                 · <span class="tx-blue">상세정보의 시험별, 과목별 점수를 기입해 주시면 수 년 간의 통계 및 패턴분석을 통한 심층 상담을 받으실 수 있습니다.</span><br/>
                                 · 시험 미응시자인 경우에는 시험 점수 대신 궁금하신 사항을 구체적으로 기입해 주세요.<br/>
                             </dt>
                         </dl>
                     </div>
                 </div>
-                <div class="willbes-User-Info p_re pb60">
+                <div class="willbes-User-Info p_re pb30">
                     <div class="InfoTable GM">
                         <table cellspacing="0" cellpadding="0" class="classTable userInfoTable counselTable under-gray bdt-gray bdb-gray tx-gray">
                             <colgroup>
@@ -145,22 +145,22 @@
                             <tbody>
                                 <tr>
                                     <td class="w-tit">상담예약 일시</td>
-                                    <td class="w-info">2018-10-25 (목) 10:00 ~ 10:30</td>
+                                    <td class="w-info"><span class="tx-light-blue">2018-10-25 (목) 10:00 ~ 10:30</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">이름(아이디) *</td>
+                                    <td class="w-tit">이름(아이디) <span class="tx-red">(*)</span></td>
                                     <td class="w-info"><input type="text" id="USER_ID" name="USER_ID" class="iptid" placeholder="홍길동(아이디)" maxlength="30"></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">생년월일 *</td>
+                                    <td class="w-tit">생년월일 <span class="tx-red">(*)</span></td>
                                     <td class="w-info"><input type="text" id="USER_BRT" name="USER_BRT" class="iptbrt" placeholder="ex) 19990101" maxlength="30"></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">연락처 *</td>
+                                    <td class="w-tit">연락처 <span class="tx-red">(*)</span></td>
                                     <td class="w-info"><input type="text" id="USER_PHONE" name="USER_PHONE" class="iptphone" placeholder="ex) 01012345678" maxlength="30"></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">이메일 *</td>
+                                    <td class="w-tit">이메일 <span class="tx-red">(*)</span></td>
                                     <td class="w-info">                                    
                                         <div class="emailBox">
                                             <input type="text" id="USER_EMAIL" name="USER_EMAIL" class="iptEmail1 email" maxlength="30"> @
@@ -174,7 +174,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">응시직렬 *</td>
+                                    <td class="w-tit">응시직렬 <span class="tx-red">(*)</span></td>
                                     <td class="w-info">
                                         <div class="w-selec-Area">
                                             <ul>
@@ -189,7 +189,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">응시지역 *</td>
+                                    <td class="w-tit">응시지역 <span class="tx-red">(*)</span></td>
                                     <td class="w-info">
                                         <select id="area" name="area" title="응시지역" class="seleArea">
                                             <option selected="selected">응시지역 선택</option>
@@ -200,7 +200,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">수험기간 *</td>
+                                    <td class="w-tit">수험기간 <span class="tx-red">(*)</span></td>
                                     <td class="w-info">
                                         <div class="w-selec-Area">
                                             <ul>
@@ -212,11 +212,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">취약과목 *</td>
-                                    <td class="w-info"><input type="text" id="USER_SBJ" name="USER_SBJ" class="iptsbj" placeholder="ex) 영어" maxlength="30"></td>
+                                    <td class="w-tit">취약과목 <span class="tx-red">(*)</span></td>
+                                    <td class="w-info"><input type="text" id="USER_SBJ" name="USER_SBJ" class="iptsbjw" placeholder="ex) 영어" maxlength="30"></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-tit">수강여부 *</td>
+                                    <td class="w-tit">수강여부 <span class="tx-red">(*)</span></td>
                                     <td class="w-info">
                                         <div class="w-selec-Area">
                                             <ul>

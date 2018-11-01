@@ -117,16 +117,15 @@
                             <option value="강좌내용">강좌내용</option>
                             <option value="학습상담">학습상담</option>
                         </select>
-                        <div class="subBtn NSK f_right"><a href="#none">문의하기 ></a></div>
+                        <div class="subBtn blue NSK f_right"><a href="#none">문의하기 ></a></div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
                                 <col style="width: 65px;">
                                 <col style="width: 90px;">
-                                <col style="width: 80px;">
                                 <col style="width: 100px;">
-                                <col style="width: 315px;">
+                                <col style="width: 395px;">
                                 <col style="width: 90px;">
                                 <col style="width: 110px;">
                                 <col style="width: 90px;">
@@ -135,7 +134,6 @@
                                 <tr>
                                     <th>No<span class="row-line">|</span></th>
                                     <th>과정<span class="row-line">|</span></th>
-                                    <th>구분<span class="row-line">|</span></th>
                                     <th>상담유형<span class="row-line">|</span></th>
                                     <th>제목<span class="row-line">|</span></th>
                                     <th>작성자<span class="row-line">|</span></th>
@@ -147,7 +145,6 @@
                                 <tr>
                                     <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                     <td class="w-process"><div class="pBox p5">임용</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-A">기기</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
@@ -157,7 +154,6 @@
                                 <tr>
                                     <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                     <td class="w-process"><div class="pBox p6">공무원</div></td>
-                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td class="w-A">수강</td>
                                     <td class="w-list tx-left pl20"><a href="#none">만14세미만회원은어떻게가입하나요?</a></td>
                                     <td class="w-write">장동*</td>
@@ -167,7 +163,6 @@
                                 <tr>
                                     <td class="w-no">10</td>
                                     <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-A">기기</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
@@ -177,7 +172,6 @@
                                 <tr>
                                     <td class="w-no">9</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
@@ -193,7 +187,6 @@
                                 <tr>
                                     <td class="w-no">8</td>
                                     <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-A">기기</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
@@ -203,7 +196,6 @@
                                 <tr>
                                     <td class="w-no">7</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
@@ -219,7 +211,6 @@
                                 <tr>
                                     <td class="w-no">6</td>
                                     <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-A">기기</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
@@ -229,7 +220,6 @@
                                 <tr>
                                     <td class="w-no">5</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
@@ -245,7 +235,6 @@
                                 <tr>
                                     <td class="w-no">4</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">결제/환불</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
@@ -259,7 +248,6 @@
                                 <tr>
                                     <td class="w-no">3</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">수강</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">박형*</td>
@@ -269,7 +257,6 @@
                                 <tr>
                                     <td class="w-no">2</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">장동*</td>
@@ -279,7 +266,6 @@
                                 <tr>
                                     <td class="w-no">1</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-acad">&nbsp;</td>
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">박형*</td>

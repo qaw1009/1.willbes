@@ -100,19 +100,19 @@
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray">
                         <select id="category" name="category" title="category" class="seleCate">
-                            <option selected="selected">전체카테고리</option>
+                            <option selected="selected">카테고리</option>
                             <option value="헌법">헌법</option>
                             <option value="스파르타반">스파르타반</option>
                             <option value="공직선거법">공직선거법</option>
                         </select>
                         <select id="campus" name="campus" title="campus" class="seleCampus">
-                            <option selected="selected">전체캠퍼스</option>
+                            <option selected="selected">캠퍼스</option>
                             <option value="기타">기타</option>
                             <option value="강좌내용">강좌내용</option>
                             <option value="학습상담">학습상담</option>
                         </select>
                         <select id="counsel" name="counsel" title="counsel" class="seleCounsel">
-                            <option selected="selected">전체상담유형</option>
+                            <option selected="selected">상담유형</option>
                             <option value="기타">기타</option>
                             <option value="강좌내용">강좌내용</option>
                             <option value="학습상담">학습상담</option>
@@ -147,7 +147,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="w-no"><img src="{{ img_url('sub/icon_notice.gif') }}"></td>
+                                    <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                     <td class="w-process">경찰학원</td>
                                     <td class="w-cate">&nbsp;</td>
                                     <td class="w-campus">전체</td>
@@ -163,7 +163,7 @@
                                     <td class="w-answer">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td class="w-no"><img src="{{ img_url('sub/icon_notice.gif') }}"></td>
+                                    <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
                                     <td class="w-process">경찰학원</td>
                                     <td class="w-cate">&nbsp;</td>
                                     <td class="w-campus">전체</td>
@@ -304,7 +304,7 @@
                                             <option value="공직선거법">공직선거법</option>
                                         </select>
                                         <select id="div" name="div" title="div" class="seleDiv" style="width: 250px;">
-                                            <option selected="selected">구분</option>
+                                            <option selected="selected">카테고리</option>
                                             <option value="헌법">헌법</option>
                                             <option value="스파르타반">스파르타반</option>
                                             <option value="공직선거법">공직선거법</option>
@@ -406,9 +406,11 @@
                                 <tr><th colspan="3" class="w-list tx-left pl20"><strong>안녕하세요. 커리질문입니다~</strong></th></tr>
                                 <tr>
                                     <td class="w-acad tx-left pl20">
-                                        <span class="pBox p6">공무원</span>
-                                        <span class="oBox offlineBox NSK">학원</span>
-                                        <span class="oBox nyBox NSK">노량진</span>
+                                        <dl>
+                                            <dt>일반경찰<span class="row-line">|</span></dt>
+                                            <dt>노량진<span class="row-line">|</span></dt>
+                                            <dt>스파르타</dt>
+                                        </dl>
                                         <span class="row-line">|</span>
                                     </td>
                                     <td class="w-write">작성자명<span class="row-line">|</span></td>

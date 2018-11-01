@@ -127,14 +127,14 @@
                     <div class="info-Box info-Box3 NG">
                         <dl>
                             <dt>
-                                · 상담 예약이 완료되었습니다. 예약사항을 다시 한번 확인해 주세요.<br/>
+                                · 상담 예약이 완료되었습니다. 예약사항을 다시 한 번 확인해 주세요.<br/>
                                 · <span class="tx-blue">상담예약일시를 변경하시려면 예약 취소를 하시고 1단계 상담일자/시간선택 부터 다시 신청하셔야 합니다</span>.<br/>
                                 · 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>
                             </dt>
                         </dl>
                     </div>
                 </div>
-                <div class="willbes-User-Info p_re pb60">
+                <div class="willbes-User-Info p_re pb30">
                     <div class="InfoTable GM">
                         <table cellspacing="0" cellpadding="0" class="classTable userInfoTable counselTable under-gray bdt-gray bdb-gray tx-gray">
                             <colgroup>
@@ -145,7 +145,7 @@
                             <tbody>
                                 <tr>
                                     <td class="w-tit">상담예약 일시</td>
-                                    <td class="w-info">2018-10-25 (목) 10:00 ~ 10:30</td>
+                                    <td class="w-info"><span class="tx-light-blue">2018-10-25 (목) 10:00 ~ 10:30</span></td>
                                 </tr>
                                 <tr>
                                     <td class="w-tit">이름(아이디)</td>

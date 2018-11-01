@@ -78,8 +78,6 @@ class Home extends \app\controllers\FrontController
      */
     public function html()
     {
-        echo 'mobile = '.$this->_is_mobile;
-        exit;
         $view_file = explode('/', uri_string(), 3)[2];
         $view_file = 'html/' . $view_file;
 

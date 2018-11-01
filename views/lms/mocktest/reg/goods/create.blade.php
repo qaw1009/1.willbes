@@ -10,7 +10,8 @@
             <form class="form-table" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
-                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data[''] : '' }}">
+                <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['ProdCode'] : '' }}">
+                <input type="hidden" name="Info" value="">
 
                 <table class="table table-bordered modal-table">
                     <tr>
@@ -23,17 +24,17 @@
                     <tr>
                         <th style="width: 15%">카테고리 <span class="required">*</span></th>
                         <td style="width: 35%" class="form-inline">
-                            <select class="form-control mr-5 " id="cateD1" name="cateD1" {{ ($method == 'PUT') ? 'disabled' : '' }}>
+                            <select class="form-control mr-5 " id="cateD1" name="cateD1" @if($method == 'PUT') disabled @endif>
                                 <option value="">카테고리</option>
                                 @foreach($cateD1 as $row)
-                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && $row['SiteCode'] == $data['SiteCode']) selected @endif>{{ $row['CateName'] }}</option>
+                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && $row['CateCode'] == $data['CateCode']) selected @endif>{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
                         </td>
                         <th style="width: 15%">응시분야 <span class="required">*</span></th>
                         <td style="width: 35%" class="form-inline">
-                            <span id="applyPartDisp"></span>
-                            <input type="hidden" name="applyPart" value="{{ ($method == 'PUT') ? $data[''] : '' }}">
+                            <span id="TakePartDisp"></span>
+                            <input type="hidden" name="TakePart" value="{{ ($method == 'PUT') ? $data['CateCode'] : '' }}">
                         </td>
                     </tr>
                     <tr>
@@ -46,7 +47,7 @@
                         <th colspan="1">응시형태 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyType as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeFormsCcds[]" value="{{$k}}"> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="TakeFormsCcds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeFormsCcds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -54,7 +55,7 @@
                         <th colspan="1">OFF(학원) 응시지역1 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyArea1 as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeAreas1CCds[]" value="{{$k}}"> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="TakeAreas1CCds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas1CCds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -62,7 +63,7 @@
                         <th colspan="1">OFF(학원) 응시지역2 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyArea2 as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeAreas2Ccd[]" value="{{$k}}"> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="TakeAreas2Ccd[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas2Ccd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -70,7 +71,7 @@
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($addPoint as $k => $v)
-                                <input type="checkbox" class="flat" name="AddPointsCcd[]" value="{{$k}}"> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="AddPointsCcd[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointsCcd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -80,7 +81,7 @@
                             <select class="form-control mr-5" name="MockYear">
                                 <option value="">연도</option>
                                 @for($i=(date('Y')+1); $i>=2005; $i--)
-                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['Year']) selected @endif>{{$i}}</option>
+                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['MockYear']) selected @endif>{{$i}}</option>
                                 @endfor
                             </select>
                         </td>
@@ -89,7 +90,7 @@
                             <select class="form-control mr-5" name="MockRotationNo">
                                 <option value="">회차</option>
                                 @foreach(range(1, 20) as $i)
-                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['RotationNo']) selected @endif>{{$i}}</option>
+                                    <option value="{{$i}}" @if($method == 'PUT' && $i == $data['MockRotationNo']) selected @endif>{{$i}}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -97,52 +98,54 @@
                     <tr>
                         <th>모의고사명 <span class="required">*</span></th>
                         <td>
-                            <input type="text" class="form-control" name="ProdName" value="@if($method == 'PUT'){{ $data[''] }}@endif" style="width:70%;">
+                            <input type="text" class="form-control" name="ProdName" value="@if($method == 'PUT'){{ $data['ProdName'] }}@endif" style="width:70%;">
                         </td>
                         <th>모의고사코드</th>
                         <td>
+                            @if($method == 'PUT'){{ $data['ProdCode'] }}@endif
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">판매가 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <span class="blue">[정상가]</span> <input type="text" class="form-control" name="SalePrice" value="@if($method == 'PUT'){{ $data[''] }}@endif" style="width:100px;"> 원
-                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" value="@if($method == 'PUT'){{ $data[''] }}@endif" style="width:100px;">
+                            <span class="blue">[정상가]</span> <input type="text" class="form-control" name="SalePrice" value="@if($method == 'PUT'){{ $data['SalePrice'] }}@endif" style="width:100px;"> 원
+                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" value="@if($method == 'PUT'){{ $data['SaleRate'] }}@endif" style="width:100px;">
                             <select name="SaleDiscType" class="form-control">
-                                <option value="R">%</option>
-                                <option value="P">-</option>
+                                <option value="">선택</option>
+                                <option value="R" @if($method == 'PUT' && $data['SaleDiscType'] == 'R') selected @endif>%</option>
+                                <option value="P" @if($method == 'PUT' && $data['SaleDiscType'] == 'P') selected @endif>-</option>
                             </select>
-                            <span class="blue ml-20">[판매가]</span> <input type="text" class="form-control" name="RealSalePrice" value="@if($method == 'PUT'){{ $data[''] }}@endif" style="width:100px;"> 원
+                            <span class="blue ml-20">[판매가]</span> <input type="text" class="form-control" name="RealSalePrice" value="@if($method == 'PUT'){{ $data['RealSalePrice'] }}@endif" style="width:100px;" readonly> 원
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">접수기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ $data[''] }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ ($data['SaleEndDatm']) ? date("Y-m-d", strtotime($data['SaleStartDatm'])) : '' }}@endif" readonly>
                             <select name="SaleStartDatm_h" class="form-control">
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("H", strtotime($data['SaleStartDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleStartDatm_m" class="form-control">
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("i", strtotime($data['SaleStartDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ $data[''] }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ ($data['SaleEndDatm']) ? date("Y-m-d", strtotime($data['SaleEndDatm'])) : '' }}@endif" readonly>
                             <select name="SaleEndDatm_h" class="form-control">
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("H", strtotime($data['SaleEndDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleEndDatm_m" class="form-control">
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("i", strtotime($data['SaleEndDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                         </td>
@@ -150,59 +153,59 @@
                     <tr>
                         <th colspan="1">접수마감인원(학원용) <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control" name="ClosingPerson" value="@if($method == 'PUT'){{ $data[''] }}@endif" style="width: 100px;">
+                            <input type="text" class="form-control" name="ClosingPerson" value="@if($method == 'PUT'){{ $data['ClosingPerson'] }}@endif" style="width: 100px;">
                             <span class="ml-20">응시형태가 'OFF(학원)'인 경우 마감인원 (미등록시 무제한)</span>
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">접수상태 <span class="required">*</span></th>
                         <td colspan="3">
-                            <input type="radio" name="IsRegister" class="flat" value="" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-10">진행중</span>
-                            <input type="radio" name="IsRegister" class="flat" value="" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text mr-20">접수마감</span>
+                            <input type="radio" name="IsRegister" class="flat" value="Y" @if($method == 'POST' || ($method == 'PUT' && $data['IsRegister'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-10">접수중</span>
+                            <input type="radio" name="IsRegister" class="flat" value="N" @if($method == 'PUT' && $data['IsRegister'] == 'N') checked="checked" @endif> <span class="flat-text mr-20">접수마감</span>
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">응시가능기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ $data[''] }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ ($data['TakeStartDatm']) ? date("Y-m-d", strtotime($data['TakeStartDatm'])) : '' }}@endif" readonly>
                             <select name="TakeStartDatm_h" class="form-control">
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['TakeStartDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeStartDatm_m" class="form-control">
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("i",strtotime($data['TakeStartDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ $data[''] }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ ($data['TakeEndDatm']) ? date("Y-m-d", strtotime($data['TakeEndDatm'])) : '' }}@endif" readonly>
                             <select name="TakeEndDatm_h" class="form-control">
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['TakeEndDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeEndDatm_m" class="form-control">
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['d'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && date("i",strtotime($data['TakeEndDatm'])) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-20 mr-20"> | </span>
-                            <input type="radio" name="TakeType" class="flat" value="" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-10">상시</span>
-                            <input type="radio" name="TakeType" class="flat" value="" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text mr-20">기간제한</span>
+                            <input type="radio" name="TakeType" class="flat" value="A" @if($method == 'POST' || ($method == 'PUT' && $data['TakeType'] == 'A')) checked="checked" @endif> <span class="flat-text mr-10">상시</span>
+                            <input type="radio" name="TakeType" class="flat" value="L" @if($method == 'PUT' && $data['TakeType'] == 'L') checked="checked" @endif> <span class="flat-text mr-20">기간제한</span>
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">응시시간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control" name="TakeTime" value="@if($method == 'PUT'){{ $data[''] }}@endif" style="width: 100px;"> 분
+                            <input type="text" class="form-control" name="TakeTime" value="@if($method == 'PUT'){{ $data['TakeTime'] }}@endif" style="width: 100px;"> 분
                         </td>
                     </tr>
-                    <tr data-su-type="E"> {{-- PmrpIdx --}}
+                    <tr data-su-type="E">
                         <th colspan="1">
                             필수과목 <span class="required">*</span>
                             <button type="button" class="btn btn-sm btn-primary ml-10 act-su-search">검색</button>
@@ -240,6 +243,26 @@
                                         <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                                     </tr>
                                     {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
+
+                                    @if($method == 'PUT')
+                                        @foreach($sData as $row)
+                                            @continue($row['MockType'] == 'S')
+
+                                            <tr data-subject-idx="{{ $row['PmrpIdx'] }}">
+                                                <td class="text-center form-inline">
+                                                    <input type="text" class="form-control" style="width:30px" name="OrderNum[]" value="{{ $row['OrderNum'] }}">
+                                                    <input type="hidden" name="MpIdx[]" value="{{ $row['MpIdx'] }}">
+                                                    <input type="hidden" name="MockType[]" value="{{ $row['MockType'] }}">
+                                                </td>
+                                                <td class="text-center">{{ $row['Year'] }}</td>
+                                                <td class="text-center">{{ $row['RotationNo'] }}</td>
+                                                <td class="text-center">{{ $row['SubjectName'] }}</td>
+                                                <td class="text-center">{{ $row['wProfName'] }}</td>
+                                                <td>{{ '['. $row['MpIdx'] .'] '. $row['PapaerName'] }}</td>
+                                                <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -268,22 +291,41 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @if($method == 'PUT')
+                                        @foreach($sData as $row)
+                                            @continue($row['MockType'] == 'E')
+
+                                            <tr data-subject-idx="{{ $row['PmrpIdx'] }}">
+                                                <td class="text-center form-inline">
+                                                    <input type="text" class="form-control" style="width:30px" name="OrderNum[]" value="{{ $row['OrderNum'] }}">
+                                                    <input type="hidden" name="MpIdx[]" value="{{ $row['MpIdx'] }}">
+                                                    <input type="hidden" name="MockType[]" value="{{ $row['MockType'] }}">
+                                                </td>
+                                                <td class="text-center">{{ $row['Year'] }}</td>
+                                                <td class="text-center">{{ $row['RotationNo'] }}</td>
+                                                <td class="text-center">{{ $row['SubjectName'] }}</td>
+                                                <td class="text-center">{{ $row['wProfName'] }}</td>
+                                                <td>{{ '['. $row['MpIdx'] .'] '. $row['PapaerName'] }}</td>
+                                                <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="1">자동문자(결제완료) <span class="required">*</span></th>
+                        <th colspan="1">자동문자(결제완료)</th>
                         <td colspan="3" class="form-inline">
                             <div class="mb-5">
                                 <span class="mr-10">[문자발송사용여부]</span>
                                 <input type="radio" name="IsSms" class="flat" value="Y" @if($method == 'PUT' && $data['IsSms']=='Y') checked @endif> <span class="flat-text mr-20">사용</span>
                                 <input type="radio" name="IsSms" class="flat" value="N" @if($method == 'POST' || ($method == 'PUT' && $data['IsSms']=='N')) checked @endif> <span class="flat-text">미사용</span>
                             </div>
-                            <textarea id="SmsMemo" name="Memo" class="form-control" style="width: 60%; height: 100px;"></textarea>
+                            <textarea id="SmsMemo" name="Memo" class="form-control" style="width: 60%; height: 100px;">@if($method == 'PUT'){{ $data['Memo'] }}@endif</textarea>
                             <div class="mt-10">
-                                [발신번호] <input type="text" name="SendTel" id="SendTel" value="" size="12" class="form-control" maxlength="20">
+                                [발신번호] <input type="text" name="SendTel" id="SendTel" value="@if($method == 'PUT'){{ $data['SendTel'] }}@endif" size="12" class="form-control" maxlength="20">
                                 <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                                 <span class="red">byte</span>
                                 (80byte 초과 시 LMS 문자로 전환됩니다.)
@@ -291,7 +333,7 @@
                         </td>
                     </tr>
                     {{--<tr>--}}
-                        {{--<th colspan="1">자동문자(결제대기) <span class="required">*</span></th>--}}
+                        {{--<th colspan="1">자동문자(결제대기)</th>--}}
                         {{--<td colspan="3" class="form-inline">--}}
                             {{--<div class="mb-5">--}}
                                 {{--<span class="mr-10">[문자발송사용여부]</span>--}}
@@ -360,14 +402,25 @@
             });
 
             // 과목리스트 초기화
-            var sList = $('#eSubject-wrap table tbody');
-            suAddField = sList.find('tr:eq(0)').html();
-            sList.find('tr:eq(0)').remove();
+            var chapterExist = [];
+            var eList = $('#eSubject-wrap table tbody');
+            var sList = $('#sSubject-wrap table tbody');
+            suAddField = eList.find('tr:eq(0)').html();
+            eList.find('tr:eq(0)').remove();
+
+            eList.find('tr').each(function () {
+                var sIDX = $(this).data('subject-idx');
+                if(sIDX) chapterExist.push(sIDX);
+            });
+            sList.find('tr').each(function () {
+                var sIDX = $(this).data('subject-idx');
+                if(sIDX) chapterExist.push(sIDX);
+            });
 
             // 과목리스트 삭제
             $regi_form.on('click', '.act-su-del', function () {
                 var that = $(this);
-                var suIdx = $(this).data('subject-idx');
+                var suIdx = $(this).closest('tr').data('subject-idx');
 
                 if( !suIdx ) { // 등록전 삭제
                     rowDel_Disp();
@@ -400,7 +453,7 @@
 
             // 과목리스트 정렬변경
             $regi_form.on('click', '.act-su-sort', function () {
-                var that = $(this).closest('tbody');
+                var that = $(this).closest('.subject-wrap').find('tbody');
 
                 if($(this).closest('.subject-wrap').find('tbody > tr').length == 0) return false;
 
@@ -408,7 +461,7 @@
                 var error = false;
                 var sorting = {};
                 $(this).closest('td').find('tbody > tr').each(function () {
-                    if($(this).data('chapter-idx')) {
+                    if($(this).data('subject-idx')) {
                         sorting[$(this).data('subject-idx')] = $(this).find('[name="OrderNum[]"]').val();
                     }
                     else {
@@ -454,6 +507,11 @@
 
             // 등록,수정
             $regi_form.submit(function() {
+                var chapterTotal = [];
+                eList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });
+                sList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });
+                $regi_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist}) );
+
                 var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/regGoods/update') : site_url('/mocktest/regGoods/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -463,18 +521,56 @@
                 }, showValidateError, null, false, 'alert');
             });
 
+
+            // 판매가 계산
+            $regi_form.on('change keyup', '[name="SalePrice"], [name="SaleRate"], [name="SaleDiscType"]',function () {
+                var realPrice;
+                var SalePrice = parseFloat($('[name="SalePrice"]').val());
+                var SaleRate = parseFloat($('[name="SaleRate"]').val());
+                var SaleDiscType = $('[name="SaleDiscType"]').val();
+
+                if( SalePrice !== '' && SaleRate !== '' && SaleDiscType !== '' && SalePrice >= 0 && SaleRate >= 0) {
+                    if( SaleDiscType == 'R' )  realPrice = SalePrice * (1 - SaleRate / 100);
+                    else if( SaleDiscType == 'P' )  realPrice = SalePrice - SaleRate;
+
+                    realPrice = (realPrice > 0) ? Math.floor(realPrice) : 0;
+
+                    $('[name="RealSalePrice"]').val(realPrice);
+                }
+                else {
+                    $('[name="RealSalePrice"]').val('');
+                }
+            });
+
+            // 기간제한 선택시만 응시가능시간 활성화
+            $regi_form.on('ifChecked', '[name="TakeType"]', takeTimeToggle);
+            takeTimeToggle();
+
+            function takeTimeToggle() {
+                if( $('[name="TakeType"]:checked').val() == 'A' ) {
+                    $('[name^="TakeStartDatm_"]').prop('disabled', true);
+                    $('[name^="TakeEndDatm_"]').prop('disabled', true);
+                }
+                else if( $('[name="TakeType"]:checked').val() == 'L' ) {
+                    $('[name^="TakeStartDatm_"]').prop('disabled', false);
+                    $('[name^="TakeEndDatm_"]').prop('disabled', false);
+                }
+            }
+
             // 문자 바이트 수 계산
-            $('#SmsMemo').on('change keyup input', function() {
+            $('#SmsMemo').on('change keyup', function() {
                 $('#content_byte').val(fn_chk_byte($(this).val()));
             });
 
-            @if(empty($data_sms['Memo']) !== true)
+            @if( !empty($data['Memo']) )
             $('#content_byte').val(fn_chk_byte($('#SmsMemo').val()));
             @endif
 
             // 사이트, 카테고리, 응시분야, 직렬, 발신번호
-            $regi_form.find('#cateD1').chained('#siteCode');
+            @if($method == 'POST') $regi_form.find('#cateD1').chained('#siteCode'); @endif
+
             $regi_form.on('change', '#siteCode, #cateD1', moInputInit);
+            moInputInit();
 
             function moInputInit() {
                 var src_site = $('#siteCode');
@@ -483,25 +579,38 @@
                 // 응시분야
                 var txt = !src.val() ? '' : src.find('option:selected').text();
 
-                $regi_form.find('[name="applyPart"]').val(src.val());
-                $regi_form.find('#applyPartDisp').text(txt);
+                $regi_form.find('[name="TakePart"]').val(src.val());
+                $regi_form.find('#TakePartDisp').text(txt);
 
                 // 직렬
                 var cateD2 = JSON.parse('{!! $cateD2 !!}');
-                var cateD2_input = '';
+                var cateD2_sel = JSON.parse('{!! $cateD2_sel !!}');
+                var cateD2_input = checked = disabled = '';
+
                 if (src.val()) {
                     $.each(cateD2[src.val()], function (i, v) {
-                        cateD2_input += '<input type="checkbox" class="flat" name="cateD2[]" value="' + i + '"> <span class="flat-text mr-20">' + v + '</span>';
+                        @if($method == 'PUT') disabled = ' disabled '; @endif
+                        checked = ($.inArray(i, cateD2_sel) != -1) ? ' checked ' : '';
+
+                        cateD2_input += '<input type="checkbox" class="flat" name="cateD2[]" value="' + i + '"' + checked + disabled + '> <span class="flat-text mr-20">' + v + '</span>';
                     });
                     $("#cateD2-wrap").html(cateD2_input);
                     init_iCheck();
                 }
+                else {
+                    $("#cateD2-wrap").html('');
+                }
 
                 // 발신번호
-                var csTel = JSON.parse('{!! $csTel !!}');
-                $('[name=SendTel]').val( csTel[src_site.val()] );
+                var csTelChk = true;
+                @if($method == 'PUT') csTelChk = false; @endif  {{-- 수정 로딩시 입력된 발신번호 유지위해 --}}
+
+                if(csTelChk) {
+                    var csTel = JSON.parse('{!! $csTel !!}');
+                    $('[name=SendTel]').val(csTel[src_site.val()]);
+                }
+                if(csTelChk === false) csTelChk = true;
             }
-            moInputInit();
         });
     </script>
 @stop

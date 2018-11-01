@@ -545,6 +545,9 @@ class Player extends \app\controllers\FrontController
 
     function info()
     {
+        $input = $this->_reqG(null);
+        $data = [];
+
         $this->load->view('/player/info', [
             'input' => $input,
             'data' => $data
@@ -553,6 +556,9 @@ class Player extends \app\controllers\FrontController
 
     function qna()
     {
+        $input = $this->_reqG(null);
+        $data = [];
+
         $this->load->view('/player/qna',[
             'input' => $input,
             'data' => $data

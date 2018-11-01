@@ -36,7 +36,7 @@
                             </label>
                             <div class="col-md-10 form-inline">
                                 <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="" style="width: 180px;">
-                                <button type="button" id="btn_member_search" class="btn btn-primary mb-0">회원검색</button>
+                                <button type="button" id="btn_member_search" data-result-type="multiple" class="btn btn-primary mb-0">회원검색</button>
                                 <span id="selected_member" class="pl-10"></span>
                             </div>
                         </div>

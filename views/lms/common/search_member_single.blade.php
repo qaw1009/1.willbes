@@ -20,7 +20,7 @@
         <label class="control-label col-md-2 pt-5" for="search_value">회원검색
         </label>
         <div class="col-md-4">
-            <input type="text" class="form-control input-sm" id="search_value" name="search_value">
+            <input type="text" class="form-control input-sm" id="search_value" name="search_value" value="{{ element('parent_value', $arr_param, '') }}">
         </div>
         <div class="col-md-4">
             <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
@@ -88,11 +88,16 @@
                 var row = $datatable.row(that.data('row-idx')).data();
                 var $parent_regi_form = $('#regi_form');
                 var $parent_selected_member = $('#selected_member');
+                var html = '';
 
-                $parent_regi_form.find('input[name="mem_idx"]').val(row.MemIdx);
                 if ($parent_selected_member.length > 0) {
-                    var mem_name = row.MemName + '(' + row.MemId + ')';
-                    $parent_selected_member.text(mem_name);
+                    html += '<span class="pr-10">' + row.MemName + '(' + row.MemId + ')';
+                    html += '   <a href="#none" data-mem-idx="' + row.MemIdx + '" class="selected-member-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <input type="hidden" name="mem_idx[]" value="' + row.MemIdx + '"/>';
+                    html += '</span>';
+
+                    $parent_regi_form.find('input[name="mem_idx[]"]').remove();
+                    $parent_selected_member.html(html);
                 }
 
                 $("#pop_modal").modal('toggle');

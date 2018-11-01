@@ -102,7 +102,7 @@ class CodeModel extends WB_Model
      */
     public function findParentCcd($group_ccd)
     {
-        $column = 'CcdName, (Select ifNull(Max(OrderNum),0)+1 From '.$this->_table.' Where GroupCcd='.$group_ccd.' and IsStatus="Y" ) As NextOrderNum';
+        $column = 'CcdName, (Select ifNull(Max(OrderNum),0)+1 From '.$this->_table.' Where GroupCcd='.$group_ccd.' and OrderNum < 999 and IsStatus="Y" ) As NextOrderNum';
         return  $this->_conn->getFindResult($this->_table, $column, [
             'EQ'=>['Ccd'=>$group_ccd, 'IsStatus' => 'Y']
         ]);
@@ -116,7 +116,8 @@ class CodeModel extends WB_Model
     public function getCcdOrderNum($groupCcd)
     {
         return $this->_conn->getFindResult($this->_table,'ifNull(Max(OrderNum),0)+1 as NextOrderNum',[
-            'EQ' => ['GroupCcd' => $groupCcd]
+            'EQ' => ['GroupCcd' => $groupCcd],
+            'LT' => ['OrderNum' => '999']
         ])['NextOrderNum'];
     }
 
@@ -154,30 +155,29 @@ class CodeModel extends WB_Model
 
         $ccd = "601";  //그룹코드생성 기본값
 
-          try {
-              if (element('makeType',$input) === "group") {
-                  $query .= ' And GroupCcd = "0" ';
-                  $ordernum = NULL;
-              } else if (element('makeType', $input) === "sub") {
-                  $query .= ' And GroupCcd = "'.element('groupCcd', $input).'" ';
-                  $ccd = element('groupCcd', $input)."001";
-                  $ordernum = empty(element("OrderNum", $input) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
-              }
+        try {
+            if (element('makeType',$input) === "group") {
+                $query .= ' And GroupCcd = "0" ';
+                $ordernum = NULL;
+            } else if (element('makeType', $input) === "sub") {
+                $query .= ' And GroupCcd = "'.element('groupCcd', $input).'" And Ccd not like "%999"';
+                $ccd = element('groupCcd', $input)."001";
+                $ordernum = empty(element("OrderNum", $input) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
+            }
               
-              $result = $this->_conn->query($query, [
-                    $ccd
-                    ,element('groupCcd', $input)
-                    ,element('CcdName', $input)
-                    ,element('CcdValue', $input)
-                    ,$ordernum
-                    ,element('is_use', $input)
-                    ,element('CcdDesc', $input)
-                    ,element('CcdEtc', $input)
-                    ,$this->session->userdata('admin_idx')
-                ]);
+            $result = $this->_conn->query($query, [
+                $ccd
+                ,element('groupCcd', $input)
+                ,element('CcdName', $input)
+                ,element('CcdValue', $input)
+                ,$ordernum
+                ,element('is_use', $input)
+                ,element('CcdDesc', $input)
+                ,element('CcdEtc', $input)
+                ,$this->session->userdata('admin_idx')
+            ]);
 
-                $this->_conn->trans_commit();
-
+            $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -195,7 +195,6 @@ class CodeModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-
             $maketype = element('makeType',$input);
             $ccd = element('Ccd', $input);
             $ccdname = element('CcdName', $input);
@@ -227,7 +226,6 @@ class CodeModel extends WB_Model
             }
 
             $this->_conn->trans_commit();
-
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);

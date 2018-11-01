@@ -15,9 +15,16 @@ $(document).ready(function() {
         $('#regi_type_' + regi_type).removeClass('hide').addClass('show');
     });
 
+    // 회원검색 결과 개별 삭제
+    $mem_search_form.on('click', '.selected-member-delete', function() {
+        var that = $(this);
+        that.parent().remove();
+    });
+
     // 회원검색 버튼 클릭
     $('#btn_member_search').on('click', function() {
         var $search_mem_id = $mem_search_form.find('input[name="search_mem_id"]');
+        var result_type = $(this).data('result-type') || 'multiple';
 
         if ($search_mem_id.val() === '') {
             alert('회원 검색어를 입력해 주십시오.');
@@ -26,7 +33,7 @@ $(document).ready(function() {
         }
 
         $('#btn_member_search').setLayer({
-            'url': '/common/searchMember/index/multiple/parent_value/' + $search_mem_id.val(),
+            'url': '/common/searchMember/index/' + result_type + '/parent_value/' + $search_mem_id.val(),
             'width': 900
         });
     });

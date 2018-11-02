@@ -121,31 +121,35 @@
                     <tr>
                         <th colspan="1">접수기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ ($data['SaleEndDatm']) ? date("Y-m-d", strtotime($data['SaleStartDatm'])) : '' }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@endif" readonly>
                             <select name="SaleStartDatm_h" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H", strtotime($data['SaleStartDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleStartDatm_m" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("i", strtotime($data['SaleStartDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ ($data['SaleEndDatm']) ? date("Y-m-d", strtotime($data['SaleEndDatm'])) : '' }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@endif" readonly>
                             <select name="SaleEndDatm_h" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H", strtotime($data['SaleEndDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleEndDatm_m" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("i", strtotime($data['SaleEndDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                         </td>
@@ -167,31 +171,35 @@
                     <tr>
                         <th colspan="1">응시가능기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ ($data['TakeStartDatm']) ? date("Y-m-d", strtotime($data['TakeStartDatm'])) : '' }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@endif" readonly>
                             <select name="TakeStartDatm_h" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['TakeStartDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeStartDatm_m" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("i",strtotime($data['TakeStartDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ ($data['TakeEndDatm']) ? date("Y-m-d", strtotime($data['TakeEndDatm'])) : '' }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@endif" readonly>
                             <select name="TakeEndDatm_h" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("H",strtotime($data['TakeEndDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeEndDatm_m" class="form-control">
+                                <option value="">선택</option>
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
-                                    <option value="{{$v}}" @if($method==='PUT' && date("i",strtotime($data['TakeEndDatm'])) == $v) selected @endif>{{$v}}</option>
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-20 mr-20"> | </span>
@@ -384,9 +392,6 @@
         var suAddField;
 
         $(document).ready(function() {
-            // 사이트, 카테고리 링크
-            $regi_form.find('.cateD1').chained('#siteCode');
-
             // 과목검색창 오픈
             $('.act-su-search').on('click', function() {
                 if( !$regi_form.find('#siteCode').val() || !$regi_form.find('#cateD1').val() ) {
@@ -422,7 +427,7 @@
                 var that = $(this);
                 var suIdx = $(this).closest('tr').data('subject-idx');
 
-                if( !suIdx ) { // 등록전 삭제
+                if( !suIdx ) { // 등록전
                     rowDel_Disp();
                 }
                 else { // 등록후
@@ -437,6 +442,7 @@
 
                     sendAjax(_url, data, function(ret) {
                         if (ret.ret_cd) {
+                            chapterExist.splice(chapterExist.indexOf(suIdx), 1);
                             rowDel_Disp();
                             notifyAlert('success', '알림', ret.ret_msg);
                         }
@@ -444,9 +450,11 @@
                 }
 
                 function rowDel_Disp() {
+                    var wrap = that.closest('tbody');
+
                     that.closest('tr').remove();
-                    that.closest('tbody').find('tr [name="OrderNum[]"]').each(function (index) {
-                        that.val(++index);
+                    wrap.find('[name="OrderNum[]"]').each(function (i) {
+                        $(this).val(++i);
                     });
                 }
             });
@@ -455,12 +463,12 @@
             $regi_form.on('click', '.act-su-sort', function () {
                 var that = $(this).closest('.subject-wrap').find('tbody');
 
-                if($(this).closest('.subject-wrap').find('tbody > tr').length == 0) return false;
+                if(that.find('tr').length == 0) return false;
 
 
                 var error = false;
                 var sorting = {};
-                $(this).closest('td').find('tbody > tr').each(function () {
+                that.find('tr').each(function () {
                     if($(this).data('subject-idx')) {
                         sorting[$(this).data('subject-idx')] = $(this).find('[name="OrderNum[]"]').val();
                     }
@@ -516,7 +524,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/mocktest/regGoods/') }}' + getQueryString());
+                        location.replace('{{ site_url('/mocktest/regGoods/edit/') }}' + ret.ret_data.dt.idx + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
@@ -590,7 +598,7 @@
                 if (src.val()) {
                     $.each(cateD2[src.val()], function (i, v) {
                         @if($method == 'PUT') disabled = ' disabled '; @endif
-                        checked = ($.inArray(i, cateD2_sel) != -1) ? ' checked ' : '';
+                        checked = ($.inArray(i, cateD2_sel) !== -1) ? ' checked ' : '';
 
                         cateD2_input += '<input type="checkbox" class="flat" name="cateD2[]" value="' + i + '"' + checked + disabled + '> <span class="flat-text mr-20">' + v + '</span>';
                     });

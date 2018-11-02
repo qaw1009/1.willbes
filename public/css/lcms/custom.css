@@ -427,7 +427,8 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 
 /* 테이블 head가 2줄인 경우 수정 */
 .table.dataTable.table-head-row2 { border-collapse: collapse !important; }
-.table.dataTable.table-head-row2 th, .table.dataTable.table-head-row2 td { vertical-align: middle; line-height: 28px; }
+.table.dataTable.table-head-row2 th, .table.dataTable.table-head-row2 td { vertical-align: middle; }
+.table.dataTable.table-head-row2 th { line-height: 28px; }
 
 .ln_solid {
     border-top : 0;

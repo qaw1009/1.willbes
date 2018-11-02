@@ -166,8 +166,8 @@
                         var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
                         return row.CateName + IsUseCate;
                     }},
-                    {'data' : 'MockPart', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return data.replace(',', '<br>');
+                    {'data' : 'MockPartName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return data.join('<br>');
                     }},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},

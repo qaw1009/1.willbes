@@ -52,7 +52,7 @@ class RegGoodsModel extends WB_Model
 
         $select = "
             SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-            C1.CateName, C1.IsUse AS IsUseCate, GROUP_CONCAT(SC.CcdName) AS MockPart
+            C1.CateName, C1.IsUse AS IsUseCate
         ";
         $from = "
             FROM {$this->_table['mockProduct']} AS MP
@@ -60,29 +60,37 @@ class RegGoodsModel extends WB_Model
             JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-            JOIN {$this->_table['sysCode']} AS SC ON SC.Ccd IN(MP.MockPart) AND SC.IsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
-        $groupBy = "GROUP BY MP.ProdCode\n";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE MP.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY MP.ProdCode DESC\n";
 
-        $data = $this->_conn->query($select . $from . $where . $groupBy . $order . $offset_limit)->result_array();
-        $count = $this->_conn->query($selectCount . $from . $where . $groupBy)->row()->cnt;
+        $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         // todo 접수현황 추가
 
 
-        // 문자열 필드 -> 배열
+        // 직렬이름 추출
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+
+        // 데이터정리
         $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
         $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
 
         foreach ($data as &$it) {
-            $tmp = explode(',', $it['MockPart']);
-            $it['TakePart_on'] = ( in_array($applyType_on, $tmp) ) ? 'Y' : 'N';
-            $it['TakePart_off'] = ( in_array($applyType_off, $tmp) ) ? 'Y' : 'N';
+            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
+            $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
+
+            $mockPart = explode(',', $it['MockPart']);
+            foreach ($mockPart as $mp) {
+                if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
+            }
         }
 
         return array($data, $count);
@@ -106,28 +114,6 @@ class RegGoodsModel extends WB_Model
             // 신규 상품코드 조회
             $prodcode = $this->_conn->getFindResult($this->_table['Product'], 'IFNULL(MAX(ProdCode) + 1, 200001) as ProdCode');
             $prodcode = $prodcode['ProdCode'];
-
-            // lms_Product_Mock 복사
-            $sql = "
-                INSERT INTO {$this->_table['mockProduct']}
-                    (ProdCode, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo, 
-                     ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, IsUse,
-                     RegIp, RegAdminIdx, RegDate)
-                SELECT ?, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo, 
-                       ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, 'N', ?, ?, ?
-                FROM {$this->_table['mockProduct']}
-                WHERE ProdCode = ? AND IsStatus = 'Y'";
-            $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
-
-            // lms_Product_Mock_R_Paper 복사
-            $sql = "
-                INSERT INTO {$this->_table['mockProductExam']}
-                    (ProdCode, MpIdx, MockType, OrderNum, RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, MpIdx, MockType, OrderNum, ?, ?, ?
-                FROM {$this->_table['mockProductExam']}
-                WHERE ProdCode = ? AND IsStatus = 'Y'";
-            $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
 
 
             // lms_Product 복사
@@ -167,6 +153,29 @@ class RegGoodsModel extends WB_Model
                     (ProdCode, SendTel, Memo, RegIp, RegAdminIdx, RegDatm)
                 SELECT ?, SendTel, Memo, ?, ?, ?
                 FROM {$this->_table['ProductSMS']}
+                WHERE ProdCode = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+
+            // lms_Product_Mock 복사
+            $sql = "
+                INSERT INTO {$this->_table['mockProduct']}
+                    (ProdCode, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo,
+                     ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, IsUse,
+                     RegIp, RegAdminIdx, RegDatm)
+                SELECT ?, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo,
+                       ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, 'N', ?, ?, ?
+                FROM {$this->_table['mockProduct']}
+                WHERE ProdCode = ? AND IsStatus = 'Y'";
+            $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+
+
+            // lms_Product_Mock_R_Paper 복사
+            $sql = "
+                INSERT INTO {$this->_table['mockProductExam']}
+                    (ProdCode, MpIdx, MockType, OrderNum, RegIp, RegAdminIdx, RegDatm)
+                SELECT ?, MpIdx, MockType, OrderNum, ?, ?, ?
+                FROM {$this->_table['mockProductExam']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
 
@@ -270,8 +279,8 @@ class RegGoodsModel extends WB_Model
                 'ClosingPerson'  => $this->input->post('ClosingPerson'),
                 'IsRegister'     => $this->input->post('IsRegister'), // 접수상태
                 'TakeType'       => $this->input->post('TakeType'),
-                'TakeStartDatm'  => $TakeStartDatm,
-                'TakeEndDatm'    => $TakeEndDatm,
+                'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
+                'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
                 'IsUse'          => $this->input->post('IsUse'),
                 'RegIp'          => $this->input->ip_address(),
@@ -307,7 +316,7 @@ class RegGoodsModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true];
+        return ['ret_cd' => true, 'dt' => ['idx' => $prodcode]];
     }
 
 
@@ -376,8 +385,8 @@ class RegGoodsModel extends WB_Model
                 'ClosingPerson'  => $this->input->post('ClosingPerson'),
                 'IsRegister'     => $this->input->post('IsRegister'),
                 'TakeType'       => $this->input->post('TakeType'),
-                'TakeStartDatm'  => $TakeStartDatm,
-                'TakeEndDatm'    => $TakeEndDatm,
+                'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
+                'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
                 'IsUse'          => $this->input->post('IsUse'),
                 'UpdDatm'        => $date,
@@ -399,7 +408,7 @@ class RegGoodsModel extends WB_Model
             return error_result($e);
         }
 
-        return ['ret_cd' => true];
+        return ['ret_cd' => true, 'dt' => ['idx' => $this->input->post('idx')]];
     }
 
 

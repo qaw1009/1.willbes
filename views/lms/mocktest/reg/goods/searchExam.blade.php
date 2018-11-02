@@ -1,12 +1,13 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    과목검색
+    과목검색 {{ ($suType == 'E') ? '[필수]' : '[선택]' }}
 @stop
 
 @section('layer_header')
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
+        <input type="hidden" name="sc_suType" value="{{$suType}}">
         @endsection
 
         @section('layer_content')
@@ -72,7 +73,7 @@
                     <tr>
                         <th colspan="1">통합검색</th>
                         <td colspan="3">
-                            <input type="text" class="form-control" style="width:300px;" name="sc_fi" value="{{ @$_GET['sc_fi'] }}">
+                            <input type="text" class="form-control" style="width:300px;" name="sc_fi" value="">
                         </td>
                     </tr>
                 </table>
@@ -164,12 +165,10 @@
                     
                     // 적용
                     $list_table.on('click', '.act-sub-apply', function () {
-                        var suType = '{{$suType}}';
+                        var suType = $search_form.find('[name="sc_suType"]').val();
                         var row = $datatable.row( $(this).data('row-idx')).data();
                         var target = (suType == 'E') ? $('#eSubject-wrap table > tbody') : $('#sSubject-wrap table > tbody');
                         var index = target.find('tr').length;
-
-                        // todo 선택한 데이터의 직렬값이 일치하는지 체크
 
                         target.append('<tr data-subject-idx="">' + suAddField + '</tr>');
                         target.find('tr').last().find('[name="OrderNum[]"]').val(++index);

@@ -19,7 +19,7 @@ $config['mock'] = array(
     'sysCode_applyArea1' => 691, // 모의고사 Off 응시지역1
     'sysCode_applyArea2' => 692, // 모의고사 Off 응시지역2
     'sysCode_addPoint' => 693,   // 모의고사 가산점 ( 운영코드DB IsValueUse=Y)
-    'sysCode_ProdTypeCcd' => 636012,   // lms_Product > 상품타입코드 입력값 (모의고사)
+    'sysCode_ProdTypeCcd' => 636010,   // lms_Product > 상품타입코드 입력값 (모의고사)
     'sysCode_SaleStatusCcd' => 618001, // lms_Product > 판매상태코드 입력값 (판매가능)
     'sysCode_PointApplyCcd' => 635001, // lms_Product > 포인트적용코드 입력값 (전체)
     'sysCode_SaleTypeCcd' => 613001,   // lms_Product_Sale > 판매타입코드 입력값 (PC+모바일)

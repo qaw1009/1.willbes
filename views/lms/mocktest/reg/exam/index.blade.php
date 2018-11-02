@@ -164,8 +164,10 @@
                         return row.CateRouteName + IsUseCate;
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        var SubjectType = (row.SubjectType === 'E') ? ' [필수]' : ' [선택]';
                         var IsUseSubject = (row.IsUseSubject === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                        return row.SubjectName + IsUseSubject;
+
+                        return row.SubjectName + SubjectType + IsUseSubject;
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         var IsUseProfessor = (row.IsUseProfessor === 'Y') ? '' : '<span class="red">(미사용)</span>';

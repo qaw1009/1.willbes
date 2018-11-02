@@ -3,6 +3,8 @@
  * ======================================================================
  * 모의고사등록 > 모의고사상품등록
  * ======================================================================
+ *
+ * lms_Product_Mock, lms_Product_Mock_R_Paper, lms_Product, lms_Product_R_Category, lms_Product_Sale, lms_Product_Sms DB에 나눠서 분리 저장
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -77,13 +79,12 @@ class RegGoods extends \app\controllers\BaseController
                 'MP.TakeType' => $this->input->post('search_TakeType'),
                 'MP.IsUse' => $this->input->post('search_use'),
             ],
+            'LKB' => [
+                'MP.MockPart' => $this->input->post('search_cateD2'),
+                'MP.TakeFormsCcds' => $this->input->post('search_TakeFormsCcds'),
+            ],
             'ORG' => [
                 'LKB' => [
-                    'MP.MockPart' => $this->input->post('search_cateD2'),
-                    'MP.TakeFormsCcds' => $this->input->post('search_TakeFormsCcds'),
-
-                    'C1.CateName' => $this->input->post('search_fi', true),
-                    'SC.CcdName' => $this->input->post('search_fi', true),
                     'PD.ProdName' => $this->input->post('search_fi', true),
                     'A.wAdminName' => $this->input->post('search_fi', true),
                     'PD.SaleStartDatm' => $this->input->post('search_fi', true),
@@ -207,8 +208,8 @@ class RegGoods extends \app\controllers\BaseController
         // 날짜체크
         $SaleStartDatm = $this->input->post('SaleStartDatm_d') .' '. $this->input->post('SaleStartDatm_h') .':'. $this->input->post('SaleStartDatm_m') .':00';
         $SaleEndDatm = $this->input->post('SaleEndDatm_d') .' '. $this->input->post('SaleEndDatm_h') .':'. $this->input->post('SaleEndDatm_m') .':59';
-        $TakeStartDatm = null;
-        $TakeEndDatm = null;
+        $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
+        $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
 
         if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleStartDatm_d']) ) {
             $this->json_error('접수시작시간이 잘못되었습니다.');
@@ -218,14 +219,11 @@ class RegGoods extends \app\controllers\BaseController
             $this->json_error('접수마감시간이 잘못되었습니다.');
             return;
         }
-        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) < 0 ) {
+        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
             $this->json_error('접수마감일이 접수시작일보다 빠릅니다.');
             return;
         }
         if( $this->input->post('TakeType') == 'L' ) { // 기간제한이 있는 경우
-            $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
-            $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
-
             if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $this->input->post('TakeStartDatm_d')) || empty($_POST['TakeStartDatm_h']) || empty($_POST['TakeStartDatm_m'])) {
                 $this->json_error('응시시작시간이 잘못되었습니다.');
                 return;
@@ -234,7 +232,7 @@ class RegGoods extends \app\controllers\BaseController
                 $this->json_error('응시마감시간이 잘못되었습니다.');
                 return;
             }
-            if( (strtotime($TakeEndDatm) - strtotime($TakeStartDatm)) < 0 ) {
+            if( (strtotime($TakeEndDatm) - strtotime($TakeStartDatm)) <= 0 ) {
                 $this->json_error('응시마감일이 응시시작일보다 빠릅니다.');
                 return;
             }
@@ -261,7 +259,11 @@ class RegGoods extends \app\controllers\BaseController
             return;
         }
         if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
-            $this->json_error('정렬번호가 중복되어 있습니다.');
+            $this->json_error('과목 정렬번호가 중복되어 있습니다.');
+            return;
+        }
+        if( count($_POST['MpIdx']) != count(array_unique($_POST['MpIdx'])) ) {
+            $this->json_error('선택한 과목이 중복되어 있습니다.');
             return;
         }
 
@@ -379,8 +381,8 @@ class RegGoods extends \app\controllers\BaseController
         // 날짜체크
         $SaleStartDatm = $this->input->post('SaleStartDatm_d') .' '. $this->input->post('SaleStartDatm_h') .':'. $this->input->post('SaleStartDatm_m') .':00';
         $SaleEndDatm = $this->input->post('SaleEndDatm_d') .' '. $this->input->post('SaleEndDatm_h') .':'. $this->input->post('SaleEndDatm_m') .':59';
-        $TakeStartDatm = null;
-        $TakeEndDatm = null;
+        $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
+        $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
 
         if( !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $_POST['SaleStartDatm_d']) ) {
             $this->json_error('접수시작시간이 잘못되었습니다.');
@@ -390,14 +392,11 @@ class RegGoods extends \app\controllers\BaseController
             $this->json_error('접수마감시간이 잘못되었습니다.');
             return;
         }
-        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) < 0 ) {
+        if( (strtotime($SaleEndDatm) - strtotime($SaleStartDatm)) <= 0 ) {
             $this->json_error('접수마감일이 접수시작일보다 빠릅니다.');
             return;
         }
         if( $this->input->post('TakeType') == 'L' ) { // 기간제한이 있는 경우
-            $TakeStartDatm = $this->input->post('TakeStartDatm_d') .' '. $this->input->post('TakeStartDatm_h') .':'. $this->input->post('TakeStartDatm_m') .':00';
-            $TakeEndDatm = $this->input->post('TakeEndDatm_d') .' '. $this->input->post('TakeEndDatm_h') .':'. $this->input->post('TakeEndDatm_m') .':59';
-
             if (!preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $this->input->post('TakeStartDatm_d')) || empty($_POST['TakeStartDatm_h']) || empty($_POST['TakeStartDatm_m'])) {
                 $this->json_error('응시시작시간이 잘못되었습니다.');
                 return;
@@ -406,7 +405,7 @@ class RegGoods extends \app\controllers\BaseController
                 $this->json_error('응시마감시간이 잘못되었습니다.');
                 return;
             }
-            if( (strtotime($TakeEndDatm) - strtotime($TakeStartDatm)) < 0 ) {
+            if( (strtotime($TakeEndDatm) - strtotime($TakeStartDatm)) <= 0 ) {
                 $this->json_error('응시마감일이 응시시작일보다 빠릅니다.');
                 return;
             }
@@ -433,7 +432,11 @@ class RegGoods extends \app\controllers\BaseController
             return;
         }
         if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
-            $this->json_error('정렬번호가 중복되어 있습니다.');
+            $this->json_error('과목 정렬번호가 중복되어 있습니다.');
+            return;
+        }
+        if( count($_POST['MpIdx']) != count(array_unique($_POST['MpIdx'])) ) {
+            $this->json_error('선택한 과목이 중복되어 있습니다.');
             return;
         }
 
@@ -475,8 +478,8 @@ class RegGoods extends \app\controllers\BaseController
     public function searchExamList()
     {
         $rules = [
-            ['field' => 'sc_siteCode', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'sc_cateD1', 'label' => '카테고리', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'sc_siteCode', 'label' => '사이트', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'sc_cateD1', 'label' => '카테고리', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'sc_cateD2', 'label' => '직렬', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'sc_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'sc_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
@@ -484,6 +487,8 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'sc_professor', 'label' => '교수', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'sc_questionOption', 'label' => '보기형식', 'rules' => 'trim|in_list[S,M,J]'],
             ['field' => 'sc_fi', 'label' => '검색', 'rules' => 'trim'],
+
+            ['field' => 'sc_suType', 'label' => '과목타입', 'rules' => 'trim|required|in_list[E,S]'],
             ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
             ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
         ];
@@ -491,7 +496,7 @@ class RegGoods extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'EB.SiteCode' => $this->input->post('search_site_code'),
+                'EB.SiteCode' => $this->input->post('sc_site_code'),
                 'MB.CateCode' => $this->input->post('sc_cateD1'),
                 'MB.Ccd' => $this->input->post('sc_cateD2'),
                 'EB.Year' => $this->input->post('sc_year'),
@@ -499,6 +504,8 @@ class RegGoods extends \app\controllers\BaseController
                 'MS.SubjectIdx' => $this->input->post('sc_subject'),
                 'EB.ProfIdx' => $this->input->post('sc_professor'),
                 'EB.QuestionOption' => $this->input->post('sc_questionOption'),
+
+                'MS.SubjectType' => $this->input->post('sc_suType'),
             ],
             'ORG' => [
                 'LKB' => [
@@ -556,8 +563,8 @@ class RegGoods extends \app\controllers\BaseController
 
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'tmp_key[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'tmp_val[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'tmp_key[]', 'label' => '정렬번호', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'tmp_val[]', 'label' => '정렬번호', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
         if ($this->validate($rules) === false) return;
 

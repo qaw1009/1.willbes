@@ -54,7 +54,7 @@ class RegExamModel extends WB_Model
 
 
         $select = "
-            SELECT EB.*, A.wAdminName, MB.CateCode, MB.Ccd,
+            SELECT EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType,
                    CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
                    (SELECT COUNT(*) FROM {$this->_table['mockExamQuestion']} AS EQ WHERE EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
                    IF(MB.Isuse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N', 'N', 'Y') AS IsUseCate,

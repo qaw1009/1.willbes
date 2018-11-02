@@ -36,8 +36,8 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <td class="w-acad pl20"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name']}}</span></td>
-                                        <td class="w-lec tx-left pl20"></td>
+                                        <td class="w-acad pl20">{{$data['Category_NameString']}}</td>
+                                        <td class="w-lec tx-left pl20"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name']}}</span></td>
                                         <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                                     </tr>

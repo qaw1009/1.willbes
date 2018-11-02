@@ -1081,7 +1081,7 @@
 
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
 
-                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {alert("선택형 패키지의 경우 선택과목을 선택할 수 없습니다.");return;}
+                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648001' && id=='selLecAdd') {alert("일반형 패키지의 경우 선택과목을 선택할 수 없습니다.");return;}
 
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()

@@ -28,16 +28,25 @@
                 <div class="Act2 mt30">
                     <!-- List -->
                     <div class="willbes-Leclist c_both">
-                        @if(empty($campus_ccd) === false)
                         <div class="willbes-Lec-Selected tx-gray">
+                            @if(empty($arr_base['category']) === false)
+                            <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" style="width: 250px;" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
+                                <option value="">카테고리</option>
+                                @foreach($arr_base['category'] as $row)
+                                    <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
+                                @endforeach
+                            </select>
+                            @endif
+
+                            @if(empty($arr_base['campus']) === false)
                             <select id="s_campus" name="s_campus" title="campus" class="seleCampus">
                                 <option value="">캠퍼스</option>
-                                @foreach($campus_ccd as $row)
+                                @foreach($arr_base['campus'] as $row)
                                     <option value="{{$row['CampusCcd']}}" @if(element('s_campus',$arr_input) == $row['CampusCcd']) selected @endif>{{$row['CcdName']}}</option>
                                 @endforeach
                             </select>
+                            @endif
                         </div>
-                        @endif
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                 <colgroup>

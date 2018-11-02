@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportNotice extends BaseSupport
 {
-    protected $models = array('support/supportBoardF', 'downloadF');
+    protected $models = array('support/supportBoardF', 'downloadF', 'categoryF', '_lms/sys/site');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -22,47 +22,49 @@ class SupportNotice extends BaseSupport
 
     public function index($params=[])
     {
-        $campus_ccd = $this->supportBoardFModel->listCampusCcd($this->_site_code);
+        $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $get_params = http_build_query($arr_input);
+
+        $s_cate_code = element('s_cate_code',$arr_input);
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $s_cate_code = element('s_cate_code',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
         $view_type = element('view_type',$arr_input);
-        $page = element('page',$arr_input);
+        $get_page_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
+        $get_page_params .= '&view_type='.$view_type;
 
-        $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
-        $get_params .= '&s_cate_code='.$s_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
-        $get_params .= '&view_type='.$view_type;
-        $get_params .= '&page='.$page;
+        //카테고리목록
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
-        //var_dump($arr_input);
-        $list = [];
+        //캠퍼스목록
+        $arr_base['campus'] = $this->supportBoardFModel->listCampusCcd($this->_site_code);
 
         $arr_condition = [
             'EQ' => [
-                'b.SiteCode' => $this->_site_code
-                ,'b.BmIdx' => $this->_bm_idx
+                'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
+                ,'b.SiteCode' => $this->_site_code
                 ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
+            ],
+            'LKB' => [
+                'Category_String'=>$s_cate_code
             ],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword
                     ,'b.Content' => $s_keyword
                 ]
-            ],
-            'LKB' => [
-                'Category_String'=>$this->_cate_code
-            ],
+            ]
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
@@ -70,7 +72,7 @@ class SupportNotice extends BaseSupport
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
@@ -81,9 +83,9 @@ class SupportNotice extends BaseSupport
 
         $this->load->view('support/'.$view_type.'/notice', [
             'default_path' => $this->_default_path,
-            'get_params' => $get_params,
+            'arr_base' => $arr_base,
             'arr_input' => $arr_input,
-            'campus_ccd' => $campus_ccd,
+            'get_params' => $get_params,
             'list'=>$list,
             'paging' => $paging,
         ]);
@@ -101,9 +103,8 @@ class SupportNotice extends BaseSupport
         $view_type = element('view_type',$arr_input);
         $page = element('page',$arr_input);
 
-        $get_params = 's_campus='.$s_campus.'&s_keyword='.$s_keyword;
-        $get_params .= '&s_cate_code='.$s_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
-        $get_params .= '&view_type='.$view_type;
+        $get_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
         if (empty($board_idx)) {
@@ -121,7 +122,7 @@ class SupportNotice extends BaseSupport
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
@@ -160,7 +161,7 @@ class SupportNotice extends BaseSupport
                 ]
             ],
             'LKB' => [
-                'Category_String'=>$this->_cate_code
+                'Category_String'=>$s_cate_code
             ],
         ];
 

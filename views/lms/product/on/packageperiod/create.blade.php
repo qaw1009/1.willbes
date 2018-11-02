@@ -51,9 +51,9 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            @if($method == 'POST')
+                            {{--@if($method == 'POST')--}}
                                 <button type="button" id="searchCategory" class="btn btn-sm btn-primary">카테고리검색</button>
-                            @endif
+                            {{--@endif--}}
                             <input type="hidden" name="cate_code" id="cate_code" value="{{$data['CateCode']}}" required="required" title="카테고리정보">
                             <span id="selected_category">{{$data['CateRouteName']}}</span>
                         </div>

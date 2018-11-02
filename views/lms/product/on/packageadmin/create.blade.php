@@ -51,9 +51,9 @@
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
-                            @if($method == 'POST')
+                            {{--@if($method == 'POST')--}}
                             <button type="button" id="searchCategory" class="btn btn-sm btn-primary">카테고리검색</button>
-                            @endif
+                            {{--@endif--}}
                             <input type="hidden" name="cate_code" id="cate_code" value="{{$data['CateCode']}}" required="required" title="카테고리정보">
                             <span id="selected_category">{{$data['CateRouteName']}}</span>
                         </div>
@@ -426,10 +426,10 @@
                                     <input name="ProdCodeDiv[]" id="ProdCodeDiv_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProdCodeSub']}}">
                                     <td>[{{$row['wProfName']}}] {{$row['ProdNameSub']}}</td>
                                     <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
-                                    <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" @if($method==='PUT') readonly @endif> 원</td>
+                                    <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
                                     <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
                                     <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
-                                    <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif @if($method==='PUT') disabled @endif></td>
+                                    <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
                                 </tr>
                             @endforeach
                             </table>

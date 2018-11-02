@@ -251,7 +251,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="w-tit bg-light-white strong">예약상</th>
+                                    <th class="w-tit bg-light-white strong">예약상태</th>
                                     <td class="w-data tx-left pl15">예약완료</td>
                                     <th class="w-tit bg-light-white strong">상담상태</th>
                                     <td class="w-data tx-left pl15">미방문</td>
@@ -321,7 +321,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="w-tit bg-light-white strong">예약상</th>
+                                    <th class="w-tit bg-light-white strong">예약상태</th>
                                     <td class="w-data tx-left pl15">예약완료</td>
                                     <th class="w-tit bg-light-white strong">상담상태</th>
                                     <td class="w-data tx-left pl15">미방문</td>
@@ -391,7 +391,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="w-tit bg-light-white strong">예약상</th>
+                                    <th class="w-tit bg-light-white strong">예약상태</th>
                                     <td class="w-data tx-left pl15">예약완료</td>
                                     <th class="w-tit bg-light-white strong">상담상태</th>
                                     <td class="w-data tx-left pl15">미방문</td>

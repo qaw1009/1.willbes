@@ -23,21 +23,22 @@
                             <div class="LecViewTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                     <colgroup>
-                                        <col style="width: 65px;">
-                                        <col style="width: 575px;">
+                                        <col style="width: 640px;">
                                         <col style="width: 150px;">
                                         <col style="width: 150px;">
                                     </colgroup>
                                     <thead>
                                     <tr>
-                                        <th colspan="4" class="w-list tx-left  pl20">
+                                        <th colspan="3" class="w-list tx-left pl20">
                                             @if($data['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;">@endif
                                                 <strong>{{$data['Title']}}</strong>
                                         </th>
                                     </tr>
                                     <tr>
-                                        <td class="w-acad pl20">{{$data['Category_NameString']}}</td>
-                                        <td class="w-lec tx-left pl20"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name']}}</span></td>
+                                        <td class="w-acad tx-left pl20">
+                                            {{$data['Category_NameString']}}
+                                            <span class="w-lec pl20"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name']}}</span></span>
+                                        </td>
                                         <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                                     </tr>

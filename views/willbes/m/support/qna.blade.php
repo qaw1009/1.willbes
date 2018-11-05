@@ -2,7 +2,6 @@
 
 @section('content')
 <!-- Container -->
-<span id="goTop"></span>
 <div id="Container" class="Container NG c_both">
     <form id="url_form" name="url_form" method="GET">
         @foreach($arr_input as $key => $val)

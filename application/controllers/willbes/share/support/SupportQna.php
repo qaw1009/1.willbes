@@ -322,9 +322,15 @@ class SupportQna extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
+        if ($this->_is_mobile === true) {
+            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
+        } else {
+            $default_path = $this->_default_path;
+        }
+
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('support/'.$view_type.'/show_qna',[
-                'default_path' => $this->_default_path,
+                'default_path' => $default_path,
                 'arr_input' => $arr_input,
                 'get_params' => $get_params,
                 'data' => $data,
@@ -441,7 +447,13 @@ class SupportQna extends BaseSupport
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', $this->_default_path.'/index?'.$get_params);
+        if ($this->_is_mobile === true) {
+            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
+        } else {
+            $default_path = $this->_default_path;
+        }
+
+        show_alert('삭제되었습니다.', $default_path.'/index?'.$get_params);
     }
 
     /**

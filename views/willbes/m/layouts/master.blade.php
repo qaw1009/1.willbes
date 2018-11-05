@@ -1,6 +1,6 @@
 @include('willbes.m.layouts.header')
 
-<body>
+<body id="goTop">
     <!-- Gnb -->
     @include('willbes.m.layouts.gnb')
 

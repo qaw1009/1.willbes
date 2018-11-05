@@ -14,6 +14,7 @@ class SupportQna extends BaseSupport
     protected $_default_path;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
+    protected $_paging_count_m = 5;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
         'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
@@ -123,7 +124,7 @@ class SupportQna extends BaseSupport
         $column .= ', Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ', AttachData,DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
-        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name';
+        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name, Category_NameString';
         $column .= ', IF(RegType=1, \'\', RegMemName) AS RegName';
         $column .= ', IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
@@ -131,7 +132,14 @@ class SupportQna extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        if ($this->_is_mobile === true) {
+            $paging_count = $this->_paging_count_m;
+            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
+        } else {
+            $paging_count = $this->_paging_count;
+            $default_path = $this->_default_path;
+        }
+        $paging = $this->pagination($default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -140,7 +148,7 @@ class SupportQna extends BaseSupport
         }
 
         $this->load->view('support/'.$view_type.'/qna', [
-            'default_path' => $this->_default_path,
+            'default_path' => $default_path,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'list'=>$list,
@@ -233,8 +241,14 @@ class SupportQna extends BaseSupport
             }
         }
 
+        if ($this->_is_mobile === true) {
+            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
+        } else {
+            $default_path = $this->_default_path;
+        }
+
         $this->load->view('support/'.$view_type.'/create_qna', [
-            'default_path' => $this->_default_path,
+            'default_path' => $default_path,
             'method' => $method,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
@@ -326,8 +340,15 @@ class SupportQna extends BaseSupport
     public function store()
     {
         $idx = '';
+
+        if ($this->_reqP('_method') == 'PUT') {
+            $s_site_code = $this->_reqP('put_site_code');
+        } else {
+            $s_site_code = $this->_reqP('s_site_code');
+        }
+
         //캠퍼스 사용 유/무 조회
-        $site_onoff_info = $this->supportBoardTwoWayFModel->getSiteOnOffType($this->_reqP('s_site_code'));
+        $site_onoff_info = $this->supportBoardTwoWayFModel->getSiteOnOffType($s_site_code);
 
         $method = 'add';
         $msg = '저장되었습니다';
@@ -339,13 +360,19 @@ class SupportQna extends BaseSupport
         ];
 
         switch ($this->_default_path) {
-            case '/support' :    //고객센터 상담게시판
-                $rules = array_merge($rules, [
-                    ['field' => 's_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
-                ]);
+            case '/support/qna' :    //고객센터 상담게시판
+                if ($this->_reqP('_method') == 'PUT') {
+                    $rules = array_merge($rules, [
+                        ['field' => 'put_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
+                    ]);
+                } else {
+                    $rules = array_merge($rules, [
+                        ['field' => 's_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
+                    ]);
+                }
 
                 //통합사이트 제외한 나머지 카테고리 항목 체크
-                if ($this->_reqP('s_site_code') != config_item('app_intg_site_code')) {
+                if ($s_site_code != config_item('app_intg_site_code')) {
                     $rules = array_merge($rules, [
                         ['field' => 's_cate_code', 'label' => '카테고리', 'rules' => 'trim|required|integer']
                     ]);
@@ -359,7 +386,7 @@ class SupportQna extends BaseSupport
                 }
                 break;
 
-            case "/prof" :   //교수게시판 학습Q&A
+            case "/prof/qna" :   //교수게시판 학습Q&A
                 $rules = array_merge($rules, [
                     ['field' => 's_cate_code', 'label' => '카테고리', 'rules' => 'trim|required|integer'],
                     ['field' => 's_prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
@@ -378,7 +405,7 @@ class SupportQna extends BaseSupport
             $idx = $this->_reqP('idx');
         }
 
-        $inputData = $this->_setInputData($this->_reqP(null, false), $method);
+        $inputData = $this->_setInputData($s_site_code, $this->_reqP(null, false), $method);
 
         //_addBoard, _modifyBoard
         $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
@@ -423,11 +450,11 @@ class SupportQna extends BaseSupport
      * @param $method
      * @return array
      */
-    private function _setInputData($input, $method){
+    private function _setInputData($site_code, $input, $method){
         $input_data = [
             'board' => [
                 'BmIdx' => $this->_bm_idx,
-                'SiteCode' => element('s_site_code', $input, $this->_site_code),
+                'SiteCode' => (empty($site_code) === false) ? $site_code : $this->_site_code,
                 'MdCateCode' => '',
                 'CampusCcd' => element('s_campus', $input),
                 'RegType' => element('reg_type', $input, 0),

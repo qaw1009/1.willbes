@@ -50,7 +50,7 @@
                                 <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
-                        <div class="subBtn NSK f_right"><a href="{{site_url('support/qna/create?&s_keyword='.urlencode(element('s_keyword',$arr_input)))}}">문의하기 ></a></div>
+                        <div class="subBtn NSK f_right"><a href="{{site_url('/support/qna/create?&s_keyword='.urlencode(element('s_keyword',$arr_input)))}}">문의하기 ></a></div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">

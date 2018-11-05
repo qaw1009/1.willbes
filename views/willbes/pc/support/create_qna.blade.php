@@ -15,6 +15,7 @@
                     {!! method_field($method) !!}
                     <input type="hidden" name="idx" value="{{ $board_idx }}"/>
                     <input type="hidden" name="reg_type" value="{{$reg_type}}"/>
+                    <input type="hidden" name="put_site_code" value="{{$data['SiteCode']}}"/>
 
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
                         <colgroup>
@@ -166,7 +167,7 @@
             }
 
             if ($('#board_content').val() == '') {
-                alert('제목을 입력해 주세요.');
+                alert('내용을 입력해 주세요.');
                 return false;
             }
             return true;

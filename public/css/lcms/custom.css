@@ -365,6 +365,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     color: #e74c3c !important;
 }
 
+/* font */
+.bold {
+    font-weight: bold !important;
+}
+
 /* form */
 .form-inline .btn.btn-sm {
     margin-bottom: -1px;

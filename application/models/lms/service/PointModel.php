@@ -7,6 +7,8 @@ class PointModel extends WB_Model
         'point_save' => 'lms_point_save',
         'point_use' => 'lms_point_use',
         'site' => 'lms_site',
+        'member' => 'lms_member',
+        'order' => 'lms_order',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
@@ -23,6 +25,91 @@ class PointModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 포인트 적립/사용 목록 조회
+     * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
+     * @param string $list_type [전체 : all, 적립 : save, 사용 : use]
+     * @param null|int $mem_idx [회원식별자]
+     * @param bool|string $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllSaveUsePoint($point_type, $list_type, $mem_idx = null, $is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if (is_bool($is_count) === true) {
+            if ($is_count === true) {
+                $column = 'count(*) AS numrows';
+            } else {
+                $column = 'PSU.*, if(PointStatusCcd = "U", "차감", CPS.CcdName) as PointStatusCcdName, if(PSU.ReasonCcd like "%999", EtcReason, CR.CcdName) as ReasonCcdName
+                    , S.SiteName, M.MemId, M.MemName, O.OrderNo, A.wAdminName as RegAdminName';
+            }
+        } else {
+            $column = $is_count;
+        }
+
+        // inner where 조건
+        $arr_inner_condition = [
+            'EQ' => ['PS.MemIdx' => $mem_idx]
+        ];
+        $inner_where = $this->_conn->makeWhere($arr_inner_condition);
+        $inner_where = $inner_where->getMakeWhere(true);
+
+        $save_from = /** @lang text */ '
+            select PS.PointIdx, PS.MemIdx, PS.PointType, null as PointUseIdx, PS.SiteCode, PS.OrderIdx, PS.PointStatusCcd, PS.SavePoint as PointAmt, PS.RemainPoint
+                , PS.SaveDatm as RegDatm, PS.ExpireDatm, PS.ReasonCcd, PS.EtcReason, PS.RegAdminIdx		 
+            from ' . $this->_table['point_save'] . ' as PS
+            where PS.PointType = ?' . $inner_where;
+
+        $use_from = /** @lang text */ '
+            select PS.PointIdx, PS.MemIdx, PS.PointType, PU.PointUseIdx, PU.SiteCode, PU.OrderIdx, "U" as PointStatusCcd, PU.UsePoint as PointAmt, 0 as RemainPoint
+                , PU.UseDatm as RegDatm, null as ExpireDatm, PU.ReasonCcd, PU.EtcReason, PU.RegAdminIdx 
+            from ' . $this->_table['point_use'] . ' as PU
+                inner join ' . $this->_table['point_save'] . ' as PS
+                    on PU.PointIdx = PS.PointIdx
+            where PS.PointType = ?' . $inner_where;
+
+        if ($list_type == 'all') {
+            $inner_from = $save_from . ' union all ' . $use_from;
+            $binds = [$point_type, $point_type];
+        } else {
+            $inner_from = ${$list_type . '_from'};
+            $binds = [$point_type];
+        }
+
+        $from = '
+            from (
+                ' . $inner_from . '
+            ) as PSU
+                left join ' . $this->_table['site'] . ' as S
+                    on PSU.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join ' . $this->_table['member'] . ' as M
+                    on PSU.MemIdx = M.MemIdx
+                left join ' . $this->_table['order'] . ' as O
+                    on PSU.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['code'] . ' as CPS
+                    on PSU.PointStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"                    
+                left join ' . $this->_table['code'] . ' as CR
+                    on PSU.ReasonCcd = CR.Ccd and CR.IsStatus = "Y"		
+                left join ' . $this->_table['admin'] . ' as A
+                    on PSU.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"';
+
+        // where 조건
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, $binds);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

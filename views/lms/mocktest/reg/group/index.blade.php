@@ -5,15 +5,14 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
         {!! csrf_field() !!}
-        {{--<input type="hidden" id="search_site_code" name="search_site_code" value="{{$siteCodeDef}}">--}}
-        {{--{!! html_site_select($siteCodeDef, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}--}}
+        <input type="hidden" id="search_site_code" name="search_site_code" value="{{$siteCodeDef}}">
 
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">통합검색</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="sc_fi" name="sc_fi" value="{{ @$_GET['sc_fi'] }}"> 명칭, 코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭, 코드 검색 가능
                     </div>
                     <div class="col-md-5 text-right">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 검색</button>
@@ -28,17 +27,17 @@
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
-                <table id="list_table" class="table table-bordered table-striped form-table">
+                <table id="list_table" class="table table-bordered table-striped table-head-row2 form-table">
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">NO</th>
-                        <th class="text-center">모의고사그룹코드</th>
+                        <th class="text-center" style="width:150px">모의고사그룹코드</th>
                         <th class="text-center">모의고사그룹명</th>
                         <th class="text-center">설명</th>
                         <th class="text-center">중복신청</th>
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
-                        <th class="text-center">등록일</th>
+                        <th class="text-center" style="width:130px">등록일</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,19 +52,18 @@
         var $list_table = $('#list_table');
 
         $(document).ready(function() {
-            // 수정으로 이동
-            $('.act-edit').on('click', function () {
-                $search_form.find('[name="_csrf_token"]').remove();
-                var query = '?' + $search_form.serialize();
-                location.href = '{{ site_url('/mocktest/regGroup/edit/') }}' + $(this).data('idx') + query;
-            });
-
             // 검색 초기화
             $('#searchInit').on('click', function () {
-                $search_form.find('[name^=sc_]:not(#search_site_code)').each(function () {
+                $search_form.find('[name^=search_]:not(#search_site_code)').each(function () {
                     $(this).val('');
                 });
                 $datatable.draw();
+            });
+
+            // 수정으로 이동
+            $list_table.on('click', '.act-edit', function () {
+                var query = dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/mocktest/regGroup/edit/') }}' + $(this).data('target-idx') + query;
             });
 
             // DataTables
@@ -77,8 +75,7 @@
                 dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 모의고사 그룹등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                            $search_form.find('[name="_csrf_token"]').remove();
-                            location.href = '{{ site_url('/mocktest/regGroup/create') }}' + '?' + $search_form.serialize();
+                            location.href = '{{ site_url('/mocktest/regGroup/create') }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
                 processing: true,
@@ -92,17 +89,19 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'MgIdx', 'class': 'text-center'},
-                    {'data' : 'GroupName', 'class': ''},
-                    {'data' : 'Desc', 'class': ''},
+                    {'data' : null, 'class': '', 'render' : function(data, type, row, meta) {
+                        return '<span class="blue underline-link act-edit" data-target-idx="'+ row.MgIdx +'">' + row.GroupName + '</span>';
+                    }},
+                    {'data' : 'GroupDesc', 'class': ''},
                     {'data' : 'IsDup', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'}
                 ]

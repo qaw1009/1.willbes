@@ -11,23 +11,14 @@ class RegGroupModel extends WB_Model
 {
     private $_table = [
         'admin' => 'wbs_sys_admin',
-        'mockExamBase' => 'lms_mock_paper',
-        'mockExamQuestion' => 'lms_mock_questions',
-        'mockSubject' => 'lms_mock_r_subject',
-        'mockAreaCate' => 'lms_Mock_R_Category',
-        'mockArea' => 'lms_mock_area',
-        'mockAreaList' => 'lms_mock_area_list',
-        'mockBase' => 'lms_mock',
+        'site' => 'lms_site',
         'category' => 'lms_sys_category',
-        'sysCode' => 'lms_sys_code',
-        'subject' => 'lms_product_subject',
-        'professor' => 'lms_professor',
-        'pms_professor' => 'wbs_pms_professor',
+        'mockProduct' => 'lms_Product_Mock',
+        'product' => 'lms_Product',
+        'productCate' => 'lms_Product_R_Category',
 
         'mockGroup' => 'lms_Mock_Group',
         'mockGroupR' => 'lms_Mock_R_Group',
-        'mockProduct' => 'lms_Product_Mock',
-        'product' => 'lms_Product',
     ];
 
     public function __construct()
@@ -40,20 +31,18 @@ class RegGroupModel extends WB_Model
      */
     public function mainList($conditionAdd='', $limit='', $offset='')
     {
-        $condition = [ 'IN' => ['PD.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = [ 'IN' => ['S.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
         if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
 
         $select = "
-            SELECT MG.*, A.wAdminName, PD.SiteCode
+            SELECT MG.*, A.wAdminName, S.SiteCode
         ";
         $from = "
             FROM {$this->_table['mockGroup']} AS MG
-            JOIN {$this->_table['mockGroupR']} AS MGR ON MG.MgIdx = MGR.MgIdx AND MGR.IsStatus = 'Y'
-            JOIN {$this->_table['mockProduct']} AS MP ON MGR.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
-            JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            JOIN {$this->_table['site']} AS S ON MG.SiteGroupCode = S.SiteGroupCode
             LEFT JOIN {$this->_table['admin']} AS A ON MG.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
@@ -78,10 +67,11 @@ class RegGroupModel extends WB_Model
 
             // lms_Mock_Group
             $data = array(
+                'SiteGroupCode' => $_POST['SiteGroupCode'][0],
                 'GroupName' => $this->input->post('GroupName', true),
                 'IsDup' => $this->input->post('IsDup'),
                 'GroupDesc' => $this->input->post('GroupDesc', true),
-                'IsUse' => $this->input->post('isUse'),
+                'IsUse' => $this->input->post('IsUse'),
                 'RegIp' => $this->input->ip_address(),
                 'RegDatm' => date("Y-m-d H:i:s"),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -91,7 +81,7 @@ class RegGroupModel extends WB_Model
             $nowMaIdx = $this->_conn->insert_id();
 
             // lms_Mock_R_Group
-            foreach ($moLink as $it) {
+            foreach ($this->input->post('ProdCode') as $it) {
                 $data = array(
                     'MgIdx' => $nowMaIdx,
                     'ProdCode' => $it,
@@ -125,10 +115,11 @@ class RegGroupModel extends WB_Model
 
             // lms_Mock_Group
             $data = array(
+                'SiteGroupCode' => $_POST['SiteGroupCode'][0],
                 'GroupName' => $this->input->post('GroupName', true),
                 'IsDup' => $this->input->post('IsDup'),
                 'GroupDesc' => $this->input->post('GroupDesc', true),
-                'IsUse' => $this->input->post('isUse'),
+                'IsUse' => $this->input->post('IsUse'),
                 'UpdDatm' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
             );
@@ -188,66 +179,113 @@ class RegGroupModel extends WB_Model
         $data = $this->_conn->get_where($this->_table['mockGroup'], $where)->row_array();
         if(empty($data)) return false;
 
+
         // 선택한 모의고사정보
-        $mData = $this->_conn->get_where($this->_table['mockGroupR'], $where)->result_array();
+        $sql = "
+            SELECT MGR.MrgIdx, MP.*, PD.ProdName, S.SiteName, C1.CateName
+            FROM {$this->_table['mockGroupR']} AS MGR
+            JOIN {$this->_table['mockProduct']} AS MP ON MGR.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
+            JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            JOIN {$this->_table['productCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+            JOIN {$this->_table['site']} AS S ON PD.SiteCode = S.SiteCode AND S.IsStatus = 'Y'
+            JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+            WHERE MGR.IsStatus = 'Y' AND MGR.MgIdx = '$idx'
+            ORDER BY MGR.MrgIdx ASC
+        ";
+        $mData = $this->_conn->query($sql)->result_array();
+
+        // 직렬이름 추출
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+
+        // 데이터정리
+        $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
+        $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
+
+        foreach ($mData as &$it) {
+            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
+            $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
+
+            $mockPart = explode(',', $it['MockPart']);
+            foreach ($mockPart as $mp) {
+                if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
+            }
+        }
 
         return array($data, $mData);
     }
 
 
     /**
-     * 모의고사 상품검색
+     * 모의고사상품 검색
      */
-    public function searchGoodsList($conditionAdd='', $limit='', $offset='', $useCount=true, $isReg=false)
+    public function searchGoodsList($conditionAdd='', $limit='', $offset='')
     {
-        $condition = [ 'IN' => ['S.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = [ 'IN' => ['PD.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
         if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
 
-        if(!$isReg) {
-            $select = "
-                SELECT MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
-                       CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']') AS CateRouteName,
-                       (SELECT COUNT(*) FROM {$this->_table['mockCate']} AS MC WHERE MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y') AS IsExist";
-            $from = "
-                FROM {$this->_table['mockSubject']} AS MS
-                JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y' AND SJ.IsUse = 'Y'
-                JOIN {$this->_table['mockBase']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y' AND MB.IsUse = 'Y'
-                JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y' AND S.IsUse = 'Y'
-                JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
-                JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y' AND SC.IsUse = 'Y'
-                LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
-            ";
-        }
-        else {  // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
-            $select = "
-                SELECT MB.MmIdx, MS.*, A.wAdminName, S.SiteCode, C1.CateCode AS CateCode1, SC.Ccd AS CateCode2,
-                       CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), '] - ', MA.QuestionArea) AS CateRouteName,
-                       MC.MrcIdx";
-            $from = "
-                FROM {$this->_table['mockSubject']} AS MS
-                JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y' AND SJ.IsUse = 'Y'
-                JOIN {$this->_table['mockBase']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y' AND MB.IsUse = 'Y'
-                JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y' AND S.IsUse = 'Y'
-                JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
-                JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y' AND SC.IsUse = 'Y'
-                JOIN {$this->_table['mockCate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'
-                JOIN {$this->_table['mockArea']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
-                LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
-            ";
-        }
+        $select = "
+            SELECT MP.*, PD.ProdName, S.SiteName, S.SiteGroupCode, C1.CateName
+        ";
+        $from = "
+            FROM {$this->_table['mockProduct']} AS MP
+            JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y' AND PD.IsUse = 'Y'
+            JOIN {$this->_table['productCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+            JOIN {$this->_table['site']} AS S ON PD.SiteCode = S.SiteCode AND S.IsStatus = 'Y' AND S.IsUse = 'Y'
+            JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
+        ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE MS.IsStatus = 'Y' AND MS.IsUse = 'Y'";
+        $where = "WHERE MP.IsStatus = 'Y' AND MP.IsUse = 'Y' AND MP.TakePart IS NOT NULL";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, SC.OrderNum ASC, SJ.OrderNum ASC, MS.SubjectType ASC\n";
-
+        $order = "ORDER BY MP.ProdCode DESC\n";
 
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
-        if($useCount) $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
-        if($useCount) return array($data, $count);
-        else return $data;
+
+        // 직렬이름 추출
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+
+        // 데이터정리
+        $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
+        $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
+
+        foreach ($data as &$it) {
+            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
+            $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
+
+            $mockPart = explode(',', $it['MockPart']);
+            foreach ($mockPart as $mp) {
+                if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
+            }
+        }
+
+        return array($data, $count);
+    }
+
+
+    /**
+     * 모의고사상품 삭제
+     */
+    public function searchGoodsDel()
+    {
+        $data = array(
+            'IsStatus' => 'N',
+            'UpdDatm' => date("Y-m-d H:i:s"),
+            'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+        );
+        $where = array('MrgIdx' => $this->input->post('idx'));
+
+        $this->_conn->update($this->_table['mockGroupR'], $data, $where);
+        if ($this->_conn->affected_rows()) return true;
+        else return false;
     }
 }

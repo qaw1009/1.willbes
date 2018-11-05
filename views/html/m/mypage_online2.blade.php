@@ -35,28 +35,23 @@
                     - 수강연장은 수강종료일 전까지만 신청이 가능하며 5일 단위(5일,10일,15일등)로 신청할 수 있습니다.<br/>
                 </div>
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
-                    <select id="process" name="process" title="process" class="seleProcess width21n5p">
+                    <select id="process" name="process" title="process" class="seleProcess width21p">
                         <option selected="selected">과정</option>
                         <option value="헌법">헌법</option>
                         <option value="스파르타반">스파르타반</option>
                         <option value="공직선거법">공직선거법</option>
                     </select>
-                    <select id="lecture" name="lecture" title="lecture" class="seleLec width21n5p ml1p">
+                    <select id="lecture" name="lecture" title="lecture" class="seleLec width21p ml1p">
                         <option selected="selected">과목</option>
                         <option value="헌법">헌법</option>
                         <option value="스파르타반">스파르타반</option>
                         <option value="공직선거법">공직선거법</option>
                     </select>
-                    <select id="prof" name="prof" title="prof" class="seleProf width21n5p ml1p">
+                    <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p">
                         <option selected="selected">교수님</option>
                         <option value="교수님1">교수님1</option>
                         <option value="교수님2">교수님2</option>
                         <option value="교수님3">교수님3</option>
-                    </select>
-                    <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy width21n5p ml1p">
-                        <option selected="selected">최종학습일순</option>
-                        <option value="최근추가순">최근추가순</option>
-                        <option value="종료임박순">종료임박순</option>
                     </select>
                     <div class="resetBtn width10p ml1p">
                         <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
@@ -244,28 +239,23 @@
                     - 무료강좌는 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                 </div>
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
-                    <select id="process" name="process" title="process" class="seleProcess width21n5p">
+                    <select id="process" name="process" title="process" class="seleProcess width21p">
                         <option selected="selected">과정</option>
                         <option value="헌법">헌법</option>
                         <option value="스파르타반">스파르타반</option>
                         <option value="공직선거법">공직선거법</option>
                     </select>
-                    <select id="lecture" name="lecture" title="lecture" class="seleLec width21n5p ml1p">
+                    <select id="lecture" name="lecture" title="lecture" class="seleLec width21p ml1p">
                         <option selected="selected">과목</option>
                         <option value="헌법">헌법</option>
                         <option value="스파르타반">스파르타반</option>
                         <option value="공직선거법">공직선거법</option>
                     </select>
-                    <select id="prof" name="prof" title="prof" class="seleProf width21n5p ml1p">
+                    <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p">
                         <option selected="selected">교수님</option>
                         <option value="교수님1">교수님1</option>
                         <option value="교수님2">교수님2</option>
                         <option value="교수님3">교수님3</option>
-                    </select>
-                    <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy width21n5p ml1p">
-                        <option selected="selected">최종학습일순</option>
-                        <option value="최근추가순">최근추가순</option>
-                        <option value="종료임박순">종료임박순</option>
                     </select>
                     <div class="resetBtn width10p ml1p">
                         <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
@@ -344,32 +334,27 @@
                     - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                 </div>
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
-                    <select id="lecture" name="lecture" title="lecture" class="seleLec width32n5p">
+                    <select id="lecture" name="lecture" title="lecture" class="seleLec width49p">
                         <option selected="selected">단강좌</option>
                         <option value="패키지">패키지</option>
                     </select>
-                    <select id="process" name="process" title="process" class="seleProcess width32n5p ml1p">
+                    <select id="process" name="process" title="process" class="seleProcess width49p ml1p">
                         <option selected="selected">과정</option>
                         <option value="헌법">헌법</option>
                         <option value="스파르타반">스파르타반</option>
                         <option value="공직선거법">공직선거법</option>
                     </select>
-                    <select id="lecture" name="lecture" title="lecture" class="seleLec width32n5p ml1p">
+                    <select id="lecture" name="lecture" title="lecture" class="seleLec width45p mt1p">
                         <option selected="selected">과목</option>
                         <option value="헌법">헌법</option>
                         <option value="스파르타반">스파르타반</option>
                         <option value="공직선거법">공직선거법</option>
                     </select>
-                    <select id="prof" name="prof" title="prof" class="seleProf width45p mt1p">
+                    <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p mt1p">
                         <option selected="selected">교수님</option>
                         <option value="교수님1">교수님1</option>
                         <option value="교수님2">교수님2</option>
                         <option value="교수님3">교수님3</option>
-                    </select>
-                    <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy width45p ml1p mt1p">
-                        <option selected="selected">최종학습일순</option>
-                        <option value="최근추가순">최근추가순</option>
-                        <option value="종료임박순">종료임박순</option>
                     </select>
                     <div class="resetBtn width8p ml1p">
                         <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>

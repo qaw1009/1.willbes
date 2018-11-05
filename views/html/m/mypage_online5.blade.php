@@ -36,9 +36,11 @@
                         <dt>잔여기간 : <span class="tx-light-blue">50</span>일 (2018-00-00 ~ 2018-00-00)</dt>
                     </dl>
                     <div class="w-s-date">
-                        <div class="grid">
-                            시작일 변경 : <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" > (시작)
-                            ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30"> (종료)
+                        <div class="grid calendarPickerBtn">
+                            <a class="pl20" href="#none" onclick="openWin('DATAPICKERPASS')">
+                                시작일 변경 : <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" > (시작)
+                                ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30"> (종료)
+                            </a>
                         </div>
                     </div>
                 </td>
@@ -100,6 +102,100 @@
         </a>
     </div>
     <!-- Topbtn -->
+
+    <div id="DATAPICKERPASS" class="willbes-Layer-Black">
+        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+            <a class="closeBtn" href="#none" onclick="closeWin('DATAPICKERPASS')">
+                <img src="{{ img_url('m/calendar/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">시작일 변경</div> 
+            <div class="calendarTable NG">
+                <div class="datepicker-days">
+                    <table cellspacing="0" cellpadding="0" class="table-condensed">
+                        <colgroup>
+                            <col style="width: 14.28%;"/>
+                            <col style="width: 14.28%;"/>
+                            <col style="width: 14.28%;"/>
+                            <col style="width: 14.28%;"/>
+                            <col style="width: 14.28%;"/>
+                            <col style="width: 14.28%;"/>
+                            <col style="width: 14.28%;"/>
+                        </colgroup>
+                        <thead>
+                            <tr class="month">
+                                <th colspan="7" class="datepicker-switch">
+                                    <span class="prev Btn"><a href="#none"><img src="{{ img_url('m/calendar/calendar_prev.png') }}"></a></span>
+                                    <span class="month tx-light-blue">July</span> 2018
+                                    <span class="next Btn"><a href="#none"><img src="{{ img_url('m/calendar/calendar_next.png') }}"></a></span>
+                                </th>
+                            </tr>
+                            <tr class="week">
+                                <th class="dow">Mon</th>
+                                <th class="dow">Tue</th>
+                                <th class="dow">Wed</th>
+                                <th class="dow">Thr</th>
+                                <th class="dow">Fri</th>
+                                <th class="dow">Sat</th>
+                                <th class="dow">Sun</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="empty">&nbsp;</td>
+                                <td class="day"><div class="num">1</div></td>
+                                <td class="day"><div class="num">2</div></td>
+                                <td class="day"><div class="num">3</div></td>
+                                <td class="day"><div class="num">4</div></td>
+                                <td class="day"><div class="num">5</div></td>
+                                <td class="day"><div class="num">6</div></td>
+                            </tr>
+                            <tr>
+                                <td class="day"><div class="num">7</div></td>
+                                <td class="day"><div class="num">8</div></td>
+                                <td class="day"><div class="num">9</div></td>
+                                <td class="day"><div class="num">10</div></td>
+                                <td class="day"><div class="num">11</div></td>
+                                <td class="day"><div class="num">12</div></td>
+                                <td class="day"><div class="num">13</div></td>
+                            </tr>
+                            <tr>
+                                <td class="day"><div class="num">14</div></td>
+                                <td class="day"><div class="num">15</div></td>
+                                <td class="day"><div class="num">16</div></td>
+                                <td class="day start"><div class="num">17</div></td>
+                                <td class="day ing"><div class="num">18</div></td>
+                                <td class="day ing"><div class="num">19</div></td>
+                                <td class="day ing"><div class="num">20</div></td>
+                            </tr>
+                            <tr>
+                                <td class="day ing"><div class="num">21</div></td>
+                                <td class="day end"><div class="num">22</div></td>
+                                <td class="day"><div class="num">23</div></td>
+                                <td class="day"><div class="num">24</div></td>
+                                <td class="day"><div class="num">25</div></td>
+                                <td class="day"><div class="num">26</div></td>
+                                <td class="day"><div class="num">27</div></td>
+                            </tr>
+                            <tr>
+                                <td class="day"><div class="num">28</div></td>
+                                <td class="day"><div class="num">29</div></td>
+                                <td class="day"><div class="num">30</div></td>
+                                <td class="day"><div class="num">31</div></td>
+                                <td class="empty">&nbsp;</td>
+                                <td class="empty">&nbsp;</td>
+                                <td class="empty">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
+            <div class="AddlecMore">
+                <a href="#none">확인</a>
+            </div>
+        </div>
+        <div class="dim" onclick="closeWin('DATAPICKERPASS')"></div>
+    </div>
+    <!-- willbes-Layer-PassBox : 쪽지 -->
 
 </div>
 <!-- End Container -->

@@ -48,27 +48,22 @@
         <a href="{{ site_url('/home/html/m/mypage_pass2') }}"><img src="{{ img_url('m/mypage/icon_add_black.png') }}"> 강좌추가</a>
     </div>
     <div class="willbes-Lec-Selected NG c_both tx-gray">
-        <select id="lecture" name="lecture" title="lecture" class="seleLec width22p">
+        <select id="lecture" name="lecture" title="lecture" class="seleLec width29n5p">
             <option selected="selected">과목</option>
             <option value="헌법">헌법</option>
             <option value="스파르타반">스파르타반</option>
             <option value="공직선거법">공직선거법</option>
         </select>
-        <select id="prof" name="prof" title="prof" class="seleProf width22p ml1p">
+        <select id="prof" name="prof" title="prof" class="seleProf width29n5p ml1p">
             <option selected="selected">교수님</option>
             <option value="교수님1">교수님1</option>
             <option value="교수님2">교수님2</option>
             <option value="교수님3">교수님3</option>
         </select>
-        <select id="type" name="type" title="type" class="seleType width22p ml1p">
+        <select id="type" name="type" title="type" class="seleType width29n5p ml1p">
             <option selected="selected">학습유형</option>
             <option value="학습유형1">학습유형1</option>
             <option value="학습유형2">학습유형2</option>
-        </select>
-        <select id="Laststudy" name="Laststudy" title="Laststudy" class="seleStudy width22p ml1p">
-            <option selected="selected">최종학습일순</option>
-            <option value="최근추가순">최근추가순</option>
-            <option value="종료임박순">종료임박순</option>
         </select>
         <div class="resetBtn width8p ml1p">
             <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>

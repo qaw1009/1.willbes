@@ -115,7 +115,7 @@
             // 날짜검색 디폴트 셋팅
             setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
 
-            // 쿠폰발급 목록
+            // 전체포인트현황 목록
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [

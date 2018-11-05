@@ -21,13 +21,13 @@ class AllStatus extends \app\controllers\BaseController
     public function index()
     {
         // 전체 유효포인트 조회
-        $valid_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save', null, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
+        $valid_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save_only', null, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
             'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
             'NOT' => ['PSU.RemainPoint' => 0]
         ]), '0.RemainPoint', 0);
 
         // 당월소멸예정포인트 조회
-        $expire_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save', null, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
+        $expire_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save_only', null, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
             'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
             'NOT' => ['PSU.RemainPoint' => 0],
             'BDT' => ['PSU.ExpireDatm' => [date('Y-m-01'), date('Y-m-t')]]
@@ -55,7 +55,7 @@ class AllStatus extends \app\controllers\BaseController
         $count = $this->pointModel->listAllSaveUsePoint($this->_point_type, $list_type, null, true, $arr_condition, null, null, []);
 
         if ($count > 0) {
-            $list = $this->pointModel->listAllSaveUsePoint($this->_point_type, $list_type, null, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['RegDatm' => 'desc']);
+            $list = $this->pointModel->listAllSaveUsePoint($this->_point_type, $list_type, null, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PSU.RegDatm' => 'desc']);
         }
 
         return $this->response([
@@ -71,13 +71,15 @@ class AllStatus extends \app\controllers\BaseController
     public function excel()
     {
         $headers = ['운영사이트', '회원명', '회원아이디', '주문번호', '유효기간', '상태', '적립/차감액', '적립/차감일', '등록자', '적립/차감사유'];
-        $column = 'S.SiteName, M.MemName, M.MemId, O.OrderNo, if(PSU.ExpireDatm is not null, concat(substring(PSU.RegDatm, 1, 10), " ~ ", substring(PSU.ExpireDatm, 1, 10)), "")
+        $column = 'S.SiteName, M.MemName, M.MemId, O.OrderNo, if(PSU.ExpireDatm is not null, concat(substring(PSU.RegDatm, 1, 10), " ~ ", substring(PSU.ExpireDatm, 1, 10)), "") as ValidDatePeriod
             , if(PSU.PointStatusCcd = "U", "차감", CPS.CcdName) as PointStatusCcdName, PSU.PointAmt, PSU.RegDatm, A.wAdminName
             , if(PSU.ReasonCcd like "%999", EtcReason, CR.CcdName) as ReasonCcdName';
 
         $list_type = get_var($this->_reqP('search_point_type'), 'all');
         $arr_condition = $this->_getListConditions();
-        $list = $this->pointModel->listAllSaveUsePoint($this->_point_type, $list_type, null, $column, $arr_condition, null, null, ['RegDatm' => 'desc']);
+        $list = $this->pointModel->listAllSaveUsePoint($this->_point_type, $list_type, null, $column, $arr_condition, null, null, ['PSU.RegDatm' => 'desc']);
+
+        dd($list);
 
         // export excel
         $this->load->library('excel');
@@ -94,6 +96,9 @@ class AllStatus extends \app\controllers\BaseController
             'EQ' => [
                 'O.OrderNo' => $this->_reqP('search_order_no'),
                 'PSU.PointStatusCcd' => $this->_reqP('search_point_status_ccd')
+            ],
+            'IN' => [
+                'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
             ],
             'BDT' => [
                 'PSU.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]

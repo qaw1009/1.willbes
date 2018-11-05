@@ -30,7 +30,7 @@ class PointModel extends WB_Model
     /**
      * 포인트 적립/사용 목록 조회
      * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
-     * @param string $list_type [전체 : all, 적립 : save, 사용 : use]
+     * @param string $list_type [전체 : all, 적립 : save or save_only, 사용 : use or use_only]
      * @param null|int $mem_idx [회원식별자]
      * @param bool|string $is_count
      * @param array $arr_condition
@@ -51,6 +51,9 @@ class PointModel extends WB_Model
         } else {
             $column = $is_count;
         }
+
+        $is_join = strpos($list_type, '_only') === false;
+        $list_type = str_first_pos_before($list_type, '_');     // all, save, use
 
         // inner where 조건
         $arr_inner_condition = [
@@ -84,7 +87,10 @@ class PointModel extends WB_Model
         $from = '
             from (
                 ' . $inner_from . '
-            ) as PSU
+            ) as PSU';
+
+        if ($is_join === true) {
+            $from .= '
                 left join ' . $this->_table['site'] . ' as S
                     on PSU.SiteCode = S.SiteCode and S.IsStatus = "Y"
                 left join ' . $this->_table['member'] . ' as M
@@ -97,6 +103,7 @@ class PointModel extends WB_Model
                     on PSU.ReasonCcd = CR.Ccd and CR.IsStatus = "Y"		
                 left join ' . $this->_table['admin'] . ' as A
                     on PSU.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"';
+        }
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);

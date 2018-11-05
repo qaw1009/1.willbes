@@ -47,25 +47,25 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $datatable;
-        var $search_form = $('#_search_form');
-        var $list_table = $('#_list_ajax_table');
+        var $_datatable;
+        var $_search_form = $('#_search_form');
+        var $_list_table = $('#_list_ajax_table');
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
-            $datatable = $list_table.DataTable({
+            $_datatable = $_list_table.DataTable({
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/common/searchMember/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($_search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        return $_datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return '<a href="#none" class="btn-select" data-row-idx="' + meta.row + '"><u>' + data + ' (' + row.MemId + ')</u></a>';
@@ -79,25 +79,22 @@
             });
 
             // 회원 선택
-            $datatable.on('click', '.btn-select', function() {
+            $_datatable.on('click', '.btn-select', function() {
                 if (!confirm('해당 회원을 선택하시겠습니까?')) {
                     return;
                 }
 
                 var that = $(this);
-                var row = $datatable.row(that.data('row-idx')).data();
+                var row = $_datatable.row(that.data('row-idx')).data();
                 var $parent_regi_form = $('.search-member-form');
                 var $parent_selected_member = $('#selected_member');
-                var html = '';
+
+                $parent_regi_form.find('input[name="mem_idx"]').data('result-data', row);
+                $parent_regi_form.find('input[name="mem_idx"]').val(row.MemIdx).trigger('change');
 
                 if ($parent_selected_member.length > 0) {
-                    html += '<span class="pr-10">' + row.MemName + '(' + row.MemId + ')';
-                    html += '   <a href="#none" data-mem-idx="' + row.MemIdx + '" class="selected-member-delete"><i class="fa fa-times red"></i></a>';
-                    html += '   <input type="hidden" name="mem_idx[]" value="' + row.MemIdx + '"/>';
-                    html += '</span>';
-
-                    $parent_regi_form.find('input[name="mem_idx[]"]').remove();
-                    $parent_selected_member.html(html);
+                    var mem_name = row.MemName + '(' + row.MemId + ')';
+                    $parent_selected_member.text(mem_name);
                 }
 
                 $("#pop_modal").modal('toggle');

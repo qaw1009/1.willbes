@@ -61,9 +61,9 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $datatable;
-        var $search_form = $('#_search_form');
-        var $list_table = $('#_list_ajax_table');
+        var $_datatable;
+        var $_search_form = $('#_search_form');
+        var $_list_table = $('#_list_ajax_table');
         var $parent_regi_form = $('.search-member-form');
         var $parent_selected_member = $('#selected_member');
         var $selected_member = $('#_selected_member');
@@ -71,13 +71,13 @@
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
-            $datatable = $list_table.DataTable({
+            $_datatable = $_list_table.DataTable({
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/common/searchMember/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($_search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
@@ -99,7 +99,7 @@
             });
 
             // 전체선택
-            $datatable.on('ifChanged', '#_is_all', function() {
+            $_datatable.on('ifChanged', '#_is_all', function() {
                 var $_mem_idx = $('input[name="_mem_idx"]');
                 if ($(this).prop('checked') === true) {
                     $_mem_idx.iCheck('check');
@@ -109,9 +109,9 @@
             });
 
             // 회원 선택
-            $datatable.on('ifChanged', 'input[name="_mem_idx"]', function() {
+            $_datatable.on('ifChanged', 'input[name="_mem_idx"]', function() {
                 var that = $(this);
-                var row = $datatable.row(that.data('row-idx')).data();
+                var row = $_datatable.row(that.data('row-idx')).data();
                 var mem_idx = that.val();
                 var mem_name = '';
 

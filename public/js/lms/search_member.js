@@ -2,7 +2,7 @@
  * 회원 검색
  */
 $(document).ready(function() {
-    var $mem_search_form = $('.search-member');
+    var $mem_search_form = $('.search-member-form');
 
     // 회원 등록구분 선택
     $mem_search_form.on('ifChanged', 'input[name="regi_type"]:checked', function() {

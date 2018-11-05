@@ -29,9 +29,9 @@
         <li class="ListBox">
             <div class="Depth">
                 <ul>
-                    <li><a href="{{ front_url('/support/notice/index', 'www') }}">· 공지사항</a></li>
-                    <li><a href="#none">· 자주하는 질문</a></li>
-                    <li><a href="#none">· 동영상 상담실</a></li>
+                    <li><a href="{{ front_url('/support/notice/index') }}">· 공지사항</a></li>
+                    <li><a href="{{ front_url('/support/faq/index') }}">· 자주하는 질문</a></li>
+                    <li><a href="{{ front_url('/support/qna/index') }}">· 동영상 상담실</a></li>
                 </ul>
             </div>
         </li>

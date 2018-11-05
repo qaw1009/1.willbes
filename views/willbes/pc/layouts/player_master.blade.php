@@ -15,9 +15,9 @@
 <div class="videoPopup">
     <div class="view p_re">
         <div class="viewList">
-            <span class="Tit NGR"><span class="NG">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
+            <span class="Tit NGR"><span class="NG" id="title">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
             <ul class="btnList">
-                <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
+                <li><a class="iconBtn btnUP" href="javascript:;" onclick="fnSetTop(this);">버튼 위로</a></li>
                 <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
                 <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 단축키</a></li>
                 <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>

@@ -7,11 +7,11 @@
         var ajaxErrorCount = 0;
 
         $(document).ready(function (){
-            getScreenSize();
             setScreenReSizeVal();
             screenResize();
             fnDefense();
-            $("#subframe").prop('src', '/player/Curriculum/?o={{$data['orderidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&l={{$data['lecidx']}}&u={{$data['unitidx']}}&q={{$data['quility']}}');
+
+            $("#subframe").prop('src', '/player/Curriculum/?o={{$data['orderidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&op={{$data['orderprodidx']}}&l={{$data['lecidx']}}&u={{$data['unitidx']}}&q={{$data['quility']}}');
 
             var config = {
                 userId: "{{$data['memid']}}",
@@ -52,6 +52,31 @@
         });
 
 
+        function fnCheckPID()
+        {
+            var url = "/player/checkDevice/";
+            var data = "o={{$data['orderidx']}}&op={{$data['orderprodidx']}}&p={{$data['prodcode']}}&m={{$data['memidx']}}&di=" + player.getPID();
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: data,
+                cache: false,
+                dataType: "text",
+                error: function (request, status, error) {
+                    player.stop();
+                    alert("인터넷오류로 강의가 중단되었습니다.");
+                },
+                success: function (response) {
+                    if(response == "STOP") {
+                        player.stop();
+                        alert("등록되지않은 기기입니다.");
+                        self.close();
+                    }
+                }
+            });
+        }
+
         function fnSendLog()
         {
             if (player.getPlayState() != PlayState.PLAYING) {
@@ -60,15 +85,16 @@
             }
 
             var url = "/player/log/";
-            var data = "o=&p=&sp=&u=&m=&l=";
+            var data = "o={{$data['orderidx']}}&op={{$data['orderprodidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&u={{$data['unitidx']}}&m={{$data['memidx']}}&l={{$data['logidx']}}&w={{$data['lecidx']}}";
 
             var playedTime = Math.floor(realPlayerTime.getTime()); // 2배속으로 1분 수강시 2분
             var playedRealTime = Math.floor(player.getPlayTime()); // 2배속으로 1분 수강시 1분
             var currentPosition = Math.floor(player.getCurrentPosition());
 
             data = data + "&st=" + Math.floor(playedRealTime - globalStudiedRealTime);
-            data = data + "&srt=" + Math.floor(playedTime - globalStudiedTime);
+            data = data + "&rst=" + Math.floor(playedTime - globalStudiedTime);
             data = data + "&pos=" + currentPosition;
+            data = data + "&di=" + player.getPID();
 
             if(ajaxErrorCount > 10){
                 player.stop();

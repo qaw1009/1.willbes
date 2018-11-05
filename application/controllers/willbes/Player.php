@@ -215,11 +215,16 @@ class Player extends \app\controllers\FrontController
         $logidx = $this->playerFModel->storeStudyLog([
             'MemIdx' => $this->session->userdata('mem_idx'),
             'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $lec['OrderProdIdx'],
             'ProdCode' => $prodcode,
             'ProdCodeSub' => $prodcodesub,
             'wLecIdx' => $lec['wLecIdx'],
             'wUnitIdx' => $unitidx
         ]);
+
+        if($logidx == 0){
+            show_alert('DB접속에 실패했습니다. 다시 시도해주십시요.\n계속 동일 증상이 발생할경우 고객센터로 문의해 주십시요.', 'close');
+        }
 
         if(empty($data['StudyTime']) == true || $data['StudyTime'] == 0) {
             $isintro = true;
@@ -227,11 +232,14 @@ class Player extends \app\controllers\FrontController
             $isintro = false;
         }
 
+        $isintro = false;
+
         return $this->load->view('/player/normal', [
             'data' => [
                 'orderidx' => $orderidx,
                 'prodcode' => $prodcode,
                 'prodcodesub' => $prodcodesub,
+                'orderprodidx' => $lec['OrderProdIdx'],
                 'lecidx' => $lec['wLecIdx'],
                 'unitidx' => $unitidx,
                 'quility' => $quility,
@@ -242,6 +250,7 @@ class Player extends \app\controllers\FrontController
                 'title' => $data['wUnitName'],
                 'url' => $url,
                 'memid' => $MemId,
+                'memidx' => $this->session->userdata('mem_idx'),
                 'logidx' => $logidx
             ]
         ]);
@@ -618,16 +627,88 @@ class Player extends \app\controllers\FrontController
     {
         $orderidx = $this->_req('o');
         $prodcode = $this->_req('p');
+        $orderprodidx = $this->_req('op');
         $prodcodesub = $this->_req('sp');
+        $lecidx = $this->_req('w');
         $unitidx = $this->_req('u');
         $logidx = $this->_req('l');
+        $memidx = $this->_req('m');
         $studytime = $this->_req('st');
-        $studyrealtime = $this->_req('srt');
-        $studyrealtime = $this->_req('pos');
+        $realstudytime = $this->_req('rst');
+        $position = $this->_req('pos');
+        $deviceinfo = $this->_req('di');
 
-        $input = null;
+        if( empty($orderidx) == true
+            || empty($prodcode) == true
+            || empty($orderprodidx) == true
+            || empty($prodcodesub) == true
+            || empty($lecidx) == true
+            || empty($unitidx) == true
+            || empty($logidx) == true
+            || empty($memidx) == true ) {
+            echo 'ERROR';
+            return;
+        }
 
-        $this->playerFModel->updateStudyLog($input);
+        if($memidx != $this->session->userdata('mem_idx')){
+            echo 'ERROR';
+            return;
+        }
+
+        $cond = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $orderprodidx,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx
+            ]
+        ];
+
+        $data = $this->playerFModel->getStudyLog($cond);
+        if(empty($data) == true){
+            echo "ERROR";
+            return;
+        }
+
+        $input = [
+            'OrderIdx' => $orderidx,
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub,
+            'OrderProdIdx' => $orderprodidx,
+            'wLecIdx' => $lecidx,
+            'wUnitIdx' => $unitidx,
+            'LshIdx' => $logidx,
+            'StudyTime' => $studytime,
+            'RealStudyTime' => $realstudytime,
+            'LastPosition' => $position,
+            'DeviceInfo' => $deviceinfo
+        ];
+
+        $input = array_merge($input, $data);
+
+        if($this->playerFModel->updateStudyLog($input) == true){
+            echo 'OK';
+        } else {
+            echo 'ERROR';
+        }
+    }
+
+
+    public function checkDevice()
+    {
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $orderprodidx = $this->_req('op');
+        $prodcodesub = $this->_req('sp');
+
+        // 해당강의가 기기제한 강의인지 체크
+
+        // 기기제한 강의라면 디바이스 등록
+
+        // 디바이스 등록에 실패하면 스톱
 
         echo 'OK';
     }
@@ -665,9 +746,4 @@ class Player extends \app\controllers\FrontController
 
         return $protocol.$str;
     }
-
-
-
-
-
 }

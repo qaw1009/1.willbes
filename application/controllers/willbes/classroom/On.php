@@ -592,6 +592,7 @@ class On extends \app\controllers\FrontController
 
                 // 수강시간은 초
                 $studytime = intval($row['RealStudyTime']);
+
                 // 제한시간 분 -> 초
                 $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
 

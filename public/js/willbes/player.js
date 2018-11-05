@@ -91,6 +91,7 @@ function onPlayStateChange(state)
             player.setVisible(false);
             break;
         case PlayState.BUFFERING_STARTED:
+            fnCheckPID();
             break;
     }
 }
@@ -120,27 +121,10 @@ function click()
     }
 }
 
-function getScreenSize()
-{
-    /*
-    if (pcScreenWidth <= 800) {
-        video_container_width = 640;
-        SubFrameTag_width = 0;
-    } else {
-        video_container_width = parseInt(pcScreenWidth - 500); // * 0.5);
-    }
-
-    if ( pcScreenWidth > 1600 && playerHeight > pcScreenHeight - 50 ) {
-        video_container_width = parseInt(pcScreenWidth * 0.6);
-    }
-    */
-
-    //playerWidth = parseInt(pcScreenWidth - 500);
-    //playerHeight = parseInt((pcScreenWidth - 334) * 9 / ratio) + controller_container_height + playerTitleHeight;
-    video_container_height = parseInt(video_container_width * 9 / ratio);
-}
 function setScreenReSizeVal()
 {
+    video_container_height = parseInt(video_container_width * 9 / ratio);
+
     playerWidth = video_container_width + SubFrameTag_width + playerPaddingWidth;
     playerHeight = video_container_height + playerTitleHeight + controller_container_height + playerPaddingHeight;
     moveLeft = parseInt((( screen.availWidth - 10 ) - playerWidth) / 2);
@@ -155,7 +139,6 @@ function screenResize()
 
     $("#video-container").attr("style", "height:" + video_container_height + "px; width:" + video_container_width + "px;");
     $("#controller-container").attr("style", "height:" + controller_container_height + "px; width:" + video_container_width + "px;");
-    $("#controller-container").attr("style", "height:1px; width:1px;");
     $("#controller-container2").attr("style", "position:absolute;display:block;left:0px;height:" + controller_container_height + "px; width:" + video_container_width + "px;top:" + parseInt(video_container_height +playerTitleHeight) + "px;");
 }
 
@@ -183,7 +166,7 @@ function fnDefense()
             checkStatus = 'off';
             console.log(element);
             console.clear();
-            if (checkStatus=="on") {
+            if (checkStatus == "on") {
                 player.stop();
                 clearInterval(interVal);
                 document.write ("디버깅 창이 활성 화 되어 있습니다.<br>디버깅 창 종료 후 다시 이용하여 주시기 바랍니다.");
@@ -211,6 +194,20 @@ function fnStartPlayer(config, media)
     initScriptUI(player);
 }
 
+function fnSetTop(obj)
+{
+    if(player.getTopmost() == true){
+        player.setTopmost(false);
+        $(obj).removeClass('on');
+    } else if(player.getTopmost() == false){
+        player.setTopmost(true);
+        $(obj).addClass('on');
+    }
+
+    player.setTopmost(true);
+
+    alert(player.getTopmost());
+}
 
 //document.onmousedown = click;
 //document.onkeydown = click;
@@ -229,5 +226,6 @@ $(document).on("contextmenu", function (e) {
     e.preventDefault();
 });
 */
+
 
 

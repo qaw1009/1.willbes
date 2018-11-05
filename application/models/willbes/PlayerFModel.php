@@ -9,7 +9,11 @@ class PlayerFModel extends WB_Model
         'mstlec' => 'wbs_cms_lecture',
         'unit' => 'wbs_cms_lecture_unit_combine',
         'wbs_code' => 'wbs_sys_code',
-        'bookmark' => 'lms_bookmark'
+        'bookmark' => 'lms_bookmark',
+        'study_log' => 'lms_lecture_studyinfo',
+        'study_history' => 'lms_lecture_study_history',
+        'lec_unit' => 'vw_unit_mylecture',
+        'mylec' => 'lms_my_lecture'
     ];
 
     public function __construct()
@@ -121,14 +125,264 @@ class PlayerFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 수강시작시 로그생성
+     * @param $input
+     * @return array|bool
+     */
     public function storeStudyLog($input)
     {
+        // 이미 로그기록 있는지 체크
+        $query = "SELECT COUNT(*) as rownums FROM {$this->_table['study_log']} ";
+        $where = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => element('OrderIdx', $input),
+                'OrderProdIdx' => element('OrderProdIdx', $input),
+                'ProdCode' => element('ProdCode', $input),
+                'ProdCodeSub' => element('ProdCodeSub', $input),
+                'wLecIdx' => element('wLecIdx', $input),
+                'wUnitIdx' => element('wUnitIdx', $input)
+            ]
+        ];
 
+        $where = $this->_conn->makeWhere($where);
+        $where = $where->getMakeWhere(false);
+        $result = $this->_conn->query($query.$where);
+
+        // 기록없으면 study info insert
+        if($result->row(0)->rownums == 0){
+
+            $input = [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => element('OrderIdx', $input),
+                'OrderProdIdx' => element('OrderProdIdx', $input),
+                'ProdCode' => element('ProdCode', $input),
+                'ProdCodeSub' => element('ProdCodeSub', $input),
+                'wLecIdx' => element('wLecIdx', $input),
+                'wUnitIdx' => element('wUnitIdx', $input)
+            ];
+            try {
+                if($this->_conn->set($input)->insert($this->_table['study_log']) === false){
+                    throw new \Exception('수강기록 초기화에 실패');
+                }
+            } catch (\Exception $e) {
+                return 0;
+            }
+        }
+
+        // study history insert
+        try {
+            $input = array_merge($input, [
+                'AccessIp' => $this->input->ip_address(),
+                'DeviceInfo' => '',
+                'PlayType' => 'S',
+                'StudyType' => 'O'
+            ]);
+
+            if($this->_conn->set($input)->insert($this->_table['study_history']) === false){
+                throw new \Exception('수강기록 초기화에 실패');
+            }
+        } catch (\Exception $e) {
+            return 0;
+        }
+
+        return $this->_conn->insert_id();
     }
 
+    /**
+     * 수강로그 업데이트
+     * @param $input
+     * @return bool
+     */
     public function updateStudyLog($input)
     {
+        $OrderIdx = element('OrderIdx', $input);
+        $ProdCode = element('ProdCode', $input);
+        $ProdCodeSub = element('ProdCodeSub', $input);
+        $OrderProdIdx = element('OrderProdIdx', $input);
+        $wLecIdx = element('wLecIdx', $input);
+        $wUnitIdx = element('wUnitIdx', $input);
+        $LshIdx = element('LshIdx', $input);
+        $MemIdx = $this->session->userdata('mem_idx');
 
+        $LastPosition = element('LastPosition', $input);
+        $DeviceInfo = element('DeviceInfo', $input);
+
+
+        // 수강시간
+        $StudyTime = (int)element('StudyTime', $input);
+        $RealStudyTime = (int)element('RealStudyTime', $input);
+
+        $UnitTime = (int)element('UnitTime', $input);
+        $UnitStudyTime = (int)element('UnitStudyTime', $input);
+        $UnitRealStudyTime =(int) element('UnitRealStudyTime', $input);
+
+        $LecTime = (int)element('LecTime', $input);
+        $LecStudyTime = (int)element('LecStudyTime', $input);
+        $LecRealStudyTime = (int)element('LecRealStudyTime', $input);
+
+
+        $UnitRate = floor((($UnitStudyTime + $StudyTime) / $UnitTime) * 100);
+        $LecRate = floor((($LecStudyTime + $StudyTime) / $LecTime) * 100);
+
+        if($UnitRate > 100) { $UnitRate = 100; }
+        if($LecRate > 100) { $LecRate = 100; }
+
+        $this->_conn->trans_begin();
+        try{
+            // 회차 업데이트
+            if($this->_conn->
+                set('StudyTime', $UnitStudyTime + $StudyTime)->
+                set('RealStudyTime', $UnitRealStudyTime + $RealStudyTime)->
+                set('LastPosition', $LastPosition)->
+                set('LastStudyDate', 'NOW()', false)->
+                set('StudyRate', $UnitRate)->
+                where('MemIdx', $MemIdx)->
+                where('OrderIdx', $OrderIdx)->
+                where('ProdCode', $ProdCode)->
+                where('ProdCodeSub', $ProdCodeSub)->
+                where('OrderProdIdx', $OrderProdIdx)->
+                where('wLecIdx', $wLecIdx)->
+                where('wUnitIdx', $wUnitIdx)->
+                update($this->_table['study_log'])
+                == false){
+                throw new \Exception('수강기록 업데이트 실패');
+            }
+
+            // 회차기록업데이트
+            if($this->_conn->
+                set('StudyTime', 'StudyTime + '.$StudyTime, false)->
+                set('RealStudyTime', 'RealStudyTime + '.$RealStudyTime, false)->
+                set('LastPosition', $LastPosition)->
+                set('LastStudyDate', 'NOW()', false)->
+                set('DeviceInfo', $DeviceInfo)->
+                where('MemIdx', $MemIdx)->
+                where('LshIdx', $LshIdx)->
+                update($this->_table['study_history'])
+                == false){
+                throw new \Exception('수강기록 업데이트 실패');
+            }
+
+            // 내강의 업데이트
+            if($this->_conn->
+                set('LecStudyTime', $LecStudyTime + $StudyTime)->
+                set('RealLecStudyTime', $LecRealStudyTime + $RealStudyTime)->
+                set('StudyRate', $LecRate)->
+                where('OrderIdx', $OrderIdx)->
+                where('ProdCode', $ProdCode)->
+                where('ProdCodeSub', $ProdCodeSub)->
+                where('OrderProdIdx', $OrderProdIdx)->
+                update($this->_table['mylec'])
+                == false){
+                throw new \Exception('수강기록 업데이트 실패');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    function getStudyLog($cond)
+    {
+        // 회차 시간을 구한다.
+        $query = "SELECT STRAIGHT_JOIN * ";
+        $query .= " FROM {$this->_table['lec_unit']} ";
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $result = $this->_conn->query($query);
+        $result = $result->row_array();
+
+        $UnitTime = (int)$result['wRuntime'] * 60;
+        $UnitStudyTime = (int)$result['StudyTime'];
+        $UnitRealStudyTime = (int)$result['RealStudyTime'];
+
+        // uunitidx 를 없애서 해당 강의의 모든 시간합을 구한다.
+        $cond['EQ']['wUnitIdx'] = '';
+        $query = "SELECT SUM(wRuntime) AS LecTime, SUM(StudyTime) AS LecStudyTime, SUM(RealStudyTime) AS LecRealStudyTime ";
+        $query .= " FROM {$this->_table['lec_unit']} ";
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $result = $this->_conn->query($query);
+        $result = $result->row_array();
+        $LecTime = (int)$result['LecTime'] * 60;
+        $LecStudyTime = (int)$result['LecStudyTime'];
+        $LecRealStudyTime = (int)$result['LecRealStudyTime'];
+
+        return [
+            'UnitTime' => $UnitTime,
+            'UnitStudyTime' => $UnitStudyTime,
+            'UnitRealStudyTime' => $UnitRealStudyTime,
+            'LecTime' => $LecTime,
+            'LecStudyTime' => $LecStudyTime,
+            'LecRealStudyTime' => $LecRealStudyTime
+        ];
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

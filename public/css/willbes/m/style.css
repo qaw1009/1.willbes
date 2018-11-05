@@ -43,8 +43,14 @@ body {
 .width25p {
     width: 25%;
 }
+.width29n5p {
+    width: 29.5%;
+}
 .width30p {
     width: 30%;
+}
+.width32p {
+    width: 32%;
 }
 .width32n5p {
     width: 32.5%;
@@ -936,6 +942,9 @@ span {
     text-align: right;
     line-height: 40px;
 }
+.willbes-Lec-Selected .chkBox.line2 {
+    top: 65px;
+}
 .willbes-Lec-Selected .chkBox input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -1150,7 +1159,6 @@ span {
 }
 .lecTable .w-s-date .grid {
     border-top: 1px solid #ccc;
-    padding-left: 20px;
 }
 .lecTable .w-s-date input[type="text"] {
     width: 15%; 
@@ -1202,23 +1210,6 @@ span {
 }
 .btnBox ul li {
     margin-right: 5px
-}
-.lecMore {
-    clear: both;
-    background: #f7f7f7;
-    height: 50px;
-    font-size: 14px;
-    color: #999;
-    text-align: center;
-    line-height: 50px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-}
-.lecMore a {
-    display: block;
-}
-.lecMore span {
-    vertical-align: baseline;
 }
 .AddlecMore {
     clear: both;
@@ -1541,6 +1532,9 @@ span {
 .daysListTabs table tr td .w-info {
     line-height: 30px;
 }
+.calendarPickerBtn a {
+    display: block;
+}
 
 /* 자주하는 질문 */
 .replyList.willbes-Open-Table {
@@ -1627,13 +1621,129 @@ span {
     color: #1a8ccc;
     text-decoration: underline;
 }
-
 .Paging ul li .row-line {
     background: #ddd;
     width: 1px;
     height: 9px;
     margin: -3px 0 0 10px;
 }
+
+/* willbes-Layer-PassBox */
+.willbes-Layer-Black {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+.willbes-Layer-PassBox {
+    float: left;
+    width: 90%;
+    background: #fff;
+    padding: 20px 25px;
+    margin: 0 5%;
+    z-index: 105;
+}
+.willbes-Layer-PassBox .closeBtn {
+    position: absolute;
+    top: 27px;
+    right: 25px;
+}
+.willbes-Layer-PassBox .Layer-Tit {
+    font-size: 21px;
+    font-weight: 600;
+    color: #3a3a3a;
+    letter-spacing: 0;
+    padding: 5px 0 10px;
+    border-bottom: 1px solid #ccc;
+}
+.willbes-Layer-Black .AddlecMore {
+    margin: 20px 0;
+}
+.willbes-Layer-PassBox600 {
+    max-width: 600px;
+}
+.willbes-Layer-PassBox.fix {
+    position: fixed;
+    display: block;
+    top: 50%;
+}
+.willbes-Layer-PassBox600.h510.fix {
+    margin-top: -255px;
+}
+
+/* calendarTable */
+.calendarTable {
+    font-family: "Arial", "sans-serif";
+    width: 100%;
+}
+.calendarTable .table-condensed tr th,
+.calendarTable .table-condensed tr td {
+    font-size: 15px;
+}
+.calendarTable .table-condensed tr.month th {
+    font-size: 28px;
+    font-weight: 600;
+    padding: 22px 0;
+}
+.calendarTable .table-condensed tr.month th span.Btn {
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+    margin: 0 10px;
+}
+.calendarTable .table-condensed thead tr.week th {
+    background: #1a8ccc;
+    height: 36px;
+    color: #fff;
+    text-align: center;
+}
+.calendarTable .table-condensed tbody tr td {
+    height: 50px;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+
+.calendarTable .table-condensed tr td span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 48px;
+}
+.calendarTable .table-condensed tr td span.start:after {
+    content: '';
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid green;
+}
+.calendarTable .table-condensed tr td.ing {
+    background: #e9e9e9;
+}
+.calendarTable .table-condensed tr td span.end {
+    width: 0; 
+    height: 0; 
+    border-top: 48px solid transparent;
+    border-bottom: 48px solid transparent; 
+    border-right:48px solid blue; 
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1667,5 +1777,13 @@ span {
     }
     .width45p {
         width: 44%;
+    }
+}
+
+/* Calendar */
+@media only screen and (min-width: 690px) {
+    .willbes-Layer-PassBox600 {
+        left: 50%;
+        margin-left: -300px;
     }
 }

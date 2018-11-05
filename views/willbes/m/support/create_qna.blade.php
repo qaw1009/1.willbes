@@ -17,31 +17,31 @@
             동영상 상담실
         </div>
         <div class="willbes-Lec-Selected NG tx-gray">
-            <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess width25p" @if($__cfg['SiteCode'] != config_item('app_intg_site_code') || $method == 'PUT') disabled @endif>
+            <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess width50p" @if($__cfg['SiteCode'] != config_item('app_intg_site_code') || $method == 'PUT') disabled @endif>
                 <option value="">과정선택</option>
                 @foreach($arr_base['site_list'] as $key => $val)
                     <option value="{{$key}}" @if($data['SiteCode'] == $key || $__cfg['SiteCode'] == $key)selected="selected"@endif>{{$val}}</option>
                 @endforeach
             </select>
-            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCate width20p ml1p">
+            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCate width49p ml1p">
                 <option value="">구분</option>
                 @foreach($arr_base['category'] as $row)
                     <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
                 @endforeach
             </select>
-            <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA width20p ml1p">
+            <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleLecA width34p mt1p">
                 <option value="">상담유형</option>
                 @foreach($arr_base['consult_type'] as $key => $val)
                     <option value="{{$key}}" @if($data['TypeCcd'] == $key)selected="selected"@endif>{{$val}}</option>
                 @endforeach
             </select>
-            <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus width20p ml1p">
+            <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus width34p ml1p mt1p">
                 <option value="">캠퍼스 선택</option>
                 @foreach($arr_base['campus'] as $row)
                     <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CampusCcd'])selected="selected"@endif>{{$row['CcdName']}}</option>
                 @endforeach
             </select>
-            <span class="chkBox">
+            <span class="chkBox line2">
                 <input type="checkbox" id="s_is_public" name="s_is_public" class="goods_chk" value="1" @if($method == 'POST' || $data['IsPublic']=='N')checked="checked"@endif> <span>비밀글 여부</span>
             </span>
             <div class="willbes-Lec-Search NG width100p mt1p">

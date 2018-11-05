@@ -86,7 +86,7 @@
 
                 var that = $(this);
                 var row = $datatable.row(that.data('row-idx')).data();
-                var $parent_regi_form = $('#regi_form');
+                var $parent_regi_form = $('.search-member-form');
                 var $parent_selected_member = $('#selected_member');
                 var html = '';
 

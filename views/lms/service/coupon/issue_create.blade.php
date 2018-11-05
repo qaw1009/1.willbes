@@ -65,7 +65,7 @@
                     <h4><strong>쿠폰발급</strong></h4>
                 </div>
                 <div class="col-md-12">
-                    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+                    <form class="form-horizontal form-label-left search-member-form" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         <input type="hidden" name="coupon_idx" value="{{ $coupon_idx }}" required="required" title="쿠폰 식별자"/>
                         <div class="bdt-line"></div>

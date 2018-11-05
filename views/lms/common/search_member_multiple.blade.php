@@ -64,7 +64,7 @@
         var $datatable;
         var $search_form = $('#_search_form');
         var $list_table = $('#_list_ajax_table');
-        var $parent_regi_form = $('#regi_form');
+        var $parent_regi_form = $('.search-member-form');
         var $parent_selected_member = $('#selected_member');
         var $selected_member = $('#_selected_member');
         var $ori_selected_data = {};

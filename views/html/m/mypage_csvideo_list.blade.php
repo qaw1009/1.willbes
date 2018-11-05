@@ -101,9 +101,17 @@
             </tr>
         </tbody>
     </table>
-    <div class="lecMore">
-        <a href="#none">더보기 (<span class="tx-black">10</span>/20)</a>
-    </div>  
+    <div class="Paging">
+        <ul>
+            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+            <li><a href="#none">2</a><span class="row-line">|</span></li>
+            <li><a href="#none">3</a><span class="row-line">|</span></li>
+            <li><a href="#none">4</a><span class="row-line">|</span></li>
+            <li><a href="#none">5</a></li>
+            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+        </ul>
+    </div>
   
     <div class="goTopbtn">
         <a href="javascript:link_go();">

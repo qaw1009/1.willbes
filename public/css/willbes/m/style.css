@@ -1607,6 +1607,34 @@ span {
     cursor: pointer;
 }
 
+/* Paging */
+.Paging {
+    text-align: center;
+    margin: 25px 0;
+}
+.Paging ul li {
+    display: inline-block;
+    margin: 0 7px;
+    line-height: 18px;
+}
+.Paging ul li a {
+    font-size: 12px;
+    color: #323232;
+}
+.Paging ul li a.on {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a8ccc;
+    text-decoration: underline;
+}
+
+.Paging ul li .row-line {
+    background: #ddd;
+    width: 1px;
+    height: 9px;
+    margin: -3px 0 0 10px;
+}
+
 
 
 

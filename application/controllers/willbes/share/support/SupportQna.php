@@ -80,7 +80,7 @@ class SupportQna extends BaseSupport
                 'SubjectIdx' => $subject_idx
             ],
             'LKB' => [
-                'Category_String'=>$this->_cate_code
+                'Category_String'=>$s_cate_code
             ],
             'ORG' => [
                 'LKB' => [

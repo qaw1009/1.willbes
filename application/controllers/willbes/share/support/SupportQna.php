@@ -134,12 +134,10 @@ class SupportQna extends BaseSupport
 
         if ($this->_is_mobile === true) {
             $paging_count = $this->_paging_count_m;
-            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
         } else {
             $paging_count = $this->_paging_count;
-            $default_path = $this->_default_path;
         }
-        $paging = $this->pagination($default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -148,7 +146,7 @@ class SupportQna extends BaseSupport
         }
 
         $this->load->view('support/'.$view_type.'/qna', [
-            'default_path' => $default_path,
+            'default_path' => $this->_default_path,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'list'=>$list,
@@ -241,14 +239,8 @@ class SupportQna extends BaseSupport
             }
         }
 
-        if ($this->_is_mobile === true) {
-            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
-        } else {
-            $default_path = $this->_default_path;
-        }
-
         $this->load->view('support/'.$view_type.'/create_qna', [
-            'default_path' => $default_path,
+            'default_path' => $this->_default_path,
             'method' => $method,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
@@ -322,15 +314,9 @@ class SupportQna extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
-        if ($this->_is_mobile === true) {
-            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
-        } else {
-            $default_path = $this->_default_path;
-        }
-
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('support/'.$view_type.'/show_qna',[
-                'default_path' => $default_path,
+                'default_path' => $this->_default_path,
                 'arr_input' => $arr_input,
                 'get_params' => $get_params,
                 'data' => $data,
@@ -447,13 +433,7 @@ class SupportQna extends BaseSupport
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        if ($this->_is_mobile === true) {
-            $default_path = '/'.config_item('app_mobile_site_prefix').$this->_default_path;
-        } else {
-            $default_path = $this->_default_path;
-        }
-
-        show_alert('삭제되었습니다.', $default_path.'/index?'.$get_params);
+        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
     }
 
     /**

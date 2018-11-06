@@ -49,7 +49,7 @@
 
     <div class="btnBox mb20">
         <ul class="f_left width100p">
-            <li class="InfoBtn btn_blue"><a href="{{front_url('/support/qna/create')}}">문의하기</a></li>
+            <li class="InfoBtn btn_blue"><a href="{{front_url($default_path.'/create?'.$get_params)}}">문의하기</a></li>
             <li class="InfoBtn btn_white">
                 @if (element('s_is_my_contents', $arr_input) == 1)
                     <input type="hidden" id="s_is_my_contents" name="s_is_my_contents" value="0">
@@ -77,7 +77,7 @@
                 <tr class="bg-light-blue">
                     <td class="w-data tx-left" colspan="2">
                         <div class="w-tit">
-                            <a href="{{site_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                            <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                 {{hpSubString($row['Title'],0,40,'...')}}
                                 @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
                             </a>
@@ -109,7 +109,7 @@
                             @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                 <a href="javascript:alert('비밀글입니다.');">{{hpSubString($row['Title'],0,40,'...')}}</a>
                             @else
-                                <a href="{{site_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                     {{hpSubString($row['Title'],0,40,'...')}}
                                 </a>
                             @endif

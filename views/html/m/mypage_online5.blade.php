@@ -108,7 +108,6 @@
             <a class="closeBtn" href="#none" onclick="closeWin('DATAPICKERPASS')">
                 <img src="{{ img_url('m/calendar/close.png') }}">
             </a>
-            <div class="Layer-Tit tx-dark-black NG">시작일 변경</div> 
             <div class="calendarTable NG">
                 <div class="datepicker-days">
                     <table cellspacing="0" cellpadding="0" class="table-condensed">
@@ -130,13 +129,13 @@
                                 </th>
                             </tr>
                             <tr class="week">
+                                <th class="dow">Sun</th>
                                 <th class="dow">Mon</th>
                                 <th class="dow">Tue</th>
                                 <th class="dow">Wed</th>
                                 <th class="dow">Thr</th>
                                 <th class="dow">Fri</th>
                                 <th class="dow">Sat</th>
-                                <th class="dow">Sun</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -60,14 +60,14 @@
             $('#vodTabs').css('height', $(window).height());
 
             $('.vodSbjBox ul.sbj').css('height', $(window).height() - 220);
-            $('.vodlecBox ul.lec').css('height', $(window).height() - 150);
+            $('.vodlecBox ul.lec').css('height', $(window).height() - 135);
             $('.vodtableBox ul.table').css('height', $(window).height() - 230);
 
             $(window).resize(function() {
                 $('#vodTabs').css('height', $(window).height());
 
                 $('.vodSbjBox ul.sbj').css('height', $(window).height() - 220);
-                $('.vodlecBox ul.lec').css('height', $(window).height() - 150);
+                $('.vodlecBox ul.lec').css('height', $(window).height() - 135);
                 $('.vodtableBox ul.table').css('height', $(window).height() - 230);
             });
         });

@@ -22,7 +22,6 @@ class ClassroomFModel extends WB_Model
         parent::__construct('lms');
     }
 
-
     /**
      *  강의리스트에서 셀렉트를 위해서
      * @param $columns
@@ -44,6 +43,17 @@ class ClassroomFModel extends WB_Model
         $result = $this->_conn->query($query);
 
         return empty($result) === true ? [] : $result->result_array();
+    }
+
+
+    /**
+     * 사이트리스트
+     * @return array
+     */
+    public function getSiteList($cond = [], $isoff = false)
+    {
+        $columns = " SiteCode ";
+        return $this->getSelectList($columns, $cond, $isoff);
     }
 
 
@@ -87,7 +97,7 @@ class ClassroomFModel extends WB_Model
     public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false)
     {
         if($isCount == true){
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
         } else {
             $query = "SELECT STRAIGHT_JOIN *,
             TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
@@ -105,7 +115,7 @@ class ClassroomFModel extends WB_Model
         $query .= $where->getMakeWhere(false);
         $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
         $result = $this->_conn->query($query);
-        return empty($result) === true ? [] : $result->result_array();
+        return ($isCount == true) ? $result->row(0)->rownums : $result->result_array();
     }
 
 
@@ -557,51 +567,3 @@ class ClassroomFModel extends WB_Model
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportQna extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', '_lms/sys/site', '_lms/sys/code', 'downloadF');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store');
@@ -75,7 +75,6 @@ class SupportQna extends BaseSupport
             'EQ' => [
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
-                'SiteCode' => $s_site_code,
                 'TypeCcd' => $s_consult_type,
                 'ProfIdx' => $prof_idx,
                 'SubjectIdx' => $subject_idx
@@ -92,7 +91,11 @@ class SupportQna extends BaseSupport
         ];
 
         // 통합사이트일 경우 전체 사이트 조회
-        if ($this->_site_code != config_item('app_intg_site_code')) {
+        if ($this->_site_code == config_item('app_intg_site_code')) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'SiteCode' => $s_site_code
+            ]);
+        } else {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
                 'SiteCode' => $this->_site_code
             ]);

@@ -65,35 +65,35 @@
                     <h4><strong>쿠폰발급</strong></h4>
                 </div>
                 <div class="col-md-12">
-                    <form class="form-horizontal form-label-left search-member-form" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+                    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
                         <input type="hidden" name="coupon_idx" value="{{ $coupon_idx }}" required="required" title="쿠폰 식별자"/>
                         <div class="bdt-line"></div>
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="regi_type_1">등록구분 <span class="required">*</span>
+                            <label class="control-label col-md-1" for="search_mem_type_1">등록구분 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 item">
                                 <div class="radio">
-                                    <input type="radio" id="regi_type_1" name="regi_type" class="flat" value="S" title="등록구분" required="required" checked="checked"/> <label for="regi_type_1" class="input-label">개별등록</label>
-                                    <input type="radio" id="regi_type_2" name="regi_type" class="flat" value="F"/> <label for="regi_type_2" class="input-label">일괄등록</label>
+                                    <input type="radio" id="search_mem_type_1" name="search_mem_type" class="flat" value="S" title="등록구분" required="required" checked="checked"/> <label for="search_mem_type_1" class="input-label">개별등록</label>
+                                    <input type="radio" id="search_mem_type_2" name="search_mem_type" class="flat" value="F"/> <label for="search_mem_type_2" class="input-label">일괄등록</label>
                                 </div>
                             </div>
                         </div>
-                        <div id="regi_type_S" class="form-group form-regi-input">
+                        <div id="search_mem_type_S" class="form-group form-regi-input">
                             <label class="control-label col-md-1" for="search_mem_id">개별등록
                             </label>
                             <div class="col-md-10 form-inline">
                                 <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="" style="width: 180px;">
-                                <button type="button" id="btn_member_search" data-result-type="multiple" class="btn btn-primary mb-0">회원검색</button>
+                                <button type="button" name="btn_member_search" data-result-type="multiple" class="btn btn-primary mb-0">회원검색</button>
                                 <span id="selected_member" class="pl-10"></span>
                             </div>
                         </div>
-                        <div id="regi_type_F" class="form-group form-regi-input hide">
+                        <div id="search_mem_type_F" class="form-group form-regi-input hide">
                             <label class="control-label col-md-1" for="search_mem_file">일괄등록
                             </label>
                             <div class="col-md-10 form-inline">
                                 <input type="file" id="search_mem_file" name="search_mem_file" class="form-control" title="회원검색파일" value="">
-                                <button type="button" id="btn_member_file_upload" class="btn btn-primary mb-0">업로드하기</button>
+                                <button type="button" name="btn_member_file_upload" class="btn btn-primary mb-0">업로드하기</button>
                                 <span id="selected_member_file" class="hide"></span>
                             </div>
                             <div class="col-md-10 col-md-offset-1 mt-5">

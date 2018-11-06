@@ -61,23 +61,23 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $_datatable;
-        var $_search_form = $('#_search_form');
-        var $_list_table = $('#_list_ajax_table');
-        var $parent_regi_form = $('.search-member-form');
-        var $parent_selected_member = $('#selected_member');
-        var $selected_member = $('#_selected_member');
+        var $datatable_modal;
+        var $search_form_modal = $('#_search_form');
+        var $list_table_modal = $('#_list_ajax_table');
+        var $parent_regi_form = $('#{{ $target_form_id }}');
+        var $parent_selected_member = $parent_regi_form.find('#selected_member');
+        var $selected_member = $search_form_modal.find('#_selected_member');
         var $ori_selected_data = {};
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
-            $_datatable = $_list_table.DataTable({
+            $datatable_modal = $list_table_modal.DataTable({
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/common/searchMember/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($_search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
@@ -99,7 +99,7 @@
             });
 
             // 전체선택
-            $_datatable.on('ifChanged', '#_is_all', function() {
+            $datatable_modal.on('ifChanged', '#_is_all', function() {
                 var $_mem_idx = $('input[name="_mem_idx"]');
                 if ($(this).prop('checked') === true) {
                     $_mem_idx.iCheck('check');
@@ -109,9 +109,9 @@
             });
 
             // 회원 선택
-            $_datatable.on('ifChanged', 'input[name="_mem_idx"]', function() {
+            $datatable_modal.on('ifChanged', 'input[name="_mem_idx"]', function() {
                 var that = $(this);
-                var row = $_datatable.row(that.data('row-idx')).data();
+                var row = $datatable_modal.row(that.data('row-idx')).data();
                 var mem_idx = that.val();
                 var mem_name = '';
 
@@ -156,7 +156,7 @@
                 $parent_regi_form.find('input[name="mem_idx[]"]').remove();
                 $parent_selected_member.html(html);
 
-                $("#pop_modal").modal('toggle');
+                $("#pop_modal_member_search").modal('toggle');
             });
 
             // 기존 선택된 정보 셋팅

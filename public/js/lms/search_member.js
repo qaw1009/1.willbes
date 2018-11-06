@@ -2,28 +2,30 @@
  * 회원 검색
  */
 $(document).ready(function() {
-    var $mem_search_form = $('.search-member-form');
+    var $search_mem_form = $('form');
 
     // 회원 등록구분 선택
-    $mem_search_form.on('ifChanged', 'input[name="regi_type"]:checked', function() {
-        var regi_type = $(this).val();
+    $search_mem_form.on('ifChanged', 'input[name="search_mem_type"]:checked', function() {
+        var search_mem_type = $(this).val();
 
         // input 초기화
         $('.form-regi-input').removeClass('show').addClass('hide');
 
         // 해당 영역 노출
-        $('#regi_type_' + regi_type).removeClass('hide').addClass('show');
+        $('#search_mem_type_' + search_mem_type).removeClass('hide').addClass('show');
     });
 
     // 회원검색 결과 개별 삭제
-    $mem_search_form.on('click', '.selected-member-delete', function() {
+    $search_mem_form.on('click', '.selected-member-delete', function() {
         var that = $(this);
         that.parent().remove();
     });
 
     // 회원검색 버튼 클릭
-    $('#btn_member_search').on('click', function() {
-        var $search_mem_id = $mem_search_form.find('input[name="search_mem_id"]');
+    $('button[name="btn_member_search"]').on('click', function() {
+        var target_form_id = $(this).parents('form').prop('id');
+        $search_mem_form = $('#' + target_form_id);
+        var $search_mem_id = $search_mem_form.find('input[name="search_mem_id"]');
         var result_type = $(this).data('result-type') || 'multiple';
 
         if ($search_mem_id.val() === '') {
@@ -32,15 +34,17 @@ $(document).ready(function() {
             return;
         }
 
-        $('#btn_member_search').setLayer({
-            'url': '/common/searchMember/index/' + result_type + '/parent_value/' + $search_mem_id.val(),
-            'width': 900
+        $search_mem_form.find('button[name="btn_member_search"]').setLayer({
+            'url': '/common/searchMember/index/' + result_type + '/parent_value/' + $search_mem_id.val() + '?target_form_id=' + target_form_id,
+            'width': 900,
+            'modal_id': 'pop_modal_member_search'
         });
     });
 
     // 회원검색 업로드하기 버튼 클릭
-    $('#btn_member_file_upload').on('click', function() {
-        var files = $mem_search_form.find('input[name="search_mem_file"]')[0].files[0];
+    $('button[name="btn_member_file_upload"]').on('click', function() {
+        $search_mem_form = $('#' + $(this).parents('form').prop('id'));
+        var files = $search_mem_form.find('input[name="search_mem_file"]')[0].files[0];
         if (typeof files === 'undefined') {
             alert('파일을 선택해 주세요.');
             return false;
@@ -53,8 +57,8 @@ $(document).ready(function() {
         sendAjax('/common/searchMember/inFile', fdata, function(ret) {
             if (ret.ret_cd) {
                 var ret_cnt = ret.ret_data.length,
-                    $selected_member_file = $('#selected_member_file'),
-                    $selected_member_file2 = $mem_search_form.find('select[name="selected_member_file2"]');
+                    $selected_member_file = $search_mem_form.find('#selected_member_file'),
+                    $selected_member_file2 = $search_mem_form.find('select[name="selected_member_file2"]');
 
                 if (ret_cnt < 1) {
                     alert('검색된 회원이 없습니다.');
@@ -62,7 +66,7 @@ $(document).ready(function() {
                 }
 
                 // 검색결과 초기화
-                $mem_search_form.find('input[name="mem_idx[]"]').remove();
+                $search_mem_form.find('input[name="mem_idx[]"]').remove();
                 $selected_member_file2.children('option').remove();
 
                 // 검색결과 loop
@@ -71,7 +75,7 @@ $(document).ready(function() {
                     $selected_member_file2.append('<option value="' + item.MemIdx + '">' + item.MemName + ' (' + item.MemId + ')</option>');
                 });
 
-                $('#selected_member_cnt').text(ret_cnt);
+                $search_mem_form.find('#selected_member_cnt').text(ret_cnt);
             }
         }, showError, false, 'POST', 'json', true);
     });

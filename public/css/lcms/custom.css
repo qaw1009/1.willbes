@@ -408,6 +408,12 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .form-horizontal .input-label:last-child {
     margin-right: 0;
 }
+.form-horizontal .form-group-sm .input-label {
+    line-height: 26px;
+}
+.form-horizontal .form-group-sm {
+    padding: 7px !important;
+}
 
 .form-table .table.table-bordered { border-left: 0; border-right: 0; margin-bottom: 10px; }
 .form-table .table th, .form-table .table td {

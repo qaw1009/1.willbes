@@ -23,8 +23,12 @@ class SearchMember extends \app\controllers\BaseController
         // 배열 원소를 2개씩 나누어 1번째는 키, 2번째는 값으로 구성된 파라미터 배열 생성
         $arr_param = array_pluck(array_chunk($params, 2), '1', '0');
 
+        // 회원선택 후 반영되어야 할 target form
+        $target_form_id = get_var($this->_reqG('target_form_id'), 'regi_form');
+
         $this->load->view('common/search_member_' . $view_postfix, [
-            'arr_param' => $arr_param
+            'arr_param' => $arr_param,
+            'target_form_id' => $target_form_id
         ]);
     }
 

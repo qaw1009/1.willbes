@@ -392,7 +392,7 @@ class RegExamModel extends WB_Model
     // 파일복사
     public function uploadFileCopy($fileCopy) {
         $mainPath = $this->upload_path . $this->upload_path_mock;
-        $destPath = $mainPath . dirname(current($fileCopy)) . '/';
+        $destPath = $mainPath . dirname($fileCopy[0]['dest']) . '/';
 
         try {
             if ( !is_dir($destPath) ) {
@@ -401,16 +401,16 @@ class RegExamModel extends WB_Model
                 }
             }
 
-            foreach ($fileCopy as $src => $dest) {
-                if ( !file_exists($mainPath . $src) || !copy($mainPath . $src, $mainPath . $dest) ) {
+            foreach ($fileCopy as $it) {
+                if ( !file_exists($mainPath . $it['src']) || !copy($mainPath . $it['src'], $mainPath . $it['dest']) ) {
                     throw new Exception('파일 복사에 실패했습니다.');
                 }
             }
         }
         catch (Exception $e) {
-            foreach ($fileCopy as $src => $dest) { // 롤백
-                if ( file_exists($mainPath . $dest) ) {
-                    unlink($mainPath . $dest);
+            foreach ($fileCopy as $it) { // 롤백
+                if ( file_exists($mainPath . $it['dest']) ) {
+                    unlink($mainPath . $it['dest']);
                 }
             }
             return $e->getMessage();
@@ -458,7 +458,7 @@ class RegExamModel extends WB_Model
 
             // 파일 삭제(백업)
             if($type == 'base') $bak_uploaded_files = array($this->upload_path . $this->upload_path_mock . $idx .'/'. $bDB['Real'.$name]);
-            else $bak_uploaded_files = array($this->upload_path . $this->upload_path_mock . $idx . $upload_path_mockQ . $bDB['Real'.$name]);
+            else $bak_uploaded_files = array($this->upload_path . $this->upload_path_mock . $idx . $this->upload_path_mockQ . $bDB['Real'.$name]);
 
             $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), false, $this->upload_path_mockBackup);
             if ($is_bak_uploaded_file !== true) {
@@ -491,10 +491,13 @@ class RegExamModel extends WB_Model
 
             // 기존데이터 첨부파일 이름 추출
             $beforeDB = $fileBackup = $fileCopy = array();
-            if($this->input->post('chapterExist')) {
+            if( $this->input->post('chapterExist') || $this->input->post('chapterDel') ) {
+                $beforeIn = array_unique(array_merge($this->input->post('chapterExist'), $this->input->post('chapterDel')));
+
                 $bDB = $this->_conn->select('MqIdx,RealQuestionFile,RealExplanFile')
-                    ->where_in($this->input->post('chapterExist'))
-                    ->get($this->_table['mockExamQuestion'])->result_array();
+                                   ->where_in($beforeIn)
+                                   ->get($this->_table['mockExamQuestion'])->result_array();
+
                 foreach ($bDB as $it) {
                     $beforeDB[$it['MqIdx']] = $it;
                 }
@@ -521,8 +524,8 @@ class RegExamModel extends WB_Model
                         );
                         if($_POST['regKind'][$k] == 'call') { // 호출한 경우
                             $index = $k + 1;
-                            $callRealQuestionFile = preg_replace('/^[a-z0-9]+_/i', 'Q'.$index.'_', $_POST['callRealQuestionFile'][$k]);
-                            $callRealExplanFile = preg_replace('/^[a-z0-9]+_/i', 'E'.$index.'_', $_POST['callRealExplanFile'][$k]);
+                            $callRealQuestionFile = 'Q'. $index . '_'. md5(uniqid(mt_rand())) . preg_replace('/^.+(\.[a-z0-9]+)$/i', '$1', $_POST['callRealQuestionFile'][$k]);
+                            $callRealExplanFile = 'E'. $index . '_'. md5(uniqid(mt_rand())) . preg_replace('/^.+(\.[a-z0-9]+)$/i', '$1', $_POST['callRealExplanFile'][$k]);
 
                             $dataReg['QuestionFile'] = $_POST['callQuestionFile'][$k];
                             $dataReg['RealQuestionFile'] = $callRealQuestionFile;
@@ -533,8 +536,8 @@ class RegExamModel extends WB_Model
                             $src = $_POST['callIdx'][$k] . $this->upload_path_mockQ;
                             $dest = $this->input->post('idx') . $this->upload_path_mockQ;
 
-                            $fileCopy[$src . $_POST['callRealQuestionFile'][$k]] = $dest . $callRealQuestionFile;
-                            $fileCopy[$src . $_POST['callRealExplanFile'][$k]]   = $dest . $callRealExplanFile;
+                            $fileCopy[] = array('src' => $src . $_POST['callRealQuestionFile'][$k], 'dest' => $dest . $callRealQuestionFile);
+                            $fileCopy[] = array('src' => $src . $_POST['callRealExplanFile'][$k], 'dest' => $dest . $callRealExplanFile);
                         }
                         else {
                             if (isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK) {

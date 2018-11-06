@@ -28,20 +28,20 @@
                     </dl>
                 </td>
             </tr>
-            <tr class="flie">
-                <td class="w-file NGR">
-                    @if(empty($data['AttachData']) === false)
-                        @foreach($data['AttachData'] as $row)
-                            @if($row['FileType'] == 0)
+            @if(empty($data['AttachData']) === false)
+                @foreach($data['AttachData'] as $row)
+                    @if($row['FileType'] == 0)
+                        <tr class="flie">
+                            <td class="w-file NGR">
                                 <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                            @endif
-                        @endforeach
+                                {{--<a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>--}}
+                            </td>
+                        </tr>
                     @endif
-                    {{--<a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
-                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>--}}
-                </td>
-            </tr>
+                @endforeach
+            @endif
             <tr class="txt">
                 <td class="w-txt NGR">
                     @if($data['RegType'] == 1)
@@ -66,18 +66,18 @@
                         </dl>
                     </td>
                 </tr>
-                <tr class="flie">
-                    <td class="w-file NGR">
-                        @if(empty($data['AttachData']) === false)
-                            @foreach($data['AttachData'] as $row)
-                                @if($row['FileType'] == 1)
+                @if(empty($data['AttachData']) === false)
+                    @foreach($data['AttachData'] as $row)
+                        @if($row['FileType'] == 1)
+                            <tr class="flie">
+                                <td class="w-file NGR">
                                     <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                                @endif
-                            @endforeach
+                                </td>
+                            </tr>
                         @endif
-                    </td>
-                </tr>
+                    @endforeach
+                @endif
                 <tr class="txt">
                     @if($data['ReplyStatusCcd'] == '621004')
                         <td class="w-txt NGR">{!! $data['ReplyContent'] !!}</td>
@@ -95,7 +95,11 @@
     </div>
     <!-- Topbtn -->
 
+    @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx') && $data['ReplyStatusCcd'] != $reply_type_complete)
     <div id="Fixbtn" class="Fixbtn three">
+    @else
+    <div id="Fixbtn" class="Fixbtn one">
+    @endif
         <ul>
             @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx') && $data['ReplyStatusCcd'] != $reply_type_complete)
             <li class="btn_gray"><a href="javascript:void(0);" id="btn_del">삭제</a></li>

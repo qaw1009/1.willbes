@@ -22,13 +22,13 @@
                 <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
             @endforeach
         </select>
-        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCate width30p ml1p" onchange="goUrl('s_cate_code',this.value)">
+        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCate width32n5p ml1p" onchange="goUrl('s_cate_code',this.value)">
             <option value="">카테고리</option>
             @foreach($arr_base['category'] as $row)
                 <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
             @endforeach
         </select>
-        <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleType width30p ml1p" onchange="goUrl('s_consult_type',this.value)">
+        <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleType width32n5p ml1p" onchange="goUrl('s_consult_type',this.value)">
             <option value="">상담유형</option>
             @foreach($arr_base['consult_type'] as $key => $val)
                 <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -76,15 +76,15 @@
             @if($row['IsBest'] == '1')
                 <tr class="bg-light-blue">
                     <td class="w-data tx-left" colspan="2">
-                        <div class="w-tit">
-                            <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                        <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                            <div class="w-tit">
                                 {{hpSubString($row['Title'],0,40,'...')}}
                                 @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
-                            </a>
-                        </div>
-                        <dl class="w-info tx-gray">
-                            <dt>관리자 | {{$row['RegDatm']}}</dt>
-                        </dl>
+                            </div>
+                            <dl class="w-info tx-gray">
+                                <dt>관리자 | {{$row['RegDatm']}}</dt>
+                            </dl>
+                        </a>
                     </td>
                 </tr>
             @else
@@ -97,27 +97,27 @@
                         @endif
                     </td>
                     <td class="w-data tx-left pl20">
-                        <dl class="w-info">
-                            <dt>
-                                @if(empty($row['Category_NameString']) === false)
-                                    {{$row['Category_NameString']}}<span class="row-line">|</span>
-                                @endif
-                                <span class="tx-light-blue">{{$row['TypeCcd_Name']}}</span>
-                            </dt>
-                        </dl>
-                        <div class="w-tit">
-                            @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
-                                <a href="javascript:alert('비밀글입니다.');">{{hpSubString($row['Title'],0,40,'...')}}</a>
-                            @else
-                                <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
-                                    {{hpSubString($row['Title'],0,40,'...')}}
-                                </a>
-                            @endif
-                            @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
-                        </div>
-                        <dl class="w-info tx-gray">
-                            <dt>{!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!} | {{$row['RegDatm']}}</dt>
-                        </dl>
+                        @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
+                        <a href="javascript:alert('비밀글입니다.');">
+                        @else
+                        <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                        @endif
+                            <dl class="w-info">
+                                <dt>
+                                    @if(empty($row['Category_NameString']) === false)
+                                        {{$row['Category_NameString']}}<span class="row-line">|</span>
+                                    @endif
+                                    <span class="tx-light-blue">{{$row['TypeCcd_Name']}}</span>
+                                </dt>
+                            </dl>
+                            <div class="w-tit">
+                                {{hpSubString($row['Title'],0,40,'...')}}
+                                @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
+                            </div>
+                            <dl class="w-info tx-gray">
+                                <dt>{!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!} | {{$row['RegDatm']}}</dt>
+                            </dl>
+                        </a>
                     </td>
                 </tr>
             @endif

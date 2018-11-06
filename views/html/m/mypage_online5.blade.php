@@ -104,7 +104,7 @@
     <!-- Topbtn -->
 
     <div id="DATAPICKERPASS" class="willbes-Layer-Black">
-        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h470 fix">
             <a class="closeBtn" href="#none" onclick="closeWin('DATAPICKERPASS')">
                 <img src="{{ img_url('m/calendar/close.png') }}">
             </a>

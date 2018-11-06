@@ -1650,8 +1650,8 @@ span {
 }
 .willbes-Layer-PassBox .closeBtn {
     position: absolute;
-    top: 27px;
-    right: 25px;
+    top: 15px;
+    right: 15px;
 }
 .willbes-Layer-Black .AddlecMore {
     margin: 20px 0;
@@ -1664,8 +1664,8 @@ span {
     display: block;
     top: 50%;
 }
-.willbes-Layer-PassBox600.h510.fix {
-    margin-top: -255px;
+.willbes-Layer-PassBox600.h470.fix {
+    margin-top: -235px;
 }
 
 /* calendarTable */
@@ -1680,7 +1680,7 @@ span {
 .calendarTable .table-condensed tr.month th {
     font-size: 20px;
     font-weight: 600;
-    padding: 22px 0;
+    padding: 10px 0 20px;
 }
 .calendarTable .table-condensed tr.month th span.Btn {
     display: inline-block;

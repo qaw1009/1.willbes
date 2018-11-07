@@ -166,6 +166,9 @@ select {
 span {
     vertical-align: baseline;
 }
+img {
+    -webkit-perspective: 1;
+}
 
 /* Aside */
 #aside {

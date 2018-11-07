@@ -147,7 +147,7 @@
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
-                <ul class="tabWrap tabDepthProf">
+                <ul class="tabWrap tabDepthProf tabDepthProf_{{$data['tabUseCount']}}">
                     <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
                     @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goUrl('tab', 'notice');">공지사항</a></li>@endif
                     @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">학습Q&A</a></li>@endif

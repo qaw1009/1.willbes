@@ -151,6 +151,16 @@ class Professor extends \app\controllers\FrontController
         $arr_input['tab'] = element('tab', $arr_input, 'open_lecture');
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input);
 
+        // 게시판 사용 유무에 탭 버튼 개수 설정
+        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard']);
+        $tabUseCount = 2;
+        foreach ($temp_UseBoardJson as $key => $val) {
+            if ($val == 'Y') {
+                $tabUseCount += 1;
+            }
+        }
+        $data['tabUseCount'] = $tabUseCount;
+
         $this->load->view('site/professor/show', [
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,

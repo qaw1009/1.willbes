@@ -1665,6 +1665,7 @@ span {
 .willbes-Layer-PassBox.fix {
     position: fixed;
     display: block;
+    top: 0;
 }
 .willbes-Layer-PassBox600.h470.fix {
 

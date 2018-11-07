@@ -41,6 +41,7 @@ $config['base_url'] = '//' . (is_cli() === false ? $_SERVER['HTTP_HOST'] : 'cli'
 $config['app_intg_site_code'] = '2000';     // 통합 사이트 코드
 $config['app_pass_site_prefix'] = 'pass';   // 학원 사이트 구분값
 $config['app_mobile_site_prefix'] = 'm';   // 모바일 사이트 구분값
+$config['app_app_site_prefix'] = 'app';     // 앱 사이트 구분값
 
 /*
 |--------------------------------------------------------------------------
@@ -61,12 +62,18 @@ $config['app_except_config'] = [
 */
 // http를 제외한 host
 $__http_host = parse_url($config['base_url'], PHP_URL_HOST);
+
 // 서브 도메인 추출
 $__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^' . $config['app_mobile_site_prefix'] . '\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
 $__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__sub_domain, 0, -1));
-// 모바일 여부
-//$__app_device = stripos($__http_host, 'm.') === false ? 'pc' : 'm';    // 모바일(m) 도메인일 경우
-$__app_device = stripos($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix'] . '/') === 0 ? 'm' : 'pc';     // 모바일을 디렉토리로 구분할 경우
+
+// 접속 디바이스 구분 (pc|m|app)
+$__app_device = 'pc';
+if (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix'] . '/') === 0) {
+    $__app_device = $config['app_mobile_site_prefix'];
+} elseif (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix'] . '/') === 0) {
+    $__app_device = $config['app_app_site_prefix'];
+}
 
 defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
 defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);

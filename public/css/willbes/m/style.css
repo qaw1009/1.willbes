@@ -1665,10 +1665,9 @@ span {
 .willbes-Layer-PassBox.fix {
     position: fixed;
     display: block;
-    top: 50%;
 }
 .willbes-Layer-PassBox600.h470.fix {
-    margin-top: 300em;
+
 }
 
 /* calendarTable */

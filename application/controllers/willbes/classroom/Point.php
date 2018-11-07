@@ -48,8 +48,8 @@ class Point extends \app\controllers\FrontController
         // 당월 소멸예정 포인트
         $expiring_save_point = array_get($this->pointFModel->listMemberSavePoint('ifnull(SUM(PS.RemainPoint), 0) as RemainPoint', array_merge_recursive($arr_condition, [
             'EQ' => ['PS.PointStatusCcd' => $this->pointFModel->_point_status_ccd['save']],
-            'NOT' => ['PS.RemainPoint' => 0],
-            'BDT' => ['PS.ExpireDatm' => [date('Y-m-01'), date('Y-m-t')]]
+            'GT' => ['PS.RemainPoint' => 0],
+            'BDT' => ['PS.ExpireDatm' => [date('Y-m-d'), date('Y-m-t')]]
         ])), '0.RemainPoint', 0);
 
         // 총 사용 포인트

@@ -23,14 +23,15 @@ class AllStatus extends \app\controllers\BaseController
         // 전체 유효포인트 조회
         $valid_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save_only', null, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
             'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
-            'NOT' => ['PSU.RemainPoint' => 0]
+            'GT' => ['PSU.RemainPoint' => 0],
+            'RAW' => ['PSU.ExpireDatm >= ' => 'NOW()']
         ]), '0.RemainPoint', 0);
 
         // 당월소멸예정포인트 조회
         $expire_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save_only', null, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
             'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
-            'NOT' => ['PSU.RemainPoint' => 0],
-            'BDT' => ['PSU.ExpireDatm' => [date('Y-m-01'), date('Y-m-t')]]
+            'GT' => ['PSU.RemainPoint' => 0],
+            'BDT' => ['PSU.ExpireDatm' => [date('Y-m-d'), date('Y-m-t')]]
         ]), '0.RemainPoint', 0);
 
         $this->load->view('service/point/all_status_index', [
@@ -92,6 +93,7 @@ class AllStatus extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
+                'PSU.SiteCode' => $this->_reqP('search_site_code'),
                 'O.OrderNo' => $this->_reqP('search_order_no'),
                 'PSU.PointStatusCcd' => $this->_reqP('search_point_status_ccd')
             ],
@@ -103,9 +105,9 @@ class AllStatus extends \app\controllers\BaseController
             ],
             'ORG1' => [
                 'EQ' => [
-                    'MemName' => $this->_reqP('search_member_value'),
-                    'MemId' => $this->_reqP('search_member_value'),
-                    'Phone3' => $this->_reqP('search_member_value')
+                    'M.MemName' => $this->_reqP('search_member_value'),
+                    'M.MemId' => $this->_reqP('search_member_value'),
+                    'M.Phone3' => $this->_reqP('search_member_value')
                 ]
             ]
         ];

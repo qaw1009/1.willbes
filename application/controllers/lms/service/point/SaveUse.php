@@ -44,8 +44,8 @@ class SaveUse extends \app\controllers\BaseController
             // 당월소멸예정포인트 조회
             $expire_save_point = array_get($this->pointModel->listAllSaveUsePoint($this->_point_type, 'save_only', $mem_idx, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
                 'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
-                'NOT' => ['PSU.RemainPoint' => 0],
-                'BDT' => ['PSU.ExpireDatm' => [date('Y-m-01'), date('Y-m-t')]]
+                'GT' => ['PSU.RemainPoint' => 0],
+                'BDT' => ['PSU.ExpireDatm' => [date('Y-m-d'), date('Y-m-t')]]
             ]), '0.RemainPoint', 0);
 
             // 목록 조회
@@ -97,6 +97,9 @@ class SaveUse extends \app\controllers\BaseController
     private function _getListConditions()
     {
         $arr_condition = [
+            'EQ' => [
+                'PSU.SiteCode' => $this->_reqP('search_site_code')
+            ],
             'IN' => [
                 'PSU.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
             ]

@@ -22,7 +22,7 @@
                         <input type="text" class="form-control" id="search_member_value" name="search_member_value">
                     </div>
                     <div class="col-md-8">
-                        <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
+                        <p class="form-control-static">이름, 아이디, 휴대폰번호 뒷4자리 검색 가능</p>
                     </div>
                 </div>
                 <div class="form-group">

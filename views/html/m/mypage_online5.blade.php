@@ -192,7 +192,7 @@
                 <a href="#none">확인</a>
             </div>
         </div>
-        <!--<div class="dim" onclick="closeWin('DATAPICKERPASS')"></div>-->
+        <div class="dim" onclick="closeWin('DATAPICKERPASS')"></div>
     </div>
     <!-- willbes-Layer-PassBox : 쪽지 -->
 

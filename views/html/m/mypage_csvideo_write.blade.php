@@ -42,8 +42,9 @@
         <textarea></textarea>
         <div class="filetype p_re mt10">
             <input type="text" class="file-text"/>
-            <span class="file-btn reset-Btn f_right width25p ml1p">Search</span>
+            <span class="file-btn reset-Btn width25p ml1p">Search</span>
             <span class="file-select"><input type="file" class="input-file" size="3"></span>
+            <input class="file-reset NSK" type="button" value="X" />
         </div>
     </div>
                                  

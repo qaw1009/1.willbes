@@ -1108,6 +1108,10 @@ span {
     font-size: 14px;
     line-height: 24px;
 }
+.lecTable .w-txt p img {
+    width: 100% !important;
+    height: auto !important;
+}
 .lecTable .w-subtxt {
     width: 50%;
 } 
@@ -1570,7 +1574,7 @@ span {
     background: #fff;
     float: left;
     position: relative;
-    width: 74%;
+    width: 67%;
     height: 40px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1578,6 +1582,7 @@ span {
     margin: 0;
     line-height: 40px;
     z-index: 3;
+    padding: 0;
 }
 .filetype .file-select {
     position: absolute;
@@ -1592,6 +1597,25 @@ span {
     height: 100%;
     filter: alpha(opacity=0);
     opacity: 0;
+}
+.filetype .file-reset {
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+    display: inline-block;
+    z-index: 10;
+    background: #000;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 0;
 }
 .filetype .file-btn {
     display: inline-block;
@@ -1752,7 +1776,7 @@ span {
 
 
 /* iPhone 5/SE */
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 320px) and (max-width: 374px) {
     .width25p {
         width: 22%;
     }
@@ -1761,6 +1785,9 @@ span {
     }
     .width90p {
         width: 89%;
+    }
+    .filetype .file-text {
+        width: 62%;
     }
     .willbes-Lec-Selected .chkBox {
         right: 5%;
@@ -1771,12 +1798,15 @@ span {
 }
 
 /* iPhone 6/7/8 */
-@media only screen and (min-width: 375px) {
+@media only screen and (min-width: 375px) and (max-width: 640px) {
     .width25p {
         width: 24%;
     }
     .width45p {
         width: 44%;
+    }
+    .filetype .file-text {
+        width: 64%;
     }
 }
 

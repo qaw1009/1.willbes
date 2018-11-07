@@ -6105,6 +6105,21 @@ ul li.profList .willbes-Layer-ProfileBox {
     width: 20%;
     height: 50px;
 }
+.tabWrap.tabDepthProf_1 li {
+    width: 100%;
+}
+.tabWrap.tabDepthProf_2 li {
+    width: 50%;
+}
+.tabWrap.tabDepthProf_3 li {
+    width: 33.33333333%
+}
+.tabWrap.tabDepthProf_4 li {
+    width: 25%;
+}
+.tabWrap.tabDepthProf_5 li {
+    width: 20%;
+}
 .tabWrap.tabDepthProf li a {
     display: block;
     width: 100%;

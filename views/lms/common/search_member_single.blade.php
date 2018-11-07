@@ -94,7 +94,10 @@
 
                 if ($parent_selected_member.length > 0) {
                     var mem_name = row.MemName + '(' + row.MemId + ')';
-                    $parent_selected_member.text(mem_name);
+                    mem_name += '<input type="hidden" name="mem_idx[]" value="' + row.MemIdx + '"/>';
+
+                    $parent_regi_form.find('input[name="mem_idx[]"]').remove();
+                    $parent_selected_member.html(mem_name);
                 }
 
                 $("#pop_modal_member_search").modal('toggle');

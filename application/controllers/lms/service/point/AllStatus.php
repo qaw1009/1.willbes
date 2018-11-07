@@ -79,8 +79,6 @@ class AllStatus extends \app\controllers\BaseController
         $arr_condition = $this->_getListConditions();
         $list = $this->pointModel->listAllSaveUsePoint($this->_point_type, $list_type, null, $column, $arr_condition, null, null, ['PSU.RegDatm' => 'desc']);
 
-        dd($list);
-
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel('전체포인트현황리스트', $list, $headers);
@@ -98,7 +96,7 @@ class AllStatus extends \app\controllers\BaseController
                 'PSU.PointStatusCcd' => $this->_reqP('search_point_status_ccd')
             ],
             'IN' => [
-                'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
+                'PSU.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
             ],
             'BDT' => [
                 'PSU.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]

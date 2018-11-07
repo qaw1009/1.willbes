@@ -160,6 +160,61 @@ class PointModel extends WB_Model
     }
 
     /**
+     * 포인트 적립
+     * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
+     * @param int $save_point [적립포인트]
+     * @param int $mem_idx [회원식별자]
+     * @param array $input
+     * @return array|bool
+     */
+    public function addSavePoint($point_type, $save_point, $mem_idx, $input = [])
+    {
+        try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $valid_start_date = element('valid_start_date', $input);
+            $valid_end_date = element('valid_end_date', $input);
+            $valid_days = element('valid_days', $input, 365);   // 기본값 1년
+
+            $data = [
+                'PointType' => $point_type,
+                'MemIdx' => $mem_idx,
+                'SiteCode' => element('site_code', $input),
+                'OrderIdx' => element('order_idx', $input, '0'),
+                'OrderProdIdx' => element('order_prod_idx', $input, '0'),
+                'PointStatusCcd' => $this->_point_status_ccd['save'],
+                'SavePoint' => $save_point,
+                'RemainPoint' => $save_point,
+                'ReasonCcd' => element('reason_ccd', $input),
+                'EtcReason' => element('etc_reason', $input),
+                'RegAdminIdx' => $sess_admin_idx,
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if (empty($valid_start_date) === false && empty($valid_end_date) === false) {
+                // 유효기간이 있을 경우
+                if (strtotime($valid_end_date) - strtotime($valid_start_date) < 0) {
+                    throw new \Exception('유효시작일자가 종료일자보다 큽니다.');
+                }
+
+                $data['SaveDatm'] = $valid_start_date . ' ' . date('H:i:s');
+                $data['ExpireDatm'] = $valid_end_date . ' 23:59:59';
+
+                $this->_conn->set($data);
+            } else {
+                $this->_conn->set($data)->set('ExpireDatm', 'date_add(NOW(), interval ' . ($valid_days - 1) . ' day)', false);
+            }
+
+            if ($this->_conn->insert($this->_table['point_save']) === false) {
+                throw new \Exception('포인트 적립에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
      * 포인트 사용
      * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
      * @param int $use_point [사용포인트]
@@ -188,10 +243,13 @@ class PointModel extends WB_Model
                 }
             }
 
+            // 코드이그나이터에서 프로시저 단독으로 쿼리 실행시 커밋이 안되는 버그 해결을 위해 페이크 쿼리 실행
+            $this->_conn->query(/** @lang text */'select NOW() from dual');
+
             $data = [
                 $mem_idx, element('site_code', $input, 0), $point_type, $use_point,
-                element('order_idx', $input, 0), element('order_prod_idx', $input, 0),
-                $this->_point_use_reason_ccd[element('reason_type', $input)], element('etc_reason', $input),
+                element('order_idx', $input, '0'), element('order_prod_idx', $input, '0'),
+                element('reason_ccd', $input), element('etc_reason', $input),
                 $sess_admin_idx, $this->input->ip_address()
             ];
 
@@ -213,40 +271,44 @@ class PointModel extends WB_Model
     }
 
     /**
-     * 포인트 적립
-     * @param string $point_type [강좌포인트 : lecture, 교재포인트 : book]
-     * @param int $save_point [적립포인트]
-     * @param int $mem_idx [회원식별자]
+     * 포인트 적립/차감 일괄/바로 등록
      * @param array $input
      * @return array|bool
      */
-    public function addSavePoint($point_type, $save_point, $mem_idx, $input = [])
+    public function addSaveUsePoint($input = [])
     {
+        $this->_conn->trans_begin();
+
         try {
-            $sess_admin_idx = $this->session->userdata('admin_idx');
-            $valid_days = element('valid_days', $input, 365);   // 기본값 1년
+            $arr_mem_idx = element('mem_idx', $input);
+            $point_type = element('point_type', $input);
+            $save_use = element('save_use', $input);
+            $point_amt = element('point_amt', $input);
 
             $data = [
-                'PointType' => $point_type,
-                'MemIdx' => $mem_idx,
-                'SiteCode' => element('site_code', $input),
-                'OrderIdx' => element('order_idx', $input, 0),
-                'OrderProdIdx' => element('order_prod_idx', $input, 0),
-                'PointStatusCcd' => $this->_point_status_ccd['save'],
-                'SavePoint' => $save_point,
-                'RemainPoint' => $save_point,
-                'ReasonCcd' => $this->_point_save_reason_ccd[element('reason_type', $input)],
-                'EtcReason' => element('etc_reason', $input),
-                'RegAdminIdx' => $sess_admin_idx,
-                'RegIp' => $this->input->ip_address()
+                'site_code' => element('site_code', $input),
+                'reason_ccd' => element('reason_ccd', $input),
+                'etc_reason' => element('etc_reason', $input),
+                'valid_start_date' => element('valid_start_date', $input),
+                'valid_end_date' => element('valid_end_date', $input)
             ];
-            $this->_conn->set($data)->set('ExpireDatm', 'date_add(NOW(), interval ' . ($valid_days - 1) . ' day)', false);
 
-            if ($this->_conn->insert($this->_table['point_save']) === false) {
-                throw new \Exception('포인트 적립에 실패했습니다.');
+            foreach ($arr_mem_idx as $mem_idx) {
+                if ($save_use == 'save') {
+                    $is_add = $this->addSavePoint($point_type, $point_amt, $mem_idx, $data);
+                } else {
+                    $is_add = $this->addUsePoint($point_type, $point_amt, $mem_idx, $data);
+                }
+
+                if ($is_add !== true) {
+                    throw new \Exception($is_add);
+                }
             }
+
+            $this->_conn->trans_commit();
         } catch (\Exception $e) {
-            return $e->getMessage();
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

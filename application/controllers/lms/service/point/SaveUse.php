@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SaveUse extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code', 'service/point');
+    protected $models = array('sys/code', 'member/manageMember', 'service/point');
     protected $helpers = array();
     private $_point_type = null;
     private $_list_type = 'all';
-    private $_ccd = ['PointStatus' => '679'];
+    private $_ccd = ['PointStatus' => '679', 'SaveReason' => '680', 'UseReason' => '681'];
 
     public function __construct()
     {
@@ -98,7 +98,7 @@ class SaveUse extends \app\controllers\BaseController
     {
         $arr_condition = [
             'IN' => [
-                'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
+                'PSU.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
             ]
         ];
 
@@ -106,12 +106,70 @@ class SaveUse extends \app\controllers\BaseController
     }
 
     /**
-     * 포인트적립/차감 등록 폼
+     * 포인트적립/차감 일괄/바로 등록 폼
      * @return object|string
      */
     public function create()
     {
+        $mem_idx = $this->_reqG('mem_idx');
+        $mem_data = [];
+        $is_direct = empty($mem_idx) === false ? true : false;
+
+        if ($is_direct === true) {
+            // 바로등록일 경우 회원정보 조회
+            $mem_data = $this->manageMemberModel->getMember($mem_idx);
+        }
+        
+        // 적립/차감 사유 공통코드 조회
+        $arr_reason_group_ccd = array_filter_keys($this->_ccd, ['SaveReason', 'UseReason']);
+        $arr_reason_ccd = $this->codeModel->getCcdInArray(array_values($arr_reason_group_ccd));
+
         return $this->load->view('service/point/save_use_create', [
+            'is_direct' => $is_direct,
+            'mem_idx' => $mem_idx,
+            'mem_data' => $mem_data,
+            'arr_reason_group_ccd' => $arr_reason_group_ccd,
+            'arr_reason_ccd' => $arr_reason_ccd
         ]);
+    }
+
+    /**
+     * 포인트적립/차감 일괄/바로 등록
+     * @return mixed
+     */
+    public function store()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'point_type', 'label' => '포인트구분', 'rules' => 'trim|required|in_list[lecture,book]'],
+            ['field' => 'save_use', 'label' => '적립/차감구분', 'rules' => 'trim|required|in_list[save,use]'],
+            ['field' => 'reason_ccd', 'label' => '적립/차감사유', 'rules' => 'trim|required'],
+            ['field' => 'valid_start_date', 'label' => '유효시작일자', 'rules' => 'callback_validateRequiredIf[save_use,save]'],
+            ['field' => 'valid_end_date', 'label' => '유효종료일자', 'rules' => 'callback_validateRequiredIf[save_use,save]'],
+            ['field' => 'point_amt', 'label' => '적립/차감포인트', 'rules' => 'trim|required|integer|greater_than[0]'],
+            ['field' => 'mem_idx[]', 'label' => '회원식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        if (($this->_reqP('save_use') == 'save' && starts_with($this->_reqP('reason_ccd'), $this->_ccd['SaveReason']) === false)
+            || ($this->_reqP('save_use') == 'use' && starts_with($this->_reqP('reason_ccd'), $this->_ccd['UseReason']) === false)) {
+            return $this->json_error('적립/차감 사유가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+
+        if (ends_with($this->_reqP('reason_ccd'), '999') === true && empty($this->_reqP('etc_reason')) === true) {
+            return $this->json_error('적립/차감 기타사유를 입력해 주세요.', _HTTP_BAD_REQUEST);
+        }
+
+        if ($this->_reqP('save_use') == 'use' && count($this->_reqP('mem_idx')) > 1) {
+            return $this->json_error('포인트 차감은 회원 1명씩만 처리가 가능합니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $result = $this->pointModel->addSaveUsePoint($this->_reqP(null, false));
+
+        return $this->json_result($result, '등록되었습니다.', $result);
     }
 }

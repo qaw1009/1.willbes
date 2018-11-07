@@ -166,7 +166,8 @@ class OrderModel extends BaseOrderModel
                     if ($is_point_refund == 'Y' && $row['UsePoint'] > 0) {
                         // 포인트 적립
                         $data = [
-                            'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'], 'reason_type' => 'refund', 'valid_days' => 3
+                            'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'],
+                            'reason_ccd' => $this->pointModel->_point_save_reason_ccd['refund'], 'valid_days' => 3
                         ];
 
                         $is_add_point = $this->pointModel->addSavePoint($point_type, $row['UsePoint'], $row['MemIdx'], $data);
@@ -184,7 +185,8 @@ class OrderModel extends BaseOrderModel
                     // 적립포인트 회수
                     if ($row['SavePoint'] > 0) {
                         $data = [
-                            'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'], 'reason_type' => 'refund'
+                            'site_code' => $row['SiteCode'], 'order_idx' => $order_idx, 'order_prod_idx' => $row['OrderProdIdx'],
+                            'reason_ccd' => $this->pointModel->_point_use_reason_ccd['refund']
                         ];
 
                         $is_retire_point = $this->pointModel->addUsePoint($point_type, $row['SavePoint'], $row['MemIdx'], $data, true);

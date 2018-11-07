@@ -140,7 +140,7 @@
                         return data + ' (<u class="blue">' + row.MemId + '</u>)';
                     }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>';
+                        return data != null ? '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>' : '';
                     }},
                     {'data' : 'ExpireDatm', 'render' : function(data, type, row, meta) {
                         return data != null ? row.RegDatm.substr(0, 10) + ' ~ ' + data.substr(0, 10) : '';

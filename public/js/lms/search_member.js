@@ -31,7 +31,7 @@ $(document).ready(function() {
         if ($search_mem_id.val() === '') {
             alert('회원 검색어를 입력해 주십시오.');
             $search_mem_id.focus();
-            return;
+            return false;
         }
 
         $search_mem_form.find('button[name="btn_member_search"]').setLayer({

@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>- 회원 기준 포인트적립/차감 현황 확인 및 등록이 가능합니다.</h5>
-    <form class="form-horizontal search-member-form" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_site_tabs('tabs_site_code') !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
@@ -12,7 +12,7 @@
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-8 form-inline">
                         <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="">
-                        <button type="button" id="btn_member_search" data-result-type="single" class="btn btn-primary mb-0 ml-5">회원검색</button>
+                        <button type="button" name="btn_member_search" data-result-type="single" class="btn btn-primary mb-0 ml-5">회원검색</button>
                         <p class="form-control-static ml-20">이름, 아이디, 휴대폰번호 검색 가능</p>
                         <input type="hidden" id="mem_idx" name="mem_idx" value="" data-result-data=""/>
                     </div>
@@ -116,7 +116,7 @@
                     }},
                     {'data' : 'SiteName'},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>';
+                        return data != null ? '<a href="{{ site_url('/pay/order/show/') }}' + row.OrderIdx + '" target="_blank"><u class="blue">' + data + '</u></a>' : '';
                     }},
                     {'data' : 'ExpireDatm', 'render' : function(data, type, row, meta) {
                         return data != null ? row.RegDatm.substr(0, 10) + ' ~ ' + data.substr(0, 10) : '';
@@ -182,13 +182,17 @@
                 var reg_type = $(this).prop('class').indexOf('direct') > -1 ? 'direct' : 'search';
                 var mem_idx = $search_form.find('input[name="mem_idx"]').val();
 
-                if (reg_type === 'direct' && mem_idx.trim().length < 1) {
-                    alert('먼저 회원검색을 해 주세요.');
-                    return;
+                if (reg_type === 'direct') {
+                    if (mem_idx.trim().length < 1) {
+                        alert('먼저 회원검색을 해 주세요.');
+                        return;
+                    }
+                } else {
+                    mem_idx = '';
                 }
 
                 $('.btn-' + reg_type + '-regist').setLayer({
-                    'url': '/service/point/saveUse/create?reg_type=' + reg_type,
+                    'url': '/service/point/saveUse/create?mem_idx=' + mem_idx,
                     'width': 900
                 });
             });

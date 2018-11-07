@@ -4,7 +4,7 @@
             <li><a href="#none">고객센터</a></li>
             <li><a href="#none">이용약관</a></li>
             <li><a href="#none">개인정보처리방침</a></li>
-            <li class="tx-light-blue"><a href="#none"><img src="{{ img_url('m/main/icon_pc.png') }}"> PC버전</a></li>
+            <li class="tx-light-blue"><a href="{{site_url('/')}}"><img src="{{ img_url('m/main/icon_pc.png') }}"> PC버전</a></li>
         </ul>
     </div>
     <address>

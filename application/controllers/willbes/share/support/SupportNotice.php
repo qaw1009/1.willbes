@@ -14,6 +14,7 @@ class SupportNotice extends BaseSupport
     protected $_default_path;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
+    protected $_paging_count_m = 5;
 
     public function __construct()
     {
@@ -67,12 +68,15 @@ class SupportNotice extends BaseSupport
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
-
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
+        if ($this->_is_mobile === true) {
+            $paging_count = $this->_paging_count_m;
+        } else {
+            $paging_count = $this->_paging_count;
+        }
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
-
-        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);

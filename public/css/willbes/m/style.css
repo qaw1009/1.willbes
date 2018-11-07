@@ -1663,9 +1663,7 @@ span {
     max-width: 600px;
 }
 .willbes-Layer-PassBox.fix {
-    -webkit-transform: translate(0%, 50%); 
-    transform: translate(0%, 50%);
-    position: fixed;
+    position: absolute;
     display: block;
 }
 .willbes-Layer-PassBox600.h470.fix {

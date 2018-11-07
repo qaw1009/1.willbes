@@ -1634,7 +1634,7 @@ span {
 /* willbes-Layer-PassBox */
 .willbes-Layer-Black {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -1646,7 +1646,7 @@ span {
 .willbes-Layer-PassBox {
     float: left;
     width: 90%;
-    background: #f90;
+    background: #fff;
     padding: 20px 25px;
     margin: 0 5%;
     z-index: 105;
@@ -1664,10 +1664,11 @@ span {
 }
 .willbes-Layer-PassBox.fix {
     position: fixed;
-    top: 0;
-    left: 0;
+    display: block;
+    top: 50%;
 }
 .willbes-Layer-PassBox600.h470.fix {
+    margin-top: -235px;
 }
 
 /* calendarTable */

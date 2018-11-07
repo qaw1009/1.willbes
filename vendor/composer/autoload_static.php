@@ -20,6 +20,10 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
             'Psr\\SimpleCache\\' => 16,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
         ),
+        'L' => 
+        array (
+            'Lcobucci\\JWT\\' => 13,
+        ),
         'C' => 
         array (
             'Curl\\' => 5,
@@ -44,6 +48,10 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'Curl\\' => 
         array (

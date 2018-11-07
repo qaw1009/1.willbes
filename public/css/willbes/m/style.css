@@ -146,6 +146,7 @@ input {
 }
 button {
     padding: 0;
+    background-size: 100%;
 }
 select {
     -webkit-appearance: none;  /* 네이티브 외형 감추기 */
@@ -167,7 +168,7 @@ span {
     vertical-align: baseline;
 }
 img {
-    -webkit-perspective: 1;
+    width: 100%;
 }
 
 /* Aside */

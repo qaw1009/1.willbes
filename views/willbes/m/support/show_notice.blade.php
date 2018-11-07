@@ -16,7 +16,7 @@
                 <tr class="list bg-light-gray">
                     <td class="w-data tx-left">
                         <dl class="w-info">
-                            <dt>{{$data['Category_NameString']}} @if(empty($data['CampusCcd_Name']) === false)<span class="row-line">|</span>{{$data['CampusCcd_Name']}}@endif</dt>
+                            <dt>{{$data['Category_NameString']}} @if(empty($data['IsCampus']) == 'Y')<span class="row-line">|</span>{{$data['CampusCcd_Name']}}@endif</dt>
                         </dl>
                         <div class="w-tit">{{$data['Title']}}</div>
                         <dl class="w-info tx-gray">

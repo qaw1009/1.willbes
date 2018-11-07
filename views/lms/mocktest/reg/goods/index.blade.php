@@ -143,7 +143,7 @@
                 dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 모의고사 그룹등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-5"></i> 모의고사 등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/mocktest/regGoods/create') }}' + dtParamsToQueryString($datatable);
                     }}
                 ],

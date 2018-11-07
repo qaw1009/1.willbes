@@ -146,7 +146,6 @@ input {
 }
 button {
     padding: 0;
-    background-size: 100%;
 }
 select {
     -webkit-appearance: none;  /* 네이티브 외형 감추기 */
@@ -166,9 +165,6 @@ select {
 }
 span {
     vertical-align: baseline;
-}
-img {
-    width: 100%;
 }
 
 /* Aside */
@@ -1672,7 +1668,7 @@ img {
     top: 50%;
 }
 .willbes-Layer-PassBox600.h470.fix {
-    margin-top: -235px;
+    margin-top: 100px;
 }
 
 /* calendarTable */

@@ -267,6 +267,13 @@ span {
     margin-top: -21px;
     margin-left: -60px;
 }
+#header .logo a {
+    display: inline-block;
+    height: 42px;
+}
+#header .logo a img {
+    height: 100%;
+}
 #Header .Login-List {
     height: 52px;
 }

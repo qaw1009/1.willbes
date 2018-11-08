@@ -27,13 +27,13 @@ class BaseOrderFModel extends WB_Model
     ];
 
     // 장바구니 상품타입명
-    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '패키지', 'book' => '교재', 'delivery_price' => '배송', 'delivery_add_price' => '배송'
-        , 'extend_lecture' => '수강연장', 'retake_lecture' => '재수강'
+    public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '패키지', 'book' => '교재',
+        'delivery_price' => '배송', 'delivery_add_price' => '배송'
     ];
 
     // 장바구니 상품타입 순번
-    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_pack_lecture' => '2', 'off_pack_lecture' => '2', 'book' => '3', 'delivery_price' => '4', 'delivery_add_price' => '4'
-        , 'extend_lecture' => '1', 'retake_lecture' => '1'
+    public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_pack_lecture' => '2', 'off_pack_lecture' => '2', 'book' => '3',
+        'delivery_price' => '4', 'delivery_add_price' => '4'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)
@@ -52,6 +52,9 @@ class BaseOrderFModel extends WB_Model
 
     // 학원상품 수강신청 구분 공통코드 (방문, 온라인, 방문+온라인)
     public $_off_study_apply_ccd = ['visit' => '654001', 'online' => '654002', 'visit_online' => '654003'];
+
+    // 판매형태 공통코드 (일반, 재수강, 수강연장)
+    public $_sale_pattern_ccd = ['normal' => '694001', 'retake' => '694002', 'extend' => '694003'];
 
     // 판매가능 공통코드 (판매가능, 판매중 (WBS))
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];

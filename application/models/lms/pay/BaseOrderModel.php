@@ -47,6 +47,12 @@ class BaseOrderModel extends WB_Model
     // 운영자패키지 타입 공통코드 (일반형, 선택형)
     public $_adminpack_lecture_type_ccd = ['normal' => '648001', 'choice' => '648002'];
 
+    // 판매형태 공통코드 (일반, 재수강, 수강연장)
+    public $_sale_pattern_ccd = ['normal' => '694001', 'retake' => '694002', 'extend' => '694003'];
+
+    // 판매가능 공통코드 (판매가능, 판매중, 접수중 (학원 단과, 종합반 접수상태))
+    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001', 'accept' => '675002'];
+
     // 결제루트 공통코드
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005'];
 
@@ -58,9 +64,6 @@ class BaseOrderModel extends WB_Model
 
     // 배송상태 공통코드 (송장등록, 발송준비, 발송취소, 발송완료)
     public $_delivery_status_ccd = ['invoice' => '677001', 'prepare' => '677002', 'cancel' => '677003', 'complete' => '677004'];
-
-    // 판매가능 공통코드 (판매가능, 판매중, 접수중 (학원 단과, 종합반 접수상태))
-    public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001', 'accept' => '675002'];
 
     public function __construct()
     {

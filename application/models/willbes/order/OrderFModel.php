@@ -617,6 +617,7 @@ class OrderFModel extends BaseOrderFModel
                 'MemIdx' => $sess_mem_idx,
                 'ProdCode' => $prod_code,
                 'SaleTypeCcd' => element('SaleTypeCcd', $input),
+                'SalePatternCcd' => element('SalePatternCcd', $input),
                 'PayStatusCcd' => $pay_status_ccd,
                 'OrderPrice' => element('RealSalePrice', $input),
                 'RealPayPrice' => $real_pay_price,
@@ -737,6 +738,7 @@ class OrderFModel extends BaseOrderFModel
                 'SiteCode' => $site_code,
                 'ProdCode' => $prod_row['ProdCode'],
                 'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
+                'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
                 'RealSalePrice' => $prod_row['ProdPriceData']['SalePrice'],
                 'RealPayPrice' => $prod_row['ProdPriceData']['RealSalePrice']
             ];
@@ -1098,6 +1100,7 @@ class OrderFModel extends BaseOrderFModel
                     'SiteCode' => $site_code,
                     'ProdCode' => $prod_code,
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
+                    'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
                     'RealSalePrice' => 0,
                     'RealPayPrice' => 0
                 ];

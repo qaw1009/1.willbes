@@ -30,10 +30,10 @@ class CartFModel extends BaseOrderFModel
         } else {
             $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
-                , CA.ParentProdCode, CA.SaleTypeCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay
                 , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
                 , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub), "") as UserPackPriceData 
-                , ifnull(TP.ProdName, P.ProdName) as ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
+                , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
                 , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice                
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_subject_idxs(CA.ProdCode), PL.SubjectIdx) as SubjectIdx
@@ -74,9 +74,7 @@ class CartFModel extends BaseOrderFModel
                 left join ' . $this->_table['product_book'] . ' as PB
                     on CA.ProdCode = PB.ProdCode
                 left join ' . $this->_table['bms_book'] . ' as WB
-                    on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"
-                left join ' . $this->_table['product'] . ' as TP
-                    on CA.TargetProdCode = TP.ProdCode and TP.IsUse = "Y" and TP.IsStatus = "Y"                    
+                    on PB.wBookIdx = WB.wBookIdx and WB.wIsUse = "Y" and WB.wIsStatus = "Y"                    
             where CA.IsStatus = "Y"   
                 and P.IsUse = "Y"
                 and P.IsStatus = "Y"                                                                  
@@ -234,6 +232,7 @@ class CartFModel extends BaseOrderFModel
             $site_code = element('site_code', $input, '');
             $is_direct_pay = element('is_direct_pay', $input, 'N');
             $is_visit_pay = element('is_visit_pay', $input, 'N');
+            $sale_pattern_ccd = array_get($this->_sale_pattern_ccd, element('sale_pattern', $input, 'normal'), $this->_sale_pattern_ccd['normal']);
 
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
@@ -263,6 +262,7 @@ class CartFModel extends BaseOrderFModel
                     'ProdCodeSub' => $prod_sub_code,
                     'ParentProdCode' => $prod_row['ParentProdCode'],
                     'SaleTypeCcd' => $prod_row['SaleTypeCcd'],
+                    'SalePatternCcd' => $sale_pattern_ccd,
                     'IsDirectPay' => $is_direct_pay_change === true ? 'N' : $is_direct_pay,
                     'IsVisitPay' => $is_visit_pay,
                     'CaIdx' => element('ca_idx', $input),
@@ -399,6 +399,7 @@ class CartFModel extends BaseOrderFModel
                         'ProdCodeSub' => '',
                         'ParentProdCode' => $prod_row['ProdCode'],
                         'SaleTypeCcd' => $prod_row['ProdPriceData']['SaleTypeCcd'],
+                        'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
                         'IsDirectPay' => 'Y',
                         'IsVisitPay' => 'N',
                         'GwIdx' => $gw_idx,

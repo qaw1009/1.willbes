@@ -855,13 +855,14 @@ span {
     border-bottom: 1px solid #ccc;
 }
 .willbes-Tit button.goback {
-    background: url("../../../img/willbes/m/main/icon_goback.png") no-repeat 0 0;
+    background: url("../../../img/willbes/m/main/icon_goback.png") no-repeat center center;
+    background-size: 38px 38px;
     width: 46px;
     height: 46px;
     border: none;
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 5px;
     margin-top: -23px;
 }
 .sticky-Title {
@@ -1239,6 +1240,10 @@ span {
     color: #fff;
     text-align: center;
     line-height: 45px;
+}
+.AddlecMore a img {
+    width: 30px;
+    margin-top: -3px;
 }
 .BuylecMore {
     clear: both;

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container NG c_both">
+<div id="Container" class="Container NG c_both mb20">
     <div class="MainTxtBnr">이제 2018년 목표는 "경찰합격생 10명중 8~9명 신광은 경찰수강생"</div>
     <div class="MainSlider swiper-container swiper-container-page c_both">
         <div class="swiper-wrapper">

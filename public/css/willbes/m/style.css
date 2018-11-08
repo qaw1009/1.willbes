@@ -232,7 +232,6 @@ span {
 }
 #Header button.menubar {
     background: url("../../../img/willbes/m/main/icon_menu.png") no-repeat 0 0;
-    background-size: 46px 46px;
     width: 46px;
     height: 46px;
     border: none;
@@ -243,7 +242,6 @@ span {
 }
 #Header button.mypage {
     background: url("../../../img/willbes/m/main/icon_mypage.png") no-repeat 0 0;
-    background-size: 46px 46px;
     width: 46px;
     height: 46px;
     border: none;
@@ -253,8 +251,7 @@ span {
     margin-top: -23px;
 }
 #Header button.myacad {
-    background: url("../../../img/willbes/m/main/icon_menu.gif") no-repeat 0 0;
-    background-size: 46px 46px;
+    background: url("../../../img/willbes/m/main/icon_myacad.png") no-repeat 0 0;
     width: 46px;
     height: 46px;
     border: none;
@@ -272,12 +269,10 @@ span {
 }
 #header .logo a {
     display: inline-block;
-    width: 120px;
-    height: 42px;
+    width: 100px;
 }
 #header .logo a img {
     width: 100%;
-    height: 100%;
 }
 #Header .Login-List {
     height: 52px;

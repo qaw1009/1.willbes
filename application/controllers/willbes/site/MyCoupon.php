@@ -49,12 +49,21 @@ class MyCoupon extends \app\controllers\FrontController
         // 전체보유 쿠폰조회
         $results['all'] = $this->couponFModel->listMemberCoupon(false, $arr_condition, null, null, ['CD.CdIdx' => 'desc']);
 
+        // 쿠폰적용구분 공통코드
+        if (ends_with($cart_data['SalePatternCcd'], '001') === true) {
+            // 판매형태 공통코드가 일반일 경우 상품구분 공통코드로 확인
+            $coupon_apply_type_ccd = element($cart_data['ProdTypeCcd'], $this->couponFModel->_coupon_apply_type_ccd);
+        } else {
+            // 판매형태 공통코드가 일반이 아닐 경우 판매형태 공통코드로 확인
+            $coupon_apply_type_ccd = element($cart_data['SalePatternCcd'], $this->couponFModel->_coupon_apply_type_ccd);
+        }
+
         // 적용가능한 쿠폰조회
         $arr_param = [
             'SiteCode' => $cart_data['SiteCode'],
             'CouponTypeCcd' => $this->couponFModel->_coupon_type_ccd['coupon'],
             'CateCode' => $cart_data['CateCode'],
-            'ApplyTypeCcd' => $this->couponFModel->_coupon_apply_type_ccd[$cart_data['ProdTypeCcd']],
+            'ApplyTypeCcd' => $coupon_apply_type_ccd,
             'LecTypeCcd' => element($cart_data['LearnPatternCcd'], $this->couponFModel->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_data['RealSalePrice'],
             'SchoolYear' => $cart_data['SchoolYear'],

@@ -25,22 +25,40 @@ class CartFModel extends BaseOrderFModel
     public function listCart($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $column = 'numrows';
+            $in_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
+            $column = '*
+                , ifnull(JSON_VALUE(CalcPriceData, "$.SalePrice"), OriSalePrice) as SalePrice
+                , ifnull(JSON_VALUE(CalcPriceData, "$.SaleRate"), OriSaleRate) as SaleRate
+                , ifnull(JSON_VALUE(CalcPriceData, "$.SaleDiscType"), OriSaleDiscType) as SaleDiscType
+                , ifnull(JSON_VALUE(CalcPriceData, "$.RealSalePrice"), OriRealSalePrice) as RealSalePrice
+                , ifnull(JSON_EXTRACT(CalcPriceData, "$.SubRealSalePrice"), "") as SubRealSalePrice';
+
+            $in_column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
-                , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay
-                , PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice
-                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub), "") as UserPackPriceData 
-                , P.ProdName, P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd
-                , P.IsCoupon, P.IsFreebiesTrans, P.IsDeliveryInfo, P.IsPoint, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice                
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay, CA.TargetOrderIdx, CA.TargetOrderProdIdx 
+                , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
+                , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, P.IsCoupon
+                , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsFreebiesTrans) as IsFreebiesTrans
+                , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsDeliveryInfo) as IsDeliveryInfo
+                , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '", "N", P.IsPoint) as IsPoint
+                , P.PointApplyCcd, P.PointSaveType, P.PointSavePrice                
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_subject_idxs(CA.ProdCode), PL.SubjectIdx) as SubjectIdx
-                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                                   
-                , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
-                , PL.StudyStartDate, PL.StudyEndDate, PL.IsLecStart, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName
-                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint               
+                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                         
+                , PL.StudyStartDate, PL.StudyEndDate                          
+                , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod                
+                , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", PL.IsLecStart) as IsLecStart               
+                , PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName
+                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint  
+                , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
+                , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
+                    when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.SalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
+                    when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '" then JSON_OBJECT("RealSalePrice", floor((PS.SalePrice * CA.ExtenDay) / PL.StudyPeriod))
+                    else null
+                  end as CalcPriceData                                              
                 , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
                     when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
                     when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
@@ -84,7 +102,7 @@ class CartFModel extends BaseOrderFModel
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -125,9 +143,9 @@ class CartFModel extends BaseOrderFModel
         // 방문결제일 경우 세션 아이디 컬럼 추가
         if ($is_visit_pay == 'Y') {
             $arr_condition['EQ']['CA.SessId'] = $this->session->userdata($this->_sess_cart_sess_id);
-            $order_by =['CA.CartIdx' => 'asc'];
+            $order_by =['CartIdx' => 'asc'];
         } else {
-            $order_by =['P.ProdTypeCcd' => 'asc', 'CA.CartIdx' => 'desc'];
+            $order_by =['ProdTypeCcd' => 'asc', 'CartIdx' => 'desc'];
         }
 
         return $this->listCart(false, $arr_condition, null, null, $order_by);
@@ -265,6 +283,9 @@ class CartFModel extends BaseOrderFModel
                     'SalePatternCcd' => $sale_pattern_ccd,
                     'IsDirectPay' => $is_direct_pay_change === true ? 'N' : $is_direct_pay,
                     'IsVisitPay' => $is_visit_pay,
+                    'TargetOrderIdx' => element('target_order_idx', $input),
+                    'TargetOrderProdIdx' => element('target_order_prod_idx', $input),
+                    'ExtenDay' => element('extend_day', $input),
                     'CaIdx' => element('ca_idx', $input),
                     'GwIdx' => $gw_idx,
                     'RegIp' => $reg_ip

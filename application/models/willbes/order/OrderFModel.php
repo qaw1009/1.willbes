@@ -51,17 +51,14 @@ class OrderFModel extends BaseOrderFModel
                 return '장바구니와 주문상품의 구분이 일치하지 않습니다.';
             }
 
-            // 사용자 패키지 가격 정보 셋팅
+            // 사용자 패키지 가격 확인
             if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
-                if (empty($row['UserPackPriceData']) === true || $row['UserPackPriceData'] == 'NODATA') {
+                if (empty($row['CalcPriceData']) === true || $row['CalcPriceData'] == 'NODATA') {
                     return '사용자 패키지 가격정보가 올바르지 않습니다.';
                 }
 
-                $row['UserPackPriceData'] = json_decode($row['UserPackPriceData'], true);
-                $row['SalePrice'] = element('SalePrice', $row['UserPackPriceData']);
-                $row['SaleRate'] = element('SaleRate', $row['UserPackPriceData']);
-                $row['SaleDiscType'] = element('SaleDiscType', $row['UserPackPriceData']);
-                $row['RealSalePrice'] = element('RealSalePrice', $row['UserPackPriceData']);
+                // 주문상품서브 가격정보
+                $row['SubRealSalePrice'] = json_decode($row['SubRealSalePrice'], true);
             }
 
             // 상품 결제금액 초기화
@@ -104,7 +101,7 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 적립 포인트 (학원강좌, 배송료 상품일 경우 포인트 적립 불가)
-            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y' || $row['CartType'] == 'off_lecture' || $row['CartProdType'] == 'delivery_price') {
+            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y') {
                 $row['RealSavePoint'] = 0;
             } else {
                 $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? (int) ($row['RealPayPrice'] * ($row['PointSavePrice'] / 100)) : $row['PointSavePrice'];
@@ -191,11 +188,20 @@ class OrderFModel extends BaseOrderFModel
             return ['UserCouponIdx' => '', 'CouponDiscPrice' => 0, 'CouponDiscType' => 'R', 'CouponDiscRate' => 0];
         }
 
+        // 쿠폰적용구분 공통코드
+        if (ends_with($cart_row['SalePatternCcd'], '001') === true) {
+            // 판매형태 공통코드가 일반일 경우 상품구분 공통코드로 확인
+            $coupon_apply_type_ccd = element($cart_row['ProdTypeCcd'], $this->couponFModel->_coupon_apply_type_ccd);
+        } else {
+            // 판매형태 공통코드가 일반이 아닐 경우 판매형태 공통코드로 확인
+            $coupon_apply_type_ccd = element($cart_row['SalePatternCcd'], $this->couponFModel->_coupon_apply_type_ccd);
+        }
+
         $arr_param = [
             'SiteCode' => $cart_row['SiteCode'],
             'CateCode' => $cart_row['CateCode'],
             'CouponTypeCcd' => $this->couponFModel->_coupon_type_ccd['coupon'],
-            'ApplyTypeCcd' => $this->couponFModel->_coupon_apply_type_ccd[$cart_row['ProdTypeCcd']],
+            'ApplyTypeCcd' => $coupon_apply_type_ccd,
             'LecTypeCcd' => element($cart_row['LearnPatternCcd'], $this->couponFModel->_coupon_lec_type_ccd),
             'RealSalePrice' => $cart_row['RealSalePrice'],
             'SchoolYear' => $cart_row['SchoolYear'],
@@ -646,7 +652,7 @@ class OrderFModel extends BaseOrderFModel
                     $data = [
                         'OrderProdIdx' => $order_prod_idx,
                         'ProdCodeSub' => $prod_code_sub,
-                        'RealPayPrice' => array_get(element('UserPackPriceData', $input, []), 'SubRealSalePrice.' . $prod_code_sub, 0)
+                        'RealPayPrice' => array_get(element('SubRealSalePrice', $input, []), $prod_code_sub, 0)
                     ];
 
                     if ($this->_conn->set($data)->insert($this->_table['order_sub_product']) === false) {

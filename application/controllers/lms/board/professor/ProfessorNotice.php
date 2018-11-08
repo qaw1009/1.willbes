@@ -245,6 +245,8 @@ class ProfessorNotice extends BaseBoard
         if (count($arr_prof_info) < 1) {
             show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
         }
+        $arr_prof_info['arr_prof_cate_code'] = explode(',', $arr_prof_info['CateCode']);
+        $arr_prof_info['arr_prof_cate_name'] = explode(',', $arr_prof_info['CateName']);
 
         if (empty($params[0]) === false) {
             $column = '

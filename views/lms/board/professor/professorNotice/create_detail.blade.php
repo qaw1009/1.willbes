@@ -21,7 +21,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
+                        {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}--}}
+                        {!! html_site_select($arr_prof_info['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="subject_idx">과목<span class="required">*</span></label>
                     <div class="form-inline col-md-4 ml-12-dot item">
@@ -37,17 +38,9 @@
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                        <span id="selected_category" class="pl-10">
-                            @if(isset($data['CateCodes']) === true)
-                                @foreach($data['CateCodes'] as $cate_code => $cate_name)
-                                    <span class="pr-10">{{ $cate_name }}
-                                        <a href="#none" data-cate-code="{{ $cate_code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
-                                        <input type="hidden" name="cate_code[]" value="{{ $cate_code }}"/>
-                                    </span>
-                                @endforeach
-                            @endif
-                        </span>
+                        @foreach($arr_prof_info['arr_prof_cate_code'] as $key => $val)
+                            <input type="checkbox" class="flat" name="cate_code[]" value="{{$val}}" @if(empty($data['CateCodes'][$val]) === false)checked="checked"@endif>{{$arr_prof_info['arr_prof_cate_name'][$key]}}
+                        @endforeach
                     </div>
                 </div>
 

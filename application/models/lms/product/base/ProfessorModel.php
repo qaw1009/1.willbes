@@ -366,6 +366,35 @@ class ProfessorModel extends WB_Model
 
         return $this->_conn->getFindResult($this->_table['professor'], $column, $arr_condition);
     }
+
+    /**
+     * 교수 상세 정보 조회
+     * @param string $column
+     * @param array $arr_condition
+     * @return array
+     */
+    public function findProfessorDetail($column = '*', $arr_condition = [])
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table['professor']} AS a
+            INNER JOIN {$this->_table['site']} AS b ON a.SiteCode = b.SiteCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
+            INNER JOIN (
+                SELECT a.ProfIdx, GROUP_CONCAT(a.CateCode) AS CateCode, GROUP_CONCAT(b.CateName) AS CateName
+                FROM {$this->_table['professor_r_subject_r_category']} AS a
+                INNER JOIN {$this->_table['category']} AS b ON a.CateCode = b.CateCode
+                {$where}
+                GROUP BY a.ProfIdx
+            ) AS c ON a.ProfIdx = c.ProfIdx
+        ";
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return $query->result_array()[0];
+    }
     
     /**
      * 교수 정보 수정 폼에 필요한 데이터 조회

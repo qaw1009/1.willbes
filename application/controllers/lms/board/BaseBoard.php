@@ -287,7 +287,12 @@ class BaseBoard extends \app\controllers\BaseController
      */
     protected function _findProfessor($prof_idx)
     {
-        return $this->professorModel->findProfessor('ProfNickName', ['EQ' => ['ProfIdx' => $prof_idx]]);
+        $arr_condition = [
+            'EQ' => [
+                'a.ProfIdx' => $prof_idx
+            ]
+        ];
+        return $this->professorModel->findProfessorDetail('a.ProfNickName, a.SiteCode, b.SiteName, c.CateCode, c.CateName', $arr_condition);
     }
 
     /**

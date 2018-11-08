@@ -131,7 +131,9 @@
                     $(this).val('');
                 });
                 $search_form.find('#search_cateD1').trigger('change');
-                if($(event.target).attr('id') == 'searchInit') $datatable.draw();
+
+                var eTarget = (event.target) ? event.target : event.srcElement;
+                if($(eTarget).attr('id') == 'searchInit') $datatable.draw();
             });
 
             // DataTables

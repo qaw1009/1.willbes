@@ -123,7 +123,8 @@
                     });
 
                     // ROW속 호출버튼 클릭시 필드 1개만 입력할 수 있게 필드추가 제거
-                    var unit = $(event.target).hasClass('act-call-unit') ? $(event.target) : '';
+                    var eTarget = (event.target) ? event.target : event.srcElement;
+                    var unit = $(eTarget).hasClass('act-call-unit') ? $(eTarget) : '';
                     if(unit) {
                         $('#addrow-wrap').find('select').val('1');
                         $('#act-call-addRow').trigger('click');
@@ -238,6 +239,9 @@
                             if(unit) {
                                 target.find('[name="QuestionNO[]"]').val( unit.closest('tr').find('[name="QuestionNO[]"]').val() );
                                 unit.closest('tr').remove();
+                            }
+                            else {
+                                target.find('[name="QuestionNO[]"]').val( target.closest('tbody').find('tr').length );
                             }
                         });
                         init_iCheck();

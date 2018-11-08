@@ -484,10 +484,15 @@
             $('#act-addRow').on('click', function () {
                 var i;
                 var count = $(this).closest('div').find('select').val();
+                var rowLen = cList.find('tr').length;
 
                 for (i=0; i < count; i++) {
                     cList.append('<tr data-chapter-idx="">' + addField + '</tr>');
                 }
+
+                cList.find('tr').each(function (index) {
+                    if(index >= rowLen) $(this).find('[name="QuestionNO[]"]').val(++index);
+                });
 
                 init_iCheck();
             });

@@ -47,7 +47,6 @@ class SupportExamAnnouncement extends BaseSupport
         $list = [];
         $arr_condition = [
             'EQ' => [
-                'b.SiteCode' => $this->_site_code,
                 'b.BmIdx' => $this->_bm_idx,
                 'TypeCcd' => $s_announcement_type,
                 'AreaCcd' => $s_area,
@@ -59,9 +58,9 @@ class SupportExamAnnouncement extends BaseSupport
                     ,'b.Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$this->_cate_code
-            ],
+            ],*/
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
@@ -72,12 +71,12 @@ class SupportExamAnnouncement extends BaseSupport
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
 
         $paging = $this->pagination($this->_default_path.'/examAnnouncement/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }
@@ -116,9 +115,9 @@ class SupportExamAnnouncement extends BaseSupport
         #-------------------------------- 게시글 조회
         $arr_condition = [
             'EQ' => [
-                'b.SiteCode' => $this->_site_code
-                ,'b.BmIdx' => $this->_bm_idx
-                ,'b.IsUse' => 'Y'
+                /*'b.SiteCode' => $this->_site_code,*/
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y'
             ],
         ];
 
@@ -128,7 +127,7 @@ class SupportExamAnnouncement extends BaseSupport
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
-        $data = $this->supportBoardFModel->findBoard($board_idx,$arr_condition,$column);
+        $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
 
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
@@ -147,8 +146,8 @@ class SupportExamAnnouncement extends BaseSupport
 
         $arr_condition_base = [
             'EQ' => [
-                'b.SiteCode' => $this->_site_code
-                ,'b.IsBest' => '0'
+                /*'b.SiteCode' => $this->_site_code*/
+                'b.IsBest' => '0'
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'TypeCcd' => $s_announcement_type
@@ -160,9 +159,9 @@ class SupportExamAnnouncement extends BaseSupport
                     ,'b.Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$this->_cate_code
-            ],
+            ],*/
         ];
 
         $pre_arr_condition = array_merge($arr_condition_base,[
@@ -180,8 +179,8 @@ class SupportExamAnnouncement extends BaseSupport
         $next_order_by = ['b.BoardIdx'=>'Asc'];
 
 
-        $pre_data = $this->supportBoardFModel->findBoard(false,$pre_arr_condition,$column,1,null,$pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
+        $pre_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $pre_arr_condition, $column,1,null, $pre_order_by);
+        $next_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $next_arr_condition, $column,1,null, $next_order_by);
 
         $this->load->view('support/'.$view_type.'/show_examAnnouncement',[
                 'default_path' => $this->_default_path,

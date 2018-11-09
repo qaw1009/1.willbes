@@ -636,6 +636,9 @@ class OrderFModel extends BaseOrderFModel
                 'SavePoint' => $real_save_point,
                 'IsUseCoupon' => (empty($user_coupon_idx) === false  ? 'Y' : 'N'),
                 'UserCouponIdx' => $user_coupon_idx,
+                'TargetOrderIdx' => element('TargetOrderIdx', $input),
+                'TargetProdCode' => element('TargetProdCode', $input),
+                'TargetProdCodeSub' => element('TargetProdCodeSub', $input),
                 'CaIdx' => $ca_idx
             ];
 
@@ -791,8 +794,8 @@ class OrderFModel extends BaseOrderFModel
                     'LecStartDate' => $arr_lec_date['lec_start_date'],
                     'LecEndDate' => $arr_lec_date['lec_end_date'],
                     'RealLecEndDate' => $arr_lec_date['lec_end_date'],
-                    'LecStudyTime' => $row['MultipleAllLecSec'],
-                    'RealLecStudyTime' => $row['MultipleAllLecSec'],
+                    'LecExpireTime' => $row['MultipleAllLecSec'],
+                    'RealLecExpireTime' => $row['MultipleAllLecSec'],
                     'LecExpireDay' => $row['StudyPeriod'],
                     'RealLecExpireDay' => $row['StudyPeriod']
                 ];
@@ -823,8 +826,8 @@ class OrderFModel extends BaseOrderFModel
                         'LecStartDate' => $arr_lec_date['lec_start_date'],
                         'LecEndDate' => $arr_lec_date['lec_end_date'],
                         'RealLecEndDate' => $arr_lec_date['lec_end_date'],
-                        'LecStudyTime' => $prod_row['MultipleAllLecSec'],
-                        'RealLecStudyTime' => $prod_row['MultipleAllLecSec'],
+                        'LecExpireTime' => $prod_row['MultipleAllLecSec'],
+                        'RealLecExpireTime' => $prod_row['MultipleAllLecSec'],
                         'LecExpireDay' => $prod_row['StudyPeriod'],
                         'RealLecExpireDay' => $prod_row['StudyPeriod']
                     ];

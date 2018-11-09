@@ -339,7 +339,7 @@
                 var target_idx = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memidx');}).get().join(',');
                 if(target_idx == ''){ alert('쪽지발송 대상 회원을 선택해 주세요.');return;}
                 $('.btn-message').setLayer({
-                    url : "//lms.local.willbes.net/crm/message/createSendModal?target_idx="+target_idx,
+                    url : "{{ site_url('crm/message/createSendModal') }}?target_idx="+target_idx,
                     width : 800,
                     modal_id : "message_modal"
                 });
@@ -349,7 +349,7 @@
                 var target_id = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memid');}).get().join(',');
                 if(target_id == ''){ alert('SMS발송 대상 회원을 선택해 주세요.');return;}
                 $('.btn-sms').setLayer({
-                    url : "//lms.local.willbes.net/crm/sms/createSendModal?target_id="+target_id,
+                    url : "{{ site_url('crm/sms/createSendModal') }}?target_id="+target_id,
                     width : 1100,
                     modal_id : "message_modal"
                 });

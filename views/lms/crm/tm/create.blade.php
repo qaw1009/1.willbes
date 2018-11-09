@@ -90,6 +90,7 @@
                 $(this).val() == '687004' ? $("#date2").attr({"class":""}) : $("#date2").attr({"class":"hide"});
                 $("#MemCnt").val('');
                 $("input[name='eachCnt[]']").val('');
+                $("#btn_assign").attr("disabled",false);
             });
 
 

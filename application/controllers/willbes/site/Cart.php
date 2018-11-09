@@ -178,88 +178,25 @@ class Cart extends \app\controllers\FrontController
      */
     public function store($params = [])
     {
-        $_learn_pattern = $this->_reqP('learn_pattern');
-        $_is_direct_pay = $this->_reqP('is_direct_pay');
-        $_cart_type = $this->_reqP('cart_type');
-        $_prod_code = $this->_reqP('prod_code');
-        $_is_visit_pay = 'N';
-        $returns = [];
-
-        if (empty($_learn_pattern) === false) {
-            // 일반 판매형태
-            if (empty($_prod_code) === true || empty($_is_direct_pay) === true) {
-                return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
-            }
-
-            // 학원강좌 방문접수 (학원상품이면서 바로결제가 아닌 경우 방문접수)
-            if (starts_with($_learn_pattern, 'off') === true && $_is_direct_pay == 'N') {
-                $_is_visit_pay = 'Y';
-            }
-
-            $add_data = [
-                'prod_code' => $_prod_code,
-                'prod_code_sub' => $this->_reqP('prod_code_sub'),
-                'site_code' => $this->_site_code,
-                'is_direct_pay' => $_is_direct_pay,
-                'is_visit_pay' => $_is_visit_pay,
-                'ca_idx' => $this->_reqP('ca_idx')
-            ];
+        if (empty($this->_reqP('learn_pattern')) === false) {
+            $data = $this->_getAddNormalData();
         } else {
-            // 재수강, 수강연장 판매형태
-            $_sale_pattern = $this->_req('sale_pattern');
-            $_target_order_idx = $this->_req('target_order_idx');
-            $_target_order_prod_idx = $this->_req('target_order_prod_idx');
-            $_extend_day = $this->_req('extend_day');
-            $_cart_type = 'on_lecture';
-            $_is_direct_pay = 'Y';
+            $data = $this->_getAddPatternData();
+        }
 
-            if (isset($this->cartFModel->_sale_pattern_ccd[$_sale_pattern]) === false || empty($_target_order_idx) === true || empty($_target_order_prod_idx) === true) {
-                return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
-            }
-
-            // 주문상품 조회
-            $order_prod_row = element('0', $this->orderListFModel->listOrderProduct(false, [
-                'EQ' => [
-                    'OP.MemIdx' => $this->session->userdata('mem_idx'), 'OP.OrderIdx' => $_target_order_idx, 'OP.OrderProdIdx' => $_target_order_prod_idx,
-                    'OP.PayStatusCcd' => $this->cartFModel->_pay_status_ccd['paid']
-                ]
-            ], 1, 0), []);
-
-            if (empty($order_prod_row) === true) {
-                return $this->json_error('주문내역이 없습니다.', _HTTP_NOT_FOUND);
-            }
-
-            $_learn_pattern = $this->cartFModel->getLearnPattern($order_prod_row['ProdTypeCcd'], $order_prod_row['LearnPatternCcd']);
-            $_prod_code = [$order_prod_row['ProdCode'] . ':' . $order_prod_row['SaleTypeCcd'] . ':' . $order_prod_row['ProdCode']];
-
-            $add_data = [
-                'prod_code' => $_prod_code,
-                'site_code' => $order_prod_row['SiteCode'],
-                'is_direct_pay' => $_is_direct_pay,
-                'is_visit_pay' => $_is_visit_pay,
-                'sale_pattern' => $_sale_pattern,
-                'target_order_idx' => $_target_order_idx,
-                'target_order_prod_idx' => $_target_order_prod_idx,
-                'extend_day' => $_extend_day
-            ];
+        if (is_array($data) === false) {
+            return $this->json_error($data, _HTTP_BAD_REQUEST);
         }
 
         // 장바구니 저장
-        $result = $this->cartFModel->addCart($_learn_pattern, $add_data);
-
-        // 리턴 URL 지정
-        if ($_is_visit_pay == 'Y') {
-            $returns['ret_url'] = '';
-        } else {
-            $returns['ret_url'] = $_is_direct_pay == 'Y' ? front_url('/order/index?tab=' . $_cart_type) : site_url('/cart/index?tab=' . $_cart_type);
-        }
+        $result = $this->cartFModel->addCart($data['learn_pattern'], $data['add_data']);
 
         // 바로결제일 경우 장바구니 식별자 세션 생성
-        if ($result['ret_cd'] === true && $_is_direct_pay == 'Y') {
+        if ($result['ret_cd'] === true && $data['add_data']['is_direct_pay'] == 'Y') {
             $arr_cart_idx = $result['ret_data'];
 
             // 배송료가 부가되는지 여부 체크 후 배송료 상품 장바구니 추가
-            $add_result = $this->cartFModel->addCartForDeliveryPrice($this->_site_code, $_cart_type, $arr_cart_idx);
+            $add_result = $this->cartFModel->addCartForDeliveryPrice($data['add_data']['site_code'], $data['cart_type'], $arr_cart_idx);
             if ($add_result['ret_cd'] === false) {
                 return $this->json_error($add_result['ret_msg'], $add_result['ret_status']);
             } else {
@@ -272,7 +209,115 @@ class Cart extends \app\controllers\FrontController
             $this->cartFModel->makeSessCartIdx($arr_cart_idx);
         }
 
-        return $this->json_result($result['ret_cd'], '', $result, $returns);
+        return $this->json_result($result['ret_cd'], '', $result, ['ret_url' => $data['ret_url']]);
+    }
+
+    /**
+     * 장바구니 저장 데이터 리턴 (일반)
+     * @return array|string
+     */
+    private function _getAddNormalData()
+    {
+        $learn_pattern = $this->_reqP('learn_pattern');
+        $cart_type = $this->_reqP('cart_type');
+        $prod_code = $this->_reqP('prod_code');
+        $is_direct_pay = $this->_reqP('is_direct_pay');
+        $site_code = $this->_site_code;
+        $is_visit_pay = 'N';
+        $ret_url = '';
+
+        if (empty($prod_code) === true || empty($is_direct_pay) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        // 학원강좌 방문접수 (학원상품이면서 바로결제가 아닌 경우 방문접수)
+        if (starts_with($learn_pattern, 'off') === true && $is_direct_pay == 'N') {
+            $is_visit_pay = 'Y';
+        }
+
+        $add_data = [
+            'prod_code' => $prod_code,
+            'prod_code_sub' => $this->_reqP('prod_code_sub'),
+            'site_code' => $site_code,
+            'is_direct_pay' => $is_direct_pay,
+            'is_visit_pay' => $is_visit_pay,
+            'ca_idx' => $this->_reqP('ca_idx')
+        ];
+
+        // 리턴 URL 지정
+        if ($is_visit_pay == 'N') {
+            $ret_url = $is_direct_pay == 'Y' ? front_url('/order/index?tab=' . $cart_type) : front_url('/cart/index?tab=' . $cart_type);
+        }
+
+        return [
+            'learn_pattern' => $learn_pattern,
+            'cart_type' => $cart_type,
+            'add_data' => $add_data,
+            'ret_url' => $ret_url
+        ];
+    }
+
+    /**
+     * 장바구니 저장 데이터 리턴 (수강연장, 재수강)
+     * @return array|string
+     */
+    private function _getAddPatternData()
+    {
+        $sale_pattern = $this->_req('sale_pattern');
+        $target_order_idx = $this->_req('target_order_idx');
+        $target_prod_code = $this->_req('target_prod_code');
+        $target_prod_code_sub = get_var($this->_req('target_prod_code_sub'), $target_prod_code);
+        $extend_day = $this->_req('extend_day');
+        $cart_type = 'on_lecture';
+        $is_direct_pay = 'Y';
+        $is_visit_pay = 'N';
+
+        if (isset($this->cartFModel->_sale_pattern_ccd[$sale_pattern]) === false || empty($target_order_idx) === true || empty($target_prod_code) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        // 주문상품 조회
+        $order_prod_row = $this->orderListFModel->findOrderProductByAllProdCode([
+            'EQ' => [
+                'OPU.OrderIdx' => $target_order_idx, 'OPU.MemIdx' => $this->session->userdata('mem_idx'), 'OPU.ProdCode' => $target_prod_code_sub,
+                'OPU.PayStatusCcd' => $this->cartFModel->_pay_status_ccd['paid']
+            ]
+        ]);
+
+        if (empty($order_prod_row) === true) {
+            return '주문내역이 없습니다.';
+        }
+
+        // 온라인 단강좌 상품 여부 체크
+        $learn_pattern = $this->cartFModel->getLearnPattern($order_prod_row['ProdTypeCcd'], $order_prod_row['LearnPatternCcd']);
+        if ($learn_pattern != 'on_lecture') {
+            return '온라인 단강좌 상품만 신청이 가능합니다.';
+        }
+
+        $site_code = $order_prod_row['SiteCode'];
+        $prod_code = [$order_prod_row['ProdCode'] . ':' . $order_prod_row['SaleTypeCcd'] . ':' . $order_prod_row['ProdCode']];
+
+        $add_data = [
+            'prod_code' => $prod_code,
+            'site_code' => $site_code,
+            'is_direct_pay' => $is_direct_pay,
+            'is_visit_pay' => $is_visit_pay,
+            'sale_pattern' => $sale_pattern,
+            'target_order_idx' => $target_order_idx,
+            'target_prod_code' => $target_prod_code,
+            'target_prod_code_sub' => $target_prod_code_sub,
+            'extend_day' => $extend_day
+        ];
+
+        // 리턴 URL 지정
+        $ret_url = front_app_url('/order/index?tab=' . $cart_type, $this->getSiteCacheItem($site_code, 'SiteGroupId'));
+
+        return [
+            'learn_pattern' => $learn_pattern,
+            'cart_type' => $cart_type,
+            'add_data' => $add_data,
+            'ret_url' => $ret_url
+        ];
     }
 
     /**

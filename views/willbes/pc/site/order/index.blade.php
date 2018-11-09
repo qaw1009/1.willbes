@@ -81,7 +81,11 @@
                                                             <img src="{{ img_url('cart/icon_calendar.gif') }}"> ~
                                                             <input type="text" name="study_end_date[{{ $row['CartIdx'] }}]" class="iptDate bg-gray" value="{{ $row['DefaultStudyEndDate'] }}" readonly="readonly"/>
                                                         @else
-                                                            <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                            @if(empty($row['ExtenDay']) === false)
+                                                                <span class="tx-light-blue">연장 신청한 강좌의 기본 수강기간이 종료된 후 바로 수강 시작</span>
+                                                            @else
+                                                                <span class="tx-light-blue">결제완료 후 바로 수강 시작</span>
+                                                            @endif
                                                         @endif
                                                 </span>
                                                 @endif

@@ -178,10 +178,27 @@ if (!function_exists('front_url')) {
     function front_url($uri)
     {
         $uri_prefix = '';
-        config_app('IsMobile') === true && $uri_prefix = '/' . config_item('app_mobile_site_prefix');
+        config_app('IsMobile') === true && $uri_prefix .= '/' . config_item('app_mobile_site_prefix');
         config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
 
         return site_url($uri_prefix . $uri);
+    }
+}
+
+if (!function_exists('front_app_url')) {
+    /**
+     * app_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
+     * @param $uri
+     * @param $sub_domain
+     * @return string
+     */
+    function front_app_url($uri, $sub_domain)
+    {
+        $uri_prefix = '';
+        config_app('IsMobile') === true && $uri_prefix .= '/' . config_item('app_mobile_site_prefix');
+        config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+
+        return app_url($uri_prefix . $uri, $sub_domain);
     }
 }
 

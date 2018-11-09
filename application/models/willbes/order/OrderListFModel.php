@@ -120,7 +120,8 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'OP.OrderProdIdx, O.SiteCode, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName
                 , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint
                 , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
-                , P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd
+                , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(OP.SalePatternCcd), ")"), "")) as ProdName
+                , P.ProdTypeCcd, PL.LearnPatternCcd
                 , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), "")) as StudyPeriod
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
                      when PL.LearnPatternCcd in ("' . implode('","', $this->_on_pack_lecture_pattern_ccd) . '") then "on_pack_lecture"
@@ -161,6 +162,36 @@ class OrderListFModel extends BaseOrderFModel
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 상품코드, 상품코드서브 기준 주문상품내역 조회 (최하위 단강좌 상품코드 기준으로 주문상품 내역 조회 가능)
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function findOrderProductByAllProdCode($arr_condition = [])
+    {
+        $column = 'OPU.*, P.SiteCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd';
+        $from = '
+            from (
+                select OP.OrderIdx, OP.OrderProdIdx, OP.MemIdx, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd
+                from ' . $this->_table['order_product'] . ' as OP
+                union all
+                select OP.OrderIdx, OP.OrderProdIdx, OP.MemIdx, OSP.ProdCodeSub as ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd
+                from ' . $this->_table['order_product'] . ' as OP
+                    inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                        on OP.OrderProdIdx = OSP.OrderProdIdx			
+            ) OPU 
+                left join ' . $this->_table['product'] . ' as P
+                    on OPU.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on OPU.ProdCode = PL.ProdCode            
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
     /**
@@ -219,10 +250,9 @@ class OrderListFModel extends BaseOrderFModel
                 union all
                 select OP.OrderIdx, OP.OrderProdIdx, OSP.ProdCodeSub as ProdCode, OP.PayStatusCcd
                 from ' . $this->_table['order_product'] . ' as OP
-                    left join ' . $this->_table['order_sub_product'] . ' as OSP
+                    inner join ' . $this->_table['order_sub_product'] . ' as OSP
                         on OP.OrderProdIdx = OSP.OrderProdIdx
-                where OP.MemIdx = ?
-                    and OSP.ProdCodeSub is not null	
+                where OP.MemIdx = ?	
             ) U	            
         ';
 

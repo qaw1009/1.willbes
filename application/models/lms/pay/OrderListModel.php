@@ -39,11 +39,12 @@ class OrderListModel extends BaseOrderModel
                         end, NULL			
                       ) as VBankStatus                    
                     , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
-                    , OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
+                    , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , OP.CardPayPrice as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice    # TODO : 임시 환불산출금액 (로직 추가 필요)
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
-                    , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd                    
+                    , P.ProdTypeCcd, PL.LearnPatternCcd                    
+                    , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                    
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
@@ -87,8 +88,9 @@ class OrderListModel extends BaseOrderModel
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
             , O.CompleteDatm, O.OrderDatm
-            , OP.RealPayPrice, OP.IsUseCoupon, OP.UpdDatm, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate           
-            , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName) as ProdName, P.ProdName as OnlyProdName                                    
+            , OP.RealPayPrice, OP.IsUseCoupon, OP.UpdDatm, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate                       
+            , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
+            , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
             , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
@@ -141,7 +143,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CVB
                     on O.VBankCcd = CVB.Ccd and CVB.IsStatus = "Y"         
                 left join ' . $this->_table['code'] . ' as CPS
-                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"                                  	
+                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CSP
+                    on OP.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y"                                                      	
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CLP

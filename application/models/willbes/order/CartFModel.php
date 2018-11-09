@@ -43,7 +43,7 @@ class CartFModel extends BaseOrderFModel
                 , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '", "N", P.IsPoint) as IsPoint
-                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint                
+                , if((PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" and CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['retake'] . '") or P.ProdTypeCcd in ("' . $this->_prod_type_ccd['book'] . '"), "Y", "N") as IsUsePoint                
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsFreebiesTrans) as IsFreebiesTrans
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '", "N", P.IsDeliveryInfo) as IsDeliveryInfo                                
                 , ifnull(PB.SchoolYear, PL.SchoolYear) as SchoolYear, ifnull(PB.CourseIdx, PL.CourseIdx) as CourseIdx

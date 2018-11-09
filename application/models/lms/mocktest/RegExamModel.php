@@ -696,7 +696,7 @@ class RegExamModel extends WB_Model
         $data = $this->_conn->query($sql)->row();
         if($data) {
             $data->upImgUrlQ = $this->config->item('upload_url_mock', 'mock') . $data->MpIdx . $this->config->item('upload_path_mockQ', 'mock');
-            $data->optSame = ($data->EB_QuestionOption == $this->input->post('QuestionOption') && $data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
+            $data->optSame = ($data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
         }
 
         return ['ret_cd' => true, 'dt' => $data];

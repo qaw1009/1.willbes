@@ -83,7 +83,7 @@
                         </td>
                         <th>문제등록옵션 <span class="required">*</span></th>
                         <td class="form-inline">
-                            <select class="form-control mr-5" name="QuestionOption" {{($method == 'PUT' && $isDeny) ? 'disabled' : ''}}>
+                            <select class="form-control mr-5 hide" name="QuestionOption" {{($method == 'PUT' && $isDeny) ? 'disabled' : ''}}>
                                 <option value="">보기형식</option>
                                 <option value="S" @if($method == 'PUT' && $data['QuestionOption'] == 'S') selected @endif>객관식(단일정답)</option>
                                 <option value="M" @if($method == 'PUT' && $data['QuestionOption'] == 'M') selected @endif>객관식(복수정답)</option>
@@ -418,13 +418,6 @@
 
             /*********************************************************************************/
 
-            // 문항정보필드 문제등록옵션
-            var exOpt = $regi_form.find('[name="QuestionOption"]').val();
-            var exOptS = (exOpt == 'M') ? ['S','M'] : [exOpt];
-            $regi_sub_form.find('[name="QuestionOption[]"] option').each(function () {
-                if( $.inArray($(this).attr('value'), exOptS) === -1 ) $(this).remove();
-            });
-
             // 문항정보필드 정답보기 갯수
             var exNum = $regi_form.find('[name="AnswerNum"]').val();
             $regi_sub_form.find('tbody > tr').each(function () {
@@ -433,40 +426,45 @@
                 });
             });
 
-            // 문항정보필드 정답보기 오류체크 (객관식(단수) 1개, 객관식(복수) 2개, 주관식 비활성)
-            if(exOpt == 'J') {
-                $regi_sub_form.find('.right-answer input').each(function () {
-                    $(this).prop('disabled', true);
-                });
-            }
-            else {
-                $regi_sub_form.on('ifChanged', '[name="RightAnswerTmp[]"]', function () {
-                    var wrap = $(this).closest('.right-answer');
-                    var subExOpt = $(this).closest('tr').find('[name="QuestionOption[]"]').val();
-
-                    if(subExOpt == 'S') {
-                        if(wrap.find('[name="RightAnswerTmp[]"]:checked').length > 1) {
-                            $(this).iCheck('uncheck');
-                            init_iCheck();
-
-                            alert('객관식(단일) 정답은 1개만 선택가능합니다.');
-                            return false;
-                        }
-                    }
-
-                    // 정답 저장
-                    var right = [];
-                    wrap.find('[name="RightAnswerTmp[]"]:checked').each(function () {
-                        right.push($(this).val());
-                    });
-                    wrap.find('[name="RightAnswer[]"]').val(right.join(','));
-                });
-            }
-
             // 문항정보필드 문제등록옵션 변경시 정답 초기화
+            $regi_sub_form.find('[name="QuestionOption[]"]').each(function () {
+                if($(this).val() == 'J')
+                    $(this).closest('tr').find('[name="RightAnswerTmp[]"]').prop('disabled', true);
+            });
             $regi_sub_form.on('change', '[name="QuestionOption[]"]', function () {
                 $(this).closest('tr').find('[name="RightAnswerTmp[]"]').iCheck('uncheck');
                 $(this).closest('tr').find('[name="RightAnswer[]"]').val('');
+
+                if($(this).val() == 'J') { // 주관식
+                    $(this).closest('tr').find('[name="RightAnswerTmp[]"]').prop('disabled', true);
+                }
+                else {
+                    $(this).closest('tr').find('[name="RightAnswerTmp[]"]').prop('disabled', false);
+                }
+                $(this).closest('tr').find('[name="RightAnswerTmp[]"]').iCheck('update');
+            });
+
+            // 문항정보필드 문제등록옵션 오류체크 (객관식(단수) 1개, 객관식(복수) 2개, 주관식 비활성)
+            $regi_sub_form.on('ifChanged', '[name="RightAnswerTmp[]"]', function () {
+                var wrap = $(this).closest('.right-answer');
+                var subExOpt = $(this).closest('tr').find('[name="QuestionOption[]"]').val();
+
+                if(subExOpt == 'S') {
+                    if(wrap.find('[name="RightAnswerTmp[]"]:checked').length > 1) {
+                        $(this).iCheck('uncheck');
+                        init_iCheck();
+
+                        alert('객관식(단일) 정답은 1개만 선택가능합니다.');
+                        return false;
+                    }
+                }
+
+                // 정답 저장
+                var right = [];
+                wrap.find('[name="RightAnswerTmp[]"]:checked').each(function () {
+                    right.push($(this).val());
+                });
+                wrap.find('[name="RightAnswer[]"]').val(right.join(','));
             });
 
 

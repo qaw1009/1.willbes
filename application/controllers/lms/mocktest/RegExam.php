@@ -130,7 +130,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'PapaerName', 'label' => '과목문제지명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'Year', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'RotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'],
+            ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|in_list[S,M,J]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -193,7 +193,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
         if(!$this->input->post('isDeny')) {
-            $rules[] = ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|required|in_list[S,M,J]'];
+            $rules[] = ['field' => 'QuestionOption', 'label' => '보기형식', 'rules' => 'trim|in_list[S,M,J]'];
             $rules[] = ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'];
             $rules[] = ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[255]'];
         }
@@ -286,13 +286,15 @@ class RegExam extends \app\controllers\BaseController
             $this->json_error('문항번호가 중복되어 있습니다.');
             return;
         }
-        if( $_POST['QuestionOption'][0] != 'J' && array_filter($this->input->post('RightAnswer'), function ($v) { return !preg_match('/^[1-9,]+$/', $v); }) ) {
-            $this->json_error('정답을 선택하세요');
-            return;
-        }
         if( $this->input->post('TotalScore') != array_reduce($this->input->post('Scoring'), function ($sum, $v) { $sum += $v; return $sum; }, 0) ) {
             $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
             return;
+        }
+        foreach ($this->input->post('QuestionOption') as $k => $v) {
+            if( $v != 'J' && !preg_match('/^[1-9,]+$/', $_POST['RightAnswer'][$k]) ) {
+                $this->json_error('정답을 선택하세요');
+                return;
+            }
         }
 
         $error = false;
@@ -373,7 +375,7 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'nowIdx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'moLink', 'label' => '과목', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'ProfIdx', 'label' => '교수', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'QuestionOption', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],
+            ['field' => 'QuestionOption', 'label' => '문제등록옵션', 'rules' => 'trim|in_list[S,M,J]'],
             ['field' => 'AnswerNum', 'label' => '보기갯수', 'rules' => 'trim|required|is_natural_no_zero'],
         ];
         if ($this->validate($rules) === false) return;

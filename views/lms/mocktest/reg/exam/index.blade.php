@@ -85,7 +85,6 @@
                         <th rowspan="2" class="text-center">과목별문제지명</th>
                         <th rowspan="2" class="text-center">지문수</th>
                         <th rowspan="2" class="text-center">문항수</th>
-                        <th rowspan="2" class="text-center">문제등록옵션</th>
                         <th colspan="2" class="text-center">응시현황</th>
                         <th rowspan="2" class="text-center">사용여부</th>
                         <th rowspan="2" class="text-center">문제보기</th>
@@ -182,14 +181,6 @@
                     }},
                     {'data' : 'AnswerNum', 'class': 'text-center'},
                     {'data' : 'ListCnt', 'class': 'text-center'},
-                    {'data' : 'QuestionOption', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        var txt = '';
-                        if(data === 'S') txt = '객관식(단일)';
-                        else if(data === 'M') txt = '객관식(복수)';
-                        else if(data === 'J') txt = '주관식';
-
-                        return txt;
-                    }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {

@@ -157,7 +157,7 @@
                     <tr>
                         <th colspan="1">접수마감인원(학원용) <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control" name="ClosingPerson" value="@if($method == 'PUT'){{ $data['ClosingPerson'] }}@endif" style="width: 100px;">
+                            <input type="text" class="form-control" name="ClosingPerson" value="@if($method == 'PUT'){{ ($data['ClosingPerson'] == 0) ? '' : $data['ClosingPerson'] }}@endif" style="width: 100px;">
                             <span class="ml-20">응시형태가 'OFF(학원)'인 경우 마감인원 (미등록시 무제한)</span>
                         </td>
                     </tr>
@@ -562,6 +562,31 @@
             @if( !empty($data['Memo']) )
             $('#content_byte').val(fn_chk_byte($('#SmsMemo').val()));
             @endif
+
+            // 응시형태에 따른 웅시지역, 접수마감인원 분기처리
+            $regi_form.on('ifChanged', '[name="TakeFormsCcds[]"]', TakeFormCheck);
+            TakeFormCheck();
+
+            function TakeFormCheck() {
+                var applyType_on = '{{$applyType_on}}';
+                var selType = $('[name="TakeFormsCcds[]"]:checked').map(function () {
+                    return this.value;
+                }).get();
+
+                if(selType.length === 1 && selType[0] === applyType_on) {
+                    $('[name="TakeAreas1CCds[]"]').iCheck('uncheck').prop('disabled', true);
+                    $('[name="TakeAreas2Ccd[]"]').iCheck('uncheck').prop('disabled', true);
+                    $('[name="ClosingPerson"]').val('').prop('disabled', true);
+                }
+                else {
+                    $('[name="TakeAreas1CCds[]"]').prop('disabled', false);
+                    $('[name="TakeAreas2Ccd[]"]').prop('disabled', false);
+                    $('[name="ClosingPerson"]').prop('disabled', false);
+                }
+                $('[name="TakeAreas1CCds[]"]').iCheck('update');
+                $('[name="TakeAreas2Ccd[]"]').iCheck('update');
+            }
+
 
             // 사이트, 카테고리, 응시분야, 직렬, 발신번호
             @if($method == 'POST') $regi_form.find('#cateD1').chained('#siteCode'); @endif

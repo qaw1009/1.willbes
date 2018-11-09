@@ -158,7 +158,7 @@
 
                                 if(!rt) { alert('일치하는 데이터가 없습니다.'); return false; }
                                 if(!rt.RealQuestionFile || !rt.RealExplanFile) { alert('선택하신 문항에 이미지가 없습니다.'); return false; }
-                                if(!rt.optSame) { alert('문제등록옵션 또는 정답의 보기갯수가 일치하지 않습니다.'); return false; }
+                                if(!rt.optSame) { alert('정답의 보기갯수가 일치하지 않습니다.'); return false; }
 
                                 if(rt.QuestionOption == 'S') QuestionOption = '객관식(단일)';
                                 else if(rt.QuestionOption == 'M') QuestionOption = '객관식(복수)';
@@ -219,6 +219,9 @@
                                 right = v.RightAnswer.split(',');
                                 if( $.inArray($(this).val(), right) !== -1 ) {
                                     $(this).iCheck('check');
+                                }
+                                if(v.QuestionOption == 'J') {
+                                    $(this).iCheck('disable');
                                 }
                             });
 

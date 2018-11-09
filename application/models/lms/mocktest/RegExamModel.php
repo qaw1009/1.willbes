@@ -240,13 +240,13 @@ class RegExamModel extends WB_Model
             if($this->input->post('AnswerNum'))      $data['AnswerNum'] = $this->input->post('AnswerNum');
             if($this->input->post('TotalScore'))     $data['TotalScore'] = $this->input->post('TotalScore');
 
-            if( isset($names['QuestionFile']['error']) && $names['QuestionFile']['error'] === UPLOAD_ERR_OK ) {
+            if( isset($names['QuestionFile']['error']) && $names['QuestionFile']['error'] === UPLOAD_ERR_OK && $names['QuestionFile']['size'] > 0 ) {
                 $data['QuestionFile'] = $names['QuestionFile']['name'];
                 $data['RealQuestionFile'] = $names['QuestionFile']['real'];
 
                 if( !empty($beforeDB['RealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB['RealQuestionFile'];
             }
-            if( isset($names['ExplanFile']['error']) && $names['ExplanFile']['error'] === UPLOAD_ERR_OK ) {
+            if( isset($names['ExplanFile']['error']) && $names['ExplanFile']['error'] === UPLOAD_ERR_OK && $names['ExplanFile']['size'] > 0 ) {
                 $data['ExplanFile'] = $names['ExplanFile']['name'];
                 $data['RealExplanFile'] = $names['ExplanFile']['real'];
 
@@ -540,11 +540,11 @@ class RegExamModel extends WB_Model
                             $fileCopy[] = array('src' => $src . $_POST['callRealExplanFile'][$k], 'dest' => $dest . $callRealExplanFile);
                         }
                         else {
-                            if (isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK) {
+                            if ( isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK && $names['QuestionFile']['size'][$k] > 0 ) {
                                 $dataReg['QuestionFile'] = $names['QuestionFile']['name'][$k];
                                 $dataReg['RealQuestionFile'] = $names['QuestionFile']['real'][$k];
                             }
-                            if (isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK) {
+                            if ( isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK && $names['ExplanFile']['size'][$k] > 0 ) {
                                 $dataReg['ExplanFile'] = $names['ExplanFile']['name'][$k];
                                 $dataReg['RealExplanFile'] = $names['ExplanFile']['real'][$k];
                             }
@@ -567,13 +567,13 @@ class RegExamModel extends WB_Model
                             'UpdDatm' => date("Y-m-d H:i:s"),
                             'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                         );
-                        if( isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK ) {
+                        if( isset($names['QuestionFile']['error'][$k]) && $names['QuestionFile']['error'][$k] === UPLOAD_ERR_OK && $names['QuestionFile']['size'][$k] > 0 ) {
                             $dataMod['QuestionFile'] = $names['QuestionFile']['name'][$k];
                             $dataMod['RealQuestionFile'] = $names['QuestionFile']['real'][$k];
 
                             if( !empty($beforeDB[$v]['RealQuestionFile']) ) $fileBackup[] = $filePath . $beforeDB[$v]['RealQuestionFile'];
                         }
-                        if( isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK ) {
+                        if( isset($names['ExplanFile']['error'][$k]) && $names['ExplanFile']['error'][$k] === UPLOAD_ERR_OK && $names['ExplanFile']['size'][$k] > 0 ) {
                             $dataMod['ExplanFile'] = $names['ExplanFile']['name'][$k];
                             $dataMod['RealExplanFile'] = $names['ExplanFile']['real'][$k];
 

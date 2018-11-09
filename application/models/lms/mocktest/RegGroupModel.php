@@ -128,7 +128,7 @@ class RegGroupModel extends WB_Model
             $this->_conn->update($this->_table['mockGroup'], $data, $where);
 
             // lms_Mock_R_Group
-            $dataReg = $dataMod = array();
+            $dataReg = $dataMod = $dataDel = array();
             if( !empty($this->input->post('chapterTotal')) ) {
                 foreach ($this->input->post('chapterTotal') as $k => $v) {
                     if ( empty($this->input->post('chapterExist')) || !in_array($v, $this->input->post('chapterExist')) ) { // 신규등록 데이터
@@ -149,8 +149,22 @@ class RegGroupModel extends WB_Model
                     }
                 }
             }
+
+            // 삭제 데이터 (IsStatus Update)
+            if( !empty($this->input->post('chapterDel')) ) {
+                foreach ($this->input->post('chapterDel') as $k => $v) {
+                    $dataDel[] = array(
+                        'MrgIdx' => $v,
+                        'IsStatus' => 'N',
+                        'UpdDatm' => date("Y-m-d H:i:s"),
+                        'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    );
+                }
+            }
+
             if($dataReg) $this->_conn->insert_batch($this->_table['mockGroupR'], $dataReg);
             if($dataMod) $this->_conn->update_batch($this->_table['mockGroupR'], $dataMod, 'MrgIdx');
+            if($dataDel) $this->_conn->update_batch($this->_table['mockGroupR'], $dataDel, 'MrgIdx');
 
 
             $this->_conn->trans_complete();
@@ -269,23 +283,5 @@ class RegGroupModel extends WB_Model
         }
 
         return array($data, $count);
-    }
-
-
-    /**
-     * 모의고사상품 삭제
-     */
-    public function searchGoodsDel()
-    {
-        $data = array(
-            'IsStatus' => 'N',
-            'UpdDatm' => date("Y-m-d H:i:s"),
-            'UpdAdminIdx' => $this->session->userdata('admin_idx'),
-        );
-        $where = array('MrgIdx' => $this->input->post('idx'));
-
-        $this->_conn->update($this->_table['mockGroupR'], $data, $where);
-        if ($this->_conn->affected_rows()) return true;
-        else return false;
     }
 }

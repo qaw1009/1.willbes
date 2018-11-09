@@ -418,7 +418,7 @@ class RegGoodsModel extends WB_Model
      */
     public function updateSubject($date)
     {
-        $dataReg = $dataMod = array();
+        $dataReg = $dataMod = $dataDel = array();
 
         if( !empty($this->input->post('chapterTotal')) ) {
             foreach ($this->input->post('chapterTotal') as $k => $v) {
@@ -445,8 +445,21 @@ class RegGoodsModel extends WB_Model
             }
         }
 
+        // 삭제 데이터 (IsStatus Update)
+        if( !empty($this->input->post('chapterDel')) ) {
+            foreach ($this->input->post('chapterDel') as $k => $v) {
+                $dataDel[] = array(
+                    'PmrpIdx' => $v,
+                    'IsStatus' => 'N',
+                    'UpdDatm' => date("Y-m-d H:i:s"),
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                );
+            }
+        }
+
         if($dataReg) $this->_conn->insert_batch($this->_table['mockProductExam'], $dataReg);
         if($dataMod) $this->_conn->update_batch($this->_table['mockProductExam'], $dataMod, 'PmrpIdx');
+        if($dataDel) $this->_conn->update_batch($this->_table['mockProductExam'], $dataDel, 'PmrpIdx');
     }
 
 
@@ -536,24 +549,6 @@ class RegGoodsModel extends WB_Model
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         return array($data, $count);
-    }
-
-
-    /**
-     * 과목검색 삭제
-     */
-    public function searchExamDel()
-    {
-        $data = array(
-            'IsStatus' => 'N',
-            'UpdDatm' => date("Y-m-d H:i:s"),
-            'UpdAdminIdx' => $this->session->userdata('admin_idx'),
-        );
-        $where = array('PmrpIdx' => $this->input->post('idx'));
-
-        $this->_conn->update($this->_table['mockProductExam'], $data, $where);
-        if ($this->_conn->affected_rows()) return true;
-        else return false;
     }
 
 

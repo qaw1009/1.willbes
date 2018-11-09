@@ -141,6 +141,7 @@
 
             // 모의고사상품 초기화
             var chapterExist = [];
+            var chapterDel = [];
             var mList = $('#mGoods-wrap table tbody');
             mAddField = mList.find('tr:eq(0)').html();
             mList.find('tr:eq(0)').remove();
@@ -164,22 +165,10 @@
                     rowDel_Disp();
                 }
                 else { // 등록후
-                    if (!confirm("삭제하시겠습니까?")) return false;
+                    if (!confirm("삭제는 저장시 적용됩니다.\n삭제 대기목록에 추가하시겠습니까?")) return false;
 
-                    var _url = '{{ site_url("/mocktest/regGroup/searchGoodsDel") }}';
-                    var data = {
-                        '{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),
-                        '_method' : 'PUT',
-                        'idx' : mIdx,
-                    };
-
-                    sendAjax(_url, data, function(ret) {
-                        if (ret.ret_cd) {
-                            chapterExist.splice(chapterExist.indexOf(mIdx), 1);
-                            rowDel_Disp();
-                            notifyAlert('success', '알림', ret.ret_msg);
-                        }
-                    }, showValidateError, false, 'POST');
+                    chapterDel.push(mIdx);
+                    rowDel_Disp();
                 }
 
                 function rowDel_Disp() {
@@ -203,7 +192,7 @@
             $regi_form.submit(function() {
                 var chapterTotal = [];
                 mList.find('tr').each(function () { chapterTotal.push($(this).data('goods-idx')); });
-                $regi_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist}) );
+                $regi_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel}) );
 
                 var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/regGroup/update') : site_url('/mocktest/regGroup/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

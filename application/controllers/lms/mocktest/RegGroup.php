@@ -132,13 +132,14 @@ class RegGroup extends \app\controllers\BaseController
     public function update()
     {
         $Info = @json_decode($this->input->post('Info'));
-        if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist)) {
+        if(!is_object($Info) || !isset($Info->chapterTotal) || !isset($Info->chapterExist) || !isset($Info->chapterDel)) {
             $this->json_error("입력오류");
             return;
         }
         else {
             $_POST['chapterTotal'] = $Info->chapterTotal;
             $_POST['chapterExist'] = $Info->chapterExist;
+            $_POST['chapterDel'] = $Info->chapterDel;
         }
 
         $rules = [
@@ -152,6 +153,7 @@ class RegGroup extends \app\controllers\BaseController
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'chapterTotal[]', 'label' => 'tIDX', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'chapterExist[]', 'label' => 'eIDX', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'chapterDel[]', 'label' => 'dIDX', 'rules' => 'trim|is_natural_no_zero'],
         ];
         if ($this->validate($rules) === false) return;
 
@@ -221,24 +223,5 @@ class RegGroup extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $data,
         ]);
-    }
-
-
-    /**
-     * 모의고사상품 삭제
-     */
-    public function searchGoodsDel()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
-        ];
-        if ($this->validate($rules) === false) return;
-
-        $result = $this->regGroupModel->searchGoodsDel();
-        if($result)
-            $this->json_result($result, '삭제되었습니다.', $result);
-        else
-            $this->json_error('삭제에 실패했습니다.');
     }
 }

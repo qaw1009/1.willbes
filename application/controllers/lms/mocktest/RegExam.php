@@ -136,10 +136,10 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
         ];
-        if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK ) {
+        if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'] == 0 ) {
             $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
         }
-        if( $_FILES['ExplanFile']['error'] !== UPLOAD_ERR_OK ) {
+        if( $_FILES['ExplanFile']['error'] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'] == 0 ) {
             $rules[] = ['field' => 'ExplanFile', 'label' => '해설지통파일', 'rules' => 'required'];
         }
         if ($this->validate($rules) === false) return;
@@ -256,11 +256,11 @@ class RegExam extends \app\controllers\BaseController
         ];
         foreach ($this->input->post('chapterTotal') as $k => $v) {
             if(!$v && $_POST['regKind'][$k] != 'call') {
-                if (isset($_FILES['QuestionFile']['error'][$k]) && $_FILES['QuestionFile']['error'][$k] !== UPLOAD_ERR_OK) {
+                if (isset($_FILES['QuestionFile']['error'][$k]) && ($_FILES['QuestionFile']['error'][$k] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'][$k] == 0)) {
                     $rules[] = ['field' => 'QuestionFile', 'label' => '문제파일', 'rules' => 'required'];
                     break;
                 }
-                if (isset($_FILES['ExplanFile']['error'][$k]) && $_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK) {
+                if (isset($_FILES['ExplanFile']['error'][$k]) && ($_FILES['ExplanFile']['error'][$k] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'][$k] == 0)) {
                     $rules[] = ['field' => 'ExplanFile', 'label' => '해설지파일', 'rules' => 'required'];
                     break;
                 }

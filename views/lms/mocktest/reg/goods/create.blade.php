@@ -408,6 +408,7 @@
 
             // 과목리스트 초기화
             var chapterExist = [];
+            var chapterDel = [];
             var eList = $('#eSubject-wrap table tbody');
             var sList = $('#sSubject-wrap table tbody');
             suAddField = eList.find('tr:eq(0)').html();
@@ -431,22 +432,10 @@
                     rowDel_Disp();
                 }
                 else { // 등록후
-                    if (!confirm("삭제하시겠습니까?")) return false;
+                    if (!confirm("삭제는 저장시 적용됩니다.\n삭제 대기목록에 추가하시겠습니까?")) return false;
 
-                    var _url = '{{ site_url("/mocktest/regGoods/searchExamDel") }}';
-                    var data = {
-                        '{{ csrf_token_name() }}' : $regi_form.find('[name="{{ csrf_token_name() }}"]').val(),
-                        '_method' : 'PUT',
-                        'idx' : suIdx,
-                    };
-
-                    sendAjax(_url, data, function(ret) {
-                        if (ret.ret_cd) {
-                            chapterExist.splice(chapterExist.indexOf(suIdx), 1);
-                            rowDel_Disp();
-                            notifyAlert('success', '알림', ret.ret_msg);
-                        }
-                    }, showValidateError, false, 'POST');
+                    chapterDel.push(suIdx);
+                    rowDel_Disp();
                 }
 
                 function rowDel_Disp() {
@@ -476,7 +465,7 @@
                         error = true;
                     }
                 });
-                if(error) {
+                if(error || chapterDel.length) {
                     alert('저장된 과목만 정렬변경이 가능합니다. 저장 후 진행해 주세요');
                     return false;
                 }
@@ -518,7 +507,7 @@
                 var chapterTotal = [];
                 eList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });
                 sList.find('tr').each(function () { chapterTotal.push($(this).data('subject-idx')); });
-                $regi_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist}) );
+                $regi_form.find('[name="Info"]').val( JSON.stringify({'chapterTotal':chapterTotal, 'chapterExist':chapterExist, 'chapterDel':chapterDel}) );
 
                 var _url = '{{ ($method == 'PUT') ? site_url('/mocktest/regGoods/update') : site_url('/mocktest/regGoods/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

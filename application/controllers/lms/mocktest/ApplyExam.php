@@ -47,41 +47,37 @@ class ApplyExam extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_cateD1', 'label' => '카테고리', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_cateD2', 'label' => '직렬', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_TakeFormsCcds', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_IsRegister', 'label' => '접수상태', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_TakeType', 'label' => '응시기간', 'rules' => 'trim|in_list[A,L]'],
-            ['field' => 'search_use', 'label' => '사용여부', 'rules' => 'trim|in_list[Y,N]'],
+            ['field' => 'search_takeArea', 'label' => '응시지역', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_startDate', 'label' => '기간시작일', 'rules' => 'trim|alpha_dash'],
+            ['field' => 'search_endDate', 'label' => '기간종료일', 'rules' => 'trim|alpha_dash'],
             ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
             ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
             ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
         ];
         if ($this->validate($rules) === false) return;
 
+        $search_startDate = $search_endDate = null;
+        if($this->input->post('search_startDate') && $this->input->post('search_endDate')) {
+            $search_startDate = $this->input->post('search_startDate').'00:00:00';
+            $search_endDate = $this->input->post('search_startDate').'23:59:59';
+        }
+
         $condition = [
             'EQ' => [
                 'PD.SiteCode' => $this->input->post('search_site_code'),
-                'PC.CateCode' => $this->input->post('search_cateD1'),
                 'MP.MockYear' => $this->input->post('search_year'),
                 'MP.MockRotationNo' => $this->input->post('search_round'),
-                'MP.IsRegister' => $this->input->post('search_IsRegister'),
-                'MP.TakeType' => $this->input->post('search_TakeType'),
-                'MP.IsUse' => $this->input->post('search_use'),
+                'MAP.TakeArea' => $this->input->post('search_TakeArea'),
             ],
-            'LKB' => [
-                'MP.MockPart' => $this->input->post('search_cateD2'),
-                'MP.TakeFormsCcds' => $this->input->post('search_TakeFormsCcds'),
+            'BET' => [
+                'PD.SaleStartDatm' => [$search_startDate, $search_endDate]
             ],
             'ORG' => [
                 'LKB' => [
                     'PD.ProdName' => $this->input->post('search_fi', true),
-                    'A.wAdminName' => $this->input->post('search_fi', true),
-                    'PD.SaleStartDatm' => $this->input->post('search_fi', true),
-                    'PD.SaleEndDatm' => $this->input->post('search_fi', true),
-                    'PS.RealSalePrice' => $this->input->post('search_fi', true),
+                    'MAP.ProdCode' => $this->input->post('search_fi', true),
                 ]
             ],
         ];

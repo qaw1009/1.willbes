@@ -24,15 +24,15 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_TakeFormsCcds" name="search_TakeFormsCcds">
+                        <select class="form-control mr-5" id="search_takeArea" name="search_takeArea">
                             <option value="">응시지역</option>
                             @foreach($applyArea as $k => $v)
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
                         </select>
-                        <input type="text" name="" value="" class="form-control datepicker" style="width: 100px;" placeholder="기간시작일" readonly>
+                        <input type="text" name="search_startDate" value="" class="form-control datepicker" style="width: 100px;" placeholder="기간시작일" readonly>
                         <span class="pl-5 pr-5">~</span>
-                        <input type="text" name="" value="" class="form-control datepicker"  style="width: 100px;" placeholder="기간종료일" readonly>
+                        <input type="text" name="search_endDate" value="" class="form-control datepicker"  style="width: 100px;" placeholder="기간종료일" readonly>
                     </div>
                 </div>
                 <div class="form-group form-inline">
@@ -118,50 +118,24 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<input type="radio" class="flat" name="target" value="' + row.ProdCode + '">';
-                    }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                    }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                        return row.CateName + IsUseCate;
-                    }},
-                    {'data' : 'MockPartName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return data.join('<br>');
                     }},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                        return '<span>[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                     }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return row.RealSalePrice + '원<br><span style="text-decoration:line-through">' + row.SalePrice + '원</span>';
+                    {'data' : 'TakeForm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return (typeof applyType[data] !== 'undefined') ? applyType[data] : '';
                     }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return row.SaleStartDatm.substr(0,10) + ' ~ ' + row.SaleEndDatm.substr(0,10);
-                    }},
-                    {'data' : 'TakePart_on', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
-                    }},
-                    {'data' : 'TakePart_off', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                    {'data' : 'ClosingPerson', 'class': 'text-center'},
+                    {'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return (typeof applyArea[data] !== 'undefined') ? applyArea[data] : '';
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : 'IsRegister', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '접수중' : '접수마감';
-                    }},
-                    {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'A') ? '상시' : '기간제한';
-                    }},
-                    {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                    }},
-                    {'data' : 'wAdminName', 'class': 'text-center'},
-                    {'data' : 'RegDatm', 'class': 'text-center'}
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }}
                 ]
             });
 

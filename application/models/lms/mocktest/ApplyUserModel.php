@@ -56,7 +56,7 @@ class ApplyUserModel extends WB_Model
         ";
         $select = "
             SELECT MAP.*, PD.ProdName, MP.MockYear, MP.MockRotationNo, C1.CateName, SC.CcdName,
-            U.MemId, U.MemName, fn_enc(U.PhoneEnc) AS MemPhone,
+            U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone,
             O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd,
             ($subQuery) AS SubjectNameList
         ";

@@ -66,18 +66,16 @@ class ApplyUser extends \app\controllers\BaseController
             'EQ' => [
                 'O.SiteCode' => $this->input->post('search_site_code'),
                 'OP.PayStatusCcd' => $this->input->post('search_PayStatusCcd'),
-                'MAP.IsStatus' => $this->input->post('search_IsStatus'),
-                'MAP.IsTicketPrint' => $this->input->post('search_IsTicketPrint'),
-            ],
-            'LKB' => [
                 'MAP.TakeForm' => $this->input->post('search_TakeForm'),
                 'MAP.TakeArea' => $this->input->post('search_TakeArea'),
+                'MAP.IsStatus' => $this->input->post('search_IsStatus'),
+                'MAP.IsTicketPrint' => $this->input->post('search_IsTicketPrint'),
             ],
             'ORG' => [
                 'LKB' => [
                     'U.MemName' => $this->input->post('search_fi', true),
                     'U.MemId' => $this->input->post('search_fi', true),
-                    'U.PhoneEnc' => $this->input->post('search_fi', true),//
+                    'U.Phone3' => $this->input->post('search_fi', true),
                     'PD.ProdName' => $this->input->post('search_fi', true),
                     'MAP.ProdCode' => $this->input->post('search_fi', true),
                 ]
@@ -91,5 +89,4 @@ class ApplyUser extends \app\controllers\BaseController
             'data' => $data,
         ]);
     }
-
 }

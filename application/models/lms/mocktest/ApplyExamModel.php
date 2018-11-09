@@ -10,27 +10,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ApplyExamModel extends WB_Model
 {
     private $_table = [
-        'admin' => 'wbs_sys_admin',
-        'mockExamBase' => 'lms_mock_paper',
-        'mockExamQuestion' => 'lms_mock_questions',
-        'mockSubject' => 'lms_mock_r_subject',
-        'mockAreaCate' => 'lms_Mock_R_Category',
-        'mockArea' => 'lms_mock_area',
-        'mockAreaList' => 'lms_mock_area_list',
-        'mockBase' => 'lms_mock',
-        'category' => 'lms_sys_category',
-        'sysCode' => 'lms_sys_code',
-        'subject' => 'lms_product_subject',
-        'professor' => 'lms_professor',
-        'pms_professor' => 'wbs_pms_professor',
-        'site' => 'lms_site',
-
+        'mockApply' => 'lms_Mock_Register',
+        'mockApplySubject' => 'lms_Mock_Register_R_Paper',
         'mockProduct' => 'lms_Product_Mock',
         'mockProductExam' => 'lms_Product_Mock_R_Paper',
+        'mockExamBase' => 'lms_mock_paper',
+        'mockAreaCate' => 'lms_Mock_R_Category',
+        'mockSubject' => 'lms_mock_r_subject',
+        'subject' => 'lms_product_subject',
+
         'Product' => 'lms_Product',
         'ProductCate' => 'lms_Product_R_Category',
         'ProductSale' => 'lms_Product_Sale',
         'ProductSMS' => 'lms_Product_Sms',
+        'category' => 'lms_sys_category',
+        'sysCode' => 'lms_sys_code',
+        'member' => 'lms_Member',
+        'order' => 'lms_Order',
+        'orderProduct' => 'lms_Order_Product',
     ];
 
     public function __construct()
@@ -50,45 +47,20 @@ class ApplyExamModel extends WB_Model
 
 
         $select = "
-            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-            C1.CateName, C1.IsUse AS IsUseCate
+            SELECT MAP.*, PD.ProdName, MP.MockYear, MP.MockRotationNo
         ";
         $from = "
-            FROM {$this->_table['mockProduct']} AS MP
+            FROM {$this->_table['mockApply']} AS MAP
+            JOIN {$this->_table['mockProduct']} AS MP ON MAP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
             JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
-            JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
-            JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE MP.IsStatus = 'Y'";
+        $where = "WHERE MAP.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "ORDER BY MP.ProdCode DESC\n";
+        $order = "ORDER BY MAP.MrIdx DESC\n";
 
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
-
-
-        // 직렬이름 추출
-        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
-
-        // 데이터정리
-        $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
-        $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
-
-        foreach ($data as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
-            $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
-            $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
-
-            $mockPart = explode(',', $it['MockPart']);
-            foreach ($mockPart as $mp) {
-                if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
-            }
-        }
 
         return array($data, $count);
     }

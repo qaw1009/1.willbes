@@ -169,8 +169,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : 'CateName', 'class': 'text-center'},
                     {'data' : 'CcdName', 'class': 'text-center'},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-
+                    {'data' : 'SubjectNameList', 'class': 'text-center'},
                     {'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (typeof applyArea[data] !== 'undefined') ? applyArea[data] : '';
                     }},

@@ -83,7 +83,7 @@ class Login extends \app\controllers\BaseController
                 $is_cert = true;
                 $log_ccd_name = 'CERT_FIRST_REQ';
             } elseif ($row['wLastLoginIp'] != $this->input->ip_address()) {
-                // 어플리케이션이 QA서버, 실서버 일 경우만 체크
+                // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
                 if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
                     $is_cert = true;
                     $log_ccd_name = 'CERT_IP_REQ';

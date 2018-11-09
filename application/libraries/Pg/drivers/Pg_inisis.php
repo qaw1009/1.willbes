@@ -446,11 +446,13 @@ class Pg_inisis extends CI_Driver
             // 전달 결과 저장
             $log_idx = $this->_saveLog($returns, $log_type);
 
-            // TODO : 테스트 (실제 연동시 주석 삭제)
-/*            // PG사 연동 IP 체크
-            if (in_array($returns['reg_ip'], $this->_config['allow_vbank_ip']) === false) {
-                throw new \Exception('ERR_IP');
-            }*/
+            // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
+            if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
+                // PG사 연동 IP 체크
+                if (in_array($returns['reg_ip'], $this->_config['allow_vbank_ip']) === false) {
+                    throw new \Exception('ERR_IP');
+                }
+            }
 
             // 전달 결과 체크
             if (empty($returns['no_oid']) === true || empty($returns['id_merchant']) === true || empty($returns['no_tid']) === true

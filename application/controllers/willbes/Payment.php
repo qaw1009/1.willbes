@@ -72,8 +72,10 @@ class Payment extends \app\controllers\FrontController
             return $this->json_error($results);
         }
 
-        // TODO : 테스트 (추후 주석 삭제)
-        $results['total_pay_price'] = 1000;
+        // 로컬, 개발서버 환경일 경우 결제금액 고정 ==> TODO : 서버 환경별 실행
+        if (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
+            $results['total_pay_price'] = 1000;
+        }
 
         // 주문번호 생성
         $order_no = $this->orderFModel->makeOrderNo();

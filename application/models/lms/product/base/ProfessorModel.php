@@ -381,17 +381,19 @@ class ProfessorModel extends WB_Model
             FROM {$this->_table['professor']} AS a
             INNER JOIN {$this->_table['site']} AS b ON a.SiteCode = b.SiteCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'
             INNER JOIN (
-                SELECT a.ProfIdx, GROUP_CONCAT(a.CateCode) AS CateCode, GROUP_CONCAT(b.CateName) AS CateName
-                FROM {$this->_table['professor_r_subject_r_category']} AS a
-                INNER JOIN {$this->_table['category']} AS b ON a.CateCode = b.CateCode
-                {$where}
-                GROUP BY a.ProfIdx
+                SELECT temp_a.ProfIdx, GROUP_CONCAT(temp_a.CateCode) AS CateCode, GROUP_CONCAT(temp_a.CateName) AS CateName
+                FROM (
+                    SELECT a.ProfIdx, a.CateCode, b.CateName
+                    FROM {$this->_table['professor_r_subject_r_category']} AS a
+                    INNER JOIN {$this->_table['category']} AS b ON a.CateCode = b.CateCode
+                    {$where}
+                    GROUP BY a.CateCode
+                ) AS temp_a
             ) AS c ON a.ProfIdx = c.ProfIdx
         ";
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where);
-
         return $query->result_array()[0];
     }
     

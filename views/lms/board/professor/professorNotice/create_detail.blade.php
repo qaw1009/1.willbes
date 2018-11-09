@@ -21,7 +21,6 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}--}}
                         {!! html_site_select($arr_prof_info['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="subject_idx">과목<span class="required">*</span></label>

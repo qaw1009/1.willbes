@@ -4,7 +4,6 @@
     <h5>- {{$arr_prof_info['ProfNickName']}} 교수 공지사항 게시판을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {{--{!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}--}}
         {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
         <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
         <div class="x_panel">

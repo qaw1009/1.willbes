@@ -239,7 +239,7 @@ class TmModel extends WB_Model
                     ]);
 
                     if($this->_conn->set($input_data)->insert('lms_tm_assign') === false) {
-                        throw \Exception("회원 배정시 오류가 발생되었습니다.");
+                        throw new \Exception("회원 배정시 오류가 발생되었습니다.");
                     }
                     $total_cnt -= 1;
                 }
@@ -368,8 +368,6 @@ class TmModel extends WB_Model
      */
     public function listConsult($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-
-
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
@@ -414,9 +412,7 @@ class TmModel extends WB_Model
      */
     public function addConsult($input=[])
     {
-
         try {
-
             $input_data = [
                 'TaIdx' => element('TaIdx',$input),
                 'ConsultCcd' => element('_reg_ConsultCcd',$input),

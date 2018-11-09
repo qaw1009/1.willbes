@@ -239,7 +239,7 @@ class Tm extends \app\controllers\BaseController
     }
 
     /**
-     * 상담등록 기본 정보
+     * 상담관련 기본 정보
      * @param array $params
      * @return CI_Output
      */
@@ -255,7 +255,6 @@ class Tm extends \app\controllers\BaseController
         $data_mem = $this->manageMemberModel->getMember($mem_idx);
         $codes = $this->codeModel->getCcdInArray(['687','688','689']);
 
-        $list_consult = [];
         $list_cs = [];
         $list_coupon = [];
 
@@ -265,12 +264,15 @@ class Tm extends \app\controllers\BaseController
             'ConsultCcd' => $codes['688'],
             'TmClassCcd' => $codes['689'],
             'data_mem' => $data_mem,
-            'list_consult' => $list_consult,
             'list_cs' => $list_cs,
             'list_coupon' => $list_coupon
         ]);
     }
 
+    /**
+     * 상담내역 목록 추출
+     * @return CI_Output
+     */
     public function consultListAjax()
     {
         $arr_condition = [
@@ -299,11 +301,13 @@ class Tm extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list
         ]);
-
-
     }
 
 
+    /**
+     * 상담 등록
+     * @return CI_Output|void
+     */
     public function consultStore()
     {
         $method = 'add';

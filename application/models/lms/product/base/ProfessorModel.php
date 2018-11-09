@@ -166,7 +166,7 @@ class ProfessorModel extends WB_Model
                 INNER JOIN '. $this->_table['site'] .' AS ls ON lp.SiteCode = ls.SiteCode
                 INNER JOIN '. $this->_table['pms_professor'] .' AS wp ON lp.wProfIdx = wp.wProfIdx
                 WHERE
-                    lp.IsStatus = "Y"
+                    lp.IsStatus = "Y" AND lp.IsUse = "Y"
                     AND json_value(lp.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
             ) AS P
             LEFT OUTER JOIN (
@@ -195,7 +195,6 @@ class ProfessorModel extends WB_Model
         $set_where = $this->_conn->makeWhere($arr_condition);
         $set_where = $set_where->getMakeWhere(false);
         $where = '
-            AND P.IsStatus = "Y"
             AND json_value(P.UseBoardJson, "$[*].'.$bm_idx.'") = "Y"
         ';
         $where = $set_where.$where;

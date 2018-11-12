@@ -10,8 +10,8 @@ class VideoManager extends \app\controllers\BaseController
         '83' => '강의자료실'
     ];
     private $board_name = [
-        '82' => 'OfflineBoard',
-        '83' => 'LiveLectureMaterial'
+        '82' => 'offlineBoard',
+        '83' => 'liveLectureMaterial'
     ];
     private $_reg_type = [
         'user' => 0,    //유저 등록 정보

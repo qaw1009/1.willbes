@@ -94,13 +94,13 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
                 ";
                 break;
-            case "Announcement" :
+            case "announcement" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.TypeCcd = LSC1.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.AreaCcd = LSC2.Ccd
                 ";
                 break;
-            case "Question" :
+            case "question" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.AreaCcd = LSC1.Ccd
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
@@ -128,12 +128,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
                 ";
                 break;
-            case "OfflineBoard" :
+            case "offlineBoard" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
-            case "LiveLectureMaterial" :
+            case "liveLectureMaterial" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
@@ -476,13 +476,13 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC_FAQ2 ON LB.FaqTypeCcd = LSC_FAQ2.Ccd
                 ";
                 break;
-            case "Announcement" :
+            case "announcement" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.TypeCcd = LSC1.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.AreaCcd = LSC2.Ccd
                 ";
                 break;
-            case "Question" :
+            case "question" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC1 ON LB.AreaCcd = LSC1.Ccd
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
@@ -519,12 +519,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
                 ";
                 break;
-            case "OfflineBoard" :
+            case "offlineBoard" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
-            case "LiveLectureMaterial" :
+            case "liveLectureMaterial" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx

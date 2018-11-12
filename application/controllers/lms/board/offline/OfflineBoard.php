@@ -8,7 +8,7 @@ class OfflineBoard extends BaseBoard
     protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board');
     protected $helpers = array('download','file');
 
-    private $board_name = 'OfflineBoard';
+    private $board_name = 'offlineBoard';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [

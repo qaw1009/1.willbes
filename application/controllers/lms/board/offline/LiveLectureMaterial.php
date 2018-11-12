@@ -8,7 +8,7 @@ class LiveLectureMaterial extends BaseBoard
     protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
     protected $helpers = array('download','file');
 
-    private $board_name = 'LiveLectureMaterial';
+    private $board_name = 'liveLectureMaterial';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [

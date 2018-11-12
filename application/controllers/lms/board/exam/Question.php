@@ -37,6 +37,7 @@ class Question extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $this->_reqP('search_site_code');
 
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
@@ -48,10 +49,7 @@ class Question extends BaseBoard
         $arr_area_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd_area']);
 
         //과목
-        $arr_subject = [];
-        if (!empty($this->site_code)) {
-            $arr_subject = $this->subjectModel->getSubjectArray($this->site_code);
-        }
+        $arr_subject = $this->subjectModel->getSubjectArray();
 
         $this->load->view("board/exam/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
@@ -175,6 +173,9 @@ class Question extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
 
+        //과목
+        $arr_subject = $this->subjectModel->getSubjectArray();
+
         $method = 'POST';
         $data = null;
         $board_idx = null;
@@ -224,6 +225,7 @@ class Question extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
+            'arr_subject' => $arr_subject,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
     }

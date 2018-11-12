@@ -21,8 +21,8 @@
 
                         <select class="form-control" id="search_subject" name="search_subject">
                             <option value="">과목</option>
-                            @foreach($arr_subject as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{$row['SubjectIdx']}}" class="{{$row['SiteCode']}}">{{$row['SubjectName']}}</option>
                             @endforeach
                         </select>
 
@@ -115,6 +115,7 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
+            $search_form.find('select[name="search_subject"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

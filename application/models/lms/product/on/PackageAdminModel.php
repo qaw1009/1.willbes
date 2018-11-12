@@ -309,7 +309,7 @@ class PackageAdminModel extends CommonLectureModel
         $SaleEndDat = element('SaleEndDat',$input);
         $SaleEndTime = element('SaleEndTime',$input);
         if($SaleEndDat === '') {
-            $SaleEndDat = "2100-12-31";
+            $SaleEndDat = "2030-12-31";
         }
         if($SaleEndTime === '') {
             $SaleEndTime = '23';
@@ -363,6 +363,7 @@ class PackageAdminModel extends CommonLectureModel
             ,'RetakeSaleRate'=>element('RetakeSaleRate',$input)
             ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
             ,'IsEdit'=>element('IsEdit',$input,'N')
+            ,'IsTpass'=>element('IsTpass',$input,'N')
         ];
 
     }

@@ -354,7 +354,7 @@ class LectureModel extends CommonLectureModel
             $SaleEndDat = element('SaleEndDat',$input);
             $SaleEndTime = element('SaleEndTime',$input);
             if($SaleEndDat === '') {
-                $SaleEndDat = "2100-12-31";
+                $SaleEndDat = "2030-12-31";
             }
             if($SaleEndTime === '') {
                 $SaleEndTime = '23';
@@ -418,7 +418,7 @@ class LectureModel extends CommonLectureModel
                 ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
                 ,'wCpIdx'=>element('wCpIdx',$input)
                 ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
-                ,'IsEdit'=>element('IsEdit',$input)
+                ,'IsEdit'=>element('IsEdit',$input,'N')
             ];
 
    }

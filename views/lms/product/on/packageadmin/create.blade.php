@@ -573,7 +573,18 @@
                 </div>
 
 
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsTpass">T-pass 자료실사용 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsTpass" class="flat" value="Y" title="T-pass 자료실사용" @if($data['IsTpass']=='Y')checked="checked"@endif/> 가능
+                            &nbsp;&nbsp;                         &nbsp;
+                            <input type="radio" name="IsTpass" class="flat" value="N" title="T-pass 자료실사용" @if($method == 'POST' || $data['IsTpass']=='N')checked="checked"@endif/> 불가능
+                        </div>
+                    </div>
 
+                </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="IsRefund">환불신청 <span class="required">*</span>
@@ -871,6 +882,10 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
 
                 @if($method === 'PUT')
                     <div class="form-group">

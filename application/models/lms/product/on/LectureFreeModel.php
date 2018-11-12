@@ -316,7 +316,7 @@ class LectureFreeModel extends CommonLectureModel
         $SaleEndDat = element('SaleEndDat',$input);
         $SaleEndTime = element('SaleEndTime',$input);
         if($SaleEndDat === '') {
-            $SaleEndDat = "2100-12-31";
+            $SaleEndDat = "2030-12-31";
         }
         if($SaleEndTime === '') {
             $SaleEndTime = '23';

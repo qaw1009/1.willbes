@@ -30,14 +30,14 @@
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray">
-                        <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" style="width: 250px;" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
+                        <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                             <option value="">과정</option>
                             @foreach($arr_base['site_list'] as $key => $val)
                                 <option value="{{$key}}" @if(($__cfg['SiteCode'] != config_item('app_intg_site_code') && $__cfg['SiteCode'] == $key) || (element('s_site_code', $arr_input) == $key)) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
 
-                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" style="width: 250px;" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
+                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
                             <option value="">카테고리</option>
                             @foreach($arr_base['category'] as $row)
                                 <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>

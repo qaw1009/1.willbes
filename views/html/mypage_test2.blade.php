@@ -117,20 +117,19 @@
 
         <div class="willbes-Leclist c_both mt60">
             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                [ 총 <a class="num tx-light-blue strong" href="#none">8</a>건 ]
+                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
+                    <select id="all" name="all" title="all" class="seleAll mr10 h30 f_left">
+                        <option selected="selected">응시상태</option>
+                        <option value="미확인쪽지">미응시</option>
+                        <option value="확인쪽지">응시완료</option>
+                    </select>
+                </span>
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                    <div class="willbes-Lec-Search GM f_right">
-                        <select id="all" name="all" title="all" class="seleAll mr10 h30 f_left">
-                            <option selected="selected">응시상태</option>
-                            <option value="미확인쪽지">미응시</option>
-                            <option value="확인쪽지">응시완료</option>
-                        </select>
-                        <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
+                    <div class="inputBox p_re">
+                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
+                        <button type="submit" onclick="" class="search-Btn">
+                            <span>검색</span>
+                        </button>
                     </div>
                 </span>
             </div>

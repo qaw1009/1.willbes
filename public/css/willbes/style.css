@@ -2411,6 +2411,7 @@ table.auTable tr td {
     width: 125px;
     height: 30px;
     line-height: 20px;
+    font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 13px;
 }
 
@@ -6315,7 +6316,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: 10px 0 20px;
 }
 .willbes-Lec-Selected select {
-    width: 92px;
+    width: 140px;
     height: 27px;
     margin-right: 8px;
 }

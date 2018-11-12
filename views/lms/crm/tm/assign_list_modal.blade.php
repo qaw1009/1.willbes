@@ -62,7 +62,7 @@
                     $datatable = $list_table.DataTable({
                         serverSide: true,
                         ajax: {
-                            'url' : '{{ site_url('/crm/tm/assignListAjax') }}',
+                            'url' : '{{ site_url('/crm/tm/TmMng/assignListAjax') }}',
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});

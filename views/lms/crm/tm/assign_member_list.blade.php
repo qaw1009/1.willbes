@@ -83,7 +83,7 @@
                 buttons: [
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/crm/tm/assignMemberAjax') }}',
+                    'url' : '{{ site_url('/crm/tm/TmAssign/assignMemberListAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -108,15 +108,13 @@
             });
 
             $list_table.on('click', '.btn_mem_info', function() {
-                var url = '{{ site_url('/crm/tm/consult/') }}'+$(this).data('idx')+'/'+$(this).data('taidx');
+                var url = '{{ site_url('/crm/tm/TmAssign/consult/') }}'+$(this).data('idx')+'/'+$(this).data('taidx');
                 $('.btn_mem_info').setLayer({
                     'url' : url,
                     'width' : 1100,
                     'modal_id' : 'assignMemberInfo'
                 });
             });
-
-
 
         });
     </script>

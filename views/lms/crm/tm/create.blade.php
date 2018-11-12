@@ -3,7 +3,6 @@
     <h5>- 운영사이트별 회원을 검색하고 TM 담당자들에게 회원을 배정하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-
         <Br>
         <div class="form-group">
             <div class="col-md-2 form-inline">
@@ -166,7 +165,7 @@
                     'SearchType' : 'search'
                 };
 
-                sendAjax('{{ site_url('/crm/tm/search/') }}', data, function(ret) {
+                sendAjax('{{ site_url('/crm/tm/TmMng/search/') }}', data, function(ret) {
                        if(ret.ret_data == '0') {
                            alert("검색된 데이터가 존재하지 않습니다.");return;
                        }
@@ -177,11 +176,11 @@
 
 
             $("#btn_reset").click(function () {
-                location.replace('{{site_url('/crm/tm/index')}}')
+                location.replace('{{site_url('/crm/tm/TmMng/')}}')
             });
             // 목록 이동
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/crm/tm/tmIndex') }}');
+                location.replace('{{ site_url('/crm/tm/TmMng/tmIndex') }}');
             });
 
             //검색결과 배정갯수 입력하기
@@ -244,7 +243,7 @@
                     return;
                 }
 
-                var _url = '{{ site_url('/crm/tm/assign') }}';
+                var _url = '{{ site_url('/crm/tm/TmMng/assign') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         //notifyAlert('success', '알림', ret.ret_msg);
@@ -258,7 +257,7 @@
 
 
             showAssign = function(tm_idx) {
-                var url = '{{ site_url('/crm/tm/assignList/') }}'+tm_idx;
+                var url = '{{ site_url('/crm/tm/TmMng/assignList/') }}'+tm_idx;
                 $('.btn_tm_list').setLayer({
                      'url' : url,
                      'width' : 1000

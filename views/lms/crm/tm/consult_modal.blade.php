@@ -191,7 +191,7 @@
                         serverSide: true,
                         paging: false,
                         ajax: {
-                            'url' : '{{ site_url('/crm/tm/consultListAjax') }}',
+                            'url' : '{{ site_url('/crm/tm/TmAssign/consultListAjax') }}',
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form_modal.serializeArray()), { '{{ csrf_token_name() }}' : $regi_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(), 'MemIdx' : $regi_form_modal.find('input[name="MemIdx"]').val()});
@@ -233,7 +233,7 @@
                             return;
                         }
 
-                        var _url = '{{ site_url('/crm/tm/consultStore') }}';
+                        var _url = '{{ site_url('/crm/tm/TmAssign/consultStore') }}';
                         ajaxSubmit($regi_form_modal, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', '상담이 저정되었습니다.');

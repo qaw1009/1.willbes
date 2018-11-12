@@ -205,7 +205,9 @@
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
                         return data !== null ? data : '' + (row.VBankOrderDatm !== null ? '<br/>(' + row.VBankOrderDatm + ')' : row.OrderDatm);
                     }},
-                    {'data' : 'ProdTypeCcdName'},
+                    {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
+                        return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
+                    }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

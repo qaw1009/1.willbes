@@ -396,11 +396,13 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception($cart_results);
             }
 
-            // TODO : 테스트 (추후 주석 삭제)
-/*            // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
-            if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
-                throw new \Exception('결제금액이 일치하지 않습니다.', _HTTP_BAD_REQUEST);
-            }*/
+            // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
+            if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
+                // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
+                if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
+                    throw new \Exception('결제금액이 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+                }
+            }
 
             // 주문 데이터 등록
             $data = [
@@ -666,7 +668,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 나의 강좌수정정보 데이터 등록 (온라인강좌, 학원강좌일 경우만)
             if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture') {
-                $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub, element('UserStudyStartDate', $input, ''));
+                $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub, $input);
                 if ($is_add_my_lecture !== true) {
                     throw new \Exception($is_add_my_lecture);
                 }
@@ -768,10 +770,10 @@ class OrderFModel extends BaseOrderFModel
      * @param int $order_prod_idx [주문상품식별자]
      * @param int $prod_code [상품코드]
      * @param array $arr_prod_code_sub [상품코드서브]
-     * @param string $user_study_start_date [사용자 지정 강좌시작일]
+     * @param array $input [상품별 장바구니 데이터 배열]
      * @return bool|string
      */
-    public function addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub = [], $user_study_start_date = '')
+    public function addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub = [], $input = [])
     {
         try {
             $row = $this->productFModel->findProductLectureInfo($prod_code);
@@ -780,10 +782,35 @@ class OrderFModel extends BaseOrderFModel
             }
 
             $learn_pattern = array_search($row['LearnPatternCcd'], $this->_learn_pattern_ccd);  // 학습형태
+            $user_study_start_date = element('UserStudyStartDate', $input, '');     // 사용자 지정 강좌시작일
 
             if ($learn_pattern == 'on_lecture' || $learn_pattern == 'adminpack_lecture' || $learn_pattern == 'periodpack_lecture' || $learn_pattern == 'on_free_lecture'
                 || $learn_pattern == 'off_lecture') {
                 // 단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원 단과
+                // 단강좌 수강연장일 경우
+                if ($learn_pattern == 'on_lecture' && element('SalePatternCcd', $input) == $this->_sale_pattern_ccd['extend']) {
+                    $row['StudyPeriod'] = element('ExtenDay', $input);
+
+                    if (empty($row['StudyPeriod']) === true) {
+                        throw new \Exception('수강연장 신청일수가 없습니다.');
+                    }
+
+                    // 타겟주문상품 중에서 가장 큰 실제강좌종료일자 + 1 day 조회
+                    $row['StudyStartDate'] = element('NextStudyStartDate',
+                        $this->_conn->getJoinFindResult($this->_table['my_lecture'] . ' as ML', 'inner', $this->_table['order_product'] . ' as OP', 'ML.OrderProdIdx = OP.OrderProdIdx'
+                            ,'date_add(max(ML.RealLecEndDate), interval 1 day) as NextStudyStartDate', [
+                            'EQ' => [
+                                'ML.OrderIdx' => element('TargetOrderIdx', $input), 'ML.ProdCode' => element('TargetProdCode', $input), 'ML.ProdCodeSub' => element('TargetProdCodeSub', $input),
+                                'OP.MemIdx' => $this->session->userdata('mem_idx'), 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']
+                            ]
+                        ])
+                    );
+
+                    if (empty($row['StudyStartDate']) === true) {
+                        throw new \Exception('수강연장 수강시작일자 조회에 실패했습니다.');
+                    }
+                }
+
                 // 수강시작일, 수강종료일 조회
                 $arr_lec_date = $this->getMyLectureLecStartEndDate($row['LearnPatternCcd'], $row['StudyStartDate'], $row['StudyEndDate'], $row['StudyPeriod'], $user_study_start_date);
 

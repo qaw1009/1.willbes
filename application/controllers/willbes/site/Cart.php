@@ -178,6 +178,8 @@ class Cart extends \app\controllers\FrontController
      */
     public function store($params = [])
     {
+        $is_ajax = $this->input->is_ajax_request();
+
         if (empty($this->_reqP('learn_pattern')) === false) {
             $data = $this->_getAddNormalData();
         } else {
@@ -185,7 +187,11 @@ class Cart extends \app\controllers\FrontController
         }
 
         if (is_array($data) === false) {
-            return $this->json_error($data, _HTTP_BAD_REQUEST);
+            if ($is_ajax === true) {
+                return $this->json_error($data, _HTTP_BAD_REQUEST);
+            } else {
+                show_alert($data, 'back');
+            }
         }
 
         // 장바구니 저장
@@ -209,7 +215,11 @@ class Cart extends \app\controllers\FrontController
             $this->cartFModel->makeSessCartIdx($arr_cart_idx);
         }
 
-        return $this->json_result($result['ret_cd'], '', $result, ['ret_url' => $data['ret_url']]);
+        if ($is_ajax === true) {
+            return $this->json_result($result['ret_cd'], '', $result, ['ret_url' => $data['ret_url']]);
+        } else {
+            redirect($data['ret_url']);
+        }
     }
 
     /**
@@ -263,11 +273,11 @@ class Cart extends \app\controllers\FrontController
      */
     private function _getAddPatternData()
     {
-        $sale_pattern = $this->_req('sale_pattern');
-        $target_order_idx = $this->_req('target_order_idx');
-        $target_prod_code = $this->_req('target_prod_code');
-        $target_prod_code_sub = get_var($this->_req('target_prod_code_sub'), $target_prod_code);
-        $extend_day = $this->_req('extend_day');
+        $sale_pattern = $this->_reqP('sale_pattern');
+        $target_order_idx = $this->_reqP('target_order_idx');
+        $target_prod_code = $this->_reqP('target_prod_code');
+        $target_prod_code_sub = get_var($this->_reqP('target_prod_code_sub'), $target_prod_code);
+        $extend_day = $this->_reqP('extend_day');
         $cart_type = 'on_lecture';
         $is_direct_pay = 'Y';
         $is_visit_pay = 'N';

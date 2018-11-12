@@ -190,7 +190,9 @@
                     {'data' : 'VBankStatus', 'render' : function(data, type, row, meta) {
                         return data === 'O' ? '<a class="cs-pointer btn-vbank-cancel" data-idx="' + row.OrderIdx + '"><u>[계좌취소]</u></a>' : '';
                     }},
-                    {'data' : 'ProdTypeCcdName'},
+                    {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
+                        return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
+                    }},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

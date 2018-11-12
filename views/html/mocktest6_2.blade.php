@@ -101,20 +101,19 @@
             </div>
             <div class="willbes-Leclist c_both mt60">
                 <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                    [ 총 <a class="num tx-light-blue strong" href="#none">4</a>건 ]
+                    <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
+                        <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
+                            <option selected="selected">진행상태</option>
+                            <option value="진행중">진행중</option>
+                            <option value="접수마감">접수마감</option>
+                        </select>
+                    </span>
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                        <div class="willbes-Lec-Search GM f_right">
-                            <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
-                                <option selected="selected">진행상태</option>
-                                <option value="진행중">진행중</option>
-                                <option value="접수마감">접수마감</option>
-                            </select>
-                            <div class="inputBox p_re">
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
-                                <button type="submit" onclick="" class="search-Btn">
-                                    <span>검색</span>
-                                </button>
-                            </div>
+                        <div class="inputBox p_re">
+                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
+                            <button type="submit" onclick="" class="search-Btn">
+                                <span>검색</span>
+                            </button>
                         </div>
                     </span>
                 </div>

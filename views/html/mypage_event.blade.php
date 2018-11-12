@@ -138,8 +138,7 @@
                 </div>
             </div>
             <div class="willbes-LecreplyList tx-gray c_both">
-                → 총 <a class="num tx-light-blue strong" href="#none">2</a>건
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <select id="process" name="process" title="process" class="seleProcess f_left">
                         <option selected="selected">과정</option>
                         <option value="헌법">헌법</option>
@@ -163,17 +162,13 @@
                     <colgroup>
                         <col style="width: 70px;">
                         <col style="width: 140px;">
-                        <col style="width: 340px;">
-                        <col style="width: 130px;">
-                        <col style="width: 130px;">
+                        <col style="width: 600px;">
                         <col style="width: 130px;">
                     </colgroup>
                     <thead>
                         <tr>
                             <th>NO<span class="row-line">|</span></li></th>
                             <th colspan="2">특강&이벤트 정보<span class="row-line">|</span></li></th>
-                            <th>진행일<span class="row-line">|</span></li></th>
-                            <th>진행시간<span class="row-line">|</span></li></th>
                             <th>신청일</th>
                         </tr>
                     </thead>
@@ -197,11 +192,6 @@
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
                                 </dl>
                             </td>
-                            <td class="w-day">2018.00.00</td>
-                            <td class="w-time">
-                                14:00~18:00<br/>
-                                (1회차)
-                            </td>
                             <td class="w-date">2018-00-00</td>
                         </tr>
                         <tr>
@@ -223,11 +213,6 @@
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
                                 </dl>
                             </td>
-                            <td class="w-day">2018.00.00</td>
-                            <td class="w-time">
-                                14:00~18:00<br/>
-                                (1회차)
-                            </td>
                             <td class="w-date">2018-00-00</td>
                         </tr>
                         <tr>
@@ -248,11 +233,6 @@
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
                                 </dl>
-                            </td>
-                            <td class="w-day">2018.00.00</td>
-                            <td class="w-time">
-                                14:00~18:00<br/>
-                                (1회차)
                             </td>
                             <td class="w-date">2018-00-00</td>
                         </tr>

@@ -8,7 +8,7 @@ class Question extends BaseBoard
     protected $temp_models = array('sys/boardMaster', 'board/board', 'product/base/subject');
     protected $helpers = array('download','file');
 
-    private $board_name = 'Question';
+    private $board_name = 'question';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [

@@ -24,7 +24,7 @@ class ProfessorModel extends WB_Model
         'LearnPattern' => '615'
     ];
     public $_bm_idx = [
-        'notice' => 63, 'qna' => 66, 'data' => 69
+        'notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88'
     ];
 
     public function __construct()
@@ -51,7 +51,9 @@ class ProfessorModel extends WB_Model
                 U.*, ifnull(C.CateName, "삭제된 카테고리") as CateName, ifnull(PS.SubjectName, "삭제된 과목") as SubjectName
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                     , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
-                    , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard                
+                    , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
+                    , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
+                    , json_value(U.UseBoardJson, "$[*].' . $this->_bm_idx['assignment'] . '") as IsAssignmentBoard
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -409,9 +411,11 @@ class ProfessorModel extends WB_Model
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
+                , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
+                , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['assignment'] . '") as IsAssignmentBoard
                 , WP.wProfName, WP.wProfId, WP.wProfProfile, WP.wBookContent, WP.wIsUse 
                 , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.RegAdminIdx and wIsStatus = "Y") as RegAdminName
-                , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName        
+                , if(P.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName
         ';
 
         return $this->_conn->getJoinFindResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP', 'P.wProfIdx = WP.wProfIdx'

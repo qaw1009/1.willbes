@@ -49,7 +49,7 @@
                     <th rowspan="2" class="pb-30">교수아이디</th>
                     <th rowspan="2" class="pb-30">교수명</th>
                     <th rowspan="2" class="pb-20">카테고리정보<br/>(대표카테고리만 표기)</th>
-                    <th colspan="3" style="border-width: 1px; border-left: 0; border-bottom: 0;">게시판운영여부</th>
+                    <th colspan="5" style="border-width: 1px; border-left: 0; border-bottom: 0;">게시판운영여부</th>
                     <th rowspan="2" class="pb-30">사용여부</th>
                     <th rowspan="2" class="pb-30">사용여부(W)</th>
                     <th rowspan="2" class="pb-30">등록자</th>
@@ -58,7 +58,9 @@
                 <tr>
                     <th>공지</th>
                     <th>Q&A</th>
-                    <th style="border-right-width: 1px;">자료실</th>
+                    <th>자료실</th>
+                    <th>T-pass자료실</th>
+                    <th style="border-right-width: 1px;">첨삭게시판</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -105,6 +107,8 @@
                     {'data' : 'IsNoticeBoard'},
                     {'data' : 'IsQnaBoard'},
                     {'data' : 'IsDataBoard'},
+                    {'data' : 'IsTpassBoard'},
+                    {'data' : 'IsAssignmentBoard'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

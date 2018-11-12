@@ -138,15 +138,17 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="use_board">게시판운영여부
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-5">
                         <div class="checkbox">
                             <input type="checkbox" id="use_board1" name="use_board[]" class="flat" value="{{ $arr_bm_idx['notice'] }}" @if($data['IsNoticeBoard'] == 'Y') checked="checked" @endif/> <label for="use_board1" class="input-label">공지사항</label>
                             <input type="checkbox" id="use_board2" name="use_board[]" class="flat" value="{{ $arr_bm_idx['qna'] }}" @if($data['IsQnaBoard'] == 'Y') checked="checked" @endif/> <label for="use_board2" class="input-label">학습Q&A</label>
                             <input type="checkbox" id="use_board3" name="use_board[]" class="flat" value="{{ $arr_bm_idx['data'] }}" @if($data['IsDataBoard'] == 'Y') checked="checked" @endif/> <label for="use_board3" class="input-label">학습자료실</label>
+                            <input type="checkbox" id="use_board4" name="use_board[]" class="flat" value="{{ $arr_bm_idx['tpass'] }}" @if($data['IsTpassBoard'] == 'Y') checked="checked" @endif/> <label for="use_board4" class="input-label">T-pass자료실</label>
+                            <input type="checkbox" id="use_board5" name="use_board[]" class="flat" value="{{ $arr_bm_idx['assignment'] }}" @if($data['IsAssignmentBoard'] == 'Y') checked="checked" @endif/> <label for="use_board5" class="input-label">참삭게시판</label>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <p class="form-control-static"># 체크시 사용자단 교수소개 영역에 노출됩니다. (미체크시 미노출)</p>
+                    <div class="col-md-4">
+                        <p class="form-control-static"># 체크시 사용자단 교수소개 영역에 노출됩니다. (단, 첨삭게시판제외)</p>
                     </div>
                 </div>
                 <div class="form-group">

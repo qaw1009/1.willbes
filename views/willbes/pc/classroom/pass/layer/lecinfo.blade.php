@@ -1,47 +1,34 @@
 <div class="lecDetailWrap p_re mt30 mb60">
     <ul class="tabWrap tabDepth2">
-        <li><a href="#ch1{{$row['ProdCode']}}">강좌상세정보</a></li>
-        <li><a href="#ch2{{$row['ProdCode']}}">강좌목차</a></li>
+        <li><a href="#ch1{{$data['ProdCode']}}">강좌상세정보</a></li>
+        <li><a href="#ch2{{$data['ProdCode']}}">강좌목차</a></li>
     </ul>
     <div class="w-btn">
-        <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">현재 강좌추가</a>
+        <a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnAppend('{{$data['ProdCode']}}');">현재 강좌추가</a>
     </div>
     <div class="tabBox mt30">
-        <div id="ch1{{$row['ProdCode']}}" class="tabLink">
+        <div id="ch1{{$data['ProdCode']}}" class="tabLink">
             <table cellspacing="0" cellpadding="0" class="classTable under-gray bdt-gray tx-gray">
                 <colgroup>
                     <col style="width: 105px;">
                     <col width="*">
                 </colgroup>
                 <tbody>
+                @foreach($data['ProdContents'] as $row)
                 <tr>
                     <td class="w-list bg-light-white">
-                        강좌유의사항<br>
-                        <span class="tx-red">(필독)</span>
+                        {{$row['ContentTypeCcdName']}}
+                        @if($row['ContentTypeCcd'] == '633001')
+                            <br/><span class="tx-red">(필독)</span>
+                        @endif
                     </td>
-                    <td class="w-data tx-left pl25">
-                        LMS &gt; 상품관리&gt; [온라인]상품관리&gt; 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br>
-                        자동출력됩니다. (온라인상품기준)
-                    </td>
+                    <td class="w-data tx-left pl25">{!! $row['Content'] !!}</td>
                 </tr>
-                <tr>
-                    <td class="w-list bg-light-white">강좌소개</td>
-                    <td class="w-data tx-left pl25">
-                        LMS &gt; 상품관리&gt; [온라인]상품관리&gt; 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br>
-                        자동출력됩니다. (온라인상품기준)
-                    </td>
-                </tr>
-                <tr>
-                    <td class="w-list bg-light-white">강좌특징</td>
-                    <td class="w-data tx-left pl25">
-                        LMS &gt; 상품관리&gt; [온라인]상품관리&gt; 단강좌메뉴의‘단강좌유의사항(필독)’ 항목에입력된정보가<br>
-                        자동출력됩니다. (온라인상품기준)
-                    </td>
-                </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
-        <div id="ch2{{$row['ProdCode']}}" class="tabLink">
+        <div id="ch2{{$data['ProdCode']}}" class="tabLink">
             <div class="LeclistTable">
                 <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                     <colgroup>
@@ -57,26 +44,17 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @forelse($data['LectureUnits'] as $row)
                     <tr>
-                        <td class="w-no">1강</td>
-                        <td class="w-list tx-left pl20">1강 03월 05일 : 모의고사 1회</td>
-                        <td class="w-time">50분</td>
+                        <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
+                        <td class="w-list tx-left pl20">{{$row['wUnitName']}}</td>
+                        <td class="w-time">{{$row['wRuntime']}}분</td>
                     </tr>
-                    <tr>
-                        <td class="w-no">2강</td>
-                        <td class="w-list tx-left pl20">2강 03월 05일 : 모의고사 2회</td>
-                        <td class="w-time">40분</td>
-                    </tr>
-                    <tr>
-                        <td class="w-no">3강</td>
-                        <td class="w-list tx-left pl20">3강 03월 05일 : 모의고사 3회</td>
-                        <td class="w-time">30분</td>
-                    </tr>
-                    <tr>
-                        <td class="w-no">4강</td>
-                        <td class="w-list tx-left pl20">4강 03월 12일 : 모의고사 4회</td>
-                        <td class="w-time">20분</td>
-                    </tr>
+                    @empty
+                        <tr>
+                            <td class="w-no" colspan="3">개설된 목차가 없습니다.</td>
+                        </tr>
+                    @endforelse
                     </tbody>
                 </table>
             </div>

@@ -138,7 +138,7 @@ class Player extends \app\controllers\FrontController
             // 수강시간은 초
             $studytime = intval($data['RealStudyTime']);
             // 제한시간 분 -> 초
-            $limittime = intval($data['wRuntime']) * intval($lec['MultipleApply']) * 60;
+            $limittime = intval($data['RealExpireTime']) * 60;
 
             if($studytime > $limittime){
                 $timeover = 'Y';
@@ -153,7 +153,7 @@ class Player extends \app\controllers\FrontController
             $studytime = intval($lec['StudyTimeSum']);
 
             // 제한시간 분 -> 초
-            $limittime = intval($lec['AllLecTime']) * 60;
+            $limittime = intval($lec['RealExpireTime']) * 60;
 
             if($studytime > $limittime){
                 $timeover = 'Y';
@@ -211,6 +211,9 @@ class Player extends \app\controllers\FrontController
 
         $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
 
+
+        $RealExpireTime = intval($data['wRuntime']) * intval($lec['MultipleApply']);
+
         // 수강히스토리 기록생성
         $logidx = $this->playerFModel->storeStudyLog([
             'MemIdx' => $this->session->userdata('mem_idx'),
@@ -219,7 +222,8 @@ class Player extends \app\controllers\FrontController
             'ProdCode' => $prodcode,
             'ProdCodeSub' => $prodcodesub,
             'wLecIdx' => $lec['wLecIdx'],
-            'wUnitIdx' => $unitidx
+            'wUnitIdx' => $unitidx,
+            'RealExpireTime' => $RealExpireTime
         ]);
 
         if($logidx == 0){

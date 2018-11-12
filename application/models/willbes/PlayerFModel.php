@@ -150,20 +150,22 @@ class PlayerFModel extends WB_Model
         $where = $where->getMakeWhere(false);
         $result = $this->_conn->query($query.$where);
 
+        $insert_data = [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'OrderIdx' => element('OrderIdx', $input),
+            'OrderProdIdx' => element('OrderProdIdx', $input),
+            'ProdCode' => element('ProdCode', $input),
+            'ProdCodeSub' => element('ProdCodeSub', $input),
+            'wLecIdx' => element('wLecIdx', $input),
+            'wUnitIdx' => element('wUnitIdx', $input)
+        ];
+
         // 기록없으면 study info insert
         if($result->row(0)->rownums == 0){
-
-            $input = [
-                'MemIdx' => $this->session->userdata('mem_idx'),
-                'OrderIdx' => element('OrderIdx', $input),
-                'OrderProdIdx' => element('OrderProdIdx', $input),
-                'ProdCode' => element('ProdCode', $input),
-                'ProdCodeSub' => element('ProdCodeSub', $input),
-                'wLecIdx' => element('wLecIdx', $input),
-                'wUnitIdx' => element('wUnitIdx', $input)
-            ];
             try {
-                if($this->_conn->set($input)->insert($this->_table['study_log']) === false){
+                if($this->_conn->set(array_merge($insert_data, [
+                        'RealExpireTime' => element('RealExpireTime', $input)
+                    ]))->insert($this->_table['study_log']) === false){
                     throw new \Exception('수강기록 초기화에 실패');
                 }
             } catch (\Exception $e) {
@@ -171,16 +173,14 @@ class PlayerFModel extends WB_Model
             }
         }
 
-        // study history insert
+        // 원타임 로그 : study history insert
         try {
-            $input = array_merge($input, [
-                'AccessIp' => $this->input->ip_address(),
-                'DeviceInfo' => '',
-                'PlayType' => 'S',
-                'StudyType' => 'O'
-            ]);
-
-            if($this->_conn->set($input)->insert($this->_table['study_history']) === false){
+            if($this->_conn->set(array_merge($insert_data, [
+                    'AccessIp' => $this->input->ip_address(),
+                    'DeviceInfo' => '',
+                    'PlayType' => 'S',
+                    'StudyType' => 'O'
+                ]))->insert($this->_table['study_history']) === false){
                 throw new \Exception('수강기록 초기화에 실패');
             }
         } catch (\Exception $e) {

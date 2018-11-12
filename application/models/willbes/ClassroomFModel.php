@@ -13,7 +13,8 @@ class ClassroomFModel extends WB_Model
         'admin' => 'wbs_sys_admin',
         'pause_log' => 'lms_lecture_pause_history',
         'extend' => 'lms_lecture_extend',
-        'down_log' => 'lms_lecture_data_download_log'
+        'down_log' => 'lms_lecture_data_download_log',
+        'order_product' => 'lms_order_product'
     ];
 
 
@@ -140,15 +141,6 @@ class ClassroomFModel extends WB_Model
         $result = $this->_conn->query($query);
 
         return empty($result) === true ? [] : $result->result_array();
-    }
-
-
-    /**
-     * 기간제패키지 PASS 강좌 리스트
-     */
-    public function getPass($cond = [], $isCount = false)
-    {
-        return empty($rows) === true ? [] : $rows->result_array();
     }
 
 
@@ -513,7 +505,7 @@ class ClassroomFModel extends WB_Model
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
-            return error_result($e);
+            return false;
         }
 
         return true;
@@ -547,6 +539,28 @@ class ClassroomFModel extends WB_Model
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
+    public function getRebuyLog($cond, $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * , ifnull(RegAdminIdx, '') AS Name 
+              ";
+        }
+
+        $query .= " FROM {$this->_table['order_product']}  
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY  DESC ";
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
     /**
      * 강의자료 다운로드 로그 기록
      * @param $input
@@ -564,6 +578,38 @@ class ClassroomFModel extends WB_Model
         ];
 
         $this->_conn->set($input)->insert($this->_table['down_log']);
+    }
+
+
+    public function addPassLecture($input)
+    {
+        try {
+            if($this->_conn->set($input)->insert($this->_table['mylec']) == false){
+                throw new \Exception('강좌추가에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function setLikeHide($input, $cond)
+    {
+        $this->_conn->trans_begin();
+        try{
+            if($this->_conn->set($input)->where($cond)->update($this->_table['mylec']) == false){
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
     }
 
 }

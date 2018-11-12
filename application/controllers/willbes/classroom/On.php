@@ -542,6 +542,8 @@ class On extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+            $lec['IsRebuy'] = $pkg['IsRebuy'];
+            $lec['RebuyCount'] = $pkg['RebuyCount'];
         }
 
         if($lec['LecStartDate'] > $today){
@@ -594,7 +596,11 @@ class On extends \app\controllers\FrontController
                 $studytime = intval($row['RealStudyTime']);
 
                 // 제한시간 분 -> 초
-                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']);
+                }
 
                 if($studytime > $limittime){
                     // 제한시간 초과
@@ -615,7 +621,7 @@ class On extends \app\controllers\FrontController
                 $studytime = intval($lec['StudyTimeSum']);
 
                 // 제한시간 분 -> 초
-                $limittime = intval($lec['AllLecTime']) * 60;
+                $limittime = intval($lec['RealExpireTime']) * 60;
 
                 if($studytime > $limittime){
                     // 제한시간 초과
@@ -1156,6 +1162,8 @@ class On extends \app\controllers\FrontController
         $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
         $lec['ExtenPrice'] = floor($lec['ExtenPrice'] / $lec['StudyPeriod']);
 
+        /*
+         * 연장 로그
         $log = $this->classroomFModel->getExtendLog([
             'EQ' => [
                 'MemIdx' => $memidx,
@@ -1164,6 +1172,16 @@ class On extends \app\controllers\FrontController
                 'TargetProdCodeSub' => $prodcodesub
             ]
         ]);
+        */
+
+        // 재수강로그
+        $log = $this->classroomFModel->getRebuyLog([
+        'EQ' => [
+            'MemIdx' => $memidx,
+            'TargetOrderIdx' => $orderidx,
+            'TargetProdCode' => $prodcode,
+            'TargetProdCodeSub' => $prodcodesub
+        ]]);
 
         return $this->load->view('/classroom/on/layer/extend', [
             'lec' => $lec,
@@ -1232,6 +1250,8 @@ class On extends \app\controllers\FrontController
             $lec['PauseCount'] = $pkg['PauseCount'];
             $lec['ExtenSum'] = $pkg['ExtenSum'];
             $lec['ExtenCount'] = $pkg['ExtenCount'];
+            $lec['IsRebuy'] = $pkg['IsRebuy'];
+            $lec['RebuyCount'] = $pkg['RebuyCount'];
         }
 
         if($lec['LecStartDate'] > $today){

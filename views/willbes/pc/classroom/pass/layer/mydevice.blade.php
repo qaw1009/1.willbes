@@ -113,6 +113,7 @@
                             <td class="w-delete-day">2018.00.00 00:00</td>
                             <td class="w-reset">불가</td>
                         </tr>
+
                         </tbody>
                     </table>
                     <div class="Paging">

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pass extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'product/packageF');
+    protected $models = array('classroomF', 'product/packageF', 'product/lectureF');
     protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -121,6 +121,9 @@ class Pass extends \app\controllers\FrontController
                     'MemIdx' => $passinfo['MemIdx'],
                     'OrderIdx' => $passinfo['OrderIdx'],
                     'ProdCode' => $passinfo['ProdCode'],
+                    'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                    'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                    'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
                     'IsDisp' => 'Y', // 숨기지않고
                     'IsLiked' => 'Y' // 즐겨찾기
                 ],
@@ -138,7 +141,10 @@ class Pass extends \app\controllers\FrontController
                     'MemIdx' => $passinfo['MemIdx'],
                     'OrderIdx' => $passinfo['OrderIdx'],
                     'ProdCode' => $passinfo['ProdCode'],
-                    'IsDisp' => 'N' // 숨지지않음
+                    'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                    'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                    'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
+                    'IsDisp' => 'Y' // 숨지지않음
                 ],
                 'NOT' => [
                     'ProdCode' => 'ProdCodeSub'
@@ -153,7 +159,10 @@ class Pass extends \app\controllers\FrontController
                 'EQ' => [
                     'MemIdx' => $passinfo['MemIdx'],
                     'OrderIdx' => $passinfo['OrderIdx'],
-                    'ProdCode' => $passinfo['ProdCode']
+                    'ProdCode' => $passinfo['ProdCode'],
+                    'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                    'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                    'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
                 ],
                 'NOT' => [
                     'ProdCode' => 'ProdCodeSub'
@@ -172,6 +181,9 @@ class Pass extends \app\controllers\FrontController
                     'MemIdx' => $passinfo['MemIdx'],
                     'OrderIdx' => $passinfo['OrderIdx'],
                     'ProdCode' => $passinfo['ProdCode'],
+                    'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                    'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                    'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
                     'IsDisp' => 'N' // 숨긴강좌
                 ],
                 'NOT' => [
@@ -189,7 +201,7 @@ class Pass extends \app\controllers\FrontController
                 'EQ' => [
                     'MemIdx' => $passinfo['MemIdx'],
                     'OrderIdx' => $passinfo['OrderIdx'],
-                    'ProdCode' => $passinfo['ProdCode'],
+                    'ProdCode' => $passinfo['ProdCode']
                 ],
                 'NOT' => [
                     'ProdCode' => 'ProdCodeSub'
@@ -223,6 +235,156 @@ class Pass extends \app\controllers\FrontController
             'leclist_nodisp' => $leclist_nodisp
         ]);
 
+    }
+
+    public function view()
+    {
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        if($lec['LearnPatternCcd'] == '615003'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ], $orderby);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+            $lec['IsRebuy'] = $pkg['IsRebuy'];
+            $lec['RebuyCount'] = $pkg['RebuyCount'];
+        }
+
+        if($lec['LecStartDate'] > $today){
+            $isstart = 'N';
+        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+            $isstart = 'N';
+            $ispause = 'Y';
+        } else {
+            $isstart = 'Y';
+        }
+
+        // 감사정보 디코딩
+        $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
+        $lec['isstart'] = $isstart;
+        $lec['ispause'] = $ispause;
+        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx']
+            ]
+        ]);
+
+        // 회차별 수강시간 체크
+        foreach($curriculum AS $idx => $row){
+            $curriculum[$idx]['isstart'] = $isstart;
+            $curriculum[$idx]['ispause'] = $ispause;
+
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            }
+            else if($lec['MultipleApply'] == '1'){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($row['RealStudyTime']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['AllLecTime']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+            }
+        }
+
+        return $this->load->view('/classroom/on/on_view', [
+            'lec' => $lec,
+            'curriculum' => $curriculum
+        ]);
     }
 
 
@@ -264,6 +426,7 @@ class Pass extends \app\controllers\FrontController
         $leclist = $this->packageFModel->subListProduct('periodpack_lecture', $passinfo['ProdCode']);
 
         return $this->load->view('/classroom/pass/layer/morelec', [
+            'passinfo' => $passinfo,
             'leclist' => $leclist
         ]);
     }
@@ -272,10 +435,18 @@ class Pass extends \app\controllers\FrontController
     {
         $prodcode = $this->_req("ProdCode");
 
-        $lecinfo =
+        $data['ProdCode'] = $prodcode;
+
+        $data['ProdContents'] = $this->lectureFModel->findProductContents($prodcode);
+
+        // 상품 판매교재
+        $data['ProdSaleBooks'] = $this->lectureFModel->findProductSaleBooks($prodcode);
+
+        // 상품 강의 목차
+        $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prodcode);
 
         return $this->load->view('/classroom/pass/layer/lecinfo', [
-            'lecinfo' => $lecinfo
+            'data' => $data
         ]);
     }
 
@@ -286,6 +457,215 @@ class Pass extends \app\controllers\FrontController
 
     public function layerMyDevice()
     {
+
         return $this->load->view('/classroom/pass/layer/mydevice', []);
+    }
+
+    public function addLecture()
+    {
+        $orderidx = $this->_req('OrderIdx');
+        $prodcode = $this->_req('ProdCode');
+        $prodcodesub = $this->_req('ProdCodeSub');
+
+        $today = date("Y-m-d", time());
+
+        // 실제 리스트용
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
+                'ProdCode' => $prodcode,
+                'OrderIdx' => $orderidx
+            ],
+            'LTE' => [
+                'LecStartDate' => $today // 시작일 <= 오늘
+            ],
+            'LT' => [
+                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+        ];
+
+        // 학습형태 : 기간제패키지
+        $passinfo = $this->classroomFModel->getPackage($cond_arr);
+
+        if(empty($passinfo) == true){
+            return $this->json_error('신청한 강좌정보가 없습니다.');
+        }
+
+        $passinfo = $passinfo[0];
+
+        // 서브강좌 목록에 있는지 체크
+        $leclist = $this->packageFModel->subListProduct('periodpack_lecture', $passinfo['ProdCode'], [
+            'EQ' => [
+                'C.ProdCode' => $prodcodesub
+            ]
+        ]);
+
+        if(empty($leclist) == true){
+            return $this->json_error('신청할수 없는 강좌입니다.');
+        }
+
+        // 이미 등록된 강좌인지 체크
+        $count = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $passinfo['MemIdx'],
+                'OrderIdx' => $passinfo['OrderIdx'],
+                'ProdCode' => $passinfo['ProdCode'],
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ], [], true);
+
+        if($count > 0){
+            return $this->json_error('이미 등록된 강좌입니다.');
+        }
+
+        if($this->classroomFModel->addPassLecture([
+                'OrderIdx' => $orderidx,
+                'OrderProdIdx' => $passinfo['OrderProdIdx'],
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'LecStartDate' => $passinfo['LecStartDate'],
+                'LecEndDate' => $passinfo['LecEndDate'],
+                'RealLecEndDate' => $passinfo['RealLecEndDate'],
+                'LecExpireDay' => $passinfo['LecExpireDay'],
+                'RealLecExpireDay' => $passinfo['RealLecExpireDay']
+            ]) == false){
+            return $this->json_error('강좌추가에 실패했습니다.\n다시 시도해주십시요.');
+        }
+
+        return $this->json_result(true, '강좌를 추가했습니다.');
+    }
+
+    public function set($params = [])
+    {
+        if(empty($params[0]) == true){
+            return $this->json_error('처리할수 없습니다.');
+        }
+
+        $cmd = $params[0];
+
+        if($cmd == 'like') {
+            $input = ['IsLiked' => 'Y'];
+        } else if($cmd == 'hide') {
+            $input = ['IsDisp' => 'N'];
+        } else {
+            return $this->json_error('처리할수 없습니다.');
+        }
+
+        $orderidx = $this->_req('OrderIdx');
+        $orderprodidx = $this->_req('OrderProdIdx');
+        $prodcode = $this->_req('ProdCode');
+        $prodcodesub = $this->_req('ProdCodeSub');
+
+        $prodcodesub = is_array($prodcodesub) == true ? array($prodcodesub) : $prodcodesub;
+
+        $cond = [
+            'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $orderprodidx,
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub
+        ];
+
+        $today = date("Y-m-d", time());
+
+        // 실제 리스트용
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
+                'ProdCode' => $prodcode,
+                'OrderIdx' => $orderidx
+            ],
+            'LTE' => [
+                'LecStartDate' => $today // 시작일 <= 오늘
+            ],
+            'LT' => [
+                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+        ];
+
+        // 학습형태 : 기간제패키지
+        $passinfo = $this->classroomFModel->getPackage($cond_arr);
+
+        if(empty($passinfo) == true){
+            return $this->json_error('신청한 강좌정보가 없습니다.');
+        }
+
+        if($this->classroomFModel->setLikeHide($input, $cond) == true){
+            return $this->json_result(true, '변경 처리했습니다.');
+        } else {
+            return $this->json_error('변겨에 실패했습니다.\n다시 시도해주십시요.');
+        }
+    }
+
+    public function unset($params = [])
+    {
+        if(empty($params[0]) == true){
+            return $this->json_error('처리할수 없습니다.');
+        }
+
+        $cmd = $params[0];
+
+        if($cmd == 'like') {
+            $input = ['IsLiked' => 'N'];
+        } else if($cmd == 'hide') {
+            $input = ['IsDisp' => 'Y'];
+        } else {
+            return $this->json_error('처리할수 없습니다.');
+        }
+
+        $orderidx = $this->_req('OrderIdx');
+        $orderprodidx = $this->_req('OrderProdIdx');
+        $prodcode = $this->_req('ProdCode');
+        $prodcodesub = $this->_req('ProdCodeSub');
+
+        $prodcodesub = is_array($prodcodesub) == true ? array($prodcodesub) : $prodcodesub;
+
+        $cond = [
+            'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $orderprodidx,
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub
+        ];
+
+        $today = date("Y-m-d", time());
+
+        // 실제 리스트용
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
+                'ProdCode' => $prodcode,
+                'OrderIdx' => $orderidx
+            ],
+            'LTE' => [
+                'LecStartDate' => $today // 시작일 <= 오늘
+            ],
+            'LT' => [
+                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+        ];
+
+        // 학습형태 : 기간제패키지
+        $passinfo = $this->classroomFModel->getPackage($cond_arr);
+
+        if(empty($passinfo) == true){
+            return $this->json_error('신청한 강좌정보가 없습니다.');
+        }
+
+        if($this->classroomFModel->setLikeHide($input, $cond) == true){
+            return $this->json_result(true, '변경 처리했습니다.');
+        } else {
+            return $this->json_error('변겨에 실패했습니다.\n다시 시도해주십시요.');
+        }
     }
 }

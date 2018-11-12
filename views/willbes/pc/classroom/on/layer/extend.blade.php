@@ -41,7 +41,7 @@
                     <tr>
                         <th class="w-tit bg-light-white strong">연장일수</th>
                         <td class="w-data tx-left pl15">
-                            @if($lec['ExtenCount'] >= $lec['ExtenNum'])
+                            @if($lec['RebuyCount'] >= $lec['ExtenNum'])
                                 연장신청 횟수를 초과했습니다.
                             @elseif($lec['ExtenSum'] >= $lec['ExtenLimit'])
                                 연장신청 기간을 초과했습니다.
@@ -69,7 +69,7 @@
                     </tr>
                     </tbody>
                 </table>
-                @if($lec['ExtenCount'] >= $lec['ExtenNum'])
+                @if($lec['RebuyCount'] >= $lec['ExtenNum'])
                     <div class="w-btn"> </div>
                 @elseif($lec['ExtenSum'] >= $lec['ExtenLimit'])
                     <div class="w-btn"> </div>
@@ -81,7 +81,7 @@
         </div>
         <div class="PASSZONE-Lec-Section">
             <div class="Search-Result strong mb15 tx-gray">· 수강연장 이력 <span class="w-info normal">(
-                    잔여횟수 : <span class="strong tx-light-blue">@if($lec['ExtenCount'] >= $lec['ExtenNum']){{'0'}}@else{{$lec['ExtenNum'] - $lec['ExtenCount']}}@endif</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
+                    잔여횟수 : <span class="strong tx-light-blue">@if($lec['RebuyCount'] >= $lec['ExtenNum']){{'0'}}@else{{$lec['ExtenNum'] - $lec['RebuyCount']}}@endif</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
                     잔여기간 : <span class="strong tx-light-blue">@if($lec['ExtenSum'] >= $lec['ExtenLimit']){{'0'}}@else{{$lec['ExtenLimit'] - $lec['ExtenSum']}}@endif</span>일
                     )</span></div>
             <div class="LeclistTable bdt-gray">

@@ -11,9 +11,9 @@
                     <div class="col-md-4 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
 
-                        <select class="form-control" id="AssignCcd" name="AssignCcd">
-                            <option value="">배정구분</option>
-                            @foreach($AssignCcd  as $key=>$val)
+                        <select class="form-control" id="PayStatusCcd" name="PayStatusCcd">
+                            <option value="">결제상태</option>
+                            @foreach($PayStatusCcd  as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
@@ -25,19 +25,23 @@
                             @endforeach
                         </select>
                     </div>
-                    <label class="control-label col-md-1" for="StartDate">배정일 검색</label>
-                    <div class="col-md-4 form-inline">
-                        <input name="StartDate"  class="form-control datepicker" id="StartDate" style="width: 100px;"  type="text"  value="" >
-                        ~ <input name="EndDate"  class="form-control datepicker" id="EndDate" style="width: 100px;"  type="text"  value="" >
-                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_is_use">회원검색</label>
-                    <div class="col-md-3">
+                    <label class="control-label col-md-1" for="search_value">회원검색</label>
+                    <div class="col-md-4 form-inline">
                         <input type="text" class="form-control input-sm" id="search_value" name="search_value" style="width:200px">
-                    </div>
-                    <div class="col-md-4">
                         <p class="form-control-static">아이디, 이름, 연락처 검색 가능</p>
+                    </div>
+                    <label class="control-label col-md-1" for="StartDate">기간검색 검색</label>
+                    <div class="col-md-4 form-inline">
+                        <select name="DateType" id="DateType" class="form-control input-sm" >
+                            <option value="">결제완료일</option>
+                            <option value="">환불완료일</option>
+                            <option value="">배정일</option>
+                            <option value="">최종상담일</option>
+                        </select>
+                        <input name="StartDate"  class="form-control datepicker" id="StartDate" style="width: 100px;"  type="text"  value="" >
+                        ~ <input name="EndDate"  class="form-control datepicker" id="EndDate" style="width: 100px;"  type="text"  value="" >
                     </div>
                 </div>
             </div>
@@ -51,18 +55,41 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th width="33%">판매금액</th>
+                    <th width="33%">결제금액(건수)</th>
+                    <th width="33%">환불금액(건수)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="x_panel mt-10">
+        <div class="x_content">
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th width="50">NO</th>
-                    <th width="150">배정조건</th>
-                    <th width="100">회원명</th>
-                    <th width="150">아이디</th>
-                    <th width="">핸드폰번호</th>
-                    <th width="150">TM담당자</th>
-                    <th width="150">배정일</th>
-                    <th width="150">최종상담일</th>
-                    <th width="100">등록</th>
+                    <th width="150">회원정보</th>
+                    <th width="100">주문번호</th>
+                    <th width="150">결제완료일</th>
+                    <th width="">상품명</th>
+                    <th width="100">결제금액</th>
+                    <th width="100">환불금액</th>
+                    <th width="150">결제상태</th>
+                    <th width="100">TM담당자</th>
+                    <th width="100">배정일</th>
+                    <th width="100">최종상담일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -83,7 +110,7 @@
                 buttons: [
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/crm/tm/assignMemberAjax') }}',
+                    'url' : '{{ site_url('/crm/tm/TmOrder/OrderListAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});

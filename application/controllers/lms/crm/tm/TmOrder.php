@@ -21,7 +21,22 @@ class TmOrder extends BaseTm
 
 
         $this->load->view('crm/tm/order_list',[
+            'PayStatusCcd' => $codes['676'],
             'AssignAdmin' => $tm_admin
         ]);
+    }
+
+    public function OrderListAjax()
+    {
+
+        $count = 0;
+        $list = [];
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+
     }
 }

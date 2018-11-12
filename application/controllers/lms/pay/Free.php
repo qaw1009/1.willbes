@@ -7,15 +7,11 @@ class Free extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/category', 'product/base/subject', 'product/base/professor', 'sys/code');
     protected $helpers = array();
-    private $_free_pay_status_ccd = array();
     private $_list_add_join = array('category', 'subject', 'professor');
 
     public function __construct()
     {
         parent::__construct();
-
-        // 무료강좌용 결제상태 공통코드
-        $this->_free_pay_status_ccd = array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['apply', 'cancel']));
     }
 
     /**
@@ -31,8 +27,10 @@ class Free extends BaseOrder
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayChannel', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
-        // 결제상태에서 무료강좌 관련 값만 필터링
-        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], $this->_free_pay_status_ccd);
+        // 결제상태 공통코드에서 무료강좌용 코드만 필터링
+        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], [
+            $this->orderListModel->_pay_status_ccd['apply'], $this->orderListModel->_pay_status_ccd['cancel']
+        ]);
 
         $this->load->view('pay/free/index', [
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
@@ -114,6 +112,7 @@ class Free extends BaseOrder
 
         switch ($this->_reqP('search_date_type')) {
             case 'cancel' :
+                $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['cancel'];
                 $arr_condition['BDT'] = ['OP.UpdDatm' => [$search_start_date, $search_end_date]];
                 break;
             default :

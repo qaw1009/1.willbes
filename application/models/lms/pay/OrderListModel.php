@@ -38,11 +38,11 @@ class OrderListModel extends BaseOrderModel
                             else "O"    # 주문완료(계좌신청)
                         end, NULL			
                       ) as VBankStatus                    
-                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
+                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminRegReason, O.CompleteDatm, O.OrderDatm
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , OP.CardPayPrice as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice    # TODO : 임시 환불산출금액 (로직 추가 필요)
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
-                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
+                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm, AU.wAdminName as UpdAdminName 
                     , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
@@ -86,8 +86,9 @@ class OrderListModel extends BaseOrderModel
             , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
-            , O.CompleteDatm, O.OrderDatm
-            , OP.RealPayPrice, OP.IsUseCoupon, OP.UpdDatm, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate                       
+            , O.AdminRegReason, O.CompleteDatm, O.OrderDatm
+            , OP.RealPayPrice, OP.IsUseCoupon, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate
+            , OP.UpdDatm, AU.wAdminName as UpdAdminName                       
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
             , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
@@ -148,7 +149,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"
+                left join ' . $this->_table['admin'] . ' as AU
+                    on OP.UpdAdminIdx = AU.wAdminIdx and AU.wIsStatus = "Y"';
 
         return $from . $this->_getAddListQuery('from', $arr_add_join);
     }
@@ -257,6 +260,13 @@ class OrderListModel extends BaseOrderModel
                     , OPR.IsPointRefund, OPR.RecoPointIdx, OPR.IsCouponRefund, OPR.RecoCouponIdx
                     , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.RefundReason, ORR.IsApproval, ORR.IsBankRefund';
                 $excel_column .= ', OPR.RefundPrice';
+            }
+
+            // 나의 강좌정보 추가
+            if (in_array('my_lecture', $arr_add_join) === true) {
+                $from .= '';
+                $column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx) as MyLecData';
+                $excel_column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx) as MyLecData';
             }
         }
 

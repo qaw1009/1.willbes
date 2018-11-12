@@ -210,4 +210,5 @@
   <term name="상세" physicalName="Detail"/>
   <term name="접속" physicalName="Access"/>
   <term name="잔여" physicalName="Remain"/>
+  <term name="복구" description="Recovery" physicalName="Reco"/>
 </tm:TermDictionary>

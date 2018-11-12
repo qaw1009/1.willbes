@@ -25,6 +25,12 @@ body.no_sidebar {
     margin-top: -15px;
 }
 
+/* txt */
+.x_txt {
+    padding: 0 10px 6px;
+    margin-bottom: 10px;
+}
+
 /* top_col */
 .top_col, .top_col .nav-tabs {
     background: #fff !important;
@@ -464,6 +470,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 /* line-height */
 .no-line-height {
     line-height: 0;
+}
+
+/* border */
+.no-border {
+    border: none;
 }
 
 /* float */

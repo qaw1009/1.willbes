@@ -62,7 +62,12 @@
                     </div>
                     <label class="control-label col-md-1-1" for="subject_idx">과목</label>
                     <div class="form-inline col-md-4">
-                        <select class="form-control" id="subject_idx" name="subject_idx" title="과목"></select>
+                        <select class="form-control" id="subject_idx" name="subject_idx" title="과목">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{$row['SubjectIdx']}}" class="{{$row['SiteCode']}}">{{$row['SubjectName']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -148,9 +153,7 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            var set_site_code = $("#site_code option:selected").val();
-            var _subject_url = '{{ site_url("/board/exam/{$boardName}/getAjaxSubjectInfo/") }}' + set_site_code + getQueryString();
-            var subject_idx = '{{$data['SubjectIdx']}}';
+            $regi_form.find('select[name="subject_idx"]').chained("#site_code");
 
             //editor load
             var $editor_profile = new cheditor();
@@ -161,7 +164,6 @@
 
             /**페이지 로딩시 실행**/
             $('#total_read_count').val(SumReadCount());
-            getSubject(_subject_url, subject_idx);
 
             //목록
             $('#btn_list').click(function() {
@@ -170,9 +172,6 @@
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
-                var _subject_url = '{{ site_url("/board/exam/{$boardName}/getAjaxSubjectInfo/") }}' + this.value + getQueryString();
-                getSubject(_subject_url, subject_idx);
-
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');

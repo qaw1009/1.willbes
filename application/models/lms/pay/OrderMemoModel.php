@@ -42,6 +42,7 @@ class OrderMemoModel extends BaseOrderModel
 
             $data = [
                 'OrderIdx' => element('order_idx', $input),
+                'MemoTypeCcd' => element('memo_type_ccd', $input, $this->_order_memo_type_ccd['normal']),
                 'OrderMemo' => element('order_memo', $input),
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $this->input->ip_address()

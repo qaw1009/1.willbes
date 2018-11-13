@@ -98,6 +98,8 @@
 
                     $parent_regi_form.find('input[name="mem_idx[]"]').remove();
                     $parent_selected_member.html(mem_name);
+                    $parent_regi_form.find('input[name="mem_idx[]"]:eq(0)').data('result-data', row);
+                    $parent_regi_form.find('input[name="mem_idx[]"]:eq(0)').trigger('change');
                 }
 
                 $("#pop_modal_member_search").modal('toggle');

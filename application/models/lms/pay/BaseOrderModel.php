@@ -65,6 +65,9 @@ class BaseOrderModel extends WB_Model
     // 배송상태 공통코드 (송장등록, 발송준비, 발송취소, 발송완료)
     public $_delivery_status_ccd = ['invoice' => '677001', 'prepare' => '677002', 'cancel' => '677003', 'complete' => '677004'];
 
+    // 주문메모 공통코드 (일반, 배송료입금정보)
+    public $_order_memo_type_ccd = ['normal' => '695001', 'delivery_price' => '695002'];
+
     public function __construct()
     {
         parent::__construct('lms');

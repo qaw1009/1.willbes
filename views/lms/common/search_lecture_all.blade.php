@@ -141,7 +141,8 @@
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     var seq = meta.row + meta.settings._iDisplayStart;
-                                    var codeInfo= row.ProdCode+'@$['+row.ProdCode+']'+ row.ProdName;
+                                    var codeInfo= row.ProdCode+'@$['+row.ProdCode+'] '+ row.ProdName + '@$';
+                                    codeInfo += row.wLecIdx != null ? row.wLecIdx : '';  // 마스터강의식별자 추가
                                     return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
                             {'data' : null, 'render' : function(data, type, row, meta) {
@@ -280,7 +281,7 @@
 
                                 html = '<span class="pr-10">' + temp_data_arr[1];
                                 html += '   <a href="#none" data-prod-code="' + temp_data_arr[0]  + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
-                                html += '   <input type="hidden" name="prod_code[]" value="' + temp_data_arr[0]  + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="' + learn_pattern_ccd + '"/>';
+                                html += '   <input type="hidden" name="prod_code[]" value="' + temp_data_arr[0]  + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="' + learn_pattern_ccd + '" data-w-lec-idx="' + temp_data_arr[2]  + '"/>';
                                 html += '</span>';
                                 $(document).find("#"+$parent_location_span).append(html);
                                 //##

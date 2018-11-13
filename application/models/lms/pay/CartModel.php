@@ -179,6 +179,7 @@ class CartModel extends BaseOrderModel
                         'ProdCodeSub' => '',
                         'ParentProdCode' => $prod_code,
                         'SaleTypeCcd' => $default_sale_type_ccd,
+                        'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
                         'IsDirectPay' => 'N',
                         'IsVisitPay' => 'N',
                         'AdminRegReason' => element('admin_reg_reason', $input),

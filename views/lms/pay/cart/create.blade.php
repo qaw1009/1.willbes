@@ -72,14 +72,14 @@
                             <div class="col-md-10 item">
                                 <div class="radio">
                                     @foreach($arr_prod_type_target_name as $ccd => $name)
-                                        <input type="radio" id="prod_type_1_{{ $loop->index }}" name="prod_type" class="flat" value="{{ array_search($ccd, $arr_prod_type_target_ccd) }}" @if($loop->index === 1) required="required" title="상품구분" checked="checked" @endif/>
-                                        <label for="prod_type_1_{{ $loop->index }}" class="input-label">{{ $name }}</label>
+                                        <input type="radio" id="prod_type_{{ $loop->index }}" name="prod_type" class="flat" value="{{ array_search($ccd, $arr_prod_type_target_ccd) }}" @if($loop->index === 1) required="required" title="상품구분" checked="checked" @endif/>
+                                        <label for="prod_type_{{ $loop->index }}" class="input-label">{{ $name }}</label>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="prod_type_1">상품검색 <span class="required">*</span>
+                            <label class="control-label col-md-1" for="">상품검색 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 form-inline">
                                 <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="prod_type_1">등록사유 <span class="required">*</span>
+                            <label class="control-label col-md-1" for="admin_reg_reason">등록사유 <span class="required">*</span>
                             </label>
                             <div class="col-md-9 item">
                                 <input type="text" id="admin_reg_reason" name="admin_reg_reason" class="form-control" title="등록사유" required="required" value="">
@@ -110,20 +110,6 @@
         $(document).ready(function() {
             // 장바구니 담기 버튼 클릭
             $regi_form.submit(function() {
-                if($regi_form.find('input[name="mem_idx[]"]').length < 1) {
-                    alert('회원 선택은 필수입니다.');
-                    return false;
-                }
-
-                if($regi_form.find('input[name="prod_code[]"]').length < 1) {
-                    alert('상품 선택 필드는 필수입니다.');
-                    return false;
-                }
-
-                if (!confirm('해당 회원의 장바구니에 해당 상품을 담으시겠습니까?')) {
-                    return;
-                }
-
                 // 상품코드에 상품타입과 학습형태 추가
                 $regi_form.find('input[name="prod_code[]"]').each(function(idx) {
                     $(this).val($(this).val() + ':' + $(this).data('prod-type') + ':' + $(this).data('learn-pattern-ccd'));
@@ -135,8 +121,25 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         goList();
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
+
+            var addValidate = function() {
+                if($regi_form.find('input[name="mem_idx[]"]').length < 1) {
+                    alert('회원 선택은 필수입니다.');
+                    return false;
+                }
+                if($regi_form.find('input[name="prod_code[]"]').length < 1) {
+                    alert('상품 선택 필드는 필수입니다.');
+                    return false;
+                }
+
+                if (!confirm('해당 회원의 장바구니에 해당 상품을 담으시겠습니까?')) {
+                    return false;
+                }
+
+                return true;
+            };
 
             // 상품검색 버튼 클릭
             $('#btn_product_search').on('click', function() {

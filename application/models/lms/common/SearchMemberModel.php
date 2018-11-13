@@ -26,10 +26,11 @@ class SearchMemberModel extends WB_Model
     public function listSearchMember($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($column === false) {
-            $column = 'M.MemIdx, M.SiteCode, M.MemId, M.MemName, M.BirthDay, M.Sex, fn_dec(M.PhoneEnc) as Phone, M.Phone3, M.PhoneEnc, M.JoinDate
-                , fn_dec(M.MailEnc) as Mail, MO.ZipCode, MO.Addr1, fn_dec(MO.Addr2Enc) as Addr2, MO.SmsRcvStatus, MO.MailRcvStatus
-                , (select SiteName from ' . $this->_table['site'] . ' where SiteCode = M.SiteCode) as SiteName 
-            ';
+            $column = 'M.MemIdx, M.SiteCode, M.MemId, M.MemName, M.BirthDay, M.Sex
+                , fn_dec(M.PhoneEnc) as Phone, M.Phone1, fn_dec(M.Phone2Enc) AS Phone2, M.Phone3, M.PhoneEnc
+                , fn_dec(MO.TelEnc) as Tel, MO.Tel1, fn_dec(MO.Tel2Enc) AS Tel2, MO.Tel3, MO.TelEnc
+                , fn_dec(M.MailEnc) as Mail, MO.ZipCode, MO.Addr1, fn_dec(MO.Addr2Enc) as Addr2, MO.SmsRcvStatus, MO.MailRcvStatus, M.JoinDate
+                , (select SiteName from ' . $this->_table['site'] . ' where SiteCode = M.SiteCode) as SiteName';
         }
 
         return $this->_conn->getJoinListResult($this->_table['member'] . ' as M', 'inner', $this->_table['member_otherinfo'] . ' as MO',

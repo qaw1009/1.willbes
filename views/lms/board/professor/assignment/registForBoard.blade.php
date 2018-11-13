@@ -49,6 +49,11 @@
                 </tbody>
             </table>
         </div>
+        <div class="row">
+            <div class="col-xs-12 text-right form-inline">
+                <button type="button" class="btn btn-sm btn-primary ml-10 btn-main-list">전체강좌목록</button>
+            </div>
+        </div>
     </div>
 
 
@@ -157,6 +162,11 @@
                         return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                     }}
             ]
+        });
+
+        //전체강좌목록
+        $('.btn-main-list').click(function() {
+            location.href = '{{ site_url("/board/professor/{$boardName}/productList") }}/' + getQueryString();
         });
 
         //등록

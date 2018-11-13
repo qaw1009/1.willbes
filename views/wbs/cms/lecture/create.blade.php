@@ -239,6 +239,7 @@
                             <th>영상제목/보조자료</th>
                             <th>강의시간/북페이지</th>
                             <th>영상경로</th>
+                            <th>영상비율</th>
                             <th>촬영일/교수</th>
                             <th>등록자</th>
                             <th>등록일</th>
@@ -271,6 +272,7 @@
                                     <br>
                                     [와이드] {{ $row['wWD'] }}
                                 </td>
+                                <td>{{$row['wCcdName']}}</td>
                                 <td>
                                     {{ $row['wShootingDate'] }}
                                     <Br>
@@ -327,7 +329,7 @@
 
                 $('.btn-unitregist').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val()
-                    ,width : "1300"
+                    ,width : "1800"
                 });
             });
         });

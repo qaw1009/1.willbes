@@ -202,8 +202,6 @@ class Player extends \app\controllers\FrontController
             $ratio = $data['wRatio'];
         }
 
-        $ratio = 21;
-
         // 모든 경로없을때
         if(empty($filename) === true){
             show_alert('수강가능한 파일이 없습니다.', 'close');

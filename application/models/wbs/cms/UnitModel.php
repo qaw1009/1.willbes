@@ -21,12 +21,14 @@ class UnitModel extends WB_Model
      */
     public function listAllUnit($lecidx)
     {
-        $column = 'A.*,B.wProfName,C.wAdminName';
+        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.*';
 
         $from = '
                     From '.$this->_table.' A 
                     left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx And B.wIsStatus="Y"
-                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx And C.wIsStatus="Y"';
+                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx And C.wIsStatus="Y"
+                    left outer join wbs_sys_code Ccd on A.wContentSizeCcd = Ccd.wCcd
+                    ';
 
         $where =  $this->_conn->makeWhere([
             'EQ'=>['A.wLecIdx'=>$lecidx,'A.wIsStatus'=>'Y']
@@ -65,6 +67,7 @@ class UnitModel extends WB_Model
                 $wWD = element('wWD', $input);
                 $wShootingDate = element('wShootingDate', $input);
                 $wProfIdx = element('wProfIdx', $input);
+                $wContentSizeCcd = element('wContentSizeCcd', $input);
 
                 $this->load->library('upload');
 
@@ -108,8 +111,8 @@ class UnitModel extends WB_Model
                             ,'wWD' => $wWD[$i]
                             ,'wShootingDate' => $wShootingDate[$i]
                             ,'wProfIdx' => $wProfIdx[$i]
-                            ,'wContentTypeCcd'=>'106001'         //강의유형 : 임의로 고정
-                            ,'wContentSizeCcd'=>'108001'          //컨텐트사이즈 (800 * 600) : 임의로 고정
+                            ,'wContentTypeCcd' => '106001'         //강의유형 : 임의로 고정
+                            ,'wContentSizeCcd' => $wContentSizeCcd[$i]          //컨텐트사이즈 (800 * 600) : 임의로 고정
                         ];
 
                         //기존 회차식별자가 존재하면 업데이트 처리

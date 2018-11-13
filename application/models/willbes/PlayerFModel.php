@@ -266,8 +266,6 @@ class PlayerFModel extends WB_Model
 
             // 내강의 업데이트
             if($this->_conn->
-                set('LecStudyTime', $LecStudyTime + $StudyTime)->
-                set('RealLecStudyTime', $LecRealStudyTime + $RealStudyTime)->
                 set('StudyRate', $LecRate)->
                 where('OrderIdx', $OrderIdx)->
                 where('ProdCode', $ProdCode)->

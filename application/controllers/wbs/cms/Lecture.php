@@ -182,6 +182,9 @@ class Lecture extends \app\controllers\BaseController
         if(empty($params[0]) === false) {
             $lecidx = $params[0];
 
+            // 화면비율 코드
+            $codes = $this->codeModel->getCcdInArray(['108']);
+
             //마스터강의 정보
             $data = $this->lectureModel->findLectureForUnit($lecidx);
 
@@ -197,6 +200,7 @@ class Lecture extends \app\controllers\BaseController
                 ,'data'=>$data
                 ,'prof_list'=> $prof
                 ,'data_unit' => $data_unit
+                ,'codes' => $codes
             ]);
 
         } else {

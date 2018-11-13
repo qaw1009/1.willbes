@@ -4,7 +4,7 @@
 @stop
 
 @section('layer_header')
-        <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
@@ -22,7 +22,7 @@
             <div class="form-group form-group-sm no-border-bottom">
                 <div class="x_title text-left">
                     마스터강의기본정보
-                   · {{ $data['wCpName'] }} > {{ $data['wContentCcdName'] }} > {{ $data['wLecName'] }} > {{ $data['profName_string'] }}
+                    · {{ $data['wCpName'] }} > {{ $data['wContentCcdName'] }} > {{ $data['wLecName'] }} > {{ $data['profName_string'] }}
                 </div>
             </div>
 
@@ -33,13 +33,12 @@
                     <div class="item form-inline">
                         <select name='rowNum' id='rowNum' class="form-control" title="갯수" style="width: 50px">
                             @for($i=1; $i<=10; $i++)
-                            <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
+                                <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
                             @endfor
                         </select>
                         <button class="btn btn-sm btn-primary" type="button" id="btn-add">필드추가</button>
                     </div>
-
-                    <table id="list_table" class="table table-striped table-bordered">
+                    <table id="list_table" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
                             <th>NO</th>
@@ -47,9 +46,10 @@
                             <th>영상제목<span class="required">*</span>/보조자료</th>
                             <th>강의시간<span class="required">*</span><BR>/북페이지</th>
                             <th>영상경로<span class="required">*</span></th>
+                            <th>영상비율<span class="required">*</span></th>
                             <th>촬영일/교수<span class="required">*</span></th>
-                            <th>등록자</th>
                             <th>등록일</th>
+                            <th>등록자</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -73,7 +73,7 @@
                                         @if(empty($row['wUnitAttachFile']) !== true)
                                             <br>
                                             <p class="form-control-static ml-10 mr-10">
-                                               [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+                                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                                 &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="attachFileDelete('{{$row['wUnitIdx'] }}')"><span class="red">[X]</span></a>
                                             </p>
                                         @endif
@@ -92,6 +92,13 @@
                                         <BR>
                                         [와이드] <input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control" title="와이드" value="{{ $row['wWD'] }}" style="width: 180px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
+                                    </td>
+                                    <td>
+                                        <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$loop->index}}" class="form-control" title="화면비율" >
+                                            @foreach($codes['108'] as $key => $value)
+                                                <option value="{{$key}}" @if($row['wCcd'] == $key){{'SELECTED'}}@endif >{{$value}}</option>
+                                            @endforeach
+                                        </select>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$loop->index}}" required="required" title="촬영일" value="{{$row['wShootingDate']}}" style="width: 90px" readonly>
@@ -141,6 +148,13 @@
                                         <BR>
                                         [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" title="와이드" value="" style="width: 180px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
+                                    </td>
+                                    <td>
+                                        <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$i}}" class="form-control" title="화면비율" >
+                                            @foreach($codes['108'] as $key => $value)
+                                                <option value="{{$key}}" @if($row['wCcd'] == $key){{'SELECTED'}}@endif >{{$value}}</option>
+                                            @endforeach
+                                        </select>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$i}}" required="required" title="촬영일" value="" style="width: 90px" readonly>
@@ -218,13 +232,20 @@
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
                                 +'</td>'
                                 +'<td>'
+                                +'<select name="wContentSizeCcd[]" id="wContentSizeCcd'+seq+'" class="form-control" title="화면비율" >'
+                                    @foreach($codes['108'] as $key => $value)
+                                +'<option value="{{$key}}">{{$value}}</option>'
+                                    @endforeach
+                                +'</select>'
+                                +'</td>'
+                                +'<td>'
                                 +'<input type="text" class="form-control datepicker" name="wShootingDate[]" id="wShootingDate'+seq+'" required="required" title="촬영일" value="" style="width: 90px" readonly>'
                                 +'<Br>'
                                 +'<select name="wProfIdx[]" id="wProfIdx" required="required" class="form-control" title="교수">'
                                 +'<option value="">교수</option>'
-                                        @foreach($prof_list as $prof_row)
+                                    @foreach($prof_list as $prof_row)
                                 +'  <option value="{{$prof_row['wProfIdx']}}">{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>'
-                                        @endforeach
+                                    @endforeach
                                 +'    </select>'
                                 +'   </td>'
                                 +'    <td></td>'

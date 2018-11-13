@@ -796,12 +796,16 @@ class OrderFModel extends BaseOrderFModel
                     }
 
                     // 타겟주문상품 중에서 가장 큰 실제강좌종료일자 + 1 day 조회
+                    $target_order_idx = element('TargetOrderIdx', $input);
                     $row['StudyStartDate'] = element('NextStudyStartDate',
                         $this->_conn->getJoinFindResult($this->_table['my_lecture'] . ' as ML', 'inner', $this->_table['order_product'] . ' as OP', 'ML.OrderProdIdx = OP.OrderProdIdx'
                             ,'date_add(max(ML.RealLecEndDate), interval 1 day) as NextStudyStartDate', [
                             'EQ' => [
-                                'ML.OrderIdx' => element('TargetOrderIdx', $input), 'ML.ProdCode' => element('TargetProdCode', $input), 'ML.ProdCodeSub' => element('TargetProdCodeSub', $input),
+                                'ML.ProdCode' => element('TargetProdCode', $input), 'ML.ProdCodeSub' => element('TargetProdCodeSub', $input),
                                 'OP.MemIdx' => $this->session->userdata('mem_idx'), 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']
+                            ],
+                            'RAW' => [
+                                'ML.OrderIdx in ' => '(select OrderIdx from ' . $this->_table['order_product'] . ' where OrderIdx = "' . $target_order_idx . '" or TargetOrderIdx = "' . $target_order_idx . '")'
                             ]
                         ])
                     );

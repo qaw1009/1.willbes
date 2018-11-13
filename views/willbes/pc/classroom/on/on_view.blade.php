@@ -71,16 +71,16 @@
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">
-                                                @if(strtotime($lec['LecStartDate']) >= date("Y-m-d", time()))
-                                                {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}
+                                                @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
                                                 @elseif(empty($lec['lastPauseEndDate']) == true)
-                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}
-                                                @elseif(strtotime($lec['lastPauseEndDate']) >= date("Y-m-d", time()))
-                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                                @elseif(strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
                                                 @else
-                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}
+                                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
                                                 @endif
-                                            </span>일/ {{$lec['RealLecExpireDay']}}일</div>
+                                            </span>/ {{$lec['RealLecExpireDay']}}일</div>
                                         <div class="w-date tx-gray">({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</div>
                                     </td>
                                 </tr>

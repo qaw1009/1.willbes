@@ -9,7 +9,7 @@ class PlayerFModel extends WB_Model
         'mstlec' => 'wbs_cms_lecture',
         'unit' => 'wbs_cms_lecture_unit_combine',
         'wbs_code' => 'wbs_sys_code',
-        'bookmark' => 'lms_bookmark',
+        'bookmark' => 'lms_my_lecture_bookmark',
         'study_log' => 'lms_lecture_studyinfo',
         'study_history' => 'lms_lecture_study_history',
         'lec_unit' => 'vw_unit_mylecture',

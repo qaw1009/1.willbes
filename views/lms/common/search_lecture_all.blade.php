@@ -279,7 +279,7 @@
                                 temp_data_arr = temp_data.split("@$");
 
                                 html = '<span class="pr-10">' + temp_data_arr[1];
-                                html += '   <a href="#none" data-cate-code="' + temp_data_arr[0]  + '" class="selected-category-delete"><i class="fa fa-times red"></i></a>';
+                                html += '   <a href="#none" data-prod-code="' + temp_data_arr[0]  + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
                                 html += '   <input type="hidden" name="prod_code[]" value="' + temp_data_arr[0]  + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="' + learn_pattern_ccd + '"/>';
                                 html += '</span>';
                                 $(document).find("#"+$parent_location_span).append(html);

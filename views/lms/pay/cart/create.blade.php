@@ -161,7 +161,7 @@
             });
 
             // 상품 삭제
-            $regi_form.on('click', '.selected-category-delete, .selected-product-delete', function() {
+            $regi_form.on('click', '.selected-product-delete', function() {
                 var that = $(this);
                 that.parent().remove();
             });

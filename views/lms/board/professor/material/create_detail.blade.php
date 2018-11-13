@@ -220,12 +220,6 @@
                 that.parent().remove();
             });
 
-            // 카테고리 삭제
-            $regi_form.on('click', '.selected-category-delete', function() {
-                var that = $(this);
-                that.parent().remove();
-            });
-
             //목록
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/board/professor/{$boardName}") }}/detailList/' + getQueryString();

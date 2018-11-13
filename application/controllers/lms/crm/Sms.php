@@ -189,6 +189,8 @@ class Sms extends \app\controllers\BaseController
 
         $target_id = $this->_req('target_id');
         $target_phone = $this->_req('target_phone');
+        $js_action = (empty($this->_req('js_action')) === true) ? 'NoAction' : $this->_req('js_action');
+
         if (empty($target_id) === false) {
             $set_send_member_ids = explode(',', $target_id);
             $arr_condition = [
@@ -216,7 +218,8 @@ class Sms extends \app\controllers\BaseController
             'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
             'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
             'set_row_count' => $set_row_count,
-            'list_send_member' => $list_send_member
+            'list_send_member' => $list_send_member,
+            'js_action' => $js_action
         ]);
     }
 

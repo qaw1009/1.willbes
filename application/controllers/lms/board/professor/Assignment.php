@@ -189,7 +189,7 @@ class Assignment extends BaseBoard
         ];
         $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
-        $this->load->view("board/professor/{$this->board_name}/registForBoard", [
+        $this->load->view("board/professor/{$this->board_name}/regist_board_list", [
             'bm_idx' => $this->bm_idx,
             'boardName' => $this->board_name,
             'prod_code' => $prod_code,

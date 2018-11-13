@@ -196,25 +196,30 @@
         </div>
 
         <script type="text/javascript">
-            var $regi_form = $('#modal_regi_form');
-
+            var $modal_regi_form = $('#modal_regi_form');
             $(document).ready(function() {
+                var $parent_js_action = '';
+                //js 파라미터 검사 [undefined, function]
+                if (typeof {{$js_action}} != 'undefined' && typeof {{$js_action}} == 'function') {
+                    $parent_js_action = {{$js_action}};
+                }
+
                 // 발송 타입 설정
                 $('.send_type').click(function (){
-                    $regi_form.find('input[name="send_type"]').val($(this).data('content-type'));
+                    $modal_regi_form.find('input[name="send_type"]').val($(this).data('content-type'));
                 });
 
                 //발송데이터 삭제
-                $regi_form.on('click', '.btn-member-del', function() {
+                $modal_regi_form.on('click', '.btn-member-del', function() {
                     var temp_mem_idx;
                     var temp_mem_id;
 
-                    if ($regi_form.find('input[name="temp_mem_idx"]').val() == '') {
-                        temp_mem_idx = $regi_form.find('input[name="choice_mem_idx"]').val();
-                        temp_mem_id = $regi_form.find('input[name="choice_mem_id"]').val();
+                    if ($modal_regi_form.find('input[name="temp_mem_idx"]').val() == '') {
+                        temp_mem_idx = $modal_regi_form.find('input[name="choice_mem_idx"]').val();
+                        temp_mem_id = $modal_regi_form.find('input[name="choice_mem_id"]').val();
                     } else {
-                        temp_mem_idx = $regi_form.find('input[name="temp_mem_idx"]').val();
-                        temp_mem_id = $regi_form.find('input[name="temp_mem_id"]').val();
+                        temp_mem_idx = $modal_regi_form.find('input[name="temp_mem_idx"]').val();
+                        temp_mem_id = $modal_regi_form.find('input[name="temp_mem_id"]').val();
                     }
 
                     var arr_temp_mem_idx = temp_mem_idx.split(',');
@@ -251,7 +256,7 @@
                     $('#mem_id_list > tbody > tr').remove();
 
                     // Ajax 데이터 셋팅
-                    fd.append('{{ csrf_token_name() }}',$regi_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                    fd.append('{{ csrf_token_name() }}',$modal_regi_form.find('input[name="{{ csrf_token_name() }}"]').val());
                     fd.append('_method','PUT');
                     fd.append('attach_file',files);
                     data = fd;
@@ -269,7 +274,7 @@
                             });
 
                         }
-                    }, showError, 'POST', $regi_form, 'json', true);
+                    }, showError, 'POST', $modal_regi_form, 'json', true);
                 });
 
                 // 바이트 수
@@ -293,10 +298,10 @@
                 });
 
                 // 발송옵션에 따른 설정 변경
-                $regi_form.on('ifChanged ifCreated', 'input[name="send_option_ccd"]:checked', function() {
-                    var $send_datm_day = $regi_form.find('input[name="send_datm_day"]');
-                    var $send_datm_h = $regi_form.find('select[name="send_datm_h"]');
-                    var $send_datm_m = $regi_form.find('select[name="send_datm_m"]');
+                $modal_regi_form.on('ifChanged ifCreated', 'input[name="send_option_ccd"]:checked', function() {
+                    var $send_datm_day = $modal_regi_form.find('input[name="send_datm_day"]');
+                    var $send_datm_h = $modal_regi_form.find('select[name="send_datm_h"]');
+                    var $send_datm_m = $modal_regi_form.find('select[name="send_datm_m"]');
 
                     if ($(this).data('option-type') === 'N') {
                         $send_datm_day.prop('disabled', false);
@@ -310,18 +315,20 @@
                 });
 
                 // 등록
-                $regi_form.submit(function() {
+                $modal_regi_form.submit(function() {
                     var _url = '{{ site_url('/crm/message/storeSend') }}';
-                    ajaxLoadingSubmit($regi_form, _url, function(ret) {
+                    ajaxLoadingSubmit($modal_regi_form, _url, function(ret) {
                         if(ret.ret_cd) {
                             var msg_cnt = ret.ret_data.upload_cnt;
                             var msg = '총 '+msg_cnt+'건의 메시지가 처리되었습니다.';
 
                             notifyAlert('success', '알림', msg);
                             $("#pop_modal").modal('toggle');
-                            /*location.reload();*/
+                            if ($parent_js_action != '') {
+                                $parent_js_action();
+                            }
                         }
-                    }, showValidateError, addValidate, 'alert', $regi_form);
+                    }, showValidateError, addValidate, 'alert', $modal_regi_form);
                 });
             });
 

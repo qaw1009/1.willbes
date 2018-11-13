@@ -137,8 +137,8 @@
             // SMS 발송
             $('.btn-sand-create').click(function() {
                 $('.btn-sand-create').setLayer({
-                    "url" : "{{ site_url('crm/message/createSendModal/') }}",
-                    "width" : "800",
+                    "url" : "{{ site_url('crm/message/createSendModal/') }}" + '?js_action=datable_draw',
+                    "width" : "900",
                 });
             });
 
@@ -170,5 +170,10 @@
                 }, showError, false, 'POST');
             });
         });
+
+        // 정상 발송 후 스크립트 자동 호출
+        function datable_draw() {
+            $datatable.draw();
+        }
     </script>
 @stop

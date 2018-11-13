@@ -170,6 +170,7 @@ class Message extends \app\controllers\BaseController
         $list_send_member = [];
         $temp_mem_idx = '';
         $temp_mem_id = '';
+        $js_action = (empty($this->_req('js_action')) === true) ? 'NoAction' : $this->_req('js_action');
 
         $target_idx = $this->_req('target_idx');
         if (empty($target_idx) === false) {
@@ -194,7 +195,8 @@ class Message extends \app\controllers\BaseController
             'set_row_count' => $set_row_count,
             'list_send_member' => $list_send_member,
             'temp_mem_idx' => $temp_mem_idx,
-            'temp_mem_id' => $temp_mem_id
+            'temp_mem_id' => $temp_mem_id,
+            'js_action' => $js_action
         ]);
     }
 

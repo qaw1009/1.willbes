@@ -159,6 +159,7 @@
             ]
         });
 
+        //등록
         $('.btn-create-assignment').click(function() {
             var cate_code = $search_form.find('input[name="cate_code"]').val();
             $('.btn-create-assignment').setLayer({
@@ -168,6 +169,29 @@
                 'add_param' : [
                     { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true }
                 ]
+            });
+        });
+
+        //수정
+        $list_table.on('click', '.btn-modify', function() {
+            var cate_code = $search_form.find('input[name="cate_code"]').val();
+            var board_idx = $(this).data('idx');
+            $('.btn-modify').setLayer({
+                "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
+                "width" : "800",
+                'add_param_type' : 'param',
+                'add_param' : [
+                    { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true },
+                    { 'id' : 'board_idx', 'name' : '게시판식별자', 'value' : board_idx, 'required' : true }
+                ]
+            });
+        });
+
+        //read
+        $list_table.on('click', '.btn-read', function() {
+            $('.btn-read').setLayer({
+                "url" : "{{ site_url("/board/professor/{$boardName}/readAssignmentModal/") }}" + $(this).data('idx') + '?' + '{!! $boardDefaultQueryString !!}',
+                "width" : "800"
             });
         });
     });

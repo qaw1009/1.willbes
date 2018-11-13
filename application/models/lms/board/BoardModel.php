@@ -414,8 +414,8 @@ class BoardModel extends WB_Model
 
     /**
      * 게시판 수정 폼을 위한 데이터 조회
-     * @param $board_type   게시판종류
-     * @param $column       컬럼정보
+     * @param $board_type   [게시판종류]
+     * @param $column       [컬럼정보]
      * @param $arr_condition
      * @param $arr_condition_file
      * @return mixed

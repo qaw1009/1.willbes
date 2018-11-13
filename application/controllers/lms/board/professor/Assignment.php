@@ -13,6 +13,14 @@ class Assignment extends BaseBoard
     private $bm_idx;
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615001'; //단강좌
+    private $_reg_type = [
+        'user' => 0,    //유저 등록 정보
+        'admin' => 1    //admin 등록 정보
+    ];
+    private $_attach_reg_type = [
+        'default' => 0,     //본문글 첨부
+        'reply' => 1        //본문 답변글첨부
+    ];
 
     public function __construct()
     {
@@ -234,9 +242,8 @@ class Assignment extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
-            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
+            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
         ';
 
         $list = [];
@@ -255,15 +262,17 @@ class Assignment extends BaseBoard
 
     /**
      * 과제등록[게시판등록]
+     * @param array $params
      */
     public function createAssignmentModal($params = [])
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $this->_reqP('site_code');
+        $this->site_code = $this->_req('site_code');
         $cate_code = $this->_req('cate_code');
         $prof_idx = $this->_req('prof_idx');
+        $board_idx = $this->_req('board_idx');
         $prod_code = $params[0];
 
         $input_params = [
@@ -271,18 +280,117 @@ class Assignment extends BaseBoard
             'cate_code[]' => $cate_code,
             'bm_idx' => $this->bm_idx,
             'prof_idx' => $prof_idx,
-            'prod_code' => $prod_code
+            'board_idx' => $board_idx
         ];
 
         $method = 'POST';
         $data = null;
 
+        if (empty($board_idx) === false) {
+            $method = 'PUT';
+
+            $column = '
+            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            ';
+
+            $arr_condition = ([
+                'EQ'=>[
+                    'LB.BoardIdx' => $board_idx,
+                    'LB.IsStatus' => 'Y'
+                ]
+            ]);
+            $arr_condition_file = [
+                'reg_type' => $this->_reg_type['admin'],
+                'attach_file_type' => $this->_attach_reg_type['default']
+            ];
+            $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+            if (count($data) < 1) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+            $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+            $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+            $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+            $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+        }
+
         $this->load->view("board/professor/{$this->board_name}/create_assignment_modal", [
             'boardName' => $this->board_name,
             'method' => $method,
             'input_params' => $input_params,
+            'prod_code' => $prod_code,
             'data' => $data,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    public function readAssignmentModal($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $this->_req('site_code');
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ProfIdx, LB.ProdCode,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $params[0],
+                'LB.IsStatus' => 'Y'
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['admin'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+        if (empty($get_category_array) === true) {
+            $data['arr_cate_code'] = [];
+        } else {
+            foreach ($arr_cate_code as $item => $code) {
+                if (empty($get_category_array[$code]) === false) {
+                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+                }
+            }
+        }
+
+        $this->load->view("board/professor/{$this->board_name}/read_assignment_modal", [
+            'boardName' => $this->board_name,
+            'prod_code' => $data['ProdCode'],
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $params[0],
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$data['ProfIdx']}&site_code={$data['SiteCode']}&cate_code={$data['CateCode']}&board_idx={$data['BoardIdx']}",
         ]);
     }
 
@@ -294,17 +402,12 @@ class Assignment extends BaseBoard
     {
         $method = 'add';
         $idx = '';
-        $this->setDefaultBoardParam();
-        $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bm_idx'];
-        $this->site_code = $this->_reqP('site_code');
-        $prof_idx = $this->_req('prof_idx');
         $prod_code = $params[0];
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'cate_code[]', 'label' => '구분', 'rules' => 'trim|required'],
-            ['field' => 'subject_idx', 'label' => '지역', 'rules' => 'trim|required|integer'],
+            ['field' => 'bm_idx', 'label' => '게시판식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
@@ -314,16 +417,71 @@ class Assignment extends BaseBoard
             return;
         }
 
-        if (empty($this->_reqP('idx')) === false) {
+        if (empty($this->_reqP('board_idx')) === false) {
             $method = 'modify';
-            $idx = $this->_reqP('idx');
+            $idx = $this->_reqP('board_idx');
         }
 
-        $inputData = $this->_setInputData($this->_reqP(null, false), $prof_idx);
+        $inputData = $this->_setInputData($this->_reqP(null, false), $prod_code);
 
         //_addBoard, _modifyBoard
         $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 첨부파일 다운로드
+     */
+    public function download()
+    {
+        $this->_download();
+    }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 게시판 등록/수정 데이타 셋팅
+     * @param $input
+     * @param $prod_code
+     * @return array
+     */
+    private function _setInputData($input, $prod_code){
+        $input_data = [
+            'board' => [
+                'SiteCode' => element('site_code', $input),
+                'BmIdx' => element('bm_idx', $input),
+                'ProdCode' => $prod_code,
+                'ProfIdx' => element('prof_idx', $input),
+                'RegType' => $this->_reg_type['admin'],
+                'Title' => element('title', $input),
+                'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
+                'Content' => element('board_content', $input),
+                'IsUse' => element('is_use', $input),
+                'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
+                'SettingReadCnt' => '0',
+            ],
+            'board_r_category' => [
+                'site_category' => element('cate_code', $input)
+            ]
+        ];
+
+        return$input_data;
     }
 }

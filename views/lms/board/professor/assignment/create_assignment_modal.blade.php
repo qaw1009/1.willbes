@@ -61,36 +61,8 @@
             <label class="control-label col-md-2" for="content">내용 <span class="required">*</span>
             </label>
             <div class="col-md-8">
-                <textarea id="content" name="content" required="required" class="form-control" rows="10" placeholder="" title="내용"></textarea>
+                <textarea id="board_content" name="board_content" required="required" class="form-control" rows="10" placeholder="" title="내용">{!! $data['Content'] !!}</textarea>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">등록자
-            </label>
-            <div class="col-md-2">
-                <p class="form-control-static">{{ $data['wAdminName'] }}</p>
-            </div>
-            <label class="control-label col-md-2 col-lg-offset-1">등록일
-            </label>
-            <div class="col-md-5">
-                <p class="form-control-static">{{ $data['RegDatm'] }}</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">최종 수정자
-            </label>
-            <div class="col-md-2">
-                <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
-            </div>
-            <label class="control-label col-md-2 col-lg-offset-1">최종 수정일
-            </label>
-            <div class="col-md-5">
-                <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
-            </div>
-        </div>
-        <div class="form-group text-center">
-            <button type="button" class="pull-right btn btn-primary" id="btn_list">목록</button>
         </div>
     </div>
 </div>
@@ -108,6 +80,26 @@
                     $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
+        });
+
+        // 파일삭제
+        $('.file-delete').click(function() {
+            var _url = '{{ site_url("/board/professor/{$boardName}/destroyFile/") }}' + getQueryString();
+            var data = {
+                '{{ csrf_token_name() }}' : $modal_regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE',
+                'attach_idx' : $(this).data('attach-idx')
+            };
+            if (!confirm('정말로 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $("#pop_modal").modal('toggle');
+                    $datatable.draw();
+                }
+            }, showError, false, 'POST');
         });
     });
 </script>

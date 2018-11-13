@@ -46,7 +46,7 @@
                 <label class="control-label col-md-2" for="content">내용 <span class="required">*</span>
                 </label>
                 <div class="col-md-8">
-                    {!! nl2br($data['Content']) !!}
+                    {!! $data['Content'] !!}
                 </div>
             </div>
 
@@ -78,6 +78,8 @@
     </div>
 
     <script type="text/javascript">
+        var $modal_regi_form = $('#modal_regi_form');
+
         //데이터 수정 폼
         $('.btn-modify').click(function() {
             // 등록 폼으로 내용 변경
@@ -88,6 +90,26 @@
         $('.file-download').click(function() {
             var _url = '{{ site_url("/board/professor/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
             window.open(_url, '_blank');
+        });
+
+        //데이터 삭제
+        $('.btn-delete').click(function() {
+            var _url = '{{ site_url("/board/professor/{$boardName}/deleteRegistBoard") }}/' + {{$board_idx}} + getQueryString();
+            var data = {
+                '{{ csrf_token_name() }}' : $modal_regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE'
+            };
+
+            if (!confirm('해당 과제를 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $("#pop_modal").modal('toggle');
+                    $datatable.draw();
+                }
+            }, showError, false, 'POST');
         });
     </script>
 @stop

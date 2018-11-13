@@ -431,6 +431,25 @@ class Assignment extends BaseBoard
     }
 
     /**
+     * 과제 삭제
+     * @param array $params
+     */
+    public function deleteRegistBoard($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
      * 과제제출목록관리
      * @param array $params
      */

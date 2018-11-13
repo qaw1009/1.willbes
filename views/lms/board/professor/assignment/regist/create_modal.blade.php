@@ -61,16 +61,26 @@
             <label class="control-label col-md-2" for="content">내용 <span class="required">*</span>
             </label>
             <div class="col-md-8">
-                <textarea id="board_content" name="board_content" required="required" class="form-control" rows="10" placeholder="" title="내용">{!! $data['Content'] !!}</textarea>
+                <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
             </div>
         </div>
     </div>
 </div>
 
+<link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
+<script src="/public/vendor/cheditor/cheditor.js"></script>
+<script src="/public/js/editor_util.js"></script>
 <script type="text/javascript">
     var $modal_regi_form = $('#modal_regi_form');
     $(document).ready(function() {
+        var $editor_profile = new cheditor();
+        $editor_profile.config.editorHeight = '170px';
+        $editor_profile.config.editorWidth = '100%';
+        $editor_profile.inputForm = 'board_content';
+        $editor_profile.run();
+
         $modal_regi_form.submit(function() {
+            getEditorBodyContent($editor_profile);
             var _url = '{{ site_url("/board/professor/{$boardName}/storeAssignment/{$prod_code}/") }}' + getQueryString();
 
             ajaxSubmit($modal_regi_form, _url, function(ret) {

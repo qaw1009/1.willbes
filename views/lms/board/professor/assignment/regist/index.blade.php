@@ -174,7 +174,7 @@
             var cate_code = $search_form.find('input[name="cate_code"]').val();
             $('.btn-create-assignment').setLayer({
                 "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
-                "width" : "800",
+                "width" : "1200",
                 'add_param_type' : 'param',
                 'add_param' : [
                     { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true }
@@ -188,7 +188,7 @@
             var board_idx = $(this).data('idx');
             $('.btn-modify').setLayer({
                 "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
-                "width" : "800",
+                "width" : "1200",
                 'add_param_type' : 'param',
                 'add_param' : [
                     { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true },
@@ -201,7 +201,7 @@
         $list_table.on('click', '.btn-read', function() {
             $('.btn-read').setLayer({
                 "url" : "{{ site_url("/board/professor/{$boardName}/readAssignmentModal/") }}" + $(this).data('idx') + '?' + '{!! $boardDefaultQueryString !!}',
-                "width" : "800"
+                "width" : "1200"
             });
         });
     });

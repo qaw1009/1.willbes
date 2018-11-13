@@ -166,13 +166,15 @@
                                             <td class="w-answer">
                                                 @if($row['IsExten'] == 'N')
                                                     <a><span class="bBox blueBox NSK">수강연장불가</span></a>
-                                                @elseif($row['ExtenCount'] >= $row['ExtenNum'])
-                                                    <a><span class="bBox blueBox NSK">연장횟수초과({{$row['ExtenCount']}})</span></a>
+                                                @elseif($row['RebuyCount'] >= $row['ExtenNum'])
+                                                    <a><span class="bBox blueBox NSK">연장횟수초과({{$row['RebuyCount']}})</span></a>
                                                 @else
-                                                    <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강연장({{$row['ExtenCount']}})</span></a>
+                                                    <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강연장({{$row['RebuyCount']}})</span></a>
                                                 @endif
 
-                                                @if($row['IsPause'] == 'N')
+                                                @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                                    <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
+                                                @elseif($row['IsPause'] == 'N')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['PauseCount'] >= $row['PauseNum'])
                                                     <a><span class="bBox whiteBox NSK">정지횟수초과(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
@@ -214,10 +216,10 @@
                                             <td class="w-answer">
                                                 @if($row['IsExten'] == 'N')
                                                     <a><span class="bBox blueBox NSK">수강연장불가</span></a>
-                                                @elseif($row['ExtenCount'] >= $row['ExtenNum'])
-                                                    <a><span class="bBox blueBox NSK">연장횟수초과({{$row['ExtenCount']}})</span></a>
+                                                @elseif($row['RebuyCount'] >= $row['ExtenNum'])
+                                                    <a><span class="bBox blueBox NSK">연장횟수초과({{$row['RebuyCount']}})</span></a>
                                                 @else
-                                                    <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');"><span class="bBox blueBox NSK">수강연장({{$row['ExtenCount']}})</span></a>
+                                                    <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');"><span class="bBox blueBox NSK">수강연장({{$row['RebuyCount']}})</span></a>
                                                 @endif
 
                                                 @if($row['IsPause'] == 'N')

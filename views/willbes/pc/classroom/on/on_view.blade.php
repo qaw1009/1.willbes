@@ -71,7 +71,9 @@
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">
-                                                @if(empty($lec['lastPauseEndDate']) == true)
+                                                @if(strtotime($lec['LecStartDate']) >= date("Y-m-d", time()))
+                                                {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}
+                                                @elseif(empty($lec['lastPauseEndDate']) == true)
                                                     {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}
                                                 @elseif(strtotime($lec['lastPauseEndDate']) >= date("Y-m-d", time()))
                                                     {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}

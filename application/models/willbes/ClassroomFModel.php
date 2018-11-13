@@ -542,19 +542,17 @@ class ClassroomFModel extends WB_Model
     public function getRebuyLog($cond, $isCount = false)
     {
         if($isCount === true){
-            $query = "SELECT COUNT(*) AS rownums ";
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT * , ifnull(RegAdminIdx, '') AS Name 
-              ";
+            $query = "SELECT STRAIGHT_JOIN * ";
         }
 
-        $query .= " FROM {$this->_table['order_product']}  
-         ";
+        $query .= " FROM {$this->_table['mylecture']} ";
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
 
-        $query .= " ORDER BY  DESC ";
+        $query .= " ORDER BY OrderDate DESC ";
 
         $result = $this->_conn->query($query);
 
@@ -581,6 +579,11 @@ class ClassroomFModel extends WB_Model
     }
 
 
+    /**
+     * 기간제패키지 강좌추가
+     * @param $input
+     * @return bool
+     */
     public function addPassLecture($input)
     {
         try {
@@ -594,6 +597,12 @@ class ClassroomFModel extends WB_Model
         return true;
     }
 
+    /**
+     * 기간제패키지 즐겨찾기/숨기기
+     * @param $input
+     * @param $cond
+     * @return bool
+     */
     public function setLikeHide($input, $cond)
     {
         $this->_conn->trans_begin();

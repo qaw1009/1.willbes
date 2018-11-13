@@ -101,7 +101,9 @@
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
-                                                @if($row['IsLecStart'] == 'Y')
+                                                @if($row['IsRebuy'] > 0 || $row['RebuyCount'] > 0)
+                                                    <span class="bBox blueBox NSK">시작일변경 불가</span>
+                                                @elseif($row['IsLecStart'] == 'Y')
                                                     <a href="javascript:;" onclick="fnStartToday('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox blueBox NSK">수강시작</span></a>
                                                     <a href="javascript:;" onclick="fnStartChange('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'S');"><span class="bBox whiteBox NSK">시작일변경(<span class="tx-light-blue">{{$row['ChgStartNum']}}</span>)</span></a>
                                                 @else

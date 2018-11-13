@@ -43,18 +43,24 @@
                         <td class="w-data tx-left pl15">
                             @if($lec['RebuyCount'] >= $lec['ExtenNum'])
                                 연장신청 횟수를 초과했습니다.
-                            @elseif($lec['ExtenSum'] >= $lec['ExtenLimit'])
+                            @elseif($lec['RebuySum'] >= $lec['ExtenLimit'])
                                 연장신청 기간을 초과했습니다.
                             @else
-                                <form name="extenForm" id="extenForm">
+                                <form name="extenForm" id="extenForm" method="POST" action="//{{$lec['SiteUrl']}}/cart/store">
                                     {!! csrf_field() !!}
                                     {!! method_field('POST') !!}
-                                    <input type="hidden" name="orderidx" value="{{$lec['OrderIdx']}}" />
-                                    <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
-                                    <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
-                                    <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
-                                    <select id="day" name="day" title="day" class="seleDay" style="width: 60px; height: 20px;">
-                                        @for( $d = 5; $d <= ($lec['ExtenLimit']-$lec['ExtenSum']+4); $d = $d +5)
+                                    <input type="hidden" name="sale_pattern" value="extend" />
+                                    @if(empty($lec['TargetOrderIdx']) == true)
+                                        <input type="hidden" name="target_order_idx" value="{{$lec['OrderIdx']}}" />
+                                        <input type="hidden" name="target_prod_code" value="{{$lec['ProdCode']}}" />
+                                        <input type="hidden" name="target_prod_code_sub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
+                                    @else
+                                        <input type="hidden" name="target_order_idx" value="{{$lec['TargetOrderIdx']}}" />
+                                        <input type="hidden" name="target_prod_code" value="{{$lec['TargetProdCode']}}" />
+                                        <input type="hidden" name="target_prod_code_sub" value="{{empty($lec['TargetProdCodeSub']) == true ? '' : $lec['TargetProdCodeSub'] }}" />
+                                    @endif
+                                    <select id="day" name="extend_day" title="day" class="seleDay" style="width: 60px; height: 20px;">
+                                        @for( $d = 5; $d <= ($lec['ExtenLimit']-$lec['RebuySum']+4); $d = $d +5)
                                             <option value="{{$d}}">{{$d}}일</option>
                                         @endfor
                                     </select>&nbsp; 일 &nbsp;
@@ -71,7 +77,7 @@
                 </table>
                 @if($lec['RebuyCount'] >= $lec['ExtenNum'])
                     <div class="w-btn"> </div>
-                @elseif($lec['ExtenSum'] >= $lec['ExtenLimit'])
+                @elseif($lec['RebuySum'] >= $lec['ExtenLimit'])
                     <div class="w-btn"> </div>
                 @else
                     <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnExten();">신청</a></div>
@@ -82,7 +88,7 @@
         <div class="PASSZONE-Lec-Section">
             <div class="Search-Result strong mb15 tx-gray">· 수강연장 이력 <span class="w-info normal">(
                     잔여횟수 : <span class="strong tx-light-blue">@if($lec['RebuyCount'] >= $lec['ExtenNum']){{'0'}}@else{{$lec['ExtenNum'] - $lec['RebuyCount']}}@endif</span>회 <span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>
-                    잔여기간 : <span class="strong tx-light-blue">@if($lec['ExtenSum'] >= $lec['ExtenLimit']){{'0'}}@else{{$lec['ExtenLimit'] - $lec['ExtenSum']}}@endif</span>일
+                    잔여기간 : <span class="strong tx-light-blue">@if($lec['RebuySum'] >= $lec['ExtenLimit']){{'0'}}@else{{$lec['ExtenLimit'] - $lec['RebuySum']}}@endif</span>일
                     )</span></div>
             <div class="LeclistTable bdt-gray">
                 <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
@@ -90,26 +96,26 @@
                         <col style="width: 100px;">
                         <col style="width: 270px;">
                         <col style="width: 170px;">
-                        <col style="width: 160px;">
+                        <!-- <col style="width: 160px;"> -->
                     </colgroup>
                     <thead>
                     <tr>
                         <th>회차<span class="row-line">|</span></th>
                         <th>연장일수<span class="row-line">|</span></th>
                         <th>신청일자<span class="row-line">|</span></th>
-                        <th>신청자</th>
+                        <!-- <th>신청자</th> -->
                     </tr>
                     </thead>
                     <tbody>
                     @php $i = count($log); @endphp
                     @forelse( $log as $key => $row)
-                        @php $i = $i-1; @endphp
                         <tr>
                             <td class="w-num">{{ $i.'차' }}</td>
-                            <td class="w-day">{{$row['ExtenDay']}}</td>
-                            <td class="w-modify-day">{{$row['RegDatm']}}</td>
-                            <td class="w-user">{{$row['Name'] == '' ? sess_data('mem_name') : '관리자' }}</td>
+                            <td class="w-day">{{$row['LecExpireDay']}}일</td>
+                            <td class="w-modify-day">{{$row['OrderDate']}}</td>
+                            <!-- <td class="w-user"> </td> -->
                         </tr>
+                        @php $i = $i-1; @endphp
                     @empty
                         <tr>
                             <td colspan="4">수강연장 이력이 없습니다.</td>
@@ -132,7 +138,9 @@
 
         function fnExten()
         {
-            alert('신청페이지로 넘어가자');
+            if(window.confirm('연장신청을 진행하시겠습니까?')){
+                $("#extenForm").submit();
+            }
         }
     </script>
 </div>

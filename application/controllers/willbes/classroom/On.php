@@ -807,6 +807,11 @@ class On extends \app\controllers\FrontController
             }
         }
 
+        if($lec['IsRebuy'] > 0 || $lec['RebuyCount'] > 0){
+            return $this->json_error('수강연장 강의는 시작일 변경이 불가능합니다.');
+        }
+
+
         if($start_date > date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day'))){
             return $this->json_error('시작일은 주문일로부터 30일 이내만 변경 가능합니다.');
         }
@@ -986,6 +991,10 @@ class On extends \app\controllers\FrontController
             return $this->json_error('일시중지할 수 없는 강좌입니다.');
         }
 
+        if($lec['IsRebuy'] > 0 || $lec['RebuyCount'] > 0){
+            return $this->json_error('수강연장 강의는 일시중지가 불가능합니다.');
+        }
+
         $PauseRemain = $lec['LecExpireDay'] - $lec['PauseSum'];
 
         if($PauseRemain > $lec['remainDays']){
@@ -1118,18 +1127,18 @@ class On extends \app\controllers\FrontController
             ]
         ];
 
-        if($prodtype === 'S'){
+        if ($prodtype === 'S') {
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
-                    'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'LearnPatternCcd' => ['615001', '615002'], // 단과, 사용자
+                    'PayRouteCcd' => ['670001', '670002'] // 온, 방
                 ]
             ]));
 
-        } else if($prodtype === 'P') {
+        } else if ($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => ['670001', '670002'] // 온, 방
                 ]
             ]), $orderby);
 
@@ -1137,51 +1146,55 @@ class On extends \app\controllers\FrontController
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
         }
 
-        if(count($leclist) == 1){
+        if (count($leclist) == 1) {
             $lec = $leclist[0];
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
         }
 
-        if($lec['IsExten'] != 'Y'){
+        if ($lec['IsExten'] != 'Y') {
             return $this->json_error('연장신청을 할 수 없는 강좌입니다.');
         }
 
         $lec['ProdPriceData'] = json_decode($lec['ProdPriceData'], true);
 
-        foreach($lec['ProdPriceData'] as $key => $row){
-            if($row['SaleTypeCcd'] == $lec['SaleTypeCcd']){
+        foreach ($lec['ProdPriceData'] as $key => $row) {
+            if ($row['SaleTypeCcd'] == $lec['SaleTypeCcd']) {
                 $lec['ExtenPrice'] = $row['SalePrice'];
             }
         }
 
-        if($lec['ExtenPrice'] <= 0){
+        if ($lec['ExtenPrice'] <= 0) {
             return $this->json_error('연장신청을 할 수 없는 강좌입니다.');
         }
 
         $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
         $lec['ExtenPrice'] = floor($lec['ExtenPrice'] / $lec['StudyPeriod']);
+        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
-        /*
-         * 연장 로그
-        $log = $this->classroomFModel->getExtendLog([
-            'EQ' => [
-                'MemIdx' => $memidx,
-                'TargetOrderIdx' => $orderidx,
-                'TargetProdCode' => $prodcode,
-                'TargetProdCodeSub' => $prodcodesub
-            ]
-        ]);
-        */
+        if ($lec['IsRebuy'] > 0) {
+            $cond_arr = [
+                'EQ' => [
+                    'MemIdx' => $memidx,
+                    'TargetOrderIdx' => $lec['TargetOrderIdx'],
+                    'TargetProdCode' => $lec['TargetProdCode'],
+                    'TargetProdCodeSub' => $lec['TargetProdCodeSub'],
+                ]
+            ];
+
+        } else {
+            $cond_arr = [
+                'EQ' => [
+                    'MemIdx' => $memidx,
+                    'TargetOrderIdx' => $orderidx,
+                    'TargetProdCode' => $prodcode,
+                    'TargetProdCodeSub' => $prodcodesub
+                ]
+            ];
+        }
 
         // 재수강로그
-        $log = $this->classroomFModel->getRebuyLog([
-        'EQ' => [
-            'MemIdx' => $memidx,
-            'TargetOrderIdx' => $orderidx,
-            'TargetProdCode' => $prodcode,
-            'TargetProdCodeSub' => $prodcodesub
-        ]]);
+        $log = $this->classroomFModel->getRebuyLog($cond_arr);
 
         return $this->load->view('/classroom/on/layer/extend', [
             'lec' => $lec,

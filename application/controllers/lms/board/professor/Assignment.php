@@ -189,7 +189,7 @@ class Assignment extends BaseBoard
         ];
         $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
-        $this->load->view("board/professor/{$this->board_name}/regist_board_list", [
+        $this->load->view("board/professor/{$this->board_name}/regist/index", [
             'bm_idx' => $this->bm_idx,
             'boardName' => $this->board_name,
             'prod_code' => $prod_code,
@@ -320,7 +320,7 @@ class Assignment extends BaseBoard
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
-        $this->load->view("board/professor/{$this->board_name}/create_assignment_modal", [
+        $this->load->view("board/professor/{$this->board_name}/regist/create_modal", [
             'boardName' => $this->board_name,
             'method' => $method,
             'input_params' => $input_params,
@@ -383,7 +383,7 @@ class Assignment extends BaseBoard
             }
         }
 
-        $this->load->view("board/professor/{$this->board_name}/read_assignment_modal", [
+        $this->load->view("board/professor/{$this->board_name}/regist/read_modal", [
             'boardName' => $this->board_name,
             'prod_code' => $data['ProdCode'],
             'data' => $data,
@@ -428,6 +428,64 @@ class Assignment extends BaseBoard
         $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 과제제출목록관리
+     * @param array $params
+     */
+    public function issueForBoard($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+        $prod_code = $params[0];
+
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
+        // 기본 상품 정보
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->site_code,
+                'A.ProdCode' => $prod_code
+            ],
+            'LKB' => [
+                'E.ProfIdx_String' => $prof_idx,
+            ]
+        ];
+        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+
+        $this->load->view("board/professor/{$this->board_name}/issue/index", [
+            'bm_idx' => $this->bm_idx,
+            'boardName' => $this->board_name,
+            'prod_code' => $prod_code,
+            'arr_prof_info' => $arr_prof_info,
+            'product_data' => $product_data,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$arr_prof_info['SiteCode']}",
+        ]);
+    }
+
+    /**
+     * 과제제출목록관리 Ajax
+     */
+    public function issueForBoardAjax()
+    {
+        $count = 0;
+        $list = [];
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
     }
 
     /**

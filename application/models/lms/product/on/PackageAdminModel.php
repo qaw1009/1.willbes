@@ -364,6 +364,8 @@ class PackageAdminModel extends CommonLectureModel
             ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
             ,'IsEdit'=>element('IsEdit',$input,'N')
             ,'IsTpass'=>element('IsTpass',$input,'N')
+            ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
+            ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
         ];
 
     }

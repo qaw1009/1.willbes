@@ -99,7 +99,7 @@ Class PackageAdmin extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649']);
+        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','696']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $siteList = $this->siteModel->getSiteArray(false,'CsTel');
 
@@ -151,6 +151,7 @@ Class PackageAdmin extends \app\controllers\BaseController
             ,'sales_ccd'=>$codes['618'] //판매상태
             ,'packtype_ccd'=>$codes['648'] //패키지유형
             ,'packcate_ccd'=>$codes['649'] //패키지분류
+            ,'extcorp_ccd'=>$codes['696'] //외부수강업체코드
             ,'courseList'=>$courseList      //과정
             ,'siteList' =>$siteList         //사이트목록
             ,'prodcode' => $prodcode

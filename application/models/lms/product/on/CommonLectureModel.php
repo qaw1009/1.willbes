@@ -923,7 +923,8 @@ class CommonLectureModel extends WB_Model
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
                     , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount,PackAutoStudyExtenCcd,PackAutoStudyPeriod, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
-                    , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,DeviceLimitCount,IsTpass';
+                    , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,DeviceLimitCount,IsTpass
+                    , ExternalCorpCcd, ExternalLinkCode ';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
 

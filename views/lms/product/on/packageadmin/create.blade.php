@@ -883,9 +883,22 @@
                     </div>
                 </div>
 
-
-
-
+                <div class="form-group">
+                    <label class="control-label col-md-2">외부수강업체연동
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="item inline-block">
+                            <select name="ExternalCorpCcd" id="ExternalCorpCcd"  class="form-control" title="외부수강업체">
+                                <option value="">외부수강업체</option>
+                                @foreach($extcorp_ccd as $key => $val)
+                                    <option value="{{$key}}" @if($data['ExternalCorpCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                                @endforeach
+                            </select>
+                            &nbsp;
+                            [연동코드] <input type="text" name="ExternalLinkCode" id="ExternalLinkCode" class="form-control" title="외부업체 사용 코드" style="width: 150px" value="{{$data['ExternalLinkCode']}}">
+                        </div>
+                    </div>
+                </div>
 
                 @if($method === 'PUT')
                     <div class="form-group">

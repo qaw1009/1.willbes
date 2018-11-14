@@ -134,7 +134,7 @@ Class Lecture extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['607','609','610','611','612','613','616','617','618']); // 강좌유형,강좌제공방식,교재제공구분,수강배수적용구분,강좌제공구분,수강기간설정구분,VOD구분,판매상태
+        $codes = $this->codeModel->getCcdInArray(['607','609','610','611','612','613','616','617','618','696']); // 강좌유형,강좌제공방식,교재제공구분,수강배수적용구분,강좌제공구분,수강기간설정구분,VOD구분,판매상태
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
         $siteList = $this->siteModel->getSiteArray(false,'CsTel');
@@ -191,6 +191,7 @@ Class Lecture extends \app\controllers\BaseController
             ,'studyterm_ccd'=>$codes['616'] //수강기간설정구분
             ,'vodtype_ccd'=>$codes['617'] //VOD구분
             ,'sales_ccd'=>$codes['618'] //판매상태
+            ,'extcorp_ccd'=>$codes['696'] //외부수강업체코드
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
             ,'siteList' =>$siteList         //사이트목록

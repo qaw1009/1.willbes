@@ -419,6 +419,8 @@ class LectureModel extends CommonLectureModel
                 ,'wCpIdx'=>element('wCpIdx',$input)
                 ,'CpDistribution'=>get_var(element('CpDistribution',$input),0)
                 ,'IsEdit'=>element('IsEdit',$input,'N')
+                ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
+                ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
             ];
 
    }

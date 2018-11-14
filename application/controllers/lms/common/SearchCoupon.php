@@ -18,6 +18,7 @@ class SearchCoupon extends \app\controllers\BaseController
 
         $this->load->view('common/search_coupon',[
             'site_code' => $this->_req('site_code')
+            ,'deploy_type' => $this->_req('deploy_type')
             ,'ProdCode' => $this->_req('ProdCode')
             ,'locationid' => $locationid
         ]);
@@ -30,7 +31,10 @@ class SearchCoupon extends \app\controllers\BaseController
     public function listAjax()
     {
         $arr_condition = [
-            'EQ' => ['A.SiteCode' => $this->_reqP('site_code')],
+            'EQ' => [
+                'A.SiteCode' => $this->_reqP('site_code'),
+                'A.DeployType' => $this->_reqP('deploy_type'),
+            ],
             'ORG' =>[
                 'LKB' => [
                     'A.CouponIdx' => $this->_reqP('search_value'),

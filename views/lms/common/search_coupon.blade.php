@@ -8,6 +8,7 @@
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" value="{{ $site_code }}"/>
+        <input type="hidden" name="deploy_type" value="{{ $deploy_type }}"/>
         <input type="hidden" name="locationid" id="locationid" value="{{$locationid}}"/>
         @endsection
 

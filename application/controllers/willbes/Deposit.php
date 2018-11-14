@@ -39,7 +39,11 @@ class Deposit extends \app\controllers\FrontController
         return null;
     }
 
-    public function test()
+    /**
+     * 입금통보 연동 테스트 폼
+     * TODO : 추후 삭제 가능
+     */
+    public function form()
     {
         $this->load->loadModels(['order/orderListF']);
 

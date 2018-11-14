@@ -680,10 +680,12 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception($is_add_auto_product);
                 }
 
-                // 자동지급 쿠폰 데이터 등록
-                $is_add_auto_coupon = $this->addAutoMemberCoupon($prod_code);
-                if ($is_add_auto_coupon !== true) {
-                    throw new \Exception($is_add_auto_coupon);
+                // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
+                if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
+                    $is_add_auto_coupon = $this->addAutoMemberCoupon($prod_code);
+                    if ($is_add_auto_coupon !== true) {
+                        throw new \Exception($is_add_auto_coupon);
+                    }
                 }
             }
 
@@ -1292,6 +1294,7 @@ class OrderFModel extends BaseOrderFModel
             $order_row = $this->orderListFModel->findOrder([
                 'EQ' => ['O.OrderNo' => $order_no, 'O.PgTid' => $deposit_results['tid'], 'O.PgMid' => $deposit_results['mid']]
             ]);
+
             if (empty($order_row) === true) {
                 throw new \Exception('주문내역이 없습니다.', _HTTP_NOT_FOUND);
             }
@@ -1325,18 +1328,24 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('주문상품 결제완료 업데이트에 실패했습니다.');
             }
 
-            // 회원포인트 적립
-            if ($order_row['SaveLecPoint'] > 0 || $order_row['SaveBookPoint'] > 0) {
-                // 주문상품 목록 조회
-                $order_prod_rows = $this->orderListFModel->listOrderProduct(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, ['OP.OrderProdIdx' => 'asc']);
-                foreach ($order_prod_rows as $idx => $order_prod_row) {
-                    if ($order_prod_row['SavePoint'] > 0) {
-                        $point_type = $order_prod_row['OrderProdType'] == 'book' ? 'book' : 'lecture';
+            // 주문상품 목록 조회
+            $order_prod_rows = $this->orderListFModel->listOrderProduct(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, ['OP.OrderProdIdx' => 'asc']);
+            foreach ($order_prod_rows as $idx => $order_prod_row) {
+                // 포인트 적립
+                if ($order_prod_row['SavePoint'] > 0) {
+                    $point_type = $order_prod_row['OrderProdType'] == 'book' ? 'book' : 'lecture';
 
-                        $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx']);
-                        if ($is_point_save !== true) {
-                            throw new \Exception($is_point_save);
-                        }
+                    $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_prod_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx']);
+                    if ($is_point_save !== true) {
+                        throw new \Exception($is_point_save);
+                    }
+                }
+
+                // 자동지급 쿠폰 데이터 등록 (온라인 강좌, 학원 강좌일 경우만 실행)
+                if ($order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture']) {
+                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['ProdCode']);
+                    if ($is_add_auto_coupon !== true) {
+                        throw new \Exception($is_add_auto_coupon);
                     }
                 }
             }

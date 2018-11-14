@@ -130,6 +130,7 @@ class OrderListFModel extends BaseOrderFModel
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
+                     when P.ProdTypeCcd = "' . $this->_prod_type_ccd['freebie'] . '" then "freebie"
                      else "etc" 
                   end as OrderProdType
                 , OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, replace(CDC.CcdEtc, "{{$invoice_no$}}", OPD.InvoiceNo) as DeliverySearchUrl';

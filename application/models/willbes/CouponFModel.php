@@ -278,15 +278,40 @@ class CouponFModel extends WB_Model
     }
 
     /**
-     * 회원 쿠폰발급
-     * @param int|string $coupon_no [쿠폰식별자 or 핀번호]
-     * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회]
+     * 오프라인 쿠폰 등록
+     * @param string $coupon_no [쿠폰번호]
      * @return array|bool
      */
-    public function addMemberCoupon($coupon_no, $is_pin = true)
+    public function addMemberCouponByPin($coupon_no)
     {
         $this->_conn->trans_begin();
 
+        try {
+            // 사용자 쿠폰 등록
+            $is_add = $this->addMemberCoupon($coupon_no, true);
+            if ($is_add !== true) {
+                throw new \Exception($is_add);
+            }
+
+            // TODO : 발급된 쿠폰이 수강권일 경우 주문, 나의 강의정보 등록
+            
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 회원 쿠폰발급
+     * @param int|string $coupon_no [쿠폰식별자 or 핀번호]
+     * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회, 기 발급여부 체크]
+     * @return array|bool
+     */
+    public function addMemberCoupon($coupon_no, $is_pin = false)
+    {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $find_method = $is_pin === true ? 'Pin' : 'Idx';
@@ -296,25 +321,28 @@ class CouponFModel extends WB_Model
             // 쿠폰정보 조회
             $row = $this->{'findCouponBy' . $find_method}($coupon_no);
             if (empty($row) === true) {
-                throw new \Exception('유효하지 않은 번호입니다. 쿠폰번호를 확인해주세요.', _HTTP_NOT_FOUND);
+                throw new \Exception('유효하지 않은 쿠폰입니다. 쿠폰번호를 확인해주세요.', _HTTP_NOT_FOUND);
             }
 
             // 발급유효기간 확인
             if ($today < $row['IssueStartDate'] || $today > $row['IssueEndDate']) {
-                throw new \Exception('유효기간이 만료된 번호입니다.', _HTTP_NO_PERMISSION);
+                throw new \Exception('유효기간이 만료된 쿠폰입니다.', _HTTP_NO_PERMISSION);
             }
 
-            if ($row['PinType'] == 'R') {
-                // 오프라인 > 랜덤핀
-                $chk_condition = ['EQ' => ['CouponPin' => $row['CouponPin'], 'ValidStatus' => 'Y']];
-            } else {
-                // 온라인 or 오프라인 > 공통핀
-                $chk_condition = ['EQ' => ['CouponIdx' => $row['CouponIdx'], 'MemIdx' => $sess_mem_idx, 'ValidStatus' => 'Y']];
-            }
+            // 오프라인 쿠폰일 경우만 체크
+            if ($is_pin === true) {
+                if ($row['PinType'] == 'R') {
+                    // 오프라인 > 랜덤핀
+                    $chk_condition = ['EQ' => ['CouponPin' => $row['CouponPin'], 'ValidStatus' => 'Y']];
+                } else {
+                    // 온라인, 오프라인 > 공통핀
+                    $chk_condition = ['EQ' => ['CouponIdx' => $row['CouponIdx'], 'MemIdx' => $sess_mem_idx, 'ValidStatus' => 'Y']];
+                }
 
-            $chk_row = $this->_conn->getFindResult($this->_table['coupon_detail'], 'CdIdx', $chk_condition);
-            if (empty($chk_row) === false) {
-                throw new \Exception('이미 등록된 쿠폰입니다.', _HTTP_NO_PERMISSION);
+                $chk_row = $this->_conn->getFindResult($this->_table['coupon_detail'], 'CdIdx', $chk_condition);
+                if (empty($chk_row) === false) {
+                    throw new \Exception('이미 등록된 쿠폰입니다.', _HTTP_NO_PERMISSION);
+                }
             }
 
             // 회원쿠폰 등록
@@ -334,16 +362,8 @@ class CouponFModel extends WB_Model
             if ($is_insert === false) {
                 throw new \Exception('쿠폰 등록에 실패했습니다.');
             }
-
-            // 쿠폰타입이 수강권일 경우
-            if ($row['CouponTypeCcd'] == $this->_coupon_type_ccd['voucher']) {
-                // TODO : 주문, 나의 강의정보 등록
-            }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+            return $e->getMessage();
         }
 
         return true;

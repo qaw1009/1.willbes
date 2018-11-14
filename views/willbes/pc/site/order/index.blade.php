@@ -706,6 +706,10 @@
                     $regi_form.find('select[name="receiver_phone1"]').val('{{ $results['member']['Phone1'] }}');
                     $regi_form.find('input[name="receiver_phone2"]').val('{{ $results['member']['Phone2'] }}');
                     $regi_form.find('input[name="receiver_phone3"]').val('{{ $results['member']['Phone3'] }}');
+                    $regi_form.find('input[name="receiver_tel"]').val('{{ $results['member']['Tel'] }}');
+                    $regi_form.find('select[name="receiver_tel1"]').val('{{ $results['member']['Tel1'] }}');
+                    $regi_form.find('input[name="receiver_tel2"]').val('{{ $results['member']['Tel2'] }}');
+                    $regi_form.find('input[name="receiver_tel3"]').val('{{ $results['member']['Tel3'] }}');
                 } else if (addr_type === 'R') {
                     var data = {
                         '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),

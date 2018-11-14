@@ -143,7 +143,7 @@ class Coupon extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->couponFModel->addMemberCoupon($this->_reqP('coupon_no'), true);
+        $result = $this->couponFModel->addMemberCouponByPin($this->_reqP('coupon_no'));
 
         $this->json_result($result, '쿠폰이 등록되었습니다.', $result);
     }

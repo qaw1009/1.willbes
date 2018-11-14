@@ -178,8 +178,8 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 주문상품 쿠폰적용 할인금액 리턴
-     * @param $coupon_detail_idx
-     * @param array $cart_row
+     * @param int $coupon_detail_idx [사용자쿠폰식별자]
+     * @param array $cart_row [상품별 장바구니 데이터 배열]
      * @return array
      */
     public function getCouponDiscPrice($coupon_detail_idx, $cart_row = [])
@@ -666,11 +666,24 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 나의 강좌수정정보 데이터 등록 (온라인강좌, 학원강좌일 경우만)
+            // 온라인강좌, 학원강좌일 경우만 실행
             if ($cart_type == 'on_lecture' || $cart_type == 'off_lecture') {
+                // 나의 강좌수정정보 데이터 등록
                 $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $prod_code, $arr_prod_code_sub, $input);
                 if ($is_add_my_lecture !== true) {
                     throw new \Exception($is_add_my_lecture);
+                }
+
+                // 자동지급 주문상품 데이터 등록
+                $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $pay_status_ccd, $input);
+                if ($is_add_auto_product !== true) {
+                    throw new \Exception($is_add_auto_product);
+                }
+
+                // 자동지급 쿠폰 데이터 등록
+                $is_add_auto_coupon = $this->addAutoMemberCoupon($prod_code);
+                if ($is_add_auto_coupon !== true) {
+                    throw new \Exception($is_add_auto_coupon);
                 }
             }
 
@@ -708,6 +721,108 @@ class OrderFModel extends BaseOrderFModel
                 $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_use !== true) {
                     throw new \Exception($is_point_use);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 자동지급 강좌/사은품 주문상품 등록
+     * @param int $order_idx [주문식별자]
+     * @param int $prod_code [상품코드]
+     * @param string $pay_status_ccd [결제상태 공통코드]
+     * @param array $input [상품별 장바구니 데이터 배열]
+     * @return bool|string
+     */
+    public function addOrderProductForAutoProduct($order_idx, $prod_code, $pay_status_ccd, $input = [])
+    {
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+
+            // 자동지급 상품 조회
+            $rows = $this->_conn->getListResult($this->_table['product_r_product'], 'ProdCodeSub, ProdTypeCcd', [
+                'EQ' => ['ProdCode' => $prod_code, 'IsStatus' => 'Y'],
+                'IN' => ['ProdTypeCcd' => [$this->_prod_type_ccd['on_lecture'], $this->_prod_type_ccd['freebie']]]
+            ]);
+
+            // 자동지급 상품이 없을 경우
+            if (empty($rows) === true) {
+                return true;
+            }
+
+            foreach ($rows as $row) {
+                // 주문상품 등록
+                $data = [
+                    'OrderIdx' => $order_idx,
+                    'MemIdx' => $sess_mem_idx,
+                    'ProdCode' => $row['ProdCodeSub'],
+                    'SaleTypeCcd' => element('SaleTypeCcd', $input),
+                    'SalePatternCcd' => $this->_sale_pattern_ccd['auto'],
+                    'PayStatusCcd' => $pay_status_ccd,
+                    'OrderPrice' => 0,
+                    'RealPayPrice' => 0,
+                    'CardPayPrice' => 0,
+                    'CashPayPrice' => 0,
+                    'DiscPrice' => 0,
+                    'DiscRate' => 0,
+                    'DiscType' => 'R',
+                    'UsePoint' => 0,
+                    'SavePoint' => 0,
+                    'IsUseCoupon' => 'N',
+                    'UserCouponIdx' => 0
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['order_product']) === false) {
+                    throw new \Exception('자동지급 주문상품 정보 등록에 실패했습니다.');
+                }
+
+                // 주문상품 식별자
+                $order_prod_idx = $this->_conn->insert_id();
+
+                // 온라인 강좌일 경우 나의 강좌수정정보 데이터 등록
+                if ($row['ProdTypeCcd'] === $this->_prod_type_ccd['on_lecture']) {
+                    $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $row['ProdCodeSub'], [], [
+                        'UserStudyStartDate' => element('UserStudyStartDate', $input, '')
+                    ]);
+                    if ($is_add_my_lecture !== true) {
+                        throw new \Exception($is_add_my_lecture);
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 자동지급 쿠폰 등록
+     * @param int $prod_code [상품코드]
+     * @return bool|string
+     */
+    public function addAutoMemberCoupon($prod_code)
+    {
+        try {
+            // 자동지급 쿠폰 조회
+            $rows = $this->_conn->getListResult($this->_table['product_r_autocoupon'], 'AutoCouponIdx', [
+                'EQ' => ['ProdCode' => $prod_code, 'IsStatus' => 'Y']
+            ]);
+
+            // 자동지급 쿠폰이 없을 경우
+            if (empty($rows) === true) {
+                return true;
+            }
+
+            foreach ($rows as $row) {
+                // 쿠폰등록
+                $is_add_coupon = $this->couponFModel->addMemberCoupon($row['AutoCouponIdx'], false);
+                if ($is_add_coupon !== true) {
+                    throw new \Exception($is_add_coupon);
                 }
             }
         } catch (\Exception $e) {
@@ -782,13 +897,14 @@ class OrderFModel extends BaseOrderFModel
             }
 
             $learn_pattern = array_search($row['LearnPatternCcd'], $this->_learn_pattern_ccd);  // 학습형태
+            $sale_pattern_ccd = element('SalePatternCcd', $input, $this->_sale_pattern_ccd['normal']);      // 판매형태 공통코드
             $user_study_start_date = element('UserStudyStartDate', $input, '');     // 사용자 지정 강좌시작일
 
             if ($learn_pattern == 'on_lecture' || $learn_pattern == 'adminpack_lecture' || $learn_pattern == 'periodpack_lecture' || $learn_pattern == 'on_free_lecture'
                 || $learn_pattern == 'off_lecture') {
                 // 단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원 단과
                 // 단강좌 수강연장일 경우
-                if ($learn_pattern == 'on_lecture' && element('SalePatternCcd', $input) == $this->_sale_pattern_ccd['extend']) {
+                if ($learn_pattern == 'on_lecture' && $sale_pattern_ccd == $this->_sale_pattern_ccd['extend']) {
                     $row['StudyPeriod'] = element('ExtenDay', $input);
 
                     if (empty($row['StudyPeriod']) === true) {

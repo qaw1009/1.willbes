@@ -14,7 +14,8 @@ class ClassroomFModel extends WB_Model
         'pause_log' => 'lms_lecture_pause_history',
         'extend' => 'lms_lecture_extend',
         'down_log' => 'lms_lecture_data_download_log',
-        'order_product' => 'lms_order_product'
+        'order_product' => 'lms_order_product',
+        'booklist' => 'vw_product_salebook'
     ];
 
 
@@ -619,6 +620,22 @@ class ClassroomFModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 해당강의 교재 리스트 읽어오기
+     * @param $cond
+     * @return mixed
+     */
+    public function getBooklist($cond)
+    {
+        $query = "SELECT STRAIGHT_JOIN * FROM {$this->_table['booklist']} ";
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $query .= " ORDER BY BookProvisionCcd ASC ";
+
+        $result = $this->_conn->query($query);
+        return $result->result_array();
     }
 
 }

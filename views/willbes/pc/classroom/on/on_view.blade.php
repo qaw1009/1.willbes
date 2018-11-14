@@ -21,7 +21,6 @@
                         </div>
                         <div class="ProfImg">
                             <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
-                            <!-- img src="/public/img/willbes/sample/prof2-1.png" -->
                         </div>
                         <div class="prof-home subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
@@ -47,7 +46,7 @@
                                     <td>
                                         <div class="w-lectit">최근수강강의</div>
                                         <div class="w-lec NGEB">{{ $lec['lastStudyInfo'] == '' ? '학습이력없음' : $lec['lastStudyInfo'] }}</div>
-                                        <div class="w-date tx-gray">(수강일 : {{ $lec['lastStudyDate'] == '' ? '학습이력없음' : $lec['lastStudyDate'] }})</div>
+                                        <div class="w-date tx-gray">(수강일 : {{ $lec['lastStudyDate'] == '' ? '학습이력없음' : substr(str_replace('-', '.', $lec['lastStudyDate']), 0,10) }})</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">진도율</div>
@@ -62,11 +61,7 @@
                                     <td>
                                         <div class="w-lectit">수강연장</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['RebuyCount']}}</span>회</div>
-                                        <div class="w-date tx-gray">&nbsp;
-<!--                                            <div class="w-btn">
-                                                <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a>
-                                            </div> -->
-                                        </div>
+                                        <div class="w-date tx-gray"> </div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
@@ -94,7 +89,7 @@
                         <li class="subBtn blue NSK"><a href="#none">수강후기 작성하기 ></a></li>
                         <li class="subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}&tab=qna">학습 Q&A</a></li>
                     </ul>
-                    <div class="aBox passBox answerBox_block NSK f_right"><a href="#none">교재구매</a></div>
+                    <div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnBookLayer('{{$lec['ProdCodeSub']}}');">교재구매</a></div>
                 </div>
             </div>
             <!-- willbes-Mypage-PASSZONE -->
@@ -159,65 +154,36 @@
                                 <td colspan="8" class="w-no">개설된 강좌 목록이 없습니다.</td>
                             </tr>
                         @endforelse
-                        <!--
-                        <tr>
-                            <td class="w-no">2강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-page">5p~15p</td>
-                            <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                            </td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-lec-time">40분</td>
-                            <td class="w-study-time">10분/ 100분</td>
-                            <td class="w-r-time">40분</td>
-                        </tr>
-                        <tr>
-                            <td class="w-no">3강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-page">25p~30p</td>
-                            <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                            </td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-lec-time">30분</td>
-                            <td class="w-study-time">90분/ 100분</td>
-                            <td class="w-r-time">30분</td>
-                        </tr>
-                        <tr>
-                            <td class="w-no">4강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-page">40p~70p</td>
-                            <td class="w-file">
-                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                            </td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-lec-time">20분</td>
-                            <td class="w-study-time">70분/ 100분</td>
-                            <td class="w-r-time">20분</td>
-                        </tr> -->
                         </tbody>
                     </table>
                 </div>
             </div>
             <!-- willbes-Leclist -->
 
+            <div id="MoreBook" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100 abs" style="height:600px !important;"></div>
+
         </div>
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
+
     <!-- End Container -->
     <script src="/public/js/willbes/player.js?ver={{time()}}"></script>
+    <script>
+        function fnBookLayer(ProdCode)
+        {
+            url = "{{ site_url("/classroom/on/layerBooklist/") }}";
+            data = "SiteCode={{$lec['SiteCode']}}&ProdCode={{$lec['ProdCodeSub']}}";
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#MoreBook").html(d).end();
+                    openWin('MoreBook');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
+    </script>
 
 @stop

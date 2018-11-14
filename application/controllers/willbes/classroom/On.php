@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class On extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF');
+    protected $models = array('classroomF' , 'order/orderListF');
     protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -1311,6 +1311,41 @@ class On extends \app\controllers\FrontController
         
         // 실제로 파일 다운로드 처리
         public_download($filepath, $filename);
+    }
+
+    public function layerBooklist($params = [])
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $SiteCode = $this->_req("SiteCode");
+        $ProdCode = $this->_req("ProdCode");
+
+        $booklist = $this->classroomFModel->getBooklist([
+            'EQ' => [
+                'ProdCode' => $ProdCode
+            ]
+        ]);
+
+        foreach($booklist as $idx => $row){
+            if($row['BookProvisionCcd'] == '610003'){
+                $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                    'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $row['ProdBookCode'], 'OP.PayStatusCcd' => '676001']
+                ]);
+
+                if($book_paid_cnt > 0){
+                    $booklist[$idx]['Paid'] = true;
+                } else {
+                    $booklist[$idx]['Paid'] = false;
+                }
+            } else {
+                $booklist[$idx]['Paid'] = false;
+            }
+        }
+
+        return $this->load->view('/classroom/on/layer/booklist', [
+            'booklist' => $booklist,
+            'SiteUrl' => app_to_env_url($this->getSiteCacheItem($SiteCode, 'SiteUrl'))
+        ]);
     }
 
 }

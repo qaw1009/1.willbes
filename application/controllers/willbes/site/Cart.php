@@ -218,7 +218,11 @@ class Cart extends \app\controllers\FrontController
         if ($is_ajax === true) {
             return $this->json_result($result['ret_cd'], '', $result, ['ret_url' => $data['ret_url']]);
         } else {
-            redirect($data['ret_url']);
+            if ($result['ret_cd'] === true) {
+                redirect($data['ret_url']);
+            } else {
+                show_alert($result['ret_msg'], 'back');
+            }
         }
     }
 

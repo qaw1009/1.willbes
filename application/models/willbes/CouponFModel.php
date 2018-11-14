@@ -308,9 +308,10 @@ class CouponFModel extends WB_Model
      * 회원 쿠폰발급
      * @param int|string $coupon_no [쿠폰식별자 or 핀번호]
      * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회, 기 발급여부 체크]
+     * @param int|null $issue_order_prod_idx [발급주문상품식별자]
      * @return array|bool
      */
-    public function addMemberCoupon($coupon_no, $is_pin = false)
+    public function addMemberCoupon($coupon_no, $is_pin = false, $issue_order_prod_idx = null)
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
@@ -350,6 +351,7 @@ class CouponFModel extends WB_Model
                 'CouponPin' => $row['CouponPin'],
                 'CouponIdx' => $row['CouponIdx'],
                 'MemIdx' => $sess_mem_idx,
+                'IssueOrderProdIdx' => $issue_order_prod_idx,
                 'IssueTypeCcd' => $this->_coupon_issue_type_ccd['auto'],
                 'ValidStatus' => 'Y',
                 'ExpireDatm' => $row['ExpireDatm'],

@@ -682,7 +682,7 @@ class OrderFModel extends BaseOrderFModel
 
                 // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
                 if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
-                    $is_add_auto_coupon = $this->addAutoMemberCoupon($prod_code);
+                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code);
                     if ($is_add_auto_coupon !== true) {
                         throw new \Exception($is_add_auto_coupon);
                     }
@@ -804,10 +804,11 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 자동지급 쿠폰 등록
+     * @param int $order_prod_idx [주문상품식별자]
      * @param int $prod_code [상품코드]
      * @return bool|string
      */
-    public function addAutoMemberCoupon($prod_code)
+    public function addAutoMemberCoupon($order_prod_idx, $prod_code)
     {
         try {
             // 자동지급 쿠폰 조회
@@ -822,7 +823,7 @@ class OrderFModel extends BaseOrderFModel
 
             foreach ($rows as $row) {
                 // 쿠폰등록
-                $is_add_coupon = $this->couponFModel->addMemberCoupon($row['AutoCouponIdx'], false);
+                $is_add_coupon = $this->couponFModel->addMemberCoupon($row['AutoCouponIdx'], false, $order_prod_idx);
                 if ($is_add_coupon !== true) {
                     throw new \Exception($is_add_coupon);
                 }
@@ -1343,7 +1344,7 @@ class OrderFModel extends BaseOrderFModel
 
                 // 자동지급 쿠폰 데이터 등록 (온라인 강좌, 학원 강좌일 경우만 실행)
                 if ($order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture']) {
-                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['ProdCode']);
+                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['OrderProdIdx'], $order_prod_row['ProdCode']);
                     if ($is_add_auto_coupon !== true) {
                         throw new \Exception($is_add_auto_coupon);
                     }

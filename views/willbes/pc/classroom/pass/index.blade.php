@@ -77,12 +77,6 @@
 
                 <div class="willbes-Mypage-Tabs mt70">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                        <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
-                            <option value="">과정</option>
-                            @foreach($course_arr as $row )
-                                <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
-                            @endforeach
-                        </select>
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                             <option value="">과목</option>
                             @foreach($subject_arr as $row )
@@ -93,6 +87,12 @@
                             <option value="">교수님</option>
                             @foreach($prof_arr as $row )
                                 <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
+                            @endforeach
+                        </select>
+                        <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
+                            <option value="">학습유형</option>
+                            @foreach($course_arr as $row )
+                                <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
                         <select id="orderby" name="orderby" title="Laststudy" class="seleStudy">
@@ -128,10 +128,10 @@
                             @endif
                             <form name='likedForm' id='likedForm' >
                                 @if(empty($passinfo) == false)
-                                <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
-                                <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
-                                <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                <input type='hidden' name='ProdCodeSub' id='ProdCodeSub_liked' value='' />
+                                    <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
+                                    <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
+                                    <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
+                                    <input type='hidden' name='ProdCodeSub' id='ProdCodeSub_liked' value='' />
                                 @endif
                                 <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                     <colgroup>
@@ -190,10 +190,10 @@
                             @endif
                             <form name='ingForm' id='ingForm' >
                                 @if(empty($passinfo) == false)
-                                <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
-                                <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
-                                <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                <input type='hidden' name='ProdCodeSub' id="ProdCodeSub_ing" value='' />
+                                    <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
+                                    <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
+                                    <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
+                                    <input type='hidden' name='ProdCodeSub' id="ProdCodeSub_ing" value='' />
                                 @endif
                                 <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                     <colgroup>
@@ -305,10 +305,10 @@
                             @endif
                             <form name='hiddenForm' id='hiddenForm' >
                                 @if(empty($passinfo) == false)
-                                <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
-                                <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
-                                <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                <input type='hidden' name='ProdCodeSub' id="ProdCodeSub_hide" value='' />
+                                    <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
+                                    <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
+                                    <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
+                                    <input type='hidden' name='ProdCodeSub' id="ProdCodeSub_hide" value='' />
                                 @endif
                                 <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                     <colgroup>
@@ -362,7 +362,49 @@
         </div>
         <!-- willbes-Mypage-Tabs -->
 
-        <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs"></div>
+        <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('MoreLec');">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">강좌추가</div>
+
+            <div class="lecMoreWrap">
+                <div class="PASSZONE-List widthAuto570" id="lecList"> </div>
+                <div class="PASSZONE-Add widthAuto260">
+                    <div class="Tit tx-light-black NG">강좌선택내역</div>
+                    <div class="PASSZONE-Add-Grid">
+                        <ul class="passzoneInfo tx-gray NGR none">
+                            <li>· 선택된 강좌 확인 후 '강좌추가' 버튼을 클릭하면 '무한PASS존 > 수강중강좌탭'에 강좌가 추가됩니다.</li>
+                            <li>· 강좌추가후 '교재구매' 버튼 클릭시 추가한 강좌(수강중강좌)에 대한 교재를 구매할 수 있습니다.</li>
+                        </ul>
+                        <div class="Search-Result">
+                            <div class="Total"></div>
+                            <ul class="chkBox">
+                                <li class="w-btn"><a class="answerBox_block NSK" href="javascript:;" onclick="closeWin('MoreLec');fnMoreBook();">교재구매</a></li>
+                                <li class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnAppendLecture();">강좌추가</a></li>
+                            </ul>
+                        </div>
+                        <div class="PASSZONE-Lec-Grid">
+                            <div class="LeclistTable">
+                                <form name="addForm" id="addForm">
+                                    <input type="hidden" name="OrderIdx" id="OrderIdx" value="{{$passinfo['OrderIdx']}}" />
+                                    <input type="hidden" name="ProdCode" id="ProdCode" value="{{$passinfo['ProdCode']}}" />
+                                    <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray" id="addTable">
+                                        <colgroup>
+                                            <col style="width: 25px;">
+                                            <col style="width: 175px;">
+                                        </colgroup>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PASSZONE-Add -->
+            </div>
+        </div>
         <!-- willbes-Layer-PassBox : 강좌추가 -->
 
         <div id="MoreBook" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100 abs"></div>
@@ -379,8 +421,8 @@
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
         @if(empty($passinfo) == false)
-        <input type="hidden" name="OrderIdx" id="OrderIdx" value="{{$passinfo['OrderIdx']}}" />
-        <input type="hidden" name="ProdCode" id="ProdCode" value="{{$passinfo['ProdCode']}}" />
+            <input type="hidden" name="OrderIdx" id="OrderIdx" value="{{$passinfo['OrderIdx']}}" />
+            <input type="hidden" name="ProdCode" id="ProdCode" value="{{$passinfo['ProdCode']}}" />
         @endif
     </form>
     <script type="text/javascript">
@@ -397,15 +439,30 @@
             });
         });
 
+        function fnAppendLecture()
+        {
+            url = "{{ site_url("/classroom/pass/addLecture/") }}";
+            data = $('#addForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    alert(ret.ret_msg);
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'json');
+        }
+
         function fnMoreLec()
         {
-            url = "{{ site_url("/classroom/pass/layerMoreLec/") }}";
+            url = "{{ site_url("/classroom/pass/ajaxMoreLecture/") }}";
             data = $('#postForm').serialize();
 
             sendAjax(url,
                 data,
                 function(d){
-                    $("#MoreLec").html(d).end();
+                    $("#lecList").html(d).end();
                     openWin('MoreLec');
                 },
                 function(ret, status){

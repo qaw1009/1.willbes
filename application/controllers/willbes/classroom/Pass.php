@@ -387,32 +387,20 @@ class Pass extends \app\controllers\FrontController
     }
 
 
-    public function layerMoreLec()
+    public function ajaxMoreLecture()
     {
         $prodcode = $this->_req('ProdCode');
         $orderidx = $this->_req('OrderIdx');
-
+        $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
-        // 실제 리스트용
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
-                'ProdCode' => $prodcode,
-                'OrderIdx' => $orderidx
-            ],
-            'LTE' => [
-                'LecStartDate' => $today // 시작일 <= 오늘
-            ],
-            'LT' => [
-                'lastPauseEndDate' => $today // 일시중지종료일 < 오늘
-            ],
-            'GTE' => [
-                'RealLecEndDate' => $today // 종료일 >= 오늘
-            ],
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode
+            ]
         ];
-
         // 학습형태 : 기간제패키지
         $passinfo = $this->classroomFModel->getPackage($cond_arr);
 
@@ -422,30 +410,49 @@ class Pass extends \app\controllers\FrontController
 
         $passinfo = $passinfo[0];
 
-        $leclist = $this->packageFModel->subListProduct('periodpack_lecture', $passinfo['ProdCode']);
+        // 셀렉트박스 구해오기
+        $cond_arr = [
+            'EQ' => [
+                'A.ProdCode' => $prodcode
+            ]
+        ];
+
+        // 셀렉트박스용 데이타
+        $course_arr = $this->classroomFModel->getPassSubLecture($cond_arr, 'DISTINCT C.CourseIdx, C.CourseName');
+        $subject_arr = $this->classroomFModel->getPassSubLecture( $cond_arr,'DISTINCT C.SubjectIdx, C.SubjectName');
+        $prof_arr = $this->classroomFModel->getPassSubLecture($cond_arr,'DISTINCT C.wProfIdx, C.wProfName');
+
+        // 실제 리스트용
+        $cond_arr = [
+            'EQ' => [
+                'A.ProdCode' => $prodcode,
+                'C.SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'C.wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'C.CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
+
+            ],
+            'LKB' => [
+                'C.ProdName' => $this->_req('search_text') // 강의명 검색 (패키지명)
+            ]
+        ];
+
+        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', ['EQ' => [
+            'D.OrderIdx' => $passinfo['OrderIdx'],
+            'D.OrderProdIdx' => $passinfo['OrderProdIdx']
+        ]]);
+
+        foreach($leclist as $idx => $row){
+            $leclist[$idx]['ProdContents'] = $this->lectureFModel->findProductContents($row['ProdCode']);
+            $leclist[$idx]['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
+        }
 
         return $this->load->view('/classroom/pass/layer/morelec', [
+            'input_arr' => $input_arr,
             'passinfo' => $passinfo,
-            'leclist' => $leclist
-        ]);
-    }
-
-    public function ajaxLecInfo()
-    {
-        $prodcode = $this->_req("ProdCode");
-
-        $data['ProdCode'] = $prodcode;
-
-        $data['ProdContents'] = $this->lectureFModel->findProductContents($prodcode);
-
-        // 상품 판매교재
-        $data['ProdSaleBooks'] = $this->lectureFModel->findProductSaleBooks($prodcode);
-
-        // 상품 강의 목차
-        $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prodcode);
-
-        return $this->load->view('/classroom/pass/layer/lecinfo', [
-            'data' => $data
+            'leclist' => $leclist,
+            'course_arr' => $course_arr,
+            'subject_arr' => $subject_arr,
+            'prof_arr' => $prof_arr
         ]);
     }
 
@@ -467,6 +474,8 @@ class Pass extends \app\controllers\FrontController
         $prodcodesub = $this->_req('ProdCodeSub');
 
         $today = date("Y-m-d", time());
+
+        $prodcodesub_arr = explode(',', $prodcodesub);
 
         // 실제 리스트용
         $cond_arr = [
@@ -496,43 +505,50 @@ class Pass extends \app\controllers\FrontController
 
         $passinfo = $passinfo[0];
 
-        // 서브강좌 목록에 있는지 체크
-        $leclist = $this->packageFModel->subListProduct('periodpack_lecture', $passinfo['ProdCode'], [
-            'EQ' => [
-                'C.ProdCode' => $prodcodesub
-            ]
-        ]);
 
-        if(empty($leclist) == true){
-            return $this->json_error('신청할수 없는 강좌입니다.');
-        }
+        foreach($prodcodesub_arr as $data){
+            // 서브강좌 목록에 있는지 체크
+            $leclist = $this->packageFModel->subListProduct('periodpack_lecture', $passinfo['ProdCode'], [
+                'EQ' => [
+                    'C.ProdCode' => $data
+                ]
+            ]);
 
-        // 이미 등록된 강좌인지 체크
-        $count = $this->classroomFModel->getLecture([
-            'EQ' => [
-                'MemIdx' => $passinfo['MemIdx'],
-                'OrderIdx' => $passinfo['OrderIdx'],
-                'ProdCode' => $passinfo['ProdCode'],
-                'ProdCodeSub' => $prodcodesub
-            ]
-        ], [], true);
+            if(empty($leclist) == true){
+                continue;
+                //return $this->json_error('신청할수 없는 강좌입니다.');
+            }
 
-        if($count > 0){
-            return $this->json_error('이미 등록된 강좌입니다.');
-        }
+            // 이미 등록된 강좌인지 체크
+            $count = $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $passinfo['MemIdx'],
+                    'OrderIdx' => $passinfo['OrderIdx'],
+                    'ProdCode' => $passinfo['ProdCode'],
+                    'ProdCodeSub' => $data
+                ]
+            ], [], true);
 
-        if($this->classroomFModel->addPassLecture([
-                'OrderIdx' => $orderidx,
-                'OrderProdIdx' => $passinfo['OrderProdIdx'],
-                'ProdCode' => $prodcode,
-                'ProdCodeSub' => $prodcodesub,
-                'LecStartDate' => $passinfo['LecStartDate'],
-                'LecEndDate' => $passinfo['LecEndDate'],
-                'RealLecEndDate' => $passinfo['RealLecEndDate'],
-                'LecExpireDay' => $passinfo['LecExpireDay'],
-                'RealLecExpireDay' => $passinfo['RealLecExpireDay']
-            ]) == false){
-            return $this->json_error('강좌추가에 실패했습니다.\n다시 시도해주십시요.');
+            if($count > 0){
+                continue; // 이미 등록강좌 다음
+                //return $this->json_error('이미 등록된 강좌입니다.');
+            }
+
+            if($this->classroomFModel->addPassLecture([
+                    'OrderIdx' => $orderidx,
+                    'OrderProdIdx' => $passinfo['OrderProdIdx'],
+                    'ProdCode' => $prodcode,
+                    'ProdCodeSub' => $prodcodesub,
+                    'LecStartDate' => $passinfo['LecStartDate'],
+                    'LecEndDate' => $passinfo['LecEndDate'],
+                    'RealLecEndDate' => $passinfo['RealLecEndDate'],
+                    'LecExpireDay' => $passinfo['LecExpireDay'],
+                    'RealLecExpireDay' => $passinfo['RealLecExpireDay']
+                ]) == false){
+                continue; // 추가 실패 다음
+                //return $this->json_error('강좌추가에 실패했습니다.\n다시 시도해주십시요.');
+            }
+
         }
 
         return $this->json_result(true, '강좌를 추가했습니다.');

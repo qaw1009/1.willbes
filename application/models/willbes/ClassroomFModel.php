@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ClassroomFModel extends WB_Model
 {
-    private $_table = [
+    protected $_table = [
         'mylec' => 'lms_my_lecture',
         'lec_unit' => 'vw_unit_mylecture',
         'mylecture' => 'vw_on_mylecture',
@@ -15,9 +15,9 @@ class ClassroomFModel extends WB_Model
         'extend' => 'lms_lecture_extend',
         'down_log' => 'lms_lecture_data_download_log',
         'order_product' => 'lms_order_product',
-        'booklist' => 'vw_product_salebook'
+        'booklist' => 'vw_product_salebook',
+        'on_lecture' => 'vw_product_on_lecture'
     ];
-
 
     public function __construct()
     {
@@ -622,6 +622,7 @@ class ClassroomFModel extends WB_Model
         return true;
     }
 
+
     /**
      * 해당강의 교재 리스트 읽어오기
      * @param $cond
@@ -636,6 +637,41 @@ class ClassroomFModel extends WB_Model
 
         $result = $this->_conn->query($query);
         return $result->result_array();
+    }
+
+
+    /**
+     * 기잔제패키지 들을수 있는 강좌리스트
+     * @param $arr_condition
+     * @param string $col
+     * @return mixed
+     */
+    public function getPassSubLecture($arr_condition, $col = '', $mylec_cond = '')
+    {
+        if(empty($col) == true){
+            $column =  "A.ProdCode As Parent_ProdCode, B.IsEssential, B.SubGroupName, B.OrderNum, C.* , 
+                 if(D.ProdCode is null, 'N', 'Y') AS IsTake 
+            ";
+        } else {
+            $column = $col;
+        }
+
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => ['B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],
+        ]);
+
+        $mylec_where = $this->_conn->makeWhere($mylec_cond)->getMakeWhere(true);
+
+        $from = " 
+            FROM
+                vw_product_periodpack_lecture A
+                JOIN lms_product_r_sublecture B on A.ProdCode = B.ProdCode	
+                JOIN {$this->_table['on_lecture']} C on B.ProdCodeSub = C.ProdCode 
+                LEFT JOIN {$this->_table['mylec']} D ON A.ProdCode = D.ProdCode AND C.ProdCode = D.ProdCodeSub ".$mylec_where;
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        return $this->_conn->query('Select straight_join '. $column. $from. $where)->result_array();
     }
 
 }

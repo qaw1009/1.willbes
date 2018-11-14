@@ -193,8 +193,9 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-                            <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
-                                @forelse( $pkgList as $row )
+
+                            @forelse( $pkgList as $row )
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -214,7 +215,9 @@
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
-                                                @if($row['IsExten'] == 'N')
+                                                @if(true)
+                                                    <!-- 패키지강좌 재수강 불가 -->
+                                                @elseif($row['IsExten'] == 'N')
                                                     <a><span class="bBox blueBox NSK">수강연장불가</span></a>
                                                 @elseif($row['RebuyCount'] >= $row['ExtenNum'])
                                                     <a><span class="bBox blueBox NSK">연장횟수초과({{$row['RebuyCount']}})</span></a>
@@ -222,7 +225,9 @@
                                                     <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','','P');"><span class="bBox blueBox NSK">수강연장({{$row['RebuyCount']}})</span></a>
                                                 @endif
 
-                                                @if($row['IsPause'] == 'N')
+                                                @if(true)
+                                                    <!-- 패키지강의 일시중지 불가 -->
+                                                @elseif($row['IsPause'] == 'N')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['PauseCount'] >= $row['PauseNum'])
                                                     <a><span class="bBox whiteBox NSK">정지횟수초과(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
@@ -267,7 +272,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                @empty
+                                </div>
+                            @empty
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -279,8 +286,9 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                @endforelse
-                            </div>
+                                </div>
+                            @endforelse
+
                         </div>
                         <div id="Mypagetab3" class="tabLink">
                             <div class="willbes-Lec-Table pt20 NG d_block">

@@ -106,6 +106,13 @@ class Player extends \app\controllers\FrontController
             show_alert('일시중지 중인 강의입니다.');
         }
 
+        // 회차 열어준경우 IN 생성
+        if(empty($lec['wUnitIdxs']) == true){
+            $wUnitIdxs = [];
+        } else {
+            $wUnitIdxs = explode(',', $lec['wUnitIdxs']);
+        }
+
         // 커리큘럼 읽어오기
         $data = $this->classroomFModel->getCurriculum([
             'EQ' => [
@@ -115,6 +122,9 @@ class Player extends \app\controllers\FrontController
                 'ProdCodeSub' => $prodcodesub,
                 'wLecIdx' => $lec['wLecIdx'],
                 'wUnitIdx' => $unitidx
+            ],
+            'IN' => [
+                'wUnitIdx' => $wUnitIdxs
             ]
         ]);
 
@@ -449,7 +459,7 @@ class Player extends \app\controllers\FrontController
                 'GTE' => [
                     'RealLecEndDate' => $today
                 ]
-            ], $orderby);
+            ]);
 
             $pkg = $pkg[0];
 
@@ -476,6 +486,13 @@ class Player extends \app\controllers\FrontController
         $lec['ispause'] = $ispause;
         $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
+        // 회차 열어준경우 IN 생성
+        if(empty($lec['wUnitIdxs']) == true){
+            $wUnitIdxs = [];
+        } else {
+            $wUnitIdxs = explode(',', $lec['wUnitIdxs']);
+        }
+
         // 커리큘럼 읽어오기
         $curriculum = $this->classroomFModel->getCurriculum([
             'EQ' => [
@@ -484,6 +501,9 @@ class Player extends \app\controllers\FrontController
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
                 'wLecIdx' => $lec['wLecIdx']
+            ],
+            'IN' => [
+                'wUnitIdx' => $wUnitIdxs
             ]
         ]);
 

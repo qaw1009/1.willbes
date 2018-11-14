@@ -48,7 +48,6 @@ class Pass extends \app\controllers\FrontController
         ];
 
         $sitelist = $this->classroomFModel->getSiteList($cond_arr);
-        $sitelist = ['0' => ['SiteCode' => '2001']];
         foreach($sitelist AS $idx => $row){
             $sitelist[$idx]['SiteName'] = $this->getSiteCacheItem($row['SiteCode'], 'SiteGroupName');
         }

@@ -13,7 +13,7 @@
                     <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
                         · 무한PASS존
                         <ul>
-                            <li class="InfoBtn"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></li>
+                            @if(empty($passinfo) == false)<li class="InfoBtn"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></li>@endif
                             <li class="InfoBtn"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
                         </ul>
                     </div>
@@ -111,7 +111,7 @@
                     </div>
             </form>
             <div class="DetailWrap c_both">
-                <div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnMoreBook();">교재구매</a></div>
+                @if(empty($passinfo) == false)<div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnMoreBook();">교재구매</a></div>@endif
                 <ul class="tabWrap tabDepthPass">
                     <li><a href="#Mypagetab1" class="on">즐겨찾기강좌 ({{count($leclist_like)}})</a></li>
                     <li><a href="#Mypagetab2">수강중강좌 ({{count($leclist_ing)}})</a></li>

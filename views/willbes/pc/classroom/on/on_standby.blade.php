@@ -121,9 +121,8 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-                            <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
-
-                                @forelse( $pkgList as $row )
+                            @forelse( $pkgList as $row )
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -139,7 +138,7 @@
                                                     <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
-                                                    <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
+                                                    <dt class="MoreBtn"><a href="javascript:;" onclick="fnOpenSub('{{$row['OrderIdx']}}-{{$row['ProdCode']}}');">강좌 열기 ▼</a></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
@@ -153,7 +152,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable" id="sub-{{$row['OrderIdx']}}-{{$row['ProdCode']}}">
                                         <colgroup>
                                             <col style="width: 120px;">
                                             <col style="width: 820px;">
@@ -187,7 +186,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                @empty
+                                </div>
+                            @empty
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -199,8 +200,9 @@
                                         </tr>
                                         </tbody>
                                     </table>
+                                </div>
                             @endforelse
-                            </div>
+
                         </div>
                     </div>
                 </div>

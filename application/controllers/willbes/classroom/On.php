@@ -405,6 +405,9 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002','615003','615005'],
                 'PayRouteCcd' => ['670001','670002']
+            ],
+            'EQ' => [
+                'IsRebuy' => '0' // 재수강이 아닌강의
             ]
         ];
 
@@ -419,7 +422,8 @@ class On extends \app\controllers\FrontController
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
                 'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
                 'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
-                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
+                'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
+                'IsRebuy' => '0' // 재수강이 아닌강의
             ],
             'LT' => [
                 'RealLecEndDate' => $today, // 종료일 < 오늘
@@ -532,7 +536,7 @@ class On extends \app\controllers\FrontController
                 'GTE' => [
                     'RealLecEndDate' => $today
                 ]
-            ], $orderby);
+            ]);
 
             $pkg = $pkg[0];
 
@@ -561,6 +565,13 @@ class On extends \app\controllers\FrontController
         $lec['ispause'] = $ispause;
         $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
+        // 회차 열어준경우 IN 생성
+        if(empty($lec['wUnitIdxs']) == true){
+            $wUnitIdxs = [];
+        } else {
+            $wUnitIdxs = explode(',', $lec['wUnitIdxs']);
+        }
+
         // 커리큘럼 읽어오기
         $curriculum = $this->classroomFModel->getCurriculum([
             'EQ' => [
@@ -569,6 +580,9 @@ class On extends \app\controllers\FrontController
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
                 'wLecIdx' => $lec['wLecIdx']
+            ],
+            'IN' => [
+                'wUnitIdx' => $wUnitIdxs
             ]
         ]);
 
@@ -683,7 +697,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]), $orderby);
+            ]));
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -873,7 +887,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001','670002'] // 온, 방
                 ]
-            ]), $orderby);
+            ]));
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1140,7 +1154,7 @@ class On extends \app\controllers\FrontController
                 'IN' => [
                     'PayRouteCcd' => ['670001', '670002'] // 온, 방
                 ]
-            ]), $orderby);
+            ]));
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');

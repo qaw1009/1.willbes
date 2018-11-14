@@ -7392,10 +7392,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     border-bottom: 1px solid #c9c9c9;
 }
 .will-Tit-Zone .willbes-Lec-Selected .seleProcess {
+    width: 110px;
     margin-left: 30px;
 }
 .will-Tit-Zone .willbes-Lec-Selected .seleName {
-    width: 662px;
+    width: 650px;
     margin-right: 0;
 }
 table.PassZoneTable tr td .w-tit {

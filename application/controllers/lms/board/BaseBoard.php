@@ -67,9 +67,10 @@ class BaseBoard extends \app\controllers\BaseController
      * @param array $search_datas   검색데이터
      * @param int $ccd_voc          상담게시판
      * @param null $prof_idx        강사게시판
+     * @param null $prod_code       강좌코드 [t-pass게시판]
      * @return mixed
      */
-    protected function _findBoardPrevious_Next($bm_idx, $board_idx, $is_best = 0, $reg_type = 1, $search_datas = [], $ccd_voc = 0, $prof_idx = null){
+    protected function _findBoardPrevious_Next($bm_idx, $board_idx, $is_best = 0, $reg_type = 1, $search_datas = [], $ccd_voc = 0, $prof_idx = null, $prod_code = null){
         $arr_condition = [
             'EQ' => [
                 'A.BmIdx' => $bm_idx,
@@ -83,6 +84,7 @@ class BaseBoard extends \app\controllers\BaseController
                 'A.AreaCcd' => element('search_area_ccd', $search_datas),
                 'A.SubjectIdx' => element('search_subject', $search_datas),
                 'A.IsUse' => element('search_is_use', $search_datas),
+                'A.ProdCode' => $prod_code,
             ],
             'ORG' => [
                 'LKB' => [

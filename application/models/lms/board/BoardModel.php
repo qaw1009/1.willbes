@@ -121,6 +121,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "material" :
+            case "tpass" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
@@ -512,6 +513,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "material" :
+            case "tpass" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC4 ON LB.ProdApplyTypeCcd = LSC4.Ccd
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode

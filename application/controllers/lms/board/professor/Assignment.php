@@ -211,7 +211,7 @@ class Assignment extends BaseBoard
             'prod_code' => $prod_code,
             'arr_prof_info' => $arr_prof_info,
             'product_data' => $product_data,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$arr_prof_info['SiteCode']}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
         ]);
     }
 
@@ -424,6 +424,7 @@ class Assignment extends BaseBoard
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'cate_code[]', 'label' => '구분', 'rules' => 'trim|required'],
             ['field' => 'bm_idx', 'label' => '게시판식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
@@ -504,7 +505,7 @@ class Assignment extends BaseBoard
             'prod_code' => $prod_code,
             'arr_prof_info' => $arr_prof_info,
             'product_data' => $product_data,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$arr_prof_info['SiteCode']}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
         ]);
     }
 

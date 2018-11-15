@@ -1,7 +1,8 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-<h5>- {{$arr_prof_info['ProfNickName']}} 교수 첨삭 게시판</h5>
+<h5>- 특정 강좌를 구매한 회원들에게 제공하는 학습자료를 관리하는 메뉴입니다. (운영자 패키지만 사용)</h5>
+<h5>- {{$arr_prof_info['ProfNickName']}} 교수 T-pass 자료실</h5>
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}

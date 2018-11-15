@@ -1,6 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
+<h5>- 특정 강좌를 구매한 회원들에게 제공하는 학습자료를 관리하는 메뉴입니다. (운영자 패키지만 사용)</h5>
 <h5>- {{$arr_prof_info['ProfNickName']}} 교수 T-pass 자료실</h5>
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
@@ -54,7 +55,14 @@
         <div class="x_content">
             <div class="form-group">
                 <label class="control-label col-md-1" for="search_value">조건</label>
-                <div class="col-md-2 form-inline">
+                <div class="col-md-5 form-inline">
+                    <select class="form-control" id="search_type_group_ccd" name="search_type_group_ccd">
+                        <option value="">자료유형</option>
+                        @foreach($arr_type_group_ccd as $key => $val)
+                            <option value="{{$key}}">{{$val}}</option>
+                        @endforeach
+                    </select>
+
                     <select class="form-control" id="search_is_use" name="search_is_use">
                         <option value="">사용여부</option>
                         <option value="Y">사용</option>
@@ -98,11 +106,15 @@
         <table id="list_ajax_table" class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th>복사</th>
                 <th>NO</th>
-                <th>강의명</th>
+                <th>구분</th>
+                <th>자료유형</th>
+                <th>제목</th>
                 <th>첨부</th>
                 <th>등록자</th>
                 <th>등록일</th>
+                <th>HOT</th>
                 <th>사용</th>
                 <th>조회수</th>
                 <th>수정</th>
@@ -123,7 +135,13 @@
         $datatable = $list_table.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-copy mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset btn-create-assignment' }
+                { text: '<i class="fa fa-copy mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
+
+                { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
+
+                { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                        location.href = '{{ site_url("/board/professor/{$boardName}/createBoardForTpass/{$prod_code}") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                    }}
             ],
             ajax: {
                 'url' : '{{ site_url("/board/professor/{$boardName}/registForBoardAjax/{$prod_code}?") }}' + '{!! $boardDefaultQueryString !!}',
@@ -134,9 +152,26 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        return '<input type="radio" class="flat" name="copy" value="' +row.BoardIdx+ '">';
                     }},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        if (row.IsBest == '1') {
+                            return 'BEST';
+                        } else {
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }
+                    }},
+                {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                        var obj = data.split(',');
+                        var str = '';
+                        for (key in obj) {
+                            str += obj[key]+"<br>";
+                        }
+                        return str;
+                    }},
+                {'data' : 'TypeCcdName'},
+
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                     }},
@@ -145,21 +180,30 @@
                         (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                         return tmp_return;
                     }},
+
                 {'data' : 'wAdminName'},
                 {'data' : 'RegDatm'},
+
+                {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
+                        //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                        var chk = '';
+                        if (data == '1') { chk = 'checked=checked'; } else { chk = ''; }
+                        return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
+                    }},
+
                 {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                     }},
                 {'data' : 'ReadCnt'},
                 {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
-                    }}
+                    }},
             ]
         });
 
         //전체강좌목록
         $('.btn-main-list').click(function() {
-            location.href = '{{ site_url("/board/professor/{$boardName}/productList") }}/' + getQueryString();
+            location.href = '{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + getQueryString();
         });
 
         //과제미노출날짜관리
@@ -170,40 +214,71 @@
             });
         });
 
-        //등록
-        $('.btn-create-assignment').click(function() {
-            var cate_code = $search_form.find('input[name="cate_code"]').val();
-            $('.btn-create-assignment').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
-                "width" : "1200",
-                'add_param_type' : 'param',
-                'add_param' : [
-                    { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true }
-                ]
-            });
-        });
-
         //수정
         $list_table.on('click', '.btn-modify', function() {
-            var cate_code = $search_form.find('input[name="cate_code"]').val();
-            var board_idx = $(this).data('idx');
-            $('.btn-modify').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
-                "width" : "1200",
-                'add_param_type' : 'param',
-                'add_param' : [
-                    { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true },
-                    { 'id' : 'board_idx', 'name' : '게시판식별자', 'value' : board_idx, 'required' : true }
-                ]
-            });
+            location.href='{{ site_url("/board/professor/{$boardName}/createBoardForTpass/{$prod_code}") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&board_idx=' + $(this).data('idx');
         });
 
         //read
         $list_table.on('click', '.btn-read', function() {
-            $('.btn-read').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/readAssignmentModal/") }}" + $(this).data('idx') + '?' + '{!! $boardDefaultQueryString !!}',
-                "width" : "1200"
+            location.href='{{ site_url("/board/professor/{$boardName}/readBoardForTpass/{$prod_code}") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&board_idx=' + $(this).data('idx');
+        });
+
+        // Best 적용
+        $('.btn-is-best').on('click', function() {
+            var $params = {};
+            var _url = '{{ site_url("/board/professor/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
+
+            $('input[name="is_best"]:checked').each(function() {
+                $params[$(this).data('is-best-idx')] = $(this).val();
             });
+
+            if (Object.keys($params).length <= '0') {
+                alert('HOT 적용할 게시글을 선택해주세요.');
+                return false;
+            }
+
+            var data = {
+                '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'PUT',
+                'params' : JSON.stringify($params)
+            };
+
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable.draw();
+                }
+            }, showError, false, 'POST');
+        });
+
+        // 복사
+        $('.btn-copy').on('click', function() {
+            var _url = '{{ site_url("/board/professor/{$boardName}/copy/?") }}' + '{!! $boardDefaultQueryString !!}';
+            var data = {
+                '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'PUT',
+                'board_idx' : $('input:radio[name="copy"]:checked').val()
+            };
+
+            if ($('input:radio[name="copy"]').is(':checked') === false) {
+                alert('복사할 자료를 선택해 주세요.');
+                return false;
+            }
+            if (!confirm('해당 자료를 복사하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable.draw();
+                }
+            }, showError, false, 'POST');
+        });
+
+        // hot 숨기기
+        $search_form.on('ifChanged', '.hot-display', function() {
+            $datatable.draw();
         });
     });
 </script>

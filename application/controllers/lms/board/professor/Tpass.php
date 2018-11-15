@@ -7,12 +7,22 @@ class Tpass extends BaseBoard
 {
     protected $temp_models = array('sys/code', 'sys/category', 'sys/boardMaster', 'board/board', 'product/base/professor', 'product/on/packageAdmin');
     protected $helpers = array('download','file');
-
     private $board_name = 'tpass';
     private $site_code = '';
     private $bm_idx;
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615003'; //운영자패키지
+    private $_groupCcd = [
+        'type_group_ccd' => '632' //유형 그룹 코드 = 자료유형
+    ];
+    private $_reg_type = [
+        'user' => 0,    //유저 등록 정보
+        'admin' => 1    //admin 등록 정보
+    ];
+    private $_attach_reg_type = [
+        'default' => 0,     //본문글 첨부
+        'reply' => 1        //본문 답변글첨부
+    ];
 
     public function __construct()
     {
@@ -209,18 +219,22 @@ class Tpass extends BaseBoard
         ];
         $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
+        //자료유형
+        $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
+
         $this->load->view("board/professor/{$this->board_name}/regist/index", [
             'bm_idx' => $this->bm_idx,
             'boardName' => $this->board_name,
             'prod_code' => $prod_code,
             'arr_prof_info' => $arr_prof_info,
             'product_data' => $product_data,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$arr_prof_info['SiteCode']}",
+            'arr_type_group_ccd' => $arr_type_group_ccd,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
         ]);
     }
 
     /**
-     * 과제등록관리[게시판] AJAX
+     * T-pass 자료실[게시판] AJAX
      * @param array $params
      * @return CI_Output
      */
@@ -249,6 +263,10 @@ class Tpass extends BaseBoard
             ]
         ];
 
+        if ($this->_reqP('search_chk_hot_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
+        }
+
         if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
             $arr_condition = array_merge($arr_condition, [
                 'BDT' => ['LB.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
@@ -262,7 +280,7 @@ class Tpass extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.TypeCcd, LSC.CcdName AS TypeCcdName,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
         ';
 
@@ -278,5 +296,346 @@ class Tpass extends BaseBoard
             'recordsFiltered' => $count,
             'data' => $list,
         ]);
+    }
+
+    /**
+     * T-pass 자료실 등록/수정 폼
+     * @param array $params
+     */
+    public function createBoardForTpass($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+        $prod_code = $params[0];
+        $board_idx = $this->_req('board_idx');
+
+        // 기본 상품 정보
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->site_code,
+                'A.ProdCode' => $prod_code
+            ]
+        ];
+        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+
+        $method = 'POST';
+        $data = null;
+
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+        $arr_prof_info['arr_prof_cate_code'] = explode(',', $arr_prof_info['CateCode']);
+        $arr_prof_info['arr_prof_cate_name'] = explode(',', $arr_prof_info['CateName']);
+
+        if (empty($board_idx) === false) {
+            $column = '
+            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName, LB.ProdApplyTypeCcd, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdCode, lms_product.ProdName
+            ';
+            $method = 'PUT';
+            $arr_condition = ([
+                'EQ'=>[
+                    'LB.BoardIdx' => $board_idx,
+                    'LB.IsStatus' => 'Y'
+                ]
+            ]);
+            $arr_condition_file = [
+                'reg_type' => $this->_reg_type['admin'],
+                'attach_file_type' => $this->_attach_reg_type['default']
+            ];
+            $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+            if (count($data) < 1) {
+                show_error('데이터 조회에 실패했습니다.');
+            }
+
+            // 카테고리 연결 데이터 조회
+            $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+            $data['CateCodes'] = $arr_cate_code;
+            $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+            $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+            $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+            $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+            $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+        }
+
+        //자료유형
+        $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
+
+        $input_params = [
+            'site_code' => $product_data['SiteCode'],
+            'cate_code[]' => $product_data['CateCode'],
+            'bm_idx' => $this->bm_idx,
+            'prof_idx' => $prof_idx,
+            'board_idx' => $board_idx,
+            'reg_type' => $this->_reg_type['admin']
+        ];
+
+        $this->load->view("board/professor/{$this->board_name}/regist/create", [
+            'prod_code' => $prod_code,
+            'boardName' => $this->board_name,
+            'product_data' => $product_data,
+            'arr_prof_info' => $arr_prof_info,
+            'arr_type_group_ccd' => $arr_type_group_ccd,
+            'method' => $method,
+            'data' => $data,
+            'input_params' => $input_params,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
+        ]);
+    }
+
+    /**
+     * T-pass 자료실 등록
+     * @param array $params
+     */
+    public function storeBoardForTpass($params = [])
+    {
+        $method = 'add';
+        $idx = '';
+        $prod_code = $params[0];
+
+        $rules = [
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'cate_code[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'bm_idx', 'label' => '게시판식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'type_ccd', 'label' => '자료유형', 'rules' => 'trim|required|integer'],
+            ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('board_idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('board_idx');
+        }
+
+        $inputData = $this->_setInputData($this->_reqP(null, false), $prod_code);
+
+        //_addBoard, _modifyBoard
+        $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function readBoardForTpass($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+        $prod_code = $params[0];
+        $board_idx = $this->_req('board_idx');
+
+        if (empty($board_idx) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
+        // 기본 상품 정보
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->site_code,
+                'A.ProdCode' => $prod_code
+            ]
+        ];
+        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName, LB.TypeCcd, LSC.CcdName AS TypeCcdName, LB.ProdApplyTypeCcd, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdCode, lms_product.ProdName
+            ';
+
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.IsStatus' => 'Y'
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['admin'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $query_string = base64_decode(element('q',$this->_reqG(null)));
+        $search_datas = json_decode($query_string,true);
+
+        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas, '', $prof_idx, $prod_code);
+        $board_previous = $data_PN['previous'];     //이전글
+        $board_next = $data_PN['next'];             //다음글
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+        if (empty($this->site_code) === false) {
+            $site_code = $this->site_code;
+        }
+        $get_category_array = $this->_getCategoryArray($site_code);
+        if (empty($get_category_array) === true) {
+            $data['arr_cate_code'] = [];
+        } else {
+            foreach ($arr_cate_code as $item => $code) {
+                if (empty($get_category_array[$code]) === false) {
+                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+                }
+            }
+        }
+
+        $this->load->view("board/professor/{$this->board_name}/regist/read", [
+            'prod_code' => $prod_code,
+            'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
+            'product_data' => $product_data,
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
+        ]);
+    }
+
+    /**
+     * T-pass 자료 삭제
+     * @param array $params
+     */
+    public function deleteBoardForTpass($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * T-pass 자료실 복사
+     */
+    public function copy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardCopy($this->_reqP('board_idx'));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * T-pass 자료실 BEST 적용
+     */
+    public function storeIsBest()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardIsBest(json_decode($this->_req('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 첨부파일 다운로드
+     */
+    public function download()
+    {
+        $this->_download();
+    }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 게시판 등록/수정 데이타 셋팅
+     * @param $input
+     * @param $prod_code
+     * @return array
+     */
+    private function _setInputData($input, $prod_code){
+        $input_data = [
+            'board' => [
+                'SiteCode' => element('site_code', $input),
+                'BmIdx' => element('bm_idx', $input),
+                'ProdCode' => $prod_code,
+                'ProfIdx' => element('prof_idx', $input),
+                'TypeCcd' => element('type_ccd', $input),
+                'RegType' => $this->_reg_type['admin'],
+                'Title' => element('title', $input),
+                'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
+                'Content' => element('board_content', $input),
+                'IsUse' => element('is_use', $input),
+                'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
+                'SettingReadCnt' => element('setting_readCnt', $input),
+            ],
+            'board_r_category' => [
+                'site_category' => element('cate_code', $input)
+            ]
+        ];
+
+        return$input_data;
     }
 }

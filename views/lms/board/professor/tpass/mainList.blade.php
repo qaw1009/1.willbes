@@ -1,18 +1,13 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 첨삭 과제를 등록하고 수강생들의 과제 제출내역 확인, 첨삭을 제공하는 메뉴입니다. (단강좌만 사용)</h5>
+    <h5>- 특정 강좌를 구매한 회원들에게 제공하는 학습자료를 관리하는 메뉴입니다. (운영자 패키지만 사용)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_def_site_tabs('','tabs_site_code') !!}
         {!! csrf_field() !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
-                <div class="form-group">
-                    <div class="col-xs-12 form-inline">
-                        <button type="button" class="btn btn-sm btn-dark btn-open-calendar">공휴일 등록/관리</button>
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">통합검색</label>
                     <div class="col-md-3">

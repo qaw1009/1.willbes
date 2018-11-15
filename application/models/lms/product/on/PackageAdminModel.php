@@ -71,6 +71,78 @@ class PackageAdminModel extends CommonLectureModel
 
 
     /**
+     * 강좌목록추출 [강사식별자 기준]
+     * @param $is_count
+     * @param $prof_idx
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listLectureForProf($is_count, $prof_idx, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+
+            $column = ' STRAIGHT_JOIN
+                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                    ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                    ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
+                    ,Bc.CcdName as LearnPatternCcd_Name
+                    ,Bd.CcdName as PackTypeCcd_Name
+                    ,Be.CcdName as PackCateCcd_Name
+                    ,C.CateCode
+                    ,Ca.CateName, Cb.CateName as CateName_Parent
+                    ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                    ,fn_product_cart_count(A.ProdCode) as CartCnt
+                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
+                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                    ,Z.wAdminName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from
+                        lms_product A
+                        join (
+                        SELECT b.ProdCode
+                        FROM lms_product_division AS a
+                        join lms_product_lecture AS b ON a.ProdCode = b.ProdCode AND b.LearnPatternCcd = \'615003\'
+                        WHERE a.ProfIdx = '.$prof_idx.' AND a.IsStatus = \'Y\'
+                        GROUP BY b.ProdCode
+                        ) AS temp_a ON A.ProdCode = temp_a.ProdCode
+                        left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                        left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
+                        join lms_product_lecture B on A.ProdCode = B.ProdCode
+                        left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bd on B.PackTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                        left outer join lms_sys_code Be on B.PackCateCcd = Be.Ccd and Be.IsStatus=\'Y\'
+                        join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                        join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                        left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	
+                        left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                     where A.IsStatus=\'Y\'
+        ';
+
+        // 사이트 권한 추가
+        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+
+    /**
      * 상품 및 강좌 등록
      * @param array $input
      * @return array|bool

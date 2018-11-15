@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-<h5>- {{$arr_prof_info['ProfNickName']}} 교수 첨삭 게시판</h5>
+<h5>- {{$arr_prof_info['ProfNickName']}} 교수 T-pass 자료실</h5>
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
@@ -12,11 +12,9 @@
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>강좌기본정보</th>
-                    <th>강좌유형</th>
-                    <th>과정</th>
-                    <th>과목</th>
-                    <th>단강좌명</th>
+                    <th>대비학년도</th>
+                    <th>패키지유형</th>
+                    <th>운영자패키지명</th>
                     <th>판매가</th>
                     <th>판매여부</th>
                     <th>사용여부</th>
@@ -24,15 +22,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            {{$product_data['SiteName']}} <br> {{(empty($product_data['CateName_Parent']) === true ? '' : $product_data['CateName_Parent'].'<Br>')}} {{$product_data['CateName']}} <br> {{$product_data['SchoolYear']}}
-                        </td>
-                        <td>{{$product_data['LecTypeCcd_Name']}}</td>
-                        <td>{{$product_data['CourseName']}}</td>
-                        <td>{{$product_data['SubjectName']}}</td>
+                        <td>{{$product_data['SchoolYear']}}</td>
+                        <td>{{str_replace('패키지','',$product_data['PackTypeCcd_Name'])}}</td>
                         <td>[{{$product_data['ProdCode']}}] {{$product_data['ProdName']}}</td>
                         <td>
-                            {{--return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';--}}
                             {{number_format($product_data['RealSalePrice'])}}원<BR><strike>{{number_format($product_data['SalePrice'])}}원</strike>
                         </td>
                         <td>
@@ -56,7 +49,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="x_panel">
         <div class="x_content">

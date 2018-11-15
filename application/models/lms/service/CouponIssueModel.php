@@ -19,8 +19,8 @@ class CouponIssueModel extends WB_Model
 
     private $_ccd = ['IssueType' => '647'];
 
-    // 쿠폰발급구분 (자동발급, 수동발급, 환불재발급)
-    public $_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'refund' => '647003'];
+    // 쿠폰발급구분 (자동발급, 수동발급, 환불재발급, 주문결제자동발급)
+    public $_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'refund' => '647003', 'order' => '647004'];
 
     public function __construct()
     {
@@ -168,18 +168,42 @@ class CouponIssueModel extends WB_Model
     }
 
     /**
+     * 수동 사용자 쿠폰 발급 (from 발급 페이지)
+     * @param array $input
+     * @return array|bool
+     */
+    public function addCouponDetailByManual($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 사용자 쿠폰 발급
+            $is_add = $this->addCouponDetail($input);
+            if ($is_add !== true) {
+                throw new \Exception($is_add);
+            }            
+            
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;            
+    }
+
+    /**
      * 사용자 쿠폰 발급
      * @param array $input
      * @return array|bool
      */
     public function addCouponDetail($input = [])
     {
-        $this->_conn->trans_begin();
-
         try {
             $coupon_idx = element('coupon_idx', $input);
             $arr_mem_idx = element('mem_idx', $input, []);
             $issue_type = element('issue_type', $input, '');
+            $issue_order_prod_idx = element('issue_order_prod_idx', $input);
 
             // 회원 식별자 확인
             if (empty($arr_mem_idx) === true) {
@@ -194,15 +218,12 @@ class CouponIssueModel extends WB_Model
 
             // 배포루트, 쿠폰핀타입에 따라 발급 처리
             $coupon_data['IssueType'] = $issue_type;
-            $is_issue = $this->_addCouponDetail($coupon_idx, $coupon_data, $arr_mem_idx);
+            $is_issue = $this->_addCouponDetail($coupon_idx, $coupon_data, $arr_mem_idx, $issue_order_prod_idx);
             if ($is_issue !== true) {
                 throw new \Exception($is_issue, _HTTP_NO_PERMISSION);
             }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+            return $e->getMessage();
         }
 
         return true;
@@ -241,12 +262,13 @@ class CouponIssueModel extends WB_Model
 
     /**
      * 사용자 쿠폰 발급
-     * @param $coupon_idx
-     * @param array $coupon_data
-     * @param array $arr_mem_idx
+     * @param int $coupon_idx [쿠폰식별자]
+     * @param array $coupon_data [쿠폰 데이터 배열]
+     * @param array $arr_mem_idx [회원식별자 배열]
+     * @param null|int $issue_order_prod_idx [발급주문상품식별자]
      * @return bool|string
      */
-    public function _addCouponDetail($coupon_idx, $coupon_data = [], $arr_mem_idx = [])
+    public function _addCouponDetail($coupon_idx, $coupon_data = [], $arr_mem_idx = [], $issue_order_prod_idx = null)
     {
         try {
             $admin_idx = $this->session->userdata('admin_idx');
@@ -259,27 +281,27 @@ class CouponIssueModel extends WB_Model
                 $issue_type_ccd = $this->_issue_type_ccd['manual'];
             }
 
-            $query = /** @lang text */ 'insert into ' . $this->_table['coupon_detail']. ' (CouponPin, CouponIdx, MemIdx, IssueTypeCcd, IssueDatm, RegDatm, ExpireDatm, IssueUserType, IssueUserIdx, IssueIp)';
+            $query = /** @lang text */ 'insert into ' . $this->_table['coupon_detail']. ' (CouponPin, CouponIdx, MemIdx, IssueOrderProdIdx, IssueTypeCcd, IssueDatm, RegDatm, ExpireDatm, IssueUserType, IssueUserIdx, IssueIp)';
             
             if ($coupon_data['DeployType'] == 'N') {
                 // 온라인 배포
-                $binds = ['N', $coupon_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
+                $binds = ['N', $coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
                 $query .= /** @lang text */ '
-                    select ?, ?, MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
+                    select ?, ?, MemIdx, ?, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
                     from ' . $this->_table['member']. ' where MemIdx in ?
                 ';
             } elseif ($coupon_data['DeployType'] == 'F' && $coupon_data['PinType'] == 'S') {
                 // 오프라인 배포 && 공통핀번호
-                $binds = [$coupon_idx, $coupon_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
+                $binds = [$coupon_idx, $coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $arr_mem_idx];
                 $query .= /** @lang text */ '
-                    select (select CouponPin from ' . $this->_table['coupon_pin'] . ' where CouponIdx = ?), ?, MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
+                    select (select CouponPin from ' . $this->_table['coupon_pin'] . ' where CouponIdx = ?), ?, MemIdx, ?, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
                     from ' . $this->_table['member']. ' where MemIdx in ?
                 ';
             } elseif ($coupon_data['DeployType'] == 'F' && $coupon_data['PinType'] == 'R') {
                 // 오프라인 배포 && 랜덤핀번호
-                $binds = [$coupon_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $coupon_idx, $arr_mem_idx];
+                $binds = [$coupon_idx, $issue_order_prod_idx, $issue_type_ccd, $coupon_data['ValidDay'], 'A', $admin_idx, $reg_ip, $coupon_idx, $arr_mem_idx];
                 $query .= /** @lang text */ '
-                    select A.CouponPin, ?, B.MemIdx, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
+                    select A.CouponPin, ?, B.MemIdx, ?, ?, NOW(), NOW(), date_add(NOW(), interval ? day), ?, ?, ?
                     from (
                         select CP.CouponPin, (@rownum1 := @rownum1 + 1) as RowNum
                         from ' . $this->_table['coupon_pin'] . ' as CP left join ' . $this->_table['coupon_detail']. ' as CD
@@ -312,7 +334,7 @@ class CouponIssueModel extends WB_Model
 
     /**
      * 사용자 쿠폰 회수
-     * @param array $params
+     * @param array $params [쿠폰식별자 => 사용자쿠폰 식별자 배열]
      * @return array|bool
      */
     public function modifyRetireCouponDetail($params = [])
@@ -328,7 +350,8 @@ class CouponIssueModel extends WB_Model
             $reg_ip = $this->input->ip_address();
 
             foreach ($params as $coupon_idx => $cd_idx) {
-                $this->_conn->set('RetireDatm', 'now()', false);
+                // 사용자 쿠폰 회수
+                $this->_conn->set('RetireDatm', 'NOW()', false);
                 $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
                 $this->_conn->where(['CdIdx' => $cd_idx, 'CouponIdx' => $coupon_idx, 'IsUse' => 'N']);
 
@@ -341,6 +364,37 @@ class CouponIssueModel extends WB_Model
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문 결제완료시 발급된 자동지급 쿠폰 회수
+     * @param int $mem_idx [회원식별자]
+     * @param int $issue_order_prod_idx [발급주문상품식별자]
+     * @return bool|string
+     */
+    public function modifyRetireCouponDetailByOrderProdIdx($mem_idx, $issue_order_prod_idx)
+    {
+        try {
+            if (empty($mem_idx) === true || empty($issue_order_prod_idx) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            // 사용자 쿠폰 회수
+            $this->_conn->set('RetireDatm', 'NOW()', false);
+            $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);
+            $this->_conn->where(['MemIdx' => $mem_idx, 'IssueOrderProdIdx' => $issue_order_prod_idx, 'IsUse' => 'N']);
+
+            if ($this->_conn->update($this->_table['coupon_detail']) === false) {
+                throw new \Exception('자동지급 사용자 쿠폰 회수에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
 
         return true;

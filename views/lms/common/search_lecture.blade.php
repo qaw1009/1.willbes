@@ -27,7 +27,7 @@
             @endif
 
     @if(empty($wLecIdx) === true)
-            <div class="form-group form-group-bordered pt-10 pb-5">
+            <div class="form-group pt-10 pb-5">
                 <label class="control-label col-md-2 pt-5" for="search_value">단강좌검색
                 </label>
                 <div class="col-md-4">

@@ -76,6 +76,9 @@ class OrderModel extends BaseOrderModel
         $this->_conn->trans_begin();
 
         try {
+            // 쿠폰 발급, 포인트 모델 로드
+            $this->load->loadModels(['service/couponIssue', 'service/point']);
+
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
             $order_idx = element('order_idx', $input);
@@ -129,22 +132,27 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception('환불요청 금액이 올바르지 않습니다.');
                 }
 
+                // 자동지급 쿠폰 회수 (온라인, 학원강좌일 경우만 실행, 쿠폰 복구보다 먼저 실행되어야 함 => 나중에 실행되면 복구된 쿠폰도 다시 회수 처리됨)
+                if ($row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture']) {
+                    $is_retire_auto_coupon = $this->couponIssueModel->modifyRetireCouponDetailByOrderProdIdx($row['MemIdx'], $row['OrderProdIdx']);
+                    if ($is_retire_auto_coupon !== true) {
+                        throw new \Exception($is_retire_auto_coupon);
+                    }
+                }
+
                 // 쿠폰 복구
                 if ($is_coupon_refund == 'Y' && $row['IsUseCoupon'] == 'Y') {
-                    // 사용자 쿠폰 발급 모델 로드
-                    $this->load->loadModels(['service/couponIssue']);
-
                     // 사용자 쿠폰 조회
                     $coupon_data = $this->couponIssueModel->findCouponDetailByCdIdx($row['UserCouponIdx'], 'CouponIdx');
 
                     // 사용자 쿠폰 등록
                     $data = [
-                        'coupon_idx' => $coupon_data['CouponIdx'], 'mem_idx' => [$row['MemIdx']], 'issue_type' => 'refund'
+                        'coupon_idx' => $coupon_data['CouponIdx'], 'mem_idx' => [$row['MemIdx']], 'issue_type' => 'refund', 'issue_order_prod_idx' => $row['OrderProdIdx']
                     ];
 
                     $is_add_coupon = $this->couponIssueModel->addCouponDetail($data);
                     if ($is_add_coupon !== true) {
-                        throw new \Exception($is_add_coupon['ret_msg']);
+                        throw new \Exception($is_add_coupon);
                     }
 
                     // 발급된 사용자 쿠폰 식별자 조회
@@ -153,12 +161,9 @@ class OrderModel extends BaseOrderModel
                         , 1, 0, ['CdIdx' => 'desc']
                     ), '0.CdIdx');
                 }
-                
+
                 // 사용포인트 복구 or 적립포인트 회수
                 if (($is_point_refund == 'Y' && $row['UsePoint'] > 0) || $row['SavePoint'] > 0) {
-                    // 포인트 모델 로드
-                    $this->load->loadModels(['service/point']);
-
                     // 포인트 구분
                     $point_type = $row['ProdTypeCcd'] == $this->_prod_type_ccd['book'] ? 'book' : 'lecture';
 

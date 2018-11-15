@@ -157,6 +157,22 @@ class Assignment extends BaseBoard
     }
 
     /**
+     * 과제미노출관리
+     */
+    public function createExceptDateModal()
+    {
+        $method = 'POST';
+        $data = null;
+        $week_arr = explode(",",",,,,,,");
+
+        $this->load->view("board/professor/{$this->board_name}/create_except_date_modal", [
+            'method' => $method,
+            'week_arr' => $week_arr,
+            'data' => $data
+        ]);
+    }
+
+    /**
      * 과제등록관리[게시판]
      * @param array $params
      */

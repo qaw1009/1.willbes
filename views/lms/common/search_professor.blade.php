@@ -11,10 +11,10 @@
         @endsection
 
         @section('layer_content')
-            <div class="mt-10 mb-5">
-                <span class="required">*</span> 검색한 교수를 선택해 주세요
+            <div class="form-group form-group-sm no-border-bottom mb-0">
+                <p class="form-control-static"><span class="required">*</span> 검색한 교수를 선택해 주세요. (다중 선택 불가능합니다.)</p>
             </div>
-            <div class="form-group form-group-bordered mt-20">
+            <div class="form-group form-group-bordered">
                 <div class="col-xs-9">
                     <div class="form-inline">
                         <label class="mr-15">통합검색</label>

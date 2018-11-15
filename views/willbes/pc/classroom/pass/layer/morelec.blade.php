@@ -14,7 +14,7 @@
     '<dt><span class="row-line">|</span></dt>'+
     '<dt>진행여부 : <span class="{{$row['wLectureProgressCcd'] == '105001' ? 'tx-red' : 'tx-light-blue'}}">{{$row['wLectureProgressCcdName']}}</span></dt>'+
     '</dl>'+
-    '<input type="hidden" name="ProdCodeSub" value="{{$row['ProdCode']}}" />' +
+    '<input type="hidden" name="ProdCodeSub[]" value="{{$row['ProdCode']}}" />' +
     '</td>'+
     '</tr>' ,
         @endforeach ''];
@@ -195,7 +195,16 @@
     function fnAll(obj)
     {
         if($(obj).is(":checked")) {
-            $(".prodCheck").prop("checked", "checked");
+            $(".prodCheck").each(function(){
+               if(!$(this).is(":disabled")){
+                   $(this).prop("checked", true);
+                   $('#addTable > tbody:last').append(data[$(this).val()]);
+               }
+            });
+        } else {
+            $(".prodCheck").each(function(){
+                $(this).prop("checked", false);
+            });
         }
     }
 

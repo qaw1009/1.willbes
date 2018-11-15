@@ -823,7 +823,7 @@ class OrderFModel extends BaseOrderFModel
 
             foreach ($rows as $row) {
                 // 쿠폰등록
-                $is_add_coupon = $this->couponFModel->addMemberCoupon($row['AutoCouponIdx'], false, $order_prod_idx);
+                $is_add_coupon = $this->couponFModel->addMemberCoupon($row['AutoCouponIdx'], false, 'order', $order_prod_idx);
                 if ($is_add_coupon !== true) {
                     throw new \Exception($is_add_coupon);
                 }

@@ -671,7 +671,7 @@ class ClassroomFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
-        return $this->_conn->query('Select straight_join '. $column. $from. $where)->result_array();
+        return $this->_conn->query('SELECT STRAIGHT_JOIN '. $column. $from. $where)->result_array();
     }
 
 }

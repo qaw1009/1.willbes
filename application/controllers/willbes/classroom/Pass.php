@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pass extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'product/packageF', 'product/lectureF');
+    protected $models = array('classroomF', 'product/packageF', 'product/lectureF', 'order/orderListF');
     protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -98,8 +98,8 @@ class Pass extends \app\controllers\FrontController
         // 해당패키지의 서브강좌
         if(empty($passinfo) == false ){
             $passinfo = $passinfo[0];
+            $passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
 
-            $passinfo['CanViewLec'] =
             // 셀렉트박스 구해오기
             $cond_arr = [
                 'EQ' => [
@@ -456,9 +456,78 @@ class Pass extends \app\controllers\FrontController
         ]);
     }
 
-    public function layerMoreBook()
+    public function ajaxMoreBook()
     {
-        return $this->load->view('/classroom/pass/layer/morebook', []);
+        $orderidx = $this->_req("OrderIdx");
+        $prodcode = $this->_req("ProdCode");
+
+        $input_arr = $this->_reqG(null);
+        $today = date("Y-m-d", time());
+
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $sess_mem_idx, // 사용자번호
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode
+            ]
+        ];
+        // 학습형태 : 기간제패키지
+        $passinfo = $this->classroomFModel->getPackage($cond_arr);
+
+        if(empty($passinfo) == true){
+            $this->json_error('신청한 강좌정보가 없습니다.');
+        }
+
+        $passinfo = $passinfo[0];
+
+        // 수강중인 모든 강좌
+        $data = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $passinfo['MemIdx'],
+                'OrderIdx' => $passinfo['OrderIdx'],
+                'ProdCode' => $passinfo['ProdCode'],
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
+            ],
+            'NOT' => [
+                'ProdCode' => 'ProdCodeSub'
+            ],
+            'LKB' => [
+                'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
+            ]
+        ]);
+
+        foreach($data as $key => $row){
+            if(empty($row['ProdBookData']) == false && $row['ProdBookData'] != 'N'){
+                $booklist = json_decode($row['ProdBookData'], true);
+                foreach($booklist as $idx => $book){
+                    if($book['BookProvisionCcd'] == '610003'){
+                        $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                            'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $book['ProdBookCode'], 'OP.PayStatusCcd' => '676001']
+                        ]);
+
+                        if($book_paid_cnt > 0){
+                            $booklist[$idx]['Paid'] = true;
+                        } else {
+                            $booklist[$idx]['Paid'] = false;
+                        }
+                    } else {
+                        $booklist[$idx]['Paid'] = false;
+                    }
+                }
+
+                $data[$key]['ProdBookData'] = $booklist;
+            } else {
+                $data[$key]['ProdBookData'] = [];
+            }
+        }
+
+        return $this->load->view('/classroom/pass/layer/morebook', [
+            'data' => $data
+        ]);
     }
 
     public function layerMyDevice()

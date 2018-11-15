@@ -161,7 +161,7 @@ class Issue extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->couponIssueModel->addCouponDetail($this->_reqP(null, false));
+        $result = $this->couponIssueModel->addCouponDetailByManual($this->_reqP(null, false));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

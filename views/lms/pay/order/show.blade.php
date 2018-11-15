@@ -119,7 +119,9 @@
                         <tbody>
                             @foreach($data['order_prod'] as $order_prod_row)
                                 <tr>
-                                    <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
+                                    <td>{{ $order_prod_row['ProdTypeCcdName'] }}
+                                        {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
+                                    </td>
                                     <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
@@ -185,7 +187,9 @@
                                         <td>
                                             <input type="checkbox" name="order_prod_idx[]" class="flat" value="{{ $order_prod_row['OrderProdIdx'] }}" data-real-pay-price="{{ $order_prod_row['RealPayPrice'] }}" @if($order_prod_row['PayStatusCcd'] != $_pay_status_ccd['paid']) disabled="disabled" @endif>
                                         </td>
-                                        <td>{{ $order_prod_row['ProdTypeCcdName'] }}</td>
+                                        <td>{{ $order_prod_row['ProdTypeCcdName'] }}
+                                            {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
+                                        </td>
                                         <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
                                         <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                         <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>

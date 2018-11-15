@@ -130,7 +130,8 @@ class CartModel extends BaseOrderModel
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
             $arr_mem_idx = element('mem_idx', $input, []);
-            $arr_prod_info = element('prod_code', $input, []);
+            $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
+            $arr_available_learn_pattern = ['on_lecture', 'adminpack_lecture', 'book'];     // 장바구니 등록가능 상품구분
             $default_sale_type_ccd = '613001';  // 기본 판매타입 공통코드 (PC+모바일)
 
             // 상품코드 기준으로 루프
@@ -139,9 +140,9 @@ class CartModel extends BaseOrderModel
                 list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
 
                 // 학습형태 조회 (단강좌, 운영자 일반형 패키지, 교재 상품만 장바구니 등록 가능)
-                $learn_pattern = $this->salesProductModel->getLearnPattern($prod_type, $learn_pattern_ccd);
-                if ($learn_pattern === false || ($learn_pattern != 'on_lecture' && $learn_pattern != 'adminpack_lecture' && $learn_pattern != 'book')) {
-                    throw new \Exception('장바구니에 담을 수 없는 상품입니다.' . PHP_EOL . '단강좌, 운영자 일반형 패키지, 교재 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
+                $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
+                if ($learn_pattern === false || in_array($learn_pattern, $arr_available_learn_pattern) === false) {
+                    throw new \Exception('장바구니에 담을 수 없는 상품입니다.' . PHP_EOL . '온라인 단강좌, 운영자 일반형 패키지, 교재 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
                 }
 
                 // 상품정보 조회

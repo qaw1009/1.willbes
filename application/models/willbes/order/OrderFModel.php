@@ -469,8 +469,7 @@ class OrderFModel extends BaseOrderFModel
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
                 // 상품 판매여부 체크
-                $learn_pattern = array_search($cart_row['LearnPatternCcd'], $this->_learn_pattern_ccd);
-                $learn_pattern === false && $learn_pattern = $cart_row['CartProdType'];
+                $learn_pattern = $this->getLearnPattern($cart_row['ProdTypeCcd'], $cart_row['LearnPatternCcd']);
 
                 $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $post_row['SiteCode'], $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'N');
                 if ($is_prod_check !== true) {

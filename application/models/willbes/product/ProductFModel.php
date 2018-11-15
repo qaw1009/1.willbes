@@ -67,26 +67,26 @@ class ProductFModel extends WB_Model
                 // 온라인 단강좌, 온라인 무료강좌
                 case 'on_lecture' :
                 case 'on_free_lecture' :
-                        $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, SubjectIdx, SubjectName, CourseIdx, CourseName
-                            , SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType
-                            , LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
+                        $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
+                            , SubjectIdx, SubjectName, CourseIdx, CourseName, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt
+                            , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
                     break;
                 
                 // 학원 단과
                 case 'off_lecture' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, SchoolYear
-                                , CampusCcd, CampusCcdName, FixNumber, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
-                                , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
-                                , fn_product_content(ProdCode, "633002") as Content';
+                            , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
+                            , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
+                            , fn_product_content(ProdCode, "633002") as Content';
                     break;
 
                 // 학원 종합반
                 case 'off_pack_lecture' :
-                    $column .= ', CateCode, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo,  CourseIdx, CourseName, SchoolYear,
-                                , CampusCcd, CampusCcdName, FixNumber, StudyPatternCcd, StudyPatternCcdName
-                                , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, LecSaleType, ProdPriceData
-                                , SchoolStartYear,SchoolStartMonth,PackSelCount,
-                                , fn_product_content(ProdCode, "633002") as Content';
+                        $column .= ', CateCode, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo,  CourseIdx, CourseName, SchoolYear,
+                            , CampusCcd, CampusCcdName, FixNumber, StudyPatternCcd, StudyPatternCcdName
+                            , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, LecSaleType, ProdPriceData
+                            , SchoolStartYear,SchoolStartMonth,PackSelCount,
+                            , fn_product_content(ProdCode, "633002") as Content';
                     break;
 
                 //추천-선택 패키지
@@ -97,12 +97,12 @@ class ProductFModel extends WB_Model
 
                 //사용자패키지
                 case 'userpack_lecture' :
-                    $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData';
+                        $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData';
                     break;
 
                 //기간제패키지
                 case 'periodpack_lecture' :
-                    $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+                        $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
                             , SchoolYear, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
                     break;
 

@@ -116,25 +116,4 @@ class SalesProductModel extends BaseOrderModel
 
         return element('0', $data, []);
     }
-
-    /**
-     * 상품타입과 학습형태 공통코드를 조합하여 학습형태 (뷰 테이블) 리턴
-     * @param $prod_type
-     * @param $learn_pattern_ccd
-     * @return false|int|string
-     */
-    public function getLearnPattern($prod_type, $learn_pattern_ccd)
-    {
-        $learn_pattern = array_search($learn_pattern_ccd, $this->_learn_pattern_ccd);
-        
-        if ($learn_pattern === false) {
-            if (is_numeric($prod_type) === true) {
-                $learn_pattern = array_search($prod_type, $this->_prod_type_ccd);
-            } else {
-                $learn_pattern = $prod_type;
-            }
-        }
-        
-        return $learn_pattern;
-    }
 }

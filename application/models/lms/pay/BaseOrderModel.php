@@ -53,6 +53,9 @@ class BaseOrderModel extends WB_Model
     // 판매가능 공통코드 (판매가능, 판매중, 접수중 (학원 단과, 종합반 접수상태))
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001', 'accept' => '675002'];
 
+    // 결제채널 공통코드
+    public $_pay_channel_ccd = ['pc' => '669001', 'm' => '669002', 'app' => '669003'];
+
     // 결제루트 공통코드
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005'];
 
@@ -71,5 +74,35 @@ class BaseOrderModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 주문번호 생성 및 리턴 (년월일시분초 (14) + microtime (3) + 랜덤숫자 (3) = 20자리)
+     * @return string
+     */
+    public function makeOrderNo()
+    {
+        return date_format(date_create(), 'YmdHisv') . '' . str_pad(mt_rand(0, 999), 3, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * 상품타입과 학습형태 공통코드를 조합하여 학습형태 (뷰 테이블) 리턴
+     * @param $prod_type
+     * @param $learn_pattern_ccd
+     * @return false|int|string
+     */
+    public function getLearnPattern($prod_type, $learn_pattern_ccd)
+    {
+        $learn_pattern = array_search($learn_pattern_ccd, $this->_learn_pattern_ccd);
+
+        if ($learn_pattern === false) {
+            if (is_numeric($prod_type) === true) {
+                $learn_pattern = array_search($prod_type, $this->_prod_type_ccd);
+            } else {
+                $learn_pattern = $prod_type;
+            }
+        }
+
+        return $learn_pattern;
     }
 }

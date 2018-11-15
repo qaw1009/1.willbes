@@ -30,8 +30,8 @@ class CouponFModel extends WB_Model
     // 쿠폰적용구분이 온라인강좌, 수강연장, 배수, 학원강좌일 경우 쿠폰상세구분 적용 (학습형태)
     public $_coupon_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004'];
 
-    // 발급타입 공통코드 (자동, 수동, 환불재발급)
-    private $_coupon_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'reissue' => '647003'];
+    // 발급타입 공통코드 (자동, 수동, 환불재발급, 주문결제자동발급)
+    private $_coupon_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'refund' => '647003', 'order' => '647004'];
 
     public function __construct()
     {
@@ -308,16 +308,18 @@ class CouponFModel extends WB_Model
      * 회원 쿠폰발급
      * @param int|string $coupon_no [쿠폰식별자 or 핀번호]
      * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회, 기 발급여부 체크]
+     * @param string $issue_type [쿠폰발급구분]
      * @param int|null $issue_order_prod_idx [발급주문상품식별자]
      * @return array|bool
      */
-    public function addMemberCoupon($coupon_no, $is_pin = false, $issue_order_prod_idx = null)
+    public function addMemberCoupon($coupon_no, $is_pin = false, $issue_type = 'auto', $issue_order_prod_idx = null)
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $find_method = $is_pin === true ? 'Pin' : 'Idx';
             $today = date('Y-m-d');
             $reg_ip = $this->input->ip_address();
+            $issue_type_ccd = element($issue_type, $this->_coupon_issue_type_ccd, $this->_coupon_issue_type_ccd['auto']);
 
             // 쿠폰정보 조회
             $row = $this->{'findCouponBy' . $find_method}($coupon_no);
@@ -352,7 +354,7 @@ class CouponFModel extends WB_Model
                 'CouponIdx' => $row['CouponIdx'],
                 'MemIdx' => $sess_mem_idx,
                 'IssueOrderProdIdx' => $issue_order_prod_idx,
-                'IssueTypeCcd' => $this->_coupon_issue_type_ccd['auto'],
+                'IssueTypeCcd' => $issue_type_ccd,
                 'ValidStatus' => 'Y',
                 'ExpireDatm' => $row['ExpireDatm'],
                 'IssueUserType' => 'M',

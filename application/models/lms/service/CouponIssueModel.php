@@ -19,8 +19,8 @@ class CouponIssueModel extends WB_Model
 
     private $_ccd = ['IssueType' => '647'];
 
-    // 쿠폰발급구분 (자동발급, 수동발급, 환불재발급)
-    public $_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'refund' => '647003'];
+    // 쿠폰발급구분 (자동발급, 수동발급, 환불재발급, 주문결제자동발급)
+    public $_issue_type_ccd = ['auto' => '647001', 'manual' => '647002', 'refund' => '647003', 'order' => '647004'];
 
     public function __construct()
     {

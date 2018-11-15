@@ -1411,7 +1411,7 @@
             return output_string;
         }
 
-        @if($method === "PUT")
+        @if($method === "PUT" && !empty($data_lecturedate))
             setLecDate_modify()
         @endif
 

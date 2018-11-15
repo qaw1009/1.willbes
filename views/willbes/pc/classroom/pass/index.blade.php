@@ -446,7 +446,7 @@
 
             sendAjax(url,
                 data,
-                function(d){
+                function(ret){
                     alert(ret.ret_msg);
                 },
                 function(ret, status){

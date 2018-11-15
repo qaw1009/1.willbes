@@ -475,7 +475,9 @@ class Pass extends \app\controllers\FrontController
 
         $today = date("Y-m-d", time());
 
-        $prodcodesub_arr = explode(',', $prodcodesub);
+        if(is_array($prodcodesub) == false || empty($prodcodesub) == true){
+            return $this->json_error('선택한강의가 없습니다.');
+        }
 
         // 실제 리스트용
         $cond_arr = [
@@ -505,12 +507,12 @@ class Pass extends \app\controllers\FrontController
 
         $passinfo = $passinfo[0];
 
+        foreach($prodcodesub as $subcode){
 
-        foreach($prodcodesub_arr as $data){
             // 서브강좌 목록에 있는지 체크
             $leclist = $this->packageFModel->subListProduct('periodpack_lecture', $passinfo['ProdCode'], [
                 'EQ' => [
-                    'C.ProdCode' => $data
+                    'C.ProdCode' => $subcode
                 ]
             ]);
 
@@ -525,7 +527,7 @@ class Pass extends \app\controllers\FrontController
                     'MemIdx' => $passinfo['MemIdx'],
                     'OrderIdx' => $passinfo['OrderIdx'],
                     'ProdCode' => $passinfo['ProdCode'],
-                    'ProdCodeSub' => $data
+                    'ProdCodeSub' => $subcode
                 ]
             ], [], true);
 
@@ -535,10 +537,10 @@ class Pass extends \app\controllers\FrontController
             }
 
             if($this->classroomFModel->addPassLecture([
-                    'OrderIdx' => $orderidx,
+                    'OrderIdx' => $passinfo['OrderIdx'],
                     'OrderProdIdx' => $passinfo['OrderProdIdx'],
-                    'ProdCode' => $prodcode,
-                    'ProdCodeSub' => $prodcodesub,
+                    'ProdCode' => $passinfo['ProdCode'],
+                    'ProdCodeSub' => $subcode,
                     'LecStartDate' => $passinfo['LecStartDate'],
                     'LecEndDate' => $passinfo['LecEndDate'],
                     'RealLecEndDate' => $passinfo['RealLecEndDate'],

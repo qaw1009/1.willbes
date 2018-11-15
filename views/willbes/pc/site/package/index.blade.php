@@ -106,7 +106,7 @@
                                             <strong>패키지상세정보</strong>
                                         </a>
                                     </dt>
-                                    <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
+                                    <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span></dt>
                                     <dt><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
                                     <dt class="NSK ml15">

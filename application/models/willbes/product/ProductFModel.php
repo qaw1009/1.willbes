@@ -91,18 +91,18 @@ class ProductFModel extends WB_Model
 
                 //추천-선택 패키지
                 case 'adminpack_lecture' :
-                        $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+                        $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
                             , CourseIdx, CourseName, SchoolYear, ProfIdx_String, wProfName_String, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
                     break;
 
                 //사용자패키지
                 case 'userpack_lecture' :
-                    $column .= ', CateCode, SchoolYear, StudyStartDate, IsSelLecCount,SelCount, PackSaleData';
+                    $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData';
                     break;
 
                 //기간제패키지
                 case 'periodpack_lecture' :
-                    $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
+                    $column .= ', CateCode, StudyPeriod, MultipleApply, StudyStartDate, StudyStartDateYM, PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount
                             , SchoolYear, fn_product_sublecture_codes(ProdCode) as ProdCodeSub, ProdPriceData';
                     break;
 

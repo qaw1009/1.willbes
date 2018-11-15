@@ -5,7 +5,7 @@
 <div class="lecDetailWrap">
     <div class="classInfo">
         <dl class="w-info NG">
-            <dt>개강일 : <span class="tx-blue">{{$data['lecture']['StudyStartDate']}}</span></dt>
+            <dt>개강일 : <span class="tx-blue">{{$data['lecture']['StudyStartDateYM']}}</span></dt>
             <dt><span class="row-line">|</span></dt>
             <dt>수강기간 : <span class="tx-blue">{{$data['lecture']['StudyPeriod']}}일</span></dt>
             <dt class="NSK ml15">

@@ -23,7 +23,7 @@
                         <td class="pl30">
                             <div class="w-tit">{{$data['ProdName']}}</div>
                             <dl class="w-info">
-                                <dt>개강일 : <span class="tx-blue">{{$data['StudyStartDate']}}</span></dt>
+                                <dt>개강일 : <span class="tx-blue">{{$data['StudyStartDateYM']}}</span></dt>
                                 <dt><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">{{$data['StudyPeriod']}}일</span></dt>
                                 <dt class="NSK ml15">

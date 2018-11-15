@@ -13,36 +13,34 @@
     <div class="form-group form-group-sm mb-0">
         <p class="form-control-static"><span class="required">*</span> 검색한 교재를 선택해 주세요. (다중 선택 불가능합니다.)</p>
     </div>
-    <div class="form-group form-group-bordered pt-10 pb-10">
-        <div class="row">
-            <label class="control-label col-md-2 pt-5" for="search_value">교재검색
-            </label>
-            <div class="col-md-4">
-                <input type="text" class="form-control input-sm" id="search_value" name="search_value">
-            </div>
-            <div class="col-md-4">
-                <p class="form-control-static">명칭, 코드 검색 가능</p>
-            </div>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2 pt-5" for="search_value">교재검색
+        </label>
+        <div class="col-md-4">
+            <input type="text" class="form-control input-sm" id="search_value" name="search_value">
         </div>
-        <div class="row mt-5">
-            <label class="control-label col-md-2 pt-5" for="search_publ_author">출판사/저자명
-            </label>
-            <div class="col-md-4">
-                <input type="text" class="form-control input-sm" id="search_publ_author" name="search_publ_author">
-            </div>
-            <div class="col-md-2">
-                <select class="form-control input-sm" id="search_sale_ccd" name="search_sale_ccd">
-                    <option value="">판매여부</option>
-                    @foreach($sale_ccd as $key => $val)
-                        <option value="{{ $key }}">{{ $val }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="col-md-4">
+            <p class="form-control-static">명칭, 코드 검색 가능</p>
         </div>
     </div>
-    <div class="form-group text-right pr-5">
-        <button type="submit" class="btn btn-primary btn-sm btn-search" id="_btn_search">검 색</button>
-        <button type="button" class="btn btn-default btn-sm btn-search" id="_btn_reset">초기화</button>
+    <div class="form-group form-group-sm">
+        <label class="control-label col-md-2 pt-5" for="search_publ_author">출판사/저자명
+        </label>
+        <div class="col-md-4">
+            <input type="text" class="form-control input-sm" id="search_publ_author" name="search_publ_author">
+        </div>
+        <div class="col-md-2">
+            <select class="form-control input-sm" id="search_sale_ccd" name="search_sale_ccd">
+                <option value="">판매여부</option>
+                @foreach($sale_ccd as $key => $val)
+                    <option value="{{ $key }}">{{ $val }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-4 text-right">
+            <button type="submit" class="btn btn-primary btn-sm btn-search" id="_btn_search">검 색</button>
+            <button type="button" class="btn btn-default btn-sm btn-search" id="_btn_reset">초기화</button>
+        </div>
     </div>
     <div class="row mt-20 mb-20">
         <div class="col-md-12 clearfix">

@@ -16,7 +16,7 @@
                 <p class="form-control-static"><span class="required">*</span> 검색한 교재 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
             </div>
 
-            <div class="form-group form-group-bordered pt-10 pb-5">
+            <div class="form-group pt-10 pb-5">
                 <label class="control-label col-md-2 pt-5" for="search_value">교재검색
                 </label>
                 <div class="col-md-4">

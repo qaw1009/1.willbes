@@ -1,11 +1,58 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- {{$arr_prof_info['ProfNickName']}} 교수 학습자료실 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 특정 강좌를 구매한 회원들에게 제공하는 학습자료를 관리하는 메뉴입니다. (운영자 패키지만 사용)</h5>
+    <h5>- {{$arr_prof_info['ProfNickName']}} 교수 T-pass 자료실</h5>
     {!! form_errors() !!}
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="x_panel">
+                <div class="x_content">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>대비학년도</th>
+                            <th>패키지유형</th>
+                            <th>운영자패키지명</th>
+                            <th>판매가</th>
+                            <th>판매여부</th>
+                            <th>사용여부</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{$product_data['SchoolYear']}}</td>
+                            <td>{{str_replace('패키지','',$product_data['PackTypeCcd_Name'])}}</td>
+                            <td>[{{$product_data['ProdCode']}}] {{$product_data['ProdName']}}</td>
+                            <td>
+                                {{number_format($product_data['RealSalePrice'])}}원<BR><strike>{{number_format($product_data['SalePrice'])}}원</strike>
+                            </td>
+                            <td>
+                                @if($product_data['SaleStatusCcd_Name'] == '판매불가')
+                                    <span class="red">{{$product_data['SaleStatusCcd_Name']}}</span>
+                                @else
+                                    {{$product_data['SaleStatusCcd_Name']}}
+                                @endif
+                            </td>
+                            <td>
+                                {!! ($product_data['IsUse'] == 'Y') ? '사용' : '<span class="red">미사용</span>' !!}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-right form-inline">
+                        <button type="button" class="btn btn-sm btn-dark ml-10 btn-open-calendar">노출/미노출날짜관리</button>
+                        <button type="button" class="btn btn-sm btn-primary ml-10 btn-main-list">전체강좌목록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
-
         <div class="x_panel">
             <div class="x_title">
                 <h2>학습자료실 정보</h2>
@@ -151,6 +198,11 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
+            //전체강좌목록
+            $('.btn-main-list').click(function() {
+                location.href = '{{ site_url("/board/professor/{$boardName}/registForBoard/{$prod_code}") }}/?' + '{!! $boardDefaultQueryString !!}'
+            });
+            
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/board/professor/{$boardName}") }}/registForBoard/' + '{!! $prod_code !!}' + getQueryString() + '{!! $boardDefaultQueryString !!}';

@@ -171,7 +171,7 @@
 
             //전체강좌목록
             $('.btn-main-list').click(function() {
-                location.href = '{{ site_url("/board/professor/{$boardName}/productList") }}/' + getQueryString();
+                location.href = '{{ site_url("/board/professor/{$boardName}/registForBoard/{$prod_code}") }}/?' + '{!! $boardDefaultQueryString !!}'
             });
 
             //목록

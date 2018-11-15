@@ -203,7 +203,7 @@
 
         //전체강좌목록
         $('.btn-main-list').click(function() {
-            location.href = '{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + getQueryString();
+            location.href = '{{ site_url("/board/professor/{$boardName}/registForBoard/{$prod_code}") }}/?' + '{!! $boardDefaultQueryString !!}'
         });
 
         //과제미노출날짜관리

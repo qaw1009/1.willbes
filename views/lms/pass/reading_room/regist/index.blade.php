@@ -155,11 +155,6 @@
                 location.href='{{ site_url('/pass/readingRoom/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
             });
 
-            // 독서실/사물함 신청현황 리스트
-            /*$list_table.on('click', '.btn-detail-list', function() {
-                location.href='{{ site_url('/pass/readingRoom/regist/assignManageList') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
-            });*/
-
             // TODO : 좌석배정/좌석이동 TEST
             $list_table.on('click', '.btn-create-seat-modal', function() {
                 var param = '&rdr_master_order_idx=' + '{{$rdr_master_order_idx}}';
@@ -181,7 +176,8 @@
     </form>
     <div class="x_panel mt-10">
         <button type="button" class="btn btn-default" id="btn_test_submit">독서실 좌석 배정 TEST 결제</button>
-        <button type="button" class="btn btn-default" id="btn_test_cancel">독서실 좌석 배정 취소</button>
+        <button type="button" class="btn btn-default" id="btn_test_cancel">독서실 좌석 배정 TEST 취소</button>
+        <button type="button" class="btn btn-default" id="btn_search_reading_room">독서실 상품 목록 TEST[공통]</button>
     </div>
 
     <script type="text/javascript">
@@ -201,6 +197,13 @@
             $regi_form.find('input[name="rdr_use_end_date[]"]').remove();
             $regi_form.find('input[name="rdr_is_sub_price[]"]').remove();
             $regi_form.find('input[name="rdr_memo[]"]').remove();
+        });
+
+        $('#btn_search_reading_room').click(function () {
+            $('#btn_search_reading_room').setLayer({
+                "url" : "{{ site_url('/common/searchReadingRoom') }}" + '?prod_type=reading_room',
+                "width" : "1200"
+            });
         });
     </script>
 @stop

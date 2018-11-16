@@ -52,7 +52,7 @@ class Regist extends \app\controllers\BaseController
             ],
             'ORG' => [
                 'LKB' => [
-                    'a.Name' => $this->_reqP('search_value'),
+                    'a.ReadingRoomName' => $this->_reqP('search_value'),
                     'a.ProdCode' => $this->_reqP('search_value'),
                     'a.LakeLayer' => $this->_reqP('search_value'),
                 ]

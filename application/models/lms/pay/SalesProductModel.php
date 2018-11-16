@@ -14,7 +14,9 @@ class SalesProductModel extends BaseOrderModel
         'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
         'delivery_price' => 'vw_product_delivery_price',
-        'delivery_add_price' => 'vw_product_delivery_add_price'
+        'delivery_add_price' => 'vw_product_delivery_add_price',
+        'product' => 'lms_product',
+        'product_lecture' => 'lms_product_lecture'
     ];
 
     /**
@@ -115,5 +117,23 @@ class SalesProductModel extends BaseOrderModel
         $data = $this->listSalesProduct($learn_pattern, $column, $arr_condition);
 
         return element('0', $data, []);
+    }
+
+    /**
+     * 강좌상품 수강정보 조회
+     * @param array $prod_code
+     * @return array|int|mixed
+     */
+    public function findProductLectureInfo($prod_code = [])
+    {
+        $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
+        $column = 'ProdCode, LearnPatternCcd, StudyStartDate, StudyEndDate
+            , ifnull(StudyPeriod, if(StudyStartDate is not null and StudyEndDate is not null, datediff(StudyEndDate, StudyStartDate), 0)) as StudyPeriod
+            , if(MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(AllLecTime * 60 * MultipleApply, int), 0) as MultipleAllLecSec';
+        $arr_condition = ['IN' => ['ProdCode' => (array) $prod_code]];
+
+        $data = $this->_conn->getListResult($this->_table['product_lecture'], $column, $arr_condition);
+
+        return is_array($prod_code) === true ? $data : element('0', $data, []);
     }
 }

@@ -96,8 +96,9 @@ class CommonLectureModel extends WB_Model
                     $column = 'A.*,C.wProfName,D.ProdName as ProdNameSub';
 
                     $from = ' from
-                                    ' . $tableName . ' A
-                                    join lms_professor B on A.ProfIdx = B.ProfIdx
+                    	            lms_product SA 
+                                    join ' . $tableName . ' A on SA.ProdCode = A.ProdCode
+                                    join lms_professor B on A.ProfIdx = B.ProfIdx And SA.SiteCode=B.SiteCode
                                     join wbs_pms_professor C on B.wProfIdx = C.wProfIdx
                                     join lms_product D on A.ProdCodeSub = D.ProdCode
                                 where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\' and D.IsStatus=\'Y\'
@@ -106,8 +107,9 @@ class CommonLectureModel extends WB_Model
                     $column = 'A.*,C.wProfName';
 
                     $from = ' from
-                                    ' . $tableName . ' A
-                                    join lms_professor B on A.ProfIdx = B.ProfIdx
+                                    lms_product SA 
+                                    join ' . $tableName . ' A on SA.ProdCode = A.ProdCode
+                                    join lms_professor B on A.ProfIdx = B.ProfIdx And SA.SiteCode=B.SiteCode
                                     join wbs_pms_professor C on B.wProfIdx = C.wProfIdx
                                 where A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.wIsStatus=\'Y\'
                     ';

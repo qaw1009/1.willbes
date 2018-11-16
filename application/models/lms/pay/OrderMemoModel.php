@@ -29,7 +29,7 @@ class OrderMemoModel extends BaseOrderModel
     }
 
     /**
-     * 주문 메모 저장
+     * 주문 메모 저장 (주문 조회 페이지)
      * @param array $input
      * @return array|bool
      */
@@ -37,6 +37,28 @@ class OrderMemoModel extends BaseOrderModel
     {
         $this->_conn->trans_begin();
 
+        try {
+            $is_add_memo = $this->_addOrderMemo($input);
+            if ($is_add_memo !== true) {
+                throw new \Exception($is_add_memo);
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 주문 메모 저장
+     * @param array $input
+     * @return bool|string
+     */
+    public function _addOrderMemo($input = [])
+    {
         try {
             $admin_idx = $this->session->userdata('admin_idx');
 
@@ -48,15 +70,12 @@ class OrderMemoModel extends BaseOrderModel
                 'RegIp' => $this->input->ip_address()
             ];
 
-            // 과정 등록
+            // 메모 등록
             if ($this->_conn->set($data)->insert($this->_table['order_memo']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
-
-            $this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+            return $e->getMessage();
         }
 
         return true;

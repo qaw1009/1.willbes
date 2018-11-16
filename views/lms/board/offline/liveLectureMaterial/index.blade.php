@@ -125,6 +125,7 @@
         var $search_form = $('#search_form');
         var $list_table = $('#list_ajax_table');
         var arr_search_data = {!! $arr_search_data !!};
+        var $set_is_best = {};
 
         $(document).ready(function() {
             // 기간 조회 디폴트 셋팅
@@ -195,7 +196,7 @@
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                             var chk = '';
-                            if (data == '1') { chk = 'checked=checked'; } else { chk = ''; }
+                            if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }
                             return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
                         }},
 
@@ -236,6 +237,7 @@
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
+                    'before_params' : JSON.stringify($set_is_best),
                     'params' : JSON.stringify($params)
                 };
 

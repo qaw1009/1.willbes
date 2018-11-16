@@ -264,10 +264,10 @@
             };
 
             if ($('input:radio[name="copy"]').is(':checked') === false) {
-                alert('복사할 자료를 선택해 주세요.');
+                alert('복사할 게시글을 선택해 주세요.');
                 return false;
             }
-            if (!confirm('해당 자료를 복사하시겠습니까?')) {
+            if (!confirm('해당 게시글을 복사하시겠습니까?')) {
                 return;
             }
             sendAjax(_url, data, function(ret) {

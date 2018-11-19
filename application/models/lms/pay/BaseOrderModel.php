@@ -23,6 +23,7 @@ class BaseOrderModel extends WB_Model
         'product_division' => 'lms_product_division',
         'product_r_product' => 'lms_product_r_product',
         'product_professor_concat' => 'vw_product_r_professor_concat',
+        'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'bms_book' => 'wbs_bms_book',
         'my_lecture' => 'lms_my_lecture',
         'member' => 'lms_member',

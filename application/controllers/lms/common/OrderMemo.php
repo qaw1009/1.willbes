@@ -17,7 +17,10 @@ class OrderMemo extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $arr_condition = ['EQ' => ['OM.OrderIdx' => $this->_reqP('order_idx')]];
+        $arr_condition = ['EQ' => [
+            'OM.OrderIdx' => $this->_reqP('order_idx'),
+            'OM.MemoTypeCcd' => element($this->_reqP('memo_type'), $this->orderMemoModel->_order_memo_type_ccd)
+        ]];
 
         $list = [];
         $count = $this->orderMemoModel->listOrderMemo(true, $arr_condition);

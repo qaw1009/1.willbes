@@ -38,7 +38,8 @@ class OrderListModel extends BaseOrderModel
                             else "O"    # 주문완료(계좌신청)
                         end, NULL			
                       ) as VBankStatus                    
-                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminRegReason, O.CompleteDatm, O.OrderDatm
+                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminRegReason, O.RegAdminIdx, if(O.AdminRegReason is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
+                    , O.CompleteDatm, O.OrderDatm
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , OP.CardPayPrice as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice    # TODO : 임시 환불산출금액 (로직 추가 필요)
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
@@ -311,5 +312,34 @@ class OrderListModel extends BaseOrderModel
     public function findOrderByOrderIdx($order_idx, $column = '')
     {
         return $this->findOrder(['EQ' => ['O.OrderIdx' => $order_idx]], $column);
+    }
+
+    /**
+     * 주문 배송 주소 조회 by 주문식별자
+     * @param int $order_idx
+     * @return array
+     */
+    public function findOrderDeliveryAddressByOrderIdx($order_idx)
+    {
+        $column = 'Receiver
+            , ReceiverTel1, if(length(ReceiverTel2Enc) > 0, fn_dec(ReceiverTel2Enc), "") as ReceiverTel2, ReceiverTel3, if(length(ReceiverTelEnc) > 0, fn_dec(ReceiverTelEnc), "") as ReceiverTel
+            , ReceiverPhone1, fn_dec(ReceiverPhone2Enc) as ReceiverPhone2, ReceiverPhone3, fn_dec(ReceiverPhoneEnc) as ReceiverPhone
+            , ZipCode, Addr1, fn_dec(Addr2Enc) as Addr2, DeliveryMemo';
+        $arr_condition = ['EQ' => ['OrderIdx' => $order_idx]];
+
+        return $this->_conn->getFindResult($this->_table['order_delivery_address'], $column, $arr_condition);
+    }
+
+    /**
+     * 강의 회차정보 조회 (관리자 결제 회차등록일 경우 사용)
+     * @param array|int $unit_idx [회차식별자]
+     * @return array|int
+     */
+    public function findLectureUnitByUnitIdx($unit_idx)
+    {
+        $column = 'wUnitIdx, wLecIdx, wUnitName, wUnitLectureNum, wUnitNum, wRuntime, wShootingDate';
+        $arr_condition = ['IN' => ['wUnitIdx' => (array ) $unit_idx]];
+
+        return $this->_conn->getListResult($this->_table['cms_lecture_unit'], $column, $arr_condition);
     }
 }

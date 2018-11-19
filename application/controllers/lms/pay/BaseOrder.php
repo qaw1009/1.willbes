@@ -32,7 +32,7 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund']);
+        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund', 'my_lecture']);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
@@ -52,13 +52,16 @@ class BaseOrder extends \app\controllers\BaseController
         // 회원포인트 조회
         $point_data = $this->pointModel->getMemberPoint($order_data['MemIdx']);
 
-        // 환불정보
+        // 환불, 관리자결제 정보 조회
         $is_refund_data = false;
         $refund_data = [];
-        if ($this->_is_refund_proc === true) {
-            // 환불내역 데이터 가공 (환불처리에서만 사용)
-            foreach ($data as $row) {
-                if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
+        $admin_pay_data = [];
+        $delivery_addr = [];
+
+        foreach ($data as $row) {
+            if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
+                // 환불내역 데이터 가공 (환불처리에서만 사용)
+                if ($this->_is_refund_proc === true) {
                     $refund_data[$row['RefundReqIdx']]['ProdTypeCcdName'][] = $row['ProdTypeCcdName'];
                     $refund_data[$row['RefundReqIdx']]['LearnPatternCcdName'][] = $row['LearnPatternCcdName'];
                     $refund_data[$row['RefundReqIdx']]['ProdName'][] = $row['ProdName'];
@@ -71,16 +74,40 @@ class BaseOrder extends \app\controllers\BaseController
                         'RefundReason' => $row['RefundReason'], 'RefundAdminName' => $row['RefundAdminName']
                     ]);
                 }
+
+                // 환불 데이터 존재 여부
+                if ($is_refund_data === false) {
+                    $is_refund_data = true;
+                }
             }
 
-            empty($refund_data) === false && $is_refund_data = true;    // 환불 데이터 존재 여부
-        } else {
-            // 환불 데이터 존재 여부
-            foreach ($data as $row) {
-                if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
-                    $is_refund_data = true;
-                    break;
+            // 관리자결제 상품 데이터 셋팅
+            if (empty($admin_pay_data) === true) {
+                if ($row['ProdTypeCcd'] != $this->orderListModel->_prod_type_ccd['delivery_price'] && empty($order_data['RegAdminIdx']) === false) {
+                    $admin_pay_data = $row;
                 }
+            }
+        }
+
+        // 관리자결제 정보 조회
+        if (empty($admin_pay_data) === false) {
+            if ($order_data['IsDelivery'] == 'Y') {
+                // 배송주소 조회
+                $delivery_addr = $this->orderListModel->findOrderDeliveryAddressByOrderIdx($order_data['OrderIdx']);
+
+                // 배송료 관련 메모 조회
+                $this->load->loadModels(['pay/orderMemo']);
+                $delivery_addr['OrderMemo'] = array_get($this->orderMemoModel->listOrderMemo('OM.OrderMemo', [
+                    'EQ' => ['OM.OrderIdx' => $order_data['OrderIdx'], 'OM.MemoTypeCcd' => $this->orderMemoModel->_order_memo_type_ccd['delivery_price']]
+                ], 1, 0, ['OM.OrderMemoIdx' => 'desc']), '0.OrderMemo');
+            }
+            
+            // 나의 강좌정보 조회
+            empty($admin_pay_data['MyLecData']) === false && $admin_pay_data['MyLecData'] = element('0', json_decode($admin_pay_data['MyLecData'], true));
+
+            // 회차정보 조회
+            if (empty($admin_pay_data['MyLecData']['wUnitIdxs']) === false) {
+                $admin_pay_data['MyLecData']['wUnitData'] = $this->orderListModel->findLectureUnitByUnitIdx(explode(',', $admin_pay_data['MyLecData']['wUnitIdxs']));
             }
         }
 
@@ -90,12 +117,15 @@ class BaseOrder extends \app\controllers\BaseController
                 'order' => $order_data,
                 'order_prod' => $data,
                 'refund_prod' => $refund_data,
+                'admin_prod' => $admin_pay_data,
+                'delivery_addr' => $delivery_addr,
                 'mem' => $mem_data,
                 'mem_point' => $point_data
             ],
             '_is_refund_proc' => $this->_is_refund_proc,
             '_is_refund_data' => $is_refund_data,
             '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,
+            '_pay_route_ccd' => $this->orderListModel->_pay_route_ccd,
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }

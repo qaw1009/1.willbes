@@ -380,73 +380,92 @@
                     </div>
                 @endif
             @endif
-            <div class="ln_solid mt-5"></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4><strong>관리자 결제정보</strong></h4>
+            @if($data['order']['PayRouteCcd'] == $_pay_route_ccd['zero'] || $data['order']['PayRouteCcd'] == $_pay_route_ccd['alliance'])
+                <div class="ln_solid mt-5"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong>관리자 결제정보</strong></h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                    </div>
+                    <div class="col-md-12">
+                        <table id="list_admin_pay_table" class="table table-striped table-bordered">
+                            <tbody>
+                            <tr>
+                                <th class="bg-odd">상품구분</th>
+                                <td class="bg-white-only">{{ $data['order']['PayRouteCcdName'] }}
+                                    | {{ $data['admin_prod']['ProdTypeCcdName'] }}
+                                    {{ isset($data['admin_prod']['MyLecData']['wUnitData']) === true ? '(회차등록)' : '' }}
+                                    | <div class="blue inline-block">[{{ $data['admin_prod']['LearnPatternCcdName'] or $data['admin_prod']['ProdTypeCcdName'] }}]</div> {{ $data['admin_prod']['ProdName'] }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="bg-odd">제공정보</th>
+                                <td class="bg-white-only">
+                                    @if(empty($data['admin_prod']['MyLecData']) === false)
+                                        [수강시작일] {{ $data['admin_prod']['MyLecData']['LecStartDate'] }} &nbsp;
+                                        [수강제공기간] {{ $data['admin_prod']['MyLecData']['LecExpireDay'] }}일 &nbsp;
+                                    @endif
+                                    [결제금액] {{ number_format($data['admin_prod']['RealPayPrice']) }}원 &nbsp;
+                                    @if($data['order']['PayRouteCcd'] == $_pay_route_ccd['alliance'])
+                                        [제휴사] 해당없음
+                                    @endif
+                                </td>
+                            </tr>
+                            @if(isset($data['admin_prod']['MyLecData']['wUnitData']) === true)
+                            <tr>
+                                <th class="bg-odd">회차정보</th>
+                                <td class="bg-white-only">
+                                    <table id="list_lecture_unit_table" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>강의명</th>
+                                            <th>촬영일</th>
+                                            <th>강의시간</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($data['admin_prod']['MyLecData']['wUnitData'] as $unit_row)
+                                        <tr>
+                                            <td>{{ $unit_row['wUnitLectureNum'] }}회차 {{ $unit_row['wUnitNum'] }}강</td>
+                                            <td>{{ $unit_row['wUnitName'] }}</td>
+                                            <td>{{ $unit_row['wShootingDate'] }}</td>
+                                            <td>{{ $unit_row['wRuntime'] }}분</td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            @endif
+                            @if(empty($data['delivery_addr']) === false)
+                            <tr>
+                                <th class="bg-odd">배송정보</th>
+                                <td class="bg-white-only">
+                                    <p>[이름] {{ $data['delivery_addr']['Receiver'] }}</p>
+                                    <p>[주소] [{{ $data['delivery_addr']['ZipCode'] }}] {{ $data['delivery_addr']['Addr1'] }} {{ $data['delivery_addr']['Addr2'] }}</p>
+                                    <p>[휴대폰번호] {{ $data['delivery_addr']['ReceiverPhone'] }}</p>
+                                    <p>[전화번호] {{ $data['delivery_addr']['ReceiverTel'] }}</p>
+                                    <p>[배송시 요청사항] {{ $data['delivery_addr']['DeliveryMemo'] }}</p>
+                                    <p>[배송료] {{ number_format($data['order']['tDeliveryPrice']) }}원</p>
+                                    <p>[배송료 입금정보] {{ $data['delivery_addr']['OrderMemo'] }}</p>
+                                </td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <th class="bg-odd">부여사유</th>
+                                <td class="bg-white-only">{{ $data['order']['AdminRegReason'] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-odd">부여자</th>
+                                <td class="bg-white-only">{{ $data['order']['RegAdminName'] }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="col-md-6 text-right">
-                </div>
-                <div class="col-md-12">
-                    <table id="list_admin_pay_table" class="table table-striped table-bordered">
-                        <tbody>
-                        <tr>
-                            <th class="bg-odd">상품구분</th>
-                            <td class="bg-white-only">0원결제 | 온라인강좌(회차등록) | <a class="blue">[단강좌]</a> 강좌명</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-odd">제공정보</th>
-                            <td class="bg-white-only">[수강시작일] 2018-00-00 &nbsp; [수강제공기간] 2일 &nbsp; [결제금액] 0원 &nbsp; [제휴사] 해당없음</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-odd">회차정보</th>
-                            <td class="bg-white-only">
-                                <table id="list_lecture_unit_table" class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>강의명</th>
-                                        <th>촬영일</th>
-                                        <th>자료</th>
-                                        <th>강의시간</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>2강</td>
-                                        <td>강의명</td>
-                                        <td>2018-00-00</td>
-                                        <td><a href="#none"><i class="fa fa-floppy-o"></i></a></td>
-                                        <td>70분</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="bg-odd">배송정보</th>
-                            <td class="bg-white-only">
-                                <p>[이름] 홍길동</p>
-                                <p>[주소] 경기도 성남시 중원구 도촌북로 78, 휴먼시아 509동 503호</p>
-                                <p>[휴대폰번호] 010-0000-0000</p>
-                                <p>[전화번호] 02-0000-0000</p>
-                                <p>[배송시 요청사항] 부재시 경비실에 맡겨주세요.</p>
-                                <p>[배송료] 2,500원</p>
-                                <p>[배송료 입금정보]</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="bg-odd">부여사유</th>
-                            <td class="bg-white-only">관리자테스트부여</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-odd">부여자</th>
-                            <td class="bg-white-only">관리자명</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            @endif
             <div class="ln_solid mt-5"></div>
             <div class="row">
                 <div class="col-md-6">
@@ -459,6 +478,7 @@
                         {!! csrf_field() !!}
                         {!! method_field('POST') !!}
                         <input type="hidden" name="order_idx" value="{{ $idx }}"/>
+                        <input type="hidden" name="memo_type" value="normal"/>
                         <div class="item">
                             <textarea id="order_memo" name="order_memo" class="form-control" rows="3" title="메모" required="required" placeholder="메모 내용을 입력해 주십시오."></textarea>
                         </div>

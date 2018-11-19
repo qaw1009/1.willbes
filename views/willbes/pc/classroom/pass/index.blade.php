@@ -126,7 +126,7 @@
                             <div class="willbes-Lec-Table NG d_block">
                                 @if(empty($leclist_like) == false)
                                     <div class="PASSZONE-Btn">
-                                        <div class="w-answer"><a href="javascript:;" onclick="fnUnLike('all');"><span class="aBox passBox waitBox NSK">삭제</span></a></div>
+                                        <div class="w-answer"><a href="javascript:;" onclick="fnUnLike('all', null);"><span class="aBox passBox waitBox NSK">삭제</span></a></div>
                                     </div>
                                 @endif
                                 <form name='likedForm' id='likedForm' >
@@ -134,7 +134,7 @@
                                         <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
                                         <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
                                         <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                        <input type='hidden' name='ProdCodeSub' id='ProdCodeSub_liked' value='' />
+                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_liked' value='' />
                                     @endif
                                     <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                         <colgroup>
@@ -146,7 +146,7 @@
                                         <tbody>
                                         @forelse( $leclist_like as $row )
                                             <tr>
-                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
+                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
                                                 <td class="w-percent">진도율<br/>
                                                     <span class="tx-blue">{{$row['StudyRate']}}%</span>
                                                 </td>
@@ -186,8 +186,8 @@
                                 @if(empty($leclist_ing) == false)
                                     <div class="PASSZONE-Btn">
                                         <div class="w-answer">
-                                            <span class="w-chk-st"><a href="javascript:;"><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
-                                            <a href="javascript:;"><span class="aBox passBox waitBox NSK">숨기기</span></a>
+                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);"><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
+                                            <a href="javascript:;" onclick="fnHide('all',null);"><span class="aBox passBox waitBox NSK">숨기기</span></a>
                                         </div>
                                     </div>
                                 @endif
@@ -196,7 +196,7 @@
                                         <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
                                         <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
                                         <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                        <input type='hidden' name='ProdCodeSub' id="ProdCodeSub_ing" value='' />
+                                        <input type='hidden' name='ProdCodeSub[]' id="ProdCodeSub_ing" value='' />
                                     @endif
                                     <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                         <colgroup>
@@ -208,7 +208,7 @@
                                         <tbody>
                                         @forelse( $leclist_ing as $row )
                                             <tr>
-                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
+                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
                                                 <td class="w-percent">진도율<br/>
                                                     <span class="tx-blue">{{$row['StudyRate']}}%</span>
                                                 </td>
@@ -302,7 +302,7 @@
                                 @if(empty($leclist_nodisp) == false)
                                     <div class="PASSZONE-Btn">
                                         <div class="w-answer">
-                                            <a href="javascript:;" onclick="fnUnHide('all');"><span class="aBox passBox waitBox NSK">숨김해제</span></a>
+                                            <a href="javascript:;" onclick="fnUnHide('all', null);"><span class="aBox passBox waitBox NSK">숨김해제</span></a>
                                         </div>
                                     </div>
                                 @endif
@@ -311,7 +311,7 @@
                                         <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
                                         <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
                                         <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                        <input type='hidden' name='ProdCodeSub' id="ProdCodeSub_hide" value='' />
+                                        <input type='hidden' name='ProdCodeSub[]' id="ProdCodeSub_hide" value='' />
                                     @endif
                                     <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                         <colgroup>
@@ -323,7 +323,7 @@
                                         <tbody>
                                         @forelse( $leclist_nodisp as $row )
                                             <tr>
-                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_hidden" name="ProdCodeSub" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
+                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_hidden" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
                                                 <td class="w-percent">진도율<br/>
                                                     <span class="tx-blue">{{$row['StudyRate']}}%</span>
                                                 </td>
@@ -642,7 +642,11 @@
 
             sendAjax(url, data, function(ret){
                     alert(ret.ret_msg);
-                    location.reload();
+                    if(code == 'all'){
+                        location.reload();
+                    } else {
+
+                    }
                 },
                 function(ret, status){
                     alert(ret.ret_msg);
@@ -663,8 +667,11 @@
 
             sendAjax(url, data, function(ret){
                     alert(ret.ret_msg);
-                    location.reload();
-
+                    if(code == 'all'){
+                        location.reload();
+                    } else {
+                        $(obj).parent().parent().remove();
+                    }
                 },
                 function(ret, status){
                     alert(ret.ret_msg);
@@ -685,8 +692,11 @@
 
             sendAjax(url, data, function(ret){
                     alert(ret.ret_msg);
-                    location.reload();
-
+                    if(code == 'all'){
+                        location.reload();
+                    } else {
+                        $(obj).parent().parent().remove();
+                    }
                 },
                 function(ret, status){
                     alert(ret.ret_msg);
@@ -707,7 +717,11 @@
 
             sendAjax(url, data, function(ret){
                     alert(ret.ret_msg);
-                    location.reload();
+                    if(code == 'all'){
+                        location.reload();
+                    } else {
+                        $(obj).parent().parent().remove();
+                    }
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

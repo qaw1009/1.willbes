@@ -608,8 +608,20 @@ class ClassroomFModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try{
-            if($this->_conn->set($input)->where($cond)->update($this->_table['mylec']) == false){
-                throw new \Exception('업데이트 실패했습니다.');
+            $data = [
+                'OrderIdx' => $cond['OrderIdx'],
+                'OrderProdIdx' => $cond['OrderProdIdx'],
+                'ProdCode' => $cond['ProdCode']
+            ];
+
+            foreach($cond['ProdCodeSub'] as $key => $value){
+                if(empty($value) == false){
+                    if($this->_conn->set($input)->where(array_merge($data, [
+                            'ProdCodeSub' => $value
+                        ]))->update($this->_table['mylec']) == false){
+                        throw new \Exception('업데이트 실패했습니다.');
+                    }
+                }
             }
 
             $this->_conn->trans_commit();

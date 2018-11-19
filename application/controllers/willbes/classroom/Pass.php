@@ -646,8 +646,6 @@ class Pass extends \app\controllers\FrontController
         $prodcode = $this->_req('ProdCode');
         $prodcodesub = $this->_req('ProdCodeSub');
 
-        $prodcodesub = is_array($prodcodesub) == true ? array($prodcodesub) : $prodcodesub;
-
         $cond = [
             'OrderIdx' => $orderidx,
             'OrderProdIdx' => $orderprodidx,
@@ -686,7 +684,7 @@ class Pass extends \app\controllers\FrontController
         if($this->classroomFModel->setLikeHide($input, $cond) == true){
             return $this->json_result(true, '변경 처리했습니다.');
         } else {
-            return $this->json_error('변겨에 실패했습니다.\n다시 시도해주십시요.');
+            return $this->json_error('변경에 실패했습니다.\n다시 시도해주십시요.');
         }
     }
 
@@ -711,8 +709,6 @@ class Pass extends \app\controllers\FrontController
         $prodcode = $this->_req('ProdCode');
         $prodcodesub = $this->_req('ProdCodeSub');
 
-        $prodcodesub = is_array($prodcodesub) == true ? array($prodcodesub) : $prodcodesub;
-
         $cond = [
             'OrderIdx' => $orderidx,
             'OrderProdIdx' => $orderprodidx,
@@ -751,7 +747,7 @@ class Pass extends \app\controllers\FrontController
         if($this->classroomFModel->setLikeHide($input, $cond) == true){
             return $this->json_result(true, '변경 처리했습니다.');
         } else {
-            return $this->json_error('변겨에 실패했습니다.\n다시 시도해주십시요.');
+            return $this->json_error('변경에 실패했습니다.\n다시 시도해주십시요.');
         }
     }
 }

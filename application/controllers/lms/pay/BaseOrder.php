@@ -107,7 +107,8 @@ class BaseOrder extends \app\controllers\BaseController
 
             // 회차정보 조회
             if (empty($admin_pay_data['MyLecData']['wUnitIdxs']) === false) {
-                $admin_pay_data['MyLecData']['wUnitData'] = $this->orderListModel->findLectureUnitByUnitIdx(explode(',', $admin_pay_data['MyLecData']['wUnitIdxs']));
+                $this->load->loadModels(['pay/salesProduct']);
+                $admin_pay_data['MyLecData']['wUnitData'] = $this->salesProductModel->findLectureUnitByUnitIdx(explode(',', $admin_pay_data['MyLecData']['wUnitIdxs']));
             }
         }
 

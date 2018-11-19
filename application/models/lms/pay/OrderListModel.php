@@ -329,17 +329,4 @@ class OrderListModel extends BaseOrderModel
 
         return $this->_conn->getFindResult($this->_table['order_delivery_address'], $column, $arr_condition);
     }
-
-    /**
-     * 강의 회차정보 조회 (관리자 결제 회차등록일 경우 사용)
-     * @param array|int $unit_idx [회차식별자]
-     * @return array|int
-     */
-    public function findLectureUnitByUnitIdx($unit_idx)
-    {
-        $column = 'wUnitIdx, wLecIdx, wUnitName, wUnitLectureNum, wUnitNum, wRuntime, wShootingDate';
-        $arr_condition = ['IN' => ['wUnitIdx' => (array ) $unit_idx]];
-
-        return $this->_conn->getListResult($this->_table['cms_lecture_unit'], $column, $arr_condition);
-    }
 }

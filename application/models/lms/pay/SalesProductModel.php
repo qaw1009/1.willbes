@@ -146,7 +146,7 @@ class SalesProductModel extends BaseOrderModel
     public function findLectureUnitByUnitIdx($unit_idx)
     {
         $column = 'wUnitIdx, wLecIdx, wUnitName, wUnitLectureNum, wUnitNum, wRuntime, wShootingDate';
-        $arr_condition = ['IN' => ['wUnitIdx' => (array ) $unit_idx]];
+        $arr_condition = ['IN' => ['wUnitIdx' => (array) $unit_idx]];
 
         return $this->_conn->getListResult($this->_table['cms_lecture_unit'], $column, $arr_condition);
     }

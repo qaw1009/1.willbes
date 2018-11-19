@@ -514,16 +514,16 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     border-right-width: 0 !important;
 }
 .bdt-line {
-    border-top: 1px solid #ddd !important;
+    border-top: 1px solid #e6e9ed !important;
+}
+.bdb-line {
+    border-bottom: 1px solid  #e6e9ed !important;
 }
 .bdr-line {
     border-right: 1px solid #ddd !important;
 }
 .bdl-line {
     border-left: 1px solid #ddd !important;
-}
-.bdb-line {
-    border-bottom: 1px solid  #ddd !important;
 }
 
 /* no-margin */

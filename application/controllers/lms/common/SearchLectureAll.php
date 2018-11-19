@@ -13,7 +13,6 @@ class SearchLectureAll extends \app\controllers\BaseController
 
     public function index()
     {
-
         $prod_type = $this->_req('prod_type');
         $LearnPatternCcd = $this->_req('LearnPatternCcd');
 
@@ -24,8 +23,9 @@ class SearchLectureAll extends \app\controllers\BaseController
         }
 
         $this->load->view('common/search_lecture_all',[
-            'site_code' => $this->_req('site_code')
-            ,'prod_type' => $prod_type
+            'prod_type' => $prod_type
+            ,'prod_tabs' => explode(',', $this->_req('prod_tabs'))  // 노출되는 상품 탭
+            ,'site_code' => $this->_req('site_code')
             ,'return_type' => $this->_req('return_type')
             ,'target_id' => $this->_req('target_id')
             ,'target_field' => $this->_req('target_field')
@@ -39,7 +39,6 @@ class SearchLectureAll extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-
         $LearnPatternCcd = $this->_reqP('LearnPatternCcd');
 
         $arr_condition = [
@@ -66,7 +65,6 @@ class SearchLectureAll extends \app\controllers\BaseController
             ],
         ]);
 
-
         if($LearnPatternCcd === '615001') {
             $modelname = "lectureModel";
         } elseif($LearnPatternCcd === '615003') {
@@ -91,6 +89,5 @@ class SearchLectureAll extends \app\controllers\BaseController
             'recordsFiltered' => $count,
             'data' => $list
         ]);
-
     }
 }

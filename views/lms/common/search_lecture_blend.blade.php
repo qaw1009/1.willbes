@@ -15,12 +15,12 @@
 
         @section('layer_content')
 
-                <div class="form-group form-group-sm mb-0">
-                    <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
-                </div>
+            <div class="form-group form-group-sm no-border-bottom">
+                <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
+            </div>
 
-            <div class="form-group form-group-sm">
-                <ul class="nav nav-tabs nav-justified">
+            <div class="form-group no-padding">
+                <ul class="nav nav-tabs nav-justified mb-10">
                     <li {{$LearnPatternCcd == '615001' || $LearnPatternCcd == '615005' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('615001');"><strong>온라인</strong></a></li>
                     <li {{$LearnPatternCcd == '615006' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('615006');"><strong>학원</strong></a></li>
                 </ul>
@@ -28,7 +28,7 @@
 
 
             @if(empty($wLecIdx) === true)
-                <div class="form-group form-group-bordered pt-10 pb-5">
+                <div class="form-group pt-10 pb-5">
                     <label class="control-label col-md-2 pt-5" for="search_value">@if($LearnPatternCcd === '615006')단과반@else강좌@endif검색
                     </label>
 

@@ -52,9 +52,11 @@ class BaseOrder extends \app\controllers\BaseController
         // 회원포인트 조회
         $point_data = $this->pointModel->getMemberPoint($order_data['MemIdx']);
 
-        // 환불내역 데이터 가공 (환불처리에서만 사용)
+        // 환불정보
+        $is_refund_data = false;
         $refund_data = [];
         if ($this->_is_refund_proc === true) {
+            // 환불내역 데이터 가공 (환불처리에서만 사용)
             foreach ($data as $row) {
                 if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
                     $refund_data[$row['RefundReqIdx']]['ProdTypeCcdName'][] = $row['ProdTypeCcdName'];
@@ -70,6 +72,16 @@ class BaseOrder extends \app\controllers\BaseController
                     ]);
                 }
             }
+
+            empty($refund_data) === false && $is_refund_data = true;    // 환불 데이터 존재 여부
+        } else {
+            // 환불 데이터 존재 여부
+            foreach ($data as $row) {
+                if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
+                    $is_refund_data = true;
+                    break;
+                }
+            }
         }
 
         $this->load->view('pay/order/show', [
@@ -82,6 +94,7 @@ class BaseOrder extends \app\controllers\BaseController
                 'mem_point' => $point_data
             ],
             '_is_refund_proc' => $this->_is_refund_proc,
+            '_is_refund_data' => $is_refund_data,
             '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);

@@ -42,7 +42,7 @@ class OrderListModel extends BaseOrderModel
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , OP.CardPayPrice as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice    # TODO : 임시 환불산출금액 (로직 추가 필요)
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
-                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm, AU.wAdminName as UpdAdminName 
+                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm 
                     , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
@@ -88,7 +88,7 @@ class OrderListModel extends BaseOrderModel
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
             , O.AdminRegReason, O.CompleteDatm, O.OrderDatm
             , OP.RealPayPrice, OP.IsUseCoupon, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate
-            , OP.UpdDatm, AU.wAdminName as UpdAdminName                       
+            , OP.UpdDatm                       
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
             , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
@@ -149,9 +149,7 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"
-                left join ' . $this->_table['admin'] . ' as AU
-                    on OP.UpdAdminIdx = AU.wAdminIdx and AU.wIsStatus = "Y"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
 
         return $from . $this->_getAddListQuery('from', $arr_add_join);
     }
@@ -259,7 +257,7 @@ class OrderListModel extends BaseOrderModel
                 $column .= ', OPR.RefundReqIdx, ifnull(OPR.RefundPrice, 0) as RefundPrice, ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice, ifnull(OPR.CashRefundPrice, 0) as CashRefundPrice 
                     , OPR.IsPointRefund, OPR.RecoPointIdx, OPR.IsCouponRefund, OPR.RecoCouponIdx
                     , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.RefundReason, ORR.IsApproval, ORR.IsBankRefund';
-                $excel_column .= ', OPR.RefundPrice';
+                $excel_column .= ', OPR.RefundPrice, OPR.RefundDatm, AR.wAdminName as RefundAdminName';
             }
 
             // 나의 강좌정보 추가

@@ -128,7 +128,8 @@ class OrderModel extends BaseOrderModel
                 $reco_point_idx = null;
                 $reco_coupon_idx = null;
 
-                if ($card_refund_price + $cash_refund_price < 1) {
+                // 0원결제가 아닌 경우 환불금액 확인
+                if ($row['RealPayPrice'] > 0 && $card_refund_price + $cash_refund_price < 1) {
                     throw new \Exception('환불요청 금액이 올바르지 않습니다.');
                 }
 

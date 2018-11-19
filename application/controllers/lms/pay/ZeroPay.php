@@ -7,7 +7,7 @@ class ZeroPay extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('delivery_info', 'my_lecture');
+    private $_list_add_join = array('delivery_info', 'refund', 'my_lecture');
     private $_tel1_ccd = '672';
     private $_phone1_ccd = '673';
 
@@ -27,7 +27,7 @@ class ZeroPay extends BaseOrder
 
         // 결제상태 공통코드에서 0원결제용 코드만 필터링
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], [
-            $this->orderListModel->_pay_status_ccd['paid'], $this->orderListModel->_pay_status_ccd['cancel']
+            $this->orderListModel->_pay_status_ccd['paid'], $this->orderListModel->_pay_status_ccd['refund']
         ]);
 
         $this->load->view('pay/zero_pay/index', [
@@ -109,9 +109,8 @@ class ZeroPay extends BaseOrder
         $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
 
         switch ($this->_reqP('search_date_type')) {
-            case 'cancel' :
-                $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['cancel'];
-                $arr_condition['BDT'] = ['OP.UpdDatm' => [$search_start_date, $search_end_date]];
+            case 'refund' :
+                $arr_condition['BDT'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'delivery_send' :
                 $arr_condition['BDT'] = ['OPD.DeliverySendDatm' => [$search_start_date, $search_end_date]];
@@ -129,11 +128,11 @@ class ZeroPay extends BaseOrder
      */
     public function excel()
     {
-        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품구분', '상품명', '회차수', '결제상태', '취소완료일', '취소완료자'
+        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품구분', '상품명', '회차수', '결제상태', '환불완료일', '환불완료자'
             , '수강시작일', '수강기간', '부여사유'];
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdTypeCcdName, ProdName
             , if(json_value(MyLecData, "$[0].wUnitIdxs") != "", fn_str_count(concat(json_value(MyLecData, "$[0].wUnitIdxs"), ","), ","), "") as wUnitCnt
-            , PayStatusCcdName, UpdDatm, UpdAdminName
+            , PayStatusCcdName, RefundDatm, RefundAdminName
             , json_value(MyLecData, "$[0].LecStartDate") as LecStartDate, json_value(MyLecData, "$[0].LecExpireDay") as LecExpireDay, AdminRegReason';
 
         $arr_condition = $this->_getListConditions();

@@ -126,11 +126,11 @@ class Order extends BaseOrder
     public function excel()
     {
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '가상계좌신청일', '주문일', '결제완료일', '총 실결제금액', '사용강좌포인트', '사용교재포인트'
-            , '총 환불금액', '총 남은금액', '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '배송상태', '할인율', '쿠폰적용여부'];
+            , '총 환불금액', '총 남은금액', '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '환불완료일', '환불완료자', '배송상태', '할인율', '쿠폰적용여부'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, VBankOrderDatm, OrderDatm, CompleteDatm
             , tRealPayPrice, tUseLecPoint, tUseBookPoint, tRefundPrice, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice
-            , ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, DeliveryStatusCcdName, DiscRate, IsUseCoupon';
+            , ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, RefundDatm, RefundAdminName, DeliveryStatusCcdName, DiscRate, IsUseCoupon';
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);

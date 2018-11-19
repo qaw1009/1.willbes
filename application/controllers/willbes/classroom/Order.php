@@ -38,7 +38,7 @@ class Order extends \app\controllers\FrontController
                 'S.SiteGroupCode' => element('site_group', $arr_input),
                 'S.IsCampus' => element('is_pass', $arr_input)
             ],
-            'IN' => ['O.PayRouteCcd' => [$this->orderListFModel->_pay_route_ccd['pg'], $this->orderListFModel->_pay_route_ccd['visit']]],   // PG, 방문결제
+            'NOT' => ['O.PayRouteCcd' => $this->orderListFModel->_pay_route_ccd['free']],   // 무료결제만 제외
             'BDT' => ['O.OrderDatm' => [element('search_start_date', $arr_input), element('search_end_date', $arr_input)]]
         ];
 

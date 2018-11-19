@@ -96,7 +96,7 @@
                                     <td class="w-number"><a href="{{ site_url('/classroom/order/show?order_no=' . $row['OrderNo'] . '&' . http_build_query($arr_input)) }}">{{ $row['OrderNo'] }}</a></td>
                                     <td class="w-list">{{ $row['ReprProdName'] }}</td>
                                     <td class="w-price">{{ number_format($row['RealPayPrice']) }}</td>
-                                    <td class="w-method">{{ $row['PayMethodCcdName'] }}</td>
+                                    <td class="w-method">{{ empty($row['PayMethodCcd']) === false ? $row['PayMethodCcdName'] : $row['PayRouteCcdName'] }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

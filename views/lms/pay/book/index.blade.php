@@ -215,7 +215,7 @@
                         return addComma(data);
                     }},
                     {'data' : 'RefundPrice', 'render' : function(data, type, row, meta) {
-                        return data > 0 ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
+                        return row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<span class="red no-line-height">' + addComma(data) + '</span>' : '';
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + row.RefundDatm.substr(0, 10) + '<br/>(' + row.RefundAdminName + ')' : '');

@@ -60,7 +60,7 @@
                     <div class="col-md-11 form-inline">
                         <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                             <option value="paid">결제완료일</option>
-                            <option value="cancel">취소완료일</option>
+                            <option value="refund">환불완료일</option>
                             <option value="delivery_send">발송완료일</option>
                         </select>
                         <div class="input-group mb-0 mr-20">
@@ -131,7 +131,6 @@
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
-                    { text: '<i class="fa fa-undo mr-5"></i> 취소처리', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-zero-cancel' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 0원결제등록', className: 'btn-sm btn-success border-radius-reset btn-zero-order' }
                 ],
                 ajax: {
@@ -168,7 +167,7 @@
                         return data;
                     }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['cancel'] }}' ? '<br/>' + row.UpdDatm.substr(0, 10) + '<br/>(' + row.UpdAdminName + ')' : '');
+                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + row.RefundDatm.substr(0, 10) + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
                     {'data' : 'LecStartDate', 'render' : function(data, type, row, meta) {
                         return data != null ? data + '<br/>(' + row.LecExpireDay + '일)' : '';

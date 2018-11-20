@@ -11,7 +11,7 @@
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>기출문제 정보</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
                 </div>
@@ -22,14 +22,6 @@
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
-                    </div>
-                    <label class="control-label col-md-1-1 d-line" for="area_ccd">지역<span class="required">*</span></label>
-                    <div class="form-inline col-md-4 ml-12-dot item">
-                        <select class="form-control" required="required" id="area_ccd" name="area_ccd" title="지역">
-                            @foreach($arr_area_ccd as $key => $val)
-                                <option value="{{$key}}" @if($key == $data['AreaCcd'])selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
 
@@ -48,6 +40,17 @@
                                 @endforeach
                             @endif
                         </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="area_ccd">지역<span class="required">*</span></label>
+                    <div class="form-inline col-md-4 item">
+                        <select class="form-control" required="required" id="area_ccd" name="area_ccd" title="지역">
+                            @foreach($arr_area_ccd as $key => $val)
+                                <option value="{{$key}}" @if($key == $data['AreaCcd'])selected="selected"@endif>{{$val}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -72,10 +75,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="is_best">HOT</label>
+                    <label class="control-label col-md-1-1" for="is_best">공지</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">공지</label>
                         </div>
                     </div>
                     <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>

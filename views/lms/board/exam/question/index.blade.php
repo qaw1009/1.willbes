@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
-                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
+                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">공지 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                     <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
@@ -87,7 +87,7 @@
                     <th>첨부</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>HOT</th>
+                    <th>공지</th>
                     <th>사용</th>
                     <th>조회수</th>
                     <th>수정</th>
@@ -121,7 +121,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-copy mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
+                    { text: '<i class="fa fa-copy mr-10"></i> 공지적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
 
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
 
@@ -143,7 +143,7 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             if (row.IsBest == '1') {
-                                return 'BEST';
+                                return '공지';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             }
@@ -211,7 +211,7 @@
                 });
 
                 if (Object.keys($params).length <= '0') {
-                    alert('HOT 적용할 게시글을 선택해주세요.');
+                    alert('공지 적용할 게시글을 선택해주세요.');
                     return false;
                 }
 

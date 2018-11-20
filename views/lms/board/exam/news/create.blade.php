@@ -11,7 +11,7 @@
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>수험뉴스 정보</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
                 </div>
@@ -44,10 +44,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="is_best">HOT</label>
+                    <label class="control-label col-md-1-1" for="is_best">공지</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">공지</label>
                         </div>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>

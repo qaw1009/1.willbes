@@ -69,6 +69,7 @@ class Counsel extends BaseBoard
         $arr_condition = [
             'EQ' => [
                 'BmIdx' => $this->bm_idx,
+                'IsStatus' => 'Y',
                 'ReplyStatusCcd' => $this->_Ccd['reply']['unAnswered']
             ]
         ];

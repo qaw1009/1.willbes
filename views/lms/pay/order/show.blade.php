@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ $data['mem']['MemIdx'] }} ({{ $data['mem']['SiteName'] }})</td>
                                 <td>{{ $data['mem']['JoinDate'] }}</td>
-                                <td><u>{{ $data['mem']['MemName'] }} ({{ $data['mem']['Sex'] == 'M' ? '남' : '여' }})</u></td>
+                                <td>{{ $data['mem']['MemName'] }} ({{ $data['mem']['Sex'] == 'M' ? '남' : '여' }})</td>
                                 <td>{{ $data['mem']['MemId'] }}</td>
                                 <td>{{ $data['mem']['Phone'] }} ({{ $data['mem']['SmsRcvStatus'] }})</td>
                                 <td>{{ $data['mem']['Mail'] }} ({{ $data['mem']['MailRcvStatus'] }})</td>
@@ -506,50 +506,11 @@
             </div>
         </div>
     </div>
+    <script src="/public/js/lms/order_memo.js"></script>
     <script type="text/javascript">
-        var $datatable;
         var $refund_proc_form = $('#refund_proc_form');
-        var $regi_memo_form = $('#regi_memo_form');
-        var $list_memo_table = $('#list_memo_table');
 
         $(document).ready(function() {
-            // 메모 목록
-            $datatable = $list_memo_table.DataTable({
-                serverSide: true,
-                paging: false,
-                ajax: {
-                    'url' : '{{ site_url('/common/orderMemo/listAjax') }}',
-                    'type' : 'POST',
-                    'data' : function(data) {
-                        return $.extend(arrToJson($regi_memo_form.find('input[type="hidden"]').serializeArray()), {});
-                    }
-                },
-                columns: [
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                    }},
-                    {'data' : 'OrderMemo', 'render' : function(data, type, row, meta) {
-                        return data.replace(/\n/gi, '<br/>');
-                    }},
-                    {'data' : 'RegAdminName'},
-                    {'data' : 'RegDatm'}
-                ]
-            });
-
-            // 메모 등록
-            $regi_memo_form.submit(function() {
-                var _url = '{{ site_url('/common/orderMemo/store') }}';
-
-                ajaxSubmit($regi_memo_form, _url, function(ret) {
-                    if(ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $regi_memo_form.find('textarea[name="order_memo"]').val('');
-                        $datatable.draw();
-                    }
-                }, showValidateError, null, false, 'alert');
-            });
-
             // 계좌취소 버튼 클릭
             $('button[name="btn_vbank_cancel"]').on('click', function() {
                 if (!confirm('해당 계좌를 취소하시겠습니까?')) {
@@ -557,9 +518,9 @@
                 }
 
                 var data = {
-                    '{{ csrf_token_name() }}' : $regi_memo_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '{{ csrf_token_name() }}' : '{{ csrf_token() }}',
                     '_method' : 'PUT',
-                    'order_idx' : $regi_memo_form.find('input[name="order_idx"]').val()
+                    'order_idx' : '{{ $idx }}'
                 };
                 sendAjax('{{ site_url('/pay/order/cancel/vbank') }}', data, function(ret) {
                     if (ret.ret_cd) {

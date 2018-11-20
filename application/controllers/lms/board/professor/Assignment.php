@@ -157,15 +157,15 @@ class Assignment extends BaseBoard
     }
 
     /**
-     * 과제미노출관리
+     * 과제노출스케줄관리
      */
-    public function createExceptDateModal()
+    public function createScheduleModal()
     {
         $method = 'POST';
         $data = null;
         $week_arr = explode(",",",,,,,,");
 
-        $this->load->view("board/professor/{$this->board_name}/create_except_date_modal", [
+        $this->load->view("board/professor/{$this->board_name}/create_schedule_modal", [
             'method' => $method,
             'week_arr' => $week_arr,
             'data' => $data

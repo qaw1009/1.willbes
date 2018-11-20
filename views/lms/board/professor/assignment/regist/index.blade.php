@@ -51,7 +51,6 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-right form-inline">
-                <button type="button" class="btn btn-sm btn-dark ml-10 btn-open-calendar">노출/미노출날짜관리</button>
                 <button type="button" class="btn btn-sm btn-primary ml-10 btn-main-list">전체강좌목록</button>
             </div>
         </div>
@@ -131,7 +130,8 @@
         $datatable = $list_table.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-copy mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset btn-create-assignment' }
+                { text: '<i class="fa fa-copy mr-10"></i> 과제노출스케줄', className: 'btn-sm btn-dark border-radius-reset btn-open-calendar' },
+                { text: '<i class="fa fa-copy mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset ml-10 btn-create-assignment' }
             ],
             ajax: {
                 'url' : '{{ site_url("/board/professor/{$boardName}/registForBoardAjax/{$prod_code}?") }}' + '{!! $boardDefaultQueryString !!}',
@@ -170,10 +170,10 @@
             location.href = '{{ site_url("/board/professor/{$boardName}/productList") }}/' + getQueryString();
         });
 
-        //과제미노출날짜관리
+        //과제노출스케줄관리
         $('.btn-open-calendar').click(function () {
             $('.btn-open-calendar').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/createExceptDateModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
+                "url" : "{{ site_url("/board/professor/{$boardName}/createScheduleModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
                 "width" : "1200"
             });
         });

@@ -628,7 +628,7 @@ class OrderFModel extends BaseOrderFModel
                 'PayStatusCcd' => $pay_status_ccd,
                 'OrderPrice' => element('RealSalePrice', $input),
                 'RealPayPrice' => $real_pay_price,
-                'CardPayPrice' => $real_pay_price,
+                'CardPayPrice' => ($is_visit_pay == 'N' ? $real_pay_price : 0),     // 방문결제일 경우 0원, 실 결제시 금액 설정됨
                 'CashPayPrice' => 0,
                 'DiscPrice' => element('CouponDiscPrice', $input, 0),
                 'DiscRate' => element('CouponDiscRate', $input, 0),
@@ -1122,7 +1122,7 @@ class OrderFModel extends BaseOrderFModel
                 'OrderPrice' => $cart_results['total_prod_order_price'],
                 'OrderProdPrice' => $cart_results['total_prod_order_price'],
                 'RealPayPrice' => $cart_results['total_pay_price'],
-                'CardPayPrice' => $cart_results['total_pay_price'],
+                'CardPayPrice' => 0,
                 'CashPayPrice' => 0,
                 'DeliveryPrice' => 0,
                 'DeliveryAddPrice' => 0,
@@ -1149,8 +1149,7 @@ class OrderFModel extends BaseOrderFModel
             // 주문상품 데이터 등록
             foreach ($cart_results['list'] as $idx => $cart_row) {
                 // 상품 판매여부 체크
-                $learn_pattern = array_search($cart_row['LearnPatternCcd'], $this->_learn_pattern_ccd);
-                $learn_pattern === false && $learn_pattern = $cart_row['CartProdType'];
+                $learn_pattern = $this->getLearnPattern($cart_row['ProdTypeCcd'], $cart_row['LearnPatternCcd']);
 
                 $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $site_code, $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'Y');
                 if ($is_prod_check !== true) {

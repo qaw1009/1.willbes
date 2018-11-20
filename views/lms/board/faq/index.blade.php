@@ -107,7 +107,7 @@
                     <th>NO</th>
                     <th>정렬</th>
                     <th>사이트</th>
-                    <th>구분</th>
+                    <th>카테고리</th>
                     <th>FAQ구분</th>
                     <th>분류</th>
                     <th width="20%">제목</th>

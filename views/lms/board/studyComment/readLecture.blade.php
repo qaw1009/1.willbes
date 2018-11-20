@@ -17,7 +17,7 @@
                     <div class="form-control-static col-md-4">
                         {{$product_data['SiteName']}}
                     </div>
-                    <label class="control-label col-md-1-1 d-line">구분</label>
+                    <label class="control-label col-md-1-1 d-line">카테고리</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
                         {{$product_data['CateName']}}
                     </div>

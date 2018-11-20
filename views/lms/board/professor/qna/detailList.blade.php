@@ -13,7 +13,7 @@
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control" id="search_category" name="search_category">
-                            <option value="">구분</option>
+                            <option value="">카테고리</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
@@ -115,7 +115,7 @@
                 <tr>
                     <th>NO</th>
                     <th>운영사이트</th>
-                    <th>구분</th>
+                    <th>카테고리</th>
                     <th>분류</th>
                     <th>과목</th>
                     <th>질문유형</th>

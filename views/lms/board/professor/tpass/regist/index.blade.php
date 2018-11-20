@@ -108,7 +108,7 @@
             <tr>
                 <th>복사</th>
                 <th>NO</th>
-                <th>구분</th>
+                <th>카테고리</th>
                 <th>자료유형</th>
                 <th>제목</th>
                 <th>첨부</th>

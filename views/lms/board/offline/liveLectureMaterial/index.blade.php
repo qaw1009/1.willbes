@@ -20,7 +20,7 @@
                         </select>
 
                         <select class="form-control" id="search_category" name="search_category">
-                            <option value="">구분</option>
+                            <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
@@ -101,7 +101,7 @@
                     <th>NO</th>
                     <th>운영사이트</th>
                     <th>캠퍼스</th>
-                    <th>구분</th>
+                    <th>카테고리</th>
                     <th>과목</th>
                     <th>과정</th>
                     <th>교수명</th>

@@ -219,6 +219,7 @@ class On extends \app\controllers\FrontController
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
+                'LearnPatternCcd' => ['615003'], // 단과, 사용자
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
         ]), $orderby);
@@ -255,6 +256,7 @@ class On extends \app\controllers\FrontController
         // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
         $adminlistPkg = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
+                'LearnPatternCcd' => ['615003'], // 단과, 사용자
                 'PayRouteCcd' => ['670003','670004','670005'] // 0원, 무료, 제휴사
             ]
         ]), $orderby);

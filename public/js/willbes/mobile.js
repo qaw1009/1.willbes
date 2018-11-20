@@ -39,10 +39,12 @@ $(function() {
         if ($txt_info.hasClass('on')) {
             $txt_info.removeClass('on');
             $(this).text('닫기 ▲');
+            $.cookie('moreInfo', 'on', { expires: 7 });
 
         } else {
             $txt_info.addClass('on');
             $(this).text('열기 ▼');
+            $.cookie('moreInfo', 'off', { expires: 7 });
         }
     });
 });
@@ -54,10 +56,12 @@ $(function() {
 
         if ($lec_info_table.is(':hidden')) {
             $lec_info_table.show().css('visibility','visible');
-            $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off.png');
+            //$('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off.png');
+            $(this).find('img').attr('src','/public/img/willbes/m/mypage/icon_arrow_off.png');
         } else {
             $lec_info_table.hide().css('visibility','hidden');
-            $('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
+            //$('.willbes-Open-Table .MoreBtn a img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
+            $(this).find('img').attr('src','/public/img/willbes/m/mypage/icon_arrow_on.png');
         }
     });
 });

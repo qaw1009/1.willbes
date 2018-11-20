@@ -14,7 +14,9 @@ class Pass extends \app\controllers\FrontController
     }
 
     /**
-     * 기간제 강의실
+     * 기간제 패키지 강의실 메인
+     * @param array $params
+     * @return object|string
      */
     public function index($params = [])
     {
@@ -236,6 +238,10 @@ class Pass extends \app\controllers\FrontController
 
     }
 
+    /**
+     * 강의 보기
+     * @return object|string
+     */
     public function view()
     {
         $today = date("Y-m-d", time());
@@ -387,6 +393,10 @@ class Pass extends \app\controllers\FrontController
     }
 
 
+    /**
+     * 기간제패키지 강의 목록
+     * @return object|string
+     */
     public function ajaxMoreLecture()
     {
         $prodcode = $this->_req('ProdCode');
@@ -456,6 +466,10 @@ class Pass extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 듣고 있는 강좌 교재 목록
+     * @return object|string
+     */
     public function ajaxMoreBook()
     {
         $orderidx = $this->_req("OrderIdx");
@@ -530,12 +544,21 @@ class Pass extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 내 디바이스 목록
+     * @return object|string
+     */
     public function layerMyDevice()
     {
 
         return $this->load->view('/classroom/pass/layer/mydevice', []);
     }
 
+
+    /**
+     * 강의 추가
+     * @return CI_Output
+     */
     public function addLecture()
     {
         $orderidx = $this->_req('OrderIdx');
@@ -625,6 +648,11 @@ class Pass extends \app\controllers\FrontController
         return $this->json_result(true, '강좌를 추가했습니다.');
     }
 
+    /**
+     * 즐겨찾기/숨기기 설정
+     * @param array $params
+     * @return CI_Output
+     */
     public function set($params = [])
     {
         if(empty($params[0]) == true){
@@ -688,6 +716,11 @@ class Pass extends \app\controllers\FrontController
         }
     }
 
+    /**
+     * 즐겨찾기/숨기기 취소
+     * @param array $params
+     * @return CI_Output
+     */
     public function unset($params = [])
     {
         if(empty($params[0]) == true){

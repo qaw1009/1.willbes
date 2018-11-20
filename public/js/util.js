@@ -27,8 +27,20 @@ function fnPlayer($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quilit
 /**
  * 모바일웹 모바일 플레이어
  */
-function mobilePlayer(){
-
+function fnMobile($info_url, $license)
+{
+    StarPlayerApp.license = $license;
+    StarPlayerApp.version = "1.0.0";
+    StarPlayerApp.android_version = "1.6.31";
+    StarPlayerApp.ios_version = "1.0.0";
+    StarPlayerApp.referer = window.location.href;
+    StarPlayerApp.android_referer_return = "true";
+    StarPlayerApp.debug = "false";
+    StarPlayerApp.pmp = "false";
+window.open($info_url);
+return
+    checkInstalled2();
+    StarPlayerApp.executeApp($info_url);
 }
 
 /**

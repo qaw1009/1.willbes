@@ -769,6 +769,247 @@ class Player extends \app\controllers\FrontController
         return $protocol.$str;
     }
 
+    public function getMobile()
+    {
+        // 아이디찾기용 아이핀 정보 생성
+        $this->load->library('Crypto',['license' => config_item('starplayer_license')]);
+
+
+        $MemIdx = $this->_req("m");
+        $OrderIdx = $this->_req("o");
+        $ProdCode = $this->_req("p");
+        $ProdCodeSub = $this->_req("sp");
+        $wUnitIdx = $this->_req("u");
+        $Quility = $this->_req("q");
+        $type = $this->_req("st");
+
+        $today = date("Y-m-d", time());
+
+        if($type == "D"){
+            $type = "download";
+        } else {
+            $type = "streaming";
+        }
+
+        // 수강가능인지 체크
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $MemIdx,
+                'OrderIdx' => $OrderIdx,
+                'ProdCode' => $ProdCode,
+                'ProdCodeSub' => $ProdCodeSub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            self::StarplayerError('강좌정보가 없습니다.');
+        }
+
+        $lec = $lec[0];
+
+        // 종합반이면 종합반으로 부터 일시중지 등 정보 얻어오기
+        if($lec['LearnPatternCcd'] == '615003'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'OrderIdx' => $orderidx,
+                    'ProdCode' => $prodcode
+                ],
+                'GTE' => [
+                    'RealLecEndDate' => $today
+                ]
+            ]);
+
+            $pkg = $pkg[0];
+
+            $lec['lastPauseEndDate'] = $pkg['lastPauseEndDate'];
+            $lec['lastPauseStartDate'] = $pkg['lastPauseStartDate'];
+            $lec['PauseSum'] = $pkg['PauseSum'];
+            $lec['PauseCount'] = $pkg['PauseCount'];
+            $lec['ExtenSum'] = $pkg['ExtenSum'];
+            $lec['ExtenCount'] = $pkg['ExtenCount'];
+        }
+
+        if($lec['LecStartDate'] > $today){
+            $isstart = 'N';
+        } else if ( $lec['lastPauseStartDate'] <= $today && $lec['lastPauseEndDate'] >= $today) {
+            $isstart = 'N';
+            $ispause = 'Y';
+        } else {
+            $isstart = 'Y';
+        }
+
+        if($isstart == 'N'){
+            self::StarplayerError('아직 수강시작 전인 강의입니다.');
+        }
+
+        if($ispause == 'Y'){
+            self::StarplayerError('일시중지 중인 강의입니다.');
+        }
+
+        // 회차 열어준경우 IN 생성
+        if(empty($lec['wUnitIdxs']) == true){
+            $wUnitIdxs = [];
+        } else {
+            $wUnitIdxs = explode(',', $lec['wUnitIdxs']);
+        }
+
+        if(is_array($wUnitIdx) == true){
+            $cond_arr = [
+                'EQ' => [
+                    'MemIdx' => $MemIdx,
+                    'OrderIdx' => $OrderIdx,
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub
+                ],
+                'IN' => [
+                    'wUnitIdx' => $wUnitIdx
+                ]
+            ];
+        } else {
+            $cond_arr = [
+                'EQ' => [
+                    'MemIdx' => $MemIdx,
+                    'OrderIdx' => $OrderIdx,
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub,
+                    'wUnitIdx' => $wUnitIdx
+                ]
+            ];
+        }
+
+        // 커리큘럼 읽어오기
+        $data = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $unitidx
+            ],
+            'IN' => [
+                'wUnitIdx' => $wUnitIdxs
+            ]
+        ]);
+
+        if(empty($data) == true){
+            self::StarplayerError('강의 정보가 없습니다.');
+        }
+
+        $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
+        $XMLString .= "<axis-app>";
+        $XMLString .= "<action-type>".$type."</action-type>";
+        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>";
+
+        foreach($data as $key => $row){
+
+
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $timeover = 'N';
+            }
+            else if($lec['MultipleApply'] == '1'){
+                // 무제한
+                $timeover = 'N';
+
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($data['RealStudyTime']);
+                // 제한시간 분 -> 초
+                $limittime = intval($data['RealExpireTime']) * 60;
+
+                if($studytime > $limittime){
+                    $timeover = 'Y';
+                } else {
+                    $timeover = 'N';
+                }
+
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['RealExpireTime']) * 60;
+
+                if($studytime > $limittime){
+                    $timeover = 'Y';
+                } else {
+                    $timeover = 'N';
+                }
+            }
+
+            if($timeover == 'Y'){
+                show_alert('수강가능시간이 초과되었습니다.');
+            }
+
+            switch($quility){
+                case 'WD':
+                    $filename = $data['wWD'];
+                    $ratio = 21; // 초 와이드는 고정
+                    break;
+
+                case 'HD':
+                    $filename = $data['wHD'];
+                    $ratio = $data['wRatio']; // 고화질은 설정한 비율
+                    break;
+
+                case 'SD':
+                    $filename = $data['wSD'];
+                    $ratio = $data['wRatio']; // 저화질도 설정한 비율
+                    break;
+
+                default:
+                    $filename = $data['wWD'];
+                    $ratio = 21; // 초 와이드는 고정
+                    break;
+            }
+
+            // 동영상 경로가 없을때 다른 경로로 재생
+            if(empty($filename) === true){
+                $filename = $data['wWD'];
+                $ratio = 21;
+            }
+            if(empty($filename) === true){
+                $filename = $data['wHD'];
+                $ratio = $data['wRatio'];
+            }
+            if(empty($filename) === true){
+                $filename = $data['wSD'];
+                $ratio = $data['wRatio'];
+            }
+
+            // 모든 경로없을때
+            if(empty($filename) === true){
+                show_alert('수강가능한 파일이 없습니다.', 'close');
+            }
+
+            $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
+
+
+
+            $XMLString .= "<content>";
+            $XMLString .= "<id><![CDATA["."]]></id>";
+            $XMLString .= "<url><![CDATA["."]]></url>";
+            $XMLString .= "<title><![CDATA["."]]></title>";
+            $XMLString .= "<category><![CDATA["."]]></category>";
+            $XMLString .= "<limit-date><![CDATA["."]]></limit-date>";
+            $XMLString .= "</content>";
+        }
+
+        $XMLString .= "</axis-app>";
+
+        return $XMLString;
+        return $this->crypto->encrypt($XMLString);
+    }
+
 
     /**
      * 모바일 스타플레이어 이벤트 API
@@ -776,5 +1017,15 @@ class Player extends \app\controllers\FrontController
     public function StarplayerAPI()
     {
 
+    }
+
+
+    public function StarplayerError($msg, $debug = '')
+    {
+        echo("<axis-app>");
+        echo("<error>1</error>");
+        echo("<message>".$msg."</message>");
+        echo("<debug>".$debug."</debug>");
+        echo("</axis-app>");
     }
 }

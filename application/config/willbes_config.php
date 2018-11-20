@@ -25,6 +25,9 @@ $config['vbank_expire_days'] = '7'; // 입금시한 설정 일수
 // 추가 배송료 추가 대상 우편번호 앞자리
 $config['delivery_add_price_charge_zipcode'] = ['63', '69'];
 
+// 스타플레이어 모바일 라이센스
+$config['starplayer_license'] = '5EDC454C-81A1-4434-A386-7314FCB74991';
+
 // 통합사이트 설정
 $config['www'] = array(
 

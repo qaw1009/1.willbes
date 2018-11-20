@@ -40,7 +40,7 @@
                                 <dt><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }}</dt><br/>
                                 <dt><strong>진도율 :</strong> <span class="tx-blue">{{$lec['StudyRate']}}%</span><!-- (1강/20강) --><span class="row-line">|</span>
                                     <strong>잔여기간 :</strong> <span class="tx-blue">
-                                                @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                                        @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
                                             {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
                                         @elseif(empty($lec['lastPauseEndDate']) == true)
                                             {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
@@ -61,12 +61,14 @@
                 <div id="notice1" class="tabContent">
                     <div class="passListTabs c_both">
                         <form name="downForm" id="downForm" >
+                            <input type="hidden" name="license" value="{{config_item('starplayer_license')}}" />
                             <input type="hidden" name="m" value="{{$lec['MemIdx']}}" />
                             <input type="hidden" name="o" value="{{$lec['OrderIdx']}}" />
                             <input type="hidden" name="op" value="{{$lec['OrderProdIdx']}}" />
                             <input type="hidden" name="p" value="{{$lec['ProdCode']}}" />
                             <input type="hidden" name="sp" value="{{$lec['ProdCodeSub']}}" />
                             <input type="hidden" name="q" id="quility" value="" />
+                            <input type="hidden" name="st" value="D" />
                             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable" />
                                 <colgroup>
                                     <col style="width: 13%;">
@@ -80,7 +82,7 @@
                                 <tbody>
                                 @forelse($curriculum as $row)
                                     <tr>
-                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="wUnitIdx[]" value="{{$row['wUnitIdx']}}" class="goods_chk"></td>
+                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk"></td>
                                         <td class="w-data tx-left">
                                             <div class="w-tit mb10">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강 {{$row['wUnitName']}}</div>
                                             <dl class="w-info tx-gray mb10">
@@ -91,9 +93,9 @@
                                             <ul class="w-free NGEB">
                                                 @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
                                                     @if($row['timeover'] == 'N')
-                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnMobile("{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD");' >WIDE</a></li>@endif
-                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnMobile("{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD");' >HIGH</a></li>@endif
-                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnMobile("{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD");' >LOW</a></li>@endif
+                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S", "{{config_item('starplayer_license')}}");' >WIDE</a></li>@endif
+                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S", "{{config_item('starplayer_license')}}");' >HIGH</a></li>@endif
+                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S", "{{config_item('starplayer_license')}}");' >LOW</a></li>@endif
                                                     @else
                                                         <li class="btn_black_line"><a>시간초과</a></li>
                                                     @endif
@@ -138,31 +140,24 @@
         <!-- Fixbtn -->
     </div>
     <!-- End Container -->
-    <script src="/public/js/vendor/starplayer/js/starplayer_app.js"></script>
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>
-        StarPlayerApp.license = "5EDC454C-81A1-4434-A386-7314FCB74991";
-        StarPlayerApp.version = "1.0.0";
-        StarPlayerApp.android_version = "1.6.31";
-        StarPlayerApp.ios_version = "1.0.0";
-        StarPlayerApp.referer = window.location.href;
-        StarPlayerApp.android_referer_return = "true";
-        StarPlayerApp.debug = "false";
-        StarPlayerApp.pmp = "false";
-
-        function fnMobile(info_url) {
-            checkInstalled2();
-            StarPlayerApp.executeApp(info_url);
-        }
-
         function fnDown($quility)
         {
             if($quility == ""){
                 $quility = "WD";
             }
+
+            if($(".unitchk:checked").length < 1){
+                alert("다운로드할 강의를 선택해주십시요.");
+                return;
+            }
+
             $("#quility").val($quility);
 
-            $data = $('#downForm').serialize();
-            alert($data);
+            $info_url = 'https:{{front_url('/Player/getMobile/')}}?' + $('#downForm').serialize();
+
+            fnMobile($info_url);
         }
     </script>
 @stop
